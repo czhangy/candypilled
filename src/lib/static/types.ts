@@ -28,6 +28,7 @@ export interface BattleItem {
 
 export interface Battle {
     fieldCondition?: FieldCondition;
+    isOptional?: boolean;
     items?: BattleItem;
     name: string;
     team: BattlePokemon[];

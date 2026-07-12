@@ -58,8 +58,14 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                 {`${battle.items.count}x ${battle.items.name}`}
                             </div>
                         )}
+                        {battle.isOptional && (
+                            <div className={styles['trainer__metadata']}>
+                                OPTIONAL
+                            </div>
+                        )}
                         <button
                             className={[
+                                styles['trainer__metadata'],
                                 styles['trainer__defeat'],
                                 isDefeated &&
                                     styles['trainer__defeat--defeated'],
@@ -69,7 +75,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                             onClick={onToggleDefeated}
                             type="button"
                         >
-                            {isDefeated ? 'Defeated' : 'Defeat'}
+                            {isDefeated ? 'DEFEATED' : 'DEFEAT'}
                         </button>
                     </div>
                     <div className={styles.team}>

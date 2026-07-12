@@ -39,10 +39,13 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
 
     const getDefaultSelectedBattle = (): Battle | undefined => {
         const battles = location.battles ?? [];
+        const requiredBattles = battles.filter((battle) => !battle.isOptional);
+        const candidates =
+            requiredBattles.length > 0 ? requiredBattles : battles;
 
         return (
-            battles.find((battle) => !isBattleDefeated(battle)) ??
-            battles[battles.length - 1]
+            candidates.find((battle) => !isBattleDefeated(battle)) ??
+            candidates[candidates.length - 1]
         );
     };
 

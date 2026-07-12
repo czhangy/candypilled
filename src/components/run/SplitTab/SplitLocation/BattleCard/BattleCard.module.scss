@@ -86,10 +86,7 @@
                     border-top: 1px solid $border-subtle;
                     color: var(--accent-color);
                     cursor: pointer;
-                    font-size: 0.65rem;
                     letter-spacing: 0.05em;
-                    padding: 0.4rem;
-                    text-transform: uppercase;
                     transition: background 0.15s ease;
 
                     @media (hover: hover) {
