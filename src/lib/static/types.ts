@@ -1,5 +1,10 @@
+export interface Location {
+    name: string;
+}
+
 export interface Split {
     name: string;
+    locations: Location[];
 }
 
 export interface Game {

@@ -1,8 +1,8 @@
 # SplitTab
 
 The content of the "Split" tab on a game's run page. Shows the run's current
-split, and on the game's first split, a starter selector whose choice is
-saved to the run.
+split, on the game's first split a starter selector whose choice is saved to
+the run, and a collapsible card for each location in the current split.
 
 ## Props
 
@@ -15,6 +15,8 @@ saved to the run.
 
 - `isFirstSplit` — whether `run.split` matches the game's first split,
   controlling whether the starter selector is shown
+- `currentSplit` — the split matching `run.split`, whose locations are
+  rendered as `SplitLocation` cards
 
 ## Handlers
 
