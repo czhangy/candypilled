@@ -22,7 +22,7 @@ module.exports = {
     },
     create(context) {
         const basename = path.basename(context.filename, '.ts');
-        const expectedName = basename.toUpperCase();
+        const expectedName = basename.toUpperCase().replace(/-/g, '_');
         let hasDefaultExport = false;
 
         return {
