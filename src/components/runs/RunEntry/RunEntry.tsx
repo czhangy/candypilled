@@ -57,7 +57,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     className={styles.logo}
                     height={56}
                     src={game.logo}
-                    width={112}
+                    width={103}
                 />
                 <div className={styles.info}>
                     <div className={styles.line}>
