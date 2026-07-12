@@ -11,7 +11,7 @@ import {
 } from '@/lib/scripts/utils/prompt-checkbox';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
-const GENERATIONS = [3, 4];
+const GENERATIONS = [1, 2, 3, 4];
 
 type FetchTarget = 'sprites';
 
