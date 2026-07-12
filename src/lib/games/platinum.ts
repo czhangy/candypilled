@@ -60,7 +60,7 @@ const PLATINUM: Game = {
                             name: 'Logan',
                             trainerClass: 'Youngster',
                             x: 72.3,
-                            y: 21.8,
+                            y: 21.9,
                         },
                     ],
                 },
