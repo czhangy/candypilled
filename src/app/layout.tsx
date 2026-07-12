@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { JetBrains_Mono } from 'next/font/google';
 import Footer from '@/components/Footer/Footer';
+import Navbar from '@/components/Navbar/Navbar';
 import '@/lib/styles/globals.scss';
 
 const jetBrainsMono = JetBrains_Mono({
@@ -21,6 +22,7 @@ export default function RootLayout({
     return (
         <html lang="en" className={jetBrainsMono.variable}>
             <body>
+                <Navbar />
                 <main className="page-main">{children}</main>
                 <Footer />
             </body>
