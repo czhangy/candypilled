@@ -8,7 +8,9 @@ const Footer: React.FC = () => {
 
     return (
         <footer className={styles.footer}>
-            <span className={styles.credit}>Built by czhangy</span>
+            <span className={styles.credit}>
+                Built by <span className={styles.author}>czhangy</span>
+            </span>
             <a
                 aria-label="GitHub repository"
                 className={styles.link}

@@ -18,6 +18,10 @@
         color: $text-dim;
         font-family: $font-mono;
         pointer-events: auto;
+
+        .author {
+            color: $accent;
+        }
     }
 
     .link {
