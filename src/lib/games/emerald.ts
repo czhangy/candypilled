@@ -4,6 +4,7 @@ const EMERALD: Game = {
     name: 'Emerald',
     logo: '/logos/platinum.png',
     generation: 3,
+    starters: ['Treecko', 'Torchic', 'Mudkip'],
     splits: [
         { name: 'Roxanne' },
         { name: 'Brawly' },

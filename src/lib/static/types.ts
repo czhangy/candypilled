@@ -7,6 +7,7 @@ export interface Game {
     logo: string;
     generation: number;
     splits: Split[];
+    starters: string[];
 }
 
 export interface Run {
@@ -16,6 +17,7 @@ export interface Run {
     boxCount: number;
     personalBest: string;
     hallOfFameCount: number;
+    starter: string | null;
 }
 
 export interface GameRun {

@@ -1,0 +1,13 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.split-tab {
+    padding: 1.5rem 0;
+
+    .header {
+        @include mono-label;
+
+        font-size: 1.25rem;
+        margin: 0 0 1rem;
+    }
+}

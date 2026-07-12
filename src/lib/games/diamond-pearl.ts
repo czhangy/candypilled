@@ -4,6 +4,7 @@ const DIAMOND_PEARL: Game = {
     name: 'Diamond/Pearl',
     logo: '/logos/platinum.png',
     generation: 4,
+    starters: ['Turtwig', 'Chimchar', 'Piplup'],
     splits: [
         { name: 'Roark' },
         { name: 'Gardenia' },

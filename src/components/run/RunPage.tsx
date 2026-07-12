@@ -7,6 +7,7 @@ import { GAMES } from '@/lib/static/constants';
 import RunStoreHelpers from '@/lib/utils/RunStoreHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './RunPage.module.scss';
+import SplitTab from './SplitTab/SplitTab';
 
 interface RunPageProps {
     slug: string;
@@ -48,7 +49,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     const run = gameRuns.find(
         (gameRun) => StringHelpers.toSlug(gameRun.game.name) === slug
-    )!.run!;
+    )?.run;
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -66,6 +67,10 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         notFound();
     }
 
+    if (!run) {
+        return null;
+    }
+
     return (
         <div className={styles['run-page']}>
             <h1 className={styles.title}>
@@ -76,6 +81,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                 onTabChange={handleTabChange}
                 tabs={TABS}
             />
+            {activeTab === 'split' && <SplitTab game={game} run={run} />}
         </div>
     );
 };
