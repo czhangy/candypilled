@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { Location } from '@/lib/static/types';
+import LocationMap from './LocationMap/LocationMap';
 import styles from './SplitLocation.module.scss';
 
 interface SplitLocationProps {
@@ -50,9 +51,18 @@ const SplitLocation: React.FC<SplitLocationProps> = ({ location }) => {
             </button>
             {isOpen && (
                 <div className={styles.content}>
-                    <p className={styles.placeholder}>
-                        Map and encounter table coming soon.
-                    </p>
+                    {location.map ? (
+                        <LocationMap
+                            alt={`${location.name} map`}
+                            height={location.map.height}
+                            src={location.map.src}
+                            width={location.map.width}
+                        />
+                    ) : (
+                        <p className={styles.placeholder}>
+                            Map and encounter table coming soon.
+                        </p>
+                    )}
                 </div>
             )}
         </div>

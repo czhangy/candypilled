@@ -1,9 +1,9 @@
 # SplitLocation
 
 A collapsible card for a single location within a split. The header is
-always visible and toggles the collapsed content, which will eventually
-hold an interactive map with trainers and an encounter table for that
-location.
+always visible and toggles the collapsed content, which shows the
+location's map when one is available, and will eventually also hold
+trainers and an encounter table for that location.
 
 ## Props
 

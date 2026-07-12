@@ -1,0 +1,13 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.location-map {
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    img {
+        height: auto;
+        max-width: 100%;
+    }
+}

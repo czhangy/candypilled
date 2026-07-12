@@ -1,5 +1,12 @@
+export interface LocationMapImage {
+    src: string;
+    width: number;
+    height: number;
+}
+
 export interface Location {
     name: string;
+    map?: LocationMapImage;
 }
 
 export interface Split {
