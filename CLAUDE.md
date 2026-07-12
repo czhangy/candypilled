@@ -38,13 +38,13 @@ Pre-commit hooks via Husky/lint-staged automatically run ESLint, Prettier, and S
 - `@/*` → `src/*`
 - `@/styles/*` → `src/lib/styles/*`
 
-**Routing:** File-based in `src/app/` using App Router. Root layout (`src/app/layout.tsx`) loads Geist fonts and imports `src/lib/styles/globals.scss` for global styles.
+**Routing:** File-based in `src/app/` using App Router. Root layout (`src/app/layout.tsx`) loads the JetBrains Mono font and imports `src/lib/styles/globals.scss` for global styles.
 
 **Global styles** live in `src/lib/styles/`:
 
 - `globals.scss` — body defaults and font-smoothing
 - `_constants.scss` — SCSS variables (`$accent`, `$background`, `$foreground`, `$font-mono`, `$border-subtle`, `$text-dim`, `$text-mid`)
-- `_mixins.scss` — reusable declaration blocks (`fill-parent`, `mono-label`, `game-button`, `focus-glow`)
+- `_mixins.scss` — reusable declaration blocks (`full-height`, `mono-label`)
 - `index.scss` — barrel that forwards constants and mixins
 
 ### Components
@@ -144,7 +144,7 @@ style={{ '--color': value } as React.CSSProperties}
 ## Code Style
 
 - **Formatting:** 4-space indentation, 80-char line width, single quotes, trailing commas (ES5)
-- **SCSS constants:** `$accent`, `$background`, `$foreground` defined in `_constants.scss` — use these in component SCSS files, not CSS `var()` calls. CSS variables are only used where runtime values are unavoidable (e.g. `var(--font-geist-mono)` set by Next.js at runtime).
+- **SCSS constants:** `$accent`, `$background`, `$foreground` defined in `_constants.scss` — use these in component SCSS files, not CSS `var()` calls. CSS variables are only used where runtime values are unavoidable (e.g. `var(--font-mono)` set by Next.js at runtime).
 - **CSS Modules access:** Use `styles.className` for single-word class names, `styles['hyphenated-name']` for names containing hyphens
 
 ### SCSS mixins and constants
@@ -159,11 +159,10 @@ Before writing a raw CSS value in a component SCSS file, check whether it belong
 
 **Available mixins:**
 
-- `fill-parent` — `position: absolute; inset: 0`
 - `full-height` — `flex: 1`, fills the remaining height in the page flex column (`body → .page-main → page component`); use on the outermost element of every full-page component
 - `mono-label` — `font-family: $font-mono; font-weight: 700` — use for all bold monospace text (titles, nav items, button labels)
-- `game-button` — bordered interactive button with hover accent transition — use for any standalone link or action button in the site UI
-- `focus-glow` — `border-color: $accent` + `box-shadow` accent glow — use in `:focus` blocks on interactive input elements
+
+Add new mixins here only once they're actually used by a component — don't pre-declare mixins for hypothetical future UI.
 
 ### SCSS nesting
 
@@ -191,6 +190,8 @@ Modifier classes (`&--variant`) nest inside their base class. **Base styles must
     }
 }
 ```
+
+**This cannot be lint-enforced.** Stylelint only sees the `.module.scss` file in isolation — it has no way to check the nesting against the component's actual JSX tree in the `.tsx` file. There is no automated check for this convention, so after editing a `.module.scss` file, manually diff its selector nesting against the JSX structure before considering the change done.
 
 **Animations** must include a `@media (prefers-reduced-motion: reduce)` block that disables or stills the animation.
 

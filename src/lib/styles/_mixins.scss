@@ -1,1 +1,10 @@
 @use '@/styles/constants' as *;
+
+@mixin full-height {
+    flex: 1;
+}
+
+@mixin mono-label {
+    font-family: $font-mono;
+    font-weight: 700;
+}
