@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '@/styles/constants' as *;
 @use '@/styles/mixins' as *;
 
@@ -10,7 +11,7 @@
         @include mono-label;
 
         align-items: center;
-        background: var(--base-color);
+        background: color.adjust($background, $lightness: 4%);
         border: none;
         color: $foreground;
         cursor: pointer;

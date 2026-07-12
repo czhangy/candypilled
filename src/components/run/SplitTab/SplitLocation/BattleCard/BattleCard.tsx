@@ -48,14 +48,16 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                 width={SPRITE_SIZE}
                             />
                         </div>
-                        <div className={styles['trainer__metadata']}>
-                            {battle.fieldCondition ?? '-'}
-                        </div>
-                        <div className={styles['trainer__metadata']}>
-                            {battle.items
-                                ? `${battle.items.count}x ${battle.items.name}`
-                                : '-'}
-                        </div>
+                        {battle.fieldCondition && (
+                            <div className={styles['trainer__metadata']}>
+                                {battle.fieldCondition}
+                            </div>
+                        )}
+                        {battle.items && (
+                            <div className={styles['trainer__metadata']}>
+                                {`${battle.items.count}x ${battle.items.name}`}
+                            </div>
+                        )}
                         <button
                             className={[
                                 styles['trainer__defeat'],

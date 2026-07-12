@@ -76,10 +76,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         <div
             className={styles['run-page']}
             style={
-                {
-                    '--base-color': game.baseColor,
-                    '--accent-color': game.accentColor,
-                } as React.CSSProperties
+                { '--accent-color': game.accentColor } as React.CSSProperties
             }
         >
             <Link className={styles.back} href="/runs">

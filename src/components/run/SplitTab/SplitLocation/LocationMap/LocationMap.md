@@ -14,7 +14,3 @@ added here in future work.
 | `isBattleDefeated` | `(battle: Battle) => boolean` | Yes      | -       | Whether a given battle has already been defeated         |
 | `selectedBattle`   | `Battle`                      | No       | -       | The currently selected battle, if any                    |
 | `onBattleClick`    | `(battle: Battle) => void`    | Yes      | -       | Called with a battle when its marker is clicked          |
-
-## SCSS Variable Dependencies
-
-- `--base-color` — the active game's base color, set by `RunPage`

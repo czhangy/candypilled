@@ -39,7 +39,3 @@ battle card.
   already selected
 - **On battle toggle defeated** — adds or removes the battle's id from
   the run's defeated battles in storage
-
-## SCSS Variable Dependencies
-
-- `--base-color` — the active game's base color, set by `RunPage`

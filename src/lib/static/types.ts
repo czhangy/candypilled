@@ -53,7 +53,6 @@ export interface Game {
     generation: number;
     splits: Split[];
     starters: string[];
-    baseColor: string;
     accentColor: string;
 }
 
