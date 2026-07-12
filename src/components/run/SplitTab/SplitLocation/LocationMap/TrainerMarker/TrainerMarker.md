@@ -6,13 +6,13 @@ and height so it stays aligned with the artwork at any render size.
 
 ## Props
 
-| Prop         | Type                         | Required | Default | Description                                        |
-| ------------ | ---------------------------- | -------- | ------- | -------------------------------------------------- |
-| `trainer`    | `Trainer`                    | Yes      | -       | The trainer this marker represents and positions   |
-| `mapWidth`   | `number`                     | Yes      | -       | Intrinsic width of the map image, in pixels        |
-| `mapHeight`  | `number`                     | Yes      | -       | Intrinsic height of the map image, in pixels       |
-| `isSelected` | `boolean`                    | No       | `false` | Whether this trainer is the currently selected one |
-| `onClick`    | `(trainer: Trainer) => void` | No       | -       | Called with this marker's trainer when clicked     |
+| Prop         | Type                        | Required | Default | Description                                        |
+| ------------ | --------------------------- | -------- | ------- | -------------------------------------------------- |
+| `trainer`    | `Battle`                    | Yes      | -       | The battle this marker represents and positions    |
+| `mapWidth`   | `number`                    | Yes      | -       | Intrinsic width of the map image, in pixels        |
+| `mapHeight`  | `number`                    | Yes      | -       | Intrinsic height of the map image, in pixels       |
+| `isSelected` | `boolean`                   | No       | `false` | Whether this trainer is the currently selected one |
+| `onClick`    | `(trainer: Battle) => void` | Yes      | -       | Called with this marker's battle when clicked      |
 
 ## Computations
 

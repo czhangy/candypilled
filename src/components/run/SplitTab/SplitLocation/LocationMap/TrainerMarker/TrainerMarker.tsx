@@ -1,12 +1,12 @@
-import { Trainer } from '@/lib/static/types';
+import { Battle } from '@/lib/static/types';
 import styles from './TrainerMarker.module.scss';
 
 interface TrainerMarkerProps {
     isSelected?: boolean;
     mapHeight: number;
     mapWidth: number;
-    onClick: (trainer: Trainer) => void;
-    trainer: Trainer;
+    onClick: (trainer: Battle) => void;
+    trainer: Battle;
 }
 
 const TrainerMarker: React.FC<TrainerMarkerProps> = ({

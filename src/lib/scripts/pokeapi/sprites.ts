@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { logSuccess, logWarning } from '@/lib/scripts/utils/helpers';
 import { promptCheckbox } from '@/lib/scripts/utils/prompt-checkbox';
-import { Pokemon, SpriteVariant } from '@/lib/static/types';
+import { PokemonData, SpriteVariant } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const POKEAPI_SPECIES_URL = 'https://pokeapi.co/api/v2/pokemon-species';
@@ -59,12 +59,12 @@ const getDexNumbersForGenerations = (generations: number[]): number[] =>
         )
     );
 
-const readData = (): Record<string, Pokemon> => {
+const readData = (): Record<string, PokemonData> => {
     if (!fs.existsSync(DATA_PATH)) return {};
     return JSON.parse(fs.readFileSync(DATA_PATH, 'utf-8'));
 };
 
-const writeData = (data: Record<string, Pokemon>): void => {
+const writeData = (data: Record<string, PokemonData>): void => {
     fs.writeFileSync(DATA_PATH, `${JSON.stringify(data, null, 4)}\n`);
 };
 

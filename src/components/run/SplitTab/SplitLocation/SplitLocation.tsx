@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
-import { Location, Trainer } from '@/lib/static/types';
+import { Battle, Location } from '@/lib/static/types';
 import BattleCard from './BattleCard/BattleCard';
 import LocationMap from './LocationMap/LocationMap';
 import styles from './SplitLocation.module.scss';
@@ -18,7 +18,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({ location }) => {
 
     // TODO: remove dev default-open once map/marker work is done
     const [isOpen, setIsOpen] = useState(location.name === 'Route 202');
-    const [selectedTrainer, setSelectedTrainer] = useState<Trainer>();
+    const [selectedBattle, setSelectedBattle] = useState<Battle>();
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -28,9 +28,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({ location }) => {
         setIsOpen((previousIsOpen) => !previousIsOpen);
     };
 
-    const handleTrainerClick = (trainer: Trainer): void => {
-        setSelectedTrainer((previousTrainer) =>
-            previousTrainer === trainer ? undefined : trainer
+    const handleBattleClick = (battle: Battle): void => {
+        setSelectedBattle((previousBattle) =>
+            previousBattle === battle ? undefined : battle
         );
     };
 
@@ -62,14 +62,12 @@ const SplitLocation: React.FC<SplitLocationProps> = ({ location }) => {
                 <div className={styles.content}>
                     <LocationMap
                         alt={`${location.name} map`}
+                        battles={location.battles}
                         map={location.map}
-                        onTrainerClick={handleTrainerClick}
-                        selectedTrainer={selectedTrainer}
-                        trainers={location.trainers}
+                        onBattleClick={handleBattleClick}
+                        selectedBattle={selectedBattle}
                     />
-                    {selectedTrainer && (
-                        <BattleCard trainer={selectedTrainer} />
-                    )}
+                    {selectedBattle && <BattleCard battle={selectedBattle} />}
                 </div>
             )}
         </div>

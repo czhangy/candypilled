@@ -56,21 +56,16 @@
                 }
 
                 .trainer__items {
+                    align-items: center;
                     border-top: 1px solid $border-subtle;
+                    color: $text-mid;
                     display: flex;
                     flex: 1;
-                    flex-direction: column;
+                    font-size: 0.65rem;
                     justify-content: center;
-                    list-style: none;
-                    margin: 0;
                     overflow-y: auto;
                     padding: 0.35rem;
-
-                    li {
-                        color: $text-mid;
-                        font-size: 0.65rem;
-                        text-align: center;
-                    }
+                    text-align: center;
                 }
             }
 
@@ -91,10 +86,19 @@
                         @include mono-label;
 
                         border-bottom: 1px solid $border-subtle;
-                        color: $text-mid;
+                        display: flex;
                         font-size: 0.7rem;
-                        padding: 0.35rem;
-                        text-align: center;
+
+                        span {
+                            color: $text-mid;
+                            flex: 1;
+                            padding: 0.35rem;
+                            text-align: center;
+
+                            &:first-child {
+                                border-right: 1px solid $border-subtle;
+                            }
+                        }
                     }
 
                     .pokemon-slot__sprite {
@@ -116,18 +120,13 @@
 
                     .pokemon-slot__traits {
                         border-bottom: 1px solid $border-subtle;
-                        display: flex;
                         font-size: 0.65rem;
 
                         span {
                             color: $text-mid;
-                            flex: 1;
+                            display: block;
                             padding: 0.3rem;
                             text-align: center;
-
-                            &:first-child {
-                                border-right: 1px solid $border-subtle;
-                            }
                         }
                     }
 

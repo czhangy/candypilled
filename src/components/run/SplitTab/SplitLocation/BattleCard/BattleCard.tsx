@@ -1,26 +1,16 @@
-import { Trainer } from '@/lib/static/types';
+import { Battle } from '@/lib/static/types';
 import styles from './BattleCard.module.scss';
 
 interface BattleCardProps {
-    trainer: Trainer;
+    battle: Battle;
 }
 
-const BattleCard: React.FC<BattleCardProps> = ({ trainer }) => {
+const BattleCard: React.FC<BattleCardProps> = ({ battle }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const PLACEHOLDER_SLOTS = Array.from({ length: 6 }, (_, index) => ({
-        ability: 'Ability',
-        id: index,
-        item: 'Held Item',
-        level: 100,
-        moves: ['Move 1', 'Move 2', 'Move 3', 'Move 4'],
-        name: 'Pokemon',
-        nature: 'Nature',
-    }));
-
-    const PLACEHOLDER_ITEMS = ['1x Potion', '2x Full Restore'];
+    const MOVE_SLOT_COUNT = 4;
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -31,40 +21,44 @@ const BattleCard: React.FC<BattleCardProps> = ({ trainer }) => {
             <span className={styles.label}>Battle</span>
             <div className={styles.content}>
                 <div className={styles['trainer-header']}>
-                    {trainer.trainerClass} {trainer.name}
+                    {battle.trainerClass} {battle.name}
                 </div>
                 <div className={styles.body}>
                     <div className={styles.trainer}>
                         <div className={styles['trainer__sprite']} />
-                        <ul className={styles['trainer__items']}>
-                            {PLACEHOLDER_ITEMS.map((item) => (
-                                <li key={item}>{item}</li>
-                            ))}
-                        </ul>
+                        <div className={styles['trainer__items']}>
+                            {battle.items
+                                ? `${battle.items.count}x ${battle.items.name}`
+                                : '-'}
+                        </div>
                     </div>
                     <div className={styles.team}>
-                        {PLACEHOLDER_SLOTS.map((slot) => (
+                        {battle.team.map((pokemon) => (
                             <div
                                 className={styles['pokemon-slot']}
-                                key={slot.id}
+                                key={pokemon.name}
                             >
                                 <div
                                     className={styles['pokemon-slot__sprite']}
                                 />
                                 <div className={styles['pokemon-slot__name']}>
-                                    {slot.name}
+                                    {pokemon.name}
                                 </div>
                                 <div className={styles['pokemon-slot__level']}>
-                                    Lvl. {slot.level}
+                                    <span>Lv. {pokemon.level}</span>
+                                    <span>{pokemon.nature ?? '-'}</span>
                                 </div>
                                 <div className={styles['pokemon-slot__traits']}>
-                                    <span>{slot.nature}</span>
-                                    <span>{slot.ability}</span>
+                                    <span>{pokemon.ability}</span>
                                 </div>
                                 <ul className={styles['pokemon-slot__details']}>
-                                    <li>{slot.item}</li>
-                                    {slot.moves.map((move) => (
-                                        <li key={move}>{move}</li>
+                                    <li>{pokemon.heldItem || '-'}</li>
+                                    {Array.from(
+                                        { length: MOVE_SLOT_COUNT },
+                                        (_, index) =>
+                                            pokemon.moves[index] ?? '-'
+                                    ).map((move, index) => (
+                                        <li key={index}>{move}</li>
                                     ))}
                                 </ul>
                             </div>

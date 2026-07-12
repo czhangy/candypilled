@@ -1,22 +1,22 @@
 import Image, { StaticImageData } from 'next/image';
-import { Trainer } from '@/lib/static/types';
+import { Battle } from '@/lib/static/types';
 import styles from './LocationMap.module.scss';
 import TrainerMarker from './TrainerMarker/TrainerMarker';
 
 interface LocationMapProps {
     alt: string;
+    battles?: Battle[];
     map: StaticImageData;
-    onTrainerClick: (trainer: Trainer) => void;
-    selectedTrainer?: Trainer;
-    trainers?: Trainer[];
+    onBattleClick: (battle: Battle) => void;
+    selectedBattle?: Battle;
 }
 
 const LocationMap: React.FC<LocationMapProps> = ({
     alt,
+    battles = [],
     map,
-    onTrainerClick,
-    selectedTrainer,
-    trainers = [],
+    onBattleClick,
+    selectedBattle,
 }) => {
     // -------------------------------------------------------------------------
     // MARKUP
@@ -27,14 +27,14 @@ const LocationMap: React.FC<LocationMapProps> = ({
             <span className={styles.label}>Map</span>
             <div className={styles.image}>
                 <Image alt={alt} src={map} />
-                {trainers.map((trainer) => (
+                {battles.map((battle) => (
                     <TrainerMarker
-                        isSelected={selectedTrainer === trainer}
-                        key={trainer.name}
+                        isSelected={selectedBattle === battle}
+                        key={battle.name}
                         mapHeight={map.height}
                         mapWidth={map.width}
-                        onClick={onTrainerClick}
-                        trainer={trainer}
+                        onClick={onBattleClick}
+                        trainer={battle}
                     />
                 ))}
             </div>
