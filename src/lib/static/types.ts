@@ -7,6 +7,7 @@ export interface Game {
     logo: string;
     generation: number;
     splits: Split[];
+    starters: string[];
 }
 
 export interface Run {
@@ -16,9 +17,26 @@ export interface Run {
     boxCount: number;
     personalBest: string;
     hallOfFameCount: number;
+    starter: string | null;
 }
 
 export interface GameRun {
     game: Game;
     run: Run | null;
+}
+
+export interface Pokemon {
+    name: string;
+    sprites: Record<string, string>;
+}
+
+export interface SpriteVariant {
+    id: string;
+    label: string;
+    generation: number;
+}
+
+export interface CheckboxOption<T> {
+    label: string;
+    value: T;
 }

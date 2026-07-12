@@ -4,6 +4,7 @@ const PLATINUM: Game = {
     name: 'Platinum',
     logo: '/logos/platinum.png',
     generation: 4,
+    starters: ['Turtwig', 'Chimchar', 'Piplup'],
     splits: [
         { name: 'Roark' },
         { name: 'Gardenia' },

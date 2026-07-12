@@ -1,0 +1,61 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.starter-select {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 0 auto;
+    width: fit-content;
+
+    .label {
+        @include mono-label;
+
+        color: $text-mid;
+        font-size: 0.9rem;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+    }
+
+    .starters {
+        display: flex;
+        gap: 0.75rem;
+
+        .starter {
+            @include mono-label;
+
+            align-items: center;
+            background: none;
+            border: 1px solid $border-subtle;
+            border-radius: 0.5rem;
+            color: $text-mid;
+            cursor: pointer;
+            display: flex;
+            font-size: 0.9rem;
+            justify-content: center;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            transition: border-color 0.2s ease;
+
+            img {
+                height: auto;
+                width: 8rem;
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    border-color: $accent;
+                }
+            }
+
+            &--selected {
+                border-color: $accent;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,57 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.tabs {
+    border-bottom: 1px solid $border-subtle;
+    display: flex;
+    gap: 1.5rem;
+
+    .tab {
+        @include mono-label;
+
+        background: none;
+        border: none;
+        color: $text-mid;
+        cursor: pointer;
+        font-size: 0.9rem;
+        letter-spacing: 0.03em;
+        padding: 0.75rem 0.25rem;
+        position: relative;
+        text-transform: uppercase;
+        transition: color 0.2s ease;
+
+        &::after {
+            background: $accent;
+            bottom: -1px;
+            content: '';
+            height: 2px;
+            left: 0;
+            opacity: 0;
+            position: absolute;
+            right: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                color: $foreground;
+            }
+        }
+
+        &--active {
+            color: $foreground;
+
+            &::after {
+                opacity: 1;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+
+            &::after {
+                transition: none;
+            }
+        }
+    }
+}

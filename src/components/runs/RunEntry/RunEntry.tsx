@@ -39,6 +39,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             boxCount: 0,
             personalBest: run?.personalBest ?? 'N/A',
             hallOfFameCount: run?.hallOfFameCount ?? 0,
+            starter: null,
         };
 
         RunStoreHelpers.saveRun(game, newRun);
