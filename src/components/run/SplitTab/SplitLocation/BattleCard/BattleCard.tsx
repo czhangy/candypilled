@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Battle } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
+import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import styles from './BattleCard.module.scss';
 
 interface BattleCardProps {
@@ -28,11 +29,21 @@ const BattleCard: React.FC<BattleCardProps> = ({ battle, variant }) => {
                 </div>
                 <div className={styles.body}>
                     <div className={styles.trainer}>
-                        <div className={styles['trainer__field-condition']}>
+                        <div className={styles['trainer__sprite']}>
+                            <Image
+                                alt={`${battle.trainerClass} ${battle.name}`}
+                                height={80}
+                                src={TrainerHelpers.getSprite(
+                                    battle.trainerClass,
+                                    variant
+                                )}
+                                width={80}
+                            />
+                        </div>
+                        <div className={styles['trainer__metadata']}>
                             {battle.fieldCondition ?? '-'}
                         </div>
-                        <div className={styles['trainer__sprite']} />
-                        <div className={styles['trainer__items']}>
+                        <div className={styles['trainer__metadata']}>
                             {battle.items
                                 ? `${battle.items.count}x ${battle.items.name}`
                                 : '-'}

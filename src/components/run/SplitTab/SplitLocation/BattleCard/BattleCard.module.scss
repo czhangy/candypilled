@@ -50,24 +50,22 @@
                 overflow: hidden;
                 width: 6rem;
 
-                .trainer__field-condition {
-                    align-items: center;
-                    border-bottom: 1px solid $border-subtle;
-                    color: $text-mid;
-                    display: flex;
-                    flex: 1;
-                    font-size: 0.65rem;
-                    justify-content: center;
-                    padding: 0.35rem;
-                    text-align: center;
-                }
-
                 .trainer__sprite {
+                    align-items: center;
                     background: color.adjust($background, $lightness: 4%);
+                    display: flex;
                     flex: 5;
+                    justify-content: center;
+
+                    img {
+                        height: auto;
+                        max-height: 100%;
+                        max-width: 100%;
+                        width: auto;
+                    }
                 }
 
-                .trainer__items {
+                .trainer__metadata {
                     align-items: center;
                     border-top: 1px solid $border-subtle;
                     color: $text-mid;
