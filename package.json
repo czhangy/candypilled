@@ -11,6 +11,7 @@
         "gen:component": "tsx src/lib/scripts/generators/generateComponent.ts",
         "gen:class": "tsx src/lib/scripts/generators/generateClass.ts",
         "gen:icon": "tsx src/lib/scripts/generators/generateIcon.ts",
+        "sync:pokemon": "tsx src/lib/scripts/pokeapi/fetch-pokemon.ts",
         "prepare": "husky"
     },
     "lint-staged": {

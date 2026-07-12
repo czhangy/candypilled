@@ -24,3 +24,8 @@ export interface GameRun {
     game: Game;
     run: Run | null;
 }
+
+export interface Pokemon {
+    name: string;
+    sprite: string;
+}

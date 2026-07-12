@@ -25,29 +25,32 @@
         .starter {
             @include mono-label;
 
+            align-items: center;
             background: none;
             border: 1px solid $border-subtle;
             border-radius: 0.5rem;
             color: $text-mid;
             cursor: pointer;
+            display: flex;
             font-size: 0.9rem;
+            justify-content: center;
             letter-spacing: 0.03em;
-            padding: 0.75rem 1.25rem;
             text-transform: uppercase;
-            transition:
-                border-color 0.2s ease,
-                color 0.2s ease;
+            transition: border-color 0.2s ease;
+
+            img {
+                height: auto;
+                width: 8rem;
+            }
 
             @media (hover: hover) {
                 &:hover {
                     border-color: $accent;
-                    color: $foreground;
                 }
             }
 
             &--selected {
                 border-color: $accent;
-                color: $accent;
             }
 
             @media (prefers-reduced-motion: reduce) {

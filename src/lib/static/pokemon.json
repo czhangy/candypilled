@@ -1,0 +1,26 @@
+{
+    "treecko": {
+        "name": "Treecko",
+        "sprite": "/pokemon/treecko.png"
+    },
+    "torchic": {
+        "name": "Torchic",
+        "sprite": "/pokemon/torchic.png"
+    },
+    "mudkip": {
+        "name": "Mudkip",
+        "sprite": "/pokemon/mudkip.png"
+    },
+    "turtwig": {
+        "name": "Turtwig",
+        "sprite": "/pokemon/turtwig.png"
+    },
+    "chimchar": {
+        "name": "Chimchar",
+        "sprite": "/pokemon/chimchar.png"
+    },
+    "piplup": {
+        "name": "Piplup",
+        "sprite": "/pokemon/piplup.png"
+    }
+}

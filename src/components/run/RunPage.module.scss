@@ -6,6 +6,29 @@
 
     padding: 1.5rem;
 
+    .back {
+        @include mono-label;
+
+        color: $text-mid;
+        display: inline-flex;
+        font-size: 0.85rem;
+        letter-spacing: 0.03em;
+        margin-bottom: 1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: color 0.2s ease;
+
+        @media (hover: hover) {
+            &:hover {
+                color: $foreground;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+    }
+
     .title {
         @include mono-label;
 

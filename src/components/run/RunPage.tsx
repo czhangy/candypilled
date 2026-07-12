@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useSyncExternalStore } from 'react';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Tabs from '@/components/common/Tabs/Tabs';
 import { GAMES } from '@/lib/static/constants';
@@ -73,6 +74,9 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     return (
         <div className={styles['run-page']}>
+            <Link className={styles.back} href="/runs">
+                ← Runs
+            </Link>
             <h1 className={styles.title}>
                 Pokémon {game.name} — Attempt #{run.attempt}
             </h1>

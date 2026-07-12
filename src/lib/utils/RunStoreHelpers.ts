@@ -8,6 +8,7 @@ export default class RunStoreHelpers {
     // -------------------------------------------------------------------------
 
     private static readonly EMPTY_SNAPSHOT: GameRun[] = [];
+    private static readonly listeners = new Set<() => void>();
     private static cachedRaw: string | null = null;
     private static cachedSnapshot: GameRun[] = RunStoreHelpers.EMPTY_SNAPSHOT;
 
@@ -24,7 +25,11 @@ export default class RunStoreHelpers {
 
     static subscribe(callback: () => void): () => void {
         window.addEventListener('storage', callback);
-        return () => window.removeEventListener('storage', callback);
+        RunStoreHelpers.listeners.add(callback);
+        return () => {
+            window.removeEventListener('storage', callback);
+            RunStoreHelpers.listeners.delete(callback);
+        };
     }
 
     static getSnapshot(): GameRun[] {
@@ -56,5 +61,6 @@ export default class RunStoreHelpers {
             StringHelpers.toSlug(game.name),
             JSON.stringify(run)
         );
+        RunStoreHelpers.listeners.forEach((listener) => listener());
     }
 }

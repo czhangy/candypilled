@@ -1,9 +1,9 @@
 # RunPage
 
 The dedicated page for a single game's run, reached from a game's entry on
-the runs list. Displays the game's title with the current attempt number, a
-row of tabs for switching between the different views of the run, and the
-content for the currently active tab.
+the runs list. Displays a back link to the runs list, the game's title with
+the current attempt number, a row of tabs for switching between the
+different views of the run, and the content for the currently active tab.
 
 ## Props
 
