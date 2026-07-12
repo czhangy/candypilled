@@ -1,0 +1,11 @@
+@use '@/styles/mixins' as *;
+
+.history-page {
+    @include full-height;
+
+    padding: 1.5rem;
+
+    @media (width <= 768px) {
+        padding: 1rem;
+    }
+}
