@@ -13,6 +13,8 @@ const PLATINUM: Game = {
     logo: '/logos/platinum.png',
     generation: 4,
     starters: ['Turtwig', 'Chimchar', 'Piplup'],
+    baseColor: '#000000',
+    accentColor: '#ffffff',
     splits: [
         {
             name: 'Roark',

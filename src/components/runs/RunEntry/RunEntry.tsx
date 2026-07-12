@@ -35,6 +35,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         const newRun: Run = {
             attempt: (run?.attempt ?? 0) + 1,
             deathCount: 0,
+            defeatedBattles: [],
             split: game.splits[0].name,
             boxCount: 0,
             personalBest: run?.personalBest ?? 'N/A',

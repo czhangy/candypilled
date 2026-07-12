@@ -26,8 +26,7 @@ battle card.
 
 ## Computations
 
-- `defeatedBattles` — the run's list of defeated battle ids, defaulting
-  to an empty array
+- `defeatedBattles` — the run's list of defeated battle ids
 - `getBattleId` — builds a battle's storage id from its location and
   trainer name
 - `isBattleDefeated` — whether a given battle's id is present in
@@ -40,3 +39,7 @@ battle card.
   already selected
 - **On battle toggle defeated** — adds or removes the battle's id from
   the run's defeated battles in storage
+
+## SCSS Variable Dependencies
+
+- `--base-color` — the active game's base color, set by `RunPage`

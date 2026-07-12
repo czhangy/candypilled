@@ -33,7 +33,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const defeatedBattles = run.defeatedBattles ?? [];
+    const defeatedBattles = run.defeatedBattles;
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS

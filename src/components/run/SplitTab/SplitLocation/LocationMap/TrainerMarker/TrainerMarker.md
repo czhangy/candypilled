@@ -3,7 +3,7 @@
 A rectangular button overlaid on a location's map image, outlining where
 a trainer stands. Positioned and sized as a percentage of the map's width
 and height so it stays aligned with the artwork at any render size.
-Defeated trainers render green instead of the default accent color.
+Defeated trainers render green instead of the game's accent color.
 
 ## Props
 
@@ -21,3 +21,7 @@ Defeated trainers render green instead of the default accent color.
 - `width`, `height` — the marker's size as a percentage of the map,
   derived from a fixed trainer sprite size in pixels so the rectangle
   matches the trainer's on-screen footprint regardless of image resolution
+
+## SCSS Variable Dependencies
+
+- `--accent-color` — the active game's accent color, set by `RunPage`

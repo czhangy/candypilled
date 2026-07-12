@@ -53,12 +53,14 @@ export interface Game {
     generation: number;
     splits: Split[];
     starters: string[];
+    baseColor: string;
+    accentColor: string;
 }
 
 export interface Run {
     attempt: number;
     deathCount: number;
-    defeatedBattles?: string[];
+    defeatedBattles: string[];
     split: string;
     boxCount: number;
     personalBest: string;

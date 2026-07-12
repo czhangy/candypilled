@@ -1,4 +1,3 @@
-@use 'sass:color';
 @use '@/styles/constants' as *;
 @use '@/styles/mixins' as *;
 
@@ -11,7 +10,7 @@
     .label {
         @include mono-label;
 
-        background: color.adjust($background, $lightness: 4%);
+        background: var(--base-color);
         color: $text-mid;
         display: block;
         font-size: 0.7rem;

@@ -19,3 +19,8 @@ the trainer's defeated state in storage; once defeated it reads
 | `isDefeated`       | `boolean`    | Yes      | -       | Whether this battle has already been marked defeated   |
 | `onToggleDefeated` | `() => void` | Yes      | -       | Called when the defeat button is clicked               |
 | `variant`          | `string`     | Yes      | -       | The sprite variant to prefer, matching the game's slug |
+
+## SCSS Variable Dependencies
+
+- `--base-color` — the active game's base color, set by `RunPage`
+- `--accent-color` — the active game's accent color, set by `RunPage`

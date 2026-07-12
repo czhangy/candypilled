@@ -21,7 +21,7 @@
         transition: color 0.2s ease;
 
         &::after {
-            background: $accent;
+            background: var(--accent-color);
             bottom: -1px;
             content: '';
             height: 2px;

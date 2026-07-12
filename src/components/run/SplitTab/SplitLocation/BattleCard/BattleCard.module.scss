@@ -11,7 +11,7 @@
     .label {
         @include mono-label;
 
-        background: color.adjust($background, $lightness: 4%);
+        background: var(--base-color);
         color: $text-mid;
         display: block;
         font-size: 0.7rem;
@@ -29,7 +29,7 @@
         .trainer-header {
             @include mono-label;
 
-            background: color.adjust($background, $lightness: 4%);
+            background: var(--base-color);
             border: 1px solid $border-subtle;
             border-radius: 0.375rem;
             letter-spacing: 0.03em;
@@ -52,7 +52,7 @@
 
                 .trainer__sprite {
                     align-items: center;
-                    background: color.adjust($background, $lightness: 4%);
+                    background: var(--base-color);
                     display: flex;
                     flex: 8;
                     justify-content: center;
@@ -81,7 +81,7 @@
                 .trainer__defeat {
                     @include mono-label;
 
-                    background: $accent;
+                    background: var(--accent-color);
                     border: none;
                     border-top: 1px solid $border-subtle;
                     color: $foreground;
@@ -94,7 +94,11 @@
 
                     @media (hover: hover) {
                         &:hover {
-                            background: color.adjust($accent, $lightness: -8%);
+                            background: color-mix(
+                                in srgb,
+                                var(--accent-color) 92%,
+                                black
+                            );
                         }
                     }
 
@@ -151,7 +155,7 @@
 
                     .pokemon-slot__sprite {
                         align-items: center;
-                        background: color.adjust($background, $lightness: 4%);
+                        background: var(--base-color);
                         border-bottom: 1px solid $border-subtle;
                         display: flex;
                         height: 5rem;
@@ -204,7 +208,7 @@
 
                             &:first-child {
                                 border-top: none;
-                                color: $accent;
+                                color: var(--accent-color);
                             }
                         }
                     }

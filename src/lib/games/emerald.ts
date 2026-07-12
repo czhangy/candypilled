@@ -5,6 +5,8 @@ const EMERALD: Game = {
     logo: '/logos/platinum.png',
     generation: 3,
     starters: ['Treecko', 'Torchic', 'Mudkip'],
+    baseColor: '#000000',
+    accentColor: '#ffffff',
     splits: [
         { name: 'Roxanne', locations: [] },
         { name: 'Brawly', locations: [] },
