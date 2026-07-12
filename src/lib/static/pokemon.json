@@ -1,26 +1,698 @@
 {
-    "treecko": {
-        "name": "Treecko",
-        "sprite": "/pokemon/treecko.png"
-    },
-    "torchic": {
-        "name": "Torchic",
-        "sprite": "/pokemon/torchic.png"
-    },
-    "mudkip": {
-        "name": "Mudkip",
-        "sprite": "/pokemon/mudkip.png"
-    },
     "turtwig": {
         "name": "Turtwig",
-        "sprite": "/pokemon/turtwig.png"
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/turtwig.png"
+        }
     },
     "chimchar": {
         "name": "Chimchar",
-        "sprite": "/pokemon/chimchar.png"
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/chimchar.png"
+        }
     },
     "piplup": {
         "name": "Piplup",
-        "sprite": "/pokemon/piplup.png"
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/piplup.png"
+        }
+    },
+    "grotle": {
+        "name": "Grotle",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/grotle.png"
+        }
+    },
+    "torterra": {
+        "name": "Torterra",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/torterra.png"
+        }
+    },
+    "monferno": {
+        "name": "Monferno",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/monferno.png"
+        }
+    },
+    "infernape": {
+        "name": "Infernape",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/infernape.png"
+        }
+    },
+    "prinplup": {
+        "name": "Prinplup",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/prinplup.png"
+        }
+    },
+    "empoleon": {
+        "name": "Empoleon",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/empoleon.png"
+        }
+    },
+    "starly": {
+        "name": "Starly",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/starly.png"
+        }
+    },
+    "staravia": {
+        "name": "Staravia",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/staravia.png"
+        }
+    },
+    "staraptor": {
+        "name": "Staraptor",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/staraptor.png"
+        }
+    },
+    "bidoof": {
+        "name": "Bidoof",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/bidoof.png"
+        }
+    },
+    "bibarel": {
+        "name": "Bibarel",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/bibarel.png"
+        }
+    },
+    "kricketot": {
+        "name": "Kricketot",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/kricketot.png"
+        }
+    },
+    "kricketune": {
+        "name": "Kricketune",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/kricketune.png"
+        }
+    },
+    "shinx": {
+        "name": "Shinx",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/shinx.png"
+        }
+    },
+    "luxio": {
+        "name": "Luxio",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/luxio.png"
+        }
+    },
+    "luxray": {
+        "name": "Luxray",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/luxray.png"
+        }
+    },
+    "budew": {
+        "name": "Budew",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/budew.png"
+        }
+    },
+    "roserade": {
+        "name": "Roserade",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/roserade.png"
+        }
+    },
+    "cranidos": {
+        "name": "Cranidos",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/cranidos.png"
+        }
+    },
+    "rampardos": {
+        "name": "Rampardos",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/rampardos.png"
+        }
+    },
+    "shieldon": {
+        "name": "Shieldon",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/shieldon.png"
+        }
+    },
+    "bastiodon": {
+        "name": "Bastiodon",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/bastiodon.png"
+        }
+    },
+    "burmy": {
+        "name": "Burmy",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/burmy.png"
+        }
+    },
+    "wormadam-plant": {
+        "name": "Wormadam Plant",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/wormadam-plant.png"
+        }
+    },
+    "mothim": {
+        "name": "Mothim",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/mothim.png"
+        }
+    },
+    "combee": {
+        "name": "Combee",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/combee.png"
+        }
+    },
+    "vespiquen": {
+        "name": "Vespiquen",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/vespiquen.png"
+        }
+    },
+    "pachirisu": {
+        "name": "Pachirisu",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/pachirisu.png"
+        }
+    },
+    "buizel": {
+        "name": "Buizel",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/buizel.png"
+        }
+    },
+    "floatzel": {
+        "name": "Floatzel",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/floatzel.png"
+        }
+    },
+    "cherubi": {
+        "name": "Cherubi",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/cherubi.png"
+        }
+    },
+    "cherrim": {
+        "name": "Cherrim",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/cherrim.png"
+        }
+    },
+    "shellos": {
+        "name": "Shellos",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/shellos.png"
+        }
+    },
+    "gastrodon": {
+        "name": "Gastrodon",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/gastrodon.png"
+        }
+    },
+    "ambipom": {
+        "name": "Ambipom",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/ambipom.png"
+        }
+    },
+    "drifloon": {
+        "name": "Drifloon",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/drifloon.png"
+        }
+    },
+    "drifblim": {
+        "name": "Drifblim",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/drifblim.png"
+        }
+    },
+    "buneary": {
+        "name": "Buneary",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/buneary.png"
+        }
+    },
+    "lopunny": {
+        "name": "Lopunny",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/lopunny.png"
+        }
+    },
+    "mismagius": {
+        "name": "Mismagius",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/mismagius.png"
+        }
+    },
+    "honchkrow": {
+        "name": "Honchkrow",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/honchkrow.png"
+        }
+    },
+    "glameow": {
+        "name": "Glameow",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/glameow.png"
+        }
+    },
+    "purugly": {
+        "name": "Purugly",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/purugly.png"
+        }
+    },
+    "chingling": {
+        "name": "Chingling",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/chingling.png"
+        }
+    },
+    "stunky": {
+        "name": "Stunky",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/stunky.png"
+        }
+    },
+    "skuntank": {
+        "name": "Skuntank",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/skuntank.png"
+        }
+    },
+    "bronzor": {
+        "name": "Bronzor",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/bronzor.png"
+        }
+    },
+    "bronzong": {
+        "name": "Bronzong",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/bronzong.png"
+        }
+    },
+    "bonsly": {
+        "name": "Bonsly",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/bonsly.png"
+        }
+    },
+    "mime-jr": {
+        "name": "Mime Jr",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/mime-jr.png"
+        }
+    },
+    "happiny": {
+        "name": "Happiny",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/happiny.png"
+        }
+    },
+    "chatot": {
+        "name": "Chatot",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/chatot.png"
+        }
+    },
+    "spiritomb": {
+        "name": "Spiritomb",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/spiritomb.png"
+        }
+    },
+    "gible": {
+        "name": "Gible",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/gible.png"
+        }
+    },
+    "gabite": {
+        "name": "Gabite",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/gabite.png"
+        }
+    },
+    "garchomp": {
+        "name": "Garchomp",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/garchomp.png"
+        }
+    },
+    "munchlax": {
+        "name": "Munchlax",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/munchlax.png"
+        }
+    },
+    "riolu": {
+        "name": "Riolu",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/riolu.png"
+        }
+    },
+    "lucario": {
+        "name": "Lucario",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/lucario.png"
+        }
+    },
+    "hippopotas": {
+        "name": "Hippopotas",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/hippopotas.png"
+        }
+    },
+    "hippowdon": {
+        "name": "Hippowdon",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/hippowdon.png"
+        }
+    },
+    "skorupi": {
+        "name": "Skorupi",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/skorupi.png"
+        }
+    },
+    "drapion": {
+        "name": "Drapion",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/drapion.png"
+        }
+    },
+    "croagunk": {
+        "name": "Croagunk",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/croagunk.png"
+        }
+    },
+    "toxicroak": {
+        "name": "Toxicroak",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/toxicroak.png"
+        }
+    },
+    "carnivine": {
+        "name": "Carnivine",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/carnivine.png"
+        }
+    },
+    "finneon": {
+        "name": "Finneon",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/finneon.png"
+        }
+    },
+    "lumineon": {
+        "name": "Lumineon",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/lumineon.png"
+        }
+    },
+    "mantyke": {
+        "name": "Mantyke",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/mantyke.png"
+        }
+    },
+    "snover": {
+        "name": "Snover",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/snover.png"
+        }
+    },
+    "abomasnow": {
+        "name": "Abomasnow",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/abomasnow.png"
+        }
+    },
+    "weavile": {
+        "name": "Weavile",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/weavile.png"
+        }
+    },
+    "magnezone": {
+        "name": "Magnezone",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/magnezone.png"
+        }
+    },
+    "lickilicky": {
+        "name": "Lickilicky",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/lickilicky.png"
+        }
+    },
+    "rhyperior": {
+        "name": "Rhyperior",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/rhyperior.png"
+        }
+    },
+    "tangrowth": {
+        "name": "Tangrowth",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/tangrowth.png"
+        }
+    },
+    "electivire": {
+        "name": "Electivire",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/electivire.png"
+        }
+    },
+    "magmortar": {
+        "name": "Magmortar",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/magmortar.png"
+        }
+    },
+    "togekiss": {
+        "name": "Togekiss",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/togekiss.png"
+        }
+    },
+    "yanmega": {
+        "name": "Yanmega",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/yanmega.png"
+        }
+    },
+    "leafeon": {
+        "name": "Leafeon",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/leafeon.png"
+        }
+    },
+    "glaceon": {
+        "name": "Glaceon",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/glaceon.png"
+        }
+    },
+    "gliscor": {
+        "name": "Gliscor",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/gliscor.png"
+        }
+    },
+    "mamoswine": {
+        "name": "Mamoswine",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/mamoswine.png"
+        }
+    },
+    "porygon-z": {
+        "name": "Porygon Z",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/porygon-z.png"
+        }
+    },
+    "gallade": {
+        "name": "Gallade",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/gallade.png"
+        }
+    },
+    "probopass": {
+        "name": "Probopass",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/probopass.png"
+        }
+    },
+    "dusknoir": {
+        "name": "Dusknoir",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/dusknoir.png"
+        }
+    },
+    "froslass": {
+        "name": "Froslass",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/froslass.png"
+        }
+    },
+    "rotom": {
+        "name": "Rotom",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/rotom.png"
+        }
+    },
+    "uxie": {
+        "name": "Uxie",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/uxie.png"
+        }
+    },
+    "mesprit": {
+        "name": "Mesprit",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/mesprit.png"
+        }
+    },
+    "azelf": {
+        "name": "Azelf",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/azelf.png"
+        }
+    },
+    "dialga": {
+        "name": "Dialga",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/dialga.png"
+        }
+    },
+    "palkia": {
+        "name": "Palkia",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/palkia.png"
+        }
+    },
+    "heatran": {
+        "name": "Heatran",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/heatran.png"
+        }
+    },
+    "regigigas": {
+        "name": "Regigigas",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/regigigas.png"
+        }
+    },
+    "giratina-altered": {
+        "name": "Giratina Altered",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/giratina-altered.png"
+        }
+    },
+    "cresselia": {
+        "name": "Cresselia",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/cresselia.png"
+        }
+    },
+    "phione": {
+        "name": "Phione",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/phione.png"
+        }
+    },
+    "manaphy": {
+        "name": "Manaphy",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/manaphy.png"
+        }
+    },
+    "darkrai": {
+        "name": "Darkrai",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/darkrai.png"
+        }
+    },
+    "shaymin-land": {
+        "name": "Shaymin Land",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/shaymin-land.png"
+        }
+    },
+    "arceus": {
+        "name": "Arceus",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/arceus.png"
+        }
+    },
+    "wormadam-sandy": {
+        "name": "Wormadam Sandy",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/wormadam-sandy.png"
+        }
+    },
+    "wormadam-trash": {
+        "name": "Wormadam Trash",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/wormadam-trash.png"
+        }
+    },
+    "rotom-heat": {
+        "name": "Rotom Heat",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/rotom-heat.png"
+        }
+    },
+    "rotom-wash": {
+        "name": "Rotom Wash",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/rotom-wash.png"
+        }
+    },
+    "rotom-frost": {
+        "name": "Rotom Frost",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/rotom-frost.png"
+        }
+    },
+    "rotom-fan": {
+        "name": "Rotom Fan",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/rotom-fan.png"
+        }
+    },
+    "rotom-mow": {
+        "name": "Rotom Mow",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/rotom-mow.png"
+        }
+    },
+    "giratina-origin": {
+        "name": "Giratina Origin",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/giratina-origin.png"
+        }
+    },
+    "shaymin-sky": {
+        "name": "Shaymin Sky",
+        "sprites": {
+            "platinum": "/sprites/pokemon/platinum/shaymin-sky.png"
+        }
     }
 }

@@ -27,5 +27,16 @@ export interface GameRun {
 
 export interface Pokemon {
     name: string;
-    sprite: string;
+    sprites: Record<string, string>;
+}
+
+export interface SpriteVariant {
+    id: string;
+    label: string;
+    generation: number;
+}
+
+export interface CheckboxOption<T> {
+    label: string;
+    value: T;
 }

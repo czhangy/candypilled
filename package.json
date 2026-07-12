@@ -8,10 +8,10 @@
         "start": "next start",
         "lint": "npx eslint",
         "format": "prettier --write .",
-        "gen:component": "tsx src/lib/scripts/generators/generateComponent.ts",
-        "gen:class": "tsx src/lib/scripts/generators/generateClass.ts",
-        "gen:icon": "tsx src/lib/scripts/generators/generateIcon.ts",
-        "sync:pokemon": "tsx src/lib/scripts/pokeapi/fetch-pokemon.ts",
+        "gen:component": "tsx src/lib/scripts/generators/generate-component.ts",
+        "gen:class": "tsx src/lib/scripts/generators/generate-class.ts",
+        "gen:icon": "tsx src/lib/scripts/generators/generate-icon.ts",
+        "pokeapi": "tsx src/lib/scripts/pokeapi/cli.ts",
         "prepare": "husky"
     },
     "lint-staged": {

@@ -8,12 +8,14 @@ interface StarterSelectProps {
     onSelect: (starter: string) => void;
     selected: string | null;
     starters: string[];
+    variant: string;
 }
 
 const StarterSelect: React.FC<StarterSelectProps> = ({
     onSelect,
     selected,
     starters,
+    variant,
 }) => {
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -32,7 +34,7 @@ const StarterSelect: React.FC<StarterSelectProps> = ({
             <span className={styles.label}>Starter:</span>
             <div className={styles.starters}>
                 {starters.map((starter) => {
-                    const pokemon = PokemonHelpers.get(starter);
+                    const sprite = PokemonHelpers.getSprite(starter, variant);
 
                     return (
                         <button
@@ -47,11 +49,11 @@ const StarterSelect: React.FC<StarterSelectProps> = ({
                             onClick={() => handleStarterClick(starter)}
                             type="button"
                         >
-                            {pokemon ? (
+                            {sprite ? (
                                 <Image
                                     alt={starter}
                                     height={96}
-                                    src={pokemon.sprite}
+                                    src={sprite}
                                     width={96}
                                 />
                             ) : (

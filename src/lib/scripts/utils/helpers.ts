@@ -3,6 +3,7 @@ import path from 'path';
 
 const ANSI_RED = '\x1b[31m';
 const ANSI_GREEN = '\x1b[32m';
+const ANSI_YELLOW = '\x1b[33m';
 const ANSI_RESET = '\x1b[0m';
 
 const PROJECT_NAME = 'candypilled';
@@ -17,6 +18,10 @@ export const NOT_PASCAL_CASE = 'Names must be defined in PascalCase.';
 
 export const logSuccess = (message: string): void => {
     console.log(`${ANSI_GREEN}${message}${ANSI_RESET}`);
+};
+
+export const logWarning = (message: string): void => {
+    console.log(`${ANSI_YELLOW}${message}${ANSI_RESET}`);
 };
 
 export const handleException = (error: unknown): never => {

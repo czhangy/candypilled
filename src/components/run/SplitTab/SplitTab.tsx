@@ -2,6 +2,7 @@
 
 import { Game, Run } from '@/lib/static/types';
 import RunStoreHelpers from '@/lib/utils/RunStoreHelpers';
+import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './SplitTab.module.scss';
 import StarterSelect from './StarterSelect/StarterSelect';
 
@@ -37,6 +38,7 @@ const SplitTab: React.FC<SplitTabProps> = ({ game, run }) => {
                     onSelect={handleStarterSelect}
                     selected={run.starter}
                     starters={game.starters}
+                    variant={StringHelpers.toSlug(game.name)}
                 />
             )}
         </div>
