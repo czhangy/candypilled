@@ -1,0 +1,88 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.run-entry {
+    align-items: center;
+    background: rgba($foreground, 0.03);
+    border: 1px solid $border-subtle;
+    border-radius: 0.5rem;
+    color: $foreground;
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    text-decoration: none;
+    transition: background 0.2s ease;
+
+    .logo {
+        flex-shrink: 0;
+        height: 56px;
+        object-fit: contain;
+        width: auto;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+
+        .line {
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem 1rem;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid $border-subtle;
+            margin: 0.625rem 0;
+            width: 100%;
+        }
+
+        .name {
+            @include mono-label;
+
+            font-size: 1.25rem;
+        }
+
+        .attempt,
+        .split,
+        .boxes,
+        .deaths,
+        .personal-best,
+        .hall-of-fame {
+            color: $text-mid;
+            font-family: $font-mono;
+            font-size: 0.9rem;
+        }
+
+        .personal-best,
+        .hall-of-fame {
+            color: $gold;
+        }
+
+        .split,
+        .boxes,
+        .deaths,
+        .hall-of-fame {
+            align-items: center;
+            display: inline-flex;
+            gap: 0.375rem;
+
+            svg {
+                height: 1rem;
+                width: 1rem;
+            }
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background: rgba($foreground, 0.06);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}

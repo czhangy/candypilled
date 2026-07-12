@@ -3,21 +3,16 @@
 
 .footer {
     align-items: center;
-    bottom: 0;
     display: flex;
     justify-content: space-between;
-    left: 0;
     margin: 0 auto;
     max-width: $max-content-width;
     padding: 1.5rem;
-    pointer-events: none;
-    position: fixed;
-    right: 0;
+    width: 100%;
 
     .credit {
         color: $text-dim;
         font-family: $font-mono;
-        pointer-events: auto;
 
         .author {
             color: $accent;
@@ -26,7 +21,6 @@
 
     .link {
         color: $text-dim;
-        pointer-events: auto;
         transition: color 0.2s ease;
 
         svg {
