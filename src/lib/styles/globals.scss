@@ -8,3 +8,25 @@
     margin: 0;
     padding: 0;
 }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: $background;
+    color: $foreground;
+    display: flex;
+    flex-direction: column;
+    font-family: $font-mono;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+.page-main {
+    @include full-height;
+
+    display: flex;
+    flex-direction: column;
+}

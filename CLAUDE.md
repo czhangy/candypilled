@@ -44,7 +44,7 @@ Pre-commit hooks via Husky/lint-staged automatically run ESLint, Prettier, and S
 
 - `globals.scss` — body defaults and font-smoothing
 - `_constants.scss` — SCSS variables (`$accent`, `$background`, `$foreground`, `$font-mono`, `$border-subtle`, `$text-dim`, `$text-mid`)
-- `_mixins.scss` — reusable declaration blocks (`fill-parent`, `mono-label`, `game-button`, `focus-glow`)
+- `_mixins.scss` — reusable declaration blocks (`full-height`, `mono-label`)
 - `index.scss` — barrel that forwards constants and mixins
 
 ### Components
@@ -159,11 +159,10 @@ Before writing a raw CSS value in a component SCSS file, check whether it belong
 
 **Available mixins:**
 
-- `fill-parent` — `position: absolute; inset: 0`
 - `full-height` — `flex: 1`, fills the remaining height in the page flex column (`body → .page-main → page component`); use on the outermost element of every full-page component
 - `mono-label` — `font-family: $font-mono; font-weight: 700` — use for all bold monospace text (titles, nav items, button labels)
-- `game-button` — bordered interactive button with hover accent transition — use for any standalone link or action button in the site UI
-- `focus-glow` — `border-color: $accent` + `box-shadow` accent glow — use in `:focus` blocks on interactive input elements
+
+Add new mixins here only once they're actually used by a component — don't pre-declare mixins for hypothetical future UI.
 
 ### SCSS nesting
 

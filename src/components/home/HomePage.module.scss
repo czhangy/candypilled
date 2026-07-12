@@ -1,0 +1,30 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.home-page {
+    @include full-height;
+
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5rem 1.5rem 1.5rem 15%;
+
+    .title {
+        @include mono-label;
+
+        color: $foreground;
+        font-size: 2.5rem;
+        letter-spacing: -0.02em;
+    }
+
+    .tagline {
+        color: $text-mid;
+        font-family: $font-mono;
+        margin-top: 0.5rem;
+    }
+
+    @media (width <= 768px) {
+        padding: 1rem;
+    }
+}
