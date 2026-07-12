@@ -21,7 +21,7 @@ const HomePage: React.FC = () => {
                     <div className={styles.text}>
                         <h1 className={styles.title}>Candypilled</h1>
                         <p className={styles.tagline}>A Nuzlocke tool.</p>
-                        <Link className={styles.load} href="/history">
+                        <Link className={styles.load} href="/runs">
                             Load
                         </Link>
                     </div>

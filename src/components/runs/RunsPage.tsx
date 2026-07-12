@@ -1,11 +1,11 @@
-import styles from './HistoryPage.module.scss';
+import styles from './RunsPage.module.scss';
 
-const HistoryPage: React.FC = () => {
+const RunsPage: React.FC = () => {
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
-    return <div className={styles['history-page']}></div>;
+    return <div className={styles['runs-page']}></div>;
 };
 
-export default HistoryPage;
+export default RunsPage;
