@@ -88,6 +88,23 @@ const PLATINUM: Game = {
                 {
                     name: 'Route 204 South',
                     map: route204South,
+                    battles: [
+                        {
+                            name: 'Sarah',
+                            team: [
+                                {
+                                    ability: 'Rivalry',
+                                    level: 7,
+                                    moves: ['Tackle', 'Leer'],
+                                    name: 'Shinx',
+                                    nature: Nature.Hardy,
+                                },
+                            ],
+                            trainerClass: 'Lass',
+                            x: 72.3,
+                            y: 21.9,
+                        },
+                    ],
                 },
                 {
                     name: 'Ravaged Path',

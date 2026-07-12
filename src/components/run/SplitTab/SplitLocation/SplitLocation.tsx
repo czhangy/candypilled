@@ -22,14 +22,6 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     variant,
 }) => {
     // -------------------------------------------------------------------------
-    // STATE
-    // -------------------------------------------------------------------------
-
-    // TODO: remove dev default-open once map/marker work is done
-    const [isOpen, setIsOpen] = useState(location.name === 'Route 202');
-    const [selectedBattle, setSelectedBattle] = useState<Battle>();
-
-    // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
@@ -45,6 +37,25 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const isBattleDefeated = (battle: Battle): boolean =>
         defeatedBattles.includes(getBattleId(battle));
 
+    const getDefaultSelectedBattle = (): Battle | undefined => {
+        const battles = location.battles ?? [];
+
+        return (
+            battles.find((battle) => !isBattleDefeated(battle)) ??
+            battles[battles.length - 1]
+        );
+    };
+
+    // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    // TODO: remove dev default-open once map/marker work is done
+    const [isOpen, setIsOpen] = useState(location.name === 'Route 202');
+    const [selectedBattle, setSelectedBattle] = useState<Battle | undefined>(
+        getDefaultSelectedBattle
+    );
+
     // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
@@ -54,9 +65,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     };
 
     const handleBattleClick = (battle: Battle): void => {
-        setSelectedBattle((previousBattle) =>
-            previousBattle === battle ? undefined : battle
-        );
+        setSelectedBattle(battle);
     };
 
     const handleBattleToggleDefeated = (battle: Battle): void => {
