@@ -4,15 +4,16 @@ import BoxIcon from '@/lib/icons/BoxIcon';
 import CrownIcon from '@/lib/icons/CrownIcon';
 import RunIcon from '@/lib/icons/RunIcon';
 import SkullIcon from '@/lib/icons/SkullIcon';
-import { Run } from '@/lib/static/types';
+import { Game, Run } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './RunEntry.module.scss';
 
 interface RunEntryProps {
-    run: Run;
+    game: Game;
+    run: Run | null;
 }
 
-const RunEntry: React.FC<RunEntryProps> = ({ run }) => {
+const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -20,41 +21,41 @@ const RunEntry: React.FC<RunEntryProps> = ({ run }) => {
     return (
         <Link
             className={styles['run-entry']}
-            href={`/runs/${StringHelpers.toSlug(run.name)}`}
+            href={`/runs/${StringHelpers.toSlug(game.name)}`}
         >
             <Image
-                alt={`${run.name} logo`}
+                alt={`${game.name} logo`}
                 className={styles.logo}
                 height={56}
-                src={run.logo}
+                src={game.logo}
                 width={112}
             />
             <div className={styles.info}>
                 <div className={styles.line}>
-                    <span className={styles.name}>{run.name}</span>
+                    <span className={styles.name}>{game.name}</span>
                     <span className={styles.attempt}>
-                        Attempt #{run.attempt}
+                        Attempt #{run?.attempt ?? 0}
                     </span>
                 </div>
                 <div className={styles.line}>
                     <span className={styles.split}>
                         <RunIcon />
-                        {run.split}
+                        {run?.split ?? '-'}
                     </span>
                     <span className={styles.boxes}>
                         <BoxIcon />
-                        {run.boxCount}
+                        {run?.boxCount ?? '-'}
                     </span>
                     <span className={styles.deaths}>
                         <SkullIcon />
-                        {run.deathCount}
+                        {run?.deathCount ?? '-'}
                     </span>
                 </div>
                 <hr className={styles.divider} />
                 <div className={styles.line}>
-                    {run.hallOfFameCount === 0 ? (
+                    {!run || run.hallOfFameCount === 0 ? (
                         <span className={styles['personal-best']}>
-                            PB: {run.personalBest}
+                            PB: {run?.personalBest ?? 'N/A'}
                         </span>
                     ) : (
                         <span className={styles['hall-of-fame']}>
