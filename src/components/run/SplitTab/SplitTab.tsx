@@ -1,7 +1,7 @@
 'use client';
 
 import { Game, Run } from '@/lib/static/types';
-import RunStoreHelpers from '@/lib/utils/RunStoreHelpers';
+import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import SplitLocation from './SplitLocation/SplitLocation';
 import styles from './SplitTab.module.scss';
@@ -25,7 +25,7 @@ const SplitTab: React.FC<SplitTabProps> = ({ game, run }) => {
     // -------------------------------------------------------------------------
 
     const handleStarterSelect = (starter: string): void => {
-        RunStoreHelpers.saveRun(game, { ...run, starter });
+        LocalStorageHelpers.saveRun(game, { ...run, starter });
     };
 
     // -------------------------------------------------------------------------

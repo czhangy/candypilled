@@ -6,5 +6,5 @@ entry linking to that game's dedicated run page at `/runs/<slug>`.
 ## Computations
 
 - `gameRuns` — the known games paired with their active run, read from
-  `localStorage` (keyed by each game's slug) via `RunStoreHelpers`. Games
+  `localStorage` (keyed by each game's slug) via `LocalStorageHelpers`. Games
   without stored run data are omitted.

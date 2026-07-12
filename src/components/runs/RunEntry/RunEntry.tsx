@@ -7,7 +7,7 @@ import CrownIcon from '@/lib/icons/CrownIcon';
 import RunIcon from '@/lib/icons/RunIcon';
 import SkullIcon from '@/lib/icons/SkullIcon';
 import { Game, Run } from '@/lib/static/types';
-import RunStoreHelpers from '@/lib/utils/RunStoreHelpers';
+import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './RunEntry.module.scss';
 
@@ -42,7 +42,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             starter: null,
         };
 
-        RunStoreHelpers.saveRun(game, newRun);
+        LocalStorageHelpers.saveRun(game, newRun);
         router.push(`/runs/${StringHelpers.toSlug(game.name)}`);
     };
 

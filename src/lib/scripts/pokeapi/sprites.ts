@@ -6,7 +6,7 @@ import { Pokemon, SpriteVariant } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const POKEAPI_SPECIES_URL = 'https://pokeapi.co/api/v2/pokemon-species';
-const DATA_PATH = path.join('src', 'lib', 'static', 'pokemon.json');
+const DATA_PATH = path.join('src', 'lib', 'pokemon', 'pokemon.json');
 const FETCH_DELAY_MS = 75;
 
 interface DexRange {

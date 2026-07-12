@@ -1,4 +1,4 @@
-import { POKEMON } from '@/lib/static/pokemon';
+import { POKEMON } from '@/lib/pokemon/pokemon';
 import { Pokemon } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
