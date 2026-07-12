@@ -29,4 +29,7 @@ body {
 
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
+    max-width: $max-content-width;
+    width: 100%;
 }
