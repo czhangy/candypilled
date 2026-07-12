@@ -15,7 +15,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({ location }) => {
     // STATE
     // -------------------------------------------------------------------------
 
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
 
     // -------------------------------------------------------------------------
     // HANDLERS

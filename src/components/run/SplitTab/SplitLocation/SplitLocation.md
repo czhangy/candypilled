@@ -15,7 +15,7 @@ trainers and an encounter table for that location.
 
 | State    | Type      | Initial value | Description                                |
 | -------- | --------- | ------------- | ------------------------------------------ |
-| `isOpen` | `boolean` | `true`        | Whether the location's content is expanded |
+| `isOpen` | `boolean` | `false`       | Whether the location's content is expanded |
 
 ## Handlers
 
