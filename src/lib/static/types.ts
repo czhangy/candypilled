@@ -1,7 +1,12 @@
+export interface Split {
+    name: string;
+}
+
 export interface Game {
     name: string;
     logo: string;
     generation: number;
+    splits: Split[];
 }
 
 export interface Run {

@@ -1,5 +1,5 @@
 import { GAMES } from '@/lib/static/constants';
-import { GameRun, Run } from '@/lib/static/types';
+import { Game, GameRun, Run } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 export default class RunStoreHelpers {
@@ -49,5 +49,12 @@ export default class RunStoreHelpers {
 
     static getServerSnapshot(): GameRun[] {
         return RunStoreHelpers.EMPTY_SNAPSHOT;
+    }
+
+    static saveRun(game: Game, run: Run): void {
+        localStorage.setItem(
+            StringHelpers.toSlug(game.name),
+            JSON.stringify(run)
+        );
     }
 }
