@@ -3,12 +3,12 @@
 import { useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import Tabs from '@/components/common/Tabs/Tabs';
 import { GAMES } from '@/lib/static/constants';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './RunPage.module.scss';
 import SplitTab from './SplitTab/SplitTab';
+import Tabs from './Tabs/Tabs';
 
 interface RunPageProps {
     slug: string;

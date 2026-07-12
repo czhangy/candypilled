@@ -15,7 +15,8 @@ const SplitLocation: React.FC<SplitLocationProps> = ({ location }) => {
     // STATE
     // -------------------------------------------------------------------------
 
-    const [isOpen, setIsOpen] = useState(false);
+    // TODO: remove dev default-open once map/marker work is done
+    const [isOpen, setIsOpen] = useState(location.name === 'Route 202');
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -49,21 +50,13 @@ const SplitLocation: React.FC<SplitLocationProps> = ({ location }) => {
                     <ChevronIcon />
                 </span>
             </button>
-            {isOpen && (
+            {isOpen && location.map && (
                 <div className={styles.content}>
-                    {location.map ? (
-                        <LocationMap
-                            alt={`${location.name} map`}
-                            height={location.map.height}
-                            src={location.map.src}
-                            trainers={location.trainers}
-                            width={location.map.width}
-                        />
-                    ) : (
-                        <p className={styles.placeholder}>
-                            Map and encounter table coming soon.
-                        </p>
-                    )}
+                    <LocationMap
+                        alt={`${location.name} map`}
+                        map={location.map}
+                        trainers={location.trainers}
+                    />
                 </div>
             )}
         </div>

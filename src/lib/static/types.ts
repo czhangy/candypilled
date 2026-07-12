@@ -1,8 +1,4 @@
-export interface LocationMapImage {
-    src: string;
-    width: number;
-    height: number;
-}
+import { StaticImageData } from 'next/image';
 
 export interface Trainer {
     name: string;
@@ -13,8 +9,8 @@ export interface Trainer {
 
 export interface Location {
     name: string;
-    map?: LocationMapImage;
-    trainers: Trainer[];
+    map?: StaticImageData;
+    trainers?: Trainer[];
 }
 
 export interface Split {

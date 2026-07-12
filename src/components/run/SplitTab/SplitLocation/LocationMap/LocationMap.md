@@ -6,10 +6,8 @@ added here in future work.
 
 ## Props
 
-| Prop       | Type        | Required | Default | Description                       |
-| ---------- | ----------- | -------- | ------- | --------------------------------- |
-| `src`      | `string`    | Yes      | -       | Path to the map image             |
-| `alt`      | `string`    | Yes      | -       | Alt text for the map image        |
-| `width`    | `number`    | Yes      | -       | Intrinsic width of the map image  |
-| `height`   | `number`    | Yes      | -       | Intrinsic height of the map image |
-| `trainers` | `Trainer[]` | Yes      | -       | Trainers to mark on the map       |
+| Prop       | Type              | Required | Default | Description                                              |
+| ---------- | ----------------- | -------- | ------- | -------------------------------------------------------- |
+| `map`      | `StaticImageData` | Yes      | -       | Statically imported map image, with intrinsic dimensions |
+| `alt`      | `string`          | Yes      | -       | Alt text for the map image                               |
+| `trainers` | `Trainer[]`       | No       | `[]`    | Trainers to mark on the map                              |

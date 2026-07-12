@@ -1,3 +1,10 @@
+import {
+    oreburghGate,
+    oreburghGym,
+    route202,
+    route203,
+    route204South,
+} from '@/lib/assets/platinum/locations';
 import { Game } from '@/lib/static/types';
 
 const PLATINUM: Game = {
@@ -11,38 +18,16 @@ const PLATINUM: Game = {
             locations: [
                 {
                     name: 'Twinleaf Town',
-                    map: {
-                        src: '/platinum/locations/twinleaf_town.png',
-                        width: 496,
-                        height: 377,
-                    },
-                    trainers: [],
                 },
                 {
                     name: 'Route 201',
-                    map: {
-                        src: '/platinum/locations/route_201.png',
-                        width: 1040,
-                        height: 352,
-                    },
-                    trainers: [],
                 },
                 {
                     name: 'Sandgem Town',
-                    map: {
-                        src: '/platinum/locations/sandgem_town.png',
-                        width: 496,
-                        height: 402,
-                    },
-                    trainers: [],
                 },
                 {
                     name: 'Route 202',
-                    map: {
-                        src: '/platinum/locations/route_202.png',
-                        width: 610,
-                        height: 452,
-                    },
+                    map: route202,
                     trainers: [
                         {
                             name: 'Tristan',
@@ -66,57 +51,28 @@ const PLATINUM: Game = {
                 },
                 {
                     name: 'Jubilife City',
-                    map: {
-                        src: '/platinum/locations/jubilife_city.png',
-                        width: 1056,
-                        height: 798,
-                    },
-                    trainers: [],
                 },
                 {
                     name: 'Route 204 South',
-                    map: {
-                        src: '/platinum/locations/route_204_south.png',
-                        width: 507,
-                        height: 411,
-                    },
-                    trainers: [],
+                    map: route204South,
                 },
                 {
                     name: 'Ravaged Path',
-                    map: {
-                        src: '/platinum/locations/ravaged_path.png',
-                        width: 528,
-                        height: 672,
-                    },
-                    trainers: [],
                 },
                 {
                     name: 'Route 203',
-                    map: {
-                        src: '/platinum/locations/route_203.png',
-                        width: 976,
-                        height: 368,
-                    },
-                    trainers: [],
+                    map: route203,
                 },
                 {
                     name: 'Oreburgh Gate',
-                    map: {
-                        src: '/platinum/locations/oreburgh_gate.png',
-                        width: 451,
-                        height: 331,
-                    },
-                    trainers: [],
+                    map: oreburghGate,
                 },
                 {
                     name: 'Oreburgh City',
-                    map: {
-                        src: '/platinum/locations/oreburgh_city.png',
-                        width: 1024,
-                        height: 832,
-                    },
-                    trainers: [],
+                },
+                {
+                    name: 'Oreburgh Gym',
+                    map: oreburghGym,
                 },
             ],
         },
