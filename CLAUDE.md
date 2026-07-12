@@ -38,7 +38,7 @@ Pre-commit hooks via Husky/lint-staged automatically run ESLint, Prettier, and S
 - `@/*` → `src/*`
 - `@/styles/*` → `src/lib/styles/*`
 
-**Routing:** File-based in `src/app/` using App Router. Root layout (`src/app/layout.tsx`) loads Geist fonts and imports `src/lib/styles/globals.scss` for global styles.
+**Routing:** File-based in `src/app/` using App Router. Root layout (`src/app/layout.tsx`) loads the JetBrains Mono font and imports `src/lib/styles/globals.scss` for global styles.
 
 **Global styles** live in `src/lib/styles/`:
 
@@ -144,7 +144,7 @@ style={{ '--color': value } as React.CSSProperties}
 ## Code Style
 
 - **Formatting:** 4-space indentation, 80-char line width, single quotes, trailing commas (ES5)
-- **SCSS constants:** `$accent`, `$background`, `$foreground` defined in `_constants.scss` — use these in component SCSS files, not CSS `var()` calls. CSS variables are only used where runtime values are unavoidable (e.g. `var(--font-geist-mono)` set by Next.js at runtime).
+- **SCSS constants:** `$accent`, `$background`, `$foreground` defined in `_constants.scss` — use these in component SCSS files, not CSS `var()` calls. CSS variables are only used where runtime values are unavoidable (e.g. `var(--font-mono)` set by Next.js at runtime).
 - **CSS Modules access:** Use `styles.className` for single-word class names, `styles['hyphenated-name']` for names containing hyphens
 
 ### SCSS mixins and constants
