@@ -69,7 +69,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     <div className={styles.line}>
                         <span className={styles.split}>
                             <RunIcon />
-                            {run?.split ?? '-'}
+                            {run?.split ? `${run.split} Split` : '-'}
                         </span>
                         <span className={styles.boxes}>
                             <BoxIcon />
@@ -84,7 +84,10 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     <div className={styles.line}>
                         {!run || run.hallOfFameCount === 0 ? (
                             <span className={styles['personal-best']}>
-                                PB: {run?.personalBest ?? 'N/A'}
+                                PB:{' '}
+                                {run?.personalBest && run.personalBest !== 'N/A'
+                                    ? `${run.personalBest} Split`
+                                    : 'N/A'}
                             </span>
                         ) : (
                             <span className={styles['hall-of-fame']}>
