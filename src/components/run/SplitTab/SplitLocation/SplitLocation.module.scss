@@ -1,0 +1,52 @@
+@use 'sass:color';
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.split-location {
+    border: 1px solid $border-subtle;
+    border-radius: 0.5rem;
+    overflow: hidden;
+
+    .header {
+        @include mono-label;
+
+        align-items: center;
+        background: color.adjust($background, $lightness: 4%);
+        border: none;
+        color: $foreground;
+        cursor: pointer;
+        display: flex;
+        font-size: 1rem;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+        text-align: left;
+        width: 100%;
+
+        .name {
+            letter-spacing: 0.03em;
+        }
+
+        .chevron {
+            color: $text-dim;
+            display: flex;
+            height: 1rem;
+            transition: transform 0.2s ease;
+            width: 1rem;
+
+            &--open {
+                transform: rotate(180deg);
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
+        }
+    }
+
+    .content {
+        border-top: 1px solid $border-subtle;
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+    }
+}

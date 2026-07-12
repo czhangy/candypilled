@@ -1,8 +1,9 @@
 'use client';
 
 import { Game, Run } from '@/lib/static/types';
-import RunStoreHelpers from '@/lib/utils/RunStoreHelpers';
+import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
+import SplitLocation from './SplitLocation/SplitLocation';
 import styles from './SplitTab.module.scss';
 import StarterSelect from './StarterSelect/StarterSelect';
 
@@ -17,13 +18,14 @@ const SplitTab: React.FC<SplitTabProps> = ({ game, run }) => {
     // -------------------------------------------------------------------------
 
     const isFirstSplit = run.split === game.splits[0].name;
+    const currentSplit = game.splits.find((split) => split.name === run.split);
 
     // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
 
     const handleStarterSelect = (starter: string): void => {
-        RunStoreHelpers.saveRun(game, { ...run, starter });
+        LocalStorageHelpers.saveRun(game, { ...run, starter });
     };
 
     // -------------------------------------------------------------------------
@@ -41,6 +43,11 @@ const SplitTab: React.FC<SplitTabProps> = ({ game, run }) => {
                     variant={StringHelpers.toSlug(game.name)}
                 />
             )}
+            <div className={styles.locations}>
+                {currentSplit?.locations.map((location) => (
+                    <SplitLocation key={location.name} location={location} />
+                ))}
+            </div>
         </div>
     );
 };

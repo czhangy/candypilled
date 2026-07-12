@@ -1,5 +1,21 @@
+import { StaticImageData } from 'next/image';
+
+export interface Trainer {
+    name: string;
+    trainerClass: string;
+    x: number;
+    y: number;
+}
+
+export interface Location {
+    name: string;
+    map?: StaticImageData;
+    trainers?: Trainer[];
+}
+
 export interface Split {
     name: string;
+    locations: Location[];
 }
 
 export interface Game {
