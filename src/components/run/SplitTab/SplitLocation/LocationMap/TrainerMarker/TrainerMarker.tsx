@@ -1,9 +1,11 @@
 import CheckIcon from '@/lib/icons/CheckIcon';
+import CrownIcon from '@/lib/icons/CrownIcon';
 import { Battle } from '@/lib/static/types';
 import styles from './TrainerMarker.module.scss';
 
 interface TrainerMarkerProps {
     isDefeated: boolean;
+    isNextPersonalBest: boolean;
     isSelected: boolean;
     mapHeight: number;
     mapWidth: number;
@@ -13,6 +15,7 @@ interface TrainerMarkerProps {
 
 const TrainerMarker: React.FC<TrainerMarkerProps> = ({
     isDefeated,
+    isNextPersonalBest,
     isSelected,
     mapHeight,
     mapWidth,
@@ -70,6 +73,11 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
             {isDefeated && (
                 <span className={styles['trainer-marker__check']}>
                     <CheckIcon />
+                </span>
+            )}
+            {!isDefeated && isNextPersonalBest && (
+                <span className={styles['trainer-marker__crown']}>
+                    <CrownIcon />
                 </span>
             )}
         </button>

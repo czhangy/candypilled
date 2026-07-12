@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { Battle, Game, Location, Run } from '@/lib/static/types';
+import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import BattleCard from './BattleCard/BattleCard';
 import LocationMap from './LocationMap/LocationMap';
@@ -26,16 +27,18 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // -------------------------------------------------------------------------
 
     const defeatedBattles = run.defeatedBattles;
+    const nextPersonalBestBattleName =
+        BattleProgressHelpers.getNextRequiredBattleName(game, run.personalBest);
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const getBattleId = (battle: Battle): string =>
-        `${location.name}:${battle.name}`;
-
     const isBattleDefeated = (battle: Battle): boolean =>
-        defeatedBattles.includes(getBattleId(battle));
+        defeatedBattles.includes(battle.name);
+
+    const isBattleNextPersonalBest = (battle: Battle): boolean =>
+        battle.name === nextPersonalBestBattleName;
 
     const getDefaultSelectedBattle = (): Battle | undefined => {
         const battles = location.battles ?? [];
@@ -54,7 +57,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // -------------------------------------------------------------------------
 
     // TODO: remove dev default-open once map/marker work is done
-    const [isOpen, setIsOpen] = useState(location.name === 'Route 202');
+    const [isOpen, setIsOpen] = useState(location.name === 'Route 203');
     const [selectedBattle, setSelectedBattle] = useState<Battle | undefined>(
         getDefaultSelectedBattle
     );
@@ -72,14 +75,38 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     };
 
     const handleBattleToggleDefeated = (battle: Battle): void => {
-        const battleId = getBattleId(battle);
+        const wasDefeated = defeatedBattles.includes(battle.name);
 
-        LocalStorageHelpers.saveRun(game, {
+        const updatedRun: Run = {
             ...run,
-            defeatedBattles: defeatedBattles.includes(battleId)
-                ? defeatedBattles.filter((id) => id !== battleId)
-                : [...defeatedBattles, battleId],
-        });
+            defeatedBattles: wasDefeated
+                ? defeatedBattles.filter((name) => name !== battle.name)
+                : [...defeatedBattles, battle.name],
+        };
+
+        if (!wasDefeated && !battle.isOptional) {
+            const candidatePosition = BattleProgressHelpers.getPosition(
+                game,
+                battle.name
+            );
+            const personalBestPosition = BattleProgressHelpers.getPosition(
+                game,
+                run.personalBest
+            );
+
+            if (
+                candidatePosition &&
+                (!personalBestPosition ||
+                    BattleProgressHelpers.isFarther(
+                        candidatePosition,
+                        personalBestPosition
+                    ))
+            ) {
+                updatedRun.personalBest = battle.name;
+            }
+        }
+
+        LocalStorageHelpers.saveRun(game, updatedRun);
     };
 
     // -------------------------------------------------------------------------
@@ -112,6 +139,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                         alt={`${location.name} map`}
                         battles={location.battles}
                         isBattleDefeated={isBattleDefeated}
+                        isBattleNextPersonalBest={isBattleNextPersonalBest}
                         map={location.map}
                         onBattleClick={handleBattleClick}
                         selectedBattle={selectedBattle}

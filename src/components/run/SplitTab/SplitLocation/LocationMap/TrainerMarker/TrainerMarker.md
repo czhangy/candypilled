@@ -5,17 +5,20 @@ a trainer stands. Positioned and sized as a percentage of the map's width
 and height so it stays aligned with the artwork at any render size.
 Defeated trainers render green instead of the game's accent color, with
 a checkmark badge poking out of the top-right corner of the rectangle.
+The trainer that would extend the run's personal best, if defeated next,
+shows a crown badge in the same spot instead.
 
 ## Props
 
-| Prop         | Type                        | Required | Default | Description                                        |
-| ------------ | --------------------------- | -------- | ------- | -------------------------------------------------- |
-| `trainer`    | `Battle`                    | Yes      | -       | The battle this marker represents and positions    |
-| `mapWidth`   | `number`                    | Yes      | -       | Intrinsic width of the map image, in pixels        |
-| `mapHeight`  | `number`                    | Yes      | -       | Intrinsic height of the map image, in pixels       |
-| `isDefeated` | `boolean`                   | No       | `false` | Whether this trainer has already been defeated     |
-| `isSelected` | `boolean`                   | No       | `false` | Whether this trainer is the currently selected one |
-| `onClick`    | `(trainer: Battle) => void` | Yes      | -       | Called with this marker's battle when clicked      |
+| Prop                 | Type                        | Required | Default | Description                                             |
+| -------------------- | --------------------------- | -------- | ------- | ------------------------------------------------------- |
+| `trainer`            | `Battle`                    | Yes      | -       | The battle this marker represents and positions         |
+| `mapWidth`           | `number`                    | Yes      | -       | Intrinsic width of the map image, in pixels             |
+| `mapHeight`          | `number`                    | Yes      | -       | Intrinsic height of the map image, in pixels            |
+| `isDefeated`         | `boolean`                   | No       | `false` | Whether this trainer has already been defeated          |
+| `isNextPersonalBest` | `boolean`                   | No       | `false` | Whether defeating this trainer next would extend the PB |
+| `isSelected`         | `boolean`                   | No       | `false` | Whether this trainer is the currently selected one      |
+| `onClick`            | `(trainer: Battle) => void` | Yes      | -       | Called with this marker's battle when clicked           |
 
 ## Computations
 

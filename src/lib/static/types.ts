@@ -1,7 +1,7 @@
 import { StaticImageData } from 'next/image';
 import { FieldCondition, Nature } from '@/lib/static/enums';
 
-export interface StatValues {
+interface StatValues {
     atk: number;
     def: number;
     hp: number;
@@ -10,7 +10,7 @@ export interface StatValues {
     spe: number;
 }
 
-export interface BattlePokemon {
+interface BattlePokemon {
     ability: string;
     evs?: number | StatValues;
     heldItem?: string;
@@ -21,7 +21,7 @@ export interface BattlePokemon {
     nature?: Nature;
 }
 
-export interface BattleItem {
+interface BattleItem {
     count: number;
     name: string;
 }
@@ -43,7 +43,7 @@ export interface Location {
     battles?: Battle[];
 }
 
-export interface Split {
+interface Split {
     name: string;
     locations: Location[];
 }
@@ -68,23 +68,7 @@ export interface Run {
     starter: string | null;
 }
 
-export interface GameRun {
-    game: Game;
-    run: Run | null;
-}
-
 export interface PokemonData {
     name: string;
     sprites: Record<string, string>;
-}
-
-export interface SpriteVariant {
-    id: string;
-    label: string;
-    generation: number;
-}
-
-export interface CheckboxOption<T> {
-    label: string;
-    value: T;
 }

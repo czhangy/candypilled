@@ -120,6 +120,22 @@ const PLATINUM: Game = {
                             x: 22.9,
                             y: 57.5,
                         },
+                        {
+                            isOptional: true,
+                            trainerClass: 'Lass',
+                            name: 'Samantha',
+                            team: [
+                                {
+                                    name: 'Budew',
+                                    level: 7,
+                                    moves: ['Absorb', 'Growth', 'Water Sport'],
+                                    ability: 'Natural Cure',
+                                    nature: Nature.Docile,
+                                },
+                            ],
+                            x: 35.7,
+                            y: 27.5,
+                        },
                     ],
                 },
                 {
@@ -128,6 +144,47 @@ const PLATINUM: Game = {
                 {
                     name: 'Route 203',
                     map: route203,
+                    battles: [
+                        {
+                            isOptional: true,
+                            trainerClass: 'Youngster',
+                            name: 'Michael',
+                            team: [
+                                {
+                                    name: 'Kricketot',
+                                    level: 7,
+                                    moves: ['Growl', 'Bide'],
+                                    ability: 'Shed Skin',
+                                    nature: Nature.Mild,
+                                },
+                                {
+                                    name: 'Zubat',
+                                    level: 6,
+                                    moves: ['Leech Life', 'Supersonic'],
+                                    ability: 'Inner Focus',
+                                    nature: Nature.Careful,
+                                },
+                            ],
+                            x: 23,
+                            y: 51,
+                        },
+                        {
+                            isOptional: true,
+                            trainerClass: 'Youngster',
+                            name: 'Dallas',
+                            team: [
+                                {
+                                    name: 'Kricketot',
+                                    level: 7,
+                                    moves: ['Growl', 'Bide'],
+                                    ability: 'Natural Cure',
+                                    nature: Nature.Docile,
+                                },
+                            ],
+                            x: 35.7,
+                            y: 27.5,
+                        },
+                    ],
                 },
                 {
                     name: 'Oreburgh Gate',

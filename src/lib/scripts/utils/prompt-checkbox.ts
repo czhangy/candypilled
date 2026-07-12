@@ -1,8 +1,12 @@
 import readline from 'readline';
-import { CheckboxOption } from '@/lib/static/types';
 
 const ANSI_HIDE_CURSOR = '\x1b[?25l';
 const ANSI_SHOW_CURSOR = '\x1b[?25h';
+
+interface CheckboxOption<T> {
+    label: string;
+    value: T;
+}
 
 export const enterInteractiveMode = (): void => {
     readline.emitKeypressEvents(process.stdin);

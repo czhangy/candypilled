@@ -33,9 +33,9 @@
         background: color-mix(in srgb, var(--accent-color) 75%, transparent);
     }
 
-    .trainer-marker__check {
+    .trainer-marker__check,
+    .trainer-marker__crown {
         align-items: center;
-        background: $green;
         border-radius: 50%;
         color: $background;
         display: flex;
@@ -51,6 +51,14 @@
             height: 0.65rem;
             width: 0.65rem;
         }
+    }
+
+    .trainer-marker__check {
+        background: $green;
+    }
+
+    .trainer-marker__crown {
+        background: $gold;
     }
 
     &--defeated {
