@@ -90,8 +90,8 @@ const Navbar: React.FC = () => {
                     .join(' ')}
             >
                 <li>
-                    <Link href="/history" onClick={handleClose}>
-                        History
+                    <Link href="/runs" onClick={handleClose}>
+                        Runs
                     </Link>
                 </li>
             </ul>
