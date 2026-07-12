@@ -2,7 +2,8 @@ import { Battle } from '@/lib/static/types';
 import styles from './TrainerMarker.module.scss';
 
 interface TrainerMarkerProps {
-    isSelected?: boolean;
+    isDefeated: boolean;
+    isSelected: boolean;
     mapHeight: number;
     mapWidth: number;
     onClick: (trainer: Battle) => void;
@@ -10,7 +11,8 @@ interface TrainerMarkerProps {
 }
 
 const TrainerMarker: React.FC<TrainerMarkerProps> = ({
-    isSelected = false,
+    isDefeated,
+    isSelected,
     mapHeight,
     mapWidth,
     onClick,
@@ -48,6 +50,7 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
             aria-pressed={isSelected}
             className={[
                 styles['trainer-marker'],
+                isDefeated && styles['trainer-marker--defeated'],
                 isSelected && styles['trainer-marker--selected'],
             ]
                 .filter(Boolean)

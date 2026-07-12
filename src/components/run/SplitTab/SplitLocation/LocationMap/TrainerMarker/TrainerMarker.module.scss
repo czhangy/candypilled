@@ -28,4 +28,19 @@
     &--selected {
         background: color.adjust($accent, $alpha: -0.25);
     }
+
+    &--defeated {
+        background: color.adjust($green, $alpha: -0.65);
+        border-color: $green;
+
+        @media (hover: hover) {
+            &:hover {
+                background: color.adjust($green, $alpha: -0.4);
+            }
+        }
+
+        &.trainer-marker--selected {
+            background: color.adjust($green, $alpha: -0.25);
+        }
+    }
 }

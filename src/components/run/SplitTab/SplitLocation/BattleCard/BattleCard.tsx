@@ -6,15 +6,23 @@ import styles from './BattleCard.module.scss';
 
 interface BattleCardProps {
     battle: Battle;
+    isDefeated: boolean;
+    onToggleDefeated: () => void;
     variant: string;
 }
 
-const BattleCard: React.FC<BattleCardProps> = ({ battle, variant }) => {
+const BattleCard: React.FC<BattleCardProps> = ({
+    battle,
+    isDefeated,
+    onToggleDefeated,
+    variant,
+}) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
 
     const MOVE_SLOT_COUNT = 4;
+    const SPRITE_SIZE = 80;
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -32,12 +40,12 @@ const BattleCard: React.FC<BattleCardProps> = ({ battle, variant }) => {
                         <div className={styles['trainer__sprite']}>
                             <Image
                                 alt={`${battle.trainerClass} ${battle.name}`}
-                                height={80}
+                                height={SPRITE_SIZE}
                                 src={TrainerHelpers.getSprite(
                                     battle.trainerClass,
                                     variant
                                 )}
-                                width={80}
+                                width={SPRITE_SIZE}
                             />
                         </div>
                         <div className={styles['trainer__metadata']}>
@@ -48,6 +56,19 @@ const BattleCard: React.FC<BattleCardProps> = ({ battle, variant }) => {
                                 ? `${battle.items.count}x ${battle.items.name}`
                                 : '-'}
                         </div>
+                        <button
+                            className={[
+                                styles['trainer__defeat'],
+                                isDefeated &&
+                                    styles['trainer__defeat--defeated'],
+                            ]
+                                .filter(Boolean)
+                                .join(' ')}
+                            onClick={onToggleDefeated}
+                            type="button"
+                        >
+                            {isDefeated ? 'Defeated' : 'Defeat'}
+                        </button>
                     </div>
                     <div className={styles.team}>
                         {battle.team.map((pokemon) => {
@@ -69,9 +90,9 @@ const BattleCard: React.FC<BattleCardProps> = ({ battle, variant }) => {
                                         {sprite && (
                                             <Image
                                                 alt={pokemon.name}
-                                                height={80}
+                                                height={SPRITE_SIZE}
                                                 src={sprite}
-                                                width={80}
+                                                width={SPRITE_SIZE}
                                             />
                                         )}
                                     </div>

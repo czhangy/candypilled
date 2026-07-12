@@ -58,6 +58,7 @@ export interface Game {
 export interface Run {
     attempt: number;
     deathCount: number;
+    defeatedBattles?: string[];
     split: string;
     boxCount: number;
     personalBest: string;

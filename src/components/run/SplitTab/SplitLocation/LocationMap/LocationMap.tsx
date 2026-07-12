@@ -6,6 +6,7 @@ import TrainerMarker from './TrainerMarker/TrainerMarker';
 interface LocationMapProps {
     alt: string;
     battles?: Battle[];
+    isBattleDefeated: (battle: Battle) => boolean;
     map: StaticImageData;
     onBattleClick: (battle: Battle) => void;
     selectedBattle?: Battle;
@@ -14,6 +15,7 @@ interface LocationMapProps {
 const LocationMap: React.FC<LocationMapProps> = ({
     alt,
     battles = [],
+    isBattleDefeated,
     map,
     onBattleClick,
     selectedBattle,
@@ -29,6 +31,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
                 <Image alt={alt} src={map} />
                 {battles.map((battle) => (
                     <TrainerMarker
+                        isDefeated={isBattleDefeated(battle)}
                         isSelected={selectedBattle === battle}
                         key={battle.name}
                         mapHeight={map.height}
