@@ -1,15 +1,21 @@
-import { Trainer } from '@/lib/static/types';
+import { Battle } from '@/lib/static/types';
 import styles from './TrainerMarker.module.scss';
 
 interface TrainerMarkerProps {
+    isDefeated: boolean;
+    isSelected: boolean;
     mapHeight: number;
     mapWidth: number;
-    trainer: Trainer;
+    onClick: (trainer: Battle) => void;
+    trainer: Battle;
 }
 
 const TrainerMarker: React.FC<TrainerMarkerProps> = ({
+    isDefeated,
+    isSelected,
     mapHeight,
     mapWidth,
+    onClick,
     trainer,
 }) => {
     // -------------------------------------------------------------------------
@@ -27,13 +33,29 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
     const height = (TRAINER_HEIGHT_PX / mapHeight) * 100;
 
     // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleClick = (): void => {
+        onClick(trainer);
+    };
+
+    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
     return (
         <button
             aria-label={`${trainer.trainerClass} ${trainer.name}`}
-            className={styles['trainer-marker']}
+            aria-pressed={isSelected}
+            className={[
+                styles['trainer-marker'],
+                isDefeated && styles['trainer-marker--defeated'],
+                isSelected && styles['trainer-marker--selected'],
+            ]
+                .filter(Boolean)
+                .join(' ')}
+            onClick={handleClick}
             style={
                 {
                     '--x': `${trainer.x}%`,

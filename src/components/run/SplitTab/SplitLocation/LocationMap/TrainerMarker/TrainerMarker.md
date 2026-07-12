@@ -3,14 +3,18 @@
 A rectangular button overlaid on a location's map image, outlining where
 a trainer stands. Positioned and sized as a percentage of the map's width
 and height so it stays aligned with the artwork at any render size.
+Defeated trainers render green instead of the default accent color.
 
 ## Props
 
-| Prop        | Type      | Required | Default | Description                                      |
-| ----------- | --------- | -------- | ------- | ------------------------------------------------ |
-| `trainer`   | `Trainer` | Yes      | -       | The trainer this marker represents and positions |
-| `mapWidth`  | `number`  | Yes      | -       | Intrinsic width of the map image, in pixels      |
-| `mapHeight` | `number`  | Yes      | -       | Intrinsic height of the map image, in pixels     |
+| Prop         | Type                        | Required | Default | Description                                        |
+| ------------ | --------------------------- | -------- | ------- | -------------------------------------------------- |
+| `trainer`    | `Battle`                    | Yes      | -       | The battle this marker represents and positions    |
+| `mapWidth`   | `number`                    | Yes      | -       | Intrinsic width of the map image, in pixels        |
+| `mapHeight`  | `number`                    | Yes      | -       | Intrinsic height of the map image, in pixels       |
+| `isDefeated` | `boolean`                   | No       | `false` | Whether this trainer has already been defeated     |
+| `isSelected` | `boolean`                   | No       | `false` | Whether this trainer is the currently selected one |
+| `onClick`    | `(trainer: Battle) => void` | Yes      | -       | Called with this marker's battle when clicked      |
 
 ## Computations
 

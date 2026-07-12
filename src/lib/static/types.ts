@@ -1,7 +1,36 @@
 import { StaticImageData } from 'next/image';
+import { FieldCondition, Nature } from '@/lib/static/enums';
 
-export interface Trainer {
+export interface StatValues {
+    atk: number;
+    def: number;
+    hp: number;
+    spa: number;
+    spd: number;
+    spe: number;
+}
+
+export interface BattlePokemon {
+    ability: string;
+    evs?: number | StatValues;
+    heldItem?: string;
+    ivs?: number | StatValues;
+    level: number;
+    moves: string[];
     name: string;
+    nature?: Nature;
+}
+
+export interface BattleItem {
+    count: number;
+    name: string;
+}
+
+export interface Battle {
+    fieldCondition?: FieldCondition;
+    items?: BattleItem;
+    name: string;
+    team: BattlePokemon[];
     trainerClass: string;
     x: number;
     y: number;
@@ -10,7 +39,7 @@ export interface Trainer {
 export interface Location {
     name: string;
     map?: StaticImageData;
-    trainers?: Trainer[];
+    battles?: Battle[];
 }
 
 export interface Split {
@@ -29,6 +58,7 @@ export interface Game {
 export interface Run {
     attempt: number;
     deathCount: number;
+    defeatedBattles?: string[];
     split: string;
     boxCount: number;
     personalBest: string;
@@ -41,7 +71,7 @@ export interface GameRun {
     run: Run | null;
 }
 
-export interface Pokemon {
+export interface PokemonData {
     name: string;
     sprites: Record<string, string>;
 }

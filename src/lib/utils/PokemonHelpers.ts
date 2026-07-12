@@ -1,5 +1,5 @@
 import { POKEMON } from '@/lib/pokemon/pokemon';
-import { Pokemon } from '@/lib/static/types';
+import { PokemonData } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 export default class PokemonHelpers {
@@ -7,7 +7,7 @@ export default class PokemonHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    static get(name: string): Pokemon | undefined {
+    static get(name: string): PokemonData | undefined {
         return POKEMON[StringHelpers.toSlug(name)];
     }
 
