@@ -191,6 +191,8 @@ Modifier classes (`&--variant`) nest inside their base class. **Base styles must
 }
 ```
 
+**This cannot be lint-enforced.** Stylelint only sees the `.module.scss` file in isolation — it has no way to check the nesting against the component's actual JSX tree in the `.tsx` file. There is no automated check for this convention, so after editing a `.module.scss` file, manually diff its selector nesting against the JSX structure before considering the change done.
+
 **Animations** must include a `@media (prefers-reduced-motion: reduce)` block that disables or stills the animation.
 
 **CSS custom properties are scoped to the component that declares them.** Do not declare a variable in a parent component's SCSS intending for a child component to consume it — that creates invisible coupling. Use props instead.

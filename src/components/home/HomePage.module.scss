@@ -10,18 +10,29 @@
     justify-content: center;
     padding: 1.5rem 1.5rem 1.5rem 15%;
 
-    .title {
-        @include mono-label;
+    .row {
+        align-items: center;
+        display: flex;
+        gap: 1rem;
 
-        color: $foreground;
-        font-size: 2.5rem;
-        letter-spacing: -0.02em;
-    }
+        .text {
+            display: flex;
+            flex-direction: column;
 
-    .tagline {
-        color: $text-mid;
-        font-family: $font-mono;
-        margin-top: 0.5rem;
+            .title {
+                @include mono-label;
+
+                color: $foreground;
+                font-size: 2.5rem;
+                letter-spacing: -0.02em;
+            }
+
+            .tagline {
+                color: $text-mid;
+                font-family: $font-mono;
+                margin-top: 0.5rem;
+            }
+        }
     }
 
     @media (width <= 768px) {
