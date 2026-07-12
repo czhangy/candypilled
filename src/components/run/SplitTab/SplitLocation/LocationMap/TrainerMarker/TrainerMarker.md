@@ -3,7 +3,8 @@
 A rectangular button overlaid on a location's map image, outlining where
 a trainer stands. Positioned and sized as a percentage of the map's width
 and height so it stays aligned with the artwork at any render size.
-Defeated trainers render green instead of the game's accent color.
+Defeated trainers render green instead of the game's accent color, with
+a checkmark badge poking out of the top-right corner of the rectangle.
 
 ## Props
 

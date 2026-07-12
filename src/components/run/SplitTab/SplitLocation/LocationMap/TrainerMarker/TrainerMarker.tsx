@@ -1,3 +1,4 @@
+import CheckIcon from '@/lib/icons/CheckIcon';
 import { Battle } from '@/lib/static/types';
 import styles from './TrainerMarker.module.scss';
 
@@ -65,7 +66,13 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
                 } as React.CSSProperties
             }
             type="button"
-        />
+        >
+            {isDefeated && (
+                <span className={styles['trainer-marker__check']}>
+                    <CheckIcon />
+                </span>
+            )}
+        </button>
     );
 };
 
