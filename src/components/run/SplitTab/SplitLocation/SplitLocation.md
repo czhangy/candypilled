@@ -8,9 +8,10 @@ battle details in a battle card alongside the map.
 
 ## Props
 
-| Prop       | Type       | Required | Default | Description                     |
-| ---------- | ---------- | -------- | ------- | ------------------------------- |
-| `location` | `Location` | Yes      | -       | The location this card displays |
+| Prop       | Type       | Required | Default | Description                                            |
+| ---------- | ---------- | -------- | ------- | ------------------------------------------------------ |
+| `location` | `Location` | Yes      | -       | The location this card displays                        |
+| `variant`  | `string`   | Yes      | -       | The sprite variant to prefer, matching the game's slug |
 
 ## State
 

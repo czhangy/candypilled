@@ -50,9 +50,21 @@
                 overflow: hidden;
                 width: 6rem;
 
+                .trainer__field-condition {
+                    align-items: center;
+                    border-bottom: 1px solid $border-subtle;
+                    color: $text-mid;
+                    display: flex;
+                    flex: 1;
+                    font-size: 0.65rem;
+                    justify-content: center;
+                    padding: 0.35rem;
+                    text-align: center;
+                }
+
                 .trainer__sprite {
                     background: color.adjust($background, $lightness: 4%);
-                    flex: 3;
+                    flex: 5;
                 }
 
                 .trainer__items {
@@ -102,10 +114,20 @@
                     }
 
                     .pokemon-slot__sprite {
+                        align-items: center;
                         background: color.adjust($background, $lightness: 4%);
                         border-bottom: 1px solid $border-subtle;
+                        display: flex;
                         height: 5rem;
+                        justify-content: center;
                         width: 100%;
+
+                        img {
+                            height: auto;
+                            max-height: 100%;
+                            max-width: 100%;
+                            width: auto;
+                        }
                     }
 
                     .pokemon-slot__name {

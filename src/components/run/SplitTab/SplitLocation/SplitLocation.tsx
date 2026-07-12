@@ -9,9 +9,10 @@ import styles from './SplitLocation.module.scss';
 
 interface SplitLocationProps {
     location: Location;
+    variant: string;
 }
 
-const SplitLocation: React.FC<SplitLocationProps> = ({ location }) => {
+const SplitLocation: React.FC<SplitLocationProps> = ({ location, variant }) => {
     // -------------------------------------------------------------------------
     // STATE
     // -------------------------------------------------------------------------
@@ -67,7 +68,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({ location }) => {
                         onBattleClick={handleBattleClick}
                         selectedBattle={selectedBattle}
                     />
-                    {selectedBattle && <BattleCard battle={selectedBattle} />}
+                    {selectedBattle && (
+                        <BattleCard battle={selectedBattle} variant={variant} />
+                    )}
                 </div>
             )}
         </div>

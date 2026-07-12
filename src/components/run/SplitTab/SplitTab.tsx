@@ -45,7 +45,11 @@ const SplitTab: React.FC<SplitTabProps> = ({ game, run }) => {
             )}
             <div className={styles.locations}>
                 {currentSplit?.locations.map((location) => (
-                    <SplitLocation key={location.name} location={location} />
+                    <SplitLocation
+                        key={location.name}
+                        location={location}
+                        variant={StringHelpers.toSlug(game.name)}
+                    />
                 ))}
             </div>
         </div>

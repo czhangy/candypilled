@@ -1,3 +1,11 @@
+export enum FieldCondition {
+    Fog = 'Fog',
+    Hail = 'Hail',
+    Rain = 'Rain',
+    Sandstorm = 'Sandstorm',
+    Sun = 'Sun',
+}
+
 export enum Nature {
     Adamant = 'Adamant',
     Bashful = 'Bashful',

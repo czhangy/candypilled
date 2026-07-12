@@ -1,5 +1,5 @@
 import { StaticImageData } from 'next/image';
-import { Nature } from '@/lib/static/enums';
+import { FieldCondition, Nature } from '@/lib/static/enums';
 
 export interface StatValues {
     atk: number;
@@ -27,6 +27,7 @@ export interface BattleItem {
 }
 
 export interface Battle {
+    fieldCondition?: FieldCondition;
     items?: BattleItem;
     name: string;
     team: BattlePokemon[];
