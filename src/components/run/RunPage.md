@@ -1,8 +1,8 @@
 # RunPage
 
 The dedicated page for a single game's run, reached from a game's entry on
-the runs list. Displays a row of tabs for switching between the different
-views of the run.
+the runs list. Displays the game's title and a row of tabs for switching
+between the different views of the run.
 
 ## Props
 

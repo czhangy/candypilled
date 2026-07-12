@@ -53,6 +53,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     return (
         <div className={styles['run-page']}>
+            <h1 className={styles.title}>Pokémon {game.name}</h1>
             <Tabs
                 activeTab={activeTab}
                 onTabChange={handleTabChange}
