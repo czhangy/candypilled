@@ -1,0 +1,40 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.footer {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    left: 0;
+    margin: 0 auto;
+    max-width: $max-content-width;
+    padding: 1rem 1.5rem;
+    pointer-events: none;
+    position: fixed;
+    right: 0;
+
+    .credit {
+        color: $text-dim;
+        font-family: $font-mono;
+        pointer-events: auto;
+    }
+
+    .link {
+        color: $text-dim;
+        pointer-events: auto;
+        transition: color 0.2s ease;
+
+        svg {
+            display: block;
+            height: 1.75rem;
+            width: 1.75rem;
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                color: $accent;
+            }
+        }
+    }
+}

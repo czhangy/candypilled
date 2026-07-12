@@ -43,7 +43,7 @@ Pre-commit hooks via Husky/lint-staged automatically run ESLint, Prettier, and S
 **Global styles** live in `src/lib/styles/`:
 
 - `globals.scss` — body defaults and font-smoothing
-- `_constants.scss` — SCSS variables (`$accent`, `$background`, `$foreground`, `$font-mono`, `$border-subtle`, `$text-dim`, `$text-mid`)
+- `_constants.scss` — SCSS variables (`$accent`, `$background`, `$foreground`, `$font-mono`, `$border-subtle`, `$text-dim`, `$text-mid`, `$max-content-width`)
 - `_mixins.scss` — reusable declaration blocks (`full-height`, `mono-label`)
 - `index.scss` — barrel that forwards constants and mixins
 
