@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
-import { Location } from '@/lib/static/types';
+import { Location, Trainer } from '@/lib/static/types';
+import BattleCard from './BattleCard/BattleCard';
 import LocationMap from './LocationMap/LocationMap';
 import styles from './SplitLocation.module.scss';
 
@@ -17,6 +18,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({ location }) => {
 
     // TODO: remove dev default-open once map/marker work is done
     const [isOpen, setIsOpen] = useState(location.name === 'Route 202');
+    const [selectedTrainer, setSelectedTrainer] = useState<Trainer>();
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -24,6 +26,12 @@ const SplitLocation: React.FC<SplitLocationProps> = ({ location }) => {
 
     const handleHeaderClick = (): void => {
         setIsOpen((previousIsOpen) => !previousIsOpen);
+    };
+
+    const handleTrainerClick = (trainer: Trainer): void => {
+        setSelectedTrainer((previousTrainer) =>
+            previousTrainer === trainer ? undefined : trainer
+        );
     };
 
     // -------------------------------------------------------------------------
@@ -55,8 +63,13 @@ const SplitLocation: React.FC<SplitLocationProps> = ({ location }) => {
                     <LocationMap
                         alt={`${location.name} map`}
                         map={location.map}
+                        onTrainerClick={handleTrainerClick}
+                        selectedTrainer={selectedTrainer}
                         trainers={location.trainers}
                     />
+                    {selectedTrainer && (
+                        <BattleCard trainer={selectedTrainer} />
+                    )}
                 </div>
             )}
         </div>

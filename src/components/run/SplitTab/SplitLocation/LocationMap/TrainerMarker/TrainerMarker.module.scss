@@ -24,4 +24,8 @@
     @media (prefers-reduced-motion: reduce) {
         transition: none;
     }
+
+    &--selected {
+        background: color.adjust($accent, $alpha: -0.25);
+    }
 }

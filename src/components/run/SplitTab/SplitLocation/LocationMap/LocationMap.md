@@ -6,8 +6,10 @@ added here in future work.
 
 ## Props
 
-| Prop       | Type              | Required | Default | Description                                              |
-| ---------- | ----------------- | -------- | ------- | -------------------------------------------------------- |
-| `map`      | `StaticImageData` | Yes      | -       | Statically imported map image, with intrinsic dimensions |
-| `alt`      | `string`          | Yes      | -       | Alt text for the map image                               |
-| `trainers` | `Trainer[]`       | No       | `[]`    | Trainers to mark on the map                              |
+| Prop              | Type                         | Required | Default | Description                                              |
+| ----------------- | ---------------------------- | -------- | ------- | -------------------------------------------------------- |
+| `map`             | `StaticImageData`            | Yes      | -       | Statically imported map image, with intrinsic dimensions |
+| `alt`             | `string`                     | Yes      | -       | Alt text for the map image                               |
+| `trainers`        | `Trainer[]`                  | No       | `[]`    | Trainers to mark on the map                              |
+| `selectedTrainer` | `Trainer`                    | No       | -       | The currently selected trainer, if any                   |
+| `onTrainerClick`  | `(trainer: Trainer) => void` | No       | -       | Called with a trainer when its marker is clicked         |

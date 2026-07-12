@@ -6,12 +6,16 @@ import TrainerMarker from './TrainerMarker/TrainerMarker';
 interface LocationMapProps {
     alt: string;
     map: StaticImageData;
+    onTrainerClick: (trainer: Trainer) => void;
+    selectedTrainer?: Trainer;
     trainers?: Trainer[];
 }
 
 const LocationMap: React.FC<LocationMapProps> = ({
     alt,
     map,
+    onTrainerClick,
+    selectedTrainer,
     trainers = [],
 }) => {
     // -------------------------------------------------------------------------
@@ -25,9 +29,11 @@ const LocationMap: React.FC<LocationMapProps> = ({
                 <Image alt={alt} src={map} />
                 {trainers.map((trainer) => (
                     <TrainerMarker
+                        isSelected={selectedTrainer === trainer}
                         key={trainer.name}
                         mapHeight={map.height}
                         mapWidth={map.width}
+                        onClick={onTrainerClick}
                         trainer={trainer}
                     />
                 ))}
