@@ -20,6 +20,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
 
     return (
         <div className={styles['location-map']}>
+            <span className={styles.label}>Map</span>
             <Image alt={alt} height={height} src={src} width={width} />
         </div>
     );

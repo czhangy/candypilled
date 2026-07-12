@@ -1,8 +1,8 @@
 # LocationMap
 
-Renders a location's map image inside a positioned container, intended as
-a base for absolutely-positioned elements (trainers, encounter markers)
-in future work.
+Renders a location's map image under a "Map" label, inside a positioned
+container sized to the image, intended as a base for absolutely-positioned
+elements (trainers, encounter markers) in future work.
 
 ## Props
 

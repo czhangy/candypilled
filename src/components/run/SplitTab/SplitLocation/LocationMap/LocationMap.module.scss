@@ -1,12 +1,28 @@
+@use 'sass:color';
 @use '@/styles/constants' as *;
 @use '@/styles/mixins' as *;
 
 .location-map {
-    display: flex;
-    justify-content: center;
+    border: 1px solid $border-subtle;
+    border-radius: 0.5rem;
+    overflow: hidden;
     position: relative;
+    width: fit-content;
+
+    .label {
+        @include mono-label;
+
+        background: color.adjust($background, $lightness: 4%);
+        color: $text-mid;
+        display: block;
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+        padding: 0.4rem 0.75rem;
+        text-transform: uppercase;
+    }
 
     img {
+        display: block;
         height: auto;
         max-width: 100%;
     }

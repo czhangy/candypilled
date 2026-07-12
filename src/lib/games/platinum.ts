@@ -53,8 +53,16 @@ const PLATINUM: Game = {
                     name: 'Route 204 South',
                     map: {
                         src: '/platinum/locations/route_204_south.png',
-                        width: 1056,
-                        height: 798,
+                        width: 507,
+                        height: 411,
+                    },
+                },
+                {
+                    name: 'Ravaged Path',
+                    map: {
+                        src: '/platinum/locations/ravaged_path.png',
+                        width: 528,
+                        height: 672,
                     },
                 },
                 {
@@ -69,8 +77,8 @@ const PLATINUM: Game = {
                     name: 'Oreburgh Gate',
                     map: {
                         src: '/platinum/locations/oreburgh_gate.png',
-                        width: 1054,
-                        height: 402,
+                        width: 451,
+                        height: 331,
                     },
                 },
                 {
