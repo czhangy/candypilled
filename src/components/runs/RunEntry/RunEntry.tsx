@@ -52,13 +52,16 @@ const RunEntry: React.FC<RunEntryProps> = ({ run }) => {
                 </div>
                 <hr className={styles.divider} />
                 <div className={styles.line}>
-                    <span className={styles['personal-best']}>
-                        PB: {run.personalBest}
-                    </span>
-                    <span className={styles['hall-of-fame']}>
-                        <CrownIcon />
-                        {run.hallOfFameCount}
-                    </span>
+                    {run.hallOfFameCount === 0 ? (
+                        <span className={styles['personal-best']}>
+                            PB: {run.personalBest}
+                        </span>
+                    ) : (
+                        <span className={styles['hall-of-fame']}>
+                            <CrownIcon />
+                            {run.hallOfFameCount}
+                        </span>
+                    )}
                 </div>
             </div>
         </Link>
