@@ -4,9 +4,17 @@ export interface LocationMapImage {
     height: number;
 }
 
+export interface Trainer {
+    name: string;
+    trainerClass: string;
+    x: number;
+    y: number;
+}
+
 export interface Location {
     name: string;
     map?: LocationMapImage;
+    trainers: Trainer[];
 }
 
 export interface Split {

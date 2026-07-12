@@ -16,6 +16,7 @@ const PLATINUM: Game = {
                         width: 496,
                         height: 377,
                     },
+                    trainers: [],
                 },
                 {
                     name: 'Route 201',
@@ -24,6 +25,7 @@ const PLATINUM: Game = {
                         width: 1040,
                         height: 352,
                     },
+                    trainers: [],
                 },
                 {
                     name: 'Sandgem Town',
@@ -32,6 +34,7 @@ const PLATINUM: Game = {
                         width: 496,
                         height: 402,
                     },
+                    trainers: [],
                 },
                 {
                     name: 'Route 202',
@@ -40,6 +43,26 @@ const PLATINUM: Game = {
                         width: 610,
                         height: 452,
                     },
+                    trainers: [
+                        {
+                            name: 'Tristan',
+                            trainerClass: 'Youngster',
+                            x: 31.5,
+                            y: 31.6,
+                        },
+                        {
+                            name: 'Natalie',
+                            trainerClass: 'Lass',
+                            x: 62,
+                            y: 59.1,
+                        },
+                        {
+                            name: 'Logan',
+                            trainerClass: 'Youngster',
+                            x: 72.6,
+                            y: 20.6,
+                        },
+                    ],
                 },
                 {
                     name: 'Jubilife City',
@@ -48,6 +71,7 @@ const PLATINUM: Game = {
                         width: 1056,
                         height: 798,
                     },
+                    trainers: [],
                 },
                 {
                     name: 'Route 204 South',
@@ -56,6 +80,7 @@ const PLATINUM: Game = {
                         width: 507,
                         height: 411,
                     },
+                    trainers: [],
                 },
                 {
                     name: 'Ravaged Path',
@@ -64,6 +89,7 @@ const PLATINUM: Game = {
                         width: 528,
                         height: 672,
                     },
+                    trainers: [],
                 },
                 {
                     name: 'Route 203',
@@ -72,6 +98,7 @@ const PLATINUM: Game = {
                         width: 976,
                         height: 368,
                     },
+                    trainers: [],
                 },
                 {
                     name: 'Oreburgh Gate',
@@ -80,6 +107,7 @@ const PLATINUM: Game = {
                         width: 451,
                         height: 331,
                     },
+                    trainers: [],
                 },
                 {
                     name: 'Oreburgh City',
@@ -88,6 +116,7 @@ const PLATINUM: Game = {
                         width: 1024,
                         height: 832,
                     },
+                    trainers: [],
                 },
             ],
         },

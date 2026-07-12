@@ -56,6 +56,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({ location }) => {
                             alt={`${location.name} map`}
                             height={location.map.height}
                             src={location.map.src}
+                            trainers={location.trainers}
                             width={location.map.width}
                         />
                     ) : (
