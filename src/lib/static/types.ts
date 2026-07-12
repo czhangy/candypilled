@@ -1,3 +1,9 @@
+export interface Game {
+    name: string;
+    logo: string;
+    generation: number;
+}
+
 export interface Run {
     name: string;
     logo: string;

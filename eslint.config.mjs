@@ -29,6 +29,7 @@ const localLibRules = {
     'icons-svg-root': require('./.eslint-rules/lib/icons-svg-root.js'),
     'utils-class-only': require('./.eslint-rules/lib/utils-class-only.js'),
     'utils-class-sections': require('./.eslint-rules/lib/utils-class-sections.js'),
+    'games-export-naming': require('./.eslint-rules/lib/games-export-naming.js'),
 };
 
 const eslintConfig = defineConfig([
@@ -102,6 +103,12 @@ const eslintConfig = defineConfig([
         files: ['src/lib/icons/**/*.tsx'],
         rules: {
             'lib/icons-svg-root': 'error',
+        },
+    },
+    {
+        files: ['src/lib/games/**/*.ts'],
+        rules: {
+            'lib/games-export-naming': 'error',
         },
     },
 ]);
