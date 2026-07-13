@@ -1,7 +1,11 @@
 import fs from 'fs';
 import path from 'path';
-import { logSuccess, logWarning } from '@/lib/scripts/utils/helpers';
-import { promptCheckbox } from '@/lib/scripts/utils/prompt-checkbox';
+import {
+    handleException,
+    logSuccess,
+    logWarning,
+    validateRootDirectory,
+} from '@/lib/scripts/utils/helpers';
 import { PokemonData } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
@@ -55,15 +59,17 @@ const toDisplayName = (slug: string): string =>
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
 
-const getDexNumbersForGenerations = (generations: number[]): number[] =>
-    DEX_RANGES.filter((range) =>
-        generations.includes(range.generation)
-    ).flatMap((range) =>
-        Array.from(
-            { length: range.end - range.start + 1 },
-            (_value, index) => range.start + index
-        )
+const getDexNumbersForGeneration = (generation: number): number[] => {
+    const range = DEX_RANGES.find(
+        (candidate) => candidate.generation === generation
     );
+    if (!range) return [];
+
+    return Array.from(
+        { length: range.end - range.start + 1 },
+        (_value, index) => range.start + index
+    );
+};
 
 const readData = (): Record<string, PokemonData> => {
     if (!fs.existsSync(DATA_PATH)) return {};
@@ -154,7 +160,7 @@ export const getSpriteVariants = (minGeneration: number): SpriteVariant[] =>
 
 export const fetchSprites = async (
     dexNumbers: number[],
-    variants: SpriteVariant[]
+    variant: SpriteVariant
 ): Promise<void> => {
     const data = readData();
 
@@ -168,15 +174,10 @@ export const fetchSprites = async (
                 sprites: {},
             };
 
-            for (const variant of variants) {
-                const spriteUrl = getSpriteUrl(entry.sprites, variant);
-                if (!spriteUrl) {
-                    logWarning(
-                        `No ${variant.label} sprite for "${entry.name}".`
-                    );
-                    continue;
-                }
-
+            const spriteUrl = getSpriteUrl(entry.sprites, variant);
+            if (!spriteUrl) {
+                logWarning(`No ${variant.label} sprite for "${entry.name}".`);
+            } else {
                 pokemon.sprites[variant.id] = await downloadSprite(
                     entry.slug,
                     variant,
@@ -196,24 +197,62 @@ export const fetchSprites = async (
     writeData(data);
 };
 
-export const promptSprites = async (generations: number[]): Promise<void> => {
-    const minGeneration = Math.max(...generations);
-    const variantIds = await promptCheckbox(
-        'Select sprite variants',
-        getSpriteVariants(minGeneration).map((variant) => ({
-            label: variant.label,
-            value: variant.id,
-        }))
+interface Args {
+    generation: number;
+    variantId: string;
+}
+
+const parseArgs = (): Args => {
+    const args = new Map(
+        process.argv.slice(2).map((arg) => {
+            const [key, value] = arg.replace(/^--/, '').split('=');
+            return [key, value];
+        })
     );
 
-    if (variantIds.length === 0) {
-        logSuccess('No sprite variants selected. Exiting.');
-        return;
+    const generationArg = args.get('generation');
+    const variantArg = args.get('variant');
+
+    if (!generationArg || !variantArg) {
+        throw new Error(
+            'Usage: npm run pokeapi:sprites -- --generation=3 --variant=emerald'
+        );
     }
 
-    const variants = SPRITE_VARIANTS.filter((variant) =>
-        variantIds.includes(variant.id)
-    );
+    if (generationArg.includes(',') || variantArg.includes(',')) {
+        throw new Error(
+            'Only one --generation and one --variant may be specified per run.'
+        );
+    }
 
-    await fetchSprites(getDexNumbersForGenerations(generations), variants);
+    return {
+        generation: Number(generationArg),
+        variantId: variantArg,
+    };
 };
+
+const main = async (): Promise<void> => {
+    try {
+        validateRootDirectory();
+
+        const { generation, variantId } = parseArgs();
+        const availableVariants = getSpriteVariants(generation);
+
+        const variant = availableVariants.find(
+            (candidate) => candidate.id === variantId
+        );
+        if (!variant) {
+            throw new Error(
+                `"${variantId}" is not a valid sprite variant for generation ${generation}. Valid options: ${availableVariants
+                    .map((candidate) => candidate.id)
+                    .join(', ')}`
+            );
+        }
+
+        await fetchSprites(getDexNumbersForGeneration(generation), variant);
+    } catch (error) {
+        handleException(error);
+    }
+};
+
+main();

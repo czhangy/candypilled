@@ -40,10 +40,20 @@ export interface Battle {
     y: number;
 }
 
+export interface Encounter {
+    species: string;
+    method: string;
+    minLevel: number;
+    maxLevel: number;
+    chance: number;
+    conditions?: string[];
+}
+
 export interface Location {
     name: string;
     map?: StaticImageData;
     battles?: Battle[];
+    encounters?: Encounter[];
 }
 
 export interface Split {
