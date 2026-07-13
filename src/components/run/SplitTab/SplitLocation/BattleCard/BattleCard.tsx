@@ -54,6 +54,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                 height={SPRITE_SIZE}
                                 src={TrainerHelpers.getSprite(
                                     battle.trainerClass,
+                                    battle.name,
                                     variant
                                 )}
                                 width={SPRITE_SIZE}

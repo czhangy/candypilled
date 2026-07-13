@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# scratch output from compose:map-sprite previews
+/src/lib/assets/temp
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

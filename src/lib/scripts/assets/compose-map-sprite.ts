@@ -8,7 +8,7 @@ import {
 } from '@/lib/scripts/utils/helpers';
 
 const USAGE =
-    'Usage: npm run compose:map-sprite -- --map <path> --sprite <path> --x <percent> --y <percent> [--width <px>] [--output <path>]';
+    'Usage: npm run compose:map-sprite -- --map <path> --sprite <path> --x <percent> --y <percent> [--width <px>] [--output <path>]. Defaults to writing a preview under src/lib/assets/temp/ instead of overwriting the map.';
 const MAP_NOT_FOUND = "That map image doesn't exist.";
 const SPRITE_NOT_FOUND = "That sprite image doesn't exist.";
 const OUT_OF_BOUNDS =
@@ -36,7 +36,9 @@ const parseArgs = (argv: string[]): ComposeArgs => {
 
     return {
         mapPath: flags.map,
-        outputPath: flags.output ?? flags.map,
+        outputPath:
+            flags.output ??
+            path.join('src', 'lib', 'assets', 'temp', path.basename(flags.map)),
         spritePath: flags.sprite,
         width: flags.width ? Number(flags.width) : undefined,
         x: Number(flags.x),

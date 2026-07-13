@@ -25,6 +25,44 @@ const PLATINUM: Game = {
                 {
                     name: 'Route 201',
                     map: route201,
+                    battles: [
+                        {
+                            isMiniboss: true,
+                            trainerClass: 'PKMN Trainer',
+                            name: 'Barry 1',
+                            teamsByStarter: {
+                                Turtwig: [
+                                    {
+                                        name: 'Chimchar',
+                                        level: 5,
+                                        moves: ['Scratch', 'Leer'],
+                                        ability: 'Blaze',
+                                        nature: Nature.Calm,
+                                    },
+                                ],
+                                Chimchar: [
+                                    {
+                                        name: 'Piplup',
+                                        level: 5,
+                                        moves: ['Pound', 'Growl'],
+                                        ability: 'Torrent',
+                                        nature: Nature.Bashful,
+                                    },
+                                ],
+                                Piplup: [
+                                    {
+                                        name: 'Turtwig',
+                                        level: 5,
+                                        moves: ['Tackle', 'Withdraw'],
+                                        ability: 'Overgrow',
+                                        nature: Nature.Docile,
+                                    },
+                                ],
+                            },
+                            x: 27.5,
+                            y: 64,
+                        },
+                    ],
                 },
                 {
                     name: 'Sandgem Town',
