@@ -1,6 +1,7 @@
 import {
     oreburghGate,
     oreburghGym,
+    route201,
     route202,
     route203,
     route204South,
@@ -23,6 +24,7 @@ const PLATINUM: Game = {
                 },
                 {
                     name: 'Route 201',
+                    map: route201,
                 },
                 {
                     name: 'Sandgem Town',
@@ -262,6 +264,24 @@ const PLATINUM: Game = {
                 {
                     name: 'Oreburgh Gate',
                     map: oreburghGate,
+                    battles: [
+                        {
+                            isOptional: true,
+                            trainerClass: 'Picnicker',
+                            name: 'Diana',
+                            team: [
+                                {
+                                    name: 'Bidoof',
+                                    level: 9,
+                                    moves: ['Tackle', 'Growl', 'Defense Curl'],
+                                    nature: Nature.Modest,
+                                    ability: 'Simple',
+                                },
+                            ],
+                            x: 82,
+                            y: 35,
+                        },
+                    ],
                 },
                 {
                     name: 'Oreburgh City',
