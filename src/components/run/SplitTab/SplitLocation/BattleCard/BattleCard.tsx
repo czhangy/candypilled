@@ -40,7 +40,11 @@ const BattleCard: React.FC<BattleCardProps> = ({
     return (
         <div className={styles['battle-card']}>
             <span className={styles.label}>
-                {battle.isMiniboss ? 'Miniboss' : 'Battle'}
+                {battle.isBoss
+                    ? 'Boss'
+                    : battle.isMiniboss
+                      ? 'Miniboss'
+                      : 'Battle'}
             </span>
             <div className={styles.content}>
                 <div className={styles['trainer-header']}>

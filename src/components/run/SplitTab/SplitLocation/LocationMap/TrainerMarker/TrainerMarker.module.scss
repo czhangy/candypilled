@@ -35,6 +35,10 @@
         --marker-color: #{$orange};
     }
 
+    &--boss {
+        --marker-color: #{$red};
+    }
+
     &--selected {
         background: color-mix(in srgb, var(--marker-color) 75%, transparent);
     }

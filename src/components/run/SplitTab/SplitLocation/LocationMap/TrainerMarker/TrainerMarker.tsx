@@ -55,6 +55,7 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
             className={[
                 styles['trainer-marker'],
                 trainer.isMiniboss && styles['trainer-marker--miniboss'],
+                trainer.isBoss && styles['trainer-marker--boss'],
                 isDefeated && styles['trainer-marker--defeated'],
                 isSelected && styles['trainer-marker--selected'],
             ]

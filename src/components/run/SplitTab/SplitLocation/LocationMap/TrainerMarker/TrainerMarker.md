@@ -3,11 +3,11 @@
 A rectangular button overlaid on a location's map image, outlining where
 a trainer stands. Positioned and sized as a percentage of the map's width
 and height so it stays aligned with the artwork at any render size.
-Renders in the game's accent color by default, or orange for miniboss
-battles. Defeated trainers render green instead, with a checkmark badge
-poking out of the top-right corner of the rectangle. The trainer that
-would extend the run's personal best, if defeated next, shows a crown
-badge in the same spot instead.
+Renders in the game's accent color by default, orange for miniboss
+battles, or red for boss battles. Defeated trainers render green instead,
+with a checkmark badge poking out of the top-right corner of the
+rectangle. The trainer that would extend the run's personal best, if
+defeated next, shows a crown badge in the same spot instead.
 
 ## Props
 
