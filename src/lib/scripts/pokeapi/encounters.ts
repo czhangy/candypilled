@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { GAME_VERSIONS } from '@/lib/scripts/pokeapi/game-versions';
 import {
     handleException,
     logSuccess,
@@ -25,6 +26,8 @@ interface GameVersion {
     version: string;
     region: string;
     generation: number;
+    excludedLocations?: string[];
+    excludedSpecies?: string[];
 }
 
 interface NamedApiResource {
@@ -59,7 +62,14 @@ const EXCLUDED_METHODS = [
 
 const EXCLUDED_CONDITIONS = ['swarm-yes', 'radar-on'];
 const EXCLUDED_CONDITION_PREFIXES = ['slot2-'];
-const STRIPPED_CONDITIONS = ['slot2-none', 'radar-none'];
+const STRIPPED_CONDITIONS = [
+    'slot2-none',
+    'radar-none',
+    'swarm-no',
+    'radar-off',
+];
+
+const TIME_OF_DAY_CONDITIONS = ['time-morning', 'time-day', 'time-night'];
 
 const isExcludedCondition = (condition: string): boolean =>
     !STRIPPED_CONDITIONS.includes(condition) &&
@@ -67,16 +77,6 @@ const isExcludedCondition = (condition: string): boolean =>
         EXCLUDED_CONDITION_PREFIXES.some((prefix) =>
             condition.startsWith(prefix)
         ));
-
-const GAME_VERSIONS: GameVersion[] = [
-    {
-        id: 'platinum',
-        label: 'Platinum',
-        version: 'platinum',
-        region: 'sinnoh',
-        generation: 4,
-    },
-];
 
 const sleep = (ms: number): Promise<void> =>
     new Promise((resolve) => setTimeout(resolve, ms));
@@ -126,7 +126,8 @@ const fetchLocationAreas = async (
 
 const fetchAreaEncounters = async (
     areaUrl: string,
-    version: string
+    version: string,
+    excludedSpecies: string[]
 ): Promise<Encounter[]> => {
     const response = await fetch(areaUrl);
     if (!response.ok) {
@@ -139,6 +140,8 @@ const fetchAreaEncounters = async (
     const encounters: Encounter[] = [];
 
     for (const pokemonEncounter of body.pokemon_encounters as RawPokemonEncounter[]) {
+        if (excludedSpecies.includes(pokemonEncounter.pokemon.name)) continue;
+
         const versionDetail = pokemonEncounter.version_details.find(
             (detail) => detail.version.name === version
         );
@@ -193,9 +196,32 @@ const mergeEncounters = (encounters: Encounter[]): Encounter[] => {
     return [...merged.values()];
 };
 
+const expandTimeOfDayEncounters = (encounters: Encounter[]): Encounter[] => {
+    const hasTimeOfDay = encounters.some((encounter) =>
+        encounter.conditions?.some((condition) =>
+            TIME_OF_DAY_CONDITIONS.includes(condition)
+        )
+    );
+    if (!hasTimeOfDay) return encounters;
+
+    return encounters.flatMap((encounter) => {
+        const hasOwnTimeOfDay = encounter.conditions?.some((condition) =>
+            TIME_OF_DAY_CONDITIONS.includes(condition)
+        );
+        if (hasOwnTimeOfDay) return [encounter];
+
+        return TIME_OF_DAY_CONDITIONS.map((time) => ({
+            ...encounter,
+            conditions: [...(encounter.conditions ?? []), time],
+        }));
+    });
+};
+
 export const fetchEncounters = async (version: GameVersion): Promise<void> => {
     const data = readData();
-    const locations = await fetchRegionLocations(version.region);
+    const locations = (await fetchRegionLocations(version.region)).filter(
+        (location) => !version.excludedLocations?.includes(location.name)
+    );
     const locationsData: Record<string, LocationEncounters> = {};
 
     for (const location of locations) {
@@ -204,12 +230,18 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
 
         for (const area of areas) {
             rawEncounters.push(
-                ...(await fetchAreaEncounters(area.url, version.version))
+                ...(await fetchAreaEncounters(
+                    area.url,
+                    version.version,
+                    version.excludedSpecies ?? []
+                ))
             );
             await sleep(FETCH_DELAY_MS);
         }
 
-        const encounters = mergeEncounters(rawEncounters);
+        const encounters = mergeEncounters(
+            expandTimeOfDayEncounters(mergeEncounters(rawEncounters))
+        );
 
         if (encounters.length > 0) {
             locationsData[location.name] = {
