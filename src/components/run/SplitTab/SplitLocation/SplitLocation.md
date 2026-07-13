@@ -34,6 +34,8 @@ a table below the map and battle card.
   `defeatedBattles`
 - `isBattleNextPersonalBest` — whether a given battle's name matches
   `nextPersonalBestBattleName`
+- `encounters` — the location's wild encounters, looked up from generated
+  PokeAPI data via the location's `encountersKey`, if set
 
 ## Handlers
 

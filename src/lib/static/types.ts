@@ -49,11 +49,16 @@ export interface Encounter {
     conditions?: string[];
 }
 
+export interface LocationEncounters {
+    name: string;
+    encounters: Encounter[];
+}
+
 export interface Location {
     name: string;
+    encountersKey?: string;
     map?: StaticImageData;
     battles?: Battle[];
-    encounters?: Encounter[];
 }
 
 export interface Split {

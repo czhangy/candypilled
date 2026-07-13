@@ -6,10 +6,17 @@ import {
     logWarning,
     validateRootDirectory,
 } from '@/lib/scripts/utils/helpers';
-import { Encounter } from '@/lib/static/types';
+import { Encounter, LocationEncounters } from '@/lib/static/types';
 
 const POKEAPI_REGION_URL = 'https://pokeapi.co/api/v2/region';
-const DATA_PATH = path.join('src', 'lib', 'data', 'encounters.json');
+const DATA_PATH = path.join(
+    'src',
+    'lib',
+    'scripts',
+    'pokeapi',
+    'output',
+    'encounters.json'
+);
 const FETCH_DELAY_MS = 75;
 
 interface GameVersion {
@@ -18,11 +25,6 @@ interface GameVersion {
     version: string;
     region: string;
     generation: number;
-}
-
-interface LocationEncounters {
-    name: string;
-    encounters: Encounter[];
 }
 
 interface NamedApiResource {

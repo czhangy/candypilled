@@ -4,6 +4,7 @@ import { useState } from 'react';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { Battle, Game, Location, Run } from '@/lib/static/types';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
+import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import BattleCard from './BattleCard/BattleCard';
 import EncounterTable from './EncounterTable/EncounterTable';
@@ -30,6 +31,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const defeatedBattles = run.defeatedBattles;
     const nextPersonalBestBattleName =
         BattleProgressHelpers.getNextRequiredBattleName(game, run.personalBest);
+    const encounters = location.encountersKey
+        ? EncounterHelpers.get(game.name, location.encountersKey)
+        : undefined;
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -134,7 +138,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                     <ChevronIcon />
                 </span>
             </button>
-            {isOpen && (location.map || location.encounters) && (
+            {isOpen && (location.map || encounters) && (
                 <div className={styles.content}>
                     {location.map && (
                         <LocationMap
@@ -158,9 +162,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                             variant={variant}
                         />
                     )}
-                    {location.encounters && (
+                    {encounters && (
                         <EncounterTable
-                            encounters={location.encounters}
+                            encounters={encounters}
                             variant={variant}
                         />
                     )}
