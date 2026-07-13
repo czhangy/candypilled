@@ -6,6 +6,7 @@ import { Battle, Game, Location, Run } from '@/lib/static/types';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import BattleCard from './BattleCard/BattleCard';
+import EncounterTable from './EncounterTable/EncounterTable';
 import LocationMap from './LocationMap/LocationMap';
 import styles from './SplitLocation.module.scss';
 
@@ -133,17 +134,19 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                     <ChevronIcon />
                 </span>
             </button>
-            {isOpen && location.map && (
+            {isOpen && (location.map || location.encounters) && (
                 <div className={styles.content}>
-                    <LocationMap
-                        alt={`${location.name} map`}
-                        battles={location.battles}
-                        isBattleDefeated={isBattleDefeated}
-                        isBattleNextPersonalBest={isBattleNextPersonalBest}
-                        map={location.map}
-                        onBattleClick={handleBattleClick}
-                        selectedBattle={selectedBattle}
-                    />
+                    {location.map && (
+                        <LocationMap
+                            alt={`${location.name} map`}
+                            battles={location.battles}
+                            isBattleDefeated={isBattleDefeated}
+                            isBattleNextPersonalBest={isBattleNextPersonalBest}
+                            map={location.map}
+                            onBattleClick={handleBattleClick}
+                            selectedBattle={selectedBattle}
+                        />
+                    )}
                     {selectedBattle && (
                         <BattleCard
                             battle={selectedBattle}
@@ -152,6 +155,12 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                 handleBattleToggleDefeated(selectedBattle)
                             }
                             starter={run.starter}
+                            variant={variant}
+                        />
+                    )}
+                    {location.encounters && (
+                        <EncounterTable
+                            encounters={location.encounters}
                             variant={variant}
                         />
                     )}

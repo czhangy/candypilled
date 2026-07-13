@@ -1,0 +1,65 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.encounter-table {
+    border: 1px solid $border-subtle;
+    border-collapse: collapse;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    width: fit-content;
+
+    th,
+    td {
+        padding: 0.5rem 1.5rem;
+        text-align: left;
+    }
+
+    td:not(:first-child) {
+        min-width: 5rem;
+    }
+
+    th {
+        @include mono-label;
+
+        background: $background-light;
+        border-bottom: 1px solid $border-subtle;
+        border-top: 1px solid $border-subtle;
+        color: $text-mid;
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    td {
+        border-bottom: 1px solid $border-subtle;
+        color: $foreground;
+        font-size: 0.8rem;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    .chance {
+        text-align: center;
+    }
+
+    .pokemon {
+        align-items: center;
+        display: flex;
+        gap: 0.25rem;
+
+        .pokemon__sprite {
+            align-items: center;
+            display: flex;
+            flex-shrink: 0;
+            height: 2.25rem;
+            justify-content: center;
+            width: 2.25rem;
+
+            img {
+                image-rendering: pixelated;
+            }
+        }
+    }
+}

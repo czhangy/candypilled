@@ -2,11 +2,12 @@
 
 A collapsible card for a single location within a split. The header is
 always visible and toggles the collapsed content. The content is only
-rendered when the location has a map; locations without one show no
-expanded content. Selecting a trainer marker on the map surfaces its
-battle details in a battle card alongside the map. Defeated trainers are
-tracked in the run's storage and reflected on both the map and the
-battle card.
+rendered when the location has a map or wild encounters; locations with
+neither show no expanded content. Selecting a trainer marker on the map
+surfaces its battle details in a battle card alongside the map. Defeated
+trainers are tracked in the run's storage and reflected on both the map
+and the battle card. A location's wild encounters, if any, are shown in
+a table below the map and battle card.
 
 ## Props
 
