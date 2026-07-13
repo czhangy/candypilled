@@ -5,6 +5,7 @@ import {
     route202,
     route203,
     route204South,
+    twinleafTown,
 } from '@/lib/assets/platinum/locations';
 import { Nature } from '@/lib/static/enums';
 import { Split } from '@/lib/static/types';
@@ -14,6 +15,7 @@ const ROARK: Split = {
     locations: [
         {
             name: 'Twinleaf Town',
+            map: twinleafTown,
             encountersKey: 'twinleaf-town',
         },
         {
