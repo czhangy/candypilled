@@ -1,12 +1,15 @@
+@use 'sass:color';
+
 $accent: #7890e8;
 $gold: #d4af37;
 $green: #4caf50;
 $orange: #ff9447;
 $red: #e5484d;
 $background: #18181b;
+$background-light: color.adjust($background, $lightness: 4%);
 $foreground: #ededed;
 $font-mono: var(--font-mono);
-$max-content-width: 1200px;
+$max-content-width: 1260px;
 $border-subtle: rgba($foreground, 0.15);
 $text-dim: rgba($foreground, 0.4);
 $text-mid: rgba($foreground, 0.5);
