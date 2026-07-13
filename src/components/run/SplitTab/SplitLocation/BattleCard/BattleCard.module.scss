@@ -132,18 +132,13 @@
                         @include mono-label;
 
                         border-bottom: 1px solid $border-subtle;
-                        display: flex;
                         font-size: 0.7rem;
 
                         span {
                             color: $text-mid;
-                            flex: 1;
+                            display: block;
                             padding: 0.35rem;
                             text-align: center;
-
-                            &:first-child {
-                                border-right: 1px solid $border-subtle;
-                            }
                         }
                     }
 
@@ -180,6 +175,25 @@
                             display: block;
                             padding: 0.3rem;
                             text-align: center;
+                        }
+                    }
+
+                    .pokemon-slot__nature {
+                        border-bottom: 1px solid $border-subtle;
+                        font-size: 0.65rem;
+
+                        span {
+                            color: $text-mid;
+                            display: block;
+                            padding: 0.3rem;
+                            text-align: center;
+                        }
+
+                        .pokemon-slot__nature-effect {
+                            display: inline;
+                            font-size: 0.55rem;
+                            padding: 0;
+                            vertical-align: baseline;
                         }
                     }
 

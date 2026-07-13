@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Battle } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
+import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import styles from './BattleCard.module.scss';
@@ -131,7 +132,6 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                         }
                                     >
                                         <span>Lv. {pokemon.level}</span>
-                                        <span>{pokemon.nature ?? '-'}</span>
                                     </div>
                                     <div
                                         className={
@@ -139,6 +139,35 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                         }
                                     >
                                         <span>{pokemon.ability}</span>
+                                    </div>
+                                    <div
+                                        className={
+                                            styles['pokemon-slot__nature']
+                                        }
+                                    >
+                                        {pokemon.nature ? (
+                                            <span>
+                                                {pokemon.nature}
+                                                {NatureHelpers.getEffectLabel(
+                                                    pokemon.nature
+                                                ) && (
+                                                    <span
+                                                        className={
+                                                            styles[
+                                                                'pokemon-slot__nature-effect'
+                                                            ]
+                                                        }
+                                                    >
+                                                        {' '}
+                                                        {NatureHelpers.getEffectLabel(
+                                                            pokemon.nature
+                                                        )}
+                                                    </span>
+                                                )}
+                                            </span>
+                                        ) : (
+                                            <span>-</span>
+                                        )}
                                     </div>
                                     <ul
                                         className={
