@@ -1,6 +1,11 @@
 import { GAMES } from '@/lib/static/constants';
-import { Game, GameRun, Run } from '@/lib/static/types';
+import { Game, Run } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
+
+interface GameRun {
+    game: Game;
+    run: Run | null;
+}
 
 export default class LocalStorageHelpers {
     // -------------------------------------------------------------------------

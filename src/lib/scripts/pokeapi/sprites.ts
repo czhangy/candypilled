@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { logSuccess, logWarning } from '@/lib/scripts/utils/helpers';
 import { promptCheckbox } from '@/lib/scripts/utils/prompt-checkbox';
-import { PokemonData, SpriteVariant } from '@/lib/static/types';
+import { PokemonData } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const POKEAPI_SPECIES_URL = 'https://pokeapi.co/api/v2/pokemon-species';
@@ -13,6 +13,12 @@ interface DexRange {
     generation: number;
     start: number;
     end: number;
+}
+
+interface SpriteVariant {
+    id: string;
+    label: string;
+    generation: number;
 }
 
 const DEX_RANGES: DexRange[] = [

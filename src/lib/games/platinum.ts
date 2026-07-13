@@ -13,6 +13,7 @@ const PLATINUM: Game = {
     logo: '/logos/platinum.png',
     generation: 4,
     starters: ['Turtwig', 'Chimchar', 'Piplup'],
+    accentColor: '#ffd500',
     splits: [
         {
             name: 'Roark',
@@ -87,6 +88,55 @@ const PLATINUM: Game = {
                 {
                     name: 'Route 204 South',
                     map: route204South,
+                    battles: [
+                        {
+                            name: 'Sarah',
+                            team: [
+                                {
+                                    ability: 'Rivalry',
+                                    level: 7,
+                                    moves: ['Tackle', 'Leer'],
+                                    name: 'Shinx',
+                                    nature: Nature.Hardy,
+                                },
+                            ],
+                            trainerClass: 'Lass',
+                            x: 38.9,
+                            y: 66.5,
+                        },
+                        {
+                            isOptional: true,
+                            name: 'Tyler',
+                            team: [
+                                {
+                                    ability: 'Swift Swim',
+                                    level: 8,
+                                    moves: ['Splash', 'Tackle', 'Flail'],
+                                    name: 'Magikarp',
+                                    nature: Nature.Sassy,
+                                },
+                            ],
+                            trainerClass: 'Youngster',
+                            x: 22.9,
+                            y: 57.5,
+                        },
+                        {
+                            isOptional: true,
+                            trainerClass: 'Lass',
+                            name: 'Samantha',
+                            team: [
+                                {
+                                    name: 'Budew',
+                                    level: 7,
+                                    moves: ['Absorb', 'Growth', 'Water Sport'],
+                                    ability: 'Natural Cure',
+                                    nature: Nature.Docile,
+                                },
+                            ],
+                            x: 35.7,
+                            y: 27.5,
+                        },
+                    ],
                 },
                 {
                     name: 'Ravaged Path',
@@ -94,6 +144,63 @@ const PLATINUM: Game = {
                 {
                     name: 'Route 203',
                     map: route203,
+                    battles: [
+                        {
+                            isOptional: true,
+                            trainerClass: 'Youngster',
+                            name: 'Michael',
+                            team: [
+                                {
+                                    name: 'Kricketot',
+                                    level: 7,
+                                    moves: ['Growl', 'Bide'],
+                                    ability: 'Shed Skin',
+                                    nature: Nature.Mild,
+                                },
+                                {
+                                    name: 'Zubat',
+                                    level: 6,
+                                    moves: ['Leech Life', 'Supersonic'],
+                                    ability: 'Inner Focus',
+                                    nature: Nature.Careful,
+                                },
+                            ],
+                            x: 23,
+                            y: 51,
+                        },
+                        {
+                            isOptional: true,
+                            trainerClass: 'Youngster',
+                            name: 'Dallas',
+                            team: [
+                                {
+                                    name: 'Shinx',
+                                    level: 8,
+                                    moves: ['Tackle', 'Leer'],
+                                    nature: Nature.Calm,
+                                    ability: 'Rivalry',
+                                },
+                            ],
+                            x: 52.5,
+                            y: 68,
+                        },
+                        {
+                            isOptional: true,
+                            trainerClass: 'Youngster',
+                            name: 'Sebastian',
+                            team: [
+                                {
+                                    name: 'Machop',
+                                    level: 8,
+                                    moves: ['Low Kick', 'Leer', 'Focus Energy'],
+                                    nature: Nature.Relaxed,
+                                    ability: 'Guts',
+                                },
+                            ],
+                            x: 52.5,
+                            y: 68,
+                        },
+                    ],
                 },
                 {
                     name: 'Oreburgh Gate',

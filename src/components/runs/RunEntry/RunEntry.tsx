@@ -7,6 +7,7 @@ import CrownIcon from '@/lib/icons/CrownIcon';
 import RunIcon from '@/lib/icons/RunIcon';
 import SkullIcon from '@/lib/icons/SkullIcon';
 import { Game, Run } from '@/lib/static/types';
+import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './RunEntry.module.scss';
@@ -24,6 +25,14 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     const router = useRouter();
 
     // -------------------------------------------------------------------------
+    // RENDERING
+    // -------------------------------------------------------------------------
+
+    const personalBestSplitName = run?.personalBest
+        ? BattleProgressHelpers.getSplitName(game, run.personalBest)
+        : null;
+
+    // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
 
@@ -35,9 +44,10 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         const newRun: Run = {
             attempt: (run?.attempt ?? 0) + 1,
             deathCount: 0,
+            defeatedBattles: [],
             split: game.splits[0].name,
             boxCount: 0,
-            personalBest: run?.personalBest ?? 'N/A',
+            personalBest: run?.personalBest ?? '',
             hallOfFameCount: run?.hallOfFameCount ?? 0,
             starter: null,
         };
@@ -86,8 +96,8 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                         {!run || run.hallOfFameCount === 0 ? (
                             <span className={styles['personal-best']}>
                                 PB:{' '}
-                                {run?.personalBest && run.personalBest !== 'N/A'
-                                    ? `${run.personalBest} Split`
+                                {personalBestSplitName
+                                    ? `${personalBestSplitName} Split`
                                     : 'N/A'}
                             </span>
                         ) : (

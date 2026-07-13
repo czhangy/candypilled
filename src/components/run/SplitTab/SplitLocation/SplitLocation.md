@@ -26,17 +26,20 @@ battle card.
 
 ## Computations
 
-- `defeatedBattles` — the run's list of defeated battle ids, defaulting
-  to an empty array
-- `getBattleId` — builds a battle's storage id from its location and
-  trainer name
-- `isBattleDefeated` — whether a given battle's id is present in
+- `defeatedBattles` — the run's list of defeated battle (trainer) names
+- `nextPersonalBestBattleName` — the next required battle after the run's
+  personal best, in split/location/battle order
+- `isBattleDefeated` — whether a given battle's name is present in
   `defeatedBattles`
+- `isBattleNextPersonalBest` — whether a given battle's name matches
+  `nextPersonalBestBattleName`
 
 ## Handlers
 
 - **On header click** — toggles `isOpen`
 - **On trainer marker click** — selects that battle, or deselects it if
   already selected
-- **On battle toggle defeated** — adds or removes the battle's id from
-  the run's defeated battles in storage
+- **On battle toggle defeated** — adds or removes the battle's name from
+  the run's defeated battles in storage. Defeating a required (non-optional)
+  battle also updates the run's personal best if it is farther along than
+  the current one
