@@ -41,9 +41,7 @@
                 border-color 0.2s ease;
 
             img {
-                height: auto;
-                image-rendering: pixelated;
-                width: 5rem;
+                @include sprite;
             }
 
             @media (hover: hover) {
