@@ -1,5 +1,7 @@
 import CheckIcon from '@/lib/icons/CheckIcon';
 import CrownIcon from '@/lib/icons/CrownIcon';
+import DoubleExclamationMarkIcon from '@/lib/icons/DoubleExclamationMarkIcon';
+import ExclamationMarkIcon from '@/lib/icons/ExclamationMarkIcon';
 import { Battle } from '@/lib/static/types';
 import styles from './TrainerMarker.module.scss';
 
@@ -82,6 +84,19 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
                     <CrownIcon />
                 </span>
             )}
+            {!isDefeated && !isNextPersonalBest && trainer.isBoss && (
+                <span className={styles['trainer-marker__annotation']}>
+                    <DoubleExclamationMarkIcon />
+                </span>
+            )}
+            {!isDefeated &&
+                !isNextPersonalBest &&
+                !trainer.isBoss &&
+                trainer.isMiniboss && (
+                    <span className={styles['trainer-marker__annotation']}>
+                        <ExclamationMarkIcon />
+                    </span>
+                )}
         </button>
     );
 };

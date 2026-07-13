@@ -44,7 +44,8 @@
     }
 
     .trainer-marker__check,
-    .trainer-marker__crown {
+    .trainer-marker__crown,
+    .trainer-marker__annotation {
         align-items: center;
         border-radius: 50%;
         color: $background;
@@ -69,6 +70,10 @@
 
     .trainer-marker__crown {
         background: $gold;
+    }
+
+    .trainer-marker__annotation {
+        background: var(--marker-color);
     }
 
     &--defeated {
