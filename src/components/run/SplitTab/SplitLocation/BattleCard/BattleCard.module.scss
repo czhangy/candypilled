@@ -128,20 +128,6 @@
                     flex-shrink: 0;
                     width: 8rem;
 
-                    .pokemon-slot__level {
-                        @include mono-label;
-
-                        border-bottom: 1px solid $border-subtle;
-                        font-size: 0.7rem;
-
-                        span {
-                            color: $text-mid;
-                            display: block;
-                            padding: 0.35rem;
-                            text-align: center;
-                        }
-                    }
-
                     .pokemon-slot__sprite {
                         align-items: center;
                         background: color.adjust($background, $lightness: 4%);
@@ -166,38 +152,7 @@
                         text-align: center;
                     }
 
-                    .pokemon-slot__traits {
-                        border-bottom: 1px solid $border-subtle;
-                        font-size: 0.65rem;
-
-                        span {
-                            color: $text-mid;
-                            display: block;
-                            padding: 0.3rem;
-                            text-align: center;
-                        }
-                    }
-
-                    .pokemon-slot__nature {
-                        border-bottom: 1px solid $border-subtle;
-                        font-size: 0.65rem;
-
-                        span {
-                            color: $text-mid;
-                            display: block;
-                            padding: 0.3rem;
-                            text-align: center;
-                        }
-
-                        .pokemon-slot__nature-effect {
-                            display: inline;
-                            font-size: 0.55rem;
-                            padding: 0;
-                            vertical-align: baseline;
-                        }
-                    }
-
-                    .pokemon-slot__details {
+                    .pokemon-slot__metadata {
                         display: flex;
                         flex-direction: column;
                         list-style: none;
@@ -213,8 +168,20 @@
 
                             &:first-child {
                                 border-top: none;
-                                color: var(--accent-color);
                             }
+                        }
+
+                        .pokemon-slot__metadata-item--level {
+                            @include mono-label;
+                        }
+
+                        .pokemon-slot__metadata-item--accent {
+                            color: var(--accent-color);
+                        }
+
+                        .pokemon-slot__nature-effect {
+                            font-size: 0.55rem;
+                            vertical-align: baseline;
                         }
                     }
                 }
