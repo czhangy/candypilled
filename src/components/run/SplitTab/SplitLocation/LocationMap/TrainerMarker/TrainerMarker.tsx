@@ -54,6 +54,7 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
             aria-pressed={isSelected}
             className={[
                 styles['trainer-marker'],
+                trainer.isMiniboss && styles['trainer-marker--miniboss'],
                 isDefeated && styles['trainer-marker--defeated'],
                 isSelected && styles['trainer-marker--selected'],
             ]

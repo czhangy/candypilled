@@ -28,6 +28,7 @@ interface BattleItem {
 
 export interface Battle {
     fieldCondition?: FieldCondition;
+    isBoss?: boolean;
     isMiniboss?: boolean;
     isOptional?: boolean;
     items?: BattleItem;
