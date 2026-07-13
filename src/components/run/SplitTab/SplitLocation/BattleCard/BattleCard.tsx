@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Battle } from '@/lib/static/types';
+import BattleHelpers from '@/lib/utils/BattleHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import styles from './BattleCard.module.scss';
@@ -8,6 +9,7 @@ interface BattleCardProps {
     battle: Battle;
     isDefeated: boolean;
     onToggleDefeated: () => void;
+    starter: string | null;
     variant: string;
 }
 
@@ -15,6 +17,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
     battle,
     isDefeated,
     onToggleDefeated,
+    starter,
     variant,
 }) => {
     // -------------------------------------------------------------------------
@@ -22,7 +25,13 @@ const BattleCard: React.FC<BattleCardProps> = ({
     // -------------------------------------------------------------------------
 
     const MOVE_SLOT_COUNT = 4;
-    const SPRITE_SIZE = 80;
+    const SPRITE_SIZE = 96;
+
+    // -------------------------------------------------------------------------
+    // RENDERING
+    // -------------------------------------------------------------------------
+
+    const team = BattleHelpers.getTeam(battle, starter);
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -30,7 +39,13 @@ const BattleCard: React.FC<BattleCardProps> = ({
 
     return (
         <div className={styles['battle-card']}>
-            <span className={styles.label}>Battle</span>
+            <span className={styles.label}>
+                {battle.isBoss
+                    ? 'Boss'
+                    : battle.isMiniboss
+                      ? 'Miniboss'
+                      : 'Battle'}
+            </span>
             <div className={styles.content}>
                 <div className={styles['trainer-header']}>
                     {battle.trainerClass} {battle.name}
@@ -43,6 +58,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                 height={SPRITE_SIZE}
                                 src={TrainerHelpers.getSprite(
                                     battle.trainerClass,
+                                    battle.name,
                                     variant
                                 )}
                                 width={SPRITE_SIZE}
@@ -79,7 +95,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                         </button>
                     </div>
                     <div className={styles.team}>
-                        {battle.team.map((pokemon) => {
+                        {team.map((pokemon) => {
                             const sprite = PokemonHelpers.getSprite(
                                 pokemon.name,
                                 variant

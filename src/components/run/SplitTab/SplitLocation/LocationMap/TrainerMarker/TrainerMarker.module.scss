@@ -3,8 +3,10 @@
 @use '@/styles/mixins' as *;
 
 .trainer-marker {
-    background: color-mix(in srgb, var(--accent-color) 35%, transparent);
-    border: 2px solid var(--accent-color);
+    --marker-color: var(--accent-color);
+
+    background: color-mix(in srgb, var(--marker-color) 35%, transparent);
+    border: 2px solid var(--marker-color);
     cursor: pointer;
     height: var(--height);
     left: var(--x);
@@ -19,7 +21,7 @@
         &:hover {
             background: color-mix(
                 in srgb,
-                var(--accent-color) 60%,
+                var(--marker-color) 60%,
                 transparent
             );
         }
@@ -29,12 +31,21 @@
         transition: none;
     }
 
+    &--miniboss {
+        --marker-color: #{$orange};
+    }
+
+    &--boss {
+        --marker-color: #{$red};
+    }
+
     &--selected {
-        background: color-mix(in srgb, var(--accent-color) 75%, transparent);
+        background: color-mix(in srgb, var(--marker-color) 75%, transparent);
     }
 
     .trainer-marker__check,
-    .trainer-marker__crown {
+    .trainer-marker__crown,
+    .trainer-marker__annotation {
         align-items: center;
         border-radius: 50%;
         color: $background;
@@ -59,6 +70,10 @@
 
     .trainer-marker__crown {
         background: $gold;
+    }
+
+    .trainer-marker__annotation {
+        background: var(--marker-color);
     }
 
     &--defeated {

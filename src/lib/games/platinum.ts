@@ -1,6 +1,7 @@
 import {
     oreburghGate,
     oreburghGym,
+    route201,
     route202,
     route203,
     route204South,
@@ -13,7 +14,7 @@ const PLATINUM: Game = {
     logo: '/logos/platinum.png',
     generation: 4,
     starters: ['Turtwig', 'Chimchar', 'Piplup'],
-    accentColor: '#ffd500',
+    accentColor: '#FFD500',
     splits: [
         {
             name: 'Roark',
@@ -23,6 +24,45 @@ const PLATINUM: Game = {
                 },
                 {
                     name: 'Route 201',
+                    map: route201,
+                    battles: [
+                        {
+                            isMiniboss: true,
+                            trainerClass: 'PKMN Trainer',
+                            name: 'Barry 1',
+                            teamsByStarter: {
+                                Turtwig: [
+                                    {
+                                        name: 'Chimchar',
+                                        level: 5,
+                                        moves: ['Scratch', 'Leer'],
+                                        nature: Nature.Calm,
+                                        ability: 'Blaze',
+                                    },
+                                ],
+                                Chimchar: [
+                                    {
+                                        name: 'Piplup',
+                                        level: 5,
+                                        moves: ['Pound', 'Growl'],
+                                        nature: Nature.Bashful,
+                                        ability: 'Torrent',
+                                    },
+                                ],
+                                Piplup: [
+                                    {
+                                        name: 'Turtwig',
+                                        level: 5,
+                                        moves: ['Tackle', 'Withdraw'],
+                                        nature: Nature.Docile,
+                                        ability: 'Overgrow',
+                                    },
+                                ],
+                            },
+                            x: 27.5,
+                            y: 64,
+                        },
+                    ],
                 },
                 {
                     name: 'Sandgem Town',
@@ -32,51 +72,51 @@ const PLATINUM: Game = {
                     map: route202,
                     battles: [
                         {
+                            trainerClass: 'Youngster',
                             name: 'Tristan',
                             team: [
                                 {
-                                    ability: 'Keen Eye',
+                                    name: 'Starly',
                                     level: 5,
                                     moves: ['Tackle', 'Growl', 'Quick Attack'],
-                                    name: 'Starly',
                                     nature: Nature.Careful,
+                                    ability: 'Keen Eye',
                                 },
                             ],
-                            trainerClass: 'Youngster',
                             x: 22.13,
                             y: 47,
                         },
                         {
+                            trainerClass: 'Lass',
                             name: 'Natalie',
                             team: [
                                 {
-                                    ability: 'Simple',
+                                    name: 'Bidoof',
                                     level: 5,
                                     moves: ['Tackle', 'Growl'],
-                                    name: 'Bidoof',
                                     nature: Nature.Quiet,
+                                    ability: 'Simple',
                                 },
                             ],
-                            trainerClass: 'Lass',
                             x: 61.9,
                             y: 60.4,
                         },
                         {
+                            trainerClass: 'Youngster',
                             name: 'Logan',
                             team: [
                                 {
-                                    ability: 'Shed Skin',
+                                    name: 'Burmy',
                                     level: 5,
                                     moves: [
                                         'Tackle',
                                         'Bug Bite',
                                         'Hidden Power',
                                     ],
-                                    name: 'Burmy',
                                     nature: Nature.Impish,
+                                    ability: 'Shed Skin',
                                 },
                             ],
-                            trainerClass: 'Youngster',
                             x: 72.3,
                             y: 21.9,
                         },
@@ -90,33 +130,33 @@ const PLATINUM: Game = {
                     map: route204South,
                     battles: [
                         {
+                            trainerClass: 'Lass',
                             name: 'Sarah',
                             team: [
                                 {
-                                    ability: 'Rivalry',
+                                    name: 'Shinx',
                                     level: 7,
                                     moves: ['Tackle', 'Leer'],
-                                    name: 'Shinx',
                                     nature: Nature.Hardy,
+                                    ability: 'Rivalry',
                                 },
                             ],
-                            trainerClass: 'Lass',
                             x: 38.9,
                             y: 66.5,
                         },
                         {
                             isOptional: true,
+                            trainerClass: 'Youngster',
                             name: 'Tyler',
                             team: [
                                 {
-                                    ability: 'Swift Swim',
+                                    name: 'Magikarp',
                                     level: 8,
                                     moves: ['Splash', 'Tackle', 'Flail'],
-                                    name: 'Magikarp',
                                     nature: Nature.Sassy,
+                                    ability: 'Swift Swim',
                                 },
                             ],
-                            trainerClass: 'Youngster',
                             x: 22.9,
                             y: 57.5,
                         },
@@ -129,8 +169,8 @@ const PLATINUM: Game = {
                                     name: 'Budew',
                                     level: 7,
                                     moves: ['Absorb', 'Growth', 'Water Sport'],
-                                    ability: 'Natural Cure',
                                     nature: Nature.Docile,
+                                    ability: 'Natural Cure',
                                 },
                             ],
                             x: 35.7,
@@ -146,6 +186,69 @@ const PLATINUM: Game = {
                     map: route203,
                     battles: [
                         {
+                            isMiniboss: true,
+                            trainerClass: 'PKMN Trainer',
+                            name: 'Barry 2',
+                            teamsByStarter: {
+                                Turtwig: [
+                                    {
+                                        name: 'Starly',
+                                        level: 7,
+                                        moves: ['Quick Attack', 'Growl'],
+                                        nature: Nature.Naughty,
+                                        ability: 'Keen Eye',
+                                        ivs: 3,
+                                    },
+                                    {
+                                        name: 'Chimchar',
+                                        level: 9,
+                                        moves: ['Scratch', 'Leer'],
+                                        nature: Nature.Docile,
+                                        ability: 'Blaze',
+                                        ivs: 3,
+                                    },
+                                ],
+                                Chimchar: [
+                                    {
+                                        name: 'Starly',
+                                        level: 7,
+                                        moves: ['Quick Attack', 'Growl'],
+                                        nature: Nature.Naive,
+                                        ability: 'Keen Eye',
+                                        ivs: 3,
+                                    },
+                                    {
+                                        name: 'Piplup',
+                                        level: 9,
+                                        moves: ['Pound', 'Growl'],
+                                        nature: Nature.Naughty,
+                                        ability: 'Torrent',
+                                        ivs: 3,
+                                    },
+                                ],
+                                Piplup: [
+                                    {
+                                        name: 'Starly',
+                                        level: 7,
+                                        moves: ['Quick Attack', 'Growl'],
+                                        nature: Nature.Timid,
+                                        ability: 'Keen Eye',
+                                        ivs: 3,
+                                    },
+                                    {
+                                        name: 'Turtwig',
+                                        level: 9,
+                                        moves: ['Tackle', 'Withdraw'],
+                                        nature: Nature.Brave,
+                                        ability: 'Overgrow',
+                                        ivs: 3,
+                                    },
+                                ],
+                            },
+                            x: 11.4,
+                            y: 78.2,
+                        },
+                        {
                             isOptional: true,
                             trainerClass: 'Youngster',
                             name: 'Michael',
@@ -154,15 +257,15 @@ const PLATINUM: Game = {
                                     name: 'Kricketot',
                                     level: 7,
                                     moves: ['Growl', 'Bide'],
-                                    ability: 'Shed Skin',
                                     nature: Nature.Mild,
+                                    ability: 'Shed Skin',
                                 },
                                 {
                                     name: 'Zubat',
                                     level: 6,
                                     moves: ['Leech Life', 'Supersonic'],
-                                    ability: 'Inner Focus',
                                     nature: Nature.Careful,
+                                    ability: 'Inner Focus',
                                 },
                             ],
                             x: 23,
@@ -197,14 +300,89 @@ const PLATINUM: Game = {
                                     ability: 'Guts',
                                 },
                             ],
-                            x: 52.5,
-                            y: 68,
+                            x: 72.3,
+                            y: 65.5,
+                        },
+                        {
+                            isOptional: true,
+                            trainerClass: 'Lass',
+                            name: 'Kaitlin',
+                            team: [
+                                {
+                                    name: 'Bidoof',
+                                    level: 4,
+                                    moves: ['Tackle'],
+                                    nature: Nature.Rash,
+                                    ability: 'Simple',
+                                },
+                                {
+                                    name: 'Budew',
+                                    level: 4,
+                                    moves: ['Absorb', 'Growth'],
+                                    nature: Nature.Mild,
+                                    ability: 'Natural Cure',
+                                },
+                                {
+                                    name: 'Starly',
+                                    level: 4,
+                                    moves: ['Tackle', 'Growl'],
+                                    nature: Nature.Quirky,
+                                    ability: 'Keen Eye',
+                                },
+                                {
+                                    name: 'Abra',
+                                    level: 4,
+                                    moves: ['Teleport'],
+                                    nature: Nature.Docile,
+                                    ability: 'Synchronize',
+                                },
+                            ],
+                            x: 85.2,
+                            y: 62,
+                        },
+                        {
+                            isOptional: true,
+                            trainerClass: 'Lass',
+                            name: 'Madeline',
+                            team: [
+                                {
+                                    name: 'Psyduck',
+                                    level: 8,
+                                    moves: [
+                                        'Water Sport',
+                                        'Scratch',
+                                        'Tail Whip',
+                                    ],
+                                    nature: Nature.Relaxed,
+                                    ability: 'Damp',
+                                },
+                            ],
+                            x: 82,
+                            y: 35,
                         },
                     ],
                 },
                 {
                     name: 'Oreburgh Gate',
                     map: oreburghGate,
+                    battles: [
+                        {
+                            isOptional: true,
+                            trainerClass: 'Picnicker',
+                            name: 'Diana',
+                            team: [
+                                {
+                                    name: 'Bidoof',
+                                    level: 9,
+                                    moves: ['Tackle', 'Growl', 'Defense Curl'],
+                                    nature: Nature.Modest,
+                                    ability: 'Simple',
+                                },
+                            ],
+                            x: 82,
+                            y: 35,
+                        },
+                    ],
                 },
                 {
                     name: 'Oreburgh City',
@@ -212,6 +390,46 @@ const PLATINUM: Game = {
                 {
                     name: 'Oreburgh Gym',
                     map: oreburghGym,
+                    battles: [
+                        {
+                            isBoss: true,
+                            trainerClass: 'Gym Leader',
+                            name: 'Roark',
+                            team: [
+                                {
+                                    name: 'Geodude',
+                                    level: 12,
+                                    moves: ['Stealth Rock', 'Rock Throw'],
+                                    nature: Nature.Lax,
+                                    ability: 'Rock Head',
+                                    ivs: 6,
+                                },
+                                {
+                                    name: 'Onix',
+                                    level: 12,
+                                    moves: [
+                                        'Stealth Rock',
+                                        'Rock Throw',
+                                        'Screech',
+                                    ],
+                                    nature: Nature.Bold,
+                                    ability: 'Rock Head',
+                                    ivs: 6,
+                                },
+                                {
+                                    name: 'Cranidos',
+                                    level: 14,
+                                    moves: ['Headbutt', 'Pursuit', 'Leer'],
+                                    nature: Nature.Jolly,
+                                    ability: 'Mold Breaker',
+                                    ivs: 6,
+                                },
+                            ],
+                            items: { count: 2, name: 'Potion' },
+                            x: 46.6,
+                            y: 22.8,
+                        },
+                    ],
                 },
             ],
         },

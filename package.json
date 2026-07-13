@@ -12,6 +12,7 @@
         "gen:class": "tsx src/lib/scripts/generators/generate-class.ts",
         "gen:icon": "tsx src/lib/scripts/generators/generate-icon.ts",
         "pokeapi": "tsx src/lib/scripts/pokeapi/cli.ts",
+        "compose": "tsx src/lib/scripts/assets/compose-map-sprite.ts",
         "prepare": "husky"
     },
     "lint-staged": {
@@ -46,6 +47,7 @@
         "@types/react-dom": "^19",
         "eslint": "^9",
         "eslint-config-next": "16.2.10",
+        "sharp": "^0.35.3",
         "typescript": "^5"
     }
 }

@@ -151,6 +151,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                             onToggleDefeated={() =>
                                 handleBattleToggleDefeated(selectedBattle)
                             }
+                            starter={run.starter}
                             variant={variant}
                         />
                     )}
