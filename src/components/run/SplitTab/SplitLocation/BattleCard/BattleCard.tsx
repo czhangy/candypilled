@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Battle } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
+import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import styles from './BattleCard.module.scss';
@@ -125,27 +126,55 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                     >
                                         {pokemon.name}
                                     </div>
-                                    <div
-                                        className={
-                                            styles['pokemon-slot__level']
-                                        }
-                                    >
-                                        <span>Lv. {pokemon.level}</span>
-                                        <span>{pokemon.nature ?? '-'}</span>
-                                    </div>
-                                    <div
-                                        className={
-                                            styles['pokemon-slot__traits']
-                                        }
-                                    >
-                                        <span>{pokemon.ability}</span>
-                                    </div>
                                     <ul
                                         className={
-                                            styles['pokemon-slot__details']
+                                            styles['pokemon-slot__metadata']
                                         }
                                     >
-                                        <li>{pokemon.heldItem || '-'}</li>
+                                        <li
+                                            className={
+                                                styles[
+                                                    'pokemon-slot__metadata-item--level'
+                                                ]
+                                            }
+                                        >
+                                            Lv. {pokemon.level}
+                                        </li>
+                                        <li>{pokemon.ability}</li>
+                                        <li>
+                                            {pokemon.nature ? (
+                                                <>
+                                                    {pokemon.nature}
+                                                    {NatureHelpers.getEffectLabel(
+                                                        pokemon.nature
+                                                    ) && (
+                                                        <span
+                                                            className={
+                                                                styles[
+                                                                    'pokemon-slot__nature-effect'
+                                                                ]
+                                                            }
+                                                        >
+                                                            {' '}
+                                                            {NatureHelpers.getEffectLabel(
+                                                                pokemon.nature
+                                                            )}
+                                                        </span>
+                                                    )}
+                                                </>
+                                            ) : (
+                                                '-'
+                                            )}
+                                        </li>
+                                        <li
+                                            className={
+                                                styles[
+                                                    'pokemon-slot__metadata-item--accent'
+                                                ]
+                                            }
+                                        >
+                                            {pokemon.heldItem || '-'}
+                                        </li>
                                         {Array.from(
                                             { length: MOVE_SLOT_COUNT },
                                             (_, index) =>

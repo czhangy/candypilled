@@ -8,3 +8,9 @@
     font-family: $font-mono;
     font-weight: 700;
 }
+
+@mixin sprite {
+    height: 5rem;
+    image-rendering: pixelated;
+    width: 5rem;
+}

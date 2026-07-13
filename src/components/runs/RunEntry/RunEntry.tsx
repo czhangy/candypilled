@@ -49,7 +49,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             boxCount: 0,
             personalBest: run?.personalBest ?? '',
             hallOfFameCount: run?.hallOfFameCount ?? 0,
-            starter: null,
+            starter: game.starters[0],
         };
 
         LocalStorageHelpers.saveRun(game, newRun);
