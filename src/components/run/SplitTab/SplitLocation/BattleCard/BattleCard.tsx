@@ -96,7 +96,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                         </button>
                     </div>
                     <div className={styles.team}>
-                        {team.map((pokemon) => {
+                        {team.map((pokemon, index) => {
                             const sprite = PokemonHelpers.getSprite(
                                 pokemon.name,
                                 variant
@@ -105,7 +105,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                             return (
                                 <div
                                     className={styles['pokemon-slot']}
-                                    key={pokemon.name}
+                                    key={`${pokemon.name}-${index}`}
                                 >
                                     <div
                                         className={
@@ -134,11 +134,28 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                         <li
                                             className={
                                                 styles[
-                                                    'pokemon-slot__metadata-item--level'
+                                                    'pokemon-slot__metadata-item--split'
                                                 ]
                                             }
                                         >
-                                            Lv. {pokemon.level}
+                                            <span
+                                                className={
+                                                    styles[
+                                                        'pokemon-slot__metadata-item--level'
+                                                    ]
+                                                }
+                                            >
+                                                Lv{pokemon.level}
+                                            </span>
+                                            <span
+                                                className={
+                                                    styles[
+                                                        'pokemon-slot__metadata-item--accent'
+                                                    ]
+                                                }
+                                            >
+                                                {pokemon.heldItem || '-'}
+                                            </span>
                                         </li>
                                         <li>{pokemon.ability}</li>
                                         <li>
@@ -165,15 +182,6 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                             ) : (
                                                 '-'
                                             )}
-                                        </li>
-                                        <li
-                                            className={
-                                                styles[
-                                                    'pokemon-slot__metadata-item--accent'
-                                                ]
-                                            }
-                                        >
-                                            {pokemon.heldItem || '-'}
                                         </li>
                                         {Array.from(
                                             { length: MOVE_SLOT_COUNT },

@@ -126,15 +126,16 @@
                     display: flex;
                     flex-direction: column;
                     flex-shrink: 0;
-                    width: 8rem;
+                    width: 10.25rem;
 
                     .pokemon-slot__sprite {
                         align-items: center;
                         background: color.adjust($background, $lightness: 4%);
                         border-bottom: 1px solid $border-subtle;
                         display: flex;
-                        height: 5rem;
                         justify-content: center;
+                        min-height: 5rem;
+                        padding-block: 0.5rem;
                         width: 100%;
 
                         img {
@@ -171,12 +172,28 @@
                             }
                         }
 
+                        .pokemon-slot__metadata-item--split {
+                            display: flex;
+                            padding: 0;
+
+                            span {
+                                padding: 0.3rem;
+
+                                &:first-child {
+                                    border-right: 1px solid $border-subtle;
+                                }
+                            }
+                        }
+
                         .pokemon-slot__metadata-item--level {
                             @include mono-label;
+
+                            flex: 1;
                         }
 
                         .pokemon-slot__metadata-item--accent {
                             color: var(--accent-color);
+                            flex: 3;
                         }
 
                         .pokemon-slot__nature-effect {
