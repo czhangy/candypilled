@@ -10,7 +10,7 @@ interface StatValues {
     spe: number;
 }
 
-interface BattlePokemon {
+export interface BattlePokemon {
     ability: string;
     evs?: number | StatValues;
     heldItem?: string;
@@ -28,10 +28,12 @@ interface BattleItem {
 
 export interface Battle {
     fieldCondition?: FieldCondition;
+    isMiniboss?: boolean;
     isOptional?: boolean;
     items?: BattleItem;
     name: string;
-    team: BattlePokemon[];
+    team?: BattlePokemon[];
+    teamsByStarter?: Partial<Record<string, BattlePokemon[]>>;
     trainerClass: string;
     x: number;
     y: number;
