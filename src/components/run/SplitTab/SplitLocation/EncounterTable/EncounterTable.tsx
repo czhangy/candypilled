@@ -21,7 +21,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const SPRITE_SIZE = 28;
+    const SPRITE_SIZE = 60;
 
     const METHOD_ORDER = [
         'only-one',
@@ -143,6 +143,11 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                 />
             )}
             <table className={styles['encounter-table']}>
+                <colgroup>
+                    <col className={styles['col-pokemon']} />
+                    <col className={styles['col-level']} />
+                    <col className={styles['col-chance']} />
+                </colgroup>
                 <tbody>
                     {methods.map((method) => (
                         <Fragment key={method}>

@@ -129,6 +129,11 @@
                     flex-shrink: 0;
                     width: 10.25rem;
 
+                    &--empty {
+                        background: $background-light;
+                        border-style: dashed;
+                    }
+
                     .pokemon-slot__sprite {
                         align-items: center;
                         background: $background-light;
