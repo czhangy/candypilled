@@ -157,8 +157,22 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                                 {pokemon.heldItem || '-'}
                                             </span>
                                         </li>
-                                        <li>{pokemon.ability}</li>
-                                        <li>
+                                        <li
+                                            className={
+                                                styles[
+                                                    'pokemon-slot__metadata-item--ability'
+                                                ]
+                                            }
+                                        >
+                                            {pokemon.ability}
+                                        </li>
+                                        <li
+                                            className={
+                                                styles[
+                                                    'pokemon-slot__metadata-item--nature'
+                                                ]
+                                            }
+                                        >
                                             {pokemon.nature ? (
                                                 <>
                                                     {pokemon.nature}
