@@ -46,7 +46,7 @@ export interface Location {
     battles?: Battle[];
 }
 
-interface Split {
+export interface Split {
     name: string;
     locations: Location[];
 }

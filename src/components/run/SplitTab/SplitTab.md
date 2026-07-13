@@ -1,8 +1,9 @@
 # SplitTab
 
 The content of the "Split" tab on a game's run page. Shows the run's current
-split, on the game's first split a starter selector whose choice is saved to
-the run, and a collapsible card for each location in the current split.
+split with its level cap, on the game's first split a starter selector whose
+choice is saved to the run, and a collapsible card for each location in the
+current split.
 
 ## Props
 
@@ -17,6 +18,9 @@ the run, and a collapsible card for each location in the current split.
   controlling whether the starter selector is shown
 - `currentSplit` — the split matching `run.split`, whose locations are
   rendered as `SplitLocation` cards
+- `levelCap` — the highest level Pokemon on the team of the current split's
+  last battle (resolved for the run's chosen starter), shown next to the
+  split title
 
 ## Handlers
 

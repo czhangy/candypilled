@@ -1,4 +1,5 @@
-import { Game } from '@/lib/static/types';
+import { Game, Split } from '@/lib/static/types';
+import BattleHelpers from './BattleHelpers';
 
 interface BattlePosition {
     splitIndex: number;
@@ -10,6 +11,19 @@ export default class BattleProgressHelpers {
     // -------------------------------------------------------------------------
     // PUBLIC
     // -------------------------------------------------------------------------
+
+    static getLevelCap(split: Split, starter: string | null): number | null {
+        const battles = split.locations.flatMap(
+            (location) => location.battles ?? []
+        );
+        const lastBattle = battles[battles.length - 1];
+        if (!lastBattle) return null;
+
+        const team = BattleHelpers.getTeam(lastBattle, starter);
+        if (team.length === 0) return null;
+
+        return Math.max(...team.map((pokemon) => pokemon.level));
+    }
 
     static getPosition(game: Game, battleName: string): BattlePosition | null {
         for (

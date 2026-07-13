@@ -1,6 +1,7 @@
 'use client';
 
 import { Game, Run } from '@/lib/static/types';
+import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import SplitLocation from './SplitLocation/SplitLocation';
@@ -19,6 +20,9 @@ const SplitTab: React.FC<SplitTabProps> = ({ game, run }) => {
 
     const isFirstSplit = run.split === game.splits[0].name;
     const currentSplit = game.splits.find((split) => split.name === run.split);
+    const levelCap = currentSplit
+        ? BattleProgressHelpers.getLevelCap(currentSplit, run.starter)
+        : null;
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -34,7 +38,14 @@ const SplitTab: React.FC<SplitTabProps> = ({ game, run }) => {
 
     return (
         <div className={styles['split-tab']}>
-            <h2 className={styles.header}>{run.split} Split</h2>
+            <div className={styles.header}>
+                <h2 className={styles.title}>{run.split} Split</h2>
+                {levelCap !== null && (
+                    <span className={styles['level-cap']}>
+                        Level Cap: {levelCap}
+                    </span>
+                )}
+            </div>
             {isFirstSplit && (
                 <StarterSelect
                     onSelect={handleStarterSelect}
