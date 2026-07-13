@@ -2,9 +2,10 @@
 
 Displays the wild Pokemon encounters available at a location as a table.
 If the encounters include time-of-day-specific slots (morning, day,
-night), a tab toggle is shown above the table to switch between them;
-encounters that aren't tied to a time of day are always shown regardless
-of the selected tab. Rows are grouped under a sub-header for each
+night), a tab toggle with an icon for each time of day is shown above
+the table to switch between them; encounters that aren't tied to a time
+of day are always shown regardless of the selected tab. Rows are
+grouped under a sub-header for each
 encounter method (e.g. "Old Rod", "Rock Smash"), in a fixed method
 order; within a group, rows are sorted by encounter chance, highest
 first. Each row shows the Pokemon's sprite (matching the game's sprite

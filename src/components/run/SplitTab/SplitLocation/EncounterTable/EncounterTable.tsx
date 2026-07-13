@@ -1,6 +1,9 @@
 import { Fragment, useState } from 'react';
 import Image from 'next/image';
 import Tabs from '@/components/run/Tabs/Tabs';
+import DayIcon from '@/lib/icons/DayIcon';
+import MorningIcon from '@/lib/icons/MorningIcon';
+import NightIcon from '@/lib/icons/NightIcon';
 import { Encounter } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './EncounterTable.module.scss';
@@ -38,6 +41,12 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         'time-morning': 'Morning',
         'time-day': 'Day',
         'time-night': 'Night',
+    };
+
+    const TIME_OF_DAY_ICONS: Record<string, React.FC> = {
+        'time-morning': MorningIcon,
+        'time-day': DayIcon,
+        'time-night': NightIcon,
     };
 
     // -------------------------------------------------------------------------
@@ -119,10 +128,18 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                 <Tabs
                     activeTab={selectedTimeOfDay ?? timesOfDay[0]}
                     onTabChange={handleTimeOfDayChange}
-                    tabs={timesOfDay.map((time) => ({
-                        id: time,
-                        label: TIME_OF_DAY_LABELS[time],
-                    }))}
+                    tabs={timesOfDay.map((time) => {
+                        const TimeOfDayIcon = TIME_OF_DAY_ICONS[time];
+                        return {
+                            id: time,
+                            label: (
+                                <span className={styles['time-of-day-icon']}>
+                                    <TimeOfDayIcon />
+                                </span>
+                            ),
+                            ariaLabel: TIME_OF_DAY_LABELS[time],
+                        };
+                    })}
                 />
             )}
             <table className={styles['encounter-table']}>

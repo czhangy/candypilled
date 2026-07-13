@@ -1,6 +1,18 @@
 @use '@/styles/constants' as *;
 @use '@/styles/mixins' as *;
 
+.time-of-day-icon {
+    align-items: center;
+    display: flex;
+    height: 1.5rem;
+    width: 1.5rem;
+
+    svg {
+        height: 100%;
+        width: 100%;
+    }
+}
+
 .encounter-table-wrapper {
     display: flex;
     flex-direction: column;
