@@ -245,8 +245,8 @@ const PLATINUM: Game = {
                                     },
                                 ],
                             },
-                            x: 27.5,
-                            y: 64,
+                            x: 11.4,
+                            y: 78.2,
                         },
                         {
                             isOptional: true,
