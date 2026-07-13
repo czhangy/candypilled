@@ -3,8 +3,9 @@
 
 .encounter-table {
     border: 1px solid $border-subtle;
-    border-collapse: collapse;
+    border-collapse: separate;
     border-radius: 0.5rem;
+    border-spacing: 0;
     overflow: hidden;
     width: fit-content;
 
@@ -23,7 +24,6 @@
 
         background: $background-light;
         border-bottom: 1px solid $border-subtle;
-        border-top: 1px solid $border-subtle;
         color: $text-mid;
         font-size: 0.7rem;
         letter-spacing: 0.05em;

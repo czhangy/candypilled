@@ -9,7 +9,7 @@ import {
 import { Encounter } from '@/lib/static/types';
 
 const POKEAPI_REGION_URL = 'https://pokeapi.co/api/v2/region';
-const DATA_PATH = path.join('src', 'lib', 'pokemon', 'encounters.json');
+const DATA_PATH = path.join('src', 'lib', 'data', 'encounters.json');
 const FETCH_DELAY_MS = 75;
 
 interface GameVersion {
@@ -47,6 +47,24 @@ interface RawPokemonEncounter {
     pokemon: { name: string };
     version_details: RawVersionDetail[];
 }
+
+const EXCLUDED_METHODS = [
+    'super-rod',
+    'roaming-grass',
+    'roaming-water',
+    'pokemon-ranger',
+];
+
+const EXCLUDED_CONDITIONS = ['swarm-yes', 'radar-on'];
+const EXCLUDED_CONDITION_PREFIXES = ['slot2-'];
+const STRIPPED_CONDITIONS = ['slot2-none', 'radar-none'];
+
+const isExcludedCondition = (condition: string): boolean =>
+    !STRIPPED_CONDITIONS.includes(condition) &&
+    (EXCLUDED_CONDITIONS.includes(condition) ||
+        EXCLUDED_CONDITION_PREFIXES.some((prefix) =>
+            condition.startsWith(prefix)
+        ));
 
 const GAME_VERSIONS: GameVersion[] = [
     {
@@ -125,24 +143,52 @@ const fetchAreaEncounters = async (
         if (!versionDetail) continue;
 
         for (const detail of versionDetail.encounter_details) {
+            if (EXCLUDED_METHODS.includes(detail.method.name)) continue;
+
+            const conditionNames = detail.condition_values.map(
+                (condition) => condition.name
+            );
+            if (conditionNames.some(isExcludedCondition)) continue;
+
+            const conditions = conditionNames.filter(
+                (condition) => !STRIPPED_CONDITIONS.includes(condition)
+            );
+
             encounters.push({
                 species: pokemonEncounter.pokemon.name,
                 method: detail.method.name,
                 minLevel: detail.min_level,
                 maxLevel: detail.max_level,
                 chance: detail.chance,
-                ...(detail.condition_values.length > 0
-                    ? {
-                          conditions: detail.condition_values.map(
-                              (condition) => condition.name
-                          ),
-                      }
-                    : {}),
+                ...(conditions.length > 0 ? { conditions } : {}),
             });
         }
     }
 
     return encounters;
+};
+
+const mergeEncounters = (encounters: Encounter[]): Encounter[] => {
+    const merged = new Map<string, Encounter>();
+
+    for (const encounter of encounters) {
+        const conditionsKey = [...(encounter.conditions ?? [])]
+            .sort()
+            .join(',');
+        const key = `${encounter.species}|${encounter.method}|${conditionsKey}`;
+        const existing = merged.get(key);
+
+        if (!existing) {
+            merged.set(key, { ...encounter });
+            continue;
+        }
+
+        existing.chance += encounter.chance;
+        existing.minLevel = Math.min(existing.minLevel, encounter.minLevel);
+        existing.maxLevel = Math.max(existing.maxLevel, encounter.maxLevel);
+    }
+
+    return [...merged.values()];
 };
 
 export const fetchEncounters = async (version: GameVersion): Promise<void> => {
@@ -152,14 +198,16 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
 
     for (const location of locations) {
         const areas = await fetchLocationAreas(location.url);
-        const encounters: Encounter[] = [];
+        const rawEncounters: Encounter[] = [];
 
         for (const area of areas) {
-            encounters.push(
+            rawEncounters.push(
                 ...(await fetchAreaEncounters(area.url, version.version))
             );
             await sleep(FETCH_DELAY_MS);
         }
+
+        const encounters = mergeEncounters(rawEncounters);
 
         if (encounters.length > 0) {
             locationsData[location.name] = {

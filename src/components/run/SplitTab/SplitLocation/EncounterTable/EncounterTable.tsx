@@ -19,21 +19,16 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
 
     const SPRITE_SIZE = 28;
 
-    // TODO: confirm final method order
     const METHOD_ORDER = [
-        'walk',
-        'surf',
-        'old-rod',
-        'good-rod',
-        'super-rod',
-        'honey-tree',
-        'roaming-grass',
-        'roaming-water',
-        'feebas-tile-fishing',
+        'only-one',
         'gift',
         'gift-egg',
-        'only-one',
-        'pokemon-ranger',
+        'walk',
+        'old-rod',
+        'good-rod',
+        'feebas-tile-fishing',
+        'surf',
+        'honey-tree',
     ];
 
     // -------------------------------------------------------------------------
