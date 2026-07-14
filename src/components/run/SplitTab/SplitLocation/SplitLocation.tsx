@@ -86,8 +86,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // STATE
     // -------------------------------------------------------------------------
 
-    // TODO: remove dev default-open once map/marker work is done
-    const [isOpen, setIsOpen] = useState(location.name === 'Oreburgh Gate');
+    const [isOpen, setIsOpen] = useState(false);
     const [selectedBattle, setSelectedBattle] = useState<Battle | undefined>(
         getDefaultSelectedBattle
     );
