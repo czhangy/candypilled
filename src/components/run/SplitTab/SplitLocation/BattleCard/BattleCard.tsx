@@ -66,6 +66,22 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                 width={SPRITE_SIZE}
                             />
                         </div>
+                        {battle.isOptional && (
+                            <div className={styles['trainer__metadata']}>
+                                OPTIONAL
+                            </div>
+                        )}
+                        {battle.isTrueDouble ? (
+                            <div className={styles['trainer__metadata']}>
+                                TRUE DOUBLE
+                            </div>
+                        ) : (
+                            battle.isDouble && (
+                                <div className={styles['trainer__metadata']}>
+                                    DOUBLE
+                                </div>
+                            )
+                        )}
                         {battle.fieldCondition && (
                             <div className={styles['trainer__metadata']}>
                                 {battle.fieldCondition}
@@ -74,11 +90,6 @@ const BattleCard: React.FC<BattleCardProps> = ({
                         {battle.items && (
                             <div className={styles['trainer__metadata']}>
                                 {`${battle.items.count}x ${battle.items.name}`}
-                            </div>
-                        )}
-                        {battle.isOptional && (
-                            <div className={styles['trainer__metadata']}>
-                                OPTIONAL
                             </div>
                         )}
                         <button

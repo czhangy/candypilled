@@ -29,8 +29,12 @@ interface BattleItem {
 export interface Battle {
     fieldCondition?: FieldCondition;
     isBoss?: boolean;
+    isDouble?: boolean;
+    isDoubleHeightMarker?: boolean;
+    isDoubleWidthMarker?: boolean;
     isMiniboss?: boolean;
     isOptional?: boolean;
+    isTrueDouble?: boolean;
     items?: BattleItem;
     name: string;
     team?: BattlePokemon[];
