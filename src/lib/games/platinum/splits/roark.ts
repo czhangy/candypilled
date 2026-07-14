@@ -1,3 +1,4 @@
+import OREBURGH_MINE from '@/lib/games/platinum/splits/locations/oreburgh-mine';
 import ROUTE_207 from '@/lib/games/platinum/splits/locations/route-207';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
@@ -23,6 +24,7 @@ const ROARK: Split = {
         LocationHelpers.withHiddenSubareaBattles(OREBURGH_GATE, ['B1F']),
         OREBURGH_CITY,
         ROUTE_207,
+        OREBURGH_MINE,
         OREBURGH_GYM,
     ],
 };

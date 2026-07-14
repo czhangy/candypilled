@@ -10,7 +10,6 @@ import StringHelpers from '@/lib/utils/StringHelpers';
 
 const USAGE = 'Usage: npm run gen:location <slug>';
 const LOCATION_EXISTS = 'That location already exists.';
-const MAP_NOT_FOUND = 'No map is wired up for that slug. Run gen:map first.';
 const GAME = 'platinum';
 
 interface LocationArgs {
@@ -51,31 +50,36 @@ const validateArgs = (args: LocationArgs): void => {
     if (fs.existsSync(getLocationPath(args.slug))) {
         throw new Error(LOCATION_EXISTS);
     }
+};
 
+const hasMap = (slug: string): boolean => {
     const mapsBarrelPath = getMapsBarrelPath();
-    const mapExportName = StringHelpers.toCamelCase(args.slug);
+    const mapExportName = StringHelpers.toCamelCase(slug);
     const mapsBarrel = fs.existsSync(mapsBarrelPath)
         ? fs.readFileSync(mapsBarrelPath, 'utf-8')
         : '';
 
-    if (!mapsBarrel.includes(`as ${mapExportName} }`)) {
-        throw new Error(MAP_NOT_FOUND);
-    }
+    return mapsBarrel.includes(`as ${mapExportName} }`);
 };
 
 const createLocation = (args: LocationArgs): void => {
     const filePath = getLocationPath(args.slug);
-    const mapExportName = StringHelpers.toCamelCase(args.slug);
     const constName = StringHelpers.toConstantCase(args.slug);
     const name = StringHelpers.toTitleCase(args.slug);
+    const mapExportName = StringHelpers.toCamelCase(args.slug);
+    const includeMap = hasMap(args.slug);
 
     writeToFile(filePath, [
-        `import { ${mapExportName} } from '@/lib/games/platinum/splits/maps';\n`,
+        ...(includeMap
+            ? [
+                  `import { ${mapExportName} } from '@/lib/games/platinum/splits/maps';\n`,
+              ]
+            : []),
         `import { Location } from '@/lib/static/types';\n`,
         '\n',
         `const ${constName}: Location = {\n`,
         `    name: '${name}',\n`,
-        `    map: ${mapExportName},\n`,
+        ...(includeMap ? [`    map: ${mapExportName},\n`] : []),
         '};\n',
         '\n',
         `export default ${constName};\n`,

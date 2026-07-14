@@ -7,7 +7,7 @@ import {
 } from '@/lib/scripts/utils/helpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
-const USAGE = 'Usage: npm run gen:map -- --map=<slug>';
+const USAGE = 'Usage: npm run gen:map <slug>';
 const IMAGE_NOT_FOUND = 'No map image was found at the expected path';
 const GAME = 'platinum';
 
@@ -15,20 +15,11 @@ interface MapArgs {
     map: string;
 }
 
-const parseArgs = (): MapArgs => {
-    const args = new Map(
-        process.argv.slice(2).map((arg) => {
-            const [key, value] = arg.replace(/^--/, '').split('=');
-            return [key, value];
-        })
-    );
-
-    const map = args.get('map');
-
+const parseArgs = (argv: string[]): MapArgs => {
+    const [map] = argv;
     if (!map) {
         throw new Error(USAGE);
     }
-
     return { map };
 };
 
@@ -70,7 +61,7 @@ const writeBarrelExports = (
 const main = async (): Promise<void> => {
     try {
         validateRootDirectory();
-        const args = parseArgs();
+        const args = parseArgs(process.argv.slice(2));
 
         const gameSlug = StringHelpers.toSlug(GAME);
         const slug = args.map;

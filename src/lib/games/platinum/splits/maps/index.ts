@@ -2,6 +2,8 @@ export { default as oreburghCity } from './oreburgh-city.png';
 export { default as oreburghGate1f } from './oreburgh-gate-1f.png';
 export { default as oreburghGateB1f } from './oreburgh-gate-b1f.png';
 export { default as oreburghGym } from './oreburgh-gym.png';
+export { default as oreburghMineB1f } from './oreburgh-mine-b1f.png';
+export { default as oreburghMineB2f } from './oreburgh-mine-b2f.png';
 export { default as ravagedPath } from './ravaged-path.png';
 export { default as route201 } from './route-201.png';
 export { default as route202 } from './route-202.png';
