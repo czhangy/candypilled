@@ -5,7 +5,7 @@ import styles from './Tabs.module.scss';
 interface TabsProps {
     activeTab: string;
     onTabChange: (id: string) => void;
-    tabs: { id: string; label: string }[];
+    tabs: { id: string; label: React.ReactNode; ariaLabel?: string }[];
 }
 
 const Tabs: React.FC<TabsProps> = ({ activeTab, onTabChange, tabs }) => {
@@ -25,6 +25,7 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, onTabChange, tabs }) => {
         <div className={styles.tabs}>
             {tabs.map((tab) => (
                 <button
+                    aria-label={tab.ariaLabel}
                     className={[
                         styles.tab,
                         tab.id === activeTab && styles['tab--active'],

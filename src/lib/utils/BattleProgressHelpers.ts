@@ -1,5 +1,6 @@
 import { Game, Split } from '@/lib/static/types';
 import BattleHelpers from './BattleHelpers';
+import LocationHelpers from './LocationHelpers';
 
 interface BattlePosition {
     splitIndex: number;
@@ -13,8 +14,8 @@ export default class BattleProgressHelpers {
     // -------------------------------------------------------------------------
 
     static getLevelCap(split: Split, starter: string | null): number | null {
-        const battles = split.locations.flatMap(
-            (location) => location.battles ?? []
+        const battles = split.locations.flatMap((location) =>
+            LocationHelpers.getBattles(location)
         );
         const lastBattle = battles[battles.length - 1];
         if (!lastBattle) return null;
@@ -37,8 +38,8 @@ export default class BattleProgressHelpers {
                 locationIndex < locations.length;
                 locationIndex++
             ) {
-                const battleIndex = (
-                    locations[locationIndex].battles ?? []
+                const battleIndex = LocationHelpers.getBattles(
+                    locations[locationIndex]
                 ).findIndex((battle) => battle.name === battleName);
                 if (battleIndex === -1) continue;
 
@@ -60,7 +61,7 @@ export default class BattleProgressHelpers {
     ): string | null {
         const requiredBattleNames = game.splits.flatMap((split) =>
             split.locations.flatMap((location) =>
-                (location.battles ?? [])
+                LocationHelpers.getBattles(location)
                     .filter((battle) => !battle.isOptional)
                     .map((battle) => battle.name)
             )

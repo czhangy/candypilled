@@ -6,14 +6,15 @@ module.exports = {
         type: 'suggestion',
         docs: {
             description:
-                'Files in src/lib/games must default-export a Game whose name is an UPPERCASE match of the filename.',
+                'Files in src/lib/games must default-export a Game or Split (depending on location) whose name is an UPPERCASE match of the filename. Barrel index.ts files are exempt.',
         },
         messages: {
             noDefaultExport: 'File must have a default export.',
             notIdentifier:
                 'Default export must be a const identifier, not an inline expression.',
             notConst: 'Default export must be declared with "const".',
-            notGameType: 'Default export must be explicitly typed as "Game".',
+            notExpectedType:
+                'Default export must be explicitly typed as "{{expectedType}}".',
             notUppercase: 'Export name "{{name}}" must be all UPPERCASE.',
             nameMismatch:
                 'Export name "{{name}}" must match the filename "{{expected}}".',
@@ -22,7 +23,15 @@ module.exports = {
     },
     create(context) {
         const basename = path.basename(context.filename, '.ts');
+
+        // Barrel files just re-export a game/split assembled elsewhere.
+        if (basename === 'index') return {};
+
         const expectedName = basename.toUpperCase().replace(/-/g, '_');
+        const expectedType =
+            path.basename(path.dirname(context.filename)) === 'splits'
+                ? 'Split'
+                : 'Game';
         let hasDefaultExport = false;
 
         return {
@@ -52,9 +61,13 @@ module.exports = {
                 if (
                     !typeAnnotation ||
                     typeAnnotation.type !== 'TSTypeReference' ||
-                    typeAnnotation.typeName.name !== 'Game'
+                    typeAnnotation.typeName.name !== expectedType
                 ) {
-                    context.report({ node, messageId: 'notGameType' });
+                    context.report({
+                        node,
+                        messageId: 'notExpectedType',
+                        data: { expectedType },
+                    });
                 }
 
                 if (!/^[A-Z0-9_]+$/.test(exportedName)) {

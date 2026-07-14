@@ -40,10 +40,33 @@ export interface Battle {
     y: number;
 }
 
-export interface Location {
+export interface Encounter {
+    species: string;
+    method: string;
+    minLevel: number;
+    maxLevel: number;
+    chance: number;
+    conditions?: string[];
+}
+
+export interface LocationEncounters {
     name: string;
+    encounters: Encounter[];
+}
+
+export interface Subarea {
+    name: string;
+    encountersKey?: string;
     map?: StaticImageData;
     battles?: Battle[];
+}
+
+export interface Location {
+    name: string;
+    encountersKey?: string;
+    map?: StaticImageData;
+    battles?: Battle[];
+    subareas?: Subarea[];
 }
 
 export interface Split {

@@ -11,7 +11,9 @@
         "gen:component": "tsx src/lib/scripts/generators/generate-component.ts",
         "gen:class": "tsx src/lib/scripts/generators/generate-class.ts",
         "gen:icon": "tsx src/lib/scripts/generators/generate-icon.ts",
-        "pokeapi": "tsx src/lib/scripts/pokeapi/cli.ts",
+        "gen:map": "tsx src/lib/scripts/generators/generate-map.ts",
+        "pokeapi:sprites": "tsx src/lib/scripts/pokeapi/sprites.ts",
+        "pokeapi:encounters": "tsx src/lib/scripts/pokeapi/encounters.ts",
         "compose": "tsx src/lib/scripts/assets/compose-map-sprite.ts",
         "prepare": "husky"
     },

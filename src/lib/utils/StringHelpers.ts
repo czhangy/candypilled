@@ -28,6 +28,12 @@ export default class StringHelpers {
             .replace(/^-+|-+$/g, '');
     }
 
+    static toCamelCase(value: string): string {
+        return StringHelpers.toSlug(value).replace(/-(.)/g, (_match, char) =>
+            char.toUpperCase()
+        );
+    }
+
     static toRoman(value: number): string {
         return StringHelpers.ROMAN_NUMERALS[value - 1];
     }

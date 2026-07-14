@@ -27,6 +27,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
 
     const MOVE_SLOT_COUNT = 4;
     const SPRITE_SIZE = 96;
+    const TEAM_SLOT_COUNT = 6;
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -96,7 +97,22 @@ const BattleCard: React.FC<BattleCardProps> = ({
                         </button>
                     </div>
                     <div className={styles.team}>
-                        {team.map((pokemon, index) => {
+                        {Array.from(
+                            { length: TEAM_SLOT_COUNT },
+                            (_, index) => team[index] ?? null
+                        ).map((pokemon, index) => {
+                            if (!pokemon) {
+                                return (
+                                    <div
+                                        className={[
+                                            styles['pokemon-slot'],
+                                            styles['pokemon-slot--empty'],
+                                        ].join(' ')}
+                                        key={`empty-${index}`}
+                                    />
+                                );
+                            }
+
                             const sprite = PokemonHelpers.getSprite(
                                 pokemon.name,
                                 variant
