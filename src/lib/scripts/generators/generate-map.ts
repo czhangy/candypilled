@@ -7,11 +7,11 @@ import {
 } from '@/lib/scripts/utils/helpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
-const USAGE = 'Usage: npm run gen:map -- --game=<game> --map=<slug>';
+const USAGE = 'Usage: npm run gen:map -- --map=<slug>';
 const IMAGE_NOT_FOUND = 'No map image was found at the expected path';
+const GAME = 'platinum';
 
 interface MapArgs {
-    game: string;
     map: string;
 }
 
@@ -23,14 +23,13 @@ const parseArgs = (): MapArgs => {
         })
     );
 
-    const game = args.get('game');
     const map = args.get('map');
 
-    if (!game || !map) {
+    if (!map) {
         throw new Error(USAGE);
     }
 
-    return { game, map };
+    return { map };
 };
 
 const getMapsDir = (gameSlug: string): string =>
@@ -73,7 +72,7 @@ const main = async (): Promise<void> => {
         validateRootDirectory();
         const args = parseArgs();
 
-        const gameSlug = StringHelpers.toSlug(args.game);
+        const gameSlug = StringHelpers.toSlug(GAME);
         const slug = args.map;
         const exportName = StringHelpers.toCamelCase(slug);
 

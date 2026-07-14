@@ -7,6 +7,58 @@ const OREBURGH_GYM: Location = {
     map: oreburghGym,
     battles: [
         {
+            isOptional: true,
+            trainerClass: 'Youngster',
+            name: 'Jonathon',
+            team: [
+                {
+                    name: 'Geodude',
+                    level: 11,
+                    moves: [
+                        'Tackle',
+                        'Defense Curl',
+                        'Rock Polish',
+                        'Rock Throw',
+                    ],
+                    nature: Nature.Timid,
+                    ability: 'Rock Head',
+                    ivs: 1,
+                },
+            ],
+            x: 40,
+            y: 77.3,
+        },
+        {
+            isOptional: true,
+            trainerClass: 'Youngster',
+            name: 'Darius',
+            team: [
+                {
+                    name: 'Geodude',
+                    level: 9,
+                    moves: [
+                        'Tackle',
+                        'Defense Curl',
+                        'Mud Sport',
+                        'Rock Polish',
+                    ],
+                    nature: Nature.Calm,
+                    ability: 'Rock Head',
+                    ivs: 1,
+                },
+                {
+                    name: 'Onix',
+                    level: 9,
+                    moves: ['Rock Throw', 'Tackle', 'Harden'],
+                    nature: Nature.Bashful,
+                    ability: 'Rock Head',
+                    ivs: 1,
+                },
+            ],
+            x: 59,
+            y: 51.6,
+        },
+        {
             isBoss: true,
             trainerClass: 'Gym Leader',
             name: 'Roark',

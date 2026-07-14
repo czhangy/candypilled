@@ -1,3 +1,4 @@
+export { default as oreburghCity } from './oreburgh-city.png';
 export { default as oreburghGate1f } from './oreburgh-gate-1f.png';
 export { default as oreburghGateB1f } from './oreburgh-gate-b1f.png';
 export { default as oreburghGym } from './oreburgh-gym.png';
