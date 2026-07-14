@@ -8,4 +8,5 @@ export { default as route202 } from './route-202.png';
 export { default as route203 } from './route-203.png';
 export { default as route204North } from './route-204-north.png';
 export { default as route204South } from './route-204-south.png';
+export { default as route207 } from './route-207.png';
 export { default as twinleafTown } from './twinleaf-town.png';

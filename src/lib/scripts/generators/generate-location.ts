@@ -1,0 +1,98 @@
+import fs from 'fs';
+import path from 'path';
+import {
+    handleException,
+    logSuccess,
+    validateRootDirectory,
+    writeToFile,
+} from '@/lib/scripts/utils/helpers';
+import StringHelpers from '@/lib/utils/StringHelpers';
+
+const USAGE = 'Usage: npm run gen:location <slug>';
+const LOCATION_EXISTS = 'That location already exists.';
+const MAP_NOT_FOUND = 'No map is wired up for that slug. Run gen:map first.';
+const GAME = 'platinum';
+
+interface LocationArgs {
+    slug: string;
+}
+
+const parseArgs = (argv: string[]): LocationArgs => {
+    const [slug] = argv;
+    if (!slug) {
+        throw new Error(USAGE);
+    }
+    return { slug };
+};
+
+const getMapsBarrelPath = (): string =>
+    path.join(
+        'src',
+        'lib',
+        'games',
+        StringHelpers.toSlug(GAME),
+        'splits',
+        'maps',
+        'index.ts'
+    );
+
+const getLocationPath = (slug: string): string =>
+    path.join(
+        'src',
+        'lib',
+        'games',
+        StringHelpers.toSlug(GAME),
+        'splits',
+        'locations',
+        `${slug}.ts`
+    );
+
+const validateArgs = (args: LocationArgs): void => {
+    if (fs.existsSync(getLocationPath(args.slug))) {
+        throw new Error(LOCATION_EXISTS);
+    }
+
+    const mapsBarrelPath = getMapsBarrelPath();
+    const mapExportName = StringHelpers.toCamelCase(args.slug);
+    const mapsBarrel = fs.existsSync(mapsBarrelPath)
+        ? fs.readFileSync(mapsBarrelPath, 'utf-8')
+        : '';
+
+    if (!mapsBarrel.includes(`as ${mapExportName} }`)) {
+        throw new Error(MAP_NOT_FOUND);
+    }
+};
+
+const createLocation = (args: LocationArgs): void => {
+    const filePath = getLocationPath(args.slug);
+    const mapExportName = StringHelpers.toCamelCase(args.slug);
+    const constName = StringHelpers.toConstantCase(args.slug);
+    const name = StringHelpers.toTitleCase(args.slug);
+
+    writeToFile(filePath, [
+        `import { ${mapExportName} } from '@/lib/games/platinum/splits/maps';\n`,
+        `import { Location } from '@/lib/static/types';\n`,
+        '\n',
+        `const ${constName}: Location = {\n`,
+        `    name: '${name}',\n`,
+        `    map: ${mapExportName},\n`,
+        '};\n',
+        '\n',
+        `export default ${constName};\n`,
+    ]);
+
+    logSuccess(`${args.slug} was created successfully!`);
+};
+
+const main = (): void => {
+    try {
+        validateRootDirectory();
+        const args = parseArgs(process.argv.slice(2));
+        validateArgs(args);
+        createLocation(args);
+    } catch (error) {
+        handleException(error);
+    }
+};
+
+main();
