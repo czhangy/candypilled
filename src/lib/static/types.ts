@@ -101,7 +101,13 @@ export interface Run {
     starter: string | null;
 }
 
+export interface TypesByGeneration {
+    fromGeneration: number;
+    types: string[];
+}
+
 export interface PokemonData {
     name: string;
     sprites: Record<string, string>;
+    types: TypesByGeneration[];
 }

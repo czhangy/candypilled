@@ -3,3048 +3,6204 @@
         "name": "Turtwig",
         "sprites": {
             "platinum": "/platinum/pokemon/turtwig.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "chimchar": {
         "name": "Chimchar",
         "sprites": {
             "platinum": "/platinum/pokemon/chimchar.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "piplup": {
         "name": "Piplup",
         "sprites": {
             "platinum": "/platinum/pokemon/piplup.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "grotle": {
         "name": "Grotle",
         "sprites": {
             "platinum": "/platinum/pokemon/grotle.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "torterra": {
         "name": "Torterra",
         "sprites": {
             "platinum": "/platinum/pokemon/torterra.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "ground"]
+            }
+        ]
     },
     "monferno": {
         "name": "Monferno",
         "sprites": {
             "platinum": "/platinum/pokemon/monferno.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire", "fighting"]
+            }
+        ]
     },
     "infernape": {
         "name": "Infernape",
         "sprites": {
             "platinum": "/platinum/pokemon/infernape.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire", "fighting"]
+            }
+        ]
     },
     "prinplup": {
         "name": "Prinplup",
         "sprites": {
             "platinum": "/platinum/pokemon/prinplup.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "empoleon": {
         "name": "Empoleon",
         "sprites": {
             "platinum": "/platinum/pokemon/empoleon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "steel"]
+            }
+        ]
     },
     "starly": {
         "name": "Starly",
         "sprites": {
             "platinum": "/platinum/pokemon/starly.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            }
+        ]
     },
     "staravia": {
         "name": "Staravia",
         "sprites": {
             "platinum": "/platinum/pokemon/staravia.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            }
+        ]
     },
     "staraptor": {
         "name": "Staraptor",
         "sprites": {
             "platinum": "/platinum/pokemon/staraptor.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            }
+        ]
     },
     "bidoof": {
         "name": "Bidoof",
         "sprites": {
             "platinum": "/platinum/pokemon/bidoof.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "bibarel": {
         "name": "Bibarel",
         "sprites": {
             "platinum": "/platinum/pokemon/bibarel.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "water"]
+            }
+        ]
     },
     "kricketot": {
         "name": "Kricketot",
         "sprites": {
             "platinum": "/platinum/pokemon/kricketot.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug"]
+            }
+        ]
     },
     "kricketune": {
         "name": "Kricketune",
         "sprites": {
             "platinum": "/platinum/pokemon/kricketune.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug"]
+            }
+        ]
     },
     "shinx": {
         "name": "Shinx",
         "sprites": {
             "platinum": "/platinum/pokemon/shinx.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "luxio": {
         "name": "Luxio",
         "sprites": {
             "platinum": "/platinum/pokemon/luxio.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "luxray": {
         "name": "Luxray",
         "sprites": {
             "platinum": "/platinum/pokemon/luxray.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "budew": {
         "name": "Budew",
         "sprites": {
             "platinum": "/platinum/pokemon/budew.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "poison"]
+            }
+        ]
     },
     "roserade": {
         "name": "Roserade",
         "sprites": {
             "platinum": "/platinum/pokemon/roserade.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "poison"]
+            }
+        ]
     },
     "cranidos": {
         "name": "Cranidos",
         "sprites": {
             "platinum": "/platinum/pokemon/cranidos.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock"]
+            }
+        ]
     },
     "rampardos": {
         "name": "Rampardos",
         "sprites": {
             "platinum": "/platinum/pokemon/rampardos.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock"]
+            }
+        ]
     },
     "shieldon": {
         "name": "Shieldon",
         "sprites": {
             "platinum": "/platinum/pokemon/shieldon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "steel"]
+            }
+        ]
     },
     "bastiodon": {
         "name": "Bastiodon",
         "sprites": {
             "platinum": "/platinum/pokemon/bastiodon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "steel"]
+            }
+        ]
     },
     "burmy": {
         "name": "Burmy",
         "sprites": {
             "platinum": "/platinum/pokemon/burmy.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug"]
+            }
+        ]
     },
     "wormadam-plant": {
         "name": "Wormadam Plant",
         "sprites": {
             "platinum": "/platinum/pokemon/wormadam-plant.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "grass"]
+            }
+        ]
     },
     "mothim": {
         "name": "Mothim",
         "sprites": {
             "platinum": "/platinum/pokemon/mothim.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "flying"]
+            }
+        ]
     },
     "combee": {
         "name": "Combee",
         "sprites": {
             "platinum": "/platinum/pokemon/combee.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "flying"]
+            }
+        ]
     },
     "vespiquen": {
         "name": "Vespiquen",
         "sprites": {
             "platinum": "/platinum/pokemon/vespiquen.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "flying"]
+            }
+        ]
     },
     "pachirisu": {
         "name": "Pachirisu",
         "sprites": {
             "platinum": "/platinum/pokemon/pachirisu.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "buizel": {
         "name": "Buizel",
         "sprites": {
             "platinum": "/platinum/pokemon/buizel.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "floatzel": {
         "name": "Floatzel",
         "sprites": {
             "platinum": "/platinum/pokemon/floatzel.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "cherubi": {
         "name": "Cherubi",
         "sprites": {
             "platinum": "/platinum/pokemon/cherubi.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "cherrim": {
         "name": "Cherrim",
         "sprites": {
             "platinum": "/platinum/pokemon/cherrim.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "shellos": {
         "name": "Shellos",
         "sprites": {
             "platinum": "/platinum/pokemon/shellos.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "gastrodon": {
         "name": "Gastrodon",
         "sprites": {
             "platinum": "/platinum/pokemon/gastrodon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "ground"]
+            }
+        ]
     },
     "ambipom": {
         "name": "Ambipom",
         "sprites": {
             "platinum": "/platinum/pokemon/ambipom.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "drifloon": {
         "name": "Drifloon",
         "sprites": {
             "platinum": "/platinum/pokemon/drifloon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ghost", "flying"]
+            }
+        ]
     },
     "drifblim": {
         "name": "Drifblim",
         "sprites": {
             "platinum": "/platinum/pokemon/drifblim.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ghost", "flying"]
+            }
+        ]
     },
     "buneary": {
         "name": "Buneary",
         "sprites": {
             "platinum": "/platinum/pokemon/buneary.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "lopunny": {
         "name": "Lopunny",
         "sprites": {
             "platinum": "/platinum/pokemon/lopunny.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "mismagius": {
         "name": "Mismagius",
         "sprites": {
             "platinum": "/platinum/pokemon/mismagius.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ghost"]
+            }
+        ]
     },
     "honchkrow": {
         "name": "Honchkrow",
         "sprites": {
             "platinum": "/platinum/pokemon/honchkrow.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dark", "flying"]
+            }
+        ]
     },
     "glameow": {
         "name": "Glameow",
         "sprites": {
             "platinum": "/platinum/pokemon/glameow.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "purugly": {
         "name": "Purugly",
         "sprites": {
             "platinum": "/platinum/pokemon/purugly.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "chingling": {
         "name": "Chingling",
         "sprites": {
             "platinum": "/platinum/pokemon/chingling.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "stunky": {
         "name": "Stunky",
         "sprites": {
             "platinum": "/platinum/pokemon/stunky.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison", "dark"]
+            }
+        ]
     },
     "skuntank": {
         "name": "Skuntank",
         "sprites": {
             "platinum": "/platinum/pokemon/skuntank.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison", "dark"]
+            }
+        ]
     },
     "bronzor": {
         "name": "Bronzor",
         "sprites": {
             "platinum": "/platinum/pokemon/bronzor.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["steel", "psychic"]
+            }
+        ]
     },
     "bronzong": {
         "name": "Bronzong",
         "sprites": {
             "platinum": "/platinum/pokemon/bronzong.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["steel", "psychic"]
+            }
+        ]
     },
     "bonsly": {
         "name": "Bonsly",
         "sprites": {
             "platinum": "/platinum/pokemon/bonsly.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock"]
+            }
+        ]
     },
     "mime-jr": {
         "name": "Mime Jr",
         "sprites": {
             "platinum": "/platinum/pokemon/mime-jr.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["psychic", "fairy"]
+            }
+        ]
     },
     "happiny": {
         "name": "Happiny",
         "sprites": {
             "platinum": "/platinum/pokemon/happiny.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "chatot": {
         "name": "Chatot",
         "sprites": {
             "platinum": "/platinum/pokemon/chatot.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            }
+        ]
     },
     "spiritomb": {
         "name": "Spiritomb",
         "sprites": {
             "platinum": "/platinum/pokemon/spiritomb.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ghost", "dark"]
+            }
+        ]
     },
     "gible": {
         "name": "Gible",
         "sprites": {
             "platinum": "/platinum/pokemon/gible.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dragon", "ground"]
+            }
+        ]
     },
     "gabite": {
         "name": "Gabite",
         "sprites": {
             "platinum": "/platinum/pokemon/gabite.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dragon", "ground"]
+            }
+        ]
     },
     "garchomp": {
         "name": "Garchomp",
         "sprites": {
             "platinum": "/platinum/pokemon/garchomp.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dragon", "ground"]
+            }
+        ]
     },
     "munchlax": {
         "name": "Munchlax",
         "sprites": {
             "platinum": "/platinum/pokemon/munchlax.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "riolu": {
         "name": "Riolu",
         "sprites": {
             "platinum": "/platinum/pokemon/riolu.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fighting"]
+            }
+        ]
     },
     "lucario": {
         "name": "Lucario",
         "sprites": {
             "platinum": "/platinum/pokemon/lucario.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fighting", "steel"]
+            }
+        ]
     },
     "hippopotas": {
         "name": "Hippopotas",
         "sprites": {
             "platinum": "/platinum/pokemon/hippopotas.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground"]
+            }
+        ]
     },
     "hippowdon": {
         "name": "Hippowdon",
         "sprites": {
             "platinum": "/platinum/pokemon/hippowdon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground"]
+            }
+        ]
     },
     "skorupi": {
         "name": "Skorupi",
         "sprites": {
             "platinum": "/platinum/pokemon/skorupi.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison", "bug"]
+            }
+        ]
     },
     "drapion": {
         "name": "Drapion",
         "sprites": {
             "platinum": "/platinum/pokemon/drapion.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison", "dark"]
+            }
+        ]
     },
     "croagunk": {
         "name": "Croagunk",
         "sprites": {
             "platinum": "/platinum/pokemon/croagunk.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison", "fighting"]
+            }
+        ]
     },
     "toxicroak": {
         "name": "Toxicroak",
         "sprites": {
             "platinum": "/platinum/pokemon/toxicroak.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison", "fighting"]
+            }
+        ]
     },
     "carnivine": {
         "name": "Carnivine",
         "sprites": {
             "platinum": "/platinum/pokemon/carnivine.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "finneon": {
         "name": "Finneon",
         "sprites": {
             "platinum": "/platinum/pokemon/finneon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "lumineon": {
         "name": "Lumineon",
         "sprites": {
             "platinum": "/platinum/pokemon/lumineon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "mantyke": {
         "name": "Mantyke",
         "sprites": {
             "platinum": "/platinum/pokemon/mantyke.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "flying"]
+            }
+        ]
     },
     "snover": {
         "name": "Snover",
         "sprites": {
             "platinum": "/platinum/pokemon/snover.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "ice"]
+            }
+        ]
     },
     "abomasnow": {
         "name": "Abomasnow",
         "sprites": {
             "platinum": "/platinum/pokemon/abomasnow.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "ice"]
+            }
+        ]
     },
     "weavile": {
         "name": "Weavile",
         "sprites": {
             "platinum": "/platinum/pokemon/weavile.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dark", "ice"]
+            }
+        ]
     },
     "magnezone": {
         "name": "Magnezone",
         "sprites": {
             "platinum": "/platinum/pokemon/magnezone.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric", "steel"]
+            }
+        ]
     },
     "lickilicky": {
         "name": "Lickilicky",
         "sprites": {
             "platinum": "/platinum/pokemon/lickilicky.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "rhyperior": {
         "name": "Rhyperior",
         "sprites": {
             "platinum": "/platinum/pokemon/rhyperior.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground", "rock"]
+            }
+        ]
     },
     "tangrowth": {
         "name": "Tangrowth",
         "sprites": {
             "platinum": "/platinum/pokemon/tangrowth.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "electivire": {
         "name": "Electivire",
         "sprites": {
             "platinum": "/platinum/pokemon/electivire.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "magmortar": {
         "name": "Magmortar",
         "sprites": {
             "platinum": "/platinum/pokemon/magmortar.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "togekiss": {
         "name": "Togekiss",
         "sprites": {
             "platinum": "/platinum/pokemon/togekiss.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["fairy", "flying"]
+            }
+        ]
     },
     "yanmega": {
         "name": "Yanmega",
         "sprites": {
             "platinum": "/platinum/pokemon/yanmega.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "flying"]
+            }
+        ]
     },
     "leafeon": {
         "name": "Leafeon",
         "sprites": {
             "platinum": "/platinum/pokemon/leafeon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "glaceon": {
         "name": "Glaceon",
         "sprites": {
             "platinum": "/platinum/pokemon/glaceon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ice"]
+            }
+        ]
     },
     "gliscor": {
         "name": "Gliscor",
         "sprites": {
             "platinum": "/platinum/pokemon/gliscor.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground", "flying"]
+            }
+        ]
     },
     "mamoswine": {
         "name": "Mamoswine",
         "sprites": {
             "platinum": "/platinum/pokemon/mamoswine.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ice", "ground"]
+            }
+        ]
     },
     "porygon-z": {
         "name": "Porygon Z",
         "sprites": {
             "platinum": "/platinum/pokemon/porygon-z.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "gallade": {
         "name": "Gallade",
         "sprites": {
             "platinum": "/platinum/pokemon/gallade.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic", "fighting"]
+            }
+        ]
     },
     "probopass": {
         "name": "Probopass",
         "sprites": {
             "platinum": "/platinum/pokemon/probopass.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "steel"]
+            }
+        ]
     },
     "dusknoir": {
         "name": "Dusknoir",
         "sprites": {
             "platinum": "/platinum/pokemon/dusknoir.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ghost"]
+            }
+        ]
     },
     "froslass": {
         "name": "Froslass",
         "sprites": {
             "platinum": "/platinum/pokemon/froslass.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ice", "ghost"]
+            }
+        ]
     },
     "rotom": {
         "name": "Rotom",
         "sprites": {
             "platinum": "/platinum/pokemon/rotom.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric", "ghost"]
+            }
+        ]
     },
     "uxie": {
         "name": "Uxie",
         "sprites": {
             "platinum": "/platinum/pokemon/uxie.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "mesprit": {
         "name": "Mesprit",
         "sprites": {
             "platinum": "/platinum/pokemon/mesprit.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "azelf": {
         "name": "Azelf",
         "sprites": {
             "platinum": "/platinum/pokemon/azelf.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "dialga": {
         "name": "Dialga",
         "sprites": {
             "platinum": "/platinum/pokemon/dialga.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["steel", "dragon"]
+            }
+        ]
     },
     "palkia": {
         "name": "Palkia",
         "sprites": {
             "platinum": "/platinum/pokemon/palkia.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "dragon"]
+            }
+        ]
     },
     "heatran": {
         "name": "Heatran",
         "sprites": {
             "platinum": "/platinum/pokemon/heatran.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire", "steel"]
+            }
+        ]
     },
     "regigigas": {
         "name": "Regigigas",
         "sprites": {
             "platinum": "/platinum/pokemon/regigigas.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "giratina-altered": {
         "name": "Giratina Altered",
         "sprites": {
             "platinum": "/platinum/pokemon/giratina-altered.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ghost", "dragon"]
+            }
+        ]
     },
     "cresselia": {
         "name": "Cresselia",
         "sprites": {
             "platinum": "/platinum/pokemon/cresselia.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "phione": {
         "name": "Phione",
         "sprites": {
             "platinum": "/platinum/pokemon/phione.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "manaphy": {
         "name": "Manaphy",
         "sprites": {
             "platinum": "/platinum/pokemon/manaphy.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "darkrai": {
         "name": "Darkrai",
         "sprites": {
             "platinum": "/platinum/pokemon/darkrai.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dark"]
+            }
+        ]
     },
     "shaymin-land": {
         "name": "Shaymin Land",
         "sprites": {
             "platinum": "/platinum/pokemon/shaymin-land.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "arceus": {
         "name": "Arceus",
         "sprites": {
             "platinum": "/platinum/pokemon/arceus.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "wormadam-sandy": {
         "name": "Wormadam Sandy",
         "sprites": {
             "platinum": "/platinum/pokemon/wormadam-sandy.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "ground"]
+            }
+        ]
     },
     "wormadam-trash": {
         "name": "Wormadam Trash",
         "sprites": {
             "platinum": "/platinum/pokemon/wormadam-trash.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "steel"]
+            }
+        ]
     },
     "rotom-heat": {
         "name": "Rotom Heat",
         "sprites": {
             "platinum": "/platinum/pokemon/rotom-heat.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric", "ghost"]
+            },
+            {
+                "fromGeneration": 5,
+                "types": ["electric", "fire"]
+            }
+        ]
     },
     "rotom-wash": {
         "name": "Rotom Wash",
         "sprites": {
             "platinum": "/platinum/pokemon/rotom-wash.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric", "ghost"]
+            },
+            {
+                "fromGeneration": 5,
+                "types": ["electric", "water"]
+            }
+        ]
     },
     "rotom-frost": {
         "name": "Rotom Frost",
         "sprites": {
             "platinum": "/platinum/pokemon/rotom-frost.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric", "ghost"]
+            },
+            {
+                "fromGeneration": 5,
+                "types": ["electric", "ice"]
+            }
+        ]
     },
     "rotom-fan": {
         "name": "Rotom Fan",
         "sprites": {
             "platinum": "/platinum/pokemon/rotom-fan.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric", "ghost"]
+            },
+            {
+                "fromGeneration": 5,
+                "types": ["electric", "flying"]
+            }
+        ]
     },
     "rotom-mow": {
         "name": "Rotom Mow",
         "sprites": {
             "platinum": "/platinum/pokemon/rotom-mow.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric", "ghost"]
+            },
+            {
+                "fromGeneration": 5,
+                "types": ["electric", "grass"]
+            }
+        ]
     },
     "giratina-origin": {
         "name": "Giratina Origin",
         "sprites": {
             "platinum": "/platinum/pokemon/giratina-origin.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ghost", "dragon"]
+            }
+        ]
     },
     "shaymin-sky": {
         "name": "Shaymin Sky",
         "sprites": {
             "platinum": "/platinum/pokemon/shaymin-sky.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "flying"]
+            }
+        ]
     },
     "bulbasaur": {
         "name": "Bulbasaur",
         "sprites": {
             "platinum": "/platinum/pokemon/bulbasaur.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "poison"]
+            }
+        ]
     },
     "ivysaur": {
         "name": "Ivysaur",
         "sprites": {
             "platinum": "/platinum/pokemon/ivysaur.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "poison"]
+            }
+        ]
     },
     "venusaur": {
         "name": "Venusaur",
         "sprites": {
             "platinum": "/platinum/pokemon/venusaur.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "poison"]
+            }
+        ]
     },
     "charmander": {
         "name": "Charmander",
         "sprites": {
             "platinum": "/platinum/pokemon/charmander.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "charmeleon": {
         "name": "Charmeleon",
         "sprites": {
             "platinum": "/platinum/pokemon/charmeleon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "charizard": {
         "name": "Charizard",
         "sprites": {
             "platinum": "/platinum/pokemon/charizard.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire", "flying"]
+            }
+        ]
     },
     "squirtle": {
         "name": "Squirtle",
         "sprites": {
             "platinum": "/platinum/pokemon/squirtle.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "wartortle": {
         "name": "Wartortle",
         "sprites": {
             "platinum": "/platinum/pokemon/wartortle.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "blastoise": {
         "name": "Blastoise",
         "sprites": {
             "platinum": "/platinum/pokemon/blastoise.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "caterpie": {
         "name": "Caterpie",
         "sprites": {
             "platinum": "/platinum/pokemon/caterpie.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug"]
+            }
+        ]
     },
     "metapod": {
         "name": "Metapod",
         "sprites": {
             "platinum": "/platinum/pokemon/metapod.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug"]
+            }
+        ]
     },
     "butterfree": {
         "name": "Butterfree",
         "sprites": {
             "platinum": "/platinum/pokemon/butterfree.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "flying"]
+            }
+        ]
     },
     "weedle": {
         "name": "Weedle",
         "sprites": {
             "platinum": "/platinum/pokemon/weedle.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "poison"]
+            }
+        ]
     },
     "kakuna": {
         "name": "Kakuna",
         "sprites": {
             "platinum": "/platinum/pokemon/kakuna.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "poison"]
+            }
+        ]
     },
     "beedrill": {
         "name": "Beedrill",
         "sprites": {
             "platinum": "/platinum/pokemon/beedrill.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "poison"]
+            }
+        ]
     },
     "pidgey": {
         "name": "Pidgey",
         "sprites": {
             "platinum": "/platinum/pokemon/pidgey.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            }
+        ]
     },
     "pidgeotto": {
         "name": "Pidgeotto",
         "sprites": {
             "platinum": "/platinum/pokemon/pidgeotto.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            }
+        ]
     },
     "pidgeot": {
         "name": "Pidgeot",
         "sprites": {
             "platinum": "/platinum/pokemon/pidgeot.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            }
+        ]
     },
     "rattata": {
         "name": "Rattata",
         "sprites": {
             "platinum": "/platinum/pokemon/rattata.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "raticate": {
         "name": "Raticate",
         "sprites": {
             "platinum": "/platinum/pokemon/raticate.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "spearow": {
         "name": "Spearow",
         "sprites": {
             "platinum": "/platinum/pokemon/spearow.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            }
+        ]
     },
     "fearow": {
         "name": "Fearow",
         "sprites": {
             "platinum": "/platinum/pokemon/fearow.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            }
+        ]
     },
     "ekans": {
         "name": "Ekans",
         "sprites": {
             "platinum": "/platinum/pokemon/ekans.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison"]
+            }
+        ]
     },
     "arbok": {
         "name": "Arbok",
         "sprites": {
             "platinum": "/platinum/pokemon/arbok.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison"]
+            }
+        ]
     },
     "pikachu": {
         "name": "Pikachu",
         "sprites": {
             "platinum": "/platinum/pokemon/pikachu.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "raichu": {
         "name": "Raichu",
         "sprites": {
             "platinum": "/platinum/pokemon/raichu.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "sandshrew": {
         "name": "Sandshrew",
         "sprites": {
             "platinum": "/platinum/pokemon/sandshrew.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground"]
+            }
+        ]
     },
     "sandslash": {
         "name": "Sandslash",
         "sprites": {
             "platinum": "/platinum/pokemon/sandslash.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground"]
+            }
+        ]
     },
     "nidoran-f": {
         "name": "Nidoran F",
         "sprites": {
             "platinum": "/platinum/pokemon/nidoran-f.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison"]
+            }
+        ]
     },
     "nidorina": {
         "name": "Nidorina",
         "sprites": {
             "platinum": "/platinum/pokemon/nidorina.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison"]
+            }
+        ]
     },
     "nidoqueen": {
         "name": "Nidoqueen",
         "sprites": {
             "platinum": "/platinum/pokemon/nidoqueen.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison", "ground"]
+            }
+        ]
     },
     "nidoran-m": {
         "name": "Nidoran M",
         "sprites": {
             "platinum": "/platinum/pokemon/nidoran-m.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison"]
+            }
+        ]
     },
     "nidorino": {
         "name": "Nidorino",
         "sprites": {
             "platinum": "/platinum/pokemon/nidorino.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison"]
+            }
+        ]
     },
     "nidoking": {
         "name": "Nidoking",
         "sprites": {
             "platinum": "/platinum/pokemon/nidoking.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison", "ground"]
+            }
+        ]
     },
     "clefairy": {
         "name": "Clefairy",
         "sprites": {
             "platinum": "/platinum/pokemon/clefairy.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["fairy"]
+            }
+        ]
     },
     "clefable": {
         "name": "Clefable",
         "sprites": {
             "platinum": "/platinum/pokemon/clefable.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["fairy"]
+            }
+        ]
     },
     "vulpix": {
         "name": "Vulpix",
         "sprites": {
             "platinum": "/platinum/pokemon/vulpix.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "ninetales": {
         "name": "Ninetales",
         "sprites": {
             "platinum": "/platinum/pokemon/ninetales.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "jigglypuff": {
         "name": "Jigglypuff",
         "sprites": {
             "platinum": "/platinum/pokemon/jigglypuff.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["normal", "fairy"]
+            }
+        ]
     },
     "wigglytuff": {
         "name": "Wigglytuff",
         "sprites": {
             "platinum": "/platinum/pokemon/wigglytuff.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["normal", "fairy"]
+            }
+        ]
     },
     "zubat": {
         "name": "Zubat",
         "sprites": {
             "platinum": "/platinum/pokemon/zubat.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison", "flying"]
+            }
+        ]
     },
     "golbat": {
         "name": "Golbat",
         "sprites": {
             "platinum": "/platinum/pokemon/golbat.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison", "flying"]
+            }
+        ]
     },
     "oddish": {
         "name": "Oddish",
         "sprites": {
             "platinum": "/platinum/pokemon/oddish.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "poison"]
+            }
+        ]
     },
     "gloom": {
         "name": "Gloom",
         "sprites": {
             "platinum": "/platinum/pokemon/gloom.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "poison"]
+            }
+        ]
     },
     "vileplume": {
         "name": "Vileplume",
         "sprites": {
             "platinum": "/platinum/pokemon/vileplume.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "poison"]
+            }
+        ]
     },
     "paras": {
         "name": "Paras",
         "sprites": {
             "platinum": "/platinum/pokemon/paras.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "grass"]
+            }
+        ]
     },
     "parasect": {
         "name": "Parasect",
         "sprites": {
             "platinum": "/platinum/pokemon/parasect.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "grass"]
+            }
+        ]
     },
     "venonat": {
         "name": "Venonat",
         "sprites": {
             "platinum": "/platinum/pokemon/venonat.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "poison"]
+            }
+        ]
     },
     "venomoth": {
         "name": "Venomoth",
         "sprites": {
             "platinum": "/platinum/pokemon/venomoth.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "poison"]
+            }
+        ]
     },
     "diglett": {
         "name": "Diglett",
         "sprites": {
             "platinum": "/platinum/pokemon/diglett.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground"]
+            }
+        ]
     },
     "dugtrio": {
         "name": "Dugtrio",
         "sprites": {
             "platinum": "/platinum/pokemon/dugtrio.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground"]
+            }
+        ]
     },
     "meowth": {
         "name": "Meowth",
         "sprites": {
             "platinum": "/platinum/pokemon/meowth.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "persian": {
         "name": "Persian",
         "sprites": {
             "platinum": "/platinum/pokemon/persian.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "psyduck": {
         "name": "Psyduck",
         "sprites": {
             "platinum": "/platinum/pokemon/psyduck.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "golduck": {
         "name": "Golduck",
         "sprites": {
             "platinum": "/platinum/pokemon/golduck.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "mankey": {
         "name": "Mankey",
         "sprites": {
             "platinum": "/platinum/pokemon/mankey.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fighting"]
+            }
+        ]
     },
     "primeape": {
         "name": "Primeape",
         "sprites": {
             "platinum": "/platinum/pokemon/primeape.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fighting"]
+            }
+        ]
     },
     "growlithe": {
         "name": "Growlithe",
         "sprites": {
             "platinum": "/platinum/pokemon/growlithe.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "arcanine": {
         "name": "Arcanine",
         "sprites": {
             "platinum": "/platinum/pokemon/arcanine.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "poliwag": {
         "name": "Poliwag",
         "sprites": {
             "platinum": "/platinum/pokemon/poliwag.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "poliwhirl": {
         "name": "Poliwhirl",
         "sprites": {
             "platinum": "/platinum/pokemon/poliwhirl.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "poliwrath": {
         "name": "Poliwrath",
         "sprites": {
             "platinum": "/platinum/pokemon/poliwrath.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "fighting"]
+            }
+        ]
     },
     "abra": {
         "name": "Abra",
         "sprites": {
             "platinum": "/platinum/pokemon/abra.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "kadabra": {
         "name": "Kadabra",
         "sprites": {
             "platinum": "/platinum/pokemon/kadabra.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "alakazam": {
         "name": "Alakazam",
         "sprites": {
             "platinum": "/platinum/pokemon/alakazam.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "machop": {
         "name": "Machop",
         "sprites": {
             "platinum": "/platinum/pokemon/machop.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fighting"]
+            }
+        ]
     },
     "machoke": {
         "name": "Machoke",
         "sprites": {
             "platinum": "/platinum/pokemon/machoke.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fighting"]
+            }
+        ]
     },
     "machamp": {
         "name": "Machamp",
         "sprites": {
             "platinum": "/platinum/pokemon/machamp.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fighting"]
+            }
+        ]
     },
     "bellsprout": {
         "name": "Bellsprout",
         "sprites": {
             "platinum": "/platinum/pokemon/bellsprout.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "poison"]
+            }
+        ]
     },
     "weepinbell": {
         "name": "Weepinbell",
         "sprites": {
             "platinum": "/platinum/pokemon/weepinbell.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "poison"]
+            }
+        ]
     },
     "victreebel": {
         "name": "Victreebel",
         "sprites": {
             "platinum": "/platinum/pokemon/victreebel.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "poison"]
+            }
+        ]
     },
     "tentacool": {
         "name": "Tentacool",
         "sprites": {
             "platinum": "/platinum/pokemon/tentacool.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "poison"]
+            }
+        ]
     },
     "tentacruel": {
         "name": "Tentacruel",
         "sprites": {
             "platinum": "/platinum/pokemon/tentacruel.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "poison"]
+            }
+        ]
     },
     "geodude": {
         "name": "Geodude",
         "sprites": {
             "platinum": "/platinum/pokemon/geodude.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "ground"]
+            }
+        ]
     },
     "graveler": {
         "name": "Graveler",
         "sprites": {
             "platinum": "/platinum/pokemon/graveler.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "ground"]
+            }
+        ]
     },
     "golem": {
         "name": "Golem",
         "sprites": {
             "platinum": "/platinum/pokemon/golem.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "ground"]
+            }
+        ]
     },
     "ponyta": {
         "name": "Ponyta",
         "sprites": {
             "platinum": "/platinum/pokemon/ponyta.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "rapidash": {
         "name": "Rapidash",
         "sprites": {
             "platinum": "/platinum/pokemon/rapidash.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "slowpoke": {
         "name": "Slowpoke",
         "sprites": {
             "platinum": "/platinum/pokemon/slowpoke.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "psychic"]
+            }
+        ]
     },
     "slowbro": {
         "name": "Slowbro",
         "sprites": {
             "platinum": "/platinum/pokemon/slowbro.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "psychic"]
+            }
+        ]
     },
     "magnemite": {
         "name": "Magnemite",
         "sprites": {
             "platinum": "/platinum/pokemon/magnemite.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            },
+            {
+                "fromGeneration": 2,
+                "types": ["electric", "steel"]
+            }
+        ]
     },
     "magneton": {
         "name": "Magneton",
         "sprites": {
             "platinum": "/platinum/pokemon/magneton.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            },
+            {
+                "fromGeneration": 2,
+                "types": ["electric", "steel"]
+            }
+        ]
     },
     "farfetchd": {
         "name": "Farfetchd",
         "sprites": {
             "platinum": "/platinum/pokemon/farfetchd.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            }
+        ]
     },
     "doduo": {
         "name": "Doduo",
         "sprites": {
             "platinum": "/platinum/pokemon/doduo.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            }
+        ]
     },
     "dodrio": {
         "name": "Dodrio",
         "sprites": {
             "platinum": "/platinum/pokemon/dodrio.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            }
+        ]
     },
     "seel": {
         "name": "Seel",
         "sprites": {
             "platinum": "/platinum/pokemon/seel.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "dewgong": {
         "name": "Dewgong",
         "sprites": {
             "platinum": "/platinum/pokemon/dewgong.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "ice"]
+            }
+        ]
     },
     "grimer": {
         "name": "Grimer",
         "sprites": {
             "platinum": "/platinum/pokemon/grimer.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison"]
+            }
+        ]
     },
     "muk": {
         "name": "Muk",
         "sprites": {
             "platinum": "/platinum/pokemon/muk.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison"]
+            }
+        ]
     },
     "shellder": {
         "name": "Shellder",
         "sprites": {
             "platinum": "/platinum/pokemon/shellder.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "cloyster": {
         "name": "Cloyster",
         "sprites": {
             "platinum": "/platinum/pokemon/cloyster.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "ice"]
+            }
+        ]
     },
     "gastly": {
         "name": "Gastly",
         "sprites": {
             "platinum": "/platinum/pokemon/gastly.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ghost", "poison"]
+            }
+        ]
     },
     "haunter": {
         "name": "Haunter",
         "sprites": {
             "platinum": "/platinum/pokemon/haunter.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ghost", "poison"]
+            }
+        ]
     },
     "gengar": {
         "name": "Gengar",
         "sprites": {
             "platinum": "/platinum/pokemon/gengar.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ghost", "poison"]
+            }
+        ]
     },
     "onix": {
         "name": "Onix",
         "sprites": {
             "platinum": "/platinum/pokemon/onix.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "ground"]
+            }
+        ]
     },
     "drowzee": {
         "name": "Drowzee",
         "sprites": {
             "platinum": "/platinum/pokemon/drowzee.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "hypno": {
         "name": "Hypno",
         "sprites": {
             "platinum": "/platinum/pokemon/hypno.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "krabby": {
         "name": "Krabby",
         "sprites": {
             "platinum": "/platinum/pokemon/krabby.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "kingler": {
         "name": "Kingler",
         "sprites": {
             "platinum": "/platinum/pokemon/kingler.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "voltorb": {
         "name": "Voltorb",
         "sprites": {
             "platinum": "/platinum/pokemon/voltorb.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "electrode": {
         "name": "Electrode",
         "sprites": {
             "platinum": "/platinum/pokemon/electrode.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "exeggcute": {
         "name": "Exeggcute",
         "sprites": {
             "platinum": "/platinum/pokemon/exeggcute.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "psychic"]
+            }
+        ]
     },
     "exeggutor": {
         "name": "Exeggutor",
         "sprites": {
             "platinum": "/platinum/pokemon/exeggutor.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "psychic"]
+            }
+        ]
     },
     "cubone": {
         "name": "Cubone",
         "sprites": {
             "platinum": "/platinum/pokemon/cubone.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground"]
+            }
+        ]
     },
     "marowak": {
         "name": "Marowak",
         "sprites": {
             "platinum": "/platinum/pokemon/marowak.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground"]
+            }
+        ]
     },
     "hitmonlee": {
         "name": "Hitmonlee",
         "sprites": {
             "platinum": "/platinum/pokemon/hitmonlee.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fighting"]
+            }
+        ]
     },
     "hitmonchan": {
         "name": "Hitmonchan",
         "sprites": {
             "platinum": "/platinum/pokemon/hitmonchan.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fighting"]
+            }
+        ]
     },
     "lickitung": {
         "name": "Lickitung",
         "sprites": {
             "platinum": "/platinum/pokemon/lickitung.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "koffing": {
         "name": "Koffing",
         "sprites": {
             "platinum": "/platinum/pokemon/koffing.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison"]
+            }
+        ]
     },
     "weezing": {
         "name": "Weezing",
         "sprites": {
             "platinum": "/platinum/pokemon/weezing.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison"]
+            }
+        ]
     },
     "rhyhorn": {
         "name": "Rhyhorn",
         "sprites": {
             "platinum": "/platinum/pokemon/rhyhorn.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground", "rock"]
+            }
+        ]
     },
     "rhydon": {
         "name": "Rhydon",
         "sprites": {
             "platinum": "/platinum/pokemon/rhydon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground", "rock"]
+            }
+        ]
     },
     "chansey": {
         "name": "Chansey",
         "sprites": {
             "platinum": "/platinum/pokemon/chansey.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "tangela": {
         "name": "Tangela",
         "sprites": {
             "platinum": "/platinum/pokemon/tangela.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "kangaskhan": {
         "name": "Kangaskhan",
         "sprites": {
             "platinum": "/platinum/pokemon/kangaskhan.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "horsea": {
         "name": "Horsea",
         "sprites": {
             "platinum": "/platinum/pokemon/horsea.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "seadra": {
         "name": "Seadra",
         "sprites": {
             "platinum": "/platinum/pokemon/seadra.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "goldeen": {
         "name": "Goldeen",
         "sprites": {
             "platinum": "/platinum/pokemon/goldeen.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "seaking": {
         "name": "Seaking",
         "sprites": {
             "platinum": "/platinum/pokemon/seaking.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "staryu": {
         "name": "Staryu",
         "sprites": {
             "platinum": "/platinum/pokemon/staryu.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "starmie": {
         "name": "Starmie",
         "sprites": {
             "platinum": "/platinum/pokemon/starmie.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "psychic"]
+            }
+        ]
     },
     "mr-mime": {
         "name": "Mr Mime",
         "sprites": {
             "platinum": "/platinum/pokemon/mr-mime.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["psychic", "fairy"]
+            }
+        ]
     },
     "scyther": {
         "name": "Scyther",
         "sprites": {
             "platinum": "/platinum/pokemon/scyther.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "flying"]
+            }
+        ]
     },
     "jynx": {
         "name": "Jynx",
         "sprites": {
             "platinum": "/platinum/pokemon/jynx.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ice", "psychic"]
+            }
+        ]
     },
     "electabuzz": {
         "name": "Electabuzz",
         "sprites": {
             "platinum": "/platinum/pokemon/electabuzz.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "magmar": {
         "name": "Magmar",
         "sprites": {
             "platinum": "/platinum/pokemon/magmar.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "pinsir": {
         "name": "Pinsir",
         "sprites": {
             "platinum": "/platinum/pokemon/pinsir.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug"]
+            }
+        ]
     },
     "tauros": {
         "name": "Tauros",
         "sprites": {
             "platinum": "/platinum/pokemon/tauros.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "magikarp": {
         "name": "Magikarp",
         "sprites": {
             "platinum": "/platinum/pokemon/magikarp.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "gyarados": {
         "name": "Gyarados",
         "sprites": {
             "platinum": "/platinum/pokemon/gyarados.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "flying"]
+            }
+        ]
     },
     "lapras": {
         "name": "Lapras",
         "sprites": {
             "platinum": "/platinum/pokemon/lapras.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "ice"]
+            }
+        ]
     },
     "ditto": {
         "name": "Ditto",
         "sprites": {
             "platinum": "/platinum/pokemon/ditto.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "eevee": {
         "name": "Eevee",
         "sprites": {
             "platinum": "/platinum/pokemon/eevee.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "vaporeon": {
         "name": "Vaporeon",
         "sprites": {
             "platinum": "/platinum/pokemon/vaporeon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "jolteon": {
         "name": "Jolteon",
         "sprites": {
             "platinum": "/platinum/pokemon/jolteon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "flareon": {
         "name": "Flareon",
         "sprites": {
             "platinum": "/platinum/pokemon/flareon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "porygon": {
         "name": "Porygon",
         "sprites": {
             "platinum": "/platinum/pokemon/porygon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "omanyte": {
         "name": "Omanyte",
         "sprites": {
             "platinum": "/platinum/pokemon/omanyte.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "water"]
+            }
+        ]
     },
     "omastar": {
         "name": "Omastar",
         "sprites": {
             "platinum": "/platinum/pokemon/omastar.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "water"]
+            }
+        ]
     },
     "kabuto": {
         "name": "Kabuto",
         "sprites": {
             "platinum": "/platinum/pokemon/kabuto.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "water"]
+            }
+        ]
     },
     "kabutops": {
         "name": "Kabutops",
         "sprites": {
             "platinum": "/platinum/pokemon/kabutops.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "water"]
+            }
+        ]
     },
     "aerodactyl": {
         "name": "Aerodactyl",
         "sprites": {
             "platinum": "/platinum/pokemon/aerodactyl.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "flying"]
+            }
+        ]
     },
     "snorlax": {
         "name": "Snorlax",
         "sprites": {
             "platinum": "/platinum/pokemon/snorlax.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "articuno": {
         "name": "Articuno",
         "sprites": {
             "platinum": "/platinum/pokemon/articuno.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ice", "flying"]
+            }
+        ]
     },
     "zapdos": {
         "name": "Zapdos",
         "sprites": {
             "platinum": "/platinum/pokemon/zapdos.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric", "flying"]
+            }
+        ]
     },
     "moltres": {
         "name": "Moltres",
         "sprites": {
             "platinum": "/platinum/pokemon/moltres.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire", "flying"]
+            }
+        ]
     },
     "dratini": {
         "name": "Dratini",
         "sprites": {
             "platinum": "/platinum/pokemon/dratini.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dragon"]
+            }
+        ]
     },
     "dragonair": {
         "name": "Dragonair",
         "sprites": {
             "platinum": "/platinum/pokemon/dragonair.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dragon"]
+            }
+        ]
     },
     "dragonite": {
         "name": "Dragonite",
         "sprites": {
             "platinum": "/platinum/pokemon/dragonite.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dragon", "flying"]
+            }
+        ]
     },
     "mewtwo": {
         "name": "Mewtwo",
         "sprites": {
             "platinum": "/platinum/pokemon/mewtwo.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "mew": {
         "name": "Mew",
         "sprites": {
             "platinum": "/platinum/pokemon/mew.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "chikorita": {
         "name": "Chikorita",
         "sprites": {
             "platinum": "/platinum/pokemon/chikorita.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "bayleef": {
         "name": "Bayleef",
         "sprites": {
             "platinum": "/platinum/pokemon/bayleef.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "meganium": {
         "name": "Meganium",
         "sprites": {
             "platinum": "/platinum/pokemon/meganium.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "cyndaquil": {
         "name": "Cyndaquil",
         "sprites": {
             "platinum": "/platinum/pokemon/cyndaquil.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "quilava": {
         "name": "Quilava",
         "sprites": {
             "platinum": "/platinum/pokemon/quilava.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "typhlosion": {
         "name": "Typhlosion",
         "sprites": {
             "platinum": "/platinum/pokemon/typhlosion.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "totodile": {
         "name": "Totodile",
         "sprites": {
             "platinum": "/platinum/pokemon/totodile.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "croconaw": {
         "name": "Croconaw",
         "sprites": {
             "platinum": "/platinum/pokemon/croconaw.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "feraligatr": {
         "name": "Feraligatr",
         "sprites": {
             "platinum": "/platinum/pokemon/feraligatr.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "sentret": {
         "name": "Sentret",
         "sprites": {
             "platinum": "/platinum/pokemon/sentret.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "furret": {
         "name": "Furret",
         "sprites": {
             "platinum": "/platinum/pokemon/furret.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "hoothoot": {
         "name": "Hoothoot",
         "sprites": {
             "platinum": "/platinum/pokemon/hoothoot.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            }
+        ]
     },
     "noctowl": {
         "name": "Noctowl",
         "sprites": {
             "platinum": "/platinum/pokemon/noctowl.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            }
+        ]
     },
     "ledyba": {
         "name": "Ledyba",
         "sprites": {
             "platinum": "/platinum/pokemon/ledyba.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "flying"]
+            }
+        ]
     },
     "ledian": {
         "name": "Ledian",
         "sprites": {
             "platinum": "/platinum/pokemon/ledian.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "flying"]
+            }
+        ]
     },
     "spinarak": {
         "name": "Spinarak",
         "sprites": {
             "platinum": "/platinum/pokemon/spinarak.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "poison"]
+            }
+        ]
     },
     "ariados": {
         "name": "Ariados",
         "sprites": {
             "platinum": "/platinum/pokemon/ariados.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "poison"]
+            }
+        ]
     },
     "crobat": {
         "name": "Crobat",
         "sprites": {
             "platinum": "/platinum/pokemon/crobat.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison", "flying"]
+            }
+        ]
     },
     "chinchou": {
         "name": "Chinchou",
         "sprites": {
             "platinum": "/platinum/pokemon/chinchou.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "electric"]
+            }
+        ]
     },
     "lanturn": {
         "name": "Lanturn",
         "sprites": {
             "platinum": "/platinum/pokemon/lanturn.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "electric"]
+            }
+        ]
     },
     "pichu": {
         "name": "Pichu",
         "sprites": {
             "platinum": "/platinum/pokemon/pichu.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "cleffa": {
         "name": "Cleffa",
         "sprites": {
             "platinum": "/platinum/pokemon/cleffa.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["fairy"]
+            }
+        ]
     },
     "igglybuff": {
         "name": "Igglybuff",
         "sprites": {
             "platinum": "/platinum/pokemon/igglybuff.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["normal", "fairy"]
+            }
+        ]
     },
     "togepi": {
         "name": "Togepi",
         "sprites": {
             "platinum": "/platinum/pokemon/togepi.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["fairy"]
+            }
+        ]
     },
     "togetic": {
         "name": "Togetic",
         "sprites": {
             "platinum": "/platinum/pokemon/togetic.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["fairy", "flying"]
+            }
+        ]
     },
     "natu": {
         "name": "Natu",
         "sprites": {
             "platinum": "/platinum/pokemon/natu.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic", "flying"]
+            }
+        ]
     },
     "xatu": {
         "name": "Xatu",
         "sprites": {
             "platinum": "/platinum/pokemon/xatu.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic", "flying"]
+            }
+        ]
     },
     "mareep": {
         "name": "Mareep",
         "sprites": {
             "platinum": "/platinum/pokemon/mareep.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "flaaffy": {
         "name": "Flaaffy",
         "sprites": {
             "platinum": "/platinum/pokemon/flaaffy.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "ampharos": {
         "name": "Ampharos",
         "sprites": {
             "platinum": "/platinum/pokemon/ampharos.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "bellossom": {
         "name": "Bellossom",
         "sprites": {
             "platinum": "/platinum/pokemon/bellossom.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "marill": {
         "name": "Marill",
         "sprites": {
             "platinum": "/platinum/pokemon/marill.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["water", "fairy"]
+            }
+        ]
     },
     "azumarill": {
         "name": "Azumarill",
         "sprites": {
             "platinum": "/platinum/pokemon/azumarill.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["water", "fairy"]
+            }
+        ]
     },
     "sudowoodo": {
         "name": "Sudowoodo",
         "sprites": {
             "platinum": "/platinum/pokemon/sudowoodo.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock"]
+            }
+        ]
     },
     "politoed": {
         "name": "Politoed",
         "sprites": {
             "platinum": "/platinum/pokemon/politoed.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "hoppip": {
         "name": "Hoppip",
         "sprites": {
             "platinum": "/platinum/pokemon/hoppip.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "flying"]
+            }
+        ]
     },
     "skiploom": {
         "name": "Skiploom",
         "sprites": {
             "platinum": "/platinum/pokemon/skiploom.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "flying"]
+            }
+        ]
     },
     "jumpluff": {
         "name": "Jumpluff",
         "sprites": {
             "platinum": "/platinum/pokemon/jumpluff.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "flying"]
+            }
+        ]
     },
     "aipom": {
         "name": "Aipom",
         "sprites": {
             "platinum": "/platinum/pokemon/aipom.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "sunkern": {
         "name": "Sunkern",
         "sprites": {
             "platinum": "/platinum/pokemon/sunkern.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "sunflora": {
         "name": "Sunflora",
         "sprites": {
             "platinum": "/platinum/pokemon/sunflora.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "yanma": {
         "name": "Yanma",
         "sprites": {
             "platinum": "/platinum/pokemon/yanma.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "flying"]
+            }
+        ]
     },
     "wooper": {
         "name": "Wooper",
         "sprites": {
             "platinum": "/platinum/pokemon/wooper.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "ground"]
+            }
+        ]
     },
     "quagsire": {
         "name": "Quagsire",
         "sprites": {
             "platinum": "/platinum/pokemon/quagsire.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "ground"]
+            }
+        ]
     },
     "espeon": {
         "name": "Espeon",
         "sprites": {
             "platinum": "/platinum/pokemon/espeon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "umbreon": {
         "name": "Umbreon",
         "sprites": {
             "platinum": "/platinum/pokemon/umbreon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dark"]
+            }
+        ]
     },
     "murkrow": {
         "name": "Murkrow",
         "sprites": {
             "platinum": "/platinum/pokemon/murkrow.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dark", "flying"]
+            }
+        ]
     },
     "slowking": {
         "name": "Slowking",
         "sprites": {
             "platinum": "/platinum/pokemon/slowking.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "psychic"]
+            }
+        ]
     },
     "misdreavus": {
         "name": "Misdreavus",
         "sprites": {
             "platinum": "/platinum/pokemon/misdreavus.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ghost"]
+            }
+        ]
     },
     "unown": {
         "name": "Unown",
         "sprites": {
             "platinum": "/platinum/pokemon/unown.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "wobbuffet": {
         "name": "Wobbuffet",
         "sprites": {
             "platinum": "/platinum/pokemon/wobbuffet.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "girafarig": {
         "name": "Girafarig",
         "sprites": {
             "platinum": "/platinum/pokemon/girafarig.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "psychic"]
+            }
+        ]
     },
     "pineco": {
         "name": "Pineco",
         "sprites": {
             "platinum": "/platinum/pokemon/pineco.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug"]
+            }
+        ]
     },
     "forretress": {
         "name": "Forretress",
         "sprites": {
             "platinum": "/platinum/pokemon/forretress.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "steel"]
+            }
+        ]
     },
     "dunsparce": {
         "name": "Dunsparce",
         "sprites": {
             "platinum": "/platinum/pokemon/dunsparce.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "gligar": {
         "name": "Gligar",
         "sprites": {
             "platinum": "/platinum/pokemon/gligar.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground", "flying"]
+            }
+        ]
     },
     "steelix": {
         "name": "Steelix",
         "sprites": {
             "platinum": "/platinum/pokemon/steelix.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["steel", "ground"]
+            }
+        ]
     },
     "snubbull": {
         "name": "Snubbull",
         "sprites": {
             "platinum": "/platinum/pokemon/snubbull.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["fairy"]
+            }
+        ]
     },
     "granbull": {
         "name": "Granbull",
         "sprites": {
             "platinum": "/platinum/pokemon/granbull.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["fairy"]
+            }
+        ]
     },
     "qwilfish": {
         "name": "Qwilfish",
         "sprites": {
             "platinum": "/platinum/pokemon/qwilfish.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "poison"]
+            }
+        ]
     },
     "scizor": {
         "name": "Scizor",
         "sprites": {
             "platinum": "/platinum/pokemon/scizor.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "steel"]
+            }
+        ]
     },
     "shuckle": {
         "name": "Shuckle",
         "sprites": {
             "platinum": "/platinum/pokemon/shuckle.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "rock"]
+            }
+        ]
     },
     "heracross": {
         "name": "Heracross",
         "sprites": {
             "platinum": "/platinum/pokemon/heracross.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "fighting"]
+            }
+        ]
     },
     "sneasel": {
         "name": "Sneasel",
         "sprites": {
             "platinum": "/platinum/pokemon/sneasel.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dark", "ice"]
+            }
+        ]
     },
     "teddiursa": {
         "name": "Teddiursa",
         "sprites": {
             "platinum": "/platinum/pokemon/teddiursa.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "ursaring": {
         "name": "Ursaring",
         "sprites": {
             "platinum": "/platinum/pokemon/ursaring.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "slugma": {
         "name": "Slugma",
         "sprites": {
             "platinum": "/platinum/pokemon/slugma.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "magcargo": {
         "name": "Magcargo",
         "sprites": {
             "platinum": "/platinum/pokemon/magcargo.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire", "rock"]
+            }
+        ]
     },
     "swinub": {
         "name": "Swinub",
         "sprites": {
             "platinum": "/platinum/pokemon/swinub.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ice", "ground"]
+            }
+        ]
     },
     "piloswine": {
         "name": "Piloswine",
         "sprites": {
             "platinum": "/platinum/pokemon/piloswine.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ice", "ground"]
+            }
+        ]
     },
     "corsola": {
         "name": "Corsola",
         "sprites": {
             "platinum": "/platinum/pokemon/corsola.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "rock"]
+            }
+        ]
     },
     "remoraid": {
         "name": "Remoraid",
         "sprites": {
             "platinum": "/platinum/pokemon/remoraid.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "octillery": {
         "name": "Octillery",
         "sprites": {
             "platinum": "/platinum/pokemon/octillery.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "delibird": {
         "name": "Delibird",
         "sprites": {
             "platinum": "/platinum/pokemon/delibird.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ice", "flying"]
+            }
+        ]
     },
     "mantine": {
         "name": "Mantine",
         "sprites": {
             "platinum": "/platinum/pokemon/mantine.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "flying"]
+            }
+        ]
     },
     "skarmory": {
         "name": "Skarmory",
         "sprites": {
             "platinum": "/platinum/pokemon/skarmory.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["steel", "flying"]
+            }
+        ]
     },
     "houndour": {
         "name": "Houndour",
         "sprites": {
             "platinum": "/platinum/pokemon/houndour.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dark", "fire"]
+            }
+        ]
     },
     "houndoom": {
         "name": "Houndoom",
         "sprites": {
             "platinum": "/platinum/pokemon/houndoom.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dark", "fire"]
+            }
+        ]
     },
     "kingdra": {
         "name": "Kingdra",
         "sprites": {
             "platinum": "/platinum/pokemon/kingdra.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "dragon"]
+            }
+        ]
     },
     "phanpy": {
         "name": "Phanpy",
         "sprites": {
             "platinum": "/platinum/pokemon/phanpy.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground"]
+            }
+        ]
     },
     "donphan": {
         "name": "Donphan",
         "sprites": {
             "platinum": "/platinum/pokemon/donphan.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground"]
+            }
+        ]
     },
     "porygon2": {
         "name": "Porygon2",
         "sprites": {
             "platinum": "/platinum/pokemon/porygon2.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "stantler": {
         "name": "Stantler",
         "sprites": {
             "platinum": "/platinum/pokemon/stantler.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "smeargle": {
         "name": "Smeargle",
         "sprites": {
             "platinum": "/platinum/pokemon/smeargle.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "tyrogue": {
         "name": "Tyrogue",
         "sprites": {
             "platinum": "/platinum/pokemon/tyrogue.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fighting"]
+            }
+        ]
     },
     "hitmontop": {
         "name": "Hitmontop",
         "sprites": {
             "platinum": "/platinum/pokemon/hitmontop.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fighting"]
+            }
+        ]
     },
     "smoochum": {
         "name": "Smoochum",
         "sprites": {
             "platinum": "/platinum/pokemon/smoochum.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ice", "psychic"]
+            }
+        ]
     },
     "elekid": {
         "name": "Elekid",
         "sprites": {
             "platinum": "/platinum/pokemon/elekid.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "magby": {
         "name": "Magby",
         "sprites": {
             "platinum": "/platinum/pokemon/magby.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "miltank": {
         "name": "Miltank",
         "sprites": {
             "platinum": "/platinum/pokemon/miltank.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "blissey": {
         "name": "Blissey",
         "sprites": {
             "platinum": "/platinum/pokemon/blissey.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "raikou": {
         "name": "Raikou",
         "sprites": {
             "platinum": "/platinum/pokemon/raikou.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "entei": {
         "name": "Entei",
         "sprites": {
             "platinum": "/platinum/pokemon/entei.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "suicune": {
         "name": "Suicune",
         "sprites": {
             "platinum": "/platinum/pokemon/suicune.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "larvitar": {
         "name": "Larvitar",
         "sprites": {
             "platinum": "/platinum/pokemon/larvitar.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "ground"]
+            }
+        ]
     },
     "pupitar": {
         "name": "Pupitar",
         "sprites": {
             "platinum": "/platinum/pokemon/pupitar.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "ground"]
+            }
+        ]
     },
     "tyranitar": {
         "name": "Tyranitar",
         "sprites": {
             "platinum": "/platinum/pokemon/tyranitar.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "dark"]
+            }
+        ]
     },
     "lugia": {
         "name": "Lugia",
         "sprites": {
             "platinum": "/platinum/pokemon/lugia.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic", "flying"]
+            }
+        ]
     },
     "ho-oh": {
         "name": "Ho Oh",
         "sprites": {
             "platinum": "/platinum/pokemon/ho-oh.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire", "flying"]
+            }
+        ]
     },
     "celebi": {
         "name": "Celebi",
         "sprites": {
             "platinum": "/platinum/pokemon/celebi.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic", "grass"]
+            }
+        ]
     },
     "treecko": {
         "name": "Treecko",
         "sprites": {
             "platinum": "/platinum/pokemon/treecko.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "grovyle": {
         "name": "Grovyle",
         "sprites": {
             "platinum": "/platinum/pokemon/grovyle.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "sceptile": {
         "name": "Sceptile",
         "sprites": {
             "platinum": "/platinum/pokemon/sceptile.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "torchic": {
         "name": "Torchic",
         "sprites": {
             "platinum": "/platinum/pokemon/torchic.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "combusken": {
         "name": "Combusken",
         "sprites": {
             "platinum": "/platinum/pokemon/combusken.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire", "fighting"]
+            }
+        ]
     },
     "blaziken": {
         "name": "Blaziken",
         "sprites": {
             "platinum": "/platinum/pokemon/blaziken.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire", "fighting"]
+            }
+        ]
     },
     "mudkip": {
         "name": "Mudkip",
         "sprites": {
             "platinum": "/platinum/pokemon/mudkip.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "marshtomp": {
         "name": "Marshtomp",
         "sprites": {
             "platinum": "/platinum/pokemon/marshtomp.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "ground"]
+            }
+        ]
     },
     "swampert": {
         "name": "Swampert",
         "sprites": {
             "platinum": "/platinum/pokemon/swampert.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "ground"]
+            }
+        ]
     },
     "poochyena": {
         "name": "Poochyena",
         "sprites": {
             "platinum": "/platinum/pokemon/poochyena.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dark"]
+            }
+        ]
     },
     "mightyena": {
         "name": "Mightyena",
         "sprites": {
             "platinum": "/platinum/pokemon/mightyena.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dark"]
+            }
+        ]
     },
     "zigzagoon": {
         "name": "Zigzagoon",
         "sprites": {
             "platinum": "/platinum/pokemon/zigzagoon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "linoone": {
         "name": "Linoone",
         "sprites": {
             "platinum": "/platinum/pokemon/linoone.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "wurmple": {
         "name": "Wurmple",
         "sprites": {
             "platinum": "/platinum/pokemon/wurmple.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug"]
+            }
+        ]
     },
     "silcoon": {
         "name": "Silcoon",
         "sprites": {
             "platinum": "/platinum/pokemon/silcoon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug"]
+            }
+        ]
     },
     "beautifly": {
         "name": "Beautifly",
         "sprites": {
             "platinum": "/platinum/pokemon/beautifly.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "flying"]
+            }
+        ]
     },
     "cascoon": {
         "name": "Cascoon",
         "sprites": {
             "platinum": "/platinum/pokemon/cascoon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug"]
+            }
+        ]
     },
     "dustox": {
         "name": "Dustox",
         "sprites": {
             "platinum": "/platinum/pokemon/dustox.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "poison"]
+            }
+        ]
     },
     "lotad": {
         "name": "Lotad",
         "sprites": {
             "platinum": "/platinum/pokemon/lotad.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "grass"]
+            }
+        ]
     },
     "lombre": {
         "name": "Lombre",
         "sprites": {
             "platinum": "/platinum/pokemon/lombre.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "grass"]
+            }
+        ]
     },
     "ludicolo": {
         "name": "Ludicolo",
         "sprites": {
             "platinum": "/platinum/pokemon/ludicolo.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "grass"]
+            }
+        ]
     },
     "seedot": {
         "name": "Seedot",
         "sprites": {
             "platinum": "/platinum/pokemon/seedot.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "nuzleaf": {
         "name": "Nuzleaf",
         "sprites": {
             "platinum": "/platinum/pokemon/nuzleaf.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "dark"]
+            }
+        ]
     },
     "shiftry": {
         "name": "Shiftry",
         "sprites": {
             "platinum": "/platinum/pokemon/shiftry.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "dark"]
+            }
+        ]
     },
     "taillow": {
         "name": "Taillow",
         "sprites": {
             "platinum": "/platinum/pokemon/taillow.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            }
+        ]
     },
     "swellow": {
         "name": "Swellow",
         "sprites": {
             "platinum": "/platinum/pokemon/swellow.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            }
+        ]
     },
     "wingull": {
         "name": "Wingull",
         "sprites": {
             "platinum": "/platinum/pokemon/wingull.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "flying"]
+            }
+        ]
     },
     "pelipper": {
         "name": "Pelipper",
         "sprites": {
             "platinum": "/platinum/pokemon/pelipper.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "flying"]
+            }
+        ]
     },
     "ralts": {
         "name": "Ralts",
         "sprites": {
             "platinum": "/platinum/pokemon/ralts.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["psychic", "fairy"]
+            }
+        ]
     },
     "kirlia": {
         "name": "Kirlia",
         "sprites": {
             "platinum": "/platinum/pokemon/kirlia.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["psychic", "fairy"]
+            }
+        ]
     },
     "gardevoir": {
         "name": "Gardevoir",
         "sprites": {
             "platinum": "/platinum/pokemon/gardevoir.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["psychic", "fairy"]
+            }
+        ]
     },
     "surskit": {
         "name": "Surskit",
         "sprites": {
             "platinum": "/platinum/pokemon/surskit.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "water"]
+            }
+        ]
     },
     "masquerain": {
         "name": "Masquerain",
         "sprites": {
             "platinum": "/platinum/pokemon/masquerain.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "flying"]
+            }
+        ]
     },
     "shroomish": {
         "name": "Shroomish",
         "sprites": {
             "platinum": "/platinum/pokemon/shroomish.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "breloom": {
         "name": "Breloom",
         "sprites": {
             "platinum": "/platinum/pokemon/breloom.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "fighting"]
+            }
+        ]
     },
     "slakoth": {
         "name": "Slakoth",
         "sprites": {
             "platinum": "/platinum/pokemon/slakoth.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "vigoroth": {
         "name": "Vigoroth",
         "sprites": {
             "platinum": "/platinum/pokemon/vigoroth.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "slaking": {
         "name": "Slaking",
         "sprites": {
             "platinum": "/platinum/pokemon/slaking.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "nincada": {
         "name": "Nincada",
         "sprites": {
             "platinum": "/platinum/pokemon/nincada.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "ground"]
+            }
+        ]
     },
     "ninjask": {
         "name": "Ninjask",
         "sprites": {
             "platinum": "/platinum/pokemon/ninjask.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "flying"]
+            }
+        ]
     },
     "shedinja": {
         "name": "Shedinja",
         "sprites": {
             "platinum": "/platinum/pokemon/shedinja.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug", "ghost"]
+            }
+        ]
     },
     "whismur": {
         "name": "Whismur",
         "sprites": {
             "platinum": "/platinum/pokemon/whismur.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "loudred": {
         "name": "Loudred",
         "sprites": {
             "platinum": "/platinum/pokemon/loudred.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "exploud": {
         "name": "Exploud",
         "sprites": {
             "platinum": "/platinum/pokemon/exploud.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "makuhita": {
         "name": "Makuhita",
         "sprites": {
             "platinum": "/platinum/pokemon/makuhita.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fighting"]
+            }
+        ]
     },
     "hariyama": {
         "name": "Hariyama",
         "sprites": {
             "platinum": "/platinum/pokemon/hariyama.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fighting"]
+            }
+        ]
     },
     "azurill": {
         "name": "Azurill",
         "sprites": {
             "platinum": "/platinum/pokemon/azurill.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["normal", "fairy"]
+            }
+        ]
     },
     "nosepass": {
         "name": "Nosepass",
         "sprites": {
             "platinum": "/platinum/pokemon/nosepass.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock"]
+            }
+        ]
     },
     "skitty": {
         "name": "Skitty",
         "sprites": {
             "platinum": "/platinum/pokemon/skitty.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "delcatty": {
         "name": "Delcatty",
         "sprites": {
             "platinum": "/platinum/pokemon/delcatty.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "sableye": {
         "name": "Sableye",
         "sprites": {
             "platinum": "/platinum/pokemon/sableye.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dark", "ghost"]
+            }
+        ]
     },
     "mawile": {
         "name": "Mawile",
         "sprites": {
             "platinum": "/platinum/pokemon/mawile.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["steel"]
+            },
+            {
+                "fromGeneration": 6,
+                "types": ["steel", "fairy"]
+            }
+        ]
     },
     "aron": {
         "name": "Aron",
         "sprites": {
             "platinum": "/platinum/pokemon/aron.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["steel", "rock"]
+            }
+        ]
     },
     "lairon": {
         "name": "Lairon",
         "sprites": {
             "platinum": "/platinum/pokemon/lairon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["steel", "rock"]
+            }
+        ]
     },
     "aggron": {
         "name": "Aggron",
         "sprites": {
             "platinum": "/platinum/pokemon/aggron.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["steel", "rock"]
+            }
+        ]
     },
     "meditite": {
         "name": "Meditite",
         "sprites": {
             "platinum": "/platinum/pokemon/meditite.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fighting", "psychic"]
+            }
+        ]
     },
     "medicham": {
         "name": "Medicham",
         "sprites": {
             "platinum": "/platinum/pokemon/medicham.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fighting", "psychic"]
+            }
+        ]
     },
     "electrike": {
         "name": "Electrike",
         "sprites": {
             "platinum": "/platinum/pokemon/electrike.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "manectric": {
         "name": "Manectric",
         "sprites": {
             "platinum": "/platinum/pokemon/manectric.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "plusle": {
         "name": "Plusle",
         "sprites": {
             "platinum": "/platinum/pokemon/plusle.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "minun": {
         "name": "Minun",
         "sprites": {
             "platinum": "/platinum/pokemon/minun.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["electric"]
+            }
+        ]
     },
     "volbeat": {
         "name": "Volbeat",
         "sprites": {
             "platinum": "/platinum/pokemon/volbeat.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug"]
+            }
+        ]
     },
     "illumise": {
         "name": "Illumise",
         "sprites": {
             "platinum": "/platinum/pokemon/illumise.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["bug"]
+            }
+        ]
     },
     "roselia": {
         "name": "Roselia",
         "sprites": {
             "platinum": "/platinum/pokemon/roselia.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "poison"]
+            }
+        ]
     },
     "gulpin": {
         "name": "Gulpin",
         "sprites": {
             "platinum": "/platinum/pokemon/gulpin.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison"]
+            }
+        ]
     },
     "swalot": {
         "name": "Swalot",
         "sprites": {
             "platinum": "/platinum/pokemon/swalot.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison"]
+            }
+        ]
     },
     "carvanha": {
         "name": "Carvanha",
         "sprites": {
             "platinum": "/platinum/pokemon/carvanha.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "dark"]
+            }
+        ]
     },
     "sharpedo": {
         "name": "Sharpedo",
         "sprites": {
             "platinum": "/platinum/pokemon/sharpedo.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "dark"]
+            }
+        ]
     },
     "wailmer": {
         "name": "Wailmer",
         "sprites": {
             "platinum": "/platinum/pokemon/wailmer.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "wailord": {
         "name": "Wailord",
         "sprites": {
             "platinum": "/platinum/pokemon/wailord.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "numel": {
         "name": "Numel",
         "sprites": {
             "platinum": "/platinum/pokemon/numel.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire", "ground"]
+            }
+        ]
     },
     "camerupt": {
         "name": "Camerupt",
         "sprites": {
             "platinum": "/platinum/pokemon/camerupt.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire", "ground"]
+            }
+        ]
     },
     "torkoal": {
         "name": "Torkoal",
         "sprites": {
             "platinum": "/platinum/pokemon/torkoal.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "spoink": {
         "name": "Spoink",
         "sprites": {
             "platinum": "/platinum/pokemon/spoink.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "grumpig": {
         "name": "Grumpig",
         "sprites": {
             "platinum": "/platinum/pokemon/grumpig.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "spinda": {
         "name": "Spinda",
         "sprites": {
             "platinum": "/platinum/pokemon/spinda.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "trapinch": {
         "name": "Trapinch",
         "sprites": {
             "platinum": "/platinum/pokemon/trapinch.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground"]
+            }
+        ]
     },
     "vibrava": {
         "name": "Vibrava",
         "sprites": {
             "platinum": "/platinum/pokemon/vibrava.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground", "dragon"]
+            }
+        ]
     },
     "flygon": {
         "name": "Flygon",
         "sprites": {
             "platinum": "/platinum/pokemon/flygon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground", "dragon"]
+            }
+        ]
     },
     "cacnea": {
         "name": "Cacnea",
         "sprites": {
             "platinum": "/platinum/pokemon/cacnea.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass"]
+            }
+        ]
     },
     "cacturne": {
         "name": "Cacturne",
         "sprites": {
             "platinum": "/platinum/pokemon/cacturne.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "dark"]
+            }
+        ]
     },
     "swablu": {
         "name": "Swablu",
         "sprites": {
             "platinum": "/platinum/pokemon/swablu.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal", "flying"]
+            }
+        ]
     },
     "altaria": {
         "name": "Altaria",
         "sprites": {
             "platinum": "/platinum/pokemon/altaria.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dragon", "flying"]
+            }
+        ]
     },
     "zangoose": {
         "name": "Zangoose",
         "sprites": {
             "platinum": "/platinum/pokemon/zangoose.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "seviper": {
         "name": "Seviper",
         "sprites": {
             "platinum": "/platinum/pokemon/seviper.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["poison"]
+            }
+        ]
     },
     "lunatone": {
         "name": "Lunatone",
         "sprites": {
             "platinum": "/platinum/pokemon/lunatone.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "psychic"]
+            }
+        ]
     },
     "solrock": {
         "name": "Solrock",
         "sprites": {
             "platinum": "/platinum/pokemon/solrock.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "psychic"]
+            }
+        ]
     },
     "barboach": {
         "name": "Barboach",
         "sprites": {
             "platinum": "/platinum/pokemon/barboach.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "ground"]
+            }
+        ]
     },
     "whiscash": {
         "name": "Whiscash",
         "sprites": {
             "platinum": "/platinum/pokemon/whiscash.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "ground"]
+            }
+        ]
     },
     "corphish": {
         "name": "Corphish",
         "sprites": {
             "platinum": "/platinum/pokemon/corphish.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "crawdaunt": {
         "name": "Crawdaunt",
         "sprites": {
             "platinum": "/platinum/pokemon/crawdaunt.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "dark"]
+            }
+        ]
     },
     "baltoy": {
         "name": "Baltoy",
         "sprites": {
             "platinum": "/platinum/pokemon/baltoy.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground", "psychic"]
+            }
+        ]
     },
     "claydol": {
         "name": "Claydol",
         "sprites": {
             "platinum": "/platinum/pokemon/claydol.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground", "psychic"]
+            }
+        ]
     },
     "lileep": {
         "name": "Lileep",
         "sprites": {
             "platinum": "/platinum/pokemon/lileep.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "grass"]
+            }
+        ]
     },
     "cradily": {
         "name": "Cradily",
         "sprites": {
             "platinum": "/platinum/pokemon/cradily.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "grass"]
+            }
+        ]
     },
     "anorith": {
         "name": "Anorith",
         "sprites": {
             "platinum": "/platinum/pokemon/anorith.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "bug"]
+            }
+        ]
     },
     "armaldo": {
         "name": "Armaldo",
         "sprites": {
             "platinum": "/platinum/pokemon/armaldo.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock", "bug"]
+            }
+        ]
     },
     "feebas": {
         "name": "Feebas",
         "sprites": {
             "platinum": "/platinum/pokemon/feebas.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "milotic": {
         "name": "Milotic",
         "sprites": {
             "platinum": "/platinum/pokemon/milotic.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "castform": {
         "name": "Castform",
         "sprites": {
             "platinum": "/platinum/pokemon/castform.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "castform-sunny": {
         "name": "Castform Sunny",
         "sprites": {
             "platinum": "/platinum/pokemon/castform-sunny.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["fire"]
+            }
+        ]
     },
     "castform-rainy": {
         "name": "Castform Rainy",
         "sprites": {
             "platinum": "/platinum/pokemon/castform-rainy.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "castform-snowy": {
         "name": "Castform Snowy",
         "sprites": {
             "platinum": "/platinum/pokemon/castform-snowy.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ice"]
+            }
+        ]
     },
     "kecleon": {
         "name": "Kecleon",
         "sprites": {
             "platinum": "/platinum/pokemon/kecleon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["normal"]
+            }
+        ]
     },
     "shuppet": {
         "name": "Shuppet",
         "sprites": {
             "platinum": "/platinum/pokemon/shuppet.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ghost"]
+            }
+        ]
     },
     "banette": {
         "name": "Banette",
         "sprites": {
             "platinum": "/platinum/pokemon/banette.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ghost"]
+            }
+        ]
     },
     "duskull": {
         "name": "Duskull",
         "sprites": {
             "platinum": "/platinum/pokemon/duskull.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ghost"]
+            }
+        ]
     },
     "dusclops": {
         "name": "Dusclops",
         "sprites": {
             "platinum": "/platinum/pokemon/dusclops.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ghost"]
+            }
+        ]
     },
     "tropius": {
         "name": "Tropius",
         "sprites": {
             "platinum": "/platinum/pokemon/tropius.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["grass", "flying"]
+            }
+        ]
     },
     "chimecho": {
         "name": "Chimecho",
         "sprites": {
             "platinum": "/platinum/pokemon/chimecho.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "absol": {
         "name": "Absol",
         "sprites": {
             "platinum": "/platinum/pokemon/absol.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dark"]
+            }
+        ]
     },
     "wynaut": {
         "name": "Wynaut",
         "sprites": {
             "platinum": "/platinum/pokemon/wynaut.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "snorunt": {
         "name": "Snorunt",
         "sprites": {
             "platinum": "/platinum/pokemon/snorunt.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ice"]
+            }
+        ]
     },
     "glalie": {
         "name": "Glalie",
         "sprites": {
             "platinum": "/platinum/pokemon/glalie.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ice"]
+            }
+        ]
     },
     "spheal": {
         "name": "Spheal",
         "sprites": {
             "platinum": "/platinum/pokemon/spheal.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ice", "water"]
+            }
+        ]
     },
     "sealeo": {
         "name": "Sealeo",
         "sprites": {
             "platinum": "/platinum/pokemon/sealeo.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ice", "water"]
+            }
+        ]
     },
     "walrein": {
         "name": "Walrein",
         "sprites": {
             "platinum": "/platinum/pokemon/walrein.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ice", "water"]
+            }
+        ]
     },
     "clamperl": {
         "name": "Clamperl",
         "sprites": {
             "platinum": "/platinum/pokemon/clamperl.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "huntail": {
         "name": "Huntail",
         "sprites": {
             "platinum": "/platinum/pokemon/huntail.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "gorebyss": {
         "name": "Gorebyss",
         "sprites": {
             "platinum": "/platinum/pokemon/gorebyss.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "relicanth": {
         "name": "Relicanth",
         "sprites": {
             "platinum": "/platinum/pokemon/relicanth.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water", "rock"]
+            }
+        ]
     },
     "luvdisc": {
         "name": "Luvdisc",
         "sprites": {
             "platinum": "/platinum/pokemon/luvdisc.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "bagon": {
         "name": "Bagon",
         "sprites": {
             "platinum": "/platinum/pokemon/bagon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dragon"]
+            }
+        ]
     },
     "shelgon": {
         "name": "Shelgon",
         "sprites": {
             "platinum": "/platinum/pokemon/shelgon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dragon"]
+            }
+        ]
     },
     "salamence": {
         "name": "Salamence",
         "sprites": {
             "platinum": "/platinum/pokemon/salamence.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dragon", "flying"]
+            }
+        ]
     },
     "beldum": {
         "name": "Beldum",
         "sprites": {
             "platinum": "/platinum/pokemon/beldum.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["steel", "psychic"]
+            }
+        ]
     },
     "metang": {
         "name": "Metang",
         "sprites": {
             "platinum": "/platinum/pokemon/metang.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["steel", "psychic"]
+            }
+        ]
     },
     "metagross": {
         "name": "Metagross",
         "sprites": {
             "platinum": "/platinum/pokemon/metagross.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["steel", "psychic"]
+            }
+        ]
     },
     "regirock": {
         "name": "Regirock",
         "sprites": {
             "platinum": "/platinum/pokemon/regirock.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["rock"]
+            }
+        ]
     },
     "regice": {
         "name": "Regice",
         "sprites": {
             "platinum": "/platinum/pokemon/regice.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ice"]
+            }
+        ]
     },
     "registeel": {
         "name": "Registeel",
         "sprites": {
             "platinum": "/platinum/pokemon/registeel.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["steel"]
+            }
+        ]
     },
     "latias": {
         "name": "Latias",
         "sprites": {
             "platinum": "/platinum/pokemon/latias.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dragon", "psychic"]
+            }
+        ]
     },
     "latios": {
         "name": "Latios",
         "sprites": {
             "platinum": "/platinum/pokemon/latios.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dragon", "psychic"]
+            }
+        ]
     },
     "kyogre": {
         "name": "Kyogre",
         "sprites": {
             "platinum": "/platinum/pokemon/kyogre.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["water"]
+            }
+        ]
     },
     "groudon": {
         "name": "Groudon",
         "sprites": {
             "platinum": "/platinum/pokemon/groudon.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["ground"]
+            }
+        ]
     },
     "rayquaza": {
         "name": "Rayquaza",
         "sprites": {
             "platinum": "/platinum/pokemon/rayquaza.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["dragon", "flying"]
+            }
+        ]
     },
     "jirachi": {
         "name": "Jirachi",
         "sprites": {
             "platinum": "/platinum/pokemon/jirachi.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["steel", "psychic"]
+            }
+        ]
     },
     "deoxys-normal": {
         "name": "Deoxys Normal",
         "sprites": {
             "platinum": "/platinum/pokemon/deoxys-normal.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "deoxys-attack": {
         "name": "Deoxys Attack",
         "sprites": {
             "platinum": "/platinum/pokemon/deoxys-attack.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "deoxys-defense": {
         "name": "Deoxys Defense",
         "sprites": {
             "platinum": "/platinum/pokemon/deoxys-defense.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     },
     "deoxys-speed": {
         "name": "Deoxys Speed",
         "sprites": {
             "platinum": "/platinum/pokemon/deoxys-speed.png"
-        }
+        },
+        "types": [
+            {
+                "fromGeneration": 1,
+                "types": ["psychic"]
+            }
+        ]
     }
 }

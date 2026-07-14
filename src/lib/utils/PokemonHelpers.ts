@@ -21,4 +21,13 @@ export default class PokemonHelpers {
 
         return Object.values(pokemon.sprites)[0];
     }
+
+    static getTypes(name: string, generation: number): string[] | undefined {
+        const pokemon = PokemonHelpers.get(name);
+        if (!pokemon) return undefined;
+
+        return [...pokemon.types]
+            .reverse()
+            .find((entry) => entry.fromGeneration <= generation)?.types;
+    }
 }
