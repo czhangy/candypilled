@@ -118,7 +118,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                                                 styles['abilities-label']
                                             }
                                         >
-                                            Abilities:
+                                            Abilities
                                         </span>
                                         <div
                                             className={styles['abilities-list']}
@@ -155,7 +155,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                                                 styles['catch-rate-label']
                                             }
                                         >
-                                            Catch Rate:
+                                            Catch Rate
                                         </span>
                                         <span className={styles.rate}>
                                             {catchRate}
