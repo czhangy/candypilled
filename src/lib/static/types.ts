@@ -11,7 +11,7 @@ interface StatValues {
 }
 
 export interface BattlePokemon {
-    ability: string;
+    ability?: string;
     evs?: number | StatValues;
     heldItem?: string;
     ivs?: number | StatValues;
