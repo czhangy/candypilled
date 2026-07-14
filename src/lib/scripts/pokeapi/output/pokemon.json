@@ -24,7 +24,8 @@
                     "hidden": "shell-armor"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "chimchar": {
         "name": "Chimchar",
@@ -51,7 +52,8 @@
                     "hidden": "iron-fist"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "piplup": {
         "name": "Piplup",
@@ -85,7 +87,8 @@
                     "hidden": "competitive"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "grotle": {
         "name": "Grotle",
@@ -112,7 +115,8 @@
                     "hidden": "shell-armor"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "torterra": {
         "name": "Torterra",
@@ -139,7 +143,8 @@
                     "hidden": "shell-armor"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "monferno": {
         "name": "Monferno",
@@ -166,7 +171,8 @@
                     "hidden": "iron-fist"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "infernape": {
         "name": "Infernape",
@@ -193,7 +199,8 @@
                     "hidden": "iron-fist"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "prinplup": {
         "name": "Prinplup",
@@ -227,7 +234,8 @@
                     "hidden": "competitive"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "empoleon": {
         "name": "Empoleon",
@@ -261,7 +269,8 @@
                     "hidden": "competitive"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "starly": {
         "name": "Starly",
@@ -288,7 +297,8 @@
                     "hidden": "reckless"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "staravia": {
         "name": "Staravia",
@@ -315,7 +325,8 @@
                     "hidden": "reckless"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "staraptor": {
         "name": "Staraptor",
@@ -342,7 +353,8 @@
                     "hidden": "reckless"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "bidoof": {
         "name": "Bidoof",
@@ -371,7 +383,8 @@
                     "hidden": "moody"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "bibarel": {
         "name": "Bibarel",
@@ -400,7 +413,8 @@
                     "hidden": "moody"
                 }
             }
-        ]
+        ],
+        "catchRate": 127
     },
     "kricketot": {
         "name": "Kricketot",
@@ -427,7 +441,8 @@
                     "hidden": "run-away"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "kricketune": {
         "name": "Kricketune",
@@ -454,7 +469,8 @@
                     "hidden": "technician"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "shinx": {
         "name": "Shinx",
@@ -483,7 +499,8 @@
                     "hidden": "guts"
                 }
             }
-        ]
+        ],
+        "catchRate": 235
     },
     "luxio": {
         "name": "Luxio",
@@ -512,7 +529,8 @@
                     "hidden": "guts"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "luxray": {
         "name": "Luxray",
@@ -541,7 +559,8 @@
                     "hidden": "guts"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "budew": {
         "name": "Budew",
@@ -570,7 +589,8 @@
                     "hidden": "leaf-guard"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "roserade": {
         "name": "Roserade",
@@ -599,7 +619,8 @@
                     "hidden": "technician"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "cranidos": {
         "name": "Cranidos",
@@ -626,7 +647,8 @@
                     "hidden": "sheer-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "rampardos": {
         "name": "Rampardos",
@@ -653,7 +675,8 @@
                     "hidden": "sheer-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "shieldon": {
         "name": "Shieldon",
@@ -680,7 +703,8 @@
                     "hidden": "soundproof"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "bastiodon": {
         "name": "Bastiodon",
@@ -707,7 +731,8 @@
                     "hidden": "soundproof"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "burmy": {
         "name": "Burmy",
@@ -734,7 +759,8 @@
                     "hidden": "overcoat"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "wormadam-plant": {
         "name": "Wormadam Plant",
@@ -761,7 +787,8 @@
                     "hidden": "overcoat"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "mothim": {
         "name": "Mothim",
@@ -788,7 +815,8 @@
                     "hidden": "tinted-lens"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "combee": {
         "name": "Combee",
@@ -815,7 +843,8 @@
                     "hidden": "hustle"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "vespiquen": {
         "name": "Vespiquen",
@@ -842,7 +871,8 @@
                     "hidden": "unnerve"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "pachirisu": {
         "name": "Pachirisu",
@@ -871,7 +901,8 @@
                     "hidden": "volt-absorb"
                 }
             }
-        ]
+        ],
+        "catchRate": 200
     },
     "buizel": {
         "name": "Buizel",
@@ -898,7 +929,8 @@
                     "hidden": "water-veil"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "floatzel": {
         "name": "Floatzel",
@@ -925,7 +957,8 @@
                     "hidden": "water-veil"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "cherubi": {
         "name": "Cherubi",
@@ -945,7 +978,8 @@
                     "slot1": "chlorophyll"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "cherrim": {
         "name": "Cherrim",
@@ -965,7 +999,8 @@
                     "slot1": "flower-gift"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "shellos": {
         "name": "Shellos",
@@ -994,7 +1029,8 @@
                     "hidden": "sand-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "gastrodon": {
         "name": "Gastrodon",
@@ -1023,7 +1059,8 @@
                     "hidden": "sand-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "ambipom": {
         "name": "Ambipom",
@@ -1052,7 +1089,8 @@
                     "hidden": "skill-link"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "drifloon": {
         "name": "Drifloon",
@@ -1081,7 +1119,8 @@
                     "hidden": "flare-boost"
                 }
             }
-        ]
+        ],
+        "catchRate": 125
     },
     "drifblim": {
         "name": "Drifblim",
@@ -1110,7 +1149,8 @@
                     "hidden": "flare-boost"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "buneary": {
         "name": "Buneary",
@@ -1139,7 +1179,8 @@
                     "hidden": "limber"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "lopunny": {
         "name": "Lopunny",
@@ -1168,7 +1209,8 @@
                     "hidden": "limber"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "mismagius": {
         "name": "Mismagius",
@@ -1188,7 +1230,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "honchkrow": {
         "name": "Honchkrow",
@@ -1217,7 +1260,8 @@
                     "hidden": "moxie"
                 }
             }
-        ]
+        ],
+        "catchRate": 30
     },
     "glameow": {
         "name": "Glameow",
@@ -1246,7 +1290,8 @@
                     "hidden": "keen-eye"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "purugly": {
         "name": "Purugly",
@@ -1275,7 +1320,8 @@
                     "hidden": "defiant"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "chingling": {
         "name": "Chingling",
@@ -1295,7 +1341,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "stunky": {
         "name": "Stunky",
@@ -1324,7 +1371,8 @@
                     "hidden": "keen-eye"
                 }
             }
-        ]
+        ],
+        "catchRate": 225
     },
     "skuntank": {
         "name": "Skuntank",
@@ -1353,7 +1401,8 @@
                     "hidden": "keen-eye"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "bronzor": {
         "name": "Bronzor",
@@ -1382,7 +1431,8 @@
                     "hidden": "heavy-metal"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "bronzong": {
         "name": "Bronzong",
@@ -1411,7 +1461,8 @@
                     "hidden": "heavy-metal"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "bonsly": {
         "name": "Bonsly",
@@ -1440,7 +1491,8 @@
                     "hidden": "rattled"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "mime-jr": {
         "name": "Mime Jr",
@@ -1473,7 +1525,8 @@
                     "hidden": "technician"
                 }
             }
-        ]
+        ],
+        "catchRate": 145
     },
     "happiny": {
         "name": "Happiny",
@@ -1502,7 +1555,8 @@
                     "hidden": "friend-guard"
                 }
             }
-        ]
+        ],
+        "catchRate": 130
     },
     "chatot": {
         "name": "Chatot",
@@ -1531,7 +1585,8 @@
                     "hidden": "big-pecks"
                 }
             }
-        ]
+        ],
+        "catchRate": 30
     },
     "spiritomb": {
         "name": "Spiritomb",
@@ -1558,7 +1613,8 @@
                     "hidden": "infiltrator"
                 }
             }
-        ]
+        ],
+        "catchRate": 100
     },
     "gible": {
         "name": "Gible",
@@ -1585,7 +1641,8 @@
                     "hidden": "rough-skin"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "gabite": {
         "name": "Gabite",
@@ -1612,7 +1669,8 @@
                     "hidden": "rough-skin"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "garchomp": {
         "name": "Garchomp",
@@ -1639,7 +1697,8 @@
                     "hidden": "rough-skin"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "munchlax": {
         "name": "Munchlax",
@@ -1668,7 +1727,8 @@
                     "hidden": "gluttony"
                 }
             }
-        ]
+        ],
+        "catchRate": 50
     },
     "riolu": {
         "name": "Riolu",
@@ -1697,7 +1757,8 @@
                     "hidden": "prankster"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "lucario": {
         "name": "Lucario",
@@ -1726,7 +1787,8 @@
                     "hidden": "justified"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "hippopotas": {
         "name": "Hippopotas",
@@ -1753,7 +1815,8 @@
                     "hidden": "sand-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 140
     },
     "hippowdon": {
         "name": "Hippowdon",
@@ -1780,7 +1843,8 @@
                     "hidden": "sand-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "skorupi": {
         "name": "Skorupi",
@@ -1809,7 +1873,8 @@
                     "hidden": "keen-eye"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "drapion": {
         "name": "Drapion",
@@ -1838,7 +1903,8 @@
                     "hidden": "keen-eye"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "croagunk": {
         "name": "Croagunk",
@@ -1867,7 +1933,8 @@
                     "hidden": "poison-touch"
                 }
             }
-        ]
+        ],
+        "catchRate": 140
     },
     "toxicroak": {
         "name": "Toxicroak",
@@ -1896,7 +1963,8 @@
                     "hidden": "poison-touch"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "carnivine": {
         "name": "Carnivine",
@@ -1916,7 +1984,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 200
     },
     "finneon": {
         "name": "Finneon",
@@ -1945,7 +2014,8 @@
                     "hidden": "water-veil"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "lumineon": {
         "name": "Lumineon",
@@ -1974,7 +2044,8 @@
                     "hidden": "water-veil"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "mantyke": {
         "name": "Mantyke",
@@ -2003,7 +2074,8 @@
                     "hidden": "water-veil"
                 }
             }
-        ]
+        ],
+        "catchRate": 25
     },
     "snover": {
         "name": "Snover",
@@ -2030,7 +2102,8 @@
                     "hidden": "soundproof"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "abomasnow": {
         "name": "Abomasnow",
@@ -2057,7 +2130,8 @@
                     "hidden": "soundproof"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "weavile": {
         "name": "Weavile",
@@ -2084,7 +2158,8 @@
                     "hidden": "pickpocket"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "magnezone": {
         "name": "Magnezone",
@@ -2113,7 +2188,8 @@
                     "hidden": "analytic"
                 }
             }
-        ]
+        ],
+        "catchRate": 30
     },
     "lickilicky": {
         "name": "Lickilicky",
@@ -2142,7 +2218,8 @@
                     "hidden": "cloud-nine"
                 }
             }
-        ]
+        ],
+        "catchRate": 30
     },
     "rhyperior": {
         "name": "Rhyperior",
@@ -2171,7 +2248,8 @@
                     "hidden": "reckless"
                 }
             }
-        ]
+        ],
+        "catchRate": 30
     },
     "tangrowth": {
         "name": "Tangrowth",
@@ -2200,7 +2278,8 @@
                     "hidden": "regenerator"
                 }
             }
-        ]
+        ],
+        "catchRate": 30
     },
     "electivire": {
         "name": "Electivire",
@@ -2227,7 +2306,8 @@
                     "hidden": "vital-spirit"
                 }
             }
-        ]
+        ],
+        "catchRate": 30
     },
     "magmortar": {
         "name": "Magmortar",
@@ -2254,7 +2334,8 @@
                     "hidden": "vital-spirit"
                 }
             }
-        ]
+        ],
+        "catchRate": 30
     },
     "togekiss": {
         "name": "Togekiss",
@@ -2287,7 +2368,8 @@
                     "hidden": "super-luck"
                 }
             }
-        ]
+        ],
+        "catchRate": 30
     },
     "yanmega": {
         "name": "Yanmega",
@@ -2316,7 +2398,8 @@
                     "hidden": "frisk"
                 }
             }
-        ]
+        ],
+        "catchRate": 30
     },
     "leafeon": {
         "name": "Leafeon",
@@ -2343,7 +2426,8 @@
                     "hidden": "chlorophyll"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "glaceon": {
         "name": "Glaceon",
@@ -2370,7 +2454,8 @@
                     "hidden": "ice-body"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "gliscor": {
         "name": "Gliscor",
@@ -2399,7 +2484,8 @@
                     "hidden": "poison-heal"
                 }
             }
-        ]
+        ],
+        "catchRate": 30
     },
     "mamoswine": {
         "name": "Mamoswine",
@@ -2428,7 +2514,8 @@
                     "hidden": "thick-fat"
                 }
             }
-        ]
+        ],
+        "catchRate": 50
     },
     "porygon-z": {
         "name": "Porygon Z",
@@ -2457,7 +2544,8 @@
                     "hidden": "analytic"
                 }
             }
-        ]
+        ],
+        "catchRate": 30
     },
     "gallade": {
         "name": "Gallade",
@@ -2492,7 +2580,8 @@
                     "hidden": "justified"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "probopass": {
         "name": "Probopass",
@@ -2521,7 +2610,8 @@
                     "hidden": "sand-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "dusknoir": {
         "name": "Dusknoir",
@@ -2548,7 +2638,8 @@
                     "hidden": "frisk"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "froslass": {
         "name": "Froslass",
@@ -2575,7 +2666,8 @@
                     "hidden": "cursed-body"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "rotom": {
         "name": "Rotom",
@@ -2595,7 +2687,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "uxie": {
         "name": "Uxie",
@@ -2615,7 +2708,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "mesprit": {
         "name": "Mesprit",
@@ -2635,7 +2729,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "azelf": {
         "name": "Azelf",
@@ -2655,7 +2750,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "dialga": {
         "name": "Dialga",
@@ -2682,7 +2778,8 @@
                     "hidden": "telepathy"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "palkia": {
         "name": "Palkia",
@@ -2709,7 +2806,8 @@
                     "hidden": "telepathy"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "heatran": {
         "name": "Heatran",
@@ -2730,7 +2828,8 @@
                     "hidden": "flame-body"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "regigigas": {
         "name": "Regigigas",
@@ -2750,7 +2849,8 @@
                     "slot1": "slow-start"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "giratina-altered": {
         "name": "Giratina Altered",
@@ -2777,7 +2877,8 @@
                     "hidden": "telepathy"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "cresselia": {
         "name": "Cresselia",
@@ -2797,7 +2898,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "phione": {
         "name": "Phione",
@@ -2817,7 +2919,8 @@
                     "slot1": "hydration"
                 }
             }
-        ]
+        ],
+        "catchRate": 30
     },
     "manaphy": {
         "name": "Manaphy",
@@ -2837,7 +2940,8 @@
                     "slot1": "hydration"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "darkrai": {
         "name": "Darkrai",
@@ -2857,7 +2961,8 @@
                     "slot1": "bad-dreams"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "shaymin-land": {
         "name": "Shaymin Land",
@@ -2877,7 +2982,8 @@
                     "slot1": "natural-cure"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "arceus": {
         "name": "Arceus",
@@ -2897,7 +3003,8 @@
                     "slot1": "multitype"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "wormadam-sandy": {
         "name": "Wormadam Sandy",
@@ -2924,7 +3031,8 @@
                     "hidden": "overcoat"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "wormadam-trash": {
         "name": "Wormadam Trash",
@@ -2951,7 +3059,8 @@
                     "hidden": "overcoat"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "rotom-heat": {
         "name": "Rotom Heat",
@@ -2975,7 +3084,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "rotom-wash": {
         "name": "Rotom Wash",
@@ -2999,7 +3109,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "rotom-frost": {
         "name": "Rotom Frost",
@@ -3023,7 +3134,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "rotom-fan": {
         "name": "Rotom Fan",
@@ -3047,7 +3159,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "rotom-mow": {
         "name": "Rotom Mow",
@@ -3071,7 +3184,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "giratina-origin": {
         "name": "Giratina Origin",
@@ -3091,7 +3205,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "shaymin-sky": {
         "name": "Shaymin Sky",
@@ -3111,7 +3226,8 @@
                     "slot1": "serene-grace"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "bulbasaur": {
         "name": "Bulbasaur",
@@ -3138,7 +3254,8 @@
                     "hidden": "chlorophyll"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "ivysaur": {
         "name": "Ivysaur",
@@ -3165,7 +3282,8 @@
                     "hidden": "chlorophyll"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "venusaur": {
         "name": "Venusaur",
@@ -3192,7 +3310,8 @@
                     "hidden": "chlorophyll"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "charmander": {
         "name": "Charmander",
@@ -3219,7 +3338,8 @@
                     "hidden": "solar-power"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "charmeleon": {
         "name": "Charmeleon",
@@ -3246,7 +3366,8 @@
                     "hidden": "solar-power"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "charizard": {
         "name": "Charizard",
@@ -3273,7 +3394,8 @@
                     "hidden": "solar-power"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "squirtle": {
         "name": "Squirtle",
@@ -3300,7 +3422,8 @@
                     "hidden": "rain-dish"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "wartortle": {
         "name": "Wartortle",
@@ -3327,7 +3450,8 @@
                     "hidden": "rain-dish"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "blastoise": {
         "name": "Blastoise",
@@ -3354,7 +3478,8 @@
                     "hidden": "rain-dish"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "caterpie": {
         "name": "Caterpie",
@@ -3381,7 +3506,8 @@
                     "hidden": "run-away"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "metapod": {
         "name": "Metapod",
@@ -3401,7 +3527,8 @@
                     "slot1": "shed-skin"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "butterfree": {
         "name": "Butterfree",
@@ -3428,7 +3555,8 @@
                     "hidden": "tinted-lens"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "weedle": {
         "name": "Weedle",
@@ -3455,7 +3583,8 @@
                     "hidden": "run-away"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "kakuna": {
         "name": "Kakuna",
@@ -3475,7 +3604,8 @@
                     "slot1": "shed-skin"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "beedrill": {
         "name": "Beedrill",
@@ -3502,7 +3632,8 @@
                     "hidden": "sniper"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "pidgey": {
         "name": "Pidgey",
@@ -3537,7 +3668,8 @@
                     "hidden": "big-pecks"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "pidgeotto": {
         "name": "Pidgeotto",
@@ -3572,7 +3704,8 @@
                     "hidden": "big-pecks"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "pidgeot": {
         "name": "Pidgeot",
@@ -3607,7 +3740,8 @@
                     "hidden": "big-pecks"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "rattata": {
         "name": "Rattata",
@@ -3636,7 +3770,8 @@
                     "hidden": "hustle"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "raticate": {
         "name": "Raticate",
@@ -3665,7 +3800,8 @@
                     "hidden": "hustle"
                 }
             }
-        ]
+        ],
+        "catchRate": 127
     },
     "spearow": {
         "name": "Spearow",
@@ -3692,7 +3828,8 @@
                     "hidden": "sniper"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "fearow": {
         "name": "Fearow",
@@ -3719,7 +3856,8 @@
                     "hidden": "sniper"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "ekans": {
         "name": "Ekans",
@@ -3748,7 +3886,8 @@
                     "hidden": "unnerve"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "arbok": {
         "name": "Arbok",
@@ -3777,7 +3916,8 @@
                     "hidden": "unnerve"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "pikachu": {
         "name": "Pikachu",
@@ -3804,7 +3944,8 @@
                     "hidden": "lightning-rod"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "raichu": {
         "name": "Raichu",
@@ -3831,7 +3972,8 @@
                     "hidden": "lightning-rod"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "sandshrew": {
         "name": "Sandshrew",
@@ -3858,7 +4000,8 @@
                     "hidden": "sand-rush"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "sandslash": {
         "name": "Sandslash",
@@ -3885,7 +4028,8 @@
                     "hidden": "sand-rush"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "nidoran-f": {
         "name": "Nidoran F",
@@ -3920,7 +4064,8 @@
                     "hidden": "hustle"
                 }
             }
-        ]
+        ],
+        "catchRate": 235
     },
     "nidorina": {
         "name": "Nidorina",
@@ -3955,7 +4100,8 @@
                     "hidden": "hustle"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "nidoqueen": {
         "name": "Nidoqueen",
@@ -3990,7 +4136,8 @@
                     "hidden": "sheer-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "nidoran-m": {
         "name": "Nidoran M",
@@ -4025,7 +4172,8 @@
                     "hidden": "hustle"
                 }
             }
-        ]
+        ],
+        "catchRate": 235
     },
     "nidorino": {
         "name": "Nidorino",
@@ -4060,7 +4208,8 @@
                     "hidden": "hustle"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "nidoking": {
         "name": "Nidoking",
@@ -4095,7 +4244,8 @@
                     "hidden": "sheer-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "clefairy": {
         "name": "Clefairy",
@@ -4134,7 +4284,8 @@
                     "hidden": "friend-guard"
                 }
             }
-        ]
+        ],
+        "catchRate": 150
     },
     "clefable": {
         "name": "Clefable",
@@ -4173,7 +4324,8 @@
                     "hidden": "unaware"
                 }
             }
-        ]
+        ],
+        "catchRate": 25
     },
     "vulpix": {
         "name": "Vulpix",
@@ -4200,7 +4352,8 @@
                     "hidden": "drought"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "ninetales": {
         "name": "Ninetales",
@@ -4227,7 +4380,8 @@
                     "hidden": "drought"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "jigglypuff": {
         "name": "Jigglypuff",
@@ -4266,7 +4420,8 @@
                     "hidden": "friend-guard"
                 }
             }
-        ]
+        ],
+        "catchRate": 170
     },
     "wigglytuff": {
         "name": "Wigglytuff",
@@ -4305,7 +4460,8 @@
                     "hidden": "frisk"
                 }
             }
-        ]
+        ],
+        "catchRate": 50
     },
     "zubat": {
         "name": "Zubat",
@@ -4332,7 +4488,8 @@
                     "hidden": "infiltrator"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "golbat": {
         "name": "Golbat",
@@ -4359,7 +4516,8 @@
                     "hidden": "infiltrator"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "oddish": {
         "name": "Oddish",
@@ -4386,7 +4544,8 @@
                     "hidden": "run-away"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "gloom": {
         "name": "Gloom",
@@ -4413,7 +4572,8 @@
                     "hidden": "stench"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "vileplume": {
         "name": "Vileplume",
@@ -4440,7 +4600,8 @@
                     "hidden": "effect-spore"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "paras": {
         "name": "Paras",
@@ -4475,7 +4636,8 @@
                     "hidden": "damp"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "parasect": {
         "name": "Parasect",
@@ -4510,7 +4672,8 @@
                     "hidden": "damp"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "venonat": {
         "name": "Venonat",
@@ -4545,7 +4708,8 @@
                     "hidden": "run-away"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "venomoth": {
         "name": "Venomoth",
@@ -4580,7 +4744,8 @@
                     "hidden": "wonder-skin"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "diglett": {
         "name": "Diglett",
@@ -4609,7 +4774,8 @@
                     "hidden": "sand-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "dugtrio": {
         "name": "Dugtrio",
@@ -4638,7 +4804,8 @@
                     "hidden": "sand-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 50
     },
     "meowth": {
         "name": "Meowth",
@@ -4673,7 +4840,8 @@
                     "hidden": "unnerve"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "persian": {
         "name": "Persian",
@@ -4708,7 +4876,8 @@
                     "hidden": "unnerve"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "psyduck": {
         "name": "Psyduck",
@@ -4737,7 +4906,8 @@
                     "hidden": "swift-swim"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "golduck": {
         "name": "Golduck",
@@ -4766,7 +4936,8 @@
                     "hidden": "swift-swim"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "mankey": {
         "name": "Mankey",
@@ -4801,7 +4972,8 @@
                     "hidden": "defiant"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "primeape": {
         "name": "Primeape",
@@ -4836,7 +5008,8 @@
                     "hidden": "defiant"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "growlithe": {
         "name": "Growlithe",
@@ -4865,7 +5038,8 @@
                     "hidden": "justified"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "arcanine": {
         "name": "Arcanine",
@@ -4894,7 +5068,8 @@
                     "hidden": "justified"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "poliwag": {
         "name": "Poliwag",
@@ -4923,7 +5098,8 @@
                     "hidden": "swift-swim"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "poliwhirl": {
         "name": "Poliwhirl",
@@ -4952,7 +5128,8 @@
                     "hidden": "swift-swim"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "poliwrath": {
         "name": "Poliwrath",
@@ -4981,7 +5158,8 @@
                     "hidden": "swift-swim"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "abra": {
         "name": "Abra",
@@ -5010,7 +5188,8 @@
                     "hidden": "magic-guard"
                 }
             }
-        ]
+        ],
+        "catchRate": 200
     },
     "kadabra": {
         "name": "Kadabra",
@@ -5039,7 +5218,8 @@
                     "hidden": "magic-guard"
                 }
             }
-        ]
+        ],
+        "catchRate": 100
     },
     "alakazam": {
         "name": "Alakazam",
@@ -5068,7 +5248,8 @@
                     "hidden": "magic-guard"
                 }
             }
-        ]
+        ],
+        "catchRate": 50
     },
     "machop": {
         "name": "Machop",
@@ -5103,7 +5284,8 @@
                     "hidden": "steadfast"
                 }
             }
-        ]
+        ],
+        "catchRate": 180
     },
     "machoke": {
         "name": "Machoke",
@@ -5138,7 +5320,8 @@
                     "hidden": "steadfast"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "machamp": {
         "name": "Machamp",
@@ -5173,7 +5356,8 @@
                     "hidden": "steadfast"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "bellsprout": {
         "name": "Bellsprout",
@@ -5200,7 +5384,8 @@
                     "hidden": "gluttony"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "weepinbell": {
         "name": "Weepinbell",
@@ -5227,7 +5412,8 @@
                     "hidden": "gluttony"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "victreebel": {
         "name": "Victreebel",
@@ -5254,7 +5440,8 @@
                     "hidden": "gluttony"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "tentacool": {
         "name": "Tentacool",
@@ -5283,7 +5470,8 @@
                     "hidden": "rain-dish"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "tentacruel": {
         "name": "Tentacruel",
@@ -5312,7 +5500,8 @@
                     "hidden": "rain-dish"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "geodude": {
         "name": "Geodude",
@@ -5341,7 +5530,8 @@
                     "hidden": "sand-veil"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "graveler": {
         "name": "Graveler",
@@ -5370,7 +5560,8 @@
                     "hidden": "sand-veil"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "golem": {
         "name": "Golem",
@@ -5399,7 +5590,8 @@
                     "hidden": "sand-veil"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "ponyta": {
         "name": "Ponyta",
@@ -5428,7 +5620,8 @@
                     "hidden": "flame-body"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "rapidash": {
         "name": "Rapidash",
@@ -5457,7 +5650,8 @@
                     "hidden": "flame-body"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "slowpoke": {
         "name": "Slowpoke",
@@ -5486,7 +5680,8 @@
                     "hidden": "regenerator"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "slowbro": {
         "name": "Slowbro",
@@ -5515,7 +5710,8 @@
                     "hidden": "regenerator"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "magnemite": {
         "name": "Magnemite",
@@ -5548,7 +5744,8 @@
                     "hidden": "analytic"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "magneton": {
         "name": "Magneton",
@@ -5581,7 +5778,8 @@
                     "hidden": "analytic"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "farfetchd": {
         "name": "Farfetchd",
@@ -5610,7 +5808,8 @@
                     "hidden": "defiant"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "doduo": {
         "name": "Doduo",
@@ -5639,7 +5838,8 @@
                     "hidden": "tangled-feet"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "dodrio": {
         "name": "Dodrio",
@@ -5668,7 +5868,8 @@
                     "hidden": "tangled-feet"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "seel": {
         "name": "Seel",
@@ -5703,7 +5904,8 @@
                     "hidden": "ice-body"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "dewgong": {
         "name": "Dewgong",
@@ -5738,7 +5940,8 @@
                     "hidden": "ice-body"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "grimer": {
         "name": "Grimer",
@@ -5767,7 +5970,8 @@
                     "hidden": "poison-touch"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "muk": {
         "name": "Muk",
@@ -5796,7 +6000,8 @@
                     "hidden": "poison-touch"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "shellder": {
         "name": "Shellder",
@@ -5831,7 +6036,8 @@
                     "hidden": "overcoat"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "cloyster": {
         "name": "Cloyster",
@@ -5866,7 +6072,8 @@
                     "hidden": "overcoat"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "gastly": {
         "name": "Gastly",
@@ -5886,7 +6093,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "haunter": {
         "name": "Haunter",
@@ -5906,7 +6114,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "gengar": {
         "name": "Gengar",
@@ -5932,7 +6141,8 @@
                     "slot1": "cursed-body"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "onix": {
         "name": "Onix",
@@ -5961,7 +6171,8 @@
                     "hidden": "weak-armor"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "drowzee": {
         "name": "Drowzee",
@@ -5996,7 +6207,8 @@
                     "hidden": "inner-focus"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "hypno": {
         "name": "Hypno",
@@ -6031,7 +6243,8 @@
                     "hidden": "inner-focus"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "krabby": {
         "name": "Krabby",
@@ -6060,7 +6273,8 @@
                     "hidden": "sheer-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 225
     },
     "kingler": {
         "name": "Kingler",
@@ -6089,7 +6303,8 @@
                     "hidden": "sheer-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "voltorb": {
         "name": "Voltorb",
@@ -6118,7 +6333,8 @@
                     "hidden": "aftermath"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "electrode": {
         "name": "Electrode",
@@ -6147,7 +6363,8 @@
                     "hidden": "aftermath"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "exeggcute": {
         "name": "Exeggcute",
@@ -6174,7 +6391,8 @@
                     "hidden": "harvest"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "exeggutor": {
         "name": "Exeggutor",
@@ -6201,7 +6419,8 @@
                     "hidden": "harvest"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "cubone": {
         "name": "Cubone",
@@ -6230,7 +6449,8 @@
                     "hidden": "battle-armor"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "marowak": {
         "name": "Marowak",
@@ -6259,7 +6479,8 @@
                     "hidden": "battle-armor"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "hitmonlee": {
         "name": "Hitmonlee",
@@ -6294,7 +6515,8 @@
                     "hidden": "unburden"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "hitmonchan": {
         "name": "Hitmonchan",
@@ -6329,7 +6551,8 @@
                     "hidden": "inner-focus"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "lickitung": {
         "name": "Lickitung",
@@ -6358,7 +6581,8 @@
                     "hidden": "cloud-nine"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "koffing": {
         "name": "Koffing",
@@ -6387,7 +6611,8 @@
                     "hidden": "stench"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "weezing": {
         "name": "Weezing",
@@ -6416,7 +6641,8 @@
                     "hidden": "stench"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "rhyhorn": {
         "name": "Rhyhorn",
@@ -6445,7 +6671,8 @@
                     "hidden": "reckless"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "rhydon": {
         "name": "Rhydon",
@@ -6474,7 +6701,8 @@
                     "hidden": "reckless"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "chansey": {
         "name": "Chansey",
@@ -6503,7 +6731,8 @@
                     "hidden": "healer"
                 }
             }
-        ]
+        ],
+        "catchRate": 30
     },
     "tangela": {
         "name": "Tangela",
@@ -6538,7 +6767,8 @@
                     "hidden": "regenerator"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "kangaskhan": {
         "name": "Kangaskhan",
@@ -6573,7 +6803,8 @@
                     "hidden": "inner-focus"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "horsea": {
         "name": "Horsea",
@@ -6608,7 +6839,8 @@
                     "hidden": "damp"
                 }
             }
-        ]
+        ],
+        "catchRate": 225
     },
     "seadra": {
         "name": "Seadra",
@@ -6643,7 +6875,8 @@
                     "hidden": "damp"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "goldeen": {
         "name": "Goldeen",
@@ -6672,7 +6905,8 @@
                     "hidden": "lightning-rod"
                 }
             }
-        ]
+        ],
+        "catchRate": 225
     },
     "seaking": {
         "name": "Seaking",
@@ -6701,7 +6935,8 @@
                     "hidden": "lightning-rod"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "staryu": {
         "name": "Staryu",
@@ -6730,7 +6965,8 @@
                     "hidden": "analytic"
                 }
             }
-        ]
+        ],
+        "catchRate": 225
     },
     "starmie": {
         "name": "Starmie",
@@ -6759,7 +6995,8 @@
                     "hidden": "analytic"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "mr-mime": {
         "name": "Mr Mime",
@@ -6798,7 +7035,8 @@
                     "hidden": "technician"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "scyther": {
         "name": "Scyther",
@@ -6833,7 +7071,8 @@
                     "hidden": "steadfast"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "jynx": {
         "name": "Jynx",
@@ -6868,7 +7107,8 @@
                     "hidden": "dry-skin"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "electabuzz": {
         "name": "Electabuzz",
@@ -6895,7 +7135,8 @@
                     "hidden": "vital-spirit"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "magmar": {
         "name": "Magmar",
@@ -6922,7 +7163,8 @@
                     "hidden": "vital-spirit"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "pinsir": {
         "name": "Pinsir",
@@ -6957,7 +7199,8 @@
                     "hidden": "moxie"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "tauros": {
         "name": "Tauros",
@@ -6992,7 +7235,8 @@
                     "hidden": "sheer-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "magikarp": {
         "name": "Magikarp",
@@ -7019,7 +7263,8 @@
                     "hidden": "rattled"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "gyarados": {
         "name": "Gyarados",
@@ -7046,7 +7291,8 @@
                     "hidden": "moxie"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "lapras": {
         "name": "Lapras",
@@ -7075,7 +7321,8 @@
                     "hidden": "hydration"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "ditto": {
         "name": "Ditto",
@@ -7102,7 +7349,8 @@
                     "hidden": "imposter"
                 }
             }
-        ]
+        ],
+        "catchRate": 35
     },
     "eevee": {
         "name": "Eevee",
@@ -7137,7 +7385,8 @@
                     "hidden": "anticipation"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "vaporeon": {
         "name": "Vaporeon",
@@ -7164,7 +7413,8 @@
                     "hidden": "hydration"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "jolteon": {
         "name": "Jolteon",
@@ -7191,7 +7441,8 @@
                     "hidden": "quick-feet"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "flareon": {
         "name": "Flareon",
@@ -7218,7 +7469,8 @@
                     "hidden": "guts"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "porygon": {
         "name": "Porygon",
@@ -7253,7 +7505,8 @@
                     "hidden": "analytic"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "omanyte": {
         "name": "Omanyte",
@@ -7282,7 +7535,8 @@
                     "hidden": "weak-armor"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "omastar": {
         "name": "Omastar",
@@ -7311,7 +7565,8 @@
                     "hidden": "weak-armor"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "kabuto": {
         "name": "Kabuto",
@@ -7340,7 +7595,8 @@
                     "hidden": "weak-armor"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "kabutops": {
         "name": "Kabutops",
@@ -7369,7 +7625,8 @@
                     "hidden": "weak-armor"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "aerodactyl": {
         "name": "Aerodactyl",
@@ -7398,7 +7655,8 @@
                     "hidden": "unnerve"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "snorlax": {
         "name": "Snorlax",
@@ -7427,7 +7685,8 @@
                     "hidden": "gluttony"
                 }
             }
-        ]
+        ],
+        "catchRate": 25
     },
     "articuno": {
         "name": "Articuno",
@@ -7448,7 +7707,8 @@
                     "hidden": "snow-cloak"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "zapdos": {
         "name": "Zapdos",
@@ -7476,7 +7736,8 @@
                     "hidden": "static"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "moltres": {
         "name": "Moltres",
@@ -7497,7 +7758,8 @@
                     "hidden": "flame-body"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "dratini": {
         "name": "Dratini",
@@ -7524,7 +7786,8 @@
                     "hidden": "marvel-scale"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "dragonair": {
         "name": "Dragonair",
@@ -7551,7 +7814,8 @@
                     "hidden": "marvel-scale"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "dragonite": {
         "name": "Dragonite",
@@ -7578,7 +7842,8 @@
                     "hidden": "multiscale"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "mewtwo": {
         "name": "Mewtwo",
@@ -7605,7 +7870,8 @@
                     "hidden": "unnerve"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "mew": {
         "name": "Mew",
@@ -7625,7 +7891,8 @@
                     "slot1": "synchronize"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "chikorita": {
         "name": "Chikorita",
@@ -7646,7 +7913,8 @@
                     "hidden": "leaf-guard"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "bayleef": {
         "name": "Bayleef",
@@ -7667,7 +7935,8 @@
                     "hidden": "leaf-guard"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "meganium": {
         "name": "Meganium",
@@ -7688,7 +7957,8 @@
                     "hidden": "leaf-guard"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "cyndaquil": {
         "name": "Cyndaquil",
@@ -7709,7 +7979,8 @@
                     "hidden": "flash-fire"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "quilava": {
         "name": "Quilava",
@@ -7730,7 +8001,8 @@
                     "hidden": "flash-fire"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "typhlosion": {
         "name": "Typhlosion",
@@ -7751,7 +8023,8 @@
                     "hidden": "flash-fire"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "totodile": {
         "name": "Totodile",
@@ -7772,7 +8045,8 @@
                     "hidden": "sheer-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "croconaw": {
         "name": "Croconaw",
@@ -7793,7 +8067,8 @@
                     "hidden": "sheer-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "feraligatr": {
         "name": "Feraligatr",
@@ -7814,7 +8089,8 @@
                     "hidden": "sheer-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "sentret": {
         "name": "Sentret",
@@ -7843,7 +8119,8 @@
                     "hidden": "frisk"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "furret": {
         "name": "Furret",
@@ -7872,7 +8149,8 @@
                     "hidden": "frisk"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "hoothoot": {
         "name": "Hoothoot",
@@ -7901,7 +8179,8 @@
                     "hidden": "tinted-lens"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "noctowl": {
         "name": "Noctowl",
@@ -7930,7 +8209,8 @@
                     "hidden": "tinted-lens"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "ledyba": {
         "name": "Ledyba",
@@ -7959,7 +8239,8 @@
                     "hidden": "rattled"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "ledian": {
         "name": "Ledian",
@@ -7988,7 +8269,8 @@
                     "hidden": "iron-fist"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "spinarak": {
         "name": "Spinarak",
@@ -8017,7 +8299,8 @@
                     "hidden": "sniper"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "ariados": {
         "name": "Ariados",
@@ -8046,7 +8329,8 @@
                     "hidden": "sniper"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "crobat": {
         "name": "Crobat",
@@ -8073,7 +8357,8 @@
                     "hidden": "infiltrator"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "chinchou": {
         "name": "Chinchou",
@@ -8102,7 +8387,8 @@
                     "hidden": "water-absorb"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "lanturn": {
         "name": "Lanturn",
@@ -8131,7 +8417,8 @@
                     "hidden": "water-absorb"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "pichu": {
         "name": "Pichu",
@@ -8158,7 +8445,8 @@
                     "hidden": "lightning-rod"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "cleffa": {
         "name": "Cleffa",
@@ -8197,7 +8485,8 @@
                     "hidden": "friend-guard"
                 }
             }
-        ]
+        ],
+        "catchRate": 150
     },
     "igglybuff": {
         "name": "Igglybuff",
@@ -8236,7 +8525,8 @@
                     "hidden": "friend-guard"
                 }
             }
-        ]
+        ],
+        "catchRate": 170
     },
     "togepi": {
         "name": "Togepi",
@@ -8269,7 +8559,8 @@
                     "hidden": "super-luck"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "togetic": {
         "name": "Togetic",
@@ -8302,7 +8593,8 @@
                     "hidden": "super-luck"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "natu": {
         "name": "Natu",
@@ -8331,7 +8623,8 @@
                     "hidden": "magic-bounce"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "xatu": {
         "name": "Xatu",
@@ -8360,7 +8653,8 @@
                     "hidden": "magic-bounce"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "mareep": {
         "name": "Mareep",
@@ -8387,7 +8681,8 @@
                     "hidden": "plus"
                 }
             }
-        ]
+        ],
+        "catchRate": 235
     },
     "flaaffy": {
         "name": "Flaaffy",
@@ -8414,7 +8709,8 @@
                     "hidden": "plus"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "ampharos": {
         "name": "Ampharos",
@@ -8441,7 +8737,8 @@
                     "hidden": "plus"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "bellossom": {
         "name": "Bellossom",
@@ -8468,7 +8765,8 @@
                     "hidden": "healer"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "marill": {
         "name": "Marill",
@@ -8501,7 +8799,8 @@
                     "hidden": "sap-sipper"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "azumarill": {
         "name": "Azumarill",
@@ -8534,7 +8833,8 @@
                     "hidden": "sap-sipper"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "sudowoodo": {
         "name": "Sudowoodo",
@@ -8563,7 +8863,8 @@
                     "hidden": "rattled"
                 }
             }
-        ]
+        ],
+        "catchRate": 65
     },
     "politoed": {
         "name": "Politoed",
@@ -8592,7 +8893,8 @@
                     "hidden": "drizzle"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "hoppip": {
         "name": "Hoppip",
@@ -8627,7 +8929,8 @@
                     "hidden": "infiltrator"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "skiploom": {
         "name": "Skiploom",
@@ -8662,7 +8965,8 @@
                     "hidden": "infiltrator"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "jumpluff": {
         "name": "Jumpluff",
@@ -8697,7 +9001,8 @@
                     "hidden": "infiltrator"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "aipom": {
         "name": "Aipom",
@@ -8726,7 +9031,8 @@
                     "hidden": "skill-link"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "sunkern": {
         "name": "Sunkern",
@@ -8761,7 +9067,8 @@
                     "hidden": "early-bird"
                 }
             }
-        ]
+        ],
+        "catchRate": 235
     },
     "sunflora": {
         "name": "Sunflora",
@@ -8796,7 +9103,8 @@
                     "hidden": "early-bird"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "yanma": {
         "name": "Yanma",
@@ -8825,7 +9133,8 @@
                     "hidden": "frisk"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "wooper": {
         "name": "Wooper",
@@ -8854,7 +9163,8 @@
                     "hidden": "unaware"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "quagsire": {
         "name": "Quagsire",
@@ -8883,7 +9193,8 @@
                     "hidden": "unaware"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "espeon": {
         "name": "Espeon",
@@ -8910,7 +9221,8 @@
                     "hidden": "magic-bounce"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "umbreon": {
         "name": "Umbreon",
@@ -8937,7 +9249,8 @@
                     "hidden": "inner-focus"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "murkrow": {
         "name": "Murkrow",
@@ -8972,7 +9285,8 @@
                     "hidden": "prankster"
                 }
             }
-        ]
+        ],
+        "catchRate": 30
     },
     "slowking": {
         "name": "Slowking",
@@ -9001,7 +9315,8 @@
                     "hidden": "regenerator"
                 }
             }
-        ]
+        ],
+        "catchRate": 70
     },
     "misdreavus": {
         "name": "Misdreavus",
@@ -9021,7 +9336,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "unown": {
         "name": "Unown",
@@ -9041,7 +9357,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 225
     },
     "wobbuffet": {
         "name": "Wobbuffet",
@@ -9068,7 +9385,8 @@
                     "hidden": "telepathy"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "girafarig": {
         "name": "Girafarig",
@@ -9097,7 +9415,8 @@
                     "hidden": "sap-sipper"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "pineco": {
         "name": "Pineco",
@@ -9124,7 +9443,8 @@
                     "hidden": "overcoat"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "forretress": {
         "name": "Forretress",
@@ -9151,7 +9471,8 @@
                     "hidden": "overcoat"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "dunsparce": {
         "name": "Dunsparce",
@@ -9180,7 +9501,8 @@
                     "hidden": "rattled"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "gligar": {
         "name": "Gligar",
@@ -9209,7 +9531,8 @@
                     "hidden": "immunity"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "steelix": {
         "name": "Steelix",
@@ -9238,7 +9561,8 @@
                     "hidden": "sheer-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 25
     },
     "snubbull": {
         "name": "Snubbull",
@@ -9271,7 +9595,8 @@
                     "hidden": "rattled"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "granbull": {
         "name": "Granbull",
@@ -9310,7 +9635,8 @@
                     "hidden": "rattled"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "qwilfish": {
         "name": "Qwilfish",
@@ -9339,7 +9665,8 @@
                     "hidden": "intimidate"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "scizor": {
         "name": "Scizor",
@@ -9374,7 +9701,8 @@
                     "hidden": "light-metal"
                 }
             }
-        ]
+        ],
+        "catchRate": 25
     },
     "shuckle": {
         "name": "Shuckle",
@@ -9409,7 +9737,8 @@
                     "hidden": "contrary"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "heracross": {
         "name": "Heracross",
@@ -9438,7 +9767,8 @@
                     "hidden": "moxie"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "sneasel": {
         "name": "Sneasel",
@@ -9467,7 +9797,8 @@
                     "hidden": "pickpocket"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "teddiursa": {
         "name": "Teddiursa",
@@ -9502,7 +9833,8 @@
                     "hidden": "honey-gather"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "ursaring": {
         "name": "Ursaring",
@@ -9537,7 +9869,8 @@
                     "hidden": "unnerve"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "slugma": {
         "name": "Slugma",
@@ -9566,7 +9899,8 @@
                     "hidden": "weak-armor"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "magcargo": {
         "name": "Magcargo",
@@ -9595,7 +9929,8 @@
                     "hidden": "weak-armor"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "swinub": {
         "name": "Swinub",
@@ -9630,7 +9965,8 @@
                     "hidden": "thick-fat"
                 }
             }
-        ]
+        ],
+        "catchRate": 225
     },
     "piloswine": {
         "name": "Piloswine",
@@ -9665,7 +10001,8 @@
                     "hidden": "thick-fat"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "corsola": {
         "name": "Corsola",
@@ -9694,7 +10031,8 @@
                     "hidden": "regenerator"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "remoraid": {
         "name": "Remoraid",
@@ -9729,7 +10067,8 @@
                     "hidden": "moody"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "octillery": {
         "name": "Octillery",
@@ -9764,7 +10103,8 @@
                     "hidden": "moody"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "delibird": {
         "name": "Delibird",
@@ -9793,7 +10133,8 @@
                     "hidden": "insomnia"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "mantine": {
         "name": "Mantine",
@@ -9822,7 +10163,8 @@
                     "hidden": "water-veil"
                 }
             }
-        ]
+        ],
+        "catchRate": 25
     },
     "skarmory": {
         "name": "Skarmory",
@@ -9851,7 +10193,8 @@
                     "hidden": "weak-armor"
                 }
             }
-        ]
+        ],
+        "catchRate": 25
     },
     "houndour": {
         "name": "Houndour",
@@ -9880,7 +10223,8 @@
                     "hidden": "unnerve"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "houndoom": {
         "name": "Houndoom",
@@ -9909,7 +10253,8 @@
                     "hidden": "unnerve"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "kingdra": {
         "name": "Kingdra",
@@ -9944,7 +10289,8 @@
                     "hidden": "damp"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "phanpy": {
         "name": "Phanpy",
@@ -9971,7 +10317,8 @@
                     "hidden": "sand-veil"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "donphan": {
         "name": "Donphan",
@@ -9998,7 +10345,8 @@
                     "hidden": "sand-veil"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "porygon2": {
         "name": "Porygon2",
@@ -10033,7 +10381,8 @@
                     "hidden": "analytic"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "stantler": {
         "name": "Stantler",
@@ -10068,7 +10417,8 @@
                     "hidden": "sap-sipper"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "smeargle": {
         "name": "Smeargle",
@@ -10103,7 +10453,8 @@
                     "hidden": "moody"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "tyrogue": {
         "name": "Tyrogue",
@@ -10138,7 +10489,8 @@
                     "hidden": "vital-spirit"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "hitmontop": {
         "name": "Hitmontop",
@@ -10173,7 +10525,8 @@
                     "hidden": "steadfast"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "smoochum": {
         "name": "Smoochum",
@@ -10208,7 +10561,8 @@
                     "hidden": "hydration"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "elekid": {
         "name": "Elekid",
@@ -10235,7 +10589,8 @@
                     "hidden": "vital-spirit"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "magby": {
         "name": "Magby",
@@ -10262,7 +10617,8 @@
                     "hidden": "vital-spirit"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "miltank": {
         "name": "Miltank",
@@ -10297,7 +10653,8 @@
                     "hidden": "sap-sipper"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "blissey": {
         "name": "Blissey",
@@ -10326,7 +10683,8 @@
                     "hidden": "healer"
                 }
             }
-        ]
+        ],
+        "catchRate": 30
     },
     "raikou": {
         "name": "Raikou",
@@ -10354,7 +10712,8 @@
                     "hidden": "inner-focus"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "entei": {
         "name": "Entei",
@@ -10382,7 +10741,8 @@
                     "hidden": "inner-focus"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "suicune": {
         "name": "Suicune",
@@ -10410,7 +10770,8 @@
                     "hidden": "inner-focus"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "larvitar": {
         "name": "Larvitar",
@@ -10437,7 +10798,8 @@
                     "hidden": "sand-veil"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "pupitar": {
         "name": "Pupitar",
@@ -10457,7 +10819,8 @@
                     "slot1": "shed-skin"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "tyranitar": {
         "name": "Tyranitar",
@@ -10484,7 +10847,8 @@
                     "hidden": "unnerve"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "lugia": {
         "name": "Lugia",
@@ -10511,7 +10875,8 @@
                     "hidden": "multiscale"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "ho-oh": {
         "name": "Ho Oh",
@@ -10538,7 +10903,8 @@
                     "hidden": "regenerator"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "celebi": {
         "name": "Celebi",
@@ -10558,7 +10924,8 @@
                     "slot1": "natural-cure"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "treecko": {
         "name": "Treecko",
@@ -10585,7 +10952,8 @@
                     "hidden": "unburden"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "grovyle": {
         "name": "Grovyle",
@@ -10612,7 +10980,8 @@
                     "hidden": "unburden"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "sceptile": {
         "name": "Sceptile",
@@ -10639,7 +11008,8 @@
                     "hidden": "unburden"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "torchic": {
         "name": "Torchic",
@@ -10666,7 +11036,8 @@
                     "hidden": "speed-boost"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "combusken": {
         "name": "Combusken",
@@ -10693,7 +11064,8 @@
                     "hidden": "speed-boost"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "blaziken": {
         "name": "Blaziken",
@@ -10720,7 +11092,8 @@
                     "hidden": "speed-boost"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "mudkip": {
         "name": "Mudkip",
@@ -10747,7 +11120,8 @@
                     "hidden": "damp"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "marshtomp": {
         "name": "Marshtomp",
@@ -10774,7 +11148,8 @@
                     "hidden": "damp"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "swampert": {
         "name": "Swampert",
@@ -10801,7 +11176,8 @@
                     "hidden": "damp"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "poochyena": {
         "name": "Poochyena",
@@ -10836,7 +11212,8 @@
                     "hidden": "rattled"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "mightyena": {
         "name": "Mightyena",
@@ -10871,7 +11248,8 @@
                     "hidden": "moxie"
                 }
             }
-        ]
+        ],
+        "catchRate": 127
     },
     "zigzagoon": {
         "name": "Zigzagoon",
@@ -10906,7 +11284,8 @@
                     "hidden": "quick-feet"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "linoone": {
         "name": "Linoone",
@@ -10941,7 +11320,8 @@
                     "hidden": "quick-feet"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "wurmple": {
         "name": "Wurmple",
@@ -10968,7 +11348,8 @@
                     "hidden": "run-away"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "silcoon": {
         "name": "Silcoon",
@@ -10988,7 +11369,8 @@
                     "slot1": "shed-skin"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "beautifly": {
         "name": "Beautifly",
@@ -11015,7 +11397,8 @@
                     "hidden": "rivalry"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "cascoon": {
         "name": "Cascoon",
@@ -11035,7 +11418,8 @@
                     "slot1": "shed-skin"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "dustox": {
         "name": "Dustox",
@@ -11062,7 +11446,8 @@
                     "hidden": "compound-eyes"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "lotad": {
         "name": "Lotad",
@@ -11091,7 +11476,8 @@
                     "hidden": "own-tempo"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "lombre": {
         "name": "Lombre",
@@ -11120,7 +11506,8 @@
                     "hidden": "own-tempo"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "ludicolo": {
         "name": "Ludicolo",
@@ -11149,7 +11536,8 @@
                     "hidden": "own-tempo"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "seedot": {
         "name": "Seedot",
@@ -11178,7 +11566,8 @@
                     "hidden": "pickpocket"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "nuzleaf": {
         "name": "Nuzleaf",
@@ -11207,7 +11596,8 @@
                     "hidden": "pickpocket"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "shiftry": {
         "name": "Shiftry",
@@ -11244,7 +11634,8 @@
                     "hidden": "pickpocket"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "taillow": {
         "name": "Taillow",
@@ -11271,7 +11662,8 @@
                     "hidden": "scrappy"
                 }
             }
-        ]
+        ],
+        "catchRate": 200
     },
     "swellow": {
         "name": "Swellow",
@@ -11298,7 +11690,8 @@
                     "hidden": "scrappy"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "wingull": {
         "name": "Wingull",
@@ -11333,7 +11726,8 @@
                     "hidden": "rain-dish"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "pelipper": {
         "name": "Pelipper",
@@ -11368,7 +11762,8 @@
                     "hidden": "rain-dish"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "ralts": {
         "name": "Ralts",
@@ -11401,7 +11796,8 @@
                     "hidden": "telepathy"
                 }
             }
-        ]
+        ],
+        "catchRate": 235
     },
     "kirlia": {
         "name": "Kirlia",
@@ -11434,7 +11830,8 @@
                     "hidden": "telepathy"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "gardevoir": {
         "name": "Gardevoir",
@@ -11467,7 +11864,8 @@
                     "hidden": "telepathy"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "surskit": {
         "name": "Surskit",
@@ -11494,7 +11892,8 @@
                     "hidden": "rain-dish"
                 }
             }
-        ]
+        ],
+        "catchRate": 200
     },
     "masquerain": {
         "name": "Masquerain",
@@ -11521,7 +11920,8 @@
                     "hidden": "unnerve"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "shroomish": {
         "name": "Shroomish",
@@ -11556,7 +11956,8 @@
                     "hidden": "quick-feet"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "breloom": {
         "name": "Breloom",
@@ -11591,7 +11992,8 @@
                     "hidden": "technician"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "slakoth": {
         "name": "Slakoth",
@@ -11611,7 +12013,8 @@
                     "slot1": "truant"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "vigoroth": {
         "name": "Vigoroth",
@@ -11631,7 +12034,8 @@
                     "slot1": "vital-spirit"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "slaking": {
         "name": "Slaking",
@@ -11651,7 +12055,8 @@
                     "slot1": "truant"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "nincada": {
         "name": "Nincada",
@@ -11678,7 +12083,8 @@
                     "hidden": "run-away"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "ninjask": {
         "name": "Ninjask",
@@ -11705,7 +12111,8 @@
                     "hidden": "infiltrator"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "shedinja": {
         "name": "Shedinja",
@@ -11725,7 +12132,8 @@
                     "slot1": "wonder-guard"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "whismur": {
         "name": "Whismur",
@@ -11752,7 +12160,8 @@
                     "hidden": "rattled"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "loudred": {
         "name": "Loudred",
@@ -11779,7 +12188,8 @@
                     "hidden": "scrappy"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "exploud": {
         "name": "Exploud",
@@ -11806,7 +12216,8 @@
                     "hidden": "scrappy"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "makuhita": {
         "name": "Makuhita",
@@ -11835,7 +12246,8 @@
                     "hidden": "sheer-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 180
     },
     "hariyama": {
         "name": "Hariyama",
@@ -11864,7 +12276,8 @@
                     "hidden": "sheer-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 200
     },
     "azurill": {
         "name": "Azurill",
@@ -11897,7 +12310,8 @@
                     "hidden": "sap-sipper"
                 }
             }
-        ]
+        ],
+        "catchRate": 150
     },
     "nosepass": {
         "name": "Nosepass",
@@ -11926,7 +12340,8 @@
                     "hidden": "sand-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "skitty": {
         "name": "Skitty",
@@ -11961,7 +12376,8 @@
                     "hidden": "wonder-skin"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "delcatty": {
         "name": "Delcatty",
@@ -11996,7 +12412,8 @@
                     "hidden": "wonder-skin"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "sableye": {
         "name": "Sableye",
@@ -12031,7 +12448,8 @@
                     "hidden": "prankster"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "mawile": {
         "name": "Mawile",
@@ -12064,7 +12482,8 @@
                     "hidden": "sheer-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "aron": {
         "name": "Aron",
@@ -12093,7 +12512,8 @@
                     "hidden": "heavy-metal"
                 }
             }
-        ]
+        ],
+        "catchRate": 180
     },
     "lairon": {
         "name": "Lairon",
@@ -12122,7 +12542,8 @@
                     "hidden": "heavy-metal"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "aggron": {
         "name": "Aggron",
@@ -12151,7 +12572,8 @@
                     "hidden": "heavy-metal"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "meditite": {
         "name": "Meditite",
@@ -12178,7 +12600,8 @@
                     "hidden": "telepathy"
                 }
             }
-        ]
+        ],
+        "catchRate": 180
     },
     "medicham": {
         "name": "Medicham",
@@ -12205,7 +12628,8 @@
                     "hidden": "telepathy"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "electrike": {
         "name": "Electrike",
@@ -12234,7 +12658,8 @@
                     "hidden": "minus"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "manectric": {
         "name": "Manectric",
@@ -12263,7 +12688,8 @@
                     "hidden": "minus"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "plusle": {
         "name": "Plusle",
@@ -12290,7 +12716,8 @@
                     "hidden": "lightning-rod"
                 }
             }
-        ]
+        ],
+        "catchRate": 200
     },
     "minun": {
         "name": "Minun",
@@ -12317,7 +12744,8 @@
                     "hidden": "volt-absorb"
                 }
             }
-        ]
+        ],
+        "catchRate": 200
     },
     "volbeat": {
         "name": "Volbeat",
@@ -12346,7 +12774,8 @@
                     "hidden": "prankster"
                 }
             }
-        ]
+        ],
+        "catchRate": 150
     },
     "illumise": {
         "name": "Illumise",
@@ -12381,7 +12810,8 @@
                     "hidden": "prankster"
                 }
             }
-        ]
+        ],
+        "catchRate": 150
     },
     "roselia": {
         "name": "Roselia",
@@ -12410,7 +12840,8 @@
                     "hidden": "leaf-guard"
                 }
             }
-        ]
+        ],
+        "catchRate": 150
     },
     "gulpin": {
         "name": "Gulpin",
@@ -12439,7 +12870,8 @@
                     "hidden": "gluttony"
                 }
             }
-        ]
+        ],
+        "catchRate": 225
     },
     "swalot": {
         "name": "Swalot",
@@ -12468,7 +12900,8 @@
                     "hidden": "gluttony"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "carvanha": {
         "name": "Carvanha",
@@ -12495,7 +12928,8 @@
                     "hidden": "speed-boost"
                 }
             }
-        ]
+        ],
+        "catchRate": 225
     },
     "sharpedo": {
         "name": "Sharpedo",
@@ -12522,7 +12956,8 @@
                     "hidden": "speed-boost"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "wailmer": {
         "name": "Wailmer",
@@ -12551,7 +12986,8 @@
                     "hidden": "pressure"
                 }
             }
-        ]
+        ],
+        "catchRate": 125
     },
     "wailord": {
         "name": "Wailord",
@@ -12580,7 +13016,8 @@
                     "hidden": "pressure"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "numel": {
         "name": "Numel",
@@ -12615,7 +13052,8 @@
                     "hidden": "own-tempo"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "camerupt": {
         "name": "Camerupt",
@@ -12650,7 +13088,8 @@
                     "hidden": "anger-point"
                 }
             }
-        ]
+        ],
+        "catchRate": 150
     },
     "torkoal": {
         "name": "Torkoal",
@@ -12685,7 +13124,8 @@
                     "hidden": "shell-armor"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "spoink": {
         "name": "Spoink",
@@ -12714,7 +13154,8 @@
                     "hidden": "gluttony"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "grumpig": {
         "name": "Grumpig",
@@ -12743,7 +13184,8 @@
                     "hidden": "gluttony"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "spinda": {
         "name": "Spinda",
@@ -12778,7 +13220,8 @@
                     "hidden": "contrary"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "trapinch": {
         "name": "Trapinch",
@@ -12807,7 +13250,8 @@
                     "hidden": "sheer-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "vibrava": {
         "name": "Vibrava",
@@ -12827,7 +13271,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "flygon": {
         "name": "Flygon",
@@ -12847,7 +13292,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "cacnea": {
         "name": "Cacnea",
@@ -12874,7 +13320,8 @@
                     "hidden": "water-absorb"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "cacturne": {
         "name": "Cacturne",
@@ -12901,7 +13348,8 @@
                     "hidden": "water-absorb"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "swablu": {
         "name": "Swablu",
@@ -12928,7 +13376,8 @@
                     "hidden": "cloud-nine"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "altaria": {
         "name": "Altaria",
@@ -12955,7 +13404,8 @@
                     "hidden": "cloud-nine"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "zangoose": {
         "name": "Zangoose",
@@ -12982,7 +13432,8 @@
                     "hidden": "toxic-boost"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "seviper": {
         "name": "Seviper",
@@ -13009,7 +13460,8 @@
                     "hidden": "infiltrator"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "lunatone": {
         "name": "Lunatone",
@@ -13029,7 +13481,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "solrock": {
         "name": "Solrock",
@@ -13049,7 +13502,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "barboach": {
         "name": "Barboach",
@@ -13084,7 +13538,8 @@
                     "hidden": "hydration"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "whiscash": {
         "name": "Whiscash",
@@ -13119,7 +13574,8 @@
                     "hidden": "hydration"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "corphish": {
         "name": "Corphish",
@@ -13148,7 +13604,8 @@
                     "hidden": "adaptability"
                 }
             }
-        ]
+        ],
+        "catchRate": 205
     },
     "crawdaunt": {
         "name": "Crawdaunt",
@@ -13177,7 +13634,8 @@
                     "hidden": "adaptability"
                 }
             }
-        ]
+        ],
+        "catchRate": 155
     },
     "baltoy": {
         "name": "Baltoy",
@@ -13197,7 +13655,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "claydol": {
         "name": "Claydol",
@@ -13217,7 +13676,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "lileep": {
         "name": "Lileep",
@@ -13244,7 +13704,8 @@
                     "hidden": "storm-drain"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "cradily": {
         "name": "Cradily",
@@ -13271,7 +13732,8 @@
                     "hidden": "storm-drain"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "anorith": {
         "name": "Anorith",
@@ -13298,7 +13760,8 @@
                     "hidden": "swift-swim"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "armaldo": {
         "name": "Armaldo",
@@ -13325,7 +13788,8 @@
                     "hidden": "swift-swim"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "feebas": {
         "name": "Feebas",
@@ -13360,7 +13824,8 @@
                     "hidden": "adaptability"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "milotic": {
         "name": "Milotic",
@@ -13395,7 +13860,8 @@
                     "hidden": "cute-charm"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "castform": {
         "name": "Castform",
@@ -13415,7 +13881,8 @@
                     "slot1": "forecast"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "castform-sunny": {
         "name": "Castform Sunny",
@@ -13435,7 +13902,8 @@
                     "slot1": "forecast"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "castform-rainy": {
         "name": "Castform Rainy",
@@ -13455,7 +13923,8 @@
                     "slot1": "forecast"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "castform-snowy": {
         "name": "Castform Snowy",
@@ -13475,7 +13944,8 @@
                     "slot1": "forecast"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "kecleon": {
         "name": "Kecleon",
@@ -13502,7 +13972,8 @@
                     "hidden": "protean"
                 }
             }
-        ]
+        ],
+        "catchRate": 200
     },
     "shuppet": {
         "name": "Shuppet",
@@ -13537,7 +14008,8 @@
                     "hidden": "cursed-body"
                 }
             }
-        ]
+        ],
+        "catchRate": 225
     },
     "banette": {
         "name": "Banette",
@@ -13572,7 +14044,8 @@
                     "hidden": "cursed-body"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "duskull": {
         "name": "Duskull",
@@ -13599,7 +14072,8 @@
                     "hidden": "frisk"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "dusclops": {
         "name": "Dusclops",
@@ -13626,7 +14100,8 @@
                     "hidden": "frisk"
                 }
             }
-        ]
+        ],
+        "catchRate": 90
     },
     "tropius": {
         "name": "Tropius",
@@ -13661,7 +14136,8 @@
                     "hidden": "harvest"
                 }
             }
-        ]
+        ],
+        "catchRate": 200
     },
     "chimecho": {
         "name": "Chimecho",
@@ -13681,7 +14157,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "absol": {
         "name": "Absol",
@@ -13716,7 +14193,8 @@
                     "hidden": "justified"
                 }
             }
-        ]
+        ],
+        "catchRate": 30
     },
     "wynaut": {
         "name": "Wynaut",
@@ -13743,7 +14221,8 @@
                     "hidden": "telepathy"
                 }
             }
-        ]
+        ],
+        "catchRate": 125
     },
     "snorunt": {
         "name": "Snorunt",
@@ -13778,7 +14257,8 @@
                     "hidden": "moody"
                 }
             }
-        ]
+        ],
+        "catchRate": 190
     },
     "glalie": {
         "name": "Glalie",
@@ -13813,7 +14293,8 @@
                     "hidden": "moody"
                 }
             }
-        ]
+        ],
+        "catchRate": 75
     },
     "spheal": {
         "name": "Spheal",
@@ -13848,7 +14329,8 @@
                     "hidden": "oblivious"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "sealeo": {
         "name": "Sealeo",
@@ -13883,7 +14365,8 @@
                     "hidden": "oblivious"
                 }
             }
-        ]
+        ],
+        "catchRate": 120
     },
     "walrein": {
         "name": "Walrein",
@@ -13918,7 +14401,8 @@
                     "hidden": "oblivious"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "clamperl": {
         "name": "Clamperl",
@@ -13945,7 +14429,8 @@
                     "hidden": "rattled"
                 }
             }
-        ]
+        ],
+        "catchRate": 255
     },
     "huntail": {
         "name": "Huntail",
@@ -13972,7 +14457,8 @@
                     "hidden": "water-veil"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "gorebyss": {
         "name": "Gorebyss",
@@ -13999,7 +14485,8 @@
                     "hidden": "hydration"
                 }
             }
-        ]
+        ],
+        "catchRate": 60
     },
     "relicanth": {
         "name": "Relicanth",
@@ -14028,7 +14515,8 @@
                     "hidden": "sturdy"
                 }
             }
-        ]
+        ],
+        "catchRate": 25
     },
     "luvdisc": {
         "name": "Luvdisc",
@@ -14055,7 +14543,8 @@
                     "hidden": "hydration"
                 }
             }
-        ]
+        ],
+        "catchRate": 225
     },
     "bagon": {
         "name": "Bagon",
@@ -14082,7 +14571,8 @@
                     "hidden": "sheer-force"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "shelgon": {
         "name": "Shelgon",
@@ -14109,7 +14599,8 @@
                     "hidden": "overcoat"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "salamence": {
         "name": "Salamence",
@@ -14136,7 +14627,8 @@
                     "hidden": "moxie"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "beldum": {
         "name": "Beldum",
@@ -14163,7 +14655,8 @@
                     "hidden": "light-metal"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "metang": {
         "name": "Metang",
@@ -14190,7 +14683,8 @@
                     "hidden": "light-metal"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "metagross": {
         "name": "Metagross",
@@ -14217,7 +14711,8 @@
                     "hidden": "light-metal"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "regirock": {
         "name": "Regirock",
@@ -14238,7 +14733,8 @@
                     "hidden": "sturdy"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "regice": {
         "name": "Regice",
@@ -14259,7 +14755,8 @@
                     "hidden": "ice-body"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "registeel": {
         "name": "Registeel",
@@ -14280,7 +14777,8 @@
                     "hidden": "light-metal"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "latias": {
         "name": "Latias",
@@ -14300,7 +14798,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "latios": {
         "name": "Latios",
@@ -14320,7 +14819,8 @@
                     "slot1": "levitate"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "kyogre": {
         "name": "Kyogre",
@@ -14340,7 +14840,8 @@
                     "slot1": "drizzle"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "groudon": {
         "name": "Groudon",
@@ -14360,7 +14861,8 @@
                     "slot1": "drought"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "rayquaza": {
         "name": "Rayquaza",
@@ -14380,7 +14882,8 @@
                     "slot1": "air-lock"
                 }
             }
-        ]
+        ],
+        "catchRate": 45
     },
     "jirachi": {
         "name": "Jirachi",
@@ -14400,7 +14903,8 @@
                     "slot1": "serene-grace"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "deoxys-normal": {
         "name": "Deoxys Normal",
@@ -14420,7 +14924,8 @@
                     "slot1": "pressure"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "deoxys-attack": {
         "name": "Deoxys Attack",
@@ -14440,7 +14945,8 @@
                     "slot1": "pressure"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "deoxys-defense": {
         "name": "Deoxys Defense",
@@ -14460,7 +14966,8 @@
                     "slot1": "pressure"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     },
     "deoxys-speed": {
         "name": "Deoxys Speed",
@@ -14480,6 +14987,7 @@
                     "slot1": "pressure"
                 }
             }
-        ]
+        ],
+        "catchRate": 3
     }
 }

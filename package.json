@@ -17,6 +17,7 @@
         "pokeapi:encounters": "tsx src/lib/scripts/pokeapi/encounters.ts",
         "pokeapi:types": "tsx src/lib/scripts/pokeapi/types.ts",
         "pokeapi:abilities": "tsx src/lib/scripts/pokeapi/abilities.ts",
+        "pokeapi:catch-rates": "tsx src/lib/scripts/pokeapi/catch-rates.ts",
         "compose": "tsx src/lib/scripts/assets/compose-map-sprite.ts",
         "prepare": "husky"
     },

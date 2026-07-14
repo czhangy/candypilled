@@ -122,4 +122,5 @@ export interface PokemonData {
     sprites: Record<string, string>;
     types: TypesByGeneration[];
     abilities: AbilitiesByGeneration[];
+    catchRate: number;
 }
