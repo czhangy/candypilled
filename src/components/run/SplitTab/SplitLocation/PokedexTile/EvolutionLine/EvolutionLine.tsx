@@ -89,6 +89,21 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                                     {methodLabel.label}
                                                 </span>
                                             )}
+                                            {methodLabel.gender && (
+                                                <span
+                                                    className={[
+                                                        styles['method-gender'],
+                                                        styles[
+                                                            `method-gender--${methodLabel.gender}`
+                                                        ],
+                                                    ].join(' ')}
+                                                >
+                                                    {methodLabel.gender ===
+                                                    'male'
+                                                        ? '♂'
+                                                        : '♀'}
+                                                </span>
+                                            )}
                                             {methodLabel.condition && (
                                                 <span
                                                     className={

@@ -17,14 +17,7 @@ import {
 
 const POKEAPI_SPECIES_URL = 'https://pokeapi.co/api/v2/pokemon-species';
 const POKEAPI_GENERATION_URL = 'https://pokeapi.co/api/v2/generation';
-const DATA_PATH = path.join(
-    'src',
-    'lib',
-    'scripts',
-    'pokeapi',
-    'output',
-    'pokemon.json'
-);
+const DATA_PATH = path.join('src', 'lib', 'data', 'pokemon.json');
 const FETCH_DELAY_MS = 75;
 const MAX_DEX_NUMBER = getMaxDexNumber(CURRENT_GAME_VERSION.generation);
 

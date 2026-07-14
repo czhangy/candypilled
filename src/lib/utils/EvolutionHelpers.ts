@@ -18,6 +18,8 @@ export default class EvolutionHelpers {
                     label: method.item
                         ? StringHelpers.toTitleCase(method.item)
                         : 'Use Item',
+                    condition: EvolutionHelpers.getCondition(method),
+                    gender: EvolutionHelpers.getGender(method),
                     icon: EvolutionHelpers.getIcon(method.item),
                 };
             case 'trade':
@@ -71,28 +73,52 @@ export default class EvolutionHelpers {
         method: EvolutionMethod
     ): EvolutionMethodLabel {
         const icon = EvolutionHelpers.getIcon(method.heldItem);
+        const heldItemText =
+            !icon && method.heldItem
+                ? StringHelpers.toTitleCase(method.heldItem)
+                : undefined;
+        const condition = [heldItemText, EvolutionHelpers.getCondition(method)]
+            .filter((part): part is string => !!part)
+            .join(', ');
 
         return {
             label: 'Trade',
-            condition:
-                !icon && method.heldItem
-                    ? StringHelpers.toTitleCase(method.heldItem)
-                    : undefined,
+            condition: condition || undefined,
+            gender: EvolutionHelpers.getGender(method),
             icon,
         };
+    }
+
+    private static getCondition(method: EvolutionMethod): string | undefined {
+        return method.timeOfDay
+            ? StringHelpers.toTitleCase(method.timeOfDay)
+            : undefined;
+    }
+
+    private static getGender(
+        method: EvolutionMethod
+    ): 'male' | 'female' | undefined {
+        return method.gender === 'male' || method.gender === 'female'
+            ? method.gender
+            : undefined;
     }
 
     private static getLevelUpLabel(
         method: EvolutionMethod
     ): EvolutionMethodLabel {
-        if (method.minLevel) return { label: `Lv. ${method.minLevel}` };
+        if (method.minLevel) {
+            return {
+                label: `Lv. ${method.minLevel}`,
+                condition: EvolutionHelpers.getCondition(method),
+                gender: EvolutionHelpers.getGender(method),
+            };
+        }
 
         if (method.minHappiness) {
             return {
                 label: 'Happiness',
-                condition: method.timeOfDay
-                    ? StringHelpers.toTitleCase(method.timeOfDay)
-                    : undefined,
+                condition: EvolutionHelpers.getCondition(method),
+                gender: EvolutionHelpers.getGender(method),
                 icon: EvolutionHelpers.getIcon('friendship'),
             };
         }
@@ -100,9 +126,8 @@ export default class EvolutionHelpers {
         if (method.heldItem) {
             return {
                 label: StringHelpers.toTitleCase(method.heldItem),
-                condition: method.timeOfDay
-                    ? StringHelpers.toTitleCase(method.timeOfDay)
-                    : undefined,
+                condition: EvolutionHelpers.getCondition(method),
+                gender: EvolutionHelpers.getGender(method),
                 icon: EvolutionHelpers.getIcon(method.heldItem),
             };
         }
@@ -110,9 +135,15 @@ export default class EvolutionHelpers {
         if (method.knownMoveType) {
             return {
                 label: `Knows ${StringHelpers.toTitleCase(method.knownMoveType)} Move`,
+                condition: EvolutionHelpers.getCondition(method),
+                gender: EvolutionHelpers.getGender(method),
             };
         }
 
-        return { label: 'Level Up' };
+        return {
+            label: 'Level Up',
+            condition: EvolutionHelpers.getCondition(method),
+            gender: EvolutionHelpers.getGender(method),
+        };
     }
 }

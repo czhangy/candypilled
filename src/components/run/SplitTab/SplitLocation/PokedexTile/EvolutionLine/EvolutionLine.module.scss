@@ -53,6 +53,7 @@
                 align-items: center;
                 display: flex;
                 flex-direction: column;
+                gap: 0.25rem;
 
                 .method-label {
                     color: $text-dim;
@@ -64,6 +65,20 @@
                 .method-icon {
                     cursor: help;
                     image-rendering: pixelated;
+                }
+
+                .method-gender {
+                    font-size: 0.68rem;
+                    font-weight: 700;
+                    line-height: 1;
+
+                    &--male {
+                        color: $blue;
+                    }
+
+                    &--female {
+                        color: $pink;
+                    }
                 }
 
                 .method-condition {

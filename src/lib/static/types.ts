@@ -163,6 +163,7 @@ export interface EvolutionMethodLabel {
     label: string;
     condition?: string;
     icon?: string;
+    gender?: 'male' | 'female';
 }
 
 export interface PokemonData {
