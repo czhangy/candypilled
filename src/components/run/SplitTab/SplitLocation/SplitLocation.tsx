@@ -13,7 +13,6 @@ import {
 } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
-import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import BattleCard from './BattleCard/BattleCard';
 import EncounterTable from './EncounterTable/EncounterTable';
@@ -192,14 +191,14 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                   ? []
                   : (activeSubarea.battles ?? []),
               encounters: activeSubarea.encountersKey
-                  ? EncounterHelpers.get(game.name, activeSubarea.encountersKey)
+                  ? game.encounters[activeSubarea.encountersKey]?.encounters
                   : undefined,
           }
         : {
               map: location.map,
               battles: location.battles ?? [],
               encounters: location.encountersKey
-                  ? EncounterHelpers.get(game.name, location.encountersKey)
+                  ? game.encounters[location.encountersKey]?.encounters
                   : undefined,
           };
 

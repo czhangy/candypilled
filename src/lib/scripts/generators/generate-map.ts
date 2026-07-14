@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { GAME_ID } from '@/lib/scripts/pokeapi/game';
 import {
     handleException,
     logSuccess,
@@ -9,7 +10,6 @@ import StringHelpers from '@/lib/utils/StringHelpers';
 
 const USAGE = 'Usage: npm run gen:map <slug>';
 const IMAGE_NOT_FOUND = 'No map image was found at the expected path';
-const GAME = 'platinum';
 
 interface MapArgs {
     map: string;
@@ -63,7 +63,7 @@ const main = async (): Promise<void> => {
         validateRootDirectory();
         const args = parseArgs(process.argv.slice(2));
 
-        const gameSlug = StringHelpers.toSlug(GAME);
+        const gameSlug = StringHelpers.toSlug(GAME_ID);
         const slug = args.map;
         const exportName = StringHelpers.toCamelCase(slug);
 

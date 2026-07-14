@@ -1,5 +1,7 @@
 import fs from 'fs';
 import path from 'path';
+import { getMaxDexNumber } from '@/lib/scripts/pokeapi/dex-ranges';
+import { CURRENT_GAME_VERSION } from '@/lib/scripts/pokeapi/game-versions';
 import {
     handleException,
     logSuccess,
@@ -24,7 +26,7 @@ const DATA_PATH = path.join(
     'pokemon.json'
 );
 const FETCH_DELAY_MS = 75;
-const MAX_DEX_NUMBER = 493;
+const MAX_DEX_NUMBER = getMaxDexNumber(CURRENT_GAME_VERSION.generation);
 
 // PokeAPI's evolution_detail.gender is the id of the /gender/ resource that
 // must be met for that evolution method to apply.

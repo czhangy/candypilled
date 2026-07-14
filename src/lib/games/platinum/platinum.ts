@@ -1,3 +1,4 @@
+import { ENCOUNTERS } from '@/lib/data/platinum/encounters';
 import CRASHER_WAKE from '@/lib/games/platinum/splits/crasher-wake';
 import { Game } from '@/lib/static/types';
 import BYRON from './splits/byron';
@@ -16,6 +17,7 @@ const PLATINUM: Game = {
     generation: 4,
     starters: ['Turtwig', 'Chimchar', 'Piplup'],
     accentColor: '#FFD500',
+    encounters: ENCOUNTERS,
     splits: [
         ROARK,
         GARDENIA,

@@ -86,6 +86,7 @@ export interface Game {
     splits: Split[];
     starters: string[];
     accentColor: string;
+    encounters: Record<string, LocationEncounters>;
 }
 
 export interface Run {

@@ -56,11 +56,11 @@ most recently clicked in the table.
 - `section` — the currently active map/battles/encounters group: the
   selected subarea when `location.subareas` is set, otherwise a section
   built from the location's own `map`/`battles`/`encountersKey`. Wild
-  encounters are looked up from generated PokeAPI data via the section's
-  `encountersKey`, if set. A subarea with `hideBattles` set contributes no
-  battles to the section, so no markers or battle card render for it, even
-  though the same subarea data may render battles when reused (without the
-  flag) by another split
+  encounters are looked up from the game's `encounters` data via the
+  section's `encountersKey`, if set. A subarea with `hideBattles` set
+  contributes no battles to the section, so no markers or battle card
+  render for it, even though the same subarea data may render battles
+  when reused (without the flag) by another split
 
 ## Handlers
 
