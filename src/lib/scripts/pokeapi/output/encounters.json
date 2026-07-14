@@ -22637,48 +22637,8 @@
             "name": "Oreburgh City",
             "encounters": [
                 {
-                    "species": "omanyte",
-                    "method": "gift",
-                    "minLevel": 20,
-                    "maxLevel": 20,
-                    "chance": 100,
-                    "conditions": ["item-helix-fossil"]
-                },
-                {
-                    "species": "kabuto",
-                    "method": "gift",
-                    "minLevel": 20,
-                    "maxLevel": 20,
-                    "chance": 100,
-                    "conditions": ["item-dome-fossil"]
-                },
-                {
-                    "species": "aerodactyl",
-                    "method": "gift",
-                    "minLevel": 20,
-                    "maxLevel": 20,
-                    "chance": 100,
-                    "conditions": ["item-old-amber"]
-                },
-                {
-                    "species": "lileep",
-                    "method": "gift",
-                    "minLevel": 20,
-                    "maxLevel": 20,
-                    "chance": 100,
-                    "conditions": ["item-root-fossil"]
-                },
-                {
-                    "species": "anorith",
-                    "method": "gift",
-                    "minLevel": 20,
-                    "maxLevel": 20,
-                    "chance": 100,
-                    "conditions": ["item-claw-fossil"]
-                },
-                {
                     "species": "cranidos",
-                    "method": "gift",
+                    "method": "fossil",
                     "minLevel": 20,
                     "maxLevel": 20,
                     "chance": 100,
@@ -22686,7 +22646,7 @@
                 },
                 {
                     "species": "shieldon",
-                    "method": "gift",
+                    "method": "fossil",
                     "minLevel": 20,
                     "maxLevel": 20,
                     "chance": 100,

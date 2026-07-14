@@ -20,6 +20,12 @@ const DATA_PATH = path.join(
 );
 const FETCH_DELAY_MS = 75;
 
+interface MethodOverride {
+    location: string;
+    species: string;
+    method: string;
+}
+
 interface GameVersion {
     id: string;
     label: string;
@@ -29,6 +35,7 @@ interface GameVersion {
     excludedLocations?: string[];
     excludedSpecies?: string[];
     caveLocations?: string[];
+    methodOverrides?: MethodOverride[];
 }
 
 interface NamedApiResource {
@@ -220,6 +227,20 @@ const resolveWalkMethod = (
             : encounter
     );
 
+const resolveMethodOverrides = (
+    encounters: Encounter[],
+    locationName: string,
+    methodOverrides: MethodOverride[]
+): Encounter[] =>
+    encounters.map((encounter) => {
+        const override = methodOverrides.find(
+            (candidate) =>
+                candidate.location === locationName &&
+                candidate.species === encounter.species
+        );
+        return override ? { ...encounter, method: override.method } : encounter;
+    });
+
 const expandTimeOfDayEncounters = (encounters: Encounter[]): Encounter[] => {
     const hasTimeOfDay = encounters.some((encounter) =>
         encounter.conditions?.some((condition) =>
@@ -264,10 +285,14 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
             const encounters = mergeEncounters(
                 expandTimeOfDayEncounters(
                     mergeEncounters(
-                        resolveWalkMethod(
-                            rawEncounters,
+                        resolveMethodOverrides(
+                            resolveWalkMethod(
+                                rawEncounters,
+                                location.name,
+                                version.caveLocations ?? []
+                            ),
                             location.name,
-                            version.caveLocations ?? []
+                            version.methodOverrides ?? []
                         )
                     )
                 )
