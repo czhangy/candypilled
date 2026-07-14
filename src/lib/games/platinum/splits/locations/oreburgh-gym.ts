@@ -21,7 +21,6 @@ const OREBURGH_GYM: Location = {
                         'Rock Throw',
                     ],
                     nature: Nature.Timid,
-                    ability: 'Rock Head',
                     ivs: 1,
                 },
             ],
@@ -43,7 +42,6 @@ const OREBURGH_GYM: Location = {
                         'Rock Polish',
                     ],
                     nature: Nature.Calm,
-                    ability: 'Rock Head',
                     ivs: 1,
                 },
                 {
@@ -51,7 +49,6 @@ const OREBURGH_GYM: Location = {
                     level: 9,
                     moves: ['Rock Throw', 'Tackle', 'Harden'],
                     nature: Nature.Bashful,
-                    ability: 'Rock Head',
                     ivs: 1,
                 },
             ],
@@ -68,7 +65,6 @@ const OREBURGH_GYM: Location = {
                     level: 12,
                     moves: ['Stealth Rock', 'Rock Throw'],
                     nature: Nature.Lax,
-                    ability: 'Rock Head',
                     ivs: 6,
                 },
                 {
@@ -76,7 +72,6 @@ const OREBURGH_GYM: Location = {
                     level: 12,
                     moves: ['Stealth Rock', 'Rock Throw', 'Screech'],
                     nature: Nature.Bold,
-                    ability: 'Rock Head',
                     ivs: 6,
                 },
                 {
@@ -84,7 +79,6 @@ const OREBURGH_GYM: Location = {
                     level: 14,
                     moves: ['Headbutt', 'Pursuit', 'Leer'],
                     nature: Nature.Jolly,
-                    ability: 'Mold Breaker',
                     ivs: 6,
                 },
             ],

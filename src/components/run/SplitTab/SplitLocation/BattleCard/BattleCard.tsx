@@ -1,8 +1,9 @@
 import Image from 'next/image';
-import { Battle } from '@/lib/static/types';
+import { Battle, BattlePokemon } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
+import StringHelpers from '@/lib/utils/StringHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import styles from './BattleCard.module.scss';
 
@@ -39,6 +40,13 @@ const BattleCard: React.FC<BattleCardProps> = ({
 
     const getTypes = (name: string): string[] =>
         PokemonHelpers.getTypes(name, generation) ?? [];
+
+    const getAbility = (pokemon: BattlePokemon): string | undefined => {
+        const ability =
+            pokemon.ability ??
+            PokemonHelpers.getAbilities(pokemon.name, generation)?.slot1;
+        return ability && StringHelpers.toTitleCase(ability);
+    };
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -224,7 +232,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                                 ]
                                             }
                                         >
-                                            {pokemon.ability}
+                                            {getAbility(pokemon)}
                                         </li>
                                         <li
                                             className={

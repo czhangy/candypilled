@@ -24,7 +24,7 @@ can be clicked again to undo.
 | Prop               | Type             | Required | Default | Description                                                                  |
 | ------------------ | ---------------- | -------- | ------- | ---------------------------------------------------------------------------- |
 | `battle`           | `Battle`         | Yes      | -       | The currently selected battle                                                |
-| `generation`       | `number`         | Yes      | -       | The game's generation, used to resolve each Pokemon's types                  |
+| `generation`       | `number`         | Yes      | -       | The game's generation, used to resolve each Pokemon's types and abilities    |
 | `isDefeated`       | `boolean`        | Yes      | -       | Whether this battle has already been marked defeated                         |
 | `onToggleDefeated` | `() => void`     | Yes      | -       | Called when the defeat button is clicked                                     |
 | `starter`          | `string \| null` | Yes      | -       | The run's chosen starter, used to resolve a miniboss's starter-specific team |
@@ -37,6 +37,9 @@ can be clicked again to undo.
   falling back to `battle.team` otherwise
 - `getTypes` — a Pokemon's types at `generation`, rendered as badges
   (`/types/{type}.png`) beneath its name
+- `getAbility` — a Pokemon's ability, using its `ability` field as an
+  override when set and otherwise falling back to its slot-1 ability at
+  `generation`, resolved via `PokemonHelpers`
 
 ## SCSS Variable Dependencies
 

@@ -18,7 +18,6 @@ const ROUTE_201: Location = {
                         level: 5,
                         moves: ['Scratch', 'Leer'],
                         nature: Nature.Calm,
-                        ability: 'Blaze',
                     },
                 ],
                 Chimchar: [
@@ -27,7 +26,6 @@ const ROUTE_201: Location = {
                         level: 5,
                         moves: ['Pound', 'Growl'],
                         nature: Nature.Bashful,
-                        ability: 'Torrent',
                     },
                 ],
                 Piplup: [
@@ -36,7 +34,6 @@ const ROUTE_201: Location = {
                         level: 5,
                         moves: ['Tackle', 'Withdraw'],
                         nature: Nature.Docile,
-                        ability: 'Overgrow',
                     },
                 ],
             },

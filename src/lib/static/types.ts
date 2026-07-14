@@ -11,7 +11,7 @@ interface StatValues {
 }
 
 export interface BattlePokemon {
-    ability: string;
+    ability?: string;
     evs?: number | StatValues;
     heldItem?: string;
     ivs?: number | StatValues;
@@ -106,8 +106,20 @@ export interface TypesByGeneration {
     types: string[];
 }
 
+export interface Abilities {
+    slot1: string;
+    slot2?: string;
+    hidden?: string;
+}
+
+export interface AbilitiesByGeneration {
+    fromGeneration: number;
+    abilities: Abilities;
+}
+
 export interface PokemonData {
     name: string;
     sprites: Record<string, string>;
     types: TypesByGeneration[];
+    abilities: AbilitiesByGeneration[];
 }
