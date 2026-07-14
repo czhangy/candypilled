@@ -55,8 +55,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const isBattleNextPersonalBest = (battle: Battle): boolean =>
         BattleHelpers.getKey(battle) === nextPersonalBestBattleKey;
 
-    const getDefaultSelectedBattle = (): Battle | undefined => {
-        const battles = LocationHelpers.getBattles(location);
+    const getDefaultBattleFrom = (battles: Battle[]): Battle | undefined => {
         const requiredBattles = battles.filter((battle) => !battle.isOptional);
         const candidates =
             requiredBattles.length > 0 ? requiredBattles : battles;
@@ -66,6 +65,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             candidates[candidates.length - 1]
         );
     };
+
+    const getDefaultSelectedBattle = (): Battle | undefined =>
+        getDefaultBattleFrom(LocationHelpers.getBattles(location));
 
     const getDefaultSubareaIndex = (): number => {
         if (!location.subareas) return 0;
@@ -103,6 +105,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
 
     const handleSubareaClick = (index: number): void => {
         setSelectedSubareaIndex(index);
+        setSelectedBattle(
+            getDefaultBattleFrom(location.subareas?.[index].battles ?? [])
+        );
     };
 
     const handleBattleClick = (battle: Battle): void => {
