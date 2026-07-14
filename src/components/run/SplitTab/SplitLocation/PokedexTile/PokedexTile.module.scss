@@ -81,7 +81,9 @@
             }
 
             .right-bottom {
+                align-items: center;
                 border-top: 1px solid $border-subtle;
+                display: flex;
                 flex: 1;
                 padding: 1.5rem;
             }
@@ -112,6 +114,24 @@
                 &--hidden {
                     color: $text-dim;
                 }
+            }
+        }
+
+        .catch-rate {
+            align-items: center;
+            display: flex;
+            gap: 0.5rem;
+
+            .catch-rate-label {
+                @include uppercase-label;
+
+                flex-shrink: 0;
+                font-size: 0.7rem;
+            }
+
+            .rate {
+                color: $text-mid;
+                font-size: 0.7rem;
             }
         }
 

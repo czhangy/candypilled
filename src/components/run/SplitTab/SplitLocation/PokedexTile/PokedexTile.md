@@ -3,7 +3,7 @@
 Displays details for a single Pokemon, split into a left half
 showing its sprite, name, and type badges, and a right half divided
 into an upper section (two-thirds height) listing its abilities and
-a lower section (one-third height) reserved for further details.
+a lower section (one-third height) showing its catch rate.
 Used alongside an encounter table to show whichever Pokemon is
 currently selected. If no Pokemon is selected, a placeholder message
 is shown instead.
@@ -27,3 +27,5 @@ is shown instead.
 - `abilityEntries` — `abilities` flattened into a list, with its
   hidden ability (if any) flagged so it renders dimmer and suffixed
   with "(Hidden)"
+- `catchRate` — the selected species' catch rate, resolved via
+  `PokemonHelpers`
