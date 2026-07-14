@@ -14,3 +14,11 @@
     image-rendering: pixelated;
     width: 5rem;
 }
+
+@mixin uppercase-label {
+    @include mono-label;
+
+    color: $text-mid;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}

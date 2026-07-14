@@ -163,6 +163,7 @@ Before writing a raw CSS value in a component SCSS file, check whether it belong
 
 - `full-height` — `flex: 1`, fills the remaining height in the page flex column (`body → .page-main → page component`); use on the outermost element of every full-page component
 - `mono-label` — `font-family: $font-mono; font-weight: 700` — use for all bold monospace text (titles, nav items, button labels)
+- `uppercase-label` — bold mono text in `$text-mid` with `0.05em` letter-spacing and uppercase transform — use for section/column label text (card labels, table headers)
 
 Add new mixins here only once they're actually used by a component — don't pre-declare mixins for hypothetical future UI.
 
