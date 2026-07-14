@@ -10,11 +10,13 @@ import styles from './EncounterTable.module.scss';
 
 interface EncounterTableProps {
     encounters: Encounter[];
+    generation: number;
     variant: string;
 }
 
 const EncounterTable: React.FC<EncounterTableProps> = ({
     encounters,
+    generation,
     variant,
 }) => {
     // -------------------------------------------------------------------------
@@ -23,6 +25,8 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
 
     const SPRITE_SIZE = 60;
     const METHOD_ICON_SIZE = 22;
+    const TYPE_BADGE_WIDTH = 32;
+    const TYPE_BADGE_HEIGHT = 14;
 
     const METHOD_ORDER = [
         'only-one',
@@ -133,6 +137,9 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
 
     const getMethodIcon = (method: string): string => `/methods/${method}.png`;
 
+    const getTypes = (species: string): string[] =>
+        PokemonHelpers.getTypes(species, generation) ?? [];
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -187,6 +194,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                                     encounter.species,
                                     variant
                                 );
+                                const types = getTypes(encounter.species);
 
                                 return (
                                     <tr
@@ -213,8 +221,45 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                                                         />
                                                     )}
                                                 </div>
-                                                {pokemon?.name ??
-                                                    encounter.species}
+                                                <div
+                                                    className={
+                                                        styles['pokemon__info']
+                                                    }
+                                                >
+                                                    <span>
+                                                        {pokemon?.name ??
+                                                            encounter.species}
+                                                    </span>
+                                                    {types.length > 0 && (
+                                                        <div
+                                                            className={
+                                                                styles[
+                                                                    'pokemon__types'
+                                                                ]
+                                                            }
+                                                        >
+                                                            {types.map(
+                                                                (type) => (
+                                                                    <Image
+                                                                        alt={
+                                                                            type
+                                                                        }
+                                                                        height={
+                                                                            TYPE_BADGE_HEIGHT
+                                                                        }
+                                                                        key={
+                                                                            type
+                                                                        }
+                                                                        src={`/types/${type}.png`}
+                                                                        width={
+                                                                            TYPE_BADGE_WIDTH
+                                                                        }
+                                                                    />
+                                                                )
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                </div>
                                             </div>
                                         </td>
                                         <td>{getLevelLabel(encounter)}</td>

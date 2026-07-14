@@ -99,6 +99,21 @@
                     image-rendering: pixelated;
                 }
             }
+
+            .pokemon__info {
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .pokemon__types {
+                display: flex;
+                gap: 0.25rem;
+
+                img {
+                    image-rendering: pixelated;
+                }
+            }
         }
     }
 }

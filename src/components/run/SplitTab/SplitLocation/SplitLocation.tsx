@@ -258,6 +258,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                     {section.encounters && (
                         <EncounterTable
                             encounters={section.encounters}
+                            generation={game.generation}
                             variant={variant}
                         />
                     )}
