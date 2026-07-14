@@ -2,8 +2,11 @@
 
 The dedicated page for a single game's run, reached from a game's entry on
 the runs list. Displays a back link to the runs list, the game's title with
-the current attempt number, a row of tabs for switching between the
-different views of the run, and the content for the currently active tab.
+the current attempt number, a subtitle showing the run's personal best
+battle as trainer class + name followed by its split name (e.g.
+"Gym Leader Roark // Roark"), or "N/A" if none yet, a row of tabs for
+switching between the different views of the run, and the content for the
+currently active tab.
 
 ## Props
 
@@ -22,3 +25,10 @@ different views of the run, and the content for the currently active tab.
 - `game` — the `Game` matching `slug`, looked up from the static game list;
   triggers a 404 if no game matches
 - `run` — the stored `Run` for `game`, looked up from the run store snapshot
+- `personalBestBattle` — the `Battle` matching `run.personalBest`, looked up
+  via `BattleProgressHelpers.getBattle`
+- `personalBestSplitName` — the name of the split containing
+  `personalBestBattle`
+- `personalBestLabel` — the personal best subtitle text: the battle's
+  trainer class and name followed by `// <split name>`, or `'N/A'` if the
+  run has no personal best yet

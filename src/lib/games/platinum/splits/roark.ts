@@ -8,7 +8,6 @@ import ROUTE_201 from './locations/route-201';
 import ROUTE_202 from './locations/route-202';
 import ROUTE_203 from './locations/route-203';
 import ROUTE_204_SOUTH from './locations/route-204-south';
-import SANDGEM_TOWN from './locations/sandgem-town';
 import TWINLEAF_TOWN from './locations/twinleaf-town';
 
 const ROARK: Split = {
@@ -16,7 +15,6 @@ const ROARK: Split = {
     locations: [
         TWINLEAF_TOWN,
         ROUTE_201,
-        SANDGEM_TOWN,
         ROUTE_202,
         JUBILIFE_CITY,
         ROUTE_204_SOUTH,

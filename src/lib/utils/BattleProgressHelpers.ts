@@ -1,4 +1,4 @@
-import { Game, Split } from '@/lib/static/types';
+import { Battle, Game, Split } from '@/lib/static/types';
 import BattleHelpers from './BattleHelpers';
 import LocationHelpers from './LocationHelpers';
 
@@ -53,6 +53,16 @@ export default class BattleProgressHelpers {
     static getSplitName(game: Game, battleName: string): string | null {
         const position = BattleProgressHelpers.getPosition(game, battleName);
         return position ? game.splits[position.splitIndex].name : null;
+    }
+
+    static getBattle(game: Game, battleName: string): Battle | null {
+        const position = BattleProgressHelpers.getPosition(game, battleName);
+        if (!position) return null;
+
+        const location =
+            game.splits[position.splitIndex].locations[position.locationIndex];
+
+        return LocationHelpers.getBattles(location)[position.battleIndex];
     }
 
     static getNextRequiredBattleName(
