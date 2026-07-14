@@ -21,7 +21,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     // -------------------------------------------------------------------------
 
     const TABS = [
-        { id: 'split', label: 'Split' },
+        { id: 'split', label: 'Splits' },
         { id: 'box', label: 'Box' },
     ];
 
@@ -103,7 +103,6 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
             </p>
             <Tabs
                 activeTab={activeTab}
-                align="left"
                 onTabChange={handleTabChange}
                 tabs={TABS}
             />

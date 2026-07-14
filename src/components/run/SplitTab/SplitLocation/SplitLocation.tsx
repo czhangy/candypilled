@@ -127,13 +127,8 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     };
 
     const handleSubareaClick = (index: number): void => {
-        const subarea = location.subareas?.[index];
         setSelectedSubareaIndex(index);
-        setSelectedBattle(
-            getDefaultBattleFrom(
-                subarea?.hideBattles ? [] : (subarea?.battles ?? [])
-            )
-        );
+        setSelectedBattle(getDefaultSelectedBattle(index));
     };
 
     const handleBattleClick = (battle: Battle): void => {

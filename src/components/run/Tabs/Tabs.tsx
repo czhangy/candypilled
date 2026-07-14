@@ -4,17 +4,11 @@ import styles from './Tabs.module.scss';
 
 interface TabsProps {
     activeTab: string;
-    align?: 'center' | 'left';
     onTabChange: (id: string) => void;
     tabs: { id: string; label: React.ReactNode; ariaLabel?: string }[];
 }
 
-const Tabs: React.FC<TabsProps> = ({
-    activeTab,
-    align = 'center',
-    onTabChange,
-    tabs,
-}) => {
+const Tabs: React.FC<TabsProps> = ({ activeTab, onTabChange, tabs }) => {
     // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
@@ -28,11 +22,7 @@ const Tabs: React.FC<TabsProps> = ({
     // -------------------------------------------------------------------------
 
     return (
-        <div
-            className={[styles.tabs, align === 'left' && styles['tabs--left']]
-                .filter(Boolean)
-                .join(' ')}
-        >
+        <div className={styles.tabs}>
             {tabs.map((tab) => (
                 <button
                     aria-label={tab.ariaLabel}
