@@ -3,12 +3,18 @@
 import { useState } from 'react';
 import { StaticImageData } from 'next/image';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
-import { Battle, Encounter, Game, Location, Run } from '@/lib/static/types';
+import {
+    Battle,
+    Encounter,
+    Game,
+    Location,
+    Run,
+    Subarea,
+} from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
-import LocationHelpers from '@/lib/utils/LocationHelpers';
 import BattleCard from './BattleCard/BattleCard';
 import EncounterTable from './EncounterTable/EncounterTable';
 import LocationMap from './LocationMap/LocationMap';
@@ -66,20 +72,38 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         );
     };
 
-    const getDefaultSelectedBattle = (): Battle | undefined =>
-        getDefaultBattleFrom(LocationHelpers.getBattles(location));
+    const isSubareaCleared = (subarea: Subarea): boolean => {
+        const battles = subarea.hideBattles ? [] : (subarea.battles ?? []);
+        if (battles.length === 0) return false;
+
+        const requiredBattles = battles.filter((battle) => !battle.isOptional);
+        const candidates =
+            requiredBattles.length > 0 ? requiredBattles : battles;
+
+        return candidates.every((battle) => isBattleDefeated(battle));
+    };
 
     const getDefaultSubareaIndex = (): number => {
         if (!location.subareas) return 0;
 
-        const defaultBattle = getDefaultSelectedBattle();
-        const index = location.subareas.findIndex((subarea) =>
-            defaultBattle
-                ? (subarea.battles ?? []).includes(defaultBattle)
-                : false
+        const index = location.subareas.findIndex(
+            (subarea) => !isSubareaCleared(subarea)
         );
 
         return index === -1 ? 0 : index;
+    };
+
+    const getDefaultSelectedBattle = (
+        subareaIndex: number
+    ): Battle | undefined => {
+        const subarea = location.subareas?.[subareaIndex];
+        const battles = location.subareas
+            ? subarea?.hideBattles
+                ? []
+                : (subarea?.battles ?? [])
+            : (location.battles ?? []);
+
+        return getDefaultBattleFrom(battles);
     };
 
     // -------------------------------------------------------------------------
@@ -87,11 +111,11 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // -------------------------------------------------------------------------
 
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedBattle, setSelectedBattle] = useState<Battle | undefined>(
-        getDefaultSelectedBattle
-    );
     const [selectedSubareaIndex, setSelectedSubareaIndex] = useState<number>(
         getDefaultSubareaIndex
+    );
+    const [selectedBattle, setSelectedBattle] = useState<Battle | undefined>(
+        () => getDefaultSelectedBattle(selectedSubareaIndex)
     );
 
     // -------------------------------------------------------------------------
