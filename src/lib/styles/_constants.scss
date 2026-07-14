@@ -1,9 +1,11 @@
 @use 'sass:color';
 
 $accent: #7890e8;
+$blue: #4a9eea;
 $gold: #d4af37;
 $green: #4caf50;
 $orange: #ff9447;
+$pink: #f472b6;
 $red: #e5484d;
 $background: #18181b;
 $background-light: color.adjust($background, $lightness: 4%);

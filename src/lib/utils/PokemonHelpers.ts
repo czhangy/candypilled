@@ -1,5 +1,5 @@
 import { POKEMON } from '@/lib/data/pokemon';
-import { Abilities, PokemonData } from '@/lib/static/types';
+import { Abilities, EvolutionStep, PokemonData } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 export default class PokemonHelpers {
@@ -8,7 +8,16 @@ export default class PokemonHelpers {
     // -------------------------------------------------------------------------
 
     static get(name: string): PokemonData | undefined {
-        return POKEMON[StringHelpers.toSlug(name)];
+        const slug = StringHelpers.toSlug(name);
+        if (POKEMON[slug]) return POKEMON[slug];
+
+        // Species with multiple forms (e.g. Wormadam) have no entry under
+        // their base name, only under each form's name. Fall back to the
+        // first form found.
+        const formKey = Object.keys(POKEMON).find((key) =>
+            key.startsWith(`${slug}-`)
+        );
+        return formKey ? POKEMON[formKey] : undefined;
     }
 
     static getSprite(name: string, variant?: string): string | undefined {
@@ -45,5 +54,17 @@ export default class PokemonHelpers {
 
     static getCatchRate(name: string): number | undefined {
         return PokemonHelpers.get(name)?.catchRate;
+    }
+
+    static getEvolutionLine(
+        name: string,
+        generation: number
+    ): EvolutionStep | undefined {
+        const pokemon = PokemonHelpers.get(name);
+        if (!pokemon) return undefined;
+
+        return [...pokemon.evolutionLine]
+            .reverse()
+            .find((entry) => entry.fromGeneration <= generation)?.line;
     }
 }

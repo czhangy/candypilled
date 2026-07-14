@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { GAME_VERSIONS } from '@/lib/scripts/pokeapi/game-versions';
+import { CURRENT_GAME_VERSION } from '@/lib/scripts/pokeapi/game-versions';
 import {
     handleException,
     logSuccess,
@@ -13,10 +13,9 @@ const POKEAPI_REGION_URL = 'https://pokeapi.co/api/v2/region';
 const DATA_PATH = path.join(
     'src',
     'lib',
-    'scripts',
-    'pokeapi',
-    'output',
-    'encounters.json'
+    'data',
+    CURRENT_GAME_VERSION.id,
+    `${CURRENT_GAME_VERSION.id}_encounters.json`
 );
 const FETCH_DELAY_MS = 75;
 
@@ -36,6 +35,11 @@ interface GameVersion {
     excludedSpecies?: string[];
     caveLocations?: string[];
     methodOverrides?: MethodOverride[];
+    excludedMethods?: string[];
+    excludedConditions?: string[];
+    excludedConditionPrefixes?: string[];
+    strippedConditions?: string[];
+    strippedConditionPrefixes?: string[];
 }
 
 interface NamedApiResource {
@@ -61,28 +65,31 @@ interface RawPokemonEncounter {
     version_details: RawVersionDetail[];
 }
 
-const EXCLUDED_METHODS = [
-    'super-rod',
-    'roaming-grass',
-    'roaming-water',
-    'pokemon-ranger',
-];
-
-const EXCLUDED_CONDITIONS = ['swarm-yes', 'radar-on'];
-const EXCLUDED_CONDITION_PREFIXES = ['slot2-'];
-const STRIPPED_CONDITIONS = [
-    'slot2-none',
-    'radar-none',
-    'swarm-no',
-    'radar-off',
-];
-
 const TIME_OF_DAY_CONDITIONS = ['time-morning', 'time-day', 'time-night'];
 
-const isExcludedCondition = (condition: string): boolean =>
-    !STRIPPED_CONDITIONS.includes(condition) &&
-    (EXCLUDED_CONDITIONS.includes(condition) ||
-        EXCLUDED_CONDITION_PREFIXES.some((prefix) =>
+interface ConditionConfig {
+    excludedConditions: string[];
+    excludedConditionPrefixes: string[];
+    strippedConditions: string[];
+    strippedConditionPrefixes: string[];
+}
+
+const isStrippedCondition = (
+    condition: string,
+    config: ConditionConfig
+): boolean =>
+    config.strippedConditions.includes(condition) ||
+    config.strippedConditionPrefixes.some((prefix) =>
+        condition.startsWith(prefix)
+    );
+
+const isExcludedCondition = (
+    condition: string,
+    config: ConditionConfig
+): boolean =>
+    !isStrippedCondition(condition, config) &&
+    (config.excludedConditions.includes(condition) ||
+        config.excludedConditionPrefixes.some((prefix) =>
             condition.startsWith(prefix)
         ));
 
@@ -102,14 +109,8 @@ const toDisplayName = (slug: string): string =>
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
 
-const readData = (): Record<string, Record<string, LocationEncounters>> => {
-    if (!fs.existsSync(DATA_PATH)) return {};
-    return JSON.parse(fs.readFileSync(DATA_PATH, 'utf-8'));
-};
-
-const writeData = (
-    data: Record<string, Record<string, LocationEncounters>>
-): void => {
+const writeData = (data: Record<string, LocationEncounters>): void => {
+    fs.mkdirSync(path.dirname(DATA_PATH), { recursive: true });
     fs.writeFileSync(DATA_PATH, `${JSON.stringify(data, null, 4)}\n`);
 };
 
@@ -141,8 +142,7 @@ const fetchLocationAreas = async (
 
 const fetchAreaEncounters = async (
     areaUrl: string,
-    version: string,
-    excludedSpecies: string[]
+    version: GameVersion
 ): Promise<Encounter[]> => {
     const response = await fetch(areaUrl);
     if (!response.ok) {
@@ -151,6 +151,15 @@ const fetchAreaEncounters = async (
         );
     }
 
+    const excludedSpecies = version.excludedSpecies ?? [];
+    const excludedMethods = version.excludedMethods ?? [];
+    const conditionConfig: ConditionConfig = {
+        excludedConditions: version.excludedConditions ?? [],
+        excludedConditionPrefixes: version.excludedConditionPrefixes ?? [],
+        strippedConditions: version.strippedConditions ?? [],
+        strippedConditionPrefixes: version.strippedConditionPrefixes ?? [],
+    };
+
     const body = await response.json();
     const encounters: Encounter[] = [];
 
@@ -158,20 +167,25 @@ const fetchAreaEncounters = async (
         if (excludedSpecies.includes(pokemonEncounter.pokemon.name)) continue;
 
         const versionDetail = pokemonEncounter.version_details.find(
-            (detail) => detail.version.name === version
+            (detail) => detail.version.name === version.version
         );
         if (!versionDetail) continue;
 
         for (const detail of versionDetail.encounter_details) {
-            if (EXCLUDED_METHODS.includes(detail.method.name)) continue;
+            if (excludedMethods.includes(detail.method.name)) continue;
 
             const conditionNames = detail.condition_values.map(
                 (condition) => condition.name
             );
-            if (conditionNames.some(isExcludedCondition)) continue;
+            if (
+                conditionNames.some((condition) =>
+                    isExcludedCondition(condition, conditionConfig)
+                )
+            )
+                continue;
 
             const conditions = conditionNames.filter(
-                (condition) => !STRIPPED_CONDITIONS.includes(condition)
+                (condition) => !isStrippedCondition(condition, conditionConfig)
             );
 
             encounters.push({
@@ -285,7 +299,6 @@ const expandTimeOfDayEncounters = (encounters: Encounter[]): Encounter[] => {
 };
 
 export const fetchEncounters = async (version: GameVersion): Promise<void> => {
-    const data = readData();
     const locations = (await fetchRegionLocations(version.region)).filter(
         (location) => !version.excludedLocations?.includes(location.name)
     );
@@ -297,11 +310,7 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
         let hasEncounters = false;
 
         for (const area of areas) {
-            const rawEncounters = await fetchAreaEncounters(
-                area.url,
-                version.version,
-                version.excludedSpecies ?? []
-            );
+            const rawEncounters = await fetchAreaEncounters(area.url, version);
             await sleep(FETCH_DELAY_MS);
 
             const encounters = nullifyHoneyTreeChances(
@@ -351,24 +360,13 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
         }
     }
 
-    data[version.id] = locationsData;
-    writeData(data);
+    writeData(locationsData);
 };
-
-const GAME_ID = 'platinum';
 
 const main = async (): Promise<void> => {
     try {
         validateRootDirectory();
-
-        const version = GAME_VERSIONS.find(
-            (candidate) => candidate.id === GAME_ID
-        );
-        if (!version) {
-            throw new Error(`"${GAME_ID}" is not a valid game.`);
-        }
-
-        await fetchEncounters(version);
+        await fetchEncounters(CURRENT_GAME_VERSION);
     } catch (error) {
         handleException(error);
     }

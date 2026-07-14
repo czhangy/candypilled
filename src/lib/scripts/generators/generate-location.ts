@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import {
     handleException,
     logSuccess,
@@ -10,7 +11,6 @@ import StringHelpers from '@/lib/utils/StringHelpers';
 
 const USAGE = 'Usage: npm run gen:location <slug>';
 const LOCATION_EXISTS = 'That location already exists.';
-const GAME = 'platinum';
 
 interface LocationArgs {
     slug: string;
@@ -29,7 +29,7 @@ const getMapsBarrelPath = (): string =>
         'src',
         'lib',
         'games',
-        StringHelpers.toSlug(GAME),
+        StringHelpers.toSlug(GAME_ID),
         'splits',
         'maps',
         'index.ts'
@@ -40,7 +40,7 @@ const getLocationPath = (slug: string): string =>
         'src',
         'lib',
         'games',
-        StringHelpers.toSlug(GAME),
+        StringHelpers.toSlug(GAME_ID),
         'splits',
         'locations',
         `${slug}.ts`
@@ -72,7 +72,9 @@ const createLocation = (args: LocationArgs): void => {
     writeToFile(filePath, [
         ...(includeMap
             ? [
-                  `import { ${mapExportName} } from '@/lib/games/platinum/splits/maps';\n`,
+                  `import { ${mapExportName} } from '@/lib/games/${StringHelpers.toSlug(
+                      GAME_ID
+                  )}/splits/maps';\n`,
               ]
             : []),
         `import { Location } from '@/lib/static/types';\n`,

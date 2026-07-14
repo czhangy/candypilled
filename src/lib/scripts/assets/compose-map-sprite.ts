@@ -1,14 +1,17 @@
 import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
+import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import {
     handleException,
     logSuccess,
     validateRootDirectory,
 } from '@/lib/scripts/utils/helpers';
+import StringHelpers from '@/lib/utils/StringHelpers';
 
-const USAGE =
-    'Usage: npm run compose -- --map <path> --sprite <path> --x <percent> --y <percent> [--width <px>] [--output <path>]. Defaults to writing a preview under src/lib/games/platinum/splits/maps/temp/ instead of overwriting the map.';
+const USAGE = `Usage: npm run compose -- --map <path> --sprite <path> --x <percent> --y <percent> [--width <px>] [--output <path>]. Defaults to writing a preview under src/lib/games/${StringHelpers.toSlug(
+    GAME_ID
+)}/splits/maps/temp/ instead of overwriting the map.`;
 const MAP_NOT_FOUND = "That map image doesn't exist.";
 const SPRITE_NOT_FOUND = "That sprite image doesn't exist.";
 const OUT_OF_BOUNDS =
@@ -42,7 +45,7 @@ const parseArgs = (argv: string[]): ComposeArgs => {
                 'src',
                 'lib',
                 'games',
-                'platinum',
+                StringHelpers.toSlug(GAME_ID),
                 'splits',
                 'maps',
                 'temp',

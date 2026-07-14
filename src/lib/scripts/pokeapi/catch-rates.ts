@@ -1,5 +1,7 @@
 import fs from 'fs';
 import path from 'path';
+import { getMaxDexNumber } from '@/lib/scripts/pokeapi/dex-ranges';
+import { CURRENT_GAME_VERSION } from '@/lib/scripts/pokeapi/game-versions';
 import {
     handleException,
     logSuccess,
@@ -8,16 +10,9 @@ import {
 import { PokemonData } from '@/lib/static/types';
 
 const POKEAPI_SPECIES_URL = 'https://pokeapi.co/api/v2/pokemon-species';
-const DATA_PATH = path.join(
-    'src',
-    'lib',
-    'scripts',
-    'pokeapi',
-    'output',
-    'pokemon.json'
-);
+const DATA_PATH = path.join('src', 'lib', 'data', 'pokemon.json');
 const FETCH_DELAY_MS = 75;
-const MAX_DEX_NUMBER = 493;
+const MAX_DEX_NUMBER = getMaxDexNumber(CURRENT_GAME_VERSION.generation);
 
 const sleep = (ms: number): Promise<void> =>
     new Promise((resolve) => setTimeout(resolve, ms));

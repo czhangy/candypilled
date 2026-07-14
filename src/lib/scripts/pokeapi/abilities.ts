@@ -1,5 +1,7 @@
 import fs from 'fs';
 import path from 'path';
+import { getMaxDexNumber } from '@/lib/scripts/pokeapi/dex-ranges';
+import { CURRENT_GAME_VERSION } from '@/lib/scripts/pokeapi/game-versions';
 import {
     handleException,
     logSuccess,
@@ -13,16 +15,9 @@ import {
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const POKEAPI_SPECIES_URL = 'https://pokeapi.co/api/v2/pokemon-species';
-const DATA_PATH = path.join(
-    'src',
-    'lib',
-    'scripts',
-    'pokeapi',
-    'output',
-    'pokemon.json'
-);
+const DATA_PATH = path.join('src', 'lib', 'data', 'pokemon.json');
 const FETCH_DELAY_MS = 75;
-const MAX_DEX_NUMBER = 493;
+const MAX_DEX_NUMBER = getMaxDexNumber(CURRENT_GAME_VERSION.generation);
 
 // PokeAPI ability slots: 1 and 2 are the standard slots, 3 is the hidden
 // ability slot.

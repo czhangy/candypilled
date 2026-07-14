@@ -1,16 +1,19 @@
 import Image from 'next/image';
+import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './PokedexTile.module.scss';
 
 interface PokedexTileProps {
     generation: number;
+    onSelectSpecies?: (species: string) => void;
     species?: string;
     variant: string;
 }
 
 const PokedexTile: React.FC<PokedexTileProps> = ({
     generation,
+    onSelectSpecies,
     species,
     variant,
 }) => {
@@ -53,6 +56,11 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     const catchRate = species
         ? PokemonHelpers.getCatchRate(species)
         : undefined;
+    const evolutionLine = species
+        ? PokemonHelpers.getEvolutionLine(species, generation)
+        : undefined;
+    const hasEvolutionBranches =
+        !!evolutionLine && evolutionLine.evolvesTo.length > 0;
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -110,7 +118,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                                                 styles['abilities-label']
                                             }
                                         >
-                                            Abilities:
+                                            Abilities
                                         </span>
                                         <div
                                             className={styles['abilities-list']}
@@ -147,7 +155,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                                                 styles['catch-rate-label']
                                             }
                                         >
-                                            Catch Rate:
+                                            Catch Rate
                                         </span>
                                         <span className={styles.rate}>
                                             {catchRate}
@@ -163,6 +171,27 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     </span>
                 )}
             </div>
+            {pokemon && (
+                <div className={styles.evolution}>
+                    <span className={styles['evolution-label']}>
+                        Evolution Line
+                    </span>
+                    <div className={styles['evolution-content']}>
+                        {hasEvolutionBranches && evolutionLine ? (
+                            <EvolutionLine
+                                currentName={species}
+                                onSelectSpecies={onSelectSpecies}
+                                step={evolutionLine}
+                                variant={variant}
+                            />
+                        ) : (
+                            <span className={styles['evolution-empty']}>
+                                No evolution line
+                            </span>
+                        )}
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

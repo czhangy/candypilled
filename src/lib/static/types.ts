@@ -86,6 +86,7 @@ export interface Game {
     splits: Split[];
     starters: string[];
     accentColor: string;
+    encounters: Record<string, LocationEncounters>;
 }
 
 export interface Run {
@@ -117,10 +118,59 @@ export interface AbilitiesByGeneration {
     abilities: Abilities;
 }
 
+export interface EvolutionMethod {
+    trigger: string;
+    item?: string;
+    heldItem?: string;
+    minLevel?: number;
+    minHappiness?: number;
+    minBeauty?: number;
+    minAffection?: number;
+    gender?: string;
+    timeOfDay?: string;
+    knownMove?: string;
+    knownMoveType?: string;
+    location?: string;
+    tradeSpecies?: string;
+    needsOverworldRain?: boolean;
+    turnUpsideDown?: boolean;
+    partyType?: string;
+    partySpecies?: string;
+    relativePhysicalStats?: number;
+}
+
+// A single Pokemon within an evolution line, as known from the perspective of
+// the Pokemon the line was built for: ancestors leading up to it are a single
+// path, but its own descendants preserve any branches (e.g. Eevee's split
+// into multiple eeveelutions).
+export interface EvolutionStep {
+    name: string;
+    // How this step is reached from its predecessor. Omitted for the
+    // topmost visible step, which has no visible predecessor.
+    methods?: EvolutionMethod[];
+    evolvesTo: EvolutionStep[];
+}
+
+export interface EvolutionLineByGeneration {
+    fromGeneration: number;
+    line: EvolutionStep;
+}
+
+// A method label split into its primary text and an optional condition
+// (e.g. a trade evolution's held item), so callers can render the
+// condition on its own line.
+export interface EvolutionMethodLabel {
+    label: string;
+    condition?: string;
+    icon?: string;
+    gender?: 'male' | 'female';
+}
+
 export interface PokemonData {
     name: string;
     sprites: Record<string, string>;
     types: TypesByGeneration[];
     abilities: AbilitiesByGeneration[];
     catchRate: number;
+    evolutionLine: EvolutionLineByGeneration[];
 }

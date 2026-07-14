@@ -147,4 +147,30 @@ $label-width: 5.5rem;
             text-align: center;
         }
     }
+
+    .evolution {
+        border-top: 1px solid $border-subtle;
+        padding: 1rem 1.5rem;
+
+        .evolution-label {
+            @include uppercase-label;
+
+            display: block;
+            font-size: 0.7rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .evolution-content {
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+
+            .evolution-empty {
+                color: $text-dim;
+                font-size: 0.85rem;
+                padding-block: 1.5rem;
+                text-align: center;
+            }
+        }
+    }
 }

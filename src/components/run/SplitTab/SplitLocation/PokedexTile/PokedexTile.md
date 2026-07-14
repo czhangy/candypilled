@@ -3,18 +3,21 @@
 Displays details for a single Pokemon, split into a left half
 showing its sprite, name, and type badges, and a right half divided
 into an upper section (two-thirds height) listing its abilities and
-a lower section (one-third height) showing its catch rate.
+a lower section (one-third height) showing its catch rate. Below
+that split, a full-width section shows the Pokemon's evolution line,
+or a "No evolution line" message for species with no evolutions.
 Used alongside an encounter table to show whichever Pokemon is
 currently selected. If no Pokemon is selected, a placeholder message
 is shown instead.
 
 ## Props
 
-| Prop         | Type     | Required | Default | Description                                                |
-| ------------ | -------- | -------- | ------- | ---------------------------------------------------------- |
-| `generation` | `number` | Yes      | -       | The game's generation, used to resolve the Pokemon's types |
-| `species`    | `string` | No       | -       | The selected Pokemon's species, if any                     |
-| `variant`    | `string` | Yes      | -       | The sprite variant to prefer, matching the game's slug     |
+| Prop              | Type                        | Required | Default | Description                                                |
+| ----------------- | --------------------------- | -------- | ------- | ---------------------------------------------------------- |
+| `generation`      | `number`                    | Yes      | -       | The game's generation, used to resolve the Pokemon's types |
+| `onSelectSpecies` | `(species: string) => void` | No       | -       | Called when a Pokemon is clicked within the evolution line |
+| `species`         | `string`                    | No       | -       | The selected Pokemon's species, if any                     |
+| `variant`         | `string`                    | Yes      | -       | The sprite variant to prefer, matching the game's slug     |
 
 ## Computations
 
@@ -29,3 +32,9 @@ is shown instead.
   with "(Hidden)"
 - `catchRate` — the selected species' catch rate, resolved via
   `PokemonHelpers`
+- `evolutionLine` — the selected species' evolution line at
+  `generation`, resolved via `PokemonHelpers` and rendered with
+  `EvolutionLine`
+- `hasEvolutionBranches` — whether `evolutionLine` has any evolutions
+  branching from it; when false, "No evolution line" is shown instead
+  of `EvolutionLine`

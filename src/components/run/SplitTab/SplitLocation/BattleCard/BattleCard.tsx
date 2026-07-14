@@ -31,8 +31,8 @@ const BattleCard: React.FC<BattleCardProps> = ({
     const MOVE_SLOT_COUNT = 4;
     const SPRITE_SIZE = 96;
     const TEAM_SLOT_COUNT = 6;
-    const TYPE_BADGE_WIDTH = 26;
-    const TYPE_BADGE_HEIGHT = 11;
+    const TYPE_BADGE_WIDTH = 32;
+    const TYPE_BADGE_HEIGHT = 13;
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS

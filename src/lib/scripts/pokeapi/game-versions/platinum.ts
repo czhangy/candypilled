@@ -14,6 +14,11 @@ interface GameVersion {
     excludedSpecies?: string[];
     caveLocations?: string[];
     methodOverrides?: MethodOverride[];
+    excludedMethods?: string[];
+    excludedConditions?: string[];
+    excludedConditionPrefixes?: string[];
+    strippedConditions?: string[];
+    strippedConditionPrefixes?: string[];
 }
 
 export const platinum: GameVersion = {
@@ -128,4 +133,29 @@ export const platinum: GameVersion = {
         { location: 'oreburgh-city', species: 'cranidos', method: 'fossil' },
         { location: 'oreburgh-city', species: 'shieldon', method: 'fossil' },
     ],
+    excludedMethods: [
+        'super-rod',
+        'roaming-grass',
+        'roaming-water',
+        'pokemon-ranger',
+    ],
+    excludedConditions: [
+        'swarm-yes',
+        'radar-on',
+        'story-progress-national-dex',
+    ],
+    excludedConditionPrefixes: ['slot2-'],
+    strippedConditions: [
+        'slot2-none',
+        'radar-none',
+        'swarm-no',
+        'radar-off',
+        'backlot-not-mentioned',
+        'story-progress-defeat-jupiter',
+        'story-progress-beat-team-galactic-iron-island',
+        'item-skull-fossil',
+        'item-armor-fossil',
+        'story-progress-before-national-dex',
+    ],
+    strippedConditionPrefixes: [],
 };
