@@ -1,6 +1,5 @@
 import { Fragment, useState } from 'react';
 import Image from 'next/image';
-import Tabs from '@/components/run/Tabs/Tabs';
 import DayIcon from '@/lib/icons/DayIcon';
 import MorningIcon from '@/lib/icons/MorningIcon';
 import NightIcon from '@/lib/icons/NightIcon';
@@ -11,12 +10,16 @@ import styles from './EncounterTable.module.scss';
 interface EncounterTableProps {
     encounters: Encounter[];
     generation: number;
+    onSelectEncounter?: (encounter: Encounter) => void;
+    selectedSpecies?: string;
     variant: string;
 }
 
 const EncounterTable: React.FC<EncounterTableProps> = ({
     encounters,
     generation,
+    onSelectEncounter,
+    selectedSpecies,
     variant,
 }) => {
     // -------------------------------------------------------------------------
@@ -78,6 +81,10 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
 
     const handleTimeOfDayChange = (time: string): void => {
         setSelectedTimeOfDay(time);
+    };
+
+    const handleRowClick = (encounter: Encounter): void => {
+        onSelectEncounter?.(encounter);
     };
 
     // -------------------------------------------------------------------------
@@ -146,24 +153,36 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
 
     return (
         <div className={styles['encounter-table-wrapper']}>
-            {timesOfDay.length > 1 && (
-                <Tabs
-                    activeTab={selectedTimeOfDay ?? timesOfDay[0]}
-                    onTabChange={handleTimeOfDayChange}
-                    tabs={timesOfDay.map((time) => {
-                        const TimeOfDayIcon = TIME_OF_DAY_ICONS[time];
-                        return {
-                            id: time,
-                            label: (
-                                <span className={styles['time-of-day-icon']}>
+            <div className={styles.header}>
+                <span className={styles.label}>Encounters</span>
+                {timesOfDay.length > 1 && (
+                    <div className={styles['time-of-day-buttons']}>
+                        {timesOfDay.map((time) => {
+                            const TimeOfDayIcon = TIME_OF_DAY_ICONS[time];
+                            return (
+                                <button
+                                    aria-label={TIME_OF_DAY_LABELS[time]}
+                                    aria-pressed={time === selectedTimeOfDay}
+                                    className={[
+                                        styles['time-of-day-button'],
+                                        time === selectedTimeOfDay &&
+                                            styles[
+                                                'time-of-day-button--active'
+                                            ],
+                                    ]
+                                        .filter(Boolean)
+                                        .join(' ')}
+                                    key={time}
+                                    onClick={() => handleTimeOfDayChange(time)}
+                                    type="button"
+                                >
                                     <TimeOfDayIcon />
-                                </span>
-                            ),
-                            ariaLabel: TIME_OF_DAY_LABELS[time],
-                        };
-                    })}
-                />
-            )}
+                                </button>
+                            );
+                        })}
+                    </div>
+                )}
+            </div>
             <table className={styles['encounter-table']}>
                 <colgroup>
                     <col className={styles['col-pokemon']} />
@@ -198,7 +217,18 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
 
                                 return (
                                     <tr
+                                        className={[
+                                            styles.row,
+                                            encounter.species ===
+                                                selectedSpecies &&
+                                                styles['row--selected'],
+                                        ]
+                                            .filter(Boolean)
+                                            .join(' ')}
                                         key={`${method}-${encounter.species}-${encounter.minLevel}-${encounter.maxLevel}-${encounter.chance}`}
+                                        onClick={() =>
+                                            handleRowClick(encounter)
+                                        }
                                     >
                                         <td>
                                             <div className={styles.pokemon}>

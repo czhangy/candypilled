@@ -1,0 +1,68 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.pokedex-tile {
+    border: 1px solid $border-subtle;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    width: 30rem;
+
+    .header {
+        @include uppercase-label;
+
+        background: $background-light;
+        border-bottom: 1px solid $border-subtle;
+        padding: 0.5rem 1.5rem;
+    }
+
+    .content {
+        align-items: center;
+        display: flex;
+        gap: 0.75rem;
+        min-height: 10rem;
+        padding: 1.5rem;
+
+        &--empty {
+            justify-content: center;
+        }
+
+        .sprite {
+            align-items: center;
+            display: flex;
+            flex-shrink: 0;
+            justify-content: center;
+
+            img {
+                @include sprite;
+            }
+        }
+
+        .info {
+            align-items: flex-start;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .name {
+            @include mono-label;
+
+            font-size: 1rem;
+        }
+
+        .types {
+            display: flex;
+            gap: 0.25rem;
+
+            img {
+                image-rendering: pixelated;
+            }
+        }
+
+        .placeholder {
+            color: $text-dim;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+    }
+}

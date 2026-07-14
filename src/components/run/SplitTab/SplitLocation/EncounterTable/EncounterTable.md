@@ -1,25 +1,29 @@
 # EncounterTable
 
-Displays the wild Pokemon encounters available at a location as a table.
-If the encounters include time-of-day-specific slots (morning, day,
-night), a tab toggle with an icon for each time of day is shown above
-the table to switch between them; encounters that aren't tied to a time
-of day are always shown regardless of the selected tab. Rows are
-grouped under a sub-header for each
+Displays the wild Pokemon encounters available at a location as a table,
+under an "Encounters" header. If the encounters include time-of-day-
+specific slots (morning, day, night), a row of icon buttons for each
+time of day is shown on the right of the header to switch between them;
+encounters that aren't tied to a time of day are always shown regardless
+of the selected time of day. Rows are grouped under a sub-header for each
 encounter method (e.g. "Old Rod", "Rock Smash"), shown alongside an
 icon representing the method, in a fixed method order; within a group,
 rows are sorted by encounter chance, highest first. Each row shows the
 Pokemon's sprite (matching the game's sprite variant), its name with
 type badges beneath it, its level range prefixed with "Lv." (e.g.
-"Lv. 20-30"), and its encounter chance as a percentage.
+"Lv. 20-30"), and its encounter chance as a percentage. Clicking a row
+selects that encounter, highlighting it and notifying the parent via
+`onSelectEncounter`.
 
 ## Props
 
-| Prop         | Type          | Required | Default | Description                                                 |
-| ------------ | ------------- | -------- | ------- | ----------------------------------------------------------- |
-| `encounters` | `Encounter[]` | Yes      | -       | The encounter slots to display                              |
-| `generation` | `number`      | Yes      | -       | The game's generation, used to resolve each Pokemon's types |
-| `variant`    | `string`      | Yes      | -       | The sprite variant to prefer, matching the game's slug      |
+| Prop                | Type                             | Required | Default | Description                                                        |
+| ------------------- | -------------------------------- | -------- | ------- | ------------------------------------------------------------------ |
+| `encounters`        | `Encounter[]`                    | Yes      | -       | The encounter slots to display                                     |
+| `generation`        | `number`                         | Yes      | -       | The game's generation, used to resolve each Pokemon's types        |
+| `onSelectEncounter` | `(encounter: Encounter) => void` | No       | -       | Called with the clicked row's encounter                            |
+| `selectedSpecies`   | `string`                         | No       | -       | The species of the currently selected row, if any, to highlight it |
+| `variant`           | `string`                         | Yes      | -       | The sprite variant to prefer, matching the game's slug             |
 
 ## State
 
