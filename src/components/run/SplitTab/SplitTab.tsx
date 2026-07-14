@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Game, Run } from '@/lib/static/types';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
@@ -23,6 +24,8 @@ const SplitTab: React.FC<SplitTabProps> = ({ game, run }) => {
     const levelCap = currentSplit
         ? BattleProgressHelpers.getLevelCap(currentSplit, run.starter)
         : null;
+    const variant = StringHelpers.toSlug(game.name);
+    const badge = `/${variant}/badges/${StringHelpers.toSlug(run.split)}.png`;
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -39,7 +42,12 @@ const SplitTab: React.FC<SplitTabProps> = ({ game, run }) => {
     return (
         <div className={styles['split-tab']}>
             <div className={styles.header}>
-                <h2 className={styles.title}>{run.split} Split</h2>
+                <div className={styles['title-group']}>
+                    <div className={styles.badge}>
+                        <Image alt="" fill src={badge} />
+                    </div>
+                    <h2 className={styles.title}>{run.split} Split</h2>
+                </div>
                 {levelCap !== null && (
                     <span className={styles['level-cap']}>
                         Level Cap: {levelCap}
@@ -51,7 +59,7 @@ const SplitTab: React.FC<SplitTabProps> = ({ game, run }) => {
                     onSelect={handleStarterSelect}
                     selected={run.starter}
                     starters={game.starters}
-                    variant={StringHelpers.toSlug(game.name)}
+                    variant={variant}
                 />
             )}
             <div className={styles.locations}>
@@ -61,7 +69,7 @@ const SplitTab: React.FC<SplitTabProps> = ({ game, run }) => {
                         key={location.name}
                         location={location}
                         run={run}
-                        variant={StringHelpers.toSlug(game.name)}
+                        variant={variant}
                     />
                 ))}
             </div>
