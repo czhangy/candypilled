@@ -4,8 +4,9 @@ Displays details for the battle currently selected on the location map,
 under a "Battle", "Miniboss", or "Boss" label matching `LocationMap`'s
 header style. Lays out a trainer name header above a portrait and a row
 of Pokemon team slots, each showing that Pokemon's sprite (matching the
-game's sprite variant) above its level, name, ability, nature, held
-item, and moveset. Non-neutral natures are annotated with their stat
+game's sprite variant) above its name (with type badges beneath it),
+level, ability, nature, held item, and moveset. Non-neutral natures are
+annotated with their stat
 effects, shown in a smaller font on the same line (e.g.
 "Adamant [+Atk -SpA]"). The portrait is split into a
 field condition section above
@@ -23,6 +24,7 @@ can be clicked again to undo.
 | Prop               | Type             | Required | Default | Description                                                                  |
 | ------------------ | ---------------- | -------- | ------- | ---------------------------------------------------------------------------- |
 | `battle`           | `Battle`         | Yes      | -       | The currently selected battle                                                |
+| `generation`       | `number`         | Yes      | -       | The game's generation, used to resolve each Pokemon's types                  |
 | `isDefeated`       | `boolean`        | Yes      | -       | Whether this battle has already been marked defeated                         |
 | `onToggleDefeated` | `() => void`     | Yes      | -       | Called when the defeat button is clicked                                     |
 | `starter`          | `string \| null` | Yes      | -       | The run's chosen starter, used to resolve a miniboss's starter-specific team |
@@ -33,6 +35,8 @@ can be clicked again to undo.
 - `team` — the Pokemon team to render, resolved via `BattleHelpers.getTeam`
   from `battle.teamsByStarter` (keyed by the run's starter) when present,
   falling back to `battle.team` otherwise
+- `getTypes` — a Pokemon's types at `generation`, rendered as badges
+  (`/types/{type}.png`) beneath its name
 
 ## SCSS Variable Dependencies
 

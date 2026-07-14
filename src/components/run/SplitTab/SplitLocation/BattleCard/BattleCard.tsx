@@ -8,6 +8,7 @@ import styles from './BattleCard.module.scss';
 
 interface BattleCardProps {
     battle: Battle;
+    generation: number;
     isDefeated: boolean;
     onToggleDefeated: () => void;
     starter: string | null;
@@ -16,6 +17,7 @@ interface BattleCardProps {
 
 const BattleCard: React.FC<BattleCardProps> = ({
     battle,
+    generation,
     isDefeated,
     onToggleDefeated,
     starter,
@@ -28,6 +30,15 @@ const BattleCard: React.FC<BattleCardProps> = ({
     const MOVE_SLOT_COUNT = 4;
     const SPRITE_SIZE = 96;
     const TEAM_SLOT_COUNT = 6;
+    const TYPE_BADGE_WIDTH = 26;
+    const TYPE_BADGE_HEIGHT = 11;
+
+    // -------------------------------------------------------------------------
+    // COMPUTATIONS
+    // -------------------------------------------------------------------------
+
+    const getTypes = (name: string): string[] =>
+        PokemonHelpers.getTypes(name, generation) ?? [];
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -128,6 +139,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                 pokemon.name,
                                 variant
                             );
+                            const types = getTypes(pokemon.name);
 
                             return (
                                 <div
@@ -151,7 +163,28 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                     <div
                                         className={styles['pokemon-slot__name']}
                                     >
-                                        {pokemon.name}
+                                        <span>{pokemon.name}</span>
+                                        {types.length > 0 && (
+                                            <div
+                                                className={
+                                                    styles[
+                                                        'pokemon-slot__types'
+                                                    ]
+                                                }
+                                            >
+                                                {types.map((type) => (
+                                                    <Image
+                                                        alt={type}
+                                                        height={
+                                                            TYPE_BADGE_HEIGHT
+                                                        }
+                                                        key={type}
+                                                        src={`/types/${type}.png`}
+                                                        width={TYPE_BADGE_WIDTH}
+                                                    />
+                                                ))}
+                                            </div>
+                                        )}
                                     </div>
                                     <ul
                                         className={

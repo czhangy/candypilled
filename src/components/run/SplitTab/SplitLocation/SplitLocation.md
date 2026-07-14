@@ -24,11 +24,11 @@ encounters, if any, are shown in a table below the map and battle card.
 
 ## State
 
-| State                  | Type      | Initial value                                                       | Description                                         |
-| ---------------------- | --------- | ------------------------------------------------------------------- | --------------------------------------------------- |
-| `isOpen`               | `boolean` | `false`                                                             | Whether the location's content is expanded          |
-| `selectedBattle`       | `Battle`  | `undefined`                                                         | The battle currently selected on the map, if any    |
-| `selectedSubareaIndex` | `number`  | Index of the subarea containing the default selected battle, or `0` | Which of the location's subareas is currently shown |
+| State                  | Type      | Initial value                                               | Description                                         |
+| ---------------------- | --------- | ----------------------------------------------------------- | --------------------------------------------------- |
+| `isOpen`               | `boolean` | `false`                                                     | Whether the location's content is expanded          |
+| `selectedBattle`       | `Battle`  | `undefined`                                                 | The battle currently selected on the map, if any    |
+| `selectedSubareaIndex` | `number`  | Index of the first subarea that isn't fully cleared, or `0` | Which of the location's subareas is currently shown |
 
 ## Computations
 
@@ -40,12 +40,16 @@ encounters, if any, are shown in a table below the map and battle card.
   `defeatedBattles`
 - `isBattleNextPersonalBest` — whether a given battle's key matches
   `nextPersonalBestBattleKey`
-- `getDefaultSelectedBattle` — the battle to preselect: the first
-  undefeated required battle across all of the location's subareas, or the
-  last required (or any) battle if all are defeated
-- `getDefaultSubareaIndex` — the index of the subarea containing the
-  default selected battle, so the location opens on the subarea with the
-  next fight
+- `isSubareaCleared` — whether every required (or, if none, every) battle
+  in a subarea is defeated; a subarea with no battles is never considered
+  cleared
+- `getDefaultSubareaIndex` — the index of the first subarea, in list order,
+  that isn't fully cleared, so the location opens on the earliest subarea
+  with unfinished business rather than jumping ahead to wherever a battle
+  happens to be
+- `getDefaultSelectedBattle` — the battle to preselect for a given subarea
+  index: the first undefeated required battle in that subarea, or the last
+  required (or any) battle if all are defeated
 - `section` — the currently active map/battles/encounters group: the
   selected subarea when `location.subareas` is set, otherwise a section
   built from the location's own `map`/`battles`/`encountersKey`. Wild

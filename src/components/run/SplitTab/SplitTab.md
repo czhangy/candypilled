@@ -1,9 +1,9 @@
 # SplitTab
 
 The content of the "Split" tab on a game's run page. Shows the run's current
-split with its level cap, on the game's first split a starter selector whose
-choice is saved to the run, and a collapsible card for each location in the
-current split.
+split, with a badge icon to the left of its name and its level cap, on the
+game's first split a starter selector whose choice is saved to the run, and
+a collapsible card for each location in the current split.
 
 ## Props
 
@@ -21,6 +21,8 @@ current split.
 - `levelCap` — the highest level Pokemon on the team of the current split's
   last battle (resolved for the run's chosen starter), shown next to the
   split title
+- `badge` — the badge icon path for the current split, matching
+  `/{variant}/badges/{slug}.png`
 
 ## Handlers
 

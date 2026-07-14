@@ -1,3 +1,4 @@
+import CRASHER_WAKE from '@/lib/games/platinum/splits/crasher-wake';
 import { Game } from '@/lib/static/types';
 import BYRON from './splits/byron';
 import CANDICE from './splits/candice';
@@ -8,7 +9,6 @@ import GARDENIA from './splits/gardenia';
 import MAYLENE from './splits/maylene';
 import ROARK from './splits/roark';
 import VOLKNER from './splits/volkner';
-import WAKE from './splits/wake';
 
 const PLATINUM: Game = {
     name: 'Platinum',
@@ -21,7 +21,7 @@ const PLATINUM: Game = {
         GARDENIA,
         FANTINA,
         MAYLENE,
-        WAKE,
+        CRASHER_WAKE,
         BYRON,
         CANDICE,
         DISTORTION_WORLD,

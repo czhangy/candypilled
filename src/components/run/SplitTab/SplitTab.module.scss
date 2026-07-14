@@ -5,10 +5,28 @@
     padding: 1.5rem 0;
 
     .header {
-        align-items: baseline;
+        align-items: center;
         display: flex;
-        gap: 0.75rem;
+        flex-direction: column;
+        gap: 0.25rem;
         margin: 0 0 1rem;
+
+        .title-group {
+            align-items: center;
+            display: flex;
+            gap: 0.5rem;
+
+            .badge {
+                flex-shrink: 0;
+                height: 2rem;
+                position: relative;
+                width: 2rem;
+
+                img {
+                    object-fit: contain;
+                }
+            }
+        }
 
         .title {
             @include mono-label;

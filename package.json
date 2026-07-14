@@ -15,6 +15,7 @@
         "gen:location": "tsx src/lib/scripts/generators/generate-location.ts",
         "pokeapi:sprites": "tsx src/lib/scripts/pokeapi/sprites.ts",
         "pokeapi:encounters": "tsx src/lib/scripts/pokeapi/encounters.ts",
+        "pokeapi:types": "tsx src/lib/scripts/pokeapi/types.ts",
         "compose": "tsx src/lib/scripts/assets/compose-map-sprite.ts",
         "prepare": "husky"
     },

@@ -48,4 +48,8 @@ export default class StringHelpers {
     static toRoman(value: number): string {
         return StringHelpers.ROMAN_NUMERALS[value - 1];
     }
+
+    static fromRoman(value: string): number {
+        return StringHelpers.ROMAN_NUMERALS.indexOf(value.toUpperCase()) + 1;
+    }
 }
