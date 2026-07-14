@@ -8,7 +8,16 @@ export default class PokemonHelpers {
     // -------------------------------------------------------------------------
 
     static get(name: string): PokemonData | undefined {
-        return POKEMON[StringHelpers.toSlug(name)];
+        const slug = StringHelpers.toSlug(name);
+        if (POKEMON[slug]) return POKEMON[slug];
+
+        // Species with multiple forms (e.g. Wormadam) have no entry under
+        // their base name, only under each form's name. Fall back to the
+        // first form found.
+        const formKey = Object.keys(POKEMON).find((key) =>
+            key.startsWith(`${slug}-`)
+        );
+        return formKey ? POKEMON[formKey] : undefined;
     }
 
     static getSprite(name: string, variant?: string): string | undefined {
