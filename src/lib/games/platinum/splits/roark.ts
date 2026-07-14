@@ -122,7 +122,7 @@ const ROARK: Split = {
         {
             name: 'Route 204 South',
             map: route204South,
-            encountersKey: 'sinnoh-route-204',
+            encountersKey: 'sinnoh-route-204-south-towards-jubilife-city',
             battles: [
                 {
                     trainerClass: 'Lass',
@@ -357,24 +357,33 @@ const ROARK: Split = {
         },
         {
             name: 'Oreburgh Gate',
-            map: oreburghGate,
-            encountersKey: 'oreburgh-gate',
-            battles: [
+            subareas: [
                 {
-                    isOptional: true,
-                    trainerClass: 'Picnicker',
-                    name: 'Diana',
-                    team: [
+                    name: '1F',
+                    map: oreburghGate,
+                    encountersKey: 'oreburgh-gate-1f',
+                    battles: [
                         {
-                            name: 'Bidoof',
-                            level: 9,
-                            moves: ['Tackle', 'Growl', 'Defense Curl'],
-                            nature: Nature.Modest,
-                            ability: 'Simple',
+                            isOptional: true,
+                            trainerClass: 'Picnicker',
+                            name: 'Diana',
+                            team: [
+                                {
+                                    name: 'Bidoof',
+                                    level: 9,
+                                    moves: ['Tackle', 'Growl', 'Defense Curl'],
+                                    nature: Nature.Modest,
+                                    ability: 'Simple',
+                                },
+                            ],
+                            x: 82,
+                            y: 35,
                         },
                     ],
-                    x: 82,
-                    y: 35,
+                },
+                {
+                    name: 'B1F',
+                    encountersKey: 'oreburgh-gate-b1f',
                 },
             ],
         },

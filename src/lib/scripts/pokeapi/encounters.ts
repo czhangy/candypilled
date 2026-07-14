@@ -82,6 +82,13 @@ const isExcludedCondition = (condition: string): boolean =>
 const sleep = (ms: number): Promise<void> =>
     new Promise((resolve) => setTimeout(resolve, ms));
 
+const toSubareaLabel = (locationName: string, areaName: string): string => {
+    const prefix = `${locationName}-`;
+    return areaName.startsWith(prefix)
+        ? areaName.slice(prefix.length)
+        : areaName;
+};
+
 const toDisplayName = (slug: string): string =>
     slug
         .split('-')
@@ -243,42 +250,48 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
 
     for (const location of locations) {
         const areas = await fetchLocationAreas(location.url);
-        const rawEncounters: Encounter[] = [];
+        const isMultiArea = areas.length > 1;
+        let hasEncounters = false;
 
         for (const area of areas) {
-            rawEncounters.push(
-                ...(await fetchAreaEncounters(
-                    area.url,
-                    version.version,
-                    version.excludedSpecies ?? []
-                ))
+            const rawEncounters = await fetchAreaEncounters(
+                area.url,
+                version.version,
+                version.excludedSpecies ?? []
             );
             await sleep(FETCH_DELAY_MS);
-        }
 
-        const encounters = mergeEncounters(
-            expandTimeOfDayEncounters(
-                mergeEncounters(
-                    resolveWalkMethod(
-                        rawEncounters,
-                        location.name,
-                        version.caveLocations ?? []
+            const encounters = mergeEncounters(
+                expandTimeOfDayEncounters(
+                    mergeEncounters(
+                        resolveWalkMethod(
+                            rawEncounters,
+                            location.name,
+                            version.caveLocations ?? []
+                        )
                     )
                 )
-            )
-        );
-
-        if (encounters.length > 0) {
-            locationsData[location.name] = {
-                name: toDisplayName(location.name),
-                encounters,
-            };
-            logSuccess(
-                `Fetched ${encounters.length} encounter(s) for "${toDisplayName(
-                    location.name
-                )}" (${version.label}).`
             );
-        } else {
+
+            if (encounters.length === 0) continue;
+            hasEncounters = true;
+
+            const key = isMultiArea
+                ? `${location.name}-${toSubareaLabel(location.name, area.name)}`
+                : location.name;
+            const name = isMultiArea
+                ? `${toDisplayName(location.name)} (${toDisplayName(
+                      toSubareaLabel(location.name, area.name)
+                  )})`
+                : toDisplayName(location.name);
+
+            locationsData[key] = { name, encounters };
+            logSuccess(
+                `Fetched ${encounters.length} encounter(s) for "${name}" (${version.label}).`
+            );
+        }
+
+        if (!hasEncounters) {
             logWarning(
                 `No encounters for "${toDisplayName(location.name)}" (${
                     version.label

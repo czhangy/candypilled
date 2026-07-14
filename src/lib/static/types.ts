@@ -54,11 +54,19 @@ export interface LocationEncounters {
     encounters: Encounter[];
 }
 
+export interface Subarea {
+    name: string;
+    encountersKey?: string;
+    map?: StaticImageData;
+    battles?: Battle[];
+}
+
 export interface Location {
     name: string;
     encountersKey?: string;
     map?: StaticImageData;
     battles?: Battle[];
+    subareas?: Subarea[];
 }
 
 export interface Split {
