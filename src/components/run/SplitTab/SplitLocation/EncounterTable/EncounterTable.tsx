@@ -22,7 +22,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     // -------------------------------------------------------------------------
 
     const SPRITE_SIZE = 60;
-    const METHOD_ICON_SIZE = 16;
+    const METHOD_ICON_SIZE = 22;
 
     const METHOD_ORDER = [
         'only-one',

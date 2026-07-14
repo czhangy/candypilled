@@ -10,16 +10,15 @@ import {
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const USAGE =
-    'Usage: npm run gen:map -- --game=<game> --location="<Location Name>" --split=<split>';
+    'Usage: npm run gen:map -- --game=<game> --location="<Location Name>"';
 const IMAGE_NOT_FOUND = 'No map image was found at the expected path';
-const SPLIT_NOT_FOUND = "That split file doesn't exist.";
+const LOCATION_FILE_NOT_FOUND = "That location file doesn't exist.";
 const LOCATION_NOT_FOUND =
-    'No location with that name was found in that split.';
+    'No location with that name was found in that location file.';
 
 interface MapArgs {
     game: string;
     location: string;
-    split: string;
 }
 
 const parseArgs = (): MapArgs => {
@@ -32,23 +31,30 @@ const parseArgs = (): MapArgs => {
 
     const game = args.get('game');
     const location = args.get('location');
-    const split = args.get('split');
 
-    if (!game || !location || !split) {
+    if (!game || !location) {
         throw new Error(USAGE);
     }
 
-    return { game, location, split };
+    return { game, location };
 };
 
-const getLocationsDir = (gameSlug: string): string =>
-    path.join('src', 'lib', 'assets', gameSlug, 'locations');
+const getMapsDir = (gameSlug: string): string =>
+    path.join('src', 'lib', 'games', gameSlug, 'splits', 'maps');
 
 const getBarrelPath = (gameSlug: string): string =>
-    path.join(getLocationsDir(gameSlug), 'index.ts');
+    path.join(getMapsDir(gameSlug), 'index.ts');
 
-const getSplitPath = (gameSlug: string, split: string): string =>
-    path.join('src', 'lib', 'games', gameSlug, 'splits', `${split}.ts`);
+const getLocationFilePath = (gameSlug: string, slug: string): string =>
+    path.join(
+        'src',
+        'lib',
+        'games',
+        gameSlug,
+        'splits',
+        'locations',
+        `${slug}.ts`
+    );
 
 const readBarrelExports = (barrelPath: string): Map<string, string> => {
     const exports = new Map<string, string>();
@@ -157,7 +163,7 @@ const addMapToLocation = (
     return { sourceFile: transformed, ...state };
 };
 
-const addImportToSplit = (
+const addImportToLocation = (
     sourceFile: ts.SourceFile,
     modulePath: string,
     exportName: string
@@ -243,22 +249,22 @@ const main = async (): Promise<void> => {
         const gameSlug = StringHelpers.toSlug(args.game);
         const slug = StringHelpers.toSlug(args.location);
         const exportName = StringHelpers.toCamelCase(args.location);
-        const modulePath = `@/lib/assets/${gameSlug}/locations`;
+        const modulePath = `@/lib/games/${gameSlug}/splits/maps`;
 
-        const imagePath = path.join(getLocationsDir(gameSlug), `${slug}.png`);
+        const imagePath = path.join(getMapsDir(gameSlug), `${slug}.png`);
         if (!fs.existsSync(imagePath)) {
             throw new Error(`${IMAGE_NOT_FOUND} ("${imagePath}").`);
         }
 
-        const splitPath = getSplitPath(gameSlug, args.split);
-        if (!fs.existsSync(splitPath)) {
-            throw new Error(SPLIT_NOT_FOUND);
+        const locationPath = getLocationFilePath(gameSlug, slug);
+        if (!fs.existsSync(locationPath)) {
+            throw new Error(LOCATION_FILE_NOT_FOUND);
         }
 
-        const splitSource = fs.readFileSync(splitPath, 'utf-8');
-        const parsedSplit = ts.createSourceFile(
-            splitPath,
-            splitSource,
+        const locationSource = fs.readFileSync(locationPath, 'utf-8');
+        const parsedLocation = ts.createSourceFile(
+            locationPath,
+            locationSource,
             ts.ScriptTarget.Latest,
             true,
             ts.ScriptKind.TS
@@ -268,7 +274,7 @@ const main = async (): Promise<void> => {
             sourceFile: withMap,
             found,
             alreadyWired,
-        } = addMapToLocation(parsedSplit, args.location, exportName);
+        } = addMapToLocation(parsedLocation, args.location, exportName);
 
         if (!found) {
             throw new Error(LOCATION_NOT_FOUND);
@@ -286,21 +292,20 @@ const main = async (): Promise<void> => {
         exports.set(exportName, slug);
         writeBarrelExports(barrelPath, exports);
 
-        const withImport = addImportToSplit(withMap, modulePath, exportName);
+        const withImport = addImportToLocation(withMap, modulePath, exportName);
         const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
         const printed = printer.printFile(withImport);
 
-        const prettierConfig = (await prettier.resolveConfig(splitPath)) ?? {};
+        const prettierConfig =
+            (await prettier.resolveConfig(locationPath)) ?? {};
         const formatted = await prettier.format(printed, {
             ...prettierConfig,
-            filepath: splitPath,
+            filepath: locationPath,
         });
 
-        fs.writeFileSync(splitPath, restoreExportSpacing(formatted));
+        fs.writeFileSync(locationPath, restoreExportSpacing(formatted));
 
-        logSuccess(
-            `Wired "${slug}.png" into "${args.location}" (${args.split} split)!`
-        );
+        logSuccess(`Wired "${slug}.png" into "${args.location}"!`);
     } catch (error) {
         handleException(error);
     }

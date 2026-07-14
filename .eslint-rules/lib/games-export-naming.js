@@ -6,7 +6,7 @@ module.exports = {
         type: 'suggestion',
         docs: {
             description:
-                'Files in src/lib/games must default-export a Game or Split (depending on location) whose name is an UPPERCASE match of the filename. Barrel index.ts files are exempt.',
+                'Files in src/lib/games must default-export a Game, Split, or Location (depending on location) whose name is an UPPERCASE match of the filename. Barrel index.ts files are exempt.',
         },
         messages: {
             noDefaultExport: 'File must have a default export.',
@@ -28,10 +28,13 @@ module.exports = {
         if (basename === 'index') return {};
 
         const expectedName = basename.toUpperCase().replace(/-/g, '_');
+        const parentDir = path.basename(path.dirname(context.filename));
         const expectedType =
-            path.basename(path.dirname(context.filename)) === 'splits'
-                ? 'Split'
-                : 'Game';
+            parentDir === 'locations'
+                ? 'Location'
+                : parentDir === 'splits'
+                  ? 'Split'
+                  : 'Game';
         let hasDefaultExport = false;
 
         return {

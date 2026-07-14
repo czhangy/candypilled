@@ -87,6 +87,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
             </h1>
             <Tabs
                 activeTab={activeTab}
+                align="left"
                 onTabChange={handleTabChange}
                 tabs={TABS}
             />
