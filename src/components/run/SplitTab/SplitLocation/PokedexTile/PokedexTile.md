@@ -3,7 +3,8 @@
 Displays details for a single Pokemon, split into a left half
 showing its sprite, name, and type badges, and a right half divided
 into an upper section (two-thirds height) listing its abilities and
-a lower section (one-third height) showing its catch rate.
+a lower section (one-third height) showing its catch rate. Below
+that split, a full-width section shows the Pokemon's evolution line.
 Used alongside an encounter table to show whichever Pokemon is
 currently selected. If no Pokemon is selected, a placeholder message
 is shown instead.
@@ -29,3 +30,6 @@ is shown instead.
   with "(Hidden)"
 - `catchRate` — the selected species' catch rate, resolved via
   `PokemonHelpers`
+- `evolutionLine` — the selected species' evolution line at
+  `generation`, resolved via `PokemonHelpers` and rendered with
+  `EvolutionLine`

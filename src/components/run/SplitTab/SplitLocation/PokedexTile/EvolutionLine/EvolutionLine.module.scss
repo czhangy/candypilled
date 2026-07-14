@@ -1,0 +1,78 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.evolution-line {
+    align-items: center;
+    display: flex;
+    gap: 0.75rem;
+
+    .node {
+        align-items: center;
+        border: 1px solid transparent;
+        border-radius: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 0.5rem;
+
+        &--current {
+            background: rgba($accent, 0.1);
+            border-color: $accent;
+        }
+    }
+
+    .sprite {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+
+        img {
+            image-rendering: pixelated;
+        }
+    }
+
+    .branches {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .branch {
+        align-items: center;
+        display: flex;
+        gap: 0.75rem;
+
+        .arrow {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+            min-width: 3.5rem;
+
+            .method {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+
+                .method-label {
+                    color: $text-dim;
+                    font-size: 0.68rem;
+                    text-align: center;
+                    white-space: nowrap;
+                }
+
+                .method-condition {
+                    color: $text-dim;
+                    font-size: 0.68rem;
+                    text-align: center;
+                    white-space: nowrap;
+                }
+            }
+
+            .arrow-icon {
+                color: $text-mid;
+                font-size: 1.05rem;
+            }
+        }
+    }
+}

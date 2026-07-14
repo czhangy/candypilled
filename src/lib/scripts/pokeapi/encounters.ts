@@ -68,13 +68,22 @@ const EXCLUDED_METHODS = [
     'pokemon-ranger',
 ];
 
-const EXCLUDED_CONDITIONS = ['swarm-yes', 'radar-on'];
+const EXCLUDED_CONDITIONS = [
+    'swarm-yes',
+    'radar-on',
+    'story-progress-national-dex',
+];
 const EXCLUDED_CONDITION_PREFIXES = ['slot2-'];
 const STRIPPED_CONDITIONS = [
     'slot2-none',
     'radar-none',
     'swarm-no',
     'radar-off',
+    'backlot-not-mentioned',
+    'story-progress-defeat-jupiter',
+    'story-progress-beat-team-galactic-iron-island',
+    'item-skull-fossil',
+    'item-armor-fossil',
 ];
 
 const TIME_OF_DAY_CONDITIONS = ['time-morning', 'time-day', 'time-night'];

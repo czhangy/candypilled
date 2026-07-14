@@ -155,6 +155,14 @@ export interface EvolutionLineByGeneration {
     line: EvolutionStep;
 }
 
+// A method label split into its primary text and an optional condition
+// (e.g. a trade evolution's held item), so callers can render the
+// condition on its own line.
+export interface EvolutionMethodLabel {
+    label: string;
+    condition?: string;
+}
+
 export interface PokemonData {
     name: string;
     sprites: Record<string, string>;

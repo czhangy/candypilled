@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './PokedexTile.module.scss';
@@ -52,6 +53,9 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         : [];
     const catchRate = species
         ? PokemonHelpers.getCatchRate(species)
+        : undefined;
+    const evolutionLine = species
+        ? PokemonHelpers.getEvolutionLine(species, generation)
         : undefined;
 
     // -------------------------------------------------------------------------
@@ -163,6 +167,20 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     </span>
                 )}
             </div>
+            {evolutionLine && (
+                <div className={styles.evolution}>
+                    <span className={styles['evolution-label']}>
+                        Evolution Line
+                    </span>
+                    <div className={styles['evolution-content']}>
+                        <EvolutionLine
+                            currentName={species}
+                            step={evolutionLine}
+                            variant={variant}
+                        />
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
