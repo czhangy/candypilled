@@ -183,6 +183,7 @@ export interface MoveData {
     // unlike the rest of a move's values they aren't split by generation.
     category: string;
     priority: number;
+    introducedInGeneration: number;
     valuesByGeneration: MoveValuesByGeneration[];
 }
 

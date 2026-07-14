@@ -7,6 +7,7 @@ import { GAMES } from '@/lib/static/constants';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
+import MovesTab from './MovesTab/MovesTab';
 import styles from './RunPage.module.scss';
 import SplitTab from './SplitTab/SplitTab';
 import Tabs from './Tabs/Tabs';
@@ -23,6 +24,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const TABS = [
         { id: 'split', label: 'Splits' },
         { id: 'box', label: 'Box' },
+        { id: 'moves', label: 'Moves' },
     ];
 
     // -------------------------------------------------------------------------
@@ -107,6 +109,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                 tabs={TABS}
             />
             {activeTab === 'split' && <SplitTab game={game} run={run} />}
+            {activeTab === 'moves' && <MovesTab generation={game.generation} />}
         </div>
     );
 };

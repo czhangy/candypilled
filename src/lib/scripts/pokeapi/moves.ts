@@ -3,6 +3,7 @@ import path from 'path';
 import {
     handleException,
     logSuccess,
+    logWarning,
     validateRootDirectory,
 } from '@/lib/scripts/utils/helpers';
 import { MoveData, MoveValuesByGeneration } from '@/lib/static/types';
@@ -16,6 +17,15 @@ const POKEAPI_GENERATION_URL = 'https://pokeapi.co/api/v2/generation';
 const DATA_PATH = path.join('src', 'lib', 'data', 'moves.json');
 const FETCH_DELAY_MS = 75;
 const MOVE_LIST_LIMIT = 2000;
+
+// Shadow moves only exist in the GameCube spin-offs (Colosseum, XD), none of
+// which this site supports. They're also the only moves with no PP, so
+// excluding them lets `pp` stay a plain `number` everywhere else.
+const SHADOW_MOVE_TYPE = 'shadow';
+
+// 1 PP moves (e.g. Sketch) are single-use novelties that clutter the move
+// list without being useful to look up.
+const MIN_PP = 2;
 
 const sleep = (ms: number): Promise<void> =>
     new Promise((resolve) => setTimeout(resolve, ms));
@@ -122,6 +132,7 @@ interface RawMove {
     priority: number;
     damage_class: { name: string };
     type: { name: string };
+    generation: { name: string };
     effect_chance: number | null;
     effect_entries: RawEffectEntry[];
     flavor_text_entries: RawFlavorTextEntry[];
@@ -141,6 +152,9 @@ const fetchMove = async (resource: NamedApiResource): Promise<RawMove> => {
 
 const toEnglishEffect = (entries: RawEffectEntry[]): string | undefined =>
     entries.find((entry) => entry.language.name === 'en')?.short_effect;
+
+const toGenerationNumber = (generationName: string): number =>
+    StringHelpers.fromRoman(generationName.replace('generation-', ''));
 
 interface MoveValues {
     type: string;
@@ -310,11 +324,22 @@ export const fetchMoves = async (): Promise<void> => {
         const move = await fetchMove(resource);
         await sleep(FETCH_DELAY_MS);
 
+        if (move.type.name === SHADOW_MOVE_TYPE) {
+            logWarning(`Skipping shadow move "${move.name}".`);
+            continue;
+        }
+
+        if (move.pp < MIN_PP) {
+            logWarning(`Skipping 1 PP move "${move.name}".`);
+            continue;
+        }
+
         const name = StringHelpers.toTitleCase(move.name);
         data[move.name] = {
             name,
             category: move.damage_class.name,
             priority: move.priority,
+            introducedInGeneration: toGenerationNumber(move.generation.name),
             valuesByGeneration: buildValuesByGeneration(
                 move,
                 versionGroupGenerations
