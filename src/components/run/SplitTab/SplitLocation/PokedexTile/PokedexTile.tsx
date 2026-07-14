@@ -57,6 +57,8 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     const evolutionLine = species
         ? PokemonHelpers.getEvolutionLine(species, generation)
         : undefined;
+    const hasEvolutionBranches =
+        !!evolutionLine && evolutionLine.evolvesTo.length > 0;
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -167,17 +169,23 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     </span>
                 )}
             </div>
-            {evolutionLine && (
+            {pokemon && (
                 <div className={styles.evolution}>
                     <span className={styles['evolution-label']}>
                         Evolution Line
                     </span>
                     <div className={styles['evolution-content']}>
-                        <EvolutionLine
-                            currentName={species}
-                            step={evolutionLine}
-                            variant={variant}
-                        />
+                        {hasEvolutionBranches && evolutionLine ? (
+                            <EvolutionLine
+                                currentName={species}
+                                step={evolutionLine}
+                                variant={variant}
+                            />
+                        ) : (
+                            <span className={styles['evolution-empty']}>
+                                No evolution line
+                            </span>
+                        )}
                     </div>
                 </div>
             )}

@@ -164,6 +164,13 @@ $label-width: 5.5rem;
             display: flex;
             justify-content: center;
             overflow-x: auto;
+
+            .evolution-empty {
+                color: $text-dim;
+                font-size: 0.85rem;
+                padding-block: 1.5rem;
+                text-align: center;
+            }
         }
     }
 }
