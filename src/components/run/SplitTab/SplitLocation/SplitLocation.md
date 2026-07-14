@@ -61,3 +61,8 @@ encounters, if any, are shown in a table below the map and battle card.
   the run's defeated battles in storage. Defeating a required (non-optional)
   battle also updates the run's personal best if it is farther along than
   the current one
+
+## SCSS Variable Dependencies
+
+- `--accent-color` — the game's accent color, expected to be set by a
+  parent

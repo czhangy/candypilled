@@ -26,6 +26,17 @@
 
             .name {
                 letter-spacing: 0.03em;
+                transition: color 0.2s ease;
+
+                @media (prefers-reduced-motion: reduce) {
+                    transition: none;
+                }
+            }
+
+            @media (hover: hover) {
+                &:hover .name {
+                    color: var(--accent-color);
+                }
             }
         }
 
@@ -54,8 +65,8 @@
                 }
 
                 &--active {
-                    border-color: $accent;
-                    color: $accent;
+                    border-color: var(--accent-color);
+                    color: var(--accent-color);
                 }
 
                 @media (prefers-reduced-motion: reduce) {
@@ -75,7 +86,9 @@
                 color: $text-dim;
                 display: flex;
                 height: 1rem;
-                transition: transform 0.2s ease;
+                transition:
+                    color 0.2s ease,
+                    transform 0.2s ease;
                 width: 1rem;
 
                 &--open {
@@ -84,6 +97,12 @@
 
                 @media (prefers-reduced-motion: reduce) {
                     transition: none;
+                }
+            }
+
+            @media (hover: hover) {
+                &:hover .chevron {
+                    color: var(--accent-color);
                 }
             }
         }
