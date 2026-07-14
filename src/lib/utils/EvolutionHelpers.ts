@@ -77,22 +77,32 @@ export default class EvolutionHelpers {
             !icon && method.heldItem
                 ? StringHelpers.toTitleCase(method.heldItem)
                 : undefined;
-        const condition = [heldItemText, EvolutionHelpers.getCondition(method)]
+        const condition = [heldItemText, EvolutionHelpers.getTimeOfDay(method)]
             .filter((part): part is string => !!part)
             .join(', ');
 
         return {
             label: 'Trade',
-            condition: condition || undefined,
+            condition: EvolutionHelpers.wrapCondition(condition || undefined),
             gender: EvolutionHelpers.getGender(method),
             icon,
         };
     }
 
-    private static getCondition(method: EvolutionMethod): string | undefined {
+    private static getTimeOfDay(method: EvolutionMethod): string | undefined {
         return method.timeOfDay
             ? StringHelpers.toTitleCase(method.timeOfDay)
             : undefined;
+    }
+
+    private static wrapCondition(text: string | undefined): string | undefined {
+        return text ? `(${text})` : undefined;
+    }
+
+    private static getCondition(method: EvolutionMethod): string | undefined {
+        return EvolutionHelpers.wrapCondition(
+            EvolutionHelpers.getTimeOfDay(method)
+        );
     }
 
     private static getGender(
@@ -129,6 +139,19 @@ export default class EvolutionHelpers {
                 condition: EvolutionHelpers.getCondition(method),
                 gender: EvolutionHelpers.getGender(method),
                 icon: EvolutionHelpers.getIcon(method.heldItem),
+            };
+        }
+
+        if (method.knownMove) {
+            return {
+                label: 'Knows',
+                condition: [
+                    StringHelpers.toTitleCase(method.knownMove),
+                    EvolutionHelpers.getTimeOfDay(method),
+                ]
+                    .filter((part): part is string => !!part)
+                    .join(', '),
+                gender: EvolutionHelpers.getGender(method),
             };
         }
 

@@ -75,7 +75,7 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                                     src={`/evolution_methods/${methodLabel.icon}.png`}
                                                     title={
                                                         methodLabel.condition
-                                                            ? `${methodLabel.label} (${methodLabel.condition})`
+                                                            ? `${methodLabel.label} ${methodLabel.condition}`
                                                             : methodLabel.label
                                                     }
                                                     width={METHOD_ICON_SIZE}
@@ -112,7 +112,7 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                                         ]
                                                     }
                                                 >
-                                                    ({methodLabel.condition})
+                                                    {methodLabel.condition}
                                                 </span>
                                             )}
                                         </span>
