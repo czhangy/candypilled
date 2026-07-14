@@ -1,4 +1,4 @@
-import { GAME_ID } from '@/lib/scripts/pokeapi/game';
+import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import { platinum } from './platinum';
 
 export const GAME_VERSIONS = [platinum];

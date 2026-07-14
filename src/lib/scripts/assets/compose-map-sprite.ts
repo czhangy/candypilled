@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
-import { GAME_ID } from '@/lib/scripts/pokeapi/game';
+import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import {
     handleException,
     logSuccess,
