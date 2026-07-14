@@ -63,6 +63,75 @@ const ROUTE_204: Location = {
             name: 'North',
             map: route204North,
             encountersKey: 'sinnoh-route-204-north-towards-floaroma-town',
+            battles: [
+                {
+                    trainerClass: 'Aroma Lady',
+                    name: 'Taylor',
+                    team: [
+                        {
+                            name: 'Budew',
+                            level: 9,
+                            moves: ['Absorb', 'Growth', 'Water Sport'],
+                            nature: Nature.Bashful,
+                            ability: 'Natural Cure',
+                        },
+                        {
+                            name: 'Cherubi',
+                            level: 11,
+                            moves: ['Tackle', 'Growth', 'Leech Seed'],
+                            nature: Nature.Docile,
+                            ability: 'Chlorophyll',
+                        },
+                    ],
+                    x: 52.9,
+                    y: 59.4,
+                },
+                {
+                    isOptional: true,
+                    trainerClass: 'Bug Catcher',
+                    name: 'Brandon',
+                    team: [
+                        {
+                            name: 'Wurmple',
+                            level: 10,
+                            moves: ['Tackle', 'String Shot', 'Poison Sting'],
+                            nature: Nature.Quirky,
+                            ability: 'Shield Dust',
+                        },
+                        {
+                            name: 'Kricketot',
+                            level: 11,
+                            moves: ['Growl', 'Bide'],
+                            nature: Nature.Modest,
+                            ability: 'Shed Skin',
+                        },
+                    ],
+                    x: 52.9,
+                    y: 59.4,
+                },
+                {
+                    trainerClass: 'Twins',
+                    name: 'Taylor',
+                    team: [
+                        {
+                            name: 'Budew',
+                            level: 9,
+                            moves: ['Absorb', 'Growth', 'Water Sport'],
+                            nature: Nature.Bashful,
+                            ability: 'Natural Cure',
+                        },
+                        {
+                            name: 'Cherubi',
+                            level: 11,
+                            moves: ['Tackle', 'Growth', 'Leech Seed'],
+                            nature: Nature.Docile,
+                            ability: 'Chlorophyll',
+                        },
+                    ],
+                    x: 52.9,
+                    y: 59.4,
+                },
+            ],
         },
     ],
 };

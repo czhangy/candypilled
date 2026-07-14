@@ -32,13 +32,14 @@ encounters, if any, are shown in a table below the map and battle card.
 
 ## Computations
 
-- `defeatedBattles` — the run's list of defeated battle (trainer) names
-- `nextPersonalBestBattleName` — the next required battle after the run's
-  personal best, in split/location/battle order
-- `isBattleDefeated` — whether a given battle's name is present in
+- `defeatedBattles` — the run's list of defeated battle keys (trainer class +
+  name, since name alone is not unique)
+- `nextPersonalBestBattleKey` — the key of the next required battle after the
+  run's personal best, in split/location/battle order
+- `isBattleDefeated` — whether a given battle's key is present in
   `defeatedBattles`
-- `isBattleNextPersonalBest` — whether a given battle's name matches
-  `nextPersonalBestBattleName`
+- `isBattleNextPersonalBest` — whether a given battle's key matches
+  `nextPersonalBestBattleKey`
 - `getDefaultSelectedBattle` — the battle to preselect: the first
   undefeated required battle across all of the location's subareas, or the
   last required (or any) battle if all are defeated
@@ -57,7 +58,7 @@ encounters, if any, are shown in a table below the map and battle card.
 - **On subarea button click** — selects that subarea's index
 - **On trainer marker click** — selects that battle, or deselects it if
   already selected
-- **On battle toggle defeated** — adds or removes the battle's name from
+- **On battle toggle defeated** — adds or removes the battle's key from
   the run's defeated battles in storage. Defeating a required (non-optional)
   battle also updates the run's personal best if it is farther along than
   the current one

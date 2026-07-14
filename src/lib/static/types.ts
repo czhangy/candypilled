@@ -86,6 +86,8 @@ export interface Game {
 export interface Run {
     attempt: number;
     deathCount: number;
+    // Battle keys (BattleHelpers.getKey), not names — trainerClass + name is
+    // the unique identifier since name alone can repeat within a game.
     defeatedBattles: string[];
     split: string;
     boxCount: number;
