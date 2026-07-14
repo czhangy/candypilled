@@ -203,7 +203,7 @@ const mergeEncounters = (encounters: Encounter[]): Encounter[] => {
             continue;
         }
 
-        existing.chance += encounter.chance;
+        existing.chance = (existing.chance ?? 0) + (encounter.chance ?? 0);
         existing.minLevel = Math.min(existing.minLevel, encounter.minLevel);
         existing.maxLevel = Math.max(existing.maxLevel, encounter.maxLevel);
     }
@@ -240,6 +240,28 @@ const resolveMethodOverrides = (
         );
         return override ? { ...encounter, method: override.method } : encounter;
     });
+
+const HONEY_TREE_METHOD = 'honey-tree';
+
+const resolveHoneyTreeEncounters = (encounters: Encounter[]): Encounter[] =>
+    encounters.map((encounter) =>
+        encounter.method === HONEY_TREE_METHOD
+            ? {
+                  species: encounter.species,
+                  method: encounter.method,
+                  minLevel: encounter.minLevel,
+                  maxLevel: encounter.maxLevel,
+                  chance: encounter.chance,
+              }
+            : encounter
+    );
+
+const nullifyHoneyTreeChances = (encounters: Encounter[]): Encounter[] =>
+    encounters.map((encounter) =>
+        encounter.method === HONEY_TREE_METHOD
+            ? { ...encounter, chance: null }
+            : encounter
+    );
 
 const expandTimeOfDayEncounters = (encounters: Encounter[]): Encounter[] => {
     const hasTimeOfDay = encounters.some((encounter) =>
@@ -282,17 +304,21 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
             );
             await sleep(FETCH_DELAY_MS);
 
-            const encounters = mergeEncounters(
-                expandTimeOfDayEncounters(
-                    mergeEncounters(
-                        resolveMethodOverrides(
-                            resolveWalkMethod(
-                                rawEncounters,
-                                location.name,
-                                version.caveLocations ?? []
-                            ),
-                            location.name,
-                            version.methodOverrides ?? []
+            const encounters = nullifyHoneyTreeChances(
+                mergeEncounters(
+                    resolveHoneyTreeEncounters(
+                        expandTimeOfDayEncounters(
+                            mergeEncounters(
+                                resolveMethodOverrides(
+                                    resolveWalkMethod(
+                                        rawEncounters,
+                                        location.name,
+                                        version.caveLocations ?? []
+                                    ),
+                                    location.name,
+                                    version.methodOverrides ?? []
+                                )
+                            )
                         )
                     )
                 )
@@ -329,46 +355,17 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
     writeData(data);
 };
 
-interface Args {
-    gameId: string;
-}
-
-const parseArgs = (): Args => {
-    const args = new Map(
-        process.argv.slice(2).map((arg) => {
-            const [key, value] = arg.replace(/^--/, '').split('=');
-            return [key, value];
-        })
-    );
-
-    const gameArg = args.get('game');
-
-    if (!gameArg) {
-        throw new Error('Usage: npm run pokeapi:encounters -- --game=emerald');
-    }
-
-    if (gameArg.includes(',')) {
-        throw new Error('Only one --game may be specified per run.');
-    }
-
-    return { gameId: gameArg };
-};
+const GAME_ID = 'platinum';
 
 const main = async (): Promise<void> => {
     try {
         validateRootDirectory();
 
-        const { gameId } = parseArgs();
-
         const version = GAME_VERSIONS.find(
-            (candidate) => candidate.id === gameId
+            (candidate) => candidate.id === GAME_ID
         );
         if (!version) {
-            throw new Error(
-                `"${gameId}" is not a valid game. Valid options: ${GAME_VERSIONS.map(
-                    (candidate) => candidate.id
-                ).join(', ')}`
-            );
+            throw new Error(`"${GAME_ID}" is not a valid game.`);
         }
 
         await fetchEncounters(version);

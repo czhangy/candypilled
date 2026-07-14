@@ -49,7 +49,7 @@ export interface Encounter {
     method: string;
     minLevel: number;
     maxLevel: number;
-    chance: number;
+    chance: number | null;
     conditions?: string[];
 }
 
