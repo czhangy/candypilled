@@ -7,12 +7,14 @@ import styles from './EvolutionLine.module.scss';
 
 interface EvolutionLineProps {
     currentName?: string;
+    onSelectSpecies?: (species: string) => void;
     step: EvolutionStep;
     variant: string;
 }
 
 const EvolutionLine: React.FC<EvolutionLineProps> = ({
     currentName,
+    onSelectSpecies,
     step,
     variant,
 }) => {
@@ -32,15 +34,26 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
         !!currentName && StringHelpers.toSlug(currentName) === step.name;
 
     // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleNodeClick = (): void => {
+        onSelectSpecies?.(step.name);
+    };
+
+    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
     return (
         <div className={styles['evolution-line']}>
-            <div
+            <button
                 className={[styles.node, isCurrent && styles['node--current']]
                     .filter(Boolean)
                     .join(' ')}
+                disabled={!onSelectSpecies}
+                onClick={handleNodeClick}
+                type="button"
             >
                 <div className={styles.sprite}>
                     {sprite && (
@@ -52,7 +65,7 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                         />
                     )}
                 </div>
-            </div>
+            </button>
             {step.evolvesTo.length > 0 && (
                 <div className={styles.branches}>
                     {step.evolvesTo.map((child) => {
@@ -123,6 +136,7 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                 </div>
                                 <EvolutionLine
                                     currentName={currentName}
+                                    onSelectSpecies={onSelectSpecies}
                                     step={child}
                                     variant={variant}
                                 />

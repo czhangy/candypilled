@@ -12,11 +12,12 @@ is shown instead.
 
 ## Props
 
-| Prop         | Type     | Required | Default | Description                                                |
-| ------------ | -------- | -------- | ------- | ---------------------------------------------------------- |
-| `generation` | `number` | Yes      | -       | The game's generation, used to resolve the Pokemon's types |
-| `species`    | `string` | No       | -       | The selected Pokemon's species, if any                     |
-| `variant`    | `string` | Yes      | -       | The sprite variant to prefer, matching the game's slug     |
+| Prop              | Type                        | Required | Default | Description                                                |
+| ----------------- | --------------------------- | -------- | ------- | ---------------------------------------------------------- |
+| `generation`      | `number`                    | Yes      | -       | The game's generation, used to resolve the Pokemon's types |
+| `onSelectSpecies` | `(species: string) => void` | No       | -       | Called when a Pokemon is clicked within the evolution line |
+| `species`         | `string`                    | No       | -       | The selected Pokemon's species, if any                     |
+| `variant`         | `string`                    | Yes      | -       | The sprite variant to prefer, matching the game's slug     |
 
 ## Computations
 

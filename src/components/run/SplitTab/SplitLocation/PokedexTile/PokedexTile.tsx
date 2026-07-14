@@ -6,12 +6,14 @@ import styles from './PokedexTile.module.scss';
 
 interface PokedexTileProps {
     generation: number;
+    onSelectSpecies?: (species: string) => void;
     species?: string;
     variant: string;
 }
 
 const PokedexTile: React.FC<PokedexTileProps> = ({
     generation,
+    onSelectSpecies,
     species,
     variant,
 }) => {
@@ -178,6 +180,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                         {hasEvolutionBranches && evolutionLine ? (
                             <EvolutionLine
                                 currentName={species}
+                                onSelectSpecies={onSelectSpecies}
                                 step={evolutionLine}
                                 variant={variant}
                             />

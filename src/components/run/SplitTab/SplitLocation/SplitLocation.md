@@ -13,7 +13,9 @@ alongside the map. Defeated trainers are tracked in the run's storage and
 reflected on both the map and the battle card. A location's wild
 encounters, if any, are shown in a table below the map and battle card,
 with a Pokedex tile to its right showing whichever encounter's row was
-most recently clicked in the table.
+most recently clicked in the table. Clicking a Pokemon within the
+Pokedex tile's evolution line instead shows that Pokemon, without
+changing which row is selected in the encounter table.
 
 ## Props
 
@@ -26,12 +28,13 @@ most recently clicked in the table.
 
 ## State
 
-| State                  | Type        | Initial value                                               | Description                                           |
-| ---------------------- | ----------- | ----------------------------------------------------------- | ----------------------------------------------------- |
-| `isOpen`               | `boolean`   | `false`                                                     | Whether the location's content is expanded            |
-| `selectedBattle`       | `Battle`    | `undefined`                                                 | The battle currently selected on the map, if any      |
-| `selectedEncounter`    | `Encounter` | `undefined`                                                 | The encounter currently selected in the table, if any |
-| `selectedSubareaIndex` | `number`    | Index of the first subarea that isn't fully cleared, or `0` | Which of the location's subareas is currently shown   |
+| State                  | Type        | Initial value                                               | Description                                                                                                 |
+| ---------------------- | ----------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `isOpen`               | `boolean`   | `false`                                                     | Whether the location's content is expanded                                                                  |
+| `selectedBattle`       | `Battle`    | `undefined`                                                 | The battle currently selected on the map, if any                                                            |
+| `selectedEncounter`    | `Encounter` | `undefined`                                                 | The encounter currently selected in the table, if any                                                       |
+| `selectedSubareaIndex` | `number`    | Index of the first subarea that isn't fully cleared, or `0` | Which of the location's subareas is currently shown                                                         |
+| `speciesOverride`      | `string`    | `undefined`                                                 | A species clicked within the Pokedex tile's evolution line, shown in place of `selectedEncounter`'s species |
 
 ## Computations
 
@@ -73,9 +76,12 @@ most recently clicked in the table.
   battle also updates the run's personal best if it is farther along than
   the current one
 - **On encounter table row click** — selects that encounter, showing its
-  details in the Pokedex tile
-- **On subarea button click** — also clears `selectedEncounter`, since a
-  new subarea has its own encounter table
+  details in the Pokedex tile, and clears `speciesOverride` so the
+  encounter's own species is shown
+- **On subarea button click** — also clears `selectedEncounter` and
+  `speciesOverride`, since a new subarea has its own encounter table
+- **On Pokedex tile evolution line click** — sets `speciesOverride` to
+  the clicked species, without changing `selectedEncounter`
 
 ## SCSS Variable Dependencies
 

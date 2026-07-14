@@ -120,6 +120,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const [selectedEncounter, setSelectedEncounter] = useState<
         Encounter | undefined
     >(undefined);
+    const [speciesOverride, setSpeciesOverride] = useState<string | undefined>(
+        undefined
+    );
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -133,6 +136,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         setSelectedSubareaIndex(index);
         setSelectedBattle(getDefaultSelectedBattle(index));
         setSelectedEncounter(undefined);
+        setSpeciesOverride(undefined);
     };
 
     const handleBattleClick = (battle: Battle): void => {
@@ -141,6 +145,11 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
 
     const handleEncounterSelect = (encounter: Encounter): void => {
         setSelectedEncounter(encounter);
+        setSpeciesOverride(undefined);
+    };
+
+    const handleSpeciesSelect = (species: string): void => {
+        setSpeciesOverride(species);
     };
 
     const handleBattleToggleDefeated = (battle: Battle): void => {
@@ -294,7 +303,11 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                             />
                             <PokedexTile
                                 generation={game.generation}
-                                species={selectedEncounter?.species}
+                                onSelectSpecies={handleSpeciesSelect}
+                                species={
+                                    speciesOverride ??
+                                    selectedEncounter?.species
+                                }
                                 variant={variant}
                             />
                         </div>
