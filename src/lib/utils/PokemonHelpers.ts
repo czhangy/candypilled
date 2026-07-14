@@ -1,5 +1,5 @@
 import { POKEMON } from '@/lib/data/pokemon';
-import { PokemonData } from '@/lib/static/types';
+import { Abilities, PokemonData } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 export default class PokemonHelpers {
@@ -29,5 +29,17 @@ export default class PokemonHelpers {
         return [...pokemon.types]
             .reverse()
             .find((entry) => entry.fromGeneration <= generation)?.types;
+    }
+
+    static getAbilities(
+        name: string,
+        generation: number
+    ): Abilities | undefined {
+        const pokemon = PokemonHelpers.get(name);
+        if (!pokemon) return undefined;
+
+        return [...pokemon.abilities]
+            .reverse()
+            .find((entry) => entry.fromGeneration <= generation)?.abilities;
     }
 }

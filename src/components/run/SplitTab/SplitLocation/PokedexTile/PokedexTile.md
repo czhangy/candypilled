@@ -1,9 +1,12 @@
 # PokedexTile
 
-Displays details for a single Pokemon: its sprite, name, and type
-badges. Used alongside an encounter table to show whichever Pokemon
-is currently selected. If no Pokemon is selected, a placeholder
-message is shown instead.
+Displays details for a single Pokemon, split into a left half
+showing its sprite, name, and type badges, and a right half divided
+into an upper section (two-thirds height) listing its abilities and
+a lower section (one-third height) reserved for further details.
+Used alongside an encounter table to show whichever Pokemon is
+currently selected. If no Pokemon is selected, a placeholder message
+is shown instead.
 
 ## Props
 
@@ -19,3 +22,8 @@ message is shown instead.
 - `sprite` — the selected species' sprite for the given `variant`
 - `types` — the selected species' types at `generation`, rendered as
   badges (`/types/{type}.png`) beneath its name
+- `abilities` — the selected species' ability set at `generation`,
+  resolved via `PokemonHelpers`
+- `abilityEntries` — `abilities` flattened into a list, with its
+  hidden ability (if any) flagged so it renders dimmer and suffixed
+  with "(Hidden)"

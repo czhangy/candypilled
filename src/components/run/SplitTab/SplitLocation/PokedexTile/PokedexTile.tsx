@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
+import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './PokedexTile.module.scss';
 
 interface PokedexTileProps {
@@ -21,6 +22,11 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     const TYPE_BADGE_WIDTH = 32;
     const TYPE_BADGE_HEIGHT = 14;
 
+    interface AbilityEntry {
+        hidden?: boolean;
+        name: string;
+    }
+
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
@@ -31,6 +37,18 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         : undefined;
     const types = species
         ? (PokemonHelpers.getTypes(species, generation) ?? [])
+        : [];
+    const abilities = species
+        ? PokemonHelpers.getAbilities(species, generation)
+        : undefined;
+    const abilityEntries: AbilityEntry[] = abilities
+        ? [
+              { name: abilities.slot1 },
+              ...(abilities.slot2 ? [{ name: abilities.slot2 }] : []),
+              ...(abilities.hidden
+                  ? [{ hidden: true, name: abilities.hidden }]
+                  : []),
+          ]
         : [];
 
     // -------------------------------------------------------------------------
@@ -50,31 +68,75 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
             >
                 {pokemon ? (
                     <>
-                        <div className={styles.sprite}>
-                            {sprite && (
-                                <Image
-                                    alt={pokemon.name}
-                                    height={SPRITE_SIZE}
-                                    src={sprite}
-                                    width={SPRITE_SIZE}
-                                />
-                            )}
+                        <div className={styles.left}>
+                            <div className={styles.sprite}>
+                                {sprite && (
+                                    <Image
+                                        alt={pokemon.name}
+                                        height={SPRITE_SIZE}
+                                        src={sprite}
+                                        width={SPRITE_SIZE}
+                                    />
+                                )}
+                            </div>
+                            <div className={styles.info}>
+                                <span className={styles.name}>
+                                    {pokemon.name}
+                                </span>
+                                {types.length > 0 && (
+                                    <div className={styles.types}>
+                                        {types.map((type) => (
+                                            <Image
+                                                alt={type}
+                                                height={TYPE_BADGE_HEIGHT}
+                                                key={type}
+                                                src={`/types/${type}.png`}
+                                                width={TYPE_BADGE_WIDTH}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
                         </div>
-                        <div className={styles.info}>
-                            <span className={styles.name}>{pokemon.name}</span>
-                            {types.length > 0 && (
-                                <div className={styles.types}>
-                                    {types.map((type) => (
-                                        <Image
-                                            alt={type}
-                                            height={TYPE_BADGE_HEIGHT}
-                                            key={type}
-                                            src={`/types/${type}.png`}
-                                            width={TYPE_BADGE_WIDTH}
-                                        />
-                                    ))}
-                                </div>
-                            )}
+                        <div className={styles.right}>
+                            <div className={styles['right-top']}>
+                                {abilityEntries.length > 0 && (
+                                    <div className={styles.abilities}>
+                                        <span
+                                            className={
+                                                styles['abilities-label']
+                                            }
+                                        >
+                                            Abilities:
+                                        </span>
+                                        <div
+                                            className={styles['abilities-list']}
+                                        >
+                                            {abilityEntries.map((entry) => (
+                                                <span
+                                                    className={[
+                                                        styles.ability,
+                                                        entry.hidden &&
+                                                            styles[
+                                                                'ability--hidden'
+                                                            ],
+                                                    ]
+                                                        .filter(Boolean)
+                                                        .join(' ')}
+                                                    key={entry.name}
+                                                >
+                                                    {StringHelpers.toTitleCase(
+                                                        entry.name
+                                                    )}
+                                                    {entry.hidden &&
+                                                        ' (Hidden)'}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                            <div className={styles['right-bottom']} />
                         </div>
                     </>
                 ) : (
