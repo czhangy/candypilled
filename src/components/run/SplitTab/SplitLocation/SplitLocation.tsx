@@ -247,6 +247,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                         section.battles.includes(selectedBattle) && (
                             <BattleCard
                                 battle={selectedBattle}
+                                generation={game.generation}
                                 isDefeated={isBattleDefeated(selectedBattle)}
                                 onToggleDefeated={() =>
                                     handleBattleToggleDefeated(selectedBattle)
