@@ -96,6 +96,7 @@
                 @include uppercase-label;
 
                 flex-shrink: 0;
+                font-size: 0.7rem;
             }
 
             .abilities-list {
@@ -106,7 +107,7 @@
 
             .ability {
                 color: $text-mid;
-                font-size: 0.75rem;
+                font-size: 0.7rem;
 
                 &--hidden {
                     color: $text-dim;
