@@ -11,12 +11,16 @@ import styles from './EncounterTable.module.scss';
 interface EncounterTableProps {
     encounters: Encounter[];
     generation: number;
+    onSelectEncounter?: (encounter: Encounter) => void;
+    selectedSpecies?: string;
     variant: string;
 }
 
 const EncounterTable: React.FC<EncounterTableProps> = ({
     encounters,
     generation,
+    onSelectEncounter,
+    selectedSpecies,
     variant,
 }) => {
     // -------------------------------------------------------------------------
@@ -78,6 +82,10 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
 
     const handleTimeOfDayChange = (time: string): void => {
         setSelectedTimeOfDay(time);
+    };
+
+    const handleRowClick = (encounter: Encounter): void => {
+        onSelectEncounter?.(encounter);
     };
 
     // -------------------------------------------------------------------------
@@ -198,7 +206,18 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
 
                                 return (
                                     <tr
+                                        className={[
+                                            styles.row,
+                                            encounter.species ===
+                                                selectedSpecies &&
+                                                styles['row--selected'],
+                                        ]
+                                            .filter(Boolean)
+                                            .join(' ')}
                                         key={`${method}-${encounter.species}-${encounter.minLevel}-${encounter.maxLevel}-${encounter.chance}`}
+                                        onClick={() =>
+                                            handleRowClick(encounter)
+                                        }
                                     >
                                         <td>
                                             <div className={styles.pokemon}>

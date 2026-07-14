@@ -18,6 +18,7 @@ import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import BattleCard from './BattleCard/BattleCard';
 import EncounterTable from './EncounterTable/EncounterTable';
 import LocationMap from './LocationMap/LocationMap';
+import PokedexTile from './PokedexTile/PokedexTile';
 import styles from './SplitLocation.module.scss';
 
 interface SplitLocationProps {
@@ -117,6 +118,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const [selectedBattle, setSelectedBattle] = useState<Battle | undefined>(
         () => getDefaultSelectedBattle(selectedSubareaIndex)
     );
+    const [selectedEncounter, setSelectedEncounter] = useState<
+        Encounter | undefined
+    >(undefined);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -129,10 +133,15 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const handleSubareaClick = (index: number): void => {
         setSelectedSubareaIndex(index);
         setSelectedBattle(getDefaultSelectedBattle(index));
+        setSelectedEncounter(undefined);
     };
 
     const handleBattleClick = (battle: Battle): void => {
         setSelectedBattle(battle);
+    };
+
+    const handleEncounterSelect = (encounter: Encounter): void => {
+        setSelectedEncounter(encounter);
     };
 
     const handleBattleToggleDefeated = (battle: Battle): void => {
@@ -276,11 +285,20 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                             />
                         )}
                     {section.encounters && (
-                        <EncounterTable
-                            encounters={section.encounters}
-                            generation={game.generation}
-                            variant={variant}
-                        />
+                        <div className={styles['encounters-row']}>
+                            <EncounterTable
+                                encounters={section.encounters}
+                                generation={game.generation}
+                                onSelectEncounter={handleEncounterSelect}
+                                selectedSpecies={selectedEncounter?.species}
+                                variant={variant}
+                            />
+                            <PokedexTile
+                                generation={game.generation}
+                                species={selectedEncounter?.species}
+                                variant={variant}
+                            />
+                        </div>
                     )}
                 </div>
             )}

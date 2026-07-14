@@ -11,7 +11,9 @@ encounters; locations with neither show no expanded content. Selecting a
 trainer marker on the map surfaces its battle details in a battle card
 alongside the map. Defeated trainers are tracked in the run's storage and
 reflected on both the map and the battle card. A location's wild
-encounters, if any, are shown in a table below the map and battle card.
+encounters, if any, are shown in a table below the map and battle card,
+with a Pokedex tile to its right showing whichever encounter's row was
+most recently clicked in the table.
 
 ## Props
 
@@ -24,11 +26,12 @@ encounters, if any, are shown in a table below the map and battle card.
 
 ## State
 
-| State                  | Type      | Initial value                                               | Description                                         |
-| ---------------------- | --------- | ----------------------------------------------------------- | --------------------------------------------------- |
-| `isOpen`               | `boolean` | `false`                                                     | Whether the location's content is expanded          |
-| `selectedBattle`       | `Battle`  | `undefined`                                                 | The battle currently selected on the map, if any    |
-| `selectedSubareaIndex` | `number`  | Index of the first subarea that isn't fully cleared, or `0` | Which of the location's subareas is currently shown |
+| State                  | Type        | Initial value                                               | Description                                           |
+| ---------------------- | ----------- | ----------------------------------------------------------- | ----------------------------------------------------- |
+| `isOpen`               | `boolean`   | `false`                                                     | Whether the location's content is expanded            |
+| `selectedBattle`       | `Battle`    | `undefined`                                                 | The battle currently selected on the map, if any      |
+| `selectedEncounter`    | `Encounter` | `undefined`                                                 | The encounter currently selected in the table, if any |
+| `selectedSubareaIndex` | `number`    | Index of the first subarea that isn't fully cleared, or `0` | Which of the location's subareas is currently shown   |
 
 ## Computations
 
@@ -69,6 +72,10 @@ encounters, if any, are shown in a table below the map and battle card.
   the run's defeated battles in storage. Defeating a required (non-optional)
   battle also updates the run's personal best if it is farther along than
   the current one
+- **On encounter table row click** — selects that encounter, showing its
+  details in the Pokedex tile
+- **On subarea button click** — also clears `selectedEncounter`, since a
+  new subarea has its own encounter table
 
 ## SCSS Variable Dependencies
 
