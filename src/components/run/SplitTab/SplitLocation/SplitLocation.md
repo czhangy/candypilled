@@ -50,7 +50,10 @@ encounters, if any, are shown in a table below the map and battle card.
   selected subarea when `location.subareas` is set, otherwise a section
   built from the location's own `map`/`battles`/`encountersKey`. Wild
   encounters are looked up from generated PokeAPI data via the section's
-  `encountersKey`, if set
+  `encountersKey`, if set. A subarea with `hideBattles` set contributes no
+  battles to the section, so no markers or battle card render for it, even
+  though the same subarea data may render battles when reused (without the
+  flag) by another split
 
 ## Handlers
 

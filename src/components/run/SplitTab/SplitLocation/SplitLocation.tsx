@@ -104,9 +104,12 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     };
 
     const handleSubareaClick = (index: number): void => {
+        const subarea = location.subareas?.[index];
         setSelectedSubareaIndex(index);
         setSelectedBattle(
-            getDefaultBattleFrom(location.subareas?.[index].battles ?? [])
+            getDefaultBattleFrom(
+                subarea?.hideBattles ? [] : (subarea?.battles ?? [])
+            )
         );
     };
 
@@ -158,7 +161,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const section: Section = activeSubarea
         ? {
               map: activeSubarea.map,
-              battles: activeSubarea.battles ?? [],
+              battles: activeSubarea.hideBattles
+                  ? []
+                  : (activeSubarea.battles ?? []),
               encounters: activeSubarea.encountersKey
                   ? EncounterHelpers.get(game.name, activeSubarea.encountersKey)
                   : undefined,

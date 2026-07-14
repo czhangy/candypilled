@@ -1,4 +1,5 @@
 import { Split } from '@/lib/static/types';
+import LocationHelpers from '@/lib/utils/LocationHelpers';
 import OREBURGH_CITY from './locations/oreburgh-city';
 import OREBURGH_GATE from './locations/oreburgh-gate';
 import OREBURGH_GYM from './locations/oreburgh-gym';
@@ -15,7 +16,7 @@ const ROARK: Split = {
         TWINLEAF_TOWN,
         ROUTE_201,
         ROUTE_202,
-        ROUTE_204,
+        LocationHelpers.withHiddenSubareaBattles(ROUTE_204, ['North']),
         RAVAGED_PATH,
         ROUTE_203,
         OREBURGH_GATE,

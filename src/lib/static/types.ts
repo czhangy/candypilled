@@ -61,6 +61,7 @@ export interface LocationEncounters {
 export interface Subarea {
     name: string;
     encountersKey?: string;
+    hideBattles?: boolean;
     map?: StaticImageData;
     battles?: Battle[];
 }
