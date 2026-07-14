@@ -11,7 +11,9 @@ effects, shown in a smaller font on the same line (e.g.
 field condition section above
 the sprite (e.g. "Rain") and a held items section below it (e.g.
 "2x Potion"), each hidden when not present on the battle. An "Optional"
-section appears below that for battles that aren't required to progress.
+section appears below that for battles that aren't required to progress,
+followed by a double battle section reading "Double Battle" or, if the
+player's whole party is forced into the fight, "True Double Battle".
 A "Defeat" button below the portrait toggles the trainer's defeated
 state in storage; once defeated it reads "Defeated" and turns green, and
 can be clicked again to undo.

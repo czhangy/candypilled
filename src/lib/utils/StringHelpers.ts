@@ -34,6 +34,17 @@ export default class StringHelpers {
         );
     }
 
+    static toTitleCase(value: string): string {
+        return StringHelpers.toSlug(value)
+            .split('-')
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    }
+
+    static toConstantCase(value: string): string {
+        return StringHelpers.toSlug(value).replace(/-/g, '_').toUpperCase();
+    }
+
     static toRoman(value: number): string {
         return StringHelpers.ROMAN_NUMERALS[value - 1];
     }

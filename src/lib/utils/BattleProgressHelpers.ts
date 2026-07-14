@@ -1,4 +1,4 @@
-import { Game, Split } from '@/lib/static/types';
+import { Battle, Game, Split } from '@/lib/static/types';
 import BattleHelpers from './BattleHelpers';
 import LocationHelpers from './LocationHelpers';
 
@@ -26,7 +26,7 @@ export default class BattleProgressHelpers {
         return Math.max(...team.map((pokemon) => pokemon.level));
     }
 
-    static getPosition(game: Game, battleName: string): BattlePosition | null {
+    static getPosition(game: Game, battleKey: string): BattlePosition | null {
         for (
             let splitIndex = 0;
             splitIndex < game.splits.length;
@@ -40,7 +40,9 @@ export default class BattleProgressHelpers {
             ) {
                 const battleIndex = LocationHelpers.getBattles(
                     locations[locationIndex]
-                ).findIndex((battle) => battle.name === battleName);
+                ).findIndex(
+                    (battle) => BattleHelpers.getKey(battle) === battleKey
+                );
                 if (battleIndex === -1) continue;
 
                 return { splitIndex, locationIndex, battleIndex };
@@ -50,28 +52,38 @@ export default class BattleProgressHelpers {
         return null;
     }
 
-    static getSplitName(game: Game, battleName: string): string | null {
-        const position = BattleProgressHelpers.getPosition(game, battleName);
+    static getSplitName(game: Game, battleKey: string): string | null {
+        const position = BattleProgressHelpers.getPosition(game, battleKey);
         return position ? game.splits[position.splitIndex].name : null;
     }
 
-    static getNextRequiredBattleName(
+    static getBattle(game: Game, battleKey: string): Battle | null {
+        const position = BattleProgressHelpers.getPosition(game, battleKey);
+        if (!position) return null;
+
+        const location =
+            game.splits[position.splitIndex].locations[position.locationIndex];
+
+        return LocationHelpers.getBattles(location)[position.battleIndex];
+    }
+
+    static getNextRequiredBattleKey(
         game: Game,
-        personalBestBattleName: string
+        personalBestBattleKey: string
     ): string | null {
-        const requiredBattleNames = game.splits.flatMap((split) =>
+        const requiredBattleKeys = game.splits.flatMap((split) =>
             split.locations.flatMap((location) =>
                 LocationHelpers.getBattles(location)
                     .filter((battle) => !battle.isOptional)
-                    .map((battle) => battle.name)
+                    .map((battle) => BattleHelpers.getKey(battle))
             )
         );
 
-        const personalBestIndex = requiredBattleNames.indexOf(
-            personalBestBattleName
+        const personalBestIndex = requiredBattleKeys.indexOf(
+            personalBestBattleKey
         );
 
-        return requiredBattleNames[personalBestIndex + 1] ?? null;
+        return requiredBattleKeys[personalBestIndex + 1] ?? null;
     }
 
     static isFarther(a: BattlePosition, b: BattlePosition): boolean {

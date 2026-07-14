@@ -38,14 +38,11 @@
         }
 
         th {
-            @include mono-label;
+            @include uppercase-label;
 
             background: $background-light;
             border-bottom: 1px solid $border-subtle;
-            color: $text-mid;
             font-size: 0.7rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
 
             .method {
                 align-items: center;

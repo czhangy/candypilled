@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { StaticImageData } from 'next/image';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { Battle, Encounter, Game, Location, Run } from '@/lib/static/types';
+import BattleHelpers from '@/lib/utils/BattleHelpers';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
@@ -41,21 +42,20 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // -------------------------------------------------------------------------
 
     const defeatedBattles = run.defeatedBattles;
-    const nextPersonalBestBattleName =
-        BattleProgressHelpers.getNextRequiredBattleName(game, run.personalBest);
+    const nextPersonalBestBattleKey =
+        BattleProgressHelpers.getNextRequiredBattleKey(game, run.personalBest);
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
     const isBattleDefeated = (battle: Battle): boolean =>
-        defeatedBattles.includes(battle.name);
+        defeatedBattles.includes(BattleHelpers.getKey(battle));
 
     const isBattleNextPersonalBest = (battle: Battle): boolean =>
-        battle.name === nextPersonalBestBattleName;
+        BattleHelpers.getKey(battle) === nextPersonalBestBattleKey;
 
-    const getDefaultSelectedBattle = (): Battle | undefined => {
-        const battles = LocationHelpers.getBattles(location);
+    const getDefaultBattleFrom = (battles: Battle[]): Battle | undefined => {
         const requiredBattles = battles.filter((battle) => !battle.isOptional);
         const candidates =
             requiredBattles.length > 0 ? requiredBattles : battles;
@@ -65,6 +65,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             candidates[candidates.length - 1]
         );
     };
+
+    const getDefaultSelectedBattle = (): Battle | undefined =>
+        getDefaultBattleFrom(LocationHelpers.getBattles(location));
 
     const getDefaultSubareaIndex = (): number => {
         if (!location.subareas) return 0;
@@ -83,8 +86,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // STATE
     // -------------------------------------------------------------------------
 
-    // TODO: remove dev default-open once map/marker work is done
-    const [isOpen, setIsOpen] = useState(location.name === 'Route 203');
+    const [isOpen, setIsOpen] = useState(false);
     const [selectedBattle, setSelectedBattle] = useState<Battle | undefined>(
         getDefaultSelectedBattle
     );
@@ -101,7 +103,13 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     };
 
     const handleSubareaClick = (index: number): void => {
+        const subarea = location.subareas?.[index];
         setSelectedSubareaIndex(index);
+        setSelectedBattle(
+            getDefaultBattleFrom(
+                subarea?.hideBattles ? [] : (subarea?.battles ?? [])
+            )
+        );
     };
 
     const handleBattleClick = (battle: Battle): void => {
@@ -109,19 +117,20 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     };
 
     const handleBattleToggleDefeated = (battle: Battle): void => {
-        const wasDefeated = defeatedBattles.includes(battle.name);
+        const battleKey = BattleHelpers.getKey(battle);
+        const wasDefeated = defeatedBattles.includes(battleKey);
 
         const updatedRun: Run = {
             ...run,
             defeatedBattles: wasDefeated
-                ? defeatedBattles.filter((name) => name !== battle.name)
-                : [...defeatedBattles, battle.name],
+                ? defeatedBattles.filter((key) => key !== battleKey)
+                : [...defeatedBattles, battleKey],
         };
 
         if (!wasDefeated && !battle.isOptional) {
             const candidatePosition = BattleProgressHelpers.getPosition(
                 game,
-                battle.name
+                battleKey
             );
             const personalBestPosition = BattleProgressHelpers.getPosition(
                 game,
@@ -136,7 +145,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                         personalBestPosition
                     ))
             ) {
-                updatedRun.personalBest = battle.name;
+                updatedRun.personalBest = battleKey;
             }
         }
 
@@ -151,7 +160,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const section: Section = activeSubarea
         ? {
               map: activeSubarea.map,
-              battles: activeSubarea.battles ?? [],
+              battles: activeSubarea.hideBattles
+                  ? []
+                  : (activeSubarea.battles ?? []),
               encounters: activeSubarea.encountersKey
                   ? EncounterHelpers.get(game.name, activeSubarea.encountersKey)
                   : undefined,

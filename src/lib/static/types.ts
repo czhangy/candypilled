@@ -29,8 +29,12 @@ interface BattleItem {
 export interface Battle {
     fieldCondition?: FieldCondition;
     isBoss?: boolean;
+    isDouble?: boolean;
+    isDoubleHeightMarker?: boolean;
+    isDoubleWidthMarker?: boolean;
     isMiniboss?: boolean;
     isOptional?: boolean;
+    isTrueDouble?: boolean;
     items?: BattleItem;
     name: string;
     team?: BattlePokemon[];
@@ -45,7 +49,7 @@ export interface Encounter {
     method: string;
     minLevel: number;
     maxLevel: number;
-    chance: number;
+    chance: number | null;
     conditions?: string[];
 }
 
@@ -57,6 +61,7 @@ export interface LocationEncounters {
 export interface Subarea {
     name: string;
     encountersKey?: string;
+    hideBattles?: boolean;
     map?: StaticImageData;
     battles?: Battle[];
 }
@@ -86,6 +91,8 @@ export interface Game {
 export interface Run {
     attempt: number;
     deathCount: number;
+    // Battle keys (BattleHelpers.getKey), not names — trainerClass + name is
+    // the unique identifier since name alone can repeat within a game.
     defeatedBattles: string[];
     split: string;
     boxCount: number;

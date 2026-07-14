@@ -1,5 +1,6 @@
 import Image, { StaticImageData } from 'next/image';
 import { Battle } from '@/lib/static/types';
+import BattleHelpers from '@/lib/utils/BattleHelpers';
 import styles from './LocationMap.module.scss';
 import TrainerMarker from './TrainerMarker/TrainerMarker';
 
@@ -36,7 +37,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
                         isDefeated={isBattleDefeated(battle)}
                         isNextPersonalBest={isBattleNextPersonalBest(battle)}
                         isSelected={selectedBattle === battle}
-                        key={battle.name}
+                        key={BattleHelpers.getKey(battle)}
                         mapHeight={map.height}
                         mapWidth={map.width}
                         onClick={onBattleClick}

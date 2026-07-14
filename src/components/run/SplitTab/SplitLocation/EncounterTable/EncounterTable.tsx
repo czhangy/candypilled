@@ -104,10 +104,21 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
+    const getEncounterName = (encounter: Encounter): string =>
+        PokemonHelpers.get(encounter.species)?.name ?? encounter.species;
+
     const getEncountersForMethod = (method: string): Encounter[] =>
         visibleEncounters
             .filter((encounter) => encounter.method === method)
-            .sort((a, b) => b.chance - a.chance);
+            .sort((a, b) => {
+                const chanceDiff = (b.chance ?? 0) - (a.chance ?? 0);
+                if (chanceDiff !== 0) return chanceDiff;
+
+                const minLevelDiff = a.minLevel - b.minLevel;
+                if (minLevelDiff !== 0) return minLevelDiff;
+
+                return getEncounterName(a).localeCompare(getEncounterName(b));
+            });
 
     const getLevelLabel = (encounter: Encounter): string =>
         encounter.minLevel === encounter.maxLevel
@@ -208,7 +219,9 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                                         </td>
                                         <td>{getLevelLabel(encounter)}</td>
                                         <td className={styles.chance}>
-                                            {encounter.chance}%
+                                            {encounter.chance !== null
+                                                ? `${encounter.chance}%`
+                                                : '—'}
                                         </td>
                                     </tr>
                                 );

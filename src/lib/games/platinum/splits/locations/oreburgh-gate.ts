@@ -1,4 +1,7 @@
-import { oreburghGate } from '@/lib/games/platinum/splits/maps';
+import {
+    oreburghGate1f,
+    oreburghGateB1f,
+} from '@/lib/games/platinum/splits/maps';
 import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
@@ -7,9 +10,32 @@ const OREBURGH_GATE: Location = {
     subareas: [
         {
             name: '1F',
-            map: oreburghGate,
+            map: oreburghGate1f,
             encountersKey: 'oreburgh-gate-1f',
             battles: [
+                {
+                    isOptional: true,
+                    trainerClass: 'Camper',
+                    name: 'Curtis',
+                    team: [
+                        {
+                            name: 'Starly',
+                            level: 7,
+                            moves: ['Tackle', 'Growl', 'Quick Attack'],
+                            nature: Nature.Lax,
+                            ability: 'Keen Eye',
+                        },
+                        {
+                            name: 'Shinx',
+                            level: 7,
+                            moves: ['Tackle', 'Leer'],
+                            nature: Nature.Lax,
+                            ability: 'Rivalry',
+                        },
+                    ],
+                    x: 55,
+                    y: 91,
+                },
                 {
                     isOptional: true,
                     trainerClass: 'Picnicker',
@@ -23,13 +49,14 @@ const OREBURGH_GATE: Location = {
                             ability: 'Simple',
                         },
                     ],
-                    x: 82,
-                    y: 35,
+                    x: 80.3,
+                    y: 76.5,
                 },
             ],
         },
         {
             name: 'B1F',
+            map: oreburghGateB1f,
             encountersKey: 'oreburgh-gate-b1f',
         },
     ],

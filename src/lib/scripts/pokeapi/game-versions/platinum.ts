@@ -1,3 +1,9 @@
+interface MethodOverride {
+    location: string;
+    species: string;
+    method: string;
+}
+
 interface GameVersion {
     id: string;
     label: string;
@@ -7,6 +13,7 @@ interface GameVersion {
     excludedLocations?: string[];
     excludedSpecies?: string[];
     caveLocations?: string[];
+    methodOverrides?: MethodOverride[];
 }
 
 export const platinum: GameVersion = {
@@ -100,6 +107,11 @@ export const platinum: GameVersion = {
         'dialga',
         'palkia',
         'giratina',
+        'omanyte',
+        'kabuto',
+        'aerodactyl',
+        'lileep',
+        'anorith',
     ],
     caveLocations: [
         'iron-island',
@@ -111,5 +123,9 @@ export const platinum: GameVersion = {
         'sinnoh-victory-road',
         'solaceon-ruins',
         'wayward-cave',
+    ],
+    methodOverrides: [
+        { location: 'oreburgh-city', species: 'cranidos', method: 'fossil' },
+        { location: 'oreburgh-city', species: 'shieldon', method: 'fossil' },
     ],
 };

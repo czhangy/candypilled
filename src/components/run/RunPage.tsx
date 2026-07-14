@@ -4,6 +4,7 @@ import { useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { GAMES } from '@/lib/static/constants';
+import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './RunPage.module.scss';
@@ -52,6 +53,22 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         (gameRun) => StringHelpers.toSlug(gameRun.game.name) === slug
     )?.run;
 
+    const personalBestBattle =
+        game && run?.personalBest
+            ? BattleProgressHelpers.getBattle(game, run.personalBest)
+            : null;
+    const personalBestSplitName =
+        game && run?.personalBest
+            ? BattleProgressHelpers.getSplitName(game, run.personalBest)
+            : null;
+    const personalBestLabel = personalBestSplitName
+        ? `${personalBestSplitName} Split${
+              personalBestBattle
+                  ? ` — ${personalBestBattle.trainerClass} ${personalBestBattle.name}`
+                  : ''
+          }`
+        : 'N/A';
+
     // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
@@ -64,12 +81,8 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     // MARKUP
     // -------------------------------------------------------------------------
 
-    if (!game) {
+    if (!game || !run) {
         notFound();
-    }
-
-    if (!run) {
-        return null;
     }
 
     return (
@@ -85,6 +98,9 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
             <h1 className={styles.title}>
                 Pokémon {game.name} — Attempt #{run.attempt}
             </h1>
+            <p className={styles.subtitle}>
+                Personal Best: {personalBestLabel}
+            </p>
             <Tabs
                 activeTab={activeTab}
                 align="left"

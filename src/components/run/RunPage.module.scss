@@ -33,7 +33,15 @@
         @include mono-label;
 
         font-size: 1.75rem;
-        margin: 0 0 1rem;
+        margin: 0;
+    }
+
+    .subtitle {
+        @include mono-label;
+
+        color: $text-mid;
+        font-size: 0.95rem;
+        margin: 0.25rem 0 1rem;
     }
 
     @media (width <= 768px) {

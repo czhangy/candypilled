@@ -357,32 +357,21 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "wurmple",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a"]
+                    "chance": null
                 },
                 {
                     "species": "shinx",
@@ -396,32 +385,14 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "pachirisu",
@@ -442,16 +413,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "shellos",
@@ -487,8 +449,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c"]
+                    "chance": null
                 },
                 {
                     "species": "finneon",
@@ -539,72 +500,14 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "wurmple",
@@ -627,24 +530,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "silcoon",
@@ -811,144 +697,21 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "cherubi",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "buneary",
@@ -979,24 +742,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-morning"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-day"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-night"]
+                    "chance": null
                 }
             ]
         },
@@ -1152,192 +898,35 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "wurmple",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "burmy",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "floatzel",
@@ -1368,48 +957,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "shellos",
@@ -1488,24 +1036,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-morning"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-day"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "finneon",
@@ -13890,32 +13421,21 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "wurmple",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a"]
+                    "chance": null
                 },
                 {
                     "species": "bidoof",
@@ -13929,32 +13449,14 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "pachirisu",
@@ -13975,16 +13477,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "shellos",
@@ -14012,8 +13505,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c"]
+                    "chance": null
                 },
                 {
                     "species": "finneon",
@@ -14136,72 +13628,14 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "wurmple",
@@ -14224,24 +13658,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "silcoon",
@@ -14432,168 +13849,28 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "cherubi",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "munchlax",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-morning"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-day"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-night"]
+                    "chance": null
                 }
             ]
         },
@@ -14685,48 +13962,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "gligar",
@@ -14757,48 +13993,14 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "wurmple",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "kricketune",
@@ -14821,168 +14023,28 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "cherubi",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "munchlax",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-morning"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-day"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-night"]
+                    "chance": null
                 }
             ]
         },
@@ -15074,96 +14136,21 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "wurmple",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "kricketot",
@@ -15186,168 +14173,28 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "cherubi",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "munchlax",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-morning"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-day"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-night"]
+                    "chance": null
                 }
             ]
         },
@@ -15487,96 +14334,21 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "wurmple",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "ralts",
@@ -15703,168 +14475,28 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "cherubi",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "munchlax",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-morning"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-day"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-night"]
+                    "chance": null
                 }
             ]
         },
@@ -16028,96 +14660,21 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "wurmple",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "ralts",
@@ -16228,144 +14785,21 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "cherubi",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "spiritomb",
@@ -16408,24 +14842,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-morning"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-day"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-night"]
+                    "chance": null
                 }
             ]
         },
@@ -16926,96 +15343,21 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "wurmple",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "roselia",
@@ -17070,168 +15412,28 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "cherubi",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "munchlax",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-morning"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-day"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-night"]
+                    "chance": null
                 }
             ]
         },
@@ -17427,96 +15629,21 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "wurmple",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "meditite",
@@ -17643,168 +15770,28 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "cherubi",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "munchlax",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-morning"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-day"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-night"]
+                    "chance": null
                 }
             ]
         },
@@ -18021,96 +16008,21 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "wurmple",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "meditite",
@@ -18141,144 +16053,21 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "cherubi",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "chingling",
@@ -18333,24 +16122,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-morning"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-day"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-night"]
+                    "chance": null
                 }
             ]
         },
@@ -18506,96 +16278,21 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "wurmple",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "ralts",
@@ -18682,168 +16379,28 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "cherubi",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "munchlax",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-morning"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-day"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-night"]
+                    "chance": null
                 }
             ]
         },
@@ -18883,16 +16440,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "quagsire",
@@ -18906,8 +16454,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "remoraid",
@@ -18921,40 +16468,21 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a"]
+                    "chance": null
                 },
                 {
                     "species": "burmy",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "buizel",
@@ -18968,16 +16496,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "shellos",
@@ -19005,8 +16524,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c"]
+                    "chance": null
                 },
                 {
                     "species": "croagunk",
@@ -19121,72 +16639,14 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "remoraid",
@@ -19217,24 +16677,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "wingull",
@@ -19289,96 +16732,14 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "buizel",
@@ -19409,48 +16770,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "shellos",
@@ -19545,24 +16865,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-morning"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-day"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-night"]
+                    "chance": null
                 }
             ]
         },
@@ -19774,72 +17077,14 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "houndour",
@@ -19870,192 +17115,35 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "burmy",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "cherubi",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "munchlax",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-morning"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-day"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-night"]
+                    "chance": null
                 }
             ]
         },
@@ -20187,96 +17275,21 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "wurmple",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "staravia",
@@ -20307,168 +17320,28 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "cherubi",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "munchlax",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-morning"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-day"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-night"]
+                    "chance": null
                 }
             ]
         },
@@ -20802,192 +17675,35 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "wurmple",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "burmy",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "floatzel",
@@ -21018,48 +17734,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "shellos",
@@ -21154,24 +17829,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-morning"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-day"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "finneon",
@@ -21388,48 +18046,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "girafarig",
@@ -21460,48 +18077,14 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "wurmple",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "wingull",
@@ -21580,96 +18163,14 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "floatzel",
@@ -21700,72 +18201,14 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "munchlax",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-morning"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-day"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "finneon",
@@ -21993,72 +18436,14 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "heracross",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "remoraid",
@@ -22089,24 +18474,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "wurmple",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "wingull",
@@ -22233,96 +18601,14 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "floatzel",
@@ -22353,48 +18639,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a", "time-night"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-morning"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-day"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b", "time-night"]
+                    "chance": null
                 },
                 {
                     "species": "chatot",
@@ -22417,24 +18662,7 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-morning"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-day"]
-                },
-                {
-                    "species": "munchlax",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c", "time-night"]
+                    "chance": null
                 }
             ]
         },
@@ -22637,48 +18865,8 @@
             "name": "Oreburgh City",
             "encounters": [
                 {
-                    "species": "omanyte",
-                    "method": "gift",
-                    "minLevel": 20,
-                    "maxLevel": 20,
-                    "chance": 100,
-                    "conditions": ["item-helix-fossil"]
-                },
-                {
-                    "species": "kabuto",
-                    "method": "gift",
-                    "minLevel": 20,
-                    "maxLevel": 20,
-                    "chance": 100,
-                    "conditions": ["item-dome-fossil"]
-                },
-                {
-                    "species": "aerodactyl",
-                    "method": "gift",
-                    "minLevel": 20,
-                    "maxLevel": 20,
-                    "chance": 100,
-                    "conditions": ["item-old-amber"]
-                },
-                {
-                    "species": "lileep",
-                    "method": "gift",
-                    "minLevel": 20,
-                    "maxLevel": 20,
-                    "chance": 100,
-                    "conditions": ["item-root-fossil"]
-                },
-                {
-                    "species": "anorith",
-                    "method": "gift",
-                    "minLevel": 20,
-                    "maxLevel": 20,
-                    "chance": 100,
-                    "conditions": ["item-claw-fossil"]
-                },
-                {
                     "species": "cranidos",
-                    "method": "gift",
+                    "method": "fossil",
                     "minLevel": 20,
                     "maxLevel": 20,
                     "chance": 100,
@@ -22686,7 +18874,7 @@
                 },
                 {
                     "species": "shieldon",
-                    "method": "gift",
+                    "method": "fossil",
                     "minLevel": 20,
                     "maxLevel": 20,
                     "chance": 100,
@@ -22726,88 +18914,49 @@
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a"]
-                },
-                {
-                    "species": "aipom",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 15,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "heracross",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 5,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "wurmple",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a"]
+                    "chance": null
                 },
                 {
                     "species": "burmy",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-a"]
-                },
-                {
-                    "species": "burmy",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "combee",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 40,
-                    "conditions": ["honey-tree-group-a"]
-                },
-                {
-                    "species": "combee",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "cherubi",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 10,
-                    "conditions": ["honey-tree-group-a"]
-                },
-                {
-                    "species": "cherubi",
-                    "method": "honey-tree",
-                    "minLevel": 5,
-                    "maxLevel": 15,
-                    "chance": 20,
-                    "conditions": ["honey-tree-group-b"]
+                    "chance": null
                 },
                 {
                     "species": "munchlax",
                     "method": "honey-tree",
                     "minLevel": 5,
                     "maxLevel": 15,
-                    "chance": 100,
-                    "conditions": ["honey-tree-group-c"]
+                    "chance": null
                 }
             ]
         }

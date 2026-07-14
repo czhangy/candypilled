@@ -26,7 +26,10 @@ mark for a boss, or a single exclamation mark for a miniboss.
 
 - `width`, `height` — the marker's size as a percentage of the map,
   derived from a fixed trainer sprite size in pixels so the rectangle
-  matches the trainer's on-screen footprint regardless of image resolution
+  matches the trainer's on-screen footprint regardless of image resolution.
+  Doubled individually when `trainer.isDoubleWidthMarker` or
+  `trainer.isDoubleHeightMarker` is set, for trainers that occupy a larger
+  footprint on the map
 
 ## SCSS Variable Dependencies
 
