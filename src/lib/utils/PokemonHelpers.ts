@@ -42,4 +42,8 @@ export default class PokemonHelpers {
             .reverse()
             .find((entry) => entry.fromGeneration <= generation)?.abilities;
     }
+
+    static getCatchRate(name: string): number | undefined {
+        return PokemonHelpers.get(name)?.catchRate;
+    }
 }

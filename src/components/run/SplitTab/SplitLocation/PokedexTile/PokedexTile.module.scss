@@ -1,6 +1,8 @@
 @use '@/styles/constants' as *;
 @use '@/styles/mixins' as *;
 
+$label-width: 5.5rem;
+
 .pokedex-tile {
     border: 1px solid $border-subtle;
     border-radius: 0.5rem;
@@ -28,9 +30,10 @@
         .left {
             align-items: center;
             display: flex;
-            flex: 1;
+            flex: 0 0 50%;
             gap: 0.75rem;
             justify-content: center;
+            min-width: 0;
             padding: 1.5rem;
         }
 
@@ -70,8 +73,9 @@
         .right {
             border-left: 1px solid $border-subtle;
             display: flex;
-            flex: 1;
+            flex: 0 0 50%;
             flex-direction: column;
+            min-width: 0;
 
             .right-top {
                 align-items: center;
@@ -81,7 +85,9 @@
             }
 
             .right-bottom {
+                align-items: center;
                 border-top: 1px solid $border-subtle;
+                display: flex;
                 flex: 1;
                 padding: 1.5rem;
             }
@@ -97,6 +103,7 @@
 
                 flex-shrink: 0;
                 font-size: 0.7rem;
+                width: $label-width;
             }
 
             .abilities-list {
@@ -112,6 +119,25 @@
                 &--hidden {
                     color: $text-dim;
                 }
+            }
+        }
+
+        .catch-rate {
+            align-items: center;
+            display: flex;
+            gap: 0.5rem;
+
+            .catch-rate-label {
+                @include uppercase-label;
+
+                flex-shrink: 0;
+                font-size: 0.7rem;
+                width: $label-width;
+            }
+
+            .rate {
+                color: $text-mid;
+                font-size: 0.7rem;
             }
         }
 

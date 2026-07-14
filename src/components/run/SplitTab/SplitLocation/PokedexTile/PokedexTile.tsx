@@ -50,6 +50,9 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                   : []),
           ]
         : [];
+    const catchRate = species
+        ? PokemonHelpers.getCatchRate(species)
+        : undefined;
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -136,7 +139,22 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                                     </div>
                                 )}
                             </div>
-                            <div className={styles['right-bottom']} />
+                            <div className={styles['right-bottom']}>
+                                {catchRate !== undefined && (
+                                    <div className={styles['catch-rate']}>
+                                        <span
+                                            className={
+                                                styles['catch-rate-label']
+                                            }
+                                        >
+                                            Catch Rate:
+                                        </span>
+                                        <span className={styles.rate}>
+                                            {catchRate}
+                                        </span>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </>
                 ) : (
