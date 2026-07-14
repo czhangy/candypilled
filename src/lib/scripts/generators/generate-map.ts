@@ -39,11 +39,11 @@ const parseArgs = (): MapArgs => {
     return { game, location };
 };
 
-const getLocationsDir = (gameSlug: string): string =>
-    path.join('src', 'lib', 'assets', gameSlug, 'locations');
+const getMapsDir = (gameSlug: string): string =>
+    path.join('src', 'lib', 'games', gameSlug, 'splits', 'maps');
 
 const getBarrelPath = (gameSlug: string): string =>
-    path.join(getLocationsDir(gameSlug), 'index.ts');
+    path.join(getMapsDir(gameSlug), 'index.ts');
 
 const getLocationFilePath = (gameSlug: string, slug: string): string =>
     path.join(
@@ -249,9 +249,9 @@ const main = async (): Promise<void> => {
         const gameSlug = StringHelpers.toSlug(args.game);
         const slug = StringHelpers.toSlug(args.location);
         const exportName = StringHelpers.toCamelCase(args.location);
-        const modulePath = `@/lib/assets/${gameSlug}/locations`;
+        const modulePath = `@/lib/games/${gameSlug}/splits/maps`;
 
-        const imagePath = path.join(getLocationsDir(gameSlug), `${slug}.png`);
+        const imagePath = path.join(getMapsDir(gameSlug), `${slug}.png`);
         if (!fs.existsSync(imagePath)) {
             throw new Error(`${IMAGE_NOT_FOUND} ("${imagePath}").`);
         }

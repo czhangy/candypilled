@@ -1,4 +1,4 @@
-import { route203 } from '@/lib/assets/platinum/locations';
+import { route203 } from '@/lib/games/platinum/splits/maps';
 import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
