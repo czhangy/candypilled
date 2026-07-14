@@ -20,7 +20,8 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const SPRITE_SIZE = 60;
+    const SPRITE_SIZE = 72;
+    const METHOD_ICON_SIZE = 32;
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -64,13 +65,30 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                 <div className={styles.arrow}>
                                     {methodLabel && (
                                         <span className={styles.method}>
-                                            <span
-                                                className={
-                                                    styles['method-label']
-                                                }
-                                            >
-                                                {methodLabel.label}
-                                            </span>
+                                            {methodLabel.icon ? (
+                                                <Image
+                                                    alt={methodLabel.label}
+                                                    className={
+                                                        styles['method-icon']
+                                                    }
+                                                    height={METHOD_ICON_SIZE}
+                                                    src={`/evolution_methods/${methodLabel.icon}.png`}
+                                                    title={
+                                                        methodLabel.condition
+                                                            ? `${methodLabel.label} (${methodLabel.condition})`
+                                                            : methodLabel.label
+                                                    }
+                                                    width={METHOD_ICON_SIZE}
+                                                />
+                                            ) : (
+                                                <span
+                                                    className={
+                                                        styles['method-label']
+                                                    }
+                                                >
+                                                    {methodLabel.label}
+                                                </span>
+                                            )}
                                             {methodLabel.condition && (
                                                 <span
                                                     className={

@@ -61,6 +61,11 @@
                     white-space: nowrap;
                 }
 
+                .method-icon {
+                    cursor: help;
+                    image-rendering: pixelated;
+                }
+
                 .method-condition {
                     color: $text-dim;
                     font-size: 0.68rem;

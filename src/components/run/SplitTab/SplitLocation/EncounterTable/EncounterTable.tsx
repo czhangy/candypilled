@@ -142,7 +142,8 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
             .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
             .join(' ');
 
-    const getMethodIcon = (method: string): string => `/methods/${method}.png`;
+    const getMethodIcon = (method: string): string =>
+        `/encounter_methods/${method}.png`;
 
     const getTypes = (species: string): string[] =>
         PokemonHelpers.getTypes(species, generation) ?? [];

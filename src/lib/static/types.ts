@@ -162,6 +162,7 @@ export interface EvolutionLineByGeneration {
 export interface EvolutionMethodLabel {
     label: string;
     condition?: string;
+    icon?: string;
 }
 
 export interface PokemonData {

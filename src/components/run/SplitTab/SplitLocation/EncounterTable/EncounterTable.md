@@ -43,6 +43,6 @@ selects that encounter, highlighting it and notifying the parent via
 - `getEncountersForMethod` — the `visibleEncounters` for a given method,
   sorted by `chance` descending
 - `getMethodIcon` — the icon image path for a given encounter method,
-  shared across all game variants (e.g. `/methods/grass.png`)
+  shared across all game variants (e.g. `/encounter_methods/grass.png`)
 - `getTypes` — a Pokemon's types at `generation`, rendered as badges
   (`/types/{type}.png`) beneath its name
