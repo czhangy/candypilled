@@ -28,6 +28,7 @@ interface GameVersion {
     generation: number;
     excludedLocations?: string[];
     excludedSpecies?: string[];
+    caveLocations?: string[];
 }
 
 interface NamedApiResource {
@@ -196,6 +197,22 @@ const mergeEncounters = (encounters: Encounter[]): Encounter[] => {
     return [...merged.values()];
 };
 
+const resolveWalkMethod = (
+    encounters: Encounter[],
+    locationName: string,
+    caveLocations: string[]
+): Encounter[] =>
+    encounters.map((encounter) =>
+        encounter.method === 'walk'
+            ? {
+                  ...encounter,
+                  method: caveLocations.includes(locationName)
+                      ? 'cave'
+                      : 'grass',
+              }
+            : encounter
+    );
+
 const expandTimeOfDayEncounters = (encounters: Encounter[]): Encounter[] => {
     const hasTimeOfDay = encounters.some((encounter) =>
         encounter.conditions?.some((condition) =>
@@ -240,7 +257,15 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
         }
 
         const encounters = mergeEncounters(
-            expandTimeOfDayEncounters(mergeEncounters(rawEncounters))
+            expandTimeOfDayEncounters(
+                mergeEncounters(
+                    resolveWalkMethod(
+                        rawEncounters,
+                        location.name,
+                        version.caveLocations ?? []
+                    )
+                )
+            )
         );
 
         if (encounters.length > 0) {

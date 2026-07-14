@@ -6,6 +6,7 @@ interface GameVersion {
     generation: number;
     excludedLocations?: string[];
     excludedSpecies?: string[];
+    caveLocations?: string[];
 }
 
 export const platinum: GameVersion = {
@@ -99,5 +100,16 @@ export const platinum: GameVersion = {
         'dialga',
         'palkia',
         'giratina',
+    ],
+    caveLocations: [
+        'iron-island',
+        'mt-coronet',
+        'oreburgh-gate',
+        'oreburgh-mine',
+        'ravaged-path',
+        'ruin-maniac-cave',
+        'sinnoh-victory-road',
+        'solaceon-ruins',
+        'wayward-cave',
     ],
 };

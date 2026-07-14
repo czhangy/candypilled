@@ -22,12 +22,14 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     // -------------------------------------------------------------------------
 
     const SPRITE_SIZE = 60;
+    const METHOD_ICON_SIZE = 16;
 
     const METHOD_ORDER = [
         'only-one',
         'gift',
         'gift-egg',
-        'walk',
+        'grass',
+        'cave',
         'old-rod',
         'good-rod',
         'feebas-tile-fishing',
@@ -118,6 +120,8 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
             .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
             .join(' ');
 
+    const getMethodIcon = (method: string): string => `/methods/${method}.png`;
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -152,7 +156,17 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                     {methods.map((method) => (
                         <Fragment key={method}>
                             <tr>
-                                <th colSpan={3}>{getMethodLabel(method)}</th>
+                                <th colSpan={3}>
+                                    <div className={styles.method}>
+                                        <Image
+                                            alt=""
+                                            height={METHOD_ICON_SIZE}
+                                            src={getMethodIcon(method)}
+                                            width={METHOD_ICON_SIZE}
+                                        />
+                                        {getMethodLabel(method)}
+                                    </div>
+                                </th>
                             </tr>
                             {getEncountersForMethod(method).map((encounter) => {
                                 const pokemon = PokemonHelpers.get(

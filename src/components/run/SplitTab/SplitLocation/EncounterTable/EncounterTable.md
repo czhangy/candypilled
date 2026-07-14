@@ -6,11 +6,12 @@ night), a tab toggle with an icon for each time of day is shown above
 the table to switch between them; encounters that aren't tied to a time
 of day are always shown regardless of the selected tab. Rows are
 grouped under a sub-header for each
-encounter method (e.g. "Old Rod", "Rock Smash"), in a fixed method
-order; within a group, rows are sorted by encounter chance, highest
-first. Each row shows the Pokemon's sprite (matching the game's sprite
-variant) and name, its level range prefixed with "Lv." (e.g.
-"Lv. 20-30"), and its encounter chance as a percentage.
+encounter method (e.g. "Old Rod", "Rock Smash"), shown alongside an
+icon representing the method, in a fixed method order; within a group,
+rows are sorted by encounter chance, highest first. Each row shows the
+Pokemon's sprite (matching the game's sprite variant) and name, its
+level range prefixed with "Lv." (e.g. "Lv. 20-30"), and its encounter
+chance as a percentage.
 
 ## Props
 
@@ -36,3 +37,5 @@ variant) and name, its level range prefixed with "Lv." (e.g.
   not in that list are sorted last)
 - `getEncountersForMethod` — the `visibleEncounters` for a given method,
   sorted by `chance` descending
+- `getMethodIcon` — the icon image path for a given encounter method,
+  shared across all game variants (e.g. `/methods/grass.png`)

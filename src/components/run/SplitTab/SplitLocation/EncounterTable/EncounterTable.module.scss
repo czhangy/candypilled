@@ -46,6 +46,16 @@
             font-size: 0.7rem;
             letter-spacing: 0.05em;
             text-transform: uppercase;
+
+            .method {
+                align-items: center;
+                display: flex;
+                gap: 0.4rem;
+
+                img {
+                    image-rendering: pixelated;
+                }
+            }
         }
 
         td {

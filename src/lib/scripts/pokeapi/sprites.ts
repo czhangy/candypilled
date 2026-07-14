@@ -155,11 +155,11 @@ const downloadSprite = async (
     const spriteResponse = await fetch(spriteUrl);
     const spriteBuffer = Buffer.from(await spriteResponse.arrayBuffer());
 
-    const variantDir = path.join('public', variant.id, 'sprites', 'pokemon');
+    const variantDir = path.join('public', variant.id, 'pokemon');
     fs.mkdirSync(variantDir, { recursive: true });
     fs.writeFileSync(path.join(variantDir, `${slug}.png`), spriteBuffer);
 
-    return `/${variant.id}/sprites/pokemon/${slug}.png`;
+    return `/${variant.id}/pokemon/${slug}.png`;
 };
 
 export const getSpriteVariants = (minGeneration: number): SpriteVariant[] =>

@@ -26,6 +26,6 @@ export default class TrainerHelpers {
             : trainerClass;
         const trimmedSlugSource = slugSource.replace(/ \d+$/, '');
 
-        return `/${variant}/sprites/trainers/${StringHelpers.toSlug(trimmedSlugSource)}.png`;
+        return `/${variant}/trainers/${StringHelpers.toSlug(trimmedSlugSource)}.png`;
     }
 }
