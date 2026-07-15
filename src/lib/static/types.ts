@@ -166,6 +166,27 @@ export interface EvolutionMethodLabel {
     gender?: 'male' | 'female';
 }
 
+export interface MoveValuesByGeneration {
+    fromGeneration: number;
+    type: string;
+    power: number | null;
+    accuracy: number | null;
+    pp: number;
+    effect: string;
+    effectChance: number | null;
+    description: string;
+}
+
+export interface MoveData {
+    name: string;
+    // PokeAPI doesn't track historical changes for these two fields, so
+    // unlike the rest of a move's values they aren't split by generation.
+    category: string;
+    priority: number;
+    introducedInGeneration: number;
+    valuesByGeneration: MoveValuesByGeneration[];
+}
+
 export interface PokemonData {
     name: string;
     sprites: Record<string, string>;

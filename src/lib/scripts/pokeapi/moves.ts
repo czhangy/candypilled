@@ -1,0 +1,364 @@
+import fs from 'fs';
+import path from 'path';
+import {
+    handleException,
+    logSuccess,
+    logWarning,
+    validateRootDirectory,
+} from '@/lib/scripts/utils/helpers';
+import { MoveData, MoveValuesByGeneration } from '@/lib/static/types';
+import StringHelpers from '@/lib/utils/StringHelpers';
+
+const POKEAPI_MOVE_URL = 'https://pokeapi.co/api/v2/move';
+const POKEAPI_GENERATION_URL = 'https://pokeapi.co/api/v2/generation';
+// Unlike pokemon.json, this dataset isn't scoped to the current game: moves
+// are shared across every game the site will ever support, so every move is
+// fetched regardless of which generation introduced it.
+const DATA_PATH = path.join('src', 'lib', 'data', 'moves.json');
+const FETCH_DELAY_MS = 75;
+const MOVE_LIST_LIMIT = 2000;
+
+// Shadow moves only exist in the GameCube spin-offs (Colosseum, XD), none of
+// which this site supports. They're also the only moves with no PP, so
+// excluding them lets `pp` stay a plain `number` everywhere else.
+const SHADOW_MOVE_TYPE = 'shadow';
+
+// 1 PP moves (e.g. Sketch) are single-use novelties that clutter the move
+// list without being useful to look up.
+const MIN_PP = 2;
+
+const sleep = (ms: number): Promise<void> =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+
+const writeData = (data: Record<string, MoveData>): void => {
+    fs.writeFileSync(DATA_PATH, `${JSON.stringify(data, null, 4)}\n`);
+};
+
+interface RawGeneration {
+    version_groups: { name: string }[];
+}
+
+const fetchGenerationCount = async (): Promise<number> => {
+    const response = await fetch(`${POKEAPI_GENERATION_URL}?limit=1`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch generation count from PokeAPI.');
+    }
+
+    const body = await response.json();
+    return body.count as number;
+};
+
+const fetchGeneration = async (
+    generationNumber: number
+): Promise<RawGeneration> => {
+    const response = await fetch(
+        `${POKEAPI_GENERATION_URL}/${generationNumber}`
+    );
+    if (!response.ok) {
+        throw new Error(
+            `Failed to fetch generation #${generationNumber} from PokeAPI.`
+        );
+    }
+
+    return (await response.json()) as RawGeneration;
+};
+
+// Move history references a version group (e.g. "diamond-pearl") rather than
+// a generation number directly, so this builds the lookup once up front
+// instead of resolving it per move.
+const buildVersionGroupGenerations = async (): Promise<Map<string, number>> => {
+    const generationCount = await fetchGenerationCount();
+    const versionGroupGenerations = new Map<string, number>();
+
+    for (
+        let generationNumber = 1;
+        generationNumber <= generationCount;
+        generationNumber += 1
+    ) {
+        const generation = await fetchGeneration(generationNumber);
+        await sleep(FETCH_DELAY_MS);
+
+        for (const versionGroup of generation.version_groups) {
+            versionGroupGenerations.set(versionGroup.name, generationNumber);
+        }
+    }
+
+    return versionGroupGenerations;
+};
+
+interface NamedApiResource {
+    name: string;
+    url: string;
+}
+
+const fetchMoveList = async (): Promise<NamedApiResource[]> => {
+    const response = await fetch(
+        `${POKEAPI_MOVE_URL}?limit=${MOVE_LIST_LIMIT}`
+    );
+    if (!response.ok) {
+        throw new Error('Failed to fetch move list from PokeAPI.');
+    }
+
+    const body = await response.json();
+    return body.results as NamedApiResource[];
+};
+
+interface RawEffectEntry {
+    short_effect: string;
+    language: { name: string };
+}
+
+interface RawFlavorTextEntry {
+    flavor_text: string;
+    language: { name: string };
+    version_group: { name: string };
+}
+
+interface RawPastValue {
+    accuracy: number | null;
+    effect_chance: number | null;
+    effect_entries: RawEffectEntry[];
+    power: number | null;
+    pp: number | null;
+    type: { name: string } | null;
+    version_group: { name: string };
+}
+
+interface RawMove {
+    name: string;
+    accuracy: number | null;
+    power: number | null;
+    pp: number;
+    priority: number;
+    damage_class: { name: string };
+    type: { name: string };
+    generation: { name: string };
+    effect_chance: number | null;
+    effect_entries: RawEffectEntry[];
+    flavor_text_entries: RawFlavorTextEntry[];
+    past_values: RawPastValue[];
+}
+
+const fetchMove = async (resource: NamedApiResource): Promise<RawMove> => {
+    const response = await fetch(resource.url);
+    if (!response.ok) {
+        throw new Error(
+            `Failed to fetch move "${resource.name}" from PokeAPI.`
+        );
+    }
+
+    return (await response.json()) as RawMove;
+};
+
+const toEnglishEffect = (entries: RawEffectEntry[]): string | undefined =>
+    entries.find((entry) => entry.language.name === 'en')?.short_effect;
+
+const toGenerationNumber = (generationName: string): number =>
+    StringHelpers.fromRoman(generationName.replace('generation-', ''));
+
+interface MoveValues {
+    type: string;
+    power: number | null;
+    accuracy: number | null;
+    pp: number;
+    effect: string;
+    effectChance: number | null;
+}
+
+// PokeAPI's `past_values` entries are diffs against the move's CURRENT
+// (top-level) values rather than against the previous historical entry: a
+// null field means that field already matched its current value as of that
+// entry's version group, not that it carried over from an earlier change.
+const buildValuesTimeline = (
+    move: RawMove,
+    current: MoveValues,
+    versionGroupGenerations: Map<string, number>
+): { fromGeneration: number; values: MoveValues }[] => {
+    const pastEntries = move.past_values
+        .map((entry) => ({
+            generation:
+                versionGroupGenerations.get(entry.version_group.name) ?? 1,
+            values: {
+                type: entry.type?.name ?? current.type,
+                power: entry.power ?? current.power,
+                accuracy: entry.accuracy ?? current.accuracy,
+                pp: entry.pp ?? current.pp,
+                effect: toEnglishEffect(entry.effect_entries) ?? current.effect,
+                effectChance: entry.effect_chance ?? current.effectChance,
+            },
+        }))
+        .sort((a, b) => a.generation - b.generation);
+
+    const segments = pastEntries.map((entry, index) => ({
+        fromGeneration: index === 0 ? 1 : pastEntries[index - 1].generation + 1,
+        values: entry.values,
+    }));
+
+    const lastEntry = pastEntries[pastEntries.length - 1];
+    segments.push({
+        fromGeneration: lastEntry ? lastEntry.generation + 1 : 1,
+        values: current,
+    });
+
+    return segments;
+};
+
+interface DescriptionSegment {
+    fromGeneration: number;
+    description: string;
+}
+
+// Flavor text entries are per version-group (not diffs like past_values), so
+// this keeps the first English entry seen for each generation and lets it
+// apply forward until the next generation with different text.
+const buildDescriptionTimeline = (
+    move: RawMove,
+    versionGroupGenerations: Map<string, number>
+): DescriptionSegment[] => {
+    const englishEntries = move.flavor_text_entries
+        .filter((entry) => entry.language.name === 'en')
+        .map((entry) => ({
+            generation:
+                versionGroupGenerations.get(entry.version_group.name) ?? 1,
+            description: entry.flavor_text.replace(/[\n\f]+/g, ' '),
+        }))
+        .sort((a, b) => a.generation - b.generation);
+
+    const segments: DescriptionSegment[] = [];
+    for (const entry of englishEntries) {
+        const previous = segments[segments.length - 1];
+        if (previous && previous.fromGeneration === entry.generation) continue;
+
+        segments.push({
+            fromGeneration: entry.generation,
+            description: entry.description,
+        });
+    }
+
+    return segments;
+};
+
+const isSameSegment = (
+    a: MoveValuesByGeneration,
+    b: MoveValuesByGeneration
+): boolean =>
+    a.type === b.type &&
+    a.power === b.power &&
+    a.accuracy === b.accuracy &&
+    a.pp === b.pp &&
+    a.effect === b.effect &&
+    a.effectChance === b.effectChance &&
+    a.description === b.description;
+
+const buildValuesByGeneration = (
+    move: RawMove,
+    versionGroupGenerations: Map<string, number>
+): MoveValuesByGeneration[] => {
+    const current: MoveValues = {
+        type: move.type.name,
+        power: move.power,
+        accuracy: move.accuracy,
+        pp: move.pp,
+        effect: toEnglishEffect(move.effect_entries) ?? '',
+        effectChance: move.effect_chance,
+    };
+
+    const valuesTimeline = buildValuesTimeline(
+        move,
+        current,
+        versionGroupGenerations
+    );
+    const descriptionTimeline = buildDescriptionTimeline(
+        move,
+        versionGroupGenerations
+    );
+
+    const valuesAt = (generation: number): MoveValues => {
+        let values = current;
+        for (const segment of valuesTimeline) {
+            if (segment.fromGeneration > generation) break;
+            values = segment.values;
+        }
+        return values;
+    };
+
+    const descriptionAt = (generation: number): string => {
+        let description = '';
+        for (const segment of descriptionTimeline) {
+            if (segment.fromGeneration > generation) break;
+            description = segment.description;
+        }
+        return description;
+    };
+
+    const boundaries = [
+        ...new Set([
+            ...valuesTimeline.map((segment) => segment.fromGeneration),
+            ...descriptionTimeline.map((segment) => segment.fromGeneration),
+        ]),
+    ].sort((a, b) => a - b);
+
+    const result: MoveValuesByGeneration[] = [];
+    for (const fromGeneration of boundaries) {
+        const entry: MoveValuesByGeneration = {
+            fromGeneration,
+            ...valuesAt(fromGeneration),
+            description: descriptionAt(fromGeneration),
+        };
+
+        const previous = result[result.length - 1];
+        if (previous && isSameSegment(previous, entry)) continue;
+
+        result.push(entry);
+    }
+
+    return result;
+};
+
+export const fetchMoves = async (): Promise<void> => {
+    const versionGroupGenerations = await buildVersionGroupGenerations();
+    const moveList = await fetchMoveList();
+    const data: Record<string, MoveData> = {};
+
+    for (const resource of moveList) {
+        const move = await fetchMove(resource);
+        await sleep(FETCH_DELAY_MS);
+
+        if (move.type.name === SHADOW_MOVE_TYPE) {
+            logWarning(`Skipping shadow move "${move.name}".`);
+            continue;
+        }
+
+        if (move.pp < MIN_PP) {
+            logWarning(`Skipping 1 PP move "${move.name}".`);
+            continue;
+        }
+
+        const name = StringHelpers.toTitleCase(move.name);
+        data[move.name] = {
+            name,
+            category: move.damage_class.name,
+            priority: move.priority,
+            introducedInGeneration: toGenerationNumber(move.generation.name),
+            valuesByGeneration: buildValuesByGeneration(
+                move,
+                versionGroupGenerations
+            ),
+        };
+
+        logSuccess(`Fetched "${name}".`);
+    }
+
+    writeData(data);
+};
+
+const main = async (): Promise<void> => {
+    try {
+        validateRootDirectory();
+        await fetchMoves();
+    } catch (error) {
+        handleException(error);
+    }
+};
+
+main();

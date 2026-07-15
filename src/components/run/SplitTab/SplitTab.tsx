@@ -11,10 +11,11 @@ import StarterSelect from './StarterSelect/StarterSelect';
 
 interface SplitTabProps {
     game: Game;
+    onSelectMove: (name: string) => void;
     run: Run;
 }
 
-const SplitTab: React.FC<SplitTabProps> = ({ game, run }) => {
+const SplitTab: React.FC<SplitTabProps> = ({ game, onSelectMove, run }) => {
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
@@ -68,6 +69,7 @@ const SplitTab: React.FC<SplitTabProps> = ({ game, run }) => {
                         game={game}
                         key={location.name}
                         location={location}
+                        onSelectMove={onSelectMove}
                         run={run}
                         variant={variant}
                     />

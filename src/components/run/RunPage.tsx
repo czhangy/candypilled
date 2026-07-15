@@ -7,6 +7,7 @@ import { GAMES } from '@/lib/static/constants';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
+import MovesTab from './MovesTab/MovesTab';
 import styles from './RunPage.module.scss';
 import SplitTab from './SplitTab/SplitTab';
 import Tabs from './Tabs/Tabs';
@@ -23,6 +24,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const TABS = [
         { id: 'split', label: 'Splits' },
         { id: 'box', label: 'Box' },
+        { id: 'moves', label: 'Moves' },
     ];
 
     // -------------------------------------------------------------------------
@@ -40,6 +42,9 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     // -------------------------------------------------------------------------
 
     const [activeTab, setActiveTab] = useState(TABS[0].id);
+    const [selectedMove, setSelectedMove] = useState<string | undefined>(
+        undefined
+    );
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -77,6 +82,15 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         setActiveTab(id);
     };
 
+    const handleMoveSelect = (name: string): void => {
+        setSelectedMove(name);
+    };
+
+    const handleMoveLinkClick = (name: string): void => {
+        setSelectedMove(name);
+        setActiveTab('moves');
+    };
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -106,7 +120,20 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                 onTabChange={handleTabChange}
                 tabs={TABS}
             />
-            {activeTab === 'split' && <SplitTab game={game} run={run} />}
+            {activeTab === 'split' && (
+                <SplitTab
+                    game={game}
+                    onSelectMove={handleMoveLinkClick}
+                    run={run}
+                />
+            )}
+            {activeTab === 'moves' && (
+                <MovesTab
+                    generation={game.generation}
+                    onSelectMove={handleMoveSelect}
+                    selectedMove={selectedMove}
+                />
+            )}
         </div>
     );
 };

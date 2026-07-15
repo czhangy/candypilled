@@ -1,16 +1,19 @@
 import Image from 'next/image';
 import { Battle, BattlePokemon } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
+import MoveHelpers from '@/lib/utils/MoveHelpers';
 import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
+import TypeHelpers from '@/lib/utils/TypeHelpers';
 import styles from './BattleCard.module.scss';
 
 interface BattleCardProps {
     battle: Battle;
     generation: number;
     isDefeated: boolean;
+    onSelectMove: (name: string) => void;
     onToggleDefeated: () => void;
     starter: string | null;
     variant: string;
@@ -20,6 +23,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
     battle,
     generation,
     isDefeated,
+    onSelectMove,
     onToggleDefeated,
     starter,
     variant,
@@ -46,6 +50,19 @@ const BattleCard: React.FC<BattleCardProps> = ({
             pokemon.ability ??
             PokemonHelpers.getAbilities(pokemon.name, generation)?.slot1;
         return ability && StringHelpers.toTitleCase(ability);
+    };
+
+    const getMoveColor = (move: string): string | undefined => {
+        const type = MoveHelpers.getValues(move, generation)?.type;
+        return type ? TypeHelpers.getColor(type) : undefined;
+    };
+
+    // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleMoveClick = (move: string): void => {
+        onSelectMove(move);
     };
 
     // -------------------------------------------------------------------------
@@ -269,9 +286,37 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                             { length: MOVE_SLOT_COUNT },
                                             (_, index) =>
                                                 pokemon.moves[index] ?? '-'
-                                        ).map((move, index) => (
-                                            <li key={index}>{move}</li>
-                                        ))}
+                                        ).map((move, index) =>
+                                            move === '-' ? (
+                                                <li key={index}>{move}</li>
+                                            ) : (
+                                                <li key={index}>
+                                                    <button
+                                                        className={
+                                                            styles[
+                                                                'move-button'
+                                                            ]
+                                                        }
+                                                        onClick={() =>
+                                                            handleMoveClick(
+                                                                move
+                                                            )
+                                                        }
+                                                        style={
+                                                            {
+                                                                '--move-color':
+                                                                    getMoveColor(
+                                                                        move
+                                                                    ),
+                                                            } as React.CSSProperties
+                                                        }
+                                                        type="button"
+                                                    >
+                                                        {move}
+                                                    </button>
+                                                </li>
+                                            )
+                                        )}
                                     </ul>
                                 </div>
                             );

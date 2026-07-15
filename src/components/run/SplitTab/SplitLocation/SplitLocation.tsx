@@ -23,6 +23,7 @@ import styles from './SplitLocation.module.scss';
 interface SplitLocationProps {
     game: Game;
     location: Location;
+    onSelectMove: (name: string) => void;
     run: Run;
     variant: string;
 }
@@ -30,6 +31,7 @@ interface SplitLocationProps {
 const SplitLocation: React.FC<SplitLocationProps> = ({
     game,
     location,
+    onSelectMove,
     run,
     variant,
 }) => {
@@ -285,6 +287,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                 battle={selectedBattle}
                                 generation={game.generation}
                                 isDefeated={isBattleDefeated(selectedBattle)}
+                                onSelectMove={onSelectMove}
                                 onToggleDefeated={() =>
                                     handleBattleToggleDefeated(selectedBattle)
                                 }

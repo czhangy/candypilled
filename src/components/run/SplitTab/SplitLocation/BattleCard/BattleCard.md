@@ -17,18 +17,21 @@ followed by a double battle section reading "Double Battle" or, if the
 player's whole party is forced into the fight, "True Double Battle".
 A "Defeat" button below the portrait toggles the trainer's defeated
 state in storage; once defeated it reads "Defeated" and turns green, and
-can be clicked again to undo.
+can be clicked again to undo. Each Pokemon's moves are clickable, linking
+to that move's details; a move's background is tinted to match its type,
+darkening further on hover.
 
 ## Props
 
-| Prop               | Type             | Required | Default | Description                                                                  |
-| ------------------ | ---------------- | -------- | ------- | ---------------------------------------------------------------------------- |
-| `battle`           | `Battle`         | Yes      | -       | The currently selected battle                                                |
-| `generation`       | `number`         | Yes      | -       | The game's generation, used to resolve each Pokemon's types and abilities    |
-| `isDefeated`       | `boolean`        | Yes      | -       | Whether this battle has already been marked defeated                         |
-| `onToggleDefeated` | `() => void`     | Yes      | -       | Called when the defeat button is clicked                                     |
-| `starter`          | `string \| null` | Yes      | -       | The run's chosen starter, used to resolve a miniboss's starter-specific team |
-| `variant`          | `string`         | Yes      | -       | The sprite variant to prefer, matching the game's slug                       |
+| Prop               | Type                     | Required | Default | Description                                                                  |
+| ------------------ | ------------------------ | -------- | ------- | ---------------------------------------------------------------------------- |
+| `battle`           | `Battle`                 | Yes      | -       | The currently selected battle                                                |
+| `generation`       | `number`                 | Yes      | -       | The game's generation, used to resolve each Pokemon's types and abilities    |
+| `isDefeated`       | `boolean`                | Yes      | -       | Whether this battle has already been marked defeated                         |
+| `onSelectMove`     | `(name: string) => void` | Yes      | -       | Called with a move's name when it's clicked within a Pokemon's moveset       |
+| `onToggleDefeated` | `() => void`             | Yes      | -       | Called when the defeat button is clicked                                     |
+| `starter`          | `string \| null`         | Yes      | -       | The run's chosen starter, used to resolve a miniboss's starter-specific team |
+| `variant`          | `string`                 | Yes      | -       | The sprite variant to prefer, matching the game's slug                       |
 
 ## Computations
 
@@ -40,6 +43,8 @@ can be clicked again to undo.
 - `getAbility` — a Pokemon's ability, using its `ability` field as an
   override when set and otherwise falling back to its slot-1 ability at
   `generation`, resolved via `PokemonHelpers`
+- `getMoveColor` — a move's type color at `generation`, resolved via
+  `MoveHelpers` and `TypeHelpers`, tinting that move's background
 
 ## SCSS Variable Dependencies
 
