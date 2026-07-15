@@ -268,53 +268,74 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                     </span>
                 </button>
             </div>
-            {isOpen && (section.map || section.encounters) && (
-                <div className={styles.content}>
-                    {section.map && (
-                        <LocationMap
-                            alt={`${location.name} map`}
-                            battles={section.battles}
-                            isBattleDefeated={isBattleDefeated}
-                            isBattleNextPersonalBest={isBattleNextPersonalBest}
-                            map={section.map}
-                            onBattleClick={handleBattleClick}
-                            selectedBattle={selectedBattle}
-                        />
-                    )}
-                    {selectedBattle &&
-                        section.battles.includes(selectedBattle) && (
-                            <BattleCard
-                                battle={selectedBattle}
-                                generation={game.generation}
-                                isDefeated={isBattleDefeated(selectedBattle)}
-                                onSelectMove={onSelectMove}
-                                onToggleDefeated={() =>
-                                    handleBattleToggleDefeated(selectedBattle)
-                                }
-                                starter={run.starter}
-                                variant={variant}
-                            />
-                        )}
-                    {section.encounters && (
-                        <div className={styles['encounters-row']}>
-                            <EncounterTable
-                                encounters={section.encounters}
-                                generation={game.generation}
-                                onSelectEncounter={handleEncounterSelect}
-                                selectedSpecies={selectedEncounter?.species}
-                                variant={variant}
-                            />
-                            <PokedexTile
-                                generation={game.generation}
-                                onSelectSpecies={handleSpeciesSelect}
-                                species={
-                                    speciesOverride ??
-                                    selectedEncounter?.species
-                                }
-                                variant={variant}
-                            />
+            {(section.map || section.encounters) && (
+                <div
+                    className={[
+                        styles['content-wrapper'],
+                        isOpen && styles['content-wrapper--open'],
+                    ]
+                        .filter(Boolean)
+                        .join(' ')}
+                >
+                    <div className={styles.content}>
+                        <div className={styles['content-inner']}>
+                            {section.map && (
+                                <LocationMap
+                                    alt={`${location.name} map`}
+                                    battles={section.battles}
+                                    isBattleDefeated={isBattleDefeated}
+                                    isBattleNextPersonalBest={
+                                        isBattleNextPersonalBest
+                                    }
+                                    map={section.map}
+                                    onBattleClick={handleBattleClick}
+                                    selectedBattle={selectedBattle}
+                                />
+                            )}
+                            {selectedBattle &&
+                                section.battles.includes(selectedBattle) && (
+                                    <BattleCard
+                                        battle={selectedBattle}
+                                        generation={game.generation}
+                                        isDefeated={isBattleDefeated(
+                                            selectedBattle
+                                        )}
+                                        onSelectMove={onSelectMove}
+                                        onToggleDefeated={() =>
+                                            handleBattleToggleDefeated(
+                                                selectedBattle
+                                            )
+                                        }
+                                        starter={run.starter}
+                                        variant={variant}
+                                    />
+                                )}
+                            {section.encounters && (
+                                <div className={styles['encounters-row']}>
+                                    <EncounterTable
+                                        encounters={section.encounters}
+                                        generation={game.generation}
+                                        onSelectEncounter={
+                                            handleEncounterSelect
+                                        }
+                                        selectedSpecies={
+                                            selectedEncounter?.species
+                                        }
+                                        variant={variant}
+                                    />
+                                    <PokedexTile
+                                        generation={game.generation}
+                                        onSelectSpecies={handleSpeciesSelect}
+                                        species={
+                                            speciesOverride ??
+                                            selectedEncounter?.species
+                                        }
+                                        variant={variant}
+                                    />
+                                </div>
+                            )}
                         </div>
-                    )}
+                    </div>
                 </div>
             )}
         </div>

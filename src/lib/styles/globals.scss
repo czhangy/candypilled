@@ -24,6 +24,42 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+a {
+    outline: none;
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+input {
+    outline: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.small-screen-message {
+    @include mono-label;
+
+    align-items: center;
+    display: none;
+    flex: 1;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.site-shell {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
 .page-main {
     @include full-height;
 
@@ -32,4 +68,14 @@ body {
     margin: 0 auto;
     max-width: $max-content-width;
     width: 100%;
+}
+
+@media (width <= $max-content-width) {
+    .small-screen-message {
+        display: flex;
+    }
+
+    .site-shell {
+        display: none;
+    }
 }

@@ -1,7 +1,9 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Modal from '@/components/common/Modal/Modal';
 import BoxIcon from '@/lib/icons/BoxIcon';
 import CrownIcon from '@/lib/icons/CrownIcon';
 import RunIcon from '@/lib/icons/RunIcon';
@@ -25,6 +27,12 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     const router = useRouter();
 
     // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+
+    // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
@@ -33,14 +41,10 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         : null;
 
     // -------------------------------------------------------------------------
-    // HANDLERS
+    // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const handleContinueClick = (): void => {
-        router.push(`/runs/${StringHelpers.toSlug(game.name)}`);
-    };
-
-    const handleNewRunClick = (): void => {
+    const startNewRun = (): void => {
         const newRun: Run = {
             attempt: (run?.attempt ?? 0) + 1,
             deathCount: 0,
@@ -54,6 +58,31 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
 
         LocalStorageHelpers.saveRun(game, newRun);
         router.push(`/runs/${StringHelpers.toSlug(game.name)}`);
+    };
+
+    // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleContinueClick = (): void => {
+        router.push(`/runs/${StringHelpers.toSlug(game.name)}`);
+    };
+
+    const handleNewRunClick = (): void => {
+        if (run) {
+            setIsConfirmOpen(true);
+        } else {
+            startNewRun();
+        }
+    };
+
+    const handleConfirmClose = (): void => {
+        setIsConfirmOpen(false);
+    };
+
+    const handleConfirmNewRun = (): void => {
+        setIsConfirmOpen(false);
+        startNewRun();
     };
 
     // -------------------------------------------------------------------------
@@ -127,6 +156,30 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     New
                 </button>
             </div>
+            {isConfirmOpen && (
+                <Modal onClose={handleConfirmClose} title="Start a new run?">
+                    <p className={styles['confirm-text']}>
+                        Your current run in progress will be overwritten and
+                        can&apos;t be recovered.
+                    </p>
+                    <div className={styles['confirm-actions']}>
+                        <button
+                            className={styles.cancel}
+                            onClick={handleConfirmClose}
+                            type="button"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            className={styles.confirm}
+                            onClick={handleConfirmNewRun}
+                            type="button"
+                        >
+                            Start New Run
+                        </button>
+                    </div>
+                </Modal>
+            )}
         </div>
     );
 };

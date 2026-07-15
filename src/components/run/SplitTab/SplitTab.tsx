@@ -43,17 +43,17 @@ const SplitTab: React.FC<SplitTabProps> = ({ game, onSelectMove, run }) => {
     return (
         <div className={styles['split-tab']}>
             <div className={styles.header}>
-                <div className={styles['title-group']}>
-                    <div className={styles.badge}>
-                        <Image alt="" fill src={badge} />
-                    </div>
-                    <h2 className={styles.title}>{run.split} Split</h2>
+                <div className={styles.badge}>
+                    <Image alt="" fill src={badge} />
                 </div>
-                {levelCap !== null && (
-                    <span className={styles['level-cap']}>
-                        Level Cap: {levelCap}
-                    </span>
-                )}
+                <div className={styles['title-group']}>
+                    <h2 className={styles.title}>{run.split} Split</h2>
+                    {levelCap !== null && (
+                        <span className={styles['level-cap']}>
+                            Level Cap: {levelCap}
+                        </span>
+                    )}
+                </div>
             </div>
             {isFirstSplit && (
                 <StarterSelect

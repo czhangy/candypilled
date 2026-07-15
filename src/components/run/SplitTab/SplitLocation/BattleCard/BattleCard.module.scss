@@ -70,6 +70,26 @@
                     overflow-y: auto;
                     padding: 0.35rem;
                     text-align: center;
+
+                    .field-condition__note {
+                        color: var(--accent-color);
+                        cursor: help;
+                        margin-left: 0.15rem;
+                    }
+                }
+
+                .trainer__item {
+                    gap: 0.3rem;
+                    overflow: hidden;
+
+                    .trainer__item-count {
+                        font-size: 0.75rem;
+                    }
+
+                    img {
+                        flex-shrink: 0;
+                        image-rendering: pixelated;
+                    }
                 }
 
                 .trainer__defeat {
