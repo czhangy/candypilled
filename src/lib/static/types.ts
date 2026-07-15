@@ -10,15 +10,26 @@ export interface StatValues {
     spe: number;
 }
 
+export interface DropdownOption {
+    label: string;
+    value: string;
+}
+
 export interface BattlePokemon {
     ability?: string;
-    evs?: number | StatValues;
+    evs?: StatValues;
     heldItem?: string;
     ivs?: number | StatValues;
     level: number;
     moves: string[];
     name: string;
     nature?: Nature;
+}
+
+// A caught Pokemon as tracked for Nuzlocke rule enforcement: one catch per
+// location (not subarea), and no more than one catch per evolution line.
+export interface CaughtPokemon extends BattlePokemon {
+    location: string;
 }
 
 interface BattleItem {
@@ -105,6 +116,7 @@ export interface Run {
     personalBest: string;
     hallOfFameCount: number;
     starter: string | null;
+    caughtPokemon: CaughtPokemon[];
 }
 
 export interface TypesByGeneration {

@@ -1,0 +1,137 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.dropdown {
+    position: relative;
+
+    .trigger {
+        align-items: center;
+        background: $background-light;
+        border: 1px solid $border-subtle;
+        border-radius: 0.375rem;
+        color: $foreground;
+        cursor: pointer;
+        display: flex;
+        font: inherit;
+        justify-content: space-between;
+        padding: 0.5rem 0.6rem;
+        text-align: left;
+        width: 100%;
+
+        &:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+
+        .trigger-label {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .chevron {
+            color: $text-dim;
+            display: flex;
+            flex-shrink: 0;
+            height: 1rem;
+            margin-left: 0.5rem;
+            transition: transform 0.2s ease;
+            width: 1rem;
+
+            &--open {
+                transform: rotate(180deg);
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
+        }
+    }
+}
+
+// Portaled to document.body when open, so it can't be nested under
+// .dropdown here — nesting compiles to a descendant selector, which
+// wouldn't match once the menu is no longer a DOM descendant of it.
+.menu {
+    background: $background;
+    border: 1px solid $border-subtle;
+    border-radius: 0.375rem;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 40%);
+    max-height: 14rem;
+    overflow-y: auto;
+    position: fixed;
+    z-index: 1000;
+
+    .search {
+        background: $background-light;
+        border: none;
+        border-bottom: 1px solid $border-subtle;
+        color: $foreground;
+        font: inherit;
+        padding: 0.5rem 0.6rem;
+        position: sticky;
+        top: 0;
+        width: 100%;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .options {
+        list-style: none;
+        margin: 0;
+        padding: 0.3rem;
+
+        .option {
+            align-items: center;
+            background: none;
+            border: none;
+            border-radius: 0.25rem;
+            color: $foreground;
+            cursor: pointer;
+            display: flex;
+            font: inherit;
+            justify-content: space-between;
+            padding: 0.4rem 0.5rem;
+            text-align: left;
+            width: 100%;
+
+            @media (hover: hover) {
+                &:hover {
+                    background: $background-light;
+                }
+            }
+
+            &--selected {
+                color: var(--accent-color);
+            }
+
+            .option-label {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+
+                .match {
+                    color: var(--accent-color);
+                    font-weight: 700;
+                }
+            }
+
+            .check {
+                display: flex;
+                flex-shrink: 0;
+                height: 0.8rem;
+                margin-left: 0.5rem;
+                width: 0.8rem;
+            }
+        }
+
+        .empty {
+            color: $text-dim;
+            font-size: 0.85rem;
+            padding: 0.5rem;
+            text-align: center;
+        }
+    }
+}

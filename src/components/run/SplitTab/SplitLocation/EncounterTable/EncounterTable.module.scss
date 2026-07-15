@@ -115,6 +115,11 @@
                 box-shadow: inset 3px 0 0 0 var(--accent-color);
             }
 
+            &--caught {
+                background: rgba($green, 0.12);
+                box-shadow: inset 3px 0 0 0 $green;
+            }
+
             @media (prefers-reduced-motion: reduce) {
                 transition: none;
             }

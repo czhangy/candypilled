@@ -8,6 +8,7 @@ import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './EncounterTable.module.scss';
 
 interface EncounterTableProps {
+    dupes: string[];
     encounters: Encounter[];
     generation: number;
     onSelectEncounter?: (encounter: Encounter) => void;
@@ -16,6 +17,7 @@ interface EncounterTableProps {
 }
 
 const EncounterTable: React.FC<EncounterTableProps> = ({
+    dupes,
     encounters,
     generation,
     onSelectEncounter,
@@ -148,6 +150,11 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     const getTypes = (species: string): string[] =>
         PokemonHelpers.getTypes(species, generation) ?? [];
 
+    const isEvolutionLineCaught = (species: string): boolean =>
+        dupes.some((name) =>
+            PokemonHelpers.isSameEvolutionLine(species, name, generation)
+        );
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -215,6 +222,9 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                                     variant
                                 );
                                 const types = getTypes(encounter.species);
+                                const isCaught = isEvolutionLineCaught(
+                                    encounter.species
+                                );
 
                                 return (
                                     <tr
@@ -223,6 +233,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                                             encounter.species ===
                                                 selectedSpecies &&
                                                 styles['row--selected'],
+                                            isCaught && styles['row--caught'],
                                         ]
                                             .filter(Boolean)
                                             .join(' ')}

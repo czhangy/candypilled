@@ -5,6 +5,7 @@ import {
     Location,
     Subarea,
 } from '@/lib/static/types';
+import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 
 export default class LocationHelpers {
     // -------------------------------------------------------------------------
@@ -31,21 +32,7 @@ export default class LocationHelpers {
         game: Game,
         species: string
     ): EncounterLocation[] {
-        const locations = game.splits.flatMap((split) =>
-            split.locations.flatMap((location) =>
-                location.subareas
-                    ? location.subareas.map((subarea) => ({
-                          name: `${location.name} (${subarea.name})`,
-                          encountersKey: subarea.encountersKey,
-                      }))
-                    : [
-                          {
-                              name: location.name,
-                              encountersKey: location.encountersKey,
-                          },
-                      ]
-            )
-        );
+        const locations = LocationHelpers.getWiredLocations(game);
 
         const matches = locations.flatMap(({ name, encountersKey }) => {
             if (!encountersKey) return [];
@@ -57,6 +44,29 @@ export default class LocationHelpers {
         });
 
         return LocationHelpers.dedupeByCondition(matches);
+    }
+
+    // Every species with a wild encounter reachable from game.splits (i.e.
+    // actually wired into a location/subarea, not just present somewhere in
+    // game.encounters), deduped and sorted alphabetically by display name.
+    static getAllEncounterSpecies(game: Game): string[] {
+        const locations = LocationHelpers.getWiredLocations(game);
+
+        const slugs = new Set<string>();
+        for (const { encountersKey } of locations) {
+            if (!encountersKey) continue;
+
+            const encounters = game.encounters[encountersKey]?.encounters ?? [];
+            for (const encounter of encounters) {
+                slugs.add(encounter.species);
+            }
+        }
+
+        const names = new Set(
+            [...slugs].map((slug) => PokemonHelpers.get(slug)?.name ?? slug)
+        );
+
+        return [...names].sort((a, b) => a.localeCompare(b));
     }
 
     // Returns a copy of the location with the named subareas' battles hidden
@@ -103,6 +113,29 @@ export default class LocationHelpers {
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------
+
+    // Flattens every split/location/subarea down to a name/encountersKey
+    // pair, mirroring how a location's wild encounters are actually wired
+    // up for display (a subarea's name is combined with its location's).
+    private static getWiredLocations(
+        game: Game
+    ): { name: string; encountersKey?: string }[] {
+        return game.splits.flatMap((split) =>
+            split.locations.flatMap((location) =>
+                location.subareas
+                    ? location.subareas.map((subarea) => ({
+                          name: `${location.name} (${subarea.name})`,
+                          encountersKey: subarea.encountersKey,
+                      }))
+                    : [
+                          {
+                              name: location.name,
+                              encountersKey: location.encountersKey,
+                          },
+                      ]
+            )
+        );
+    }
 
     private static dedupeByCondition(
         matches: EncounterLocation[]

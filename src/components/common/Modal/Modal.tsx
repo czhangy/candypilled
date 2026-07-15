@@ -6,12 +6,18 @@ import CloseIcon from '@/lib/icons/CloseIcon';
 import styles from './Modal.module.scss';
 
 interface ModalProps {
+    accentColor?: string;
     children: React.ReactNode;
     onClose: () => void;
     title?: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ children, onClose, title }) => {
+const Modal: React.FC<ModalProps> = ({
+    accentColor,
+    children,
+    onClose,
+    title,
+}) => {
     // -------------------------------------------------------------------------
     // EFFECTS
     // -------------------------------------------------------------------------
@@ -54,7 +60,17 @@ const Modal: React.FC<ModalProps> = ({ children, onClose, title }) => {
     // -------------------------------------------------------------------------
 
     return createPortal(
-        <div className={styles.overlay} onClick={handleOverlayClick}>
+        <div
+            className={styles.overlay}
+            onClick={handleOverlayClick}
+            style={
+                accentColor
+                    ? ({
+                          '--accent-color': accentColor,
+                      } as React.CSSProperties)
+                    : undefined
+            }
+        >
             <div className={styles.modal} onClick={handleContentClick}>
                 <div className={styles.header}>
                     {title && <span className={styles.title}>{title}</span>}

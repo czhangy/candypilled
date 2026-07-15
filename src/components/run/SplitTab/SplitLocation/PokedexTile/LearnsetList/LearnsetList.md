@@ -12,7 +12,7 @@ the list is empty.
 | -------------- | ------------------------ | -------- | ------- | -------------------------------------------------- |
 | `generation`   | `number`                 | Yes      | -       | The game's generation, used to resolve move values |
 | `moves`        | `LearnsetMove[]`         | Yes      | -       | The moves to list, in the order to display them    |
-| `onSelectMove` | `(name: string) => void` | No       | -       | Called with a move's name when it's clicked        |
+| `onSelectMove` | `(name: string) => void` | Yes      | -       | Called with a move's name when it's clicked        |
 
 ## Computations
 

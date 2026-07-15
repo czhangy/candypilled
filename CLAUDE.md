@@ -12,6 +12,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 > Never run `git add` / stage changes on your own. Leave changes unstaged and let the user stage and commit them.
 
+> ALWAYS ALWAYS ALWAYS prefer making props or params required. NEVER assume future use cases for making something optional. Only make something optional if it needs to be optional right now.
+
 ## Commands
 
 ```bash

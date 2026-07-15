@@ -7,7 +7,7 @@ import styles from './EvolutionLine.module.scss';
 
 interface EvolutionLineProps {
     currentName?: string;
-    onSelectSpecies?: (species: string) => void;
+    onSelectSpecies: (species: string) => void;
     step: EvolutionStep;
     variant: string;
 }
@@ -38,7 +38,7 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
     // -------------------------------------------------------------------------
 
     const handleNodeClick = (): void => {
-        onSelectSpecies?.(step.name);
+        onSelectSpecies(step.name);
     };
 
     // -------------------------------------------------------------------------
@@ -51,7 +51,6 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                 className={[styles.node, isCurrent && styles['node--current']]
                     .filter(Boolean)
                     .join(' ')}
-                disabled={!onSelectSpecies}
                 onClick={handleNodeClick}
                 type="button"
             >
