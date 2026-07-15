@@ -1,7 +1,8 @@
 # SplitLocation
 
 A collapsible card for a single location within a split. The header is
-always visible and toggles the collapsed content. A location is either a
+always visible and toggles the collapsed content, which animates open and
+closed. A location is either a
 single area or a set of subareas (e.g. separate floors of a building). When
 a location has more than one subarea, a row of toggle buttons appears next
 to the location name to switch which subarea's map, battles, and wild
