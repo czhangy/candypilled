@@ -24,7 +24,7 @@ can be clicked again to undo. Each Pokemon's moves are clickable, linking
 to that move's details; a move's background is tinted to match its type,
 darkening further on hover. Moves flagged as dangerous are shown in red
 text. Each Pokemon's ability is also clickable, linking to that ability's
-details, turning the game's accent color on hover.
+details; its background darkens further on hover.
 
 ## Props
 
@@ -58,5 +58,4 @@ details, turning the game's accent color on hover.
 
 ## SCSS Variable Dependencies
 
-- `--accent-color` — the active game's accent color, set by `RunPage`;
-  used to highlight an ability button on hover
+- `--accent-color` — the active game's accent color, set by `RunPage`

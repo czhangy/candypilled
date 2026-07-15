@@ -214,12 +214,16 @@
                                 font: inherit;
                                 margin: -0.3rem;
                                 padding: 0.3rem;
-                                transition: color 0.2s ease;
+                                transition: background-color 0.2s ease;
                                 width: calc(100% + 0.6rem);
 
                                 @media (hover: hover) {
                                     &:hover {
-                                        color: var(--accent-color);
+                                        background: color-mix(
+                                            in srgb,
+                                            $background-light 85%,
+                                            black 15%
+                                        );
                                     }
                                 }
 
