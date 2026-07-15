@@ -107,8 +107,8 @@ evolution line.
 - **On Pokedex tile evolution line click** — sets `speciesOverride` to
   the clicked species, without changing `selectedEncounter`
 - **On Pokedex tile "Add Pokemon" submit** — appends a record (the
-  submitted details plus this location's name) to the run's
-  `caughtPokemon` in storage
+  submitted details, this location's name, zeroed `evs`, and an empty
+  `heldItem`) to the run's `caughtPokemon` in storage
 - **On Pokedex tile catch button click while caught here** — removes
   this location's record from the run's `caughtPokemon` in storage
 

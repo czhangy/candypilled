@@ -165,7 +165,12 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             ...run,
             caughtPokemon: [
                 ...run.caughtPokemon,
-                { ...details, location: location.name },
+                {
+                    ...details,
+                    evs: { atk: 0, def: 0, hp: 0, spa: 0, spd: 0, spe: 0 },
+                    heldItem: '',
+                    location: location.name,
+                },
             ],
         };
 

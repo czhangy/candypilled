@@ -17,7 +17,7 @@ export interface DropdownOption {
 
 export interface BattlePokemon {
     ability?: string;
-    evs?: number | StatValues;
+    evs?: StatValues;
     heldItem?: string;
     ivs?: number | StatValues;
     level: number;
