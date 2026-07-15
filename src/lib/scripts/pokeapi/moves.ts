@@ -77,6 +77,8 @@ const DANGEROUS_MOVES = new Set([
     'spore',
     'dragon-rage',
     'shell-smash',
+    'flail',
+    'perish-song',
 ]);
 
 const sleep = (ms: number): Promise<void> =>
