@@ -1,7 +1,7 @@
 # StarterSelect
 
-A centered, labeled row of buttons for choosing a starter Pokemon at the
-beginning of a run, one per option offered by the game. Each button renders
+A vertical list of buttons for choosing a starter Pokemon at the beginning
+of a run, one per option offered by the game. Each button renders
 the starter's sprite matching the game's variant, falling back to any other
 synced sprite (or the starter's name) if that variant hasn't been synced.
 The currently selected starter is highlighted in the game's accent color.
@@ -17,4 +17,4 @@ The currently selected starter is highlighted in the game's accent color.
 
 ## SCSS Variable Dependencies
 
-- `--accent-color` — the active game's accent color, set by `RunPage`
+- `--accent-color` — the active game's accent color, set by `Modal`

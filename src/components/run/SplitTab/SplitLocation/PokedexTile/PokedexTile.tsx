@@ -11,37 +11,42 @@ import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './PokedexTile.module.scss';
 
-interface PokedexTileProps {
-    dupes: string[];
-    encounter?: string;
+type PokedexTileProps = (
+    | {
+          dupes: string[];
+          encounter?: string;
+          mode: 'catch';
+          onAddPokemon: (
+              details: Pick<
+                  BattlePokemon,
+                  'ability' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+              >
+          ) => void;
+          onRemovePokemon: () => void;
+      }
+    | {
+          mode: 'select';
+          onSelect: (species: string) => void;
+      }
+) & {
     game: Game;
     generation: number;
-    onAddPokemon: (
-        details: Pick<
-            BattlePokemon,
-            'ability' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
-        >
-    ) => void;
-    onRemovePokemon: () => void;
     onSelectMove: (name: string) => void;
     onSelectSpecies: (species: string) => void;
     originalSpecies?: string;
     species?: string;
     variant: string;
-}
+};
 
 const PokedexTile: React.FC<PokedexTileProps> = ({
-    dupes,
-    encounter,
     game,
     generation,
-    onAddPokemon,
-    onRemovePokemon,
     onSelectMove,
     onSelectSpecies,
     originalSpecies,
     species,
     variant,
+    ...rest
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
@@ -75,8 +80,10 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     };
 
     const handleCatchButtonClick = (): void => {
-        if (isCaughtHere) {
-            onRemovePokemon();
+        if (rest.mode === 'select') {
+            if (pokemon) rest.onSelect(pokemon.name);
+        } else if (isCaughtHere) {
+            rest.onRemovePokemon();
         } else {
             setIsAddPokemonModalOpen(true);
         }
@@ -92,7 +99,8 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
             'ability' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
         >
     ): void => {
-        onAddPokemon(details);
+        if (rest.mode !== 'catch') return;
+        rest.onAddPokemon(details);
         setIsAddPokemonModalOpen(false);
     };
 
@@ -137,15 +145,20 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         ? LocationHelpers.getEncounterLocations(game, species)
         : [];
     const defaultCatchSpecies = originalSpecies ?? species;
-    const isCaughtHere = !!pokemon && encounter === pokemon.name;
-    const isOtherCaughtHere = !!encounter && !isCaughtHere;
+    const isCaughtHere =
+        rest.mode === 'catch' && !!pokemon && rest.encounter === pokemon.name;
+    const isOtherCaughtHere =
+        rest.mode === 'catch' && !!rest.encounter && !isCaughtHere;
     const isEvolutionLineCaught =
+        rest.mode === 'catch' &&
         !!pokemon &&
-        dupes.some((name) =>
+        rest.dupes.some((name) =>
             PokemonHelpers.isSameEvolutionLine(pokemon.name, name, generation)
         );
     const isCatchDisabled =
-        !isCaughtHere && (isOtherCaughtHere || isEvolutionLineCaught);
+        rest.mode === 'catch' &&
+        !isCaughtHere &&
+        (isOtherCaughtHere || isEvolutionLineCaught);
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -268,19 +281,27 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     onClick={handleCatchButtonClick}
                     type="button"
                 >
-                    {isCaughtHere ? 'CAUGHT' : 'CATCH'}
+                    {rest.mode === 'select'
+                        ? 'SELECT'
+                        : isCaughtHere
+                          ? 'CAUGHT'
+                          : 'CATCH'}
                 </button>
             )}
-            {isAddPokemonModalOpen && defaultCatchSpecies && (
-                <AddPokemonModal
-                    accentColor={game.accentColor}
-                    allSpecies={LocationHelpers.getAllEncounterSpecies(game)}
-                    defaultSpecies={defaultCatchSpecies}
-                    generation={generation}
-                    onClose={handleCloseAddPokemonModal}
-                    onSubmit={handleAddPokemon}
-                />
-            )}
+            {rest.mode === 'catch' &&
+                isAddPokemonModalOpen &&
+                defaultCatchSpecies && (
+                    <AddPokemonModal
+                        accentColor={game.accentColor}
+                        allSpecies={LocationHelpers.getAllEncounterSpecies(
+                            game
+                        )}
+                        defaultSpecies={defaultCatchSpecies}
+                        generation={generation}
+                        onClose={handleCloseAddPokemonModal}
+                        onSubmit={handleAddPokemon}
+                    />
+                )}
             {pokemon && (
                 <div className={styles.evolution}>
                     <span className={styles['evolution-label']}>

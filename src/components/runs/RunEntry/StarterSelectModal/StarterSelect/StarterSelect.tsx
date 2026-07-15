@@ -31,7 +31,6 @@ const StarterSelect: React.FC<StarterSelectProps> = ({
 
     return (
         <div className={styles['starter-select']}>
-            <span className={styles.label}>Starter:</span>
             <div className={styles.starters}>
                 {starters.map((starter) => {
                     const sprite = PokemonHelpers.getSprite(starter, variant);

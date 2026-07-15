@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import CloseIcon from '@/lib/icons/CloseIcon';
 import styles from './Modal.module.scss';
@@ -8,6 +8,7 @@ import styles from './Modal.module.scss';
 interface ModalProps {
     accentColor?: string;
     children: React.ReactNode;
+    maxWidth?: string;
     onClose: () => void;
     title?: string;
 }
@@ -15,9 +16,32 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({
     accentColor,
     children,
+    maxWidth,
     onClose,
     title,
 }) => {
+    // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [isClosing, setIsClosing] = useState(false);
+
+    // -------------------------------------------------------------------------
+    // COMPUTATIONS
+    // -------------------------------------------------------------------------
+
+    const requestClose = (): void => {
+        const prefersReducedMotion = window.matchMedia(
+            '(prefers-reduced-motion: reduce)'
+        ).matches;
+
+        if (prefersReducedMotion) {
+            onClose();
+        } else {
+            setIsClosing(true);
+        }
+    };
+
     // -------------------------------------------------------------------------
     // EFFECTS
     // -------------------------------------------------------------------------
@@ -32,21 +56,25 @@ const Modal: React.FC<ModalProps> = ({
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent): void => {
-            if (event.key === 'Escape') onClose();
+            if (event.key === 'Escape') requestClose();
         };
 
         document.addEventListener('keydown', handleKeyDown);
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
         };
-    }, [onClose]);
+    }, [requestClose]);
 
     // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
 
     const handleOverlayClick = (): void => {
-        onClose();
+        requestClose();
+    };
+
+    const handleCloseButtonClick = (): void => {
+        requestClose();
     };
 
     const handleContentClick = (
@@ -55,20 +83,26 @@ const Modal: React.FC<ModalProps> = ({
         event.stopPropagation();
     };
 
+    const handleAnimationEnd = (): void => {
+        if (isClosing) onClose();
+    };
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
     return createPortal(
         <div
-            className={styles.overlay}
+            className={[styles.overlay, isClosing && styles['overlay--closing']]
+                .filter(Boolean)
+                .join(' ')}
+            onAnimationEnd={handleAnimationEnd}
             onClick={handleOverlayClick}
             style={
-                accentColor
-                    ? ({
-                          '--accent-color': accentColor,
-                      } as React.CSSProperties)
-                    : undefined
+                {
+                    ...(accentColor && { '--accent-color': accentColor }),
+                    ...(maxWidth && { '--modal-max-width': maxWidth }),
+                } as React.CSSProperties
             }
         >
             <div className={styles.modal} onClick={handleContentClick}>
@@ -77,7 +111,7 @@ const Modal: React.FC<ModalProps> = ({
                     <button
                         aria-label="Close"
                         className={styles['close-button']}
-                        onClick={onClose}
+                        onClick={handleCloseButtonClick}
                         type="button"
                     >
                         <CloseIcon />

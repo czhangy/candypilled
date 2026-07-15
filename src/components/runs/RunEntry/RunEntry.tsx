@@ -13,6 +13,7 @@ import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './RunEntry.module.scss';
+import StarterSelectModal from './StarterSelectModal/StarterSelectModal';
 
 interface RunEntryProps {
     game: Game;
@@ -31,6 +32,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // -------------------------------------------------------------------------
 
     const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+    const [isStarterSelectOpen, setIsStarterSelectOpen] = useState(false);
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -44,7 +46,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const startNewRun = (): void => {
+    const startNewRun = (starter: string): void => {
         const newRun: Run = {
             attempt: (run?.attempt ?? 0) + 1,
             deathCount: 0,
@@ -53,7 +55,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             boxCount: 0,
             personalBest: run?.personalBest ?? '',
             hallOfFameCount: run?.hallOfFameCount ?? 0,
-            starter: game.starters[0],
+            starter,
             caughtPokemon: [],
         };
 
@@ -73,7 +75,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         if (run) {
             setIsConfirmOpen(true);
         } else {
-            startNewRun();
+            setIsStarterSelectOpen(true);
         }
     };
 
@@ -83,7 +85,16 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
 
     const handleConfirmNewRun = (): void => {
         setIsConfirmOpen(false);
-        startNewRun();
+        setIsStarterSelectOpen(true);
+    };
+
+    const handleStarterSelectClose = (): void => {
+        setIsStarterSelectOpen(false);
+    };
+
+    const handleStarterSelect = (starter: string): void => {
+        setIsStarterSelectOpen(false);
+        startNewRun(starter);
     };
 
     // -------------------------------------------------------------------------
@@ -180,6 +191,13 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                         </button>
                     </div>
                 </Modal>
+            )}
+            {isStarterSelectOpen && (
+                <StarterSelectModal
+                    game={game}
+                    onClose={handleStarterSelectClose}
+                    onSelect={handleStarterSelect}
+                />
             )}
         </div>
     );

@@ -1,0 +1,10 @@
+.starter-select-modal {
+    align-items: flex-start;
+    display: flex;
+    gap: 1.5rem;
+
+    .starter-column {
+        position: sticky;
+        top: 0;
+    }
+}

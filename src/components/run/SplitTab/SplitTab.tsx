@@ -3,11 +3,9 @@
 import Image from 'next/image';
 import { Game, Run } from '@/lib/static/types';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
-import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import SplitLocation from './SplitLocation/SplitLocation';
 import styles from './SplitTab.module.scss';
-import StarterSelect from './StarterSelect/StarterSelect';
 
 interface SplitTabProps {
     game: Game;
@@ -20,21 +18,12 @@ const SplitTab: React.FC<SplitTabProps> = ({ game, onSelectMove, run }) => {
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const isFirstSplit = run.split === game.splits[0].name;
     const currentSplit = game.splits.find((split) => split.name === run.split);
     const levelCap = currentSplit
         ? BattleProgressHelpers.getLevelCap(currentSplit, run.starter)
         : null;
     const variant = StringHelpers.toSlug(game.name);
     const badge = `/${variant}/badges/${StringHelpers.toSlug(run.split)}.png`;
-
-    // -------------------------------------------------------------------------
-    // HANDLERS
-    // -------------------------------------------------------------------------
-
-    const handleStarterSelect = (starter: string): void => {
-        LocalStorageHelpers.saveRun(game, { ...run, starter });
-    };
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -55,14 +44,6 @@ const SplitTab: React.FC<SplitTabProps> = ({ game, onSelectMove, run }) => {
                     )}
                 </div>
             </div>
-            {isFirstSplit && (
-                <StarterSelect
-                    onSelect={handleStarterSelect}
-                    selected={run.starter}
-                    starters={game.starters}
-                    variant={variant}
-                />
-            )}
             <div className={styles.locations}>
                 {currentSplit?.locations.map((location) => (
                     <SplitLocation
