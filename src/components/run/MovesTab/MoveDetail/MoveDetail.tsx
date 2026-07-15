@@ -94,14 +94,18 @@ const MoveDetail: React.FC<MoveDetailProps> = ({ generation, move }) => {
                                     {values.pp}
                                 </span>
                             </div>
-                            <div className={styles.stat}>
-                                <span className={styles['stat-label']}>
-                                    Priority
-                                </span>
-                                <span className={styles['stat-value']}>
-                                    {moveData.priority}
-                                </span>
-                            </div>
+                            {moveData.priority !== 0 && (
+                                <div className={styles.stat}>
+                                    <span className={styles['stat-label']}>
+                                        Priority
+                                    </span>
+                                    <span className={styles['stat-value']}>
+                                        {moveData.priority > 0
+                                            ? `+${moveData.priority}`
+                                            : moveData.priority}
+                                    </span>
+                                </div>
+                            )}
                         </div>
                         <div className={styles.effect}>
                             <span className={styles['effect-label']}>
