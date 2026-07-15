@@ -14,20 +14,34 @@ type badges beneath it, its level range prefixed with "Lv." (e.g.
 "Lv. 20-30"), and its encounter chance as a percentage. Clicking a row
 selects that encounter, highlighting it and notifying the parent via
 `onSelectEncounter`. A row is highlighted green if its species, or any
-member of its evolution line, has been caught anywhere in the run —
-not just at this location — taking priority over the selected
-highlight if both apply.
+member of its evolution line, is the one actually caught at this
+location (catching an evolution via the Pokedex tile's evolution line
+records the evolved species, not the row's original encounter species,
+so the comparison is evolution-line-aware). A row is highlighted red if
+its evolution line isn't caught here but has been caught elsewhere in
+the run, since catching it here would violate the
+one-catch-per-evolution-line rule. Either highlight takes priority
+over the selected highlight if both apply.
+
+Below the header, a full-width "MISS"/"MISSED" toggle button (styled
+like the Pokedex tile's catch button, red when active) records that
+this location's one encounter was used up without catching anything.
+It is disabled whenever a species is already caught at this location,
+since the two outcomes are mutually exclusive.
 
 ## Props
 
-| Prop                 | Type                             | Required | Default | Description                                                        |
-| -------------------- | -------------------------------- | -------- | ------- | ------------------------------------------------------------------ |
-| `caughtPokemonNames` | `string[]`                       | Yes      | -       | Every species caught so far in the run, regardless of location     |
-| `encounters`         | `Encounter[]`                    | Yes      | -       | The encounter slots to display                                     |
-| `generation`         | `number`                         | Yes      | -       | The game's generation, used to resolve each Pokemon's types        |
-| `onSelectEncounter`  | `(encounter: Encounter) => void` | No       | -       | Called with the clicked row's encounter                            |
-| `selectedSpecies`    | `string`                         | No       | -       | The species of the currently selected row, if any, to highlight it |
-| `variant`            | `string`                         | Yes      | -       | The sprite variant to prefer, matching the game's slug             |
+| Prop                | Type                             | Required | Default | Description                                                                        |
+| ------------------- | -------------------------------- | -------- | ------- | ---------------------------------------------------------------------------------- |
+| `caughtHere`        | `string`                         | No       | -       | The species already caught at this location, if any, highlighted green             |
+| `dupes`             | `string[]`                       | Yes      | -       | Every species caught so far in the run, regardless of location                     |
+| `encounters`        | `Encounter[]`                    | Yes      | -       | The encounter slots to display                                                     |
+| `generation`        | `number`                         | Yes      | -       | The game's generation, used to resolve each Pokemon's types                        |
+| `isMissed`          | `boolean`                        | Yes      | -       | Whether this location's encounter was marked missed, styling the toggle button red |
+| `onSelectEncounter` | `(encounter: Encounter) => void` | No       | -       | Called with the clicked row's encounter                                            |
+| `onToggleMissed`    | `() => void`                     | Yes      | -       | Called when the "MISS"/"MISSED" button is clicked                                  |
+| `selectedSpecies`   | `string`                         | No       | -       | The species of the currently selected row, if any, to highlight it                 |
+| `variant`           | `string`                         | Yes      | -       | The sprite variant to prefer, matching the game's slug                             |
 
 ## State
 
@@ -51,5 +65,9 @@ highlight if both apply.
 - `getTypes` — a Pokemon's types at `generation`, rendered as badges
   (`/types/{type}.png`) beneath its name
 - `isEvolutionLineCaught` — whether a species' evolution family
-  (resolved via `PokemonHelpers`) includes any name in
-  `caughtPokemonNames`
+  (resolved via `PokemonHelpers`) includes any name in `dupes`
+- `isCaughtHere` — whether a row's species is in the same evolution
+  family (resolved via `PokemonHelpers`) as `caughtHere`, highlighting
+  the row green
+- `isCaughtElsewhere` — whether a row's species isn't `isCaughtHere` but
+  `isEvolutionLineCaught`, highlighting the row red

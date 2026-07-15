@@ -15,6 +15,7 @@ type PokedexTileProps = (
     | {
           dupes: string[];
           encounter?: string;
+          isLocationMissed: boolean;
           mode: 'catch';
           onAddPokemon: (
               details: Pick<
@@ -35,6 +36,7 @@ type PokedexTileProps = (
     onSelectSpecies: (species: string) => void;
     originalSpecies?: string;
     species?: string;
+    usedLocations: string[];
     variant: string;
 };
 
@@ -45,6 +47,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     onSelectSpecies,
     originalSpecies,
     species,
+    usedLocations,
     variant,
     ...rest
 }) => {
@@ -146,7 +149,14 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         : [];
     const defaultCatchSpecies = originalSpecies ?? species;
     const isCaughtHere =
-        rest.mode === 'catch' && !!pokemon && rest.encounter === pokemon.name;
+        rest.mode === 'catch' &&
+        !!pokemon &&
+        !!rest.encounter &&
+        PokemonHelpers.isSameEvolutionLine(
+            pokemon.name,
+            rest.encounter,
+            generation
+        );
     const isOtherCaughtHere =
         rest.mode === 'catch' && !!rest.encounter && !isCaughtHere;
     const isEvolutionLineCaught =
@@ -158,7 +168,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     const isCatchDisabled =
         rest.mode === 'catch' &&
         !isCaughtHere &&
-        (isOtherCaughtHere || isEvolutionLineCaught);
+        (isOtherCaughtHere || isEvolutionLineCaught || rest.isLocationMissed);
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -370,7 +380,10 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                             onSelectMove={onSelectMove}
                         />
                     ) : (
-                        <LocationsList locations={locations} />
+                        <LocationsList
+                            locations={locations}
+                            usedLocations={usedLocations}
+                        />
                     )}
                 </div>
             )}

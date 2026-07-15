@@ -8,19 +8,25 @@ import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './EncounterTable.module.scss';
 
 interface EncounterTableProps {
+    caughtHere?: string;
     dupes: string[];
     encounters: Encounter[];
     generation: number;
+    isMissed: boolean;
     onSelectEncounter?: (encounter: Encounter) => void;
+    onToggleMissed: () => void;
     selectedSpecies?: string;
     variant: string;
 }
 
 const EncounterTable: React.FC<EncounterTableProps> = ({
+    caughtHere,
     dupes,
     encounters,
     generation,
+    isMissed,
     onSelectEncounter,
+    onToggleMissed,
     selectedSpecies,
     variant,
 }) => {
@@ -191,6 +197,19 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                     </div>
                 )}
             </div>
+            <button
+                className={[
+                    styles['miss-button'],
+                    isMissed && styles['miss-button--active'],
+                ]
+                    .filter(Boolean)
+                    .join(' ')}
+                disabled={!isMissed && !!caughtHere}
+                onClick={onToggleMissed}
+                type="button"
+            >
+                {isMissed ? 'MISSED' : 'MISS'}
+            </button>
             <table className={styles['encounter-table']}>
                 <colgroup>
                     <col className={styles['col-pokemon']} />
@@ -222,9 +241,16 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                                     variant
                                 );
                                 const types = getTypes(encounter.species);
-                                const isCaught = isEvolutionLineCaught(
-                                    encounter.species
-                                );
+                                const isCaughtHere =
+                                    !!caughtHere &&
+                                    PokemonHelpers.isSameEvolutionLine(
+                                        encounter.species,
+                                        caughtHere,
+                                        generation
+                                    );
+                                const isCaughtElsewhere =
+                                    !isCaughtHere &&
+                                    isEvolutionLineCaught(encounter.species);
 
                                 return (
                                     <tr
@@ -233,7 +259,10 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                                             encounter.species ===
                                                 selectedSpecies &&
                                                 styles['row--selected'],
-                                            isCaught && styles['row--caught'],
+                                            isCaughtHere &&
+                                                styles['row--caught'],
+                                            isCaughtElsewhere &&
+                                                styles['row--used'],
                                         ]
                                             .filter(Boolean)
                                             .join(' ')}

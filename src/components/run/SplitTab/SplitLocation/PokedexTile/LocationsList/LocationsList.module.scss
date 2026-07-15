@@ -43,6 +43,10 @@ $method-width: 5rem;
             border-bottom: 1px solid $border-subtle;
         }
 
+        &--used {
+            background: rgba($red, 0.12);
+        }
+
         .chance {
             color: $text-mid;
             flex-shrink: 0;

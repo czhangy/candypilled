@@ -78,6 +78,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
                     onSelectSpecies={handleSelectSpecies}
                     originalSpecies={activeStarter ?? undefined}
                     species={speciesOverride ?? activeStarter ?? undefined}
+                    usedLocations={[]}
                     variant={variant}
                 />
             </div>

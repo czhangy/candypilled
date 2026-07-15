@@ -117,6 +117,10 @@ export interface Run {
     hallOfFameCount: number;
     starter: string | null;
     caughtPokemon: CaughtPokemon[];
+    // Locations whose encounter was used up without catching anything (the
+    // Pokemon fled, fainted, etc.), by location name — same key space as
+    // CaughtPokemon.location, and mutually exclusive with it.
+    missedLocations: string[];
 }
 
 export interface TypesByGeneration {

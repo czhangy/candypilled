@@ -32,7 +32,10 @@ both the encounter table, which highlights a row green if its species
 or any member of its evolution line has been caught, and the Pokedex
 tile, which disables the catch button under the same condition (except
 for the Pokemon already caught here), enforcing one catch per
-evolution line.
+evolution line. Below the encounter table's header, a "MISS"/"MISSED"
+toggle button records this location's encounter as used up without a
+catch, in the run's storage; while missed, the Pokedex tile's catch
+button is disabled until the miss is toggled off again.
 
 ## Props
 
@@ -82,12 +85,18 @@ evolution line.
   contributes no battles to the section, so no markers or battle card
   render for it, even though the same subarea data may render battles
   when reused (without the flag) by another split
-- `caughtPokemonNames` — every species in `run.caughtPokemon`,
-  regardless of location; passed to the encounter table and Pokedex
-  tile to enforce one catch per evolution line
-- `caughtSpecies` — the species in `run.caughtPokemon` whose recorded
+- `dupes` — every species in `run.caughtPokemon`, regardless of
+  location; passed to the encounter table and Pokedex tile to enforce
+  one catch per evolution line
+- `isMissed` — whether `location.name` is present in
+  `run.missedLocations`; passed to the encounter table to style its
+  toggle button red and disable the catch button
+- `encounter` — the species in `run.caughtPokemon` whose recorded
   location matches `location.name`, if any; passed to the Pokedex tile
   to enforce one catch per location
+- `usedLocations` — every location name in `run.caughtPokemon`, plus
+  `run.missedLocations`; passed to the Pokedex tile to highlight
+  already-used locations in its locations tab
 
 ## Handlers
 
@@ -111,6 +120,11 @@ evolution line.
   `heldItem`) to the run's `caughtPokemon` in storage
 - **On Pokedex tile catch button click while caught here** — removes
   this location's record from the run's `caughtPokemon` in storage
+- **On "Add Pokemon" submit** — also removes `location.name` from the
+  run's `missedLocations` in storage, if present, since catching and
+  missing are mutually exclusive
+- **On encounter table "MISS"/"MISSED" button click** — adds or
+  removes `location.name` from the run's `missedLocations` in storage
 
 ## SCSS Variable Dependencies
 
