@@ -42,6 +42,9 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     // -------------------------------------------------------------------------
 
     const [activeTab, setActiveTab] = useState(TABS[0].id);
+    const [selectedMove, setSelectedMove] = useState<string | undefined>(
+        undefined
+    );
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -79,6 +82,15 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         setActiveTab(id);
     };
 
+    const handleMoveSelect = (name: string): void => {
+        setSelectedMove(name);
+    };
+
+    const handleMoveLinkClick = (name: string): void => {
+        setSelectedMove(name);
+        setActiveTab('moves');
+    };
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -108,8 +120,20 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                 onTabChange={handleTabChange}
                 tabs={TABS}
             />
-            {activeTab === 'split' && <SplitTab game={game} run={run} />}
-            {activeTab === 'moves' && <MovesTab generation={game.generation} />}
+            {activeTab === 'split' && (
+                <SplitTab
+                    game={game}
+                    onSelectMove={handleMoveLinkClick}
+                    run={run}
+                />
+            )}
+            {activeTab === 'moves' && (
+                <MovesTab
+                    generation={game.generation}
+                    onSelectMove={handleMoveSelect}
+                    selectedMove={selectedMove}
+                />
+            )}
         </div>
     );
 };

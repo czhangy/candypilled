@@ -185,6 +185,27 @@
                             &:first-child {
                                 border-top: none;
                             }
+
+                            .move-button {
+                                background: none;
+                                border: none;
+                                color: inherit;
+                                cursor: pointer;
+                                font: inherit;
+                                padding: 0;
+                                transition: color 0.2s ease;
+                                width: 100%;
+
+                                @media (hover: hover) {
+                                    &:hover {
+                                        color: var(--accent-color);
+                                    }
+                                }
+
+                                @media (prefers-reduced-motion: reduce) {
+                                    transition: none;
+                                }
+                            }
                         }
 
                         .pokemon-slot__metadata-item--ability,

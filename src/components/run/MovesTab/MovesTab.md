@@ -7,15 +7,11 @@ three-quarters of the row's width respectively.
 
 ## Props
 
-| Prop         | Type     | Required | Default | Description                                                                                            |
-| ------------ | -------- | -------- | ------- | ------------------------------------------------------------------------------------------------------ |
-| `generation` | `number` | Yes      | -       | The game's generation, used to resolve the selected move's values and to filter which moves are listed |
-
-## State
-
-| State          | Type                  | Initial value | Description                           |
-| -------------- | --------------------- | ------------- | ------------------------------------- |
-| `selectedMove` | `string \| undefined` | `undefined`   | The name of the selected move, if any |
+| Prop           | Type                     | Required | Default | Description                                                                                                       |
+| -------------- | ------------------------ | -------- | ------- | ----------------------------------------------------------------------------------------------------------------- |
+| `generation`   | `number`                 | Yes      | -       | The game's generation, used to resolve the selected move's values and to filter which moves are listed            |
+| `onSelectMove` | `(name: string) => void` | Yes      | -       | Called with a move's name when it's clicked in the list                                                           |
+| `selectedMove` | `string`                 | No       | -       | The currently selected move's name, if any; owned by `RunPage` so a move link elsewhere on the page can select it |
 
 ## Computations
 

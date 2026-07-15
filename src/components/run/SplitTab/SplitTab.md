@@ -7,10 +7,11 @@ a collapsible card for each location in the current split.
 
 ## Props
 
-| Prop   | Type   | Required | Default | Description                          |
-| ------ | ------ | -------- | ------- | ------------------------------------ |
-| `game` | `Game` | Yes      | -       | The game the run belongs to          |
-| `run`  | `Run`  | Yes      | -       | The run whose current split is shown |
+| Prop           | Type                     | Required | Default | Description                                                           |
+| -------------- | ------------------------ | -------- | ------- | --------------------------------------------------------------------- |
+| `game`         | `Game`                   | Yes      | -       | The game the run belongs to                                           |
+| `onSelectMove` | `(name: string) => void` | Yes      | -       | Called when a move is clicked within a `SplitLocation`'s `BattleCard` |
+| `run`          | `Run`                    | Yes      | -       | The run whose current split is shown                                  |
 
 ## Computations
 

@@ -19,12 +19,13 @@ changing which row is selected in the encounter table.
 
 ## Props
 
-| Prop       | Type       | Required | Default | Description                                            |
-| ---------- | ---------- | -------- | ------- | ------------------------------------------------------ |
-| `game`     | `Game`     | Yes      | -       | The game the run belongs to, for saving defeat state   |
-| `location` | `Location` | Yes      | -       | The location this card displays                        |
-| `run`      | `Run`      | Yes      | -       | The run whose defeated battles are shown               |
-| `variant`  | `string`   | Yes      | -       | The sprite variant to prefer, matching the game's slug |
+| Prop           | Type                     | Required | Default | Description                                                  |
+| -------------- | ------------------------ | -------- | ------- | ------------------------------------------------------------ |
+| `game`         | `Game`                   | Yes      | -       | The game the run belongs to, for saving defeat state         |
+| `location`     | `Location`               | Yes      | -       | The location this card displays                              |
+| `onSelectMove` | `(name: string) => void` | Yes      | -       | Called when a move is clicked within the battle card's teams |
+| `run`          | `Run`                    | Yes      | -       | The run whose defeated battles are shown                     |
+| `variant`      | `string`                 | Yes      | -       | The sprite variant to prefer, matching the game's slug       |
 
 ## State
 

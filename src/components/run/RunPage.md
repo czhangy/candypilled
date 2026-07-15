@@ -16,9 +16,10 @@ currently active tab.
 
 ## State
 
-| State       | Type     | Initial value | Description                          |
-| ----------- | -------- | ------------- | ------------------------------------ |
-| `activeTab` | `string` | `'split'`     | The `id` of the currently active tab |
+| State          | Type                  | Initial value | Description                                                                                           |
+| -------------- | --------------------- | ------------- | ----------------------------------------------------------------------------------------------------- |
+| `activeTab`    | `string`              | `'split'`     | The `id` of the currently active tab                                                                  |
+| `selectedMove` | `string \| undefined` | `undefined`   | The currently selected move's name, shared between the Moves tab and move links elsewhere on the page |
 
 ## Computations
 
@@ -32,3 +33,10 @@ currently active tab.
 - `personalBestLabel` — the personal best subtitle text: the battle's
   trainer class and name followed by `// <split name>`, or `'N/A'` if the
   run has no personal best yet
+
+## Handlers
+
+- **On move link click** (from `SplitTab`, e.g. a move within `BattleCard`)
+  — sets `selectedMove` and switches `activeTab` to `'moves'`
+- **On move select** (from `MovesTab`) — sets `selectedMove` without
+  changing `activeTab`

@@ -11,6 +11,7 @@ interface BattleCardProps {
     battle: Battle;
     generation: number;
     isDefeated: boolean;
+    onSelectMove: (name: string) => void;
     onToggleDefeated: () => void;
     starter: string | null;
     variant: string;
@@ -20,6 +21,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
     battle,
     generation,
     isDefeated,
+    onSelectMove,
     onToggleDefeated,
     starter,
     variant,
@@ -46,6 +48,14 @@ const BattleCard: React.FC<BattleCardProps> = ({
             pokemon.ability ??
             PokemonHelpers.getAbilities(pokemon.name, generation)?.slot1;
         return ability && StringHelpers.toTitleCase(ability);
+    };
+
+    // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleMoveClick = (move: string): void => {
+        onSelectMove(move);
     };
 
     // -------------------------------------------------------------------------
@@ -269,9 +279,29 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                             { length: MOVE_SLOT_COUNT },
                                             (_, index) =>
                                                 pokemon.moves[index] ?? '-'
-                                        ).map((move, index) => (
-                                            <li key={index}>{move}</li>
-                                        ))}
+                                        ).map((move, index) =>
+                                            move === '-' ? (
+                                                <li key={index}>{move}</li>
+                                            ) : (
+                                                <li key={index}>
+                                                    <button
+                                                        className={
+                                                            styles[
+                                                                'move-button'
+                                                            ]
+                                                        }
+                                                        onClick={() =>
+                                                            handleMoveClick(
+                                                                move
+                                                            )
+                                                        }
+                                                        type="button"
+                                                    >
+                                                        {move}
+                                                    </button>
+                                                </li>
+                                            )
+                                        )}
                                     </ul>
                                 </div>
                             );
