@@ -52,7 +52,7 @@ button is disabled until the miss is toggled off again.
 
 | State                  | Type        | Initial value                                               | Description                                                                                                 |
 | ---------------------- | ----------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `isOpen`               | `boolean`   | `false`                                                     | Whether the location's content is expanded                                                                  |
+| `isOpen`               | `boolean`   | `true`                                                      | Whether the location's content is expanded                                                                  |
 | `selectedBattle`       | `Battle`    | `undefined`                                                 | The battle currently selected on the map, if any                                                            |
 | `selectedEncounter`    | `Encounter` | `undefined`                                                 | The encounter currently selected in the table, if any                                                       |
 | `selectedSubareaIndex` | `number`    | Index of the first subarea that isn't fully cleared, or `0` | Which of the location's subareas is currently shown                                                         |
@@ -98,6 +98,9 @@ button is disabled until the miss is toggled off again.
 - `usedLocations` — every location name in `run.caughtPokemon`, plus
   `run.missedLocations`; passed to the Pokedex tile to highlight
   already-used locations in its locations tab
+
+The root element's `id` is `StringHelpers.toSlug(location.name)`, so
+`SplitTab`'s table of contents can link directly to this card.
 
 ## Handlers
 

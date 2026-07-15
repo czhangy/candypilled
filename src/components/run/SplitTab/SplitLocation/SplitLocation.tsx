@@ -14,6 +14,7 @@ import {
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
+import StringHelpers from '@/lib/utils/StringHelpers';
 import BattleCard from './BattleCard/BattleCard';
 import EncounterTable from './EncounterTable/EncounterTable';
 import LocationMap from './LocationMap/LocationMap';
@@ -89,7 +90,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // STATE
     // -------------------------------------------------------------------------
 
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     const [selectedSubareaIndex, setSelectedSubareaIndex] = useState<number>(0);
     const [selectedBattle, setSelectedBattle] = useState<Battle | undefined>(
         () => getDefaultSelectedBattle(selectedSubareaIndex)
@@ -243,7 +244,10 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // -------------------------------------------------------------------------
 
     return (
-        <div className={styles['split-location']}>
+        <div
+            className={styles['split-location']}
+            id={StringHelpers.toSlug(location.name)}
+        >
             <div className={styles.header}>
                 <button
                     aria-expanded={isOpen}

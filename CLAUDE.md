@@ -83,7 +83,7 @@ src/components/
 
 **Component reuse**: When two components share the same markup structure and styles with only content differing, extract a shared component with props rather than duplicating. Thin wrapper components that only pass fixed props to a shared component do not need a `.module.scss` file.
 
-**Page-level padding**: All full-page components must include `padding: 1.5rem` (desktop) and `padding: 1rem` (mobile, `width <= 768px`) on their outermost element.
+**Page-level padding**: All full-page components must include `padding: 1.5rem` on their outermost element. The site does not support screen sizes below `$max-content-width` (1260px) — `globals.scss` shows a small-screen message instead of the site shell below that width — so components must not contain mobile-specific (`width <= 768px` or similar) breakpoints.
 
 Each component directory contains a `ComponentName.md` documentation file co-located with the `.tsx` and `.module.scss` files. Whenever a component is modified, its documentation file must be updated to reflect the changes.
 
