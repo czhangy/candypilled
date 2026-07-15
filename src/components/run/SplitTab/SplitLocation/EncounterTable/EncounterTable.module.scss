@@ -120,6 +120,11 @@
                 box-shadow: inset 3px 0 0 0 $green;
             }
 
+            &--used {
+                background: rgba($red, 0.12);
+                box-shadow: inset 3px 0 0 0 $red;
+            }
+
             @media (prefers-reduced-motion: reduce) {
                 transition: none;
             }

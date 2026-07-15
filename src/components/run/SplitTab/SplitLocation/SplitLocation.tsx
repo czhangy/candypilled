@@ -316,6 +316,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                             {section.encounters && (
                                 <div className={styles['encounters-row']}>
                                     <EncounterTable
+                                        caughtHere={encounter}
                                         dupes={dupes}
                                         encounters={section.encounters}
                                         generation={game.generation}

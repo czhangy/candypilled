@@ -8,6 +8,7 @@ import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './EncounterTable.module.scss';
 
 interface EncounterTableProps {
+    caughtHere?: string;
     dupes: string[];
     encounters: Encounter[];
     generation: number;
@@ -17,6 +18,7 @@ interface EncounterTableProps {
 }
 
 const EncounterTable: React.FC<EncounterTableProps> = ({
+    caughtHere,
     dupes,
     encounters,
     generation,
@@ -222,9 +224,16 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                                     variant
                                 );
                                 const types = getTypes(encounter.species);
-                                const isCaught = isEvolutionLineCaught(
-                                    encounter.species
-                                );
+                                const isCaughtHere =
+                                    !!caughtHere &&
+                                    PokemonHelpers.isSameEvolutionLine(
+                                        encounter.species,
+                                        caughtHere,
+                                        generation
+                                    );
+                                const isCaughtElsewhere =
+                                    !isCaughtHere &&
+                                    isEvolutionLineCaught(encounter.species);
 
                                 return (
                                     <tr
@@ -233,7 +242,10 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                                             encounter.species ===
                                                 selectedSpecies &&
                                                 styles['row--selected'],
-                                            isCaught && styles['row--caught'],
+                                            isCaughtHere &&
+                                                styles['row--caught'],
+                                            isCaughtElsewhere &&
+                                                styles['row--used'],
                                         ]
                                             .filter(Boolean)
                                             .join(' ')}
