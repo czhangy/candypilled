@@ -24,7 +24,6 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
     const METHOD_LABELS: Record<LearnsetMove['method'], string> = {
         'level-up': 'Level',
         machine: 'TM',
-        egg: 'Egg',
         tutor: 'Tutor',
     };
 

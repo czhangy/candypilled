@@ -20,21 +20,17 @@ const DATA_PATH = path.join('src', 'lib', 'data', 'pokemon.json');
 const FETCH_DELAY_MS = 75;
 const MAX_DEX_NUMBER = getMaxDexNumber(CURRENT_GAME_VERSION.generation);
 
-// Learn methods tracked on the site. PokeAPI also reports a handful of
-// oddities (e.g. "stadium-surfing-pikachu", "light-ball-egg", "form-change")
-// that are quirks of specific spin-off events rather than real learnsets.
-const KNOWN_METHODS = new Set<LearnsetMethod>([
-    'level-up',
-    'egg',
-    'machine',
-    'tutor',
-]);
+// Learn methods tracked on the site. Egg moves are deliberately excluded:
+// they're a breeding mechanic rather than something learnable in the run
+// this site tracks. PokeAPI also reports a handful of oddities (e.g.
+// "stadium-surfing-pikachu", "light-ball-egg", "form-change") that are
+// quirks of specific spin-off events rather than real learnsets.
+const KNOWN_METHODS = new Set<LearnsetMethod>(['level-up', 'machine', 'tutor']);
 
 const METHOD_ORDER: Record<LearnsetMethod, number> = {
     'level-up': 0,
     machine: 1,
-    egg: 2,
-    tutor: 3,
+    tutor: 2,
 };
 
 const sleep = (ms: number): Promise<void> =>

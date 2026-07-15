@@ -1,7 +1,7 @@
 # LearnsetList
 
 A scrollable list of a Pokemon's learnset, showing each move alongside how
-it's learned (level-up, TM, egg, or tutor) and, resolved from move data, its
+it's learned (level-up, TM, or tutor) and, resolved from move data, its
 type icon, category icon, and power. Each row is a clickable link,
 highlighting its background on hover. Shows a "No moves found" message when
 the list is empty.

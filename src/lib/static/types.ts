@@ -192,7 +192,7 @@ export interface MoveData {
     valuesByGeneration: MoveValuesByGeneration[];
 }
 
-export type LearnsetMethod = 'level-up' | 'machine' | 'tutor' | 'egg';
+export type LearnsetMethod = 'level-up' | 'machine' | 'tutor';
 
 export interface LearnsetMove {
     name: string;
