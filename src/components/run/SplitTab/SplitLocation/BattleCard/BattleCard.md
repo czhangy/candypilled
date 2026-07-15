@@ -22,7 +22,8 @@ A "Defeat" button below the portrait toggles the trainer's defeated
 state in storage; once defeated it reads "Defeated" and turns green, and
 can be clicked again to undo. Each Pokemon's moves are clickable, linking
 to that move's details; a move's background is tinted to match its type,
-darkening further on hover.
+darkening further on hover. Moves flagged as dangerous are shown in red
+text.
 
 ## Props
 
@@ -48,6 +49,8 @@ darkening further on hover.
   `generation`, resolved via `PokemonHelpers`
 - `getMoveColor` — a move's type color at `generation`, resolved via
   `MoveHelpers` and `TypeHelpers`, tinting that move's background
+- `MoveHelpers.isDangerous` — whether a move is flagged as dangerous,
+  rendering its button's text in red
 - battle item sprites are resolved via `ItemHelpers.getSprite`
   (`/battle_items/{slug}.png`)
 

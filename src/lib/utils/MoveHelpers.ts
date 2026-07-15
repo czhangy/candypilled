@@ -22,4 +22,8 @@ export default class MoveHelpers {
             .reverse()
             .find((entry) => entry.fromGeneration <= generation);
     }
+
+    static isDangerous(name: string): boolean {
+        return MoveHelpers.get(name)?.isDangerous ?? false;
+    }
 }
