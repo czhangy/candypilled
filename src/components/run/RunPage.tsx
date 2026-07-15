@@ -13,6 +13,7 @@ import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import AbilitiesTab from './AbilitiesTab/AbilitiesTab';
+import BoxTab from './BoxTab/BoxTab';
 import MovesTab from './MovesTab/MovesTab';
 import styles from './RunPage.module.scss';
 import SplitTab from './SplitTab/SplitTab';
@@ -55,6 +56,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const activeTab = searchParams.get('tab') ?? TABS[0].id;
     const selectedMove = searchParams.get('move') ?? undefined;
     const selectedAbility = searchParams.get('ability') ?? undefined;
+    const selectedPokemon = searchParams.get('pokemon') ?? undefined;
 
     const game = GAMES.find(
         (candidate) => StringHelpers.toSlug(candidate.name) === slug
@@ -124,6 +126,10 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         updateQueryParams({ ability: name });
     };
 
+    const handlePokemonSelect = (location: string): void => {
+        updateQueryParams({ pokemon: location });
+    };
+
     const handleAbilityLinkClick = (name: string): void => {
         window.open(
             `${pathname}?tab=abilities&ability=${encodeURIComponent(name)}`,
@@ -167,6 +173,14 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                     onSelectAbility={handleAbilityLinkClick}
                     onSelectMove={handleMoveLinkClick}
                     run={run}
+                />
+            )}
+            {activeTab === 'box' && (
+                <BoxTab
+                    game={game}
+                    onSelectPokemon={handlePokemonSelect}
+                    run={run}
+                    selectedPokemon={selectedPokemon}
                 />
             )}
             {activeTab === 'moves' && (

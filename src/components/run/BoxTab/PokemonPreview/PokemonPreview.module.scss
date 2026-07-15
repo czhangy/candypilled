@@ -1,0 +1,48 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.pokemon-preview {
+    border: 1px solid $border-subtle;
+    border-radius: 0.5rem;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+
+    .header {
+        @include uppercase-label;
+
+        background: $background-light;
+        border-bottom: 1px solid $border-subtle;
+        padding: 0.5rem 1.5rem;
+    }
+
+    .content {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        min-height: 10rem;
+        padding: 1.5rem;
+
+        &--empty {
+            padding: 1.5rem;
+        }
+
+        .sprite {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+
+            img {
+                height: 10rem;
+                image-rendering: pixelated;
+                width: 10rem;
+            }
+        }
+
+        .placeholder {
+            color: $text-dim;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+    }
+}
