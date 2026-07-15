@@ -3,7 +3,7 @@
 Displays details for a single ability: its name and effect text. If no
 ability is selected, a placeholder message is shown instead. The content
 area scrolls internally past a fixed maximum height rather than growing
-the page.
+the page, with a styled scrollbar matching the rest of the app.
 
 ## Props
 
