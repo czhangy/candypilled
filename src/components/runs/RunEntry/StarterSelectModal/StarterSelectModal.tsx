@@ -2,29 +2,37 @@
 
 import { useState } from 'react';
 import Modal from '@/components/common/Modal/Modal';
+import PokedexTile from '@/components/run/SplitTab/SplitLocation/PokedexTile/PokedexTile';
+import { Game } from '@/lib/static/types';
+import StringHelpers from '@/lib/utils/StringHelpers';
 import StarterSelect from './StarterSelect/StarterSelect';
 import styles from './StarterSelectModal.module.scss';
 
 interface StarterSelectModalProps {
-    accentColor: string;
+    game: Game;
     onClose: () => void;
     onSelect: (starter: string) => void;
-    starters: string[];
-    variant: string;
 }
 
 const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
-    accentColor,
+    game,
     onClose,
     onSelect,
-    starters,
-    variant,
 }) => {
     // -------------------------------------------------------------------------
     // STATE
     // -------------------------------------------------------------------------
 
     const [activeStarter, setActiveStarter] = useState<string | null>(null);
+    const [speciesOverride, setSpeciesOverride] = useState<string | undefined>(
+        undefined
+    );
+
+    // -------------------------------------------------------------------------
+    // RENDERING
+    // -------------------------------------------------------------------------
+
+    const variant = StringHelpers.toSlug(game.name);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -32,11 +40,14 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
 
     const handleStarterSelect = (starter: string): void => {
         setActiveStarter(starter);
+        setSpeciesOverride(undefined);
     };
 
-    const handleConfirmClick = (): void => {
-        if (activeStarter) onSelect(activeStarter);
+    const handleSelectSpecies = (species: string): void => {
+        setSpeciesOverride(species);
     };
+
+    const handleSelectMove = (): void => {};
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -44,27 +55,31 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
 
     return (
         <Modal
-            accentColor={accentColor}
+            accentColor={game.accentColor}
+            maxWidth="41rem"
             onClose={onClose}
             title="Choose your starter"
         >
             <div className={styles['starter-select-modal']}>
-                <StarterSelect
-                    onSelect={handleStarterSelect}
-                    selected={activeStarter}
-                    starters={starters}
+                <div className={styles['starter-column']}>
+                    <StarterSelect
+                        onSelect={handleStarterSelect}
+                        selected={activeStarter}
+                        starters={game.starters}
+                        variant={variant}
+                    />
+                </div>
+                <PokedexTile
+                    game={game}
+                    generation={game.generation}
+                    mode="select"
+                    onSelect={onSelect}
+                    onSelectMove={handleSelectMove}
+                    onSelectSpecies={handleSelectSpecies}
+                    originalSpecies={activeStarter ?? undefined}
+                    species={speciesOverride ?? activeStarter ?? undefined}
                     variant={variant}
                 />
-                <div className={styles.footer}>
-                    <button
-                        className={styles['confirm-button']}
-                        disabled={!activeStarter}
-                        onClick={handleConfirmClick}
-                        type="button"
-                    >
-                        Confirm
-                    </button>
-                </div>
             </div>
         </Modal>
     );

@@ -331,6 +331,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         encounter={encounter}
                                         game={game}
                                         generation={game.generation}
+                                        mode="catch"
                                         onAddPokemon={handleAddPokemon}
                                         onRemovePokemon={handleRemovePokemon}
                                         onSelectMove={onSelectMove}

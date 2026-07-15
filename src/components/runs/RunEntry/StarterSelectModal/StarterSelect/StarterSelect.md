@@ -1,6 +1,6 @@
 # StarterSelect
 
-A centered row of buttons for choosing a starter Pokemon at the beginning
+A vertical list of buttons for choosing a starter Pokemon at the beginning
 of a run, one per option offered by the game. Each button renders
 the starter's sprite matching the game's variant, falling back to any other
 synced sprite (or the starter's name) if that variant hasn't been synced.

@@ -8,6 +8,7 @@ import styles from './Modal.module.scss';
 interface ModalProps {
     accentColor?: string;
     children: React.ReactNode;
+    maxWidth?: string;
     onClose: () => void;
     title?: string;
 }
@@ -15,6 +16,7 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({
     accentColor,
     children,
+    maxWidth,
     onClose,
     title,
 }) => {
@@ -64,11 +66,10 @@ const Modal: React.FC<ModalProps> = ({
             className={styles.overlay}
             onClick={handleOverlayClick}
             style={
-                accentColor
-                    ? ({
-                          '--accent-color': accentColor,
-                      } as React.CSSProperties)
-                    : undefined
+                {
+                    ...(accentColor && { '--accent-color': accentColor }),
+                    ...(maxWidth && { '--modal-max-width': maxWidth }),
+                } as React.CSSProperties
             }
         >
             <div className={styles.modal} onClick={handleContentClick}>

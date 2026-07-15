@@ -22,11 +22,6 @@ starter before the run is created.
 | `isConfirmOpen`       | `boolean` | `false`       | Whether the "start a new run" confirmation modal is open |
 | `isStarterSelectOpen` | `boolean` | `false`       | Whether the starter selection modal is open              |
 
-## Computations
-
-- `variant` — the game's slug, used to resolve starter sprites in
-  `StarterSelectModal`
-
 ## Handlers
 
 - **On "Continue" click** — navigates to the game's run page

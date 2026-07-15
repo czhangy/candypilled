@@ -41,7 +41,6 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     const personalBestSplitName = run?.personalBest
         ? BattleProgressHelpers.getSplitName(game, run.personalBest)
         : null;
-    const variant = StringHelpers.toSlug(game.name);
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -195,11 +194,9 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             )}
             {isStarterSelectOpen && (
                 <StarterSelectModal
-                    accentColor={game.accentColor}
+                    game={game}
                     onClose={handleStarterSelectClose}
                     onSelect={handleStarterSelect}
-                    starters={game.starters}
-                    variant={variant}
                 />
             )}
         </div>

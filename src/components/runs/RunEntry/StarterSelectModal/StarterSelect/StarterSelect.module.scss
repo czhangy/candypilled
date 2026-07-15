@@ -2,15 +2,13 @@
 @use '@/styles/mixins' as *;
 
 .starter-select {
-    align-items: center;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    margin: 0 auto;
-    width: fit-content;
 
     .starters {
         display: flex;
+        flex-direction: column;
         gap: 0.75rem;
 
         .starter {
