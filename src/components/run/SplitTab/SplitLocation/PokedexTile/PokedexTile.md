@@ -4,7 +4,8 @@ Displays details for a single Pokemon, split into a left half
 showing its sprite, name, and type badges, and a right half divided
 into an upper section (two-thirds height) listing its abilities and
 a lower section (one-third height) showing its catch rate. Below
-that split, a full-width section shows the Pokemon's evolution line,
+that split, a full-width button lets the selected Pokemon be marked
+as caught. Below that, a full-width section shows the Pokemon's evolution line,
 or a "No evolution line" message for species with no evolutions, and
 below that, a full-width section shows its base stats as a horizontal
 bar chart. A final full-width section holds two tabs, "Learnset" and
@@ -28,9 +29,10 @@ message is shown instead.
 
 ## State
 
-| State             | Type                        | Initial value | Description                             |
-| ----------------- | --------------------------- | ------------- | --------------------------------------- |
-| `activeDetailTab` | `'learnset' \| 'locations'` | `'learnset'`  | Which tab is shown in the final section |
+| State             | Type                        | Initial value | Description                                      |
+| ----------------- | --------------------------- | ------------- | ------------------------------------------------ |
+| `activeDetailTab` | `'learnset' \| 'locations'` | `'learnset'`  | Which tab is shown in the final section          |
+| `isCaught`        | `boolean`                   | `false`       | Whether the selected Pokemon is marked as caught |
 
 ## Computations
 
@@ -63,3 +65,4 @@ message is shown instead.
 ## Handlers
 
 - **On a details tab click** — sets `activeDetailTab` to that tab
+- **On the catch button click** — toggles `isCaught`

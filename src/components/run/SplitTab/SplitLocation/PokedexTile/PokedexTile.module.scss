@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '@/styles/constants' as *;
 @use '@/styles/mixins' as *;
 
@@ -145,6 +146,43 @@ $label-width: 5.5rem;
             color: $text-dim;
             font-size: 0.85rem;
             text-align: center;
+        }
+    }
+
+    .catch-button {
+        @include mono-label;
+
+        background: $background-light;
+        border: none;
+        border-top: 1px solid $border-subtle;
+        color: var(--accent-color);
+        cursor: pointer;
+        display: block;
+        letter-spacing: 0.05em;
+        padding: 0.6rem;
+        text-align: center;
+        transition: background 0.15s ease;
+        width: 100%;
+
+        @media (hover: hover) {
+            &:hover {
+                background: color.adjust($background-light, $lightness: -8%);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+
+        &--caught {
+            background: $green;
+            color: white;
+
+            @media (hover: hover) {
+                &:hover {
+                    background: color.adjust($green, $lightness: -8%);
+                }
+            }
         }
     }
 

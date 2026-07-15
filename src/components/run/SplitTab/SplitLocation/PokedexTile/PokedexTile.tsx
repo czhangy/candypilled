@@ -48,6 +48,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
 
     const [activeDetailTab, setActiveDetailTab] =
         useState<DetailTab>('learnset');
+    const [isCaught, setIsCaught] = useState(false);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -55,6 +56,10 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
 
     const handleDetailTabChange = (tab: DetailTab): void => {
         setActiveDetailTab(tab);
+    };
+
+    const handleToggleCaught = (): void => {
+        setIsCaught((prev) => !prev);
     };
 
     // -------------------------------------------------------------------------
@@ -203,10 +208,24 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     </>
                 ) : (
                     <span className={styles.placeholder}>
-                        Select a Pokemon to view its details
+                        Select a Pokemon to view its details or catch it
                     </span>
                 )}
             </div>
+            {pokemon && (
+                <button
+                    className={[
+                        styles['catch-button'],
+                        isCaught && styles['catch-button--caught'],
+                    ]
+                        .filter(Boolean)
+                        .join(' ')}
+                    onClick={handleToggleCaught}
+                    type="button"
+                >
+                    {isCaught ? 'CAUGHT' : 'CATCH'}
+                </button>
+            )}
             {pokemon && (
                 <div className={styles.evolution}>
                     <span className={styles['evolution-label']}>
