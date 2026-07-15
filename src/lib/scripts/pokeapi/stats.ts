@@ -165,12 +165,13 @@ const buildStatsByGeneration = (pokemon: RawPokemon): StatsByGeneration[] => {
     ].sort((a, b) => a - b);
 
     return boundaries.map((fromGeneration) => {
-        const stats = Object.fromEntries(
-            statKeys.map((statKey) => [
-                statKey,
-                valueAt(timelines[statKey], fromGeneration),
-            ])
-        ) as StatValues;
+        const stats = statKeys.reduce<StatValues>(
+            (result, statKey) => ({
+                ...result,
+                [statKey]: valueAt(timelines[statKey], fromGeneration),
+            }),
+            {} as StatValues
+        );
 
         return { fromGeneration, stats };
     });
