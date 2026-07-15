@@ -16,10 +16,11 @@ currently active tab.
 
 ## State
 
-| State          | Type                  | Initial value | Description                                                                                           |
-| -------------- | --------------------- | ------------- | ----------------------------------------------------------------------------------------------------- |
-| `activeTab`    | `string`              | `'split'`     | The `id` of the currently active tab                                                                  |
-| `selectedMove` | `string \| undefined` | `undefined`   | The currently selected move's name, shared between the Moves tab and move links elsewhere on the page |
+| State             | Type                  | Initial value | Description                                                                                           |
+| ----------------- | --------------------- | ------------- | ----------------------------------------------------------------------------------------------------- |
+| `activeTab`       | `string`              | `'split'`     | The `id` of the currently active tab                                                                  |
+| `selectedMove`    | `string \| undefined` | `undefined`   | The currently selected move's name, shared between the Moves tab and move links elsewhere on the page |
+| `selectedAbility` | `string \| undefined` | `undefined`   | The currently selected ability's name, owned by `RunPage` for the Abilities tab                       |
 
 ## Computations
 
@@ -40,3 +41,4 @@ currently active tab.
   — sets `selectedMove` and switches `activeTab` to `'moves'`
 - **On move select** (from `MovesTab`) — sets `selectedMove` without
   changing `activeTab`
+- **On ability select** (from `AbilitiesTab`) — sets `selectedAbility`

@@ -5,7 +5,8 @@ row of stats (type badge, category icon, power, accuracy, PP, and
 priority), and its effect text (with its effect chance appended, if any).
 The priority stat is omitted entirely for moves with priority 0, and
 shown with a leading "+" for positive priority. If no move is selected,
-a placeholder message is shown instead.
+a placeholder message is shown instead. The content area scrolls internally
+past a fixed maximum height rather than growing the page.
 
 ## Props
 

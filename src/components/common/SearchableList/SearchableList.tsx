@@ -1,19 +1,24 @@
 'use client';
 
 import { useState } from 'react';
-import { MoveData } from '@/lib/static/types';
-import styles from './MoveList.module.scss';
+import styles from './SearchableList.module.scss';
 
-interface MoveListProps {
-    moves: MoveData[];
-    onSelectMove?: (name: string) => void;
-    selectedMove?: string;
+interface SearchableListProps {
+    emptyMessage: string;
+    items: { name: string }[];
+    onSelectItem?: (name: string) => void;
+    searchAriaLabel: string;
+    searchPlaceholder: string;
+    selectedItem?: string;
 }
 
-const MoveList: React.FC<MoveListProps> = ({
-    moves,
-    onSelectMove,
-    selectedMove,
+const SearchableList: React.FC<SearchableListProps> = ({
+    emptyMessage,
+    items,
+    onSelectItem,
+    searchAriaLabel,
+    searchPlaceholder,
+    selectedItem,
 }) => {
     // -------------------------------------------------------------------------
     // STATE
@@ -31,8 +36,8 @@ const MoveList: React.FC<MoveListProps> = ({
         setQuery(event.target.value);
     };
 
-    const handleMoveClick = (name: string): void => {
-        onSelectMove?.(name);
+    const handleItemClick = (name: string): void => {
+        onSelectItem?.(name);
     };
 
     // -------------------------------------------------------------------------
@@ -40,8 +45,8 @@ const MoveList: React.FC<MoveListProps> = ({
     // -------------------------------------------------------------------------
 
     const normalizedQuery = query.trim().toLowerCase();
-    const visibleMoves = moves
-        .filter((move) => move.name.toLowerCase().includes(normalizedQuery))
+    const visibleItems = items
+        .filter((item) => item.name.toLowerCase().includes(normalizedQuery))
         .sort((a, b) => a.name.localeCompare(b.name));
 
     // -------------------------------------------------------------------------
@@ -49,42 +54,42 @@ const MoveList: React.FC<MoveListProps> = ({
     // -------------------------------------------------------------------------
 
     return (
-        <div className={styles['move-list']}>
+        <div className={styles['searchable-list']}>
             <div className={styles.search}>
                 <input
-                    aria-label="Search moves"
+                    aria-label={searchAriaLabel}
                     className={styles['search-input']}
                     onChange={handleQueryChange}
-                    placeholder="Search moves..."
+                    placeholder={searchPlaceholder}
                     type="text"
                     value={query}
                 />
             </div>
             <ul className={styles.list}>
-                {visibleMoves.map((move) => (
-                    <li key={move.name}>
+                {visibleItems.map((item) => (
+                    <li key={item.name}>
                         <button
-                            aria-pressed={move.name === selectedMove}
+                            aria-pressed={item.name === selectedItem}
                             className={[
                                 styles.item,
-                                move.name === selectedMove &&
+                                item.name === selectedItem &&
                                     styles['item--selected'],
                             ]
                                 .filter(Boolean)
                                 .join(' ')}
-                            onClick={() => handleMoveClick(move.name)}
+                            onClick={() => handleItemClick(item.name)}
                             type="button"
                         >
-                            {move.name}
+                            {item.name}
                         </button>
                     </li>
                 ))}
-                {visibleMoves.length === 0 && (
-                    <li className={styles.empty}>No moves found</li>
+                {visibleItems.length === 0 && (
+                    <li className={styles.empty}>{emptyMessage}</li>
                 )}
             </ul>
         </div>
     );
 };
 
-export default MoveList;
+export default SearchableList;

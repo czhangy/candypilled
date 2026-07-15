@@ -1,7 +1,7 @@
 @use '@/styles/constants' as *;
 @use '@/styles/mixins' as *;
 
-.move-detail {
+.ability-detail {
     border: 1px solid $border-subtle;
     border-radius: 0.5rem;
     flex: 1;
@@ -34,42 +34,6 @@
 
                 font-size: 1.1rem;
             }
-
-            .description {
-                color: $text-mid;
-                font-size: 0.85rem;
-                margin: 0.5rem 0 0;
-            }
-        }
-
-        .stats {
-            border-top: 1px solid $border-subtle;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-
-            .stat {
-                display: flex;
-                flex-direction: column;
-                gap: 0.25rem;
-
-                .stat-label {
-                    @include uppercase-label;
-
-                    font-size: 0.7rem;
-                }
-
-                .stat-value {
-                    color: $foreground;
-                    font-size: 0.9rem;
-                }
-
-                img {
-                    image-rendering: pixelated;
-                }
-            }
         }
 
         .effect {
@@ -89,6 +53,7 @@
                 color: $text-mid;
                 font-size: 0.85rem;
                 margin: 0;
+                white-space: pre-line;
             }
         }
 
