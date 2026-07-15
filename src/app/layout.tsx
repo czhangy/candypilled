@@ -22,9 +22,14 @@ export default function RootLayout({
     return (
         <html lang="en" className={jetBrainsMono.variable}>
             <body>
-                <Navbar />
-                <main className="page-main">{children}</main>
-                <Footer />
+                <div className="small-screen-message">
+                    This site is not available at small screen sizes
+                </div>
+                <div className="site-shell">
+                    <Navbar />
+                    <main className="page-main">{children}</main>
+                    <Footer />
+                </div>
             </body>
         </html>
     );
