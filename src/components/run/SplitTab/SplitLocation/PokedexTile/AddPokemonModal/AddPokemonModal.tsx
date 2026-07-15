@@ -221,18 +221,30 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
                 <div className={styles.field}>
                     <span className={styles.label}>Moves</span>
                     <div className={styles.moves}>
-                        {moves.map((move, index) => (
-                            <Dropdown
-                                key={index}
-                                onChange={(value) =>
-                                    handleMoveChange(index, value)
-                                }
-                                options={moveOptions}
-                                placeholder="None"
-                                searchable
-                                value={move}
-                            />
-                        ))}
+                        {moves.map((move, index) => {
+                            const slotOptions = moveOptions.filter(
+                                (option) =>
+                                    option.value === '' ||
+                                    !moves.some(
+                                        (selected, selectedIndex) =>
+                                            selectedIndex !== index &&
+                                            selected === option.value
+                                    )
+                            );
+
+                            return (
+                                <Dropdown
+                                    key={index}
+                                    onChange={(value) =>
+                                        handleMoveChange(index, value)
+                                    }
+                                    options={slotOptions}
+                                    placeholder="None"
+                                    searchable
+                                    value={move}
+                                />
+                            );
+                        })}
                     </div>
                 </div>
                 <div className={styles.field}>

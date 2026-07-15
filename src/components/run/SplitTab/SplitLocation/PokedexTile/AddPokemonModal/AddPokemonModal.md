@@ -41,6 +41,8 @@ the selected values up and closes the modal.
 - `moveOptions` — `learnset`'s move names deslugified via `MoveHelpers`,
   deduped, and sorted alphabetically, with a "None" option (empty value)
   prepended so a slot can be left or reset to unselected
+- each move slot's options — `moveOptions` filtered to exclude moves
+  selected in any other slot, so the same move can't be picked twice
 
 ## Handlers
 
