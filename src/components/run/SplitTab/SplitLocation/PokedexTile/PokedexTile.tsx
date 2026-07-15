@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
 import LearnsetList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
@@ -38,6 +39,23 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         hidden?: boolean;
         name: string;
     }
+
+    type DetailTab = 'learnset' | 'locations';
+
+    // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [activeDetailTab, setActiveDetailTab] =
+        useState<DetailTab>('learnset');
+
+    // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleDetailTabChange = (tab: DetailTab): void => {
+        setActiveDetailTab(tab);
+    };
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -218,20 +236,47 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     </div>
                 </div>
             )}
-            {pokemon && learnset && (
-                <div className={styles.learnset}>
-                    <span className={styles['learnset-label']}>Learnset</span>
-                    <LearnsetList
-                        generation={generation}
-                        moves={learnset}
-                        onSelectMove={onSelectMove}
-                    />
-                </div>
-            )}
             {pokemon && (
-                <div className={styles.locations}>
-                    <span className={styles['locations-label']}>Locations</span>
-                    <LocationsList locations={locations} />
+                <div className={styles.details}>
+                    <div className={styles['details-tabs']}>
+                        <button
+                            aria-pressed={activeDetailTab === 'learnset'}
+                            className={[
+                                styles['details-tab'],
+                                activeDetailTab === 'learnset' &&
+                                    styles['details-tab--active'],
+                            ]
+                                .filter(Boolean)
+                                .join(' ')}
+                            onClick={() => handleDetailTabChange('learnset')}
+                            type="button"
+                        >
+                            Learnset
+                        </button>
+                        <button
+                            aria-pressed={activeDetailTab === 'locations'}
+                            className={[
+                                styles['details-tab'],
+                                activeDetailTab === 'locations' &&
+                                    styles['details-tab--active'],
+                            ]
+                                .filter(Boolean)
+                                .join(' ')}
+                            onClick={() => handleDetailTabChange('locations')}
+                            type="button"
+                        >
+                            Locations
+                        </button>
+                    </div>
+                    {activeDetailTab === 'learnset' ? (
+                        <LearnsetList
+                            generation={generation}
+                            moves={learnset ?? []}
+                            onSelectMove={onSelectMove}
+                        />
+                    ) : (
+                        <LocationsList locations={locations} />
+                    )}
                 </div>
             )}
         </div>

@@ -191,29 +191,40 @@ $label-width: 5.5rem;
         }
     }
 
-    .learnset {
+    .details {
         border-top: 1px solid $border-subtle;
         padding: 1rem 1.5rem;
 
-        .learnset-label {
-            @include uppercase-label;
-
-            display: block;
-            font-size: 0.7rem;
+        .details-tabs {
+            display: flex;
+            gap: 1rem;
             margin-bottom: 0.75rem;
         }
-    }
 
-    .locations {
-        border-top: 1px solid $border-subtle;
-        padding: 1rem 1.5rem;
-
-        .locations-label {
+        .details-tab {
             @include uppercase-label;
 
-            display: block;
+            background: none;
+            border: none;
+            color: $text-dim;
+            cursor: pointer;
             font-size: 0.7rem;
-            margin-bottom: 0.75rem;
+            padding: 0;
+            transition: color 0.2s ease;
+
+            @media (hover: hover) {
+                &:hover {
+                    color: $foreground;
+                }
+            }
+
+            &--active {
+                color: var(--accent-color);
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
         }
     }
 }
