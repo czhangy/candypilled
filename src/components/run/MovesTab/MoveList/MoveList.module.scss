@@ -16,18 +16,24 @@
         padding: 0.75rem;
 
         .search-input {
-            background: none;
+            background: $background;
             border: 1px solid $border-subtle;
-            border-radius: 0.25rem;
+            border-radius: 0.5rem;
             color: $foreground;
             font-family: $font-mono;
-            font-size: 0.8rem;
-            padding: 0.4rem 0.6rem;
+            font-size: 0.85rem;
+            padding: 0.5rem 0.75rem;
             transition: border-color 0.2s ease;
             width: 100%;
 
             &::placeholder {
                 color: $text-dim;
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    border-color: $text-mid;
+                }
             }
 
             &:focus {
@@ -47,6 +53,27 @@
         max-height: 32rem;
         overflow-y: auto;
         padding: 0;
+        scrollbar-color: $border-subtle transparent;
+        scrollbar-width: thin;
+
+        &::-webkit-scrollbar {
+            width: 0.5rem;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: $border-subtle;
+            border-radius: 0.25rem;
+
+            @media (hover: hover) {
+                &:hover {
+                    background: $text-dim;
+                }
+            }
+        }
 
         .item {
             background: none;
@@ -54,6 +81,7 @@
             color: $foreground;
             cursor: pointer;
             display: block;
+            font-family: $font-mono;
             font-size: 0.85rem;
             padding: 0.5rem 0.75rem;
             text-align: left;
