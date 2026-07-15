@@ -41,6 +41,27 @@ const SearchableList: React.FC<SearchableListProps> = ({
     };
 
     // -------------------------------------------------------------------------
+    // COMPUTATIONS
+    // -------------------------------------------------------------------------
+
+    const getHighlightedName = (name: string): React.ReactNode => {
+        if (!normalizedQuery) return name;
+
+        const index = name.toLowerCase().indexOf(normalizedQuery);
+        if (index === -1) return name;
+
+        return (
+            <>
+                {name.slice(0, index)}
+                <span className={styles.match}>
+                    {name.slice(index, index + normalizedQuery.length)}
+                </span>
+                {name.slice(index + normalizedQuery.length)}
+            </>
+        );
+    };
+
+    // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
@@ -80,7 +101,7 @@ const SearchableList: React.FC<SearchableListProps> = ({
                             onClick={() => handleItemClick(item.name)}
                             type="button"
                         >
-                            {item.name}
+                            {getHighlightedName(item.name)}
                         </button>
                     </li>
                 ))}

@@ -4,6 +4,8 @@ A search bar above an alphabetical, scrollable list of named items. Clicking
 an item selects it; the currently selected item is highlighted. Typing in
 the search bar filters the list to items whose name contains the query
 (case-insensitive), showing a caller-provided message when nothing matches.
+The first matching substring of each visible item's name is highlighted in
+the accent color.
 
 ## Props
 
@@ -26,3 +28,11 @@ the search bar filters the list to items whose name contains the query
 
 - `visibleItems` — `items` filtered by `query` (case-insensitive substring
   match against each item's name) and sorted alphabetically
+- `getHighlightedName` — an item's name with its first case-insensitive
+  match against `query` wrapped in an accent-colored span, or the plain
+  name when `query` is empty or doesn't match
+
+## SCSS Variable Dependencies
+
+- `--accent-color` — used to highlight the matching substring of each
+  visible item's name
