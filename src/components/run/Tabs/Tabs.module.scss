@@ -5,8 +5,9 @@
     border-bottom: 1px solid $border-subtle;
     display: flex;
     gap: 1.5rem;
-    justify-content: center;
+    margin: 0 auto;
     position: relative;
+    width: fit-content;
 
     .tab {
         @include mono-label;
