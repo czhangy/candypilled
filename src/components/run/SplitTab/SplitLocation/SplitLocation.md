@@ -16,17 +16,19 @@ encounters, if any, are shown in a table below the map and battle card,
 with a Pokedex tile to its right showing whichever encounter's row was
 most recently clicked in the table. Clicking a Pokemon within the
 Pokedex tile's evolution line instead shows that Pokemon, without
-changing which row is selected in the encounter table.
+changing which row is selected in the encounter table. Clicking a move
+within the Pokedex tile's learnset list behaves the same as clicking one
+in the battle card's teams.
 
 ## Props
 
-| Prop           | Type                     | Required | Default | Description                                                  |
-| -------------- | ------------------------ | -------- | ------- | ------------------------------------------------------------ |
-| `game`         | `Game`                   | Yes      | -       | The game the run belongs to, for saving defeat state         |
-| `location`     | `Location`               | Yes      | -       | The location this card displays                              |
-| `onSelectMove` | `(name: string) => void` | Yes      | -       | Called when a move is clicked within the battle card's teams |
-| `run`          | `Run`                    | Yes      | -       | The run whose defeated battles are shown                     |
-| `variant`      | `string`                 | Yes      | -       | The sprite variant to prefer, matching the game's slug       |
+| Prop           | Type                     | Required | Default | Description                                                                                 |
+| -------------- | ------------------------ | -------- | ------- | ------------------------------------------------------------------------------------------- |
+| `game`         | `Game`                   | Yes      | -       | The game the run belongs to, for saving defeat state                                        |
+| `location`     | `Location`               | Yes      | -       | The location this card displays                                                             |
+| `onSelectMove` | `(name: string) => void` | Yes      | -       | Called when a move is clicked within the battle card's teams or the Pokedex tile's learnset |
+| `run`          | `Run`                    | Yes      | -       | The run whose defeated battles are shown                                                    |
+| `variant`      | `string`                 | Yes      | -       | The sprite variant to prefer, matching the game's slug                                      |
 
 ## State
 

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
+import LearnsetList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
 import StatsChart from '@/components/run/SplitTab/SplitLocation/PokedexTile/StatsChart/StatsChart';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -7,6 +8,7 @@ import styles from './PokedexTile.module.scss';
 
 interface PokedexTileProps {
     generation: number;
+    onSelectMove?: (name: string) => void;
     onSelectSpecies?: (species: string) => void;
     species?: string;
     variant: string;
@@ -14,6 +16,7 @@ interface PokedexTileProps {
 
 const PokedexTile: React.FC<PokedexTileProps> = ({
     generation,
+    onSelectMove,
     onSelectSpecies,
     species,
     variant,
@@ -64,6 +67,9 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         !!evolutionLine && evolutionLine.evolvesTo.length > 0;
     const stats = species
         ? PokemonHelpers.getStats(species, generation)
+        : undefined;
+    const learnset = species
+        ? PokemonHelpers.getLearnset(species, generation)
         : undefined;
 
     // -------------------------------------------------------------------------
@@ -202,6 +208,16 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     <div className={styles['stats-content']}>
                         <StatsChart stats={stats} />
                     </div>
+                </div>
+            )}
+            {pokemon && learnset && (
+                <div className={styles.learnset}>
+                    <span className={styles['learnset-label']}>Learnset</span>
+                    <LearnsetList
+                        generation={generation}
+                        moves={learnset}
+                        onSelectMove={onSelectMove}
+                    />
                 </div>
             )}
         </div>

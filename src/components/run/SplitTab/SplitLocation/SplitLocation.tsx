@@ -325,6 +325,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                     />
                                     <PokedexTile
                                         generation={game.generation}
+                                        onSelectMove={onSelectMove}
                                         onSelectSpecies={handleSpeciesSelect}
                                         species={
                                             speciesOverride ??

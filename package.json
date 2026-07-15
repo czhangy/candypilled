@@ -21,6 +21,7 @@
         "pokeapi:stats": "tsx src/lib/scripts/pokeapi/stats.ts",
         "pokeapi:evolutions": "tsx src/lib/scripts/pokeapi/evolutions.ts",
         "pokeapi:moves": "tsx src/lib/scripts/pokeapi/moves.ts",
+        "pokeapi:learnsets": "tsx src/lib/scripts/pokeapi/learnsets.ts",
         "compose": "tsx src/lib/scripts/assets/compose-map-sprite.ts",
         "prepare": "husky"
     },
