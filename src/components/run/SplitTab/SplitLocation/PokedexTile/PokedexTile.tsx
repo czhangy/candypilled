@@ -148,7 +148,14 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         : [];
     const defaultCatchSpecies = originalSpecies ?? species;
     const isCaughtHere =
-        rest.mode === 'catch' && !!pokemon && rest.encounter === pokemon.name;
+        rest.mode === 'catch' &&
+        !!pokemon &&
+        !!rest.encounter &&
+        PokemonHelpers.isSameEvolutionLine(
+            pokemon.name,
+            rest.encounter,
+            generation
+        );
     const isOtherCaughtHere =
         rest.mode === 'catch' && !!rest.encounter && !isCaughtHere;
     const isEvolutionLineCaught =

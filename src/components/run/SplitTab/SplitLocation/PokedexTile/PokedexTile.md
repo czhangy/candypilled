@@ -22,13 +22,16 @@ Operates in one of two mutually exclusive modes, set via `mode`:
   clicking it opens a modal (`AddPokemonModal`) to record the caught
   species (defaulting to the one selected here) along with its ability,
   nature, IVs, and level. The button reads "CAUGHT" (styled green) when
-  the selected Pokemon is the one already caught at the current location,
-  and clicking it again in that state removes the catch instead of
-  reopening the modal. Otherwise, the button is disabled whenever a
-  different species is already caught at this location, or the selected
-  Pokemon (or any member of its evolution line) has been caught anywhere
-  else in the run, enforcing both one catch per location and one catch
-  per evolution line.
+  the selected Pokemon, or any member of its evolution line, is the one
+  already caught at the current location (catching an evolution records
+  the evolved species, not the originally selected one, so navigating
+  the evolution line afterward still shows "CAUGHT"), and clicking it
+  again in that state removes the catch instead of reopening the modal.
+  Otherwise, the button is disabled whenever a different species is
+  already caught at this location, or the selected Pokemon (or any
+  member of its evolution line) has been caught anywhere else in the
+  run, enforcing both one catch per location and one catch per
+  evolution line.
 - **`select`** — used when choosing a run's starter. The button reads
   "SELECT" and, unlike `catch`, is never disabled and finalizes the
   choice immediately on click rather than opening a modal.
@@ -92,12 +95,13 @@ Operates in one of two mutually exclusive modes, set via `mode`:
   navigating to an evolution via `onSelectSpecies` before catching
   still records the originally encountered species (only relevant in
   `catch` mode)
-- `isCaughtHere` — in `catch` mode, whether `encounter` matches the
-  selected Pokemon, used to show "CAUGHT" (styled green) on the catch
-  button and let it be clicked again to remove the catch; always
-  `false` in `select` mode
-- `isOtherCaughtHere` — in `catch` mode, whether a different species
-  than the selected Pokemon is already caught at this location; always
+- `isCaughtHere` — in `catch` mode, whether `encounter` is in the same
+  evolution family (resolved via `PokemonHelpers`) as the selected
+  Pokemon, used to show "CAUGHT" (styled green) on the catch button and
+  let it be clicked again to remove the catch; always `false` in
+  `select` mode
+- `isOtherCaughtHere` — in `catch` mode, whether some species is
+  already caught at this location and `isCaughtHere` is false; always
   `false` in `select` mode
 - `isEvolutionLineCaught` — in `catch` mode, whether the selected
   Pokemon's evolution family (resolved via `PokemonHelpers`) includes
