@@ -773,7 +773,7 @@
         "category": "physical",
         "priority": 0,
         "introducedInGeneration": 1,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,
@@ -6033,7 +6033,7 @@
         "category": "special",
         "priority": 0,
         "introducedInGeneration": 1,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,
@@ -6655,7 +6655,7 @@
         "category": "physical",
         "priority": 0,
         "introducedInGeneration": 1,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,
@@ -8647,7 +8647,7 @@
         "category": "status",
         "priority": 0,
         "introducedInGeneration": 1,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,
@@ -10878,7 +10878,7 @@
         "category": "status",
         "priority": 0,
         "introducedInGeneration": 1,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,
@@ -13670,7 +13670,7 @@
         "category": "status",
         "priority": 0,
         "introducedInGeneration": 2,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,
@@ -23488,7 +23488,7 @@
         "category": "special",
         "priority": 0,
         "introducedInGeneration": 3,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,
@@ -32064,7 +32064,7 @@
         "category": "status",
         "priority": 0,
         "introducedInGeneration": 5,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,
@@ -33063,7 +33063,7 @@
         "category": "status",
         "priority": 0,
         "introducedInGeneration": 5,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,

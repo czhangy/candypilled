@@ -68,6 +68,15 @@ const DANGEROUS_MOVES = new Set([
     'tail-glow',
     'calm-mind',
     'dragon-dance',
+    'guillotine',
+    'sheer-cold',
+    'fissure',
+    'metronome',
+    'quiver-dance',
+    'belly-drum',
+    'spore',
+    'dragon-rage',
+    'shell-smash',
 ]);
 
 const sleep = (ms: number): Promise<void> =>
