@@ -7,16 +7,18 @@ a lower section (one-third height) showing its catch rate. Below
 that split, a full-width section shows the Pokemon's evolution line,
 or a "No evolution line" message for species with no evolutions, and
 below that, a full-width section shows its base stats as a horizontal
-bar chart. Below the stats, a final full-width section lists its
-learnset, with each move's name clickable to view it elsewhere. Used
-alongside an encounter table to show whichever Pokemon is currently
-selected. If no Pokemon is selected, a placeholder message is shown
-instead.
+bar chart. Below the stats, a full-width section lists its learnset,
+with each move's name clickable to view it elsewhere. A final full-width
+section lists every wild location the species can be found in, sorted by
+encounter chance. Used alongside an encounter table to show whichever
+Pokemon is currently selected. If no Pokemon is selected, a placeholder
+message is shown instead.
 
 ## Props
 
 | Prop              | Type                        | Required | Default | Description                                                |
 | ----------------- | --------------------------- | -------- | ------- | ---------------------------------------------------------- |
+| `game`            | `Game`                      | Yes      | -       | The game the run belongs to, for looking up wild locations |
 | `generation`      | `number`                    | Yes      | -       | The game's generation, used to resolve the Pokemon's types |
 | `onSelectMove`    | `(name: string) => void`    | No       | -       | Called when a move is clicked within the learnset list     |
 | `onSelectSpecies` | `(species: string) => void` | No       | -       | Called when a Pokemon is clicked within the evolution line |
@@ -46,3 +48,6 @@ instead.
   via `PokemonHelpers` and rendered with `StatsChart`
 - `learnset` — the selected species' learnset at `generation`, resolved
   via `PokemonHelpers` and rendered with `LearnsetList`
+- `locations` — every wild encounter of the selected species across
+  `game`'s splits and locations, resolved via `LocationHelpers` and
+  rendered with `LocationsList`

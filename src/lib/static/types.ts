@@ -58,6 +58,11 @@ export interface LocationEncounters {
     encounters: Encounter[];
 }
 
+export interface EncounterLocation {
+    name: string;
+    encounter: Encounter;
+}
+
 export interface Subarea {
     name: string;
     encountersKey?: string;
