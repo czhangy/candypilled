@@ -17,4 +17,4 @@ The currently selected starter is highlighted in the game's accent color.
 
 ## SCSS Variable Dependencies
 
-- `--accent-color` — the active game's accent color, set by `RunPage`
+- `--accent-color` — the active game's accent color, set by `Modal`
