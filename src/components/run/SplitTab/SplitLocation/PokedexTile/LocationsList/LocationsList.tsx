@@ -4,9 +4,13 @@ import styles from './LocationsList.module.scss';
 
 interface LocationsListProps {
     locations: EncounterLocation[];
+    usedLocations: string[];
 }
 
-const LocationsList: React.FC<LocationsListProps> = ({ locations }) => {
+const LocationsList: React.FC<LocationsListProps> = ({
+    locations,
+    usedLocations,
+}) => {
     // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------
@@ -31,7 +35,16 @@ const LocationsList: React.FC<LocationsListProps> = ({ locations }) => {
     return (
         <ul className={styles['locations-list']}>
             {sortedLocations.map((location, index) => (
-                <li className={styles.row} key={`${location.name}-${index}`}>
+                <li
+                    className={[
+                        styles.row,
+                        usedLocations.includes(location.name) &&
+                            styles['row--used'],
+                    ]
+                        .filter(Boolean)
+                        .join(' ')}
+                    key={`${location.name}-${index}`}
+                >
                     <span className={styles.chance}>
                         {location.encounter.chance !== null
                             ? `${location.encounter.chance}%`

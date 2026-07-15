@@ -11,7 +11,8 @@ bar chart. A final full-width section holds two tabs, "Learnset" and
 "Locations": clicking either tab's label switches the content below
 between the species' learnset (each move's name clickable to view it
 elsewhere) and every wild location it can be found in, sorted by minimum
-encounter level. If no Pokemon is selected, a placeholder message is
+encounter level, with locations already used for a catch in the run
+highlighted red. If no Pokemon is selected, a placeholder message is
 shown instead.
 
 Operates in one of two mutually exclusive modes, set via `mode`:
@@ -48,6 +49,7 @@ Operates in one of two mutually exclusive modes, set via `mode`:
 | `onSelectSpecies` | `(species: string) => void`                                                                              | Yes                             | -       | Called when a Pokemon is clicked within the evolution line                                                                             |
 | `originalSpecies` | `string`                                                                                                 | No                              | -       | The species actually selected before navigating to an evolution, used as the catch default even after navigating via `onSelectSpecies` |
 | `species`         | `string`                                                                                                 | No                              | -       | The selected Pokemon's species, if any                                                                                                 |
+| `usedLocations`   | `string[]`                                                                                               | Yes                             | -       | Names of locations that already have an encounter caught there in the run, used to highlight rows in the locations tab                 |
 | `variant`         | `string`                                                                                                 | Yes                             | -       | The sprite variant to prefer, matching the game's slug                                                                                 |
 
 ## State
@@ -83,7 +85,8 @@ Operates in one of two mutually exclusive modes, set via `mode`:
   `activeDetailTab` is `'learnset'`
 - `locations` — every wild encounter of the selected species across
   `game`'s splits and locations, resolved via `LocationHelpers` and
-  rendered with `LocationsList` when `activeDetailTab` is `'locations'`
+  rendered with `LocationsList` (along with `usedLocations`) when
+  `activeDetailTab` is `'locations'`
 - `defaultCatchSpecies` — `originalSpecies` if given, otherwise
   `species`; passed to `AddPokemonModal` as the species to catch, so
   navigating to an evolution via `onSelectSpecies` before catching

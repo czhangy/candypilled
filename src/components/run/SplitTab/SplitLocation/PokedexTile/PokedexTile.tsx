@@ -35,6 +35,7 @@ type PokedexTileProps = (
     onSelectSpecies: (species: string) => void;
     originalSpecies?: string;
     species?: string;
+    usedLocations: string[];
     variant: string;
 };
 
@@ -45,6 +46,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     onSelectSpecies,
     originalSpecies,
     species,
+    usedLocations,
     variant,
     ...rest
 }) => {
@@ -370,7 +372,10 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                             onSelectMove={onSelectMove}
                         />
                     ) : (
-                        <LocationsList locations={locations} />
+                        <LocationsList
+                            locations={locations}
+                            usedLocations={usedLocations}
+                        />
                     )}
                 </div>
             )}

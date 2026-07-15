@@ -193,6 +193,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // -------------------------------------------------------------------------
 
     const dupes = run.caughtPokemon.map((caught) => caught.name);
+    const usedLocations = run.caughtPokemon.map((caught) => caught.location);
     const encounter = run.caughtPokemon.find(
         (caught) => caught.location === location.name
     )?.name;
@@ -345,6 +346,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                             speciesOverride ??
                                             selectedEncounter?.species
                                         }
+                                        usedLocations={usedLocations}
                                         variant={variant}
                                     />
                                 </div>

@@ -88,6 +88,9 @@ evolution line.
 - `caughtSpecies` — the species in `run.caughtPokemon` whose recorded
   location matches `location.name`, if any; passed to the Pokedex tile
   to enforce one catch per location
+- `usedLocations` — every location name in `run.caughtPokemon`; passed to
+  the Pokedex tile to highlight already-used locations in its locations
+  tab
 
 ## Handlers
 

@@ -3,13 +3,16 @@
 A scrollable list of every location a Pokemon can be found in the wild,
 sorted by minimum encounter level (lowest first). Each row shows the
 encounter chance, location name, level range, and method (as plain text,
-no icon). Shows a "No locations found" message when the list is empty.
+no icon). A row is highlighted with a red background if its location
+already has a Pokemon caught there. Shows a "No locations found" message
+when the list is empty.
 
 ## Props
 
-| Prop        | Type                  | Required | Default | Description                     |
-| ----------- | --------------------- | -------- | ------- | ------------------------------- |
-| `locations` | `EncounterLocation[]` | Yes      | -       | The locations to list, unsorted |
+| Prop            | Type                  | Required | Default | Description                                                    |
+| --------------- | --------------------- | -------- | ------- | -------------------------------------------------------------- |
+| `locations`     | `EncounterLocation[]` | Yes      | -       | The locations to list, unsorted                                |
+| `usedLocations` | `string[]`            | Yes      | -       | Names of locations that already have an encounter caught there |
 
 ## Computations
 
