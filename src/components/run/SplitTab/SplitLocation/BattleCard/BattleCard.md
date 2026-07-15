@@ -10,8 +10,9 @@ annotated with their stat
 effects, shown in a smaller font on the same line (e.g.
 "Adamant [+Atk -SpA]"). The portrait is split into a
 field condition section above
-the sprite (e.g. "Rain") and a held items section below it (e.g.
-"2x Potion"), each hidden when not present on the battle. A "Fog" field
+the sprite (e.g. "Rain") and a held items section below it, showing the
+item's count followed by its sprite (e.g. "2x" beside a Potion sprite),
+each hidden when not present on the battle. A "Fog" field
 condition is followed by an asterisk whose tooltip reads "Can be cleared
 using Defog". An "Optional"
 section appears below that for battles that aren't required to progress,
@@ -47,6 +48,8 @@ darkening further on hover.
   `generation`, resolved via `PokemonHelpers`
 - `getMoveColor` — a move's type color at `generation`, resolved via
   `MoveHelpers` and `TypeHelpers`, tinting that move's background
+- battle item sprites are resolved via `ItemHelpers.getSprite`
+  (`/battle_items/{slug}.png`)
 
 ## SCSS Variable Dependencies
 

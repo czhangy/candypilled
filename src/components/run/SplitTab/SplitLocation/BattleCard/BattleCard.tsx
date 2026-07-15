@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Battle, BattlePokemon } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
+import ItemHelpers from '@/lib/utils/ItemHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -32,6 +33,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
+    const ITEM_SPRITE_SIZE = 32;
     const MOVE_SLOT_COUNT = 4;
     const SPRITE_SIZE = 96;
     const TEAM_SLOT_COUNT = 6;
@@ -134,8 +136,23 @@ const BattleCard: React.FC<BattleCardProps> = ({
                             </div>
                         )}
                         {battle.items && (
-                            <div className={styles['trainer__metadata']}>
-                                {`${battle.items.count}x ${battle.items.name}`}
+                            <div
+                                className={[
+                                    styles['trainer__metadata'],
+                                    styles['trainer__item'],
+                                ].join(' ')}
+                            >
+                                <span className={styles['trainer__item-count']}>
+                                    {`${battle.items.count}x`}
+                                </span>
+                                <Image
+                                    alt={battle.items.name}
+                                    height={ITEM_SPRITE_SIZE}
+                                    src={ItemHelpers.getSprite(
+                                        battle.items.name
+                                    )}
+                                    width={ITEM_SPRITE_SIZE}
+                                />
                             </div>
                         )}
                         <button

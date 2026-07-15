@@ -78,6 +78,20 @@
                     }
                 }
 
+                .trainer__item {
+                    gap: 0.3rem;
+                    overflow: hidden;
+
+                    .trainer__item-count {
+                        font-size: 0.75rem;
+                    }
+
+                    img {
+                        flex-shrink: 0;
+                        image-rendering: pixelated;
+                    }
+                }
+
                 .trainer__defeat {
                     @include mono-label;
 
