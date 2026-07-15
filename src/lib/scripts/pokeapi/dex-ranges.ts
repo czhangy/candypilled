@@ -26,3 +26,18 @@ export const getMaxDexNumber = (generation: number): number => {
 
     return range.end;
 };
+
+// The generation that introduced the species at the given national dex
+// number, i.e. which era's sprites/data are the earliest that can exist for
+// it.
+export const getGenerationForDexNumber = (dexNumber: number): number => {
+    const range = DEX_RANGES.find(
+        (candidate) =>
+            dexNumber >= candidate.start && dexNumber <= candidate.end
+    );
+    if (!range) {
+        throw new Error(`No dex range is configured for #${dexNumber}.`);
+    }
+
+    return range.generation;
+};
