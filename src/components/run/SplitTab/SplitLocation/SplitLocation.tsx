@@ -324,6 +324,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         variant={variant}
                                     />
                                     <PokedexTile
+                                        game={game}
                                         generation={game.generation}
                                         onSelectMove={onSelectMove}
                                         onSelectSpecies={handleSpeciesSelect}
