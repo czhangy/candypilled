@@ -50,18 +50,35 @@ const SplitTab: React.FC<SplitTabProps> = ({
                     )}
                 </div>
             </div>
-            <div className={styles.locations}>
-                {currentSplit?.locations.map((location) => (
-                    <SplitLocation
-                        game={game}
-                        key={location.name}
-                        location={location}
-                        onSelectAbility={onSelectAbility}
-                        onSelectMove={onSelectMove}
-                        run={run}
-                        variant={variant}
-                    />
-                ))}
+            <div className={styles.body}>
+                <nav className={styles.toc}>
+                    <span className={styles['toc-label']}>Locations</span>
+                    <ul className={styles['toc-list']}>
+                        {currentSplit?.locations.map((location) => (
+                            <li key={location.name}>
+                                <a
+                                    className={styles['toc-link']}
+                                    href={`#${StringHelpers.toSlug(location.name)}`}
+                                >
+                                    {location.name}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+                <div className={styles.locations}>
+                    {currentSplit?.locations.map((location) => (
+                        <SplitLocation
+                            game={game}
+                            key={location.name}
+                            location={location}
+                            onSelectAbility={onSelectAbility}
+                            onSelectMove={onSelectMove}
+                            run={run}
+                            variant={variant}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );

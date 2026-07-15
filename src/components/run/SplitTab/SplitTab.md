@@ -1,8 +1,10 @@
 # SplitTab
 
 The content of the "Split" tab on a game's run page. Shows the run's current
-split, with a semi-transparent badge icon behind its name and level cap, and
-a collapsible card for each location in the current split.
+split, with a semi-transparent badge icon behind its name and level cap, a
+sticky table of contents listing every location in the current split, and a
+collapsible card for each location. Clicking a table of contents entry jumps
+to that location's card via an in-page anchor link.
 
 ## Props
 
@@ -22,3 +24,7 @@ a collapsible card for each location in the current split.
   split title
 - `badge` — the badge icon path for the current split, matching
   `/{variant}/badges/{slug}.png`
+
+Each table of contents entry links to `#{slug}`, where `slug` is
+`StringHelpers.toSlug(location.name)` — the same id `SplitLocation` sets on
+its own root element.

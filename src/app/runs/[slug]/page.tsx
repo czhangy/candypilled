@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import RunPage from '@/components/run/RunPage';
 
 interface RunProps {
@@ -6,5 +7,9 @@ interface RunProps {
 
 export default async function Run({ params }: RunProps) {
     const { slug } = await params;
-    return <RunPage slug={slug} />;
+    return (
+        <Suspense>
+            <RunPage slug={slug} />
+        </Suspense>
+    );
 }

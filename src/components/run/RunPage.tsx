@@ -1,8 +1,13 @@
 'use client';
 
-import { useState, useSyncExternalStore } from 'react';
+import { useSyncExternalStore } from 'react';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import {
+    notFound,
+    usePathname,
+    useRouter,
+    useSearchParams,
+} from 'next/navigation';
 import { GAMES } from '@/lib/static/constants';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
@@ -39,21 +44,17 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         LocalStorageHelpers.getServerSnapshot
     );
 
-    // -------------------------------------------------------------------------
-    // STATE
-    // -------------------------------------------------------------------------
-
-    const [activeTab, setActiveTab] = useState(TABS[0].id);
-    const [selectedMove, setSelectedMove] = useState<string | undefined>(
-        undefined
-    );
-    const [selectedAbility, setSelectedAbility] = useState<string | undefined>(
-        undefined
-    );
+    const router = useRouter();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
 
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
+
+    const activeTab = searchParams.get('tab') ?? TABS[0].id;
+    const selectedMove = searchParams.get('move') ?? undefined;
+    const selectedAbility = searchParams.get('ability') ?? undefined;
 
     const game = GAMES.find(
         (candidate) => StringHelpers.toSlug(candidate.name) === slug
@@ -80,29 +81,55 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         : 'N/A';
 
     // -------------------------------------------------------------------------
+    // COMPUTATIONS
+    // -------------------------------------------------------------------------
+
+    const updateQueryParams = (
+        updates: Record<string, string | undefined>
+    ): void => {
+        const params = new URLSearchParams(searchParams.toString());
+        Object.entries(updates).forEach(([key, value]) => {
+            if (value === undefined) {
+                params.delete(key);
+            } else {
+                params.set(key, value);
+            }
+        });
+        router.replace(`${pathname}?${params.toString()}`, {
+            scroll: false,
+        });
+    };
+
+    // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
 
     const handleTabChange = (id: string): void => {
-        setActiveTab(id);
+        updateQueryParams({ tab: id });
     };
 
     const handleMoveSelect = (name: string): void => {
-        setSelectedMove(name);
+        updateQueryParams({ move: name });
     };
 
     const handleMoveLinkClick = (name: string): void => {
-        setSelectedMove(name);
-        setActiveTab('moves');
+        window.open(
+            `${pathname}?tab=moves&move=${encodeURIComponent(name)}`,
+            '_blank',
+            'noopener,noreferrer'
+        );
     };
 
     const handleAbilitySelect = (name: string): void => {
-        setSelectedAbility(name);
+        updateQueryParams({ ability: name });
     };
 
     const handleAbilityLinkClick = (name: string): void => {
-        setSelectedAbility(name);
-        setActiveTab('abilities');
+        window.open(
+            `${pathname}?tab=abilities&ability=${encodeURIComponent(name)}`,
+            '_blank',
+            'noopener,noreferrer'
+        );
     };
 
     // -------------------------------------------------------------------------

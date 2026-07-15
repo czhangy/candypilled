@@ -222,7 +222,9 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                     <div
                                         className={styles['pokemon-slot__name']}
                                     >
-                                        <span>{pokemon.name}</span>
+                                        <span>
+                                            Lv.{pokemon.level} {pokemon.name}
+                                        </span>
                                         {types.length > 0 && (
                                             <div
                                                 className={
@@ -253,28 +255,11 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                         <li
                                             className={
                                                 styles[
-                                                    'pokemon-slot__metadata-item--split'
+                                                    'pokemon-slot__metadata-item--accent'
                                                 ]
                                             }
                                         >
-                                            <span
-                                                className={
-                                                    styles[
-                                                        'pokemon-slot__metadata-item--level'
-                                                    ]
-                                                }
-                                            >
-                                                Lv{pokemon.level}
-                                            </span>
-                                            <span
-                                                className={
-                                                    styles[
-                                                        'pokemon-slot__metadata-item--accent'
-                                                    ]
-                                                }
-                                            >
-                                                {pokemon.heldItem || '-'}
-                                            </span>
+                                            {pokemon.heldItem || '-'}
                                         </li>
                                         <li
                                             className={

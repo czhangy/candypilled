@@ -5,7 +5,7 @@ under a "Battle", "Miniboss", or "Boss" label matching `LocationMap`'s
 header style. Lays out a trainer name header above a portrait and a row
 of Pokemon team slots, each showing that Pokemon's sprite (matching the
 game's sprite variant) above its name (with type badges beneath it),
-level, ability, nature, held item, and moveset. Non-neutral natures are
+ability, nature, held item, and moveset. Non-neutral natures are
 annotated with their stat
 effects, shown in a smaller font on the same line (e.g.
 "Adamant [+Atk -SpA]"). The portrait is split into a
@@ -20,7 +20,8 @@ followed by a double battle section reading "Double Battle" or, if the
 player's whole party is forced into the fight, "True Double Battle".
 A "Defeat" button below the portrait toggles the trainer's defeated
 state in storage; once defeated it reads "Defeated" and turns green, and
-can be clicked again to undo. Each Pokemon's moves are clickable, linking
+can be clicked again to undo. Each Pokemon's name is prefixed with its
+level (e.g. "Lvl. 5 Chimchar"). Each Pokemon's moves are clickable, linking
 to that move's details; a move's background is tinted to match its type,
 darkening further on hover. Moves flagged as dangerous are shown in red
 text. Each Pokemon's ability is also clickable, linking to that ability's

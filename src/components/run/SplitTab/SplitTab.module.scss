@@ -49,10 +49,62 @@
         }
     }
 
-    .locations {
+    .body {
+        align-items: flex-start;
         display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
+        gap: 2rem;
         margin-top: 1.5rem;
+
+        .toc {
+            @include uppercase-label;
+
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            gap: 0.75rem;
+            position: sticky;
+            top: 1.5rem;
+            width: 12rem;
+
+            .toc-label {
+                font-size: 0.85rem;
+            }
+
+            .toc-list {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+                .toc-link {
+                    color: $text-dim;
+                    display: block;
+                    font-size: 0.85rem;
+                    text-decoration: none;
+                    text-transform: none;
+                    transition: color 0.2s ease;
+
+                    @media (hover: hover) {
+                        &:hover {
+                            color: $foreground;
+                        }
+                    }
+
+                    @media (prefers-reduced-motion: reduce) {
+                        transition: none;
+                    }
+                }
+            }
+        }
+
+        .locations {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            gap: 0.75rem;
+            min-width: 0;
+        }
     }
 }
