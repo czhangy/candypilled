@@ -5,7 +5,11 @@ showing its sprite, name, and type badges, and a right half divided
 into an upper section (two-thirds height) listing its abilities and
 a lower section (one-third height) showing its catch rate. Below
 that split, a full-width button lets the selected Pokemon be marked
-as caught. Below that, a full-width section shows the Pokemon's evolution line,
+as caught: clicking it while uncaught opens a modal
+(`AddPokemonModal`) to record the caught species (defaulting to the
+one selected here) along with its ability, nature, IVs, and level
+before marking it caught, while clicking it while caught unmarks it
+directly. Below that, a full-width section shows the Pokemon's evolution line,
 or a "No evolution line" message for species with no evolutions, and
 below that, a full-width section shows its base stats as a horizontal
 bar chart. A final full-width section holds two tabs, "Learnset" and
@@ -18,21 +22,23 @@ message is shown instead.
 
 ## Props
 
-| Prop              | Type                        | Required | Default | Description                                                |
-| ----------------- | --------------------------- | -------- | ------- | ---------------------------------------------------------- |
-| `game`            | `Game`                      | Yes      | -       | The game the run belongs to, for looking up wild locations |
-| `generation`      | `number`                    | Yes      | -       | The game's generation, used to resolve the Pokemon's types |
-| `onSelectMove`    | `(name: string) => void`    | No       | -       | Called when a move is clicked within the learnset tab      |
-| `onSelectSpecies` | `(species: string) => void` | No       | -       | Called when a Pokemon is clicked within the evolution line |
-| `species`         | `string`                    | No       | -       | The selected Pokemon's species, if any                     |
-| `variant`         | `string`                    | Yes      | -       | The sprite variant to prefer, matching the game's slug     |
+| Prop              | Type                        | Required | Default | Description                                                                                                                                  |
+| ----------------- | --------------------------- | -------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `game`            | `Game`                      | Yes      | -       | The game the run belongs to, for looking up wild locations                                                                                   |
+| `generation`      | `number`                    | Yes      | -       | The game's generation, used to resolve the Pokemon's types                                                                                   |
+| `onSelectMove`    | `(name: string) => void`    | No       | -       | Called when a move is clicked within the learnset tab                                                                                        |
+| `onSelectSpecies` | `(species: string) => void` | No       | -       | Called when a Pokemon is clicked within the evolution line                                                                                   |
+| `originalSpecies` | `string`                    | No       | -       | The species actually selected from the encounter list, used as the catch default even after navigating to an evolution via `onSelectSpecies` |
+| `species`         | `string`                    | No       | -       | The selected Pokemon's species, if any                                                                                                       |
+| `variant`         | `string`                    | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                                       |
 
 ## State
 
-| State             | Type                        | Initial value | Description                                      |
-| ----------------- | --------------------------- | ------------- | ------------------------------------------------ |
-| `activeDetailTab` | `'learnset' \| 'locations'` | `'learnset'`  | Which tab is shown in the final section          |
-| `isCaught`        | `boolean`                   | `false`       | Whether the selected Pokemon is marked as caught |
+| State                   | Type                        | Initial value | Description                                      |
+| ----------------------- | --------------------------- | ------------- | ------------------------------------------------ |
+| `activeDetailTab`       | `'learnset' \| 'locations'` | `'learnset'`  | Which tab is shown in the final section          |
+| `isCaught`              | `boolean`                   | `false`       | Whether the selected Pokemon is marked as caught |
+| `isAddPokemonModalOpen` | `boolean`                   | `false`       | Whether `AddPokemonModal` is shown               |
 
 ## Computations
 
@@ -61,8 +67,17 @@ message is shown instead.
 - `locations` — every wild encounter of the selected species across
   `game`'s splits and locations, resolved via `LocationHelpers` and
   rendered with `LocationsList` when `activeDetailTab` is `'locations'`
+- `defaultCatchSpecies` — `originalSpecies` if given, otherwise
+  `species`; passed to `AddPokemonModal` as the species to catch, so
+  navigating to an evolution via `onSelectSpecies` before catching
+  still records the originally encountered species
 
 ## Handlers
 
 - **On a details tab click** — sets `activeDetailTab` to that tab
-- **On the catch button click** — toggles `isCaught`
+- **On the catch button click** — if the Pokemon is already caught,
+  unmarks it directly by clearing `isCaught`; otherwise opens
+  `AddPokemonModal` via `isAddPokemonModalOpen`
+- **On `AddPokemonModal` submit** — sets `isCaught` and closes the modal
+- **On `AddPokemonModal` close** — clears `isAddPokemonModalOpen`
+  without marking the Pokemon caught

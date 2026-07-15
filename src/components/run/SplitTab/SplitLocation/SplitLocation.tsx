@@ -328,6 +328,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         generation={game.generation}
                                         onSelectMove={onSelectMove}
                                         onSelectSpecies={handleSpeciesSelect}
+                                        originalSpecies={
+                                            selectedEncounter?.species
+                                        }
                                         species={
                                             speciesOverride ??
                                             selectedEncounter?.species

@@ -16,7 +16,10 @@ encounters, if any, are shown in a table below the map and battle card,
 with a Pokedex tile to its right showing whichever encounter's row was
 most recently clicked in the table. Clicking a Pokemon within the
 Pokedex tile's evolution line instead shows that Pokemon, without
-changing which row is selected in the encounter table. Clicking a move
+changing which row is selected in the encounter table — the Pokedex
+tile is also told which species was originally selected from the
+table, so catching a Pokemon from its "Add Pokemon" modal defaults to
+that original species even after navigating to an evolution. Clicking a move
 within the Pokedex tile's learnset list behaves the same as clicking one
 in the battle card's teams.
 

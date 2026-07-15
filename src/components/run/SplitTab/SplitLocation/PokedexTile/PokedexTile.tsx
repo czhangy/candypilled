@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
+import AddPokemonModal from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/AddPokemonModal';
 import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
 import LearnsetList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
 import LocationsList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LocationsList/LocationsList';
@@ -15,6 +16,7 @@ interface PokedexTileProps {
     generation: number;
     onSelectMove?: (name: string) => void;
     onSelectSpecies?: (species: string) => void;
+    originalSpecies?: string;
     species?: string;
     variant: string;
 }
@@ -24,6 +26,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     generation,
     onSelectMove,
     onSelectSpecies,
+    originalSpecies,
     species,
     variant,
 }) => {
@@ -49,6 +52,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     const [activeDetailTab, setActiveDetailTab] =
         useState<DetailTab>('learnset');
     const [isCaught, setIsCaught] = useState(false);
+    const [isAddPokemonModalOpen, setIsAddPokemonModalOpen] = useState(false);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -58,8 +62,21 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         setActiveDetailTab(tab);
     };
 
-    const handleToggleCaught = (): void => {
-        setIsCaught((prev) => !prev);
+    const handleCatchButtonClick = (): void => {
+        if (isCaught) {
+            setIsCaught(false);
+        } else {
+            setIsAddPokemonModalOpen(true);
+        }
+    };
+
+    const handleCloseAddPokemonModal = (): void => {
+        setIsAddPokemonModalOpen(false);
+    };
+
+    const handleAddPokemon = (): void => {
+        setIsCaught(true);
+        setIsAddPokemonModalOpen(false);
     };
 
     // -------------------------------------------------------------------------
@@ -102,6 +119,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     const locations = species
         ? LocationHelpers.getEncounterLocations(game, species)
         : [];
+    const defaultCatchSpecies = originalSpecies ?? species;
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -220,11 +238,21 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     ]
                         .filter(Boolean)
                         .join(' ')}
-                    onClick={handleToggleCaught}
+                    onClick={handleCatchButtonClick}
                     type="button"
                 >
                     {isCaught ? 'CAUGHT' : 'CATCH'}
                 </button>
+            )}
+            {isAddPokemonModalOpen && defaultCatchSpecies && (
+                <AddPokemonModal
+                    accentColor={game.accentColor}
+                    allSpecies={LocationHelpers.getAllEncounterSpecies(game)}
+                    defaultSpecies={defaultCatchSpecies}
+                    generation={generation}
+                    onClose={handleCloseAddPokemonModal}
+                    onSubmit={handleAddPokemon}
+                />
             )}
             {pokemon && (
                 <div className={styles.evolution}>

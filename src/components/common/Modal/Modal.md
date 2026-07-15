@@ -6,11 +6,12 @@ close button, an overlay click, or the Escape key.
 
 ## Props
 
-| Prop       | Type              | Required | Default | Description                             |
-| ---------- | ----------------- | -------- | ------- | --------------------------------------- |
-| `children` | `React.ReactNode` | Yes      | -       | The modal's content                     |
-| `onClose`  | `() => void`      | Yes      | -       | Called when the modal requests to close |
-| `title`    | `string`          | No       | -       | Title text shown in the modal's header  |
+| Prop          | Type              | Required | Default | Description                                                                                                               |
+| ------------- | ----------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `accentColor` | `string`          | No       | -       | Sets `--accent-color` on the modal's portaled root, since it renders outside any ancestor that would otherwise provide it |
+| `children`    | `React.ReactNode` | Yes      | -       | The modal's content                                                                                                       |
+| `onClose`     | `() => void`      | Yes      | -       | Called when the modal requests to close                                                                                   |
+| `title`       | `string`          | No       | -       | Title text shown in the modal's header                                                                                    |
 
 ## Effects
 

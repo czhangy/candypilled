@@ -62,7 +62,7 @@
 
                 @media (hover: hover) {
                     &:hover {
-                        color: $accent;
+                        color: var(--accent-color, $accent);
                     }
                 }
             }

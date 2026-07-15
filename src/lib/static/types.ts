@@ -10,6 +10,11 @@ export interface StatValues {
     spe: number;
 }
 
+export interface DropdownOption {
+    label: string;
+    value: string;
+}
+
 export interface BattlePokemon {
     ability?: string;
     evs?: number | StatValues;
