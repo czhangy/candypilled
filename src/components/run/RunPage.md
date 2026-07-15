@@ -42,3 +42,7 @@ currently active tab.
 - **On move select** (from `MovesTab`) — sets `selectedMove` without
   changing `activeTab`
 - **On ability select** (from `AbilitiesTab`) — sets `selectedAbility`
+  without changing `activeTab`
+- **On ability link click** (from `SplitTab`, e.g. an ability within
+  `PokedexTile` or `BattleCard`) — sets `selectedAbility` and switches
+  `activeTab` to `'abilities'`

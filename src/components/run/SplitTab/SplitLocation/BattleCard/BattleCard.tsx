@@ -14,6 +14,7 @@ interface BattleCardProps {
     battle: Battle;
     generation: number;
     isDefeated: boolean;
+    onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
     onToggleDefeated: () => void;
     starter: string | null;
@@ -24,6 +25,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
     battle,
     generation,
     isDefeated,
+    onSelectAbility,
     onSelectMove,
     onToggleDefeated,
     starter,
@@ -62,6 +64,10 @@ const BattleCard: React.FC<BattleCardProps> = ({
     // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
+
+    const handleAbilityClick = (ability: string): void => {
+        onSelectAbility(ability);
+    };
 
     const handleMoveClick = (move: string): void => {
         onSelectMove(move);
@@ -192,6 +198,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                 variant
                             );
                             const types = getTypes(pokemon.name);
+                            const ability = getAbility(pokemon);
 
                             return (
                                 <div
@@ -276,7 +283,23 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                                 ]
                                             }
                                         >
-                                            {getAbility(pokemon)}
+                                            {ability ? (
+                                                <button
+                                                    className={
+                                                        styles['ability-button']
+                                                    }
+                                                    onClick={() =>
+                                                        handleAbilityClick(
+                                                            ability
+                                                        )
+                                                    }
+                                                    type="button"
+                                                >
+                                                    {ability}
+                                                </button>
+                                            ) : (
+                                                '-'
+                                            )}
                                         </li>
                                         <li
                                             className={

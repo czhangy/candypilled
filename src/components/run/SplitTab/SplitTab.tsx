@@ -9,11 +9,17 @@ import styles from './SplitTab.module.scss';
 
 interface SplitTabProps {
     game: Game;
+    onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
     run: Run;
 }
 
-const SplitTab: React.FC<SplitTabProps> = ({ game, onSelectMove, run }) => {
+const SplitTab: React.FC<SplitTabProps> = ({
+    game,
+    onSelectAbility,
+    onSelectMove,
+    run,
+}) => {
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
@@ -50,6 +56,7 @@ const SplitTab: React.FC<SplitTabProps> = ({ game, onSelectMove, run }) => {
                         game={game}
                         key={location.name}
                         location={location}
+                        onSelectAbility={onSelectAbility}
                         onSelectMove={onSelectMove}
                         run={run}
                         variant={variant}

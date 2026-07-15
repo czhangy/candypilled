@@ -206,6 +206,28 @@
                                 border-top: none;
                             }
 
+                            .ability-button {
+                                background: none;
+                                border: none;
+                                color: inherit;
+                                cursor: pointer;
+                                font: inherit;
+                                margin: -0.3rem;
+                                padding: 0.3rem;
+                                transition: color 0.2s ease;
+                                width: calc(100% + 0.6rem);
+
+                                @media (hover: hover) {
+                                    &:hover {
+                                        color: var(--accent-color);
+                                    }
+                                }
+
+                                @media (prefers-reduced-motion: reduce) {
+                                    transition: none;
+                                }
+                            }
+
                             .move-button {
                                 background: color-mix(
                                     in srgb,

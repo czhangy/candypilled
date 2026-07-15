@@ -100,6 +100,11 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         setSelectedAbility(name);
     };
 
+    const handleAbilityLinkClick = (name: string): void => {
+        setSelectedAbility(name);
+        setActiveTab('abilities');
+    };
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -132,6 +137,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
             {activeTab === 'split' && (
                 <SplitTab
                     game={game}
+                    onSelectAbility={handleAbilityLinkClick}
                     onSelectMove={handleMoveLinkClick}
                     run={run}
                 />

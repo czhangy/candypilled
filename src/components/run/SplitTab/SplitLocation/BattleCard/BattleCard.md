@@ -23,7 +23,8 @@ state in storage; once defeated it reads "Defeated" and turns green, and
 can be clicked again to undo. Each Pokemon's moves are clickable, linking
 to that move's details; a move's background is tinted to match its type,
 darkening further on hover. Moves flagged as dangerous are shown in red
-text.
+text. Each Pokemon's ability is also clickable, linking to that ability's
+details, turning the game's accent color on hover.
 
 ## Props
 
@@ -32,6 +33,7 @@ text.
 | `battle`           | `Battle`                 | Yes      | -       | The currently selected battle                                                |
 | `generation`       | `number`                 | Yes      | -       | The game's generation, used to resolve each Pokemon's types and abilities    |
 | `isDefeated`       | `boolean`                | Yes      | -       | Whether this battle has already been marked defeated                         |
+| `onSelectAbility`  | `(name: string) => void` | Yes      | -       | Called with a Pokemon's ability when it's clicked                            |
 | `onSelectMove`     | `(name: string) => void` | Yes      | -       | Called with a move's name when it's clicked within a Pokemon's moveset       |
 | `onToggleDefeated` | `() => void`             | Yes      | -       | Called when the defeat button is clicked                                     |
 | `starter`          | `string \| null`         | Yes      | -       | The run's chosen starter, used to resolve a miniboss's starter-specific team |
@@ -56,4 +58,5 @@ text.
 
 ## SCSS Variable Dependencies
 
-- `--accent-color` — the active game's accent color, set by `RunPage`
+- `--accent-color` — the active game's accent color, set by `RunPage`;
+  used to highlight an ability button on hover

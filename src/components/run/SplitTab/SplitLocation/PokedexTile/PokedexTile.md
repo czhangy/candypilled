@@ -2,7 +2,8 @@
 
 Displays details for a single Pokemon, split into a left half
 showing its sprite, name, and type badges, and a right half divided
-into an upper section (two-thirds height) listing its abilities and
+into an upper section (two-thirds height) listing its abilities (each
+clickable, linking to that ability's details) and
 a lower section (one-third height) showing its catch rate. Below
 that split, a full-width section shows the Pokemon's evolution line,
 or a "No evolution line" message for species with no evolutions, and
@@ -50,6 +51,7 @@ Operates in one of two mutually exclusive modes, set via `mode`:
 | `onSelect`         | `(species: string) => void`                                                                              | Only when `mode` is `select`    | -       | Called with the selected Pokemon's species when the "SELECT" button is clicked                                                         |
 | `game`             | `Game`                                                                                                   | Yes                             | -       | The game the run belongs to, for looking up wild locations                                                                             |
 | `generation`       | `number`                                                                                                 | Yes                             | -       | The game's generation, used to resolve the Pokemon's types                                                                             |
+| `onSelectAbility`  | `(name: string) => void`                                                                                 | Yes                             | -       | Called when an ability is clicked within the abilities list                                                                            |
 | `onSelectMove`     | `(name: string) => void`                                                                                 | Yes                             | -       | Called when a move is clicked within the learnset tab                                                                                  |
 | `onSelectSpecies`  | `(species: string) => void`                                                                              | Yes                             | -       | Called when a Pokemon is clicked within the evolution line                                                                             |
 | `originalSpecies`  | `string`                                                                                                 | No                              | -       | The species actually selected before navigating to an evolution, used as the catch default even after navigating via `onSelectSpecies` |
@@ -127,3 +129,9 @@ Operates in one of two mutually exclusive modes, set via `mode`:
   submitted details and closes the modal (only reachable in `catch` mode)
 - **On `AddPokemonModal` close** — clears `isAddPokemonModalOpen`
   without marking the Pokemon caught
+
+## SCSS Variable Dependencies
+
+- `--accent-color` — the active game's accent color, expected to be set
+  by a parent; used to highlight active tab labels and an ability button
+  on hover
