@@ -6,9 +6,14 @@ import styles from './LearnsetList.module.scss';
 interface LearnsetListProps {
     generation: number;
     moves: LearnsetMove[];
+    onSelectMove?: (name: string) => void;
 }
 
-const LearnsetList: React.FC<LearnsetListProps> = ({ generation, moves }) => {
+const LearnsetList: React.FC<LearnsetListProps> = ({
+    generation,
+    moves,
+    onSelectMove,
+}) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
@@ -24,6 +29,14 @@ const LearnsetList: React.FC<LearnsetListProps> = ({ generation, moves }) => {
     };
 
     // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleMoveClick = (name: string): void => {
+        onSelectMove?.(name);
+    };
+
+    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
@@ -32,6 +45,7 @@ const LearnsetList: React.FC<LearnsetListProps> = ({ generation, moves }) => {
             {moves.map((move) => {
                 const moveData = MoveHelpers.get(move.name);
                 const values = MoveHelpers.getValues(move.name, generation);
+                const name = moveData?.name ?? move.name;
 
                 return (
                     <li
@@ -48,9 +62,13 @@ const LearnsetList: React.FC<LearnsetListProps> = ({ generation, moves }) => {
                                 ? `Lv. ${move.level}`
                                 : METHOD_LABELS[move.method]}
                         </span>
-                        <span className={styles.name}>
-                            {moveData?.name ?? move.name}
-                        </span>
+                        <button
+                            className={styles.name}
+                            onClick={() => handleMoveClick(name)}
+                            type="button"
+                        >
+                            {name}
+                        </button>
                         {moveData && values && (
                             <div className={styles.details}>
                                 <Image

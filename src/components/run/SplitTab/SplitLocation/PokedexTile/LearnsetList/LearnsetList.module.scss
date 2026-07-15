@@ -56,10 +56,25 @@ $power-width: 2.75rem;
         }
 
         .name {
+            background: none;
+            border: none;
             color: $foreground;
-            flex: 1;
+            cursor: pointer;
+            font: inherit;
             font-size: 0.8rem;
-            min-width: 0;
+            padding: 0;
+            text-align: left;
+            transition: color 0.2s ease;
+
+            @media (hover: hover) {
+                &:hover {
+                    color: var(--accent-color);
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
         }
 
         .details {
@@ -67,6 +82,7 @@ $power-width: 2.75rem;
             display: flex;
             flex-shrink: 0;
             gap: 0.5rem;
+            margin-left: auto;
 
             img {
                 image-rendering: pixelated;

@@ -8,6 +8,7 @@ import styles from './PokedexTile.module.scss';
 
 interface PokedexTileProps {
     generation: number;
+    onSelectMove?: (name: string) => void;
     onSelectSpecies?: (species: string) => void;
     species?: string;
     variant: string;
@@ -15,6 +16,7 @@ interface PokedexTileProps {
 
 const PokedexTile: React.FC<PokedexTileProps> = ({
     generation,
+    onSelectMove,
     onSelectSpecies,
     species,
     variant,
@@ -211,7 +213,11 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
             {pokemon && learnset && (
                 <div className={styles.learnset}>
                     <span className={styles['learnset-label']}>Learnset</span>
-                    <LearnsetList generation={generation} moves={learnset} />
+                    <LearnsetList
+                        generation={generation}
+                        moves={learnset}
+                        onSelectMove={onSelectMove}
+                    />
                 </div>
             )}
         </div>

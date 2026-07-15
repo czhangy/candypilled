@@ -2,15 +2,16 @@
 
 A scrollable list of a Pokemon's learnset, showing each move alongside how
 it's learned (level-up, TM, egg, or tutor) and, resolved from move data, its
-type icon, category icon, and power. Shows a "No moves found" message when
-the list is empty.
+type icon, category icon, and power. Each move's name is a clickable link.
+Shows a "No moves found" message when the list is empty.
 
 ## Props
 
-| Prop         | Type             | Required | Default | Description                                        |
-| ------------ | ---------------- | -------- | ------- | -------------------------------------------------- |
-| `generation` | `number`         | Yes      | -       | The game's generation, used to resolve move values |
-| `moves`      | `LearnsetMove[]` | Yes      | -       | The moves to list, in the order to display them    |
+| Prop           | Type                     | Required | Default | Description                                        |
+| -------------- | ------------------------ | -------- | ------- | -------------------------------------------------- |
+| `generation`   | `number`                 | Yes      | -       | The game's generation, used to resolve move values |
+| `moves`        | `LearnsetMove[]`         | Yes      | -       | The moves to list, in the order to display them    |
+| `onSelectMove` | `(name: string) => void` | No       | -       | Called with a move's name when it's clicked        |
 
 ## Computations
 
