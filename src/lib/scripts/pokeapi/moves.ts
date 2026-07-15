@@ -40,7 +40,35 @@ const MOVE_NAME_OVERRIDES: Record<string, string> = {
     'multi-attack': 'Multi-Attack',
     'wake-up-slap': 'Wake-Up Slap',
     'lock-on': 'Lock-On',
+    'u-turn': 'U-turn',
+    'v-create': 'V-create',
+    'double-edge': 'Double-Edge',
+    'mud-slap': 'Mud-Slap',
+    'topsy-turvy': 'Topsy-Turvy',
+    'baby-doll-eyes': 'Baby-Doll Eyes',
+    'power-up-punch': 'Power-Up Punch',
+    'self-destruct': 'Self-Destruct',
 };
+
+// PokeAPI has no concept of "dangerous" moves (ones that can end a run in a
+// single unlucky turn, e.g. via self-destruction or a hard-to-play-around
+// counter), so this set is curated by hand rather than derived from the API.
+const DANGEROUS_MOVES = new Set([
+    'explosion',
+    'self-destruct',
+    'destiny-bond',
+    'counter',
+    'mirror-move',
+    'metal-burst',
+    'bide',
+    'pursuit',
+    'swords-dance',
+    'nasty-plot',
+    'bulk-up',
+    'tail-glow',
+    'calm-mind',
+    'dragon-dance',
+]);
 
 const sleep = (ms: number): Promise<void> =>
     new Promise((resolve) => setTimeout(resolve, ms));
@@ -357,6 +385,7 @@ export const fetchMoves = async (): Promise<void> => {
             category: move.damage_class.name,
             priority: move.priority,
             introducedInGeneration: toGenerationNumber(move.generation.name),
+            isDangerous: DANGEROUS_MOVES.has(move.name),
             valuesByGeneration: buildValuesByGeneration(
                 move,
                 versionGroupGenerations

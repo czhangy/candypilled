@@ -210,6 +210,9 @@ export interface MoveData {
     category: string;
     priority: number;
     introducedInGeneration: number;
+    // PokeAPI has no concept of "dangerous" moves, so this is curated
+    // separately rather than derived from any API field.
+    isDangerous: boolean;
     valuesByGeneration: MoveValuesByGeneration[];
 }
 
