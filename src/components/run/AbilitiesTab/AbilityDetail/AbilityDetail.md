@@ -17,3 +17,6 @@ the page.
 - `abilityData` — the selected ability's data, resolved via `AbilityHelpers`
 - `values` — the selected ability's values at `generation` (effect text),
   resolved via `AbilityHelpers`
+- `renderEffect` — splits the effect text on the literal string
+  "Overworld:", wrapping each match in a span colored `$foreground` so it
+  stands out from the surrounding `$text-mid` effect text
