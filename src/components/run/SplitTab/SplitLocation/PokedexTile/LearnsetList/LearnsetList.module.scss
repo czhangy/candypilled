@@ -2,6 +2,7 @@
 @use '@/styles/mixins' as *;
 
 $method-width: 3.5rem;
+$power-width: 2.75rem;
 
 .learnset-list {
     list-style: none;
@@ -56,7 +57,27 @@ $method-width: 3.5rem;
 
         .name {
             color: $foreground;
+            flex: 1;
             font-size: 0.8rem;
+            min-width: 0;
+        }
+
+        .details {
+            align-items: center;
+            display: flex;
+            flex-shrink: 0;
+            gap: 0.5rem;
+
+            img {
+                image-rendering: pixelated;
+            }
+
+            .power {
+                color: $text-mid;
+                font-size: 0.7rem;
+                text-align: right;
+                width: $power-width;
+            }
         }
     }
 

@@ -211,7 +211,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
             {pokemon && learnset && (
                 <div className={styles.learnset}>
                     <span className={styles['learnset-label']}>Learnset</span>
-                    <LearnsetList moves={learnset} />
+                    <LearnsetList generation={generation} moves={learnset} />
                 </div>
             )}
         </div>
