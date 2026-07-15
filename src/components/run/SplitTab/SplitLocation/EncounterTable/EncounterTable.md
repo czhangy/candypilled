@@ -13,17 +13,21 @@ Pokemon's sprite (matching the game's sprite variant), its name with
 type badges beneath it, its level range prefixed with "Lv." (e.g.
 "Lv. 20-30"), and its encounter chance as a percentage. Clicking a row
 selects that encounter, highlighting it and notifying the parent via
-`onSelectEncounter`.
+`onSelectEncounter`. A row is highlighted green if its species, or any
+member of its evolution line, has been caught anywhere in the run —
+not just at this location — taking priority over the selected
+highlight if both apply.
 
 ## Props
 
-| Prop                | Type                             | Required | Default | Description                                                        |
-| ------------------- | -------------------------------- | -------- | ------- | ------------------------------------------------------------------ |
-| `encounters`        | `Encounter[]`                    | Yes      | -       | The encounter slots to display                                     |
-| `generation`        | `number`                         | Yes      | -       | The game's generation, used to resolve each Pokemon's types        |
-| `onSelectEncounter` | `(encounter: Encounter) => void` | No       | -       | Called with the clicked row's encounter                            |
-| `selectedSpecies`   | `string`                         | No       | -       | The species of the currently selected row, if any, to highlight it |
-| `variant`           | `string`                         | Yes      | -       | The sprite variant to prefer, matching the game's slug             |
+| Prop                 | Type                             | Required | Default | Description                                                        |
+| -------------------- | -------------------------------- | -------- | ------- | ------------------------------------------------------------------ |
+| `caughtPokemonNames` | `string[]`                       | Yes      | -       | Every species caught so far in the run, regardless of location     |
+| `encounters`         | `Encounter[]`                    | Yes      | -       | The encounter slots to display                                     |
+| `generation`         | `number`                         | Yes      | -       | The game's generation, used to resolve each Pokemon's types        |
+| `onSelectEncounter`  | `(encounter: Encounter) => void` | No       | -       | Called with the clicked row's encounter                            |
+| `selectedSpecies`    | `string`                         | No       | -       | The species of the currently selected row, if any, to highlight it |
+| `variant`            | `string`                         | Yes      | -       | The sprite variant to prefer, matching the game's slug             |
 
 ## State
 
@@ -46,3 +50,6 @@ selects that encounter, highlighting it and notifying the parent via
   shared across all game variants (e.g. `/encounter_methods/grass.png`)
 - `getTypes` — a Pokemon's types at `generation`, rendered as badges
   (`/types/{type}.png`) beneath its name
+- `isEvolutionLineCaught` — whether a species' evolution family
+  (resolved via `PokemonHelpers`) includes any name in
+  `caughtPokemonNames`

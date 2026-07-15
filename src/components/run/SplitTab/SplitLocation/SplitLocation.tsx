@@ -10,7 +10,6 @@ import {
     Game,
     Location,
     Run,
-    Subarea,
 } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
@@ -61,40 +60,8 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const isBattleDefeated = (battle: Battle): boolean =>
         defeatedBattles.includes(BattleHelpers.getKey(battle));
 
-    const isBattleNextPersonalBest = (battle: Battle): boolean =>
+    const isBattleNextPB = (battle: Battle): boolean =>
         BattleHelpers.getKey(battle) === nextPersonalBestBattleKey;
-
-    const getDefaultBattleFrom = (battles: Battle[]): Battle | undefined => {
-        const requiredBattles = battles.filter((battle) => !battle.isOptional);
-        const candidates =
-            requiredBattles.length > 0 ? requiredBattles : battles;
-
-        return (
-            candidates.find((battle) => !isBattleDefeated(battle)) ??
-            candidates[candidates.length - 1]
-        );
-    };
-
-    const isSubareaCleared = (subarea: Subarea): boolean => {
-        const battles = subarea.hideBattles ? [] : (subarea.battles ?? []);
-        if (battles.length === 0) return false;
-
-        const requiredBattles = battles.filter((battle) => !battle.isOptional);
-        const candidates =
-            requiredBattles.length > 0 ? requiredBattles : battles;
-
-        return candidates.every((battle) => isBattleDefeated(battle));
-    };
-
-    const getDefaultSubareaIndex = (): number => {
-        if (!location.subareas) return 0;
-
-        const index = location.subareas.findIndex(
-            (subarea) => !isSubareaCleared(subarea)
-        );
-
-        return index === -1 ? 0 : index;
-    };
 
     const getDefaultSelectedBattle = (
         subareaIndex: number
@@ -106,7 +73,14 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                 : (subarea?.battles ?? [])
             : (location.battles ?? []);
 
-        return getDefaultBattleFrom(battles);
+        const requiredBattles = battles.filter((battle) => !battle.isOptional);
+        const candidates =
+            requiredBattles.length > 0 ? requiredBattles : battles;
+
+        return (
+            candidates.find((battle) => !isBattleDefeated(battle)) ??
+            candidates[candidates.length - 1]
+        );
     };
 
     // -------------------------------------------------------------------------
@@ -114,9 +88,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // -------------------------------------------------------------------------
 
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedSubareaIndex, setSelectedSubareaIndex] = useState<number>(
-        getDefaultSubareaIndex
-    );
+    const [selectedSubareaIndex, setSelectedSubareaIndex] = useState<number>(0);
     const [selectedBattle, setSelectedBattle] = useState<Battle | undefined>(
         () => getDefaultSelectedBattle(selectedSubareaIndex)
     );
@@ -142,17 +114,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         setSpeciesOverride(undefined);
     };
 
-    const handleBattleClick = (battle: Battle): void => {
-        setSelectedBattle(battle);
-    };
-
     const handleEncounterSelect = (encounter: Encounter): void => {
         setSelectedEncounter(encounter);
         setSpeciesOverride(undefined);
-    };
-
-    const handleSpeciesSelect = (species: string): void => {
-        setSpeciesOverride(species);
     };
 
     const handleBattleToggleDefeated = (battle: Battle): void => {
@@ -208,10 +172,25 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         LocalStorageHelpers.saveRun(game, updatedRun);
     };
 
+    const handleRemovePokemon = (): void => {
+        const updatedRun: Run = {
+            ...run,
+            caughtPokemon: run.caughtPokemon.filter(
+                (caught) => caught.location !== location.name
+            ),
+        };
+
+        LocalStorageHelpers.saveRun(game, updatedRun);
+    };
+
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
+    const dupes = run.caughtPokemon.map((caught) => caught.name);
+    const encounter = run.caughtPokemon.find(
+        (caught) => caught.location === location.name
+    )?.name;
     const activeSubarea = location.subareas?.[selectedSubareaIndex];
     const section: Section = activeSubarea
         ? {
@@ -302,11 +281,11 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                     alt={`${location.name} map`}
                                     battles={section.battles}
                                     isBattleDefeated={isBattleDefeated}
-                                    isBattleNextPersonalBest={
-                                        isBattleNextPersonalBest
-                                    }
+                                    isBattleNextPB={isBattleNextPB}
                                     map={section.map}
-                                    onBattleClick={handleBattleClick}
+                                    onBattleClick={(battle: Battle) =>
+                                        setSelectedBattle(battle)
+                                    }
                                     selectedBattle={selectedBattle}
                                 />
                             )}
@@ -331,6 +310,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                             {section.encounters && (
                                 <div className={styles['encounters-row']}>
                                     <EncounterTable
+                                        dupes={dupes}
                                         encounters={section.encounters}
                                         generation={game.generation}
                                         onSelectEncounter={
@@ -342,11 +322,16 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         variant={variant}
                                     />
                                     <PokedexTile
+                                        dupes={dupes}
+                                        encounter={encounter}
                                         game={game}
                                         generation={game.generation}
                                         onAddPokemon={handleAddPokemon}
+                                        onRemovePokemon={handleRemovePokemon}
                                         onSelectMove={onSelectMove}
-                                        onSelectSpecies={handleSpeciesSelect}
+                                        onSelectSpecies={(species: string) =>
+                                            setSpeciesOverride(species)
+                                        }
                                         originalSpecies={
                                             selectedEncounter?.species
                                         }

@@ -23,9 +23,16 @@ that original species even after navigating to an evolution. Clicking a move
 within the Pokedex tile's learnset list behaves the same as clicking one
 in the battle card's teams. Submitting the Pokedex tile's "Add Pokemon"
 modal records the catch (species, this location's name, and the
-submitted details) in the run's storage, for later Nuzlocke rule
-enforcement (one catch per location, no more than one catch per
-evolution line).
+submitted details) in the run's storage; clicking the Pokedex tile's
+catch button while it reads "CAUGHT" instead removes that location's
+catch from storage. Whichever species was already caught at this
+location (if any) is passed to the Pokedex tile to enforce one catch
+per location. Every species caught anywhere in the run is passed to
+both the encounter table, which highlights a row green if its species
+or any member of its evolution line has been caught, and the Pokedex
+tile, which disables the catch button under the same condition (except
+for the Pokemon already caught here), enforcing one catch per
+evolution line.
 
 ## Props
 
@@ -75,6 +82,12 @@ evolution line).
   contributes no battles to the section, so no markers or battle card
   render for it, even though the same subarea data may render battles
   when reused (without the flag) by another split
+- `caughtPokemonNames` — every species in `run.caughtPokemon`,
+  regardless of location; passed to the encounter table and Pokedex
+  tile to enforce one catch per evolution line
+- `caughtSpecies` — the species in `run.caughtPokemon` whose recorded
+  location matches `location.name`, if any; passed to the Pokedex tile
+  to enforce one catch per location
 
 ## Handlers
 
@@ -96,6 +109,8 @@ evolution line).
 - **On Pokedex tile "Add Pokemon" submit** — appends a record (the
   submitted details plus this location's name) to the run's
   `caughtPokemon` in storage
+- **On Pokedex tile catch button click while caught here** — removes
+  this location's record from the run's `caughtPokemon` in storage
 
 ## SCSS Variable Dependencies
 

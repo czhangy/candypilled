@@ -12,6 +12,8 @@ import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './PokedexTile.module.scss';
 
 interface PokedexTileProps {
+    dupes: string[];
+    encounter?: string;
     game: Game;
     generation: number;
     onAddPokemon: (
@@ -20,6 +22,7 @@ interface PokedexTileProps {
             'ability' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
         >
     ) => void;
+    onRemovePokemon: () => void;
     onSelectMove: (name: string) => void;
     onSelectSpecies: (species: string) => void;
     originalSpecies?: string;
@@ -28,9 +31,12 @@ interface PokedexTileProps {
 }
 
 const PokedexTile: React.FC<PokedexTileProps> = ({
+    dupes,
+    encounter,
     game,
     generation,
     onAddPokemon,
+    onRemovePokemon,
     onSelectMove,
     onSelectSpecies,
     originalSpecies,
@@ -58,7 +64,6 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
 
     const [activeDetailTab, setActiveDetailTab] =
         useState<DetailTab>('learnset');
-    const [isCaught, setIsCaught] = useState(false);
     const [isAddPokemonModalOpen, setIsAddPokemonModalOpen] = useState(false);
 
     // -------------------------------------------------------------------------
@@ -70,8 +75,8 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     };
 
     const handleCatchButtonClick = (): void => {
-        if (isCaught) {
-            setIsCaught(false);
+        if (isCaughtHere) {
+            onRemovePokemon();
         } else {
             setIsAddPokemonModalOpen(true);
         }
@@ -88,7 +93,6 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         >
     ): void => {
         onAddPokemon(details);
-        setIsCaught(true);
         setIsAddPokemonModalOpen(false);
     };
 
@@ -133,6 +137,15 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         ? LocationHelpers.getEncounterLocations(game, species)
         : [];
     const defaultCatchSpecies = originalSpecies ?? species;
+    const isCaughtHere = !!pokemon && encounter === pokemon.name;
+    const isOtherCaughtHere = !!encounter && !isCaughtHere;
+    const isEvolutionLineCaught =
+        !!pokemon &&
+        dupes.some((name) =>
+            PokemonHelpers.isSameEvolutionLine(pokemon.name, name, generation)
+        );
+    const isCatchDisabled =
+        !isCaughtHere && (isOtherCaughtHere || isEvolutionLineCaught);
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -247,14 +260,15 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                 <button
                     className={[
                         styles['catch-button'],
-                        isCaught && styles['catch-button--caught'],
+                        isCaughtHere && styles['catch-button--caught'],
                     ]
                         .filter(Boolean)
                         .join(' ')}
+                    disabled={isCatchDisabled}
                     onClick={handleCatchButtonClick}
                     type="button"
                 >
-                    {isCaught ? 'CAUGHT' : 'CATCH'}
+                    {isCaughtHere ? 'CAUGHT' : 'CATCH'}
                 </button>
             )}
             {isAddPokemonModalOpen && defaultCatchSpecies && (

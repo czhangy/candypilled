@@ -94,4 +94,39 @@ export default class PokemonHelpers {
             .reverse()
             .find((entry) => entry.fromGeneration <= generation)?.moves;
     }
+
+    // Every species slug in name's evolution family (ancestors and
+    // descendants, including sibling branches like other eeveelutions),
+    // for detecting Nuzlocke duplicate-evolution-line catches.
+    static getEvolutionFamily(name: string, generation: number): string[] {
+        const line = PokemonHelpers.getEvolutionLine(name, generation);
+        if (!line) return [StringHelpers.toSlug(name)];
+
+        // getEvolutionLine(name) only preserves branches at or after name
+        // itself — sibling branches (e.g. Wurmple's other evolution path)
+        // are pruned from ancestors leading up to it. Its root is always
+        // the family's true base species though, so re-querying from there
+        // returns the fully-branched tree instead.
+        const fullLine =
+            PokemonHelpers.getEvolutionLine(line.name, generation) ?? line;
+
+        const slugs: string[] = [];
+        const collect = (step: EvolutionStep): void => {
+            slugs.push(step.name);
+            step.evolvesTo.forEach(collect);
+        };
+        collect(fullLine);
+
+        return slugs;
+    }
+
+    static isSameEvolutionLine(
+        a: string,
+        b: string,
+        generation: number
+    ): boolean {
+        return PokemonHelpers.getEvolutionFamily(a, generation).includes(
+            StringHelpers.toSlug(b)
+        );
+    }
 }

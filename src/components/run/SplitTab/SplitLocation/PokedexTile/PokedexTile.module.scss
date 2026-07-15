@@ -165,7 +165,7 @@ $label-width: 5.5rem;
         width: 100%;
 
         @media (hover: hover) {
-            &:hover {
+            &:hover:not(:disabled) {
                 background: color.adjust($background-light, $lightness: -8%);
             }
         }
@@ -174,12 +174,18 @@ $label-width: 5.5rem;
             transition: none;
         }
 
+        &:disabled {
+            cursor: default;
+            opacity: 0.5;
+        }
+
         &--caught {
             background: $green;
             color: white;
+            opacity: 1;
 
             @media (hover: hover) {
-                &:hover {
+                &:hover:not(:disabled) {
                     background: color.adjust($green, $lightness: -8%);
                 }
             }
