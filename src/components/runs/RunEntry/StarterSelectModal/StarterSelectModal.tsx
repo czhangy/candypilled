@@ -1,7 +1,9 @@
 'use client';
 
+import { useState } from 'react';
 import Modal from '@/components/common/Modal/Modal';
 import StarterSelect from './StarterSelect/StarterSelect';
+import styles from './StarterSelectModal.module.scss';
 
 interface StarterSelectModalProps {
     accentColor: string;
@@ -19,6 +21,24 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
     variant,
 }) => {
     // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [activeStarter, setActiveStarter] = useState<string | null>(null);
+
+    // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleStarterSelect = (starter: string): void => {
+        setActiveStarter(starter);
+    };
+
+    const handleConfirmClick = (): void => {
+        if (activeStarter) onSelect(activeStarter);
+    };
+
+    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
@@ -28,12 +48,24 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
             onClose={onClose}
             title="Choose your starter"
         >
-            <StarterSelect
-                onSelect={onSelect}
-                selected={null}
-                starters={starters}
-                variant={variant}
-            />
+            <div className={styles['starter-select-modal']}>
+                <StarterSelect
+                    onSelect={handleStarterSelect}
+                    selected={activeStarter}
+                    starters={starters}
+                    variant={variant}
+                />
+                <div className={styles.footer}>
+                    <button
+                        className={styles['confirm-button']}
+                        disabled={!activeStarter}
+                        onClick={handleConfirmClick}
+                        type="button"
+                    >
+                        Confirm
+                    </button>
+                </div>
+            </div>
         </Modal>
     );
 };
