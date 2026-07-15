@@ -24,6 +24,25 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+a {
+    outline: none;
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+input {
+    outline: none;
+}
+
+ul {
+    list-style: none;
+}
+
 .small-screen-message {
     @include mono-label;
 
