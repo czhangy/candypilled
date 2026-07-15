@@ -22,15 +22,16 @@ message is shown instead.
 
 ## Props
 
-| Prop              | Type                        | Required | Default | Description                                                                                                                                  |
-| ----------------- | --------------------------- | -------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `game`            | `Game`                      | Yes      | -       | The game the run belongs to, for looking up wild locations                                                                                   |
-| `generation`      | `number`                    | Yes      | -       | The game's generation, used to resolve the Pokemon's types                                                                                   |
-| `onSelectMove`    | `(name: string) => void`    | No       | -       | Called when a move is clicked within the learnset tab                                                                                        |
-| `onSelectSpecies` | `(species: string) => void` | No       | -       | Called when a Pokemon is clicked within the evolution line                                                                                   |
-| `originalSpecies` | `string`                    | No       | -       | The species actually selected from the encounter list, used as the catch default even after navigating to an evolution via `onSelectSpecies` |
-| `species`         | `string`                    | No       | -       | The selected Pokemon's species, if any                                                                                                       |
-| `variant`         | `string`                    | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                                       |
+| Prop              | Type                                                                                                     | Required | Default | Description                                                                                                                                  |
+| ----------------- | -------------------------------------------------------------------------------------------------------- | -------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `game`            | `Game`                                                                                                   | Yes      | -       | The game the run belongs to, for looking up wild locations                                                                                   |
+| `generation`      | `number`                                                                                                 | Yes      | -       | The game's generation, used to resolve the Pokemon's types                                                                                   |
+| `onAddPokemon`    | `(details: Pick<BattlePokemon, 'ability' \| 'ivs' \| 'level' \| 'moves' \| 'name' \| 'nature'>) => void` | Yes      | -       | Called when `AddPokemonModal` is submitted, with the details to record for the catch                                                         |
+| `onSelectMove`    | `(name: string) => void`                                                                                 | Yes      | -       | Called when a move is clicked within the learnset tab                                                                                        |
+| `onSelectSpecies` | `(species: string) => void`                                                                              | Yes      | -       | Called when a Pokemon is clicked within the evolution line                                                                                   |
+| `originalSpecies` | `string`                                                                                                 | No       | -       | The species actually selected from the encounter list, used as the catch default even after navigating to an evolution via `onSelectSpecies` |
+| `species`         | `string`                                                                                                 | No       | -       | The selected Pokemon's species, if any                                                                                                       |
+| `variant`         | `string`                                                                                                 | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                                       |
 
 ## State
 
@@ -78,6 +79,7 @@ message is shown instead.
 - **On the catch button click** — if the Pokemon is already caught,
   unmarks it directly by clearing `isCaught`; otherwise opens
   `AddPokemonModal` via `isAddPokemonModalOpen`
-- **On `AddPokemonModal` submit** — sets `isCaught` and closes the modal
+- **On `AddPokemonModal` submit** — calls `onAddPokemon` with the
+  submitted details, sets `isCaught`, and closes the modal
 - **On `AddPokemonModal` close** — clears `isAddPokemonModalOpen`
   without marking the Pokemon caught

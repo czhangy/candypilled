@@ -21,7 +21,11 @@ tile is also told which species was originally selected from the
 table, so catching a Pokemon from its "Add Pokemon" modal defaults to
 that original species even after navigating to an evolution. Clicking a move
 within the Pokedex tile's learnset list behaves the same as clicking one
-in the battle card's teams.
+in the battle card's teams. Submitting the Pokedex tile's "Add Pokemon"
+modal records the catch (species, this location's name, and the
+submitted details) in the run's storage, for later Nuzlocke rule
+enforcement (one catch per location, no more than one catch per
+evolution line).
 
 ## Props
 
@@ -89,6 +93,9 @@ in the battle card's teams.
   `speciesOverride`, since a new subarea has its own encounter table
 - **On Pokedex tile evolution line click** — sets `speciesOverride` to
   the clicked species, without changing `selectedEncounter`
+- **On Pokedex tile "Add Pokemon" submit** — appends a record (the
+  submitted details plus this location's name) to the run's
+  `caughtPokemon` in storage
 
 ## SCSS Variable Dependencies
 

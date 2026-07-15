@@ -19,7 +19,7 @@ line.
 | Prop              | Type                        | Required | Default | Description                                                            |
 | ----------------- | --------------------------- | -------- | ------- | ---------------------------------------------------------------------- |
 | `currentName`     | `string`                    | No       | -       | The currently selected species, highlighted if it appears in this step |
-| `onSelectSpecies` | `(species: string) => void` | No       | -       | Called with a step's species when its sprite is clicked                |
+| `onSelectSpecies` | `(species: string) => void` | Yes      | -       | Called with a step's species when its sprite is clicked                |
 | `step`            | `EvolutionStep`             | Yes      | -       | The evolution step to render, along with its descendants               |
 | `variant`         | `string`                    | Yes      | -       | The sprite variant to prefer, matching the game's slug                 |
 

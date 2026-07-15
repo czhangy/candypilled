@@ -5,6 +5,7 @@ import { StaticImageData } from 'next/image';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import {
     Battle,
+    BattlePokemon,
     Encounter,
     Game,
     Location,
@@ -190,6 +191,23 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         LocalStorageHelpers.saveRun(game, updatedRun);
     };
 
+    const handleAddPokemon = (
+        details: Pick<
+            BattlePokemon,
+            'ability' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+        >
+    ): void => {
+        const updatedRun: Run = {
+            ...run,
+            caughtPokemon: [
+                ...run.caughtPokemon,
+                { ...details, location: location.name },
+            ],
+        };
+
+        LocalStorageHelpers.saveRun(game, updatedRun);
+    };
+
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
@@ -326,6 +344,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                     <PokedexTile
                                         game={game}
                                         generation={game.generation}
+                                        onAddPokemon={handleAddPokemon}
                                         onSelectMove={onSelectMove}
                                         onSelectSpecies={handleSpeciesSelect}
                                         originalSpecies={

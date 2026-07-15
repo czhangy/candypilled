@@ -6,7 +6,7 @@ import styles from './LearnsetList.module.scss';
 interface LearnsetListProps {
     generation: number;
     moves: LearnsetMove[];
-    onSelectMove?: (name: string) => void;
+    onSelectMove: (name: string) => void;
 }
 
 const LearnsetList: React.FC<LearnsetListProps> = ({
@@ -32,7 +32,7 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
     // -------------------------------------------------------------------------
 
     const handleMoveClick = (name: string): void => {
-        onSelectMove?.(name);
+        onSelectMove(name);
     };
 
     // -------------------------------------------------------------------------

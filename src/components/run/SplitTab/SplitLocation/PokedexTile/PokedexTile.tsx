@@ -5,7 +5,7 @@ import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/E
 import LearnsetList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
 import LocationsList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LocationsList/LocationsList';
 import StatsChart from '@/components/run/SplitTab/SplitLocation/PokedexTile/StatsChart/StatsChart';
-import { Game } from '@/lib/static/types';
+import { BattlePokemon, Game } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -14,8 +14,14 @@ import styles from './PokedexTile.module.scss';
 interface PokedexTileProps {
     game: Game;
     generation: number;
-    onSelectMove?: (name: string) => void;
-    onSelectSpecies?: (species: string) => void;
+    onAddPokemon: (
+        details: Pick<
+            BattlePokemon,
+            'ability' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+        >
+    ) => void;
+    onSelectMove: (name: string) => void;
+    onSelectSpecies: (species: string) => void;
     originalSpecies?: string;
     species?: string;
     variant: string;
@@ -24,6 +30,7 @@ interface PokedexTileProps {
 const PokedexTile: React.FC<PokedexTileProps> = ({
     game,
     generation,
+    onAddPokemon,
     onSelectMove,
     onSelectSpecies,
     originalSpecies,
@@ -74,7 +81,13 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         setIsAddPokemonModalOpen(false);
     };
 
-    const handleAddPokemon = (): void => {
+    const handleAddPokemon = (
+        details: Pick<
+            BattlePokemon,
+            'ability' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+        >
+    ): void => {
+        onAddPokemon(details);
         setIsCaught(true);
         setIsAddPokemonModalOpen(false);
     };
