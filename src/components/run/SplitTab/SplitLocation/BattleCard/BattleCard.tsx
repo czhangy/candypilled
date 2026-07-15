@@ -121,6 +121,16 @@ const BattleCard: React.FC<BattleCardProps> = ({
                         {battle.fieldCondition && (
                             <div className={styles['trainer__metadata']}>
                                 {battle.fieldCondition}
+                                {battle.fieldCondition === 'Fog' && (
+                                    <span
+                                        className={
+                                            styles['field-condition__note']
+                                        }
+                                        title="Can be cleared using Defog"
+                                    >
+                                        *
+                                    </span>
+                                )}
                             </div>
                         )}
                         {battle.items && (
