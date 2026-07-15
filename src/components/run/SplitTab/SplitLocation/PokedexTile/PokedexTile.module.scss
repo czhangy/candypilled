@@ -173,4 +173,21 @@ $label-width: 5.5rem;
             }
         }
     }
+
+    .stats {
+        border-top: 1px solid $border-subtle;
+        padding: 1rem 1.5rem;
+
+        .stats-label {
+            @include uppercase-label;
+
+            display: block;
+            font-size: 0.7rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .stats-content {
+            display: flex;
+        }
+    }
 }
