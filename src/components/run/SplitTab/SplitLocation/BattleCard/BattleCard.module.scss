@@ -187,18 +187,36 @@
                             }
 
                             .move-button {
-                                background: none;
+                                background: color-mix(
+                                    in srgb,
+                                    var(--move-color, $background-light) 30%,
+                                    transparent
+                                );
                                 border: none;
                                 color: inherit;
                                 cursor: pointer;
                                 font: inherit;
-                                padding: 0;
-                                transition: color 0.2s ease;
-                                width: 100%;
+                                margin: -0.3rem;
+                                padding: 0.3rem;
+                                transition: background-color 0.2s ease;
+                                width: calc(100% + 0.6rem);
 
                                 @media (hover: hover) {
                                     &:hover {
-                                        color: var(--accent-color);
+                                        background: color-mix(
+                                            in srgb,
+                                            color-mix(
+                                                    in srgb,
+                                                    var(
+                                                            --move-color,
+                                                            $background-light
+                                                        )
+                                                        30%,
+                                                    transparent
+                                                )
+                                                85%,
+                                            black 15%
+                                        );
                                     }
                                 }
 

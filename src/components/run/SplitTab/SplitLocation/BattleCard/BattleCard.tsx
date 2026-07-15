@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import { Battle, BattlePokemon } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
+import MoveHelpers from '@/lib/utils/MoveHelpers';
 import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
+import TypeHelpers from '@/lib/utils/TypeHelpers';
 import styles from './BattleCard.module.scss';
 
 interface BattleCardProps {
@@ -48,6 +50,11 @@ const BattleCard: React.FC<BattleCardProps> = ({
             pokemon.ability ??
             PokemonHelpers.getAbilities(pokemon.name, generation)?.slot1;
         return ability && StringHelpers.toTitleCase(ability);
+    };
+
+    const getMoveColor = (move: string): string | undefined => {
+        const type = MoveHelpers.getValues(move, generation)?.type;
+        return type ? TypeHelpers.getColor(type) : undefined;
     };
 
     // -------------------------------------------------------------------------
@@ -294,6 +301,14 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                                             handleMoveClick(
                                                                 move
                                                             )
+                                                        }
+                                                        style={
+                                                            {
+                                                                '--move-color':
+                                                                    getMoveColor(
+                                                                        move
+                                                                    ),
+                                                            } as React.CSSProperties
                                                         }
                                                         type="button"
                                                     >

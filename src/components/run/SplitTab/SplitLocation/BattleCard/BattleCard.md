@@ -18,7 +18,8 @@ player's whole party is forced into the fight, "True Double Battle".
 A "Defeat" button below the portrait toggles the trainer's defeated
 state in storage; once defeated it reads "Defeated" and turns green, and
 can be clicked again to undo. Each Pokemon's moves are clickable, linking
-to that move's details.
+to that move's details; a move's background is tinted to match its type,
+darkening further on hover.
 
 ## Props
 
@@ -42,6 +43,8 @@ to that move's details.
 - `getAbility` — a Pokemon's ability, using its `ability` field as an
   override when set and otherwise falling back to its slot-1 ability at
   `generation`, resolved via `PokemonHelpers`
+- `getMoveColor` — a move's type color at `generation`, resolved via
+  `MoveHelpers` and `TypeHelpers`, tinting that move's background
 
 ## SCSS Variable Dependencies
 
