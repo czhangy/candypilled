@@ -5,10 +5,11 @@ showing its sprite, name, and type badges, and a right half divided
 into an upper section (two-thirds height) listing its abilities and
 a lower section (one-third height) showing its catch rate. Below
 that split, a full-width section shows the Pokemon's evolution line,
-or a "No evolution line" message for species with no evolutions.
-Used alongside an encounter table to show whichever Pokemon is
-currently selected. If no Pokemon is selected, a placeholder message
-is shown instead.
+or a "No evolution line" message for species with no evolutions, and
+below that, a full-width section shows its base stats as a horizontal
+bar chart. Used alongside an encounter table to show whichever
+Pokemon is currently selected. If no Pokemon is selected, a
+placeholder message is shown instead.
 
 ## Props
 
@@ -38,3 +39,5 @@ is shown instead.
 - `hasEvolutionBranches` — whether `evolutionLine` has any evolutions
   branching from it; when false, "No evolution line" is shown instead
   of `EvolutionLine`
+- `stats` — the selected species' base stats at `generation`, resolved
+  via `PokemonHelpers` and rendered with `StatsChart`

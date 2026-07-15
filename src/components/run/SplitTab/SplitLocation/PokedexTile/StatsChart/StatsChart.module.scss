@@ -1,0 +1,83 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+$info-width: 5.5rem;
+
+.stats-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+
+    .rows {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    .row {
+        align-items: center;
+        display: flex;
+        gap: 0.5rem;
+
+        .info {
+            align-items: center;
+            display: flex;
+            flex-shrink: 0;
+            gap: 0.35rem;
+            justify-content: space-between;
+            width: $info-width;
+
+            .label {
+                @include uppercase-label;
+
+                font-size: 0.7rem;
+            }
+
+            .value {
+                color: $text-mid;
+                font-size: 0.7rem;
+            }
+        }
+
+        .track {
+            background: $border-subtle;
+            border-radius: 0.15rem;
+            flex: 1;
+            height: 0.5rem;
+            overflow: hidden;
+
+            .fill {
+                background: var(--accent-color);
+                border-radius: 0.15rem;
+                height: 100%;
+            }
+        }
+    }
+
+    .total {
+        border-top: 1px solid $border-subtle;
+        display: flex;
+        padding-top: 0.5rem;
+
+        .total-info {
+            align-items: center;
+            display: flex;
+            gap: 0.35rem;
+            justify-content: space-between;
+            width: $info-width;
+
+            .total-label {
+                @include uppercase-label;
+
+                font-size: 0.7rem;
+            }
+
+            .total-value {
+                @include mono-label;
+
+                font-size: 0.85rem;
+            }
+        }
+    }
+}

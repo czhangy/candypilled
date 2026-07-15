@@ -1,5 +1,10 @@
 import { POKEMON } from '@/lib/data/pokemon';
-import { Abilities, EvolutionStep, PokemonData } from '@/lib/static/types';
+import {
+    Abilities,
+    EvolutionStep,
+    PokemonData,
+    StatValues,
+} from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 export default class PokemonHelpers {
@@ -50,6 +55,15 @@ export default class PokemonHelpers {
         return [...pokemon.abilities]
             .reverse()
             .find((entry) => entry.fromGeneration <= generation)?.abilities;
+    }
+
+    static getStats(name: string, generation: number): StatValues | undefined {
+        const pokemon = PokemonHelpers.get(name);
+        if (!pokemon) return undefined;
+
+        return [...pokemon.stats]
+            .reverse()
+            .find((entry) => entry.fromGeneration <= generation)?.stats;
     }
 
     static getCatchRate(name: string): number | undefined {

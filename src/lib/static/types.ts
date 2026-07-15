@@ -1,7 +1,7 @@
 import { StaticImageData } from 'next/image';
 import { FieldCondition, Nature } from '@/lib/static/enums';
 
-interface StatValues {
+export interface StatValues {
     atk: number;
     def: number;
     hp: number;
@@ -118,6 +118,11 @@ export interface AbilitiesByGeneration {
     abilities: Abilities;
 }
 
+export interface StatsByGeneration {
+    fromGeneration: number;
+    stats: StatValues;
+}
+
 export interface EvolutionMethod {
     trigger: string;
     item?: string;
@@ -192,6 +197,7 @@ export interface PokemonData {
     sprites: Record<string, string>;
     types: TypesByGeneration[];
     abilities: AbilitiesByGeneration[];
+    stats: StatsByGeneration[];
     catchRate: number;
     evolutionLine: EvolutionLineByGeneration[];
 }

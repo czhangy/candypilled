@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
+import StatsChart from '@/components/run/SplitTab/SplitLocation/PokedexTile/StatsChart/StatsChart';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './PokedexTile.module.scss';
@@ -61,6 +62,9 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         : undefined;
     const hasEvolutionBranches =
         !!evolutionLine && evolutionLine.evolvesTo.length > 0;
+    const stats = species
+        ? PokemonHelpers.getStats(species, generation)
+        : undefined;
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -189,6 +193,14 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                                 No evolution line
                             </span>
                         )}
+                    </div>
+                </div>
+            )}
+            {pokemon && stats && (
+                <div className={styles.stats}>
+                    <span className={styles['stats-label']}>Base Stats</span>
+                    <div className={styles['stats-content']}>
+                        <StatsChart stats={stats} />
                     </div>
                 </div>
             )}
