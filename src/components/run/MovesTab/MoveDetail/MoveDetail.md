@@ -1,9 +1,9 @@
 # MoveDetail
 
-Displays details for a single move: its name and type badge, flavor text
-description, a row of stats (category, power, accuracy, PP, and priority),
-and its effect text (with its effect chance appended, if any). If no move
-is selected, a placeholder message is shown instead.
+Displays details for a single move: its name, flavor text description, a
+row of stats (type badge, category icon, power, accuracy, PP, and
+priority), and its effect text (with its effect chance appended, if any).
+If no move is selected, a placeholder message is shown instead.
 
 ## Props
 

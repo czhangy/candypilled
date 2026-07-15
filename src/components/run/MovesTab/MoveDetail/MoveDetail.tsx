@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './MoveDetail.module.scss';
 
 interface MoveDetailProps {
@@ -13,8 +12,8 @@ const MoveDetail: React.FC<MoveDetailProps> = ({ generation, move }) => {
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const TYPE_BADGE_WIDTH = 32;
-    const TYPE_BADGE_HEIGHT = 14;
+    const BADGE_WIDTH = 40;
+    const BADGE_HEIGHT = 18;
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -41,17 +40,7 @@ const MoveDetail: React.FC<MoveDetailProps> = ({ generation, move }) => {
                 {moveData && values ? (
                     <>
                         <div className={styles.top}>
-                            <div className={styles['name-group']}>
-                                <span className={styles.name}>
-                                    {moveData.name}
-                                </span>
-                                <Image
-                                    alt={values.type}
-                                    height={TYPE_BADGE_HEIGHT}
-                                    src={`/types/${values.type}.png`}
-                                    width={TYPE_BADGE_WIDTH}
-                                />
-                            </div>
+                            <span className={styles.name}>{moveData.name}</span>
                             {values.description && (
                                 <p className={styles.description}>
                                     {values.description}
@@ -61,13 +50,25 @@ const MoveDetail: React.FC<MoveDetailProps> = ({ generation, move }) => {
                         <div className={styles.stats}>
                             <div className={styles.stat}>
                                 <span className={styles['stat-label']}>
+                                    Type
+                                </span>
+                                <Image
+                                    alt={values.type}
+                                    height={BADGE_HEIGHT}
+                                    src={`/types/${values.type}.png`}
+                                    width={BADGE_WIDTH}
+                                />
+                            </div>
+                            <div className={styles.stat}>
+                                <span className={styles['stat-label']}>
                                     Category
                                 </span>
-                                <span className={styles['stat-value']}>
-                                    {StringHelpers.toTitleCase(
-                                        moveData.category
-                                    )}
-                                </span>
+                                <Image
+                                    alt={moveData.category}
+                                    height={BADGE_HEIGHT}
+                                    src={`/move_categories/${moveData.category}.png`}
+                                    width={BADGE_WIDTH}
+                                />
                             </div>
                             <div className={styles.stat}>
                                 <span className={styles['stat-label']}>
