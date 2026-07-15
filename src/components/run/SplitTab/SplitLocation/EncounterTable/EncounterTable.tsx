@@ -12,7 +12,9 @@ interface EncounterTableProps {
     dupes: string[];
     encounters: Encounter[];
     generation: number;
+    isMissed: boolean;
     onSelectEncounter?: (encounter: Encounter) => void;
+    onToggleMissed: () => void;
     selectedSpecies?: string;
     variant: string;
 }
@@ -22,7 +24,9 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     dupes,
     encounters,
     generation,
+    isMissed,
     onSelectEncounter,
+    onToggleMissed,
     selectedSpecies,
     variant,
 }) => {
@@ -193,6 +197,19 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                     </div>
                 )}
             </div>
+            <button
+                className={[
+                    styles['miss-button'],
+                    isMissed && styles['miss-button--active'],
+                ]
+                    .filter(Boolean)
+                    .join(' ')}
+                disabled={!isMissed && !!caughtHere}
+                onClick={onToggleMissed}
+                type="button"
+            >
+                {isMissed ? 'MISSED' : 'MISS'}
+            </button>
             <table className={styles['encounter-table']}>
                 <colgroup>
                     <col className={styles['col-pokemon']} />

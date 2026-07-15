@@ -57,6 +57,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             hallOfFameCount: run?.hallOfFameCount ?? 0,
             starter,
             caughtPokemon: [],
+            missedLocations: [],
         };
 
         LocalStorageHelpers.saveRun(game, newRun);

@@ -172,6 +172,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                     location: location.name,
                 },
             ],
+            missedLocations: run.missedLocations.filter(
+                (missedLocation) => missedLocation !== location.name
+            ),
         };
 
         LocalStorageHelpers.saveRun(game, updatedRun);
@@ -188,12 +191,29 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         LocalStorageHelpers.saveRun(game, updatedRun);
     };
 
+    const handleToggleMissed = (): void => {
+        const updatedRun: Run = {
+            ...run,
+            missedLocations: isMissed
+                ? run.missedLocations.filter(
+                      (missedLocation) => missedLocation !== location.name
+                  )
+                : [...run.missedLocations, location.name],
+        };
+
+        LocalStorageHelpers.saveRun(game, updatedRun);
+    };
+
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
     const dupes = run.caughtPokemon.map((caught) => caught.name);
-    const usedLocations = run.caughtPokemon.map((caught) => caught.location);
+    const isMissed = run.missedLocations.includes(location.name);
+    const usedLocations = [
+        ...run.caughtPokemon.map((caught) => caught.location),
+        ...run.missedLocations,
+    ];
     const encounter = run.caughtPokemon.find(
         (caught) => caught.location === location.name
     )?.name;
@@ -320,9 +340,11 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         dupes={dupes}
                                         encounters={section.encounters}
                                         generation={game.generation}
+                                        isMissed={isMissed}
                                         onSelectEncounter={
                                             handleEncounterSelect
                                         }
+                                        onToggleMissed={handleToggleMissed}
                                         selectedSpecies={
                                             selectedEncounter?.species
                                         }
@@ -333,6 +355,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         encounter={encounter}
                                         game={game}
                                         generation={game.generation}
+                                        isLocationMissed={isMissed}
                                         mode="catch"
                                         onAddPokemon={handleAddPokemon}
                                         onRemovePokemon={handleRemovePokemon}

@@ -23,17 +23,25 @@ the run, since catching it here would violate the
 one-catch-per-evolution-line rule. Either highlight takes priority
 over the selected highlight if both apply.
 
+Below the header, a full-width "MISS"/"MISSED" toggle button (styled
+like the Pokedex tile's catch button, red when active) records that
+this location's one encounter was used up without catching anything.
+It is disabled whenever a species is already caught at this location,
+since the two outcomes are mutually exclusive.
+
 ## Props
 
-| Prop                | Type                             | Required | Default | Description                                                            |
-| ------------------- | -------------------------------- | -------- | ------- | ---------------------------------------------------------------------- |
-| `caughtHere`        | `string`                         | No       | -       | The species already caught at this location, if any, highlighted green |
-| `dupes`             | `string[]`                       | Yes      | -       | Every species caught so far in the run, regardless of location         |
-| `encounters`        | `Encounter[]`                    | Yes      | -       | The encounter slots to display                                         |
-| `generation`        | `number`                         | Yes      | -       | The game's generation, used to resolve each Pokemon's types            |
-| `onSelectEncounter` | `(encounter: Encounter) => void` | No       | -       | Called with the clicked row's encounter                                |
-| `selectedSpecies`   | `string`                         | No       | -       | The species of the currently selected row, if any, to highlight it     |
-| `variant`           | `string`                         | Yes      | -       | The sprite variant to prefer, matching the game's slug                 |
+| Prop                | Type                             | Required | Default | Description                                                                        |
+| ------------------- | -------------------------------- | -------- | ------- | ---------------------------------------------------------------------------------- |
+| `caughtHere`        | `string`                         | No       | -       | The species already caught at this location, if any, highlighted green             |
+| `dupes`             | `string[]`                       | Yes      | -       | Every species caught so far in the run, regardless of location                     |
+| `encounters`        | `Encounter[]`                    | Yes      | -       | The encounter slots to display                                                     |
+| `generation`        | `number`                         | Yes      | -       | The game's generation, used to resolve each Pokemon's types                        |
+| `isMissed`          | `boolean`                        | Yes      | -       | Whether this location's encounter was marked missed, styling the toggle button red |
+| `onSelectEncounter` | `(encounter: Encounter) => void` | No       | -       | Called with the clicked row's encounter                                            |
+| `onToggleMissed`    | `() => void`                     | Yes      | -       | Called when the "MISS"/"MISSED" button is clicked                                  |
+| `selectedSpecies`   | `string`                         | No       | -       | The species of the currently selected row, if any, to highlight it                 |
+| `variant`           | `string`                         | Yes      | -       | The sprite variant to prefer, matching the game's slug                             |
 
 ## State
 
