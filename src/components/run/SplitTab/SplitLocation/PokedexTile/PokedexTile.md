@@ -7,7 +7,8 @@ a lower section (one-third height) showing its catch rate. Below
 that split, a full-width section shows the Pokemon's evolution line,
 or a "No evolution line" message for species with no evolutions, and
 below that, a full-width section shows its base stats as a horizontal
-bar chart. Used alongside an encounter table to show whichever
+bar chart. Below the stats, a final full-width section lists its
+learnset. Used alongside an encounter table to show whichever
 Pokemon is currently selected. If no Pokemon is selected, a
 placeholder message is shown instead.
 
@@ -41,3 +42,5 @@ placeholder message is shown instead.
   of `EvolutionLine`
 - `stats` — the selected species' base stats at `generation`, resolved
   via `PokemonHelpers` and rendered with `StatsChart`
+- `learnset` — the selected species' learnset at `generation`, resolved
+  via `PokemonHelpers` and rendered with `LearnsetList`

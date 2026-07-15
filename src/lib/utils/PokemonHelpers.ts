@@ -2,6 +2,7 @@ import { POKEMON } from '@/lib/data/pokemon';
 import {
     Abilities,
     EvolutionStep,
+    LearnsetMove,
     PokemonData,
     StatValues,
 } from '@/lib/static/types';
@@ -80,5 +81,17 @@ export default class PokemonHelpers {
         return [...pokemon.evolutionLine]
             .reverse()
             .find((entry) => entry.fromGeneration <= generation)?.line;
+    }
+
+    static getLearnset(
+        name: string,
+        generation: number
+    ): LearnsetMove[] | undefined {
+        const pokemon = PokemonHelpers.get(name);
+        if (!pokemon) return undefined;
+
+        return [...pokemon.learnset]
+            .reverse()
+            .find((entry) => entry.fromGeneration <= generation)?.moves;
     }
 }
