@@ -14,3 +14,8 @@ stat, with a total base stat (BST) count beneath the bars.
 - `total` — the sum of all six stats, shown as the BST beneath the bars
 - each row's bar width is scaled against 255, the highest base stat any
   Pokemon can have, so bars are comparable across different Pokemon
+
+## SCSS Variable Dependencies
+
+- `--accent-color` — the active game's accent color, used to fill each
+  stat bar
