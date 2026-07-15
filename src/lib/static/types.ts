@@ -192,6 +192,20 @@ export interface MoveData {
     valuesByGeneration: MoveValuesByGeneration[];
 }
 
+export type LearnsetMethod = 'level-up' | 'machine' | 'tutor' | 'egg';
+
+export interface LearnsetMove {
+    name: string;
+    method: LearnsetMethod;
+    // Only set for level-up moves.
+    level?: number;
+}
+
+export interface LearnsetByGeneration {
+    fromGeneration: number;
+    moves: LearnsetMove[];
+}
+
 export interface PokemonData {
     name: string;
     sprites: Record<string, string>;
@@ -200,4 +214,5 @@ export interface PokemonData {
     stats: StatsByGeneration[];
     catchRate: number;
     evolutionLine: EvolutionLineByGeneration[];
+    learnset: LearnsetByGeneration[];
 }
