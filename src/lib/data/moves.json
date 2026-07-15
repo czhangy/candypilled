@@ -9772,7 +9772,7 @@
         ]
     },
     "soft-boiled": {
-        "name": "Soft Boiled",
+        "name": "Soft-Boiled",
         "category": "status",
         "priority": 0,
         "introducedInGeneration": 1,
@@ -14348,7 +14348,7 @@
         ]
     },
     "lock-on": {
-        "name": "Lock On",
+        "name": "Lock-On",
         "category": "status",
         "priority": 0,
         "introducedInGeneration": 2,
@@ -18754,7 +18754,7 @@
         ]
     },
     "will-o-wisp": {
-        "name": "Will O Wisp",
+        "name": "Will-O-Wisp",
         "category": "status",
         "priority": 0,
         "introducedInGeneration": 3,
@@ -25050,7 +25050,7 @@
         ]
     },
     "wake-up-slap": {
-        "name": "Wake Up Slap",
+        "name": "Wake-Up Slap",
         "category": "physical",
         "priority": 0,
         "introducedInGeneration": 4,
@@ -27488,7 +27488,7 @@
         ]
     },
     "x-scissor": {
-        "name": "X Scissor",
+        "name": "X-Scissor",
         "category": "physical",
         "priority": 0,
         "introducedInGeneration": 4,
@@ -35402,7 +35402,7 @@
         ]
     },
     "trick-or-treat": {
-        "name": "Trick Or Treat",
+        "name": "Trick-or-Treat",
         "category": "status",
         "priority": 0,
         "introducedInGeneration": 6,
@@ -35640,7 +35640,7 @@
         ]
     },
     "freeze-dry": {
-        "name": "Freeze Dry",
+        "name": "Freeze-Dry",
         "category": "special",
         "priority": 0,
         "introducedInGeneration": 6,
@@ -39142,7 +39142,7 @@
         ]
     },
     "multi-attack": {
-        "name": "Multi Attack",
+        "name": "Multi-Attack",
         "category": "physical",
         "priority": 0,
         "introducedInGeneration": 7,

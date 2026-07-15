@@ -27,6 +27,21 @@ const SHADOW_MOVE_TYPE = 'shadow';
 // list without being useful to look up.
 const MIN_PP = 2;
 
+// `StringHelpers.toTitleCase` joins slug words with a space, so moves whose
+// official name keeps a hyphen (e.g. "Will-O-Wisp") need their title-cased
+// name corrected here rather than in the shared helper, which is also used
+// for names that are correctly space-joined.
+const MOVE_NAME_OVERRIDES: Record<string, string> = {
+    'will-o-wisp': 'Will-O-Wisp',
+    'x-scissor': 'X-Scissor',
+    'freeze-dry': 'Freeze-Dry',
+    'soft-boiled': 'Soft-Boiled',
+    'trick-or-treat': 'Trick-or-Treat',
+    'multi-attack': 'Multi-Attack',
+    'wake-up-slap': 'Wake-Up Slap',
+    'lock-on': 'Lock-On',
+};
+
 const sleep = (ms: number): Promise<void> =>
     new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -334,7 +349,9 @@ export const fetchMoves = async (): Promise<void> => {
             continue;
         }
 
-        const name = StringHelpers.toTitleCase(move.name);
+        const name =
+            MOVE_NAME_OVERRIDES[move.name] ??
+            StringHelpers.toTitleCase(move.name);
         data[move.name] = {
             name,
             category: move.damage_class.name,
