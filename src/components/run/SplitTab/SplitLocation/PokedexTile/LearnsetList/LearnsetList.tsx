@@ -48,48 +48,45 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
                 const name = moveData?.name ?? move.name;
 
                 return (
-                    <li
-                        className={styles.row}
-                        key={`${move.method}-${move.name}-${move.level ?? ''}`}
-                    >
-                        <span
-                            className={[
-                                styles.method,
-                                styles[`method--${move.method}`],
-                            ].join(' ')}
-                        >
-                            {move.method === 'level-up'
-                                ? `Lv. ${move.level}`
-                                : METHOD_LABELS[move.method]}
-                        </span>
+                    <li key={`${move.method}-${move.name}-${move.level ?? ''}`}>
                         <button
-                            className={styles.name}
+                            className={styles.row}
                             onClick={() => handleMoveClick(name)}
                             type="button"
                         >
-                            {name}
+                            <span
+                                className={[
+                                    styles.method,
+                                    styles[`method--${move.method}`],
+                                ].join(' ')}
+                            >
+                                {move.method === 'level-up'
+                                    ? `Lv. ${move.level}`
+                                    : METHOD_LABELS[move.method]}
+                            </span>
+                            <span className={styles.name}>{name}</span>
+                            {moveData && values && (
+                                <div className={styles.details}>
+                                    <Image
+                                        alt={values.type}
+                                        height={BADGE_HEIGHT}
+                                        src={`/types/${values.type}.png`}
+                                        width={BADGE_WIDTH}
+                                    />
+                                    <Image
+                                        alt={moveData.category}
+                                        height={BADGE_HEIGHT}
+                                        src={`/move_categories/${moveData.category}.png`}
+                                        width={BADGE_WIDTH}
+                                    />
+                                    <span className={styles.power}>
+                                        {values.power !== null
+                                            ? `${values.power}BP`
+                                            : '—'}
+                                    </span>
+                                </div>
+                            )}
                         </button>
-                        {moveData && values && (
-                            <div className={styles.details}>
-                                <Image
-                                    alt={values.type}
-                                    height={BADGE_HEIGHT}
-                                    src={`/types/${values.type}.png`}
-                                    width={BADGE_WIDTH}
-                                />
-                                <Image
-                                    alt={moveData.category}
-                                    height={BADGE_HEIGHT}
-                                    src={`/move_categories/${moveData.category}.png`}
-                                    width={BADGE_WIDTH}
-                                />
-                                <span className={styles.power}>
-                                    {values.power !== null
-                                        ? `${values.power}BP`
-                                        : '—'}
-                                </span>
-                            </div>
-                        )}
                     </li>
                 );
             })}
