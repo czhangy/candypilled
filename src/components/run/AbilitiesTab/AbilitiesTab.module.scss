@@ -1,0 +1,12 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.abilities-tab {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem 0;
+
+    @media (width <= 768px) {
+        flex-direction: column;
+    }
+}

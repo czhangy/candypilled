@@ -216,6 +216,17 @@ export interface MoveData {
     valuesByGeneration: MoveValuesByGeneration[];
 }
 
+export interface AbilityValuesByGeneration {
+    fromGeneration: number;
+    effect: string;
+}
+
+export interface AbilityData {
+    name: string;
+    introducedInGeneration: number;
+    valuesByGeneration: AbilityValuesByGeneration[];
+}
+
 export type LearnsetMethod = 'level-up' | 'machine' | 'tutor';
 
 export interface LearnsetMove {

@@ -23,6 +23,7 @@ import styles from './SplitLocation.module.scss';
 interface SplitLocationProps {
     game: Game;
     location: Location;
+    onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
     run: Run;
     variant: string;
@@ -31,6 +32,7 @@ interface SplitLocationProps {
 const SplitLocation: React.FC<SplitLocationProps> = ({
     game,
     location,
+    onSelectAbility,
     onSelectMove,
     run,
     variant,
@@ -323,6 +325,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         isDefeated={isBattleDefeated(
                                             selectedBattle
                                         )}
+                                        onSelectAbility={onSelectAbility}
                                         onSelectMove={onSelectMove}
                                         onToggleDefeated={() =>
                                             handleBattleToggleDefeated(
@@ -359,6 +362,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         mode="catch"
                                         onAddPokemon={handleAddPokemon}
                                         onRemovePokemon={handleRemovePokemon}
+                                        onSelectAbility={onSelectAbility}
                                         onSelectMove={onSelectMove}
                                         onSelectSpecies={(species: string) =>
                                             setSpeciesOverride(species)

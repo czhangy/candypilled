@@ -1,6 +1,6 @@
+import SearchableList from '@/components/common/SearchableList/SearchableList';
 import { MOVES } from '@/lib/data/moves';
 import MoveDetail from './MoveDetail/MoveDetail';
-import MoveList from './MoveList/MoveList';
 import styles from './MovesTab.module.scss';
 
 interface MovesTabProps {
@@ -28,10 +28,13 @@ const MovesTab: React.FC<MovesTabProps> = ({
 
     return (
         <div className={styles['moves-tab']}>
-            <MoveList
-                moves={availableMoves}
-                onSelectMove={onSelectMove}
-                selectedMove={selectedMove}
+            <SearchableList
+                emptyMessage="No moves found"
+                items={availableMoves}
+                onSelectItem={onSelectMove}
+                searchAriaLabel="Search moves"
+                searchPlaceholder="Search moves..."
+                selectedItem={selectedMove}
             />
             <MoveDetail generation={generation} move={selectedMove} />
         </div>

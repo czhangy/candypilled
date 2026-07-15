@@ -16,4 +16,4 @@ three-quarters of the row's width respectively.
 ## Computations
 
 - `availableMoves` — every move introduced at or before `generation`, passed
-  to `MoveList`
+  to `SearchableList`

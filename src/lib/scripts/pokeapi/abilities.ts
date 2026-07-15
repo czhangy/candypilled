@@ -1,198 +1,197 @@
 import fs from 'fs';
 import path from 'path';
-import { getMaxDexNumber } from '@/lib/scripts/pokeapi/dex-ranges';
-import { CURRENT_GAME_VERSION } from '@/lib/scripts/pokeapi/game-versions';
 import {
     handleException,
     logSuccess,
+    logWarning,
     validateRootDirectory,
 } from '@/lib/scripts/utils/helpers';
-import {
-    Abilities,
-    AbilitiesByGeneration,
-    PokemonData,
-} from '@/lib/static/types';
+import { AbilityData, AbilityValuesByGeneration } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
-const POKEAPI_SPECIES_URL = 'https://pokeapi.co/api/v2/pokemon-species';
-const DATA_PATH = path.join('src', 'lib', 'data', 'pokemon.json');
+const POKEAPI_ABILITY_URL = 'https://pokeapi.co/api/v2/ability';
+const POKEAPI_GENERATION_URL = 'https://pokeapi.co/api/v2/generation';
+// Like moves.json, this dataset isn't scoped to the current game: abilities
+// are shared across every game the site will ever support, so every ability
+// is fetched regardless of which generation introduced it.
+const DATA_PATH = path.join('src', 'lib', 'data', 'abilities.json');
 const FETCH_DELAY_MS = 75;
-const MAX_DEX_NUMBER = getMaxDexNumber(CURRENT_GAME_VERSION.generation);
-
-// PokeAPI ability slots: 1 and 2 are the standard slots, 3 is the hidden
-// ability slot.
-const SLOT_NUMBERS = { slot1: 1, slot2: 2, hidden: 3 } as const;
+const ABILITY_LIST_LIMIT = 500;
 
 const sleep = (ms: number): Promise<void> =>
     new Promise((resolve) => setTimeout(resolve, ms));
 
-const readData = (): Record<string, PokemonData> => {
-    if (!fs.existsSync(DATA_PATH)) return {};
-    return JSON.parse(fs.readFileSync(DATA_PATH, 'utf-8'));
-};
-
-const writeData = (data: Record<string, PokemonData>): void => {
+const writeData = (data: Record<string, AbilityData>): void => {
     fs.writeFileSync(DATA_PATH, `${JSON.stringify(data, null, 4)}\n`);
 };
 
-interface Variety {
+interface RawGeneration {
+    version_groups: { name: string }[];
+}
+
+const fetchGenerationCount = async (): Promise<number> => {
+    const response = await fetch(`${POKEAPI_GENERATION_URL}?limit=1`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch generation count from PokeAPI.');
+    }
+
+    const body = await response.json();
+    return body.count as number;
+};
+
+const fetchGeneration = async (
+    generationNumber: number
+): Promise<RawGeneration> => {
+    const response = await fetch(
+        `${POKEAPI_GENERATION_URL}/${generationNumber}`
+    );
+    if (!response.ok) {
+        throw new Error(
+            `Failed to fetch generation #${generationNumber} from PokeAPI.`
+        );
+    }
+
+    return (await response.json()) as RawGeneration;
+};
+
+// Ability effect history references a version group (e.g. "black-white")
+// rather than a generation number directly, so this builds the lookup once
+// up front instead of resolving it per ability.
+const buildVersionGroupGenerations = async (): Promise<Map<string, number>> => {
+    const generationCount = await fetchGenerationCount();
+    const versionGroupGenerations = new Map<string, number>();
+
+    for (
+        let generationNumber = 1;
+        generationNumber <= generationCount;
+        generationNumber += 1
+    ) {
+        const generation = await fetchGeneration(generationNumber);
+        await sleep(FETCH_DELAY_MS);
+
+        for (const versionGroup of generation.version_groups) {
+            versionGroupGenerations.set(versionGroup.name, generationNumber);
+        }
+    }
+
+    return versionGroupGenerations;
+};
+
+interface NamedApiResource {
     name: string;
     url: string;
 }
 
-const fetchVarieties = async (dexNumber: number): Promise<Variety[]> => {
-    const response = await fetch(`${POKEAPI_SPECIES_URL}/${dexNumber}`);
+const fetchAbilityList = async (): Promise<NamedApiResource[]> => {
+    const response = await fetch(
+        `${POKEAPI_ABILITY_URL}?limit=${ABILITY_LIST_LIMIT}`
+    );
     if (!response.ok) {
-        throw new Error(`Failed to fetch species #${dexNumber} from PokeAPI.`);
+        throw new Error('Failed to fetch ability list from PokeAPI.');
     }
 
     const body = await response.json();
-    return (body.varieties as { pokemon: { name: string; url: string } }[]).map(
-        (variety) => ({
-            name: variety.pokemon.name,
-            url: variety.pokemon.url,
-        })
-    );
+    return body.results as NamedApiResource[];
 };
 
-interface RawAbilitySlot {
-    ability: { name: string } | null;
-    is_hidden: boolean;
-    slot: number;
+interface RawEffectEntry {
+    effect: string;
+    language: { name: string };
 }
 
-interface RawPastAbility {
-    generation: { name: string };
-    abilities: RawAbilitySlot[];
+interface RawEffectChange {
+    version_group: { name: string };
+    effect_entries: RawEffectEntry[];
 }
 
-interface RawPokemon {
+interface RawAbility {
     name: string;
-    abilities: RawAbilitySlot[];
-    past_abilities: RawPastAbility[];
+    generation: { name: string };
+    is_main_series: boolean;
+    effect_entries: RawEffectEntry[];
+    effect_changes: RawEffectChange[];
 }
 
-const fetchRawPokemon = async (variety: Variety): Promise<RawPokemon> => {
-    const response = await fetch(variety.url);
+const fetchAbility = async (
+    resource: NamedApiResource
+): Promise<RawAbility> => {
+    const response = await fetch(resource.url);
     if (!response.ok) {
-        throw new Error(`Failed to fetch "${variety.name}" from PokeAPI.`);
+        throw new Error(
+            `Failed to fetch ability "${resource.name}" from PokeAPI.`
+        );
     }
 
-    return (await response.json()) as RawPokemon;
+    return (await response.json()) as RawAbility;
 };
+
+const toEnglishEffect = (entries: RawEffectEntry[]): string | undefined =>
+    entries.find((entry) => entry.language.name === 'en')?.effect;
 
 const toGenerationNumber = (generationName: string): number =>
     StringHelpers.fromRoman(generationName.replace('generation-', ''));
 
-interface SlotSegment {
-    fromGeneration: number;
-    value?: string;
-}
+// PokeAPI's `effect_changes` entries describe the effect text that applied
+// UP TO the listed version group, with the top-level `effect_entries`
+// holding the current text. This mirrors how `past_values` is interpreted in
+// moves.ts, converting that into ascending "applies from generation N
+// onward" segments.
+const buildValuesByGeneration = (
+    ability: RawAbility,
+    versionGroupGenerations: Map<string, number>
+): AbilityValuesByGeneration[] => {
+    const currentEffect = toEnglishEffect(ability.effect_entries) ?? '';
 
-// Builds the ascending "applies from generation N onward" timeline for a
-// single ability slot, mirroring how `past_types` is interpreted in
-// types.ts. A missing `ability` on a past entry means that slot didn't exist
-// for that Pokemon yet (e.g. hidden abilities before generation V).
-const buildSlotTimeline = (
-    pokemon: RawPokemon,
-    slotNumber: number
-): SlotSegment[] => {
-    const pastEntries: { generation: number; value?: string }[] = [];
-    for (const pastAbility of pokemon.past_abilities) {
-        const slot = pastAbility.abilities.find(
-            (candidate) => candidate.slot === slotNumber
-        );
-        if (!slot) continue;
+    const pastEntries = ability.effect_changes
+        .map((change) => ({
+            generation:
+                versionGroupGenerations.get(change.version_group.name) ?? 1,
+            effect: toEnglishEffect(change.effect_entries) ?? currentEffect,
+        }))
+        .sort((a, b) => a.generation - b.generation);
 
-        pastEntries.push({
-            generation: toGenerationNumber(pastAbility.generation.name),
-            value: slot.ability?.name,
-        });
-    }
-    pastEntries.sort((a, b) => a.generation - b.generation);
-
-    const currentValue = pokemon.abilities.find(
-        (candidate) => candidate.slot === slotNumber
-    )?.ability?.name;
-
-    const segments: SlotSegment[] = pastEntries.map((entry, index) => ({
-        fromGeneration: index === 0 ? 1 : pastEntries[index - 1].generation + 1,
-        value: entry.value,
-    }));
+    const segments: AbilityValuesByGeneration[] = pastEntries.map(
+        (entry, index) => ({
+            fromGeneration:
+                index === 0 ? 1 : pastEntries[index - 1].generation + 1,
+            effect: entry.effect,
+        })
+    );
 
     const lastEntry = pastEntries[pastEntries.length - 1];
     segments.push({
         fromGeneration: lastEntry ? lastEntry.generation + 1 : 1,
-        value: currentValue,
+        effect: currentEffect,
     });
 
     return segments;
 };
 
-const valueAt = (
-    segments: SlotSegment[],
-    generation: number
-): string | undefined => {
-    let value: string | undefined;
-    for (const segment of segments) {
-        if (segment.fromGeneration > generation) break;
-        value = segment.value;
-    }
-    return value;
-};
+export const fetchAbilities = async (): Promise<void> => {
+    const versionGroupGenerations = await buildVersionGroupGenerations();
+    const abilityList = await fetchAbilityList();
+    const data: Record<string, AbilityData> = {};
 
-// Slots can each change independently across generations, so the three
-// per-slot timelines are merged on the union of their boundaries to produce
-// a single combined ability set per generation range.
-const buildAbilitiesByGeneration = (
-    pokemon: RawPokemon
-): AbilitiesByGeneration[] => {
-    const slot1 = buildSlotTimeline(pokemon, SLOT_NUMBERS.slot1);
-    const slot2 = buildSlotTimeline(pokemon, SLOT_NUMBERS.slot2);
-    const hidden = buildSlotTimeline(pokemon, SLOT_NUMBERS.hidden);
+    for (const resource of abilityList) {
+        const ability = await fetchAbility(resource);
+        await sleep(FETCH_DELAY_MS);
 
-    const boundaries = [
-        ...new Set(
-            [...slot1, ...slot2, ...hidden].map(
-                (segment) => segment.fromGeneration
-            )
-        ),
-    ].sort((a, b) => a - b);
+        if (!ability.is_main_series) {
+            logWarning(`Skipping non-main-series ability "${ability.name}".`);
+            continue;
+        }
 
-    return boundaries.map((fromGeneration) => {
-        const abilities: Abilities = {
-            slot1: valueAt(slot1, fromGeneration) as string,
+        const name = StringHelpers.toTitleCase(ability.name);
+        data[ability.name] = {
+            name,
+            introducedInGeneration: toGenerationNumber(ability.generation.name),
+            valuesByGeneration: buildValuesByGeneration(
+                ability,
+                versionGroupGenerations
+            ),
         };
 
-        const slot2Value = valueAt(slot2, fromGeneration);
-        if (slot2Value) abilities.slot2 = slot2Value;
-
-        const hiddenValue = valueAt(hidden, fromGeneration);
-        if (hiddenValue) abilities.hidden = hiddenValue;
-
-        return { fromGeneration, abilities };
-    });
-};
-
-export const fetchAbilities = async (): Promise<void> => {
-    const data = readData();
-
-    for (let dexNumber = 1; dexNumber <= MAX_DEX_NUMBER; dexNumber += 1) {
-        const varieties = await fetchVarieties(dexNumber);
-
-        for (const variety of varieties) {
-            // Varieties include forms irrelevant to this dex (Mega, Gigantamax,
-            // regional forms from later generations, etc.). Only enrich entries
-            // that pokeapi:sprites already curated as relevant to this game.
-            const pokemon = data[variety.name];
-            if (!pokemon) continue;
-
-            const rawPokemon = await fetchRawPokemon(variety);
-            await sleep(FETCH_DELAY_MS);
-
-            pokemon.abilities = buildAbilitiesByGeneration(rawPokemon);
-            logSuccess(`Fetched abilities for "${pokemon.name}".`);
-        }
+        logSuccess(`Fetched "${name}".`);
     }
 
     writeData(data);

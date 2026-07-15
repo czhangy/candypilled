@@ -7,6 +7,7 @@ import { GAMES } from '@/lib/static/constants';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
+import AbilitiesTab from './AbilitiesTab/AbilitiesTab';
 import MovesTab from './MovesTab/MovesTab';
 import styles from './RunPage.module.scss';
 import SplitTab from './SplitTab/SplitTab';
@@ -25,6 +26,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         { id: 'split', label: 'Splits' },
         { id: 'box', label: 'Box' },
         { id: 'moves', label: 'Moves' },
+        { id: 'abilities', label: 'Abilities' },
     ];
 
     // -------------------------------------------------------------------------
@@ -43,6 +45,9 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     const [activeTab, setActiveTab] = useState(TABS[0].id);
     const [selectedMove, setSelectedMove] = useState<string | undefined>(
+        undefined
+    );
+    const [selectedAbility, setSelectedAbility] = useState<string | undefined>(
         undefined
     );
 
@@ -91,6 +96,15 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         setActiveTab('moves');
     };
 
+    const handleAbilitySelect = (name: string): void => {
+        setSelectedAbility(name);
+    };
+
+    const handleAbilityLinkClick = (name: string): void => {
+        setSelectedAbility(name);
+        setActiveTab('abilities');
+    };
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -123,6 +137,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
             {activeTab === 'split' && (
                 <SplitTab
                     game={game}
+                    onSelectAbility={handleAbilityLinkClick}
                     onSelectMove={handleMoveLinkClick}
                     run={run}
                 />
@@ -132,6 +147,13 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                     generation={game.generation}
                     onSelectMove={handleMoveSelect}
                     selectedMove={selectedMove}
+                />
+            )}
+            {activeTab === 'abilities' && (
+                <AbilitiesTab
+                    generation={game.generation}
+                    onSelectAbility={handleAbilitySelect}
+                    selectedAbility={selectedAbility}
                 />
             )}
         </div>

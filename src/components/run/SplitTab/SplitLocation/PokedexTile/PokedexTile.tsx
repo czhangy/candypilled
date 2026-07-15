@@ -32,6 +32,7 @@ type PokedexTileProps = (
 ) & {
     game: Game;
     generation: number;
+    onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
     onSelectSpecies: (species: string) => void;
     originalSpecies?: string;
@@ -43,6 +44,7 @@ type PokedexTileProps = (
 const PokedexTile: React.FC<PokedexTileProps> = ({
     game,
     generation,
+    onSelectAbility,
     onSelectMove,
     onSelectSpecies,
     originalSpecies,
@@ -80,6 +82,10 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
 
     const handleDetailTabChange = (tab: DetailTab): void => {
         setActiveDetailTab(tab);
+    };
+
+    const handleAbilityClick = (name: string): void => {
+        onSelectAbility(StringHelpers.toTitleCase(name));
     };
 
     const handleCatchButtonClick = (): void => {
@@ -232,7 +238,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                                             className={styles['abilities-list']}
                                         >
                                             {abilityEntries.map((entry) => (
-                                                <span
+                                                <button
                                                     className={[
                                                         styles.ability,
                                                         entry.hidden &&
@@ -243,13 +249,19 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                                                         .filter(Boolean)
                                                         .join(' ')}
                                                     key={entry.name}
+                                                    onClick={() =>
+                                                        handleAbilityClick(
+                                                            entry.name
+                                                        )
+                                                    }
+                                                    type="button"
                                                 >
                                                     {StringHelpers.toTitleCase(
                                                         entry.name
                                                     )}
                                                     {entry.hidden &&
                                                         ' (Hidden)'}
-                                                </span>
+                                                </button>
                                             ))}
                                         </div>
                                     </div>

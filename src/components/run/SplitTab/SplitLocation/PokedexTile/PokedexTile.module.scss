@@ -114,8 +114,25 @@ $label-width: 5.5rem;
             }
 
             .ability {
+                background: none;
+                border: none;
                 color: $text-mid;
+                cursor: pointer;
+                font: inherit;
                 font-size: 0.7rem;
+                padding: 0;
+                text-align: left;
+                transition: color 0.2s ease;
+
+                @media (hover: hover) {
+                    &:hover {
+                        color: var(--accent-color);
+                    }
+                }
+
+                @media (prefers-reduced-motion: reduce) {
+                    transition: none;
+                }
 
                 &--hidden {
                     color: $text-dim;

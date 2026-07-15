@@ -39,13 +39,14 @@ button is disabled until the miss is toggled off again.
 
 ## Props
 
-| Prop           | Type                     | Required | Default | Description                                                                                 |
-| -------------- | ------------------------ | -------- | ------- | ------------------------------------------------------------------------------------------- |
-| `game`         | `Game`                   | Yes      | -       | The game the run belongs to, for saving defeat state                                        |
-| `location`     | `Location`               | Yes      | -       | The location this card displays                                                             |
-| `onSelectMove` | `(name: string) => void` | Yes      | -       | Called when a move is clicked within the battle card's teams or the Pokedex tile's learnset |
-| `run`          | `Run`                    | Yes      | -       | The run whose defeated battles are shown                                                    |
-| `variant`      | `string`                 | Yes      | -       | The sprite variant to prefer, matching the game's slug                                      |
+| Prop              | Type                     | Required | Default | Description                                                                                         |
+| ----------------- | ------------------------ | -------- | ------- | --------------------------------------------------------------------------------------------------- |
+| `game`            | `Game`                   | Yes      | -       | The game the run belongs to, for saving defeat state                                                |
+| `location`        | `Location`               | Yes      | -       | The location this card displays                                                                     |
+| `onSelectAbility` | `(name: string) => void` | Yes      | -       | Called when an ability is clicked within the battle card's teams or the Pokedex tile's ability list |
+| `onSelectMove`    | `(name: string) => void` | Yes      | -       | Called when a move is clicked within the battle card's teams or the Pokedex tile's learnset         |
+| `run`             | `Run`                    | Yes      | -       | The run whose defeated battles are shown                                                            |
+| `variant`         | `string`                 | Yes      | -       | The sprite variant to prefer, matching the game's slug                                              |
 
 ## State
 

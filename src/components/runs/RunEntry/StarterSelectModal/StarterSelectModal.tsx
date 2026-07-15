@@ -47,6 +47,8 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
         setSpeciesOverride(species);
     };
 
+    const handleSelectAbility = (): void => {};
+
     const handleSelectMove = (): void => {};
 
     // -------------------------------------------------------------------------
@@ -74,6 +76,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
                     generation={game.generation}
                     mode="select"
                     onSelect={onSelect}
+                    onSelectAbility={handleSelectAbility}
                     onSelectMove={handleSelectMove}
                     onSelectSpecies={handleSelectSpecies}
                     originalSpecies={activeStarter ?? undefined}
