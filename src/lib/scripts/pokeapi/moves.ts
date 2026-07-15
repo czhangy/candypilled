@@ -27,6 +27,60 @@ const SHADOW_MOVE_TYPE = 'shadow';
 // list without being useful to look up.
 const MIN_PP = 2;
 
+// `StringHelpers.toTitleCase` joins slug words with a space, so moves whose
+// official name keeps a hyphen (e.g. "Will-O-Wisp") need their title-cased
+// name corrected here rather than in the shared helper, which is also used
+// for names that are correctly space-joined.
+const MOVE_NAME_OVERRIDES: Record<string, string> = {
+    'will-o-wisp': 'Will-O-Wisp',
+    'x-scissor': 'X-Scissor',
+    'freeze-dry': 'Freeze-Dry',
+    'soft-boiled': 'Soft-Boiled',
+    'trick-or-treat': 'Trick-or-Treat',
+    'multi-attack': 'Multi-Attack',
+    'wake-up-slap': 'Wake-Up Slap',
+    'lock-on': 'Lock-On',
+    'u-turn': 'U-turn',
+    'v-create': 'V-create',
+    'double-edge': 'Double-Edge',
+    'mud-slap': 'Mud-Slap',
+    'topsy-turvy': 'Topsy-Turvy',
+    'baby-doll-eyes': 'Baby-Doll Eyes',
+    'power-up-punch': 'Power-Up Punch',
+    'self-destruct': 'Self-Destruct',
+};
+
+// PokeAPI has no concept of "dangerous" moves (ones that can end a run in a
+// single unlucky turn, e.g. via self-destruction or a hard-to-play-around
+// counter), so this set is curated by hand rather than derived from the API.
+const DANGEROUS_MOVES = new Set([
+    'explosion',
+    'self-destruct',
+    'destiny-bond',
+    'counter',
+    'mirror-move',
+    'metal-burst',
+    'bide',
+    'pursuit',
+    'swords-dance',
+    'nasty-plot',
+    'bulk-up',
+    'tail-glow',
+    'calm-mind',
+    'dragon-dance',
+    'guillotine',
+    'sheer-cold',
+    'fissure',
+    'metronome',
+    'quiver-dance',
+    'belly-drum',
+    'spore',
+    'dragon-rage',
+    'shell-smash',
+    'flail',
+    'perish-song',
+]);
+
 const sleep = (ms: number): Promise<void> =>
     new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -334,12 +388,15 @@ export const fetchMoves = async (): Promise<void> => {
             continue;
         }
 
-        const name = StringHelpers.toTitleCase(move.name);
+        const name =
+            MOVE_NAME_OVERRIDES[move.name] ??
+            StringHelpers.toTitleCase(move.name);
         data[move.name] = {
             name,
             category: move.damage_class.name,
             priority: move.priority,
             introducedInGeneration: toGenerationNumber(move.generation.name),
+            isDangerous: DANGEROUS_MOVES.has(move.name),
             valuesByGeneration: buildValuesByGeneration(
                 move,
                 versionGroupGenerations

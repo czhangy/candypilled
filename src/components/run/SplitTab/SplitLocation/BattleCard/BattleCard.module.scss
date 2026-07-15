@@ -243,6 +243,10 @@
                                 @media (prefers-reduced-motion: reduce) {
                                     transition: none;
                                 }
+
+                                &--dangerous {
+                                    color: $red;
+                                }
                             }
                         }
 

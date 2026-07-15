@@ -319,11 +319,19 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                             ) : (
                                                 <li key={index}>
                                                     <button
-                                                        className={
+                                                        className={[
                                                             styles[
                                                                 'move-button'
-                                                            ]
-                                                        }
+                                                            ],
+                                                            MoveHelpers.isDangerous(
+                                                                move
+                                                            ) &&
+                                                                styles[
+                                                                    'move-button--dangerous'
+                                                                ],
+                                                        ]
+                                                            .filter(Boolean)
+                                                            .join(' ')}
                                                         onClick={() =>
                                                             handleMoveClick(
                                                                 move
