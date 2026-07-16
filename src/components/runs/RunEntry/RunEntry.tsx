@@ -8,6 +8,7 @@ import BoxIcon from '@/lib/icons/BoxIcon';
 import CrownIcon from '@/lib/icons/CrownIcon';
 import RunIcon from '@/lib/icons/RunIcon';
 import SkullIcon from '@/lib/icons/SkullIcon';
+import { PokemonStatus } from '@/lib/static/enums';
 import { CaughtPokemon, Game, Run } from '@/lib/static/types';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
@@ -44,9 +45,16 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     const currentSplitName = run
         ? BattleProgressHelpers.getCurrentSplitName(game, run.defeatedBattles)
         : null;
-    const boxCount = run?.caughtPokemon.length ?? null;
-    // TODO: death count is not tracked yet.
-    const deathCount = run ? 0 : null;
+    const boxCount = run
+        ? run.caughtPokemon.filter(
+              (caughtPokemon) => caughtPokemon.status !== PokemonStatus.Dead
+          ).length
+        : null;
+    const deathCount = run
+        ? run.caughtPokemon.filter(
+              (caughtPokemon) => caughtPokemon.status === PokemonStatus.Dead
+          ).length
+        : null;
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS

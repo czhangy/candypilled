@@ -53,4 +53,5 @@ first step without losing the prior selection. Submitting the form calls
 - **On "Back" click** — clears `chosenSpecies`, returning to the
   selection step
 - **On `PokemonForm` submit** — calls `onSelect` with the submitted
-  details plus `location: "Starter"`
+  details plus `location: "Starter"` and a `status` of
+  `PokemonStatus.Alive`

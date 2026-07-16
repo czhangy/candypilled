@@ -1,26 +1,43 @@
 import Image from 'next/image';
-import { CaughtPokemon } from '@/lib/static/types';
+import { PokemonStatus } from '@/lib/static/enums';
+import { BoxView, CaughtPokemon } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './PokemonBox.module.scss';
 
 interface PokemonBoxProps {
     caughtPokemon: CaughtPokemon[];
     onSelectPokemon: (location: string) => void;
+    onViewChange: (view: BoxView) => void;
     selectedPokemon?: string;
     variant: string;
+    view: BoxView;
 }
 
 const PokemonBox: React.FC<PokemonBoxProps> = ({
     caughtPokemon,
     onSelectPokemon,
+    onViewChange,
     selectedPokemon,
     variant,
+    view,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
 
     const SPRITE_SIZE = 96;
+
+    // -------------------------------------------------------------------------
+    // RENDERING
+    // -------------------------------------------------------------------------
+
+    const displayedPokemon = caughtPokemon.filter((pokemon) =>
+        view === 'graveyard'
+            ? pokemon.status === PokemonStatus.Dead
+            : pokemon.status !== PokemonStatus.Dead
+    );
+    const emptyMessage =
+        view === 'graveyard' ? 'Graveyard is empty' : 'Box is empty';
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -30,24 +47,55 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
         onSelectPokemon(location);
     };
 
+    const handleViewClick = (nextView: BoxView): void => {
+        onViewChange(nextView);
+    };
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
     return (
         <div className={styles['pokemon-box']}>
-            <div className={styles.header}>Box</div>
+            <div className={styles.header}>
+                <button
+                    aria-pressed={view === 'box'}
+                    className={[
+                        styles['header-button'],
+                        view === 'box' && styles['header-button--active'],
+                    ]
+                        .filter(Boolean)
+                        .join(' ')}
+                    onClick={() => handleViewClick('box')}
+                    type="button"
+                >
+                    Box
+                </button>
+                <button
+                    aria-pressed={view === 'graveyard'}
+                    className={[
+                        styles['header-button'],
+                        view === 'graveyard' && styles['header-button--active'],
+                    ]
+                        .filter(Boolean)
+                        .join(' ')}
+                    onClick={() => handleViewClick('graveyard')}
+                    type="button"
+                >
+                    Graveyard
+                </button>
+            </div>
             <div
                 className={[
                     styles.content,
-                    caughtPokemon.length === 0 && styles['content--empty'],
+                    displayedPokemon.length === 0 && styles['content--empty'],
                 ]
                     .filter(Boolean)
                     .join(' ')}
             >
-                {caughtPokemon.length > 0 ? (
+                {displayedPokemon.length > 0 ? (
                     <div className={styles.grid}>
-                        {caughtPokemon.map((pokemon) => {
+                        {displayedPokemon.map((pokemon) => {
                             const data = PokemonHelpers.get(pokemon.name);
                             const sprite = PokemonHelpers.getSprite(
                                 pokemon.name,
@@ -85,9 +133,7 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                         })}
                     </div>
                 ) : (
-                    <span className={styles.placeholder}>
-                        No Pokemon caught yet
-                    </span>
+                    <span className={styles.placeholder}>{emptyMessage}</span>
                 )}
             </div>
         </div>

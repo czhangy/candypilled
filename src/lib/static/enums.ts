@@ -6,6 +6,11 @@ export enum FieldCondition {
     Sun = 'Sun',
 }
 
+export enum PokemonStatus {
+    Alive = 'Alive',
+    Dead = 'Dead',
+}
+
 export enum Nature {
     Adamant = 'Adamant',
     Bashful = 'Bashful',

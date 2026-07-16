@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Modal from '@/components/common/Modal/Modal';
 import PokemonForm from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/PokemonForm/PokemonForm';
 import PokedexTile from '@/components/run/SplitTab/SplitLocation/PokedexTile/PokedexTile';
+import { PokemonStatus } from '@/lib/static/enums';
 import { BattlePokemon, CaughtPokemon, Game } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -81,7 +82,11 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
             'ability' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
         >
     ): void => {
-        onSelect({ ...details, location: STARTER_LOCATION });
+        onSelect({
+            ...details,
+            location: STARTER_LOCATION,
+            status: PokemonStatus.Alive,
+        });
     };
 
     // -------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 import { StaticImageData } from 'next/image';
-import { FieldCondition, Nature } from '@/lib/static/enums';
+import { FieldCondition, Nature, PokemonStatus } from '@/lib/static/enums';
 
 export interface StatValues {
     atk: number;
@@ -34,7 +34,12 @@ export interface BattlePokemon {
 // location (not subarea), and no more than one catch per evolution line.
 export interface CaughtPokemon extends BattlePokemon {
     location: string;
+    status: PokemonStatus;
 }
+
+// The two views of the box tab's caught Pokemon grid: living Pokemon
+// ("box") or dead ones ("graveyard").
+export type BoxView = 'box' | 'graveyard';
 
 interface BattleItem {
     count: number;
