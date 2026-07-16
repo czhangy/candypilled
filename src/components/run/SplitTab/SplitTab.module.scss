@@ -67,10 +67,7 @@
                             content: '';
                             inset: 0;
                             mask-image: url('/common/premier-ball.png');
-                            mask-image: url('/common/premier-ball.png');
                             mask-repeat: no-repeat;
-                            mask-repeat: no-repeat;
-                            mask-size: contain;
                             mask-size: contain;
                             mix-blend-mode: color;
                             position: absolute;
@@ -94,6 +91,10 @@
 
                     @media (prefers-reduced-motion: reduce) {
                         transition: none;
+                    }
+
+                    &--active {
+                        color: var(--accent-color);
                     }
                 }
             }

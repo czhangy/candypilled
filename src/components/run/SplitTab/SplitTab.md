@@ -4,7 +4,8 @@ The content of the "Split" tab on a game's run page. Shows a sticky table of
 contents listing every location in the run's current split, with a
 semi-transparent badge icon behind it, and a collapsible card for each
 location. Clicking a table of contents entry jumps to that location's card
-via an in-page anchor link.
+via an in-page anchor link, and the entry for whichever location is
+currently scrolled into view is highlighted automatically.
 
 ## Props
 
@@ -15,6 +16,20 @@ via an in-page anchor link.
 | `onSelectMove`    | `(name: string) => void` | Yes      | -       | Called when a move is clicked within a `SplitLocation`'s `BattleCard`                                                                                   |
 | `run`             | `Run`                    | Yes      | -       | The run whose current split is shown                                                                                                                    |
 | `stickyOffset`    | `number`                 | Yes      | -       | The pixel height of `RunPage`'s sticky tabs/split-header block, added to the table of contents' sticky offset so it doesn't stick underneath that block |
+
+## State
+
+| State                | Type             | Initial value | Description                                                                                 |
+| -------------------- | ---------------- | ------------- | ------------------------------------------------------------------------------------------- |
+| `activeLocationSlug` | `string \| null` | `null`        | The slug of the location currently scrolled into view, highlighted in the table of contents |
+
+## Effects
+
+- **On mount, and when the current split or `stickyOffset` changes** —
+  observes each location's root element (matched by id) with an
+  `IntersectionObserver` restricted to a thin band just below the sticky
+  header, and sets `activeLocationSlug` to the first location (in split
+  order) currently within that band
 
 ## Computations
 

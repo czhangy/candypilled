@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { Game, Location, Run } from '@/lib/static/types';
@@ -25,6 +26,14 @@ const SplitTab: React.FC<SplitTabProps> = ({
     stickyOffset,
 }) => {
     // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [activeLocationSlug, setActiveLocationSlug] = useState<string | null>(
+        null
+    );
+
+    // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
@@ -37,6 +46,53 @@ const SplitTab: React.FC<SplitTabProps> = ({
     );
     const variant = StringHelpers.toSlug(game.name);
     const badge = `/${variant}/badges/${StringHelpers.toSlug(currentSplitName ?? '')}.png`;
+
+    // -------------------------------------------------------------------------
+    // EFFECTS
+    // -------------------------------------------------------------------------
+
+    useEffect(() => {
+        const slugs =
+            currentSplit?.locations.map((location) =>
+                StringHelpers.toSlug(location.name)
+            ) ?? [];
+        const elements = slugs
+            .map((slug) => document.getElementById(slug))
+            .filter((element): element is HTMLElement => element !== null);
+
+        if (elements.length === 0) {
+            return;
+        }
+
+        const visibleSlugs = new Set<string>();
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        visibleSlugs.add(entry.target.id);
+                    } else {
+                        visibleSlugs.delete(entry.target.id);
+                    }
+                });
+
+                const firstVisibleSlug = slugs.find((slug) =>
+                    visibleSlugs.has(slug)
+                );
+
+                if (firstVisibleSlug) {
+                    setActiveLocationSlug(firstVisibleSlug);
+                }
+            },
+            {
+                rootMargin: `-${stickyOffset + 16}px 0px -70% 0px`,
+            }
+        );
+
+        elements.forEach((element) => observer.observe(element));
+
+        return () => observer.disconnect();
+    }, [currentSplit, stickyOffset]);
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -90,6 +146,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
                                 location.name
                             );
                             const missed = isLocationMissed(location.name);
+                            const slug = StringHelpers.toSlug(location.name);
 
                             return (
                                 <li key={location.name}>
@@ -132,8 +189,14 @@ const SplitTab: React.FC<SplitTabProps> = ({
                                         />
                                     )}
                                     <a
-                                        className={styles['toc-link']}
-                                        href={`#${StringHelpers.toSlug(location.name)}`}
+                                        className={[
+                                            styles['toc-link'],
+                                            slug === activeLocationSlug &&
+                                                styles['toc-link--active'],
+                                        ]
+                                            .filter(Boolean)
+                                            .join(' ')}
+                                        href={`#${slug}`}
                                     >
                                         {location.name}
                                     </a>
