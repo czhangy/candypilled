@@ -7,6 +7,7 @@ import {
     CaughtPokemon,
     StatValues,
 } from '@/lib/static/types';
+import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -131,14 +132,31 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
 
     const renderStatValues = (stats: StatValues): React.ReactNode => (
         <div className={styles['stats-grid']}>
-            {STAT_FIELDS.map((field) => (
-                <div className={styles.stat} key={field.key}>
-                    <span className={styles['stat-label']}>{field.label}</span>
-                    <span className={styles['stat-value']}>
-                        {stats[field.key]}
-                    </span>
-                </div>
-            ))}
+            {STAT_FIELDS.map((field) => {
+                const modifier = NatureHelpers.getModifier(
+                    pokemon?.nature,
+                    field.key
+                );
+
+                return (
+                    <div className={styles.stat} key={field.key}>
+                        <span className={styles['stat-label']}>
+                            {field.label}
+                        </span>
+                        <span
+                            className={[
+                                styles['stat-value'],
+                                modifier > 1 && styles['stat-value--increased'],
+                                modifier < 1 && styles['stat-value--decreased'],
+                            ]
+                                .filter(Boolean)
+                                .join(' ')}
+                        >
+                            {stats[field.key]}
+                        </span>
+                    </div>
+                );
+            })}
         </div>
     );
 

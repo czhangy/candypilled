@@ -185,6 +185,14 @@ $label-width: 4.5rem;
                 .stat-value {
                     color: $foreground;
                     font-size: 0.85rem;
+
+                    &--increased {
+                        color: $red;
+                    }
+
+                    &--decreased {
+                        color: $blue;
+                    }
                 }
             }
         }

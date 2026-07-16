@@ -11,7 +11,9 @@ opens a modal for editing the Pokemon's recorded details, including its
 EVs. If the Pokemon can still evolve, an "Evolve" button below Edit opens
 a confirmation modal, letting the user pick between multiple possible
 evolutions if more than one exists. If the Pokemon's level exceeds the
-current split's level cap, its level is highlighted red.
+current split's level cap, its level is highlighted red. Each stat
+boosted by the Pokemon's nature is highlighted red, and each stat
+hindered by it is highlighted blue.
 
 ## Props
 
@@ -50,4 +52,5 @@ current split's level cap, its level is highlighted red.
   level, IVs, EVs, and nature via `StatHelpers.calculate`, with IVs and EVs
   normalized into a full `StatValues` via `StatHelpers.normalize`
 - `renderStatValues` — renders a Pokemon's calculated stats as a per-stat
-  grid
+  grid, highlighting each stat red or blue if the Pokemon's nature boosts
+  or hinders it, via `NatureHelpers.getModifier`
