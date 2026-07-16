@@ -21,3 +21,8 @@ the currently selected Pokemon on the right, taking up the remaining third.
   game generation
 - `selectedCaughtPokemon` — the caught Pokemon whose location matches
   `selectedPokemon`, passed to `PokemonPreview`
+
+## Handlers
+
+- `handleToggleStatus` — flips a caught Pokemon's `status` between
+  `PokemonStatus.Alive` and `PokemonStatus.Dead` and saves the updated run

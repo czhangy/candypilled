@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { PokemonStatus } from '@/lib/static/enums';
 import { CaughtPokemon } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './PokemonBox.module.scss';
@@ -23,6 +24,14 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
     const SPRITE_SIZE = 96;
 
     // -------------------------------------------------------------------------
+    // RENDERING
+    // -------------------------------------------------------------------------
+
+    const livingPokemon = caughtPokemon.filter(
+        (pokemon) => pokemon.status !== PokemonStatus.Dead
+    );
+
+    // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
 
@@ -40,14 +49,14 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
             <div
                 className={[
                     styles.content,
-                    caughtPokemon.length === 0 && styles['content--empty'],
+                    livingPokemon.length === 0 && styles['content--empty'],
                 ]
                     .filter(Boolean)
                     .join(' ')}
             >
-                {caughtPokemon.length > 0 ? (
+                {livingPokemon.length > 0 ? (
                     <div className={styles.grid}>
-                        {caughtPokemon.map((pokemon) => {
+                        {livingPokemon.map((pokemon) => {
                             const data = PokemonHelpers.get(pokemon.name);
                             const sprite = PokemonHelpers.getSprite(
                                 pokemon.name,
@@ -85,9 +94,7 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                         })}
                     </div>
                 ) : (
-                    <span className={styles.placeholder}>
-                        No Pokemon caught yet
-                    </span>
+                    <span className={styles.placeholder}>Box is empty</span>
                 )}
             </div>
         </div>

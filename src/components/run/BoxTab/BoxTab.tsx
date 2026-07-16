@@ -1,4 +1,6 @@
-import { Game, Run } from '@/lib/static/types';
+import { PokemonStatus } from '@/lib/static/enums';
+import { CaughtPokemon, Game, Run } from '@/lib/static/types';
+import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './BoxTab.module.scss';
 import PokemonBox from './PokemonBox/PokemonBox';
@@ -31,6 +33,29 @@ const BoxTab: React.FC<BoxTabProps> = ({
     );
 
     // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleToggleStatus = (pokemon: CaughtPokemon): void => {
+        const updatedRun: Run = {
+            ...run,
+            caughtPokemon: run.caughtPokemon.map((caughtPokemon) =>
+                caughtPokemon.location === pokemon.location
+                    ? {
+                          ...caughtPokemon,
+                          status:
+                              caughtPokemon.status === PokemonStatus.Dead
+                                  ? PokemonStatus.Alive
+                                  : PokemonStatus.Dead,
+                      }
+                    : caughtPokemon
+            ),
+        };
+
+        LocalStorageHelpers.saveRun(game, updatedRun);
+    };
+
+    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
@@ -46,6 +71,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 generation={game.generation}
                 onSelectAbility={onSelectAbility}
                 onSelectMove={onSelectMove}
+                onToggleStatus={handleToggleStatus}
                 pokemon={selectedCaughtPokemon}
                 variant={variant}
             />

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { StaticImageData } from 'next/image';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
+import { PokemonStatus } from '@/lib/static/enums';
 import {
     Battle,
     BattlePokemon,
@@ -173,6 +174,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                     evs: { atk: 0, def: 0, hp: 0, spa: 0, spd: 0, spe: 0 },
                     heldItem: '',
                     location: location.name,
+                    status: PokemonStatus.Alive,
                 },
             ],
             missedLocations: run.missedLocations.filter(

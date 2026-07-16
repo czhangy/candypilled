@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { PokemonStatus } from '@/lib/static/enums';
 import { CaughtPokemon, StatValues } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
@@ -10,6 +11,7 @@ interface PokemonPreviewProps {
     generation: number;
     onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
+    onToggleStatus: (pokemon: CaughtPokemon) => void;
     pokemon?: CaughtPokemon;
     variant: string;
 }
@@ -18,6 +20,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     generation,
     onSelectAbility,
     onSelectMove,
+    onToggleStatus,
     pokemon,
     variant,
 }) => {
@@ -48,6 +51,12 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
 
     const handleAbilityClick = (ability: string): void => {
         onSelectAbility(StringHelpers.toTitleCase(ability));
+    };
+
+    const handleToggleStatusClick = (): void => {
+        if (pokemon) {
+            onToggleStatus(pokemon);
+        }
     };
 
     // -------------------------------------------------------------------------
@@ -246,6 +255,24 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                     )}
                                 </div>
                             </div>
+                            <button
+                                aria-pressed={
+                                    pokemon.status === PokemonStatus.Dead
+                                }
+                                className={[
+                                    styles['status-button'],
+                                    pokemon.status === PokemonStatus.Dead &&
+                                        styles['status-button--dead'],
+                                ]
+                                    .filter(Boolean)
+                                    .join(' ')}
+                                onClick={handleToggleStatusClick}
+                                type="button"
+                            >
+                                {pokemon.status === PokemonStatus.Dead
+                                    ? 'Revive'
+                                    : 'Dead'}
+                            </button>
                         </div>
                         {stats && (
                             <div className={styles.section}>

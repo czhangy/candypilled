@@ -161,6 +161,8 @@ Before writing a raw CSS value in a component SCSS file, check whether it belong
 - `$text-dim` — `rgba($foreground, 0.4)`, for inactive interactive text (e.g. buttons)
 - `$text-mid` — `rgba($foreground, 0.5)`, for secondary/subtext
 
+Prefer the per-game `var(--accent-color)` (set inline from `game.accentColor` on the page's root element) over the global `$accent` constant for accent-colored UI (hover states, active/selected states, highlights), since it reflects the current game's theme rather than a single fixed color.
+
 **Available mixins:**
 
 - `full-height` — `flex: 1`, fills the remaining height in the page flex column (`body → .page-main → page component`); use on the outermost element of every full-page component

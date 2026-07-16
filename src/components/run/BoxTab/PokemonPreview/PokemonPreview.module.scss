@@ -37,6 +37,40 @@ $label-width: 4.5rem;
             display: flex;
             gap: 1rem;
 
+            .status-button {
+                @include mono-label;
+
+                background: none;
+                border: 1px solid $border-subtle;
+                border-radius: 0.35rem;
+                color: $text-mid;
+                cursor: pointer;
+                flex-shrink: 0;
+                font-size: 0.7rem;
+                height: fit-content;
+                margin-left: auto;
+                padding: 0.4rem 0.75rem;
+                transition:
+                    border-color 0.2s ease,
+                    color 0.2s ease;
+
+                @media (hover: hover) {
+                    &:hover {
+                        border-color: var(--accent-color);
+                        color: var(--accent-color);
+                    }
+                }
+
+                @media (prefers-reduced-motion: reduce) {
+                    transition: none;
+                }
+
+                &--dead {
+                    border-color: $red;
+                    color: $red;
+                }
+            }
+
             .sprite {
                 align-items: center;
                 display: flex;

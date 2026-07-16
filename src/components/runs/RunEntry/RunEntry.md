@@ -45,10 +45,10 @@ starter before the run is created.
   not-yet-defeated required battle in the run's `defeatedBattles`, or the
   last split if every required battle has been defeated; `null` if there
   is no run
-- `boxCount` — the number of Pokemon in the run's `caughtPokemon`; `null`
-  if there is no run
-- `deathCount` — hardcoded to `0` for now since death tracking doesn't
-  exist yet; `null` if there is no run
+- `boxCount` — the number of Pokemon in the run's `caughtPokemon` that
+  don't have a `status` of `PokemonStatus.Dead`; `null` if there is no run
+- `deathCount` — the number of Pokemon in the run's `caughtPokemon` with a
+  `status` of `PokemonStatus.Dead`; `null` if there is no run
 
 ## SCSS Variable Dependencies
 

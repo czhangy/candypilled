@@ -1,7 +1,8 @@
 # PokemonBox
 
-A grid of every Pokemon caught during the current run, showing each one's
-sprite. Clicking a slot selects that Pokemon.
+A grid of every living Pokemon caught during the current run, showing each
+one's sprite. Pokemon marked as dead are excluded from the grid. Clicking
+a slot selects that Pokemon.
 
 ## Props
 
@@ -11,3 +12,8 @@ sprite. Clicking a slot selects that Pokemon.
 | `onSelectPokemon` | `(location: string) => void` | Yes      | -       | Called with a Pokemon's location when its slot is clicked     |
 | `selectedPokemon` | `string`                     | No       | -       | The location of the currently selected caught Pokemon, if any |
 | `variant`         | `string`                     | Yes      | -       | The game slug used to resolve each Pokemon's sprite art       |
+
+## Computations
+
+- `livingPokemon` — `caughtPokemon` filtered to exclude those with a
+  `status` of `PokemonStatus.Dead`

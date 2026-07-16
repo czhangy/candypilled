@@ -4,17 +4,20 @@ Displays every recorded attribute of the currently selected caught Pokemon:
 a small sprite alongside its level, nature, ability, catch location, and
 held item, followed by its calculated stats and a 2x2 grid of its moves.
 Its ability and moves link out to their corresponding views in the
-Abilities and Moves tabs.
+Abilities and Moves tabs. A button (labeled "Dead" or "Revive" depending
+on current status) lets the Pokemon's status be toggled between alive
+and dead.
 
 ## Props
 
-| Prop              | Type                     | Required | Default | Description                                                                            |
-| ----------------- | ------------------------ | -------- | ------- | -------------------------------------------------------------------------------------- |
-| `generation`      | `number`                 | Yes      | -       | The game's generation, used to resolve each move's values and the Pokemon's base stats |
-| `onSelectAbility` | `(name: string) => void` | Yes      | -       | Called with the Pokemon's ability name when it's clicked                               |
-| `onSelectMove`    | `(name: string) => void` | Yes      | -       | Called with a move's name when it's clicked                                            |
-| `pokemon`         | `CaughtPokemon`          | No       | -       | The currently selected caught Pokemon, if any                                          |
-| `variant`         | `string`                 | Yes      | -       | The game slug used to resolve the Pokemon's sprite art                                 |
+| Prop              | Type                               | Required | Default | Description                                                                            |
+| ----------------- | ---------------------------------- | -------- | ------- | -------------------------------------------------------------------------------------- |
+| `generation`      | `number`                           | Yes      | -       | The game's generation, used to resolve each move's values and the Pokemon's base stats |
+| `onSelectAbility` | `(name: string) => void`           | Yes      | -       | Called with the Pokemon's ability name when it's clicked                               |
+| `onSelectMove`    | `(name: string) => void`           | Yes      | -       | Called with a move's name when it's clicked                                            |
+| `onToggleStatus`  | `(pokemon: CaughtPokemon) => void` | Yes      | -       | Called with the previewed Pokemon when the status button is clicked                    |
+| `pokemon`         | `CaughtPokemon`                    | No       | -       | The currently selected caught Pokemon, if any                                          |
+| `variant`         | `string`                           | Yes      | -       | The game slug used to resolve the Pokemon's sprite art                                 |
 
 ## Computations
 
