@@ -37,32 +37,54 @@ $label-width: 4.5rem;
             display: flex;
             gap: 1rem;
 
-            .status-button {
-                @include mono-label;
-
-                background: none;
-                border: 1px solid $red;
-                border-radius: 0.35rem;
-                color: $red;
-                cursor: pointer;
+            .actions {
+                display: flex;
+                flex-direction: column;
                 flex-shrink: 0;
-                font-size: 0.7rem;
-                height: fit-content;
+                gap: 0.5rem;
                 margin-left: auto;
-                padding: 0.4rem 0.75rem;
-                transition:
-                    border-color 0.2s ease,
-                    color 0.2s ease;
 
-                @media (hover: hover) {
-                    &:hover {
-                        border-color: var(--accent-color);
-                        color: var(--accent-color);
+                .status-button,
+                .evolve-button {
+                    @include mono-label;
+
+                    background: none;
+                    border-radius: 0.35rem;
+                    cursor: pointer;
+                    font-size: 0.7rem;
+                    height: fit-content;
+                    padding: 0.4rem 0.75rem;
+                    transition:
+                        background 0.2s ease,
+                        color 0.2s ease;
+
+                    @media (prefers-reduced-motion: reduce) {
+                        transition: none;
                     }
                 }
 
-                @media (prefers-reduced-motion: reduce) {
-                    transition: none;
+                .status-button {
+                    border: 1px solid $red;
+                    color: $red;
+
+                    @media (hover: hover) {
+                        &:hover {
+                            background: $red;
+                            color: $foreground;
+                        }
+                    }
+                }
+
+                .evolve-button {
+                    border: 1px solid $green;
+                    color: $green;
+
+                    @media (hover: hover) {
+                        &:hover {
+                            background: $green;
+                            color: $foreground;
+                        }
+                    }
                 }
             }
 
@@ -114,6 +136,10 @@ $label-width: 4.5rem;
                 .detail-value {
                     color: $text-mid;
                     font-size: 0.8rem;
+
+                    &--over-cap {
+                        color: $red;
+                    }
                 }
 
                 .detail-link {

@@ -173,6 +173,26 @@ export default class PokemonHelpers {
         );
     }
 
+    // The evolution steps directly reachable from name, i.e. the species it
+    // can evolve into right now (empty if name doesn't evolve further).
+    static getNextEvolutions(
+        name: string,
+        generation: number
+    ): EvolutionStep[] {
+        const line = PokemonHelpers.getEvolutionLine(name, generation);
+        if (!line) return [];
+
+        const slug = StringHelpers.toSlug(name);
+        const findStep = (step: EvolutionStep): EvolutionStep | undefined => {
+            if (step.name === slug) return step;
+            return step.evolvesTo
+                .map(findStep)
+                .find((found): found is EvolutionStep => !!found);
+        };
+
+        return findStep(line)?.evolvesTo ?? [];
+    }
+
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------

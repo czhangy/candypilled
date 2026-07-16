@@ -6,6 +6,7 @@ import styles from './PokemonBox.module.scss';
 
 interface PokemonBoxProps {
     caughtPokemon: CaughtPokemon[];
+    levelCap: number | null;
     onSelectPokemon: (location: string) => void;
     onViewChange: (view: BoxView) => void;
     selectedPokemon?: string;
@@ -15,6 +16,7 @@ interface PokemonBoxProps {
 
 const PokemonBox: React.FC<PokemonBoxProps> = ({
     caughtPokemon,
+    levelCap,
     onSelectPokemon,
     onViewChange,
     selectedPokemon,
@@ -101,6 +103,8 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                                 pokemon.name,
                                 variant
                             );
+                            const isOverCap =
+                                levelCap !== null && pokemon.level > levelCap;
 
                             return (
                                 <button
@@ -111,6 +115,7 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                                         styles.slot,
                                         pokemon.location === selectedPokemon &&
                                             styles['slot--selected'],
+                                        isOverCap && styles['slot--over-cap'],
                                     ]
                                         .filter(Boolean)
                                         .join(' ')}

@@ -1,14 +1,19 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import { PokemonStatus } from '@/lib/static/enums';
 import { CaughtPokemon, StatValues } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
+import EvolveModal from './EvolveModal/EvolveModal';
 import MoveCard from './MoveCard/MoveCard';
 import styles from './PokemonPreview.module.scss';
 
 interface PokemonPreviewProps {
+    accentColor: string;
     generation: number;
+    levelCap: number | null;
+    onEvolve: (pokemon: CaughtPokemon, newName: string) => void;
     onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
     onToggleStatus: (pokemon: CaughtPokemon) => void;
@@ -17,7 +22,10 @@ interface PokemonPreviewProps {
 }
 
 const PokemonPreview: React.FC<PokemonPreviewProps> = ({
+    accentColor,
     generation,
+    levelCap,
+    onEvolve,
     onSelectAbility,
     onSelectMove,
     onToggleStatus,
@@ -46,6 +54,12 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     ];
 
     // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [isEvolveOpen, setIsEvolveOpen] = useState(false);
+
+    // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
 
@@ -56,6 +70,21 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     const handleToggleStatusClick = (): void => {
         if (pokemon) {
             onToggleStatus(pokemon);
+        }
+    };
+
+    const handleEvolveClick = (): void => {
+        setIsEvolveOpen(true);
+    };
+
+    const handleEvolveClose = (): void => {
+        setIsEvolveOpen(false);
+    };
+
+    const handleEvolveConfirm = (newName: string): void => {
+        setIsEvolveOpen(false);
+        if (pokemon) {
+            onEvolve(pokemon, newName);
         }
     };
 
@@ -113,6 +142,12 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     const sprite = pokemon
         ? PokemonHelpers.getSprite(pokemon.name, variant)
         : undefined;
+    const nextEvolutions =
+        pokemon && pokemon.status !== PokemonStatus.Dead
+            ? PokemonHelpers.getNextEvolutions(pokemon.name, generation)
+            : [];
+    const isOverCap =
+        !!pokemon && levelCap !== null && pokemon.level > levelCap;
     const moveSlots = pokemon
         ? Array.from(
               { length: MOVE_SLOT_COUNT },
@@ -176,7 +211,15 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                             Level
                                         </span>
                                         <span
-                                            className={styles['detail-value']}
+                                            className={[
+                                                styles['detail-value'],
+                                                isOverCap &&
+                                                    styles[
+                                                        'detail-value--over-cap'
+                                                    ],
+                                            ]
+                                                .filter(Boolean)
+                                                .join(' ')}
                                         >
                                             {pokemon.level}
                                         </span>
@@ -255,18 +298,29 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                     )}
                                 </div>
                             </div>
-                            <button
-                                aria-pressed={
-                                    pokemon.status === PokemonStatus.Dead
-                                }
-                                className={styles['status-button']}
-                                onClick={handleToggleStatusClick}
-                                type="button"
-                            >
-                                {pokemon.status === PokemonStatus.Dead
-                                    ? 'Revive'
-                                    : 'Kill'}
-                            </button>
+                            <div className={styles.actions}>
+                                {nextEvolutions.length > 0 && (
+                                    <button
+                                        className={styles['evolve-button']}
+                                        onClick={handleEvolveClick}
+                                        type="button"
+                                    >
+                                        EVOLVE
+                                    </button>
+                                )}
+                                <button
+                                    aria-pressed={
+                                        pokemon.status === PokemonStatus.Dead
+                                    }
+                                    className={styles['status-button']}
+                                    onClick={handleToggleStatusClick}
+                                    type="button"
+                                >
+                                    {pokemon.status === PokemonStatus.Dead
+                                        ? 'REVIVE'
+                                        : 'KILL'}
+                                </button>
+                            </div>
                         </div>
                         {stats && (
                             <div className={styles.section}>
@@ -298,6 +352,16 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                     </span>
                 )}
             </div>
+            {isEvolveOpen && pokemon && (
+                <EvolveModal
+                    accentColor={accentColor}
+                    evolutions={nextEvolutions}
+                    onClose={handleEvolveClose}
+                    onConfirm={handleEvolveConfirm}
+                    pokemonName={pokemon.name}
+                    variant={variant}
+                />
+            )}
         </div>
     );
 };

@@ -28,6 +28,11 @@ the currently selected Pokemon on the right, taking up the remaining third.
   game generation
 - `selectedCaughtPokemon` — the caught Pokemon whose location matches
   `selectedPokemon`, passed to `PokemonPreview`
+- `currentSplitName` / `currentSplit` — the run's current split, resolved
+  via `BattleProgressHelpers.getCurrentSplitName`
+- `levelCap` — the current split's level cap via
+  `BattleProgressHelpers.getLevelCap`, passed to `PokemonBox` and
+  `PokemonPreview` so over-leveled Pokemon can be flagged
 
 ## Handlers
 
@@ -35,6 +40,8 @@ the currently selected Pokemon on the right, taking up the remaining third.
   `PokemonStatus.Alive` and `PokemonStatus.Dead`, saves the updated run,
   and switches `view` to the box the Pokemon now belongs in (`'graveyard'`
   if it was just killed, `'box'` if it was just revived)
+- `handleEvolve` — updates a caught Pokemon's `name` to the confirmed
+  evolution's species and saves the updated run
 - `handleViewChange` — sets `view` to the view clicked in `PokemonBox`'s
   header and calls `onDeselectPokemon`, since the previously selected
   Pokemon may not belong to the newly shown view
