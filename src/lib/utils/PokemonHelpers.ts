@@ -33,16 +33,25 @@ export default class PokemonHelpers {
     }
 
     static get(name: string): PokemonData | undefined {
-        const slug = StringHelpers.toSlug(name);
-        if (POKEMON[slug]) return POKEMON[slug];
-
-        // Species with multiple forms (e.g. Wormadam) have no entry under
-        // their base name, only under each form's name. Fall back to the
-        // first form found.
-        const formKey = Object.keys(POKEMON).find((key) =>
-            key.startsWith(`${slug}-`)
-        );
+        const [formKey] = PokemonHelpers.getFormOptions(name);
         return formKey ? POKEMON[formKey] : undefined;
+    }
+
+    // Every form key name could resolve to. Species with multiple forms
+    // (e.g. Wormadam) have no entry under their base name, only under each
+    // form's name, so an ambiguous base name (as evolution data reports
+    // for a Burmy evolving into Wormadam, since its cloak isn't tracked by
+    // the evolution chain) resolves to every matching form key instead of
+    // just one, letting callers offer them all rather than silently
+    // picking the alphabetically-first form. A name with its own entry
+    // always resolves to itself.
+    static getFormOptions(name: string): string[] {
+        const slug = StringHelpers.toSlug(name);
+        if (POKEMON[slug]) return [slug];
+
+        return Object.keys(POKEMON)
+            .filter((key) => key.startsWith(`${slug}-`))
+            .sort((a, b) => a.localeCompare(b));
     }
 
     static getSprite(name: string, variant?: string): string | undefined {
