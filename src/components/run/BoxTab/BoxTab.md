@@ -18,14 +18,18 @@ the currently selected Pokemon on the right, taking up the remaining third.
 
 ## State
 
-| State  | Type      | Initial value | Description                                                   |
-| ------ | --------- | ------------- | ------------------------------------------------------------- |
-| `view` | `BoxView` | `'box'`       | Which of `PokemonBox`'s views ("box" or "graveyard") is shown |
+| State                   | Type      | Initial value | Description                                                   |
+| ----------------------- | --------- | ------------- | ------------------------------------------------------------- |
+| `isAddPokemonModalOpen` | `boolean` | `false`       | Whether `AddPokemonModal` is shown                            |
+| `view`                  | `BoxView` | `'box'`       | Which of `PokemonBox`'s views ("box" or "graveyard") is shown |
 
 ## Computations
 
 - `variant` — the game's slug, used to resolve sprite art for the correct
   game generation
+- `allSpecies` — every species with a wild encounter in `game`, via
+  `LocationHelpers.getAllEncounterSpecies`, offered in `AddPokemonModal`'s
+  Pokemon dropdown
 - `selectedCaughtPokemon` — the caught Pokemon whose location matches
   `selectedPokemon`, passed to `PokemonPreview`
 - `currentSplitName` / `currentSplit` — the run's current split, resolved
@@ -36,6 +40,12 @@ the currently selected Pokemon on the right, taking up the remaining third.
 
 ## Handlers
 
+- `handleAddPokemonClick` — opens `AddPokemonModal`
+- `handleCloseAddPokemonModal` — closes `AddPokemonModal`
+- `handleAddPokemon` — appends a new record (the submitted details, its
+  freeform location, an empty `heldItem`, and a `status` of
+  `PokemonStatus.Alive`) to `run.caughtPokemon`, saves the updated run,
+  and closes `AddPokemonModal`
 - `handleToggleStatus` — flips a caught Pokemon's `status` between
   `PokemonStatus.Alive` and `PokemonStatus.Dead`, saves the updated run,
   and switches `view` to the box the Pokemon now belongs in (`'graveyard'`

@@ -345,10 +345,12 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                             game
                         )}
                         defaultLevel={rest.defaultLevel}
+                        defaultLocation=""
                         defaultSpecies={defaultCatchSpecies}
                         generation={generation}
                         onClose={handleCloseAddPokemonModal}
                         onSubmit={handleAddPokemon}
+                        showLocation={false}
                     />
                 )}
             {pokemon && (

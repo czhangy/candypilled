@@ -7,6 +7,7 @@ import styles from './PokemonBox.module.scss';
 interface PokemonBoxProps {
     caughtPokemon: CaughtPokemon[];
     levelCap: number | null;
+    onAddPokemonClick: () => void;
     onSelectPokemon: (location: string) => void;
     onViewChange: (view: BoxView) => void;
     selectedPokemon?: string;
@@ -17,6 +18,7 @@ interface PokemonBoxProps {
 const PokemonBox: React.FC<PokemonBoxProps> = ({
     caughtPokemon,
     levelCap,
+    onAddPokemonClick,
     onSelectPokemon,
     onViewChange,
     selectedPokemon,
@@ -86,6 +88,15 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                 >
                     Graveyard
                 </button>
+                {view === 'box' && (
+                    <button
+                        className={styles['add-button']}
+                        onClick={onAddPokemonClick}
+                        type="button"
+                    >
+                        Add
+                    </button>
+                )}
             </div>
             <div
                 className={[

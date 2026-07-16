@@ -169,6 +169,8 @@ Prefer the per-game `var(--accent-color)` (set inline from `game.accentColor` on
 - `mono-label` — `font-family: $font-mono; font-weight: 700` — use for all bold monospace text (titles, nav items, button labels)
 - `uppercase-label` — bold mono text in `$text-mid` with `0.05em` letter-spacing and uppercase transform — use for section/column label text (card labels, table headers)
 - `outline-button($color)` — a transparent button with a `$color` border and text that fills solid `$color` with `$foreground` text on hover — use for outlined action buttons (e.g. destructive/confirm actions)
+- `form-label` — small uppercase mono label text — use for form field labels
+- `form-input` — a bordered, rounded text input with an accent-colored focus ring — use for text/number form fields
 
 Add new mixins here only once they're actually used by a component — don't pre-declare mixins for hypothetical future UI.
 

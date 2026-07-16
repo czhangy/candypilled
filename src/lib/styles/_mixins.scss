@@ -1,5 +1,25 @@
 @use '@/styles/constants' as *;
 
+@mixin form-input {
+    background: $background-light;
+    border: 1px solid $border-subtle;
+    border-radius: 0.375rem;
+    color: $foreground;
+    font: inherit;
+    padding: 0.5rem 0.6rem;
+
+    &:focus {
+        border-color: var(--accent-color);
+        outline: none;
+    }
+}
+
+@mixin form-label {
+    @include uppercase-label;
+
+    font-size: 0.7rem;
+}
+
 @mixin full-height {
     flex: 1;
 }
