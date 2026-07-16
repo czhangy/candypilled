@@ -1,6 +1,6 @@
 'use client';
 
-import { useSyncExternalStore } from 'react';
+import { useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import {
     notFound,
@@ -16,6 +16,7 @@ import AbilitiesTab from './AbilitiesTab/AbilitiesTab';
 import BoxTab from './BoxTab/BoxTab';
 import MovesTab from './MovesTab/MovesTab';
 import styles from './RunPage.module.scss';
+import SplitHeader from './SplitHeader/SplitHeader';
 import SplitTab from './SplitTab/SplitTab';
 import Tabs from './Tabs/Tabs';
 
@@ -48,6 +49,13 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
+    const stickyHeaderRef = useRef<HTMLDivElement>(null);
+
+    // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [stickyHeaderHeight, setStickyHeaderHeight] = useState(0);
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -101,6 +109,25 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
             scroll: false,
         });
     };
+
+    // -------------------------------------------------------------------------
+    // EFFECTS
+    // -------------------------------------------------------------------------
+
+    useLayoutEffect(() => {
+        const measure = (): void => {
+            if (stickyHeaderRef.current) {
+                setStickyHeaderHeight(
+                    stickyHeaderRef.current.getBoundingClientRect().height
+                );
+            }
+        };
+
+        measure();
+
+        window.addEventListener('resize', measure);
+        return () => window.removeEventListener('resize', measure);
+    }, [activeTab, run?.wipe]);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -187,17 +214,26 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                 </div>
             ) : (
                 <>
-                    <Tabs
-                        activeTab={activeTab}
-                        onTabChange={handleTabChange}
-                        tabs={TABS}
-                    />
+                    <div
+                        className={styles['sticky-header']}
+                        ref={stickyHeaderRef}
+                    >
+                        <Tabs
+                            activeTab={activeTab}
+                            onTabChange={handleTabChange}
+                            tabs={TABS}
+                        />
+                        {activeTab === 'split' && (
+                            <SplitHeader game={game} run={run} />
+                        )}
+                    </div>
                     {activeTab === 'split' && (
                         <SplitTab
                             game={game}
                             onSelectAbility={handleAbilityLinkClick}
                             onSelectMove={handleMoveLinkClick}
                             run={run}
+                            stickyOffset={stickyHeaderHeight}
                         />
                     )}
                     {activeTab === 'box' && (

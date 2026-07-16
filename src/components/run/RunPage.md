@@ -5,16 +5,31 @@ the runs list. Displays a back link to the runs list, the game's title with
 the current attempt number and a togglable Wipe/RESPAWN button, and a
 subtitle showing the run's personal best battle as trainer class + name
 followed by its split name (e.g. "Gym Leader Roark // Roark"), or "N/A" if
-none yet. Below that, if the run hasn't been wiped, a row of tabs for
-switching between the different views of the run and the content for the
-currently active tab; if the run has been wiped, a "Run it back." message
-instead.
+none yet. Below that, if the run hasn't been wiped, a sticky block
+containing a row of tabs for switching between the different views of the
+run — plus, on the Splits tab, the current split's header — pinned to the
+top of the viewport while the active tab's content scrolls beneath it; if
+the run has been wiped, a "Run it back." message instead.
 
 ## Props
 
 | Prop   | Type     | Required | Default | Description                                  |
 | ------ | -------- | -------- | ------- | -------------------------------------------- |
 | `slug` | `string` | Yes      | -       | The slugified game name identifying the page |
+
+## State
+
+| State                | Type     | Initial value | Description                                                                                             |
+| -------------------- | -------- | ------------- | ------------------------------------------------------------------------------------------------------- |
+| `stickyHeaderHeight` | `number` | `0`           | The measured pixel height of the sticky tabs/split-header block, passed to `SplitTab` as `stickyOffset` |
+
+## Effects
+
+- **On active tab or wipe state change** — re-measures the sticky
+  tabs/split-header block's height into `stickyHeaderHeight`, and
+  re-measures on window resize, so `SplitTab`'s table of contents can offset
+  itself below the sticky block regardless of its content (e.g. whether the
+  current split has a level cap)
 
 ## Computations
 

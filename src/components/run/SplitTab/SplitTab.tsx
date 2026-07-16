@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { Game, Run } from '@/lib/static/types';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -12,6 +11,7 @@ interface SplitTabProps {
     onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
     run: Run;
+    stickyOffset: number;
 }
 
 const SplitTab: React.FC<SplitTabProps> = ({
@@ -19,6 +19,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
     onSelectAbility,
     onSelectMove,
     run,
+    stickyOffset,
 }) => {
     // -------------------------------------------------------------------------
     // RENDERING
@@ -31,31 +32,21 @@ const SplitTab: React.FC<SplitTabProps> = ({
     const currentSplit = game.splits.find(
         (split) => split.name === currentSplitName
     );
-    const levelCap = currentSplit
-        ? BattleProgressHelpers.getLevelCap(currentSplit, run.starter)
-        : null;
     const variant = StringHelpers.toSlug(game.name);
-    const badge = `/${variant}/badges/${StringHelpers.toSlug(currentSplitName ?? '')}.png`;
 
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
     return (
-        <div className={styles['split-tab']}>
-            <div className={styles.header}>
-                <div className={styles.badge}>
-                    <Image alt="" fill src={badge} />
-                </div>
-                <div className={styles['title-group']}>
-                    <h2 className={styles.title}>{currentSplitName} Split</h2>
-                    {levelCap !== null && (
-                        <span className={styles['level-cap']}>
-                            Level Cap: {levelCap}
-                        </span>
-                    )}
-                </div>
-            </div>
+        <div
+            className={styles['split-tab']}
+            style={
+                {
+                    '--sticky-offset': `${stickyOffset}px`,
+                } as React.CSSProperties
+            }
+        >
             <div className={styles.body}>
                 <nav className={styles.toc}>
                     <span className={styles['toc-label']}>Locations</span>
