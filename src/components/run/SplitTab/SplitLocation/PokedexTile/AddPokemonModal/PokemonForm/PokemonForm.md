@@ -18,6 +18,7 @@ chosen starter.
 | Prop             | Type                                                                                                     | Required | Default | Description                                                                          |
 | ---------------- | -------------------------------------------------------------------------------------------------------- | -------- | ------- | ------------------------------------------------------------------------------------ |
 | `allSpecies`     | `string[]`                                                                                               | Yes      | -       | Every species name offered in the Pokemon dropdown, ignored when `lockSpecies`       |
+| `defaultLevel`   | `number`                                                                                                 | No       | -       | The level `level` defaults to, when `showLevel`; falls back to `1` if omitted        |
 | `defaultSpecies` | `string`                                                                                                 | Yes      | -       | The species `species` defaults to (and stays fixed at, when `lockSpecies`)           |
 | `generation`     | `number`                                                                                                 | Yes      | -       | The game's generation, used to resolve the selected species' abilities and learnset  |
 | `lockSpecies`    | `boolean`                                                                                                | Yes      | -       | Whether to omit the Pokemon field, keeping `species` fixed at `defaultSpecies`       |
@@ -29,17 +30,21 @@ chosen starter.
 
 ## State
 
-| State     | Type         | Initial value                                    | Description                                                |
-| --------- | ------------ | ------------------------------------------------ | ---------------------------------------------------------- |
-| `species` | `string`     | `defaultSpecies`'s canonical display name        | The selected species                                       |
-| `ability` | `string`     | `defaultSpecies`'s first ability at `generation` | The selected ability                                       |
-| `nature`  | `Nature`     | the first `Nature` value                         | The selected nature                                        |
-| `ivs`     | `StatValues` | all stats at `31`                                | The selected IVs, per stat                                 |
-| `level`   | `number`     | `1` if `showLevel`, otherwise `5`                | The selected level                                         |
-| `moves`   | `string[]`   | 4 empty strings                                  | The selected moves, one per slot, empty meaning unselected |
+| State     | Type         | Initial value                                                     | Description                                                |
+| --------- | ------------ | ----------------------------------------------------------------- | ---------------------------------------------------------- |
+| `species` | `string`     | `defaultSpecies`'s canonical display name                         | The selected species                                       |
+| `ability` | `string`     | `defaultSpecies`'s first ability at `generation`                  | The selected ability                                       |
+| `nature`  | `Nature`     | the first `Nature` value                                          | The selected nature                                        |
+| `ivs`     | `StatValues` | all stats at `31`                                                 | The selected IVs, per stat                                 |
+| `level`   | `number`     | `defaultLevel` (or `1`) if `showLevel`, otherwise `5`             | The selected level                                         |
+| `moves`   | `string[]`   | the moves `species` would know at `level`, per `getStartingMoves` | The selected moves, one per slot, empty meaning unselected |
 
 ## Computations
 
+- `getStartingMoves` — the moves a given species would actually know at
+  a given level, via `PokemonHelpers.getMovesAtLevel`, padded to fill
+  every move slot; used to initialize `moves` and to repopulate it
+  whenever species or level changes
 - `speciesOptions` — `allSpecies` mapped into dropdown options, used
   only when `lockSpecies` is false
 - `abilities` — the selected `species`' ability set at `generation`,
@@ -58,14 +63,17 @@ chosen starter.
 ## Handlers
 
 - **On the Pokemon dropdown change** — sets `species`, resets `ability`
-  to the new species' first ability at `generation`, and clears all 4
-  `moves` slots, since both options lists depend on `species` (only
-  reachable when the field is rendered, i.e. `lockSpecies` is false)
+  to the new species' first ability at `generation`, and resets `moves`
+  to the new species' starting moves at the current `level` via
+  `getStartingMoves` (only reachable when the field is rendered, i.e.
+  `lockSpecies` is false)
 - **On the ability dropdown change** — sets `ability`
 - **On the nature dropdown change** — sets `nature`
 - **On an IV input change** — sets that stat's value in `ivs`, clamped
   to `0`-`31`
-- **On the level input change** — sets `level`, clamped to `1`-`100`
+- **On the level input change** — sets `level`, clamped to `1`-`100`,
+  and resets `moves` to `species`' starting moves at the new level via
+  `getStartingMoves`
 - **On a move dropdown change** — sets that slot's value in `moves`
 - **On form submit** — calls `onSubmit` with `ability`, `ivs`, `level`,
   `moves` (empty slots filtered out), `name` (the selected `species`),

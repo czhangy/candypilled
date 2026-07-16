@@ -6,6 +6,7 @@ import {
     PokemonData,
     StatValues,
 } from '@/lib/static/types';
+import MoveHelpers from '@/lib/utils/MoveHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 export default class PokemonHelpers {
@@ -95,6 +96,29 @@ export default class PokemonHelpers {
             .find((entry) => entry.fromGeneration <= generation)?.moves;
     }
 
+    // The moves name would know at level, i.e. the last MAX_KNOWN_MOVES
+    // distinct level-up moves learned at or before level, in the order
+    // they were learned — matching how a Pokemon's moveset is determined
+    // in-game when it's first encountered or evolves.
+    static getMovesAtLevel(
+        name: string,
+        generation: number,
+        level: number
+    ): string[] {
+        const learnset = PokemonHelpers.getLearnset(name, generation) ?? [];
+        const levelUpMoves = learnset
+            .filter(
+                (move) =>
+                    move.method === 'level-up' &&
+                    (move.level ?? Infinity) <= level
+            )
+            .map((move) => MoveHelpers.get(move.name)?.name ?? move.name);
+
+        return Array.from(new Set(levelUpMoves)).slice(
+            -PokemonHelpers.MAX_KNOWN_MOVES
+        );
+    }
+
     // Every species slug in name's evolution family (ancestors and
     // descendants, including sibling branches like other eeveelutions),
     // for detecting Nuzlocke duplicate-evolution-line catches.
@@ -129,4 +153,10 @@ export default class PokemonHelpers {
             StringHelpers.toSlug(b)
         );
     }
+
+    // -------------------------------------------------------------------------
+    // PRIVATE
+    // -------------------------------------------------------------------------
+
+    private static readonly MAX_KNOWN_MOVES = 4;
 }

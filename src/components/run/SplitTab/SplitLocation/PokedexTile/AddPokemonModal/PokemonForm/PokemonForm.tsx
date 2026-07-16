@@ -9,6 +9,7 @@ import styles from './PokemonForm.module.scss';
 
 interface PokemonFormProps {
     allSpecies: string[];
+    defaultLevel?: number;
     defaultSpecies: string;
     generation: number;
     lockSpecies: boolean;
@@ -26,6 +27,7 @@ interface PokemonFormProps {
 
 const PokemonForm: React.FC<PokemonFormProps> = ({
     allSpecies,
+    defaultLevel,
     defaultSpecies,
     generation,
     lockSpecies,
@@ -43,12 +45,11 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     const MAX_IV = 31;
     const MIN_LEVEL = 1;
     const MAX_LEVEL = 100;
-    // Pokemon caught in the wild start at level 1 by default; starters
-    // (which don't show the level field) start at level 5, matching the
-    // in-game starting level.
-    const DEFAULT_LEVEL = showLevel ? 1 : 5;
+    // Pokemon caught in the wild default to the encounter's minimum level
+    // when known, otherwise level 1; starters (which don't show the level
+    // field) start at level 5, matching the in-game starting level.
+    const DEFAULT_LEVEL = showLevel ? (defaultLevel ?? 1) : 5;
     const MOVE_SLOT_COUNT = 4;
-    const EMPTY_MOVES = Array<string>(MOVE_SLOT_COUNT).fill('');
 
     const STAT_FIELDS: { key: keyof StatValues; label: string }[] = [
         { key: 'hp', label: 'HP' },
@@ -58,6 +59,27 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
         { key: 'spd', label: 'Sp. Def' },
         { key: 'spe', label: 'Speed' },
     ];
+
+    // -------------------------------------------------------------------------
+    // COMPUTATIONS
+    // -------------------------------------------------------------------------
+
+    // The moves a Pokemon would actually know at atLevel, padded to fill
+    // every move slot (empty slots left unselected).
+    const getStartingMoves = (
+        speciesName: string,
+        atLevel: number
+    ): string[] => {
+        const knownMoves = PokemonHelpers.getMovesAtLevel(
+            speciesName,
+            generation,
+            atLevel
+        );
+        return Array.from(
+            { length: MOVE_SLOT_COUNT },
+            (_, index) => knownMoves[index] ?? ''
+        );
+    };
 
     // -------------------------------------------------------------------------
     // STATE
@@ -80,7 +102,9 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
         spe: MAX_IV,
     });
     const [level, setLevel] = useState(DEFAULT_LEVEL);
-    const [moves, setMoves] = useState<string[]>(EMPTY_MOVES);
+    const [moves, setMoves] = useState<string[]>(() =>
+        getStartingMoves(defaultSpecies, DEFAULT_LEVEL)
+    );
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -90,7 +114,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
         const abilities = PokemonHelpers.getAbilities(value, generation);
         setSpecies(value);
         setAbility(abilities?.slot1 ?? '');
-        setMoves(EMPTY_MOVES);
+        setMoves(getStartingMoves(value, level));
     };
 
     const handleAbilityChange = (value: string): void => {
@@ -126,6 +150,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
             Math.max(MIN_LEVEL, Number(event.target.value))
         );
         setLevel(value);
+        setMoves(getStartingMoves(species, value));
     };
 
     const handleSubmit = (event: React.FormEvent): void => {

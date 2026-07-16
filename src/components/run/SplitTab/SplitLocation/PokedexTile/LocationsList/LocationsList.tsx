@@ -20,6 +20,14 @@ const LocationsList: React.FC<LocationsListProps> = ({
             ? `Lv. ${encounter.minLevel}`
             : `Lv. ${encounter.minLevel}-${encounter.maxLevel}`;
 
+    // usedLocations stores each location's base name (never subarea-
+    // qualified), while a location with subareas is named here as
+    // "Location (Subarea)" — so match on that base name prefix too.
+    const isUsed = (name: string): boolean =>
+        usedLocations.some(
+            (used) => name === used || name.startsWith(`${used} (`)
+        );
+
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
@@ -38,8 +46,7 @@ const LocationsList: React.FC<LocationsListProps> = ({
                 <li
                     className={[
                         styles.row,
-                        usedLocations.includes(location.name) &&
-                            styles['row--used'],
+                        isUsed(location.name) && styles['row--used'],
                     ]
                         .filter(Boolean)
                         .join(' ')}

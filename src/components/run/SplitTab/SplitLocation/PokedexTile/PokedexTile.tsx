@@ -13,6 +13,7 @@ import styles from './PokedexTile.module.scss';
 
 type PokedexTileProps = (
     | {
+          defaultLevel?: number;
           dupes: string[];
           encounter?: string;
           isLocationMissed: boolean;
@@ -347,6 +348,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                         allSpecies={LocationHelpers.getAllEncounterSpecies(
                             game
                         )}
+                        defaultLevel={rest.defaultLevel}
                         defaultSpecies={defaultCatchSpecies}
                         generation={generation}
                         onClose={handleCloseAddPokemonModal}

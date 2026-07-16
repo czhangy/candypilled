@@ -5,6 +5,7 @@ import PokemonForm from './PokemonForm/PokemonForm';
 interface AddPokemonModalProps {
     accentColor?: string;
     allSpecies: string[];
+    defaultLevel?: number;
     defaultSpecies: string;
     generation: number;
     onClose: () => void;
@@ -19,6 +20,7 @@ interface AddPokemonModalProps {
 const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
     accentColor,
     allSpecies,
+    defaultLevel,
     defaultSpecies,
     generation,
     onClose,
@@ -32,6 +34,7 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
         <Modal accentColor={accentColor} onClose={onClose} title="Add Pokemon">
             <PokemonForm
                 allSpecies={allSpecies}
+                defaultLevel={defaultLevel}
                 defaultSpecies={defaultSpecies}
                 generation={generation}
                 lockSpecies={false}
