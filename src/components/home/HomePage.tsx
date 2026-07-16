@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './HomePage.module.scss';
+import SpriteCarousel from './SpriteCarousel/SpriteCarousel';
 
 const HomePage: React.FC = () => {
     // -------------------------------------------------------------------------
@@ -26,6 +27,7 @@ const HomePage: React.FC = () => {
                         </Link>
                     </div>
                 </div>
+                <SpriteCarousel />
             </div>
         </div>
     );

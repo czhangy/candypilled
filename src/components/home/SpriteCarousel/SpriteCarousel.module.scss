@@ -1,0 +1,42 @@
+@use '@/styles/mixins' as *;
+
+.sprite-carousel {
+    height: 12rem;
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 20%,
+        black 80%,
+        transparent
+    );
+    overflow: hidden;
+    width: 12rem;
+
+    .track {
+        display: flex;
+        height: 100%;
+        transform: translateX(calc(-1 * var(--offset)));
+        width: calc(var(--frame-count) * 100%);
+
+        &--animate {
+            transition: transform var(--slide-duration) ease;
+
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
+        }
+
+        .frame {
+            align-items: center;
+            display: flex;
+            flex: 0 0 calc(100% / var(--frame-count));
+            justify-content: center;
+
+            img {
+                height: 8rem;
+                image-rendering: pixelated;
+                width: 8rem;
+            }
+        }
+    }
+}

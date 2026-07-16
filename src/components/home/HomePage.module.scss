@@ -10,10 +10,12 @@
     padding: 1.5rem;
 
     .content {
+        align-items: center;
         display: flex;
+        justify-content: space-between;
         margin: 0 auto;
         max-width: $max-content-width;
-        padding-left: 15%;
+        padding: 0 25% 0 10%;
         width: 100%;
 
         .row {

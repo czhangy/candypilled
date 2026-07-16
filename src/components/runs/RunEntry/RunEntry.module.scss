@@ -65,7 +65,7 @@
 
             .personal-best,
             .hall-of-fame {
-                color: $gold;
+                color: var(--accent-color);
                 font-weight: 700;
             }
 
@@ -109,7 +109,7 @@
             transition: color 0.2s ease;
 
             &::before {
-                color: $accent;
+                color: var(--accent-color);
                 content: '>';
                 opacity: 0;
                 transition: opacity 0.2s ease;
