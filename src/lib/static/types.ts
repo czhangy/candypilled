@@ -127,6 +127,9 @@ export interface Run {
     // Pokemon fled, fainted, etc.), by location name — same key space as
     // CaughtPokemon.location, and mutually exclusive with it.
     missedLocations: string[];
+    // Whether the player has given up on this run (a wipe). Once true, the
+    // run page shows a "Run it back" message instead of its tabs.
+    wipe: boolean;
 }
 
 export interface TypesByGeneration {

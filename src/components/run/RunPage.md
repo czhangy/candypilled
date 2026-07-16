@@ -2,11 +2,13 @@
 
 The dedicated page for a single game's run, reached from a game's entry on
 the runs list. Displays a back link to the runs list, the game's title with
-the current attempt number, a subtitle showing the run's personal best
-battle as trainer class + name followed by its split name (e.g.
-"Gym Leader Roark // Roark"), or "N/A" if none yet, a row of tabs for
-switching between the different views of the run, and the content for the
-currently active tab.
+the current attempt number and a togglable Wipe/RESPAWN button, and a
+subtitle showing the run's personal best battle as trainer class + name
+followed by its split name (e.g. "Gym Leader Roark // Roark"), or "N/A" if
+none yet. Below that, if the run hasn't been wiped, a row of tabs for
+switching between the different views of the run and the content for the
+currently active tab; if the run has been wiped, a "Run it back." message
+instead.
 
 ## Props
 
@@ -53,3 +55,5 @@ currently active tab.
   current page untouched
 - **On Pokemon deselect** (from `BoxTab`, when switching between its box
   and graveyard views) — clears the `pokemon` query param
+- **On Wipe toggle** — flips `run.wipe` and saves the run; the button reads
+  "Wipe" when `run.wipe` is `false` and "RESPAWN" when `true`
