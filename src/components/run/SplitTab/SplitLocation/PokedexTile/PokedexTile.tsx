@@ -146,7 +146,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         ? PokemonHelpers.getCatchRate(species)
         : undefined;
     const evolutionLine = species
-        ? PokemonHelpers.getEvolutionLine(species, generation)
+        ? PokemonHelpers.getFullEvolutionLine(species, generation)
         : undefined;
     const hasEvolutionBranches =
         !!evolutionLine && evolutionLine.evolvesTo.length > 0;

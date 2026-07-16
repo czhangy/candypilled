@@ -35,9 +35,12 @@ const EvolveModal: React.FC<EvolveModalProps> = ({
     // STATE
     // -------------------------------------------------------------------------
 
-    const [selected, setSelected] = useState<string | undefined>(
-        evolutions.length === 1 ? evolutions[0].name : undefined
-    );
+    const [selected, setSelected] = useState<string | undefined>(() => {
+        const formNames = evolutions.flatMap((step) =>
+            PokemonHelpers.getFormOptions(step.name)
+        );
+        return formNames.length === 1 ? formNames[0] : undefined;
+    });
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -45,6 +48,13 @@ const EvolveModal: React.FC<EvolveModalProps> = ({
 
     const displayName = StringHelpers.toTitleCase(
         PokemonHelpers.get(pokemonName)?.name ?? pokemonName
+    );
+    // A step's name is ambiguous when it doesn't resolve to its own entry
+    // (e.g. "wormadam", whose actual form depends on Burmy's cloak, which
+    // the evolution chain doesn't track), so it's expanded into one
+    // selectable option per form instead of one option per step.
+    const formNames = evolutions.flatMap((step) =>
+        PokemonHelpers.getFormOptions(step.name)
     );
 
     // -------------------------------------------------------------------------
@@ -71,9 +81,9 @@ const EvolveModal: React.FC<EvolveModalProps> = ({
         >
             <div className={styles['evolve-modal']}>
                 <div className={styles.options}>
-                    {evolutions.map((evolution) => {
+                    {formNames.map((formName) => {
                         const sprite = PokemonHelpers.getSprite(
-                            evolution.name,
+                            formName,
                             variant
                         );
 
@@ -81,21 +91,19 @@ const EvolveModal: React.FC<EvolveModalProps> = ({
                             <button
                                 className={[
                                     styles.option,
-                                    evolution.name === selected &&
+                                    formName === selected &&
                                         styles['option--selected'],
                                 ]
                                     .filter(Boolean)
                                     .join(' ')}
-                                key={evolution.name}
-                                onClick={() =>
-                                    handleOptionClick(evolution.name)
-                                }
+                                key={formName}
+                                onClick={() => handleOptionClick(formName)}
                                 type="button"
                             >
                                 <div className={styles.sprite}>
                                     {sprite && (
                                         <Image
-                                            alt={evolution.name}
+                                            alt={formName}
                                             height={SPRITE_SIZE}
                                             src={sprite}
                                             width={SPRITE_SIZE}

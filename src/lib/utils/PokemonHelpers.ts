@@ -33,16 +33,25 @@ export default class PokemonHelpers {
     }
 
     static get(name: string): PokemonData | undefined {
-        const slug = StringHelpers.toSlug(name);
-        if (POKEMON[slug]) return POKEMON[slug];
-
-        // Species with multiple forms (e.g. Wormadam) have no entry under
-        // their base name, only under each form's name. Fall back to the
-        // first form found.
-        const formKey = Object.keys(POKEMON).find((key) =>
-            key.startsWith(`${slug}-`)
-        );
+        const [formKey] = PokemonHelpers.getFormOptions(name);
         return formKey ? POKEMON[formKey] : undefined;
+    }
+
+    // Every form key name could resolve to. Species with multiple forms
+    // (e.g. Wormadam) have no entry under their base name, only under each
+    // form's name, so an ambiguous base name (as evolution data reports
+    // for a Burmy evolving into Wormadam, since its cloak isn't tracked by
+    // the evolution chain) resolves to every matching form key instead of
+    // just one, letting callers offer them all rather than silently
+    // picking the alphabetically-first form. A name with its own entry
+    // always resolves to itself.
+    static getFormOptions(name: string): string[] {
+        const slug = StringHelpers.toSlug(name);
+        if (POKEMON[slug]) return [slug];
+
+        return Object.keys(POKEMON)
+            .filter((key) => key.startsWith(`${slug}-`))
+            .sort((a, b) => a.localeCompare(b));
     }
 
     static getSprite(name: string, variant?: string): string | undefined {
@@ -120,6 +129,20 @@ export default class PokemonHelpers {
             .find((entry) => entry.fromGeneration <= generation)?.line;
     }
 
+    // The full evolution line reachable from name's family, i.e. every
+    // branch from the family's base species, not just the ones leading to
+    // name itself (which getEvolutionLine alone would prune, e.g. viewing
+    // Mothim would otherwise exclude the Wormadam branch).
+    static getFullEvolutionLine(
+        name: string,
+        generation: number
+    ): EvolutionStep | undefined {
+        const line = PokemonHelpers.getEvolutionLine(name, generation);
+        if (!line) return undefined;
+
+        return PokemonHelpers.getEvolutionLine(line.name, generation) ?? line;
+    }
+
     static getLearnset(
         name: string,
         generation: number
@@ -159,20 +182,15 @@ export default class PokemonHelpers {
     // descendants, including sibling branches like other eeveelutions),
     // for detecting Nuzlocke duplicate-evolution-line catches.
     static getEvolutionFamily(name: string, generation: number): string[] {
-        const line = PokemonHelpers.getEvolutionLine(name, generation);
-        if (!line) return [StringHelpers.toSlug(name)];
-
-        // getEvolutionLine(name) only preserves branches at or after name
-        // itself — sibling branches (e.g. Wurmple's other evolution path)
-        // are pruned from ancestors leading up to it. Its root is always
-        // the family's true base species though, so re-querying from there
-        // returns the fully-branched tree instead.
-        const fullLine =
-            PokemonHelpers.getEvolutionLine(line.name, generation) ?? line;
+        const fullLine = PokemonHelpers.getFullEvolutionLine(name, generation);
+        if (!fullLine) return [StringHelpers.toSlug(name)];
 
         const slugs: string[] = [];
         const collect = (step: EvolutionStep): void => {
-            slugs.push(step.name);
+            // A step's name is ambiguous when it doesn't resolve to its
+            // own entry (e.g. "wormadam"), so every matching form counts
+            // as part of the family, not just the (non-existent) bare name.
+            slugs.push(...PokemonHelpers.getFormOptions(step.name));
             step.evolvesTo.forEach(collect);
         };
         collect(fullLine);
