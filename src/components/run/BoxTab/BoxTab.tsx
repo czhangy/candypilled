@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { PokemonStatus } from '@/lib/static/enums';
 import { BoxView, CaughtPokemon, Game, Run } from '@/lib/static/types';
+import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './BoxTab.module.scss';
@@ -40,6 +41,16 @@ const BoxTab: React.FC<BoxTabProps> = ({
     const selectedCaughtPokemon = run.caughtPokemon.find(
         (caughtPokemon) => caughtPokemon.location === selectedPokemon
     );
+    const currentSplitName = BattleProgressHelpers.getCurrentSplitName(
+        game,
+        run.defeatedBattles
+    );
+    const currentSplit = game.splits.find(
+        (split) => split.name === currentSplitName
+    );
+    const levelCap = currentSplit
+        ? BattleProgressHelpers.getLevelCap(currentSplit, run.starter)
+        : null;
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -90,6 +101,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
         <div className={styles['box-tab']}>
             <PokemonBox
                 caughtPokemon={run.caughtPokemon}
+                levelCap={levelCap}
                 onSelectPokemon={onSelectPokemon}
                 onViewChange={handleViewChange}
                 selectedPokemon={selectedPokemon}
@@ -99,6 +111,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
             <PokemonPreview
                 accentColor={game.accentColor}
                 generation={game.generation}
+                levelCap={levelCap}
                 onEvolve={handleEvolve}
                 onSelectAbility={onSelectAbility}
                 onSelectMove={onSelectMove}

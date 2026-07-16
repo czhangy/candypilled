@@ -28,6 +28,11 @@ the currently selected Pokemon on the right, taking up the remaining third.
   game generation
 - `selectedCaughtPokemon` — the caught Pokemon whose location matches
   `selectedPokemon`, passed to `PokemonPreview`
+- `currentSplitName` / `currentSplit` — the run's current split, resolved
+  via `BattleProgressHelpers.getCurrentSplitName`
+- `levelCap` — the current split's level cap via
+  `BattleProgressHelpers.getLevelCap`, passed to `PokemonBox` and
+  `PokemonPreview` so over-leveled Pokemon can be flagged
 
 ## Handlers
 

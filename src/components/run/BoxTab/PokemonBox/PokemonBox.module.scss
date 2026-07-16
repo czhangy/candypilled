@@ -91,6 +91,13 @@
                 );
             }
 
+            &--over-cap {
+                img {
+                    filter: grayscale(100%);
+                    opacity: 0.4;
+                }
+            }
+
             img {
                 height: 100%;
                 image-rendering: pixelated;

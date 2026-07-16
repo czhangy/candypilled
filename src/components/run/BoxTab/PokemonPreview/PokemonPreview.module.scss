@@ -136,6 +136,10 @@ $label-width: 4.5rem;
                 .detail-value {
                     color: $text-mid;
                     font-size: 0.8rem;
+
+                    &--over-cap {
+                        color: $red;
+                    }
                 }
 
                 .detail-link {

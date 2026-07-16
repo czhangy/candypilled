@@ -12,6 +12,7 @@ import styles from './PokemonPreview.module.scss';
 interface PokemonPreviewProps {
     accentColor: string;
     generation: number;
+    levelCap: number | null;
     onEvolve: (pokemon: CaughtPokemon, newName: string) => void;
     onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
@@ -23,6 +24,7 @@ interface PokemonPreviewProps {
 const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     accentColor,
     generation,
+    levelCap,
     onEvolve,
     onSelectAbility,
     onSelectMove,
@@ -144,6 +146,8 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
         pokemon && pokemon.status !== PokemonStatus.Dead
             ? PokemonHelpers.getNextEvolutions(pokemon.name, generation)
             : [];
+    const isOverCap =
+        !!pokemon && levelCap !== null && pokemon.level > levelCap;
     const moveSlots = pokemon
         ? Array.from(
               { length: MOVE_SLOT_COUNT },
@@ -207,7 +211,15 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                             Level
                                         </span>
                                         <span
-                                            className={styles['detail-value']}
+                                            className={[
+                                                styles['detail-value'],
+                                                isOverCap &&
+                                                    styles[
+                                                        'detail-value--over-cap'
+                                                    ],
+                                            ]
+                                                .filter(Boolean)
+                                                .join(' ')}
                                         >
                                             {pokemon.level}
                                         </span>
