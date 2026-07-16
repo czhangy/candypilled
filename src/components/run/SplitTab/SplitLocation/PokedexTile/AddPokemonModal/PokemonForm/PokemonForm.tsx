@@ -14,17 +14,23 @@ import styles from './PokemonForm.module.scss';
 
 interface PokemonFormProps {
     allSpecies: string[];
+    defaultAbilitySlot?: AbilitySlot;
+    defaultEvs?: StatValues;
+    defaultIvs?: StatValues;
     defaultLevel?: number;
+    defaultMoves?: string[];
+    defaultNature?: Nature;
     defaultSpecies: string;
     generation: number;
     lockSpecies: boolean;
     onSubmit: (
         details: Pick<
             BattlePokemon,
-            'ability' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
         >
     ) => void;
     showAbility: boolean;
+    showEvs: boolean;
     showLevel: boolean;
     showMoves: boolean;
     submitLabel: string;
@@ -32,12 +38,18 @@ interface PokemonFormProps {
 
 const PokemonForm: React.FC<PokemonFormProps> = ({
     allSpecies,
+    defaultAbilitySlot,
+    defaultEvs,
+    defaultIvs,
     defaultLevel,
+    defaultMoves,
+    defaultNature,
     defaultSpecies,
     generation,
     lockSpecies,
     onSubmit,
     showAbility,
+    showEvs,
     showLevel,
     showMoves,
     submitLabel,
@@ -48,6 +60,8 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
 
     const MIN_IV = 0;
     const MAX_IV = 31;
+    const MIN_EV = 0;
+    const MAX_EV = 252;
     const MIN_LEVEL = 1;
     const MAX_LEVEL = 100;
     // Pokemon caught in the wild default to the encounter's minimum level
@@ -93,19 +107,28 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     const [species, setSpecies] = useState(
         () => PokemonHelpers.get(defaultSpecies)?.name ?? defaultSpecies
     );
-    const [abilitySlot, setAbilitySlot] = useState<AbilitySlot>(1);
-    const [nature, setNature] = useState<Nature>(Object.values(Nature)[0]);
-    const [ivs, setIvs] = useState<StatValues>({
-        atk: MAX_IV,
-        def: MAX_IV,
-        hp: MAX_IV,
-        spa: MAX_IV,
-        spd: MAX_IV,
-        spe: MAX_IV,
-    });
+    const [abilitySlot, setAbilitySlot] = useState<AbilitySlot>(
+        defaultAbilitySlot ?? 1
+    );
+    const [nature, setNature] = useState<Nature>(
+        defaultNature ?? Object.values(Nature)[0]
+    );
+    const [ivs, setIvs] = useState<StatValues>(
+        defaultIvs ?? {
+            atk: MAX_IV,
+            def: MAX_IV,
+            hp: MAX_IV,
+            spa: MAX_IV,
+            spd: MAX_IV,
+            spe: MAX_IV,
+        }
+    );
+    const [evs, setEvs] = useState<StatValues>(
+        defaultEvs ?? { atk: 0, def: 0, hp: 0, spa: 0, spd: 0, spe: 0 }
+    );
     const [level, setLevel] = useState(DEFAULT_LEVEL);
-    const [moves, setMoves] = useState<string[]>(() =>
-        getStartingMoves(defaultSpecies, DEFAULT_LEVEL)
+    const [moves, setMoves] = useState<string[]>(
+        () => defaultMoves ?? getStartingMoves(defaultSpecies, DEFAULT_LEVEL)
     );
 
     // -------------------------------------------------------------------------
@@ -143,6 +166,17 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
         setIvs((prev) => ({ ...prev, [stat]: value }));
     };
 
+    const handleEvChange = (
+        stat: keyof StatValues,
+        event: React.ChangeEvent<HTMLInputElement>
+    ): void => {
+        const value = Math.min(
+            MAX_EV,
+            Math.max(MIN_EV, Number(event.target.value))
+        );
+        setEvs((prev) => ({ ...prev, [stat]: value }));
+    };
+
     const handleLevelChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ): void => {
@@ -158,6 +192,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
         event.preventDefault();
         onSubmit({
             ability: abilitySlot,
+            evs,
             ivs,
             level,
             moves: moves.filter(Boolean),
@@ -293,11 +328,11 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
             )}
             <div className={styles.field}>
                 <span className={styles.label}>IVs</span>
-                <div className={styles.ivs}>
+                <div className={styles['stat-grid']}>
                     {STAT_FIELDS.map(({ key, label }) => (
-                        <div className={styles['iv-field']} key={key}>
+                        <div className={styles['stat-field']} key={key}>
                             <label
-                                className={styles['iv-label']}
+                                className={styles['stat-field-label']}
                                 htmlFor={`iv-${key}`}
                             >
                                 {label}
@@ -315,6 +350,34 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
                     ))}
                 </div>
             </div>
+            {showEvs && (
+                <div className={styles.field}>
+                    <span className={styles.label}>EVs</span>
+                    <div className={styles['stat-grid']}>
+                        {STAT_FIELDS.map(({ key, label }) => (
+                            <div className={styles['stat-field']} key={key}>
+                                <label
+                                    className={styles['stat-field-label']}
+                                    htmlFor={`ev-${key}`}
+                                >
+                                    {label}
+                                </label>
+                                <input
+                                    className={styles.input}
+                                    id={`ev-${key}`}
+                                    max={MAX_EV}
+                                    min={MIN_EV}
+                                    onChange={(event) =>
+                                        handleEvChange(key, event)
+                                    }
+                                    type="number"
+                                    value={evs[key]}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
             <div className={styles.footer}>
                 <button className={styles['submit-button']} type="submit">
                     {submitLabel}

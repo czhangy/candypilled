@@ -12,7 +12,7 @@ interface AddPokemonModalProps {
     onSubmit: (
         details: Pick<
             BattlePokemon,
-            'ability' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
         >
     ) => void;
 }
@@ -40,6 +40,7 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
                 lockSpecies={false}
                 onSubmit={onSubmit}
                 showAbility
+                showEvs={false}
                 showLevel
                 showMoves
                 submitLabel="Add"

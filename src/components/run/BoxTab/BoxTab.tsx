@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { PokemonStatus } from '@/lib/static/enums';
-import { BoxView, CaughtPokemon, Game, Run } from '@/lib/static/types';
+import {
+    BattlePokemon,
+    BoxView,
+    CaughtPokemon,
+    Game,
+    Run,
+} from '@/lib/static/types';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -75,6 +81,25 @@ const BoxTab: React.FC<BoxTabProps> = ({
         setView(newStatus === PokemonStatus.Dead ? 'graveyard' : 'box');
     };
 
+    const handleEditPokemon = (
+        pokemon: CaughtPokemon,
+        details: Pick<
+            BattlePokemon,
+            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+        >
+    ): void => {
+        const updatedRun: Run = {
+            ...run,
+            caughtPokemon: run.caughtPokemon.map((caughtPokemon) =>
+                caughtPokemon.location === pokemon.location
+                    ? { ...caughtPokemon, ...details }
+                    : caughtPokemon
+            ),
+        };
+
+        LocalStorageHelpers.saveRun(game, updatedRun);
+    };
+
     const handleEvolve = (pokemon: CaughtPokemon, newName: string): void => {
         const updatedRun: Run = {
             ...run,
@@ -112,12 +137,14 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 accentColor={game.accentColor}
                 generation={game.generation}
                 levelCap={levelCap}
+                onEdit={handleEditPokemon}
                 onEvolve={handleEvolve}
                 onSelectAbility={onSelectAbility}
                 onSelectMove={onSelectMove}
                 onToggleStatus={handleToggleStatus}
                 pokemon={selectedCaughtPokemon}
                 variant={variant}
+                view={view}
             />
         </div>
     );

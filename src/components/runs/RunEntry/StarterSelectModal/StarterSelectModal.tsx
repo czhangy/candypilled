@@ -79,7 +79,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
     const handleFormSubmit = (
         details: Pick<
             BattlePokemon,
-            'ability' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
         >
     ): void => {
         onSelect({
@@ -116,6 +116,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
                         lockSpecies
                         onSubmit={handleFormSubmit}
                         showAbility={false}
+                        showEvs={false}
                         showLevel={false}
                         showMoves={false}
                         submitLabel="CONFIRM"

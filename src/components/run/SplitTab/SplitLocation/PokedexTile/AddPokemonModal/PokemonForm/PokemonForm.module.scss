@@ -42,17 +42,17 @@
         }
     }
 
-    .ivs {
+    .stat-grid {
         display: grid;
         gap: 0.6rem;
         grid-template-columns: repeat(3, 1fr);
 
-        .iv-field {
+        .stat-field {
             display: flex;
             flex-direction: column;
             gap: 0.3rem;
 
-            .iv-label {
+            .stat-field-label {
                 color: $text-mid;
                 font-size: 0.65rem;
             }

@@ -21,7 +21,13 @@ type PokedexTileProps = (
           onAddPokemon: (
               details: Pick<
                   BattlePokemon,
-                  'ability' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+                  | 'ability'
+                  | 'evs'
+                  | 'ivs'
+                  | 'level'
+                  | 'moves'
+                  | 'name'
+                  | 'nature'
               >
           ) => void;
           onRemovePokemon: () => void;
@@ -105,7 +111,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     const handleAddPokemon = (
         details: Pick<
             BattlePokemon,
-            'ability' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
         >
     ): void => {
         if (rest.mode !== 'catch') return;

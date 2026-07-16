@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { PokemonStatus } from '@/lib/static/enums';
-import { CaughtPokemon, StatValues } from '@/lib/static/types';
+import {
+    BattlePokemon,
+    BoxView,
+    CaughtPokemon,
+    StatValues,
+} from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
+import EditPokemonModal from './EditPokemonModal/EditPokemonModal';
 import EvolveModal from './EvolveModal/EvolveModal';
 import MoveCard from './MoveCard/MoveCard';
 import styles from './PokemonPreview.module.scss';
@@ -13,24 +19,34 @@ interface PokemonPreviewProps {
     accentColor: string;
     generation: number;
     levelCap: number | null;
+    onEdit: (
+        pokemon: CaughtPokemon,
+        details: Pick<
+            BattlePokemon,
+            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+        >
+    ) => void;
     onEvolve: (pokemon: CaughtPokemon, newName: string) => void;
     onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
     onToggleStatus: (pokemon: CaughtPokemon) => void;
     pokemon?: CaughtPokemon;
     variant: string;
+    view: BoxView;
 }
 
 const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     accentColor,
     generation,
     levelCap,
+    onEdit,
     onEvolve,
     onSelectAbility,
     onSelectMove,
     onToggleStatus,
     pokemon,
     variant,
+    view,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
@@ -57,6 +73,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     // STATE
     // -------------------------------------------------------------------------
 
+    const [isEditOpen, setIsEditOpen] = useState(false);
     const [isEvolveOpen, setIsEvolveOpen] = useState(false);
 
     // -------------------------------------------------------------------------
@@ -70,6 +87,26 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     const handleToggleStatusClick = (): void => {
         if (pokemon) {
             onToggleStatus(pokemon);
+        }
+    };
+
+    const handleEditClick = (): void => {
+        setIsEditOpen(true);
+    };
+
+    const handleEditClose = (): void => {
+        setIsEditOpen(false);
+    };
+
+    const handleEditSubmit = (
+        details: Pick<
+            BattlePokemon,
+            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+        >
+    ): void => {
+        setIsEditOpen(false);
+        if (pokemon) {
+            onEdit(pokemon, details);
         }
     };
 
@@ -91,35 +128,6 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------
-
-    const normalizeStatValues = (
-        stats: number | StatValues | undefined,
-        fallback: number
-    ): StatValues => {
-        if (stats === undefined) {
-            return {
-                atk: fallback,
-                def: fallback,
-                hp: fallback,
-                spa: fallback,
-                spd: fallback,
-                spe: fallback,
-            };
-        }
-
-        if (typeof stats === 'number') {
-            return {
-                atk: stats,
-                def: stats,
-                hp: stats,
-                spa: stats,
-                spd: stats,
-                spe: stats,
-            };
-        }
-
-        return stats;
-    };
 
     const renderStatValues = (stats: StatValues): React.ReactNode => (
         <div className={styles['stats-grid']}>
@@ -170,8 +178,8 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
             ? StatHelpers.calculate(
                   baseStats,
                   pokemon.level,
-                  normalizeStatValues(pokemon.ivs, 31),
-                  normalizeStatValues(pokemon.evs, 0),
+                  StatHelpers.normalize(pokemon.ivs, 31),
+                  StatHelpers.normalize(pokemon.evs, 0),
                   pokemon.nature
               )
             : undefined;
@@ -299,6 +307,15 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                 </div>
                             </div>
                             <div className={styles.actions}>
+                                {view === 'box' && (
+                                    <button
+                                        className={styles['edit-button']}
+                                        onClick={handleEditClick}
+                                        type="button"
+                                    >
+                                        EDIT
+                                    </button>
+                                )}
                                 {nextEvolutions.length > 0 && (
                                     <button
                                         className={styles['evolve-button']}
@@ -352,6 +369,15 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                     </span>
                 )}
             </div>
+            {isEditOpen && pokemon && (
+                <EditPokemonModal
+                    accentColor={accentColor}
+                    generation={generation}
+                    onClose={handleEditClose}
+                    onSubmit={handleEditSubmit}
+                    pokemon={pokemon}
+                />
+            )}
             {isEvolveOpen && pokemon && (
                 <EvolveModal
                     accentColor={accentColor}
