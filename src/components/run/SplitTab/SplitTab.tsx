@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Game, Run } from '@/lib/static/types';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -33,6 +34,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
         (split) => split.name === currentSplitName
     );
     const variant = StringHelpers.toSlug(game.name);
+    const badge = `/${variant}/badges/${StringHelpers.toSlug(currentSplitName ?? '')}.png`;
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -49,6 +51,9 @@ const SplitTab: React.FC<SplitTabProps> = ({
         >
             <div className={styles.body}>
                 <nav className={styles.toc}>
+                    <div className={styles.badge}>
+                        <Image alt="" fill src={badge} />
+                    </div>
                     <span className={styles['toc-label']}>Locations</span>
                     <ul className={styles['toc-list']}>
                         {currentSplit?.locations.map((location) => (

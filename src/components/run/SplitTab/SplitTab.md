@@ -1,9 +1,10 @@
 # SplitTab
 
 The content of the "Split" tab on a game's run page. Shows a sticky table of
-contents listing every location in the run's current split, and a
-collapsible card for each location. Clicking a table of contents entry jumps
-to that location's card via an in-page anchor link.
+contents listing every location in the run's current split, with a
+semi-transparent badge icon behind it, and a collapsible card for each
+location. Clicking a table of contents entry jumps to that location's card
+via an in-page anchor link.
 
 ## Props
 
@@ -22,6 +23,8 @@ to that location's card via an in-page anchor link.
   last split if every required battle has been defeated
 - `currentSplit` — the split matching `currentSplitName`, whose locations
   are rendered as `SplitLocation` cards
+- `badge` — the badge icon path for the current split, matching
+  `/{variant}/badges/{slug}.png`, shown behind the table of contents
 
 Each table of contents entry links to `#{slug}`, where `slug` is
 `StringHelpers.toSlug(location.name)` — the same id `SplitLocation` sets on

@@ -5,7 +5,7 @@
     border: 1px solid $border-subtle;
     border-radius: 0.5rem;
     overflow: hidden;
-    scroll-margin-top: 1.5rem;
+    scroll-margin-top: calc(var(--sticky-offset) + 1.5rem);
 
     .header {
         align-items: center;

@@ -21,6 +21,21 @@
             top: calc(var(--sticky-offset) + 2.5rem);
             width: 12rem;
 
+            .badge {
+                height: 10rem;
+                left: 50%;
+                opacity: 0.15;
+                position: absolute;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 10rem;
+                z-index: -1;
+
+                img {
+                    object-fit: contain;
+                }
+            }
+
             .toc-label {
                 font-size: 0.85rem;
             }

@@ -1,10 +1,9 @@
 # SplitHeader
 
-Shows the run's current split, with a small badge icon to the left of its
-name and level cap. Rendered by `RunPage` in the top-left corner of the
-sticky tabs/split-header block, so it stays pinned to the top of the
-viewport alongside the tab bar while the split's locations scroll beneath
-it.
+Shows the run's current split name and level cap on a single line. Rendered
+by `RunPage` in the top-left corner of the sticky tabs/split-header block, so
+it stays pinned to the top of the viewport alongside the tab bar while the
+split's locations scroll beneath it.
 
 ## Props
 
@@ -21,7 +20,5 @@ it.
 - `currentSplit` — the split matching `currentSplitName`, used to compute
   `levelCap`
 - `levelCap` — the highest level Pokemon on the team of the current split's
-  last battle (resolved for the run's chosen starter), shown below the
+  last battle (resolved for the run's chosen starter), shown next to the
   split title
-- `badge` — the badge icon path for the current split, matching
-  `/{variant}/badges/{slug}.png`

@@ -4,26 +4,14 @@
 .split-header {
     align-items: center;
     display: flex;
-    gap: 1rem;
     justify-content: flex-start;
-    padding: 1.5rem 0;
+    padding: 0.25rem;
     position: relative;
 
-    .badge {
-        flex-shrink: 0;
-        height: 4rem;
-        position: relative;
-        width: 4rem;
-
-        img {
-            object-fit: contain;
-        }
-    }
-
     .title-group {
-        align-items: flex-start;
+        align-items: baseline;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         gap: 0.5rem;
         text-align: left;
     }
@@ -39,6 +27,6 @@
         @include mono-label;
 
         color: $text-mid;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 }
