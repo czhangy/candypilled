@@ -103,7 +103,12 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // -------------------------------------------------------------------------
 
     return (
-        <div className={styles['run-entry']}>
+        <div
+            className={styles['run-entry']}
+            style={
+                { '--accent-color': game.accentColor } as React.CSSProperties
+            }
+        >
             <div className={styles.details}>
                 <Image
                     alt={`${game.name} logo`}

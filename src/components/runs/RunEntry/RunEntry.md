@@ -39,3 +39,8 @@ starter before the run is created.
   number, resetting box/death counts, and setting the split to the game's
   first split, while carrying over the existing personal best and hall of
   fame count, then navigates to the game's run page
+
+## SCSS Variable Dependencies
+
+- `--accent-color` — the game's theme color, set inline from `game.accentColor`
+  and used to color the personal best/hall of fame text
