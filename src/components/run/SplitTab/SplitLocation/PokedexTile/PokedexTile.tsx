@@ -351,7 +351,6 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                         generation={generation}
                         onClose={handleCloseAddPokemonModal}
                         onSubmit={handleAddPokemon}
-                        realLocations={[]}
                         showLocation={false}
                     />
                 )}

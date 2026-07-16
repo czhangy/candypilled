@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { Battle, BattlePokemon } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
@@ -132,14 +133,18 @@ const BattleCard: React.FC<BattleCardProps> = ({
                             <div className={styles['trainer__metadata']}>
                                 {battle.fieldCondition}
                                 {battle.fieldCondition === 'Fog' && (
-                                    <span
-                                        className={
-                                            styles['field-condition__note']
-                                        }
-                                        title="Can be cleared using Defog"
+                                    <Tooltip
+                                        position="center"
+                                        text="Can be cleared using Defog"
                                     >
-                                        *
-                                    </span>
+                                        <span
+                                            className={
+                                                styles['field-condition__note']
+                                            }
+                                        >
+                                            *
+                                        </span>
+                                    </Tooltip>
                                 )}
                             </div>
                         )}

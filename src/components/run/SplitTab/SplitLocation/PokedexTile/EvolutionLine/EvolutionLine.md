@@ -3,7 +3,7 @@
 Displays a Pokemon's evolution line as a chain of sprites connected by
 arrows labeled with how each step is reached. Methods with an icon
 available in `public/evolution_methods` (e.g. Shiny Stone, Friendship)
-render that icon in place of the text label, with a native tooltip on
+render that icon in place of the text label, with a `Tooltip` on
 hover spelling out the method in text. A method requiring a specific
 gender renders a ♂ or ♀ symbol colored blue or pink instead of the
 "Male"/"Female" text. A method's condition (e.g. the held item for a

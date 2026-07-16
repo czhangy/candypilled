@@ -41,8 +41,9 @@ const SplitTab: React.FC<SplitTabProps> = ({
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const isLocationCaught = (locationName: string): boolean =>
-        run.caughtPokemon.some((caught) => caught.location === locationName);
+    const getCaughtPokemonName = (locationName: string): string | undefined =>
+        run.caughtPokemon.find((caught) => caught.location === locationName)
+            ?.name;
 
     const isLocationMissed = (locationName: string): boolean =>
         run.missedLocations.includes(locationName);
@@ -78,7 +79,9 @@ const SplitTab: React.FC<SplitTabProps> = ({
                     <span className={styles['toc-label']}>Locations</span>
                     <ul className={styles['toc-list']}>
                         {currentSplit?.locations.map((location) => {
-                            const caught = isLocationCaught(location.name);
+                            const caughtPokemonName = getCaughtPokemonName(
+                                location.name
+                            );
                             const missed = isLocationMissed(location.name);
 
                             return (
@@ -87,8 +90,8 @@ const SplitTab: React.FC<SplitTabProps> = ({
                                         <Tooltip
                                             position="left"
                                             text={
-                                                caught
-                                                    ? 'This encounter has been taken'
+                                                caughtPokemonName
+                                                    ? `This encounter has been taken – ${caughtPokemonName}`
                                                     : missed
                                                       ? 'This encounter was missed'
                                                       : "This encounter hasn't been taken"
@@ -109,7 +112,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
                                                     alt=""
                                                     fill
                                                     src={
-                                                        caught
+                                                        caughtPokemonName
                                                             ? '/common/poke-ball.png'
                                                             : '/common/premier-ball.png'
                                                     }

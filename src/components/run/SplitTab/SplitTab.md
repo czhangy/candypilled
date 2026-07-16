@@ -32,7 +32,8 @@ its own root element. Each entry for a location with at least one encounter
 is also preceded by a pokeball icon, with a `Tooltip` reporting the same
 status on hover:
 
-- Poké Ball — the location's encounter has been taken
+- Poké Ball — the location's encounter has been taken; the tooltip is
+  suffixed with "– {name}" naming the Pokemon caught there
 - Premier Ball — the location's encounter hasn't been taken or missed yet
 - Premier Ball, red — the location's encounter was missed
 
@@ -40,8 +41,8 @@ Locations with no encounters at all (no `encountersKey` on the location or
 any of its subareas) show no icon, but reserve the same space so entries
 stay aligned.
 
-- `isLocationCaught` — whether `run.caughtPokemon` contains an entry caught
-  at the given location name
+- `getCaughtPokemonName` — the name of the `run.caughtPokemon` entry caught
+  at the given location name, if any
 - `isLocationMissed` — whether `run.missedLocations` contains the given
   location name
 - `hasEncounters` — whether a location (or, if it has subareas, any of its

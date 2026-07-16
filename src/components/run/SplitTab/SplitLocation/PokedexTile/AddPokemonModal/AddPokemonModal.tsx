@@ -22,7 +22,6 @@ interface AddPokemonModalProps {
         >,
         location: string
     ) => void;
-    realLocations: string[];
     showLocation: boolean;
 }
 
@@ -36,7 +35,6 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
     generation,
     onClose,
     onSubmit,
-    realLocations,
     showLocation,
 }) => {
     // -------------------------------------------------------------------------
@@ -70,12 +68,9 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
 
     const isDuplicateCaughtLocation =
         showLocation && existingLocations.includes(location);
-    const isRealLocationName = showLocation && realLocations.includes(location);
     const disabledReason = isDuplicateCaughtLocation
-        ? 'A Pokemon is already recorded at this location.'
-        : isRealLocationName
-          ? "This is a real location in the game — catch it from that location's Pokedex tile instead."
-          : '';
+        ? 'A Pokemon is already recorded at this location'
+        : '';
 
     // -------------------------------------------------------------------------
     // MARKUP

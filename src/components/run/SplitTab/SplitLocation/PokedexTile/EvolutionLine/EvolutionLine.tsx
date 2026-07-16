@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { EvolutionStep } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -87,20 +88,28 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                     {methodLabel && (
                                         <span className={styles.method}>
                                             {methodLabel.icon ? (
-                                                <Image
-                                                    alt={methodLabel.label}
-                                                    className={
-                                                        styles['method-icon']
-                                                    }
-                                                    height={METHOD_ICON_SIZE}
-                                                    src={`/evolution_methods/${methodLabel.icon}.png`}
-                                                    title={
+                                                <Tooltip
+                                                    position="center"
+                                                    text={
                                                         methodLabel.condition
                                                             ? `${methodLabel.label} ${methodLabel.condition}`
                                                             : methodLabel.label
                                                     }
-                                                    width={METHOD_ICON_SIZE}
-                                                />
+                                                >
+                                                    <Image
+                                                        alt={methodLabel.label}
+                                                        className={
+                                                            styles[
+                                                                'method-icon'
+                                                            ]
+                                                        }
+                                                        height={
+                                                            METHOD_ICON_SIZE
+                                                        }
+                                                        src={`/evolution_methods/${methodLabel.icon}.png`}
+                                                        width={METHOD_ICON_SIZE}
+                                                    />
+                                                </Tooltip>
                                             ) : (
                                                 <span
                                                     className={
