@@ -168,6 +168,7 @@ Prefer the per-game `var(--accent-color)` (set inline from `game.accentColor` on
 - `full-height` — `flex: 1`, fills the remaining height in the page flex column (`body → .page-main → page component`); use on the outermost element of every full-page component
 - `mono-label` — `font-family: $font-mono; font-weight: 700` — use for all bold monospace text (titles, nav items, button labels)
 - `uppercase-label` — bold mono text in `$text-mid` with `0.05em` letter-spacing and uppercase transform — use for section/column label text (card labels, table headers)
+- `outline-button($color)` — a transparent button with a `$color` border and text that fills solid `$color` with `$foreground` text on hover — use for outlined action buttons (e.g. destructive/confirm actions)
 
 Add new mixins here only once they're actually used by a component — don't pre-declare mixins for hypothetical future UI.
 

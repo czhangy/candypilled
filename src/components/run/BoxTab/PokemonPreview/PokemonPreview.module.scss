@@ -49,55 +49,23 @@ $label-width: 4.5rem;
                 .evolve-button {
                     @include mono-label;
 
-                    background: none;
                     border-radius: 0.35rem;
                     cursor: pointer;
                     font-size: 0.7rem;
                     height: fit-content;
                     padding: 0.4rem 0.75rem;
-                    transition:
-                        background 0.2s ease,
-                        color 0.2s ease;
-
-                    @media (prefers-reduced-motion: reduce) {
-                        transition: none;
-                    }
                 }
 
                 .edit-button {
-                    border: 1px solid $orange;
-                    color: $orange;
-
-                    @media (hover: hover) {
-                        &:hover {
-                            background: $orange;
-                            color: $foreground;
-                        }
-                    }
+                    @include outline-button($orange);
                 }
 
                 .status-button {
-                    border: 1px solid $red;
-                    color: $red;
-
-                    @media (hover: hover) {
-                        &:hover {
-                            background: $red;
-                            color: $foreground;
-                        }
-                    }
+                    @include outline-button($red);
                 }
 
                 .evolve-button {
-                    border: 1px solid $green;
-                    color: $green;
-
-                    @media (hover: hover) {
-                        &:hover {
-                            background: $green;
-                            color: $foreground;
-                        }
-                    }
+                    @include outline-button($green);
                 }
             }
 

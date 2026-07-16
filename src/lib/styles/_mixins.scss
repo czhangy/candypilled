@@ -9,6 +9,26 @@
     font-weight: 700;
 }
 
+@mixin outline-button($color) {
+    background: none;
+    border: 1px solid $color;
+    color: $color;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+
+    @media (hover: hover) {
+        &:hover {
+            background: $color;
+            color: $foreground;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}
+
 @mixin scrollbar {
     scrollbar-color: $border-subtle transparent;
     scrollbar-width: thin;
