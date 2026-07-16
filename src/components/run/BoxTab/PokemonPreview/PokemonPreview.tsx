@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { CaughtPokemon, StatValues } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
+import StatHelpers from '@/lib/utils/StatHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import MoveCard from './MoveCard/MoveCard';
 import styles from './PokemonPreview.module.scss';
@@ -53,26 +54,47 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const renderStatValues = (stats: number | StatValues): React.ReactNode => {
-        if (typeof stats === 'number') {
-            return <span className={styles['stats-flat']}>{stats}</span>;
+    const normalizeStatValues = (
+        stats: number | StatValues | undefined,
+        fallback: number
+    ): StatValues => {
+        if (stats === undefined) {
+            return {
+                atk: fallback,
+                def: fallback,
+                hp: fallback,
+                spa: fallback,
+                spd: fallback,
+                spe: fallback,
+            };
         }
 
-        return (
-            <div className={styles['stats-grid']}>
-                {STAT_FIELDS.map((field) => (
-                    <div className={styles.stat} key={field.key}>
-                        <span className={styles['stat-label']}>
-                            {field.label}
-                        </span>
-                        <span className={styles['stat-value']}>
-                            {stats[field.key]}
-                        </span>
-                    </div>
-                ))}
-            </div>
-        );
+        if (typeof stats === 'number') {
+            return {
+                atk: stats,
+                def: stats,
+                hp: stats,
+                spa: stats,
+                spd: stats,
+                spe: stats,
+            };
+        }
+
+        return stats;
     };
+
+    const renderStatValues = (stats: StatValues): React.ReactNode => (
+        <div className={styles['stats-grid']}>
+            {STAT_FIELDS.map((field) => (
+                <div className={styles.stat} key={field.key}>
+                    <span className={styles['stat-label']}>{field.label}</span>
+                    <span className={styles['stat-value']}>
+                        {stats[field.key]}
+                    </span>
+                </div>
+            ))}
+        </div>
+    );
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -89,6 +111,20 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
           )
         : [];
     const ability = pokemon?.ability;
+    const baseStats =
+        pokemon && data
+            ? PokemonHelpers.getStats(pokemon.name, generation)
+            : undefined;
+    const stats =
+        pokemon && baseStats
+            ? StatHelpers.calculate(
+                  baseStats,
+                  pokemon.level,
+                  normalizeStatValues(pokemon.ivs, 31),
+                  normalizeStatValues(pokemon.evs, 0),
+                  pokemon.nature
+              )
+            : undefined;
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -205,6 +241,14 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                 </div>
                             </div>
                         </div>
+                        {stats && (
+                            <div className={styles.section}>
+                                <span className={styles['section-label']}>
+                                    Stats
+                                </span>
+                                {renderStatValues(stats)}
+                            </div>
+                        )}
                         <div className={styles.section}>
                             <span className={styles['section-label']}>
                                 Moves
@@ -220,22 +264,6 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                 ))}
                             </div>
                         </div>
-                        {pokemon.ivs !== undefined && (
-                            <div className={styles.section}>
-                                <span className={styles['section-label']}>
-                                    IVs
-                                </span>
-                                {renderStatValues(pokemon.ivs)}
-                            </div>
-                        )}
-                        {pokemon.evs && (
-                            <div className={styles.section}>
-                                <span className={styles['section-label']}>
-                                    EVs
-                                </span>
-                                {renderStatValues(pokemon.evs)}
-                            </div>
-                        )}
                     </>
                 ) : (
                     <span className={styles.placeholder}>
