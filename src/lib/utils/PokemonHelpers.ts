@@ -129,6 +129,20 @@ export default class PokemonHelpers {
             .find((entry) => entry.fromGeneration <= generation)?.line;
     }
 
+    // The full evolution line reachable from name's family, i.e. every
+    // branch from the family's base species, not just the ones leading to
+    // name itself (which getEvolutionLine alone would prune, e.g. viewing
+    // Mothim would otherwise exclude the Wormadam branch).
+    static getFullEvolutionLine(
+        name: string,
+        generation: number
+    ): EvolutionStep | undefined {
+        const line = PokemonHelpers.getEvolutionLine(name, generation);
+        if (!line) return undefined;
+
+        return PokemonHelpers.getEvolutionLine(line.name, generation) ?? line;
+    }
+
     static getLearnset(
         name: string,
         generation: number
@@ -168,16 +182,8 @@ export default class PokemonHelpers {
     // descendants, including sibling branches like other eeveelutions),
     // for detecting Nuzlocke duplicate-evolution-line catches.
     static getEvolutionFamily(name: string, generation: number): string[] {
-        const line = PokemonHelpers.getEvolutionLine(name, generation);
-        if (!line) return [StringHelpers.toSlug(name)];
-
-        // getEvolutionLine(name) only preserves branches at or after name
-        // itself — sibling branches (e.g. Wurmple's other evolution path)
-        // are pruned from ancestors leading up to it. Its root is always
-        // the family's true base species though, so re-querying from there
-        // returns the fully-branched tree instead.
-        const fullLine =
-            PokemonHelpers.getEvolutionLine(line.name, generation) ?? line;
+        const fullLine = PokemonHelpers.getFullEvolutionLine(name, generation);
+        if (!fullLine) return [StringHelpers.toSlug(name)];
 
         const slugs: string[] = [];
         const collect = (step: EvolutionStep): void => {

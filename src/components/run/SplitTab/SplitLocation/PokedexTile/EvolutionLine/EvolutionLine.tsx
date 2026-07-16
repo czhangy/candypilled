@@ -67,13 +67,22 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
             </button>
             {step.evolvesTo.length > 0 && (
                 <div className={styles.branches}>
-                    {step.evolvesTo.map((child) => {
+                    {step.evolvesTo.flatMap((child) => {
                         const methodLabel = child.methods
                             ? EvolutionHelpers.getMethodLabel(child.methods)
                             : undefined;
+                        // A child's name is ambiguous when it doesn't
+                        // resolve to its own entry (e.g. "wormadam", whose
+                        // actual form depends on Burmy's cloak, which the
+                        // evolution chain doesn't track), so it's expanded
+                        // into one branch per form instead of one branch
+                        // per step.
+                        const formNames = PokemonHelpers.getFormOptions(
+                            child.name
+                        );
 
-                        return (
-                            <div className={styles.branch} key={child.name}>
+                        return formNames.map((formName) => (
+                            <div className={styles.branch} key={formName}>
                                 <div className={styles.arrow}>
                                     {methodLabel && (
                                         <span className={styles.method}>
@@ -136,11 +145,11 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                 <EvolutionLine
                                     currentName={currentName}
                                     onSelectSpecies={onSelectSpecies}
-                                    step={child}
+                                    step={{ ...child, name: formName }}
                                     variant={variant}
                                 />
                             </div>
-                        );
+                        ));
                     })}
                 </div>
             )}
