@@ -55,7 +55,7 @@ $label-width: 4.5rem;
                     height: fit-content;
                     padding: 0.4rem 0.75rem;
                     transition:
-                        border-color 0.2s ease,
+                        background 0.2s ease,
                         color 0.2s ease;
 
                     @media (prefers-reduced-motion: reduce) {
@@ -69,8 +69,8 @@ $label-width: 4.5rem;
 
                     @media (hover: hover) {
                         &:hover {
-                            border-color: var(--accent-color);
-                            color: var(--accent-color);
+                            background: $red;
+                            color: $foreground;
                         }
                     }
                 }
@@ -81,8 +81,8 @@ $label-width: 4.5rem;
 
                     @media (hover: hover) {
                         &:hover {
-                            border-color: var(--accent-color);
-                            color: var(--accent-color);
+                            background: $green;
+                            color: $foreground;
                         }
                     }
                 }
