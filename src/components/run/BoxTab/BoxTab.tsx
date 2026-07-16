@@ -64,6 +64,19 @@ const BoxTab: React.FC<BoxTabProps> = ({
         setView(newStatus === PokemonStatus.Dead ? 'graveyard' : 'box');
     };
 
+    const handleEvolve = (pokemon: CaughtPokemon, newName: string): void => {
+        const updatedRun: Run = {
+            ...run,
+            caughtPokemon: run.caughtPokemon.map((caughtPokemon) =>
+                caughtPokemon.location === pokemon.location
+                    ? { ...caughtPokemon, name: newName }
+                    : caughtPokemon
+            ),
+        };
+
+        LocalStorageHelpers.saveRun(game, updatedRun);
+    };
+
     const handleViewChange = (nextView: BoxView): void => {
         setView(nextView);
         onDeselectPokemon();
@@ -84,7 +97,9 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 view={view}
             />
             <PokemonPreview
+                accentColor={game.accentColor}
                 generation={game.generation}
+                onEvolve={handleEvolve}
                 onSelectAbility={onSelectAbility}
                 onSelectMove={onSelectMove}
                 onToggleStatus={handleToggleStatus}
