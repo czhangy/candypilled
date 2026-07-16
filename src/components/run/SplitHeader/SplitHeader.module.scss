@@ -4,18 +4,16 @@
 .split-header {
     align-items: center;
     display: flex;
-    justify-content: center;
+    gap: 1rem;
+    justify-content: flex-start;
     padding: 1.5rem 0;
     position: relative;
 
     .badge {
-        height: 6.5rem;
-        left: 50%;
-        opacity: 0.2;
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 6.5rem;
+        flex-shrink: 0;
+        height: 4rem;
+        position: relative;
+        width: 4rem;
 
         img {
             object-fit: contain;
@@ -23,17 +21,17 @@
     }
 
     .title-group {
-        align-items: center;
+        align-items: flex-start;
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        position: relative;
+        text-align: left;
     }
 
     .title {
         @include mono-label;
 
-        font-size: 1.75rem;
+        font-size: 1.25rem;
         margin: 0;
     }
 
@@ -41,6 +39,6 @@
         @include mono-label;
 
         color: $text-mid;
-        font-size: 1.1rem;
+        font-size: 0.85rem;
     }
 }

@@ -1,9 +1,10 @@
 # SplitHeader
 
-Shows the run's current split, with a semi-transparent badge icon behind its
-name and level cap. Rendered by `RunPage` above `SplitTab`, inside the sticky
-tabs/split-header block, so it stays pinned to the top of the viewport
-alongside the tab bar while the split's locations scroll beneath it.
+Shows the run's current split, with a small badge icon to the left of its
+name and level cap. Rendered by `RunPage` in the top-left corner of the
+sticky tabs/split-header block, so it stays pinned to the top of the
+viewport alongside the tab bar while the split's locations scroll beneath
+it.
 
 ## Props
 

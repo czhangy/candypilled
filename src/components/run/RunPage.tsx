@@ -218,14 +218,14 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                         className={styles['sticky-header']}
                         ref={stickyHeaderRef}
                     >
+                        {activeTab === 'split' && (
+                            <SplitHeader game={game} run={run} />
+                        )}
                         <Tabs
                             activeTab={activeTab}
                             onTabChange={handleTabChange}
                             tabs={TABS}
                         />
-                        {activeTab === 'split' && (
-                            <SplitHeader game={game} run={run} />
-                        )}
                     </div>
                     {activeTab === 'split' && (
                         <SplitTab

@@ -67,12 +67,12 @@
     }
 
     .sticky-header {
+        align-items: flex-end;
         background: $background;
         border-bottom: 1px solid $border-subtle;
         display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        padding: 1rem 0;
+        gap: 1.5rem;
+        padding: 1rem 0 0;
         position: sticky;
         top: 0;
         z-index: 1;
