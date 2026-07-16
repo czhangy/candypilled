@@ -1,0 +1,67 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.move-card {
+    align-items: center;
+    background: color-mix(
+        in srgb,
+        var(--move-color, $background-light) 30%,
+        transparent
+    );
+    border-radius: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    height: 5.5rem;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0.35rem 0.6rem;
+    text-align: center;
+
+    .name {
+        @include mono-label;
+
+        font-size: 0.8rem;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .stats {
+        align-items: center;
+        display: flex;
+        gap: 0.6rem;
+    }
+
+    .stat {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+
+        .stat-label {
+            @include uppercase-label;
+
+            font-size: 0.55rem;
+        }
+
+        .stat-value {
+            align-items: center;
+            color: $text-mid;
+            display: flex;
+            font-size: 0.7rem;
+            height: 0.75rem;
+            justify-content: center;
+
+            img {
+                image-rendering: pixelated;
+            }
+        }
+    }
+
+    .placeholder {
+        color: $text-dim;
+        font-size: 0.8rem;
+    }
+}

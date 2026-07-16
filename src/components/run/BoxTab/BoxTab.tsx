@@ -38,7 +38,11 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 selectedPokemon={selectedPokemon}
                 variant={variant}
             />
-            <PokemonPreview pokemon={selectedCaughtPokemon} variant={variant} />
+            <PokemonPreview
+                generation={game.generation}
+                pokemon={selectedCaughtPokemon}
+                variant={variant}
+            />
         </div>
     );
 };

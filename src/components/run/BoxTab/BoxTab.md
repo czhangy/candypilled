@@ -6,12 +6,12 @@ the currently selected Pokemon on the right, taking up the remaining third.
 
 ## Props
 
-| Prop              | Type                         | Required | Default | Description                                                          |
-| ----------------- | ---------------------------- | -------- | ------- | -------------------------------------------------------------------- |
-| `game`            | `Game`                       | Yes      | -       | The current game, used to resolve the caught Pokemon's sprites       |
-| `onSelectPokemon` | `(location: string) => void` | Yes      | -       | Called with a caught Pokemon's location when it's clicked in the box |
-| `run`             | `Run`                        | Yes      | -       | The current run, whose `caughtPokemon` populates the box             |
-| `selectedPokemon` | `string`                     | No       | -       | The location of the currently selected caught Pokemon, if any        |
+| Prop              | Type                         | Required | Default | Description                                                              |
+| ----------------- | ---------------------------- | -------- | ------- | ------------------------------------------------------------------------ |
+| `game`            | `Game`                       | Yes      | -       | The current game, used to resolve the caught Pokemon's sprites and moves |
+| `onSelectPokemon` | `(location: string) => void` | Yes      | -       | Called with a caught Pokemon's location when it's clicked in the box     |
+| `run`             | `Run`                        | Yes      | -       | The current run, whose `caughtPokemon` populates the box                 |
+| `selectedPokemon` | `string`                     | No       | -       | The location of the currently selected caught Pokemon, if any            |
 
 ## Computations
 
