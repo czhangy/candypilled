@@ -17,8 +17,11 @@ to that location's card via an in-page anchor link.
 
 ## Computations
 
-- `currentSplit` — the split matching `run.split`, whose locations are
-  rendered as `SplitLocation` cards
+- `currentSplitName` — the name of the split containing the first
+  not-yet-defeated required battle in the run's `defeatedBattles`, or the
+  last split if every required battle has been defeated
+- `currentSplit` — the split matching `currentSplitName`, whose locations
+  are rendered as `SplitLocation` cards
 - `levelCap` — the highest level Pokemon on the team of the current split's
   last battle (resolved for the run's chosen starter), shown below the
   split title

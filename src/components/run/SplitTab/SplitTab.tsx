@@ -24,12 +24,18 @@ const SplitTab: React.FC<SplitTabProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const currentSplit = game.splits.find((split) => split.name === run.split);
+    const currentSplitName = BattleProgressHelpers.getCurrentSplitName(
+        game,
+        run.defeatedBattles
+    );
+    const currentSplit = game.splits.find(
+        (split) => split.name === currentSplitName
+    );
     const levelCap = currentSplit
         ? BattleProgressHelpers.getLevelCap(currentSplit, run.starter)
         : null;
     const variant = StringHelpers.toSlug(game.name);
-    const badge = `/${variant}/badges/${StringHelpers.toSlug(run.split)}.png`;
+    const badge = `/${variant}/badges/${StringHelpers.toSlug(currentSplitName ?? '')}.png`;
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -42,7 +48,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
                     <Image alt="" fill src={badge} />
                 </div>
                 <div className={styles['title-group']}>
-                    <h2 className={styles.title}>{run.split} Split</h2>
+                    <h2 className={styles.title}>{currentSplitName} Split</h2>
                     {levelCap !== null && (
                         <span className={styles['level-cap']}>
                             Level Cap: {levelCap}

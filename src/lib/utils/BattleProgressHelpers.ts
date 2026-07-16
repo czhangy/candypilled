@@ -57,6 +57,29 @@ export default class BattleProgressHelpers {
         return position ? game.splits[position.splitIndex].name : null;
     }
 
+    static getCurrentSplitName(
+        game: Game,
+        defeatedBattles: string[]
+    ): string | null {
+        const requiredBattleKeys = game.splits.flatMap((split) =>
+            split.locations.flatMap((location) =>
+                LocationHelpers.getBattles(location)
+                    .filter((battle) => !battle.isOptional)
+                    .map((battle) => BattleHelpers.getKey(battle))
+            )
+        );
+
+        const nextRequiredBattleKey = requiredBattleKeys.find(
+            (battleKey) => !defeatedBattles.includes(battleKey)
+        );
+
+        if (!nextRequiredBattleKey) {
+            return game.splits[game.splits.length - 1]?.name ?? null;
+        }
+
+        return BattleProgressHelpers.getSplitName(game, nextRequiredBattleKey);
+    }
+
     static getBattle(game: Game, battleKey: string): Battle | null {
         const position = BattleProgressHelpers.getPosition(game, battleKey);
         if (!position) return null;

@@ -41,6 +41,12 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     const personalBestSplitName = run?.personalBest
         ? BattleProgressHelpers.getSplitName(game, run.personalBest)
         : null;
+    const currentSplitName = run
+        ? BattleProgressHelpers.getCurrentSplitName(game, run.defeatedBattles)
+        : null;
+    const boxCount = run?.caughtPokemon.length ?? null;
+    // TODO: death count is not tracked yet.
+    const deathCount = run ? 0 : null;
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -49,10 +55,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     const startNewRun = (starter: CaughtPokemon): void => {
         const newRun: Run = {
             attempt: (run?.attempt ?? 0) + 1,
-            deathCount: 0,
             defeatedBattles: [],
-            split: game.splits[0].name,
-            boxCount: 0,
             personalBest: run?.personalBest ?? '',
             hallOfFameCount: run?.hallOfFameCount ?? 0,
             starter: starter.name,
@@ -127,15 +130,17 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     <div className={styles.line}>
                         <span className={styles.split}>
                             <RunIcon />
-                            {run?.split ? `${run.split} Split` : '-'}
+                            {currentSplitName
+                                ? `${currentSplitName} Split`
+                                : '-'}
                         </span>
                         <span className={styles.boxes}>
                             <BoxIcon />
-                            {run?.boxCount ?? '-'}
+                            {boxCount ?? '-'}
                         </span>
                         <span className={styles.deaths}>
                             <SkullIcon />
-                            {run?.deathCount ?? '-'}
+                            {deathCount ?? '-'}
                         </span>
                     </div>
                     <hr className={styles.divider} />

@@ -36,9 +36,19 @@ starter before the run is created.
 - **On starter select** — closes the modal and writes a fresh run to
   storage for the game with the chosen starter's species and full details
   (as the first entry in `caughtPokemon`), incrementing the attempt
-  number, resetting box/death counts, and setting the split to the game's
-  first split, while carrying over the existing personal best and hall of
-  fame count, then navigates to the game's run page
+  number, while carrying over the existing personal best and hall of fame
+  count, then navigates to the game's run page
+
+## Computations
+
+- `currentSplitName` — the name of the split containing the first
+  not-yet-defeated required battle in the run's `defeatedBattles`, or the
+  last split if every required battle has been defeated; `null` if there
+  is no run
+- `boxCount` — the number of Pokemon in the run's `caughtPokemon`; `null`
+  if there is no run
+- `deathCount` — hardcoded to `0` for now since death tracking doesn't
+  exist yet; `null` if there is no run
 
 ## SCSS Variable Dependencies
 
