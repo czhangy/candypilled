@@ -187,7 +187,10 @@ export default class PokemonHelpers {
 
         const slugs: string[] = [];
         const collect = (step: EvolutionStep): void => {
-            slugs.push(step.name);
+            // A step's name is ambiguous when it doesn't resolve to its
+            // own entry (e.g. "wormadam"), so every matching form counts
+            // as part of the family, not just the (non-existent) bare name.
+            slugs.push(...PokemonHelpers.getFormOptions(step.name));
             step.evolvesTo.forEach(collect);
         };
         collect(fullLine);
