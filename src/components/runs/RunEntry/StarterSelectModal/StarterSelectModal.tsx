@@ -112,6 +112,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
                     <PokemonForm
                         allSpecies={[]}
                         defaultSpecies={chosenSpecies}
+                        disabledReason=""
                         generation={game.generation}
                         lockSpecies
                         onSubmit={handleFormSubmit}

@@ -21,6 +21,7 @@ interface PokemonFormProps {
     defaultMoves?: string[];
     defaultNature?: Nature;
     defaultSpecies: string;
+    disabledReason: string;
     generation: number;
     lockSpecies: boolean;
     onSubmit: (
@@ -45,6 +46,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     defaultMoves,
     defaultNature,
     defaultSpecies,
+    disabledReason,
     generation,
     lockSpecies,
     onSubmit,
@@ -379,7 +381,12 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
                 </div>
             )}
             <div className={styles.footer}>
-                <button className={styles['submit-button']} type="submit">
+                <button
+                    className={styles['submit-button']}
+                    disabled={!!disabledReason}
+                    title={disabledReason || undefined}
+                    type="submit"
+                >
                     {submitLabel}
                 </button>
             </div>

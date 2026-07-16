@@ -57,6 +57,7 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
                 defaultMoves={defaultMoves}
                 defaultNature={pokemon.nature}
                 defaultSpecies={pokemon.name}
+                disabledReason=""
                 generation={generation}
                 lockSpecies
                 onSubmit={onSubmit}

@@ -347,9 +347,11 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                         defaultLevel={rest.defaultLevel}
                         defaultLocation=""
                         defaultSpecies={defaultCatchSpecies}
+                        existingLocations={[]}
                         generation={generation}
                         onClose={handleCloseAddPokemonModal}
                         onSubmit={handleAddPokemon}
+                        realLocations={[]}
                         showLocation={false}
                     />
                 )}

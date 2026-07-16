@@ -29,7 +29,10 @@ the currently selected Pokemon on the right, taking up the remaining third.
   game generation
 - `allSpecies` — every species with a wild encounter in `game`, via
   `LocationHelpers.getAllEncounterSpecies`, offered in `AddPokemonModal`'s
-  Pokemon dropdown
+  Pokemon dropdown; also supplies its default species (the first entry)
+- `realLocations` — every location name in `game`, via
+  `LocationHelpers.getAllLocationNames`, passed to `AddPokemonModal` so
+  it can disable submitting a location that already exists in the game
 - `selectedCaughtPokemon` — the caught Pokemon whose location matches
   `selectedPokemon`, passed to `PokemonPreview`
 - `currentSplitName` / `currentSplit` — the run's current split, resolved
@@ -37,6 +40,8 @@ the currently selected Pokemon on the right, taking up the remaining third.
 - `levelCap` — the current split's level cap via
   `BattleProgressHelpers.getLevelCap`, passed to `PokemonBox` and
   `PokemonPreview` so over-leveled Pokemon can be flagged
+- `run.caughtPokemon`'s locations are passed to `AddPokemonModal` as
+  `existingLocations`, so it can disable submitting a duplicate location
 
 ## Handlers
 

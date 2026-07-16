@@ -12,6 +12,7 @@ interface AddPokemonModalProps {
     defaultLevel?: number;
     defaultLocation: string;
     defaultSpecies: string;
+    existingLocations: string[];
     generation: number;
     onClose: () => void;
     onSubmit: (
@@ -21,6 +22,7 @@ interface AddPokemonModalProps {
         >,
         location: string
     ) => void;
+    realLocations: string[];
     showLocation: boolean;
 }
 
@@ -30,9 +32,11 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
     defaultLevel,
     defaultLocation,
     defaultSpecies,
+    existingLocations,
     generation,
     onClose,
     onSubmit,
+    realLocations,
     showLocation,
 }) => {
     // -------------------------------------------------------------------------
@@ -61,6 +65,19 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
     };
 
     // -------------------------------------------------------------------------
+    // RENDERING
+    // -------------------------------------------------------------------------
+
+    const isDuplicateCaughtLocation =
+        showLocation && existingLocations.includes(location);
+    const isRealLocationName = showLocation && realLocations.includes(location);
+    const disabledReason = isDuplicateCaughtLocation
+        ? 'A Pokemon is already recorded at this location.'
+        : isRealLocationName
+          ? "This is a real location in the game — catch it from that location's Pokedex tile instead."
+          : '';
+
+    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
@@ -85,6 +102,7 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
                     allSpecies={allSpecies}
                     defaultLevel={defaultLevel}
                     defaultSpecies={defaultSpecies}
+                    disabledReason={disabledReason}
                     generation={generation}
                     lockSpecies={false}
                     onSubmit={handleFormSubmit}

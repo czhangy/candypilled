@@ -77,7 +77,7 @@
         transition: background 0.15s ease;
 
         @media (hover: hover) {
-            &:hover {
+            &:hover:not(:disabled) {
                 background: color-mix(
                     in srgb,
                     var(--accent-color) 85%,
@@ -88,6 +88,11 @@
 
         @media (prefers-reduced-motion: reduce) {
             transition: none;
+        }
+
+        &:disabled {
+            cursor: default;
+            opacity: 0.5;
         }
     }
 }

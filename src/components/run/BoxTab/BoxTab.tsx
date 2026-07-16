@@ -48,6 +48,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
 
     const variant = StringHelpers.toSlug(game.name);
     const allSpecies = LocationHelpers.getAllEncounterSpecies(game);
+    const realLocations = LocationHelpers.getAllLocationNames(game);
     const selectedCaughtPokemon = run.caughtPokemon.find(
         (caughtPokemon) => caughtPokemon.location === selectedPokemon
     );
@@ -189,9 +190,13 @@ const BoxTab: React.FC<BoxTabProps> = ({
                     allSpecies={allSpecies}
                     defaultLocation=""
                     defaultSpecies={allSpecies[0] ?? ''}
+                    existingLocations={run.caughtPokemon.map(
+                        (caughtPokemon) => caughtPokemon.location
+                    )}
                     generation={game.generation}
                     onClose={handleCloseAddPokemonModal}
                     onSubmit={handleAddPokemon}
+                    realLocations={realLocations}
                     showLocation
                 />
             )}
