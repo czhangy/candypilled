@@ -1,0 +1,21 @@
+@use '@/styles/mixins' as *;
+
+.add-pokemon-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+
+        .label {
+            @include form-label;
+        }
+
+        .input {
+            @include form-input;
+        }
+    }
+}

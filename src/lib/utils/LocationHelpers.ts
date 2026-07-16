@@ -69,6 +69,18 @@ export default class LocationHelpers {
         return [...names].sort((a, b) => a.localeCompare(b));
     }
 
+    // Every location name reachable from game.splits, deduped (the same
+    // location can be reused across splits).
+    static getAllLocationNames(game: Game): string[] {
+        const names = new Set(
+            game.splits.flatMap((split) =>
+                split.locations.map((location) => location.name)
+            )
+        );
+
+        return [...names];
+    }
+
     // Returns a copy of the location with the named subareas' battles hidden
     // (no markers/battle card/default-selection), without mutating the
     // original — for reusing the same location's data across splits that

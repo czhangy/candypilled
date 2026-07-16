@@ -23,36 +23,24 @@
     }
 
     .label {
-        @include uppercase-label;
-
-        font-size: 0.7rem;
+        @include form-label;
     }
 
     .input {
-        background: $background-light;
-        border: 1px solid $border-subtle;
-        border-radius: 0.375rem;
-        color: $foreground;
-        font: inherit;
-        padding: 0.5rem 0.6rem;
-
-        &:focus {
-            border-color: var(--accent-color);
-            outline: none;
-        }
+        @include form-input;
     }
 
-    .ivs {
+    .stat-grid {
         display: grid;
         gap: 0.6rem;
         grid-template-columns: repeat(3, 1fr);
 
-        .iv-field {
+        .stat-field {
             display: flex;
             flex-direction: column;
             gap: 0.3rem;
 
-            .iv-label {
+            .stat-field-label {
                 color: $text-mid;
                 font-size: 0.65rem;
             }
@@ -89,7 +77,7 @@
         transition: background 0.15s ease;
 
         @media (hover: hover) {
-            &:hover {
+            &:hover:not(:disabled) {
                 background: color-mix(
                     in srgb,
                     var(--accent-color) 85%,
@@ -100,6 +88,11 @@
 
         @media (prefers-reduced-motion: reduce) {
             transition: none;
+        }
+
+        &:disabled {
+            cursor: default;
+            opacity: 0.5;
         }
     }
 }

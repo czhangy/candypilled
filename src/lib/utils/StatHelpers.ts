@@ -7,6 +7,35 @@ export default class StatHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
+    static normalize(
+        stats: number | StatValues | undefined,
+        fallback: number
+    ): StatValues {
+        if (stats === undefined) {
+            return {
+                atk: fallback,
+                def: fallback,
+                hp: fallback,
+                spa: fallback,
+                spd: fallback,
+                spe: fallback,
+            };
+        }
+
+        if (typeof stats === 'number') {
+            return {
+                atk: stats,
+                def: stats,
+                hp: stats,
+                spa: stats,
+                spd: stats,
+                spe: stats,
+            };
+        }
+
+        return stats;
+    }
+
     static calculate(
         base: StatValues,
         level: number,

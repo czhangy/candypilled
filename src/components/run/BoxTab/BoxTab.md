@@ -18,14 +18,23 @@ the currently selected Pokemon on the right, taking up the remaining third.
 
 ## State
 
-| State  | Type      | Initial value | Description                                                   |
-| ------ | --------- | ------------- | ------------------------------------------------------------- |
-| `view` | `BoxView` | `'box'`       | Which of `PokemonBox`'s views ("box" or "graveyard") is shown |
+| State                   | Type      | Initial value | Description                                                   |
+| ----------------------- | --------- | ------------- | ------------------------------------------------------------- |
+| `isAddPokemonModalOpen` | `boolean` | `false`       | Whether `AddPokemonModal` is shown                            |
+| `view`                  | `BoxView` | `'box'`       | Which of `PokemonBox`'s views ("box" or "graveyard") is shown |
 
 ## Computations
 
 - `variant` — the game's slug, used to resolve sprite art for the correct
   game generation
+- `allSpecies` — every species introduced at or before `game.generation`
+  (via `PokemonHelpers.getAllSpecies`) that isn't already caught or in a
+  caught Pokemon's evolution line (via `PokemonHelpers.isSameEvolutionLine`
+  against every `run.caughtPokemon` entry), offered in `AddPokemonModal`'s
+  Pokemon dropdown; also supplies its default species (the first entry)
+- `realLocations` — every location name in `game`, via
+  `LocationHelpers.getAllLocationNames`, passed to `AddPokemonModal` so
+  it can disable submitting a location that already exists in the game
 - `selectedCaughtPokemon` — the caught Pokemon whose location matches
   `selectedPokemon`, passed to `PokemonPreview`
 - `currentSplitName` / `currentSplit` — the run's current split, resolved
@@ -33,13 +42,24 @@ the currently selected Pokemon on the right, taking up the remaining third.
 - `levelCap` — the current split's level cap via
   `BattleProgressHelpers.getLevelCap`, passed to `PokemonBox` and
   `PokemonPreview` so over-leveled Pokemon can be flagged
+- `run.caughtPokemon`'s locations are passed to `AddPokemonModal` as
+  `existingLocations`, so it can disable submitting a duplicate location
 
 ## Handlers
 
+- `handleAddPokemonClick` — opens `AddPokemonModal`
+- `handleCloseAddPokemonModal` — closes `AddPokemonModal`
+- `handleAddPokemon` — appends a new record (the submitted details, its
+  freeform location, an empty `heldItem`, and a `status` of
+  `PokemonStatus.Alive`) to `run.caughtPokemon`, saves the updated run,
+  and closes `AddPokemonModal`
 - `handleToggleStatus` — flips a caught Pokemon's `status` between
   `PokemonStatus.Alive` and `PokemonStatus.Dead`, saves the updated run,
   and switches `view` to the box the Pokemon now belongs in (`'graveyard'`
   if it was just killed, `'box'` if it was just revived)
+- `handleEditPokemon` — merges a caught Pokemon's edited details (ability,
+  EVs, IVs, level, moves, nature) into `run.caughtPokemon` and saves the
+  updated run
 - `handleEvolve` — updates a caught Pokemon's `name` to the confirmed
   evolution's species and saves the updated run
 - `handleViewChange` — sets `view` to the view clicked in `PokemonBox`'s

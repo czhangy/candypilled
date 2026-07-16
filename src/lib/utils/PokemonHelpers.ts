@@ -15,6 +15,23 @@ export default class PokemonHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
+    // Every species introduced by generation or earlier, excluding forms
+    // that can't actually persist as a caught Pokemon (e.g. Castform's
+    // weather forms), deduped and sorted alphabetically by display name.
+    static getAllSpecies(generation: number): string[] {
+        const names = new Set(
+            Object.values(POKEMON)
+                .filter(
+                    (pokemon) =>
+                        pokemon.introducedInGeneration <= generation &&
+                        !pokemon.isTemporaryForm
+                )
+                .map((pokemon) => pokemon.name)
+        );
+
+        return [...names].sort((a, b) => a.localeCompare(b));
+    }
+
     static get(name: string): PokemonData | undefined {
         const slug = StringHelpers.toSlug(name);
         if (POKEMON[slug]) return POKEMON[slug];

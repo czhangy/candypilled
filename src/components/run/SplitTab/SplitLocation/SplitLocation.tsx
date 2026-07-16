@@ -162,7 +162,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const handleAddPokemon = (
         details: Pick<
             BattlePokemon,
-            'ability' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
         >
     ): void => {
         const updatedRun: Run = {
@@ -171,7 +171,6 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                 ...run.caughtPokemon,
                 {
                     ...details,
-                    evs: { atk: 0, def: 0, hp: 0, spa: 0, spd: 0, spe: 0 },
                     heldItem: '',
                     location: location.name,
                     status: PokemonStatus.Alive,

@@ -1,8 +1,17 @@
 import { useState } from 'react';
+import AddPokemonModal from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/AddPokemonModal';
 import { PokemonStatus } from '@/lib/static/enums';
-import { BoxView, CaughtPokemon, Game, Run } from '@/lib/static/types';
+import {
+    BattlePokemon,
+    BoxView,
+    CaughtPokemon,
+    Game,
+    Run,
+} from '@/lib/static/types';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
+import LocationHelpers from '@/lib/utils/LocationHelpers';
+import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './BoxTab.module.scss';
 import PokemonBox from './PokemonBox/PokemonBox';
@@ -31,6 +40,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
     // STATE
     // -------------------------------------------------------------------------
 
+    const [isAddPokemonModalOpen, setIsAddPokemonModalOpen] = useState(false);
     const [view, setView] = useState<BoxView>('box');
 
     // -------------------------------------------------------------------------
@@ -38,6 +48,17 @@ const BoxTab: React.FC<BoxTabProps> = ({
     // -------------------------------------------------------------------------
 
     const variant = StringHelpers.toSlug(game.name);
+    const allSpecies = PokemonHelpers.getAllSpecies(game.generation).filter(
+        (species) =>
+            !run.caughtPokemon.some((caughtPokemon) =>
+                PokemonHelpers.isSameEvolutionLine(
+                    species,
+                    caughtPokemon.name,
+                    game.generation
+                )
+            )
+    );
+    const realLocations = LocationHelpers.getAllLocationNames(game);
     const selectedCaughtPokemon = run.caughtPokemon.find(
         (caughtPokemon) => caughtPokemon.location === selectedPokemon
     );
@@ -56,6 +77,38 @@ const BoxTab: React.FC<BoxTabProps> = ({
     // HANDLERS
     // -------------------------------------------------------------------------
 
+    const handleAddPokemonClick = (): void => {
+        setIsAddPokemonModalOpen(true);
+    };
+
+    const handleCloseAddPokemonModal = (): void => {
+        setIsAddPokemonModalOpen(false);
+    };
+
+    const handleAddPokemon = (
+        details: Pick<
+            BattlePokemon,
+            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+        >,
+        location: string
+    ): void => {
+        const updatedRun: Run = {
+            ...run,
+            caughtPokemon: [
+                ...run.caughtPokemon,
+                {
+                    ...details,
+                    heldItem: '',
+                    location,
+                    status: PokemonStatus.Alive,
+                },
+            ],
+        };
+
+        LocalStorageHelpers.saveRun(game, updatedRun);
+        setIsAddPokemonModalOpen(false);
+    };
+
     const handleToggleStatus = (pokemon: CaughtPokemon): void => {
         const newStatus =
             pokemon.status === PokemonStatus.Dead
@@ -73,6 +126,25 @@ const BoxTab: React.FC<BoxTabProps> = ({
 
         LocalStorageHelpers.saveRun(game, updatedRun);
         setView(newStatus === PokemonStatus.Dead ? 'graveyard' : 'box');
+    };
+
+    const handleEditPokemon = (
+        pokemon: CaughtPokemon,
+        details: Pick<
+            BattlePokemon,
+            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+        >
+    ): void => {
+        const updatedRun: Run = {
+            ...run,
+            caughtPokemon: run.caughtPokemon.map((caughtPokemon) =>
+                caughtPokemon.location === pokemon.location
+                    ? { ...caughtPokemon, ...details }
+                    : caughtPokemon
+            ),
+        };
+
+        LocalStorageHelpers.saveRun(game, updatedRun);
     };
 
     const handleEvolve = (pokemon: CaughtPokemon, newName: string): void => {
@@ -102,6 +174,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
             <PokemonBox
                 caughtPokemon={run.caughtPokemon}
                 levelCap={levelCap}
+                onAddPokemonClick={handleAddPokemonClick}
                 onSelectPokemon={onSelectPokemon}
                 onViewChange={handleViewChange}
                 selectedPokemon={selectedPokemon}
@@ -112,13 +185,31 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 accentColor={game.accentColor}
                 generation={game.generation}
                 levelCap={levelCap}
+                onEdit={handleEditPokemon}
                 onEvolve={handleEvolve}
                 onSelectAbility={onSelectAbility}
                 onSelectMove={onSelectMove}
                 onToggleStatus={handleToggleStatus}
                 pokemon={selectedCaughtPokemon}
                 variant={variant}
+                view={view}
             />
+            {isAddPokemonModalOpen && (
+                <AddPokemonModal
+                    accentColor={game.accentColor}
+                    allSpecies={allSpecies}
+                    defaultLocation=""
+                    defaultSpecies={allSpecies[0] ?? ''}
+                    existingLocations={run.caughtPokemon.map(
+                        (caughtPokemon) => caughtPokemon.location
+                    )}
+                    generation={game.generation}
+                    onClose={handleCloseAddPokemonModal}
+                    onSubmit={handleAddPokemon}
+                    realLocations={realLocations}
+                    showLocation
+                />
+            )}
         </div>
     );
 };

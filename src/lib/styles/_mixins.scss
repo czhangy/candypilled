@@ -1,5 +1,25 @@
 @use '@/styles/constants' as *;
 
+@mixin form-input {
+    background: $background-light;
+    border: 1px solid $border-subtle;
+    border-radius: 0.375rem;
+    color: $foreground;
+    font: inherit;
+    padding: 0.5rem 0.6rem;
+
+    &:focus {
+        border-color: var(--accent-color);
+        outline: none;
+    }
+}
+
+@mixin form-label {
+    @include uppercase-label;
+
+    font-size: 0.7rem;
+}
+
 @mixin full-height {
     flex: 1;
 }
@@ -7,6 +27,26 @@
 @mixin mono-label {
     font-family: $font-mono;
     font-weight: 700;
+}
+
+@mixin outline-button($color) {
+    background: none;
+    border: 1px solid $color;
+    color: $color;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+
+    @media (hover: hover) {
+        &:hover {
+            background: $color;
+            color: $foreground;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
 }
 
 @mixin scrollbar {

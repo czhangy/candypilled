@@ -2,21 +2,23 @@
 
 A grid of the Pokemon caught during the current run, showing each one's
 sprite. The header toggles between two views: "Box", showing every living
-Pokemon, and "Graveyard", showing only those marked as dead. Clicking a
-slot selects that Pokemon. Pokemon above the current split's level cap
-are greyed out, but remain clickable.
+Pokemon, and "Graveyard", showing only those marked as dead; while
+viewing the box, an "Add Pokemon" button sits at the header's right edge.
+Clicking a slot selects that Pokemon. Pokemon above the current split's
+level cap are greyed out, but remain clickable.
 
 ## Props
 
-| Prop              | Type                         | Required | Default | Description                                                          |
-| ----------------- | ---------------------------- | -------- | ------- | -------------------------------------------------------------------- |
-| `caughtPokemon`   | `CaughtPokemon[]`            | Yes      | -       | The Pokemon caught during the run, one per box slot                  |
-| `levelCap`        | `number \| null`             | Yes      | -       | The current split's level cap, used to grey out over-leveled Pokemon |
-| `onSelectPokemon` | `(location: string) => void` | Yes      | -       | Called with a Pokemon's location when its slot is clicked            |
-| `onViewChange`    | `(view: BoxView) => void`    | Yes      | -       | Called with the clicked header button's view                         |
-| `selectedPokemon` | `string`                     | No       | -       | The location of the currently selected caught Pokemon, if any        |
-| `variant`         | `string`                     | Yes      | -       | The game slug used to resolve each Pokemon's sprite art              |
-| `view`            | `BoxView`                    | Yes      | -       | Which set of caught Pokemon is currently shown                       |
+| Prop                | Type                         | Required | Default | Description                                                                  |
+| ------------------- | ---------------------------- | -------- | ------- | ---------------------------------------------------------------------------- |
+| `caughtPokemon`     | `CaughtPokemon[]`            | Yes      | -       | The Pokemon caught during the run, one per box slot                          |
+| `levelCap`          | `number \| null`             | Yes      | -       | The current split's level cap, used to grey out over-leveled Pokemon         |
+| `onAddPokemonClick` | `() => void`                 | Yes      | -       | Called when the "Add Pokemon" button is clicked (only shown in the box view) |
+| `onSelectPokemon`   | `(location: string) => void` | Yes      | -       | Called with a Pokemon's location when its slot is clicked                    |
+| `onViewChange`      | `(view: BoxView) => void`    | Yes      | -       | Called with the clicked header button's view                                 |
+| `selectedPokemon`   | `string`                     | No       | -       | The location of the currently selected caught Pokemon, if any                |
+| `variant`           | `string`                     | Yes      | -       | The game slug used to resolve each Pokemon's sprite art                      |
+| `view`              | `BoxView`                    | Yes      | -       | Which set of caught Pokemon is currently shown                               |
 
 ## Computations
 

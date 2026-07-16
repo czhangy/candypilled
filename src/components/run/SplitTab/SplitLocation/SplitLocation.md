@@ -120,9 +120,9 @@ The root element's `id` is `StringHelpers.toSlug(location.name)`, so
 - **On Pokedex tile evolution line click** — sets `speciesOverride` to
   the clicked species, without changing `selectedEncounter`
 - **On Pokedex tile "Add Pokemon" submit** — appends a record (the
-  submitted details, this location's name, zeroed `evs`, an empty
-  `heldItem`, and a `status` of `PokemonStatus.Alive`) to the run's
-  `caughtPokemon` in storage
+  submitted details, this location's name, an empty `heldItem`, and a
+  `status` of `PokemonStatus.Alive`) to the run's `caughtPokemon` in
+  storage
 - **On Pokedex tile catch button click while caught here** — removes
   this location's record from the run's `caughtPokemon` in storage
 - **On "Add Pokemon" submit** — also removes `location.name` from the

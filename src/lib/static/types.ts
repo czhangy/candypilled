@@ -252,6 +252,12 @@ export interface LearnsetByGeneration {
 
 export interface PokemonData {
     name: string;
+    introducedInGeneration: number;
+    // PokeAPI's is_battle_only form flag doesn't cover every form that
+    // can't actually persist in a box (e.g. Shaymin's Sky Forme reverts to
+    // Land Forme on deposit), so this is curated separately rather than
+    // derived from any single API field.
+    isTemporaryForm: boolean;
     sprites: Record<string, string>;
     types: TypesByGeneration[];
     abilities: AbilitiesByGeneration[];
