@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import Modal from '@/components/common/Modal/Modal';
+import PokemonForm from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/PokemonForm/PokemonForm';
 import PokedexTile from '@/components/run/SplitTab/SplitLocation/PokedexTile/PokedexTile';
-import { Game } from '@/lib/static/types';
+import { BattlePokemon, CaughtPokemon, Game } from '@/lib/static/types';
+import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import StarterSelect from './StarterSelect/StarterSelect';
 import styles from './StarterSelectModal.module.scss';
@@ -11,7 +13,7 @@ import styles from './StarterSelectModal.module.scss';
 interface StarterSelectModalProps {
     game: Game;
     onClose: () => void;
-    onSelect: (starter: string) => void;
+    onSelect: (starter: CaughtPokemon) => void;
 }
 
 const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
@@ -20,6 +22,12 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
     onSelect,
 }) => {
     // -------------------------------------------------------------------------
+    // CONSTANTS
+    // -------------------------------------------------------------------------
+
+    const STARTER_LOCATION = 'Starter';
+
+    // -------------------------------------------------------------------------
     // STATE
     // -------------------------------------------------------------------------
 
@@ -27,12 +35,16 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
     const [speciesOverride, setSpeciesOverride] = useState<string | undefined>(
         undefined
     );
+    const [chosenSpecies, setChosenSpecies] = useState<string | null>(null);
 
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
     const variant = StringHelpers.toSlug(game.name);
+    const chosenSpeciesName = chosenSpecies
+        ? (PokemonHelpers.get(chosenSpecies)?.name ?? chosenSpecies)
+        : null;
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -51,6 +63,23 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
 
     const handleSelectMove = (): void => {};
 
+    const handleSpeciesConfirm = (species: string): void => {
+        setChosenSpecies(species);
+    };
+
+    const handleBackClick = (): void => {
+        setChosenSpecies(null);
+    };
+
+    const handleFormSubmit = (
+        details: Pick<
+            BattlePokemon,
+            'ability' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+        >
+    ): void => {
+        onSelect({ ...details, location: STARTER_LOCATION });
+    };
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -60,31 +89,54 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
             accentColor={game.accentColor}
             maxWidth="41rem"
             onClose={onClose}
-            title="Choose your starter"
+            title={chosenSpeciesName ?? 'Choose your starter'}
         >
-            <div className={styles['starter-select-modal']}>
-                <div className={styles['starter-column']}>
-                    <StarterSelect
-                        onSelect={handleStarterSelect}
-                        selected={activeStarter}
-                        starters={game.starters}
+            {chosenSpecies ? (
+                <div className={styles['starter-form']}>
+                    <button
+                        className={styles.back}
+                        onClick={handleBackClick}
+                        type="button"
+                    >
+                        ← Back
+                    </button>
+                    <PokemonForm
+                        allSpecies={[]}
+                        defaultSpecies={chosenSpecies}
+                        generation={game.generation}
+                        lockSpecies
+                        onSubmit={handleFormSubmit}
+                        showAbility={false}
+                        showLevel={false}
+                        showMoves={false}
+                        submitLabel="Confirm"
+                    />
+                </div>
+            ) : (
+                <div className={styles['starter-select-modal']}>
+                    <div className={styles['starter-column']}>
+                        <StarterSelect
+                            onSelect={handleStarterSelect}
+                            selected={activeStarter}
+                            starters={game.starters}
+                            variant={variant}
+                        />
+                    </div>
+                    <PokedexTile
+                        game={game}
+                        generation={game.generation}
+                        mode="select"
+                        onSelect={handleSpeciesConfirm}
+                        onSelectAbility={handleSelectAbility}
+                        onSelectMove={handleSelectMove}
+                        onSelectSpecies={handleSelectSpecies}
+                        originalSpecies={activeStarter ?? undefined}
+                        species={speciesOverride ?? activeStarter ?? undefined}
+                        usedLocations={[]}
                         variant={variant}
                     />
                 </div>
-                <PokedexTile
-                    game={game}
-                    generation={game.generation}
-                    mode="select"
-                    onSelect={onSelect}
-                    onSelectAbility={handleSelectAbility}
-                    onSelectMove={handleSelectMove}
-                    onSelectSpecies={handleSelectSpecies}
-                    originalSpecies={activeStarter ?? undefined}
-                    species={speciesOverride ?? activeStarter ?? undefined}
-                    usedLocations={[]}
-                    variant={variant}
-                />
-            </div>
+            )}
         </Modal>
     );
 };

@@ -34,7 +34,8 @@ starter before the run is created.
 - **On starter select modal close/cancel** — closes the modal without
   starting a new run
 - **On starter select** — closes the modal and writes a fresh run to
-  storage for the game with the chosen starter (incrementing the attempt
+  storage for the game with the chosen starter's species and full details
+  (as the first entry in `caughtPokemon`), incrementing the attempt
   number, resetting box/death counts, and setting the split to the game's
   first split, while carrying over the existing personal best and hall of
-  fame count), then navigates to the game's run page
+  fame count, then navigates to the game's run page

@@ -1,4 +1,5 @@
 import { Nature } from '@/lib/static/enums';
+import { StatValues } from '@/lib/static/types';
 
 interface NatureEffect {
     increased: string;
@@ -17,9 +18,32 @@ export default class NatureHelpers {
         return `[+${effect.increased} -${effect.decreased}]`;
     }
 
+    // The multiplier a nature applies to a given stat: 1.1 when boosted,
+    // 0.9 when hindered, 1 otherwise. HP is never affected by nature.
+    static getModifier(
+        nature: Nature | undefined,
+        stat: keyof StatValues
+    ): number {
+        const effect = nature ? NatureHelpers.EFFECTS[nature] : undefined;
+        if (!effect) return 1;
+
+        if (NatureHelpers.LABEL_TO_STAT[effect.increased] === stat) return 1.1;
+        if (NatureHelpers.LABEL_TO_STAT[effect.decreased] === stat) return 0.9;
+
+        return 1;
+    }
+
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------
+
+    private static readonly LABEL_TO_STAT: Record<string, keyof StatValues> = {
+        Atk: 'atk',
+        Def: 'def',
+        SpA: 'spa',
+        SpD: 'spd',
+        Spe: 'spe',
+    };
 
     private static readonly EFFECTS: Partial<Record<Nature, NatureEffect>> = {
         [Nature.Adamant]: { increased: 'Atk', decreased: 'SpA' },

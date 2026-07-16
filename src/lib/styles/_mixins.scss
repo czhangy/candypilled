@@ -9,6 +9,30 @@
     font-weight: 700;
 }
 
+@mixin scrollbar {
+    scrollbar-color: $border-subtle transparent;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        width: 0.5rem;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $border-subtle;
+        border-radius: 0.25rem;
+
+        @media (hover: hover) {
+            &:hover {
+                background: $text-dim;
+            }
+        }
+    }
+}
+
 @mixin sprite {
     height: 5rem;
     image-rendering: pixelated;

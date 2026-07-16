@@ -13,6 +13,7 @@ import styles from './PokedexTile.module.scss';
 
 type PokedexTileProps = (
     | {
+          defaultLevel?: number;
           dupes: string[];
           encounter?: string;
           isLocationMissed: boolean;
@@ -90,7 +91,12 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
 
     const handleCatchButtonClick = (): void => {
         if (rest.mode === 'select') {
-            if (pokemon) rest.onSelect(pokemon.name);
+            if (defaultCatchSpecies) {
+                rest.onSelect(
+                    PokemonHelpers.get(defaultCatchSpecies)?.name ??
+                        defaultCatchSpecies
+                );
+            }
         } else if (isCaughtHere) {
             rest.onRemovePokemon();
         } else {
@@ -183,6 +189,25 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     return (
         <div className={styles['pokedex-tile']}>
             <div className={styles.header}>Pokedex</div>
+            {pokemon && (
+                <button
+                    className={[
+                        styles['catch-button'],
+                        isCaughtHere && styles['catch-button--caught'],
+                    ]
+                        .filter(Boolean)
+                        .join(' ')}
+                    disabled={isCatchDisabled}
+                    onClick={handleCatchButtonClick}
+                    type="button"
+                >
+                    {rest.mode === 'select'
+                        ? 'SELECT'
+                        : isCaughtHere
+                          ? 'CAUGHT'
+                          : 'CATCH'}
+                </button>
+            )}
             <div
                 className={[
                     styles.content,
@@ -237,32 +262,56 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                                         <div
                                             className={styles['abilities-list']}
                                         >
-                                            {abilityEntries.map((entry) => (
-                                                <button
-                                                    className={[
-                                                        styles.ability,
-                                                        entry.hidden &&
+                                            {abilityEntries.map((entry) =>
+                                                rest.mode === 'select' ? (
+                                                    <span
+                                                        className={[
+                                                            styles.ability,
                                                             styles[
-                                                                'ability--hidden'
+                                                                'ability--static'
                                                             ],
-                                                    ]
-                                                        .filter(Boolean)
-                                                        .join(' ')}
-                                                    key={entry.name}
-                                                    onClick={() =>
-                                                        handleAbilityClick(
+                                                            entry.hidden &&
+                                                                styles[
+                                                                    'ability--hidden'
+                                                                ],
+                                                        ]
+                                                            .filter(Boolean)
+                                                            .join(' ')}
+                                                        key={entry.name}
+                                                    >
+                                                        {StringHelpers.toTitleCase(
                                                             entry.name
-                                                        )
-                                                    }
-                                                    type="button"
-                                                >
-                                                    {StringHelpers.toTitleCase(
-                                                        entry.name
-                                                    )}
-                                                    {entry.hidden &&
-                                                        ' (Hidden)'}
-                                                </button>
-                                            ))}
+                                                        )}
+                                                        {entry.hidden &&
+                                                            ' (Hidden)'}
+                                                    </span>
+                                                ) : (
+                                                    <button
+                                                        className={[
+                                                            styles.ability,
+                                                            entry.hidden &&
+                                                                styles[
+                                                                    'ability--hidden'
+                                                                ],
+                                                        ]
+                                                            .filter(Boolean)
+                                                            .join(' ')}
+                                                        key={entry.name}
+                                                        onClick={() =>
+                                                            handleAbilityClick(
+                                                                entry.name
+                                                            )
+                                                        }
+                                                        type="button"
+                                                    >
+                                                        {StringHelpers.toTitleCase(
+                                                            entry.name
+                                                        )}
+                                                        {entry.hidden &&
+                                                            ' (Hidden)'}
+                                                    </button>
+                                                )
+                                            )}
                                         </div>
                                     </div>
                                 )}
@@ -291,25 +340,6 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     </span>
                 )}
             </div>
-            {pokemon && (
-                <button
-                    className={[
-                        styles['catch-button'],
-                        isCaughtHere && styles['catch-button--caught'],
-                    ]
-                        .filter(Boolean)
-                        .join(' ')}
-                    disabled={isCatchDisabled}
-                    onClick={handleCatchButtonClick}
-                    type="button"
-                >
-                    {rest.mode === 'select'
-                        ? 'SELECT'
-                        : isCaughtHere
-                          ? 'CAUGHT'
-                          : 'CATCH'}
-                </button>
-            )}
             {rest.mode === 'catch' &&
                 isAddPokemonModalOpen &&
                 defaultCatchSpecies && (
@@ -318,6 +348,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                         allSpecies={LocationHelpers.getAllEncounterSpecies(
                             game
                         )}
+                        defaultLevel={rest.defaultLevel}
                         defaultSpecies={defaultCatchSpecies}
                         generation={generation}
                         onClose={handleCloseAddPokemonModal}
@@ -355,39 +386,58 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
             )}
             {pokemon && (
                 <div className={styles.details}>
-                    <div className={styles['details-tabs']}>
-                        <button
-                            aria-pressed={activeDetailTab === 'learnset'}
-                            className={[
-                                styles['details-tab'],
-                                activeDetailTab === 'learnset' &&
+                    {rest.mode === 'select' ? (
+                        <div className={styles['details-tabs']}>
+                            <span
+                                className={[
+                                    styles['details-tab'],
                                     styles['details-tab--active'],
-                            ]
-                                .filter(Boolean)
-                                .join(' ')}
-                            onClick={() => handleDetailTabChange('learnset')}
-                            type="button"
-                        >
-                            Learnset
-                        </button>
-                        <button
-                            aria-pressed={activeDetailTab === 'locations'}
-                            className={[
-                                styles['details-tab'],
-                                activeDetailTab === 'locations' &&
-                                    styles['details-tab--active'],
-                            ]
-                                .filter(Boolean)
-                                .join(' ')}
-                            onClick={() => handleDetailTabChange('locations')}
-                            type="button"
-                        >
-                            Locations
-                        </button>
-                    </div>
-                    {activeDetailTab === 'learnset' ? (
+                                ].join(' ')}
+                            >
+                                Learnset
+                            </span>
+                        </div>
+                    ) : (
+                        <div className={styles['details-tabs']}>
+                            <button
+                                aria-pressed={activeDetailTab === 'learnset'}
+                                className={[
+                                    styles['details-tab'],
+                                    activeDetailTab === 'learnset' &&
+                                        styles['details-tab--active'],
+                                ]
+                                    .filter(Boolean)
+                                    .join(' ')}
+                                onClick={() =>
+                                    handleDetailTabChange('learnset')
+                                }
+                                type="button"
+                            >
+                                Learnset
+                            </button>
+                            <button
+                                aria-pressed={activeDetailTab === 'locations'}
+                                className={[
+                                    styles['details-tab'],
+                                    activeDetailTab === 'locations' &&
+                                        styles['details-tab--active'],
+                                ]
+                                    .filter(Boolean)
+                                    .join(' ')}
+                                onClick={() =>
+                                    handleDetailTabChange('locations')
+                                }
+                                type="button"
+                            >
+                                Locations
+                            </button>
+                        </div>
+                    )}
+                    {rest.mode === 'select' ||
+                    activeDetailTab === 'learnset' ? (
                         <LearnsetList
                             generation={generation}
+                            interactive={rest.mode !== 'select'}
                             moves={learnset ?? []}
                             onSelectMove={onSelectMove}
                         />

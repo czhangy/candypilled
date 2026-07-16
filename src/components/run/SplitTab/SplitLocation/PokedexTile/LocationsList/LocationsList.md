@@ -21,3 +21,8 @@ list is empty.
   ascending
 - `getLevelLabel` — an encounter's level range formatted as `Lv. N` for a
   single level, or `Lv. N-M` for a range
+- `isUsed` — whether a location's name is in `usedLocations`, matching
+  either exactly or on its base-name prefix (`"Location (Subarea)"`
+  against a `usedLocations` entry of `"Location"`), since `usedLocations`
+  always stores a location's base name even when the row being checked
+  is subarea-qualified
