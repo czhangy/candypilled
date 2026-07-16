@@ -20,6 +20,7 @@
             position: sticky;
             top: calc(var(--sticky-offset) + 2.5rem);
             width: 12rem;
+            z-index: 2;
 
             .badge {
                 height: 10rem;
@@ -47,6 +48,35 @@
                 list-style: none;
                 margin: 0;
                 padding: 0;
+
+                li {
+                    align-items: center;
+                    display: flex;
+                    gap: 0.4rem;
+                }
+
+                .caught-icon {
+                    flex-shrink: 0;
+                    height: 0.9rem;
+                    position: relative;
+                    width: 0.9rem;
+
+                    &--missed {
+                        &::after {
+                            background: $red;
+                            content: '';
+                            inset: 0;
+                            mask-image: url('/common/premier-ball.png');
+                            mask-image: url('/common/premier-ball.png');
+                            mask-repeat: no-repeat;
+                            mask-repeat: no-repeat;
+                            mask-size: contain;
+                            mask-size: contain;
+                            mix-blend-mode: color;
+                            position: absolute;
+                        }
+                    }
+                }
 
                 .toc-link {
                     color: $text-dim;

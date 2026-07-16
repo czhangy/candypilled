@@ -16,7 +16,7 @@ const HomePage: React.FC = () => {
                         alt=""
                         className={styles.candy}
                         height={96}
-                        src="/candy.png"
+                        src="/common/candy.png"
                         width={96}
                     />
                     <div className={styles.text}>

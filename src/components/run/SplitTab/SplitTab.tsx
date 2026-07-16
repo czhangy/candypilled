@@ -1,7 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { Game, Run } from '@/lib/static/types';
+import Tooltip from '@/components/common/Tooltip/Tooltip';
+import { Game, Location, Run } from '@/lib/static/types';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import SplitLocation from './SplitLocation/SplitLocation';
@@ -37,6 +38,26 @@ const SplitTab: React.FC<SplitTabProps> = ({
     const badge = `/${variant}/badges/${StringHelpers.toSlug(currentSplitName ?? '')}.png`;
 
     // -------------------------------------------------------------------------
+    // COMPUTATIONS
+    // -------------------------------------------------------------------------
+
+    const isLocationCaught = (locationName: string): boolean =>
+        run.caughtPokemon.some((caught) => caught.location === locationName);
+
+    const isLocationMissed = (locationName: string): boolean =>
+        run.missedLocations.includes(locationName);
+
+    const hasEncounters = (location: Location): boolean => {
+        const encountersKeys = location.subareas
+            ? location.subareas.map((subarea) => subarea.encountersKey)
+            : [location.encountersKey];
+
+        return encountersKeys.some(
+            (key) => key && (game.encounters[key]?.encounters.length ?? 0) > 0
+        );
+    };
+
+    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
@@ -56,16 +77,59 @@ const SplitTab: React.FC<SplitTabProps> = ({
                     </div>
                     <span className={styles['toc-label']}>Locations</span>
                     <ul className={styles['toc-list']}>
-                        {currentSplit?.locations.map((location) => (
-                            <li key={location.name}>
-                                <a
-                                    className={styles['toc-link']}
-                                    href={`#${StringHelpers.toSlug(location.name)}`}
-                                >
-                                    {location.name}
-                                </a>
-                            </li>
-                        ))}
+                        {currentSplit?.locations.map((location) => {
+                            const caught = isLocationCaught(location.name);
+                            const missed = isLocationMissed(location.name);
+
+                            return (
+                                <li key={location.name}>
+                                    {hasEncounters(location) ? (
+                                        <Tooltip
+                                            position="left"
+                                            text={
+                                                caught
+                                                    ? 'This encounter has been taken'
+                                                    : missed
+                                                      ? 'This encounter was missed'
+                                                      : "This encounter hasn't been taken"
+                                            }
+                                        >
+                                            <span
+                                                className={[
+                                                    styles['caught-icon'],
+                                                    missed &&
+                                                        styles[
+                                                            'caught-icon--missed'
+                                                        ],
+                                                ]
+                                                    .filter(Boolean)
+                                                    .join(' ')}
+                                            >
+                                                <Image
+                                                    alt=""
+                                                    fill
+                                                    src={
+                                                        caught
+                                                            ? '/common/poke-ball.png'
+                                                            : '/common/premier-ball.png'
+                                                    }
+                                                />
+                                            </span>
+                                        </Tooltip>
+                                    ) : (
+                                        <span
+                                            className={styles['caught-icon']}
+                                        />
+                                    )}
+                                    <a
+                                        className={styles['toc-link']}
+                                        href={`#${StringHelpers.toSlug(location.name)}`}
+                                    >
+                                        {location.name}
+                                    </a>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </nav>
                 <div className={styles.locations}>

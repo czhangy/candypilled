@@ -1,0 +1,51 @@
+@use 'sass:color';
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.tooltip {
+    display: inline-flex;
+    position: relative;
+
+    .bubble {
+        background: color.adjust($background, $lightness: 8%);
+        border: 1px solid $border-subtle;
+        border-radius: 0.25rem;
+        bottom: calc(100% + 0.3rem);
+        color: $foreground;
+        font-size: 0.8rem;
+        letter-spacing: 0;
+        opacity: 0;
+        padding: 0.2rem 0.4rem;
+        pointer-events: none;
+        position: absolute;
+        text-transform: none;
+        transition: opacity 0.2s ease;
+        white-space: nowrap;
+        z-index: 90;
+
+        &--center {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &--left {
+            left: 0;
+        }
+
+        &--right {
+            right: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            .bubble {
+                opacity: 1;
+            }
+        }
+    }
+}

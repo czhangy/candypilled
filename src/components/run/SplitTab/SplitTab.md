@@ -28,4 +28,22 @@ via an in-page anchor link.
 
 Each table of contents entry links to `#{slug}`, where `slug` is
 `StringHelpers.toSlug(location.name)` — the same id `SplitLocation` sets on
-its own root element.
+its own root element. Each entry for a location with at least one encounter
+is also preceded by a pokeball icon, with a `Tooltip` reporting the same
+status on hover:
+
+- Poké Ball — the location's encounter has been taken
+- Premier Ball — the location's encounter hasn't been taken or missed yet
+- Premier Ball, red — the location's encounter was missed
+
+Locations with no encounters at all (no `encountersKey` on the location or
+any of its subareas) show no icon, but reserve the same space so entries
+stay aligned.
+
+- `isLocationCaught` — whether `run.caughtPokemon` contains an entry caught
+  at the given location name
+- `isLocationMissed` — whether `run.missedLocations` contains the given
+  location name
+- `hasEncounters` — whether a location (or, if it has subareas, any of its
+  subareas) has an `encountersKey` resolving to a non-empty encounter list
+  in `game.encounters`
