@@ -25,6 +25,7 @@ const OREBURGH_MINE: Location = {
                     team: [
                         {
                             name: 'Geodude',
+                            ability: 1,
                             level: 9,
                             moves: [
                                 'Tackle',
@@ -45,12 +46,14 @@ const OREBURGH_MINE: Location = {
                     team: [
                         {
                             name: 'Geodude',
+                            ability: 1,
                             level: 6,
                             moves: ['Tackle', 'Defense Curl', 'Mud Sport'],
                             nature: Nature.Naughty,
                         },
                         {
                             name: 'Machop',
+                            ability: 1,
                             level: 8,
                             moves: ['Low Kick', 'Leer', 'Focus Energy'],
                             nature: Nature.Timid,

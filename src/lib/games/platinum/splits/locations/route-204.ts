@@ -16,6 +16,7 @@ const ROUTE_204: Location = {
                     team: [
                         {
                             name: 'Shinx',
+                            ability: 1,
                             level: 7,
                             moves: ['Tackle', 'Leer'],
                             nature: Nature.Hardy,
@@ -31,6 +32,7 @@ const ROUTE_204: Location = {
                     team: [
                         {
                             name: 'Magikarp',
+                            ability: 1,
                             level: 8,
                             moves: ['Splash', 'Tackle', 'Flail'],
                             nature: Nature.Sassy,
@@ -46,6 +48,7 @@ const ROUTE_204: Location = {
                     team: [
                         {
                             name: 'Budew',
+                            ability: 1,
                             level: 7,
                             moves: ['Absorb', 'Growth', 'Water Sport'],
                             nature: Nature.Docile,
@@ -67,12 +70,14 @@ const ROUTE_204: Location = {
                     team: [
                         {
                             name: 'Budew',
+                            ability: 1,
                             level: 9,
                             moves: ['Absorb', 'Growth', 'Water Sport'],
                             nature: Nature.Bashful,
                         },
                         {
                             name: 'Cherubi',
+                            ability: 1,
                             level: 11,
                             moves: ['Tackle', 'Growth', 'Leech Seed'],
                             nature: Nature.Docile,
@@ -88,12 +93,14 @@ const ROUTE_204: Location = {
                     team: [
                         {
                             name: 'Wurmple',
+                            ability: 1,
                             level: 10,
                             moves: ['Tackle', 'String Shot', 'Poison Sting'],
                             nature: Nature.Quirky,
                         },
                         {
                             name: 'Kricketot',
+                            ability: 1,
                             level: 11,
                             moves: ['Growl', 'Bide'],
                             nature: Nature.Modest,
@@ -110,12 +117,14 @@ const ROUTE_204: Location = {
                     team: [
                         {
                             name: 'Pachirisu',
+                            ability: 1,
                             level: 9,
                             moves: ['Growl', 'Bide', 'Quick Attack', 'Charm'],
                             nature: Nature.Brave,
                         },
                         {
                             name: 'Pachirisu',
+                            ability: 1,
                             level: 9,
                             moves: ['Growl', 'Bide', 'Quick Attack', 'Charm'],
                             nature: Nature.Brave,

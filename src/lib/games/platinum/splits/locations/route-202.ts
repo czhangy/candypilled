@@ -13,6 +13,7 @@ const ROUTE_202: Location = {
             team: [
                 {
                     name: 'Starly',
+                    ability: 1,
                     level: 5,
                     moves: ['Tackle', 'Growl', 'Quick Attack'],
                     nature: Nature.Careful,
@@ -27,6 +28,7 @@ const ROUTE_202: Location = {
             team: [
                 {
                     name: 'Bidoof',
+                    ability: 1,
                     level: 5,
                     moves: ['Tackle', 'Growl'],
                     nature: Nature.Quiet,
@@ -41,6 +43,7 @@ const ROUTE_202: Location = {
             team: [
                 {
                     name: 'Burmy',
+                    ability: 1,
                     level: 5,
                     moves: ['Tackle', 'Bug Bite', 'Hidden Power'],
                     nature: Nature.Impish,

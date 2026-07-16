@@ -50,9 +50,11 @@ const BattleCard: React.FC<BattleCardProps> = ({
         PokemonHelpers.getTypes(name, generation) ?? [];
 
     const getAbility = (pokemon: BattlePokemon): string | undefined => {
-        const ability =
-            pokemon.ability ??
-            PokemonHelpers.getAbilities(pokemon.name, generation)?.slot1;
+        const ability = PokemonHelpers.getAbilityName(
+            pokemon.name,
+            generation,
+            pokemon.ability
+        );
         return ability && StringHelpers.toTitleCase(ability);
     };
 

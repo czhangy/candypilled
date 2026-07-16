@@ -18,6 +18,8 @@ Abilities and Moves tabs.
 
 ## Computations
 
+- `ability` — the selected ability's name, resolved from `pokemon.ability`
+  (a slot number) via `PokemonHelpers.getAbilityName` at `generation`
 - `moveSlots` — `pokemon.moves` padded to four entries so empty move slots
   render as placeholder cards
 - `normalizeStatValues` — expands a Pokemon's IVs or EVs, which

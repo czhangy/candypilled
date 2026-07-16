@@ -13,6 +13,7 @@ const OREBURGH_GYM: Location = {
             team: [
                 {
                     name: 'Geodude',
+                    ability: 1,
                     level: 11,
                     moves: [
                         'Tackle',
@@ -34,6 +35,7 @@ const OREBURGH_GYM: Location = {
             team: [
                 {
                     name: 'Geodude',
+                    ability: 1,
                     level: 9,
                     moves: [
                         'Tackle',
@@ -46,6 +48,7 @@ const OREBURGH_GYM: Location = {
                 },
                 {
                     name: 'Onix',
+                    ability: 1,
                     level: 9,
                     moves: ['Rock Throw', 'Tackle', 'Harden'],
                     nature: Nature.Bashful,
@@ -62,6 +65,7 @@ const OREBURGH_GYM: Location = {
             team: [
                 {
                     name: 'Geodude',
+                    ability: 1,
                     level: 12,
                     moves: ['Stealth Rock', 'Rock Throw'],
                     nature: Nature.Lax,
@@ -69,6 +73,7 @@ const OREBURGH_GYM: Location = {
                 },
                 {
                     name: 'Onix',
+                    ability: 1,
                     level: 12,
                     moves: ['Stealth Rock', 'Rock Throw', 'Screech'],
                     nature: Nature.Bold,
@@ -76,6 +81,7 @@ const OREBURGH_GYM: Location = {
                 },
                 {
                     name: 'Cranidos',
+                    ability: 1,
                     level: 14,
                     moves: ['Headbutt', 'Pursuit', 'Leer'],
                     nature: Nature.Jolly,
