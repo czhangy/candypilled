@@ -6,6 +6,8 @@ import PokemonPreview from './PokemonPreview/PokemonPreview';
 
 interface BoxTabProps {
     game: Game;
+    onSelectAbility: (name: string) => void;
+    onSelectMove: (name: string) => void;
     onSelectPokemon: (location: string) => void;
     run: Run;
     selectedPokemon?: string;
@@ -13,6 +15,8 @@ interface BoxTabProps {
 
 const BoxTab: React.FC<BoxTabProps> = ({
     game,
+    onSelectAbility,
+    onSelectMove,
     onSelectPokemon,
     run,
     selectedPokemon,
@@ -40,6 +44,8 @@ const BoxTab: React.FC<BoxTabProps> = ({
             />
             <PokemonPreview
                 generation={game.generation}
+                onSelectAbility={onSelectAbility}
+                onSelectMove={onSelectMove}
                 pokemon={selectedCaughtPokemon}
                 variant={variant}
             />

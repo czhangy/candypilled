@@ -7,12 +7,16 @@ import styles from './PokemonPreview.module.scss';
 
 interface PokemonPreviewProps {
     generation: number;
+    onSelectAbility: (name: string) => void;
+    onSelectMove: (name: string) => void;
     pokemon?: CaughtPokemon;
     variant: string;
 }
 
 const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     generation,
+    onSelectAbility,
+    onSelectMove,
     pokemon,
     variant,
 }) => {
@@ -36,6 +40,14 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
         { key: 'spd', label: 'Sp. Def' },
         { key: 'spe', label: 'Speed' },
     ];
+
+    // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleAbilityClick = (ability: string): void => {
+        onSelectAbility(StringHelpers.toTitleCase(ability));
+    };
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -76,6 +88,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
               (_, index) => pokemon.moves[index]
           )
         : [];
+    const ability = pokemon?.ability;
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -135,7 +148,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                             </span>
                                         </div>
                                     )}
-                                    {pokemon.ability && (
+                                    {ability && (
                                         <div className={styles.detail}>
                                             <span
                                                 className={
@@ -144,15 +157,19 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                             >
                                                 Ability
                                             </span>
-                                            <span
+                                            <button
                                                 className={
-                                                    styles['detail-value']
+                                                    styles['detail-link']
                                                 }
+                                                onClick={() =>
+                                                    handleAbilityClick(ability)
+                                                }
+                                                type="button"
                                             >
                                                 {StringHelpers.toTitleCase(
-                                                    pokemon.ability
+                                                    ability
                                                 )}
-                                            </span>
+                                            </button>
                                         </div>
                                     )}
                                     <div className={styles.detail}>
@@ -198,6 +215,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                         generation={generation}
                                         key={move ?? `empty-${index}`}
                                         move={move}
+                                        onSelectMove={onSelectMove}
                                     />
                                 ))}
                             </div>

@@ -9,6 +9,8 @@ the currently selected Pokemon on the right, taking up the remaining third.
 | Prop              | Type                         | Required | Default | Description                                                              |
 | ----------------- | ---------------------------- | -------- | ------- | ------------------------------------------------------------------------ |
 | `game`            | `Game`                       | Yes      | -       | The current game, used to resolve the caught Pokemon's sprites and moves |
+| `onSelectAbility` | `(name: string) => void`     | Yes      | -       | Called with an ability's name when it's clicked in the preview           |
+| `onSelectMove`    | `(name: string) => void`     | Yes      | -       | Called with a move's name when it's clicked in the preview               |
 | `onSelectPokemon` | `(location: string) => void` | Yes      | -       | Called with a caught Pokemon's location when it's clicked in the box     |
 | `run`             | `Run`                        | Yes      | -       | The current run, whose `caughtPokemon` populates the box                 |
 | `selectedPokemon` | `string`                     | No       | -       | The location of the currently selected caught Pokemon, if any            |

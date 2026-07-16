@@ -8,15 +8,43 @@
         var(--move-color, $background-light) 30%,
         transparent
     );
+    border: none;
     border-radius: 0.25rem;
+    color: inherit;
     display: flex;
     flex-direction: column;
+    font: inherit;
     gap: 0.35rem;
     height: 5.5rem;
     justify-content: center;
     overflow: hidden;
     padding: 0.35rem 0.6rem;
     text-align: center;
+    transition: background-color 0.2s ease;
+    width: 100%;
+
+    &:is(button) {
+        cursor: pointer;
+    }
+
+    @media (hover: hover) {
+        &:is(button):hover {
+            background: color-mix(
+                in srgb,
+                color-mix(
+                        in srgb,
+                        var(--move-color, $background-light) 30%,
+                        transparent
+                    )
+                    85%,
+                black 15%
+            );
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
 
     .name {
         @include mono-label;

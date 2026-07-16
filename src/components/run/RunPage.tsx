@@ -178,6 +178,8 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
             {activeTab === 'box' && (
                 <BoxTab
                     game={game}
+                    onSelectAbility={handleAbilityLinkClick}
+                    onSelectMove={handleMoveLinkClick}
                     onSelectPokemon={handlePokemonSelect}
                     run={run}
                     selectedPokemon={selectedPokemon}
