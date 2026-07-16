@@ -45,6 +45,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
     const chosenSpeciesName = chosenSpecies
         ? (PokemonHelpers.get(chosenSpecies)?.name ?? chosenSpecies)
         : null;
+    const defaultSpecies = activeStarter ?? speciesOverride ?? null;
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -63,8 +64,11 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
 
     const handleSelectMove = (): void => {};
 
-    const handleSpeciesConfirm = (species: string): void => {
-        setChosenSpecies(species);
+    const handleSelectClick = (): void => {
+        if (!defaultSpecies) return;
+        setChosenSpecies(
+            PokemonHelpers.get(defaultSpecies)?.name ?? defaultSpecies
+        );
     };
 
     const handleBackClick = (): void => {
@@ -109,32 +113,45 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
                         showAbility={false}
                         showLevel={false}
                         showMoves={false}
-                        submitLabel="Confirm"
+                        submitLabel="CONFIRM"
                     />
                 </div>
             ) : (
                 <div className={styles['starter-select-modal']}>
-                    <div className={styles['starter-column']}>
-                        <StarterSelect
-                            onSelect={handleStarterSelect}
-                            selected={activeStarter}
-                            starters={game.starters}
+                    <div className={styles.columns}>
+                        <div className={styles['starter-column']}>
+                            <StarterSelect
+                                onSelect={handleStarterSelect}
+                                selected={activeStarter}
+                                starters={game.starters}
+                                variant={variant}
+                            />
+                        </div>
+                        <PokedexTile
+                            game={game}
+                            generation={game.generation}
+                            mode="choose"
+                            onSelectAbility={handleSelectAbility}
+                            onSelectMove={handleSelectMove}
+                            onSelectSpecies={handleSelectSpecies}
+                            originalSpecies={activeStarter ?? undefined}
+                            species={
+                                speciesOverride ?? activeStarter ?? undefined
+                            }
+                            usedLocations={[]}
                             variant={variant}
                         />
                     </div>
-                    <PokedexTile
-                        game={game}
-                        generation={game.generation}
-                        mode="select"
-                        onSelect={handleSpeciesConfirm}
-                        onSelectAbility={handleSelectAbility}
-                        onSelectMove={handleSelectMove}
-                        onSelectSpecies={handleSelectSpecies}
-                        originalSpecies={activeStarter ?? undefined}
-                        species={speciesOverride ?? activeStarter ?? undefined}
-                        usedLocations={[]}
-                        variant={variant}
-                    />
+                    <div className={styles.footer}>
+                        <button
+                            className={styles.select}
+                            disabled={!defaultSpecies}
+                            onClick={handleSelectClick}
+                            type="button"
+                        >
+                            SELECT
+                        </button>
+                    </div>
                 </div>
             )}
         </Modal>

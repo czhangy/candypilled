@@ -27,8 +27,7 @@ type PokedexTileProps = (
           onRemovePokemon: () => void;
       }
     | {
-          mode: 'select';
-          onSelect: (species: string) => void;
+          mode: 'choose';
       }
 ) & {
     game: Game;
@@ -90,14 +89,9 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     };
 
     const handleCatchButtonClick = (): void => {
-        if (rest.mode === 'select') {
-            if (defaultCatchSpecies) {
-                rest.onSelect(
-                    PokemonHelpers.get(defaultCatchSpecies)?.name ??
-                        defaultCatchSpecies
-                );
-            }
-        } else if (isCaughtHere) {
+        if (rest.mode !== 'catch') return;
+
+        if (isCaughtHere) {
             rest.onRemovePokemon();
         } else {
             setIsAddPokemonModalOpen(true);
@@ -189,7 +183,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     return (
         <div className={styles['pokedex-tile']}>
             <div className={styles.header}>Pokedex</div>
-            {pokemon && (
+            {pokemon && rest.mode === 'catch' && (
                 <button
                     className={[
                         styles['catch-button'],
@@ -201,11 +195,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     onClick={handleCatchButtonClick}
                     type="button"
                 >
-                    {rest.mode === 'select'
-                        ? 'SELECT'
-                        : isCaughtHere
-                          ? 'CAUGHT'
-                          : 'CATCH'}
+                    {isCaughtHere ? 'CAUGHT' : 'CATCH'}
                 </button>
             )}
             <div
@@ -263,7 +253,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                                             className={styles['abilities-list']}
                                         >
                                             {abilityEntries.map((entry) =>
-                                                rest.mode === 'select' ? (
+                                                rest.mode === 'choose' ? (
                                                     <span
                                                         className={[
                                                             styles.ability,
@@ -336,7 +326,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     </>
                 ) : (
                     <span className={styles.placeholder}>
-                        Select a Pokemon to view its details or catch it
+                        {`Select a Pokemon to view its details or ${rest.mode} it`}
                     </span>
                 )}
             </div>
@@ -386,7 +376,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
             )}
             {pokemon && (
                 <div className={styles.details}>
-                    {rest.mode === 'select' ? (
+                    {rest.mode === 'choose' ? (
                         <div className={styles['details-tabs']}>
                             <span
                                 className={[
@@ -433,11 +423,11 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                             </button>
                         </div>
                     )}
-                    {rest.mode === 'select' ||
+                    {rest.mode === 'choose' ||
                     activeDetailTab === 'learnset' ? (
                         <LearnsetList
                             generation={generation}
-                            interactive={rest.mode !== 'select'}
+                            interactive={rest.mode !== 'choose'}
                             moves={learnset ?? []}
                             onSelectMove={onSelectMove}
                         />
