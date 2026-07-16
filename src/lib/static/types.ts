@@ -15,8 +15,12 @@ export interface DropdownOption {
     value: string;
 }
 
+// Identifies which of a species' abilities is set: 1 = slot1, 2 = slot2,
+// 3 = hidden. Callers resolve the name via PokemonHelpers.getAbilityName.
+export type AbilitySlot = 1 | 2 | 3;
+
 export interface BattlePokemon {
-    ability?: string;
+    ability: AbilitySlot;
     evs?: StatValues;
     heldItem?: string;
     ivs?: number | StatValues;

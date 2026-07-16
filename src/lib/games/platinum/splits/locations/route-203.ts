@@ -15,6 +15,7 @@ const ROUTE_203: Location = {
                 Turtwig: [
                     {
                         name: 'Starly',
+                        ability: 1,
                         level: 7,
                         moves: ['Quick Attack', 'Growl'],
                         nature: Nature.Naughty,
@@ -22,6 +23,7 @@ const ROUTE_203: Location = {
                     },
                     {
                         name: 'Chimchar',
+                        ability: 1,
                         level: 9,
                         moves: ['Scratch', 'Leer'],
                         nature: Nature.Docile,
@@ -31,6 +33,7 @@ const ROUTE_203: Location = {
                 Chimchar: [
                     {
                         name: 'Starly',
+                        ability: 1,
                         level: 7,
                         moves: ['Quick Attack', 'Growl'],
                         nature: Nature.Naive,
@@ -38,6 +41,7 @@ const ROUTE_203: Location = {
                     },
                     {
                         name: 'Piplup',
+                        ability: 1,
                         level: 9,
                         moves: ['Pound', 'Growl'],
                         nature: Nature.Naughty,
@@ -47,6 +51,7 @@ const ROUTE_203: Location = {
                 Piplup: [
                     {
                         name: 'Starly',
+                        ability: 1,
                         level: 7,
                         moves: ['Quick Attack', 'Growl'],
                         nature: Nature.Timid,
@@ -54,6 +59,7 @@ const ROUTE_203: Location = {
                     },
                     {
                         name: 'Turtwig',
+                        ability: 1,
                         level: 9,
                         moves: ['Tackle', 'Withdraw'],
                         nature: Nature.Brave,
@@ -71,12 +77,14 @@ const ROUTE_203: Location = {
             team: [
                 {
                     name: 'Kricketot',
+                    ability: 1,
                     level: 7,
                     moves: ['Growl', 'Bide'],
                     nature: Nature.Mild,
                 },
                 {
                     name: 'Zubat',
+                    ability: 1,
                     level: 6,
                     moves: ['Leech Life', 'Supersonic'],
                     nature: Nature.Careful,
@@ -92,6 +100,7 @@ const ROUTE_203: Location = {
             team: [
                 {
                     name: 'Shinx',
+                    ability: 1,
                     level: 8,
                     moves: ['Tackle', 'Leer'],
                     nature: Nature.Calm,
@@ -107,6 +116,7 @@ const ROUTE_203: Location = {
             team: [
                 {
                     name: 'Machop',
+                    ability: 1,
                     level: 8,
                     moves: ['Low Kick', 'Leer', 'Focus Energy'],
                     nature: Nature.Relaxed,
@@ -122,24 +132,28 @@ const ROUTE_203: Location = {
             team: [
                 {
                     name: 'Bidoof',
+                    ability: 1,
                     level: 4,
                     moves: ['Tackle'],
                     nature: Nature.Rash,
                 },
                 {
                     name: 'Budew',
+                    ability: 1,
                     level: 4,
                     moves: ['Absorb', 'Growth'],
                     nature: Nature.Mild,
                 },
                 {
                     name: 'Starly',
+                    ability: 1,
                     level: 4,
                     moves: ['Tackle', 'Growl'],
                     nature: Nature.Quirky,
                 },
                 {
                     name: 'Abra',
+                    ability: 1,
                     level: 4,
                     moves: ['Teleport'],
                     nature: Nature.Docile,
@@ -155,6 +169,7 @@ const ROUTE_203: Location = {
             team: [
                 {
                     name: 'Psyduck',
+                    ability: 1,
                     level: 8,
                     moves: ['Water Sport', 'Scratch', 'Tail Whip'],
                     nature: Nature.Relaxed,

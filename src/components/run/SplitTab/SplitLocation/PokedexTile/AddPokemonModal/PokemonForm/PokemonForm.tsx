@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import { Nature } from '@/lib/static/enums';
-import { BattlePokemon, DropdownOption, StatValues } from '@/lib/static/types';
+import {
+    AbilitySlot,
+    BattlePokemon,
+    DropdownOption,
+    StatValues,
+} from '@/lib/static/types';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -88,10 +93,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     const [species, setSpecies] = useState(
         () => PokemonHelpers.get(defaultSpecies)?.name ?? defaultSpecies
     );
-    const [ability, setAbility] = useState(
-        () =>
-            PokemonHelpers.getAbilities(defaultSpecies, generation)?.slot1 ?? ''
-    );
+    const [abilitySlot, setAbilitySlot] = useState<AbilitySlot>(1);
     const [nature, setNature] = useState<Nature>(Object.values(Nature)[0]);
     const [ivs, setIvs] = useState<StatValues>({
         atk: MAX_IV,
@@ -111,14 +113,13 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     // -------------------------------------------------------------------------
 
     const handleSpeciesChange = (value: string): void => {
-        const abilities = PokemonHelpers.getAbilities(value, generation);
         setSpecies(value);
-        setAbility(abilities?.slot1 ?? '');
+        setAbilitySlot(1);
         setMoves(getStartingMoves(value, level));
     };
 
     const handleAbilityChange = (value: string): void => {
-        setAbility(value);
+        setAbilitySlot(Number(value) as AbilitySlot);
     };
 
     const handleMoveChange = (index: number, value: string): void => {
@@ -156,7 +157,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     const handleSubmit = (event: React.FormEvent): void => {
         event.preventDefault();
         onSubmit({
-            ability,
+            ability: abilitySlot,
             ivs,
             level,
             moves: moves.filter(Boolean),
@@ -176,12 +177,16 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     const abilities = PokemonHelpers.getAbilities(species, generation);
     const abilityOptions: DropdownOption[] = abilities
         ? [
-              abilities.slot1,
-              ...(abilities.slot2 ? [abilities.slot2] : []),
-              ...(abilities.hidden ? [abilities.hidden] : []),
-          ].map((name) => ({
+              { name: abilities.slot1, slot: 1 as AbilitySlot },
+              ...(abilities.slot2
+                  ? [{ name: abilities.slot2, slot: 2 as AbilitySlot }]
+                  : []),
+              ...(abilities.hidden
+                  ? [{ name: abilities.hidden, slot: 3 as AbilitySlot }]
+                  : []),
+          ].map(({ name, slot }) => ({
               label: StringHelpers.toTitleCase(name),
-              value: name,
+              value: String(slot),
           }))
         : [];
     const natureOptions: DropdownOption[] = Object.values(Nature).map(
@@ -242,7 +247,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
                         <Dropdown
                             onChange={handleAbilityChange}
                             options={abilityOptions}
-                            value={ability}
+                            value={String(abilitySlot)}
                         />
                     </div>
                 )}

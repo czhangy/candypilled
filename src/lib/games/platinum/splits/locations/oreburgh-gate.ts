@@ -20,12 +20,14 @@ const OREBURGH_GATE: Location = {
                     team: [
                         {
                             name: 'Starly',
+                            ability: 1,
                             level: 7,
                             moves: ['Tackle', 'Growl', 'Quick Attack'],
                             nature: Nature.Lax,
                         },
                         {
                             name: 'Shinx',
+                            ability: 1,
                             level: 7,
                             moves: ['Tackle', 'Leer'],
                             nature: Nature.Lax,
@@ -41,6 +43,7 @@ const OREBURGH_GATE: Location = {
                     team: [
                         {
                             name: 'Bidoof',
+                            ability: 1,
                             level: 9,
                             moves: ['Tackle', 'Growl', 'Defense Curl'],
                             nature: Nature.Modest,

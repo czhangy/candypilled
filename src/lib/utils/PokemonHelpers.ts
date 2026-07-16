@@ -1,6 +1,7 @@
 import { POKEMON } from '@/lib/data/pokemon';
 import {
     Abilities,
+    AbilitySlot,
     EvolutionStep,
     LearnsetMove,
     PokemonData,
@@ -57,6 +58,24 @@ export default class PokemonHelpers {
         return [...pokemon.abilities]
             .reverse()
             .find((entry) => entry.fromGeneration <= generation)?.abilities;
+    }
+
+    static getAbilityName(
+        name: string,
+        generation: number,
+        slot: AbilitySlot
+    ): string | undefined {
+        const abilities = PokemonHelpers.getAbilities(name, generation);
+        if (!abilities) return undefined;
+
+        switch (slot) {
+            case 1:
+                return abilities.slot1;
+            case 2:
+                return abilities.slot2;
+            case 3:
+                return abilities.hidden;
+        }
     }
 
     static getStats(name: string, generation: number): StatValues | undefined {

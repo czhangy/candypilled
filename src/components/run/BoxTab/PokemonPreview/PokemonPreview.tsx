@@ -110,7 +110,13 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
               (_, index) => pokemon.moves[index]
           )
         : [];
-    const ability = pokemon?.ability;
+    const ability = pokemon
+        ? PokemonHelpers.getAbilityName(
+              pokemon.name,
+              generation,
+              pokemon.ability
+          )
+        : undefined;
     const baseStats =
         pokemon && data
             ? PokemonHelpers.getStats(pokemon.name, generation)

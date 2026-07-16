@@ -15,6 +15,7 @@ const ROUTE_201: Location = {
                 Turtwig: [
                     {
                         name: 'Chimchar',
+                        ability: 1,
                         level: 5,
                         moves: ['Scratch', 'Leer'],
                         nature: Nature.Calm,
@@ -23,6 +24,7 @@ const ROUTE_201: Location = {
                 Chimchar: [
                     {
                         name: 'Piplup',
+                        ability: 1,
                         level: 5,
                         moves: ['Pound', 'Growl'],
                         nature: Nature.Bashful,
@@ -31,6 +33,7 @@ const ROUTE_201: Location = {
                 Piplup: [
                     {
                         name: 'Turtwig',
+                        ability: 1,
                         level: 5,
                         moves: ['Tackle', 'Withdraw'],
                         nature: Nature.Docile,
