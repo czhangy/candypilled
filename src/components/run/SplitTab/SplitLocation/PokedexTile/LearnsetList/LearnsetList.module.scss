@@ -53,13 +53,17 @@ $power-width: 2.75rem;
         width: 100%;
 
         @media (hover: hover) {
-            &:hover {
+            &:hover:not(&--static) {
                 background: $background-light;
             }
         }
 
         @media (prefers-reduced-motion: reduce) {
             transition: none;
+        }
+
+        &--static {
+            cursor: default;
         }
 
         .method {

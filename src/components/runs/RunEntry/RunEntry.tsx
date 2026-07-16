@@ -8,7 +8,7 @@ import BoxIcon from '@/lib/icons/BoxIcon';
 import CrownIcon from '@/lib/icons/CrownIcon';
 import RunIcon from '@/lib/icons/RunIcon';
 import SkullIcon from '@/lib/icons/SkullIcon';
-import { Game, Run } from '@/lib/static/types';
+import { CaughtPokemon, Game, Run } from '@/lib/static/types';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -46,7 +46,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const startNewRun = (starter: string): void => {
+    const startNewRun = (starter: CaughtPokemon): void => {
         const newRun: Run = {
             attempt: (run?.attempt ?? 0) + 1,
             deathCount: 0,
@@ -55,8 +55,8 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             boxCount: 0,
             personalBest: run?.personalBest ?? '',
             hallOfFameCount: run?.hallOfFameCount ?? 0,
-            starter,
-            caughtPokemon: [],
+            starter: starter.name,
+            caughtPokemon: [starter],
             missedLocations: [],
         };
 
@@ -93,7 +93,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         setIsStarterSelectOpen(false);
     };
 
-    const handleStarterSelect = (starter: string): void => {
+    const handleStarterSelect = (starter: CaughtPokemon): void => {
         setIsStarterSelectOpen(false);
         startNewRun(starter);
     };

@@ -125,7 +125,7 @@ $label-width: 5.5rem;
                 transition: color 0.2s ease;
 
                 @media (hover: hover) {
-                    &:hover {
+                    &:hover:not(&--static) {
                         color: var(--accent-color);
                     }
                 }
@@ -136,6 +136,10 @@ $label-width: 5.5rem;
 
                 &--hidden {
                     color: $text-dim;
+                }
+
+                &--static {
+                    cursor: default;
                 }
             }
         }
@@ -171,7 +175,7 @@ $label-width: 5.5rem;
 
         background: $background-light;
         border: none;
-        border-top: 1px solid $border-subtle;
+        border-bottom: 1px solid $border-subtle;
         color: var(--accent-color);
         cursor: pointer;
         display: block;
