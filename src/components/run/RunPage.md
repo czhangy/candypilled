@@ -58,6 +58,10 @@ has been wiped, a "Run it back." message is shown instead.
 
 ## Handlers
 
+- **On tab change** (from `Tabs`) — sets the `tab` query param and clears
+  whichever of `pokemon`/`move`/`ability` isn't relevant to the destination
+  tab, so a tab's selection param doesn't linger in the URL after navigating
+  away from it
 - **On move link click** (from `SplitTab`, e.g. a move within `BattleCard`)
   — opens the Moves tab for that move (`?tab=moves&move=<name>`) in a new
   browser tab, leaving the current page untouched

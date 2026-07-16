@@ -41,8 +41,10 @@ Locations with no encounters at all (no `encountersKey` on the location or
 any of its subareas) show no icon, but reserve the same space so entries
 stay aligned.
 
-- `getCaughtPokemonName` — the name of the `run.caughtPokemon` entry caught
-  at the given location name, if any
+- `getCaughtPokemonName` — the display name of the `run.caughtPokemon` entry
+  caught at the given location name, if any, formatted via `PokemonHelpers`
+  and `StringHelpers.toTitleCase` so forms like `wormadam-trash` render as
+  "Wormadam Trash"
 - `isLocationMissed` — whether `run.missedLocations` contains the given
   location name
 - `hasEncounters` — whether a location (or, if it has subareas, any of its

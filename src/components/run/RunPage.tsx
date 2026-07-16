@@ -36,6 +36,12 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         { id: 'abilities', label: 'Abilities' },
     ];
 
+    const TAB_QUERY_PARAMS: Record<string, string> = {
+        box: 'pokemon',
+        moves: 'move',
+        abilities: 'ability',
+    };
+
     // -------------------------------------------------------------------------
     // HOOKS
     // -------------------------------------------------------------------------
@@ -134,7 +140,14 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     // -------------------------------------------------------------------------
 
     const handleTabChange = (id: string): void => {
-        updateQueryParams({ tab: id });
+        const relevantParam = TAB_QUERY_PARAMS[id];
+        const updates: Record<string, string | undefined> = { tab: id };
+        Object.values(TAB_QUERY_PARAMS).forEach((param) => {
+            if (param !== relevantParam) {
+                updates[param] = undefined;
+            }
+        });
+        updateQueryParams(updates);
     };
 
     const handleMoveSelect = (name: string): void => {

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { Game, Location, Run } from '@/lib/static/types';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
+import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import SplitLocation from './SplitLocation/SplitLocation';
 import styles from './SplitTab.module.scss';
@@ -41,9 +42,15 @@ const SplitTab: React.FC<SplitTabProps> = ({
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const getCaughtPokemonName = (locationName: string): string | undefined =>
-        run.caughtPokemon.find((caught) => caught.location === locationName)
-            ?.name;
+    const getCaughtPokemonName = (locationName: string): string | undefined => {
+        const name = run.caughtPokemon.find(
+            (caught) => caught.location === locationName
+        )?.name;
+
+        return name
+            ? StringHelpers.toTitleCase(PokemonHelpers.get(name)?.name ?? name)
+            : undefined;
+    };
 
     const isLocationMissed = (locationName: string): boolean =>
         run.missedLocations.includes(locationName);
