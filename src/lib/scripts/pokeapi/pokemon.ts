@@ -51,6 +51,18 @@ const EXCLUDED_VARIETY_PATTERNS = [
     'palkia-origin',
 ];
 
+// Varieties that can't actually persist outside of battle (e.g. Castform's
+// weather forms) or that automatically revert on deposit into a PC box
+// (e.g. Shaymin's Sky Forme), so they'd never be a real caught Pokemon's
+// permanent form. PokeAPI's is_battle_only form flag only covers the
+// former case, so this is curated by hand rather than derived from the API.
+const TEMPORARY_FORM_VARIETIES = new Set([
+    'castform-sunny',
+    'castform-rainy',
+    'castform-snowy',
+    'shaymin-sky',
+]);
+
 // -------------------------------------------------------------------------
 // Shared fetch helpers
 // -------------------------------------------------------------------------
@@ -953,6 +965,8 @@ export const fetchPokemonData = async (): Promise<void> => {
             const name = StringHelpers.toTitleCase(variety.name);
             data[variety.name] = {
                 name,
+                introducedInGeneration: dexGeneration,
+                isTemporaryForm: TEMPORARY_FORM_VARIETIES.has(variety.name),
                 sprites,
                 types: buildTypesByGeneration(rawPokemon),
                 abilities: buildAbilitiesByGeneration(rawPokemon),

@@ -11,6 +11,7 @@ import {
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
+import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './BoxTab.module.scss';
 import PokemonBox from './PokemonBox/PokemonBox';
@@ -47,7 +48,16 @@ const BoxTab: React.FC<BoxTabProps> = ({
     // -------------------------------------------------------------------------
 
     const variant = StringHelpers.toSlug(game.name);
-    const allSpecies = LocationHelpers.getAllEncounterSpecies(game);
+    const allSpecies = PokemonHelpers.getAllSpecies(game.generation).filter(
+        (species) =>
+            !run.caughtPokemon.some((caughtPokemon) =>
+                PokemonHelpers.isSameEvolutionLine(
+                    species,
+                    caughtPokemon.name,
+                    game.generation
+                )
+            )
+    );
     const realLocations = LocationHelpers.getAllLocationNames(game);
     const selectedCaughtPokemon = run.caughtPokemon.find(
         (caughtPokemon) => caughtPokemon.location === selectedPokemon

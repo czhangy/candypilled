@@ -27,8 +27,10 @@ the currently selected Pokemon on the right, taking up the remaining third.
 
 - `variant` — the game's slug, used to resolve sprite art for the correct
   game generation
-- `allSpecies` — every species with a wild encounter in `game`, via
-  `LocationHelpers.getAllEncounterSpecies`, offered in `AddPokemonModal`'s
+- `allSpecies` — every species introduced at or before `game.generation`
+  (via `PokemonHelpers.getAllSpecies`) that isn't already caught or in a
+  caught Pokemon's evolution line (via `PokemonHelpers.isSameEvolutionLine`
+  against every `run.caughtPokemon` entry), offered in `AddPokemonModal`'s
   Pokemon dropdown; also supplies its default species (the first entry)
 - `realLocations` — every location name in `game`, via
   `LocationHelpers.getAllLocationNames`, passed to `AddPokemonModal` so
