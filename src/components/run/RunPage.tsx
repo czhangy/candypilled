@@ -142,6 +142,12 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         );
     };
 
+    const handleWipeToggle = (): void => {
+        if (!game || !run) return;
+
+        LocalStorageHelpers.saveRun(game, { ...run, wipe: !run.wipe });
+    };
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -160,49 +166,66 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
             <Link className={styles.back} href="/runs">
                 ← Runs
             </Link>
-            <h1 className={styles.title}>
-                Pokémon {game.name} — Attempt #{run.attempt}
-            </h1>
+            <div className={styles['title-row']}>
+                <h1 className={styles.title}>
+                    Pokémon {game.name} — Attempt #{run.attempt}
+                </h1>
+                <button
+                    className={styles.wipe}
+                    onClick={handleWipeToggle}
+                    type="button"
+                >
+                    {run.wipe ? 'RESPAWN' : 'Wipe'}
+                </button>
+            </div>
             <p className={styles.subtitle}>
                 Personal Best: {personalBestLabel}
             </p>
-            <Tabs
-                activeTab={activeTab}
-                onTabChange={handleTabChange}
-                tabs={TABS}
-            />
-            {activeTab === 'split' && (
-                <SplitTab
-                    game={game}
-                    onSelectAbility={handleAbilityLinkClick}
-                    onSelectMove={handleMoveLinkClick}
-                    run={run}
-                />
-            )}
-            {activeTab === 'box' && (
-                <BoxTab
-                    game={game}
-                    onDeselectPokemon={handlePokemonDeselect}
-                    onSelectAbility={handleAbilityLinkClick}
-                    onSelectMove={handleMoveLinkClick}
-                    onSelectPokemon={handlePokemonSelect}
-                    run={run}
-                    selectedPokemon={selectedPokemon}
-                />
-            )}
-            {activeTab === 'moves' && (
-                <MovesTab
-                    generation={game.generation}
-                    onSelectMove={handleMoveSelect}
-                    selectedMove={selectedMove}
-                />
-            )}
-            {activeTab === 'abilities' && (
-                <AbilitiesTab
-                    generation={game.generation}
-                    onSelectAbility={handleAbilitySelect}
-                    selectedAbility={selectedAbility}
-                />
+            {run.wipe ? (
+                <div className={styles['wipe-message']}>
+                    <p className={styles['wipe-text']}>Run it back.</p>
+                </div>
+            ) : (
+                <>
+                    <Tabs
+                        activeTab={activeTab}
+                        onTabChange={handleTabChange}
+                        tabs={TABS}
+                    />
+                    {activeTab === 'split' && (
+                        <SplitTab
+                            game={game}
+                            onSelectAbility={handleAbilityLinkClick}
+                            onSelectMove={handleMoveLinkClick}
+                            run={run}
+                        />
+                    )}
+                    {activeTab === 'box' && (
+                        <BoxTab
+                            game={game}
+                            onDeselectPokemon={handlePokemonDeselect}
+                            onSelectAbility={handleAbilityLinkClick}
+                            onSelectMove={handleMoveLinkClick}
+                            onSelectPokemon={handlePokemonSelect}
+                            run={run}
+                            selectedPokemon={selectedPokemon}
+                        />
+                    )}
+                    {activeTab === 'moves' && (
+                        <MovesTab
+                            generation={game.generation}
+                            onSelectMove={handleMoveSelect}
+                            selectedMove={selectedMove}
+                        />
+                    )}
+                    {activeTab === 'abilities' && (
+                        <AbilitiesTab
+                            generation={game.generation}
+                            onSelectAbility={handleAbilitySelect}
+                            selectedAbility={selectedAbility}
+                        />
+                    )}
+                </>
             )}
         </div>
     );

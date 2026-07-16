@@ -69,6 +69,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             starter: starter.name,
             caughtPokemon: [starter],
             missedLocations: [],
+            wipe: false,
         };
 
         LocalStorageHelpers.saveRun(game, newRun);
@@ -138,9 +139,11 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     <div className={styles.line}>
                         <span className={styles.split}>
                             <RunIcon />
-                            {currentSplitName
-                                ? `${currentSplitName} Split`
-                                : '-'}
+                            {run?.wipe
+                                ? 'Wiped'
+                                : currentSplitName
+                                  ? `${currentSplitName} Split`
+                                  : '-'}
                         </span>
                         <span className={styles.boxes}>
                             <BoxIcon />
