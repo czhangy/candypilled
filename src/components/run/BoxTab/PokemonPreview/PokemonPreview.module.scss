@@ -17,10 +17,13 @@
     }
 
     .content {
+        @include scrollbar;
+
         align-items: center;
         display: flex;
+        height: 28rem;
         justify-content: center;
-        min-height: 10rem;
+        overflow-y: auto;
         padding: 1.5rem;
 
         &--empty {

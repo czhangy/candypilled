@@ -17,9 +17,7 @@
     }
 
     .content {
-        max-height: 24rem;
-        min-height: 10rem;
-        overflow-y: auto;
+        height: 28rem;
         padding: 1.5rem;
 
         &--empty {
