@@ -41,9 +41,9 @@ $label-width: 4.5rem;
                 @include mono-label;
 
                 background: none;
-                border: 1px solid $border-subtle;
+                border: 1px solid $red;
                 border-radius: 0.35rem;
-                color: $text-mid;
+                color: $red;
                 cursor: pointer;
                 flex-shrink: 0;
                 font-size: 0.7rem;
@@ -63,11 +63,6 @@ $label-width: 4.5rem;
 
                 @media (prefers-reduced-motion: reduce) {
                     transition: none;
-                }
-
-                &--dead {
-                    border-color: $red;
-                    color: $red;
                 }
             }
 

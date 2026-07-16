@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { PokemonStatus } from '@/lib/static/enums';
-import { CaughtPokemon, Game, Run } from '@/lib/static/types';
+import { BoxView, CaughtPokemon, Game, Run } from '@/lib/static/types';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './BoxTab.module.scss';
@@ -24,6 +25,12 @@ const BoxTab: React.FC<BoxTabProps> = ({
     selectedPokemon,
 }) => {
     // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [view, setView] = useState<BoxView>('box');
+
+    // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
@@ -37,22 +44,26 @@ const BoxTab: React.FC<BoxTabProps> = ({
     // -------------------------------------------------------------------------
 
     const handleToggleStatus = (pokemon: CaughtPokemon): void => {
+        const newStatus =
+            pokemon.status === PokemonStatus.Dead
+                ? PokemonStatus.Alive
+                : PokemonStatus.Dead;
+
         const updatedRun: Run = {
             ...run,
             caughtPokemon: run.caughtPokemon.map((caughtPokemon) =>
                 caughtPokemon.location === pokemon.location
-                    ? {
-                          ...caughtPokemon,
-                          status:
-                              caughtPokemon.status === PokemonStatus.Dead
-                                  ? PokemonStatus.Alive
-                                  : PokemonStatus.Dead,
-                      }
+                    ? { ...caughtPokemon, status: newStatus }
                     : caughtPokemon
             ),
         };
 
         LocalStorageHelpers.saveRun(game, updatedRun);
+        setView(newStatus === PokemonStatus.Dead ? 'graveyard' : 'box');
+    };
+
+    const handleViewChange = (nextView: BoxView): void => {
+        setView(nextView);
     };
 
     // -------------------------------------------------------------------------
@@ -64,8 +75,10 @@ const BoxTab: React.FC<BoxTabProps> = ({
             <PokemonBox
                 caughtPokemon={run.caughtPokemon}
                 onSelectPokemon={onSelectPokemon}
+                onViewChange={handleViewChange}
                 selectedPokemon={selectedPokemon}
                 variant={variant}
+                view={view}
             />
             <PokemonPreview
                 generation={game.generation}

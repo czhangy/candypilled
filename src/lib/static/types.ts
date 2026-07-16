@@ -37,6 +37,10 @@ export interface CaughtPokemon extends BattlePokemon {
     status: PokemonStatus;
 }
 
+// The two views of the box tab's caught Pokemon grid: living Pokemon
+// ("box") or dead ones ("graveyard").
+export type BoxView = 'box' | 'graveyard';
+
 interface BattleItem {
     count: number;
     name: string;

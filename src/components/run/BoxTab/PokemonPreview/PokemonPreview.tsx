@@ -259,19 +259,13 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                 aria-pressed={
                                     pokemon.status === PokemonStatus.Dead
                                 }
-                                className={[
-                                    styles['status-button'],
-                                    pokemon.status === PokemonStatus.Dead &&
-                                        styles['status-button--dead'],
-                                ]
-                                    .filter(Boolean)
-                                    .join(' ')}
+                                className={styles['status-button']}
                                 onClick={handleToggleStatusClick}
                                 type="button"
                             >
                                 {pokemon.status === PokemonStatus.Dead
                                     ? 'Revive'
-                                    : 'Dead'}
+                                    : 'Kill'}
                             </button>
                         </div>
                         {stats && (

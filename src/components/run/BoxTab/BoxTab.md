@@ -15,6 +15,12 @@ the currently selected Pokemon on the right, taking up the remaining third.
 | `run`             | `Run`                        | Yes      | -       | The current run, whose `caughtPokemon` populates the box                 |
 | `selectedPokemon` | `string`                     | No       | -       | The location of the currently selected caught Pokemon, if any            |
 
+## State
+
+| State  | Type      | Initial value | Description                                                   |
+| ------ | --------- | ------------- | ------------------------------------------------------------- |
+| `view` | `BoxView` | `'box'`       | Which of `PokemonBox`'s views ("box" or "graveyard") is shown |
+
 ## Computations
 
 - `variant` — the game's slug, used to resolve sprite art for the correct
@@ -25,4 +31,8 @@ the currently selected Pokemon on the right, taking up the remaining third.
 ## Handlers
 
 - `handleToggleStatus` — flips a caught Pokemon's `status` between
-  `PokemonStatus.Alive` and `PokemonStatus.Dead` and saves the updated run
+  `PokemonStatus.Alive` and `PokemonStatus.Dead`, saves the updated run,
+  and switches `view` to the box the Pokemon now belongs in (`'graveyard'`
+  if it was just killed, `'box'` if it was just revived)
+- `handleViewChange` — sets `view` to the view clicked in `PokemonBox`'s
+  header
