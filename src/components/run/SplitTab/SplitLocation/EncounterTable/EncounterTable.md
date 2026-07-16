@@ -3,9 +3,10 @@
 Displays the wild Pokemon encounters available at a location as a table,
 under an "Encounters" header. If the encounters include time-of-day-
 specific slots (morning, day, night), a row of icon buttons for each
-time of day is shown on the right of the header to switch between them;
-encounters that aren't tied to a time of day are always shown regardless
-of the selected time of day. Rows are grouped under a sub-header for each
+time of day is shown on the right of the header to switch between them,
+each with a `Tooltip` naming its time of day ("Morning", "Day", "Night")
+on hover; encounters that aren't tied to a time of day are always shown
+regardless of the selected time of day. Rows are grouped under a sub-header for each
 encounter method (e.g. "Old Rod", "Rock Smash"), shown alongside an
 icon representing the method, in a fixed method order; within a group,
 rows are sorted by encounter chance, highest first. Each row shows the

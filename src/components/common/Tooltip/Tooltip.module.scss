@@ -4,48 +4,34 @@
 
 .tooltip {
     display: inline-flex;
-    position: relative;
+}
 
-    .bubble {
-        background: color.adjust($background, $lightness: 8%);
-        border: 1px solid $border-subtle;
-        border-radius: 0.25rem;
-        bottom: calc(100% + 0.3rem);
-        color: $foreground;
-        font-size: 0.8rem;
-        letter-spacing: 0;
-        opacity: 0;
-        padding: 0.2rem 0.4rem;
-        pointer-events: none;
-        position: absolute;
-        text-transform: none;
-        transition: opacity 0.2s ease;
-        white-space: nowrap;
-        z-index: 90;
+// Portaled to document.body when shown, so it can't be nested under
+// .tooltip here — nesting compiles to a descendant selector, which
+// wouldn't match once the bubble is no longer a DOM descendant of it.
+.bubble {
+    background: color.adjust($background, $lightness: 8%);
+    border: 1px solid $border-subtle;
+    border-radius: 0.25rem;
+    color: $foreground;
+    font-size: 0.8rem;
+    letter-spacing: 0;
+    padding: 0.2rem 0.4rem;
+    pointer-events: none;
+    position: fixed;
+    text-transform: none;
+    white-space: nowrap;
+    z-index: 90;
 
-        &--center {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        &--left {
-            left: 0;
-        }
-
-        &--right {
-            right: 0;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            transition: none;
-        }
+    &--center {
+        transform: translate(-50%, -100%);
     }
 
-    @media (hover: hover) {
-        &:hover {
-            .bubble {
-                opacity: 1;
-            }
-        }
+    &--left {
+        transform: translateY(-100%);
+    }
+
+    &--right {
+        transform: translate(-100%, -100%);
     }
 }

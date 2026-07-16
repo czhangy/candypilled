@@ -1,5 +1,6 @@
 import { Fragment, useState } from 'react';
 import Image from 'next/image';
+import Tooltip from '@/components/common/Tooltip/Tooltip';
 import DayIcon from '@/lib/icons/DayIcon';
 import MorningIcon from '@/lib/icons/MorningIcon';
 import NightIcon from '@/lib/icons/NightIcon';
@@ -174,24 +175,33 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                         {timesOfDay.map((time) => {
                             const TimeOfDayIcon = TIME_OF_DAY_ICONS[time];
                             return (
-                                <button
-                                    aria-label={TIME_OF_DAY_LABELS[time]}
-                                    aria-pressed={time === selectedTimeOfDay}
-                                    className={[
-                                        styles['time-of-day-button'],
-                                        time === selectedTimeOfDay &&
-                                            styles[
-                                                'time-of-day-button--active'
-                                            ],
-                                    ]
-                                        .filter(Boolean)
-                                        .join(' ')}
+                                <Tooltip
                                     key={time}
-                                    onClick={() => handleTimeOfDayChange(time)}
-                                    type="button"
+                                    position="center"
+                                    text={TIME_OF_DAY_LABELS[time]}
                                 >
-                                    <TimeOfDayIcon />
-                                </button>
+                                    <button
+                                        aria-label={TIME_OF_DAY_LABELS[time]}
+                                        aria-pressed={
+                                            time === selectedTimeOfDay
+                                        }
+                                        className={[
+                                            styles['time-of-day-button'],
+                                            time === selectedTimeOfDay &&
+                                                styles[
+                                                    'time-of-day-button--active'
+                                                ],
+                                        ]
+                                            .filter(Boolean)
+                                            .join(' ')}
+                                        onClick={() =>
+                                            handleTimeOfDayChange(time)
+                                        }
+                                        type="button"
+                                    >
+                                        <TimeOfDayIcon />
+                                    </button>
+                                </Tooltip>
                             );
                         })}
                     </div>
