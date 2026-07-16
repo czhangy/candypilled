@@ -51,3 +51,5 @@ currently active tab.
   `PokedexTile` or `BattleCard`) — opens the Abilities tab for that ability
   (`?tab=abilities&ability=<name>`) in a new browser tab, leaving the
   current page untouched
+- **On Pokemon deselect** (from `BoxTab`, when switching between its box
+  and graveyard views) — clears the `pokemon` query param

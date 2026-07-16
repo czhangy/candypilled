@@ -6,14 +6,15 @@ the currently selected Pokemon on the right, taking up the remaining third.
 
 ## Props
 
-| Prop              | Type                         | Required | Default | Description                                                              |
-| ----------------- | ---------------------------- | -------- | ------- | ------------------------------------------------------------------------ |
-| `game`            | `Game`                       | Yes      | -       | The current game, used to resolve the caught Pokemon's sprites and moves |
-| `onSelectAbility` | `(name: string) => void`     | Yes      | -       | Called with an ability's name when it's clicked in the preview           |
-| `onSelectMove`    | `(name: string) => void`     | Yes      | -       | Called with a move's name when it's clicked in the preview               |
-| `onSelectPokemon` | `(location: string) => void` | Yes      | -       | Called with a caught Pokemon's location when it's clicked in the box     |
-| `run`             | `Run`                        | Yes      | -       | The current run, whose `caughtPokemon` populates the box                 |
-| `selectedPokemon` | `string`                     | No       | -       | The location of the currently selected caught Pokemon, if any            |
+| Prop                | Type                         | Required | Default | Description                                                              |
+| ------------------- | ---------------------------- | -------- | ------- | ------------------------------------------------------------------------ |
+| `game`              | `Game`                       | Yes      | -       | The current game, used to resolve the caught Pokemon's sprites and moves |
+| `onDeselectPokemon` | `() => void`                 | Yes      | -       | Called to clear the currently selected caught Pokemon                    |
+| `onSelectAbility`   | `(name: string) => void`     | Yes      | -       | Called with an ability's name when it's clicked in the preview           |
+| `onSelectMove`      | `(name: string) => void`     | Yes      | -       | Called with a move's name when it's clicked in the preview               |
+| `onSelectPokemon`   | `(location: string) => void` | Yes      | -       | Called with a caught Pokemon's location when it's clicked in the box     |
+| `run`               | `Run`                        | Yes      | -       | The current run, whose `caughtPokemon` populates the box                 |
+| `selectedPokemon`   | `string`                     | No       | -       | The location of the currently selected caught Pokemon, if any            |
 
 ## State
 
@@ -35,4 +36,5 @@ the currently selected Pokemon on the right, taking up the remaining third.
   and switches `view` to the box the Pokemon now belongs in (`'graveyard'`
   if it was just killed, `'box'` if it was just revived)
 - `handleViewChange` — sets `view` to the view clicked in `PokemonBox`'s
-  header
+  header and calls `onDeselectPokemon`, since the previously selected
+  Pokemon may not belong to the newly shown view

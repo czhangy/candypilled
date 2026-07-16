@@ -130,6 +130,10 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         updateQueryParams({ pokemon: location });
     };
 
+    const handlePokemonDeselect = (): void => {
+        updateQueryParams({ pokemon: undefined });
+    };
+
     const handleAbilityLinkClick = (name: string): void => {
         window.open(
             `${pathname}?tab=abilities&ability=${encodeURIComponent(name)}`,
@@ -178,6 +182,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
             {activeTab === 'box' && (
                 <BoxTab
                     game={game}
+                    onDeselectPokemon={handlePokemonDeselect}
                     onSelectAbility={handleAbilityLinkClick}
                     onSelectMove={handleMoveLinkClick}
                     onSelectPokemon={handlePokemonSelect}

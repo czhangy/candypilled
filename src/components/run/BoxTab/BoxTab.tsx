@@ -9,6 +9,7 @@ import PokemonPreview from './PokemonPreview/PokemonPreview';
 
 interface BoxTabProps {
     game: Game;
+    onDeselectPokemon: () => void;
     onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
     onSelectPokemon: (location: string) => void;
@@ -18,6 +19,7 @@ interface BoxTabProps {
 
 const BoxTab: React.FC<BoxTabProps> = ({
     game,
+    onDeselectPokemon,
     onSelectAbility,
     onSelectMove,
     onSelectPokemon,
@@ -64,6 +66,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
 
     const handleViewChange = (nextView: BoxView): void => {
         setView(nextView);
+        onDeselectPokemon();
     };
 
     // -------------------------------------------------------------------------
