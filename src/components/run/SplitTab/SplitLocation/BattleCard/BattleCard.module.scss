@@ -235,11 +235,7 @@
                             }
 
                             .move-button {
-                                background: color-mix(
-                                    in srgb,
-                                    var(--move-color, $background-light) 30%,
-                                    transparent
-                                );
+                                background: move-tile-background();
                                 border: none;
                                 color: inherit;
                                 cursor: pointer;
@@ -251,19 +247,8 @@
 
                                 @media (hover: hover) {
                                     &:hover {
-                                        background: color-mix(
-                                            in srgb,
-                                            color-mix(
-                                                    in srgb,
-                                                    var(
-                                                            --move-color,
-                                                            $background-light
-                                                        )
-                                                        30%,
-                                                    transparent
-                                                )
-                                                85%,
-                                            black 15%
+                                        background: move-tile-hover-background(
+
                                         );
                                     }
                                 }

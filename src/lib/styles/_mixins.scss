@@ -29,6 +29,18 @@
     font-weight: 700;
 }
 
+@function move-tile-background() {
+    @return color-mix(
+        in srgb,
+        var(--move-color, $background-light) 80%,
+        transparent
+    );
+}
+
+@function move-tile-hover-background() {
+    @return color-mix(in srgb, move-tile-background() 65%, black 15%);
+}
+
 @mixin outline-button($color) {
     background: none;
     border: 1px solid $color;

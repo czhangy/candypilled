@@ -3,11 +3,7 @@
 
 .move-card {
     align-items: center;
-    background: color-mix(
-        in srgb,
-        var(--move-color, $background-light) 30%,
-        transparent
-    );
+    background: move-tile-background();
     border: none;
     border-radius: 0.25rem;
     color: inherit;
@@ -29,16 +25,7 @@
 
     @media (hover: hover) {
         &:is(button):hover {
-            background: color-mix(
-                in srgb,
-                color-mix(
-                        in srgb,
-                        var(--move-color, $background-light) 30%,
-                        transparent
-                    )
-                    85%,
-                black 15%
-            );
+            background: move-tile-hover-background();
         }
     }
 
