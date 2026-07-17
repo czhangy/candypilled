@@ -6,7 +6,7 @@ import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/E
 import LearnsetList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
 import LocationsList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LocationsList/LocationsList';
 import StatsChart from '@/components/run/SplitTab/SplitLocation/PokedexTile/StatsChart/StatsChart';
-import { BattlePokemon, Game } from '@/lib/static/types';
+import { CaughtPokemon, Game } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -23,7 +23,7 @@ type PokedexTileProps = (
           mode: 'catch';
           onAddPokemon: (
               details: Pick<
-                  BattlePokemon,
+                  CaughtPokemon,
                   | 'ability'
                   | 'evs'
                   | 'ivs'
@@ -31,6 +31,7 @@ type PokedexTileProps = (
                   | 'moves'
                   | 'name'
                   | 'nature'
+                  | 'tags'
               >
           ) => void;
           onRemovePokemon: () => void;
@@ -123,8 +124,15 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
 
     const handleAddPokemon = (
         details: Pick<
-            BattlePokemon,
-            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            CaughtPokemon,
+            | 'ability'
+            | 'evs'
+            | 'ivs'
+            | 'level'
+            | 'moves'
+            | 'name'
+            | 'nature'
+            | 'tags'
         >
     ): void => {
         if (rest.mode !== 'catch') return;
@@ -359,6 +367,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                         allSpecies={EncounterHelpers.getAllEncounterSpecies(
                             game
                         )}
+                        buttonTextColor={game.textContrastColor}
                         defaultLevel={rest.defaultLevel}
                         defaultLocation=""
                         defaultSpecies={defaultCatchSpecies}

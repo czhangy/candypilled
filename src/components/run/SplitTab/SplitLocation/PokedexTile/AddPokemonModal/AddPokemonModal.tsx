@@ -2,13 +2,14 @@
 
 import { useState } from 'react';
 import Modal from '@/components/common/Modal/Modal';
-import { BattlePokemon } from '@/lib/static/types';
+import { CaughtPokemon } from '@/lib/static/types';
 import styles from './AddPokemonModal.module.scss';
 import PokemonForm from './PokemonForm/PokemonForm';
 
 type AddPokemonModalProps = {
     accentColor?: string;
     allSpecies: string[];
+    buttonTextColor?: string;
     defaultLevel?: number;
     defaultLocation: string;
     defaultSpecies: string;
@@ -17,8 +18,15 @@ type AddPokemonModalProps = {
     onClose: () => void;
     onSubmit: (
         details: Pick<
-            BattlePokemon,
-            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            CaughtPokemon,
+            | 'ability'
+            | 'evs'
+            | 'ivs'
+            | 'level'
+            | 'moves'
+            | 'name'
+            | 'nature'
+            | 'tags'
         >,
         location: string
     ) => void;
@@ -28,6 +36,7 @@ type AddPokemonModalProps = {
 const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
     accentColor,
     allSpecies,
+    buttonTextColor,
     defaultLevel,
     defaultLocation,
     defaultSpecies,
@@ -55,8 +64,15 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
 
     const handleFormSubmit = (
         details: Pick<
-            BattlePokemon,
-            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            CaughtPokemon,
+            | 'ability'
+            | 'evs'
+            | 'ivs'
+            | 'level'
+            | 'moves'
+            | 'name'
+            | 'nature'
+            | 'tags'
         >
     ): void => {
         onSubmit(details, location);
@@ -77,7 +93,12 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
     // -------------------------------------------------------------------------
 
     return (
-        <Modal accentColor={accentColor} onClose={onClose} title="Add Pokemon">
+        <Modal
+            accentColor={accentColor}
+            buttonTextColor={buttonTextColor}
+            onClose={onClose}
+            title="Add Pokemon"
+        >
             <div className={styles['add-pokemon-modal']}>
                 {showLocation && (
                     <div className={styles.field}>
@@ -105,6 +126,7 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
                     showEvs={false}
                     showLevel
                     showMoves
+                    showTags={false}
                     submitLabel="Add"
                 />
             </div>

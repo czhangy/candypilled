@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
+import TagInput from '@/components/common/TagInput/TagInput';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { STAT_FIELDS } from '@/lib/static/constants';
 import { Nature } from '@/lib/static/enums';
 import {
     AbilitySlot,
-    BattlePokemon,
+    CaughtPokemon,
     DropdownOption,
     StatValues,
 } from '@/lib/static/types';
@@ -23,19 +24,28 @@ type PokemonFormProps = {
     defaultMoves?: string[];
     defaultNature?: Nature;
     defaultSpecies: string;
+    defaultTags?: string[];
     disabledReason: string;
     generation: number;
     lockSpecies: boolean;
     onSubmit: (
         details: Pick<
-            BattlePokemon,
-            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            CaughtPokemon,
+            | 'ability'
+            | 'evs'
+            | 'ivs'
+            | 'level'
+            | 'moves'
+            | 'name'
+            | 'nature'
+            | 'tags'
         >
     ) => void;
     showAbility: boolean;
     showEvs: boolean;
     showLevel: boolean;
     showMoves: boolean;
+    showTags: boolean;
     submitLabel: string;
 };
 
@@ -48,6 +58,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     defaultMoves,
     defaultNature,
     defaultSpecies,
+    defaultTags,
     disabledReason,
     generation,
     lockSpecies,
@@ -56,6 +67,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     showEvs,
     showLevel,
     showMoves,
+    showTags,
     submitLabel,
 }) => {
     // -------------------------------------------------------------------------
@@ -127,6 +139,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     const [moves, setMoves] = useState<string[]>(
         () => defaultMoves ?? getStartingMoves(defaultSpecies, DEFAULT_LEVEL)
     );
+    const [tags, setTags] = useState<string[]>(defaultTags ?? []);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -150,6 +163,10 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
 
     const handleNatureChange = (value: string): void => {
         setNature(value as Nature);
+    };
+
+    const handleTagsChange = (value: string[]): void => {
+        setTags(value);
     };
 
     const handleIvChange = (
@@ -195,6 +212,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
             moves: moves.filter(Boolean),
             name: species,
             nature,
+            tags,
         });
     };
 
@@ -350,6 +368,12 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
                     ))}
                 </div>
             </div>
+            {showTags && (
+                <div className={styles.field}>
+                    <span className={styles.label}>Tags</span>
+                    <TagInput onChange={handleTagsChange} tags={tags} />
+                </div>
+            )}
             {showEvs && (
                 <div className={styles.field}>
                     <span className={styles.label}>EVs</span>

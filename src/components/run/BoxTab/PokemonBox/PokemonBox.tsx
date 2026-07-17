@@ -1,13 +1,17 @@
+import { useState } from 'react';
 import Image from 'next/image';
+import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { PokemonStatus } from '@/lib/static/enums';
 import { BoxView, CaughtPokemon } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './PokemonBox.module.scss';
+import TagFilter from './TagFilter/TagFilter';
 
 type PokemonBoxProps = {
     caughtPokemon: CaughtPokemon[];
     levelCap: number | null;
     onAddPokemonClick: () => void;
+    onReorderPokemon: (fromLocation: string, toLocation: string) => void;
     onSelectPokemon: (location: string) => void;
     onViewChange: (view: BoxView) => void;
     selectedPokemon?: string;
@@ -19,6 +23,7 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
     caughtPokemon,
     levelCap,
     onAddPokemonClick,
+    onReorderPokemon,
     onSelectPokemon,
     onViewChange,
     selectedPokemon,
@@ -32,16 +37,32 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
     const SPRITE_SIZE = 96;
 
     // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [draggedLocation, setDraggedLocation] = useState('');
+    const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+    // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const displayedPokemon = caughtPokemon.filter((pokemon) =>
-        view === 'graveyard'
-            ? pokemon.status === PokemonStatus.Dead
-            : pokemon.status !== PokemonStatus.Dead
+    const allTags = [
+        ...new Set(caughtPokemon.flatMap((pokemon) => pokemon.tags)),
+    ].sort((a, b) => a.localeCompare(b));
+    const displayedPokemon = caughtPokemon.filter(
+        (pokemon) =>
+            (view === 'graveyard'
+                ? pokemon.status === PokemonStatus.Dead
+                : pokemon.status !== PokemonStatus.Dead) &&
+            selectedTags.every((tag) => pokemon.tags.includes(tag))
     );
     const emptyMessage =
-        view === 'graveyard' ? 'Graveyard is empty' : 'Box is empty';
+        selectedTags.length > 0
+            ? 'No Pokemon match the selected tags'
+            : view === 'graveyard'
+              ? 'Graveyard is empty'
+              : 'Box is empty';
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -53,6 +74,30 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
 
     const handleViewClick = (nextView: BoxView): void => {
         onViewChange(nextView);
+    };
+
+    const handleTagsChange = (tags: string[]): void => {
+        setSelectedTags(tags);
+    };
+
+    const handleDragStart = (location: string): void => {
+        setDraggedLocation(location);
+    };
+
+    const handleDragOver = (e: React.DragEvent<HTMLButtonElement>): void => {
+        e.preventDefault();
+    };
+
+    const handleDrop = (location: string): void => {
+        if (draggedLocation && draggedLocation !== location) {
+            onReorderPokemon(draggedLocation, location);
+        }
+
+        setDraggedLocation('');
+    };
+
+    const handleDragEnd = (): void => {
+        setDraggedLocation('');
     };
 
     // -------------------------------------------------------------------------
@@ -88,6 +133,13 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                 >
                     Graveyard
                 </button>
+                {allTags.length > 0 && (
+                    <TagFilter
+                        onChange={handleTagsChange}
+                        selectedTags={selectedTags}
+                        tags={allTags}
+                    />
+                )}
                 {view === 'box' && (
                     <button
                         className={styles['add-button']}
@@ -129,13 +181,22 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                                         pokemon.location === selectedPokemon &&
                                             styles['slot--selected'],
                                         isOverCap && styles['slot--over-cap'],
+                                        pokemon.location === draggedLocation &&
+                                            styles['slot--dragging'],
                                     ]
                                         .filter(Boolean)
                                         .join(' ')}
+                                    draggable
                                     key={pokemon.location}
                                     onClick={() =>
                                         handlePokemonClick(pokemon.location)
                                     }
+                                    onDragEnd={handleDragEnd}
+                                    onDragOver={handleDragOver}
+                                    onDragStart={() =>
+                                        handleDragStart(pokemon.location)
+                                    }
+                                    onDrop={() => handleDrop(pokemon.location)}
                                     type="button"
                                 >
                                     {sprite && (
@@ -145,6 +206,14 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                                             src={sprite}
                                             width={SPRITE_SIZE}
                                         />
+                                    )}
+                                    {pokemon.tags.length > 0 && (
+                                        <Tooltip
+                                            position="right"
+                                            text={pokemon.tags.join(', ')}
+                                        >
+                                            <span className={styles.tag} />
+                                        </Tooltip>
                                     )}
                                 </button>
                             );

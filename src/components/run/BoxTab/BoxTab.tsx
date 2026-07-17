@@ -1,13 +1,7 @@
 import { useState } from 'react';
 import AddPokemonModal from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/AddPokemonModal';
 import { PokemonStatus } from '@/lib/static/enums';
-import {
-    BattlePokemon,
-    BoxView,
-    CaughtPokemon,
-    Game,
-    Run,
-} from '@/lib/static/types';
+import { BoxView, CaughtPokemon, Game, Run } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -86,8 +80,15 @@ const BoxTab: React.FC<BoxTabProps> = ({
 
     const handleAddPokemon = (
         details: Pick<
-            BattlePokemon,
-            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            CaughtPokemon,
+            | 'ability'
+            | 'evs'
+            | 'ivs'
+            | 'level'
+            | 'moves'
+            | 'name'
+            | 'nature'
+            | 'tags'
         >,
         location: string
     ): void => {
@@ -130,8 +131,15 @@ const BoxTab: React.FC<BoxTabProps> = ({
     const handleEditPokemon = (
         pokemon: CaughtPokemon,
         details: Pick<
-            BattlePokemon,
-            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            CaughtPokemon,
+            | 'ability'
+            | 'evs'
+            | 'ivs'
+            | 'level'
+            | 'moves'
+            | 'name'
+            | 'nature'
+            | 'tags'
         >
     ): void => {
         const updatedRun: Run = {
@@ -164,6 +172,33 @@ const BoxTab: React.FC<BoxTabProps> = ({
         onDeselectPokemon();
     };
 
+    const handleReorderPokemon = (
+        fromLocation: string,
+        toLocation: string
+    ): void => {
+        const fromIndex = run.caughtPokemon.findIndex(
+            (pokemon) => pokemon.location === fromLocation
+        );
+        const toIndex = run.caughtPokemon.findIndex(
+            (pokemon) => pokemon.location === toLocation
+        );
+
+        if (fromIndex === -1 || toIndex === -1 || fromIndex === toIndex) {
+            return;
+        }
+
+        const reorderedPokemon = [...run.caughtPokemon];
+        const [movedPokemon] = reorderedPokemon.splice(fromIndex, 1);
+        reorderedPokemon.splice(toIndex, 0, movedPokemon);
+
+        const updatedRun: Run = {
+            ...run,
+            caughtPokemon: reorderedPokemon,
+        };
+
+        LocalStorageHelpers.saveRun(game, updatedRun);
+    };
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -174,6 +209,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 caughtPokemon={run.caughtPokemon}
                 levelCap={levelCap}
                 onAddPokemonClick={handleAddPokemonClick}
+                onReorderPokemon={handleReorderPokemon}
                 onSelectPokemon={onSelectPokemon}
                 onViewChange={handleViewChange}
                 selectedPokemon={selectedPokemon}
@@ -182,6 +218,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
             />
             <PokemonPreview
                 accentColor={game.accentColor}
+                buttonTextColor={game.textContrastColor}
                 generation={game.generation}
                 levelCap={levelCap}
                 onEdit={handleEditPokemon}
@@ -197,6 +234,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 <AddPokemonModal
                     accentColor={game.accentColor}
                     allSpecies={allSpecies}
+                    buttonTextColor={game.textContrastColor}
                     defaultLocation=""
                     defaultSpecies={allSpecies[0] ?? ''}
                     existingLocations={run.caughtPokemon.map(

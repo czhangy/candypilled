@@ -1,18 +1,26 @@
 import { useSyncExternalStore } from 'react';
 import Modal from '@/components/common/Modal/Modal';
 import PokemonForm from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/PokemonForm/PokemonForm';
-import { BattlePokemon, CaughtPokemon } from '@/lib/static/types';
+import { CaughtPokemon } from '@/lib/static/types';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
 
 type EditPokemonModalProps = {
     accentColor: string;
+    buttonTextColor?: string;
     generation: number;
     onClose: () => void;
     onSubmit: (
         details: Pick<
-            BattlePokemon,
-            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            CaughtPokemon,
+            | 'ability'
+            | 'evs'
+            | 'ivs'
+            | 'level'
+            | 'moves'
+            | 'name'
+            | 'nature'
+            | 'tags'
         >
     ) => void;
     pokemon: CaughtPokemon;
@@ -20,6 +28,7 @@ type EditPokemonModalProps = {
 
 const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
     accentColor,
+    buttonTextColor,
     generation,
     onClose,
     onSubmit,
@@ -58,6 +67,7 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
     return (
         <Modal
             accentColor={accentColor}
+            buttonTextColor={buttonTextColor}
             onClose={onClose}
             title={`Edit ${pokemon.name}`}
         >
@@ -70,6 +80,7 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
                 defaultMoves={defaultMoves}
                 defaultNature={pokemon.nature}
                 defaultSpecies={pokemon.name}
+                defaultTags={pokemon.tags}
                 disabledReason=""
                 generation={generation}
                 lockSpecies
@@ -78,6 +89,7 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
                 showEvs={!hideEvs}
                 showLevel
                 showMoves
+                showTags
                 submitLabel="Save"
             />
         </Modal>

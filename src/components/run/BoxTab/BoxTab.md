@@ -55,10 +55,13 @@ the currently selected Pokemon on the right, taking up the remaining third.
   and switches `view` to the box the Pokemon now belongs in (`'graveyard'`
   if it was just killed, `'box'` if it was just revived)
 - `handleEditPokemon` — merges a caught Pokemon's edited details (ability,
-  EVs, IVs, level, moves, nature) into `run.caughtPokemon` and saves the
-  updated run
+  EVs, IVs, level, moves, nature, tags) into `run.caughtPokemon` and saves
+  the updated run
 - `handleEvolve` — updates a caught Pokemon's `name` to the confirmed
   evolution's species and saves the updated run
 - `handleViewChange` — sets `view` to the view clicked in `PokemonBox`'s
   header and calls `onDeselectPokemon`, since the previously selected
   Pokemon may not belong to the newly shown view
+- `handleReorderPokemon` — moves the caught Pokemon at the dragged
+  location to the drop target's index within `run.caughtPokemon` and
+  saves the updated run

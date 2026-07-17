@@ -2,12 +2,7 @@ import { useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import { STAT_FIELDS } from '@/lib/static/constants';
 import { PokemonStatus } from '@/lib/static/enums';
-import {
-    BattlePokemon,
-    BoxView,
-    CaughtPokemon,
-    StatValues,
-} from '@/lib/static/types';
+import { BoxView, CaughtPokemon, StatValues } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -21,13 +16,21 @@ import styles from './PokemonPreview.module.scss';
 
 type PokemonPreviewProps = {
     accentColor: string;
+    buttonTextColor?: string;
     generation: number;
     levelCap: number | null;
     onEdit: (
         pokemon: CaughtPokemon,
         details: Pick<
-            BattlePokemon,
-            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            CaughtPokemon,
+            | 'ability'
+            | 'evs'
+            | 'ivs'
+            | 'level'
+            | 'moves'
+            | 'name'
+            | 'nature'
+            | 'tags'
         >
     ) => void;
     onEvolve: (pokemon: CaughtPokemon, newName: string) => void;
@@ -41,6 +44,7 @@ type PokemonPreviewProps = {
 
 const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     accentColor,
+    buttonTextColor,
     generation,
     levelCap,
     onEdit,
@@ -100,8 +104,15 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
 
     const handleEditSubmit = (
         details: Pick<
-            BattlePokemon,
-            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            CaughtPokemon,
+            | 'ability'
+            | 'evs'
+            | 'ivs'
+            | 'level'
+            | 'moves'
+            | 'name'
+            | 'nature'
+            | 'tags'
         >
     ): void => {
         setIsEditOpen(false);
@@ -331,6 +342,27 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                             </span>
                                         </div>
                                     )}
+                                    {pokemon.tags.length > 0 && (
+                                        <div className={styles.detail}>
+                                            <span
+                                                className={
+                                                    styles['detail-label']
+                                                }
+                                            >
+                                                Tags
+                                            </span>
+                                            <div className={styles.tags}>
+                                                {pokemon.tags.map((tag) => (
+                                                    <span
+                                                        className={styles.tag}
+                                                        key={tag}
+                                                    >
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                             <div className={styles.actions}>
@@ -399,6 +431,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
             {isEditOpen && pokemon && (
                 <EditPokemonModal
                     accentColor={accentColor}
+                    buttonTextColor={buttonTextColor}
                     generation={generation}
                     onClose={handleEditClose}
                     onSubmit={handleEditSubmit}

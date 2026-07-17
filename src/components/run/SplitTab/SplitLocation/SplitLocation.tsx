@@ -7,7 +7,7 @@ import { STARTER_LOCATION_NAME } from '@/lib/static/constants';
 import { PokemonStatus } from '@/lib/static/enums';
 import {
     Battle,
-    BattlePokemon,
+    CaughtPokemon,
     Encounter,
     Game,
     Location,
@@ -163,8 +163,15 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
 
     const handleAddPokemon = (
         details: Pick<
-            BattlePokemon,
-            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            CaughtPokemon,
+            | 'ability'
+            | 'evs'
+            | 'ivs'
+            | 'level'
+            | 'moves'
+            | 'name'
+            | 'nature'
+            | 'tags'
         >
     ): void => {
         const updatedRun: Run = {

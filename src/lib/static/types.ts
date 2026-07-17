@@ -42,6 +42,9 @@ export type BattlePokemon = {
 export type CaughtPokemon = BattlePokemon & {
     location: string;
     status: PokemonStatus;
+    // Freeform labels the player assigns to organize their box (e.g. "Ace",
+    // "Trade").
+    tags: string[];
 };
 
 // The two views of the box tab's caught Pokemon grid: living Pokemon
@@ -118,6 +121,9 @@ export type Game = {
     splits: Split[];
     starters: string[];
     accentColor: string;
+    // Text color for the starter select modal's submit buttons; falls back
+    // to their current default color when not provided.
+    textContrastColor?: string;
     encounters: Record<string, LocationEncounters>;
     // Game-specific messages shown at random on the run page when a run is
     // marked as a wipe, alongside the run page's default messages.

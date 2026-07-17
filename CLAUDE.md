@@ -14,6 +14,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 > ALWAYS ALWAYS ALWAYS prefer making props or params required. NEVER assume future use cases for making something optional. Only make something optional if it needs to be optional right now.
 
+> Never account for backwards compatibility (e.g. old localStorage data missing a newly added field) unless explicitly told to do so.
+
 ## Commands
 
 ```bash

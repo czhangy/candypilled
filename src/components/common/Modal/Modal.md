@@ -10,13 +10,14 @@ area scrolls independently when taller than the modal.
 
 ## Props
 
-| Prop          | Type              | Required | Default | Description                                                                                                               |
-| ------------- | ----------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `accentColor` | `string`          | No       | -       | Sets `--accent-color` on the modal's portaled root, since it renders outside any ancestor that would otherwise provide it |
-| `children`    | `React.ReactNode` | Yes      | -       | The modal's content                                                                                                       |
-| `maxWidth`    | `string`          | No       | `32rem` | Overrides the modal's max width, for content wider than the default                                                       |
-| `onClose`     | `() => void`      | Yes      | -       | Called once the close request (and its exit animation, if any) has finished                                               |
-| `title`       | `string`          | No       | -       | Title text shown in the modal's header                                                                                    |
+| Prop              | Type              | Required | Default | Description                                                                                                                    |
+| ----------------- | ----------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `accentColor`     | `string`          | No       | -       | Sets `--accent-color` on the modal's portaled root, since it renders outside any ancestor that would otherwise provide it      |
+| `buttonTextColor` | `string`          | No       | -       | Sets `--button-text-color` on the modal's portaled root, since it renders outside any ancestor that would otherwise provide it |
+| `children`        | `React.ReactNode` | Yes      | -       | The modal's content                                                                                                            |
+| `maxWidth`        | `string`          | No       | `32rem` | Overrides the modal's max width, for content wider than the default                                                            |
+| `onClose`         | `() => void`      | Yes      | -       | Called once the close request (and its exit animation, if any) has finished                                                    |
+| `title`           | `string`          | No       | -       | Title text shown in the modal's header                                                                                         |
 
 ## State
 

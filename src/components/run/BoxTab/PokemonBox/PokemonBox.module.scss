@@ -10,6 +10,7 @@
     overflow: hidden;
 
     .header {
+        align-items: center;
         background: $background-light;
         border-bottom: 1px solid $border-subtle;
         display: flex;
@@ -96,7 +97,18 @@
             display: flex;
             justify-content: center;
             padding: 0.4rem;
+            position: relative;
             transition: background-color 0.2s ease;
+
+            .tag {
+                background: var(--accent-color);
+                border-radius: 50%;
+                height: 0.5rem;
+                position: absolute;
+                right: 0.4rem;
+                top: 0.4rem;
+                width: 0.5rem;
+            }
 
             @media (hover: hover) {
                 &:hover:not(&--selected) {
@@ -121,6 +133,10 @@
                     filter: grayscale(100%);
                     opacity: 0.4;
                 }
+            }
+
+            &--dragging {
+                opacity: 0.4;
             }
 
             img {
