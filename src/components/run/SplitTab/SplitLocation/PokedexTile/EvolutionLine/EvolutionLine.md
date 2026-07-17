@@ -18,13 +18,16 @@ whose cloak/form isn't tracked by evolution data) is itself expanded
 into one branch per form, rather than silently collapsing to a single
 arbitrary form. Each step's sprite is clickable, letting the caller
 switch which Pokemon in the line is being viewed. Renders itself
-recursively for each step in the line.
+recursively for each step in the line. When the global "Disable Trade
+Evolutions" setting is enabled, branches reachable only via trade are
+omitted entirely, along with everything beneath them.
 
 ## Props
 
 | Prop              | Type                        | Required | Default | Description                                                            |
 | ----------------- | --------------------------- | -------- | ------- | ---------------------------------------------------------------------- |
 | `currentName`     | `string`                    | No       | -       | The currently selected species, highlighted if it appears in this step |
+| `hideTradeEvos`   | `boolean`                   | Yes      | -       | Whether trade-only evolution branches are omitted                      |
 | `onSelectSpecies` | `(species: string) => void` | Yes      | -       | Called with a step's species when its sprite is clicked                |
 | `step`            | `EvolutionStep`             | Yes      | -       | The evolution step to render, along with its descendants               |
 | `variant`         | `string`                    | Yes      | -       | The sprite variant to prefer, matching the game's slug                 |
@@ -35,6 +38,9 @@ recursively for each step in the line.
   `PokemonHelpers`
 - `isCurrent` — whether `step` matches `currentName`, used to highlight
   the selected Pokemon within the line
+- `visibleEvolutions` — `step.evolvesTo` filtered to exclude branches
+  whose every method requires a trade (via
+  `EvolutionHelpers.isTradeEvolution`) when `hideTradeEvos` is enabled
 - for each branch, `formNames` — the branch's target name expanded via
   `PokemonHelpers.getPokemonForms` into every matching form key (one,
   unless the name is ambiguous between multiple forms); one branch is

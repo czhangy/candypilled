@@ -10,6 +10,11 @@ export const SETTINGS: Setting[] = [
         description:
             'Remove dupes from encounter tables, rescaling encounter rates to 100%.',
     },
+    {
+        id: 'disable-trade-evos',
+        title: 'Disable Trade Evolutions',
+        description: 'Disables trade evolutions and hides them from display.',
+    },
 ];
 
 export const STAT_FIELDS: { key: keyof StatValues; label: string }[] = [

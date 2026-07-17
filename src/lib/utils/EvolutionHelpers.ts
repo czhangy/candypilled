@@ -103,6 +103,15 @@ export default class EvolutionHelpers {
         );
     }
 
+    /** Whether every method reaching a step requires a trade. */
+    static isTradeEvolution(methods: EvolutionMethod[] | undefined): boolean {
+        return (
+            !!methods &&
+            methods.length > 0 &&
+            methods.every((method) => method.trigger === 'trade')
+        );
+    }
+
     /**
      * The evolution steps directly reachable from name, i.e. the species it
      * can evolve into right now (empty if name doesn't evolve further).

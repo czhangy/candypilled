@@ -85,6 +85,9 @@ Operates in one of two mutually exclusive modes, set via `mode`:
   with "(Hidden)"
 - `catchRate` — the selected species' catch rate, resolved via
   `PokemonHelpers`
+- `hideTradeEvos` — the global "Disable Trade Evolutions" setting's
+  current value, read from `localStorage` via `SettingsHelpers` and
+  forwarded to `EvolutionLine` to omit trade-only branches
 - `evolutionLine` — the selected species' full evolution family tree at
   `generation` (every branch from the family's base species, not just
   the ones leading to the selected species), resolved via
