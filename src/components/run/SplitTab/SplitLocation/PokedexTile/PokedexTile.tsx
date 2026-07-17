@@ -367,6 +367,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                         allSpecies={EncounterHelpers.getAllEncounterSpecies(
                             game
                         )}
+                        buttonTextColor={game.textContrastColor}
                         defaultLevel={rest.defaultLevel}
                         defaultLocation=""
                         defaultSpecies={defaultCatchSpecies}

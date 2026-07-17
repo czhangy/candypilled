@@ -10,13 +10,14 @@ unchanged).
 
 ## Props
 
-| Prop          | Type                                                                                                                        | Required | Default | Description                                                                 |
-| ------------- | --------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | --------------------------------------------------------------------------- |
-| `accentColor` | `string`                                                                                                                    | Yes      | -       | The game's accent color, forwarded to `Modal`                               |
-| `generation`  | `number`                                                                                                                    | Yes      | -       | The game's generation, used to resolve the Pokemon's abilities and learnset |
-| `onClose`     | `() => void`                                                                                                                | Yes      | -       | Called when the modal requests to close                                     |
-| `onSubmit`    | `(details: Pick<CaughtPokemon, 'ability' \| 'evs' \| 'ivs' \| 'level' \| 'moves' \| 'name' \| 'nature' \| 'tags'>) => void` | Yes      | -       | Called with the edited details when the form is submitted                   |
-| `pokemon`     | `CaughtPokemon`                                                                                                             | Yes      | -       | The caught Pokemon being edited, used to prefill the form                   |
+| Prop              | Type                                                                                                                        | Required | Default | Description                                                                 |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | --------------------------------------------------------------------------- |
+| `accentColor`     | `string`                                                                                                                    | Yes      | -       | The game's accent color, forwarded to `Modal`                               |
+| `buttonTextColor` | `string`                                                                                                                    | No       | -       | The game's button text contrast color, forwarded to `Modal`                 |
+| `generation`      | `number`                                                                                                                    | Yes      | -       | The game's generation, used to resolve the Pokemon's abilities and learnset |
+| `onClose`         | `() => void`                                                                                                                | Yes      | -       | Called when the modal requests to close                                     |
+| `onSubmit`        | `(details: Pick<CaughtPokemon, 'ability' \| 'evs' \| 'ivs' \| 'level' \| 'moves' \| 'name' \| 'nature' \| 'tags'>) => void` | Yes      | -       | Called with the edited details when the form is submitted                   |
+| `pokemon`         | `CaughtPokemon`                                                                                                             | Yes      | -       | The caught Pokemon being edited, used to prefill the form                   |
 
 ## Computations
 

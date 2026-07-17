@@ -116,6 +116,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
     return (
         <Modal
             accentColor={game.accentColor}
+            buttonTextColor={game.textContrastColor}
             maxWidth="41rem"
             onClose={onClose}
             title={chosenSpeciesName ?? 'Choose your starter'}

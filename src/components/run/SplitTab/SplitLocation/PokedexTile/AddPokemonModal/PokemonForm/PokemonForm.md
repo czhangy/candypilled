@@ -105,3 +105,5 @@ the Pokemon being edited) when editing a caught Pokemon.
 
 - `--accent-color` — used to color the submit button, expected to be set
   by a parent `Modal`
+- `--button-text-color` — used to color the submit button's text, falling
+  back to the default background color if not set by a parent `Modal`

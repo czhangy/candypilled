@@ -218,6 +218,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
             />
             <PokemonPreview
                 accentColor={game.accentColor}
+                buttonTextColor={game.textContrastColor}
                 generation={game.generation}
                 levelCap={levelCap}
                 onEdit={handleEditPokemon}
@@ -233,6 +234,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 <AddPokemonModal
                     accentColor={game.accentColor}
                     allSpecies={allSpecies}
+                    buttonTextColor={game.textContrastColor}
                     defaultLocation=""
                     defaultSpecies={allSpecies[0] ?? ''}
                     existingLocations={run.caughtPokemon.map(

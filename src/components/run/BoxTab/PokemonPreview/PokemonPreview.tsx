@@ -16,6 +16,7 @@ import styles from './PokemonPreview.module.scss';
 
 type PokemonPreviewProps = {
     accentColor: string;
+    buttonTextColor?: string;
     generation: number;
     levelCap: number | null;
     onEdit: (
@@ -43,6 +44,7 @@ type PokemonPreviewProps = {
 
 const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     accentColor,
+    buttonTextColor,
     generation,
     levelCap,
     onEdit,
@@ -429,6 +431,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
             {isEditOpen && pokemon && (
                 <EditPokemonModal
                     accentColor={accentColor}
+                    buttonTextColor={buttonTextColor}
                     generation={generation}
                     onClose={handleEditClose}
                     onSubmit={handleEditSubmit}

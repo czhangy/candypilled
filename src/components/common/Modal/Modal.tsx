@@ -7,6 +7,7 @@ import styles from './Modal.module.scss';
 
 type ModalProps = {
     accentColor?: string;
+    buttonTextColor?: string;
     children: React.ReactNode;
     maxWidth?: string;
     onClose: () => void;
@@ -15,6 +16,7 @@ type ModalProps = {
 
 const Modal: React.FC<ModalProps> = ({
     accentColor,
+    buttonTextColor,
     children,
     maxWidth,
     onClose,
@@ -101,6 +103,9 @@ const Modal: React.FC<ModalProps> = ({
             style={
                 {
                     ...(accentColor && { '--accent-color': accentColor }),
+                    ...(buttonTextColor && {
+                        '--button-text-color': buttonTextColor,
+                    }),
                     ...(maxWidth && { '--modal-max-width': maxWidth }),
                 } as React.CSSProperties
             }

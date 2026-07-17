@@ -7,6 +7,7 @@ import StatHelpers from '@/lib/utils/StatHelpers';
 
 type EditPokemonModalProps = {
     accentColor: string;
+    buttonTextColor?: string;
     generation: number;
     onClose: () => void;
     onSubmit: (
@@ -27,6 +28,7 @@ type EditPokemonModalProps = {
 
 const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
     accentColor,
+    buttonTextColor,
     generation,
     onClose,
     onSubmit,
@@ -65,6 +67,7 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
     return (
         <Modal
             accentColor={accentColor}
+            buttonTextColor={buttonTextColor}
             onClose={onClose}
             title={`Edit ${pokemon.name}`}
         >

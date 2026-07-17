@@ -9,6 +9,7 @@ import PokemonForm from './PokemonForm/PokemonForm';
 type AddPokemonModalProps = {
     accentColor?: string;
     allSpecies: string[];
+    buttonTextColor?: string;
     defaultLevel?: number;
     defaultLocation: string;
     defaultSpecies: string;
@@ -35,6 +36,7 @@ type AddPokemonModalProps = {
 const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
     accentColor,
     allSpecies,
+    buttonTextColor,
     defaultLevel,
     defaultLocation,
     defaultSpecies,
@@ -91,7 +93,12 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
     // -------------------------------------------------------------------------
 
     return (
-        <Modal accentColor={accentColor} onClose={onClose} title="Add Pokemon">
+        <Modal
+            accentColor={accentColor}
+            buttonTextColor={buttonTextColor}
+            onClose={onClose}
+            title="Add Pokemon"
+        >
             <div className={styles['add-pokemon-modal']}>
                 {showLocation && (
                     <div className={styles.field}>

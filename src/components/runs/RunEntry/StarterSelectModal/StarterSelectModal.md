@@ -20,11 +20,11 @@ the "starter" method (i.e. the actual starting route).
 
 ## Props
 
-| Prop       | Type                               | Required | Default | Description                                                                       |
-| ---------- | ---------------------------------- | -------- | ------- | --------------------------------------------------------------------------------- |
-| `game`     | `Game`                             | Yes      | -       | The game the run belongs to, supplying its starters, accent color, and generation |
-| `onSelect` | `(starter: CaughtPokemon) => void` | Yes      | -       | Called with the confirmed starter's full details                                  |
-| `onClose`  | `() => void`                       | Yes      | -       | Called when the modal is dismissed without choosing                               |
+| Prop       | Type                               | Required | Default | Description                                                                            |
+| ---------- | ---------------------------------- | -------- | ------- | -------------------------------------------------------------------------------------- |
+| `game`     | `Game`                             | Yes      | -       | The game the run belongs to, supplying its starters, accent/text color, and generation |
+| `onSelect` | `(starter: CaughtPokemon) => void` | Yes      | -       | Called with the confirmed starter's full details                                       |
+| `onClose`  | `() => void`                       | Yes      | -       | Called when the modal is dismissed without choosing                                    |
 
 ## State
 
