@@ -51,6 +51,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     const METHOD_ICON_SIZE = 22;
 
     const METHOD_ORDER = [
+        'starter',
         'only-one',
         'gift',
         'gift-egg',

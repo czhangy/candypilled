@@ -103,9 +103,6 @@ export const platinum: GameVersion = {
         'sinnoh-pokemart',
     ],
     excludedSpecies: [
-        'turtwig',
-        'chimchar',
-        'piplup',
         'mesprit',
         'azelf',
         'uxie',
@@ -130,6 +127,13 @@ export const platinum: GameVersion = {
         'wayward-cave',
     ],
     methodOverrides: [
+        { location: 'sinnoh-route-201', species: 'turtwig', method: 'starter' },
+        {
+            location: 'sinnoh-route-201',
+            species: 'chimchar',
+            method: 'starter',
+        },
+        { location: 'sinnoh-route-201', species: 'piplup', method: 'starter' },
         { location: 'oreburgh-city', species: 'cranidos', method: 'fossil' },
         { location: 'oreburgh-city', species: 'shieldon', method: 'fossil' },
     ],
