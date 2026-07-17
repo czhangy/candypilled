@@ -1,0 +1,37 @@
+@use '@/styles/constants' as *;
+
+.abilities-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+
+    .ability {
+        background: none;
+        border: none;
+        color: $text-mid;
+        cursor: pointer;
+        font: inherit;
+        font-size: 0.7rem;
+        padding: 0;
+        text-align: left;
+        transition: color 0.2s ease;
+
+        @media (hover: hover) {
+            &:hover:not(&--static) {
+                color: var(--accent-color);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+
+        &--hidden {
+            color: $text-dim;
+        }
+
+        &--static {
+            cursor: default;
+        }
+    }
+}

@@ -2,32 +2,12 @@
 
 Displays details for the battle currently selected on the location map,
 under a "Battle", "Miniboss", or "Boss" label matching `LocationMap`'s
-header style. Lays out a trainer name header above a portrait and a row
-of Pokemon team slots, each showing that Pokemon's sprite (matching the
-game's sprite variant) above its name (with type badges beneath it),
-ability, nature, held item, and moveset. Non-neutral natures are
-annotated with their stat
-effects, shown in a smaller font on the same line (e.g.
-"Adamant [+Atk -SpA]"). The portrait is split into a
-field condition section above
-the sprite (e.g. "Rain") and a held items section below it, showing the
-item's count followed by its sprite (e.g. "2x" beside a Potion sprite),
-each hidden when not present on the battle. A "Fog" field
-condition is followed by an asterisk whose tooltip reads "Can be cleared
-using Defog". An "Optional"
-section appears below that for battles that aren't required to progress,
-followed by a double battle section reading "Double Battle" or, if the
-player's whole party is forced into the fight, "True Double Battle". A
-"Tag Double" section appears below that for battles fought alongside an
-ally trainer.
-A "Defeat" button below the portrait toggles the trainer's defeated
-state in storage; once defeated it reads "Defeated" and turns green, and
-can be clicked again to undo. Each Pokemon's name is prefixed with its
-level (e.g. "Lvl. 5 Chimchar"). Each Pokemon's moves are clickable, linking
-to that move's details; a move's background is tinted to match its type,
-darkening further on hover. Moves flagged as dangerous are shown in red
-text. Each Pokemon's ability is also clickable, linking to that ability's
-details; its background darkens further on hover.
+header style. Lays out a trainer name header above a portrait
+(`TrainerPanel`) and a row of Pokemon team slots (`PokemonSlot`,
+padded to six with empty slots when the team is smaller), toggling the
+trainer's defeated state in storage via `onToggleDefeated` when its
+"Defeat"/"Defeated" button is clicked. See `TrainerPanel.md` and
+`PokemonSlot.md` for the portrait and team slot behavior in detail.
 
 ## Props
 
@@ -46,18 +26,8 @@ details; its background darkens further on hover.
 
 - `team` — the Pokemon team to render, resolved via `BattleHelpers.getTeamFromOptions`
   from `battle.teamsByStarter` (keyed by the run's starter) when present,
-  falling back to `battle.team` otherwise
-- `getTypes` — a Pokemon's types at `generation`, rendered as badges
-  (`/types/{type}.png`) beneath its name
-- `getAbility` — a Pokemon's ability, using its `ability` field as an
-  override when set and otherwise falling back to its slot-1 ability at
-  `generation`, resolved via `PokemonHelpers`
-- `getMoveColor` — a move's type color at `generation`, resolved via
-  `MoveHelpers` and `TypeHelpers`, tinting that move's background
-- `MoveHelpers.isDangerousMove` — whether a move is flagged as dangerous,
-  rendering its button's text in red
-- battle item sprites are resolved via `ItemHelpers.getItemSprite`
-  (`/battle_items/{slug}.png`)
+  falling back to `battle.team` otherwise; padded to `TEAM_SLOT_COUNT`
+  (6) with `null`s and rendered as one `PokemonSlot` per entry
 
 ## SCSS Variable Dependencies
 

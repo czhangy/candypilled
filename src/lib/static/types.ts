@@ -267,6 +267,11 @@ export type LearnsetByGeneration = {
     moves: LearnsetMove[];
 };
 
+export type AbilityEntry = {
+    hidden?: boolean;
+    name: string;
+};
+
 export type PokemonData = {
     name: string;
     introducedInGeneration: number;

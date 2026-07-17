@@ -1,10 +1,13 @@
 # PokedexTile
 
-Displays details for a single Pokemon, split into a left half
-showing its sprite, name, and type badges, and a right half divided
-into an upper section (two-thirds height) listing its abilities (each
-clickable, linking to that ability's details, in `catch` mode) and
-a lower section (one-third height) showing its catch rate. Below
+Displays details for a single Pokemon. `PokemonSummary` renders the
+top section: a left half showing its sprite, name, and type badges,
+and a right half divided into an upper section (two-thirds height)
+listing its abilities via `AbilitiesList` (each clickable, linking to
+that ability's details, in `catch` mode) and a lower section
+(one-third height) showing its catch rate; a placeholder message is
+shown there instead when no Pokemon is selected. See
+`PokemonSummary.md` for that section's behavior in detail. Below
 that split, a full-width section shows the Pokemon's evolution line,
 or a "No evolution line" message for species with no evolutions, and
 below that, a full-width section shows its base stats as a horizontal
@@ -17,7 +20,6 @@ to view it elsewhere, in `catch` mode) and every wild location it can be
 found in, sorted by minimum encounter level, each linking to that
 location's card in the Splits tab (in `catch` mode), with locations whose
 encounter is already used (caught or missed) in the run highlighted red.
-If no Pokemon is selected, a placeholder message is shown instead.
 
 Operates in one of two mutually exclusive modes, set via `mode`:
 
@@ -81,16 +83,19 @@ Operates in one of two mutually exclusive modes, set via `mode`:
 ## Computations
 
 - `pokemon` — the selected species' data, resolved via `PokemonHelpers`
-- `sprite` — the selected species' sprite for the given `variant`
-- `types` — the selected species' types at `generation`, rendered as
-  badges (`/types/{type}.png`) beneath its name
+  and passed to `PokemonSummary`; when unset, `PokemonSummary` shows
+  its placeholder instead
+- `sprite` — the selected species' sprite for the given `variant`,
+  passed to `PokemonSummary`
+- `types` — the selected species' types at `generation`, passed to
+  `PokemonSummary` to render as badges beneath its name
 - `abilities` — the selected species' ability set at `generation`,
   resolved via `PokemonHelpers`
 - `abilityEntries` — `abilities` flattened into a list, with its
-  hidden ability (if any) flagged so it renders dimmer and suffixed
-  with "(Hidden)"
+  hidden ability (if any) flagged so `AbilitiesList` renders it dimmer
+  and suffixed with "(Hidden)"; passed to `PokemonSummary`
 - `catchRate` — the selected species' catch rate, resolved via
-  `PokemonHelpers`
+  `PokemonHelpers` and passed to `PokemonSummary`
 - `hideTradeEvos` — the global "Disable Trade Evolutions" setting's
   current value, read from `localStorage` via `SettingsHelpers` and
   forwarded to `EvolutionLine` to omit trade-only branches
@@ -154,5 +159,5 @@ Operates in one of two mutually exclusive modes, set via `mode`:
 ## SCSS Variable Dependencies
 
 - `--accent-color` — the active game's accent color, expected to be set
-  by a parent; used to highlight active tab labels and an ability button
-  on hover
+  by a parent; used to style the catch button's text and highlight the
+  active details tab
