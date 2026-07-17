@@ -226,6 +226,10 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         );
     };
 
+    const handleSplitSelect = (splitName: string): void => {
+        updateQueryParams({ split: splitName });
+    };
+
     const handleWipeToggle = (): void => {
         if (!game || !run) return;
 
@@ -279,6 +283,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             <SplitHeader
                                 currentSplitName={currentSplitName}
                                 game={game}
+                                onSelectSplit={handleSplitSelect}
                             />
                         )}
                         <Tabs

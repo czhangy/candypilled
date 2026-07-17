@@ -91,5 +91,7 @@ shown instead.
   `pokemon`/`move`/`ability`) with the location's slug as a URL hash, so
   the browser scrolls to its card; no-ops if the location doesn't match
   any split
+- **On split select** (from `SplitHeader`'s dropdown) — sets the `split`
+  query param without changing `tab`
 - **On Wipe toggle** — flips `run.wipe` and saves the run; the button reads
   "Wipe" when `run.wipe` is `false` and "RESPAWN" when `true`
