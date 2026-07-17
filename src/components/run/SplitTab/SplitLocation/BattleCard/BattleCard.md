@@ -37,12 +37,12 @@ details; its background darkens further on hover.
 | `onSelectAbility`  | `(name: string) => void` | Yes      | -       | Called with a Pokemon's ability when it's clicked                            |
 | `onSelectMove`     | `(name: string) => void` | Yes      | -       | Called with a move's name when it's clicked within a Pokemon's moveset       |
 | `onToggleDefeated` | `() => void`             | Yes      | -       | Called when the defeat button is clicked                                     |
-| `starter`          | `string \| null`         | Yes      | -       | The run's chosen starter, used to resolve a miniboss's starter-specific team |
+| `starter`          | `string`                 | Yes      | -       | The run's chosen starter, used to resolve a miniboss's starter-specific team |
 | `variant`          | `string`                 | Yes      | -       | The sprite variant to prefer, matching the game's slug                       |
 
 ## Computations
 
-- `team` — the Pokemon team to render, resolved via `BattleHelpers.getTeam`
+- `team` — the Pokemon team to render, resolved via `BattleHelpers.getTeamFromOptions`
   from `battle.teamsByStarter` (keyed by the run's starter) when present,
   falling back to `battle.team` otherwise
 - `getTypes` — a Pokemon's types at `generation`, rendered as badges
@@ -52,9 +52,9 @@ details; its background darkens further on hover.
   `generation`, resolved via `PokemonHelpers`
 - `getMoveColor` — a move's type color at `generation`, resolved via
   `MoveHelpers` and `TypeHelpers`, tinting that move's background
-- `MoveHelpers.isDangerous` — whether a move is flagged as dangerous,
+- `MoveHelpers.isDangerousMove` — whether a move is flagged as dangerous,
   rendering its button's text in red
-- battle item sprites are resolved via `ItemHelpers.getSprite`
+- battle item sprites are resolved via `ItemHelpers.getItemSprite`
   (`/battle_items/{slug}.png`)
 
 ## SCSS Variable Dependencies

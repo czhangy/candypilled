@@ -44,7 +44,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
 
     const variant = StringHelpers.toSlug(game.name);
     const chosenSpeciesName = chosenSpecies
-        ? (PokemonHelpers.get(chosenSpecies)?.name ?? chosenSpecies)
+        ? (PokemonHelpers.getPokemonData(chosenSpecies)?.name ?? chosenSpecies)
         : null;
     const defaultSpecies = activeStarter ?? speciesOverride ?? null;
 
@@ -68,7 +68,8 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
     const handleSelectClick = (): void => {
         if (!defaultSpecies) return;
         setChosenSpecies(
-            PokemonHelpers.get(defaultSpecies)?.name ?? defaultSpecies
+            PokemonHelpers.getPokemonData(defaultSpecies)?.name ??
+                defaultSpecies
         );
     };
 

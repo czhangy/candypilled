@@ -30,7 +30,7 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const sprite = PokemonHelpers.getSprite(step.name, variant);
+    const sprite = PokemonHelpers.getPokemonSprite(step.name, variant);
     const isCurrent =
         !!currentName && StringHelpers.toSlug(currentName) === step.name;
 
@@ -70,7 +70,9 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                 <div className={styles.branches}>
                     {step.evolvesTo.flatMap((child) => {
                         const methodLabel = child.methods
-                            ? EvolutionHelpers.getMethodLabel(child.methods)
+                            ? EvolutionHelpers.getEvolutionMethodLabel(
+                                  child.methods
+                              )
                             : undefined;
                         // A child's name is ambiguous when it doesn't
                         // resolve to its own entry (e.g. "wormadam", whose
@@ -78,7 +80,7 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                         // evolution chain doesn't track), so it's expanded
                         // into one branch per form instead of one branch
                         // per step.
-                        const formNames = PokemonHelpers.getFormOptions(
+                        const formNames = PokemonHelpers.getPokemonForms(
                             child.name
                         );
 

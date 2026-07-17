@@ -37,7 +37,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
                         isDefeated={isBattleDefeated(battle)}
                         isNextPersonalBest={isBattleNextPB(battle)}
                         isSelected={selectedBattle === battle}
-                        key={BattleHelpers.getKey(battle)}
+                        key={BattleHelpers.getBattleKey(battle)}
                         mapHeight={map.height}
                         mapWidth={map.width}
                         onClick={onBattleClick}

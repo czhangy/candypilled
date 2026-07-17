@@ -7,6 +7,7 @@ import {
     CaughtPokemon,
     StatValues,
 } from '@/lib/static/types';
+import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
@@ -133,7 +134,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     const renderStatValues = (stats: StatValues): React.ReactNode => (
         <div className={styles['stats-grid']}>
             {STAT_FIELDS.map((field) => {
-                const modifier = NatureHelpers.getModifier(
+                const modifier = NatureHelpers.getNatureModifier(
                     pokemon?.nature,
                     field.key
                 );
@@ -164,13 +165,15 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const data = pokemon ? PokemonHelpers.get(pokemon.name) : undefined;
+    const data = pokemon
+        ? PokemonHelpers.getPokemonData(pokemon.name)
+        : undefined;
     const sprite = pokemon
-        ? PokemonHelpers.getSprite(pokemon.name, variant)
+        ? PokemonHelpers.getPokemonSprite(pokemon.name, variant)
         : undefined;
     const nextEvolutions =
         pokemon && pokemon.status !== PokemonStatus.Dead
-            ? PokemonHelpers.getNextEvolutions(pokemon.name, generation)
+            ? EvolutionHelpers.getNextEvolutions(pokemon.name, generation)
             : [];
     const isOverCap =
         !!pokemon && levelCap !== null && pokemon.level > levelCap;
@@ -189,15 +192,15 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
         : undefined;
     const baseStats =
         pokemon && data
-            ? PokemonHelpers.getStats(pokemon.name, generation)
+            ? PokemonHelpers.getPokemonStats(pokemon.name, generation)
             : undefined;
     const stats =
         pokemon && baseStats
-            ? StatHelpers.calculate(
+            ? StatHelpers.calculateStats(
                   baseStats,
                   pokemon.level,
-                  StatHelpers.normalize(pokemon.ivs, 31),
-                  StatHelpers.normalize(pokemon.evs, 0),
+                  StatHelpers.normalizeStats(pokemon.ivs, 31),
+                  StatHelpers.normalizeStats(pokemon.evs, 0),
                   pokemon.nature
               )
             : undefined;

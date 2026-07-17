@@ -41,9 +41,11 @@ const AbilityDetail: React.FC<AbilityDetailProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const abilityData = ability ? AbilityHelpers.get(ability) : undefined;
+    const abilityData = ability
+        ? AbilityHelpers.getAbilityData(ability)
+        : undefined;
     const values = ability
-        ? AbilityHelpers.getValues(ability, generation)
+        ? AbilityHelpers.getAbilityForGeneration(ability, generation)
         : undefined;
 
     // -------------------------------------------------------------------------

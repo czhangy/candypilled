@@ -37,7 +37,7 @@ const EvolveModal: React.FC<EvolveModalProps> = ({
 
     const [selected, setSelected] = useState<string | undefined>(() => {
         const formNames = evolutions.flatMap((step) =>
-            PokemonHelpers.getFormOptions(step.name)
+            PokemonHelpers.getPokemonForms(step.name)
         );
         return formNames.length === 1 ? formNames[0] : undefined;
     });
@@ -47,14 +47,14 @@ const EvolveModal: React.FC<EvolveModalProps> = ({
     // -------------------------------------------------------------------------
 
     const displayName = StringHelpers.toTitleCase(
-        PokemonHelpers.get(pokemonName)?.name ?? pokemonName
+        PokemonHelpers.getPokemonData(pokemonName)?.name ?? pokemonName
     );
     // A step's name is ambiguous when it doesn't resolve to its own entry
     // (e.g. "wormadam", whose actual form depends on Burmy's cloak, which
     // the evolution chain doesn't track), so it's expanded into one
     // selectable option per form instead of one option per step.
     const formNames = evolutions.flatMap((step) =>
-        PokemonHelpers.getFormOptions(step.name)
+        PokemonHelpers.getPokemonForms(step.name)
     );
 
     // -------------------------------------------------------------------------
@@ -82,7 +82,7 @@ const EvolveModal: React.FC<EvolveModalProps> = ({
             <div className={styles['evolve-modal']}>
                 <div className={styles.options}>
                     {formNames.map((formName) => {
-                        const sprite = PokemonHelpers.getSprite(
+                        const sprite = PokemonHelpers.getPokemonSprite(
                             formName,
                             variant
                         );

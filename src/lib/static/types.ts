@@ -119,12 +119,12 @@ export interface Game {
 
 export interface Run {
     attempt: number;
-    // Battle keys (BattleHelpers.getKey), not names — trainerClass + name is
+    // Battle keys (BattleHelpers.getBattleKey), not names — trainerClass + name is
     // the unique identifier since name alone can repeat within a game.
     defeatedBattles: string[];
     personalBest: string;
     hallOfFameCount: number;
-    starter: string | null;
+    starter: string;
     caughtPokemon: CaughtPokemon[];
     // Locations whose encounter was used up without catching anything (the
     // Pokemon fled, fainted, etc.), by location name — same key space as

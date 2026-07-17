@@ -3,7 +3,8 @@ export default class TypeHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    static getColor(type: string): string | undefined {
+    /** type's display color, or undefined if type doesn't match a known type. */
+    static getTypeColor(type: string): string | undefined {
         return TypeHelpers.COLORS[type];
     }
 

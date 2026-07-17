@@ -19,8 +19,10 @@ const MoveDetail: React.FC<MoveDetailProps> = ({ generation, move }) => {
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const moveData = move ? MoveHelpers.get(move) : undefined;
-    const values = move ? MoveHelpers.getValues(move, generation) : undefined;
+    const moveData = move ? MoveHelpers.getMoveData(move) : undefined;
+    const values = move
+        ? MoveHelpers.getMoveForGeneration(move, generation)
+        : undefined;
 
     // -------------------------------------------------------------------------
     // MARKUP

@@ -33,9 +33,13 @@ const MoveCard: React.FC<MoveCardProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const moveData = move ? MoveHelpers.get(move) : undefined;
-    const values = move ? MoveHelpers.getValues(move, generation) : undefined;
-    const moveColor = values ? TypeHelpers.getColor(values.type) : undefined;
+    const moveData = move ? MoveHelpers.getMoveData(move) : undefined;
+    const values = move
+        ? MoveHelpers.getMoveForGeneration(move, generation)
+        : undefined;
+    const moveColor = values
+        ? TypeHelpers.getTypeColor(values.type)
+        : undefined;
 
     // -------------------------------------------------------------------------
     // MARKUP

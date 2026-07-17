@@ -108,7 +108,9 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     // -------------------------------------------------------------------------
 
     const [species, setSpecies] = useState(
-        () => PokemonHelpers.get(defaultSpecies)?.name ?? defaultSpecies
+        () =>
+            PokemonHelpers.getPokemonData(defaultSpecies)?.name ??
+            defaultSpecies
     );
     const [abilitySlot, setAbilitySlot] = useState<AbilitySlot>(
         defaultAbilitySlot ?? 1
@@ -212,7 +214,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
         label: name,
         value: name,
     }));
-    const abilities = PokemonHelpers.getAbilities(species, generation);
+    const abilities = PokemonHelpers.getPokemonAbilities(species, generation);
     const abilityOptions: DropdownOption[] = abilities
         ? [
               { name: abilities.slot1, slot: 1 as AbilitySlot },
@@ -230,9 +232,12 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     const natureOptions: DropdownOption[] = Object.values(Nature).map(
         (name) => ({ label: name, value: name })
     );
-    const learnset = PokemonHelpers.getLearnset(species, generation) ?? [];
+    const learnset =
+        PokemonHelpers.getPokemonLearnset(species, generation) ?? [];
     const moveNames = new Set(
-        learnset.map((move) => MoveHelpers.get(move.name)?.name ?? move.name)
+        learnset.map(
+            (move) => MoveHelpers.getMoveData(move.name)?.name ?? move.name
+        )
     );
     const moveOptions: DropdownOption[] = [
         { label: 'None', value: '' },

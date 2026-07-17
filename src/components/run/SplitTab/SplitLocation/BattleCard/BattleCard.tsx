@@ -18,7 +18,7 @@ interface BattleCardProps {
     onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
     onToggleDefeated: () => void;
-    starter: string | null;
+    starter: string;
     variant: string;
 }
 
@@ -48,7 +48,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
     // -------------------------------------------------------------------------
 
     const getTypes = (name: string): string[] =>
-        PokemonHelpers.getTypes(name, generation) ?? [];
+        PokemonHelpers.getPokemonTypes(name, generation) ?? [];
 
     const getAbility = (pokemon: BattlePokemon): string | undefined => {
         const ability = PokemonHelpers.getAbilityName(
@@ -60,8 +60,8 @@ const BattleCard: React.FC<BattleCardProps> = ({
     };
 
     const getMoveColor = (move: string): string | undefined => {
-        const type = MoveHelpers.getValues(move, generation)?.type;
-        return type ? TypeHelpers.getColor(type) : undefined;
+        const type = MoveHelpers.getMoveForGeneration(move, generation)?.type;
+        return type ? TypeHelpers.getTypeColor(type) : undefined;
     };
 
     // -------------------------------------------------------------------------
@@ -80,7 +80,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const team = BattleHelpers.getTeam(battle, starter);
+    const team = BattleHelpers.getTeamFromOptions(battle, starter);
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -105,7 +105,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                             <Image
                                 alt={`${battle.trainerClass} ${battle.name}`}
                                 height={SPRITE_SIZE}
-                                src={TrainerHelpers.getSprite(
+                                src={TrainerHelpers.getTrainerSprite(
                                     battle.trainerClass,
                                     battle.name,
                                     variant
@@ -161,7 +161,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                 <Image
                                     alt={battle.items.name}
                                     height={ITEM_SPRITE_SIZE}
-                                    src={ItemHelpers.getSprite(
+                                    src={ItemHelpers.getItemSprite(
                                         battle.items.name
                                     )}
                                     width={ITEM_SPRITE_SIZE}
@@ -200,7 +200,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                 );
                             }
 
-                            const sprite = PokemonHelpers.getSprite(
+                            const sprite = PokemonHelpers.getPokemonSprite(
                                 pokemon.name,
                                 variant
                             );
@@ -303,7 +303,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                             {pokemon.nature ? (
                                                 <>
                                                     {pokemon.nature}
-                                                    {NatureHelpers.getEffectLabel(
+                                                    {NatureHelpers.getNatureEffect(
                                                         pokemon.nature
                                                     ) && (
                                                         <span
@@ -314,7 +314,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                                             }
                                                         >
                                                             {' '}
-                                                            {NatureHelpers.getEffectLabel(
+                                                            {NatureHelpers.getNatureEffect(
                                                                 pokemon.nature
                                                             )}
                                                         </span>
@@ -338,7 +338,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                                             styles[
                                                                 'move-button'
                                                             ],
-                                                            MoveHelpers.isDangerous(
+                                                            MoveHelpers.isDangerousMove(
                                                                 move
                                                             ) &&
                                                                 styles[

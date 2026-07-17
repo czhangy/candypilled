@@ -14,7 +14,8 @@ export default class TrainerHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    static getSprite(
+    /** The sprite path for the trainer named name, of trainerClass, in variant. */
+    static getTrainerSprite(
         trainerClass: string,
         name: string,
         variant: string

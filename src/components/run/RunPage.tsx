@@ -10,8 +10,9 @@ import {
 } from 'next/navigation';
 import { GAMES } from '@/lib/static/constants';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
-import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
+import BattleHelpers from '@/lib/utils/BattleHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
+import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import AbilitiesTab from './AbilitiesTab/AbilitiesTab';
 import BoxTab from './BoxTab/BoxTab';
@@ -98,11 +99,11 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     const personalBestBattle =
         game && run?.personalBest
-            ? BattleProgressHelpers.getBattle(game, run.personalBest)
+            ? BattleHelpers.getBattle(game, run.personalBest)
             : null;
     const personalBestSplitName =
         game && run?.personalBest
-            ? BattleProgressHelpers.getSplitName(game, run.personalBest)
+            ? SplitHelpers.getSplitName(game, run.personalBest)
             : null;
     const personalBestLabel = personalBestSplitName
         ? `${personalBestSplitName} Split${

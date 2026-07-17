@@ -44,8 +44,11 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
     return (
         <ul className={styles['learnset-list']}>
             {moves.map((move) => {
-                const moveData = MoveHelpers.get(move.name);
-                const values = MoveHelpers.getValues(move.name, generation);
+                const moveData = MoveHelpers.getMoveData(move.name);
+                const values = MoveHelpers.getMoveForGeneration(
+                    move.name,
+                    generation
+                );
                 const name = moveData?.name ?? move.name;
 
                 const content = (

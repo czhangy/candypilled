@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { Game, Location, Run } from '@/lib/static/types';
-import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
+import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import SplitLocation from './SplitLocation/SplitLocation';
 import styles from './SplitTab.module.scss';
@@ -37,7 +37,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const currentSplitName = BattleProgressHelpers.getCurrentSplitName(
+    const currentSplitName = SplitHelpers.getCurrentSplitName(
         game,
         run.defeatedBattles
     );
@@ -104,7 +104,9 @@ const SplitTab: React.FC<SplitTabProps> = ({
         )?.name;
 
         return name
-            ? StringHelpers.toTitleCase(PokemonHelpers.get(name)?.name ?? name)
+            ? StringHelpers.toTitleCase(
+                  PokemonHelpers.getPokemonData(name)?.name ?? name
+              )
             : undefined;
     };
 

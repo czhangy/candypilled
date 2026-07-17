@@ -109,8 +109,10 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                 {displayedPokemon.length > 0 ? (
                     <div className={styles.grid}>
                         {displayedPokemon.map((pokemon) => {
-                            const data = PokemonHelpers.get(pokemon.name);
-                            const sprite = PokemonHelpers.getSprite(
+                            const data = PokemonHelpers.getPokemonData(
+                                pokemon.name
+                            );
+                            const sprite = PokemonHelpers.getPokemonSprite(
                                 pokemon.name,
                                 variant
                             );

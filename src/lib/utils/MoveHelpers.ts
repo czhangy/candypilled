@@ -1,5 +1,6 @@
 import { MOVES } from '@/lib/data/moves';
 import { MoveData, MoveValuesByGeneration } from '@/lib/static/types';
+import GenerationHelpers from '@/lib/utils/GenerationHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 export default class MoveHelpers {
@@ -7,23 +8,27 @@ export default class MoveHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    static get(name: string): MoveData | undefined {
+    /** The move data for `name`, or undefined if no move matches. */
+    static getMoveData(name: string): MoveData | undefined {
         return MOVES[StringHelpers.toSlug(name)];
     }
 
-    static getValues(
+    /** The values `name` had as of `generation`, or undefined if no move matches. */
+    static getMoveForGeneration(
         name: string,
         generation: number
     ): MoveValuesByGeneration | undefined {
-        const move = MoveHelpers.get(name);
+        const move = MoveHelpers.getMoveData(name);
         if (!move) return undefined;
 
-        return [...move.valuesByGeneration]
-            .reverse()
-            .find((entry) => entry.fromGeneration <= generation);
+        return GenerationHelpers.resolveGeneration(
+            move.valuesByGeneration,
+            generation
+        );
     }
 
-    static isDangerous(name: string): boolean {
-        return MoveHelpers.get(name)?.isDangerous ?? false;
+    /** Whether `name` is curated as a dangerous move. */
+    static isDangerousMove(name: string): boolean {
+        return MoveHelpers.getMoveData(name)?.isDangerous ?? false;
     }
 }

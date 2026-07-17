@@ -1,5 +1,6 @@
 import { ABILITIES } from '@/lib/data/abilities';
 import { AbilityData, AbilityValuesByGeneration } from '@/lib/static/types';
+import GenerationHelpers from '@/lib/utils/GenerationHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 export default class AbilityHelpers {
@@ -7,19 +8,22 @@ export default class AbilityHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    static get(name: string): AbilityData | undefined {
+    /** The ability data for `name`, or undefined if no ability matches. */
+    static getAbilityData(name: string): AbilityData | undefined {
         return ABILITIES[StringHelpers.toSlug(name)];
     }
 
-    static getValues(
+    /** The values `name` had as of `generation`, or undefined if no ability matches. */
+    static getAbilityForGeneration(
         name: string,
         generation: number
     ): AbilityValuesByGeneration | undefined {
-        const ability = AbilityHelpers.get(name);
+        const ability = AbilityHelpers.getAbilityData(name);
         if (!ability) return undefined;
 
-        return [...ability.valuesByGeneration]
-            .reverse()
-            .find((entry) => entry.fromGeneration <= generation);
+        return GenerationHelpers.resolveGeneration(
+            ability.valuesByGeneration,
+            generation
+        );
     }
 }

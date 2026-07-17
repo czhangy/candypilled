@@ -51,8 +51,8 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
             <PokemonForm
                 allSpecies={[]}
                 defaultAbilitySlot={pokemon.ability}
-                defaultEvs={StatHelpers.normalize(pokemon.evs, 0)}
-                defaultIvs={StatHelpers.normalize(pokemon.ivs, 31)}
+                defaultEvs={StatHelpers.normalizeStats(pokemon.evs, 0)}
+                defaultIvs={StatHelpers.normalizeStats(pokemon.ivs, 31)}
                 defaultLevel={pokemon.level}
                 defaultMoves={defaultMoves}
                 defaultNature={pokemon.nature}

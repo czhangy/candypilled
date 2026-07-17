@@ -110,7 +110,7 @@ const SpriteCarousel: React.FC = () => {
                 }
             >
                 {FRAMES.map((sprite, position) => {
-                    const src = PokemonHelpers.getSprite(
+                    const src = PokemonHelpers.getPokemonSprite(
                         sprite.name,
                         sprite.variant
                     );

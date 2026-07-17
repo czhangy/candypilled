@@ -20,6 +20,7 @@ export default class StringHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
+    /** value as a lowercase, hyphen-separated slug. */
     static toSlug(value: string): string {
         return value
             .toLowerCase()
@@ -28,12 +29,14 @@ export default class StringHelpers {
             .replace(/^-+|-+$/g, '');
     }
 
+    /** value in camelCase. */
     static toCamelCase(value: string): string {
         return StringHelpers.toSlug(value).replace(/-(.)/g, (_match, char) =>
             char.toUpperCase()
         );
     }
 
+    /** value in Title Case. */
     static toTitleCase(value: string): string {
         return StringHelpers.toSlug(value)
             .split('-')
@@ -41,14 +44,17 @@ export default class StringHelpers {
             .join(' ');
     }
 
+    /** value in CONSTANT_CASE. */
     static toConstantCase(value: string): string {
         return StringHelpers.toSlug(value).replace(/-/g, '_').toUpperCase();
     }
 
+    /** value (1-10) as a Roman numeral. */
     static toRoman(value: number): string {
         return StringHelpers.ROMAN_NUMERALS[value - 1];
     }
 
+    /** The number (1-10) a Roman numeral represents. */
     static fromRoman(value: string): number {
         return StringHelpers.ROMAN_NUMERALS.indexOf(value.toUpperCase()) + 1;
     }

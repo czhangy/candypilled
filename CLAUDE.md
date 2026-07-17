@@ -131,6 +131,8 @@ Only list variables that this component consumes but does not define. Do not lis
 - **`types.ts`** — shared TypeScript types used across multiple components
 - **`constants.ts`** — shared runtime constants (e.g. site nav items)
 
+**Every public export in `src/lib/utils/` (public static class methods, exported functions, exported constants) must have a JSDoc comment** (`/** ... */`) describing what it returns/represents. Private/internal members are exempt — regular `//` comments are fine for those, and only where the WHY isn't obvious.
+
 **All definitions belong inside the component function** in the appropriate section — including static constants that do not depend on state or props. The only things permitted at module level are imports, the component function declaration itself, and the default export.
 
 **Functions:** Always use arrow functions (`const fn = () => ...`). Never use the `function` keyword — this applies to component helpers, callbacks, and module-level functions.

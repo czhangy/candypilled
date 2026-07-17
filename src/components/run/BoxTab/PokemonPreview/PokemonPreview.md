@@ -45,12 +45,12 @@ hindered by it is highlighted blue.
 - `moveSlots` — `pokemon.moves` padded to four entries so empty move slots
   render as placeholder cards
 - `nextEvolutions` — the species the previewed Pokemon can evolve into
-  right now, via `PokemonHelpers.getNextEvolutions` (empty, and the Evolve
+  right now, via `EvolutionHelpers.getNextEvolutions` (empty, and the Evolve
   button hidden, if the Pokemon is dead or doesn't evolve further)
 - `isOverCap` — whether the previewed Pokemon's `level` exceeds `levelCap`
 - `stats` — the Pokemon's actual stat values, derived from its base stats,
-  level, IVs, EVs, and nature via `StatHelpers.calculate`, with IVs and EVs
-  normalized into a full `StatValues` via `StatHelpers.normalize`
+  level, IVs, EVs, and nature via `StatHelpers.calculateStats`, with IVs and EVs
+  normalized into a full `StatValues` via `StatHelpers.normalizeStats`
 - `renderStatValues` — renders a Pokemon's calculated stats as a per-stat
   grid, highlighting each stat red or blue if the Pokemon's nature boosts
-  or hinders it, via `NatureHelpers.getModifier`
+  or hinders it, via `NatureHelpers.getNatureModifier`
