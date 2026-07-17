@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
 import AddPokemonModal from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/AddPokemonModal';
@@ -10,6 +10,7 @@ import { BattlePokemon, Game } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
+import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './PokedexTile.module.scss';
 
@@ -61,6 +62,16 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     variant,
     ...rest
 }) => {
+    // -------------------------------------------------------------------------
+    // HOOKS
+    // -------------------------------------------------------------------------
+
+    const settings = useSyncExternalStore(
+        SettingsHelpers.subscribe,
+        SettingsHelpers.getSnapshot,
+        SettingsHelpers.getServerSnapshot
+    );
+
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
@@ -149,6 +160,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     const catchRate = species
         ? PokemonHelpers.getPokemonCatchRate(species)
         : undefined;
+    const hideTradeEvos = settings['disable-trade-evos'] ?? false;
     const evolutionLine = species
         ? EvolutionHelpers.getFullEvolutionLine(species, generation)
         : undefined;
@@ -366,6 +378,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                         {hasEvolutionBranches && evolutionLine ? (
                             <EvolutionLine
                                 currentName={species}
+                                hideTradeEvos={hideTradeEvos}
                                 onSelectSpecies={onSelectSpecies}
                                 step={evolutionLine}
                                 variant={variant}

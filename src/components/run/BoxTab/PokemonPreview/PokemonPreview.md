@@ -44,9 +44,13 @@ hindered by it is highlighted blue.
   (a slot number) via `PokemonHelpers.getAbilityName` at `generation`
 - `moveSlots` — `pokemon.moves` padded to four entries so empty move slots
   render as placeholder cards
+- `hideTradeEvos` — the global "Disable Trade Evolutions" setting's
+  current value, read from `localStorage` via `SettingsHelpers`
 - `nextEvolutions` — the species the previewed Pokemon can evolve into
   right now, via `EvolutionHelpers.getNextEvolutions` (empty, and the Evolve
-  button hidden, if the Pokemon is dead or doesn't evolve further)
+  button hidden, if the Pokemon is dead or doesn't evolve further), further
+  filtered to exclude trade-only evolutions (via
+  `EvolutionHelpers.isTradeEvolution`) when `hideTradeEvos` is enabled
 - `isOverCap` — whether the previewed Pokemon's `level` exceeds `levelCap`
 - `stats` — the Pokemon's actual stat values, derived from its base stats,
   level, IVs, EVs, and nature via `StatHelpers.calculateStats`, with IVs and EVs

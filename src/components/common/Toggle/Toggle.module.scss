@@ -1,0 +1,42 @@
+@use '@/styles/constants' as *;
+
+.toggle {
+    background: $background-light;
+    border: 1px solid $border-subtle;
+    border-radius: 999px;
+    cursor: pointer;
+    flex-shrink: 0;
+    height: 1.5rem;
+    padding: 0.15rem;
+    position: relative;
+    transition: background 0.2s ease;
+    width: 2.5rem;
+
+    .knob {
+        background: $text-dim;
+        border-radius: 50%;
+        display: block;
+        height: 1.1rem;
+        transition:
+            transform 0.2s ease,
+            background 0.2s ease;
+        width: 1.1rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+
+        .knob {
+            transition: none;
+        }
+    }
+
+    &--checked {
+        background: $accent;
+
+        .knob {
+            background: $foreground;
+            transform: translateX(1rem);
+        }
+    }
+}

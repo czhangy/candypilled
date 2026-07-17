@@ -35,6 +35,24 @@ export default class EncounterHelpers {
     }
 
     /**
+     * The display name of the wired location whose encounters include the
+     * "starter" method (i.e. the route where starters are actually handed
+     * out in-game). Assumes every game wires up such a location.
+     */
+    static getStarterLocationName(game: Game): string {
+        const locations = EncounterHelpers.getWiredLocations(game);
+
+        return locations.find(({ encountersKey }) => {
+            if (!encountersKey) return false;
+
+            const encounters = game.encounters[encountersKey]?.encounters ?? [];
+            return encounters.some(
+                (encounter) => encounter.method === 'starter'
+            );
+        })!.name;
+    }
+
+    /**
      * Every species with a wild encounter reachable from game.splits (i.e.
      * actually wired into a location/subarea, not just present somewhere in
      * game.encounters), deduped and sorted alphabetically by display name.

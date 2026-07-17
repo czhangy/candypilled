@@ -3,7 +3,9 @@
 A modal form for editing the recorded details of a caught Pokemon. Thin
 wrapper around `Modal` and `PokemonForm`, which does the actual work.
 Unlike `AddPokemonModal`, the species field is locked and EVs are
-editable alongside the rest of the Pokemon's details.
+editable alongside the rest of the Pokemon's details, unless the global
+"Hide EVs" setting is enabled, in which case the EVs field is hidden
+(the Pokemon's existing EVs are still submitted unchanged).
 
 ## Props
 
@@ -17,5 +19,8 @@ editable alongside the rest of the Pokemon's details.
 
 ## Computations
 
+- `hideEvs` — the global "Hide EVs" setting's current value, read from
+  `localStorage` via `SettingsHelpers`, forwarded to `PokemonForm` as
+  `showEvs={!hideEvs}`
 - `defaultMoves` — `pokemon.moves` padded to four entries so every move
   slot in `PokemonForm` has an initial value

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import { STAT_FIELDS } from '@/lib/static/constants';
 import { PokemonStatus } from '@/lib/static/enums';
@@ -11,6 +11,7 @@ import {
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
+import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import EditPokemonModal from './EditPokemonModal/EditPokemonModal';
@@ -51,6 +52,16 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     variant,
     view,
 }) => {
+    // -------------------------------------------------------------------------
+    // HOOKS
+    // -------------------------------------------------------------------------
+
+    const settings = useSyncExternalStore(
+        SettingsHelpers.subscribe,
+        SettingsHelpers.getSnapshot,
+        SettingsHelpers.getServerSnapshot
+    );
+
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
@@ -158,9 +169,17 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     const sprite = pokemon
         ? PokemonHelpers.getPokemonSprite(pokemon.name, variant)
         : undefined;
+    const hideTradeEvos = settings['disable-trade-evos'] ?? false;
     const nextEvolutions =
         pokemon && pokemon.status !== PokemonStatus.Dead
-            ? EvolutionHelpers.getNextEvolutions(pokemon.name, generation)
+            ? EvolutionHelpers.getNextEvolutions(
+                  pokemon.name,
+                  generation
+              ).filter(
+                  (step) =>
+                      !hideTradeEvos ||
+                      !EvolutionHelpers.isTradeEvolution(step.methods)
+              )
             : [];
     const isOverCap =
         !!pokemon && levelCap !== null && pokemon.level > levelCap;

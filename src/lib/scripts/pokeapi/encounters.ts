@@ -258,9 +258,12 @@ const resolveHoneyTreeEncounters = (encounters: Encounter[]): Encounter[] =>
             : encounter
     );
 
-const nullifyHoneyTreeChances = (encounters: Encounter[]): Encounter[] =>
+const STARTER_METHOD = 'starter';
+const NULLIFIED_CHANCE_METHODS = [HONEY_TREE_METHOD, STARTER_METHOD];
+
+const nullifyChances = (encounters: Encounter[]): Encounter[] =>
     encounters.map((encounter) =>
-        encounter.method === HONEY_TREE_METHOD
+        NULLIFIED_CHANCE_METHODS.includes(encounter.method)
             ? { ...encounter, chance: null }
             : encounter
     );
@@ -315,7 +318,7 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
             const expanded = expandTimeOfDayEncounters(merged);
             const withHoneyTree = resolveHoneyTreeEncounters(expanded);
             const remerged = mergeEncounters(withHoneyTree);
-            const encounters = nullifyHoneyTreeChances(remerged);
+            const encounters = nullifyChances(remerged);
 
             if (encounters.length === 0) continue;
             hasEncounters = true;

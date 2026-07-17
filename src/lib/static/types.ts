@@ -15,6 +15,13 @@ export type DropdownOption = {
     value: string;
 };
 
+// A single global toggle shown on the settings page. `id` is the
+// localStorage key it's persisted under (via SettingsHelpers).
+export type Setting = {
+    id: string;
+    title: string;
+};
+
 // Identifies which of a species' abilities is set: 1 = slot1, 2 = slot2,
 // 3 = hidden. Callers resolve the name via PokemonHelpers.getAbilityName.
 export type AbilitySlot = 1 | 2 | 3;

@@ -13,7 +13,10 @@ species' first ability) for setting the chosen starter's nature and IVs.
 The modal's title switches from "Choose your starter" to the chosen
 starter's name on this step. A "Back" link above the form returns to the
 first step without losing the prior selection. Submitting the form calls
-`onSelect` with the full caught-Pokemon details, located at `"Starter"`.
+`onSelect` with the full caught-Pokemon details, located at `"Starter"`
+if the global "Starter As Separate Encounter" setting is enabled,
+otherwise at the name of `game`'s wired location whose encounters use
+the "starter" method (i.e. the actual starting route).
 
 ## Props
 
@@ -41,6 +44,12 @@ first step without losing the prior selection. Submitting the form calls
 - `defaultSpecies` — `activeStarter` if set, otherwise
   `speciesOverride`; the species the "Select" button confirms, and
   whose absence disables it
+- `separateStarterEncounter` — the global "Starter As Separate
+  Encounter" setting's current value, read from `localStorage` via
+  `SettingsHelpers`
+- `starterLocation` — `"Starter"` when `separateStarterEncounter` is
+  enabled, otherwise `game`'s starting route name (resolved via
+  `EncounterHelpers.getStarterLocationName`)
 
 ## Handlers
 
@@ -53,5 +62,5 @@ first step without losing the prior selection. Submitting the form calls
 - **On "Back" click** — clears `chosenSpecies`, returning to the
   selection step
 - **On `PokemonForm` submit** — calls `onSelect` with the submitted
-  details plus `location: "Starter"` and a `status` of
+  details plus `location: starterLocation` and a `status` of
   `PokemonStatus.Alive`

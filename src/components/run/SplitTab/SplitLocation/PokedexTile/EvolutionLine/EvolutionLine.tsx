@@ -8,6 +8,7 @@ import styles from './EvolutionLine.module.scss';
 
 type EvolutionLineProps = {
     currentName?: string;
+    hideTradeEvos: boolean;
     onSelectSpecies: (species: string) => void;
     step: EvolutionStep;
     variant: string;
@@ -15,6 +16,7 @@ type EvolutionLineProps = {
 
 const EvolutionLine: React.FC<EvolutionLineProps> = ({
     currentName,
+    hideTradeEvos,
     onSelectSpecies,
     step,
     variant,
@@ -33,6 +35,10 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
     const sprite = PokemonHelpers.getPokemonSprite(step.name, variant);
     const isCurrent =
         !!currentName && StringHelpers.toSlug(currentName) === step.name;
+    const visibleEvolutions = step.evolvesTo.filter(
+        (child) =>
+            !hideTradeEvos || !EvolutionHelpers.isTradeEvolution(child.methods)
+    );
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -66,9 +72,9 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                     )}
                 </div>
             </button>
-            {step.evolvesTo.length > 0 && (
+            {visibleEvolutions.length > 0 && (
                 <div className={styles.branches}>
-                    {step.evolvesTo.flatMap((child) => {
+                    {visibleEvolutions.flatMap((child) => {
                         const methodLabel = child.methods
                             ? EvolutionHelpers.getEvolutionMethodLabel(
                                   child.methods
@@ -155,6 +161,7 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                 </div>
                                 <EvolutionLine
                                     currentName={currentName}
+                                    hideTradeEvos={hideTradeEvos}
                                     onSelectSpecies={onSelectSpecies}
                                     step={{ ...child, name: formName }}
                                     variant={variant}

@@ -22,7 +22,9 @@ so the comparison is evolution-line-aware). A row is highlighted red if
 its evolution line isn't caught here but has been caught elsewhere in
 the run, since catching it here would violate the
 one-catch-per-evolution-line rule. Either highlight takes priority
-over the selected highlight if both apply.
+over the selected highlight if both apply. When the global "Hide Dupes" setting
+is enabled, rows whose evolution line has already been caught elsewhere
+in the run are omitted entirely instead of being highlighted red.
 
 Below the header, a full-width "MISS"/"MISSED" toggle button (styled
 like the Pokedex tile's catch button, red when active) records that
@@ -35,17 +37,18 @@ missed.
 
 ## Props
 
-| Prop                | Type                             | Required | Default | Description                                                                        |
-| ------------------- | -------------------------------- | -------- | ------- | ---------------------------------------------------------------------------------- |
-| `caughtHere`        | `string`                         | No       | -       | The species already caught at this location, if any, highlighted green             |
-| `dupes`             | `string[]`                       | Yes      | -       | Every species caught so far in the run, regardless of location                     |
-| `encounters`        | `Encounter[]`                    | Yes      | -       | The encounter slots to display                                                     |
-| `generation`        | `number`                         | Yes      | -       | The game's generation, used to resolve each Pokemon's types                        |
-| `isMissed`          | `boolean`                        | Yes      | -       | Whether this location's encounter was marked missed, styling the toggle button red |
-| `onSelectEncounter` | `(encounter: Encounter) => void` | No       | -       | Called with the clicked row's encounter                                            |
-| `onToggleMissed`    | `() => void`                     | Yes      | -       | Called when the "MISS"/"MISSED" button is clicked                                  |
-| `selectedSpecies`   | `string`                         | No       | -       | The species of the currently selected row, if any, to highlight it                 |
-| `variant`           | `string`                         | Yes      | -       | The sprite variant to prefer, matching the game's slug                             |
+| Prop                      | Type                             | Required | Default | Description                                                                             |
+| ------------------------- | -------------------------------- | -------- | ------- | --------------------------------------------------------------------------------------- |
+| `caughtHere`              | `string`                         | No       | -       | The species already caught at this location, if any, highlighted green                  |
+| `dupes`                   | `string[]`                       | Yes      | -       | Every species caught so far in the run, regardless of location                          |
+| `encounters`              | `Encounter[]`                    | Yes      | -       | The encounter slots to display                                                          |
+| `generation`              | `number`                         | Yes      | -       | The game's generation, used to resolve each Pokemon's types                             |
+| `isMissed`                | `boolean`                        | Yes      | -       | Whether this location's encounter was marked missed, styling the toggle button red      |
+| `onSelectEncounter`       | `(encounter: Encounter) => void` | No       | -       | Called with the clicked row's encounter                                                 |
+| `onToggleMissed`          | `() => void`                     | Yes      | -       | Called when the "MISS"/"MISSED" button is clicked                                       |
+| `selectedSpecies`         | `string`                         | No       | -       | The species of the currently selected row, if any, to highlight it                      |
+| `starterCaughtSeparately` | `boolean`                        | Yes      | -       | Whether the run's starter was caught as its own encounter, hiding "starter"-method rows |
+| `variant`                 | `string`                         | Yes      | -       | The sprite variant to prefer, matching the game's slug                                  |
 
 ## State
 
@@ -57,8 +60,15 @@ missed.
 
 - `timesOfDay` — the distinct time-of-day conditions (`time-morning`,
   `time-day`, `time-night`) present in `encounters`, in that fixed order
+- `hideDupes` — the global "Hide Dupes" setting's current value, read
+  from `localStorage` via `SettingsHelpers`
 - `visibleEncounters` — `encounters` filtered down to those with no
-  time-of-day condition, plus those matching `selectedTimeOfDay`
+  time-of-day condition, plus those matching `selectedTimeOfDay`; when
+  `hideDupes` is enabled, rows whose evolution line is caught elsewhere
+  in the run (and not at this location) are also excluded; when
+  `starterCaughtSeparately` is true, rows using the "starter" method are
+  also excluded, since the starter is tracked as its own encounter
+  instead
 - `methods` — the distinct encounter methods present in
   `visibleEncounters`, ordered by a fixed `METHOD_ORDER` list (methods
   not in that list are sorted last)
@@ -66,6 +76,12 @@ missed.
   sorted by `chance` descending
 - `getMethodIcon` — the icon image path for a given encounter method,
   shared across all game variants (e.g. `/encounter_methods/grass.png`)
+- `getDisplayChance` — an encounter's displayed chance. When `hideDupes`
+  is disabled, this is just the encounter's own `chance`. When enabled,
+  it's rescaled against the other encounters remaining in the same
+  method group (via `getEncountersForMethod`) so the group's chances
+  still sum to 100%, truncated to a whole number (e.g. a 50/50 split
+  becomes 100% once one side is hidden as a dupe)
 - `isEvolutionLineCaught` — whether a species' evolution family
   (resolved via `PokemonHelpers`) includes any name in `dupes`
 - `isCaughtHere` — whether a row's species is in the same evolution
