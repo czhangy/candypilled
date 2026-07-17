@@ -46,9 +46,10 @@ result in the game's accent color.
 - `filteredOptions` — `options` filtered by `query` (case-insensitive
   substring match against each option's label) when `searchable` and
   `query` is non-empty, otherwise `options` unchanged
-- `getHighlightedLabel` — an option's label with the substring matching
-  `query` wrapped for accent-colored highlighting, when `searchable`
-  and `query` is non-empty
+
+Each option's label is rendered via `HighlightedText`, which highlights
+the substring matching `query` (only meaningful when `searchable`, since
+`query` otherwise stays empty).
 
 ## Handlers
 

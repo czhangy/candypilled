@@ -28,11 +28,11 @@ the accent color.
 
 - `visibleItems` — `items` filtered by `query` (case-insensitive substring
   match against each item's name) and sorted alphabetically
-- `getHighlightedName` — an item's name with its first case-insensitive
-  match against `query` wrapped in an accent-colored span, or the plain
-  name when `query` is empty or doesn't match
+
+Each item's name is rendered via `HighlightedText`, which highlights the
+substring matching `query`.
 
 ## SCSS Variable Dependencies
 
-- `--accent-color` — used to highlight the matching substring of each
-  visible item's name
+- `--accent-color` — used for the search input's focus ring and the
+  selected item's accent bar

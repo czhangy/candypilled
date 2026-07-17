@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import HighlightedText from '@/components/common/HighlightedText/HighlightedText';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { DropdownOption } from '@/lib/static/types';
 import styles from './Dropdown.module.scss';
@@ -150,27 +151,6 @@ const Dropdown: React.FC<DropdownProps> = ({
             : options;
 
     // -------------------------------------------------------------------------
-    // COMPUTATIONS
-    // -------------------------------------------------------------------------
-
-    const getHighlightedLabel = (label: string): React.ReactNode => {
-        if (!searchable || !query) return label;
-
-        const index = label.toLowerCase().indexOf(query.toLowerCase());
-        if (index === -1) return label;
-
-        return (
-            <>
-                {label.slice(0, index)}
-                <span className={styles.match}>
-                    {label.slice(index, index + query.length)}
-                </span>
-                {label.slice(index + query.length)}
-            </>
-        );
-    };
-
-    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
@@ -243,9 +223,12 @@ const Dropdown: React.FC<DropdownProps> = ({
                                                     styles['option-label']
                                                 }
                                             >
-                                                {getHighlightedLabel(
-                                                    option.label
-                                                )}
+                                                <HighlightedText
+                                                    query={
+                                                        searchable ? query : ''
+                                                    }
+                                                    text={option.label}
+                                                />
                                             </span>
                                         </button>
                                     </li>

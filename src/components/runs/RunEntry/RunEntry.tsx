@@ -175,7 +175,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             <div className={styles.actions}>
                 {run && (
                     <button
-                        className={styles.continue}
+                        className={styles.action}
                         onClick={handleContinueClick}
                         type="button"
                     >
@@ -183,7 +183,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     </button>
                 )}
                 <button
-                    className={styles['new-run']}
+                    className={styles.action}
                     onClick={handleNewRunClick}
                     type="button"
                 >
