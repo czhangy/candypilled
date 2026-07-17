@@ -42,7 +42,6 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         abilities: 'ability',
         box: 'pokemon',
         moves: 'move',
-        split: 'split',
     };
 
     const DEFAULT_WIPE_MESSAGES = [
@@ -117,7 +116,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const personalBestLabel = personalBestSplitName
         ? `${personalBestSplitName} Split${
               personalBestBattle
-                  ? ` — ${personalBestBattle.trainerClass} ${personalBestBattle.name}`
+                  ? ` — ${BattleHelpers.getFullName(personalBestBattle)}`
                   : ''
           }`
         : 'N/A';
@@ -166,12 +165,9 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     // -------------------------------------------------------------------------
 
     const handleTabChange = (id: string): void => {
-        const relevantParam = TAB_QUERY_PARAMS[id];
         const updates: Record<string, string | undefined> = { tab: id };
         Object.values(TAB_QUERY_PARAMS).forEach((param) => {
-            if (param !== relevantParam) {
-                updates[param] = undefined;
-            }
+            updates[param] = undefined;
         });
         updateQueryParams(updates);
     };

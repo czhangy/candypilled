@@ -52,7 +52,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
             </span>
             <div className={styles.content}>
                 <div className={styles['trainer-header']}>
-                    {battle.trainerClass} {battle.name}
+                    {BattleHelpers.getFullName(battle)}
                 </div>
                 <div className={styles.body}>
                     <TrainerPanel

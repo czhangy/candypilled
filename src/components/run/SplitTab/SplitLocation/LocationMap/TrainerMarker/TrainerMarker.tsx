@@ -3,6 +3,7 @@ import CrownIcon from '@/lib/icons/CrownIcon';
 import DoubleExclamationMarkIcon from '@/lib/icons/DoubleExclamationMarkIcon';
 import ExclamationMarkIcon from '@/lib/icons/ExclamationMarkIcon';
 import { Battle } from '@/lib/static/types';
+import BattleHelpers from '@/lib/utils/BattleHelpers';
 import styles from './TrainerMarker.module.scss';
 
 type TrainerMarkerProps = {
@@ -43,7 +44,7 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
         100;
     const height =
         ((trainer.isDoubleHeightMarker
-            ? TRAINER_HEIGHT_PX * 2
+            ? TRAINER_HEIGHT_PX * 2 - 20
             : TRAINER_HEIGHT_PX) /
             mapHeight) *
         100;
@@ -62,7 +63,7 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
 
     return (
         <button
-            aria-label={`${trainer.trainerClass} ${trainer.name}`}
+            aria-label={BattleHelpers.getFullName(trainer)}
             aria-pressed={isSelected}
             className={[
                 styles['trainer-marker'],

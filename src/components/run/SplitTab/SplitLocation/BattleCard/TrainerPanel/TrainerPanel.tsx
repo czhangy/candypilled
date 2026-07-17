@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { Battle } from '@/lib/static/types';
+import BattleHelpers from '@/lib/utils/BattleHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import styles from './TrainerPanel.module.scss';
@@ -33,7 +34,7 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
         <div className={styles.trainer}>
             <div className={styles['trainer__sprite']}>
                 <Image
-                    alt={`${battle.trainerClass} ${battle.name}`}
+                    alt={BattleHelpers.getFullName(battle)}
                     height={SPRITE_SIZE}
                     src={TrainerHelpers.getTrainerSprite(
                         battle.trainerClass,

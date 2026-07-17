@@ -16,6 +16,18 @@ export default class BattleHelpers {
         return `${battle.trainerClass}::${battle.name}`;
     }
 
+    /** battle's full display name, e.g. "Youngster Joey". Omits name if it is purely numeric, and omits standalone "M"/"F" gender words. */
+    static getFullName(battle: Battle): string {
+        const fullName = /^\d+$/.test(battle.name)
+            ? battle.trainerClass
+            : `${battle.trainerClass} ${battle.name}`;
+
+        return fullName
+            .split(' ')
+            .filter((word) => word !== 'M' && word !== 'F')
+            .join(' ');
+    }
+
     /** battle's team for starter, falling back to its default team. */
     static getTeamFromOptions(
         battle: Battle,
