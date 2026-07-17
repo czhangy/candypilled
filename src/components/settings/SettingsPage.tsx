@@ -34,14 +34,7 @@ const SettingsPage: React.FC = () => {
             <ul className={styles.list}>
                 {SETTINGS.map((setting) => (
                     <li className={styles.setting} key={setting.id}>
-                        <div className={styles.text}>
-                            <span className={styles.title}>
-                                {setting.title}
-                            </span>
-                            <span className={styles.description}>
-                                {setting.description}
-                            </span>
-                        </div>
+                        <span className={styles.title}>{setting.title}</span>
                         <Toggle
                             checked={values[setting.id] ?? false}
                             label={setting.title}

@@ -1,6 +1,8 @@
+import { useSyncExternalStore } from 'react';
 import Modal from '@/components/common/Modal/Modal';
 import PokemonForm from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/PokemonForm/PokemonForm';
 import { BattlePokemon, CaughtPokemon } from '@/lib/static/types';
+import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
 
 type EditPokemonModalProps = {
@@ -24,6 +26,16 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
     pokemon,
 }) => {
     // -------------------------------------------------------------------------
+    // HOOKS
+    // -------------------------------------------------------------------------
+
+    const settings = useSyncExternalStore(
+        SettingsHelpers.subscribe,
+        SettingsHelpers.getSnapshot,
+        SettingsHelpers.getServerSnapshot
+    );
+
+    // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
 
@@ -33,6 +45,7 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
+    const hideEvs = settings['hide-evs'] ?? false;
     const defaultMoves = Array.from(
         { length: MOVE_SLOT_COUNT },
         (_, index) => pokemon.moves[index] ?? ''
@@ -62,7 +75,7 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
                 lockSpecies
                 onSubmit={onSubmit}
                 showAbility
-                showEvs
+                showEvs={!hideEvs}
                 showLevel
                 showMoves
                 submitLabel="Save"

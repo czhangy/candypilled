@@ -7,13 +7,14 @@ export const SETTINGS: Setting[] = [
     {
         id: 'hide-dupes',
         title: 'Hide Dupes',
-        description:
-            'Remove dupes from encounter tables, rescaling encounter rates to 100%.',
     },
     {
         id: 'disable-trade-evos',
         title: 'Disable Trade Evolutions',
-        description: 'Disables trade evolutions and hides them from display.',
+    },
+    {
+        id: 'hide-evs',
+        title: 'Hide EVs',
     },
 ];
 

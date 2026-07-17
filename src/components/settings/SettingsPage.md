@@ -1,7 +1,7 @@
 # SettingsPage
 
 The page for `/settings`. Lists global toggles that apply across every
-run, each shown with a title and description alongside a switch.
+run, each shown with a title alongside a switch.
 
 ## Computations
 

@@ -20,7 +20,6 @@ export type DropdownOption = {
 export type Setting = {
     id: string;
     title: string;
-    description: string;
 };
 
 // Identifies which of a species' abilities is set: 1 = slot1, 2 = slot2,
