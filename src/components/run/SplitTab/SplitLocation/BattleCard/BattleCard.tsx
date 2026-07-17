@@ -130,6 +130,11 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                 </div>
                             )
                         )}
+                        {battle.isTag && (
+                            <div className={styles['trainer__metadata']}>
+                                TAG DOUBLE
+                            </div>
+                        )}
                         {battle.fieldCondition && (
                             <div className={styles['trainer__metadata']}>
                                 {battle.fieldCondition}

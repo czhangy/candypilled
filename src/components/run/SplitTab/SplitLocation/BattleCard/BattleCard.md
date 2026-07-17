@@ -17,7 +17,9 @@ condition is followed by an asterisk whose tooltip reads "Can be cleared
 using Defog". An "Optional"
 section appears below that for battles that aren't required to progress,
 followed by a double battle section reading "Double Battle" or, if the
-player's whole party is forced into the fight, "True Double Battle".
+player's whole party is forced into the fight, "True Double Battle". A
+"Tag Double" section appears below that for battles fought alongside an
+ally trainer.
 A "Defeat" button below the portrait toggles the trainer's defeated
 state in storage; once defeated it reads "Defeated" and turns green, and
 can be clicked again to undo. Each Pokemon's name is prefixed with its

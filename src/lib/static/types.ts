@@ -64,6 +64,7 @@ export type Battle = {
     isDoubleWidthMarker?: boolean;
     isMiniboss?: boolean;
     isOptional?: boolean;
+    isTag?: boolean;
     isTrueDouble?: boolean;
     items?: BattleItem;
     name: string;
