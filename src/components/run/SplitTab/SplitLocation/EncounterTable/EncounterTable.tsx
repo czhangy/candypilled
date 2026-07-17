@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import DayIcon from '@/lib/icons/DayIcon';
@@ -7,6 +7,7 @@ import NightIcon from '@/lib/icons/NightIcon';
 import { Encounter } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
+import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import styles from './EncounterTable.module.scss';
 
 type EncounterTableProps = {
@@ -32,6 +33,16 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     selectedSpecies,
     variant,
 }) => {
+    // -------------------------------------------------------------------------
+    // HOOKS
+    // -------------------------------------------------------------------------
+
+    const settings = useSyncExternalStore(
+        SettingsHelpers.subscribe,
+        SettingsHelpers.getSnapshot,
+        SettingsHelpers.getServerSnapshot
+    );
+
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
@@ -82,6 +93,15 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
             encounters.some((encounter) => encounter.conditions?.includes(time))
         );
 
+    const isCaughtHere = (species: string): boolean =>
+        !!caughtHere &&
+        EvolutionHelpers.isSameEvolutionLine(species, caughtHere, generation);
+
+    const isEvolutionLineCaught = (species: string): boolean =>
+        dupes.some((name) =>
+            EvolutionHelpers.isSameEvolutionLine(species, name, generation)
+        );
+
     // -------------------------------------------------------------------------
     // STATE
     // -------------------------------------------------------------------------
@@ -112,12 +132,21 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         (encounter) => !UNMISSABLE_ENCOUNTER_METHODS.includes(encounter.method)
     );
 
-    const visibleEncounters = encounters.filter(
-        (encounter) =>
+    const hideDupes = settings['hide-dupes'] ?? false;
+
+    const visibleEncounters = encounters.filter((encounter) => {
+        const matchesTimeOfDay =
             !TIME_OF_DAY_CONDITIONS.some((time) =>
                 encounter.conditions?.includes(time)
-            ) || encounter.conditions?.includes(selectedTimeOfDay ?? '')
-    );
+            ) || encounter.conditions?.includes(selectedTimeOfDay ?? '');
+
+        const isDupe =
+            hideDupes &&
+            !isCaughtHere(encounter.species) &&
+            isEvolutionLineCaught(encounter.species);
+
+        return matchesTimeOfDay && !isDupe;
+    });
 
     const methods = [
         ...new Set(visibleEncounters.map((encounter) => encounter.method)),
@@ -165,10 +194,15 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     const getMethodIcon = (method: string): string =>
         `/encounter_methods/${method}.png`;
 
-    const isEvolutionLineCaught = (species: string): boolean =>
-        dupes.some((name) =>
-            EvolutionHelpers.isSameEvolutionLine(species, name, generation)
-        );
+    const getDisplayChance = (encounter: Encounter): number | null => {
+        if (encounter.chance === null || !hideDupes) return encounter.chance;
+
+        const group = getEncountersForMethod(encounter.method);
+        const total = group.reduce((sum, e) => sum + (e.chance ?? 0), 0);
+        if (total === 0) return encounter.chance;
+
+        return Math.floor((encounter.chance / total) * 100);
+    };
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -260,15 +294,8 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                                     encounter.species,
                                     variant
                                 );
-                                const isCaughtHere =
-                                    !!caughtHere &&
-                                    EvolutionHelpers.isSameEvolutionLine(
-                                        encounter.species,
-                                        caughtHere,
-                                        generation
-                                    );
                                 const isCaughtElsewhere =
-                                    !isCaughtHere &&
+                                    !isCaughtHere(encounter.species) &&
                                     isEvolutionLineCaught(encounter.species);
 
                                 return (
@@ -278,7 +305,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                                             encounter.species ===
                                                 selectedSpecies &&
                                                 styles['row--selected'],
-                                            isCaughtHere &&
+                                            isCaughtHere(encounter.species) &&
                                                 styles['row--caught'],
                                             isCaughtElsewhere &&
                                                 styles['row--used'],
@@ -326,7 +353,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                                         <td>{getLevelLabel(encounter)}</td>
                                         <td className={styles.chance}>
                                             {encounter.chance !== null
-                                                ? `${encounter.chance}%`
+                                                ? `${getDisplayChance(encounter)}%`
                                                 : '—'}
                                         </td>
                                     </tr>

@@ -22,7 +22,9 @@ so the comparison is evolution-line-aware). A row is highlighted red if
 its evolution line isn't caught here but has been caught elsewhere in
 the run, since catching it here would violate the
 one-catch-per-evolution-line rule. Either highlight takes priority
-over the selected highlight if both apply.
+over the selected highlight if both apply. When the global "Hide Dupes" setting
+is enabled, rows whose evolution line has already been caught elsewhere
+in the run are omitted entirely instead of being highlighted red.
 
 Below the header, a full-width "MISS"/"MISSED" toggle button (styled
 like the Pokedex tile's catch button, red when active) records that
@@ -57,8 +59,12 @@ missed.
 
 - `timesOfDay` — the distinct time-of-day conditions (`time-morning`,
   `time-day`, `time-night`) present in `encounters`, in that fixed order
+- `hideDupes` — the global "Hide Dupes" setting's current value, read
+  from `localStorage` via `SettingsHelpers`
 - `visibleEncounters` — `encounters` filtered down to those with no
-  time-of-day condition, plus those matching `selectedTimeOfDay`
+  time-of-day condition, plus those matching `selectedTimeOfDay`; when
+  `hideDupes` is enabled, rows whose evolution line is caught elsewhere
+  in the run (and not at this location) are also excluded
 - `methods` — the distinct encounter methods present in
   `visibleEncounters`, ordered by a fixed `METHOD_ORDER` list (methods
   not in that list are sorted last)
@@ -66,6 +72,12 @@ missed.
   sorted by `chance` descending
 - `getMethodIcon` — the icon image path for a given encounter method,
   shared across all game variants (e.g. `/encounter_methods/grass.png`)
+- `getDisplayChance` — an encounter's displayed chance. When `hideDupes`
+  is disabled, this is just the encounter's own `chance`. When enabled,
+  it's rescaled against the other encounters remaining in the same
+  method group (via `getEncountersForMethod`) so the group's chances
+  still sum to 100%, truncated to a whole number (e.g. a 50/50 split
+  becomes 100% once one side is hidden as a dupe)
 - `isEvolutionLineCaught` — whether a species' evolution family
   (resolved via `PokemonHelpers`) includes any name in `dupes`
 - `isCaughtHere` — whether a row's species is in the same evolution

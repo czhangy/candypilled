@@ -7,7 +7,8 @@ export const SETTINGS: Setting[] = [
     {
         id: 'hide-dupes',
         title: 'Hide Dupes',
-        description: '.',
+        description:
+            'Remove dupes from encounter tables, rescaling encounter rates to 100%.',
     },
 ];
 
