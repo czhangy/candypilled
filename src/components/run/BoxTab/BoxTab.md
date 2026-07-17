@@ -32,9 +32,6 @@ the currently selected Pokemon on the right, taking up the remaining third.
   caught Pokemon's evolution line (via `PokemonHelpers.isSameEvolutionLine`
   against every `run.caughtPokemon` entry), offered in `AddPokemonModal`'s
   Pokemon dropdown; also supplies its default species (the first entry)
-- `realLocations` — every location name in `game`, via
-  `LocationHelpers.getAllLocationNames`, passed to `AddPokemonModal` so
-  it can disable submitting a location that already exists in the game
 - `selectedCaughtPokemon` — the caught Pokemon whose location matches
   `selectedPokemon`, passed to `PokemonPreview`
 - `currentSplitName` / `currentSplit` — the run's current split, resolved

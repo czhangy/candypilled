@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import CheckIcon from '@/lib/icons/CheckIcon';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { DropdownOption } from '@/lib/static/types';
 import styles from './Dropdown.module.scss';
@@ -27,13 +26,11 @@ const Dropdown: React.FC<DropdownProps> = ({
     // -------------------------------------------------------------------------
 
     const MENU_GAP = 5;
-    const MENU_MAX_HEIGHT = 224;
 
     interface MenuPlacement {
         accentColor: string;
-        bottom?: number;
         left: number;
-        top?: number;
+        top: number;
         width: number;
     }
 
@@ -122,18 +119,11 @@ const Dropdown: React.FC<DropdownProps> = ({
             const rect = trigger.getBoundingClientRect();
             const accentColor =
                 getComputedStyle(trigger).getPropertyValue('--accent-color');
-            const spaceBelow = window.innerHeight - rect.bottom;
-            const spaceAbove = rect.top;
-            const opensUpward =
-                spaceBelow < MENU_MAX_HEIGHT && spaceAbove > spaceBelow;
 
             setMenuPlacement({
                 accentColor,
                 left: rect.left,
-                top: opensUpward ? undefined : rect.bottom + MENU_GAP,
-                bottom: opensUpward
-                    ? window.innerHeight - rect.top + MENU_GAP
-                    : undefined,
+                top: rect.bottom + MENU_GAP,
                 width: rect.width,
             });
         };
@@ -215,7 +205,6 @@ const Dropdown: React.FC<DropdownProps> = ({
                         style={
                             {
                                 '--accent-color': menuPlacement.accentColor,
-                                bottom: menuPlacement.bottom,
                                 left: menuPlacement.left,
                                 top: menuPlacement.top,
                                 width: menuPlacement.width,
@@ -258,11 +247,6 @@ const Dropdown: React.FC<DropdownProps> = ({
                                                     option.label
                                                 )}
                                             </span>
-                                            {option.value === value && (
-                                                <span className={styles.check}>
-                                                    <CheckIcon />
-                                                </span>
-                                            )}
                                         </button>
                                     </li>
                                 ))

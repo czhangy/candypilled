@@ -1,6 +1,6 @@
 'use client';
 
-import { useSyncExternalStore } from 'react';
+import { useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import {
     notFound,
@@ -9,6 +9,7 @@ import {
     useSearchParams,
 } from 'next/navigation';
 import { GAMES } from '@/lib/static/constants';
+import ArrayHelpers from '@/lib/utils/ArrayHelpers';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -16,6 +17,7 @@ import AbilitiesTab from './AbilitiesTab/AbilitiesTab';
 import BoxTab from './BoxTab/BoxTab';
 import MovesTab from './MovesTab/MovesTab';
 import styles from './RunPage.module.scss';
+import SplitHeader from './SplitHeader/SplitHeader';
 import SplitTab from './SplitTab/SplitTab';
 import Tabs from './Tabs/Tabs';
 
@@ -35,6 +37,20 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         { id: 'abilities', label: 'Abilities' },
     ];
 
+    const TAB_QUERY_PARAMS: Record<string, string> = {
+        box: 'pokemon',
+        moves: 'move',
+        abilities: 'ability',
+    };
+
+    const DEFAULT_WIPE_MESSAGES = [
+        'Run it back.',
+        'Unlucky.',
+        'Go again.',
+        'Next attempt is PB, trust.',
+        "Next one's the run.",
+    ];
+
     // -------------------------------------------------------------------------
     // HOOKS
     // -------------------------------------------------------------------------
@@ -48,6 +64,13 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
+    const stickyHeaderRef = useRef<HTMLDivElement>(null);
+
+    // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [stickyHeaderHeight, setStickyHeaderHeight] = useState(0);
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -61,6 +84,13 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const game = GAMES.find(
         (candidate) => StringHelpers.toSlug(candidate.name) === slug
     );
+
+    const wipeMessage = game
+        ? ArrayHelpers.pickRandom([
+              ...DEFAULT_WIPE_MESSAGES,
+              ...game.wipeMessages,
+          ])
+        : '';
 
     const run = gameRuns.find(
         (gameRun) => StringHelpers.toSlug(gameRun.game.name) === slug
@@ -103,11 +133,37 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     };
 
     // -------------------------------------------------------------------------
+    // EFFECTS
+    // -------------------------------------------------------------------------
+
+    useLayoutEffect(() => {
+        const measure = (): void => {
+            if (stickyHeaderRef.current) {
+                setStickyHeaderHeight(
+                    stickyHeaderRef.current.getBoundingClientRect().height
+                );
+            }
+        };
+
+        measure();
+
+        window.addEventListener('resize', measure);
+        return () => window.removeEventListener('resize', measure);
+    }, [activeTab, run?.wipe]);
+
+    // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
 
     const handleTabChange = (id: string): void => {
-        updateQueryParams({ tab: id });
+        const relevantParam = TAB_QUERY_PARAMS[id];
+        const updates: Record<string, string | undefined> = { tab: id };
+        Object.values(TAB_QUERY_PARAMS).forEach((param) => {
+            if (param !== relevantParam) {
+                updates[param] = undefined;
+            }
+        });
+        updateQueryParams(updates);
     };
 
     const handleMoveSelect = (name: string): void => {
@@ -183,21 +239,30 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
             </p>
             {run.wipe ? (
                 <div className={styles['wipe-message']}>
-                    <p className={styles['wipe-text']}>Run it back.</p>
+                    <p className={styles['wipe-text']}>{wipeMessage}</p>
                 </div>
             ) : (
                 <>
-                    <Tabs
-                        activeTab={activeTab}
-                        onTabChange={handleTabChange}
-                        tabs={TABS}
-                    />
+                    <div
+                        className={styles['sticky-header']}
+                        ref={stickyHeaderRef}
+                    >
+                        {activeTab === 'split' && (
+                            <SplitHeader game={game} run={run} />
+                        )}
+                        <Tabs
+                            activeTab={activeTab}
+                            onTabChange={handleTabChange}
+                            tabs={TABS}
+                        />
+                    </div>
                     {activeTab === 'split' && (
                         <SplitTab
                             game={game}
                             onSelectAbility={handleAbilityLinkClick}
                             onSelectMove={handleMoveLinkClick}
                             run={run}
+                            stickyOffset={stickyHeaderHeight}
                         />
                     )}
                     {activeTab === 'box' && (

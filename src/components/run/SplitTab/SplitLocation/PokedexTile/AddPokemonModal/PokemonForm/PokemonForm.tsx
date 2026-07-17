@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
+import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { Nature } from '@/lib/static/enums';
 import {
     AbilitySlot,
@@ -381,14 +382,21 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
                 </div>
             )}
             <div className={styles.footer}>
-                <button
-                    className={styles['submit-button']}
-                    disabled={!!disabledReason}
-                    title={disabledReason || undefined}
-                    type="submit"
-                >
-                    {submitLabel}
-                </button>
+                {disabledReason ? (
+                    <Tooltip position="right" text={disabledReason}>
+                        <button
+                            className={styles['submit-button']}
+                            disabled
+                            type="submit"
+                        >
+                            {submitLabel}
+                        </button>
+                    </Tooltip>
+                ) : (
+                    <button className={styles['submit-button']} type="submit">
+                        {submitLabel}
+                    </button>
+                )}
             </div>
         </form>
     );

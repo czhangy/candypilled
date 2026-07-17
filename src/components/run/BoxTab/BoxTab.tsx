@@ -10,7 +10,6 @@ import {
 } from '@/lib/static/types';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
-import LocationHelpers from '@/lib/utils/LocationHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './BoxTab.module.scss';
@@ -58,7 +57,6 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 )
             )
     );
-    const realLocations = LocationHelpers.getAllLocationNames(game);
     const selectedCaughtPokemon = run.caughtPokemon.find(
         (caughtPokemon) => caughtPokemon.location === selectedPokemon
     );
@@ -206,7 +204,6 @@ const BoxTab: React.FC<BoxTabProps> = ({
                     generation={game.generation}
                     onClose={handleCloseAddPokemonModal}
                     onSubmit={handleAddPokemon}
-                    realLocations={realLocations}
                     showLocation
                 />
             )}

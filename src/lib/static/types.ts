@@ -112,6 +112,9 @@ export interface Game {
     starters: string[];
     accentColor: string;
     encounters: Record<string, LocationEncounters>;
+    // Game-specific messages shown at random on the run page when a run is
+    // marked as a wipe, alongside the run page's default messages.
+    wipeMessages: string[];
 }
 
 export interface Run {

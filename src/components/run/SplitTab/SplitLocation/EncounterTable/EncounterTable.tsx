@@ -1,5 +1,6 @@
 import { Fragment, useState } from 'react';
 import Image from 'next/image';
+import Tooltip from '@/components/common/Tooltip/Tooltip';
 import DayIcon from '@/lib/icons/DayIcon';
 import MorningIcon from '@/lib/icons/MorningIcon';
 import NightIcon from '@/lib/icons/NightIcon';
@@ -34,10 +35,8 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const SPRITE_SIZE = 60;
+    const SPRITE_SIZE = 48;
     const METHOD_ICON_SIZE = 22;
-    const TYPE_BADGE_WIDTH = 32;
-    const TYPE_BADGE_HEIGHT = 14;
 
     const METHOD_ORDER = [
         'only-one',
@@ -50,6 +49,13 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         'feebas-tile-fishing',
         'surf',
         'honey-tree',
+    ];
+
+    const UNMISSABLE_ENCOUNTER_METHODS = [
+        'gift',
+        'gift-egg',
+        'fossil',
+        'only-one',
     ];
 
     const TIME_OF_DAY_CONDITIONS = ['time-morning', 'time-day', 'time-night'];
@@ -100,6 +106,10 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     // -------------------------------------------------------------------------
 
     const timesOfDay = getTimesOfDay();
+
+    const isMissable = encounters.some(
+        (encounter) => !UNMISSABLE_ENCOUNTER_METHODS.includes(encounter.method)
+    );
 
     const visibleEncounters = encounters.filter(
         (encounter) =>
@@ -153,9 +163,6 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     const getMethodIcon = (method: string): string =>
         `/encounter_methods/${method}.png`;
 
-    const getTypes = (species: string): string[] =>
-        PokemonHelpers.getTypes(species, generation) ?? [];
-
     const isEvolutionLineCaught = (species: string): boolean =>
         dupes.some((name) =>
             PokemonHelpers.isSameEvolutionLine(species, name, generation)
@@ -174,42 +181,53 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                         {timesOfDay.map((time) => {
                             const TimeOfDayIcon = TIME_OF_DAY_ICONS[time];
                             return (
-                                <button
-                                    aria-label={TIME_OF_DAY_LABELS[time]}
-                                    aria-pressed={time === selectedTimeOfDay}
-                                    className={[
-                                        styles['time-of-day-button'],
-                                        time === selectedTimeOfDay &&
-                                            styles[
-                                                'time-of-day-button--active'
-                                            ],
-                                    ]
-                                        .filter(Boolean)
-                                        .join(' ')}
+                                <Tooltip
                                     key={time}
-                                    onClick={() => handleTimeOfDayChange(time)}
-                                    type="button"
+                                    position="center"
+                                    text={TIME_OF_DAY_LABELS[time]}
                                 >
-                                    <TimeOfDayIcon />
-                                </button>
+                                    <button
+                                        aria-label={TIME_OF_DAY_LABELS[time]}
+                                        aria-pressed={
+                                            time === selectedTimeOfDay
+                                        }
+                                        className={[
+                                            styles['time-of-day-button'],
+                                            time === selectedTimeOfDay &&
+                                                styles[
+                                                    'time-of-day-button--active'
+                                                ],
+                                        ]
+                                            .filter(Boolean)
+                                            .join(' ')}
+                                        onClick={() =>
+                                            handleTimeOfDayChange(time)
+                                        }
+                                        type="button"
+                                    >
+                                        <TimeOfDayIcon />
+                                    </button>
+                                </Tooltip>
                             );
                         })}
                     </div>
                 )}
             </div>
-            <button
-                className={[
-                    styles['miss-button'],
-                    isMissed && styles['miss-button--active'],
-                ]
-                    .filter(Boolean)
-                    .join(' ')}
-                disabled={!isMissed && !!caughtHere}
-                onClick={onToggleMissed}
-                type="button"
-            >
-                {isMissed ? 'MISSED' : 'MISS'}
-            </button>
+            {isMissable && (
+                <button
+                    className={[
+                        styles['miss-button'],
+                        isMissed && styles['miss-button--active'],
+                    ]
+                        .filter(Boolean)
+                        .join(' ')}
+                    disabled={!isMissed && !!caughtHere}
+                    onClick={onToggleMissed}
+                    type="button"
+                >
+                    {isMissed ? 'MISSED' : 'MISS'}
+                </button>
+            )}
             <table className={styles['encounter-table']}>
                 <colgroup>
                     <col className={styles['col-pokemon']} />
@@ -240,7 +258,6 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                                     encounter.species,
                                     variant
                                 );
-                                const types = getTypes(encounter.species);
                                 const isCaughtHere =
                                     !!caughtHere &&
                                     PokemonHelpers.isSameEvolutionLine(
@@ -301,35 +318,6 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                                                         {pokemon?.name ??
                                                             encounter.species}
                                                     </span>
-                                                    {types.length > 0 && (
-                                                        <div
-                                                            className={
-                                                                styles[
-                                                                    'pokemon__types'
-                                                                ]
-                                                            }
-                                                        >
-                                                            {types.map(
-                                                                (type) => (
-                                                                    <Image
-                                                                        alt={
-                                                                            type
-                                                                        }
-                                                                        height={
-                                                                            TYPE_BADGE_HEIGHT
-                                                                        }
-                                                                        key={
-                                                                            type
-                                                                        }
-                                                                        src={`/types/${type}.png`}
-                                                                        width={
-                                                                            TYPE_BADGE_WIDTH
-                                                                        }
-                                                                    />
-                                                                )
-                                                            )}
-                                                        </div>
-                                                    )}
                                                 </div>
                                             </div>
                                         </td>

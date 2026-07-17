@@ -1,15 +1,14 @@
 # Dropdown
 
 A custom-styled select control. Clicking its trigger opens a floating
-menu of options, portaled to the document body and positioned to the
-trigger's screen coordinates so it isn't clipped by an ancestor's
-`overflow` (e.g. a scrollable modal) — it also flips to open upward
-when there isn't room below. Clicking an option selects it and closes
-the menu, and the selected option is marked with a checkmark. The menu
-also closes on an outside click. Optionally offers a search input at
-the top of the menu that filters the option list as it's typed into,
-highlighting the matching substring of each result in the game's
-accent color.
+menu of options, portaled to the document body and positioned below
+the trigger's screen coordinates so it isn't clipped by an ancestor's
+`overflow` (e.g. a scrollable modal). Clicking an option selects it and
+closes the menu, and the selected option is highlighted in the game's
+accent color. The menu also closes on an outside click. Optionally
+offers a search input at the top of the menu that filters the option
+list as it's typed into, highlighting the matching substring of each
+result in the game's accent color.
 
 ## Props
 
@@ -36,10 +35,9 @@ accent color.
 - **On `isOpen` or `searchable` changing** — focuses the search input
   when the menu opens and is searchable, otherwise resets `query`
 - **On `isOpen` becoming true** — computes `menuPlacement` from the
-  trigger's bounding rect (flipping the menu upward if there isn't
-  room below) and the trigger's computed `--accent-color`, since the
-  portaled menu no longer inherits it through the DOM tree; recomputes
-  on window resize/scroll while open
+  trigger's bounding rect and the trigger's computed `--accent-color`,
+  since the portaled menu no longer inherits it through the DOM tree;
+  recomputes on window resize/scroll while open
 
 ## Computations
 

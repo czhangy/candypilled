@@ -5,16 +5,33 @@ the runs list. Displays a back link to the runs list, the game's title with
 the current attempt number and a togglable Wipe/RESPAWN button, and a
 subtitle showing the run's personal best battle as trainer class + name
 followed by its split name (e.g. "Gym Leader Roark // Roark"), or "N/A" if
-none yet. Below that, if the run hasn't been wiped, a row of tabs for
-switching between the different views of the run and the content for the
-currently active tab; if the run has been wiped, a "Run it back." message
-instead.
+none yet. Below that, if the run hasn't been wiped, a sticky block pinned to
+the top of the viewport while the active tab's content scrolls beneath it,
+with — on the Splits tab — the current split's header in the top-left
+corner and a row of tabs for switching between the different views of the
+run in the top-right corner; on other tabs, just the row of tabs. If the run
+has been wiped, a message picked at random from the game's wipe messages is
+shown instead.
 
 ## Props
 
 | Prop   | Type     | Required | Default | Description                                  |
 | ------ | -------- | -------- | ------- | -------------------------------------------- |
 | `slug` | `string` | Yes      | -       | The slugified game name identifying the page |
+
+## State
+
+| State                | Type     | Initial value | Description                                                                                             |
+| -------------------- | -------- | ------------- | ------------------------------------------------------------------------------------------------------- |
+| `stickyHeaderHeight` | `number` | `0`           | The measured pixel height of the sticky tabs/split-header block, passed to `SplitTab` as `stickyOffset` |
+
+## Effects
+
+- **On active tab or wipe state change** — re-measures the sticky
+  tabs/split-header block's height into `stickyHeaderHeight`, and
+  re-measures on window resize, so `SplitTab`'s table of contents can offset
+  itself below the sticky block regardless of its content (e.g. whether the
+  current split has a level cap)
 
 ## Computations
 
@@ -39,9 +56,15 @@ instead.
   URL's query string (deleting keys whose value is `undefined`) and
   navigates to it with `router.replace`, so tab/move/ability selection is
   linkable and shareable
+- `wipeMessage` — a message picked at random from `DEFAULT_WIPE_MESSAGES`
+  combined with `game.wipeMessages`, shown when the run has been wiped
 
 ## Handlers
 
+- **On tab change** (from `Tabs`) — sets the `tab` query param and clears
+  whichever of `pokemon`/`move`/`ability` isn't relevant to the destination
+  tab, so a tab's selection param doesn't linger in the URL after navigating
+  away from it
 - **On move link click** (from `SplitTab`, e.g. a move within `BattleCard`)
   — opens the Moves tab for that move (`?tab=moves&move=<name>`) in a new
   browser tab, leaving the current page untouched

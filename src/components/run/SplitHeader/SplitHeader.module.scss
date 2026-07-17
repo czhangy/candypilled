@@ -1,0 +1,32 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.split-header {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.25rem;
+    position: relative;
+
+    .title-group {
+        align-items: baseline;
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        text-align: left;
+    }
+
+    .title {
+        @include mono-label;
+
+        font-size: 1.25rem;
+        margin: 0;
+    }
+
+    .level-cap {
+        @include mono-label;
+
+        color: $text-mid;
+        font-size: 0.8rem;
+    }
+}

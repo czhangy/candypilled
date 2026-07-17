@@ -1,0 +1,37 @@
+@use 'sass:color';
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.tooltip {
+    display: inline-flex;
+}
+
+// Portaled to document.body when shown, so it can't be nested under
+// .tooltip here — nesting compiles to a descendant selector, which
+// wouldn't match once the bubble is no longer a DOM descendant of it.
+.bubble {
+    background: color.adjust($background, $lightness: 8%);
+    border: 1px solid $border-subtle;
+    border-radius: 0.25rem;
+    color: $foreground;
+    font-size: 0.8rem;
+    letter-spacing: 0;
+    padding: 0.2rem 0.4rem;
+    pointer-events: none;
+    position: fixed;
+    text-transform: none;
+    white-space: nowrap;
+    z-index: 1001;
+
+    &--center {
+        transform: translate(-50%, -100%);
+    }
+
+    &--left {
+        transform: translateY(-100%);
+    }
+
+    &--right {
+        transform: translate(-100%, -100%);
+    }
+}

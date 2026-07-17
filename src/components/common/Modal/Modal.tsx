@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import CloseIcon from '@/lib/icons/CloseIcon';
 import styles from './Modal.module.scss';
@@ -27,10 +27,10 @@ const Modal: React.FC<ModalProps> = ({
     const [isClosing, setIsClosing] = useState(false);
 
     // -------------------------------------------------------------------------
-    // COMPUTATIONS
+    // HOOKS
     // -------------------------------------------------------------------------
 
-    const requestClose = (): void => {
+    const requestClose = useCallback((): void => {
         const prefersReducedMotion = window.matchMedia(
             '(prefers-reduced-motion: reduce)'
         ).matches;
@@ -40,7 +40,7 @@ const Modal: React.FC<ModalProps> = ({
         } else {
             setIsClosing(true);
         }
-    };
+    }, [onClose]);
 
     // -------------------------------------------------------------------------
     // EFFECTS

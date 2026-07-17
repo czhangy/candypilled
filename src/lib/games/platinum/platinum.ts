@@ -18,6 +18,13 @@ const PLATINUM: Game = {
     starters: ['Turtwig', 'Chimchar', 'Piplup'],
     accentColor: '#FFD500',
     encounters: ENCOUNTERS,
+    wipeMessages: [
+        'Roark is calling.',
+        'Maybe a monkey run next time.',
+        'Welcome to briefcase simulator.',
+        'Pick the penguin.',
+        'Turtle time.',
+    ],
     splits: [
         ROARK,
         GARDENIA,

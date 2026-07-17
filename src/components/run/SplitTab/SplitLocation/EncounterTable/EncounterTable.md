@@ -3,14 +3,15 @@
 Displays the wild Pokemon encounters available at a location as a table,
 under an "Encounters" header. If the encounters include time-of-day-
 specific slots (morning, day, night), a row of icon buttons for each
-time of day is shown on the right of the header to switch between them;
-encounters that aren't tied to a time of day are always shown regardless
-of the selected time of day. Rows are grouped under a sub-header for each
+time of day is shown on the right of the header to switch between them,
+each with a `Tooltip` naming its time of day ("Morning", "Day", "Night")
+on hover; encounters that aren't tied to a time of day are always shown
+regardless of the selected time of day. Rows are grouped under a sub-header for each
 encounter method (e.g. "Old Rod", "Rock Smash"), shown alongside an
 icon representing the method, in a fixed method order; within a group,
 rows are sorted by encounter chance, highest first. Each row shows the
-Pokemon's sprite (matching the game's sprite variant), its name with
-type badges beneath it, its level range prefixed with "Lv." (e.g.
+Pokemon's sprite (matching the game's sprite variant), its name, its
+level range prefixed with "Lv." (e.g.
 "Lv. 20-30"), and its encounter chance as a percentage. Clicking a row
 selects that encounter, highlighting it and notifying the parent via
 `onSelectEncounter`. A row is highlighted green if its species, or any
@@ -27,7 +28,10 @@ Below the header, a full-width "MISS"/"MISSED" toggle button (styled
 like the Pokedex tile's catch button, red when active) records that
 this location's one encounter was used up without catching anything.
 It is disabled whenever a species is already caught at this location,
-since the two outcomes are mutually exclusive.
+since the two outcomes are mutually exclusive. The button is hidden
+entirely when every encounter at the location uses an unmissable
+method (e.g. a gift or fossil), since those encounters can't be
+missed.
 
 ## Props
 
@@ -62,8 +66,6 @@ since the two outcomes are mutually exclusive.
   sorted by `chance` descending
 - `getMethodIcon` — the icon image path for a given encounter method,
   shared across all game variants (e.g. `/encounter_methods/grass.png`)
-- `getTypes` — a Pokemon's types at `generation`, rendered as badges
-  (`/types/{type}.png`) beneath its name
 - `isEvolutionLineCaught` — whether a species' evolution family
   (resolved via `PokemonHelpers`) includes any name in `dupes`
 - `isCaughtHere` — whether a row's species is in the same evolution
@@ -71,3 +73,6 @@ since the two outcomes are mutually exclusive.
   the row green
 - `isCaughtElsewhere` — whether a row's species isn't `isCaughtHere` but
   `isEvolutionLineCaught`, highlighting the row red
+- `isMissable` — whether `encounters` includes any method not in the
+  fixed `UNMISSABLE_ENCOUNTER_METHODS` list, controlling whether the
+  "MISS"/"MISSED" button is shown

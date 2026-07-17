@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
                     <Image
                         alt="Candypilled home"
                         height={40}
-                        src="/candy.png"
+                        src="/common/candy.png"
                         width={40}
                     />
                     <span className={styles['logo-text']}>Candypilled</span>
