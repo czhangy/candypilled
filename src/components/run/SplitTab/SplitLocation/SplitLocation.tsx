@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { StaticImageData } from 'next/image';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
+import { STARTER_LOCATION_NAME } from '@/lib/static/constants';
 import { PokemonStatus } from '@/lib/static/enums';
 import {
     Battle,
@@ -214,6 +215,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // -------------------------------------------------------------------------
 
     const dupes = run.caughtPokemon.map((caught) => caught.name);
+    const starterCaughtSeparately = run.caughtPokemon.some(
+        (caught) => caught.location === STARTER_LOCATION_NAME
+    );
     const isMissed = run.missedLocations.includes(location.name);
     const usedLocations = [
         ...run.caughtPokemon.map((caught) => caught.location),
@@ -356,6 +360,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         onToggleMissed={handleToggleMissed}
                                         selectedSpecies={
                                             selectedEncounter?.species
+                                        }
+                                        starterCaughtSeparately={
+                                            starterCaughtSeparately
                                         }
                                         variant={variant}
                                     />

@@ -37,17 +37,18 @@ missed.
 
 ## Props
 
-| Prop                | Type                             | Required | Default | Description                                                                        |
-| ------------------- | -------------------------------- | -------- | ------- | ---------------------------------------------------------------------------------- |
-| `caughtHere`        | `string`                         | No       | -       | The species already caught at this location, if any, highlighted green             |
-| `dupes`             | `string[]`                       | Yes      | -       | Every species caught so far in the run, regardless of location                     |
-| `encounters`        | `Encounter[]`                    | Yes      | -       | The encounter slots to display                                                     |
-| `generation`        | `number`                         | Yes      | -       | The game's generation, used to resolve each Pokemon's types                        |
-| `isMissed`          | `boolean`                        | Yes      | -       | Whether this location's encounter was marked missed, styling the toggle button red |
-| `onSelectEncounter` | `(encounter: Encounter) => void` | No       | -       | Called with the clicked row's encounter                                            |
-| `onToggleMissed`    | `() => void`                     | Yes      | -       | Called when the "MISS"/"MISSED" button is clicked                                  |
-| `selectedSpecies`   | `string`                         | No       | -       | The species of the currently selected row, if any, to highlight it                 |
-| `variant`           | `string`                         | Yes      | -       | The sprite variant to prefer, matching the game's slug                             |
+| Prop                      | Type                             | Required | Default | Description                                                                             |
+| ------------------------- | -------------------------------- | -------- | ------- | --------------------------------------------------------------------------------------- |
+| `caughtHere`              | `string`                         | No       | -       | The species already caught at this location, if any, highlighted green                  |
+| `dupes`                   | `string[]`                       | Yes      | -       | Every species caught so far in the run, regardless of location                          |
+| `encounters`              | `Encounter[]`                    | Yes      | -       | The encounter slots to display                                                          |
+| `generation`              | `number`                         | Yes      | -       | The game's generation, used to resolve each Pokemon's types                             |
+| `isMissed`                | `boolean`                        | Yes      | -       | Whether this location's encounter was marked missed, styling the toggle button red      |
+| `onSelectEncounter`       | `(encounter: Encounter) => void` | No       | -       | Called with the clicked row's encounter                                                 |
+| `onToggleMissed`          | `() => void`                     | Yes      | -       | Called when the "MISS"/"MISSED" button is clicked                                       |
+| `selectedSpecies`         | `string`                         | No       | -       | The species of the currently selected row, if any, to highlight it                      |
+| `starterCaughtSeparately` | `boolean`                        | Yes      | -       | Whether the run's starter was caught as its own encounter, hiding "starter"-method rows |
+| `variant`                 | `string`                         | Yes      | -       | The sprite variant to prefer, matching the game's slug                                  |
 
 ## State
 
@@ -64,7 +65,10 @@ missed.
 - `visibleEncounters` — `encounters` filtered down to those with no
   time-of-day condition, plus those matching `selectedTimeOfDay`; when
   `hideDupes` is enabled, rows whose evolution line is caught elsewhere
-  in the run (and not at this location) are also excluded
+  in the run (and not at this location) are also excluded; when
+  `starterCaughtSeparately` is true, rows using the "starter" method are
+  also excluded, since the starter is tracked as its own encounter
+  instead
 - `methods` — the distinct encounter methods present in
   `visibleEncounters`, ordered by a fixed `METHOD_ORDER` list (methods
   not in that list are sorted last)

@@ -1,12 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import Modal from '@/components/common/Modal/Modal';
 import PokemonForm from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/PokemonForm/PokemonForm';
 import PokedexTile from '@/components/run/SplitTab/SplitLocation/PokedexTile/PokedexTile';
+import { STARTER_LOCATION_NAME } from '@/lib/static/constants';
 import { PokemonStatus } from '@/lib/static/enums';
 import { BattlePokemon, CaughtPokemon, Game } from '@/lib/static/types';
+import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
+import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import StarterSelect from './StarterSelect/StarterSelect';
 import styles from './StarterSelectModal.module.scss';
@@ -23,10 +26,14 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
     onSelect,
 }) => {
     // -------------------------------------------------------------------------
-    // CONSTANTS
+    // HOOKS
     // -------------------------------------------------------------------------
 
-    const STARTER_LOCATION = 'Starter';
+    const settings = useSyncExternalStore(
+        SettingsHelpers.subscribe,
+        SettingsHelpers.getSnapshot,
+        SettingsHelpers.getServerSnapshot
+    );
 
     // -------------------------------------------------------------------------
     // STATE
@@ -47,6 +54,11 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
         ? (PokemonHelpers.getPokemonData(chosenSpecies)?.name ?? chosenSpecies)
         : null;
     const defaultSpecies = activeStarter ?? speciesOverride ?? null;
+    const separateStarterEncounter =
+        settings['separate-starter-encounter'] ?? false;
+    const starterLocation = separateStarterEncounter
+        ? STARTER_LOCATION_NAME
+        : EncounterHelpers.getStarterLocationName(game);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -85,7 +97,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
     ): void => {
         onSelect({
             ...details,
-            location: STARTER_LOCATION,
+            location: starterLocation,
             status: PokemonStatus.Alive,
         });
     };

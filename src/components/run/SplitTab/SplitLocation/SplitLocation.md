@@ -98,6 +98,10 @@ button is disabled until the miss is toggled off again.
 - `usedLocations` — every location name in `run.caughtPokemon`, plus
   `run.missedLocations`; passed to the Pokedex tile to highlight
   already-used locations in its locations tab
+- `starterCaughtSeparately` — whether `run.caughtPokemon` includes an
+  entry located at `STARTER_LOCATION_NAME`; passed to the encounter
+  table to hide "starter"-method rows once the starter is tracked as
+  its own encounter
 
 The root element's `id` is `StringHelpers.toSlug(location.name)`, so
 `SplitTab`'s table of contents can link directly to this card.

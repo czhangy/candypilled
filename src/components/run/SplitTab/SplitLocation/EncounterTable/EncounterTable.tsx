@@ -19,6 +19,7 @@ type EncounterTableProps = {
     onSelectEncounter?: (encounter: Encounter) => void;
     onToggleMissed: () => void;
     selectedSpecies?: string;
+    starterCaughtSeparately: boolean;
     variant: string;
 };
 
@@ -31,6 +32,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     onSelectEncounter,
     onToggleMissed,
     selectedSpecies,
+    starterCaughtSeparately,
     variant,
 }) => {
     // -------------------------------------------------------------------------
@@ -146,7 +148,10 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
             !isCaughtHere(encounter.species) &&
             isEvolutionLineCaught(encounter.species);
 
-        return matchesTimeOfDay && !isDupe;
+        const isSeparateStarter =
+            starterCaughtSeparately && encounter.method === 'starter';
+
+        return matchesTimeOfDay && !isDupe && !isSeparateStarter;
     });
 
     const methods = [
