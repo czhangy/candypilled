@@ -9,6 +9,7 @@ import {
     useSearchParams,
 } from 'next/navigation';
 import { GAMES } from '@/lib/static/constants';
+import ArrayHelpers from '@/lib/utils/ArrayHelpers';
 import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -41,6 +42,14 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         moves: 'move',
         abilities: 'ability',
     };
+
+    const DEFAULT_WIPE_MESSAGES = [
+        'Run it back.',
+        'Unlucky.',
+        'Go again.',
+        'Next attempt is PB, trust.',
+        "Next one's the run.",
+    ];
 
     // -------------------------------------------------------------------------
     // HOOKS
@@ -75,6 +84,13 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const game = GAMES.find(
         (candidate) => StringHelpers.toSlug(candidate.name) === slug
     );
+
+    const wipeMessage = game
+        ? ArrayHelpers.pickRandom([
+              ...DEFAULT_WIPE_MESSAGES,
+              ...game.wipeMessages,
+          ])
+        : '';
 
     const run = gameRuns.find(
         (gameRun) => StringHelpers.toSlug(gameRun.game.name) === slug
@@ -223,7 +239,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
             </p>
             {run.wipe ? (
                 <div className={styles['wipe-message']}>
-                    <p className={styles['wipe-text']}>Run it back.</p>
+                    <p className={styles['wipe-text']}>{wipeMessage}</p>
                 </div>
             ) : (
                 <>

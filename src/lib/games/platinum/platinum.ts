@@ -18,6 +18,13 @@ const PLATINUM: Game = {
     starters: ['Turtwig', 'Chimchar', 'Piplup'],
     accentColor: '#FFD500',
     encounters: ENCOUNTERS,
+    wipeMessages: [
+        'Roark is calling.',
+        'Maybe a monkey run next time.',
+        'Welcome to briefcase simulator.',
+        'Imagine if this was Platinum Kaizo.',
+        "It was Team Galactic's fault",
+    ],
     splits: [
         ROARK,
         GARDENIA,

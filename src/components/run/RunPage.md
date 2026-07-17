@@ -10,7 +10,8 @@ the top of the viewport while the active tab's content scrolls beneath it,
 with — on the Splits tab — the current split's header in the top-left
 corner and a row of tabs for switching between the different views of the
 run in the top-right corner; on other tabs, just the row of tabs. If the run
-has been wiped, a "Run it back." message is shown instead.
+has been wiped, a message picked at random from the game's wipe messages is
+shown instead.
 
 ## Props
 
@@ -55,6 +56,8 @@ has been wiped, a "Run it back." message is shown instead.
   URL's query string (deleting keys whose value is `undefined`) and
   navigates to it with `router.replace`, so tab/move/ability selection is
   linkable and shareable
+- `wipeMessage` — a message picked at random from `DEFAULT_WIPE_MESSAGES`
+  combined with `game.wipeMessages`, shown when the run has been wiped
 
 ## Handlers
 
