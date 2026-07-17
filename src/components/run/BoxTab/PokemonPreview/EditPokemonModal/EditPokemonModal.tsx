@@ -3,7 +3,7 @@ import PokemonForm from '@/components/run/SplitTab/SplitLocation/PokedexTile/Add
 import { BattlePokemon, CaughtPokemon } from '@/lib/static/types';
 import StatHelpers from '@/lib/utils/StatHelpers';
 
-interface EditPokemonModalProps {
+type EditPokemonModalProps = {
     accentColor: string;
     generation: number;
     onClose: () => void;
@@ -14,7 +14,7 @@ interface EditPokemonModalProps {
         >
     ) => void;
     pokemon: CaughtPokemon;
-}
+};
 
 const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
     accentColor,

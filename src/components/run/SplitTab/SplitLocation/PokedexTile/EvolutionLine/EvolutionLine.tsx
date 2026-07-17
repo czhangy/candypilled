@@ -6,12 +6,12 @@ import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './EvolutionLine.module.scss';
 
-interface EvolutionLineProps {
+type EvolutionLineProps = {
     currentName?: string;
     onSelectSpecies: (species: string) => void;
     step: EvolutionStep;
     variant: string;
-}
+};
 
 const EvolutionLine: React.FC<EvolutionLineProps> = ({
     currentName,

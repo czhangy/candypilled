@@ -13,7 +13,7 @@ import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './PokemonForm.module.scss';
 
-interface PokemonFormProps {
+type PokemonFormProps = {
     allSpecies: string[];
     defaultAbilitySlot?: AbilitySlot;
     defaultEvs?: StatValues;
@@ -36,7 +36,7 @@ interface PokemonFormProps {
     showLevel: boolean;
     showMoves: boolean;
     submitLabel: string;
-}
+};
 
 const PokemonForm: React.FC<PokemonFormProps> = ({
     allSpecies,

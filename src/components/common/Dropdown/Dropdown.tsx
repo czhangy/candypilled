@@ -6,13 +6,13 @@ import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { DropdownOption } from '@/lib/static/types';
 import styles from './Dropdown.module.scss';
 
-interface DropdownProps {
+type DropdownProps = {
     onChange: (value: string) => void;
     options: DropdownOption[];
     placeholder?: string;
     searchable?: boolean;
     value: string;
-}
+};
 
 const Dropdown: React.FC<DropdownProps> = ({
     onChange,
@@ -27,12 +27,12 @@ const Dropdown: React.FC<DropdownProps> = ({
 
     const MENU_GAP = 5;
 
-    interface MenuPlacement {
+    type MenuPlacement = {
         accentColor: string;
         left: number;
         top: number;
         width: number;
-    }
+    };
 
     // -------------------------------------------------------------------------
     // HOOKS

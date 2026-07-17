@@ -11,7 +11,7 @@ import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import TypeHelpers from '@/lib/utils/TypeHelpers';
 import styles from './BattleCard.module.scss';
 
-interface BattleCardProps {
+type BattleCardProps = {
     battle: Battle;
     generation: number;
     isDefeated: boolean;
@@ -20,7 +20,7 @@ interface BattleCardProps {
     onToggleDefeated: () => void;
     starter: string;
     variant: string;
-}
+};
 
 const BattleCard: React.FC<BattleCardProps> = ({
     battle,

@@ -3,11 +3,11 @@ import { ABILITIES } from '@/lib/data/abilities';
 import styles from './AbilitiesTab.module.scss';
 import AbilityDetail from './AbilityDetail/AbilityDetail';
 
-interface AbilitiesTabProps {
+type AbilitiesTabProps = {
     generation: number;
     onSelectAbility: (name: string) => void;
     selectedAbility?: string;
-}
+};
 
 const AbilitiesTab: React.FC<AbilitiesTabProps> = ({
     generation,

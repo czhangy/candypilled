@@ -9,7 +9,7 @@ import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './EncounterTable.module.scss';
 
-interface EncounterTableProps {
+type EncounterTableProps = {
     caughtHere?: string;
     dupes: string[];
     encounters: Encounter[];
@@ -19,7 +19,7 @@ interface EncounterTableProps {
     onToggleMissed: () => void;
     selectedSpecies?: string;
     variant: string;
-}
+};
 
 const EncounterTable: React.FC<EncounterTableProps> = ({
     caughtHere,

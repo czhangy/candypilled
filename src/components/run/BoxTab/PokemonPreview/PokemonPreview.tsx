@@ -17,7 +17,7 @@ import EvolveModal from './EvolveModal/EvolveModal';
 import MoveCard from './MoveCard/MoveCard';
 import styles from './PokemonPreview.module.scss';
 
-interface PokemonPreviewProps {
+type PokemonPreviewProps = {
     accentColor: string;
     generation: number;
     levelCap: number | null;
@@ -35,7 +35,7 @@ interface PokemonPreviewProps {
     pokemon?: CaughtPokemon;
     variant: string;
     view: BoxView;
-}
+};
 
 const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     accentColor,
@@ -57,10 +57,10 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     const SPRITE_SIZE = 120;
     const MOVE_SLOT_COUNT = 4;
 
-    interface StatField {
+    type StatField = {
         key: keyof StatValues;
         label: string;
-    }
+    };
 
     const STAT_FIELDS: StatField[] = [
         { key: 'hp', label: 'HP' },

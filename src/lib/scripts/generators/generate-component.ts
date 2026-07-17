@@ -13,10 +13,10 @@ import {
 const COMPONENT_EXISTS = 'That component already exists.';
 const USAGE = 'Usage: npm run gen:component <subdirectory> <ComponentName>';
 
-interface ComponentArgs {
+type ComponentArgs = {
     subdir: string;
     component: string;
-}
+};
 
 const parseArgs = (argv: string[]): ComponentArgs => {
     const [subdir, component] = argv;

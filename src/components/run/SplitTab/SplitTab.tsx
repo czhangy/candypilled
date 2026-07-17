@@ -10,13 +10,13 @@ import StringHelpers from '@/lib/utils/StringHelpers';
 import SplitLocation from './SplitLocation/SplitLocation';
 import styles from './SplitTab.module.scss';
 
-interface SplitTabProps {
+type SplitTabProps = {
     game: Game;
     onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
     run: Run;
     stickyOffset: number;
-}
+};
 
 const SplitTab: React.FC<SplitTabProps> = ({
     game,

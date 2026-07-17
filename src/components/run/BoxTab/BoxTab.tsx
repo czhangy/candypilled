@@ -17,7 +17,7 @@ import styles from './BoxTab.module.scss';
 import PokemonBox from './PokemonBox/PokemonBox';
 import PokemonPreview from './PokemonPreview/PokemonPreview';
 
-interface BoxTabProps {
+type BoxTabProps = {
     game: Game;
     onDeselectPokemon: () => void;
     onSelectAbility: (name: string) => void;
@@ -25,7 +25,7 @@ interface BoxTabProps {
     onSelectPokemon: (location: string) => void;
     run: Run;
     selectedPokemon?: string;
-}
+};
 
 const BoxTab: React.FC<BoxTabProps> = ({
     game,

@@ -11,11 +11,11 @@ import StringHelpers from '@/lib/utils/StringHelpers';
 import StarterSelect from './StarterSelect/StarterSelect';
 import styles from './StarterSelectModal.module.scss';
 
-interface StarterSelectModalProps {
+type StarterSelectModalProps = {
     game: Game;
     onClose: () => void;
     onSelect: (starter: CaughtPokemon) => void;
-}
+};
 
 const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
     game,

@@ -3,12 +3,12 @@ import { LearnsetMove } from '@/lib/static/types';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import styles from './LearnsetList.module.scss';
 
-interface LearnsetListProps {
+type LearnsetListProps = {
     generation: number;
     interactive: boolean;
     moves: LearnsetMove[];
     onSelectMove: (name: string) => void;
-}
+};
 
 const LearnsetList: React.FC<LearnsetListProps> = ({
     generation,

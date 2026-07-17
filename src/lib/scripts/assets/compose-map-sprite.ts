@@ -17,14 +17,14 @@ const SPRITE_NOT_FOUND = "That sprite image doesn't exist.";
 const OUT_OF_BOUNDS =
     'The sprite would be placed partially outside the map bounds.';
 
-interface ComposeArgs {
+type ComposeArgs = {
     mapPath: string;
     outputPath: string;
     spritePath: string;
     width?: number;
     x: number;
     y: number;
-}
+};
 
 const parseArgs = (argv: string[]): ComposeArgs => {
     const flags: Record<string, string> = {};

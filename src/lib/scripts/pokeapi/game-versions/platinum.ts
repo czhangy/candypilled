@@ -1,10 +1,10 @@
-interface MethodOverride {
+type MethodOverride = {
     location: string;
     species: string;
     method: string;
-}
+};
 
-interface GameVersion {
+type GameVersion = {
     id: string;
     label: string;
     version: string;
@@ -19,7 +19,7 @@ interface GameVersion {
     excludedConditionPrefixes?: string[];
     strippedConditions?: string[];
     strippedConditionPrefixes?: string[];
-}
+};
 
 export const platinum: GameVersion = {
     id: 'platinum',

@@ -12,9 +12,9 @@ const ICON_EXISTS = 'That icon already exists.';
 const DOESNT_END_WITH_ICON = "Icon components must end with 'Icon'.";
 const USAGE = 'Usage: npm run gen:icon <IconName>';
 
-interface IconArgs {
+type IconArgs = {
     icon: string;
-}
+};
 
 const parseArgs = (argv: string[]): IconArgs => {
     const [icon] = argv;

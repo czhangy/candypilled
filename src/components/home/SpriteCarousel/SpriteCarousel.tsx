@@ -10,10 +10,10 @@ const SpriteCarousel: React.FC = () => {
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    interface CarouselState {
+    type CarouselState = {
         animate: boolean;
         index: number;
-    }
+    };
 
     type CarouselAction = { type: 'advance' } | { type: 'reset' };
 

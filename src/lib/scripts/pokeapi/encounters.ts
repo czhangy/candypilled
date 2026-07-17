@@ -19,13 +19,13 @@ const DATA_PATH = path.join(
 );
 const FETCH_DELAY_MS = 75;
 
-interface MethodOverride {
+type MethodOverride = {
     location: string;
     species: string;
     method: string;
-}
+};
 
-interface GameVersion {
+type GameVersion = {
     id: string;
     label: string;
     version: string;
@@ -40,39 +40,39 @@ interface GameVersion {
     excludedConditionPrefixes?: string[];
     strippedConditions?: string[];
     strippedConditionPrefixes?: string[];
-}
+};
 
-interface NamedApiResource {
+type NamedApiResource = {
     name: string;
     url: string;
-}
+};
 
-interface RawEncounterDetail {
+type RawEncounterDetail = {
     chance: number;
     condition_values: { name: string }[];
     max_level: number;
     min_level: number;
     method: { name: string };
-}
+};
 
-interface RawVersionDetail {
+type RawVersionDetail = {
     version: { name: string };
     encounter_details: RawEncounterDetail[];
-}
+};
 
-interface RawPokemonEncounter {
+type RawPokemonEncounter = {
     pokemon: { name: string };
     version_details: RawVersionDetail[];
-}
+};
 
 const TIME_OF_DAY_CONDITIONS = ['time-morning', 'time-day', 'time-night'];
 
-interface ConditionConfig {
+type ConditionConfig = {
     excludedConditions: string[];
     excludedConditionPrefixes: string[];
     strippedConditions: string[];
     strippedConditionPrefixes: string[];
-}
+};
 
 const isStrippedCondition = (
     condition: string,

@@ -1,10 +1,10 @@
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import styles from './AbilityDetail.module.scss';
 
-interface AbilityDetailProps {
+type AbilityDetailProps = {
     ability?: string;
     generation: number;
-}
+};
 
 const AbilityDetail: React.FC<AbilityDetailProps> = ({
     ability,

@@ -77,17 +77,17 @@ const writeData = (data: Record<string, PokemonData>): void => {
 const toGenerationNumber = (generationName: string): number =>
     StringHelpers.fromRoman(generationName.replace('generation-', ''));
 
-interface Variety {
+type Variety = {
     name: string;
     url: string;
-}
+};
 
-interface RawSpecies {
+type RawSpecies = {
     name: string;
     capture_rate: number;
     evolution_chain: { url: string };
     varieties: { pokemon: { name: string; url: string } }[];
-}
+};
 
 const fetchSpecies = async (dexNumber: number): Promise<RawSpecies> => {
     const response = await fetch(`${POKEAPI_SPECIES_URL}/${dexNumber}`);
@@ -107,49 +107,49 @@ const toVarieties = (species: RawSpecies): Variety[] =>
 // A single /pokemon/{id} response carries every per-variety field this file
 // needs (sprites, types, abilities, stats, moves), so each variety is only
 // fetched once and reused to build all of them, rather than once per field.
-interface RawTypeSlot {
+type RawTypeSlot = {
     slot: number;
     type: { name: string };
-}
+};
 
-interface RawPastType {
+type RawPastType = {
     generation: { name: string };
     types: RawTypeSlot[];
-}
+};
 
-interface RawAbilitySlot {
+type RawAbilitySlot = {
     ability: { name: string } | null;
     is_hidden: boolean;
     slot: number;
-}
+};
 
-interface RawPastAbility {
+type RawPastAbility = {
     generation: { name: string };
     abilities: RawAbilitySlot[];
-}
+};
 
-interface RawStat {
+type RawStat = {
     base_stat: number;
     stat: { name: string };
-}
+};
 
-interface RawPastStat {
+type RawPastStat = {
     generation: { name: string };
     stats: RawStat[];
-}
+};
 
-interface RawVersionGroupDetail {
+type RawVersionGroupDetail = {
     level_learned_at: number;
     move_learn_method: { name: string };
     version_group: { name: string };
-}
+};
 
-interface RawMoveEntry {
+type RawMoveEntry = {
     move: { name: string };
     version_group_details: RawVersionGroupDetail[];
-}
+};
 
-interface RawPokemon {
+type RawPokemon = {
     name: string;
     sprites: unknown;
     types: RawTypeSlot[];
@@ -159,7 +159,7 @@ interface RawPokemon {
     stats: RawStat[];
     past_stats: RawPastStat[];
     moves: RawMoveEntry[];
-}
+};
 
 const fetchRawPokemon = async (variety: Variety): Promise<RawPokemon> => {
     const response = await fetch(variety.url);
@@ -170,9 +170,9 @@ const fetchRawPokemon = async (variety: Variety): Promise<RawPokemon> => {
     return (await response.json()) as RawPokemon;
 };
 
-interface RawGeneration {
+type RawGeneration = {
     version_groups: { name: string }[];
-}
+};
 
 const fetchGenerationCount = async (): Promise<number> => {
     const response = await fetch(`${POKEAPI_GENERATION_URL}?limit=1`);
@@ -199,7 +199,7 @@ const fetchGeneration = async (
     return (await response.json()) as RawGeneration;
 };
 
-interface GenerationMaps {
+type GenerationMaps = {
     // Evolution details reference a version group (e.g. "diamond-pearl")
     // rather than a generation number directly.
     versionGroupGenerations: Map<string, number>;
@@ -207,7 +207,7 @@ interface GenerationMaps {
     // lean on, so each generation is represented by its last (most up to
     // date) version group, e.g. "platinum" over "diamond-pearl".
     representativeVersionGroups: Map<number, string>;
-}
+};
 
 const buildGenerationMaps = async (): Promise<GenerationMaps> => {
     const generationCount = await fetchGenerationCount();
@@ -243,11 +243,11 @@ const buildGenerationMaps = async (): Promise<GenerationMaps> => {
 // Sprites
 // -------------------------------------------------------------------------
 
-interface SpriteVariant {
+type SpriteVariant = {
     id: string;
     label: string;
     generation: number;
-}
+};
 
 const SPRITE_VARIANTS: SpriteVariant[] = [
     { id: 'ruby-sapphire', label: 'Ruby/Sapphire', generation: 3 },
@@ -385,10 +385,10 @@ const buildTypesByGeneration = (pokemon: RawPokemon): TypesByGeneration[] => {
 // ability slot.
 const ABILITY_SLOT_NUMBERS = { slot1: 1, slot2: 2, hidden: 3 } as const;
 
-interface AbilitySlotSegment {
+type AbilitySlotSegment = {
     fromGeneration: number;
     value?: string;
-}
+};
 
 const abilityValueAt = (
     segments: AbilitySlotSegment[],
@@ -497,10 +497,10 @@ const STAT_NAMES: Record<keyof StatValues, string[]> = {
 const findStat = (stats: RawStat[], names: string[]): number | undefined =>
     stats.find((candidate) => names.includes(candidate.stat.name))?.base_stat;
 
-interface StatSegment {
+type StatSegment = {
     fromGeneration: number;
     value?: number;
-}
+};
 
 const statValueAt = (segments: StatSegment[], generation: number): number => {
     let value: number | undefined;
@@ -664,7 +664,7 @@ const GENDER_NAMES: Record<number, string> = {
     3: 'genderless',
 };
 
-interface RawEvolutionDetail {
+type RawEvolutionDetail = {
     trigger: { name: string };
     item: { name: string } | null;
     held_item: { name: string } | null;
@@ -684,17 +684,17 @@ interface RawEvolutionDetail {
     party_species: { name: string } | null;
     relative_physical_stats: number | null;
     version_group: { name: string };
-}
+};
 
-interface RawChainLink {
+type RawChainLink = {
     species: { name: string };
     evolution_details: RawEvolutionDetail[];
     evolves_to: RawChainLink[];
-}
+};
 
-interface RawEvolutionChain {
+type RawEvolutionChain = {
     chain: RawChainLink;
-}
+};
 
 const fetchEvolutionChain = async (url: string): Promise<RawEvolutionChain> => {
     const response = await fetch(url);
@@ -733,12 +733,12 @@ const toMethod = (detail: RawEvolutionDetail): EvolutionMethod => {
     return method;
 };
 
-interface FullNode {
+type FullNode = {
     name: string;
     children: FullEdge[];
-}
+};
 
-interface FullEdge {
+type FullEdge = {
     // The generation from which this edge's evolution first became
     // possible, taken as the earliest version group across all of its
     // alternate methods (an edge can list several ways to trigger the same
@@ -746,7 +746,7 @@ interface FullEdge {
     fromGeneration: number;
     methods: EvolutionMethod[];
     node: FullNode;
-}
+};
 
 // A handful of chain edges (e.g. Phione -> Manaphy) carry no
 // evolution_details at all, since PokeAPI models breeding relationships as
@@ -778,16 +778,16 @@ const parseChain = (
     })),
 });
 
-interface PathEdge {
+type PathEdge = {
     name: string;
     fromGeneration: number;
     methods: EvolutionMethod[];
-}
+};
 
-interface PathResult {
+type PathResult = {
     edges: PathEdge[];
     node: FullNode;
-}
+};
 
 // Walks down from the chain root to find the target species, returning the
 // single-path chain of edges leading to it (a Pokemon can only have one

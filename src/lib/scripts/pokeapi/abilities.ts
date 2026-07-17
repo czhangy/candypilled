@@ -25,9 +25,9 @@ const writeData = (data: Record<string, AbilityData>): void => {
     fs.writeFileSync(DATA_PATH, `${JSON.stringify(data, null, 4)}\n`);
 };
 
-interface RawGeneration {
+type RawGeneration = {
     version_groups: { name: string }[];
-}
+};
 
 const fetchGenerationCount = async (): Promise<number> => {
     const response = await fetch(`${POKEAPI_GENERATION_URL}?limit=1`);
@@ -77,10 +77,10 @@ const buildVersionGroupGenerations = async (): Promise<Map<string, number>> => {
     return versionGroupGenerations;
 };
 
-interface NamedApiResource {
+type NamedApiResource = {
     name: string;
     url: string;
-}
+};
 
 const fetchAbilityList = async (): Promise<NamedApiResource[]> => {
     const response = await fetch(
@@ -94,23 +94,23 @@ const fetchAbilityList = async (): Promise<NamedApiResource[]> => {
     return body.results as NamedApiResource[];
 };
 
-interface RawEffectEntry {
+type RawEffectEntry = {
     effect: string;
     language: { name: string };
-}
+};
 
-interface RawEffectChange {
+type RawEffectChange = {
     version_group: { name: string };
     effect_entries: RawEffectEntry[];
-}
+};
 
-interface RawAbility {
+type RawAbility = {
     name: string;
     generation: { name: string };
     is_main_series: boolean;
     effect_entries: RawEffectEntry[];
     effect_changes: RawEffectChange[];
-}
+};
 
 const fetchAbility = async (
     resource: NamedApiResource

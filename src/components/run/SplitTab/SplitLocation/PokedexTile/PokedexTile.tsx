@@ -68,10 +68,10 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     const TYPE_BADGE_WIDTH = 32;
     const TYPE_BADGE_HEIGHT = 14;
 
-    interface AbilityEntry {
+    type AbilityEntry = {
         hidden?: boolean;
         name: string;
-    }
+    };
 
     type DetailTab = 'learnset' | 'locations';
 

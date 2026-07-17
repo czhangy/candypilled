@@ -3,14 +3,14 @@
 import { useState } from 'react';
 import styles from './SearchableList.module.scss';
 
-interface SearchableListProps {
+type SearchableListProps = {
     emptyMessage: string;
     items: { name: string }[];
     onSelectItem?: (name: string) => void;
     searchAriaLabel: string;
     searchPlaceholder: string;
     selectedItem?: string;
-}
+};
 
 const SearchableList: React.FC<SearchableListProps> = ({
     emptyMessage,

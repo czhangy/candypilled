@@ -2,10 +2,10 @@ import { Game, Run } from '@/lib/static/types';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import styles from './SplitHeader.module.scss';
 
-interface SplitHeaderProps {
+type SplitHeaderProps = {
     game: Game;
     run: Run;
-}
+};
 
 const SplitHeader: React.FC<SplitHeaderProps> = ({ game, run }) => {
     // -------------------------------------------------------------------------

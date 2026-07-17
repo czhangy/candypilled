@@ -3,11 +3,11 @@ import MoveHelpers from '@/lib/utils/MoveHelpers';
 import TypeHelpers from '@/lib/utils/TypeHelpers';
 import styles from './MoveCard.module.scss';
 
-interface MoveCardProps {
+type MoveCardProps = {
     generation: number;
     move?: string;
     onSelectMove: (name: string) => void;
-}
+};
 
 const MoveCard: React.FC<MoveCardProps> = ({
     generation,

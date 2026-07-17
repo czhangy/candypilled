@@ -9,6 +9,7 @@ const localCodeStyleRules = {
     'no-parent-imports': require('./.eslint-rules/code-style/no-parent-imports.js'),
     'no-export-type': require('./.eslint-rules/code-style/no-export-type.js'),
     'no-empty-section': require('./.eslint-rules/code-style/no-empty-section.js'),
+    'no-interface': require('./.eslint-rules/code-style/no-interface.js'),
 };
 
 const localComponentRules = {
@@ -49,6 +50,7 @@ const eslintConfig = defineConfig([
             'local/no-parent-imports': 'error',
             'local/no-export-type': 'error',
             'local/no-empty-section': 'error',
+            'local/no-interface': 'error',
             '@typescript-eslint/no-unused-vars': 'error',
         },
     },

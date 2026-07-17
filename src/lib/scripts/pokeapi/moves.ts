@@ -88,9 +88,9 @@ const writeData = (data: Record<string, MoveData>): void => {
     fs.writeFileSync(DATA_PATH, `${JSON.stringify(data, null, 4)}\n`);
 };
 
-interface RawGeneration {
+type RawGeneration = {
     version_groups: { name: string }[];
-}
+};
 
 const fetchGenerationCount = async (): Promise<number> => {
     const response = await fetch(`${POKEAPI_GENERATION_URL}?limit=1`);
@@ -140,10 +140,10 @@ const buildVersionGroupGenerations = async (): Promise<Map<string, number>> => {
     return versionGroupGenerations;
 };
 
-interface NamedApiResource {
+type NamedApiResource = {
     name: string;
     url: string;
-}
+};
 
 const fetchMoveList = async (): Promise<NamedApiResource[]> => {
     const response = await fetch(
@@ -157,18 +157,18 @@ const fetchMoveList = async (): Promise<NamedApiResource[]> => {
     return body.results as NamedApiResource[];
 };
 
-interface RawEffectEntry {
+type RawEffectEntry = {
     short_effect: string;
     language: { name: string };
-}
+};
 
-interface RawFlavorTextEntry {
+type RawFlavorTextEntry = {
     flavor_text: string;
     language: { name: string };
     version_group: { name: string };
-}
+};
 
-interface RawPastValue {
+type RawPastValue = {
     accuracy: number | null;
     effect_chance: number | null;
     effect_entries: RawEffectEntry[];
@@ -176,9 +176,9 @@ interface RawPastValue {
     pp: number | null;
     type: { name: string } | null;
     version_group: { name: string };
-}
+};
 
-interface RawMove {
+type RawMove = {
     name: string;
     accuracy: number | null;
     power: number | null;
@@ -191,7 +191,7 @@ interface RawMove {
     effect_entries: RawEffectEntry[];
     flavor_text_entries: RawFlavorTextEntry[];
     past_values: RawPastValue[];
-}
+};
 
 const fetchMove = async (resource: NamedApiResource): Promise<RawMove> => {
     const response = await fetch(resource.url);
@@ -210,14 +210,14 @@ const toEnglishEffect = (entries: RawEffectEntry[]): string | undefined =>
 const toGenerationNumber = (generationName: string): number =>
     StringHelpers.fromRoman(generationName.replace('generation-', ''));
 
-interface MoveValues {
+type MoveValues = {
     type: string;
     power: number | null;
     accuracy: number | null;
     pp: number;
     effect: string;
     effectChance: number | null;
-}
+};
 
 // PokeAPI's `past_values` entries are diffs against the move's CURRENT
 // (top-level) values rather than against the previous historical entry: a
@@ -257,10 +257,10 @@ const buildValuesTimeline = (
     return segments;
 };
 
-interface DescriptionSegment {
+type DescriptionSegment = {
     fromGeneration: number;
     description: string;
-}
+};
 
 // Flavor text entries are per version-group (not diffs like past_values), so
 // this keeps the first English entry seen for each generation and lets it

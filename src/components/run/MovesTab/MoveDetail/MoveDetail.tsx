@@ -2,10 +2,10 @@ import Image from 'next/image';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import styles from './MoveDetail.module.scss';
 
-interface MoveDetailProps {
+type MoveDetailProps = {
     generation: number;
     move?: string;
-}
+};
 
 const MoveDetail: React.FC<MoveDetailProps> = ({ generation, move }) => {
     // -------------------------------------------------------------------------

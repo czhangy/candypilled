@@ -22,9 +22,9 @@ import SplitHeader from './SplitHeader/SplitHeader';
 import SplitTab from './SplitTab/SplitTab';
 import Tabs from './Tabs/Tabs';
 
-interface RunPageProps {
+type RunPageProps = {
     slug: string;
-}
+};
 
 const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     // -------------------------------------------------------------------------

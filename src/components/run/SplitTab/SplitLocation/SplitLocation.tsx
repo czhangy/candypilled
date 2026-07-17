@@ -21,14 +21,14 @@ import LocationMap from './LocationMap/LocationMap';
 import PokedexTile from './PokedexTile/PokedexTile';
 import styles from './SplitLocation.module.scss';
 
-interface SplitLocationProps {
+type SplitLocationProps = {
     game: Game;
     location: Location;
     onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
     run: Run;
     variant: string;
-}
+};
 
 const SplitLocation: React.FC<SplitLocationProps> = ({
     game,
@@ -42,11 +42,11 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    interface Section {
+    type Section = {
         map?: StaticImageData;
         battles: Battle[];
         encounters?: Encounter[];
-    }
+    };
 
     // -------------------------------------------------------------------------
     // RENDERING

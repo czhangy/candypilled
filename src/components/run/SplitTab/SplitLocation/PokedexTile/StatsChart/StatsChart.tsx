@@ -1,9 +1,9 @@
 import { StatValues } from '@/lib/static/types';
 import styles from './StatsChart.module.scss';
 
-interface StatsChartProps {
+type StatsChartProps = {
     stats: StatValues;
-}
+};
 
 const StatsChart: React.FC<StatsChartProps> = ({ stats }) => {
     // -------------------------------------------------------------------------
@@ -14,10 +14,10 @@ const StatsChart: React.FC<StatsChartProps> = ({ stats }) => {
     // to a consistent, comparable width.
     const STAT_MAX = 255;
 
-    interface StatRow {
+    type StatRow = {
         key: keyof StatValues;
         label: string;
-    }
+    };
 
     const STAT_ROWS: StatRow[] = [
         { key: 'hp', label: 'HP' },

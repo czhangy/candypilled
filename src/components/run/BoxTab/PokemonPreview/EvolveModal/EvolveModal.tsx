@@ -8,14 +8,14 @@ import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './EvolveModal.module.scss';
 
-interface EvolveModalProps {
+type EvolveModalProps = {
     accentColor: string;
     evolutions: EvolutionStep[];
     onClose: () => void;
     onConfirm: (newName: string) => void;
     pokemonName: string;
     variant: string;
-}
+};
 
 const EvolveModal: React.FC<EvolveModalProps> = ({
     accentColor,

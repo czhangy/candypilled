@@ -11,9 +11,9 @@ import StringHelpers from '@/lib/utils/StringHelpers';
 const USAGE = 'Usage: npm run gen:map <slug>';
 const IMAGE_NOT_FOUND = 'No map image was found at the expected path';
 
-interface MapArgs {
+type MapArgs = {
     map: string;
-}
+};
 
 const parseArgs = (argv: string[]): MapArgs => {
     const [map] = argv;

@@ -16,10 +16,10 @@ import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './RunEntry.module.scss';
 import StarterSelectModal from './StarterSelectModal/StarterSelectModal';
 
-interface RunEntryProps {
+type RunEntryProps = {
     game: Game;
     run: Run | null;
-}
+};
 
 const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // -------------------------------------------------------------------------

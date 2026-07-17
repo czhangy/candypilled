@@ -5,13 +5,13 @@ import { createPortal } from 'react-dom';
 import CloseIcon from '@/lib/icons/CloseIcon';
 import styles from './Modal.module.scss';
 
-interface ModalProps {
+type ModalProps = {
     accentColor?: string;
     children: React.ReactNode;
     maxWidth?: string;
     onClose: () => void;
     title?: string;
-}
+};
 
 const Modal: React.FC<ModalProps> = ({
     accentColor,

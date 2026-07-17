@@ -4,7 +4,7 @@ import { BoxView, CaughtPokemon } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './PokemonBox.module.scss';
 
-interface PokemonBoxProps {
+type PokemonBoxProps = {
     caughtPokemon: CaughtPokemon[];
     levelCap: number | null;
     onAddPokemonClick: () => void;
@@ -13,7 +13,7 @@ interface PokemonBoxProps {
     selectedPokemon?: string;
     variant: string;
     view: BoxView;
-}
+};
 
 const PokemonBox: React.FC<PokemonBoxProps> = ({
     caughtPokemon,

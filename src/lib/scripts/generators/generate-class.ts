@@ -13,9 +13,9 @@ const CLASS_EXISTS = 'That class already exists.';
 const DOESNT_END_WITH_HELPERS = "Utility classes must end with 'Helpers'.";
 const USAGE = 'Usage: npm run gen:class <ClassName>';
 
-interface ClassArgs {
+type ClassArgs = {
     klass: string;
-}
+};
 
 const parseArgs = (argv: string[]): ClassArgs => {
     const [klass] = argv;

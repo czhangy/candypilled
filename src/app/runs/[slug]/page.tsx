@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
 import RunPage from '@/components/run/RunPage';
 
-interface RunProps {
+type RunProps = {
     params: Promise<{ slug: string }>;
-}
+};
 
 export default async function Run({ params }: RunProps) {
     const { slug } = await params;

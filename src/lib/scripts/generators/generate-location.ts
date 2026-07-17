@@ -12,9 +12,9 @@ import StringHelpers from '@/lib/utils/StringHelpers';
 const USAGE = 'Usage: npm run gen:location <slug>';
 const LOCATION_EXISTS = 'That location already exists.';
 
-interface LocationArgs {
+type LocationArgs = {
     slug: string;
-}
+};
 
 const parseArgs = (argv: string[]): LocationArgs => {
     const [slug] = argv;
