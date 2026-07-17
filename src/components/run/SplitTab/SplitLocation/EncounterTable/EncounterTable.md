@@ -10,8 +10,8 @@ regardless of the selected time of day. Rows are grouped under a sub-header for 
 encounter method (e.g. "Old Rod", "Rock Smash"), shown alongside an
 icon representing the method, in a fixed method order; within a group,
 rows are sorted by encounter chance, highest first. Each row shows the
-Pokemon's sprite (matching the game's sprite variant), its name with
-type badges beneath it, its level range prefixed with "Lv." (e.g.
+Pokemon's sprite (matching the game's sprite variant), its name, its
+level range prefixed with "Lv." (e.g.
 "Lv. 20-30"), and its encounter chance as a percentage. Clicking a row
 selects that encounter, highlighting it and notifying the parent via
 `onSelectEncounter`. A row is highlighted green if its species, or any
@@ -66,8 +66,6 @@ missed.
   sorted by `chance` descending
 - `getMethodIcon` — the icon image path for a given encounter method,
   shared across all game variants (e.g. `/encounter_methods/grass.png`)
-- `getTypes` — a Pokemon's types at `generation`, rendered as badges
-  (`/types/{type}.png`) beneath its name
 - `isEvolutionLineCaught` — whether a species' evolution family
   (resolved via `PokemonHelpers`) includes any name in `dupes`
 - `isCaughtHere` — whether a row's species is in the same evolution

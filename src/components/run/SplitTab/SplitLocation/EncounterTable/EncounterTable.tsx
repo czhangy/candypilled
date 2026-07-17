@@ -35,10 +35,8 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const SPRITE_SIZE = 60;
+    const SPRITE_SIZE = 48;
     const METHOD_ICON_SIZE = 22;
-    const TYPE_BADGE_WIDTH = 32;
-    const TYPE_BADGE_HEIGHT = 14;
 
     const METHOD_ORDER = [
         'only-one',
@@ -165,9 +163,6 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     const getMethodIcon = (method: string): string =>
         `/encounter_methods/${method}.png`;
 
-    const getTypes = (species: string): string[] =>
-        PokemonHelpers.getTypes(species, generation) ?? [];
-
     const isEvolutionLineCaught = (species: string): boolean =>
         dupes.some((name) =>
             PokemonHelpers.isSameEvolutionLine(species, name, generation)
@@ -263,7 +258,6 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                                     encounter.species,
                                     variant
                                 );
-                                const types = getTypes(encounter.species);
                                 const isCaughtHere =
                                     !!caughtHere &&
                                     PokemonHelpers.isSameEvolutionLine(
@@ -324,35 +318,6 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                                                         {pokemon?.name ??
                                                             encounter.species}
                                                     </span>
-                                                    {types.length > 0 && (
-                                                        <div
-                                                            className={
-                                                                styles[
-                                                                    'pokemon__types'
-                                                                ]
-                                                            }
-                                                        >
-                                                            {types.map(
-                                                                (type) => (
-                                                                    <Image
-                                                                        alt={
-                                                                            type
-                                                                        }
-                                                                        height={
-                                                                            TYPE_BADGE_HEIGHT
-                                                                        }
-                                                                        key={
-                                                                            type
-                                                                        }
-                                                                        src={`/types/${type}.png`}
-                                                                        width={
-                                                                            TYPE_BADGE_WIDTH
-                                                                        }
-                                                                    />
-                                                                )
-                                                            )}
-                                                        </div>
-                                                    )}
                                                 </div>
                                             </div>
                                         </td>
