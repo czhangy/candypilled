@@ -254,17 +254,18 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                   ? game.encounters[location.encountersKey]?.encounters
                   : undefined,
           };
-    const isStarterCatch =
-        !!encounter &&
-        !!section.encounters?.some(
-            (locationEncounter) =>
-                locationEncounter.method === 'starter' &&
-                EvolutionHelpers.isSameEvolutionLine(
-                    locationEncounter.species,
-                    encounter,
-                    game.generation
-                )
-        );
+    const isStarterEncounter = selectedEncounter
+        ? selectedEncounter.method === 'starter'
+        : !!encounter &&
+          !!section.encounters?.some(
+              (locationEncounter) =>
+                  locationEncounter.method === 'starter' &&
+                  EvolutionHelpers.isSameEvolutionLine(
+                      locationEncounter.species,
+                      encounter,
+                      game.generation
+                  )
+          );
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -396,7 +397,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         game={game}
                                         generation={game.generation}
                                         isLocationMissed={isMissed}
-                                        isStarterCatch={isStarterCatch}
+                                        isStarterEncounter={isStarterEncounter}
                                         mode="catch"
                                         onAddPokemon={handleAddPokemon}
                                         onRemovePokemon={handleRemovePokemon}

@@ -1,0 +1,60 @@
+@use '@/styles/constants' as *;
+
+.row {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    @media (hover: hover) {
+        &:hover {
+            background: $background-light;
+        }
+    }
+
+    &--selected {
+        background: $background-light;
+        box-shadow: inset 3px 0 0 0 var(--accent-color);
+    }
+
+    &--caught {
+        background: rgba($green, 0.12);
+        box-shadow: inset 3px 0 0 0 $green;
+    }
+
+    &--used {
+        background: rgba($red, 0.12);
+        box-shadow: inset 3px 0 0 0 $red;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+
+    .pokemon {
+        align-items: center;
+        display: flex;
+        gap: 0.5rem;
+
+        .pokemon__sprite {
+            align-items: center;
+            display: flex;
+            flex-shrink: 0;
+            height: 3rem;
+            justify-content: center;
+            width: 3rem;
+
+            img {
+                image-rendering: pixelated;
+            }
+        }
+
+        .pokemon__info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+    }
+
+    .chance {
+        text-align: center;
+    }
+}

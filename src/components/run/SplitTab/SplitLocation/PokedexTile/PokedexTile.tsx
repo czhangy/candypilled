@@ -20,7 +20,7 @@ type PokedexTileProps = (
           dupes: string[];
           encounter?: string;
           isLocationMissed: boolean;
-          isStarterCatch: boolean;
+          isStarterEncounter: boolean;
           mode: 'catch';
           onAddPokemon: (
               details: Pick<
@@ -209,7 +209,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         !isCaughtHere &&
         (isOtherCaughtHere || isEvolutionLineCaught || rest.isLocationMissed);
     const isCatchButtonHidden =
-        rest.mode === 'catch' && isCaughtHere && rest.isStarterCatch;
+        rest.mode === 'catch' && rest.isStarterEncounter;
 
     // -------------------------------------------------------------------------
     // MARKUP

@@ -37,10 +37,11 @@ for the Pokemon already caught here), enforcing one catch per
 evolution line. Below the encounter table's header, a "MISS"/"MISSED"
 toggle button records this location's encounter as used up without a
 catch, in the run's storage; while missed, the Pokedex tile's catch
-button is disabled until the miss is toggled off again. If the
-Pokemon caught at this location came from a "starter" encounter, the
-Pokedex tile's catch button is hidden entirely instead of reading
-"CAUGHT", since a starter can't be uncaught from the Pokedex tile.
+button is disabled until the miss is toggled off again. Whenever the
+Pokedex tile's selected Pokemon comes from a "starter" encounter, its
+catch button is hidden entirely, whether or not that Pokemon is
+already caught, since starters aren't caught or uncaught through the
+Pokedex tile.
 
 ## Props
 
@@ -108,11 +109,12 @@ Pokedex tile's catch button is hidden entirely instead of reading
   entry located at `STARTER_LOCATION_NAME`; passed to the encounter
   table to hide "starter"-method rows once the starter is tracked as
   its own encounter
-- `isStarterCatch` — whether `encounter` is in the same evolution
-  family (resolved via `EvolutionHelpers`) as one of the section's
-  "starter"-method encounters; passed to the Pokedex tile to hide its
-  catch button entirely while caught, since a starter catch can't be
-  uncaught from here
+- `isStarterEncounter` — whether the Pokedex tile's selected Pokemon
+  comes from a "starter" encounter: `selectedEncounter.method` when an
+  encounter is selected, otherwise whether `encounter` is in the same
+  evolution family (resolved via `EvolutionHelpers`) as one of the
+  section's "starter"-method encounters; passed to the Pokedex tile to
+  hide its catch button entirely
 
 The root element's `id` is `StringHelpers.toSlug(location.name)`, so
 `SplitTab`'s table of contents can link directly to this card.

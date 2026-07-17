@@ -1,14 +1,11 @@
-import { Fragment, useState, useSyncExternalStore } from 'react';
-import Image from 'next/image';
-import Tooltip from '@/components/common/Tooltip/Tooltip';
-import DayIcon from '@/lib/icons/DayIcon';
-import MorningIcon from '@/lib/icons/MorningIcon';
-import NightIcon from '@/lib/icons/NightIcon';
+import { useState, useSyncExternalStore } from 'react';
 import { Encounter } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import styles from './EncounterTable.module.scss';
+import MethodGroup from './MethodGroup/MethodGroup';
+import TimeOfDayButtons from './TimeOfDayButtons/TimeOfDayButtons';
 
 type EncounterTableProps = {
     caughtHere?: string;
@@ -49,9 +46,6 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const SPRITE_SIZE = 48;
-    const METHOD_ICON_SIZE = 22;
-
     const METHOD_ORDER = [
         'starter',
         'only-one',
@@ -75,18 +69,6 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
 
     const TIME_OF_DAY_CONDITIONS = ['time-morning', 'time-day', 'time-night'];
 
-    const TIME_OF_DAY_LABELS: Record<string, string> = {
-        'time-morning': 'Morning',
-        'time-day': 'Day',
-        'time-night': 'Night',
-    };
-
-    const TIME_OF_DAY_ICONS: Record<string, React.FC> = {
-        'time-morning': MorningIcon,
-        'time-day': DayIcon,
-        'time-night': NightIcon,
-    };
-
     // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------
@@ -105,6 +87,9 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
             EvolutionHelpers.isSameEvolutionLine(species, name, generation)
         );
 
+    const isCaughtElsewhere = (species: string): boolean =>
+        !isCaughtHere(species) && isEvolutionLineCaught(species);
+
     // -------------------------------------------------------------------------
     // STATE
     // -------------------------------------------------------------------------
@@ -121,7 +106,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         setSelectedTimeOfDay(time);
     };
 
-    const handleRowClick = (encounter: Encounter): void => {
+    const handleEncounterSelect = (encounter: Encounter): void => {
         onSelectEncounter?.(encounter);
     };
 
@@ -161,8 +146,20 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         return matchesTimeOfDay && !isDupe && !isSeparateStarter;
     });
 
+    const hasVisibleStarterEncounter = visibleEncounters.some(
+        (encounter) => encounter.method === 'starter'
+    );
+
     const methods = [
-        ...new Set(visibleEncounters.map((encounter) => encounter.method)),
+        ...new Set(
+            visibleEncounters
+                .filter(
+                    (encounter) =>
+                        !hasVisibleStarterEncounter ||
+                        encounter.method === 'starter'
+                )
+                .map((encounter) => encounter.method)
+        ),
     ].sort((a, b) => {
         const aIndex = METHOD_ORDER.indexOf(a);
         const bIndex = METHOD_ORDER.indexOf(b);
@@ -193,20 +190,6 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                 return getEncounterName(a).localeCompare(getEncounterName(b));
             });
 
-    const getLevelLabel = (encounter: Encounter): string =>
-        encounter.minLevel === encounter.maxLevel
-            ? `Lv. ${encounter.minLevel}`
-            : `Lv. ${encounter.minLevel}-${encounter.maxLevel}`;
-
-    const getMethodLabel = (method: string): string =>
-        method
-            .split('-')
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
-
-    const getMethodIcon = (method: string): string =>
-        `/encounter_methods/${method}.png`;
-
     const getDisplayChance = (encounter: Encounter): number | null => {
         if (encounter.chance === null || !hideDupes) return encounter.chance;
 
@@ -225,41 +208,12 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         <div className={styles['encounter-table-wrapper']}>
             <div className={styles.header}>
                 <span className={styles.label}>Encounters</span>
-                {timesOfDay.length > 1 && (
-                    <div className={styles['time-of-day-buttons']}>
-                        {timesOfDay.map((time) => {
-                            const TimeOfDayIcon = TIME_OF_DAY_ICONS[time];
-                            return (
-                                <Tooltip
-                                    key={time}
-                                    position="center"
-                                    text={TIME_OF_DAY_LABELS[time]}
-                                >
-                                    <button
-                                        aria-label={TIME_OF_DAY_LABELS[time]}
-                                        aria-pressed={
-                                            time === selectedTimeOfDay
-                                        }
-                                        className={[
-                                            styles['time-of-day-button'],
-                                            time === selectedTimeOfDay &&
-                                                styles[
-                                                    'time-of-day-button--active'
-                                                ],
-                                        ]
-                                            .filter(Boolean)
-                                            .join(' ')}
-                                        onClick={() =>
-                                            handleTimeOfDayChange(time)
-                                        }
-                                        type="button"
-                                    >
-                                        <TimeOfDayIcon />
-                                    </button>
-                                </Tooltip>
-                            );
-                        })}
-                    </div>
+                {timesOfDay.length > 1 && !hasVisibleStarterEncounter && (
+                    <TimeOfDayButtons
+                        onSelect={handleTimeOfDayChange}
+                        selectedTime={selectedTimeOfDay}
+                        times={timesOfDay}
+                    />
                 )}
             </div>
             {isMissable && (
@@ -285,94 +239,17 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                 </colgroup>
                 <tbody>
                     {methods.map((method) => (
-                        <Fragment key={method}>
-                            <tr>
-                                <th colSpan={3}>
-                                    <div className={styles.method}>
-                                        <Image
-                                            alt=""
-                                            height={METHOD_ICON_SIZE}
-                                            src={getMethodIcon(method)}
-                                            width={METHOD_ICON_SIZE}
-                                        />
-                                        {getMethodLabel(method)}
-                                    </div>
-                                </th>
-                            </tr>
-                            {getEncountersForMethod(method).map((encounter) => {
-                                const pokemon = PokemonHelpers.getPokemonData(
-                                    encounter.species
-                                );
-                                const sprite = PokemonHelpers.getPokemonSprite(
-                                    encounter.species,
-                                    variant
-                                );
-                                const isCaughtElsewhere =
-                                    !isCaughtHere(encounter.species) &&
-                                    isEvolutionLineCaught(encounter.species);
-
-                                return (
-                                    <tr
-                                        className={[
-                                            styles.row,
-                                            encounter.species ===
-                                                selectedSpecies &&
-                                                styles['row--selected'],
-                                            isCaughtHere(encounter.species) &&
-                                                styles['row--caught'],
-                                            isCaughtElsewhere &&
-                                                styles['row--used'],
-                                        ]
-                                            .filter(Boolean)
-                                            .join(' ')}
-                                        key={`${method}-${encounter.species}-${encounter.minLevel}-${encounter.maxLevel}-${encounter.chance}`}
-                                        onClick={() =>
-                                            handleRowClick(encounter)
-                                        }
-                                    >
-                                        <td>
-                                            <div className={styles.pokemon}>
-                                                <div
-                                                    className={
-                                                        styles[
-                                                            'pokemon__sprite'
-                                                        ]
-                                                    }
-                                                >
-                                                    {sprite && (
-                                                        <Image
-                                                            alt={
-                                                                pokemon?.name ??
-                                                                encounter.species
-                                                            }
-                                                            height={SPRITE_SIZE}
-                                                            src={sprite}
-                                                            width={SPRITE_SIZE}
-                                                        />
-                                                    )}
-                                                </div>
-                                                <div
-                                                    className={
-                                                        styles['pokemon__info']
-                                                    }
-                                                >
-                                                    <span>
-                                                        {pokemon?.name ??
-                                                            encounter.species}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>{getLevelLabel(encounter)}</td>
-                                        <td className={styles.chance}>
-                                            {encounter.chance !== null
-                                                ? `${getDisplayChance(encounter)}%`
-                                                : '—'}
-                                        </td>
-                                    </tr>
-                                );
-                            })}
-                        </Fragment>
+                        <MethodGroup
+                            encounters={getEncountersForMethod(method)}
+                            getDisplayChance={getDisplayChance}
+                            isSpeciesCaughtElsewhere={isCaughtElsewhere}
+                            isSpeciesCaughtHere={isCaughtHere}
+                            key={method}
+                            method={method}
+                            onSelectEncounter={handleEncounterSelect}
+                            selectedSpecies={selectedSpecies}
+                            variant={variant}
+                        />
                     ))}
                 </tbody>
             </table>

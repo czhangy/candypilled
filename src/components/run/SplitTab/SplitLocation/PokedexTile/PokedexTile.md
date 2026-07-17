@@ -36,10 +36,10 @@ Operates in one of two mutually exclusive modes, set via `mode`:
   member of its evolution line) has been caught anywhere else in the
   run, or this location's encounter was marked missed, enforcing one
   catch per location, one catch per evolution line, and that a missed
-  location can no longer be caught at. When the Pokemon caught at this
-  location was obtained via a "starter" encounter, the button is
-  hidden entirely instead of reading "CAUGHT", since a starter can't
-  be uncaught from the Pokedex tile.
+  location can no longer be caught at. The button is hidden entirely
+  whenever the selected Pokemon comes from a "starter" encounter,
+  whether or not it's already caught, since starters aren't caught or
+  uncaught through this button.
 - **`choose`** — used when choosing a run's starter. There is no action
   button; the parent is responsible for finalizing the choice. Abilities
   are shown as static text rather than clickable links, and the final
@@ -50,26 +50,26 @@ Operates in one of two mutually exclusive modes, set via `mode`:
 
 ## Props
 
-| Prop               | Type                                                                                                                        | Required                        | Default | Description                                                                                                                                        |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `mode`             | `'catch' \| 'choose'`                                                                                                       | Yes                             | -       | Which behavior the tile's action button follows                                                                                                    |
-| `defaultLevel`     | `number`                                                                                                                    | No, only when `mode` is `catch` | -       | Forwarded to `AddPokemonModal` as the Level field's default, e.g. the encounter's minimum level                                                    |
-| `dupes`            | `string[]`                                                                                                                  | Only when `mode` is `catch`     | -       | Every species caught so far in the run, regardless of location, used to enforce one catch per evolution line                                       |
-| `encounter`        | `string`                                                                                                                    | No, only when `mode` is `catch` | -       | The species already caught at the current location, if any, used to enforce one catch per location                                                 |
-| `isLocationMissed` | `boolean`                                                                                                                   | Only when `mode` is `catch`     | -       | Whether the current location's encounter was marked missed, disabling the catch button                                                             |
-| `isStarterCatch`   | `boolean`                                                                                                                   | Only when `mode` is `catch`     | -       | Whether the Pokemon caught at this location came from a "starter" encounter, hiding the catch button entirely while caught so it can't be uncaught |
-| `onAddPokemon`     | `(details: Pick<CaughtPokemon, 'ability' \| 'evs' \| 'ivs' \| 'level' \| 'moves' \| 'name' \| 'nature' \| 'tags'>) => void` | Only when `mode` is `catch`     | -       | Called when `AddPokemonModal` is submitted, with the details to record for the catch                                                               |
-| `onRemovePokemon`  | `() => void`                                                                                                                | Only when `mode` is `catch`     | -       | Called when the catch button is clicked while the selected Pokemon is the one caught at this location                                              |
-| `game`             | `Game`                                                                                                                      | Yes                             | -       | The game the run belongs to, for looking up wild locations                                                                                         |
-| `generation`       | `number`                                                                                                                    | Yes                             | -       | The game's generation, used to resolve the Pokemon's types                                                                                         |
-| `onSelectAbility`  | `(name: string) => void`                                                                                                    | Yes                             | -       | Called when an ability is clicked within the abilities list                                                                                        |
-| `onSelectLocation` | `(location: string) => void`                                                                                                | Yes                             | -       | Called with a location's base name when it's clicked within the locations tab (only reachable in `catch` mode)                                     |
-| `onSelectMove`     | `(name: string) => void`                                                                                                    | Yes                             | -       | Called when a move is clicked within the learnset tab                                                                                              |
-| `onSelectSpecies`  | `(species: string) => void`                                                                                                 | Yes                             | -       | Called when a Pokemon is clicked within the evolution line                                                                                         |
-| `originalSpecies`  | `string`                                                                                                                    | No                              | -       | The species actually selected before navigating to an evolution, used as the catch default even after navigating via `onSelectSpecies`             |
-| `species`          | `string`                                                                                                                    | No                              | -       | The selected Pokemon's species, if any                                                                                                             |
-| `usedLocations`    | `string[]`                                                                                                                  | Yes                             | -       | Names of locations whose encounter is already used (caught or missed) in the run, used to highlight rows in the locations tab                      |
-| `variant`          | `string`                                                                                                                    | Yes                             | -       | The sprite variant to prefer, matching the game's slug                                                                                             |
+| Prop                 | Type                                                                                                                        | Required                        | Default | Description                                                                                                                            |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `mode`               | `'catch' \| 'choose'`                                                                                                       | Yes                             | -       | Which behavior the tile's action button follows                                                                                        |
+| `defaultLevel`       | `number`                                                                                                                    | No, only when `mode` is `catch` | -       | Forwarded to `AddPokemonModal` as the Level field's default, e.g. the encounter's minimum level                                        |
+| `dupes`              | `string[]`                                                                                                                  | Only when `mode` is `catch`     | -       | Every species caught so far in the run, regardless of location, used to enforce one catch per evolution line                           |
+| `encounter`          | `string`                                                                                                                    | No, only when `mode` is `catch` | -       | The species already caught at the current location, if any, used to enforce one catch per location                                     |
+| `isLocationMissed`   | `boolean`                                                                                                                   | Only when `mode` is `catch`     | -       | Whether the current location's encounter was marked missed, disabling the catch button                                                 |
+| `isStarterEncounter` | `boolean`                                                                                                                   | Only when `mode` is `catch`     | -       | Whether the selected Pokemon comes from a "starter" encounter, hiding the catch button entirely                                        |
+| `onAddPokemon`       | `(details: Pick<CaughtPokemon, 'ability' \| 'evs' \| 'ivs' \| 'level' \| 'moves' \| 'name' \| 'nature' \| 'tags'>) => void` | Only when `mode` is `catch`     | -       | Called when `AddPokemonModal` is submitted, with the details to record for the catch                                                   |
+| `onRemovePokemon`    | `() => void`                                                                                                                | Only when `mode` is `catch`     | -       | Called when the catch button is clicked while the selected Pokemon is the one caught at this location                                  |
+| `game`               | `Game`                                                                                                                      | Yes                             | -       | The game the run belongs to, for looking up wild locations                                                                             |
+| `generation`         | `number`                                                                                                                    | Yes                             | -       | The game's generation, used to resolve the Pokemon's types                                                                             |
+| `onSelectAbility`    | `(name: string) => void`                                                                                                    | Yes                             | -       | Called when an ability is clicked within the abilities list                                                                            |
+| `onSelectLocation`   | `(location: string) => void`                                                                                                | Yes                             | -       | Called with a location's base name when it's clicked within the locations tab (only reachable in `catch` mode)                         |
+| `onSelectMove`       | `(name: string) => void`                                                                                                    | Yes                             | -       | Called when a move is clicked within the learnset tab                                                                                  |
+| `onSelectSpecies`    | `(species: string) => void`                                                                                                 | Yes                             | -       | Called when a Pokemon is clicked within the evolution line                                                                             |
+| `originalSpecies`    | `string`                                                                                                                    | No                              | -       | The species actually selected before navigating to an evolution, used as the catch default even after navigating via `onSelectSpecies` |
+| `species`            | `string`                                                                                                                    | No                              | -       | The selected Pokemon's species, if any                                                                                                 |
+| `usedLocations`      | `string[]`                                                                                                                  | Yes                             | -       | Names of locations whose encounter is already used (caught or missed) in the run, used to highlight rows in the locations tab          |
+| `variant`            | `string`                                                                                                                    | Yes                             | -       | The sprite variant to prefer, matching the game's slug                                                                                 |
 
 ## State
 
@@ -132,10 +132,10 @@ Operates in one of two mutually exclusive modes, set via `mode`:
   location, one catch per evolution line, and that a missed location
   can no longer be caught at. Always `false` in `choose` mode, which
   has no catch button
-- `isCatchButtonHidden` — in `catch` mode, whether `isCaughtHere` and
-  `isStarterCatch` are both true; hides the catch button entirely so a
-  starter catch can't be uncaught from the Pokedex tile. Always
-  `false` in `choose` mode
+- `isCatchButtonHidden` — in `catch` mode, `isStarterEncounter`; hides
+  the catch button entirely for Pokemon that come from a "starter"
+  encounter, whether or not they're already caught. Always `false` in
+  `choose` mode
 
 ## Handlers
 
