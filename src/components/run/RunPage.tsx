@@ -200,6 +200,24 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         updateQueryParams({ pokemon: undefined });
     };
 
+    const handleLocationSelect = (locationName: string): void => {
+        if (!game) return;
+
+        const splitName = SplitHelpers.getEarliestSplitName(game, locationName);
+        if (!splitName) return;
+
+        const params = new URLSearchParams(searchParams.toString());
+        params.set('tab', 'split');
+        params.set('split', splitName);
+        params.delete('pokemon');
+        params.delete('move');
+        params.delete('ability');
+
+        router.push(
+            `${pathname}?${params.toString()}#${StringHelpers.toSlug(locationName)}`
+        );
+    };
+
     const handleAbilityLinkClick = (name: string): void => {
         window.open(
             `${pathname}?tab=abilities&ability=${encodeURIComponent(name)}`,
@@ -284,6 +302,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             game={game}
                             onDeselectPokemon={handlePokemonDeselect}
                             onSelectAbility={handleAbilityLinkClick}
+                            onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveLinkClick}
                             onSelectPokemon={handlePokemonSelect}
                             run={run}

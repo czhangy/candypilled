@@ -22,6 +22,18 @@ export default class SplitHelpers {
         return position ? game.splits[position.splitIndex].name : null;
     }
 
+    /** The name of the earliest split (in game order) containing a location named locationName, or null if not found. */
+    static getEarliestSplitName(
+        game: Game,
+        locationName: string
+    ): string | null {
+        const split = game.splits.find((split) =>
+            split.locations.some((location) => location.name === locationName)
+        );
+
+        return split?.name ?? null;
+    }
+
     /** The name of the split the player is currently on, based on which required battles in defeatedBattles are missing. */
     static getCurrentSplitName(
         game: Game,

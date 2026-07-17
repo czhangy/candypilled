@@ -5,7 +5,9 @@ a small sprite alongside its level, nature, ability, catch location, held
 item, and tags (as a row of pills, when any are set), followed by its
 calculated stats and a 2x2 grid of its moves.
 Its ability and moves link out to their corresponding views in the
-Abilities and Moves tabs. A button (labeled "Dead" or "Revive" depending
+Abilities and Moves tabs, and its catch location links to that location's
+card in the Splits tab if the location matches one there (shown as plain
+text, with no hover effect, otherwise). A button (labeled "Dead" or "Revive" depending
 on current status) lets the Pokemon's status be toggled between alive
 and dead. While viewing the box (not the graveyard), an "Edit" button
 opens a modal for editing the Pokemon's recorded details, including its
@@ -18,20 +20,22 @@ hindered by it is highlighted blue.
 
 ## Props
 
-| Prop              | Type                                                                                                                                                | Required | Default | Description                                                                              |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ---------------------------------------------------------------------------------------- |
-| `accentColor`     | `string`                                                                                                                                            | Yes      | -       | The game's accent color, passed through to `EditPokemonModal` and `EvolveModal`          |
-| `buttonTextColor` | `string`                                                                                                                                            | No       | -       | The game's button text contrast color, passed through to `EditPokemonModal`              |
-| `generation`      | `number`                                                                                                                                            | Yes      | -       | The game's generation, used to resolve each move's values and the Pokemon's base stats   |
-| `levelCap`        | `number \| null`                                                                                                                                    | Yes      | -       | The current split's level cap, used to highlight an over-leveled Pokemon's level         |
-| `onEdit`          | `(pokemon: CaughtPokemon, details: Pick<CaughtPokemon, 'ability' \| 'evs' \| 'ivs' \| 'level' \| 'moves' \| 'name' \| 'nature' \| 'tags'>) => void` | Yes      | -       | Called with the previewed Pokemon and its edited details when the edit form is submitted |
-| `onEvolve`        | `(pokemon: CaughtPokemon, newName: string) => void`                                                                                                 | Yes      | -       | Called with the previewed Pokemon and its confirmed evolution's species name             |
-| `onSelectAbility` | `(name: string) => void`                                                                                                                            | Yes      | -       | Called with the Pokemon's ability name when it's clicked                                 |
-| `onSelectMove`    | `(name: string) => void`                                                                                                                            | Yes      | -       | Called with a move's name when it's clicked                                              |
-| `onToggleStatus`  | `(pokemon: CaughtPokemon) => void`                                                                                                                  | Yes      | -       | Called with the previewed Pokemon when the status button is clicked                      |
-| `pokemon`         | `CaughtPokemon`                                                                                                                                     | No       | -       | The currently selected caught Pokemon, if any                                            |
-| `variant`         | `string`                                                                                                                                            | Yes      | -       | The game slug used to resolve the Pokemon's sprite art                                   |
-| `view`            | `BoxView`                                                                                                                                           | Yes      | -       | The box tab's current view, used to only show the Edit button while viewing the box      |
+| Prop                | Type                                                                                                                                                | Required | Default | Description                                                                              |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ---------------------------------------------------------------------------------------- |
+| `accentColor`       | `string`                                                                                                                                            | Yes      | -       | The game's accent color, passed through to `EditPokemonModal` and `EvolveModal`          |
+| `buttonTextColor`   | `string`                                                                                                                                            | No       | -       | The game's button text contrast color, passed through to `EditPokemonModal`              |
+| `canSelectLocation` | `boolean`                                                                                                                                           | Yes      | -       | Whether the previewed Pokemon's location matches a split, making it clickable            |
+| `generation`        | `number`                                                                                                                                            | Yes      | -       | The game's generation, used to resolve each move's values and the Pokemon's base stats   |
+| `levelCap`          | `number \| null`                                                                                                                                    | Yes      | -       | The current split's level cap, used to highlight an over-leveled Pokemon's level         |
+| `onEdit`            | `(pokemon: CaughtPokemon, details: Pick<CaughtPokemon, 'ability' \| 'evs' \| 'ivs' \| 'level' \| 'moves' \| 'name' \| 'nature' \| 'tags'>) => void` | Yes      | -       | Called with the previewed Pokemon and its edited details when the edit form is submitted |
+| `onEvolve`          | `(pokemon: CaughtPokemon, newName: string) => void`                                                                                                 | Yes      | -       | Called with the previewed Pokemon and its confirmed evolution's species name             |
+| `onSelectAbility`   | `(name: string) => void`                                                                                                                            | Yes      | -       | Called with the Pokemon's ability name when it's clicked                                 |
+| `onSelectLocation`  | `(location: string) => void`                                                                                                                        | Yes      | -       | Called with the Pokemon's catch location when it's clicked                               |
+| `onSelectMove`      | `(name: string) => void`                                                                                                                            | Yes      | -       | Called with a move's name when it's clicked                                              |
+| `onToggleStatus`    | `(pokemon: CaughtPokemon) => void`                                                                                                                  | Yes      | -       | Called with the previewed Pokemon when the status button is clicked                      |
+| `pokemon`           | `CaughtPokemon`                                                                                                                                     | No       | -       | The currently selected caught Pokemon, if any                                            |
+| `variant`           | `string`                                                                                                                                            | Yes      | -       | The game slug used to resolve the Pokemon's sprite art                                   |
+| `view`              | `BoxView`                                                                                                                                           | Yes      | -       | The box tab's current view, used to only show the Edit button while viewing the box      |
 
 ## State
 

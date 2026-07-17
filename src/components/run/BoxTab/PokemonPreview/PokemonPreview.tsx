@@ -17,6 +17,7 @@ import styles from './PokemonPreview.module.scss';
 type PokemonPreviewProps = {
     accentColor: string;
     buttonTextColor?: string;
+    canSelectLocation: boolean;
     generation: number;
     levelCap: number | null;
     onEdit: (
@@ -35,6 +36,7 @@ type PokemonPreviewProps = {
     ) => void;
     onEvolve: (pokemon: CaughtPokemon, newName: string) => void;
     onSelectAbility: (name: string) => void;
+    onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
     onToggleStatus: (pokemon: CaughtPokemon) => void;
     pokemon?: CaughtPokemon;
@@ -45,11 +47,13 @@ type PokemonPreviewProps = {
 const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     accentColor,
     buttonTextColor,
+    canSelectLocation,
     generation,
     levelCap,
     onEdit,
     onEvolve,
     onSelectAbility,
+    onSelectLocation,
     onSelectMove,
     onToggleStatus,
     pokemon,
@@ -86,6 +90,10 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
 
     const handleAbilityClick = (ability: string): void => {
         onSelectAbility(StringHelpers.toTitleCase(ability));
+    };
+
+    const handleLocationClick = (location: string): void => {
+        onSelectLocation(location);
     };
 
     const handleToggleStatusClick = (): void => {
@@ -318,11 +326,29 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                         >
                                             Location
                                         </span>
-                                        <span
-                                            className={styles['detail-value']}
-                                        >
-                                            {pokemon.location}
-                                        </span>
+                                        {canSelectLocation ? (
+                                            <button
+                                                className={
+                                                    styles['detail-link']
+                                                }
+                                                onClick={() =>
+                                                    handleLocationClick(
+                                                        pokemon.location
+                                                    )
+                                                }
+                                                type="button"
+                                            >
+                                                {pokemon.location}
+                                            </button>
+                                        ) : (
+                                            <span
+                                                className={
+                                                    styles['detail-value']
+                                                }
+                                            >
+                                                {pokemon.location}
+                                            </span>
+                                        )}
                                     </div>
                                     {pokemon.heldItem && (
                                         <div className={styles.detail}>
