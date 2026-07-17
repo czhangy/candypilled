@@ -88,7 +88,7 @@ Operates in one of two mutually exclusive modes, set via `mode`:
 - `evolutionLine` — the selected species' full evolution family tree at
   `generation` (every branch from the family's base species, not just
   the ones leading to the selected species), resolved via
-  `PokemonHelpers.getFullEvolutionLine` and rendered with
+  `EvolutionHelpers.getFullEvolutionLine` and rendered with
   `EvolutionLine`
 - `hasEvolutionBranches` — whether `evolutionLine` has any evolutions
   branching from it; when false, "No evolution line" is shown instead

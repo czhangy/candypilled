@@ -10,10 +10,10 @@ const SpriteCarousel: React.FC = () => {
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    interface CarouselState {
+    type CarouselState = {
         animate: boolean;
         index: number;
-    }
+    };
 
     type CarouselAction = { type: 'advance' } | { type: 'reset' };
 
@@ -35,6 +35,8 @@ const SpriteCarousel: React.FC = () => {
     const PAUSE_DURATION_MS = 1500;
     const SLIDE_DURATION_MS = 400;
     const CYCLE_DURATION_MS = PAUSE_DURATION_MS + SLIDE_DURATION_MS;
+
+    const SPRITE_SIZE = 128;
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -110,7 +112,7 @@ const SpriteCarousel: React.FC = () => {
                 }
             >
                 {FRAMES.map((sprite, position) => {
-                    const src = PokemonHelpers.getSprite(
+                    const src = PokemonHelpers.getPokemonSprite(
                         sprite.name,
                         sprite.variant
                     );
@@ -123,9 +125,9 @@ const SpriteCarousel: React.FC = () => {
                         >
                             <Image
                                 alt={sprite.name}
-                                height={128}
+                                height={SPRITE_SIZE}
                                 src={src}
-                                width={128}
+                                width={SPRITE_SIZE}
                             />
                         </div>
                     );

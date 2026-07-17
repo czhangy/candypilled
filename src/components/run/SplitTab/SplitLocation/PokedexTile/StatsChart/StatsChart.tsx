@@ -1,9 +1,10 @@
+import { STAT_FIELDS } from '@/lib/static/constants';
 import { StatValues } from '@/lib/static/types';
 import styles from './StatsChart.module.scss';
 
-interface StatsChartProps {
+type StatsChartProps = {
     stats: StatValues;
-}
+};
 
 const StatsChart: React.FC<StatsChartProps> = ({ stats }) => {
     // -------------------------------------------------------------------------
@@ -13,20 +14,6 @@ const StatsChart: React.FC<StatsChartProps> = ({ stats }) => {
     // The highest base stat any Pokemon can have, used to scale every bar
     // to a consistent, comparable width.
     const STAT_MAX = 255;
-
-    interface StatRow {
-        key: keyof StatValues;
-        label: string;
-    }
-
-    const STAT_ROWS: StatRow[] = [
-        { key: 'hp', label: 'HP' },
-        { key: 'atk', label: 'Attack' },
-        { key: 'def', label: 'Defense' },
-        { key: 'spa', label: 'Sp. Atk' },
-        { key: 'spd', label: 'Sp. Def' },
-        { key: 'spe', label: 'Speed' },
-    ];
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -42,7 +29,7 @@ const StatsChart: React.FC<StatsChartProps> = ({ stats }) => {
     return (
         <div className={styles['stats-chart']}>
             <div className={styles.rows}>
-                {STAT_ROWS.map((row) => {
+                {STAT_FIELDS.map((row) => {
                     const value = stats[row.key];
                     const percent = (value / STAT_MAX) * 100;
 

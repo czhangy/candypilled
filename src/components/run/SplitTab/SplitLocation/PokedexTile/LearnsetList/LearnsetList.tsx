@@ -1,14 +1,15 @@
-import Image from 'next/image';
+import CategoryBadge from '@/components/common/CategoryBadge/CategoryBadge';
+import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
 import { LearnsetMove } from '@/lib/static/types';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import styles from './LearnsetList.module.scss';
 
-interface LearnsetListProps {
+type LearnsetListProps = {
     generation: number;
     interactive: boolean;
     moves: LearnsetMove[];
     onSelectMove: (name: string) => void;
-}
+};
 
 const LearnsetList: React.FC<LearnsetListProps> = ({
     generation,
@@ -44,8 +45,11 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
     return (
         <ul className={styles['learnset-list']}>
             {moves.map((move) => {
-                const moveData = MoveHelpers.get(move.name);
-                const values = MoveHelpers.getValues(move.name, generation);
+                const moveData = MoveHelpers.getMoveData(move.name);
+                const values = MoveHelpers.getMoveForGeneration(
+                    move.name,
+                    generation
+                );
                 const name = moveData?.name ?? move.name;
 
                 const content = (
@@ -63,16 +67,14 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
                         <span className={styles.name}>{name}</span>
                         {moveData && values && (
                             <div className={styles.details}>
-                                <Image
-                                    alt={values.type}
+                                <TypeBadge
                                     height={BADGE_HEIGHT}
-                                    src={`/types/${values.type}.png`}
+                                    type={values.type}
                                     width={BADGE_WIDTH}
                                 />
-                                <Image
-                                    alt={moveData.category}
+                                <CategoryBadge
+                                    category={moveData.category}
                                     height={BADGE_HEIGHT}
-                                    src={`/move_categories/${moveData.category}.png`}
                                     width={BADGE_WIDTH}
                                 />
                                 <span className={styles.power}>

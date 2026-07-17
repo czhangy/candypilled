@@ -44,6 +44,22 @@ export const validateRootDirectory = (): void => {
     }
 };
 
+// Every script entry point validates it's running from the project root,
+// runs its body, and reports any error the same way, so that ceremony lives
+// here instead of being repeated in every script's own main().
+export const runScript = async (
+    fn: () => void | Promise<void>
+): Promise<void> => {
+    try {
+        validateRootDirectory();
+        await fn();
+    } catch (error) {
+        handleException(error);
+    }
+};
+
+export const isPascalCase = (name: string): boolean => /^[A-Z]/.test(name);
+
 // https://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-snake-case
 export const toKebabCase = (name: string): string =>
     name

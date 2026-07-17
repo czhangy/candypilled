@@ -1,25 +1,25 @@
 import { StaticImageData } from 'next/image';
 import { FieldCondition, Nature, PokemonStatus } from '@/lib/static/enums';
 
-export interface StatValues {
+export type StatValues = {
     atk: number;
     def: number;
     hp: number;
     spa: number;
     spd: number;
     spe: number;
-}
+};
 
-export interface DropdownOption {
+export type DropdownOption = {
     label: string;
     value: string;
-}
+};
 
 // Identifies which of a species' abilities is set: 1 = slot1, 2 = slot2,
 // 3 = hidden. Callers resolve the name via PokemonHelpers.getAbilityName.
 export type AbilitySlot = 1 | 2 | 3;
 
-export interface BattlePokemon {
+export type BattlePokemon = {
     ability: AbilitySlot;
     evs?: StatValues;
     heldItem?: string;
@@ -28,25 +28,25 @@ export interface BattlePokemon {
     moves: string[];
     name: string;
     nature?: Nature;
-}
+};
 
 // A caught Pokemon as tracked for Nuzlocke rule enforcement: one catch per
 // location (not subarea), and no more than one catch per evolution line.
-export interface CaughtPokemon extends BattlePokemon {
+export type CaughtPokemon = BattlePokemon & {
     location: string;
     status: PokemonStatus;
-}
+};
 
 // The two views of the box tab's caught Pokemon grid: living Pokemon
 // ("box") or dead ones ("graveyard").
 export type BoxView = 'box' | 'graveyard';
 
-interface BattleItem {
+type BattleItem = {
     count: number;
     name: string;
-}
+};
 
-export interface Battle {
+export type Battle = {
     fieldCondition?: FieldCondition;
     isBoss?: boolean;
     isDouble?: boolean;
@@ -62,49 +62,49 @@ export interface Battle {
     trainerClass: string;
     x: number;
     y: number;
-}
+};
 
-export interface Encounter {
+export type Encounter = {
     species: string;
     method: string;
     minLevel: number;
     maxLevel: number;
     chance: number | null;
     conditions?: string[];
-}
+};
 
-export interface LocationEncounters {
+export type LocationEncounters = {
     name: string;
     encounters: Encounter[];
-}
+};
 
-export interface EncounterLocation {
+export type EncounterLocation = {
     name: string;
     encounter: Encounter;
-}
+};
 
-export interface Subarea {
+export type Subarea = {
     name: string;
     encountersKey?: string;
     hideBattles?: boolean;
     map?: StaticImageData;
     battles?: Battle[];
-}
+};
 
-export interface Location {
+export type Location = {
     name: string;
     encountersKey?: string;
     map?: StaticImageData;
     battles?: Battle[];
     subareas?: Subarea[];
-}
+};
 
-export interface Split {
+export type Split = {
     name: string;
     locations: Location[];
-}
+};
 
-export interface Game {
+export type Game = {
     name: string;
     logo: string;
     generation: number;
@@ -115,16 +115,16 @@ export interface Game {
     // Game-specific messages shown at random on the run page when a run is
     // marked as a wipe, alongside the run page's default messages.
     wipeMessages: string[];
-}
+};
 
-export interface Run {
+export type Run = {
     attempt: number;
-    // Battle keys (BattleHelpers.getKey), not names — trainerClass + name is
+    // Battle keys (BattleHelpers.getBattleKey), not names — trainerClass + name is
     // the unique identifier since name alone can repeat within a game.
     defeatedBattles: string[];
     personalBest: string;
     hallOfFameCount: number;
-    starter: string | null;
+    starter: string;
     caughtPokemon: CaughtPokemon[];
     // Locations whose encounter was used up without catching anything (the
     // Pokemon fled, fainted, etc.), by location name — same key space as
@@ -133,30 +133,30 @@ export interface Run {
     // Whether the player has given up on this run (a wipe). Once true, the
     // run page shows a "Run it back" message instead of its tabs.
     wipe: boolean;
-}
+};
 
-export interface TypesByGeneration {
+export type TypesByGeneration = {
     fromGeneration: number;
     types: string[];
-}
+};
 
-export interface Abilities {
+export type Abilities = {
     slot1: string;
     slot2?: string;
     hidden?: string;
-}
+};
 
-export interface AbilitiesByGeneration {
+export type AbilitiesByGeneration = {
     fromGeneration: number;
     abilities: Abilities;
-}
+};
 
-export interface StatsByGeneration {
+export type StatsByGeneration = {
     fromGeneration: number;
     stats: StatValues;
-}
+};
 
-export interface EvolutionMethod {
+export type EvolutionMethod = {
     trigger: string;
     item?: string;
     heldItem?: string;
@@ -175,36 +175,36 @@ export interface EvolutionMethod {
     partyType?: string;
     partySpecies?: string;
     relativePhysicalStats?: number;
-}
+};
 
 // A single Pokemon within an evolution line, as known from the perspective of
 // the Pokemon the line was built for: ancestors leading up to it are a single
 // path, but its own descendants preserve any branches (e.g. Eevee's split
 // into multiple eeveelutions).
-export interface EvolutionStep {
+export type EvolutionStep = {
     name: string;
     // How this step is reached from its predecessor. Omitted for the
     // topmost visible step, which has no visible predecessor.
     methods?: EvolutionMethod[];
     evolvesTo: EvolutionStep[];
-}
+};
 
-export interface EvolutionLineByGeneration {
+export type EvolutionLineByGeneration = {
     fromGeneration: number;
     line: EvolutionStep;
-}
+};
 
 // A method label split into its primary text and an optional condition
 // (e.g. a trade evolution's held item), so callers can render the
 // condition on its own line.
-export interface EvolutionMethodLabel {
+export type EvolutionMethodLabel = {
     label: string;
     condition?: string;
     icon?: string;
     gender?: 'male' | 'female';
-}
+};
 
-export interface MoveValuesByGeneration {
+export type MoveValuesByGeneration = {
     fromGeneration: number;
     type: string;
     power: number | null;
@@ -213,9 +213,9 @@ export interface MoveValuesByGeneration {
     effect: string;
     effectChance: number | null;
     description: string;
-}
+};
 
-export interface MoveData {
+export type MoveData = {
     name: string;
     // PokeAPI doesn't track historical changes for these two fields, so
     // unlike the rest of a move's values they aren't split by generation.
@@ -226,34 +226,34 @@ export interface MoveData {
     // separately rather than derived from any API field.
     isDangerous: boolean;
     valuesByGeneration: MoveValuesByGeneration[];
-}
+};
 
-export interface AbilityValuesByGeneration {
+export type AbilityValuesByGeneration = {
     fromGeneration: number;
     effect: string;
-}
+};
 
-export interface AbilityData {
+export type AbilityData = {
     name: string;
     introducedInGeneration: number;
     valuesByGeneration: AbilityValuesByGeneration[];
-}
+};
 
 export type LearnsetMethod = 'level-up' | 'machine' | 'tutor';
 
-export interface LearnsetMove {
+export type LearnsetMove = {
     name: string;
     method: LearnsetMethod;
     // Only set for level-up moves.
     level?: number;
-}
+};
 
-export interface LearnsetByGeneration {
+export type LearnsetByGeneration = {
     fromGeneration: number;
     moves: LearnsetMove[];
-}
+};
 
-export interface PokemonData {
+export type PokemonData = {
     name: string;
     introducedInGeneration: number;
     // PokeAPI's is_battle_only form flag doesn't cover every form that
@@ -268,4 +268,4 @@ export interface PokemonData {
     catchRate: number;
     evolutionLine: EvolutionLineByGeneration[];
     learnset: LearnsetByGeneration[];
-}
+};

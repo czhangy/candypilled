@@ -6,7 +6,7 @@ import { BattlePokemon } from '@/lib/static/types';
 import styles from './AddPokemonModal.module.scss';
 import PokemonForm from './PokemonForm/PokemonForm';
 
-interface AddPokemonModalProps {
+type AddPokemonModalProps = {
     accentColor?: string;
     allSpecies: string[];
     defaultLevel?: number;
@@ -23,7 +23,7 @@ interface AddPokemonModalProps {
         location: string
     ) => void;
     showLocation: boolean;
-}
+};
 
 const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
     accentColor,

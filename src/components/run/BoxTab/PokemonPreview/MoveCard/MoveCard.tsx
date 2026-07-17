@@ -1,13 +1,13 @@
-import Image from 'next/image';
+import CategoryBadge from '@/components/common/CategoryBadge/CategoryBadge';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import TypeHelpers from '@/lib/utils/TypeHelpers';
 import styles from './MoveCard.module.scss';
 
-interface MoveCardProps {
+type MoveCardProps = {
     generation: number;
     move?: string;
     onSelectMove: (name: string) => void;
-}
+};
 
 const MoveCard: React.FC<MoveCardProps> = ({
     generation,
@@ -33,9 +33,13 @@ const MoveCard: React.FC<MoveCardProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const moveData = move ? MoveHelpers.get(move) : undefined;
-    const values = move ? MoveHelpers.getValues(move, generation) : undefined;
-    const moveColor = values ? TypeHelpers.getColor(values.type) : undefined;
+    const moveData = move ? MoveHelpers.getMoveData(move) : undefined;
+    const values = move
+        ? MoveHelpers.getMoveForGeneration(move, generation)
+        : undefined;
+    const moveColor = values
+        ? TypeHelpers.getTypeColor(values.type)
+        : undefined;
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -61,10 +65,9 @@ const MoveCard: React.FC<MoveCardProps> = ({
                 <div className={styles.stat}>
                     <span className={styles['stat-label']}>CAT</span>
                     <span className={styles['stat-value']}>
-                        <Image
-                            alt={moveData.category}
+                        <CategoryBadge
+                            category={moveData.category}
                             height={BADGE_HEIGHT}
-                            src={`/move_categories/${moveData.category}.png`}
                             width={BADGE_WIDTH}
                         />
                     </span>

@@ -12,7 +12,7 @@ Branches (e.g. Eevee's split into multiple eeveelutions) render as a
 vertical stack of continuations after the branching step, and every
 branch is always shown regardless of which family member is currently
 selected (`step` is expected to be the family's full, unpruned tree; see
-`PokemonHelpers.getFullEvolutionLine`). A branch whose target name is
+`EvolutionHelpers.getFullEvolutionLine`). A branch whose target name is
 ambiguous between multiple forms (e.g. Burmy evolving into Wormadam,
 whose cloak/form isn't tracked by evolution data) is itself expanded
 into one branch per form, rather than silently collapsing to a single
@@ -36,7 +36,7 @@ recursively for each step in the line.
 - `isCurrent` — whether `step` matches `currentName`, used to highlight
   the selected Pokemon within the line
 - for each branch, `formNames` — the branch's target name expanded via
-  `PokemonHelpers.getFormOptions` into every matching form key (one,
+  `PokemonHelpers.getPokemonForms` into every matching form key (one,
   unless the name is ambiguous between multiple forms); one branch is
   rendered per entry, each recursing into a copy of the child step with
   `name` set to that specific form

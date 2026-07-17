@@ -5,7 +5,7 @@ import ExclamationMarkIcon from '@/lib/icons/ExclamationMarkIcon';
 import { Battle } from '@/lib/static/types';
 import styles from './TrainerMarker.module.scss';
 
-interface TrainerMarkerProps {
+type TrainerMarkerProps = {
     isDefeated: boolean;
     isNextPersonalBest: boolean;
     isSelected: boolean;
@@ -13,7 +13,7 @@ interface TrainerMarkerProps {
     mapWidth: number;
     onClick: (trainer: Battle) => void;
     trainer: Battle;
-}
+};
 
 const TrainerMarker: React.FC<TrainerMarkerProps> = ({
     isDefeated,

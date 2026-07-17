@@ -3,11 +3,11 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import styles from './Tabs.module.scss';
 
-interface TabsProps {
+type TabsProps = {
     activeTab: string;
     onTabChange: (id: string) => void;
     tabs: { id: string; label: React.ReactNode; ariaLabel?: string }[];
-}
+};
 
 const Tabs: React.FC<TabsProps> = ({ activeTab, onTabChange, tabs }) => {
     // -------------------------------------------------------------------------

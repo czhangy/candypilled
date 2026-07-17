@@ -1,16 +1,15 @@
 import fs from 'fs';
 import path from 'path';
 import {
-    handleException,
-    logSuccess,
-    logWarning,
-    validateRootDirectory,
-} from '@/lib/scripts/utils/helpers';
+    buildGenerationMaps,
+    sleep,
+    toGenerationNumber,
+} from '@/lib/scripts/pokeapi/shared';
+import { logSuccess, logWarning, runScript } from '@/lib/scripts/utils/helpers';
 import { MoveData, MoveValuesByGeneration } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const POKEAPI_MOVE_URL = 'https://pokeapi.co/api/v2/move';
-const POKEAPI_GENERATION_URL = 'https://pokeapi.co/api/v2/generation';
 // Unlike pokemon.json, this dataset isn't scoped to the current game: moves
 // are shared across every game the site will ever support, so every move is
 // fetched regardless of which generation introduced it.
@@ -81,69 +80,14 @@ const DANGEROUS_MOVES = new Set([
     'perish-song',
 ]);
 
-const sleep = (ms: number): Promise<void> =>
-    new Promise((resolve) => setTimeout(resolve, ms));
-
 const writeData = (data: Record<string, MoveData>): void => {
     fs.writeFileSync(DATA_PATH, `${JSON.stringify(data, null, 4)}\n`);
 };
 
-interface RawGeneration {
-    version_groups: { name: string }[];
-}
-
-const fetchGenerationCount = async (): Promise<number> => {
-    const response = await fetch(`${POKEAPI_GENERATION_URL}?limit=1`);
-    if (!response.ok) {
-        throw new Error('Failed to fetch generation count from PokeAPI.');
-    }
-
-    const body = await response.json();
-    return body.count as number;
-};
-
-const fetchGeneration = async (
-    generationNumber: number
-): Promise<RawGeneration> => {
-    const response = await fetch(
-        `${POKEAPI_GENERATION_URL}/${generationNumber}`
-    );
-    if (!response.ok) {
-        throw new Error(
-            `Failed to fetch generation #${generationNumber} from PokeAPI.`
-        );
-    }
-
-    return (await response.json()) as RawGeneration;
-};
-
-// Move history references a version group (e.g. "diamond-pearl") rather than
-// a generation number directly, so this builds the lookup once up front
-// instead of resolving it per move.
-const buildVersionGroupGenerations = async (): Promise<Map<string, number>> => {
-    const generationCount = await fetchGenerationCount();
-    const versionGroupGenerations = new Map<string, number>();
-
-    for (
-        let generationNumber = 1;
-        generationNumber <= generationCount;
-        generationNumber += 1
-    ) {
-        const generation = await fetchGeneration(generationNumber);
-        await sleep(FETCH_DELAY_MS);
-
-        for (const versionGroup of generation.version_groups) {
-            versionGroupGenerations.set(versionGroup.name, generationNumber);
-        }
-    }
-
-    return versionGroupGenerations;
-};
-
-interface NamedApiResource {
+type NamedApiResource = {
     name: string;
     url: string;
-}
+};
 
 const fetchMoveList = async (): Promise<NamedApiResource[]> => {
     const response = await fetch(
@@ -157,18 +101,18 @@ const fetchMoveList = async (): Promise<NamedApiResource[]> => {
     return body.results as NamedApiResource[];
 };
 
-interface RawEffectEntry {
+type RawEffectEntry = {
     short_effect: string;
     language: { name: string };
-}
+};
 
-interface RawFlavorTextEntry {
+type RawFlavorTextEntry = {
     flavor_text: string;
     language: { name: string };
     version_group: { name: string };
-}
+};
 
-interface RawPastValue {
+type RawPastValue = {
     accuracy: number | null;
     effect_chance: number | null;
     effect_entries: RawEffectEntry[];
@@ -176,9 +120,9 @@ interface RawPastValue {
     pp: number | null;
     type: { name: string } | null;
     version_group: { name: string };
-}
+};
 
-interface RawMove {
+type RawMove = {
     name: string;
     accuracy: number | null;
     power: number | null;
@@ -191,7 +135,7 @@ interface RawMove {
     effect_entries: RawEffectEntry[];
     flavor_text_entries: RawFlavorTextEntry[];
     past_values: RawPastValue[];
-}
+};
 
 const fetchMove = async (resource: NamedApiResource): Promise<RawMove> => {
     const response = await fetch(resource.url);
@@ -207,17 +151,14 @@ const fetchMove = async (resource: NamedApiResource): Promise<RawMove> => {
 const toEnglishEffect = (entries: RawEffectEntry[]): string | undefined =>
     entries.find((entry) => entry.language.name === 'en')?.short_effect;
 
-const toGenerationNumber = (generationName: string): number =>
-    StringHelpers.fromRoman(generationName.replace('generation-', ''));
-
-interface MoveValues {
+type MoveValues = {
     type: string;
     power: number | null;
     accuracy: number | null;
     pp: number;
     effect: string;
     effectChance: number | null;
-}
+};
 
 // PokeAPI's `past_values` entries are diffs against the move's CURRENT
 // (top-level) values rather than against the previous historical entry: a
@@ -257,10 +198,10 @@ const buildValuesTimeline = (
     return segments;
 };
 
-interface DescriptionSegment {
+type DescriptionSegment = {
     fromGeneration: number;
     description: string;
-}
+};
 
 // Flavor text entries are per version-group (not diffs like past_values), so
 // this keeps the first English entry seen for each generation and lets it
@@ -370,7 +311,8 @@ const buildValuesByGeneration = (
 };
 
 export const fetchMoves = async (): Promise<void> => {
-    const versionGroupGenerations = await buildVersionGroupGenerations();
+    const { versionGroupGenerations } =
+        await buildGenerationMaps(FETCH_DELAY_MS);
     const moveList = await fetchMoveList();
     const data: Record<string, MoveData> = {};
 
@@ -409,13 +351,4 @@ export const fetchMoves = async (): Promise<void> => {
     writeData(data);
 };
 
-const main = async (): Promise<void> => {
-    try {
-        validateRootDirectory();
-        await fetchMoves();
-    } catch (error) {
-        handleException(error);
-    }
-};
-
-main();
+runScript(fetchMoves);

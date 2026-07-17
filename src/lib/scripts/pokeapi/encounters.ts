@@ -1,13 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import { CURRENT_GAME_VERSION } from '@/lib/scripts/pokeapi/game-versions';
-import {
-    handleException,
-    logSuccess,
-    logWarning,
-    validateRootDirectory,
-} from '@/lib/scripts/utils/helpers';
+import { sleep } from '@/lib/scripts/pokeapi/shared';
+import { logSuccess, logWarning, runScript } from '@/lib/scripts/utils/helpers';
 import { Encounter, LocationEncounters } from '@/lib/static/types';
+import StringHelpers from '@/lib/utils/StringHelpers';
 
 const POKEAPI_REGION_URL = 'https://pokeapi.co/api/v2/region';
 const DATA_PATH = path.join(
@@ -19,13 +16,13 @@ const DATA_PATH = path.join(
 );
 const FETCH_DELAY_MS = 75;
 
-interface MethodOverride {
+type MethodOverride = {
     location: string;
     species: string;
     method: string;
-}
+};
 
-interface GameVersion {
+type GameVersion = {
     id: string;
     label: string;
     version: string;
@@ -40,39 +37,39 @@ interface GameVersion {
     excludedConditionPrefixes?: string[];
     strippedConditions?: string[];
     strippedConditionPrefixes?: string[];
-}
+};
 
-interface NamedApiResource {
+type NamedApiResource = {
     name: string;
     url: string;
-}
+};
 
-interface RawEncounterDetail {
+type RawEncounterDetail = {
     chance: number;
     condition_values: { name: string }[];
     max_level: number;
     min_level: number;
     method: { name: string };
-}
+};
 
-interface RawVersionDetail {
+type RawVersionDetail = {
     version: { name: string };
     encounter_details: RawEncounterDetail[];
-}
+};
 
-interface RawPokemonEncounter {
+type RawPokemonEncounter = {
     pokemon: { name: string };
     version_details: RawVersionDetail[];
-}
+};
 
 const TIME_OF_DAY_CONDITIONS = ['time-morning', 'time-day', 'time-night'];
 
-interface ConditionConfig {
+type ConditionConfig = {
     excludedConditions: string[];
     excludedConditionPrefixes: string[];
     strippedConditions: string[];
     strippedConditionPrefixes: string[];
-}
+};
 
 const isStrippedCondition = (
     condition: string,
@@ -93,21 +90,12 @@ const isExcludedCondition = (
             condition.startsWith(prefix)
         ));
 
-const sleep = (ms: number): Promise<void> =>
-    new Promise((resolve) => setTimeout(resolve, ms));
-
 const toSubareaLabel = (locationName: string, areaName: string): string => {
     const prefix = `${locationName}-`;
     return areaName.startsWith(prefix)
         ? areaName.slice(prefix.length)
         : areaName;
 };
-
-const toDisplayName = (slug: string): string =>
-    slug
-        .split('-')
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
 
 const writeData = (data: Record<string, LocationEncounters>): void => {
     fs.mkdirSync(path.dirname(DATA_PATH), { recursive: true });
@@ -313,25 +301,21 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
             const rawEncounters = await fetchAreaEncounters(area.url, version);
             await sleep(FETCH_DELAY_MS);
 
-            const encounters = nullifyHoneyTreeChances(
-                mergeEncounters(
-                    resolveHoneyTreeEncounters(
-                        expandTimeOfDayEncounters(
-                            mergeEncounters(
-                                resolveMethodOverrides(
-                                    resolveWalkMethod(
-                                        rawEncounters,
-                                        location.name,
-                                        version.caveLocations ?? []
-                                    ),
-                                    location.name,
-                                    version.methodOverrides ?? []
-                                )
-                            )
-                        )
-                    )
-                )
+            const withWalkMethod = resolveWalkMethod(
+                rawEncounters,
+                location.name,
+                version.caveLocations ?? []
             );
+            const withMethodOverrides = resolveMethodOverrides(
+                withWalkMethod,
+                location.name,
+                version.methodOverrides ?? []
+            );
+            const merged = mergeEncounters(withMethodOverrides);
+            const expanded = expandTimeOfDayEncounters(merged);
+            const withHoneyTree = resolveHoneyTreeEncounters(expanded);
+            const remerged = mergeEncounters(withHoneyTree);
+            const encounters = nullifyHoneyTreeChances(remerged);
 
             if (encounters.length === 0) continue;
             hasEncounters = true;
@@ -340,10 +324,10 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
                 ? `${location.name}-${toSubareaLabel(location.name, area.name)}`
                 : location.name;
             const name = isMultiArea
-                ? `${toDisplayName(location.name)} (${toDisplayName(
+                ? `${StringHelpers.toTitleCase(location.name)} (${StringHelpers.toTitleCase(
                       toSubareaLabel(location.name, area.name)
                   )})`
-                : toDisplayName(location.name);
+                : StringHelpers.toTitleCase(location.name);
 
             locationsData[key] = { name, encounters };
             logSuccess(
@@ -353,7 +337,7 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
 
         if (!hasEncounters) {
             logWarning(
-                `No encounters for "${toDisplayName(location.name)}" (${
+                `No encounters for "${StringHelpers.toTitleCase(location.name)}" (${
                     version.label
                 }).`
             );
@@ -363,13 +347,4 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
     writeData(locationsData);
 };
 
-const main = async (): Promise<void> => {
-    try {
-        validateRootDirectory();
-        await fetchEncounters(CURRENT_GAME_VERSION);
-    } catch (error) {
-        handleException(error);
-    }
-};
-
-main();
+runScript(() => fetchEncounters(CURRENT_GAME_VERSION));

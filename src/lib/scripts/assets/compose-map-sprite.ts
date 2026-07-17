@@ -2,11 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
 import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
-import {
-    handleException,
-    logSuccess,
-    validateRootDirectory,
-} from '@/lib/scripts/utils/helpers';
+import { logSuccess, runScript } from '@/lib/scripts/utils/helpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const USAGE = `Usage: npm run compose -- --map <path> --sprite <path> --x <percent> --y <percent> [--width <px>] [--output <path>]. Defaults to writing a preview under src/lib/games/${StringHelpers.toSlug(
@@ -17,14 +13,14 @@ const SPRITE_NOT_FOUND = "That sprite image doesn't exist.";
 const OUT_OF_BOUNDS =
     'The sprite would be placed partially outside the map bounds.';
 
-interface ComposeArgs {
+type ComposeArgs = {
     mapPath: string;
     outputPath: string;
     spritePath: string;
     width?: number;
     x: number;
     y: number;
-}
+};
 
 const parseArgs = (argv: string[]): ComposeArgs => {
     const flags: Record<string, string> = {};
@@ -106,16 +102,9 @@ const composeSprite = async (args: ComposeArgs): Promise<void> => {
     fs.writeFileSync(args.outputPath, composited);
 };
 
-const main = async (): Promise<void> => {
-    try {
-        validateRootDirectory();
-        const args = parseArgs(process.argv.slice(2));
-        validateArgs(args);
-        await composeSprite(args);
-        logSuccess(`Sprite composited onto ${args.outputPath}!`);
-    } catch (error) {
-        handleException(error);
-    }
-};
-
-main();
+runScript(async () => {
+    const args = parseArgs(process.argv.slice(2));
+    validateArgs(args);
+    await composeSprite(args);
+    logSuccess(`Sprite composited onto ${args.outputPath}!`);
+});

@@ -8,15 +8,16 @@ import {
     Game,
     Run,
 } from '@/lib/static/types';
-import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
+import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
+import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './BoxTab.module.scss';
 import PokemonBox from './PokemonBox/PokemonBox';
 import PokemonPreview from './PokemonPreview/PokemonPreview';
 
-interface BoxTabProps {
+type BoxTabProps = {
     game: Game;
     onDeselectPokemon: () => void;
     onSelectAbility: (name: string) => void;
@@ -24,7 +25,7 @@ interface BoxTabProps {
     onSelectPokemon: (location: string) => void;
     run: Run;
     selectedPokemon?: string;
-}
+};
 
 const BoxTab: React.FC<BoxTabProps> = ({
     game,
@@ -50,7 +51,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
     const allSpecies = PokemonHelpers.getAllSpecies(game.generation).filter(
         (species) =>
             !run.caughtPokemon.some((caughtPokemon) =>
-                PokemonHelpers.isSameEvolutionLine(
+                EvolutionHelpers.isSameEvolutionLine(
                     species,
                     caughtPokemon.name,
                     game.generation
@@ -60,7 +61,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
     const selectedCaughtPokemon = run.caughtPokemon.find(
         (caughtPokemon) => caughtPokemon.location === selectedPokemon
     );
-    const currentSplitName = BattleProgressHelpers.getCurrentSplitName(
+    const currentSplitName = SplitHelpers.getCurrentSplitName(
         game,
         run.defeatedBattles
     );
@@ -68,7 +69,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
         (split) => split.name === currentSplitName
     );
     const levelCap = currentSplit
-        ? BattleProgressHelpers.getLevelCap(currentSplit, run.starter)
+        ? SplitHelpers.getLevelCap(currentSplit)
         : null;
 
     // -------------------------------------------------------------------------

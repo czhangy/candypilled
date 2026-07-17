@@ -1,26 +1,29 @@
 import { Nature } from '@/lib/static/enums';
 import { StatValues } from '@/lib/static/types';
 
-interface NatureEffect {
+type NatureEffect = {
     increased: string;
     decreased: string;
-}
+};
 
 export default class NatureHelpers {
     // -------------------------------------------------------------------------
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    static getEffectLabel(nature: Nature): string | null {
+    /** nature's effect label (e.g. "[+Atk -SpA]"), or null if nature is neutral. */
+    static getNatureEffect(nature: Nature): string | null {
         const effect = NatureHelpers.EFFECTS[nature];
         if (!effect) return null;
 
         return `[+${effect.increased} -${effect.decreased}]`;
     }
 
-    // The multiplier a nature applies to a given stat: 1.1 when boosted,
-    // 0.9 when hindered, 1 otherwise. HP is never affected by nature.
-    static getModifier(
+    /**
+     * The multiplier nature applies to stat: 1.1 when boosted, 0.9 when
+     * hindered, 1 otherwise. HP is never affected by nature.
+     */
+    static getNatureModifier(
         nature: Nature | undefined,
         stat: keyof StatValues
     ): number {

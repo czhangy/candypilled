@@ -2,10 +2,10 @@ import { EncounterLocation } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './LocationsList.module.scss';
 
-interface LocationsListProps {
+type LocationsListProps = {
     locations: EncounterLocation[];
     usedLocations: string[];
-}
+};
 
 const LocationsList: React.FC<LocationsListProps> = ({
     locations,

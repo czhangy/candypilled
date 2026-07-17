@@ -1,16 +1,17 @@
 'use client';
 
 import { useState } from 'react';
+import HighlightedText from '@/components/common/HighlightedText/HighlightedText';
 import styles from './SearchableList.module.scss';
 
-interface SearchableListProps {
+type SearchableListProps = {
     emptyMessage: string;
     items: { name: string }[];
     onSelectItem?: (name: string) => void;
     searchAriaLabel: string;
     searchPlaceholder: string;
     selectedItem?: string;
-}
+};
 
 const SearchableList: React.FC<SearchableListProps> = ({
     emptyMessage,
@@ -38,27 +39,6 @@ const SearchableList: React.FC<SearchableListProps> = ({
 
     const handleItemClick = (name: string): void => {
         onSelectItem?.(name);
-    };
-
-    // -------------------------------------------------------------------------
-    // COMPUTATIONS
-    // -------------------------------------------------------------------------
-
-    const getHighlightedName = (name: string): React.ReactNode => {
-        if (!normalizedQuery) return name;
-
-        const index = name.toLowerCase().indexOf(normalizedQuery);
-        if (index === -1) return name;
-
-        return (
-            <>
-                {name.slice(0, index)}
-                <span className={styles.match}>
-                    {name.slice(index, index + normalizedQuery.length)}
-                </span>
-                {name.slice(index + normalizedQuery.length)}
-            </>
-        );
     };
 
     // -------------------------------------------------------------------------
@@ -101,7 +81,7 @@ const SearchableList: React.FC<SearchableListProps> = ({
                             onClick={() => handleItemClick(item.name)}
                             type="button"
                         >
-                            {getHighlightedName(item.name)}
+                            <HighlightedText query={query} text={item.name} />
                         </button>
                     </li>
                 ))}

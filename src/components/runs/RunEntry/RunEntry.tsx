@@ -10,16 +10,16 @@ import RunIcon from '@/lib/icons/RunIcon';
 import SkullIcon from '@/lib/icons/SkullIcon';
 import { PokemonStatus } from '@/lib/static/enums';
 import { CaughtPokemon, Game, Run } from '@/lib/static/types';
-import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
+import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './RunEntry.module.scss';
 import StarterSelectModal from './StarterSelectModal/StarterSelectModal';
 
-interface RunEntryProps {
+type RunEntryProps = {
     game: Game;
     run: Run | null;
-}
+};
 
 const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // -------------------------------------------------------------------------
@@ -40,10 +40,10 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // -------------------------------------------------------------------------
 
     const personalBestSplitName = run?.personalBest
-        ? BattleProgressHelpers.getSplitName(game, run.personalBest)
+        ? SplitHelpers.getSplitName(game, run.personalBest)
         : null;
     const currentSplitName = run
-        ? BattleProgressHelpers.getCurrentSplitName(game, run.defeatedBattles)
+        ? SplitHelpers.getCurrentSplitName(game, run.defeatedBattles)
         : null;
     const boxCount = run
         ? run.caughtPokemon.filter(
@@ -175,7 +175,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             <div className={styles.actions}>
                 {run && (
                     <button
-                        className={styles.continue}
+                        className={styles.action}
                         onClick={handleContinueClick}
                         type="button"
                     >
@@ -183,7 +183,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     </button>
                 )}
                 <button
-                    className={styles['new-run']}
+                    className={styles.action}
                     onClick={handleNewRunClick}
                     type="button"
                 >

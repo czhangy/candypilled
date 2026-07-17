@@ -13,7 +13,6 @@
         align-items: center;
         display: flex;
         justify-content: space-between;
-        margin: 0 auto;
         max-width: $max-content-width;
         padding: 0 25% 0 10%;
         width: 100%;
@@ -32,7 +31,6 @@
 
                     color: $foreground;
                     font-size: 2.5rem;
-                    letter-spacing: -0.02em;
                 }
 
                 .tagline {
@@ -42,30 +40,7 @@
                 }
 
                 .load {
-                    background: $accent;
-                    border: none;
-                    border-radius: 0.5rem;
-                    color: $background;
-                    font-family: $font-mono;
-                    font-size: 0.875rem;
-                    font-weight: 700;
-                    letter-spacing: 0.05em;
-                    margin-top: 1rem;
-                    padding: 0.5rem 1.25rem;
-                    text-decoration: none;
-                    text-transform: uppercase;
-                    transition: opacity 0.2s ease;
-                    width: fit-content;
-
-                    @media (hover: hover) {
-                        &:hover {
-                            opacity: 0.85;
-                        }
-                    }
-
-                    @media (prefers-reduced-motion: reduce) {
-                        transition: none;
-                    }
+                    @include global-button;
                 }
             }
         }

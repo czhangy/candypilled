@@ -1,4 +1,10 @@
-import { EvolutionMethod, EvolutionMethodLabel } from '@/lib/static/types';
+import {
+    EvolutionMethod,
+    EvolutionMethodLabel,
+    EvolutionStep,
+} from '@/lib/static/types';
+import GenerationHelpers from '@/lib/utils/GenerationHelpers';
+import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 export default class EvolutionHelpers {
@@ -6,7 +12,10 @@ export default class EvolutionHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    static getMethodLabel(methods: EvolutionMethod[]): EvolutionMethodLabel {
+    /** The display label for methods (the first entry when multiple apply). */
+    static getEvolutionMethodLabel(
+        methods: EvolutionMethod[]
+    ): EvolutionMethodLabel {
         const method = methods[0];
         if (!method) return { label: '' };
 
@@ -18,8 +27,7 @@ export default class EvolutionHelpers {
                     label: method.item
                         ? StringHelpers.toTitleCase(method.item)
                         : 'Use Item',
-                    condition: EvolutionHelpers.getCondition(method),
-                    gender: EvolutionHelpers.getGender(method),
+                    ...EvolutionHelpers.getBaseLabel(method),
                     icon: EvolutionHelpers.getIcon(method.item),
                 };
             case 'trade':
@@ -27,6 +35,94 @@ export default class EvolutionHelpers {
             default:
                 return { label: StringHelpers.toTitleCase(method.trigger) };
         }
+    }
+
+    /** name's evolution line as of generation, or undefined if no form matches. */
+    static getEvolutionLine(
+        name: string,
+        generation: number
+    ): EvolutionStep | undefined {
+        const pokemon = PokemonHelpers.getPokemonData(name);
+        if (!pokemon) return undefined;
+
+        return GenerationHelpers.resolveGeneration(
+            pokemon.evolutionLine,
+            generation
+        )?.line;
+    }
+
+    /**
+     * The full evolution line reachable from name's family, i.e. every
+     * branch from the family's base species, not just the ones leading to
+     * name itself (which getEvolutionLine alone would prune, e.g. viewing
+     * Mothim would otherwise exclude the Wormadam branch).
+     */
+    static getFullEvolutionLine(
+        name: string,
+        generation: number
+    ): EvolutionStep | undefined {
+        const line = EvolutionHelpers.getEvolutionLine(name, generation);
+        if (!line) return undefined;
+
+        return EvolutionHelpers.getEvolutionLine(line.name, generation) ?? line;
+    }
+
+    /**
+     * Every species slug in name's evolution family (ancestors and
+     * descendants, including sibling branches like other eeveelutions),
+     * for detecting Nuzlocke duplicate-evolution-line catches.
+     */
+    static getEvolutionFamily(name: string, generation: number): string[] {
+        const fullLine = EvolutionHelpers.getFullEvolutionLine(
+            name,
+            generation
+        );
+        if (!fullLine) return [StringHelpers.toSlug(name)];
+
+        const slugs: string[] = [];
+        const collect = (step: EvolutionStep): void => {
+            // A step's name is ambiguous when it doesn't resolve to its
+            // own entry (e.g. "wormadam"), so every matching form counts
+            // as part of the family, not just the (non-existent) bare name.
+            slugs.push(...PokemonHelpers.getPokemonForms(step.name));
+            step.evolvesTo.forEach(collect);
+        };
+        collect(fullLine);
+
+        return slugs;
+    }
+
+    /** Whether a and b are in the same evolution family as of generation. */
+    static isSameEvolutionLine(
+        a: string,
+        b: string,
+        generation: number
+    ): boolean {
+        return EvolutionHelpers.getEvolutionFamily(a, generation).includes(
+            StringHelpers.toSlug(b)
+        );
+    }
+
+    /**
+     * The evolution steps directly reachable from name, i.e. the species it
+     * can evolve into right now (empty if name doesn't evolve further).
+     */
+    static getNextEvolutions(
+        name: string,
+        generation: number
+    ): EvolutionStep[] {
+        const line = EvolutionHelpers.getEvolutionLine(name, generation);
+        if (!line) return [];
+
+        const slug = StringHelpers.toSlug(name);
+        const findStep = (step: EvolutionStep): EvolutionStep | undefined => {
+            if (step.name === slug) return step;
+            return step.evolvesTo
+                .map(findStep)
+                .find((found): found is EvolutionStep => !!found);
+        };
+
+        return findStep(line)?.evolvesTo ?? [];
     }
 
     // -------------------------------------------------------------------------
@@ -113,22 +209,30 @@ export default class EvolutionHelpers {
             : undefined;
     }
 
+    // The condition/gender pair shared by nearly every label variant, so
+    // callers only need to spread it and override what differs.
+    private static getBaseLabel(
+        method: EvolutionMethod
+    ): Pick<EvolutionMethodLabel, 'condition' | 'gender'> {
+        return {
+            condition: EvolutionHelpers.getCondition(method),
+            gender: EvolutionHelpers.getGender(method),
+        };
+    }
+
     private static getLevelUpLabel(
         method: EvolutionMethod
     ): EvolutionMethodLabel {
+        const base = EvolutionHelpers.getBaseLabel(method);
+
         if (method.minLevel) {
-            return {
-                label: `Lv. ${method.minLevel}`,
-                condition: EvolutionHelpers.getCondition(method),
-                gender: EvolutionHelpers.getGender(method),
-            };
+            return { label: `Lv. ${method.minLevel}`, ...base };
         }
 
         if (method.minHappiness) {
             return {
                 label: 'Happiness',
-                condition: EvolutionHelpers.getCondition(method),
-                gender: EvolutionHelpers.getGender(method),
+                ...base,
                 icon: EvolutionHelpers.getIcon('friendship'),
             };
         }
@@ -136,8 +240,7 @@ export default class EvolutionHelpers {
         if (method.heldItem) {
             return {
                 label: StringHelpers.toTitleCase(method.heldItem),
-                condition: EvolutionHelpers.getCondition(method),
-                gender: EvolutionHelpers.getGender(method),
+                ...base,
                 icon: EvolutionHelpers.getIcon(method.heldItem),
             };
         }
@@ -151,22 +254,17 @@ export default class EvolutionHelpers {
                 ]
                     .filter((part): part is string => !!part)
                     .join(', '),
-                gender: EvolutionHelpers.getGender(method),
+                gender: base.gender,
             };
         }
 
         if (method.knownMoveType) {
             return {
                 label: `Knows ${StringHelpers.toTitleCase(method.knownMoveType)} Move`,
-                condition: EvolutionHelpers.getCondition(method),
-                gender: EvolutionHelpers.getGender(method),
+                ...base,
             };
         }
 
-        return {
-            label: 'Level Up',
-            condition: EvolutionHelpers.getCondition(method),
-            gender: EvolutionHelpers.getGender(method),
-        };
+        return { label: 'Level Up', ...base };
     }
 }

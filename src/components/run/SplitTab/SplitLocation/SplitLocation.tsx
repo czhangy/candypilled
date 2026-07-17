@@ -13,7 +13,6 @@ import {
     Run,
 } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
-import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import BattleCard from './BattleCard/BattleCard';
@@ -22,14 +21,14 @@ import LocationMap from './LocationMap/LocationMap';
 import PokedexTile from './PokedexTile/PokedexTile';
 import styles from './SplitLocation.module.scss';
 
-interface SplitLocationProps {
+type SplitLocationProps = {
     game: Game;
     location: Location;
     onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
     run: Run;
     variant: string;
-}
+};
 
 const SplitLocation: React.FC<SplitLocationProps> = ({
     game,
@@ -43,29 +42,31 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    interface Section {
+    type Section = {
         map?: StaticImageData;
         battles: Battle[];
         encounters?: Encounter[];
-    }
+    };
 
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
     const defeatedBattles = run.defeatedBattles;
-    const nextPersonalBestBattleKey =
-        BattleProgressHelpers.getNextRequiredBattleKey(game, run.personalBest);
+    const nextPersonalBestBattleKey = BattleHelpers.getNextRequiredBattleKey(
+        game,
+        run.personalBest
+    );
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
     const isBattleDefeated = (battle: Battle): boolean =>
-        defeatedBattles.includes(BattleHelpers.getKey(battle));
+        defeatedBattles.includes(BattleHelpers.getBattleKey(battle));
 
     const isBattleNextPB = (battle: Battle): boolean =>
-        BattleHelpers.getKey(battle) === nextPersonalBestBattleKey;
+        BattleHelpers.getBattleKey(battle) === nextPersonalBestBattleKey;
 
     const getDefaultSelectedBattle = (
         subareaIndex: number
@@ -124,7 +125,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     };
 
     const handleBattleToggleDefeated = (battle: Battle): void => {
-        const battleKey = BattleHelpers.getKey(battle);
+        const battleKey = BattleHelpers.getBattleKey(battle);
         const wasDefeated = defeatedBattles.includes(battleKey);
 
         const updatedRun: Run = {
@@ -135,11 +136,11 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         };
 
         if (!wasDefeated && !battle.isOptional) {
-            const candidatePosition = BattleProgressHelpers.getPosition(
+            const candidatePosition = BattleHelpers.countProgress(
                 game,
                 battleKey
             );
-            const personalBestPosition = BattleProgressHelpers.getPosition(
+            const personalBestPosition = BattleHelpers.countProgress(
                 game,
                 run.personalBest
             );
@@ -147,7 +148,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             if (
                 candidatePosition &&
                 (!personalBestPosition ||
-                    BattleProgressHelpers.isFarther(
+                    BattleHelpers.isFarther(
                         candidatePosition,
                         personalBestPosition
                     ))

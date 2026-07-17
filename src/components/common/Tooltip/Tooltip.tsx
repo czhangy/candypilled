@@ -4,11 +4,11 @@ import { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './Tooltip.module.scss';
 
-interface TooltipProps {
+type TooltipProps = {
     children: React.ReactNode;
     position: 'center' | 'left' | 'right';
     text: string;
-}
+};
 
 const Tooltip: React.FC<TooltipProps> = ({ children, position, text }) => {
     // -------------------------------------------------------------------------
@@ -17,10 +17,10 @@ const Tooltip: React.FC<TooltipProps> = ({ children, position, text }) => {
 
     const GAP = 6;
 
-    interface BubblePlacement {
+    type BubblePlacement = {
         left: number;
         top: number;
-    }
+    };
 
     // -------------------------------------------------------------------------
     // HOOKS

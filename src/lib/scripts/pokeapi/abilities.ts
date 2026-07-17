@@ -1,16 +1,15 @@
 import fs from 'fs';
 import path from 'path';
 import {
-    handleException,
-    logSuccess,
-    logWarning,
-    validateRootDirectory,
-} from '@/lib/scripts/utils/helpers';
+    buildGenerationMaps,
+    sleep,
+    toGenerationNumber,
+} from '@/lib/scripts/pokeapi/shared';
+import { logSuccess, logWarning, runScript } from '@/lib/scripts/utils/helpers';
 import { AbilityData, AbilityValuesByGeneration } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const POKEAPI_ABILITY_URL = 'https://pokeapi.co/api/v2/ability';
-const POKEAPI_GENERATION_URL = 'https://pokeapi.co/api/v2/generation';
 // Like moves.json, this dataset isn't scoped to the current game: abilities
 // are shared across every game the site will ever support, so every ability
 // is fetched regardless of which generation introduced it.
@@ -18,69 +17,14 @@ const DATA_PATH = path.join('src', 'lib', 'data', 'abilities.json');
 const FETCH_DELAY_MS = 75;
 const ABILITY_LIST_LIMIT = 500;
 
-const sleep = (ms: number): Promise<void> =>
-    new Promise((resolve) => setTimeout(resolve, ms));
-
 const writeData = (data: Record<string, AbilityData>): void => {
     fs.writeFileSync(DATA_PATH, `${JSON.stringify(data, null, 4)}\n`);
 };
 
-interface RawGeneration {
-    version_groups: { name: string }[];
-}
-
-const fetchGenerationCount = async (): Promise<number> => {
-    const response = await fetch(`${POKEAPI_GENERATION_URL}?limit=1`);
-    if (!response.ok) {
-        throw new Error('Failed to fetch generation count from PokeAPI.');
-    }
-
-    const body = await response.json();
-    return body.count as number;
-};
-
-const fetchGeneration = async (
-    generationNumber: number
-): Promise<RawGeneration> => {
-    const response = await fetch(
-        `${POKEAPI_GENERATION_URL}/${generationNumber}`
-    );
-    if (!response.ok) {
-        throw new Error(
-            `Failed to fetch generation #${generationNumber} from PokeAPI.`
-        );
-    }
-
-    return (await response.json()) as RawGeneration;
-};
-
-// Ability effect history references a version group (e.g. "black-white")
-// rather than a generation number directly, so this builds the lookup once
-// up front instead of resolving it per ability.
-const buildVersionGroupGenerations = async (): Promise<Map<string, number>> => {
-    const generationCount = await fetchGenerationCount();
-    const versionGroupGenerations = new Map<string, number>();
-
-    for (
-        let generationNumber = 1;
-        generationNumber <= generationCount;
-        generationNumber += 1
-    ) {
-        const generation = await fetchGeneration(generationNumber);
-        await sleep(FETCH_DELAY_MS);
-
-        for (const versionGroup of generation.version_groups) {
-            versionGroupGenerations.set(versionGroup.name, generationNumber);
-        }
-    }
-
-    return versionGroupGenerations;
-};
-
-interface NamedApiResource {
+type NamedApiResource = {
     name: string;
     url: string;
-}
+};
 
 const fetchAbilityList = async (): Promise<NamedApiResource[]> => {
     const response = await fetch(
@@ -94,23 +38,23 @@ const fetchAbilityList = async (): Promise<NamedApiResource[]> => {
     return body.results as NamedApiResource[];
 };
 
-interface RawEffectEntry {
+type RawEffectEntry = {
     effect: string;
     language: { name: string };
-}
+};
 
-interface RawEffectChange {
+type RawEffectChange = {
     version_group: { name: string };
     effect_entries: RawEffectEntry[];
-}
+};
 
-interface RawAbility {
+type RawAbility = {
     name: string;
     generation: { name: string };
     is_main_series: boolean;
     effect_entries: RawEffectEntry[];
     effect_changes: RawEffectChange[];
-}
+};
 
 const fetchAbility = async (
     resource: NamedApiResource
@@ -127,9 +71,6 @@ const fetchAbility = async (
 
 const toEnglishEffect = (entries: RawEffectEntry[]): string | undefined =>
     entries.find((entry) => entry.language.name === 'en')?.effect;
-
-const toGenerationNumber = (generationName: string): number =>
-    StringHelpers.fromRoman(generationName.replace('generation-', ''));
 
 // PokeAPI's `effect_changes` entries describe the effect text that applied
 // UP TO the listed version group, with the top-level `effect_entries`
@@ -168,7 +109,8 @@ const buildValuesByGeneration = (
 };
 
 export const fetchAbilities = async (): Promise<void> => {
-    const versionGroupGenerations = await buildVersionGroupGenerations();
+    const { versionGroupGenerations } =
+        await buildGenerationMaps(FETCH_DELAY_MS);
     const abilityList = await fetchAbilityList();
     const data: Record<string, AbilityData> = {};
 
@@ -197,13 +139,4 @@ export const fetchAbilities = async (): Promise<void> => {
     writeData(data);
 };
 
-const main = async (): Promise<void> => {
-    try {
-        validateRootDirectory();
-        await fetchAbilities();
-    } catch (error) {
-        handleException(error);
-    }
-};
-
-main();
+runScript(fetchAbilities);

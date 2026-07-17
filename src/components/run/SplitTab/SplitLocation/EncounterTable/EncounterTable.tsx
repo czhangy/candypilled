@@ -5,10 +5,11 @@ import DayIcon from '@/lib/icons/DayIcon';
 import MorningIcon from '@/lib/icons/MorningIcon';
 import NightIcon from '@/lib/icons/NightIcon';
 import { Encounter } from '@/lib/static/types';
+import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './EncounterTable.module.scss';
 
-interface EncounterTableProps {
+type EncounterTableProps = {
     caughtHere?: string;
     dupes: string[];
     encounters: Encounter[];
@@ -18,7 +19,7 @@ interface EncounterTableProps {
     onToggleMissed: () => void;
     selectedSpecies?: string;
     variant: string;
-}
+};
 
 const EncounterTable: React.FC<EncounterTableProps> = ({
     caughtHere,
@@ -134,7 +135,8 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     // -------------------------------------------------------------------------
 
     const getEncounterName = (encounter: Encounter): string =>
-        PokemonHelpers.get(encounter.species)?.name ?? encounter.species;
+        PokemonHelpers.getPokemonData(encounter.species)?.name ??
+        encounter.species;
 
     const getEncountersForMethod = (method: string): Encounter[] =>
         visibleEncounters
@@ -165,7 +167,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
 
     const isEvolutionLineCaught = (species: string): boolean =>
         dupes.some((name) =>
-            PokemonHelpers.isSameEvolutionLine(species, name, generation)
+            EvolutionHelpers.isSameEvolutionLine(species, name, generation)
         );
 
     // -------------------------------------------------------------------------
@@ -251,16 +253,16 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                                 </th>
                             </tr>
                             {getEncountersForMethod(method).map((encounter) => {
-                                const pokemon = PokemonHelpers.get(
+                                const pokemon = PokemonHelpers.getPokemonData(
                                     encounter.species
                                 );
-                                const sprite = PokemonHelpers.getSprite(
+                                const sprite = PokemonHelpers.getPokemonSprite(
                                     encounter.species,
                                     variant
                                 );
                                 const isCaughtHere =
                                     !!caughtHere &&
-                                    PokemonHelpers.isSameEvolutionLine(
+                                    EvolutionHelpers.isSameEvolutionLine(
                                         encounter.species,
                                         caughtHere,
                                         generation

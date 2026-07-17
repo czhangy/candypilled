@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
+import { STAT_FIELDS } from '@/lib/static/constants';
 import { Nature } from '@/lib/static/enums';
 import {
     AbilitySlot,
@@ -13,7 +14,7 @@ import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './PokemonForm.module.scss';
 
-interface PokemonFormProps {
+type PokemonFormProps = {
     allSpecies: string[];
     defaultAbilitySlot?: AbilitySlot;
     defaultEvs?: StatValues;
@@ -36,7 +37,7 @@ interface PokemonFormProps {
     showLevel: boolean;
     showMoves: boolean;
     submitLabel: string;
-}
+};
 
 const PokemonForm: React.FC<PokemonFormProps> = ({
     allSpecies,
@@ -73,15 +74,6 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     const DEFAULT_LEVEL = showLevel ? (defaultLevel ?? 1) : 5;
     const MOVE_SLOT_COUNT = 4;
 
-    const STAT_FIELDS: { key: keyof StatValues; label: string }[] = [
-        { key: 'hp', label: 'HP' },
-        { key: 'atk', label: 'Attack' },
-        { key: 'def', label: 'Defense' },
-        { key: 'spa', label: 'Sp. Atk' },
-        { key: 'spd', label: 'Sp. Def' },
-        { key: 'spe', label: 'Speed' },
-    ];
-
     // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------
@@ -108,7 +100,9 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     // -------------------------------------------------------------------------
 
     const [species, setSpecies] = useState(
-        () => PokemonHelpers.get(defaultSpecies)?.name ?? defaultSpecies
+        () =>
+            PokemonHelpers.getPokemonData(defaultSpecies)?.name ??
+            defaultSpecies
     );
     const [abilitySlot, setAbilitySlot] = useState<AbilitySlot>(
         defaultAbilitySlot ?? 1
@@ -212,7 +206,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
         label: name,
         value: name,
     }));
-    const abilities = PokemonHelpers.getAbilities(species, generation);
+    const abilities = PokemonHelpers.getPokemonAbilities(species, generation);
     const abilityOptions: DropdownOption[] = abilities
         ? [
               { name: abilities.slot1, slot: 1 as AbilitySlot },
@@ -230,9 +224,12 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     const natureOptions: DropdownOption[] = Object.values(Nature).map(
         (name) => ({ label: name, value: name })
     );
-    const learnset = PokemonHelpers.getLearnset(species, generation) ?? [];
+    const learnset =
+        PokemonHelpers.getPokemonLearnset(species, generation) ?? [];
     const moveNames = new Set(
-        learnset.map((move) => MoveHelpers.get(move.name)?.name ?? move.name)
+        learnset.map(
+            (move) => MoveHelpers.getMoveData(move.name)?.name ?? move.name
+        )
     );
     const moveOptions: DropdownOption[] = [
         { label: 'None', value: '' },

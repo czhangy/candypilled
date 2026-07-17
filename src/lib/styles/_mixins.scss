@@ -61,6 +61,29 @@
     }
 }
 
+@mixin global-button {
+    background: $accent;
+    border-radius: 0.2rem;
+    color: $background;
+    font-family: $font-mono;
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    padding: 0.5rem 1.25rem;
+    transition: opacity 0.2s ease;
+    width: fit-content;
+
+    @media (hover: hover) {
+        &:hover {
+            opacity: 0.85;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}
+
 @mixin scrollbar {
     scrollbar-color: $border-subtle transparent;
     scrollbar-width: thin;

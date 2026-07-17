@@ -6,11 +6,11 @@ import {
 } from '@/lib/scripts/pokeapi/dex-ranges';
 import { CURRENT_GAME_VERSION } from '@/lib/scripts/pokeapi/game-versions';
 import {
-    handleException,
-    logSuccess,
-    logWarning,
-    validateRootDirectory,
-} from '@/lib/scripts/utils/helpers';
+    buildGenerationMaps,
+    sleep,
+    toGenerationNumber,
+} from '@/lib/scripts/pokeapi/shared';
+import { logSuccess, logWarning, runScript } from '@/lib/scripts/utils/helpers';
 import {
     Abilities,
     AbilitiesByGeneration,
@@ -28,7 +28,6 @@ import {
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const POKEAPI_SPECIES_URL = 'https://pokeapi.co/api/v2/pokemon-species';
-const POKEAPI_GENERATION_URL = 'https://pokeapi.co/api/v2/generation';
 const DATA_PATH = path.join('src', 'lib', 'data', 'pokemon.json');
 const FETCH_DELAY_MS = 75;
 const MAX_DEX_NUMBER = getMaxDexNumber(CURRENT_GAME_VERSION.generation);
@@ -67,27 +66,21 @@ const TEMPORARY_FORM_VARIETIES = new Set([
 // Shared fetch helpers
 // -------------------------------------------------------------------------
 
-const sleep = (ms: number): Promise<void> =>
-    new Promise((resolve) => setTimeout(resolve, ms));
-
 const writeData = (data: Record<string, PokemonData>): void => {
     fs.writeFileSync(DATA_PATH, `${JSON.stringify(data, null, 4)}\n`);
 };
 
-const toGenerationNumber = (generationName: string): number =>
-    StringHelpers.fromRoman(generationName.replace('generation-', ''));
-
-interface Variety {
+type Variety = {
     name: string;
     url: string;
-}
+};
 
-interface RawSpecies {
+type RawSpecies = {
     name: string;
     capture_rate: number;
     evolution_chain: { url: string };
     varieties: { pokemon: { name: string; url: string } }[];
-}
+};
 
 const fetchSpecies = async (dexNumber: number): Promise<RawSpecies> => {
     const response = await fetch(`${POKEAPI_SPECIES_URL}/${dexNumber}`);
@@ -107,49 +100,49 @@ const toVarieties = (species: RawSpecies): Variety[] =>
 // A single /pokemon/{id} response carries every per-variety field this file
 // needs (sprites, types, abilities, stats, moves), so each variety is only
 // fetched once and reused to build all of them, rather than once per field.
-interface RawTypeSlot {
+type RawTypeSlot = {
     slot: number;
     type: { name: string };
-}
+};
 
-interface RawPastType {
+type RawPastType = {
     generation: { name: string };
     types: RawTypeSlot[];
-}
+};
 
-interface RawAbilitySlot {
+type RawAbilitySlot = {
     ability: { name: string } | null;
     is_hidden: boolean;
     slot: number;
-}
+};
 
-interface RawPastAbility {
+type RawPastAbility = {
     generation: { name: string };
     abilities: RawAbilitySlot[];
-}
+};
 
-interface RawStat {
+type RawStat = {
     base_stat: number;
     stat: { name: string };
-}
+};
 
-interface RawPastStat {
+type RawPastStat = {
     generation: { name: string };
     stats: RawStat[];
-}
+};
 
-interface RawVersionGroupDetail {
+type RawVersionGroupDetail = {
     level_learned_at: number;
     move_learn_method: { name: string };
     version_group: { name: string };
-}
+};
 
-interface RawMoveEntry {
+type RawMoveEntry = {
     move: { name: string };
     version_group_details: RawVersionGroupDetail[];
-}
+};
 
-interface RawPokemon {
+type RawPokemon = {
     name: string;
     sprites: unknown;
     types: RawTypeSlot[];
@@ -159,7 +152,7 @@ interface RawPokemon {
     stats: RawStat[];
     past_stats: RawPastStat[];
     moves: RawMoveEntry[];
-}
+};
 
 const fetchRawPokemon = async (variety: Variety): Promise<RawPokemon> => {
     const response = await fetch(variety.url);
@@ -170,84 +163,15 @@ const fetchRawPokemon = async (variety: Variety): Promise<RawPokemon> => {
     return (await response.json()) as RawPokemon;
 };
 
-interface RawGeneration {
-    version_groups: { name: string }[];
-}
-
-const fetchGenerationCount = async (): Promise<number> => {
-    const response = await fetch(`${POKEAPI_GENERATION_URL}?limit=1`);
-    if (!response.ok) {
-        throw new Error('Failed to fetch generation count from PokeAPI.');
-    }
-
-    const body = await response.json();
-    return body.count as number;
-};
-
-const fetchGeneration = async (
-    generationNumber: number
-): Promise<RawGeneration> => {
-    const response = await fetch(
-        `${POKEAPI_GENERATION_URL}/${generationNumber}`
-    );
-    if (!response.ok) {
-        throw new Error(
-            `Failed to fetch generation #${generationNumber} from PokeAPI.`
-        );
-    }
-
-    return (await response.json()) as RawGeneration;
-};
-
-interface GenerationMaps {
-    // Evolution details reference a version group (e.g. "diamond-pearl")
-    // rather than a generation number directly.
-    versionGroupGenerations: Map<string, number>;
-    // Learnsets are reported per version group with no "past values" diff to
-    // lean on, so each generation is represented by its last (most up to
-    // date) version group, e.g. "platinum" over "diamond-pearl".
-    representativeVersionGroups: Map<number, string>;
-}
-
-const buildGenerationMaps = async (): Promise<GenerationMaps> => {
-    const generationCount = await fetchGenerationCount();
-    const versionGroupGenerations = new Map<string, number>();
-    const representativeVersionGroups = new Map<number, string>();
-
-    for (
-        let generationNumber = 1;
-        generationNumber <= generationCount;
-        generationNumber += 1
-    ) {
-        const generation = await fetchGeneration(generationNumber);
-        await sleep(FETCH_DELAY_MS);
-
-        for (const versionGroup of generation.version_groups) {
-            versionGroupGenerations.set(versionGroup.name, generationNumber);
-        }
-
-        const lastVersionGroup =
-            generation.version_groups[generation.version_groups.length - 1];
-        if (lastVersionGroup) {
-            representativeVersionGroups.set(
-                generationNumber,
-                lastVersionGroup.name
-            );
-        }
-    }
-
-    return { versionGroupGenerations, representativeVersionGroups };
-};
-
 // -------------------------------------------------------------------------
 // Sprites
 // -------------------------------------------------------------------------
 
-interface SpriteVariant {
+type SpriteVariant = {
     id: string;
     label: string;
     generation: number;
-}
+};
 
 const SPRITE_VARIANTS: SpriteVariant[] = [
     { id: 'ruby-sapphire', label: 'Ruby/Sapphire', generation: 3 },
@@ -385,10 +309,10 @@ const buildTypesByGeneration = (pokemon: RawPokemon): TypesByGeneration[] => {
 // ability slot.
 const ABILITY_SLOT_NUMBERS = { slot1: 1, slot2: 2, hidden: 3 } as const;
 
-interface AbilitySlotSegment {
+type AbilitySlotSegment = {
     fromGeneration: number;
     value?: string;
-}
+};
 
 const abilityValueAt = (
     segments: AbilitySlotSegment[],
@@ -497,10 +421,10 @@ const STAT_NAMES: Record<keyof StatValues, string[]> = {
 const findStat = (stats: RawStat[], names: string[]): number | undefined =>
     stats.find((candidate) => names.includes(candidate.stat.name))?.base_stat;
 
-interface StatSegment {
+type StatSegment = {
     fromGeneration: number;
     value?: number;
-}
+};
 
 const statValueAt = (segments: StatSegment[], generation: number): number => {
     let value: number | undefined;
@@ -664,7 +588,7 @@ const GENDER_NAMES: Record<number, string> = {
     3: 'genderless',
 };
 
-interface RawEvolutionDetail {
+type RawEvolutionDetail = {
     trigger: { name: string };
     item: { name: string } | null;
     held_item: { name: string } | null;
@@ -684,17 +608,17 @@ interface RawEvolutionDetail {
     party_species: { name: string } | null;
     relative_physical_stats: number | null;
     version_group: { name: string };
-}
+};
 
-interface RawChainLink {
+type RawChainLink = {
     species: { name: string };
     evolution_details: RawEvolutionDetail[];
     evolves_to: RawChainLink[];
-}
+};
 
-interface RawEvolutionChain {
+type RawEvolutionChain = {
     chain: RawChainLink;
-}
+};
 
 const fetchEvolutionChain = async (url: string): Promise<RawEvolutionChain> => {
     const response = await fetch(url);
@@ -733,12 +657,12 @@ const toMethod = (detail: RawEvolutionDetail): EvolutionMethod => {
     return method;
 };
 
-interface FullNode {
+type FullNode = {
     name: string;
     children: FullEdge[];
-}
+};
 
-interface FullEdge {
+type FullEdge = {
     // The generation from which this edge's evolution first became
     // possible, taken as the earliest version group across all of its
     // alternate methods (an edge can list several ways to trigger the same
@@ -746,7 +670,7 @@ interface FullEdge {
     fromGeneration: number;
     methods: EvolutionMethod[];
     node: FullNode;
-}
+};
 
 // A handful of chain edges (e.g. Phione -> Manaphy) carry no
 // evolution_details at all, since PokeAPI models breeding relationships as
@@ -778,16 +702,16 @@ const parseChain = (
     })),
 });
 
-interface PathEdge {
+type PathEdge = {
     name: string;
     fromGeneration: number;
     methods: EvolutionMethod[];
-}
+};
 
-interface PathResult {
+type PathResult = {
     edges: PathEdge[];
     node: FullNode;
-}
+};
 
 // Walks down from the chain root to find the target species, returning the
 // single-path chain of edges leading to it (a Pokemon can only have one
@@ -904,7 +828,7 @@ const buildEvolutionLine = (
 
 export const fetchPokemonData = async (): Promise<void> => {
     const { versionGroupGenerations, representativeVersionGroups } =
-        await buildGenerationMaps();
+        await buildGenerationMaps(FETCH_DELAY_MS);
     const data: Record<string, PokemonData> = {};
     const chainCache = new Map<string, FullNode>();
 
@@ -986,13 +910,4 @@ export const fetchPokemonData = async (): Promise<void> => {
     writeData(data);
 };
 
-const main = async (): Promise<void> => {
-    try {
-        validateRootDirectory();
-        await fetchPokemonData();
-    } catch (error) {
-        handleException(error);
-    }
-};
-
-main();
+runScript(fetchPokemonData);

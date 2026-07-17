@@ -2,17 +2,18 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import HighlightedText from '@/components/common/HighlightedText/HighlightedText';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { DropdownOption } from '@/lib/static/types';
 import styles from './Dropdown.module.scss';
 
-interface DropdownProps {
+type DropdownProps = {
     onChange: (value: string) => void;
     options: DropdownOption[];
     placeholder?: string;
     searchable?: boolean;
     value: string;
-}
+};
 
 const Dropdown: React.FC<DropdownProps> = ({
     onChange,
@@ -27,12 +28,12 @@ const Dropdown: React.FC<DropdownProps> = ({
 
     const MENU_GAP = 5;
 
-    interface MenuPlacement {
+    type MenuPlacement = {
         accentColor: string;
         left: number;
         top: number;
         width: number;
-    }
+    };
 
     // -------------------------------------------------------------------------
     // HOOKS
@@ -150,27 +151,6 @@ const Dropdown: React.FC<DropdownProps> = ({
             : options;
 
     // -------------------------------------------------------------------------
-    // COMPUTATIONS
-    // -------------------------------------------------------------------------
-
-    const getHighlightedLabel = (label: string): React.ReactNode => {
-        if (!searchable || !query) return label;
-
-        const index = label.toLowerCase().indexOf(query.toLowerCase());
-        if (index === -1) return label;
-
-        return (
-            <>
-                {label.slice(0, index)}
-                <span className={styles.match}>
-                    {label.slice(index, index + query.length)}
-                </span>
-                {label.slice(index + query.length)}
-            </>
-        );
-    };
-
-    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
@@ -243,9 +223,12 @@ const Dropdown: React.FC<DropdownProps> = ({
                                                     styles['option-label']
                                                 }
                                             >
-                                                {getHighlightedLabel(
-                                                    option.label
-                                                )}
+                                                <HighlightedText
+                                                    query={
+                                                        searchable ? query : ''
+                                                    }
+                                                    text={option.label}
+                                                />
                                             </span>
                                         </button>
                                     </li>

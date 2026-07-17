@@ -4,12 +4,12 @@ import Image from 'next/image';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './StarterSelect.module.scss';
 
-interface StarterSelectProps {
+type StarterSelectProps = {
     onSelect: (starter: string) => void;
     selected: string | null;
     starters: string[];
     variant: string;
-}
+};
 
 const StarterSelect: React.FC<StarterSelectProps> = ({
     onSelect,
@@ -33,7 +33,10 @@ const StarterSelect: React.FC<StarterSelectProps> = ({
         <div className={styles['starter-select']}>
             <div className={styles.starters}>
                 {starters.map((starter) => {
-                    const sprite = PokemonHelpers.getSprite(starter, variant);
+                    const sprite = PokemonHelpers.getPokemonSprite(
+                        starter,
+                        variant
+                    );
 
                     return (
                         <button

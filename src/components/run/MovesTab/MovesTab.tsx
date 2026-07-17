@@ -3,11 +3,11 @@ import { MOVES } from '@/lib/data/moves';
 import MoveDetail from './MoveDetail/MoveDetail';
 import styles from './MovesTab.module.scss';
 
-interface MovesTabProps {
+type MovesTabProps = {
     generation: number;
     onSelectMove: (name: string) => void;
     selectedMove?: string;
-}
+};
 
 const MovesTab: React.FC<MovesTabProps> = ({
     generation,

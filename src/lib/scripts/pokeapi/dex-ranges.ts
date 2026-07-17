@@ -1,8 +1,8 @@
-interface DexRange {
+type DexRange = {
     generation: number;
     start: number;
     end: number;
-}
+};
 
 export const DEX_RANGES: DexRange[] = [
     { generation: 1, start: 1, end: 151 },

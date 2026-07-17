@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import Image from 'next/image';
+import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
 import AddPokemonModal from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/AddPokemonModal';
 import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
 import LearnsetList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
 import LocationsList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LocationsList/LocationsList';
 import StatsChart from '@/components/run/SplitTab/SplitLocation/PokedexTile/StatsChart/StatsChart';
 import { BattlePokemon, Game } from '@/lib/static/types';
-import LocationHelpers from '@/lib/utils/LocationHelpers';
+import EncounterHelpers from '@/lib/utils/EncounterHelpers';
+import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './PokedexTile.module.scss';
@@ -67,10 +69,10 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     const TYPE_BADGE_WIDTH = 32;
     const TYPE_BADGE_HEIGHT = 14;
 
-    interface AbilityEntry {
+    type AbilityEntry = {
         hidden?: boolean;
         name: string;
-    }
+    };
 
     type DetailTab = 'learnset' | 'locations';
 
@@ -123,15 +125,17 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const pokemon = species ? PokemonHelpers.get(species) : undefined;
+    const pokemon = species
+        ? PokemonHelpers.getPokemonData(species)
+        : undefined;
     const sprite = species
-        ? PokemonHelpers.getSprite(species, variant)
+        ? PokemonHelpers.getPokemonSprite(species, variant)
         : undefined;
     const types = species
-        ? (PokemonHelpers.getTypes(species, generation) ?? [])
+        ? (PokemonHelpers.getPokemonTypes(species, generation) ?? [])
         : [];
     const abilities = species
-        ? PokemonHelpers.getAbilities(species, generation)
+        ? PokemonHelpers.getPokemonAbilities(species, generation)
         : undefined;
     const abilityEntries: AbilityEntry[] = abilities
         ? [
@@ -143,28 +147,28 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
           ]
         : [];
     const catchRate = species
-        ? PokemonHelpers.getCatchRate(species)
+        ? PokemonHelpers.getPokemonCatchRate(species)
         : undefined;
     const evolutionLine = species
-        ? PokemonHelpers.getFullEvolutionLine(species, generation)
+        ? EvolutionHelpers.getFullEvolutionLine(species, generation)
         : undefined;
     const hasEvolutionBranches =
         !!evolutionLine && evolutionLine.evolvesTo.length > 0;
     const stats = species
-        ? PokemonHelpers.getStats(species, generation)
+        ? PokemonHelpers.getPokemonStats(species, generation)
         : undefined;
     const learnset = species
-        ? PokemonHelpers.getLearnset(species, generation)
+        ? PokemonHelpers.getPokemonLearnset(species, generation)
         : undefined;
     const locations = species
-        ? LocationHelpers.getEncounterLocations(game, species)
+        ? EncounterHelpers.getEncounterLocations(game, species)
         : [];
     const defaultCatchSpecies = originalSpecies ?? species;
     const isCaughtHere =
         rest.mode === 'catch' &&
         !!pokemon &&
         !!rest.encounter &&
-        PokemonHelpers.isSameEvolutionLine(
+        EvolutionHelpers.isSameEvolutionLine(
             pokemon.name,
             rest.encounter,
             generation
@@ -175,7 +179,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         rest.mode === 'catch' &&
         !!pokemon &&
         rest.dupes.some((name) =>
-            PokemonHelpers.isSameEvolutionLine(pokemon.name, name, generation)
+            EvolutionHelpers.isSameEvolutionLine(pokemon.name, name, generation)
         );
     const isCatchDisabled =
         rest.mode === 'catch' &&
@@ -232,11 +236,10 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                                 {types.length > 0 && (
                                     <div className={styles.types}>
                                         {types.map((type) => (
-                                            <Image
-                                                alt={type}
+                                            <TypeBadge
                                                 height={TYPE_BADGE_HEIGHT}
                                                 key={type}
-                                                src={`/types/${type}.png`}
+                                                type={type}
                                                 width={TYPE_BADGE_WIDTH}
                                             />
                                         ))}
@@ -341,7 +344,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                 defaultCatchSpecies && (
                     <AddPokemonModal
                         accentColor={game.accentColor}
-                        allSpecies={LocationHelpers.getAllEncounterSpecies(
+                        allSpecies={EncounterHelpers.getAllEncounterSpecies(
                             game
                         )}
                         defaultLevel={rest.defaultLevel}

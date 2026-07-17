@@ -1,18 +1,18 @@
 import { Game, Run } from '@/lib/static/types';
-import BattleProgressHelpers from '@/lib/utils/BattleProgressHelpers';
+import SplitHelpers from '@/lib/utils/SplitHelpers';
 import styles from './SplitHeader.module.scss';
 
-interface SplitHeaderProps {
+type SplitHeaderProps = {
     game: Game;
     run: Run;
-}
+};
 
 const SplitHeader: React.FC<SplitHeaderProps> = ({ game, run }) => {
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const currentSplitName = BattleProgressHelpers.getCurrentSplitName(
+    const currentSplitName = SplitHelpers.getCurrentSplitName(
         game,
         run.defeatedBattles
     );
@@ -20,7 +20,7 @@ const SplitHeader: React.FC<SplitHeaderProps> = ({ game, run }) => {
         (split) => split.name === currentSplitName
     );
     const levelCap = currentSplit
-        ? BattleProgressHelpers.getLevelCap(currentSplit, run.starter)
+        ? SplitHelpers.getLevelCap(currentSplit)
         : null;
 
     // -------------------------------------------------------------------------

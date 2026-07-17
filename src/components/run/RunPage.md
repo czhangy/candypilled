@@ -46,7 +46,7 @@ shown instead.
   triggers a 404 if no game matches
 - `run` — the stored `Run` for `game`, looked up from the run store snapshot
 - `personalBestBattle` — the `Battle` matching `run.personalBest`, looked up
-  via `BattleProgressHelpers.getBattle`
+  via `BattleHelpers.getBattle`
 - `personalBestSplitName` — the name of the split containing
   `personalBestBattle`
 - `personalBestLabel` — the personal best subtitle text: the battle's

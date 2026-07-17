@@ -2,21 +2,20 @@ import fs from 'fs';
 import path from 'path';
 import {
     DIVIDER_STRING,
-    handleException,
     logSuccess,
+    runScript,
     SUBDIRECTORY_DOESNT_EXIST,
     toKebabCase,
-    validateRootDirectory,
     writeToFile,
 } from '@/lib/scripts/utils/helpers';
 
 const COMPONENT_EXISTS = 'That component already exists.';
 const USAGE = 'Usage: npm run gen:component <subdirectory> <ComponentName>';
 
-interface ComponentArgs {
+type ComponentArgs = {
     subdir: string;
     component: string;
-}
+};
 
 const parseArgs = (argv: string[]): ComponentArgs => {
     const [subdir, component] = argv;
@@ -26,7 +25,9 @@ const parseArgs = (argv: string[]): ComponentArgs => {
     return { subdir, component };
 };
 
-const getPaths = (args: ComponentArgs) => {
+const getPaths = (
+    args: ComponentArgs
+): { subdirPath: string; componentPath: string } => {
     const subdirPath = path.join('src', 'components', args.subdir);
     const componentPath = path.join(subdirPath, args.component);
     return { subdirPath, componentPath };
@@ -93,15 +94,8 @@ const createComponent = (args: ComponentArgs): void => {
     logSuccess(`${args.component} was created successfully!`);
 };
 
-const main = (): void => {
-    try {
-        validateRootDirectory();
-        const args = parseArgs(process.argv.slice(2));
-        validateArgs(args);
-        createComponent(args);
-    } catch (error) {
-        handleException(error);
-    }
-};
-
-main();
+runScript(() => {
+    const args = parseArgs(process.argv.slice(2));
+    validateArgs(args);
+    createComponent(args);
+});

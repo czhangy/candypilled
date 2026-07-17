@@ -17,4 +17,4 @@ when no move is given, for an empty move slot.
 ## Computations
 
 - `moveColor` — the move's type color at `generation`, resolved via
-  `TypeHelpers.getColor`, used to tint the card's background
+  `TypeHelpers.getTypeColor`, used to tint the card's background

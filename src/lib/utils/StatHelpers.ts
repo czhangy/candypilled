@@ -7,90 +7,64 @@ export default class StatHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    static normalize(
+    /** stats broadcast to every stat if a single number or fallback, or passed through as-is if already per-stat. */
+    static normalizeStats(
         stats: number | StatValues | undefined,
         fallback: number
     ): StatValues {
-        if (stats === undefined) {
-            return {
-                atk: fallback,
-                def: fallback,
-                hp: fallback,
-                spa: fallback,
-                spd: fallback,
-                spe: fallback,
-            };
-        }
+        if (typeof stats === 'object') return stats;
 
-        if (typeof stats === 'number') {
-            return {
-                atk: stats,
-                def: stats,
-                hp: stats,
-                spa: stats,
-                spd: stats,
-                spe: stats,
-            };
-        }
-
-        return stats;
+        const value = stats ?? fallback;
+        return StatHelpers.STAT_KEYS.reduce(
+            (values, key) => ({ ...values, [key]: value }),
+            {} as StatValues
+        );
     }
 
-    static calculate(
+    /** base stats at level, given ivs, evs, and nature. */
+    static calculateStats(
         base: StatValues,
         level: number,
         ivs: StatValues,
         evs: StatValues,
         nature?: Nature
     ): StatValues {
-        return {
-            atk: StatHelpers.calculateStat(
-                'atk',
-                base.atk,
-                level,
-                ivs.atk,
-                evs.atk,
-                nature
-            ),
-            def: StatHelpers.calculateStat(
-                'def',
-                base.def,
-                level,
-                ivs.def,
-                evs.def,
-                nature
-            ),
-            hp: StatHelpers.calculateHp(base.hp, level, ivs.hp, evs.hp),
-            spa: StatHelpers.calculateStat(
-                'spa',
-                base.spa,
-                level,
-                ivs.spa,
-                evs.spa,
-                nature
-            ),
-            spd: StatHelpers.calculateStat(
-                'spd',
-                base.spd,
-                level,
-                ivs.spd,
-                evs.spd,
-                nature
-            ),
-            spe: StatHelpers.calculateStat(
-                'spe',
-                base.spe,
-                level,
-                ivs.spe,
-                evs.spe,
-                nature
-            ),
-        };
+        return StatHelpers.STAT_KEYS.reduce(
+            (values, stat) => ({
+                ...values,
+                [stat]:
+                    stat === 'hp'
+                        ? StatHelpers.calculateHp(
+                              base.hp,
+                              level,
+                              ivs.hp,
+                              evs.hp
+                          )
+                        : StatHelpers.calculateStat(
+                              stat,
+                              base[stat],
+                              level,
+                              ivs[stat],
+                              evs[stat],
+                              nature
+                          ),
+            }),
+            {} as StatValues
+        );
     }
 
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------
+
+    private static readonly STAT_KEYS: (keyof StatValues)[] = [
+        'hp',
+        'atk',
+        'def',
+        'spa',
+        'spd',
+        'spe',
+    ];
 
     private static calculateHp(
         base: number,
@@ -117,6 +91,6 @@ export default class StatHelpers {
             Math.floor(((2 * base + iv + Math.floor(ev / 4)) * level) / 100) +
             5;
 
-        return Math.floor(raw * NatureHelpers.getModifier(nature, stat));
+        return Math.floor(raw * NatureHelpers.getNatureModifier(nature, stat));
     }
 }

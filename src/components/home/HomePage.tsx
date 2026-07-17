@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
                         <h1 className={styles.title}>Candypilled</h1>
                         <p className={styles.tagline}>A Nuzlocke tool.</p>
                         <Link className={styles.load} href="/runs">
-                            Load
+                            RUNS
                         </Link>
                     </div>
                 </div>

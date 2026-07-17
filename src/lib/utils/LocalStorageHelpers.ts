@@ -2,10 +2,10 @@ import { GAMES } from '@/lib/static/constants';
 import { Game, Run } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
-interface GameRun {
+type GameRun = {
     game: Game;
     run: Run | null;
-}
+};
 
 export default class LocalStorageHelpers {
     // -------------------------------------------------------------------------
@@ -29,6 +29,7 @@ export default class LocalStorageHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
+    /** Subscribes to storage changes, returning an unsubscribe function. */
     static subscribe(callback: () => void): () => void {
         window.addEventListener('storage', callback);
         LocalStorageHelpers.listeners.add(callback);
@@ -38,6 +39,7 @@ export default class LocalStorageHelpers {
         };
     }
 
+    /** Every game paired with its stored run, cached until storage changes. */
     static getSnapshot(): GameRun[] {
         const raw = LocalStorageHelpers.readRaw();
         if (raw === LocalStorageHelpers.cachedRaw) {
@@ -58,10 +60,12 @@ export default class LocalStorageHelpers {
         return LocalStorageHelpers.cachedSnapshot;
     }
 
+    /** The snapshot to use during server rendering, before storage is available. */
     static getServerSnapshot(): GameRun[] {
         return LocalStorageHelpers.EMPTY_SNAPSHOT;
     }
 
+    /** Persists run for game and notifies subscribers. */
     static saveRun(game: Game, run: Run): void {
         localStorage.setItem(
             StringHelpers.toSlug(game.name),
