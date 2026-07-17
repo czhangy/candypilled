@@ -219,6 +219,38 @@ Modifier classes (`&--variant`) nest inside their base class. **Base styles must
 
 **Transitions** are declared on the base element, not inside the `:hover` block.
 
+## Codebase Passthrough Checklist
+
+When doing a general cleanup/optimization passthrough of the codebase, check for the following:
+
+**Components**
+
+- Extract functions shared between multiple components into helper classes (`src/lib/utils/`) rather than duplicating logic.
+- Extract chunks of JSX with a distinct, nameable meaning into their own child components rather than leaving them inline.
+- Prioritize readability over cleverness or brevity.
+
+**Styles**
+
+- Extract groups of styles repeated across components into mixins (`_mixins.scss`).
+- No media queries should exist anywhere (see page-level padding note above — the site has a fixed minimum width).
+- Verify SCSS nesting mirrors JSX structure (see SCSS nesting section above).
+- Class names must be sufficiently descriptive of what they represent, not generic (e.g. `wrapper`, `container`, `item`).
+
+**Utils**
+
+- Utility classes should have a proper balance of separation of concerns vs. file count — don't split a cohesive concern across many tiny files, and don't cram unrelated concerns into one file.
+- Utility functions must be clean, readable, and efficient.
+- No utility class should implement the same functionality in multiple ways — consolidate duplicates.
+
+**Types**
+
+- All shared types use `type`, never `interface`.
+
+**Scripts**
+
+- Scripts must be readable and efficient.
+- Extract code shared between scripts into helpers rather than duplicating.
+
 ## Verification
 
 After completing any implementation task, run `npm run lint` and fix all errors before reporting the work as done.
