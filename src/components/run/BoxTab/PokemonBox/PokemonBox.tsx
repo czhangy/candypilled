@@ -5,6 +5,7 @@ import { PokemonStatus } from '@/lib/static/enums';
 import { BoxView, CaughtPokemon } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './PokemonBox.module.scss';
+import TagFilter from './TagFilter/TagFilter';
 
 type PokemonBoxProps = {
     caughtPokemon: CaughtPokemon[];
@@ -40,18 +41,28 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
     // -------------------------------------------------------------------------
 
     const [draggedLocation, setDraggedLocation] = useState('');
+    const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const displayedPokemon = caughtPokemon.filter((pokemon) =>
-        view === 'graveyard'
-            ? pokemon.status === PokemonStatus.Dead
-            : pokemon.status !== PokemonStatus.Dead
+    const allTags = [
+        ...new Set(caughtPokemon.flatMap((pokemon) => pokemon.tags)),
+    ].sort((a, b) => a.localeCompare(b));
+    const displayedPokemon = caughtPokemon.filter(
+        (pokemon) =>
+            (view === 'graveyard'
+                ? pokemon.status === PokemonStatus.Dead
+                : pokemon.status !== PokemonStatus.Dead) &&
+            selectedTags.every((tag) => pokemon.tags.includes(tag))
     );
     const emptyMessage =
-        view === 'graveyard' ? 'Graveyard is empty' : 'Box is empty';
+        selectedTags.length > 0
+            ? 'No Pokemon match the selected tags'
+            : view === 'graveyard'
+              ? 'Graveyard is empty'
+              : 'Box is empty';
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -63,6 +74,10 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
 
     const handleViewClick = (nextView: BoxView): void => {
         onViewChange(nextView);
+    };
+
+    const handleTagsChange = (tags: string[]): void => {
+        setSelectedTags(tags);
     };
 
     const handleDragStart = (location: string): void => {
@@ -118,6 +133,13 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                 >
                     Graveyard
                 </button>
+                {allTags.length > 0 && (
+                    <TagFilter
+                        onChange={handleTagsChange}
+                        selectedTags={selectedTags}
+                        tags={allTags}
+                    />
+                )}
                 {view === 'box' && (
                     <button
                         className={styles['add-button']}
