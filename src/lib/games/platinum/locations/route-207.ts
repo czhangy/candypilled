@@ -1,4 +1,4 @@
-import { route207 } from '@/lib/games/platinum/splits/maps';
+import { route207 } from '@/lib/games/platinum/maps';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_207: Location = {

@@ -1,4 +1,4 @@
-import { ravagedPath } from '@/lib/games/platinum/splits/maps';
+import { ravagedPath } from '@/lib/games/platinum/maps';
 import { Location } from '@/lib/static/types';
 
 const RAVAGED_PATH: Location = {

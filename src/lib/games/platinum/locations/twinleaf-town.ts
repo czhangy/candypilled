@@ -1,4 +1,4 @@
-import { twinleafTown } from '@/lib/games/platinum/splits/maps';
+import { twinleafTown } from '@/lib/games/platinum/maps';
 import { Location } from '@/lib/static/types';
 
 const TWINLEAF_TOWN: Location = {

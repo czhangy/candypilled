@@ -29,7 +29,6 @@ const getMapsBarrelPath = (): string =>
         'lib',
         'games',
         StringHelpers.toSlug(GAME_ID),
-        'splits',
         'maps',
         'index.ts'
     );
@@ -40,7 +39,6 @@ const getLocationPath = (slug: string): string =>
         'lib',
         'games',
         StringHelpers.toSlug(GAME_ID),
-        'splits',
         'locations',
         `${slug}.ts`
     );
@@ -73,7 +71,7 @@ const createLocation = (args: LocationArgs): void => {
             ? [
                   `import { ${mapExportName} } from '@/lib/games/${StringHelpers.toSlug(
                       GAME_ID
-                  )}/splits/maps';\n`,
+                  )}/maps';\n`,
               ]
             : []),
         `import { Location } from '@/lib/static/types';\n`,

@@ -1,4 +1,4 @@
-import { route204North, route204South } from '@/lib/games/platinum/splits/maps';
+import { route204North, route204South } from '@/lib/games/platinum/maps';
 import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 

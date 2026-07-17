@@ -1,4 +1,4 @@
-import { oreburghCity } from '@/lib/games/platinum/splits/maps';
+import { oreburghCity } from '@/lib/games/platinum/maps';
 import { Location } from '@/lib/static/types';
 
 const OREBURGH_CITY: Location = {

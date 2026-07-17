@@ -7,7 +7,7 @@ import StringHelpers from '@/lib/utils/StringHelpers';
 
 const USAGE = `Usage: npm run compose -- --map <path> --sprite <path> --x <percent> --y <percent> [--width <px>] [--output <path>]. Defaults to writing a preview under src/lib/games/${StringHelpers.toSlug(
     GAME_ID
-)}/splits/maps/temp/ instead of overwriting the map.`;
+)}/maps/temp/ instead of overwriting the map.`;
 const MAP_NOT_FOUND = "That map image doesn't exist.";
 const SPRITE_NOT_FOUND = "That sprite image doesn't exist.";
 const OUT_OF_BOUNDS =
@@ -42,7 +42,6 @@ const parseArgs = (argv: string[]): ComposeArgs => {
                 'lib',
                 'games',
                 StringHelpers.toSlug(GAME_ID),
-                'splits',
                 'maps',
                 'temp',
                 path.basename(flags.map)

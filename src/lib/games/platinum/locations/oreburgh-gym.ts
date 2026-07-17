@@ -1,4 +1,4 @@
-import { oreburghGym } from '@/lib/games/platinum/splits/maps';
+import { oreburghGym } from '@/lib/games/platinum/maps';
 import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 

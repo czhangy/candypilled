@@ -20,7 +20,7 @@ const parseArgs = (argv: string[]): MapArgs => {
 };
 
 const getMapsDir = (gameSlug: string): string =>
-    path.join('src', 'lib', 'games', gameSlug, 'splits', 'maps');
+    path.join('src', 'lib', 'games', gameSlug, 'maps');
 
 const getBarrelPath = (gameSlug: string): string =>
     path.join(getMapsDir(gameSlug), 'index.ts');
