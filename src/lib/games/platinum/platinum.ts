@@ -22,8 +22,8 @@ const PLATINUM: Game = {
         'Roark is calling.',
         'Maybe a monkey run next time.',
         'Welcome to briefcase simulator.',
-        'Imagine if this was Platinum Kaizo.',
-        "It was Team Galactic's fault",
+        'Pick the penguin.',
+        'Turtle time.',
     ],
     splits: [
         ROARK,
