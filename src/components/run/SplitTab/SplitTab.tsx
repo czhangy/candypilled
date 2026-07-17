@@ -142,7 +142,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
                     </div>
                     <span className={styles['toc-label']}>Locations</span>
                     <ul className={styles['toc-list']}>
-                        {currentSplit?.locations.map((location) => {
+                        {currentSplit?.locations.map((location, index) => {
                             const caughtPokemonName = getCaughtPokemonName(
                                 location.name
                             );
@@ -150,7 +150,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             const slug = StringHelpers.toSlug(location.name);
 
                             return (
-                                <li key={location.name}>
+                                <li key={`${location.name}-${index}`}>
                                     {hasEncounters(location) ? (
                                         <Tooltip
                                             position="left"
@@ -207,10 +207,10 @@ const SplitTab: React.FC<SplitTabProps> = ({
                     </ul>
                 </nav>
                 <div className={styles.locations}>
-                    {currentSplit?.locations.map((location) => (
+                    {currentSplit?.locations.map((location, index) => (
                         <SplitLocation
                             game={game}
-                            key={location.name}
+                            key={`${location.name}-${index}`}
                             location={location}
                             onSelectAbility={onSelectAbility}
                             onSelectLocation={onSelectLocation}

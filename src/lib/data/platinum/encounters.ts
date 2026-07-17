@@ -1,4 +1,4 @@
+import data from '@/lib/data/raw/platinum/platinum_encounters.json';
 import { LocationEncounters } from '@/lib/static/types';
-import data from './platinum_encounters.json';
 
 export const ENCOUNTERS: Record<string, LocationEncounters> = data;

@@ -28,7 +28,7 @@ import {
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const POKEAPI_SPECIES_URL = 'https://pokeapi.co/api/v2/pokemon-species';
-const DATA_PATH = path.join('src', 'lib', 'data', 'pokemon.json');
+const DATA_PATH = path.join('src', 'lib', 'data', 'raw', 'pokemon.json');
 const FETCH_DELAY_MS = 75;
 const MAX_DEX_NUMBER = getMaxDexNumber(CURRENT_GAME_VERSION.generation);
 

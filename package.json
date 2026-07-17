@@ -11,7 +11,6 @@
         "gen:component": "tsx src/lib/scripts/generators/generate-component.ts",
         "gen:class": "tsx src/lib/scripts/generators/generate-class.ts",
         "gen:icon": "tsx src/lib/scripts/generators/generate-icon.ts",
-        "gen:map": "tsx src/lib/scripts/generators/generate-map.ts",
         "gen:location": "tsx src/lib/scripts/generators/generate-location.ts",
         "pokeapi:pokemon": "tsx src/lib/scripts/pokeapi/pokemon.ts",
         "pokeapi:encounters": "tsx src/lib/scripts/pokeapi/encounters.ts",
