@@ -1,4 +1,5 @@
-import Image from 'next/image';
+import CategoryBadge from '@/components/common/CategoryBadge/CategoryBadge';
+import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import styles from './MoveDetail.module.scss';
 
@@ -54,10 +55,9 @@ const MoveDetail: React.FC<MoveDetailProps> = ({ generation, move }) => {
                                 <span className={styles['stat-label']}>
                                     Type
                                 </span>
-                                <Image
-                                    alt={values.type}
+                                <TypeBadge
                                     height={BADGE_HEIGHT}
-                                    src={`/types/${values.type}.png`}
+                                    type={values.type}
                                     width={BADGE_WIDTH}
                                 />
                             </div>
@@ -65,10 +65,9 @@ const MoveDetail: React.FC<MoveDetailProps> = ({ generation, move }) => {
                                 <span className={styles['stat-label']}>
                                     Category
                                 </span>
-                                <Image
-                                    alt={moveData.category}
+                                <CategoryBadge
+                                    category={moveData.category}
                                     height={BADGE_HEIGHT}
-                                    src={`/move_categories/${moveData.category}.png`}
                                     width={BADGE_WIDTH}
                                 />
                             </div>

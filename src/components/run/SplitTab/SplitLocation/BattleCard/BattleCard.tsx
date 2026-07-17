@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
+import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
 import { Battle, BattlePokemon } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
@@ -241,13 +242,12 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                                 }
                                             >
                                                 {types.map((type) => (
-                                                    <Image
-                                                        alt={type}
+                                                    <TypeBadge
                                                         height={
                                                             TYPE_BADGE_HEIGHT
                                                         }
                                                         key={type}
-                                                        src={`/types/${type}.png`}
+                                                        type={type}
                                                         width={TYPE_BADGE_WIDTH}
                                                     />
                                                 ))}

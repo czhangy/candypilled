@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
+import { STAT_FIELDS } from '@/lib/static/constants';
 import { PokemonStatus } from '@/lib/static/enums';
 import {
     BattlePokemon,
@@ -56,20 +57,6 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
 
     const SPRITE_SIZE = 120;
     const MOVE_SLOT_COUNT = 4;
-
-    type StatField = {
-        key: keyof StatValues;
-        label: string;
-    };
-
-    const STAT_FIELDS: StatField[] = [
-        { key: 'hp', label: 'HP' },
-        { key: 'atk', label: 'Attack' },
-        { key: 'def', label: 'Defense' },
-        { key: 'spa', label: 'Sp. Atk' },
-        { key: 'spd', label: 'Sp. Def' },
-        { key: 'spe', label: 'Speed' },
-    ];
 
     // -------------------------------------------------------------------------
     // STATE

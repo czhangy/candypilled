@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
+import { STAT_FIELDS } from '@/lib/static/constants';
 import { Nature } from '@/lib/static/enums';
 import {
     AbilitySlot,
@@ -72,15 +73,6 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     // field) start at level 5, matching the in-game starting level.
     const DEFAULT_LEVEL = showLevel ? (defaultLevel ?? 1) : 5;
     const MOVE_SLOT_COUNT = 4;
-
-    const STAT_FIELDS: { key: keyof StatValues; label: string }[] = [
-        { key: 'hp', label: 'HP' },
-        { key: 'atk', label: 'Attack' },
-        { key: 'def', label: 'Defense' },
-        { key: 'spa', label: 'Sp. Atk' },
-        { key: 'spd', label: 'Sp. Def' },
-        { key: 'spe', label: 'Speed' },
-    ];
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS

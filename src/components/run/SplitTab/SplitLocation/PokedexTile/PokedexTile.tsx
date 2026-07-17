@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
+import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
 import AddPokemonModal from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/AddPokemonModal';
 import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
 import LearnsetList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
@@ -235,11 +236,10 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                                 {types.length > 0 && (
                                     <div className={styles.types}>
                                         {types.map((type) => (
-                                            <Image
-                                                alt={type}
+                                            <TypeBadge
                                                 height={TYPE_BADGE_HEIGHT}
                                                 key={type}
-                                                src={`/types/${type}.png`}
+                                                type={type}
                                                 width={TYPE_BADGE_WIDTH}
                                             />
                                         ))}

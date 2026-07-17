@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import CategoryBadge from '@/components/common/CategoryBadge/CategoryBadge';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import TypeHelpers from '@/lib/utils/TypeHelpers';
 import styles from './MoveCard.module.scss';
@@ -65,10 +65,9 @@ const MoveCard: React.FC<MoveCardProps> = ({
                 <div className={styles.stat}>
                     <span className={styles['stat-label']}>CAT</span>
                     <span className={styles['stat-value']}>
-                        <Image
-                            alt={moveData.category}
+                        <CategoryBadge
+                            category={moveData.category}
                             height={BADGE_HEIGHT}
-                            src={`/move_categories/${moveData.category}.png`}
                             width={BADGE_WIDTH}
                         />
                     </span>
