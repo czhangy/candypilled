@@ -1,7 +1,15 @@
 import PLATINUM from '@/lib/games/platinum';
-import { Game, StatValues } from '@/lib/static/types';
+import { Game, Setting, StatValues } from '@/lib/static/types';
 
 export const GAMES: Game[] = [PLATINUM];
+
+export const SETTINGS: Setting[] = [
+    {
+        id: 'hide-dupes',
+        title: 'Hide Dupes',
+        description: '.',
+    },
+];
 
 export const STAT_FIELDS: { key: keyof StatValues; label: string }[] = [
     { key: 'hp', label: 'HP' },

@@ -94,6 +94,11 @@ const Navbar: React.FC = () => {
                         Runs
                     </Link>
                 </li>
+                <li>
+                    <Link href="/settings" onClick={handleClose}>
+                        Settings
+                    </Link>
+                </li>
             </ul>
         </nav>
     );
