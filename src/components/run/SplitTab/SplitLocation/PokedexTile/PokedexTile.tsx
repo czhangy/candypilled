@@ -43,6 +43,7 @@ type PokedexTileProps = (
     game: Game;
     generation: number;
     onSelectAbility: (name: string) => void;
+    onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
     onSelectSpecies: (species: string) => void;
     originalSpecies?: string;
@@ -55,6 +56,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     game,
     generation,
     onSelectAbility,
+    onSelectLocation,
     onSelectMove,
     onSelectSpecies,
     originalSpecies,
@@ -468,6 +470,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     ) : (
                         <LocationsList
                             locations={locations}
+                            onSelectLocation={onSelectLocation}
                             usedLocations={usedLocations}
                         />
                     )}

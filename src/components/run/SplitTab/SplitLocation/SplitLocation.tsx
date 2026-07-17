@@ -26,6 +26,7 @@ type SplitLocationProps = {
     game: Game;
     location: Location;
     onSelectAbility: (name: string) => void;
+    onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
     run: Run;
     variant: string;
@@ -35,6 +36,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     game,
     location,
     onSelectAbility,
+    onSelectLocation,
     onSelectMove,
     run,
     variant,
@@ -386,6 +388,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         onAddPokemon={handleAddPokemon}
                                         onRemovePokemon={handleRemovePokemon}
                                         onSelectAbility={onSelectAbility}
+                                        onSelectLocation={onSelectLocation}
                                         onSelectMove={onSelectMove}
                                         onSelectSpecies={(species: string) =>
                                             setSpeciesOverride(species)

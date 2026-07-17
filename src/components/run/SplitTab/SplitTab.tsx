@@ -13,6 +13,7 @@ type SplitTabProps = {
     currentSplitName: string | null;
     game: Game;
     onSelectAbility: (name: string) => void;
+    onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
     run: Run;
     stickyOffset: number;
@@ -22,6 +23,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
     currentSplitName,
     game,
     onSelectAbility,
+    onSelectLocation,
     onSelectMove,
     run,
     stickyOffset,
@@ -211,6 +213,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             key={location.name}
                             location={location}
                             onSelectAbility={onSelectAbility}
+                            onSelectLocation={onSelectLocation}
                             onSelectMove={onSelectMove}
                             run={run}
                             variant={variant}

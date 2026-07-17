@@ -21,7 +21,9 @@ tile is also told which species was originally selected from the
 table, so catching a Pokemon from its "Add Pokemon" modal defaults to
 that original species even after navigating to an evolution. Clicking a move
 within the Pokedex tile's learnset list behaves the same as clicking one
-in the battle card's teams. Submitting the Pokedex tile's "Add Pokemon"
+in the battle card's teams. Clicking a location within the Pokedex tile's
+locations tab links to that location's own card in the Splits tab.
+Submitting the Pokedex tile's "Add Pokemon"
 modal records the catch (species, this location's name, and the
 submitted details) in the run's storage; clicking the Pokedex tile's
 catch button while it reads "CAUGHT" instead removes that location's
@@ -39,14 +41,15 @@ button is disabled until the miss is toggled off again.
 
 ## Props
 
-| Prop              | Type                     | Required | Default | Description                                                                                         |
-| ----------------- | ------------------------ | -------- | ------- | --------------------------------------------------------------------------------------------------- |
-| `game`            | `Game`                   | Yes      | -       | The game the run belongs to, for saving defeat state                                                |
-| `location`        | `Location`               | Yes      | -       | The location this card displays                                                                     |
-| `onSelectAbility` | `(name: string) => void` | Yes      | -       | Called when an ability is clicked within the battle card's teams or the Pokedex tile's ability list |
-| `onSelectMove`    | `(name: string) => void` | Yes      | -       | Called when a move is clicked within the battle card's teams or the Pokedex tile's learnset         |
-| `run`             | `Run`                    | Yes      | -       | The run whose defeated battles are shown                                                            |
-| `variant`         | `string`                 | Yes      | -       | The sprite variant to prefer, matching the game's slug                                              |
+| Prop               | Type                         | Required | Default | Description                                                                                         |
+| ------------------ | ---------------------------- | -------- | ------- | --------------------------------------------------------------------------------------------------- |
+| `game`             | `Game`                       | Yes      | -       | The game the run belongs to, for saving defeat state                                                |
+| `location`         | `Location`                   | Yes      | -       | The location this card displays                                                                     |
+| `onSelectAbility`  | `(name: string) => void`     | Yes      | -       | Called when an ability is clicked within the battle card's teams or the Pokedex tile's ability list |
+| `onSelectLocation` | `(location: string) => void` | Yes      | -       | Called with a location's base name when it's clicked within the Pokedex tile's locations tab        |
+| `onSelectMove`     | `(name: string) => void`     | Yes      | -       | Called when a move is clicked within the battle card's teams or the Pokedex tile's learnset         |
+| `run`              | `Run`                        | Yes      | -       | The run whose defeated battles are shown                                                            |
+| `variant`          | `string`                     | Yes      | -       | The sprite variant to prefer, matching the game's slug                                              |
 
 ## State
 

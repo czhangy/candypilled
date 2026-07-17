@@ -14,7 +14,8 @@ static, unclickable header instead, and the learnset is always the
 content shown below it): clicking either tab's label switches the
 content below between the species' learnset (each move's name clickable
 to view it elsewhere, in `catch` mode) and every wild location it can be
-found in, sorted by minimum encounter level, with locations whose
+found in, sorted by minimum encounter level, each linking to that
+location's card in the Splits tab (in `catch` mode), with locations whose
 encounter is already used (caught or missed) in the run highlighted red.
 If no Pokemon is selected, a placeholder message is shown instead.
 
@@ -58,6 +59,7 @@ Operates in one of two mutually exclusive modes, set via `mode`:
 | `game`             | `Game`                                                                                                                      | Yes                             | -       | The game the run belongs to, for looking up wild locations                                                                             |
 | `generation`       | `number`                                                                                                                    | Yes                             | -       | The game's generation, used to resolve the Pokemon's types                                                                             |
 | `onSelectAbility`  | `(name: string) => void`                                                                                                    | Yes                             | -       | Called when an ability is clicked within the abilities list                                                                            |
+| `onSelectLocation` | `(location: string) => void`                                                                                                | Yes                             | -       | Called with a location's base name when it's clicked within the locations tab (only reachable in `catch` mode)                         |
 | `onSelectMove`     | `(name: string) => void`                                                                                                    | Yes                             | -       | Called when a move is clicked within the learnset tab                                                                                  |
 | `onSelectSpecies`  | `(species: string) => void`                                                                                                 | Yes                             | -       | Called when a Pokemon is clicked within the evolution line                                                                             |
 | `originalSpecies`  | `string`                                                                                                                    | No                              | -       | The species actually selected before navigating to an evolution, used as the catch default even after navigating via `onSelectSpecies` |
@@ -102,9 +104,9 @@ Operates in one of two mutually exclusive modes, set via `mode`:
   via `PokemonHelpers` and rendered with `LearnsetList` when
   `activeDetailTab` is `'learnset'` or `mode` is `'choose'`
 - `locations` — every wild encounter of the selected species across
-  `game`'s splits and locations, resolved via `LocationHelpers` and
-  rendered with `LocationsList` (along with `usedLocations`) when
-  `activeDetailTab` is `'locations'` (only reachable in `catch` mode)
+  `game`'s splits and locations, resolved via `EncounterHelpers` and
+  rendered with `LocationsList` (along with `game` and `usedLocations`)
+  when `activeDetailTab` is `'locations'` (only reachable in `catch` mode)
 - `defaultCatchSpecies` — `originalSpecies` if given, otherwise
   `species`; in `catch` mode, passed to `AddPokemonModal` as the species
   to catch, so navigating to an evolution via `onSelectSpecies` before

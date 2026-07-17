@@ -9,14 +9,15 @@ currently scrolled into view is highlighted automatically.
 
 ## Props
 
-| Prop               | Type                     | Required | Default | Description                                                                                                                                             |
-| ------------------ | ------------------------ | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `currentSplitName` | `string \| null`         | Yes      | -       | The name of the split currently being shown                                                                                                             |
-| `game`             | `Game`                   | Yes      | -       | The game the run belongs to                                                                                                                             |
-| `onSelectAbility`  | `(name: string) => void` | Yes      | -       | Called when an ability is clicked within a `SplitLocation`'s `BattleCard` or `PokedexTile`                                                              |
-| `onSelectMove`     | `(name: string) => void` | Yes      | -       | Called when a move is clicked within a `SplitLocation`'s `BattleCard`                                                                                   |
-| `run`              | `Run`                    | Yes      | -       | The run whose progress (caught Pokemon, missed locations) is shown within the current split                                                             |
-| `stickyOffset`     | `number`                 | Yes      | -       | The pixel height of `RunPage`'s sticky tabs/split-header block, added to the table of contents' sticky offset so it doesn't stick underneath that block |
+| Prop               | Type                         | Required | Default | Description                                                                                                                                             |
+| ------------------ | ---------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `currentSplitName` | `string \| null`             | Yes      | -       | The name of the split currently being shown                                                                                                             |
+| `game`             | `Game`                       | Yes      | -       | The game the run belongs to                                                                                                                             |
+| `onSelectAbility`  | `(name: string) => void`     | Yes      | -       | Called when an ability is clicked within a `SplitLocation`'s `BattleCard` or `PokedexTile`                                                              |
+| `onSelectLocation` | `(location: string) => void` | Yes      | -       | Called with a location's base name when it's clicked within a `SplitLocation`'s `PokedexTile`                                                           |
+| `onSelectMove`     | `(name: string) => void`     | Yes      | -       | Called when a move is clicked within a `SplitLocation`'s `BattleCard`                                                                                   |
+| `run`              | `Run`                        | Yes      | -       | The run whose progress (caught Pokemon, missed locations) is shown within the current split                                                             |
+| `stickyOffset`     | `number`                     | Yes      | -       | The pixel height of `RunPage`'s sticky tabs/split-header block, added to the table of contents' sticky offset so it doesn't stick underneath that block |
 
 ## State
 

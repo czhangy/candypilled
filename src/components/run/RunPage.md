@@ -84,11 +84,12 @@ shown instead.
   current page untouched
 - **On Pokemon deselect** (from `BoxTab`, when switching between its box
   and graveyard views) — clears the `pokemon` query param
-- **On location select** (from `BoxTab`, e.g. a Pokemon's catch location
-  within `PokemonPreview`) — resolves the location's earliest split via
-  `SplitHelpers.getEarliestSplitName`, then navigates to the Splits tab
-  for that split (`?tab=split&split=<name>`, clearing `pokemon`/`move`/
-  `ability`) with the location's slug as a URL hash, so the browser
-  scrolls to its card; no-ops if the location doesn't match any split
+- **On location select** (from `BoxTab`'s `PokemonPreview`, or from
+  `SplitTab`'s `PokedexTile` locations tab) — resolves the location's
+  earliest split via `SplitHelpers.getEarliestSplitName`, then navigates
+  to the Splits tab for that split (`?tab=split&split=<name>`, clearing
+  `pokemon`/`move`/`ability`) with the location's slug as a URL hash, so
+  the browser scrolls to its card; no-ops if the location doesn't match
+  any split
 - **On Wipe toggle** — flips `run.wipe` and saves the run; the button reads
   "Wipe" when `run.wipe` is `false` and "RESPAWN" when `true`

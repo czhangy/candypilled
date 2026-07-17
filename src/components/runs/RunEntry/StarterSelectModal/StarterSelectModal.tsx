@@ -75,6 +75,8 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
 
     const handleSelectAbility = (): void => {};
 
+    const handleSelectLocation = (): void => {};
+
     const handleSelectMove = (): void => {};
 
     const handleSelectClick = (): void => {
@@ -161,6 +163,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
                             generation={game.generation}
                             mode="choose"
                             onSelectAbility={handleSelectAbility}
+                            onSelectLocation={handleSelectLocation}
                             onSelectMove={handleSelectMove}
                             onSelectSpecies={handleSelectSpecies}
                             originalSpecies={activeStarter ?? undefined}

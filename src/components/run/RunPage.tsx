@@ -292,6 +292,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             currentSplitName={currentSplitName}
                             game={game}
                             onSelectAbility={handleAbilityLinkClick}
+                            onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveLinkClick}
                             run={run}
                             stickyOffset={stickyHeaderHeight}
