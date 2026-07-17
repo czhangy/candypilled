@@ -131,9 +131,16 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
 
     const timesOfDay = getTimesOfDay();
 
-    const isMissable = encounters.some(
-        (encounter) => !UNMISSABLE_ENCOUNTER_METHODS.includes(encounter.method)
+    const hasStarterEncounter = encounters.some(
+        (encounter) => encounter.method === 'starter'
     );
+
+    const isMissable =
+        !hasStarterEncounter &&
+        encounters.some(
+            (encounter) =>
+                !UNMISSABLE_ENCOUNTER_METHODS.includes(encounter.method)
+        );
 
     const hideDupes = settings['hide-dupes'] ?? false;
 

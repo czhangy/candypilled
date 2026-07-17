@@ -14,6 +14,7 @@ import {
     Run,
 } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
+import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import BattleCard from './BattleCard/BattleCard';
@@ -253,6 +254,17 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                   ? game.encounters[location.encountersKey]?.encounters
                   : undefined,
           };
+    const isStarterCatch =
+        !!encounter &&
+        !!section.encounters?.some(
+            (locationEncounter) =>
+                locationEncounter.method === 'starter' &&
+                EvolutionHelpers.isSameEvolutionLine(
+                    locationEncounter.species,
+                    encounter,
+                    game.generation
+                )
+        );
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -384,6 +396,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         game={game}
                                         generation={game.generation}
                                         isLocationMissed={isMissed}
+                                        isStarterCatch={isStarterCatch}
                                         mode="catch"
                                         onAddPokemon={handleAddPokemon}
                                         onRemovePokemon={handleRemovePokemon}

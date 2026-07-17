@@ -32,8 +32,9 @@ this location's one encounter was used up without catching anything.
 It is disabled whenever a species is already caught at this location,
 since the two outcomes are mutually exclusive. The button is hidden
 entirely when every encounter at the location uses an unmissable
-method (e.g. a gift or fossil), since those encounters can't be
-missed.
+method (e.g. a gift or fossil), or when any encounter uses the
+"starter" method, since a starter encounter can't be missed even
+alongside other, otherwise-missable methods.
 
 ## Props
 
@@ -89,6 +90,10 @@ missed.
   the row green
 - `isCaughtElsewhere` — whether a row's species isn't `isCaughtHere` but
   `isEvolutionLineCaught`, highlighting the row red
+- `hasStarterEncounter` — whether `encounters` includes any "starter"-
+  method encounter
 - `isMissable` — whether `encounters` includes any method not in the
-  fixed `UNMISSABLE_ENCOUNTER_METHODS` list, controlling whether the
-  "MISS"/"MISSED" button is shown
+  fixed `UNMISSABLE_ENCOUNTER_METHODS` list, and `hasStarterEncounter`
+  is false, controlling whether the "MISS"/"MISSED" button is shown;
+  a "starter"-method encounter makes the location fully unmissable
+  even when other, otherwise-missable methods are also present
