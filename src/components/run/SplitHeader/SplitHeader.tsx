@@ -1,21 +1,20 @@
-import { Game, Run } from '@/lib/static/types';
+import { Game } from '@/lib/static/types';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import styles from './SplitHeader.module.scss';
 
 type SplitHeaderProps = {
+    currentSplitName: string | null;
     game: Game;
-    run: Run;
 };
 
-const SplitHeader: React.FC<SplitHeaderProps> = ({ game, run }) => {
+const SplitHeader: React.FC<SplitHeaderProps> = ({
+    currentSplitName,
+    game,
+}) => {
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const currentSplitName = SplitHelpers.getCurrentSplitName(
-        game,
-        run.defeatedBattles
-    );
     const currentSplit = game.splits.find(
         (split) => split.name === currentSplitName
     );

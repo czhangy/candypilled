@@ -60,6 +60,19 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
+    const getRunUrl = (defeatedBattles: string[]): string => {
+        const splitName = SplitHelpers.getCurrentSplitName(
+            game,
+            defeatedBattles
+        );
+        const params = new URLSearchParams({ tab: 'split' });
+        if (splitName) {
+            params.set('split', splitName);
+        }
+
+        return `/runs/${StringHelpers.toSlug(game.name)}?${params.toString()}`;
+    };
+
     const startNewRun = (starter: CaughtPokemon): void => {
         const newRun: Run = {
             attempt: (run?.attempt ?? 0) + 1,
@@ -73,7 +86,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         };
 
         LocalStorageHelpers.saveRun(game, newRun);
-        router.push(`/runs/${StringHelpers.toSlug(game.name)}`);
+        router.push(getRunUrl(newRun.defeatedBattles));
     };
 
     // -------------------------------------------------------------------------
@@ -81,7 +94,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // -------------------------------------------------------------------------
 
     const handleContinueClick = (): void => {
-        router.push(`/runs/${StringHelpers.toSlug(game.name)}`);
+        router.push(getRunUrl(run?.defeatedBattles ?? []));
     };
 
     const handleNewRunClick = (): void => {

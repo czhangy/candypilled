@@ -39,9 +39,10 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     ];
 
     const TAB_QUERY_PARAMS: Record<string, string> = {
+        abilities: 'ability',
         box: 'pokemon',
         moves: 'move',
-        abilities: 'ability',
+        split: 'split',
     };
 
     const DEFAULT_WIPE_MESSAGES = [
@@ -96,6 +97,14 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const run = gameRuns.find(
         (gameRun) => StringHelpers.toSlug(gameRun.game.name) === slug
     )?.run;
+
+    const currentSplitName =
+        game && run
+            ? (game.splits.find(
+                  (split) => split.name === searchParams.get('split')
+              )?.name ??
+              SplitHelpers.getCurrentSplitName(game, run.defeatedBattles))
+            : null;
 
     const personalBestBattle =
         game && run?.personalBest
@@ -249,7 +258,10 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                         ref={stickyHeaderRef}
                     >
                         {activeTab === 'split' && (
-                            <SplitHeader game={game} run={run} />
+                            <SplitHeader
+                                currentSplitName={currentSplitName}
+                                game={game}
+                            />
                         )}
                         <Tabs
                             activeTab={activeTab}
@@ -259,6 +271,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                     </div>
                     {activeTab === 'split' && (
                         <SplitTab
+                            currentSplitName={currentSplitName}
                             game={game}
                             onSelectAbility={handleAbilityLinkClick}
                             onSelectMove={handleMoveLinkClick}

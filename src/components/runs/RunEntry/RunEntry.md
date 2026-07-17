@@ -24,7 +24,8 @@ starter before the run is created.
 
 ## Handlers
 
-- **On "Continue" click** — navigates to the game's run page
+- **On "Continue" click** — navigates to the game's run page, deep-linked to
+  its current split via `getRunUrl`
 - **On "New" click** — if a run already exists, opens a confirmation modal;
   otherwise opens the starter selection modal directly
 - **On confirmation modal close/cancel** — closes the modal without
@@ -37,7 +38,8 @@ starter before the run is created.
   storage for the game with the chosen starter's species and full details
   (as the first entry in `caughtPokemon`), incrementing the attempt
   number, while carrying over the existing personal best and hall of fame
-  count, then navigates to the game's run page
+  count, then navigates to the game's run page, deep-linked to its current
+  split via `getRunUrl`
 
 ## Computations
 
@@ -49,6 +51,10 @@ starter before the run is created.
   don't have a `status` of `PokemonStatus.Dead`; `null` if there is no run
 - `deathCount` — the number of Pokemon in the run's `caughtPokemon` with a
   `status` of `PokemonStatus.Dead`; `null` if there is no run
+- `getRunUrl` — builds the game's run page URL for a given
+  `defeatedBattles` array, with `tab=split` and `split=<name>` (the split
+  computed via `SplitHelpers.getCurrentSplitName`) query params, so
+  navigating there always lands directly on the run's actual current split
 
 ## SCSS Variable Dependencies
 

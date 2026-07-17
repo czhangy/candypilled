@@ -5,12 +5,12 @@ import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { Game, Location, Run } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
-import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import SplitLocation from './SplitLocation/SplitLocation';
 import styles from './SplitTab.module.scss';
 
 type SplitTabProps = {
+    currentSplitName: string | null;
     game: Game;
     onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
@@ -19,6 +19,7 @@ type SplitTabProps = {
 };
 
 const SplitTab: React.FC<SplitTabProps> = ({
+    currentSplitName,
     game,
     onSelectAbility,
     onSelectMove,
@@ -37,10 +38,6 @@ const SplitTab: React.FC<SplitTabProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const currentSplitName = SplitHelpers.getCurrentSplitName(
-        game,
-        run.defeatedBattles
-    );
     const currentSplit = game.splits.find(
         (split) => split.name === currentSplitName
     );
