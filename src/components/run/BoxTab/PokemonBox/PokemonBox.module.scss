@@ -123,6 +123,10 @@
                 }
             }
 
+            &--dragging {
+                opacity: 0.4;
+            }
+
             img {
                 height: 100%;
                 image-rendering: pixelated;

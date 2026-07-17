@@ -164,6 +164,33 @@ const BoxTab: React.FC<BoxTabProps> = ({
         onDeselectPokemon();
     };
 
+    const handleReorderPokemon = (
+        fromLocation: string,
+        toLocation: string
+    ): void => {
+        const fromIndex = run.caughtPokemon.findIndex(
+            (pokemon) => pokemon.location === fromLocation
+        );
+        const toIndex = run.caughtPokemon.findIndex(
+            (pokemon) => pokemon.location === toLocation
+        );
+
+        if (fromIndex === -1 || toIndex === -1 || fromIndex === toIndex) {
+            return;
+        }
+
+        const reorderedPokemon = [...run.caughtPokemon];
+        const [movedPokemon] = reorderedPokemon.splice(fromIndex, 1);
+        reorderedPokemon.splice(toIndex, 0, movedPokemon);
+
+        const updatedRun: Run = {
+            ...run,
+            caughtPokemon: reorderedPokemon,
+        };
+
+        LocalStorageHelpers.saveRun(game, updatedRun);
+    };
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -174,6 +201,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 caughtPokemon={run.caughtPokemon}
                 levelCap={levelCap}
                 onAddPokemonClick={handleAddPokemonClick}
+                onReorderPokemon={handleReorderPokemon}
                 onSelectPokemon={onSelectPokemon}
                 onViewChange={handleViewChange}
                 selectedPokemon={selectedPokemon}

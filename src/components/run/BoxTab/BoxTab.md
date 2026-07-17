@@ -62,3 +62,6 @@ the currently selected Pokemon on the right, taking up the remaining third.
 - `handleViewChange` — sets `view` to the view clicked in `PokemonBox`'s
   header and calls `onDeselectPokemon`, since the previously selected
   Pokemon may not belong to the newly shown view
+- `handleReorderPokemon` — moves the caught Pokemon at the dragged
+  location to the drop target's index within `run.caughtPokemon` and
+  saves the updated run
