@@ -6,7 +6,7 @@ import PokemonForm from '@/components/run/SplitTab/SplitLocation/PokedexTile/Add
 import PokedexTile from '@/components/run/SplitTab/SplitLocation/PokedexTile/PokedexTile';
 import { STARTER_LOCATION_NAME } from '@/lib/static/constants';
 import { PokemonStatus } from '@/lib/static/enums';
-import { BattlePokemon, CaughtPokemon, Game } from '@/lib/static/types';
+import { CaughtPokemon, Game } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
@@ -91,8 +91,15 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
 
     const handleFormSubmit = (
         details: Pick<
-            BattlePokemon,
-            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            CaughtPokemon,
+            | 'ability'
+            | 'evs'
+            | 'ivs'
+            | 'level'
+            | 'moves'
+            | 'name'
+            | 'nature'
+            | 'tags'
         >
     ): void => {
         onSelect({
@@ -133,6 +140,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
                         showEvs={false}
                         showLevel={false}
                         showMoves={false}
+                        showTags={false}
                         submitLabel="CONFIRM"
                     />
                 </div>

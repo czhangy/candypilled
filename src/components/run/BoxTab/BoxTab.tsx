@@ -1,13 +1,7 @@
 import { useState } from 'react';
 import AddPokemonModal from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/AddPokemonModal';
 import { PokemonStatus } from '@/lib/static/enums';
-import {
-    BattlePokemon,
-    BoxView,
-    CaughtPokemon,
-    Game,
-    Run,
-} from '@/lib/static/types';
+import { BoxView, CaughtPokemon, Game, Run } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -86,8 +80,15 @@ const BoxTab: React.FC<BoxTabProps> = ({
 
     const handleAddPokemon = (
         details: Pick<
-            BattlePokemon,
-            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            CaughtPokemon,
+            | 'ability'
+            | 'evs'
+            | 'ivs'
+            | 'level'
+            | 'moves'
+            | 'name'
+            | 'nature'
+            | 'tags'
         >,
         location: string
     ): void => {
@@ -130,8 +131,15 @@ const BoxTab: React.FC<BoxTabProps> = ({
     const handleEditPokemon = (
         pokemon: CaughtPokemon,
         details: Pick<
-            BattlePokemon,
-            'ability' | 'evs' | 'ivs' | 'level' | 'moves' | 'name' | 'nature'
+            CaughtPokemon,
+            | 'ability'
+            | 'evs'
+            | 'ivs'
+            | 'level'
+            | 'moves'
+            | 'name'
+            | 'nature'
+            | 'tags'
         >
     ): void => {
         const updatedRun: Run = {

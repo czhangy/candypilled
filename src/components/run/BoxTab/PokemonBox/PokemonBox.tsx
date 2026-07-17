@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
+import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { PokemonStatus } from '@/lib/static/enums';
 import { BoxView, CaughtPokemon } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -183,6 +184,14 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                                             src={sprite}
                                             width={SPRITE_SIZE}
                                         />
+                                    )}
+                                    {pokemon.tags.length > 0 && (
+                                        <Tooltip
+                                            position="right"
+                                            text={pokemon.tags.join(', ')}
+                                        >
+                                            <span className={styles.tag} />
+                                        </Tooltip>
                                     )}
                                 </button>
                             );

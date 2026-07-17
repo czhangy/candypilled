@@ -6,7 +6,9 @@ Pokemon, and "Graveyard", showing only those marked as dead; while
 viewing the box, an "Add Pokemon" button sits at the header's right edge.
 Clicking a slot selects that Pokemon. Pokemon above the current split's
 level cap are greyed out, but remain clickable. Slots can be dragged and
-dropped onto one another to reorder the caught Pokemon.
+dropped onto one another to reorder the caught Pokemon. A slot for a
+Pokemon with at least one tag shows a small accent-colored dot in its
+top-right corner, revealing the full tag list in a tooltip on hover.
 
 ## Props
 
