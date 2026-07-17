@@ -36,6 +36,8 @@ const SpriteCarousel: React.FC = () => {
     const SLIDE_DURATION_MS = 400;
     const CYCLE_DURATION_MS = PAUSE_DURATION_MS + SLIDE_DURATION_MS;
 
+    const SPRITE_SIZE = 128;
+
     // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------
@@ -123,9 +125,9 @@ const SpriteCarousel: React.FC = () => {
                         >
                             <Image
                                 alt={sprite.name}
-                                height={128}
+                                height={SPRITE_SIZE}
                                 src={src}
-                                width={128}
+                                width={SPRITE_SIZE}
                             />
                         </div>
                     );

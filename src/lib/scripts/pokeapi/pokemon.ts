@@ -6,11 +6,11 @@ import {
 } from '@/lib/scripts/pokeapi/dex-ranges';
 import { CURRENT_GAME_VERSION } from '@/lib/scripts/pokeapi/game-versions';
 import {
-    handleException,
-    logSuccess,
-    logWarning,
-    validateRootDirectory,
-} from '@/lib/scripts/utils/helpers';
+    buildGenerationMaps,
+    sleep,
+    toGenerationNumber,
+} from '@/lib/scripts/pokeapi/shared';
+import { logSuccess, logWarning, runScript } from '@/lib/scripts/utils/helpers';
 import {
     Abilities,
     AbilitiesByGeneration,
@@ -28,7 +28,6 @@ import {
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const POKEAPI_SPECIES_URL = 'https://pokeapi.co/api/v2/pokemon-species';
-const POKEAPI_GENERATION_URL = 'https://pokeapi.co/api/v2/generation';
 const DATA_PATH = path.join('src', 'lib', 'data', 'pokemon.json');
 const FETCH_DELAY_MS = 75;
 const MAX_DEX_NUMBER = getMaxDexNumber(CURRENT_GAME_VERSION.generation);
@@ -67,15 +66,9 @@ const TEMPORARY_FORM_VARIETIES = new Set([
 // Shared fetch helpers
 // -------------------------------------------------------------------------
 
-const sleep = (ms: number): Promise<void> =>
-    new Promise((resolve) => setTimeout(resolve, ms));
-
 const writeData = (data: Record<string, PokemonData>): void => {
     fs.writeFileSync(DATA_PATH, `${JSON.stringify(data, null, 4)}\n`);
 };
-
-const toGenerationNumber = (generationName: string): number =>
-    StringHelpers.fromRoman(generationName.replace('generation-', ''));
 
 type Variety = {
     name: string;
@@ -168,75 +161,6 @@ const fetchRawPokemon = async (variety: Variety): Promise<RawPokemon> => {
     }
 
     return (await response.json()) as RawPokemon;
-};
-
-type RawGeneration = {
-    version_groups: { name: string }[];
-};
-
-const fetchGenerationCount = async (): Promise<number> => {
-    const response = await fetch(`${POKEAPI_GENERATION_URL}?limit=1`);
-    if (!response.ok) {
-        throw new Error('Failed to fetch generation count from PokeAPI.');
-    }
-
-    const body = await response.json();
-    return body.count as number;
-};
-
-const fetchGeneration = async (
-    generationNumber: number
-): Promise<RawGeneration> => {
-    const response = await fetch(
-        `${POKEAPI_GENERATION_URL}/${generationNumber}`
-    );
-    if (!response.ok) {
-        throw new Error(
-            `Failed to fetch generation #${generationNumber} from PokeAPI.`
-        );
-    }
-
-    return (await response.json()) as RawGeneration;
-};
-
-type GenerationMaps = {
-    // Evolution details reference a version group (e.g. "diamond-pearl")
-    // rather than a generation number directly.
-    versionGroupGenerations: Map<string, number>;
-    // Learnsets are reported per version group with no "past values" diff to
-    // lean on, so each generation is represented by its last (most up to
-    // date) version group, e.g. "platinum" over "diamond-pearl".
-    representativeVersionGroups: Map<number, string>;
-};
-
-const buildGenerationMaps = async (): Promise<GenerationMaps> => {
-    const generationCount = await fetchGenerationCount();
-    const versionGroupGenerations = new Map<string, number>();
-    const representativeVersionGroups = new Map<number, string>();
-
-    for (
-        let generationNumber = 1;
-        generationNumber <= generationCount;
-        generationNumber += 1
-    ) {
-        const generation = await fetchGeneration(generationNumber);
-        await sleep(FETCH_DELAY_MS);
-
-        for (const versionGroup of generation.version_groups) {
-            versionGroupGenerations.set(versionGroup.name, generationNumber);
-        }
-
-        const lastVersionGroup =
-            generation.version_groups[generation.version_groups.length - 1];
-        if (lastVersionGroup) {
-            representativeVersionGroups.set(
-                generationNumber,
-                lastVersionGroup.name
-            );
-        }
-    }
-
-    return { versionGroupGenerations, representativeVersionGroups };
 };
 
 // -------------------------------------------------------------------------
@@ -904,7 +828,7 @@ const buildEvolutionLine = (
 
 export const fetchPokemonData = async (): Promise<void> => {
     const { versionGroupGenerations, representativeVersionGroups } =
-        await buildGenerationMaps();
+        await buildGenerationMaps(FETCH_DELAY_MS);
     const data: Record<string, PokemonData> = {};
     const chainCache = new Map<string, FullNode>();
 
@@ -986,13 +910,4 @@ export const fetchPokemonData = async (): Promise<void> => {
     writeData(data);
 };
 
-const main = async (): Promise<void> => {
-    try {
-        validateRootDirectory();
-        await fetchPokemonData();
-    } catch (error) {
-        handleException(error);
-    }
-};
-
-main();
+runScript(fetchPokemonData);

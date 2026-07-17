@@ -1,11 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
-import {
-    handleException,
-    logSuccess,
-    validateRootDirectory,
-} from '@/lib/scripts/utils/helpers';
+import { logSuccess, runScript } from '@/lib/scripts/utils/helpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const USAGE = 'Usage: npm run gen:map <slug>';
@@ -58,35 +54,28 @@ const writeBarrelExports = (
     fs.writeFileSync(barrelPath, lines.join(''));
 };
 
-const main = async (): Promise<void> => {
-    try {
-        validateRootDirectory();
-        const args = parseArgs(process.argv.slice(2));
+runScript(() => {
+    const args = parseArgs(process.argv.slice(2));
 
-        const gameSlug = StringHelpers.toSlug(GAME_ID);
-        const slug = args.map;
-        const exportName = StringHelpers.toCamelCase(slug);
+    const gameSlug = StringHelpers.toSlug(GAME_ID);
+    const slug = args.map;
+    const exportName = StringHelpers.toCamelCase(slug);
 
-        const imagePath = path.join(getMapsDir(gameSlug), `${slug}.png`);
-        if (!fs.existsSync(imagePath)) {
-            throw new Error(`${IMAGE_NOT_FOUND} ("${imagePath}").`);
-        }
-
-        const barrelPath = getBarrelPath(gameSlug);
-        const exports = readBarrelExports(barrelPath);
-
-        if (exports.has(exportName)) {
-            logSuccess(`"${slug}.png" is already wired up. Nothing to do.`);
-            return;
-        }
-
-        exports.set(exportName, slug);
-        writeBarrelExports(barrelPath, exports);
-
-        logSuccess(`Wired "${slug}.png" into the maps barrel!`);
-    } catch (error) {
-        handleException(error);
+    const imagePath = path.join(getMapsDir(gameSlug), `${slug}.png`);
+    if (!fs.existsSync(imagePath)) {
+        throw new Error(`${IMAGE_NOT_FOUND} ("${imagePath}").`);
     }
-};
 
-main();
+    const barrelPath = getBarrelPath(gameSlug);
+    const exports = readBarrelExports(barrelPath);
+
+    if (exports.has(exportName)) {
+        logSuccess(`"${slug}.png" is already wired up. Nothing to do.`);
+        return;
+    }
+
+    exports.set(exportName, slug);
+    writeBarrelExports(barrelPath, exports);
+
+    logSuccess(`Wired "${slug}.png" into the maps barrel!`);
+});

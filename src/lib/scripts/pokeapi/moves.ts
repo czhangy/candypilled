@@ -1,16 +1,15 @@
 import fs from 'fs';
 import path from 'path';
 import {
-    handleException,
-    logSuccess,
-    logWarning,
-    validateRootDirectory,
-} from '@/lib/scripts/utils/helpers';
+    buildGenerationMaps,
+    sleep,
+    toGenerationNumber,
+} from '@/lib/scripts/pokeapi/shared';
+import { logSuccess, logWarning, runScript } from '@/lib/scripts/utils/helpers';
 import { MoveData, MoveValuesByGeneration } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const POKEAPI_MOVE_URL = 'https://pokeapi.co/api/v2/move';
-const POKEAPI_GENERATION_URL = 'https://pokeapi.co/api/v2/generation';
 // Unlike pokemon.json, this dataset isn't scoped to the current game: moves
 // are shared across every game the site will ever support, so every move is
 // fetched regardless of which generation introduced it.
@@ -81,63 +80,8 @@ const DANGEROUS_MOVES = new Set([
     'perish-song',
 ]);
 
-const sleep = (ms: number): Promise<void> =>
-    new Promise((resolve) => setTimeout(resolve, ms));
-
 const writeData = (data: Record<string, MoveData>): void => {
     fs.writeFileSync(DATA_PATH, `${JSON.stringify(data, null, 4)}\n`);
-};
-
-type RawGeneration = {
-    version_groups: { name: string }[];
-};
-
-const fetchGenerationCount = async (): Promise<number> => {
-    const response = await fetch(`${POKEAPI_GENERATION_URL}?limit=1`);
-    if (!response.ok) {
-        throw new Error('Failed to fetch generation count from PokeAPI.');
-    }
-
-    const body = await response.json();
-    return body.count as number;
-};
-
-const fetchGeneration = async (
-    generationNumber: number
-): Promise<RawGeneration> => {
-    const response = await fetch(
-        `${POKEAPI_GENERATION_URL}/${generationNumber}`
-    );
-    if (!response.ok) {
-        throw new Error(
-            `Failed to fetch generation #${generationNumber} from PokeAPI.`
-        );
-    }
-
-    return (await response.json()) as RawGeneration;
-};
-
-// Move history references a version group (e.g. "diamond-pearl") rather than
-// a generation number directly, so this builds the lookup once up front
-// instead of resolving it per move.
-const buildVersionGroupGenerations = async (): Promise<Map<string, number>> => {
-    const generationCount = await fetchGenerationCount();
-    const versionGroupGenerations = new Map<string, number>();
-
-    for (
-        let generationNumber = 1;
-        generationNumber <= generationCount;
-        generationNumber += 1
-    ) {
-        const generation = await fetchGeneration(generationNumber);
-        await sleep(FETCH_DELAY_MS);
-
-        for (const versionGroup of generation.version_groups) {
-            versionGroupGenerations.set(versionGroup.name, generationNumber);
-        }
-    }
-
-    return versionGroupGenerations;
 };
 
 type NamedApiResource = {
@@ -206,9 +150,6 @@ const fetchMove = async (resource: NamedApiResource): Promise<RawMove> => {
 
 const toEnglishEffect = (entries: RawEffectEntry[]): string | undefined =>
     entries.find((entry) => entry.language.name === 'en')?.short_effect;
-
-const toGenerationNumber = (generationName: string): number =>
-    StringHelpers.fromRoman(generationName.replace('generation-', ''));
 
 type MoveValues = {
     type: string;
@@ -370,7 +311,8 @@ const buildValuesByGeneration = (
 };
 
 export const fetchMoves = async (): Promise<void> => {
-    const versionGroupGenerations = await buildVersionGroupGenerations();
+    const { versionGroupGenerations } =
+        await buildGenerationMaps(FETCH_DELAY_MS);
     const moveList = await fetchMoveList();
     const data: Record<string, MoveData> = {};
 
@@ -409,13 +351,4 @@ export const fetchMoves = async (): Promise<void> => {
     writeData(data);
 };
 
-const main = async (): Promise<void> => {
-    try {
-        validateRootDirectory();
-        await fetchMoves();
-    } catch (error) {
-        handleException(error);
-    }
-};
-
-main();
+runScript(fetchMoves);

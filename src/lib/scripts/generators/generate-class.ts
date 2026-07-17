@@ -2,10 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import {
     DIVIDER_STRING,
-    handleException,
+    isPascalCase,
     logSuccess,
     NOT_PASCAL_CASE,
-    validateRootDirectory,
+    runScript,
     writeToFile,
 } from '@/lib/scripts/utils/helpers';
 
@@ -29,7 +29,7 @@ const getPath = (args: ClassArgs): string =>
     path.join('src', 'lib', 'utils', `${args.klass}.ts`);
 
 const validateArgs = (args: ClassArgs): void => {
-    if (!/^[A-Z]/.test(args.klass)) {
+    if (!isPascalCase(args.klass)) {
         throw new Error(NOT_PASCAL_CASE);
     }
     if (!args.klass.endsWith('Helpers')) {
@@ -58,15 +58,8 @@ const createClass = (args: ClassArgs): void => {
     logSuccess(`${args.klass} was created successfully!`);
 };
 
-const main = (): void => {
-    try {
-        validateRootDirectory();
-        const args = parseArgs(process.argv.slice(2));
-        validateArgs(args);
-        createClass(args);
-    } catch (error) {
-        handleException(error);
-    }
-};
-
-main();
+runScript(() => {
+    const args = parseArgs(process.argv.slice(2));
+    validateArgs(args);
+    createClass(args);
+});

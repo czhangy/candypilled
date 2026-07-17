@@ -1,10 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import {
-    handleException,
+    isPascalCase,
     logSuccess,
     NOT_PASCAL_CASE,
-    validateRootDirectory,
+    runScript,
     writeToFile,
 } from '@/lib/scripts/utils/helpers';
 
@@ -28,7 +28,7 @@ const getPath = (args: IconArgs): string =>
     path.join('src', 'lib', 'icons', `${args.icon}.tsx`);
 
 const validateArgs = (args: IconArgs): void => {
-    if (!/^[A-Z]/.test(args.icon)) {
+    if (!isPascalCase(args.icon)) {
         throw new Error(NOT_PASCAL_CASE);
     }
     if (!args.icon.endsWith('Icon')) {
@@ -53,15 +53,8 @@ const createIcon = (args: IconArgs): void => {
     logSuccess(`${args.icon} was created successfully!`);
 };
 
-const main = (): void => {
-    try {
-        validateRootDirectory();
-        const args = parseArgs(process.argv.slice(2));
-        validateArgs(args);
-        createIcon(args);
-    } catch (error) {
-        handleException(error);
-    }
-};
-
-main();
+runScript(() => {
+    const args = parseArgs(process.argv.slice(2));
+    validateArgs(args);
+    createIcon(args);
+});

@@ -2,9 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import {
-    handleException,
     logSuccess,
-    validateRootDirectory,
+    runScript,
     writeToFile,
 } from '@/lib/scripts/utils/helpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -90,15 +89,8 @@ const createLocation = (args: LocationArgs): void => {
     logSuccess(`${args.slug} was created successfully!`);
 };
 
-const main = (): void => {
-    try {
-        validateRootDirectory();
-        const args = parseArgs(process.argv.slice(2));
-        validateArgs(args);
-        createLocation(args);
-    } catch (error) {
-        handleException(error);
-    }
-};
-
-main();
+runScript(() => {
+    const args = parseArgs(process.argv.slice(2));
+    validateArgs(args);
+    createLocation(args);
+});
