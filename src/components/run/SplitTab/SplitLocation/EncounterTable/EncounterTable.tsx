@@ -53,6 +53,13 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         'honey-tree',
     ];
 
+    const UNMISSABLE_ENCOUNTER_METHODS = [
+        'gift',
+        'gift-egg',
+        'fossil',
+        'only-one',
+    ];
+
     const TIME_OF_DAY_CONDITIONS = ['time-morning', 'time-day', 'time-night'];
 
     const TIME_OF_DAY_LABELS: Record<string, string> = {
@@ -101,6 +108,10 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     // -------------------------------------------------------------------------
 
     const timesOfDay = getTimesOfDay();
+
+    const isMissable = encounters.some(
+        (encounter) => !UNMISSABLE_ENCOUNTER_METHODS.includes(encounter.method)
+    );
 
     const visibleEncounters = encounters.filter(
         (encounter) =>
@@ -207,19 +218,21 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                     </div>
                 )}
             </div>
-            <button
-                className={[
-                    styles['miss-button'],
-                    isMissed && styles['miss-button--active'],
-                ]
-                    .filter(Boolean)
-                    .join(' ')}
-                disabled={!isMissed && !!caughtHere}
-                onClick={onToggleMissed}
-                type="button"
-            >
-                {isMissed ? 'MISSED' : 'MISS'}
-            </button>
+            {isMissable && (
+                <button
+                    className={[
+                        styles['miss-button'],
+                        isMissed && styles['miss-button--active'],
+                    ]
+                        .filter(Boolean)
+                        .join(' ')}
+                    disabled={!isMissed && !!caughtHere}
+                    onClick={onToggleMissed}
+                    type="button"
+                >
+                    {isMissed ? 'MISSED' : 'MISS'}
+                </button>
+            )}
             <table className={styles['encounter-table']}>
                 <colgroup>
                     <col className={styles['col-pokemon']} />

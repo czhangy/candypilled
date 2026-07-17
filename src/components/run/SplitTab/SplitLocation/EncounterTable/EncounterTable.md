@@ -28,7 +28,10 @@ Below the header, a full-width "MISS"/"MISSED" toggle button (styled
 like the Pokedex tile's catch button, red when active) records that
 this location's one encounter was used up without catching anything.
 It is disabled whenever a species is already caught at this location,
-since the two outcomes are mutually exclusive.
+since the two outcomes are mutually exclusive. The button is hidden
+entirely when every encounter at the location uses an unmissable
+method (e.g. a gift or fossil), since those encounters can't be
+missed.
 
 ## Props
 
@@ -72,3 +75,6 @@ since the two outcomes are mutually exclusive.
   the row green
 - `isCaughtElsewhere` — whether a row's species isn't `isCaughtHere` but
   `isEvolutionLineCaught`, highlighting the row red
+- `isMissable` — whether `encounters` includes any method not in the
+  fixed `UNMISSABLE_ENCOUNTER_METHODS` list, controlling whether the
+  "MISS"/"MISSED" button is shown
