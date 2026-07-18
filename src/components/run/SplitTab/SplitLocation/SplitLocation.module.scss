@@ -60,7 +60,7 @@
                     border-color 0.2s ease;
 
                 @media (hover: hover) {
-                    &:hover {
+                    &:not(.subarea-button--active):hover {
                         color: $foreground;
                     }
                 }

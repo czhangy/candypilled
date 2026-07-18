@@ -4,9 +4,10 @@
 .move-button {
     background: move-tile-background();
     border: none;
-    color: inherit;
+    color: $background;
     cursor: pointer;
     font: inherit;
+    font-weight: 700;
     margin: -0.3rem;
     padding: 0.3rem;
     transition: background-color 0.2s ease;
@@ -24,6 +25,5 @@
 
     &--dangerous {
         color: white;
-        font-weight: 700;
     }
 }

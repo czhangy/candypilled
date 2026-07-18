@@ -4,6 +4,7 @@ import { createInterface, Interface } from 'readline/promises';
 import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import { CURRENT_GAME_VERSION } from '@/lib/scripts/pokeapi/game-versions';
 import { logSuccess, runScript } from '@/lib/scripts/utils/helpers';
+import { CLASSES_SLUGGED_BY_NAME } from '@/lib/static/constants';
 import { Nature } from '@/lib/static/enums';
 import { AbilitySlot } from '@/lib/static/types';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
@@ -54,16 +55,20 @@ const parseArgs = (argv: string[]): BattleArgs => {
 const getLocationPath = (gameSlug: string, slug: string): string =>
     path.join('src', 'lib', 'games', gameSlug, 'locations', `${slug}.ts`);
 
-// The set of trainer class slugs with a sprite under public/<game>/trainers,
-// i.e. every value the generated `trainerClass` field could validly take.
+// The set of trainer class slugs the generated `trainerClass` field could
+// validly take: those with a sprite under public/<game>/trainers, plus the
+// classes sprited by trainer name instead of class.
 const getValidTrainerClasses = (gameSlug: string): Set<string> => {
     const trainersDir = path.join('public', gameSlug, 'trainers');
-    return new Set(
-        fs
-            .readdirSync(trainersDir)
-            .filter((file) => file.endsWith('.png'))
-            .map((file) => path.basename(file, '.png'))
+    const spritedClasses = fs
+        .readdirSync(trainersDir)
+        .filter((file) => file.endsWith('.png'))
+        .map((file) => path.basename(file, '.png'));
+    const sluggedByNameClasses = CLASSES_SLUGGED_BY_NAME.map((name) =>
+        StringHelpers.toSlug(name)
     );
+
+    return new Set([...spritedClasses, ...sluggedByNameClasses]);
 };
 
 const getIndent = (content: string, index: number): string => {
@@ -176,11 +181,7 @@ const findInsertionPoint = (content: string, scope: Range): InsertionPoint => {
         };
     }
 
-    const nameMatch = /^([ \t]*)name:.*$/m.exec(scopeText);
-    if (!nameMatch) {
-        throw new Error(SUBAREA_NOT_FOUND);
-    }
-    const siblingIndent = nameMatch[1];
+    const siblingIndent = `${getIndent(content, scope.start)}    `;
     const entryIndent = `${siblingIndent}    `;
     const closingLineStart = getLineStart(content, scope.end);
 
@@ -229,6 +230,7 @@ const serializeBattle = (
 
     return (
         `${indent}{\n` +
+        `${indent}    isOptional: true,\n` +
         `${indent}    trainerClass: '${escapeQuotes(battle.trainerClass)}',\n` +
         `${indent}    name: '${escapeQuotes(battle.name)}',\n` +
         teamField +

@@ -11,6 +11,7 @@ import {
     mtCoronetExterior,
     mtCoronetTunnel,
 } from '@/lib/games/platinum/maps';
+import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const MT_CORONET: Location = {
@@ -33,20 +34,393 @@ const MT_CORONET: Location = {
             encountersKey: 'mt-coronet-1f-route-216',
         },
         { name: '2F', map: mtCoronet2f, encountersKey: 'mt-coronet-2f' },
-        { name: '3F', map: mtCoronet3f, encountersKey: 'mt-coronet-3f' },
+        {
+            name: '3F',
+            map: mtCoronet3f,
+            encountersKey: 'mt-coronet-3f',
+            battles: [
+                {
+                    isOptional: true,
+                    trainerClass: 'Galactic Grunt F',
+                    name: '6',
+                    team: [
+                        {
+                            name: 'Stunky',
+                            ability: 1,
+                            level: 43,
+                            nature: Nature.Bold,
+                            moves: ['Slash', 'Toxic', 'Night Slash', 'Memento'],
+                            ivs: 3,
+                        },
+                    ],
+                    x: 63,
+                    y: 25.4,
+                },
+                {
+                    isOptional: true,
+                    trainerClass: 'Galactic Grunt M',
+                    name: '7',
+                    team: [
+                        {
+                            name: 'Murkrow',
+                            ability: 1,
+                            level: 43,
+                            nature: Nature.Rash,
+                            moves: [
+                                'Assurance',
+                                'Taunt',
+                                'Feint Attack',
+                                'Mean Look',
+                            ],
+                            ivs: 3,
+                        },
+                    ],
+                    x: 9.6,
+                    y: 46,
+                },
+            ],
+        },
         {
             name: 'Exterior',
             map: mtCoronetExterior,
             encountersKey: 'mt-coronet-exterior-snowfall',
         },
         {
+            name: '4F',
+            map: mtCoronet4f,
+            encountersKey: 'mt-coronet-4f',
+            battles: [
+                {
+                    isOptional: true,
+                    trainerClass: 'Galactic Grunt M',
+                    name: '8',
+                    team: [
+                        {
+                            name: 'Houndour',
+                            ability: 1,
+                            level: 40,
+                            nature: Nature.Hasty,
+                            moves: [
+                                'Beat Up',
+                                'Fire Fang',
+                                'Feint Attack',
+                                'Embargo',
+                            ],
+                            ivs: 3,
+                        },
+                        {
+                            name: 'Golbat',
+                            ability: 1,
+                            level: 40,
+                            nature: Nature.Serious,
+                            moves: [
+                                'Confuse Ray',
+                                'Air Cutter',
+                                'Mean Look',
+                                'Poison Fang',
+                            ],
+                            ivs: 3,
+                        },
+                        {
+                            name: 'Houndour',
+                            ability: 1,
+                            level: 40,
+                            nature: Nature.Hasty,
+                            moves: [
+                                'Beat Up',
+                                'Fire Fang',
+                                'Feint Attack',
+                                'Embargo',
+                            ],
+                            ivs: 3,
+                        },
+                    ],
+                    x: 24,
+                    y: 32.2,
+                },
+                {
+                    isOptional: true,
+                    trainerClass: 'Galactic Grunt M',
+                    name: '9',
+                    team: [
+                        {
+                            name: 'Stunky',
+                            ability: 1,
+                            level: 42,
+                            nature: Nature.Brave,
+                            moves: ['Slash', 'Toxic', 'Night Slash', 'Memento'],
+                            ivs: 3,
+                        },
+                        {
+                            name: 'Golbat',
+                            ability: 1,
+                            level: 40,
+                            nature: Nature.Serious,
+                            moves: [
+                                'Confuse Ray',
+                                'Air Cutter',
+                                'Mean Look',
+                                'Poison Fang',
+                            ],
+                            ivs: 3,
+                        },
+                    ],
+                    x: 24,
+                    y: 32.2,
+                },
+            ],
+        },
+        {
             name: 'Tunnel',
             map: mtCoronetTunnel,
             encountersKey: 'mt-coronet-1f-from-exterior',
+            battles: [
+                {
+                    isOptional: true,
+                    trainerClass: 'Galactic Grunt M',
+                    name: '10',
+                    team: [
+                        {
+                            name: 'Golbat',
+                            ability: 1,
+                            level: 43,
+                            nature: Nature.Docile,
+                            moves: [
+                                'Confuse Ray',
+                                'Air Cutter',
+                                'Mean Look',
+                                'Poison Fang',
+                            ],
+                            ivs: 3,
+                        },
+                    ],
+                    x: 12,
+                    y: 77.2,
+                },
+                {
+                    isOptional: true,
+                    trainerClass: 'Galactic Grunt F',
+                    name: '11',
+                    team: [
+                        {
+                            name: 'Murkrow',
+                            ability: 1,
+                            level: 39,
+                            nature: Nature.Quirky,
+                            moves: [
+                                'Night Shade',
+                                'Assurance',
+                                'Taunt',
+                                'Feint Attack',
+                            ],
+                            ivs: 3,
+                        },
+                        {
+                            name: 'Glameow',
+                            ability: 1,
+                            level: 42,
+                            nature: Nature.Calm,
+                            moves: [
+                                'Assist',
+                                'Captivate',
+                                'Slash',
+                                'Sucker Punch',
+                            ],
+                            ivs: 3,
+                        },
+                        {
+                            name: 'Murkrow',
+                            ability: 1,
+                            level: 39,
+                            nature: Nature.Quirky,
+                            moves: [
+                                'Night Shade',
+                                'Assurance',
+                                'Taunt',
+                                'Feint Attack',
+                            ],
+                            ivs: 3,
+                        },
+                    ],
+                    x: 79.3,
+                    y: 60,
+                },
+                {
+                    isOptional: true,
+                    trainerClass: 'Galactic Grunt M',
+                    name: '12',
+                    team: [
+                        {
+                            name: 'Croagunk',
+                            ability: 1,
+                            level: 38,
+                            nature: Nature.Modest,
+                            moves: [
+                                'Mud Bomb',
+                                'Sucker Punch',
+                                'Nasty Plot',
+                                'Poison Jab',
+                            ],
+                            ivs: 3,
+                        },
+                        {
+                            name: 'Stunky',
+                            ability: 1,
+                            level: 40,
+                            nature: Nature.Hasty,
+                            moves: ['Slash', 'Toxic', 'Night Slash', 'Memento'],
+                            ivs: 3,
+                        },
+                        {
+                            name: 'Croagunk',
+                            ability: 1,
+                            level: 42,
+                            nature: Nature.Serious,
+                            moves: [
+                                'Mud Bomb',
+                                'Sucker Punch',
+                                'Nasty Plot',
+                                'Poison Jab',
+                            ],
+                            ivs: 3,
+                        },
+                    ],
+                    x: 63.5,
+                    y: 18.5,
+                },
+            ],
         },
-        { name: '4F', map: mtCoronet4f, encountersKey: 'mt-coronet-4f' },
-        { name: '5F', map: mtCoronet5f, encountersKey: 'mt-coronet-5f' },
-        { name: '6F', map: mtCoronet6f, encountersKey: 'mt-coronet-6f' },
+
+        {
+            name: '5F',
+            map: mtCoronet5f,
+            encountersKey: 'mt-coronet-5f',
+            battles: [
+                {
+                    trainerClass: 'Galactic Grunt F',
+                    name: '13',
+                    team: [
+                        {
+                            name: 'Houndour',
+                            ability: 1,
+                            level: 40,
+                            nature: Nature.Timid,
+                            moves: [
+                                'Beat Up',
+                                'Fire Fang',
+                                'Feint Attack',
+                                'Embargo',
+                            ],
+                            ivs: 3,
+                        },
+                        {
+                            name: 'Glameow',
+                            ability: 1,
+                            level: 42,
+                            nature: Nature.Modest,
+                            moves: [
+                                'Assist',
+                                'Captivate',
+                                'Slash',
+                                'Sucker Punch',
+                            ],
+                            ivs: 3,
+                        },
+                    ],
+                    x: 73,
+                    y: 67,
+                },
+                {
+                    trainerClass: 'Galactic Grunt M',
+                    name: '14',
+                    team: [
+                        {
+                            name: 'Glameow',
+                            ability: 1,
+                            level: 41,
+                            nature: Nature.Hasty,
+                            moves: [
+                                'Assist',
+                                'Captivate',
+                                'Slash',
+                                'Sucker Punch',
+                            ],
+                            ivs: 3,
+                        },
+                        {
+                            name: 'Golbat',
+                            ability: 1,
+                            level: 41,
+                            nature: Nature.Docile,
+                            moves: [
+                                'Confuse Ray',
+                                'Air Cutter',
+                                'Mean Look',
+                                'Poison Fang',
+                            ],
+                            ivs: 3,
+                        },
+                    ],
+                    x: 45,
+                    y: 83,
+                },
+            ],
+        },
+
+        {
+            name: '6F',
+            map: mtCoronet6f,
+            encountersKey: 'mt-coronet-6f',
+            battles: [
+                {
+                    trainerClass: 'Galactic Grunt F',
+                    name: '15',
+                    team: [
+                        {
+                            name: 'Golbat',
+                            ability: 1,
+                            level: 39,
+                            nature: Nature.Quirky,
+                            moves: [
+                                'Confuse Ray',
+                                'Air Cutter',
+                                'Mean Look',
+                                'Poison Fang',
+                            ],
+                            ivs: 3,
+                        },
+                        {
+                            name: 'Croagunk',
+                            ability: 1,
+                            level: 40,
+                            nature: Nature.Quirky,
+                            moves: [
+                                'Mud Bomb',
+                                'Sucker Punch',
+                                'Nasty Plot',
+                                'Poison Jab',
+                            ],
+                            ivs: 3,
+                        },
+                        {
+                            name: 'Murkrow',
+                            ability: 1,
+                            level: 41,
+                            nature: Nature.Calm,
+                            moves: [
+                                'Assurance',
+                                'Taunt',
+                                'Feint Attack',
+                                'Mean Look',
+                            ],
+                            ivs: 3,
+                        },
+                    ],
+                    x: 55.2,
+                    y: 50,
+                },
+            ],
+        },
     ],
 };
 

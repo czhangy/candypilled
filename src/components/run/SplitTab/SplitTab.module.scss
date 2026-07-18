@@ -84,7 +84,7 @@
                     transition: color 0.2s ease;
 
                     @media (hover: hover) {
-                        &:hover {
+                        &:not(.toc-link--active):hover {
                             color: $foreground;
                         }
                     }
