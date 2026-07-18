@@ -1,0 +1,35 @@
+# PokemonSlot
+
+A single team member slot within a battle card, showing that Pokemon's
+sprite (matching the game's sprite variant) above its name (with type
+badges beneath it), then a metadata list of its held item (preceded by
+an icon), ability, nature, and moveset. Non-neutral natures are
+annotated with their stat
+effects, shown in a smaller font on the same line (e.g. "Adamant [+Atk
+-SpA]"). Each Pokemon's name is prefixed with its level (e.g. "Lv.5
+Chimchar"). The ability is clickable, linking to that ability's
+details; its background darkens further on hover. When `pokemon` is
+`null`, an empty placeholder slot is shown instead.
+
+## Props
+
+| Prop              | Type                     | Required | Default | Description                                                            |
+| ----------------- | ------------------------ | -------- | ------- | ---------------------------------------------------------------------- |
+| `generation`      | `number`                 | Yes      | -       | The game's generation, used to resolve the Pokemon's types and ability |
+| `onSelectAbility` | `(name: string) => void` | Yes      | -       | Called with the Pokemon's ability when it's clicked                    |
+| `onSelectMove`    | `(name: string) => void` | Yes      | -       | Called with a move's name when it's clicked within the moveset         |
+| `pokemon`         | `BattlePokemon \| null`  | Yes      | -       | The Pokemon to display, or `null` to render an empty slot              |
+| `variant`         | `string`                 | Yes      | -       | The sprite variant to prefer, matching the game's slug                 |
+
+## Computations
+
+- `getTypes` — the Pokemon's types at `generation`, rendered as badges
+  (`/types/{type}.png`) beneath its name
+- `getAbility` — the Pokemon's ability, using its `ability` field as
+  an override when set and otherwise falling back to its slot-1
+  ability at `generation`, resolved via `PokemonHelpers`
+
+## SCSS Variable Dependencies
+
+- `--accent-color` — the active game's accent color, expected to be
+  set by a parent; used for the held item text

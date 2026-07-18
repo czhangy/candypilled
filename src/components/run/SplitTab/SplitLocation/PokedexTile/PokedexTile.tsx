@@ -1,17 +1,15 @@
 import { useState, useSyncExternalStore } from 'react';
-import Image from 'next/image';
-import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
 import AddPokemonModal from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/AddPokemonModal';
 import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
 import LearnsetList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
 import LocationsList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LocationsList/LocationsList';
+import PokemonSummary from '@/components/run/SplitTab/SplitLocation/PokedexTile/PokemonSummary/PokemonSummary';
 import StatsChart from '@/components/run/SplitTab/SplitLocation/PokedexTile/StatsChart/StatsChart';
-import { CaughtPokemon, Game } from '@/lib/static/types';
+import { AbilityEntry, CaughtPokemon, Game } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './PokedexTile.module.scss';
 
 type PokedexTileProps = (
@@ -19,7 +17,9 @@ type PokedexTileProps = (
           defaultLevel?: number;
           dupes: string[];
           encounter?: string;
+          isEggEncounter: boolean;
           isLocationMissed: boolean;
+          isStarterEncounter: boolean;
           mode: 'catch';
           onAddPokemon: (
               details: Pick<
@@ -32,7 +32,8 @@ type PokedexTileProps = (
                   | 'name'
                   | 'nature'
                   | 'tags'
-              >
+              >,
+              location: string
           ) => void;
           onRemovePokemon: () => void;
       }
@@ -43,6 +44,7 @@ type PokedexTileProps = (
     game: Game;
     generation: number;
     onSelectAbility: (name: string) => void;
+    onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
     onSelectSpecies: (species: string) => void;
     originalSpecies?: string;
@@ -55,6 +57,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     game,
     generation,
     onSelectAbility,
+    onSelectLocation,
     onSelectMove,
     onSelectSpecies,
     originalSpecies,
@@ -77,15 +80,6 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const SPRITE_SIZE = 80;
-    const TYPE_BADGE_WIDTH = 32;
-    const TYPE_BADGE_HEIGHT = 14;
-
-    type AbilityEntry = {
-        hidden?: boolean;
-        name: string;
-    };
-
     type DetailTab = 'learnset' | 'locations';
 
     // -------------------------------------------------------------------------
@@ -102,10 +96,6 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
 
     const handleDetailTabChange = (tab: DetailTab): void => {
         setActiveDetailTab(tab);
-    };
-
-    const handleAbilityClick = (name: string): void => {
-        onSelectAbility(StringHelpers.toTitleCase(name));
     };
 
     const handleCatchButtonClick = (): void => {
@@ -133,10 +123,11 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
             | 'name'
             | 'nature'
             | 'tags'
-        >
+        >,
+        location: string
     ): void => {
         if (rest.mode !== 'catch') return;
-        rest.onAddPokemon(details);
+        rest.onAddPokemon(details, location);
         setIsAddPokemonModalOpen(false);
     };
 
@@ -178,7 +169,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         ? PokemonHelpers.getPokemonStats(species, generation)
         : undefined;
     const learnset = species
-        ? PokemonHelpers.getPokemonLearnset(species, generation)
+        ? PokemonHelpers.getPokemonLearnset(species, game.version)
         : undefined;
     const locations = species
         ? EncounterHelpers.getEncounterLocations(game, species)
@@ -205,6 +196,16 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         rest.mode === 'catch' &&
         !isCaughtHere &&
         (isOtherCaughtHere || isEvolutionLineCaught || rest.isLocationMissed);
+    const isCatchButtonHidden =
+        rest.mode === 'catch' && rest.isStarterEncounter;
+    const isEggEncounter = rest.mode === 'catch' && rest.isEggEncounter;
+    const catchButtonLabel = isCaughtHere
+        ? isEggEncounter
+            ? 'HATCHED'
+            : 'CAUGHT'
+        : isEggEncounter
+          ? 'HATCH'
+          : 'CATCH';
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -213,7 +214,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     return (
         <div className={styles['pokedex-tile']}>
             <div className={styles.header}>Pokedex</div>
-            {pokemon && rest.mode === 'catch' && (
+            {pokemon && rest.mode === 'catch' && !isCatchButtonHidden && (
                 <button
                     className={[
                         styles['catch-button'],
@@ -225,140 +226,18 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     onClick={handleCatchButtonClick}
                     type="button"
                 >
-                    {isCaughtHere ? 'CAUGHT' : 'CATCH'}
+                    {catchButtonLabel}
                 </button>
             )}
-            <div
-                className={[
-                    styles.content,
-                    !pokemon && styles['content--empty'],
-                ]
-                    .filter(Boolean)
-                    .join(' ')}
-            >
-                {pokemon ? (
-                    <>
-                        <div className={styles.left}>
-                            <div className={styles.sprite}>
-                                {sprite && (
-                                    <Image
-                                        alt={pokemon.name}
-                                        height={SPRITE_SIZE}
-                                        src={sprite}
-                                        width={SPRITE_SIZE}
-                                    />
-                                )}
-                            </div>
-                            <div className={styles.info}>
-                                <span className={styles.name}>
-                                    {pokemon.name}
-                                </span>
-                                {types.length > 0 && (
-                                    <div className={styles.types}>
-                                        {types.map((type) => (
-                                            <TypeBadge
-                                                height={TYPE_BADGE_HEIGHT}
-                                                key={type}
-                                                type={type}
-                                                width={TYPE_BADGE_WIDTH}
-                                            />
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                        <div className={styles.right}>
-                            <div className={styles['right-top']}>
-                                {abilityEntries.length > 0 && (
-                                    <div className={styles.abilities}>
-                                        <span
-                                            className={
-                                                styles['abilities-label']
-                                            }
-                                        >
-                                            Abilities
-                                        </span>
-                                        <div
-                                            className={styles['abilities-list']}
-                                        >
-                                            {abilityEntries.map((entry) =>
-                                                rest.mode === 'choose' ? (
-                                                    <span
-                                                        className={[
-                                                            styles.ability,
-                                                            styles[
-                                                                'ability--static'
-                                                            ],
-                                                            entry.hidden &&
-                                                                styles[
-                                                                    'ability--hidden'
-                                                                ],
-                                                        ]
-                                                            .filter(Boolean)
-                                                            .join(' ')}
-                                                        key={entry.name}
-                                                    >
-                                                        {StringHelpers.toTitleCase(
-                                                            entry.name
-                                                        )}
-                                                        {entry.hidden &&
-                                                            ' (Hidden)'}
-                                                    </span>
-                                                ) : (
-                                                    <button
-                                                        className={[
-                                                            styles.ability,
-                                                            entry.hidden &&
-                                                                styles[
-                                                                    'ability--hidden'
-                                                                ],
-                                                        ]
-                                                            .filter(Boolean)
-                                                            .join(' ')}
-                                                        key={entry.name}
-                                                        onClick={() =>
-                                                            handleAbilityClick(
-                                                                entry.name
-                                                            )
-                                                        }
-                                                        type="button"
-                                                    >
-                                                        {StringHelpers.toTitleCase(
-                                                            entry.name
-                                                        )}
-                                                        {entry.hidden &&
-                                                            ' (Hidden)'}
-                                                    </button>
-                                                )
-                                            )}
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                            <div className={styles['right-bottom']}>
-                                {catchRate !== undefined && (
-                                    <div className={styles['catch-rate']}>
-                                        <span
-                                            className={
-                                                styles['catch-rate-label']
-                                            }
-                                        >
-                                            Catch Rate
-                                        </span>
-                                        <span className={styles.rate}>
-                                            {catchRate}
-                                        </span>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    </>
-                ) : (
-                    <span className={styles.placeholder}>
-                        {`Select a Pokemon to view its details or ${rest.mode} it`}
-                    </span>
-                )}
-            </div>
+            <PokemonSummary
+                abilityEntries={abilityEntries}
+                catchRate={catchRate}
+                mode={rest.mode}
+                onSelectAbility={onSelectAbility}
+                pokemon={pokemon}
+                sprite={sprite}
+                types={types}
+            />
             {rest.mode === 'catch' &&
                 isAddPokemonModalOpen &&
                 defaultCatchSpecies && (
@@ -375,7 +254,8 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                         generation={generation}
                         onClose={handleCloseAddPokemonModal}
                         onSubmit={handleAddPokemon}
-                        showLocation={false}
+                        showLocation={isEggEncounter}
+                        version={game.version}
                     />
                 )}
             {pokemon && (
@@ -468,6 +348,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     ) : (
                         <LocationsList
                             locations={locations}
+                            onSelectLocation={onSelectLocation}
                             usedLocations={usedLocations}
                         />
                     )}

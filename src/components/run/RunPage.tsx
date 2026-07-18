@@ -39,9 +39,9 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     ];
 
     const TAB_QUERY_PARAMS: Record<string, string> = {
+        abilities: 'ability',
         box: 'pokemon',
         moves: 'move',
-        abilities: 'ability',
     };
 
     const DEFAULT_WIPE_MESSAGES = [
@@ -97,6 +97,14 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         (gameRun) => StringHelpers.toSlug(gameRun.game.name) === slug
     )?.run;
 
+    const currentSplitName =
+        game && run
+            ? (game.splits.find(
+                  (split) => split.name === searchParams.get('split')
+              )?.name ??
+              SplitHelpers.getCurrentSplitName(game, run.defeatedBattles))
+            : null;
+
     const personalBestBattle =
         game && run?.personalBest
             ? BattleHelpers.getBattle(game, run.personalBest)
@@ -108,7 +116,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const personalBestLabel = personalBestSplitName
         ? `${personalBestSplitName} Split${
               personalBestBattle
-                  ? ` — ${personalBestBattle.trainerClass} ${personalBestBattle.name}`
+                  ? ` — ${BattleHelpers.getFullName(personalBestBattle)}`
                   : ''
           }`
         : 'N/A';
@@ -157,12 +165,9 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     // -------------------------------------------------------------------------
 
     const handleTabChange = (id: string): void => {
-        const relevantParam = TAB_QUERY_PARAMS[id];
         const updates: Record<string, string | undefined> = { tab: id };
         Object.values(TAB_QUERY_PARAMS).forEach((param) => {
-            if (param !== relevantParam) {
-                updates[param] = undefined;
-            }
+            updates[param] = undefined;
         });
         updateQueryParams(updates);
     };
@@ -191,12 +196,41 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         updateQueryParams({ pokemon: undefined });
     };
 
+    const handleLocationSelect = (locationName: string): void => {
+        if (!game) return;
+
+        const earliestLocation = SplitHelpers.getEarliestLocation(
+            game,
+            locationName
+        );
+        if (!earliestLocation) return;
+
+        const params = new URLSearchParams(searchParams.toString());
+        params.set('tab', 'split');
+        params.set('split', earliestLocation.splitName);
+        params.delete('pokemon');
+        params.delete('move');
+        params.delete('ability');
+
+        router.push(
+            `${pathname}?${params.toString()}#${SplitHelpers.getLocationSlug(
+                locationName,
+                earliestLocation.index
+            )}`
+        );
+    };
+
     const handleAbilityLinkClick = (name: string): void => {
         window.open(
             `${pathname}?tab=abilities&ability=${encodeURIComponent(name)}`,
             '_blank',
             'noopener,noreferrer'
         );
+    };
+
+    const handleSplitSelect = (splitName: string): void => {
+        updateQueryParams({ split: splitName });
+        window.scrollTo({ top: 0 });
     };
 
     const handleWipeToggle = (): void => {
@@ -249,7 +283,11 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                         ref={stickyHeaderRef}
                     >
                         {activeTab === 'split' && (
-                            <SplitHeader game={game} run={run} />
+                            <SplitHeader
+                                currentSplitName={currentSplitName}
+                                game={game}
+                                onSelectSplit={handleSplitSelect}
+                            />
                         )}
                         <Tabs
                             activeTab={activeTab}
@@ -259,8 +297,11 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                     </div>
                     {activeTab === 'split' && (
                         <SplitTab
+                            currentSplitName={currentSplitName}
                             game={game}
+                            onAdvanceSplit={handleSplitSelect}
                             onSelectAbility={handleAbilityLinkClick}
+                            onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveLinkClick}
                             run={run}
                             stickyOffset={stickyHeaderHeight}
@@ -271,6 +312,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             game={game}
                             onDeselectPokemon={handlePokemonDeselect}
                             onSelectAbility={handleAbilityLinkClick}
+                            onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveLinkClick}
                             onSelectPokemon={handlePokemonSelect}
                             run={run}

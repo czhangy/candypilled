@@ -8,79 +8,91 @@ import {
 } from '@/lib/scripts/utils/helpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
-const USAGE = 'Usage: npm run gen:location <slug>';
+const USAGE = 'Usage: npm run gen:location <map> [name]';
+const IMAGE_NOT_FOUND = 'No map image was found at the expected path';
 const LOCATION_EXISTS = 'That location already exists.';
 
 type LocationArgs = {
+    map: string;
     slug: string;
 };
 
 const parseArgs = (argv: string[]): LocationArgs => {
-    const [slug] = argv;
-    if (!slug) {
+    const [map, name] = argv;
+    if (!map) {
         throw new Error(USAGE);
     }
-    return { slug };
+    return { map, slug: name ?? map };
 };
 
-const getMapsBarrelPath = (): string =>
-    path.join(
-        'src',
-        'lib',
-        'games',
-        StringHelpers.toSlug(GAME_ID),
-        'splits',
-        'maps',
-        'index.ts'
-    );
+const getMapsDir = (gameSlug: string): string =>
+    path.join('src', 'lib', 'games', gameSlug, 'maps');
 
-const getLocationPath = (slug: string): string =>
-    path.join(
-        'src',
-        'lib',
-        'games',
-        StringHelpers.toSlug(GAME_ID),
-        'splits',
-        'locations',
-        `${slug}.ts`
-    );
+const getBarrelPath = (gameSlug: string): string =>
+    path.join(getMapsDir(gameSlug), 'index.ts');
 
-const validateArgs = (args: LocationArgs): void => {
-    if (fs.existsSync(getLocationPath(args.slug))) {
-        throw new Error(LOCATION_EXISTS);
+const getLocationPath = (gameSlug: string, slug: string): string =>
+    path.join('src', 'lib', 'games', gameSlug, 'locations', `${slug}.ts`);
+
+const readBarrelExports = (barrelPath: string): Map<string, string> => {
+    const exports = new Map<string, string>();
+    if (!fs.existsSync(barrelPath)) return exports;
+
+    const pattern = /^export \{ default as (\w+) \} from '\.\/(.+)\.png';$/gm;
+    const contents = fs.readFileSync(barrelPath, 'utf-8');
+
+    for (const match of contents.matchAll(pattern)) {
+        exports.set(match[1], match[2]);
     }
+
+    return exports;
 };
 
-const hasMap = (slug: string): boolean => {
-    const mapsBarrelPath = getMapsBarrelPath();
-    const mapExportName = StringHelpers.toCamelCase(slug);
-    const mapsBarrel = fs.existsSync(mapsBarrelPath)
-        ? fs.readFileSync(mapsBarrelPath, 'utf-8')
-        : '';
+const writeBarrelExports = (
+    barrelPath: string,
+    exports: Map<string, string>
+): void => {
+    const lines = [...exports.entries()]
+        .sort(([nameA], [nameB]) => nameA.localeCompare(nameB))
+        .map(
+            ([name, slug]) =>
+                `export { default as ${name} } from './${slug}.png';\n`
+        );
 
-    return mapsBarrel.includes(`as ${mapExportName} }`);
+    fs.mkdirSync(path.dirname(barrelPath), { recursive: true });
+    fs.writeFileSync(barrelPath, lines.join(''));
 };
 
-const createLocation = (args: LocationArgs): void => {
-    const filePath = getLocationPath(args.slug);
+const wireMap = (gameSlug: string, mapSlug: string): void => {
+    const exportName = StringHelpers.toCamelCase(mapSlug);
+
+    const imagePath = path.join(getMapsDir(gameSlug), `${mapSlug}.png`);
+    if (!fs.existsSync(imagePath)) {
+        throw new Error(`${IMAGE_NOT_FOUND} ("${imagePath}").`);
+    }
+
+    const barrelPath = getBarrelPath(gameSlug);
+    const exports = readBarrelExports(barrelPath);
+
+    if (exports.has(exportName)) return;
+
+    exports.set(exportName, mapSlug);
+    writeBarrelExports(barrelPath, exports);
+};
+
+const createLocation = (gameSlug: string, args: LocationArgs): void => {
+    const filePath = getLocationPath(gameSlug, args.slug);
     const constName = StringHelpers.toConstantCase(args.slug);
     const name = StringHelpers.toTitleCase(args.slug);
-    const mapExportName = StringHelpers.toCamelCase(args.slug);
-    const includeMap = hasMap(args.slug);
+    const mapExportName = StringHelpers.toCamelCase(args.map);
 
     writeToFile(filePath, [
-        ...(includeMap
-            ? [
-                  `import { ${mapExportName} } from '@/lib/games/${StringHelpers.toSlug(
-                      GAME_ID
-                  )}/splits/maps';\n`,
-              ]
-            : []),
+        `import { ${mapExportName} } from '@/lib/games/${gameSlug}/maps';\n`,
         `import { Location } from '@/lib/static/types';\n`,
         '\n',
         `const ${constName}: Location = {\n`,
         `    name: '${name}',\n`,
-        ...(includeMap ? [`    map: ${mapExportName},\n`] : []),
+        `    map: ${mapExportName},\n`,
         '};\n',
         '\n',
         `export default ${constName};\n`,
@@ -91,6 +103,14 @@ const createLocation = (args: LocationArgs): void => {
 
 runScript(() => {
     const args = parseArgs(process.argv.slice(2));
-    validateArgs(args);
-    createLocation(args);
+    const gameSlug = StringHelpers.toSlug(GAME_ID);
+
+    wireMap(gameSlug, args.map);
+
+    if (fs.existsSync(getLocationPath(gameSlug, args.slug))) {
+        logSuccess(LOCATION_EXISTS);
+        return;
+    }
+
+    createLocation(gameSlug, args);
 });

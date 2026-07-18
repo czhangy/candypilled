@@ -6,16 +6,6 @@ type RawGeneration = {
     version_groups: { name: string }[];
 };
 
-type GenerationMaps = {
-    // Move/ability/evolution history references a version group (e.g.
-    // "diamond-pearl") rather than a generation number directly.
-    versionGroupGenerations: Map<string, number>;
-    // Learnsets are reported per version group with no "past values" diff to
-    // lean on, so each generation is represented by its last (most up to
-    // date) version group, e.g. "platinum" over "diamond-pearl".
-    representativeVersionGroups: Map<number, string>;
-};
-
 export const sleep = (ms: number): Promise<void> =>
     new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -47,18 +37,16 @@ const fetchGeneration = async (
     return (await response.json()) as RawGeneration;
 };
 
-// Builds both generation lookups in a single pass over every generation, so
-// callers that only need `versionGroupGenerations` (abilities, moves) and
-// the one that also needs `representativeVersionGroups` (pokemon) can share
-// the same fetch loop rather than hitting PokeAPI for generations twice.
-// `delayMs` uses the caller's own fetch delay so this shares the same rate
-// limit as the rest of that script.
-export const buildGenerationMaps = async (
+// Maps every version group (e.g. "diamond-pearl") to the generation number
+// it belongs to, since move/ability/evolution/learnset history references a
+// version group rather than a generation number directly. `delayMs` uses
+// the caller's own fetch delay so this shares the same rate limit as the
+// rest of that script.
+export const buildVersionGroupGenerations = async (
     delayMs: number
-): Promise<GenerationMaps> => {
+): Promise<Map<string, number>> => {
     const generationCount = await fetchGenerationCount();
     const versionGroupGenerations = new Map<string, number>();
-    const representativeVersionGroups = new Map<number, string>();
 
     for (
         let generationNumber = 1;
@@ -71,16 +59,7 @@ export const buildGenerationMaps = async (
         for (const versionGroup of generation.version_groups) {
             versionGroupGenerations.set(versionGroup.name, generationNumber);
         }
-
-        const lastVersionGroup =
-            generation.version_groups[generation.version_groups.length - 1];
-        if (lastVersionGroup) {
-            representativeVersionGroups.set(
-                generationNumber,
-                lastVersionGroup.name
-            );
-        }
     }
 
-    return { versionGroupGenerations, representativeVersionGroups };
+    return versionGroupGenerations;
 };

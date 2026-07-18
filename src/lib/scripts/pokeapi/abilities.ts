@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import {
-    buildGenerationMaps,
+    buildVersionGroupGenerations,
     sleep,
     toGenerationNumber,
 } from '@/lib/scripts/pokeapi/shared';
@@ -13,7 +13,7 @@ const POKEAPI_ABILITY_URL = 'https://pokeapi.co/api/v2/ability';
 // Like moves.json, this dataset isn't scoped to the current game: abilities
 // are shared across every game the site will ever support, so every ability
 // is fetched regardless of which generation introduced it.
-const DATA_PATH = path.join('src', 'lib', 'data', 'abilities.json');
+const DATA_PATH = path.join('src', 'lib', 'data', 'raw', 'abilities.json');
 const FETCH_DELAY_MS = 75;
 const ABILITY_LIST_LIMIT = 500;
 
@@ -109,8 +109,8 @@ const buildValuesByGeneration = (
 };
 
 export const fetchAbilities = async (): Promise<void> => {
-    const { versionGroupGenerations } =
-        await buildGenerationMaps(FETCH_DELAY_MS);
+    const versionGroupGenerations =
+        await buildVersionGroupGenerations(FETCH_DELAY_MS);
     const abilityList = await fetchAbilityList();
     const data: Record<string, AbilityData> = {};
 

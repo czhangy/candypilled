@@ -1,0 +1,38 @@
+@use '@/styles/constants' as *;
+
+.time-of-day-buttons {
+    display: flex;
+    gap: 0.75rem;
+
+    .time-of-day-button {
+        align-items: center;
+        background: none;
+        border: none;
+        color: $text-dim;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        line-height: 0;
+        padding: 0;
+        transition: color 0.2s ease;
+
+        svg {
+            height: 1.1rem;
+            width: 1.1rem;
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                color: $foreground;
+            }
+        }
+
+        &--active {
+            color: var(--accent-color);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+    }
+}

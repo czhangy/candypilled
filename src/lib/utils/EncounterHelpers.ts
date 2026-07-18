@@ -1,3 +1,4 @@
+import { EncounterMethod } from '@/lib/static/enums';
 import { EncounterLocation, Game } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 
@@ -25,7 +26,7 @@ export default class EncounterHelpers {
         const matches = locations.flatMap(({ name, encountersKey }) => {
             if (!encountersKey) return [];
 
-            const encounters = game.encounters[encountersKey]?.encounters ?? [];
+            const encounters = game.encounters[encountersKey] ?? [];
             return encounters
                 .filter((encounter) => encounter.species === species)
                 .map((encounter) => ({ name, encounter }));
@@ -45,9 +46,9 @@ export default class EncounterHelpers {
         return locations.find(({ encountersKey }) => {
             if (!encountersKey) return false;
 
-            const encounters = game.encounters[encountersKey]?.encounters ?? [];
+            const encounters = game.encounters[encountersKey] ?? [];
             return encounters.some(
-                (encounter) => encounter.method === 'starter'
+                (encounter) => encounter.method === EncounterMethod.Starter
             );
         })!.name;
     }
@@ -64,7 +65,7 @@ export default class EncounterHelpers {
         for (const { encountersKey } of locations) {
             if (!encountersKey) continue;
 
-            const encounters = game.encounters[encountersKey]?.encounters ?? [];
+            const encounters = game.encounters[encountersKey] ?? [];
             for (const encounter of encounters) {
                 slugs.add(encounter.species);
             }

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { StaticImageData } from 'next/image';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { STARTER_LOCATION_NAME } from '@/lib/static/constants';
-import { PokemonStatus } from '@/lib/static/enums';
+import { EncounterMethod, PokemonStatus } from '@/lib/static/enums';
 import {
     Battle,
     CaughtPokemon,
@@ -14,8 +14,9 @@ import {
     Run,
 } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
+import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
+import SplitHelpers from '@/lib/utils/SplitHelpers';
 import BattleCard from './BattleCard/BattleCard';
 import EncounterTable from './EncounterTable/EncounterTable';
 import LocationMap from './LocationMap/LocationMap';
@@ -24,8 +25,11 @@ import styles from './SplitLocation.module.scss';
 
 type SplitLocationProps = {
     game: Game;
+    index: number;
     location: Location;
+    onAdvanceSplit: (splitName: string) => void;
     onSelectAbility: (name: string) => void;
+    onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
     run: Run;
     variant: string;
@@ -33,8 +37,11 @@ type SplitLocationProps = {
 
 const SplitLocation: React.FC<SplitLocationProps> = ({
     game,
+    index,
     location,
+    onAdvanceSplit,
     onSelectAbility,
+    onSelectLocation,
     onSelectMove,
     run,
     variant,
@@ -133,7 +140,14 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             ...run,
             defeatedBattles: wasDefeated
                 ? defeatedBattles.filter((key) => key !== battleKey)
-                : [...defeatedBattles, battleKey],
+                : [
+                      ...defeatedBattles,
+                      ...BattleHelpers.getRequiredBattleKeysBefore(
+                          game,
+                          battleKey
+                      ).filter((key) => !defeatedBattles.includes(key)),
+                      battleKey,
+                  ],
         };
 
         if (!wasDefeated && !battle.isOptional) {
@@ -159,6 +173,16 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         }
 
         LocalStorageHelpers.saveRun(game, updatedRun);
+
+        if (!wasDefeated) {
+            const nextSplitName = BattleHelpers.getNextSplitAfterBattle(
+                game,
+                battleKey
+            );
+            if (nextSplitName) {
+                onAdvanceSplit(nextSplitName);
+            }
+        }
     };
 
     const handleAddPokemon = (
@@ -172,7 +196,8 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             | 'name'
             | 'nature'
             | 'tags'
-        >
+        >,
+        enteredLocation: string
     ): void => {
         const updatedRun: Run = {
             ...run,
@@ -181,7 +206,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                 {
                     ...details,
                     heldItem: '',
-                    location: location.name,
+                    location: isEggEncounter ? enteredLocation : location.name,
                     status: PokemonStatus.Alive,
                 },
             ],
@@ -241,16 +266,40 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                   ? []
                   : (activeSubarea.battles ?? []),
               encounters: activeSubarea.encountersKey
-                  ? game.encounters[activeSubarea.encountersKey]?.encounters
+                  ? game.encounters[activeSubarea.encountersKey]
                   : undefined,
           }
         : {
               map: location.map,
               battles: location.battles ?? [],
               encounters: location.encountersKey
-                  ? game.encounters[location.encountersKey]?.encounters
+                  ? game.encounters[location.encountersKey]
                   : undefined,
           };
+    const isStarterEncounter = selectedEncounter
+        ? selectedEncounter.method === EncounterMethod.Starter
+        : !!encounter &&
+          !!section.encounters?.some(
+              (locationEncounter) =>
+                  locationEncounter.method === EncounterMethod.Starter &&
+                  EvolutionHelpers.isSameEvolutionLine(
+                      locationEncounter.species,
+                      encounter,
+                      game.generation
+                  )
+          );
+    const isEggEncounter = selectedEncounter
+        ? selectedEncounter.method === EncounterMethod.Egg
+        : !!encounter &&
+          !!section.encounters?.some(
+              (locationEncounter) =>
+                  locationEncounter.method === EncounterMethod.Egg &&
+                  EvolutionHelpers.isSameEvolutionLine(
+                      locationEncounter.species,
+                      encounter,
+                      game.generation
+                  )
+          );
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -259,7 +308,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     return (
         <div
             className={styles['split-location']}
-            id={StringHelpers.toSlug(location.name)}
+            id={SplitHelpers.getLocationSlug(location.name, index)}
         >
             <div className={styles.header}>
                 <button
@@ -381,11 +430,14 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         encounter={encounter}
                                         game={game}
                                         generation={game.generation}
+                                        isEggEncounter={isEggEncounter}
                                         isLocationMissed={isMissed}
+                                        isStarterEncounter={isStarterEncounter}
                                         mode="catch"
                                         onAddPokemon={handleAddPokemon}
                                         onRemovePokemon={handleRemovePokemon}
                                         onSelectAbility={onSelectAbility}
+                                        onSelectLocation={onSelectLocation}
                                         onSelectMove={onSelectMove}
                                         onSelectSpecies={(species: string) =>
                                             setSpeciesOverride(species)

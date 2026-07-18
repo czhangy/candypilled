@@ -11,6 +11,7 @@ the currently selected Pokemon on the right, taking up the remaining third.
 | `game`              | `Game`                       | Yes      | -       | The current game, used to resolve the caught Pokemon's sprites and moves |
 | `onDeselectPokemon` | `() => void`                 | Yes      | -       | Called to clear the currently selected caught Pokemon                    |
 | `onSelectAbility`   | `(name: string) => void`     | Yes      | -       | Called with an ability's name when it's clicked in the preview           |
+| `onSelectLocation`  | `(location: string) => void` | Yes      | -       | Called with a caught Pokemon's location when it's clicked in the preview |
 | `onSelectMove`      | `(name: string) => void`     | Yes      | -       | Called with a move's name when it's clicked in the preview               |
 | `onSelectPokemon`   | `(location: string) => void` | Yes      | -       | Called with a caught Pokemon's location when it's clicked in the box     |
 | `run`               | `Run`                        | Yes      | -       | The current run, whose `caughtPokemon` populates the box                 |
@@ -34,6 +35,10 @@ the currently selected Pokemon on the right, taking up the remaining third.
   Pokemon dropdown; also supplies its default species (the first entry)
 - `selectedCaughtPokemon` — the caught Pokemon whose location matches
   `selectedPokemon`, passed to `PokemonPreview`
+- `canSelectLocation` — whether `selectedCaughtPokemon`'s location matches
+  a location in `game.splits`, via `SplitHelpers.getEarliestSplitName`;
+  passed to `PokemonPreview` so it only renders the location as a clickable
+  link when it resolves to an actual split
 - `currentSplitName` / `currentSplit` — the run's current split, resolved
   via `SplitHelpers.getCurrentSplitName`
 - `levelCap` — the current split's level cap via

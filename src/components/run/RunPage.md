@@ -42,6 +42,12 @@ shown instead.
   page
 - `selectedAbility` — the currently selected ability's name, read from the
   `ability` query param
+- `currentSplitName` — the split named by the `split` query param if it
+  matches one of `game.splits`, otherwise the name of the split containing
+  the first not-yet-defeated required battle in `run.defeatedBattles` (or
+  the last split if every required battle has been defeated); `RunEntry`
+  computes and links to this param directly when navigating to the page, so
+  it's already populated on load
 - `game` — the `Game` matching `slug`, looked up from the static game list;
   triggers a 404 if no game matches
 - `run` — the stored `Run` for `game`, looked up from the run store snapshot
@@ -54,17 +60,17 @@ shown instead.
   run has no personal best yet
 - `updateQueryParams` — merges the given key/value pairs into the current
   URL's query string (deleting keys whose value is `undefined`) and
-  navigates to it with `router.replace`, so tab/move/ability selection is
-  linkable and shareable
+  navigates to it with `router.replace`, so tab/move/ability/split
+  selection is linkable and shareable
 - `wipeMessage` — a message picked at random from `DEFAULT_WIPE_MESSAGES`
   combined with `game.wipeMessages`, shown when the run has been wiped
 
 ## Handlers
 
 - **On tab change** (from `Tabs`) — sets the `tab` query param and clears
-  whichever of `pokemon`/`move`/`ability` isn't relevant to the destination
-  tab, so a tab's selection param doesn't linger in the URL after navigating
-  away from it
+  whichever of `pokemon`/`move`/`ability`/`split` isn't relevant to the
+  destination tab, so a tab's selection param doesn't linger in the URL
+  after navigating away from it
 - **On move link click** (from `SplitTab`, e.g. a move within `BattleCard`)
   — opens the Moves tab for that move (`?tab=moves&move=<name>`) in a new
   browser tab, leaving the current page untouched
@@ -78,5 +84,16 @@ shown instead.
   current page untouched
 - **On Pokemon deselect** (from `BoxTab`, when switching between its box
   and graveyard views) — clears the `pokemon` query param
+- **On location select** (from `BoxTab`'s `PokemonPreview`, or from
+  `SplitTab`'s `PokedexTile` locations tab) — resolves the location's
+  earliest split and index within it via `SplitHelpers.getEarliestLocation`,
+  then navigates to the Splits tab for that split (`?tab=split&split=<name>`,
+  clearing `pokemon`/`move`/`ability`) with the location's disambiguated
+  slug (via `SplitHelpers.getLocationSlug`) as a URL hash, so the browser
+  scrolls to its card; no-ops if the location doesn't match any split
+- **On split select** (from `SplitHeader`'s dropdown, or from `SplitTab`'s
+  `onAdvanceSplit` when a split's boss/last required battle is defeated) —
+  sets the `split` query param without changing `tab`, and scrolls the
+  page to the top
 - **On Wipe toggle** — flips `run.wipe` and saves the run; the button reads
   "Wipe" when `run.wipe` is `false` and "RESPAWN" when `true`

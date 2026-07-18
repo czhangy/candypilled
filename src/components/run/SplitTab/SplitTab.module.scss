@@ -23,13 +23,13 @@
             z-index: 2;
 
             .badge {
-                height: 10rem;
+                height: 8rem;
                 left: 50%;
                 opacity: 0.15;
                 position: absolute;
                 top: 50%;
                 transform: translate(-50%, -50%);
-                width: 10rem;
+                width: 8rem;
                 z-index: -1;
 
                 img {
@@ -84,7 +84,7 @@
                     transition: color 0.2s ease;
 
                     @media (hover: hover) {
-                        &:hover {
+                        &:not(.toc-link--active):hover {
                             color: $foreground;
                         }
                     }

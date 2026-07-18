@@ -6,7 +6,7 @@ import {
 } from '@/lib/scripts/pokeapi/dex-ranges';
 import { CURRENT_GAME_VERSION } from '@/lib/scripts/pokeapi/game-versions';
 import {
-    buildGenerationMaps,
+    buildVersionGroupGenerations,
     sleep,
     toGenerationNumber,
 } from '@/lib/scripts/pokeapi/shared';
@@ -17,7 +17,7 @@ import {
     EvolutionLineByGeneration,
     EvolutionMethod,
     EvolutionStep,
-    LearnsetByGeneration,
+    LearnsetByVersionGroup,
     LearnsetMethod,
     LearnsetMove,
     PokemonData,
@@ -28,7 +28,7 @@ import {
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const POKEAPI_SPECIES_URL = 'https://pokeapi.co/api/v2/pokemon-species';
-const DATA_PATH = path.join('src', 'lib', 'data', 'pokemon.json');
+const DATA_PATH = path.join('src', 'lib', 'data', 'raw', 'pokemon.json');
 const FETCH_DELAY_MS = 75;
 const MAX_DEX_NUMBER = getMaxDexNumber(CURRENT_GAME_VERSION.generation);
 
@@ -133,6 +133,12 @@ type RawPastStat = {
 
 type RawVersionGroupDetail = {
     level_learned_at: number;
+    // Tie-breaker among moves sharing the same level_learned_at, matching
+    // the order the game actually teaches them in (e.g. Onix's four level-1
+    // moves in Platinum: Mud Sport, Tackle, Harden, Bind, in that order).
+    // Null when there's no tie to break for that version group. PokeAPI's
+    // `moves` array order does NOT reflect this and can't be used instead.
+    order: number | null;
     move_learn_method: { name: string };
     version_group: { name: string };
 };
@@ -518,62 +524,89 @@ const buildStatsByGeneration = (pokemon: RawPokemon): StatsByGeneration[] => {
 // quirks of specific spin-off events rather than real learnsets.
 const KNOWN_METHODS = new Set<LearnsetMethod>(['level-up', 'machine', 'tutor']);
 
+// This site only ever needs generation III-V learnsets, so earlier/later
+// version groups are skipped entirely rather than fetched and unused.
+const MIN_LEARNSET_GENERATION = 3;
+const MAX_LEARNSET_GENERATION = 5;
+
 const METHOD_ORDER: Record<LearnsetMethod, number> = {
     'level-up': 0,
     machine: 1,
     tutor: 2,
 };
 
-const sortMoves = (moves: LearnsetMove[]): LearnsetMove[] =>
-    [...moves].sort((a, b) => {
-        const methodDiff = METHOD_ORDER[a.method] - METHOD_ORDER[b.method];
-        if (methodDiff !== 0) return methodDiff;
+// LearnsetMove plus the raw tie-breaker order, kept only long enough to sort
+// same-level moves correctly before being dropped from the persisted shape.
+type WorkingMove = LearnsetMove & { order: number | null };
 
-        if (a.method === 'level-up') return (a.level ?? 0) - (b.level ?? 0);
-        return a.name.localeCompare(b.name);
-    });
+const sortMoves = (moves: WorkingMove[]): LearnsetMove[] =>
+    [...moves]
+        .sort((a, b) => {
+            const methodDiff = METHOD_ORDER[a.method] - METHOD_ORDER[b.method];
+            if (methodDiff !== 0) return methodDiff;
 
-// A generation with no moves for this version group means the Pokemon
-// didn't exist yet (e.g. a generation before it was introduced), so it's
-// left out of the timeline entirely rather than recorded as an empty entry.
-const buildLearnsetByGeneration = (
-    pokemon: RawPokemon,
-    representativeVersionGroups: Map<number, string>
-): LearnsetByGeneration[] => {
-    const entries: LearnsetByGeneration[] = [];
-
-    const sortedGenerations = [...representativeVersionGroups.entries()].sort(
-        ([a], [b]) => a - b
-    );
-
-    for (const [fromGeneration, versionGroup] of sortedGenerations) {
-        const moves: LearnsetMove[] = [];
-
-        for (const moveEntry of pokemon.moves) {
-            for (const detail of moveEntry.version_group_details) {
-                if (detail.version_group.name !== versionGroup) continue;
-
-                const method = detail.move_learn_method.name as LearnsetMethod;
-                if (!KNOWN_METHODS.has(method)) continue;
-
-                const move: LearnsetMove = {
-                    name: moveEntry.move.name,
-                    method,
-                };
-                if (method === 'level-up') {
-                    move.level = detail.level_learned_at;
-                }
-
-                moves.push(move);
+            if (a.method === 'level-up') {
+                const levelDiff = (a.level ?? 0) - (b.level ?? 0);
+                if (levelDiff !== 0) return levelDiff;
+                return (a.order ?? 0) - (b.order ?? 0);
             }
+            return a.name.localeCompare(b.name);
+        })
+        .map((move) =>
+            move.level === undefined
+                ? { name: move.name, method: move.method }
+                : { name: move.name, method: move.method, level: move.level }
+        );
+
+// Learnsets differ commonly between version groups within the same
+// generation (e.g. Onix's moveset changed between Diamond/Pearl/Platinum
+// and HeartGold/SoulSilver), so every version group the Pokemon has moves
+// in gets its own entry rather than collapsing each generation down to one.
+const buildLearnsetByVersionGroup = (
+    pokemon: RawPokemon,
+    versionGroupGenerations: Map<string, number>
+): LearnsetByVersionGroup[] => {
+    const movesByVersionGroup = new Map<string, WorkingMove[]>();
+
+    for (const moveEntry of pokemon.moves) {
+        for (const detail of moveEntry.version_group_details) {
+            const versionGroup = detail.version_group.name;
+            const fromGeneration = versionGroupGenerations.get(versionGroup);
+            if (
+                fromGeneration === undefined ||
+                fromGeneration < MIN_LEARNSET_GENERATION ||
+                fromGeneration > MAX_LEARNSET_GENERATION
+            ) {
+                continue;
+            }
+
+            const method = detail.move_learn_method.name as LearnsetMethod;
+            if (!KNOWN_METHODS.has(method)) continue;
+
+            const move: WorkingMove = {
+                name: moveEntry.move.name,
+                method,
+                order: detail.order,
+            };
+            if (method === 'level-up') {
+                move.level = detail.level_learned_at;
+            }
+
+            const moves = movesByVersionGroup.get(versionGroup) ?? [];
+            moves.push(move);
+            movesByVersionGroup.set(versionGroup, moves);
         }
-
-        if (moves.length === 0) continue;
-
-        entries.push({ fromGeneration, moves: sortMoves(moves) });
     }
 
-    return entries;
+    const entries: LearnsetByVersionGroup[] = [
+        ...movesByVersionGroup.entries(),
+    ].map(([versionGroup, moves]) => ({
+        versionGroup,
+        fromGeneration: versionGroupGenerations.get(versionGroup) as number,
+        moves: sortMoves(moves),
+    }));
+
+    return entries.sort((a, b) => a.fromGeneration - b.fromGeneration);
 };
 
 // -------------------------------------------------------------------------
@@ -827,8 +860,8 @@ const buildEvolutionLine = (
 // -------------------------------------------------------------------------
 
 export const fetchPokemonData = async (): Promise<void> => {
-    const { versionGroupGenerations, representativeVersionGroups } =
-        await buildGenerationMaps(FETCH_DELAY_MS);
+    const versionGroupGenerations =
+        await buildVersionGroupGenerations(FETCH_DELAY_MS);
     const data: Record<string, PokemonData> = {};
     const chainCache = new Map<string, FullNode>();
 
@@ -897,9 +930,9 @@ export const fetchPokemonData = async (): Promise<void> => {
                 stats: buildStatsByGeneration(rawPokemon),
                 catchRate: species.capture_rate,
                 evolutionLine,
-                learnset: buildLearnsetByGeneration(
+                learnset: buildLearnsetByVersionGroup(
                     rawPokemon,
-                    representativeVersionGroups
+                    versionGroupGenerations
                 ),
             };
 

@@ -1,25 +1,5 @@
-type MethodOverride = {
-    location: string;
-    species: string;
-    method: string;
-};
-
-type GameVersion = {
-    id: string;
-    label: string;
-    version: string;
-    region: string;
-    generation: number;
-    excludedLocations?: string[];
-    excludedSpecies?: string[];
-    caveLocations?: string[];
-    methodOverrides?: MethodOverride[];
-    excludedMethods?: string[];
-    excludedConditions?: string[];
-    excludedConditionPrefixes?: string[];
-    strippedConditions?: string[];
-    strippedConditionPrefixes?: string[];
-};
+import { EncounterMethod } from '@/lib/static/enums';
+import { GameVersion } from '@/lib/static/types';
 
 export const platinum: GameVersion = {
     id: 'platinum',
@@ -101,6 +81,8 @@ export const platinum: GameVersion = {
         'rock-peak-ruins',
         'roaming-sinnoh',
         'sinnoh-pokemart',
+        'mt-coronet-exterior-blizzard',
+        'mt-coronet-4f-small-room',
     ],
     excludedSpecies: [
         'mesprit',
@@ -127,15 +109,31 @@ export const platinum: GameVersion = {
         'wayward-cave',
     ],
     methodOverrides: [
-        { location: 'sinnoh-route-201', species: 'turtwig', method: 'starter' },
+        {
+            location: 'sinnoh-route-201',
+            species: 'turtwig',
+            method: EncounterMethod.Starter,
+        },
         {
             location: 'sinnoh-route-201',
             species: 'chimchar',
-            method: 'starter',
+            method: EncounterMethod.Starter,
         },
-        { location: 'sinnoh-route-201', species: 'piplup', method: 'starter' },
-        { location: 'oreburgh-city', species: 'cranidos', method: 'fossil' },
-        { location: 'oreburgh-city', species: 'shieldon', method: 'fossil' },
+        {
+            location: 'sinnoh-route-201',
+            species: 'piplup',
+            method: EncounterMethod.Starter,
+        },
+        {
+            location: 'oreburgh-city',
+            species: 'cranidos',
+            method: EncounterMethod.Fossil,
+        },
+        {
+            location: 'oreburgh-city',
+            species: 'shieldon',
+            method: EncounterMethod.Fossil,
+        },
     ],
     excludedMethods: [
         'super-rod',
@@ -157,4 +155,21 @@ export const platinum: GameVersion = {
         'not-mentioned',
     ],
     strippedConditionPrefixes: ['story-progress-', 'item-', 'backlot-'],
+    mergedLocations: [
+        { from: 'eterna-city-west-gate', into: 'eterna-city-area' },
+    ],
+    locationSplits: [
+        {
+            location: 'eterna-forest',
+            groups: [
+                {
+                    key: 'eterna-forest-exterior',
+                    methods: [EncounterMethod.HoneyTree],
+                },
+                {
+                    key: 'eterna-forest-interior',
+                },
+            ],
+        },
+    ],
 };

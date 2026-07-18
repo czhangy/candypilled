@@ -31,6 +31,7 @@ type AddPokemonModalProps = {
         location: string
     ) => void;
     showLocation: boolean;
+    version: string;
 };
 
 const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
@@ -45,6 +46,7 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
     onClose,
     onSubmit,
     showLocation,
+    version,
 }) => {
     // -------------------------------------------------------------------------
     // STATE
@@ -128,6 +130,7 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
                     showMoves
                     showTags={false}
                     submitLabel="Add"
+                    version={version}
                 />
             </div>
         </Modal>

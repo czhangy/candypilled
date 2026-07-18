@@ -4,11 +4,13 @@ import styles from './LocationsList.module.scss';
 
 type LocationsListProps = {
     locations: EncounterLocation[];
+    onSelectLocation: (location: string) => void;
     usedLocations: string[];
 };
 
 const LocationsList: React.FC<LocationsListProps> = ({
     locations,
+    onSelectLocation,
     usedLocations,
 }) => {
     // -------------------------------------------------------------------------
@@ -28,6 +30,12 @@ const LocationsList: React.FC<LocationsListProps> = ({
             (used) => name === used || name.startsWith(`${used} (`)
         );
 
+    // A subarea-qualified name is "Location (Subarea)" — strip the
+    // subarea to get the split location's actual name for linking, since
+    // every location here is assumed to have a corresponding split.
+    const getBaseName = (name: string): string =>
+        name.match(/^(.+) \([^)]+\)$/)?.[1] ?? name;
+
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
@@ -43,27 +51,34 @@ const LocationsList: React.FC<LocationsListProps> = ({
     return (
         <ul className={styles['locations-list']}>
             {sortedLocations.map((location, index) => (
-                <li
-                    className={[
-                        styles.row,
-                        isUsed(location.name) && styles['row--used'],
-                    ]
-                        .filter(Boolean)
-                        .join(' ')}
-                    key={`${location.name}-${index}`}
-                >
-                    <span className={styles.chance}>
-                        {location.encounter.chance !== null
-                            ? `${location.encounter.chance}%`
-                            : '—'}
-                    </span>
-                    <span className={styles.name}>{location.name}</span>
-                    <span className={styles.level}>
-                        {getLevelLabel(location)}
-                    </span>
-                    <span className={styles.method}>
-                        {StringHelpers.toTitleCase(location.encounter.method)}
-                    </span>
+                <li key={`${location.name}-${index}`}>
+                    <button
+                        className={[
+                            styles.row,
+                            isUsed(location.name) && styles['row--used'],
+                        ]
+                            .filter(Boolean)
+                            .join(' ')}
+                        onClick={() =>
+                            onSelectLocation(getBaseName(location.name))
+                        }
+                        type="button"
+                    >
+                        <span className={styles.name}>{location.name}</span>
+                        <span className={styles.level}>
+                            {getLevelLabel(location)}
+                        </span>
+                        <span className={styles.chance}>
+                            {location.encounter.chance !== null
+                                ? `${location.encounter.chance}%`
+                                : '—'}
+                        </span>
+                        <span className={styles.method}>
+                            {StringHelpers.toTitleCase(
+                                location.encounter.method
+                            )}
+                        </span>
+                    </button>
                 </li>
             ))}
             {sortedLocations.length === 0 && (

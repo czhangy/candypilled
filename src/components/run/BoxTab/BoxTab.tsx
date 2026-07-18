@@ -15,6 +15,7 @@ type BoxTabProps = {
     game: Game;
     onDeselectPokemon: () => void;
     onSelectAbility: (name: string) => void;
+    onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
     onSelectPokemon: (location: string) => void;
     run: Run;
@@ -25,6 +26,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
     game,
     onDeselectPokemon,
     onSelectAbility,
+    onSelectLocation,
     onSelectMove,
     onSelectPokemon,
     run,
@@ -55,6 +57,12 @@ const BoxTab: React.FC<BoxTabProps> = ({
     const selectedCaughtPokemon = run.caughtPokemon.find(
         (caughtPokemon) => caughtPokemon.location === selectedPokemon
     );
+    const canSelectLocation = selectedCaughtPokemon
+        ? !!SplitHelpers.getEarliestSplitName(
+              game,
+              selectedCaughtPokemon.location
+          )
+        : false;
     const currentSplitName = SplitHelpers.getCurrentSplitName(
         game,
         run.defeatedBattles
@@ -219,15 +227,18 @@ const BoxTab: React.FC<BoxTabProps> = ({
             <PokemonPreview
                 accentColor={game.accentColor}
                 buttonTextColor={game.textContrastColor}
+                canSelectLocation={canSelectLocation}
                 generation={game.generation}
                 levelCap={levelCap}
                 onEdit={handleEditPokemon}
                 onEvolve={handleEvolve}
                 onSelectAbility={onSelectAbility}
+                onSelectLocation={onSelectLocation}
                 onSelectMove={onSelectMove}
                 onToggleStatus={handleToggleStatus}
                 pokemon={selectedCaughtPokemon}
                 variant={variant}
+                version={game.version}
                 view={view}
             />
             {isAddPokemonModalOpen && (
@@ -244,6 +255,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
                     onClose={handleCloseAddPokemonModal}
                     onSubmit={handleAddPokemon}
                     showLocation
+                    version={game.version}
                 />
             )}
         </div>

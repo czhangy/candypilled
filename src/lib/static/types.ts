@@ -1,5 +1,10 @@
 import { StaticImageData } from 'next/image';
-import { FieldCondition, Nature, PokemonStatus } from '@/lib/static/enums';
+import {
+    EncounterMethod,
+    FieldCondition,
+    Nature,
+    PokemonStatus,
+} from '@/lib/static/enums';
 
 export type StatValues = {
     atk: number;
@@ -58,12 +63,15 @@ type BattleItem = {
 
 export type Battle = {
     fieldCondition?: FieldCondition;
+    isBackToBack?: boolean;
     isBoss?: boolean;
     isDouble?: boolean;
     isDoubleHeightMarker?: boolean;
     isDoubleWidthMarker?: boolean;
+    isGauntlet?: boolean;
     isMiniboss?: boolean;
     isOptional?: boolean;
+    isTag?: boolean;
     isTrueDouble?: boolean;
     items?: BattleItem;
     name: string;
@@ -76,16 +84,54 @@ export type Battle = {
 
 export type Encounter = {
     species: string;
-    method: string;
+    method: EncounterMethod;
     minLevel: number;
     maxLevel: number;
     chance: number | null;
     conditions?: string[];
 };
 
-export type LocationEncounters = {
-    name: string;
-    encounters: Encounter[];
+export type MethodOverride = {
+    location: string;
+    species: string;
+    method: EncounterMethod;
+};
+
+export type LocationMerge = {
+    from: string;
+    into: string;
+};
+
+export type LocationSplitGroup = {
+    key: string;
+    // Encounters using one of these methods go into this group. Omit on
+    // one group per split to make it the catch-all for methods not claimed
+    // by any other group.
+    methods?: EncounterMethod[];
+};
+
+export type LocationSplit = {
+    location: string;
+    groups: LocationSplitGroup[];
+};
+
+export type GameVersion = {
+    id: string;
+    label: string;
+    version: string;
+    region: string;
+    generation: number;
+    excludedLocations?: string[];
+    excludedSpecies?: string[];
+    caveLocations?: string[];
+    methodOverrides?: MethodOverride[];
+    excludedMethods?: string[];
+    excludedConditions?: string[];
+    excludedConditionPrefixes?: string[];
+    strippedConditions?: string[];
+    strippedConditionPrefixes?: string[];
+    mergedLocations?: LocationMerge[];
+    locationSplits?: LocationSplit[];
 };
 
 export type EncounterLocation = {
@@ -118,13 +164,18 @@ export type Game = {
     name: string;
     logo: string;
     generation: number;
+    // PokeAPI version group slug for this game, e.g. "platinum". Used to
+    // resolve which of a Pokemon's per-version-group learnsets applies,
+    // since level-up movesets can differ between versions within the same
+    // generation.
+    version: string;
     splits: Split[];
     starters: string[];
     accentColor: string;
     // Text color for the starter select modal's submit buttons; falls back
     // to their current default color when not provided.
     textContrastColor?: string;
-    encounters: Record<string, LocationEncounters>;
+    encounters: Record<string, Encounter[]>;
     // Game-specific messages shown at random on the run page when a run is
     // marked as a wipe, alongside the run page's default messages.
     wipeMessages: string[];
@@ -261,9 +312,20 @@ export type LearnsetMove = {
     level?: number;
 };
 
-export type LearnsetByGeneration = {
+export type LearnsetByVersionGroup = {
+    // PokeAPI version group slug, e.g. "diamond-pearl", "platinum",
+    // "heartgold-soulsilver". Learnsets are kept per version group rather
+    // than per generation because level-up movesets commonly differ between
+    // versions within the same generation (e.g. Onix's moveset changed
+    // between Diamond/Pearl/Platinum and HeartGold/SoulSilver).
+    versionGroup: string;
     fromGeneration: number;
     moves: LearnsetMove[];
+};
+
+export type AbilityEntry = {
+    hidden?: boolean;
+    name: string;
 };
 
 export type PokemonData = {
@@ -280,5 +342,5 @@ export type PokemonData = {
     stats: StatsByGeneration[];
     catchRate: number;
     evolutionLine: EvolutionLineByGeneration[];
-    learnset: LearnsetByGeneration[];
+    learnset: LearnsetByVersionGroup[];
 };

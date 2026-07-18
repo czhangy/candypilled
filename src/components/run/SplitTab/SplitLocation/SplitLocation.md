@@ -21,11 +21,17 @@ tile is also told which species was originally selected from the
 table, so catching a Pokemon from its "Add Pokemon" modal defaults to
 that original species even after navigating to an evolution. Clicking a move
 within the Pokedex tile's learnset list behaves the same as clicking one
-in the battle card's teams. Submitting the Pokedex tile's "Add Pokemon"
-modal records the catch (species, this location's name, and the
-submitted details) in the run's storage; clicking the Pokedex tile's
-catch button while it reads "CAUGHT" instead removes that location's
-catch from storage. Whichever species was already caught at this
+in the battle card's teams. Clicking a location within the Pokedex tile's
+locations tab links to that location's own card in the Splits tab.
+Submitting the Pokedex tile's "Add Pokemon"
+modal records the catch (species, the submitted details, and a
+location) in the run's storage; the location is this location's name,
+except for an "egg" encounter, where the modal instead exposes its
+Location field (with no default value) and the submitted value is
+used instead, since an egg's eventual hatch location isn't the
+location of the encounter itself. Clicking the Pokedex tile's catch
+button while it reads "CAUGHT"/"HATCHED" instead removes that
+location's catch from storage. Whichever species was already caught at this
 location (if any) is passed to the Pokedex tile to enforce one catch
 per location. Every species caught anywhere in the run is passed to
 both the encounter table, which highlights a row green if its species
@@ -35,18 +41,25 @@ for the Pokemon already caught here), enforcing one catch per
 evolution line. Below the encounter table's header, a "MISS"/"MISSED"
 toggle button records this location's encounter as used up without a
 catch, in the run's storage; while missed, the Pokedex tile's catch
-button is disabled until the miss is toggled off again.
+button is disabled until the miss is toggled off again. Whenever the
+Pokedex tile's selected Pokemon comes from a "starter" encounter, its
+catch button is hidden entirely, whether or not that Pokemon is
+already caught, since starters aren't caught or uncaught through the
+Pokedex tile.
 
 ## Props
 
-| Prop              | Type                     | Required | Default | Description                                                                                         |
-| ----------------- | ------------------------ | -------- | ------- | --------------------------------------------------------------------------------------------------- |
-| `game`            | `Game`                   | Yes      | -       | The game the run belongs to, for saving defeat state                                                |
-| `location`        | `Location`               | Yes      | -       | The location this card displays                                                                     |
-| `onSelectAbility` | `(name: string) => void` | Yes      | -       | Called when an ability is clicked within the battle card's teams or the Pokedex tile's ability list |
-| `onSelectMove`    | `(name: string) => void` | Yes      | -       | Called when a move is clicked within the battle card's teams or the Pokedex tile's learnset         |
-| `run`             | `Run`                    | Yes      | -       | The run whose defeated battles are shown                                                            |
-| `variant`         | `string`                 | Yes      | -       | The sprite variant to prefer, matching the game's slug                                              |
+| Prop               | Type                          | Required | Default | Description                                                                                                                                     |
+| ------------------ | ----------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `game`             | `Game`                        | Yes      | -       | The game the run belongs to, for saving defeat state                                                                                            |
+| `index`            | `number`                      | Yes      | -       | This location's index within the current split's locations array, used to disambiguate its anchor id from other locations sharing the same name |
+| `location`         | `Location`                    | Yes      | -       | The location this card displays                                                                                                                 |
+| `onAdvanceSplit`   | `(splitName: string) => void` | Yes      | -       | Called with the name of the next split when the defeated battle is the last required battle of its split                                        |
+| `onSelectAbility`  | `(name: string) => void`      | Yes      | -       | Called when an ability is clicked within the battle card's teams or the Pokedex tile's ability list                                             |
+| `onSelectLocation` | `(location: string) => void`  | Yes      | -       | Called with a location's base name when it's clicked within the Pokedex tile's locations tab                                                    |
+| `onSelectMove`     | `(name: string) => void`      | Yes      | -       | Called when a move is clicked within the battle card's teams or the Pokedex tile's learnset                                                     |
+| `run`              | `Run`                         | Yes      | -       | The run whose defeated battles are shown                                                                                                        |
+| `variant`          | `string`                      | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                                          |
 
 ## State
 
@@ -102,9 +115,20 @@ button is disabled until the miss is toggled off again.
   entry located at `STARTER_LOCATION_NAME`; passed to the encounter
   table to hide "starter"-method rows once the starter is tracked as
   its own encounter
+- `isStarterEncounter` — whether the Pokedex tile's selected Pokemon
+  comes from a "starter" encounter: `selectedEncounter.method` when an
+  encounter is selected, otherwise whether `encounter` is in the same
+  evolution family (resolved via `EvolutionHelpers`) as one of the
+  section's "starter"-method encounters; passed to the Pokedex tile to
+  hide its catch button entirely
+- `isEggEncounter` — whether the Pokedex tile's selected Pokemon comes
+  from an "egg" encounter, computed the same way as `isStarterEncounter`;
+  passed to the Pokedex tile to show "HATCH"/"HATCHED" instead of
+  "CATCH"/"CAUGHT" and to expose `AddPokemonModal`'s Location field
 
-The root element's `id` is `StringHelpers.toSlug(location.name)`, so
-`SplitTab`'s table of contents can link directly to this card.
+The root element's `id` is `SplitHelpers.getLocationSlug(location.name,
+index)`, so `SplitTab`'s table of contents can link directly to this card;
+the index disambiguates locations that share a name within the split.
 
 ## Handlers
 
@@ -113,9 +137,12 @@ The root element's `id` is `StringHelpers.toSlug(location.name)`, so
 - **On trainer marker click** — selects that battle, or deselects it if
   already selected
 - **On battle toggle defeated** — adds or removes the battle's key from
-  the run's defeated battles in storage. Defeating a required (non-optional)
+  the run's defeated battles in storage. Defeating a battle also marks
+  every required battle before it (in split/location/battle order) as
+  defeated, if not already. Defeating a required (non-optional)
   battle also updates the run's personal best if it is farther along than
-  the current one
+  the current one. If the defeated battle is the last required battle of
+  its split, calls `onAdvanceSplit` with the next split's name
 - **On encounter table row click** — selects that encounter, showing its
   details in the Pokedex tile, and clears `speciesOverride` so the
   encounter's own species is shown
@@ -124,9 +151,10 @@ The root element's `id` is `StringHelpers.toSlug(location.name)`, so
 - **On Pokedex tile evolution line click** — sets `speciesOverride` to
   the clicked species, without changing `selectedEncounter`
 - **On Pokedex tile "Add Pokemon" submit** — appends a record (the
-  submitted details, this location's name, an empty `heldItem`, and a
-  `status` of `PokemonStatus.Alive`) to the run's `caughtPokemon` in
-  storage
+  submitted details, an empty `heldItem`, and a `status` of
+  `PokemonStatus.Alive`) to the run's `caughtPokemon` in storage, with
+  the location set to the submitted location when `isEggEncounter`,
+  otherwise `location.name`
 - **On Pokedex tile catch button click while caught here** — removes
   this location's record from the run's `caughtPokemon` in storage
 - **On "Add Pokemon" submit** — also removes `location.name` from the

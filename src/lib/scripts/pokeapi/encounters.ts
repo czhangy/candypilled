@@ -3,41 +3,38 @@ import path from 'path';
 import { CURRENT_GAME_VERSION } from '@/lib/scripts/pokeapi/game-versions';
 import { sleep } from '@/lib/scripts/pokeapi/shared';
 import { logSuccess, logWarning, runScript } from '@/lib/scripts/utils/helpers';
-import { Encounter, LocationEncounters } from '@/lib/static/types';
+import { EncounterMethod } from '@/lib/static/enums';
+import {
+    Encounter,
+    GameVersion,
+    LocationMerge,
+    LocationSplit,
+    MethodOverride,
+} from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
+
+// PokeAPI's raw method names (e.g. 'walk', 'only-one', 'gift-egg') don't
+// match our EncounterMethod vocabulary until resolveWalkMethod and
+// resolveMethodRenames run, so the pipeline works in this looser shape and
+// only narrows to Encounter once every encounter has a final method.
+type RawEncounter = {
+    species: string;
+    method: string;
+    minLevel: number;
+    maxLevel: number;
+    chance: number | null;
+    conditions?: string[];
+};
 
 const POKEAPI_REGION_URL = 'https://pokeapi.co/api/v2/region';
 const DATA_PATH = path.join(
     'src',
     'lib',
     'data',
-    CURRENT_GAME_VERSION.id,
+    'raw',
     `${CURRENT_GAME_VERSION.id}_encounters.json`
 );
 const FETCH_DELAY_MS = 75;
-
-type MethodOverride = {
-    location: string;
-    species: string;
-    method: string;
-};
-
-type GameVersion = {
-    id: string;
-    label: string;
-    version: string;
-    region: string;
-    generation: number;
-    excludedLocations?: string[];
-    excludedSpecies?: string[];
-    caveLocations?: string[];
-    methodOverrides?: MethodOverride[];
-    excludedMethods?: string[];
-    excludedConditions?: string[];
-    excludedConditionPrefixes?: string[];
-    strippedConditions?: string[];
-    strippedConditionPrefixes?: string[];
-};
 
 type NamedApiResource = {
     name: string;
@@ -97,7 +94,7 @@ const toSubareaLabel = (locationName: string, areaName: string): string => {
         : areaName;
 };
 
-const writeData = (data: Record<string, LocationEncounters>): void => {
+const writeData = (data: Record<string, Encounter[]>): void => {
     fs.mkdirSync(path.dirname(DATA_PATH), { recursive: true });
     fs.writeFileSync(DATA_PATH, `${JSON.stringify(data, null, 4)}\n`);
 };
@@ -131,7 +128,7 @@ const fetchLocationAreas = async (
 const fetchAreaEncounters = async (
     areaUrl: string,
     version: GameVersion
-): Promise<Encounter[]> => {
+): Promise<RawEncounter[]> => {
     const response = await fetch(areaUrl);
     if (!response.ok) {
         throw new Error(
@@ -149,7 +146,7 @@ const fetchAreaEncounters = async (
     };
 
     const body = await response.json();
-    const encounters: Encounter[] = [];
+    const encounters: RawEncounter[] = [];
 
     for (const pokemonEncounter of body.pokemon_encounters as RawPokemonEncounter[]) {
         if (excludedSpecies.includes(pokemonEncounter.pokemon.name)) continue;
@@ -190,8 +187,8 @@ const fetchAreaEncounters = async (
     return encounters;
 };
 
-const mergeEncounters = (encounters: Encounter[]): Encounter[] => {
-    const merged = new Map<string, Encounter>();
+const mergeEncounters = <T extends RawEncounter>(encounters: T[]): T[] => {
+    const merged = new Map<string, T>();
 
     for (const encounter of encounters) {
         const conditionsKey = [...(encounter.conditions ?? [])]
@@ -213,27 +210,80 @@ const mergeEncounters = (encounters: Encounter[]): Encounter[] => {
     return [...merged.values()];
 };
 
+const mergeLocations = (
+    locationsData: Record<string, Encounter[]>,
+    mergedLocations: LocationMerge[]
+): void => {
+    for (const { from, into } of mergedLocations) {
+        const source = locationsData[from];
+        const target = locationsData[into];
+        if (!source || !target) continue;
+
+        locationsData[into] = mergeEncounters([...target, ...source]);
+        delete locationsData[from];
+    }
+};
+
+const splitLocations = (
+    locationsData: Record<string, Encounter[]>,
+    locationSplits: LocationSplit[]
+): void => {
+    for (const { location, groups } of locationSplits) {
+        const source = locationsData[location];
+        if (!source) continue;
+
+        const claimedMethods = new Set(
+            groups.flatMap((group) => group.methods ?? [])
+        );
+
+        for (const group of groups) {
+            const encounters = source.filter((encounter) =>
+                group.methods
+                    ? group.methods.includes(encounter.method)
+                    : !claimedMethods.has(encounter.method)
+            );
+
+            if (encounters.length === 0) continue;
+            locationsData[group.key] = encounters;
+        }
+
+        delete locationsData[location];
+    }
+};
+
 const resolveWalkMethod = (
-    encounters: Encounter[],
+    encounters: RawEncounter[],
     locationName: string,
     caveLocations: string[]
-): Encounter[] =>
+): RawEncounter[] =>
     encounters.map((encounter) =>
         encounter.method === 'walk'
             ? {
                   ...encounter,
                   method: caveLocations.includes(locationName)
-                      ? 'cave'
-                      : 'grass',
+                      ? EncounterMethod.Cave
+                      : EncounterMethod.Grass,
               }
             : encounter
     );
 
+const METHOD_RENAMES: Record<string, EncounterMethod> = {
+    'only-one': EncounterMethod.Special,
+    'gift-egg': EncounterMethod.Egg,
+    'feebas-tile-fishing': EncounterMethod.FeebasTile,
+};
+
+const resolveMethodRenames = (encounters: RawEncounter[]): RawEncounter[] =>
+    encounters.map((encounter) => {
+        const renamed = METHOD_RENAMES[encounter.method];
+        return renamed ? { ...encounter, method: renamed } : encounter;
+    });
+
 const resolveMethodOverrides = (
-    encounters: Encounter[],
+    encounters: RawEncounter[],
     locationName: string,
     methodOverrides: MethodOverride[]
-): Encounter[] =>
+): RawEncounter[] =>
     encounters.map((encounter) => {
         const override = methodOverrides.find(
             (candidate) =>
@@ -243,11 +293,11 @@ const resolveMethodOverrides = (
         return override ? { ...encounter, method: override.method } : encounter;
     });
 
-const HONEY_TREE_METHOD = 'honey-tree';
-
-const resolveHoneyTreeEncounters = (encounters: Encounter[]): Encounter[] =>
+const resolveHoneyTreeEncounters = (
+    encounters: RawEncounter[]
+): RawEncounter[] =>
     encounters.map((encounter) =>
-        encounter.method === HONEY_TREE_METHOD
+        encounter.method === EncounterMethod.HoneyTree
             ? {
                   species: encounter.species,
                   method: encounter.method,
@@ -258,17 +308,23 @@ const resolveHoneyTreeEncounters = (encounters: Encounter[]): Encounter[] =>
             : encounter
     );
 
-const STARTER_METHOD = 'starter';
-const NULLIFIED_CHANCE_METHODS = [HONEY_TREE_METHOD, STARTER_METHOD];
+const NULLIFIED_CHANCE_METHODS: string[] = [
+    EncounterMethod.HoneyTree,
+    EncounterMethod.Starter,
+    EncounterMethod.Special,
+    EncounterMethod.Egg,
+];
 
-const nullifyChances = (encounters: Encounter[]): Encounter[] =>
+const nullifyChances = (encounters: RawEncounter[]): RawEncounter[] =>
     encounters.map((encounter) =>
         NULLIFIED_CHANCE_METHODS.includes(encounter.method)
             ? { ...encounter, chance: null }
             : encounter
     );
 
-const expandTimeOfDayEncounters = (encounters: Encounter[]): Encounter[] => {
+const expandTimeOfDayEncounters = (
+    encounters: RawEncounter[]
+): RawEncounter[] => {
     const hasTimeOfDay = encounters.some((encounter) =>
         encounter.conditions?.some((condition) =>
             TIME_OF_DAY_CONDITIONS.includes(condition)
@@ -293,7 +349,7 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
     const locations = (await fetchRegionLocations(version.region)).filter(
         (location) => !version.excludedLocations?.includes(location.name)
     );
-    const locationsData: Record<string, LocationEncounters> = {};
+    const locationsData: Record<string, Encounter[]> = {};
 
     for (const location of locations) {
         const areas = await fetchLocationAreas(location.url);
@@ -314,13 +370,24 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
                 location.name,
                 version.methodOverrides ?? []
             );
-            const merged = mergeEncounters(withMethodOverrides);
+            const withMethodRenames = resolveMethodRenames(withMethodOverrides);
+            const merged = mergeEncounters(withMethodRenames);
             const expanded = expandTimeOfDayEncounters(merged);
             const withHoneyTree = resolveHoneyTreeEncounters(expanded);
             const remerged = mergeEncounters(withHoneyTree);
-            const encounters = nullifyChances(remerged);
+            const rawFinalEncounters = nullifyChances(remerged);
 
-            if (encounters.length === 0) continue;
+            if (rawFinalEncounters.length === 0) continue;
+
+            // Every raw method name has been resolved to our EncounterMethod
+            // vocabulary by this point (walk methods, renames, overrides),
+            // so this narrowing is safe.
+            const encounters: Encounter[] = rawFinalEncounters.map(
+                (encounter) => ({
+                    ...encounter,
+                    method: encounter.method as EncounterMethod,
+                })
+            );
             hasEncounters = true;
 
             const key = isMultiArea
@@ -332,7 +399,7 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
                   )})`
                 : StringHelpers.toTitleCase(location.name);
 
-            locationsData[key] = { name, encounters };
+            locationsData[key] = encounters;
             logSuccess(
                 `Fetched ${encounters.length} encounter(s) for "${name}" (${version.label}).`
             );
@@ -347,6 +414,8 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
         }
     }
 
+    mergeLocations(locationsData, version.mergedLocations ?? []);
+    splitLocations(locationsData, version.locationSplits ?? []);
     writeData(locationsData);
 };
 

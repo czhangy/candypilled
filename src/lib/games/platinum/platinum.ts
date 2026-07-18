@@ -4,8 +4,8 @@ import { Game } from '@/lib/static/types';
 import BYRON from './splits/byron';
 import CANDICE from './splits/candice';
 import CYNTHIA from './splits/cynthia';
-import DISTORTION_WORLD from './splits/distortion-world';
 import FANTINA from './splits/fantina';
+import GALACTIC from './splits/galactic';
 import GARDENIA from './splits/gardenia';
 import MAYLENE from './splits/maylene';
 import ROARK from './splits/roark';
@@ -15,6 +15,7 @@ const PLATINUM: Game = {
     name: 'Platinum',
     logo: '/logos/platinum.png',
     generation: 4,
+    version: 'platinum',
     starters: ['Turtwig', 'Chimchar', 'Piplup'],
     accentColor: '#FFD500',
     encounters: ENCOUNTERS,
@@ -33,7 +34,7 @@ const PLATINUM: Game = {
         CRASHER_WAKE,
         BYRON,
         CANDICE,
-        DISTORTION_WORLD,
+        GALACTIC,
         VOLKNER,
         CYNTHIA,
     ],

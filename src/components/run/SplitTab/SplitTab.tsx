@@ -11,16 +11,22 @@ import SplitLocation from './SplitLocation/SplitLocation';
 import styles from './SplitTab.module.scss';
 
 type SplitTabProps = {
+    currentSplitName: string | null;
     game: Game;
+    onAdvanceSplit: (splitName: string) => void;
     onSelectAbility: (name: string) => void;
+    onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
     run: Run;
     stickyOffset: number;
 };
 
 const SplitTab: React.FC<SplitTabProps> = ({
+    currentSplitName,
     game,
+    onAdvanceSplit,
     onSelectAbility,
+    onSelectLocation,
     onSelectMove,
     run,
     stickyOffset,
@@ -37,10 +43,6 @@ const SplitTab: React.FC<SplitTabProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const currentSplitName = SplitHelpers.getCurrentSplitName(
-        game,
-        run.defeatedBattles
-    );
     const currentSplit = game.splits.find(
         (split) => split.name === currentSplitName
     );
@@ -53,8 +55,8 @@ const SplitTab: React.FC<SplitTabProps> = ({
 
     useEffect(() => {
         const slugs =
-            currentSplit?.locations.map((location) =>
-                StringHelpers.toSlug(location.name)
+            currentSplit?.locations.map((location, index) =>
+                SplitHelpers.getLocationSlug(location.name, index)
             ) ?? [];
         const elements = slugs
             .map((slug) => document.getElementById(slug))
@@ -119,7 +121,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
             : [location.encountersKey];
 
         return encountersKeys.some(
-            (key) => key && (game.encounters[key]?.encounters.length ?? 0) > 0
+            (key) => key && (game.encounters[key]?.length ?? 0) > 0
         );
     };
 
@@ -143,15 +145,18 @@ const SplitTab: React.FC<SplitTabProps> = ({
                     </div>
                     <span className={styles['toc-label']}>Locations</span>
                     <ul className={styles['toc-list']}>
-                        {currentSplit?.locations.map((location) => {
+                        {currentSplit?.locations.map((location, index) => {
                             const caughtPokemonName = getCaughtPokemonName(
                                 location.name
                             );
                             const missed = isLocationMissed(location.name);
-                            const slug = StringHelpers.toSlug(location.name);
+                            const slug = SplitHelpers.getLocationSlug(
+                                location.name,
+                                index
+                            );
 
                             return (
-                                <li key={location.name}>
+                                <li key={`${location.name}-${index}`}>
                                     {hasEncounters(location) ? (
                                         <Tooltip
                                             position="left"
@@ -208,12 +213,15 @@ const SplitTab: React.FC<SplitTabProps> = ({
                     </ul>
                 </nav>
                 <div className={styles.locations}>
-                    {currentSplit?.locations.map((location) => (
+                    {currentSplit?.locations.map((location, index) => (
                         <SplitLocation
                             game={game}
-                            key={location.name}
+                            index={index}
+                            key={`${location.name}-${index}`}
                             location={location}
+                            onAdvanceSplit={onAdvanceSplit}
                             onSelectAbility={onSelectAbility}
+                            onSelectLocation={onSelectLocation}
                             onSelectMove={onSelectMove}
                             run={run}
                             variant={variant}

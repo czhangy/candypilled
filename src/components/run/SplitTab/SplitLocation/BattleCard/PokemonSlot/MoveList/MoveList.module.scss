@@ -1,0 +1,29 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.move-button {
+    background: move-tile-background();
+    border: none;
+    color: $background;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    margin: -0.3rem;
+    padding: 0.3rem;
+    transition: background-color 0.2s ease;
+    width: calc(100% + 0.6rem);
+
+    @media (hover: hover) {
+        &:hover {
+            background: move-tile-hover-background();
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+
+    &--dangerous {
+        color: white;
+    }
+}

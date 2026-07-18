@@ -47,6 +47,7 @@ type PokemonFormProps = {
     showMoves: boolean;
     showTags: boolean;
     submitLabel: string;
+    version: string;
 };
 
 const PokemonForm: React.FC<PokemonFormProps> = ({
@@ -69,6 +70,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     showMoves,
     showTags,
     submitLabel,
+    version,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
@@ -98,7 +100,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     ): string[] => {
         const knownMoves = PokemonHelpers.getMovesAtLevel(
             speciesName,
-            generation,
+            version,
             atLevel
         );
         return Array.from(
@@ -242,8 +244,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     const natureOptions: DropdownOption[] = Object.values(Nature).map(
         (name) => ({ label: name, value: name })
     );
-    const learnset =
-        PokemonHelpers.getPokemonLearnset(species, generation) ?? [];
+    const learnset = PokemonHelpers.getPokemonLearnset(species, version) ?? [];
     const moveNames = new Set(
         learnset.map(
             (move) => MoveHelpers.getMoveData(move.name)?.name ?? move.name

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import {
-    buildGenerationMaps,
+    buildVersionGroupGenerations,
     sleep,
     toGenerationNumber,
 } from '@/lib/scripts/pokeapi/shared';
@@ -13,7 +13,7 @@ const POKEAPI_MOVE_URL = 'https://pokeapi.co/api/v2/move';
 // Unlike pokemon.json, this dataset isn't scoped to the current game: moves
 // are shared across every game the site will ever support, so every move is
 // fetched regardless of which generation introduced it.
-const DATA_PATH = path.join('src', 'lib', 'data', 'moves.json');
+const DATA_PATH = path.join('src', 'lib', 'data', 'raw', 'moves.json');
 const FETCH_DELAY_MS = 75;
 const MOVE_LIST_LIMIT = 2000;
 
@@ -311,8 +311,8 @@ const buildValuesByGeneration = (
 };
 
 export const fetchMoves = async (): Promise<void> => {
-    const { versionGroupGenerations } =
-        await buildGenerationMaps(FETCH_DELAY_MS);
+    const versionGroupGenerations =
+        await buildVersionGroupGenerations(FETCH_DELAY_MS);
     const moveList = await fetchMoveList();
     const data: Record<string, MoveData> = {};
 
