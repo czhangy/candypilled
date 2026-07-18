@@ -175,7 +175,8 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             | 'name'
             | 'nature'
             | 'tags'
-        >
+        >,
+        enteredLocation: string
     ): void => {
         const updatedRun: Run = {
             ...run,
@@ -184,7 +185,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                 {
                     ...details,
                     heldItem: '',
-                    location: location.name,
+                    location: isEggEncounter ? enteredLocation : location.name,
                     status: PokemonStatus.Alive,
                 },
             ],
@@ -244,14 +245,14 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                   ? []
                   : (activeSubarea.battles ?? []),
               encounters: activeSubarea.encountersKey
-                  ? game.encounters[activeSubarea.encountersKey]?.encounters
+                  ? game.encounters[activeSubarea.encountersKey]
                   : undefined,
           }
         : {
               map: location.map,
               battles: location.battles ?? [],
               encounters: location.encountersKey
-                  ? game.encounters[location.encountersKey]?.encounters
+                  ? game.encounters[location.encountersKey]
                   : undefined,
           };
     const isStarterEncounter = selectedEncounter
@@ -260,6 +261,18 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
           !!section.encounters?.some(
               (locationEncounter) =>
                   locationEncounter.method === EncounterMethod.Starter &&
+                  EvolutionHelpers.isSameEvolutionLine(
+                      locationEncounter.species,
+                      encounter,
+                      game.generation
+                  )
+          );
+    const isEggEncounter = selectedEncounter
+        ? selectedEncounter.method === EncounterMethod.Egg
+        : !!encounter &&
+          !!section.encounters?.some(
+              (locationEncounter) =>
+                  locationEncounter.method === EncounterMethod.Egg &&
                   EvolutionHelpers.isSameEvolutionLine(
                       locationEncounter.species,
                       encounter,
@@ -396,6 +409,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         encounter={encounter}
                                         game={game}
                                         generation={game.generation}
+                                        isEggEncounter={isEggEncounter}
                                         isLocationMissed={isMissed}
                                         isStarterEncounter={isStarterEncounter}
                                         mode="catch"

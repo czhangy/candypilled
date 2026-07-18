@@ -89,11 +89,6 @@ export type Encounter = {
     conditions?: string[];
 };
 
-export type LocationEncounters = {
-    name: string;
-    encounters: Encounter[];
-};
-
 export type MethodOverride = {
     location: string;
     species: string;
@@ -107,7 +102,6 @@ export type LocationMerge = {
 
 export type LocationSplitGroup = {
     key: string;
-    name: string;
     // Encounters using one of these methods go into this group. Omit on
     // one group per split to make it the catch-all for methods not claimed
     // by any other group.
@@ -174,7 +168,7 @@ export type Game = {
     // Text color for the starter select modal's submit buttons; falls back
     // to their current default color when not provided.
     textContrastColor?: string;
-    encounters: Record<string, LocationEncounters>;
+    encounters: Record<string, Encounter[]>;
     // Game-specific messages shown at random on the run page when a run is
     // marked as a wipe, alongside the run page's default messages.
     wipeMessages: string[];

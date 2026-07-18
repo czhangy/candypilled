@@ -7,7 +7,6 @@ import { EncounterMethod } from '@/lib/static/enums';
 import {
     Encounter,
     GameVersion,
-    LocationEncounters,
     LocationMerge,
     LocationSplit,
     MethodOverride,
@@ -95,7 +94,7 @@ const toSubareaLabel = (locationName: string, areaName: string): string => {
         : areaName;
 };
 
-const writeData = (data: Record<string, LocationEncounters>): void => {
+const writeData = (data: Record<string, Encounter[]>): void => {
     fs.mkdirSync(path.dirname(DATA_PATH), { recursive: true });
     fs.writeFileSync(DATA_PATH, `${JSON.stringify(data, null, 4)}\n`);
 };
@@ -212,7 +211,7 @@ const mergeEncounters = <T extends RawEncounter>(encounters: T[]): T[] => {
 };
 
 const mergeLocations = (
-    locationsData: Record<string, LocationEncounters>,
+    locationsData: Record<string, Encounter[]>,
     mergedLocations: LocationMerge[]
 ): void => {
     for (const { from, into } of mergedLocations) {
@@ -220,16 +219,13 @@ const mergeLocations = (
         const target = locationsData[into];
         if (!source || !target) continue;
 
-        target.encounters = mergeEncounters([
-            ...target.encounters,
-            ...source.encounters,
-        ]);
+        locationsData[into] = mergeEncounters([...target, ...source]);
         delete locationsData[from];
     }
 };
 
 const splitLocations = (
-    locationsData: Record<string, LocationEncounters>,
+    locationsData: Record<string, Encounter[]>,
     locationSplits: LocationSplit[]
 ): void => {
     for (const { location, groups } of locationSplits) {
@@ -241,14 +237,14 @@ const splitLocations = (
         );
 
         for (const group of groups) {
-            const encounters = source.encounters.filter((encounter) =>
+            const encounters = source.filter((encounter) =>
                 group.methods
                     ? group.methods.includes(encounter.method)
                     : !claimedMethods.has(encounter.method)
             );
 
             if (encounters.length === 0) continue;
-            locationsData[group.key] = { name: group.name, encounters };
+            locationsData[group.key] = encounters;
         }
 
         delete locationsData[location];
@@ -274,6 +270,7 @@ const resolveWalkMethod = (
 const METHOD_RENAMES: Record<string, EncounterMethod> = {
     'only-one': EncounterMethod.Special,
     'gift-egg': EncounterMethod.Egg,
+    'feebas-tile-fishing': EncounterMethod.FeebasTile,
 };
 
 const resolveMethodRenames = (encounters: RawEncounter[]): RawEncounter[] =>
@@ -352,7 +349,7 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
     const locations = (await fetchRegionLocations(version.region)).filter(
         (location) => !version.excludedLocations?.includes(location.name)
     );
-    const locationsData: Record<string, LocationEncounters> = {};
+    const locationsData: Record<string, Encounter[]> = {};
 
     for (const location of locations) {
         const areas = await fetchLocationAreas(location.url);
@@ -402,7 +399,7 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
                   )})`
                 : StringHelpers.toTitleCase(location.name);
 
-            locationsData[key] = { name, encounters };
+            locationsData[key] = encounters;
             logSuccess(
                 `Fetched ${encounters.length} encounter(s) for "${name}" (${version.label}).`
             );

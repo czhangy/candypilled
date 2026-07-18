@@ -17,6 +17,7 @@ type PokedexTileProps = (
           defaultLevel?: number;
           dupes: string[];
           encounter?: string;
+          isEggEncounter: boolean;
           isLocationMissed: boolean;
           isStarterEncounter: boolean;
           mode: 'catch';
@@ -31,7 +32,8 @@ type PokedexTileProps = (
                   | 'name'
                   | 'nature'
                   | 'tags'
-              >
+              >,
+              location: string
           ) => void;
           onRemovePokemon: () => void;
       }
@@ -121,10 +123,11 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
             | 'name'
             | 'nature'
             | 'tags'
-        >
+        >,
+        location: string
     ): void => {
         if (rest.mode !== 'catch') return;
-        rest.onAddPokemon(details);
+        rest.onAddPokemon(details, location);
         setIsAddPokemonModalOpen(false);
     };
 
@@ -195,6 +198,14 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         (isOtherCaughtHere || isEvolutionLineCaught || rest.isLocationMissed);
     const isCatchButtonHidden =
         rest.mode === 'catch' && rest.isStarterEncounter;
+    const isEggEncounter = rest.mode === 'catch' && rest.isEggEncounter;
+    const catchButtonLabel = isCaughtHere
+        ? isEggEncounter
+            ? 'HATCHED'
+            : 'CAUGHT'
+        : isEggEncounter
+          ? 'HATCH'
+          : 'CATCH';
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -215,7 +226,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     onClick={handleCatchButtonClick}
                     type="button"
                 >
-                    {isCaughtHere ? 'CAUGHT' : 'CATCH'}
+                    {catchButtonLabel}
                 </button>
             )}
             <PokemonSummary
@@ -243,7 +254,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                         generation={generation}
                         onClose={handleCloseAddPokemonModal}
                         onSubmit={handleAddPokemon}
-                        showLocation={false}
+                        showLocation={isEggEncounter}
                     />
                 )}
             {pokemon && (

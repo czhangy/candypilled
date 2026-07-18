@@ -24,10 +24,14 @@ within the Pokedex tile's learnset list behaves the same as clicking one
 in the battle card's teams. Clicking a location within the Pokedex tile's
 locations tab links to that location's own card in the Splits tab.
 Submitting the Pokedex tile's "Add Pokemon"
-modal records the catch (species, this location's name, and the
-submitted details) in the run's storage; clicking the Pokedex tile's
-catch button while it reads "CAUGHT" instead removes that location's
-catch from storage. Whichever species was already caught at this
+modal records the catch (species, the submitted details, and a
+location) in the run's storage; the location is this location's name,
+except for an "egg" encounter, where the modal instead exposes its
+Location field (with no default value) and the submitted value is
+used instead, since an egg's eventual hatch location isn't the
+location of the encounter itself. Clicking the Pokedex tile's catch
+button while it reads "CAUGHT"/"HATCHED" instead removes that
+location's catch from storage. Whichever species was already caught at this
 location (if any) is passed to the Pokedex tile to enforce one catch
 per location. Every species caught anywhere in the run is passed to
 both the encounter table, which highlights a row green if its species
@@ -115,6 +119,10 @@ Pokedex tile.
   evolution family (resolved via `EvolutionHelpers`) as one of the
   section's "starter"-method encounters; passed to the Pokedex tile to
   hide its catch button entirely
+- `isEggEncounter` — whether the Pokedex tile's selected Pokemon comes
+  from an "egg" encounter, computed the same way as `isStarterEncounter`;
+  passed to the Pokedex tile to show "HATCH"/"HATCHED" instead of
+  "CATCH"/"CAUGHT" and to expose `AddPokemonModal`'s Location field
 
 The root element's `id` is `StringHelpers.toSlug(location.name)`, so
 `SplitTab`'s table of contents can link directly to this card.
@@ -137,9 +145,10 @@ The root element's `id` is `StringHelpers.toSlug(location.name)`, so
 - **On Pokedex tile evolution line click** — sets `speciesOverride` to
   the clicked species, without changing `selectedEncounter`
 - **On Pokedex tile "Add Pokemon" submit** — appends a record (the
-  submitted details, this location's name, an empty `heldItem`, and a
-  `status` of `PokemonStatus.Alive`) to the run's `caughtPokemon` in
-  storage
+  submitted details, an empty `heldItem`, and a `status` of
+  `PokemonStatus.Alive`) to the run's `caughtPokemon` in storage, with
+  the location set to the submitted location when `isEggEncounter`,
+  otherwise `location.name`
 - **On Pokedex tile catch button click while caught here** — removes
   this location's record from the run's `caughtPokemon` in storage
 - **On "Add Pokemon" submit** — also removes `location.name` from the

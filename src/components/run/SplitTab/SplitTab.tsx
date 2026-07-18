@@ -118,7 +118,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
             : [location.encountersKey];
 
         return encountersKeys.some(
-            (key) => key && (game.encounters[key]?.encounters.length ?? 0) > 0
+            (key) => key && (game.encounters[key]?.length ?? 0) > 0
         );
     };
 

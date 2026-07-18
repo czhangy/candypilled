@@ -26,7 +26,7 @@ export default class EncounterHelpers {
         const matches = locations.flatMap(({ name, encountersKey }) => {
             if (!encountersKey) return [];
 
-            const encounters = game.encounters[encountersKey]?.encounters ?? [];
+            const encounters = game.encounters[encountersKey] ?? [];
             return encounters
                 .filter((encounter) => encounter.species === species)
                 .map((encounter) => ({ name, encounter }));
@@ -46,7 +46,7 @@ export default class EncounterHelpers {
         return locations.find(({ encountersKey }) => {
             if (!encountersKey) return false;
 
-            const encounters = game.encounters[encountersKey]?.encounters ?? [];
+            const encounters = game.encounters[encountersKey] ?? [];
             return encounters.some(
                 (encounter) => encounter.method === EncounterMethod.Starter
             );
@@ -65,7 +65,7 @@ export default class EncounterHelpers {
         for (const { encountersKey } of locations) {
             if (!encountersKey) continue;
 
-            const encounters = game.encounters[encountersKey]?.encounters ?? [];
+            const encounters = game.encounters[encountersKey] ?? [];
             for (const encounter of encounters) {
                 slugs.add(encounter.species);
             }

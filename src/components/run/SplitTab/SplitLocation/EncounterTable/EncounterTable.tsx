@@ -54,9 +54,9 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         EncounterMethod.Egg,
         EncounterMethod.Grass,
         EncounterMethod.Cave,
+        EncounterMethod.FeebasTile,
         EncounterMethod.OldRod,
         EncounterMethod.GoodRod,
-        EncounterMethod.FeebasTileFishing,
         EncounterMethod.Surf,
         EncounterMethod.HoneyTree,
     ];

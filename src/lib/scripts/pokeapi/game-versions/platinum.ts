@@ -81,6 +81,8 @@ export const platinum: GameVersion = {
         'rock-peak-ruins',
         'roaming-sinnoh',
         'sinnoh-pokemart',
+        'mt-coronet-exterior-blizzard',
+        'mt-coronet-4f-small-room',
     ],
     excludedSpecies: [
         'mesprit',
@@ -162,12 +164,10 @@ export const platinum: GameVersion = {
             groups: [
                 {
                     key: 'eterna-forest-exterior',
-                    name: 'Eterna Forest (Exterior)',
                     methods: [EncounterMethod.HoneyTree],
                 },
                 {
                     key: 'eterna-forest-interior',
-                    name: 'Eterna Forest (Interior)',
                 },
             ],
         },

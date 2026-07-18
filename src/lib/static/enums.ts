@@ -1,7 +1,7 @@
 export enum EncounterMethod {
     Cave = 'cave',
     Egg = 'egg',
-    FeebasTileFishing = 'feebas-tile-fishing',
+    FeebasTile = 'feebas-tile',
     Fossil = 'fossil',
     Gift = 'gift',
     GoodRod = 'good-rod',
