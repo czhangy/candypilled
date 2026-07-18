@@ -13,6 +13,7 @@ import styles from './SplitTab.module.scss';
 type SplitTabProps = {
     currentSplitName: string | null;
     game: Game;
+    onAdvanceSplit: (splitName: string) => void;
     onSelectAbility: (name: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
@@ -23,6 +24,7 @@ type SplitTabProps = {
 const SplitTab: React.FC<SplitTabProps> = ({
     currentSplitName,
     game,
+    onAdvanceSplit,
     onSelectAbility,
     onSelectLocation,
     onSelectMove,
@@ -217,6 +219,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             index={index}
                             key={`${location.name}-${index}`}
                             location={location}
+                            onAdvanceSplit={onAdvanceSplit}
                             onSelectAbility={onSelectAbility}
                             onSelectLocation={onSelectLocation}
                             onSelectMove={onSelectMove}

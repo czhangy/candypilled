@@ -27,6 +27,7 @@ type SplitLocationProps = {
     game: Game;
     index: number;
     location: Location;
+    onAdvanceSplit: (splitName: string) => void;
     onSelectAbility: (name: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
@@ -38,6 +39,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     game,
     index,
     location,
+    onAdvanceSplit,
     onSelectAbility,
     onSelectLocation,
     onSelectMove,
@@ -138,7 +140,14 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             ...run,
             defeatedBattles: wasDefeated
                 ? defeatedBattles.filter((key) => key !== battleKey)
-                : [...defeatedBattles, battleKey],
+                : [
+                      ...defeatedBattles,
+                      ...BattleHelpers.getRequiredBattleKeysBefore(
+                          game,
+                          battleKey
+                      ).filter((key) => !defeatedBattles.includes(key)),
+                      battleKey,
+                  ],
         };
 
         if (!wasDefeated && !battle.isOptional) {
@@ -164,6 +173,16 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         }
 
         LocalStorageHelpers.saveRun(game, updatedRun);
+
+        if (!wasDefeated) {
+            const nextSplitName = BattleHelpers.getNextSplitAfterBattle(
+                game,
+                battleKey
+            );
+            if (nextSplitName) {
+                onAdvanceSplit(nextSplitName);
+            }
+        }
     };
 
     const handleAddPokemon = (

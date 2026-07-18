@@ -230,6 +230,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     const handleSplitSelect = (splitName: string): void => {
         updateQueryParams({ split: splitName });
+        window.scrollTo({ top: 0 });
     };
 
     const handleWipeToggle = (): void => {
@@ -298,6 +299,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                         <SplitTab
                             currentSplitName={currentSplitName}
                             game={game}
+                            onAdvanceSplit={handleSplitSelect}
                             onSelectAbility={handleAbilityLinkClick}
                             onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveLinkClick}

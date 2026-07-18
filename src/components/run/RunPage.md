@@ -91,7 +91,9 @@ shown instead.
   clearing `pokemon`/`move`/`ability`) with the location's disambiguated
   slug (via `SplitHelpers.getLocationSlug`) as a URL hash, so the browser
   scrolls to its card; no-ops if the location doesn't match any split
-- **On split select** (from `SplitHeader`'s dropdown) — sets the `split`
-  query param without changing `tab`
+- **On split select** (from `SplitHeader`'s dropdown, or from `SplitTab`'s
+  `onAdvanceSplit` when a split's boss/last required battle is defeated) —
+  sets the `split` query param without changing `tab`, and scrolls the
+  page to the top
 - **On Wipe toggle** — flips `run.wipe` and saves the run; the button reads
   "Wipe" when `run.wipe` is `false` and "RESPAWN" when `true`

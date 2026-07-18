@@ -49,16 +49,17 @@ Pokedex tile.
 
 ## Props
 
-| Prop               | Type                         | Required | Default | Description                                                                                                                                     |
-| ------------------ | ---------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `game`             | `Game`                       | Yes      | -       | The game the run belongs to, for saving defeat state                                                                                            |
-| `index`            | `number`                     | Yes      | -       | This location's index within the current split's locations array, used to disambiguate its anchor id from other locations sharing the same name |
-| `location`         | `Location`                   | Yes      | -       | The location this card displays                                                                                                                 |
-| `onSelectAbility`  | `(name: string) => void`     | Yes      | -       | Called when an ability is clicked within the battle card's teams or the Pokedex tile's ability list                                             |
-| `onSelectLocation` | `(location: string) => void` | Yes      | -       | Called with a location's base name when it's clicked within the Pokedex tile's locations tab                                                    |
-| `onSelectMove`     | `(name: string) => void`     | Yes      | -       | Called when a move is clicked within the battle card's teams or the Pokedex tile's learnset                                                     |
-| `run`              | `Run`                        | Yes      | -       | The run whose defeated battles are shown                                                                                                        |
-| `variant`          | `string`                     | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                                          |
+| Prop               | Type                          | Required | Default | Description                                                                                                                                     |
+| ------------------ | ----------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `game`             | `Game`                        | Yes      | -       | The game the run belongs to, for saving defeat state                                                                                            |
+| `index`            | `number`                      | Yes      | -       | This location's index within the current split's locations array, used to disambiguate its anchor id from other locations sharing the same name |
+| `location`         | `Location`                    | Yes      | -       | The location this card displays                                                                                                                 |
+| `onAdvanceSplit`   | `(splitName: string) => void` | Yes      | -       | Called with the name of the next split when the defeated battle is the last required battle of its split                                        |
+| `onSelectAbility`  | `(name: string) => void`      | Yes      | -       | Called when an ability is clicked within the battle card's teams or the Pokedex tile's ability list                                             |
+| `onSelectLocation` | `(location: string) => void`  | Yes      | -       | Called with a location's base name when it's clicked within the Pokedex tile's locations tab                                                    |
+| `onSelectMove`     | `(name: string) => void`      | Yes      | -       | Called when a move is clicked within the battle card's teams or the Pokedex tile's learnset                                                     |
+| `run`              | `Run`                         | Yes      | -       | The run whose defeated battles are shown                                                                                                        |
+| `variant`          | `string`                      | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                                          |
 
 ## State
 
@@ -136,9 +137,12 @@ the index disambiguates locations that share a name within the split.
 - **On trainer marker click** — selects that battle, or deselects it if
   already selected
 - **On battle toggle defeated** — adds or removes the battle's key from
-  the run's defeated battles in storage. Defeating a required (non-optional)
+  the run's defeated battles in storage. Defeating a battle also marks
+  every required battle before it (in split/location/battle order) as
+  defeated, if not already. Defeating a required (non-optional)
   battle also updates the run's personal best if it is farther along than
-  the current one
+  the current one. If the defeated battle is the last required battle of
+  its split, calls `onAdvanceSplit` with the next split's name
 - **On encounter table row click** — selects that encounter, showing its
   details in the Pokedex tile, and clears `speciesOverride` so the
   encounter's own species is shown

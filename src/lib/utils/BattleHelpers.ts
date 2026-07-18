@@ -119,4 +119,48 @@ export default class BattleHelpers {
             )
         );
     }
+
+    /** The name of the split immediately after battleKey's split, if battleKey is the last required battle in its split; otherwise null. */
+    static getNextSplitAfterBattle(
+        game: Game,
+        battleKey: string
+    ): string | null {
+        const position = BattleHelpers.countProgress(game, battleKey);
+        if (!position) return null;
+
+        const requiredBattleKeys = BattleHelpers.getRequiredBattleKeys(game);
+        if (!requiredBattleKeys.includes(battleKey)) return null;
+
+        const hasLaterRequiredBattleInSplit = requiredBattleKeys.some(
+            (key) =>
+                key !== battleKey &&
+                BattleHelpers.countProgress(game, key)!.splitIndex ===
+                    position.splitIndex &&
+                BattleHelpers.isFarther(
+                    BattleHelpers.countProgress(game, key)!,
+                    position
+                )
+        );
+        if (hasLaterRequiredBattleInSplit) return null;
+
+        return game.splits[position.splitIndex + 1]?.name ?? null;
+    }
+
+    /** Every non-optional battle's key positioned at or before battleKey in game order, excluding battleKey itself. */
+    static getRequiredBattleKeysBefore(
+        game: Game,
+        battleKey: string
+    ): string[] {
+        const position = BattleHelpers.countProgress(game, battleKey);
+        if (!position) return [];
+
+        return BattleHelpers.getRequiredBattleKeys(game).filter(
+            (requiredKey) =>
+                requiredKey !== battleKey &&
+                !BattleHelpers.isFarther(
+                    BattleHelpers.countProgress(game, requiredKey)!,
+                    position
+                )
+        );
+    }
 }
