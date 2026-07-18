@@ -4,12 +4,14 @@ import styles from './MoveList.module.scss';
 
 type MoveListProps = {
     generation: number;
+    highlightDangerous: boolean;
     moves: string[];
     onSelectMove: (name: string) => void;
 };
 
 const MoveList: React.FC<MoveListProps> = ({
     generation,
+    highlightDangerous,
     moves,
     onSelectMove,
 }) => {
@@ -45,7 +47,8 @@ const MoveList: React.FC<MoveListProps> = ({
                         <button
                             className={[
                                 styles['move-button'],
-                                MoveHelpers.isDangerousMove(move) &&
+                                highlightDangerous &&
+                                    MoveHelpers.isDangerousMove(move) &&
                                     styles['move-button--dangerous'],
                             ]
                                 .filter(Boolean)

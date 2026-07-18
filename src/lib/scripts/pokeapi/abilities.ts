@@ -17,6 +17,12 @@ const DATA_PATH = path.join('src', 'lib', 'data', 'raw', 'abilities.json');
 const FETCH_DELAY_MS = 75;
 const ABILITY_LIST_LIMIT = 500;
 
+// PokeAPI has no concept of "dangerous" abilities (ones that can end a run in
+// a single unlucky turn, e.g. via a hard-to-play-around trap or a punishing
+// on-faint effect), so this set is curated by hand rather than derived from
+// the API.
+const DANGEROUS_ABILITIES = new Set(['shadow-tag', 'aftermath']);
+
 const writeData = (data: Record<string, AbilityData>): void => {
     fs.writeFileSync(DATA_PATH, `${JSON.stringify(data, null, 4)}\n`);
 };
@@ -127,6 +133,7 @@ export const fetchAbilities = async (): Promise<void> => {
         data[ability.name] = {
             name,
             introducedInGeneration: toGenerationNumber(ability.generation.name),
+            isDangerous: DANGEROUS_ABILITIES.has(ability.name),
             valuesByGeneration: buildValuesByGeneration(
                 ability,
                 versionGroupGenerations

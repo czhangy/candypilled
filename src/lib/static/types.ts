@@ -300,6 +300,9 @@ export type AbilityValuesByGeneration = {
 export type AbilityData = {
     name: string;
     introducedInGeneration: number;
+    // PokeAPI has no concept of "dangerous" abilities, so this is curated
+    // separately rather than derived from any API field.
+    isDangerous: boolean;
     valuesByGeneration: AbilityValuesByGeneration[];
 };
 

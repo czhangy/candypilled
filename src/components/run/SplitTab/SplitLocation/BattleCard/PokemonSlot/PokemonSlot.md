@@ -8,7 +8,9 @@ annotated with their stat
 effects, shown in a smaller font on the same line (e.g. "Adamant [+Atk
 -SpA]"). Each Pokemon's name is prefixed with its level (e.g. "Lv.5
 Chimchar"). The ability is clickable, linking to that ability's
-details; its background darkens further on hover. When `pokemon` is
+details; its background darkens further on hover, and when the
+"Highlight Dangerous Moves/Abilities" setting is on, abilities and
+moves flagged as dangerous are shown in red text. When `pokemon` is
 `null`, an empty placeholder slot is shown instead.
 
 ## Props
@@ -28,6 +30,11 @@ details; its background darkens further on hover. When `pokemon` is
 - `getAbility` — the Pokemon's ability, using its `ability` field as
   an override when set and otherwise falling back to its slot-1
   ability at `generation`, resolved via `PokemonHelpers`
+- `highlightDangerous` — whether the "Highlight Dangerous
+  Moves/Abilities" setting is on, read via `SettingsHelpers` and
+  passed to `MoveList`; also gates whether
+  `AbilityHelpers.isDangerousAbility` renders the ability button's
+  text in red
 
 ## SCSS Variable Dependencies
 
