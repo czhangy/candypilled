@@ -41,6 +41,7 @@ type PokemonPreviewProps = {
     onToggleStatus: (pokemon: CaughtPokemon) => void;
     pokemon?: CaughtPokemon;
     variant: string;
+    version: string;
     view: BoxView;
 };
 
@@ -58,6 +59,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     onToggleStatus,
     pokemon,
     variant,
+    version,
     view,
 }) => {
     // -------------------------------------------------------------------------
@@ -462,6 +464,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                     onClose={handleEditClose}
                     onSubmit={handleEditSubmit}
                     pokemon={pokemon}
+                    version={version}
                 />
             )}
             {isEvolveOpen && pokemon && (

@@ -24,6 +24,7 @@ type EditPokemonModalProps = {
         >
     ) => void;
     pokemon: CaughtPokemon;
+    version: string;
 };
 
 const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
@@ -33,6 +34,7 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
     onClose,
     onSubmit,
     pokemon,
+    version,
 }) => {
     // -------------------------------------------------------------------------
     // HOOKS
@@ -91,6 +93,7 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
                 showMoves
                 showTags
                 submitLabel="Save"
+                version={version}
             />
         </Modal>
     );

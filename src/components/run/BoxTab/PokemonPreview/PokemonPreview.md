@@ -35,6 +35,7 @@ hindered by it is highlighted blue.
 | `onToggleStatus`    | `(pokemon: CaughtPokemon) => void`                                                                                                                  | Yes      | -       | Called with the previewed Pokemon when the status button is clicked                      |
 | `pokemon`           | `CaughtPokemon`                                                                                                                                     | No       | -       | The currently selected caught Pokemon, if any                                            |
 | `variant`           | `string`                                                                                                                                            | Yes      | -       | The game slug used to resolve the Pokemon's sprite art                                   |
+| `version`           | `string`                                                                                                                                            | Yes      | -       | The game's version, passed through to `EditPokemonModal` for move-version filtering      |
 | `view`              | `BoxView`                                                                                                                                           | Yes      | -       | The box tab's current view, used to only show the Edit button while viewing the box      |
 
 ## State

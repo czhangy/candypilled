@@ -145,6 +145,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
                         showMoves={false}
                         showTags={false}
                         submitLabel="CONFIRM"
+                        version={game.version}
                     />
                 </div>
             ) : (

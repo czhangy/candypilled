@@ -18,6 +18,7 @@ unchanged).
 | `onClose`         | `() => void`                                                                                                                | Yes      | -       | Called when the modal requests to close                                     |
 | `onSubmit`        | `(details: Pick<CaughtPokemon, 'ability' \| 'evs' \| 'ivs' \| 'level' \| 'moves' \| 'name' \| 'nature' \| 'tags'>) => void` | Yes      | -       | Called with the edited details when the form is submitted                   |
 | `pokemon`         | `CaughtPokemon`                                                                                                             | Yes      | -       | The caught Pokemon being edited, used to prefill the form                   |
+| `version`         | `string`                                                                                                                    | Yes      | -       | The game's version, forwarded to `PokemonForm` for move-version filtering   |
 
 ## Computations
 

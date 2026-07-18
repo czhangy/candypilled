@@ -238,6 +238,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 onToggleStatus={handleToggleStatus}
                 pokemon={selectedCaughtPokemon}
                 variant={variant}
+                version={game.version}
                 view={view}
             />
             {isAddPokemonModalOpen && (
@@ -254,6 +255,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
                     onClose={handleCloseAddPokemonModal}
                     onSubmit={handleAddPokemon}
                     showLocation
+                    version={game.version}
                 />
             )}
         </div>
