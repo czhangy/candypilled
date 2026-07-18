@@ -193,6 +193,7 @@ const ROUTE_205: Location = {
             encountersKey: 'sinnoh-route-205-east-towards-eterna-city',
             battles: [
                 {
+                    isOptional: true,
                     trainerClass: 'Fisherman',
                     name: 'Joseph',
                     team: [
@@ -209,10 +210,11 @@ const ROUTE_205: Location = {
                             ],
                         },
                     ],
-                    x: 0,
-                    y: 0,
+                    x: 45.8,
+                    y: 61.5,
                 },
                 {
+                    isOptional: true,
                     trainerClass: 'Fisherman',
                     name: 'Andrew',
                     team: [
@@ -259,10 +261,11 @@ const ROUTE_205: Location = {
                             moves: ['Splash', 'Tackle'],
                         },
                     ],
-                    x: 0,
-                    y: 0,
+                    x: 58.4,
+                    y: 58.5,
                 },
                 {
+                    isOptional: true,
                     trainerClass: 'Fisherman',
                     name: 'Zachary',
                     team: [
@@ -293,8 +296,8 @@ const ROUTE_205: Location = {
                             moves: ['Splash'],
                         },
                     ],
-                    x: 0,
-                    y: 0,
+                    x: 67.7,
+                    y: 70.8,
                 },
             ],
         },

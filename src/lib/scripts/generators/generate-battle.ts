@@ -278,7 +278,11 @@ const promptPokemon = async (
     const moves: string[] = [];
     while (moves.length < MAX_MOVES) {
         const raw = (
-            await rl.question(`  Move ${moves.length + 1} (blank to stop): `)
+            await rl.question(
+                moves.length === 0
+                    ? '  Move 1 (blank to auto-fill from level-up moves): '
+                    : `  Move ${moves.length + 1} (blank to stop): `
+            )
         ).trim();
         if (!raw) {
             if (moves.length === 0) {
