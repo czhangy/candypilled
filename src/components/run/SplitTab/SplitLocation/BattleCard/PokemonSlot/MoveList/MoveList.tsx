@@ -1,3 +1,4 @@
+import { StatValues } from '@/lib/static/types';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import TypeHelpers from '@/lib/utils/TypeHelpers';
 import styles from './MoveList.module.scss';
@@ -5,6 +6,7 @@ import styles from './MoveList.module.scss';
 type MoveListProps = {
     generation: number;
     highlightDangerous: boolean;
+    ivs: StatValues;
     moves: string[];
     onSelectMove: (name: string) => void;
 };
@@ -12,6 +14,7 @@ type MoveListProps = {
 const MoveList: React.FC<MoveListProps> = ({
     generation,
     highlightDangerous,
+    ivs,
     moves,
     onSelectMove,
 }) => {
@@ -26,7 +29,7 @@ const MoveList: React.FC<MoveListProps> = ({
     // -------------------------------------------------------------------------
 
     const getMoveColor = (move: string): string | undefined => {
-        const type = MoveHelpers.getMoveForGeneration(move, generation)?.type;
+        const type = MoveHelpers.getMoveType(move, generation, ivs);
         return type ? TypeHelpers.getTypeColor(type) : undefined;
     };
 

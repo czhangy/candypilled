@@ -29,6 +29,7 @@ export { default as route204North } from './route-204-north.png';
 export { default as route204South } from './route-204-south.png';
 export { default as route205North } from './route-205-north.png';
 export { default as route205South } from './route-205-south.png';
+export { default as route206 } from './route-206.png';
 export { default as route207 } from './route-207.png';
 export { default as route211East } from './route-211-east.png';
 export { default as route211West } from './route-211-west.png';

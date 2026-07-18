@@ -51,6 +51,9 @@ hindered by it is highlighted blue.
   (a slot number) via `PokemonHelpers.getAbilityName` at `generation`
 - `moveSlots` — `pokemon.moves` padded to four entries so empty move slots
   render as placeholder cards
+- `ivs` — the Pokemon's IVs normalized into a full `StatValues` via
+  `StatHelpers.normalizeStats`, passed to each `MoveCard` to resolve
+  Hidden Power's actual type and reused for `stats`
 - `hideTradeEvos` — the global "Disable Trade Evolutions" setting's
   current value, read from `localStorage` via `SettingsHelpers`
 - `nextEvolutions` — the species the previewed Pokemon can evolve into
