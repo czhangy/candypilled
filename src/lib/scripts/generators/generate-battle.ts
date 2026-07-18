@@ -5,6 +5,8 @@ import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import { logSuccess, runScript } from '@/lib/scripts/utils/helpers';
 import { Nature } from '@/lib/static/enums';
 import { AbilitySlot } from '@/lib/static/types';
+import MoveHelpers from '@/lib/utils/MoveHelpers';
+import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const USAGE = 'Usage: npm run gen:battle <location> [subarea]';
@@ -50,6 +52,18 @@ const parseArgs = (argv: string[]): BattleArgs => {
 
 const getLocationPath = (gameSlug: string, slug: string): string =>
     path.join('src', 'lib', 'games', gameSlug, 'locations', `${slug}.ts`);
+
+// The set of trainer class slugs with a sprite under public/<game>/trainers,
+// i.e. every value the generated `trainerClass` field could validly take.
+const getValidTrainerClasses = (gameSlug: string): Set<string> => {
+    const trainersDir = path.join('public', gameSlug, 'trainers');
+    return new Set(
+        fs
+            .readdirSync(trainersDir)
+            .filter((file) => file.endsWith('.png'))
+            .map((file) => path.basename(file, '.png'))
+    );
+};
 
 const getIndent = (content: string, index: number): string => {
     const lineStart = content.lastIndexOf('\n', index) + 1;
@@ -227,10 +241,20 @@ const promptPokemon = async (
     rl: Interface,
     index: number
 ): Promise<PromptedPokemon | null> => {
-    const name = (
-        await rl.question(`  Pokemon ${index} name (blank to stop): `)
-    ).trim();
-    if (!name) return null;
+    let name: string | null = null;
+    while (name === null) {
+        const raw = (
+            await rl.question(`  Pokemon ${index} name (blank to stop): `)
+        ).trim();
+        if (!raw) return null;
+
+        const pokemon = PokemonHelpers.getPokemonData(raw);
+        if (!pokemon) {
+            console.log("  That isn't a valid Pokemon.");
+            continue;
+        }
+        name = pokemon.name;
+    }
 
     const ability: AbilitySlot = DEFAULT_ABILITY_SLOT;
 
@@ -251,19 +275,38 @@ const promptPokemon = async (
     }
 
     const moves: string[] = [];
-    for (let i = 1; i <= MAX_MOVES; i++) {
-        const move = (
-            await rl.question(`  Move ${i} (blank to stop): `)
+    while (moves.length < MAX_MOVES) {
+        const raw = (
+            await rl.question(`  Move ${moves.length + 1} (blank to stop): `)
         ).trim();
-        if (!move) break;
-        moves.push(move);
+        if (!raw) break;
+
+        const move = MoveHelpers.getMoveData(raw);
+        if (!move) {
+            console.log("  That isn't a valid move.");
+            continue;
+        }
+        moves.push(move.name);
     }
 
     return { name, ability, level, moves, nature };
 };
 
-const promptBattle = async (rl: Interface): Promise<PromptedBattle> => {
-    const trainerClass = (await rl.question('Trainer class: ')).trim();
+const promptBattle = async (
+    rl: Interface,
+    validTrainerClasses: Set<string>
+): Promise<PromptedBattle> => {
+    let trainerClass: string | null = null;
+    while (trainerClass === null) {
+        const raw = (await rl.question('Trainer class: ')).trim();
+        const slug = StringHelpers.toSlug(raw);
+        if (!validTrainerClasses.has(slug)) {
+            console.log("  That isn't a valid trainer class.");
+            continue;
+        }
+        trainerClass = StringHelpers.toTitleCase(slug);
+    }
+
     const name = (await rl.question('Trainer name: ')).trim();
 
     const team: PromptedPokemon[] = [];
@@ -304,13 +347,15 @@ runScript(async () => {
         : getLocationScope(original);
     const insertionPoint = findInsertionPoint(original, scope);
 
+    const validTrainerClasses = getValidTrainerClasses(gameSlug);
+
     const rl = createInterface({
         input: process.stdin,
         output: process.stdout,
     });
     let battle: PromptedBattle;
     try {
-        battle = await promptBattle(rl);
+        battle = await promptBattle(rl, validTrainerClasses);
     } finally {
         rl.close();
     }
