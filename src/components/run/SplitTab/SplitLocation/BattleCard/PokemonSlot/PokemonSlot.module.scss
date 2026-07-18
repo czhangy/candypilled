@@ -108,6 +108,18 @@
 
         .pokemon-slot__metadata-item--accent {
             color: var(--accent-color);
+
+            .held-item {
+                align-items: center;
+                display: flex;
+                gap: 0.25rem;
+                justify-content: center;
+
+                img {
+                    flex-shrink: 0;
+                    image-rendering: pixelated;
+                }
+            }
         }
 
         .pokemon-slot__nature-effect {

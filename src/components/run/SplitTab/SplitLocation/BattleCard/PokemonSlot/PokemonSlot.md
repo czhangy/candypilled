@@ -2,8 +2,9 @@
 
 A single team member slot within a battle card, showing that Pokemon's
 sprite (matching the game's sprite variant) above its name (with type
-badges beneath it), then a metadata list of its held item, ability,
-nature, and moveset. Non-neutral natures are annotated with their stat
+badges beneath it), then a metadata list of its held item (preceded by
+an icon), ability, nature, and moveset. Non-neutral natures are
+annotated with their stat
 effects, shown in a smaller font on the same line (e.g. "Adamant [+Atk
 -SpA]"). Each Pokemon's name is prefixed with its level (e.g. "Lv.5
 Chimchar"). The ability is clickable, linking to that ability's

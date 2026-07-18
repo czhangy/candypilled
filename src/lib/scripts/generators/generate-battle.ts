@@ -174,8 +174,8 @@ const serializePokemon = (pokemon: PromptedPokemon, indent: string): string => {
         `${indent}    name: '${escapeQuotes(pokemon.name)}',\n` +
         `${indent}    ability: ${pokemon.ability},\n` +
         `${indent}    level: ${pokemon.level},\n` +
-        `${indent}    moves: [${moves}],\n` +
         `${indent}    nature: Nature.${pokemon.nature},\n` +
+        `${indent}    moves: [${moves}],\n` +
         `${indent}},\n`
     );
 };
@@ -216,15 +216,6 @@ const promptPokemon = async (
         level = Number((await rl.question('  Level: ')).trim());
     }
 
-    const moves: string[] = [];
-    for (let i = 1; i <= MAX_MOVES; i++) {
-        const move = (
-            await rl.question(`  Move ${i} (blank to stop): `)
-        ).trim();
-        if (!move) break;
-        moves.push(move);
-    }
-
     let nature: Nature | null = null;
     while (nature === null) {
         const raw = (
@@ -234,6 +225,15 @@ const promptPokemon = async (
             NATURE_NAMES.find(
                 (candidate) => candidate.toLowerCase() === raw.toLowerCase()
             ) ?? null;
+    }
+
+    const moves: string[] = [];
+    for (let i = 1; i <= MAX_MOVES; i++) {
+        const move = (
+            await rl.question(`  Move ${i} (blank to stop): `)
+        ).trim();
+        if (!move) break;
+        moves.push(move);
     }
 
     return { name, ability, level, moves, nature };

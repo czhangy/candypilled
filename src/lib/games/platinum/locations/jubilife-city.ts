@@ -17,7 +17,7 @@ const JUBILIFE_CITY: Location = {
                     ability: 1,
                     level: 11,
                     moves: ['Fake Out', 'Scratch', 'Growl'],
-                    nature: Nature.Naive,
+                    nature: Nature.Rash,
                 },
                 {
                     name: 'Stunky',
@@ -29,7 +29,7 @@ const JUBILIFE_CITY: Location = {
                         'Screech',
                         'Fury Swipes',
                     ],
-                    nature: Nature.Hasty,
+                    nature: Nature.Timid,
                 },
             ],
             x: 71.2,

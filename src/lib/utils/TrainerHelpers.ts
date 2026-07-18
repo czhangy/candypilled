@@ -8,6 +8,9 @@ export default class TrainerHelpers {
     private static readonly CLASSES_SLUGGED_BY_NAME = [
         'PKMN Trainer',
         'Gym Leader',
+        'Elite Four',
+        'Champion',
+        'Commander',
     ];
 
     // -------------------------------------------------------------------------

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
 import { BattlePokemon } from '@/lib/static/types';
+import ItemHelpers from '@/lib/utils/ItemHelpers';
 import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -29,6 +30,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     const SPRITE_SIZE = 96;
     const TYPE_BADGE_WIDTH = 32;
     const TYPE_BADGE_HEIGHT = 13;
+    const ITEM_ICON_SIZE = 16;
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -103,7 +105,21 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
             </div>
             <ul className={styles['pokemon-slot__metadata']}>
                 <li className={styles['pokemon-slot__metadata-item--accent']}>
-                    {pokemon.heldItem || '-'}
+                    {pokemon.heldItem ? (
+                        <span className={styles['held-item']}>
+                            <Image
+                                alt={pokemon.heldItem}
+                                height={ITEM_ICON_SIZE}
+                                src={ItemHelpers.getItemSprite(
+                                    pokemon.heldItem
+                                )}
+                                width={ITEM_ICON_SIZE}
+                            />
+                            {pokemon.heldItem}
+                        </span>
+                    ) : (
+                        '-'
+                    )}
                 </li>
                 <li className={styles['pokemon-slot__metadata-item--ability']}>
                     {ability ? (
