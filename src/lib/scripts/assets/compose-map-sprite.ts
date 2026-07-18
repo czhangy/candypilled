@@ -5,9 +5,11 @@ import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import { logSuccess, runScript } from '@/lib/scripts/utils/helpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
-const USAGE = `Usage: npm run compose -- --map <path> --sprite <path> --x <percent> --y <percent> [--width <px>] [--output <path>]. Defaults to writing a preview under src/lib/games/${StringHelpers.toSlug(
-    GAME_ID
-)}/maps/temp/ instead of overwriting the map.`;
+const USAGE =
+    'Usage: npm run compose <map> <spriteClass> <direction> <x> <y> [width]. ' +
+    `Writes a preview under src/lib/games/${StringHelpers.toSlug(
+        GAME_ID
+    )}/maps/temp/ instead of overwriting the map.`;
 const MAP_NOT_FOUND = "That map image doesn't exist.";
 const SPRITE_NOT_FOUND = "That sprite image doesn't exist.";
 const OUT_OF_BOUNDS =
@@ -22,34 +24,30 @@ type ComposeArgs = {
     y: number;
 };
 
-const parseArgs = (argv: string[]): ComposeArgs => {
-    const flags: Record<string, string> = {};
-    for (let index = 0; index < argv.length; index += 2) {
-        const flag = argv[index].replace(/^--/, '');
-        flags[flag] = argv[index + 1];
-    }
+const getMapsDir = (gameSlug: string): string =>
+    path.join('src', 'lib', 'games', gameSlug, 'maps');
 
-    if (!flags.map || !flags.sprite || !flags.x || !flags.y) {
+const parseArgs = (argv: string[]): ComposeArgs => {
+    const [map, spriteClass, direction, x, y, width] = argv;
+    if (!map || !spriteClass || !direction || !x || !y) {
         throw new Error(USAGE);
     }
 
+    const gameSlug = StringHelpers.toSlug(GAME_ID);
+    const mapsDir = getMapsDir(gameSlug);
+
     return {
-        mapPath: flags.map,
-        outputPath:
-            flags.output ??
-            path.join(
-                'src',
-                'lib',
-                'games',
-                StringHelpers.toSlug(GAME_ID),
-                'maps',
-                'temp',
-                path.basename(flags.map)
-            ),
-        spritePath: flags.sprite,
-        width: flags.width ? Number(flags.width) : undefined,
-        x: Number(flags.x),
-        y: Number(flags.y),
+        mapPath: path.join(mapsDir, `${map}.png`),
+        outputPath: path.join(mapsDir, 'temp', `${map}.png`),
+        spritePath: path.join(
+            mapsDir,
+            'overworld',
+            spriteClass,
+            `${direction}.png`
+        ),
+        width: width ? Number(width) : undefined,
+        x: Number(x),
+        y: Number(y),
     };
 };
 

@@ -57,6 +57,12 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
             {battle.isTag && (
                 <div className={styles['trainer__metadata']}>TAG DOUBLE</div>
             )}
+            {battle.isBackToBack && (
+                <div className={styles['trainer__metadata']}>BACK TO BACK</div>
+            )}
+            {battle.isGauntlet && (
+                <div className={styles['trainer__metadata']}>GAUNTLET</div>
+            )}
             {battle.fieldCondition && (
                 <div className={styles['trainer__metadata']}>
                     {battle.fieldCondition}

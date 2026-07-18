@@ -10,9 +10,12 @@ appears below that for battles that aren't required to progress,
 followed by a double battle section reading "Double Battle" or, if the
 player's whole party is forced into the fight, "True Double Battle". A
 "Tag Double" section appears below that for battles fought alongside
-an ally trainer. A "Defeat" button at the bottom toggles the trainer's
-defeated state; once defeated it reads "Defeated" and turns green, and
-can be clicked again to undo.
+an ally trainer, followed by a "Back To Back" section for battles that
+immediately follow another without a chance to heal in between, and a
+"Gauntlet" section for battles that are part of a longer chain of
+consecutive trainers. A "Defeat" button at the bottom toggles the
+trainer's defeated state; once defeated it reads "Defeated" and turns
+green, and can be clicked again to undo.
 
 ## Props
 

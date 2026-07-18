@@ -63,10 +63,12 @@ type BattleItem = {
 
 export type Battle = {
     fieldCondition?: FieldCondition;
+    isBackToBack?: boolean;
     isBoss?: boolean;
     isDouble?: boolean;
     isDoubleHeightMarker?: boolean;
     isDoubleWidthMarker?: boolean;
+    isGauntlet?: boolean;
     isMiniboss?: boolean;
     isOptional?: boolean;
     isTag?: boolean;
