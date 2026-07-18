@@ -1,5 +1,6 @@
 import { Battle, BattlePokemon, Game, Split } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
+import StringHelpers from '@/lib/utils/StringHelpers';
 
 export default class SplitHelpers {
     // -------------------------------------------------------------------------
@@ -22,16 +23,38 @@ export default class SplitHelpers {
         return position ? game.splits[position.splitIndex].name : null;
     }
 
+    /** The split name and locations-array index of the earliest occurrence (in game order) of a location named locationName, or null if not found. */
+    static getEarliestLocation(
+        game: Game,
+        locationName: string
+    ): { index: number; splitName: string } | null {
+        for (const split of game.splits) {
+            const index = split.locations.findIndex(
+                (location) => location.name === locationName
+            );
+
+            if (index !== -1) {
+                return { index, splitName: split.name };
+            }
+        }
+
+        return null;
+    }
+
     /** The name of the earliest split (in game order) containing a location named locationName, or null if not found. */
     static getEarliestSplitName(
         game: Game,
         locationName: string
     ): string | null {
-        const split = game.splits.find((split) =>
-            split.locations.some((location) => location.name === locationName)
+        return (
+            SplitHelpers.getEarliestLocation(game, locationName)?.splitName ??
+            null
         );
+    }
 
-        return split?.name ?? null;
+    /** A unique DOM-safe slug for a location, disambiguated by its index within the split's locations array. */
+    static getLocationSlug(locationName: string, index: number): string {
+        return `${StringHelpers.toSlug(locationName)}-${index}`;
     }
 
     /** The name of the split the player is currently on, based on which required battles in defeatedBattles are missing. */

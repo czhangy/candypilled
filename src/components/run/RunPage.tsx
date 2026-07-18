@@ -199,18 +199,24 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const handleLocationSelect = (locationName: string): void => {
         if (!game) return;
 
-        const splitName = SplitHelpers.getEarliestSplitName(game, locationName);
-        if (!splitName) return;
+        const earliestLocation = SplitHelpers.getEarliestLocation(
+            game,
+            locationName
+        );
+        if (!earliestLocation) return;
 
         const params = new URLSearchParams(searchParams.toString());
         params.set('tab', 'split');
-        params.set('split', splitName);
+        params.set('split', earliestLocation.splitName);
         params.delete('pokemon');
         params.delete('move');
         params.delete('ability');
 
         router.push(
-            `${pathname}?${params.toString()}#${StringHelpers.toSlug(locationName)}`
+            `${pathname}?${params.toString()}#${SplitHelpers.getLocationSlug(
+                locationName,
+                earliestLocation.index
+            )}`
         );
     };
 

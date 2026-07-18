@@ -16,7 +16,7 @@ import {
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
+import SplitHelpers from '@/lib/utils/SplitHelpers';
 import BattleCard from './BattleCard/BattleCard';
 import EncounterTable from './EncounterTable/EncounterTable';
 import LocationMap from './LocationMap/LocationMap';
@@ -25,6 +25,7 @@ import styles from './SplitLocation.module.scss';
 
 type SplitLocationProps = {
     game: Game;
+    index: number;
     location: Location;
     onSelectAbility: (name: string) => void;
     onSelectLocation: (location: string) => void;
@@ -35,6 +36,7 @@ type SplitLocationProps = {
 
 const SplitLocation: React.FC<SplitLocationProps> = ({
     game,
+    index,
     location,
     onSelectAbility,
     onSelectLocation,
@@ -287,7 +289,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     return (
         <div
             className={styles['split-location']}
-            id={StringHelpers.toSlug(location.name)}
+            id={SplitHelpers.getLocationSlug(location.name, index)}
         >
             <div className={styles.header}>
                 <button

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { Game, Location, Run } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
+import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import SplitLocation from './SplitLocation/SplitLocation';
 import styles from './SplitTab.module.scss';
@@ -52,8 +53,8 @@ const SplitTab: React.FC<SplitTabProps> = ({
 
     useEffect(() => {
         const slugs =
-            currentSplit?.locations.map((location) =>
-                StringHelpers.toSlug(location.name)
+            currentSplit?.locations.map((location, index) =>
+                SplitHelpers.getLocationSlug(location.name, index)
             ) ?? [];
         const elements = slugs
             .map((slug) => document.getElementById(slug))
@@ -147,7 +148,10 @@ const SplitTab: React.FC<SplitTabProps> = ({
                                 location.name
                             );
                             const missed = isLocationMissed(location.name);
-                            const slug = StringHelpers.toSlug(location.name);
+                            const slug = SplitHelpers.getLocationSlug(
+                                location.name,
+                                index
+                            );
 
                             return (
                                 <li key={`${location.name}-${index}`}>
@@ -210,6 +214,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
                     {currentSplit?.locations.map((location, index) => (
                         <SplitLocation
                             game={game}
+                            index={index}
                             key={`${location.name}-${index}`}
                             location={location}
                             onSelectAbility={onSelectAbility}

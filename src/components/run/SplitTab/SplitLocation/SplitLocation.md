@@ -49,15 +49,16 @@ Pokedex tile.
 
 ## Props
 
-| Prop               | Type                         | Required | Default | Description                                                                                         |
-| ------------------ | ---------------------------- | -------- | ------- | --------------------------------------------------------------------------------------------------- |
-| `game`             | `Game`                       | Yes      | -       | The game the run belongs to, for saving defeat state                                                |
-| `location`         | `Location`                   | Yes      | -       | The location this card displays                                                                     |
-| `onSelectAbility`  | `(name: string) => void`     | Yes      | -       | Called when an ability is clicked within the battle card's teams or the Pokedex tile's ability list |
-| `onSelectLocation` | `(location: string) => void` | Yes      | -       | Called with a location's base name when it's clicked within the Pokedex tile's locations tab        |
-| `onSelectMove`     | `(name: string) => void`     | Yes      | -       | Called when a move is clicked within the battle card's teams or the Pokedex tile's learnset         |
-| `run`              | `Run`                        | Yes      | -       | The run whose defeated battles are shown                                                            |
-| `variant`          | `string`                     | Yes      | -       | The sprite variant to prefer, matching the game's slug                                              |
+| Prop               | Type                         | Required | Default | Description                                                                                                                                     |
+| ------------------ | ---------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `game`             | `Game`                       | Yes      | -       | The game the run belongs to, for saving defeat state                                                                                            |
+| `index`            | `number`                     | Yes      | -       | This location's index within the current split's locations array, used to disambiguate its anchor id from other locations sharing the same name |
+| `location`         | `Location`                   | Yes      | -       | The location this card displays                                                                                                                 |
+| `onSelectAbility`  | `(name: string) => void`     | Yes      | -       | Called when an ability is clicked within the battle card's teams or the Pokedex tile's ability list                                             |
+| `onSelectLocation` | `(location: string) => void` | Yes      | -       | Called with a location's base name when it's clicked within the Pokedex tile's locations tab                                                    |
+| `onSelectMove`     | `(name: string) => void`     | Yes      | -       | Called when a move is clicked within the battle card's teams or the Pokedex tile's learnset                                                     |
+| `run`              | `Run`                        | Yes      | -       | The run whose defeated battles are shown                                                                                                        |
+| `variant`          | `string`                     | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                                          |
 
 ## State
 
@@ -124,8 +125,9 @@ Pokedex tile.
   passed to the Pokedex tile to show "HATCH"/"HATCHED" instead of
   "CATCH"/"CAUGHT" and to expose `AddPokemonModal`'s Location field
 
-The root element's `id` is `StringHelpers.toSlug(location.name)`, so
-`SplitTab`'s table of contents can link directly to this card.
+The root element's `id` is `SplitHelpers.getLocationSlug(location.name,
+index)`, so `SplitTab`'s table of contents can link directly to this card;
+the index disambiguates locations that share a name within the split.
 
 ## Handlers
 

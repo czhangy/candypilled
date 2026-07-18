@@ -41,8 +41,10 @@ currently scrolled into view is highlighted automatically.
   `/{variant}/badges/{slug}.png`, shown behind the table of contents
 
 Each table of contents entry links to `#{slug}`, where `slug` is
-`StringHelpers.toSlug(location.name)` — the same id `SplitLocation` sets on
-its own root element. Each entry for a location with at least one encounter
+`SplitHelpers.getLocationSlug(location.name, index)` — the same id
+`SplitLocation` sets on its own root element. The location's index within
+the split's locations array disambiguates locations that share a name, so
+each gets a unique anchor. Each entry for a location with at least one encounter
 is also preceded by a pokeball icon, with a `Tooltip` reporting the same
 status on hover:
 
