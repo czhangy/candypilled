@@ -34,7 +34,7 @@ const ROUTE_204: Location = {
                             name: 'Magikarp',
                             ability: 1,
                             level: 8,
-                            moves: ['Splash', 'Tackle', 'Flail'],
+                            moves: ['Splash'],
                             nature: Nature.Sassy,
                         },
                     ],
@@ -65,6 +65,7 @@ const ROUTE_204: Location = {
             encountersKey: 'sinnoh-route-204-north-towards-floaroma-town',
             battles: [
                 {
+                    isOptional: true,
                     trainerClass: 'Aroma Lady',
                     name: 'Taylor',
                     team: [
@@ -102,7 +103,7 @@ const ROUTE_204: Location = {
                             name: 'Kricketot',
                             ability: 1,
                             level: 11,
-                            moves: ['Growl', 'Bide'],
+                            moves: ['Bide'],
                             nature: Nature.Modest,
                         },
                     ],
@@ -110,6 +111,7 @@ const ROUTE_204: Location = {
                     y: 39.7,
                 },
                 {
+                    isOptional: true,
                     isTrueDouble: true,
                     isDoubleWidthMarker: true,
                     trainerClass: 'Twins',
@@ -118,14 +120,14 @@ const ROUTE_204: Location = {
                         {
                             name: 'Pachirisu',
                             ability: 1,
-                            level: 9,
+                            level: 11,
                             moves: ['Growl', 'Bide', 'Quick Attack', 'Charm'],
                             nature: Nature.Brave,
                         },
                         {
                             name: 'Pachirisu',
                             ability: 1,
-                            level: 9,
+                            level: 11,
                             moves: ['Growl', 'Bide', 'Quick Attack', 'Charm'],
                             nature: Nature.Brave,
                         },

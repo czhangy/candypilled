@@ -169,7 +169,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         ? PokemonHelpers.getPokemonStats(species, generation)
         : undefined;
     const learnset = species
-        ? PokemonHelpers.getPokemonLearnset(species, generation)
+        ? PokemonHelpers.getPokemonLearnset(species, game.version)
         : undefined;
     const locations = species
         ? EncounterHelpers.getEncounterLocations(game, species)
@@ -255,6 +255,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                         onClose={handleCloseAddPokemonModal}
                         onSubmit={handleAddPokemon}
                         showLocation={isEggEncounter}
+                        version={game.version}
                     />
                 )}
             {pokemon && (

@@ -25,7 +25,8 @@ const FLOAROMA_MEADOW: Location = {
                     nature: Nature.Hasty,
                 },
             ],
-            x: 11.9,
+
+            x: 13.9,
             y: 48.1,
         },
         {
@@ -48,7 +49,7 @@ const FLOAROMA_MEADOW: Location = {
                     nature: Nature.Gentle,
                 },
             ],
-            x: 13.9,
+            x: 11.9,
             y: 48.1,
         },
     ],

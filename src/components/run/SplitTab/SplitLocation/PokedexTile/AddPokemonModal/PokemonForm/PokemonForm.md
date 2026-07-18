@@ -35,7 +35,7 @@ the Pokemon being edited) when editing a caught Pokemon.
 | `defaultSpecies`     | `string`                                                                                                                    | Yes      | -       | The species `species` defaults to (and stays fixed at, when `lockSpecies`)             |
 | `defaultTags`        | `string[]`                                                                                                                  | No       | -       | The values `tags` defaults to, when `showTags`; falls back to an empty list if omitted |
 | `disabledReason`     | `string`                                                                                                                    | Yes      | -       | Disables the submit button and shows this as its tooltip while non-empty               |
-| `generation`         | `number`                                                                                                                    | Yes      | -       | The game's generation, used to resolve the selected species' abilities and learnset    |
+| `generation`         | `number`                                                                                                                    | Yes      | -       | The game's generation, used to resolve the selected species' abilities                 |
 | `lockSpecies`        | `boolean`                                                                                                                   | Yes      | -       | Whether to omit the Pokemon field, keeping `species` fixed at `defaultSpecies`         |
 | `onSubmit`           | `(details: Pick<CaughtPokemon, 'ability' \| 'evs' \| 'ivs' \| 'level' \| 'moves' \| 'name' \| 'nature' \| 'tags'>) => void` | Yes      | -       | Called with the selected details when the form is submitted                            |
 | `showAbility`        | `boolean`                                                                                                                   | Yes      | -       | Whether to show the Ability field; when hidden, `ability` stays at its default         |
@@ -44,6 +44,7 @@ the Pokemon being edited) when editing a caught Pokemon.
 | `showMoves`          | `boolean`                                                                                                                   | Yes      | -       | Whether to show the Moves field; when hidden, `moves` stays unselected                 |
 | `showTags`           | `boolean`                                                                                                                   | Yes      | -       | Whether to show the Tags field; when hidden, `tags` stays at its default               |
 | `submitLabel`        | `string`                                                                                                                    | Yes      | -       | The submit button's label                                                              |
+| `version`            | `string`                                                                                                                    | Yes      | -       | The game's PokeAPI version group slug, used to resolve the selected species' learnset  |
 
 ## State
 
@@ -72,8 +73,8 @@ the Pokemon being edited) when editing a caught Pokemon.
   slot number, with each ability's slug deslugified into a title-cased
   label
 - `natureOptions` — every `Nature` value mapped into dropdown options
-- `learnset` — the selected `species`' learnset at `generation`,
-  resolved via `PokemonHelpers`
+- `learnset` — the selected `species`' learnset in `version`, resolved
+  via `PokemonHelpers`
 - `moveOptions` — `learnset`'s move names deslugified via `MoveHelpers`,
   deduped, and sorted alphabetically, with a "None" option (empty value)
   prepended so a slot can be left or reset to unselected

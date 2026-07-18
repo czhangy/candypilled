@@ -7,6 +7,7 @@ const VALLEY_WINDWORKS_INTERIOR: Location = {
     map: valleyWindworksInterior,
     battles: [
         {
+            isOptional: true,
             trainerClass: 'Galactic Grunt M',
             name: '4',
             team: [
@@ -60,14 +61,16 @@ const VALLEY_WINDWORKS_INTERIOR: Location = {
                     level: 15,
                     nature: Nature.Bold,
                     moves: ['Bite', 'Leech Life', 'Toxic'],
+                    ivs: 12,
                 },
                 {
                     name: 'Purugly',
                     ability: 1,
                     level: 17,
                     nature: Nature.Bashful,
-                    moves: ['Faint Attack', 'Scratch', 'Fake Out'],
+                    moves: ['Feint Attack', 'Scratch', 'Fake Out'],
                     heldItem: 'Oran Berry',
+                    ivs: 12,
                 },
             ],
             x: 88.9,

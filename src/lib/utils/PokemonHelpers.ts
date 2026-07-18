@@ -136,31 +136,34 @@ export default class PokemonHelpers {
         return PokemonHelpers.getPokemonData(name)?.catchRate;
     }
 
-    /** name's learnset as of generation, or undefined if no form matches. */
+    /**
+     * name's learnset in version (a PokeAPI version group slug, e.g.
+     * "platinum"), or undefined if no form or matching version group
+     * exists.
+     */
     static getPokemonLearnset(
         name: string,
-        generation: number
+        version: string
     ): LearnsetMove[] | undefined {
         const pokemon = PokemonHelpers.getPokemonData(name);
         if (!pokemon) return undefined;
 
-        return GenerationHelpers.resolveGeneration(pokemon.learnset, generation)
+        return pokemon.learnset.find((entry) => entry.versionGroup === version)
             ?.moves;
     }
 
     /**
-     * The moves name would know at level, i.e. the last MAX_KNOWN_MOVES
-     * distinct level-up moves learned at or before level, in the order
-     * they were learned — matching how a Pokemon's moveset is determined
-     * in-game when it's first encountered or evolves.
+     * The moves name would know at level in version, i.e. the last
+     * MAX_KNOWN_MOVES distinct level-up moves learned at or before level, in
+     * the order they were learned — matching how a Pokemon's moveset is
+     * determined in-game when it's first encountered or evolves.
      */
     static getMovesAtLevel(
         name: string,
-        generation: number,
+        version: string,
         level: number
     ): string[] {
-        const learnset =
-            PokemonHelpers.getPokemonLearnset(name, generation) ?? [];
+        const learnset = PokemonHelpers.getPokemonLearnset(name, version) ?? [];
         const levelUpMoves = learnset
             .filter(
                 (move) =>

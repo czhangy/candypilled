@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import {
-    buildGenerationMaps,
+    buildVersionGroupGenerations,
     sleep,
     toGenerationNumber,
 } from '@/lib/scripts/pokeapi/shared';
@@ -109,8 +109,8 @@ const buildValuesByGeneration = (
 };
 
 export const fetchAbilities = async (): Promise<void> => {
-    const { versionGroupGenerations } =
-        await buildGenerationMaps(FETCH_DELAY_MS);
+    const versionGroupGenerations =
+        await buildVersionGroupGenerations(FETCH_DELAY_MS);
     const abilityList = await fetchAbilityList();
     const data: Record<string, AbilityData> = {};
 

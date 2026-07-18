@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { createInterface, Interface } from 'readline/promises';
 import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
+import { CURRENT_GAME_VERSION } from '@/lib/scripts/pokeapi/game-versions';
 import { logSuccess, runScript } from '@/lib/scripts/utils/helpers';
 import { Nature } from '@/lib/static/enums';
 import { AbilitySlot } from '@/lib/static/types';
@@ -279,7 +280,18 @@ const promptPokemon = async (
         const raw = (
             await rl.question(`  Move ${moves.length + 1} (blank to stop): `)
         ).trim();
-        if (!raw) break;
+        if (!raw) {
+            if (moves.length === 0) {
+                moves.push(
+                    ...PokemonHelpers.getMovesAtLevel(
+                        name,
+                        CURRENT_GAME_VERSION.version,
+                        level
+                    )
+                );
+            }
+            break;
+        }
 
         const move = MoveHelpers.getMoveData(raw);
         if (!move) {

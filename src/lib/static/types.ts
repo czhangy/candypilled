@@ -164,6 +164,11 @@ export type Game = {
     name: string;
     logo: string;
     generation: number;
+    // PokeAPI version group slug for this game, e.g. "platinum". Used to
+    // resolve which of a Pokemon's per-version-group learnsets applies,
+    // since level-up movesets can differ between versions within the same
+    // generation.
+    version: string;
     splits: Split[];
     starters: string[];
     accentColor: string;
@@ -307,7 +312,13 @@ export type LearnsetMove = {
     level?: number;
 };
 
-export type LearnsetByGeneration = {
+export type LearnsetByVersionGroup = {
+    // PokeAPI version group slug, e.g. "diamond-pearl", "platinum",
+    // "heartgold-soulsilver". Learnsets are kept per version group rather
+    // than per generation because level-up movesets commonly differ between
+    // versions within the same generation (e.g. Onix's moveset changed
+    // between Diamond/Pearl/Platinum and HeartGold/SoulSilver).
+    versionGroup: string;
     fromGeneration: number;
     moves: LearnsetMove[];
 };
@@ -331,5 +342,5 @@ export type PokemonData = {
     stats: StatsByGeneration[];
     catchRate: number;
     evolutionLine: EvolutionLineByGeneration[];
-    learnset: LearnsetByGeneration[];
+    learnset: LearnsetByVersionGroup[];
 };

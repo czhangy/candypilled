@@ -114,8 +114,8 @@ Operates in one of two mutually exclusive modes, set via `mode`:
   of `EvolutionLine`
 - `stats` — the selected species' base stats at `generation`, resolved
   via `PokemonHelpers` and rendered with `StatsChart`
-- `learnset` — the selected species' learnset at `generation`, resolved
-  via `PokemonHelpers` and rendered with `LearnsetList` when
+- `learnset` — the selected species' learnset in `game.version`,
+  resolved via `PokemonHelpers` and rendered with `LearnsetList` when
   `activeDetailTab` is `'learnset'` or `mode` is `'choose'`
 - `locations` — every wild encounter of the selected species across
   `game`'s splits and locations, resolved via `EncounterHelpers` and

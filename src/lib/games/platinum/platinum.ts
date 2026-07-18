@@ -15,6 +15,7 @@ const PLATINUM: Game = {
     name: 'Platinum',
     logo: '/logos/platinum.png',
     generation: 4,
+    version: 'platinum',
     starters: ['Turtwig', 'Chimchar', 'Piplup'],
     accentColor: '#FFD500',
     encounters: ENCOUNTERS,
