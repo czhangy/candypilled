@@ -1,3 +1,4 @@
+import { EncounterMethod } from '@/lib/static/enums';
 import { EncounterLocation, Game } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 
@@ -47,7 +48,7 @@ export default class EncounterHelpers {
 
             const encounters = game.encounters[encountersKey]?.encounters ?? [];
             return encounters.some(
-                (encounter) => encounter.method === 'starter'
+                (encounter) => encounter.method === EncounterMethod.Starter
             );
         })!.name;
     }

@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import Image from 'next/image';
+import { EncounterMethod } from '@/lib/static/enums';
 import { Encounter } from '@/lib/static/types';
 import EncounterRow from './EncounterRow/EncounterRow';
 import styles from './MethodGroup.module.scss';
@@ -9,7 +10,7 @@ type MethodGroupProps = {
     getDisplayChance: (encounter: Encounter) => number | null;
     isSpeciesCaughtElsewhere: (species: string) => boolean;
     isSpeciesCaughtHere: (species: string) => boolean;
-    method: string;
+    method: EncounterMethod;
     onSelectEncounter: (encounter: Encounter) => void;
     selectedSpecies?: string;
     variant: string;

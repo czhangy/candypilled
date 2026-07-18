@@ -7,10 +7,12 @@ const ROUTE_205: Location = {
         {
             name: 'South',
             map: route205South,
+            encountersKey: 'sinnoh-route-205-south-towards-floaroma-town',
         },
         {
             name: 'North',
             map: route205North,
+            encountersKey: 'sinnoh-route-205-east-towards-eterna-city',
         },
     ],
 };

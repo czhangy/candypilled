@@ -1,5 +1,10 @@
 import { StaticImageData } from 'next/image';
-import { FieldCondition, Nature, PokemonStatus } from '@/lib/static/enums';
+import {
+    EncounterMethod,
+    FieldCondition,
+    Nature,
+    PokemonStatus,
+} from '@/lib/static/enums';
 
 export type StatValues = {
     atk: number;
@@ -77,7 +82,7 @@ export type Battle = {
 
 export type Encounter = {
     species: string;
-    method: string;
+    method: EncounterMethod;
     minLevel: number;
     maxLevel: number;
     chance: number | null;
@@ -87,6 +92,50 @@ export type Encounter = {
 export type LocationEncounters = {
     name: string;
     encounters: Encounter[];
+};
+
+export type MethodOverride = {
+    location: string;
+    species: string;
+    method: EncounterMethod;
+};
+
+export type LocationMerge = {
+    from: string;
+    into: string;
+};
+
+export type LocationSplitGroup = {
+    key: string;
+    name: string;
+    // Encounters using one of these methods go into this group. Omit on
+    // one group per split to make it the catch-all for methods not claimed
+    // by any other group.
+    methods?: EncounterMethod[];
+};
+
+export type LocationSplit = {
+    location: string;
+    groups: LocationSplitGroup[];
+};
+
+export type GameVersion = {
+    id: string;
+    label: string;
+    version: string;
+    region: string;
+    generation: number;
+    excludedLocations?: string[];
+    excludedSpecies?: string[];
+    caveLocations?: string[];
+    methodOverrides?: MethodOverride[];
+    excludedMethods?: string[];
+    excludedConditions?: string[];
+    excludedConditionPrefixes?: string[];
+    strippedConditions?: string[];
+    strippedConditionPrefixes?: string[];
+    mergedLocations?: LocationMerge[];
+    locationSplits?: LocationSplit[];
 };
 
 export type EncounterLocation = {

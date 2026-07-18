@@ -1,4 +1,5 @@
 import { useState, useSyncExternalStore } from 'react';
+import { EncounterMethod } from '@/lib/static/enums';
 import { Encounter } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -47,24 +48,24 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     // -------------------------------------------------------------------------
 
     const METHOD_ORDER = [
-        'starter',
-        'only-one',
-        'gift',
-        'gift-egg',
-        'grass',
-        'cave',
-        'old-rod',
-        'good-rod',
-        'feebas-tile-fishing',
-        'surf',
-        'honey-tree',
+        EncounterMethod.Starter,
+        EncounterMethod.Special,
+        EncounterMethod.Gift,
+        EncounterMethod.Egg,
+        EncounterMethod.Grass,
+        EncounterMethod.Cave,
+        EncounterMethod.OldRod,
+        EncounterMethod.GoodRod,
+        EncounterMethod.FeebasTileFishing,
+        EncounterMethod.Surf,
+        EncounterMethod.HoneyTree,
     ];
 
     const UNMISSABLE_ENCOUNTER_METHODS = [
-        'gift',
-        'gift-egg',
-        'fossil',
-        'only-one',
+        EncounterMethod.Gift,
+        EncounterMethod.Egg,
+        EncounterMethod.Fossil,
+        EncounterMethod.Special,
     ];
 
     const TIME_OF_DAY_CONDITIONS = ['time-morning', 'time-day', 'time-night'];
@@ -117,7 +118,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     const timesOfDay = getTimesOfDay();
 
     const hasStarterEncounter = encounters.some(
-        (encounter) => encounter.method === 'starter'
+        (encounter) => encounter.method === EncounterMethod.Starter
     );
 
     const isMissable =
@@ -141,13 +142,14 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
             isEvolutionLineCaught(encounter.species);
 
         const isSeparateStarter =
-            starterCaughtSeparately && encounter.method === 'starter';
+            starterCaughtSeparately &&
+            encounter.method === EncounterMethod.Starter;
 
         return matchesTimeOfDay && !isDupe && !isSeparateStarter;
     });
 
     const hasVisibleStarterEncounter = visibleEncounters.some(
-        (encounter) => encounter.method === 'starter'
+        (encounter) => encounter.method === EncounterMethod.Starter
     );
 
     const methods = [
@@ -156,7 +158,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                 .filter(
                     (encounter) =>
                         !hasVisibleStarterEncounter ||
-                        encounter.method === 'starter'
+                        encounter.method === EncounterMethod.Starter
                 )
                 .map((encounter) => encounter.method)
         ),
@@ -177,7 +179,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         PokemonHelpers.getPokemonData(encounter.species)?.name ??
         encounter.species;
 
-    const getEncountersForMethod = (method: string): Encounter[] =>
+    const getEncountersForMethod = (method: EncounterMethod): Encounter[] =>
         visibleEncounters
             .filter((encounter) => encounter.method === method)
             .sort((a, b) => {

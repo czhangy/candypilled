@@ -12,7 +12,7 @@ representing the method, followed by that method's encounter rows.
 | `getDisplayChance`         | `(encounter: Encounter) => number \| null` | Yes      | -       | Resolves an encounter's displayed chance                                                   |
 | `isSpeciesCaughtElsewhere` | `(species: string) => boolean`             | Yes      | -       | Whether a species' evolution line is caught elsewhere in the run, highlighting its row red |
 | `isSpeciesCaughtHere`      | `(species: string) => boolean`             | Yes      | -       | Whether a species is the one actually caught at this location, highlighting its row green  |
-| `method`                   | `string`                                   | Yes      | -       | The encounter method this group represents                                                 |
+| `method`                   | `EncounterMethod`                          | Yes      | -       | The encounter method this group represents                                                 |
 | `onSelectEncounter`        | `(encounter: Encounter) => void`           | Yes      | -       | Called when one of this method's rows is clicked                                           |
 | `selectedSpecies`          | `string`                                   | No       | -       | The species of the currently selected row, if any                                          |
 | `variant`                  | `string`                                   | Yes      | -       | The sprite variant to prefer, matching the game's slug                                     |

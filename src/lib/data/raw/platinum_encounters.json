@@ -90,18 +90,13 @@
                 "minLevel": 10,
                 "maxLevel": 25,
                 "chance": 45
-            }
-        ]
-    },
-    "eterna-city-west-gate": {
-        "name": "Eterna City (West Gate)",
-        "encounters": [
+            },
             {
                 "species": "togepi",
-                "method": "gift-egg",
+                "method": "egg",
                 "minLevel": 1,
                 "maxLevel": 1,
-                "chance": 100
+                "chance": null
             }
         ]
     },
@@ -436,10 +431,10 @@
             },
             {
                 "species": "drifloon",
-                "method": "only-one",
+                "method": "special",
                 "minLevel": 15,
                 "maxLevel": 15,
-                "chance": 100
+                "chance": null
             },
             {
                 "species": "munchlax",
@@ -457,8 +452,8 @@
             }
         ]
     },
-    "eterna-forest": {
-        "name": "Eterna Forest",
+    "eterna-forest-interior": {
+        "name": "Eterna Forest (Interior)",
         "encounters": [
             {
                 "species": "gastly",
@@ -493,20 +488,6 @@
                 "conditions": ["time-night"]
             },
             {
-                "species": "aipom",
-                "method": "honey-tree",
-                "minLevel": 5,
-                "maxLevel": 15,
-                "chance": null
-            },
-            {
-                "species": "heracross",
-                "method": "honey-tree",
-                "minLevel": 5,
-                "maxLevel": 15,
-                "chance": null
-            },
-            {
                 "species": "wurmple",
                 "method": "grass",
                 "minLevel": 10,
@@ -521,13 +502,6 @@
                 "maxLevel": 10,
                 "chance": 10,
                 "conditions": ["time-day"]
-            },
-            {
-                "species": "wurmple",
-                "method": "honey-tree",
-                "minLevel": 5,
-                "maxLevel": 15,
-                "chance": null
             },
             {
                 "species": "silcoon",
@@ -690,27 +664,6 @@
                 "conditions": ["time-night"]
             },
             {
-                "species": "burmy",
-                "method": "honey-tree",
-                "minLevel": 5,
-                "maxLevel": 15,
-                "chance": null
-            },
-            {
-                "species": "combee",
-                "method": "honey-tree",
-                "minLevel": 5,
-                "maxLevel": 15,
-                "chance": null
-            },
-            {
-                "species": "cherubi",
-                "method": "honey-tree",
-                "minLevel": 5,
-                "maxLevel": 15,
-                "chance": null
-            },
-            {
                 "species": "buneary",
                 "method": "grass",
                 "minLevel": 11,
@@ -733,6 +686,53 @@
                 "maxLevel": 13,
                 "chance": 24,
                 "conditions": ["time-night"]
+            }
+        ]
+    },
+    "eterna-forest-exterior": {
+        "name": "Eterna Forest (Exterior)",
+        "encounters": [
+            {
+                "species": "aipom",
+                "method": "honey-tree",
+                "minLevel": 5,
+                "maxLevel": 15,
+                "chance": null
+            },
+            {
+                "species": "heracross",
+                "method": "honey-tree",
+                "minLevel": 5,
+                "maxLevel": 15,
+                "chance": null
+            },
+            {
+                "species": "wurmple",
+                "method": "honey-tree",
+                "minLevel": 5,
+                "maxLevel": 15,
+                "chance": null
+            },
+            {
+                "species": "burmy",
+                "method": "honey-tree",
+                "minLevel": 5,
+                "maxLevel": 15,
+                "chance": null
+            },
+            {
+                "species": "combee",
+                "method": "honey-tree",
+                "minLevel": 5,
+                "maxLevel": 15,
+                "chance": null
+            },
+            {
+                "species": "cherubi",
+                "method": "honey-tree",
+                "minLevel": 5,
+                "maxLevel": 15,
+                "chance": null
             },
             {
                 "species": "munchlax",
@@ -10332,10 +10332,10 @@
             },
             {
                 "species": "riolu",
-                "method": "gift-egg",
+                "method": "egg",
                 "minLevel": 1,
                 "maxLevel": 1,
-                "chance": 100
+                "chance": null
             }
         ]
     },
@@ -10454,10 +10454,10 @@
             },
             {
                 "species": "rotom",
-                "method": "only-one",
+                "method": "special",
                 "minLevel": 20,
                 "maxLevel": 20,
-                "chance": 100,
+                "chance": null,
                 "conditions": ["time-night"]
             }
         ]
@@ -13729,10 +13729,10 @@
             },
             {
                 "species": "spiritomb",
-                "method": "only-one",
+                "method": "special",
                 "minLevel": 25,
                 "maxLevel": 25,
-                "chance": 100,
+                "chance": null,
                 "conditions": [
                     "other-talked-to-32-people-underground",
                     "time-morning"
@@ -13740,10 +13740,10 @@
             },
             {
                 "species": "spiritomb",
-                "method": "only-one",
+                "method": "special",
                 "minLevel": 25,
                 "maxLevel": 25,
-                "chance": 100,
+                "chance": null,
                 "conditions": [
                     "other-talked-to-32-people-underground",
                     "time-day"
@@ -13751,10 +13751,10 @@
             },
             {
                 "species": "spiritomb",
-                "method": "only-one",
+                "method": "special",
                 "minLevel": 25,
                 "maxLevel": 25,
-                "chance": 100,
+                "chance": null,
                 "conditions": [
                     "other-talked-to-32-people-underground",
                     "time-night"

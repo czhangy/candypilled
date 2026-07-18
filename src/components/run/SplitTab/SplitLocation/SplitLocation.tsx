@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { StaticImageData } from 'next/image';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { STARTER_LOCATION_NAME } from '@/lib/static/constants';
-import { PokemonStatus } from '@/lib/static/enums';
+import { EncounterMethod, PokemonStatus } from '@/lib/static/enums';
 import {
     Battle,
     CaughtPokemon,
@@ -255,11 +255,11 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                   : undefined,
           };
     const isStarterEncounter = selectedEncounter
-        ? selectedEncounter.method === 'starter'
+        ? selectedEncounter.method === EncounterMethod.Starter
         : !!encounter &&
           !!section.encounters?.some(
               (locationEncounter) =>
-                  locationEncounter.method === 'starter' &&
+                  locationEncounter.method === EncounterMethod.Starter &&
                   EvolutionHelpers.isSameEvolutionLine(
                       locationEncounter.species,
                       encounter,

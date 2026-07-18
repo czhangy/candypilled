@@ -1,3 +1,18 @@
+export enum EncounterMethod {
+    Cave = 'cave',
+    Egg = 'egg',
+    FeebasTileFishing = 'feebas-tile-fishing',
+    Fossil = 'fossil',
+    Gift = 'gift',
+    GoodRod = 'good-rod',
+    Grass = 'grass',
+    HoneyTree = 'honey-tree',
+    OldRod = 'old-rod',
+    Special = 'special',
+    Starter = 'starter',
+    Surf = 'surf',
+}
+
 export enum FieldCondition {
     Fog = 'Fog',
     Hail = 'Hail',
