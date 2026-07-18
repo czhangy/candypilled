@@ -45,7 +45,7 @@ const ROUTE_202: Location = {
                     name: 'Burmy',
                     ability: 1,
                     level: 5,
-                    moves: ['Tackle', 'Bug Bite', 'Hidden Power'],
+                    moves: ['Tackle'],
                     nature: Nature.Impish,
                 },
             ],

@@ -118,7 +118,7 @@ const ROUTE_203: Location = {
                     name: 'Machop',
                     ability: 1,
                     level: 8,
-                    moves: ['Low Kick', 'Leer', 'Focus Energy'],
+                    moves: ['Low Kick', 'Leer'],
                     nature: Nature.Relaxed,
                 },
             ],
