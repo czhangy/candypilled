@@ -25,6 +25,10 @@ export const SETTINGS: Setting[] = [
         id: 'separate-starter-encounter',
         title: 'Starter As Separate Encounter',
     },
+    {
+        id: 'highlight-dangerous',
+        title: 'Highlight Dangerous Moves/Abilities',
+    },
 ];
 
 export const STAT_FIELDS: { key: keyof StatValues; label: string }[] = [

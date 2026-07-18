@@ -13,6 +13,11 @@ export default class AbilityHelpers {
         return ABILITIES[StringHelpers.toSlug(name)];
     }
 
+    /** Whether `name` is curated as a dangerous ability. */
+    static isDangerousAbility(name: string): boolean {
+        return AbilityHelpers.getAbilityData(name)?.isDangerous ?? false;
+    }
+
     /** The values `name` had as of `generation`, or undefined if no ability matches. */
     static getAbilityForGeneration(
         name: string,

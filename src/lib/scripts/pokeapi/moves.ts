@@ -57,7 +57,7 @@ const DANGEROUS_MOVES = new Set([
     'self-destruct',
     'destiny-bond',
     'counter',
-    'mirror-move',
+    'mirror-coat',
     'metal-burst',
     'bide',
     'pursuit',

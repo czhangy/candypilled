@@ -1,9 +1,12 @@
+import { useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
 import { BattlePokemon } from '@/lib/static/types';
+import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
+import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import MoveList from './MoveList/MoveList';
 import styles from './PokemonSlot.module.scss';
@@ -23,6 +26,16 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     pokemon,
     variant,
 }) => {
+    // -------------------------------------------------------------------------
+    // HOOKS
+    // -------------------------------------------------------------------------
+
+    const settings = useSyncExternalStore(
+        SettingsHelpers.subscribe,
+        SettingsHelpers.getSnapshot,
+        SettingsHelpers.getServerSnapshot
+    );
+
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
@@ -58,6 +71,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
         : undefined;
     const types = pokemon ? getTypes(pokemon.name) : [];
     const ability = getAbility();
+    const highlightDangerous = settings['highlight-dangerous'] ?? false;
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -124,7 +138,16 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                 <li className={styles['pokemon-slot__metadata-item--ability']}>
                     {ability ? (
                         <button
-                            className={styles['ability-button']}
+                            className={[
+                                styles['ability-button'],
+                                highlightDangerous &&
+                                    AbilityHelpers.isDangerousAbility(
+                                        ability
+                                    ) &&
+                                    styles['ability-button--dangerous'],
+                            ]
+                                .filter(Boolean)
+                                .join(' ')}
                             onClick={() => onSelectAbility(ability)}
                             type="button"
                         >
@@ -157,6 +180,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                 </li>
                 <MoveList
                     generation={generation}
+                    highlightDangerous={highlightDangerous}
                     moves={pokemon.moves}
                     onSelectMove={onSelectMove}
                 />

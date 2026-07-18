@@ -17774,7 +17774,7 @@
         "category": "special",
         "priority": -5,
         "introducedInGeneration": 2,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,
