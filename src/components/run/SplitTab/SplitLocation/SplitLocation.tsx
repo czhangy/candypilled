@@ -80,11 +80,13 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         subareaIndex: number
     ): Battle | undefined => {
         const subarea = location.subareas?.[subareaIndex];
-        const battles = location.subareas
-            ? subarea?.hideBattles
-                ? []
-                : (subarea?.battles ?? [])
-            : (location.battles ?? []);
+        const battles = location.hideBattles
+            ? []
+            : location.subareas
+              ? subarea?.hideBattles
+                  ? []
+                  : (subarea?.battles ?? [])
+              : (location.battles ?? []);
 
         const requiredBattles = battles.filter((battle) => !battle.isOptional);
         const candidates =
@@ -262,16 +264,17 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const section: Section = activeSubarea
         ? {
               map: activeSubarea.map,
-              battles: activeSubarea.hideBattles
-                  ? []
-                  : (activeSubarea.battles ?? []),
+              battles:
+                  location.hideBattles || activeSubarea.hideBattles
+                      ? []
+                      : (activeSubarea.battles ?? []),
               encounters: activeSubarea.encountersKey
                   ? game.encounters[activeSubarea.encountersKey]
                   : undefined,
           }
         : {
               map: location.map,
-              battles: location.battles ?? [],
+              battles: location.hideBattles ? [] : (location.battles ?? []),
               encounters: location.encountersKey
                   ? game.encounters[location.encountersKey]
                   : undefined,

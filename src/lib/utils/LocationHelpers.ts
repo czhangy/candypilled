@@ -6,6 +6,16 @@ export default class LocationHelpers {
     // -------------------------------------------------------------------------
 
     /**
+     * A copy of location with every battle hidden (no markers/battle
+     * card/default-selection), without mutating the original — for
+     * reusing the same location's data across splits where none of its
+     * battles (including any subareas') belong to that split.
+     */
+    static withHiddenBattles(location: Location): Location {
+        return { ...location, hideBattles: true };
+    }
+
+    /**
      * A copy of location with the named subareas' battles hidden (no
      * markers/battle card/default-selection), without mutating the
      * original — for reusing the same location's data across splits that

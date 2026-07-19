@@ -150,6 +150,7 @@ export type Subarea = {
 export type Location = {
     name: string;
     encountersKey?: string;
+    hideBattles?: boolean;
     map?: StaticImageData;
     battles?: Battle[];
     subareas?: Subarea[];

@@ -23,7 +23,7 @@ const ROARK: Split = {
         ROUTE_203,
         LocationHelpers.withHiddenSubareaBattles(OREBURGH_GATE, ['B1F']),
         OREBURGH_CITY,
-        ROUTE_207,
+        LocationHelpers.withHiddenBattles(ROUTE_207),
         OREBURGH_MINE,
         OREBURGH_GYM,
     ],

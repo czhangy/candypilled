@@ -36,8 +36,10 @@ export default class BattleHelpers {
         return battle.teamsByStarter?.[starter] ?? battle.team ?? [];
     }
 
-    /** Every battle in location, excluding those hidden via subarea. */
+    /** Every battle in location, excluding those hidden via location or subarea. */
     static getBattlesInLocation(location: Location): Battle[] {
+        if (location.hideBattles) return [];
+
         return location.subareas
             ? location.subareas
                   .filter((subarea) => !subarea.hideBattles)
