@@ -7,23 +7,21 @@ type SplitHeaderProps = {
     currentSplitName: string | null;
     game: Game;
     onSelectSplit: (name: string) => void;
+    runSplitName: string | null;
 };
 
 const SplitHeader: React.FC<SplitHeaderProps> = ({
     currentSplitName,
     game,
     onSelectSplit,
+    runSplitName,
 }) => {
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const currentSplit = game.splits.find(
-        (split) => split.name === currentSplitName
-    );
-    const levelCap = currentSplit
-        ? SplitHelpers.getLevelCap(currentSplit)
-        : null;
+    const runSplit = game.splits.find((split) => split.name === runSplitName);
+    const levelCap = runSplit ? SplitHelpers.getLevelCap(runSplit) : null;
     const splitNames = game.splits.map((split) => split.name);
 
     // -------------------------------------------------------------------------

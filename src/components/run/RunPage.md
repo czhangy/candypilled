@@ -42,12 +42,14 @@ shown instead.
   page
 - `selectedAbility` — the currently selected ability's name, read from the
   `ability` query param
+- `runSplitName` — the name of the split containing the first
+  not-yet-defeated required battle in `run.defeatedBattles` (or the last
+  split if every required battle has been defeated); this is the split the
+  run has actually progressed to, regardless of which split is being viewed
 - `currentSplitName` — the split named by the `split` query param if it
-  matches one of `game.splits`, otherwise the name of the split containing
-  the first not-yet-defeated required battle in `run.defeatedBattles` (or
-  the last split if every required battle has been defeated); `RunEntry`
-  computes and links to this param directly when navigating to the page, so
-  it's already populated on load
+  matches one of `game.splits`, otherwise `runSplitName`; `RunEntry` computes
+  and links to this param directly when navigating to the page, so it's
+  already populated on load
 - `game` — the `Game` matching `slug`, looked up from the static game list;
   triggers a 404 if no game matches
 - `run` — the stored `Run` for `game`, looked up from the run store snapshot
