@@ -177,6 +177,11 @@ export type Location = {
     map?: StaticImageData;
     battles?: Battle[];
     subareas?: Subarea[];
+    // Overrides for `map`/`encountersKey` once Team Galactic's
+    // interference at the lakes has occurred (e.g. Lake Verity's map and
+    // wild encounters change after Mars appears there).
+    postGalacticMap?: StaticImageData;
+    postGalacticEncountersKey?: string;
 };
 
 export type Split = {
