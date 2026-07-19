@@ -49,7 +49,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 43,
                             nature: Nature.Bold,
-                            moves: ['Slash', 'Toxic', 'Night Slash', 'Memento'],
                             ivs: 3,
                         },
                     ],
@@ -66,12 +65,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 43,
                             nature: Nature.Rash,
-                            moves: [
-                                'Assurance',
-                                'Taunt',
-                                'Feint Attack',
-                                'Mean Look',
-                            ],
                             ivs: 3,
                         },
                     ],
@@ -148,7 +141,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 42,
                             nature: Nature.Brave,
-                            moves: ['Slash', 'Toxic', 'Night Slash', 'Memento'],
                             ivs: 3,
                         },
                         {
@@ -156,12 +148,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 40,
                             nature: Nature.Serious,
-                            moves: [
-                                'Confuse Ray',
-                                'Air Cutter',
-                                'Mean Look',
-                                'Poison Fang',
-                            ],
                             ivs: 3,
                         },
                     ],
@@ -185,12 +171,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 43,
                             nature: Nature.Docile,
-                            moves: [
-                                'Confuse Ray',
-                                'Air Cutter',
-                                'Mean Look',
-                                'Poison Fang',
-                            ],
                             ivs: 3,
                         },
                     ],
@@ -207,12 +187,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 39,
                             nature: Nature.Quirky,
-                            moves: [
-                                'Night Shade',
-                                'Assurance',
-                                'Taunt',
-                                'Feint Attack',
-                            ],
                             ivs: 3,
                         },
                         {
@@ -220,12 +194,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 42,
                             nature: Nature.Calm,
-                            moves: [
-                                'Assist',
-                                'Captivate',
-                                'Slash',
-                                'Sucker Punch',
-                            ],
                             ivs: 3,
                         },
                         {
@@ -233,12 +201,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 39,
                             nature: Nature.Quirky,
-                            moves: [
-                                'Night Shade',
-                                'Assurance',
-                                'Taunt',
-                                'Feint Attack',
-                            ],
                             ivs: 3,
                         },
                     ],
@@ -255,12 +217,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 38,
                             nature: Nature.Modest,
-                            moves: [
-                                'Mud Bomb',
-                                'Sucker Punch',
-                                'Nasty Plot',
-                                'Poison Jab',
-                            ],
                             ivs: 3,
                         },
                         {
@@ -268,7 +224,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 40,
                             nature: Nature.Hasty,
-                            moves: ['Slash', 'Toxic', 'Night Slash', 'Memento'],
                             ivs: 3,
                         },
                         {
@@ -276,12 +231,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 42,
                             nature: Nature.Serious,
-                            moves: [
-                                'Mud Bomb',
-                                'Sucker Punch',
-                                'Nasty Plot',
-                                'Poison Jab',
-                            ],
                             ivs: 3,
                         },
                     ],
@@ -305,12 +254,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 40,
                             nature: Nature.Timid,
-                            moves: [
-                                'Beat Up',
-                                'Fire Fang',
-                                'Feint Attack',
-                                'Embargo',
-                            ],
                             ivs: 3,
                         },
                         {
@@ -318,12 +261,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 42,
                             nature: Nature.Modest,
-                            moves: [
-                                'Assist',
-                                'Captivate',
-                                'Slash',
-                                'Sucker Punch',
-                            ],
                             ivs: 3,
                         },
                     ],
@@ -339,12 +276,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 41,
                             nature: Nature.Hasty,
-                            moves: [
-                                'Assist',
-                                'Captivate',
-                                'Slash',
-                                'Sucker Punch',
-                            ],
                             ivs: 3,
                         },
                         {
@@ -352,12 +283,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 41,
                             nature: Nature.Docile,
-                            moves: [
-                                'Confuse Ray',
-                                'Air Cutter',
-                                'Mean Look',
-                                'Poison Fang',
-                            ],
                             ivs: 3,
                         },
                     ],
@@ -366,7 +291,6 @@ const MT_CORONET: Location = {
                 },
             ],
         },
-
         {
             name: '6F',
             map: mtCoronet6f,
@@ -381,12 +305,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 39,
                             nature: Nature.Quirky,
-                            moves: [
-                                'Confuse Ray',
-                                'Air Cutter',
-                                'Mean Look',
-                                'Poison Fang',
-                            ],
                             ivs: 3,
                         },
                         {
@@ -394,12 +312,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 40,
                             nature: Nature.Quirky,
-                            moves: [
-                                'Mud Bomb',
-                                'Sucker Punch',
-                                'Nasty Plot',
-                                'Poison Jab',
-                            ],
                             ivs: 3,
                         },
                         {
@@ -407,12 +319,6 @@ const MT_CORONET: Location = {
                             ability: 1,
                             level: 41,
                             nature: Nature.Calm,
-                            moves: [
-                                'Assurance',
-                                'Taunt',
-                                'Feint Attack',
-                                'Mean Look',
-                            ],
                             ivs: 3,
                         },
                     ],

@@ -44,6 +44,7 @@ const ROUTE_202: Location = {
                     ability: 1,
                     level: 5,
                     nature: Nature.Impish,
+                    moves: ['Tackle'],
                 },
             ],
             x: 72.3,
