@@ -63,6 +63,28 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
     );
 
     // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleFormSubmit = (
+        details: Pick<
+            CaughtPokemon,
+            | 'ability'
+            | 'evs'
+            | 'ivs'
+            | 'level'
+            | 'moves'
+            | 'name'
+            | 'nature'
+            | 'tags'
+        >,
+        requestClose: () => void
+    ): void => {
+        onSubmit(details);
+        requestClose();
+    };
+
+    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
@@ -73,28 +95,32 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
             onClose={onClose}
             title={`Edit ${pokemon.name}`}
         >
-            <PokemonForm
-                allSpecies={[]}
-                defaultAbilitySlot={pokemon.ability}
-                defaultEvs={StatHelpers.normalizeStats(pokemon.evs, 0)}
-                defaultIvs={StatHelpers.normalizeStats(pokemon.ivs, 31)}
-                defaultLevel={pokemon.level}
-                defaultMoves={defaultMoves}
-                defaultNature={pokemon.nature}
-                defaultSpecies={pokemon.name}
-                defaultTags={pokemon.tags}
-                disabledReason=""
-                generation={generation}
-                lockSpecies
-                onSubmit={onSubmit}
-                showAbility
-                showEvs={!hideEvs}
-                showLevel
-                showMoves
-                showTags
-                submitLabel="Save"
-                version={version}
-            />
+            {(requestClose) => (
+                <PokemonForm
+                    allSpecies={[]}
+                    defaultAbilitySlot={pokemon.ability}
+                    defaultEvs={StatHelpers.normalizeStats(pokemon.evs, 0)}
+                    defaultIvs={StatHelpers.normalizeStats(pokemon.ivs, 31)}
+                    defaultLevel={pokemon.level}
+                    defaultMoves={defaultMoves}
+                    defaultNature={pokemon.nature}
+                    defaultSpecies={pokemon.name}
+                    defaultTags={pokemon.tags}
+                    disabledReason=""
+                    generation={generation}
+                    lockSpecies
+                    onSubmit={(details) =>
+                        handleFormSubmit(details, requestClose)
+                    }
+                    showAbility
+                    showEvs={!hideEvs}
+                    showLevel
+                    showMoves
+                    showTags
+                    submitLabel="Save"
+                    version={version}
+                />
+            )}
         </Modal>
     );
 };

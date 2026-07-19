@@ -75,9 +75,11 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
             | 'name'
             | 'nature'
             | 'tags'
-        >
+        >,
+        requestClose: () => void
     ): void => {
         onSubmit(details, location);
+        requestClose();
     };
 
     // -------------------------------------------------------------------------
@@ -101,38 +103,42 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
             onClose={onClose}
             title="Add Pokemon"
         >
-            <div className={styles['add-pokemon-modal']}>
-                {showLocation && (
-                    <div className={styles.field}>
-                        <label className={styles.label} htmlFor="location">
-                            Location
-                        </label>
-                        <input
-                            className={styles.input}
-                            id="location"
-                            onChange={handleLocationChange}
-                            type="text"
-                            value={location}
-                        />
-                    </div>
-                )}
-                <PokemonForm
-                    allSpecies={allSpecies}
-                    defaultLevel={defaultLevel}
-                    defaultSpecies={defaultSpecies}
-                    disabledReason={disabledReason}
-                    generation={generation}
-                    lockSpecies={false}
-                    onSubmit={handleFormSubmit}
-                    showAbility
-                    showEvs={false}
-                    showLevel
-                    showMoves
-                    showTags={false}
-                    submitLabel="Add"
-                    version={version}
-                />
-            </div>
+            {(requestClose) => (
+                <div className={styles['add-pokemon-modal']}>
+                    {showLocation && (
+                        <div className={styles.field}>
+                            <label className={styles.label} htmlFor="location">
+                                Location
+                            </label>
+                            <input
+                                className={styles.input}
+                                id="location"
+                                onChange={handleLocationChange}
+                                type="text"
+                                value={location}
+                            />
+                        </div>
+                    )}
+                    <PokemonForm
+                        allSpecies={allSpecies}
+                        defaultLevel={defaultLevel}
+                        defaultSpecies={defaultSpecies}
+                        disabledReason={disabledReason}
+                        generation={generation}
+                        lockSpecies={false}
+                        onSubmit={(details) =>
+                            handleFormSubmit(details, requestClose)
+                        }
+                        showAbility
+                        showEvs={false}
+                        showLevel
+                        showMoves
+                        showTags={false}
+                        submitLabel="Add"
+                        version={version}
+                    />
+                </div>
+            )}
         </Modal>
     );
 };

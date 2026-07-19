@@ -29,17 +29,20 @@ starter before the run is created.
 - **On "New" click** — if a run already exists, opens a confirmation modal;
   otherwise opens the starter selection modal directly
 - **On confirmation modal close/cancel** — closes the modal without
-  starting a new run
-- **On confirmation modal confirm** — closes the confirmation modal and
-  opens the starter selection modal
+  starting a new run; the Cancel button requests the modal's animated
+  close directly, without going through this handler
+- **On confirmation modal confirm** — opens the starter selection modal
+  and requests the confirmation modal's animated close, which closes it
+  once the exit animation finishes
 - **On starter select modal close/cancel** — closes the modal without
   starting a new run
-- **On starter select** — closes the modal and writes a fresh run to
-  storage for the game with the chosen starter's species and full details
-  (as the first entry in `caughtPokemon`), incrementing the attempt
-  number, while carrying over the existing personal best and hall of fame
-  count, then navigates to the game's run page, deep-linked to its current
-  split via `getRunUrl`
+- **On starter select** — writes a fresh run to storage for the game with
+  the chosen starter's species and full details (as the first entry in
+  `caughtPokemon`), incrementing the attempt number, while carrying over
+  the existing personal best and hall of fame count, then navigates to
+  the game's run page, deep-linked to its current split via `getRunUrl`;
+  the starter select modal closes itself, with its own exit animation,
+  once `StarterSelectModal` requests its close
 
 ## Computations
 

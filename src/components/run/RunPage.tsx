@@ -97,12 +97,16 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         (gameRun) => StringHelpers.toSlug(gameRun.game.name) === slug
     )?.run;
 
+    const runSplitName =
+        game && run
+            ? SplitHelpers.getCurrentSplitName(game, run.defeatedBattles)
+            : null;
+
     const currentSplitName =
         game && run
             ? (game.splits.find(
                   (split) => split.name === searchParams.get('split')
-              )?.name ??
-              SplitHelpers.getCurrentSplitName(game, run.defeatedBattles))
+              )?.name ?? runSplitName)
             : null;
 
     const personalBestBattle =
@@ -287,6 +291,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                                 currentSplitName={currentSplitName}
                                 game={game}
                                 onSelectSplit={handleSplitSelect}
+                                runSplitName={runSplitName}
                             />
                         )}
                         <Tabs

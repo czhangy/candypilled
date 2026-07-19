@@ -7,6 +7,7 @@ import ItemHelpers from '@/lib/utils/ItemHelpers';
 import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
+import StatHelpers from '@/lib/utils/StatHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import MoveList from './MoveList/MoveList';
 import styles from './PokemonSlot.module.scss';
@@ -181,6 +182,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                 <MoveList
                     generation={generation}
                     highlightDangerous={highlightDangerous}
+                    ivs={StatHelpers.normalizeStats(pokemon.ivs, 31)}
                     moves={pokemon.moves}
                     onSelectMove={onSelectMove}
                 />

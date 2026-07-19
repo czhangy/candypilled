@@ -1,16 +1,19 @@
 import CategoryBadge from '@/components/common/CategoryBadge/CategoryBadge';
+import { StatValues } from '@/lib/static/types';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import TypeHelpers from '@/lib/utils/TypeHelpers';
 import styles from './MoveCard.module.scss';
 
 type MoveCardProps = {
     generation: number;
+    ivs: StatValues;
     move?: string;
     onSelectMove: (name: string) => void;
 };
 
 const MoveCard: React.FC<MoveCardProps> = ({
     generation,
+    ivs,
     move,
     onSelectMove,
 }) => {
@@ -37,9 +40,10 @@ const MoveCard: React.FC<MoveCardProps> = ({
     const values = move
         ? MoveHelpers.getMoveForGeneration(move, generation)
         : undefined;
-    const moveColor = values
-        ? TypeHelpers.getTypeColor(values.type)
+    const moveType = move
+        ? MoveHelpers.getMoveType(move, generation, ivs)
         : undefined;
+    const moveColor = moveType ? TypeHelpers.getTypeColor(moveType) : undefined;
 
     // -------------------------------------------------------------------------
     // MARKUP

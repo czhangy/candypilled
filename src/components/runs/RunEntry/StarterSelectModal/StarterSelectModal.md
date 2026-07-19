@@ -63,4 +63,6 @@ the "starter" method (i.e. the actual starting route).
   selection step
 - **On `PokemonForm` submit** — calls `onSelect` with the submitted
   details plus `location: starterLocation` and a `status` of
-  `PokemonStatus.Alive`
+  `PokemonStatus.Alive`, then requests `Modal`'s animated close so
+  submitting plays the same exit animation as its other close
+  affordances

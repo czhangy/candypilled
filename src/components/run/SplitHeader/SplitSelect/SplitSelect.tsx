@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import styles from './SplitSelect.module.scss';
@@ -30,32 +30,48 @@ const SplitSelect: React.FC<SplitSelectProps> = ({
     };
 
     // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [isClosing, setIsClosing] = useState(false);
+    const [menuPlacement, setMenuPlacement] = useState<MenuPlacement | null>(
+        null
+    );
+
+    // -------------------------------------------------------------------------
     // HOOKS
     // -------------------------------------------------------------------------
 
     const containerRef = useRef<HTMLDivElement>(null);
     const menuRef = useRef<HTMLDivElement>(null);
 
-    // -------------------------------------------------------------------------
-    // STATE
-    // -------------------------------------------------------------------------
-
-    const [isOpen, setIsOpen] = useState(false);
-    const [menuPlacement, setMenuPlacement] = useState<MenuPlacement | null>(
-        null
-    );
+    const handleClose = useCallback((): void => {
+        setIsOpen(false);
+        setIsClosing(
+            !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        );
+    }, []);
 
     // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
 
     const handleToggle = (): void => {
-        setIsOpen((open) => !open);
+        if (isOpen) {
+            handleClose();
+        } else {
+            setIsOpen(true);
+        }
     };
 
     const handleOptionClick = (option: string): void => {
         onChange(option);
-        setIsOpen(false);
+        handleClose();
+    };
+
+    const handleAnimationEnd = (): void => {
+        setIsClosing(false);
     };
 
     // -------------------------------------------------------------------------
@@ -71,7 +87,7 @@ const SplitSelect: React.FC<SplitSelectProps> = ({
                 !containerRef.current?.contains(target) &&
                 !menuRef.current?.contains(target)
             ) {
-                setIsOpen(false);
+                handleClose();
             }
         };
 
@@ -79,7 +95,7 @@ const SplitSelect: React.FC<SplitSelectProps> = ({
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [isOpen]);
+    }, [handleClose, isOpen]);
 
     useEffect(() => {
         if (!isOpen) return;
@@ -133,11 +149,17 @@ const SplitSelect: React.FC<SplitSelectProps> = ({
                 </span>
                 <span className={styles.label}>{value}</span>
             </button>
-            {isOpen &&
+            {(isOpen || isClosing) &&
                 menuPlacement &&
                 createPortal(
                     <div
-                        className={styles.menu}
+                        className={[
+                            styles.menu,
+                            isClosing && styles['menu--closing'],
+                        ]
+                            .filter(Boolean)
+                            .join(' ')}
+                        onAnimationEnd={handleAnimationEnd}
                         ref={menuRef}
                         style={
                             {

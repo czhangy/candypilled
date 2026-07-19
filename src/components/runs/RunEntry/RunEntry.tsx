@@ -110,7 +110,6 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     };
 
     const handleConfirmNewRun = (): void => {
-        setIsConfirmOpen(false);
         setIsStarterSelectOpen(true);
     };
 
@@ -119,7 +118,6 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     };
 
     const handleStarterSelect = (starter: CaughtPokemon): void => {
-        setIsStarterSelectOpen(false);
         startNewRun(starter);
     };
 
@@ -205,26 +203,33 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             </div>
             {isConfirmOpen && (
                 <Modal onClose={handleConfirmClose} title="Start a new run?">
-                    <p className={styles['confirm-text']}>
-                        Your current run in progress will be overwritten and
-                        can&apos;t be recovered.
-                    </p>
-                    <div className={styles['confirm-actions']}>
-                        <button
-                            className={styles.cancel}
-                            onClick={handleConfirmClose}
-                            type="button"
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            className={styles.confirm}
-                            onClick={handleConfirmNewRun}
-                            type="button"
-                        >
-                            Start New Run
-                        </button>
-                    </div>
+                    {(requestClose) => (
+                        <>
+                            <p className={styles['confirm-text']}>
+                                Your current run in progress will be overwritten
+                                and can&apos;t be recovered.
+                            </p>
+                            <div className={styles['confirm-actions']}>
+                                <button
+                                    className={styles.cancel}
+                                    onClick={requestClose}
+                                    type="button"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    className={styles.confirm}
+                                    onClick={() => {
+                                        handleConfirmNewRun();
+                                        requestClose();
+                                    }}
+                                    type="button"
+                                >
+                                    Start New Run
+                                </button>
+                            </div>
+                        </>
+                    )}
                 </Modal>
             )}
             {isStarterSelectOpen && (

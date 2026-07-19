@@ -125,7 +125,6 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
             | 'tags'
         >
     ): void => {
-        setIsEditOpen(false);
         if (pokemon) {
             onEdit(pokemon, details);
         }
@@ -140,7 +139,6 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     };
 
     const handleEvolveConfirm = (newName: string): void => {
-        setIsEvolveOpen(false);
         if (pokemon) {
             onEvolve(pokemon, newName);
         }
@@ -217,16 +215,19 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
               pokemon.ability
           )
         : undefined;
+    const ivs = pokemon
+        ? StatHelpers.normalizeStats(pokemon.ivs, 31)
+        : undefined;
     const baseStats =
         pokemon && data
             ? PokemonHelpers.getPokemonStats(pokemon.name, generation)
             : undefined;
     const stats =
-        pokemon && baseStats
+        pokemon && baseStats && ivs
             ? StatHelpers.calculateStats(
                   baseStats,
                   pokemon.level,
-                  StatHelpers.normalizeStats(pokemon.ivs, 31),
+                  ivs,
                   StatHelpers.normalizeStats(pokemon.evs, 0),
                   pokemon.nature
               )
@@ -442,6 +443,10 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                 {moveSlots.map((move, index) => (
                                     <MoveCard
                                         generation={generation}
+                                        ivs={StatHelpers.normalizeStats(
+                                            pokemon.ivs,
+                                            31
+                                        )}
                                         key={move ?? `empty-${index}`}
                                         move={move}
                                         onSelectMove={onSelectMove}

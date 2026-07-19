@@ -8,7 +8,7 @@ import styles from './Modal.module.scss';
 type ModalProps = {
     accentColor?: string;
     buttonTextColor?: string;
-    children: React.ReactNode;
+    children: (requestClose: () => void) => React.ReactNode;
     maxWidth?: string;
     onClose: () => void;
     title?: string;
@@ -122,7 +122,7 @@ const Modal: React.FC<ModalProps> = ({
                         <CloseIcon />
                     </button>
                 </div>
-                <div className={styles.content}>{children}</div>
+                <div className={styles.content}>{children(requestClose)}</div>
             </div>
         </div>,
         document.body

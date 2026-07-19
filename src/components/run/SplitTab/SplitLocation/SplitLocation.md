@@ -95,10 +95,11 @@ Pokedex tile.
   selected subarea when `location.subareas` is set, otherwise a section
   built from the location's own `map`/`battles`/`encountersKey`. Wild
   encounters are looked up from the game's `encounters` data via the
-  section's `encountersKey`, if set. A subarea with `hideBattles` set
-  contributes no battles to the section, so no markers or battle card
-  render for it, even though the same subarea data may render battles
-  when reused (without the flag) by another split
+  section's `encountersKey`, if set. A location or subarea with
+  `hideBattles` set contributes no battles to the section, so no
+  markers or battle card render for it, even though the same
+  location/subarea data may render battles when reused (without the
+  flag) by another split
 - `dupes` — every species in `run.caughtPokemon`, regardless of
   location; passed to the encounter table and Pokedex tile to enforce
   one catch per evolution line

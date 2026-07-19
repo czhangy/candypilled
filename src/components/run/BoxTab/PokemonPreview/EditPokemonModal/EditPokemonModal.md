@@ -27,3 +27,9 @@ unchanged).
   `showEvs={!hideEvs}`
 - `defaultMoves` — `pokemon.moves` padded to four entries so every move
   slot in `PokemonForm` has an initial value
+
+## Handlers
+
+- **On `PokemonForm` submit** — calls `onSubmit` with the submitted
+  details, then requests `Modal`'s animated close so submitting plays
+  the same exit animation as its other close affordances

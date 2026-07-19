@@ -114,7 +114,6 @@ const BoxTab: React.FC<BoxTabProps> = ({
         };
 
         LocalStorageHelpers.saveRun(game, updatedRun);
-        setIsAddPokemonModalOpen(false);
     };
 
     const handleToggleStatus = (pokemon: CaughtPokemon): void => {

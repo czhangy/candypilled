@@ -35,6 +35,9 @@ moves flagged as dangerous are shown in red text. When `pokemon` is
   passed to `MoveList`; also gates whether
   `AbilityHelpers.isDangerousAbility` renders the ability button's
   text in red
+- `pokemon.ivs` is normalized into a full `StatValues` via
+  `StatHelpers.normalizeStats` and passed to `MoveList` to resolve
+  Hidden Power's actual type
 
 ## SCSS Variable Dependencies
 
