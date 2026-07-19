@@ -160,7 +160,12 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                 </li>
                 <li className={styles['pokemon-slot__metadata-item--nature']}>
                     {pokemon.nature ? (
-                        <>
+                        <a
+                            className={styles['ability-button']}
+                            href={`/natures?nature=${pokemon.nature.toLowerCase()}`}
+                            rel="noopener noreferrer"
+                            target="_blank"
+                        >
                             {pokemon.nature}
                             {NatureHelpers.getNatureEffect(pokemon.nature) && (
                                 <span
@@ -174,7 +179,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                                     )}
                                 </span>
                             )}
-                        </>
+                        </a>
                     ) : (
                         '-'
                     )}

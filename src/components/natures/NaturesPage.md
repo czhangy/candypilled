@@ -5,9 +5,11 @@ results from a given pair of increased/decreased stats.
 
 ## Computations
 
-- `grid` — the 5x5 nature grid (rows are the increased stat, columns are
-  the decreased stat), from `NatureHelpers.getNatureGrid`. Diagonal cells
-  are neutral natures, shown with a distinct background.
+- `grid` — the 5x5 nature grid from `NatureHelpers.getNatureGrid` (rows
+  are the increased stat, columns are the decreased stat); indexed as
+  `grid[colStat][rowStat]` when rendering so that the increased stat
+  runs across the top and the decreased stat down the side. Diagonal
+  cells are neutral natures, shown with a distinct background.
 - `selectedNature` — the nature selected via the `nature` query param
   (case-insensitive), parsed with `NatureHelpers.parseNature`.
 - `selectedStats` — the increased/decreased stat pair for

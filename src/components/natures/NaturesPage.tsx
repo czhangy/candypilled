@@ -65,30 +65,26 @@ const NaturesPage: React.FC = () => {
         <div className={styles['natures-page']}>
             <div className={styles.grid}>
                 <div className={styles.corner} />
-                <div className={styles['decreased-label']}>
-                    ↓ Decreased Stat
-                </div>
+                <div className={styles['column-label']}>↑ Increased Stat</div>
                 <div className={styles.filler} />
                 {STATS.map((stat) => (
                     <div
-                        className={`${styles['header-cell']} ${selectedStats?.decreased === stat.key ? styles['header-cell--selected'] : ''}`}
+                        className={`${styles['header-cell']} ${selectedStats?.increased === stat.key ? styles['header-cell--selected'] : ''}`}
                         key={stat.key}
                     >
-                        ↓ {stat.label}
+                        ↑ {stat.label}
                     </div>
                 ))}
-                <div className={styles['increased-label']}>
-                    ↑ Increased Stat
-                </div>
+                <div className={styles['row-label']}>↓ Decreased Stat</div>
                 {STATS.map((rowStat, r) => (
                     <Fragment key={rowStat.key}>
                         <div
-                            className={`${styles['row-header']} ${selectedStats?.increased === rowStat.key ? styles['row-header--selected'] : ''}`}
+                            className={`${styles['row-header']} ${selectedStats?.decreased === rowStat.key ? styles['row-header--selected'] : ''}`}
                         >
-                            ↑ {rowStat.label}
+                            ↓ {rowStat.label}
                         </div>
                         {STATS.map((colStat, c) => {
-                            const cell = grid[r][c];
+                            const cell = grid[c][r];
                             return (
                                 <button
                                     className={`${styles.cell} ${cell.neutral ? styles['cell--neutral'] : ''} ${cell.nature === selectedNature ? styles['cell--selected'] : ''}`}

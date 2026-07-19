@@ -5,7 +5,8 @@ a small sprite alongside its level, nature, ability, catch location, held
 item, and tags (as a row of pills, when any are set), followed by its
 calculated stats and a 2x2 grid of its moves.
 Its ability and moves link out to their corresponding views in the
-Abilities and Moves tabs, and its catch location links to that location's
+Abilities and Moves tabs, its nature links to its entry on the Natures
+page in a new tab, and its catch location links to that location's
 card in the Splits tab if the location matches one there (shown as plain
 text, with no hover effect, otherwise). A button (labeled "Dead" or "Revive" depending
 on current status) lets the Pokemon's status be toggled between alive

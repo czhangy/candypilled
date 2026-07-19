@@ -31,7 +31,7 @@
             grid-column: span 2;
         }
 
-        .decreased-label {
+        .column-label {
             @include uppercase-label;
 
             grid-column: span 5;
@@ -42,7 +42,7 @@
             grid-column: span 2;
         }
 
-        .increased-label {
+        .row-label {
             @include uppercase-label;
 
             grid-row: span 5;
