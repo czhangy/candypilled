@@ -121,8 +121,12 @@ export type LocationMerge = {
     // contribute a distinct slice of the same overall pool. 'dedupe' keeps
     // the highest chance instead, for areas whose encounter tables are
     // already-complete duplicates of one another (e.g. disconnected rooms
-    // on the same floor with identical wild encounters).
-    mode?: 'sum' | 'dedupe';
+    // on the same floor with identical wild encounters). 'replace' discards
+    // whatever is already accumulated under `into` and takes `from`
+    // verbatim, for picking one subarea's table as authoritative over a
+    // group of near-duplicate rooms (the last 'replace' entry for a given
+    // `into` wins).
+    mode?: 'sum' | 'dedupe' | 'replace';
 };
 
 export type LocationSplitGroup = {
