@@ -7,7 +7,11 @@ render that icon in place of the text label, with a `Tooltip` on
 hover spelling out the method in text. A method requiring a specific
 gender renders a ♂ or ♀ symbol colored blue or pink instead of the
 "Male"/"Female" text. A method's condition (e.g. the held item for a
-trade evolution) wraps onto its own line beneath the method label.
+trade evolution) wraps onto its own line beneath the method label. The
+arrow column (icon/label and condition text) has a fixed width and wraps
+long text across lines, so arrows stay aligned across branches even when
+their methods' labels differ in length (e.g. Eevee's stone, day/night,
+and location-based evolutions).
 Branches (e.g. Eevee's split into multiple eeveelutions) render as a
 vertical stack of continuations after the branching step, and every
 branch is always shown regardless of which family member is currently

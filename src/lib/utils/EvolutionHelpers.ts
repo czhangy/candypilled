@@ -200,6 +200,23 @@ export default class EvolutionHelpers {
             : undefined;
     }
 
+    // Locations named after the specific landmark the player must be near
+    // (rather than the area as a whole), so the raw location slug's name
+    // doesn't match what's shown in-game.
+    private static readonly LOCATION_NAME_OVERRIDES: Record<string, string> = {
+        'eterna-forest': 'Mossy Rock',
+        'sinnoh-route-217': 'Icy Rock',
+    };
+
+    // "Mt" is an abbreviation of "Mount", so it needs a period that
+    // toTitleCase's generic slug formatting doesn't add.
+    private static getLocationName(location: string): string {
+        return (
+            EvolutionHelpers.LOCATION_NAME_OVERRIDES[location] ??
+            StringHelpers.toTitleCase(location).replace(/^Mt /, 'Mt. ')
+        );
+    }
+
     private static wrapCondition(text: string | undefined): string | undefined {
         return text ? `(${text})` : undefined;
     }
@@ -271,6 +288,16 @@ export default class EvolutionHelpers {
             return {
                 label: `Knows ${StringHelpers.toTitleCase(method.knownMoveType)} Move`,
                 ...base,
+            };
+        }
+
+        if (method.location) {
+            return {
+                label: 'Level Up',
+                condition: EvolutionHelpers.wrapCondition(
+                    EvolutionHelpers.getLocationName(method.location)
+                ),
+                gender: base.gender,
             };
         }
 

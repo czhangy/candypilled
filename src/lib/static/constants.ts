@@ -1,7 +1,4 @@
-import PLATINUM from '@/lib/games/platinum';
-import { Game, Setting, StatValues } from '@/lib/static/types';
-
-export const GAMES: Game[] = [PLATINUM];
+import { Setting, StatValues } from '@/lib/static/types';
 
 // The location name recorded for a starter caught as its own encounter
 // (the "Starter As Separate Encounter" setting), rather than at the

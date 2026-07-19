@@ -8,7 +8,7 @@ import {
     useRouter,
     useSearchParams,
 } from 'next/navigation';
-import { GAMES } from '@/lib/static/constants';
+import { GAMES } from '@/lib/games';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
