@@ -7868,7 +7868,7 @@
             "chance": 100
         }
     ],
-    "solaceon-ruins-b1f-a": [
+    "solaceon-ruins-b1f": [
         {
             "species": "unown",
             "method": "cave",
@@ -7877,7 +7877,7 @@
             "chance": 100
         }
     ],
-    "solaceon-ruins-b1f-b": [
+    "solaceon-ruins-b2f": [
         {
             "species": "unown",
             "method": "cave",
@@ -7886,7 +7886,7 @@
             "chance": 100
         }
     ],
-    "solaceon-ruins-b1f-c": [
+    "solaceon-ruins-b3f": [
         {
             "species": "unown",
             "method": "cave",
@@ -7895,106 +7895,7 @@
             "chance": 100
         }
     ],
-    "solaceon-ruins-b2f-a": [
-        {
-            "species": "unown",
-            "method": "cave",
-            "minLevel": 20,
-            "maxLevel": 30,
-            "chance": 100
-        }
-    ],
-    "solaceon-ruins-b2f-b": [
-        {
-            "species": "unown",
-            "method": "cave",
-            "minLevel": 20,
-            "maxLevel": 30,
-            "chance": 100
-        }
-    ],
-    "solaceon-ruins-b2f-c": [
-        {
-            "species": "unown",
-            "method": "cave",
-            "minLevel": 20,
-            "maxLevel": 30,
-            "chance": 100
-        }
-    ],
-    "solaceon-ruins-b3f-a": [
-        {
-            "species": "unown",
-            "method": "cave",
-            "minLevel": 20,
-            "maxLevel": 30,
-            "chance": 100
-        }
-    ],
-    "solaceon-ruins-b3f-b": [
-        {
-            "species": "unown",
-            "method": "cave",
-            "minLevel": 20,
-            "maxLevel": 30,
-            "chance": 100
-        }
-    ],
-    "solaceon-ruins-b3f-c": [
-        {
-            "species": "unown",
-            "method": "cave",
-            "minLevel": 20,
-            "maxLevel": 30,
-            "chance": 100
-        }
-    ],
-    "solaceon-ruins-b3f-d": [
-        {
-            "species": "unown",
-            "method": "cave",
-            "minLevel": 20,
-            "maxLevel": 30,
-            "chance": 100
-        }
-    ],
-    "solaceon-ruins-b3f-e": [
-        {
-            "species": "unown",
-            "method": "cave",
-            "minLevel": 20,
-            "maxLevel": 30,
-            "chance": 100
-        }
-    ],
-    "solaceon-ruins-b4f-a": [
-        {
-            "species": "unown",
-            "method": "cave",
-            "minLevel": 20,
-            "maxLevel": 30,
-            "chance": 100
-        }
-    ],
-    "solaceon-ruins-b4f-b": [
-        {
-            "species": "unown",
-            "method": "cave",
-            "minLevel": 20,
-            "maxLevel": 30,
-            "chance": 100
-        }
-    ],
-    "solaceon-ruins-b4f-c": [
-        {
-            "species": "unown",
-            "method": "cave",
-            "minLevel": 20,
-            "maxLevel": 30,
-            "chance": 100
-        }
-    ],
-    "solaceon-ruins-b4f-d": [
+    "solaceon-ruins-b4f": [
         {
             "species": "unown",
             "method": "cave",

@@ -187,7 +187,10 @@ const fetchAreaEncounters = async (
     return encounters;
 };
 
-const mergeEncounters = <T extends RawEncounter>(encounters: T[]): T[] => {
+const mergeEncounters = <T extends RawEncounter>(
+    encounters: T[],
+    mode: 'sum' | 'dedupe'
+): T[] => {
     const merged = new Map<string, T>();
 
     for (const encounter of encounters) {
@@ -202,7 +205,10 @@ const mergeEncounters = <T extends RawEncounter>(encounters: T[]): T[] => {
             continue;
         }
 
-        existing.chance = (existing.chance ?? 0) + (encounter.chance ?? 0);
+        existing.chance =
+            mode === 'dedupe'
+                ? Math.max(existing.chance ?? 0, encounter.chance ?? 0)
+                : (existing.chance ?? 0) + (encounter.chance ?? 0);
         existing.minLevel = Math.min(existing.minLevel, encounter.minLevel);
         existing.maxLevel = Math.max(existing.maxLevel, encounter.maxLevel);
     }
@@ -214,12 +220,14 @@ const mergeLocations = (
     locationsData: Record<string, Encounter[]>,
     mergedLocations: LocationMerge[]
 ): void => {
-    for (const { from, into } of mergedLocations) {
+    for (const { from, into, mode = 'sum' } of mergedLocations) {
         const source = locationsData[from];
-        const target = locationsData[into];
-        if (!source || !target) continue;
+        if (!source) continue;
 
-        locationsData[into] = mergeEncounters([...target, ...source]);
+        const target = locationsData[into];
+        locationsData[into] = target
+            ? mergeEncounters([...target, ...source], mode)
+            : source;
         delete locationsData[from];
     }
 };
@@ -371,10 +379,10 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
                 version.methodOverrides ?? []
             );
             const withMethodRenames = resolveMethodRenames(withMethodOverrides);
-            const merged = mergeEncounters(withMethodRenames);
+            const merged = mergeEncounters(withMethodRenames, 'sum');
             const expanded = expandTimeOfDayEncounters(merged);
             const withHoneyTree = resolveHoneyTreeEncounters(expanded);
-            const remerged = mergeEncounters(withHoneyTree);
+            const remerged = mergeEncounters(withHoneyTree, 'sum');
             const rawFinalEncounters = nullifyChances(remerged);
 
             if (rawFinalEncounters.length === 0) continue;

@@ -100,6 +100,12 @@ export type MethodOverride = {
 export type LocationMerge = {
     from: string;
     into: string;
+    // 'sum' (default) adds chances together, for combining areas that each
+    // contribute a distinct slice of the same overall pool. 'dedupe' keeps
+    // the highest chance instead, for areas whose encounter tables are
+    // already-complete duplicates of one another (e.g. disconnected rooms
+    // on the same floor with identical wild encounters).
+    mode?: 'sum' | 'dedupe';
 };
 
 export type LocationSplitGroup = {

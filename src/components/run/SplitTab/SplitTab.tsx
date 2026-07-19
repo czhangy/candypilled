@@ -78,12 +78,12 @@ const SplitTab: React.FC<SplitTabProps> = ({
                     }
                 });
 
-                const firstVisibleSlug = slugs.find((slug) =>
-                    visibleSlugs.has(slug)
-                );
+                const lastVisibleSlug = slugs
+                    .filter((slug) => visibleSlugs.has(slug))
+                    .pop();
 
-                if (firstVisibleSlug) {
-                    setActiveLocationSlug(firstVisibleSlug);
+                if (lastVisibleSlug) {
+                    setActiveLocationSlug(lastVisibleSlug);
                 }
             },
             {

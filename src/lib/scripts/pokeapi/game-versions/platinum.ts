@@ -157,6 +157,15 @@ export const platinum: GameVersion = {
     strippedConditionPrefixes: ['story-progress-', 'item-', 'backlot-'],
     mergedLocations: [
         { from: 'eterna-city-west-gate', into: 'eterna-city-area' },
+        ...['b1f', 'b2f', 'b3f', 'b4f'].flatMap((floor) =>
+            ['a', 'b', 'c', 'd', 'e']
+                .map((suffix) => `solaceon-ruins-${floor}-${suffix}`)
+                .map((from) => ({
+                    from,
+                    into: `solaceon-ruins-${floor}`,
+                    mode: 'dedupe' as const,
+                }))
+        ),
     ],
     locationSplits: [
         {
