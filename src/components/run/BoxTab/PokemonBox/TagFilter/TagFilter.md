@@ -5,7 +5,10 @@ a tag adds it to the active filter, letting the caller narrow a list
 down to Pokemon carrying every checked tag. Long tag labels are
 truncated with an ellipsis rather than wrapping or overflowing. The
 button is highlighted in the game's accent color while at least one tag
-is checked. The menu closes on an outside click.
+is checked. The menu closes on an outside click. It slides down while
+fading in when it opens, and reverses that animation on close before
+unmounting (skipped in favor of an instant close when the user prefers
+reduced motion).
 
 ## Props
 
@@ -17,9 +20,10 @@ is checked. The menu closes on an outside click.
 
 ## State
 
-| State    | Type      | Initial value | Description               |
-| -------- | --------- | ------------- | ------------------------- |
-| `isOpen` | `boolean` | `false`       | Whether the menu is shown |
+| State       | Type      | Initial value | Description                                                       |
+| ----------- | --------- | ------------- | ----------------------------------------------------------------- |
+| `isOpen`    | `boolean` | `false`       | Whether the menu is open                                          |
+| `isClosing` | `boolean` | `false`       | Whether the menu is playing its close animation before unmounting |
 
 ## Effects
 
@@ -31,6 +35,11 @@ is checked. The menu closes on an outside click.
 - **On the trigger click** — toggles `isOpen`
 - **On a tag's checkbox change** — adds or removes that tag from
   `selectedTags` via `onChange`
+- **On closing the menu** — clears `isOpen` and sets `isClosing` unless
+  the user prefers reduced motion, in which case the menu unmounts
+  immediately
+- **On the menu's close animation ending** — clears `isClosing`, letting
+  the menu unmount
 
 ## SCSS Variable Dependencies
 

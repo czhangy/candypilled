@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import FilterIcon from '@/lib/icons/FilterIcon';
 import styles from './TagFilter.module.scss';
 
@@ -16,23 +16,35 @@ const TagFilter: React.FC<TagFilterProps> = ({
     tags,
 }) => {
     // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [isClosing, setIsClosing] = useState(false);
+
+    // -------------------------------------------------------------------------
     // HOOKS
     // -------------------------------------------------------------------------
 
     const containerRef = useRef<HTMLDivElement>(null);
 
-    // -------------------------------------------------------------------------
-    // STATE
-    // -------------------------------------------------------------------------
-
-    const [isOpen, setIsOpen] = useState(false);
+    const handleClose = useCallback((): void => {
+        setIsOpen(false);
+        setIsClosing(
+            !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        );
+    }, []);
 
     // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
 
     const handleToggleOpen = (): void => {
-        setIsOpen((prev) => !prev);
+        if (isOpen) {
+            handleClose();
+        } else {
+            setIsOpen(true);
+        }
     };
 
     const handleTagToggle = (tag: string): void => {
@@ -41,6 +53,10 @@ const TagFilter: React.FC<TagFilterProps> = ({
                 ? selectedTags.filter((selectedTag) => selectedTag !== tag)
                 : [...selectedTags, tag]
         );
+    };
+
+    const handleAnimationEnd = (): void => {
+        setIsClosing(false);
     };
 
     // -------------------------------------------------------------------------
@@ -52,7 +68,7 @@ const TagFilter: React.FC<TagFilterProps> = ({
 
         const handleClickOutside = (event: MouseEvent): void => {
             if (!containerRef.current?.contains(event.target as Node)) {
-                setIsOpen(false);
+                handleClose();
             }
         };
 
@@ -60,7 +76,7 @@ const TagFilter: React.FC<TagFilterProps> = ({
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [isOpen]);
+    }, [handleClose, isOpen]);
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -82,8 +98,16 @@ const TagFilter: React.FC<TagFilterProps> = ({
             >
                 <FilterIcon />
             </button>
-            {isOpen && (
-                <ul className={styles.menu}>
+            {(isOpen || isClosing) && (
+                <ul
+                    className={[
+                        styles.menu,
+                        isClosing && styles['menu--closing'],
+                    ]
+                        .filter(Boolean)
+                        .join(' ')}
+                    onAnimationEnd={handleAnimationEnd}
+                >
                     {tags.map((tag) => (
                         <li key={tag}>
                             <label className={styles.option}>

@@ -6,7 +6,10 @@ chevron, styled to sit flush inside the surrounding heading text rather
 than looking like a bordered form control. Clicking it opens a floating
 menu, portaled to the document body and positioned below the trigger's
 screen coordinates, listing every split in the game; clicking one selects
-it and closes the menu. The menu also closes on an outside click.
+it and closes the menu. The menu also closes on an outside click. It
+slides down while fading in when it opens, and reverses that animation
+on close before unmounting (skipped in favor of an instant close when
+the user prefers reduced motion).
 
 ## Props
 
@@ -20,7 +23,8 @@ it and closes the menu. The menu also closes on an outside click.
 
 | State           | Type                    | Initial value | Description                                                                                |
 | --------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------ |
-| `isOpen`        | `boolean`               | `false`       | Whether the menu is shown                                                                  |
+| `isOpen`        | `boolean`               | `false`       | Whether the menu is open                                                                   |
+| `isClosing`     | `boolean`               | `false`       | Whether the menu is playing its close animation before unmounting                          |
 | `menuPlacement` | `MenuPlacement \| null` | `null`        | The portaled menu's screen position/size and inherited accent color, recomputed while open |
 
 ## Effects
@@ -37,3 +41,8 @@ it and closes the menu. The menu also closes on an outside click.
 - **On the trigger click** — toggles `isOpen`
 - **On an option click** — calls `onChange` with that option and closes
   the menu
+- **On closing the menu** — clears `isOpen` and sets `isClosing` unless
+  the user prefers reduced motion, in which case the menu unmounts
+  immediately
+- **On the menu's close animation ending** — clears `isClosing`, letting
+  the menu unmount

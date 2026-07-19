@@ -5,10 +5,12 @@ menu of options, portaled to the document body and positioned below
 the trigger's screen coordinates so it isn't clipped by an ancestor's
 `overflow` (e.g. a scrollable modal). Clicking an option selects it and
 closes the menu, and the selected option is highlighted in the game's
-accent color. The menu also closes on an outside click. Optionally
-offers a search input at the top of the menu that filters the option
-list as it's typed into, highlighting the matching substring of each
-result in the game's accent color.
+accent color. The menu also closes on an outside click. It slides down
+while fading in when it opens, and reverses that animation on close
+before unmounting (skipped in favor of an instant close when the user
+prefers reduced motion). Optionally offers a search input at the top of
+the menu that filters the option list as it's typed into, highlighting
+the matching substring of each result in the game's accent color.
 
 ## Props
 
@@ -24,7 +26,8 @@ result in the game's accent color.
 
 | State           | Type                    | Initial value | Description                                                                                |
 | --------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------ |
-| `isOpen`        | `boolean`               | `false`       | Whether the menu is shown                                                                  |
+| `isOpen`        | `boolean`               | `false`       | Whether the menu is open                                                                   |
+| `isClosing`     | `boolean`               | `false`       | Whether the menu is playing its close animation before unmounting                          |
 | `query`         | `string`                | `''`          | The current search text, used to filter options when `searchable`                          |
 | `menuPlacement` | `MenuPlacement \| null` | `null`        | The portaled menu's screen position/size and inherited accent color, recomputed while open |
 
@@ -57,3 +60,8 @@ the substring matching `query` (only meaningful when `searchable`, since
 - **On an option click** — calls `onChange` with that option's value
   and closes the menu
 - **On the search input change** — sets `query`
+- **On closing the menu** — clears `isOpen` and `query`, and sets
+  `isClosing` unless the user prefers reduced motion, in which case the
+  menu unmounts immediately
+- **On the menu's close animation ending** — clears `isClosing`, letting
+  the menu unmount

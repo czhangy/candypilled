@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import HighlightedText from '@/components/common/HighlightedText/HighlightedText';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
@@ -36,6 +36,17 @@ const Dropdown: React.FC<DropdownProps> = ({
     };
 
     // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [isClosing, setIsClosing] = useState(false);
+    const [query, setQuery] = useState('');
+    const [menuPlacement, setMenuPlacement] = useState<MenuPlacement | null>(
+        null
+    );
+
+    // -------------------------------------------------------------------------
     // HOOKS
     // -------------------------------------------------------------------------
 
@@ -43,24 +54,17 @@ const Dropdown: React.FC<DropdownProps> = ({
     const menuRef = useRef<HTMLDivElement>(null);
     const searchInputRef = useRef<HTMLInputElement>(null);
 
-    // -------------------------------------------------------------------------
-    // STATE
-    // -------------------------------------------------------------------------
-
-    const [isOpen, setIsOpen] = useState(false);
-    const [query, setQuery] = useState('');
-    const [menuPlacement, setMenuPlacement] = useState<MenuPlacement | null>(
-        null
-    );
+    const handleCloseMenu = useCallback((): void => {
+        setIsOpen(false);
+        setQuery('');
+        setIsClosing(
+            !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        );
+    }, []);
 
     // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
-
-    const handleCloseMenu = (): void => {
-        setIsOpen(false);
-        setQuery('');
-    };
 
     const handleToggle = (): void => {
         if (isOpen) {
@@ -79,6 +83,10 @@ const Dropdown: React.FC<DropdownProps> = ({
         event: React.ChangeEvent<HTMLInputElement>
     ): void => {
         setQuery(event.target.value);
+    };
+
+    const handleAnimationEnd = (): void => {
+        setIsClosing(false);
     };
 
     // -------------------------------------------------------------------------
@@ -102,7 +110,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [isOpen]);
+    }, [handleCloseMenu, isOpen]);
 
     useEffect(() => {
         if (isOpen && searchable) {
@@ -176,11 +184,17 @@ const Dropdown: React.FC<DropdownProps> = ({
                     <ChevronIcon />
                 </span>
             </button>
-            {isOpen &&
+            {(isOpen || isClosing) &&
                 menuPlacement &&
                 createPortal(
                     <div
-                        className={styles.menu}
+                        className={[
+                            styles.menu,
+                            isClosing && styles['menu--closing'],
+                        ]
+                            .filter(Boolean)
+                            .join(' ')}
+                        onAnimationEnd={handleAnimationEnd}
                         ref={menuRef}
                         style={
                             {
