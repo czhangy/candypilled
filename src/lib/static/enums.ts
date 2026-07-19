@@ -11,6 +11,7 @@ export enum EncounterMethod {
     Special = 'special',
     Starter = 'starter',
     Surf = 'surf',
+    Walking = 'walking',
 }
 
 export enum FieldCondition {

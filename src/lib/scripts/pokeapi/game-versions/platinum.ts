@@ -134,6 +134,11 @@ export const platinum: GameVersion = {
             species: 'shieldon',
             method: EncounterMethod.Fossil,
         },
+        {
+            location: 'old-chateau',
+            species: 'gastly',
+            method: EncounterMethod.Walking,
+        },
     ],
     excludedMethods: [
         'super-rod',
@@ -166,6 +171,23 @@ export const platinum: GameVersion = {
                     mode: 'dedupe' as const,
                 }))
         ),
+        // The Old Chateau's 2F rooms are disconnected but share the same
+        // wild encounters, except old-chateau-2f-left-room, whose table
+        // (with time-of-day gastly and the static Rotom encounter) is the
+        // authoritative one. Processed in order, so left-room must come
+        // last to win.
+        ...[
+            'private-room',
+            'leftmost-room',
+            'middle-room',
+            'right-room',
+            'rightmost-room',
+            'left-room',
+        ].map((suffix) => ({
+            from: `old-chateau-2f-${suffix}`,
+            into: 'old-chateau-2f',
+            mode: 'replace' as const,
+        })),
     ],
     locationSplits: [
         {

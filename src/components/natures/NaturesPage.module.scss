@@ -1,0 +1,100 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.natures-page {
+    @include full-height;
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem;
+
+    .grid {
+        display: grid;
+        grid-template-columns: 2.5rem auto repeat(5, 1fr);
+
+        > div,
+        > button {
+            align-items: center;
+            background: none;
+            border: 1px solid $border-subtle;
+            color: $foreground;
+            display: flex;
+            font: inherit;
+            justify-content: center;
+            padding: 0.85rem 1.25rem;
+            text-align: center;
+        }
+
+        .corner {
+            border-bottom: none;
+            grid-column: span 2;
+        }
+
+        .column-label {
+            @include uppercase-label;
+
+            grid-column: span 5;
+        }
+
+        .filler {
+            border-top: none;
+            grid-column: span 2;
+        }
+
+        .row-label {
+            @include uppercase-label;
+
+            grid-row: span 5;
+            transform: rotate(180deg);
+            writing-mode: vertical-rl;
+        }
+
+        .header-cell,
+        .row-header {
+            @include mono-label;
+
+            transition: color 0.15s ease;
+            white-space: nowrap;
+
+            &--selected {
+                color: $accent;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
+        }
+
+        .cell {
+            background: $background-light;
+            cursor: pointer;
+            transition:
+                background 0.15s ease,
+                color 0.15s ease;
+
+            &--neutral {
+                background: $border-subtle;
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    background: color-mix(
+                        in srgb,
+                        $background-light 70%,
+                        $accent 30%
+                    );
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
+
+            &--selected {
+                background: $accent;
+                color: $background;
+            }
+        }
+    }
+}

@@ -53,6 +53,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         EncounterMethod.Gift,
         EncounterMethod.Egg,
         EncounterMethod.Grass,
+        EncounterMethod.Walking,
         EncounterMethod.Cave,
         EncounterMethod.FeebasTile,
         EncounterMethod.OldRod,
@@ -117,6 +118,10 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
 
     const timesOfDay = getTimesOfDay();
 
+    const effectiveTimeOfDay = timesOfDay.includes(selectedTimeOfDay ?? '')
+        ? selectedTimeOfDay
+        : timesOfDay[0];
+
     const hasStarterEncounter = encounters.some(
         (encounter) => encounter.method === EncounterMethod.Starter
     );
@@ -134,7 +139,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         const matchesTimeOfDay =
             !TIME_OF_DAY_CONDITIONS.some((time) =>
                 encounter.conditions?.includes(time)
-            ) || encounter.conditions?.includes(selectedTimeOfDay ?? '');
+            ) || encounter.conditions?.includes(effectiveTimeOfDay ?? '');
 
         const isDupe =
             hideDupes &&
@@ -213,7 +218,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                 {timesOfDay.length > 1 && !hasVisibleStarterEncounter && (
                     <TimeOfDayButtons
                         onSelect={handleTimeOfDayChange}
-                        selectedTime={selectedTimeOfDay}
+                        selectedTime={effectiveTimeOfDay}
                         times={timesOfDay}
                     />
                 )}

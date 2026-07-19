@@ -290,13 +290,16 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                             >
                                                 Nature
                                             </span>
-                                            <span
+                                            <a
                                                 className={
-                                                    styles['detail-value']
+                                                    styles['detail-link']
                                                 }
+                                                href={`/natures?nature=${pokemon.nature.toLowerCase()}`}
+                                                rel="noopener noreferrer"
+                                                target="_blank"
                                             >
                                                 {pokemon.nature}
-                                            </span>
+                                            </a>
                                         </div>
                                     )}
                                     {ability && (

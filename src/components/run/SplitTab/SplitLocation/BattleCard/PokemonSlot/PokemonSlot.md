@@ -8,10 +8,11 @@ annotated with their stat
 effects, shown in a smaller font on the same line (e.g. "Adamant [+Atk
 -SpA]"). Each Pokemon's name is prefixed with its level (e.g. "Lv.5
 Chimchar"). The ability is clickable, linking to that ability's
-details; its background darkens further on hover, and when the
-"Highlight Dangerous Moves/Abilities" setting is on, abilities and
-moves flagged as dangerous are shown in red text. When `pokemon` is
-`null`, an empty placeholder slot is shown instead.
+details, and the nature is clickable, opening its entry on the Natures
+page in a new tab; both have a background that darkens further on
+hover, and when the "Highlight Dangerous Moves/Abilities" setting is
+on, abilities and moves flagged as dangerous are shown in red text.
+When `pokemon` is `null`, an empty placeholder slot is shown instead.
 
 ## Props
 

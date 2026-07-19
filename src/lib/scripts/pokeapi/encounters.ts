@@ -224,10 +224,14 @@ const mergeLocations = (
         const source = locationsData[from];
         if (!source) continue;
 
-        const target = locationsData[into];
-        locationsData[into] = target
-            ? mergeEncounters([...target, ...source], mode)
-            : source;
+        if (mode === 'replace') {
+            locationsData[into] = source;
+        } else {
+            const target = locationsData[into];
+            locationsData[into] = target
+                ? mergeEncounters([...target, ...source], mode)
+                : source;
+        }
         delete locationsData[from];
     }
 };

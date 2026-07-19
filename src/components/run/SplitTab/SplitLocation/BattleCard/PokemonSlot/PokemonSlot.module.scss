@@ -78,9 +78,11 @@
                 border: none;
                 color: inherit;
                 cursor: pointer;
+                display: block;
                 font: inherit;
                 margin: -0.3rem;
                 padding: 0.3rem;
+                text-decoration: none;
                 transition: background-color 0.2s ease;
                 width: calc(100% + 0.6rem);
 

@@ -1,6 +1,7 @@
 import HEARTHOME_CITY from '@/lib/games/platinum/locations/hearthome-city';
 import HEARTHOME_GYM from '@/lib/games/platinum/locations/hearthome-gym';
 import MT_CORONET from '@/lib/games/platinum/locations/mt-coronet';
+import OLD_CHATEAU from '@/lib/games/platinum/locations/old-chateau';
 import ROUTE_206 from '@/lib/games/platinum/locations/route-206';
 import ROUTE_207 from '@/lib/games/platinum/locations/route-207';
 import ROUTE_208 from '@/lib/games/platinum/locations/route-208';
@@ -12,6 +13,7 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const FANTINA: Split = {
     name: 'Fantina',
     locations: [
+        OLD_CHATEAU,
         TEAM_GALACTIC_ETERNA_BUILDING,
         ROUTE_206,
         WAYWARD_CAVE,

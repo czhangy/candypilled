@@ -20,6 +20,23 @@ export type DropdownOption = {
     value: string;
 };
 
+// A stat key affected by nature (all StatValues keys except hp, which
+// nature never modifies).
+export type NatureGridStat = Exclude<keyof StatValues, 'hp'>;
+
+// A single cell in the nature pivot table rendered on the natures page.
+export type NatureGridCell = {
+    nature: Nature;
+    neutral: boolean;
+};
+
+// The increased/decreased stat pair a nature corresponds to in the grid.
+// Both fields are the same stat for a neutral nature.
+export type NatureStatPair = {
+    increased: NatureGridStat;
+    decreased: NatureGridStat;
+};
+
 // A single global toggle shown on the settings page. `id` is the
 // localStorage key it's persisted under (via SettingsHelpers).
 export type Setting = {
@@ -104,8 +121,12 @@ export type LocationMerge = {
     // contribute a distinct slice of the same overall pool. 'dedupe' keeps
     // the highest chance instead, for areas whose encounter tables are
     // already-complete duplicates of one another (e.g. disconnected rooms
-    // on the same floor with identical wild encounters).
-    mode?: 'sum' | 'dedupe';
+    // on the same floor with identical wild encounters). 'replace' discards
+    // whatever is already accumulated under `into` and takes `from`
+    // verbatim, for picking one subarea's table as authoritative over a
+    // group of near-duplicate rooms (the last 'replace' entry for a given
+    // `into` wins).
+    mode?: 'sum' | 'dedupe' | 'replace';
 };
 
 export type LocationSplitGroup = {
@@ -160,6 +181,11 @@ export type Location = {
     map?: StaticImageData;
     battles?: Battle[];
     subareas?: Subarea[];
+    // Overrides for `map`/`encountersKey` once Team Galactic's
+    // interference at the lakes has occurred (e.g. Lake Verity's map and
+    // wild encounters change after Mars appears there).
+    postGalacticMap?: StaticImageData;
+    postGalacticEncountersKey?: string;
 };
 
 export type Split = {

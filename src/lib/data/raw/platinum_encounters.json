@@ -10044,7 +10044,7 @@
     "old-chateau-entrance": [
         {
             "species": "gastly",
-            "method": "grass",
+            "method": "walking",
             "minLevel": 14,
             "maxLevel": 17,
             "chance": 100
@@ -10053,16 +10053,7 @@
     "old-chateau-dining-room": [
         {
             "species": "gastly",
-            "method": "grass",
-            "minLevel": 14,
-            "maxLevel": 17,
-            "chance": 100
-        }
-    ],
-    "old-chateau-2f-private-room": [
-        {
-            "species": "gastly",
-            "method": "grass",
+            "method": "walking",
             "minLevel": 14,
             "maxLevel": 17,
             "chance": 100
@@ -10071,25 +10062,7 @@
     "old-chateau-2f": [
         {
             "species": "gastly",
-            "method": "grass",
-            "minLevel": 14,
-            "maxLevel": 17,
-            "chance": 100
-        }
-    ],
-    "old-chateau-2f-leftmost-room": [
-        {
-            "species": "gastly",
-            "method": "grass",
-            "minLevel": 14,
-            "maxLevel": 17,
-            "chance": 100
-        }
-    ],
-    "old-chateau-2f-left-room": [
-        {
-            "species": "gastly",
-            "method": "grass",
+            "method": "walking",
             "minLevel": 14,
             "maxLevel": 17,
             "chance": 100,
@@ -10097,7 +10070,7 @@
         },
         {
             "species": "gastly",
-            "method": "grass",
+            "method": "walking",
             "minLevel": 14,
             "maxLevel": 17,
             "chance": 100,
@@ -10105,7 +10078,7 @@
         },
         {
             "species": "gastly",
-            "method": "grass",
+            "method": "walking",
             "minLevel": 14,
             "maxLevel": 17,
             "chance": 100,
@@ -10118,33 +10091,6 @@
             "maxLevel": 20,
             "chance": null,
             "conditions": ["time-night"]
-        }
-    ],
-    "old-chateau-2f-middle-room": [
-        {
-            "species": "gastly",
-            "method": "grass",
-            "minLevel": 14,
-            "maxLevel": 17,
-            "chance": 100
-        }
-    ],
-    "old-chateau-2f-right-room": [
-        {
-            "species": "gastly",
-            "method": "grass",
-            "minLevel": 14,
-            "maxLevel": 17,
-            "chance": 100
-        }
-    ],
-    "old-chateau-2f-rightmost-room": [
-        {
-            "species": "gastly",
-            "method": "grass",
-            "minLevel": 14,
-            "maxLevel": 17,
-            "chance": 100
         }
     ],
     "lake-verity-before-galactic-intervention": [
