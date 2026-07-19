@@ -42,4 +42,6 @@ hovering the disabled submit button shows a tooltip explaining why.
 
 - **On the Location input change** — sets `location`
 - **On `PokemonForm` submit** — calls `onSubmit` with the submitted
-  details and `location`
+  details and `location`, then requests `Modal`'s animated close so
+  submitting plays the same exit animation as its other close
+  affordances

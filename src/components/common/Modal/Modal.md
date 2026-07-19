@@ -6,18 +6,21 @@ close button, an overlay click, or the Escape key, playing a fade/scale-out
 animation (mirroring the fade/scale-in played on mount) before calling
 `onClose`. Both animations are skipped, closing immediately, when the user
 prefers reduced motion. The header stays fixed in place while its content
-area scrolls independently when taller than the modal.
+area scrolls independently when taller than the modal. `children` is a
+render prop receiving `requestClose`, so content-driven closes (a Cancel
+button, a form submitting) play the same exit animation as the built-in
+close affordances instead of unmounting the modal immediately.
 
 ## Props
 
-| Prop              | Type              | Required | Default | Description                                                                                                                    |
-| ----------------- | ----------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `accentColor`     | `string`          | No       | -       | Sets `--accent-color` on the modal's portaled root, since it renders outside any ancestor that would otherwise provide it      |
-| `buttonTextColor` | `string`          | No       | -       | Sets `--button-text-color` on the modal's portaled root, since it renders outside any ancestor that would otherwise provide it |
-| `children`        | `React.ReactNode` | Yes      | -       | The modal's content                                                                                                            |
-| `maxWidth`        | `string`          | No       | `32rem` | Overrides the modal's max width, for content wider than the default                                                            |
-| `onClose`         | `() => void`      | Yes      | -       | Called once the close request (and its exit animation, if any) has finished                                                    |
-| `title`           | `string`          | No       | -       | Title text shown in the modal's header                                                                                         |
+| Prop              | Type                                            | Required | Default | Description                                                                                                                    |
+| ----------------- | ----------------------------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `accentColor`     | `string`                                        | No       | -       | Sets `--accent-color` on the modal's portaled root, since it renders outside any ancestor that would otherwise provide it      |
+| `buttonTextColor` | `string`                                        | No       | -       | Sets `--button-text-color` on the modal's portaled root, since it renders outside any ancestor that would otherwise provide it |
+| `children`        | `(requestClose: () => void) => React.ReactNode` | Yes      | -       | Render prop for the modal's content, given `requestClose` to trigger the same animated close as the built-in affordances       |
+| `maxWidth`        | `string`                                        | No       | `32rem` | Overrides the modal's max width, for content wider than the default                                                            |
+| `onClose`         | `() => void`                                    | Yes      | -       | Called once the close request (and its exit animation, if any) has finished                                                    |
+| `title`           | `string`                                        | No       | -       | Title text shown in the modal's header                                                                                         |
 
 ## State
 

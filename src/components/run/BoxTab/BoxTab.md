@@ -53,8 +53,9 @@ the currently selected Pokemon on the right, taking up the remaining third.
 - `handleCloseAddPokemonModal` — closes `AddPokemonModal`
 - `handleAddPokemon` — appends a new record (the submitted details, its
   freeform location, an empty `heldItem`, and a `status` of
-  `PokemonStatus.Alive`) to `run.caughtPokemon`, saves the updated run,
-  and closes `AddPokemonModal`
+  `PokemonStatus.Alive`) to `run.caughtPokemon` and saves the updated
+  run; `AddPokemonModal` closes itself, with its own exit animation,
+  once it requests the close
 - `handleToggleStatus` — flips a caught Pokemon's `status` between
   `PokemonStatus.Alive` and `PokemonStatus.Dead`, saves the updated run,
   and switches `view` to the box the Pokemon now belongs in (`'graveyard'`

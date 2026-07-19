@@ -125,7 +125,6 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
             | 'tags'
         >
     ): void => {
-        setIsEditOpen(false);
         if (pokemon) {
             onEdit(pokemon, details);
         }
@@ -140,7 +139,6 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     };
 
     const handleEvolveConfirm = (newName: string): void => {
-        setIsEvolveOpen(false);
         if (pokemon) {
             onEvolve(pokemon, newName);
         }

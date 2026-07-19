@@ -23,3 +23,11 @@ A confirmation modal for evolving a caught Pokemon. Always presents its possible
 
 - `displayName` — title-cased display name of the Pokemon's current species, used in the modal title
 - `formNames` — `evolutions` expanded via `PokemonHelpers.getPokemonForms`, resolving each step's name to every matching form key (one, unless the step's name is ambiguous between multiple forms); one selectable option is rendered per entry
+
+## Handlers
+
+- **On the Cancel button click** — requests `Modal`'s animated close
+  directly, without calling `onClose`
+- **On the Evolve button click** — calls `onConfirm` with `selected`,
+  then requests `Modal`'s animated close so confirming plays the same
+  exit animation as its other close affordances

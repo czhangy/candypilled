@@ -65,8 +65,10 @@ const EvolveModal: React.FC<EvolveModalProps> = ({
         setSelected(name);
     };
 
-    const handleConfirmClick = (): void => {
-        if (selected) onConfirm(selected);
+    const handleConfirmClick = (requestClose: () => void): void => {
+        if (!selected) return;
+        onConfirm(selected);
+        requestClose();
     };
 
     // -------------------------------------------------------------------------
@@ -79,59 +81,61 @@ const EvolveModal: React.FC<EvolveModalProps> = ({
             onClose={onClose}
             title={`Evolve ${displayName}?`}
         >
-            <div className={styles['evolve-modal']}>
-                <div className={styles.options}>
-                    {formNames.map((formName) => {
-                        const sprite = PokemonHelpers.getPokemonSprite(
-                            formName,
-                            variant
-                        );
+            {(requestClose) => (
+                <div className={styles['evolve-modal']}>
+                    <div className={styles.options}>
+                        {formNames.map((formName) => {
+                            const sprite = PokemonHelpers.getPokemonSprite(
+                                formName,
+                                variant
+                            );
 
-                        return (
-                            <button
-                                className={[
-                                    styles.option,
-                                    formName === selected &&
-                                        styles['option--selected'],
-                                ]
-                                    .filter(Boolean)
-                                    .join(' ')}
-                                key={formName}
-                                onClick={() => handleOptionClick(formName)}
-                                type="button"
-                            >
-                                <div className={styles.sprite}>
-                                    {sprite && (
-                                        <Image
-                                            alt={formName}
-                                            height={SPRITE_SIZE}
-                                            src={sprite}
-                                            width={SPRITE_SIZE}
-                                        />
-                                    )}
-                                </div>
-                            </button>
-                        );
-                    })}
+                            return (
+                                <button
+                                    className={[
+                                        styles.option,
+                                        formName === selected &&
+                                            styles['option--selected'],
+                                    ]
+                                        .filter(Boolean)
+                                        .join(' ')}
+                                    key={formName}
+                                    onClick={() => handleOptionClick(formName)}
+                                    type="button"
+                                >
+                                    <div className={styles.sprite}>
+                                        {sprite && (
+                                            <Image
+                                                alt={formName}
+                                                height={SPRITE_SIZE}
+                                                src={sprite}
+                                                width={SPRITE_SIZE}
+                                            />
+                                        )}
+                                    </div>
+                                </button>
+                            );
+                        })}
+                    </div>
+                    <div className={styles['confirm-actions']}>
+                        <button
+                            className={styles.cancel}
+                            onClick={requestClose}
+                            type="button"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            className={styles.confirm}
+                            disabled={!selected}
+                            onClick={() => handleConfirmClick(requestClose)}
+                            type="button"
+                        >
+                            Evolve
+                        </button>
+                    </div>
                 </div>
-                <div className={styles['confirm-actions']}>
-                    <button
-                        className={styles.cancel}
-                        onClick={onClose}
-                        type="button"
-                    >
-                        Cancel
-                    </button>
-                    <button
-                        className={styles.confirm}
-                        disabled={!selected}
-                        onClick={handleConfirmClick}
-                        type="button"
-                    >
-                        Evolve
-                    </button>
-                </div>
-            </div>
+            )}
         </Modal>
     );
 };
