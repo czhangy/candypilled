@@ -1,5 +1,10 @@
 import { Nature } from '@/lib/static/enums';
-import { StatValues } from '@/lib/static/types';
+import {
+    NatureGridCell,
+    NatureGridStat,
+    NatureStatPair,
+    StatValues,
+} from '@/lib/static/types';
 
 type NatureEffect = {
     increased: string;
@@ -18,6 +23,61 @@ export default class NatureHelpers {
 
         return `[+${effect.increased} -${effect.decreased}]`;
     }
+
+    /**
+     * The full nature pivot table: rows indexed by increased stat, columns
+     * indexed by decreased stat, both in `STAT_ORDER`. Cells on the diagonal
+     * are neutral (the stat is both increased and decreased).
+     */
+    static getNatureGrid(): NatureGridCell[][] {
+        return NatureHelpers.STAT_ORDER.map((increased) =>
+            NatureHelpers.STAT_ORDER.map((decreased) => ({
+                nature:
+                    increased === decreased
+                        ? NatureHelpers.NEUTRALS[increased]
+                        : NatureHelpers.findNature(increased, decreased),
+                neutral: increased === decreased,
+            }))
+        );
+    }
+
+    /** the increased/decreased stat pair a nature occupies in the grid. */
+    static getNatureStats(nature: Nature): NatureStatPair {
+        const effect = NatureHelpers.EFFECTS[nature];
+        if (!effect) {
+            const stat = NatureHelpers.STAT_ORDER.find(
+                (key) => NatureHelpers.NEUTRALS[key] === nature
+            ) as NatureGridStat;
+            return { increased: stat, decreased: stat };
+        }
+
+        return {
+            increased: NatureHelpers.LABEL_TO_STAT[
+                effect.increased
+            ] as NatureGridStat,
+            decreased: NatureHelpers.LABEL_TO_STAT[
+                effect.decreased
+            ] as NatureGridStat,
+        };
+    }
+
+    /** parses a case-insensitive nature name (e.g. from a URL query param). */
+    static parseNature(value: string | null | undefined): Nature | undefined {
+        if (!value) return undefined;
+
+        return Object.values(Nature).find(
+            (nature) => nature.toLowerCase() === value.toLowerCase()
+        );
+    }
+
+    /** stat keys in the order they're displayed in the nature grid. */
+    static readonly STAT_ORDER: NatureGridStat[] = [
+        'atk',
+        'def',
+        'spa',
+        'spd',
+        'spe',
+    ];
 
     /**
      * The multiplier nature applies to stat: 1.1 when boosted, 0.9 when
@@ -47,6 +107,28 @@ export default class NatureHelpers {
         SpD: 'spd',
         Spe: 'spe',
     };
+
+    private static readonly NEUTRALS: Record<NatureGridStat, Nature> = {
+        atk: Nature.Hardy,
+        def: Nature.Docile,
+        spa: Nature.Bashful,
+        spd: Nature.Quirky,
+        spe: Nature.Serious,
+    };
+
+    /** the non-neutral nature that increases `increased` and decreases `decreased`. */
+    private static findNature(
+        increased: NatureGridStat,
+        decreased: NatureGridStat
+    ): Nature {
+        const [nature] = Object.entries(NatureHelpers.EFFECTS).find(
+            ([, effect]) =>
+                NatureHelpers.LABEL_TO_STAT[effect.increased] === increased &&
+                NatureHelpers.LABEL_TO_STAT[effect.decreased] === decreased
+        ) as [Nature, NatureEffect];
+
+        return nature;
+    }
 
     private static readonly EFFECTS: Partial<Record<Nature, NatureEffect>> = {
         [Nature.Adamant]: { increased: 'Atk', decreased: 'SpA' },
