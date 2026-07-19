@@ -134,6 +134,11 @@ export const platinum: GameVersion = {
             species: 'shieldon',
             method: EncounterMethod.Fossil,
         },
+        {
+            location: 'old-chateau',
+            species: 'gastly',
+            method: EncounterMethod.Walking,
+        },
     ],
     excludedMethods: [
         'super-rod',
