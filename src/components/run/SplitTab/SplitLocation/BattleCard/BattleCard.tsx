@@ -13,6 +13,7 @@ type BattleCardProps = {
     onToggleDefeated: () => void;
     starter: string;
     variant: string;
+    version: string;
 };
 
 const BattleCard: React.FC<BattleCardProps> = ({
@@ -24,6 +25,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
     onToggleDefeated,
     starter,
     variant,
+    version,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
@@ -77,6 +79,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                 onSelectMove={onSelectMove}
                                 pokemon={pokemon}
                                 variant={variant}
+                                version={version}
                             />
                         ))}
                     </div>

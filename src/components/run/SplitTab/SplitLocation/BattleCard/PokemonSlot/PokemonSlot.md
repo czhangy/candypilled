@@ -16,13 +16,14 @@ When `pokemon` is `null`, an empty placeholder slot is shown instead.
 
 ## Props
 
-| Prop              | Type                     | Required | Default | Description                                                            |
-| ----------------- | ------------------------ | -------- | ------- | ---------------------------------------------------------------------- |
-| `generation`      | `number`                 | Yes      | -       | The game's generation, used to resolve the Pokemon's types and ability |
-| `onSelectAbility` | `(name: string) => void` | Yes      | -       | Called with the Pokemon's ability when it's clicked                    |
-| `onSelectMove`    | `(name: string) => void` | Yes      | -       | Called with a move's name when it's clicked within the moveset         |
-| `pokemon`         | `BattlePokemon \| null`  | Yes      | -       | The Pokemon to display, or `null` to render an empty slot              |
-| `variant`         | `string`                 | Yes      | -       | The sprite variant to prefer, matching the game's slug                 |
+| Prop              | Type                     | Required | Default | Description                                                                       |
+| ----------------- | ------------------------ | -------- | ------- | --------------------------------------------------------------------------------- |
+| `generation`      | `number`                 | Yes      | -       | The game's generation, used to resolve the Pokemon's types and ability            |
+| `onSelectAbility` | `(name: string) => void` | Yes      | -       | Called with the Pokemon's ability when it's clicked                               |
+| `onSelectMove`    | `(name: string) => void` | Yes      | -       | Called with a move's name when it's clicked within the moveset                    |
+| `pokemon`         | `BattlePokemon \| null`  | Yes      | -       | The Pokemon to display, or `null` to render an empty slot                         |
+| `variant`         | `string`                 | Yes      | -       | The sprite variant to prefer, matching the game's slug                            |
+| `version`         | `string`                 | Yes      | -       | The game's version slug, used to derive the moveset when `pokemon.moves` is unset |
 
 ## Computations
 
@@ -39,6 +40,9 @@ When `pokemon` is `null`, an empty placeholder slot is shown instead.
 - `pokemon.ivs` is normalized into a full `StatValues` via
   `StatHelpers.normalizeStats` and passed to `MoveList` to resolve
   Hidden Power's actual type
+- `moves` — `pokemon.moves` when explicitly set, otherwise the moveset
+  the Pokemon would know at its level in `version`, derived via
+  `PokemonHelpers.getMovesAtLevel`
 
 ## SCSS Variable Dependencies
 

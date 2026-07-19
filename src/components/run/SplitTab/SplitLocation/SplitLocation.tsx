@@ -403,6 +403,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         }
                                         starter={run.starter}
                                         variant={variant}
+                                        version={game.version}
                                     />
                                 )}
                             {section.encounters && (

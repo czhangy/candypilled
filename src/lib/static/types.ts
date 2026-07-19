@@ -54,15 +54,16 @@ export type BattlePokemon = {
     heldItem?: string;
     ivs?: number | StatValues;
     level: number;
-    moves: string[];
+    moves?: string[];
     name: string;
     nature?: Nature;
 };
 
 // A caught Pokemon as tracked for Nuzlocke rule enforcement: one catch per
 // location (not subarea), and no more than one catch per evolution line.
-export type CaughtPokemon = BattlePokemon & {
+export type CaughtPokemon = Omit<BattlePokemon, 'moves'> & {
     location: string;
+    moves: string[];
     status: PokemonStatus;
     // Freeform labels the player assigns to organize their box (e.g. "Ace",
     // "Trade").

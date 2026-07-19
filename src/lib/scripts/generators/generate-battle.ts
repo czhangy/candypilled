@@ -2,12 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import { createInterface, Interface } from 'readline/promises';
 import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
-import { CURRENT_GAME_VERSION } from '@/lib/scripts/pokeapi/game-versions';
 import { logSuccess, runScript } from '@/lib/scripts/utils/helpers';
 import { CLASSES_SLUGGED_BY_NAME } from '@/lib/static/constants';
 import { Nature } from '@/lib/static/enums';
 import { AbilitySlot } from '@/lib/static/types';
-import MoveHelpers from '@/lib/utils/MoveHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
@@ -16,7 +14,6 @@ const LOCATION_NOT_FOUND = 'That location does not exist.';
 const SUBAREA_NOT_FOUND = 'That subarea does not exist on this location.';
 const NATURE_IMPORT = "import { Nature } from '@/lib/static/enums';";
 const MAX_TEAM_SIZE = 6;
-const MAX_MOVES = 4;
 const DEFAULT_ABILITY_SLOT = 1;
 const NATURE_NAMES = Object.values(Nature);
 
@@ -34,7 +31,6 @@ type PromptedPokemon = {
     name: string;
     ability: AbilitySlot;
     level: number;
-    moves: string[];
     nature: Nature;
 };
 
@@ -199,17 +195,12 @@ const findInsertionPoint = (content: string, scope: Range): InsertionPoint => {
 const escapeQuotes = (value: string): string => value.replace(/'/g, "\\'");
 
 const serializePokemon = (pokemon: PromptedPokemon, indent: string): string => {
-    const moves = pokemon.moves
-        .map((move) => `'${escapeQuotes(move)}'`)
-        .join(', ');
-
     return (
         `${indent}{\n` +
         `${indent}    name: '${escapeQuotes(pokemon.name)}',\n` +
         `${indent}    ability: ${pokemon.ability},\n` +
         `${indent}    level: ${pokemon.level},\n` +
         `${indent}    nature: Nature.${pokemon.nature},\n` +
-        `${indent}    moves: [${moves}],\n` +
         `${indent}},\n`
     );
 };
@@ -277,37 +268,7 @@ const promptPokemon = async (
             ) ?? null;
     }
 
-    const moves: string[] = [];
-    while (moves.length < MAX_MOVES) {
-        const raw = (
-            await rl.question(
-                moves.length === 0
-                    ? '  Move 1 (blank to auto-fill from level-up moves): '
-                    : `  Move ${moves.length + 1} (blank to stop): `
-            )
-        ).trim();
-        if (!raw) {
-            if (moves.length === 0) {
-                moves.push(
-                    ...PokemonHelpers.getMovesAtLevel(
-                        name,
-                        CURRENT_GAME_VERSION.version,
-                        level
-                    )
-                );
-            }
-            break;
-        }
-
-        const move = MoveHelpers.getMoveData(raw);
-        if (!move) {
-            console.log("  That isn't a valid move.");
-            continue;
-        }
-        moves.push(move.name);
-    }
-
-    return { name, ability, level, moves, nature };
+    return { name, ability, level, nature };
 };
 
 const promptBattle = async (
