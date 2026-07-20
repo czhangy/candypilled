@@ -76,6 +76,12 @@
         position: sticky;
         top: 0;
         z-index: 1;
+
+        .tabs {
+            justify-content: flex-end;
+            margin-left: auto;
+            width: fit-content;
+        }
     }
 
     .wipe-message {

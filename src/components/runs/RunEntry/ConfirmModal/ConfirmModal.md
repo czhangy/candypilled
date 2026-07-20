@@ -1,8 +1,8 @@
 # ConfirmModal
 
-A generic confirmation modal with a title, description, and a Cancel /
-confirm button pair, used to gate destructive or overwriting actions
-behind an explicit confirmation step.
+A generic destructive confirmation modal with a title, description, and a
+Cancel / confirm button pair, used to gate destructive or overwriting
+actions behind an explicit confirmation step.
 
 ## Props
 

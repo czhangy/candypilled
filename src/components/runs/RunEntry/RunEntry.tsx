@@ -13,6 +13,7 @@ import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
+import DataModal from './DataModal/DataModal';
 import styles from './RunEntry.module.scss';
 import StarterSelectModal from './StarterSelectModal/StarterSelectModal';
 
@@ -33,7 +34,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // -------------------------------------------------------------------------
 
     const [isConfirmOpen, setIsConfirmOpen] = useState(false);
-    const [isResetConfirmOpen, setIsResetConfirmOpen] = useState(false);
+    const [isDataModalOpen, setIsDataModalOpen] = useState(false);
     const [isStarterSelectOpen, setIsStarterSelectOpen] = useState(false);
 
     // -------------------------------------------------------------------------
@@ -114,16 +115,36 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         setIsStarterSelectOpen(true);
     };
 
-    const handleResetClick = (): void => {
-        setIsResetConfirmOpen(true);
+    const handleDataClick = (): void => {
+        setIsDataModalOpen(true);
     };
 
-    const handleResetConfirmClose = (): void => {
-        setIsResetConfirmOpen(false);
+    const handleDataModalClose = (): void => {
+        setIsDataModalOpen(false);
     };
 
-    const handleConfirmReset = (): void => {
+    const handleReset = (): void => {
         LocalStorageHelpers.deleteRun(game);
+    };
+
+    const handleImport = (importedRun: Run): void => {
+        LocalStorageHelpers.saveRun(game, importedRun);
+    };
+
+    const handleExport = (): void => {
+        if (!run) {
+            return;
+        }
+
+        const blob = new Blob([JSON.stringify(run, null, 4)], {
+            type: 'application/json',
+        });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.download = `${StringHelpers.toSlug(game.name)}.json`;
+        link.href = url;
+        link.click();
+        URL.revokeObjectURL(url);
     };
 
     const handleStarterSelectClose = (): void => {
@@ -215,15 +236,13 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                 >
                     New
                 </button>
-                {run && (
-                    <button
-                        className={styles.action}
-                        onClick={handleResetClick}
-                        type="button"
-                    >
-                        Reset
-                    </button>
-                )}
+                <button
+                    className={styles.action}
+                    onClick={handleDataClick}
+                    type="button"
+                >
+                    Data
+                </button>
             </div>
             {isConfirmOpen && (
                 <ConfirmModal
@@ -234,13 +253,16 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     title="Start a new run?"
                 />
             )}
-            {isResetConfirmOpen && (
-                <ConfirmModal
-                    confirmLabel="Reset Game"
-                    description="All data for this game, including your current run, personal best, and Hall of Fame count, will be deleted and can't be recovered."
-                    onClose={handleResetConfirmClose}
-                    onConfirm={handleConfirmReset}
-                    title={`Reset ${game.name}?`}
+            {isDataModalOpen && (
+                <DataModal
+                    accentColor={game.accentColor}
+                    buttonTextColor={game.textContrastColor}
+                    gameName={game.name}
+                    hasExistingRun={!!run}
+                    onClose={handleDataModalClose}
+                    onExport={handleExport}
+                    onImport={handleImport}
+                    onReset={handleReset}
                 />
             )}
             {isStarterSelectOpen && (

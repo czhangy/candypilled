@@ -5,11 +5,17 @@ import styles from './Tabs.module.scss';
 
 type TabsProps = {
     activeTab: string;
+    className?: string;
     onTabChange: (id: string) => void;
     tabs: { id: string; label: React.ReactNode; ariaLabel?: string }[];
 };
 
-const Tabs: React.FC<TabsProps> = ({ activeTab, onTabChange, tabs }) => {
+const Tabs: React.FC<TabsProps> = ({
+    activeTab,
+    className,
+    onTabChange,
+    tabs,
+}) => {
     // -------------------------------------------------------------------------
     // HOOKS
     // -------------------------------------------------------------------------
@@ -56,7 +62,7 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, onTabChange, tabs }) => {
     // -------------------------------------------------------------------------
 
     return (
-        <div className={styles.tabs}>
+        <div className={[styles.tabs, className].filter(Boolean).join(' ')}>
             {tabs.map((tab) => (
                 <button
                     aria-label={tab.ariaLabel}

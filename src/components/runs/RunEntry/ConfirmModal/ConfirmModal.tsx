@@ -1,6 +1,7 @@
 'use client';
 
 import Modal from '@/components/common/Modal/Modal';
+import ConfirmActions from '@/components/runs/RunEntry/ConfirmActions/ConfirmActions';
 import styles from './ConfirmModal.module.scss';
 
 type ConfirmModalProps = {
@@ -27,25 +28,15 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
             {(requestClose) => (
                 <>
                     <p className={styles.description}>{description}</p>
-                    <div className={styles.actions}>
-                        <button
-                            className={styles.cancel}
-                            onClick={requestClose}
-                            type="button"
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            className={styles.confirm}
-                            onClick={() => {
-                                onConfirm();
-                                requestClose();
-                            }}
-                            type="button"
-                        >
-                            {confirmLabel}
-                        </button>
-                    </div>
+                    <ConfirmActions
+                        confirmLabel={confirmLabel}
+                        onCancel={requestClose}
+                        onConfirm={() => {
+                            onConfirm();
+                            requestClose();
+                        }}
+                        variant="destructive"
+                    />
                 </>
             )}
         </Modal>

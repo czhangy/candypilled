@@ -8,6 +8,7 @@ import {
     useRouter,
     useSearchParams,
 } from 'next/navigation';
+import Tabs from '@/components/common/Tabs/Tabs';
 import { GAMES } from '@/lib/games';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
@@ -21,7 +22,6 @@ import PokedexTab from './PokedexTab/PokedexTab';
 import styles from './RunPage.module.scss';
 import SplitHeader from './SplitHeader/SplitHeader';
 import SplitTab from './SplitTab/SplitTab';
-import Tabs from './Tabs/Tabs';
 
 type RunPageProps = {
     slug: string;
@@ -317,6 +317,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                         )}
                         <Tabs
                             activeTab={activeTab}
+                            className={styles.tabs}
                             onTabChange={handleTabChange}
                             tabs={TABS}
                         />

@@ -6,10 +6,9 @@ for split/box/death counts, "N/A" for personal best). A "Continue" button
 navigates to the game's dedicated run page (only shown if a run already
 exists), a "New" button starts a fresh attempt for the game, confirming
 with the user first if a run is already in progress, then prompting for a
-starter before the run is created, and a "Reset" button (only shown if a
-run already exists) deletes all stored data for the game — the current
-run, personal best, and hall of fame count — confirming with the user
-first.
+starter before the run is created, and a "Data" button opens a modal
+offering the game's import, export, and reset actions (export and reset
+are only available once a run already exists).
 
 ## Props
 
@@ -23,7 +22,7 @@ first.
 | State                 | Type      | Initial value | Description                                              |
 | --------------------- | --------- | ------------- | -------------------------------------------------------- |
 | `isConfirmOpen`       | `boolean` | `false`       | Whether the "start a new run" confirmation modal is open |
-| `isResetConfirmOpen`  | `boolean` | `false`       | Whether the "reset this game" confirmation modal is open |
+| `isDataModalOpen`     | `boolean` | `false`       | Whether the data (import/export/reset) modal is open     |
 | `isStarterSelectOpen` | `boolean` | `false`       | Whether the starter selection modal is open              |
 
 ## Handlers
@@ -38,14 +37,15 @@ first.
 - **On confirmation modal confirm** — opens the starter selection modal
   and requests the confirmation modal's animated close, which closes it
   once the exit animation finishes
-- **On "Reset" click** — opens a confirmation modal (only available when a
-  run exists)
-- **On reset confirmation modal close/cancel** — closes the modal without
-  deleting anything; the Cancel button requests the modal's animated close
-  directly, without going through this handler
-- **On reset confirmation modal confirm** — deletes all of the game's
-  stored data via `LocalStorageHelpers.deleteRun` and requests the modal's
-  animated close, which closes it once the exit animation finishes
+- **On "Data" click** — opens the data modal
+- **On data modal close** — closes the modal without importing, exporting,
+  or resetting anything
+- **On data modal import confirm** — saves the imported run to storage via
+  `LocalStorageHelpers.saveRun`, overwriting any existing run for the game
+- **On data modal export confirm** — downloads the run as a formatted
+  JSON file named after the game's slug
+- **On data modal reset confirm** — deletes all of the game's stored data
+  via `LocalStorageHelpers.deleteRun`
 - **On starter select modal close/cancel** — closes the modal without
   starting a new run
 - **On starter select** — writes a fresh run to storage for the game with
