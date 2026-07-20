@@ -3,6 +3,7 @@ import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { Battle } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
+import StringHelpers from '@/lib/utils/StringHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import styles from './TrainerPanel.module.scss';
 
@@ -23,6 +24,7 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
+    const FIELD_CONDITION_ICON_SIZE = 20;
     const ITEM_SPRITE_SIZE = 24;
     const SPRITE_SIZE = 96;
 
@@ -65,6 +67,15 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
             )}
             {battle.fieldCondition && (
                 <div className={styles['trainer__metadata']}>
+                    <Image
+                        alt={battle.fieldCondition}
+                        className={styles['field-condition__icon']}
+                        height={FIELD_CONDITION_ICON_SIZE}
+                        src={`/field-conditions/${StringHelpers.toSlug(
+                            battle.fieldCondition
+                        )}.png`}
+                        width={FIELD_CONDITION_ICON_SIZE}
+                    />
                     {battle.fieldCondition}
                     {battle.fieldCondition === 'Fog' && (
                         <Tooltip

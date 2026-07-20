@@ -1,7 +1,8 @@
 # TrainerPanel
 
 The trainer portrait shown beside a battle's team, made up of a field
-condition section above the sprite (e.g. "Rain") and a held items
+condition section above the sprite, showing an icon beside its name
+(e.g. "Rain"), and a held items
 section below it, showing one row per item stacked vertically in the
 same cell, each row giving the item's count followed by its sprite
 (e.g. "2x" beside a Potion sprite), each hidden when not present on
