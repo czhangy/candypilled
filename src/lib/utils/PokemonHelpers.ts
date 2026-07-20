@@ -17,7 +17,7 @@ export default class PokemonHelpers {
 
     /**
      * Every species introduced by generation or earlier, excluding forms
-     * that can't actually persist as a caught Pokemon (e.g. Castform's
+     * that can't actually persist as a caught Pokémon (e.g. Castform's
      * weather forms), deduped and sorted alphabetically by display name.
      */
     static getAllSpecies(generation: number): string[] {
@@ -34,7 +34,7 @@ export default class PokemonHelpers {
         return [...names].sort((a, b) => a.localeCompare(b));
     }
 
-    /** The Pokemon data for `name`, or undefined if no form matches. */
+    /** The Pokémon data for `name`, or undefined if no form matches. */
     static getPokemonData(name: string): PokemonData | undefined {
         const [formKey] = PokemonHelpers.getPokemonForms(name);
         return formKey ? POKEMON[formKey] : undefined;
@@ -155,7 +155,7 @@ export default class PokemonHelpers {
     /**
      * The moves name would know at level in version, i.e. the last
      * MAX_KNOWN_MOVES distinct level-up moves learned at or before level, in
-     * the order they were learned — matching how a Pokemon's moveset is
+     * the order they were learned — matching how a Pokémon's moveset is
      * determined in-game when it's first encountered or evolves.
      */
     static getMovesAtLevel(

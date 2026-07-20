@@ -59,7 +59,7 @@ export type BattlePokemon = {
     nature?: Nature;
 };
 
-// A caught Pokemon as tracked for Nuzlocke rule enforcement: one catch per
+// A caught Pokémon as tracked for Nuzlocke rule enforcement: one catch per
 // location (not subarea), and no more than one catch per evolution line.
 export type CaughtPokemon = Omit<BattlePokemon, 'moves'> & {
     location: string;
@@ -70,7 +70,7 @@ export type CaughtPokemon = Omit<BattlePokemon, 'moves'> & {
     tags: string[];
 };
 
-// The two views of the box tab's caught Pokemon grid: living Pokemon
+// The two views of the box tab's caught Pokémon grid: living Pokémon
 // ("box") or dead ones ("graveyard").
 export type BoxView = 'box' | 'graveyard';
 
@@ -199,7 +199,7 @@ export type Game = {
     logo: string;
     generation: number;
     // PokeAPI version group slug for this game, e.g. "platinum". Used to
-    // resolve which of a Pokemon's per-version-group learnsets applies,
+    // resolve which of a Pokémon's per-version-group learnsets applies,
     // since level-up movesets can differ between versions within the same
     // generation.
     version: string;
@@ -225,7 +225,7 @@ export type Run = {
     starter: string;
     caughtPokemon: CaughtPokemon[];
     // Locations whose encounter was used up without catching anything (the
-    // Pokemon fled, fainted, etc.), by location name — same key space as
+    // Pokémon fled, fainted, etc.), by location name — same key space as
     // CaughtPokemon.location, and mutually exclusive with it.
     missedLocations: string[];
     // Whether the player has given up on this run (a wipe). Once true, the
@@ -275,8 +275,8 @@ export type EvolutionMethod = {
     relativePhysicalStats?: number;
 };
 
-// A single Pokemon within an evolution line, as known from the perspective of
-// the Pokemon the line was built for: ancestors leading up to it are a single
+// A single Pokémon within an evolution line, as known from the perspective of
+// the Pokémon the line was built for: ancestors leading up to it are a single
 // path, but its own descendants preserve any branches (e.g. Eevee's split
 // into multiple eeveelutions).
 export type EvolutionStep = {

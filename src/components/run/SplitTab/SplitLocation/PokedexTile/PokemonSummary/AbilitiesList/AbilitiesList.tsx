@@ -4,13 +4,13 @@ import styles from './AbilitiesList.module.scss';
 
 type AbilitiesListProps = {
     entries: AbilityEntry[];
-    mode: 'catch' | 'choose';
+    interactive: boolean;
     onSelectAbility: (name: string) => void;
 };
 
 const AbilitiesList: React.FC<AbilitiesListProps> = ({
     entries,
-    mode,
+    interactive,
     onSelectAbility,
 }) => {
     // -------------------------------------------------------------------------
@@ -28,21 +28,7 @@ const AbilitiesList: React.FC<AbilitiesListProps> = ({
     return (
         <div className={styles['abilities-list']}>
             {entries.map((entry) =>
-                mode === 'choose' ? (
-                    <span
-                        className={[
-                            styles.ability,
-                            styles['ability--static'],
-                            entry.hidden && styles['ability--hidden'],
-                        ]
-                            .filter(Boolean)
-                            .join(' ')}
-                        key={entry.name}
-                    >
-                        {StringHelpers.toTitleCase(entry.name)}
-                        {entry.hidden && ' (Hidden)'}
-                    </span>
-                ) : (
+                interactive ? (
                     <button
                         className={[
                             styles.ability,
@@ -57,6 +43,20 @@ const AbilitiesList: React.FC<AbilitiesListProps> = ({
                         {StringHelpers.toTitleCase(entry.name)}
                         {entry.hidden && ' (Hidden)'}
                     </button>
+                ) : (
+                    <span
+                        className={[
+                            styles.ability,
+                            styles['ability--static'],
+                            entry.hidden && styles['ability--hidden'],
+                        ]
+                            .filter(Boolean)
+                            .join(' ')}
+                        key={entry.name}
+                    >
+                        {StringHelpers.toTitleCase(entry.name)}
+                        {entry.hidden && ' (Hidden)'}
+                    </span>
                 )
             )}
         </div>

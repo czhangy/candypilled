@@ -1,7 +1,7 @@
 # StarterSelectModal
 
 A modal shown when starting a new run, prompting the user to choose a
-starter Pokemon before the run is created. It has two steps: first, a
+starter Pokémon before the run is created. It has two steps: first, a
 two-column layout pairs a vertical list of starter sprites
 (`StarterSelect`) on the left with a `PokedexTile` on the right previewing
 whichever starter is picked, with the left column pinned in place as the
@@ -13,7 +13,7 @@ species' first ability) for setting the chosen starter's nature and IVs.
 The modal's title switches from "Choose your starter" to the chosen
 starter's name on this step. A "Back" link above the form returns to the
 first step without losing the prior selection. Submitting the form calls
-`onSelect` with the full caught-Pokemon details, located at `"Starter"`
+`onSelect` with the full caught-Pokémon details, located at `"Starter"`
 if the global "Starter As Separate Encounter" setting is enabled,
 otherwise at the name of `game`'s wired location whose encounters use
 the "starter" method (i.e. the actual starting route).

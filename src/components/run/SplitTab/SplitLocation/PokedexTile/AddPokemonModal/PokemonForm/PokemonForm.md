@@ -1,13 +1,13 @@
 # PokemonForm
 
-A form for recording the details of a Pokemon: its nature and IVs always,
+A form for recording the details of a Pokémon: its nature and IVs always,
 plus species, level, ability, moves, EVs, and tags when their respective
 `show*`/`lock*` prop allows it. Species, ability, nature, and moves are
 chosen from a `Dropdown` (species, ability, and moves are searchable);
 tags are edited via a `TagInput`. The ability dropdown identifies an
 ability by its slot (1, 2, or hidden) rather than its name, since a
 species can be re-selected across generations where ability names at a
-given slot may differ. When `lockSpecies` is set, the Pokemon field
+given slot may differ. When `lockSpecies` is set, the Pokémon field
 isn't rendered at all and `species` stays fixed at `defaultSpecies`.
 Each `default*` prop seeds its corresponding field's initial state,
 falling back to a blank/default value when omitted; none of the 4 move
@@ -16,19 +16,19 @@ form passes the selected values up. Changing the Level field only
 recalculates the Moves field's values when `recalculateMovesOnLevelChange`
 is set. Used by `AddPokemonModal` (all fields but EVs and tags shown,
 species editable, moves recalculated on level change) when catching a
-Pokemon, by `StarterSelectModal` (level, ability, moves, EVs, and tags
+Pokémon, by `StarterSelectModal` (level, ability, moves, EVs, and tags
 hidden, defaulting to level 5 and the species' first ability slot;
 species field omitted, fixed to the already-chosen starter) when
 configuring a chosen starter, and by `EditPokemonModal` (all fields
 including EVs and tags shown, species locked, every field seeded from
-the Pokemon being edited, moves left untouched on level change) when
-editing a caught Pokemon.
+the Pokémon being edited, moves left untouched on level change) when
+editing a caught Pokémon.
 
 ## Props
 
 | Prop                            | Type                                                                                                                        | Required | Default | Description                                                                            |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | -------------------------------------------------------------------------------------- |
-| `allSpecies`                    | `string[]`                                                                                                                  | Yes      | -       | Every species name offered in the Pokemon dropdown, ignored when `lockSpecies`         |
+| `allSpecies`                    | `string[]`                                                                                                                  | Yes      | -       | Every species name offered in the Pokémon dropdown, ignored when `lockSpecies`         |
 | `defaultAbilitySlot`            | `AbilitySlot`                                                                                                               | No       | -       | The slot `abilitySlot` defaults to; falls back to `1` if omitted                       |
 | `defaultEvs`                    | `StatValues`                                                                                                                | No       | -       | The values `evs` defaults to; falls back to all stats at `0` if omitted                |
 | `defaultIvs`                    | `StatValues`                                                                                                                | No       | -       | The values `ivs` defaults to; falls back to all stats at `31` if omitted               |
@@ -39,7 +39,7 @@ editing a caught Pokemon.
 | `defaultTags`                   | `string[]`                                                                                                                  | No       | -       | The values `tags` defaults to, when `showTags`; falls back to an empty list if omitted |
 | `disabledReason`                | `string`                                                                                                                    | Yes      | -       | Disables the submit button and shows this as its tooltip while non-empty               |
 | `generation`                    | `number`                                                                                                                    | Yes      | -       | The game's generation, used to resolve the selected species' abilities                 |
-| `lockSpecies`                   | `boolean`                                                                                                                   | Yes      | -       | Whether to omit the Pokemon field, keeping `species` fixed at `defaultSpecies`         |
+| `lockSpecies`                   | `boolean`                                                                                                                   | Yes      | -       | Whether to omit the Pokémon field, keeping `species` fixed at `defaultSpecies`         |
 | `onSubmit`                      | `(details: Pick<CaughtPokemon, 'ability' \| 'evs' \| 'ivs' \| 'level' \| 'moves' \| 'name' \| 'nature' \| 'tags'>) => void` | Yes      | -       | Called with the selected details when the form is submitted                            |
 | `recalculateMovesOnLevelChange` | `boolean`                                                                                                                   | Yes      | -       | Whether changing the Level field resets `moves` to the new level's starting moves      |
 | `showAbility`                   | `boolean`                                                                                                                   | Yes      | -       | Whether to show the Ability field; when hidden, `ability` stays at its default         |
@@ -87,7 +87,7 @@ editing a caught Pokemon.
 
 ## Handlers
 
-- **On the Pokemon dropdown change** — sets `species`, resets
+- **On the Pokémon dropdown change** — sets `species`, resets
   `abilitySlot` to `1`, and resets `moves` to the new species' starting
   moves at the current `level` via `getStartingMoves` (only reachable
   when the field is rendered, i.e. `lockSpecies` is false)

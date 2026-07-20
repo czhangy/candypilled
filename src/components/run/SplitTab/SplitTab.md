@@ -17,7 +17,8 @@ currently scrolled into view is highlighted automatically.
 | `onSelectAbility`  | `(name: string) => void`      | Yes      | -       | Called when an ability is clicked within a `SplitLocation`'s `BattleCard` or `PokedexTile`                                                              |
 | `onSelectLocation` | `(location: string) => void`  | Yes      | -       | Called with a location's base name when it's clicked within a `SplitLocation`'s `PokedexTile`                                                           |
 | `onSelectMove`     | `(name: string) => void`      | Yes      | -       | Called when a move is clicked within a `SplitLocation`'s `BattleCard`                                                                                   |
-| `run`              | `Run`                         | Yes      | -       | The run whose progress (caught Pokemon, missed locations) is shown within the current split                                                             |
+| `onSelectSpecies`  | `(species: string) => void`   | Yes      | -       | Called when a Pokémon's sprite or name is clicked within a `SplitLocation`'s `BattleCard`                                                               |
+| `run`              | `Run`                         | Yes      | -       | The run whose progress (caught Pokémon, missed locations) is shown within the current split                                                             |
 | `stickyOffset`     | `number`                      | Yes      | -       | The pixel height of `RunPage`'s sticky tabs/split-header block, added to the table of contents' sticky offset so it doesn't stick underneath that block |
 
 ## State
@@ -50,7 +51,7 @@ is also preceded by a pokeball icon, with a `Tooltip` reporting the same
 status on hover:
 
 - Poké Ball — the location's encounter has been taken; the tooltip is
-  suffixed with "– {name}" naming the Pokemon caught there
+  suffixed with "– {name}" naming the Pokémon caught there
 - Premier Ball — the location's encounter hasn't been taken or missed yet
 - Premier Ball, red — the location's encounter was missed
 

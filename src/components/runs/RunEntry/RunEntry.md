@@ -62,9 +62,9 @@ first.
   not-yet-defeated required battle in the run's `defeatedBattles`, or the
   last split if every required battle has been defeated; `null` if there
   is no run
-- `boxCount` — the number of Pokemon in the run's `caughtPokemon` that
+- `boxCount` — the number of Pokémon in the run's `caughtPokemon` that
   don't have a `status` of `PokemonStatus.Dead`; `null` if there is no run
-- `deathCount` — the number of Pokemon in the run's `caughtPokemon` with a
+- `deathCount` — the number of Pokémon in the run's `caughtPokemon` with a
   `status` of `PokemonStatus.Dead`; `null` if there is no run
 - `getRunUrl` — builds the game's run page URL for a given
   `defeatedBattles` array, with `tab=split` and `split=<name>` (the split

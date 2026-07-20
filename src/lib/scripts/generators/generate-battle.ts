@@ -238,13 +238,13 @@ const promptPokemon = async (
     let name: string | null = null;
     while (name === null) {
         const raw = (
-            await rl.question(`  Pokemon ${index} name (blank to stop): `)
+            await rl.question(`  Pokémon ${index} name (blank to stop): `)
         ).trim();
         if (!raw) return null;
 
         const pokemon = PokemonHelpers.getPokemonData(raw);
         if (!pokemon) {
-            console.log("  That isn't a valid Pokemon.");
+            console.log("  That isn't a valid Pokémon.");
             continue;
         }
         name = pokemon.name;

@@ -1,7 +1,7 @@
 # EncounterRow
 
 A single row within an encounter table's method group, showing a wild
-Pokemon's sprite (matching the game's sprite variant), its name, its
+Pokémon's sprite (matching the game's sprite variant), its name, its
 level range prefixed with "Lv." (e.g. "Lv. 20-30"), and its encounter
 chance as a percentage. Clicking the row notifies the parent. The row
 is highlighted green if it's the one actually caught at this location,

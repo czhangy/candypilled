@@ -61,7 +61,7 @@ const NAME_OVERRIDES: Record<string, string> = {
 
 // Varieties that can't actually persist outside of battle (e.g. Castform's
 // weather forms) or that automatically revert on deposit into a PC box
-// (e.g. Shaymin's Sky Forme), so they'd never be a real caught Pokemon's
+// (e.g. Shaymin's Sky Forme), so they'd never be a real caught Pokémon's
 // permanent form. PokeAPI's is_battle_only form flag only covers the
 // former case, so this is curated by hand rather than derived from the API.
 const TEMPORARY_FORM_VARIETIES = new Set([
@@ -344,7 +344,7 @@ const abilityValueAt = (
 // Builds the ascending "applies from generation N onward" timeline for a
 // single ability slot, mirroring how `past_types` is interpreted above. A
 // missing `ability` on a past entry means that slot didn't exist for that
-// Pokemon yet (e.g. hidden abilities before generation V).
+// Pokémon yet (e.g. hidden abilities before generation V).
 const buildAbilitySlotTimeline = (
     pokemon: RawPokemon,
     slotNumber: number
@@ -569,7 +569,7 @@ const sortMoves = (moves: WorkingMove[]): LearnsetMove[] =>
 
 // Learnsets differ commonly between version groups within the same
 // generation (e.g. Onix's moveset changed between Diamond/Pearl/Platinum
-// and HeartGold/SoulSilver), so every version group the Pokemon has moves
+// and HeartGold/SoulSilver), so every version group the Pokémon has moves
 // in gets its own entry rather than collapsing each generation down to one.
 const buildLearnsetByVersionGroup = (
     pokemon: RawPokemon,
@@ -756,7 +756,7 @@ type PathResult = {
 };
 
 // Walks down from the chain root to find the target species, returning the
-// single-path chain of edges leading to it (a Pokemon can only have one
+// single-path chain of edges leading to it (a Pokémon can only have one
 // direct predecessor, even though it may have several possible successors).
 const findPath = (node: FullNode, targetName: string): PathResult | null => {
     if (node.name === targetName) return { edges: [], node };

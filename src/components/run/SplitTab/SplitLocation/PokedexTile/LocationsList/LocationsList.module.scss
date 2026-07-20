@@ -34,8 +34,12 @@ $method-width: 4rem;
             background: rgba($red, 0.12);
         }
 
+        &--static {
+            cursor: default;
+        }
+
         @media (hover: hover) {
-            &:hover {
+            &:hover:not(&--static) {
                 background: rgba($foreground, 0.1);
             }
         }

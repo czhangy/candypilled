@@ -3,12 +3,14 @@ import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './LocationsList.module.scss';
 
 type LocationsListProps = {
+    interactive: boolean;
     locations: EncounterLocation[];
     onSelectLocation: (location: string) => void;
     usedLocations: string[];
 };
 
 const LocationsList: React.FC<LocationsListProps> = ({
+    interactive,
     locations,
     onSelectLocation,
     usedLocations,
@@ -50,20 +52,9 @@ const LocationsList: React.FC<LocationsListProps> = ({
 
     return (
         <ul className={styles['locations-list']}>
-            {sortedLocations.map((location, index) => (
-                <li key={`${location.name}-${index}`}>
-                    <button
-                        className={[
-                            styles.row,
-                            isUsed(location.name) && styles['row--used'],
-                        ]
-                            .filter(Boolean)
-                            .join(' ')}
-                        onClick={() =>
-                            onSelectLocation(getBaseName(location.name))
-                        }
-                        type="button"
-                    >
+            {sortedLocations.map((location, index) => {
+                const content = (
+                    <>
                         <span className={styles.name}>{location.name}</span>
                         <span className={styles.level}>
                             {getLevelLabel(location)}
@@ -78,9 +69,44 @@ const LocationsList: React.FC<LocationsListProps> = ({
                                 location.encounter.method
                             )}
                         </span>
-                    </button>
-                </li>
-            ))}
+                    </>
+                );
+
+                return (
+                    <li key={`${location.name}-${index}`}>
+                        {interactive ? (
+                            <button
+                                className={[
+                                    styles.row,
+                                    isUsed(location.name) &&
+                                        styles['row--used'],
+                                ]
+                                    .filter(Boolean)
+                                    .join(' ')}
+                                onClick={() =>
+                                    onSelectLocation(getBaseName(location.name))
+                                }
+                                type="button"
+                            >
+                                {content}
+                            </button>
+                        ) : (
+                            <div
+                                className={[
+                                    styles.row,
+                                    styles['row--static'],
+                                    isUsed(location.name) &&
+                                        styles['row--used'],
+                                ]
+                                    .filter(Boolean)
+                                    .join(' ')}
+                            >
+                                {content}
+                            </div>
+                        )}
+                    </li>
+                );
+            })}
             {sortedLocations.length === 0 && (
                 <li className={styles.empty}>No locations found</li>
             )}

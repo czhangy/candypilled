@@ -2,7 +2,7 @@
 
 A filter icon button that opens a checklist of tags below it. Checking
 a tag adds it to the active filter, letting the caller narrow a list
-down to Pokemon carrying every checked tag. Long tag labels are
+down to Pokémon carrying every checked tag. Long tag labels are
 truncated with an ellipsis rather than wrapping or overflowing. The
 button is highlighted in the game's accent color while at least one tag
 is checked. The menu closes on an outside click. It slides down while

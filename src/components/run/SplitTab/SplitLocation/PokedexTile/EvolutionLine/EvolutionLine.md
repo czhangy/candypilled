@@ -1,6 +1,6 @@
 # EvolutionLine
 
-Displays a Pokemon's evolution line as a chain of sprites connected by
+Displays a Pokémon's evolution line as a chain of sprites connected by
 arrows labeled with how each step is reached. Methods with an icon
 available in `public/evolution_methods` (e.g. Shiny Stone, Friendship)
 render that icon in place of the text label, with a `Tooltip` on
@@ -25,7 +25,7 @@ ambiguous between multiple forms (e.g. Burmy evolving into Wormadam,
 whose cloak/form isn't tracked by evolution data) is itself expanded
 into one branch per form, rather than silently collapsing to a single
 arbitrary form. Each step's sprite is clickable, letting the caller
-switch which Pokemon in the line is being viewed. Renders itself
+switch which Pokémon in the line is being viewed. Renders itself
 recursively for each step in the line. When the global "Disable Trade
 Evolutions" setting is enabled, branches reachable only via trade are
 omitted entirely, along with everything beneath them.
@@ -45,7 +45,7 @@ omitted entirely, along with everything beneath them.
 - `sprite` — `step`'s sprite for the given `variant`, resolved via
   `PokemonHelpers`
 - `isCurrent` — whether `step` matches `currentName`, used to highlight
-  the selected Pokemon within the line
+  the selected Pokémon within the line
 - `visibleEvolutions` — `step.evolvesTo` filtered to exclude branches
   whose every method requires a trade (via
   `EvolutionHelpers.isTradeEvolution`) when `hideTradeEvos` is enabled
@@ -63,4 +63,4 @@ omitted entirely, along with everything beneath them.
 ## SCSS Variable Dependencies
 
 - `--accent-color` — the active game's accent color, used to highlight
-  the currently selected Pokemon's node; expected to be set by a parent
+  the currently selected Pokémon's node; expected to be set by a parent

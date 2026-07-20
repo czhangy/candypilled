@@ -11,7 +11,7 @@ const StatsChart: React.FC<StatsChartProps> = ({ stats }) => {
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    // The highest base stat any Pokemon can have, used to scale every bar
+    // The highest base stat any Pokémon can have, used to scale every bar
     // to a consistent, comparable width.
     const STAT_MAX = 255;
 

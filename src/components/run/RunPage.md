@@ -42,6 +42,9 @@ shown instead.
   page
 - `selectedAbility` — the currently selected ability's name, read from the
   `ability` query param
+- `selectedSpecies` — the currently selected Pokémon's species, read from
+  the `species` query param, shared between the Pokédex tab and its own
+  evolution line links
 - `runSplitName` — the name of the split containing the first
   not-yet-defeated required battle in `run.defeatedBattles` (or the last
   split if every required battle has been defeated); this is the split the
@@ -70,27 +73,37 @@ shown instead.
 ## Handlers
 
 - **On tab change** (from `Tabs`) — sets the `tab` query param and clears
-  whichever of `pokemon`/`move`/`ability`/`split` isn't relevant to the
-  destination tab, so a tab's selection param doesn't linger in the URL
-  after navigating away from it
-- **On move link click** (from `SplitTab`, e.g. a move within `BattleCard`)
-  — opens the Moves tab for that move (`?tab=moves&move=<name>`) in a new
-  browser tab, leaving the current page untouched
+  whichever of `pokemon`/`move`/`ability`/`species`/`split` isn't relevant
+  to the destination tab, so a tab's selection param doesn't linger in the
+  URL after navigating away from it
+- **On move link click** (from `SplitTab` or `PokedexTab`, e.g. a move
+  within `BattleCard` or `PokedexTab`'s learnset) — opens the Moves tab for
+  that move (`?tab=moves&move=<name>`) in a new browser tab, leaving the
+  current page untouched
 - **On move select** (from `MovesTab`) — sets the `move` query param
   without changing `tab`
 - **On ability select** (from `AbilitiesTab`) — sets the `ability` query
   param without changing `tab`
-- **On ability link click** (from `SplitTab`, e.g. an ability within
-  `PokedexTile` or `BattleCard`) — opens the Abilities tab for that ability
-  (`?tab=abilities&ability=<name>`) in a new browser tab, leaving the
-  current page untouched
-- **On Pokemon deselect** (from `BoxTab`, when switching between its box
+- **On ability link click** (from `SplitTab` or `PokedexTab`, e.g. an
+  ability within `PokedexTile` or `BattleCard`) — opens the Abilities tab
+  for that ability (`?tab=abilities&ability=<name>`) in a new browser tab,
+  leaving the current page untouched
+- **On species link click** (from `SplitTab`, a Pokémon's sprite or name
+  within `BattleCard`) — opens the Pokédex tab for that species
+  (`?tab=pokedex&species=<slug>`) in a new browser tab, leaving the current
+  page untouched
+- **On species select** (from `PokedexTab`, whether from its species list
+  or its `PokedexDetail`'s evolution line) — sets the `species` query param
+  (slugified, since an evolution line link passes a slug rather than a
+  display name) without changing `tab`
+- **On Pokémon deselect** (from `BoxTab`, when switching between its box
   and graveyard views) — clears the `pokemon` query param
-- **On location select** (from `BoxTab`'s `PokemonPreview`, or from
-  `SplitTab`'s `PokedexTile` locations tab) — resolves the location's
-  earliest split and index within it via `SplitHelpers.getEarliestLocation`,
-  then navigates to the Splits tab for that split (`?tab=split&split=<name>`,
-  clearing `pokemon`/`move`/`ability`) with the location's disambiguated
+- **On location select** (from `BoxTab`'s `PokemonPreview`, `SplitTab`'s
+  `PokedexTile` locations tab, or `PokedexTab`'s locations tab) — resolves
+  the location's earliest split and index within it via
+  `SplitHelpers.getEarliestLocation`, then navigates to the Splits tab for
+  that split (`?tab=split&split=<name>`, clearing
+  `pokemon`/`move`/`ability`/`species`) with the location's disambiguated
   slug (via `SplitHelpers.getLocationSlug`) as a URL hash, so the browser
   scrolls to its card; no-ops if the location doesn't match any split
 - **On split select** (from `SplitHeader`'s dropdown, or from `SplitTab`'s

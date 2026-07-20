@@ -59,7 +59,7 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
     );
     const emptyMessage =
         selectedTags.length > 0
-            ? 'No Pokemon match the selected tags'
+            ? 'No Pokémon match the selected tags'
             : view === 'graveyard'
               ? 'Graveyard is empty'
               : 'Box is empty';

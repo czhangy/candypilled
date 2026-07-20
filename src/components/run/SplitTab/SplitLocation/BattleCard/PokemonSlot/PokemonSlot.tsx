@@ -16,6 +16,7 @@ type PokemonSlotProps = {
     generation: number;
     onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
+    onSelectSpecies: (species: string) => void;
     pokemon: BattlePokemon | null;
     variant: string;
     version: string;
@@ -25,6 +26,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     generation,
     onSelectAbility,
     onSelectMove,
+    onSelectSpecies,
     pokemon,
     variant,
     version,
@@ -102,33 +104,39 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
 
     return (
         <div className={styles['pokemon-slot']}>
-            <div className={styles['pokemon-slot__sprite']}>
-                {sprite && (
-                    <Image
-                        alt={pokemon.name}
-                        height={SPRITE_SIZE}
-                        src={sprite}
-                        width={SPRITE_SIZE}
-                    />
-                )}
-            </div>
-            <div className={styles['pokemon-slot__name']}>
-                <span>
-                    Lv.{pokemon.level} {pokemon.name}
-                </span>
-                {types.length > 0 && (
-                    <div className={styles['pokemon-slot__types']}>
-                        {types.map((type) => (
-                            <TypeBadge
-                                height={TYPE_BADGE_HEIGHT}
-                                key={type}
-                                type={type}
-                                width={TYPE_BADGE_WIDTH}
-                            />
-                        ))}
-                    </div>
-                )}
-            </div>
+            <button
+                className={styles['pokemon-slot__link']}
+                onClick={() => onSelectSpecies(pokemon.name)}
+                type="button"
+            >
+                <div className={styles['pokemon-slot__sprite']}>
+                    {sprite && (
+                        <Image
+                            alt={pokemon.name}
+                            height={SPRITE_SIZE}
+                            src={sprite}
+                            width={SPRITE_SIZE}
+                        />
+                    )}
+                </div>
+                <div className={styles['pokemon-slot__name']}>
+                    <span>
+                        Lv.{pokemon.level} {pokemon.name}
+                    </span>
+                    {types.length > 0 && (
+                        <div className={styles['pokemon-slot__types']}>
+                            {types.map((type) => (
+                                <TypeBadge
+                                    height={TYPE_BADGE_HEIGHT}
+                                    key={type}
+                                    type={type}
+                                    width={TYPE_BADGE_WIDTH}
+                                />
+                            ))}
+                        </div>
+                    )}
+                </div>
+            </button>
             <ul className={styles['pokemon-slot__metadata']}>
                 <li className={styles['pokemon-slot__metadata-item--accent']}>
                     {pokemon.heldItem ? (

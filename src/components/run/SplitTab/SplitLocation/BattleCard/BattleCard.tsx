@@ -10,6 +10,7 @@ type BattleCardProps = {
     isDefeated: boolean;
     onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
+    onSelectSpecies: (species: string) => void;
     onToggleDefeated: () => void;
     starter: string;
     variant: string;
@@ -22,6 +23,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
     isDefeated,
     onSelectAbility,
     onSelectMove,
+    onSelectSpecies,
     onToggleDefeated,
     starter,
     variant,
@@ -77,6 +79,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                 }
                                 onSelectAbility={onSelectAbility}
                                 onSelectMove={onSelectMove}
+                                onSelectSpecies={onSelectSpecies}
                                 pokemon={pokemon}
                                 variant={variant}
                                 version={version}

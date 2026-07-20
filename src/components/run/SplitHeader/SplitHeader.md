@@ -20,7 +20,7 @@ whichever split is being viewed.
 ## Computations
 
 - `runSplit` — the split matching `runSplitName`, used to compute `levelCap`
-- `levelCap` — the highest level Pokemon on the team of the run's current
+- `levelCap` — the highest level Pokémon on the team of the run's current
   split's last battle (resolved for the run's chosen starter), shown next to
   the split title
 - `splitNames` — `game.splits` mapped to their names, in the game's split
