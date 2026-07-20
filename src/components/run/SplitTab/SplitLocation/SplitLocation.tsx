@@ -65,6 +65,8 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         game,
         run.personalBest
     );
+    const isChasingPersonalBest =
+        !!run.personalBest && !defeatedBattles.includes(run.personalBest);
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -74,6 +76,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         defeatedBattles.includes(BattleHelpers.getBattleKey(battle));
 
     const isBattleNextPB = (battle: Battle): boolean =>
+        isChasingPersonalBest &&
         BattleHelpers.getBattleKey(battle) === nextPersonalBestBattleKey;
 
     const getDefaultSelectedBattle = (
@@ -403,6 +406,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         }
                                         starter={run.starter}
                                         variant={variant}
+                                        version={game.version}
                                     />
                                 )}
                             {section.encounters && (

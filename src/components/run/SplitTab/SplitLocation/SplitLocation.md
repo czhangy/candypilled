@@ -79,8 +79,14 @@ Pokedex tile.
   run's personal best, in split/location/battle order
 - `isBattleDefeated` — whether a given battle's key is present in
   `defeatedBattles`
+- `isChasingPersonalBest` — whether the run still has a personal best to
+  catch up to: `true` if `run.personalBest` is set and hasn't yet been
+  defeated in this run's own `defeatedBattles`; once the run reaches its
+  personal best, every subsequent battle is trivially a new one, so this
+  flips to `false`
 - `isBattleNextPersonalBest` — whether a given battle's key matches
-  `nextPersonalBestBattleKey`
+  `nextPersonalBestBattleKey`, and only while `isChasingPersonalBest` is
+  `true`
 - `isSubareaCleared` — whether every required (or, if none, every) battle
   in a subarea is defeated; a subarea with no battles is never considered
   cleared

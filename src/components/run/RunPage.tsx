@@ -8,7 +8,7 @@ import {
     useRouter,
     useSearchParams,
 } from 'next/navigation';
-import { GAMES } from '@/lib/static/constants';
+import { GAMES } from '@/lib/games';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
@@ -123,7 +123,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                   ? ` — ${BattleHelpers.getFullName(personalBestBattle)}`
                   : ''
           }`
-        : 'N/A';
+        : null;
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -273,9 +273,11 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                     {run.wipe ? 'RESPAWN' : 'Wipe'}
                 </button>
             </div>
-            <p className={styles.subtitle}>
-                Personal Best: {personalBestLabel}
-            </p>
+            {personalBestLabel && (
+                <p className={styles.subtitle}>
+                    Personal Best: {personalBestLabel}
+                </p>
+            )}
             {run.wipe ? (
                 <div className={styles['wipe-message']}>
                     <p className={styles['wipe-text']}>{wipeMessage}</p>

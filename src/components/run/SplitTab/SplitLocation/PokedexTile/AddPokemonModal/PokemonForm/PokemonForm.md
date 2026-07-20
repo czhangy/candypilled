@@ -12,39 +12,43 @@ isn't rendered at all and `species` stays fixed at `defaultSpecies`.
 Each `default*` prop seeds its corresponding field's initial state,
 falling back to a blank/default value when omitted; none of the 4 move
 slots default to a value unless `defaultMoves` is passed. Submitting the
-form passes the selected values up. Used by `AddPokemonModal` (all
-fields but EVs and tags shown, species editable) when catching a
+form passes the selected values up. Changing the Level field only
+recalculates the Moves field's values when `recalculateMovesOnLevelChange`
+is set. Used by `AddPokemonModal` (all fields but EVs and tags shown,
+species editable, moves recalculated on level change) when catching a
 Pokemon, by `StarterSelectModal` (level, ability, moves, EVs, and tags
 hidden, defaulting to level 5 and the species' first ability slot;
 species field omitted, fixed to the already-chosen starter) when
 configuring a chosen starter, and by `EditPokemonModal` (all fields
 including EVs and tags shown, species locked, every field seeded from
-the Pokemon being edited) when editing a caught Pokemon.
+the Pokemon being edited, moves left untouched on level change) when
+editing a caught Pokemon.
 
 ## Props
 
-| Prop                 | Type                                                                                                                        | Required | Default | Description                                                                            |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | -------------------------------------------------------------------------------------- |
-| `allSpecies`         | `string[]`                                                                                                                  | Yes      | -       | Every species name offered in the Pokemon dropdown, ignored when `lockSpecies`         |
-| `defaultAbilitySlot` | `AbilitySlot`                                                                                                               | No       | -       | The slot `abilitySlot` defaults to; falls back to `1` if omitted                       |
-| `defaultEvs`         | `StatValues`                                                                                                                | No       | -       | The values `evs` defaults to; falls back to all stats at `0` if omitted                |
-| `defaultIvs`         | `StatValues`                                                                                                                | No       | -       | The values `ivs` defaults to; falls back to all stats at `31` if omitted               |
-| `defaultLevel`       | `number`                                                                                                                    | No       | -       | The level `level` defaults to, when `showLevel`; falls back to `1` if omitted          |
-| `defaultMoves`       | `string[]`                                                                                                                  | No       | -       | The values `moves` defaults to; falls back to `species`' starting moves if omitted     |
-| `defaultNature`      | `Nature`                                                                                                                    | No       | -       | The value `nature` defaults to; falls back to the first `Nature` value if omitted      |
-| `defaultSpecies`     | `string`                                                                                                                    | Yes      | -       | The species `species` defaults to (and stays fixed at, when `lockSpecies`)             |
-| `defaultTags`        | `string[]`                                                                                                                  | No       | -       | The values `tags` defaults to, when `showTags`; falls back to an empty list if omitted |
-| `disabledReason`     | `string`                                                                                                                    | Yes      | -       | Disables the submit button and shows this as its tooltip while non-empty               |
-| `generation`         | `number`                                                                                                                    | Yes      | -       | The game's generation, used to resolve the selected species' abilities                 |
-| `lockSpecies`        | `boolean`                                                                                                                   | Yes      | -       | Whether to omit the Pokemon field, keeping `species` fixed at `defaultSpecies`         |
-| `onSubmit`           | `(details: Pick<CaughtPokemon, 'ability' \| 'evs' \| 'ivs' \| 'level' \| 'moves' \| 'name' \| 'nature' \| 'tags'>) => void` | Yes      | -       | Called with the selected details when the form is submitted                            |
-| `showAbility`        | `boolean`                                                                                                                   | Yes      | -       | Whether to show the Ability field; when hidden, `ability` stays at its default         |
-| `showEvs`            | `boolean`                                                                                                                   | Yes      | -       | Whether to show the EVs field; when hidden, `evs` stays at its default                 |
-| `showLevel`          | `boolean`                                                                                                                   | Yes      | -       | Whether to show the Level field; when hidden, `level` defaults to `5` instead of `1`   |
-| `showMoves`          | `boolean`                                                                                                                   | Yes      | -       | Whether to show the Moves field; when hidden, `moves` stays unselected                 |
-| `showTags`           | `boolean`                                                                                                                   | Yes      | -       | Whether to show the Tags field; when hidden, `tags` stays at its default               |
-| `submitLabel`        | `string`                                                                                                                    | Yes      | -       | The submit button's label                                                              |
-| `version`            | `string`                                                                                                                    | Yes      | -       | The game's PokeAPI version group slug, used to resolve the selected species' learnset  |
+| Prop                            | Type                                                                                                                        | Required | Default | Description                                                                            |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | -------------------------------------------------------------------------------------- |
+| `allSpecies`                    | `string[]`                                                                                                                  | Yes      | -       | Every species name offered in the Pokemon dropdown, ignored when `lockSpecies`         |
+| `defaultAbilitySlot`            | `AbilitySlot`                                                                                                               | No       | -       | The slot `abilitySlot` defaults to; falls back to `1` if omitted                       |
+| `defaultEvs`                    | `StatValues`                                                                                                                | No       | -       | The values `evs` defaults to; falls back to all stats at `0` if omitted                |
+| `defaultIvs`                    | `StatValues`                                                                                                                | No       | -       | The values `ivs` defaults to; falls back to all stats at `31` if omitted               |
+| `defaultLevel`                  | `number`                                                                                                                    | No       | -       | The level `level` defaults to, when `showLevel`; falls back to `1` if omitted          |
+| `defaultMoves`                  | `string[]`                                                                                                                  | No       | -       | The values `moves` defaults to; falls back to `species`' starting moves if omitted     |
+| `defaultNature`                 | `Nature`                                                                                                                    | No       | -       | The value `nature` defaults to; falls back to the first `Nature` value if omitted      |
+| `defaultSpecies`                | `string`                                                                                                                    | Yes      | -       | The species `species` defaults to (and stays fixed at, when `lockSpecies`)             |
+| `defaultTags`                   | `string[]`                                                                                                                  | No       | -       | The values `tags` defaults to, when `showTags`; falls back to an empty list if omitted |
+| `disabledReason`                | `string`                                                                                                                    | Yes      | -       | Disables the submit button and shows this as its tooltip while non-empty               |
+| `generation`                    | `number`                                                                                                                    | Yes      | -       | The game's generation, used to resolve the selected species' abilities                 |
+| `lockSpecies`                   | `boolean`                                                                                                                   | Yes      | -       | Whether to omit the Pokemon field, keeping `species` fixed at `defaultSpecies`         |
+| `onSubmit`                      | `(details: Pick<CaughtPokemon, 'ability' \| 'evs' \| 'ivs' \| 'level' \| 'moves' \| 'name' \| 'nature' \| 'tags'>) => void` | Yes      | -       | Called with the selected details when the form is submitted                            |
+| `recalculateMovesOnLevelChange` | `boolean`                                                                                                                   | Yes      | -       | Whether changing the Level field resets `moves` to the new level's starting moves      |
+| `showAbility`                   | `boolean`                                                                                                                   | Yes      | -       | Whether to show the Ability field; when hidden, `ability` stays at its default         |
+| `showEvs`                       | `boolean`                                                                                                                   | Yes      | -       | Whether to show the EVs field; when hidden, `evs` stays at its default                 |
+| `showLevel`                     | `boolean`                                                                                                                   | Yes      | -       | Whether to show the Level field; when hidden, `level` defaults to `5` instead of `1`   |
+| `showMoves`                     | `boolean`                                                                                                                   | Yes      | -       | Whether to show the Moves field; when hidden, `moves` stays unselected                 |
+| `showTags`                      | `boolean`                                                                                                                   | Yes      | -       | Whether to show the Tags field; when hidden, `tags` stays at its default               |
+| `submitLabel`                   | `string`                                                                                                                    | Yes      | -       | The submit button's label                                                              |
+| `version`                       | `string`                                                                                                                    | Yes      | -       | The game's PokeAPI version group slug, used to resolve the selected species' learnset  |
 
 ## State
 
@@ -94,8 +98,8 @@ the Pokemon being edited) when editing a caught Pokemon.
 - **On an EV input change** — sets that stat's value in `evs`, clamped
   to `0`-`252`
 - **On the level input change** — sets `level`, clamped to `1`-`100`,
-  and resets `moves` to `species`' starting moves at the new level via
-  `getStartingMoves`
+  and, when `recalculateMovesOnLevelChange`, resets `moves` to `species`'
+  starting moves at the new level via `getStartingMoves`
 - **On a move dropdown change** — sets that slot's value in `moves`
 - **On the `TagInput` change** — sets `tags`
 - **On form submit** — calls `onSubmit` with `ability` (`abilitySlot`),

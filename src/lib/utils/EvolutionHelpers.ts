@@ -152,16 +152,19 @@ export default class EvolutionHelpers {
         'electirizer',
         'fire-stone',
         'friendship',
+        'ice-rock',
         'ice-stone',
         'kings-rock',
         'leaf-stone',
         'magmarizer',
         'metal-coat',
         'moon-stone',
+        'moss-rock',
         'oval-stone',
         'prism-scale',
         'protector',
         'razor-claw',
+        'razor-fang',
         'reaper-cloth',
         'shiny-stone',
         'sun-stone',
@@ -177,20 +180,25 @@ export default class EvolutionHelpers {
     private static getTradeLabel(
         method: EvolutionMethod
     ): EvolutionMethodLabel {
-        const icon = EvolutionHelpers.getIcon(method.heldItem);
-        const heldItemText =
-            !icon && method.heldItem
-                ? StringHelpers.toTitleCase(method.heldItem)
-                : undefined;
-        const condition = [heldItemText, EvolutionHelpers.getTimeOfDay(method)]
-            .filter((part): part is string => !!part)
-            .join(', ');
+        const conditionIcon = EvolutionHelpers.getIcon(method.heldItem);
+        const heldItemText = method.heldItem
+            ? StringHelpers.toTitleCase(method.heldItem)
+            : undefined;
+        // The icon already conveys the held item, so its tooltip skips the
+        // time of day rather than mixing it into the same text.
+        const condition = conditionIcon
+            ? heldItemText
+            : [heldItemText, EvolutionHelpers.getTimeOfDay(method)]
+                  .filter((part): part is string => !!part)
+                  .join(', ');
 
         return {
             label: 'Trade',
-            condition: EvolutionHelpers.wrapCondition(condition || undefined),
+            condition: conditionIcon
+                ? condition
+                : EvolutionHelpers.wrapCondition(condition || undefined),
+            conditionIcon,
             gender: EvolutionHelpers.getGender(method),
-            icon,
         };
     }
 
@@ -198,6 +206,27 @@ export default class EvolutionHelpers {
         return method.timeOfDay
             ? StringHelpers.toTitleCase(method.timeOfDay)
             : undefined;
+    }
+
+    // Locations named after a specific landmark the player must be near
+    // (rather than the area as a whole), whose name doesn't match the raw
+    // location slug and which renders as an icon (slug in
+    // public/evolution_methods) instead of text.
+    private static readonly LOCATION_LANDMARKS: Record<
+        string,
+        { name: string; icon: string }
+    > = {
+        'eterna-forest': { name: 'Moss Rock', icon: 'moss-rock' },
+        'sinnoh-route-217': { name: 'Ice Rock', icon: 'ice-rock' },
+    };
+
+    // "Mt" is an abbreviation of "Mount", so it needs a period that
+    // toTitleCase's generic slug formatting doesn't add.
+    private static getLocationName(location: string): string {
+        return (
+            EvolutionHelpers.LOCATION_LANDMARKS[location]?.name ??
+            StringHelpers.toTitleCase(location).replace(/^Mt /, 'Mt. ')
+        );
     }
 
     private static wrapCondition(text: string | undefined): string | undefined {
@@ -271,6 +300,24 @@ export default class EvolutionHelpers {
             return {
                 label: `Knows ${StringHelpers.toTitleCase(method.knownMoveType)} Move`,
                 ...base,
+            };
+        }
+
+        if (method.location) {
+            const locationName = EvolutionHelpers.getLocationName(
+                method.location
+            );
+            const conditionIcon = EvolutionHelpers.getIcon(
+                EvolutionHelpers.LOCATION_LANDMARKS[method.location]?.icon
+            );
+
+            return {
+                label: 'Level Up',
+                condition: conditionIcon
+                    ? locationName
+                    : EvolutionHelpers.wrapCondition(locationName),
+                conditionIcon,
+                gender: base.gender,
             };
         }
 

@@ -15,7 +15,6 @@ const VALLEY_WINDWORKS_EXTERIOR: Location = {
                     name: 'Glameow',
                     ability: 1,
                     level: 13,
-                    moves: ['Fake Out', 'Scratch', 'Growl', 'Hypnosis'],
                     nature: Nature.Lax,
                 },
             ],

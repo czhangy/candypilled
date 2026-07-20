@@ -59,7 +59,6 @@ const ETERNA_FOREST: Location = {
                             ability: 1,
                             level: 16,
                             nature: Nature.Modest,
-                            moves: ['Bide', 'Quick Attack', 'Charm', 'Spark'],
                         },
                     ],
                     x: 37.9,
@@ -107,7 +106,6 @@ const ETERNA_FOREST: Location = {
                             ability: 1,
                             level: 14,
                             nature: Nature.Lonely,
-                            moves: ['Protect', 'Tackle'],
                             ivs: 1,
                         },
                         {
@@ -115,7 +113,6 @@ const ETERNA_FOREST: Location = {
                             ability: 1,
                             level: 14,
                             nature: Nature.Lonely,
-                            moves: ['Protect', 'Tackle'],
                             ivs: 1,
                         },
                     ],

@@ -88,12 +88,14 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
                     <span className={styles['trainer__item-count']}>
                         {`${battle.items.count}x`}
                     </span>
-                    <Image
-                        alt={battle.items.name}
-                        height={ITEM_SPRITE_SIZE}
-                        src={ItemHelpers.getItemSprite(battle.items.name)}
-                        width={ITEM_SPRITE_SIZE}
-                    />
+                    <Tooltip position="center" text={battle.items.name}>
+                        <Image
+                            alt={battle.items.name}
+                            height={ITEM_SPRITE_SIZE}
+                            src={ItemHelpers.getItemSprite(battle.items.name)}
+                            width={ITEM_SPRITE_SIZE}
+                        />
+                    </Tooltip>
                 </div>
             )}
             <button

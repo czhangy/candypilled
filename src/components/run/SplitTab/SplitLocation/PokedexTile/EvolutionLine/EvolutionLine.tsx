@@ -27,6 +27,7 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
 
     const SPRITE_SIZE = 72;
     const METHOD_ICON_SIZE = 32;
+    const CONDITION_ICON_SIZE = 20;
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -98,11 +99,7 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                             {methodLabel.icon ? (
                                                 <Tooltip
                                                     position="center"
-                                                    text={
-                                                        methodLabel.condition
-                                                            ? `${methodLabel.label} ${methodLabel.condition}`
-                                                            : methodLabel.label
-                                                    }
+                                                    text={methodLabel.label}
                                                 >
                                                     <Image
                                                         alt={methodLabel.label}
@@ -142,16 +139,45 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                                         : '♀'}
                                                 </span>
                                             )}
-                                            {methodLabel.condition && (
-                                                <span
-                                                    className={
-                                                        styles[
-                                                            'method-condition'
-                                                        ]
+                                            {methodLabel.condition &&
+                                                !methodLabel.conditionIcon && (
+                                                    <span
+                                                        className={
+                                                            styles[
+                                                                'method-condition'
+                                                            ]
+                                                        }
+                                                    >
+                                                        {methodLabel.condition}
+                                                    </span>
+                                                )}
+                                            {methodLabel.conditionIcon && (
+                                                <Tooltip
+                                                    position="center"
+                                                    text={
+                                                        methodLabel.condition ??
+                                                        methodLabel.label
                                                     }
                                                 >
-                                                    {methodLabel.condition}
-                                                </span>
+                                                    <Image
+                                                        alt={
+                                                            methodLabel.condition ??
+                                                            methodLabel.label
+                                                        }
+                                                        className={
+                                                            styles[
+                                                                'condition-icon'
+                                                            ]
+                                                        }
+                                                        height={
+                                                            CONDITION_ICON_SIZE
+                                                        }
+                                                        src={`/evolution_methods/${methodLabel.conditionIcon}.png`}
+                                                        width={
+                                                            CONDITION_ICON_SIZE
+                                                        }
+                                                    />
+                                                </Tooltip>
                                             )}
                                         </span>
                                     )}

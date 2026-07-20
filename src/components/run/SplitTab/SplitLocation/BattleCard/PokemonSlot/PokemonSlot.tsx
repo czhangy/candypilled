@@ -18,6 +18,7 @@ type PokemonSlotProps = {
     onSelectMove: (name: string) => void;
     pokemon: BattlePokemon | null;
     variant: string;
+    version: string;
 };
 
 const PokemonSlot: React.FC<PokemonSlotProps> = ({
@@ -26,6 +27,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     onSelectMove,
     pokemon,
     variant,
+    version,
 }) => {
     // -------------------------------------------------------------------------
     // HOOKS
@@ -73,6 +75,15 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     const types = pokemon ? getTypes(pokemon.name) : [];
     const ability = getAbility();
     const highlightDangerous = settings['highlight-dangerous'] ?? false;
+    const moves =
+        pokemon?.moves ??
+        (pokemon
+            ? PokemonHelpers.getMovesAtLevel(
+                  pokemon.name,
+                  version,
+                  pokemon.level
+              )
+            : []);
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -188,7 +199,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                     generation={generation}
                     highlightDangerous={highlightDangerous}
                     ivs={StatHelpers.normalizeStats(pokemon.ivs, 31)}
-                    moves={pokemon.moves}
+                    moves={moves}
                     onSelectMove={onSelectMove}
                 />
             </ul>

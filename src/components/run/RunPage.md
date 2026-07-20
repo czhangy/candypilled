@@ -4,8 +4,8 @@ The dedicated page for a single game's run, reached from a game's entry on
 the runs list. Displays a back link to the runs list, the game's title with
 the current attempt number and a togglable Wipe/RESPAWN button, and a
 subtitle showing the run's personal best battle as trainer class + name
-followed by its split name (e.g. "Gym Leader Roark // Roark"), or "N/A" if
-none yet. Below that, if the run hasn't been wiped, a sticky block pinned to
+followed by its split name (e.g. "Leader Roark // Roark"), omitted entirely
+if none yet. Below that, if the run hasn't been wiped, a sticky block pinned to
 the top of the viewport while the active tab's content scrolls beneath it,
 with — on the Splits tab — the current split's header in the top-left
 corner and a row of tabs for switching between the different views of the
@@ -58,8 +58,8 @@ shown instead.
 - `personalBestSplitName` — the name of the split containing
   `personalBestBattle`
 - `personalBestLabel` — the personal best subtitle text: the battle's
-  trainer class and name followed by `// <split name>`, or `'N/A'` if the
-  run has no personal best yet
+  trainer class and name followed by `// <split name>`, or `null` if the
+  run has no personal best yet, in which case the subtitle isn't rendered
 - `updateQueryParams` — merges the given key/value pairs into the current
   URL's query string (deleting keys whose value is `undefined`) and
   navigates to it with `router.replace`, so tab/move/ability/split

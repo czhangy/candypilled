@@ -1,9 +1,231 @@
 import { hearthomeGym } from '@/lib/games/platinum/maps';
+import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const HEARTHOME_GYM: Location = {
     name: 'Hearthome Gym',
     map: hearthomeGym,
+    battles: [
+        {
+            isOptional: true,
+            trainerClass: 'Lass',
+            name: 'Molly',
+            team: [
+                {
+                    name: 'Misdreavus',
+                    ability: 1,
+                    level: 23,
+                    nature: Nature.Hardy,
+                    moves: ['Pain Split', 'Psybeam', 'Confuse Ray'],
+                    ivs: 1,
+                },
+            ],
+            x: 35.7,
+            y: 74,
+        },
+        {
+            isOptional: true,
+            trainerClass: 'Youngster',
+            name: 'Donny',
+            team: [
+                {
+                    name: 'Gastly',
+                    ability: 1,
+                    level: 20,
+                    nature: Nature.Careful,
+                    moves: [
+                        'Sucker Punch',
+                        'Night Shade',
+                        'Confuse Ray',
+                        'Curse',
+                    ],
+                    ivs: 1,
+                },
+                {
+                    name: 'Drifloon',
+                    ability: 1,
+                    level: 22,
+                    nature: Nature.Docile,
+                    moves: ['Spit Up', 'Swallow', 'Stockpile'],
+                    ivs: 1,
+                },
+            ],
+            x: 60.7,
+            y: 74,
+        },
+        {
+            isOptional: true,
+            trainerClass: 'School Kid F',
+            name: 'Mackenzie',
+            team: [
+                {
+                    name: 'Drifloon',
+                    ability: 1,
+                    level: 21,
+                    nature: Nature.Quiet,
+                    moves: ['Payback', 'Gust', 'Astonish', 'Minimize'],
+                    ivs: 1,
+                },
+                {
+                    name: 'Drifloon',
+                    ability: 1,
+                    level: 21,
+                    nature: Nature.Quiet,
+                    moves: ['Spit Up', 'Swallow', 'Stockpile'],
+                    ivs: 1,
+                },
+            ],
+            x: 21.4,
+            y: 49.9,
+            items: { count: 1, name: 'Super Potion' },
+        },
+        {
+            isOptional: true,
+            trainerClass: 'School Kid M',
+            name: 'Chance',
+            team: [
+                {
+                    name: 'Gastly',
+                    ability: 1,
+                    level: 23,
+                    nature: Nature.Rash,
+                    moves: [
+                        'Night Shade',
+                        'Sucker Punch',
+                        'Confuse Ray',
+                        'Hypnosis',
+                    ],
+                    ivs: 1,
+                },
+            ],
+            x: 74.9,
+            y: 50.3,
+            items: { count: 1, name: 'X Defend' },
+        },
+        {
+            isOptional: true,
+            trainerClass: 'Ace Trainer F',
+            name: 'Catherine',
+            team: [
+                {
+                    name: 'Haunter',
+                    ability: 1,
+                    level: 23,
+                    nature: Nature.Bashful,
+                    moves: [
+                        'Night Shade',
+                        'Confuse Ray',
+                        'Sucker Punch',
+                        'Curse',
+                    ],
+                    ivs: 7,
+                },
+                {
+                    name: 'Misdreavus',
+                    ability: 1,
+                    level: 24,
+                    nature: Nature.Careful,
+                    moves: ['Psybeam', 'Pain Split', 'Confuse Ray', 'Spite'],
+                    ivs: 7,
+                },
+            ],
+            x: 39.2,
+            y: 35.5,
+        },
+        {
+            isOptional: true,
+            trainerClass: 'Ace Trainer M',
+            name: 'Allen',
+            team: [
+                {
+                    name: 'Gastly',
+                    ability: 1,
+                    level: 21,
+                    nature: Nature.Quirky,
+                    moves: [
+                        'Night Shade',
+                        'Sucker Punch',
+                        'Curse',
+                        'Confuse Ray',
+                    ],
+                    ivs: 7,
+                },
+                {
+                    name: 'Gastly',
+                    ability: 1,
+                    level: 22,
+                    nature: Nature.Calm,
+                    moves: [
+                        'Night Shade',
+                        'Sucker Punch',
+                        'Hypnosis',
+                        'Confuse Ray',
+                    ],
+                    ivs: 7,
+                },
+                {
+                    name: 'Haunter',
+                    ability: 1,
+                    level: 24,
+                    nature: Nature.Serious,
+                    moves: ['Shadow Ball', 'Confuse Ray', 'Curse', 'Mean Look'],
+                    ivs: 7,
+                },
+            ],
+            x: 67.7,
+            y: 37.2,
+        },
+        {
+            isBoss: true,
+            trainerClass: 'Leader',
+            name: 'Fantina',
+            team: [
+                {
+                    name: 'Duskull',
+                    ability: 1,
+                    level: 24,
+                    nature: Nature.Mild,
+                    moves: [
+                        'Will-O-Wisp',
+                        'Pursuit',
+                        'Shadow Sneak',
+                        'Future Sight',
+                    ],
+                    ivs: 12,
+                },
+                {
+                    name: 'Haunter',
+                    ability: 1,
+                    level: 24,
+                    nature: Nature.Bashful,
+                    moves: [
+                        'Shadow Claw',
+                        'Sucker Punch',
+                        'Hypnosis',
+                        'Confuse Ray',
+                    ],
+                    ivs: 12,
+                },
+                {
+                    name: 'Mismagius',
+                    ability: 1,
+                    level: 26,
+                    nature: Nature.Impish,
+                    moves: [
+                        'Shadow Ball',
+                        'Psybeam',
+                        'Magical Leaf',
+                        'Confuse Ray',
+                    ],
+                    ivs: 12,
+                    heldItem: 'Sitrus Berry',
+                },
+            ],
+            x: 49.9,
+            y: 17.4,
+            items: { count: 2, name: 'Super Potion' },
+        },
+    ],
 };
 
 export default HEARTHOME_GYM;

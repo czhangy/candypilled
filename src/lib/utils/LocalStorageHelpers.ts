@@ -1,4 +1,4 @@
-import { GAMES } from '@/lib/static/constants';
+import { GAMES } from '@/lib/games';
 import { Game, Run } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
@@ -71,6 +71,12 @@ export default class LocalStorageHelpers {
             StringHelpers.toSlug(game.name),
             JSON.stringify(run)
         );
+        LocalStorageHelpers.listeners.forEach((listener) => listener());
+    }
+
+    /** Deletes the stored run for game and notifies subscribers. */
+    static deleteRun(game: Game): void {
+        localStorage.removeItem(StringHelpers.toSlug(game.name));
         LocalStorageHelpers.listeners.forEach((listener) => listener());
     }
 }
