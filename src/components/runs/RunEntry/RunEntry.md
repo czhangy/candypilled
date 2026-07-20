@@ -6,9 +6,9 @@ for split/box/death counts, "N/A" for personal best). A "Continue" button
 navigates to the game's dedicated run page (only shown if a run already
 exists), a "New" button starts a fresh attempt for the game, confirming
 with the user first if a run is already in progress, then prompting for a
-starter before the run is created, and a "Data" button (only shown if a
-run already exists) opens a modal offering the game's export and reset
-actions.
+starter before the run is created, and a "Data" button opens a modal
+offering the game's import, export, and reset actions (export and reset
+are only available once a run already exists).
 
 ## Props
 
@@ -22,7 +22,7 @@ actions.
 | State                 | Type      | Initial value | Description                                              |
 | --------------------- | --------- | ------------- | -------------------------------------------------------- |
 | `isConfirmOpen`       | `boolean` | `false`       | Whether the "start a new run" confirmation modal is open |
-| `isDataModalOpen`     | `boolean` | `false`       | Whether the data (export/reset) modal is open            |
+| `isDataModalOpen`     | `boolean` | `false`       | Whether the data (import/export/reset) modal is open     |
 | `isStarterSelectOpen` | `boolean` | `false`       | Whether the starter selection modal is open              |
 
 ## Handlers
@@ -37,10 +37,11 @@ actions.
 - **On confirmation modal confirm** — opens the starter selection modal
   and requests the confirmation modal's animated close, which closes it
   once the exit animation finishes
-- **On "Data" click** — opens the data modal (only available when a run
-  exists)
-- **On data modal close** — closes the modal without exporting or
-  resetting anything
+- **On "Data" click** — opens the data modal
+- **On data modal close** — closes the modal without importing, exporting,
+  or resetting anything
+- **On data modal import confirm** — saves the imported run to storage via
+  `LocalStorageHelpers.saveRun`, overwriting any existing run for the game
 - **On data modal export confirm** — downloads the run as a formatted
   JSON file named after the game's slug
 - **On data modal reset confirm** — deletes all of the game's stored data

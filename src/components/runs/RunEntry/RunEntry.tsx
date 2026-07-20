@@ -127,6 +127,10 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         LocalStorageHelpers.deleteRun(game);
     };
 
+    const handleImport = (importedRun: Run): void => {
+        LocalStorageHelpers.saveRun(game, importedRun);
+    };
+
     const handleExport = (): void => {
         if (!run) {
             return;
@@ -232,15 +236,13 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                 >
                     New
                 </button>
-                {run && (
-                    <button
-                        className={styles.action}
-                        onClick={handleDataClick}
-                        type="button"
-                    >
-                        Data
-                    </button>
-                )}
+                <button
+                    className={styles.action}
+                    onClick={handleDataClick}
+                    type="button"
+                >
+                    Data
+                </button>
             </div>
             {isConfirmOpen && (
                 <ConfirmModal
@@ -256,8 +258,10 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     accentColor={game.accentColor}
                     buttonTextColor={game.textContrastColor}
                     gameName={game.name}
+                    hasExistingRun={!!run}
                     onClose={handleDataModalClose}
                     onExport={handleExport}
+                    onImport={handleImport}
                     onReset={handleReset}
                 />
             )}
