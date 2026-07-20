@@ -78,7 +78,7 @@ const OREBURGH_GYM: Location = {
                     ivs: 6,
                 },
             ],
-            items: { count: 2, name: 'Potion' },
+            items: [{ count: 2, name: 'Potion' }],
             x: 46.6,
             y: 22.8,
         },

@@ -77,7 +77,7 @@ const HEARTHOME_GYM: Location = {
             ],
             x: 21.4,
             y: 49.9,
-            items: { count: 1, name: 'Super Potion' },
+            items: [{ count: 1, name: 'Super Potion' }],
         },
         {
             isOptional: true,
@@ -100,7 +100,7 @@ const HEARTHOME_GYM: Location = {
             ],
             x: 74.9,
             y: 50.3,
-            items: { count: 1, name: 'X Defend' },
+            items: [{ count: 1, name: 'X Defend' }],
         },
         {
             isOptional: true,
@@ -223,7 +223,7 @@ const HEARTHOME_GYM: Location = {
             ],
             x: 49.9,
             y: 17.4,
-            items: { count: 2, name: 'Super Potion' },
+            items: [{ count: 2, name: 'Super Potion' }],
         },
     ],
 };

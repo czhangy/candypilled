@@ -16,6 +16,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 > Never account for backwards compatibility (e.g. old localStorage data missing a newly added field) unless explicitly told to do so.
 
+> A constant, type, or helper used by only one file belongs in that file (module-level for scripts, inside the component function for components per the rule below). Only promote it to a shared location (`constants.ts`, `types.ts`, `src/lib/utils/`) once a second file actually needs it — don't pre-emptively centralize.
+
 ## Commands
 
 ```bash

@@ -91,7 +91,7 @@ export type Battle = {
     isOptional?: boolean;
     isTag?: boolean;
     isTrueDouble?: boolean;
-    items?: BattleItem;
+    items?: BattleItem[];
     name: string;
     team?: BattlePokemon[];
     teamsByStarter?: Partial<Record<string, BattlePokemon[]>>;

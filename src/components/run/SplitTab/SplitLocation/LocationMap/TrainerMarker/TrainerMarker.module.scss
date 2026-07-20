@@ -5,7 +5,7 @@
 .trainer-marker {
     --marker-color: var(--accent-color);
 
-    background: color-mix(in srgb, var(--marker-color) 35%, transparent);
+    background: color-mix(in srgb, var(--marker-color) 15%, transparent);
     border: 2px solid var(--marker-color);
     cursor: pointer;
     height: var(--height);
@@ -21,7 +21,7 @@
         &:hover {
             background: color-mix(
                 in srgb,
-                var(--marker-color) 60%,
+                var(--marker-color) 30%,
                 transparent
             );
         }
@@ -40,7 +40,7 @@
     }
 
     &--selected {
-        background: color-mix(in srgb, var(--marker-color) 75%, transparent);
+        background: color-mix(in srgb, var(--marker-color) 40%, transparent);
     }
 
     .trainer-marker__check,
@@ -77,17 +77,17 @@
     }
 
     &--defeated {
-        background: color.adjust($green, $alpha: -0.65);
+        background: color.adjust($green, $alpha: -0.85);
         border-color: $green;
 
         @media (hover: hover) {
             &:hover {
-                background: color.adjust($green, $alpha: -0.4);
+                background: color.adjust($green, $alpha: -0.7);
             }
         }
 
         &.trainer-marker--selected {
-            background: color.adjust($green, $alpha: -0.25);
+            background: color.adjust($green, $alpha: -0.6);
         }
     }
 }
