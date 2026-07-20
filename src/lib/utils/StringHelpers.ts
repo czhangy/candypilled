@@ -16,13 +16,20 @@ export default class StringHelpers {
         'X',
     ];
 
+    // Combining diacritical marks left behind by NFD normalization (e.g. the
+    // acute accent in "é"), stripped so accented letters slug down to their
+    // unaccented base letter instead of a separator.
+    private static readonly DIACRITIC_MARKS = /[̀-ͯ]/g;
+
     // -------------------------------------------------------------------------
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    /** value as a lowercase, hyphen-separated slug. */
+    /** value as a lowercase, hyphen-separated slug, with accents stripped. */
     static toSlug(value: string): string {
         return value
+            .normalize('NFD')
+            .replace(StringHelpers.DIACRITIC_MARKS, '')
             .toLowerCase()
             .trim()
             .replace(/[^a-z0-9]+/g, '-')

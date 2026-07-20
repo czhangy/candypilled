@@ -17,6 +17,13 @@ const MAX_TEAM_SIZE = 6;
 const DEFAULT_ABILITY_SLOT = 1;
 const NATURE_NAMES = Object.values(Nature);
 
+// Trainer classes whose canonical display name carries an accent that plain
+// ASCII input (and therefore slug/title-casing) can't reproduce, keyed by
+// their unaccented slug.
+const ACCENTED_TRAINER_CLASSES: Record<string, string> = {
+    'poke-kid': 'Poké Kid',
+};
+
 type BattleArgs = {
     location: string;
     subarea?: string;
@@ -283,7 +290,8 @@ const promptBattle = async (
             console.log("  That isn't a valid trainer class.");
             continue;
         }
-        trainerClass = StringHelpers.toTitleCase(slug);
+        trainerClass =
+            ACCENTED_TRAINER_CLASSES[slug] ?? StringHelpers.toTitleCase(slug);
     }
 
     const name = (await rl.question('Trainer name: ')).trim();
