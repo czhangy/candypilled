@@ -1,8 +1,8 @@
 # RunEntry
 
 A list entry summarizing a single game's active run. If the game has no
-stored run, placeholder values are shown instead (attempt #0, dashes for
-split/box/death counts, "N/A" for personal best). A "Continue" button
+stored run, placeholder values are shown instead (no attempt number, dashes
+for split/box/death counts, "N/A" for personal best). A "Continue" button
 navigates to the game's dedicated run page (only shown if a run already
 exists), and a "New" button starts a fresh attempt for the game, confirming
 with the user first if a run is already in progress, then prompting for a

@@ -50,7 +50,7 @@ const OREBURGH_GYM: Location = {
         },
         {
             isBoss: true,
-            trainerClass: 'Gym Leader',
+            trainerClass: 'Leader',
             name: 'Roark',
             team: [
                 {

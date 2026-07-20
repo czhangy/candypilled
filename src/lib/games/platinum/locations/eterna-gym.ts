@@ -80,7 +80,7 @@ const ETERNA_GYM: Location = {
         },
         {
             isBoss: true,
-            trainerClass: 'Gym Leader',
+            trainerClass: 'Leader',
             name: 'Gardenia',
             team: [
                 {
