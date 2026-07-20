@@ -28,6 +28,7 @@ export default class StringHelpers {
     /** value as a lowercase, hyphen-separated slug, with accents stripped. */
     static toSlug(value: string): string {
         return value
+            .replace(/&/g, ' and ')
             .normalize('NFD')
             .replace(StringHelpers.DIACRITIC_MARKS, '')
             .toLowerCase()

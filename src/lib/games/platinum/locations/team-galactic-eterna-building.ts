@@ -141,7 +141,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                     ],
                     x: 79.1,
                     y: 36.9,
-                    items: { count: 1, name: 'X Special' },
+                    items: [{ count: 1, name: 'X Special' }],
                 },
             ],
         },

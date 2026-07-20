@@ -23,7 +23,7 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const ITEM_SPRITE_SIZE = 32;
+    const ITEM_SPRITE_SIZE = 24;
     const SPRITE_SIZE = 96;
 
     // -------------------------------------------------------------------------
@@ -85,17 +85,24 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
                         styles['trainer__item'],
                     ].join(' ')}
                 >
-                    <span className={styles['trainer__item-count']}>
-                        {`${battle.items.count}x`}
-                    </span>
-                    <Tooltip position="center" text={battle.items.name}>
-                        <Image
-                            alt={battle.items.name}
-                            height={ITEM_SPRITE_SIZE}
-                            src={ItemHelpers.getItemSprite(battle.items.name)}
-                            width={ITEM_SPRITE_SIZE}
-                        />
-                    </Tooltip>
+                    {battle.items.map((item) => (
+                        <div
+                            className={styles['trainer__item-row']}
+                            key={item.name}
+                        >
+                            <span className={styles['trainer__item-count']}>
+                                {`${item.count}x`}
+                            </span>
+                            <Tooltip position="center" text={item.name}>
+                                <Image
+                                    alt={item.name}
+                                    height={ITEM_SPRITE_SIZE}
+                                    src={ItemHelpers.getItemSprite(item.name)}
+                                    width={ITEM_SPRITE_SIZE}
+                                />
+                            </Tooltip>
+                        </div>
+                    ))}
                 </div>
             )}
             <button

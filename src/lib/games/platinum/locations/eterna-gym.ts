@@ -121,6 +121,7 @@ const ETERNA_GYM: Location = {
             ],
             x: 49.9,
             y: 15.1,
+            items: [{ count: 2, name: 'Super Potion' }],
         },
     ],
 };

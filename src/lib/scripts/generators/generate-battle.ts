@@ -17,12 +17,25 @@ const MAX_TEAM_SIZE = 6;
 const DEFAULT_ABILITY_SLOT = 1;
 const NATURE_NAMES = Object.values(Nature);
 
-// Trainer classes whose canonical display name carries an accent that plain
-// ASCII input (and therefore slug/title-casing) can't reproduce, keyed by
-// their unaccented slug.
-const ACCENTED_TRAINER_CLASSES: Record<string, string> = {
+// Trainer classes whose canonical display name has punctuation or accents
+// that plain ASCII input (and therefore slug/title-casing) can't reproduce,
+// keyed by their slug.
+const TRAINER_CLASS_NAME_OVERRIDES: Record<string, string> = {
     'poke-kid': 'Poké Kid',
+    'pokefan-m': 'Pokéfan M',
+    'pokefan-f': 'Pokéfan F',
+    'belle-and-pa': 'Belle & Pa',
 };
+
+// Trainer classes that always field two trainers' full parties as a single
+// battle, so a generated battle should default isTrueDouble to true.
+const TRUE_DOUBLE_TRAINER_CLASSES = [
+    'Twins',
+    'Young Couple',
+    'Belle & Pa',
+    'Sis and Bro',
+    'Old Couple',
+];
 
 type BattleArgs = {
     location: string;
@@ -43,6 +56,7 @@ type PromptedPokemon = {
 
 type PromptedBattle = {
     trainerClass: string;
+    isTrueDouble: boolean;
     name: string;
     team: PromptedPokemon[];
 };
@@ -225,10 +239,14 @@ const serializeBattle = (
     const teamField = battle.team.length
         ? `${indent}    team: [\n${team}${indent}    ],\n`
         : '';
+    const trueDoubleField = battle.isTrueDouble
+        ? `${indent}    isTrueDouble: true,\n`
+        : '';
 
     return (
         `${indent}{\n` +
         `${indent}    isOptional: true,\n` +
+        trueDoubleField +
         `${indent}    trainerClass: '${escapeQuotes(battle.trainerClass)}',\n` +
         `${indent}    name: '${escapeQuotes(battle.name)}',\n` +
         teamField +
@@ -291,8 +309,10 @@ const promptBattle = async (
             continue;
         }
         trainerClass =
-            ACCENTED_TRAINER_CLASSES[slug] ?? StringHelpers.toTitleCase(slug);
+            TRAINER_CLASS_NAME_OVERRIDES[slug] ??
+            StringHelpers.toTitleCase(slug);
     }
+    const isTrueDouble = TRUE_DOUBLE_TRAINER_CLASSES.includes(trainerClass);
 
     const name = (await rl.question('Trainer name: ')).trim();
 
@@ -303,7 +323,7 @@ const promptBattle = async (
         team.push(pokemon);
     }
 
-    return { trainerClass, name, team };
+    return { trainerClass, isTrueDouble, name, team };
 };
 
 const ensureNatureImport = (content: string): string => {

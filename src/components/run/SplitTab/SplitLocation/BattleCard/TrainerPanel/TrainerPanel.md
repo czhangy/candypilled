@@ -2,7 +2,8 @@
 
 The trainer portrait shown beside a battle's team, made up of a field
 condition section above the sprite (e.g. "Rain") and a held items
-section below it, showing the item's count followed by its sprite
+section below it, showing one row per item stacked vertically in the
+same cell, each row giving the item's count followed by its sprite
 (e.g. "2x" beside a Potion sprite), each hidden when not present on
 the battle. A "Fog" field condition is followed by an asterisk whose
 tooltip reads "Can be cleared using Defog". An "Optional" section

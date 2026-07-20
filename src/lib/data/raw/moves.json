@@ -8706,7 +8706,7 @@
         "category": "status",
         "priority": 0,
         "introducedInGeneration": 1,
-        "isDangerous": true,
+        "isDangerous": false,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,
