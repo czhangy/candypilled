@@ -104,14 +104,71 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         );
     };
 
+    const getAllBattles = (): {
+        battle: Battle;
+        subareaIndex: number;
+    }[] => {
+        const battlesBySubarea = location.subareas
+            ? location.subareas.map((subarea, subareaIndex) => ({
+                  battles:
+                      location.hideBattles || subarea.hideBattles
+                          ? []
+                          : (subarea.battles ?? []),
+                  subareaIndex,
+              }))
+            : [
+                  {
+                      battles: location.hideBattles
+                          ? []
+                          : (location.battles ?? []),
+                      subareaIndex: 0,
+                  },
+              ];
+
+        return battlesBySubarea.flatMap(({ battles, subareaIndex }) =>
+            battles.map((battle) => ({ battle, subareaIndex }))
+        );
+    };
+
+    const getInitialSubareaIndex = (): number => {
+        if (!location.subareas || location.subareas.length === 0) {
+            return 0;
+        }
+
+        const hasAnyEncounters = location.subareas.some(
+            (subarea) => !!subarea.encountersKey
+        );
+        const takenEncounter = run.caughtPokemon.some(
+            (caught) => caught.location === location.name
+        );
+
+        if (hasAnyEncounters && !takenEncounter) {
+            return 0;
+        }
+
+        const candidates = getAllBattles();
+        if (candidates.length === 0) {
+            return 0;
+        }
+
+        const nextUndefeated = candidates.find(
+            ({ battle }) => !isBattleDefeated(battle)
+        );
+
+        return (nextUndefeated ?? candidates[candidates.length - 1])
+            .subareaIndex;
+    };
+
     // -------------------------------------------------------------------------
     // STATE
     // -------------------------------------------------------------------------
 
     const [isOpen, setIsOpen] = useState(true);
-    const [selectedSubareaIndex, setSelectedSubareaIndex] = useState<number>(0);
+    const [selectedSubareaIndex, setSelectedSubareaIndex] = useState<number>(
+        getInitialSubareaIndex
+    );
     const [selectedBattle, setSelectedBattle] = useState<Battle | undefined>(
-        () => getDefaultSelectedBattle(selectedSubareaIndex)
+        () => getDefaultSelectedBattle(getInitialSubareaIndex())
     );
     const [selectedEncounter, setSelectedEncounter] = useState<
         Encounter | undefined
