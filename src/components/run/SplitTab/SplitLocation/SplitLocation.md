@@ -58,6 +58,7 @@ Pokédex tile.
 | `onSelectAbility`  | `(name: string) => void`      | Yes      | -       | Called when an ability is clicked within the battle card's teams or the Pokédex tile's ability list                                             |
 | `onSelectLocation` | `(location: string) => void`  | Yes      | -       | Called with a location's base name when it's clicked within the Pokédex tile's locations tab                                                    |
 | `onSelectMove`     | `(name: string) => void`      | Yes      | -       | Called when a move is clicked within the battle card's teams or the Pokédex tile's learnset                                                     |
+| `onSelectSpecies`  | `(species: string) => void`   | Yes      | -       | Called when a Pokémon's sprite or name is clicked within the battle card's teams                                                                |
 | `run`              | `Run`                         | Yes      | -       | The run whose defeated battles are shown                                                                                                        |
 | `variant`          | `string`                      | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                                          |
 

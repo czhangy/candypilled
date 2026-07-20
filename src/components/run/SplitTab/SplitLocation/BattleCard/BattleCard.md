@@ -11,17 +11,18 @@ trainer's defeated state in storage via `onToggleDefeated` when its
 
 ## Props
 
-| Prop               | Type                     | Required | Default | Description                                                                         |
-| ------------------ | ------------------------ | -------- | ------- | ----------------------------------------------------------------------------------- |
-| `battle`           | `Battle`                 | Yes      | -       | The currently selected battle                                                       |
-| `generation`       | `number`                 | Yes      | -       | The game's generation, used to resolve each Pokémon's types and abilities           |
-| `isDefeated`       | `boolean`                | Yes      | -       | Whether this battle has already been marked defeated                                |
-| `onSelectAbility`  | `(name: string) => void` | Yes      | -       | Called with a Pokémon's ability when it's clicked                                   |
-| `onSelectMove`     | `(name: string) => void` | Yes      | -       | Called with a move's name when it's clicked within a Pokémon's moveset              |
-| `onToggleDefeated` | `() => void`             | Yes      | -       | Called when the defeat button is clicked                                            |
-| `starter`          | `string`                 | Yes      | -       | The run's chosen starter, used to resolve a miniboss's starter-specific team        |
-| `variant`          | `string`                 | Yes      | -       | The sprite variant to prefer, matching the game's slug                              |
-| `version`          | `string`                 | Yes      | -       | The game's version slug, used to derive a Pokémon's moveset when not explicitly set |
+| Prop               | Type                        | Required | Default | Description                                                                         |
+| ------------------ | --------------------------- | -------- | ------- | ----------------------------------------------------------------------------------- |
+| `battle`           | `Battle`                    | Yes      | -       | The currently selected battle                                                       |
+| `generation`       | `number`                    | Yes      | -       | The game's generation, used to resolve each Pokémon's types and abilities           |
+| `isDefeated`       | `boolean`                   | Yes      | -       | Whether this battle has already been marked defeated                                |
+| `onSelectAbility`  | `(name: string) => void`    | Yes      | -       | Called with a Pokémon's ability when it's clicked                                   |
+| `onSelectMove`     | `(name: string) => void`    | Yes      | -       | Called with a move's name when it's clicked within a Pokémon's moveset              |
+| `onSelectSpecies`  | `(species: string) => void` | Yes      | -       | Called with a Pokémon's name when its sprite or name is clicked                     |
+| `onToggleDefeated` | `() => void`                | Yes      | -       | Called when the defeat button is clicked                                            |
+| `starter`          | `string`                    | Yes      | -       | The run's chosen starter, used to resolve a miniboss's starter-specific team        |
+| `variant`          | `string`                    | Yes      | -       | The sprite variant to prefer, matching the game's slug                              |
+| `version`          | `string`                    | Yes      | -       | The game's version slug, used to derive a Pokémon's moveset when not explicitly set |
 
 ## Computations
 

@@ -32,6 +32,7 @@ type SplitLocationProps = {
     onSelectAbility: (name: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
+    onSelectSpecies: (species: string) => void;
     run: Run;
     variant: string;
 };
@@ -44,6 +45,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     onSelectAbility,
     onSelectLocation,
     onSelectMove,
+    onSelectSpecies,
     run,
     variant,
 }) => {
@@ -397,6 +399,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         )}
                                         onSelectAbility={onSelectAbility}
                                         onSelectMove={onSelectMove}
+                                        onSelectSpecies={onSelectSpecies}
                                         onToggleDefeated={() =>
                                             handleBattleToggleDefeated(
                                                 selectedBattle

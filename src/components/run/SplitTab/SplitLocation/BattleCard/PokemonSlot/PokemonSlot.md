@@ -7,23 +7,26 @@ an icon), ability, nature, and moveset. Non-neutral natures are
 annotated with their stat
 effects, shown in a smaller font on the same line (e.g. "Adamant [+Atk
 -SpA]"). Each Pokémon's name is prefixed with its level (e.g. "Lv.5
-Chimchar"). The ability is clickable, linking to that ability's
-details, and the nature is clickable, opening its entry on the Natures
-page in a new tab; both have a background that darkens further on
-hover, and when the "Highlight Dangerous Moves/Abilities" setting is
-on, abilities and moves flagged as dangerous are shown in red text.
-When `pokemon` is `null`, an empty placeholder slot is shown instead.
+Chimchar"). The sprite and name are clickable, opening that Pokémon's
+Pokédex entry in a new tab. The ability is clickable, linking to that
+ability's details, and the nature is clickable, opening its entry on
+the Natures page in a new tab; both have a background that darkens
+further on hover, and when the "Highlight Dangerous Moves/Abilities"
+setting is on, abilities and moves flagged as dangerous are shown in
+red text. When `pokemon` is `null`, an empty placeholder slot is shown
+instead.
 
 ## Props
 
-| Prop              | Type                     | Required | Default | Description                                                                       |
-| ----------------- | ------------------------ | -------- | ------- | --------------------------------------------------------------------------------- |
-| `generation`      | `number`                 | Yes      | -       | The game's generation, used to resolve the Pokémon's types and ability            |
-| `onSelectAbility` | `(name: string) => void` | Yes      | -       | Called with the Pokémon's ability when it's clicked                               |
-| `onSelectMove`    | `(name: string) => void` | Yes      | -       | Called with a move's name when it's clicked within the moveset                    |
-| `pokemon`         | `BattlePokemon \| null`  | Yes      | -       | The Pokémon to display, or `null` to render an empty slot                         |
-| `variant`         | `string`                 | Yes      | -       | The sprite variant to prefer, matching the game's slug                            |
-| `version`         | `string`                 | Yes      | -       | The game's version slug, used to derive the moveset when `pokemon.moves` is unset |
+| Prop              | Type                        | Required | Default | Description                                                                       |
+| ----------------- | --------------------------- | -------- | ------- | --------------------------------------------------------------------------------- |
+| `generation`      | `number`                    | Yes      | -       | The game's generation, used to resolve the Pokémon's types and ability            |
+| `onSelectAbility` | `(name: string) => void`    | Yes      | -       | Called with the Pokémon's ability when it's clicked                               |
+| `onSelectMove`    | `(name: string) => void`    | Yes      | -       | Called with a move's name when it's clicked within the moveset                    |
+| `onSelectSpecies` | `(species: string) => void` | Yes      | -       | Called with the Pokémon's name when its sprite or name is clicked                 |
+| `pokemon`         | `BattlePokemon \| null`     | Yes      | -       | The Pokémon to display, or `null` to render an empty slot                         |
+| `variant`         | `string`                    | Yes      | -       | The sprite variant to prefer, matching the game's slug                            |
+| `version`         | `string`                    | Yes      | -       | The game's version slug, used to derive the moveset when `pokemon.moves` is unset |
 
 ## Computations
 
@@ -47,4 +50,5 @@ When `pokemon` is `null`, an empty placeholder slot is shown instead.
 ## SCSS Variable Dependencies
 
 - `--accent-color` — the active game's accent color, expected to be
-  set by a parent; used for the held item text
+  set by a parent; used for the held item text and the sprite/name
+  link's hover color

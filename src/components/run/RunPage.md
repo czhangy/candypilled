@@ -88,6 +88,10 @@ shown instead.
   ability within `PokedexTile` or `BattleCard`) — opens the Abilities tab
   for that ability (`?tab=abilities&ability=<name>`) in a new browser tab,
   leaving the current page untouched
+- **On species link click** (from `SplitTab`, a Pokémon's sprite or name
+  within `BattleCard`) — opens the Pokédex tab for that species
+  (`?tab=pokedex&species=<slug>`) in a new browser tab, leaving the current
+  page untouched
 - **On species select** (from `PokedexTab`, whether from its species list
   or its `PokedexDetail`'s evolution line) — sets the `species` query param
   (slugified, since an evolution line link passes a slug rather than a

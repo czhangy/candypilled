@@ -192,6 +192,16 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         );
     };
 
+    const handleSpeciesLinkClick = (species: string): void => {
+        window.open(
+            `${pathname}?tab=pokedex&species=${encodeURIComponent(
+                StringHelpers.toSlug(species)
+            )}`,
+            '_blank',
+            'noopener,noreferrer'
+        );
+    };
+
     const handleAbilitySelect = (name: string): void => {
         updateQueryParams({ ability: name });
     };
@@ -319,6 +329,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             onSelectAbility={handleAbilityLinkClick}
                             onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveLinkClick}
+                            onSelectSpecies={handleSpeciesLinkClick}
                             run={run}
                             stickyOffset={stickyHeaderHeight}
                         />

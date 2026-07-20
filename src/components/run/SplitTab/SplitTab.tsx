@@ -17,6 +17,7 @@ type SplitTabProps = {
     onSelectAbility: (name: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
+    onSelectSpecies: (species: string) => void;
     run: Run;
     stickyOffset: number;
 };
@@ -28,6 +29,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
     onSelectAbility,
     onSelectLocation,
     onSelectMove,
+    onSelectSpecies,
     run,
     stickyOffset,
 }) => {
@@ -223,6 +225,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             onSelectAbility={onSelectAbility}
                             onSelectLocation={onSelectLocation}
                             onSelectMove={onSelectMove}
+                            onSelectSpecies={onSelectSpecies}
                             run={run}
                             variant={variant}
                         />
