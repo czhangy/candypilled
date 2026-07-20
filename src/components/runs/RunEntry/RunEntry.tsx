@@ -13,6 +13,7 @@ import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
+import DataModal from './DataModal/DataModal';
 import styles from './RunEntry.module.scss';
 import StarterSelectModal from './StarterSelectModal/StarterSelectModal';
 
@@ -33,8 +34,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // -------------------------------------------------------------------------
 
     const [isConfirmOpen, setIsConfirmOpen] = useState(false);
-    const [isResetConfirmOpen, setIsResetConfirmOpen] = useState(false);
-    const [isExportConfirmOpen, setIsExportConfirmOpen] = useState(false);
+    const [isDataModalOpen, setIsDataModalOpen] = useState(false);
     const [isStarterSelectOpen, setIsStarterSelectOpen] = useState(false);
 
     // -------------------------------------------------------------------------
@@ -115,27 +115,19 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         setIsStarterSelectOpen(true);
     };
 
-    const handleResetClick = (): void => {
-        setIsResetConfirmOpen(true);
+    const handleDataClick = (): void => {
+        setIsDataModalOpen(true);
     };
 
-    const handleResetConfirmClose = (): void => {
-        setIsResetConfirmOpen(false);
+    const handleDataModalClose = (): void => {
+        setIsDataModalOpen(false);
     };
 
-    const handleConfirmReset = (): void => {
+    const handleReset = (): void => {
         LocalStorageHelpers.deleteRun(game);
     };
 
-    const handleExportClick = (): void => {
-        setIsExportConfirmOpen(true);
-    };
-
-    const handleExportConfirmClose = (): void => {
-        setIsExportConfirmOpen(false);
-    };
-
-    const handleConfirmExport = (): void => {
+    const handleExport = (): void => {
         if (!run) {
             return;
         }
@@ -243,19 +235,10 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                 {run && (
                     <button
                         className={styles.action}
-                        onClick={handleExportClick}
+                        onClick={handleDataClick}
                         type="button"
                     >
-                        Export
-                    </button>
-                )}
-                {run && (
-                    <button
-                        className={styles.action}
-                        onClick={handleResetClick}
-                        type="button"
-                    >
-                        Reset
+                        Data
                     </button>
                 )}
             </div>
@@ -266,29 +249,16 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     onClose={handleConfirmClose}
                     onConfirm={handleConfirmNewRun}
                     title="Start a new run?"
-                    variant="destructive"
                 />
             )}
-            {isResetConfirmOpen && (
-                <ConfirmModal
-                    confirmLabel="Reset Game"
-                    description="All data for this game, including your current run, personal best, and Hall of Fame count, will be deleted and can't be recovered."
-                    onClose={handleResetConfirmClose}
-                    onConfirm={handleConfirmReset}
-                    title={`Reset ${game.name}?`}
-                    variant="destructive"
-                />
-            )}
-            {isExportConfirmOpen && (
-                <ConfirmModal
+            {isDataModalOpen && (
+                <DataModal
                     accentColor={game.accentColor}
                     buttonTextColor={game.textContrastColor}
-                    confirmLabel="Export"
-                    description={`This will download a JSON file containing all of your data for ${game.name}.`}
-                    onClose={handleExportConfirmClose}
-                    onConfirm={handleConfirmExport}
-                    title="Export game data?"
-                    variant="accent"
+                    gameName={game.name}
+                    onClose={handleDataModalClose}
+                    onExport={handleExport}
+                    onReset={handleReset}
                 />
             )}
             {isStarterSelectOpen && (

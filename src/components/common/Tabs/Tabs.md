@@ -26,4 +26,5 @@ newly active tab when selection changes.
 
 ## SCSS Variable Dependencies
 
-- `--accent-color` — the active game's accent color, set by `RunPage`
+- `--accent-color` — the active game's accent color, expected to be set by
+  a parent

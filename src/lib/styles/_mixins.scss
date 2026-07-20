@@ -54,6 +54,12 @@
     flex: 1;
 }
 
+@mixin modal-description {
+    color: $text-mid;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
 @mixin mono-label {
     font-family: $font-mono;
     font-weight: 700;
