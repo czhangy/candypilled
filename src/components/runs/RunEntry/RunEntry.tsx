@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import Modal from '@/components/common/Modal/Modal';
 import BoxIcon from '@/lib/icons/BoxIcon';
 import CrownIcon from '@/lib/icons/CrownIcon';
 import RunIcon from '@/lib/icons/RunIcon';
@@ -13,6 +12,7 @@ import { CaughtPokemon, Game, Run } from '@/lib/static/types';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
+import ConfirmModal from './ConfirmModal/ConfirmModal';
 import styles from './RunEntry.module.scss';
 import StarterSelectModal from './StarterSelectModal/StarterSelectModal';
 
@@ -33,6 +33,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // -------------------------------------------------------------------------
 
     const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+    const [isResetConfirmOpen, setIsResetConfirmOpen] = useState(false);
     const [isStarterSelectOpen, setIsStarterSelectOpen] = useState(false);
 
     // -------------------------------------------------------------------------
@@ -111,6 +112,18 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
 
     const handleConfirmNewRun = (): void => {
         setIsStarterSelectOpen(true);
+    };
+
+    const handleResetClick = (): void => {
+        setIsResetConfirmOpen(true);
+    };
+
+    const handleResetConfirmClose = (): void => {
+        setIsResetConfirmOpen(false);
+    };
+
+    const handleConfirmReset = (): void => {
+        LocalStorageHelpers.deleteRun(game);
     };
 
     const handleStarterSelectClose = (): void => {
@@ -202,37 +215,33 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                 >
                     New
                 </button>
+                {run && (
+                    <button
+                        className={styles.action}
+                        onClick={handleResetClick}
+                        type="button"
+                    >
+                        Reset
+                    </button>
+                )}
             </div>
             {isConfirmOpen && (
-                <Modal onClose={handleConfirmClose} title="Start a new run?">
-                    {(requestClose) => (
-                        <>
-                            <p className={styles['confirm-text']}>
-                                Your current run in progress will be overwritten
-                                and can&apos;t be recovered.
-                            </p>
-                            <div className={styles['confirm-actions']}>
-                                <button
-                                    className={styles.cancel}
-                                    onClick={requestClose}
-                                    type="button"
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    className={styles.confirm}
-                                    onClick={() => {
-                                        handleConfirmNewRun();
-                                        requestClose();
-                                    }}
-                                    type="button"
-                                >
-                                    Start New Run
-                                </button>
-                            </div>
-                        </>
-                    )}
-                </Modal>
+                <ConfirmModal
+                    confirmLabel="New Run"
+                    description="Your current run in progress will be overwritten and can't be recovered."
+                    onClose={handleConfirmClose}
+                    onConfirm={handleConfirmNewRun}
+                    title="Start a new run?"
+                />
+            )}
+            {isResetConfirmOpen && (
+                <ConfirmModal
+                    confirmLabel="Reset Game"
+                    description="All data for this game, including your current run, personal best, and Hall of Fame count, will be deleted and can't be recovered."
+                    onClose={handleResetConfirmClose}
+                    onConfirm={handleConfirmReset}
+                    title={`Reset ${game.name}?`}
+                />
             )}
             {isStarterSelectOpen && (
                 <StarterSelectModal

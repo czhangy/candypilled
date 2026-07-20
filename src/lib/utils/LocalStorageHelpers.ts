@@ -73,4 +73,10 @@ export default class LocalStorageHelpers {
         );
         LocalStorageHelpers.listeners.forEach((listener) => listener());
     }
+
+    /** Deletes the stored run for game and notifies subscribers. */
+    static deleteRun(game: Game): void {
+        localStorage.removeItem(StringHelpers.toSlug(game.name));
+        LocalStorageHelpers.listeners.forEach((listener) => listener());
+    }
 }
