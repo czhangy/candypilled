@@ -79,7 +79,7 @@ const ROUTE_208: Location = {
             name: 'William',
             team: [
                 {
-                    name: 'Mime Jr',
+                    name: 'Mime Jr.',
                     ability: 1,
                     level: 20,
                     nature: Nature.Mild,

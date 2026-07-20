@@ -50,6 +50,15 @@ const EXCLUDED_VARIETY_PATTERNS = [
     'palkia-origin',
 ];
 
+// Names that don't survive StringHelpers.toTitleCase's slug-based
+// deslugging without losing punctuation PokeAPI's slug can't represent
+// (periods, hyphens kept as part of the name rather than as word breaks).
+const NAME_OVERRIDES: Record<string, string> = {
+    'mime-jr': 'Mime Jr.',
+    'mr-mime': 'Mr. Mime',
+    'porygon-z': 'Porygon-Z',
+};
+
 // Varieties that can't actually persist outside of battle (e.g. Castform's
 // weather forms) or that automatically revert on deposit into a PC box
 // (e.g. Shaymin's Sky Forme), so they'd never be a real caught Pokemon's
@@ -919,7 +928,9 @@ export const fetchPokemonData = async (): Promise<void> => {
             // applicable game isn't relevant to this site.
             if (Object.keys(sprites).length === 0) continue;
 
-            const name = StringHelpers.toTitleCase(variety.name);
+            const name =
+                NAME_OVERRIDES[variety.name] ??
+                StringHelpers.toTitleCase(variety.name);
             data[variety.name] = {
                 name,
                 introducedInGeneration: dexGeneration,
