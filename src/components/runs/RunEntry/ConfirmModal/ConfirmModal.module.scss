@@ -47,14 +47,20 @@
     }
 
     .confirm {
-        background: $red;
-        border: 1px solid $red;
-        color: $foreground;
+        &--destructive {
+            background: $red;
+            border: 1px solid $red;
+            color: $foreground;
 
-        @media (hover: hover) {
-            &:hover {
-                background: color.adjust($red, $lightness: -8%);
+            @media (hover: hover) {
+                &:hover {
+                    background: color.adjust($red, $lightness: -8%);
+                }
             }
+        }
+
+        &--accent {
+            @include solid-accent-button;
         }
     }
 }

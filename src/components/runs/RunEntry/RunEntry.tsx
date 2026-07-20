@@ -34,6 +34,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
 
     const [isConfirmOpen, setIsConfirmOpen] = useState(false);
     const [isResetConfirmOpen, setIsResetConfirmOpen] = useState(false);
+    const [isExportConfirmOpen, setIsExportConfirmOpen] = useState(false);
     const [isStarterSelectOpen, setIsStarterSelectOpen] = useState(false);
 
     // -------------------------------------------------------------------------
@@ -124,6 +125,30 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
 
     const handleConfirmReset = (): void => {
         LocalStorageHelpers.deleteRun(game);
+    };
+
+    const handleExportClick = (): void => {
+        setIsExportConfirmOpen(true);
+    };
+
+    const handleExportConfirmClose = (): void => {
+        setIsExportConfirmOpen(false);
+    };
+
+    const handleConfirmExport = (): void => {
+        if (!run) {
+            return;
+        }
+
+        const blob = new Blob([JSON.stringify(run, null, 4)], {
+            type: 'application/json',
+        });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.download = `${StringHelpers.toSlug(game.name)}.json`;
+        link.href = url;
+        link.click();
+        URL.revokeObjectURL(url);
     };
 
     const handleStarterSelectClose = (): void => {
@@ -218,6 +243,15 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                 {run && (
                     <button
                         className={styles.action}
+                        onClick={handleExportClick}
+                        type="button"
+                    >
+                        Export
+                    </button>
+                )}
+                {run && (
+                    <button
+                        className={styles.action}
                         onClick={handleResetClick}
                         type="button"
                     >
@@ -232,6 +266,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     onClose={handleConfirmClose}
                     onConfirm={handleConfirmNewRun}
                     title="Start a new run?"
+                    variant="destructive"
                 />
             )}
             {isResetConfirmOpen && (
@@ -241,6 +276,19 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     onClose={handleResetConfirmClose}
                     onConfirm={handleConfirmReset}
                     title={`Reset ${game.name}?`}
+                    variant="destructive"
+                />
+            )}
+            {isExportConfirmOpen && (
+                <ConfirmModal
+                    accentColor={game.accentColor}
+                    buttonTextColor={game.textContrastColor}
+                    confirmLabel="Export"
+                    description={`This will download a JSON file containing all of your data for ${game.name}.`}
+                    onClose={handleExportConfirmClose}
+                    onConfirm={handleConfirmExport}
+                    title="Export game data?"
+                    variant="accent"
                 />
             )}
             {isStarterSelectOpen && (
