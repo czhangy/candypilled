@@ -298,6 +298,7 @@ export type EvolutionLineByGeneration = {
 export type EvolutionMethodLabel = {
     label: string;
     condition?: string;
+    conditionIcon?: string;
     icon?: string;
     gender?: 'male' | 'female';
 };

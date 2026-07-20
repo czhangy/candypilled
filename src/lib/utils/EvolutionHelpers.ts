@@ -152,12 +152,14 @@ export default class EvolutionHelpers {
         'electirizer',
         'fire-stone',
         'friendship',
+        'ice-rock',
         'ice-stone',
         'kings-rock',
         'leaf-stone',
         'magmarizer',
         'metal-coat',
         'moon-stone',
+        'moss-rock',
         'oval-stone',
         'prism-scale',
         'protector',
@@ -200,19 +202,23 @@ export default class EvolutionHelpers {
             : undefined;
     }
 
-    // Locations named after the specific landmark the player must be near
-    // (rather than the area as a whole), so the raw location slug's name
-    // doesn't match what's shown in-game.
-    private static readonly LOCATION_NAME_OVERRIDES: Record<string, string> = {
-        'eterna-forest': 'Mossy Rock',
-        'sinnoh-route-217': 'Icy Rock',
+    // Locations named after a specific landmark the player must be near
+    // (rather than the area as a whole), whose name doesn't match the raw
+    // location slug and which renders as an icon (slug in
+    // public/evolution_methods) instead of text.
+    private static readonly LOCATION_LANDMARKS: Record<
+        string,
+        { name: string; icon: string }
+    > = {
+        'eterna-forest': { name: 'Moss Rock', icon: 'moss-rock' },
+        'sinnoh-route-217': { name: 'Ice Rock', icon: 'ice-rock' },
     };
 
     // "Mt" is an abbreviation of "Mount", so it needs a period that
     // toTitleCase's generic slug formatting doesn't add.
     private static getLocationName(location: string): string {
         return (
-            EvolutionHelpers.LOCATION_NAME_OVERRIDES[location] ??
+            EvolutionHelpers.LOCATION_LANDMARKS[location]?.name ??
             StringHelpers.toTitleCase(location).replace(/^Mt /, 'Mt. ')
         );
     }
@@ -292,11 +298,19 @@ export default class EvolutionHelpers {
         }
 
         if (method.location) {
+            const locationName = EvolutionHelpers.getLocationName(
+                method.location
+            );
+            const conditionIcon = EvolutionHelpers.getIcon(
+                EvolutionHelpers.LOCATION_LANDMARKS[method.location]?.icon
+            );
+
             return {
                 label: 'Level Up',
-                condition: EvolutionHelpers.wrapCondition(
-                    EvolutionHelpers.getLocationName(method.location)
-                ),
+                condition: conditionIcon
+                    ? locationName
+                    : EvolutionHelpers.wrapCondition(locationName),
+                conditionIcon,
                 gender: base.gender,
             };
         }
