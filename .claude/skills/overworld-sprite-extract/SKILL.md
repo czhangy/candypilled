@@ -34,11 +34,30 @@ To find a character:
   **ask the user to confirm** before cropping/overwriting anything. Don't
   guess on a destructive-ish operation (overwriting an existing sprite
   folder) when the sheet gives no ground truth to self-verify against.
+- **This applies to every step, not just character identification** —
+  which row is idle vs. walk, which of two similar hat colors is the
+  right one, whether a design match is close enough to count as the same
+  character. A past run guessed through several of these judgment calls
+  instead of stopping to check, and got most of them wrong (wrong
+  character entirely in one case, walk frames instead of idle in five
+  others). If a crop, a row, or a character match isn't something you
+  can verify with certainty (bbox comparison, exact pixel match, an
+  explicit reference image), **stop and ask the user** rather than
+  picking the option that looks most plausible. A wrong guess here means
+  redoing the work anyway, plus the cost of a bad file having been
+  committed in the meantime — asking first is strictly cheaper.
 - Don't bother trying to pixel-diff against other already-correct sprites
   in the repo to "verify" a location — in practice existing sprites
   weren't necessarily sourced from this exact sheet, so exact-match
   search comes back empty even when you've found the right character by
   eye. Trust the visual match instead.
+- A column's background color is not a unique fingerprint — the same
+  flat color can recur at a completely different x-range elsewhere on
+  the sheet for an unrelated character (confirmed: (80, 136, 176) occurs
+  at both x145-176 and x337-368, one bearded, one not). Matching
+  background color alone is not enough to confirm you've found the same
+  character — always visually confirm the actual design against a
+  reference image before cropping.
 
 ## 2. Identify the pose rows within that character's column
 
@@ -48,12 +67,49 @@ anywhere on the sheet**. Every `right.png` in this repo is `left.png`
 mirrored horizontally (verified via pixel diff on `mars`: flipping
 `left.png` produces byte-identical output to `right.png`).
 
-To tell poses apart: down = facing the viewer (visible face, symmetric
-idle stance). Up = back of the head only, no face. Left = side profile
-(single eye, nose visible, facing left). Within each direction there are
-multiple frames (idle + one or two mid-stride walk frames, with
-asymmetric legs/arms) — use the **idle** frame (symmetric stance) for
-each direction, not a walk frame.
+**This sheet's row convention is fixed and must be used directly — do
+not try to identify idle-vs-walk by eye.** Every character column is 9
+rows tall (32px each). Rows 1-3, by position, are **always**: row1 =
+down idle, row2 = up idle, row3 = left idle. Rows 4-9 are walk-cycle
+frames (2 each for down/up/left) and are never idle, regardless of how
+symmetric, compact, or "standing-still" one of them might look. **Do
+not** decide a row is idle because its arms look like they're at its
+sides, or because it looks more compact than a neighboring row, or any
+other visual judgment about the pose — use row position only. This
+sounds obvious but it's the single most common mistake with this sheet:
+a past run repeatedly eyeballed "does this look like standing still"
+instead of counting rows, and got it wrong multiple times in a row —
+including picking a walk frame that visually looked idle, and (in the
+opposite direction) rejecting a true idle frame as "too walk-like." The
+row-position rule is ground truth here; your visual impression of a
+single frame is not.
+
+**Getting the true row 1 right is the entire game.** The failure mode
+isn't misjudging a pose — it's finding the character's column _partway
+through_ the 9-row block (e.g. spotting the character for the first
+time at what is actually row 2 or row 5) and treating that row as row 1.
+This has caused wrong sprites twice: once by starting a scan around row
+5 of a block instead of row 1 (hiker/collector), and once by starting
+at row 2 because that's where the character was first visually spotted,
+never even looking further up for the true row 1 (youngster/camper/
+picnicker). Before assigning row numbers:
+
+- Find the column's true block start by scanning **upward** from any
+  row you've found, past where the background color stays the same,
+  until the actual character design changes (different hair/hat/colors)
+  — that transition is the top of the previous character's block, and
+  the row immediately after it is this character's row 1. Background
+  color alone does not mark block boundaries — the same flat color often
+  continues unbroken across many consecutive characters' blocks, so
+  "scan until the bg color starts" is not sufficient; you must watch for
+  the _design_ to change.
+- Count rows from that true row 1: row1/2/3 = down/up/left idle,
+  row4-9 = walk. Verify your count by checking that exactly 9 rows exist
+  before the design changes again.
+- A block can be a nonstandard length (rare) — if you count and get
+  something other than 9, or rows 1-3 clearly don't read as down/up/left
+  at all (e.g. row1 doesn't show a front-facing view), stop and ask the
+  user rather than improvising a different rule.
 
 Find row boundaries by scanning a vertical pixel line through the
 character's hair with PIL, looking for transitions to/from the column's
@@ -134,6 +190,29 @@ Composite all four poses into one row (nearest-neighbor upscaled, e.g.
 6-8x) and view with `Read` — check for blur (shouldn't be any, since
 this is a direct crop), clipping, and stray background-color slivers at
 the edges.
+
+**Also check every crop programmatically, not just by eye** — a 1px
+bleed line is easy to miss at a glance, especially upscaled with
+nearest-neighbor (it just looks like a slightly odd edge, not an obvious
+error). For each of the 4 output PNGs, check the alpha channel on all
+four border rows/columns:
+
+```python
+im = Image.open(f'{folder}/down.png')
+px = im.load()
+for x in range(30):
+    assert px[x, 0][3] == 0 or <this is expected content>, f"top row bleed at x={x}"
+```
+
+A non-transparent top/left/right edge pixel is virtually always a bug
+(the crop origin is 1+ px into a neighboring color you didn't chroma-key,
+often a 1px transition/shadow row between blocks that has a _slightly
+different_ shade than the block's main bg color — sample the exact
+pixel at your chosen crop origin before trusting a bbox-derived origin,
+don't assume the bg is uniform all the way to the block boundary).
+Bottom-edge opacity is usually fine (feet/hands legitimately touch the
+bottom-aligned edge) — cross-check against an existing correct sprite
+(e.g. `mars/down.png`) which will show the same pattern.
 
 ## 5. Update the reference file
 
