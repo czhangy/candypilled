@@ -71,6 +71,7 @@
         color: var(--accent-color);
         cursor: pointer;
         letter-spacing: 0.05em;
+        padding-block: 0.8rem;
         transition: background 0.15s ease;
 
         @media (hover: hover) {
