@@ -112,6 +112,7 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
                     onSubmit={(details) =>
                         handleFormSubmit(details, requestClose)
                     }
+                    recalculateMovesOnLevelChange={false}
                     showAbility
                     showEvs={!hideEvs}
                     showLevel

@@ -144,6 +144,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
                             onSubmit={(details) =>
                                 handleFormSubmit(details, requestClose)
                             }
+                            recalculateMovesOnLevelChange={false}
                             showAbility={false}
                             showEvs={false}
                             showLevel={false}

@@ -1,11 +1,12 @@
 # AddPokemonModal
 
-A modal form for recording the details of a Pokemon as it's caught.
-Wraps `Modal` and `PokemonForm`, which does the bulk of the work, adding
-an optional freeform Location field above it for callers that don't
-already know where the Pokemon was caught. When shown, submitting is
-disabled while the entered location matches one already in use, and
-hovering the disabled submit button shows a tooltip explaining why.
+A modal form for recording the details of a Pokemon as it's caught,
+including tags. Wraps `Modal` and `PokemonForm`, which does the bulk of
+the work, adding an optional freeform Location field above it for
+callers that don't already know where the Pokemon was caught. When
+shown, submitting is disabled while the entered location matches one
+already in use, and hovering the disabled submit button shows a tooltip
+explaining why.
 
 ## Props
 

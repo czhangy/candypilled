@@ -41,6 +41,7 @@ type PokemonFormProps = {
             | 'tags'
         >
     ) => void;
+    recalculateMovesOnLevelChange: boolean;
     showAbility: boolean;
     showEvs: boolean;
     showLevel: boolean;
@@ -64,6 +65,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     generation,
     lockSpecies,
     onSubmit,
+    recalculateMovesOnLevelChange,
     showAbility,
     showEvs,
     showLevel,
@@ -201,7 +203,9 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
             Math.max(MIN_LEVEL, Number(event.target.value))
         );
         setLevel(value);
-        setMoves(getStartingMoves(species, value));
+        if (recalculateMovesOnLevelChange) {
+            setMoves(getStartingMoves(species, value));
+        }
     };
 
     const handleSubmit = (event: React.FormEvent): void => {

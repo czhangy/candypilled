@@ -129,11 +129,12 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
                         onSubmit={(details) =>
                             handleFormSubmit(details, requestClose)
                         }
+                        recalculateMovesOnLevelChange
                         showAbility
                         showEvs={false}
                         showLevel
                         showMoves
-                        showTags={false}
+                        showTags
                         submitLabel="Add"
                         version={version}
                     />
