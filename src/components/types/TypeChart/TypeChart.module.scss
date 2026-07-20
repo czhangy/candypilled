@@ -1,0 +1,68 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.type-chart {
+    display: grid;
+    grid-template-columns: 2.5rem 3.25rem repeat(
+            var(--column-count),
+            minmax(3.25rem, 1fr)
+        );
+
+    > div {
+        align-items: center;
+        border: 1px solid $border-subtle;
+        display: flex;
+        justify-content: center;
+        padding: 0.4rem;
+        text-align: center;
+    }
+
+    .corner {
+        border-bottom: none;
+        grid-column: span 2;
+    }
+
+    .column-label {
+        @include uppercase-label;
+
+        grid-column: span var(--column-count);
+    }
+
+    .filler {
+        border-top: none;
+        grid-column: span 2;
+    }
+
+    .row-label {
+        @include uppercase-label;
+
+        grid-row: span var(--column-count);
+        transform: rotate(180deg);
+        writing-mode: vertical-rl;
+    }
+
+    .cell {
+        @include mono-label;
+
+        font-size: 0.8rem;
+
+        &--neutral {
+            color: $text-dim;
+        }
+
+        &--super-effective {
+            background: color-mix(in srgb, $green 25%, transparent);
+            color: $green;
+        }
+
+        &--resisted {
+            background: color-mix(in srgb, $red 20%, transparent);
+            color: $red;
+        }
+
+        &--immune {
+            background: $background-light;
+            color: $text-mid;
+        }
+    }
+}

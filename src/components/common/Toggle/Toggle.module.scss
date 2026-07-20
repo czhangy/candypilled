@@ -23,6 +23,12 @@
         width: 1.1rem;
     }
 
+    @media (hover: hover) {
+        &:hover {
+            background: color-mix(in srgb, $background-light 85%, black 15%);
+        }
+    }
+
     @media (prefers-reduced-motion: reduce) {
         transition: none;
 
@@ -37,6 +43,12 @@
         .knob {
             background: $foreground;
             transform: translateX(1rem);
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                background: color-mix(in srgb, $accent 85%, black 15%);
+            }
         }
     }
 }
