@@ -81,6 +81,9 @@ const DANGEROUS_MOVES = new Set([
     'acupressure',
     'double-team',
     'minimize',
+    'ominous-wind',
+    'ancient-power',
+    'silver-wind',
 ]);
 
 const writeData = (data: Record<string, MoveData>): void => {

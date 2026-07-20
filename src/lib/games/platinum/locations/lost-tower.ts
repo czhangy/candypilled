@@ -5,7 +5,7 @@ import {
     lostTower4f,
     lostTower5f,
 } from '@/lib/games/platinum/maps';
-import { Nature } from '@/lib/static/enums';
+import { FieldCondition, Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LOST_TOWER: Location = {
@@ -65,6 +65,7 @@ const LOST_TOWER: Location = {
                     ],
                     x: 34.5,
                     y: 92,
+                    fieldCondition: FieldCondition.Fog,
                 },
                 {
                     isOptional: true,
@@ -99,6 +100,7 @@ const LOST_TOWER: Location = {
                         { count: 1, name: 'Full Heal' },
                         { count: 1, name: 'Super Potion' },
                     ],
+                    fieldCondition: FieldCondition.Fog,
                 },
             ],
         },
@@ -126,6 +128,7 @@ const LOST_TOWER: Location = {
                         { count: 1, name: 'Full Heal' },
                         { count: 1, name: 'Super Potion' },
                     ],
+                    fieldCondition: FieldCondition.Fog,
                 },
                 {
                     isOptional: true,
@@ -149,6 +152,7 @@ const LOST_TOWER: Location = {
                     ],
                     x: 96,
                     y: 87.5,
+                    fieldCondition: FieldCondition.Fog,
                 },
                 {
                     isOptional: true,
@@ -172,6 +176,7 @@ const LOST_TOWER: Location = {
                     ],
                     x: 30.5,
                     y: 57.5,
+                    fieldCondition: FieldCondition.Fog,
                 },
             ],
         },
