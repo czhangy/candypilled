@@ -84,7 +84,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     const MAX_EV = 252;
     const MIN_LEVEL = 1;
     const MAX_LEVEL = 100;
-    // Pokemon caught in the wild default to the encounter's minimum level
+    // Pokémon caught in the wild default to the encounter's minimum level
     // when known, otherwise level 1; starters (which don't show the level
     // field) start at level 5, matching the in-game starting level.
     const DEFAULT_LEVEL = showLevel ? (defaultLevel ?? 1) : 5;
@@ -94,7 +94,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    // The moves a Pokemon would actually know at atLevel, padded to fill
+    // The moves a Pokémon would actually know at atLevel, padded to fill
     // every move slot (empty slots left unselected).
     const getStartingMoves = (
         speciesName: string,
@@ -271,7 +271,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
                 <div className={styles.row}>
                     {!lockSpecies && (
                         <div className={styles.field}>
-                            <span className={styles.label}>Pokemon</span>
+                            <span className={styles.label}>Pokémon</span>
                             <Dropdown
                                 onChange={handleSpeciesChange}
                                 options={speciesOptions}

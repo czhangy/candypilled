@@ -17,6 +17,7 @@ import StringHelpers from '@/lib/utils/StringHelpers';
 import AbilitiesTab from './AbilitiesTab/AbilitiesTab';
 import BoxTab from './BoxTab/BoxTab';
 import MovesTab from './MovesTab/MovesTab';
+import PokedexTab from './PokedexTab/PokedexTab';
 import styles from './RunPage.module.scss';
 import SplitHeader from './SplitHeader/SplitHeader';
 import SplitTab from './SplitTab/SplitTab';
@@ -34,6 +35,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const TABS = [
         { id: 'split', label: 'Splits' },
         { id: 'box', label: 'Box' },
+        { id: 'pokedex', label: 'Pokédex' },
         { id: 'moves', label: 'Moves' },
         { id: 'abilities', label: 'Abilities' },
     ];
@@ -42,6 +44,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         abilities: 'ability',
         box: 'pokemon',
         moves: 'move',
+        pokedex: 'species',
     };
 
     const DEFAULT_WIPE_MESSAGES = [
@@ -81,6 +84,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const selectedMove = searchParams.get('move') ?? undefined;
     const selectedAbility = searchParams.get('ability') ?? undefined;
     const selectedPokemon = searchParams.get('pokemon') ?? undefined;
+    const selectedSpecies = searchParams.get('species') ?? undefined;
 
     const game = GAMES.find(
         (candidate) => StringHelpers.toSlug(candidate.name) === slug
@@ -192,6 +196,10 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         updateQueryParams({ ability: name });
     };
 
+    const handleSpeciesSelect = (species: string): void => {
+        updateQueryParams({ species: StringHelpers.toSlug(species) });
+    };
+
     const handlePokemonSelect = (location: string): void => {
         updateQueryParams({ pokemon: location });
     };
@@ -215,6 +223,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         params.delete('pokemon');
         params.delete('move');
         params.delete('ability');
+        params.delete('species');
 
         router.push(
             `${pathname}?${params.toString()}#${SplitHelpers.getLocationSlug(
@@ -324,6 +333,17 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             onSelectPokemon={handlePokemonSelect}
                             run={run}
                             selectedPokemon={selectedPokemon}
+                        />
+                    )}
+                    {activeTab === 'pokedex' && (
+                        <PokedexTab
+                            game={game}
+                            onSelectAbility={handleAbilityLinkClick}
+                            onSelectLocation={handleLocationSelect}
+                            onSelectMove={handleMoveLinkClick}
+                            onSelectSpecies={handleSpeciesSelect}
+                            run={run}
+                            selectedSpecies={selectedSpecies}
                         />
                     )}
                     {activeTab === 'moves' && (

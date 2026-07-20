@@ -1,0 +1,98 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.pokedex-detail {
+    border: 1px solid $border-subtle;
+    border-radius: 0.5rem;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+
+    .header {
+        @include uppercase-label;
+
+        background: $background-light;
+        border-bottom: 1px solid $border-subtle;
+        padding: 0.5rem 1.5rem;
+    }
+
+    .evolution {
+        border-top: 1px solid $border-subtle;
+        padding: 1rem 1.5rem;
+
+        .evolution-label {
+            @include uppercase-label;
+
+            display: block;
+            font-size: 0.7rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .evolution-content {
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+
+            .evolution-empty {
+                color: $text-dim;
+                font-size: 0.85rem;
+                padding-block: 1.5rem;
+                text-align: center;
+            }
+        }
+    }
+
+    .stats {
+        border-top: 1px solid $border-subtle;
+        padding: 1rem 1.5rem;
+
+        .stats-label {
+            @include uppercase-label;
+
+            display: block;
+            font-size: 0.7rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .stats-content {
+            display: flex;
+        }
+    }
+
+    .details {
+        border-top: 1px solid $border-subtle;
+        padding: 1rem 1.5rem;
+
+        .details-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .details-tab {
+            @include uppercase-label;
+
+            background: none;
+            border: none;
+            color: $text-dim;
+            cursor: pointer;
+            font-size: 0.7rem;
+            padding: 0;
+            transition: color 0.2s ease;
+
+            @media (hover: hover) {
+                &:hover {
+                    color: $foreground;
+                }
+            }
+
+            &--active {
+                color: var(--accent-color);
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
+        }
+    }
+}

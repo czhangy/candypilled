@@ -89,7 +89,7 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
     const isDuplicateCaughtLocation =
         showLocation && existingLocations.includes(location);
     const disabledReason = isDuplicateCaughtLocation
-        ? 'A Pokemon is already recorded at this location'
+        ? 'A Pokémon is already recorded at this location'
         : '';
 
     // -------------------------------------------------------------------------
@@ -101,7 +101,7 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
             accentColor={accentColor}
             buttonTextColor={buttonTextColor}
             onClose={onClose}
-            title="Add Pokemon"
+            title="Add Pokémon"
         >
             {(requestClose) => (
                 <div className={styles['add-pokemon-modal']}>

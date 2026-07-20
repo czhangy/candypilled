@@ -1,6 +1,6 @@
 # TypeBadge
 
-A small badge image for a Pokemon or move type (e.g. `/types/fire.png`).
+A small badge image for a Pokémon or move type (e.g. `/types/fire.png`).
 
 ## Props
 

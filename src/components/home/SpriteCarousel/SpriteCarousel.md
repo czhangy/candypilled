@@ -1,6 +1,6 @@
 # SpriteCarousel
 
-A looping carousel of starter Pokemon sprites drawn from across the
+A looping carousel of starter Pokémon sprites drawn from across the
 mainline game generations, used as decoration on the homepage.
 
 ## State

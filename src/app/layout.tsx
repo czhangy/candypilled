@@ -11,7 +11,7 @@ const jetBrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
     title: 'Candypilled',
-    description: 'A Pokemon Nuzlocke helper tool.',
+    description: 'A Pokémon Nuzlocke helper tool.',
 };
 
 export default function RootLayout({

@@ -1,38 +1,38 @@
 # PokemonBox
 
-A grid of the Pokemon caught during the current run, showing each one's
+A grid of the Pokémon caught during the current run, showing each one's
 sprite. The header toggles between two views: "Box", showing every living
-Pokemon, and "Graveyard", showing only those marked as dead; while
-viewing the box, an "Add Pokemon" button sits at the header's right edge.
-Clicking a slot selects that Pokemon. Pokemon above the current split's
+Pokémon, and "Graveyard", showing only those marked as dead; while
+viewing the box, an "Add Pokémon" button sits at the header's right edge.
+Clicking a slot selects that Pokémon. Pokémon above the current split's
 level cap are greyed out, but remain clickable. Slots can be dragged and
-dropped onto one another to reorder the caught Pokemon. A slot for a
-Pokemon with at least one tag shows a small accent-colored dot in its
+dropped onto one another to reorder the caught Pokémon. A slot for a
+Pokémon with at least one tag shows a small accent-colored dot in its
 top-right corner, revealing the full tag list in a tooltip on hover. When
-any caught Pokemon has at least one tag, a `TagFilter` button sits to the
+any caught Pokémon has at least one tag, a `TagFilter` button sits to the
 right of the Box/Graveyard toggle, letting the grid be narrowed down to
-Pokemon carrying every checked tag; if none match, a placeholder says so
+Pokémon carrying every checked tag; if none match, a placeholder says so
 instead of the grid.
 
 ## Props
 
 | Prop                | Type                                                 | Required | Default | Description                                                                  |
 | ------------------- | ---------------------------------------------------- | -------- | ------- | ---------------------------------------------------------------------------- |
-| `caughtPokemon`     | `CaughtPokemon[]`                                    | Yes      | -       | The Pokemon caught during the run, one per box slot                          |
-| `levelCap`          | `number \| null`                                     | Yes      | -       | The current split's level cap, used to grey out over-leveled Pokemon         |
-| `onAddPokemonClick` | `() => void`                                         | Yes      | -       | Called when the "Add Pokemon" button is clicked (only shown in the box view) |
+| `caughtPokemon`     | `CaughtPokemon[]`                                    | Yes      | -       | The Pokémon caught during the run, one per box slot                          |
+| `levelCap`          | `number \| null`                                     | Yes      | -       | The current split's level cap, used to grey out over-leveled Pokémon         |
+| `onAddPokemonClick` | `() => void`                                         | Yes      | -       | Called when the "Add Pokémon" button is clicked (only shown in the box view) |
 | `onReorderPokemon`  | `(fromLocation: string, toLocation: string) => void` | Yes      | -       | Called with the dragged and drop-target locations when a slot is dropped     |
-| `onSelectPokemon`   | `(location: string) => void`                         | Yes      | -       | Called with a Pokemon's location when its slot is clicked                    |
+| `onSelectPokemon`   | `(location: string) => void`                         | Yes      | -       | Called with a Pokémon's location when its slot is clicked                    |
 | `onViewChange`      | `(view: BoxView) => void`                            | Yes      | -       | Called with the clicked header button's view                                 |
-| `selectedPokemon`   | `string`                                             | No       | -       | The location of the currently selected caught Pokemon, if any                |
-| `variant`           | `string`                                             | Yes      | -       | The game slug used to resolve each Pokemon's sprite art                      |
-| `view`              | `BoxView`                                            | Yes      | -       | Which set of caught Pokemon is currently shown                               |
+| `selectedPokemon`   | `string`                                             | No       | -       | The location of the currently selected caught Pokémon, if any                |
+| `variant`           | `string`                                             | Yes      | -       | The game slug used to resolve each Pokémon's sprite art                      |
+| `view`              | `BoxView`                                            | Yes      | -       | Which set of caught Pokémon is currently shown                               |
 
 ## State
 
 | State             | Type       | Initial value | Description                                                             |
 | ----------------- | ---------- | ------------- | ----------------------------------------------------------------------- |
-| `draggedLocation` | `string`   | `''`          | The location of the caught Pokemon slot currently being dragged, if any |
+| `draggedLocation` | `string`   | `''`          | The location of the caught Pokémon slot currently being dragged, if any |
 | `selectedTags`    | `string[]` | `[]`          | The tags currently checked in `TagFilter`                               |
 
 ## Computations
@@ -47,7 +47,7 @@ instead of the grid.
 - `emptyMessage` — the placeholder text shown when `displayedPokemon` is
   empty: a "no matches" message when `selectedTags` is non-empty,
   otherwise worded for the current `view`
-- `isOverCap` — whether a given Pokemon's `level` exceeds `levelCap`,
+- `isOverCap` — whether a given Pokémon's `level` exceeds `levelCap`,
   computed per slot
 
 ## Handlers

@@ -7,8 +7,9 @@ import styles from './PokemonSummary.module.scss';
 type PokemonSummaryProps = {
     abilityEntries: AbilityEntry[];
     catchRate?: number;
-    mode: 'catch' | 'choose';
+    interactive: boolean;
     onSelectAbility: (name: string) => void;
+    placeholder: string;
     pokemon?: PokemonData;
     sprite?: string;
     types: string[];
@@ -17,8 +18,9 @@ type PokemonSummaryProps = {
 const PokemonSummary: React.FC<PokemonSummaryProps> = ({
     abilityEntries,
     catchRate,
-    mode,
+    interactive,
     onSelectAbility,
+    placeholder,
     pokemon,
     sprite,
     types,
@@ -79,7 +81,7 @@ const PokemonSummary: React.FC<PokemonSummaryProps> = ({
                                     </span>
                                     <AbilitiesList
                                         entries={abilityEntries}
-                                        mode={mode}
+                                        interactive={interactive}
                                         onSelectAbility={onSelectAbility}
                                     />
                                 </div>
@@ -102,9 +104,7 @@ const PokemonSummary: React.FC<PokemonSummaryProps> = ({
                     </div>
                 </>
             ) : (
-                <span className={styles.placeholder}>
-                    {`Select a Pokemon to view its details or ${mode} it`}
-                </span>
+                <span className={styles.placeholder}>{placeholder}</span>
             )}
         </div>
     );

@@ -213,7 +213,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
 
     return (
         <div className={styles['pokedex-tile']}>
-            <div className={styles.header}>Pokedex</div>
+            <div className={styles.header}>Pokédex</div>
             {pokemon && rest.mode === 'catch' && !isCatchButtonHidden && (
                 <button
                     className={[
@@ -232,8 +232,9 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
             <PokemonSummary
                 abilityEntries={abilityEntries}
                 catchRate={catchRate}
-                mode={rest.mode}
+                interactive={rest.mode !== 'choose'}
                 onSelectAbility={onSelectAbility}
+                placeholder={`Select a Pokémon to view its details or ${rest.mode} it`}
                 pokemon={pokemon}
                 sprite={sprite}
                 types={types}
@@ -347,6 +348,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                         />
                     ) : (
                         <LocationsList
+                            interactive
                             locations={locations}
                             onSelectLocation={onSelectLocation}
                             usedLocations={usedLocations}

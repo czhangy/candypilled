@@ -460,7 +460,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                     </>
                 ) : (
                     <span className={styles.placeholder}>
-                        Select a Pokemon to preview it
+                        Select a Pokémon to preview it
                     </span>
                 )}
             </div>

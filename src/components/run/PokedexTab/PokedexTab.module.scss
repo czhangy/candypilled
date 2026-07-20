@@ -1,0 +1,8 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.pokedex-tab {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem 0;
+}

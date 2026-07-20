@@ -16,6 +16,7 @@ import {
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
+import RunHelpers from '@/lib/utils/RunHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import BattleCard from './BattleCard/BattleCard';
 import EncounterTable from './EncounterTable/EncounterTable';
@@ -256,10 +257,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         (caught) => caught.location === STARTER_LOCATION_NAME
     );
     const isMissed = run.missedLocations.includes(location.name);
-    const usedLocations = [
-        ...run.caughtPokemon.map((caught) => caught.location),
-        ...run.missedLocations,
-    ];
+    const usedLocations = RunHelpers.getUsedLocations(run);
     const encounter = run.caughtPokemon.find(
         (caught) => caught.location === location.name
     )?.name;
