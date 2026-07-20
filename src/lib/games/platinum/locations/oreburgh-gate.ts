@@ -52,6 +52,56 @@ const OREBURGH_GATE: Location = {
             name: 'B1F',
             map: oreburghGateB1f,
             encountersKey: 'oreburgh-gate-b1f',
+            battles: [
+                {
+                    isOptional: true,
+                    trainerClass: 'Veteran',
+                    name: 'Grant',
+                    team: [
+                        {
+                            name: 'Riolu',
+                            ability: 1,
+                            level: 34,
+                            nature: Nature.Rash,
+                            moves: [
+                                'Force Palm',
+                                'Quick Attack',
+                                'Counter',
+                                'Screech',
+                            ],
+                            ivs: 12,
+                        },
+                        {
+                            name: 'Staraptor',
+                            ability: 1,
+                            level: 34,
+                            nature: Nature.Sassy,
+                            moves: [
+                                'Aerial Ace',
+                                'Take Down',
+                                'Quick Attack',
+                                'Growl',
+                            ],
+                            ivs: 12,
+                        },
+                        {
+                            name: 'Graveler',
+                            ability: 1,
+                            level: 34,
+                            nature: Nature.Bold,
+                            moves: [
+                                'Earthquake',
+                                'Rock Slide',
+                                'Rock Polish',
+                                'Defense Curl',
+                            ],
+                            ivs: 12,
+                        },
+                    ],
+                    x: 21.8,
+                    y: 61.8,
+                },
+            ],
         },
     ],
 };
