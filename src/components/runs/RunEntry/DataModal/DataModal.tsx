@@ -98,8 +98,7 @@ const DataModal: React.FC<DataModalProps> = ({
             pokemon.moves.every((move) => typeof move === 'string') &&
             Array.isArray(pokemon.tags) &&
             pokemon.tags.every((tag) => typeof tag === 'string') &&
-            typeof pokemon.ability === 'object' &&
-            pokemon.ability !== null
+            [1, 2, 3].includes(pokemon.ability as number)
         );
     };
 
