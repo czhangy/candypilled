@@ -64,13 +64,13 @@ Pokédex tile.
 
 ## State
 
-| State                  | Type        | Initial value                                               | Description                                                                                                 |
-| ---------------------- | ----------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `isOpen`               | `boolean`   | `true`                                                      | Whether the location's content is expanded                                                                  |
-| `selectedBattle`       | `Battle`    | `undefined`                                                 | The battle currently selected on the map, if any                                                            |
-| `selectedEncounter`    | `Encounter` | `undefined`                                                 | The encounter currently selected in the table, if any                                                       |
-| `selectedSubareaIndex` | `number`    | Index of the first subarea that isn't fully cleared, or `0` | Which of the location's subareas is currently shown                                                         |
-| `speciesOverride`      | `string`    | `undefined`                                                 | A species clicked within the Pokédex tile's evolution line, shown in place of `selectedEncounter`'s species |
+| State                  | Type        | Initial value              | Description                                                                                                 |
+| ---------------------- | ----------- | -------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `isOpen`               | `boolean`   | `true`                     | Whether the location's content is expanded                                                                  |
+| `selectedBattle`       | `Battle`    | `undefined`                | The battle currently selected on the map, if any                                                            |
+| `selectedEncounter`    | `Encounter` | `undefined`                | The encounter currently selected in the table, if any                                                       |
+| `selectedSubareaIndex` | `number`    | `getInitialSubareaIndex()` | Which of the location's subareas is currently shown                                                         |
+| `speciesOverride`      | `string`    | `undefined`                | A species clicked within the Pokédex tile's evolution line, shown in place of `selectedEncounter`'s species |
 
 ## Computations
 
@@ -88,13 +88,14 @@ Pokédex tile.
 - `isBattleNextPersonalBest` — whether a given battle's key matches
   `nextPersonalBestBattleKey`, and only while `isChasingPersonalBest` is
   `true`
-- `isSubareaCleared` — whether every required (or, if none, every) battle
-  in a subarea is defeated; a subarea with no battles is never considered
-  cleared
-- `getDefaultSubareaIndex` — the index of the first subarea, in list order,
-  that isn't fully cleared, so the location opens on the earliest subarea
-  with unfinished business rather than jumping ahead to wherever a battle
-  happens to be
+- `getAllBattles` — every battle across all of the location's subareas, in
+  subarea order, each paired with its subarea's index
+- `getInitialSubareaIndex` — the subarea to open on: subarea `0` if the
+  location has no subareas, or if any subarea has wild encounters and this
+  location's own encounter hasn't been caught yet (i.e. there's still a
+  wild Pokémon to catch here); otherwise, the subarea of the first
+  undefeated battle from `getAllBattles`, or the subarea of the last
+  battle if all are defeated
 - `getDefaultSelectedBattle` — the battle to preselect for a given subarea
   index: the first undefeated required battle in that subarea, or the last
   required (or any) battle if all are defeated
