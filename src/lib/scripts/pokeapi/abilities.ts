@@ -21,7 +21,12 @@ const ABILITY_LIST_LIMIT = 500;
 // a single unlucky turn, e.g. via a hard-to-play-around trap or a punishing
 // on-faint effect), so this set is curated by hand rather than derived from
 // the API.
-const DANGEROUS_ABILITIES = new Set(['shadow-tag', 'aftermath']);
+const DANGEROUS_ABILITIES = new Set([
+    'shadow-tag',
+    'aftermath',
+    'moody',
+    'simple',
+]);
 
 const writeData = (data: Record<string, AbilityData>): void => {
     fs.writeFileSync(DATA_PATH, `${JSON.stringify(data, null, 4)}\n`);

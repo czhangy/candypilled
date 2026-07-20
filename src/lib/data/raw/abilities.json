@@ -1113,7 +1113,7 @@
     "simple": {
         "name": "Simple",
         "introducedInGeneration": 4,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,
@@ -1750,7 +1750,7 @@
     "moody": {
         "name": "Moody",
         "introducedInGeneration": 5,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,

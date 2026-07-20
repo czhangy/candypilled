@@ -78,6 +78,9 @@ const DANGEROUS_MOVES = new Set([
     'shell-smash',
     'flail',
     'perish-song',
+    'acupressure',
+    'double-team',
+    'minimize',
 ]);
 
 const writeData = (data: Record<string, MoveData>): void => {
