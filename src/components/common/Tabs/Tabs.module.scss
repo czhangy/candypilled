@@ -4,9 +4,9 @@
 .tabs {
     display: flex;
     gap: 1.5rem;
-    margin-left: auto;
+    justify-content: center;
     position: relative;
-    width: fit-content;
+    width: 100%;
 
     .tab {
         @include mono-label;

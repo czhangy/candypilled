@@ -317,6 +317,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                         )}
                         <Tabs
                             activeTab={activeTab}
+                            className={styles.tabs}
                             onTabChange={handleTabChange}
                             tabs={TABS}
                         />

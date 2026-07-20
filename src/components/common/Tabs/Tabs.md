@@ -6,11 +6,12 @@ newly active tab when selection changes.
 
 ## Props
 
-| Prop          | Type                                                           | Required | Default | Description                                 |
-| ------------- | -------------------------------------------------------------- | -------- | ------- | ------------------------------------------- |
-| `tabs`        | `{ id: string; label: React.ReactNode; ariaLabel?: string }[]` | Yes      | -       | The tabs to render, in order                |
-| `activeTab`   | `string`                                                       | Yes      | -       | The `id` of the currently active tab        |
-| `onTabChange` | `(id: string) => void`                                         | Yes      | -       | Called with a tab's `id` when it is clicked |
+| Prop          | Type                                                           | Required | Default | Description                                                                                                                      |
+| ------------- | -------------------------------------------------------------- | -------- | ------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `tabs`        | `{ id: string; label: React.ReactNode; ariaLabel?: string }[]` | Yes      | -       | The tabs to render, in order                                                                                                     |
+| `activeTab`   | `string`                                                       | Yes      | -       | The `id` of the currently active tab                                                                                             |
+| `onTabChange` | `(id: string) => void`                                         | Yes      | -       | Called with a tab's `id` when it is clicked                                                                                      |
+| `className`   | `string`                                                       | No       | -       | Additional class applied to the root element, for parent-controlled positioning (e.g. overriding the default centered alignment) |
 
 ## State
 
