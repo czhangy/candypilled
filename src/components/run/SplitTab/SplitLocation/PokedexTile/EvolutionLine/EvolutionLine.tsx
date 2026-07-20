@@ -99,11 +99,7 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                             {methodLabel.icon ? (
                                                 <Tooltip
                                                     position="center"
-                                                    text={
-                                                        methodLabel.condition
-                                                            ? `${methodLabel.label} ${methodLabel.condition}`
-                                                            : methodLabel.label
-                                                    }
+                                                    text={methodLabel.label}
                                                 >
                                                     <Image
                                                         alt={methodLabel.label}

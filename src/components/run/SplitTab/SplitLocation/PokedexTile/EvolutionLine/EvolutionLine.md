@@ -8,9 +8,10 @@ hover spelling out the method in text. A method requiring a specific
 gender renders a ♂ or ♀ symbol colored blue or pink instead of the
 "Male"/"Female" text. A method's condition (e.g. the held item for a
 trade evolution) wraps onto its own line beneath the method label. A
-condition backed by a landmark icon (e.g. the Mossy Rock/Icy Rock
-locations Eevee levels up near) renders that icon instead of the
-condition text, with a `Tooltip` spelling out the landmark's name. The
+condition backed by an icon (e.g. a trade evolution's held item, or the
+Mossy Rock/Icy Rock locations Eevee levels up near) renders that icon
+below the method label instead of the condition text, with a `Tooltip`
+spelling out the condition. The
 arrow column (icon/label and condition text) has a fixed width and wraps
 long text across lines, so arrows stay aligned across branches even when
 their methods' labels differ in length (e.g. Eevee's stone, day/night,

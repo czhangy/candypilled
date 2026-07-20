@@ -164,6 +164,7 @@ export default class EvolutionHelpers {
         'prism-scale',
         'protector',
         'razor-claw',
+        'razor-fang',
         'reaper-cloth',
         'shiny-stone',
         'sun-stone',
@@ -179,20 +180,25 @@ export default class EvolutionHelpers {
     private static getTradeLabel(
         method: EvolutionMethod
     ): EvolutionMethodLabel {
-        const icon = EvolutionHelpers.getIcon(method.heldItem);
-        const heldItemText =
-            !icon && method.heldItem
-                ? StringHelpers.toTitleCase(method.heldItem)
-                : undefined;
-        const condition = [heldItemText, EvolutionHelpers.getTimeOfDay(method)]
-            .filter((part): part is string => !!part)
-            .join(', ');
+        const conditionIcon = EvolutionHelpers.getIcon(method.heldItem);
+        const heldItemText = method.heldItem
+            ? StringHelpers.toTitleCase(method.heldItem)
+            : undefined;
+        // The icon already conveys the held item, so its tooltip skips the
+        // time of day rather than mixing it into the same text.
+        const condition = conditionIcon
+            ? heldItemText
+            : [heldItemText, EvolutionHelpers.getTimeOfDay(method)]
+                  .filter((part): part is string => !!part)
+                  .join(', ');
 
         return {
             label: 'Trade',
-            condition: EvolutionHelpers.wrapCondition(condition || undefined),
+            condition: conditionIcon
+                ? condition
+                : EvolutionHelpers.wrapCondition(condition || undefined),
+            conditionIcon,
             gender: EvolutionHelpers.getGender(method),
-            icon,
         };
     }
 
