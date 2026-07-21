@@ -90,4 +90,10 @@
             background: color.adjust($green, $alpha: -0.6);
         }
     }
+
+    &--preview {
+        border-style: dashed;
+        cursor: none;
+        pointer-events: none;
+    }
 }
