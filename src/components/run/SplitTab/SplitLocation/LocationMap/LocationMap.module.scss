@@ -24,5 +24,25 @@
             height: auto;
             max-width: 100%;
         }
+
+        &--editing {
+            cursor: none;
+        }
+
+        .coord-label {
+            background: black;
+            border-radius: 0.2rem;
+            color: $foreground;
+            font-family: $font-mono;
+            font-size: 0.65rem;
+            left: var(--x);
+            line-height: normal;
+            padding: 0.1rem 0.3rem;
+            pointer-events: none;
+            position: absolute;
+            top: var(--y);
+            transform: translate(-50%, calc(-100% - 1.5rem));
+            white-space: nowrap;
+        }
     }
 }

@@ -8,19 +8,22 @@ battles, or red for boss battles. A single badge pokes out of the
 top-right corner of the rectangle, showing whichever is highest priority:
 a checkmark for a defeated trainer, a crown for the trainer that would
 extend the run's personal best if defeated next, a double exclamation
-mark for a boss, or a single exclamation mark for a miniboss.
+mark for a boss, or a single exclamation mark for a miniboss. Can also
+render as a non-interactive, dashed preview marker for tools that need
+to show a prospective position before it is saved.
 
 ## Props
 
-| Prop                 | Type                        | Required | Default | Description                                             |
-| -------------------- | --------------------------- | -------- | ------- | ------------------------------------------------------- |
-| `trainer`            | `Battle`                    | Yes      | -       | The battle this marker represents and positions         |
-| `mapWidth`           | `number`                    | Yes      | -       | Intrinsic width of the map image, in pixels             |
-| `mapHeight`          | `number`                    | Yes      | -       | Intrinsic height of the map image, in pixels            |
-| `isDefeated`         | `boolean`                   | No       | `false` | Whether this trainer has already been defeated          |
-| `isNextPersonalBest` | `boolean`                   | No       | `false` | Whether defeating this trainer next would extend the PB |
-| `isSelected`         | `boolean`                   | No       | `false` | Whether this trainer is the currently selected one      |
-| `onClick`            | `(trainer: Battle) => void` | Yes      | -       | Called with this marker's battle when clicked           |
+| Prop                 | Type                        | Required | Default | Description                                                              |
+| -------------------- | --------------------------- | -------- | ------- | ------------------------------------------------------------------------ |
+| `trainer`            | `Battle`                    | Yes      | -       | The battle this marker represents and positions                          |
+| `mapWidth`           | `number`                    | Yes      | -       | Intrinsic width of the map image, in pixels                              |
+| `mapHeight`          | `number`                    | Yes      | -       | Intrinsic height of the map image, in pixels                             |
+| `isDefeated`         | `boolean`                   | Yes      | -       | Whether this trainer has already been defeated                           |
+| `isNextPersonalBest` | `boolean`                   | Yes      | -       | Whether defeating this trainer next would extend the PB                  |
+| `isPreview`          | `boolean`                   | Yes      | -       | Renders as a non-interactive, dashed ghost marker when true              |
+| `isSelected`         | `boolean`                   | Yes      | -       | Whether this trainer is the currently selected one                       |
+| `onClick`            | `(trainer: Battle) => void` | Yes      | -       | Called with this marker's battle when clicked (ignored when `isPreview`) |
 
 ## Computations
 

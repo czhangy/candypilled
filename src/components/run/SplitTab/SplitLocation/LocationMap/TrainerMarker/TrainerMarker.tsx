@@ -9,6 +9,7 @@ import styles from './TrainerMarker.module.scss';
 type TrainerMarkerProps = {
     isDefeated: boolean;
     isNextPersonalBest: boolean;
+    isPreview: boolean;
     isSelected: boolean;
     mapHeight: number;
     mapWidth: number;
@@ -19,6 +20,7 @@ type TrainerMarkerProps = {
 const TrainerMarker: React.FC<TrainerMarkerProps> = ({
     isDefeated,
     isNextPersonalBest,
+    isPreview,
     isSelected,
     mapHeight,
     mapWidth,
@@ -54,6 +56,7 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
     // -------------------------------------------------------------------------
 
     const handleClick = (): void => {
+        if (isPreview) return;
         onClick(trainer);
     };
 
@@ -63,14 +66,18 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
 
     return (
         <button
-            aria-label={BattleHelpers.getFullName(trainer)}
-            aria-pressed={isSelected}
+            aria-hidden={isPreview}
+            aria-label={
+                isPreview ? undefined : BattleHelpers.getFullName(trainer)
+            }
+            aria-pressed={isPreview ? undefined : isSelected}
             className={[
                 styles['trainer-marker'],
                 trainer.isMiniboss && styles['trainer-marker--miniboss'],
                 trainer.isBoss && styles['trainer-marker--boss'],
                 isDefeated && styles['trainer-marker--defeated'],
                 isSelected && styles['trainer-marker--selected'],
+                isPreview && styles['trainer-marker--preview'],
             ]
                 .filter(Boolean)
                 .join(' ')}
@@ -83,6 +90,7 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
                     '--height': `${height}%`,
                 } as React.CSSProperties
             }
+            tabIndex={isPreview ? -1 : undefined}
             type="button"
         >
             {isDefeated && (
