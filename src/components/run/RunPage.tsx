@@ -17,6 +17,7 @@ import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import AbilitiesTab from './AbilitiesTab/AbilitiesTab';
 import BoxTab from './BoxTab/BoxTab';
+import HallOfFameTab from './HallOfFameTab/HallOfFameTab';
 import MovesTab from './MovesTab/MovesTab';
 import PokedexTab from './PokedexTab/PokedexTab';
 import styles from './RunPage.module.scss';
@@ -38,6 +39,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         { id: 'pokedex', label: 'Pokédex' },
         { id: 'moves', label: 'Moves' },
         { id: 'abilities', label: 'Abilities' },
+        { id: 'hof', label: 'Hall of Fame' },
     ];
 
     const TAB_QUERY_PARAMS: Record<string, string> = {
@@ -371,6 +373,9 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             onSelectAbility={handleAbilitySelect}
                             selectedAbility={selectedAbility}
                         />
+                    )}
+                    {activeTab === 'hof' && (
+                        <HallOfFameTab game={game} run={run} />
                     )}
                 </>
             )}

@@ -1,0 +1,46 @@
+@use 'sass:color';
+@use '@/styles/constants' as *;
+
+.hof-slot {
+    align-items: center;
+    aspect-ratio: 1;
+    background: $background-light;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 0.6rem;
+    transition: background-color 0.2s ease;
+    width: 8rem;
+
+    @media (hover: hover) {
+        &:hover {
+            background: color.adjust($background-light, $lightness: 6%);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+
+    .hof-slot__sprite {
+        height: 100%;
+        width: 100%;
+
+        img {
+            height: 100%;
+            image-rendering: pixelated;
+            width: 100%;
+        }
+    }
+
+    .hof-slot__placeholder {
+        color: $text-dim;
+        font-size: 2rem;
+    }
+
+    &--empty {
+        border: 1px dashed $border-subtle;
+    }
+}
