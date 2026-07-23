@@ -14,6 +14,7 @@ type SplitTabProps = {
     currentSplitName: string | null;
     game: Game;
     onAdvanceSplit: (splitName: string) => void;
+    onGameComplete: () => void;
     onSelectAbility: (name: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
@@ -26,6 +27,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
     currentSplitName,
     game,
     onAdvanceSplit,
+    onGameComplete,
     onSelectAbility,
     onSelectLocation,
     onSelectMove,
@@ -222,6 +224,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             key={`${location.name}-${index}`}
                             location={location}
                             onAdvanceSplit={onAdvanceSplit}
+                            onGameComplete={onGameComplete}
                             onSelectAbility={onSelectAbility}
                             onSelectLocation={onSelectLocation}
                             onSelectMove={onSelectMove}

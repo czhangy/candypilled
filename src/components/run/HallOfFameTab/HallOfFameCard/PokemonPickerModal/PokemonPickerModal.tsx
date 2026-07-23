@@ -63,7 +63,7 @@ const PokemonPickerModal: React.FC<PokemonPickerModalProps> = ({
                         </div>
                     ) : (
                         <span className={styles.placeholder}>
-                            No available Pokémon left in the box
+                            No available Pokémon left in the box.
                         </span>
                     )}
                 </div>

@@ -62,7 +62,7 @@ const DataModal: React.FC<DataModalProps> = ({
 
     const description =
         activeTab === 'import'
-            ? `Upload a JSON file to overwrite your current data for ${gameName}. Your current run, personal best, and Hall of Fame count will be replaced and can't be recovered.`
+            ? `Upload a JSON file to overwrite your current data for ${gameName}. Your current run and personal best will be replaced and can't be recovered.`
             : activeTab === 'export'
               ? `This will download a JSON file containing all of your data for ${gameName}.`
               : `All data for ${gameName}, including your current run, personal best, and Hall of Fame count, will be deleted and can't be recovered.`;

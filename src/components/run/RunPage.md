@@ -69,6 +69,12 @@ shown instead.
   selection is linkable and shareable
 - `wipeMessage` — a message picked at random from `DEFAULT_WIPE_MESSAGES`
   combined with `game.wipeMessages`, shown when the run has been wiped
+- `isHallOfFameUnlocked` — whether the game's last required battle
+  (`BattleHelpers.getRequiredBattleKeys`) is in `run.defeatedBattles`;
+  gates both the Hall of Fame tab's visibility in `visibleTabs` and its
+  content, in case its query param is set directly
+- `visibleTabs` — `TABS` with the Hall of Fame tab filtered out unless
+  `isHallOfFameUnlocked`
 
 ## Handlers
 
@@ -110,5 +116,8 @@ shown instead.
   `onAdvanceSplit` when a split's boss/last required battle is defeated) —
   sets the `split` query param without changing `tab`, and scrolls the
   page to the top
+- **On game complete** (from `SplitTab`'s `onGameComplete`, when the
+  game's last required battle is defeated) — sets the `tab` query param
+  to `hof` and scrolls the page to the top
 - **On Wipe toggle** — flips `run.wipe` and saves the run; the button reads
   "Wipe" when `run.wipe` is `false` and "RESPAWN" when `true`

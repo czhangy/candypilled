@@ -1,4 +1,5 @@
-import { HallOfFameEntry } from '@/lib/static/types';
+import { Game, HallOfFameEntry } from '@/lib/static/types';
+import StringHelpers from '@/lib/utils/StringHelpers';
 
 export default class HallOfFameHelpers {
     // -------------------------------------------------------------------------
@@ -49,6 +50,19 @@ export default class HallOfFameHelpers {
     /** Appends entry to the saved Hall of Fame entries and notifies subscribers. */
     static addEntry(entry: HallOfFameEntry): void {
         const entries = [...HallOfFameHelpers.getSnapshot(), entry];
+        localStorage.setItem(
+            HallOfFameHelpers.STORAGE_KEY,
+            JSON.stringify(entries)
+        );
+        HallOfFameHelpers.listeners.forEach((listener) => listener());
+    }
+
+    /** Removes every saved Hall of Fame entry belonging to game and notifies subscribers. */
+    static deleteEntriesForGame(game: Game): void {
+        const slug = StringHelpers.toSlug(game.name);
+        const entries = HallOfFameHelpers.getSnapshot().filter(
+            (entry) => entry.game !== slug
+        );
         localStorage.setItem(
             HallOfFameHelpers.STORAGE_KEY,
             JSON.stringify(entries)

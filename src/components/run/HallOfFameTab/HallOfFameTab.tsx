@@ -1,5 +1,4 @@
 import { useSyncExternalStore } from 'react';
-import { PokemonStatus } from '@/lib/static/enums';
 import { CaughtPokemon, Game, Run } from '@/lib/static/types';
 import HallOfFameHelpers from '@/lib/utils/HallOfFameHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
@@ -28,9 +27,6 @@ const HallOfFameTab: React.FC<HallOfFameTabProps> = ({ game, run }) => {
     // -------------------------------------------------------------------------
 
     const variant = StringHelpers.toSlug(game.name);
-    const availablePokemon = run.caughtPokemon.filter(
-        (pokemon) => pokemon.status !== PokemonStatus.Dead
-    );
     const savedEntry = entries.find(
         (entry) => entry.game === variant && entry.attempt === run.attempt
     );
@@ -58,7 +54,7 @@ const HallOfFameTab: React.FC<HallOfFameTabProps> = ({ game, run }) => {
     return (
         <div className={styles['hall-of-fame-tab']}>
             <HallOfFameCard
-                availablePokemon={availablePokemon}
+                availablePokemon={run.caughtPokemon}
                 generation={game.generation}
                 onSave={handleSave}
                 savedTeam={savedEntry?.team ?? null}

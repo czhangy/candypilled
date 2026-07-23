@@ -131,6 +131,20 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
           }`
         : null;
 
+    const requiredBattleKeys = game
+        ? BattleHelpers.getRequiredBattleKeys(game)
+        : [];
+    const lastRequiredBattleKey =
+        requiredBattleKeys[requiredBattleKeys.length - 1];
+    const isHallOfFameUnlocked = !!(
+        run &&
+        lastRequiredBattleKey &&
+        run.defeatedBattles.includes(lastRequiredBattleKey)
+    );
+    const visibleTabs = TABS.filter(
+        (tab) => tab.id !== 'hof' || isHallOfFameUnlocked
+    );
+
     // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------
@@ -258,6 +272,11 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         window.scrollTo({ top: 0 });
     };
 
+    const handleGameComplete = (): void => {
+        updateQueryParams({ tab: 'hof' });
+        window.scrollTo({ top: 0 });
+    };
+
     const handleWipeToggle = (): void => {
         if (!game || !run) return;
 
@@ -321,7 +340,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             activeTab={activeTab}
                             className={styles.tabs}
                             onTabChange={handleTabChange}
-                            tabs={TABS}
+                            tabs={visibleTabs}
                         />
                     </div>
                     {activeTab === 'split' && (
@@ -329,6 +348,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             currentSplitName={currentSplitName}
                             game={game}
                             onAdvanceSplit={handleSplitSelect}
+                            onGameComplete={handleGameComplete}
                             onSelectAbility={handleAbilityLinkClick}
                             onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveLinkClick}
@@ -374,7 +394,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             selectedAbility={selectedAbility}
                         />
                     )}
-                    {activeTab === 'hof' && (
+                    {activeTab === 'hof' && isHallOfFameUnlocked && (
                         <HallOfFameTab game={game} run={run} />
                     )}
                 </>
