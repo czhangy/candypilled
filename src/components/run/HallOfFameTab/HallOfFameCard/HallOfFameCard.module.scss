@@ -27,6 +27,12 @@
             gap: 0.75rem;
         }
 
+        .saved-team {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+        }
+
         .save {
             @include solid-accent-button;
         }

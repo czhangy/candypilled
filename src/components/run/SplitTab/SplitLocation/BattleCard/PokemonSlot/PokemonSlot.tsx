@@ -14,6 +14,7 @@ import styles from './PokemonSlot.module.scss';
 
 type PokemonSlotProps = {
     generation: number;
+    isReadOnly: boolean;
     onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
     onSelectSpecies: (species: string) => void;
@@ -24,6 +25,7 @@ type PokemonSlotProps = {
 
 const PokemonSlot: React.FC<PokemonSlotProps> = ({
     generation,
+    isReadOnly,
     onSelectAbility,
     onSelectMove,
     onSelectSpecies,
@@ -86,6 +88,48 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                   pokemon.level
               )
             : []);
+    const speciesContent = pokemon && (
+        <>
+            <div className={styles['pokemon-slot__sprite']}>
+                {sprite && (
+                    <Image
+                        alt={pokemon.name}
+                        height={SPRITE_SIZE}
+                        src={sprite}
+                        width={SPRITE_SIZE}
+                    />
+                )}
+            </div>
+            <div className={styles['pokemon-slot__name']}>
+                <span>
+                    Lv.{pokemon.level} {pokemon.name}
+                </span>
+                {types.length > 0 && (
+                    <div className={styles['pokemon-slot__types']}>
+                        {types.map((type) => (
+                            <TypeBadge
+                                height={TYPE_BADGE_HEIGHT}
+                                key={type}
+                                type={type}
+                                width={TYPE_BADGE_WIDTH}
+                            />
+                        ))}
+                    </div>
+                )}
+            </div>
+        </>
+    );
+    const natureContent = pokemon?.nature && (
+        <>
+            {pokemon.nature}
+            {NatureHelpers.getNatureEffect(pokemon.nature) && (
+                <span className={styles['pokemon-slot__nature-effect']}>
+                    {' '}
+                    {NatureHelpers.getNatureEffect(pokemon.nature)}
+                </span>
+            )}
+        </>
+    );
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -104,39 +148,24 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
 
     return (
         <div className={styles['pokemon-slot']}>
-            <button
-                className={styles['pokemon-slot__link']}
-                onClick={() => onSelectSpecies(pokemon.name)}
-                type="button"
-            >
-                <div className={styles['pokemon-slot__sprite']}>
-                    {sprite && (
-                        <Image
-                            alt={pokemon.name}
-                            height={SPRITE_SIZE}
-                            src={sprite}
-                            width={SPRITE_SIZE}
-                        />
-                    )}
+            {isReadOnly ? (
+                <div
+                    className={[
+                        styles['pokemon-slot__link'],
+                        styles['pokemon-slot__link--readonly'],
+                    ].join(' ')}
+                >
+                    {speciesContent}
                 </div>
-                <div className={styles['pokemon-slot__name']}>
-                    <span>
-                        Lv.{pokemon.level} {pokemon.name}
-                    </span>
-                    {types.length > 0 && (
-                        <div className={styles['pokemon-slot__types']}>
-                            {types.map((type) => (
-                                <TypeBadge
-                                    height={TYPE_BADGE_HEIGHT}
-                                    key={type}
-                                    type={type}
-                                    width={TYPE_BADGE_WIDTH}
-                                />
-                            ))}
-                        </div>
-                    )}
-                </div>
-            </button>
+            ) : (
+                <button
+                    className={styles['pokemon-slot__link']}
+                    onClick={() => onSelectSpecies(pokemon.name)}
+                    type="button"
+                >
+                    {speciesContent}
+                </button>
+            )}
             <ul className={styles['pokemon-slot__metadata']}>
                 <li className={styles['pokemon-slot__metadata-item--accent']}>
                     {pokemon.heldItem ? (
@@ -157,55 +186,71 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                 </li>
                 <li className={styles['pokemon-slot__metadata-item--ability']}>
                     {ability ? (
-                        <button
-                            className={[
-                                styles['ability-button'],
-                                highlightDangerous &&
-                                    AbilityHelpers.isDangerousAbility(
-                                        ability
-                                    ) &&
-                                    styles['ability-button--dangerous'],
-                            ]
-                                .filter(Boolean)
-                                .join(' ')}
-                            onClick={() => onSelectAbility(ability)}
-                            type="button"
-                        >
-                            {ability}
-                        </button>
+                        isReadOnly ? (
+                            <span
+                                className={[
+                                    styles['ability-button'],
+                                    styles['ability-button--readonly'],
+                                    highlightDangerous &&
+                                        AbilityHelpers.isDangerousAbility(
+                                            ability
+                                        ) &&
+                                        styles['ability-button--dangerous'],
+                                ]
+                                    .filter(Boolean)
+                                    .join(' ')}
+                            >
+                                {ability}
+                            </span>
+                        ) : (
+                            <button
+                                className={[
+                                    styles['ability-button'],
+                                    highlightDangerous &&
+                                        AbilityHelpers.isDangerousAbility(
+                                            ability
+                                        ) &&
+                                        styles['ability-button--dangerous'],
+                                ]
+                                    .filter(Boolean)
+                                    .join(' ')}
+                                onClick={() => onSelectAbility(ability)}
+                                type="button"
+                            >
+                                {ability}
+                            </button>
+                        )
                     ) : (
                         '-'
                     )}
                 </li>
                 <li className={styles['pokemon-slot__metadata-item--nature']}>
-                    {pokemon.nature ? (
+                    {!pokemon.nature ? (
+                        '-'
+                    ) : isReadOnly ? (
+                        <span
+                            className={[
+                                styles['ability-button'],
+                                styles['ability-button--readonly'],
+                            ].join(' ')}
+                        >
+                            {natureContent}
+                        </span>
+                    ) : (
                         <a
                             className={styles['ability-button']}
                             href={`/natures?nature=${pokemon.nature.toLowerCase()}`}
                             rel="noopener noreferrer"
                             target="_blank"
                         >
-                            {pokemon.nature}
-                            {NatureHelpers.getNatureEffect(pokemon.nature) && (
-                                <span
-                                    className={
-                                        styles['pokemon-slot__nature-effect']
-                                    }
-                                >
-                                    {' '}
-                                    {NatureHelpers.getNatureEffect(
-                                        pokemon.nature
-                                    )}
-                                </span>
-                            )}
+                            {natureContent}
                         </a>
-                    ) : (
-                        '-'
                     )}
                 </li>
                 <MoveList
                     generation={generation}
                     highlightDangerous={highlightDangerous}
+                    isReadOnly={isReadOnly}
                     ivs={StatHelpers.normalizeStats(pokemon.ivs, 31)}
                     moves={moves}
                     onSelectMove={onSelectMove}
