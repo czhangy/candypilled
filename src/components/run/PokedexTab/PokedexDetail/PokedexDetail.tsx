@@ -95,8 +95,6 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
     const evolutionLine = species
         ? EvolutionHelpers.getFullEvolutionLine(species, game.generation)
         : undefined;
-    const hasEvolutionBranches =
-        !!evolutionLine && evolutionLine.evolvesTo.length > 0;
     const stats = species
         ? PokemonHelpers.getPokemonStats(species, game.generation)
         : undefined;
@@ -124,36 +122,14 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                 sprite={sprite}
                 types={types}
             />
-            {pokemon && (
-                <div className={styles.evolution}>
-                    <span className={styles['evolution-label']}>
-                        Evolution Line
-                    </span>
-                    <div className={styles['evolution-content']}>
-                        {hasEvolutionBranches && evolutionLine ? (
-                            <EvolutionLine
-                                currentName={species}
-                                hideTradeEvos={hideTradeEvos}
-                                onSelectSpecies={onSelectSpecies}
-                                step={evolutionLine}
-                                variant={variant}
-                            />
-                        ) : (
-                            <span className={styles['evolution-empty']}>
-                                No evolution line
-                            </span>
-                        )}
-                    </div>
-                </div>
-            )}
-            {pokemon && stats && (
-                <div className={styles.stats}>
-                    <span className={styles['stats-label']}>Base Stats</span>
-                    <div className={styles['stats-content']}>
-                        <StatsChart stats={stats} />
-                    </div>
-                </div>
-            )}
+            <EvolutionLine
+                currentName={species}
+                hideTradeEvos={hideTradeEvos}
+                onSelectSpecies={onSelectSpecies}
+                step={evolutionLine}
+                variant={variant}
+            />
+            <StatsChart stats={stats} />
             {pokemon && (
                 <div className={styles.details}>
                     <div className={styles['details-tabs']}>

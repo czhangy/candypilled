@@ -8,10 +8,12 @@ that ability's details, in `catch` mode) and a lower section
 (one-third height) showing its catch rate; a placeholder message is
 shown there instead when no Pokémon is selected. See
 `PokemonSummary.md` for that section's behavior in detail. Below
-that split, a full-width section shows the Pokémon's evolution line,
-or a "No evolution line" message for species with no evolutions, and
-below that, a full-width section shows its base stats as a horizontal
-bar chart. A final full-width section holds two tabs, "Learnset" and
+that split, `EvolutionLine` renders a full-width section showing the
+Pokémon's evolution line (omitted entirely for species with no
+evolutions — see `EvolutionLine.md`), and `StatsChart` renders a
+full-width section showing its base stats as a horizontal bar chart
+(omitted entirely when unset — see `StatsChart.md`). A final full-width
+section holds two tabs, "Learnset" and
 "Locations" (in `catch` mode; in `choose` mode "Learnset" is shown as a
 static, unclickable header instead, and the learnset is always the
 content shown below it): clicking either tab's label switches the
@@ -107,11 +109,8 @@ Operates in one of two mutually exclusive modes, set via `mode`:
 - `evolutionLine` — the selected species' full evolution family tree at
   `generation` (every branch from the family's base species, not just
   the ones leading to the selected species), resolved via
-  `EvolutionHelpers.getFullEvolutionLine` and rendered with
-  `EvolutionLine`
-- `hasEvolutionBranches` — whether `evolutionLine` has any evolutions
-  branching from it; when false, "No evolution line" is shown instead
-  of `EvolutionLine`
+  `EvolutionHelpers.getFullEvolutionLine` and passed to `EvolutionLine`,
+  which omits its own section entirely when there's nothing to show
 - `stats` — the selected species' base stats at `generation`, resolved
   via `PokemonHelpers` and rendered with `StatsChart`
 - `learnset` — the selected species' learnset in `game.version`,
