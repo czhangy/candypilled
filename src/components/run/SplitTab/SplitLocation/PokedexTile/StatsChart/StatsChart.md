@@ -1,13 +1,15 @@
 # StatsChart
 
-Renders a Pokémon's base stats as a horizontal bar chart, one row per
-stat, with a total base stat (BST) count beneath the bars.
+A labeled "Base Stats" section showing a Pokémon's base stats as a
+horizontal bar chart, one row per stat, with a total base stat (BST)
+count beneath the bars. Renders nothing at all (no label, no section)
+when `stats` is unset.
 
 ## Props
 
-| Prop    | Type         | Required | Default | Description                       |
-| ------- | ------------ | -------- | ------- | --------------------------------- |
-| `stats` | `StatValues` | Yes      | -       | The Pokémon's base stats to chart |
+| Prop    | Type                      | Required | Default | Description                       |
+| ------- | ------------------------- | -------- | ------- | --------------------------------- |
+| `stats` | `StatValues \| undefined` | Yes      | -       | The Pokémon's base stats to chart |
 
 ## Computations
 

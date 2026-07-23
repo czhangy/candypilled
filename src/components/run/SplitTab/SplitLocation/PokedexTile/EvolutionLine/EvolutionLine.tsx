@@ -10,7 +10,7 @@ type EvolutionLineProps = {
     currentName?: string;
     hideTradeEvos: boolean;
     onSelectSpecies: (species: string) => void;
-    step: EvolutionStep;
+    step?: EvolutionStep;
     variant: string;
 };
 
@@ -30,173 +30,189 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
     const CONDITION_ICON_SIZE = 20;
 
     // -------------------------------------------------------------------------
-    // RENDERING
+    // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const sprite = PokemonHelpers.getPokemonSprite(step.name, variant);
-    const isCurrent =
-        !!currentName && StringHelpers.toSlug(currentName) === step.name;
-    const visibleEvolutions = step.evolvesTo.filter(
-        (child) =>
-            !hideTradeEvos || !EvolutionHelpers.isTradeEvolution(child.methods)
-    );
+    const renderNode = (nodeStep: EvolutionStep): React.ReactNode => {
+        const sprite = PokemonHelpers.getPokemonSprite(nodeStep.name, variant);
+        const isCurrent =
+            !!currentName &&
+            StringHelpers.toSlug(currentName) === nodeStep.name;
+        const visibleEvolutions = nodeStep.evolvesTo.filter(
+            (child) =>
+                !hideTradeEvos ||
+                !EvolutionHelpers.isTradeEvolution(child.methods)
+        );
 
-    // -------------------------------------------------------------------------
-    // HANDLERS
-    // -------------------------------------------------------------------------
+        return (
+            <div className={styles['evolution-line']}>
+                <button
+                    className={[
+                        styles.node,
+                        isCurrent && styles['node--current'],
+                    ]
+                        .filter(Boolean)
+                        .join(' ')}
+                    onClick={() => onSelectSpecies(nodeStep.name)}
+                    type="button"
+                >
+                    <div className={styles.sprite}>
+                        {sprite && (
+                            <Image
+                                alt={StringHelpers.toTitleCase(nodeStep.name)}
+                                height={SPRITE_SIZE}
+                                src={sprite}
+                                width={SPRITE_SIZE}
+                            />
+                        )}
+                    </div>
+                </button>
+                {visibleEvolutions.length > 0 && (
+                    <div className={styles.branches}>
+                        {visibleEvolutions.flatMap((child) => {
+                            const methodLabel = child.methods
+                                ? EvolutionHelpers.getEvolutionMethodLabel(
+                                      child.methods
+                                  )
+                                : undefined;
+                            // A child's name is ambiguous when it doesn't
+                            // resolve to its own entry (e.g. "wormadam", whose
+                            // actual form depends on Burmy's cloak, which the
+                            // evolution chain doesn't track), so it's expanded
+                            // into one branch per form instead of one branch
+                            // per step.
+                            const formNames = PokemonHelpers.getPokemonForms(
+                                child.name
+                            );
 
-    const handleNodeClick = (): void => {
-        onSelectSpecies(step.name);
+                            return formNames.map((formName) => (
+                                <div className={styles.branch} key={formName}>
+                                    <div className={styles.arrow}>
+                                        {methodLabel && (
+                                            <span className={styles.method}>
+                                                {methodLabel.icon ? (
+                                                    <Tooltip
+                                                        position="center"
+                                                        text={methodLabel.label}
+                                                    >
+                                                        <Image
+                                                            alt={
+                                                                methodLabel.label
+                                                            }
+                                                            className={
+                                                                styles[
+                                                                    'method-icon'
+                                                                ]
+                                                            }
+                                                            height={
+                                                                METHOD_ICON_SIZE
+                                                            }
+                                                            src={`/evolution_methods/${methodLabel.icon}.png`}
+                                                            width={
+                                                                METHOD_ICON_SIZE
+                                                            }
+                                                        />
+                                                    </Tooltip>
+                                                ) : (
+                                                    <span
+                                                        className={
+                                                            styles[
+                                                                'method-label'
+                                                            ]
+                                                        }
+                                                    >
+                                                        {methodLabel.label}
+                                                    </span>
+                                                )}
+                                                {methodLabel.gender && (
+                                                    <span
+                                                        className={[
+                                                            styles[
+                                                                'method-gender'
+                                                            ],
+                                                            styles[
+                                                                `method-gender--${methodLabel.gender}`
+                                                            ],
+                                                        ].join(' ')}
+                                                    >
+                                                        {methodLabel.gender ===
+                                                        'male'
+                                                            ? '♂'
+                                                            : '♀'}
+                                                    </span>
+                                                )}
+                                                {methodLabel.condition &&
+                                                    !methodLabel.conditionIcon && (
+                                                        <span
+                                                            className={
+                                                                styles[
+                                                                    'method-condition'
+                                                                ]
+                                                            }
+                                                        >
+                                                            {
+                                                                methodLabel.condition
+                                                            }
+                                                        </span>
+                                                    )}
+                                                {methodLabel.conditionIcon && (
+                                                    <Tooltip
+                                                        position="center"
+                                                        text={
+                                                            methodLabel.condition ??
+                                                            methodLabel.label
+                                                        }
+                                                    >
+                                                        <Image
+                                                            alt={
+                                                                methodLabel.condition ??
+                                                                methodLabel.label
+                                                            }
+                                                            className={
+                                                                styles[
+                                                                    'condition-icon'
+                                                                ]
+                                                            }
+                                                            height={
+                                                                CONDITION_ICON_SIZE
+                                                            }
+                                                            src={`/evolution_methods/${methodLabel.conditionIcon}.png`}
+                                                            width={
+                                                                CONDITION_ICON_SIZE
+                                                            }
+                                                        />
+                                                    </Tooltip>
+                                                )}
+                                            </span>
+                                        )}
+                                        <span className={styles['arrow-icon']}>
+                                            &rarr;
+                                        </span>
+                                    </div>
+                                    {renderNode({ ...child, name: formName })}
+                                </div>
+                            ));
+                        })}
+                    </div>
+                )}
+            </div>
+        );
     };
 
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
-    return (
-        <div className={styles['evolution-line']}>
-            <button
-                className={[styles.node, isCurrent && styles['node--current']]
-                    .filter(Boolean)
-                    .join(' ')}
-                onClick={handleNodeClick}
-                type="button"
-            >
-                <div className={styles.sprite}>
-                    {sprite && (
-                        <Image
-                            alt={StringHelpers.toTitleCase(step.name)}
-                            height={SPRITE_SIZE}
-                            src={sprite}
-                            width={SPRITE_SIZE}
-                        />
-                    )}
-                </div>
-            </button>
-            {visibleEvolutions.length > 0 && (
-                <div className={styles.branches}>
-                    {visibleEvolutions.flatMap((child) => {
-                        const methodLabel = child.methods
-                            ? EvolutionHelpers.getEvolutionMethodLabel(
-                                  child.methods
-                              )
-                            : undefined;
-                        // A child's name is ambiguous when it doesn't
-                        // resolve to its own entry (e.g. "wormadam", whose
-                        // actual form depends on Burmy's cloak, which the
-                        // evolution chain doesn't track), so it's expanded
-                        // into one branch per form instead of one branch
-                        // per step.
-                        const formNames = PokemonHelpers.getPokemonForms(
-                            child.name
-                        );
+    if (!step || step.evolvesTo.length === 0) {
+        return null;
+    }
 
-                        return formNames.map((formName) => (
-                            <div className={styles.branch} key={formName}>
-                                <div className={styles.arrow}>
-                                    {methodLabel && (
-                                        <span className={styles.method}>
-                                            {methodLabel.icon ? (
-                                                <Tooltip
-                                                    position="center"
-                                                    text={methodLabel.label}
-                                                >
-                                                    <Image
-                                                        alt={methodLabel.label}
-                                                        className={
-                                                            styles[
-                                                                'method-icon'
-                                                            ]
-                                                        }
-                                                        height={
-                                                            METHOD_ICON_SIZE
-                                                        }
-                                                        src={`/evolution_methods/${methodLabel.icon}.png`}
-                                                        width={METHOD_ICON_SIZE}
-                                                    />
-                                                </Tooltip>
-                                            ) : (
-                                                <span
-                                                    className={
-                                                        styles['method-label']
-                                                    }
-                                                >
-                                                    {methodLabel.label}
-                                                </span>
-                                            )}
-                                            {methodLabel.gender && (
-                                                <span
-                                                    className={[
-                                                        styles['method-gender'],
-                                                        styles[
-                                                            `method-gender--${methodLabel.gender}`
-                                                        ],
-                                                    ].join(' ')}
-                                                >
-                                                    {methodLabel.gender ===
-                                                    'male'
-                                                        ? '♂'
-                                                        : '♀'}
-                                                </span>
-                                            )}
-                                            {methodLabel.condition &&
-                                                !methodLabel.conditionIcon && (
-                                                    <span
-                                                        className={
-                                                            styles[
-                                                                'method-condition'
-                                                            ]
-                                                        }
-                                                    >
-                                                        {methodLabel.condition}
-                                                    </span>
-                                                )}
-                                            {methodLabel.conditionIcon && (
-                                                <Tooltip
-                                                    position="center"
-                                                    text={
-                                                        methodLabel.condition ??
-                                                        methodLabel.label
-                                                    }
-                                                >
-                                                    <Image
-                                                        alt={
-                                                            methodLabel.condition ??
-                                                            methodLabel.label
-                                                        }
-                                                        className={
-                                                            styles[
-                                                                'condition-icon'
-                                                            ]
-                                                        }
-                                                        height={
-                                                            CONDITION_ICON_SIZE
-                                                        }
-                                                        src={`/evolution_methods/${methodLabel.conditionIcon}.png`}
-                                                        width={
-                                                            CONDITION_ICON_SIZE
-                                                        }
-                                                    />
-                                                </Tooltip>
-                                            )}
-                                        </span>
-                                    )}
-                                    <span className={styles['arrow-icon']}>
-                                        &rarr;
-                                    </span>
-                                </div>
-                                <EvolutionLine
-                                    currentName={currentName}
-                                    hideTradeEvos={hideTradeEvos}
-                                    onSelectSpecies={onSelectSpecies}
-                                    step={{ ...child, name: formName }}
-                                    variant={variant}
-                                />
-                            </div>
-                        ));
-                    })}
-                </div>
-            )}
+    return (
+        <div className={styles.evolution}>
+            <span className={styles['evolution-label']}>Evolution Line</span>
+            <div className={styles['evolution-content']}>
+                {renderNode(step)}
+            </div>
         </div>
     );
 };

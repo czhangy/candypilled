@@ -7,11 +7,13 @@ pieces as the Pokédex tile shown alongside a run's encounters
 browsing the Pokédex outside an encounter doesn't catch anything.
 `PokemonSummary` renders the top section: sprite, name, type badges,
 clickable abilities, and catch rate; a placeholder message is shown
-there instead when no Pokémon is selected. Below that, a full-width
-section shows the Pokémon's evolution line — clicking a Pokémon within
-it selects that species — or a "No evolution line" message for species
-with no evolutions, and below that, a full-width section shows its
-base stats as a horizontal bar chart. A final full-width section holds
+there instead when no Pokémon is selected. Below that, `EvolutionLine`
+renders a full-width section showing the Pokémon's evolution line —
+clicking a Pokémon within it selects that species — omitted entirely
+for species with no evolutions (see `EvolutionLine.md`), and
+`StatsChart` renders a full-width section showing its base stats as a
+horizontal bar chart (omitted entirely when unset — see
+`StatsChart.md`). A final full-width section holds
 two tabs, "Learnset" and "Locations": clicking either tab's label
 switches the content below between the species' clickable learnset and
 every wild location it can be found in, sorted by minimum encounter
@@ -59,11 +61,8 @@ missed) in the run highlighted red.
 - `evolutionLine` — the selected species' full evolution family tree at
   `game.generation` (every branch from the family's base species, not
   just the ones leading to the selected species), resolved via
-  `EvolutionHelpers.getFullEvolutionLine` and rendered with
-  `EvolutionLine`
-- `hasEvolutionBranches` — whether `evolutionLine` has any evolutions
-  branching from it; when false, "No evolution line" is shown instead
-  of `EvolutionLine`
+  `EvolutionHelpers.getFullEvolutionLine` and passed to `EvolutionLine`,
+  which omits its own section entirely when there's nothing to show
 - `stats` — the selected species' base stats at `game.generation`,
   resolved via `PokemonHelpers` and rendered with `StatsChart`
 - `learnset` — the selected species' learnset in `game.version`,

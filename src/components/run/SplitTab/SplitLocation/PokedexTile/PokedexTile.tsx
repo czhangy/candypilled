@@ -163,8 +163,6 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     const evolutionLine = species
         ? EvolutionHelpers.getFullEvolutionLine(species, generation)
         : undefined;
-    const hasEvolutionBranches =
-        !!evolutionLine && evolutionLine.evolvesTo.length > 0;
     const stats = species
         ? PokemonHelpers.getPokemonStats(species, generation)
         : undefined;
@@ -259,36 +257,14 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                         version={game.version}
                     />
                 )}
-            {pokemon && (
-                <div className={styles.evolution}>
-                    <span className={styles['evolution-label']}>
-                        Evolution Line
-                    </span>
-                    <div className={styles['evolution-content']}>
-                        {hasEvolutionBranches && evolutionLine ? (
-                            <EvolutionLine
-                                currentName={species}
-                                hideTradeEvos={hideTradeEvos}
-                                onSelectSpecies={onSelectSpecies}
-                                step={evolutionLine}
-                                variant={variant}
-                            />
-                        ) : (
-                            <span className={styles['evolution-empty']}>
-                                No evolution line
-                            </span>
-                        )}
-                    </div>
-                </div>
-            )}
-            {pokemon && stats && (
-                <div className={styles.stats}>
-                    <span className={styles['stats-label']}>Base Stats</span>
-                    <div className={styles['stats-content']}>
-                        <StatsChart stats={stats} />
-                    </div>
-                </div>
-            )}
+            <EvolutionLine
+                currentName={species}
+                hideTradeEvos={hideTradeEvos}
+                onSelectSpecies={onSelectSpecies}
+                step={evolutionLine}
+                variant={variant}
+            />
+            <StatsChart stats={stats} />
             {pokemon && (
                 <div className={styles.details}>
                     {rest.mode === 'choose' ? (
