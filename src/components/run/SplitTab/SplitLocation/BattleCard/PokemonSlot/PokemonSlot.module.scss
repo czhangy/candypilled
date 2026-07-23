@@ -77,6 +77,18 @@
                 }
             }
         }
+
+        &--readonly {
+            cursor: default;
+
+            @media (hover: hover) {
+                &:hover {
+                    .pokemon-slot__name {
+                        color: $foreground;
+                    }
+                }
+            }
+        }
     }
 
     .pokemon-slot__metadata {
@@ -126,6 +138,16 @@
 
                 &--dangerous {
                     color: $red;
+                }
+
+                &--readonly {
+                    cursor: default;
+
+                    @media (hover: hover) {
+                        &:hover {
+                            background: none;
+                        }
+                    }
                 }
             }
         }

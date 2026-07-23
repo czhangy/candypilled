@@ -29,6 +29,7 @@ type SplitLocationProps = {
     index: number;
     location: Location;
     onAdvanceSplit: (splitName: string) => void;
+    onGameComplete: () => void;
     onSelectAbility: (name: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
@@ -42,6 +43,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     index,
     location,
     onAdvanceSplit,
+    onGameComplete,
     onSelectAbility,
     onSelectLocation,
     onSelectMove,
@@ -240,12 +242,21 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         LocalStorageHelpers.saveRun(game, updatedRun);
 
         if (!wasDefeated) {
-            const nextSplitName = BattleHelpers.getNextSplitAfterBattle(
-                game,
-                battleKey
-            );
-            if (nextSplitName) {
-                onAdvanceSplit(nextSplitName);
+            const requiredBattleKeys =
+                BattleHelpers.getRequiredBattleKeys(game);
+            const isLastRequiredBattle =
+                battleKey === requiredBattleKeys[requiredBattleKeys.length - 1];
+
+            if (isLastRequiredBattle) {
+                onGameComplete();
+            } else {
+                const nextSplitName = BattleHelpers.getNextSplitAfterBattle(
+                    game,
+                    battleKey
+                );
+                if (nextSplitName) {
+                    onAdvanceSplit(nextSplitName);
+                }
             }
         }
     };

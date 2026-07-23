@@ -1,0 +1,40 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.hall-of-fame-card {
+    border: 1px solid $border-subtle;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    width: fit-content;
+
+    .label {
+        @include uppercase-label;
+
+        background: $background-light;
+        display: block;
+        padding: 0.4rem 0.75rem;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0.75rem;
+
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .saved-team {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+        }
+
+        .save {
+            @include solid-accent-button;
+        }
+    }
+}

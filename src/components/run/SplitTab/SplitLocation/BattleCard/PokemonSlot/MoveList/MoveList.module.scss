@@ -26,4 +26,15 @@
     &--dangerous {
         color: white;
     }
+
+    &--readonly {
+        cursor: default;
+        display: block;
+
+        @media (hover: hover) {
+            &:hover {
+                background: move-tile-background();
+            }
+        }
+    }
 }

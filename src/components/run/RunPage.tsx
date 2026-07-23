@@ -17,6 +17,7 @@ import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import AbilitiesTab from './AbilitiesTab/AbilitiesTab';
 import BoxTab from './BoxTab/BoxTab';
+import HallOfFameTab from './HallOfFameTab/HallOfFameTab';
 import MovesTab from './MovesTab/MovesTab';
 import PokedexTab from './PokedexTab/PokedexTab';
 import styles from './RunPage.module.scss';
@@ -38,6 +39,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         { id: 'pokedex', label: 'Pokédex' },
         { id: 'moves', label: 'Moves' },
         { id: 'abilities', label: 'Abilities' },
+        { id: 'hof', label: 'Hall of Fame' },
     ];
 
     const TAB_QUERY_PARAMS: Record<string, string> = {
@@ -128,6 +130,20 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                   : ''
           }`
         : null;
+
+    const requiredBattleKeys = game
+        ? BattleHelpers.getRequiredBattleKeys(game)
+        : [];
+    const lastRequiredBattleKey =
+        requiredBattleKeys[requiredBattleKeys.length - 1];
+    const isHallOfFameUnlocked = !!(
+        run &&
+        lastRequiredBattleKey &&
+        run.defeatedBattles.includes(lastRequiredBattleKey)
+    );
+    const visibleTabs = TABS.filter(
+        (tab) => tab.id !== 'hof' || isHallOfFameUnlocked
+    );
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -256,6 +272,11 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         window.scrollTo({ top: 0 });
     };
 
+    const handleGameComplete = (): void => {
+        updateQueryParams({ tab: 'hof' });
+        window.scrollTo({ top: 0 });
+    };
+
     const handleWipeToggle = (): void => {
         if (!game || !run) return;
 
@@ -319,7 +340,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             activeTab={activeTab}
                             className={styles.tabs}
                             onTabChange={handleTabChange}
-                            tabs={TABS}
+                            tabs={visibleTabs}
                         />
                     </div>
                     {activeTab === 'split' && (
@@ -327,6 +348,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             currentSplitName={currentSplitName}
                             game={game}
                             onAdvanceSplit={handleSplitSelect}
+                            onGameComplete={handleGameComplete}
                             onSelectAbility={handleAbilityLinkClick}
                             onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveLinkClick}
@@ -371,6 +393,9 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             onSelectAbility={handleAbilitySelect}
                             selectedAbility={selectedAbility}
                         />
+                    )}
+                    {activeTab === 'hof' && isHallOfFameUnlocked && (
+                        <HallOfFameTab game={game} run={run} />
                     )}
                 </>
             )}

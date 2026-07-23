@@ -9,6 +9,7 @@ import RunIcon from '@/lib/icons/RunIcon';
 import SkullIcon from '@/lib/icons/SkullIcon';
 import { PokemonStatus } from '@/lib/static/enums';
 import { CaughtPokemon, Game, Run } from '@/lib/static/types';
+import HallOfFameHelpers from '@/lib/utils/HallOfFameHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -125,6 +126,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
 
     const handleReset = (): void => {
         LocalStorageHelpers.deleteRun(game);
+        HallOfFameHelpers.deleteEntriesForGame(game);
     };
 
     const handleImport = (importedRun: Run): void => {

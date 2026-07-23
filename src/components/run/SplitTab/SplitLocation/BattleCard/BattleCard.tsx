@@ -72,6 +72,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                         ).map((pokemon, index) => (
                             <PokemonSlot
                                 generation={generation}
+                                isReadOnly={false}
                                 key={
                                     pokemon
                                         ? `${pokemon.name}-${index}`

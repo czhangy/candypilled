@@ -6,6 +6,7 @@ import styles from './MoveList.module.scss';
 type MoveListProps = {
     generation: number;
     highlightDangerous: boolean;
+    isReadOnly: boolean;
     ivs: StatValues;
     moves: string[];
     onSelectMove: (name: string) => void;
@@ -14,6 +15,7 @@ type MoveListProps = {
 const MoveList: React.FC<MoveListProps> = ({
     generation,
     highlightDangerous,
+    isReadOnly,
     ivs,
     moves,
     onSelectMove,
@@ -47,25 +49,46 @@ const MoveList: React.FC<MoveListProps> = ({
                     <li key={index}>{move}</li>
                 ) : (
                     <li key={index}>
-                        <button
-                            className={[
-                                styles['move-button'],
-                                highlightDangerous &&
-                                    MoveHelpers.isDangerousMove(move) &&
-                                    styles['move-button--dangerous'],
-                            ]
-                                .filter(Boolean)
-                                .join(' ')}
-                            onClick={() => onSelectMove(move)}
-                            style={
-                                {
-                                    '--move-color': getMoveColor(move),
-                                } as React.CSSProperties
-                            }
-                            type="button"
-                        >
-                            {move}
-                        </button>
+                        {isReadOnly ? (
+                            <span
+                                className={[
+                                    styles['move-button'],
+                                    styles['move-button--readonly'],
+                                    highlightDangerous &&
+                                        MoveHelpers.isDangerousMove(move) &&
+                                        styles['move-button--dangerous'],
+                                ]
+                                    .filter(Boolean)
+                                    .join(' ')}
+                                style={
+                                    {
+                                        '--move-color': getMoveColor(move),
+                                    } as React.CSSProperties
+                                }
+                            >
+                                {move}
+                            </span>
+                        ) : (
+                            <button
+                                className={[
+                                    styles['move-button'],
+                                    highlightDangerous &&
+                                        MoveHelpers.isDangerousMove(move) &&
+                                        styles['move-button--dangerous'],
+                                ]
+                                    .filter(Boolean)
+                                    .join(' ')}
+                                onClick={() => onSelectMove(move)}
+                                style={
+                                    {
+                                        '--move-color': getMoveColor(move),
+                                    } as React.CSSProperties
+                                }
+                                type="button"
+                            >
+                                {move}
+                            </button>
+                        )}
                     </li>
                 )
             )}

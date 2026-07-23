@@ -1,21 +1,22 @@
 # MoveList
 
-A fixed 4-slot list of move buttons for a Pokémon slot within a
-battle card, rendered as `<li>` items meant to sit inside a parent
-`<ul>`. Empty slots show a dash. Each move is clickable, linking to
-that move's details; its background is tinted to match its type,
-darkening further on hover. When `highlightDangerous` is enabled,
-moves flagged as dangerous are shown in red text.
+A fixed 4-slot list of moves for a Pokémon slot within a battle card,
+rendered as `<li>` items meant to sit inside a parent `<ul>`. Empty slots
+show a dash. Each move's background is tinted to match its type. When
+`highlightDangerous` is enabled, moves flagged as dangerous are shown in
+red text. Unless `isReadOnly`, each move is clickable, linking to that
+move's details, and darkens further on hover.
 
 ## Props
 
-| Prop                 | Type                     | Required | Default | Description                                                    |
-| -------------------- | ------------------------ | -------- | ------- | -------------------------------------------------------------- |
-| `generation`         | `number`                 | Yes      | -       | The game's generation, used to resolve each move's type        |
-| `highlightDangerous` | `boolean`                | Yes      | -       | Whether moves flagged as dangerous are highlighted in red text |
-| `ivs`                | `StatValues`             | Yes      | -       | The Pokémon's IVs, used to resolve Hidden Power's actual type  |
-| `moves`              | `string[]`               | Yes      | -       | The Pokémon's moves, padded to 4 slots with dashes if fewer    |
-| `onSelectMove`       | `(name: string) => void` | Yes      | -       | Called with a move's name when it's clicked                    |
+| Prop                 | Type                     | Required | Default | Description                                                             |
+| -------------------- | ------------------------ | -------- | ------- | ----------------------------------------------------------------------- |
+| `generation`         | `number`                 | Yes      | -       | The game's generation, used to resolve each move's type                 |
+| `highlightDangerous` | `boolean`                | Yes      | -       | Whether moves flagged as dangerous are highlighted in red text          |
+| `isReadOnly`         | `boolean`                | Yes      | -       | Renders moves as plain, non-interactive text when true                  |
+| `ivs`                | `StatValues`             | Yes      | -       | The Pokémon's IVs, used to resolve Hidden Power's actual type           |
+| `moves`              | `string[]`               | Yes      | -       | The Pokémon's moves, padded to 4 slots with dashes if fewer             |
+| `onSelectMove`       | `(name: string) => void` | Yes      | -       | Called with a move's name when it's clicked (ignored when `isReadOnly`) |
 
 ## Computations
 
