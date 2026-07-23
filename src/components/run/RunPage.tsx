@@ -17,6 +17,7 @@ import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import AbilitiesTab from './AbilitiesTab/AbilitiesTab';
 import BoxTab from './BoxTab/BoxTab';
+import CalcTab from './CalcTab/CalcTab';
 import HallOfFameTab from './HallOfFameTab/HallOfFameTab';
 import MovesTab from './MovesTab/MovesTab';
 import PokedexTab from './PokedexTab/PokedexTab';
@@ -39,6 +40,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         { id: 'pokedex', label: 'Pokédex' },
         { id: 'moves', label: 'Moves' },
         { id: 'abilities', label: 'Abilities' },
+        { id: 'calc', label: 'Calc' },
         { id: 'hof', label: 'Hall of Fame' },
     ];
 
@@ -394,6 +396,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             selectedAbility={selectedAbility}
                         />
                     )}
+                    {activeTab === 'calc' && <CalcTab game={game} run={run} />}
                     {activeTab === 'hof' && isHallOfFameUnlocked && (
                         <HallOfFameTab game={game} run={run} />
                     )}

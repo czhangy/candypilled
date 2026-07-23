@@ -8,6 +8,7 @@ import { DropdownOption } from '@/lib/static/types';
 import styles from './Dropdown.module.scss';
 
 type DropdownProps = {
+    dense?: boolean;
     onChange: (value: string) => void;
     options: DropdownOption[];
     placeholder?: string;
@@ -16,6 +17,7 @@ type DropdownProps = {
 };
 
 const Dropdown: React.FC<DropdownProps> = ({
+    dense = false,
     onChange,
     options,
     placeholder = 'Select…',
@@ -163,7 +165,12 @@ const Dropdown: React.FC<DropdownProps> = ({
     // -------------------------------------------------------------------------
 
     return (
-        <div className={styles.dropdown} ref={containerRef}>
+        <div
+            className={[styles.dropdown, dense && styles['dropdown--dense']]
+                .filter(Boolean)
+                .join(' ')}
+            ref={containerRef}
+        >
             <button
                 aria-expanded={isOpen}
                 className={styles.trigger}
@@ -190,6 +197,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                     <div
                         className={[
                             styles.menu,
+                            dense && styles['menu--dense'],
                             isClosing && styles['menu--closing'],
                         ]
                             .filter(Boolean)
