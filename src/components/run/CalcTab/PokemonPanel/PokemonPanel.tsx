@@ -1,8 +1,14 @@
 import { useState, useSyncExternalStore } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import { STAT_FIELDS } from '@/lib/static/constants';
-import { PokemonStatus } from '@/lib/static/enums';
-import { DropdownOption, Game, Run, StatValues } from '@/lib/static/types';
+import { Nature, PokemonStatus } from '@/lib/static/enums';
+import {
+    AbilitySlot,
+    DropdownOption,
+    Game,
+    Run,
+    StatValues,
+} from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -22,6 +28,8 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
 
     const MIN_LEVEL = 1;
     const MAX_LEVEL = 100;
+    const MIN_IV = 0;
+    const MAX_IV = 31;
     const MIN_EV = 0;
     const MAX_EV = 252;
     const MIN_BOOST = -6;
@@ -79,7 +87,12 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
     // -------------------------------------------------------------------------
 
     const [selectedLocation, setSelectedLocation] = useState('');
+    const [abilitySlot, setAbilitySlot] = useState<AbilitySlot>(1);
+    const [nature, setNature] = useState<Nature>(Object.values(Nature)[0]);
     const [level, setLevel] = useState(MIN_LEVEL);
+    const [ivs, setIvs] = useState<StatValues>(
+        StatHelpers.normalizeStats(undefined, 31)
+    );
     const [evs, setEvs] = useState<StatValues>(
         StatHelpers.normalizeStats(undefined, 0)
     );
@@ -108,28 +121,30 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
     const baseStats = caught
         ? PokemonHelpers.getPokemonStats(caught.name, game.generation)
         : undefined;
-    const ivs = caught ? StatHelpers.normalizeStats(caught.ivs, 31) : undefined;
-    const totalStats =
-        caught && baseStats && ivs
-            ? StatHelpers.calculateStats(
-                  baseStats,
-                  level,
-                  ivs,
-                  evs,
-                  caught.nature
-              )
-            : undefined;
+    const totalStats = baseStats
+        ? StatHelpers.calculateStats(baseStats, level, ivs, evs, nature)
+        : undefined;
 
-    const abilitySlug = caught
-        ? PokemonHelpers.getAbilityName(
-              caught.name,
-              game.generation,
-              caught.ability
-          )
+    const abilities = caught
+        ? PokemonHelpers.getPokemonAbilities(caught.name, game.generation)
         : undefined;
-    const abilityName = abilitySlug
-        ? (AbilityHelpers.getAbilityData(abilitySlug)?.name ?? abilitySlug)
-        : undefined;
+    const abilityOptions: DropdownOption[] = abilities
+        ? [
+              { name: abilities.slot1, slot: 1 as AbilitySlot },
+              ...(abilities.slot2
+                  ? [{ name: abilities.slot2, slot: 2 as AbilitySlot }]
+                  : []),
+              ...(abilities.hidden
+                  ? [{ name: abilities.hidden, slot: 3 as AbilitySlot }]
+                  : []),
+          ].map(({ name, slot }) => ({
+              label: AbilityHelpers.getAbilityData(name)?.name ?? name,
+              value: String(slot),
+          }))
+        : [];
+    const natureOptions: DropdownOption[] = Object.values(Nature).map(
+        (name) => ({ label: name, value: name })
+    );
 
     const learnset = caught
         ? (PokemonHelpers.getPokemonLearnset(caught.name, game.version) ?? [])
@@ -158,11 +173,22 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
         );
         if (!nextCaught) return;
 
+        setAbilitySlot(nextCaught.ability);
+        setNature(nextCaught.nature ?? Object.values(Nature)[0]);
         setLevel(nextCaught.level);
+        setIvs(StatHelpers.normalizeStats(nextCaught.ivs, 31));
         setEvs(StatHelpers.normalizeStats(nextCaught.evs, 0));
         setBoosts(getBlankBoosts());
         setStatus('');
         setMoves(padMoves(nextCaught.moves));
+    };
+
+    const handleAbilityChange = (value: string): void => {
+        setAbilitySlot(Number(value) as AbilitySlot);
+    };
+
+    const handleNatureChange = (value: string): void => {
+        setNature(value as Nature);
     };
 
     const handleLevelChange = (
@@ -177,6 +203,17 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
 
     const handleStatusChange = (value: string): void => {
         setStatus(value);
+    };
+
+    const handleIvChange = (
+        stat: keyof StatValues,
+        event: React.ChangeEvent<HTMLInputElement>
+    ): void => {
+        const value = Math.min(
+            MAX_IV,
+            Math.max(MIN_IV, Number(event.target.value))
+        );
+        setIvs((prev) => ({ ...prev, [stat]: value }));
     };
 
     const handleEvChange = (
@@ -225,13 +262,21 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
                     <div className={styles.row}>
                         <div className={styles.field}>
                             <span className={styles.label}>Nature</span>
-                            <span className={styles.value}>
-                                {caught.nature ?? 'None'}
-                            </span>
+                            <Dropdown
+                                dense
+                                onChange={handleNatureChange}
+                                options={natureOptions}
+                                value={nature}
+                            />
                         </div>
                         <div className={styles.field}>
                             <span className={styles.label}>Ability</span>
-                            <span className={styles.value}>{abilityName}</span>
+                            <Dropdown
+                                dense
+                                onChange={handleAbilityChange}
+                                options={abilityOptions}
+                                value={String(abilitySlot)}
+                            />
                         </div>
                     </div>
                     <div className={styles.row}>
@@ -280,7 +325,18 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
                                         {label}
                                     </th>
                                     <td>{baseStats?.[key]}</td>
-                                    <td>{ivs?.[key]}</td>
+                                    <td>
+                                        <input
+                                            className={styles['iv-input']}
+                                            max={MAX_IV}
+                                            min={MIN_IV}
+                                            onChange={(event) =>
+                                                handleIvChange(key, event)
+                                            }
+                                            type="number"
+                                            value={ivs[key]}
+                                        />
+                                    </td>
                                     {!hideEvs && (
                                         <td>
                                             <input

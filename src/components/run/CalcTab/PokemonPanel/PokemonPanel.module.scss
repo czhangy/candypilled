@@ -71,6 +71,7 @@
             font-weight: 700;
         }
 
+        .iv-input,
         .ev-input {
             @include form-input;
 
