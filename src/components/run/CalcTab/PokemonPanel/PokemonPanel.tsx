@@ -1,6 +1,6 @@
 import { useEffect, useReducer, useSyncExternalStore } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
-import { STAT_FIELDS } from '@/lib/static/constants';
+import StatsTable from '@/components/run/CalcTab/StatsTable/StatsTable';
 import { Nature } from '@/lib/static/enums';
 import { DropdownOption, Game, Run, StatValues } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
@@ -31,8 +31,6 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     const MAX_IV = 31;
     const MIN_EV = 0;
     const MAX_EV = 252;
-    const MIN_BOOST = -6;
-    const MAX_BOOST = 6;
     const MOVE_SLOT_COUNT = 4;
 
     const STATUS_OPTIONS: DropdownOption[] = [
@@ -44,17 +42,6 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
         { label: 'Badly Poisoned', value: 'tox' },
         { label: 'Sleep', value: 'slp' },
     ];
-
-    const BOOST_OPTIONS: DropdownOption[] = Array.from(
-        { length: MAX_BOOST - MIN_BOOST + 1 },
-        (_, index) => {
-            const stage = MIN_BOOST + index;
-            return {
-                label: stage > 0 ? `+${stage}` : String(stage),
-                value: String(stage),
-            };
-        }
-    );
 
     type PanelState = {
         abilityName: string;
@@ -369,72 +356,17 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                             />
                         </div>
                     </div>
-                    <table className={styles.stats}>
-                        <thead>
-                            <tr>
-                                <th />
-                                <th>Base</th>
-                                <th>IV</th>
-                                {!hideEvs && <th>EV</th>}
-                                <th>Stage</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {STAT_FIELDS.map(({ key, label }) => (
-                                <tr key={key}>
-                                    <th className={styles['stat-label']}>
-                                        {label}
-                                    </th>
-                                    <td>{baseStats?.[key]}</td>
-                                    <td>
-                                        <input
-                                            className={styles['iv-input']}
-                                            max={MAX_IV}
-                                            min={MIN_IV}
-                                            onChange={(event) =>
-                                                handleIvChange(key, event)
-                                            }
-                                            type="number"
-                                            value={ivs[key]}
-                                        />
-                                    </td>
-                                    {!hideEvs && (
-                                        <td>
-                                            <input
-                                                className={styles['ev-input']}
-                                                max={MAX_EV}
-                                                min={MIN_EV}
-                                                onChange={(event) =>
-                                                    handleEvChange(key, event)
-                                                }
-                                                type="number"
-                                                value={evs[key]}
-                                            />
-                                        </td>
-                                    )}
-                                    <td className={styles['boost-cell']}>
-                                        {key !== 'hp' && (
-                                            <Dropdown
-                                                dense
-                                                onChange={(value) =>
-                                                    handleBoostChange(
-                                                        key,
-                                                        value
-                                                    )
-                                                }
-                                                options={BOOST_OPTIONS}
-                                                value={String(boosts[key])}
-                                            />
-                                        )}
-                                    </td>
-                                    <td className={styles.total}>
-                                        {totalStats?.[key]}
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                    <StatsTable
+                        baseStats={baseStats}
+                        boosts={boosts}
+                        evs={evs}
+                        hideEvs={hideEvs}
+                        ivs={ivs}
+                        onBoostChange={handleBoostChange}
+                        onEvChange={handleEvChange}
+                        onIvChange={handleIvChange}
+                        totalStats={totalStats}
+                    />
                     <div className={styles.field}>
                         <span className={styles.label}>Moves</span>
                         <div className={styles.moves}>

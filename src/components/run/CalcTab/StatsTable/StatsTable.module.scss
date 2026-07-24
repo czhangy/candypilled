@@ -1,0 +1,43 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.stats {
+    border-collapse: collapse;
+    font-size: 0.75rem;
+    width: 100%;
+
+    th,
+    td {
+        padding: 0.15rem 0.3rem;
+        text-align: center;
+    }
+
+    thead th {
+        color: $text-mid;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+    }
+
+    .stat-label {
+        color: $text-mid;
+        text-align: left;
+    }
+
+    .total {
+        font-weight: 700;
+    }
+
+    .iv-input,
+    .ev-input {
+        @include form-input;
+
+        font-size: 0.75rem;
+        padding: 0.15rem;
+        text-align: center;
+        width: 2.5rem;
+    }
+
+    .boost-cell {
+        width: 3.75rem;
+    }
+}
