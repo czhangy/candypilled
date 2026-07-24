@@ -22,4 +22,4 @@ representing the method, followed by that method's encounter rows.
 - `getMethodLabel` — `method`'s slug formatted as a title-cased label
   (e.g. `old-rod` becomes "Old Rod")
 - `getMethodIcon` — the icon image path for `method`, shared across
-  all game variants (e.g. `/encounter_methods/grass.png`)
+  all game variants (e.g. `/encounter-methods/grass.png`)

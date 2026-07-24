@@ -19,7 +19,7 @@ const CategoryBadge: React.FC<CategoryBadgeProps> = ({
         <Image
             alt={category}
             height={height}
-            src={`/move_categories/${category}.png`}
+            src={`/move-categories/${category}.png`}
             width={width}
         />
     );

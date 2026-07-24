@@ -107,7 +107,7 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                                             height={
                                                                 METHOD_ICON_SIZE
                                                             }
-                                                            src={`/evolution_methods/${methodLabel.icon}.png`}
+                                                            src={`/evolution-methods/${methodLabel.icon}.png`}
                                                             width={
                                                                 METHOD_ICON_SIZE
                                                             }
@@ -176,7 +176,7 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                                             height={
                                                                 CONDITION_ICON_SIZE
                                                             }
-                                                            src={`/evolution_methods/${methodLabel.conditionIcon}.png`}
+                                                            src={`/evolution-methods/${methodLabel.conditionIcon}.png`}
                                                             width={
                                                                 CONDITION_ICON_SIZE
                                                             }
