@@ -1,4 +1,5 @@
 import Dropdown from '@/components/common/Dropdown/Dropdown';
+import Tooltip from '@/components/common/Tooltip/Tooltip';
 import {
     MAX_EV,
     MAX_IV,
@@ -6,7 +7,11 @@ import {
     MIN_IV,
     STAT_FIELDS,
 } from '@/lib/static/constants';
-import { DropdownOption, StatValues } from '@/lib/static/types';
+import {
+    DropdownOption,
+    SpeedComparison,
+    StatValues,
+} from '@/lib/static/types';
 import styles from './StatsTable.module.scss';
 
 type StatsTableProps = {
@@ -27,6 +32,7 @@ type StatsTableProps = {
         stat: keyof StatValues,
         event: React.ChangeEvent<HTMLInputElement>
     ) => void;
+    speedComparison: SpeedComparison | undefined;
     totalStats?: StatValues;
 };
 
@@ -39,6 +45,7 @@ const StatsTable: React.FC<StatsTableProps> = ({
     onBoostChange,
     onEvChange,
     onIvChange,
+    speedComparison,
     totalStats,
 }) => {
     // -------------------------------------------------------------------------
@@ -58,6 +65,12 @@ const StatsTable: React.FC<StatsTableProps> = ({
             };
         }
     );
+
+    const SPEED_TOOLTIPS: Record<SpeedComparison, string> = {
+        faster: 'Higher Speed',
+        slower: 'Lower Speed',
+        tie: 'Speed Tie',
+    };
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -124,7 +137,24 @@ const StatsTable: React.FC<StatsTableProps> = ({
                                 />
                             )}
                         </td>
-                        <td className={styles.total}>{totalStats?.[key]}</td>
+                        <td className={styles.total}>
+                            {key === 'spe' && speedComparison ? (
+                                <Tooltip
+                                    position="center"
+                                    text={SPEED_TOOLTIPS[speedComparison]}
+                                >
+                                    <span
+                                        className={
+                                            styles[`total--${speedComparison}`]
+                                        }
+                                    >
+                                        {totalStats?.[key]}
+                                    </span>
+                                </Tooltip>
+                            ) : (
+                                totalStats?.[key]
+                            )}
+                        </td>
                     </tr>
                 ))}
             </tbody>

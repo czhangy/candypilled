@@ -33,7 +33,7 @@ few cases removed) across different generations (e.g. Aurora Veil is Gen
 - `weatherOptions` / `terrainOptions` / `globalToggles` /
   `sideConditionToggles` — `WEATHER_OPTIONS`/`TERRAIN_OPTIONS`/
   `GLOBAL_TOGGLES`/`SIDE_CONDITION_TOGGLES` filtered via `isAvailable`;
-  `spikes` is rendered separately per side as a 0-3 Dropdown since it isn't
-  boolean
+  `spikes` is rendered separately per side as a row of 4 touching buttons
+  (0/1/2/3) since it isn't boolean
 - `isTerrainAvailable` — whether `terrainOptions` has more than just
   "None"; hides the Terrain field entirely for pre-Gen-6 generations

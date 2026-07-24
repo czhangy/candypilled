@@ -16,6 +16,7 @@ import {
     CalcSideConditions,
     Game,
     Run,
+    SpeedComparison,
     StatValues,
 } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
@@ -361,6 +362,55 @@ const CalcTab: React.FC<CalcTabProps> = ({
           }
         : null;
 
+    const playerBaseStats = caught
+        ? PokemonHelpers.getPokemonStats(caught.name, game.generation)
+        : undefined;
+    const playerSpeed =
+        playerBaseStats && playerInput
+            ? StatHelpers.applyBoost(
+                  StatHelpers.calculateStats(
+                      playerBaseStats,
+                      playerInput.level,
+                      playerInput.ivs,
+                      playerInput.evs,
+                      playerInput.nature as Nature
+                  ).spe,
+                  attacker.boosts.spe
+              ) * (field.playerSide.isTailwind ? 2 : 1)
+            : undefined;
+
+    const trainerBaseStats = mon
+        ? PokemonHelpers.getPokemonStats(mon.name, game.generation)
+        : undefined;
+    const trainerSpeed =
+        trainerBaseStats && trainerInput
+            ? StatHelpers.applyBoost(
+                  StatHelpers.calculateStats(
+                      trainerBaseStats,
+                      trainerInput.level,
+                      trainerInput.ivs,
+                      trainerInput.evs,
+                      trainerInput.nature as Nature
+                  ).spe,
+                  defender.boosts.spe
+              ) * (field.trainerSide.isTailwind ? 2 : 1)
+            : undefined;
+
+    const playerSpeedComparison: SpeedComparison | undefined =
+        playerSpeed === undefined || trainerSpeed === undefined
+            ? undefined
+            : playerSpeed === trainerSpeed
+              ? 'tie'
+              : playerSpeed > trainerSpeed
+                ? 'faster'
+                : 'slower';
+    const trainerSpeedComparison: SpeedComparison | undefined =
+        playerSpeedComparison === 'faster'
+            ? 'slower'
+            : playerSpeedComparison === 'slower'
+              ? 'faster'
+              : playerSpeedComparison;
+
     const attackerField: CalcField = {
         ...field,
         attackerSide: field.playerSide,
@@ -540,6 +590,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     onMoveChange={handleAttackerMoveChange}
                     onNatureChange={handleAttackerNatureChange}
                     onStatusChange={handleAttackerStatusChange}
+                    speedComparison={playerSpeedComparison}
                     status={attacker.status}
                 />
                 <BoxSelectPanel
@@ -570,6 +621,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     onBoostChange={handleDefenderBoostChange}
                     onStatusChange={handleDefenderStatusChange}
                     selectedBattle={effectiveSelectedBattle}
+                    speedComparison={trainerSpeedComparison}
                     status={defender.status}
                 />
                 <TeamSelectPanel

@@ -33,6 +33,38 @@
         display: flex;
         flex-direction: column;
         gap: 0.25rem;
+
+        .spikes-buttons {
+            display: flex;
+
+            .spikes-button {
+                @include mono-label;
+
+                background: none;
+                border: 1px solid $border-subtle;
+                border-left: none;
+                color: $foreground;
+                cursor: pointer;
+                flex: 1;
+                font-size: 0.75rem;
+                padding: 0.3rem 0;
+
+                &--active {
+                    color: var(--accent-color);
+                }
+
+                &:first-child {
+                    border-bottom-left-radius: 0.375rem;
+                    border-left: 1px solid $border-subtle;
+                    border-top-left-radius: 0.375rem;
+                }
+
+                &:last-child {
+                    border-bottom-right-radius: 0.375rem;
+                    border-top-right-radius: 0.375rem;
+                }
+            }
+        }
     }
 
     .label {

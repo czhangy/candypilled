@@ -25,6 +25,18 @@
 
     .total {
         font-weight: 700;
+
+        &--faster {
+            color: $red;
+        }
+
+        &--slower {
+            color: $blue;
+        }
+
+        &--tie {
+            color: $gold;
+        }
     }
 
     .iv-input,

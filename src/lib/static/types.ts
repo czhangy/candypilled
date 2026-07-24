@@ -88,6 +88,10 @@ export type CalcField = CalcFieldGlobal & {
     defenderSide: CalcSideConditions;
 };
 
+// How a damage calculator Pokémon's Speed stat compares to the opposing
+// Pokémon's, used to highlight the faster/slower/tied side in StatsTable.
+export type SpeedComparison = 'faster' | 'slower' | 'tie';
+
 export type DropdownOption = {
     label: string;
     value: string;

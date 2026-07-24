@@ -63,3 +63,12 @@ directly in the render body rather than in a `useEffect`).
   (species/level/nature/IVs/EVs/ability/boosts/status), passed to
   `DamageResultsPanel` for damage calculation; `null` when no Pokémon is
   selected on that side
+- `playerSpeed` / `trainerSpeed` — each side's final Speed stat (adjusted
+  by that side's Speed stage boost via `StatHelpers.applyBoost`, then
+  doubled when that side's Tailwind is active), used only to derive
+  `playerSpeedComparison`/`trainerSpeedComparison`
+- `playerSpeedComparison` / `trainerSpeedComparison` — each side's
+  `SpeedComparison` against the other (`'faster'`/`'slower'`/`'tie'`, or
+  `undefined` if either side's speed can't be resolved), passed to
+  `PokemonPanel`/`TrainerPokemonPanel` for their `StatsTable`'s Speed
+  highlight

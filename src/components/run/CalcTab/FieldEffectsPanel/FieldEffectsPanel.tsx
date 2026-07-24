@@ -65,12 +65,7 @@ const FieldEffectsPanel: React.FC<FieldEffectsPanelProps> = ({
         { label: 'Psychic', value: 'Psychic', introducedInGeneration: 7 },
     ];
 
-    const SPIKES_OPTIONS: DropdownOption[] = [
-        { label: '0', value: '0' },
-        { label: '1', value: '1' },
-        { label: '2', value: '2' },
-        { label: '3', value: '3' },
-    ];
+    const SPIKES_COUNTS = [0, 1, 2, 3];
 
     const GLOBAL_TOGGLES: {
         introducedInGeneration: number;
@@ -262,11 +257,11 @@ const FieldEffectsPanel: React.FC<FieldEffectsPanelProps> = ({
 
     const handleSpikesChange = (
         side: 'playerSide' | 'trainerSide',
-        value: string
+        count: number
     ): void => {
         onChange({
             ...field,
-            [side]: { ...field[side], spikes: Number(value) },
+            [side]: { ...field[side], spikes: count },
         });
     };
 
@@ -337,14 +332,26 @@ const FieldEffectsPanel: React.FC<FieldEffectsPanelProps> = ({
                         </div>
                         <div className={styles.field}>
                             <span className={styles.label}>Spikes</span>
-                            <Dropdown
-                                dense
-                                onChange={(value) =>
-                                    handleSpikesChange(side, value)
-                                }
-                                options={SPIKES_OPTIONS}
-                                value={String(field[side].spikes)}
-                            />
+                            <div className={styles['spikes-buttons']}>
+                                {SPIKES_COUNTS.map((count) => (
+                                    <button
+                                        className={[
+                                            styles['spikes-button'],
+                                            field[side].spikes === count &&
+                                                styles['spikes-button--active'],
+                                        ]
+                                            .filter(Boolean)
+                                            .join(' ')}
+                                        key={count}
+                                        onClick={() =>
+                                            handleSpikesChange(side, count)
+                                        }
+                                        type="button"
+                                    >
+                                        {count}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 ))}

@@ -4,6 +4,7 @@ import {
     BattlePokemon,
     DropdownOption,
     Game,
+    SpeedComparison,
     StatValues,
 } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
@@ -25,6 +26,7 @@ type TrainerPokemonPanelProps = {
     ) => void;
     onStatusChange: (value: string) => void;
     selectedBattle?: string;
+    speedComparison: SpeedComparison | undefined;
     status: string;
 };
 
@@ -39,6 +41,7 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
     onBoostChange,
     onStatusChange,
     selectedBattle,
+    speedComparison,
     status,
 }) => {
     // -------------------------------------------------------------------------
@@ -75,10 +78,18 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
                   mon.nature
               )
             : undefined;
-    const totalStats =
-        rawTotalStats && isTailwind
-            ? { ...rawTotalStats, spe: rawTotalStats.spe * 2 }
-            : rawTotalStats;
+    const totalStats = rawTotalStats
+        ? {
+              ...rawTotalStats,
+              atk: StatHelpers.applyBoost(rawTotalStats.atk, boosts.atk),
+              def: StatHelpers.applyBoost(rawTotalStats.def, boosts.def),
+              spa: StatHelpers.applyBoost(rawTotalStats.spa, boosts.spa),
+              spd: StatHelpers.applyBoost(rawTotalStats.spd, boosts.spd),
+              spe:
+                  StatHelpers.applyBoost(rawTotalStats.spe, boosts.spe) *
+                  (isTailwind ? 2 : 1),
+          }
+        : undefined;
 
     const abilityOptions: DropdownOption[] = AbilityHelpers.getAllAbilities(
         game.generation
@@ -147,6 +158,7 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
                                 hideEvs={hideEvs}
                                 ivs={ivs}
                                 onBoostChange={onBoostChange}
+                                speedComparison={speedComparison}
                                 totalStats={totalStats}
                             />
                         </>

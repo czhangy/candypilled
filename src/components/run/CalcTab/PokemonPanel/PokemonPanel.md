@@ -11,35 +11,38 @@ as `caught`.
 
 ## Props
 
-| Prop              | Type                                                                           | Required | Default | Description                                                               |
-| ----------------- | ------------------------------------------------------------------------------ | -------- | ------- | ------------------------------------------------------------------------- |
-| `abilityName`     | `string`                                                                       | Yes      | -       | The current ability                                                       |
-| `boosts`          | `Record<Exclude<keyof StatValues, 'hp'>, number>`                              | Yes      | -       | The current in-battle stat stage boosts (-6..6)                           |
-| `caught`          | `CaughtPokemon`                                                                | No       | -       | The selected box Pokémon; absent renders an empty state                   |
-| `evs`             | `StatValues`                                                                   | Yes      | -       | The current EVs                                                           |
-| `game`            | `Game`                                                                         | Yes      | -       | The current game; its `generation` resolves base stats/ability/move lists |
-| `hideEvs`         | `boolean`                                                                      | Yes      | -       | Whether to omit the EV column (the global "Hide EVs" setting)             |
-| `isTailwind`      | `boolean`                                                                      | Yes      | -       | Whether this Pokémon's side currently has Tailwind active                 |
-| `ivs`             | `StatValues`                                                                   | Yes      | -       | The current IVs                                                           |
-| `level`           | `number`                                                                       | Yes      | -       | The current level                                                         |
-| `moves`           | `string[]`                                                                     | Yes      | -       | The current 4 move slots                                                  |
-| `nature`          | `Nature`                                                                       | Yes      | -       | The current nature                                                        |
-| `onAbilityChange` | `(value: string) => void`                                                      | Yes      | -       | Called when the ability dropdown changes                                  |
-| `onBoostChange`   | `(stat: Exclude<keyof StatValues, 'hp'>, value: string) => void`               | Yes      | -       | Called when a stat's stage dropdown changes                               |
-| `onEvChange`      | `(stat: keyof StatValues, event: React.ChangeEvent<HTMLInputElement>) => void` | Yes      | -       | Called when an EV input changes                                           |
-| `onIvChange`      | `(stat: keyof StatValues, event: React.ChangeEvent<HTMLInputElement>) => void` | Yes      | -       | Called when an IV input changes                                           |
-| `onLevelChange`   | `(event: React.ChangeEvent<HTMLInputElement>) => void`                         | Yes      | -       | Called when the level input changes                                       |
-| `onMoveChange`    | `(index: number, value: string) => void`                                       | Yes      | -       | Called when a move slot changes                                           |
-| `onNatureChange`  | `(value: string) => void`                                                      | Yes      | -       | Called when the nature dropdown changes                                   |
-| `onStatusChange`  | `(value: string) => void`                                                      | Yes      | -       | Called when the status dropdown changes                                   |
-| `status`          | `string`                                                                       | Yes      | -       | The current battle status condition                                       |
+| Prop              | Type                                                                           | Required | Default | Description                                                                         |
+| ----------------- | ------------------------------------------------------------------------------ | -------- | ------- | ----------------------------------------------------------------------------------- |
+| `abilityName`     | `string`                                                                       | Yes      | -       | The current ability                                                                 |
+| `boosts`          | `Record<Exclude<keyof StatValues, 'hp'>, number>`                              | Yes      | -       | The current in-battle stat stage boosts (-6..6)                                     |
+| `caught`          | `CaughtPokemon`                                                                | No       | -       | The selected box Pokémon; absent renders an empty state                             |
+| `evs`             | `StatValues`                                                                   | Yes      | -       | The current EVs                                                                     |
+| `game`            | `Game`                                                                         | Yes      | -       | The current game; its `generation` resolves base stats/ability/move lists           |
+| `hideEvs`         | `boolean`                                                                      | Yes      | -       | Whether to omit the EV column (the global "Hide EVs" setting)                       |
+| `isTailwind`      | `boolean`                                                                      | Yes      | -       | Whether this Pokémon's side currently has Tailwind active                           |
+| `ivs`             | `StatValues`                                                                   | Yes      | -       | The current IVs                                                                     |
+| `level`           | `number`                                                                       | Yes      | -       | The current level                                                                   |
+| `moves`           | `string[]`                                                                     | Yes      | -       | The current 4 move slots                                                            |
+| `nature`          | `Nature`                                                                       | Yes      | -       | The current nature                                                                  |
+| `onAbilityChange` | `(value: string) => void`                                                      | Yes      | -       | Called when the ability dropdown changes                                            |
+| `onBoostChange`   | `(stat: Exclude<keyof StatValues, 'hp'>, value: string) => void`               | Yes      | -       | Called when a stat's stage dropdown changes                                         |
+| `onEvChange`      | `(stat: keyof StatValues, event: React.ChangeEvent<HTMLInputElement>) => void` | Yes      | -       | Called when an EV input changes                                                     |
+| `onIvChange`      | `(stat: keyof StatValues, event: React.ChangeEvent<HTMLInputElement>) => void` | Yes      | -       | Called when an IV input changes                                                     |
+| `onLevelChange`   | `(event: React.ChangeEvent<HTMLInputElement>) => void`                         | Yes      | -       | Called when the level input changes                                                 |
+| `onMoveChange`    | `(index: number, value: string) => void`                                       | Yes      | -       | Called when a move slot changes                                                     |
+| `onNatureChange`  | `(value: string) => void`                                                      | Yes      | -       | Called when the nature dropdown changes                                             |
+| `onStatusChange`  | `(value: string) => void`                                                      | Yes      | -       | Called when the status dropdown changes                                             |
+| `speedComparison` | `SpeedComparison \| undefined`                                                 | Yes      | -       | How this Pokémon's Speed compares to the opponent's; passed through to `StatsTable` |
+| `status`          | `string`                                                                       | Yes      | -       | The current battle status condition                                                 |
 
 ## Computations
 
 - `baseStats` / `totalStats` — base stats resolved via `PokemonHelpers` for
   `game.generation`; totals computed via `StatHelpers.calculateStats` from
-  base stats and the current `level`/`ivs`/`evs`/`nature`, with Speed
-  doubled when `isTailwind` is true
+  base stats and the current `level`/`ivs`/`evs`/`nature`, with each
+  non-HP stat further adjusted by its `boosts` stage via
+  `StatHelpers.applyBoost`, and Speed additionally doubled when
+  `isTailwind` is true
 - `abilityOptions` — every ability introduced at or before `game.generation`,
   via `AbilityHelpers.getAllAbilities` (not restricted to the selected
   species, for freeform theorycrafting)

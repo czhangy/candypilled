@@ -6,6 +6,7 @@ import {
     CaughtPokemon,
     DropdownOption,
     Game,
+    SpeedComparison,
     StatValues,
 } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
@@ -43,6 +44,7 @@ type PokemonPanelProps = {
     onMoveChange: (index: number, value: string) => void;
     onNatureChange: (value: string) => void;
     onStatusChange: (value: string) => void;
+    speedComparison: SpeedComparison | undefined;
     status: string;
 };
 
@@ -66,6 +68,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     onMoveChange,
     onNatureChange,
     onStatusChange,
+    speedComparison,
     status,
 }) => {
     // -------------------------------------------------------------------------
@@ -92,10 +95,18 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     const rawTotalStats = baseStats
         ? StatHelpers.calculateStats(baseStats, level, ivs, evs, nature)
         : undefined;
-    const totalStats =
-        rawTotalStats && isTailwind
-            ? { ...rawTotalStats, spe: rawTotalStats.spe * 2 }
-            : rawTotalStats;
+    const totalStats = rawTotalStats
+        ? {
+              ...rawTotalStats,
+              atk: StatHelpers.applyBoost(rawTotalStats.atk, boosts.atk),
+              def: StatHelpers.applyBoost(rawTotalStats.def, boosts.def),
+              spa: StatHelpers.applyBoost(rawTotalStats.spa, boosts.spa),
+              spd: StatHelpers.applyBoost(rawTotalStats.spd, boosts.spd),
+              spe:
+                  StatHelpers.applyBoost(rawTotalStats.spe, boosts.spe) *
+                  (isTailwind ? 2 : 1),
+          }
+        : undefined;
 
     const abilityOptions: DropdownOption[] = AbilityHelpers.getAllAbilities(
         game.generation
@@ -184,6 +195,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                         onBoostChange={onBoostChange}
                         onEvChange={onEvChange}
                         onIvChange={onIvChange}
+                        speedComparison={speedComparison}
                         totalStats={totalStats}
                     />
                     <div className={styles.field}>
