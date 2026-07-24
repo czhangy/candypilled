@@ -1,7 +1,7 @@
 @use '@/styles/constants' as *;
 @use '@/styles/mixins' as *;
 
-.pokemon-panel {
+.trainer-pokemon-panel {
     background: $background-light;
     border: 1px solid $border-subtle;
     border-radius: 0.5rem;
@@ -37,11 +37,10 @@
         font-size: 0.85rem;
     }
 
-    .input {
-        @include form-input;
-
-        font-size: 0.8rem;
-        padding: 0.3rem 0.45rem;
+    .placeholder {
+        color: $text-mid;
+        font-size: 0.85rem;
+        margin: 0;
     }
 
     .stats {
@@ -70,24 +69,8 @@
             font-weight: 700;
         }
 
-        .iv-input,
-        .ev-input {
-            @include form-input;
-
-            font-size: 0.75rem;
-            padding: 0.15rem;
-            text-align: center;
-            width: 2.5rem;
-        }
-
         .boost-cell {
             width: 3.75rem;
         }
-    }
-
-    .moves {
-        display: grid;
-        gap: 0.35rem;
-        grid-template-columns: repeat(2, 1fr);
     }
 }

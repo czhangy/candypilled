@@ -47,6 +47,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const TAB_QUERY_PARAMS: Record<string, string> = {
         abilities: 'ability',
         box: 'pokemon',
+        calc: 'battle',
         moves: 'move',
         pokedex: 'species',
     };
@@ -89,6 +90,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const selectedAbility = searchParams.get('ability') ?? undefined;
     const selectedPokemon = searchParams.get('pokemon') ?? undefined;
     const selectedSpecies = searchParams.get('species') ?? undefined;
+    const selectedBattle = searchParams.get('battle') ?? undefined;
 
     const game = GAMES.find(
         (candidate) => StringHelpers.toSlug(candidate.name) === slug
@@ -234,6 +236,10 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     const handlePokemonDeselect = (): void => {
         updateQueryParams({ pokemon: undefined });
+    };
+
+    const handleBattleSelect = (battleKey: string): void => {
+        updateQueryParams({ battle: battleKey });
     };
 
     const handleLocationSelect = (locationName: string): void => {
@@ -396,7 +402,14 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             selectedAbility={selectedAbility}
                         />
                     )}
-                    {activeTab === 'calc' && <CalcTab game={game} run={run} />}
+                    {activeTab === 'calc' && (
+                        <CalcTab
+                            game={game}
+                            onSelectBattle={handleBattleSelect}
+                            run={run}
+                            selectedBattle={selectedBattle}
+                        />
+                    )}
                     {activeTab === 'hof' && isHallOfFameUnlocked && (
                         <HallOfFameTab game={game} run={run} />
                     )}

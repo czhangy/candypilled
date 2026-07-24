@@ -1,5 +1,13 @@
 .calc-tab {
-    display: flex;
+    align-items: start;
+    display: grid;
     gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
     padding: 1.5rem 0;
+
+    .defender {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
 }

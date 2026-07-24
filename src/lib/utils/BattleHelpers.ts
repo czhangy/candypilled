@@ -47,6 +47,15 @@ export default class BattleHelpers {
             : (location.battles ?? []);
     }
 
+    /** Every battle in game, in game order. */
+    static getAllBattles(game: Game): Battle[] {
+        return game.splits.flatMap((split) =>
+            split.locations.flatMap((location) =>
+                BattleHelpers.getBattlesInLocation(location)
+            )
+        );
+    }
+
     /** The split/location/battle indices of battleKey within game, or null if not found. */
     static countProgress(game: Game, battleKey: string): BattlePosition | null {
         for (

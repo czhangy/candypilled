@@ -2,13 +2,7 @@ import { useState, useSyncExternalStore } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import { STAT_FIELDS } from '@/lib/static/constants';
 import { Nature, PokemonStatus } from '@/lib/static/enums';
-import {
-    AbilitySlot,
-    DropdownOption,
-    Game,
-    Run,
-    StatValues,
-} from '@/lib/static/types';
+import { DropdownOption, Game, Run, StatValues } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -87,7 +81,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
     // -------------------------------------------------------------------------
 
     const [selectedLocation, setSelectedLocation] = useState('');
-    const [abilitySlot, setAbilitySlot] = useState<AbilitySlot>(1);
+    const [abilityName, setAbilityName] = useState('');
     const [nature, setNature] = useState<Nature>(Object.values(Nature)[0]);
     const [level, setLevel] = useState(MIN_LEVEL);
     const [ivs, setIvs] = useState<StatValues>(
@@ -125,40 +119,18 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
         ? StatHelpers.calculateStats(baseStats, level, ivs, evs, nature)
         : undefined;
 
-    const abilities = caught
-        ? PokemonHelpers.getPokemonAbilities(caught.name, game.generation)
-        : undefined;
-    const abilityOptions: DropdownOption[] = abilities
-        ? [
-              { name: abilities.slot1, slot: 1 as AbilitySlot },
-              ...(abilities.slot2
-                  ? [{ name: abilities.slot2, slot: 2 as AbilitySlot }]
-                  : []),
-              ...(abilities.hidden
-                  ? [{ name: abilities.hidden, slot: 3 as AbilitySlot }]
-                  : []),
-          ].map(({ name, slot }) => ({
-              label: AbilityHelpers.getAbilityData(name)?.name ?? name,
-              value: String(slot),
-          }))
-        : [];
+    const abilityOptions: DropdownOption[] = AbilityHelpers.getAllAbilities(
+        game.generation
+    ).map((name) => ({ label: name, value: name }));
     const natureOptions: DropdownOption[] = Object.values(Nature).map(
         (name) => ({ label: name, value: name })
     );
-
-    const learnset = caught
-        ? (PokemonHelpers.getPokemonLearnset(caught.name, game.version) ?? [])
-        : [];
-    const learnsetMoveNames = new Set(
-        learnset.map(
-            (move) => MoveHelpers.getMoveData(move.name)?.name ?? move.name
-        )
-    );
     const moveOptions: DropdownOption[] = [
         { label: 'None', value: '' },
-        ...[...learnsetMoveNames]
-            .sort((a, b) => a.localeCompare(b))
-            .map((name) => ({ label: name, value: name })),
+        ...MoveHelpers.getAllMoves(game.generation).map((name) => ({
+            label: name,
+            value: name,
+        })),
     ];
 
     // -------------------------------------------------------------------------
@@ -173,7 +145,16 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
         );
         if (!nextCaught) return;
 
-        setAbilitySlot(nextCaught.ability);
+        const abilitySlug = PokemonHelpers.getAbilityName(
+            nextCaught.name,
+            game.generation,
+            nextCaught.ability
+        );
+        setAbilityName(
+            (abilitySlug && AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
+                abilitySlug ??
+                ''
+        );
         setNature(nextCaught.nature ?? Object.values(Nature)[0]);
         setLevel(nextCaught.level);
         setIvs(StatHelpers.normalizeStats(nextCaught.ivs, 31));
@@ -184,7 +165,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
     };
 
     const handleAbilityChange = (value: string): void => {
-        setAbilitySlot(Number(value) as AbilitySlot);
+        setAbilityName(value);
     };
 
     const handleNatureChange = (value: string): void => {
@@ -275,7 +256,8 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
                                 dense
                                 onChange={handleAbilityChange}
                                 options={abilityOptions}
-                                value={String(abilitySlot)}
+                                searchable
+                                value={abilityName}
                             />
                         </div>
                     </div>
