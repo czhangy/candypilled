@@ -16,6 +16,7 @@ type TrainerPokemonPanelProps = {
     boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
     game: Game;
     hideEvs: boolean;
+    isTailwind: boolean;
     mon?: BattlePokemon;
     onAbilityChange: (value: string) => void;
     onBoostChange: (
@@ -32,6 +33,7 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
     boosts,
     game,
     hideEvs,
+    isTailwind,
     mon,
     onAbilityChange,
     onBoostChange,
@@ -63,7 +65,7 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
     const baseStats = mon
         ? PokemonHelpers.getPokemonStats(mon.name, game.generation)
         : undefined;
-    const totalStats =
+    const rawTotalStats =
         mon && baseStats && ivs && evs
             ? StatHelpers.calculateStats(
                   baseStats,
@@ -73,6 +75,10 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
                   mon.nature
               )
             : undefined;
+    const totalStats =
+        rawTotalStats && isTailwind
+            ? { ...rawTotalStats, spe: rawTotalStats.spe * 2 }
+            : rawTotalStats;
 
     const abilityOptions: DropdownOption[] = AbilityHelpers.getAllAbilities(
         game.generation

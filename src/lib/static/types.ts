@@ -28,6 +28,66 @@ export type CalcPokemonInput = {
     status: string;
 };
 
+// Every screen/hazard/status @smogon/calc tracks per side of the field.
+export type CalcSideConditions = {
+    cannonade: boolean;
+    isAuroraVeil: boolean;
+    isBattery: boolean;
+    isFlowerGift: boolean;
+    isForesight: boolean;
+    isFriendGuard: boolean;
+    isHelpingHand: boolean;
+    isLightScreen: boolean;
+    isPowerSpot: boolean;
+    isPowerTrick: boolean;
+    isProtected: boolean;
+    isReflect: boolean;
+    isSaltCured: boolean;
+    isSeeded: boolean;
+    isSR: boolean;
+    isSteelySpirit: boolean;
+    isSwitching: boolean;
+    isTailwind: boolean;
+    spikes: number;
+    steelsurge: boolean;
+    vinelash: boolean;
+    volcalith: boolean;
+    wildfire: boolean;
+};
+
+// The global (not per-side) conditions @smogon/calc tracks for the field.
+export type CalcFieldGlobal = {
+    isAuraBreak: boolean;
+    isBeadsOfRuin: boolean;
+    isCrit: boolean;
+    isDarkAura: boolean;
+    isFairyAura: boolean;
+    isGravity: boolean;
+    isMagicRoom: boolean;
+    isSwordOfRuin: boolean;
+    isTabletsOfRuin: boolean;
+    isVesselOfRuin: boolean;
+    isWonderRoom: boolean;
+    terrain: string;
+    weather: string;
+};
+
+// The damage calculator's field effects panel state: global conditions plus
+// each side's conditions, framed by whose side it is (player vs. trainer)
+// rather than by attacker/defender, since which side is attacking flips
+// between the two `MoveDamageColumn`s.
+export type CalcFieldState = CalcFieldGlobal & {
+    playerSide: CalcSideConditions;
+    trainerSide: CalcSideConditions;
+};
+
+// A `CalcFieldState` resolved to a specific attacker/defender direction,
+// ready to build an @smogon/calc Field for one damage calculation.
+export type CalcField = CalcFieldGlobal & {
+    attackerSide: CalcSideConditions;
+    defenderSide: CalcSideConditions;
+};
+
 export type DropdownOption = {
     label: string;
     value: string;

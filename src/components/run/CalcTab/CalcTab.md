@@ -1,15 +1,17 @@
 # CalcTab
 
 The "Calc" tab of a run page. A damage calculator: a `DamageResultsPanel`
-spanning the top showing both sides' move damage ranges, above the
-attacker column (`PokemonPanel` above `BoxSelectPanel`, sourced from the
-run's box) and the defender column (`BattleSelectPanel` above
-`TrainerPokemonPanel` above `TeamSelectPanel`, sourced from the game's
-trainers). Owns all editable calculator state — the attacker's and
-defender's ability/nature/level/IVs/EVs/boosts/status/moves — via two
-reducers, plus the box/battle/team-member selection state that flows down
-to every panel. `PokemonPanel` and `TrainerPokemonPanel` are fully
-controlled by this state; they hold none of it themselves.
+spanning the top showing both sides' move damage ranges, above three
+columns — the attacker column (`PokemonPanel` above `BoxSelectPanel`,
+sourced from the run's box), `FieldEffectsPanel` (weather/terrain/gravity
+and each side's screens/hazards) in the middle, and the defender column
+(`BattleSelectPanel` above `TrainerPokemonPanel` above `TeamSelectPanel`,
+sourced from the game's trainers). Owns all editable calculator state — the
+attacker's and defender's ability/nature/level/IVs/EVs/boosts/status/moves
+via two reducers, the field effects state, plus the box/battle/team-member
+selection state that flows down to every panel. `PokemonPanel` and
+`TrainerPokemonPanel` are fully controlled by this state; they hold none of
+it themselves.
 
 ## Props
 

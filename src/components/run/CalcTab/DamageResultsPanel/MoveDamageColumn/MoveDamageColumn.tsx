@@ -1,5 +1,5 @@
 import { MOVE_SLOT_COUNT } from '@/lib/static/constants';
-import { CalcPokemonInput } from '@/lib/static/types';
+import { CalcField, CalcPokemonInput } from '@/lib/static/types';
 import DamageCalcHelpers from '@/lib/utils/DamageCalcHelpers';
 import styles from './MoveDamageColumn.module.scss';
 
@@ -7,6 +7,7 @@ type MoveDamageColumnProps = {
     activeIndex: number | null;
     attacker: CalcPokemonInput | null;
     defender: CalcPokemonInput | null;
+    field: CalcField;
     generation: number;
     moveNames: string[];
     onSelectMove: (index: number) => void;
@@ -16,6 +17,7 @@ const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
     activeIndex,
     attacker,
     defender,
+    field,
     generation,
     moveNames,
     onSelectMove,
@@ -37,7 +39,8 @@ const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
                       generation,
                       attacker,
                       defender,
-                      moveName
+                      moveName,
+                      field
                   )
                 : null,
     }));

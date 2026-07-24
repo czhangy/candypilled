@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { CalcPokemonInput } from '@/lib/static/types';
+import { CalcField, CalcPokemonInput } from '@/lib/static/types';
 import DamageCalcHelpers from '@/lib/utils/DamageCalcHelpers';
 import styles from './DamageResultsPanel.module.scss';
 import MoveDamageColumn from './MoveDamageColumn/MoveDamageColumn';
 
 type DamageResultsPanelProps = {
+    attackerField: CalcField;
     attackerMoves: string[];
+    defenderField: CalcField;
     defenderMoves: string[];
     generation: number;
     playerInput: CalcPokemonInput | null;
@@ -13,7 +15,9 @@ type DamageResultsPanelProps = {
 };
 
 const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
+    attackerField,
     attackerMoves,
+    defenderField,
     defenderMoves,
     generation,
     playerInput,
@@ -49,6 +53,8 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
         activeMove.side === 'attacker' ? playerInput : trainerInput;
     const activeDefender =
         activeMove.side === 'attacker' ? trainerInput : playerInput;
+    const activeField =
+        activeMove.side === 'attacker' ? attackerField : defenderField;
     const attackerLabel =
         activeMove.side === 'attacker' ? "Player's" : "Enemy's";
     const defenderLabel =
@@ -60,6 +66,7 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
                   activeAttacker,
                   activeDefender,
                   activeMoveName,
+                  activeField,
                   attackerLabel,
                   defenderLabel
               )
@@ -70,7 +77,8 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
                   generation,
                   activeAttacker,
                   activeDefender,
-                  activeMoveName
+                  activeMoveName,
+                  activeField
               )
             : null;
 
@@ -99,6 +107,7 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
                     }
                     attacker={playerInput}
                     defender={trainerInput}
+                    field={attackerField}
                     generation={generation}
                     moveNames={attackerMoves}
                     onSelectMove={handleSelectAttackerMove}
@@ -109,6 +118,7 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
                     }
                     attacker={trainerInput}
                     defender={playerInput}
+                    field={defenderField}
                     generation={generation}
                     moveNames={defenderMoves}
                     onSelectMove={handleSelectDefenderMove}

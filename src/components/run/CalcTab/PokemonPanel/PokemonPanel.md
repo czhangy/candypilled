@@ -19,6 +19,7 @@ as `caught`.
 | `evs`             | `StatValues`                                                                   | Yes      | -       | The current EVs                                                           |
 | `game`            | `Game`                                                                         | Yes      | -       | The current game; its `generation` resolves base stats/ability/move lists |
 | `hideEvs`         | `boolean`                                                                      | Yes      | -       | Whether to omit the EV column (the global "Hide EVs" setting)             |
+| `isTailwind`      | `boolean`                                                                      | Yes      | -       | Whether this Pokémon's side currently has Tailwind active                 |
 | `ivs`             | `StatValues`                                                                   | Yes      | -       | The current IVs                                                           |
 | `level`           | `number`                                                                       | Yes      | -       | The current level                                                         |
 | `moves`           | `string[]`                                                                     | Yes      | -       | The current 4 move slots                                                  |
@@ -37,7 +38,8 @@ as `caught`.
 
 - `baseStats` / `totalStats` — base stats resolved via `PokemonHelpers` for
   `game.generation`; totals computed via `StatHelpers.calculateStats` from
-  base stats and the current `level`/`ivs`/`evs`/`nature`
+  base stats and the current `level`/`ivs`/`evs`/`nature`, with Speed
+  doubled when `isTailwind` is true
 - `abilityOptions` — every ability introduced at or before `game.generation`,
   via `AbilityHelpers.getAllAbilities` (not restricted to the selected
   species, for freeform theorycrafting)

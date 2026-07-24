@@ -21,6 +21,7 @@ type PokemonPanelProps = {
     evs: StatValues;
     game: Game;
     hideEvs: boolean;
+    isTailwind: boolean;
     ivs: StatValues;
     level: number;
     moves: string[];
@@ -52,6 +53,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     evs,
     game,
     hideEvs,
+    isTailwind,
     ivs,
     level,
     moves,
@@ -87,9 +89,13 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     const baseStats = caught
         ? PokemonHelpers.getPokemonStats(caught.name, game.generation)
         : undefined;
-    const totalStats = baseStats
+    const rawTotalStats = baseStats
         ? StatHelpers.calculateStats(baseStats, level, ivs, evs, nature)
         : undefined;
+    const totalStats =
+        rawTotalStats && isTailwind
+            ? { ...rawTotalStats, spe: rawTotalStats.spe * 2 }
+            : rawTotalStats;
 
     const abilityOptions: DropdownOption[] = AbilityHelpers.getAllAbilities(
         game.generation

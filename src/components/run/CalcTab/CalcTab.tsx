@@ -9,7 +9,15 @@ import {
     MOVE_SLOT_COUNT,
 } from '@/lib/static/constants';
 import { Nature, PokemonStatus } from '@/lib/static/enums';
-import { CalcPokemonInput, Game, Run, StatValues } from '@/lib/static/types';
+import {
+    CalcField,
+    CalcFieldState,
+    CalcPokemonInput,
+    CalcSideConditions,
+    Game,
+    Run,
+    StatValues,
+} from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -19,6 +27,7 @@ import BattleSelectPanel from './BattleSelectPanel/BattleSelectPanel';
 import BoxSelectPanel from './BoxSelectPanel/BoxSelectPanel';
 import styles from './CalcTab.module.scss';
 import DamageResultsPanel from './DamageResultsPanel/DamageResultsPanel';
+import FieldEffectsPanel from './FieldEffectsPanel/FieldEffectsPanel';
 import PokemonPanel from './PokemonPanel/PokemonPanel';
 import TeamSelectPanel from './TeamSelectPanel/TeamSelectPanel';
 import TrainerPokemonPanel from './TrainerPokemonPanel/TrainerPokemonPanel';
@@ -117,6 +126,50 @@ const CalcTab: React.FC<CalcTabProps> = ({
         Exclude<keyof StatValues, 'hp'>,
         number
     > => ({ atk: 0, def: 0, spa: 0, spd: 0, spe: 0 });
+
+    const getBlankSideConditions = (): CalcSideConditions => ({
+        cannonade: false,
+        isAuroraVeil: false,
+        isBattery: false,
+        isFlowerGift: false,
+        isForesight: false,
+        isFriendGuard: false,
+        isHelpingHand: false,
+        isLightScreen: false,
+        isPowerSpot: false,
+        isPowerTrick: false,
+        isProtected: false,
+        isReflect: false,
+        isSaltCured: false,
+        isSeeded: false,
+        isSR: false,
+        isSteelySpirit: false,
+        isSwitching: false,
+        isTailwind: false,
+        spikes: 0,
+        steelsurge: false,
+        vinelash: false,
+        volcalith: false,
+        wildfire: false,
+    });
+
+    const getBlankFieldState = (): CalcFieldState => ({
+        isAuraBreak: false,
+        isBeadsOfRuin: false,
+        isCrit: false,
+        isDarkAura: false,
+        isFairyAura: false,
+        isGravity: false,
+        isMagicRoom: false,
+        isSwordOfRuin: false,
+        isTabletsOfRuin: false,
+        isVesselOfRuin: false,
+        isWonderRoom: false,
+        playerSide: getBlankSideConditions(),
+        terrain: '',
+        trainerSide: getBlankSideConditions(),
+        weather: '',
+    });
 
     const padMoves = (moves: string[]): string[] =>
         Array.from(
@@ -247,6 +300,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
     const [prevSelectedBattle, setPrevSelectedBattle] = useState(
         () => selectedBattle ?? getFirstBattleKey()
     );
+    const [field, setField] = useState(getBlankFieldState);
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -306,6 +360,17 @@ const CalcTab: React.FC<CalcTabProps> = ({
               status: defender.status,
           }
         : null;
+
+    const attackerField: CalcField = {
+        ...field,
+        attackerSide: field.playerSide,
+        defenderSide: field.trainerSide,
+    };
+    const defenderField: CalcField = {
+        ...field,
+        attackerSide: field.trainerSide,
+        defenderSide: field.playerSide,
+    };
 
     // -------------------------------------------------------------------------
     // EFFECTS
@@ -445,7 +510,9 @@ const CalcTab: React.FC<CalcTabProps> = ({
         <div className={styles['calc-tab']}>
             <div className={styles.results}>
                 <DamageResultsPanel
+                    attackerField={attackerField}
                     attackerMoves={attacker.moves}
+                    defenderField={defenderField}
                     defenderMoves={defenderMoves}
                     generation={game.generation}
                     playerInput={playerInput}
@@ -460,6 +527,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     evs={attacker.evs}
                     game={game}
                     hideEvs={hideEvs}
+                    isTailwind={field.playerSide.isTailwind}
                     ivs={attacker.ivs}
                     level={attacker.level}
                     moves={attacker.moves}
@@ -480,6 +548,11 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     selectedLocation={selectedLocation}
                 />
             </div>
+            <FieldEffectsPanel
+                field={field}
+                generation={game.generation}
+                onChange={setField}
+            />
             <div className={styles.defender}>
                 <BattleSelectPanel
                     game={game}
@@ -491,6 +564,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     boosts={defender.boosts}
                     game={game}
                     hideEvs={hideEvs}
+                    isTailwind={field.trainerSide.isTailwind}
                     mon={mon}
                     onAbilityChange={handleDefenderAbilityChange}
                     onBoostChange={handleDefenderBoostChange}
