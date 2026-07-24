@@ -1,9 +1,10 @@
-# PokedexTab
+# PokedexSubtab
 
-Displays a searchable, alphabetical list of every Pokémon available in
-the game's generation on the left and the currently selected Pokémon's
-details, via `PokedexDetail`, on the right, taking up roughly a quarter
-and three-quarters of the row's width respectively.
+The "Pokédex" subtab of a run page's Data tab. Displays a
+searchable, alphabetical list of every Pokémon available in the game's
+generation on the left and the currently selected Pokémon's details, via
+`PokedexDetail`, on the right, taking up roughly a quarter and
+three-quarters of the row's width respectively.
 
 ## Props
 

@@ -1,15 +1,15 @@
 import SearchableList from '@/components/common/SearchableList/SearchableList';
 import { MOVES } from '@/lib/data/moves';
 import MoveDetail from './MoveDetail/MoveDetail';
-import styles from './MovesTab.module.scss';
+import styles from './MovesSubtab.module.scss';
 
-type MovesTabProps = {
+type MovesSubtabProps = {
     generation: number;
     onSelectMove: (name: string) => void;
     selectedMove?: string;
 };
 
-const MovesTab: React.FC<MovesTabProps> = ({
+const MovesSubtab: React.FC<MovesSubtabProps> = ({
     generation,
     onSelectMove,
     selectedMove,
@@ -27,7 +27,7 @@ const MovesTab: React.FC<MovesTabProps> = ({
     // -------------------------------------------------------------------------
 
     return (
-        <div className={styles['moves-tab']}>
+        <div className={styles['moves-subtab']}>
             <SearchableList
                 emptyMessage="No moves found"
                 items={availableMoves}
@@ -41,4 +41,4 @@ const MovesTab: React.FC<MovesTabProps> = ({
     );
 };
 
-export default MovesTab;
+export default MovesSubtab;

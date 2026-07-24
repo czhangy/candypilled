@@ -1,0 +1,53 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.data-tab {
+    .subtabs {
+        display: flex;
+        gap: 0.5rem;
+        padding-top: 1.5rem;
+    }
+
+    .subtab {
+        @include mono-label;
+
+        background: none;
+        border: 1px solid $border-subtle;
+        border-radius: 999px;
+        color: $text-mid;
+        cursor: pointer;
+        font-size: 0.85rem;
+        letter-spacing: 0.03em;
+        padding: 0.5rem 1rem;
+        text-transform: uppercase;
+        transition:
+            background 0.2s ease,
+            border-color 0.2s ease;
+
+        @media (hover: hover) {
+            &:hover {
+                border-color: var(--accent-color);
+            }
+        }
+
+        &--active {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--button-text-color, $background);
+
+            @media (hover: hover) {
+                &:hover {
+                    background: color-mix(
+                        in srgb,
+                        var(--accent-color) 85%,
+                        black 15%
+                    );
+                }
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+    }
+}

@@ -1,15 +1,15 @@
 import SearchableList from '@/components/common/SearchableList/SearchableList';
 import { ABILITIES } from '@/lib/data/abilities';
-import styles from './AbilitiesTab.module.scss';
+import styles from './AbilitiesSubtab.module.scss';
 import AbilityDetail from './AbilityDetail/AbilityDetail';
 
-type AbilitiesTabProps = {
+type AbilitiesSubtabProps = {
     generation: number;
     onSelectAbility: (name: string) => void;
     selectedAbility?: string;
 };
 
-const AbilitiesTab: React.FC<AbilitiesTabProps> = ({
+const AbilitiesSubtab: React.FC<AbilitiesSubtabProps> = ({
     generation,
     onSelectAbility,
     selectedAbility,
@@ -27,7 +27,7 @@ const AbilitiesTab: React.FC<AbilitiesTabProps> = ({
     // -------------------------------------------------------------------------
 
     return (
-        <div className={styles['abilities-tab']}>
+        <div className={styles['abilities-subtab']}>
             <SearchableList
                 emptyMessage="No abilities found"
                 items={availableAbilities}
@@ -41,4 +41,4 @@ const AbilitiesTab: React.FC<AbilitiesTabProps> = ({
     );
 };
 
-export default AbilitiesTab;
+export default AbilitiesSubtab;
