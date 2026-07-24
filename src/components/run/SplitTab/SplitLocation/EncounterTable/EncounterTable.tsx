@@ -18,7 +18,6 @@ type EncounterTableProps = {
     onToggleMissed: () => void;
     selectedSpecies?: string;
     starterCaughtSeparately: boolean;
-    variant: string;
 };
 
 const EncounterTable: React.FC<EncounterTableProps> = ({
@@ -31,7 +30,6 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     onToggleMissed,
     selectedSpecies,
     starterCaughtSeparately,
-    variant,
 }) => {
     // -------------------------------------------------------------------------
     // HOOKS
@@ -255,7 +253,6 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                             method={method}
                             onSelectEncounter={handleEncounterSelect}
                             selectedSpecies={selectedSpecies}
-                            variant={variant}
                         />
                     ))}
                 </tbody>

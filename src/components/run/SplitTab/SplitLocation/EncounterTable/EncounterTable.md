@@ -13,7 +13,7 @@ chance, highest first. If any visible encounter uses the "starter"
 method, every other method is hidden entirely, showing only the
 starter encounter(s), and the time-of-day buttons are hidden as well.
 Each row (`EncounterRow`) shows the Pokémon's
-sprite (matching the game's sprite variant), its name, its level range
+box sprite, its name, its level range
 prefixed with "Lv." (e.g. "Lv. 20-30"), and its encounter chance as a
 percentage. Clicking a row selects that encounter, highlighting it and
 notifying the parent via `onSelectEncounter`. A row is highlighted
@@ -52,7 +52,6 @@ alongside other, otherwise-missable methods.
 | `onToggleMissed`          | `() => void`                     | Yes      | -       | Called when the "MISS"/"MISSED" button is clicked                                       |
 | `selectedSpecies`         | `string`                         | No       | -       | The species of the currently selected row, if any, to highlight it                      |
 | `starterCaughtSeparately` | `boolean`                        | Yes      | -       | Whether the run's starter was caught as its own encounter, hiding "starter"-method rows |
-| `variant`                 | `string`                         | Yes      | -       | The sprite variant to prefer, matching the game's slug                                  |
 
 ## State
 

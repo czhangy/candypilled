@@ -15,7 +15,6 @@ representing the method, followed by that method's encounter rows.
 | `method`                   | `EncounterMethod`                          | Yes      | -       | The encounter method this group represents                                                 |
 | `onSelectEncounter`        | `(encounter: Encounter) => void`           | Yes      | -       | Called when one of this method's rows is clicked                                           |
 | `selectedSpecies`          | `string`                                   | No       | -       | The species of the currently selected row, if any                                          |
-| `variant`                  | `string`                                   | Yes      | -       | The sprite variant to prefer, matching the game's slug                                     |
 
 ## Computations
 
