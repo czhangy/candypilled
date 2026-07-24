@@ -32,7 +32,7 @@ const BattleSelectPanel: React.FC<BattleSelectPanelProps> = ({
     return (
         <div className={styles['battle-select-panel']}>
             <div className={styles.field}>
-                <span className={styles.label}>Trainer</span>
+                <span className={styles.label}>Battle</span>
                 <Dropdown
                     dense
                     onChange={onSelectBattle}

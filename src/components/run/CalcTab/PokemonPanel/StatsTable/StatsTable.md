@@ -1,8 +1,8 @@
 # StatsTable
 
-The damage calculator's shared stat spread table (Base/IV/EV/Stage/Total),
-used by both `PokemonPanel` and `TrainerPokemonPanel`. IV/EV cells render as
-editable number inputs when their respective `onIvChange`/`onEvChange`
+The damage calculator's stat spread table (Base/IV/EV/Stage/Total), used by
+`PokemonPanel` for both the attacker and defender sides. IV/EV cells render
+as editable number inputs when their respective `onIvChange`/`onEvChange`
 callback is provided, otherwise as plain read-only text — letting the
 attacker side (fully editable) and defender side (fixed IVs/EVs) share the
 same table. The Total column's Speed cell is highlighted red/blue/gold when

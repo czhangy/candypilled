@@ -5,7 +5,12 @@
     background: $background-light;
     border: 1px solid $border-subtle;
     border-radius: 0.5rem;
-    padding: 0.75rem;
+
+    // Extra block padding so this panel's height, plus the column gap,
+    // plus PokemonPanel's height without its Moves section, matches
+    // PokemonPanel's height with the Moves section — keeping BoxSelectPanel
+    // and TeamSelectPanel aligned across the two columns.
+    padding: 1rem 0.75rem;
     width: 100%;
 
     .field {

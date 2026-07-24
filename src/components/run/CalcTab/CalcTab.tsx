@@ -31,7 +31,6 @@ import DamageResultsPanel from './DamageResultsPanel/DamageResultsPanel';
 import FieldEffectsPanel from './FieldEffectsPanel/FieldEffectsPanel';
 import PokemonPanel from './PokemonPanel/PokemonPanel';
 import TeamSelectPanel from './TeamSelectPanel/TeamSelectPanel';
-import TrainerPokemonPanel from './TrainerPokemonPanel/TrainerPokemonPanel';
 
 type CalcTabProps = {
     game: Game;
@@ -88,18 +87,27 @@ const CalcTab: React.FC<CalcTabProps> = ({
     type DefenderState = {
         abilityName: string;
         boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
+        level: number;
+        nature: Nature;
         status: string;
     };
 
     type DefenderAction =
         | { type: 'RESET' }
-        | { type: 'LOAD'; abilityName: string }
+        | {
+              type: 'LOAD';
+              abilityName: string;
+              level: number;
+              nature: Nature;
+          }
         | { type: 'SET_ABILITY'; abilityName: string }
         | {
               type: 'SET_BOOST';
               stat: Exclude<keyof StatValues, 'hp'>;
               value: number;
           }
+        | { type: 'SET_LEVEL'; level: number }
+        | { type: 'SET_NATURE'; nature: Nature }
         | { type: 'SET_STATUS'; status: string };
 
     // -------------------------------------------------------------------------
@@ -243,6 +251,8 @@ const CalcTab: React.FC<CalcTabProps> = ({
     const getBlankDefenderState = (): DefenderState => ({
         abilityName: '',
         boosts: getBlankBoosts(),
+        level: MIN_LEVEL,
+        nature: Object.values(Nature)[0],
         status: '',
     });
 
@@ -257,6 +267,8 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 return {
                     ...getBlankDefenderState(),
                     abilityName: action.abilityName,
+                    level: action.level,
+                    nature: action.nature,
                 };
             case 'SET_ABILITY':
                 return { ...state, abilityName: action.abilityName };
@@ -265,6 +277,10 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     ...state,
                     boosts: { ...state.boosts, [action.stat]: action.value },
                 };
+            case 'SET_LEVEL':
+                return { ...state, level: action.level };
+            case 'SET_NATURE':
+                return { ...state, nature: action.nature };
             case 'SET_STATUS':
                 return { ...state, status: action.status };
         }
@@ -355,8 +371,8 @@ const CalcTab: React.FC<CalcTabProps> = ({
               boosts: defender.boosts,
               evs: StatHelpers.normalizeStats(mon.evs, 0),
               ivs: StatHelpers.normalizeStats(mon.ivs, MAX_IV),
-              level: mon.level,
-              nature: mon.nature ?? Object.values(Nature)[0],
+              level: defender.level,
+              nature: defender.nature,
               species: mon.name,
               status: defender.status,
           }
@@ -475,6 +491,8 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
                 abilitySlug ??
                 '',
+            level: mon.level,
+            nature: mon.nature ?? Object.values(Nature)[0],
         });
     }, [mon, game.generation]);
 
@@ -541,6 +559,20 @@ const CalcTab: React.FC<CalcTabProps> = ({
         dispatchDefender({ type: 'SET_ABILITY', abilityName: value });
     };
 
+    const handleDefenderNatureChange = (value: string): void => {
+        dispatchDefender({ type: 'SET_NATURE', nature: value as Nature });
+    };
+
+    const handleDefenderLevelChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ): void => {
+        const value = Math.min(
+            MAX_LEVEL,
+            Math.max(MIN_LEVEL, Number(event.target.value))
+        );
+        dispatchDefender({ type: 'SET_LEVEL', level: value });
+    };
+
     const handleDefenderStatusChange = (value: string): void => {
         dispatchDefender({ type: 'SET_STATUS', status: value });
     };
@@ -573,7 +605,6 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 <PokemonPanel
                     abilityName={attacker.abilityName}
                     boosts={attacker.boosts}
-                    caught={caught}
                     evs={attacker.evs}
                     game={game}
                     hideEvs={hideEvs}
@@ -590,6 +621,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     onMoveChange={handleAttackerMoveChange}
                     onNatureChange={handleAttackerNatureChange}
                     onStatusChange={handleAttackerStatusChange}
+                    pokemonName={caught?.name}
                     speedComparison={playerSpeedComparison}
                     status={attacker.status}
                 />
@@ -605,24 +637,40 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 onChange={setField}
             />
             <div className={styles.defender}>
+                <PokemonPanel
+                    abilityName={defender.abilityName}
+                    boosts={defender.boosts}
+                    evs={
+                        mon ? StatHelpers.normalizeStats(mon.evs, 0) : undefined
+                    }
+                    game={game}
+                    hideEvs={hideEvs}
+                    isTailwind={field.trainerSide.isTailwind}
+                    ivs={
+                        mon
+                            ? StatHelpers.normalizeStats(mon.ivs, MAX_IV)
+                            : undefined
+                    }
+                    level={defender.level}
+                    nature={defender.nature}
+                    onAbilityChange={handleDefenderAbilityChange}
+                    onBoostChange={handleDefenderBoostChange}
+                    onLevelChange={handleDefenderLevelChange}
+                    onNatureChange={handleDefenderNatureChange}
+                    onStatusChange={handleDefenderStatusChange}
+                    placeholder={
+                        effectiveSelectedBattle
+                            ? undefined
+                            : 'Select a battle above'
+                    }
+                    pokemonName={mon?.name}
+                    speedComparison={trainerSpeedComparison}
+                    status={defender.status}
+                />
                 <BattleSelectPanel
                     game={game}
                     onSelectBattle={onSelectBattle}
                     selectedBattle={effectiveSelectedBattle}
-                />
-                <TrainerPokemonPanel
-                    abilityName={defender.abilityName}
-                    boosts={defender.boosts}
-                    game={game}
-                    hideEvs={hideEvs}
-                    isTailwind={field.trainerSide.isTailwind}
-                    mon={mon}
-                    onAbilityChange={handleDefenderAbilityChange}
-                    onBoostChange={handleDefenderBoostChange}
-                    onStatusChange={handleDefenderStatusChange}
-                    selectedBattle={effectiveSelectedBattle}
-                    speedComparison={trainerSpeedComparison}
-                    status={defender.status}
                 />
                 <TeamSelectPanel
                     game={game}

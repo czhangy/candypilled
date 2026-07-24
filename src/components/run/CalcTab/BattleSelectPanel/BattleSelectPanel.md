@@ -1,9 +1,13 @@
 # BattleSelectPanel
 
-The damage calculator's trainer selector: a single dropdown listing every
-trainer battle in the current game, in game order. Sits above
-`TrainerPokemonPanel`, whose team dropdown only appears once a battle is
-selected here.
+The damage calculator's trainer selector: a "Battle"-labeled dropdown
+listing every trainer battle in the current game, in game order. Sits
+between `PokemonPanel` and `TeamSelectPanel`, whose team dropdown only
+appears once a battle is selected here. Padded with extra block (top and
+bottom) space so its height, plus the column gap, plus `PokemonPanel`'s
+height on the trainer side (which omits the Moves section) matches
+`PokemonPanel`'s height on the player side (which includes it) — keeping
+`BoxSelectPanel` and `TeamSelectPanel` aligned across the two columns.
 
 ## Props
 
