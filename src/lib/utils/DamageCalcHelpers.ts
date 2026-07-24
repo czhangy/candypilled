@@ -3,6 +3,7 @@ import {
     Pokemon as CalcPokemon,
     calculate,
     Generations,
+    Result,
     toID,
     type GenerationNum,
 } from '@smogon/calc';
@@ -35,6 +36,101 @@ export default class DamageCalcHelpers {
         defender: CalcPokemonInput,
         moveName: string
     ): [number, number] | null {
+        const result = DamageCalcHelpers.getResult(
+            generation,
+            attacker,
+            defender,
+            moveName
+        );
+        if (!result) return null;
+
+        const [minDamage, maxDamage] = result.range();
+        const maxHp = result.defender.maxHP();
+        if (maxHp === 0) return [0, 0];
+
+        return [
+            DamageCalcHelpers.toPercent(minDamage, maxHp),
+            DamageCalcHelpers.toPercent(maxDamage, maxHp),
+        ];
+    }
+
+    /**
+     * A human-readable description of moveName's damage against defender
+     * (e.g. "Player's Garchomp Earthquake vs. Enemy's Excadrill: 130-153
+     * (45.2 - 53.4%)"), or null if moveName is empty/unknown or either
+     * Pokémon fails to resolve to valid @smogon/calc data. attackerLabel/
+     * defenderLabel prefix each Pokémon's species name (e.g. "Player's"/
+     * "Enemy's"). Deliberately omits EV/nature notation (unlike
+     * @smogon/calc's own Result.fullDesc()) and any KO-chance clause.
+     */
+    static getDescription(
+        generation: number,
+        attacker: CalcPokemonInput,
+        defender: CalcPokemonInput,
+        moveName: string,
+        attackerLabel: string,
+        defenderLabel: string
+    ): string | null {
+        const result = DamageCalcHelpers.getResult(
+            generation,
+            attacker,
+            defender,
+            moveName
+        );
+        const percentRange = DamageCalcHelpers.getDamagePercentRange(
+            generation,
+            attacker,
+            defender,
+            moveName
+        );
+        if (!result || !percentRange) return null;
+
+        const [minDamage, maxDamage] = result.range();
+        const [minPercent, maxPercent] = percentRange;
+
+        return `${attackerLabel} ${attacker.species} ${moveName} vs. ${defenderLabel} ${defender.species}: ${minDamage}-${maxDamage} (${minPercent} - ${maxPercent}%)`;
+    }
+
+    /**
+     * Every damage roll moveName (used by attacker) could deal to defender
+     * in generation, sorted ascending (duplicates kept, since each entry
+     * represents one of the possible rolls), or null if moveName is
+     * empty/unknown or either Pokémon fails to resolve to valid
+     * @smogon/calc data.
+     */
+    static getPossibleDamageAmounts(
+        generation: number,
+        attacker: CalcPokemonInput,
+        defender: CalcPokemonInput,
+        moveName: string
+    ): number[] | null {
+        const result = DamageCalcHelpers.getResult(
+            generation,
+            attacker,
+            defender,
+            moveName
+        );
+        if (!result) return null;
+
+        const amounts = Array.isArray(result.damage)
+            ? result.damage.flat()
+            : [result.damage];
+
+        return amounts.sort((a, b) => a - b);
+    }
+
+    // -------------------------------------------------------------------------
+    // PRIVATE
+    // -------------------------------------------------------------------------
+
+    private static readonly generationCache = new Map<number, Generation>();
+
+    private static getResult(
+        generation: number,
+        attacker: CalcPokemonInput,
+        defender: CalcPokemonInput,
+        moveName: string
+    ): Result | null {
         if (!moveName) return null;
 
         const gen = DamageCalcHelpers.getGeneration(generation);
@@ -45,30 +141,11 @@ export default class DamageCalcHelpers {
 
         try {
             const move = new CalcMove(gen, moveName);
-            const result = calculate(
-                gen,
-                attackerPokemon,
-                defenderPokemon,
-                move
-            );
-            const [minDamage, maxDamage] = result.range();
-            const maxHp = defenderPokemon.maxHP();
-            if (maxHp === 0) return [0, 0];
-
-            return [
-                DamageCalcHelpers.toPercent(minDamage, maxHp),
-                DamageCalcHelpers.toPercent(maxDamage, maxHp),
-            ];
+            return calculate(gen, attackerPokemon, defenderPokemon, move);
         } catch {
             return null;
         }
     }
-
-    // -------------------------------------------------------------------------
-    // PRIVATE
-    // -------------------------------------------------------------------------
-
-    private static readonly generationCache = new Map<number, Generation>();
 
     private static toPercent(damage: number, maxHp: number): number {
         return Math.floor((damage * 1000) / maxHp) / 10;

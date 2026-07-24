@@ -4,17 +4,21 @@ import DamageCalcHelpers from '@/lib/utils/DamageCalcHelpers';
 import styles from './MoveDamageColumn.module.scss';
 
 type MoveDamageColumnProps = {
+    activeIndex: number | null;
     attacker: CalcPokemonInput | null;
     defender: CalcPokemonInput | null;
     generation: number;
     moveNames: string[];
+    onSelectMove: (index: number) => void;
 };
 
 const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
+    activeIndex,
     attacker,
     defender,
     generation,
     moveNames,
+    onSelectMove,
 }) => {
     // -------------------------------------------------------------------------
     // RENDERING
@@ -57,7 +61,29 @@ const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
                         .join(' ')}
                     key={index}
                 >
-                    <span className={styles.move}>{moveName || '-'}</span>
+                    {moveName ? (
+                        <button
+                            className={[
+                                styles.move,
+                                index === activeIndex && styles['move--active'],
+                            ]
+                                .filter(Boolean)
+                                .join(' ')}
+                            onClick={() => onSelectMove(index)}
+                            type="button"
+                        >
+                            {moveName}
+                        </button>
+                    ) : (
+                        <span
+                            className={[
+                                styles.move,
+                                styles['move--empty'],
+                            ].join(' ')}
+                        >
+                            -
+                        </span>
+                    )}
                     <span className={styles.range}>
                         {range ? `${range[0]} - ${range[1]}%` : '-'}
                     </span>
