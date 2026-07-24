@@ -11,6 +11,7 @@ type BattleCardProps = {
     onSelectAbility: (name: string) => void;
     onSelectMove: (name: string) => void;
     onSelectSpecies: (species: string) => void;
+    onSelectTrainer: (battleKey: string) => void;
     onToggleDefeated: () => void;
     starter: string;
     variant: string;
@@ -24,6 +25,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
     onSelectAbility,
     onSelectMove,
     onSelectSpecies,
+    onSelectTrainer,
     onToggleDefeated,
     starter,
     variant,
@@ -55,9 +57,15 @@ const BattleCard: React.FC<BattleCardProps> = ({
                       : 'Battle'}
             </span>
             <div className={styles.content}>
-                <div className={styles['trainer-header']}>
+                <button
+                    className={styles['trainer-header']}
+                    onClick={() =>
+                        onSelectTrainer(BattleHelpers.getBattleKey(battle))
+                    }
+                    type="button"
+                >
                     {BattleHelpers.getFullName(battle)}
-                </div>
+                </button>
                 <div className={styles.body}>
                     <TrainerPanel
                         battle={battle}

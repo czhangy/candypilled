@@ -19,6 +19,7 @@ currently scrolled into view is highlighted automatically.
 | `onSelectLocation` | `(location: string) => void`  | Yes      | -       | Called with a location's base name when it's clicked within a `SplitLocation`'s `PokedexTile`                                                           |
 | `onSelectMove`     | `(name: string) => void`      | Yes      | -       | Called when a move is clicked within a `SplitLocation`'s `BattleCard`                                                                                   |
 | `onSelectSpecies`  | `(species: string) => void`   | Yes      | -       | Called when a Pokémon's sprite or name is clicked within a `SplitLocation`'s `BattleCard`                                                               |
+| `onSelectTrainer`  | `(battleKey: string) => void` | Yes      | -       | Called with the battle's key when a `SplitLocation`'s `BattleCard` trainer name header is clicked                                                       |
 | `run`              | `Run`                         | Yes      | -       | The run whose progress (caught Pokémon, missed locations) is shown within the current split                                                             |
 | `stickyOffset`     | `number`                      | Yes      | -       | The pixel height of `RunPage`'s sticky tabs/split-header block, added to the table of contents' sticky offset so it doesn't stick underneath that block |
 

@@ -27,9 +27,23 @@
             background: $background-light;
             border: 1px solid $border-subtle;
             border-radius: 0.375rem;
+            color: $foreground;
+            cursor: pointer;
             letter-spacing: 0.03em;
             padding: 0.5rem;
             text-align: center;
+            transition: color 0.2s ease;
+            width: 100%;
+
+            @media (hover: hover) {
+                &:hover {
+                    color: var(--accent-color);
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
         }
 
         .body {

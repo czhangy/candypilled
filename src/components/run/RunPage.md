@@ -102,6 +102,9 @@ shown instead.
   or its `PokedexDetail`'s evolution line) — sets the `species` query param
   (slugified, since an evolution line link passes a slug rather than a
   display name) without changing `tab`
+- **On trainer link click** (from `SplitTab`, a `BattleCard`'s trainer name
+  header) — opens the Calc tab for that battle (`?tab=calc&battle=<key>`)
+  in a new browser tab, leaving the current page untouched
 - **On Pokémon deselect** (from `BoxTab`, when switching between its box
   and graveyard views) — clears the `pokemon` query param
 - **On location select** (from `BoxTab`'s `PokemonPreview`, `SplitTab`'s

@@ -242,6 +242,14 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         updateQueryParams({ battle: battleKey });
     };
 
+    const handleTrainerLinkClick = (battleKey: string): void => {
+        window.open(
+            `${pathname}?tab=calc&battle=${encodeURIComponent(battleKey)}`,
+            '_blank',
+            'noopener,noreferrer'
+        );
+    };
+
     const handleLocationSelect = (locationName: string): void => {
         if (!game) return;
 
@@ -361,6 +369,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveLinkClick}
                             onSelectSpecies={handleSpeciesLinkClick}
+                            onSelectTrainer={handleTrainerLinkClick}
                             run={run}
                             stickyOffset={stickyHeaderHeight}
                         />
