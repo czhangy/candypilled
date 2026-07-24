@@ -19,10 +19,10 @@ the currently selected Pokémon on the right, taking up the remaining third.
 
 ## State
 
-| State                   | Type      | Initial value | Description                                                   |
-| ----------------------- | --------- | ------------- | ------------------------------------------------------------- |
-| `isAddPokemonModalOpen` | `boolean` | `false`       | Whether `AddPokemonModal` is shown                            |
-| `view`                  | `BoxView` | `'box'`       | Which of `PokemonBox`'s views ("box" or "graveyard") is shown |
+| State                   | Type      | Initial value | Description                                                |
+| ----------------------- | --------- | ------------- | ---------------------------------------------------------- |
+| `isAddPokemonModalOpen` | `boolean` | `false`       | Whether `AddPokemonModal` is shown                         |
+| `view`                  | `BoxView` | `'alive'`     | Which of `PokemonBox`'s views ("alive" or "dead") is shown |
 
 ## Computations
 
@@ -58,8 +58,8 @@ the currently selected Pokémon on the right, taking up the remaining third.
   once it requests the close
 - `handleToggleStatus` — flips a caught Pokémon's `status` between
   `PokemonStatus.Alive` and `PokemonStatus.Dead`, saves the updated run,
-  and switches `view` to the box the Pokémon now belongs in (`'graveyard'`
-  if it was just killed, `'box'` if it was just revived)
+  and switches `view` to the view the Pokémon now belongs in (`'dead'`
+  if it was just killed, `'alive'` if it was just revived)
 - `handleEditPokemon` — merges a caught Pokémon's edited details (ability,
   EVs, IVs, level, moves, nature, tags) into `run.caughtPokemon` and saves
   the updated run

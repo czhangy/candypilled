@@ -15,7 +15,6 @@ type PokemonBoxProps = {
     onSelectPokemon: (location: string) => void;
     onViewChange: (view: BoxView) => void;
     selectedPokemon?: string;
-    variant: string;
     view: BoxView;
 };
 
@@ -27,14 +26,14 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
     onSelectPokemon,
     onViewChange,
     selectedPokemon,
-    variant,
     view,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const SPRITE_SIZE = 96;
+    const SPRITE_WIDTH = 40;
+    const SPRITE_HEIGHT = 30;
 
     // -------------------------------------------------------------------------
     // STATE
@@ -52,7 +51,7 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
     ].sort((a, b) => a.localeCompare(b));
     const displayedPokemon = caughtPokemon.filter(
         (pokemon) =>
-            (view === 'graveyard'
+            (view === 'dead'
                 ? pokemon.status === PokemonStatus.Dead
                 : pokemon.status !== PokemonStatus.Dead) &&
             selectedTags.every((tag) => pokemon.tags.includes(tag))
@@ -60,9 +59,9 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
     const emptyMessage =
         selectedTags.length > 0
             ? 'No Pokémon match the selected tags'
-            : view === 'graveyard'
-              ? 'Graveyard is empty'
-              : 'Box is empty';
+            : view === 'dead'
+              ? 'No dead Pokémon'
+              : 'No alive Pokémon';
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -108,30 +107,30 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
         <div className={styles['pokemon-box']}>
             <div className={styles.header}>
                 <button
-                    aria-pressed={view === 'box'}
+                    aria-pressed={view === 'alive'}
                     className={[
                         styles['header-button'],
-                        view === 'box' && styles['header-button--active'],
+                        view === 'alive' && styles['header-button--active'],
                     ]
                         .filter(Boolean)
                         .join(' ')}
-                    onClick={() => handleViewClick('box')}
+                    onClick={() => handleViewClick('alive')}
                     type="button"
                 >
-                    Box
+                    Alive
                 </button>
                 <button
-                    aria-pressed={view === 'graveyard'}
+                    aria-pressed={view === 'dead'}
                     className={[
                         styles['header-button'],
-                        view === 'graveyard' && styles['header-button--active'],
+                        view === 'dead' && styles['header-button--active'],
                     ]
                         .filter(Boolean)
                         .join(' ')}
-                    onClick={() => handleViewClick('graveyard')}
+                    onClick={() => handleViewClick('dead')}
                     type="button"
                 >
-                    Graveyard
+                    Dead
                 </button>
                 {allTags.length > 0 && (
                     <TagFilter
@@ -140,7 +139,7 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                         tags={allTags}
                     />
                 )}
-                {view === 'box' && (
+                {view === 'alive' && (
                     <button
                         className={styles['add-button']}
                         onClick={onAddPokemonClick}
@@ -164,9 +163,8 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                             const data = PokemonHelpers.getPokemonData(
                                 pokemon.name
                             );
-                            const sprite = PokemonHelpers.getPokemonSprite(
-                                pokemon.name,
-                                variant
+                            const sprite = PokemonHelpers.getBoxSprite(
+                                pokemon.name
                             );
                             const isOverCap =
                                 levelCap !== null && pokemon.level > levelCap;
@@ -199,14 +197,12 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                                     onDrop={() => handleDrop(pokemon.location)}
                                     type="button"
                                 >
-                                    {sprite && (
-                                        <Image
-                                            alt={data?.name ?? pokemon.name}
-                                            height={SPRITE_SIZE}
-                                            src={sprite}
-                                            width={SPRITE_SIZE}
-                                        />
-                                    )}
+                                    <Image
+                                        alt={data?.name ?? pokemon.name}
+                                        height={SPRITE_HEIGHT}
+                                        src={sprite}
+                                        width={SPRITE_WIDTH}
+                                    />
                                     {pokemon.tags.length > 0 && (
                                         <Tooltip
                                             position="right"
