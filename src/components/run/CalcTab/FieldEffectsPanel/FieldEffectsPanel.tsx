@@ -297,7 +297,12 @@ const FieldEffectsPanel: React.FC<FieldEffectsPanelProps> = ({
             <div className={styles.toggles}>
                 {globalToggles.map(({ key, label }) => (
                     <div className={styles.toggle} key={key}>
-                        <span className={styles['toggle-label']}>{label}</span>
+                        <span
+                            className={styles['toggle-label']}
+                            onClick={() => handleGlobalToggle(key)}
+                        >
+                            {label}
+                        </span>
                         <Toggle
                             checked={field[key]}
                             label={label}
@@ -317,7 +322,12 @@ const FieldEffectsPanel: React.FC<FieldEffectsPanelProps> = ({
                         <div className={styles.toggles}>
                             {sideConditionToggles.map(({ key, label }) => (
                                 <div className={styles.toggle} key={key}>
-                                    <span className={styles['toggle-label']}>
+                                    <span
+                                        className={styles['toggle-label']}
+                                        onClick={() =>
+                                            handleSideToggle(side, key)
+                                        }
+                                    >
                                         {label}
                                     </span>
                                     <Toggle
