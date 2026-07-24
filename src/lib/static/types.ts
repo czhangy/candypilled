@@ -149,7 +149,7 @@ export type CaughtPokemon = Omit<BattlePokemon, 'moves'> & {
 
 // The two views of the box tab's caught Pokémon grid: living Pokémon
 // ("box") or dead ones ("graveyard").
-export type BoxView = 'box' | 'graveyard';
+export type BoxView = 'alive' | 'dead';
 
 type BattleItem = {
     count: number;

@@ -10,7 +10,6 @@ type EncounterRowProps = {
     isCaughtHere: boolean;
     isSelected: boolean;
     onClick: () => void;
-    variant: string;
 };
 
 const EncounterRow: React.FC<EncounterRowProps> = ({
@@ -20,13 +19,13 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
     isCaughtHere,
     isSelected,
     onClick,
-    variant,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const SPRITE_SIZE = 48;
+    const SPRITE_WIDTH = 40;
+    const SPRITE_HEIGHT = 30;
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -42,7 +41,7 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
     // -------------------------------------------------------------------------
 
     const pokemon = PokemonHelpers.getPokemonData(encounter.species);
-    const sprite = PokemonHelpers.getPokemonSprite(encounter.species, variant);
+    const sprite = PokemonHelpers.getBoxSprite(encounter.species);
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -63,14 +62,12 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
             <td>
                 <div className={styles.pokemon}>
                     <div className={styles['pokemon__sprite']}>
-                        {sprite && (
-                            <Image
-                                alt={pokemon?.name ?? encounter.species}
-                                height={SPRITE_SIZE}
-                                src={sprite}
-                                width={SPRITE_SIZE}
-                            />
-                        )}
+                        <Image
+                            alt={pokemon?.name ?? encounter.species}
+                            height={SPRITE_HEIGHT}
+                            src={sprite}
+                            width={SPRITE_WIDTH}
+                        />
                     </div>
                     <div className={styles['pokemon__info']}>
                         <span>{pokemon?.name ?? encounter.species}</span>

@@ -499,7 +499,6 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         starterCaughtSeparately={
                                             starterCaughtSeparately
                                         }
-                                        variant={variant}
                                     />
                                     <PokedexTile
                                         defaultLevel={

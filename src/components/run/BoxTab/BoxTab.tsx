@@ -37,7 +37,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
     // -------------------------------------------------------------------------
 
     const [isAddPokemonModalOpen, setIsAddPokemonModalOpen] = useState(false);
-    const [view, setView] = useState<BoxView>('box');
+    const [view, setView] = useState<BoxView>('alive');
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -132,7 +132,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
         };
 
         LocalStorageHelpers.saveRun(game, updatedRun);
-        setView(newStatus === PokemonStatus.Dead ? 'graveyard' : 'box');
+        setView(newStatus === PokemonStatus.Dead ? 'dead' : 'alive');
     };
 
     const handleEditPokemon = (
@@ -220,7 +220,6 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 onSelectPokemon={onSelectPokemon}
                 onViewChange={handleViewChange}
                 selectedPokemon={selectedPokemon}
-                variant={variant}
                 view={view}
             />
             <PokemonPreview

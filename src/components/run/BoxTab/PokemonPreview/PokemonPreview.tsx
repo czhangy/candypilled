@@ -397,7 +397,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                 </div>
                             </div>
                             <div className={styles.actions}>
-                                {view === 'box' && (
+                                {view === 'alive' && (
                                     <button
                                         className={styles['edit-button']}
                                         onClick={handleEditClick}
