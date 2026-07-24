@@ -7,6 +7,6 @@ export default class ItemHelpers {
 
     /** The sprite path for the item named name. */
     static getItemSprite(name: string): string {
-        return `/battle_items/${StringHelpers.toSlug(name)}.png`;
+        return `/battle-items/${StringHelpers.toSlug(name)}.png`;
     }
 }

@@ -20,7 +20,7 @@ is empty.
 
 - `moveData` / `values` — each move's data and generation-specific values,
   resolved via `MoveHelpers`; when found, its type icon (`/types/{type}.png`),
-  category icon (`/move_categories/{category}.png`), and power (formatted as
+  category icon (`/move-categories/{category}.png`), and power (formatted as
   `{power}BP`, or "—" for status moves) are rendered on the right of the row
 
 ## SCSS Variable Dependencies

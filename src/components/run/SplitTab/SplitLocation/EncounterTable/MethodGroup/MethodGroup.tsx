@@ -36,7 +36,7 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
             .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
             .join(' ');
 
-    const getMethodIcon = (): string => `/encounter_methods/${method}.png`;
+    const getMethodIcon = (): string => `/encounter-methods/${method}.png`;
 
     // -------------------------------------------------------------------------
     // CONSTANTS

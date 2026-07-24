@@ -138,7 +138,7 @@ export default class EvolutionHelpers {
     // PRIVATE
     // -------------------------------------------------------------------------
 
-    // Slugs with an icon available in public/evolution_methods. Methods not
+    // Slugs with an icon available in public/evolution-methods. Methods not
     // listed here fall back to their text label.
     private static readonly ICON_SLUGS = new Set([
         'chipped-pot',
@@ -211,7 +211,7 @@ export default class EvolutionHelpers {
     // Locations named after a specific landmark the player must be near
     // (rather than the area as a whole), whose name doesn't match the raw
     // location slug and which renders as an icon (slug in
-    // public/evolution_methods) instead of text.
+    // public/evolution-methods) instead of text.
     private static readonly LOCATION_LANDMARKS: Record<
         string,
         { name: string; icon: string }

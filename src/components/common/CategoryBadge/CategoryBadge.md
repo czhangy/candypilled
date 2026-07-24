@@ -1,7 +1,7 @@
 # CategoryBadge
 
 A small badge image for a move's damage category (e.g.
-`/move_categories/physical.png`).
+`/move-categories/physical.png`).
 
 ## Props
 
