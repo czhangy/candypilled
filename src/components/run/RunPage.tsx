@@ -37,10 +37,10 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const TABS = [
         { id: 'split', label: 'Splits' },
         { id: 'box', label: 'Box' },
+        { id: 'calc', label: 'Calc' },
         { id: 'pokedex', label: 'Pokédex' },
         { id: 'moves', label: 'Moves' },
         { id: 'abilities', label: 'Abilities' },
-        { id: 'calc', label: 'Calc' },
         { id: 'hof', label: 'Hall of Fame' },
     ];
 
