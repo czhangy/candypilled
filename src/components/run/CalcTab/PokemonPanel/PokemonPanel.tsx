@@ -359,15 +359,15 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                                 value={abilityName}
                             />
                         </div>
-                    </div>
-                    <div className={styles.field}>
-                        <span className={styles.label}>Status</span>
-                        <Dropdown
-                            dense
-                            onChange={handleStatusChange}
-                            options={STATUS_OPTIONS}
-                            value={status}
-                        />
+                        <div className={styles.field}>
+                            <span className={styles.label}>Status</span>
+                            <Dropdown
+                                dense
+                                onChange={handleStatusChange}
+                                options={STATUS_OPTIONS}
+                                value={status}
+                            />
+                        </div>
                     </div>
                     <table className={styles.stats}>
                         <thead>
