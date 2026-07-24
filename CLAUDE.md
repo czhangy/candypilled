@@ -256,7 +256,3 @@ When doing a general cleanup/optimization passthrough of the codebase, check for
 
 - Scripts must be readable and efficient.
 - Extract code shared between scripts into helpers rather than duplicating.
-
-## Verification
-
-After completing any implementation task, run `npm run lint` and fix all errors before reporting the work as done.

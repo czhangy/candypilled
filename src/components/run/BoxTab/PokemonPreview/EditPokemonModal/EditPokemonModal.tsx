@@ -1,6 +1,7 @@
 import { useSyncExternalStore } from 'react';
 import Modal from '@/components/common/Modal/Modal';
 import PokemonForm from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/PokemonForm/PokemonForm';
+import { MOVE_SLOT_COUNT } from '@/lib/static/constants';
 import { CaughtPokemon } from '@/lib/static/types';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
@@ -45,12 +46,6 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
         SettingsHelpers.getSnapshot,
         SettingsHelpers.getServerSnapshot
     );
-
-    // -------------------------------------------------------------------------
-    // CONSTANTS
-    // -------------------------------------------------------------------------
-
-    const MOVE_SLOT_COUNT = 4;
 
     // -------------------------------------------------------------------------
     // RENDERING

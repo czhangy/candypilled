@@ -1,5 +1,11 @@
 import Dropdown from '@/components/common/Dropdown/Dropdown';
-import { STAT_FIELDS } from '@/lib/static/constants';
+import {
+    MAX_EV,
+    MAX_IV,
+    MIN_EV,
+    MIN_IV,
+    STAT_FIELDS,
+} from '@/lib/static/constants';
 import { DropdownOption, StatValues } from '@/lib/static/types';
 import styles from './StatsTable.module.scss';
 
@@ -39,10 +45,6 @@ const StatsTable: React.FC<StatsTableProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const MIN_IV = 0;
-    const MAX_IV = 31;
-    const MIN_EV = 0;
-    const MAX_EV = 252;
     const MIN_BOOST = -6;
     const MAX_BOOST = 6;
 

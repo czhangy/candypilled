@@ -1,37 +1,74 @@
-import { useEffect, useReducer, useSyncExternalStore } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import StatsTable from '@/components/run/CalcTab/StatsTable/StatsTable';
+import { MAX_LEVEL, MIN_LEVEL } from '@/lib/static/constants';
 import { Nature } from '@/lib/static/enums';
-import { DropdownOption, Game, Run, StatValues } from '@/lib/static/types';
+import {
+    CaughtPokemon,
+    DropdownOption,
+    Game,
+    StatValues,
+} from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
-import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
 import styles from './PokemonPanel.module.scss';
 
 type PokemonPanelProps = {
+    abilityName: string;
+    boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
+    caught?: CaughtPokemon;
+    evs: StatValues;
     game: Game;
-    run: Run;
-    selectedLocation?: string;
+    hideEvs: boolean;
+    ivs: StatValues;
+    level: number;
+    moves: string[];
+    nature: Nature;
+    onAbilityChange: (value: string) => void;
+    onBoostChange: (
+        stat: Exclude<keyof StatValues, 'hp'>,
+        value: string
+    ) => void;
+    onEvChange: (
+        stat: keyof StatValues,
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => void;
+    onIvChange: (
+        stat: keyof StatValues,
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => void;
+    onLevelChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onMoveChange: (index: number, value: string) => void;
+    onNatureChange: (value: string) => void;
+    onStatusChange: (value: string) => void;
+    status: string;
 };
 
 const PokemonPanel: React.FC<PokemonPanelProps> = ({
+    abilityName,
+    boosts,
+    caught,
+    evs,
     game,
-    run,
-    selectedLocation,
+    hideEvs,
+    ivs,
+    level,
+    moves,
+    nature,
+    onAbilityChange,
+    onBoostChange,
+    onEvChange,
+    onIvChange,
+    onLevelChange,
+    onMoveChange,
+    onNatureChange,
+    onStatusChange,
+    status,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
-
-    const MIN_LEVEL = 1;
-    const MAX_LEVEL = 100;
-    const MIN_IV = 0;
-    const MAX_IV = 31;
-    const MIN_EV = 0;
-    const MAX_EV = 252;
-    const MOVE_SLOT_COUNT = 4;
 
     const STATUS_OPTIONS: DropdownOption[] = [
         { label: 'Healthy', value: '' },
@@ -43,141 +80,9 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
         { label: 'Sleep', value: 'slp' },
     ];
 
-    type PanelState = {
-        abilityName: string;
-        boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
-        evs: StatValues;
-        ivs: StatValues;
-        level: number;
-        moves: string[];
-        nature: Nature;
-        status: string;
-    };
-
-    type PanelAction =
-        | {
-              type: 'LOAD';
-              abilityName: string;
-              evs: StatValues;
-              ivs: StatValues;
-              level: number;
-              moves: string[];
-              nature: Nature;
-          }
-        | { type: 'CLEAR' }
-        | { type: 'SET_ABILITY'; abilityName: string }
-        | { type: 'SET_NATURE'; nature: Nature }
-        | { type: 'SET_LEVEL'; level: number }
-        | { type: 'SET_IV'; stat: keyof StatValues; value: number }
-        | { type: 'SET_EV'; stat: keyof StatValues; value: number }
-        | {
-              type: 'SET_BOOST';
-              stat: Exclude<keyof StatValues, 'hp'>;
-              value: number;
-          }
-        | { type: 'SET_STATUS'; status: string }
-        | { type: 'SET_MOVE'; index: number; value: string };
-
-    // -------------------------------------------------------------------------
-    // COMPUTATIONS
-    // -------------------------------------------------------------------------
-
-    const getBlankBoosts = (): Record<
-        Exclude<keyof StatValues, 'hp'>,
-        number
-    > => ({ atk: 0, def: 0, spa: 0, spd: 0, spe: 0 });
-
-    const padMoves = (moves: string[]): string[] =>
-        Array.from(
-            { length: MOVE_SLOT_COUNT },
-            (_, index) => moves[index] ?? ''
-        );
-
-    const getBlankPanelState = (): PanelState => ({
-        abilityName: '',
-        boosts: getBlankBoosts(),
-        evs: StatHelpers.normalizeStats(undefined, 0),
-        ivs: StatHelpers.normalizeStats(undefined, MAX_IV),
-        level: MIN_LEVEL,
-        moves: padMoves([]),
-        nature: Object.values(Nature)[0],
-        status: '',
-    });
-
-    const panelReducer = (
-        state: PanelState,
-        action: PanelAction
-    ): PanelState => {
-        switch (action.type) {
-            case 'LOAD':
-                return {
-                    abilityName: action.abilityName,
-                    boosts: getBlankBoosts(),
-                    evs: action.evs,
-                    ivs: action.ivs,
-                    level: action.level,
-                    moves: action.moves,
-                    nature: action.nature,
-                    status: '',
-                };
-            case 'CLEAR':
-                return getBlankPanelState();
-            case 'SET_ABILITY':
-                return { ...state, abilityName: action.abilityName };
-            case 'SET_NATURE':
-                return { ...state, nature: action.nature };
-            case 'SET_LEVEL':
-                return { ...state, level: action.level };
-            case 'SET_IV':
-                return {
-                    ...state,
-                    ivs: { ...state.ivs, [action.stat]: action.value },
-                };
-            case 'SET_EV':
-                return {
-                    ...state,
-                    evs: { ...state.evs, [action.stat]: action.value },
-                };
-            case 'SET_BOOST':
-                return {
-                    ...state,
-                    boosts: { ...state.boosts, [action.stat]: action.value },
-                };
-            case 'SET_STATUS':
-                return { ...state, status: action.status };
-            case 'SET_MOVE':
-                return {
-                    ...state,
-                    moves: state.moves.map((move, index) =>
-                        index === action.index ? action.value : move
-                    ),
-                };
-        }
-    };
-
-    // -------------------------------------------------------------------------
-    // HOOKS
-    // -------------------------------------------------------------------------
-
-    const settings = useSyncExternalStore(
-        SettingsHelpers.subscribe,
-        SettingsHelpers.getSnapshot,
-        SettingsHelpers.getServerSnapshot
-    );
-    const [
-        { abilityName, boosts, evs, ivs, level, moves, nature, status },
-        dispatch,
-    ] = useReducer(panelReducer, undefined, getBlankPanelState);
-
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
-
-    const hideEvs = settings['hide-evs'] ?? false;
-
-    const caught = run.caughtPokemon.find(
-        (pokemon) => pokemon.location === selectedLocation
-    );
 
     const baseStats = caught
         ? PokemonHelpers.getPokemonStats(caught.name, game.generation)
@@ -199,98 +104,6 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
             value: name,
         })),
     ];
-
-    // -------------------------------------------------------------------------
-    // EFFECTS
-    // -------------------------------------------------------------------------
-
-    // On caught changing — the previously loaded ability/nature/level/IVs/
-    // EVs/moves belonged to a different (or no) Pokémon; caught is an
-    // external prop-derived value this component doesn't control.
-    useEffect(() => {
-        if (!caught) {
-            dispatch({ type: 'CLEAR' });
-            return;
-        }
-
-        const abilitySlug = PokemonHelpers.getAbilityName(
-            caught.name,
-            game.generation,
-            caught.ability
-        );
-        dispatch({
-            type: 'LOAD',
-            abilityName:
-                (abilitySlug &&
-                    AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
-                abilitySlug ??
-                '',
-            evs: StatHelpers.normalizeStats(caught.evs, 0),
-            ivs: StatHelpers.normalizeStats(caught.ivs, MAX_IV),
-            level: caught.level,
-            moves: padMoves(caught.moves),
-            nature: caught.nature ?? Object.values(Nature)[0],
-        });
-    }, [caught, game.generation]);
-
-    // -------------------------------------------------------------------------
-    // HANDLERS
-    // -------------------------------------------------------------------------
-
-    const handleAbilityChange = (value: string): void => {
-        dispatch({ type: 'SET_ABILITY', abilityName: value });
-    };
-
-    const handleNatureChange = (value: string): void => {
-        dispatch({ type: 'SET_NATURE', nature: value as Nature });
-    };
-
-    const handleLevelChange = (
-        event: React.ChangeEvent<HTMLInputElement>
-    ): void => {
-        const value = Math.min(
-            MAX_LEVEL,
-            Math.max(MIN_LEVEL, Number(event.target.value))
-        );
-        dispatch({ type: 'SET_LEVEL', level: value });
-    };
-
-    const handleStatusChange = (value: string): void => {
-        dispatch({ type: 'SET_STATUS', status: value });
-    };
-
-    const handleIvChange = (
-        stat: keyof StatValues,
-        event: React.ChangeEvent<HTMLInputElement>
-    ): void => {
-        const value = Math.min(
-            MAX_IV,
-            Math.max(MIN_IV, Number(event.target.value))
-        );
-        dispatch({ type: 'SET_IV', stat, value });
-    };
-
-    const handleEvChange = (
-        stat: keyof StatValues,
-        event: React.ChangeEvent<HTMLInputElement>
-    ): void => {
-        const value = Math.min(
-            MAX_EV,
-            Math.max(MIN_EV, Number(event.target.value))
-        );
-        dispatch({ type: 'SET_EV', stat, value });
-    };
-
-    const handleBoostChange = (
-        stat: Exclude<keyof StatValues, 'hp'>,
-        value: string
-    ): void => {
-        dispatch({ type: 'SET_BOOST', stat, value: Number(value) });
-    };
-
-    const handleMoveChange = (index: number, value: string): void => {
-        dispatch({ type: 'SET_MOVE', index, value });
-    };
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -318,7 +131,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                         id="pokemon-panel-level"
                         max={MAX_LEVEL}
                         min={MIN_LEVEL}
-                        onChange={handleLevelChange}
+                        onChange={onLevelChange}
                         type="number"
                         value={level}
                     />
@@ -331,7 +144,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                             <span className={styles.label}>Nature</span>
                             <Dropdown
                                 dense
-                                onChange={handleNatureChange}
+                                onChange={onNatureChange}
                                 options={natureOptions}
                                 value={nature}
                             />
@@ -340,7 +153,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                             <span className={styles.label}>Ability</span>
                             <Dropdown
                                 dense
-                                onChange={handleAbilityChange}
+                                onChange={onAbilityChange}
                                 options={abilityOptions}
                                 searchable
                                 value={abilityName}
@@ -350,7 +163,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                             <span className={styles.label}>Status</span>
                             <Dropdown
                                 dense
-                                onChange={handleStatusChange}
+                                onChange={onStatusChange}
                                 options={STATUS_OPTIONS}
                                 value={status}
                             />
@@ -362,9 +175,9 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                         evs={evs}
                         hideEvs={hideEvs}
                         ivs={ivs}
-                        onBoostChange={handleBoostChange}
-                        onEvChange={handleEvChange}
-                        onIvChange={handleIvChange}
+                        onBoostChange={onBoostChange}
+                        onEvChange={onEvChange}
+                        onIvChange={onIvChange}
                         totalStats={totalStats}
                     />
                     <div className={styles.field}>
@@ -375,7 +188,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                                     dense
                                     key={index}
                                     onChange={(value) =>
-                                        handleMoveChange(index, value)
+                                        onMoveChange(index, value)
                                     }
                                     options={moveOptions}
                                     placeholder="None"

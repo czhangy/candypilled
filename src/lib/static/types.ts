@@ -15,6 +15,19 @@ export type StatValues = {
     spe: number;
 };
 
+// A Pokémon's calculator-relevant details, sufficient to build an
+// @smogon/calc Pokemon instance for a damage calculation.
+export type CalcPokemonInput = {
+    abilityName: string;
+    boosts: Partial<Record<Exclude<keyof StatValues, 'hp'>, number>>;
+    evs: StatValues;
+    ivs: StatValues;
+    level: number;
+    nature: string;
+    species: string;
+    status: string;
+};
+
 export type DropdownOption = {
     label: string;
     value: string;

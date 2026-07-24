@@ -1,6 +1,6 @@
 import { useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
-import { STAT_FIELDS } from '@/lib/static/constants';
+import { MOVE_SLOT_COUNT, STAT_FIELDS } from '@/lib/static/constants';
 import { PokemonStatus } from '@/lib/static/enums';
 import { BoxView, CaughtPokemon, StatValues } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
@@ -77,7 +77,6 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     // -------------------------------------------------------------------------
 
     const SPRITE_SIZE = 120;
-    const MOVE_SLOT_COUNT = 4;
 
     // -------------------------------------------------------------------------
     // STATE

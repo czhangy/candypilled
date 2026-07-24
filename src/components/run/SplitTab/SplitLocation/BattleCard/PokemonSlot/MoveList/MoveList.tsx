@@ -1,3 +1,4 @@
+import { MOVE_SLOT_COUNT } from '@/lib/static/constants';
 import { StatValues } from '@/lib/static/types';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import TypeHelpers from '@/lib/utils/TypeHelpers';
@@ -20,12 +21,6 @@ const MoveList: React.FC<MoveListProps> = ({
     moves,
     onSelectMove,
 }) => {
-    // -------------------------------------------------------------------------
-    // CONSTANTS
-    // -------------------------------------------------------------------------
-
-    const MOVE_SLOT_COUNT = 4;
-
     // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------

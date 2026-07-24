@@ -1,26 +1,43 @@
-import { useEffect, useReducer, useSyncExternalStore } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import StatsTable from '@/components/run/CalcTab/StatsTable/StatsTable';
-import { DropdownOption, Game, Run, StatValues } from '@/lib/static/types';
+import {
+    BattlePokemon,
+    DropdownOption,
+    Game,
+    StatValues,
+} from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
-import BattleHelpers from '@/lib/utils/BattleHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
-import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
 import styles from './TrainerPokemonPanel.module.scss';
 
 type TrainerPokemonPanelProps = {
+    abilityName: string;
+    boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
     game: Game;
-    run: Run;
+    hideEvs: boolean;
+    mon?: BattlePokemon;
+    onAbilityChange: (value: string) => void;
+    onBoostChange: (
+        stat: Exclude<keyof StatValues, 'hp'>,
+        value: string
+    ) => void;
+    onStatusChange: (value: string) => void;
     selectedBattle?: string;
-    selectedMemberIndex?: string;
+    status: string;
 };
 
 const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
+    abilityName,
+    boosts,
     game,
-    run,
+    hideEvs,
+    mon,
+    onAbilityChange,
+    onBoostChange,
+    onStatusChange,
     selectedBattle,
-    selectedMemberIndex,
+    status,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
@@ -36,89 +53,10 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
         { label: 'Sleep', value: 'slp' },
     ];
 
-    type PanelState = {
-        abilityName: string;
-        boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
-        status: string;
-    };
-
-    type PanelAction =
-        | { type: 'RESET' }
-        | { type: 'LOAD'; abilityName: string }
-        | { type: 'SET_ABILITY'; abilityName: string }
-        | {
-              type: 'SET_BOOST';
-              stat: Exclude<keyof StatValues, 'hp'>;
-              value: number;
-          }
-        | { type: 'SET_STATUS'; status: string };
-
-    // -------------------------------------------------------------------------
-    // COMPUTATIONS
-    // -------------------------------------------------------------------------
-
-    const getBlankBoosts = (): Record<
-        Exclude<keyof StatValues, 'hp'>,
-        number
-    > => ({ atk: 0, def: 0, spa: 0, spd: 0, spe: 0 });
-
-    const getBlankPanelState = (): PanelState => ({
-        abilityName: '',
-        boosts: getBlankBoosts(),
-        status: '',
-    });
-
-    const panelReducer = (
-        state: PanelState,
-        action: PanelAction
-    ): PanelState => {
-        switch (action.type) {
-            case 'RESET':
-                return getBlankPanelState();
-            case 'LOAD':
-                return {
-                    ...getBlankPanelState(),
-                    abilityName: action.abilityName,
-                };
-            case 'SET_ABILITY':
-                return { ...state, abilityName: action.abilityName };
-            case 'SET_BOOST':
-                return {
-                    ...state,
-                    boosts: { ...state.boosts, [action.stat]: action.value },
-                };
-            case 'SET_STATUS':
-                return { ...state, status: action.status };
-        }
-    };
-
-    // -------------------------------------------------------------------------
-    // HOOKS
-    // -------------------------------------------------------------------------
-
-    const settings = useSyncExternalStore(
-        SettingsHelpers.subscribe,
-        SettingsHelpers.getSnapshot,
-        SettingsHelpers.getServerSnapshot
-    );
-    const [{ abilityName, boosts, status }, dispatch] = useReducer(
-        panelReducer,
-        undefined,
-        getBlankPanelState
-    );
-
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const hideEvs = settings['hide-evs'] ?? false;
-
-    const team = BattleHelpers.getSelectedTeam(
-        game,
-        selectedBattle,
-        run.starter
-    );
-    const mon = team[Number(selectedMemberIndex)];
     const ivs = mon ? StatHelpers.normalizeStats(mon.ivs, 31) : undefined;
     const evs = mon ? StatHelpers.normalizeStats(mon.evs, 0) : undefined;
 
@@ -139,53 +77,6 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
     const abilityOptions: DropdownOption[] = AbilityHelpers.getAllAbilities(
         game.generation
     ).map((name) => ({ label: name, value: name }));
-
-    // -------------------------------------------------------------------------
-    // EFFECTS
-    // -------------------------------------------------------------------------
-
-    // On mon changing — the previously loaded ability/status/stat stages
-    // belonged to a different (or no) team member; mon is derived from
-    // props this component doesn't control (selectedBattle/selectedMemberIndex).
-    useEffect(() => {
-        if (!mon) {
-            dispatch({ type: 'RESET' });
-            return;
-        }
-
-        const abilitySlug = PokemonHelpers.getAbilityName(
-            mon.name,
-            game.generation,
-            mon.ability
-        );
-        dispatch({
-            type: 'LOAD',
-            abilityName:
-                (abilitySlug &&
-                    AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
-                abilitySlug ??
-                '',
-        });
-    }, [mon, game.generation]);
-
-    // -------------------------------------------------------------------------
-    // HANDLERS
-    // -------------------------------------------------------------------------
-
-    const handleAbilityChange = (value: string): void => {
-        dispatch({ type: 'SET_ABILITY', abilityName: value });
-    };
-
-    const handleStatusChange = (value: string): void => {
-        dispatch({ type: 'SET_STATUS', status: value });
-    };
-
-    const handleBoostChange = (
-        stat: Exclude<keyof StatValues, 'hp'>,
-        value: string
-    ): void => {
-        dispatch({ type: 'SET_BOOST', stat, value: Number(value) });
-    };
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -227,7 +118,7 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
                                     </span>
                                     <Dropdown
                                         dense
-                                        onChange={handleAbilityChange}
+                                        onChange={onAbilityChange}
                                         options={abilityOptions}
                                         searchable
                                         value={abilityName}
@@ -237,7 +128,7 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
                                     <span className={styles.label}>Status</span>
                                     <Dropdown
                                         dense
-                                        onChange={handleStatusChange}
+                                        onChange={onStatusChange}
                                         options={STATUS_OPTIONS}
                                         value={status}
                                     />
@@ -249,7 +140,7 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
                                 evs={evs}
                                 hideEvs={hideEvs}
                                 ivs={ivs}
-                                onBoostChange={handleBoostChange}
+                                onBoostChange={onBoostChange}
                                 totalStats={totalStats}
                             />
                         </>
