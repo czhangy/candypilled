@@ -28,6 +28,16 @@ export const SETTINGS: Setting[] = [
     },
 ];
 
+export const MIN_LEVEL = 1;
+export const MAX_LEVEL = 100;
+export const MIN_IV = 0;
+export const MAX_IV = 31;
+export const MIN_EV = 0;
+export const MAX_EV = 252;
+
+// The number of move slots a Pokémon has.
+export const MOVE_SLOT_COUNT = 4;
+
 export const STAT_FIELDS: { key: keyof StatValues; label: string }[] = [
     { key: 'hp', label: 'HP' },
     { key: 'atk', label: 'Attack' },

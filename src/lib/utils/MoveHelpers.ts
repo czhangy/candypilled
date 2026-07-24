@@ -17,6 +17,14 @@ export default class MoveHelpers {
         return MOVES[StringHelpers.toSlug(name)];
     }
 
+    /** Every move introduced by generation or earlier, sorted alphabetically by display name. */
+    static getAllMoves(generation: number): string[] {
+        return Object.values(MOVES)
+            .filter((move) => move.introducedInGeneration <= generation)
+            .map((move) => move.name)
+            .sort((a, b) => a.localeCompare(b));
+    }
+
     /** The values `name` had as of `generation`, or undefined if no move matches. */
     static getMoveForGeneration(
         name: string,

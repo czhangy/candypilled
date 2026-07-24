@@ -2,7 +2,16 @@ import { useState } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import TagInput from '@/components/common/TagInput/TagInput';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
-import { STAT_FIELDS } from '@/lib/static/constants';
+import {
+    MAX_EV,
+    MAX_IV,
+    MAX_LEVEL,
+    MIN_EV,
+    MIN_IV,
+    MIN_LEVEL,
+    MOVE_SLOT_COUNT,
+    STAT_FIELDS,
+} from '@/lib/static/constants';
 import { Nature } from '@/lib/static/enums';
 import {
     AbilitySlot,
@@ -78,17 +87,10 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const MIN_IV = 0;
-    const MAX_IV = 31;
-    const MIN_EV = 0;
-    const MAX_EV = 252;
-    const MIN_LEVEL = 1;
-    const MAX_LEVEL = 100;
     // Pokémon caught in the wild default to the encounter's minimum level
     // when known, otherwise level 1; starters (which don't show the level
     // field) start at level 5, matching the in-game starting level.
     const DEFAULT_LEVEL = showLevel ? (defaultLevel ?? 1) : 5;
-    const MOVE_SLOT_COUNT = 4;
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS

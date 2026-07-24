@@ -1,0 +1,119 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.field-effects-panel {
+    background: $background-light;
+    border: 1px solid $border-subtle;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    width: 100%;
+
+    .title {
+        @include mono-label;
+
+        font-size: 1rem;
+        margin: 0;
+        text-align: center;
+    }
+
+    .row {
+        display: flex;
+        gap: 0.6rem;
+
+        .field {
+            flex: 1;
+            min-width: 0;
+        }
+    }
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+
+        .spikes-buttons {
+            display: flex;
+
+            .spikes-button {
+                @include mono-label;
+
+                background: none;
+                border: 1px solid $border-subtle;
+                border-left: none;
+                color: $foreground;
+                cursor: pointer;
+                flex: 1;
+                font-size: 0.75rem;
+                padding: 0.3rem 0;
+
+                &--active {
+                    color: var(--accent-color);
+                }
+
+                &:first-child {
+                    border-bottom-left-radius: 0.375rem;
+                    border-left: 1px solid $border-subtle;
+                    border-top-left-radius: 0.375rem;
+                }
+
+                &:last-child {
+                    border-bottom-right-radius: 0.375rem;
+                    border-top-right-radius: 0.375rem;
+                }
+            }
+        }
+    }
+
+    .label {
+        @include form-label;
+
+        font-size: 0.65rem;
+    }
+
+    .toggles {
+        border-top: 1px solid $border-subtle;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding-top: 0.75rem;
+
+        .toggle {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+
+            .toggle-label {
+                cursor: pointer;
+                font-size: 0.8rem;
+            }
+        }
+    }
+
+    .sides {
+        border-top: 1px solid $border-subtle;
+        display: grid;
+        gap: 0.75rem;
+        grid-template-columns: 1fr 1fr;
+        padding-top: 0.75rem;
+
+        .side {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+
+            .side-label {
+                @include uppercase-label;
+
+                font-size: 0.75rem;
+            }
+
+            .toggles {
+                border-top: none;
+                padding-top: 0;
+            }
+        }
+    }
+}

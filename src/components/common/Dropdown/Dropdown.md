@@ -14,13 +14,14 @@ the matching substring of each result in the game's accent color.
 
 ## Props
 
-| Prop          | Type                      | Required | Default     | Description                                                                          |
-| ------------- | ------------------------- | -------- | ----------- | ------------------------------------------------------------------------------------ |
-| `onChange`    | `(value: string) => void` | Yes      | -           | Called with the selected option's value                                              |
-| `options`     | `DropdownOption[]`        | Yes      | -           | The list of `{ label, value }` options to choose from                                |
-| `placeholder` | `string`                  | No       | `'Select…'` | Shown on the trigger when no option is selected                                      |
-| `searchable`  | `boolean`                 | No       | `false`     | Whether the menu shows a search input to filter options, and results are highlighted |
-| `value`       | `string`                  | Yes      | -           | The currently selected option's value                                                |
+| Prop          | Type                      | Required | Default     | Description                                                                           |
+| ------------- | ------------------------- | -------- | ----------- | ------------------------------------------------------------------------------------- |
+| `dense`       | `boolean`                 | No       | `false`     | Shrinks the trigger, search input, and options to a smaller size, for compact layouts |
+| `onChange`    | `(value: string) => void` | Yes      | -           | Called with the selected option's value                                               |
+| `options`     | `DropdownOption[]`        | Yes      | -           | The list of `{ label, value }` options to choose from                                 |
+| `placeholder` | `string`                  | No       | `'Select…'` | Shown on the trigger when no option is selected                                       |
+| `searchable`  | `boolean`                 | No       | `false`     | Whether the menu shows a search input to filter options, and results are highlighted  |
+| `value`       | `string`                  | Yes      | -           | The currently selected option's value                                                 |
 
 ## State
 

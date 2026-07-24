@@ -47,6 +47,29 @@ export default class BattleHelpers {
             : (location.battles ?? []);
     }
 
+    /** Every battle in game, in game order. */
+    static getAllBattles(game: Game): Battle[] {
+        return game.splits.flatMap((split) =>
+            split.locations.flatMap((location) =>
+                BattleHelpers.getBattlesInLocation(location)
+            )
+        );
+    }
+
+    /** The team belonging to the battle keyed by battleKey within game, resolved for starter, or [] if battleKey is undefined or doesn't match any battle. */
+    static getSelectedTeam(
+        game: Game,
+        battleKey: string | undefined,
+        starter: string
+    ): BattlePokemon[] {
+        if (!battleKey) return [];
+
+        const battle = BattleHelpers.getAllBattles(game).find(
+            (candidate) => BattleHelpers.getBattleKey(candidate) === battleKey
+        );
+        return battle ? BattleHelpers.getTeamFromOptions(battle, starter) : [];
+    }
+
     /** The split/location/battle indices of battleKey within game, or null if not found. */
     static countProgress(game: Game, battleKey: string): BattlePosition | null {
         for (

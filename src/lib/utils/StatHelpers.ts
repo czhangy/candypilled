@@ -53,6 +53,13 @@ export default class StatHelpers {
         );
     }
 
+    /** stat after applying an in-battle stat stage boost (-6..6). */
+    static applyBoost(stat: number, stage: number): number {
+        return stage >= 0
+            ? Math.floor((stat * (2 + stage)) / 2)
+            : Math.floor((stat * 2) / (2 - stage));
+    }
+
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------

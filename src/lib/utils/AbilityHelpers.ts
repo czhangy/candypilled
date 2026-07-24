@@ -13,6 +13,14 @@ export default class AbilityHelpers {
         return ABILITIES[StringHelpers.toSlug(name)];
     }
 
+    /** Every ability introduced by generation or earlier, sorted alphabetically by display name. */
+    static getAllAbilities(generation: number): string[] {
+        return Object.values(ABILITIES)
+            .filter((ability) => ability.introducedInGeneration <= generation)
+            .map((ability) => ability.name)
+            .sort((a, b) => a.localeCompare(b));
+    }
+
     /** Whether `name` is curated as a dangerous ability. */
     static isDangerousAbility(name: string): boolean {
         return AbilityHelpers.getAbilityData(name)?.isDangerous ?? false;

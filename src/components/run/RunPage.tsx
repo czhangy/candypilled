@@ -17,6 +17,7 @@ import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import AbilitiesTab from './AbilitiesTab/AbilitiesTab';
 import BoxTab from './BoxTab/BoxTab';
+import CalcTab from './CalcTab/CalcTab';
 import HallOfFameTab from './HallOfFameTab/HallOfFameTab';
 import MovesTab from './MovesTab/MovesTab';
 import PokedexTab from './PokedexTab/PokedexTab';
@@ -36,6 +37,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const TABS = [
         { id: 'split', label: 'Splits' },
         { id: 'box', label: 'Box' },
+        { id: 'calc', label: 'Calc' },
         { id: 'pokedex', label: 'Pokédex' },
         { id: 'moves', label: 'Moves' },
         { id: 'abilities', label: 'Abilities' },
@@ -45,6 +47,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const TAB_QUERY_PARAMS: Record<string, string> = {
         abilities: 'ability',
         box: 'pokemon',
+        calc: 'battle',
         moves: 'move',
         pokedex: 'species',
     };
@@ -87,6 +90,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const selectedAbility = searchParams.get('ability') ?? undefined;
     const selectedPokemon = searchParams.get('pokemon') ?? undefined;
     const selectedSpecies = searchParams.get('species') ?? undefined;
+    const selectedBattle = searchParams.get('battle') ?? undefined;
 
     const game = GAMES.find(
         (candidate) => StringHelpers.toSlug(candidate.name) === slug
@@ -234,6 +238,18 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         updateQueryParams({ pokemon: undefined });
     };
 
+    const handleBattleSelect = (battleKey: string): void => {
+        updateQueryParams({ battle: battleKey });
+    };
+
+    const handleTrainerLinkClick = (battleKey: string): void => {
+        window.open(
+            `${pathname}?tab=calc&battle=${encodeURIComponent(battleKey)}`,
+            '_blank',
+            'noopener,noreferrer'
+        );
+    };
+
     const handleLocationSelect = (locationName: string): void => {
         if (!game) return;
 
@@ -353,6 +369,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveLinkClick}
                             onSelectSpecies={handleSpeciesLinkClick}
+                            onSelectTrainer={handleTrainerLinkClick}
                             run={run}
                             stickyOffset={stickyHeaderHeight}
                         />
@@ -392,6 +409,14 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             generation={game.generation}
                             onSelectAbility={handleAbilitySelect}
                             selectedAbility={selectedAbility}
+                        />
+                    )}
+                    {activeTab === 'calc' && (
+                        <CalcTab
+                            game={game}
+                            onSelectBattle={handleBattleSelect}
+                            run={run}
+                            selectedBattle={selectedBattle}
                         />
                     )}
                     {activeTab === 'hof' && isHallOfFameUnlocked && (
