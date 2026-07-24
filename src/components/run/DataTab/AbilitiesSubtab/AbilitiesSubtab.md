@@ -1,9 +1,10 @@
-# AbilitiesTab
+# AbilitiesSubtab
 
-The "Abilities" tab of a run page. Displays a searchable, alphabetical list
-of every ability available in the game's generation on the left and the
-currently selected ability's details on the right, taking up roughly a
-quarter and three-quarters of the row's width respectively.
+The "Abilities" subtab of a run page's Data tab. Displays a
+searchable, alphabetical list of every ability available in the game's
+generation on the left and the currently selected ability's details on
+the right, taking up roughly a quarter and three-quarters of the row's
+width respectively.
 
 ## Props
 

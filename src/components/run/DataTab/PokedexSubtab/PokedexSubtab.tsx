@@ -4,9 +4,9 @@ import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import PokedexDetail from './PokedexDetail/PokedexDetail';
-import styles from './PokedexTab.module.scss';
+import styles from './PokedexSubtab.module.scss';
 
-type PokedexTabProps = {
+type PokedexSubtabProps = {
     game: Game;
     onSelectAbility: (name: string) => void;
     onSelectLocation: (location: string) => void;
@@ -16,7 +16,7 @@ type PokedexTabProps = {
     selectedSpecies?: string;
 };
 
-const PokedexTab: React.FC<PokedexTabProps> = ({
+const PokedexSubtab: React.FC<PokedexSubtabProps> = ({
     game,
     onSelectAbility,
     onSelectLocation,
@@ -43,7 +43,7 @@ const PokedexTab: React.FC<PokedexTabProps> = ({
     // -------------------------------------------------------------------------
 
     return (
-        <div className={styles['pokedex-tab']}>
+        <div className={styles['pokedex-subtab']}>
             <SearchableList
                 emptyMessage="No Pokémon found"
                 items={availableSpecies}
@@ -66,4 +66,4 @@ const PokedexTab: React.FC<PokedexTabProps> = ({
     );
 };
 
-export default PokedexTab;
+export default PokedexSubtab;

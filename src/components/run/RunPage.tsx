@@ -15,12 +15,10 @@ import BattleHelpers from '@/lib/utils/BattleHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
-import AbilitiesTab from './AbilitiesTab/AbilitiesTab';
 import BoxTab from './BoxTab/BoxTab';
 import CalcTab from './CalcTab/CalcTab';
+import DataTab from './DataTab/DataTab';
 import HallOfFameTab from './HallOfFameTab/HallOfFameTab';
-import MovesTab from './MovesTab/MovesTab';
-import PokedexTab from './PokedexTab/PokedexTab';
 import styles from './RunPage.module.scss';
 import SplitHeader from './SplitHeader/SplitHeader';
 import SplitTab from './SplitTab/SplitTab';
@@ -38,18 +36,16 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         { id: 'split', label: 'Splits' },
         { id: 'box', label: 'Box' },
         { id: 'calc', label: 'Calc' },
-        { id: 'pokedex', label: 'Pokédex' },
-        { id: 'moves', label: 'Moves' },
-        { id: 'abilities', label: 'Abilities' },
+        { id: 'data', label: 'Data' },
         { id: 'hof', label: 'Hall of Fame' },
     ];
 
-    const TAB_QUERY_PARAMS: Record<string, string> = {
-        abilities: 'ability',
-        box: 'pokemon',
-        calc: 'battle',
-        moves: 'move',
-        pokedex: 'species',
+    const DEFAULT_SUBTAB = 'pokedex';
+
+    const TAB_QUERY_PARAMS: Record<string, string[]> = {
+        box: ['pokemon'],
+        calc: ['battle'],
+        data: ['subtab', 'species', 'move', 'ability'],
     };
 
     const DEFAULT_WIPE_MESSAGES = [
@@ -86,6 +82,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     // -------------------------------------------------------------------------
 
     const activeTab = searchParams.get('tab') ?? TABS[0].id;
+    const activeSubtab = searchParams.get('subtab') ?? DEFAULT_SUBTAB;
     const selectedMove = searchParams.get('move') ?? undefined;
     const selectedAbility = searchParams.get('ability') ?? undefined;
     const selectedPokemon = searchParams.get('pokemon') ?? undefined;
@@ -194,10 +191,21 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     const handleTabChange = (id: string): void => {
         const updates: Record<string, string | undefined> = { tab: id };
-        Object.values(TAB_QUERY_PARAMS).forEach((param) => {
-            updates[param] = undefined;
+        Object.values(TAB_QUERY_PARAMS).forEach((params) => {
+            params.forEach((param) => {
+                updates[param] = undefined;
+            });
         });
         updateQueryParams(updates);
+    };
+
+    const handleSubtabChange = (id: string): void => {
+        updateQueryParams({
+            ability: undefined,
+            move: undefined,
+            species: undefined,
+            subtab: id,
+        });
     };
 
     const handleMoveSelect = (name: string): void => {
@@ -206,7 +214,9 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     const handleMoveLinkClick = (name: string): void => {
         window.open(
-            `${pathname}?tab=moves&move=${encodeURIComponent(name)}`,
+            `${pathname}?tab=data&subtab=moves&move=${encodeURIComponent(
+                name
+            )}`,
             '_blank',
             'noopener,noreferrer'
         );
@@ -214,7 +224,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     const handleSpeciesLinkClick = (species: string): void => {
         window.open(
-            `${pathname}?tab=pokedex&species=${encodeURIComponent(
+            `${pathname}?tab=data&subtab=pokedex&species=${encodeURIComponent(
                 StringHelpers.toSlug(species)
             )}`,
             '_blank',
@@ -263,6 +273,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         params.set('tab', 'split');
         params.set('split', earliestLocation.splitName);
         params.delete('pokemon');
+        params.delete('subtab');
         params.delete('move');
         params.delete('ability');
         params.delete('species');
@@ -277,7 +288,9 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     const handleAbilityLinkClick = (name: string): void => {
         window.open(
-            `${pathname}?tab=abilities&ability=${encodeURIComponent(name)}`,
+            `${pathname}?tab=data&subtab=abilities&ability=${encodeURIComponent(
+                name
+            )}`,
             '_blank',
             'noopener,noreferrer'
         );
@@ -311,7 +324,12 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         <div
             className={styles['run-page']}
             style={
-                { '--accent-color': game.accentColor } as React.CSSProperties
+                {
+                    '--accent-color': game.accentColor,
+                    ...(game.textContrastColor && {
+                        '--button-text-color': game.textContrastColor,
+                    }),
+                } as React.CSSProperties
             }
         >
             <Link className={styles.back} href="/runs">
@@ -386,29 +404,21 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             selectedPokemon={selectedPokemon}
                         />
                     )}
-                    {activeTab === 'pokedex' && (
-                        <PokedexTab
+                    {activeTab === 'data' && (
+                        <DataTab
+                            activeSubtab={activeSubtab}
                             game={game}
-                            onSelectAbility={handleAbilityLinkClick}
-                            onSelectLocation={handleLocationSelect}
-                            onSelectMove={handleMoveLinkClick}
-                            onSelectSpecies={handleSpeciesSelect}
-                            run={run}
-                            selectedSpecies={selectedSpecies}
-                        />
-                    )}
-                    {activeTab === 'moves' && (
-                        <MovesTab
-                            generation={game.generation}
-                            onSelectMove={handleMoveSelect}
-                            selectedMove={selectedMove}
-                        />
-                    )}
-                    {activeTab === 'abilities' && (
-                        <AbilitiesTab
-                            generation={game.generation}
                             onSelectAbility={handleAbilitySelect}
+                            onSelectAbilityLink={handleAbilityLinkClick}
+                            onSelectLocation={handleLocationSelect}
+                            onSelectMove={handleMoveSelect}
+                            onSelectMoveLink={handleMoveLinkClick}
+                            onSelectSpecies={handleSpeciesSelect}
+                            onSubtabChange={handleSubtabChange}
+                            run={run}
                             selectedAbility={selectedAbility}
+                            selectedMove={selectedMove}
+                            selectedSpecies={selectedSpecies}
                         />
                     )}
                     {activeTab === 'calc' && (
