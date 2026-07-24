@@ -1,7 +1,7 @@
-import { useState, useSyncExternalStore } from 'react';
+import { useEffect, useReducer, useSyncExternalStore } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import { STAT_FIELDS } from '@/lib/static/constants';
-import { Nature, PokemonStatus } from '@/lib/static/enums';
+import { Nature } from '@/lib/static/enums';
 import { DropdownOption, Game, Run, StatValues } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
@@ -13,9 +13,14 @@ import styles from './PokemonPanel.module.scss';
 type PokemonPanelProps = {
     game: Game;
     run: Run;
+    selectedLocation?: string;
 };
 
-const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
+const PokemonPanel: React.FC<PokemonPanelProps> = ({
+    game,
+    run,
+    selectedLocation,
+}) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
@@ -51,15 +56,40 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
         }
     );
 
-    // -------------------------------------------------------------------------
-    // HOOKS
-    // -------------------------------------------------------------------------
+    type PanelState = {
+        abilityName: string;
+        boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
+        evs: StatValues;
+        ivs: StatValues;
+        level: number;
+        moves: string[];
+        nature: Nature;
+        status: string;
+    };
 
-    const settings = useSyncExternalStore(
-        SettingsHelpers.subscribe,
-        SettingsHelpers.getSnapshot,
-        SettingsHelpers.getServerSnapshot
-    );
+    type PanelAction =
+        | {
+              type: 'LOAD';
+              abilityName: string;
+              evs: StatValues;
+              ivs: StatValues;
+              level: number;
+              moves: string[];
+              nature: Nature;
+          }
+        | { type: 'CLEAR' }
+        | { type: 'SET_ABILITY'; abilityName: string }
+        | { type: 'SET_NATURE'; nature: Nature }
+        | { type: 'SET_LEVEL'; level: number }
+        | { type: 'SET_IV'; stat: keyof StatValues; value: number }
+        | { type: 'SET_EV'; stat: keyof StatValues; value: number }
+        | {
+              type: 'SET_BOOST';
+              stat: Exclude<keyof StatValues, 'hp'>;
+              value: number;
+          }
+        | { type: 'SET_STATUS'; status: string }
+        | { type: 'SET_MOVE'; index: number; value: string };
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -76,37 +106,87 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
             (_, index) => moves[index] ?? ''
         );
 
+    const getBlankPanelState = (): PanelState => ({
+        abilityName: '',
+        boosts: getBlankBoosts(),
+        evs: StatHelpers.normalizeStats(undefined, 0),
+        ivs: StatHelpers.normalizeStats(undefined, MAX_IV),
+        level: MIN_LEVEL,
+        moves: padMoves([]),
+        nature: Object.values(Nature)[0],
+        status: '',
+    });
+
+    const panelReducer = (
+        state: PanelState,
+        action: PanelAction
+    ): PanelState => {
+        switch (action.type) {
+            case 'LOAD':
+                return {
+                    abilityName: action.abilityName,
+                    boosts: getBlankBoosts(),
+                    evs: action.evs,
+                    ivs: action.ivs,
+                    level: action.level,
+                    moves: action.moves,
+                    nature: action.nature,
+                    status: '',
+                };
+            case 'CLEAR':
+                return getBlankPanelState();
+            case 'SET_ABILITY':
+                return { ...state, abilityName: action.abilityName };
+            case 'SET_NATURE':
+                return { ...state, nature: action.nature };
+            case 'SET_LEVEL':
+                return { ...state, level: action.level };
+            case 'SET_IV':
+                return {
+                    ...state,
+                    ivs: { ...state.ivs, [action.stat]: action.value },
+                };
+            case 'SET_EV':
+                return {
+                    ...state,
+                    evs: { ...state.evs, [action.stat]: action.value },
+                };
+            case 'SET_BOOST':
+                return {
+                    ...state,
+                    boosts: { ...state.boosts, [action.stat]: action.value },
+                };
+            case 'SET_STATUS':
+                return { ...state, status: action.status };
+            case 'SET_MOVE':
+                return {
+                    ...state,
+                    moves: state.moves.map((move, index) =>
+                        index === action.index ? action.value : move
+                    ),
+                };
+        }
+    };
+
     // -------------------------------------------------------------------------
-    // STATE
+    // HOOKS
     // -------------------------------------------------------------------------
 
-    const [selectedLocation, setSelectedLocation] = useState('');
-    const [abilityName, setAbilityName] = useState('');
-    const [nature, setNature] = useState<Nature>(Object.values(Nature)[0]);
-    const [level, setLevel] = useState(MIN_LEVEL);
-    const [ivs, setIvs] = useState<StatValues>(
-        StatHelpers.normalizeStats(undefined, 31)
+    const settings = useSyncExternalStore(
+        SettingsHelpers.subscribe,
+        SettingsHelpers.getSnapshot,
+        SettingsHelpers.getServerSnapshot
     );
-    const [evs, setEvs] = useState<StatValues>(
-        StatHelpers.normalizeStats(undefined, 0)
-    );
-    const [boosts, setBoosts] = useState(getBlankBoosts);
-    const [status, setStatus] = useState('');
-    const [moves, setMoves] = useState<string[]>(() => padMoves([]));
+    const [
+        { abilityName, boosts, evs, ivs, level, moves, nature, status },
+        dispatch,
+    ] = useReducer(panelReducer, undefined, getBlankPanelState);
 
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
     const hideEvs = settings['hide-evs'] ?? false;
-
-    const livingPokemon = run.caughtPokemon.filter(
-        (pokemon) => pokemon.status === PokemonStatus.Alive
-    );
-    const boxOptions: DropdownOption[] = livingPokemon.map((pokemon) => ({
-        label: pokemon.name,
-        value: pokemon.location,
-    }));
 
     const caught = run.caughtPokemon.find(
         (pokemon) => pokemon.location === selectedLocation
@@ -134,42 +214,48 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
     ];
 
     // -------------------------------------------------------------------------
+    // EFFECTS
+    // -------------------------------------------------------------------------
+
+    // On caught changing — the previously loaded ability/nature/level/IVs/
+    // EVs/moves belonged to a different (or no) Pokémon; caught is an
+    // external prop-derived value this component doesn't control.
+    useEffect(() => {
+        if (!caught) {
+            dispatch({ type: 'CLEAR' });
+            return;
+        }
+
+        const abilitySlug = PokemonHelpers.getAbilityName(
+            caught.name,
+            game.generation,
+            caught.ability
+        );
+        dispatch({
+            type: 'LOAD',
+            abilityName:
+                (abilitySlug &&
+                    AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
+                abilitySlug ??
+                '',
+            evs: StatHelpers.normalizeStats(caught.evs, 0),
+            ivs: StatHelpers.normalizeStats(caught.ivs, MAX_IV),
+            level: caught.level,
+            moves: padMoves(caught.moves),
+            nature: caught.nature ?? Object.values(Nature)[0],
+        });
+    }, [caught, game.generation]);
+
+    // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
 
-    const handleSelectPokemon = (location: string): void => {
-        setSelectedLocation(location);
-
-        const nextCaught = run.caughtPokemon.find(
-            (pokemon) => pokemon.location === location
-        );
-        if (!nextCaught) return;
-
-        const abilitySlug = PokemonHelpers.getAbilityName(
-            nextCaught.name,
-            game.generation,
-            nextCaught.ability
-        );
-        setAbilityName(
-            (abilitySlug && AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
-                abilitySlug ??
-                ''
-        );
-        setNature(nextCaught.nature ?? Object.values(Nature)[0]);
-        setLevel(nextCaught.level);
-        setIvs(StatHelpers.normalizeStats(nextCaught.ivs, 31));
-        setEvs(StatHelpers.normalizeStats(nextCaught.evs, 0));
-        setBoosts(getBlankBoosts());
-        setStatus('');
-        setMoves(padMoves(nextCaught.moves));
-    };
-
     const handleAbilityChange = (value: string): void => {
-        setAbilityName(value);
+        dispatch({ type: 'SET_ABILITY', abilityName: value });
     };
 
     const handleNatureChange = (value: string): void => {
-        setNature(value as Nature);
+        dispatch({ type: 'SET_NATURE', nature: value as Nature });
     };
 
     const handleLevelChange = (
@@ -179,11 +265,11 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
             MAX_LEVEL,
             Math.max(MIN_LEVEL, Number(event.target.value))
         );
-        setLevel(value);
+        dispatch({ type: 'SET_LEVEL', level: value });
     };
 
     const handleStatusChange = (value: string): void => {
-        setStatus(value);
+        dispatch({ type: 'SET_STATUS', status: value });
     };
 
     const handleIvChange = (
@@ -194,7 +280,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
             MAX_IV,
             Math.max(MIN_IV, Number(event.target.value))
         );
-        setIvs((prev) => ({ ...prev, [stat]: value }));
+        dispatch({ type: 'SET_IV', stat, value });
     };
 
     const handleEvChange = (
@@ -205,20 +291,18 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
             MAX_EV,
             Math.max(MIN_EV, Number(event.target.value))
         );
-        setEvs((prev) => ({ ...prev, [stat]: value }));
+        dispatch({ type: 'SET_EV', stat, value });
     };
 
     const handleBoostChange = (
         stat: Exclude<keyof StatValues, 'hp'>,
         value: string
     ): void => {
-        setBoosts((prev) => ({ ...prev, [stat]: Number(value) }));
+        dispatch({ type: 'SET_BOOST', stat, value: Number(value) });
     };
 
     const handleMoveChange = (index: number, value: string): void => {
-        setMoves((prev) =>
-            prev.map((move, moveIndex) => (moveIndex === index ? value : move))
-        );
+        dispatch({ type: 'SET_MOVE', index, value });
     };
 
     // -------------------------------------------------------------------------
@@ -227,16 +311,31 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
 
     return (
         <div className={styles['pokemon-panel']}>
-            <div className={styles.field}>
-                <span className={styles.label}>Pokémon</span>
-                <Dropdown
-                    dense
-                    onChange={handleSelectPokemon}
-                    options={boxOptions}
-                    placeholder="Select a Pokémon…"
-                    searchable
-                    value={selectedLocation}
-                />
+            <div className={styles.row}>
+                <div className={styles.field}>
+                    <span className={styles.label}>Pokémon</span>
+                    <span className={styles.value}>
+                        {caught?.name ?? 'None selected'}
+                    </span>
+                </div>
+                <div className={styles.field}>
+                    <label
+                        className={styles.label}
+                        htmlFor="pokemon-panel-level"
+                    >
+                        Level
+                    </label>
+                    <input
+                        className={styles.input}
+                        disabled={!caught}
+                        id="pokemon-panel-level"
+                        max={MAX_LEVEL}
+                        min={MIN_LEVEL}
+                        onChange={handleLevelChange}
+                        type="number"
+                        value={level}
+                    />
+                </div>
             </div>
             {caught && (
                 <>
@@ -261,33 +360,14 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({ game, run }) => {
                             />
                         </div>
                     </div>
-                    <div className={styles.row}>
-                        <div className={styles.field}>
-                            <label
-                                className={styles.label}
-                                htmlFor="pokemon-panel-level"
-                            >
-                                Level
-                            </label>
-                            <input
-                                className={styles.input}
-                                id="pokemon-panel-level"
-                                max={MAX_LEVEL}
-                                min={MIN_LEVEL}
-                                onChange={handleLevelChange}
-                                type="number"
-                                value={level}
-                            />
-                        </div>
-                        <div className={styles.field}>
-                            <span className={styles.label}>Status</span>
-                            <Dropdown
-                                dense
-                                onChange={handleStatusChange}
-                                options={STATUS_OPTIONS}
-                                value={status}
-                            />
-                        </div>
+                    <div className={styles.field}>
+                        <span className={styles.label}>Status</span>
+                        <Dropdown
+                            dense
+                            onChange={handleStatusChange}
+                            options={STATUS_OPTIONS}
+                            value={status}
+                        />
                     </div>
                     <table className={styles.stats}>
                         <thead>

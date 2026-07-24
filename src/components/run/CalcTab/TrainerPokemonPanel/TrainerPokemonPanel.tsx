@@ -13,12 +13,14 @@ type TrainerPokemonPanelProps = {
     game: Game;
     run: Run;
     selectedBattle?: string;
+    selectedMemberIndex?: string;
 };
 
 const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
     game,
     run,
     selectedBattle,
+    selectedMemberIndex,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
@@ -51,13 +53,12 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
     type PanelState = {
         abilityName: string;
         boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
-        selectedMemberIndex: string;
         status: string;
     };
 
     type PanelAction =
         | { type: 'RESET' }
-        | { type: 'SELECT_MEMBER'; abilityName: string; index: string }
+        | { type: 'LOAD'; abilityName: string }
         | { type: 'SET_ABILITY'; abilityName: string }
         | {
               type: 'SET_BOOST';
@@ -78,7 +79,6 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
     const getBlankPanelState = (): PanelState => ({
         abilityName: '',
         boosts: getBlankBoosts(),
-        selectedMemberIndex: '',
         status: '',
     });
 
@@ -89,11 +89,10 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
         switch (action.type) {
             case 'RESET':
                 return getBlankPanelState();
-            case 'SELECT_MEMBER':
+            case 'LOAD':
                 return {
                     ...getBlankPanelState(),
                     abilityName: action.abilityName,
-                    selectedMemberIndex: action.index,
                 };
             case 'SET_ABILITY':
                 return { ...state, abilityName: action.abilityName };
@@ -116,8 +115,11 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
         SettingsHelpers.getSnapshot,
         SettingsHelpers.getServerSnapshot
     );
-    const [{ abilityName, boosts, selectedMemberIndex, status }, dispatch] =
-        useReducer(panelReducer, undefined, getBlankPanelState);
+    const [{ abilityName, boosts, status }, dispatch] = useReducer(
+        panelReducer,
+        undefined,
+        getBlankPanelState
+    );
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -125,17 +127,11 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
 
     const hideEvs = settings['hide-evs'] ?? false;
 
-    const selectedBattleObj = BattleHelpers.getAllBattles(game).find(
-        (battle) => BattleHelpers.getBattleKey(battle) === selectedBattle
+    const team = BattleHelpers.getSelectedTeam(
+        game,
+        selectedBattle,
+        run.starter
     );
-    const team = selectedBattleObj
-        ? BattleHelpers.getTeamFromOptions(selectedBattleObj, run.starter)
-        : [];
-    const teamOptions: DropdownOption[] = team.map((mon, index) => ({
-        label: mon.name,
-        value: String(index),
-    }));
-
     const mon = team[Number(selectedMemberIndex)];
     const ivs = mon ? StatHelpers.normalizeStats(mon.ivs, 31) : undefined;
     const evs = mon ? StatHelpers.normalizeStats(mon.evs, 0) : undefined;
@@ -162,35 +158,33 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
     // EFFECTS
     // -------------------------------------------------------------------------
 
-    // On selectedBattle changing — the previously selected team member,
-    // ability, status, and stat stages no longer apply to the new trainer.
+    // On mon changing — the previously loaded ability/status/stat stages
+    // belonged to a different (or no) team member; mon is derived from
+    // props this component doesn't control (selectedBattle/selectedMemberIndex).
     useEffect(() => {
-        dispatch({ type: 'RESET' });
-    }, [selectedBattle]);
-
-    // -------------------------------------------------------------------------
-    // HANDLERS
-    // -------------------------------------------------------------------------
-
-    const handleSelectMember = (value: string): void => {
-        const nextMon = team[Number(value)];
-        if (!nextMon) return;
+        if (!mon) {
+            dispatch({ type: 'RESET' });
+            return;
+        }
 
         const abilitySlug = PokemonHelpers.getAbilityName(
-            nextMon.name,
+            mon.name,
             game.generation,
-            nextMon.ability
+            mon.ability
         );
         dispatch({
-            type: 'SELECT_MEMBER',
+            type: 'LOAD',
             abilityName:
                 (abilitySlug &&
                     AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
                 abilitySlug ??
                 '',
-            index: value,
         });
-    };
+    }, [mon, game.generation]);
+
+    // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
 
     const handleAbilityChange = (value: string): void => {
         dispatch({ type: 'SET_ABILITY', abilityName: value });
@@ -213,98 +207,106 @@ const TrainerPokemonPanel: React.FC<TrainerPokemonPanelProps> = ({
 
     return (
         <div className={styles['trainer-pokemon-panel']}>
-            {!selectedBattleObj && (
+            {!selectedBattle && (
                 <p className={styles.placeholder}>Select a battle above</p>
             )}
-            {selectedBattleObj && (
-                <div className={styles.field}>
-                    <span className={styles.label}>Pokémon</span>
-                    <Dropdown
-                        dense
-                        onChange={handleSelectMember}
-                        options={teamOptions}
-                        placeholder="Select a Pokémon…"
-                        value={selectedMemberIndex}
-                    />
-                </div>
-            )}
-            {mon && (
+            {selectedBattle && (
                 <>
                     <div className={styles.row}>
                         <div className={styles.field}>
-                            <span className={styles.label}>Nature</span>
+                            <span className={styles.label}>Pokémon</span>
                             <span className={styles.value}>
-                                {mon.nature ?? 'None'}
+                                {mon?.name ?? 'None selected'}
                             </span>
                         </div>
                         <div className={styles.field}>
-                            <span className={styles.label}>Ability</span>
-                            <Dropdown
-                                dense
-                                onChange={handleAbilityChange}
-                                options={abilityOptions}
-                                searchable
-                                value={abilityName}
-                            />
-                        </div>
-                    </div>
-                    <div className={styles.row}>
-                        <div className={styles.field}>
                             <span className={styles.label}>Level</span>
-                            <span className={styles.value}>{mon.level}</span>
-                        </div>
-                        <div className={styles.field}>
-                            <span className={styles.label}>Status</span>
-                            <Dropdown
-                                dense
-                                onChange={handleStatusChange}
-                                options={STATUS_OPTIONS}
-                                value={status}
-                            />
+                            <span className={styles.value}>
+                                {mon?.level ?? '-'}
+                            </span>
                         </div>
                     </div>
-                    <table className={styles.stats}>
-                        <thead>
-                            <tr>
-                                <th />
-                                <th>Base</th>
-                                <th>IV</th>
-                                {!hideEvs && <th>EV</th>}
-                                <th>Stage</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {STAT_FIELDS.map(({ key, label }) => (
-                                <tr key={key}>
-                                    <th className={styles['stat-label']}>
-                                        {label}
-                                    </th>
-                                    <td>{baseStats?.[key]}</td>
-                                    <td>{ivs?.[key]}</td>
-                                    {!hideEvs && <td>{evs?.[key]}</td>}
-                                    <td className={styles['boost-cell']}>
-                                        {key !== 'hp' && (
-                                            <Dropdown
-                                                dense
-                                                onChange={(value) =>
-                                                    handleBoostChange(
-                                                        key,
-                                                        value
-                                                    )
-                                                }
-                                                options={BOOST_OPTIONS}
-                                                value={String(boosts[key])}
-                                            />
-                                        )}
-                                    </td>
-                                    <td className={styles.total}>
-                                        {totalStats?.[key]}
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                    {mon && (
+                        <>
+                            <div className={styles.row}>
+                                <div className={styles.field}>
+                                    <span className={styles.label}>Nature</span>
+                                    <span className={styles.value}>
+                                        {mon.nature ?? 'None'}
+                                    </span>
+                                </div>
+                                <div className={styles.field}>
+                                    <span className={styles.label}>
+                                        Ability
+                                    </span>
+                                    <Dropdown
+                                        dense
+                                        onChange={handleAbilityChange}
+                                        options={abilityOptions}
+                                        searchable
+                                        value={abilityName}
+                                    />
+                                </div>
+                            </div>
+                            <div className={styles.field}>
+                                <span className={styles.label}>Status</span>
+                                <Dropdown
+                                    dense
+                                    onChange={handleStatusChange}
+                                    options={STATUS_OPTIONS}
+                                    value={status}
+                                />
+                            </div>
+                            <table className={styles.stats}>
+                                <thead>
+                                    <tr>
+                                        <th />
+                                        <th>Base</th>
+                                        <th>IV</th>
+                                        {!hideEvs && <th>EV</th>}
+                                        <th>Stage</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {STAT_FIELDS.map(({ key, label }) => (
+                                        <tr key={key}>
+                                            <th
+                                                className={styles['stat-label']}
+                                            >
+                                                {label}
+                                            </th>
+                                            <td>{baseStats?.[key]}</td>
+                                            <td>{ivs?.[key]}</td>
+                                            {!hideEvs && <td>{evs?.[key]}</td>}
+                                            <td
+                                                className={styles['boost-cell']}
+                                            >
+                                                {key !== 'hp' && (
+                                                    <Dropdown
+                                                        dense
+                                                        onChange={(value) =>
+                                                            handleBoostChange(
+                                                                key,
+                                                                value
+                                                            )
+                                                        }
+                                                        options={BOOST_OPTIONS}
+                                                        value={String(
+                                                            boosts[key]
+                                                        )}
+                                                    />
+                                                )}
+                                            </td>
+                                            <td className={styles.total}>
+                                                {totalStats?.[key]}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </>
+                    )}
                 </>
             )}
         </div>

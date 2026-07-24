@@ -1,38 +1,47 @@
 # PokemonPanel
 
-A compact panel for the damage calculator that selects a living Pokémon from
-the run's box and displays/edits its battle-relevant details: nature,
-ability, level, status condition, stat spread (base/IV/EV/stage/total), and
-moves — all mutable, seeded from the selected Pokémon's caught data.
+A compact panel for the damage calculator that displays/edits the currently
+selected box Pokémon's battle-relevant details: species name and level in a
+combined row, nature, ability, status condition, stat spread
+(base/IV/EV/stage/total), and moves. The Pokémon itself is selected via
+`BoxSelectPanel`, below — this panel only shows/edits whichever Pokémon that
+selection currently points to.
 
 ## Props
 
-| Prop   | Type   | Required | Default | Description                                                               |
-| ------ | ------ | -------- | ------- | ------------------------------------------------------------------------- |
-| `game` | `Game` | Yes      | -       | The current game; its `generation` resolves base stats/ability/move lists |
-| `run`  | `Run`  | Yes      | -       | The current run, whose living `caughtPokemon` populate the box dropdown   |
+| Prop               | Type     | Required | Default | Description                                                               |
+| ------------------ | -------- | -------- | ------- | ------------------------------------------------------------------------- |
+| `game`             | `Game`   | Yes      | -       | The current game; its `generation` resolves base stats/ability/move lists |
+| `run`              | `Run`    | Yes      | -       | The current run, whose `caughtPokemon` resolves the selected Pokémon      |
+| `selectedLocation` | `string` | No       | -       | The selected Pokémon's location, driven by `BoxSelectPanel`               |
 
 ## State
 
-| State              | Type                                              | Initial value  | Description                                                                 |
-| ------------------ | ------------------------------------------------- | -------------- | --------------------------------------------------------------------------- |
-| `selectedLocation` | `string`                                          | `''`           | The selected caught Pokémon's location, the box dropdown's controlled value |
-| `abilityName`      | `string`                                          | `''`           | Editable ability, seeded from the selection's caught ability slot           |
-| `nature`           | `Nature`                                          | first `Nature` | Editable nature, seeded from the selection's caught nature                  |
-| `level`            | `number`                                          | `1`            | Editable level, seeded from the selection's caught level                    |
-| `ivs`              | `StatValues`                                      | all `31`       | Editable IVs, seeded from the selection's caught IVs                        |
-| `evs`              | `StatValues`                                      | all `0`        | Editable EVs, seeded from the selection's caught EVs                        |
-| `boosts`           | `Record<Exclude<keyof StatValues, 'hp'>, number>` | all `0`        | Editable in-battle stat stage boosts (-6..6), reset on selection change     |
-| `status`           | `string`                                          | `''` (healthy) | Editable battle status condition                                            |
-| `moves`            | `string[]`                                        | 4 empty slots  | Editable move names, seeded from the selection's caught moves               |
+State lives in a single `useReducer` (`PanelState`/`PanelAction`, declared
+locally) since selecting a different Pokémon transitions every mutable field
+together as one atomic load.
+
+| State         | Type                                              | Initial value  | Description                                  |
+| ------------- | ------------------------------------------------- | -------------- | -------------------------------------------- |
+| `abilityName` | `string`                                          | `''`           | Editable ability                             |
+| `nature`      | `Nature`                                          | first `Nature` | Editable nature                              |
+| `level`       | `number`                                          | `1`            | Editable level                               |
+| `ivs`         | `StatValues`                                      | all `31`       | Editable IVs                                 |
+| `evs`         | `StatValues`                                      | all `0`        | Editable EVs                                 |
+| `boosts`      | `Record<Exclude<keyof StatValues, 'hp'>, number>` | all `0`        | Editable in-battle stat stage boosts (-6..6) |
+| `status`      | `string`                                          | `''` (healthy) | Editable battle status condition             |
+| `moves`       | `string[]`                                        | 4 empty slots  | Editable move names                          |
+
+## Effects
+
+- **On `caught` changing** — dispatches `LOAD` (seeded from the newly
+  selected Pokémon's ability slot/nature/level/IVs/EVs/moves) or `CLEAR` if
+  no Pokémon is selected; `caught` is derived from the `selectedLocation`
+  prop, which this component doesn't control
 
 ## Computations
 
-- `hideEvs` — the global "Hide EVs" setting, read via `SettingsHelpers`; hides
-  the EV column and inputs when enabled
-- `livingPokemon` / `boxOptions` — `run.caughtPokemon` filtered to
-  `PokemonStatus.Alive`, in box order, as dropdown options labeled by species
-  name only
+- `hideEvs` — the global "Hide EVs" setting, read via `SettingsHelpers`
 - `caught` — the full caught Pokémon record matching `selectedLocation`
 - `baseStats` / `totalStats` — base stats resolved via `PokemonHelpers` for
   `game.generation`; totals computed via `StatHelpers.calculateStats` from
@@ -44,12 +53,3 @@ moves — all mutable, seeded from the selected Pokémon's caught data.
 - `moveOptions` — every move introduced at or before `game.generation`, via
   `MoveHelpers.getAllMoves` (not restricted to the selected species'
   learnset, for freeform theorycrafting)
-
-## Handlers
-
-- `handleSelectPokemon` — sets `selectedLocation` and resets every mutable
-  field (`abilityName`, `nature`, `level`, `ivs`, `evs`, `boosts`, `status`,
-  `moves`) from the newly selected caught Pokémon's data; `abilityName` is
-  seeded by resolving the caught ability slot to a slug via
-  `PokemonHelpers.getAbilityName`, then to its display name via
-  `AbilityHelpers.getAbilityData`

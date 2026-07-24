@@ -74,6 +74,11 @@ export default class PokemonHelpers {
         return Object.values(pokemon.sprites)[0];
     }
 
+    /** name's box/PC storage icon sprite path. */
+    static getBoxSprite(name: string): string {
+        return `/box/${StringHelpers.toSlug(name)}.png`;
+    }
+
     /** name's types as of generation, or undefined if no form matches. */
     static getPokemonTypes(
         name: string,
