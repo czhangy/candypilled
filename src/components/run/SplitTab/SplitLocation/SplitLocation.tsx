@@ -31,6 +31,7 @@ type SplitLocationProps = {
     onAdvanceSplit: (splitName: string) => void;
     onGameComplete: () => void;
     onSelectAbility: (name: string) => void;
+    onSelectItem: (name: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
     onSelectSpecies: (species: string) => void;
@@ -46,6 +47,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     onAdvanceSplit,
     onGameComplete,
     onSelectAbility,
+    onSelectItem,
     onSelectLocation,
     onSelectMove,
     onSelectSpecies,
@@ -468,6 +470,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                             selectedBattle
                                         )}
                                         onSelectAbility={onSelectAbility}
+                                        onSelectItem={onSelectItem}
                                         onSelectMove={onSelectMove}
                                         onSelectSpecies={onSelectSpecies}
                                         onSelectTrainer={onSelectTrainer}

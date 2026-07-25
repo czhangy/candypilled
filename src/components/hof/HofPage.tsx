@@ -27,12 +27,6 @@ const HofPage: React.FC = () => {
     );
 
     // -------------------------------------------------------------------------
-    // HANDLERS
-    // -------------------------------------------------------------------------
-
-    const handleNoop = (): void => {};
-
-    // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
@@ -90,9 +84,6 @@ const HofPage: React.FC = () => {
                                                 ? pokemon.location
                                                 : `empty-${index}`
                                         }
-                                        onSelectAbility={handleNoop}
-                                        onSelectMove={handleNoop}
-                                        onSelectSpecies={handleNoop}
                                         pokemon={pokemon}
                                         variant={entry.game}
                                         version={game.version}

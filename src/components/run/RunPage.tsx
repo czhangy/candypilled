@@ -303,6 +303,16 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         );
     };
 
+    const handleItemLinkClick = (name: string): void => {
+        window.open(
+            `${pathname}?tab=data&subtab=items&item=${encodeURIComponent(
+                name
+            )}`,
+            '_blank',
+            'noopener,noreferrer'
+        );
+    };
+
     const handleSplitSelect = (splitName: string): void => {
         updateQueryParams({ split: splitName });
         window.scrollTo({ top: 0 });
@@ -391,6 +401,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             onAdvanceSplit={handleSplitSelect}
                             onGameComplete={handleGameComplete}
                             onSelectAbility={handleAbilityLinkClick}
+                            onSelectItem={handleItemLinkClick}
                             onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveLinkClick}
                             onSelectSpecies={handleSpeciesLinkClick}

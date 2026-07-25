@@ -9,14 +9,14 @@ move's details, and darkens further on hover.
 
 ## Props
 
-| Prop                 | Type                     | Required | Default | Description                                                             |
-| -------------------- | ------------------------ | -------- | ------- | ----------------------------------------------------------------------- |
-| `generation`         | `number`                 | Yes      | -       | The game's generation, used to resolve each move's type                 |
-| `highlightDangerous` | `boolean`                | Yes      | -       | Whether moves flagged as dangerous are highlighted in red text          |
-| `isReadOnly`         | `boolean`                | Yes      | -       | Renders moves as plain, non-interactive text when true                  |
-| `ivs`                | `StatValues`             | Yes      | -       | The Pokémon's IVs, used to resolve Hidden Power's actual type           |
-| `moves`              | `string[]`               | Yes      | -       | The Pokémon's moves, padded to 4 slots with dashes if fewer             |
-| `onSelectMove`       | `(name: string) => void` | Yes      | -       | Called with a move's name when it's clicked (ignored when `isReadOnly`) |
+| Prop                 | Type                     | Required | Default | Description                                                           |
+| -------------------- | ------------------------ | -------- | ------- | --------------------------------------------------------------------- |
+| `generation`         | `number`                 | Yes      | -       | The game's generation, used to resolve each move's type               |
+| `highlightDangerous` | `boolean`                | Yes      | -       | Whether moves flagged as dangerous are highlighted in red text        |
+| `isReadOnly`         | `boolean`                | Yes      | -       | Renders moves as plain, non-interactive text when true                |
+| `ivs`                | `StatValues`             | Yes      | -       | The Pokémon's IVs, used to resolve Hidden Power's actual type         |
+| `moves`              | `string[]`               | Yes      | -       | The Pokémon's moves, padded to 4 slots with dashes if fewer           |
+| `onSelectMove`       | `(name: string) => void` | No       | -       | Called with a move's name when it's clicked; unused when `isReadOnly` |
 
 ## Computations
 

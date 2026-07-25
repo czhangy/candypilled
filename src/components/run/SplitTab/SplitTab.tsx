@@ -16,6 +16,7 @@ type SplitTabProps = {
     onAdvanceSplit: (splitName: string) => void;
     onGameComplete: () => void;
     onSelectAbility: (name: string) => void;
+    onSelectItem: (name: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
     onSelectSpecies: (species: string) => void;
@@ -30,6 +31,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
     onAdvanceSplit,
     onGameComplete,
     onSelectAbility,
+    onSelectItem,
     onSelectLocation,
     onSelectMove,
     onSelectSpecies,
@@ -228,6 +230,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             onAdvanceSplit={onAdvanceSplit}
                             onGameComplete={onGameComplete}
                             onSelectAbility={onSelectAbility}
+                            onSelectItem={onSelectItem}
                             onSelectLocation={onSelectLocation}
                             onSelectMove={onSelectMove}
                             onSelectSpecies={onSelectSpecies}

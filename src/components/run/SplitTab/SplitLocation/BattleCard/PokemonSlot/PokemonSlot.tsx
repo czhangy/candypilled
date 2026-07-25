@@ -15,9 +15,10 @@ import styles from './PokemonSlot.module.scss';
 type PokemonSlotProps = {
     generation: number;
     isReadOnly: boolean;
-    onSelectAbility: (name: string) => void;
-    onSelectMove: (name: string) => void;
-    onSelectSpecies: (species: string) => void;
+    onSelectAbility?: (name: string) => void;
+    onSelectItem?: (name: string) => void;
+    onSelectMove?: (name: string) => void;
+    onSelectSpecies?: (species: string) => void;
     pokemon: BattlePokemon | null;
     variant: string;
     version: string;
@@ -27,6 +28,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     generation,
     isReadOnly,
     onSelectAbility,
+    onSelectItem,
     onSelectMove,
     onSelectSpecies,
     pokemon,
@@ -76,8 +78,9 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     const sprite = pokemon
         ? PokemonHelpers.getPokemonSprite(pokemon.name, variant)
         : undefined;
-    const heldItemSprite = pokemon?.heldItem
-        ? ItemHelpers.getHeldItemSprite(pokemon.heldItem)
+    const heldItem = pokemon?.heldItem;
+    const heldItemSprite = heldItem
+        ? ItemHelpers.getHeldItemSprite(heldItem)
         : undefined;
     const types = pokemon ? getTypes(pokemon.name) : [];
     const ability = getAbility();
@@ -163,7 +166,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
             ) : (
                 <button
                     className={styles['pokemon-slot__link']}
-                    onClick={() => onSelectSpecies(pokemon.name)}
+                    onClick={() => onSelectSpecies?.(pokemon.name)}
                     type="button"
                 >
                     {speciesContent}
@@ -171,18 +174,45 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
             )}
             <ul className={styles['pokemon-slot__metadata']}>
                 <li className={styles['pokemon-slot__metadata-item--accent']}>
-                    {pokemon.heldItem ? (
-                        <span className={styles['held-item']}>
-                            {heldItemSprite && (
-                                <Image
-                                    alt={pokemon.heldItem}
-                                    height={ITEM_ICON_SIZE}
-                                    src={heldItemSprite}
-                                    width={ITEM_ICON_SIZE}
-                                />
-                            )}
-                            {pokemon.heldItem}
-                        </span>
+                    {heldItem ? (
+                        isReadOnly ? (
+                            <span
+                                className={[
+                                    styles['ability-button'],
+                                    styles['ability-button--readonly'],
+                                    styles['held-item'],
+                                ].join(' ')}
+                            >
+                                {heldItemSprite && (
+                                    <Image
+                                        alt={heldItem}
+                                        height={ITEM_ICON_SIZE}
+                                        src={heldItemSprite}
+                                        width={ITEM_ICON_SIZE}
+                                    />
+                                )}
+                                {heldItem}
+                            </span>
+                        ) : (
+                            <button
+                                className={[
+                                    styles['ability-button'],
+                                    styles['held-item'],
+                                ].join(' ')}
+                                onClick={() => onSelectItem?.(heldItem)}
+                                type="button"
+                            >
+                                {heldItemSprite && (
+                                    <Image
+                                        alt={heldItem}
+                                        height={ITEM_ICON_SIZE}
+                                        src={heldItemSprite}
+                                        width={ITEM_ICON_SIZE}
+                                    />
+                                )}
+                                {heldItem}
+                            </button>
+                        )
                     ) : (
                         '-'
                     )}
@@ -217,7 +247,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                                 ]
                                     .filter(Boolean)
                                     .join(' ')}
-                                onClick={() => onSelectAbility(ability)}
+                                onClick={() => onSelectAbility?.(ability)}
                                 type="button"
                             >
                                 {ability}
