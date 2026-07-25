@@ -52,6 +52,7 @@ type PromptedPokemon = {
     ability: AbilitySlot;
     level: number;
     nature: Nature;
+    gender?: 'male' | 'female';
 };
 
 type PromptedBattle = {
@@ -220,6 +221,7 @@ const serializePokemon = (pokemon: PromptedPokemon, indent: string): string => {
         `${indent}{\n` +
         `${indent}    name: '${escapeQuotes(pokemon.name)}',\n` +
         `${indent}    ability: ${pokemon.ability},\n` +
+        (pokemon.gender ? `${indent}    gender: '${pokemon.gender}',\n` : '') +
         `${indent}    level: ${pokemon.level},\n` +
         `${indent}    nature: Nature.${pokemon.nature},\n` +
         `${indent}},\n`
@@ -293,7 +295,23 @@ const promptPokemon = async (
             ) ?? null;
     }
 
-    return { name, ability, level, nature };
+    let gender: 'male' | 'female' | undefined;
+    let genderInput: string | null = null;
+    while (genderInput === null) {
+        const raw = (await rl.question('  Gender (M/F, blank for none): '))
+            .trim()
+            .toLowerCase();
+        if (raw === '') {
+            genderInput = '';
+        } else if (raw === 'm' || raw === 'f') {
+            genderInput = raw;
+            gender = raw === 'm' ? 'male' : 'female';
+        } else {
+            console.log("  That isn't a valid gender.");
+        }
+    }
+
+    return { name, ability, level, nature, gender };
 };
 
 const promptBattle = async (
