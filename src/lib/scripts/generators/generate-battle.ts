@@ -135,7 +135,7 @@ type Range = {
 };
 
 type PromptedPokemon = {
-    name: string;
+    slug: string;
     ability: AbilitySlot;
     level: number;
     nature: Nature;
@@ -313,7 +313,7 @@ const serializePokemon = (
 ): string => {
     return (
         `${indent}{\n` +
-        `${indent}    name: '${escapeQuotes(pokemon.name)}',\n` +
+        `${indent}    slug: '${escapeQuotes(pokemon.slug)}',\n` +
         `${indent}    ability: ${pokemon.ability},\n` +
         `${indent}    gender: '${pokemon.gender}',\n` +
         (pokemon.ivs ? `${indent}    ivs: ${pokemon.ivs},\n` : '') +
@@ -357,8 +357,8 @@ const promptPokemon = async (
     rl: Interface,
     index: number
 ): Promise<PromptedPokemon | null> => {
-    let name: string | null = null;
-    while (name === null) {
+    let slug: string | null = null;
+    while (slug === null) {
         const raw = (
             await rl.question(`  Pokémon ${index} name (blank to stop): `)
         ).trim();
@@ -369,7 +369,7 @@ const promptPokemon = async (
             console.log("  That isn't a valid Pokémon.");
             continue;
         }
-        name = pokemon.name;
+        slug = pokemon.slug;
     }
 
     const ability: AbilitySlot = DEFAULT_ABILITY_SLOT;
@@ -390,7 +390,7 @@ const promptPokemon = async (
             ) ?? null;
     }
 
-    return { name, ability, level, nature };
+    return { slug, ability, level, nature };
 };
 
 type PromptedTrainerClass = {
