@@ -8,7 +8,7 @@ type BattleCardProps = {
     battle: Battle;
     generation: number;
     isDefeated: boolean;
-    onSelectAbility: (name: string) => void;
+    onSelectAbility: (slug: string) => void;
     onSelectItem: (name: string) => void;
     onSelectMove: (name: string) => void;
     onSelectSpecies: (species: string) => void;

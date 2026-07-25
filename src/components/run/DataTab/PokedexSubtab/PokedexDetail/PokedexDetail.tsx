@@ -13,7 +13,7 @@ import styles from './PokedexDetail.module.scss';
 
 type PokedexDetailProps = {
     game: Game;
-    onSelectAbility: (name: string) => void;
+    onSelectAbility: (slug: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
     onSelectSpecies: (species: string) => void;
@@ -81,10 +81,10 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
         : undefined;
     const abilityEntries: AbilityEntry[] = abilities
         ? [
-              { name: abilities.slot1 },
-              ...(abilities.slot2 ? [{ name: abilities.slot2 }] : []),
+              { slug: abilities.slot1 },
+              ...(abilities.slot2 ? [{ slug: abilities.slot2 }] : []),
               ...(abilities.hidden
-                  ? [{ hidden: true, name: abilities.hidden }]
+                  ? [{ hidden: true, slug: abilities.hidden }]
                   : []),
           ]
         : [];

@@ -124,7 +124,7 @@ export type Setting = {
 };
 
 // Identifies which of a species' abilities is set: 1 = slot1, 2 = slot2,
-// 3 = hidden. Callers resolve the name via PokemonHelpers.getAbilityName.
+// 3 = hidden. Callers resolve the slug via PokemonHelpers.getAbilitySlug.
 export type AbilitySlot = 1 | 2 | 3;
 
 export type BattlePokemon = {
@@ -424,6 +424,7 @@ export type AbilityValuesByGeneration = {
 };
 
 export type AbilityData = {
+    slug: string;
     name: string;
     introducedInGeneration: number;
     // PokeAPI has no concept of "dangerous" abilities, so this is curated
@@ -475,7 +476,7 @@ export type LearnsetByVersionGroup = {
 
 export type AbilityEntry = {
     hidden?: boolean;
-    name: string;
+    slug: string;
 };
 
 export type PokemonData = {

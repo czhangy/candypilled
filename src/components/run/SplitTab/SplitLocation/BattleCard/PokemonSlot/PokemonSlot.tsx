@@ -8,14 +8,13 @@ import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
 import MoveList from './MoveList/MoveList';
 import styles from './PokemonSlot.module.scss';
 
 type PokemonSlotProps = {
     generation: number;
     isReadOnly: boolean;
-    onSelectAbility?: (name: string) => void;
+    onSelectAbility?: (slug: string) => void;
     onSelectItem?: (name: string) => void;
     onSelectMove?: (name: string) => void;
     onSelectSpecies?: (species: string) => void;
@@ -61,14 +60,13 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     const getTypes = (name: string): string[] =>
         PokemonHelpers.getPokemonTypes(name, generation) ?? [];
 
-    const getAbility = (): string | undefined => {
+    const getAbilitySlug = (): string | undefined => {
         if (!pokemon) return undefined;
-        const ability = PokemonHelpers.getAbilityName(
+        return PokemonHelpers.getAbilitySlug(
             pokemon.name,
             generation,
             pokemon.ability
         );
-        return ability && StringHelpers.toTitleCase(ability);
     };
 
     // -------------------------------------------------------------------------
@@ -83,7 +81,10 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
         ? ItemHelpers.getHeldItemSprite(heldItem)
         : undefined;
     const types = pokemon ? getTypes(pokemon.name) : [];
-    const ability = getAbility();
+    const abilitySlug = getAbilitySlug();
+    const ability = abilitySlug
+        ? AbilityHelpers.getAbilityData(abilitySlug)?.name
+        : undefined;
     const highlightDangerous = settings['highlight-dangerous'] ?? false;
     const moves =
         pokemon?.moves ??
@@ -234,7 +235,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                                     styles['ability-button--readonly'],
                                     highlightDangerous &&
                                         AbilityHelpers.isDangerousAbility(
-                                            ability
+                                            abilitySlug as string
                                         ) &&
                                         styles['ability-button--dangerous'],
                                 ]
@@ -249,13 +250,15 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                                     styles['ability-button'],
                                     highlightDangerous &&
                                         AbilityHelpers.isDangerousAbility(
-                                            ability
+                                            abilitySlug as string
                                         ) &&
                                         styles['ability-button--dangerous'],
                                 ]
                                     .filter(Boolean)
                                     .join(' ')}
-                                onClick={() => onSelectAbility?.(ability)}
+                                onClick={() =>
+                                    onSelectAbility?.(abilitySlug as string)
+                                }
                                 type="button"
                             >
                                 {ability}

@@ -469,7 +469,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
             return;
         }
 
-        const abilitySlug = PokemonHelpers.getAbilityName(
+        const abilitySlug = PokemonHelpers.getAbilitySlug(
             caught.name,
             game.generation,
             caught.ability
@@ -498,7 +498,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
             return;
         }
 
-        const abilitySlug = PokemonHelpers.getAbilityName(
+        const abilitySlug = PokemonHelpers.getAbilitySlug(
             mon.name,
             game.generation,
             mon.ability

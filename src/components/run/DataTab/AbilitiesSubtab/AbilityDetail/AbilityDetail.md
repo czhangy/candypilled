@@ -7,10 +7,10 @@ the page, with a styled scrollbar matching the rest of the app.
 
 ## Props
 
-| Prop         | Type     | Required | Default | Description                                                 |
-| ------------ | -------- | -------- | ------- | ----------------------------------------------------------- |
-| `ability`    | `string` | No       | -       | The selected ability's name, if any                         |
-| `generation` | `number` | Yes      | -       | The game's generation, used to resolve the ability's values |
+| Prop          | Type     | Required | Default | Description                                                 |
+| ------------- | -------- | -------- | ------- | ----------------------------------------------------------- |
+| `abilitySlug` | `string` | No       | -       | The selected ability's slug, if any                         |
+| `generation`  | `number` | Yes      | -       | The game's generation, used to resolve the ability's values |
 
 ## Computations
 

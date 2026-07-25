@@ -11,7 +11,7 @@ three-quarters of the row's width respectively.
 | Prop               | Type                         | Required | Default | Description                                                                                       |
 | ------------------ | ---------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------- |
 | `game`             | `Game`                       | Yes      | -       | The game to resolve species, types, abilities, stats, and locations from                          |
-| `onSelectAbility`  | `(name: string) => void`     | Yes      | -       | Forwarded to `PokedexDetail`, called when an ability is clicked                                   |
+| `onSelectAbility`  | `(slug: string) => void`     | Yes      | -       | Forwarded to `PokedexDetail`, called when an ability is clicked                                   |
 | `onSelectLocation` | `(location: string) => void` | Yes      | -       | Forwarded to `PokedexDetail`, called when a location is clicked                                   |
 | `onSelectMove`     | `(name: string) => void`     | Yes      | -       | Forwarded to `PokedexDetail`, called when a move is clicked                                       |
 | `onSelectSpecies`  | `(species: string) => void`  | Yes      | -       | Called when a Pokémon is selected, whether from the list or from `PokedexDetail`'s evolution line |

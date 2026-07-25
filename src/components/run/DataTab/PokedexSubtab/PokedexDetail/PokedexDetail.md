@@ -26,7 +26,7 @@ missed) in the run highlighted red.
 | Prop               | Type                         | Required | Default | Description                                                                                                                   |
 | ------------------ | ---------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `game`             | `Game`                       | Yes      | -       | The game to resolve types, abilities, stats, learnset, and locations from                                                     |
-| `onSelectAbility`  | `(name: string) => void`     | Yes      | -       | Called when an ability is clicked within the abilities list                                                                   |
+| `onSelectAbility`  | `(slug: string) => void`     | Yes      | -       | Called when an ability is clicked within the abilities list                                                                   |
 | `onSelectLocation` | `(location: string) => void` | Yes      | -       | Called with a location's base name when it's clicked within the locations tab                                                 |
 | `onSelectMove`     | `(name: string) => void`     | Yes      | -       | Called when a move is clicked within the learnset tab                                                                         |
 | `onSelectSpecies`  | `(species: string) => void`  | Yes      | -       | Called when a Pokémon is clicked within the evolution line                                                                    |

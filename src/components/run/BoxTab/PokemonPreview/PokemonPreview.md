@@ -33,7 +33,7 @@ hindered by it is highlighted blue.
 | `levelCap`          | `number \| null`                                                                                                                                                              | Yes      | -       | The current split's level cap, used to highlight an over-leveled Pokémon's level          |
 | `onEdit`            | `(pokemon: CaughtPokemon, details: Pick<CaughtPokemon, 'ability' \| 'evs' \| 'gender' \| 'heldItem' \| 'ivs' \| 'level' \| 'moves' \| 'name' \| 'nature' \| 'tags'>) => void` | Yes      | -       | Called with the previewed Pokémon and its edited details when the edit form is submitted  |
 | `onEvolve`          | `(pokemon: CaughtPokemon, newName: string) => void`                                                                                                                           | Yes      | -       | Called with the previewed Pokémon and its confirmed evolution's species name              |
-| `onSelectAbility`   | `(name: string) => void`                                                                                                                                                      | Yes      | -       | Called with the Pokémon's ability name when it's clicked                                  |
+| `onSelectAbility`   | `(slug: string) => void`                                                                                                                                                      | Yes      | -       | Called with the Pokémon's ability slug when it's clicked                                  |
 | `onSelectItem`      | `(name: string) => void`                                                                                                                                                      | Yes      | -       | Called with the Pokémon's held item name when it's clicked                                |
 | `onSelectLocation`  | `(location: string) => void`                                                                                                                                                  | Yes      | -       | Called with the Pokémon's catch location when it's clicked                                |
 | `onSelectMove`      | `(name: string) => void`                                                                                                                                                      | Yes      | -       | Called with a move's name when it's clicked                                               |
@@ -52,8 +52,10 @@ hindered by it is highlighted blue.
 
 ## Computations
 
-- `ability` — the selected ability's name, resolved from `pokemon.ability`
-  (a slot number) via `PokemonHelpers.getAbilityName` at `generation`
+- `abilitySlug` — the selected ability's slug, resolved from `pokemon.ability`
+  (a slot number) via `PokemonHelpers.getAbilitySlug` at `generation`
+- `abilityName` — the selected ability's display name, resolved from
+  `abilitySlug` via `AbilityHelpers`
 - `moveSlots` — `pokemon.moves` padded to four entries so empty move slots
   render as placeholder cards
 - `ivs` — the Pokémon's IVs normalized into a full `StatValues` via

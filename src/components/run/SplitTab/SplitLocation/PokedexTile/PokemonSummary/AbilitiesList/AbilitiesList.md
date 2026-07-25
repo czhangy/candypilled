@@ -7,11 +7,16 @@ dimmer and suffixed with "(Hidden)".
 
 ## Props
 
-| Prop              | Type                     | Required | Default | Description                                                                                |
-| ----------------- | ------------------------ | -------- | ------- | ------------------------------------------------------------------------------------------ |
-| `entries`         | `AbilityEntry[]`         | Yes      | -       | The abilities to display, with the hidden one flagged                                      |
-| `interactive`     | `boolean`                | Yes      | -       | Whether entries render as clickable buttons or static text                                 |
-| `onSelectAbility` | `(name: string) => void` | Yes      | -       | Called with an ability's title-cased name when clicked (only reachable when `interactive`) |
+| Prop              | Type                     | Required | Default | Description                                                                    |
+| ----------------- | ------------------------ | -------- | ------- | ------------------------------------------------------------------------------ |
+| `entries`         | `AbilityEntry[]`         | Yes      | -       | The abilities to display, with the hidden one flagged                          |
+| `interactive`     | `boolean`                | Yes      | -       | Whether entries render as clickable buttons or static text                     |
+| `onSelectAbility` | `(slug: string) => void` | Yes      | -       | Called with an ability's slug when clicked (only reachable when `interactive`) |
+
+## Computations
+
+- Each entry's display name is resolved via `AbilityHelpers.getAbilityData(entry.slug)?.name`,
+  falling back to the slug if the ability isn't found
 
 ## SCSS Variable Dependencies
 

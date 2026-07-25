@@ -9,14 +9,14 @@ the accent color.
 
 ## Props
 
-| Prop                | Type                     | Required | Default | Description                                        |
-| ------------------- | ------------------------ | -------- | ------- | -------------------------------------------------- |
-| `emptyMessage`      | `string`                 | Yes      | -       | Message shown when no items match the search query |
-| `items`             | `{ name: string }[]`     | Yes      | -       | The full list of named items to search and list    |
-| `onSelectItem`      | `(name: string) => void` | No       | -       | Called with an item's name when it's clicked       |
-| `searchAriaLabel`   | `string`                 | Yes      | -       | Accessible label for the search input              |
-| `searchPlaceholder` | `string`                 | Yes      | -       | Placeholder text for the search input              |
-| `selectedItem`      | `string`                 | No       | -       | The currently selected item's name, if any         |
+| Prop                | Type                                | Required | Default | Description                                                                                                                   |
+| ------------------- | ----------------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `emptyMessage`      | `string`                            | Yes      | -       | Message shown when no items match the search query                                                                            |
+| `items`             | `{ name: string; slug?: string }[]` | Yes      | -       | The full list of items to search and list; `name` is always displayed/searched, `slug` (if present) is the selection identity |
+| `onSelectItem`      | `(key: string) => void`             | No       | -       | Called with an item's `slug` (or `name`, if no `slug`) when it's clicked                                                      |
+| `searchAriaLabel`   | `string`                            | Yes      | -       | Accessible label for the search input                                                                                         |
+| `searchPlaceholder` | `string`                            | Yes      | -       | Placeholder text for the search input                                                                                         |
+| `selectedItem`      | `string`                            | No       | -       | The currently selected item's `slug` (or `name`, if no `slug`), if any                                                        |
 
 ## State
 
@@ -27,7 +27,7 @@ the accent color.
 ## Computations
 
 - `visibleItems` — `items` filtered by `query` (case-insensitive substring
-  match against each item's name) and sorted alphabetically
+  match against each item's name) and sorted alphabetically by name
 
 Each item's name is rendered via `HighlightedText`, which highlights the
 substring matching `query`.

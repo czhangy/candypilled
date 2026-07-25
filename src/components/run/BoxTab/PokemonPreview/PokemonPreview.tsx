@@ -3,12 +3,12 @@ import Image from 'next/image';
 import { MOVE_SLOT_COUNT, STAT_FIELDS } from '@/lib/static/constants';
 import { PokemonStatus } from '@/lib/static/enums';
 import { BoxView, CaughtPokemon, StatValues } from '@/lib/static/types';
+import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
 import EditPokemonModal from './EditPokemonModal/EditPokemonModal';
 import EvolveModal from './EvolveModal/EvolveModal';
 import MoveCard from './MoveCard/MoveCard';
@@ -37,7 +37,7 @@ type PokemonPreviewProps = {
         >
     ) => void;
     onEvolve: (pokemon: CaughtPokemon, newName: string) => void;
-    onSelectAbility: (name: string) => void;
+    onSelectAbility: (slug: string) => void;
     onSelectItem: (name: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
@@ -93,8 +93,8 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     // HANDLERS
     // -------------------------------------------------------------------------
 
-    const handleAbilityClick = (ability: string): void => {
-        onSelectAbility(StringHelpers.toTitleCase(ability));
+    const handleAbilityClick = (abilitySlug: string): void => {
+        onSelectAbility(abilitySlug);
     };
 
     const handleLocationClick = (location: string): void => {
@@ -217,12 +217,15 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
               (_, index) => pokemon.moves[index]
           )
         : [];
-    const ability = pokemon
-        ? PokemonHelpers.getAbilityName(
+    const abilitySlug = pokemon
+        ? PokemonHelpers.getAbilitySlug(
               pokemon.name,
               generation,
               pokemon.ability
           )
+        : undefined;
+    const abilityName = abilitySlug
+        ? AbilityHelpers.getAbilityData(abilitySlug)?.name
         : undefined;
     const heldItem = pokemon?.heldItem;
     const ivs = pokemon
@@ -322,7 +325,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                             </a>
                                         </div>
                                     )}
-                                    {ability && (
+                                    {abilitySlug && abilityName && (
                                         <div className={styles.detail}>
                                             <span
                                                 className={
@@ -336,13 +339,13 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                                     styles['detail-link']
                                                 }
                                                 onClick={() =>
-                                                    handleAbilityClick(ability)
+                                                    handleAbilityClick(
+                                                        abilitySlug
+                                                    )
                                                 }
                                                 type="button"
                                             >
-                                                {StringHelpers.toTitleCase(
-                                                    ability
-                                                )}
+                                                {abilityName}
                                             </button>
                                         </div>
                                     )}

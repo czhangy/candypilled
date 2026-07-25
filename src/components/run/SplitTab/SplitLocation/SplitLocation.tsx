@@ -30,7 +30,7 @@ type SplitLocationProps = {
     location: Location;
     onAdvanceSplit: (splitName: string) => void;
     onGameComplete: () => void;
-    onSelectAbility: (name: string) => void;
+    onSelectAbility: (slug: string) => void;
     onSelectItem: (name: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;

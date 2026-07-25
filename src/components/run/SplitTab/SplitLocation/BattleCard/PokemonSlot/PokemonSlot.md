@@ -24,7 +24,7 @@ as dangerous are shown in red text regardless of `isReadOnly`. When
 | ----------------- | --------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------ |
 | `generation`      | `number`                    | Yes      | -       | The game's generation, used to resolve the Pokémon's types and ability                           |
 | `isReadOnly`      | `boolean`                   | Yes      | -       | Renders the sprite/name, held item, ability, and nature as plain, non-interactive text when true |
-| `onSelectAbility` | `(name: string) => void`    | No       | -       | Called with the Pokémon's ability when it's clicked; unused when `isReadOnly`                    |
+| `onSelectAbility` | `(slug: string) => void`    | No       | -       | Called with the Pokémon's ability slug when it's clicked; unused when `isReadOnly`               |
 | `onSelectItem`    | `(name: string) => void`    | No       | -       | Called with the Pokémon's held item when it's clicked; unused when `isReadOnly`                  |
 | `onSelectMove`    | `(name: string) => void`    | No       | -       | Called with a move's name when it's clicked within the moveset; unused when `isReadOnly`         |
 | `onSelectSpecies` | `(species: string) => void` | No       | -       | Called with the Pokémon's name when its sprite or name is clicked; unused when `isReadOnly`      |
@@ -39,9 +39,10 @@ as dangerous are shown in red text regardless of `isReadOnly`. When
   still shows) when no held item data matches
 - `getTypes` — the Pokémon's types at `generation`, rendered as badges
   (`/types/{type}.png`) beneath its name
-- `getAbility` — the Pokémon's ability, using its `ability` field as
-  an override when set and otherwise falling back to its slot-1
-  ability at `generation`, resolved via `PokemonHelpers`
+- `getAbilitySlug` — the Pokémon's ability slug, using its `ability`
+  field as an override when set and otherwise falling back to its
+  slot-1 ability at `generation`, resolved via `PokemonHelpers`; its
+  display name is then resolved via `AbilityHelpers`
 - `highlightDangerous` — whether the "Highlight Dangerous
   Moves/Abilities" setting is on, read via `SettingsHelpers` and
   passed to `MoveList`; also gates whether

@@ -136,6 +136,7 @@ export const fetchAbilities = async (): Promise<void> => {
 
         const name = StringHelpers.toTitleCase(ability.name);
         data[ability.name] = {
+            slug: ability.name,
             name,
             introducedInGeneration: toGenerationNumber(ability.generation.name),
             isDangerous: DANGEROUS_ABILITIES.has(ability.name),

@@ -8,7 +8,7 @@ import styles from './PokedexSubtab.module.scss';
 
 type PokedexSubtabProps = {
     game: Game;
-    onSelectAbility: (name: string) => void;
+    onSelectAbility: (slug: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
     onSelectSpecies: (species: string) => void;

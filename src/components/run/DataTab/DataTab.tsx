@@ -8,8 +8,8 @@ import PokedexSubtab from './PokedexSubtab/PokedexSubtab';
 type DataTabProps = {
     activeSubtab: string;
     game: Game;
-    onSelectAbility: (name: string) => void;
-    onSelectAbilityLink: (name: string) => void;
+    onSelectAbility: (slug: string) => void;
+    onSelectAbilityLink: (slug: string) => void;
     onSelectItem: (name: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;

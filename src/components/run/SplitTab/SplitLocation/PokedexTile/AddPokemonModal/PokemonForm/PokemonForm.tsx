@@ -20,9 +20,9 @@ import {
     DropdownOption,
     StatValues,
 } from '@/lib/static/types';
+import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './PokemonForm.module.scss';
 
 type PokemonFormProps = {
@@ -258,15 +258,15 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     const abilities = PokemonHelpers.getPokemonAbilities(species, generation);
     const abilityOptions: DropdownOption[] = abilities
         ? [
-              { name: abilities.slot1, slot: 1 as AbilitySlot },
+              { slot: 1 as AbilitySlot, slug: abilities.slot1 },
               ...(abilities.slot2
-                  ? [{ name: abilities.slot2, slot: 2 as AbilitySlot }]
+                  ? [{ slot: 2 as AbilitySlot, slug: abilities.slot2 }]
                   : []),
               ...(abilities.hidden
-                  ? [{ name: abilities.hidden, slot: 3 as AbilitySlot }]
+                  ? [{ slot: 3 as AbilitySlot, slug: abilities.hidden }]
                   : []),
-          ].map(({ name, slot }) => ({
-              label: StringHelpers.toTitleCase(name),
+          ].map(({ slot, slug }) => ({
+              label: AbilityHelpers.getAbilityData(slug)?.name ?? slug,
               value: String(slot),
           }))
         : [];

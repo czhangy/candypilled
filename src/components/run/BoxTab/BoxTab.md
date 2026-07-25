@@ -10,7 +10,7 @@ the currently selected Pokémon on the right, taking up the remaining third.
 | ------------------- | ---------------------------- | -------- | ------- | ------------------------------------------------------------------------ |
 | `game`              | `Game`                       | Yes      | -       | The current game, used to resolve the caught Pokémon's sprites and moves |
 | `onDeselectPokemon` | `() => void`                 | Yes      | -       | Called to clear the currently selected caught Pokémon                    |
-| `onSelectAbility`   | `(name: string) => void`     | Yes      | -       | Called with an ability's name when it's clicked in the preview           |
+| `onSelectAbility`   | `(slug: string) => void`     | Yes      | -       | Called with an ability's slug when it's clicked in the preview           |
 | `onSelectItem`      | `(name: string) => void`     | Yes      | -       | Called with a held item's name when it's clicked in the preview          |
 | `onSelectLocation`  | `(location: string) => void` | Yes      | -       | Called with a caught Pokémon's location when it's clicked in the preview |
 | `onSelectMove`      | `(name: string) => void`     | Yes      | -       | Called with a move's name when it's clicked in the preview               |

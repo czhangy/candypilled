@@ -105,8 +105,8 @@ export default class PokemonHelpers {
         )?.abilities;
     }
 
-    /** The name of name's ability in slot, as of generation. */
-    static getAbilityName(
+    /** The slug of name's ability in slot, as of generation. */
+    static getAbilitySlug(
         name: string,
         generation: number,
         slot: AbilitySlot

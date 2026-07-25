@@ -11,8 +11,8 @@ width respectively.
 | Prop              | Type                     | Required | Default | Description                                                                                                   |
 | ----------------- | ------------------------ | -------- | ------- | ------------------------------------------------------------------------------------------------------------- |
 | `generation`      | `number`                 | Yes      | -       | The game's generation, used to resolve the selected ability's values and to filter which abilities are listed |
-| `onSelectAbility` | `(name: string) => void` | Yes      | -       | Called with an ability's name when it's clicked in the list                                                   |
-| `selectedAbility` | `string`                 | No       | -       | The currently selected ability's name, if any                                                                 |
+| `onSelectAbility` | `(slug: string) => void` | Yes      | -       | Called with an ability's slug when it's clicked in the list                                                   |
+| `selectedAbility` | `string`                 | No       | -       | The currently selected ability's slug, if any                                                                 |
 
 ## Computations
 

@@ -234,8 +234,8 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         );
     };
 
-    const handleAbilitySelect = (name: string): void => {
-        updateQueryParams({ ability: name });
+    const handleAbilitySelect = (slug: string): void => {
+        updateQueryParams({ ability: slug });
     };
 
     const handleItemSelect = (name: string): void => {
@@ -293,10 +293,10 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         );
     };
 
-    const handleAbilityLinkClick = (name: string): void => {
+    const handleAbilityLinkClick = (slug: string): void => {
         window.open(
             `${pathname}?tab=data&subtab=abilities&ability=${encodeURIComponent(
-                name
+                slug
             )}`,
             '_blank',
             'noopener,noreferrer'
