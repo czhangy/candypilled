@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import CloseIcon from '@/lib/icons/CloseIcon';
+import ModalScrollHelpers from '@/lib/utils/ModalScrollHelpers';
 import styles from './Modal.module.scss';
 
 type ModalProps = {
@@ -49,10 +50,9 @@ const Modal: React.FC<ModalProps> = ({
     // -------------------------------------------------------------------------
 
     useEffect(() => {
-        const { overflow } = document.body.style;
-        document.body.style.overflow = 'hidden';
+        ModalScrollHelpers.lock();
         return () => {
-            document.body.style.overflow = overflow;
+            ModalScrollHelpers.unlock();
         };
     }, []);
 

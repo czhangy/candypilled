@@ -36,8 +36,10 @@ close affordances instead of unmounting the modal immediately.
 
 ## Effects
 
-- **On mount** — sets `document.body`'s `overflow` to `hidden` to block page
-  scroll, restoring the previous value on unmount
+- **On mount** — locks page scroll via `ModalScrollHelpers`, unlocking on
+  unmount; the helper tracks a shared count across all `Modal` instances so
+  overlapping modals (e.g. one still playing its exit animation when another
+  opens) don't unlock scroll until the last one has closed
 - **On mount** — listens for the Escape key and calls `requestClose` when
   pressed
 
