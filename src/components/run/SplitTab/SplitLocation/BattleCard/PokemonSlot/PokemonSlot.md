@@ -8,9 +8,10 @@ annotated with their stat
 effects, shown in a smaller font on the same line (e.g. "Adamant [+Atk
 -SpA]"). Each Pokémon's name is prefixed with its level (e.g. "Lv.5
 Chimchar"). Unless `isReadOnly`, the sprite and name are clickable,
-opening that Pokémon's Pokédex entry in a new tab, the ability is
+opening that Pokémon's Pokédex entry in a new tab, the held item is
+clickable, linking to that item's details, the ability is
 clickable, linking to that ability's details, and the nature is
-clickable, opening its entry on the Natures page in a new tab; both
+clickable, opening its entry on the Natures page in a new tab; all
 have a background that darkens further on hover. When the "Highlight
 Dangerous Moves/Abilities" setting is on, abilities and moves flagged
 as dangerous are shown in red text regardless of `isReadOnly`. When
@@ -18,19 +19,23 @@ as dangerous are shown in red text regardless of `isReadOnly`. When
 
 ## Props
 
-| Prop              | Type                        | Required | Default | Description                                                                                   |
-| ----------------- | --------------------------- | -------- | ------- | --------------------------------------------------------------------------------------------- |
-| `generation`      | `number`                    | Yes      | -       | The game's generation, used to resolve the Pokémon's types and ability                        |
-| `isReadOnly`      | `boolean`                   | Yes      | -       | Renders the sprite/name, ability, and nature as plain, non-interactive text when true         |
-| `onSelectAbility` | `(name: string) => void`    | Yes      | -       | Called with the Pokémon's ability when it's clicked (ignored when `isReadOnly`)               |
-| `onSelectMove`    | `(name: string) => void`    | Yes      | -       | Called with a move's name when it's clicked within the moveset (ignored when `isReadOnly`)    |
-| `onSelectSpecies` | `(species: string) => void` | Yes      | -       | Called with the Pokémon's name when its sprite or name is clicked (ignored when `isReadOnly`) |
-| `pokemon`         | `BattlePokemon \| null`     | Yes      | -       | The Pokémon to display, or `null` to render an empty slot                                     |
-| `variant`         | `string`                    | Yes      | -       | The sprite variant to prefer, matching the game's slug                                        |
-| `version`         | `string`                    | Yes      | -       | The game's version slug, used to derive the moveset when `pokemon.moves` is unset             |
+| Prop              | Type                        | Required | Default | Description                                                                                      |
+| ----------------- | --------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------ |
+| `generation`      | `number`                    | Yes      | -       | The game's generation, used to resolve the Pokémon's types and ability                           |
+| `isReadOnly`      | `boolean`                   | Yes      | -       | Renders the sprite/name, held item, ability, and nature as plain, non-interactive text when true |
+| `onSelectAbility` | `(name: string) => void`    | No       | -       | Called with the Pokémon's ability when it's clicked; unused when `isReadOnly`                    |
+| `onSelectItem`    | `(name: string) => void`    | No       | -       | Called with the Pokémon's held item when it's clicked; unused when `isReadOnly`                  |
+| `onSelectMove`    | `(name: string) => void`    | No       | -       | Called with a move's name when it's clicked within the moveset; unused when `isReadOnly`         |
+| `onSelectSpecies` | `(species: string) => void` | No       | -       | Called with the Pokémon's name when its sprite or name is clicked; unused when `isReadOnly`      |
+| `pokemon`         | `BattlePokemon \| null`     | Yes      | -       | The Pokémon to display, or `null` to render an empty slot                                        |
+| `variant`         | `string`                    | Yes      | -       | The sprite variant to prefer, matching the game's slug                                           |
+| `version`         | `string`                    | Yes      | -       | The game's version slug, used to derive the moveset when `pokemon.moves` is unset                |
 
 ## Computations
 
+- `heldItemSprite` — the sprite for `pokemon.heldItem`, resolved via
+  `ItemHelpers.getHeldItemSprite`; the icon is omitted (held item text
+  still shows) when no held item data matches
 - `getTypes` — the Pokémon's types at `generation`, rendered as badges
   (`/types/{type}.png`) beneath its name
 - `getAbility` — the Pokémon's ability, using its `ability` field as

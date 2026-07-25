@@ -189,6 +189,13 @@ export default class DamageCalcHelpers {
                 ability: input.abilityName || undefined,
                 boosts: input.boosts,
                 evs: input.evs,
+                gender:
+                    input.gender === 'male'
+                        ? 'M'
+                        : input.gender === 'female'
+                          ? 'F'
+                          : undefined,
+                item: input.heldItem || undefined,
                 ivs: input.ivs,
                 level: input.level,
                 nature: input.nature,

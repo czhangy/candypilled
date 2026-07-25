@@ -1,0 +1,3078 @@
+{
+    "bright-powder": {
+        "name": "Bright Powder",
+        "category": "held-items",
+        "effect": "Held: Increases the holder's evasion by 1/9 (11 1/9%).",
+        "introducedInGeneration": 2,
+        "sprite": "/items/bright-powder.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that casts a glare to reduce accuracy."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It casts a tricky glare that lowers the opponent's accuracy."
+            }
+        ]
+    },
+    "white-herb": {
+        "name": "White Herb",
+        "category": "held-items",
+        "effect": "Held: Resets all lowered stats to normal at end of turn. Consumed after use.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/white-herb.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that restores any lowered stat."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It restores any lowered stat in battle. It can be used only once."
+            }
+        ]
+    },
+    "quick-claw": {
+        "name": "Quick Claw",
+        "category": "held-items",
+        "effect": "Held: Holder has a 3/16 (18.75%) chance to move first.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/quick-claw.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that occasionally allows the first strike."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. A light, sharp claw that lets the bearer move first occasionally."
+            }
+        ]
+    },
+    "mental-herb": {
+        "name": "Mental Herb",
+        "category": "held-items",
+        "effect": "Held: Consumed to cure infatuation. Gen V: Also removes Taunt, Encore, Torment, Disable, and Cursed Body.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/mental-herb.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that snaps POKéMON out of infatuation."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It snaps the holder out of infatuation. It can be used only once."
+            }
+        ]
+    },
+    "king-s-rock": {
+        "name": "King's Rock",
+        "category": "held-items",
+        "effect": "Held: Damaging moves gain a 10% chance to make their target flinch. Traded on a Poliwhirl: Holder evolves into Politoed. Traded on a Slowpoke: Holder evolves into Slowking.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/king-s-rock.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that may cause flinching when the foe is hit."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It may cause the foe to flinch when the holder inflicts damage."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by a Pokémon. When the holder inflicts damage, the target may flinch."
+            }
+        ]
+    },
+    "smoke-ball": {
+        "name": "Smoke Ball",
+        "category": "held-items",
+        "effect": "Held: Allows the Holder to escape from any wild battle.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/smoke-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that can be used to flee from a wild POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It enables the holder to flee from any wild Pokémon without fail."
+            }
+        ]
+    },
+    "focus-band": {
+        "name": "Focus Band",
+        "category": "held-items",
+        "effect": "Held: Holder has 10% chance to survive attacks or self-inflicted damage at 1 HP.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/focus-band.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that occasionally prevents fainting."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. The holder may endure a potential KO attack, leaving it with just 1 HP."
+            }
+        ]
+    },
+    "scope-lens": {
+        "name": "Scope Lens",
+        "category": "held-items",
+        "effect": "Held: Raises the holder's critical hit ratio by one stage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/scope-lens.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the critical- hit rate."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a lens that boosts the holder's critical-hit ratio."
+            }
+        ]
+    },
+    "leftovers": {
+        "name": "Leftovers",
+        "category": "held-items",
+        "effect": "Held: Restores 1/16 (6.25%) holder's max HP at the end of each turn.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/leftovers.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that gradually restores HP in battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. The holder's HP is gradually restored during battle."
+            }
+        ]
+    },
+    "shell-bell": {
+        "name": "Shell Bell",
+        "category": "held-items",
+        "effect": "Held: Holder receives 1/8 of the damage it deals when attacking.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/shell-bell.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that restores HP upon striking the foe."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. The holder's HP is restored a little every time it inflicts damage."
+            }
+        ]
+    },
+    "lax-incense": {
+        "name": "Lax Incense",
+        "category": "held-items",
+        "effect": "Held: Holder's evasion is increased by 5%. Breeding: Wobbuffet begets a Wynaut Egg.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/lax-incense.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that slightly lowers the foe's accuracy."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. The tricky aroma of this incense lowers the foe's accuracy."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by a Pokémon. The tricky aroma of this incense may make attacks miss the holder."
+            }
+        ]
+    },
+    "wide-lens": {
+        "name": "Wide Lens",
+        "category": "held-items",
+        "effect": "Held: Provides a 1/10 (10%) boost in accuracy to the holder.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/wide-lens.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a magnifying lens that slightly boosts the accuracy of moves."
+            }
+        ]
+    },
+    "muscle-band": {
+        "name": "Muscle Band",
+        "category": "held-items",
+        "effect": "Held: Boosts the damage of physical moves used by the holder by 10%.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/muscle-band.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a headband that slightly boosts the power of physical moves."
+            }
+        ]
+    },
+    "wise-glasses": {
+        "name": "Wise Glasses",
+        "category": "held-items",
+        "effect": "Held: Boosts the damage of special moves used by the holder by 1/10 (10%).",
+        "introducedInGeneration": 4,
+        "sprite": "/items/wise-glasses.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a thick pair of glasses that slightly boosts the power of special moves."
+            }
+        ]
+    },
+    "expert-belt": {
+        "name": "Expert Belt",
+        "category": "held-items",
+        "effect": "Held: Holder's Super Effective moves do 20% extra damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/expert-belt.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a well-worn belt that slightly boosts the power of supereffective moves."
+            }
+        ]
+    },
+    "light-clay": {
+        "name": "Light Clay",
+        "category": "held-items",
+        "effect": "Held: Light Screen and Reflect used by the holder last 8 rounds instead of 5.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/light-clay.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Pokémon hold item that extends the duration of barrier moves like Light Screen and Reflect used by the holder."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Pokémon held item that extends the duration of barrier moves like Light Screen and Reflect used by the holder."
+            }
+        ]
+    },
+    "life-orb": {
+        "name": "Life Orb",
+        "category": "held-items",
+        "effect": "Held: Holder's moves inflict 30% extra damage, but cost 10% max HP.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/life-orb.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It boosts the power of moves, but at the cost of some HP on each hit."
+            }
+        ]
+    },
+    "power-herb": {
+        "name": "Power Herb",
+        "category": "held-items",
+        "effect": "Held: Both turns of a two-turn charge move happen at once. Consumed upon use.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/power-herb.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A single-use item to be held by a Pokémon. It allows the immediate use of a move that charges on the first turn."
+            }
+        ]
+    },
+    "focus-sash": {
+        "name": "Focus Sash",
+        "category": "held-items",
+        "effect": "Held: Holder survives any single-hit attack at 1 HP if at max HP, then the item is consumed.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/focus-sash.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. If it has full HP, the holder will endure one potential KO attack, leaving 1 HP."
+            }
+        ]
+    },
+    "zoom-lens": {
+        "name": "Zoom Lens",
+        "category": "held-items",
+        "effect": "Held: Provides a 1/5 (20%) boost in accuracy if the holder moves after the target.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/zoom-lens.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. If the holder moves after the foe, its critical-hit ratio will be boosted."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by a Pokémon. If the holder moves after its target, its accuracy will be boosted."
+            }
+        ]
+    },
+    "metronome": {
+        "name": "Metronome",
+        "category": "held-items",
+        "effect": "Held: Consectutive uses of the same attack have a cumulative damage boost of 10%. Maximum 100% boost.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/metronome.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Pokémon hold item that boosts a move used consecutively. Its effect is reset if another move is used."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Pokémon held item that boosts a move used consecutively. Its effect is reset if another move is used."
+            }
+        ]
+    },
+    "destiny-knot": {
+        "name": "Destiny Knot",
+        "category": "held-items",
+        "effect": "Held: Infatuates opposing Pokémon when holder is inflicted with infatuation.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/destiny-knot.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A long, thin, bright red string to be held by a Pokémon. If the holder becomes infatuated, the foe does too."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A long, thin, bright-red string to be held by a Pokémon. If the holder becomes infatuated, the foe does too."
+            }
+        ]
+    },
+    "black-sludge": {
+        "name": "Black Sludge",
+        "category": "held-items",
+        "effect": "Held: Poison-type holder recovers 1/16 (6.25%) max HP each turn. Non-Poison-Types take 1/8 (12.5%) max HP damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/black-sludge.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A hold item that gradually restores the HP of Poison-type Pokémon. It inflicts damage on all other types."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A held item that gradually restores the HP of Poison-type Pokémon. It inflicts damage on all other types."
+            }
+        ]
+    },
+    "icy-rock": {
+        "name": "Icy Rock",
+        "category": "held-items",
+        "effect": "Held: Hail by the holder lasts 8 rounds instead of 5.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/icy-rock.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Pokémon hold item that extends the duration of the move Hail used by the holder."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Pokémon held item that extends the duration of the move Hail used by the holder."
+            }
+        ]
+    },
+    "smooth-rock": {
+        "name": "Smooth Rock",
+        "category": "held-items",
+        "effect": "Held: Sandstorm by the holder lasts 8 rounds instead of 5.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/smooth-rock.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Pokémon hold item that extends the duration of the move Sandstorm used by the holder."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Pokémon held item that extends the duration of the move Sandstorm used by the holder."
+            }
+        ]
+    },
+    "heat-rock": {
+        "name": "Heat Rock",
+        "category": "held-items",
+        "effect": "Held: Sunny Day by the holder lasts 8 rounds instead of 5.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/heat-rock.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Pokémon hold item that extends the duration of the move Sunny Day used by the holder."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Pokémon held item that extends the duration of the move Sunny Day used by the holder."
+            }
+        ]
+    },
+    "damp-rock": {
+        "name": "Damp Rock",
+        "category": "held-items",
+        "effect": "Held: Rain Dance by the holder lasts 8 rounds instead of 5.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/damp-rock.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Pokémon hold item that extends the duration of the move Rain Dance used by the holder."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Pokémon held item that extends the duration of the move Rain Dance used by the holder."
+            }
+        ]
+    },
+    "grip-claw": {
+        "name": "Grip Claw",
+        "category": "held-items",
+        "effect": "Held: Holder's multi-turn trapping moves last 5 turns.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/grip-claw.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Pokémon hold item that extends the duration of multiturn attacks like Bind and Wrap."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Pokémon held item that extends the duration of multiturn attacks like Bind and Wrap."
+            }
+        ]
+    },
+    "shed-shell": {
+        "name": "Shed Shell",
+        "category": "held-items",
+        "effect": "Held: Holder can bypass all trapping effects and switch out. Multi-turn moves still cannot be switched out of.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/shed-shell.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A tough, discarded carapace to be held by a Pokémon. It enables the holder to switch with a waiting Pokémon in battle."
+            }
+        ]
+    },
+    "big-root": {
+        "name": "Big Root",
+        "category": "held-items",
+        "effect": "Held: Increases HP recovered from draining moves, Ingrain, and Aqua Ring by 3/10 (30%).",
+        "introducedInGeneration": 4,
+        "sprite": "/items/big-root.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Pokémon hold item that boosts the power of HP-stealing moves to let the holder recover more HP."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Pokémon held item that boosts the power of HP-stealing moves to let the holder recover more HP."
+            }
+        ]
+    },
+    "razor-claw": {
+        "name": "Razor Claw",
+        "category": "held-items",
+        "effect": "Held: Raises the holder's critical hit ratio by one stage. Held by a Sneasel while levelling up at night: Holder evolves into Weavile.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/razor-claw.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a sharply hooked claw that ups the holder's critical-hit ratio."
+            }
+        ]
+    },
+    "razor-fang": {
+        "name": "Razor Fang",
+        "category": "held-items",
+        "effect": "Held: Damaging moves gain a 10% chance to make their target flinch. Held by a Gligar while levelling up: Holder evolves into Gliscor.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/razor-fang.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It may cause the foe to flinch when the holder inflicts damage."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by a Pokémon. It may make foes and allies flinch when the holder inflicts damage."
+            }
+        ]
+    },
+    "eviolite": {
+        "name": "Eviolite",
+        "category": "held-items",
+        "effect": "Held: Holder has 1.5× Defense and Special Defense, as long as it's not fully evolved.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/eviolite.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A mysterious evolutionary lump. When held, it raises the Defense and Sp. Def of a Pokémon that can still evolve."
+            }
+        ]
+    },
+    "float-stone": {
+        "name": "Float Stone",
+        "category": "held-items",
+        "effect": "Held: Holder has 0.5× weight.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/float-stone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A very light stone. It reduces the weight of a Pokémon when held."
+            }
+        ]
+    },
+    "rocky-helmet": {
+        "name": "Rocky Helmet",
+        "category": "held-items",
+        "effect": "Held: When the holder is hit by a contact move, the attacking Pokémon takes 1/6 its max HP in damage.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/rocky-helmet.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "If the holder of this item takes damage, the attacker will also be damaged upon contact."
+            }
+        ]
+    },
+    "air-balloon": {
+        "name": "Air Balloon",
+        "category": "held-items",
+        "effect": "Held: Grants immunity to Ground-type moves, Spikes, and Toxic Spikes. Consumed when the holder takes damage from a move.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/air-balloon.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "When held by a Pokémon, the Pokémon will float into the air. When the holder is attacked, this item will burst."
+            }
+        ]
+    },
+    "red-card": {
+        "name": "Red Card",
+        "category": "held-items",
+        "effect": "Held: When the holder takes damage from a move, the opponent switches out for another random party Pokémon. Consumed after use.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/red-card.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A card with a mysterious power. When the holder is struck by a foe, the attacker is removed from battle."
+            }
+        ]
+    },
+    "ring-target": {
+        "name": "Ring Target",
+        "category": "held-items",
+        "effect": "Held: Negates the holder's type immunities. Ability immunities are not removed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/ring-target.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Moves that would otherwise have no effect will land on the Pokémon that holds it."
+            }
+        ]
+    },
+    "binding-band": {
+        "name": "Binding Band",
+        "category": "held-items",
+        "effect": "Held: Doubles the per-turn damage of multi-turn trapping moves.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/binding-band.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A band that increases the power of binding moves when held."
+            }
+        ]
+    },
+    "absorb-bulb": {
+        "name": "Absorb Bulb",
+        "category": "held-items",
+        "effect": "Held: Raises the holder's Special Attack by one stage when it takes Water-type damage.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/absorb-bulb.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A consumable bulb. If the holder is hit by a Water-type move, its Sp. Atk will rise."
+            }
+        ]
+    },
+    "cell-battery": {
+        "name": "Cell Battery",
+        "category": "held-items",
+        "effect": "Held: Raises the holder's Attack by one stage when it takes Electric-type damage.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/cell-battery.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A consumable battery. If the holder is hit by an Electric-type move, its Attack will rise."
+            }
+        ]
+    },
+    "eject-button": {
+        "name": "Eject Button",
+        "category": "held-items",
+        "effect": "Held: When the holder takes damage from a move, it switches out for a party Pokémon of the Trainer's choice.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/eject-button.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "If the holder is hit by an attack, it will switch with another Pokémon in your party."
+            }
+        ]
+    },
+    "pass-orb": {
+        "name": "Pass Orb",
+        "category": "held-items",
+        "effect": "Activates Pass Powers.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/pass-orb.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A mysterious orb containing the power of the Unova region, to be used when generating Pass Power."
+            }
+        ]
+    },
+    "choice-band": {
+        "name": "Choice Band",
+        "category": "choice",
+        "effect": "Held: Increases Attack by 50%, but restricts the holder to only one move.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/choice-band.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Raises a move's power, but permits only that move."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. This headband ups Attack, but allows the use of only one kind of move."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by a Pokémon. This headband ups Attack, but allows the use of only one of its moves."
+            }
+        ]
+    },
+    "choice-scarf": {
+        "name": "Choice Scarf",
+        "category": "choice",
+        "effect": "Held: Increases Speed by 50%, but restricts the holder to only one move.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/choice-scarf.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. This scarf boosts Speed, but allows the use of only one kind of move."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by a Pokémon. This scarf boosts Speed, but allows the use of only one of its moves."
+            }
+        ]
+    },
+    "choice-specs": {
+        "name": "Choice Specs",
+        "category": "choice",
+        "effect": "Held: Increases Special Attack by 50%, but restricts the holder to only one move.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/choice-specs.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. These distinctive glasses boost Sp. Atk, but allow only one kind of move to be used."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by a Pokémon. These distinctive glasses boost Sp. Atk but allow the use of only one of its moves."
+            }
+        ]
+    },
+    "macho-brace": {
+        "name": "Macho Brace",
+        "category": "effort-training",
+        "effect": "Held: Holder gains double effort values from battles, but has halved Speed in battle.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/macho-brace.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that promotes growth, but reduces SPEED."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a stiff and heavy brace that promotes strong growth but lowers Speed."
+            }
+        ]
+    },
+    "power-bracer": {
+        "name": "Power Bracer",
+        "category": "effort-training",
+        "effect": "Held: Holder gains 4 Attack effort values, but has halved Speed in battle.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/power-bracer.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Pokémon hold item that promotes Attack gain on leveling, but reduces the Speed stat."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Pokémon held item that promotes Attack gain on leveling, but reduces the Speed stat."
+            }
+        ]
+    },
+    "power-belt": {
+        "name": "Power Belt",
+        "category": "effort-training",
+        "effect": "Held: Holder gains 4 Defense effort values, but has halved Speed in battle.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/power-belt.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Pokémon hold item that promotes Defense gain on leveling, but reduces the Speed stat."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Pokémon held item that promotes Defense gain on leveling, but reduces the Speed stat."
+            }
+        ]
+    },
+    "power-lens": {
+        "name": "Power Lens",
+        "category": "effort-training",
+        "effect": "Held: Holder gains 4 Special Attack effort values, but has halved Speed in battle.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/power-lens.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Pokémon hold item that promotes Sp. Atk gain on leveling, but reduces the Speed stat."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Pokémon held item that promotes Sp. Atk gain on leveling, but reduces the Speed stat."
+            }
+        ]
+    },
+    "power-band": {
+        "name": "Power Band",
+        "category": "effort-training",
+        "effect": "Held: Holder gains 4 Special Defense effort values, but has halved Speed in battle.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/power-band.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Pokémon hold item that promotes Sp. Def gain on leveling, but reduces the Speed stat."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Pokémon held item that promotes Sp. Def gain on leveling, but reduces the Speed stat."
+            }
+        ]
+    },
+    "power-anklet": {
+        "name": "Power Anklet",
+        "category": "effort-training",
+        "effect": "Held: Holder gains 4 Speed effort values, but has halved Speed in battle.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/power-anklet.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Pokémon hold item that promotes Speed gain on leveling, but reduces the Speed stat."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Pokémon held item that promotes Speed gain on leveling, but reduces the Speed stat."
+            }
+        ]
+    },
+    "power-weight": {
+        "name": "Power Weight",
+        "category": "effort-training",
+        "effect": "Held: Holder gains 4 HP effort values, but has halved Speed in battle.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/power-weight.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Pokémon hold item that promotes HP gain on leveling, but reduces the Speed stat."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Pokémon held item that promotes HP gain on leveling, but reduces the Speed stat."
+            }
+        ]
+    },
+    "toxic-orb": {
+        "name": "Toxic Orb",
+        "category": "bad-held-items",
+        "effect": "Held: Inflicts Toxic on the holder at the end of the turn. Activates after Poison damage would occur.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/toxic-orb.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a bizarre orb that badly poisons the holder in battle."
+            }
+        ]
+    },
+    "flame-orb": {
+        "name": "Flame Orb",
+        "category": "bad-held-items",
+        "effect": "Held: Inflicts Burn on the holder at the end of the turn. Activates after Burn damage would occur.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/flame-orb.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a bizarre orb that inflicts a burn on the holder in battle."
+            }
+        ]
+    },
+    "iron-ball": {
+        "name": "Iron Ball",
+        "category": "bad-held-items",
+        "effect": "Held: Holder's Speed is halved. Negates all Ground-type immunities, and makes Flying-types take neutral damage from Ground-type moves. Arena Trap. Spikes, and Toxic Spikes affect the holder.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/iron-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Pokémon hold item that cuts Speed. It makes Flying-type and levitating holders susceptible to Ground moves."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Pokémon held item that cuts Speed. It makes Flying-type and levitating holders susceptible to Ground moves."
+            }
+        ]
+    },
+    "lagging-tail": {
+        "name": "Lagging Tail",
+        "category": "bad-held-items",
+        "effect": "Held: Holder moves last in its priority bracket.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/lagging-tail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is tremendously heavy and makes the holder move slower than usual."
+            }
+        ]
+    },
+    "sticky-barb": {
+        "name": "Sticky Barb",
+        "category": "bad-held-items",
+        "effect": "Held: Holder takes 1/8 (12.5%) its max HP at the end of each turn. When the holder is hit by a contact move, the attacking Pokémon takes 1/8 its max HP in damage and receive the item if not holding one.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/sticky-barb.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A hold item that damages the holder on every turn. It may latch on to foes that touch the holder."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A held item that damages the holder on every turn. It may latch on to foes and allies that touch the holder."
+            }
+        ]
+    },
+    "full-incense": {
+        "name": "Full Incense",
+        "category": "bad-held-items",
+        "effect": "Held: Holder moves last in its priority bracket. Breeding: Snorlax begets a Munchlax Egg.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/full-incense.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is an exotic-smelling incense that makes the holder bloated and slow moving."
+            }
+        ]
+    },
+    "exp-share": {
+        "name": "Exp. Share",
+        "category": "training",
+        "effect": "Held: Half the experience from a battle is split between Pokémon holding this item.",
+        "introducedInGeneration": 1,
+        "sprite": "/items/exp-share.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that gets EXP. points from battles."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. The holder gets a share of a battle's Exp. Points without battling."
+            }
+        ]
+    },
+    "soothe-bell": {
+        "name": "Soothe Bell",
+        "category": "training",
+        "effect": "Held: Doubles the happiness earned by the holder.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/soothe-bell.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that calms spirits and fosters friendship."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a bell with a comforting chime that calms the holder and makes it friendly."
+            }
+        ]
+    },
+    "amulet-coin": {
+        "name": "Amulet Coin",
+        "category": "training",
+        "effect": "Held: Doubles the money earned from a battle. Does not stack with Luck Incense.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/amulet-coin.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Doubles money in battle if the holder takes part."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It doubles a battle's prize money if the holding Pokémon joins in."
+            }
+        ]
+    },
+    "cleanse-tag": {
+        "name": "Cleanse Tag",
+        "category": "training",
+        "effect": "Prevents wild encounters of level lower than your party's lead Pokémon.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/cleanse-tag.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that helps repel wild POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It helps keep wild Pokémon away if the holder is the first one in the party."
+            }
+        ]
+    },
+    "everstone": {
+        "name": "Everstone",
+        "category": "training",
+        "effect": "Held: Prevents level-based evolution from occuring.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/everstone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A wondrous stone & a hold item that prevents evolution."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. The Pokémon holding this peculiar stone is prevented from evolving."
+            }
+        ]
+    },
+    "lucky-egg": {
+        "name": "Lucky Egg",
+        "category": "training",
+        "effect": "Held: Increases EXP earned in battle by 50%.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/lucky-egg.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that boosts EXP. points earned in battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is an egg filled with happiness that earns extra Exp. Points in battle."
+            }
+        ]
+    },
+    "luck-incense": {
+        "name": "Luck Incense",
+        "category": "training",
+        "effect": "Held: Doubles the money earned from a battle. Does not stack with Amulet Coin. Breeding: Chansey and Blissey beget a Happiny Egg.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/luck-incense.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It doubles a battle's prize money if the holding Pokémon joins in."
+            }
+        ]
+    },
+    "pure-incense": {
+        "name": "Pure Incense",
+        "category": "training",
+        "effect": "Prevents wild encounters of level lower than your party's lead Pokémon. Breeding: Chimecho begets a Chingling Egg.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/pure-incense.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It helps keep wild Pokémon away if the holder is the first one in the party."
+            }
+        ]
+    },
+    "flame-plate": {
+        "name": "Flame Plate",
+        "category": "plates",
+        "effect": "Held: Fire-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Fire.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/flame-plate.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a stone tablet that boosts the power of Fire-type moves."
+            }
+        ]
+    },
+    "splash-plate": {
+        "name": "Splash Plate",
+        "category": "plates",
+        "effect": "Held: Water-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Water.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/splash-plate.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a stone tablet that boosts the power of Water-type moves."
+            }
+        ]
+    },
+    "zap-plate": {
+        "name": "Zap Plate",
+        "category": "plates",
+        "effect": "Held: Electric-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Electric.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/zap-plate.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a stone tablet that boosts the power of Electric-type moves."
+            }
+        ]
+    },
+    "meadow-plate": {
+        "name": "Meadow Plate",
+        "category": "plates",
+        "effect": "Held: Grass-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Grass.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/meadow-plate.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a stone tablet that boosts the power of Grass-type moves."
+            }
+        ]
+    },
+    "icicle-plate": {
+        "name": "Icicle Plate",
+        "category": "plates",
+        "effect": "Held: Ice-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Ice.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/icicle-plate.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a stone tablet that boosts the power of Ice-type moves."
+            }
+        ]
+    },
+    "fist-plate": {
+        "name": "Fist Plate",
+        "category": "plates",
+        "effect": "Held: Fighting-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Fighting.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/fist-plate.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a stone tablet that boosts the power of Fighting-type moves."
+            }
+        ]
+    },
+    "toxic-plate": {
+        "name": "Toxic Plate",
+        "category": "plates",
+        "effect": "Held: Poison-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Poison.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/toxic-plate.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a stone tablet that boosts the power of Poison-type moves."
+            }
+        ]
+    },
+    "earth-plate": {
+        "name": "Earth Plate",
+        "category": "plates",
+        "effect": "Held: Ground-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Ground.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/earth-plate.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a stone tablet that boosts the power of Ground-type moves."
+            }
+        ]
+    },
+    "sky-plate": {
+        "name": "Sky Plate",
+        "category": "plates",
+        "effect": "Held: Flying-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Flying.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/sky-plate.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a stone tablet that boosts the power of Flying-type moves."
+            }
+        ]
+    },
+    "mind-plate": {
+        "name": "Mind Plate",
+        "category": "plates",
+        "effect": "Held: Psychic-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Psychic.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/mind-plate.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a stone tablet that boosts the power of Psychic-type moves."
+            }
+        ]
+    },
+    "insect-plate": {
+        "name": "Insect Plate",
+        "category": "plates",
+        "effect": "Held: Bug-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Bug.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/insect-plate.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a stone tablet that boosts the power of Bug-type moves."
+            }
+        ]
+    },
+    "stone-plate": {
+        "name": "Stone Plate",
+        "category": "plates",
+        "effect": "Held: Rock-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Rock.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/stone-plate.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a stone tablet that boosts the power of Rock-type moves."
+            }
+        ]
+    },
+    "spooky-plate": {
+        "name": "Spooky Plate",
+        "category": "plates",
+        "effect": "Held: Ghost-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Ghost.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/spooky-plate.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a stone tablet that boosts the power of Ghost-type moves."
+            }
+        ]
+    },
+    "draco-plate": {
+        "name": "Draco Plate",
+        "category": "plates",
+        "effect": "Held: Dragon-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Dragon.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/draco-plate.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a stone tablet that boosts the power of Dragon-type moves."
+            }
+        ]
+    },
+    "dread-plate": {
+        "name": "Dread Plate",
+        "category": "plates",
+        "effect": "Held: Dark-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Dark.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/dread-plate.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a stone tablet that boosts the power of Dark-type moves."
+            }
+        ]
+    },
+    "iron-plate": {
+        "name": "Iron Plate",
+        "category": "plates",
+        "effect": "Held: Steel-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Steel.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/iron-plate.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a stone tablet that boosts the power of Steel-type moves."
+            }
+        ]
+    },
+    "adamant-orb": {
+        "name": "Adamant Orb",
+        "category": "species-specific",
+        "effect": "Boosts the damage from Dialga's Dragon-type and Steel-type moves by 20%.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/adamant-orb.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A brightly gleaming orb to be held by DIALGA. It boosts the power of Dragon-​ and Steel-type moves."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A brightly gleaming orb to be held by Dialga. It boosts the power of Dragon-​ and Steel-type moves."
+            }
+        ]
+    },
+    "lustrous-orb": {
+        "name": "Lustrous Orb",
+        "category": "species-specific",
+        "effect": "Boosts the damage from Palkia's Dragon-type and Water-type moves by 20%.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/lustrous-orb.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A beautifully glowing orb to be held by PALKIA. It boosts the power of Dragon-​ and Water-type moves."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A beautifully glowing orb to be held by Palkia. It boosts the power of Dragon-​ and Water-type moves."
+            }
+        ]
+    },
+    "soul-dew": {
+        "name": "Soul Dew",
+        "category": "species-specific",
+        "effect": "Raises Latias and Latios's Special Attack and Special Defense by 50%.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/soul-dew.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Hold item: Raises SP. ATK & SP. DEF of LATIOS & LATIAS."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A wondrous orb to be held by LATIOS or LATIAS. It raises both the Sp. Atk and Sp. Def stats."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A wondrous orb to be held by Latios or Latias. It raises both the Sp. Atk and Sp. Def stats."
+            }
+        ]
+    },
+    "deep-sea-tooth": {
+        "name": "Deep Sea Tooth",
+        "category": "species-specific",
+        "effect": "Doubles Clamperl's Special Attack. Traded on a Clamperl: Holder evolves into Huntail.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/deep-sea-tooth.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the SP. ATK of CLAMPERL."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by CLAMPERL. A fang that gleams a sharp silver, it raises the Sp. Atk stat."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by Clamperl. A fang that gleams a sharp silver, it raises the Sp. Atk stat."
+            }
+        ]
+    },
+    "deep-sea-scale": {
+        "name": "Deep Sea Scale",
+        "category": "species-specific",
+        "effect": "Doubles Clamperl's Special Defense. Traded on a Clamperl: Holder evolves into Gorebyss.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/deep-sea-scale.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the SP. DEF of CLAMPERL."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by CLAMPERL. A scale that shines a faint pink, it raises the Sp. Def stat."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by Clamperl. A scale that shines a faint pink, it raises the Sp. Def stat."
+            }
+        ]
+    },
+    "light-ball": {
+        "name": "Light Ball",
+        "category": "species-specific",
+        "effect": "Doubles Pikachu's Attack and Special Attack. Breed on Pikachu or Raichu: Pichu Egg will have Volt Tackle.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/light-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the SP. ATK of PIKACHU."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by PIKACHU. It is a puzzling orb that raises the Sp. Atk stat."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by Pikachu. It is a puzzling orb that raises the Attack and Sp. Atk stat."
+            }
+        ]
+    },
+    "lucky-punch": {
+        "name": "Lucky Punch",
+        "category": "species-specific",
+        "effect": "Raises Chansey's critical hit ratio by two stages.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/lucky-punch.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises CHANSEY's critical-hit rate."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by CHANSEY. It is a pair of gloves that boosts CHANSEY's critical-hit ratio."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by Chansey. It is a pair of gloves that boosts Chansey's critical-hit ratio."
+            }
+        ]
+    },
+    "metal-powder": {
+        "name": "Metal Powder",
+        "category": "species-specific",
+        "effect": "Raises Ditto's Defense and Special Defense by 50%. The boost is lost after transforming.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/metal-powder.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises DEFENSE."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by DITTO. Extremely fine yet hard, this odd powder boosts the Defense stat."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by Ditto. Extremely fine yet hard, this odd powder boosts the Defense stat."
+            }
+        ]
+    },
+    "thick-club": {
+        "name": "Thick Club",
+        "category": "species-specific",
+        "effect": "Doubles Cubone or Marowak's Attack.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/thick-club.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A bone of some sort. It can be sold cheaply."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by CUBONE or MAROWAK. It is a hard bone of some sort that boosts the Attack stat."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by Cubone or Marowak. It is a hard bone of some sort that boosts the Attack stat."
+            }
+        ]
+    },
+    "leek": {
+        "name": "Leek",
+        "category": "species-specific",
+        "effect": "Raises Farfetch'd's critical hit ratio by two stages.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/leek.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A stick of leek. It can be sold cheaply."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by FARFETCH'D. It is a very long and stiff stalk of leek that boosts the critical-hit ratio."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by Farfetch'd. It is a very long and stiff stalk of leek that boosts the critical-hit ratio."
+            }
+        ]
+    },
+    "quick-powder": {
+        "name": "Quick Powder",
+        "category": "species-specific",
+        "effect": "Doubles Ditto's Speed when held. The boost is lost after transforming.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/quick-powder.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by DITTO. Extremely fine yet hard, this odd powder boosts the Speed stat."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by Ditto. Extremely fine yet hard, this odd powder boosts the Speed stat."
+            }
+        ]
+    },
+    "griseous-orb": {
+        "name": "Griseous Orb",
+        "category": "species-specific",
+        "effect": "Boosts the damage from Giratina's Dragon-type and Ghost-type moves by 20%, and transforms it into Origin Forme.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/griseous-orb.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A glowing orb to be held by GIRATINA. It boosts the power of Dragon- and Ghost-type moves."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A glowing orb to be held by Giratina. It boosts the power of Dragon- and Ghost-type moves."
+            }
+        ]
+    },
+    "douse-drive": {
+        "name": "Douse Drive",
+        "category": "species-specific",
+        "effect": "Grants Genesect a blue, Water-type Techno Blast.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/douse-drive.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A cassette to be held by Genesect. It changes Techno Blast to a Water-type move."
+            }
+        ]
+    },
+    "shock-drive": {
+        "name": "Shock Drive",
+        "category": "species-specific",
+        "effect": "Grants Genesect a yellow, Electric-type Techno Blast.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/shock-drive.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A cassette to be held by Genesect. It changes Techno Blast to an Electric-type move."
+            }
+        ]
+    },
+    "burn-drive": {
+        "name": "Burn Drive",
+        "category": "species-specific",
+        "effect": "Grants Genesect a red, Fire-type Techno Blast.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/burn-drive.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A cassette to be held by Genesect. It changes Techno Blast to a Fire-type move."
+            }
+        ]
+    },
+    "chill-drive": {
+        "name": "Chill Drive",
+        "category": "species-specific",
+        "effect": "Grants Genesect a white, Ice-type Techno Blast.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/chill-drive.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A cassette to be held by Genesect. It changes Techno Blast to an Ice-type move."
+            }
+        ]
+    },
+    "silver-powder": {
+        "name": "Silver Powder",
+        "category": "type-enhancement",
+        "effect": "Held: Bug-Type moves from holder do 20% more damage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/silver-powder.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the power of BUG-type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a shiny, silver powder that ups the power of Bug-type moves."
+            }
+        ]
+    },
+    "metal-coat": {
+        "name": "Metal Coat",
+        "category": "type-enhancement",
+        "effect": "Held: Steel-Type moves from holder do 20% more damage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/metal-coat.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the power of STEEL-type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a special metallic film that ups the power of Steel-type moves."
+            }
+        ]
+    },
+    "soft-sand": {
+        "name": "Soft Sand",
+        "category": "type-enhancement",
+        "effect": "Held: Ground-Type moves from holder do 20% more damage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/soft-sand.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the power of GROUND-type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a loose, silky sand that boosts the power of Ground-type moves."
+            }
+        ]
+    },
+    "hard-stone": {
+        "name": "Hard Stone",
+        "category": "type-enhancement",
+        "effect": "Held: Rock-Type moves from holder do 20% more damage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/hard-stone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the power of ROCK-type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is an unbreakable stone that ups the power of Rock-type moves."
+            }
+        ]
+    },
+    "miracle-seed": {
+        "name": "Miracle Seed",
+        "category": "type-enhancement",
+        "effect": "Held: Grass-Type moves from holder do 20% more damage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/miracle-seed.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the power of GRASS-type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a seed imbued with life that ups the power of Grass-type moves."
+            }
+        ]
+    },
+    "black-glasses": {
+        "name": "Black Glasses",
+        "category": "type-enhancement",
+        "effect": "Held: Dark-Type moves from holder do 20% more damage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/black-glasses.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the power of DARK-type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a shady-looking pair of glasses that boosts Dark-type moves."
+            }
+        ]
+    },
+    "black-belt": {
+        "name": "Black Belt",
+        "category": "type-enhancement",
+        "effect": "Held: Fighting-Type moves from holder do 20% more damage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/black-belt.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that boosts FIGHTING- type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a belt that boosts determination and Fighting-type moves."
+            }
+        ]
+    },
+    "magnet": {
+        "name": "Magnet",
+        "category": "type-enhancement",
+        "effect": "Held: Electric-Type moves from holder do 20% more damage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/magnet.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that boosts ELECTRIC- type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a powerful magnet that boosts the power of Electric-type moves."
+            }
+        ]
+    },
+    "mystic-water": {
+        "name": "Mystic Water",
+        "category": "type-enhancement",
+        "effect": "Held: Water-Type moves from holder do 20% more damage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/mystic-water.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the power of WATER-type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a teardrop-shaped gem that ups the power of Water-type moves."
+            }
+        ]
+    },
+    "sharp-beak": {
+        "name": "Sharp Beak",
+        "category": "type-enhancement",
+        "effect": "Held: Flying-Type moves from holder do 20% more damage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/sharp-beak.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the power of FLYING-type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a long, sharp beak that boosts the power of Flying-type moves."
+            }
+        ]
+    },
+    "poison-barb": {
+        "name": "Poison Barb",
+        "category": "type-enhancement",
+        "effect": "Held: Poison-Type moves from holder do 20% more damage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/poison-barb.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the power of POISON-type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a small, poisonous barb that ups the power of Poison-type moves."
+            }
+        ]
+    },
+    "never-melt-ice": {
+        "name": "Never-Melt Ice",
+        "category": "type-enhancement",
+        "effect": "Held: Ice-Type moves from holder do 20% more damage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/never-melt-ice.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the power of ICE-type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a piece of ice that repels heat and boosts Ice-type moves."
+            }
+        ]
+    },
+    "spell-tag": {
+        "name": "Spell Tag",
+        "category": "type-enhancement",
+        "effect": "Held: Ghost-Type moves from holder do 20% more damage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/spell-tag.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the power of GHOST-type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a sinister, eerie tag that boosts the power of Ghost-type moves."
+            }
+        ]
+    },
+    "twisted-spoon": {
+        "name": "Twisted Spoon",
+        "category": "type-enhancement",
+        "effect": "Held: Psychic-Type moves from holder do 20% more damage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/twisted-spoon.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that boosts PSYCHIC- type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a spoon imbued with telekinetic power that boosts Psychic-type moves."
+            }
+        ]
+    },
+    "charcoal": {
+        "name": "Charcoal",
+        "category": "type-enhancement",
+        "effect": "Held: Fire-Type moves from holder do 20% more damage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/charcoal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the power of FIRE-type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a combustible fuel that boosts the power of Fire-type moves."
+            }
+        ]
+    },
+    "dragon-fang": {
+        "name": "Dragon Fang",
+        "category": "type-enhancement",
+        "effect": "Held: Dragon-Type moves from holder do 20% more damage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/dragon-fang.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the power of DRAGON-type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a hard and sharp fang that ups the power of Dragon-type moves."
+            }
+        ]
+    },
+    "silk-scarf": {
+        "name": "Silk Scarf",
+        "category": "type-enhancement",
+        "effect": "Held: Normal-Type moves from holder do 20% more damage.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/silk-scarf.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises the power of NORMAL-type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is a sumptuous scarf that boosts the power of Normal-type moves."
+            }
+        ]
+    },
+    "sea-incense": {
+        "name": "Sea Incense",
+        "category": "type-enhancement",
+        "effect": "Held: Water-Type moves from holder do 20% more damage. Breeding: Marill or Azumarill beget an Azurill Egg.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/sea-incense.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that slightly boosts WATER-type moves."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is incense with a curious aroma that boosts the power of Water-type moves."
+            }
+        ]
+    },
+    "odd-incense": {
+        "name": "Odd Incense",
+        "category": "type-enhancement",
+        "effect": "Held: Psychic-Type moves from holder do 20% more damage. Breeding: Mr. Mime begets a Mime Jr. Egg.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/odd-incense.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is an exotic-smelling incense that boosts the power of Psychic-type moves."
+            }
+        ]
+    },
+    "rock-incense": {
+        "name": "Rock Incense",
+        "category": "type-enhancement",
+        "effect": "Held: Rock-Type moves from holder do 20% more damage. Breeding: Sudowoodo begets a Bonsly Egg.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/rock-incense.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is an exotic-smelling incense that boosts the power of Rock-type moves."
+            }
+        ]
+    },
+    "wave-incense": {
+        "name": "Wave Incense",
+        "category": "type-enhancement",
+        "effect": "Held: Water-Type moves from holder do 20% more damage. Breeding: Mantine begets a Mantyke Egg.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/wave-incense.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is an exotic-smelling incense that boosts the power of Water-type moves."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by a Pokémon. It is incense with a curious aroma that boosts the power of Water-type moves."
+            }
+        ]
+    },
+    "rose-incense": {
+        "name": "Rose Incense",
+        "category": "type-enhancement",
+        "effect": "Held: Grass-Type moves from holder do 20% more damage. Breeding: Roselia or Roserade beget a Budew Egg.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/rose-incense.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It is an exotic-smelling incense that boosts the power of Grass-type moves."
+            }
+        ]
+    },
+    "occa-berry": {
+        "name": "Occa Berry",
+        "category": "type-protection",
+        "effect": "Held: Consumed when struck by a super-effective Fire-type attack to halve the damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/occa-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it weakens a foe's supereffective Fire-type attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Weakens a supereffective Fire-type attack against the holding Pokémon."
+            }
+        ]
+    },
+    "passho-berry": {
+        "name": "Passho Berry",
+        "category": "type-protection",
+        "effect": "Held: Consumed when struck by a super-effective Water-type attack to halve the damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/passho-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it weakens a foe's supereffective Water-type attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Weakens a supereffective Water-type attack against the holding Pokémon."
+            }
+        ]
+    },
+    "wacan-berry": {
+        "name": "Wacan Berry",
+        "category": "type-protection",
+        "effect": "Held: Consumed when struck by a super-effective Electric-type attack to halve the damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/wacan-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it weakens a foe's supereffective Electric-type attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Weakens a supereffective Electric-type attack against the holding Pokémon."
+            }
+        ]
+    },
+    "rindo-berry": {
+        "name": "Rindo Berry",
+        "category": "type-protection",
+        "effect": "Held: Consumed when struck by a super-effective Grass-type attack to halve the damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/rindo-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it weakens a foe's supereffective Grass-type attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Weakens a supereffective Grass-type attack against the holding Pokémon."
+            }
+        ]
+    },
+    "yache-berry": {
+        "name": "Yache Berry",
+        "category": "type-protection",
+        "effect": "Held: Consumed when struck by a super-effective Ice-type attack to halve the damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/yache-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it weakens a foe's supereffective Ice-type attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Weakens a supereffective Ice-type attack against the holding Pokémon."
+            }
+        ]
+    },
+    "chople-berry": {
+        "name": "Chople Berry",
+        "category": "type-protection",
+        "effect": "Held: Consumed when struck by a super-effective Fighting-type attack to halve the damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/chople-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it weakens a foe's supereffective Fighting-type attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Weakens a supereffective Fighting-type attack against the holding Pokémon."
+            }
+        ]
+    },
+    "kebia-berry": {
+        "name": "Kebia Berry",
+        "category": "type-protection",
+        "effect": "Held: Consumed when struck by a super-effective Poison-type attack to halve the damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/kebia-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it weakens a foe's supereffective Poison-type attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Weakens a supereffective Poison-type attack against the holding Pokémon."
+            }
+        ]
+    },
+    "shuca-berry": {
+        "name": "Shuca Berry",
+        "category": "type-protection",
+        "effect": "Held: Consumed when struck by a super-effective Ground-type attack to halve the damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/shuca-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it weakens a foe's supereffective Ground-type attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Weakens a supereffective Ground-type attack against the holding Pokémon."
+            }
+        ]
+    },
+    "coba-berry": {
+        "name": "Coba Berry",
+        "category": "type-protection",
+        "effect": "Held: Consumed when struck by a super-effective Flying-type attack to halve the damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/coba-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it weakens a foe's supereffective Flying-type attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Weakens a supereffective Flying-type attack against the holding Pokémon."
+            }
+        ]
+    },
+    "payapa-berry": {
+        "name": "Payapa Berry",
+        "category": "type-protection",
+        "effect": "Held: Consumed when struck by a super-effective Psychic-type attack to halve the damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/payapa-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it weakens a foe's supereffective Psychic-type attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Weakens a supereffective Psychic-type attack against the holding Pokémon."
+            }
+        ]
+    },
+    "tanga-berry": {
+        "name": "Tanga Berry",
+        "category": "type-protection",
+        "effect": "Held: Consumed when struck by a super-effective Bug-type attack to halve the damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/tanga-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it weakens a foe's supereffective Bug-type attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Weakens a supereffective Bug-type attack against the holding Pokémon."
+            }
+        ]
+    },
+    "charti-berry": {
+        "name": "Charti Berry",
+        "category": "type-protection",
+        "effect": "Held: Consumed when struck by a super-effective Rock-type attack to halve the damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/charti-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it weakens a foe's supereffective Rock-type attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Weakens a supereffective Rock-type attack against the holding Pokémon."
+            }
+        ]
+    },
+    "kasib-berry": {
+        "name": "Kasib Berry",
+        "category": "type-protection",
+        "effect": "Held: Consumed when struck by a super-effective Ghost-type attack to halve the damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/kasib-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it weakens a foe's supereffective Ghost-type attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Weakens a supereffective Ghost-type attack against the holding Pokémon."
+            }
+        ]
+    },
+    "haban-berry": {
+        "name": "Haban Berry",
+        "category": "type-protection",
+        "effect": "Held: Consumed when struck by a super-effective Dragon-type attack to halve the damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/haban-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it weakens a foe's supereffective Dragon-type attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Weakens a supereffective Dragon-type attack against the holding Pokémon."
+            }
+        ]
+    },
+    "colbur-berry": {
+        "name": "Colbur Berry",
+        "category": "type-protection",
+        "effect": "Held: Consumed when struck by a super-effective Dark-type attack to halve the damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/colbur-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it weakens a foe's supereffective Dark-type attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Weakens a supereffective Dark-type attack against the holding Pokémon."
+            }
+        ]
+    },
+    "babiri-berry": {
+        "name": "Babiri Berry",
+        "category": "type-protection",
+        "effect": "Held: Consumed when struck by a super-effective Steel-type attack to halve the damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/babiri-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it weakens a foe's supereffective Steel-type attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Weakens a supereffective Steel-type attack against the holding Pokémon."
+            }
+        ]
+    },
+    "chilan-berry": {
+        "name": "Chilan Berry",
+        "category": "type-protection",
+        "effect": "Held: Consumed when struck by a Normal-type attack to halve the damage.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/chilan-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it weakens a foe's Normal-type attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Weakens a Normal-type attack against the Pokémon holding this berry."
+            }
+        ]
+    },
+    "red-scarf": {
+        "name": "Red Scarf",
+        "category": "scarves",
+        "effect": "Raises the holder's Coolness while in a contest.",
+        "introducedInGeneration": 3,
+        "removedInGeneration": 5,
+        "sprite": "/items/red-scarf.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises COOL in CONTESTS."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It boosts the “Cool” aspect of the holder in a Contest."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by a Pokémon. It boosts the Cool aspect of the holder in a Contest."
+            }
+        ]
+    },
+    "blue-scarf": {
+        "name": "Blue Scarf",
+        "category": "scarves",
+        "effect": "Raises the holder's Beauty while in a contest.",
+        "introducedInGeneration": 3,
+        "removedInGeneration": 5,
+        "sprite": "/items/blue-scarf.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises BEAUTY in CONTESTS."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It boosts the “Beauty” aspect of the holder in a Contest."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by a Pokémon. It boosts the Beauty aspect of the holder in a Contest."
+            }
+        ]
+    },
+    "pink-scarf": {
+        "name": "Pink Scarf",
+        "category": "scarves",
+        "effect": "Raises the holder's Cuteness while in a contest.",
+        "introducedInGeneration": 3,
+        "removedInGeneration": 5,
+        "sprite": "/items/pink-scarf.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises CUTE in CONTESTS."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It boosts the “Cute” aspect of the holder in a Contest."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by a Pokémon. It boosts the Cute aspect of the holder in a Contest."
+            }
+        ]
+    },
+    "green-scarf": {
+        "name": "Green Scarf",
+        "category": "scarves",
+        "effect": "Raises the holder's Smartness while in a contest.",
+        "introducedInGeneration": 3,
+        "removedInGeneration": 5,
+        "sprite": "/items/green-scarf.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises SMART in CONTESTS."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It boosts the “Smart” aspect of the holder in a Contest."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by a Pokémon. It boosts the Smart aspect of the holder in a Contest."
+            }
+        ]
+    },
+    "yellow-scarf": {
+        "name": "Yellow Scarf",
+        "category": "scarves",
+        "effect": "Raises the holder's Toughness while in a contest.",
+        "introducedInGeneration": 3,
+        "removedInGeneration": 5,
+        "sprite": "/items/yellow-scarf.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises TOUGH in CONTESTS."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item to be held by a Pokémon. It boosts the “Tough” aspect of the holder in a Contest."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "An item to be held by a Pokémon. It boosts the Tough aspect of the holder in a Contest."
+            }
+        ]
+    },
+    "fire-gem": {
+        "name": "Fire Gem",
+        "category": "jewels",
+        "effect": "Held: When the holder uses a damaging Fire-type move, the move has 1.5× power and this item is consumed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/fire-gem.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gem with an essence of fire. When held, it strengthens the power of a Fire-type move only once."
+            }
+        ]
+    },
+    "water-gem": {
+        "name": "Water Gem",
+        "category": "jewels",
+        "effect": "Held: When the holder uses a damaging Water-type move, the move has 1.5× power and this item is consumed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/water-gem.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gem with an essence of water. When held, it strengthens the power of a Water-type move only once."
+            }
+        ]
+    },
+    "electric-gem": {
+        "name": "Electric Gem",
+        "category": "jewels",
+        "effect": "Held: When the holder uses a damaging Electric-type move, the move has 1.5× power and this item is consumed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/electric-gem.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gem with an essence of electricity. When held, it strengthens the power of an Electric-type move only once."
+            }
+        ]
+    },
+    "grass-gem": {
+        "name": "Grass Gem",
+        "category": "jewels",
+        "effect": "Held: When the holder uses a damaging Grass-type move, the move has 1.5× power and this item is consumed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/grass-gem.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gem with an essence of nature. When held, it strengthens the power of a Grass-type move only once."
+            }
+        ]
+    },
+    "ice-gem": {
+        "name": "Ice Gem",
+        "category": "jewels",
+        "effect": "Held: When the holder uses a damaging Ice-type move, the move has 1.5× power and this item is consumed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/ice-gem.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gem with an essence of ice. When held, it strengthens the power of an Ice-type move only once."
+            }
+        ]
+    },
+    "fighting-gem": {
+        "name": "Fighting Gem",
+        "category": "jewels",
+        "effect": "Held: When the holder uses a damaging Fighting-type move, the move has 1.5× power and this item is consumed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/fighting-gem.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gem with an essence of combat. When held, it strengthens the power of a Fighting-type move only once."
+            }
+        ]
+    },
+    "poison-gem": {
+        "name": "Poison Gem",
+        "category": "jewels",
+        "effect": "Held: When the holder uses a damaging Poison-type move, the move has 1.5× power and this item is consumed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/poison-gem.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gem with an essence of poison. When held, it strengthens the power of a Poison-type move only once."
+            }
+        ]
+    },
+    "ground-gem": {
+        "name": "Ground Gem",
+        "category": "jewels",
+        "effect": "Held: When the holder uses a damaging Ground-type move, the move has 1.5× power and this item is consumed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/ground-gem.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gem with an essence of land. When held, it strengthens the power of a Ground-type move only once."
+            }
+        ]
+    },
+    "flying-gem": {
+        "name": "Flying Gem",
+        "category": "jewels",
+        "effect": "Held: When the holder uses a damaging Flying-type move, the move has 1.5× power and this item is consumed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/flying-gem.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gem with an essence of air. When held, it strengthens the power of a Flying-type move only once."
+            }
+        ]
+    },
+    "psychic-gem": {
+        "name": "Psychic Gem",
+        "category": "jewels",
+        "effect": "Held: When the holder uses a damaging Psychic-type move, the move has 1.5× power and this item is consumed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/psychic-gem.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gem with an essence of the mind. When held, it strengthens the power of a Psychic-type move only once."
+            }
+        ]
+    },
+    "bug-gem": {
+        "name": "Bug Gem",
+        "category": "jewels",
+        "effect": "Held: When the holder uses a damaging Bug-type move, the move has 1.5× power and this item is consumed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/bug-gem.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gem with an insect-like essence. When held, it strengthens the power of a Bug-type move only once."
+            }
+        ]
+    },
+    "rock-gem": {
+        "name": "Rock Gem",
+        "category": "jewels",
+        "effect": "Held: When the holder uses a damaging Rock-type move, the move has 1.5× power and this item is consumed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/rock-gem.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gem with an essence of rock. When held, it strengthens the power of a Rock-type move only once."
+            }
+        ]
+    },
+    "ghost-gem": {
+        "name": "Ghost Gem",
+        "category": "jewels",
+        "effect": "Held: When the holder uses a damaging Ghost-type move, the move has 1.5× power and this item is consumed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/ghost-gem.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gem with a spectral essence. When held, it strengthens the power of a Ghost-type move only once."
+            }
+        ]
+    },
+    "dark-gem": {
+        "name": "Dark Gem",
+        "category": "jewels",
+        "effect": "Held: When the holder uses a damaging Dark-type move, the move has 1.5× power and this item is consumed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/dark-gem.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gem with an essence of darkness. When held, it strengthens the power of a Dark-type move only once."
+            }
+        ]
+    },
+    "steel-gem": {
+        "name": "Steel Gem",
+        "category": "jewels",
+        "effect": "Held: When the holder uses a damaging Steel-type move, the move has 1.5× power and this item is consumed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/steel-gem.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gem with an essence of steel. When held, it strengthens the power of a Steel-type move only once."
+            }
+        ]
+    },
+    "dragon-gem": {
+        "name": "Dragon Gem",
+        "category": "jewels",
+        "effect": "Held: When the holder uses a damaging Dragon-type move, the move has 1.5× power and this item is consumed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/dragon-gem.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gem with a draconic essence.  When held, it strengthens the power of a Dragon-type move only once."
+            }
+        ]
+    },
+    "normal-gem": {
+        "name": "Normal Gem",
+        "category": "jewels",
+        "effect": "Held: When the holder uses a damaging Normal-type move, the move has 1.5× power and this item is consumed.",
+        "introducedInGeneration": 5,
+        "sprite": "/items/normal-gem.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gem with an ordinary essence. When held, it strengthens the power of a Normal-type move only once."
+            }
+        ]
+    },
+    "cheri-berry": {
+        "name": "Cheri Berry",
+        "category": "medicine",
+        "effect": "Held: Consumed when paralyzed to cure paralysis.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/cheri-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that heals paralysis in battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. It may be used or held by a Pokémon to recover from paralysis."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon,  it recovers from paralysis."
+            }
+        ]
+    },
+    "chesto-berry": {
+        "name": "Chesto Berry",
+        "category": "medicine",
+        "effect": "Held: Consumed when asleep to cure sleep.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/chesto-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that awakens POKéMON in battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. It may be used or held by a Pokémon to recover from sleep."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it recovers from sleep."
+            }
+        ]
+    },
+    "pecha-berry": {
+        "name": "Pecha Berry",
+        "category": "medicine",
+        "effect": "Held: Consumed when poisoned to cure poison.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/pecha-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that heals poisoning in battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. It may be used or held by a Pokémon to recover from poison."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it recovers from poison."
+            }
+        ]
+    },
+    "rawst-berry": {
+        "name": "Rawst Berry",
+        "category": "medicine",
+        "effect": "Held: Consumed when burned to cure a burn.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/rawst-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that heals a burn in battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. It may be used or held by a Pokémon to recover from a burn."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it recovers from a burn."
+            }
+        ]
+    },
+    "aspear-berry": {
+        "name": "Aspear Berry",
+        "category": "medicine",
+        "effect": "Held: Consumed when frozen to cure frozen.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/aspear-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that defrosts POKéMON in battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. It may be used or held by a Pokémon to defrost it. "
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it defrosts it."
+            }
+        ]
+    },
+    "leppa-berry": {
+        "name": "Leppa Berry",
+        "category": "medicine",
+        "effect": "Held: Consumed when a move runs out of PP to restore its PP by 10.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/leppa-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that restores 10 PP in battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. It may be used or held by a Pokémon to restore a move's PP by 10."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it restores a move's PP by 10."
+            }
+        ]
+    },
+    "oran-berry": {
+        "name": "Oran Berry",
+        "category": "medicine",
+        "effect": "Held: Consumed at 1/2 max HP to recover 10 HP.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/oran-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that restores 10 HP in battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. It may be used or held by a Pokémon to heal the user by just 10 HP."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon,  it heals the user by just 10 HP."
+            }
+        ]
+    },
+    "persim-berry": {
+        "name": "Persim Berry",
+        "category": "medicine",
+        "effect": "Held: Consumed when confused to cure confusion.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/persim-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that heals confusion in battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. It may be used or held by a Pokémon to recover from confusion."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it recovers from confusion."
+            }
+        ]
+    },
+    "lum-berry": {
+        "name": "Lum Berry",
+        "category": "medicine",
+        "effect": "Held: Consumed to cure any status condition or confusion.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/lum-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that heals status in battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. It may be used or held by a Pokémon to recover from any status problem."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it recovers from any status problem."
+            }
+        ]
+    },
+    "sitrus-berry": {
+        "name": "Sitrus Berry",
+        "category": "medicine",
+        "effect": "Held: Consumed at 1/2 max HP to recover 1/4 max HP.",
+        "introducedInGeneration": 2,
+        "sprite": "/items/sitrus-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that restores 30 HP in battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. It may be used or held by a Pokémon to heal the user's HP a little."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it heals the user's HP a little."
+            }
+        ]
+    },
+    "enigma-berry": {
+        "name": "Enigma Berry",
+        "category": "other",
+        "effect": "Held: Consumed when struck by a super-effective attack to restore 1/4 max HP.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/enigma-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow a mystery."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it restores its HP if it is hit by a foe's supereffective attack."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it restores its HP if it is hit by any supereffective attack."
+            }
+        ]
+    },
+    "jaboca-berry": {
+        "name": "Jaboca Berry",
+        "category": "other",
+        "effect": "Held: Consumed to deal 1/8 attacker's max HP when holder is struck by a physical attack.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/jaboca-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, and if a foe's physical attack lands, the foe also takes damage."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon and a physical attack lands, the attacker also takes damage."
+            }
+        ]
+    },
+    "rowap-berry": {
+        "name": "Rowap Berry",
+        "category": "other",
+        "effect": "Held: Consumed to deal 1/8 attacker's max HP when holder is struck by a special attack.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/rowap-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, and if a foe's special attack lands, the foe also takes damage."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon and a special attack lands, the attacker also takes damage."
+            }
+        ]
+    },
+    "liechi-berry": {
+        "name": "Liechi Berry",
+        "category": "in-a-pinch",
+        "effect": "Held: Consumed at 1/4 max HP to boost Attack.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/liechi-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises ATTACK in a pinch."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it raises its Attack stat in a pinch."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it raises its Attack stat in a pinch."
+            }
+        ]
+    },
+    "ganlon-berry": {
+        "name": "Ganlon Berry",
+        "category": "in-a-pinch",
+        "effect": "Held: Consumed at 1/4 max HP to boost Defense.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/ganlon-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises DEFENSE in a pinch."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it raises its Defense stat in a pinch."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it raises its Defense stat in a pinch."
+            }
+        ]
+    },
+    "salac-berry": {
+        "name": "Salac Berry",
+        "category": "in-a-pinch",
+        "effect": "Held: Consumed at 1/4 max HP to boost Speed.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/salac-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises SPEED in a pinch."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it raises its Speed stat in a pinch."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it raises its Speed stat in a pinch."
+            }
+        ]
+    },
+    "petaya-berry": {
+        "name": "Petaya Berry",
+        "category": "in-a-pinch",
+        "effect": "Held: Consumed at 1/4 max HP to boost Special Attack.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/petaya-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises SP. ATK in a pinch."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it raises its Sp. Atk stat in a pinch."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it raises its Sp. Atk stat in a pinch."
+            }
+        ]
+    },
+    "apicot-berry": {
+        "name": "Apicot Berry",
+        "category": "in-a-pinch",
+        "effect": "Held: Consumed at 1/4 max HP to boost Special Defense.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/apicot-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that raises SP. DEF in a pinch."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it raises its Sp. Def stat in a pinch."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it raises its Sp. Def stat in a pinch."
+            }
+        ]
+    },
+    "lansat-berry": {
+        "name": "Lansat Berry",
+        "category": "in-a-pinch",
+        "effect": "Held: Consumed at 1/4 max HP to boost critical hit ratio by two stages.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/lansat-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that ups the critical- hit rate in a pinch."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it raises its critical-hit ratio in a pinch."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it raises its critical-hit ratio in a pinch."
+            }
+        ]
+    },
+    "starf-berry": {
+        "name": "Starf Berry",
+        "category": "in-a-pinch",
+        "effect": "Held: Consumed at 1/4 max HP to boost a random stat by two stages.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/starf-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that sharply boosts a stat in a pinch."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it sharply raises one of its stats in a pinch."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it sharply raises one of its stats in a pinch."
+            }
+        ]
+    },
+    "micle-berry": {
+        "name": "Micle Berry",
+        "category": "in-a-pinch",
+        "effect": "Held: Consumed at 1/4 max HP to boost accuracy of next move by 20%. (Gen IV: Perfect accuracy)",
+        "introducedInGeneration": 4,
+        "sprite": "/items/micle-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it raises the accuracy of a move just once in a pinch."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it raises the accuracy of a move just once in a pinch."
+            }
+        ]
+    },
+    "custap-berry": {
+        "name": "Custap Berry",
+        "category": "in-a-pinch",
+        "effect": "Held: Consumed at 1/4 max HP when using a move to go first.",
+        "introducedInGeneration": 4,
+        "sprite": "/items/custap-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it gets to move first just once in a pinch."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it gets to move first just once in a pinch."
+            }
+        ]
+    },
+    "figy-berry": {
+        "name": "Figy Berry",
+        "category": "picky-healing",
+        "effect": "Held: Consumed at 1/2 max HP to restore 1/8 max HP. Confuses Pokémon that dislike spicy flavor.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/figy-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that restores HP but may confuse."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it restores the user's HP in a pinch, but may also cause confusion."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it restores the user's HP in a pinch, but will cause confusion if it hates the taste."
+            }
+        ]
+    },
+    "wiki-berry": {
+        "name": "Wiki Berry",
+        "category": "picky-healing",
+        "effect": "Held: Consumed at 1/2 max HP to restore 1/8 max HP. Confuses Pokémon that dislike dry flavor.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/wiki-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that restores HP but may confuse."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it restores the user's HP in a pinch, but may also cause confusion."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it restores the user's HP in a pinch, but will cause confusion if it hates the taste."
+            }
+        ]
+    },
+    "mago-berry": {
+        "name": "Mago Berry",
+        "category": "picky-healing",
+        "effect": "Held: Consumed at 1/2 max HP to restore 1/8 max HP. Confuses Pokémon that dislike sweet flavor.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/mago-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that restores HP but may confuse."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it restores the user's HP in a pinch, but may also cause confusion."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it restores the user's HP in a pinch, but will cause confusion if it hates the taste."
+            }
+        ]
+    },
+    "aguav-berry": {
+        "name": "Aguav Berry",
+        "category": "picky-healing",
+        "effect": "Held: Consumed at 1/2 max HP to restore 1/8 max HP. Confuses Pokémon that dislike bitter flavor.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/aguav-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that restores HP but may confuse."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it restores the user's HP in a pinch, but may also cause confusion."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it restores the user's HP in a pinch, but will cause confusion if it hates the taste."
+            }
+        ]
+    },
+    "iapapa-berry": {
+        "name": "Iapapa Berry",
+        "category": "picky-healing",
+        "effect": "Held: Consumed at 1/2 max HP to restore 1/8 max HP. Confuses Pokémon that dislike sour flavor.",
+        "introducedInGeneration": 3,
+        "sprite": "/items/iapapa-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A hold item that restores HP but may confuse."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. If held by a Pokémon, it restores the user's HP in a pinch, but may also cause confusion."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "If held by a Pokémon, it restores the user's HP in a pinch, but will cause confusion if it hates the taste."
+            }
+        ]
+    }
+}

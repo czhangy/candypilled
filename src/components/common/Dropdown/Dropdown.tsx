@@ -173,7 +173,9 @@ const Dropdown: React.FC<DropdownProps> = ({
         >
             <button
                 aria-expanded={isOpen}
-                className={styles.trigger}
+                className={[styles.trigger, isOpen && styles['trigger--open']]
+                    .filter(Boolean)
+                    .join(' ')}
                 onClick={handleToggle}
                 type="button"
             >

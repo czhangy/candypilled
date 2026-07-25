@@ -9,6 +9,7 @@ type BattleCardProps = {
     generation: number;
     isDefeated: boolean;
     onSelectAbility: (name: string) => void;
+    onSelectItem: (name: string) => void;
     onSelectMove: (name: string) => void;
     onSelectSpecies: (species: string) => void;
     onSelectTrainer: (battleKey: string) => void;
@@ -23,6 +24,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
     generation,
     isDefeated,
     onSelectAbility,
+    onSelectItem,
     onSelectMove,
     onSelectSpecies,
     onSelectTrainer,
@@ -87,6 +89,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                         : `empty-${index}`
                                 }
                                 onSelectAbility={onSelectAbility}
+                                onSelectItem={onSelectItem}
                                 onSelectMove={onSelectMove}
                                 onSelectSpecies={onSelectSpecies}
                                 pokemon={pokemon}

@@ -11,6 +11,7 @@ the currently selected Pokémon on the right, taking up the remaining third.
 | `game`              | `Game`                       | Yes      | -       | The current game, used to resolve the caught Pokémon's sprites and moves |
 | `onDeselectPokemon` | `() => void`                 | Yes      | -       | Called to clear the currently selected caught Pokémon                    |
 | `onSelectAbility`   | `(name: string) => void`     | Yes      | -       | Called with an ability's name when it's clicked in the preview           |
+| `onSelectItem`      | `(name: string) => void`     | Yes      | -       | Called with a held item's name when it's clicked in the preview          |
 | `onSelectLocation`  | `(location: string) => void` | Yes      | -       | Called with a caught Pokémon's location when it's clicked in the preview |
 | `onSelectMove`      | `(name: string) => void`     | Yes      | -       | Called with a move's name when it's clicked in the preview               |
 | `onSelectPokemon`   | `(location: string) => void` | Yes      | -       | Called with a caught Pokémon's location when it's clicked in the box     |
@@ -57,12 +58,14 @@ the currently selected Pokémon on the right, taking up the remaining third.
   run; `AddPokemonModal` closes itself, with its own exit animation,
   once it requests the close
 - `handleToggleStatus` — flips a caught Pokémon's `status` between
-  `PokemonStatus.Alive` and `PokemonStatus.Dead`, saves the updated run,
-  and switches `view` to the view the Pokémon now belongs in (`'dead'`
-  if it was just killed, `'alive'` if it was just revived)
+  `PokemonStatus.Alive` and `PokemonStatus.Dead`, clearing its `heldItem`
+  when the new status is `Dead` (a dead Pokémon can't hold onto its
+  item), saves the updated run, and switches `view` to the view the
+  Pokémon now belongs in (`'dead'` if it was just killed, `'alive'` if
+  it was just revived)
 - `handleEditPokemon` — merges a caught Pokémon's edited details (ability,
-  EVs, IVs, level, moves, nature, tags) into `run.caughtPokemon` and saves
-  the updated run
+  EVs, gender, held item, IVs, level, moves, nature, tags) into
+  `run.caughtPokemon` and saves the updated run
 - `handleEvolve` — updates a caught Pokémon's `name` to the confirmed
   evolution's species and saves the updated run
 - `handleViewChange` — sets `view` to the view clicked in `PokemonBox`'s

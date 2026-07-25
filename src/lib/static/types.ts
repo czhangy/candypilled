@@ -21,6 +21,8 @@ export type CalcPokemonInput = {
     abilityName: string;
     boosts: Partial<Record<Exclude<keyof StatValues, 'hp'>, number>>;
     evs: StatValues;
+    gender?: 'male' | 'female';
+    heldItem: string;
     ivs: StatValues;
     level: number;
     nature: string;
@@ -128,6 +130,7 @@ export type AbilitySlot = 1 | 2 | 3;
 export type BattlePokemon = {
     ability: AbilitySlot;
     evs?: StatValues;
+    gender?: 'male' | 'female';
     heldItem?: string;
     ivs?: number | StatValues;
     level: number;
@@ -425,6 +428,27 @@ export type AbilityData = {
     // separately rather than derived from any API field.
     isDangerous: boolean;
     valuesByGeneration: AbilityValuesByGeneration[];
+};
+
+export type ItemValuesByGeneration = {
+    fromGeneration: number;
+    description: string;
+};
+
+export type ItemData = {
+    name: string;
+    category: string;
+    // PokeAPI doesn't track historical changes to an item's effect text, so
+    // unlike its per-generation description this isn't split by generation.
+    effect: string;
+    introducedInGeneration: number;
+    // PokeAPI has no concept of an item being discontinued (e.g. Elemental
+    // Gems, cut after generation VI), so this is curated separately rather
+    // than derived from any API field. Only set for the handful of items
+    // that were actually removed from later games.
+    removedInGeneration?: number;
+    sprite: string;
+    valuesByGeneration: ItemValuesByGeneration[];
 };
 
 export type LearnsetMethod = 'level-up' | 'machine' | 'tutor';

@@ -1,5 +1,6 @@
 import { useId } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
+import { ITEMS } from '@/lib/data/items';
 import { MAX_LEVEL, MIN_LEVEL } from '@/lib/static/constants';
 import { Nature } from '@/lib/static/enums';
 import {
@@ -20,6 +21,8 @@ type PokemonPanelProps = {
     boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
     evs?: StatValues;
     game: Game;
+    gender?: 'male' | 'female';
+    heldItem: string;
     hideEvs: boolean;
     isTailwind: boolean;
     ivs?: StatValues;
@@ -35,6 +38,7 @@ type PokemonPanelProps = {
         stat: keyof StatValues,
         event: React.ChangeEvent<HTMLInputElement>
     ) => void;
+    onHeldItemChange: (value: string) => void;
     onIvChange?: (
         stat: keyof StatValues,
         event: React.ChangeEvent<HTMLInputElement>
@@ -54,6 +58,8 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     boosts,
     evs,
     game,
+    gender,
+    heldItem,
     hideEvs,
     isTailwind,
     ivs,
@@ -63,6 +69,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     onAbilityChange,
     onBoostChange,
     onEvChange,
+    onHeldItemChange,
     onIvChange,
     onLevelChange,
     onMoveChange,
@@ -132,6 +139,18 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
               })),
           ]
         : [];
+    const availableItems = Object.values(ITEMS).filter(
+        (item) =>
+            item.introducedInGeneration <= game.generation &&
+            (item.removedInGeneration === undefined ||
+                game.generation < item.removedInGeneration)
+    );
+    const heldItemOptions: DropdownOption[] = [
+        { label: 'None', value: '' },
+        ...availableItems
+            .map((item) => ({ label: item.name, value: item.name }))
+            .sort((a, b) => a.label.localeCompare(b.label)),
+    ];
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -148,6 +167,16 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                             <span className={styles.label}>Pokémon</span>
                             <span className={styles.value}>
                                 {pokemonName ?? 'None selected'}
+                                {gender && (
+                                    <span
+                                        className={[
+                                            styles.gender,
+                                            styles[`gender--${gender}`],
+                                        ].join(' ')}
+                                    >
+                                        {gender === 'male' ? '♂' : '♀'}
+                                    </span>
+                                )}
                             </span>
                         </div>
                         <div className={styles.field}>
@@ -182,6 +211,17 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                                     />
                                 </div>
                                 <div className={styles.field}>
+                                    <span className={styles.label}>Status</span>
+                                    <Dropdown
+                                        dense
+                                        onChange={onStatusChange}
+                                        options={STATUS_OPTIONS}
+                                        value={status}
+                                    />
+                                </div>
+                            </div>
+                            <div className={styles.row}>
+                                <div className={styles.field}>
                                     <span className={styles.label}>
                                         Ability
                                     </span>
@@ -194,12 +234,15 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                                     />
                                 </div>
                                 <div className={styles.field}>
-                                    <span className={styles.label}>Status</span>
+                                    <span className={styles.label}>
+                                        Held Item
+                                    </span>
                                     <Dropdown
                                         dense
-                                        onChange={onStatusChange}
-                                        options={STATUS_OPTIONS}
-                                        value={status}
+                                        onChange={onHeldItemChange}
+                                        options={heldItemOptions}
+                                        searchable
+                                        value={heldItem}
                                     />
                                 </div>
                             </div>

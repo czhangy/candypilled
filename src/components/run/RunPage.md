@@ -44,6 +44,8 @@ shown instead.
   links elsewhere on the page
 - `selectedAbility` — the currently selected ability's name, read from the
   `ability` query param
+- `selectedItem` — the currently selected item's name, read from the
+  `item` query param
 - `selectedSpecies` — the currently selected Pokémon's species, read from
   the `species` query param, shared between the Data tab's Pokédex
   subtab and its own evolution line links
@@ -81,12 +83,12 @@ shown instead.
 ## Handlers
 
 - **On tab change** (from `Tabs`) — sets the `tab` query param and clears
-  whichever of `pokemon`/`subtab`/`species`/`move`/`ability`/`battle` isn't
-  relevant to the destination tab, so a tab's selection param doesn't
+  whichever of `pokemon`/`subtab`/`species`/`move`/`ability`/`item`/`battle`
+  isn't relevant to the destination tab, so a tab's selection param doesn't
   linger in the URL after navigating away from it
 - **On subtab change** (from `DataTab`) — sets the `subtab` query param
-  and clears `species`/`move`/`ability`, so a subtab's selection param
-  doesn't linger in the URL after switching to a different subtab
+  and clears `species`/`move`/`ability`/`item`, so a subtab's selection
+  param doesn't linger in the URL after switching to a different subtab
 - **On move link click** (from `SplitTab` or `PokedexSubtab`, e.g. a move
   within `BattleCard` or `PokedexSubtab`'s learnset) — opens the Data
   tab's Moves subtab for that move
@@ -96,11 +98,17 @@ shown instead.
   query param without changing `tab`/`subtab`
 - **On ability select** (from `DataTab`'s Abilities subtab) — sets the
   `ability` query param without changing `tab`/`subtab`
+- **On item select** (from `DataTab`'s Items subtab) — sets the `item`
+  query param without changing `tab`/`subtab`
 - **On ability link click** (from `SplitTab` or `PokedexSubtab`, e.g. an
   ability within `PokedexTile` or `BattleCard`) — opens the Data tab's
   Abilities subtab for that ability
   (`?tab=data&subtab=abilities&ability=<name>`) in a new browser tab,
   leaving the current page untouched
+- **On item link click** (from `SplitTab`, a Pokémon's held item within
+  `BattleCard`, or from `BoxTab`'s `PokemonPreview`) — opens the Data
+  tab's Items subtab for that item (`?tab=data&subtab=items&item=<name>`)
+  in a new browser tab, leaving the current page untouched
 - **On species link click** (from `SplitTab`, a Pokémon's sprite or name
   within `BattleCard`) — opens the Data tab's Pokédex subtab for that
   species (`?tab=data&subtab=pokedex&species=<slug>`) in a new browser
@@ -119,7 +127,7 @@ shown instead.
   resolves the location's earliest split and index within it via
   `SplitHelpers.getEarliestLocation`, then navigates to the Splits tab for
   that split (`?tab=split&split=<name>`, clearing
-  `pokemon`/`subtab`/`move`/`ability`/`species`) with the location's
+  `pokemon`/`subtab`/`move`/`ability`/`item`/`species`) with the location's
   disambiguated slug (via `SplitHelpers.getLocationSlug`) as a URL hash, so
   the browser scrolls to its card; no-ops if the location doesn't match
   any split

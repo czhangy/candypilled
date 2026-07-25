@@ -45,7 +45,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const TAB_QUERY_PARAMS: Record<string, string[]> = {
         box: ['pokemon'],
         calc: ['battle'],
-        data: ['subtab', 'species', 'move', 'ability'],
+        data: ['subtab', 'species', 'move', 'ability', 'item'],
     };
 
     const DEFAULT_WIPE_MESSAGES = [
@@ -85,6 +85,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const activeSubtab = searchParams.get('subtab') ?? DEFAULT_SUBTAB;
     const selectedMove = searchParams.get('move') ?? undefined;
     const selectedAbility = searchParams.get('ability') ?? undefined;
+    const selectedItem = searchParams.get('item') ?? undefined;
     const selectedPokemon = searchParams.get('pokemon') ?? undefined;
     const selectedSpecies = searchParams.get('species') ?? undefined;
     const selectedBattle = searchParams.get('battle') ?? undefined;
@@ -202,6 +203,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const handleSubtabChange = (id: string): void => {
         updateQueryParams({
             ability: undefined,
+            item: undefined,
             move: undefined,
             species: undefined,
             subtab: id,
@@ -234,6 +236,10 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     const handleAbilitySelect = (name: string): void => {
         updateQueryParams({ ability: name });
+    };
+
+    const handleItemSelect = (name: string): void => {
+        updateQueryParams({ item: name });
     };
 
     const handleSpeciesSelect = (species: string): void => {
@@ -276,6 +282,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         params.delete('subtab');
         params.delete('move');
         params.delete('ability');
+        params.delete('item');
         params.delete('species');
 
         router.push(
@@ -289,6 +296,16 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const handleAbilityLinkClick = (name: string): void => {
         window.open(
             `${pathname}?tab=data&subtab=abilities&ability=${encodeURIComponent(
+                name
+            )}`,
+            '_blank',
+            'noopener,noreferrer'
+        );
+    };
+
+    const handleItemLinkClick = (name: string): void => {
+        window.open(
+            `${pathname}?tab=data&subtab=items&item=${encodeURIComponent(
                 name
             )}`,
             '_blank',
@@ -384,6 +401,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             onAdvanceSplit={handleSplitSelect}
                             onGameComplete={handleGameComplete}
                             onSelectAbility={handleAbilityLinkClick}
+                            onSelectItem={handleItemLinkClick}
                             onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveLinkClick}
                             onSelectSpecies={handleSpeciesLinkClick}
@@ -397,6 +415,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             game={game}
                             onDeselectPokemon={handlePokemonDeselect}
                             onSelectAbility={handleAbilityLinkClick}
+                            onSelectItem={handleItemLinkClick}
                             onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveLinkClick}
                             onSelectPokemon={handlePokemonSelect}
@@ -410,6 +429,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             game={game}
                             onSelectAbility={handleAbilitySelect}
                             onSelectAbilityLink={handleAbilityLinkClick}
+                            onSelectItem={handleItemSelect}
                             onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveSelect}
                             onSelectMoveLink={handleMoveLinkClick}
@@ -417,6 +437,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             onSubtabChange={handleSubtabChange}
                             run={run}
                             selectedAbility={selectedAbility}
+                            selectedItem={selectedItem}
                             selectedMove={selectedMove}
                             selectedSpecies={selectedSpecies}
                         />

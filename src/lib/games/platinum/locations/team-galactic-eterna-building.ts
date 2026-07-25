@@ -152,7 +152,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                 {
                     isMiniboss: true,
                     trainerClass: 'Commander',
-                    name: 'Jupiter',
+                    name: 'Jupiter 1',
                     team: [
                         {
                             name: 'Zubat',

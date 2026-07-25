@@ -16,6 +16,8 @@ type EditPokemonModalProps = {
             CaughtPokemon,
             | 'ability'
             | 'evs'
+            | 'gender'
+            | 'heldItem'
             | 'ivs'
             | 'level'
             | 'moves'
@@ -66,6 +68,8 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
             CaughtPokemon,
             | 'ability'
             | 'evs'
+            | 'gender'
+            | 'heldItem'
             | 'ivs'
             | 'level'
             | 'moves'
@@ -95,6 +99,8 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
                     allSpecies={[]}
                     defaultAbilitySlot={pokemon.ability}
                     defaultEvs={StatHelpers.normalizeStats(pokemon.evs, 0)}
+                    defaultGender={pokemon.gender}
+                    defaultHeldItem={pokemon.heldItem}
                     defaultIvs={StatHelpers.normalizeStats(pokemon.ivs, 31)}
                     defaultLevel={pokemon.level}
                     defaultMoves={defaultMoves}
@@ -110,6 +116,7 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
                     recalculateMovesOnLevelChange={false}
                     showAbility
                     showEvs={!hideEvs}
+                    showHeldItem
                     showLevel
                     showMoves
                     showTags

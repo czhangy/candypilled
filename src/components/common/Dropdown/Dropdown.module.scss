@@ -19,8 +19,11 @@
         width: 100%;
 
         &:focus {
-            border-color: var(--accent-color);
             outline: none;
+        }
+
+        &--open {
+            border-color: var(--accent-color);
         }
 
         .trigger-label {

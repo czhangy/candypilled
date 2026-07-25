@@ -26,6 +26,8 @@ type PokemonPreviewProps = {
             CaughtPokemon,
             | 'ability'
             | 'evs'
+            | 'gender'
+            | 'heldItem'
             | 'ivs'
             | 'level'
             | 'moves'
@@ -36,6 +38,7 @@ type PokemonPreviewProps = {
     ) => void;
     onEvolve: (pokemon: CaughtPokemon, newName: string) => void;
     onSelectAbility: (name: string) => void;
+    onSelectItem: (name: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
     onToggleStatus: (pokemon: CaughtPokemon) => void;
@@ -54,6 +57,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     onEdit,
     onEvolve,
     onSelectAbility,
+    onSelectItem,
     onSelectLocation,
     onSelectMove,
     onToggleStatus,
@@ -97,6 +101,10 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
         onSelectLocation(location);
     };
 
+    const handleItemClick = (item: string): void => {
+        onSelectItem(item);
+    };
+
     const handleToggleStatusClick = (): void => {
         if (pokemon) {
             onToggleStatus(pokemon);
@@ -116,6 +124,8 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
             CaughtPokemon,
             | 'ability'
             | 'evs'
+            | 'gender'
+            | 'heldItem'
             | 'ivs'
             | 'level'
             | 'moves'
@@ -214,6 +224,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
               pokemon.ability
           )
         : undefined;
+    const heldItem = pokemon?.heldItem;
     const ivs = pokemon
         ? StatHelpers.normalizeStats(pokemon.ivs, 31)
         : undefined;
@@ -258,7 +269,23 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                 )}
                             </div>
                             <div className={styles.info}>
-                                <span className={styles.name}>{data.name}</span>
+                                <span className={styles.name}>
+                                    {data.name}
+                                    {pokemon.gender && (
+                                        <span
+                                            className={[
+                                                styles.gender,
+                                                styles[
+                                                    `gender--${pokemon.gender}`
+                                                ],
+                                            ].join(' ')}
+                                        >
+                                            {pokemon.gender === 'male'
+                                                ? '♂'
+                                                : '♀'}
+                                        </span>
+                                    )}
+                                </span>
                                 <div className={styles.details}>
                                     <div className={styles.detail}>
                                         <span
@@ -355,7 +382,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                             </span>
                                         )}
                                     </div>
-                                    {pokemon.heldItem && (
+                                    {heldItem && (
                                         <div className={styles.detail}>
                                             <span
                                                 className={
@@ -364,13 +391,17 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                             >
                                                 Held Item
                                             </span>
-                                            <span
+                                            <button
                                                 className={
-                                                    styles['detail-value']
+                                                    styles['detail-link']
                                                 }
+                                                onClick={() =>
+                                                    handleItemClick(heldItem)
+                                                }
+                                                type="button"
                                             >
-                                                {pokemon.heldItem}
-                                            </span>
+                                                {heldItem}
+                                            </button>
                                         </div>
                                     )}
                                     {pokemon.tags.length > 0 && (

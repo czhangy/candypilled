@@ -21,6 +21,7 @@ type AddPokemonModalProps = {
             CaughtPokemon,
             | 'ability'
             | 'evs'
+            | 'gender'
             | 'ivs'
             | 'level'
             | 'moves'
@@ -69,6 +70,7 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
             CaughtPokemon,
             | 'ability'
             | 'evs'
+            | 'gender'
             | 'ivs'
             | 'level'
             | 'moves'
@@ -132,6 +134,7 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
                         recalculateMovesOnLevelChange
                         showAbility
                         showEvs={false}
+                        showHeldItem={false}
                         showLevel
                         showMoves
                         showTags

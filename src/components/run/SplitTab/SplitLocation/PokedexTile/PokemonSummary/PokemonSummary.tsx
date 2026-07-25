@@ -9,7 +9,7 @@ type PokemonSummaryProps = {
     catchRate?: number;
     interactive: boolean;
     onSelectAbility: (name: string) => void;
-    placeholder: string;
+    placeholder?: string;
     pokemon?: PokemonData;
     sprite?: string;
     types: string[];

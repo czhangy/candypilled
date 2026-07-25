@@ -9,7 +9,9 @@ current split's level cap are greyed out, but remain clickable. Slots can
 be dragged and dropped onto one another to reorder the caught Pokémon. A
 slot for a Pokémon with at least one tag shows a small accent-colored dot
 in its top-right corner, revealing the full tag list in a tooltip on
-hover. When any caught Pokémon has at least one tag, a `TagFilter` button
+hover. A slot for a Pokémon holding an item shows that item's icon in
+its bottom-right corner. When any caught Pokémon has at least one tag,
+a `TagFilter` button
 sits to the right of the Alive/Dead toggle, letting the grid be narrowed
 down to Pokémon carrying every checked tag; if none match, a placeholder
 says so instead of the grid.
@@ -48,6 +50,9 @@ says so instead of the grid.
   otherwise worded for the current `view`
 - `isOverCap` — whether a given Pokémon's `level` exceeds `levelCap`,
   computed per slot
+- `heldItemSprite` — a given Pokémon's held item sprite, resolved via
+  `ItemHelpers.getHeldItemSprite`, per slot; omitted (no icon shown)
+  when the Pokémon has no held item or no sprite matches
 
 ## Handlers
 

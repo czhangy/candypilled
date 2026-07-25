@@ -79,8 +79,6 @@ const HallOfFameCard: React.FC<HallOfFameCardProps> = ({
         );
     };
 
-    const handleNoop = (): void => {};
-
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -100,9 +98,6 @@ const HallOfFameCard: React.FC<HallOfFameCardProps> = ({
                                         ? pokemon.location
                                         : `empty-${index}`
                                 }
-                                onSelectAbility={handleNoop}
-                                onSelectMove={handleNoop}
-                                onSelectSpecies={handleNoop}
                                 pokemon={pokemon}
                                 variant={variant}
                                 version={version}
