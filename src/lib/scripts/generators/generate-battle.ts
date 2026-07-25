@@ -16,6 +16,8 @@ const GENDER_NOT_FOUND = 'That trainer has no entry in TRAINER_CLASS_GENDERS.';
 const NATURE_IMPORT = "import { Nature } from '@/lib/static/enums';";
 const MAX_TEAM_SIZE = 6;
 const DEFAULT_ABILITY_SLOT = 1;
+const MAX_DV = 255;
+const MAX_IV = 31;
 const NATURE_NAMES = Object.values(Nature);
 const SLUGGED_BY_NAME_CLASS_SLUGS = new Set(
     CLASSES_SLUGGED_BY_NAME.map((name) => StringHelpers.toSlug(name))
@@ -138,6 +140,7 @@ type PromptedPokemon = {
     level: number;
     nature: Nature;
     gender?: 'male' | 'female';
+    ivs?: number;
 };
 
 type PromptedBattle = {
@@ -307,6 +310,7 @@ const serializePokemon = (pokemon: PromptedPokemon, indent: string): string => {
         `${indent}    name: '${escapeQuotes(pokemon.name)}',\n` +
         `${indent}    ability: ${pokemon.ability},\n` +
         (pokemon.gender ? `${indent}    gender: '${pokemon.gender}',\n` : '') +
+        (pokemon.ivs ? `${indent}    ivs: ${pokemon.ivs},\n` : '') +
         `${indent}    level: ${pokemon.level},\n` +
         `${indent}    nature: Nature.${pokemon.nature},\n` +
         `${indent}},\n`
@@ -432,11 +436,17 @@ const promptBattle = async (
         throw new Error(GENDER_NOT_FOUND);
     }
 
+    let dv = NaN;
+    while (!Number.isInteger(dv) || dv < 0 || dv > MAX_DV) {
+        dv = Number((await rl.question(`DV (0-${MAX_DV}): `)).trim());
+    }
+    const ivs = dv ? Math.round((dv * MAX_IV) / MAX_DV) : undefined;
+
     const team: PromptedPokemon[] = [];
     for (let i = 1; i <= MAX_TEAM_SIZE; i++) {
         const pokemon = await promptPokemon(rl, i);
         if (!pokemon) break;
-        team.push({ ...pokemon, gender });
+        team.push({ ...pokemon, gender, ivs });
     }
 
     return { trainerClass, isTrueDouble, name, team };
