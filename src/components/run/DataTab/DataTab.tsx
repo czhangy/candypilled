@@ -1,6 +1,7 @@
 import { Game, Run } from '@/lib/static/types';
 import AbilitiesSubtab from './AbilitiesSubtab/AbilitiesSubtab';
 import styles from './DataTab.module.scss';
+import ItemsSubtab from './ItemsSubtab/ItemsSubtab';
 import MovesSubtab from './MovesSubtab/MovesSubtab';
 import PokedexSubtab from './PokedexSubtab/PokedexSubtab';
 
@@ -9,6 +10,7 @@ type DataTabProps = {
     game: Game;
     onSelectAbility: (name: string) => void;
     onSelectAbilityLink: (name: string) => void;
+    onSelectItem: (name: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
     onSelectMoveLink: (name: string) => void;
@@ -16,6 +18,7 @@ type DataTabProps = {
     onSubtabChange: (id: string) => void;
     run: Run;
     selectedAbility?: string;
+    selectedItem?: string;
     selectedMove?: string;
     selectedSpecies?: string;
 };
@@ -25,6 +28,7 @@ const DataTab: React.FC<DataTabProps> = ({
     game,
     onSelectAbility,
     onSelectAbilityLink,
+    onSelectItem,
     onSelectLocation,
     onSelectMove,
     onSelectMoveLink,
@@ -32,6 +36,7 @@ const DataTab: React.FC<DataTabProps> = ({
     onSubtabChange,
     run,
     selectedAbility,
+    selectedItem,
     selectedMove,
     selectedSpecies,
 }) => {
@@ -43,6 +48,7 @@ const DataTab: React.FC<DataTabProps> = ({
         { id: 'pokedex', label: 'Pokédex' },
         { id: 'moves', label: 'Moves' },
         { id: 'abilities', label: 'Abilities' },
+        { id: 'items', label: 'Items' },
     ];
 
     // -------------------------------------------------------------------------
@@ -92,6 +98,13 @@ const DataTab: React.FC<DataTabProps> = ({
                     generation={game.generation}
                     onSelectAbility={onSelectAbility}
                     selectedAbility={selectedAbility}
+                />
+            )}
+            {activeSubtab === 'items' && (
+                <ItemsSubtab
+                    generation={game.generation}
+                    onSelectItem={onSelectItem}
+                    selectedItem={selectedItem}
                 />
             )}
         </div>
