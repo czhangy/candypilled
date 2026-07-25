@@ -14,6 +14,7 @@ const VALLEY_WINDWORKS_INTERIOR: Location = {
                 {
                     name: 'Zubat',
                     ability: 1,
+                    gender: 'male',
                     level: 13,
                     nature: Nature.Bashful,
                 },
@@ -29,12 +30,14 @@ const VALLEY_WINDWORKS_INTERIOR: Location = {
                 {
                     name: 'Glameow',
                     ability: 1,
+                    gender: 'male',
                     level: 11,
                     nature: Nature.Naive,
                 },
                 {
                     name: 'Stunky',
                     ability: 1,
+                    gender: 'male',
                     level: 11,
                     nature: Nature.Hasty,
                 },
@@ -50,6 +53,7 @@ const VALLEY_WINDWORKS_INTERIOR: Location = {
                 {
                     name: 'Zubat',
                     ability: 1,
+                    gender: 'female',
                     level: 15,
                     nature: Nature.Bold,
                     moves: ['Bite', 'Leech Life', 'Toxic'],
@@ -58,6 +62,7 @@ const VALLEY_WINDWORKS_INTERIOR: Location = {
                 {
                     name: 'Purugly',
                     ability: 1,
+                    gender: 'female',
                     level: 17,
                     nature: Nature.Bashful,
                     moves: ['Feint Attack', 'Scratch', 'Fake Out'],

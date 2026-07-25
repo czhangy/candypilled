@@ -15,6 +15,7 @@ const FLOAROMA_MEADOW: Location = {
                 {
                     name: 'Stunky',
                     ability: 1,
+                    gender: 'male',
                     level: 13,
                     nature: Nature.Hasty,
                 },
@@ -31,12 +32,14 @@ const FLOAROMA_MEADOW: Location = {
                 {
                     name: 'Zubat',
                     ability: 1,
+                    gender: 'male',
                     level: 11,
                     nature: Nature.Gentle,
                 },
                 {
                     name: 'Zubat',
                     ability: 1,
+                    gender: 'male',
                     level: 11,
                     nature: Nature.Gentle,
                 },

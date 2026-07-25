@@ -18,18 +18,21 @@ const ROUTE_211: Location = {
                         {
                             name: 'Zubat',
                             ability: 1,
+                            gender: 'male',
                             level: 14,
                             nature: Nature.Serious,
                         },
                         {
                             name: 'Zubat',
                             ability: 1,
+                            gender: 'male',
                             level: 14,
                             nature: Nature.Serious,
                         },
                         {
                             name: 'Zubat',
                             ability: 1,
+                            gender: 'male',
                             level: 14,
                             nature: Nature.Serious,
                         },
@@ -45,12 +48,14 @@ const ROUTE_211: Location = {
                         {
                             name: 'Geodude',
                             ability: 1,
+                            gender: 'male',
                             level: 14,
                             nature: Nature.Brave,
                         },
                         {
                             name: 'Onix',
                             ability: 1,
+                            gender: 'male',
                             level: 18,
                             nature: Nature.Relaxed,
                         },
@@ -66,12 +71,14 @@ const ROUTE_211: Location = {
                         {
                             name: 'Starly',
                             ability: 1,
+                            gender: 'male',
                             level: 17,
                             nature: Nature.Serious,
                         },
                         {
                             name: 'Hoothoot',
                             ability: 1,
+                            gender: 'male',
                             level: 17,
                             nature: Nature.Naive,
                         },
@@ -94,6 +101,7 @@ const ROUTE_211: Location = {
                         {
                             name: 'Noctowl',
                             ability: 1,
+                            gender: 'male',
                             level: 34,
                             nature: Nature.Quirky,
                             ivs: 6,
@@ -110,18 +118,21 @@ const ROUTE_211: Location = {
                         {
                             name: 'Bronzor',
                             ability: 1,
+                            gender: 'male',
                             level: 28,
                             nature: Nature.Serious,
                         },
                         {
                             name: 'Bronzor',
                             ability: 1,
+                            gender: 'male',
                             level: 30,
                             nature: Nature.Modest,
                         },
                         {
                             name: 'Bronzor',
                             ability: 1,
+                            gender: 'male',
                             level: 32,
                             nature: Nature.Impish,
                         },
@@ -137,12 +148,14 @@ const ROUTE_211: Location = {
                         {
                             name: 'Skorupi',
                             ability: 1,
+                            gender: 'male',
                             level: 32,
                             nature: Nature.Lax,
                         },
                         {
                             name: 'Croagunk',
                             ability: 1,
+                            gender: 'male',
                             level: 30,
                             nature: Nature.Lax,
                         },
@@ -158,6 +171,7 @@ const ROUTE_211: Location = {
                         {
                             name: 'Croagunk',
                             ability: 1,
+                            gender: 'male',
                             level: 31,
                             nature: Nature.Serious,
                             ivs: 3,
@@ -165,6 +179,7 @@ const ROUTE_211: Location = {
                         {
                             name: 'Meditite',
                             ability: 1,
+                            gender: 'male',
                             level: 31,
                             nature: Nature.Quirky,
                             ivs: 3,
@@ -172,6 +187,7 @@ const ROUTE_211: Location = {
                         {
                             name: 'Machoke',
                             ability: 1,
+                            gender: 'male',
                             level: 31,
                             nature: Nature.Quirky,
                             ivs: 3,

@@ -37,16 +37,10 @@
         font-size: 0.85rem;
 
         .gender {
+            @include gender-symbol;
+
             font-size: 0.75rem;
             margin-left: 0.2rem;
-
-            &--male {
-                color: $blue;
-            }
-
-            &--female {
-                color: $pink;
-            }
         }
     }
 

@@ -14,6 +14,7 @@ const OREBURGH_GYM: Location = {
                 {
                     name: 'Geodude',
                     ability: 1,
+                    gender: 'male',
                     level: 11,
                     moves: ['Tackle', 'Defense Curl'],
                     nature: Nature.Timid,
@@ -31,6 +32,7 @@ const OREBURGH_GYM: Location = {
                 {
                     name: 'Geodude',
                     ability: 1,
+                    gender: 'male',
                     level: 9,
                     moves: ['Tackle', 'Defense Curl'],
                     nature: Nature.Calm,
@@ -39,6 +41,7 @@ const OREBURGH_GYM: Location = {
                 {
                     name: 'Onix',
                     ability: 1,
+                    gender: 'male',
                     level: 9,
                     moves: ['Rock Throw', 'Tackle', 'Harden'],
                     nature: Nature.Bashful,
@@ -56,6 +59,7 @@ const OREBURGH_GYM: Location = {
                 {
                     name: 'Geodude',
                     ability: 1,
+                    gender: 'male',
                     level: 12,
                     moves: ['Stealth Rock', 'Rock Throw'],
                     nature: Nature.Lax,
@@ -64,6 +68,7 @@ const OREBURGH_GYM: Location = {
                 {
                     name: 'Onix',
                     ability: 1,
+                    gender: 'male',
                     level: 12,
                     moves: ['Stealth Rock', 'Rock Throw', 'Screech'],
                     nature: Nature.Bold,
@@ -72,6 +77,7 @@ const OREBURGH_GYM: Location = {
                 {
                     name: 'Cranidos',
                     ability: 1,
+                    gender: 'male',
                     level: 14,
                     moves: ['Headbutt', 'Pursuit', 'Leer'],
                     nature: Nature.Jolly,

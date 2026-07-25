@@ -47,6 +47,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Stunky',
                             ability: 1,
+                            gender: 'female',
                             level: 43,
                             nature: Nature.Bold,
                             ivs: 3,
@@ -63,6 +64,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Murkrow',
                             ability: 1,
+                            gender: 'male',
                             level: 43,
                             nature: Nature.Rash,
                             ivs: 3,
@@ -91,6 +93,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Houndour',
                             ability: 1,
+                            gender: 'male',
                             level: 40,
                             nature: Nature.Hasty,
                             moves: [
@@ -104,6 +107,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Golbat',
                             ability: 1,
+                            gender: 'male',
                             level: 40,
                             nature: Nature.Serious,
                             moves: [
@@ -117,6 +121,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Houndour',
                             ability: 1,
+                            gender: 'male',
                             level: 40,
                             nature: Nature.Hasty,
                             moves: [
@@ -139,6 +144,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Stunky',
                             ability: 1,
+                            gender: 'male',
                             level: 42,
                             nature: Nature.Brave,
                             ivs: 3,
@@ -146,6 +152,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Golbat',
                             ability: 1,
+                            gender: 'male',
                             level: 40,
                             nature: Nature.Serious,
                             ivs: 3,
@@ -169,6 +176,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Golbat',
                             ability: 1,
+                            gender: 'male',
                             level: 43,
                             nature: Nature.Docile,
                             ivs: 3,
@@ -185,6 +193,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Murkrow',
                             ability: 1,
+                            gender: 'female',
                             level: 39,
                             nature: Nature.Quirky,
                             ivs: 3,
@@ -192,6 +201,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Glameow',
                             ability: 1,
+                            gender: 'female',
                             level: 42,
                             nature: Nature.Calm,
                             ivs: 3,
@@ -199,6 +209,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Murkrow',
                             ability: 1,
+                            gender: 'female',
                             level: 39,
                             nature: Nature.Quirky,
                             ivs: 3,
@@ -215,6 +226,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Croagunk',
                             ability: 1,
+                            gender: 'male',
                             level: 38,
                             nature: Nature.Modest,
                             ivs: 3,
@@ -222,6 +234,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Stunky',
                             ability: 1,
+                            gender: 'male',
                             level: 40,
                             nature: Nature.Hasty,
                             ivs: 3,
@@ -229,6 +242,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Croagunk',
                             ability: 1,
+                            gender: 'male',
                             level: 42,
                             nature: Nature.Serious,
                             ivs: 3,
@@ -252,6 +266,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Houndour',
                             ability: 1,
+                            gender: 'female',
                             level: 40,
                             nature: Nature.Timid,
                             ivs: 3,
@@ -259,6 +274,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Glameow',
                             ability: 1,
+                            gender: 'female',
                             level: 42,
                             nature: Nature.Modest,
                             ivs: 3,
@@ -274,6 +290,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Glameow',
                             ability: 1,
+                            gender: 'male',
                             level: 41,
                             nature: Nature.Hasty,
                             ivs: 3,
@@ -281,6 +298,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Golbat',
                             ability: 1,
+                            gender: 'male',
                             level: 41,
                             nature: Nature.Docile,
                             ivs: 3,
@@ -303,6 +321,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Golbat',
                             ability: 1,
+                            gender: 'female',
                             level: 39,
                             nature: Nature.Quirky,
                             ivs: 3,
@@ -310,6 +329,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Croagunk',
                             ability: 1,
+                            gender: 'female',
                             level: 40,
                             nature: Nature.Quirky,
                             ivs: 3,
@@ -317,6 +337,7 @@ const MT_CORONET: Location = {
                         {
                             name: 'Murkrow',
                             ability: 1,
+                            gender: 'female',
                             level: 41,
                             nature: Nature.Calm,
                             ivs: 3,

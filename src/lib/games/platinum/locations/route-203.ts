@@ -16,6 +16,7 @@ const ROUTE_203: Location = {
                     {
                         name: 'Starly',
                         ability: 1,
+                        gender: 'male',
                         level: 7,
                         moves: ['Quick Attack', 'Growl'],
                         nature: Nature.Naughty,
@@ -24,6 +25,7 @@ const ROUTE_203: Location = {
                     {
                         name: 'Chimchar',
                         ability: 1,
+                        gender: 'male',
                         level: 9,
                         moves: ['Scratch', 'Leer'],
                         nature: Nature.Docile,
@@ -34,6 +36,7 @@ const ROUTE_203: Location = {
                     {
                         name: 'Starly',
                         ability: 1,
+                        gender: 'male',
                         level: 7,
                         moves: ['Quick Attack', 'Growl'],
                         nature: Nature.Naive,
@@ -42,6 +45,7 @@ const ROUTE_203: Location = {
                     {
                         name: 'Piplup',
                         ability: 1,
+                        gender: 'male',
                         level: 9,
                         moves: ['Pound', 'Growl'],
                         nature: Nature.Naughty,
@@ -52,6 +56,7 @@ const ROUTE_203: Location = {
                     {
                         name: 'Starly',
                         ability: 1,
+                        gender: 'male',
                         level: 7,
                         moves: ['Quick Attack', 'Growl'],
                         nature: Nature.Timid,
@@ -60,6 +65,7 @@ const ROUTE_203: Location = {
                     {
                         name: 'Turtwig',
                         ability: 1,
+                        gender: 'male',
                         level: 9,
                         moves: ['Tackle', 'Withdraw'],
                         nature: Nature.Brave,
@@ -78,12 +84,14 @@ const ROUTE_203: Location = {
                 {
                     name: 'Kricketot',
                     ability: 1,
+                    gender: 'male',
                     level: 7,
                     nature: Nature.Mild,
                 },
                 {
                     name: 'Zubat',
                     ability: 1,
+                    gender: 'male',
                     level: 6,
                     nature: Nature.Careful,
                 },
@@ -99,6 +107,7 @@ const ROUTE_203: Location = {
                 {
                     name: 'Shinx',
                     ability: 1,
+                    gender: 'male',
                     level: 8,
                     nature: Nature.Calm,
                 },
@@ -114,6 +123,7 @@ const ROUTE_203: Location = {
                 {
                     name: 'Machop',
                     ability: 1,
+                    gender: 'male',
                     level: 8,
                     moves: ['Low Kick', 'Leer'],
                     nature: Nature.Relaxed,
@@ -130,24 +140,28 @@ const ROUTE_203: Location = {
                 {
                     name: 'Bidoof',
                     ability: 1,
+                    gender: 'female',
                     level: 4,
                     nature: Nature.Rash,
                 },
                 {
                     name: 'Budew',
                     ability: 1,
+                    gender: 'female',
                     level: 4,
                     nature: Nature.Mild,
                 },
                 {
                     name: 'Starly',
                     ability: 1,
+                    gender: 'female',
                     level: 4,
                     nature: Nature.Quirky,
                 },
                 {
                     name: 'Abra',
                     ability: 1,
+                    gender: 'female',
                     level: 4,
                     nature: Nature.Docile,
                 },
@@ -163,6 +177,7 @@ const ROUTE_203: Location = {
                 {
                     name: 'Psyduck',
                     ability: 1,
+                    gender: 'female',
                     level: 8,
                     nature: Nature.Relaxed,
                 },

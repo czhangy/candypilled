@@ -12,10 +12,16 @@ import StringHelpers from '@/lib/utils/StringHelpers';
 const USAGE = 'Usage: npm run gen:battle <location> [subarea]';
 const LOCATION_NOT_FOUND = 'That location does not exist.';
 const SUBAREA_NOT_FOUND = 'That subarea does not exist on this location.';
+const GENDER_NOT_FOUND = 'That trainer has no entry in TRAINER_CLASS_GENDERS.';
 const NATURE_IMPORT = "import { Nature } from '@/lib/static/enums';";
 const MAX_TEAM_SIZE = 6;
 const DEFAULT_ABILITY_SLOT = 1;
+const MAX_DV = 255;
+const MAX_IV = 31;
 const NATURE_NAMES = Object.values(Nature);
+const SLUGGED_BY_NAME_CLASS_SLUGS = new Set(
+    CLASSES_SLUGGED_BY_NAME.map((name) => StringHelpers.toSlug(name))
+);
 
 // Trainer classes whose canonical display name has punctuation or accents
 // that plain ASCII input (and therefore slug/title-casing) can't reproduce,
@@ -37,6 +43,87 @@ const TRUE_DOUBLE_TRAINER_CLASSES = [
     'Old Couple',
 ];
 
+// The gender fielded by each trainer class currently in the game, keyed by
+// slug. All classes default to male until real genders are filled in.
+const TRAINER_CLASS_GENDERS: Record<string, 'male' | 'female'> = {
+    aaron: 'male',
+    'ace-trainer-f': 'female',
+    'ace-trainer-m': 'male',
+    'ace-trainer-snow-f': 'female',
+    'ace-trainer-snow-m': 'male',
+    'aroma-lady': 'female',
+    artist: 'male',
+    barry: 'male',
+    'battle-girl': 'female',
+    beauty: 'female',
+    'belle-and-pa': 'male',
+    bertha: 'female',
+    'bird-keeper': 'male',
+    'black-belt': 'male',
+    'bug-catcher': 'male',
+    byron: 'male',
+    camper: 'male',
+    candice: 'female',
+    collector: 'male',
+    cowgirl: 'female',
+    'crasher-wake': 'male',
+    'cyclist-f': 'female',
+    'cyclist-m': 'male',
+    cynthia: 'female',
+    cyrus: 'male',
+    fantina: 'female',
+    fisherman: 'male',
+    flint: 'male',
+    'galactic-grunt-f': 'female',
+    'galactic-grunt-m': 'male',
+    'galactic-grunt-m-and-galactic-grunt-m': 'male',
+    gardenia: 'female',
+    gentleman: 'male',
+    guitarist: 'male',
+    hiker: 'male',
+    jogger: 'male',
+    jupiter: 'female',
+    lady: 'female',
+    lass: 'female',
+    lucian: 'male',
+    mars: 'female',
+    maylene: 'female',
+    'ninja-boy': 'male',
+    pi: 'male',
+    picnicker: 'female',
+    'pkmn-breeder-f': 'female',
+    'pkmn-breeder-m': 'male',
+    'poke-kid': 'female',
+    'pokefan-f': 'female',
+    'pokefan-m': 'male',
+    policeman: 'male',
+    'psychic-f': 'female',
+    'psychic-m': 'male',
+    rancher: 'male',
+    'rich-boy': 'male',
+    roark: 'male',
+    roughneck: 'male',
+    'ruin-maniac': 'male',
+    saturn: 'male',
+    'school-kid-f': 'female',
+    'school-kid-m': 'male',
+    scientist: 'male',
+    'skier-f': 'female',
+    'skier-m': 'male',
+    'swimmer-f': 'female',
+    'swimmer-m': 'male',
+    'tuber-f': 'female',
+    'tuber-m': 'male',
+    twins: 'female',
+    veteran: 'male',
+    volkner: 'male',
+    waiter: 'male',
+    waitress: 'female',
+    worker: 'male',
+    'young-couple': 'male',
+    youngster: 'male',
+};
+
 type BattleArgs = {
     location: string;
     subarea?: string;
@@ -54,11 +141,16 @@ type PromptedPokemon = {
     nature: Nature;
 };
 
+type PromptedTeamPokemon = PromptedPokemon & {
+    gender: 'male' | 'female';
+    ivs?: number;
+};
+
 type PromptedBattle = {
     trainerClass: string;
     isTrueDouble: boolean;
     name: string;
-    team: PromptedPokemon[];
+    team: PromptedTeamPokemon[];
 };
 
 const parseArgs = (argv: string[]): BattleArgs => {
@@ -215,11 +307,16 @@ const findInsertionPoint = (content: string, scope: Range): InsertionPoint => {
 
 const escapeQuotes = (value: string): string => value.replace(/'/g, "\\'");
 
-const serializePokemon = (pokemon: PromptedPokemon, indent: string): string => {
+const serializePokemon = (
+    pokemon: PromptedTeamPokemon,
+    indent: string
+): string => {
     return (
         `${indent}{\n` +
         `${indent}    name: '${escapeQuotes(pokemon.name)}',\n` +
         `${indent}    ability: ${pokemon.ability},\n` +
+        `${indent}    gender: '${pokemon.gender}',\n` +
+        (pokemon.ivs ? `${indent}    ivs: ${pokemon.ivs},\n` : '') +
         `${indent}    level: ${pokemon.level},\n` +
         `${indent}    nature: Nature.${pokemon.nature},\n` +
         `${indent}},\n`
@@ -296,31 +393,66 @@ const promptPokemon = async (
     return { name, ability, level, nature };
 };
 
-const promptBattle = async (
+type PromptedTrainerClass = {
+    trainerClass: string;
+    slug: string;
+};
+
+const promptTrainerClass = async (
     rl: Interface,
     validTrainerClasses: Set<string>
-): Promise<PromptedBattle> => {
-    let trainerClass: string | null = null;
-    while (trainerClass === null) {
+): Promise<PromptedTrainerClass> => {
+    while (true) {
         const raw = (await rl.question('Trainer class: ')).trim();
         const slug = StringHelpers.toSlug(raw);
         if (!validTrainerClasses.has(slug)) {
             console.log("  That isn't a valid trainer class.");
             continue;
         }
-        trainerClass =
-            TRAINER_CLASS_NAME_OVERRIDES[slug] ??
-            StringHelpers.toTitleCase(slug);
+        return {
+            slug,
+            trainerClass:
+                TRAINER_CLASS_NAME_OVERRIDES[slug] ??
+                StringHelpers.toTitleCase(slug),
+        };
     }
+};
+
+const promptBattle = async (
+    rl: Interface,
+    validTrainerClasses: Set<string>
+): Promise<PromptedBattle> => {
+    const { trainerClass, slug } = await promptTrainerClass(
+        rl,
+        validTrainerClasses
+    );
     const isTrueDouble = TRUE_DOUBLE_TRAINER_CLASSES.includes(trainerClass);
 
     const name = (await rl.question('Trainer name: ')).trim();
 
-    const team: PromptedPokemon[] = [];
+    // Classes fielded by a single named trainer (e.g. Leader, Champion) have
+    // no gender of their own; fall back to the specific trainer's name,
+    // stripping a trailing disambiguator (e.g. "Barry 2") some repeat
+    // battles use to stay unique within a location.
+    const genderSlug = SLUGGED_BY_NAME_CLASS_SLUGS.has(slug)
+        ? StringHelpers.toSlug(name.replace(/\s+\d+$/, ''))
+        : slug;
+    const gender = TRAINER_CLASS_GENDERS[genderSlug];
+    if (!gender) {
+        throw new Error(GENDER_NOT_FOUND);
+    }
+
+    let dv = NaN;
+    while (!Number.isInteger(dv) || dv < 0 || dv > MAX_DV) {
+        dv = Number((await rl.question(`DV (0-${MAX_DV}): `)).trim());
+    }
+    const ivs = dv ? Math.round((dv * MAX_IV) / MAX_DV) : undefined;
+
+    const team: PromptedTeamPokemon[] = [];
     for (let i = 1; i <= MAX_TEAM_SIZE; i++) {
         const pokemon = await promptPokemon(rl, i);
         if (!pokemon) break;
-        team.push(pokemon);
+        team.push({ ...pokemon, gender, ivs });
     }
 
     return { trainerClass, isTrueDouble, name, team };

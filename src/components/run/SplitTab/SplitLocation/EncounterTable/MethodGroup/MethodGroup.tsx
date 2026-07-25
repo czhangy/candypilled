@@ -40,7 +40,7 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const METHOD_ICON_SIZE = 22;
+    const METHOD_ICON_SIZE = 18;
 
     // -------------------------------------------------------------------------
     // MARKUP

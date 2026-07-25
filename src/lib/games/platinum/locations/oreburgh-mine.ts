@@ -23,12 +23,14 @@ const OREBURGH_MINE: Location = {
                         {
                             name: 'Geodude',
                             ability: 1,
+                            gender: 'male',
                             level: 6,
                             nature: Nature.Naughty,
                         },
                         {
                             name: 'Machop',
                             ability: 1,
+                            gender: 'male',
                             level: 8,
                             nature: Nature.Timid,
                         },
@@ -44,6 +46,7 @@ const OREBURGH_MINE: Location = {
                         {
                             name: 'Geodude',
                             ability: 1,
+                            gender: 'male',
                             level: 9,
                             nature: Nature.Brave,
                         },

@@ -15,6 +15,7 @@ const ROUTE_206: Location = {
                 {
                     name: 'Pikachu',
                     ability: 1,
+                    gender: 'male',
                     level: 21,
                     nature: Nature.Naughty,
                 },
@@ -30,6 +31,7 @@ const ROUTE_206: Location = {
                 {
                     name: 'Staravia',
                     ability: 1,
+                    gender: 'female',
                     level: 21,
                     nature: Nature.Serious,
                 },
@@ -45,6 +47,7 @@ const ROUTE_206: Location = {
                 {
                     name: 'Ponyta',
                     ability: 1,
+                    gender: 'male',
                     level: 21,
                     nature: Nature.Lonely,
                 },
@@ -60,18 +63,21 @@ const ROUTE_206: Location = {
                 {
                     name: 'Starly',
                     ability: 1,
+                    gender: 'female',
                     level: 17,
                     nature: Nature.Quirky,
                 },
                 {
                     name: 'Starly',
                     ability: 1,
+                    gender: 'female',
                     level: 18,
                     nature: Nature.Mild,
                 },
                 {
                     name: 'Starly',
                     ability: 1,
+                    gender: 'female',
                     level: 19,
                     nature: Nature.Bashful,
                 },
@@ -87,12 +93,14 @@ const ROUTE_206: Location = {
                 {
                     name: 'Starly',
                     ability: 1,
+                    gender: 'male',
                     level: 18,
                     nature: Nature.Naive,
                 },
                 {
                     name: 'Staravia',
                     ability: 1,
+                    gender: 'male',
                     level: 20,
                     nature: Nature.Modest,
                 },
@@ -108,6 +116,7 @@ const ROUTE_206: Location = {
                 {
                     name: 'Shinx',
                     ability: 1,
+                    gender: 'male',
                     level: 21,
                     nature: Nature.Naughty,
                 },
@@ -123,12 +132,14 @@ const ROUTE_206: Location = {
                 {
                     name: 'Ponyta',
                     ability: 1,
+                    gender: 'female',
                     level: 20,
                     nature: Nature.Bashful,
                 },
                 {
                     name: 'Shinx',
                     ability: 1,
+                    gender: 'female',
                     level: 18,
                     nature: Nature.Adamant,
                 },
@@ -144,6 +155,7 @@ const ROUTE_206: Location = {
                 {
                     name: 'Pikachu',
                     ability: 1,
+                    gender: 'female',
                     level: 21,
                     nature: Nature.Modest,
                 },
@@ -159,12 +171,14 @@ const ROUTE_206: Location = {
                 {
                     name: 'Onix',
                     ability: 1,
+                    gender: 'male',
                     level: 18,
                     nature: Nature.Gentle,
                 },
                 {
                     name: 'Onix',
                     ability: 1,
+                    gender: 'male',
                     level: 20,
                     nature: Nature.Lonely,
                 },

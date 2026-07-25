@@ -44,6 +44,19 @@
     }
 }
 
+@mixin gender-symbol {
+    position: relative;
+    top: -0.15em;
+
+    &--male {
+        color: $blue;
+    }
+
+    &--female {
+        color: $pink;
+    }
+}
+
 @mixin form-label {
     @include uppercase-label;
 

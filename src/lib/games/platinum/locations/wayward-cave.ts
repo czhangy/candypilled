@@ -18,6 +18,7 @@ const WAYWARD_CAVE: Location = {
                         {
                             name: 'Aipom',
                             ability: 1,
+                            gender: 'male',
                             level: 22,
                             nature: Nature.Hardy,
                         },
@@ -33,6 +34,7 @@ const WAYWARD_CAVE: Location = {
                         {
                             name: 'Psyduck',
                             ability: 1,
+                            gender: 'female',
                             level: 22,
                             nature: Nature.Gentle,
                         },
@@ -48,12 +50,14 @@ const WAYWARD_CAVE: Location = {
                         {
                             name: 'Geodude',
                             ability: 1,
+                            gender: 'male',
                             level: 20,
                             nature: Nature.Mild,
                         },
                         {
                             name: 'Geodude',
                             ability: 1,
+                            gender: 'male',
                             level: 20,
                             nature: Nature.Mild,
                         },
@@ -69,6 +73,7 @@ const WAYWARD_CAVE: Location = {
                         {
                             name: 'Onix',
                             ability: 1,
+                            gender: 'male',
                             level: 22,
                             nature: Nature.Mild,
                         },
@@ -84,6 +89,7 @@ const WAYWARD_CAVE: Location = {
                         {
                             name: 'Buneary',
                             ability: 1,
+                            gender: 'female',
                             level: 22,
                             nature: Nature.Careful,
                         },
@@ -99,18 +105,21 @@ const WAYWARD_CAVE: Location = {
                         {
                             name: 'Staravia',
                             ability: 1,
+                            gender: 'male',
                             level: 17,
                             nature: Nature.Serious,
                         },
                         {
                             name: 'Shellos',
                             ability: 1,
+                            gender: 'male',
                             level: 20,
                             nature: Nature.Bold,
                         },
                         {
                             name: 'Ponyta',
                             ability: 1,
+                            gender: 'male',
                             level: 20,
                             nature: Nature.Calm,
                         },
@@ -126,6 +135,7 @@ const WAYWARD_CAVE: Location = {
                         {
                             name: 'Hoothoot',
                             ability: 1,
+                            gender: 'female',
                             level: 22,
                             nature: Nature.Lonely,
                         },
@@ -141,6 +151,7 @@ const WAYWARD_CAVE: Location = {
                         {
                             name: 'Buizel',
                             ability: 1,
+                            gender: 'male',
                             level: 20,
                             nature: Nature.Naughty,
                             moves: ['Water Gun', 'Swift', 'Quick Attack'],
@@ -148,6 +159,7 @@ const WAYWARD_CAVE: Location = {
                         {
                             name: 'Shinx',
                             ability: 1,
+                            gender: 'male',
                             level: 20,
                             nature: Nature.Lonely,
                             moves: ['Spark', 'Bite'],
@@ -164,6 +176,7 @@ const WAYWARD_CAVE: Location = {
                         {
                             name: 'Gible',
                             ability: 1,
+                            gender: 'male',
                             level: 22,
                             nature: Nature.Lax,
                         },
@@ -179,12 +192,14 @@ const WAYWARD_CAVE: Location = {
                         {
                             name: 'Geodude',
                             ability: 1,
+                            gender: 'male',
                             level: 19,
                             nature: Nature.Quiet,
                         },
                         {
                             name: 'Bronzor',
                             ability: 1,
+                            gender: 'male',
                             level: 21,
                             nature: Nature.Calm,
                         },

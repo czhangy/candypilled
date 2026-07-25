@@ -21,6 +21,7 @@ const ETERNA_FOREST: Location = {
                         {
                             name: 'Wurmple',
                             ability: 1,
+                            gender: 'male',
                             level: 11,
                             nature: Nature.Quiet,
                             moves: ['Tackle', 'String Shot', 'Poison Sting'],
@@ -28,6 +29,7 @@ const ETERNA_FOREST: Location = {
                         {
                             name: 'Silcoon',
                             ability: 1,
+                            gender: 'male',
                             level: 13,
                             nature: Nature.Careful,
                             moves: [
@@ -40,6 +42,7 @@ const ETERNA_FOREST: Location = {
                         {
                             name: 'Beautifly',
                             ability: 1,
+                            gender: 'male',
                             level: 15,
                             nature: Nature.Timid,
                             moves: ['Tackle', 'Poison Sting', 'Absorb', 'Gust'],
@@ -57,6 +60,7 @@ const ETERNA_FOREST: Location = {
                         {
                             name: 'Pachirisu',
                             ability: 1,
+                            gender: 'female',
                             level: 16,
                             nature: Nature.Modest,
                         },
@@ -71,6 +75,7 @@ const ETERNA_FOREST: Location = {
                         {
                             name: 'Abra',
                             ability: 1,
+                            gender: 'female',
                             level: 17,
                             nature: Nature.Gentle,
                             moves: ['Hidden Power'],
@@ -87,6 +92,7 @@ const ETERNA_FOREST: Location = {
                         {
                             name: 'Abra',
                             ability: 1,
+                            gender: 'male',
                             level: 17,
                             nature: Nature.Docile,
                             moves: ['Hidden Power'],
@@ -104,6 +110,7 @@ const ETERNA_FOREST: Location = {
                         {
                             name: 'Burmy',
                             ability: 1,
+                            gender: 'male',
                             level: 14,
                             nature: Nature.Lonely,
                             ivs: 1,
@@ -111,6 +118,7 @@ const ETERNA_FOREST: Location = {
                         {
                             name: 'Burmy',
                             ability: 1,
+                            gender: 'male',
                             level: 14,
                             nature: Nature.Lonely,
                             ivs: 1,
@@ -127,6 +135,7 @@ const ETERNA_FOREST: Location = {
                         {
                             name: 'Wurmple',
                             ability: 1,
+                            gender: 'male',
                             level: 11,
                             nature: Nature.Quiet,
                             moves: ['Tackle', 'String Shot', 'Poison Sting'],
@@ -134,6 +143,7 @@ const ETERNA_FOREST: Location = {
                         {
                             name: 'Cascoon',
                             ability: 1,
+                            gender: 'male',
                             level: 13,
                             nature: Nature.Calm,
                             moves: [
@@ -146,6 +156,7 @@ const ETERNA_FOREST: Location = {
                         {
                             name: 'Dustox',
                             ability: 1,
+                            gender: 'male',
                             level: 15,
                             nature: Nature.Relaxed,
                             moves: [
@@ -168,6 +179,7 @@ const ETERNA_FOREST: Location = {
                         {
                             name: 'Meditite',
                             ability: 1,
+                            gender: 'male',
                             level: 17,
                             nature: Nature.Rash,
                             moves: ['Confusion', 'Bide', 'Meditate'],
@@ -185,6 +197,7 @@ const ETERNA_FOREST: Location = {
                         {
                             name: 'Psyduck',
                             ability: 1,
+                            gender: 'female',
                             level: 17,
                             nature: Nature.Mild,
                             moves: ['Confusion', 'Water Gun', 'Scratch'],

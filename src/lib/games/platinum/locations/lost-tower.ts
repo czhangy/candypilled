@@ -25,18 +25,21 @@ const LOST_TOWER: Location = {
                         {
                             name: 'Mothim',
                             ability: 1,
+                            gender: 'male',
                             level: 20,
                             nature: Nature.Naive,
                         },
                         {
                             name: 'Barboach',
                             ability: 1,
+                            gender: 'male',
                             level: 19,
                             nature: Nature.Timid,
                         },
                         {
                             name: 'Chatot',
                             ability: 1,
+                            gender: 'male',
                             level: 21,
                             nature: Nature.Careful,
                         },
@@ -59,6 +62,7 @@ const LOST_TOWER: Location = {
                         {
                             name: 'Cleffa',
                             ability: 1,
+                            gender: 'male',
                             level: 23,
                             nature: Nature.Calm,
                         },
@@ -75,6 +79,7 @@ const LOST_TOWER: Location = {
                         {
                             name: 'Pichu',
                             ability: 1,
+                            gender: 'male',
                             level: 19,
                             nature: Nature.Calm,
                             heldItem: 'Sitrus Berry',
@@ -82,6 +87,7 @@ const LOST_TOWER: Location = {
                         {
                             name: 'Pichu',
                             ability: 1,
+                            gender: 'male',
                             level: 19,
                             nature: Nature.Calm,
                             heldItem: 'Sitrus Berry',
@@ -89,6 +95,7 @@ const LOST_TOWER: Location = {
                         {
                             name: 'Pikachu',
                             ability: 1,
+                            gender: 'male',
                             level: 22,
                             nature: Nature.Serious,
                             heldItem: 'Sitrus Berry',
@@ -117,6 +124,7 @@ const LOST_TOWER: Location = {
                         {
                             name: 'Bonsly',
                             ability: 1,
+                            gender: 'female',
                             level: 23,
                             nature: Nature.Relaxed,
                             heldItem: 'Sitrus Berry',
@@ -140,12 +148,14 @@ const LOST_TOWER: Location = {
                         {
                             name: 'Ponyta',
                             ability: 1,
+                            gender: 'male',
                             level: 23,
                             nature: Nature.Jolly,
                         },
                         {
                             name: 'Ponyta',
                             ability: 1,
+                            gender: 'male',
                             level: 23,
                             nature: Nature.Jolly,
                         },
@@ -164,12 +174,14 @@ const LOST_TOWER: Location = {
                         {
                             name: 'Murkrow',
                             ability: 1,
+                            gender: 'male',
                             level: 23,
                             nature: Nature.Docile,
                         },
                         {
                             name: 'Misdreavus',
                             ability: 1,
+                            gender: 'male',
                             level: 23,
                             nature: Nature.Sassy,
                         },

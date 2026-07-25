@@ -13,6 +13,7 @@ const ETERNA_GYM: Location = {
                 {
                     name: 'Cherubi',
                     ability: 1,
+                    gender: 'female',
                     level: 17,
                     nature: Nature.Lonely,
                     moves: ['Tackle', 'Leech Seed'],
@@ -21,6 +22,7 @@ const ETERNA_GYM: Location = {
                 {
                     name: 'Roselia',
                     ability: 1,
+                    gender: 'female',
                     level: 17,
                     nature: Nature.Sassy,
                     moves: ['Mega Drain', 'Poison Sting', 'Stun Spore'],
@@ -37,6 +39,7 @@ const ETERNA_GYM: Location = {
                 {
                     name: 'Budew',
                     ability: 1,
+                    gender: 'female',
                     level: 15,
                     nature: Nature.Naive,
                     moves: ['Absorb', 'Stun Spore', 'Water Sport'],
@@ -45,6 +48,7 @@ const ETERNA_GYM: Location = {
                 {
                     name: 'Budew',
                     ability: 1,
+                    gender: 'female',
                     level: 16,
                     nature: Nature.Serious,
                     moves: ['Absorb', 'Stun Spore', 'Water Sport'],
@@ -53,6 +57,7 @@ const ETERNA_GYM: Location = {
                 {
                     name: 'Budew',
                     ability: 1,
+                    gender: 'female',
                     level: 17,
                     nature: Nature.Hardy,
                     moves: ['Absorb', 'Stun Spore', 'Water Sport'],
@@ -69,6 +74,7 @@ const ETERNA_GYM: Location = {
                 {
                     name: 'Roselia',
                     ability: 1,
+                    gender: 'female',
                     level: 19,
                     nature: Nature.Mild,
                     moves: ['Mega Drain', 'Poison Sting', 'Stun Spore'],
@@ -86,6 +92,7 @@ const ETERNA_GYM: Location = {
                 {
                     name: 'Turtwig',
                     ability: 1,
+                    gender: 'female',
                     level: 20,
                     nature: Nature.Quirky,
                     moves: ['Grass Knot', 'Razor Leaf', 'Sunny Day', 'Reflect'],
@@ -94,6 +101,7 @@ const ETERNA_GYM: Location = {
                 {
                     name: 'Cherrim',
                     ability: 1,
+                    gender: 'female',
                     level: 20,
                     nature: Nature.Lax,
                     moves: [
@@ -107,6 +115,7 @@ const ETERNA_GYM: Location = {
                 {
                     name: 'Roserade',
                     ability: 1,
+                    gender: 'female',
                     level: 22,
                     nature: Nature.Naive,
                     moves: [
