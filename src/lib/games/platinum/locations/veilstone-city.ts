@@ -46,7 +46,7 @@ const VEILSTONE_CITY: Location = {
                     nature: Nature.Hasty,
                 },
             ],
-            x: 40.5,
+            x: 40.4,
             y: 34.8,
         },
     ],

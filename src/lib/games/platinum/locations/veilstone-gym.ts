@@ -79,7 +79,6 @@ const VEILSTONE_GYM: Location = {
             y: 42.8,
         },
         {
-            isOptional: true,
             trainerClass: 'Black Belt',
             name: 'Rafael',
             team: [

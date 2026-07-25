@@ -74,6 +74,7 @@ const DANGEROUS_MOVES = new Set([
     'calm-mind',
     'dragon-dance',
     'guillotine',
+    'horn-drill',
     'sheer-cold',
     'fissure',
     'metronome',

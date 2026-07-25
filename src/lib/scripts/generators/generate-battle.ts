@@ -246,21 +246,8 @@ const getSubareaScope = (content: string, subarea: string): Range => {
 };
 
 type InsertionPoint = {
-    defaultX: number;
-    defaultY: number;
     entryIndent: string;
     insert: (content: string, entryText: string) => string;
-};
-
-// The last value of a `key: <number>,` field found in text, used to carry
-// the previous battle's coordinates forward as the new entry's default.
-const getLastNumericField = (text: string, key: string): number | null => {
-    const regex = new RegExp(`${key}:\\s*(-?[0-9.]+),`, 'g');
-    let last: string | null = null;
-    for (const match of text.matchAll(regex)) {
-        last = match[1];
-    }
-    return last === null ? null : Number(last);
 };
 
 // Locates where a new battle entry should be spliced in: appended to the
@@ -277,11 +264,8 @@ const findInsertionPoint = (content: string, scope: Range): InsertionPoint => {
         const openBracket = battlesKeywordIndex + battlesMatch[0].length - 1;
         const closeBracket = findMatchingBracket(content, openBracket);
         const closeLineStart = getLineStart(content, closeBracket);
-        const arrayContent = content.slice(openBracket, closeBracket);
 
         return {
-            defaultX: getLastNumericField(arrayContent, 'x') ?? 0,
-            defaultY: getLastNumericField(arrayContent, 'y') ?? 0,
             entryIndent,
             insert: (text, entryText) =>
                 text.slice(0, closeLineStart) +
@@ -295,8 +279,6 @@ const findInsertionPoint = (content: string, scope: Range): InsertionPoint => {
     const closingLineStart = getLineStart(content, scope.end);
 
     return {
-        defaultX: 0,
-        defaultY: 0,
         entryIndent,
         insert: (text, entryText) =>
             text.slice(0, closingLineStart) +
@@ -364,9 +346,11 @@ const promptPokemon = async (
         ).trim();
         if (!raw) return null;
 
-        const pokemon = PokemonHelpers.getPokemonData(
-            StringHelpers.toSlug(raw)
-        );
+        const rawSlug = StringHelpers.toSlug(raw);
+        const pokemon =
+            PokemonHelpers.getPokemonForms(rawSlug).length === 1
+                ? PokemonHelpers.getPokemonData(rawSlug)
+                : undefined;
         if (!pokemon) {
             logError("  That isn't a valid Pokémon.");
             continue;
@@ -379,6 +363,9 @@ const promptPokemon = async (
     let level = NaN;
     while (!Number.isInteger(level) || level <= 0) {
         level = Number((await rl.question('  Level: ')).trim());
+        if (!Number.isInteger(level) || level <= 0) {
+            logError('  That is not a valid level.');
+        }
     }
 
     let nature: Nature | null = null;
@@ -502,8 +489,8 @@ runScript(async () => {
     const entryText = serializeBattle(
         battle,
         insertionPoint.entryIndent,
-        insertionPoint.defaultX,
-        insertionPoint.defaultY
+        100,
+        100
     );
     const updated = ensureNatureImport(
         insertionPoint.insert(original, entryText)

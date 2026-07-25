@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { Battle } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
+import CoordinateLoggingHelpers from '@/lib/utils/CoordinateLoggingHelpers';
 import styles from './LocationMap.module.scss';
 import TrainerMarker from './TrainerMarker/TrainerMarker';
 
@@ -68,6 +69,19 @@ const LocationMap: React.FC<LocationMapProps> = ({
         setPreviewPosition(null);
     };
 
+    const handleImageClick = (
+        event: React.MouseEvent<HTMLDivElement>
+    ): void => {
+        const rect = imageRef.current!.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+        CoordinateLoggingHelpers.logCoordinates(
+            Math.round(x * 10) / 10,
+            Math.round(y * 10) / 10
+        );
+    };
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -82,6 +96,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
                 ]
                     .filter(Boolean)
                     .join(' ')}
+                onClick={EDIT_MODE_ON ? handleImageClick : undefined}
                 onMouseLeave={EDIT_MODE_ON ? handleImageMouseLeave : undefined}
                 onMouseMove={EDIT_MODE_ON ? handleImageMouseMove : undefined}
                 ref={imageRef}

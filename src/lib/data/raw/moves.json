@@ -1655,7 +1655,7 @@
         "category": "physical",
         "priority": 0,
         "introducedInGeneration": 1,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 3,
