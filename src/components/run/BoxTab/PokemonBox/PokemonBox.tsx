@@ -168,10 +168,8 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                             const sprite = PokemonHelpers.getBoxSprite(
                                 pokemon.name
                             );
-                            const heldItemSprite = pokemon.heldItem
-                                ? ItemHelpers.getHeldItemSprite(
-                                      pokemon.heldItem
-                                  )
+                            const heldItemData = pokemon.heldItem
+                                ? ItemHelpers.getHeldItemData(pokemon.heldItem)
                                 : undefined;
                             const isOverCap =
                                 levelCap !== null && pokemon.level > levelCap;
@@ -218,12 +216,12 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                                             <span className={styles.tag} />
                                         </Tooltip>
                                     )}
-                                    {heldItemSprite && (
+                                    {heldItemData && (
                                         <Image
-                                            alt={pokemon.heldItem ?? ''}
+                                            alt={heldItemData.name}
                                             className={styles['held-item']}
                                             height={ITEM_ICON_SIZE}
-                                            src={heldItemSprite}
+                                            src={heldItemData.sprite}
                                             width={ITEM_ICON_SIZE}
                                         />
                                     )}

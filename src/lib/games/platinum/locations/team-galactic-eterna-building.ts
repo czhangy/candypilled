@@ -186,7 +186,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                                 'Smokescreen',
                             ],
                             ivs: 12,
-                            heldItem: 'Sitrus Berry',
+                            heldItem: 'sitrus-berry',
                         },
                     ],
                     x: 61.2,

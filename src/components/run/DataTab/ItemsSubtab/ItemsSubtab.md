@@ -11,8 +11,8 @@ respectively.
 | Prop           | Type                     | Required | Default | Description                                                                                            |
 | -------------- | ------------------------ | -------- | ------- | ------------------------------------------------------------------------------------------------------ |
 | `generation`   | `number`                 | Yes      | -       | The game's generation, used to resolve the selected item's values and to filter which items are listed |
-| `onSelectItem` | `(name: string) => void` | Yes      | -       | Called with an item's name when it's clicked in the list                                               |
-| `selectedItem` | `string`                 | No       | -       | The currently selected item's name, if any                                                             |
+| `onSelectItem` | `(slug: string) => void` | Yes      | -       | Called with an item's slug when it's clicked in the list                                               |
+| `selectedItem` | `string`                 | No       | -       | The currently selected item's slug, if any                                                             |
 
 ## Computations
 

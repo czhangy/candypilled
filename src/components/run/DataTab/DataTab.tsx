@@ -10,7 +10,7 @@ type DataTabProps = {
     game: Game;
     onSelectAbility: (slug: string) => void;
     onSelectAbilityLink: (slug: string) => void;
-    onSelectItem: (name: string) => void;
+    onSelectItem: (slug: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
     onSelectMoveLink: (name: string) => void;

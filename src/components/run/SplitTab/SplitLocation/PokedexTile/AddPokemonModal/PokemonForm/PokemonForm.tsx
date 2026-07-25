@@ -286,7 +286,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     const heldItemOptions: DropdownOption[] = [
         { label: 'None', value: '' },
         ...availableItems
-            .map((item) => ({ label: item.name, value: item.name }))
+            .map((item) => ({ label: item.name, value: item.slug }))
             .sort((a, b) => a.label.localeCompare(b.label)),
     ];
     const learnset = PokemonHelpers.getPokemonLearnset(species, version) ?? [];

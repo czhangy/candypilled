@@ -232,7 +232,7 @@ const HEARTHOME_GYM: Location = {
                         'Confuse Ray',
                     ],
                     ivs: 12,
-                    heldItem: 'Sitrus Berry',
+                    heldItem: 'sitrus-berry',
                 },
             ],
             x: 49.9,

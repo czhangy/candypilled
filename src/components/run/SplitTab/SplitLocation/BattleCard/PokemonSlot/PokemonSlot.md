@@ -25,7 +25,7 @@ as dangerous are shown in red text regardless of `isReadOnly`. When
 | `generation`      | `number`                    | Yes      | -       | The game's generation, used to resolve the Pokémon's types and ability                           |
 | `isReadOnly`      | `boolean`                   | Yes      | -       | Renders the sprite/name, held item, ability, and nature as plain, non-interactive text when true |
 | `onSelectAbility` | `(slug: string) => void`    | No       | -       | Called with the Pokémon's ability slug when it's clicked; unused when `isReadOnly`               |
-| `onSelectItem`    | `(name: string) => void`    | No       | -       | Called with the Pokémon's held item when it's clicked; unused when `isReadOnly`                  |
+| `onSelectItem`    | `(slug: string) => void`    | No       | -       | Called with the Pokémon's held item slug when it's clicked; unused when `isReadOnly`             |
 | `onSelectMove`    | `(name: string) => void`    | No       | -       | Called with a move's name when it's clicked within the moveset; unused when `isReadOnly`         |
 | `onSelectSpecies` | `(species: string) => void` | No       | -       | Called with the Pokémon's name when its sprite or name is clicked; unused when `isReadOnly`      |
 | `pokemon`         | `BattlePokemon \| null`     | Yes      | -       | The Pokémon to display, or `null` to render an empty slot                                        |
@@ -34,6 +34,8 @@ as dangerous are shown in red text regardless of `isReadOnly`. When
 
 ## Computations
 
+- `heldItem` — the held item's display name, resolved from
+  `pokemon.heldItem` (a slug) via `ItemHelpers`
 - `heldItemSprite` — the sprite for `pokemon.heldItem`, resolved via
   `ItemHelpers.getHeldItemSprite`; the icon is omitted (held item text
   still shows) when no held item data matches

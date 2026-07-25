@@ -125,7 +125,7 @@ const ETERNA_GYM: Location = {
                         'Stun Spore',
                     ],
                     ivs: 6,
-                    heldItem: 'Sitrus Berry',
+                    heldItem: 'sitrus-berry',
                 },
             ],
             x: 49.9,

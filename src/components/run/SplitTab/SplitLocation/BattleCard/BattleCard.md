@@ -19,7 +19,7 @@ for the portrait and team slot behavior in detail.
 | `generation`       | `number`                      | Yes      | -       | The game's generation, used to resolve each Pokémon's types and abilities           |
 | `isDefeated`       | `boolean`                     | Yes      | -       | Whether this battle has already been marked defeated                                |
 | `onSelectAbility`  | `(slug: string) => void`      | Yes      | -       | Called with a Pokémon's ability slug when it's clicked                              |
-| `onSelectItem`     | `(name: string) => void`      | Yes      | -       | Called with a Pokémon's held item when it's clicked                                 |
+| `onSelectItem`     | `(slug: string) => void`      | Yes      | -       | Called with a Pokémon's held item slug when it's clicked                            |
 | `onSelectMove`     | `(name: string) => void`      | Yes      | -       | Called with a move's name when it's clicked within a Pokémon's moveset              |
 | `onSelectSpecies`  | `(species: string) => void`   | Yes      | -       | Called with a Pokémon's name when its sprite or name is clicked                     |
 | `onSelectTrainer`  | `(battleKey: string) => void` | Yes      | -       | Called with the battle's key when the trainer name header is clicked                |

@@ -21,6 +21,7 @@ import {
 } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
+import ItemHelpers from '@/lib/utils/ItemHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
@@ -482,7 +483,11 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 abilitySlug ??
                 '',
             evs: StatHelpers.normalizeStats(caught.evs, 0),
-            heldItem: caught.heldItem ?? '',
+            heldItem:
+                (caught.heldItem &&
+                    ItemHelpers.getHeldItemData(caught.heldItem)?.name) ??
+                caught.heldItem ??
+                '',
             ivs: StatHelpers.normalizeStats(caught.ivs, MAX_IV),
             level: caught.level,
             moves: padMoves(caught.moves),
@@ -510,7 +515,11 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
                 abilitySlug ??
                 '',
-            heldItem: mon.heldItem ?? '',
+            heldItem:
+                (mon.heldItem &&
+                    ItemHelpers.getHeldItemData(mon.heldItem)?.name) ??
+                mon.heldItem ??
+                '',
             level: mon.level,
             nature: mon.nature ?? Object.values(Nature)[0],
         });

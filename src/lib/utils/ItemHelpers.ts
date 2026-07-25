@@ -12,13 +12,13 @@ export default class ItemHelpers {
         return `/battle-items/${StringHelpers.toSlug(name)}.png`;
     }
 
-    /** The held item data for name, or undefined if no held item matches. */
-    static getHeldItemData(name: string): ItemData | undefined {
-        return ITEMS[StringHelpers.toSlug(name)];
+    /** The held item data for slug, or undefined if no held item matches. */
+    static getHeldItemData(slug: string): ItemData | undefined {
+        return ITEMS[slug];
     }
 
-    /** The sprite path for the held item named name, or undefined if no held item matches. */
-    static getHeldItemSprite(name: string): string | undefined {
-        return ItemHelpers.getHeldItemData(name)?.sprite;
+    /** The sprite path for the held item slug, or undefined if no held item matches. */
+    static getHeldItemSprite(slug: string): string | undefined {
+        return ItemHelpers.getHeldItemData(slug)?.sprite;
     }
 }

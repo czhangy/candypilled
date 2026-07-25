@@ -238,8 +238,8 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         updateQueryParams({ ability: slug });
     };
 
-    const handleItemSelect = (name: string): void => {
-        updateQueryParams({ item: name });
+    const handleItemSelect = (slug: string): void => {
+        updateQueryParams({ item: slug });
     };
 
     const handleSpeciesSelect = (species: string): void => {
@@ -303,10 +303,10 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         );
     };
 
-    const handleItemLinkClick = (name: string): void => {
+    const handleItemLinkClick = (slug: string): void => {
         window.open(
             `${pathname}?tab=data&subtab=items&item=${encodeURIComponent(
-                name
+                slug
             )}`,
             '_blank',
             'noopener,noreferrer'

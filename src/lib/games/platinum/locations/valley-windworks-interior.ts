@@ -66,7 +66,7 @@ const VALLEY_WINDWORKS_INTERIOR: Location = {
                     level: 17,
                     nature: Nature.Bashful,
                     moves: ['Feint Attack', 'Scratch', 'Fake Out'],
-                    heldItem: 'Oran Berry',
+                    heldItem: 'oran-berry',
                     ivs: 12,
                 },
             ],

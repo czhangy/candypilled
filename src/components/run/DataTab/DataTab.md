@@ -12,7 +12,7 @@ component.
 | `game`                | `Game`                       | Yes      | -       | The game to resolve species, moves, abilities, and items from                  |
 | `onSelectAbility`     | `(slug: string) => void`     | Yes      | -       | Called when an ability is selected from the Abilities subtab's list            |
 | `onSelectAbilityLink` | `(slug: string) => void`     | Yes      | -       | Called when an ability is clicked from within the Pokédex subtab               |
-| `onSelectItem`        | `(name: string) => void`     | Yes      | -       | Called when an item is selected from the Items subtab's list                   |
+| `onSelectItem`        | `(slug: string) => void`     | Yes      | -       | Called when an item is selected from the Items subtab's list                   |
 | `onSelectLocation`    | `(location: string) => void` | Yes      | -       | Forwarded to the Pokédex subtab, called when a location is clicked             |
 | `onSelectMove`        | `(name: string) => void`     | Yes      | -       | Called when a move is selected from the Moves subtab's list                    |
 | `onSelectMoveLink`    | `(name: string) => void`     | Yes      | -       | Called when a move is clicked from within the Pokédex subtab                   |
@@ -20,7 +20,7 @@ component.
 | `onSubtabChange`      | `(id: string) => void`       | Yes      | -       | Called when a subtab button is clicked                                         |
 | `run`                 | `Run`                        | Yes      | -       | The active run, forwarded to the Pokédex subtab                                |
 | `selectedAbility`     | `string`                     | No       | -       | The currently selected ability's slug, if any                                  |
-| `selectedItem`        | `string`                     | No       | -       | The currently selected item, if any                                            |
+| `selectedItem`        | `string`                     | No       | -       | The currently selected item's slug, if any                                     |
 | `selectedMove`        | `string`                     | No       | -       | The currently selected move, if any                                            |
 | `selectedSpecies`     | `string`                     | No       | -       | The currently selected Pokémon's species, if any                               |
 

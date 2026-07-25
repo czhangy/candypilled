@@ -44,7 +44,7 @@ shown instead.
   links elsewhere on the page
 - `selectedAbility` — the currently selected ability's slug, read from the
   `ability` query param
-- `selectedItem` — the currently selected item's name, read from the
+- `selectedItem` — the currently selected item's slug, read from the
   `item` query param
 - `selectedSpecies` — the currently selected Pokémon's species, read from
   the `species` query param, shared between the Data tab's Pokédex

@@ -15,7 +15,7 @@ type PokemonSlotProps = {
     generation: number;
     isReadOnly: boolean;
     onSelectAbility?: (slug: string) => void;
-    onSelectItem?: (name: string) => void;
+    onSelectItem?: (slug: string) => void;
     onSelectMove?: (name: string) => void;
     onSelectSpecies?: (species: string) => void;
     pokemon: BattlePokemon | null;
@@ -76,9 +76,12 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     const sprite = pokemon
         ? PokemonHelpers.getPokemonSprite(pokemon.name, variant)
         : undefined;
-    const heldItem = pokemon?.heldItem;
-    const heldItemSprite = heldItem
-        ? ItemHelpers.getHeldItemSprite(heldItem)
+    const heldItemSlug = pokemon?.heldItem;
+    const heldItem = heldItemSlug
+        ? ItemHelpers.getHeldItemData(heldItemSlug)?.name
+        : undefined;
+    const heldItemSprite = heldItemSlug
+        ? ItemHelpers.getHeldItemSprite(heldItemSlug)
         : undefined;
     const types = pokemon ? getTypes(pokemon.name) : [];
     const abilitySlug = getAbilitySlug();
@@ -208,7 +211,9 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                                     styles['ability-button'],
                                     styles['held-item'],
                                 ].join(' ')}
-                                onClick={() => onSelectItem?.(heldItem)}
+                                onClick={() =>
+                                    onSelectItem?.(heldItemSlug as string)
+                                }
                                 type="button"
                             >
                                 {heldItemSprite && (

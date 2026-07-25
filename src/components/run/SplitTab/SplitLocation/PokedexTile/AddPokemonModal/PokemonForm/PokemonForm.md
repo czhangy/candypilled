@@ -63,7 +63,7 @@ change) when editing a caught Pokémon.
 | `species`     | `string`             | `defaultSpecies`'s canonical display name                                           | The selected species                                       |
 | `abilitySlot` | `AbilitySlot`        | `defaultAbilitySlot`, or `1`                                                        | The selected ability's slot (1, 2, or hidden)              |
 | `gender`      | `'male' \| 'female'` | `defaultGender`, or `'male'`                                                        | The selected gender                                        |
-| `heldItem`    | `string`             | `defaultHeldItem`, or `''`                                                          | The selected held item, empty meaning none                 |
+| `heldItem`    | `string`             | `defaultHeldItem`, or `''`                                                          | The selected held item's slug, empty meaning none          |
 | `nature`      | `Nature`             | `defaultNature`, or the first `Nature` value                                        | The selected nature                                        |
 | `ivs`         | `StatValues`         | `defaultIvs`, or all stats at `31`                                                  | The selected IVs, per stat                                 |
 | `evs`         | `StatValues`         | `defaultEvs`, or all stats at `0`                                                   | The selected EVs, per stat                                 |

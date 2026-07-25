@@ -5,6 +5,7 @@ import { PokemonStatus } from '@/lib/static/enums';
 import { BoxView, CaughtPokemon, StatValues } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
+import ItemHelpers from '@/lib/utils/ItemHelpers';
 import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
@@ -38,7 +39,7 @@ type PokemonPreviewProps = {
     ) => void;
     onEvolve: (pokemon: CaughtPokemon, newName: string) => void;
     onSelectAbility: (slug: string) => void;
-    onSelectItem: (name: string) => void;
+    onSelectItem: (slug: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
     onToggleStatus: (pokemon: CaughtPokemon) => void;
@@ -101,8 +102,8 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
         onSelectLocation(location);
     };
 
-    const handleItemClick = (item: string): void => {
-        onSelectItem(item);
+    const handleItemClick = (itemSlug: string): void => {
+        onSelectItem(itemSlug);
     };
 
     const handleToggleStatusClick = (): void => {
@@ -227,7 +228,10 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     const abilityName = abilitySlug
         ? AbilityHelpers.getAbilityData(abilitySlug)?.name
         : undefined;
-    const heldItem = pokemon?.heldItem;
+    const heldItemSlug = pokemon?.heldItem;
+    const heldItemName = heldItemSlug
+        ? ItemHelpers.getHeldItemData(heldItemSlug)?.name
+        : undefined;
     const ivs = pokemon
         ? StatHelpers.normalizeStats(pokemon.ivs, 31)
         : undefined;
@@ -379,7 +383,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                             </span>
                                         )}
                                     </div>
-                                    {heldItem && (
+                                    {heldItemSlug && heldItemName && (
                                         <div className={styles.detail}>
                                             <span
                                                 className={
@@ -393,11 +397,13 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                                     styles['detail-link']
                                                 }
                                                 onClick={() =>
-                                                    handleItemClick(heldItem)
+                                                    handleItemClick(
+                                                        heldItemSlug
+                                                    )
                                                 }
                                                 type="button"
                                             >
-                                                {heldItem}
+                                                {heldItemName}
                                             </button>
                                         </div>
                                     )}

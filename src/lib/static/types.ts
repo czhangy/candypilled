@@ -439,6 +439,7 @@ export type ItemValuesByGeneration = {
 };
 
 export type ItemData = {
+    slug: string;
     name: string;
     category: string;
     // PokeAPI doesn't track historical changes to an item's effect text, so

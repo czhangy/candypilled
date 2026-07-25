@@ -11,7 +11,7 @@ scrollbar matching the rest of the app.
 | Prop         | Type     | Required | Default | Description                                              |
 | ------------ | -------- | -------- | ------- | -------------------------------------------------------- |
 | `generation` | `number` | Yes      | -       | The game's generation, used to resolve the item's values |
-| `item`       | `string` | No       | -       | The selected item's name, if any                         |
+| `itemSlug`   | `string` | No       | -       | The selected item's slug, if any                         |
 
 ## Computations
 
