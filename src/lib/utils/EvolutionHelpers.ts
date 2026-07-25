@@ -37,12 +37,12 @@ export default class EvolutionHelpers {
         }
     }
 
-    /** name's evolution line as of generation, or undefined if no form matches. */
+    /** slug's evolution line as of generation, or undefined if no form matches. */
     static getEvolutionLine(
-        name: string,
+        slug: string,
         generation: number
     ): EvolutionStep | undefined {
-        const pokemon = PokemonHelpers.getPokemonData(name);
+        const pokemon = PokemonHelpers.getPokemonData(slug);
         if (!pokemon) return undefined;
 
         return GenerationHelpers.resolveGeneration(
@@ -52,39 +52,39 @@ export default class EvolutionHelpers {
     }
 
     /**
-     * The full evolution line reachable from name's family, i.e. every
+     * The full evolution line reachable from slug's family, i.e. every
      * branch from the family's base species, not just the ones leading to
-     * name itself (which getEvolutionLine alone would prune, e.g. viewing
+     * slug itself (which getEvolutionLine alone would prune, e.g. viewing
      * Mothim would otherwise exclude the Wormadam branch).
      */
     static getFullEvolutionLine(
-        name: string,
+        slug: string,
         generation: number
     ): EvolutionStep | undefined {
-        const line = EvolutionHelpers.getEvolutionLine(name, generation);
+        const line = EvolutionHelpers.getEvolutionLine(slug, generation);
         if (!line) return undefined;
 
-        return EvolutionHelpers.getEvolutionLine(line.name, generation) ?? line;
+        return EvolutionHelpers.getEvolutionLine(line.slug, generation) ?? line;
     }
 
     /**
-     * Every species slug in name's evolution family (ancestors and
+     * Every species slug in slug's evolution family (ancestors and
      * descendants, including sibling branches like other eeveelutions),
      * for detecting Nuzlocke duplicate-evolution-line catches.
      */
-    static getEvolutionFamily(name: string, generation: number): string[] {
+    static getEvolutionFamily(slug: string, generation: number): string[] {
         const fullLine = EvolutionHelpers.getFullEvolutionLine(
-            name,
+            slug,
             generation
         );
-        if (!fullLine) return [StringHelpers.toSlug(name)];
+        if (!fullLine) return [slug];
 
         const slugs: string[] = [];
         const collect = (step: EvolutionStep): void => {
-            // A step's name is ambiguous when it doesn't resolve to its
+            // A step's slug is ambiguous when it doesn't resolve to its
             // own entry (e.g. "wormadam"), so every matching form counts
-            // as part of the family, not just the (non-existent) bare name.
-            slugs.push(...PokemonHelpers.getPokemonForms(step.name));
+            // as part of the family, not just the (non-existent) bare slug.
+            slugs.push(...PokemonHelpers.getPokemonForms(step.slug));
             step.evolvesTo.forEach(collect);
         };
         collect(fullLine);
@@ -98,9 +98,7 @@ export default class EvolutionHelpers {
         b: string,
         generation: number
     ): boolean {
-        return EvolutionHelpers.getEvolutionFamily(a, generation).includes(
-            StringHelpers.toSlug(b)
-        );
+        return EvolutionHelpers.getEvolutionFamily(a, generation).includes(b);
     }
 
     /** Whether every method reaching a step requires a trade. */
@@ -113,19 +111,18 @@ export default class EvolutionHelpers {
     }
 
     /**
-     * The evolution steps directly reachable from name, i.e. the species it
-     * can evolve into right now (empty if name doesn't evolve further).
+     * The evolution steps directly reachable from slug, i.e. the species it
+     * can evolve into right now (empty if slug doesn't evolve further).
      */
     static getNextEvolutions(
-        name: string,
+        slug: string,
         generation: number
     ): EvolutionStep[] {
-        const line = EvolutionHelpers.getEvolutionLine(name, generation);
+        const line = EvolutionHelpers.getEvolutionLine(slug, generation);
         if (!line) return [];
 
-        const slug = StringHelpers.toSlug(name);
         const findStep = (step: EvolutionStep): EvolutionStep | undefined => {
-            if (step.name === slug) return step;
+            if (step.slug === slug) return step;
             return step.evolvesTo
                 .map(findStep)
                 .find((found): found is EvolutionStep => !!found);

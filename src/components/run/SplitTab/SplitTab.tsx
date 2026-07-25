@@ -109,14 +109,12 @@ const SplitTab: React.FC<SplitTabProps> = ({
     // -------------------------------------------------------------------------
 
     const getCaughtPokemonName = (locationName: string): string | undefined => {
-        const name = run.caughtPokemon.find(
+        const slug = run.caughtPokemon.find(
             (caught) => caught.location === locationName
-        )?.name;
+        )?.slug;
 
-        return name
-            ? StringHelpers.toTitleCase(
-                  PokemonHelpers.getPokemonData(name)?.name ?? name
-              )
+        return slug
+            ? (PokemonHelpers.getPokemonData(slug)?.name ?? slug)
             : undefined;
     };
 

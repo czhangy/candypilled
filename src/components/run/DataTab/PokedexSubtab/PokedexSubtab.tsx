@@ -30,9 +30,7 @@ const PokedexSubtab: React.FC<PokedexSubtabProps> = ({
     // -------------------------------------------------------------------------
 
     const variant = StringHelpers.toSlug(game.name);
-    const availableSpecies = PokemonHelpers.getAllSpecies(game.generation).map(
-        (name) => ({ name })
-    );
+    const availableSpecies = PokemonHelpers.getAllSpecies(game.generation);
     const usedLocations = RunHelpers.getUsedLocations(run);
     const selectedPokemon = selectedSpecies
         ? PokemonHelpers.getPokemonData(selectedSpecies)
@@ -50,7 +48,7 @@ const PokedexSubtab: React.FC<PokedexSubtabProps> = ({
                 onSelectItem={onSelectSpecies}
                 searchAriaLabel="Search Pokémon"
                 searchPlaceholder="Search Pokémon..."
-                selectedItem={selectedPokemon?.name}
+                selectedItem={selectedPokemon?.slug}
             />
             <PokedexDetail
                 game={game}

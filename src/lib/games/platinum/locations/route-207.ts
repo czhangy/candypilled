@@ -13,12 +13,12 @@ const ROUTE_207: Location = {
             name: 'Lauren',
             team: [
                 {
-                    name: 'Pachirisu',
+                    slug: 'pachirisu',
                     ability: 1,
                     gender: 'female',
                     level: 22,
                     nature: Nature.Bold,
-                    moves: ['Spark', 'Quick Attack', 'Charm'],
+                    moves: ['spark', 'quick-attack', 'charm'],
                 },
             ],
             x: 50.8,
@@ -30,7 +30,7 @@ const ROUTE_207: Location = {
             name: 'Anthony',
             team: [
                 {
-                    name: 'Chimchar',
+                    slug: 'chimchar',
                     ability: 1,
                     gender: 'male',
                     level: 22,
@@ -46,14 +46,14 @@ const ROUTE_207: Location = {
             name: 'Justin',
             team: [
                 {
-                    name: 'Geodude',
+                    slug: 'geodude',
                     ability: 1,
                     gender: 'male',
                     level: 20,
                     nature: Nature.Impish,
                 },
                 {
-                    name: 'Nosepass',
+                    slug: 'nosepass',
                     ability: 1,
                     gender: 'male',
                     level: 20,
@@ -69,21 +69,21 @@ const ROUTE_207: Location = {
             name: 'Austin',
             team: [
                 {
-                    name: 'Buizel',
+                    slug: 'buizel',
                     ability: 1,
                     gender: 'male',
                     level: 18,
                     nature: Nature.Bold,
                 },
                 {
-                    name: 'Luxio',
+                    slug: 'luxio',
                     ability: 1,
                     gender: 'male',
                     level: 18,
                     nature: Nature.Bashful,
                 },
                 {
-                    name: 'Gligar',
+                    slug: 'gligar',
                     ability: 1,
                     gender: 'male',
                     level: 21,
@@ -99,28 +99,28 @@ const ROUTE_207: Location = {
             name: 'Kevin',
             team: [
                 {
-                    name: 'Geodude',
+                    slug: 'geodude',
                     ability: 1,
                     gender: 'male',
                     level: 17,
                     nature: Nature.Impish,
                 },
                 {
-                    name: 'Geodude',
+                    slug: 'geodude',
                     ability: 1,
                     gender: 'male',
                     level: 17,
                     nature: Nature.Impish,
                 },
                 {
-                    name: 'Onix',
+                    slug: 'onix',
                     ability: 1,
                     gender: 'male',
                     level: 19,
                     nature: Nature.Impish,
                 },
                 {
-                    name: 'Geodude',
+                    slug: 'geodude',
                     ability: 1,
                     gender: 'male',
                     level: 19,
@@ -136,7 +136,7 @@ const ROUTE_207: Location = {
             name: 'Helen',
             team: [
                 {
-                    name: 'Machop',
+                    slug: 'machop',
                     ability: 1,
                     gender: 'female',
                     level: 21,
@@ -144,7 +144,7 @@ const ROUTE_207: Location = {
                     ivs: 2,
                 },
                 {
-                    name: 'Meditite',
+                    slug: 'meditite',
                     ability: 1,
                     gender: 'female',
                     level: 21,

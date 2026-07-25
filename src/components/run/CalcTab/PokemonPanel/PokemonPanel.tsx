@@ -48,7 +48,7 @@ type PokemonPanelProps = {
     onNatureChange: (value: string) => void;
     onStatusChange: (value: string) => void;
     placeholder?: string;
-    pokemonName?: string;
+    pokemonSlug?: string;
     speedComparison: SpeedComparison | undefined;
     status: string;
 };
@@ -76,7 +76,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     onNatureChange,
     onStatusChange,
     placeholder,
-    pokemonName,
+    pokemonSlug,
     speedComparison,
     status,
 }) => {
@@ -104,8 +104,11 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const baseStats = pokemonName
-        ? PokemonHelpers.getPokemonStats(pokemonName, game.generation)
+    const pokemonName = pokemonSlug
+        ? (PokemonHelpers.getPokemonData(pokemonSlug)?.name ?? pokemonSlug)
+        : undefined;
+    const baseStats = pokemonSlug
+        ? PokemonHelpers.getPokemonStats(pokemonSlug, game.generation)
         : undefined;
     const rawTotalStats =
         baseStats && evs && ivs
@@ -188,7 +191,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                             </label>
                             <input
                                 className={styles.input}
-                                disabled={!pokemonName}
+                                disabled={!pokemonSlug}
                                 id={levelInputId}
                                 max={MAX_LEVEL}
                                 min={MIN_LEVEL}
@@ -198,7 +201,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                             />
                         </div>
                     </div>
-                    {pokemonName && (
+                    {pokemonSlug && (
                         <>
                             <div className={styles.row}>
                                 <div className={styles.field}>

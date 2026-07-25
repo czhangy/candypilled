@@ -12,7 +12,7 @@ const ROUTE_202: Location = {
             name: 'Tristan',
             team: [
                 {
-                    name: 'Starly',
+                    slug: 'starly',
                     ability: 1,
                     gender: 'male',
                     level: 5,
@@ -27,7 +27,7 @@ const ROUTE_202: Location = {
             name: 'Natalie',
             team: [
                 {
-                    name: 'Bidoof',
+                    slug: 'bidoof',
                     ability: 1,
                     gender: 'female',
                     level: 5,
@@ -42,12 +42,12 @@ const ROUTE_202: Location = {
             name: 'Logan',
             team: [
                 {
-                    name: 'Burmy',
+                    slug: 'burmy',
                     ability: 1,
                     gender: 'male',
                     level: 5,
                     nature: Nature.Impish,
-                    moves: ['Tackle'],
+                    moves: ['tackle'],
                 },
             ],
             x: 72.3,

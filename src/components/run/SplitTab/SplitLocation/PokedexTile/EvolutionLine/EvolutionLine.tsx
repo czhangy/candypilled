@@ -3,19 +3,18 @@ import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { EvolutionStep } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './EvolutionLine.module.scss';
 
 type EvolutionLineProps = {
-    currentName?: string;
+    currentSlug?: string;
     hideTradeEvos: boolean;
-    onSelectSpecies: (species: string) => void;
+    onSelectSpecies: (slug: string) => void;
     step?: EvolutionStep;
     variant: string;
 };
 
 const EvolutionLine: React.FC<EvolutionLineProps> = ({
-    currentName,
+    currentSlug,
     hideTradeEvos,
     onSelectSpecies,
     step,
@@ -34,10 +33,9 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
     // -------------------------------------------------------------------------
 
     const renderNode = (nodeStep: EvolutionStep): React.ReactNode => {
-        const sprite = PokemonHelpers.getPokemonSprite(nodeStep.name, variant);
-        const isCurrent =
-            !!currentName &&
-            StringHelpers.toSlug(currentName) === nodeStep.name;
+        const nodeName = PokemonHelpers.getPokemonData(nodeStep.slug)?.name;
+        const sprite = PokemonHelpers.getPokemonSprite(nodeStep.slug, variant);
+        const isCurrent = currentSlug === nodeStep.slug;
         const visibleEvolutions = nodeStep.evolvesTo.filter(
             (child) =>
                 !hideTradeEvos ||
@@ -53,13 +51,13 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                     ]
                         .filter(Boolean)
                         .join(' ')}
-                    onClick={() => onSelectSpecies(nodeStep.name)}
+                    onClick={() => onSelectSpecies(nodeStep.slug)}
                     type="button"
                 >
                     <div className={styles.sprite}>
-                        {sprite && (
+                        {sprite && nodeName && (
                             <Image
-                                alt={StringHelpers.toTitleCase(nodeStep.name)}
+                                alt={nodeName}
                                 height={SPRITE_SIZE}
                                 src={sprite}
                                 width={SPRITE_SIZE}
@@ -75,18 +73,18 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                       child.methods
                                   )
                                 : undefined;
-                            // A child's name is ambiguous when it doesn't
+                            // A child's slug is ambiguous when it doesn't
                             // resolve to its own entry (e.g. "wormadam", whose
                             // actual form depends on Burmy's cloak, which the
                             // evolution chain doesn't track), so it's expanded
                             // into one branch per form instead of one branch
                             // per step.
-                            const formNames = PokemonHelpers.getPokemonForms(
-                                child.name
+                            const formSlugs = PokemonHelpers.getPokemonForms(
+                                child.slug
                             );
 
-                            return formNames.map((formName) => (
-                                <div className={styles.branch} key={formName}>
+                            return formSlugs.map((formSlug) => (
+                                <div className={styles.branch} key={formSlug}>
                                     <div className={styles.arrow}>
                                         {methodLabel && (
                                             <span className={styles.method}>
@@ -189,7 +187,7 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                             &rarr;
                                         </span>
                                     </div>
-                                    {renderNode({ ...child, name: formName })}
+                                    {renderNode({ ...child, slug: formSlug })}
                                 </div>
                             ));
                         })}

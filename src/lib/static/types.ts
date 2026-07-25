@@ -135,8 +135,8 @@ export type BattlePokemon = {
     ivs?: number | StatValues;
     level: number;
     moves?: string[];
-    name: string;
     nature?: Nature;
+    slug: string;
 };
 
 // A caught Pokémon as tracked for Nuzlocke rule enforcement: one catch per
@@ -371,7 +371,7 @@ export type EvolutionMethod = {
 // path, but its own descendants preserve any branches (e.g. Eevee's split
 // into multiple eeveelutions).
 export type EvolutionStep = {
-    name: string;
+    slug: string;
     // How this step is reached from its predecessor. Omitted for the
     // topmost visible step, which has no visible predecessor.
     methods?: EvolutionMethod[];
@@ -482,6 +482,7 @@ export type AbilityEntry = {
 };
 
 export type PokemonData = {
+    slug: string;
     name: string;
     introducedInGeneration: number;
     // PokeAPI's is_battle_only form flag doesn't cover every form that

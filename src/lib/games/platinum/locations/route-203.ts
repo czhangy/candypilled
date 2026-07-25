@@ -12,62 +12,62 @@ const ROUTE_203: Location = {
             trainerClass: 'PKMN Trainer',
             name: 'Barry 2',
             teamsByStarter: {
-                Turtwig: [
+                turtwig: [
                     {
-                        name: 'Starly',
+                        slug: 'starly',
                         ability: 1,
                         gender: 'male',
                         level: 7,
-                        moves: ['Quick Attack', 'Growl'],
+                        moves: ['quick-attack', 'growl'],
                         nature: Nature.Naughty,
                         ivs: 3,
                     },
                     {
-                        name: 'Chimchar',
+                        slug: 'chimchar',
                         ability: 1,
                         gender: 'male',
                         level: 9,
-                        moves: ['Scratch', 'Leer'],
+                        moves: ['scratch', 'leer'],
                         nature: Nature.Docile,
                         ivs: 3,
                     },
                 ],
-                Chimchar: [
+                chimchar: [
                     {
-                        name: 'Starly',
+                        slug: 'starly',
                         ability: 1,
                         gender: 'male',
                         level: 7,
-                        moves: ['Quick Attack', 'Growl'],
+                        moves: ['quick-attack', 'growl'],
                         nature: Nature.Naive,
                         ivs: 3,
                     },
                     {
-                        name: 'Piplup',
+                        slug: 'piplup',
                         ability: 1,
                         gender: 'male',
                         level: 9,
-                        moves: ['Pound', 'Growl'],
+                        moves: ['pound', 'growl'],
                         nature: Nature.Naughty,
                         ivs: 3,
                     },
                 ],
-                Piplup: [
+                piplup: [
                     {
-                        name: 'Starly',
+                        slug: 'starly',
                         ability: 1,
                         gender: 'male',
                         level: 7,
-                        moves: ['Quick Attack', 'Growl'],
+                        moves: ['quick-attack', 'growl'],
                         nature: Nature.Timid,
                         ivs: 3,
                     },
                     {
-                        name: 'Turtwig',
+                        slug: 'turtwig',
                         ability: 1,
                         gender: 'male',
                         level: 9,
-                        moves: ['Tackle', 'Withdraw'],
+                        moves: ['tackle', 'withdraw'],
                         nature: Nature.Brave,
                         ivs: 3,
                     },
@@ -82,14 +82,14 @@ const ROUTE_203: Location = {
             name: 'Michael',
             team: [
                 {
-                    name: 'Kricketot',
+                    slug: 'kricketot',
                     ability: 1,
                     gender: 'male',
                     level: 7,
                     nature: Nature.Mild,
                 },
                 {
-                    name: 'Zubat',
+                    slug: 'zubat',
                     ability: 1,
                     gender: 'male',
                     level: 6,
@@ -105,7 +105,7 @@ const ROUTE_203: Location = {
             name: 'Dallas',
             team: [
                 {
-                    name: 'Shinx',
+                    slug: 'shinx',
                     ability: 1,
                     gender: 'male',
                     level: 8,
@@ -121,11 +121,11 @@ const ROUTE_203: Location = {
             name: 'Sebastian',
             team: [
                 {
-                    name: 'Machop',
+                    slug: 'machop',
                     ability: 1,
                     gender: 'male',
                     level: 8,
-                    moves: ['Low Kick', 'Leer'],
+                    moves: ['low-kick', 'leer'],
                     nature: Nature.Relaxed,
                 },
             ],
@@ -138,28 +138,28 @@ const ROUTE_203: Location = {
             name: 'Kaitlin',
             team: [
                 {
-                    name: 'Bidoof',
+                    slug: 'bidoof',
                     ability: 1,
                     gender: 'female',
                     level: 4,
                     nature: Nature.Rash,
                 },
                 {
-                    name: 'Budew',
+                    slug: 'budew',
                     ability: 1,
                     gender: 'female',
                     level: 4,
                     nature: Nature.Mild,
                 },
                 {
-                    name: 'Starly',
+                    slug: 'starly',
                     ability: 1,
                     gender: 'female',
                     level: 4,
                     nature: Nature.Quirky,
                 },
                 {
-                    name: 'Abra',
+                    slug: 'abra',
                     ability: 1,
                     gender: 'female',
                     level: 4,
@@ -175,7 +175,7 @@ const ROUTE_203: Location = {
             name: 'Madeline',
             team: [
                 {
-                    name: 'Psyduck',
+                    slug: 'psyduck',
                     ability: 1,
                     gender: 'female',
                     level: 8,

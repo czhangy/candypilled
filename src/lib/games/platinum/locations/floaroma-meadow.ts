@@ -13,7 +13,7 @@ const FLOAROMA_MEADOW: Location = {
             name: '2',
             team: [
                 {
-                    name: 'Stunky',
+                    slug: 'stunky',
                     ability: 1,
                     gender: 'male',
                     level: 13,
@@ -30,14 +30,14 @@ const FLOAROMA_MEADOW: Location = {
             name: '3',
             team: [
                 {
-                    name: 'Zubat',
+                    slug: 'zubat',
                     ability: 1,
                     gender: 'male',
                     level: 11,
                     nature: Nature.Gentle,
                 },
                 {
-                    name: 'Zubat',
+                    slug: 'zubat',
                     ability: 1,
                     gender: 'male',
                     level: 11,

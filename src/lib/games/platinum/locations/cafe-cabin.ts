@@ -12,7 +12,7 @@ const CAFE_CABIN: Location = {
             name: 'Kati',
             team: [
                 {
-                    name: 'Clefairy',
+                    slug: 'clefairy',
                     ability: 1,
                     gender: 'female',
                     level: 25,
@@ -28,7 +28,7 @@ const CAFE_CABIN: Location = {
             name: 'Fernando',
             team: [
                 {
-                    name: 'Heracross',
+                    slug: 'heracross',
                     ability: 1,
                     gender: 'male',
                     level: 25,
@@ -44,7 +44,7 @@ const CAFE_CABIN: Location = {
             name: 'Edwin',
             team: [
                 {
-                    name: 'Munchlax',
+                    slug: 'munchlax',
                     ability: 1,
                     gender: 'male',
                     level: 25,

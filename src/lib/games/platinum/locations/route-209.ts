@@ -13,28 +13,28 @@ const ROUTE_209: Location = {
             name: 'Albert',
             team: [
                 {
-                    name: 'Budew',
+                    slug: 'budew',
                     ability: 1,
                     gender: 'male',
                     level: 20,
                     nature: Nature.Sassy,
                 },
                 {
-                    name: 'Bonsly',
+                    slug: 'bonsly',
                     ability: 1,
                     gender: 'male',
                     level: 20,
                     nature: Nature.Jolly,
                 },
                 {
-                    name: 'Pichu',
+                    slug: 'pichu',
                     ability: 1,
                     gender: 'male',
                     level: 20,
                     nature: Nature.Docile,
                 },
                 {
-                    name: 'Eevee',
+                    slug: 'eevee',
                     ability: 1,
                     gender: 'male',
                     level: 20,
@@ -50,7 +50,7 @@ const ROUTE_209: Location = {
             name: 'Richard',
             team: [
                 {
-                    name: 'Luxio',
+                    slug: 'luxio',
                     ability: 1,
                     gender: 'male',
                     level: 23,
@@ -67,14 +67,14 @@ const ROUTE_209: Location = {
             name: 'Emma & Lil',
             team: [
                 {
-                    name: 'Bonsly',
+                    slug: 'bonsly',
                     ability: 1,
                     gender: 'female',
                     level: 22,
                     nature: Nature.Naughty,
                 },
                 {
-                    name: 'Mime Jr.',
+                    slug: 'mime-jr',
                     ability: 1,
                     gender: 'female',
                     level: 22,
@@ -90,7 +90,7 @@ const ROUTE_209: Location = {
             name: 'Danielle',
             team: [
                 {
-                    name: 'Pichu',
+                    slug: 'pichu',
                     ability: 1,
                     gender: 'female',
                     level: 22,
@@ -106,7 +106,7 @@ const ROUTE_209: Location = {
             name: 'Raul',
             team: [
                 {
-                    name: 'Staravia',
+                    slug: 'staravia',
                     ability: 1,
                     gender: 'male',
                     level: 23,
@@ -122,28 +122,28 @@ const ROUTE_209: Location = {
             name: 'Jennifer',
             team: [
                 {
-                    name: 'Budew',
+                    slug: 'budew',
                     ability: 1,
                     gender: 'female',
                     level: 20,
                     nature: Nature.Modest,
                 },
                 {
-                    name: 'Mime Jr.',
+                    slug: 'mime-jr',
                     ability: 1,
                     gender: 'female',
                     level: 20,
                     nature: Nature.Brave,
                 },
                 {
-                    name: 'Cleffa',
+                    slug: 'cleffa',
                     ability: 1,
                     gender: 'female',
                     level: 20,
                     nature: Nature.Brave,
                 },
                 {
-                    name: 'Eevee',
+                    slug: 'eevee',
                     ability: 1,
                     gender: 'female',
                     level: 20,
@@ -159,7 +159,7 @@ const ROUTE_209: Location = {
             name: 'Shelley',
             team: [
                 {
-                    name: 'Ponyta',
+                    slug: 'ponyta',
                     ability: 1,
                     gender: 'female',
                     level: 23,
@@ -177,14 +177,14 @@ const ROUTE_209: Location = {
             name: 'Ty & Sue',
             team: [
                 {
-                    name: 'Buneary',
+                    slug: 'buneary',
                     ability: 1,
                     gender: 'male',
                     level: 23,
                     nature: Nature.Mild,
                 },
                 {
-                    name: 'Buizel',
+                    slug: 'buizel',
                     ability: 1,
                     gender: 'male',
                     level: 23,

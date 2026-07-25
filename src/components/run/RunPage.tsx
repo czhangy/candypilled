@@ -224,10 +224,10 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         );
     };
 
-    const handleSpeciesLinkClick = (species: string): void => {
+    const handleSpeciesLinkClick = (slug: string): void => {
         window.open(
             `${pathname}?tab=data&subtab=pokedex&species=${encodeURIComponent(
-                StringHelpers.toSlug(species)
+                slug
             )}`,
             '_blank',
             'noopener,noreferrer'
@@ -242,8 +242,8 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         updateQueryParams({ item: slug });
     };
 
-    const handleSpeciesSelect = (species: string): void => {
-        updateQueryParams({ species: StringHelpers.toSlug(species) });
+    const handleSpeciesSelect = (slug: string): void => {
+        updateQueryParams({ species: slug });
     };
 
     const handlePokemonSelect = (location: string): void => {

@@ -274,8 +274,8 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             | 'ivs'
             | 'level'
             | 'moves'
-            | 'name'
             | 'nature'
+            | 'slug'
             | 'tags'
         >,
         enteredLocation: string
@@ -327,7 +327,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const dupes = run.caughtPokemon.map((caught) => caught.name);
+    const dupes = run.caughtPokemon.map((caught) => caught.slug);
     const starterCaughtSeparately = run.caughtPokemon.some(
         (caught) => caught.location === STARTER_LOCATION_NAME
     );
@@ -335,7 +335,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const usedLocations = RunHelpers.getUsedLocations(run);
     const encounter = run.caughtPokemon.find(
         (caught) => caught.location === location.name
-    )?.name;
+    )?.slug;
     const activeSubarea = location.subareas?.[selectedSubareaIndex];
     const section: Section = activeSubarea
         ? {

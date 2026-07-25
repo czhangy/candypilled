@@ -5,15 +5,14 @@ import Image from 'next/image';
 import Modal from '@/components/common/Modal/Modal';
 import { EvolutionStep } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './EvolveModal.module.scss';
 
 type EvolveModalProps = {
     accentColor: string;
     evolutions: EvolutionStep[];
     onClose: () => void;
-    onConfirm: (newName: string) => void;
-    pokemonName: string;
+    onConfirm: (newSlug: string) => void;
+    pokemonSlug: string;
     variant: string;
 };
 
@@ -22,7 +21,7 @@ const EvolveModal: React.FC<EvolveModalProps> = ({
     evolutions,
     onClose,
     onConfirm,
-    pokemonName,
+    pokemonSlug,
     variant,
 }) => {
     // -------------------------------------------------------------------------
@@ -36,33 +35,32 @@ const EvolveModal: React.FC<EvolveModalProps> = ({
     // -------------------------------------------------------------------------
 
     const [selected, setSelected] = useState<string | undefined>(() => {
-        const formNames = evolutions.flatMap((step) =>
-            PokemonHelpers.getPokemonForms(step.name)
+        const formSlugs = evolutions.flatMap((step) =>
+            PokemonHelpers.getPokemonForms(step.slug)
         );
-        return formNames.length === 1 ? formNames[0] : undefined;
+        return formSlugs.length === 1 ? formSlugs[0] : undefined;
     });
 
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const displayName = StringHelpers.toTitleCase(
-        PokemonHelpers.getPokemonData(pokemonName)?.name ?? pokemonName
-    );
-    // A step's name is ambiguous when it doesn't resolve to its own entry
+    const displayName =
+        PokemonHelpers.getPokemonData(pokemonSlug)?.name ?? pokemonSlug;
+    // A step's slug is ambiguous when it doesn't resolve to its own entry
     // (e.g. "wormadam", whose actual form depends on Burmy's cloak, which
     // the evolution chain doesn't track), so it's expanded into one
     // selectable option per form instead of one option per step.
-    const formNames = evolutions.flatMap((step) =>
-        PokemonHelpers.getPokemonForms(step.name)
+    const formSlugs = evolutions.flatMap((step) =>
+        PokemonHelpers.getPokemonForms(step.slug)
     );
 
     // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
 
-    const handleOptionClick = (name: string): void => {
-        setSelected(name);
+    const handleOptionClick = (slug: string): void => {
+        setSelected(slug);
     };
 
     const handleConfirmClick = (requestClose: () => void): void => {
@@ -84,9 +82,12 @@ const EvolveModal: React.FC<EvolveModalProps> = ({
             {(requestClose) => (
                 <div className={styles['evolve-modal']}>
                     <div className={styles.options}>
-                        {formNames.map((formName) => {
+                        {formSlugs.map((formSlug) => {
+                            const formName =
+                                PokemonHelpers.getPokemonData(formSlug)?.name ??
+                                formSlug;
                             const sprite = PokemonHelpers.getPokemonSprite(
-                                formName,
+                                formSlug,
                                 variant
                             );
 
@@ -94,13 +95,13 @@ const EvolveModal: React.FC<EvolveModalProps> = ({
                                 <button
                                     className={[
                                         styles.option,
-                                        formName === selected &&
+                                        formSlug === selected &&
                                             styles['option--selected'],
                                     ]
                                         .filter(Boolean)
                                         .join(' ')}
-                                    key={formName}
-                                    onClick={() => handleOptionClick(formName)}
+                                    key={formSlug}
+                                    onClick={() => handleOptionClick(formSlug)}
                                     type="button"
                                 >
                                     <div className={styles.sprite}>

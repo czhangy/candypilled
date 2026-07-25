@@ -63,7 +63,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     const getAbilitySlug = (): string | undefined => {
         if (!pokemon) return undefined;
         return PokemonHelpers.getAbilitySlug(
-            pokemon.name,
+            pokemon.slug,
             generation,
             pokemon.ability
         );
@@ -73,8 +73,11 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
+    const speciesName = pokemon
+        ? (PokemonHelpers.getPokemonData(pokemon.slug)?.name ?? pokemon.slug)
+        : undefined;
     const sprite = pokemon
-        ? PokemonHelpers.getPokemonSprite(pokemon.name, variant)
+        ? PokemonHelpers.getPokemonSprite(pokemon.slug, variant)
         : undefined;
     const heldItemSlug = pokemon?.heldItem;
     const heldItem = heldItemSlug
@@ -83,7 +86,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     const heldItemSprite = heldItemSlug
         ? ItemHelpers.getHeldItemSprite(heldItemSlug)
         : undefined;
-    const types = pokemon ? getTypes(pokemon.name) : [];
+    const types = pokemon ? getTypes(pokemon.slug) : [];
     const abilitySlug = getAbilitySlug();
     const ability = abilitySlug
         ? AbilityHelpers.getAbilityData(abilitySlug)?.name
@@ -93,7 +96,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
         pokemon?.moves ??
         (pokemon
             ? PokemonHelpers.getMovesAtLevel(
-                  pokemon.name,
+                  pokemon.slug,
                   version,
                   pokemon.level
               )
@@ -101,9 +104,9 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     const speciesContent = pokemon && (
         <>
             <div className={styles['pokemon-slot__sprite']}>
-                {sprite && (
+                {sprite && speciesName && (
                     <Image
-                        alt={pokemon.name}
+                        alt={speciesName}
                         height={SPRITE_SIZE}
                         src={sprite}
                         width={SPRITE_SIZE}
@@ -112,7 +115,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
             </div>
             <div className={styles['pokemon-slot__name']}>
                 <span>
-                    Lv.{pokemon.level} {pokemon.name}
+                    Lv.{pokemon.level} {speciesName}
                     <span
                         className={[
                             styles['pokemon-slot__gender'],
@@ -178,7 +181,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
             ) : (
                 <button
                     className={styles['pokemon-slot__link']}
-                    onClick={() => onSelectSpecies?.(pokemon.name)}
+                    onClick={() => onSelectSpecies?.(pokemon.slug)}
                     type="button"
                 >
                     {speciesContent}

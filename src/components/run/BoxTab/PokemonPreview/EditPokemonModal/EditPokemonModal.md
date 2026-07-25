@@ -16,12 +16,14 @@ still submitted unchanged).
 | `buttonTextColor` | `string`                                                                                                                                              | No       | -       | The game's button text contrast color, forwarded to `Modal`                 |
 | `generation`      | `number`                                                                                                                                              | Yes      | -       | The game's generation, used to resolve the Pokémon's abilities and learnset |
 | `onClose`         | `() => void`                                                                                                                                          | Yes      | -       | Called when the modal requests to close                                     |
-| `onSubmit`        | `(details: Pick<CaughtPokemon, 'ability' \| 'evs' \| 'gender' \| 'heldItem' \| 'ivs' \| 'level' \| 'moves' \| 'name' \| 'nature' \| 'tags'>) => void` | Yes      | -       | Called with the edited details when the form is submitted                   |
+| `onSubmit`        | `(details: Pick<CaughtPokemon, 'ability' \| 'evs' \| 'gender' \| 'heldItem' \| 'ivs' \| 'level' \| 'moves' \| 'nature' \| 'slug' \| 'tags'>) => void` | Yes      | -       | Called with the edited details when the form is submitted                   |
 | `pokemon`         | `CaughtPokemon`                                                                                                                                       | Yes      | -       | The caught Pokémon being edited, used to prefill the form                   |
 | `version`         | `string`                                                                                                                                              | Yes      | -       | The game's version, forwarded to `PokemonForm` for move-version filtering   |
 
 ## Computations
 
+- `Modal`'s `title` — `pokemon`'s display name, resolved from `pokemon.slug`
+  via `PokemonHelpers`
 - `hideEvs` — the global "Hide EVs" setting's current value, read from
   `localStorage` via `SettingsHelpers`, forwarded to `PokemonForm` as
   `showEvs={!hideEvs}`

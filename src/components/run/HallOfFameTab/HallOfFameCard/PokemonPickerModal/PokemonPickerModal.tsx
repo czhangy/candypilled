@@ -35,9 +35,13 @@ const PokemonPickerModal: React.FC<PokemonPickerModalProps> = ({
                         <div className={styles.grid}>
                             {pokemon.map((caughtPokemon) => {
                                 const sprite = PokemonHelpers.getPokemonSprite(
-                                    caughtPokemon.name,
+                                    caughtPokemon.slug,
                                     variant
                                 );
+                                const name =
+                                    PokemonHelpers.getPokemonData(
+                                        caughtPokemon.slug
+                                    )?.name ?? caughtPokemon.slug;
 
                                 return (
                                     <button
@@ -51,7 +55,7 @@ const PokemonPickerModal: React.FC<PokemonPickerModalProps> = ({
                                     >
                                         {sprite && (
                                             <Image
-                                                alt={caughtPokemon.name}
+                                                alt={name}
                                                 height={SPRITE_SIZE}
                                                 src={sprite}
                                                 width={SPRITE_SIZE}

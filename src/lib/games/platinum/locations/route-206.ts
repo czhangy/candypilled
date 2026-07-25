@@ -13,7 +13,7 @@ const ROUTE_206: Location = {
             name: 'Axel',
             team: [
                 {
-                    name: 'Pikachu',
+                    slug: 'pikachu',
                     ability: 1,
                     gender: 'male',
                     level: 21,
@@ -29,7 +29,7 @@ const ROUTE_206: Location = {
             name: 'Megan',
             team: [
                 {
-                    name: 'Staravia',
+                    slug: 'staravia',
                     ability: 1,
                     gender: 'female',
                     level: 21,
@@ -45,7 +45,7 @@ const ROUTE_206: Location = {
             name: 'James',
             team: [
                 {
-                    name: 'Ponyta',
+                    slug: 'ponyta',
                     ability: 1,
                     gender: 'male',
                     level: 21,
@@ -61,21 +61,21 @@ const ROUTE_206: Location = {
             name: 'Nicole',
             team: [
                 {
-                    name: 'Starly',
+                    slug: 'starly',
                     ability: 1,
                     gender: 'female',
                     level: 17,
                     nature: Nature.Quirky,
                 },
                 {
-                    name: 'Starly',
+                    slug: 'starly',
                     ability: 1,
                     gender: 'female',
                     level: 18,
                     nature: Nature.Mild,
                 },
                 {
-                    name: 'Starly',
+                    slug: 'starly',
                     ability: 1,
                     gender: 'female',
                     level: 19,
@@ -91,14 +91,14 @@ const ROUTE_206: Location = {
             name: 'John',
             team: [
                 {
-                    name: 'Starly',
+                    slug: 'starly',
                     ability: 1,
                     gender: 'male',
                     level: 18,
                     nature: Nature.Naive,
                 },
                 {
-                    name: 'Staravia',
+                    slug: 'staravia',
                     ability: 1,
                     gender: 'male',
                     level: 20,
@@ -114,7 +114,7 @@ const ROUTE_206: Location = {
             name: 'Ryan',
             team: [
                 {
-                    name: 'Shinx',
+                    slug: 'shinx',
                     ability: 1,
                     gender: 'male',
                     level: 21,
@@ -130,14 +130,14 @@ const ROUTE_206: Location = {
             name: 'Rachel',
             team: [
                 {
-                    name: 'Ponyta',
+                    slug: 'ponyta',
                     ability: 1,
                     gender: 'female',
                     level: 20,
                     nature: Nature.Bashful,
                 },
                 {
-                    name: 'Shinx',
+                    slug: 'shinx',
                     ability: 1,
                     gender: 'female',
                     level: 18,
@@ -153,7 +153,7 @@ const ROUTE_206: Location = {
             name: 'Kayla',
             team: [
                 {
-                    name: 'Pikachu',
+                    slug: 'pikachu',
                     ability: 1,
                     gender: 'female',
                     level: 21,
@@ -169,14 +169,14 @@ const ROUTE_206: Location = {
             name: 'Theodore',
             team: [
                 {
-                    name: 'Onix',
+                    slug: 'onix',
                     ability: 1,
                     gender: 'male',
                     level: 18,
                     nature: Nature.Gentle,
                 },
                 {
-                    name: 'Onix',
+                    slug: 'onix',
                     ability: 1,
                     gender: 'male',
                     level: 20,

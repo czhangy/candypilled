@@ -32,21 +32,21 @@ const SOLACEON_RUINS: Location = {
                     name: 'Karl',
                     team: [
                         {
-                            name: 'Geodude',
+                            slug: 'geodude',
                             ability: 1,
                             gender: 'male',
                             level: 19,
                             nature: Nature.Mild,
                         },
                         {
-                            name: 'Geodude',
+                            slug: 'geodude',
                             ability: 1,
                             gender: 'male',
                             level: 21,
                             nature: Nature.Lax,
                         },
                         {
-                            name: 'Bronzor',
+                            slug: 'bronzor',
                             ability: 1,
                             gender: 'male',
                             level: 23,

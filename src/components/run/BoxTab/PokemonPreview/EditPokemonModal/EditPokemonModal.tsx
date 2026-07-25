@@ -3,6 +3,7 @@ import Modal from '@/components/common/Modal/Modal';
 import PokemonForm from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/PokemonForm/PokemonForm';
 import { MOVE_SLOT_COUNT } from '@/lib/static/constants';
 import { CaughtPokemon } from '@/lib/static/types';
+import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
 
@@ -21,8 +22,8 @@ type EditPokemonModalProps = {
             | 'ivs'
             | 'level'
             | 'moves'
-            | 'name'
             | 'nature'
+            | 'slug'
             | 'tags'
         >
     ) => void;
@@ -73,8 +74,8 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
             | 'ivs'
             | 'level'
             | 'moves'
-            | 'name'
             | 'nature'
+            | 'slug'
             | 'tags'
         >,
         requestClose: () => void
@@ -92,7 +93,7 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
             accentColor={accentColor}
             buttonTextColor={buttonTextColor}
             onClose={onClose}
-            title={`Edit ${pokemon.name}`}
+            title={`Edit ${PokemonHelpers.getPokemonData(pokemon.slug)?.name ?? pokemon.slug}`}
         >
             {(requestClose) => (
                 <PokemonForm
@@ -105,7 +106,7 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
                     defaultLevel={pokemon.level}
                     defaultMoves={defaultMoves}
                     defaultNature={pokemon.nature}
-                    defaultSpecies={pokemon.name}
+                    defaultSpecies={pokemon.slug}
                     defaultTags={pokemon.tags}
                     disabledReason=""
                     generation={generation}

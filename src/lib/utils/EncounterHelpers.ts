@@ -1,5 +1,5 @@
 import { EncounterMethod } from '@/lib/static/enums';
-import { EncounterLocation, Game } from '@/lib/static/types';
+import { EncounterLocation, Game, PokemonData } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 
 export default class EncounterHelpers {
@@ -19,7 +19,7 @@ export default class EncounterHelpers {
      */
     static getEncounterLocations(
         game: Game,
-        species: string
+        slug: string
     ): EncounterLocation[] {
         const locations = EncounterHelpers.getWiredLocations(game);
 
@@ -28,7 +28,7 @@ export default class EncounterHelpers {
 
             const encounters = game.encounters[encountersKey] ?? [];
             return encounters
-                .filter((encounter) => encounter.species === species)
+                .filter((encounter) => encounter.species === slug)
                 .map((encounter) => ({ name, encounter }));
         });
 
@@ -58,7 +58,7 @@ export default class EncounterHelpers {
      * actually wired into a location/subarea, not just present somewhere in
      * game.encounters), deduped and sorted alphabetically by display name.
      */
-    static getAllEncounterSpecies(game: Game): string[] {
+    static getAllEncounterSpecies(game: Game): PokemonData[] {
         const locations = EncounterHelpers.getWiredLocations(game);
 
         const slugs = new Set<string>();
@@ -71,13 +71,11 @@ export default class EncounterHelpers {
             }
         }
 
-        const names = new Set(
-            [...slugs].map(
-                (slug) => PokemonHelpers.getPokemonData(slug)?.name ?? slug
-            )
-        );
+        const species = [...slugs]
+            .map((slug) => PokemonHelpers.getPokemonData(slug))
+            .filter((pokemon): pokemon is PokemonData => !!pokemon);
 
-        return [...names].sort((a, b) => a.localeCompare(b));
+        return species.sort((a, b) => a.name.localeCompare(b.name));
     }
 
     // -------------------------------------------------------------------------

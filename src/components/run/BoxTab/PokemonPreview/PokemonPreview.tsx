@@ -32,12 +32,12 @@ type PokemonPreviewProps = {
             | 'ivs'
             | 'level'
             | 'moves'
-            | 'name'
             | 'nature'
+            | 'slug'
             | 'tags'
         >
     ) => void;
-    onEvolve: (pokemon: CaughtPokemon, newName: string) => void;
+    onEvolve: (pokemon: CaughtPokemon, newSlug: string) => void;
     onSelectAbility: (slug: string) => void;
     onSelectItem: (slug: string) => void;
     onSelectLocation: (location: string) => void;
@@ -130,8 +130,8 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
             | 'ivs'
             | 'level'
             | 'moves'
-            | 'name'
             | 'nature'
+            | 'slug'
             | 'tags'
         >
     ): void => {
@@ -148,9 +148,9 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
         setIsEvolveOpen(false);
     };
 
-    const handleEvolveConfirm = (newName: string): void => {
+    const handleEvolveConfirm = (newSlug: string): void => {
         if (pokemon) {
-            onEvolve(pokemon, newName);
+            onEvolve(pokemon, newSlug);
         }
     };
 
@@ -193,16 +193,16 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     // -------------------------------------------------------------------------
 
     const data = pokemon
-        ? PokemonHelpers.getPokemonData(pokemon.name)
+        ? PokemonHelpers.getPokemonData(pokemon.slug)
         : undefined;
     const sprite = pokemon
-        ? PokemonHelpers.getPokemonSprite(pokemon.name, variant)
+        ? PokemonHelpers.getPokemonSprite(pokemon.slug, variant)
         : undefined;
     const hideTradeEvos = settings['disable-trade-evos'] ?? false;
     const nextEvolutions =
         pokemon && pokemon.status !== PokemonStatus.Dead
             ? EvolutionHelpers.getNextEvolutions(
-                  pokemon.name,
+                  pokemon.slug,
                   generation
               ).filter(
                   (step) =>
@@ -220,7 +220,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
         : [];
     const abilitySlug = pokemon
         ? PokemonHelpers.getAbilitySlug(
-              pokemon.name,
+              pokemon.slug,
               generation,
               pokemon.ability
           )
@@ -237,7 +237,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
         : undefined;
     const baseStats =
         pokemon && data
-            ? PokemonHelpers.getPokemonStats(pokemon.name, generation)
+            ? PokemonHelpers.getPokemonStats(pokemon.slug, generation)
             : undefined;
     const stats =
         pokemon && baseStats && ivs
@@ -514,7 +514,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                     evolutions={nextEvolutions}
                     onClose={handleEvolveClose}
                     onConfirm={handleEvolveConfirm}
-                    pokemonName={pokemon.name}
+                    pokemonSlug={pokemon.slug}
                     variant={variant}
                 />
             )}

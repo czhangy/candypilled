@@ -92,7 +92,7 @@ shown instead.
 - **On move link click** (from `SplitTab` or `PokedexSubtab`, e.g. a move
   within `BattleCard` or `PokedexSubtab`'s learnset) — opens the Data
   tab's Moves subtab for that move
-  (`?tab=data&subtab=moves&move=<name>`) in a new browser tab, leaving
+  (`?tab=data&subtab=moves&move=<slug>`) in a new browser tab, leaving
   the current page untouched
 - **On move select** (from `DataTab`'s Moves subtab) — sets the `move`
   query param without changing `tab`/`subtab`
@@ -103,11 +103,11 @@ shown instead.
 - **On ability link click** (from `SplitTab` or `PokedexSubtab`, e.g. an
   ability within `PokedexTile` or `BattleCard`) — opens the Data tab's
   Abilities subtab for that ability
-  (`?tab=data&subtab=abilities&ability=<name>`) in a new browser tab,
+  (`?tab=data&subtab=abilities&ability=<slug>`) in a new browser tab,
   leaving the current page untouched
 - **On item link click** (from `SplitTab`, a Pokémon's held item within
   `BattleCard`, or from `BoxTab`'s `PokemonPreview`) — opens the Data
-  tab's Items subtab for that item (`?tab=data&subtab=items&item=<name>`)
+  tab's Items subtab for that item (`?tab=data&subtab=items&item=<slug>`)
   in a new browser tab, leaving the current page untouched
 - **On species link click** (from `SplitTab`, a Pokémon's sprite or name
   within `BattleCard`) — opens the Data tab's Pokédex subtab for that
@@ -115,8 +115,7 @@ shown instead.
   tab, leaving the current page untouched
 - **On species select** (from `DataTab`'s Pokédex subtab, whether from
   its species list or its `PokedexDetail`'s evolution line) — sets the
-  `species` query param (slugified, since an evolution line link passes a
-  slug rather than a display name) without changing `tab`/`subtab`
+  `species` query param without changing `tab`/`subtab`
 - **On trainer link click** (from `SplitTab`, a `BattleCard`'s trainer name
   header) — opens the Calc tab for that battle (`?tab=calc&battle=<key>`)
   in a new browser tab, leaving the current page untouched

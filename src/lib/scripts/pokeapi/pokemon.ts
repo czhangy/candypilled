@@ -797,7 +797,7 @@ const pruneDescendants = (
     node.children
         .filter((child) => child.fromGeneration <= generation)
         .map((child) => ({
-            name: child.node.name,
+            slug: child.node.name,
             methods: child.methods,
             evolvesTo: pruneDescendants(child.node, generation),
         }));
@@ -827,7 +827,7 @@ const buildLine = (
             index > rootIndex ? edges[index - 1].methods : undefined;
 
         return {
-            name: nodeNames[index],
+            slug: nodeNames[index],
             methods,
             evolvesTo: isTarget
                 ? pruneDescendants(targetNode, generation)
@@ -932,6 +932,7 @@ export const fetchPokemonData = async (): Promise<void> => {
                 NAME_OVERRIDES[variety.name] ??
                 StringHelpers.toTitleCase(variety.name);
             data[variety.name] = {
+                slug: variety.name,
                 name,
                 introducedInGeneration: dexGeneration,
                 isTemporaryForm: TEMPORARY_FORM_VARIETIES.has(variety.name),

@@ -20,14 +20,14 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                     name: '16',
                     team: [
                         {
-                            name: 'Zubat',
+                            slug: 'zubat',
                             ability: 1,
                             gender: 'female',
                             level: 16,
                             nature: Nature.Quiet,
                         },
                         {
-                            name: 'Glameow',
+                            slug: 'glameow',
                             ability: 1,
                             gender: 'female',
                             level: 18,
@@ -43,14 +43,14 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                     name: '17',
                     team: [
                         {
-                            name: 'Zubat',
+                            slug: 'zubat',
                             ability: 1,
                             gender: 'male',
                             level: 17,
                             nature: Nature.Impish,
                         },
                         {
-                            name: 'Stunky',
+                            slug: 'stunky',
                             ability: 1,
                             gender: 'male',
                             level: 17,
@@ -72,7 +72,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                     name: '18',
                     team: [
                         {
-                            name: 'Croagunk',
+                            slug: 'croagunk',
                             ability: 1,
                             gender: 'male',
                             level: 19,
@@ -88,7 +88,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                     name: '19',
                     team: [
                         {
-                            name: 'Glameow',
+                            slug: 'glameow',
                             ability: 1,
                             gender: 'female',
                             level: 19,
@@ -110,21 +110,21 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                     name: '20',
                     team: [
                         {
-                            name: 'Stunky',
+                            slug: 'stunky',
                             ability: 1,
                             gender: 'female',
                             level: 16,
                             nature: Nature.Naughty,
                         },
                         {
-                            name: 'Croagunk',
+                            slug: 'croagunk',
                             ability: 1,
                             gender: 'female',
                             level: 16,
                             nature: Nature.Careful,
                         },
                         {
-                            name: 'Glameow',
+                            slug: 'glameow',
                             ability: 1,
                             gender: 'female',
                             level: 16,
@@ -140,12 +140,12 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                     name: 'Travon',
                     team: [
                         {
-                            name: 'Kadabra',
+                            slug: 'kadabra',
                             ability: 1,
                             gender: 'male',
                             level: 20,
                             nature: Nature.Brave,
-                            moves: ['Confusion'],
+                            moves: ['confusion'],
                             ivs: 2,
                         },
                     ],
@@ -165,25 +165,25 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                     name: 'Jupiter 1',
                     team: [
                         {
-                            name: 'Zubat',
+                            slug: 'zubat',
                             ability: 1,
                             gender: 'female',
                             level: 21,
                             nature: Nature.Brave,
-                            moves: ['Giga Drain', 'Wing Attack', 'Bite'],
+                            moves: ['giga-drain', 'wing-attack', 'bite'],
                             ivs: 12,
                         },
                         {
-                            name: 'Skuntank',
+                            slug: 'skuntank',
                             ability: 1,
                             gender: 'female',
                             level: 23,
                             nature: Nature.Modest,
                             moves: [
-                                'Night Slash',
-                                'Poison Gas',
-                                'Screech',
-                                'Smokescreen',
+                                'night-slash',
+                                'poison-gas',
+                                'screech',
+                                'smokescreen',
                             ],
                             ivs: 12,
                             heldItem: 'sitrus-berry',

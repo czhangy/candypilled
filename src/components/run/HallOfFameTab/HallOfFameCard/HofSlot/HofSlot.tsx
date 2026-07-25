@@ -21,7 +21,10 @@ const HofSlot: React.FC<HofSlotProps> = ({ onClick, pokemon, variant }) => {
     // -------------------------------------------------------------------------
 
     const sprite = pokemon
-        ? PokemonHelpers.getPokemonSprite(pokemon.name, variant)
+        ? PokemonHelpers.getPokemonSprite(pokemon.slug, variant)
+        : undefined;
+    const pokemonName = pokemon
+        ? (PokemonHelpers.getPokemonData(pokemon.slug)?.name ?? pokemon.slug)
         : undefined;
 
     // -------------------------------------------------------------------------
@@ -30,7 +33,7 @@ const HofSlot: React.FC<HofSlotProps> = ({ onClick, pokemon, variant }) => {
 
     return (
         <button
-            aria-label={pokemon ? `Replace ${pokemon.name}` : 'Add Pokémon'}
+            aria-label={pokemon ? `Replace ${pokemonName}` : 'Add Pokémon'}
             className={[
                 styles['hof-slot'],
                 !pokemon && styles['hof-slot--empty'],
@@ -44,7 +47,7 @@ const HofSlot: React.FC<HofSlotProps> = ({ onClick, pokemon, variant }) => {
                 <div className={styles['hof-slot__sprite']}>
                     {sprite && (
                         <Image
-                            alt={pokemon.name}
+                            alt={pokemonName ?? ''}
                             height={SPRITE_SIZE}
                             src={sprite}
                             width={SPRITE_SIZE}

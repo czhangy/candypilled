@@ -132,7 +132,7 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                             types={types}
                         />
                         <EvolutionLine
-                            currentName={species}
+                            currentSlug={species}
                             hideTradeEvos={hideTradeEvos}
                             onSelectSpecies={onSelectSpecies}
                             step={evolutionLine}

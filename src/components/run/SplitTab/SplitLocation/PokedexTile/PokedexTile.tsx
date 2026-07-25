@@ -30,8 +30,8 @@ type PokedexTileProps = (
                   | 'ivs'
                   | 'level'
                   | 'moves'
-                  | 'name'
                   | 'nature'
+                  | 'slug'
                   | 'tags'
               >,
               location: string
@@ -122,8 +122,8 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
             | 'ivs'
             | 'level'
             | 'moves'
-            | 'name'
             | 'nature'
+            | 'slug'
             | 'tags'
         >,
         location: string
@@ -180,7 +180,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         !!pokemon &&
         !!rest.encounter &&
         EvolutionHelpers.isSameEvolutionLine(
-            pokemon.name,
+            pokemon.slug,
             rest.encounter,
             generation
         );
@@ -189,8 +189,8 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     const isEvolutionLineCaught =
         rest.mode === 'catch' &&
         !!pokemon &&
-        rest.dupes.some((name) =>
-            EvolutionHelpers.isSameEvolutionLine(pokemon.name, name, generation)
+        rest.dupes.some((slug) =>
+            EvolutionHelpers.isSameEvolutionLine(pokemon.slug, slug, generation)
         );
     const isCatchDisabled =
         rest.mode === 'catch' &&
@@ -260,7 +260,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     />
                 )}
             <EvolutionLine
-                currentName={species}
+                currentSlug={species}
                 hideTradeEvos={hideTradeEvos}
                 onSelectSpecies={onSelectSpecies}
                 step={evolutionLine}

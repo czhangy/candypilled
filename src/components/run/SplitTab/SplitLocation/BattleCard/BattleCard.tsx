@@ -85,7 +85,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                 isReadOnly={false}
                                 key={
                                     pokemon
-                                        ? `${pokemon.name}-${index}`
+                                        ? `${pokemon.slug}-${index}`
                                         : `empty-${index}`
                                 }
                                 onSelectAbility={onSelectAbility}

@@ -18,6 +18,7 @@ import {
     AbilitySlot,
     CaughtPokemon,
     DropdownOption,
+    PokemonData,
     StatValues,
 } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
@@ -26,7 +27,7 @@ import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './PokemonForm.module.scss';
 
 type PokemonFormProps = {
-    allSpecies: string[];
+    allSpecies: PokemonData[];
     defaultAbilitySlot?: AbilitySlot;
     defaultEvs?: StatValues;
     defaultGender?: 'male' | 'female';
@@ -50,8 +51,8 @@ type PokemonFormProps = {
             | 'ivs'
             | 'level'
             | 'moves'
-            | 'name'
             | 'nature'
+            | 'slug'
             | 'tags'
         >
     ) => void;
@@ -126,11 +127,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     // STATE
     // -------------------------------------------------------------------------
 
-    const [species, setSpecies] = useState(
-        () =>
-            PokemonHelpers.getPokemonData(defaultSpecies)?.name ??
-            defaultSpecies
-    );
+    const [species, setSpecies] = useState(defaultSpecies);
     const [abilitySlot, setAbilitySlot] = useState<AbilitySlot>(
         defaultAbilitySlot ?? 1
     );
@@ -241,8 +238,8 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
             ivs,
             level,
             moves: moves.filter(Boolean),
-            name: species,
             nature,
+            slug: species,
             tags,
         });
     };
@@ -251,9 +248,9 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const speciesOptions: DropdownOption[] = allSpecies.map((name) => ({
-        label: name,
-        value: name,
+    const speciesOptions: DropdownOption[] = allSpecies.map((pokemon) => ({
+        label: pokemon.name,
+        value: pokemon.slug,
     }));
     const abilities = PokemonHelpers.getPokemonAbilities(species, generation);
     const abilityOptions: DropdownOption[] = abilities

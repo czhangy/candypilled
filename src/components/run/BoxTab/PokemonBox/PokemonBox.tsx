@@ -163,10 +163,10 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                     <div className={styles.grid}>
                         {displayedPokemon.map((pokemon) => {
                             const data = PokemonHelpers.getPokemonData(
-                                pokemon.name
+                                pokemon.slug
                             );
                             const sprite = PokemonHelpers.getBoxSprite(
-                                pokemon.name
+                                pokemon.slug
                             );
                             const heldItemData = pokemon.heldItem
                                 ? ItemHelpers.getHeldItemData(pokemon.heldItem)
@@ -203,7 +203,7 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                                     type="button"
                                 >
                                     <Image
-                                        alt={data?.name ?? pokemon.name}
+                                        alt={data?.name ?? pokemon.slug}
                                         height={SPRITE_HEIGHT}
                                         src={sprite}
                                         width={SPRITE_WIDTH}
