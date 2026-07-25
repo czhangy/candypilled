@@ -139,7 +139,10 @@ type PromptedPokemon = {
     ability: AbilitySlot;
     level: number;
     nature: Nature;
-    gender?: 'male' | 'female';
+};
+
+type PromptedTeamPokemon = PromptedPokemon & {
+    gender: 'male' | 'female';
     ivs?: number;
 };
 
@@ -147,7 +150,7 @@ type PromptedBattle = {
     trainerClass: string;
     isTrueDouble: boolean;
     name: string;
-    team: PromptedPokemon[];
+    team: PromptedTeamPokemon[];
 };
 
 const parseArgs = (argv: string[]): BattleArgs => {
@@ -304,12 +307,15 @@ const findInsertionPoint = (content: string, scope: Range): InsertionPoint => {
 
 const escapeQuotes = (value: string): string => value.replace(/'/g, "\\'");
 
-const serializePokemon = (pokemon: PromptedPokemon, indent: string): string => {
+const serializePokemon = (
+    pokemon: PromptedTeamPokemon,
+    indent: string
+): string => {
     return (
         `${indent}{\n` +
         `${indent}    name: '${escapeQuotes(pokemon.name)}',\n` +
         `${indent}    ability: ${pokemon.ability},\n` +
-        (pokemon.gender ? `${indent}    gender: '${pokemon.gender}',\n` : '') +
+        `${indent}    gender: '${pokemon.gender}',\n` +
         (pokemon.ivs ? `${indent}    ivs: ${pokemon.ivs},\n` : '') +
         `${indent}    level: ${pokemon.level},\n` +
         `${indent}    nature: Nature.${pokemon.nature},\n` +
@@ -442,7 +448,7 @@ const promptBattle = async (
     }
     const ivs = dv ? Math.round((dv * MAX_IV) / MAX_DV) : undefined;
 
-    const team: PromptedPokemon[] = [];
+    const team: PromptedTeamPokemon[] = [];
     for (let i = 1; i <= MAX_TEAM_SIZE; i++) {
         const pokemon = await promptPokemon(rl, i);
         if (!pokemon) break;

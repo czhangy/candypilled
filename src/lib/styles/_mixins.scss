@@ -45,6 +45,9 @@
 }
 
 @mixin gender-symbol {
+    position: relative;
+    top: -0.15em;
+
     &--male {
         color: $blue;
     }

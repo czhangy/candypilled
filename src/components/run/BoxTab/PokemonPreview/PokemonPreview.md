@@ -2,7 +2,7 @@
 
 Displays every recorded attribute of the currently selected caught Pokémon:
 a small sprite alongside its name (suffixed with a blue ♂ or pink ♀ gender
-symbol when set), level, nature, ability, catch location, held item, and
+symbol), level, nature, ability, catch location, held item, and
 tags (as a row of pills, when any are set), followed by its calculated
 stats and a 2x2 grid of its moves.
 Its ability, held item, and moves link out to their corresponding views

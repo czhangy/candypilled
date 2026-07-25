@@ -59,7 +59,8 @@
             .pokemon-slot__gender {
                 @include gender-symbol;
 
-                margin-left: 0.15rem;
+                font-size: 0.5rem;
+                margin-left: 0.2rem;
             }
 
             .pokemon-slot__types {
