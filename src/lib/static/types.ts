@@ -160,6 +160,8 @@ type BattleItem = {
 };
 
 export type Battle = {
+    customHeight?: number;
+    customWidth?: number;
     fieldCondition?: FieldCondition;
     isBackToBack?: boolean;
     isBoss?: boolean;

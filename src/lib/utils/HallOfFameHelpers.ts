@@ -35,8 +35,9 @@ export default class HallOfFameHelpers {
         }
 
         HallOfFameHelpers.cachedRaw = raw;
-        HallOfFameHelpers.cachedSnapshot = raw
-            ? (JSON.parse(raw) as HallOfFameEntry[])
+        const parsed: unknown = raw ? JSON.parse(raw) : [];
+        HallOfFameHelpers.cachedSnapshot = Array.isArray(parsed)
+            ? (parsed as HallOfFameEntry[])
             : HallOfFameHelpers.EMPTY_SNAPSHOT;
 
         return HallOfFameHelpers.cachedSnapshot;
