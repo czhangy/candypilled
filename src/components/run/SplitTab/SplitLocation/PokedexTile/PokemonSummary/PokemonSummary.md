@@ -15,7 +15,7 @@ shown instead.
 | `catchRate`       | `number`                 | No       | -       | The selected Pokémon's catch rate; the catch rate section is hidden when unset |
 | `interactive`     | `boolean`                | Yes      | -       | Forwarded to `AbilitiesList`, controlling whether its entries are clickable    |
 | `onSelectAbility` | `(name: string) => void` | Yes      | -       | Forwarded to `AbilitiesList`, called when an ability is clicked                |
-| `placeholder`     | `string`                 | Yes      | -       | The message shown in place of the summary when no Pokémon is selected          |
+| `placeholder`     | `string`                 | No       | -       | The message shown in place of the summary when no Pokémon is selected          |
 | `pokemon`         | `PokemonData`            | No       | -       | The selected Pokémon's data; when unset, `placeholder` is shown instead        |
 | `sprite`          | `string`                 | No       | -       | The selected Pokémon's sprite, matching the game's sprite variant              |
 | `types`           | `string[]`               | Yes      | -       | The selected Pokémon's types, rendered as badges beneath its name              |

@@ -112,73 +112,95 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
     return (
         <div className={styles['pokedex-detail']}>
             <div className={styles.header}>Pokédex</div>
-            <PokemonSummary
-                abilityEntries={abilityEntries}
-                catchRate={catchRate}
-                interactive
-                onSelectAbility={onSelectAbility}
-                placeholder="Select a Pokémon to view its details"
-                pokemon={pokemon}
-                sprite={sprite}
-                types={types}
-            />
-            <EvolutionLine
-                currentName={species}
-                hideTradeEvos={hideTradeEvos}
-                onSelectSpecies={onSelectSpecies}
-                step={evolutionLine}
-                variant={variant}
-            />
-            <StatsChart stats={stats} />
-            {pokemon && (
-                <div className={styles.details}>
-                    <div className={styles['details-tabs']}>
-                        <button
-                            aria-pressed={activeDetailTab === 'learnset'}
-                            className={[
-                                styles['details-tab'],
-                                activeDetailTab === 'learnset' &&
-                                    styles['details-tab--active'],
-                            ]
-                                .filter(Boolean)
-                                .join(' ')}
-                            onClick={() => handleDetailTabChange('learnset')}
-                            type="button"
-                        >
-                            Learnset
-                        </button>
-                        <button
-                            aria-pressed={activeDetailTab === 'locations'}
-                            className={[
-                                styles['details-tab'],
-                                activeDetailTab === 'locations' &&
-                                    styles['details-tab--active'],
-                            ]
-                                .filter(Boolean)
-                                .join(' ')}
-                            onClick={() => handleDetailTabChange('locations')}
-                            type="button"
-                        >
-                            Locations
-                        </button>
-                    </div>
-                    {activeDetailTab === 'learnset' ? (
-                        <LearnsetList
-                            generation={game.generation}
+            <div
+                className={[
+                    styles.content,
+                    !pokemon && styles['content--empty'],
+                ]
+                    .filter(Boolean)
+                    .join(' ')}
+            >
+                {pokemon ? (
+                    <>
+                        <PokemonSummary
+                            abilityEntries={abilityEntries}
+                            catchRate={catchRate}
                             interactive
-                            moves={learnset ?? []}
-                            onSelectMove={onSelectMove}
+                            onSelectAbility={onSelectAbility}
+                            pokemon={pokemon}
+                            sprite={sprite}
+                            types={types}
                         />
-                    ) : (
-                        <LocationsList
-                            interactive
-                            locations={locations}
-                            onSelectLocation={onSelectLocation}
-                            usedLocations={usedLocations}
+                        <EvolutionLine
+                            currentName={species}
+                            hideTradeEvos={hideTradeEvos}
+                            onSelectSpecies={onSelectSpecies}
+                            step={evolutionLine}
+                            variant={variant}
                         />
-                    )}
-                </div>
-            )}
+                        <StatsChart stats={stats} />
+                        <div className={styles.details}>
+                            <div className={styles['details-tabs']}>
+                                <button
+                                    aria-pressed={
+                                        activeDetailTab === 'learnset'
+                                    }
+                                    className={[
+                                        styles['details-tab'],
+                                        activeDetailTab === 'learnset' &&
+                                            styles['details-tab--active'],
+                                    ]
+                                        .filter(Boolean)
+                                        .join(' ')}
+                                    onClick={() =>
+                                        handleDetailTabChange('learnset')
+                                    }
+                                    type="button"
+                                >
+                                    Learnset
+                                </button>
+                                <button
+                                    aria-pressed={
+                                        activeDetailTab === 'locations'
+                                    }
+                                    className={[
+                                        styles['details-tab'],
+                                        activeDetailTab === 'locations' &&
+                                            styles['details-tab--active'],
+                                    ]
+                                        .filter(Boolean)
+                                        .join(' ')}
+                                    onClick={() =>
+                                        handleDetailTabChange('locations')
+                                    }
+                                    type="button"
+                                >
+                                    Locations
+                                </button>
+                            </div>
+                            {activeDetailTab === 'learnset' ? (
+                                <LearnsetList
+                                    generation={game.generation}
+                                    interactive
+                                    moves={learnset ?? []}
+                                    onSelectMove={onSelectMove}
+                                />
+                            ) : (
+                                <LocationsList
+                                    interactive
+                                    locations={locations}
+                                    onSelectLocation={onSelectLocation}
+                                    usedLocations={usedLocations}
+                                />
+                            )}
+                        </div>
+                    </>
+                ) : (
+                    <span className={styles.placeholder}>
+                        Select a Pokémon to view its details
+                    </span>
+                )}
+            </div>
         </div>
     );
 };
