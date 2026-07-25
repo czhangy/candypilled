@@ -39,7 +39,7 @@ shown instead.
   query param, defaulting to `'split'` if absent
 - `activeSubtab` — the `id` of the currently active Data subtab, read
   from the `subtab` query param, defaulting to `'pokedex'` if absent
-- `selectedMove` — the currently selected move's name, read from the `move`
+- `selectedMove` — the currently selected move's slug, read from the `move`
   query param, shared between the Data tab's Moves subtab and move
   links elsewhere on the page
 - `selectedAbility` — the currently selected ability's slug, read from the

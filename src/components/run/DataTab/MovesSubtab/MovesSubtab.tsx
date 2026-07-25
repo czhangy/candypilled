@@ -5,7 +5,7 @@ import styles from './MovesSubtab.module.scss';
 
 type MovesSubtabProps = {
     generation: number;
-    onSelectMove: (name: string) => void;
+    onSelectMove: (slug: string) => void;
     selectedMove?: string;
 };
 
@@ -36,7 +36,7 @@ const MovesSubtab: React.FC<MovesSubtabProps> = ({
                 searchPlaceholder="Search moves..."
                 selectedItem={selectedMove}
             />
-            <MoveDetail generation={generation} move={selectedMove} />
+            <MoveDetail generation={generation} moveSlug={selectedMove} />
         </div>
     );
 };

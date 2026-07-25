@@ -559,12 +559,12 @@ const sortMoves = (moves: WorkingMove[]): LearnsetMove[] =>
                 if (levelDiff !== 0) return levelDiff;
                 return (a.order ?? 0) - (b.order ?? 0);
             }
-            return a.name.localeCompare(b.name);
+            return a.slug.localeCompare(b.slug);
         })
         .map((move) =>
             move.level === undefined
-                ? { name: move.name, method: move.method }
-                : { name: move.name, method: move.method, level: move.level }
+                ? { slug: move.slug, method: move.method }
+                : { slug: move.slug, method: move.method, level: move.level }
         );
 
 // Learnsets differ commonly between version groups within the same
@@ -593,7 +593,7 @@ const buildLearnsetByVersionGroup = (
             if (!KNOWN_METHODS.has(method)) continue;
 
             const move: WorkingMove = {
-                name: moveEntry.move.name,
+                slug: moveEntry.move.name,
                 method,
                 order: detail.order,
             };

@@ -22,6 +22,7 @@ import {
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
+import MoveHelpers from '@/lib/utils/MoveHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
@@ -363,10 +364,13 @@ const CalcTab: React.FC<CalcTabProps> = ({
         run.starter
     );
     const mon = team[Number(selectedMemberIndex)];
-    const defenderMoves = mon
+    const defenderMoveSlugs = mon
         ? (mon.moves ??
           PokemonHelpers.getMovesAtLevel(mon.name, game.version, mon.level))
         : [];
+    const defenderMoves = defenderMoveSlugs.map(
+        (slug) => MoveHelpers.getMoveData(slug)?.name ?? slug
+    );
 
     const playerInput: CalcPokemonInput | null = caught
         ? {
@@ -490,7 +494,11 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 '',
             ivs: StatHelpers.normalizeStats(caught.ivs, MAX_IV),
             level: caught.level,
-            moves: padMoves(caught.moves),
+            moves: padMoves(
+                caught.moves.map(
+                    (slug) => MoveHelpers.getMoveData(slug)?.name ?? slug
+                )
+            ),
             nature: caught.nature ?? Object.values(Nature)[0],
         });
     }, [caught, game.generation]);

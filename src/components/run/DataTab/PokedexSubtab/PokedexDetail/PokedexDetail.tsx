@@ -15,7 +15,7 @@ type PokedexDetailProps = {
     game: Game;
     onSelectAbility: (slug: string) => void;
     onSelectLocation: (location: string) => void;
-    onSelectMove: (name: string) => void;
+    onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
     species?: string;
     usedLocations: string[];

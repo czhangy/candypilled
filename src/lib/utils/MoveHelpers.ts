@@ -5,16 +5,15 @@ import {
     StatValues,
 } from '@/lib/static/types';
 import GenerationHelpers from '@/lib/utils/GenerationHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
 
 export default class MoveHelpers {
     // -------------------------------------------------------------------------
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    /** The move data for `name`, or undefined if no move matches. */
-    static getMoveData(name: string): MoveData | undefined {
-        return MOVES[StringHelpers.toSlug(name)];
+    /** The move data for `slug`, or undefined if no move matches. */
+    static getMoveData(slug: string): MoveData | undefined {
+        return MOVES[slug];
     }
 
     /** Every move introduced by generation or earlier, sorted alphabetically by display name. */
@@ -25,12 +24,12 @@ export default class MoveHelpers {
             .sort((a, b) => a.localeCompare(b));
     }
 
-    /** The values `name` had as of `generation`, or undefined if no move matches. */
+    /** The values `slug` had as of `generation`, or undefined if no move matches. */
     static getMoveForGeneration(
-        name: string,
+        slug: string,
         generation: number
     ): MoveValuesByGeneration | undefined {
-        const move = MoveHelpers.getMoveData(name);
+        const move = MoveHelpers.getMoveData(slug);
         if (!move) return undefined;
 
         return GenerationHelpers.resolveGeneration(
@@ -40,25 +39,25 @@ export default class MoveHelpers {
     }
 
     /**
-     * The type `name` should render as in `generation`, resolving Hidden
+     * The type `slug` should render as in `generation`, resolving Hidden
      * Power's IV-dependent type instead of its static "normal" data entry.
      */
     static getMoveType(
-        name: string,
+        slug: string,
         generation: number,
         ivs: StatValues
     ): string | undefined {
-        const values = MoveHelpers.getMoveForGeneration(name, generation);
+        const values = MoveHelpers.getMoveForGeneration(slug, generation);
         if (!values) return undefined;
 
-        return StringHelpers.toSlug(name) === 'hidden-power'
+        return slug === 'hidden-power'
             ? MoveHelpers.getHiddenPowerType(ivs)
             : values.type;
     }
 
-    /** Whether `name` is curated as a dangerous move. */
-    static isDangerousMove(name: string): boolean {
-        return MoveHelpers.getMoveData(name)?.isDangerous ?? false;
+    /** Whether `slug` is curated as a dangerous move. */
+    static isDangerousMove(slug: string): boolean {
+        return MoveHelpers.getMoveData(slug)?.isDangerous ?? false;
     }
 
     // -------------------------------------------------------------------------

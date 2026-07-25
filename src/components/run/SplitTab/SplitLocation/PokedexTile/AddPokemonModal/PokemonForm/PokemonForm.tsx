@@ -290,16 +290,15 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
             .sort((a, b) => a.label.localeCompare(b.label)),
     ];
     const learnset = PokemonHelpers.getPokemonLearnset(species, version) ?? [];
-    const moveNames = new Set(
-        learnset.map(
-            (move) => MoveHelpers.getMoveData(move.name)?.name ?? move.name
-        )
-    );
+    const moveSlugs = new Set(learnset.map((move) => move.slug));
     const moveOptions: DropdownOption[] = [
         { label: 'None', value: '' },
-        ...[...moveNames]
-            .sort((a, b) => a.localeCompare(b))
-            .map((name) => ({ label: name, value: name })),
+        ...[...moveSlugs]
+            .map((slug) => ({
+                label: MoveHelpers.getMoveData(slug)?.name ?? slug,
+                value: slug,
+            }))
+            .sort((a, b) => a.label.localeCompare(b.label)),
     ];
 
     // -------------------------------------------------------------------------

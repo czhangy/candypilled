@@ -7,7 +7,6 @@ import {
     StatValues,
 } from '@/lib/static/types';
 import GenerationHelpers from '@/lib/utils/GenerationHelpers';
-import MoveHelpers from '@/lib/utils/MoveHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 export default class PokemonHelpers {
@@ -158,10 +157,10 @@ export default class PokemonHelpers {
     }
 
     /**
-     * The moves name would know at level in version, i.e. the last
-     * MAX_KNOWN_MOVES distinct level-up moves learned at or before level, in
-     * the order they were learned — matching how a Pokémon's moveset is
-     * determined in-game when it's first encountered or evolves.
+     * The slugs of the moves name would know at level in version, i.e. the
+     * last MAX_KNOWN_MOVES distinct level-up moves learned at or before
+     * level, in the order they were learned — matching how a Pokémon's
+     * moveset is determined in-game when it's first encountered or evolves.
      */
     static getMovesAtLevel(
         name: string,
@@ -175,9 +174,7 @@ export default class PokemonHelpers {
                     move.method === 'level-up' &&
                     (move.level ?? Infinity) <= level
             )
-            .map(
-                (move) => MoveHelpers.getMoveData(move.name)?.name ?? move.name
-            );
+            .map((move) => move.slug);
 
         return Array.from(new Set(levelUpMoves)).slice(
             -PokemonHelpers.MAX_KNOWN_MOVES

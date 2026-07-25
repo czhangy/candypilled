@@ -16,7 +16,7 @@ type PokemonSlotProps = {
     isReadOnly: boolean;
     onSelectAbility?: (slug: string) => void;
     onSelectItem?: (slug: string) => void;
-    onSelectMove?: (name: string) => void;
+    onSelectMove?: (slug: string) => void;
     onSelectSpecies?: (species: string) => void;
     pokemon: BattlePokemon | null;
     variant: string;

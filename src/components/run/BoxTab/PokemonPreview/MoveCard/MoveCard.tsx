@@ -7,14 +7,14 @@ import styles from './MoveCard.module.scss';
 type MoveCardProps = {
     generation: number;
     ivs: StatValues;
-    move?: string;
-    onSelectMove: (name: string) => void;
+    moveSlug?: string;
+    onSelectMove: (slug: string) => void;
 };
 
 const MoveCard: React.FC<MoveCardProps> = ({
     generation,
     ivs,
-    move,
+    moveSlug,
     onSelectMove,
 }) => {
     // -------------------------------------------------------------------------
@@ -29,19 +29,19 @@ const MoveCard: React.FC<MoveCardProps> = ({
     // -------------------------------------------------------------------------
 
     const handleClick = (): void => {
-        if (moveData) onSelectMove(moveData.name);
+        if (moveSlug) onSelectMove(moveSlug);
     };
 
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const moveData = move ? MoveHelpers.getMoveData(move) : undefined;
-    const values = move
-        ? MoveHelpers.getMoveForGeneration(move, generation)
+    const moveData = moveSlug ? MoveHelpers.getMoveData(moveSlug) : undefined;
+    const values = moveSlug
+        ? MoveHelpers.getMoveForGeneration(moveSlug, generation)
         : undefined;
-    const moveType = move
-        ? MoveHelpers.getMoveType(move, generation, ivs)
+    const moveType = moveSlug
+        ? MoveHelpers.getMoveType(moveSlug, generation, ivs)
         : undefined;
     const moveColor = moveType ? TypeHelpers.getTypeColor(moveType) : undefined;
 

@@ -14,7 +14,7 @@ is empty.
 | `generation`   | `number`                 | Yes      | -       | The game's generation, used to resolve move values                   |
 | `interactive`  | `boolean`                | Yes      | -       | Whether rows are clickable links or static, non-interactive text     |
 | `moves`        | `LearnsetMove[]`         | Yes      | -       | The moves to list, in the order to display them                      |
-| `onSelectMove` | `(name: string) => void` | Yes      | -       | Called with a move's name when it's clicked, only when `interactive` |
+| `onSelectMove` | `(slug: string) => void` | Yes      | -       | Called with a move's slug when it's clicked, only when `interactive` |
 
 ## Computations
 

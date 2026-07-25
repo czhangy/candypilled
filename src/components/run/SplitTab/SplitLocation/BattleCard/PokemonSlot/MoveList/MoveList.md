@@ -15,11 +15,13 @@ move's details, and darkens further on hover.
 | `highlightDangerous` | `boolean`                | Yes      | -       | Whether moves flagged as dangerous are highlighted in red text        |
 | `isReadOnly`         | `boolean`                | Yes      | -       | Renders moves as plain, non-interactive text when true                |
 | `ivs`                | `StatValues`             | Yes      | -       | The Pokémon's IVs, used to resolve Hidden Power's actual type         |
-| `moves`              | `string[]`               | Yes      | -       | The Pokémon's moves, padded to 4 slots with dashes if fewer           |
-| `onSelectMove`       | `(name: string) => void` | No       | -       | Called with a move's name when it's clicked; unused when `isReadOnly` |
+| `moves`              | `string[]`               | Yes      | -       | The Pokémon's move slugs, padded to 4 slots with dashes if fewer      |
+| `onSelectMove`       | `(slug: string) => void` | No       | -       | Called with a move's slug when it's clicked; unused when `isReadOnly` |
 
 ## Computations
 
+- `moveName` — a move's display name, resolved from its slug via
+  `MoveHelpers`; the slot renders as a dash if it doesn't resolve
 - `getMoveColor` — a move's type color at `generation`, resolved via
   `MoveHelpers.getMoveType` (accounting for `ivs` when the move is Hidden
   Power) and `TypeHelpers`, tinting that move's background via the

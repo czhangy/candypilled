@@ -210,14 +210,14 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         });
     };
 
-    const handleMoveSelect = (name: string): void => {
-        updateQueryParams({ move: name });
+    const handleMoveSelect = (slug: string): void => {
+        updateQueryParams({ move: slug });
     };
 
-    const handleMoveLinkClick = (name: string): void => {
+    const handleMoveLinkClick = (slug: string): void => {
         window.open(
             `${pathname}?tab=data&subtab=moves&move=${encodeURIComponent(
-                name
+                slug
             )}`,
             '_blank',
             'noopener,noreferrer'

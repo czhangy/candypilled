@@ -8,7 +8,7 @@ type LearnsetListProps = {
     generation: number;
     interactive: boolean;
     moves: LearnsetMove[];
-    onSelectMove: (name: string) => void;
+    onSelectMove: (slug: string) => void;
 };
 
 const LearnsetList: React.FC<LearnsetListProps> = ({
@@ -34,8 +34,8 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
     // HANDLERS
     // -------------------------------------------------------------------------
 
-    const handleMoveClick = (name: string): void => {
-        onSelectMove(name);
+    const handleMoveClick = (slug: string): void => {
+        onSelectMove(slug);
     };
 
     // -------------------------------------------------------------------------
@@ -45,12 +45,12 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
     return (
         <ul className={styles['learnset-list']}>
             {moves.map((move) => {
-                const moveData = MoveHelpers.getMoveData(move.name);
+                const moveData = MoveHelpers.getMoveData(move.slug);
                 const values = MoveHelpers.getMoveForGeneration(
-                    move.name,
+                    move.slug,
                     generation
                 );
-                const name = moveData?.name ?? move.name;
+                const name = moveData?.name ?? move.slug;
 
                 const content = (
                     <>
@@ -88,11 +88,11 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
                 );
 
                 return (
-                    <li key={`${move.method}-${move.name}-${move.level ?? ''}`}>
+                    <li key={`${move.method}-${move.slug}-${move.level ?? ''}`}>
                         {interactive ? (
                             <button
                                 className={styles.row}
-                                onClick={() => handleMoveClick(name)}
+                                onClick={() => handleMoveClick(move.slug)}
                                 type="button"
                             >
                                 {content}

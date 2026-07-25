@@ -26,6 +26,12 @@ const SHADOW_MOVE_TYPE = 'shadow';
 // list without being useful to look up.
 const MIN_PP = 2;
 
+// This site only ever needs generation III onward (matching
+// MIN_LEARNSET_GENERATION in pokemon.ts), so earlier per-generation value
+// segments are collapsed into a single floor entry at this generation
+// rather than kept as their own history.
+const MIN_GENERATION = 3;
+
 // `StringHelpers.toTitleCase` joins slug words with a space, so moves whose
 // official name keeps a hyphen (e.g. "Will-O-Wisp") need their title-cased
 // name corrected here rather than in the shared helper, which is also used
@@ -294,10 +300,13 @@ const buildValuesByGeneration = (
 
     const boundaries = [
         ...new Set([
+            MIN_GENERATION,
             ...valuesTimeline.map((segment) => segment.fromGeneration),
             ...descriptionTimeline.map((segment) => segment.fromGeneration),
         ]),
-    ].sort((a, b) => a - b);
+    ]
+        .filter((generation) => generation >= MIN_GENERATION)
+        .sort((a, b) => a - b);
 
     const result: MoveValuesByGeneration[] = [];
     for (const fromGeneration of boundaries) {
@@ -340,6 +349,7 @@ export const fetchMoves = async (): Promise<void> => {
             MOVE_NAME_OVERRIDES[move.name] ??
             StringHelpers.toTitleCase(move.name);
         data[move.name] = {
+            slug: move.name,
             name,
             category: move.damage_class.name,
             priority: move.priority,

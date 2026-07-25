@@ -10,7 +10,7 @@ type MoveListProps = {
     isReadOnly: boolean;
     ivs: StatValues;
     moves: string[];
-    onSelectMove?: (name: string) => void;
+    onSelectMove?: (slug: string) => void;
 };
 
 const MoveList: React.FC<MoveListProps> = ({
@@ -25,8 +25,8 @@ const MoveList: React.FC<MoveListProps> = ({
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const getMoveColor = (move: string): string | undefined => {
-        const type = MoveHelpers.getMoveType(move, generation, ivs);
+    const getMoveColor = (moveSlug: string): string | undefined => {
+        const type = MoveHelpers.getMoveType(moveSlug, generation, ivs);
         return type ? TypeHelpers.getTypeColor(type) : undefined;
     };
 
@@ -38,10 +38,14 @@ const MoveList: React.FC<MoveListProps> = ({
         <>
             {Array.from(
                 { length: MOVE_SLOT_COUNT },
-                (_, index) => moves[index] ?? '-'
-            ).map((move, index) =>
-                move === '-' ? (
-                    <li key={index}>{move}</li>
+                (_, index) => moves[index] ?? ''
+            ).map((moveSlug, index) => {
+                const moveName = moveSlug
+                    ? MoveHelpers.getMoveData(moveSlug)?.name
+                    : undefined;
+
+                return !moveSlug || !moveName ? (
+                    <li key={index}>-</li>
                 ) : (
                     <li key={index}>
                         {isReadOnly ? (
@@ -50,43 +54,43 @@ const MoveList: React.FC<MoveListProps> = ({
                                     styles['move-button'],
                                     styles['move-button--readonly'],
                                     highlightDangerous &&
-                                        MoveHelpers.isDangerousMove(move) &&
+                                        MoveHelpers.isDangerousMove(moveSlug) &&
                                         styles['move-button--dangerous'],
                                 ]
                                     .filter(Boolean)
                                     .join(' ')}
                                 style={
                                     {
-                                        '--move-color': getMoveColor(move),
+                                        '--move-color': getMoveColor(moveSlug),
                                     } as React.CSSProperties
                                 }
                             >
-                                {move}
+                                {moveName}
                             </span>
                         ) : (
                             <button
                                 className={[
                                     styles['move-button'],
                                     highlightDangerous &&
-                                        MoveHelpers.isDangerousMove(move) &&
+                                        MoveHelpers.isDangerousMove(moveSlug) &&
                                         styles['move-button--dangerous'],
                                 ]
                                     .filter(Boolean)
                                     .join(' ')}
-                                onClick={() => onSelectMove?.(move)}
+                                onClick={() => onSelectMove?.(moveSlug)}
                                 style={
                                     {
-                                        '--move-color': getMoveColor(move),
+                                        '--move-color': getMoveColor(moveSlug),
                                     } as React.CSSProperties
                                 }
                                 type="button"
                             >
-                                {move}
+                                {moveName}
                             </button>
                         )}
                     </li>
-                )
-            )}
+                );
+            })}
         </>
     );
 };

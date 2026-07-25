@@ -10,8 +10,8 @@ up roughly a quarter and three-quarters of the row's width respectively.
 | Prop           | Type                     | Required | Default | Description                                                                                                       |
 | -------------- | ------------------------ | -------- | ------- | ----------------------------------------------------------------------------------------------------------------- |
 | `generation`   | `number`                 | Yes      | -       | The game's generation, used to resolve the selected move's values and to filter which moves are listed            |
-| `onSelectMove` | `(name: string) => void` | Yes      | -       | Called with a move's name when it's clicked in the list                                                           |
-| `selectedMove` | `string`                 | No       | -       | The currently selected move's name, if any; owned by `RunPage` so a move link elsewhere on the page can select it |
+| `onSelectMove` | `(slug: string) => void` | Yes      | -       | Called with a move's slug when it's clicked in the list                                                           |
+| `selectedMove` | `string`                 | No       | -       | The currently selected move's slug, if any; owned by `RunPage` so a move link elsewhere on the page can select it |
 
 ## Computations
 

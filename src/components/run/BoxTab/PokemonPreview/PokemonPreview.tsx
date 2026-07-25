@@ -41,7 +41,7 @@ type PokemonPreviewProps = {
     onSelectAbility: (slug: string) => void;
     onSelectItem: (slug: string) => void;
     onSelectLocation: (location: string) => void;
-    onSelectMove: (name: string) => void;
+    onSelectMove: (slug: string) => void;
     onToggleStatus: (pokemon: CaughtPokemon) => void;
     pokemon?: CaughtPokemon;
     variant: string;
@@ -484,7 +484,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                             31
                                         )}
                                         key={move ?? `empty-${index}`}
-                                        move={move}
+                                        moveSlug={move}
                                         onSelectMove={onSelectMove}
                                     />
                                 ))}

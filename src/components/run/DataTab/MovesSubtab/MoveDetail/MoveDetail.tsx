@@ -5,10 +5,10 @@ import styles from './MoveDetail.module.scss';
 
 type MoveDetailProps = {
     generation: number;
-    move?: string;
+    moveSlug?: string;
 };
 
-const MoveDetail: React.FC<MoveDetailProps> = ({ generation, move }) => {
+const MoveDetail: React.FC<MoveDetailProps> = ({ generation, moveSlug }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
@@ -20,9 +20,9 @@ const MoveDetail: React.FC<MoveDetailProps> = ({ generation, move }) => {
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const moveData = move ? MoveHelpers.getMoveData(move) : undefined;
-    const values = move
-        ? MoveHelpers.getMoveForGeneration(move, generation)
+    const moveData = moveSlug ? MoveHelpers.getMoveData(moveSlug) : undefined;
+    const values = moveSlug
+        ? MoveHelpers.getMoveForGeneration(moveSlug, generation)
         : undefined;
 
     // -------------------------------------------------------------------------

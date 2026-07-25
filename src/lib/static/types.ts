@@ -406,6 +406,7 @@ export type MoveValuesByGeneration = {
 };
 
 export type MoveData = {
+    slug: string;
     name: string;
     // PokeAPI doesn't track historical changes for these two fields, so
     // unlike the rest of a move's values they aren't split by generation.
@@ -458,7 +459,7 @@ export type ItemData = {
 export type LearnsetMethod = 'level-up' | 'machine' | 'tutor';
 
 export type LearnsetMove = {
-    name: string;
+    slug: string;
     method: LearnsetMethod;
     // Only set for level-up moves.
     level?: number;

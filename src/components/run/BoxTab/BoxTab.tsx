@@ -17,7 +17,7 @@ type BoxTabProps = {
     onSelectAbility: (slug: string) => void;
     onSelectItem: (slug: string) => void;
     onSelectLocation: (location: string) => void;
-    onSelectMove: (name: string) => void;
+    onSelectMove: (slug: string) => void;
     onSelectPokemon: (location: string) => void;
     run: Run;
     selectedPokemon?: string;

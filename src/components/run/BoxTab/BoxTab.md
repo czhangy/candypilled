@@ -13,7 +13,7 @@ the currently selected Pokémon on the right, taking up the remaining third.
 | `onSelectAbility`   | `(slug: string) => void`     | Yes      | -       | Called with an ability's slug when it's clicked in the preview           |
 | `onSelectItem`      | `(slug: string) => void`     | Yes      | -       | Called with a held item's slug when it's clicked in the preview          |
 | `onSelectLocation`  | `(location: string) => void` | Yes      | -       | Called with a caught Pokémon's location when it's clicked in the preview |
-| `onSelectMove`      | `(name: string) => void`     | Yes      | -       | Called with a move's name when it's clicked in the preview               |
+| `onSelectMove`      | `(slug: string) => void`     | Yes      | -       | Called with a move's slug when it's clicked in the preview               |
 | `onSelectPokemon`   | `(location: string) => void` | Yes      | -       | Called with a caught Pokémon's location when it's clicked in the box     |
 | `run`               | `Run`                        | Yes      | -       | The current run, whose `caughtPokemon` populates the box                 |
 | `selectedPokemon`   | `string`                     | No       | -       | The location of the currently selected caught Pokémon, if any            |

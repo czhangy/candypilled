@@ -46,7 +46,7 @@ type PokedexTileProps = (
     generation: number;
     onSelectAbility: (slug: string) => void;
     onSelectLocation: (location: string) => void;
-    onSelectMove: (name: string) => void;
+    onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
     originalSpecies?: string;
     species?: string;

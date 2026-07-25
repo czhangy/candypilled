@@ -58,18 +58,18 @@ change) when editing a caught Pokémon.
 
 ## State
 
-| State         | Type                 | Initial value                                                                       | Description                                                |
-| ------------- | -------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| `species`     | `string`             | `defaultSpecies`'s canonical display name                                           | The selected species                                       |
-| `abilitySlot` | `AbilitySlot`        | `defaultAbilitySlot`, or `1`                                                        | The selected ability's slot (1, 2, or hidden)              |
-| `gender`      | `'male' \| 'female'` | `defaultGender`, or `'male'`                                                        | The selected gender                                        |
-| `heldItem`    | `string`             | `defaultHeldItem`, or `''`                                                          | The selected held item's slug, empty meaning none          |
-| `nature`      | `Nature`             | `defaultNature`, or the first `Nature` value                                        | The selected nature                                        |
-| `ivs`         | `StatValues`         | `defaultIvs`, or all stats at `31`                                                  | The selected IVs, per stat                                 |
-| `evs`         | `StatValues`         | `defaultEvs`, or all stats at `0`                                                   | The selected EVs, per stat                                 |
-| `level`       | `number`             | `defaultLevel` (or `1`) if `showLevel`, otherwise `5`                               | The selected level                                         |
-| `moves`       | `string[]`           | `defaultMoves`, or the moves `species` would know at `level` via `getStartingMoves` | The selected moves, one per slot, empty meaning unselected |
-| `tags`        | `string[]`           | `defaultTags`, or `[]`                                                              | The selected tags                                          |
+| State         | Type                 | Initial value                                                                       | Description                                                       |
+| ------------- | -------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `species`     | `string`             | `defaultSpecies`'s canonical display name                                           | The selected species                                              |
+| `abilitySlot` | `AbilitySlot`        | `defaultAbilitySlot`, or `1`                                                        | The selected ability's slot (1, 2, or hidden)                     |
+| `gender`      | `'male' \| 'female'` | `defaultGender`, or `'male'`                                                        | The selected gender                                               |
+| `heldItem`    | `string`             | `defaultHeldItem`, or `''`                                                          | The selected held item's slug, empty meaning none                 |
+| `nature`      | `Nature`             | `defaultNature`, or the first `Nature` value                                        | The selected nature                                               |
+| `ivs`         | `StatValues`         | `defaultIvs`, or all stats at `31`                                                  | The selected IVs, per stat                                        |
+| `evs`         | `StatValues`         | `defaultEvs`, or all stats at `0`                                                   | The selected EVs, per stat                                        |
+| `level`       | `number`             | `defaultLevel` (or `1`) if `showLevel`, otherwise `5`                               | The selected level                                                |
+| `moves`       | `string[]`           | `defaultMoves`, or the moves `species` would know at `level` via `getStartingMoves` | The selected moves' slugs, one per slot, empty meaning unselected |
+| `tags`        | `string[]`           | `defaultTags`, or `[]`                                                              | The selected tags                                                 |
 
 ## Computations
 
@@ -93,9 +93,10 @@ change) when editing a caught Pokémon.
   sorted alphabetically, with a "None" option (empty value) prepended
 - `learnset` — the selected `species`' learnset in `version`, resolved
   via `PokemonHelpers`
-- `moveOptions` — `learnset`'s move names deslugified via `MoveHelpers`,
-  deduped, and sorted alphabetically, with a "None" option (empty value)
-  prepended so a slot can be left or reset to unselected
+- `moveOptions` — `learnset`'s move slugs, deduped, with each one's
+  display name resolved via `MoveHelpers`, sorted alphabetically by that
+  name, with a "None" option (empty value) prepended so a slot can be
+  left or reset to unselected
 - each move slot's options — `moveOptions` filtered to exclude moves
   selected in any other slot, so the same move can't be picked twice
 
