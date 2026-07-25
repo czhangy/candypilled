@@ -21,6 +21,8 @@ export type CalcPokemonInput = {
     abilityName: string;
     boosts: Partial<Record<Exclude<keyof StatValues, 'hp'>, number>>;
     evs: StatValues;
+    gender?: 'male' | 'female';
+    heldItem: string;
     ivs: StatValues;
     level: number;
     nature: string;

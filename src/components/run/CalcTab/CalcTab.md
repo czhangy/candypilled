@@ -7,11 +7,11 @@ sourced from the run's box), `FieldEffectsPanel` (weather/terrain/gravity
 and each side's screens/hazards) in the middle, and the defender column
 (`PokemonPanel` above `BattleSelectPanel` above `TeamSelectPanel`, sourced
 from the game's trainers). Owns all editable calculator state — the
-attacker's and defender's ability/nature/level/IVs/EVs/boosts/status/moves
-via two reducers, the field effects state, plus the box/battle/team-member
-selection state that flows down to every panel. Both `PokemonPanel`
-instances are fully controlled by this state; they hold none of it
-themselves.
+attacker's and defender's ability/held item/nature/level/IVs/EVs/boosts/
+status/moves via two reducers, the field effects state, plus the
+box/battle/team-member selection state that flows down to every panel.
+Both `PokemonPanel` instances are fully controlled by this state; they
+hold none of it themselves.
 
 ## Props
 
@@ -34,8 +34,8 @@ atomic load, plus three `useState`s for selection.
 | `selectedLocation`    | `string`              | first living box Pokémon's location   | The selected box Pokémon's location, set by `BoxSelectPanel`                    |
 | `selectedMemberIndex` | `string`              | `'0'`                                 | The selected trainer team member's index, set by `TeamSelectPanel`              |
 | `prevSelectedBattle`  | `string \| undefined` | `selectedBattle` or the first trainer | Tracks the last-seen effective battle key, used to detect changes during render |
-| `attacker`            | `AttackerState`       | blank                                 | The attacker's ability/nature/level/IVs/EVs/boosts/status/moves                 |
-| `defender`            | `DefenderState`       | blank                                 | The defender's ability/boosts/status                                            |
+| `attacker`            | `AttackerState`       | blank                                 | The attacker's ability/held item/nature/level/IVs/EVs/boosts/status/moves       |
+| `defender`            | `DefenderState`       | blank                                 | The defender's ability/held item/boosts/status                                  |
 
 `selectedMemberIndex` is reset to `'0'` during render whenever the effective
 selected battle changes (React's "adjusting state when a prop changes"
@@ -45,11 +45,11 @@ directly in the render body rather than in a `useEffect`).
 ## Effects
 
 - **On `caught` changing** — dispatches `LOAD` (seeded from the newly
-  selected box Pokémon's ability slot/nature/level/IVs/EVs/moves) or `CLEAR`
-  if no Pokémon is selected, on the attacker reducer
+  selected box Pokémon's ability slot/held item/nature/level/IVs/EVs/moves)
+  or `CLEAR` if no Pokémon is selected, on the attacker reducer
 - **On `mon` changing** — dispatches `LOAD` (seeded from the newly selected
-  team member's ability slot) or `RESET` if no team member is selected, on
-  the defender reducer
+  team member's ability slot/held item) or `RESET` if no team member is
+  selected, on the defender reducer
 
 ## Computations
 
@@ -58,9 +58,13 @@ directly in the render body rather than in a `useEffect`).
   trainer in game order whenever the URL hasn't recorded an explicit
   selection yet
 - `caught` / `mon` — the selected box Pokémon and trainer team member,
-  resolved once here and passed down to `PokemonPanel`/`TrainerPokemonPanel`
+  resolved once here and passed down to `PokemonPanel`/`TrainerPokemonPanel`,
+  including their `gender` (rendered as a symbol and factored into the
+  damage calculation via `playerInput`/`trainerInput`, but not part of
+  either reducer's state since it isn't user-editable here)
 - `playerInput` / `trainerInput` — each side's `CalcPokemonInput` snapshot
-  (species/level/nature/IVs/EVs/ability/boosts/status), passed to
+  (species/level/nature/gender/held item/IVs/EVs/ability/boosts/status),
+  passed to
   `DamageResultsPanel` for damage calculation; `null` when no Pokémon is
   selected on that side
 - `playerSpeed` / `trainerSpeed` — each side's final Speed stat (adjusted

@@ -45,7 +45,7 @@ const VALLEY_WINDWORKS_INTERIOR: Location = {
         {
             isMiniboss: true,
             trainerClass: 'Commander',
-            name: 'Mars',
+            name: 'Mars 1',
             team: [
                 {
                     name: 'Zubat',

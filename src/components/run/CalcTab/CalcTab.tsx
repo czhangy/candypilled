@@ -53,6 +53,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
         abilityName: string;
         boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
         evs: StatValues;
+        heldItem: string;
         ivs: StatValues;
         level: number;
         moves: string[];
@@ -65,6 +66,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
               type: 'LOAD';
               abilityName: string;
               evs: StatValues;
+              heldItem: string;
               ivs: StatValues;
               level: number;
               moves: string[];
@@ -72,6 +74,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
           }
         | { type: 'CLEAR' }
         | { type: 'SET_ABILITY'; abilityName: string }
+        | { type: 'SET_HELD_ITEM'; heldItem: string }
         | { type: 'SET_NATURE'; nature: Nature }
         | { type: 'SET_LEVEL'; level: number }
         | { type: 'SET_IV'; stat: keyof StatValues; value: number }
@@ -87,6 +90,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
     type DefenderState = {
         abilityName: string;
         boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
+        heldItem: string;
         level: number;
         nature: Nature;
         status: string;
@@ -97,10 +101,12 @@ const CalcTab: React.FC<CalcTabProps> = ({
         | {
               type: 'LOAD';
               abilityName: string;
+              heldItem: string;
               level: number;
               nature: Nature;
           }
         | { type: 'SET_ABILITY'; abilityName: string }
+        | { type: 'SET_HELD_ITEM'; heldItem: string }
         | {
               type: 'SET_BOOST';
               stat: Exclude<keyof StatValues, 'hp'>;
@@ -190,6 +196,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
         abilityName: '',
         boosts: getBlankBoosts(),
         evs: StatHelpers.normalizeStats(undefined, 0),
+        heldItem: '',
         ivs: StatHelpers.normalizeStats(undefined, MAX_IV),
         level: MIN_LEVEL,
         moves: padMoves([]),
@@ -207,6 +214,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     abilityName: action.abilityName,
                     boosts: getBlankBoosts(),
                     evs: action.evs,
+                    heldItem: action.heldItem,
                     ivs: action.ivs,
                     level: action.level,
                     moves: action.moves,
@@ -217,6 +225,8 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 return getBlankAttackerState();
             case 'SET_ABILITY':
                 return { ...state, abilityName: action.abilityName };
+            case 'SET_HELD_ITEM':
+                return { ...state, heldItem: action.heldItem };
             case 'SET_NATURE':
                 return { ...state, nature: action.nature };
             case 'SET_LEVEL':
@@ -251,6 +261,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
     const getBlankDefenderState = (): DefenderState => ({
         abilityName: '',
         boosts: getBlankBoosts(),
+        heldItem: '',
         level: MIN_LEVEL,
         nature: Object.values(Nature)[0],
         status: '',
@@ -267,11 +278,14 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 return {
                     ...getBlankDefenderState(),
                     abilityName: action.abilityName,
+                    heldItem: action.heldItem,
                     level: action.level,
                     nature: action.nature,
                 };
             case 'SET_ABILITY':
                 return { ...state, abilityName: action.abilityName };
+            case 'SET_HELD_ITEM':
+                return { ...state, heldItem: action.heldItem };
             case 'SET_BOOST':
                 return {
                     ...state,
@@ -358,6 +372,8 @@ const CalcTab: React.FC<CalcTabProps> = ({
               abilityName: attacker.abilityName,
               boosts: attacker.boosts,
               evs: attacker.evs,
+              gender: caught.gender,
+              heldItem: attacker.heldItem,
               ivs: attacker.ivs,
               level: attacker.level,
               nature: attacker.nature,
@@ -370,6 +386,8 @@ const CalcTab: React.FC<CalcTabProps> = ({
               abilityName: defender.abilityName,
               boosts: defender.boosts,
               evs: StatHelpers.normalizeStats(mon.evs, 0),
+              gender: mon.gender,
+              heldItem: defender.heldItem,
               ivs: StatHelpers.normalizeStats(mon.ivs, MAX_IV),
               level: defender.level,
               nature: defender.nature,
@@ -464,6 +482,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 abilitySlug ??
                 '',
             evs: StatHelpers.normalizeStats(caught.evs, 0),
+            heldItem: caught.heldItem ?? '',
             ivs: StatHelpers.normalizeStats(caught.ivs, MAX_IV),
             level: caught.level,
             moves: padMoves(caught.moves),
@@ -491,6 +510,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
                 abilitySlug ??
                 '',
+            heldItem: mon.heldItem ?? '',
             level: mon.level,
             nature: mon.nature ?? Object.values(Nature)[0],
         });
@@ -555,6 +575,10 @@ const CalcTab: React.FC<CalcTabProps> = ({
         dispatchAttacker({ type: 'SET_MOVE', index, value });
     };
 
+    const handleAttackerHeldItemChange = (value: string): void => {
+        dispatchAttacker({ type: 'SET_HELD_ITEM', heldItem: value });
+    };
+
     const handleDefenderAbilityChange = (value: string): void => {
         dispatchDefender({ type: 'SET_ABILITY', abilityName: value });
     };
@@ -584,6 +608,10 @@ const CalcTab: React.FC<CalcTabProps> = ({
         dispatchDefender({ type: 'SET_BOOST', stat, value: Number(value) });
     };
 
+    const handleDefenderHeldItemChange = (value: string): void => {
+        dispatchDefender({ type: 'SET_HELD_ITEM', heldItem: value });
+    };
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -607,6 +635,8 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     boosts={attacker.boosts}
                     evs={attacker.evs}
                     game={game}
+                    gender={caught?.gender}
+                    heldItem={attacker.heldItem}
                     hideEvs={hideEvs}
                     isTailwind={field.playerSide.isTailwind}
                     ivs={attacker.ivs}
@@ -616,6 +646,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     onAbilityChange={handleAttackerAbilityChange}
                     onBoostChange={handleAttackerBoostChange}
                     onEvChange={handleAttackerEvChange}
+                    onHeldItemChange={handleAttackerHeldItemChange}
                     onIvChange={handleAttackerIvChange}
                     onLevelChange={handleAttackerLevelChange}
                     onMoveChange={handleAttackerMoveChange}
@@ -644,6 +675,8 @@ const CalcTab: React.FC<CalcTabProps> = ({
                         mon ? StatHelpers.normalizeStats(mon.evs, 0) : undefined
                     }
                     game={game}
+                    gender={mon?.gender}
+                    heldItem={defender.heldItem}
                     hideEvs={hideEvs}
                     isTailwind={field.trainerSide.isTailwind}
                     ivs={
@@ -655,6 +688,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     nature={defender.nature}
                     onAbilityChange={handleDefenderAbilityChange}
                     onBoostChange={handleDefenderBoostChange}
+                    onHeldItemChange={handleDefenderHeldItemChange}
                     onLevelChange={handleDefenderLevelChange}
                     onNatureChange={handleDefenderNatureChange}
                     onStatusChange={handleDefenderStatusChange}
