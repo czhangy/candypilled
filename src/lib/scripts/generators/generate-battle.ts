@@ -104,6 +104,7 @@ const TRAINER_CLASS_GENDERS: Record<string, 'male' | 'female'> = {
     roark: 'male',
     roughneck: 'male',
     'ruin-maniac': 'male',
+    sailor: 'male',
     saturn: 'male',
     'school-kid-f': 'female',
     'school-kid-m': 'male',
@@ -375,6 +376,9 @@ const promptPokemon = async (
             NATURE_NAMES.find(
                 (candidate) => candidate.toLowerCase() === raw.toLowerCase()
             ) ?? null;
+        if (nature === null) {
+            logError('  That is not a valid nature.');
+        }
     }
 
     return { slug, ability, level, nature };
@@ -414,6 +418,14 @@ const promptBattle = async (
         validTrainerClasses
     );
     const isTrueDouble = TRUE_DOUBLE_TRAINER_CLASSES.includes(trainerClass);
+    const isSluggedByName = SLUGGED_BY_NAME_CLASS_SLUGS.has(slug);
+
+    // Classes not fielded by a single named trainer have a fixed gender, so
+    // that can be validated right after the trainer class is entered rather
+    // than waiting on later prompts.
+    if (!isSluggedByName && !TRAINER_CLASS_GENDERS[slug]) {
+        throw new Error(GENDER_NOT_FOUND);
+    }
 
     const name = (await rl.question('Trainer name: ')).trim();
 
@@ -421,7 +433,7 @@ const promptBattle = async (
     // no gender of their own; fall back to the specific trainer's name,
     // stripping a trailing disambiguator (e.g. "Barry 2") some repeat
     // battles use to stay unique within a location.
-    const genderSlug = SLUGGED_BY_NAME_CLASS_SLUGS.has(slug)
+    const genderSlug = isSluggedByName
         ? StringHelpers.toSlug(name.replace(/\s+\d+$/, ''))
         : slug;
     const gender = TRAINER_CLASS_GENDERS[genderSlug];
@@ -432,6 +444,9 @@ const promptBattle = async (
     let dv = NaN;
     while (!Number.isInteger(dv) || dv < 0 || dv > MAX_DV) {
         dv = Number((await rl.question('DV: ')).trim());
+        if (!Number.isInteger(dv) || dv < 0 || dv > MAX_DV) {
+            logError('  That is not a valid DV.');
+        }
     }
     const ivs = dv ? Math.floor((dv * MAX_IV) / MAX_DV) : undefined;
 
@@ -486,12 +501,7 @@ runScript(async () => {
         rl.close();
     }
 
-    const entryText = serializeBattle(
-        battle,
-        insertionPoint.entryIndent,
-        100,
-        100
-    );
+    const entryText = serializeBattle(battle, insertionPoint.entryIndent, 0, 0);
     const updated = ensureNatureImport(
         insertionPoint.insert(original, entryText)
     );
