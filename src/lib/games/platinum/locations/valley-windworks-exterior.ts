@@ -14,6 +14,7 @@ const VALLEY_WINDWORKS_EXTERIOR: Location = {
                 {
                     name: 'Glameow',
                     ability: 1,
+                    gender: 'male',
                     level: 13,
                     nature: Nature.Lax,
                 },

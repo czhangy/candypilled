@@ -22,12 +22,14 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                         {
                             name: 'Zubat',
                             ability: 1,
+                            gender: 'female',
                             level: 16,
                             nature: Nature.Quiet,
                         },
                         {
                             name: 'Glameow',
                             ability: 1,
+                            gender: 'female',
                             level: 18,
                             nature: Nature.Rash,
                         },
@@ -43,12 +45,14 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                         {
                             name: 'Zubat',
                             ability: 1,
+                            gender: 'male',
                             level: 17,
                             nature: Nature.Impish,
                         },
                         {
                             name: 'Stunky',
                             ability: 1,
+                            gender: 'male',
                             level: 17,
                             nature: Nature.Relaxed,
                         },
@@ -70,6 +74,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                         {
                             name: 'Croagunk',
                             ability: 1,
+                            gender: 'male',
                             level: 19,
                             nature: Nature.Bold,
                         },
@@ -85,6 +90,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                         {
                             name: 'Glameow',
                             ability: 1,
+                            gender: 'female',
                             level: 19,
                             nature: Nature.Lax,
                         },
@@ -106,18 +112,21 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                         {
                             name: 'Stunky',
                             ability: 1,
+                            gender: 'female',
                             level: 16,
                             nature: Nature.Naughty,
                         },
                         {
                             name: 'Croagunk',
                             ability: 1,
+                            gender: 'female',
                             level: 16,
                             nature: Nature.Careful,
                         },
                         {
                             name: 'Glameow',
                             ability: 1,
+                            gender: 'female',
                             level: 16,
                             nature: Nature.Rash,
                         },
@@ -133,6 +142,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                         {
                             name: 'Kadabra',
                             ability: 1,
+                            gender: 'male',
                             level: 20,
                             nature: Nature.Brave,
                             moves: ['Confusion'],
@@ -157,6 +167,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                         {
                             name: 'Zubat',
                             ability: 1,
+                            gender: 'female',
                             level: 21,
                             nature: Nature.Brave,
                             moves: ['Giga Drain', 'Wing Attack', 'Bite'],
@@ -165,6 +176,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                         {
                             name: 'Skuntank',
                             ability: 1,
+                            gender: 'female',
                             level: 23,
                             nature: Nature.Modest,
                             moves: [

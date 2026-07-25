@@ -14,12 +14,14 @@ const ROUTE_215: Location = {
                 {
                     name: 'Bronzor',
                     ability: 1,
+                    gender: 'male',
                     level: 23,
                     nature: Nature.Sassy,
                 },
                 {
                     name: 'Shieldon',
                     ability: 1,
+                    gender: 'male',
                     level: 23,
                     nature: Nature.Careful,
                 },
@@ -36,12 +38,14 @@ const ROUTE_215: Location = {
                 {
                     name: 'Luxio',
                     ability: 1,
+                    gender: 'male',
                     level: 22,
                     nature: Nature.Naughty,
                 },
                 {
                     name: 'Luxio',
                     ability: 1,
+                    gender: 'male',
                     level: 24,
                     nature: Nature.Careful,
                 },
@@ -58,6 +62,7 @@ const ROUTE_215: Location = {
                 {
                     name: 'Croagunk',
                     ability: 1,
+                    gender: 'male',
                     level: 26,
                     nature: Nature.Bashful,
                     ivs: 3,
@@ -75,6 +80,7 @@ const ROUTE_215: Location = {
                 {
                     name: 'Machop',
                     ability: 1,
+                    gender: 'male',
                     level: 23,
                     nature: Nature.Adamant,
                     ivs: 3,
@@ -82,6 +88,7 @@ const ROUTE_215: Location = {
                 {
                     name: 'Machop',
                     ability: 1,
+                    gender: 'male',
                     level: 23,
                     nature: Nature.Adamant,
                     ivs: 3,
@@ -89,6 +96,7 @@ const ROUTE_215: Location = {
                 {
                     name: 'Machop',
                     ability: 1,
+                    gender: 'male',
                     level: 23,
                     nature: Nature.Adamant,
                     ivs: 3,
@@ -106,6 +114,7 @@ const ROUTE_215: Location = {
                 {
                     name: 'Croagunk',
                     ability: 1,
+                    gender: 'male',
                     level: 21,
                     nature: Nature.Naive,
                     ivs: 3,
@@ -113,6 +122,7 @@ const ROUTE_215: Location = {
                 {
                     name: 'Meditite',
                     ability: 1,
+                    gender: 'male',
                     level: 24,
                     nature: Nature.Relaxed,
                     ivs: 3,
@@ -120,6 +130,7 @@ const ROUTE_215: Location = {
                 {
                     name: 'Machop',
                     ability: 1,
+                    gender: 'male',
                     level: 24,
                     nature: Nature.Sassy,
                     ivs: 3,
@@ -137,6 +148,7 @@ const ROUTE_215: Location = {
                 {
                     name: 'Staravia',
                     ability: 1,
+                    gender: 'male',
                     level: 25,
                     nature: Nature.Jolly,
                 },
@@ -152,6 +164,7 @@ const ROUTE_215: Location = {
                 {
                     name: 'Roselia',
                     ability: 1,
+                    gender: 'female',
                     level: 24,
                     moves: ['Toxic Spikes', 'Giga Drain', 'Leech Seed'],
                     nature: Nature.Adamant,
@@ -160,6 +173,7 @@ const ROUTE_215: Location = {
                 {
                     name: 'Ralts',
                     ability: 1,
+                    gender: 'female',
                     level: 24,
                     moves: [
                         'Psychic',
@@ -173,6 +187,7 @@ const ROUTE_215: Location = {
                 {
                     name: 'Lickitung',
                     ability: 1,
+                    gender: 'female',
                     level: 25,
                     moves: ['Supersonic', 'Stomp', 'Rollout', 'Defense Curl'],
                     nature: Nature.Modest,
@@ -190,6 +205,7 @@ const ROUTE_215: Location = {
                 {
                     name: 'Gligar',
                     ability: 1,
+                    gender: 'male',
                     level: 24,
                     moves: [
                         'Screech',
@@ -203,6 +219,7 @@ const ROUTE_215: Location = {
                 {
                     name: 'Buizel',
                     ability: 1,
+                    gender: 'male',
                     level: 24,
                     moves: ['Aqua Jet', 'Swift', 'Pursuit', 'Quick Attack'],
                     nature: Nature.Naive,
@@ -211,6 +228,7 @@ const ROUTE_215: Location = {
                 {
                     name: 'Drifblim',
                     ability: 1,
+                    gender: 'male',
                     level: 25,
                     moves: ['Swallow', 'Gust', 'Stockpile', 'Ominous Wind'],
                     nature: Nature.Bold,

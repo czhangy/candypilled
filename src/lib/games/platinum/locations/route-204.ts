@@ -17,6 +17,7 @@ const ROUTE_204: Location = {
                         {
                             name: 'Shinx',
                             ability: 1,
+                            gender: 'female',
                             level: 7,
                             moves: ['Tackle', 'Leer'],
                             nature: Nature.Hardy,
@@ -33,6 +34,7 @@ const ROUTE_204: Location = {
                         {
                             name: 'Magikarp',
                             ability: 1,
+                            gender: 'male',
                             level: 8,
                             moves: ['Splash'],
                             nature: Nature.Sassy,
@@ -49,6 +51,7 @@ const ROUTE_204: Location = {
                         {
                             name: 'Budew',
                             ability: 1,
+                            gender: 'female',
                             level: 7,
                             moves: ['Absorb', 'Growth', 'Water Sport'],
                             nature: Nature.Docile,
@@ -72,12 +75,14 @@ const ROUTE_204: Location = {
                         {
                             name: 'Budew',
                             ability: 1,
+                            gender: 'female',
                             level: 9,
                             nature: Nature.Bashful,
                         },
                         {
                             name: 'Cherubi',
                             ability: 1,
+                            gender: 'female',
                             level: 11,
                             nature: Nature.Docile,
                         },
@@ -93,12 +98,14 @@ const ROUTE_204: Location = {
                         {
                             name: 'Wurmple',
                             ability: 1,
+                            gender: 'male',
                             level: 10,
                             nature: Nature.Quirky,
                         },
                         {
                             name: 'Kricketot',
                             ability: 1,
+                            gender: 'male',
                             level: 11,
                             moves: ['Bide'],
                             nature: Nature.Modest,
@@ -117,12 +124,14 @@ const ROUTE_204: Location = {
                         {
                             name: 'Pachirisu',
                             ability: 1,
+                            gender: 'female',
                             level: 11,
                             nature: Nature.Brave,
                         },
                         {
                             name: 'Pachirisu',
                             ability: 1,
+                            gender: 'female',
                             level: 11,
                             nature: Nature.Brave,
                         },

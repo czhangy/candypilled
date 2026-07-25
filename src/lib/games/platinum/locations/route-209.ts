@@ -15,24 +15,28 @@ const ROUTE_209: Location = {
                 {
                     name: 'Budew',
                     ability: 1,
+                    gender: 'male',
                     level: 20,
                     nature: Nature.Sassy,
                 },
                 {
                     name: 'Bonsly',
                     ability: 1,
+                    gender: 'male',
                     level: 20,
                     nature: Nature.Jolly,
                 },
                 {
                     name: 'Pichu',
                     ability: 1,
+                    gender: 'male',
                     level: 20,
                     nature: Nature.Docile,
                 },
                 {
                     name: 'Eevee',
                     ability: 1,
+                    gender: 'male',
                     level: 20,
                     nature: Nature.Brave,
                 },
@@ -48,6 +52,7 @@ const ROUTE_209: Location = {
                 {
                     name: 'Luxio',
                     ability: 1,
+                    gender: 'male',
                     level: 23,
                     nature: Nature.Quiet,
                 },
@@ -64,12 +69,14 @@ const ROUTE_209: Location = {
                 {
                     name: 'Bonsly',
                     ability: 1,
+                    gender: 'female',
                     level: 22,
                     nature: Nature.Naughty,
                 },
                 {
                     name: 'Mime Jr.',
                     ability: 1,
+                    gender: 'female',
                     level: 22,
                     nature: Nature.Sassy,
                 },
@@ -85,6 +92,7 @@ const ROUTE_209: Location = {
                 {
                     name: 'Pichu',
                     ability: 1,
+                    gender: 'female',
                     level: 22,
                     nature: Nature.Adamant,
                 },
@@ -100,6 +108,7 @@ const ROUTE_209: Location = {
                 {
                     name: 'Staravia',
                     ability: 1,
+                    gender: 'male',
                     level: 23,
                     nature: Nature.Calm,
                 },
@@ -115,24 +124,28 @@ const ROUTE_209: Location = {
                 {
                     name: 'Budew',
                     ability: 1,
+                    gender: 'female',
                     level: 20,
                     nature: Nature.Modest,
                 },
                 {
                     name: 'Mime Jr.',
                     ability: 1,
+                    gender: 'female',
                     level: 20,
                     nature: Nature.Brave,
                 },
                 {
                     name: 'Cleffa',
                     ability: 1,
+                    gender: 'female',
                     level: 20,
                     nature: Nature.Brave,
                 },
                 {
                     name: 'Eevee',
                     ability: 1,
+                    gender: 'female',
                     level: 20,
                     nature: Nature.Mild,
                 },
@@ -148,6 +161,7 @@ const ROUTE_209: Location = {
                 {
                     name: 'Ponyta',
                     ability: 1,
+                    gender: 'female',
                     level: 23,
                     nature: Nature.Naughty,
                 },
@@ -165,12 +179,14 @@ const ROUTE_209: Location = {
                 {
                     name: 'Buneary',
                     ability: 1,
+                    gender: 'male',
                     level: 23,
                     nature: Nature.Mild,
                 },
                 {
                     name: 'Buizel',
                     ability: 1,
+                    gender: 'male',
                     level: 23,
                     nature: Nature.Mild,
                 },

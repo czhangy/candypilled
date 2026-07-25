@@ -18,12 +18,14 @@ const OREBURGH_GATE: Location = {
                         {
                             name: 'Starly',
                             ability: 1,
+                            gender: 'male',
                             level: 7,
                             nature: Nature.Lax,
                         },
                         {
                             name: 'Shinx',
                             ability: 1,
+                            gender: 'male',
                             level: 7,
                             nature: Nature.Lax,
                         },
@@ -39,6 +41,7 @@ const OREBURGH_GATE: Location = {
                         {
                             name: 'Bidoof',
                             ability: 1,
+                            gender: 'female',
                             level: 9,
                             nature: Nature.Modest,
                         },
@@ -61,6 +64,7 @@ const OREBURGH_GATE: Location = {
                         {
                             name: 'Riolu',
                             ability: 1,
+                            gender: 'male',
                             level: 34,
                             nature: Nature.Rash,
                             moves: [
@@ -74,6 +78,7 @@ const OREBURGH_GATE: Location = {
                         {
                             name: 'Staraptor',
                             ability: 1,
+                            gender: 'male',
                             level: 34,
                             nature: Nature.Sassy,
                             moves: [
@@ -87,6 +92,7 @@ const OREBURGH_GATE: Location = {
                         {
                             name: 'Graveler',
                             ability: 1,
+                            gender: 'male',
                             level: 34,
                             nature: Nature.Bold,
                             moves: [

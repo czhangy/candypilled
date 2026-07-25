@@ -14,6 +14,7 @@ const HEARTHOME_GYM: Location = {
                 {
                     name: 'Misdreavus',
                     ability: 1,
+                    gender: 'female',
                     level: 23,
                     nature: Nature.Hardy,
                     moves: ['Pain Split', 'Psybeam', 'Confuse Ray'],
@@ -31,6 +32,7 @@ const HEARTHOME_GYM: Location = {
                 {
                     name: 'Gastly',
                     ability: 1,
+                    gender: 'male',
                     level: 20,
                     nature: Nature.Careful,
                     moves: [
@@ -44,6 +46,7 @@ const HEARTHOME_GYM: Location = {
                 {
                     name: 'Drifloon',
                     ability: 1,
+                    gender: 'male',
                     level: 22,
                     nature: Nature.Docile,
                     moves: ['Spit Up', 'Swallow', 'Stockpile'],
@@ -61,6 +64,7 @@ const HEARTHOME_GYM: Location = {
                 {
                     name: 'Drifloon',
                     ability: 1,
+                    gender: 'female',
                     level: 21,
                     nature: Nature.Quiet,
                     moves: ['Payback', 'Gust', 'Astonish', 'Minimize'],
@@ -69,6 +73,7 @@ const HEARTHOME_GYM: Location = {
                 {
                     name: 'Drifloon',
                     ability: 1,
+                    gender: 'female',
                     level: 21,
                     nature: Nature.Quiet,
                     moves: ['Spit Up', 'Swallow', 'Stockpile'],
@@ -87,6 +92,7 @@ const HEARTHOME_GYM: Location = {
                 {
                     name: 'Gastly',
                     ability: 1,
+                    gender: 'male',
                     level: 23,
                     nature: Nature.Rash,
                     moves: [
@@ -110,6 +116,7 @@ const HEARTHOME_GYM: Location = {
                 {
                     name: 'Haunter',
                     ability: 1,
+                    gender: 'female',
                     level: 23,
                     nature: Nature.Bashful,
                     moves: [
@@ -123,6 +130,7 @@ const HEARTHOME_GYM: Location = {
                 {
                     name: 'Misdreavus',
                     ability: 1,
+                    gender: 'female',
                     level: 24,
                     nature: Nature.Careful,
                     moves: ['Psybeam', 'Pain Split', 'Confuse Ray', 'Spite'],
@@ -140,6 +148,7 @@ const HEARTHOME_GYM: Location = {
                 {
                     name: 'Gastly',
                     ability: 1,
+                    gender: 'male',
                     level: 21,
                     nature: Nature.Quirky,
                     moves: [
@@ -153,6 +162,7 @@ const HEARTHOME_GYM: Location = {
                 {
                     name: 'Gastly',
                     ability: 1,
+                    gender: 'male',
                     level: 22,
                     nature: Nature.Calm,
                     moves: [
@@ -166,6 +176,7 @@ const HEARTHOME_GYM: Location = {
                 {
                     name: 'Haunter',
                     ability: 1,
+                    gender: 'male',
                     level: 24,
                     nature: Nature.Serious,
                     moves: ['Shadow Ball', 'Confuse Ray', 'Curse', 'Mean Look'],
@@ -183,6 +194,7 @@ const HEARTHOME_GYM: Location = {
                 {
                     name: 'Duskull',
                     ability: 1,
+                    gender: 'female',
                     level: 24,
                     nature: Nature.Mild,
                     moves: [
@@ -196,6 +208,7 @@ const HEARTHOME_GYM: Location = {
                 {
                     name: 'Haunter',
                     ability: 1,
+                    gender: 'female',
                     level: 24,
                     nature: Nature.Bashful,
                     moves: [
@@ -209,6 +222,7 @@ const HEARTHOME_GYM: Location = {
                 {
                     name: 'Mismagius',
                     ability: 1,
+                    gender: 'female',
                     level: 26,
                     nature: Nature.Impish,
                     moves: [

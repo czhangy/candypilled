@@ -15,12 +15,14 @@ const JUBILIFE_CITY: Location = {
                 {
                     name: 'Glameow',
                     ability: 1,
+                    gender: 'male',
                     level: 11,
                     nature: Nature.Rash,
                 },
                 {
                     name: 'Stunky',
                     ability: 1,
+                    gender: 'male',
                     level: 11,
                     nature: Nature.Timid,
                 },

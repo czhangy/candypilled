@@ -14,6 +14,7 @@ const VEILSTONE_GYM: Location = {
                 {
                     name: 'Machoke',
                     ability: 1,
+                    gender: 'male',
                     level: 23,
                     moves: ['Karate Chop', 'Leer', 'Foresight'],
                     nature: Nature.Mild,
@@ -22,6 +23,7 @@ const VEILSTONE_GYM: Location = {
                 {
                     name: 'Machoke',
                     ability: 1,
+                    gender: 'male',
                     level: 25,
                     moves: ['Low Kick', 'Foresight'],
                     nature: Nature.Gentle,
@@ -30,6 +32,7 @@ const VEILSTONE_GYM: Location = {
                 {
                     name: 'Machoke',
                     ability: 1,
+                    gender: 'male',
                     level: 27,
                     moves: ['Submission', 'Leer', 'Foresight'],
                     nature: Nature.Calm,
@@ -47,6 +50,7 @@ const VEILSTONE_GYM: Location = {
                 {
                     name: 'Machop',
                     ability: 1,
+                    gender: 'male',
                     level: 25,
                     moves: ['Karate Chop', 'Foresight'],
                     nature: Nature.Gentle,
@@ -55,6 +59,7 @@ const VEILSTONE_GYM: Location = {
                 {
                     name: 'Meditite',
                     ability: 1,
+                    gender: 'male',
                     level: 25,
                     moves: ['Confusion', 'Force Palm'],
                     nature: Nature.Hardy,
@@ -63,6 +68,7 @@ const VEILSTONE_GYM: Location = {
                 {
                     name: 'Machoke',
                     ability: 1,
+                    gender: 'male',
                     level: 25,
                     moves: ['Karate Chop', 'Foresight'],
                     nature: Nature.Hardy,
@@ -80,6 +86,7 @@ const VEILSTONE_GYM: Location = {
                 {
                     name: 'Croagunk',
                     ability: 1,
+                    gender: 'male',
                     level: 26,
                     moves: ['Swagger', 'Revenge', 'Feint Attack'],
                     nature: Nature.Serious,
@@ -88,6 +95,7 @@ const VEILSTONE_GYM: Location = {
                 {
                     name: 'Machoke',
                     ability: 1,
+                    gender: 'male',
                     level: 26,
                     moves: ['Karate Chop', 'Foresight'],
                     nature: Nature.Bold,
@@ -105,6 +113,7 @@ const VEILSTONE_GYM: Location = {
                 {
                     name: 'Heracross',
                     ability: 1,
+                    gender: 'male',
                     level: 28,
                     moves: ['Brick Break', 'Aerial Ace', 'Leer'],
                     nature: Nature.Mild,
@@ -122,6 +131,7 @@ const VEILSTONE_GYM: Location = {
                 {
                     name: 'Meditite',
                     ability: 1,
+                    gender: 'female',
                     level: 28,
                     moves: [
                         'Drain Punch',
@@ -135,6 +145,7 @@ const VEILSTONE_GYM: Location = {
                 {
                     name: 'Machoke',
                     ability: 1,
+                    gender: 'female',
                     level: 29,
                     moves: [
                         'Karate Chop',
@@ -148,6 +159,7 @@ const VEILSTONE_GYM: Location = {
                 {
                     name: 'Lucario',
                     ability: 1,
+                    gender: 'female',
                     level: 32,
                     moves: [
                         'Drain Punch',

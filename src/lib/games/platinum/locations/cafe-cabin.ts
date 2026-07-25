@@ -14,6 +14,7 @@ const CAFE_CABIN: Location = {
                 {
                     name: 'Clefairy',
                     ability: 1,
+                    gender: 'female',
                     level: 25,
                     nature: Nature.Calm,
                 },
@@ -29,6 +30,7 @@ const CAFE_CABIN: Location = {
                 {
                     name: 'Heracross',
                     ability: 1,
+                    gender: 'male',
                     level: 25,
                     nature: Nature.Quirky,
                 },
@@ -44,6 +46,7 @@ const CAFE_CABIN: Location = {
                 {
                     name: 'Munchlax',
                     ability: 1,
+                    gender: 'male',
                     level: 25,
                     nature: Nature.Gentle,
                 },

@@ -15,6 +15,7 @@ const HEARTHOME_CITY_GATE: Location = {
                     {
                         name: 'Staravia',
                         ability: 1,
+                        gender: 'male',
                         level: 25,
                         moves: [
                             'Wing Attack',
@@ -28,6 +29,7 @@ const HEARTHOME_CITY_GATE: Location = {
                     {
                         name: 'Buizel',
                         ability: 1,
+                        gender: 'male',
                         level: 23,
                         moves: [
                             'Water Gun',
@@ -41,6 +43,7 @@ const HEARTHOME_CITY_GATE: Location = {
                     {
                         name: 'Roselia',
                         ability: 1,
+                        gender: 'male',
                         level: 23,
                         moves: [
                             'Mega Drain',
@@ -54,6 +57,7 @@ const HEARTHOME_CITY_GATE: Location = {
                     {
                         name: 'Monferno',
                         ability: 1,
+                        gender: 'male',
                         level: 27,
                         moves: [
                             'Flame Wheel',
@@ -69,6 +73,7 @@ const HEARTHOME_CITY_GATE: Location = {
                     {
                         name: 'Staravia',
                         ability: 1,
+                        gender: 'male',
                         level: 25,
                         moves: [
                             'Wing Attack',
@@ -82,6 +87,7 @@ const HEARTHOME_CITY_GATE: Location = {
                     {
                         name: 'Roselia',
                         ability: 1,
+                        gender: 'male',
                         level: 23,
                         moves: [
                             'Mega Drain',
@@ -95,6 +101,7 @@ const HEARTHOME_CITY_GATE: Location = {
                     {
                         name: 'Ponyta',
                         ability: 1,
+                        gender: 'male',
                         level: 23,
                         moves: ['Ember', 'Tackle', 'Tail Whip', 'Growl'],
                         nature: Nature.Careful,
@@ -103,6 +110,7 @@ const HEARTHOME_CITY_GATE: Location = {
                     {
                         name: 'Prinplup',
                         ability: 1,
+                        gender: 'male',
                         level: 27,
                         moves: ['Bubble Beam', 'Peck', 'Metal Claw', 'Growl'],
                         nature: Nature.Timid,
@@ -113,6 +121,7 @@ const HEARTHOME_CITY_GATE: Location = {
                     {
                         name: 'Staravia',
                         ability: 1,
+                        gender: 'male',
                         level: 25,
                         moves: [
                             'Wing Attack',
@@ -126,6 +135,7 @@ const HEARTHOME_CITY_GATE: Location = {
                     {
                         name: 'Buizel',
                         ability: 1,
+                        gender: 'male',
                         level: 23,
                         moves: [
                             'Water Gun',
@@ -139,6 +149,7 @@ const HEARTHOME_CITY_GATE: Location = {
                     {
                         name: 'Ponyta',
                         ability: 1,
+                        gender: 'male',
                         level: 23,
                         moves: ['Ember', 'Tackle', 'Tail Whip', 'Growl'],
                         nature: Nature.Naughty,
@@ -147,6 +158,7 @@ const HEARTHOME_CITY_GATE: Location = {
                     {
                         name: 'Grotle',
                         ability: 1,
+                        gender: 'male',
                         level: 27,
                         moves: ['Razor Leaf', 'Tackle', 'Absorb', 'Withdraw'],
                         nature: Nature.Naive,

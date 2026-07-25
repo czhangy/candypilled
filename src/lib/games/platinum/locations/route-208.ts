@@ -15,6 +15,7 @@ const ROUTE_208: Location = {
                 {
                     name: 'Onix',
                     ability: 1,
+                    gender: 'male',
                     level: 22,
                     nature: Nature.Adamant,
                 },
@@ -30,6 +31,7 @@ const ROUTE_208: Location = {
                 {
                     name: 'Machop',
                     ability: 1,
+                    gender: 'male',
                     level: 23,
                     nature: Nature.Jolly,
                     ivs: 3,
@@ -45,6 +47,7 @@ const ROUTE_208: Location = {
                 {
                     name: 'Nosepass',
                     ability: 1,
+                    gender: 'male',
                     level: 22,
                     nature: Nature.Sassy,
                 },
@@ -60,12 +63,14 @@ const ROUTE_208: Location = {
                 {
                     name: 'Roselia',
                     ability: 1,
+                    gender: 'female',
                     level: 18,
                     nature: Nature.Mild,
                 },
                 {
                     name: 'Combee',
                     ability: 1,
+                    gender: 'female',
                     level: 22,
                     nature: Nature.Naughty,
                 },
@@ -81,12 +86,14 @@ const ROUTE_208: Location = {
                 {
                     name: 'Mime Jr.',
                     ability: 1,
+                    gender: 'male',
                     level: 20,
                     nature: Nature.Mild,
                 },
                 {
                     name: 'Bonsly',
                     ability: 1,
+                    gender: 'male',
                     level: 20,
                     nature: Nature.Naughty,
                 },
@@ -102,12 +109,14 @@ const ROUTE_208: Location = {
                 {
                     name: 'Barboach',
                     ability: 1,
+                    gender: 'male',
                     level: 33,
                     nature: Nature.Relaxed,
                 },
                 {
                     name: 'Gyarados',
                     ability: 1,
+                    gender: 'male',
                     level: 33,
                     nature: Nature.Careful,
                 },
@@ -123,12 +132,14 @@ const ROUTE_208: Location = {
                 {
                     name: 'Graveler',
                     ability: 1,
+                    gender: 'male',
                     level: 38,
                     nature: Nature.Adamant,
                 },
                 {
                     name: 'Probopass',
                     ability: 1,
+                    gender: 'male',
                     level: 40,
                     nature: Nature.Quiet,
                 },

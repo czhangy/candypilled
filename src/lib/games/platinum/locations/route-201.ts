@@ -16,6 +16,7 @@ const ROUTE_201: Location = {
                     {
                         name: 'Chimchar',
                         ability: 1,
+                        gender: 'male',
                         level: 5,
                         moves: ['Scratch', 'Leer'],
                         nature: Nature.Calm,
@@ -25,6 +26,7 @@ const ROUTE_201: Location = {
                     {
                         name: 'Piplup',
                         ability: 1,
+                        gender: 'male',
                         level: 5,
                         moves: ['Pound', 'Growl'],
                         nature: Nature.Bashful,
@@ -34,6 +36,7 @@ const ROUTE_201: Location = {
                     {
                         name: 'Turtwig',
                         ability: 1,
+                        gender: 'male',
                         level: 5,
                         moves: ['Tackle', 'Withdraw'],
                         nature: Nature.Docile,

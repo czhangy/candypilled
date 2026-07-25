@@ -421,9 +421,11 @@ const promptBattle = async (
     const name = (await rl.question('Trainer name: ')).trim();
 
     // Classes fielded by a single named trainer (e.g. Leader, Champion) have
-    // no gender of their own; fall back to the specific trainer's name.
+    // no gender of their own; fall back to the specific trainer's name,
+    // stripping a trailing disambiguator (e.g. "Barry 2") some repeat
+    // battles use to stay unique within a location.
     const genderSlug = SLUGGED_BY_NAME_CLASS_SLUGS.has(slug)
-        ? StringHelpers.toSlug(name)
+        ? StringHelpers.toSlug(name.replace(/\s+\d+$/, ''))
         : slug;
     const gender = TRAINER_CLASS_GENDERS[genderSlug];
     if (!gender) {

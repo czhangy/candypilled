@@ -14,6 +14,7 @@ const ROUTE_202: Location = {
                 {
                     name: 'Starly',
                     ability: 1,
+                    gender: 'male',
                     level: 5,
                     nature: Nature.Careful,
                 },
@@ -28,6 +29,7 @@ const ROUTE_202: Location = {
                 {
                     name: 'Bidoof',
                     ability: 1,
+                    gender: 'female',
                     level: 5,
                     nature: Nature.Quiet,
                 },
@@ -42,6 +44,7 @@ const ROUTE_202: Location = {
                 {
                     name: 'Burmy',
                     ability: 1,
+                    gender: 'male',
                     level: 5,
                     nature: Nature.Impish,
                     moves: ['Tackle'],

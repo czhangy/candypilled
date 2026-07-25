@@ -18,6 +18,7 @@ const ROUTE_205: Location = {
                         {
                             name: 'Ponyta',
                             ability: 1,
+                            gender: 'male',
                             level: 14,
                             nature: Nature.Bashful,
                             moves: ['Ember', 'Tackle'],
@@ -34,18 +35,21 @@ const ROUTE_205: Location = {
                         {
                             name: 'Geodude',
                             ability: 1,
+                            gender: 'male',
                             level: 10,
                             nature: Nature.Bashful,
                         },
                         {
                             name: 'Geodude',
                             ability: 1,
+                            gender: 'male',
                             level: 11,
                             nature: Nature.Impish,
                         },
                         {
                             name: 'Geodude',
                             ability: 1,
+                            gender: 'male',
                             level: 12,
                             nature: Nature.Careful,
                         },
@@ -61,6 +65,7 @@ const ROUTE_205: Location = {
                         {
                             name: 'Roselia',
                             ability: 1,
+                            gender: 'female',
                             level: 14,
                             nature: Nature.Rash,
                             moves: ['Growth', 'Mega Drain'],
@@ -77,12 +82,14 @@ const ROUTE_205: Location = {
                         {
                             name: 'Bidoof',
                             ability: 1,
+                            gender: 'female',
                             level: 12,
                             nature: Nature.Adamant,
                         },
                         {
                             name: 'Pachirisu',
                             ability: 1,
+                            gender: 'female',
                             level: 12,
                             nature: Nature.Naughty,
                         },
@@ -98,6 +105,7 @@ const ROUTE_205: Location = {
                         {
                             name: 'Aipom',
                             ability: 1,
+                            gender: 'male',
                             level: 14,
                             nature: Nature.Quirky,
                         },
@@ -113,6 +121,7 @@ const ROUTE_205: Location = {
                         {
                             name: 'Onix',
                             ability: 1,
+                            gender: 'male',
                             level: 14,
                             nature: Nature.Careful,
                         },
@@ -128,6 +137,7 @@ const ROUTE_205: Location = {
                         {
                             name: 'Machop',
                             ability: 1,
+                            gender: 'female',
                             level: 15,
                             nature: Nature.Serious,
                             ivs: 2,
@@ -144,6 +154,7 @@ const ROUTE_205: Location = {
                         {
                             name: 'Piplup',
                             ability: 1,
+                            gender: 'female',
                             level: 14,
                             nature: Nature.Calm,
                             moves: ['Bubble', 'Peck'],
@@ -167,6 +178,7 @@ const ROUTE_205: Location = {
                         {
                             name: 'Goldeen',
                             ability: 1,
+                            gender: 'male',
                             level: 17,
                             nature: Nature.Quiet,
                         },
@@ -182,36 +194,42 @@ const ROUTE_205: Location = {
                         {
                             name: 'Magikarp',
                             ability: 1,
+                            gender: 'male',
                             level: 8,
                             nature: Nature.Adamant,
                         },
                         {
                             name: 'Magikarp',
                             ability: 1,
+                            gender: 'male',
                             level: 10,
                             nature: Nature.Lax,
                         },
                         {
                             name: 'Magikarp',
                             ability: 1,
+                            gender: 'male',
                             level: 12,
                             nature: Nature.Docile,
                         },
                         {
                             name: 'Magikarp',
                             ability: 1,
+                            gender: 'male',
                             level: 12,
                             nature: Nature.Docile,
                         },
                         {
                             name: 'Magikarp',
                             ability: 1,
+                            gender: 'male',
                             level: 14,
                             nature: Nature.Serious,
                         },
                         {
                             name: 'Magikarp',
                             ability: 1,
+                            gender: 'male',
                             level: 16,
                             nature: Nature.Bashful,
                         },
@@ -227,18 +245,21 @@ const ROUTE_205: Location = {
                         {
                             name: 'Magikarp',
                             ability: 1,
+                            gender: 'male',
                             level: 14,
                             nature: Nature.Bashful,
                         },
                         {
                             name: 'Goldeen',
                             ability: 1,
+                            gender: 'male',
                             level: 16,
                             nature: Nature.Quiet,
                         },
                         {
                             name: 'Magikarp',
                             ability: 1,
+                            gender: 'male',
                             level: 14,
                             nature: Nature.Bashful,
                         },

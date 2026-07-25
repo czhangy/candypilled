@@ -18,6 +18,7 @@ const ROUTE_210: Location = {
                         {
                             name: 'Ponyta',
                             ability: 1,
+                            gender: 'male',
                             level: 24,
                             nature: Nature.Docile,
                         },
@@ -33,6 +34,7 @@ const ROUTE_210: Location = {
                         {
                             name: 'Pikachu',
                             ability: 1,
+                            gender: 'male',
                             level: 24,
                             nature: Nature.Sassy,
                         },
@@ -50,12 +52,14 @@ const ROUTE_210: Location = {
                         {
                             name: 'Ponyta',
                             ability: 1,
+                            gender: 'male',
                             level: 24,
                             nature: Nature.Naughty,
                         },
                         {
                             name: 'Rapidash',
                             ability: 1,
+                            gender: 'male',
                             level: 24,
                             nature: Nature.Calm,
                         },
@@ -73,12 +77,14 @@ const ROUTE_210: Location = {
                         {
                             name: 'Pikachu',
                             ability: 1,
+                            gender: 'female',
                             level: 23,
                             nature: Nature.Adamant,
                         },
                         {
                             name: 'Clefairy',
                             ability: 1,
+                            gender: 'female',
                             level: 23,
                             nature: Nature.Adamant,
                         },
@@ -94,12 +100,14 @@ const ROUTE_210: Location = {
                         {
                             name: 'Elekid',
                             ability: 1,
+                            gender: 'male',
                             level: 23,
                             nature: Nature.Gentle,
                         },
                         {
                             name: 'Happiny',
                             ability: 1,
+                            gender: 'male',
                             level: 23,
                             nature: Nature.Bold,
                         },
@@ -115,12 +123,14 @@ const ROUTE_210: Location = {
                         {
                             name: 'Magby',
                             ability: 1,
+                            gender: 'female',
                             level: 23,
                             nature: Nature.Brave,
                         },
                         {
                             name: 'Togepi',
                             ability: 1,
+                            gender: 'female',
                             level: 23,
                             nature: Nature.Modest,
                         },

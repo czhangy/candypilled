@@ -34,18 +34,21 @@ const SOLACEON_RUINS: Location = {
                         {
                             name: 'Geodude',
                             ability: 1,
+                            gender: 'male',
                             level: 19,
                             nature: Nature.Mild,
                         },
                         {
                             name: 'Geodude',
                             ability: 1,
+                            gender: 'male',
                             level: 21,
                             nature: Nature.Lax,
                         },
                         {
                             name: 'Bronzor',
                             ability: 1,
+                            gender: 'male',
                             level: 23,
                             nature: Nature.Serious,
                         },

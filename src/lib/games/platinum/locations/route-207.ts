@@ -15,6 +15,7 @@ const ROUTE_207: Location = {
                 {
                     name: 'Pachirisu',
                     ability: 1,
+                    gender: 'female',
                     level: 22,
                     nature: Nature.Bold,
                     moves: ['Spark', 'Quick Attack', 'Charm'],
@@ -31,6 +32,7 @@ const ROUTE_207: Location = {
                 {
                     name: 'Chimchar',
                     ability: 1,
+                    gender: 'male',
                     level: 22,
                     nature: Nature.Careful,
                 },
@@ -46,12 +48,14 @@ const ROUTE_207: Location = {
                 {
                     name: 'Geodude',
                     ability: 1,
+                    gender: 'male',
                     level: 20,
                     nature: Nature.Impish,
                 },
                 {
                     name: 'Nosepass',
                     ability: 1,
+                    gender: 'male',
                     level: 20,
                     nature: Nature.Serious,
                 },
@@ -67,18 +71,21 @@ const ROUTE_207: Location = {
                 {
                     name: 'Buizel',
                     ability: 1,
+                    gender: 'male',
                     level: 18,
                     nature: Nature.Bold,
                 },
                 {
                     name: 'Luxio',
                     ability: 1,
+                    gender: 'male',
                     level: 18,
                     nature: Nature.Bashful,
                 },
                 {
                     name: 'Gligar',
                     ability: 1,
+                    gender: 'male',
                     level: 21,
                     nature: Nature.Naughty,
                 },
@@ -94,24 +101,28 @@ const ROUTE_207: Location = {
                 {
                     name: 'Geodude',
                     ability: 1,
+                    gender: 'male',
                     level: 17,
                     nature: Nature.Impish,
                 },
                 {
                     name: 'Geodude',
                     ability: 1,
+                    gender: 'male',
                     level: 17,
                     nature: Nature.Impish,
                 },
                 {
                     name: 'Onix',
                     ability: 1,
+                    gender: 'male',
                     level: 19,
                     nature: Nature.Impish,
                 },
                 {
                     name: 'Geodude',
                     ability: 1,
+                    gender: 'male',
                     level: 19,
                     nature: Nature.Sassy,
                 },
@@ -127,6 +138,7 @@ const ROUTE_207: Location = {
                 {
                     name: 'Machop',
                     ability: 1,
+                    gender: 'female',
                     level: 21,
                     nature: Nature.Lonely,
                     ivs: 2,
@@ -134,6 +146,7 @@ const ROUTE_207: Location = {
                 {
                     name: 'Meditite',
                     ability: 1,
+                    gender: 'female',
                     level: 21,
                     nature: Nature.Serious,
                     ivs: 2,
