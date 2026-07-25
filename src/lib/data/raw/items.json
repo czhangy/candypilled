@@ -67,12 +67,12 @@
             }
         ]
     },
-    "kings-rock": {
+    "king-s-rock": {
         "name": "King's Rock",
         "category": "held-items",
         "effect": "Held: Damaging moves gain a 10% chance to make their target flinch. Traded on a Poliwhirl: Holder evolves into Politoed. Traded on a Slowpoke: Holder evolves into Slowking.",
         "introducedInGeneration": 2,
-        "sprite": "/items/kings-rock.png",
+        "sprite": "/items/king-s-rock.png",
         "valuesByGeneration": [
             {
                 "fromGeneration": 3,
@@ -1435,12 +1435,12 @@
             }
         ]
     },
-    "stick": {
+    "leek": {
         "name": "Leek",
         "category": "species-specific",
         "effect": "Raises Farfetch'd's critical hit ratio by two stages.",
         "introducedInGeneration": 2,
-        "sprite": "/items/stick.png",
+        "sprite": "/items/leek.png",
         "valuesByGeneration": [
             {
                 "fromGeneration": 3,

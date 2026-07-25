@@ -76,6 +76,9 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     const sprite = pokemon
         ? PokemonHelpers.getPokemonSprite(pokemon.name, variant)
         : undefined;
+    const heldItemSprite = pokemon?.heldItem
+        ? ItemHelpers.getHeldItemSprite(pokemon.heldItem)
+        : undefined;
     const types = pokemon ? getTypes(pokemon.name) : [];
     const ability = getAbility();
     const highlightDangerous = settings['highlight-dangerous'] ?? false;
@@ -170,14 +173,14 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                 <li className={styles['pokemon-slot__metadata-item--accent']}>
                     {pokemon.heldItem ? (
                         <span className={styles['held-item']}>
-                            <Image
-                                alt={pokemon.heldItem}
-                                height={ITEM_ICON_SIZE}
-                                src={ItemHelpers.getItemSprite(
-                                    pokemon.heldItem
-                                )}
-                                width={ITEM_ICON_SIZE}
-                            />
+                            {heldItemSprite && (
+                                <Image
+                                    alt={pokemon.heldItem}
+                                    height={ITEM_ICON_SIZE}
+                                    src={heldItemSprite}
+                                    width={ITEM_ICON_SIZE}
+                                />
+                            )}
                             {pokemon.heldItem}
                         </span>
                     ) : (

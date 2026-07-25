@@ -250,10 +250,17 @@ export const fetchItems = async (): Promise<void> => {
             continue;
         }
 
-        const slug = toItemSlug(item.name);
-        const name = NAME_OVERRIDES[slug] ?? StringHelpers.toTitleCase(slug);
+        const apiSlug = toItemSlug(item.name);
+        const name =
+            NAME_OVERRIDES[apiSlug] ?? StringHelpers.toTitleCase(apiSlug);
+        // Keyed by the display name's own slug (not PokeAPI's raw item
+        // slug) so lookups elsewhere in the codebase, which all resolve
+        // data by slugifying a display name (e.g. AbilityHelpers), resolve
+        // correctly even for names PokeAPI's slug doesn't cleanly encode
+        // (e.g. "King's Rock" -> "kings-rock" vs. the correct "king-s-rock").
+        const slug = StringHelpers.toSlug(name);
         const sprite = await downloadSprite(slug, item.sprites.default);
-        const removedInGeneration = REMOVED_IN_GENERATION[slug];
+        const removedInGeneration = REMOVED_IN_GENERATION[apiSlug];
 
         data[slug] = {
             name,

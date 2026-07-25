@@ -31,6 +31,9 @@ as dangerous are shown in red text regardless of `isReadOnly`. When
 
 ## Computations
 
+- `heldItemSprite` — the sprite for `pokemon.heldItem`, resolved via
+  `ItemHelpers.getHeldItemSprite`; the icon is omitted (held item text
+  still shows) when no held item data matches
 - `getTypes` — the Pokémon's types at `generation`, rendered as badges
   (`/types/{type}.png`) beneath its name
 - `getAbility` — the Pokémon's ability, using its `ability` field as
