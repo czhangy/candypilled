@@ -408,10 +408,10 @@
         },
         {
             "species": "drifloon",
-            "method": "special",
+            "method": "static",
             "minLevel": 15,
             "maxLevel": 15,
-            "chance": null
+            "chance": 100
         },
         {
             "species": "munchlax",
@@ -426,291 +426,6 @@
             "minLevel": 10,
             "maxLevel": 25,
             "chance": 45
-        }
-    ],
-    "eterna-forest-interior": [
-        {
-            "species": "gastly",
-            "method": "grass",
-            "minLevel": 13,
-            "maxLevel": 13,
-            "chance": 4,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "gastly",
-            "method": "grass",
-            "minLevel": 13,
-            "maxLevel": 13,
-            "chance": 4,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "gastly",
-            "method": "grass",
-            "minLevel": 13,
-            "maxLevel": 13,
-            "chance": 4,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "hoothoot",
-            "method": "grass",
-            "minLevel": 12,
-            "maxLevel": 12,
-            "chance": 10,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "wurmple",
-            "method": "grass",
-            "minLevel": 10,
-            "maxLevel": 10,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "wurmple",
-            "method": "grass",
-            "minLevel": 10,
-            "maxLevel": 10,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "silcoon",
-            "method": "grass",
-            "minLevel": 12,
-            "maxLevel": 12,
-            "chance": 5,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "silcoon",
-            "method": "grass",
-            "minLevel": 12,
-            "maxLevel": 12,
-            "chance": 5,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "silcoon",
-            "method": "grass",
-            "minLevel": 12,
-            "maxLevel": 12,
-            "chance": 5,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "beautifly",
-            "method": "grass",
-            "minLevel": 14,
-            "maxLevel": 14,
-            "chance": 1,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "beautifly",
-            "method": "grass",
-            "minLevel": 14,
-            "maxLevel": 14,
-            "chance": 1,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "beautifly",
-            "method": "grass",
-            "minLevel": 14,
-            "maxLevel": 14,
-            "chance": 1,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "cascoon",
-            "method": "grass",
-            "minLevel": 12,
-            "maxLevel": 12,
-            "chance": 5,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "cascoon",
-            "method": "grass",
-            "minLevel": 12,
-            "maxLevel": 12,
-            "chance": 5,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "cascoon",
-            "method": "grass",
-            "minLevel": 12,
-            "maxLevel": 12,
-            "chance": 5,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "dustox",
-            "method": "grass",
-            "minLevel": 14,
-            "maxLevel": 14,
-            "chance": 1,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "dustox",
-            "method": "grass",
-            "minLevel": 14,
-            "maxLevel": 14,
-            "chance": 1,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "dustox",
-            "method": "grass",
-            "minLevel": 14,
-            "maxLevel": 14,
-            "chance": 1,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "bidoof",
-            "method": "grass",
-            "minLevel": 12,
-            "maxLevel": 12,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "bidoof",
-            "method": "grass",
-            "minLevel": 12,
-            "maxLevel": 12,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "bidoof",
-            "method": "grass",
-            "minLevel": 12,
-            "maxLevel": 12,
-            "chance": 10,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "kricketot",
-            "method": "grass",
-            "minLevel": 10,
-            "maxLevel": 10,
-            "chance": 10,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "kricketot",
-            "method": "grass",
-            "minLevel": 12,
-            "maxLevel": 12,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "budew",
-            "method": "grass",
-            "minLevel": 10,
-            "maxLevel": 11,
-            "chance": 30,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "budew",
-            "method": "grass",
-            "minLevel": 10,
-            "maxLevel": 12,
-            "chance": 40,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "budew",
-            "method": "grass",
-            "minLevel": 10,
-            "maxLevel": 11,
-            "chance": 30,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "buneary",
-            "method": "grass",
-            "minLevel": 11,
-            "maxLevel": 13,
-            "chance": 24,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "buneary",
-            "method": "grass",
-            "minLevel": 11,
-            "maxLevel": 13,
-            "chance": 24,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "buneary",
-            "method": "grass",
-            "minLevel": 11,
-            "maxLevel": 13,
-            "chance": 24,
-            "conditions": ["time-night"]
-        }
-    ],
-    "eterna-forest-exterior": [
-        {
-            "species": "aipom",
-            "method": "honey-tree",
-            "minLevel": 5,
-            "maxLevel": 15,
-            "chance": null
-        },
-        {
-            "species": "heracross",
-            "method": "honey-tree",
-            "minLevel": 5,
-            "maxLevel": 15,
-            "chance": null
-        },
-        {
-            "species": "wurmple",
-            "method": "honey-tree",
-            "minLevel": 5,
-            "maxLevel": 15,
-            "chance": null
-        },
-        {
-            "species": "burmy",
-            "method": "honey-tree",
-            "minLevel": 5,
-            "maxLevel": 15,
-            "chance": null
-        },
-        {
-            "species": "combee",
-            "method": "honey-tree",
-            "minLevel": 5,
-            "maxLevel": 15,
-            "chance": null
-        },
-        {
-            "species": "cherubi",
-            "method": "honey-tree",
-            "minLevel": 5,
-            "maxLevel": 15,
-            "chance": null
-        },
-        {
-            "species": "munchlax",
-            "method": "honey-tree",
-            "minLevel": 5,
-            "maxLevel": 15,
-            "chance": null
         }
     ],
     "fuego-ironworks": [
@@ -3856,52 +3571,196 @@
     ],
     "great-marsh-area-1": [
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
+            "chance": null,
+            "conditions": ["time-morning"]
         },
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
+            "chance": null,
+            "conditions": ["time-day"]
         },
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
+            "chance": null,
+            "conditions": ["time-night"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
+            "chance": null,
+            "conditions": ["time-morning"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
+            "chance": null,
+            "conditions": ["time-day"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-night"]
         },
         {
             "species": "tangela",
@@ -3926,54 +3785,6 @@
             "maxLevel": 31,
             "chance": 5,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
         },
         {
             "species": "magikarp",
@@ -4056,76 +3867,28 @@
             "conditions": ["time-night"]
         },
         {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
             "species": "wooper",
             "method": "grass",
             "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 30,
+            "maxLevel": 30,
+            "chance": 40,
             "conditions": ["time-morning"]
         },
         {
             "species": "wooper",
             "method": "grass",
             "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 30,
+            "maxLevel": 30,
+            "chance": 40,
             "conditions": ["time-day"]
         },
         {
             "species": "wooper",
             "method": "grass",
             "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 30,
+            "maxLevel": 30,
+            "chance": 40,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-morning"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-day"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-night"]
         },
         {
             "species": "wooper",
@@ -4150,30 +3913,6 @@
             "maxLevel": 30,
             "chance": 90,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-morning"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-day"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-night"]
         },
         {
             "species": "quagsire",
@@ -4224,78 +3963,6 @@
             "conditions": ["time-night"]
         },
         {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
             "species": "barboach",
             "method": "good-rod",
             "minLevel": 10,
@@ -4320,30 +3987,6 @@
             "conditions": ["time-night"]
         },
         {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
             "species": "tropius",
             "method": "grass",
             "minLevel": 28,
@@ -4358,30 +4001,6 @@
             "maxLevel": 30,
             "chance": 20,
             "conditions": ["time-day"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
         },
         {
             "species": "bibarel",
@@ -4406,176 +4025,200 @@
             "maxLevel": 28,
             "chance": 20,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-morning"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-day"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-night"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-morning"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-day"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-night"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-morning"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-day"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-night"]
         }
     ],
     "great-marsh-area-2": [
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
+            "chance": null,
+            "conditions": ["time-morning"]
         },
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
+            "chance": null,
+            "conditions": ["time-day"]
         },
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
+            "chance": null,
+            "conditions": ["time-night"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
+            "chance": null,
+            "conditions": ["time-morning"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
+            "chance": null,
+            "conditions": ["time-day"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 30,
+            "chance": null,
+            "conditions": ["time-night"]
         },
         {
             "species": "tangela",
@@ -4600,54 +4243,6 @@
             "maxLevel": 31,
             "chance": 5,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
         },
         {
             "species": "magikarp",
@@ -4730,76 +4325,28 @@
             "conditions": ["time-night"]
         },
         {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
             "species": "wooper",
             "method": "grass",
             "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 30,
+            "maxLevel": 30,
+            "chance": 40,
             "conditions": ["time-morning"]
         },
         {
             "species": "wooper",
             "method": "grass",
             "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 30,
+            "maxLevel": 30,
+            "chance": 40,
             "conditions": ["time-day"]
         },
         {
             "species": "wooper",
             "method": "grass",
             "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 30,
+            "maxLevel": 30,
+            "chance": 40,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-morning"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-day"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-night"]
         },
         {
             "species": "wooper",
@@ -4824,30 +4371,6 @@
             "maxLevel": 30,
             "chance": 90,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-morning"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-day"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-night"]
         },
         {
             "species": "quagsire",
@@ -4898,78 +4421,6 @@
             "conditions": ["time-night"]
         },
         {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
             "species": "barboach",
             "method": "good-rod",
             "minLevel": 10,
@@ -4994,30 +4445,6 @@
             "conditions": ["time-night"]
         },
         {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
             "species": "tropius",
             "method": "grass",
             "minLevel": 28,
@@ -5032,30 +4459,6 @@
             "maxLevel": 30,
             "chance": 20,
             "conditions": ["time-day"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
         },
         {
             "species": "bibarel",
@@ -5080,176 +4483,200 @@
             "maxLevel": 28,
             "chance": 20,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-morning"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-day"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-night"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-morning"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-day"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-night"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-morning"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-day"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 30,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-night"]
         }
     ],
     "great-marsh-area-3": [
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
+            "chance": null,
+            "conditions": ["time-morning"]
         },
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
+            "chance": null,
+            "conditions": ["time-day"]
         },
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
+            "chance": null,
+            "conditions": ["time-night"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
+            "chance": null,
+            "conditions": ["time-morning"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
+            "chance": null,
+            "conditions": ["time-day"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-night"]
         },
         {
             "species": "tangela",
@@ -5274,54 +4701,6 @@
             "maxLevel": 30,
             "chance": 15,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
         },
         {
             "species": "magikarp",
@@ -5412,76 +4791,28 @@
             "conditions": ["time-night"]
         },
         {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
             "species": "wooper",
             "method": "grass",
             "minLevel": 27,
-            "maxLevel": 27,
-            "chance": 20,
+            "maxLevel": 29,
+            "chance": 30,
             "conditions": ["time-morning"]
         },
         {
             "species": "wooper",
             "method": "grass",
             "minLevel": 27,
-            "maxLevel": 27,
-            "chance": 20,
+            "maxLevel": 29,
+            "chance": 30,
             "conditions": ["time-day"]
         },
         {
             "species": "wooper",
             "method": "grass",
             "minLevel": 27,
-            "maxLevel": 27,
-            "chance": 20,
+            "maxLevel": 29,
+            "chance": 30,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-morning"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-day"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-night"]
         },
         {
             "species": "wooper",
@@ -5506,30 +4837,6 @@
             "maxLevel": 30,
             "chance": 90,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-morning"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-day"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-night"]
         },
         {
             "species": "quagsire",
@@ -5580,78 +4887,6 @@
             "conditions": ["time-night"]
         },
         {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
             "species": "barboach",
             "method": "good-rod",
             "minLevel": 10,
@@ -5674,54 +4909,6 @@
             "maxLevel": 25,
             "chance": 45,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
         },
         {
             "species": "bibarel",
@@ -5746,176 +4933,200 @@
             "maxLevel": 27,
             "chance": 20,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-morning"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-day"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-night"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-morning"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-day"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-night"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-morning"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-day"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-night"]
         }
     ],
     "great-marsh-area-4": [
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
+            "chance": null,
+            "conditions": ["time-morning"]
         },
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
+            "chance": null,
+            "conditions": ["time-day"]
         },
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
+            "chance": null,
+            "conditions": ["time-night"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
+            "chance": null,
+            "conditions": ["time-morning"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
+            "chance": null,
+            "conditions": ["time-day"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 28,
             "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 28,
+            "maxLevel": 29,
+            "chance": null,
+            "conditions": ["time-night"]
         },
         {
             "species": "tangela",
@@ -5940,54 +5151,6 @@
             "maxLevel": 30,
             "chance": 15,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
         },
         {
             "species": "magikarp",
@@ -6078,76 +5241,28 @@
             "conditions": ["time-night"]
         },
         {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
             "species": "wooper",
             "method": "grass",
             "minLevel": 27,
-            "maxLevel": 27,
-            "chance": 20,
+            "maxLevel": 29,
+            "chance": 30,
             "conditions": ["time-morning"]
         },
         {
             "species": "wooper",
             "method": "grass",
             "minLevel": 27,
-            "maxLevel": 27,
-            "chance": 20,
+            "maxLevel": 29,
+            "chance": 30,
             "conditions": ["time-day"]
         },
         {
             "species": "wooper",
             "method": "grass",
             "minLevel": 27,
-            "maxLevel": 27,
-            "chance": 20,
+            "maxLevel": 29,
+            "chance": 30,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-morning"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-day"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-night"]
         },
         {
             "species": "wooper",
@@ -6172,30 +5287,6 @@
             "maxLevel": 30,
             "chance": 90,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-morning"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-day"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-night"]
         },
         {
             "species": "quagsire",
@@ -6246,78 +5337,6 @@
             "conditions": ["time-night"]
         },
         {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
             "species": "barboach",
             "method": "good-rod",
             "minLevel": 10,
@@ -6340,54 +5359,6 @@
             "maxLevel": 25,
             "chance": 45,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
         },
         {
             "species": "bibarel",
@@ -6412,176 +5383,200 @@
             "maxLevel": 27,
             "chance": 20,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-morning"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-day"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-night"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-morning"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-day"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-night"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-morning"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-day"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 28,
-            "maxLevel": 29,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-night"]
         }
     ],
     "great-marsh-area-5": [
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 27,
             "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
+            "chance": null,
+            "conditions": ["time-morning"]
         },
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 27,
             "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
+            "chance": null,
+            "conditions": ["time-day"]
         },
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 27,
             "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
+            "chance": null,
+            "conditions": ["time-night"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 27,
             "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
+            "chance": null,
+            "conditions": ["time-morning"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 27,
             "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
+            "chance": null,
+            "conditions": ["time-day"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 27,
             "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-night"]
         },
         {
             "species": "tangela",
@@ -6606,54 +5601,6 @@
             "maxLevel": 29,
             "chance": 5,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
         },
         {
             "species": "magikarp",
@@ -6736,76 +5683,28 @@
             "conditions": ["time-night"]
         },
         {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
             "species": "wooper",
             "method": "grass",
             "minLevel": 26,
-            "maxLevel": 26,
-            "chance": 20,
+            "maxLevel": 28,
+            "chance": 30,
             "conditions": ["time-morning"]
         },
         {
             "species": "wooper",
             "method": "grass",
             "minLevel": 26,
-            "maxLevel": 26,
-            "chance": 20,
+            "maxLevel": 28,
+            "chance": 30,
             "conditions": ["time-day"]
         },
         {
             "species": "wooper",
             "method": "grass",
             "minLevel": 26,
-            "maxLevel": 26,
-            "chance": 20,
+            "maxLevel": 28,
+            "chance": 30,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-morning"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-day"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-night"]
         },
         {
             "species": "wooper",
@@ -6830,30 +5729,6 @@
             "maxLevel": 30,
             "chance": 90,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-morning"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-day"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-night"]
         },
         {
             "species": "quagsire",
@@ -6904,78 +5779,6 @@
             "conditions": ["time-night"]
         },
         {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
             "species": "barboach",
             "method": "good-rod",
             "minLevel": 10,
@@ -6998,54 +5801,6 @@
             "maxLevel": 25,
             "chance": 45,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
         },
         {
             "species": "bibarel",
@@ -7070,176 +5825,200 @@
             "maxLevel": 26,
             "chance": 20,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-morning"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-day"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-night"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-morning"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-day"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-night"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-morning"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-day"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-night"]
         }
     ],
     "great-marsh-area-6": [
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 27,
             "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
+            "chance": null,
+            "conditions": ["time-morning"]
         },
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 27,
             "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
+            "chance": null,
+            "conditions": ["time-day"]
         },
         {
-            "species": "paras",
-            "method": "grass",
+            "species": "tangela",
+            "method": "binoculars",
             "minLevel": 27,
             "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
+            "chance": null,
+            "conditions": ["time-night"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 27,
             "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
+            "chance": null,
+            "conditions": ["time-morning"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 27,
             "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
+            "chance": null,
+            "conditions": ["time-day"]
         },
         {
-            "species": "exeggcute",
-            "method": "grass",
+            "species": "yanma",
+            "method": "binoculars",
             "minLevel": 27,
             "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "wooper",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "quagsire",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "tropius",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "skorupi",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "croagunk",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "carnivine",
+            "method": "binoculars",
+            "minLevel": 27,
+            "maxLevel": 28,
+            "chance": null,
+            "conditions": ["time-night"]
         },
         {
             "species": "tangela",
@@ -7264,54 +6043,6 @@
             "maxLevel": 29,
             "chance": 5,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "tangela",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "kangaskhan",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
         },
         {
             "species": "magikarp",
@@ -7394,76 +6125,28 @@
             "conditions": ["time-night"]
         },
         {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "yanma",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
             "species": "wooper",
             "method": "grass",
             "minLevel": 26,
-            "maxLevel": 26,
-            "chance": 20,
+            "maxLevel": 28,
+            "chance": 30,
             "conditions": ["time-morning"]
         },
         {
             "species": "wooper",
             "method": "grass",
             "minLevel": 26,
-            "maxLevel": 26,
-            "chance": 20,
+            "maxLevel": 28,
+            "chance": 30,
             "conditions": ["time-day"]
         },
         {
             "species": "wooper",
             "method": "grass",
             "minLevel": 26,
-            "maxLevel": 26,
-            "chance": 20,
+            "maxLevel": 28,
+            "chance": 30,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-morning"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-day"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-none", "time-night"]
         },
         {
             "species": "wooper",
@@ -7488,30 +6171,6 @@
             "maxLevel": 30,
             "chance": 90,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-morning"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-day"]
-        },
-        {
-            "species": "wooper",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-15-of-32", "time-night"]
         },
         {
             "species": "quagsire",
@@ -7562,78 +6221,6 @@
             "conditions": ["time-night"]
         },
         {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "quagsire",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "shroomish",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "gulpin",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
             "species": "barboach",
             "method": "good-rod",
             "minLevel": 10,
@@ -7656,54 +6243,6 @@
             "maxLevel": 25,
             "chance": 45,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "kecleon",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "tropius",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
         },
         {
             "species": "bibarel",
@@ -7728,126 +6267,6 @@
             "maxLevel": 26,
             "chance": 20,
             "conditions": ["time-night"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-morning"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-day"]
-        },
-        {
-            "species": "skorupi",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-5-of-32", "time-night"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-morning"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-day"]
-        },
-        {
-            "species": "drapion",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-2-of-32", "time-night"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-morning"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-day"]
-        },
-        {
-            "species": "croagunk",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-4-of-32", "time-night"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-morning"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-day"]
-        },
-        {
-            "species": "toxicroak",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-1-of-32", "time-night"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-morning"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-day"]
-        },
-        {
-            "species": "carnivine",
-            "method": "grass",
-            "minLevel": 27,
-            "maxLevel": 28,
-            "chance": 10,
-            "conditions": ["great-marsh-daily-slot-3-of-32", "time-night"]
         }
     ],
     "solaceon-ruins-2f": [
@@ -7860,42 +6279,6 @@
         }
     ],
     "solaceon-ruins-1f": [
-        {
-            "species": "unown",
-            "method": "cave",
-            "minLevel": 20,
-            "maxLevel": 30,
-            "chance": 100
-        }
-    ],
-    "solaceon-ruins-b1f": [
-        {
-            "species": "unown",
-            "method": "cave",
-            "minLevel": 20,
-            "maxLevel": 30,
-            "chance": 100
-        }
-    ],
-    "solaceon-ruins-b2f": [
-        {
-            "species": "unown",
-            "method": "cave",
-            "minLevel": 20,
-            "maxLevel": 30,
-            "chance": 100
-        }
-    ],
-    "solaceon-ruins-b3f": [
-        {
-            "species": "unown",
-            "method": "cave",
-            "minLevel": 20,
-            "maxLevel": 30,
-            "chance": 100
-        }
-    ],
-    "solaceon-ruins-b4f": [
         {
             "species": "unown",
             "method": "cave",
@@ -9345,150 +7728,6 @@
             "conditions": ["time-night"]
         },
         {
-            "species": "clefairy",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "clefairy",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "clefairy",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "jigglypuff",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "jigglypuff",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "jigglypuff",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "meowth",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "meowth",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "meowth",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "chansey",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "chansey",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "chansey",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "ditto",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "ditto",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "ditto",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "eevee",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "eevee",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "eevee",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-night"]
-        },
-        {
             "species": "pichu",
             "method": "grass",
             "minLevel": 21,
@@ -9513,150 +7752,6 @@
             "conditions": ["time-night"]
         },
         {
-            "species": "cleffa",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "cleffa",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "cleffa",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "igglybuff",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "igglybuff",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "igglybuff",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "marill",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "marill",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "marill",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "azurill",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "azurill",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "azurill",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "plusle",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "plusle",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "plusle",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "minun",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "minun",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "minun",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-night"]
-        },
-        {
             "species": "roselia",
             "method": "grass",
             "minLevel": 22,
@@ -9678,30 +7773,6 @@
             "minLevel": 22,
             "maxLevel": 23,
             "chance": 30,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "castform",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "castform",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "castform",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
             "conditions": ["time-night"]
         },
         {
@@ -9743,78 +7814,6 @@
             "maxLevel": 23,
             "chance": 10,
             "conditions": ["time-morning"]
-        },
-        {
-            "species": "bonsly",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "bonsly",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "bonsly",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "mime-jr",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "mime-jr",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "mime-jr",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-night"]
-        },
-        {
-            "species": "happiny",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-morning"]
-        },
-        {
-            "species": "happiny",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-day"]
-        },
-        {
-            "species": "happiny",
-            "method": "grass",
-            "minLevel": 22,
-            "maxLevel": 22,
-            "chance": 10,
-            "conditions": ["time-night"]
         }
     ],
     "iron-island-area": [
@@ -10086,10 +8085,10 @@
         },
         {
             "species": "rotom",
-            "method": "special",
+            "method": "static",
             "minLevel": 20,
             "maxLevel": 20,
-            "chance": null,
+            "chance": 100,
             "conditions": ["time-night"]
         }
     ],
@@ -13274,10 +11273,10 @@
         },
         {
             "species": "spiritomb",
-            "method": "special",
+            "method": "static",
             "minLevel": 25,
             "maxLevel": 25,
-            "chance": null,
+            "chance": 100,
             "conditions": [
                 "other-talked-to-32-people-underground",
                 "time-morning"
@@ -13285,18 +11284,18 @@
         },
         {
             "species": "spiritomb",
-            "method": "special",
+            "method": "static",
             "minLevel": 25,
             "maxLevel": 25,
-            "chance": null,
+            "chance": 100,
             "conditions": ["other-talked-to-32-people-underground", "time-day"]
         },
         {
             "species": "spiritomb",
-            "method": "special",
+            "method": "static",
             "minLevel": 25,
             "maxLevel": 25,
-            "chance": null,
+            "chance": 100,
             "conditions": [
                 "other-talked-to-32-people-underground",
                 "time-night"
@@ -17336,6 +15335,327 @@
             "minLevel": 5,
             "maxLevel": 15,
             "chance": null
+        }
+    ],
+    "solaceon-ruins-b1f": [
+        {
+            "species": "unown",
+            "method": "cave",
+            "minLevel": 20,
+            "maxLevel": 30,
+            "chance": 100
+        }
+    ],
+    "solaceon-ruins-b2f": [
+        {
+            "species": "unown",
+            "method": "cave",
+            "minLevel": 20,
+            "maxLevel": 30,
+            "chance": 100
+        }
+    ],
+    "solaceon-ruins-b3f": [
+        {
+            "species": "unown",
+            "method": "cave",
+            "minLevel": 20,
+            "maxLevel": 30,
+            "chance": 100
+        }
+    ],
+    "solaceon-ruins-b4f": [
+        {
+            "species": "unown",
+            "method": "cave",
+            "minLevel": 20,
+            "maxLevel": 30,
+            "chance": 100
+        }
+    ],
+    "eterna-forest-exterior": [
+        {
+            "species": "aipom",
+            "method": "honey-tree",
+            "minLevel": 5,
+            "maxLevel": 15,
+            "chance": null
+        },
+        {
+            "species": "heracross",
+            "method": "honey-tree",
+            "minLevel": 5,
+            "maxLevel": 15,
+            "chance": null
+        },
+        {
+            "species": "wurmple",
+            "method": "honey-tree",
+            "minLevel": 5,
+            "maxLevel": 15,
+            "chance": null
+        },
+        {
+            "species": "burmy",
+            "method": "honey-tree",
+            "minLevel": 5,
+            "maxLevel": 15,
+            "chance": null
+        },
+        {
+            "species": "combee",
+            "method": "honey-tree",
+            "minLevel": 5,
+            "maxLevel": 15,
+            "chance": null
+        },
+        {
+            "species": "cherubi",
+            "method": "honey-tree",
+            "minLevel": 5,
+            "maxLevel": 15,
+            "chance": null
+        },
+        {
+            "species": "munchlax",
+            "method": "honey-tree",
+            "minLevel": 5,
+            "maxLevel": 15,
+            "chance": null
+        }
+    ],
+    "eterna-forest-interior": [
+        {
+            "species": "gastly",
+            "method": "grass",
+            "minLevel": 13,
+            "maxLevel": 13,
+            "chance": 4,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "gastly",
+            "method": "grass",
+            "minLevel": 13,
+            "maxLevel": 13,
+            "chance": 4,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "gastly",
+            "method": "grass",
+            "minLevel": 13,
+            "maxLevel": 13,
+            "chance": 4,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "hoothoot",
+            "method": "grass",
+            "minLevel": 12,
+            "maxLevel": 12,
+            "chance": 10,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "wurmple",
+            "method": "grass",
+            "minLevel": 10,
+            "maxLevel": 10,
+            "chance": 10,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "wurmple",
+            "method": "grass",
+            "minLevel": 10,
+            "maxLevel": 10,
+            "chance": 10,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "silcoon",
+            "method": "grass",
+            "minLevel": 12,
+            "maxLevel": 12,
+            "chance": 5,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "silcoon",
+            "method": "grass",
+            "minLevel": 12,
+            "maxLevel": 12,
+            "chance": 5,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "silcoon",
+            "method": "grass",
+            "minLevel": 12,
+            "maxLevel": 12,
+            "chance": 5,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "beautifly",
+            "method": "grass",
+            "minLevel": 14,
+            "maxLevel": 14,
+            "chance": 1,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "beautifly",
+            "method": "grass",
+            "minLevel": 14,
+            "maxLevel": 14,
+            "chance": 1,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "beautifly",
+            "method": "grass",
+            "minLevel": 14,
+            "maxLevel": 14,
+            "chance": 1,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "cascoon",
+            "method": "grass",
+            "minLevel": 12,
+            "maxLevel": 12,
+            "chance": 5,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "cascoon",
+            "method": "grass",
+            "minLevel": 12,
+            "maxLevel": 12,
+            "chance": 5,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "cascoon",
+            "method": "grass",
+            "minLevel": 12,
+            "maxLevel": 12,
+            "chance": 5,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "dustox",
+            "method": "grass",
+            "minLevel": 14,
+            "maxLevel": 14,
+            "chance": 1,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "dustox",
+            "method": "grass",
+            "minLevel": 14,
+            "maxLevel": 14,
+            "chance": 1,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "dustox",
+            "method": "grass",
+            "minLevel": 14,
+            "maxLevel": 14,
+            "chance": 1,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "bidoof",
+            "method": "grass",
+            "minLevel": 12,
+            "maxLevel": 12,
+            "chance": 10,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "bidoof",
+            "method": "grass",
+            "minLevel": 12,
+            "maxLevel": 12,
+            "chance": 10,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "bidoof",
+            "method": "grass",
+            "minLevel": 12,
+            "maxLevel": 12,
+            "chance": 10,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "kricketot",
+            "method": "grass",
+            "minLevel": 10,
+            "maxLevel": 10,
+            "chance": 10,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "kricketot",
+            "method": "grass",
+            "minLevel": 12,
+            "maxLevel": 12,
+            "chance": 10,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "budew",
+            "method": "grass",
+            "minLevel": 10,
+            "maxLevel": 11,
+            "chance": 30,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "budew",
+            "method": "grass",
+            "minLevel": 10,
+            "maxLevel": 12,
+            "chance": 40,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "budew",
+            "method": "grass",
+            "minLevel": 10,
+            "maxLevel": 11,
+            "chance": 30,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "buneary",
+            "method": "grass",
+            "minLevel": 11,
+            "maxLevel": 13,
+            "chance": 24,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "buneary",
+            "method": "grass",
+            "minLevel": 11,
+            "maxLevel": 13,
+            "chance": 24,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "buneary",
+            "method": "grass",
+            "minLevel": 11,
+            "maxLevel": 13,
+            "chance": 24,
+            "conditions": ["time-night"]
         }
     ]
 }

@@ -263,6 +263,33 @@ const splitLocations = (
     }
 };
 
+const GREAT_MARSH_DAILY_SLOT_PREFIX = 'great-marsh-daily-slot-';
+
+// Great Marsh's grass encounters are gated behind which of 32 daily slot
+// states is active that day; that's not a time-of-day-style condition players
+// toggle, it's a distinct "spotted through binoculars before entering"
+// mechanic, so those encounters get their own method with the slot condition
+// stripped rather than showing up as oddly-conditioned grass encounters.
+const resolveGreatMarshBinoculars = (
+    encounters: RawEncounter[]
+): RawEncounter[] =>
+    encounters.map((encounter) => {
+        const conditions = encounter.conditions ?? [];
+        const hasSlotCondition = conditions.some((condition) =>
+            condition.startsWith(GREAT_MARSH_DAILY_SLOT_PREFIX)
+        );
+        if (!hasSlotCondition) return encounter;
+
+        return {
+            ...encounter,
+            method: EncounterMethod.Binoculars,
+            conditions: conditions.filter(
+                (condition) =>
+                    !condition.startsWith(GREAT_MARSH_DAILY_SLOT_PREFIX)
+            ),
+        };
+    });
+
 const resolveWalkMethod = (
     encounters: RawEncounter[],
     locationName: string,
@@ -321,6 +348,7 @@ const resolveHoneyTreeEncounters = (
     );
 
 const NULLIFIED_CHANCE_METHODS: string[] = [
+    EncounterMethod.Binoculars,
     EncounterMethod.HoneyTree,
     EncounterMethod.Starter,
     EncounterMethod.Special,
@@ -377,13 +405,30 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
                 location.name,
                 version.caveLocations ?? []
             );
+            const withBinoculars = resolveGreatMarshBinoculars(withWalkMethod);
             const withMethodOverrides = resolveMethodOverrides(
-                withWalkMethod,
+                withBinoculars,
                 location.name,
                 version.methodOverrides ?? []
             );
             const withMethodRenames = resolveMethodRenames(withMethodOverrides);
-            const merged = mergeEncounters(withMethodRenames, 'sum');
+            const isBinoculars = (encounter: RawEncounter): boolean =>
+                encounter.method === EncounterMethod.Binoculars;
+            const merged = [
+                // Different daily slots are mutually exclusive states, not
+                // stacking probabilities, so identical binoculars entries
+                // dedupe to their highest chance instead of summing.
+                ...mergeEncounters(
+                    withMethodRenames.filter(isBinoculars),
+                    'dedupe'
+                ),
+                ...mergeEncounters(
+                    withMethodRenames.filter(
+                        (encounter) => !isBinoculars(encounter)
+                    ),
+                    'sum'
+                ),
+            ];
             const expanded = expandTimeOfDayEncounters(merged);
             const withHoneyTree = resolveHoneyTreeEncounters(expanded);
             const remerged = mergeEncounters(withHoneyTree, 'sum');
