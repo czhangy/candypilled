@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { PokemonStatus } from '@/lib/static/enums';
 import { BoxView, CaughtPokemon } from '@/lib/static/types';
+import ItemHelpers from '@/lib/utils/ItemHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './PokemonBox.module.scss';
 import TagFilter from './TagFilter/TagFilter';
@@ -34,6 +35,7 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
 
     const SPRITE_WIDTH = 40;
     const SPRITE_HEIGHT = 30;
+    const ITEM_ICON_SIZE = 24;
 
     // -------------------------------------------------------------------------
     // STATE
@@ -166,6 +168,11 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                             const sprite = PokemonHelpers.getBoxSprite(
                                 pokemon.name
                             );
+                            const heldItemSprite = pokemon.heldItem
+                                ? ItemHelpers.getHeldItemSprite(
+                                      pokemon.heldItem
+                                  )
+                                : undefined;
                             const isOverCap =
                                 levelCap !== null && pokemon.level > levelCap;
 
@@ -210,6 +217,15 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                                         >
                                             <span className={styles.tag} />
                                         </Tooltip>
+                                    )}
+                                    {heldItemSprite && (
+                                        <Image
+                                            alt={pokemon.heldItem ?? ''}
+                                            className={styles['held-item']}
+                                            height={ITEM_ICON_SIZE}
+                                            src={heldItemSprite}
+                                            width={ITEM_ICON_SIZE}
+                                        />
                                     )}
                                 </button>
                             );

@@ -110,6 +110,13 @@
                 width: 0.4rem;
             }
 
+            .held-item {
+                bottom: 0.2rem;
+                image-rendering: pixelated;
+                position: absolute;
+                right: 0.2rem;
+            }
+
             @media (hover: hover) {
                 &:hover:not(&--selected) {
                     background: color.adjust($background-light, $lightness: 6%);

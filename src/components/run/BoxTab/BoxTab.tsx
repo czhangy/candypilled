@@ -15,6 +15,7 @@ type BoxTabProps = {
     game: Game;
     onDeselectPokemon: () => void;
     onSelectAbility: (name: string) => void;
+    onSelectItem: (name: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (name: string) => void;
     onSelectPokemon: (location: string) => void;
@@ -26,6 +27,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
     game,
     onDeselectPokemon,
     onSelectAbility,
+    onSelectItem,
     onSelectLocation,
     onSelectMove,
     onSelectPokemon,
@@ -127,7 +129,14 @@ const BoxTab: React.FC<BoxTabProps> = ({
             ...run,
             caughtPokemon: run.caughtPokemon.map((caughtPokemon) =>
                 caughtPokemon.location === pokemon.location
-                    ? { ...caughtPokemon, status: newStatus }
+                    ? {
+                          ...caughtPokemon,
+                          heldItem:
+                              newStatus === PokemonStatus.Dead
+                                  ? ''
+                                  : caughtPokemon.heldItem,
+                          status: newStatus,
+                      }
                     : caughtPokemon
             ),
         };
@@ -234,6 +243,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 onEdit={handleEditPokemon}
                 onEvolve={handleEvolve}
                 onSelectAbility={onSelectAbility}
+                onSelectItem={onSelectItem}
                 onSelectLocation={onSelectLocation}
                 onSelectMove={onSelectMove}
                 onToggleStatus={handleToggleStatus}

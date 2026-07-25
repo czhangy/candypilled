@@ -106,9 +106,9 @@ shown instead.
   (`?tab=data&subtab=abilities&ability=<name>`) in a new browser tab,
   leaving the current page untouched
 - **On item link click** (from `SplitTab`, a Pokémon's held item within
-  `BattleCard`) — opens the Data tab's Items subtab for that item
-  (`?tab=data&subtab=items&item=<name>`) in a new browser tab, leaving
-  the current page untouched
+  `BattleCard`, or from `BoxTab`'s `PokemonPreview`) — opens the Data
+  tab's Items subtab for that item (`?tab=data&subtab=items&item=<name>`)
+  in a new browser tab, leaving the current page untouched
 - **On species link click** (from `SplitTab`, a Pokémon's sprite or name
   within `BattleCard`) — opens the Data tab's Pokédex subtab for that
   species (`?tab=data&subtab=pokedex&species=<slug>`) in a new browser
