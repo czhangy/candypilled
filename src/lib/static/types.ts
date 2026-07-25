@@ -427,6 +427,27 @@ export type AbilityData = {
     valuesByGeneration: AbilityValuesByGeneration[];
 };
 
+export type ItemValuesByGeneration = {
+    fromGeneration: number;
+    description: string;
+};
+
+export type ItemData = {
+    name: string;
+    category: string;
+    // PokeAPI doesn't track historical changes to an item's effect text, so
+    // unlike its per-generation description this isn't split by generation.
+    effect: string;
+    introducedInGeneration: number;
+    // PokeAPI has no concept of an item being discontinued (e.g. Elemental
+    // Gems, cut after generation VI), so this is curated separately rather
+    // than derived from any API field. Only set for the handful of items
+    // that were actually removed from later games.
+    removedInGeneration?: number;
+    sprite: string;
+    valuesByGeneration: ItemValuesByGeneration[];
+};
+
 export type LearnsetMethod = 'level-up' | 'machine' | 'tutor';
 
 export type LearnsetMove = {
