@@ -56,6 +56,12 @@
             text-align: center;
             transition: color 0.2s ease;
 
+            .pokemon-slot__gender {
+                @include gender-symbol;
+
+                margin-left: 0.15rem;
+            }
+
             .pokemon-slot__types {
                 display: flex;
                 gap: 0.25rem;
