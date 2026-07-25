@@ -26,6 +26,7 @@ type PokedexTileProps = (
                   CaughtPokemon,
                   | 'ability'
                   | 'evs'
+                  | 'gender'
                   | 'ivs'
                   | 'level'
                   | 'moves'
@@ -117,6 +118,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
             CaughtPokemon,
             | 'ability'
             | 'evs'
+            | 'gender'
             | 'ivs'
             | 'level'
             | 'moves'

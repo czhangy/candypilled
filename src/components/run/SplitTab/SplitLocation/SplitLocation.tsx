@@ -270,6 +270,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             CaughtPokemon,
             | 'ability'
             | 'evs'
+            | 'gender'
             | 'ivs'
             | 'level'
             | 'moves'

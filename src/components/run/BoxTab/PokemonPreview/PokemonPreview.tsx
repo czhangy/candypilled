@@ -26,6 +26,8 @@ type PokemonPreviewProps = {
             CaughtPokemon,
             | 'ability'
             | 'evs'
+            | 'gender'
+            | 'heldItem'
             | 'ivs'
             | 'level'
             | 'moves'
@@ -116,6 +118,8 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
             CaughtPokemon,
             | 'ability'
             | 'evs'
+            | 'gender'
+            | 'heldItem'
             | 'ivs'
             | 'level'
             | 'moves'

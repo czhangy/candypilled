@@ -128,6 +128,7 @@ export type AbilitySlot = 1 | 2 | 3;
 export type BattlePokemon = {
     ability: AbilitySlot;
     evs?: StatValues;
+    gender?: 'male' | 'female';
     heldItem?: string;
     ivs?: number | StatValues;
     level: number;

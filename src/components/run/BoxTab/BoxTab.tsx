@@ -91,6 +91,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
             CaughtPokemon,
             | 'ability'
             | 'evs'
+            | 'gender'
             | 'ivs'
             | 'level'
             | 'moves'
@@ -141,6 +142,8 @@ const BoxTab: React.FC<BoxTabProps> = ({
             CaughtPokemon,
             | 'ability'
             | 'evs'
+            | 'gender'
+            | 'heldItem'
             | 'ivs'
             | 'level'
             | 'moves'

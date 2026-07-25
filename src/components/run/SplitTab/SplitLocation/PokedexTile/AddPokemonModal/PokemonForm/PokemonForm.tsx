@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import TagInput from '@/components/common/TagInput/TagInput';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
+import { ITEMS } from '@/lib/data/items';
 import {
     MAX_EV,
     MAX_IV,
@@ -28,6 +29,8 @@ type PokemonFormProps = {
     allSpecies: string[];
     defaultAbilitySlot?: AbilitySlot;
     defaultEvs?: StatValues;
+    defaultGender?: 'male' | 'female';
+    defaultHeldItem?: string;
     defaultIvs?: StatValues;
     defaultLevel?: number;
     defaultMoves?: string[];
@@ -42,6 +45,8 @@ type PokemonFormProps = {
             CaughtPokemon,
             | 'ability'
             | 'evs'
+            | 'gender'
+            | 'heldItem'
             | 'ivs'
             | 'level'
             | 'moves'
@@ -53,6 +58,7 @@ type PokemonFormProps = {
     recalculateMovesOnLevelChange: boolean;
     showAbility: boolean;
     showEvs: boolean;
+    showHeldItem: boolean;
     showLevel: boolean;
     showMoves: boolean;
     showTags: boolean;
@@ -64,6 +70,8 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     allSpecies,
     defaultAbilitySlot,
     defaultEvs,
+    defaultGender,
+    defaultHeldItem,
     defaultIvs,
     defaultLevel,
     defaultMoves,
@@ -77,6 +85,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     recalculateMovesOnLevelChange,
     showAbility,
     showEvs,
+    showHeldItem,
     showLevel,
     showMoves,
     showTags,
@@ -125,6 +134,10 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     const [abilitySlot, setAbilitySlot] = useState<AbilitySlot>(
         defaultAbilitySlot ?? 1
     );
+    const [gender, setGender] = useState<'male' | 'female'>(
+        defaultGender ?? 'male'
+    );
+    const [heldItem, setHeldItem] = useState(defaultHeldItem ?? '');
     const [nature, setNature] = useState<Nature>(
         defaultNature ?? Object.values(Nature)[0]
     );
@@ -159,6 +172,14 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
 
     const handleAbilityChange = (value: string): void => {
         setAbilitySlot(Number(value) as AbilitySlot);
+    };
+
+    const handleGenderChange = (value: string): void => {
+        setGender(value as 'male' | 'female');
+    };
+
+    const handleHeldItemChange = (value: string): void => {
+        setHeldItem(value);
     };
 
     const handleMoveChange = (index: number, value: string): void => {
@@ -215,6 +236,8 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
         onSubmit({
             ability: abilitySlot,
             evs,
+            gender,
+            heldItem,
             ivs,
             level,
             moves: moves.filter(Boolean),
@@ -250,6 +273,22 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     const natureOptions: DropdownOption[] = Object.values(Nature).map(
         (name) => ({ label: name, value: name })
     );
+    const genderOptions: DropdownOption[] = [
+        { label: 'Male', value: 'male' },
+        { label: 'Female', value: 'female' },
+    ];
+    const availableItems = Object.values(ITEMS).filter(
+        (item) =>
+            item.introducedInGeneration <= generation &&
+            (item.removedInGeneration === undefined ||
+                generation < item.removedInGeneration)
+    );
+    const heldItemOptions: DropdownOption[] = [
+        { label: 'None', value: '' },
+        ...availableItems
+            .map((item) => ({ label: item.name, value: item.name }))
+            .sort((a, b) => a.label.localeCompare(b.label)),
+    ];
     const learnset = PokemonHelpers.getPokemonLearnset(species, version) ?? [];
     const moveNames = new Set(
         learnset.map(
@@ -301,16 +340,14 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
                 </div>
             )}
             <div className={styles.row}>
-                {showAbility && (
-                    <div className={styles.field}>
-                        <span className={styles.label}>Ability</span>
-                        <Dropdown
-                            onChange={handleAbilityChange}
-                            options={abilityOptions}
-                            value={String(abilitySlot)}
-                        />
-                    </div>
-                )}
+                <div className={styles.field}>
+                    <span className={styles.label}>Gender</span>
+                    <Dropdown
+                        onChange={handleGenderChange}
+                        options={genderOptions}
+                        value={gender}
+                    />
+                </div>
                 <div className={styles.field}>
                     <span className={styles.label}>Nature</span>
                     <Dropdown
@@ -320,6 +357,31 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
                     />
                 </div>
             </div>
+            {(showAbility || showHeldItem) && (
+                <div className={styles.row}>
+                    {showAbility && (
+                        <div className={styles.field}>
+                            <span className={styles.label}>Ability</span>
+                            <Dropdown
+                                onChange={handleAbilityChange}
+                                options={abilityOptions}
+                                value={String(abilitySlot)}
+                            />
+                        </div>
+                    )}
+                    {showHeldItem && (
+                        <div className={styles.field}>
+                            <span className={styles.label}>Held Item</span>
+                            <Dropdown
+                                onChange={handleHeldItemChange}
+                                options={heldItemOptions}
+                                searchable
+                                value={heldItem}
+                            />
+                        </div>
+                    )}
+                </div>
+            )}
             {showMoves && (
                 <div className={styles.field}>
                     <span className={styles.label}>Moves</span>

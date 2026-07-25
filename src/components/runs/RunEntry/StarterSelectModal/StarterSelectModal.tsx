@@ -96,6 +96,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
             CaughtPokemon,
             | 'ability'
             | 'evs'
+            | 'gender'
             | 'ivs'
             | 'level'
             | 'moves'
@@ -147,6 +148,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
                             recalculateMovesOnLevelChange={false}
                             showAbility={false}
                             showEvs={false}
+                            showHeldItem={false}
                             showLevel={false}
                             showMoves={false}
                             showTags={false}
