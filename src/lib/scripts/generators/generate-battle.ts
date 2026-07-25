@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { createInterface, Interface } from 'readline/promises';
 import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
-import { logSuccess, runScript } from '@/lib/scripts/utils/helpers';
+import { logError, logSuccess, runScript } from '@/lib/scripts/utils/helpers';
 import { CLASSES_SLUGGED_BY_NAME } from '@/lib/static/constants';
 import { Nature } from '@/lib/static/enums';
 import { AbilitySlot } from '@/lib/static/types';
@@ -364,9 +364,11 @@ const promptPokemon = async (
         ).trim();
         if (!raw) return null;
 
-        const pokemon = PokemonHelpers.getPokemonData(raw);
+        const pokemon = PokemonHelpers.getPokemonData(
+            StringHelpers.toSlug(raw)
+        );
         if (!pokemon) {
-            console.log("  That isn't a valid Pokémon.");
+            logError("  That isn't a valid Pokémon.");
             continue;
         }
         slug = pokemon.slug;
@@ -381,9 +383,7 @@ const promptPokemon = async (
 
     let nature: Nature | null = null;
     while (nature === null) {
-        const raw = (
-            await rl.question(`  Nature (${NATURE_NAMES.join('/')}): `)
-        ).trim();
+        const raw = (await rl.question('  Nature: ')).trim();
         nature =
             NATURE_NAMES.find(
                 (candidate) => candidate.toLowerCase() === raw.toLowerCase()
@@ -406,7 +406,7 @@ const promptTrainerClass = async (
         const raw = (await rl.question('Trainer class: ')).trim();
         const slug = StringHelpers.toSlug(raw);
         if (!validTrainerClasses.has(slug)) {
-            console.log("  That isn't a valid trainer class.");
+            logError("  That isn't a valid trainer class.");
             continue;
         }
         return {
@@ -444,9 +444,9 @@ const promptBattle = async (
 
     let dv = NaN;
     while (!Number.isInteger(dv) || dv < 0 || dv > MAX_DV) {
-        dv = Number((await rl.question(`DV (0-${MAX_DV}): `)).trim());
+        dv = Number((await rl.question('DV: ')).trim());
     }
-    const ivs = dv ? Math.round((dv * MAX_IV) / MAX_DV) : undefined;
+    const ivs = dv ? Math.floor((dv * MAX_IV) / MAX_DV) : undefined;
 
     const team: PromptedTeamPokemon[] = [];
     for (let i = 1; i <= MAX_TEAM_SIZE; i++) {
