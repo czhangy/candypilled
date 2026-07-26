@@ -15,6 +15,7 @@ const ETERNA_FOREST: Location = {
             battles: [
                 {
                     isTag: true,
+                    customWidth: 75,
                     trainerClass: 'Bug Catcher',
                     name: 'Jack',
                     team: [
@@ -49,23 +50,20 @@ const ETERNA_FOREST: Location = {
                             ivs: 2,
                         },
                     ],
-                    x: 34,
-                    y: 47.5,
-                },
-                {
-                    isTag: true,
-                    trainerClass: 'Lass',
-                    name: 'Briana',
-                    team: [
-                        {
-                            slug: 'pachirisu',
-                            ability: 1,
-                            gender: 'female',
-                            level: 16,
-                            nature: Nature.Modest,
-                        },
-                    ],
-                    x: 37.9,
+                    secondTrainer: {
+                        trainerClass: 'Lass',
+                        name: 'Briana',
+                        team: [
+                            {
+                                slug: 'pachirisu',
+                                ability: 1,
+                                gender: 'female',
+                                level: 16,
+                                nature: Nature.Modest,
+                            },
+                        ],
+                    },
+                    x: 36,
                     y: 47.5,
                 },
                 {

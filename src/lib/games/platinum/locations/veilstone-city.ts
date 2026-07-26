@@ -10,8 +10,8 @@ const VEILSTONE_CITY: Location = {
         {
             isTag: true,
             customHeight: 53,
-            trainerClass: 'Galactic Grunt M And Galactic Grunt M',
-            name: '2',
+            trainerClass: 'Galactic Grunt M',
+            name: '14',
             team: [
                 {
                     slug: 'zubat',
@@ -22,14 +22,6 @@ const VEILSTONE_CITY: Location = {
                     nature: Nature.Calm,
                 },
                 {
-                    slug: 'zubat',
-                    ability: 1,
-                    gender: 'male',
-                    ivs: 3,
-                    level: 24,
-                    nature: Nature.Quiet,
-                },
-                {
                     slug: 'stunky',
                     ability: 1,
                     gender: 'male',
@@ -37,15 +29,29 @@ const VEILSTONE_CITY: Location = {
                     level: 26,
                     nature: Nature.Timid,
                 },
-                {
-                    slug: 'croagunk',
-                    ability: 1,
-                    gender: 'male',
-                    ivs: 3,
-                    level: 26,
-                    nature: Nature.Hasty,
-                },
             ],
+            secondTrainer: {
+                trainerClass: 'Galactic Grunt M',
+                name: '14',
+                team: [
+                    {
+                        slug: 'zubat',
+                        ability: 1,
+                        gender: 'male',
+                        ivs: 3,
+                        level: 24,
+                        nature: Nature.Quiet,
+                    },
+                    {
+                        slug: 'croagunk',
+                        ability: 1,
+                        gender: 'male',
+                        ivs: 3,
+                        level: 26,
+                        nature: Nature.Hasty,
+                    },
+                ],
+            },
             x: 40.4,
             y: 34.8,
         },

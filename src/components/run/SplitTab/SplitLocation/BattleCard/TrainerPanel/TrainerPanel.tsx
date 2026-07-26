@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { FieldCondition } from '@/lib/static/enums';
 import { Battle } from '@/lib/static/types';
-import BattleHelpers from '@/lib/utils/BattleHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
@@ -11,14 +10,20 @@ import styles from './TrainerPanel.module.scss';
 type TrainerPanelProps = {
     battle: Battle;
     isDefeated: boolean;
+    isStacked: boolean;
     onToggleDefeated: () => void;
+    trainerClass: string;
+    trainerName: string;
     variant: string;
 };
 
 const TrainerPanel: React.FC<TrainerPanelProps> = ({
     battle,
     isDefeated,
+    isStacked,
     onToggleDefeated,
+    trainerClass,
+    trainerName,
     variant,
 }) => {
     // -------------------------------------------------------------------------
@@ -45,14 +50,21 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
     // -------------------------------------------------------------------------
 
     return (
-        <div className={styles.trainer}>
+        <div
+            className={[
+                styles.trainer,
+                isStacked
+                    ? styles['trainer--stacked']
+                    : styles['trainer--single'],
+            ].join(' ')}
+        >
             <div className={styles['trainer__sprite']}>
                 <Image
-                    alt={BattleHelpers.getFullName(battle)}
+                    alt={`${trainerClass} ${trainerName}`.trim()}
                     height={SPRITE_SIZE}
                     src={TrainerHelpers.getTrainerSprite(
-                        battle.trainerClass,
-                        battle.name,
+                        trainerClass,
+                        trainerName,
                         variant
                     )}
                     width={SPRITE_SIZE}

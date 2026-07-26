@@ -20,8 +20,8 @@ const LAKE_VERITY: Location = {
             battles: [
                 {
                     isDouble: true,
-                    trainerClass: 'Galactic Grunt M and Galactic Grunt F',
-                    name: '1',
+                    trainerClass: 'Galactic Grunt M',
+                    name: '12',
                     team: [
                         {
                             slug: 'croagunk',
@@ -31,31 +31,37 @@ const LAKE_VERITY: Location = {
                             level: 37,
                             nature: Nature.Careful,
                         },
-                        {
-                            slug: 'glameow',
-                            ability: 1,
-                            gender: 'female',
-                            ivs: 3,
-                            level: 33,
-                            nature: Nature.Jolly,
-                        },
-                        {
-                            slug: 'golbat',
-                            ability: 1,
-                            gender: 'male',
-                            ivs: 3,
-                            level: 33,
-                            nature: Nature.Serious,
-                        },
-                        {
-                            slug: 'murkrow',
-                            ability: 1,
-                            gender: 'male',
-                            ivs: 3,
-                            level: 36,
-                            nature: Nature.Rash,
-                        },
                     ],
+                    secondTrainer: {
+                        trainerClass: 'Galactic Grunt F',
+                        name: '12',
+                        team: [
+                            {
+                                slug: 'glameow',
+                                ability: 1,
+                                gender: 'female',
+                                ivs: 3,
+                                level: 33,
+                                nature: Nature.Jolly,
+                            },
+                            {
+                                slug: 'golbat',
+                                ability: 1,
+                                gender: 'male',
+                                ivs: 3,
+                                level: 33,
+                                nature: Nature.Serious,
+                            },
+                            {
+                                slug: 'murkrow',
+                                ability: 1,
+                                gender: 'male',
+                                ivs: 3,
+                                level: 36,
+                                nature: Nature.Rash,
+                            },
+                        ],
+                    },
                     x: 75.9,
                     y: 73.5,
                 },

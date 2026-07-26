@@ -9,8 +9,8 @@ const JUBILIFE_CITY: Location = {
         {
             isTag: true,
             isDoubleHeightMarker: true,
-            trainerClass: 'Galactic Grunt M and Galactic Grunt M',
-            name: '1',
+            trainerClass: 'Galactic Grunt M',
+            name: '13',
             team: [
                 {
                     slug: 'glameow',
@@ -19,14 +19,20 @@ const JUBILIFE_CITY: Location = {
                     level: 11,
                     nature: Nature.Rash,
                 },
-                {
-                    slug: 'stunky',
-                    ability: 1,
-                    gender: 'male',
-                    level: 11,
-                    nature: Nature.Timid,
-                },
             ],
+            secondTrainer: {
+                trainerClass: 'Galactic Grunt M',
+                name: '13',
+                team: [
+                    {
+                        slug: 'stunky',
+                        ability: 1,
+                        gender: 'male',
+                        level: 11,
+                        nature: Nature.Timid,
+                    },
+                ],
+            },
             x: 71.2,
             y: 5.8,
         },

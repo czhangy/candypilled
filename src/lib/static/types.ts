@@ -139,6 +139,16 @@ export type BattlePokemon = {
     slug: string;
 };
 
+// One trainer's own slice of a battle: their sprite-lookup class, name, and
+// team, resolved for the current starter. A non-tag battle has a single
+// group; a tag battle has one per trainer, in trainerClass/secondTrainer
+// order.
+export type BattleTeamGroup = {
+    name: string;
+    team: BattlePokemon[];
+    trainerClass: string;
+};
+
 // A caught Pokémon as tracked for Nuzlocke rule enforcement: one catch per
 // location (not subarea), and no more than one catch per evolution line.
 export type CaughtPokemon = Omit<BattlePokemon, 'moves'> & {
@@ -159,6 +169,17 @@ type BattleItem = {
     name: string;
 };
 
+// The second trainer in a tag battle: a distinct trainer merged into the
+// same Battle entry (one map marker, one defeat toggle) as the primary
+// trainerClass/team, so each trainer's Pokémon can still be attributed to
+// the trainer that owns them.
+export type BattleTrainer = {
+    name: string;
+    team?: BattlePokemon[];
+    teamsByStarter?: Partial<Record<string, BattlePokemon[]>>;
+    trainerClass: string;
+};
+
 export type Battle = {
     customHeight?: number;
     customWidth?: number;
@@ -175,6 +196,7 @@ export type Battle = {
     isTrueDouble?: boolean;
     items?: BattleItem[];
     name: string;
+    secondTrainer?: BattleTrainer;
     team?: BattlePokemon[];
     teamsByStarter?: Partial<Record<string, BattlePokemon[]>>;
     trainerClass: string;

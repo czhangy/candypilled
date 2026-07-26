@@ -11,7 +11,14 @@ button that calls `onSelectTrainer` with the battle's key, jumping to
 that trainer in the Calc tab. The root element's `id` is
 `BattleHelpers.getBattleSlug(battle)`, a DOM-safe slug of the battle's
 key, so `SplitTab` can scroll directly to it when entering with a
-matching battle selected. See `TrainerPanel.md` and `PokemonSlot.md`
+matching battle selected. For a tag battle (`battle.secondTrainer`
+set), the card instead stacks two full rows, one per trainer, each
+with its own six-slot team: the first trainer's row shows just a bare
+`TrainerSprite`, and the second trainer's row shows the full
+`TrainerPanel` (with all the shared metadata and the defeat button,
+since the whole tag battle is defeated as a single unit) so each
+trainer's Pokémon stay visually attributed to the trainer that owns
+them. See `TrainerPanel.md`, `TrainerSprite.md`, and `PokemonSlot.md`
 for the portrait and team slot behavior in detail.
 
 ## Props
@@ -33,10 +40,16 @@ for the portrait and team slot behavior in detail.
 
 ## Computations
 
-- `team` — the Pokémon team to render, resolved via `BattleHelpers.getTeamFromOptions`
-  from `battle.teamsByStarter` (keyed by the run's starter) when present,
-  falling back to `battle.team` otherwise; padded to `TEAM_SLOT_COUNT`
-  (6) with `null`s and rendered as one `PokemonSlot` per entry
+- `teamGroups` — one entry per trainer (one for a normal battle, two
+  for a tag battle), each resolved via `BattleHelpers.getTeamGroups`
+  from that trainer's `teamsByStarter` (keyed by the run's starter)
+  when present, falling back to its `team` otherwise; each group's
+  team is padded to `TEAM_SLOT_COUNT` (6) with `null`s and rendered as
+  its own row of `PokemonSlot`s
+- `isStacked` — whether the battle has a second trainer, so the card
+  should render two rows instead of one; passed down so `TrainerPanel`
+  and each `PokemonSlot` can round the correct corners and omit the
+  border edge they share with the row above them
 
 ## SCSS Variable Dependencies
 

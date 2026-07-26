@@ -84,8 +84,6 @@ const TRAINER_CLASS_GENDERS: Record<string, 'male' | 'female'> = {
     flint: 'male',
     'galactic-grunt-f': 'female',
     'galactic-grunt-m': 'male',
-    'galactic-grunt-m-and-galactic-grunt-f': 'male',
-    'galactic-grunt-m-and-galactic-grunt-m': 'male',
     gardenia: 'female',
     gentleman: 'male',
     guitarist: 'male',
@@ -178,6 +176,13 @@ type PromptedItem = {
     count: number;
 };
 
+type PromptedBattleTrainer = {
+    trainerClass: string;
+    name: string;
+    team?: PromptedTeamPokemon[];
+    teamsByStarter?: Record<string, PromptedTeamPokemon[]>;
+};
+
 type PromptedBattle = {
     trainerClass: string;
     isTrueDouble: boolean;
@@ -189,6 +194,7 @@ type PromptedBattle = {
     name: string;
     team?: PromptedTeamPokemon[];
     teamsByStarter?: Record<string, PromptedTeamPokemon[]>;
+    secondTrainer?: PromptedBattleTrainer;
     items?: PromptedItem[];
     fieldCondition?: FieldCondition;
     x: number;
@@ -434,6 +440,35 @@ const serializeTeam = (team: PromptedTeamPokemon[], indent: string): string => {
     return `[\n${pokemon}${indent}]`;
 };
 
+const serializeSecondTrainer = (
+    secondTrainer: PromptedBattleTrainer,
+    indent: string
+): string => {
+    const fieldIndent = `${indent}    `;
+    const teamField = secondTrainer.team
+        ? `${fieldIndent}team: ${serializeTeam(secondTrainer.team, fieldIndent)},\n`
+        : '';
+    const teamsByStarterField = secondTrainer.teamsByStarter
+        ? `${fieldIndent}teamsByStarter: {\n` +
+          Object.entries(secondTrainer.teamsByStarter)
+              .map(
+                  ([starter, team]) =>
+                      `${fieldIndent}    ${starter}: ${serializeTeam(team, `${fieldIndent}    `)},\n`
+              )
+              .join('') +
+          `${fieldIndent}},\n`
+        : '';
+
+    return (
+        `${indent}secondTrainer: {\n` +
+        `${fieldIndent}trainerClass: '${escapeQuotes(secondTrainer.trainerClass)}',\n` +
+        `${fieldIndent}name: '${escapeQuotes(secondTrainer.name)}',\n` +
+        teamField +
+        teamsByStarterField +
+        `${indent}},\n`
+    );
+};
+
 const serializeItems = (items: PromptedItem[], indent: string): string => {
     const itemIndent = `${indent}    `;
     const entries = items
@@ -459,6 +494,9 @@ const serializeBattle = (battle: PromptedBattle, indent: string): string => {
               )
               .join('') +
           `${fieldIndent}},\n`
+        : '';
+    const secondTrainerField = battle.secondTrainer
+        ? serializeSecondTrainer(battle.secondTrainer, fieldIndent)
         : '';
     const itemsField = battle.items
         ? `${fieldIndent}items: ${serializeItems(battle.items, fieldIndent)},\n`
@@ -491,6 +529,7 @@ const serializeBattle = (battle: PromptedBattle, indent: string): string => {
         `${indent}    name: '${escapeQuotes(battle.name)}',\n` +
         teamField +
         teamsByStarterField +
+        secondTrainerField +
         itemsField +
         fieldConditionField +
         `${indent}    x: ${battle.x},\n` +
@@ -722,6 +761,64 @@ const promptTeam = async (
     return team;
 };
 
+// Resolves the gender a trainer of classSlug fields: classes fielded by a
+// single named trainer (e.g. Leader, Champion) take their gender from name
+// instead of the class, stripping a trailing disambiguator (e.g. "Barry 2")
+// some repeat battles use to stay unique within a location.
+const resolveTrainerGender = (
+    classSlug: string,
+    name: string
+): 'male' | 'female' => {
+    const isSluggedByName = SLUGGED_BY_NAME_CLASS_SLUGS.has(classSlug);
+    const genderSlug = isSluggedByName
+        ? StringHelpers.toSlug(name.replace(/\s+\d+$/, ''))
+        : classSlug;
+    const gender = TRAINER_CLASS_GENDERS[genderSlug];
+    if (!gender) {
+        throw new Error(GENDER_NOT_FOUND);
+    }
+    return gender;
+};
+
+const promptSecondTrainer = async (
+    rl: Interface,
+    validTrainerClasses: Set<string>,
+    starters: string[],
+    isStarterDependent: boolean,
+    isMovesEnabled: boolean,
+    ivs: number | undefined
+): Promise<PromptedBattleTrainer> => {
+    logSuccess('  Second trainer:');
+    const { trainerClass, slug } = await promptTrainerClass(
+        rl,
+        validTrainerClasses
+    );
+    const name = (await rl.question('Second trainer name: ')).trim();
+    const gender = resolveTrainerGender(slug, name);
+
+    const team = isStarterDependent
+        ? undefined
+        : await promptTeam(rl, gender, ivs, isMovesEnabled);
+
+    const teamsByStarter: Record<string, PromptedTeamPokemon[]> | undefined =
+        isStarterDependent ? {} : undefined;
+    if (teamsByStarter) {
+        for (const starter of starters) {
+            logSuccess(
+                `  Second trainer's team for ${StringHelpers.toTitleCase(starter)}:`
+            );
+            teamsByStarter[starter] = await promptTeam(
+                rl,
+                gender,
+                ivs,
+                isMovesEnabled
+            );
+        }
+    }
+
+    return { trainerClass, name, team, teamsByStarter };
+};
+
 const promptBattle = async (
     rl: Interface,
     validTrainerClasses: Set<string>,
@@ -761,18 +858,7 @@ const promptBattle = async (
     }
 
     const name = (await rl.question('Trainer name: ')).trim();
-
-    // Classes fielded by a single named trainer (e.g. Leader, Champion) have
-    // no gender of their own; fall back to the specific trainer's name,
-    // stripping a trailing disambiguator (e.g. "Barry 2") some repeat
-    // battles use to stay unique within a location.
-    const genderSlug = isSluggedByName
-        ? StringHelpers.toSlug(name.replace(/\s+\d+$/, ''))
-        : slug;
-    const gender = TRAINER_CLASS_GENDERS[genderSlug];
-    if (!gender) {
-        throw new Error(GENDER_NOT_FOUND);
-    }
+    const gender = resolveTrainerGender(slug, name);
 
     const x = await promptCoordinate(rl, 'X');
     const y = await promptCoordinate(rl, 'Y');
@@ -805,6 +891,18 @@ const promptBattle = async (
         }
     }
 
+    const secondTrainer =
+        isTag || isDouble
+            ? await promptSecondTrainer(
+                  rl,
+                  validTrainerClasses,
+                  starters,
+                  isStarterDependent,
+                  isMovesEnabled,
+                  ivs
+              )
+            : undefined;
+
     return {
         trainerClass,
         isTrueDouble,
@@ -816,6 +914,7 @@ const promptBattle = async (
         name,
         team,
         teamsByStarter,
+        secondTrainer,
         items,
         fieldCondition,
         x,

@@ -85,6 +85,7 @@ const HofPage: React.FC = () => {
                                                 : `empty-${index}`
                                         }
                                         pokemon={pokemon}
+                                        position="single"
                                         variant={entry.game}
                                         version={game.version}
                                     />

@@ -1,4 +1,10 @@
-import { Battle, BattlePokemon, Game, Location } from '@/lib/static/types';
+import {
+    Battle,
+    BattlePokemon,
+    BattleTeamGroup,
+    Game,
+    Location,
+} from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 type BattlePosition = {
@@ -6,6 +12,24 @@ type BattlePosition = {
     locationIndex: number;
     battleIndex: number;
 };
+
+// Strips standalone "M"/"F" gender words a trainer class name may carry
+// (e.g. "Galactic Grunt M"), which are only there to disambiguate sprites,
+// not for display.
+const stripGenderWords = (value: string): string =>
+    value
+        .split(' ')
+        .filter((word) => word !== 'M' && word !== 'F')
+        .join(' ');
+
+// A trainer's display name, e.g. "Youngster Joey". Omits name if it is
+// purely numeric (a disambiguator with no in-universe meaning, e.g. a
+// Galactic Grunt's battle number) and omits standalone "M"/"F" gender
+// words.
+const getTrainerDisplayName = (trainerClass: string, name: string): string =>
+    stripGenderWords(
+        /^\d+$/.test(name) ? trainerClass : `${trainerClass} ${name}`
+    );
 
 export default class BattleHelpers {
     // -------------------------------------------------------------------------
@@ -22,24 +46,50 @@ export default class BattleHelpers {
         return StringHelpers.toSlug(BattleHelpers.getBattleKey(battle));
     }
 
-    /** battle's full display name, e.g. "Youngster Joey". Omits name if it is purely numeric, and omits standalone "M"/"F" gender words. */
+    /** battle's full display name, e.g. "Youngster Joey", or "Galactic Grunt M Jack and Lass Briana" for a tag battle. */
     static getFullName(battle: Battle): string {
-        const fullName = /^\d+$/.test(battle.name)
-            ? battle.trainerClass
-            : `${battle.trainerClass} ${battle.name}`;
+        const primaryName = getTrainerDisplayName(
+            battle.trainerClass,
+            battle.name
+        );
 
-        return fullName
-            .split(' ')
-            .filter((word) => word !== 'M' && word !== 'F')
-            .join(' ');
+        return battle.secondTrainer
+            ? `${primaryName} and ${getTrainerDisplayName(battle.secondTrainer.trainerClass, battle.secondTrainer.name)}`
+            : primaryName;
     }
 
-    /** battle's team for starter, falling back to its default team. */
+    /** battle's team(s) for starter, split by trainer: one group for a normal battle, two for a tag battle. */
+    static getTeamGroups(battle: Battle, starter: string): BattleTeamGroup[] {
+        const groups: BattleTeamGroup[] = [
+            {
+                trainerClass: battle.trainerClass,
+                name: battle.name,
+                team: battle.teamsByStarter?.[starter] ?? battle.team ?? [],
+            },
+        ];
+
+        if (battle.secondTrainer) {
+            groups.push({
+                trainerClass: battle.secondTrainer.trainerClass,
+                name: battle.secondTrainer.name,
+                team:
+                    battle.secondTrainer.teamsByStarter?.[starter] ??
+                    battle.secondTrainer.team ??
+                    [],
+            });
+        }
+
+        return groups;
+    }
+
+    /** battle's full team for starter (both trainers' Pokémon combined for a tag battle), falling back to its default team. */
     static getTeamFromOptions(
         battle: Battle,
         starter: string
     ): BattlePokemon[] {
-        return battle.teamsByStarter?.[starter] ?? battle.team ?? [];
+        return BattleHelpers.getTeamGroups(battle, starter).flatMap(
+            (group) => group.team
+        );
     }
 
     /** Every battle in location, excluding those hidden via location or subarea. */
