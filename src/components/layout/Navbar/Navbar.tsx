@@ -122,6 +122,11 @@ const Navbar: React.FC = () => {
                         Settings
                     </Link>
                 </li>
+                <li>
+                    <Link href="/credits" onClick={handleClose}>
+                        Credits
+                    </Link>
+                </li>
             </ul>
         </nav>
     );
