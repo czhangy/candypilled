@@ -8,13 +8,14 @@ import TROPHY_GARDEN from '@/lib/games/platinum/locations/trophy-garden';
 import VALOR_LAKEFRONT from '@/lib/games/platinum/locations/valor-lakefront';
 import VEILSTONE_CITY from '@/lib/games/platinum/locations/veilstone-city';
 import { Split } from '@/lib/static/types';
+import LocationHelpers from '@/lib/utils/LocationHelpers';
 
 const WAKE: Split = {
     name: 'Wake',
     locations: [
         VEILSTONE_CITY,
         ROUTE_214,
-        VALOR_LAKEFRONT,
+        LocationHelpers.withHiddenBattles(VALOR_LAKEFRONT),
         ROUTE_213,
         PASTORIA_CITY,
         GREAT_MARSH,

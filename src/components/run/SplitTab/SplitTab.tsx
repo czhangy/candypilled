@@ -3,7 +3,9 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
-import { Game, Location, Run } from '@/lib/static/types';
+import { STARTER_LOCATION_NAME } from '@/lib/static/constants';
+import { Encounter, Game, Location, Run } from '@/lib/static/types';
+import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -113,7 +115,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
 
         document
             .getElementById(StringHelpers.toSlug(selectedBattleKey))
-            ?.scrollIntoView({ behavior: 'smooth' });
+            ?.scrollIntoView();
         // Scrolls once per mount, i.e. every time this tab is switched
         // into, rather than reacting to selectedBattleKey changing while
         // already on this tab.
@@ -137,13 +139,34 @@ const SplitTab: React.FC<SplitTabProps> = ({
     const isLocationMissed = (locationName: string): boolean =>
         run.missedLocations.includes(locationName);
 
-    const hasEncounters = (location: Location): boolean => {
+    const getLocationEncounters = (location: Location): Encounter[] => {
         const encountersKeys = location.subareas
             ? location.subareas.map((subarea) => subarea.encountersKey)
             : [location.encountersKey];
 
-        return encountersKeys.some(
-            (key) => key && (game.encounters[key]?.length ?? 0) > 0
+        return encountersKeys.flatMap((key) =>
+            key ? (game.encounters[key] ?? []) : []
+        );
+    };
+
+    const hasEncounters = (location: Location): boolean =>
+        getLocationEncounters(location).length > 0;
+
+    const isAllEncountersDupes = (location: Location): boolean => {
+        const dupes = run.caughtPokemon.map((caught) => caught.slug);
+        const caughtHere = run.caughtPokemon.find(
+            (caught) => caught.location === location.name
+        )?.slug;
+        const starterCaughtSeparately = run.caughtPokemon.some(
+            (caught) => caught.location === STARTER_LOCATION_NAME
+        );
+
+        return EncounterHelpers.areAllEncountersDupes(
+            getLocationEncounters(location),
+            dupes,
+            caughtHere,
+            starterCaughtSeparately,
+            game.generation
         );
     };
 
@@ -172,6 +195,8 @@ const SplitTab: React.FC<SplitTabProps> = ({
                                 location.name
                             );
                             const missed = isLocationMissed(location.name);
+                            const allEncountersDupes =
+                                isAllEncountersDupes(location);
                             const slug = SplitHelpers.getLocationSlug(
                                 location.name,
                                 index
@@ -187,13 +212,16 @@ const SplitTab: React.FC<SplitTabProps> = ({
                                                     ? `This encounter has been taken – ${caughtPokemonName}`
                                                     : missed
                                                       ? 'This encounter was missed'
-                                                      : "This encounter hasn't been taken"
+                                                      : allEncountersDupes
+                                                        ? 'Every possible encounter here has already been caught'
+                                                        : "This encounter hasn't been taken"
                                             }
                                         >
                                             <span
                                                 className={[
                                                     styles['caught-icon'],
-                                                    missed &&
+                                                    (missed ||
+                                                        allEncountersDupes) &&
                                                         styles[
                                                             'caught-icon--missed'
                                                         ],

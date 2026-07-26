@@ -1,5 +1,11 @@
 import { EncounterMethod } from '@/lib/static/enums';
-import { EncounterLocation, Game, PokemonData } from '@/lib/static/types';
+import {
+    Encounter,
+    EncounterLocation,
+    Game,
+    PokemonData,
+} from '@/lib/static/types';
+import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 
 export default class EncounterHelpers {
@@ -76,6 +82,46 @@ export default class EncounterHelpers {
             .filter((pokemon): pokemon is PokemonData => !!pokemon);
 
         return species.sort((a, b) => a.name.localeCompare(b.name));
+    }
+
+    /**
+     * Whether hide-dupes would filter out every one of a location's
+     * encounters (each is either an evolution line caught elsewhere, or a
+     * starter tracked separately) — i.e. nothing would ever render there
+     * regardless of which time of day is selected.
+     */
+    static areAllEncountersDupes(
+        encounters: Encounter[],
+        dupes: string[],
+        caughtHere: string | undefined,
+        starterCaughtSeparately: boolean,
+        generation: number
+    ): boolean {
+        if (encounters.length === 0) return false;
+
+        return encounters.every((encounter) => {
+            const isCaughtHere =
+                !!caughtHere &&
+                EvolutionHelpers.isSameEvolutionLine(
+                    encounter.species,
+                    caughtHere,
+                    generation
+                );
+            const isDupe =
+                !isCaughtHere &&
+                dupes.some((slug) =>
+                    EvolutionHelpers.isSameEvolutionLine(
+                        encounter.species,
+                        slug,
+                        generation
+                    )
+                );
+            const isSeparateStarter =
+                starterCaughtSeparately &&
+                encounter.method === EncounterMethod.Starter;
+
+            return isDupe || isSeparateStarter;
+        });
     }
 
     // -------------------------------------------------------------------------

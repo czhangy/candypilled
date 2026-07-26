@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import { StaticImageData } from 'next/image';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { STARTER_LOCATION_NAME } from '@/lib/static/constants';
@@ -14,9 +14,11 @@ import {
     Run,
 } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
+import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
+import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import BattleCard from './BattleCard/BattleCard';
 import EncounterTable from './EncounterTable/EncounterTable';
@@ -68,6 +70,16 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         battles: Battle[];
         encounters?: Encounter[];
     };
+
+    // -------------------------------------------------------------------------
+    // HOOKS
+    // -------------------------------------------------------------------------
+
+    const settings = useSyncExternalStore(
+        SettingsHelpers.subscribe,
+        SettingsHelpers.getSnapshot,
+        SettingsHelpers.getServerSnapshot
+    );
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -417,6 +429,16 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                       game.generation
                   )
           );
+    const allEncountersDupes =
+        (settings['hide-dupes'] ?? false) &&
+        !!section.encounters &&
+        EncounterHelpers.areAllEncountersDupes(
+            section.encounters,
+            dupes,
+            encounter,
+            starterCaughtSeparately,
+            game.generation
+        );
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -476,7 +498,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                     </span>
                 </button>
             </div>
-            {(section.map || section.encounters) && (
+            {(section.map || (section.encounters && !allEncountersDupes)) && (
                 <div
                     className={[
                         styles['content-wrapper'],
@@ -526,7 +548,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         version={game.version}
                                     />
                                 )}
-                            {section.encounters && (
+                            {section.encounters && !allEncountersDupes && (
                                 <div className={styles['encounters-row']}>
                                     <EncounterTable
                                         caughtHere={encounter}

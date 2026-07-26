@@ -9,6 +9,8 @@ import ROUTE_202 from '@/lib/games/platinum/locations/route-202';
 import ROUTE_203 from '@/lib/games/platinum/locations/route-203';
 import ROUTE_204 from '@/lib/games/platinum/locations/route-204';
 import ROUTE_207 from '@/lib/games/platinum/locations/route-207';
+import ROUTE_218 from '@/lib/games/platinum/locations/route-218';
+import ROUTE_219 from '@/lib/games/platinum/locations/route-219';
 import TWINLEAF_TOWN from '@/lib/games/platinum/locations/twinleaf-town';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
@@ -19,7 +21,9 @@ const ROARK: Split = {
         TWINLEAF_TOWN,
         ROUTE_201,
         LAKE_VERITY,
+        LocationHelpers.withHiddenBattles(ROUTE_219),
         ROUTE_202,
+        LocationHelpers.withHiddenBattles(ROUTE_218),
         LocationHelpers.withHiddenSubareaBattles(ROUTE_204, ['North']),
         RAVAGED_PATH,
         ROUTE_203,
