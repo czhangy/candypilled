@@ -41,7 +41,7 @@ const LAKE_VALOR: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'Galactic Grunt M',
-                    name: '10',
+                    name: '13',
                     team: [
                         {
                             slug: 'golbat',
@@ -58,7 +58,7 @@ const LAKE_VALOR: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'Galactic Grunt M',
-                    name: '11',
+                    name: '14',
                     team: [
                         {
                             slug: 'croagunk',

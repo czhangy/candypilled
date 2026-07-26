@@ -29,12 +29,10 @@ to show a prospective position before it is saved.
 
 - `width`, `height` — the marker's size as a percentage of the map,
   derived from a fixed trainer sprite size in pixels so the rectangle
-  matches the trainer's on-screen footprint regardless of image resolution.
-  Doubled individually when `trainer.isDoubleWidthMarker` or
-  `trainer.isDoubleHeightMarker` is set, for trainers that occupy a larger
-  footprint on the map. Overridden by `trainer.customWidth` or
-  `trainer.customHeight`, in pixels, when set, for trainers whose footprint
-  doesn't fit the fixed or doubled sizes
+  matches the trainer's on-screen footprint regardless of image
+  resolution. Overridden by `trainer.customWidth` or
+  `trainer.customHeight`, in pixels, when set, for trainers whose
+  footprint doesn't fit the fixed size
 
 ## SCSS Variable Dependencies
 

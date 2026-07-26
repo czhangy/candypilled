@@ -46,7 +46,7 @@ export default class BattleHelpers {
         return StringHelpers.toSlug(BattleHelpers.getBattleKey(battle));
     }
 
-    /** battle's full display name, e.g. "Youngster Joey", or "Galactic Grunt M Jack and Lass Briana" for a tag battle. */
+    /** battle's full display name, e.g. "Youngster Joey", or "Bug Catcher Jack and Lass Briana" for a tag battle. */
     static getFullName(battle: Battle): string {
         const primaryName = getTrainerDisplayName(
             battle.trainerClass,

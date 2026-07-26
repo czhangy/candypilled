@@ -342,7 +342,7 @@ const IRON_ISLAND: Location = {
                     isTag: true,
                     customHeight: 38,
                     trainerClass: 'Galactic Grunt M',
-                    name: '15',
+                    name: '12',
                     team: [
                         {
                             slug: 'zubat',
@@ -371,7 +371,7 @@ const IRON_ISLAND: Location = {
                     ],
                     secondTrainer: {
                         trainerClass: 'Galactic Grunt M',
-                        name: '15',
+                        name: '12',
                         team: [
                             {
                                 slug: 'glameow',

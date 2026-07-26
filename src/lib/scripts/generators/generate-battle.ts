@@ -786,7 +786,7 @@ const promptSecondTrainer = async (
     starters: string[],
     isStarterDependent: boolean,
     isMovesEnabled: boolean,
-    ivs: number | undefined
+    isDvEnabled: boolean
 ): Promise<PromptedBattleTrainer> => {
     logSuccess('  Second trainer:');
     const { trainerClass, slug } = await promptTrainerClass(
@@ -795,6 +795,8 @@ const promptSecondTrainer = async (
     );
     const name = (await rl.question('Second trainer name: ')).trim();
     const gender = resolveTrainerGender(slug, name);
+
+    const ivs = isDvEnabled ? await promptIvs(rl) : undefined;
 
     const team = isStarterDependent
         ? undefined
@@ -899,7 +901,7 @@ const promptBattle = async (
                   starters,
                   isStarterDependent,
                   isMovesEnabled,
-                  ivs
+                  isDvEnabled
               )
             : undefined;
 

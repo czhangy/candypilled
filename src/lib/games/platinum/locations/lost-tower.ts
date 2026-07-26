@@ -141,7 +141,7 @@ const LOST_TOWER: Location = {
                 {
                     isOptional: true,
                     isTrueDouble: true,
-                    isDoubleHeightMarker: true,
+                    customHeight: 40,
                     trainerClass: 'Belle & Pa',
                     name: 'Beth & Bob',
                     team: [
@@ -167,7 +167,7 @@ const LOST_TOWER: Location = {
                 {
                     isOptional: true,
                     isTrueDouble: true,
-                    isDoubleWidthMarker: true,
+                    customWidth: 36,
                     trainerClass: 'Young Couple',
                     name: 'Mike & Nat',
                     team: [

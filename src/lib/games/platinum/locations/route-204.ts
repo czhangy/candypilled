@@ -117,7 +117,7 @@ const ROUTE_204: Location = {
                 {
                     isOptional: true,
                     isTrueDouble: true,
-                    isDoubleWidthMarker: true,
+                    customWidth: 36,
                     trainerClass: 'Twins',
                     name: 'Liv & Liz',
                     team: [

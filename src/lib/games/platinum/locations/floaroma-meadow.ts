@@ -10,7 +10,7 @@ const FLOAROMA_MEADOW: Location = {
         {
             isBackToBack: true,
             trainerClass: 'Galactic Grunt M',
-            name: '2',
+            name: '3',
             team: [
                 {
                     slug: 'stunky',
@@ -27,7 +27,7 @@ const FLOAROMA_MEADOW: Location = {
         {
             isBackToBack: true,
             trainerClass: 'Galactic Grunt M',
-            name: '3',
+            name: '4',
             team: [
                 {
                     slug: 'zubat',

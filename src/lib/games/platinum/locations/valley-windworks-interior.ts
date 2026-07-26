@@ -9,7 +9,7 @@ const VALLEY_WINDWORKS_INTERIOR: Location = {
         {
             isOptional: true,
             trainerClass: 'Galactic Grunt M',
-            name: '4',
+            name: '5',
             team: [
                 {
                     slug: 'zubat',
@@ -25,7 +25,7 @@ const VALLEY_WINDWORKS_INTERIOR: Location = {
         {
             isOptional: true,
             trainerClass: 'Galactic Grunt M',
-            name: '5',
+            name: '6',
             team: [
                 {
                     slug: 'glameow',

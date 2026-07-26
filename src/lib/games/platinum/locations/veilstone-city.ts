@@ -11,7 +11,7 @@ const VEILSTONE_CITY: Location = {
             isTag: true,
             customHeight: 53,
             trainerClass: 'Galactic Grunt M',
-            name: '14',
+            name: '9',
             team: [
                 {
                     slug: 'zubat',
@@ -32,7 +32,7 @@ const VEILSTONE_CITY: Location = {
             ],
             secondTrainer: {
                 trainerClass: 'Galactic Grunt M',
-                name: '14',
+                name: '9',
                 team: [
                     {
                         slug: 'zubat',

@@ -45,7 +45,7 @@ const ROUTE_210: Location = {
                 {
                     isOptional: true,
                     isTrueDouble: true,
-                    isDoubleHeightMarker: true,
+                    customHeight: 40,
                     trainerClass: 'Belle & Pa',
                     name: 'Ava & Matt',
                     team: [
@@ -70,7 +70,7 @@ const ROUTE_210: Location = {
                 {
                     isOptional: true,
                     isTrueDouble: true,
-                    isDoubleWidthMarker: true,
+                    customWidth: 36,
                     trainerClass: 'Twins',
                     name: 'Teri & Tia',
                     team: [
@@ -294,7 +294,7 @@ const ROUTE_210: Location = {
                 {
                     isOptional: true,
                     isTrueDouble: true,
-                    isDoubleWidthMarker: true,
+                    customWidth: 36,
                     trainerClass: 'Double Team',
                     name: 'Zac & Jen',
                     team: [

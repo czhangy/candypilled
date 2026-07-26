@@ -9,7 +9,7 @@ const VALLEY_WINDWORKS_EXTERIOR: Location = {
     battles: [
         {
             trainerClass: 'Galactic Grunt M',
-            name: '1',
+            name: '2',
             team: [
                 {
                     slug: 'glameow',

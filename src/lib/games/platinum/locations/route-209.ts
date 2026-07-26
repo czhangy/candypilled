@@ -62,7 +62,7 @@ const ROUTE_209: Location = {
         },
         {
             isTrueDouble: true,
-            isDoubleWidthMarker: true,
+            customWidth: 36,
             trainerClass: 'Twins',
             name: 'Emma & Lil',
             team: [
@@ -172,7 +172,7 @@ const ROUTE_209: Location = {
         {
             isOptional: true,
             isTrueDouble: true,
-            isDoubleWidthMarker: true,
+            customWidth: 36,
             trainerClass: 'Young Couple',
             name: 'Ty & Sue',
             team: [

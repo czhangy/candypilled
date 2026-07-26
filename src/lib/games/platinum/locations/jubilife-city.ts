@@ -8,9 +8,9 @@ const JUBILIFE_CITY: Location = {
     battles: [
         {
             isTag: true,
-            isDoubleHeightMarker: true,
+            customHeight: 40,
             trainerClass: 'Galactic Grunt M',
-            name: '13',
+            name: '1',
             team: [
                 {
                     slug: 'glameow',
@@ -22,7 +22,7 @@ const JUBILIFE_CITY: Location = {
             ],
             secondTrainer: {
                 trainerClass: 'Galactic Grunt M',
-                name: '13',
+                name: '1',
                 team: [
                     {
                         slug: 'stunky',

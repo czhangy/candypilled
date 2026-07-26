@@ -20,8 +20,9 @@ const LAKE_VERITY: Location = {
             battles: [
                 {
                     isDouble: true,
+                    customWidth: 128,
                     trainerClass: 'Galactic Grunt M',
-                    name: '12',
+                    name: '15',
                     team: [
                         {
                             slug: 'croagunk',
@@ -34,7 +35,7 @@ const LAKE_VERITY: Location = {
                     ],
                     secondTrainer: {
                         trainerClass: 'Galactic Grunt F',
-                        name: '12',
+                        name: '15',
                         team: [
                             {
                                 slug: 'glameow',
@@ -47,7 +48,7 @@ const LAKE_VERITY: Location = {
                             {
                                 slug: 'golbat',
                                 ability: 1,
-                                gender: 'male',
+                                gender: 'female',
                                 ivs: 3,
                                 level: 33,
                                 nature: Nature.Serious,
@@ -55,7 +56,7 @@ const LAKE_VERITY: Location = {
                             {
                                 slug: 'murkrow',
                                 ability: 1,
-                                gender: 'male',
+                                gender: 'female',
                                 ivs: 3,
                                 level: 36,
                                 nature: Nature.Rash,

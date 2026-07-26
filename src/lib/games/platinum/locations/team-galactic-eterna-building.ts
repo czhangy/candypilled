@@ -40,7 +40,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'Galactic Grunt M',
-                    name: '6',
+                    name: '7',
                     team: [
                         {
                             slug: 'zubat',
@@ -69,7 +69,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'Galactic Grunt M',
-                    name: '7',
+                    name: '8',
                     team: [
                         {
                             slug: 'croagunk',
