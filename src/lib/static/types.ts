@@ -191,6 +191,20 @@ export type Encounter = {
     conditions?: string[];
 };
 
+// Everything EncounterHelpers' ENCOUNTER_HIDE_RULEs need to decide whether a
+// single encounter is permanently hidden (as opposed to hidden by the
+// currently selected time of day, which is a separate, non-permanent
+// filter). `settings` is the same id -> value snapshot
+// SettingsHelpers.getSnapshot returns, so a new setting-driven rule can read
+// its own id straight out of it without any signature changes.
+export type EncounterVisibilityContext = {
+    caughtHere?: string;
+    dupes: string[];
+    generation: number;
+    settings: Record<string, boolean>;
+    starterCaughtSeparately: boolean;
+};
+
 export type MethodOverride = {
     location: string;
     species: string;
@@ -491,6 +505,10 @@ export type PokemonData = {
     // Land Forme on deposit), so this is curated separately rather than
     // derived from any single API field.
     isTemporaryForm: boolean;
+    // PokeAPI's species-level is_legendary/is_mythical flags, combined.
+    // Used to filter legendaries out of features that shouldn't offer them
+    // (e.g. wild encounters).
+    isLegendary: boolean;
     sprites: Record<string, string>;
     types: TypesByGeneration[];
     abilities: AbilitiesByGeneration[];

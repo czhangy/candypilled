@@ -27,7 +27,9 @@ catching it here would violate the one-catch-per-evolution-line rule.
 Either highlight takes priority over the selected highlight if both
 apply. When the global "Hide Dupes" setting is enabled, rows whose
 evolution line has already been caught elsewhere in the run are
-omitted entirely instead of being highlighted red.
+omitted entirely instead of being highlighted red. When the global
+"Hide Legendaries" setting is enabled, rows for legendary/mythical
+Pokémon are omitted entirely.
 
 Below the header, a full-width "MISS"/"MISSED" toggle button (styled
 like the Pokédex tile's catch button, red when active) records that
@@ -66,14 +68,18 @@ alongside other, otherwise-missable methods.
   order; `TimeOfDayButtons` is only shown for these when there's more
   than one and `hasVisibleStarterEncounter` is false
 - `hideDupes` — the global "Hide Dupes" setting's current value, read
-  from `localStorage` via `SettingsHelpers`
+  from `localStorage` via `SettingsHelpers`; only used by
+  `getDisplayChance`'s rescaling (see below)
 - `visibleEncounters` — `encounters` filtered down to those with no
-  time-of-day condition, plus those matching `selectedTimeOfDay`; when
-  `hideDupes` is enabled, rows whose evolution line is caught elsewhere
-  in the run (and not at this location) are also excluded; when
-  `starterCaughtSeparately` is true, rows using the "starter" method are
-  also excluded, since the starter is tracked as its own encounter
-  instead
+  time-of-day condition, plus those matching `selectedTimeOfDay`, and
+  further filtered via `EncounterHelpers.isEncounterHidden`, which
+  excludes rows whose evolution line is caught elsewhere in the run (the
+  "Hide Dupes" setting), rows using the "starter" method when
+  `starterCaughtSeparately` is true, and legendary/mythical rows (the
+  "Hide Legendaries" setting). Any future setting that should
+  permanently hide encounter rows is added there rather than here, so
+  this filter and `SplitLocation`'s "is there anything left to show at
+  all" check both extend automatically
 - `hasVisibleStarterEncounter` — whether `visibleEncounters` includes
   any "starter"-method encounter (after `starterCaughtSeparately`
   filtering), used to hide every other method and the time-of-day

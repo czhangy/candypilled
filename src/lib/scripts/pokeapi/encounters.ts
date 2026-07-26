@@ -353,6 +353,7 @@ const NULLIFIED_CHANCE_METHODS: string[] = [
     EncounterMethod.Starter,
     EncounterMethod.Special,
     EncounterMethod.Egg,
+    EncounterMethod.Static,
 ];
 
 const nullifyChances = (encounters: RawEncounter[]): RawEncounter[] =>

@@ -429,16 +429,15 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                       game.generation
                   )
           );
-    const allEncountersDupes =
-        (settings['hide-dupes'] ?? false) &&
+    const allEncountersHidden =
         !!section.encounters &&
-        EncounterHelpers.areAllEncountersDupes(
-            section.encounters,
+        EncounterHelpers.areAllEncountersHidden(section.encounters, {
+            caughtHere: encounter,
             dupes,
-            encounter,
+            generation: game.generation,
+            settings,
             starterCaughtSeparately,
-            game.generation
-        );
+        });
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -498,7 +497,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                     </span>
                 </button>
             </div>
-            {(section.map || (section.encounters && !allEncountersDupes)) && (
+            {(section.map || (section.encounters && !allEncountersHidden)) && (
                 <div
                     className={[
                         styles['content-wrapper'],
@@ -548,7 +547,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         version={game.version}
                                     />
                                 )}
-                            {section.encounters && !allEncountersDupes && (
+                            {section.encounters && !allEncountersHidden && (
                                 <div className={styles['encounters-row']}>
                                     <EncounterTable
                                         caughtHere={encounter}

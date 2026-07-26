@@ -15,6 +15,7 @@ const LAKE_VALOR: Location = {
         {
             name: 'Cavern',
             map: lakeValorCavern,
+            encountersKey: 'lake-valor-cavern',
         },
         {
             name: 'Post-Giratina',

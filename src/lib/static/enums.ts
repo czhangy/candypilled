@@ -11,6 +11,7 @@ export enum EncounterMethod {
     OldRod = 'old-rod',
     Special = 'special',
     Starter = 'starter',
+    Static = 'static',
     Surf = 'surf',
     Walking = 'walking',
 }

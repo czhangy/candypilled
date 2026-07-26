@@ -2,11 +2,58 @@ import { EncounterMethod } from '@/lib/static/enums';
 import {
     Encounter,
     EncounterLocation,
+    EncounterVisibilityContext,
     Game,
     PokemonData,
 } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
+
+type EncounterHideRule = (
+    encounter: Encounter,
+    context: EncounterVisibilityContext
+) => boolean;
+
+// Every reason an encounter can be permanently hidden from the encounter
+// table and factored out of "does this location have anything left to show".
+// Add a new rule here (reading whatever setting id it needs from
+// `context.settings`) and both EncounterTable and the section-visibility
+// checks below pick it up automatically.
+const ENCOUNTER_HIDE_RULES: EncounterHideRule[] = [
+    // "Hide Dupes": the species (or its evolution line) has already been
+    // caught elsewhere in the run.
+    (encounter, context) => {
+        if (!context.settings['hide-dupes']) return false;
+
+        const isCaughtHere =
+            !!context.caughtHere &&
+            EvolutionHelpers.isSameEvolutionLine(
+                encounter.species,
+                context.caughtHere,
+                context.generation
+            );
+
+        return (
+            !isCaughtHere &&
+            context.dupes.some((slug) =>
+                EvolutionHelpers.isSameEvolutionLine(
+                    encounter.species,
+                    slug,
+                    context.generation
+                )
+            )
+        );
+    },
+    // "Starter As Separate Encounter": starter-method rows are tracked as
+    // their own encounter instead of appearing in the table.
+    (encounter, context) =>
+        context.starterCaughtSeparately &&
+        encounter.method === EncounterMethod.Starter,
+    // "Hide Legendaries": the species is a legendary/mythical.
+    (encounter, context) =>
+        !!context.settings['hide-legendaries'] &&
+        !!PokemonHelpers.getPokemonData(encounter.species)?.isLegendary,
+];
 
 export default class EncounterHelpers {
     // -------------------------------------------------------------------------
@@ -85,10 +132,39 @@ export default class EncounterHelpers {
     }
 
     /**
-     * Whether hide-dupes would filter out every one of a location's
-     * encounters (each is either an evolution line caught elsewhere, or a
-     * starter tracked separately) — i.e. nothing would ever render there
+     * Whether any ENCOUNTER_HIDE_RULE (hide-dupes, starter-as-separate-
+     * encounter, hide-legendaries, and any future setting-driven rule)
+     * permanently hides this encounter, independent of the currently
+     * selected time of day.
+     */
+    static isEncounterHidden(
+        encounter: Encounter,
+        context: EncounterVisibilityContext
+    ): boolean {
+        return ENCOUNTER_HIDE_RULES.some((rule) => rule(encounter, context));
+    }
+
+    /**
+     * Whether every one of a location's encounters is permanently hidden
+     * (see isEncounterHidden) — i.e. nothing would ever render there
      * regardless of which time of day is selected.
+     */
+    static areAllEncountersHidden(
+        encounters: Encounter[],
+        context: EncounterVisibilityContext
+    ): boolean {
+        if (encounters.length === 0) return false;
+
+        return encounters.every((encounter) =>
+            EncounterHelpers.isEncounterHidden(encounter, context)
+        );
+    }
+
+    /**
+     * Whether every one of a location's encounters is either an evolution
+     * line caught elsewhere in the run, or a starter tracked separately —
+     * i.e. the location's "already caught" indicator, independent of
+     * whether the hide-dupes setting is actually on.
      */
     static areAllEncountersDupes(
         encounters: Encounter[],
@@ -97,30 +173,12 @@ export default class EncounterHelpers {
         starterCaughtSeparately: boolean,
         generation: number
     ): boolean {
-        if (encounters.length === 0) return false;
-
-        return encounters.every((encounter) => {
-            const isCaughtHere =
-                !!caughtHere &&
-                EvolutionHelpers.isSameEvolutionLine(
-                    encounter.species,
-                    caughtHere,
-                    generation
-                );
-            const isDupe =
-                !isCaughtHere &&
-                dupes.some((slug) =>
-                    EvolutionHelpers.isSameEvolutionLine(
-                        encounter.species,
-                        slug,
-                        generation
-                    )
-                );
-            const isSeparateStarter =
-                starterCaughtSeparately &&
-                encounter.method === EncounterMethod.Starter;
-
-            return isDupe || isSeparateStarter;
+        return EncounterHelpers.areAllEncountersHidden(encounters, {
+            caughtHere,
+            dupes,
+            generation,
+            settings: { 'hide-dupes': true },
+            starterCaughtSeparately,
         });
     }
 

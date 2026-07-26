@@ -1,6 +1,7 @@
 import { useState, useSyncExternalStore } from 'react';
 import { EncounterMethod } from '@/lib/static/enums';
-import { Encounter } from '@/lib/static/types';
+import { Encounter, EncounterVisibilityContext } from '@/lib/static/types';
+import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
@@ -134,22 +135,24 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
 
     const hideDupes = settings['hide-dupes'] ?? false;
 
+    const visibilityContext: EncounterVisibilityContext = {
+        caughtHere,
+        dupes,
+        generation,
+        settings,
+        starterCaughtSeparately,
+    };
+
     const visibleEncounters = encounters.filter((encounter) => {
         const matchesTimeOfDay =
             !TIME_OF_DAY_CONDITIONS.some((time) =>
                 encounter.conditions?.includes(time)
             ) || encounter.conditions?.includes(effectiveTimeOfDay ?? '');
 
-        const isDupe =
-            hideDupes &&
-            !isCaughtHere(encounter.species) &&
-            isEvolutionLineCaught(encounter.species);
-
-        const isSeparateStarter =
-            starterCaughtSeparately &&
-            encounter.method === EncounterMethod.Starter;
-
-        return matchesTimeOfDay && !isDupe && !isSeparateStarter;
+        return (
+            matchesTimeOfDay &&
+            !EncounterHelpers.isEncounterHidden(encounter, visibilityContext)
+        );
     });
 
     const hasVisibleStarterEncounter = visibleEncounters.some(

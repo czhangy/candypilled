@@ -411,7 +411,7 @@
             "method": "static",
             "minLevel": 15,
             "maxLevel": 15,
-            "chance": 100
+            "chance": null
         },
         {
             "species": "munchlax",
@@ -8088,7 +8088,7 @@
             "method": "static",
             "minLevel": 20,
             "maxLevel": 20,
-            "chance": 100,
+            "chance": null,
             "conditions": ["time-night"]
         }
     ],
@@ -8416,6 +8416,15 @@
             "chance": 35
         }
     ],
+    "lake-valor-cavern": [
+        {
+            "species": "azelf",
+            "method": "static",
+            "minLevel": 50,
+            "maxLevel": 50,
+            "chance": null
+        }
+    ],
     "lake-acuity-area": [
         {
             "species": "psyduck",
@@ -8688,6 +8697,15 @@
             "maxLevel": 41,
             "chance": 25,
             "conditions": ["time-night"]
+        }
+    ],
+    "lake-acuity-cavern": [
+        {
+            "species": "uxie",
+            "method": "static",
+            "minLevel": 50,
+            "maxLevel": 50,
+            "chance": null
         }
     ],
     "valor-lakefront": [
@@ -11276,7 +11294,7 @@
             "method": "static",
             "minLevel": 25,
             "maxLevel": 25,
-            "chance": 100,
+            "chance": null,
             "conditions": [
                 "other-talked-to-32-people-underground",
                 "time-morning"
@@ -11287,7 +11305,7 @@
             "method": "static",
             "minLevel": 25,
             "maxLevel": 25,
-            "chance": 100,
+            "chance": null,
             "conditions": ["other-talked-to-32-people-underground", "time-day"]
         },
         {
@@ -11295,7 +11313,7 @@
             "method": "static",
             "minLevel": 25,
             "maxLevel": 25,
-            "chance": 100,
+            "chance": null,
             "conditions": [
                 "other-talked-to-32-people-underground",
                 "time-night"
@@ -15334,6 +15352,15 @@
             "method": "honey-tree",
             "minLevel": 5,
             "maxLevel": 15,
+            "chance": null
+        }
+    ],
+    "distortion-world": [
+        {
+            "species": "giratina-altered",
+            "method": "static",
+            "minLevel": 47,
+            "maxLevel": 47,
             "chance": null
         }
     ],

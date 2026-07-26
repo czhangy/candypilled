@@ -26,6 +26,10 @@ export const SETTINGS: Setting[] = [
         id: 'highlight-dangerous',
         title: 'Highlight Dangerous Moves/Abilities',
     },
+    {
+        id: 'hide-legendaries',
+        title: 'Hide Legendaries',
+    },
 ];
 
 export const MIN_LEVEL = 1;

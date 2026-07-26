@@ -147,11 +147,13 @@ Pokédex tile.
   from an "egg" encounter, computed the same way as `isStarterEncounter`;
   passed to the Pokédex tile to show "HATCH"/"HATCHED" instead of
   "CATCH"/"CAUGHT" and to expose `AddPokemonModal`'s Location field
-- `allEncountersDupes` — whether the "hide dupes" setting is on and
-  `EncounterHelpers.areAllEncountersDupes` returns `true` for the active
-  section's encounters, `dupes`, `encounter`, and
-  `starterCaughtSeparately`; hides the encounter table and Pokédex tile
-  when `true`
+- `allEncountersHidden` — whether `EncounterHelpers.areAllEncountersHidden`
+  returns `true` for the active section's encounters given the current
+  global settings (e.g. "Hide Dupes", "Hide Legendaries") plus `dupes`,
+  `encounter`, and `starterCaughtSeparately`; hides the encounter table
+  and Pokédex tile when `true`. New settings that permanently hide
+  encounters extend `ENCOUNTER_HIDE_RULES` in `EncounterHelpers` rather
+  than adding logic here
 
 The root element's `id` is `SplitHelpers.getLocationSlug(location.name,
 index)`, so `SplitTab`'s table of contents can link directly to this card;

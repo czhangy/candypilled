@@ -1,3 +1,4 @@
+export { default as acuityLakefront } from './acuity-lakefront.png';
 export { default as cafeCabin } from './cafe-cabin.png';
 export { default as canalaveCity } from './canalave-city.png';
 export { default as canalaveGym1f } from './canalave-gym-1f.png';
@@ -83,10 +84,13 @@ export { default as route212South } from './route-212-south.png';
 export { default as route213 } from './route-213.png';
 export { default as route214 } from './route-214.png';
 export { default as route215 } from './route-215.png';
+export { default as route216 } from './route-216.png';
+export { default as route217 } from './route-217.png';
 export { default as route218 } from './route-218.png';
 export { default as route219 } from './route-219.png';
 export { default as route220 } from './route-220.png';
 export { default as route221 } from './route-221.png';
+export { default as snowpointGym } from './snowpoint-gym.png';
 export { default as solaceonRuins1f } from './solaceon-ruins-1f.png';
 export { default as solaceonRuinsB1f } from './solaceon-ruins-b1f.png';
 export { default as solaceonRuinsB2f } from './solaceon-ruins-b2f.png';
