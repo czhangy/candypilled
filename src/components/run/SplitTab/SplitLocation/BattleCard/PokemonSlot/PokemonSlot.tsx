@@ -116,14 +116,18 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
             <div className={styles['pokemon-slot__name']}>
                 <span>
                     Lv.{pokemon.level} {speciesName}
-                    <span
-                        className={[
-                            styles['pokemon-slot__gender'],
-                            styles[`pokemon-slot__gender--${pokemon.gender}`],
-                        ].join(' ')}
-                    >
-                        {pokemon.gender === 'male' ? '♂' : '♀'}
-                    </span>
+                    {pokemon.gender && (
+                        <span
+                            className={[
+                                styles['pokemon-slot__gender'],
+                                styles[
+                                    `pokemon-slot__gender--${pokemon.gender}`
+                                ],
+                            ].join(' ')}
+                        >
+                            {pokemon.gender === 'male' ? '♂' : '♀'}
+                        </span>
+                    )}
                 </span>
                 {types.length > 0 && (
                     <div className={styles['pokemon-slot__types']}>

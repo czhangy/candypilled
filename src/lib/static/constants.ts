@@ -54,4 +54,5 @@ export const CLASSES_SLUGGED_BY_NAME = [
     'Elite Four',
     'Champion',
     'Commander',
+    'Galactic Boss',
 ];

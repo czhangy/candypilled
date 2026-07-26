@@ -18,6 +18,10 @@ const GAME_NOT_FOUND = 'That game has no entry in STARTERS_BY_GAME.';
 const LOCATION_NOT_FOUND = 'That location does not exist.';
 const SUBAREA_NOT_FOUND = 'That subarea does not exist on this location.';
 const GENDER_NOT_FOUND = 'That trainer has no entry in TRAINER_CLASS_GENDERS.';
+const BOSS_CLASS_NOT_ALLOWED =
+    '--boss requires the trainer class to be Leader, Galactic Boss, Elite Four, or Champion.';
+const MINIBOSS_CLASS_NOT_ALLOWED =
+    '--miniboss requires the trainer class to be Galactic Boss, Commander, or PKMN Trainer.';
 const ENUMS_IMPORT_PATH = '@/lib/static/enums';
 const MAX_TEAM_SIZE = 6;
 const MAX_MOVES = 4;
@@ -26,16 +30,23 @@ const MAX_DV = 255;
 const MAX_IV = 31;
 const NATURE_NAMES = Object.values(Nature);
 const FIELD_CONDITION_NAMES = Object.values(FieldCondition);
+// FieldCondition's keys don't all match their values (e.g. RemovableFog =
+// 'Removable Fog'), so the generated `FieldCondition.<Key>` reference has to
+// be looked up from the prompted display value rather than assumed equal.
+const FIELD_CONDITION_KEYS_BY_VALUE = new Map(
+    Object.entries(FieldCondition).map(([key, value]) => [value, key])
+);
 const SLUGGED_BY_NAME_CLASS_SLUGS = new Set(
     CLASSES_SLUGGED_BY_NAME.map((name) => StringHelpers.toSlug(name))
 );
-
-// Trainer classes that always field two trainers' full parties as a single
-// battle, so a generated battle should default isTrueDouble to true, keyed
-// by slug.
-const TRUE_DOUBLE_TRAINER_CLASS_SLUGS = new Set(
-    ['Twins', 'Young Couple', 'Belle & Pa', 'Sis and Bro', 'Old Couple'].map(
-        (name) => StringHelpers.toSlug(name)
+const BOSS_CLASS_SLUGS = new Set(
+    ['Leader', 'Galactic Boss', 'Elite Four', 'Champion'].map((name) =>
+        StringHelpers.toSlug(name)
+    )
+);
+const MINIBOSS_CLASS_SLUGS = new Set(
+    ['Galactic Boss', 'Commander', 'PKMN Trainer'].map((name) =>
+        StringHelpers.toSlug(name)
     )
 );
 
@@ -66,6 +77,8 @@ const TRAINER_CLASS_GENDERS: Record<string, 'male' | 'female'> = {
     'cyclist-m': 'male',
     cynthia: 'female',
     cyrus: 'male',
+    'double-team': 'male',
+    'dragon-tamer': 'male',
     fantina: 'female',
     fisherman: 'male',
     flint: 'male',
@@ -155,7 +168,7 @@ type PromptedPokemon = {
 };
 
 type PromptedTeamPokemon = PromptedPokemon & {
-    gender: 'male' | 'female';
+    gender?: 'male' | 'female';
     ivs?: number;
 };
 
@@ -397,7 +410,7 @@ const serializePokemon = (
         `${indent}{\n` +
         `${indent}    slug: '${escapeQuotes(pokemon.slug)}',\n` +
         `${indent}    ability: ${pokemon.ability},\n` +
-        `${indent}    gender: '${pokemon.gender}',\n` +
+        (pokemon.gender ? `${indent}    gender: '${pokemon.gender}',\n` : '') +
         (pokemon.ivs ? `${indent}    ivs: ${pokemon.ivs},\n` : '') +
         `${indent}    level: ${pokemon.level},\n` +
         `${indent}    nature: Nature.${pokemon.nature},\n` +
@@ -450,7 +463,7 @@ const serializeBattle = (battle: PromptedBattle, indent: string): string => {
         ? `${fieldIndent}items: ${serializeItems(battle.items, fieldIndent)},\n`
         : '';
     const fieldConditionField = battle.fieldCondition
-        ? `${fieldIndent}fieldCondition: FieldCondition.${battle.fieldCondition},\n`
+        ? `${fieldIndent}fieldCondition: FieldCondition.${FIELD_CONDITION_KEYS_BY_VALUE.get(battle.fieldCondition)},\n`
         : '';
     const optionalField = battle.isOptional
         ? `${indent}    isOptional: true,\n`
@@ -662,6 +675,18 @@ const promptTrainerClass = async (
     }
 };
 
+// A team member's gender defaults to the trainer's, but is overridden for
+// species whose gender isn't determined by their trainer: genderless
+// species get no gender at all, and single-gender species always get their
+// one possible gender.
+const resolveTeamMemberGender = (
+    slug: string,
+    trainerGender: 'male' | 'female'
+): 'male' | 'female' | undefined => {
+    if (PokemonHelpers.isGenderless(slug)) return undefined;
+    return PokemonHelpers.getFixedGender(slug) ?? trainerGender;
+};
+
 const promptTeam = async (
     rl: Interface,
     gender: 'male' | 'female',
@@ -672,7 +697,11 @@ const promptTeam = async (
     for (let i = 1; i <= MAX_TEAM_SIZE; i++) {
         const pokemon = await promptPokemon(rl, i, isMovesEnabled);
         if (!pokemon) break;
-        team.push({ ...pokemon, gender, ivs });
+        team.push({
+            ...pokemon,
+            gender: resolveTeamMemberGender(pokemon.slug, gender),
+            ivs,
+        });
     }
     return team;
 };
@@ -698,9 +727,15 @@ const promptBattle = async (
         rl,
         validTrainerClasses
     );
-    isTrueDouble ||= TRUE_DOUBLE_TRAINER_CLASS_SLUGS.has(slug);
     const isOptional = !isMiniboss && !isBoss && !isRequired;
     const isSluggedByName = SLUGGED_BY_NAME_CLASS_SLUGS.has(slug);
+
+    if (isBoss && !BOSS_CLASS_SLUGS.has(slug)) {
+        throw new Error(BOSS_CLASS_NOT_ALLOWED);
+    }
+    if (isMiniboss && !MINIBOSS_CLASS_SLUGS.has(slug)) {
+        throw new Error(MINIBOSS_CLASS_NOT_ALLOWED);
+    }
 
     // Classes not fielded by a single named trainer have a fixed gender, so
     // that can be validated right after the trainer class is entered rather

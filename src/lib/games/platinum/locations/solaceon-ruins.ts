@@ -48,7 +48,6 @@ const SOLACEON_RUINS: Location = {
                         {
                             slug: 'bronzor',
                             ability: 1,
-                            gender: 'male',
                             level: 23,
                             nature: Nature.Serious,
                         },

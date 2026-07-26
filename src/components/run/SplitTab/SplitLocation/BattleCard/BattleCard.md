@@ -8,7 +8,10 @@ padded to six with empty slots when the team is smaller), toggling the
 trainer's defeated state in storage via `onToggleDefeated` when its
 "Defeat"/"Defeated" button is clicked. The trainer name header is a
 button that calls `onSelectTrainer` with the battle's key, jumping to
-that trainer in the Calc tab. See `TrainerPanel.md` and `PokemonSlot.md`
+that trainer in the Calc tab. The root element's `id` is
+`BattleHelpers.getBattleSlug(battle)`, a DOM-safe slug of the battle's
+key, so `SplitTab` can scroll directly to it when entering with a
+matching battle selected. See `TrainerPanel.md` and `PokemonSlot.md`
 for the portrait and team slot behavior in detail.
 
 ## Props
@@ -38,3 +41,6 @@ for the portrait and team slot behavior in detail.
 ## SCSS Variable Dependencies
 
 - `--accent-color` — the active game's accent color, set by `RunPage`
+- `--sticky-offset` — the height of the page's sticky header, set by
+  `SplitTab`; used as `scroll-margin-top` so a programmatic scroll to
+  this card doesn't land it underneath the sticky header

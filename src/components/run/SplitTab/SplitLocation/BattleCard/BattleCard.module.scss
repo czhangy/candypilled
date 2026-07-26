@@ -5,6 +5,7 @@
     border: 1px solid $border-subtle;
     border-radius: 0.5rem;
     overflow: hidden;
+    scroll-margin-top: calc(var(--sticky-offset) + 1rem);
     width: fit-content;
 
     .label {

@@ -583,7 +583,7 @@
         "slug": "magnet-pull",
         "name": "Magnet Pull",
         "introducedInGeneration": 3,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,
@@ -1007,7 +1007,7 @@
         "slug": "arena-trap",
         "name": "Arena Trap",
         "introducedInGeneration": 3,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,

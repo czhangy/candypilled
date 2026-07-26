@@ -14,7 +14,6 @@ const ROUTE_215: Location = {
                 {
                     slug: 'bronzor',
                     ability: 1,
-                    gender: 'male',
                     level: 23,
                     nature: Nature.Sassy,
                 },

@@ -8,7 +8,13 @@ a location has more than one subarea, a row of toggle buttons appears next
 to the location name to switch which subarea's map, battles, and wild
 encounter table are shown; only the selected subarea is rendered. The
 content is only rendered when the active section has a map or wild
-encounters; locations with neither show no expanded content. Selecting a
+encounters; locations with neither show no expanded content. When the
+"hide dupes" setting is on and every one of the active section's
+encounters is either an evolution line already caught elsewhere or a
+starter tracked separately, the encounter table and Pokédex tile are not
+rendered at all (rather than rendering an empty table), and the section
+is treated as mapless for the purpose of showing expanded content if it
+also has no map. Selecting a
 trainer marker on the map surfaces its battle details in a battle card
 alongside the map. Defeated trainers are tracked in the run's storage and
 reflected on both the map and the battle card. A location's wild
@@ -141,6 +147,11 @@ Pokédex tile.
   from an "egg" encounter, computed the same way as `isStarterEncounter`;
   passed to the Pokédex tile to show "HATCH"/"HATCHED" instead of
   "CATCH"/"CAUGHT" and to expose `AddPokemonModal`'s Location field
+- `allEncountersDupes` — whether the "hide dupes" setting is on and
+  `EncounterHelpers.areAllEncountersDupes` returns `true` for the active
+  section's encounters, `dupes`, `encounter`, and
+  `starterCaughtSeparately`; hides the encounter table and Pokédex tile
+  when `true`
 
 The root element's `id` is `SplitHelpers.getLocationSlug(location.name,
 index)`, so `SplitTab`'s table of contents can link directly to this card;
@@ -159,7 +170,12 @@ the index disambiguates locations that share a name within the split.
   battle also updates the run's personal best if it is farther along than
   the current one. If the defeated battle is the game's last required
   battle, calls `onGameComplete`; otherwise, if it's the last required
-  battle of its split, calls `onAdvanceSplit` with the next split's name
+  battle of its split, calls `onAdvanceSplit` with the next split's name.
+  Defeating a required battle also selects the next required battle
+  after it within this location (from `getAllBattles`), if one exists,
+  switching `selectedSubareaIndex` to its subarea, clearing
+  `selectedEncounter`/`speciesOverride`, and calling
+  `onSelectBattleMarker` with its key
 - **On encounter table row click** — selects that encounter, showing its
   details in the Pokédex tile, and clears `speciesOverride` so the
   encounter's own species is shown

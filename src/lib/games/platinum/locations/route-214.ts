@@ -143,7 +143,6 @@ const ROUTE_214: Location = {
                 {
                     slug: 'bronzor',
                     ability: 1,
-                    gender: 'male',
                     level: 24,
                     nature: Nature.Relaxed,
                 },
@@ -189,7 +188,6 @@ const ROUTE_214: Location = {
                 {
                     slug: 'porygon',
                     ability: 1,
-                    gender: 'male',
                     level: 27,
                     nature: Nature.Timid,
                 },

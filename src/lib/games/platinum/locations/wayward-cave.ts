@@ -199,7 +199,6 @@ const WAYWARD_CAVE: Location = {
                         {
                             slug: 'bronzor',
                             ability: 1,
-                            gender: 'male',
                             level: 21,
                             nature: Nature.Calm,
                         },

@@ -233,7 +233,9 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
         onSubmit({
             ability: abilitySlot,
             evs,
-            gender,
+            gender: PokemonHelpers.isGenderless(species)
+                ? undefined
+                : (PokemonHelpers.getFixedGender(species) ?? gender),
             heldItem,
             ivs,
             level,
@@ -270,6 +272,9 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     const natureOptions: DropdownOption[] = Object.values(Nature).map(
         (name) => ({ label: name, value: name })
     );
+    const showGenderField =
+        !PokemonHelpers.isGenderless(species) &&
+        !PokemonHelpers.getFixedGender(species);
     const genderOptions: DropdownOption[] = [
         { label: 'Male', value: 'male' },
         { label: 'Female', value: 'female' },
@@ -336,14 +341,16 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
                 </div>
             )}
             <div className={styles.row}>
-                <div className={styles.field}>
-                    <span className={styles.label}>Gender</span>
-                    <Dropdown
-                        onChange={handleGenderChange}
-                        options={genderOptions}
-                        value={gender}
-                    />
-                </div>
+                {showGenderField && (
+                    <div className={styles.field}>
+                        <span className={styles.label}>Gender</span>
+                        <Dropdown
+                            onChange={handleGenderChange}
+                            options={genderOptions}
+                            value={gender}
+                        />
+                    </div>
+                )}
                 <div className={styles.field}>
                     <span className={styles.label}>Nature</span>
                     <Dropdown

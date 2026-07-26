@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
+import { FieldCondition } from '@/lib/static/enums';
 import { Battle } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
@@ -27,6 +28,17 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
     const FIELD_CONDITION_ICON_SIZE = 20;
     const ITEM_SPRITE_SIZE = 24;
     const SPRITE_SIZE = 96;
+
+    // -------------------------------------------------------------------------
+    // RENDERING
+    // -------------------------------------------------------------------------
+
+    const isRemovableFog = battle.fieldCondition === FieldCondition.Fog;
+    const isDeepFog = battle.fieldCondition === FieldCondition.DeepFog;
+    const fieldConditionIconSlug =
+        isRemovableFog || isDeepFog
+            ? StringHelpers.toSlug(FieldCondition.Fog)
+            : StringHelpers.toSlug(battle.fieldCondition ?? '');
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -71,13 +83,11 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
                         alt={battle.fieldCondition}
                         className={styles['field-condition__icon']}
                         height={FIELD_CONDITION_ICON_SIZE}
-                        src={`/field-conditions/${StringHelpers.toSlug(
-                            battle.fieldCondition
-                        )}.png`}
+                        src={`/field-conditions/${fieldConditionIconSlug}.png`}
                         width={FIELD_CONDITION_ICON_SIZE}
                     />
                     {battle.fieldCondition}
-                    {battle.fieldCondition === 'Fog' && (
+                    {isRemovableFog && (
                         <Tooltip
                             position="center"
                             text="Can be cleared using Defog"

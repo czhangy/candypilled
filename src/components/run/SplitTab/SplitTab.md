@@ -39,6 +39,12 @@ currently scrolled into view is highlighted automatically.
   `IntersectionObserver` restricted to a thin band just below the sticky
   header, and sets `activeLocationSlug` to the first location (in split
   order) currently within that band
+- **On mount** — if `selectedBattleKey` is set, scrolls its `BattleCard`
+  (matched by `StringHelpers.toSlug(selectedBattleKey)`, the same slug
+  `BattleCard` sets on its own root element) into view. Since this tab is
+  unmounted while another tab is active, this re-runs (and re-scrolls)
+  every time the Split tab is switched into, not just on the run page's
+  initial load
 
 ## Computations
 
@@ -58,7 +64,10 @@ status on hover:
 - Poké Ball — the location's encounter has been taken; the tooltip is
   suffixed with "– {name}" naming the Pokémon caught there
 - Premier Ball — the location's encounter hasn't been taken or missed yet
-- Premier Ball, red — the location's encounter was missed
+- Premier Ball, red — the location's encounter was missed, or every one of
+  the location's encounters is already a dupe (an evolution line caught
+  elsewhere, or a starter tracked separately) — the tooltip reads
+  accordingly
 
 Locations with no encounters at all (no `encountersKey` on the location or
 any of its subareas) show no icon, but reserve the same space so entries
@@ -70,6 +79,11 @@ stay aligned.
   "Wormadam Trash"
 - `isLocationMissed` — whether `run.missedLocations` contains the given
   location name
-- `hasEncounters` — whether a location (or, if it has subareas, any of its
-  subareas) has an `encountersKey` resolving to a non-empty encounter list
-  in `game.encounters`
+- `getLocationEncounters` — every encounter across a location's subareas
+  (or its own `encountersKey`, if it has none), resolved from
+  `game.encounters`
+- `hasEncounters` — whether `getLocationEncounters` returns a non-empty list
+- `isAllEncountersDupes` — the result of
+  `EncounterHelpers.areAllEncountersDupes` for the location's encounters,
+  `run.caughtPokemon`'s slugs, the species caught at this location (if
+  any), and whether the starter is tracked separately

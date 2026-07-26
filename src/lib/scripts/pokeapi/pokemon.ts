@@ -87,6 +87,7 @@ type Variety = {
 type RawSpecies = {
     name: string;
     capture_rate: number;
+    gender_rate: number;
     evolution_chain: { url: string };
     varieties: { pokemon: { name: string; url: string } }[];
 };
@@ -941,6 +942,7 @@ export const fetchPokemonData = async (): Promise<void> => {
                 abilities: buildAbilitiesByGeneration(rawPokemon),
                 stats: buildStatsByGeneration(rawPokemon),
                 catchRate: species.capture_rate,
+                genderRate: species.gender_rate,
                 evolutionLine,
                 learnset: buildLearnsetByVersionGroup(
                     rawPokemon,

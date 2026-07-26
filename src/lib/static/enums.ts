@@ -16,6 +16,9 @@ export enum EncounterMethod {
 }
 
 export enum FieldCondition {
+    // Fog that can't be cleared with Defog, as opposed to Fog — they share
+    // an icon, but only Fog gets the tooltip noting it's removable.
+    DeepFog = 'Deep Fog',
     Fog = 'Fog',
     Hail = 'Hail',
     Rain = 'Rain',

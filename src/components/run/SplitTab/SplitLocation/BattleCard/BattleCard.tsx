@@ -50,7 +50,10 @@ const BattleCard: React.FC<BattleCardProps> = ({
     // -------------------------------------------------------------------------
 
     return (
-        <div className={styles['battle-card']}>
+        <div
+            className={styles['battle-card']}
+            id={BattleHelpers.getBattleSlug(battle)}
+        >
             <span className={styles.label}>
                 {battle.isBoss
                     ? 'Boss'

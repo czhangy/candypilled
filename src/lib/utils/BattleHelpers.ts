@@ -1,4 +1,5 @@
 import { Battle, BattlePokemon, Game, Location } from '@/lib/static/types';
+import StringHelpers from '@/lib/utils/StringHelpers';
 
 type BattlePosition = {
     splitIndex: number;
@@ -14,6 +15,11 @@ export default class BattleHelpers {
     /** battle's unique key, stable across storage and re-renders. */
     static getBattleKey(battle: Battle): string {
         return `${battle.trainerClass}::${battle.name}`;
+    }
+
+    /** A DOM-safe slug for battle, derived from its key, for scrolling directly to its battle card. */
+    static getBattleSlug(battle: Battle): string {
+        return StringHelpers.toSlug(BattleHelpers.getBattleKey(battle));
     }
 
     /** battle's full display name, e.g. "Youngster Joey". Omits name if it is purely numeric, and omits standalone "M"/"F" gender words. */
