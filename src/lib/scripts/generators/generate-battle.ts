@@ -26,17 +26,14 @@ const MAX_DV = 255;
 const MAX_IV = 31;
 const NATURE_NAMES = Object.values(Nature);
 const FIELD_CONDITION_NAMES = Object.values(FieldCondition);
+// FieldCondition's keys don't all match their values (e.g. RemovableFog =
+// 'Removable Fog'), so the generated `FieldCondition.<Key>` reference has to
+// be looked up from the prompted display value rather than assumed equal.
+const FIELD_CONDITION_KEYS_BY_VALUE = new Map(
+    Object.entries(FieldCondition).map(([key, value]) => [value, key])
+);
 const SLUGGED_BY_NAME_CLASS_SLUGS = new Set(
     CLASSES_SLUGGED_BY_NAME.map((name) => StringHelpers.toSlug(name))
-);
-
-// Trainer classes that always field two trainers' full parties as a single
-// battle, so a generated battle should default isTrueDouble to true, keyed
-// by slug.
-const TRUE_DOUBLE_TRAINER_CLASS_SLUGS = new Set(
-    ['Twins', 'Young Couple', 'Belle & Pa', 'Sis and Bro', 'Old Couple'].map(
-        (name) => StringHelpers.toSlug(name)
-    )
 );
 
 // The gender fielded by each trainer class currently in the game, keyed by
@@ -66,6 +63,8 @@ const TRAINER_CLASS_GENDERS: Record<string, 'male' | 'female'> = {
     'cyclist-m': 'male',
     cynthia: 'female',
     cyrus: 'male',
+    'double-team': 'male',
+    'dragon-tamer': 'male',
     fantina: 'female',
     fisherman: 'male',
     flint: 'male',
@@ -450,7 +449,7 @@ const serializeBattle = (battle: PromptedBattle, indent: string): string => {
         ? `${fieldIndent}items: ${serializeItems(battle.items, fieldIndent)},\n`
         : '';
     const fieldConditionField = battle.fieldCondition
-        ? `${fieldIndent}fieldCondition: FieldCondition.${battle.fieldCondition},\n`
+        ? `${fieldIndent}fieldCondition: FieldCondition.${FIELD_CONDITION_KEYS_BY_VALUE.get(battle.fieldCondition)},\n`
         : '';
     const optionalField = battle.isOptional
         ? `${indent}    isOptional: true,\n`
@@ -698,7 +697,6 @@ const promptBattle = async (
         rl,
         validTrainerClasses
     );
-    isTrueDouble ||= TRUE_DOUBLE_TRAINER_CLASS_SLUGS.has(slug);
     const isOptional = !isMiniboss && !isBoss && !isRequired;
     const isSluggedByName = SLUGGED_BY_NAME_CLASS_SLUGS.has(slug);
 
