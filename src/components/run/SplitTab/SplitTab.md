@@ -39,6 +39,12 @@ currently scrolled into view is highlighted automatically.
   `IntersectionObserver` restricted to a thin band just below the sticky
   header, and sets `activeLocationSlug` to the first location (in split
   order) currently within that band
+- **On mount** — if `selectedBattleKey` is set, scrolls its `BattleCard`
+  (matched by `StringHelpers.toSlug(selectedBattleKey)`, the same slug
+  `BattleCard` sets on its own root element) into view. Since this tab is
+  unmounted while another tab is active, this re-runs (and re-scrolls)
+  every time the Split tab is switched into, not just on the run page's
+  initial load
 
 ## Computations
 

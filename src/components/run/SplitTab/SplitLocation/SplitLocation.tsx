@@ -279,6 +279,27 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                     onAdvanceSplit(nextSplitName);
                 }
             }
+
+            if (!battle.isOptional) {
+                const allBattles = getAllBattles();
+                const currentIndex = allBattles.findIndex(
+                    ({ battle: candidate }) =>
+                        BattleHelpers.getBattleKey(candidate) === battleKey
+                );
+                const nextRequiredBattle = allBattles
+                    .slice(currentIndex + 1)
+                    .find(({ battle: candidate }) => !candidate.isOptional);
+
+                if (nextRequiredBattle) {
+                    setSelectedSubareaIndex(nextRequiredBattle.subareaIndex);
+                    setSelectedBattle(nextRequiredBattle.battle);
+                    setSelectedEncounter(undefined);
+                    setSpeciesOverride(undefined);
+                    onSelectBattleMarker(
+                        BattleHelpers.getBattleKey(nextRequiredBattle.battle)
+                    );
+                }
+            }
         }
     };
 

@@ -159,7 +159,12 @@ the index disambiguates locations that share a name within the split.
   battle also updates the run's personal best if it is farther along than
   the current one. If the defeated battle is the game's last required
   battle, calls `onGameComplete`; otherwise, if it's the last required
-  battle of its split, calls `onAdvanceSplit` with the next split's name
+  battle of its split, calls `onAdvanceSplit` with the next split's name.
+  Defeating a required battle also selects the next required battle
+  after it within this location (from `getAllBattles`), if one exists,
+  switching `selectedSubareaIndex` to its subarea, clearing
+  `selectedEncounter`/`speciesOverride`, and calling
+  `onSelectBattleMarker` with its key
 - **On encounter table row click** — selects that encounter, showing its
   details in the Pokédex tile, and clears `speciesOverride` so the
   encounter's own species is shown

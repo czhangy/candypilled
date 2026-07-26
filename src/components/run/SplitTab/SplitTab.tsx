@@ -108,6 +108,18 @@ const SplitTab: React.FC<SplitTabProps> = ({
         return () => observer.disconnect();
     }, [currentSplit, stickyOffset]);
 
+    useEffect(() => {
+        if (!selectedBattleKey) return;
+
+        document
+            .getElementById(StringHelpers.toSlug(selectedBattleKey))
+            ?.scrollIntoView({ behavior: 'smooth' });
+        // Scrolls once per mount, i.e. every time this tab is switched
+        // into, rather than reacting to selectedBattleKey changing while
+        // already on this tab.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------
