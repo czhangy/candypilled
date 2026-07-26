@@ -38,7 +38,7 @@ const ROUTE_214: Location = {
         },
         {
             isOptional: true,
-            trainerClass: 'Pi',
+            trainerClass: 'PI',
             name: 'Carlos',
             team: [
                 {

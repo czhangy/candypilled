@@ -83,9 +83,11 @@ shown instead.
 ## Handlers
 
 - **On tab change** (from `Tabs`) — sets the `tab` query param and clears
-  whichever of `pokemon`/`subtab`/`species`/`move`/`ability`/`item`/`battle`
-  isn't relevant to the destination tab, so a tab's selection param doesn't
-  linger in the URL after navigating away from it
+  whichever of `pokemon`/`subtab`/`species`/`move`/`ability`/`item` isn't
+  relevant to the destination tab, so a tab's selection param doesn't
+  linger in the URL after navigating away from it. `battle` is left
+  untouched, since it's shared between the Splits tab's trainer markers and
+  the Calc tab's battle selection and should persist across tab switches
 - **On subtab change** (from `DataTab`) — sets the `subtab` query param
   and clears `species`/`move`/`ability`/`item`, so a subtab's selection
   param doesn't linger in the URL after switching to a different subtab
@@ -119,6 +121,11 @@ shown instead.
 - **On trainer link click** (from `SplitTab`, a `BattleCard`'s trainer name
   header) — opens the Calc tab for that battle (`?tab=calc&battle=<key>`)
   in a new browser tab, leaving the current page untouched
+- **On battle marker select** (from `SplitTab`, a `LocationMap`'s trainer
+  marker) — sets the `battle` query param to that battle's key, without
+  changing `tab`. Every `SplitLocation` reads this same param, so if its
+  location has a battle matching the key, that battle is preselected there
+  too
 - **On Pokémon deselect** (from `BoxTab`, when switching between its box
   and graveyard views) — clears the `pokemon` query param
 - **On location select** (from `BoxTab`'s `PokemonPreview`, `SplitTab`'s

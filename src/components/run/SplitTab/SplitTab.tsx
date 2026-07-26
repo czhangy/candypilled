@@ -16,12 +16,14 @@ type SplitTabProps = {
     onAdvanceSplit: (splitName: string) => void;
     onGameComplete: () => void;
     onSelectAbility: (slug: string) => void;
+    onSelectBattleMarker: (battleKey: string) => void;
     onSelectItem: (slug: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
     onSelectTrainer: (battleKey: string) => void;
     run: Run;
+    selectedBattleKey?: string;
     stickyOffset: number;
 };
 
@@ -31,12 +33,14 @@ const SplitTab: React.FC<SplitTabProps> = ({
     onAdvanceSplit,
     onGameComplete,
     onSelectAbility,
+    onSelectBattleMarker,
     onSelectItem,
     onSelectLocation,
     onSelectMove,
     onSelectSpecies,
     onSelectTrainer,
     run,
+    selectedBattleKey,
     stickyOffset,
 }) => {
     // -------------------------------------------------------------------------
@@ -228,12 +232,14 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             onAdvanceSplit={onAdvanceSplit}
                             onGameComplete={onGameComplete}
                             onSelectAbility={onSelectAbility}
+                            onSelectBattleMarker={onSelectBattleMarker}
                             onSelectItem={onSelectItem}
                             onSelectLocation={onSelectLocation}
                             onSelectMove={onSelectMove}
                             onSelectSpecies={onSelectSpecies}
                             onSelectTrainer={onSelectTrainer}
                             run={run}
+                            selectedBattleKey={selectedBattleKey}
                             variant={variant}
                         />
                     ))}

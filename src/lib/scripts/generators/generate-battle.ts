@@ -4,44 +4,40 @@ import { createInterface, Interface } from 'readline/promises';
 import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import { logError, logSuccess, runScript } from '@/lib/scripts/utils/helpers';
 import { CLASSES_SLUGGED_BY_NAME } from '@/lib/static/constants';
-import { Nature } from '@/lib/static/enums';
+import { FieldCondition, Nature } from '@/lib/static/enums';
 import { AbilitySlot } from '@/lib/static/types';
+import MoveHelpers from '@/lib/utils/MoveHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
-const USAGE = 'Usage: npm run gen:battle <location> [subarea]';
+const USAGE =
+    'Usage: npm run gen:battle <location> [subarea] [--starter] ' +
+    '[--miniboss] [--boss] [--required] [--true] [--double] [--tag] ' +
+    '[--moves] [--items] [--field] [--dv]';
+const GAME_NOT_FOUND = 'That game has no entry in STARTERS_BY_GAME.';
 const LOCATION_NOT_FOUND = 'That location does not exist.';
 const SUBAREA_NOT_FOUND = 'That subarea does not exist on this location.';
 const GENDER_NOT_FOUND = 'That trainer has no entry in TRAINER_CLASS_GENDERS.';
-const NATURE_IMPORT = "import { Nature } from '@/lib/static/enums';";
+const ENUMS_IMPORT_PATH = '@/lib/static/enums';
 const MAX_TEAM_SIZE = 6;
+const MAX_MOVES = 4;
 const DEFAULT_ABILITY_SLOT = 1;
 const MAX_DV = 255;
 const MAX_IV = 31;
 const NATURE_NAMES = Object.values(Nature);
+const FIELD_CONDITION_NAMES = Object.values(FieldCondition);
 const SLUGGED_BY_NAME_CLASS_SLUGS = new Set(
     CLASSES_SLUGGED_BY_NAME.map((name) => StringHelpers.toSlug(name))
 );
 
-// Trainer classes whose canonical display name has punctuation or accents
-// that plain ASCII input (and therefore slug/title-casing) can't reproduce,
-// keyed by their slug.
-const TRAINER_CLASS_NAME_OVERRIDES: Record<string, string> = {
-    'poke-kid': 'Poké Kid',
-    'pokefan-m': 'Pokéfan M',
-    'pokefan-f': 'Pokéfan F',
-    'belle-and-pa': 'Belle & Pa',
-};
-
 // Trainer classes that always field two trainers' full parties as a single
-// battle, so a generated battle should default isTrueDouble to true.
-const TRUE_DOUBLE_TRAINER_CLASSES = [
-    'Twins',
-    'Young Couple',
-    'Belle & Pa',
-    'Sis and Bro',
-    'Old Couple',
-];
+// battle, so a generated battle should default isTrueDouble to true, keyed
+// by slug.
+const TRUE_DOUBLE_TRAINER_CLASS_SLUGS = new Set(
+    ['Twins', 'Young Couple', 'Belle & Pa', 'Sis and Bro', 'Old Couple'].map(
+        (name) => StringHelpers.toSlug(name)
+    )
+);
 
 // The gender fielded by each trainer class currently in the game, keyed by
 // slug. All classes default to male until real genders are filled in.
@@ -89,10 +85,13 @@ const TRAINER_CLASS_GENDERS: Record<string, 'male' | 'female'> = {
     mars: 'female',
     maylene: 'female',
     'ninja-boy': 'male',
+    'parasol-lady': 'female',
     pi: 'male',
     picnicker: 'female',
     'pkmn-breeder-f': 'female',
     'pkmn-breeder-m': 'male',
+    'pkmn-ranger-f': 'female',
+    'pkmn-ranger-m': 'male',
     'poke-kid': 'female',
     'pokefan-f': 'female',
     'pokefan-m': 'male',
@@ -109,6 +108,7 @@ const TRAINER_CLASS_GENDERS: Record<string, 'male' | 'female'> = {
     'school-kid-f': 'female',
     'school-kid-m': 'male',
     scientist: 'male',
+    socialite: 'female',
     'skier-f': 'female',
     'skier-m': 'male',
     'swimmer-f': 'female',
@@ -128,6 +128,17 @@ const TRAINER_CLASS_GENDERS: Record<string, 'male' | 'female'> = {
 type BattleArgs = {
     location: string;
     subarea?: string;
+    isStarterDependent: boolean;
+    isMiniboss: boolean;
+    isBoss: boolean;
+    isRequired: boolean;
+    isTrueDouble: boolean;
+    isDouble: boolean;
+    isTag: boolean;
+    isMovesEnabled: boolean;
+    isItemsEnabled: boolean;
+    isFieldEnabled: boolean;
+    isDvEnabled: boolean;
 };
 
 type Range = {
@@ -140,6 +151,7 @@ type PromptedPokemon = {
     ability: AbilitySlot;
     level: number;
     nature: Nature;
+    moves?: string[];
 };
 
 type PromptedTeamPokemon = PromptedPokemon & {
@@ -147,23 +159,93 @@ type PromptedTeamPokemon = PromptedPokemon & {
     ivs?: number;
 };
 
+type PromptedItem = {
+    name: string;
+    count: number;
+};
+
 type PromptedBattle = {
     trainerClass: string;
     isTrueDouble: boolean;
+    isDouble: boolean;
+    isTag: boolean;
+    isOptional: boolean;
+    isMiniboss: boolean;
+    isBoss: boolean;
     name: string;
-    team: PromptedTeamPokemon[];
+    team?: PromptedTeamPokemon[];
+    teamsByStarter?: Record<string, PromptedTeamPokemon[]>;
+    items?: PromptedItem[];
+    fieldCondition?: FieldCondition;
+    x: number;
+    y: number;
 };
 
+const FLAGS = [
+    '--starter',
+    '--miniboss',
+    '--boss',
+    '--required',
+    '--true',
+    '--double',
+    '--tag',
+    '--moves',
+    '--items',
+    '--field',
+    '--dv',
+];
+
 const parseArgs = (argv: string[]): BattleArgs => {
-    const [location, subarea] = argv;
+    const isStarterDependent = argv.includes('--starter');
+    const isMiniboss = argv.includes('--miniboss');
+    const isBoss = argv.includes('--boss');
+    const isRequired = argv.includes('--required');
+    const isTrueDouble = argv.includes('--true');
+    const isDouble = argv.includes('--double');
+    const isTag = argv.includes('--tag');
+    const isMovesEnabled = argv.includes('--moves');
+    const isItemsEnabled = argv.includes('--items');
+    const isFieldEnabled = argv.includes('--field');
+    const isDvEnabled = argv.includes('--dv');
+    const [location, subarea] = argv.filter((arg) => !FLAGS.includes(arg));
     if (!location) {
         throw new Error(USAGE);
     }
-    return { location, subarea };
+    return {
+        location,
+        subarea,
+        isStarterDependent,
+        isMiniboss,
+        isBoss,
+        isRequired,
+        isTrueDouble,
+        isDouble,
+        isTag,
+        isMovesEnabled,
+        isItemsEnabled,
+        isFieldEnabled,
+        isDvEnabled,
+    };
 };
 
 const getLocationPath = (gameSlug: string, slug: string): string =>
     path.join('src', 'lib', 'games', gameSlug, 'locations', `${slug}.ts`);
+
+// Each game's starter slugs, keyed by game slug. Kept separate from the
+// `Game` objects in src/lib/games since those transitively import every
+// location's map image, which tsx (running outside the Next.js bundler)
+// can't load.
+const STARTERS_BY_GAME: Record<string, string[]> = {
+    platinum: ['turtwig', 'chimchar', 'piplup'],
+};
+
+const getStarters = (gameSlug: string): string[] => {
+    const starters = STARTERS_BY_GAME[gameSlug];
+    if (!starters) {
+        throw new Error(GAME_NOT_FOUND);
+    }
+    return starters;
+};
 
 // The set of trainer class slugs the generated `trainerClass` field could
 // validly take: those with a sprite under public/<game>/trainers, plus the
@@ -179,6 +261,18 @@ const getValidTrainerClasses = (gameSlug: string): Set<string> => {
     );
 
     return new Set([...spritedClasses, ...sluggedByNameClasses]);
+};
+
+// The set of battle item slugs the generated `items` field could validly
+// take: those with a sprite under public/battle-items.
+const getValidItemSlugs = (): Set<string> => {
+    const itemsDir = path.join('public', 'battle-items');
+    return new Set(
+        fs
+            .readdirSync(itemsDir)
+            .filter((file) => file.endsWith('.png'))
+            .map((file) => path.basename(file, '.png'))
+    );
 };
 
 const getIndent = (content: string, index: number): string => {
@@ -237,12 +331,17 @@ const getLocationScope = (content: string): Range => {
     return { start, end: findMatchingBrace(content, start) };
 };
 
+const escapeRegExp = (value: string): string =>
+    value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
 const getSubareaScope = (content: string, subarea: string): Range => {
-    const nameIndex = content.indexOf(`name: '${subarea}'`);
-    if (nameIndex === -1) {
+    const nameMatch = new RegExp(`name: '${escapeRegExp(subarea)}'`, 'i').exec(
+        content
+    );
+    if (!nameMatch) {
         throw new Error(SUBAREA_NOT_FOUND);
     }
-    const start = findEnclosingBrace(content, nameIndex);
+    const start = findEnclosingBrace(content, nameMatch.index);
     return { start, end: findMatchingBrace(content, start) };
 };
 
@@ -302,49 +401,206 @@ const serializePokemon = (
         (pokemon.ivs ? `${indent}    ivs: ${pokemon.ivs},\n` : '') +
         `${indent}    level: ${pokemon.level},\n` +
         `${indent}    nature: Nature.${pokemon.nature},\n` +
+        (pokemon.moves
+            ? `${indent}    moves: [${pokemon.moves
+                  .map((move) => `'${escapeQuotes(move)}'`)
+                  .join(', ')}],\n`
+            : '') +
         `${indent}},\n`
     );
 };
 
-const serializeBattle = (
-    battle: PromptedBattle,
-    indent: string,
-    x: number,
-    y: number
-): string => {
-    const pokemonIndent = `${indent}        `;
-    const team = battle.team
-        .map((pokemon) => serializePokemon(pokemon, pokemonIndent))
+// Serializes a `[{...}, ...]` team array, itself indented by `indent`, with
+// pokemon entries one level deeper.
+const serializeTeam = (team: PromptedTeamPokemon[], indent: string): string => {
+    const pokemonIndent = `${indent}    `;
+    const pokemon = team
+        .map((member) => serializePokemon(member, pokemonIndent))
         .join('');
-    const teamField = battle.team.length
-        ? `${indent}    team: [\n${team}${indent}    ],\n`
+    return `[\n${pokemon}${indent}]`;
+};
+
+const serializeItems = (items: PromptedItem[], indent: string): string => {
+    const itemIndent = `${indent}    `;
+    const entries = items
+        .map(
+            (item) =>
+                `${itemIndent}{ count: ${item.count}, name: '${escapeQuotes(item.name)}' },\n`
+        )
+        .join('');
+    return `[\n${entries}${indent}]`;
+};
+
+const serializeBattle = (battle: PromptedBattle, indent: string): string => {
+    const fieldIndent = `${indent}    `;
+    const teamField = battle.team
+        ? `${fieldIndent}team: ${serializeTeam(battle.team, fieldIndent)},\n`
         : '';
+    const teamsByStarterField = battle.teamsByStarter
+        ? `${fieldIndent}teamsByStarter: {\n` +
+          Object.entries(battle.teamsByStarter)
+              .map(
+                  ([starter, team]) =>
+                      `${fieldIndent}    ${starter}: ${serializeTeam(team, `${fieldIndent}    `)},\n`
+              )
+              .join('') +
+          `${fieldIndent}},\n`
+        : '';
+    const itemsField = battle.items
+        ? `${fieldIndent}items: ${serializeItems(battle.items, fieldIndent)},\n`
+        : '';
+    const fieldConditionField = battle.fieldCondition
+        ? `${fieldIndent}fieldCondition: FieldCondition.${battle.fieldCondition},\n`
+        : '';
+    const optionalField = battle.isOptional
+        ? `${indent}    isOptional: true,\n`
+        : '';
+    const minibossField = battle.isMiniboss
+        ? `${indent}    isMiniboss: true,\n`
+        : '';
+    const bossField = battle.isBoss ? `${indent}    isBoss: true,\n` : '';
     const trueDoubleField = battle.isTrueDouble
         ? `${indent}    isTrueDouble: true,\n`
         : '';
+    const doubleField = battle.isDouble ? `${indent}    isDouble: true,\n` : '';
+    const tagField = battle.isTag ? `${indent}    isTag: true,\n` : '';
 
     return (
         `${indent}{\n` +
-        `${indent}    isOptional: true,\n` +
+        optionalField +
+        minibossField +
+        bossField +
         trueDoubleField +
+        doubleField +
+        tagField +
         `${indent}    trainerClass: '${escapeQuotes(battle.trainerClass)}',\n` +
         `${indent}    name: '${escapeQuotes(battle.name)}',\n` +
         teamField +
-        `${indent}    x: ${x},\n` +
-        `${indent}    y: ${y},\n` +
+        teamsByStarterField +
+        itemsField +
+        fieldConditionField +
+        `${indent}    x: ${battle.x},\n` +
+        `${indent}    y: ${battle.y},\n` +
         `${indent}},\n`
     );
+};
+
+// Prompts for up to MAX_MOVES move slugs. A blank first move is invalid and
+// re-prompts; a blank move after that ends the list early and moves on to
+// the next Pokémon.
+const promptMoves = async (rl: Interface): Promise<string[]> => {
+    const moves: string[] = [];
+    for (let i = 1; i <= MAX_MOVES; i++) {
+        while (true) {
+            const raw = (await rl.question(`  Move ${i}: `)).trim();
+            if (!raw) {
+                if (i === 1) {
+                    logError('  The first move is required.');
+                    continue;
+                }
+                return moves;
+            }
+
+            const slug = StringHelpers.toSlug(raw);
+            if (!MoveHelpers.getMoveData(slug)) {
+                logError("  That isn't a valid move.");
+                continue;
+            }
+
+            moves.push(slug);
+            break;
+        }
+    }
+    return moves;
+};
+
+// Prompts for battle items: a slug validated against public/battle-items and
+// a count. A blank first slug is invalid and re-prompts; a blank slug after
+// that ends the list.
+const promptItems = async (
+    rl: Interface,
+    validItemSlugs: Set<string>
+): Promise<PromptedItem[]> => {
+    const items: PromptedItem[] = [];
+    while (true) {
+        const raw = (
+            await rl.question(`  Item ${items.length + 1} slug: `)
+        ).trim();
+        if (!raw) {
+            if (items.length === 0) {
+                logError('  The first item is required.');
+                continue;
+            }
+            return items;
+        }
+
+        const slug = StringHelpers.toSlug(raw);
+        if (!validItemSlugs.has(slug)) {
+            logError("  That isn't a valid item.");
+            continue;
+        }
+
+        let count = NaN;
+        while (!Number.isInteger(count) || count <= 0) {
+            count = Number((await rl.question('  Count: ')).trim());
+            if (!Number.isInteger(count) || count <= 0) {
+                logError('  That is not a valid count.');
+            }
+        }
+
+        items.push({ name: StringHelpers.toTitleCase(slug), count });
+    }
+};
+
+const promptCoordinate = async (
+    rl: Interface,
+    label: string
+): Promise<number> => {
+    let value = NaN;
+    while (!Number.isFinite(value)) {
+        value = Number((await rl.question(`${label}: `)).trim());
+        if (!Number.isFinite(value)) {
+            logError(`  That is not a valid ${label}.`);
+        }
+    }
+    return value;
+};
+
+// Prompts for a DV (0-MAX_DV) and converts it to the equivalent IV. A DV of
+// 0 maps to no ivs override (the default IV is used instead).
+const promptIvs = async (rl: Interface): Promise<number | undefined> => {
+    let dv = NaN;
+    while (!Number.isInteger(dv) || dv < 0 || dv > MAX_DV) {
+        dv = Number((await rl.question('DV: ')).trim());
+        if (!Number.isInteger(dv) || dv < 0 || dv > MAX_DV) {
+            logError('  That is not a valid DV.');
+        }
+    }
+    return dv ? Math.floor((dv * MAX_IV) / MAX_DV) : undefined;
+};
+
+const promptFieldCondition = async (rl: Interface): Promise<FieldCondition> => {
+    while (true) {
+        const raw = (await rl.question('Field condition: ')).trim();
+        const fieldCondition = FIELD_CONDITION_NAMES.find(
+            (candidate) => candidate.toLowerCase() === raw.toLowerCase()
+        );
+        if (!fieldCondition) {
+            logError('  That is not a valid field condition.');
+            continue;
+        }
+        return fieldCondition;
+    }
 };
 
 const promptPokemon = async (
     rl: Interface,
-    index: number
+    index: number,
+    isMovesEnabled: boolean
 ): Promise<PromptedPokemon | null> => {
     let slug: string | null = null;
     while (slug === null) {
-        const raw = (
-            await rl.question(`  Pokémon ${index} name (blank to stop): `)
-        ).trim();
+        const raw = (await rl.question(`  Pokémon ${index} name: `)).trim();
         if (!raw) return null;
 
         const rawSlug = StringHelpers.toSlug(raw);
@@ -381,7 +637,9 @@ const promptPokemon = async (
         }
     }
 
-    return { slug, ability, level, nature };
+    const moves = isMovesEnabled ? await promptMoves(rl) : undefined;
+
+    return { slug, ability, level, nature, moves };
 };
 
 type PromptedTrainerClass = {
@@ -400,24 +658,48 @@ const promptTrainerClass = async (
             logError("  That isn't a valid trainer class.");
             continue;
         }
-        return {
-            slug,
-            trainerClass:
-                TRAINER_CLASS_NAME_OVERRIDES[slug] ??
-                StringHelpers.toTitleCase(slug),
-        };
+        return { slug, trainerClass: raw };
     }
+};
+
+const promptTeam = async (
+    rl: Interface,
+    gender: 'male' | 'female',
+    ivs: number | undefined,
+    isMovesEnabled: boolean
+): Promise<PromptedTeamPokemon[]> => {
+    const team: PromptedTeamPokemon[] = [];
+    for (let i = 1; i <= MAX_TEAM_SIZE; i++) {
+        const pokemon = await promptPokemon(rl, i, isMovesEnabled);
+        if (!pokemon) break;
+        team.push({ ...pokemon, gender, ivs });
+    }
+    return team;
 };
 
 const promptBattle = async (
     rl: Interface,
-    validTrainerClasses: Set<string>
+    validTrainerClasses: Set<string>,
+    validItemSlugs: Set<string>,
+    starters: string[],
+    isStarterDependent: boolean,
+    isMiniboss: boolean,
+    isBoss: boolean,
+    isRequired: boolean,
+    isTrueDouble: boolean,
+    isDouble: boolean,
+    isTag: boolean,
+    isMovesEnabled: boolean,
+    isItemsEnabled: boolean,
+    isFieldEnabled: boolean,
+    isDvEnabled: boolean
 ): Promise<PromptedBattle> => {
     const { trainerClass, slug } = await promptTrainerClass(
         rl,
         validTrainerClasses
     );
-    const isTrueDouble = TRUE_DOUBLE_TRAINER_CLASSES.includes(trainerClass);
+    isTrueDouble ||= TRUE_DOUBLE_TRAINER_CLASS_SLUGS.has(slug);
+    const isOptional = !isMiniboss && !isBoss && !isRequired;
     const isSluggedByName = SLUGGED_BY_NAME_CLASS_SLUGS.has(slug);
 
     // Classes not fielded by a single named trainer have a fixed gender, so
@@ -441,35 +723,89 @@ const promptBattle = async (
         throw new Error(GENDER_NOT_FOUND);
     }
 
-    let dv = NaN;
-    while (!Number.isInteger(dv) || dv < 0 || dv > MAX_DV) {
-        dv = Number((await rl.question('DV: ')).trim());
-        if (!Number.isInteger(dv) || dv < 0 || dv > MAX_DV) {
-            logError('  That is not a valid DV.');
+    const x = await promptCoordinate(rl, 'X');
+    const y = await promptCoordinate(rl, 'Y');
+
+    const ivs = isDvEnabled ? await promptIvs(rl) : undefined;
+
+    const fieldCondition = isFieldEnabled
+        ? await promptFieldCondition(rl)
+        : undefined;
+
+    const items = isItemsEnabled
+        ? await promptItems(rl, validItemSlugs)
+        : undefined;
+
+    const team = isStarterDependent
+        ? undefined
+        : await promptTeam(rl, gender, ivs, isMovesEnabled);
+
+    const teamsByStarter: Record<string, PromptedTeamPokemon[]> | undefined =
+        isStarterDependent ? {} : undefined;
+    if (teamsByStarter) {
+        for (const starter of starters) {
+            logSuccess(`  Team for ${StringHelpers.toTitleCase(starter)}:`);
+            teamsByStarter[starter] = await promptTeam(
+                rl,
+                gender,
+                ivs,
+                isMovesEnabled
+            );
         }
     }
-    const ivs = dv ? Math.floor((dv * MAX_IV) / MAX_DV) : undefined;
 
-    const team: PromptedTeamPokemon[] = [];
-    for (let i = 1; i <= MAX_TEAM_SIZE; i++) {
-        const pokemon = await promptPokemon(rl, i);
-        if (!pokemon) break;
-        team.push({ ...pokemon, gender, ivs });
-    }
-
-    return { trainerClass, isTrueDouble, name, team };
+    return {
+        trainerClass,
+        isTrueDouble,
+        isDouble,
+        isTag,
+        isOptional,
+        isMiniboss,
+        isBoss,
+        name,
+        team,
+        teamsByStarter,
+        items,
+        fieldCondition,
+        x,
+        y,
+    };
 };
 
-const ensureNatureImport = (content: string): string => {
-    if (/from '@\/lib\/static\/enums'/.test(content)) {
-        return content;
+// Ensures `name` (e.g. `Nature`, `FieldCondition`) is imported from
+// @/lib/static/enums, adding it to an existing import statement from that
+// module or creating a new one right after the game import.
+const ensureEnumImport = (content: string, name: string): string => {
+    const importLineRegex = new RegExp(
+        `^import \\{([^}]*)\\} from '${ENUMS_IMPORT_PATH}';$`,
+        'm'
+    );
+    const match = importLineRegex.exec(content);
+    if (match) {
+        const names = match[1]
+            .split(',')
+            .map((importedName) => importedName.trim())
+            .filter(Boolean);
+        if (names.includes(name)) {
+            return content;
+        }
+        names.push(name);
+        names.sort();
+        return content.replace(
+            match[0],
+            `import { ${names.join(', ')} } from '${ENUMS_IMPORT_PATH}';`
+        );
     }
 
     const lines = content.split('\n');
     const gameImportIndex = lines.findIndex((line) =>
         line.includes("from '@/lib/games/")
     );
-    lines.splice(gameImportIndex + 1, 0, NATURE_IMPORT);
+    lines.splice(
+        gameImportIndex + 1,
+        0,
+        `import { ${name} } from '${ENUMS_IMPORT_PATH}';`
+    );
     return lines.join('\n');
 };
 
@@ -489,6 +825,8 @@ runScript(async () => {
     const insertionPoint = findInsertionPoint(original, scope);
 
     const validTrainerClasses = getValidTrainerClasses(gameSlug);
+    const validItemSlugs = getValidItemSlugs();
+    const starters = getStarters(gameSlug);
 
     const rl = createInterface({
         input: process.stdin,
@@ -496,15 +834,35 @@ runScript(async () => {
     });
     let battle: PromptedBattle;
     try {
-        battle = await promptBattle(rl, validTrainerClasses);
+        battle = await promptBattle(
+            rl,
+            validTrainerClasses,
+            validItemSlugs,
+            starters,
+            args.isStarterDependent,
+            args.isMiniboss,
+            args.isBoss,
+            args.isRequired,
+            args.isTrueDouble,
+            args.isDouble,
+            args.isTag,
+            args.isMovesEnabled,
+            args.isItemsEnabled,
+            args.isFieldEnabled,
+            args.isDvEnabled
+        );
     } finally {
         rl.close();
     }
 
-    const entryText = serializeBattle(battle, insertionPoint.entryIndent, 0, 0);
-    const updated = ensureNatureImport(
-        insertionPoint.insert(original, entryText)
+    const entryText = serializeBattle(battle, insertionPoint.entryIndent);
+    let updated = ensureEnumImport(
+        insertionPoint.insert(original, entryText),
+        'Nature'
     );
+    if (battle.fieldCondition) {
+        updated = ensureEnumImport(updated, 'FieldCondition');
+    }
 
     fs.writeFileSync(filePath, updated);
     logSuccess(`A new battle was added to ${args.location}.`);

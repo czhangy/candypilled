@@ -44,7 +44,6 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     const TAB_QUERY_PARAMS: Record<string, string[]> = {
         box: ['pokemon'],
-        calc: ['battle'],
         data: ['subtab', 'species', 'move', 'ability', 'item'],
     };
 
@@ -401,12 +400,14 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             onAdvanceSplit={handleSplitSelect}
                             onGameComplete={handleGameComplete}
                             onSelectAbility={handleAbilityLinkClick}
+                            onSelectBattleMarker={handleBattleSelect}
                             onSelectItem={handleItemLinkClick}
                             onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveLinkClick}
                             onSelectSpecies={handleSpeciesLinkClick}
                             onSelectTrainer={handleTrainerLinkClick}
                             run={run}
+                            selectedBattleKey={selectedBattle}
                             stickyOffset={stickyHeaderHeight}
                         />
                     )}
