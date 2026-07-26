@@ -84,6 +84,7 @@ const TRAINER_CLASS_GENDERS: Record<string, 'male' | 'female'> = {
     flint: 'male',
     'galactic-grunt-f': 'female',
     'galactic-grunt-m': 'male',
+    'galactic-grunt-m-and-galactic-grunt-f': 'male',
     'galactic-grunt-m-and-galactic-grunt-m': 'male',
     gardenia: 'female',
     gentleman: 'male',

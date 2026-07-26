@@ -2,6 +2,7 @@ import {
     lakeVerityPostByron,
     lakeVerityPreByron,
 } from '@/lib/games/platinum/maps';
+import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_VERITY: Location = {
@@ -16,6 +17,49 @@ const LAKE_VERITY: Location = {
             name: 'Post-Byron',
             map: lakeVerityPostByron,
             encountersKey: 'lake-verity-after-galactic-intervention',
+            battles: [
+                {
+                    isDouble: true,
+                    trainerClass: 'Galactic Grunt M and Galactic Grunt F',
+                    name: '1',
+                    team: [
+                        {
+                            slug: 'croagunk',
+                            ability: 1,
+                            gender: 'male',
+                            ivs: 3,
+                            level: 37,
+                            nature: Nature.Careful,
+                        },
+                        {
+                            slug: 'glameow',
+                            ability: 1,
+                            gender: 'female',
+                            ivs: 3,
+                            level: 33,
+                            nature: Nature.Jolly,
+                        },
+                        {
+                            slug: 'golbat',
+                            ability: 1,
+                            gender: 'male',
+                            ivs: 3,
+                            level: 33,
+                            nature: Nature.Serious,
+                        },
+                        {
+                            slug: 'murkrow',
+                            ability: 1,
+                            gender: 'male',
+                            ivs: 3,
+                            level: 36,
+                            nature: Nature.Rash,
+                        },
+                    ],
+                    x: 75.9,
+                    y: 73.5,
+                },
+            ],
         },
     ],
 };
