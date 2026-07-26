@@ -9,8 +9,8 @@ import VALOR_LAKEFRONT from '@/lib/games/platinum/locations/valor-lakefront';
 import VEILSTONE_CITY from '@/lib/games/platinum/locations/veilstone-city';
 import { Split } from '@/lib/static/types';
 
-const CRASHER_WAKE: Split = {
-    name: 'Crasher Wake',
+const WAKE: Split = {
+    name: 'Wake',
     locations: [
         VEILSTONE_CITY,
         ROUTE_214,
@@ -24,4 +24,4 @@ const CRASHER_WAKE: Split = {
     ],
 };
 
-export default CRASHER_WAKE;
+export default WAKE;
