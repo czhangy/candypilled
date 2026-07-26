@@ -42,6 +42,7 @@ const CELESTIC_RUINS: Location = {
                         'astonish',
                         'feint-attack',
                     ],
+                    heldItem: 'sitrus-berry',
                 },
             ],
             items: [{ count: 1, name: 'Hyper Potion' }],
