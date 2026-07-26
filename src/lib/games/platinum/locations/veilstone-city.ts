@@ -22,20 +22,20 @@ const VEILSTONE_CITY: Location = {
                     nature: Nature.Calm,
                 },
                 {
-                    slug: 'stunky',
-                    ability: 1,
-                    gender: 'male',
-                    ivs: 3,
-                    level: 26,
-                    nature: Nature.Timid,
-                },
-                {
                     slug: 'zubat',
                     ability: 1,
                     gender: 'male',
                     ivs: 3,
                     level: 24,
                     nature: Nature.Quiet,
+                },
+                {
+                    slug: 'stunky',
+                    ability: 1,
+                    gender: 'male',
+                    ivs: 3,
+                    level: 26,
+                    nature: Nature.Timid,
                 },
                 {
                     slug: 'croagunk',

@@ -134,6 +134,23 @@ export default class PokemonHelpers {
         return PokemonHelpers.getPokemonData(slug)?.catchRate;
     }
 
+    /** Whether slug's species has no gender (PokeAPI gender_rate of -1). */
+    static isGenderless(slug: string): boolean {
+        return PokemonHelpers.getPokemonData(slug)?.genderRate === -1;
+    }
+
+    /**
+     * The single gender slug's species is always born as (PokeAPI
+     * gender_rate of 0 = always male, 8 = always female), or undefined if
+     * the species can be either gender.
+     */
+    static getFixedGender(slug: string): 'male' | 'female' | undefined {
+        const genderRate = PokemonHelpers.getPokemonData(slug)?.genderRate;
+        if (genderRate === 0) return 'male';
+        if (genderRate === 8) return 'female';
+        return undefined;
+    }
+
     /**
      * slug's learnset in version (a PokeAPI version group slug, e.g.
      * "platinum"), or undefined if no form or matching version group

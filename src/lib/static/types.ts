@@ -130,7 +130,7 @@ export type AbilitySlot = 1 | 2 | 3;
 export type BattlePokemon = {
     ability: AbilitySlot;
     evs?: StatValues;
-    gender: 'male' | 'female';
+    gender?: 'male' | 'female';
     heldItem?: string;
     ivs?: number | StatValues;
     level: number;
@@ -496,6 +496,7 @@ export type PokemonData = {
     abilities: AbilitiesByGeneration[];
     stats: StatsByGeneration[];
     catchRate: number;
+    genderRate: number;
     evolutionLine: EvolutionLineByGeneration[];
     learnset: LearnsetByVersionGroup[];
 };

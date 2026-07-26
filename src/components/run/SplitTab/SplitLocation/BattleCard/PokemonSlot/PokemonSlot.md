@@ -7,7 +7,8 @@ an icon), ability, nature, and moveset. Non-neutral natures are
 annotated with their stat
 effects, shown in a smaller font on the same line (e.g. "Adamant [+Atk
 -SpA]"). Each Pokémon's name is prefixed with its level (e.g. "Lv.5
-Chimchar") and suffixed with a blue ♂ or pink ♀ gender symbol.
+Chimchar") and suffixed with a blue ♂ or pink ♀ gender symbol, omitted
+when `pokemon.gender` is unset (e.g. for a genderless species).
 Unless `isReadOnly`, the sprite and name are clickable,
 opening that Pokémon's Pokédex entry in a new tab, the held item is
 clickable, linking to that item's details, the ability is

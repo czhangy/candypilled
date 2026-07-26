@@ -112,7 +112,6 @@ const ROUTE_218: Location = {
                 {
                     slug: 'magnemite',
                     ability: 1,
-                    gender: 'male',
                     level: 33,
                     nature: Nature.Hasty,
                 },

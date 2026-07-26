@@ -107,7 +107,7 @@ const ROUTE_210: Location = {
                         {
                             slug: 'happiny',
                             ability: 1,
-                            gender: 'male',
+                            gender: 'female',
                             level: 23,
                             nature: Nature.Bold,
                         },

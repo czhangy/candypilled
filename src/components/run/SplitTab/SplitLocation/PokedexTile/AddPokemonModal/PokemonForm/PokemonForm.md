@@ -9,7 +9,12 @@ edited via a `TagInput`. The ability dropdown identifies an ability by
 its slot (1, 2, or hidden) rather than its name, since a species can be
 re-selected across generations where ability names at a given slot may
 differ. Gender and nature sit in one row, with ability and held item
-(when shown) in a row below. When `lockSpecies` is set, the Pokémon
+(when shown) in a row below. The Gender field is omitted entirely for a
+genderless species (per `PokemonHelpers.isGenderless`) or a species
+that's always a single gender (per `PokemonHelpers.getFixedGender`);
+`gender` is submitted as `undefined` in the former case and as the
+fixed gender in the latter, regardless of the field's (unused) state.
+When `lockSpecies` is set, the Pokémon
 field isn't rendered at all and `species` stays fixed at
 `defaultSpecies`. Each `default*` prop seeds its corresponding field's
 initial state, falling back to a blank/default value when omitted;
@@ -87,6 +92,9 @@ change) when editing a caught Pokémon.
 - `natureOptions` — every `Nature` value mapped into dropdown options
 - `genderOptions` — the two gender dropdown options, "Male" and
   "Female"
+- `showGenderField` — whether the Gender field is rendered: false when
+  the selected `species` is genderless (`PokemonHelpers.isGenderless`)
+  or always a single gender (`PokemonHelpers.getFixedGender`)
 - `availableItems` — every held item introduced at or before
   `generation` and not yet removed as of `generation`
 - `heldItemOptions` — `availableItems` mapped into dropdown options and
@@ -107,7 +115,8 @@ change) when editing a caught Pokémon.
   moves at the current `level` via `getStartingMoves` (only reachable
   when the field is rendered, i.e. `lockSpecies` is false)
 - **On the ability dropdown change** — sets `abilitySlot`
-- **On the gender dropdown change** — sets `gender`
+- **On the gender dropdown change** — sets `gender` (only reachable
+  when `showGenderField` is true)
 - **On the held item dropdown change** — sets `heldItem`
 - **On the nature dropdown change** — sets `nature`
 - **On an IV input change** — sets that stat's value in `ivs`, clamped
@@ -120,7 +129,9 @@ change) when editing a caught Pokémon.
 - **On a move dropdown change** — sets that slot's value in `moves`
 - **On the `TagInput` change** — sets `tags`
 - **On form submit** — calls `onSubmit` with `ability` (`abilitySlot`),
-  `evs`, `gender`, `heldItem`, `ivs`, `level`, `moves` (empty slots
+  `evs`, `gender` (`undefined` when `species` is genderless, the fixed
+  gender when `species` is a single-gender species, otherwise the
+  selected `gender`), `heldItem`, `ivs`, `level`, `moves` (empty slots
   filtered out), `name` (the selected `species`), `nature`, and `tags`
 
 ## SCSS Variable Dependencies

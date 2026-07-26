@@ -278,14 +278,20 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                             <div className={styles.info}>
                                 <span className={styles.name}>
                                     {data.name}
-                                    <span
-                                        className={[
-                                            styles.gender,
-                                            styles[`gender--${pokemon.gender}`],
-                                        ].join(' ')}
-                                    >
-                                        {pokemon.gender === 'male' ? '♂' : '♀'}
-                                    </span>
+                                    {pokemon.gender && (
+                                        <span
+                                            className={[
+                                                styles.gender,
+                                                styles[
+                                                    `gender--${pokemon.gender}`
+                                                ],
+                                            ].join(' ')}
+                                        >
+                                            {pokemon.gender === 'male'
+                                                ? '♂'
+                                                : '♀'}
+                                        </span>
+                                    )}
                                 </span>
                                 <div className={styles.details}>
                                     <div className={styles.detail}>

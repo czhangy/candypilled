@@ -118,21 +118,18 @@ const ROUTE_211: Location = {
                         {
                             slug: 'bronzor',
                             ability: 1,
-                            gender: 'male',
                             level: 28,
                             nature: Nature.Serious,
                         },
                         {
                             slug: 'bronzor',
                             ability: 1,
-                            gender: 'male',
                             level: 30,
                             nature: Nature.Modest,
                         },
                         {
                             slug: 'bronzor',
                             ability: 1,
-                            gender: 'male',
                             level: 32,
                             nature: Nature.Impish,
                         },

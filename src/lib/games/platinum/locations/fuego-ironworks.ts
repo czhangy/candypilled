@@ -48,21 +48,18 @@ const FUEGO_IRONWORKS: Location = {
                         {
                             slug: 'magnemite',
                             ability: 1,
-                            gender: 'male',
                             level: 32,
                             nature: Nature.Mild,
                         },
                         {
                             slug: 'magnemite',
                             ability: 1,
-                            gender: 'male',
                             level: 32,
                             nature: Nature.Mild,
                         },
                         {
                             slug: 'magnemite',
                             ability: 1,
-                            gender: 'male',
                             level: 32,
                             nature: Nature.Mild,
                         },
