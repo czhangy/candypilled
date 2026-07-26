@@ -17,7 +17,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'Galactic Grunt F',
-                    name: '16',
+                    name: '1',
                     team: [
                         {
                             slug: 'zubat',
@@ -40,7 +40,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'Galactic Grunt M',
-                    name: '17',
+                    name: '6',
                     team: [
                         {
                             slug: 'zubat',
@@ -69,7 +69,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'Galactic Grunt M',
-                    name: '18',
+                    name: '7',
                     team: [
                         {
                             slug: 'croagunk',
@@ -85,7 +85,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'Galactic Grunt F',
-                    name: '19',
+                    name: '2',
                     team: [
                         {
                             slug: 'glameow',
@@ -107,7 +107,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'Galactic Grunt F',
-                    name: '20',
+                    name: '3',
                     team: [
                         {
                             slug: 'stunky',

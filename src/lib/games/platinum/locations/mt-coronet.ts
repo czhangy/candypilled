@@ -42,7 +42,7 @@ const MT_CORONET: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'Galactic Grunt F',
-                    name: '6',
+                    name: '1000',
                     team: [
                         {
                             slug: 'stunky',
@@ -59,7 +59,7 @@ const MT_CORONET: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'Galactic Grunt M',
-                    name: '7',
+                    name: '7000',
                     team: [
                         {
                             slug: 'murkrow',
@@ -88,7 +88,7 @@ const MT_CORONET: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'Galactic Grunt M',
-                    name: '8',
+                    name: '8000',
                     team: [
                         {
                             slug: 'houndour',
@@ -139,7 +139,7 @@ const MT_CORONET: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'Galactic Grunt M',
-                    name: '9',
+                    name: '9000',
                     team: [
                         {
                             slug: 'stunky',
@@ -171,7 +171,7 @@ const MT_CORONET: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'Galactic Grunt M',
-                    name: '10',
+                    name: '10000',
                     team: [
                         {
                             slug: 'golbat',
@@ -188,7 +188,7 @@ const MT_CORONET: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'Galactic Grunt F',
-                    name: '11',
+                    name: '2000',
                     team: [
                         {
                             slug: 'murkrow',
@@ -221,7 +221,7 @@ const MT_CORONET: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'Galactic Grunt M',
-                    name: '12',
+                    name: '12000',
                     team: [
                         {
                             slug: 'croagunk',
@@ -261,7 +261,7 @@ const MT_CORONET: Location = {
             battles: [
                 {
                     trainerClass: 'Galactic Grunt F',
-                    name: '13',
+                    name: '3000',
                     team: [
                         {
                             slug: 'houndour',
@@ -285,7 +285,7 @@ const MT_CORONET: Location = {
                 },
                 {
                     trainerClass: 'Galactic Grunt M',
-                    name: '14',
+                    name: '14000',
                     team: [
                         {
                             slug: 'glameow',
@@ -316,7 +316,7 @@ const MT_CORONET: Location = {
             battles: [
                 {
                     trainerClass: 'Galactic Grunt F',
-                    name: '15',
+                    name: '4000',
                     team: [
                         {
                             slug: 'golbat',

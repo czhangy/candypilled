@@ -9,7 +9,7 @@ const CELESTIC_TOWN: Location = {
     battles: [
         {
             trainerClass: 'Galactic Grunt M',
-            name: '21',
+            name: '9',
             team: [
                 {
                     slug: 'houndour',

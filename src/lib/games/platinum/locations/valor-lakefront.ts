@@ -9,7 +9,7 @@ const VALOR_LAKEFRONT: Location = {
     battles: [
         {
             trainerClass: 'Galactic Grunt M',
-            name: '22',
+            name: '8',
             team: [
                 {
                     slug: 'croagunk',
