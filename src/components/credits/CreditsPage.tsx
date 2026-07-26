@@ -29,7 +29,7 @@ const CreditsPage: React.FC = () => {
                 {
                     name: 'DSPRE',
                     description:
-                        'For making it possible to manually scrape battle data from ROMs',
+                        'For making it possible to manually scrape battle data from DS ROMs',
                     url: 'https://github.com/Egor-n/DSPRE',
                 },
                 {
@@ -45,7 +45,7 @@ const CreditsPage: React.FC = () => {
             credits: [
                 {
                     name: 'Bulbapedia',
-                    description: 'For overworld map images',
+                    description: 'For overworld map images and logos',
                     url: 'https://bulbapedia.bulbagarden.net/',
                 },
                 {
@@ -57,6 +57,11 @@ const CreditsPage: React.FC = () => {
                     name: 'pokesprite',
                     description: 'For box and item sprites',
                     url: 'https://github.com/msikma/pokesprite',
+                },
+                {
+                    name: 'Pokémon Showdown',
+                    description: 'For trainer sprites',
+                    url: 'https://play.pokemonshowdown.com/sprites/trainers/',
                 },
                 {
                     name: 'spaceemotion',
