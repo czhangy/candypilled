@@ -12,7 +12,10 @@ const CANDICE: Split = {
     name: 'Candice',
     locations: [
         LAKE_VALOR,
-        LAKE_VERITY,
+        LocationHelpers.withSubareaOrder(LAKE_VERITY, [
+            'Post-Byron',
+            'Pre-Byron',
+        ]),
         LocationHelpers.withHiddenSubareaBattles(
             LocationHelpers.withSubareaOrder(MT_CORONET, [
                 '1F (211)',

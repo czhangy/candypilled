@@ -20,7 +20,7 @@ const ROARK: Split = {
     locations: [
         TWINLEAF_TOWN,
         ROUTE_201,
-        LocationHelpers.withHiddenBattles(LAKE_VERITY),
+        LocationHelpers.withHiddenSubareaBattles(LAKE_VERITY, ['Post-Byron']),
         LocationHelpers.withHiddenBattles(ROUTE_219),
         ROUTE_202,
         LocationHelpers.withHiddenBattles(ROUTE_218),
