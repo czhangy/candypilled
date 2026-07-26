@@ -39,15 +39,17 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
     // -------------------------------------------------------------------------
 
     const width =
-        ((trainer.isDoubleWidthMarker
-            ? TRAINER_WIDTH_PX * 2 - 8
-            : TRAINER_WIDTH_PX) /
+        ((trainer.customWidth ??
+            (trainer.isDoubleWidthMarker
+                ? TRAINER_WIDTH_PX * 2 - 8
+                : TRAINER_WIDTH_PX)) /
             mapWidth) *
         100;
     const height =
-        ((trainer.isDoubleHeightMarker
-            ? TRAINER_HEIGHT_PX * 2 - 20
-            : TRAINER_HEIGHT_PX) /
+        ((trainer.customHeight ??
+            (trainer.isDoubleHeightMarker
+                ? TRAINER_HEIGHT_PX * 2 - 20
+                : TRAINER_HEIGHT_PX)) /
             mapHeight) *
         100;
 

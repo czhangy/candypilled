@@ -18,15 +18,16 @@ import {
     AbilitySlot,
     CaughtPokemon,
     DropdownOption,
+    PokemonData,
     StatValues,
 } from '@/lib/static/types';
+import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './PokemonForm.module.scss';
 
 type PokemonFormProps = {
-    allSpecies: string[];
+    allSpecies: PokemonData[];
     defaultAbilitySlot?: AbilitySlot;
     defaultEvs?: StatValues;
     defaultGender?: 'male' | 'female';
@@ -50,8 +51,8 @@ type PokemonFormProps = {
             | 'ivs'
             | 'level'
             | 'moves'
-            | 'name'
             | 'nature'
+            | 'slug'
             | 'tags'
         >
     ) => void;
@@ -126,11 +127,7 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     // STATE
     // -------------------------------------------------------------------------
 
-    const [species, setSpecies] = useState(
-        () =>
-            PokemonHelpers.getPokemonData(defaultSpecies)?.name ??
-            defaultSpecies
-    );
+    const [species, setSpecies] = useState(defaultSpecies);
     const [abilitySlot, setAbilitySlot] = useState<AbilitySlot>(
         defaultAbilitySlot ?? 1
     );
@@ -241,8 +238,8 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
             ivs,
             level,
             moves: moves.filter(Boolean),
-            name: species,
             nature,
+            slug: species,
             tags,
         });
     };
@@ -251,22 +248,22 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const speciesOptions: DropdownOption[] = allSpecies.map((name) => ({
-        label: name,
-        value: name,
+    const speciesOptions: DropdownOption[] = allSpecies.map((pokemon) => ({
+        label: pokemon.name,
+        value: pokemon.slug,
     }));
     const abilities = PokemonHelpers.getPokemonAbilities(species, generation);
     const abilityOptions: DropdownOption[] = abilities
         ? [
-              { name: abilities.slot1, slot: 1 as AbilitySlot },
+              { slot: 1 as AbilitySlot, slug: abilities.slot1 },
               ...(abilities.slot2
-                  ? [{ name: abilities.slot2, slot: 2 as AbilitySlot }]
+                  ? [{ slot: 2 as AbilitySlot, slug: abilities.slot2 }]
                   : []),
               ...(abilities.hidden
-                  ? [{ name: abilities.hidden, slot: 3 as AbilitySlot }]
+                  ? [{ slot: 3 as AbilitySlot, slug: abilities.hidden }]
                   : []),
-          ].map(({ name, slot }) => ({
-              label: StringHelpers.toTitleCase(name),
+          ].map(({ slot, slug }) => ({
+              label: AbilityHelpers.getAbilityData(slug)?.name ?? slug,
               value: String(slot),
           }))
         : [];
@@ -286,20 +283,19 @@ const PokemonForm: React.FC<PokemonFormProps> = ({
     const heldItemOptions: DropdownOption[] = [
         { label: 'None', value: '' },
         ...availableItems
-            .map((item) => ({ label: item.name, value: item.name }))
+            .map((item) => ({ label: item.name, value: item.slug }))
             .sort((a, b) => a.label.localeCompare(b.label)),
     ];
     const learnset = PokemonHelpers.getPokemonLearnset(species, version) ?? [];
-    const moveNames = new Set(
-        learnset.map(
-            (move) => MoveHelpers.getMoveData(move.name)?.name ?? move.name
-        )
-    );
+    const moveSlugs = new Set(learnset.map((move) => move.slug));
     const moveOptions: DropdownOption[] = [
         { label: 'None', value: '' },
-        ...[...moveNames]
-            .sort((a, b) => a.localeCompare(b))
-            .map((name) => ({ label: name, value: name })),
+        ...[...moveSlugs]
+            .map((slug) => ({
+                label: MoveHelpers.getMoveData(slug)?.name ?? slug,
+                value: slug,
+            }))
+            .sort((a, b) => a.label.localeCompare(b.label)),
     ];
 
     // -------------------------------------------------------------------------

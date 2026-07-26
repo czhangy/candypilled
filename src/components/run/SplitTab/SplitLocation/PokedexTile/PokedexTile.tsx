@@ -30,8 +30,8 @@ type PokedexTileProps = (
                   | 'ivs'
                   | 'level'
                   | 'moves'
-                  | 'name'
                   | 'nature'
+                  | 'slug'
                   | 'tags'
               >,
               location: string
@@ -44,9 +44,9 @@ type PokedexTileProps = (
 ) & {
     game: Game;
     generation: number;
-    onSelectAbility: (name: string) => void;
+    onSelectAbility: (slug: string) => void;
     onSelectLocation: (location: string) => void;
-    onSelectMove: (name: string) => void;
+    onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
     originalSpecies?: string;
     species?: string;
@@ -122,8 +122,8 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
             | 'ivs'
             | 'level'
             | 'moves'
-            | 'name'
             | 'nature'
+            | 'slug'
             | 'tags'
         >,
         location: string
@@ -151,10 +151,10 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         : undefined;
     const abilityEntries: AbilityEntry[] = abilities
         ? [
-              { name: abilities.slot1 },
-              ...(abilities.slot2 ? [{ name: abilities.slot2 }] : []),
+              { slug: abilities.slot1 },
+              ...(abilities.slot2 ? [{ slug: abilities.slot2 }] : []),
               ...(abilities.hidden
-                  ? [{ hidden: true, name: abilities.hidden }]
+                  ? [{ hidden: true, slug: abilities.hidden }]
                   : []),
           ]
         : [];
@@ -180,7 +180,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         !!pokemon &&
         !!rest.encounter &&
         EvolutionHelpers.isSameEvolutionLine(
-            pokemon.name,
+            pokemon.slug,
             rest.encounter,
             generation
         );
@@ -189,8 +189,8 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     const isEvolutionLineCaught =
         rest.mode === 'catch' &&
         !!pokemon &&
-        rest.dupes.some((name) =>
-            EvolutionHelpers.isSameEvolutionLine(pokemon.name, name, generation)
+        rest.dupes.some((slug) =>
+            EvolutionHelpers.isSameEvolutionLine(pokemon.slug, slug, generation)
         );
     const isCatchDisabled =
         rest.mode === 'catch' &&
@@ -260,7 +260,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     />
                 )}
             <EvolutionLine
-                currentName={species}
+                currentSlug={species}
                 hideTradeEvos={hideTradeEvos}
                 onSelectSpecies={onSelectSpecies}
                 step={evolutionLine}

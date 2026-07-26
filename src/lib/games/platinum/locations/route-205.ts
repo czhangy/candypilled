@@ -16,12 +16,12 @@ const ROUTE_205: Location = {
                     name: 'Jacob',
                     team: [
                         {
-                            name: 'Ponyta',
+                            slug: 'ponyta',
                             ability: 1,
                             gender: 'male',
                             level: 14,
                             nature: Nature.Bashful,
-                            moves: ['Ember', 'Tackle'],
+                            moves: ['ember', 'tackle'],
                         },
                     ],
                     x: 73.2,
@@ -33,21 +33,21 @@ const ROUTE_205: Location = {
                     name: 'Daniel',
                     team: [
                         {
-                            name: 'Geodude',
+                            slug: 'geodude',
                             ability: 1,
                             gender: 'male',
                             level: 10,
                             nature: Nature.Bashful,
                         },
                         {
-                            name: 'Geodude',
+                            slug: 'geodude',
                             ability: 1,
                             gender: 'male',
                             level: 11,
                             nature: Nature.Impish,
                         },
                         {
-                            name: 'Geodude',
+                            slug: 'geodude',
                             ability: 1,
                             gender: 'male',
                             level: 12,
@@ -63,12 +63,12 @@ const ROUTE_205: Location = {
                     name: 'Elizabeth',
                     team: [
                         {
-                            name: 'Roselia',
+                            slug: 'roselia',
                             ability: 1,
                             gender: 'female',
                             level: 14,
                             nature: Nature.Rash,
-                            moves: ['Growth', 'Mega Drain'],
+                            moves: ['growth', 'mega-drain'],
                         },
                     ],
                     x: 73.2,
@@ -80,14 +80,14 @@ const ROUTE_205: Location = {
                     name: 'Siena',
                     team: [
                         {
-                            name: 'Bidoof',
+                            slug: 'bidoof',
                             ability: 1,
                             gender: 'female',
                             level: 12,
                             nature: Nature.Adamant,
                         },
                         {
-                            name: 'Pachirisu',
+                            slug: 'pachirisu',
                             ability: 1,
                             gender: 'female',
                             level: 12,
@@ -103,7 +103,7 @@ const ROUTE_205: Location = {
                     name: 'Zackary',
                     team: [
                         {
-                            name: 'Aipom',
+                            slug: 'aipom',
                             ability: 1,
                             gender: 'male',
                             level: 14,
@@ -119,7 +119,7 @@ const ROUTE_205: Location = {
                     name: 'Nicholas',
                     team: [
                         {
-                            name: 'Onix',
+                            slug: 'onix',
                             ability: 1,
                             gender: 'male',
                             level: 14,
@@ -135,7 +135,7 @@ const ROUTE_205: Location = {
                     name: 'Kelsey',
                     team: [
                         {
-                            name: 'Machop',
+                            slug: 'machop',
                             ability: 1,
                             gender: 'female',
                             level: 15,
@@ -152,12 +152,12 @@ const ROUTE_205: Location = {
                     name: 'Karina',
                     team: [
                         {
-                            name: 'Piplup',
+                            slug: 'piplup',
                             ability: 1,
                             gender: 'female',
                             level: 14,
                             nature: Nature.Calm,
-                            moves: ['Bubble', 'Peck'],
+                            moves: ['bubble', 'peck'],
                         },
                     ],
                     x: 51.4,
@@ -176,7 +176,7 @@ const ROUTE_205: Location = {
                     name: 'Joseph',
                     team: [
                         {
-                            name: 'Goldeen',
+                            slug: 'goldeen',
                             ability: 1,
                             gender: 'male',
                             level: 17,
@@ -192,42 +192,42 @@ const ROUTE_205: Location = {
                     name: 'Andrew',
                     team: [
                         {
-                            name: 'Magikarp',
+                            slug: 'magikarp',
                             ability: 1,
                             gender: 'male',
                             level: 8,
                             nature: Nature.Adamant,
                         },
                         {
-                            name: 'Magikarp',
+                            slug: 'magikarp',
                             ability: 1,
                             gender: 'male',
                             level: 10,
                             nature: Nature.Lax,
                         },
                         {
-                            name: 'Magikarp',
+                            slug: 'magikarp',
                             ability: 1,
                             gender: 'male',
                             level: 12,
                             nature: Nature.Docile,
                         },
                         {
-                            name: 'Magikarp',
+                            slug: 'magikarp',
                             ability: 1,
                             gender: 'male',
                             level: 12,
                             nature: Nature.Docile,
                         },
                         {
-                            name: 'Magikarp',
+                            slug: 'magikarp',
                             ability: 1,
                             gender: 'male',
                             level: 14,
                             nature: Nature.Serious,
                         },
                         {
-                            name: 'Magikarp',
+                            slug: 'magikarp',
                             ability: 1,
                             gender: 'male',
                             level: 16,
@@ -243,21 +243,21 @@ const ROUTE_205: Location = {
                     name: 'Zachary',
                     team: [
                         {
-                            name: 'Magikarp',
+                            slug: 'magikarp',
                             ability: 1,
                             gender: 'male',
                             level: 14,
                             nature: Nature.Bashful,
                         },
                         {
-                            name: 'Goldeen',
+                            slug: 'goldeen',
                             ability: 1,
                             gender: 'male',
                             level: 16,
                             nature: Nature.Quiet,
                         },
                         {
-                            name: 'Magikarp',
+                            slug: 'magikarp',
                             ability: 1,
                             gender: 'male',
                             level: 14,

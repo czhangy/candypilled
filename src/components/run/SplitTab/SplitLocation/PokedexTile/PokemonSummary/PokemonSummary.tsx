@@ -8,7 +8,7 @@ type PokemonSummaryProps = {
     abilityEntries: AbilityEntry[];
     catchRate?: number;
     interactive: boolean;
-    onSelectAbility: (name: string) => void;
+    onSelectAbility: (slug: string) => void;
     placeholder?: string;
     pokemon?: PokemonData;
     sprite?: string;

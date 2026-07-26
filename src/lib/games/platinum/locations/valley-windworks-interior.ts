@@ -12,7 +12,7 @@ const VALLEY_WINDWORKS_INTERIOR: Location = {
             name: '4',
             team: [
                 {
-                    name: 'Zubat',
+                    slug: 'zubat',
                     ability: 1,
                     gender: 'male',
                     level: 13,
@@ -28,14 +28,14 @@ const VALLEY_WINDWORKS_INTERIOR: Location = {
             name: '5',
             team: [
                 {
-                    name: 'Glameow',
+                    slug: 'glameow',
                     ability: 1,
                     gender: 'male',
                     level: 11,
                     nature: Nature.Naive,
                 },
                 {
-                    name: 'Stunky',
+                    slug: 'stunky',
                     ability: 1,
                     gender: 'male',
                     level: 11,
@@ -51,22 +51,22 @@ const VALLEY_WINDWORKS_INTERIOR: Location = {
             name: 'Mars 1',
             team: [
                 {
-                    name: 'Zubat',
+                    slug: 'zubat',
                     ability: 1,
                     gender: 'female',
                     level: 15,
                     nature: Nature.Bold,
-                    moves: ['Bite', 'Leech Life', 'Toxic'],
+                    moves: ['bite', 'leech-life', 'toxic'],
                     ivs: 12,
                 },
                 {
-                    name: 'Purugly',
+                    slug: 'purugly',
                     ability: 1,
                     gender: 'female',
                     level: 17,
                     nature: Nature.Bashful,
-                    moves: ['Feint Attack', 'Scratch', 'Fake Out'],
-                    heldItem: 'Oran Berry',
+                    moves: ['feint-attack', 'scratch', 'fake-out'],
+                    heldItem: 'oran-berry',
                     ivs: 12,
                 },
             ],

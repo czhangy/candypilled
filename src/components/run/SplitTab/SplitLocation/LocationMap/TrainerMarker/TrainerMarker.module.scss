@@ -92,6 +92,8 @@
     }
 
     &--preview {
+        --marker-color: #{$pink};
+
         border-style: dashed;
         cursor: none;
         pointer-events: none;

@@ -13,7 +13,7 @@ past a fixed maximum height rather than growing the page.
 | Prop         | Type     | Required | Default | Description                                              |
 | ------------ | -------- | -------- | ------- | -------------------------------------------------------- |
 | `generation` | `number` | Yes      | -       | The game's generation, used to resolve the move's values |
-| `move`       | `string` | No       | -       | The selected move's name, if any                         |
+| `moveSlug`   | `string` | No       | -       | The selected move's slug, if any                         |
 
 ## Computations
 

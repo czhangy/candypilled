@@ -2,12 +2,12 @@ import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import styles from './AbilityDetail.module.scss';
 
 type AbilityDetailProps = {
-    ability?: string;
+    abilitySlug?: string;
     generation: number;
 };
 
 const AbilityDetail: React.FC<AbilityDetailProps> = ({
-    ability,
+    abilitySlug,
     generation,
 }) => {
     // -------------------------------------------------------------------------
@@ -41,11 +41,11 @@ const AbilityDetail: React.FC<AbilityDetailProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const abilityData = ability
-        ? AbilityHelpers.getAbilityData(ability)
+    const abilityData = abilitySlug
+        ? AbilityHelpers.getAbilityData(abilitySlug)
         : undefined;
-    const values = ability
-        ? AbilityHelpers.getAbilityForGeneration(ability, generation)
+    const values = abilitySlug
+        ? AbilityHelpers.getAbilityForGeneration(abilitySlug, generation)
         : undefined;
 
     // -------------------------------------------------------------------------

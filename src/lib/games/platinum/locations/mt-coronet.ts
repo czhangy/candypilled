@@ -45,7 +45,7 @@ const MT_CORONET: Location = {
                     name: '6',
                     team: [
                         {
-                            name: 'Stunky',
+                            slug: 'stunky',
                             ability: 1,
                             gender: 'female',
                             level: 43,
@@ -62,7 +62,7 @@ const MT_CORONET: Location = {
                     name: '7',
                     team: [
                         {
-                            name: 'Murkrow',
+                            slug: 'murkrow',
                             ability: 1,
                             gender: 'male',
                             level: 43,
@@ -91,44 +91,44 @@ const MT_CORONET: Location = {
                     name: '8',
                     team: [
                         {
-                            name: 'Houndour',
+                            slug: 'houndour',
                             ability: 1,
                             gender: 'male',
                             level: 40,
                             nature: Nature.Hasty,
                             moves: [
-                                'Beat Up',
-                                'Fire Fang',
-                                'Feint Attack',
-                                'Embargo',
+                                'beat-up',
+                                'fire-fang',
+                                'feint-attack',
+                                'embargo',
                             ],
                             ivs: 3,
                         },
                         {
-                            name: 'Golbat',
+                            slug: 'golbat',
                             ability: 1,
                             gender: 'male',
                             level: 40,
                             nature: Nature.Serious,
                             moves: [
-                                'Confuse Ray',
-                                'Air Cutter',
-                                'Mean Look',
-                                'Poison Fang',
+                                'confuse-ray',
+                                'air-cutter',
+                                'mean-look',
+                                'poison-fang',
                             ],
                             ivs: 3,
                         },
                         {
-                            name: 'Houndour',
+                            slug: 'houndour',
                             ability: 1,
                             gender: 'male',
                             level: 40,
                             nature: Nature.Hasty,
                             moves: [
-                                'Beat Up',
-                                'Fire Fang',
-                                'Feint Attack',
-                                'Embargo',
+                                'beat-up',
+                                'fire-fang',
+                                'feint-attack',
+                                'embargo',
                             ],
                             ivs: 3,
                         },
@@ -142,7 +142,7 @@ const MT_CORONET: Location = {
                     name: '9',
                     team: [
                         {
-                            name: 'Stunky',
+                            slug: 'stunky',
                             ability: 1,
                             gender: 'male',
                             level: 42,
@@ -150,7 +150,7 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                         {
-                            name: 'Golbat',
+                            slug: 'golbat',
                             ability: 1,
                             gender: 'male',
                             level: 40,
@@ -174,7 +174,7 @@ const MT_CORONET: Location = {
                     name: '10',
                     team: [
                         {
-                            name: 'Golbat',
+                            slug: 'golbat',
                             ability: 1,
                             gender: 'male',
                             level: 43,
@@ -191,7 +191,7 @@ const MT_CORONET: Location = {
                     name: '11',
                     team: [
                         {
-                            name: 'Murkrow',
+                            slug: 'murkrow',
                             ability: 1,
                             gender: 'female',
                             level: 39,
@@ -199,7 +199,7 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                         {
-                            name: 'Glameow',
+                            slug: 'glameow',
                             ability: 1,
                             gender: 'female',
                             level: 42,
@@ -207,7 +207,7 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                         {
-                            name: 'Murkrow',
+                            slug: 'murkrow',
                             ability: 1,
                             gender: 'female',
                             level: 39,
@@ -224,7 +224,7 @@ const MT_CORONET: Location = {
                     name: '12',
                     team: [
                         {
-                            name: 'Croagunk',
+                            slug: 'croagunk',
                             ability: 1,
                             gender: 'male',
                             level: 38,
@@ -232,7 +232,7 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                         {
-                            name: 'Stunky',
+                            slug: 'stunky',
                             ability: 1,
                             gender: 'male',
                             level: 40,
@@ -240,7 +240,7 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                         {
-                            name: 'Croagunk',
+                            slug: 'croagunk',
                             ability: 1,
                             gender: 'male',
                             level: 42,
@@ -264,7 +264,7 @@ const MT_CORONET: Location = {
                     name: '13',
                     team: [
                         {
-                            name: 'Houndour',
+                            slug: 'houndour',
                             ability: 1,
                             gender: 'female',
                             level: 40,
@@ -272,7 +272,7 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                         {
-                            name: 'Glameow',
+                            slug: 'glameow',
                             ability: 1,
                             gender: 'female',
                             level: 42,
@@ -288,7 +288,7 @@ const MT_CORONET: Location = {
                     name: '14',
                     team: [
                         {
-                            name: 'Glameow',
+                            slug: 'glameow',
                             ability: 1,
                             gender: 'male',
                             level: 41,
@@ -296,7 +296,7 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                         {
-                            name: 'Golbat',
+                            slug: 'golbat',
                             ability: 1,
                             gender: 'male',
                             level: 41,
@@ -319,7 +319,7 @@ const MT_CORONET: Location = {
                     name: '15',
                     team: [
                         {
-                            name: 'Golbat',
+                            slug: 'golbat',
                             ability: 1,
                             gender: 'female',
                             level: 39,
@@ -327,7 +327,7 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                         {
-                            name: 'Croagunk',
+                            slug: 'croagunk',
                             ability: 1,
                             gender: 'female',
                             level: 40,
@@ -335,7 +335,7 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                         {
-                            name: 'Murkrow',
+                            slug: 'murkrow',
                             ability: 1,
                             gender: 'female',
                             level: 41,

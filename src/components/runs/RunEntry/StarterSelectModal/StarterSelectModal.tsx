@@ -81,10 +81,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
 
     const handleSelectClick = (): void => {
         if (!defaultSpecies) return;
-        setChosenSpecies(
-            PokemonHelpers.getPokemonData(defaultSpecies)?.name ??
-                defaultSpecies
-        );
+        setChosenSpecies(defaultSpecies);
     };
 
     const handleBackClick = (): void => {
@@ -100,8 +97,8 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
             | 'ivs'
             | 'level'
             | 'moves'
-            | 'name'
             | 'nature'
+            | 'slug'
             | 'tags'
         >,
         requestClose: () => void

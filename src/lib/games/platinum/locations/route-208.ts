@@ -13,7 +13,7 @@ const ROUTE_208: Location = {
             name: 'Jonathan',
             team: [
                 {
-                    name: 'Onix',
+                    slug: 'onix',
                     ability: 1,
                     gender: 'male',
                     level: 22,
@@ -29,7 +29,7 @@ const ROUTE_208: Location = {
             name: 'Kyle',
             team: [
                 {
-                    name: 'Machop',
+                    slug: 'machop',
                     ability: 1,
                     gender: 'male',
                     level: 23,
@@ -45,7 +45,7 @@ const ROUTE_208: Location = {
             name: 'Robert',
             team: [
                 {
-                    name: 'Nosepass',
+                    slug: 'nosepass',
                     ability: 1,
                     gender: 'male',
                     level: 22,
@@ -61,14 +61,14 @@ const ROUTE_208: Location = {
             name: 'Hannah',
             team: [
                 {
-                    name: 'Roselia',
+                    slug: 'roselia',
                     ability: 1,
                     gender: 'female',
                     level: 18,
                     nature: Nature.Mild,
                 },
                 {
-                    name: 'Combee',
+                    slug: 'combee',
                     ability: 1,
                     gender: 'female',
                     level: 22,
@@ -84,14 +84,14 @@ const ROUTE_208: Location = {
             name: 'William',
             team: [
                 {
-                    name: 'Mime Jr.',
+                    slug: 'mime-jr',
                     ability: 1,
                     gender: 'male',
                     level: 20,
                     nature: Nature.Mild,
                 },
                 {
-                    name: 'Bonsly',
+                    slug: 'bonsly',
                     ability: 1,
                     gender: 'male',
                     level: 20,
@@ -107,14 +107,14 @@ const ROUTE_208: Location = {
             name: 'Cody',
             team: [
                 {
-                    name: 'Barboach',
+                    slug: 'barboach',
                     ability: 1,
                     gender: 'male',
                     level: 33,
                     nature: Nature.Relaxed,
                 },
                 {
-                    name: 'Gyarados',
+                    slug: 'gyarados',
                     ability: 1,
                     gender: 'male',
                     level: 33,
@@ -130,14 +130,14 @@ const ROUTE_208: Location = {
             name: 'Alexander',
             team: [
                 {
-                    name: 'Graveler',
+                    slug: 'graveler',
                     ability: 1,
                     gender: 'male',
                     level: 38,
                     nature: Nature.Adamant,
                 },
                 {
-                    name: 'Probopass',
+                    slug: 'probopass',
                     ability: 1,
                     gender: 'male',
                     level: 40,

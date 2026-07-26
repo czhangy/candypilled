@@ -1,11 +1,11 @@
 import { AbilityEntry } from '@/lib/static/types';
-import StringHelpers from '@/lib/utils/StringHelpers';
+import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import styles from './AbilitiesList.module.scss';
 
 type AbilitiesListProps = {
     entries: AbilityEntry[];
     interactive: boolean;
-    onSelectAbility: (name: string) => void;
+    onSelectAbility: (slug: string) => void;
 };
 
 const AbilitiesList: React.FC<AbilitiesListProps> = ({
@@ -17,8 +17,8 @@ const AbilitiesList: React.FC<AbilitiesListProps> = ({
     // HANDLERS
     // -------------------------------------------------------------------------
 
-    const handleAbilityClick = (name: string): void => {
-        onSelectAbility(StringHelpers.toTitleCase(name));
+    const handleAbilityClick = (slug: string): void => {
+        onSelectAbility(slug);
     };
 
     // -------------------------------------------------------------------------
@@ -27,8 +27,12 @@ const AbilitiesList: React.FC<AbilitiesListProps> = ({
 
     return (
         <div className={styles['abilities-list']}>
-            {entries.map((entry) =>
-                interactive ? (
+            {entries.map((entry) => {
+                const name =
+                    AbilityHelpers.getAbilityData(entry.slug)?.name ??
+                    entry.slug;
+
+                return interactive ? (
                     <button
                         className={[
                             styles.ability,
@@ -36,11 +40,11 @@ const AbilitiesList: React.FC<AbilitiesListProps> = ({
                         ]
                             .filter(Boolean)
                             .join(' ')}
-                        key={entry.name}
-                        onClick={() => handleAbilityClick(entry.name)}
+                        key={entry.slug}
+                        onClick={() => handleAbilityClick(entry.slug)}
                         type="button"
                     >
-                        {StringHelpers.toTitleCase(entry.name)}
+                        {name}
                         {entry.hidden && ' (Hidden)'}
                     </button>
                 ) : (
@@ -52,13 +56,13 @@ const AbilitiesList: React.FC<AbilitiesListProps> = ({
                         ]
                             .filter(Boolean)
                             .join(' ')}
-                        key={entry.name}
+                        key={entry.slug}
                     >
-                        {StringHelpers.toTitleCase(entry.name)}
+                        {name}
                         {entry.hidden && ' (Hidden)'}
                     </span>
-                )
-            )}
+                );
+            })}
         </div>
     );
 };

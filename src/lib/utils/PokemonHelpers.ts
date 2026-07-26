@@ -7,8 +7,6 @@ import {
     StatValues,
 } from '@/lib/static/types';
 import GenerationHelpers from '@/lib/utils/GenerationHelpers';
-import MoveHelpers from '@/lib/utils/MoveHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
 
 export default class PokemonHelpers {
     // -------------------------------------------------------------------------
@@ -18,40 +16,35 @@ export default class PokemonHelpers {
     /**
      * Every species introduced by generation or earlier, excluding forms
      * that can't actually persist as a caught Pokémon (e.g. Castform's
-     * weather forms), deduped and sorted alphabetically by display name.
+     * weather forms), sorted alphabetically by display name.
      */
-    static getAllSpecies(generation: number): string[] {
-        const names = new Set(
-            Object.values(POKEMON)
-                .filter(
-                    (pokemon) =>
-                        pokemon.introducedInGeneration <= generation &&
-                        !pokemon.isTemporaryForm
-                )
-                .map((pokemon) => pokemon.name)
-        );
-
-        return [...names].sort((a, b) => a.localeCompare(b));
+    static getAllSpecies(generation: number): PokemonData[] {
+        return Object.values(POKEMON)
+            .filter(
+                (pokemon) =>
+                    pokemon.introducedInGeneration <= generation &&
+                    !pokemon.isTemporaryForm
+            )
+            .sort((a, b) => a.name.localeCompare(b.name));
     }
 
-    /** The Pokémon data for `name`, or undefined if no form matches. */
-    static getPokemonData(name: string): PokemonData | undefined {
-        const [formKey] = PokemonHelpers.getPokemonForms(name);
+    /** The Pokémon data for `slug`, or undefined if no form matches. */
+    static getPokemonData(slug: string): PokemonData | undefined {
+        const [formKey] = PokemonHelpers.getPokemonForms(slug);
         return formKey ? POKEMON[formKey] : undefined;
     }
 
     /**
-     * Every form key name could resolve to. Species with multiple forms
-     * (e.g. Wormadam) have no entry under their base name, only under each
-     * form's name, so an ambiguous base name (as evolution data reports
+     * Every form key slug could resolve to. Species with multiple forms
+     * (e.g. Wormadam) have no entry under their base slug, only under each
+     * form's slug, so an ambiguous base slug (as evolution data reports
      * for a Burmy evolving into Wormadam, since its cloak isn't tracked by
      * the evolution chain) resolves to every matching form key instead of
      * just one, letting callers offer them all rather than silently
-     * picking the alphabetically-first form. A name with its own entry
+     * picking the alphabetically-first form. A slug with its own entry
      * always resolves to itself.
      */
-    static getPokemonForms(name: string): string[] {
-        const slug = StringHelpers.toSlug(name);
+    static getPokemonForms(slug: string): string[] {
         if (POKEMON[slug]) return [slug];
 
         return Object.keys(POKEMON)
@@ -59,12 +52,12 @@ export default class PokemonHelpers {
             .sort((a, b) => a.localeCompare(b));
     }
 
-    /** name's sprite, preferring variant if it has one, or undefined if no form matches. */
+    /** slug's sprite, preferring variant if it has one, or undefined if no form matches. */
     static getPokemonSprite(
-        name: string,
+        slug: string,
         variant?: string
     ): string | undefined {
-        const pokemon = PokemonHelpers.getPokemonData(name);
+        const pokemon = PokemonHelpers.getPokemonData(slug);
         if (!pokemon) return undefined;
 
         if (variant && pokemon.sprites[variant]) {
@@ -74,29 +67,29 @@ export default class PokemonHelpers {
         return Object.values(pokemon.sprites)[0];
     }
 
-    /** name's box/PC storage icon sprite path. */
-    static getBoxSprite(name: string): string {
-        return `/box/${StringHelpers.toSlug(name)}.png`;
+    /** slug's box/PC storage icon sprite path. */
+    static getBoxSprite(slug: string): string {
+        return `/box/${slug}.png`;
     }
 
-    /** name's types as of generation, or undefined if no form matches. */
+    /** slug's types as of generation, or undefined if no form matches. */
     static getPokemonTypes(
-        name: string,
+        slug: string,
         generation: number
     ): string[] | undefined {
-        const pokemon = PokemonHelpers.getPokemonData(name);
+        const pokemon = PokemonHelpers.getPokemonData(slug);
         if (!pokemon) return undefined;
 
         return GenerationHelpers.resolveGeneration(pokemon.types, generation)
             ?.types;
     }
 
-    /** name's abilities as of generation, or undefined if no form matches. */
+    /** slug's abilities as of generation, or undefined if no form matches. */
     static getPokemonAbilities(
-        name: string,
+        slug: string,
         generation: number
     ): Abilities | undefined {
-        const pokemon = PokemonHelpers.getPokemonData(name);
+        const pokemon = PokemonHelpers.getPokemonData(slug);
         if (!pokemon) return undefined;
 
         return GenerationHelpers.resolveGeneration(
@@ -105,13 +98,13 @@ export default class PokemonHelpers {
         )?.abilities;
     }
 
-    /** The name of name's ability in slot, as of generation. */
-    static getAbilityName(
-        name: string,
+    /** The slug of slug's ability in slot, as of generation. */
+    static getAbilitySlug(
+        slug: string,
         generation: number,
         slot: AbilitySlot
     ): string | undefined {
-        const abilities = PokemonHelpers.getPokemonAbilities(name, generation);
+        const abilities = PokemonHelpers.getPokemonAbilities(slug, generation);
         if (!abilities) return undefined;
 
         switch (slot) {
@@ -124,33 +117,33 @@ export default class PokemonHelpers {
         }
     }
 
-    /** name's base stats as of generation, or undefined if no form matches. */
+    /** slug's base stats as of generation, or undefined if no form matches. */
     static getPokemonStats(
-        name: string,
+        slug: string,
         generation: number
     ): StatValues | undefined {
-        const pokemon = PokemonHelpers.getPokemonData(name);
+        const pokemon = PokemonHelpers.getPokemonData(slug);
         if (!pokemon) return undefined;
 
         return GenerationHelpers.resolveGeneration(pokemon.stats, generation)
             ?.stats;
     }
 
-    /** name's catch rate, or undefined if no form matches. */
-    static getPokemonCatchRate(name: string): number | undefined {
-        return PokemonHelpers.getPokemonData(name)?.catchRate;
+    /** slug's catch rate, or undefined if no form matches. */
+    static getPokemonCatchRate(slug: string): number | undefined {
+        return PokemonHelpers.getPokemonData(slug)?.catchRate;
     }
 
     /**
-     * name's learnset in version (a PokeAPI version group slug, e.g.
+     * slug's learnset in version (a PokeAPI version group slug, e.g.
      * "platinum"), or undefined if no form or matching version group
      * exists.
      */
     static getPokemonLearnset(
-        name: string,
+        slug: string,
         version: string
     ): LearnsetMove[] | undefined {
-        const pokemon = PokemonHelpers.getPokemonData(name);
+        const pokemon = PokemonHelpers.getPokemonData(slug);
         if (!pokemon) return undefined;
 
         return pokemon.learnset.find((entry) => entry.versionGroup === version)
@@ -158,26 +151,24 @@ export default class PokemonHelpers {
     }
 
     /**
-     * The moves name would know at level in version, i.e. the last
-     * MAX_KNOWN_MOVES distinct level-up moves learned at or before level, in
-     * the order they were learned — matching how a Pokémon's moveset is
-     * determined in-game when it's first encountered or evolves.
+     * The slugs of the moves slug would know at level in version, i.e. the
+     * last MAX_KNOWN_MOVES distinct level-up moves learned at or before
+     * level, in the order they were learned — matching how a Pokémon's
+     * moveset is determined in-game when it's first encountered or evolves.
      */
     static getMovesAtLevel(
-        name: string,
+        slug: string,
         version: string,
         level: number
     ): string[] {
-        const learnset = PokemonHelpers.getPokemonLearnset(name, version) ?? [];
+        const learnset = PokemonHelpers.getPokemonLearnset(slug, version) ?? [];
         const levelUpMoves = learnset
             .filter(
                 (move) =>
                     move.method === 'level-up' &&
                     (move.level ?? Infinity) <= level
             )
-            .map(
-                (move) => MoveHelpers.getMoveData(move.name)?.name ?? move.name
-            );
+            .map((move) => move.slug);
 
         return Array.from(new Set(levelUpMoves)).slice(
             -PokemonHelpers.MAX_KNOWN_MOVES

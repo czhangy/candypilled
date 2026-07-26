@@ -39,12 +39,12 @@ shown instead.
   query param, defaulting to `'split'` if absent
 - `activeSubtab` — the `id` of the currently active Data subtab, read
   from the `subtab` query param, defaulting to `'pokedex'` if absent
-- `selectedMove` — the currently selected move's name, read from the `move`
+- `selectedMove` — the currently selected move's slug, read from the `move`
   query param, shared between the Data tab's Moves subtab and move
   links elsewhere on the page
-- `selectedAbility` — the currently selected ability's name, read from the
+- `selectedAbility` — the currently selected ability's slug, read from the
   `ability` query param
-- `selectedItem` — the currently selected item's name, read from the
+- `selectedItem` — the currently selected item's slug, read from the
   `item` query param
 - `selectedSpecies` — the currently selected Pokémon's species, read from
   the `species` query param, shared between the Data tab's Pokédex
@@ -83,16 +83,18 @@ shown instead.
 ## Handlers
 
 - **On tab change** (from `Tabs`) — sets the `tab` query param and clears
-  whichever of `pokemon`/`subtab`/`species`/`move`/`ability`/`item`/`battle`
-  isn't relevant to the destination tab, so a tab's selection param doesn't
-  linger in the URL after navigating away from it
+  whichever of `pokemon`/`subtab`/`species`/`move`/`ability`/`item` isn't
+  relevant to the destination tab, so a tab's selection param doesn't
+  linger in the URL after navigating away from it. `battle` is left
+  untouched, since it's shared between the Splits tab's trainer markers and
+  the Calc tab's battle selection and should persist across tab switches
 - **On subtab change** (from `DataTab`) — sets the `subtab` query param
   and clears `species`/`move`/`ability`/`item`, so a subtab's selection
   param doesn't linger in the URL after switching to a different subtab
 - **On move link click** (from `SplitTab` or `PokedexSubtab`, e.g. a move
   within `BattleCard` or `PokedexSubtab`'s learnset) — opens the Data
   tab's Moves subtab for that move
-  (`?tab=data&subtab=moves&move=<name>`) in a new browser tab, leaving
+  (`?tab=data&subtab=moves&move=<slug>`) in a new browser tab, leaving
   the current page untouched
 - **On move select** (from `DataTab`'s Moves subtab) — sets the `move`
   query param without changing `tab`/`subtab`
@@ -103,11 +105,11 @@ shown instead.
 - **On ability link click** (from `SplitTab` or `PokedexSubtab`, e.g. an
   ability within `PokedexTile` or `BattleCard`) — opens the Data tab's
   Abilities subtab for that ability
-  (`?tab=data&subtab=abilities&ability=<name>`) in a new browser tab,
+  (`?tab=data&subtab=abilities&ability=<slug>`) in a new browser tab,
   leaving the current page untouched
 - **On item link click** (from `SplitTab`, a Pokémon's held item within
   `BattleCard`, or from `BoxTab`'s `PokemonPreview`) — opens the Data
-  tab's Items subtab for that item (`?tab=data&subtab=items&item=<name>`)
+  tab's Items subtab for that item (`?tab=data&subtab=items&item=<slug>`)
   in a new browser tab, leaving the current page untouched
 - **On species link click** (from `SplitTab`, a Pokémon's sprite or name
   within `BattleCard`) — opens the Data tab's Pokédex subtab for that
@@ -115,11 +117,15 @@ shown instead.
   tab, leaving the current page untouched
 - **On species select** (from `DataTab`'s Pokédex subtab, whether from
   its species list or its `PokedexDetail`'s evolution line) — sets the
-  `species` query param (slugified, since an evolution line link passes a
-  slug rather than a display name) without changing `tab`/`subtab`
+  `species` query param without changing `tab`/`subtab`
 - **On trainer link click** (from `SplitTab`, a `BattleCard`'s trainer name
   header) — opens the Calc tab for that battle (`?tab=calc&battle=<key>`)
   in a new browser tab, leaving the current page untouched
+- **On battle marker select** (from `SplitTab`, a `LocationMap`'s trainer
+  marker) — sets the `battle` query param to that battle's key, without
+  changing `tab`. Every `SplitLocation` reads this same param, so if its
+  location has a battle matching the key, that battle is preselected there
+  too
 - **On Pokémon deselect** (from `BoxTab`, when switching between its box
   and graveyard views) — clears the `pokemon` query param
 - **On location select** (from `BoxTab`'s `PokemonPreview`, `SplitTab`'s

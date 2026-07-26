@@ -88,7 +88,7 @@ const DataModal: React.FC<DataModalProps> = ({
         const pokemon = value as Record<string, unknown>;
 
         return (
-            typeof pokemon.name === 'string' &&
+            typeof pokemon.slug === 'string' &&
             typeof pokemon.level === 'number' &&
             typeof pokemon.location === 'string' &&
             Object.values(PokemonStatus).includes(

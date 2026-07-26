@@ -11,6 +11,8 @@ import StringHelpers from '@/lib/utils/StringHelpers';
 const USAGE = 'Usage: npm run gen:location <map> [name]';
 const IMAGE_NOT_FOUND = 'No map image was found at the expected path';
 const LOCATION_EXISTS = 'That location already exists.';
+const CONVERTED_TO_SUBAREAS =
+    'That location already has a map, so it was converted to use subareas instead.';
 
 type LocationArgs = {
     map: string;
@@ -80,6 +82,23 @@ const wireMap = (gameSlug: string, mapSlug: string): void => {
     writeBarrelExports(barrelPath, exports);
 };
 
+const MAP_FIELD_PATTERN = /^ {4}map: \w+,\n/m;
+
+// A location that already has a map assigned can't take a second one as a
+// flat `map` field, so once that map + location pairing is already in use,
+// swap the field for an empty `subareas` array for the entries to be filled
+// in by hand instead of silently overwriting the existing map.
+const convertToSubareas = (filePath: string): boolean => {
+    const contents = fs.readFileSync(filePath, 'utf-8');
+    if (!MAP_FIELD_PATTERN.test(contents)) return false;
+
+    fs.writeFileSync(
+        filePath,
+        contents.replace(MAP_FIELD_PATTERN, '    subareas: [],\n')
+    );
+    return true;
+};
+
 const createLocation = (gameSlug: string, args: LocationArgs): void => {
     const filePath = getLocationPath(gameSlug, args.slug);
     const constName = StringHelpers.toConstantCase(args.slug);
@@ -107,8 +126,13 @@ runScript(() => {
 
     wireMap(gameSlug, args.map);
 
-    if (fs.existsSync(getLocationPath(gameSlug, args.slug))) {
-        logSuccess(LOCATION_EXISTS);
+    const locationPath = getLocationPath(gameSlug, args.slug);
+    if (fs.existsSync(locationPath)) {
+        logSuccess(
+            convertToSubareas(locationPath)
+                ? CONVERTED_TO_SUBAREAS
+                : LOCATION_EXISTS
+        );
         return;
     }
 

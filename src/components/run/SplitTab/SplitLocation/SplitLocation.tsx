@@ -30,13 +30,15 @@ type SplitLocationProps = {
     location: Location;
     onAdvanceSplit: (splitName: string) => void;
     onGameComplete: () => void;
-    onSelectAbility: (name: string) => void;
-    onSelectItem: (name: string) => void;
+    onSelectAbility: (slug: string) => void;
+    onSelectBattleMarker: (battleKey: string) => void;
+    onSelectItem: (slug: string) => void;
     onSelectLocation: (location: string) => void;
-    onSelectMove: (name: string) => void;
+    onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
     onSelectTrainer: (battleKey: string) => void;
     run: Run;
+    selectedBattleKey?: string;
     variant: string;
 };
 
@@ -47,12 +49,14 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     onAdvanceSplit,
     onGameComplete,
     onSelectAbility,
+    onSelectBattleMarker,
     onSelectItem,
     onSelectLocation,
     onSelectMove,
     onSelectSpecies,
     onSelectTrainer,
     run,
+    selectedBattleKey,
     variant,
 }) => {
     // -------------------------------------------------------------------------
@@ -100,6 +104,11 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                   : (subarea?.battles ?? [])
               : (location.battles ?? []);
 
+        const queriedBattle = battles.find(
+            (battle) => BattleHelpers.getBattleKey(battle) === selectedBattleKey
+        );
+        if (queriedBattle) return queriedBattle;
+
         const requiredBattles = battles.filter((battle) => !battle.isOptional);
         const candidates =
             requiredBattles.length > 0 ? requiredBattles : battles;
@@ -139,6 +148,14 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const getInitialSubareaIndex = (): number => {
         if (!location.subareas || location.subareas.length === 0) {
             return 0;
+        }
+
+        if (selectedBattleKey) {
+            const queried = getAllBattles().find(
+                ({ battle }) =>
+                    BattleHelpers.getBattleKey(battle) === selectedBattleKey
+            );
+            if (queried) return queried.subareaIndex;
         }
 
         const hasAnyEncounters = location.subareas.some(
@@ -274,8 +291,8 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             | 'ivs'
             | 'level'
             | 'moves'
-            | 'name'
             | 'nature'
+            | 'slug'
             | 'tags'
         >,
         enteredLocation: string
@@ -327,7 +344,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const dupes = run.caughtPokemon.map((caught) => caught.name);
+    const dupes = run.caughtPokemon.map((caught) => caught.slug);
     const starterCaughtSeparately = run.caughtPokemon.some(
         (caught) => caught.location === STARTER_LOCATION_NAME
     );
@@ -335,7 +352,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const usedLocations = RunHelpers.getUsedLocations(run);
     const encounter = run.caughtPokemon.find(
         (caught) => caught.location === location.name
-    )?.name;
+    )?.slug;
     const activeSubarea = location.subareas?.[selectedSubareaIndex];
     const section: Section = activeSubarea
         ? {
@@ -456,9 +473,12 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                     isBattleDefeated={isBattleDefeated}
                                     isBattleNextPB={isBattleNextPB}
                                     map={section.map}
-                                    onBattleClick={(battle: Battle) =>
-                                        setSelectedBattle(battle)
-                                    }
+                                    onBattleClick={(battle: Battle) => {
+                                        setSelectedBattle(battle);
+                                        onSelectBattleMarker(
+                                            BattleHelpers.getBattleKey(battle)
+                                        );
+                                    }}
                                     selectedBattle={selectedBattle}
                                 />
                             )}

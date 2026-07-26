@@ -5,7 +5,7 @@ import styles from './ItemsSubtab.module.scss';
 
 type ItemsSubtabProps = {
     generation: number;
-    onSelectItem: (name: string) => void;
+    onSelectItem: (slug: string) => void;
     selectedItem?: string;
 };
 
@@ -39,7 +39,7 @@ const ItemsSubtab: React.FC<ItemsSubtabProps> = ({
                 searchPlaceholder="Search items..."
                 selectedItem={selectedItem}
             />
-            <ItemDetail generation={generation} item={selectedItem} />
+            <ItemDetail generation={generation} itemSlug={selectedItem} />
         </div>
     );
 };

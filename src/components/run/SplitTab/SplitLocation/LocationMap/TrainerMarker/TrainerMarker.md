@@ -32,7 +32,9 @@ to show a prospective position before it is saved.
   matches the trainer's on-screen footprint regardless of image resolution.
   Doubled individually when `trainer.isDoubleWidthMarker` or
   `trainer.isDoubleHeightMarker` is set, for trainers that occupy a larger
-  footprint on the map
+  footprint on the map. Overridden by `trainer.customWidth` or
+  `trainer.customHeight`, in pixels, when set, for trainers whose footprint
+  doesn't fit the fixed or doubled sizes
 
 ## SCSS Variable Dependencies
 

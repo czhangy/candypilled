@@ -23,21 +23,21 @@ const LOST_TOWER: Location = {
                     name: 'Oliver',
                     team: [
                         {
-                            name: 'Mothim',
+                            slug: 'mothim',
                             ability: 1,
                             gender: 'male',
                             level: 20,
                             nature: Nature.Naive,
                         },
                         {
-                            name: 'Barboach',
+                            slug: 'barboach',
                             ability: 1,
                             gender: 'male',
                             level: 19,
                             nature: Nature.Timid,
                         },
                         {
-                            name: 'Chatot',
+                            slug: 'chatot',
                             ability: 1,
                             gender: 'male',
                             level: 21,
@@ -60,7 +60,7 @@ const LOST_TOWER: Location = {
                     name: 'Kirby',
                     team: [
                         {
-                            name: 'Cleffa',
+                            slug: 'cleffa',
                             ability: 1,
                             gender: 'male',
                             level: 23,
@@ -77,28 +77,28 @@ const LOST_TOWER: Location = {
                     name: 'Leonard',
                     team: [
                         {
-                            name: 'Pichu',
+                            slug: 'pichu',
                             ability: 1,
                             gender: 'male',
                             level: 19,
                             nature: Nature.Calm,
-                            heldItem: 'Sitrus Berry',
+                            heldItem: 'sitrus-berry',
                         },
                         {
-                            name: 'Pichu',
+                            slug: 'pichu',
                             ability: 1,
                             gender: 'male',
                             level: 19,
                             nature: Nature.Calm,
-                            heldItem: 'Sitrus Berry',
+                            heldItem: 'sitrus-berry',
                         },
                         {
-                            name: 'Pikachu',
+                            slug: 'pikachu',
                             ability: 1,
                             gender: 'male',
                             level: 22,
                             nature: Nature.Serious,
-                            heldItem: 'Sitrus Berry',
+                            heldItem: 'sitrus-berry',
                         },
                     ],
                     x: 50,
@@ -122,12 +122,12 @@ const LOST_TOWER: Location = {
                     name: 'Rebekah',
                     team: [
                         {
-                            name: 'Bonsly',
+                            slug: 'bonsly',
                             ability: 1,
                             gender: 'female',
                             level: 23,
                             nature: Nature.Relaxed,
-                            heldItem: 'Sitrus Berry',
+                            heldItem: 'sitrus-berry',
                         },
                     ],
                     x: 64.9,
@@ -146,14 +146,14 @@ const LOST_TOWER: Location = {
                     name: 'Beth & Bob',
                     team: [
                         {
-                            name: 'Ponyta',
+                            slug: 'ponyta',
                             ability: 1,
                             gender: 'male',
                             level: 23,
                             nature: Nature.Jolly,
                         },
                         {
-                            name: 'Ponyta',
+                            slug: 'ponyta',
                             ability: 1,
                             gender: 'male',
                             level: 23,
@@ -172,14 +172,14 @@ const LOST_TOWER: Location = {
                     name: 'Mike & Nat',
                     team: [
                         {
-                            name: 'Murkrow',
+                            slug: 'murkrow',
                             ability: 1,
                             gender: 'male',
                             level: 23,
                             nature: Nature.Docile,
                         },
                         {
-                            name: 'Misdreavus',
+                            slug: 'misdreavus',
                             ability: 1,
                             gender: 'male',
                             level: 23,

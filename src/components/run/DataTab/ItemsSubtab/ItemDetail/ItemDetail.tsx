@@ -5,10 +5,10 @@ import styles from './ItemDetail.module.scss';
 
 type ItemDetailProps = {
     generation: number;
-    item?: string;
+    itemSlug?: string;
 };
 
-const ItemDetail: React.FC<ItemDetailProps> = ({ generation, item }) => {
+const ItemDetail: React.FC<ItemDetailProps> = ({ generation, itemSlug }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
@@ -19,7 +19,9 @@ const ItemDetail: React.FC<ItemDetailProps> = ({ generation, item }) => {
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const itemData = item ? ItemHelpers.getHeldItemData(item) : undefined;
+    const itemData = itemSlug
+        ? ItemHelpers.getHeldItemData(itemSlug)
+        : undefined;
     const values = itemData
         ? GenerationHelpers.resolveGeneration(
               itemData.valuesByGeneration,

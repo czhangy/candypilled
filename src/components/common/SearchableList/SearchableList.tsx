@@ -6,8 +6,11 @@ import styles from './SearchableList.module.scss';
 
 type SearchableListProps = {
     emptyMessage: string;
-    items: { name: string }[];
-    onSelectItem?: (name: string) => void;
+    // `slug` is the selection identity (returned by `onSelectItem` and
+    // compared against `selectedItem`); `name` is the searched/displayed
+    // text.
+    items: { name: string; slug: string }[];
+    onSelectItem: (slug: string) => void;
     searchAriaLabel: string;
     searchPlaceholder: string;
     selectedItem?: string;
@@ -37,8 +40,8 @@ const SearchableList: React.FC<SearchableListProps> = ({
         setQuery(event.target.value);
     };
 
-    const handleItemClick = (name: string): void => {
-        onSelectItem?.(name);
+    const handleItemClick = (slug: string): void => {
+        onSelectItem(slug);
     };
 
     // -------------------------------------------------------------------------
@@ -68,17 +71,17 @@ const SearchableList: React.FC<SearchableListProps> = ({
             </div>
             <ul className={styles.list}>
                 {visibleItems.map((item) => (
-                    <li key={item.name}>
+                    <li key={item.slug}>
                         <button
-                            aria-pressed={item.name === selectedItem}
+                            aria-pressed={item.slug === selectedItem}
                             className={[
                                 styles.item,
-                                item.name === selectedItem &&
+                                item.slug === selectedItem &&
                                     styles['item--selected'],
                             ]
                                 .filter(Boolean)
                                 .join(' ')}
-                            onClick={() => handleItemClick(item.name)}
+                            onClick={() => handleItemClick(item.slug)}
                             type="button"
                         >
                             <HighlightedText query={query} text={item.name} />

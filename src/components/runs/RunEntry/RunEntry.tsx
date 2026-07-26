@@ -82,7 +82,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             defeatedBattles: [],
             personalBest: run?.personalBest ?? '',
             hallOfFameCount: run?.hallOfFameCount ?? 0,
-            starter: starter.name,
+            starter: starter.slug,
             caughtPokemon: [starter],
             missedLocations: [],
             wipe: false,

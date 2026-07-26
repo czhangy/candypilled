@@ -13,14 +13,14 @@ const JUBILIFE_CITY: Location = {
             name: '1',
             team: [
                 {
-                    name: 'Glameow',
+                    slug: 'glameow',
                     ability: 1,
                     gender: 'male',
                     level: 11,
                     nature: Nature.Rash,
                 },
                 {
-                    name: 'Stunky',
+                    slug: 'stunky',
                     ability: 1,
                     gender: 'male',
                     level: 11,

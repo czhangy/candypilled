@@ -16,21 +16,21 @@ const ROUTE_211: Location = {
                     name: 'Zach',
                     team: [
                         {
-                            name: 'Zubat',
+                            slug: 'zubat',
                             ability: 1,
                             gender: 'male',
                             level: 14,
                             nature: Nature.Serious,
                         },
                         {
-                            name: 'Zubat',
+                            slug: 'zubat',
                             ability: 1,
                             gender: 'male',
                             level: 14,
                             nature: Nature.Serious,
                         },
                         {
-                            name: 'Zubat',
+                            slug: 'zubat',
                             ability: 1,
                             gender: 'male',
                             level: 14,
@@ -46,14 +46,14 @@ const ROUTE_211: Location = {
                     name: 'Louis',
                     team: [
                         {
-                            name: 'Geodude',
+                            slug: 'geodude',
                             ability: 1,
                             gender: 'male',
                             level: 14,
                             nature: Nature.Brave,
                         },
                         {
-                            name: 'Onix',
+                            slug: 'onix',
                             ability: 1,
                             gender: 'male',
                             level: 18,
@@ -69,14 +69,14 @@ const ROUTE_211: Location = {
                     name: 'Alexandra',
                     team: [
                         {
-                            name: 'Starly',
+                            slug: 'starly',
                             ability: 1,
                             gender: 'male',
                             level: 17,
                             nature: Nature.Serious,
                         },
                         {
-                            name: 'Hoothoot',
+                            slug: 'hoothoot',
                             ability: 1,
                             gender: 'male',
                             level: 17,
@@ -99,7 +99,7 @@ const ROUTE_211: Location = {
                     name: 'Katherine',
                     team: [
                         {
-                            name: 'Noctowl',
+                            slug: 'noctowl',
                             ability: 1,
                             gender: 'male',
                             level: 34,
@@ -116,21 +116,21 @@ const ROUTE_211: Location = {
                     name: 'Harry',
                     team: [
                         {
-                            name: 'Bronzor',
+                            slug: 'bronzor',
                             ability: 1,
                             gender: 'male',
                             level: 28,
                             nature: Nature.Serious,
                         },
                         {
-                            name: 'Bronzor',
+                            slug: 'bronzor',
                             ability: 1,
                             gender: 'male',
                             level: 30,
                             nature: Nature.Modest,
                         },
                         {
-                            name: 'Bronzor',
+                            slug: 'bronzor',
                             ability: 1,
                             gender: 'male',
                             level: 32,
@@ -146,14 +146,14 @@ const ROUTE_211: Location = {
                     name: 'Nick',
                     team: [
                         {
-                            name: 'Skorupi',
+                            slug: 'skorupi',
                             ability: 1,
                             gender: 'male',
                             level: 32,
                             nature: Nature.Lax,
                         },
                         {
-                            name: 'Croagunk',
+                            slug: 'croagunk',
                             ability: 1,
                             gender: 'male',
                             level: 30,
@@ -169,7 +169,7 @@ const ROUTE_211: Location = {
                     name: 'Sean',
                     team: [
                         {
-                            name: 'Croagunk',
+                            slug: 'croagunk',
                             ability: 1,
                             gender: 'male',
                             level: 31,
@@ -177,7 +177,7 @@ const ROUTE_211: Location = {
                             ivs: 3,
                         },
                         {
-                            name: 'Meditite',
+                            slug: 'meditite',
                             ability: 1,
                             gender: 'male',
                             level: 31,
@@ -185,7 +185,7 @@ const ROUTE_211: Location = {
                             ivs: 3,
                         },
                         {
-                            name: 'Machoke',
+                            slug: 'machoke',
                             ability: 1,
                             gender: 'male',
                             level: 31,

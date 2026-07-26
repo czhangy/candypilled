@@ -1,5 +1,4 @@
 import { ENCOUNTERS } from '@/lib/data/platinum/encounters';
-import CRASHER_WAKE from '@/lib/games/platinum/splits/crasher-wake';
 import { Game } from '@/lib/static/types';
 import BYRON from './splits/byron';
 import CANDICE from './splits/candice';
@@ -10,13 +9,14 @@ import GARDENIA from './splits/gardenia';
 import MAYLENE from './splits/maylene';
 import ROARK from './splits/roark';
 import VOLKNER from './splits/volkner';
+import WAKE from './splits/wake';
 
 const PLATINUM: Game = {
     name: 'Platinum',
     logo: '/logos/platinum.png',
     generation: 4,
     version: 'platinum',
-    starters: ['Turtwig', 'Chimchar', 'Piplup'],
+    starters: ['turtwig', 'chimchar', 'piplup'],
     accentColor: '#FFD500',
     encounters: ENCOUNTERS,
     wipeMessages: [
@@ -31,7 +31,7 @@ const PLATINUM: Game = {
         GARDENIA,
         FANTINA,
         MAYLENE,
-        CRASHER_WAKE,
+        WAKE,
         BYRON,
         CANDICE,
         GALACTIC,

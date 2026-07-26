@@ -25,7 +25,7 @@ replaces the entire panel with a message instead of the Pokémon's details
 | ------------------ | ------------------------------------------------------------------------------ | -------- | ------- | --------------------------------------------------------------------------------------- |
 | `abilityName`      | `string`                                                                       | Yes      | -       | The current ability                                                                     |
 | `boosts`           | `Record<Exclude<keyof StatValues, 'hp'>, number>`                              | Yes      | -       | The current in-battle stat stage boosts (-6..6)                                         |
-| `evs`              | `StatValues`                                                                   | No       | -       | The current EVs; absent renders as though nothing is known (used with no `pokemonName`) |
+| `evs`              | `StatValues`                                                                   | No       | -       | The current EVs; absent renders as though nothing is known (used with no `pokemonSlug`) |
 | `game`             | `Game`                                                                         | Yes      | -       | The current game; its `generation` resolves base stats/ability/held item/move lists     |
 | `gender`           | `'male' \| 'female'`                                                           | No       | -       | The Pokémon's gender; absent shows no symbol next to its name                           |
 | `heldItem`         | `string`                                                                       | Yes      | -       | The current held item, empty meaning none                                               |
@@ -45,12 +45,14 @@ replaces the entire panel with a message instead of the Pokémon's details
 | `onNatureChange`   | `(value: string) => void`                                                      | Yes      | -       | Called when the nature dropdown changes                                                 |
 | `onStatusChange`   | `(value: string) => void`                                                      | Yes      | -       | Called when the status dropdown changes                                                 |
 | `placeholder`      | `string`                                                                       | No       | -       | If present, replaces the panel's content with this message                              |
-| `pokemonName`      | `string`                                                                       | No       | -       | The selected Pokémon's species name; absent shows "None selected" and hides its details |
+| `pokemonSlug`      | `string`                                                                       | No       | -       | The selected Pokémon's species slug; absent shows "None selected" and hides its details |
 | `speedComparison`  | `SpeedComparison \| undefined`                                                 | Yes      | -       | How this Pokémon's Speed compares to the opponent's; passed through to `StatsTable`     |
 | `status`           | `string`                                                                       | Yes      | -       | The current battle status condition                                                     |
 
 ## Computations
 
+- `pokemonName` — the selected Pokémon's display name, resolved from
+  `pokemonSlug` via `PokemonHelpers`
 - `baseStats` / `totalStats` — base stats resolved via `PokemonHelpers` for
   `game.generation`; totals computed via `StatHelpers.calculateStats` from
   base stats and the current `level`/`ivs`/`evs`/`nature`, with each

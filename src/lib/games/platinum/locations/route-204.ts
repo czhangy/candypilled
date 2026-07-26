@@ -15,11 +15,11 @@ const ROUTE_204: Location = {
                     name: 'Sarah',
                     team: [
                         {
-                            name: 'Shinx',
+                            slug: 'shinx',
                             ability: 1,
                             gender: 'female',
                             level: 7,
-                            moves: ['Tackle', 'Leer'],
+                            moves: ['tackle', 'leer'],
                             nature: Nature.Hardy,
                         },
                     ],
@@ -32,11 +32,11 @@ const ROUTE_204: Location = {
                     name: 'Tyler',
                     team: [
                         {
-                            name: 'Magikarp',
+                            slug: 'magikarp',
                             ability: 1,
                             gender: 'male',
                             level: 8,
-                            moves: ['Splash'],
+                            moves: ['splash'],
                             nature: Nature.Sassy,
                         },
                     ],
@@ -49,11 +49,11 @@ const ROUTE_204: Location = {
                     name: 'Samantha',
                     team: [
                         {
-                            name: 'Budew',
+                            slug: 'budew',
                             ability: 1,
                             gender: 'female',
                             level: 7,
-                            moves: ['Absorb', 'Growth', 'Water Sport'],
+                            moves: ['absorb', 'growth', 'water-sport'],
                             nature: Nature.Docile,
                         },
                     ],
@@ -73,14 +73,14 @@ const ROUTE_204: Location = {
                     name: 'Taylor',
                     team: [
                         {
-                            name: 'Budew',
+                            slug: 'budew',
                             ability: 1,
                             gender: 'female',
                             level: 9,
                             nature: Nature.Bashful,
                         },
                         {
-                            name: 'Cherubi',
+                            slug: 'cherubi',
                             ability: 1,
                             gender: 'female',
                             level: 11,
@@ -96,18 +96,18 @@ const ROUTE_204: Location = {
                     name: 'Brandon',
                     team: [
                         {
-                            name: 'Wurmple',
+                            slug: 'wurmple',
                             ability: 1,
                             gender: 'male',
                             level: 10,
                             nature: Nature.Quirky,
                         },
                         {
-                            name: 'Kricketot',
+                            slug: 'kricketot',
                             ability: 1,
                             gender: 'male',
                             level: 11,
-                            moves: ['Bide'],
+                            moves: ['bide'],
                             nature: Nature.Modest,
                         },
                     ],
@@ -122,14 +122,14 @@ const ROUTE_204: Location = {
                     name: 'Liv & Liz',
                     team: [
                         {
-                            name: 'Pachirisu',
+                            slug: 'pachirisu',
                             ability: 1,
                             gender: 'female',
                             level: 11,
                             nature: Nature.Brave,
                         },
                         {
-                            name: 'Pachirisu',
+                            slug: 'pachirisu',
                             ability: 1,
                             gender: 'female',
                             level: 11,

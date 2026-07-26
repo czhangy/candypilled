@@ -1,4 +1,5 @@
 export enum EncounterMethod {
+    Binoculars = 'binoculars',
     Cave = 'cave',
     Egg = 'egg',
     FeebasTile = 'feebas-tile',

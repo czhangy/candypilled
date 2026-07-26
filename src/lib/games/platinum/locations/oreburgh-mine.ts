@@ -21,14 +21,14 @@ const OREBURGH_MINE: Location = {
                     name: 'Colin',
                     team: [
                         {
-                            name: 'Geodude',
+                            slug: 'geodude',
                             ability: 1,
                             gender: 'male',
                             level: 6,
                             nature: Nature.Naughty,
                         },
                         {
-                            name: 'Machop',
+                            slug: 'machop',
                             ability: 1,
                             gender: 'male',
                             level: 8,
@@ -44,7 +44,7 @@ const OREBURGH_MINE: Location = {
                     name: 'Mason',
                     team: [
                         {
-                            name: 'Geodude',
+                            slug: 'geodude',
                             ability: 1,
                             gender: 'male',
                             level: 9,

@@ -12,8 +12,8 @@ when no move is given, for an empty move slot.
 | -------------- | ------------------------ | -------- | ------- | ------------------------------------------------------------- |
 | `generation`   | `number`                 | Yes      | -       | The game's generation, used to resolve the move's values      |
 | `ivs`          | `StatValues`             | Yes      | -       | The Pokémon's IVs, used to resolve Hidden Power's actual type |
-| `move`         | `string`                 | No       | -       | The move's name, if this slot is occupied                     |
-| `onSelectMove` | `(name: string) => void` | Yes      | -       | Called with the move's name when it's clicked                 |
+| `moveSlug`     | `string`                 | No       | -       | The move's slug, if this slot is occupied                     |
+| `onSelectMove` | `(slug: string) => void` | Yes      | -       | Called with the move's slug when it's clicked                 |
 
 ## Computations
 

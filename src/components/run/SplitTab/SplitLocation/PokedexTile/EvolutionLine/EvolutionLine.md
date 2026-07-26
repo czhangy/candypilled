@@ -22,7 +22,7 @@ split into multiple eeveelutions) render as a vertical stack of
 continuations after the branching step, and every branch is always shown
 regardless of which family member is currently selected (`step` is
 expected to be the family's full, unpruned tree; see
-`EvolutionHelpers.getFullEvolutionLine`). A branch whose target name is
+`EvolutionHelpers.getFullEvolutionLine`). A branch whose target slug is
 ambiguous between multiple forms (e.g. Burmy evolving into Wormadam,
 whose cloak/form isn't tracked by evolution data) is itself expanded
 into one branch per form, rather than silently collapsing to a single
@@ -33,30 +33,32 @@ via trade are omitted entirely, along with everything beneath them.
 
 ## Props
 
-| Prop              | Type                         | Required | Default | Description                                                           |
-| ----------------- | ---------------------------- | -------- | ------- | --------------------------------------------------------------------- |
-| `currentName`     | `string`                     | No       | -       | The currently selected species, highlighted if it appears in the line |
-| `hideTradeEvos`   | `boolean`                    | Yes      | -       | Whether trade-only evolution branches are omitted                     |
-| `onSelectSpecies` | `(species: string) => void`  | Yes      | -       | Called with a step's species when its sprite is clicked               |
-| `step`            | `EvolutionStep \| undefined` | Yes      | -       | The species' full evolution family tree, or `undefined` if unresolved |
-| `variant`         | `string`                     | Yes      | -       | The sprite variant to prefer, matching the game's slug                |
+| Prop              | Type                         | Required | Default | Description                                                                 |
+| ----------------- | ---------------------------- | -------- | ------- | --------------------------------------------------------------------------- |
+| `currentSlug`     | `string`                     | No       | -       | The currently selected species' slug, highlighted if it appears in the line |
+| `hideTradeEvos`   | `boolean`                    | Yes      | -       | Whether trade-only evolution branches are omitted                           |
+| `onSelectSpecies` | `(slug: string) => void`     | Yes      | -       | Called with a step's species slug when its sprite is clicked                |
+| `step`            | `EvolutionStep \| undefined` | Yes      | -       | The species' full evolution family tree, or `undefined` if unresolved       |
+| `variant`         | `string`                     | Yes      | -       | The sprite variant to prefer, matching the game's slug                      |
 
 ## Computations
 
 - `renderNode` — recursively renders a single evolution step and its
   descendants:
+    - `nodeName` — the step's display name, resolved from `nodeStep.slug`
+      via `PokemonHelpers`
     - `sprite` — the step's sprite for the given `variant`, resolved via
       `PokemonHelpers`
-    - `isCurrent` — whether the step matches `currentName`, used to
+    - `isCurrent` — whether the step matches `currentSlug`, used to
       highlight the selected Pokémon within the line
     - `visibleEvolutions` — the step's `evolvesTo` filtered to exclude
       branches whose every method requires a trade (via
       `EvolutionHelpers.isTradeEvolution`) when `hideTradeEvos` is enabled
-    - for each branch, `formNames` — the branch's target name expanded via
+    - for each branch, `formSlugs` — the branch's target slug expanded via
       `PokemonHelpers.getPokemonForms` into every matching form key (one,
-      unless the name is ambiguous between multiple forms); one branch is
+      unless the slug is ambiguous between multiple forms); one branch is
       rendered per entry, each recursing into a copy of the child step
-      with `name` set to that specific form
+      with `slug` set to that specific form
 
 ## SCSS Variable Dependencies
 

@@ -44,7 +44,6 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     const TAB_QUERY_PARAMS: Record<string, string[]> = {
         box: ['pokemon'],
-        calc: ['battle'],
         data: ['subtab', 'species', 'move', 'ability', 'item'],
     };
 
@@ -210,40 +209,40 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         });
     };
 
-    const handleMoveSelect = (name: string): void => {
-        updateQueryParams({ move: name });
+    const handleMoveSelect = (slug: string): void => {
+        updateQueryParams({ move: slug });
     };
 
-    const handleMoveLinkClick = (name: string): void => {
+    const handleMoveLinkClick = (slug: string): void => {
         window.open(
             `${pathname}?tab=data&subtab=moves&move=${encodeURIComponent(
-                name
+                slug
             )}`,
             '_blank',
             'noopener,noreferrer'
         );
     };
 
-    const handleSpeciesLinkClick = (species: string): void => {
+    const handleSpeciesLinkClick = (slug: string): void => {
         window.open(
             `${pathname}?tab=data&subtab=pokedex&species=${encodeURIComponent(
-                StringHelpers.toSlug(species)
+                slug
             )}`,
             '_blank',
             'noopener,noreferrer'
         );
     };
 
-    const handleAbilitySelect = (name: string): void => {
-        updateQueryParams({ ability: name });
+    const handleAbilitySelect = (slug: string): void => {
+        updateQueryParams({ ability: slug });
     };
 
-    const handleItemSelect = (name: string): void => {
-        updateQueryParams({ item: name });
+    const handleItemSelect = (slug: string): void => {
+        updateQueryParams({ item: slug });
     };
 
-    const handleSpeciesSelect = (species: string): void => {
-        updateQueryParams({ species: StringHelpers.toSlug(species) });
+    const handleSpeciesSelect = (slug: string): void => {
+        updateQueryParams({ species: slug });
     };
 
     const handlePokemonSelect = (location: string): void => {
@@ -293,20 +292,20 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         );
     };
 
-    const handleAbilityLinkClick = (name: string): void => {
+    const handleAbilityLinkClick = (slug: string): void => {
         window.open(
             `${pathname}?tab=data&subtab=abilities&ability=${encodeURIComponent(
-                name
+                slug
             )}`,
             '_blank',
             'noopener,noreferrer'
         );
     };
 
-    const handleItemLinkClick = (name: string): void => {
+    const handleItemLinkClick = (slug: string): void => {
         window.open(
             `${pathname}?tab=data&subtab=items&item=${encodeURIComponent(
-                name
+                slug
             )}`,
             '_blank',
             'noopener,noreferrer'
@@ -401,12 +400,14 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             onAdvanceSplit={handleSplitSelect}
                             onGameComplete={handleGameComplete}
                             onSelectAbility={handleAbilityLinkClick}
+                            onSelectBattleMarker={handleBattleSelect}
                             onSelectItem={handleItemLinkClick}
                             onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveLinkClick}
                             onSelectSpecies={handleSpeciesLinkClick}
                             onSelectTrainer={handleTrainerLinkClick}
                             run={run}
+                            selectedBattleKey={selectedBattle}
                             stickyOffset={stickyHeaderHeight}
                         />
                     )}

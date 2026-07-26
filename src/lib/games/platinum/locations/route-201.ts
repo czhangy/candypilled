@@ -12,33 +12,33 @@ const ROUTE_201: Location = {
             trainerClass: 'PKMN Trainer',
             name: 'Barry 1',
             teamsByStarter: {
-                Turtwig: [
+                turtwig: [
                     {
-                        name: 'Chimchar',
+                        slug: 'chimchar',
                         ability: 1,
                         gender: 'male',
                         level: 5,
-                        moves: ['Scratch', 'Leer'],
+                        moves: ['scratch', 'leer'],
                         nature: Nature.Calm,
                     },
                 ],
-                Chimchar: [
+                chimchar: [
                     {
-                        name: 'Piplup',
+                        slug: 'piplup',
                         ability: 1,
                         gender: 'male',
                         level: 5,
-                        moves: ['Pound', 'Growl'],
+                        moves: ['pound', 'growl'],
                         nature: Nature.Bashful,
                     },
                 ],
-                Piplup: [
+                piplup: [
                     {
-                        name: 'Turtwig',
+                        slug: 'turtwig',
                         ability: 1,
                         gender: 'male',
                         level: 5,
-                        moves: ['Tackle', 'Withdraw'],
+                        moves: ['tackle', 'withdraw'],
                         nature: Nature.Docile,
                     },
                 ],

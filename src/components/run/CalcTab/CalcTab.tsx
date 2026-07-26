@@ -21,6 +21,8 @@ import {
 } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
+import ItemHelpers from '@/lib/utils/ItemHelpers';
+import MoveHelpers from '@/lib/utils/MoveHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
@@ -362,10 +364,13 @@ const CalcTab: React.FC<CalcTabProps> = ({
         run.starter
     );
     const mon = team[Number(selectedMemberIndex)];
-    const defenderMoves = mon
+    const defenderMoveSlugs = mon
         ? (mon.moves ??
-          PokemonHelpers.getMovesAtLevel(mon.name, game.version, mon.level))
+          PokemonHelpers.getMovesAtLevel(mon.slug, game.version, mon.level))
         : [];
+    const defenderMoves = defenderMoveSlugs.map(
+        (slug) => MoveHelpers.getMoveData(slug)?.name ?? slug
+    );
 
     const playerInput: CalcPokemonInput | null = caught
         ? {
@@ -377,7 +382,9 @@ const CalcTab: React.FC<CalcTabProps> = ({
               ivs: attacker.ivs,
               level: attacker.level,
               nature: attacker.nature,
-              species: caught.name,
+              species:
+                  PokemonHelpers.getPokemonData(caught.slug)?.name ??
+                  caught.slug,
               status: attacker.status,
           }
         : null;
@@ -391,13 +398,14 @@ const CalcTab: React.FC<CalcTabProps> = ({
               ivs: StatHelpers.normalizeStats(mon.ivs, MAX_IV),
               level: defender.level,
               nature: defender.nature,
-              species: mon.name,
+              species:
+                  PokemonHelpers.getPokemonData(mon.slug)?.name ?? mon.slug,
               status: defender.status,
           }
         : null;
 
     const playerBaseStats = caught
-        ? PokemonHelpers.getPokemonStats(caught.name, game.generation)
+        ? PokemonHelpers.getPokemonStats(caught.slug, game.generation)
         : undefined;
     const playerSpeed =
         playerBaseStats && playerInput
@@ -414,7 +422,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
             : undefined;
 
     const trainerBaseStats = mon
-        ? PokemonHelpers.getPokemonStats(mon.name, game.generation)
+        ? PokemonHelpers.getPokemonStats(mon.slug, game.generation)
         : undefined;
     const trainerSpeed =
         trainerBaseStats && trainerInput
@@ -469,8 +477,8 @@ const CalcTab: React.FC<CalcTabProps> = ({
             return;
         }
 
-        const abilitySlug = PokemonHelpers.getAbilityName(
-            caught.name,
+        const abilitySlug = PokemonHelpers.getAbilitySlug(
+            caught.slug,
             game.generation,
             caught.ability
         );
@@ -482,10 +490,18 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 abilitySlug ??
                 '',
             evs: StatHelpers.normalizeStats(caught.evs, 0),
-            heldItem: caught.heldItem ?? '',
+            heldItem:
+                (caught.heldItem &&
+                    ItemHelpers.getHeldItemData(caught.heldItem)?.name) ??
+                caught.heldItem ??
+                '',
             ivs: StatHelpers.normalizeStats(caught.ivs, MAX_IV),
             level: caught.level,
-            moves: padMoves(caught.moves),
+            moves: padMoves(
+                caught.moves.map(
+                    (slug) => MoveHelpers.getMoveData(slug)?.name ?? slug
+                )
+            ),
             nature: caught.nature ?? Object.values(Nature)[0],
         });
     }, [caught, game.generation]);
@@ -498,8 +514,8 @@ const CalcTab: React.FC<CalcTabProps> = ({
             return;
         }
 
-        const abilitySlug = PokemonHelpers.getAbilityName(
-            mon.name,
+        const abilitySlug = PokemonHelpers.getAbilitySlug(
+            mon.slug,
             game.generation,
             mon.ability
         );
@@ -510,7 +526,11 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
                 abilitySlug ??
                 '',
-            heldItem: mon.heldItem ?? '',
+            heldItem:
+                (mon.heldItem &&
+                    ItemHelpers.getHeldItemData(mon.heldItem)?.name) ??
+                mon.heldItem ??
+                '',
             level: mon.level,
             nature: mon.nature ?? Object.values(Nature)[0],
         });
@@ -652,7 +672,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     onMoveChange={handleAttackerMoveChange}
                     onNatureChange={handleAttackerNatureChange}
                     onStatusChange={handleAttackerStatusChange}
-                    pokemonName={caught?.name}
+                    pokemonSlug={caught?.slug}
                     speedComparison={playerSpeedComparison}
                     status={attacker.status}
                 />
@@ -697,7 +717,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                             ? undefined
                             : 'Select a battle above'
                     }
-                    pokemonName={mon?.name}
+                    pokemonSlug={mon?.slug}
                     speedComparison={trainerSpeedComparison}
                     status={defender.status}
                 />

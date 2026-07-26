@@ -124,7 +124,7 @@ export type Setting = {
 };
 
 // Identifies which of a species' abilities is set: 1 = slot1, 2 = slot2,
-// 3 = hidden. Callers resolve the name via PokemonHelpers.getAbilityName.
+// 3 = hidden. Callers resolve the slug via PokemonHelpers.getAbilitySlug.
 export type AbilitySlot = 1 | 2 | 3;
 
 export type BattlePokemon = {
@@ -135,8 +135,8 @@ export type BattlePokemon = {
     ivs?: number | StatValues;
     level: number;
     moves?: string[];
-    name: string;
     nature?: Nature;
+    slug: string;
 };
 
 // A caught Pokémon as tracked for Nuzlocke rule enforcement: one catch per
@@ -160,6 +160,8 @@ type BattleItem = {
 };
 
 export type Battle = {
+    customHeight?: number;
+    customWidth?: number;
     fieldCondition?: FieldCondition;
     isBackToBack?: boolean;
     isBoss?: boolean;
@@ -369,7 +371,7 @@ export type EvolutionMethod = {
 // path, but its own descendants preserve any branches (e.g. Eevee's split
 // into multiple eeveelutions).
 export type EvolutionStep = {
-    name: string;
+    slug: string;
     // How this step is reached from its predecessor. Omitted for the
     // topmost visible step, which has no visible predecessor.
     methods?: EvolutionMethod[];
@@ -404,6 +406,7 @@ export type MoveValuesByGeneration = {
 };
 
 export type MoveData = {
+    slug: string;
     name: string;
     // PokeAPI doesn't track historical changes for these two fields, so
     // unlike the rest of a move's values they aren't split by generation.
@@ -422,6 +425,7 @@ export type AbilityValuesByGeneration = {
 };
 
 export type AbilityData = {
+    slug: string;
     name: string;
     introducedInGeneration: number;
     // PokeAPI has no concept of "dangerous" abilities, so this is curated
@@ -436,6 +440,7 @@ export type ItemValuesByGeneration = {
 };
 
 export type ItemData = {
+    slug: string;
     name: string;
     category: string;
     // PokeAPI doesn't track historical changes to an item's effect text, so
@@ -454,7 +459,7 @@ export type ItemData = {
 export type LearnsetMethod = 'level-up' | 'machine' | 'tutor';
 
 export type LearnsetMove = {
-    name: string;
+    slug: string;
     method: LearnsetMethod;
     // Only set for level-up moves.
     level?: number;
@@ -473,10 +478,11 @@ export type LearnsetByVersionGroup = {
 
 export type AbilityEntry = {
     hidden?: boolean;
-    name: string;
+    slug: string;
 };
 
 export type PokemonData = {
+    slug: string;
     name: string;
     introducedInGeneration: number;
     // PokeAPI's is_battle_only form flag doesn't cover every form that

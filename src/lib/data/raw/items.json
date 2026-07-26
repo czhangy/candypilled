@@ -1,5 +1,6 @@
 {
     "bright-powder": {
+        "slug": "bright-powder",
         "name": "Bright Powder",
         "category": "held-items",
         "effect": "Held: Increases the holder's evasion by 1/9 (11 1/9%).",
@@ -17,6 +18,7 @@
         ]
     },
     "white-herb": {
+        "slug": "white-herb",
         "name": "White Herb",
         "category": "held-items",
         "effect": "Held: Resets all lowered stats to normal at end of turn. Consumed after use.",
@@ -34,6 +36,7 @@
         ]
     },
     "quick-claw": {
+        "slug": "quick-claw",
         "name": "Quick Claw",
         "category": "held-items",
         "effect": "Held: Holder has a 3/16 (18.75%) chance to move first.",
@@ -51,6 +54,7 @@
         ]
     },
     "mental-herb": {
+        "slug": "mental-herb",
         "name": "Mental Herb",
         "category": "held-items",
         "effect": "Held: Consumed to cure infatuation. Gen V: Also removes Taunt, Encore, Torment, Disable, and Cursed Body.",
@@ -68,6 +72,7 @@
         ]
     },
     "king-s-rock": {
+        "slug": "king-s-rock",
         "name": "King's Rock",
         "category": "held-items",
         "effect": "Held: Damaging moves gain a 10% chance to make their target flinch. Traded on a Poliwhirl: Holder evolves into Politoed. Traded on a Slowpoke: Holder evolves into Slowking.",
@@ -89,6 +94,7 @@
         ]
     },
     "smoke-ball": {
+        "slug": "smoke-ball",
         "name": "Smoke Ball",
         "category": "held-items",
         "effect": "Held: Allows the Holder to escape from any wild battle.",
@@ -106,6 +112,7 @@
         ]
     },
     "focus-band": {
+        "slug": "focus-band",
         "name": "Focus Band",
         "category": "held-items",
         "effect": "Held: Holder has 10% chance to survive attacks or self-inflicted damage at 1 HP.",
@@ -123,6 +130,7 @@
         ]
     },
     "scope-lens": {
+        "slug": "scope-lens",
         "name": "Scope Lens",
         "category": "held-items",
         "effect": "Held: Raises the holder's critical hit ratio by one stage.",
@@ -140,6 +148,7 @@
         ]
     },
     "leftovers": {
+        "slug": "leftovers",
         "name": "Leftovers",
         "category": "held-items",
         "effect": "Held: Restores 1/16 (6.25%) holder's max HP at the end of each turn.",
@@ -157,6 +166,7 @@
         ]
     },
     "shell-bell": {
+        "slug": "shell-bell",
         "name": "Shell Bell",
         "category": "held-items",
         "effect": "Held: Holder receives 1/8 of the damage it deals when attacking.",
@@ -174,6 +184,7 @@
         ]
     },
     "lax-incense": {
+        "slug": "lax-incense",
         "name": "Lax Incense",
         "category": "held-items",
         "effect": "Held: Holder's evasion is increased by 5%. Breeding: Wobbuffet begets a Wynaut Egg.",
@@ -195,6 +206,7 @@
         ]
     },
     "wide-lens": {
+        "slug": "wide-lens",
         "name": "Wide Lens",
         "category": "held-items",
         "effect": "Held: Provides a 1/10 (10%) boost in accuracy to the holder.",
@@ -208,6 +220,7 @@
         ]
     },
     "muscle-band": {
+        "slug": "muscle-band",
         "name": "Muscle Band",
         "category": "held-items",
         "effect": "Held: Boosts the damage of physical moves used by the holder by 10%.",
@@ -221,6 +234,7 @@
         ]
     },
     "wise-glasses": {
+        "slug": "wise-glasses",
         "name": "Wise Glasses",
         "category": "held-items",
         "effect": "Held: Boosts the damage of special moves used by the holder by 1/10 (10%).",
@@ -234,6 +248,7 @@
         ]
     },
     "expert-belt": {
+        "slug": "expert-belt",
         "name": "Expert Belt",
         "category": "held-items",
         "effect": "Held: Holder's Super Effective moves do 20% extra damage.",
@@ -247,6 +262,7 @@
         ]
     },
     "light-clay": {
+        "slug": "light-clay",
         "name": "Light Clay",
         "category": "held-items",
         "effect": "Held: Light Screen and Reflect used by the holder last 8 rounds instead of 5.",
@@ -264,6 +280,7 @@
         ]
     },
     "life-orb": {
+        "slug": "life-orb",
         "name": "Life Orb",
         "category": "held-items",
         "effect": "Held: Holder's moves inflict 30% extra damage, but cost 10% max HP.",
@@ -277,6 +294,7 @@
         ]
     },
     "power-herb": {
+        "slug": "power-herb",
         "name": "Power Herb",
         "category": "held-items",
         "effect": "Held: Both turns of a two-turn charge move happen at once. Consumed upon use.",
@@ -290,6 +308,7 @@
         ]
     },
     "focus-sash": {
+        "slug": "focus-sash",
         "name": "Focus Sash",
         "category": "held-items",
         "effect": "Held: Holder survives any single-hit attack at 1 HP if at max HP, then the item is consumed.",
@@ -303,6 +322,7 @@
         ]
     },
     "zoom-lens": {
+        "slug": "zoom-lens",
         "name": "Zoom Lens",
         "category": "held-items",
         "effect": "Held: Provides a 1/5 (20%) boost in accuracy if the holder moves after the target.",
@@ -320,6 +340,7 @@
         ]
     },
     "metronome": {
+        "slug": "metronome",
         "name": "Metronome",
         "category": "held-items",
         "effect": "Held: Consectutive uses of the same attack have a cumulative damage boost of 10%. Maximum 100% boost.",
@@ -337,6 +358,7 @@
         ]
     },
     "destiny-knot": {
+        "slug": "destiny-knot",
         "name": "Destiny Knot",
         "category": "held-items",
         "effect": "Held: Infatuates opposing Pokémon when holder is inflicted with infatuation.",
@@ -354,6 +376,7 @@
         ]
     },
     "black-sludge": {
+        "slug": "black-sludge",
         "name": "Black Sludge",
         "category": "held-items",
         "effect": "Held: Poison-type holder recovers 1/16 (6.25%) max HP each turn. Non-Poison-Types take 1/8 (12.5%) max HP damage.",
@@ -371,6 +394,7 @@
         ]
     },
     "icy-rock": {
+        "slug": "icy-rock",
         "name": "Icy Rock",
         "category": "held-items",
         "effect": "Held: Hail by the holder lasts 8 rounds instead of 5.",
@@ -388,6 +412,7 @@
         ]
     },
     "smooth-rock": {
+        "slug": "smooth-rock",
         "name": "Smooth Rock",
         "category": "held-items",
         "effect": "Held: Sandstorm by the holder lasts 8 rounds instead of 5.",
@@ -405,6 +430,7 @@
         ]
     },
     "heat-rock": {
+        "slug": "heat-rock",
         "name": "Heat Rock",
         "category": "held-items",
         "effect": "Held: Sunny Day by the holder lasts 8 rounds instead of 5.",
@@ -422,6 +448,7 @@
         ]
     },
     "damp-rock": {
+        "slug": "damp-rock",
         "name": "Damp Rock",
         "category": "held-items",
         "effect": "Held: Rain Dance by the holder lasts 8 rounds instead of 5.",
@@ -439,6 +466,7 @@
         ]
     },
     "grip-claw": {
+        "slug": "grip-claw",
         "name": "Grip Claw",
         "category": "held-items",
         "effect": "Held: Holder's multi-turn trapping moves last 5 turns.",
@@ -456,6 +484,7 @@
         ]
     },
     "shed-shell": {
+        "slug": "shed-shell",
         "name": "Shed Shell",
         "category": "held-items",
         "effect": "Held: Holder can bypass all trapping effects and switch out. Multi-turn moves still cannot be switched out of.",
@@ -469,6 +498,7 @@
         ]
     },
     "big-root": {
+        "slug": "big-root",
         "name": "Big Root",
         "category": "held-items",
         "effect": "Held: Increases HP recovered from draining moves, Ingrain, and Aqua Ring by 3/10 (30%).",
@@ -486,6 +516,7 @@
         ]
     },
     "razor-claw": {
+        "slug": "razor-claw",
         "name": "Razor Claw",
         "category": "held-items",
         "effect": "Held: Raises the holder's critical hit ratio by one stage. Held by a Sneasel while levelling up at night: Holder evolves into Weavile.",
@@ -499,6 +530,7 @@
         ]
     },
     "razor-fang": {
+        "slug": "razor-fang",
         "name": "Razor Fang",
         "category": "held-items",
         "effect": "Held: Damaging moves gain a 10% chance to make their target flinch. Held by a Gligar while levelling up: Holder evolves into Gliscor.",
@@ -516,6 +548,7 @@
         ]
     },
     "eviolite": {
+        "slug": "eviolite",
         "name": "Eviolite",
         "category": "held-items",
         "effect": "Held: Holder has 1.5× Defense and Special Defense, as long as it's not fully evolved.",
@@ -529,6 +562,7 @@
         ]
     },
     "float-stone": {
+        "slug": "float-stone",
         "name": "Float Stone",
         "category": "held-items",
         "effect": "Held: Holder has 0.5× weight.",
@@ -542,6 +576,7 @@
         ]
     },
     "rocky-helmet": {
+        "slug": "rocky-helmet",
         "name": "Rocky Helmet",
         "category": "held-items",
         "effect": "Held: When the holder is hit by a contact move, the attacking Pokémon takes 1/6 its max HP in damage.",
@@ -555,6 +590,7 @@
         ]
     },
     "air-balloon": {
+        "slug": "air-balloon",
         "name": "Air Balloon",
         "category": "held-items",
         "effect": "Held: Grants immunity to Ground-type moves, Spikes, and Toxic Spikes. Consumed when the holder takes damage from a move.",
@@ -568,6 +604,7 @@
         ]
     },
     "red-card": {
+        "slug": "red-card",
         "name": "Red Card",
         "category": "held-items",
         "effect": "Held: When the holder takes damage from a move, the opponent switches out for another random party Pokémon. Consumed after use.",
@@ -581,6 +618,7 @@
         ]
     },
     "ring-target": {
+        "slug": "ring-target",
         "name": "Ring Target",
         "category": "held-items",
         "effect": "Held: Negates the holder's type immunities. Ability immunities are not removed.",
@@ -594,6 +632,7 @@
         ]
     },
     "binding-band": {
+        "slug": "binding-band",
         "name": "Binding Band",
         "category": "held-items",
         "effect": "Held: Doubles the per-turn damage of multi-turn trapping moves.",
@@ -607,6 +646,7 @@
         ]
     },
     "absorb-bulb": {
+        "slug": "absorb-bulb",
         "name": "Absorb Bulb",
         "category": "held-items",
         "effect": "Held: Raises the holder's Special Attack by one stage when it takes Water-type damage.",
@@ -620,6 +660,7 @@
         ]
     },
     "cell-battery": {
+        "slug": "cell-battery",
         "name": "Cell Battery",
         "category": "held-items",
         "effect": "Held: Raises the holder's Attack by one stage when it takes Electric-type damage.",
@@ -633,6 +674,7 @@
         ]
     },
     "eject-button": {
+        "slug": "eject-button",
         "name": "Eject Button",
         "category": "held-items",
         "effect": "Held: When the holder takes damage from a move, it switches out for a party Pokémon of the Trainer's choice.",
@@ -646,6 +688,7 @@
         ]
     },
     "pass-orb": {
+        "slug": "pass-orb",
         "name": "Pass Orb",
         "category": "held-items",
         "effect": "Activates Pass Powers.",
@@ -659,6 +702,7 @@
         ]
     },
     "choice-band": {
+        "slug": "choice-band",
         "name": "Choice Band",
         "category": "choice",
         "effect": "Held: Increases Attack by 50%, but restricts the holder to only one move.",
@@ -680,6 +724,7 @@
         ]
     },
     "choice-scarf": {
+        "slug": "choice-scarf",
         "name": "Choice Scarf",
         "category": "choice",
         "effect": "Held: Increases Speed by 50%, but restricts the holder to only one move.",
@@ -697,6 +742,7 @@
         ]
     },
     "choice-specs": {
+        "slug": "choice-specs",
         "name": "Choice Specs",
         "category": "choice",
         "effect": "Held: Increases Special Attack by 50%, but restricts the holder to only one move.",
@@ -714,6 +760,7 @@
         ]
     },
     "macho-brace": {
+        "slug": "macho-brace",
         "name": "Macho Brace",
         "category": "effort-training",
         "effect": "Held: Holder gains double effort values from battles, but has halved Speed in battle.",
@@ -731,6 +778,7 @@
         ]
     },
     "power-bracer": {
+        "slug": "power-bracer",
         "name": "Power Bracer",
         "category": "effort-training",
         "effect": "Held: Holder gains 4 Attack effort values, but has halved Speed in battle.",
@@ -748,6 +796,7 @@
         ]
     },
     "power-belt": {
+        "slug": "power-belt",
         "name": "Power Belt",
         "category": "effort-training",
         "effect": "Held: Holder gains 4 Defense effort values, but has halved Speed in battle.",
@@ -765,6 +814,7 @@
         ]
     },
     "power-lens": {
+        "slug": "power-lens",
         "name": "Power Lens",
         "category": "effort-training",
         "effect": "Held: Holder gains 4 Special Attack effort values, but has halved Speed in battle.",
@@ -782,6 +832,7 @@
         ]
     },
     "power-band": {
+        "slug": "power-band",
         "name": "Power Band",
         "category": "effort-training",
         "effect": "Held: Holder gains 4 Special Defense effort values, but has halved Speed in battle.",
@@ -799,6 +850,7 @@
         ]
     },
     "power-anklet": {
+        "slug": "power-anklet",
         "name": "Power Anklet",
         "category": "effort-training",
         "effect": "Held: Holder gains 4 Speed effort values, but has halved Speed in battle.",
@@ -816,6 +868,7 @@
         ]
     },
     "power-weight": {
+        "slug": "power-weight",
         "name": "Power Weight",
         "category": "effort-training",
         "effect": "Held: Holder gains 4 HP effort values, but has halved Speed in battle.",
@@ -833,6 +886,7 @@
         ]
     },
     "toxic-orb": {
+        "slug": "toxic-orb",
         "name": "Toxic Orb",
         "category": "bad-held-items",
         "effect": "Held: Inflicts Toxic on the holder at the end of the turn. Activates after Poison damage would occur.",
@@ -846,6 +900,7 @@
         ]
     },
     "flame-orb": {
+        "slug": "flame-orb",
         "name": "Flame Orb",
         "category": "bad-held-items",
         "effect": "Held: Inflicts Burn on the holder at the end of the turn. Activates after Burn damage would occur.",
@@ -859,6 +914,7 @@
         ]
     },
     "iron-ball": {
+        "slug": "iron-ball",
         "name": "Iron Ball",
         "category": "bad-held-items",
         "effect": "Held: Holder's Speed is halved. Negates all Ground-type immunities, and makes Flying-types take neutral damage from Ground-type moves. Arena Trap. Spikes, and Toxic Spikes affect the holder.",
@@ -876,6 +932,7 @@
         ]
     },
     "lagging-tail": {
+        "slug": "lagging-tail",
         "name": "Lagging Tail",
         "category": "bad-held-items",
         "effect": "Held: Holder moves last in its priority bracket.",
@@ -889,6 +946,7 @@
         ]
     },
     "sticky-barb": {
+        "slug": "sticky-barb",
         "name": "Sticky Barb",
         "category": "bad-held-items",
         "effect": "Held: Holder takes 1/8 (12.5%) its max HP at the end of each turn. When the holder is hit by a contact move, the attacking Pokémon takes 1/8 its max HP in damage and receive the item if not holding one.",
@@ -906,6 +964,7 @@
         ]
     },
     "full-incense": {
+        "slug": "full-incense",
         "name": "Full Incense",
         "category": "bad-held-items",
         "effect": "Held: Holder moves last in its priority bracket. Breeding: Snorlax begets a Munchlax Egg.",
@@ -919,6 +978,7 @@
         ]
     },
     "exp-share": {
+        "slug": "exp-share",
         "name": "Exp. Share",
         "category": "training",
         "effect": "Held: Half the experience from a battle is split between Pokémon holding this item.",
@@ -936,6 +996,7 @@
         ]
     },
     "soothe-bell": {
+        "slug": "soothe-bell",
         "name": "Soothe Bell",
         "category": "training",
         "effect": "Held: Doubles the happiness earned by the holder.",
@@ -953,6 +1014,7 @@
         ]
     },
     "amulet-coin": {
+        "slug": "amulet-coin",
         "name": "Amulet Coin",
         "category": "training",
         "effect": "Held: Doubles the money earned from a battle. Does not stack with Luck Incense.",
@@ -970,6 +1032,7 @@
         ]
     },
     "cleanse-tag": {
+        "slug": "cleanse-tag",
         "name": "Cleanse Tag",
         "category": "training",
         "effect": "Prevents wild encounters of level lower than your party's lead Pokémon.",
@@ -987,6 +1050,7 @@
         ]
     },
     "everstone": {
+        "slug": "everstone",
         "name": "Everstone",
         "category": "training",
         "effect": "Held: Prevents level-based evolution from occuring.",
@@ -1004,6 +1068,7 @@
         ]
     },
     "lucky-egg": {
+        "slug": "lucky-egg",
         "name": "Lucky Egg",
         "category": "training",
         "effect": "Held: Increases EXP earned in battle by 50%.",
@@ -1021,6 +1086,7 @@
         ]
     },
     "luck-incense": {
+        "slug": "luck-incense",
         "name": "Luck Incense",
         "category": "training",
         "effect": "Held: Doubles the money earned from a battle. Does not stack with Amulet Coin. Breeding: Chansey and Blissey beget a Happiny Egg.",
@@ -1034,6 +1100,7 @@
         ]
     },
     "pure-incense": {
+        "slug": "pure-incense",
         "name": "Pure Incense",
         "category": "training",
         "effect": "Prevents wild encounters of level lower than your party's lead Pokémon. Breeding: Chimecho begets a Chingling Egg.",
@@ -1047,6 +1114,7 @@
         ]
     },
     "flame-plate": {
+        "slug": "flame-plate",
         "name": "Flame Plate",
         "category": "plates",
         "effect": "Held: Fire-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Fire.",
@@ -1060,6 +1128,7 @@
         ]
     },
     "splash-plate": {
+        "slug": "splash-plate",
         "name": "Splash Plate",
         "category": "plates",
         "effect": "Held: Water-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Water.",
@@ -1073,6 +1142,7 @@
         ]
     },
     "zap-plate": {
+        "slug": "zap-plate",
         "name": "Zap Plate",
         "category": "plates",
         "effect": "Held: Electric-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Electric.",
@@ -1086,6 +1156,7 @@
         ]
     },
     "meadow-plate": {
+        "slug": "meadow-plate",
         "name": "Meadow Plate",
         "category": "plates",
         "effect": "Held: Grass-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Grass.",
@@ -1099,6 +1170,7 @@
         ]
     },
     "icicle-plate": {
+        "slug": "icicle-plate",
         "name": "Icicle Plate",
         "category": "plates",
         "effect": "Held: Ice-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Ice.",
@@ -1112,6 +1184,7 @@
         ]
     },
     "fist-plate": {
+        "slug": "fist-plate",
         "name": "Fist Plate",
         "category": "plates",
         "effect": "Held: Fighting-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Fighting.",
@@ -1125,6 +1198,7 @@
         ]
     },
     "toxic-plate": {
+        "slug": "toxic-plate",
         "name": "Toxic Plate",
         "category": "plates",
         "effect": "Held: Poison-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Poison.",
@@ -1138,6 +1212,7 @@
         ]
     },
     "earth-plate": {
+        "slug": "earth-plate",
         "name": "Earth Plate",
         "category": "plates",
         "effect": "Held: Ground-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Ground.",
@@ -1151,6 +1226,7 @@
         ]
     },
     "sky-plate": {
+        "slug": "sky-plate",
         "name": "Sky Plate",
         "category": "plates",
         "effect": "Held: Flying-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Flying.",
@@ -1164,6 +1240,7 @@
         ]
     },
     "mind-plate": {
+        "slug": "mind-plate",
         "name": "Mind Plate",
         "category": "plates",
         "effect": "Held: Psychic-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Psychic.",
@@ -1177,6 +1254,7 @@
         ]
     },
     "insect-plate": {
+        "slug": "insect-plate",
         "name": "Insect Plate",
         "category": "plates",
         "effect": "Held: Bug-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Bug.",
@@ -1190,6 +1268,7 @@
         ]
     },
     "stone-plate": {
+        "slug": "stone-plate",
         "name": "Stone Plate",
         "category": "plates",
         "effect": "Held: Rock-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Rock.",
@@ -1203,6 +1282,7 @@
         ]
     },
     "spooky-plate": {
+        "slug": "spooky-plate",
         "name": "Spooky Plate",
         "category": "plates",
         "effect": "Held: Ghost-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Ghost.",
@@ -1216,6 +1296,7 @@
         ]
     },
     "draco-plate": {
+        "slug": "draco-plate",
         "name": "Draco Plate",
         "category": "plates",
         "effect": "Held: Dragon-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Dragon.",
@@ -1229,6 +1310,7 @@
         ]
     },
     "dread-plate": {
+        "slug": "dread-plate",
         "name": "Dread Plate",
         "category": "plates",
         "effect": "Held: Dark-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Dark.",
@@ -1242,6 +1324,7 @@
         ]
     },
     "iron-plate": {
+        "slug": "iron-plate",
         "name": "Iron Plate",
         "category": "plates",
         "effect": "Held: Steel-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Steel.",
@@ -1255,6 +1338,7 @@
         ]
     },
     "adamant-orb": {
+        "slug": "adamant-orb",
         "name": "Adamant Orb",
         "category": "species-specific",
         "effect": "Boosts the damage from Dialga's Dragon-type and Steel-type moves by 20%.",
@@ -1272,6 +1356,7 @@
         ]
     },
     "lustrous-orb": {
+        "slug": "lustrous-orb",
         "name": "Lustrous Orb",
         "category": "species-specific",
         "effect": "Boosts the damage from Palkia's Dragon-type and Water-type moves by 20%.",
@@ -1289,6 +1374,7 @@
         ]
     },
     "soul-dew": {
+        "slug": "soul-dew",
         "name": "Soul Dew",
         "category": "species-specific",
         "effect": "Raises Latias and Latios's Special Attack and Special Defense by 50%.",
@@ -1310,6 +1396,7 @@
         ]
     },
     "deep-sea-tooth": {
+        "slug": "deep-sea-tooth",
         "name": "Deep Sea Tooth",
         "category": "species-specific",
         "effect": "Doubles Clamperl's Special Attack. Traded on a Clamperl: Holder evolves into Huntail.",
@@ -1331,6 +1418,7 @@
         ]
     },
     "deep-sea-scale": {
+        "slug": "deep-sea-scale",
         "name": "Deep Sea Scale",
         "category": "species-specific",
         "effect": "Doubles Clamperl's Special Defense. Traded on a Clamperl: Holder evolves into Gorebyss.",
@@ -1352,6 +1440,7 @@
         ]
     },
     "light-ball": {
+        "slug": "light-ball",
         "name": "Light Ball",
         "category": "species-specific",
         "effect": "Doubles Pikachu's Attack and Special Attack. Breed on Pikachu or Raichu: Pichu Egg will have Volt Tackle.",
@@ -1373,6 +1462,7 @@
         ]
     },
     "lucky-punch": {
+        "slug": "lucky-punch",
         "name": "Lucky Punch",
         "category": "species-specific",
         "effect": "Raises Chansey's critical hit ratio by two stages.",
@@ -1394,6 +1484,7 @@
         ]
     },
     "metal-powder": {
+        "slug": "metal-powder",
         "name": "Metal Powder",
         "category": "species-specific",
         "effect": "Raises Ditto's Defense and Special Defense by 50%. The boost is lost after transforming.",
@@ -1415,6 +1506,7 @@
         ]
     },
     "thick-club": {
+        "slug": "thick-club",
         "name": "Thick Club",
         "category": "species-specific",
         "effect": "Doubles Cubone or Marowak's Attack.",
@@ -1436,6 +1528,7 @@
         ]
     },
     "leek": {
+        "slug": "leek",
         "name": "Leek",
         "category": "species-specific",
         "effect": "Raises Farfetch'd's critical hit ratio by two stages.",
@@ -1457,6 +1550,7 @@
         ]
     },
     "quick-powder": {
+        "slug": "quick-powder",
         "name": "Quick Powder",
         "category": "species-specific",
         "effect": "Doubles Ditto's Speed when held. The boost is lost after transforming.",
@@ -1474,6 +1568,7 @@
         ]
     },
     "griseous-orb": {
+        "slug": "griseous-orb",
         "name": "Griseous Orb",
         "category": "species-specific",
         "effect": "Boosts the damage from Giratina's Dragon-type and Ghost-type moves by 20%, and transforms it into Origin Forme.",
@@ -1491,6 +1586,7 @@
         ]
     },
     "douse-drive": {
+        "slug": "douse-drive",
         "name": "Douse Drive",
         "category": "species-specific",
         "effect": "Grants Genesect a blue, Water-type Techno Blast.",
@@ -1504,6 +1600,7 @@
         ]
     },
     "shock-drive": {
+        "slug": "shock-drive",
         "name": "Shock Drive",
         "category": "species-specific",
         "effect": "Grants Genesect a yellow, Electric-type Techno Blast.",
@@ -1517,6 +1614,7 @@
         ]
     },
     "burn-drive": {
+        "slug": "burn-drive",
         "name": "Burn Drive",
         "category": "species-specific",
         "effect": "Grants Genesect a red, Fire-type Techno Blast.",
@@ -1530,6 +1628,7 @@
         ]
     },
     "chill-drive": {
+        "slug": "chill-drive",
         "name": "Chill Drive",
         "category": "species-specific",
         "effect": "Grants Genesect a white, Ice-type Techno Blast.",
@@ -1543,6 +1642,7 @@
         ]
     },
     "silver-powder": {
+        "slug": "silver-powder",
         "name": "Silver Powder",
         "category": "type-enhancement",
         "effect": "Held: Bug-Type moves from holder do 20% more damage.",
@@ -1560,6 +1660,7 @@
         ]
     },
     "metal-coat": {
+        "slug": "metal-coat",
         "name": "Metal Coat",
         "category": "type-enhancement",
         "effect": "Held: Steel-Type moves from holder do 20% more damage.",
@@ -1577,6 +1678,7 @@
         ]
     },
     "soft-sand": {
+        "slug": "soft-sand",
         "name": "Soft Sand",
         "category": "type-enhancement",
         "effect": "Held: Ground-Type moves from holder do 20% more damage.",
@@ -1594,6 +1696,7 @@
         ]
     },
     "hard-stone": {
+        "slug": "hard-stone",
         "name": "Hard Stone",
         "category": "type-enhancement",
         "effect": "Held: Rock-Type moves from holder do 20% more damage.",
@@ -1611,6 +1714,7 @@
         ]
     },
     "miracle-seed": {
+        "slug": "miracle-seed",
         "name": "Miracle Seed",
         "category": "type-enhancement",
         "effect": "Held: Grass-Type moves from holder do 20% more damage.",
@@ -1628,6 +1732,7 @@
         ]
     },
     "black-glasses": {
+        "slug": "black-glasses",
         "name": "Black Glasses",
         "category": "type-enhancement",
         "effect": "Held: Dark-Type moves from holder do 20% more damage.",
@@ -1645,6 +1750,7 @@
         ]
     },
     "black-belt": {
+        "slug": "black-belt",
         "name": "Black Belt",
         "category": "type-enhancement",
         "effect": "Held: Fighting-Type moves from holder do 20% more damage.",
@@ -1662,6 +1768,7 @@
         ]
     },
     "magnet": {
+        "slug": "magnet",
         "name": "Magnet",
         "category": "type-enhancement",
         "effect": "Held: Electric-Type moves from holder do 20% more damage.",
@@ -1679,6 +1786,7 @@
         ]
     },
     "mystic-water": {
+        "slug": "mystic-water",
         "name": "Mystic Water",
         "category": "type-enhancement",
         "effect": "Held: Water-Type moves from holder do 20% more damage.",
@@ -1696,6 +1804,7 @@
         ]
     },
     "sharp-beak": {
+        "slug": "sharp-beak",
         "name": "Sharp Beak",
         "category": "type-enhancement",
         "effect": "Held: Flying-Type moves from holder do 20% more damage.",
@@ -1713,6 +1822,7 @@
         ]
     },
     "poison-barb": {
+        "slug": "poison-barb",
         "name": "Poison Barb",
         "category": "type-enhancement",
         "effect": "Held: Poison-Type moves from holder do 20% more damage.",
@@ -1730,6 +1840,7 @@
         ]
     },
     "never-melt-ice": {
+        "slug": "never-melt-ice",
         "name": "Never-Melt Ice",
         "category": "type-enhancement",
         "effect": "Held: Ice-Type moves from holder do 20% more damage.",
@@ -1747,6 +1858,7 @@
         ]
     },
     "spell-tag": {
+        "slug": "spell-tag",
         "name": "Spell Tag",
         "category": "type-enhancement",
         "effect": "Held: Ghost-Type moves from holder do 20% more damage.",
@@ -1764,6 +1876,7 @@
         ]
     },
     "twisted-spoon": {
+        "slug": "twisted-spoon",
         "name": "Twisted Spoon",
         "category": "type-enhancement",
         "effect": "Held: Psychic-Type moves from holder do 20% more damage.",
@@ -1781,6 +1894,7 @@
         ]
     },
     "charcoal": {
+        "slug": "charcoal",
         "name": "Charcoal",
         "category": "type-enhancement",
         "effect": "Held: Fire-Type moves from holder do 20% more damage.",
@@ -1798,6 +1912,7 @@
         ]
     },
     "dragon-fang": {
+        "slug": "dragon-fang",
         "name": "Dragon Fang",
         "category": "type-enhancement",
         "effect": "Held: Dragon-Type moves from holder do 20% more damage.",
@@ -1815,6 +1930,7 @@
         ]
     },
     "silk-scarf": {
+        "slug": "silk-scarf",
         "name": "Silk Scarf",
         "category": "type-enhancement",
         "effect": "Held: Normal-Type moves from holder do 20% more damage.",
@@ -1832,6 +1948,7 @@
         ]
     },
     "sea-incense": {
+        "slug": "sea-incense",
         "name": "Sea Incense",
         "category": "type-enhancement",
         "effect": "Held: Water-Type moves from holder do 20% more damage. Breeding: Marill or Azumarill beget an Azurill Egg.",
@@ -1849,6 +1966,7 @@
         ]
     },
     "odd-incense": {
+        "slug": "odd-incense",
         "name": "Odd Incense",
         "category": "type-enhancement",
         "effect": "Held: Psychic-Type moves from holder do 20% more damage. Breeding: Mr. Mime begets a Mime Jr. Egg.",
@@ -1862,6 +1980,7 @@
         ]
     },
     "rock-incense": {
+        "slug": "rock-incense",
         "name": "Rock Incense",
         "category": "type-enhancement",
         "effect": "Held: Rock-Type moves from holder do 20% more damage. Breeding: Sudowoodo begets a Bonsly Egg.",
@@ -1875,6 +1994,7 @@
         ]
     },
     "wave-incense": {
+        "slug": "wave-incense",
         "name": "Wave Incense",
         "category": "type-enhancement",
         "effect": "Held: Water-Type moves from holder do 20% more damage. Breeding: Mantine begets a Mantyke Egg.",
@@ -1892,6 +2012,7 @@
         ]
     },
     "rose-incense": {
+        "slug": "rose-incense",
         "name": "Rose Incense",
         "category": "type-enhancement",
         "effect": "Held: Grass-Type moves from holder do 20% more damage. Breeding: Roselia or Roserade beget a Budew Egg.",
@@ -1905,6 +2026,7 @@
         ]
     },
     "occa-berry": {
+        "slug": "occa-berry",
         "name": "Occa Berry",
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Fire-type attack to halve the damage.",
@@ -1922,6 +2044,7 @@
         ]
     },
     "passho-berry": {
+        "slug": "passho-berry",
         "name": "Passho Berry",
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Water-type attack to halve the damage.",
@@ -1939,6 +2062,7 @@
         ]
     },
     "wacan-berry": {
+        "slug": "wacan-berry",
         "name": "Wacan Berry",
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Electric-type attack to halve the damage.",
@@ -1956,6 +2080,7 @@
         ]
     },
     "rindo-berry": {
+        "slug": "rindo-berry",
         "name": "Rindo Berry",
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Grass-type attack to halve the damage.",
@@ -1973,6 +2098,7 @@
         ]
     },
     "yache-berry": {
+        "slug": "yache-berry",
         "name": "Yache Berry",
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Ice-type attack to halve the damage.",
@@ -1990,6 +2116,7 @@
         ]
     },
     "chople-berry": {
+        "slug": "chople-berry",
         "name": "Chople Berry",
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Fighting-type attack to halve the damage.",
@@ -2007,6 +2134,7 @@
         ]
     },
     "kebia-berry": {
+        "slug": "kebia-berry",
         "name": "Kebia Berry",
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Poison-type attack to halve the damage.",
@@ -2024,6 +2152,7 @@
         ]
     },
     "shuca-berry": {
+        "slug": "shuca-berry",
         "name": "Shuca Berry",
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Ground-type attack to halve the damage.",
@@ -2041,6 +2170,7 @@
         ]
     },
     "coba-berry": {
+        "slug": "coba-berry",
         "name": "Coba Berry",
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Flying-type attack to halve the damage.",
@@ -2058,6 +2188,7 @@
         ]
     },
     "payapa-berry": {
+        "slug": "payapa-berry",
         "name": "Payapa Berry",
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Psychic-type attack to halve the damage.",
@@ -2075,6 +2206,7 @@
         ]
     },
     "tanga-berry": {
+        "slug": "tanga-berry",
         "name": "Tanga Berry",
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Bug-type attack to halve the damage.",
@@ -2092,6 +2224,7 @@
         ]
     },
     "charti-berry": {
+        "slug": "charti-berry",
         "name": "Charti Berry",
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Rock-type attack to halve the damage.",
@@ -2109,6 +2242,7 @@
         ]
     },
     "kasib-berry": {
+        "slug": "kasib-berry",
         "name": "Kasib Berry",
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Ghost-type attack to halve the damage.",
@@ -2126,6 +2260,7 @@
         ]
     },
     "haban-berry": {
+        "slug": "haban-berry",
         "name": "Haban Berry",
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Dragon-type attack to halve the damage.",
@@ -2143,6 +2278,7 @@
         ]
     },
     "colbur-berry": {
+        "slug": "colbur-berry",
         "name": "Colbur Berry",
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Dark-type attack to halve the damage.",
@@ -2160,6 +2296,7 @@
         ]
     },
     "babiri-berry": {
+        "slug": "babiri-berry",
         "name": "Babiri Berry",
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Steel-type attack to halve the damage.",
@@ -2177,6 +2314,7 @@
         ]
     },
     "chilan-berry": {
+        "slug": "chilan-berry",
         "name": "Chilan Berry",
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a Normal-type attack to halve the damage.",
@@ -2194,6 +2332,7 @@
         ]
     },
     "red-scarf": {
+        "slug": "red-scarf",
         "name": "Red Scarf",
         "category": "scarves",
         "effect": "Raises the holder's Coolness while in a contest.",
@@ -2216,6 +2355,7 @@
         ]
     },
     "blue-scarf": {
+        "slug": "blue-scarf",
         "name": "Blue Scarf",
         "category": "scarves",
         "effect": "Raises the holder's Beauty while in a contest.",
@@ -2238,6 +2378,7 @@
         ]
     },
     "pink-scarf": {
+        "slug": "pink-scarf",
         "name": "Pink Scarf",
         "category": "scarves",
         "effect": "Raises the holder's Cuteness while in a contest.",
@@ -2260,6 +2401,7 @@
         ]
     },
     "green-scarf": {
+        "slug": "green-scarf",
         "name": "Green Scarf",
         "category": "scarves",
         "effect": "Raises the holder's Smartness while in a contest.",
@@ -2282,6 +2424,7 @@
         ]
     },
     "yellow-scarf": {
+        "slug": "yellow-scarf",
         "name": "Yellow Scarf",
         "category": "scarves",
         "effect": "Raises the holder's Toughness while in a contest.",
@@ -2304,6 +2447,7 @@
         ]
     },
     "fire-gem": {
+        "slug": "fire-gem",
         "name": "Fire Gem",
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Fire-type move, the move has 1.5× power and this item is consumed.",
@@ -2317,6 +2461,7 @@
         ]
     },
     "water-gem": {
+        "slug": "water-gem",
         "name": "Water Gem",
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Water-type move, the move has 1.5× power and this item is consumed.",
@@ -2330,6 +2475,7 @@
         ]
     },
     "electric-gem": {
+        "slug": "electric-gem",
         "name": "Electric Gem",
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Electric-type move, the move has 1.5× power and this item is consumed.",
@@ -2343,6 +2489,7 @@
         ]
     },
     "grass-gem": {
+        "slug": "grass-gem",
         "name": "Grass Gem",
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Grass-type move, the move has 1.5× power and this item is consumed.",
@@ -2356,6 +2503,7 @@
         ]
     },
     "ice-gem": {
+        "slug": "ice-gem",
         "name": "Ice Gem",
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Ice-type move, the move has 1.5× power and this item is consumed.",
@@ -2369,6 +2517,7 @@
         ]
     },
     "fighting-gem": {
+        "slug": "fighting-gem",
         "name": "Fighting Gem",
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Fighting-type move, the move has 1.5× power and this item is consumed.",
@@ -2382,6 +2531,7 @@
         ]
     },
     "poison-gem": {
+        "slug": "poison-gem",
         "name": "Poison Gem",
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Poison-type move, the move has 1.5× power and this item is consumed.",
@@ -2395,6 +2545,7 @@
         ]
     },
     "ground-gem": {
+        "slug": "ground-gem",
         "name": "Ground Gem",
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Ground-type move, the move has 1.5× power and this item is consumed.",
@@ -2408,6 +2559,7 @@
         ]
     },
     "flying-gem": {
+        "slug": "flying-gem",
         "name": "Flying Gem",
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Flying-type move, the move has 1.5× power and this item is consumed.",
@@ -2421,6 +2573,7 @@
         ]
     },
     "psychic-gem": {
+        "slug": "psychic-gem",
         "name": "Psychic Gem",
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Psychic-type move, the move has 1.5× power and this item is consumed.",
@@ -2434,6 +2587,7 @@
         ]
     },
     "bug-gem": {
+        "slug": "bug-gem",
         "name": "Bug Gem",
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Bug-type move, the move has 1.5× power and this item is consumed.",
@@ -2447,6 +2601,7 @@
         ]
     },
     "rock-gem": {
+        "slug": "rock-gem",
         "name": "Rock Gem",
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Rock-type move, the move has 1.5× power and this item is consumed.",
@@ -2460,6 +2615,7 @@
         ]
     },
     "ghost-gem": {
+        "slug": "ghost-gem",
         "name": "Ghost Gem",
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Ghost-type move, the move has 1.5× power and this item is consumed.",
@@ -2473,6 +2629,7 @@
         ]
     },
     "dark-gem": {
+        "slug": "dark-gem",
         "name": "Dark Gem",
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Dark-type move, the move has 1.5× power and this item is consumed.",
@@ -2486,6 +2643,7 @@
         ]
     },
     "steel-gem": {
+        "slug": "steel-gem",
         "name": "Steel Gem",
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Steel-type move, the move has 1.5× power and this item is consumed.",
@@ -2499,6 +2657,7 @@
         ]
     },
     "dragon-gem": {
+        "slug": "dragon-gem",
         "name": "Dragon Gem",
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Dragon-type move, the move has 1.5× power and this item is consumed.",
@@ -2512,6 +2671,7 @@
         ]
     },
     "normal-gem": {
+        "slug": "normal-gem",
         "name": "Normal Gem",
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Normal-type move, the move has 1.5× power and this item is consumed.",
@@ -2525,6 +2685,7 @@
         ]
     },
     "cheri-berry": {
+        "slug": "cheri-berry",
         "name": "Cheri Berry",
         "category": "medicine",
         "effect": "Held: Consumed when paralyzed to cure paralysis.",
@@ -2546,6 +2707,7 @@
         ]
     },
     "chesto-berry": {
+        "slug": "chesto-berry",
         "name": "Chesto Berry",
         "category": "medicine",
         "effect": "Held: Consumed when asleep to cure sleep.",
@@ -2567,6 +2729,7 @@
         ]
     },
     "pecha-berry": {
+        "slug": "pecha-berry",
         "name": "Pecha Berry",
         "category": "medicine",
         "effect": "Held: Consumed when poisoned to cure poison.",
@@ -2588,6 +2751,7 @@
         ]
     },
     "rawst-berry": {
+        "slug": "rawst-berry",
         "name": "Rawst Berry",
         "category": "medicine",
         "effect": "Held: Consumed when burned to cure a burn.",
@@ -2609,6 +2773,7 @@
         ]
     },
     "aspear-berry": {
+        "slug": "aspear-berry",
         "name": "Aspear Berry",
         "category": "medicine",
         "effect": "Held: Consumed when frozen to cure frozen.",
@@ -2630,6 +2795,7 @@
         ]
     },
     "leppa-berry": {
+        "slug": "leppa-berry",
         "name": "Leppa Berry",
         "category": "medicine",
         "effect": "Held: Consumed when a move runs out of PP to restore its PP by 10.",
@@ -2651,6 +2817,7 @@
         ]
     },
     "oran-berry": {
+        "slug": "oran-berry",
         "name": "Oran Berry",
         "category": "medicine",
         "effect": "Held: Consumed at 1/2 max HP to recover 10 HP.",
@@ -2672,6 +2839,7 @@
         ]
     },
     "persim-berry": {
+        "slug": "persim-berry",
         "name": "Persim Berry",
         "category": "medicine",
         "effect": "Held: Consumed when confused to cure confusion.",
@@ -2693,6 +2861,7 @@
         ]
     },
     "lum-berry": {
+        "slug": "lum-berry",
         "name": "Lum Berry",
         "category": "medicine",
         "effect": "Held: Consumed to cure any status condition or confusion.",
@@ -2714,6 +2883,7 @@
         ]
     },
     "sitrus-berry": {
+        "slug": "sitrus-berry",
         "name": "Sitrus Berry",
         "category": "medicine",
         "effect": "Held: Consumed at 1/2 max HP to recover 1/4 max HP.",
@@ -2735,6 +2905,7 @@
         ]
     },
     "enigma-berry": {
+        "slug": "enigma-berry",
         "name": "Enigma Berry",
         "category": "other",
         "effect": "Held: Consumed when struck by a super-effective attack to restore 1/4 max HP.",
@@ -2756,6 +2927,7 @@
         ]
     },
     "jaboca-berry": {
+        "slug": "jaboca-berry",
         "name": "Jaboca Berry",
         "category": "other",
         "effect": "Held: Consumed to deal 1/8 attacker's max HP when holder is struck by a physical attack.",
@@ -2773,6 +2945,7 @@
         ]
     },
     "rowap-berry": {
+        "slug": "rowap-berry",
         "name": "Rowap Berry",
         "category": "other",
         "effect": "Held: Consumed to deal 1/8 attacker's max HP when holder is struck by a special attack.",
@@ -2790,6 +2963,7 @@
         ]
     },
     "liechi-berry": {
+        "slug": "liechi-berry",
         "name": "Liechi Berry",
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost Attack.",
@@ -2811,6 +2985,7 @@
         ]
     },
     "ganlon-berry": {
+        "slug": "ganlon-berry",
         "name": "Ganlon Berry",
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost Defense.",
@@ -2832,6 +3007,7 @@
         ]
     },
     "salac-berry": {
+        "slug": "salac-berry",
         "name": "Salac Berry",
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost Speed.",
@@ -2853,6 +3029,7 @@
         ]
     },
     "petaya-berry": {
+        "slug": "petaya-berry",
         "name": "Petaya Berry",
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost Special Attack.",
@@ -2874,6 +3051,7 @@
         ]
     },
     "apicot-berry": {
+        "slug": "apicot-berry",
         "name": "Apicot Berry",
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost Special Defense.",
@@ -2895,6 +3073,7 @@
         ]
     },
     "lansat-berry": {
+        "slug": "lansat-berry",
         "name": "Lansat Berry",
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost critical hit ratio by two stages.",
@@ -2916,6 +3095,7 @@
         ]
     },
     "starf-berry": {
+        "slug": "starf-berry",
         "name": "Starf Berry",
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost a random stat by two stages.",
@@ -2937,6 +3117,7 @@
         ]
     },
     "micle-berry": {
+        "slug": "micle-berry",
         "name": "Micle Berry",
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost accuracy of next move by 20%. (Gen IV: Perfect accuracy)",
@@ -2954,6 +3135,7 @@
         ]
     },
     "custap-berry": {
+        "slug": "custap-berry",
         "name": "Custap Berry",
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP when using a move to go first.",
@@ -2971,6 +3153,7 @@
         ]
     },
     "figy-berry": {
+        "slug": "figy-berry",
         "name": "Figy Berry",
         "category": "picky-healing",
         "effect": "Held: Consumed at 1/2 max HP to restore 1/8 max HP. Confuses Pokémon that dislike spicy flavor.",
@@ -2992,6 +3175,7 @@
         ]
     },
     "wiki-berry": {
+        "slug": "wiki-berry",
         "name": "Wiki Berry",
         "category": "picky-healing",
         "effect": "Held: Consumed at 1/2 max HP to restore 1/8 max HP. Confuses Pokémon that dislike dry flavor.",
@@ -3013,6 +3197,7 @@
         ]
     },
     "mago-berry": {
+        "slug": "mago-berry",
         "name": "Mago Berry",
         "category": "picky-healing",
         "effect": "Held: Consumed at 1/2 max HP to restore 1/8 max HP. Confuses Pokémon that dislike sweet flavor.",
@@ -3034,6 +3219,7 @@
         ]
     },
     "aguav-berry": {
+        "slug": "aguav-berry",
         "name": "Aguav Berry",
         "category": "picky-healing",
         "effect": "Held: Consumed at 1/2 max HP to restore 1/8 max HP. Confuses Pokémon that dislike bitter flavor.",
@@ -3055,6 +3241,7 @@
         ]
     },
     "iapapa-berry": {
+        "slug": "iapapa-berry",
         "name": "Iapapa Berry",
         "category": "picky-healing",
         "effect": "Held: Consumed at 1/2 max HP to restore 1/8 max HP. Confuses Pokémon that dislike sour flavor.",

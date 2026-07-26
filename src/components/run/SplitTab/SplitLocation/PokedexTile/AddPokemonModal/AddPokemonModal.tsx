@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import Modal from '@/components/common/Modal/Modal';
-import { CaughtPokemon } from '@/lib/static/types';
+import { CaughtPokemon, PokemonData } from '@/lib/static/types';
 import styles from './AddPokemonModal.module.scss';
 import PokemonForm from './PokemonForm/PokemonForm';
 
 type AddPokemonModalProps = {
     accentColor?: string;
-    allSpecies: string[];
+    allSpecies: PokemonData[];
     buttonTextColor?: string;
     defaultLevel?: number;
     defaultLocation: string;
@@ -25,8 +25,8 @@ type AddPokemonModalProps = {
             | 'ivs'
             | 'level'
             | 'moves'
-            | 'name'
             | 'nature'
+            | 'slug'
             | 'tags'
         >,
         location: string
@@ -74,8 +74,8 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
             | 'ivs'
             | 'level'
             | 'moves'
-            | 'name'
             | 'nature'
+            | 'slug'
             | 'tags'
         >,
         requestClose: () => void

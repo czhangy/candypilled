@@ -1,0 +1,166 @@
+import { pastoriaCity } from '@/lib/games/platinum/maps';
+import { Nature } from '@/lib/static/enums';
+import { Location } from '@/lib/static/types';
+
+const PASTORIA_CITY: Location = {
+    name: 'Pastoria City',
+    map: pastoriaCity,
+    encountersKey: 'pastoria-city',
+    battles: [
+        {
+            isMiniboss: true,
+            trainerClass: 'PKMN Trainer',
+            name: 'Barry 4',
+            teamsByStarter: {
+                turtwig: [
+                    {
+                        slug: 'staravia',
+                        ability: 1,
+                        gender: 'male',
+                        ivs: 9,
+                        level: 34,
+                        nature: Nature.Quirky,
+                        moves: [
+                            'wing-attack',
+                            'quick-attack',
+                            'endeavor',
+                            'double-team',
+                        ],
+                    },
+                    {
+                        slug: 'buizel',
+                        ability: 1,
+                        gender: 'male',
+                        ivs: 9,
+                        level: 32,
+                        nature: Nature.Mild,
+                        moves: ['aqua-jet', 'quick-attack', 'pursuit', 'growl'],
+                    },
+                    {
+                        slug: 'roselia',
+                        ability: 1,
+                        gender: 'male',
+                        ivs: 9,
+                        level: 32,
+                        nature: Nature.Brave,
+                        moves: [
+                            'mega-drain',
+                            'poison-sting',
+                            'leech-seed',
+                            'magical-leaf',
+                        ],
+                    },
+                    {
+                        slug: 'monferno',
+                        ability: 1,
+                        gender: 'male',
+                        ivs: 9,
+                        level: 36,
+                        nature: Nature.Timid,
+                        moves: [
+                            'flame-wheel',
+                            'mach-punch',
+                            'fury-swipes',
+                            'leer',
+                        ],
+                    },
+                ],
+                chimchar: [
+                    {
+                        slug: 'staravia',
+                        ability: 1,
+                        gender: 'male',
+                        ivs: 9,
+                        level: 34,
+                        nature: Nature.Bashful,
+                        moves: [
+                            'wing-attack',
+                            'quick-attack',
+                            'endeavor',
+                            'double-team',
+                        ],
+                    },
+                    {
+                        slug: 'roselia',
+                        ability: 1,
+                        gender: 'male',
+                        ivs: 9,
+                        level: 32,
+                        nature: Nature.Gentle,
+                        moves: [
+                            'mega-drain',
+                            'poison-sting',
+                            'leech-seed',
+                            'magical-leaf',
+                        ],
+                    },
+                    {
+                        slug: 'ponyta',
+                        ability: 1,
+                        gender: 'male',
+                        ivs: 9,
+                        level: 32,
+                        nature: Nature.Docile,
+                        moves: ['ember', 'stomp', 'tail-whip', 'growl'],
+                    },
+                    {
+                        slug: 'prinplup',
+                        ability: 1,
+                        gender: 'male',
+                        ivs: 9,
+                        level: 36,
+                        nature: Nature.Quirky,
+                        moves: ['bubble-beam', 'peck', 'metal-claw', 'growl'],
+                    },
+                ],
+                piplup: [
+                    {
+                        slug: 'staravia',
+                        ability: 1,
+                        gender: 'male',
+                        ivs: 9,
+                        level: 34,
+                        nature: Nature.Naive,
+                        moves: [
+                            'wing-attack',
+                            'quick-attack',
+                            'endeavor',
+                            'double-team',
+                        ],
+                    },
+                    {
+                        slug: 'buizel',
+                        ability: 1,
+                        gender: 'male',
+                        ivs: 9,
+                        level: 32,
+                        nature: Nature.Mild,
+                        moves: ['aqua-jet', 'quick-attack', 'pursuit', 'growl'],
+                    },
+                    {
+                        slug: 'ponyta',
+                        ability: 1,
+                        gender: 'male',
+                        ivs: 9,
+                        level: 32,
+                        nature: Nature.Serious,
+                        moves: ['ember', 'stomp', 'tail-whip', 'growl'],
+                    },
+                    {
+                        slug: 'grotle',
+                        ability: 1,
+                        gender: 'male',
+                        ivs: 9,
+                        level: 36,
+                        nature: Nature.Docile,
+                        moves: ['razor-leaf', 'bite', 'mega-drain', 'withdraw'],
+                    },
+                ],
+            },
+            x: 24.5,
+            y: 46.4,
+        },
+    ],
+};
+
+export default PASTORIA_CITY;

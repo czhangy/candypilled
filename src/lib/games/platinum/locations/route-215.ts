@@ -12,14 +12,14 @@ const ROUTE_215: Location = {
             name: 'Calvin',
             team: [
                 {
-                    name: 'Bronzor',
+                    slug: 'bronzor',
                     ability: 1,
                     gender: 'male',
                     level: 23,
                     nature: Nature.Sassy,
                 },
                 {
-                    name: 'Shieldon',
+                    slug: 'shieldon',
                     ability: 1,
                     gender: 'male',
                     level: 23,
@@ -36,14 +36,14 @@ const ROUTE_215: Location = {
             name: 'Craig',
             team: [
                 {
-                    name: 'Luxio',
+                    slug: 'luxio',
                     ability: 1,
                     gender: 'male',
                     level: 22,
                     nature: Nature.Naughty,
                 },
                 {
-                    name: 'Luxio',
+                    slug: 'luxio',
                     ability: 1,
                     gender: 'male',
                     level: 24,
@@ -60,7 +60,7 @@ const ROUTE_215: Location = {
             name: 'Derek',
             team: [
                 {
-                    name: 'Croagunk',
+                    slug: 'croagunk',
                     ability: 1,
                     gender: 'male',
                     level: 26,
@@ -78,7 +78,7 @@ const ROUTE_215: Location = {
             name: 'Gregory',
             team: [
                 {
-                    name: 'Machop',
+                    slug: 'machop',
                     ability: 1,
                     gender: 'male',
                     level: 23,
@@ -86,7 +86,7 @@ const ROUTE_215: Location = {
                     ivs: 3,
                 },
                 {
-                    name: 'Machop',
+                    slug: 'machop',
                     ability: 1,
                     gender: 'male',
                     level: 23,
@@ -94,7 +94,7 @@ const ROUTE_215: Location = {
                     ivs: 3,
                 },
                 {
-                    name: 'Machop',
+                    slug: 'machop',
                     ability: 1,
                     gender: 'male',
                     level: 23,
@@ -112,7 +112,7 @@ const ROUTE_215: Location = {
             name: 'Nathaniel',
             team: [
                 {
-                    name: 'Croagunk',
+                    slug: 'croagunk',
                     ability: 1,
                     gender: 'male',
                     level: 21,
@@ -120,7 +120,7 @@ const ROUTE_215: Location = {
                     ivs: 3,
                 },
                 {
-                    name: 'Meditite',
+                    slug: 'meditite',
                     ability: 1,
                     gender: 'male',
                     level: 24,
@@ -128,7 +128,7 @@ const ROUTE_215: Location = {
                     ivs: 3,
                 },
                 {
-                    name: 'Machop',
+                    slug: 'machop',
                     ability: 1,
                     gender: 'male',
                     level: 24,
@@ -146,7 +146,7 @@ const ROUTE_215: Location = {
             name: 'Scott',
             team: [
                 {
-                    name: 'Staravia',
+                    slug: 'staravia',
                     ability: 1,
                     gender: 'male',
                     level: 25,
@@ -162,34 +162,34 @@ const ROUTE_215: Location = {
             name: 'Maya',
             team: [
                 {
-                    name: 'Roselia',
+                    slug: 'roselia',
                     ability: 1,
                     gender: 'female',
                     level: 24,
-                    moves: ['Toxic Spikes', 'Giga Drain', 'Leech Seed'],
+                    moves: ['toxic-spikes', 'giga-drain', 'leech-seed'],
                     nature: Nature.Adamant,
                     ivs: 6,
                 },
                 {
-                    name: 'Ralts',
+                    slug: 'ralts',
                     ability: 1,
                     gender: 'female',
                     level: 24,
                     moves: [
-                        'Psychic',
-                        'Magical Leaf',
-                        'Calm Mind',
-                        'Double Team',
+                        'psychic',
+                        'magical-leaf',
+                        'calm-mind',
+                        'double-team',
                     ],
                     nature: Nature.Serious,
                     ivs: 6,
                 },
                 {
-                    name: 'Lickitung',
+                    slug: 'lickitung',
                     ability: 1,
                     gender: 'female',
                     level: 25,
-                    moves: ['Supersonic', 'Stomp', 'Rollout', 'Defense Curl'],
+                    moves: ['supersonic', 'stomp', 'rollout', 'defense-curl'],
                     nature: Nature.Modest,
                     ivs: 6,
                 },
@@ -203,34 +203,34 @@ const ROUTE_215: Location = {
             name: 'Dennis',
             team: [
                 {
-                    name: 'Gligar',
+                    slug: 'gligar',
                     ability: 1,
                     gender: 'male',
                     level: 24,
                     moves: [
-                        'Screech',
-                        'Feint Attack',
-                        'Quick Attack',
-                        'Poison Sting',
+                        'screech',
+                        'feint-attack',
+                        'quick-attack',
+                        'poison-sting',
                     ],
                     nature: Nature.Bold,
                     ivs: 6,
                 },
                 {
-                    name: 'Buizel',
+                    slug: 'buizel',
                     ability: 1,
                     gender: 'male',
                     level: 24,
-                    moves: ['Aqua Jet', 'Swift', 'Pursuit', 'Quick Attack'],
+                    moves: ['aqua-jet', 'swift', 'pursuit', 'quick-attack'],
                     nature: Nature.Naive,
                     ivs: 6,
                 },
                 {
-                    name: 'Drifblim',
+                    slug: 'drifblim',
                     ability: 1,
                     gender: 'male',
                     level: 25,
-                    moves: ['Swallow', 'Gust', 'Stockpile', 'Ominous Wind'],
+                    moves: ['swallow', 'gust', 'stockpile', 'ominous-wind'],
                     nature: Nature.Bold,
                     ivs: 6,
                 },

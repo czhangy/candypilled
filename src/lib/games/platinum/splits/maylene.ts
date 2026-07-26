@@ -8,6 +8,7 @@ import SOLACEON_RUINS from '@/lib/games/platinum/locations/solaceon-ruins';
 import VEILSTONE_CITY from '@/lib/games/platinum/locations/veilstone-city';
 import VEILSTONE_GYM from '@/lib/games/platinum/locations/veilstone-gym';
 import { Split } from '@/lib/static/types';
+import LocationHelpers from '@/lib/utils/LocationHelpers';
 
 const MAYLENE: Split = {
     name: 'Maylene',
@@ -19,7 +20,7 @@ const MAYLENE: Split = {
         ROUTE_210,
         CAFE_CABIN,
         ROUTE_215,
-        VEILSTONE_CITY,
+        LocationHelpers.withHiddenBattles(VEILSTONE_CITY),
         VEILSTONE_GYM,
     ],
 };

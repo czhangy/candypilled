@@ -12,7 +12,7 @@ const VALLEY_WINDWORKS_EXTERIOR: Location = {
             name: '1',
             team: [
                 {
-                    name: 'Glameow',
+                    slug: 'glameow',
                     ability: 1,
                     gender: 'male',
                     level: 13,

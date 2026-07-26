@@ -50,9 +50,9 @@ says so instead of the grid.
   otherwise worded for the current `view`
 - `isOverCap` — whether a given Pokémon's `level` exceeds `levelCap`,
   computed per slot
-- `heldItemSprite` — a given Pokémon's held item sprite, resolved via
-  `ItemHelpers.getHeldItemSprite`, per slot; omitted (no icon shown)
-  when the Pokémon has no held item or no sprite matches
+- `heldItemData` — a given Pokémon's held item data (name and sprite),
+  resolved via `ItemHelpers.getHeldItemData`, per slot; omitted (no icon
+  shown) when the Pokémon has no held item or no data matches
 
 ## Handlers
 

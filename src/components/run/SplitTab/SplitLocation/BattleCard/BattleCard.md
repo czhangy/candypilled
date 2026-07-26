@@ -18,10 +18,10 @@ for the portrait and team slot behavior in detail.
 | `battle`           | `Battle`                      | Yes      | -       | The currently selected battle                                                       |
 | `generation`       | `number`                      | Yes      | -       | The game's generation, used to resolve each Pokémon's types and abilities           |
 | `isDefeated`       | `boolean`                     | Yes      | -       | Whether this battle has already been marked defeated                                |
-| `onSelectAbility`  | `(name: string) => void`      | Yes      | -       | Called with a Pokémon's ability when it's clicked                                   |
-| `onSelectItem`     | `(name: string) => void`      | Yes      | -       | Called with a Pokémon's held item when it's clicked                                 |
-| `onSelectMove`     | `(name: string) => void`      | Yes      | -       | Called with a move's name when it's clicked within a Pokémon's moveset              |
-| `onSelectSpecies`  | `(species: string) => void`   | Yes      | -       | Called with a Pokémon's name when its sprite or name is clicked                     |
+| `onSelectAbility`  | `(slug: string) => void`      | Yes      | -       | Called with a Pokémon's ability slug when it's clicked                              |
+| `onSelectItem`     | `(slug: string) => void`      | Yes      | -       | Called with a Pokémon's held item slug when it's clicked                            |
+| `onSelectMove`     | `(slug: string) => void`      | Yes      | -       | Called with a move's slug when it's clicked within a Pokémon's moveset              |
+| `onSelectSpecies`  | `(slug: string) => void`      | Yes      | -       | Called with a Pokémon's species slug when its sprite or name is clicked             |
 | `onSelectTrainer`  | `(battleKey: string) => void` | Yes      | -       | Called with the battle's key when the trainer name header is clicked                |
 | `onToggleDefeated` | `() => void`                  | Yes      | -       | Called when the defeat button is clicked                                            |
 | `starter`          | `string`                      | Yes      | -       | The run's chosen starter, used to resolve a miniboss's starter-specific team        |

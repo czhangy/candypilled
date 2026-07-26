@@ -16,7 +16,7 @@ const WAYWARD_CAVE: Location = {
                     name: 'Diego',
                     team: [
                         {
-                            name: 'Aipom',
+                            slug: 'aipom',
                             ability: 1,
                             gender: 'male',
                             level: 22,
@@ -32,7 +32,7 @@ const WAYWARD_CAVE: Location = {
                     name: 'Tori',
                     team: [
                         {
-                            name: 'Psyduck',
+                            slug: 'psyduck',
                             ability: 1,
                             gender: 'female',
                             level: 22,
@@ -48,14 +48,14 @@ const WAYWARD_CAVE: Location = {
                     name: 'Reginald',
                     team: [
                         {
-                            name: 'Geodude',
+                            slug: 'geodude',
                             ability: 1,
                             gender: 'male',
                             level: 20,
                             nature: Nature.Mild,
                         },
                         {
-                            name: 'Geodude',
+                            slug: 'geodude',
                             ability: 1,
                             gender: 'male',
                             level: 20,
@@ -71,7 +71,7 @@ const WAYWARD_CAVE: Location = {
                     name: 'Lorenzo',
                     team: [
                         {
-                            name: 'Onix',
+                            slug: 'onix',
                             ability: 1,
                             gender: 'male',
                             level: 22,
@@ -87,7 +87,7 @@ const WAYWARD_CAVE: Location = {
                     name: 'Cassidy',
                     team: [
                         {
-                            name: 'Buneary',
+                            slug: 'buneary',
                             ability: 1,
                             gender: 'female',
                             level: 22,
@@ -103,21 +103,21 @@ const WAYWARD_CAVE: Location = {
                     name: 'Wayne',
                     team: [
                         {
-                            name: 'Staravia',
+                            slug: 'staravia',
                             ability: 1,
                             gender: 'male',
                             level: 17,
                             nature: Nature.Serious,
                         },
                         {
-                            name: 'Shellos',
+                            slug: 'shellos',
                             ability: 1,
                             gender: 'male',
                             level: 20,
                             nature: Nature.Bold,
                         },
                         {
-                            name: 'Ponyta',
+                            slug: 'ponyta',
                             ability: 1,
                             gender: 'male',
                             level: 20,
@@ -133,7 +133,7 @@ const WAYWARD_CAVE: Location = {
                     name: 'Ana',
                     team: [
                         {
-                            name: 'Hoothoot',
+                            slug: 'hoothoot',
                             ability: 1,
                             gender: 'female',
                             level: 22,
@@ -149,20 +149,20 @@ const WAYWARD_CAVE: Location = {
                     name: 'Parker',
                     team: [
                         {
-                            name: 'Buizel',
+                            slug: 'buizel',
                             ability: 1,
                             gender: 'male',
                             level: 20,
                             nature: Nature.Naughty,
-                            moves: ['Water Gun', 'Swift', 'Quick Attack'],
+                            moves: ['water-gun', 'swift', 'quick-attack'],
                         },
                         {
-                            name: 'Shinx',
+                            slug: 'shinx',
                             ability: 1,
                             gender: 'male',
                             level: 20,
                             nature: Nature.Lonely,
-                            moves: ['Spark', 'Bite'],
+                            moves: ['spark', 'bite'],
                         },
                     ],
                     x: 80.5,
@@ -174,7 +174,7 @@ const WAYWARD_CAVE: Location = {
                     name: 'Terry',
                     team: [
                         {
-                            name: 'Gible',
+                            slug: 'gible',
                             ability: 1,
                             gender: 'male',
                             level: 22,
@@ -190,14 +190,14 @@ const WAYWARD_CAVE: Location = {
                     name: 'Gerald',
                     team: [
                         {
-                            name: 'Geodude',
+                            slug: 'geodude',
                             ability: 1,
                             gender: 'male',
                             level: 19,
                             nature: Nature.Quiet,
                         },
                         {
-                            name: 'Bronzor',
+                            slug: 'bronzor',
                             ability: 1,
                             gender: 'male',
                             level: 21,

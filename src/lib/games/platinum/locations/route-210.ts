@@ -16,7 +16,7 @@ const ROUTE_210: Location = {
                     name: 'Marco',
                     team: [
                         {
-                            name: 'Ponyta',
+                            slug: 'ponyta',
                             ability: 1,
                             gender: 'male',
                             level: 24,
@@ -32,7 +32,7 @@ const ROUTE_210: Location = {
                     name: 'Wyatt',
                     team: [
                         {
-                            name: 'Pikachu',
+                            slug: 'pikachu',
                             ability: 1,
                             gender: 'male',
                             level: 24,
@@ -50,14 +50,14 @@ const ROUTE_210: Location = {
                     name: 'Ava & Matt',
                     team: [
                         {
-                            name: 'Ponyta',
+                            slug: 'ponyta',
                             ability: 1,
                             gender: 'male',
                             level: 24,
                             nature: Nature.Naughty,
                         },
                         {
-                            name: 'Rapidash',
+                            slug: 'rapidash',
                             ability: 1,
                             gender: 'male',
                             level: 24,
@@ -75,14 +75,14 @@ const ROUTE_210: Location = {
                     name: 'Teri & Tia',
                     team: [
                         {
-                            name: 'Pikachu',
+                            slug: 'pikachu',
                             ability: 1,
                             gender: 'female',
                             level: 23,
                             nature: Nature.Adamant,
                         },
                         {
-                            name: 'Clefairy',
+                            slug: 'clefairy',
                             ability: 1,
                             gender: 'female',
                             level: 23,
@@ -98,14 +98,14 @@ const ROUTE_210: Location = {
                     name: 'Kahlil',
                     team: [
                         {
-                            name: 'Elekid',
+                            slug: 'elekid',
                             ability: 1,
                             gender: 'male',
                             level: 23,
                             nature: Nature.Gentle,
                         },
                         {
-                            name: 'Happiny',
+                            slug: 'happiny',
                             ability: 1,
                             gender: 'male',
                             level: 23,
@@ -121,14 +121,14 @@ const ROUTE_210: Location = {
                     name: 'Amber',
                     team: [
                         {
-                            name: 'Magby',
+                            slug: 'magby',
                             ability: 1,
                             gender: 'female',
                             level: 23,
                             nature: Nature.Brave,
                         },
                         {
-                            name: 'Togepi',
+                            slug: 'togepi',
                             ability: 1,
                             gender: 'female',
                             level: 23,

@@ -24,6 +24,10 @@ export const logWarning = (message: string): void => {
     console.log(`${ANSI_YELLOW}${message}${ANSI_RESET}`);
 };
 
+export const logError = (message: string): void => {
+    console.log(`${ANSI_RED}${message}${ANSI_RESET}`);
+};
+
 export const handleException = (error: unknown): never => {
     const message = error instanceof Error ? error.message : String(error);
     console.error(`\n${ANSI_RED}${message}${ANSI_RESET}`);

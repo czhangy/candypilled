@@ -263,6 +263,7 @@ export const fetchItems = async (): Promise<void> => {
         const removedInGeneration = REMOVED_IN_GENERATION[apiSlug];
 
         data[slug] = {
+            slug,
             name,
             category: item.category.name,
             effect: toEnglishEffect(item.effect_entries),

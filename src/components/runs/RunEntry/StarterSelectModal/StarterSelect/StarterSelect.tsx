@@ -37,6 +37,8 @@ const StarterSelect: React.FC<StarterSelectProps> = ({
                         starter,
                         variant
                     );
+                    const name =
+                        PokemonHelpers.getPokemonData(starter)?.name ?? starter;
 
                     return (
                         <button
@@ -53,13 +55,13 @@ const StarterSelect: React.FC<StarterSelectProps> = ({
                         >
                             {sprite ? (
                                 <Image
-                                    alt={starter}
+                                    alt={name}
                                     height={96}
                                     src={sprite}
                                     width={96}
                                 />
                             ) : (
-                                starter
+                                name
                             )}
                         </button>
                     );

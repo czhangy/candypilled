@@ -5,7 +5,7 @@ import AbilityDetail from './AbilityDetail/AbilityDetail';
 
 type AbilitiesSubtabProps = {
     generation: number;
-    onSelectAbility: (name: string) => void;
+    onSelectAbility: (slug: string) => void;
     selectedAbility?: string;
 };
 
@@ -36,7 +36,10 @@ const AbilitiesSubtab: React.FC<AbilitiesSubtabProps> = ({
                 searchPlaceholder="Search abilities..."
                 selectedItem={selectedAbility}
             />
-            <AbilityDetail ability={selectedAbility} generation={generation} />
+            <AbilityDetail
+                abilitySlug={selectedAbility}
+                generation={generation}
+            />
         </div>
     );
 };

@@ -64,9 +64,12 @@ const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
                             type="button"
                         >
                             <Image
-                                alt={mon.name}
+                                alt={
+                                    PokemonHelpers.getPokemonData(mon.slug)
+                                        ?.name ?? mon.slug
+                                }
                                 height={SPRITE_HEIGHT}
-                                src={PokemonHelpers.getBoxSprite(mon.name)}
+                                src={PokemonHelpers.getBoxSprite(mon.slug)}
                                 width={SPRITE_WIDTH}
                             />
                         </button>

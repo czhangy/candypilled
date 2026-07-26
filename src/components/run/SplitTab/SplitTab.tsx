@@ -15,13 +15,15 @@ type SplitTabProps = {
     game: Game;
     onAdvanceSplit: (splitName: string) => void;
     onGameComplete: () => void;
-    onSelectAbility: (name: string) => void;
-    onSelectItem: (name: string) => void;
+    onSelectAbility: (slug: string) => void;
+    onSelectBattleMarker: (battleKey: string) => void;
+    onSelectItem: (slug: string) => void;
     onSelectLocation: (location: string) => void;
-    onSelectMove: (name: string) => void;
+    onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
     onSelectTrainer: (battleKey: string) => void;
     run: Run;
+    selectedBattleKey?: string;
     stickyOffset: number;
 };
 
@@ -31,12 +33,14 @@ const SplitTab: React.FC<SplitTabProps> = ({
     onAdvanceSplit,
     onGameComplete,
     onSelectAbility,
+    onSelectBattleMarker,
     onSelectItem,
     onSelectLocation,
     onSelectMove,
     onSelectSpecies,
     onSelectTrainer,
     run,
+    selectedBattleKey,
     stickyOffset,
 }) => {
     // -------------------------------------------------------------------------
@@ -109,14 +113,12 @@ const SplitTab: React.FC<SplitTabProps> = ({
     // -------------------------------------------------------------------------
 
     const getCaughtPokemonName = (locationName: string): string | undefined => {
-        const name = run.caughtPokemon.find(
+        const slug = run.caughtPokemon.find(
             (caught) => caught.location === locationName
-        )?.name;
+        )?.slug;
 
-        return name
-            ? StringHelpers.toTitleCase(
-                  PokemonHelpers.getPokemonData(name)?.name ?? name
-              )
+        return slug
+            ? (PokemonHelpers.getPokemonData(slug)?.name ?? slug)
             : undefined;
     };
 
@@ -230,12 +232,14 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             onAdvanceSplit={onAdvanceSplit}
                             onGameComplete={onGameComplete}
                             onSelectAbility={onSelectAbility}
+                            onSelectBattleMarker={onSelectBattleMarker}
                             onSelectItem={onSelectItem}
                             onSelectLocation={onSelectLocation}
                             onSelectMove={onSelectMove}
                             onSelectSpecies={onSelectSpecies}
                             onSelectTrainer={onSelectTrainer}
                             run={run}
+                            selectedBattleKey={selectedBattleKey}
                             variant={variant}
                         />
                     ))}

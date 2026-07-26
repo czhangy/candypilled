@@ -53,9 +53,12 @@ const BoxSelectPanel: React.FC<BoxSelectPanelProps> = ({
                             type="button"
                         >
                             <Image
-                                alt={pokemon.name}
+                                alt={
+                                    PokemonHelpers.getPokemonData(pokemon.slug)
+                                        ?.name ?? pokemon.slug
+                                }
                                 height={SPRITE_HEIGHT}
-                                src={PokemonHelpers.getBoxSprite(pokemon.name)}
+                                src={PokemonHelpers.getBoxSprite(pokemon.slug)}
                                 width={SPRITE_WIDTH}
                             />
                         </button>

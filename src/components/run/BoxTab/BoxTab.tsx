@@ -14,10 +14,10 @@ import PokemonPreview from './PokemonPreview/PokemonPreview';
 type BoxTabProps = {
     game: Game;
     onDeselectPokemon: () => void;
-    onSelectAbility: (name: string) => void;
-    onSelectItem: (name: string) => void;
+    onSelectAbility: (slug: string) => void;
+    onSelectItem: (slug: string) => void;
     onSelectLocation: (location: string) => void;
-    onSelectMove: (name: string) => void;
+    onSelectMove: (slug: string) => void;
     onSelectPokemon: (location: string) => void;
     run: Run;
     selectedPokemon?: string;
@@ -50,8 +50,8 @@ const BoxTab: React.FC<BoxTabProps> = ({
         (species) =>
             !run.caughtPokemon.some((caughtPokemon) =>
                 EvolutionHelpers.isSameEvolutionLine(
-                    species,
-                    caughtPokemon.name,
+                    species.slug,
+                    caughtPokemon.slug,
                     game.generation
                 )
             )
@@ -97,8 +97,8 @@ const BoxTab: React.FC<BoxTabProps> = ({
             | 'ivs'
             | 'level'
             | 'moves'
-            | 'name'
             | 'nature'
+            | 'slug'
             | 'tags'
         >,
         location: string
@@ -156,8 +156,8 @@ const BoxTab: React.FC<BoxTabProps> = ({
             | 'ivs'
             | 'level'
             | 'moves'
-            | 'name'
             | 'nature'
+            | 'slug'
             | 'tags'
         >
     ): void => {
@@ -173,12 +173,12 @@ const BoxTab: React.FC<BoxTabProps> = ({
         LocalStorageHelpers.saveRun(game, updatedRun);
     };
 
-    const handleEvolve = (pokemon: CaughtPokemon, newName: string): void => {
+    const handleEvolve = (pokemon: CaughtPokemon, newSlug: string): void => {
         const updatedRun: Run = {
             ...run,
             caughtPokemon: run.caughtPokemon.map((caughtPokemon) =>
                 caughtPokemon.location === pokemon.location
-                    ? { ...caughtPokemon, name: newName }
+                    ? { ...caughtPokemon, slug: newSlug }
                     : caughtPokemon
             ),
         };
@@ -258,7 +258,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
                     allSpecies={allSpecies}
                     buttonTextColor={game.textContrastColor}
                     defaultLocation=""
-                    defaultSpecies={allSpecies[0] ?? ''}
+                    defaultSpecies={allSpecies[0]?.slug ?? ''}
                     existingLocations={run.caughtPokemon.map(
                         (caughtPokemon) => caughtPokemon.location
                     )}
