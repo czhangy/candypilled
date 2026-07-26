@@ -137,7 +137,7 @@ const ROUTE_205: Location = {
                         {
                             slug: 'machop',
                             ability: 1,
-                            gender: 'female',
+                            gender: 'male',
                             level: 15,
                             nature: Nature.Serious,
                             ivs: 2,
@@ -154,7 +154,7 @@ const ROUTE_205: Location = {
                         {
                             slug: 'piplup',
                             ability: 1,
-                            gender: 'female',
+                            gender: 'male',
                             level: 14,
                             nature: Nature.Calm,
                             moves: ['bubble', 'peck'],

@@ -14,7 +14,7 @@ const VALLEY_WINDWORKS_EXTERIOR: Location = {
                 {
                     slug: 'glameow',
                     ability: 1,
-                    gender: 'male',
+                    gender: 'female',
                     level: 13,
                     nature: Nature.Lax,
                 },

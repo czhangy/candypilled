@@ -145,7 +145,7 @@ const ROUTE_209: Location = {
                 {
                     slug: 'eevee',
                     ability: 1,
-                    gender: 'female',
+                    gender: 'male',
                     level: 20,
                     nature: Nature.Mild,
                 },

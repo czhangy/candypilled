@@ -92,7 +92,7 @@ const ETERNA_GYM: Location = {
                 {
                     slug: 'turtwig',
                     ability: 1,
-                    gender: 'female',
+                    gender: 'male',
                     level: 20,
                     nature: Nature.Quirky,
                     moves: ['grass-knot', 'razor-leaf', 'sunny-day', 'reflect'],

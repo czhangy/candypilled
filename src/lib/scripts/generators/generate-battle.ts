@@ -675,16 +675,31 @@ const promptTrainerClass = async (
     }
 };
 
-// A team member's gender defaults to the trainer's, but is overridden for
-// species whose gender isn't determined by their trainer: genderless
-// species get no gender at all, and single-gender species always get their
-// one possible gender.
+// In Platinum, a trainer's Pokémon doesn't roll its personality value
+// randomly like a wild Pokémon: the engine fixes the value's gender byte to
+// 120 for a female trainer or 136 for a male trainer, then resolves gender
+// the normal way against the species' gender-ratio threshold (out of 256,
+// 32 per eighth). A species only actually shares the trainer's own gender
+// when that threshold falls strictly between 120 and 136 — true only for an
+// exact 50/50 ratio (threshold 127). Any species skewed roughly 75% or more
+// toward one gender always produces that gender, regardless of the
+// trainer's.
+const TRAINER_GENDER_BYTE: Record<'male' | 'female', number> = {
+    female: 120,
+    male: 136,
+};
+
 const resolveTeamMemberGender = (
     slug: string,
     trainerGender: 'male' | 'female'
 ): 'male' | 'female' | undefined => {
-    if (PokemonHelpers.isGenderless(slug)) return undefined;
-    return PokemonHelpers.getFixedGender(slug) ?? trainerGender;
+    const genderRate = PokemonHelpers.getPokemonData(slug)?.genderRate;
+    if (genderRate === undefined || genderRate === -1) return undefined;
+    if (genderRate === 0) return 'male';
+    if (genderRate === 8) return 'female';
+
+    const threshold = genderRate * 32 - 1;
+    return TRAINER_GENDER_BYTE[trainerGender] < threshold ? 'female' : 'male';
 };
 
 const promptTeam = async (

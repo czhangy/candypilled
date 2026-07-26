@@ -290,7 +290,7 @@ const MT_CORONET: Location = {
                         {
                             slug: 'glameow',
                             ability: 1,
-                            gender: 'male',
+                            gender: 'female',
                             level: 41,
                             nature: Nature.Hasty,
                             ivs: 3,

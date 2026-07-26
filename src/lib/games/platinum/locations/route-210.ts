@@ -123,14 +123,14 @@ const ROUTE_210: Location = {
                         {
                             slug: 'magby',
                             ability: 1,
-                            gender: 'female',
+                            gender: 'male',
                             level: 23,
                             nature: Nature.Brave,
                         },
                         {
                             slug: 'togepi',
                             ability: 1,
-                            gender: 'female',
+                            gender: 'male',
                             level: 23,
                             nature: Nature.Modest,
                         },
@@ -280,7 +280,7 @@ const ROUTE_210: Location = {
                         {
                             slug: 'grotle',
                             ability: 1,
-                            gender: 'female',
+                            gender: 'male',
                             ivs: 6,
                             level: 33,
                             nature: Nature.Timid,

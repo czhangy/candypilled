@@ -138,7 +138,7 @@ const ROUTE_207: Location = {
                 {
                     slug: 'machop',
                     ability: 1,
-                    gender: 'female',
+                    gender: 'male',
                     level: 21,
                     nature: Nature.Lonely,
                     ivs: 2,

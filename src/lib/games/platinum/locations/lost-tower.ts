@@ -62,7 +62,7 @@ const LOST_TOWER: Location = {
                         {
                             slug: 'cleffa',
                             ability: 1,
-                            gender: 'male',
+                            gender: 'female',
                             level: 23,
                             nature: Nature.Calm,
                         },

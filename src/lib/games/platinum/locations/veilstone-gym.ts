@@ -144,7 +144,7 @@ const VEILSTONE_GYM: Location = {
                 {
                     slug: 'machoke',
                     ability: 1,
-                    gender: 'female',
+                    gender: 'male',
                     level: 29,
                     moves: [
                         'karate-chop',
@@ -158,7 +158,7 @@ const VEILSTONE_GYM: Location = {
                 {
                     slug: 'lucario',
                     ability: 1,
-                    gender: 'female',
+                    gender: 'male',
                     level: 32,
                     moves: [
                         'drain-punch',

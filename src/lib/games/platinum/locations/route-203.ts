@@ -161,7 +161,7 @@ const ROUTE_203: Location = {
                 {
                     slug: 'abra',
                     ability: 1,
-                    gender: 'female',
+                    gender: 'male',
                     level: 4,
                     nature: Nature.Docile,
                 },

@@ -75,7 +75,7 @@ const ETERNA_FOREST: Location = {
                         {
                             slug: 'abra',
                             ability: 1,
-                            gender: 'female',
+                            gender: 'male',
                             level: 17,
                             nature: Nature.Gentle,
                             moves: ['hidden-power'],

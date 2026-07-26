@@ -15,7 +15,7 @@ const JUBILIFE_CITY: Location = {
                 {
                     slug: 'glameow',
                     ability: 1,
-                    gender: 'male',
+                    gender: 'female',
                     level: 11,
                     nature: Nature.Rash,
                 },

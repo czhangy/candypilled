@@ -70,7 +70,7 @@ const ROUTE_208: Location = {
                 {
                     slug: 'combee',
                     ability: 1,
-                    gender: 'female',
+                    gender: 'male',
                     level: 22,
                     nature: Nature.Naughty,
                 },

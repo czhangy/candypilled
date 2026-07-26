@@ -282,7 +282,7 @@ const ROUTE_212: Location = {
                         {
                             slug: 'leafeon',
                             ability: 1,
-                            gender: 'female',
+                            gender: 'male',
                             ivs: 6,
                             level: 29,
                             nature: Nature.Sassy,
