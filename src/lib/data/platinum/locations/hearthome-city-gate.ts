@@ -1,0 +1,175 @@
+import { hearthomeCityGate } from '@/lib/data/platinum/maps';
+import { Nature } from '@/lib/static/enums';
+import { Location } from '@/lib/static/types';
+
+const HEARTHOME_CITY_GATE: Location = {
+    name: 'Hearthome City Gate',
+    map: hearthomeCityGate,
+    battles: [
+        {
+            isMiniboss: true,
+            trainerClass: 'pkmn-trainer-barry',
+            name: 'Barry',
+            teamsByStarter: {
+                turtwig: [
+                    {
+                        slug: 'staravia',
+                        ability: 1,
+                        gender: 'male',
+                        level: 25,
+                        moves: [
+                            'wing-attack',
+                            'quick-attack',
+                            'endeavor',
+                            'double-team',
+                        ],
+                        nature: Nature.Timid,
+                        ivs: 6,
+                    },
+                    {
+                        slug: 'buizel',
+                        ability: 1,
+                        gender: 'male',
+                        level: 23,
+                        moves: [
+                            'water-gun',
+                            'quick-attack',
+                            'pursuit',
+                            'growl',
+                        ],
+                        nature: Nature.Bashful,
+                        ivs: 6,
+                    },
+                    {
+                        slug: 'roselia',
+                        ability: 1,
+                        gender: 'male',
+                        level: 23,
+                        moves: [
+                            'mega-drain',
+                            'poison-sting',
+                            'leech-seed',
+                            'stun-spore',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 6,
+                    },
+                    {
+                        slug: 'monferno',
+                        ability: 1,
+                        gender: 'male',
+                        level: 27,
+                        moves: [
+                            'flame-wheel',
+                            'mach-punch',
+                            'fury-swipes',
+                            'leer',
+                        ],
+                        nature: Nature.Serious,
+                        ivs: 6,
+                    },
+                ],
+                chimchar: [
+                    {
+                        slug: 'staravia',
+                        ability: 1,
+                        gender: 'male',
+                        level: 25,
+                        moves: [
+                            'wing-attack',
+                            'quick-attack',
+                            'endeavor',
+                            'double-team',
+                        ],
+                        nature: Nature.Timid,
+                        ivs: 6,
+                    },
+                    {
+                        slug: 'roselia',
+                        ability: 1,
+                        gender: 'male',
+                        level: 23,
+                        moves: [
+                            'mega-drain',
+                            'poison-sting',
+                            'leech-seed',
+                            'stun-spore',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 6,
+                    },
+                    {
+                        slug: 'ponyta',
+                        ability: 1,
+                        gender: 'male',
+                        level: 23,
+                        moves: ['ember', 'tackle', 'tail-whip', 'growl'],
+                        nature: Nature.Careful,
+                        ivs: 6,
+                    },
+                    {
+                        slug: 'prinplup',
+                        ability: 1,
+                        gender: 'male',
+                        level: 27,
+                        moves: ['bubble-beam', 'peck', 'metal-claw', 'growl'],
+                        nature: Nature.Timid,
+                        ivs: 6,
+                    },
+                ],
+                piplup: [
+                    {
+                        slug: 'staravia',
+                        ability: 1,
+                        gender: 'male',
+                        level: 25,
+                        moves: [
+                            'wing-attack',
+                            'quick-attack',
+                            'endeavor',
+                            'double-team',
+                        ],
+                        nature: Nature.Hardy,
+                        ivs: 6,
+                    },
+                    {
+                        slug: 'buizel',
+                        ability: 1,
+                        gender: 'male',
+                        level: 23,
+                        moves: [
+                            'water-gun',
+                            'quick-attack',
+                            'pursuit',
+                            'growl',
+                        ],
+                        nature: Nature.Impish,
+                        ivs: 6,
+                    },
+                    {
+                        slug: 'ponyta',
+                        ability: 1,
+                        gender: 'male',
+                        level: 23,
+                        moves: ['ember', 'tackle', 'tail-whip', 'growl'],
+                        nature: Nature.Naughty,
+                        ivs: 6,
+                    },
+                    {
+                        slug: 'grotle',
+                        ability: 1,
+                        gender: 'male',
+                        level: 27,
+                        moves: ['razor-leaf', 'tackle', 'absorb', 'withdraw'],
+                        nature: Nature.Naive,
+                        ivs: 6,
+                    },
+                ],
+            },
+            x: 68,
+            y: 48,
+        },
+    ],
+};
+
+export default HEARTHOME_CITY_GATE;

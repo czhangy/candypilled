@@ -6,30 +6,13 @@ import {
     Location,
 } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
+import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 
 type BattlePosition = {
     splitIndex: number;
     locationIndex: number;
     battleIndex: number;
 };
-
-// Strips standalone "M"/"F" gender words a trainer class name may carry
-// (e.g. "Galactic Grunt M"), which are only there to disambiguate sprites,
-// not for display.
-const stripGenderWords = (value: string): string =>
-    value
-        .split(' ')
-        .filter((word) => word !== 'M' && word !== 'F')
-        .join(' ');
-
-// A trainer's display name, e.g. "Youngster Joey". Omits name if it is
-// purely numeric (a disambiguator with no in-universe meaning, e.g. a
-// Galactic Grunt's battle number) and omits standalone "M"/"F" gender
-// words.
-const getTrainerDisplayName = (trainerClass: string, name: string): string =>
-    stripGenderWords(
-        /^\d+$/.test(name) ? trainerClass : `${trainerClass} ${name}`
-    );
 
 export default class BattleHelpers {
     // -------------------------------------------------------------------------
@@ -48,13 +31,13 @@ export default class BattleHelpers {
 
     /** battle's full display name, e.g. "Youngster Joey", or "Bug Catcher Jack and Lass Briana" for a tag battle. */
     static getFullName(battle: Battle): string {
-        const primaryName = getTrainerDisplayName(
+        const primaryName = TrainerHelpers.getDisplayName(
             battle.trainerClass,
             battle.name
         );
 
         return battle.secondTrainer
-            ? `${primaryName} and ${getTrainerDisplayName(battle.secondTrainer.trainerClass, battle.secondTrainer.name)}`
+            ? `${primaryName} and ${TrainerHelpers.getDisplayName(battle.secondTrainer.trainerClass, battle.secondTrainer.name)}`
             : primaryName;
     }
 

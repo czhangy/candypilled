@@ -60,13 +60,12 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
         >
             <div className={styles['trainer__sprite']}>
                 <Image
-                    alt={`${trainerClass} ${trainerName}`.trim()}
-                    height={SPRITE_SIZE}
-                    src={TrainerHelpers.getTrainerSprite(
+                    alt={TrainerHelpers.getDisplayName(
                         trainerClass,
-                        trainerName,
-                        variant
+                        trainerName
                     )}
+                    height={SPRITE_SIZE}
+                    src={TrainerHelpers.getTrainerSprite(trainerClass, variant)}
                     width={SPRITE_SIZE}
                 />
             </div>

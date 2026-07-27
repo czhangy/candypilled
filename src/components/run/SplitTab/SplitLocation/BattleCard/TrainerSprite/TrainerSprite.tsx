@@ -4,14 +4,12 @@ import styles from './TrainerSprite.module.scss';
 
 type TrainerSpriteProps = {
     alt: string;
-    name: string;
     trainerClass: string;
     variant: string;
 };
 
 const TrainerSprite: React.FC<TrainerSpriteProps> = ({
     alt,
-    name,
     trainerClass,
     variant,
 }) => {
@@ -30,11 +28,7 @@ const TrainerSprite: React.FC<TrainerSpriteProps> = ({
             <Image
                 alt={alt}
                 height={SPRITE_SIZE}
-                src={TrainerHelpers.getTrainerSprite(
-                    trainerClass,
-                    name,
-                    variant
-                )}
+                src={TrainerHelpers.getTrainerSprite(trainerClass, variant)}
                 width={SPRITE_SIZE}
             />
         </div>

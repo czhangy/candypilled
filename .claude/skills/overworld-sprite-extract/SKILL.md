@@ -1,18 +1,18 @@
 ---
 name: overworld-sprite-extract
-description: Crop/regenerate a character's overworld sprites (down/up/left/right PNGs) from src/lib/games/platinum/maps/overworld/spritesheet.png. Use when adding a new overworld character folder, fixing a blurry/wrongly-scaled sprite, or regenerating one of these sprites for any reason.
+description: Crop/regenerate a character's overworld sprites (down/up/left/right PNGs) from src/lib/data/platinum/maps/overworld/spritesheet.png. Use when adding a new overworld character folder, fixing a blurry/wrongly-scaled sprite, or regenerating one of these sprites for any reason.
 ---
 
 # Overworld sprite extraction
 
-Produces pixel-perfect 30x30 RGBA sprites for `src/lib/games/platinum/maps/overworld/<character>/{down,up,left,right}.png`
-by cropping directly from `src/lib/games/platinum/maps/overworld/spritesheet.png`, instead
+Produces pixel-perfect 30x30 RGBA sprites for `src/lib/data/platinum/maps/overworld/<character>/{down,up,left,right}.png`
+by cropping directly from `src/lib/data/platinum/maps/overworld/spritesheet.png`, instead
 of resizing/rescaling an image (which produces the blurry, anti-aliased
 result this skill exists to avoid).
 
 ## 0. Check the reference file first
 
-Read `src/lib/games/platinum/maps/overworld/SPRITE_SOURCES.md` before searching the
+Read `src/lib/data/platinum/maps/overworld/SPRITE_SOURCES.md` before searching the
 sheet. If the character (or one visually identical to it, e.g. an
 already-extracted male/female pair) already has recorded coordinates,
 skip straight to step 3.
@@ -118,7 +118,7 @@ frame:
 
 ```python
 from PIL import Image
-im = Image.open('src/lib/games/platinum/maps/overworld/spritesheet.png').convert('RGB')
+im = Image.open('src/lib/data/platinum/maps/overworld/spritesheet.png').convert('RGB')
 px = im.load()
 x = 65  # any x known to pass through the character's hair
 bg = (152, 112, 104)  # this column's background color, sampled separately
@@ -216,7 +216,7 @@ bottom-aligned edge) — cross-check against an existing correct sprite
 
 ## 5. Update the reference file
 
-Append (or add) a row to `src/lib/games/platinum/maps/overworld/SPRITE_SOURCES.md`
+Append (or add) a row to `src/lib/data/platinum/maps/overworld/SPRITE_SOURCES.md`
 with the exact `(x, y)` crop origin used per pose, plus a one-line visual
 description of the design. This is the whole point of the skill: the
 next time this character needs regenerating, it's a lookup, not a

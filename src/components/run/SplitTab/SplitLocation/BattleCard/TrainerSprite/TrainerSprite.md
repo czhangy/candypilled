@@ -9,9 +9,8 @@ still defeated as a single unit.
 
 ## Props
 
-| Prop           | Type     | Required | Default | Description                                                              |
-| -------------- | -------- | -------- | ------- | ------------------------------------------------------------------------ |
-| `alt`          | `string` | Yes      | -       | Alt text for the sprite image                                            |
-| `name`         | `string` | Yes      | -       | The first trainer's name, forwarded to `TrainerHelpers.getTrainerSprite` |
-| `trainerClass` | `string` | Yes      | -       | The first trainer's class, used to resolve their sprite                  |
-| `variant`      | `string` | Yes      | -       | The sprite variant to prefer, matching the game's slug                   |
+| Prop           | Type     | Required | Default | Description                                                            |
+| -------------- | -------- | -------- | ------- | ---------------------------------------------------------------------- |
+| `alt`          | `string` | Yes      | -       | Alt text for the sprite image                                          |
+| `trainerClass` | `string` | Yes      | -       | The first trainer's TRAINER_CLASSES slug, used to resolve their sprite |
+| `variant`      | `string` | Yes      | -       | The sprite variant to prefer, matching the game's slug                 |

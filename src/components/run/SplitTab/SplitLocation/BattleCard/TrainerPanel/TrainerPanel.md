@@ -34,8 +34,8 @@ only needs to appear once, on this panel.
 | `isDefeated`       | `boolean`    | Yes      | -       | Whether this battle has already been marked defeated                                                                                                                                            |
 | `isStacked`        | `boolean`    | Yes      | -       | Whether this panel is the bottom row of a two-trainer tag battle, rounding only its bottom-left corner and omitting its top border, instead of rounding both left corners as a standalone panel |
 | `onToggleDefeated` | `() => void` | Yes      | -       | Called when the defeat button is clicked                                                                                                                                                        |
-| `trainerClass`     | `string`     | Yes      | -       | The displayed trainer's class, used to resolve their sprite                                                                                                                                     |
-| `trainerName`      | `string`     | Yes      | -       | The displayed trainer's name, used to resolve their sprite                                                                                                                                      |
+| `trainerClass`     | `string`     | Yes      | -       | The displayed trainer's TRAINER_CLASSES slug, used to resolve their display name and sprite                                                                                                     |
+| `trainerName`      | `string`     | Yes      | -       | The displayed trainer's name, combined with their class for display                                                                                                                             |
 | `variant`          | `string`     | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                                                                                          |
 
 ## SCSS Variable Dependencies

@@ -139,7 +139,17 @@ export type BattlePokemon = {
     slug: string;
 };
 
-// One trainer's own slice of a battle: their sprite-lookup class, name, and
+// A trainer class' display name, gender, and sprite, keyed by slug in
+// TRAINER_CLASSES. Classes fielded by a single named individual (e.g.
+// Leader, Commander) get one catalog entry per person rather than a shared
+// entry, since their gender and sprite aren't determined by the class alone.
+export type TrainerClass = {
+    displayName: string;
+    gender: 'male' | 'female';
+    spriteSlug: string;
+};
+
+// One trainer's own slice of a battle: their TRAINER_CLASSES slug, name, and
 // team, resolved for the current starter. A non-tag battle has a single
 // group; a tag battle has one per trainer, in trainerClass/secondTrainer
 // order.
@@ -177,6 +187,7 @@ export type BattleTrainer = {
     name: string;
     team?: BattlePokemon[];
     teamsByStarter?: Partial<Record<string, BattlePokemon[]>>;
+    // TRAINER_CLASSES slug.
     trainerClass: string;
 };
 
@@ -197,6 +208,7 @@ export type Battle = {
     secondTrainer?: BattleTrainer;
     team?: BattlePokemon[];
     teamsByStarter?: Partial<Record<string, BattlePokemon[]>>;
+    // TRAINER_CLASSES slug.
     trainerClass: string;
     x: number;
     y: number;

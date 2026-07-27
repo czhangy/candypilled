@@ -31,7 +31,8 @@ const DATA_PATH = path.join(
     'src',
     'lib',
     'data',
-    'raw',
+    CURRENT_GAME_VERSION.id,
+    'encounters',
     `${CURRENT_GAME_VERSION.id}_encounters.json`
 );
 const FETCH_DELAY_MS = 75;

@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import { createInterface, Interface } from 'readline/promises';
+import { TRAINER_CLASSES } from '@/lib/data/trainer-classes';
 import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import { logError, logSuccess, runScript } from '@/lib/scripts/utils/helpers';
-import { CLASSES_SLUGGED_BY_NAME } from '@/lib/static/constants';
 import { FieldCondition, Nature } from '@/lib/static/enums';
 import { AbilitySlot } from '@/lib/static/types';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
@@ -17,7 +17,6 @@ const USAGE =
 const GAME_NOT_FOUND = 'That game has no entry in STARTERS_BY_GAME.';
 const LOCATION_NOT_FOUND = 'That location does not exist.';
 const SUBAREA_NOT_FOUND = 'That subarea does not exist on this location.';
-const GENDER_NOT_FOUND = 'That trainer has no entry in TRAINER_CLASS_GENDERS.';
 const BOSS_CLASS_NOT_ALLOWED =
     '--boss requires the trainer class to be Leader, Galactic Boss, Elite Four, or Champion.';
 const MINIBOSS_CLASS_NOT_ALLOWED =
@@ -36,106 +35,17 @@ const FIELD_CONDITION_NAMES = Object.values(FieldCondition);
 const FIELD_CONDITION_KEYS_BY_VALUE = new Map(
     Object.entries(FieldCondition).map(([key, value]) => [value, key])
 );
-const SLUGGED_BY_NAME_CLASS_SLUGS = new Set(
-    CLASSES_SLUGGED_BY_NAME.map((name) => StringHelpers.toSlug(name))
-);
-const BOSS_CLASS_SLUGS = new Set(
-    ['Leader', 'Galactic Boss', 'Elite Four', 'Champion'].map((name) =>
-        StringHelpers.toSlug(name)
-    )
-);
-const MINIBOSS_CLASS_SLUGS = new Set(
-    ['Galactic Boss', 'Commander', 'PKMN Trainer'].map((name) =>
-        StringHelpers.toSlug(name)
-    )
-);
-
-// The gender fielded by each trainer class currently in the game, keyed by
-// slug. All classes default to male until real genders are filled in.
-const TRAINER_CLASS_GENDERS: Record<string, 'male' | 'female'> = {
-    aaron: 'male',
-    'ace-trainer-f': 'female',
-    'ace-trainer-m': 'male',
-    'ace-trainer-snow-f': 'female',
-    'ace-trainer-snow-m': 'male',
-    'aroma-lady': 'female',
-    artist: 'male',
-    barry: 'male',
-    'battle-girl': 'female',
-    beauty: 'female',
-    'belle-and-pa': 'male',
-    bertha: 'female',
-    'bird-keeper': 'male',
-    'black-belt': 'male',
-    'bug-catcher': 'male',
-    byron: 'male',
-    camper: 'male',
-    candice: 'female',
-    collector: 'male',
-    cowgirl: 'female',
-    'cyclist-f': 'female',
-    'cyclist-m': 'male',
-    cynthia: 'female',
-    cyrus: 'male',
-    'double-team': 'male',
-    'dragon-tamer': 'male',
-    fantina: 'female',
-    fisherman: 'male',
-    flint: 'male',
-    'galactic-grunt-f': 'female',
-    'galactic-grunt-m': 'male',
-    gardenia: 'female',
-    gentleman: 'male',
-    guitarist: 'male',
-    hiker: 'male',
-    jogger: 'male',
-    jupiter: 'female',
-    lady: 'female',
-    lass: 'female',
-    lucian: 'male',
-    mars: 'female',
-    maylene: 'female',
-    'ninja-boy': 'male',
-    'parasol-lady': 'female',
-    pi: 'male',
-    picnicker: 'female',
-    'pkmn-breeder-f': 'female',
-    'pkmn-breeder-m': 'male',
-    'pkmn-ranger-f': 'female',
-    'pkmn-ranger-m': 'male',
-    'poke-kid': 'female',
-    'pokefan-f': 'female',
-    'pokefan-m': 'male',
-    policeman: 'male',
-    'psychic-f': 'female',
-    'psychic-m': 'male',
-    rancher: 'male',
-    'rich-boy': 'male',
-    roark: 'male',
-    roughneck: 'male',
-    'ruin-maniac': 'male',
-    sailor: 'male',
-    saturn: 'male',
-    'school-kid-f': 'female',
-    'school-kid-m': 'male',
-    scientist: 'male',
-    socialite: 'female',
-    'skier-f': 'female',
-    'skier-m': 'male',
-    'swimmer-f': 'female',
-    'swimmer-m': 'male',
-    'tuber-f': 'female',
-    'tuber-m': 'male',
-    twins: 'female',
-    veteran: 'male',
-    volkner: 'male',
-    waiter: 'male',
-    waitress: 'female',
-    wake: 'male',
-    worker: 'male',
-    'young-couple': 'male',
-    youngster: 'male',
-};
+const BOSS_DISPLAY_NAMES = new Set([
+    'Leader',
+    'Galactic Boss',
+    'Elite Four',
+    'Champion',
+]);
+const MINIBOSS_DISPLAY_NAMES = new Set([
+    'Galactic Boss',
+    'Commander',
+    'PKMN Trainer',
+]);
 
 type BattleArgs = {
     location: string;
@@ -249,10 +159,10 @@ const parseArgs = (argv: string[]): BattleArgs => {
 };
 
 const getLocationPath = (gameSlug: string, slug: string): string =>
-    path.join('src', 'lib', 'games', gameSlug, 'locations', `${slug}.ts`);
+    path.join('src', 'lib', 'data', gameSlug, 'locations', `${slug}.ts`);
 
 // Each game's starter slugs, keyed by game slug. Kept separate from the
-// `Game` objects in src/lib/games since those transitively import every
+// `Game` objects in src/lib/data since those transitively import every
 // location's map image, which tsx (running outside the Next.js bundler)
 // can't load.
 const STARTERS_BY_GAME: Record<string, string[]> = {
@@ -265,22 +175,6 @@ const getStarters = (gameSlug: string): string[] => {
         throw new Error(GAME_NOT_FOUND);
     }
     return starters;
-};
-
-// The set of trainer class slugs the generated `trainerClass` field could
-// validly take: those with a sprite under public/<game>/trainers, plus the
-// classes sprited by trainer name instead of class.
-const getValidTrainerClasses = (gameSlug: string): Set<string> => {
-    const trainersDir = path.join('public', gameSlug, 'trainers');
-    const spritedClasses = fs
-        .readdirSync(trainersDir)
-        .filter((file) => file.endsWith('.png'))
-        .map((file) => path.basename(file, '.png'));
-    const sluggedByNameClasses = CLASSES_SLUGGED_BY_NAME.map((name) =>
-        StringHelpers.toSlug(name)
-    );
-
-    return new Set([...spritedClasses, ...sluggedByNameClasses]);
 };
 
 // The set of battle item slugs the generated `items` field could validly
@@ -695,15 +589,10 @@ const promptPokemon = async (
     return { slug, ability, level, nature, moves };
 };
 
-type PromptedTrainerClass = {
-    trainerClass: string;
-    slug: string;
-};
-
 const promptTrainerClass = async (
     rl: Interface,
     validTrainerClasses: Set<string>
-): Promise<PromptedTrainerClass> => {
+): Promise<string> => {
     while (true) {
         const raw = (await rl.question('Trainer class: ')).trim();
         const slug = StringHelpers.toSlug(raw);
@@ -711,7 +600,7 @@ const promptTrainerClass = async (
             logError("  That isn't a valid trainer class.");
             continue;
         }
-        return { slug, trainerClass: raw };
+        return slug;
     }
 };
 
@@ -761,25 +650,6 @@ const promptTeam = async (
     return team;
 };
 
-// Resolves the gender a trainer of classSlug fields: classes fielded by a
-// single named trainer (e.g. Leader, Champion) take their gender from name
-// instead of the class, stripping a trailing disambiguator (e.g. "Barry 2")
-// some repeat battles use to stay unique within a location.
-const resolveTrainerGender = (
-    classSlug: string,
-    name: string
-): 'male' | 'female' => {
-    const isSluggedByName = SLUGGED_BY_NAME_CLASS_SLUGS.has(classSlug);
-    const genderSlug = isSluggedByName
-        ? StringHelpers.toSlug(name.replace(/\s+\d+$/, ''))
-        : classSlug;
-    const gender = TRAINER_CLASS_GENDERS[genderSlug];
-    if (!gender) {
-        throw new Error(GENDER_NOT_FOUND);
-    }
-    return gender;
-};
-
 const promptSecondTrainer = async (
     rl: Interface,
     validTrainerClasses: Set<string>,
@@ -789,12 +659,9 @@ const promptSecondTrainer = async (
     isDvEnabled: boolean
 ): Promise<PromptedBattleTrainer> => {
     logSuccess('  Second trainer:');
-    const { trainerClass, slug } = await promptTrainerClass(
-        rl,
-        validTrainerClasses
-    );
+    const trainerClass = await promptTrainerClass(rl, validTrainerClasses);
     const name = (await rl.question('Second trainer name: ')).trim();
-    const gender = resolveTrainerGender(slug, name);
+    const gender = TRAINER_CLASSES[trainerClass].gender;
 
     const ivs = isDvEnabled ? await promptIvs(rl) : undefined;
 
@@ -838,29 +705,18 @@ const promptBattle = async (
     isFieldEnabled: boolean,
     isDvEnabled: boolean
 ): Promise<PromptedBattle> => {
-    const { trainerClass, slug } = await promptTrainerClass(
-        rl,
-        validTrainerClasses
-    );
+    const trainerClass = await promptTrainerClass(rl, validTrainerClasses);
     const isOptional = !isMiniboss && !isBoss && !isRequired;
-    const isSluggedByName = SLUGGED_BY_NAME_CLASS_SLUGS.has(slug);
+    const { displayName, gender } = TRAINER_CLASSES[trainerClass];
 
-    if (isBoss && !BOSS_CLASS_SLUGS.has(slug)) {
+    if (isBoss && !BOSS_DISPLAY_NAMES.has(displayName)) {
         throw new Error(BOSS_CLASS_NOT_ALLOWED);
     }
-    if (isMiniboss && !MINIBOSS_CLASS_SLUGS.has(slug)) {
+    if (isMiniboss && !MINIBOSS_DISPLAY_NAMES.has(displayName)) {
         throw new Error(MINIBOSS_CLASS_NOT_ALLOWED);
     }
 
-    // Classes not fielded by a single named trainer have a fixed gender, so
-    // that can be validated right after the trainer class is entered rather
-    // than waiting on later prompts.
-    if (!isSluggedByName && !TRAINER_CLASS_GENDERS[slug]) {
-        throw new Error(GENDER_NOT_FOUND);
-    }
-
     const name = (await rl.question('Trainer name: ')).trim();
-    const gender = resolveTrainerGender(slug, name);
 
     const x = await promptCoordinate(rl, 'X');
     const y = await promptCoordinate(rl, 'Y');
@@ -951,7 +807,7 @@ const ensureEnumImport = (content: string, name: string): string => {
 
     const lines = content.split('\n');
     const gameImportIndex = lines.findIndex((line) =>
-        line.includes("from '@/lib/games/")
+        line.includes("from '@/lib/data/")
     );
     lines.splice(
         gameImportIndex + 1,
@@ -976,7 +832,7 @@ runScript(async () => {
         : getLocationScope(original);
     const insertionPoint = findInsertionPoint(original, scope);
 
-    const validTrainerClasses = getValidTrainerClasses(gameSlug);
+    const validTrainerClasses = new Set(Object.keys(TRAINER_CLASSES));
     const validItemSlugs = getValidItemSlugs();
     const starters = getStarters(gameSlug);
 

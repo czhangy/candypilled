@@ -50,13 +50,3 @@ export const STAT_FIELDS: { key: keyof StatValues; label: string }[] = [
     { key: 'spd', label: 'Sp. Def' },
     { key: 'spe', label: 'Speed' },
 ];
-
-// Trainer classes whose sprite is keyed by trainer name, not class.
-export const CLASSES_SLUGGED_BY_NAME = [
-    'PKMN Trainer',
-    'Leader',
-    'Elite Four',
-    'Champion',
-    'Commander',
-    'Galactic Boss',
-];

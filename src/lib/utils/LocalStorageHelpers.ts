@@ -1,4 +1,4 @@
-import { GAMES } from '@/lib/games';
+import { GAMES } from '@/lib/data/games';
 import { Game, Run } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 

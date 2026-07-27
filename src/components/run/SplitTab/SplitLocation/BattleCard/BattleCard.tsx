@@ -1,5 +1,6 @@
 import { Battle } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
+import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import styles from './BattleCard.module.scss';
 import PokemonSlot from './PokemonSlot/PokemonSlot';
 import TrainerPanel from './TrainerPanel/TrainerPanel';
@@ -100,8 +101,10 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                     />
                                 ) : (
                                     <TrainerSprite
-                                        alt={`${group.trainerClass} ${group.name}`.trim()}
-                                        name={group.name}
+                                        alt={TrainerHelpers.getDisplayName(
+                                            group.trainerClass,
+                                            group.name
+                                        )}
                                         trainerClass={group.trainerClass}
                                         variant={variant}
                                     />
