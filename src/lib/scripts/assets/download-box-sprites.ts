@@ -12,6 +12,17 @@ const ICONS_PATH = 'icons/pokemon/regular/';
 const OUTPUT_DIR = path.join('public', 'box');
 const USER_AGENT = 'candypilled-box-sprite-downloader';
 
+// pokesprite names a species' default forme with no suffix (e.g.
+// "deoxys.png"), but our slugs always spell the default forme out (e.g.
+// "deoxys-normal") to disambiguate it from its alternate formes. Map
+// pokesprite's filename to our slug's filename wherever they diverge.
+const FILENAME_OVERRIDES: Record<string, string> = {
+    'deoxys.png': 'deoxys-normal.png',
+    'giratina.png': 'giratina-altered.png',
+    'wormadam.png': 'wormadam-plant.png',
+    'shaymin.png': 'shaymin-land.png',
+};
+
 type TreeEntry = {
     path: string;
     type: string;
@@ -47,7 +58,9 @@ const downloadIcon = async (iconPath: string): Promise<void> => {
     }
 
     const buffer = Buffer.from(await response.arrayBuffer());
-    fs.writeFileSync(path.join(OUTPUT_DIR, path.basename(iconPath)), buffer);
+    const filename = path.basename(iconPath);
+    const outputFilename = FILENAME_OVERRIDES[filename] ?? filename;
+    fs.writeFileSync(path.join(OUTPUT_DIR, outputFilename), buffer);
 };
 
 // Downloads are batched rather than sequential (would take minutes for

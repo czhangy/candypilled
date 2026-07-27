@@ -97,6 +97,7 @@ export { default as route218 } from './route-218.png';
 export { default as route219 } from './route-219.png';
 export { default as route220 } from './route-220.png';
 export { default as route221 } from './route-221.png';
+export { default as sendoffSpring } from './sendoff-spring.png';
 export { default as snowpointGym } from './snowpoint-gym.png';
 export { default as solaceonRuins1f } from './solaceon-ruins-1f.png';
 export { default as solaceonRuinsB1f } from './solaceon-ruins-b1f.png';
