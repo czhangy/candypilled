@@ -10,6 +10,154 @@ by cropping directly from `src/lib/data/platinum/maps/overworld/spritesheet.png`
 of resizing/rescaling an image (which produces the blurry, anti-aliased
 result this skill exists to avoid).
 
+## Toolset: prefer Node + `sharp` over Python/PIL
+
+The steps below are written with Python/PIL snippets, but don't assume
+Python is usable — in this environment `python3` resolved to a
+non-standard interpreter with no PIL, and `pip install pillow` failed
+outright (it fell back to building from source and errored on missing
+`jpeg` headers, because no prebuilt wheel was reachable). Don't burn
+time fighting a broken `pip`/`PIL` install. Check for `sharp` first:
+
+```bash
+node -e "require('sharp'); console.log('ok')"
+```
+
+This repo already depends on `sharp` (it's in `package.json`), so this
+almost always works with zero install. Every operation the Python
+snippets below describe (raw pixel access, extract/crop, chroma-key by
+zeroing alpha, nearest-neighbor upscale for visual review, horizontal
+flip for `right.png`) has a direct `sharp` equivalent — translate the
+snippet, don't try to install PIL to match it literally.
+
+Two Windows-specific traps to avoid when doing this:
+
+- **Write real `.js` files, don't inline with `node -e "..."`.** Escaping
+  backslash-heavy Windows paths inside a `-e` string is unreliable and
+  fails silently or with confusing path errors. Use `Write` to create a
+  small script (e.g. `scanrow.js`, `strip.js`, `makesprite.js`) and run
+  it with `node path/to/script.js <args>`.
+- **Run scripts from inside the project, not the OS scratchpad.**
+  `require('sharp')` resolves `node_modules` by walking up from the
+  script's own directory — a script saved to the system temp/scratchpad
+  dir can't find the repo's `node_modules` and fails with
+  `Cannot find module 'sharp'`. Put throwaway scripts in a repo-local
+  folder instead (e.g. `.scratch_sprite/` at the repo root) and delete
+  that folder once the sprite is verified and committed-ready.
+
+The concrete scripts used for a full extraction:
+
+**`scanrow.js`** — dump color-run transitions along one row of the
+sheet, to find column/background boundaries (replaces the PIL
+vertical-line scan in step 2, just run it horizontally too when you
+need to find a column's x-range):
+
+```js
+const sharp = require('sharp');
+const [, , src, yStr] = process.argv;
+const y = parseInt(yStr, 10);
+sharp(src)
+    .raw()
+    .toBuffer({ resolveWithObject: true })
+    .then(({ data, info }) => {
+        const { width, channels } = info;
+        let prev = null;
+        for (let x = 0; x < width; x++) {
+            const idx = (y * width + x) * channels;
+            const cur = `${data[idx]},${data[idx + 1]},${data[idx + 2]}`;
+            if (cur !== prev) {
+                console.log(x, cur);
+                prev = cur;
+            }
+        }
+    });
+```
+
+**`strip.js`** — crop a region and upscale with nearest-neighbor so it
+can be viewed with `Read` (replaces `Image.NEAREST` resize in step 1):
+
+```js
+const sharp = require('sharp');
+const [, , src, outName, x0, y0, w, h, scale] = process.argv;
+const s = parseInt(scale || '4', 10);
+sharp(src)
+    .extract({ left: +x0, top: +y0, width: +w, height: +h })
+    .resize(+w * s, +h * s, { kernel: 'nearest' })
+    .toFile(`.scratch_sprite/${outName}`)
+    .then(() => console.log('done'));
+```
+
+**`makesprite.js`** — crop each pose to 30x30 and chroma-key the
+background to transparent in one pass, then mirror `left` into `right`
+(replaces the `bbox_for`/`make_sprite` PIL functions and the
+`transpose(FLIP_LEFT_RIGHT)` call in step 3):
+
+```js
+const sharp = require('sharp');
+const path = require('path');
+const SHEET = 'src/lib/data/platinum/maps/overworld/spritesheet.png';
+const OUT_DIR = 'src/lib/data/platinum/maps/overworld/<character>';
+const BG = [r, g, b]; // this column's sampled background color
+
+const poses = {
+    down: { x0, y0 },
+    up: { x0, y0 },
+    left: { x0, y0 },
+};
+
+(async () => {
+    for (const [name, { x0, y0 }] of Object.entries(poses)) {
+        const { data, info } = await sharp(SHEET)
+            .extract({ left: x0, top: y0, width: 30, height: 30 })
+            .ensureAlpha()
+            .raw()
+            .toBuffer({ resolveWithObject: true });
+        for (let i = 0; i < data.length; i += info.channels) {
+            if (
+                data[i] === BG[0] &&
+                data[i + 1] === BG[1] &&
+                data[i + 2] === BG[2]
+            )
+                data[i + 3] = 0;
+        }
+        await sharp(data, {
+            raw: { width: 30, height: 30, channels: info.channels },
+        })
+            .png()
+            .toFile(path.join(OUT_DIR, `${name}.png`));
+    }
+    await sharp(path.join(OUT_DIR, 'left.png'))
+        .flop()
+        .toFile(path.join(OUT_DIR, 'right.png'));
+})();
+```
+
+**Verification** (step 4) — composite the four PNGs side by side for a
+visual check, and separately assert every border pixel's alpha
+programmatically rather than trusting the upscaled image alone (a 1px
+bleed is easy to miss by eye):
+
+```js
+// visual: sharp({create:{width:30*8*4, height:30*8, channels:4, background:{r:200,g:200,b:200,alpha:1}}})
+//   .composite(names.map((n,i) => ({input: <upscaled buffer for n>, left: i*30*8, top: 0})))
+//   .png().toFile('.scratch_sprite/composite.png');
+
+// programmatic border check, per pose PNG:
+const { data, info } = await sharp(`${dir}/${name}.png`)
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+const { width, height, channels } = info;
+for (let x = 0; x < width; x++)
+    if (data[(0 * width + x) * channels + 3] !== 0)
+        console.log('top bleed at', x);
+for (let y = 0; y < height; y++) {
+    if (data[(y * width + 0) * channels + 3] !== 0)
+        console.log('left bleed at', y);
+    if (data[(y * width + (width - 1)) * channels + 3] !== 0)
+        console.log('right bleed at', y);
+}
+```
+
 ## 0. Check the reference file first
 
 Read `src/lib/data/platinum/maps/overworld/SPRITE_SOURCES.md` before searching the
