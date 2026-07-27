@@ -139,6 +139,26 @@ export type BattlePokemon = {
     slug: string;
 };
 
+// A trainer class' display name, gender, and sprite, keyed by slug in
+// TRAINER_CLASSES. Classes fielded by a single named individual (e.g.
+// Leader, Commander) get one catalog entry per person rather than a shared
+// entry, since their gender and sprite aren't determined by the class alone.
+export type TrainerClass = {
+    displayName: string;
+    gender: 'male' | 'female';
+    spriteSlug: string;
+};
+
+// One trainer's own slice of a battle: their TRAINER_CLASSES slug, name, and
+// team, resolved for the current starter. A non-tag battle has a single
+// group; a tag battle has one per trainer, in trainerClass/secondTrainer
+// order.
+export type BattleTeamGroup = {
+    name: string;
+    team: BattlePokemon[];
+    trainerClass: string;
+};
+
 // A caught Pokémon as tracked for Nuzlocke rule enforcement: one catch per
 // location (not subarea), and no more than one catch per evolution line.
 export type CaughtPokemon = Omit<BattlePokemon, 'moves'> & {
@@ -159,6 +179,18 @@ type BattleItem = {
     name: string;
 };
 
+// The second trainer in a tag battle: a distinct trainer merged into the
+// same Battle entry (one map marker, one defeat toggle) as the primary
+// trainerClass/team, so each trainer's Pokémon can still be attributed to
+// the trainer that owns them.
+export type BattleTrainer = {
+    name: string;
+    team?: BattlePokemon[];
+    teamsByStarter?: Partial<Record<string, BattlePokemon[]>>;
+    // TRAINER_CLASSES slug.
+    trainerClass: string;
+};
+
 export type Battle = {
     customHeight?: number;
     customWidth?: number;
@@ -166,8 +198,6 @@ export type Battle = {
     isBackToBack?: boolean;
     isBoss?: boolean;
     isDouble?: boolean;
-    isDoubleHeightMarker?: boolean;
-    isDoubleWidthMarker?: boolean;
     isGauntlet?: boolean;
     isMiniboss?: boolean;
     isOptional?: boolean;
@@ -175,8 +205,10 @@ export type Battle = {
     isTrueDouble?: boolean;
     items?: BattleItem[];
     name: string;
+    secondTrainer?: BattleTrainer;
     team?: BattlePokemon[];
     teamsByStarter?: Partial<Record<string, BattlePokemon[]>>;
+    // TRAINER_CLASSES slug.
     trainerClass: string;
     x: number;
     y: number;
@@ -189,6 +221,20 @@ export type Encounter = {
     maxLevel: number;
     chance: number | null;
     conditions?: string[];
+};
+
+// Everything EncounterHelpers' ENCOUNTER_HIDE_RULEs need to decide whether a
+// single encounter is permanently hidden (as opposed to hidden by the
+// currently selected time of day, which is a separate, non-permanent
+// filter). `settings` is the same id -> value snapshot
+// SettingsHelpers.getSnapshot returns, so a new setting-driven rule can read
+// its own id straight out of it without any signature changes.
+export type EncounterVisibilityContext = {
+    caughtHere?: string;
+    dupes: string[];
+    generation: number;
+    settings: Record<string, boolean>;
+    starterCaughtSeparately: boolean;
 };
 
 export type MethodOverride = {
@@ -262,11 +308,6 @@ export type Location = {
     encountersKey?: string;
     hideBattles?: boolean;
     battles?: Battle[];
-    // Overrides for `map`/`encountersKey` once Team Galactic's
-    // interference at the lakes has occurred (e.g. Lake Verity's map and
-    // wild encounters change after Mars appears there).
-    postGalacticMap?: StaticImageData;
-    postGalacticEncountersKey?: string;
 } & (
     | { map: StaticImageData; subareas?: never }
     | { map?: never; subareas: Subarea[] }
@@ -491,6 +532,10 @@ export type PokemonData = {
     // Land Forme on deposit), so this is curated separately rather than
     // derived from any single API field.
     isTemporaryForm: boolean;
+    // PokeAPI's species-level is_legendary/is_mythical flags, combined.
+    // Used to filter legendaries out of features that shouldn't offer them
+    // (e.g. wild encounters).
+    isLegendary: boolean;
     sprites: Record<string, string>;
     types: TypesByGeneration[];
     abilities: AbilitiesByGeneration[];

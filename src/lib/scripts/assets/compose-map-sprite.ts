@@ -7,7 +7,7 @@ import StringHelpers from '@/lib/utils/StringHelpers';
 
 const USAGE =
     'Usage: npm run compose <map> <spriteClass> <direction> <x> <y> [width]. ' +
-    `Writes a preview under src/lib/games/${StringHelpers.toSlug(
+    `Writes a preview under src/lib/data/${StringHelpers.toSlug(
         GAME_ID
     )}/maps/temp/ instead of overwriting the map.`;
 const MAP_NOT_FOUND = "That map image doesn't exist.";
@@ -25,7 +25,7 @@ type ComposeArgs = {
 };
 
 const getMapsDir = (gameSlug: string): string =>
-    path.join('src', 'lib', 'games', gameSlug, 'maps');
+    path.join('src', 'lib', 'data', gameSlug, 'maps');
 
 const parseArgs = (argv: string[]): ComposeArgs => {
     const [map, spriteClass, direction, x, y, width] = argv;

@@ -1,22 +1,19 @@
-import { CLASSES_SLUGGED_BY_NAME } from '@/lib/static/constants';
-import StringHelpers from '@/lib/utils/StringHelpers';
+import { TRAINER_CLASSES } from '@/lib/data/trainer-classes';
 
 export default class TrainerHelpers {
     // -------------------------------------------------------------------------
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    /** The sprite path for the trainer named name, of trainerClass, in variant. */
-    static getTrainerSprite(
-        trainerClass: string,
-        name: string,
-        variant: string
-    ): string {
-        const slugSource = CLASSES_SLUGGED_BY_NAME.includes(trainerClass)
-            ? name
-            : trainerClass;
-        const trimmedSlugSource = slugSource.replace(/ \d+$/, '');
+    /** trainerClass's display label combined with name, e.g. "Leader Roark". name is omitted if purely numeric (a disambiguator with no in-universe meaning, e.g. a Galactic Grunt's battle number). */
+    static getDisplayName(trainerClass: string, name: string): string {
+        const { displayName } = TRAINER_CLASSES[trainerClass];
+        return /^\d+$/.test(name) ? displayName : `${displayName} ${name}`;
+    }
 
-        return `/${variant}/trainers/${StringHelpers.toSlug(trimmedSlugSource)}.png`;
+    /** The sprite path for the trainer of trainerClass, in variant. */
+    static getTrainerSprite(trainerClass: string, variant: string): string {
+        const { spriteSlug } = TRAINER_CLASSES[trainerClass];
+        return `/${variant}/trainers/${spriteSlug}.png`;
     }
 }

@@ -4,12 +4,20 @@
 
 .trainer {
     border: 1px solid $border-subtle;
-    border-radius: 0.375rem 0 0 0.375rem;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
     overflow: hidden;
     width: 6rem;
+
+    &--single {
+        border-radius: 0.375rem 0 0 0.375rem;
+    }
+
+    &--stacked {
+        border-radius: 0 0 0 0.375rem;
+        border-top: none;
+    }
 
     .trainer__sprite {
         align-items: center;
@@ -38,9 +46,10 @@
 
         .field-condition__icon {
             flex-shrink: 0;
-            height: 1em;
+            height: 1.4em;
+            margin-right: 0.3rem;
             opacity: 0.5;
-            width: 1em;
+            width: 1.4em;
         }
 
         .field-condition__note {

@@ -3,7 +3,7 @@
 import { useEffect, useSyncExternalStore } from 'react';
 import { useRouter } from 'next/navigation';
 import PokemonSlot from '@/components/run/SplitTab/SplitLocation/BattleCard/PokemonSlot/PokemonSlot';
-import { GAMES } from '@/lib/games';
+import { GAMES } from '@/lib/data/games';
 import HallOfFameHelpers from '@/lib/utils/HallOfFameHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './HofPage.module.scss';
@@ -85,6 +85,7 @@ const HofPage: React.FC = () => {
                                                 : `empty-${index}`
                                         }
                                         pokemon={pokemon}
+                                        position="single"
                                         variant={entry.game}
                                         version={game.version}
                                     />

@@ -26,6 +26,10 @@ export const SETTINGS: Setting[] = [
         id: 'highlight-dangerous',
         title: 'Highlight Dangerous Moves/Abilities',
     },
+    {
+        id: 'hide-legendaries',
+        title: 'Hide Legendaries',
+    },
 ];
 
 export const MIN_LEVEL = 1;
@@ -45,14 +49,4 @@ export const STAT_FIELDS: { key: keyof StatValues; label: string }[] = [
     { key: 'spa', label: 'Sp. Atk' },
     { key: 'spd', label: 'Sp. Def' },
     { key: 'spe', label: 'Speed' },
-];
-
-// Trainer classes whose sprite is keyed by trainer name, not class.
-export const CLASSES_SLUGGED_BY_NAME = [
-    'PKMN Trainer',
-    'Leader',
-    'Elite Four',
-    'Champion',
-    'Commander',
-    'Galactic Boss',
 ];

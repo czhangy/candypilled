@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import { createInterface, Interface } from 'readline/promises';
+import { TRAINER_CLASSES } from '@/lib/data/trainer-classes';
 import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import { logError, logSuccess, runScript } from '@/lib/scripts/utils/helpers';
-import { CLASSES_SLUGGED_BY_NAME } from '@/lib/static/constants';
 import { FieldCondition, Nature } from '@/lib/static/enums';
 import { AbilitySlot } from '@/lib/static/types';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
@@ -17,7 +17,6 @@ const USAGE =
 const GAME_NOT_FOUND = 'That game has no entry in STARTERS_BY_GAME.';
 const LOCATION_NOT_FOUND = 'That location does not exist.';
 const SUBAREA_NOT_FOUND = 'That subarea does not exist on this location.';
-const GENDER_NOT_FOUND = 'That trainer has no entry in TRAINER_CLASS_GENDERS.';
 const BOSS_CLASS_NOT_ALLOWED =
     '--boss requires the trainer class to be Leader, Galactic Boss, Elite Four, or Champion.';
 const MINIBOSS_CLASS_NOT_ALLOWED =
@@ -36,107 +35,17 @@ const FIELD_CONDITION_NAMES = Object.values(FieldCondition);
 const FIELD_CONDITION_KEYS_BY_VALUE = new Map(
     Object.entries(FieldCondition).map(([key, value]) => [value, key])
 );
-const SLUGGED_BY_NAME_CLASS_SLUGS = new Set(
-    CLASSES_SLUGGED_BY_NAME.map((name) => StringHelpers.toSlug(name))
-);
-const BOSS_CLASS_SLUGS = new Set(
-    ['Leader', 'Galactic Boss', 'Elite Four', 'Champion'].map((name) =>
-        StringHelpers.toSlug(name)
-    )
-);
-const MINIBOSS_CLASS_SLUGS = new Set(
-    ['Galactic Boss', 'Commander', 'PKMN Trainer'].map((name) =>
-        StringHelpers.toSlug(name)
-    )
-);
-
-// The gender fielded by each trainer class currently in the game, keyed by
-// slug. All classes default to male until real genders are filled in.
-const TRAINER_CLASS_GENDERS: Record<string, 'male' | 'female'> = {
-    aaron: 'male',
-    'ace-trainer-f': 'female',
-    'ace-trainer-m': 'male',
-    'ace-trainer-snow-f': 'female',
-    'ace-trainer-snow-m': 'male',
-    'aroma-lady': 'female',
-    artist: 'male',
-    barry: 'male',
-    'battle-girl': 'female',
-    beauty: 'female',
-    'belle-and-pa': 'male',
-    bertha: 'female',
-    'bird-keeper': 'male',
-    'black-belt': 'male',
-    'bug-catcher': 'male',
-    byron: 'male',
-    camper: 'male',
-    candice: 'female',
-    collector: 'male',
-    cowgirl: 'female',
-    'cyclist-f': 'female',
-    'cyclist-m': 'male',
-    cynthia: 'female',
-    cyrus: 'male',
-    'double-team': 'male',
-    'dragon-tamer': 'male',
-    fantina: 'female',
-    fisherman: 'male',
-    flint: 'male',
-    'galactic-grunt-f': 'female',
-    'galactic-grunt-m': 'male',
-    'galactic-grunt-m-and-galactic-grunt-m': 'male',
-    gardenia: 'female',
-    gentleman: 'male',
-    guitarist: 'male',
-    hiker: 'male',
-    jogger: 'male',
-    jupiter: 'female',
-    lady: 'female',
-    lass: 'female',
-    lucian: 'male',
-    mars: 'female',
-    maylene: 'female',
-    'ninja-boy': 'male',
-    'parasol-lady': 'female',
-    pi: 'male',
-    picnicker: 'female',
-    'pkmn-breeder-f': 'female',
-    'pkmn-breeder-m': 'male',
-    'pkmn-ranger-f': 'female',
-    'pkmn-ranger-m': 'male',
-    'poke-kid': 'female',
-    'pokefan-f': 'female',
-    'pokefan-m': 'male',
-    policeman: 'male',
-    'psychic-f': 'female',
-    'psychic-m': 'male',
-    rancher: 'male',
-    'rich-boy': 'male',
-    roark: 'male',
-    roughneck: 'male',
-    'ruin-maniac': 'male',
-    sailor: 'male',
-    saturn: 'male',
-    'school-kid-f': 'female',
-    'school-kid-m': 'male',
-    scientist: 'male',
-    socialite: 'female',
-    'skier-f': 'female',
-    'skier-m': 'male',
-    'swimmer-f': 'female',
-    'swimmer-m': 'male',
-    'tuber-f': 'female',
-    'tuber-m': 'male',
-    twins: 'female',
-    veteran: 'male',
-    volkner: 'male',
-    waiter: 'male',
-    waitress: 'female',
-    wake: 'male',
-    worker: 'male',
-    'young-couple': 'male',
-    youngster: 'male',
-};
+const BOSS_DISPLAY_NAMES = new Set([
+    'Leader',
+    'Galactic Boss',
+    'Elite Four',
+    'Champion',
+]);
+const MINIBOSS_DISPLAY_NAMES = new Set([
+    'Galactic Boss',
+    'Commander',
+    'PKMN Trainer',
+]);
 
 type BattleArgs = {
     location: string;
@@ -177,6 +86,13 @@ type PromptedItem = {
     count: number;
 };
 
+type PromptedBattleTrainer = {
+    trainerClass: string;
+    name: string;
+    team?: PromptedTeamPokemon[];
+    teamsByStarter?: Record<string, PromptedTeamPokemon[]>;
+};
+
 type PromptedBattle = {
     trainerClass: string;
     isTrueDouble: boolean;
@@ -188,6 +104,7 @@ type PromptedBattle = {
     name: string;
     team?: PromptedTeamPokemon[];
     teamsByStarter?: Record<string, PromptedTeamPokemon[]>;
+    secondTrainer?: PromptedBattleTrainer;
     items?: PromptedItem[];
     fieldCondition?: FieldCondition;
     x: number;
@@ -242,10 +159,10 @@ const parseArgs = (argv: string[]): BattleArgs => {
 };
 
 const getLocationPath = (gameSlug: string, slug: string): string =>
-    path.join('src', 'lib', 'games', gameSlug, 'locations', `${slug}.ts`);
+    path.join('src', 'lib', 'data', gameSlug, 'locations', `${slug}.ts`);
 
 // Each game's starter slugs, keyed by game slug. Kept separate from the
-// `Game` objects in src/lib/games since those transitively import every
+// `Game` objects in src/lib/data since those transitively import every
 // location's map image, which tsx (running outside the Next.js bundler)
 // can't load.
 const STARTERS_BY_GAME: Record<string, string[]> = {
@@ -258,22 +175,6 @@ const getStarters = (gameSlug: string): string[] => {
         throw new Error(GAME_NOT_FOUND);
     }
     return starters;
-};
-
-// The set of trainer class slugs the generated `trainerClass` field could
-// validly take: those with a sprite under public/<game>/trainers, plus the
-// classes sprited by trainer name instead of class.
-const getValidTrainerClasses = (gameSlug: string): Set<string> => {
-    const trainersDir = path.join('public', gameSlug, 'trainers');
-    const spritedClasses = fs
-        .readdirSync(trainersDir)
-        .filter((file) => file.endsWith('.png'))
-        .map((file) => path.basename(file, '.png'));
-    const sluggedByNameClasses = CLASSES_SLUGGED_BY_NAME.map((name) =>
-        StringHelpers.toSlug(name)
-    );
-
-    return new Set([...spritedClasses, ...sluggedByNameClasses]);
 };
 
 // The set of battle item slugs the generated `items` field could validly
@@ -402,6 +303,16 @@ const findInsertionPoint = (content: string, scope: Range): InsertionPoint => {
 
 const escapeQuotes = (value: string): string => value.replace(/'/g, "\\'");
 
+// Title-cases a trainer name word by word (e.g. "ty & sue" -> "Ty & Sue"),
+// leaving punctuation like "&" and disambiguator digits untouched, unlike
+// StringHelpers.toTitleCase which slugs first and would turn "&" into "and".
+const toTitleCaseName = (value: string): string =>
+    value.replace(
+        /\S+/g,
+        (word) =>
+            `${word.charAt(0).toUpperCase()}${word.slice(1).toLowerCase()}`
+    );
+
 const serializePokemon = (
     pokemon: PromptedTeamPokemon,
     indent: string
@@ -433,6 +344,35 @@ const serializeTeam = (team: PromptedTeamPokemon[], indent: string): string => {
     return `[\n${pokemon}${indent}]`;
 };
 
+const serializeSecondTrainer = (
+    secondTrainer: PromptedBattleTrainer,
+    indent: string
+): string => {
+    const fieldIndent = `${indent}    `;
+    const teamField = secondTrainer.team
+        ? `${fieldIndent}team: ${serializeTeam(secondTrainer.team, fieldIndent)},\n`
+        : '';
+    const teamsByStarterField = secondTrainer.teamsByStarter
+        ? `${fieldIndent}teamsByStarter: {\n` +
+          Object.entries(secondTrainer.teamsByStarter)
+              .map(
+                  ([starter, team]) =>
+                      `${fieldIndent}    ${starter}: ${serializeTeam(team, `${fieldIndent}    `)},\n`
+              )
+              .join('') +
+          `${fieldIndent}},\n`
+        : '';
+
+    return (
+        `${indent}secondTrainer: {\n` +
+        `${fieldIndent}trainerClass: '${escapeQuotes(secondTrainer.trainerClass)}',\n` +
+        `${fieldIndent}name: '${escapeQuotes(secondTrainer.name)}',\n` +
+        teamField +
+        teamsByStarterField +
+        `${indent}},\n`
+    );
+};
+
 const serializeItems = (items: PromptedItem[], indent: string): string => {
     const itemIndent = `${indent}    `;
     const entries = items
@@ -458,6 +398,9 @@ const serializeBattle = (battle: PromptedBattle, indent: string): string => {
               )
               .join('') +
           `${fieldIndent}},\n`
+        : '';
+    const secondTrainerField = battle.secondTrainer
+        ? serializeSecondTrainer(battle.secondTrainer, fieldIndent)
         : '';
     const itemsField = battle.items
         ? `${fieldIndent}items: ${serializeItems(battle.items, fieldIndent)},\n`
@@ -490,6 +433,7 @@ const serializeBattle = (battle: PromptedBattle, indent: string): string => {
         `${indent}    name: '${escapeQuotes(battle.name)}',\n` +
         teamField +
         teamsByStarterField +
+        secondTrainerField +
         itemsField +
         fieldConditionField +
         `${indent}    x: ${battle.x},\n` +
@@ -655,15 +599,10 @@ const promptPokemon = async (
     return { slug, ability, level, nature, moves };
 };
 
-type PromptedTrainerClass = {
-    trainerClass: string;
-    slug: string;
-};
-
 const promptTrainerClass = async (
     rl: Interface,
     validTrainerClasses: Set<string>
-): Promise<PromptedTrainerClass> => {
+): Promise<string> => {
     while (true) {
         const raw = (await rl.question('Trainer class: ')).trim();
         const slug = StringHelpers.toSlug(raw);
@@ -671,20 +610,35 @@ const promptTrainerClass = async (
             logError("  That isn't a valid trainer class.");
             continue;
         }
-        return { slug, trainerClass: raw };
+        return slug;
     }
 };
 
-// A team member's gender defaults to the trainer's, but is overridden for
-// species whose gender isn't determined by their trainer: genderless
-// species get no gender at all, and single-gender species always get their
-// one possible gender.
+// In Platinum, a trainer's Pokémon doesn't roll its personality value
+// randomly like a wild Pokémon: the engine fixes the value's gender byte to
+// 120 for a female trainer or 136 for a male trainer, then resolves gender
+// the normal way against the species' gender-ratio threshold (out of 256,
+// 32 per eighth). A species only actually shares the trainer's own gender
+// when that threshold falls strictly between 120 and 136 — true only for an
+// exact 50/50 ratio (threshold 127). Any species skewed roughly 75% or more
+// toward one gender always produces that gender, regardless of the
+// trainer's.
+const TRAINER_GENDER_BYTE: Record<'male' | 'female', number> = {
+    female: 120,
+    male: 136,
+};
+
 const resolveTeamMemberGender = (
     slug: string,
     trainerGender: 'male' | 'female'
 ): 'male' | 'female' | undefined => {
-    if (PokemonHelpers.isGenderless(slug)) return undefined;
-    return PokemonHelpers.getFixedGender(slug) ?? trainerGender;
+    const genderRate = PokemonHelpers.getPokemonData(slug)?.genderRate;
+    if (genderRate === undefined || genderRate === -1) return undefined;
+    if (genderRate === 0) return 'male';
+    if (genderRate === 8) return 'female';
+
+    const threshold = genderRate * 32 - 1;
+    return TRAINER_GENDER_BYTE[trainerGender] < threshold ? 'female' : 'male';
 };
 
 const promptTeam = async (
@@ -706,6 +660,46 @@ const promptTeam = async (
     return team;
 };
 
+const promptSecondTrainer = async (
+    rl: Interface,
+    validTrainerClasses: Set<string>,
+    starters: string[],
+    isStarterDependent: boolean,
+    isMovesEnabled: boolean,
+    isDvEnabled: boolean
+): Promise<PromptedBattleTrainer> => {
+    logSuccess('  Second trainer:');
+    const trainerClass = await promptTrainerClass(rl, validTrainerClasses);
+    const name = toTitleCaseName(
+        (await rl.question('Second trainer name: ')).trim()
+    );
+    const gender = TRAINER_CLASSES[trainerClass].gender;
+
+    const ivs = isDvEnabled ? await promptIvs(rl) : undefined;
+
+    const team = isStarterDependent
+        ? undefined
+        : await promptTeam(rl, gender, ivs, isMovesEnabled);
+
+    const teamsByStarter: Record<string, PromptedTeamPokemon[]> | undefined =
+        isStarterDependent ? {} : undefined;
+    if (teamsByStarter) {
+        for (const starter of starters) {
+            logSuccess(
+                `  Second trainer's team for ${StringHelpers.toTitleCase(starter)}:`
+            );
+            teamsByStarter[starter] = await promptTeam(
+                rl,
+                gender,
+                ivs,
+                isMovesEnabled
+            );
+        }
+    }
+
+    return { trainerClass, name, team, teamsByStarter };
+};
+
 const promptBattle = async (
     rl: Interface,
     validTrainerClasses: Set<string>,
@@ -723,40 +717,18 @@ const promptBattle = async (
     isFieldEnabled: boolean,
     isDvEnabled: boolean
 ): Promise<PromptedBattle> => {
-    const { trainerClass, slug } = await promptTrainerClass(
-        rl,
-        validTrainerClasses
-    );
+    const trainerClass = await promptTrainerClass(rl, validTrainerClasses);
     const isOptional = !isMiniboss && !isBoss && !isRequired;
-    const isSluggedByName = SLUGGED_BY_NAME_CLASS_SLUGS.has(slug);
+    const { displayName, gender } = TRAINER_CLASSES[trainerClass];
 
-    if (isBoss && !BOSS_CLASS_SLUGS.has(slug)) {
+    if (isBoss && !BOSS_DISPLAY_NAMES.has(displayName)) {
         throw new Error(BOSS_CLASS_NOT_ALLOWED);
     }
-    if (isMiniboss && !MINIBOSS_CLASS_SLUGS.has(slug)) {
+    if (isMiniboss && !MINIBOSS_DISPLAY_NAMES.has(displayName)) {
         throw new Error(MINIBOSS_CLASS_NOT_ALLOWED);
     }
 
-    // Classes not fielded by a single named trainer have a fixed gender, so
-    // that can be validated right after the trainer class is entered rather
-    // than waiting on later prompts.
-    if (!isSluggedByName && !TRAINER_CLASS_GENDERS[slug]) {
-        throw new Error(GENDER_NOT_FOUND);
-    }
-
-    const name = (await rl.question('Trainer name: ')).trim();
-
-    // Classes fielded by a single named trainer (e.g. Leader, Champion) have
-    // no gender of their own; fall back to the specific trainer's name,
-    // stripping a trailing disambiguator (e.g. "Barry 2") some repeat
-    // battles use to stay unique within a location.
-    const genderSlug = isSluggedByName
-        ? StringHelpers.toSlug(name.replace(/\s+\d+$/, ''))
-        : slug;
-    const gender = TRAINER_CLASS_GENDERS[genderSlug];
-    if (!gender) {
-        throw new Error(GENDER_NOT_FOUND);
-    }
+    const name = toTitleCaseName((await rl.question('Trainer name: ')).trim());
 
     const x = await promptCoordinate(rl, 'X');
     const y = await promptCoordinate(rl, 'Y');
@@ -789,6 +761,18 @@ const promptBattle = async (
         }
     }
 
+    const secondTrainer =
+        isTag || isDouble
+            ? await promptSecondTrainer(
+                  rl,
+                  validTrainerClasses,
+                  starters,
+                  isStarterDependent,
+                  isMovesEnabled,
+                  isDvEnabled
+              )
+            : undefined;
+
     return {
         trainerClass,
         isTrueDouble,
@@ -800,6 +784,7 @@ const promptBattle = async (
         name,
         team,
         teamsByStarter,
+        secondTrainer,
         items,
         fieldCondition,
         x,
@@ -834,7 +819,7 @@ const ensureEnumImport = (content: string, name: string): string => {
 
     const lines = content.split('\n');
     const gameImportIndex = lines.findIndex((line) =>
-        line.includes("from '@/lib/games/")
+        line.includes("from '@/lib/data/")
     );
     lines.splice(
         gameImportIndex + 1,
@@ -859,7 +844,7 @@ runScript(async () => {
         : getLocationScope(original);
     const insertionPoint = findInsertionPoint(original, scope);
 
-    const validTrainerClasses = getValidTrainerClasses(gameSlug);
+    const validTrainerClasses = new Set(Object.keys(TRAINER_CLASSES));
     const validItemSlugs = getValidItemSlugs();
     const starters = getStarters(gameSlug);
 

@@ -31,7 +31,8 @@ const DATA_PATH = path.join(
     'src',
     'lib',
     'data',
-    'raw',
+    CURRENT_GAME_VERSION.id,
+    'encounters',
     `${CURRENT_GAME_VERSION.id}_encounters.json`
 );
 const FETCH_DELAY_MS = 75;
@@ -353,6 +354,7 @@ const NULLIFIED_CHANCE_METHODS: string[] = [
     EncounterMethod.Starter,
     EncounterMethod.Special,
     EncounterMethod.Egg,
+    EncounterMethod.Static,
 ];
 
 const nullifyChances = (encounters: RawEncounter[]): RawEncounter[] =>

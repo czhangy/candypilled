@@ -99,6 +99,7 @@ const HallOfFameCard: React.FC<HallOfFameCardProps> = ({
                                         : `empty-${index}`
                                 }
                                 pokemon={pokemon}
+                                position="single"
                                 variant={variant}
                                 version={version}
                             />

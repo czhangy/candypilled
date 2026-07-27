@@ -1,8 +1,10 @@
 import { Battle } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
+import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import styles from './BattleCard.module.scss';
 import PokemonSlot from './PokemonSlot/PokemonSlot';
 import TrainerPanel from './TrainerPanel/TrainerPanel';
+import TrainerSprite from './TrainerSprite/TrainerSprite';
 
 type BattleCardProps = {
     battle: Battle;
@@ -43,7 +45,8 @@ const BattleCard: React.FC<BattleCardProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const team = BattleHelpers.getTeamFromOptions(battle, starter);
+    const teamGroups = BattleHelpers.getTeamGroups(battle, starter);
+    const isStacked = teamGroups.length > 1;
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -72,35 +75,67 @@ const BattleCard: React.FC<BattleCardProps> = ({
                     {BattleHelpers.getFullName(battle)}
                 </button>
                 <div className={styles.body}>
-                    <TrainerPanel
-                        battle={battle}
-                        isDefeated={isDefeated}
-                        onToggleDefeated={onToggleDefeated}
-                        variant={variant}
-                    />
-                    <div className={styles.team}>
-                        {Array.from(
-                            { length: TEAM_SLOT_COUNT },
-                            (_, index) => team[index] ?? null
-                        ).map((pokemon, index) => (
-                            <PokemonSlot
-                                generation={generation}
-                                isReadOnly={false}
-                                key={
-                                    pokemon
-                                        ? `${pokemon.slug}-${index}`
-                                        : `empty-${index}`
-                                }
-                                onSelectAbility={onSelectAbility}
-                                onSelectItem={onSelectItem}
-                                onSelectMove={onSelectMove}
-                                onSelectSpecies={onSelectSpecies}
-                                pokemon={pokemon}
-                                variant={variant}
-                                version={version}
-                            />
-                        ))}
-                    </div>
+                    {teamGroups.map((group, groupIndex) => {
+                        const isLastGroup =
+                            groupIndex === teamGroups.length - 1;
+                        const position = !isStacked
+                            ? 'single'
+                            : isLastGroup
+                              ? 'bottom'
+                              : 'top';
+
+                        return (
+                            <div
+                                className={styles.row}
+                                key={`${group.trainerClass}-${group.name}-${groupIndex}`}
+                            >
+                                {isLastGroup ? (
+                                    <TrainerPanel
+                                        battle={battle}
+                                        isDefeated={isDefeated}
+                                        isStacked={isStacked}
+                                        onToggleDefeated={onToggleDefeated}
+                                        trainerClass={group.trainerClass}
+                                        trainerName={group.name}
+                                        variant={variant}
+                                    />
+                                ) : (
+                                    <TrainerSprite
+                                        alt={TrainerHelpers.getDisplayName(
+                                            group.trainerClass,
+                                            group.name
+                                        )}
+                                        trainerClass={group.trainerClass}
+                                        variant={variant}
+                                    />
+                                )}
+                                <div className={styles.team}>
+                                    {Array.from(
+                                        { length: TEAM_SLOT_COUNT },
+                                        (_, index) => group.team[index] ?? null
+                                    ).map((pokemon, index) => (
+                                        <PokemonSlot
+                                            generation={generation}
+                                            isReadOnly={false}
+                                            key={
+                                                pokemon
+                                                    ? `${groupIndex}-${pokemon.slug}-${index}`
+                                                    : `${groupIndex}-empty-${index}`
+                                            }
+                                            onSelectAbility={onSelectAbility}
+                                            onSelectItem={onSelectItem}
+                                            onSelectMove={onSelectMove}
+                                            onSelectSpecies={onSelectSpecies}
+                                            pokemon={pokemon}
+                                            position={position}
+                                            variant={variant}
+                                            version={version}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </div>

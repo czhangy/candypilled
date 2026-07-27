@@ -9,7 +9,7 @@ import {
     useSearchParams,
 } from 'next/navigation';
 import Tabs from '@/components/common/Tabs/Tabs';
-import { GAMES } from '@/lib/games';
+import { GAMES } from '@/lib/data/games';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';

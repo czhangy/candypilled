@@ -32,6 +32,17 @@ const DATA_PATH = path.join('src', 'lib', 'data', 'raw', 'pokemon.json');
 const FETCH_DELAY_MS = 75;
 const MAX_DEX_NUMBER = getMaxDexNumber(CURRENT_GAME_VERSION.generation);
 
+// Sprites are ~1500 separate downloads and rarely change once fetched, so
+// re-downloading them on every run is wasted time. Pass --sprites to opt in
+// (e.g. after adding a new sprite variant or fixing a bad download); other
+// runs reuse whatever's already on disk for that variety.
+const SHOULD_FETCH_SPRITES = process.argv.includes('--sprites');
+
+const readExistingData = (): Record<string, PokemonData> => {
+    if (!fs.existsSync(DATA_PATH)) return {};
+    return JSON.parse(fs.readFileSync(DATA_PATH, 'utf-8'));
+};
+
 // Variety name fragments for forms that either have no sprites of their own
 // on PokeAPI or are mechanics this site doesn't track (Mega Evolution,
 // regional forms from later generations, Totem/starter/cap event forms,
@@ -88,6 +99,8 @@ type RawSpecies = {
     name: string;
     capture_rate: number;
     gender_rate: number;
+    is_legendary: boolean;
+    is_mythical: boolean;
     evolution_chain: { url: string };
     varieties: { pokemon: { name: string; url: string } }[];
 };
@@ -872,6 +885,7 @@ const buildEvolutionLine = (
 export const fetchPokemonData = async (): Promise<void> => {
     const versionGroupGenerations =
         await buildVersionGroupGenerations(FETCH_DELAY_MS);
+    const existingData = readExistingData();
     const data: Record<string, PokemonData> = {};
     const chainCache = new Map<string, FullNode>();
 
@@ -917,16 +931,17 @@ export const fetchPokemonData = async (): Promise<void> => {
             const rawPokemon = await fetchRawPokemon(variety);
             await sleep(FETCH_DELAY_MS);
 
-            const sprites = await buildSprites(
-                variety,
-                rawPokemon,
-                dexGeneration
-            );
+            const sprites = SHOULD_FETCH_SPRITES
+                ? await buildSprites(variety, rawPokemon, dexGeneration)
+                : (existingData[variety.name]?.sprites ?? {});
 
             // Varieties include forms irrelevant to this dex (Mega,
             // Gigantamax, regional forms from later generations, etc.).
             // Sprites double as curation: a variety with no sprite in any
-            // applicable game isn't relevant to this site.
+            // applicable game isn't relevant to this site. When reusing
+            // existing sprites this only catches varieties that were already
+            // absent from pokemon.json; run with --sprites to curate newly
+            // added varieties.
             if (Object.keys(sprites).length === 0) continue;
 
             const name =
@@ -937,6 +952,7 @@ export const fetchPokemonData = async (): Promise<void> => {
                 name,
                 introducedInGeneration: dexGeneration,
                 isTemporaryForm: TEMPORARY_FORM_VARIETIES.has(variety.name),
+                isLegendary: species.is_legendary || species.is_mythical,
                 sprites,
                 types: buildTypesByGeneration(rawPokemon),
                 abilities: buildAbilitiesByGeneration(rawPokemon),

@@ -39,13 +39,13 @@ const parseArgs = (argv: string[]): LocationArgs => {
 };
 
 const getMapsDir = (gameSlug: string): string =>
-    path.join('src', 'lib', 'games', gameSlug, 'maps');
+    path.join('src', 'lib', 'data', gameSlug, 'maps');
 
 const getBarrelPath = (gameSlug: string): string =>
     path.join(getMapsDir(gameSlug), 'index.ts');
 
 const getLocationPath = (gameSlug: string, slug: string): string =>
-    path.join('src', 'lib', 'games', gameSlug, 'locations', `${slug}.ts`);
+    path.join('src', 'lib', 'data', gameSlug, 'locations', `${slug}.ts`);
 
 const readBarrelExports = (barrelPath: string): Map<string, string> => {
     const exports = new Map<string, string>();
@@ -95,7 +95,7 @@ const wireMap = (gameSlug: string, mapSlug: string): void => {
 
 const MAP_FIELD_PATTERN = /^ {4}map: \w+,\n/m;
 const MAPS_IMPORT_PATTERN = (gameSlug: string): RegExp =>
-    new RegExp(`import \\{([^}]*)\\} from '@/lib/games/${gameSlug}/maps';\n`);
+    new RegExp(`import \\{([^}]*)\\} from '@/lib/data/${gameSlug}/maps';\n`);
 
 // A location that already has a map assigned can't take a second one as a
 // flat `map` field, so once that map + location pairing is already in use,
@@ -112,7 +112,7 @@ const convertToSubareas = (filePath: string): boolean => {
     return true;
 };
 
-// Adds mapExportName to the file's `@/lib/games/{gameSlug}/maps` import,
+// Adds mapExportName to the file's `@/lib/data/{gameSlug}/maps` import,
 // re-sorting it alphabetically, unless it's already imported (e.g. a
 // subarea reusing an already-wired map).
 const addMapImport = (
@@ -134,8 +134,8 @@ const addMapImport = (
     const sorted = [...names, mapExportName].sort((a, b) => a.localeCompare(b));
     const importStatement =
         sorted.length === 1
-            ? `import { ${sorted[0]} } from '@/lib/games/${gameSlug}/maps';\n`
-            : `import {\n${sorted.map((name) => `    ${name},\n`).join('')}} from '@/lib/games/${gameSlug}/maps';\n`;
+            ? `import { ${sorted[0]} } from '@/lib/data/${gameSlug}/maps';\n`
+            : `import {\n${sorted.map((name) => `    ${name},\n`).join('')}} from '@/lib/data/${gameSlug}/maps';\n`;
 
     fs.writeFileSync(filePath, contents.replace(pattern, importStatement));
 };
@@ -196,7 +196,7 @@ const createLocation = (
         : [`    name: '${name}',\n`, `    map: ${mapExportName},\n`];
 
     writeToFile(filePath, [
-        `import { ${mapExportName} } from '@/lib/games/${gameSlug}/maps';\n`,
+        `import { ${mapExportName} } from '@/lib/data/${gameSlug}/maps';\n`,
         `import { Location } from '@/lib/static/types';\n`,
         '\n',
         `const ${constName}: Location = {\n`,

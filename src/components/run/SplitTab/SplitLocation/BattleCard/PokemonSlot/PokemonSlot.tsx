@@ -19,6 +19,7 @@ type PokemonSlotProps = {
     onSelectMove?: (slug: string) => void;
     onSelectSpecies?: (species: string) => void;
     pokemon: BattlePokemon | null;
+    position: 'single' | 'top' | 'bottom';
     variant: string;
     version: string;
 };
@@ -31,6 +32,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     onSelectMove,
     onSelectSpecies,
     pokemon,
+    position,
     variant,
     version,
 }) => {
@@ -155,6 +157,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
             )}
         </>
     );
+    const positionClass = styles[`pokemon-slot--${position}`];
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -166,13 +169,14 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                 className={[
                     styles['pokemon-slot'],
                     styles['pokemon-slot--empty'],
+                    positionClass,
                 ].join(' ')}
             />
         );
     }
 
     return (
-        <div className={styles['pokemon-slot']}>
+        <div className={[styles['pokemon-slot'], positionClass].join(' ')}>
             {isReadOnly ? (
                 <div
                     className={[
