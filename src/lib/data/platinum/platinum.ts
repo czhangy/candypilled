@@ -4,7 +4,6 @@ import BYRON from './splits/byron';
 import CANDICE from './splits/candice';
 import CYNTHIA from './splits/cynthia';
 import FANTINA from './splits/fantina';
-import GALACTIC from './splits/galactic';
 import GARDENIA from './splits/gardenia';
 import MAYLENE from './splits/maylene';
 import ROARK from './splits/roark';
@@ -34,7 +33,6 @@ const PLATINUM: Game = {
         WAKE,
         BYRON,
         CANDICE,
-        GALACTIC,
         VOLKNER,
         CYNTHIA,
     ],
