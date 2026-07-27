@@ -30,7 +30,7 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const FIELD_CONDITION_ICON_SIZE = 20;
+    const FIELD_CONDITION_ICON_SIZE = 28;
     const ITEM_SPRITE_SIZE = 24;
     const SPRITE_SIZE = 96;
 

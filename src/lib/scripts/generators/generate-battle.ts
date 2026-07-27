@@ -303,6 +303,16 @@ const findInsertionPoint = (content: string, scope: Range): InsertionPoint => {
 
 const escapeQuotes = (value: string): string => value.replace(/'/g, "\\'");
 
+// Title-cases a trainer name word by word (e.g. "ty & sue" -> "Ty & Sue"),
+// leaving punctuation like "&" and disambiguator digits untouched, unlike
+// StringHelpers.toTitleCase which slugs first and would turn "&" into "and".
+const toTitleCaseName = (value: string): string =>
+    value.replace(
+        /\S+/g,
+        (word) =>
+            `${word.charAt(0).toUpperCase()}${word.slice(1).toLowerCase()}`
+    );
+
 const serializePokemon = (
     pokemon: PromptedTeamPokemon,
     indent: string
@@ -660,7 +670,9 @@ const promptSecondTrainer = async (
 ): Promise<PromptedBattleTrainer> => {
     logSuccess('  Second trainer:');
     const trainerClass = await promptTrainerClass(rl, validTrainerClasses);
-    const name = (await rl.question('Second trainer name: ')).trim();
+    const name = toTitleCaseName(
+        (await rl.question('Second trainer name: ')).trim()
+    );
     const gender = TRAINER_CLASSES[trainerClass].gender;
 
     const ivs = isDvEnabled ? await promptIvs(rl) : undefined;
@@ -716,7 +728,7 @@ const promptBattle = async (
         throw new Error(MINIBOSS_CLASS_NOT_ALLOWED);
     }
 
-    const name = (await rl.question('Trainer name: ')).trim();
+    const name = toTitleCaseName((await rl.question('Trainer name: ')).trim());
 
     const x = await promptCoordinate(rl, 'X');
     const y = await promptCoordinate(rl, 'Y');
