@@ -1,0 +1,328 @@
+import {
+    sunyshoreGymRoom1,
+    sunyshoreGymRoom2,
+    sunyshoreGymRoom3,
+} from '@/lib/data/platinum/maps';
+import { Nature } from '@/lib/static/enums';
+import { Location } from '@/lib/static/types';
+
+const SUNYSHORE_GYM: Location = {
+    name: 'Sunyshore Gym',
+    subareas: [
+        {
+            name: 'Room 1',
+            map: sunyshoreGymRoom1,
+            battles: [
+                {
+                    trainerClass: 'school-kid-f',
+                    name: 'Tiera',
+                    team: [
+                        {
+                            slug: 'pachirisu',
+                            ability: 1,
+                            gender: 'female',
+                            ivs: 1,
+                            level: 47,
+                            nature: Nature.Adamant,
+                            moves: [
+                                'last-resort',
+                                'super-fang',
+                                'discharge',
+                                'sweet-kiss',
+                            ],
+                        },
+                    ],
+                    items: [{ count: 1, name: 'Hyper Potion' }],
+                    x: 36.6,
+                    y: 24.2,
+                },
+            ],
+        },
+        {
+            name: 'Room 2',
+            map: sunyshoreGymRoom2,
+            battles: [
+                {
+                    trainerClass: 'school-kid-m',
+                    name: 'Forrest',
+                    team: [
+                        {
+                            slug: 'magneton',
+                            ability: 1,
+                            ivs: 1,
+                            level: 47,
+                            nature: Nature.Bold,
+                            moves: ['thunderbolt', 'tri-attack', 'mirror-shot'],
+                        },
+                    ],
+                    items: [{ count: 1, name: 'X Speed' }],
+                    x: 21.6,
+                    y: 31.3,
+                },
+                {
+                    trainerClass: 'guitarist',
+                    name: 'Jerry',
+                    team: [
+                        {
+                            slug: 'magnemite',
+                            ability: 1,
+                            ivs: 1,
+                            level: 44,
+                            nature: Nature.Rash,
+                        },
+                        {
+                            slug: 'luxio',
+                            ability: 1,
+                            gender: 'male',
+                            ivs: 1,
+                            level: 44,
+                            nature: Nature.Bashful,
+                        },
+                        {
+                            slug: 'luxio',
+                            ability: 1,
+                            gender: 'male',
+                            ivs: 1,
+                            level: 44,
+                            nature: Nature.Bashful,
+                        },
+                    ],
+                    x: 83.9,
+                    y: 55.4,
+                },
+                {
+                    isOptional: true,
+                    trainerClass: 'poke-kid',
+                    name: 'Meghan',
+                    team: [
+                        {
+                            slug: 'pikachu',
+                            ability: 1,
+                            gender: 'female',
+                            ivs: 1,
+                            level: 42,
+                            nature: Nature.Jolly,
+                        },
+                        {
+                            slug: 'pikachu',
+                            ability: 1,
+                            gender: 'female',
+                            ivs: 1,
+                            level: 42,
+                            nature: Nature.Jolly,
+                        },
+                        {
+                            slug: 'pikachu',
+                            ability: 1,
+                            gender: 'female',
+                            ivs: 1,
+                            level: 42,
+                            nature: Nature.Jolly,
+                        },
+                        {
+                            slug: 'pikachu',
+                            ability: 1,
+                            gender: 'female',
+                            ivs: 1,
+                            level: 42,
+                            nature: Nature.Jolly,
+                        },
+                    ],
+                    x: 71.4,
+                    y: 17.9,
+                },
+            ],
+        },
+        {
+            name: 'Room 3',
+            map: sunyshoreGymRoom3,
+            battles: [
+                {
+                    isOptional: true,
+                    trainerClass: 'guitarist',
+                    name: 'Lonnie',
+                    team: [
+                        {
+                            slug: 'raichu',
+                            ability: 1,
+                            gender: 'male',
+                            ivs: 1,
+                            level: 47,
+                            nature: Nature.Hasty,
+                            moves: [
+                                'thunderbolt',
+                                'slam',
+                                'thunder-wave',
+                                'quick-attack',
+                            ],
+                        },
+                    ],
+                    x: 73.4,
+                    y: 90,
+                },
+                {
+                    trainerClass: 'ace-trainer-f',
+                    name: 'Destiny',
+                    team: [
+                        {
+                            slug: 'electabuzz',
+                            ability: 1,
+                            gender: 'male',
+                            ivs: 7,
+                            level: 47,
+                            nature: Nature.Modest,
+                            moves: [
+                                'thunderbolt',
+                                'shock-wave',
+                                'quick-attack',
+                                'iron-tail',
+                            ],
+                        },
+                        {
+                            slug: 'raichu',
+                            ability: 1,
+                            gender: 'female',
+                            ivs: 7,
+                            level: 48,
+                            nature: Nature.Jolly,
+                            moves: [
+                                'thunderbolt',
+                                'dig',
+                                'thunder-wave',
+                                'light-screen',
+                            ],
+                        },
+                    ],
+                    x: 16.1,
+                    y: 89.7,
+                },
+                {
+                    trainerClass: 'guitarist',
+                    name: 'Preston',
+                    team: [
+                        {
+                            slug: 'luxio',
+                            ability: 1,
+                            gender: 'male',
+                            ivs: 1,
+                            level: 45,
+                            nature: Nature.Lonely,
+                        },
+                        {
+                            slug: 'luxio',
+                            ability: 1,
+                            gender: 'male',
+                            ivs: 1,
+                            level: 45,
+                            nature: Nature.Lonely,
+                        },
+                    ],
+                    x: 11.3,
+                    y: 12.6,
+                },
+                {
+                    trainerClass: 'ace-trainer-m',
+                    name: 'Zachery',
+                    team: [
+                        {
+                            slug: 'electabuzz',
+                            ability: 1,
+                            gender: 'male',
+                            ivs: 7,
+                            level: 47,
+                            nature: Nature.Mild,
+                            moves: [
+                                'thunderbolt',
+                                'shock-wave',
+                                'quick-attack',
+                                'iron-tail',
+                            ],
+                        },
+                        {
+                            slug: 'magneton',
+                            ability: 1,
+                            ivs: 7,
+                            level: 48,
+                            nature: Nature.Docile,
+                            moves: ['thunderbolt', 'tri-attack', 'mirror-shot'],
+                        },
+                    ],
+                    x: 97.3,
+                    y: 41.7,
+                },
+                {
+                    isBoss: true,
+                    trainerClass: 'leader-volkner',
+                    name: 'Volkner',
+                    team: [
+                        {
+                            slug: 'jolteon',
+                            ability: 1,
+                            gender: 'male',
+                            ivs: 30,
+                            level: 46,
+                            nature: Nature.Relaxed,
+                            moves: [
+                                'thunder-wave',
+                                'charge-beam',
+                                'iron-tail',
+                                'quick-attack',
+                            ],
+                        },
+                        {
+                            slug: 'raichu',
+                            ability: 1,
+                            gender: 'male',
+                            ivs: 30,
+                            level: 46,
+                            nature: Nature.Gentle,
+                            moves: [
+                                'charge-beam',
+                                'focus-blast',
+                                'signal-beam',
+                                'quick-attack',
+                            ],
+                        },
+                        {
+                            slug: 'luxray',
+                            ability: 1,
+                            gender: 'male',
+                            ivs: 30,
+                            level: 48,
+                            nature: Nature.Lax,
+                            moves: [
+                                'ice-fang',
+                                'thunder-fang',
+                                'crunch',
+                                'fire-fang',
+                            ],
+                        },
+                        {
+                            slug: 'electivire',
+                            ability: 1,
+                            gender: 'male',
+                            ivs: 23,
+                            level: 50,
+                            nature: Nature.Rash,
+                            moves: [
+                                'thunder-punch',
+                                'fire-punch',
+                                'quick-attack',
+                                'giga-impact',
+                            ],
+                            heldItem: 'sitrus-berry',
+                        },
+                    ],
+                    items: [
+                        { count: 1, name: 'Hyper Potion' },
+                        { count: 1, name: 'Full Restore' },
+                    ],
+                    x: 49.6,
+                    y: 12.6,
+                },
+            ],
+        },
+    ],
+};
+
+export default SUNYSHORE_GYM;

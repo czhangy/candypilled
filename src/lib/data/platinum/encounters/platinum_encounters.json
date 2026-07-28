@@ -15355,6 +15355,232 @@
             "chance": null
         }
     ],
+    "sendoff-spring": [
+        {
+            "species": "golbat",
+            "method": "grass",
+            "minLevel": 38,
+            "maxLevel": 38,
+            "chance": 10,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "golduck",
+            "method": "surf",
+            "minLevel": 20,
+            "maxLevel": 40,
+            "chance": 100,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "golduck",
+            "method": "surf",
+            "minLevel": 20,
+            "maxLevel": 40,
+            "chance": 100,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "golduck",
+            "method": "surf",
+            "minLevel": 20,
+            "maxLevel": 40,
+            "chance": 100,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "graveler",
+            "method": "grass",
+            "minLevel": 37,
+            "maxLevel": 39,
+            "chance": 35,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "graveler",
+            "method": "grass",
+            "minLevel": 37,
+            "maxLevel": 39,
+            "chance": 35,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "graveler",
+            "method": "grass",
+            "minLevel": 37,
+            "maxLevel": 38,
+            "chance": 25,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "goldeen",
+            "method": "good-rod",
+            "minLevel": 10,
+            "maxLevel": 25,
+            "chance": 45,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "goldeen",
+            "method": "good-rod",
+            "minLevel": 10,
+            "maxLevel": 25,
+            "chance": 45,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "goldeen",
+            "method": "good-rod",
+            "minLevel": 10,
+            "maxLevel": 25,
+            "chance": 45,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "magikarp",
+            "method": "old-rod",
+            "minLevel": 3,
+            "maxLevel": 15,
+            "chance": 100,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "magikarp",
+            "method": "old-rod",
+            "minLevel": 3,
+            "maxLevel": 15,
+            "chance": 100,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "magikarp",
+            "method": "old-rod",
+            "minLevel": 3,
+            "maxLevel": 15,
+            "chance": 100,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "magikarp",
+            "method": "good-rod",
+            "minLevel": 10,
+            "maxLevel": 25,
+            "chance": 55,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "magikarp",
+            "method": "good-rod",
+            "minLevel": 10,
+            "maxLevel": 25,
+            "chance": 55,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "magikarp",
+            "method": "good-rod",
+            "minLevel": 10,
+            "maxLevel": 25,
+            "chance": 55,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "dusclops",
+            "method": "grass",
+            "minLevel": 39,
+            "maxLevel": 40,
+            "chance": 15,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "dusclops",
+            "method": "grass",
+            "minLevel": 40,
+            "maxLevel": 40,
+            "chance": 5,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "dusclops",
+            "method": "grass",
+            "minLevel": 40,
+            "maxLevel": 40,
+            "chance": 5,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "staravia",
+            "method": "grass",
+            "minLevel": 38,
+            "maxLevel": 40,
+            "chance": 20,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "staravia",
+            "method": "grass",
+            "minLevel": 38,
+            "maxLevel": 40,
+            "chance": 20,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "staravia",
+            "method": "grass",
+            "minLevel": 40,
+            "maxLevel": 40,
+            "chance": 10,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "bibarel",
+            "method": "grass",
+            "minLevel": 37,
+            "maxLevel": 38,
+            "chance": 30,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "bibarel",
+            "method": "grass",
+            "minLevel": 37,
+            "maxLevel": 38,
+            "chance": 30,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "bibarel",
+            "method": "grass",
+            "minLevel": 37,
+            "maxLevel": 38,
+            "chance": 30,
+            "conditions": ["time-night"]
+        },
+        {
+            "species": "chingling",
+            "method": "grass",
+            "minLevel": 37,
+            "maxLevel": 39,
+            "chance": 10,
+            "conditions": ["time-morning"]
+        },
+        {
+            "species": "chingling",
+            "method": "grass",
+            "minLevel": 37,
+            "maxLevel": 39,
+            "chance": 10,
+            "conditions": ["time-day"]
+        },
+        {
+            "species": "chingling",
+            "method": "grass",
+            "minLevel": 37,
+            "maxLevel": 39,
+            "chance": 10,
+            "conditions": ["time-night"]
+        }
+    ],
     "distortion-world": [
         {
             "species": "giratina-altered",

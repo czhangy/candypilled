@@ -42,7 +42,7 @@ const MT_CORONET: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'galactic-grunt-f',
-                    name: '1000',
+                    name: '9',
                     team: [
                         {
                             slug: 'stunky',
@@ -53,13 +53,13 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                     ],
-                    x: 63,
-                    y: 25.4,
+                    x: 63.2,
+                    y: 27.3,
                 },
                 {
                     isOptional: true,
                     trainerClass: 'galactic-grunt-m',
-                    name: '7000',
+                    name: '24',
                     team: [
                         {
                             slug: 'murkrow',
@@ -70,8 +70,8 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                     ],
-                    x: 9.6,
-                    y: 46,
+                    x: 10.3,
+                    y: 48.2,
                 },
             ],
         },
@@ -88,7 +88,7 @@ const MT_CORONET: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'galactic-grunt-m',
-                    name: '8000',
+                    name: '25',
                     team: [
                         {
                             slug: 'houndour',
@@ -133,13 +133,13 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                     ],
-                    x: 24,
-                    y: 32.2,
+                    x: 23.7,
+                    y: 33.2,
                 },
                 {
                     isOptional: true,
                     trainerClass: 'galactic-grunt-m',
-                    name: '9000',
+                    name: '26',
                     team: [
                         {
                             slug: 'stunky',
@@ -158,8 +158,8 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                     ],
-                    x: 24,
-                    y: 32.2,
+                    x: 53.8,
+                    y: 30.5,
                 },
             ],
         },
@@ -171,7 +171,7 @@ const MT_CORONET: Location = {
                 {
                     isOptional: true,
                     trainerClass: 'galactic-grunt-m',
-                    name: '10000',
+                    name: '27',
                     team: [
                         {
                             slug: 'golbat',
@@ -182,13 +182,13 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                     ],
-                    x: 12,
-                    y: 77.2,
+                    x: 11.8,
+                    y: 77.8,
                 },
                 {
                     isOptional: true,
                     trainerClass: 'galactic-grunt-f',
-                    name: '2000',
+                    name: '10',
                     team: [
                         {
                             slug: 'murkrow',
@@ -215,13 +215,13 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                     ],
-                    x: 79.3,
-                    y: 60,
+                    x: 79.2,
+                    y: 60.6,
                 },
                 {
                     isOptional: true,
                     trainerClass: 'galactic-grunt-m',
-                    name: '12000',
+                    name: '28',
                     team: [
                         {
                             slug: 'croagunk',
@@ -248,8 +248,8 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                     ],
-                    x: 63.5,
-                    y: 18.5,
+                    x: 64,
+                    y: 19,
                 },
             ],
         },
@@ -261,7 +261,7 @@ const MT_CORONET: Location = {
             battles: [
                 {
                     trainerClass: 'galactic-grunt-f',
-                    name: '3000',
+                    name: '11',
                     team: [
                         {
                             slug: 'houndour',
@@ -280,12 +280,12 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                     ],
-                    x: 73,
-                    y: 67,
+                    x: 73.2,
+                    y: 68,
                 },
                 {
                     trainerClass: 'galactic-grunt-m',
-                    name: '14000',
+                    name: '29',
                     team: [
                         {
                             slug: 'glameow',
@@ -304,8 +304,8 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                     ],
-                    x: 45,
-                    y: 83,
+                    x: 44.9,
+                    y: 83.9,
                 },
             ],
         },
@@ -316,7 +316,7 @@ const MT_CORONET: Location = {
             battles: [
                 {
                     trainerClass: 'galactic-grunt-f',
-                    name: '4000',
+                    name: '12',
                     team: [
                         {
                             slug: 'golbat',
@@ -343,8 +343,8 @@ const MT_CORONET: Location = {
                             ivs: 3,
                         },
                     ],
-                    x: 55.2,
-                    y: 50,
+                    x: 55.7,
+                    y: 51,
                 },
             ],
         },

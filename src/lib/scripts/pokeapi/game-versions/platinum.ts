@@ -8,7 +8,6 @@ export const platinum: GameVersion = {
     region: 'sinnoh',
     generation: 4,
     excludedLocations: [
-        'sendoff-spring',
         'newmoon-island',
         'stark-mountain',
         'turnback-cave',

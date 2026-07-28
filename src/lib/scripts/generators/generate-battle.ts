@@ -13,7 +13,8 @@ import StringHelpers from '@/lib/utils/StringHelpers';
 const USAGE =
     'Usage: npm run gen:battle <location> [subarea] [--starter] ' +
     '[--miniboss] [--boss] [--required] [--true] [--double] [--tag] ' +
-    '[--moves] [--items] [--field] [--dv]';
+    '[--moves] [--items] [--field] [--dv] ' +
+    '(--miniboss/--boss imply --moves and --dv)';
 const GAME_NOT_FOUND = 'That game has no entry in STARTERS_BY_GAME.';
 const LOCATION_NOT_FOUND = 'That location does not exist.';
 const SUBAREA_NOT_FOUND = 'That subarea does not exist on this location.';
@@ -133,10 +134,10 @@ const parseArgs = (argv: string[]): BattleArgs => {
     const isTrueDouble = argv.includes('--true');
     const isDouble = argv.includes('--double');
     const isTag = argv.includes('--tag');
-    const isMovesEnabled = argv.includes('--moves');
+    const isMovesEnabled = argv.includes('--moves') || isMiniboss || isBoss;
     const isItemsEnabled = argv.includes('--items');
     const isFieldEnabled = argv.includes('--field');
-    const isDvEnabled = argv.includes('--dv');
+    const isDvEnabled = argv.includes('--dv') || isMiniboss || isBoss;
     const [location, subarea] = argv.filter((arg) => !FLAGS.includes(arg));
     if (!location) {
         throw new Error(USAGE);
