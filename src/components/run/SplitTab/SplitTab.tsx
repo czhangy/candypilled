@@ -186,7 +186,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
             <div className={styles.body}>
                 <nav className={styles.toc}>
                     <div className={styles.badge}>
-                        <Image alt="" fill src={badge} />
+                        <Image alt="" fill sizes="8rem" src={badge} />
                     </div>
                     <span className={styles['toc-label']}>Locations</span>
                     <ul className={styles['toc-list']}>
@@ -232,6 +232,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
                                                 <Image
                                                     alt=""
                                                     fill
+                                                    sizes="0.9rem"
                                                     src={
                                                         caughtPokemonName
                                                             ? '/common/poke-ball.png'

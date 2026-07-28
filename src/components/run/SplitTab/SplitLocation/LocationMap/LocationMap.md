@@ -21,6 +21,7 @@ battle entries.
 | `isBattleNextPersonalBest` | `(battle: Battle) => boolean` | Yes      | -       | Whether defeating a given battle next would extend the run's PB |
 | `selectedBattle`           | `Battle`                      | No       | -       | The currently selected battle, if any                           |
 | `onBattleClick`            | `(battle: Battle) => void`    | Yes      | -       | Called with a battle when its marker is clicked                 |
+| `priority`                 | `boolean`                     | Yes      | -       | Whether to eagerly load and preload this map as the LCP image   |
 
 ## State
 
