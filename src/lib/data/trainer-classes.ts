@@ -71,6 +71,11 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         gender: 'male',
         spriteSlug: 'camper',
     },
+    'champion-cynthia': {
+        displayName: 'Champion',
+        gender: 'female',
+        spriteSlug: 'cynthia',
+    },
     collector: {
         displayName: 'Collector',
         gender: 'male',
@@ -115,6 +120,26 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Dragon Tamer',
         gender: 'male',
         spriteSlug: 'dragon-tamer',
+    },
+    'elite-four-aaron': {
+        displayName: 'Elite Four',
+        gender: 'male',
+        spriteSlug: 'aaron',
+    },
+    'elite-four-bertha': {
+        displayName: 'Elite Four',
+        gender: 'female',
+        spriteSlug: 'bertha',
+    },
+    'elite-four-flint': {
+        displayName: 'Elite Four',
+        gender: 'male',
+        spriteSlug: 'flint',
+    },
+    'elite-four-lucian': {
+        displayName: 'Elite Four',
+        gender: 'male',
+        spriteSlug: 'lucian',
     },
     fisherman: {
         displayName: 'Fisherman',
@@ -365,11 +390,6 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Veteran',
         gender: 'male',
         spriteSlug: 'veteran',
-    },
-    waiter: {
-        displayName: 'Waiter',
-        gender: 'male',
-        spriteSlug: 'waiter',
     },
     waitress: {
         displayName: 'Waitress',

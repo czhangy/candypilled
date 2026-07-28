@@ -521,6 +521,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                             BattleHelpers.getBattleKey(battle)
                                         );
                                     }}
+                                    priority={index === 0}
                                     selectedBattle={selectedBattle}
                                 />
                             )}

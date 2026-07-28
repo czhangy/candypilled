@@ -15,6 +15,7 @@ type LocationMapProps = {
     isBattleNextPB: (battle: Battle) => boolean;
     map: StaticImageData;
     onBattleClick: (battle: Battle) => void;
+    priority: boolean;
     selectedBattle?: Battle;
 };
 
@@ -25,6 +26,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
     isBattleNextPB,
     map,
     onBattleClick,
+    priority,
     selectedBattle,
 }) => {
     // -------------------------------------------------------------------------
@@ -101,7 +103,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
                 onMouseMove={EDIT_MODE_ON ? handleImageMouseMove : undefined}
                 ref={imageRef}
             >
-                <Image alt={alt} src={map} />
+                <Image alt={alt} priority={priority} src={map} />
                 {battles.map((battle) => (
                     <TrainerMarker
                         isDefeated={isBattleDefeated(battle)}
