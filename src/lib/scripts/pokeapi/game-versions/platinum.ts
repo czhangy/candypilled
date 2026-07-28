@@ -84,6 +84,7 @@ export const platinum: GameVersion = {
         'sinnoh-victory-road-inside',
         'sinnoh-victory-road-inside-b1f',
         'sinnoh-victory-road-inside-exit',
+        'ruin-maniac-cave',
     ],
     excludedSpecies: [
         'mesprit',
@@ -180,6 +181,13 @@ export const platinum: GameVersion = {
                     mode: 'dedupe' as const,
                 }))
         ),
+        // Every Solaceon Ruins floor has an identical unown encounter
+        // table, so they're collapsed into a single shared key.
+        ...['1f', 'b1f', 'b2f', 'b3f', 'b4f'].map((floor) => ({
+            from: `solaceon-ruins-${floor}`,
+            into: 'solaceon-ruins',
+            mode: 'dedupe' as const,
+        })),
         // The Old Chateau's 2F rooms are disconnected but share the same
         // wild encounters, except old-chateau-2f-left-room, whose table
         // (with time-of-day gastly and the static Rotom encounter) is the

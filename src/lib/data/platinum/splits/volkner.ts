@@ -1,5 +1,6 @@
 import DISTORTION_WORLD from '@/lib/data/platinum/locations/distortion-world';
 import GALACTIC_HQ from '@/lib/data/platinum/locations/galactic-hq';
+import LAKE_ACUITY from '@/lib/data/platinum/locations/lake-acuity';
 import MT_CORONET from '@/lib/data/platinum/locations/mt-coronet';
 import POKEMON_LEAGUE from '@/lib/data/platinum/locations/pokemon-league';
 import ROUTE_222 from '@/lib/data/platinum/locations/route-222';
@@ -14,6 +15,7 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const VOLKNER: Split = {
     name: 'Volkner',
     locations: [
+        LAKE_ACUITY,
         GALACTIC_HQ,
         LocationHelpers.withSubareaOrder(MT_CORONET, [
             '1F (207)',

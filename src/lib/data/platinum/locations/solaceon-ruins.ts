@@ -14,17 +14,17 @@ const SOLACEON_RUINS: Location = {
         {
             name: '1F',
             map: solaceonRuins1f,
-            encountersKey: 'solaceon-ruins-1f',
+            encountersKey: 'solaceon-ruins',
         },
         {
             name: 'B1F',
             map: solaceonRuinsB1f,
-            encountersKey: 'solaceon-ruins-b1f',
+            encountersKey: 'solaceon-ruins',
         },
         {
             name: 'B2F',
             map: solaceonRuinsB2f,
-            encountersKey: 'solaceon-ruins-b2f',
+            encountersKey: 'solaceon-ruins',
             battles: [
                 {
                     isOptional: true,
@@ -60,12 +60,12 @@ const SOLACEON_RUINS: Location = {
         {
             name: 'B3F',
             map: solaceonRuinsB3f,
-            encountersKey: 'solaceon-ruins-b3f',
+            encountersKey: 'solaceon-ruins',
         },
         {
             name: 'B4F',
             map: solaceonRuinsB4f,
-            encountersKey: 'solaceon-ruins-b4f',
+            encountersKey: 'solaceon-ruins',
         },
     ],
 };
