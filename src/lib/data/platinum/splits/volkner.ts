@@ -4,6 +4,7 @@ import MT_CORONET from '@/lib/data/platinum/locations/mt-coronet';
 import ROUTE_222 from '@/lib/data/platinum/locations/route-222';
 import SENDOFF_SPRING from '@/lib/data/platinum/locations/sendoff-spring';
 import SPEAR_PILLAR from '@/lib/data/platinum/locations/spear-pillar';
+import SUNYSHORE_CITY from '@/lib/data/platinum/locations/sunyshore-city';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
@@ -27,6 +28,7 @@ const VOLKNER: Split = {
         DISTORTION_WORLD,
         SENDOFF_SPRING,
         ROUTE_222,
+        SUNYSHORE_CITY,
     ],
 };
 
