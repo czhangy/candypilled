@@ -391,11 +391,6 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         gender: 'male',
         spriteSlug: 'veteran',
     },
-    waiter: {
-        displayName: 'Waiter',
-        gender: 'male',
-        spriteSlug: 'waiter',
-    },
     waitress: {
         displayName: 'Waitress',
         gender: 'female',
