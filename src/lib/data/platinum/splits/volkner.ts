@@ -1,6 +1,7 @@
 import DISTORTION_WORLD from '@/lib/data/platinum/locations/distortion-world';
 import GALACTIC_HQ from '@/lib/data/platinum/locations/galactic-hq';
 import MT_CORONET from '@/lib/data/platinum/locations/mt-coronet';
+import ROUTE_222 from '@/lib/data/platinum/locations/route-222';
 import SENDOFF_SPRING from '@/lib/data/platinum/locations/sendoff-spring';
 import SPEAR_PILLAR from '@/lib/data/platinum/locations/spear-pillar';
 import { Split } from '@/lib/static/types';
@@ -25,6 +26,7 @@ const VOLKNER: Split = {
         SPEAR_PILLAR,
         DISTORTION_WORLD,
         SENDOFF_SPRING,
+        ROUTE_222,
     ],
 };
 
