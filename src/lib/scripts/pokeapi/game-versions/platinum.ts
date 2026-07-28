@@ -81,6 +81,9 @@ export const platinum: GameVersion = {
         'sinnoh-pokemart',
         'mt-coronet-exterior-blizzard',
         'mt-coronet-4f-small-room',
+        'sinnoh-victory-road-inside',
+        'sinnoh-victory-road-inside-b1f',
+        'sinnoh-victory-road-inside-exit',
     ],
     excludedSpecies: [
         'mesprit',

@@ -71,6 +71,7 @@ export { default as oreburghMineB2f } from './oreburgh-mine-b2f.png';
 export { default as pastoriaCity } from './pastoria-city.png';
 export { default as pastoriaGym } from './pastoria-gym.png';
 export { default as pokemonLeague } from './pokemon-league.png';
+export { default as pokemonLeagueLobby } from './pokemon-league-lobby.png';
 export { default as ravagedPath } from './ravaged-path.png';
 export { default as route201 } from './route-201.png';
 export { default as route202 } from './route-202.png';
@@ -123,5 +124,8 @@ export { default as valleyWindworksInterior } from './valley-windworks-interior.
 export { default as valorLakefront } from './valor-lakefront.png';
 export { default as veilstoneCity } from './veilstone-city.png';
 export { default as veilstoneGym } from './veilstone-gym.png';
+export { default as victoryRoad1f } from './victory-road-1f.png';
+export { default as victoryRoad2f } from './victory-road-2f.png';
+export { default as victoryRoadB1f } from './victory-road-b1f.png';
 export { default as waywardCave1f } from './wayward-cave-1f.png';
 export { default as waywardCaveB1f } from './wayward-cave-b1f.png';
