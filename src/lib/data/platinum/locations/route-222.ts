@@ -232,7 +232,6 @@ const ROUTE_222: Location = {
             y: 45.7,
         },
         {
-            isOptional: true,
             trainerClass: 'sailor',
             name: 'Luther',
             team: [

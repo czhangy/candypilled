@@ -17,7 +17,7 @@ const MAYLENE: Split = {
         ROUTE_209,
         SOLACEON_RUINS,
         LOST_TOWER,
-        ROUTE_210,
+        LocationHelpers.withHiddenSubareaBattles(ROUTE_210, ['North']),
         CAFE_CABIN,
         ROUTE_215,
         LocationHelpers.withHiddenBattles(VEILSTONE_CITY),

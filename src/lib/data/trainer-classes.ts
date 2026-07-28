@@ -196,6 +196,11 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         gender: 'male',
         spriteSlug: 'roark',
     },
+    'leader-volkner': {
+        displayName: 'Leader',
+        gender: 'male',
+        spriteSlug: 'volkner',
+    },
     'leader-wake': {
         displayName: 'Leader',
         gender: 'male',
