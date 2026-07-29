@@ -308,6 +308,7 @@ export type GameVersion = {
     region: string;
     generation: number;
     excludedLocations?: string[];
+    excludedAreas?: string[];
     excludedSpecies?: string[];
     caveLocations?: string[];
     methodOverrides?: MethodOverride[];

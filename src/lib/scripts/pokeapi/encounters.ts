@@ -394,7 +394,9 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
     const locationsData: Record<string, Encounter[]> = {};
 
     for (const location of locations) {
-        const areas = await fetchLocationAreas(location.url);
+        const areas = (await fetchLocationAreas(location.url)).filter(
+            (area) => !version.excludedAreas?.includes(area.name)
+        );
         const isMultiArea = areas.length > 1;
         let hasEncounters = false;
 
