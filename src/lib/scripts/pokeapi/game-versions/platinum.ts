@@ -222,4 +222,42 @@ export const platinum: GameVersion = {
             ],
         },
     ],
+    manualEncounters: {
+        // In-game NPC trades, which PokeAPI has no data for.
+        'eterna-city-area': [
+            {
+                species: 'chatot',
+                method: EncounterMethod.Trade,
+                minLevel: null,
+                maxLevel: null,
+                chance: null,
+                tradeFor: 'buizel',
+                heldItem: 'leppa-berry',
+            },
+        ],
+        // Distinct from the "oreburgh-city" key already claimed by the
+        // Mining Museum's fossils.
+        'oreburgh-city-trade': [
+            {
+                species: 'abra',
+                method: EncounterMethod.Trade,
+                minLevel: null,
+                maxLevel: null,
+                chance: null,
+                tradeFor: 'machop',
+                heldItem: 'oran-berry',
+            },
+        ],
+        'snowpoint-city-trade': [
+            {
+                species: 'haunter',
+                method: EncounterMethod.Trade,
+                minLevel: null,
+                maxLevel: null,
+                chance: null,
+                tradeFor: 'medicham',
+                heldItem: 'everstone',
+            },
+        ],
+    },
 };

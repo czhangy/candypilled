@@ -2,24 +2,30 @@
 
 A single row within an encounter table's method group, showing a wild
 Pokémon's box sprite, its name, its
-level range prefixed with "Lv." (e.g. "Lv. 20-30"), and its encounter
-chance as a percentage. Clicking the row notifies the parent. The row
+level range prefixed with "Lv." (e.g. "Lv. 20-30"), or "—" when the
+encounter has no level, and its encounter chance as a percentage, or
+"—" when it has no chance. Clicking the row notifies the parent. The row
 is highlighted green if it's the one actually caught at this location,
 red if its evolution line isn't caught here but has been caught
 elsewhere in the run (used instead of caught taking priority), or
 highlighted as selected if it's the currently selected row, with the
-caught/used highlights taking priority over the selected highlight.
+caught/used highlights taking priority over the selected highlight. If
+the encounter is an NPC trade, a second line names the species the
+player must hand over to receive it, and if it comes with a held item,
+a third line shows the item's icon and name as a button; clicking it
+notifies the parent via `onSelectItem` without also selecting the row.
 
 ## Props
 
-| Prop                | Type             | Required | Default | Description                                                                           |
-| ------------------- | ---------------- | -------- | ------- | ------------------------------------------------------------------------------------- |
-| `displayChance`     | `number \| null` | Yes      | -       | The chance to display for this encounter, already rescaled by the parent if needed    |
-| `encounter`         | `Encounter`      | Yes      | -       | The encounter this row represents                                                     |
-| `isCaughtElsewhere` | `boolean`        | Yes      | -       | Whether this row's evolution line is caught elsewhere in the run, highlighting it red |
-| `isCaughtHere`      | `boolean`        | Yes      | -       | Whether this row is the one actually caught at this location, highlighting it green   |
-| `isSelected`        | `boolean`        | Yes      | -       | Whether this row is the currently selected encounter                                  |
-| `onClick`           | `() => void`     | Yes      | -       | Called when the row is clicked                                                        |
+| Prop                | Type                     | Required | Default | Description                                                                           |
+| ------------------- | ------------------------ | -------- | ------- | ------------------------------------------------------------------------------------- |
+| `displayChance`     | `number \| null`         | Yes      | -       | The chance to display for this encounter, already rescaled by the parent if needed    |
+| `encounter`         | `Encounter`              | Yes      | -       | The encounter this row represents                                                     |
+| `isCaughtElsewhere` | `boolean`                | Yes      | -       | Whether this row's evolution line is caught elsewhere in the run, highlighting it red |
+| `isCaughtHere`      | `boolean`                | Yes      | -       | Whether this row is the one actually caught at this location, highlighting it green   |
+| `isSelected`        | `boolean`                | Yes      | -       | Whether this row is the currently selected encounter                                  |
+| `onClick`           | `() => void`             | Yes      | -       | Called when the row is clicked                                                        |
+| `onSelectItem`      | `(slug: string) => void` | Yes      | -       | Called with `encounter.heldItem` when the held item button is clicked                 |
 
 ## Computations
 
@@ -27,6 +33,10 @@ caught/used highlights taking priority over the selected highlight.
 - `sprite` — the encounter's species box sprite
 - `getLevelLabel` — the encounter's level range, formatted as a single
   level or a range prefixed with "Lv."
+- `tradeForPokemon` — the species data for `encounter.tradeFor`, resolved
+  via `PokemonHelpers`, when the encounter is an NPC trade
+- `heldItem` — the item data for `encounter.heldItem`, resolved via
+  `ItemHelpers`, when the encounter comes with a held item
 
 ## SCSS Variable Dependencies
 

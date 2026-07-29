@@ -554,6 +554,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         onSelectEncounter={
                                             handleEncounterSelect
                                         }
+                                        onSelectItem={onSelectItem}
                                         onToggleMissed={handleToggleMissed}
                                         selectedSpecies={
                                             selectedEncounter?.species
@@ -561,7 +562,8 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                     />
                                     <PokedexTile
                                         defaultLevel={
-                                            selectedEncounter?.minLevel
+                                            selectedEncounter?.minLevel ??
+                                            undefined
                                         }
                                         dupes={dupes}
                                         encounter={encounter}

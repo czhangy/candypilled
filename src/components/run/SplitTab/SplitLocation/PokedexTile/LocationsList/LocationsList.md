@@ -25,7 +25,8 @@ Shows a "No locations found" message when the list is empty.
 - `sortedLocations` — `locations` sorted by encounter minimum level,
   ascending
 - `getLevelLabel` — an encounter's level range formatted as `Lv. N` for a
-  single level, or `Lv. N-M` for a range
+  single level, `Lv. N-M` for a range, or "—" when the encounter has no
+  level
 - `isUsed` — whether a location's name is in `usedLocations`, matching
   either exactly or on its base-name prefix (`"Location (Subarea)"`
   against a `usedLocations` entry of `"Location"`), since `usedLocations`

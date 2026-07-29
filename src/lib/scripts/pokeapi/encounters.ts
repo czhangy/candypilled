@@ -20,8 +20,8 @@ import StringHelpers from '@/lib/utils/StringHelpers';
 type RawEncounter = {
     species: string;
     method: string;
-    minLevel: number;
-    maxLevel: number;
+    minLevel: number | null;
+    maxLevel: number | null;
     chance: number | null;
     conditions?: string[];
 };
@@ -210,8 +210,14 @@ const mergeEncounters = <T extends RawEncounter>(
             mode === 'dedupe'
                 ? Math.max(existing.chance ?? 0, encounter.chance ?? 0)
                 : (existing.chance ?? 0) + (encounter.chance ?? 0);
-        existing.minLevel = Math.min(existing.minLevel, encounter.minLevel);
-        existing.maxLevel = Math.max(existing.maxLevel, encounter.maxLevel);
+        existing.minLevel = Math.min(
+            existing.minLevel ?? 0,
+            encounter.minLevel ?? 0
+        );
+        existing.maxLevel = Math.max(
+            existing.maxLevel ?? 0,
+            encounter.maxLevel ?? 0
+        );
     }
 
     return [...merged.values()];
@@ -234,6 +240,15 @@ const mergeLocations = (
                 : source;
         }
         delete locationsData[from];
+    }
+};
+
+const addManualEncounters = (
+    locationsData: Record<string, Encounter[]>,
+    manualEncounters: Record<string, Encounter[]>
+): void => {
+    for (const [key, encounters] of Object.entries(manualEncounters)) {
+        locationsData[key] = [...(locationsData[key] ?? []), ...encounters];
     }
 };
 
@@ -477,6 +492,7 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
 
     mergeLocations(locationsData, version.mergedLocations ?? []);
     splitLocations(locationsData, version.locationSplits ?? []);
+    addManualEncounters(locationsData, version.manualEncounters ?? {});
     writeData(locationsData);
 };
 

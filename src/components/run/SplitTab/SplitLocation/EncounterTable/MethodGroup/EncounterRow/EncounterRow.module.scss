@@ -51,6 +51,34 @@
             display: flex;
             flex-direction: column;
             gap: 0.25rem;
+
+            .pokemon__trade-for {
+                color: $text-mid;
+                font-size: 0.75rem;
+            }
+
+            .pokemon__held-item {
+                align-items: center;
+                background: none;
+                border: none;
+                color: $text-mid;
+                cursor: pointer;
+                display: flex;
+                font-family: $font-mono;
+                font-size: 0.75rem;
+                gap: 0.25rem;
+                padding: 0;
+
+                img {
+                    image-rendering: pixelated;
+                }
+
+                @media (hover: hover) {
+                    &:hover {
+                        color: $foreground;
+                    }
+                }
+            }
         }
     }
 

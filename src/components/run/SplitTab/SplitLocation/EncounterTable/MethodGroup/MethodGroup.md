@@ -14,6 +14,7 @@ representing the method, followed by that method's encounter rows.
 | `isSpeciesCaughtHere`      | `(species: string) => boolean`             | Yes      | -       | Whether a species is the one actually caught at this location, highlighting its row green  |
 | `method`                   | `EncounterMethod`                          | Yes      | -       | The encounter method this group represents                                                 |
 | `onSelectEncounter`        | `(encounter: Encounter) => void`           | Yes      | -       | Called when one of this method's rows is clicked                                           |
+| `onSelectItem`             | `(slug: string) => void`                   | Yes      | -       | Called with a row's held item slug when its held item button is clicked                    |
 | `selectedSpecies`          | `string`                                   | No       | -       | The species of the currently selected row, if any                                          |
 
 ## Computations

@@ -4,6 +4,7 @@ import LAKE_VERITY from '@/lib/data/platinum/locations/lake-verity';
 import MT_CORONET from '@/lib/data/platinum/locations/mt-coronet';
 import ROUTE_216 from '@/lib/data/platinum/locations/route-216';
 import ROUTE_217 from '@/lib/data/platinum/locations/route-217';
+import SNOWPOINT_CITY from '@/lib/data/platinum/locations/snowpoint-city';
 import SNOWPOINT_GYM from '@/lib/data/platinum/locations/snowpoint-gym';
 import VALOR_CAVERN from '@/lib/data/platinum/locations/valor-cavern';
 import { Split } from '@/lib/static/types';
@@ -37,6 +38,7 @@ const CANDICE: Split = {
         ROUTE_216,
         ROUTE_217,
         ACUITY_LAKEFRONT,
+        SNOWPOINT_CITY,
         SNOWPOINT_GYM,
     ],
 };

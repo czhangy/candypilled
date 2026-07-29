@@ -37,7 +37,7 @@ this location's one encounter was used up without catching anything.
 It is disabled whenever a species is already caught at this location,
 since the two outcomes are mutually exclusive. The button is hidden
 entirely when every encounter at the location uses an unmissable
-method (e.g. a gift or fossil), or when any encounter uses the
+method (e.g. a gift, trade, or fossil), or when any encounter uses the
 "starter" method, since a starter encounter can't be missed even
 alongside other, otherwise-missable methods.
 
@@ -51,6 +51,7 @@ alongside other, otherwise-missable methods.
 | `generation`        | `number`                         | Yes      | -       | The game's generation, used to resolve each Pokémon's types                        |
 | `isMissed`          | `boolean`                        | Yes      | -       | Whether this location's encounter was marked missed, styling the toggle button red |
 | `onSelectEncounter` | `(encounter: Encounter) => void` | No       | -       | Called with the clicked row's encounter                                            |
+| `onSelectItem`      | `(slug: string) => void`         | Yes      | -       | Called with a row's held item slug when its held item button is clicked            |
 | `onToggleMissed`    | `() => void`                     | Yes      | -       | Called when the "MISS"/"MISSED" button is clicked                                  |
 | `selectedSpecies`   | `string`                         | No       | -       | The species of the currently selected row, if any, to highlight it                 |
 

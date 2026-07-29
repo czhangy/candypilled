@@ -13,6 +13,7 @@ export enum EncounterMethod {
     Starter = 'starter',
     Static = 'static',
     Surf = 'surf',
+    Trade = 'trade',
     Walking = 'walking',
 }
 

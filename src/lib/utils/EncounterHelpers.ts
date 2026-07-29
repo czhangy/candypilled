@@ -226,15 +226,30 @@ export default class EncounterHelpers {
                                 : highest,
                         null
                     ),
-                    minLevel: Math.min(
-                        ...group.map(({ encounter: { minLevel } }) => minLevel)
+                    minLevel: EncounterHelpers.reduceLevels(
+                        group.map(({ encounter }) => encounter.minLevel),
+                        Math.min
                     ),
-                    maxLevel: Math.max(
-                        ...group.map(({ encounter: { maxLevel } }) => maxLevel)
+                    maxLevel: EncounterHelpers.reduceLevels(
+                        group.map(({ encounter }) => encounter.maxLevel),
+                        Math.max
                     ),
                     conditions: undefined,
                 },
             };
         });
+    }
+
+    // A group's encounters all share the same method, so their levels are
+    // either all numbers or all null (trade encounters have no level).
+    private static reduceLevels(
+        levels: (number | null)[],
+        reducer: (...values: number[]) => number
+    ): number | null {
+        const numericLevels = levels.filter(
+            (level): level is number => level !== null
+        );
+
+        return numericLevels.length > 0 ? reducer(...numericLevels) : null;
     }
 }
