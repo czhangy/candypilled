@@ -16,6 +16,7 @@ type EncounterTableProps = {
     generation: number;
     isMissed: boolean;
     onSelectEncounter?: (encounter: Encounter) => void;
+    onSelectItem: (slug: string) => void;
     onToggleMissed: () => void;
     selectedSpecies?: string;
 };
@@ -27,6 +28,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     generation,
     isMissed,
     onSelectEncounter,
+    onSelectItem,
     onToggleMissed,
     selectedSpecies,
 }) => {
@@ -48,8 +50,8 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         EncounterMethod.Starter,
         EncounterMethod.Special,
         EncounterMethod.Gift,
-        EncounterMethod.Trade,
         EncounterMethod.Egg,
+        EncounterMethod.Trade,
         EncounterMethod.Binoculars,
         EncounterMethod.Grass,
         EncounterMethod.Walking,
@@ -255,6 +257,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                             key={method}
                             method={method}
                             onSelectEncounter={handleEncounterSelect}
+                            onSelectItem={onSelectItem}
                             selectedSpecies={selectedSpecies}
                         />
                     ))}

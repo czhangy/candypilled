@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Encounter } from '@/lib/static/types';
+import ItemHelpers from '@/lib/utils/ItemHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './EncounterRow.module.scss';
 
@@ -10,6 +11,7 @@ type EncounterRowProps = {
     isCaughtHere: boolean;
     isSelected: boolean;
     onClick: () => void;
+    onSelectItem: (slug: string) => void;
 };
 
 const EncounterRow: React.FC<EncounterRowProps> = ({
@@ -19,6 +21,7 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
     isCaughtHere,
     isSelected,
     onClick,
+    onSelectItem,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
@@ -26,6 +29,7 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
 
     const SPRITE_WIDTH = 40;
     const SPRITE_HEIGHT = 30;
+    const ITEM_ICON_SIZE = 12;
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -48,6 +52,9 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
     const sprite = PokemonHelpers.getBoxSprite(encounter.species);
     const tradeForPokemon = encounter.tradeFor
         ? PokemonHelpers.getPokemonData(encounter.tradeFor)
+        : undefined;
+    const heldItem = encounter.heldItem
+        ? ItemHelpers.getHeldItemData(encounter.heldItem)
         : undefined;
 
     // -------------------------------------------------------------------------
@@ -83,6 +90,24 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
                                 Trade{' '}
                                 {tradeForPokemon?.name ?? encounter.tradeFor}
                             </span>
+                        )}
+                        {heldItem && (
+                            <button
+                                className={styles['pokemon__held-item']}
+                                onClick={(event) => {
+                                    event.stopPropagation();
+                                    onSelectItem(heldItem.slug);
+                                }}
+                                type="button"
+                            >
+                                <Image
+                                    alt={heldItem.name}
+                                    height={ITEM_ICON_SIZE}
+                                    src={heldItem.sprite}
+                                    width={ITEM_ICON_SIZE}
+                                />
+                                {heldItem.name}
+                            </button>
                         )}
                     </div>
                 </div>

@@ -12,6 +12,7 @@ type MethodGroupProps = {
     isSpeciesCaughtHere: (species: string) => boolean;
     method: EncounterMethod;
     onSelectEncounter: (encounter: Encounter) => void;
+    onSelectItem: (slug: string) => void;
     selectedSpecies?: string;
 };
 
@@ -22,6 +23,7 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
     isSpeciesCaughtHere,
     method,
     onSelectEncounter,
+    onSelectItem,
     selectedSpecies,
 }) => {
     // -------------------------------------------------------------------------
@@ -72,6 +74,7 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
                     isSelected={encounter.species === selectedSpecies}
                     key={`${method}-${encounter.species}-${encounter.minLevel}-${encounter.maxLevel}-${encounter.chance}`}
                     onClick={() => onSelectEncounter(encounter)}
+                    onSelectItem={onSelectItem}
                 />
             ))}
         </Fragment>

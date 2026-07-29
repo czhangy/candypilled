@@ -99,7 +99,8 @@
             "minLevel": null,
             "maxLevel": null,
             "chance": null,
-            "tradeFor": "buizel"
+            "tradeFor": "buizel",
+            "heldItem": "leppa-berry"
         }
     ],
     "pastoria-city": [
@@ -14920,7 +14921,8 @@
             "minLevel": null,
             "maxLevel": null,
             "chance": null,
-            "tradeFor": "machop"
+            "tradeFor": "machop",
+            "heldItem": "oran-berry"
         }
     ],
     "snowpoint-city-trade": [
@@ -14930,7 +14932,8 @@
             "minLevel": null,
             "maxLevel": null,
             "chance": null,
-            "tradeFor": "medicham"
+            "tradeFor": "medicham",
+            "heldItem": "everstone"
         }
     ]
 }

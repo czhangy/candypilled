@@ -232,6 +232,7 @@ export const platinum: GameVersion = {
                 maxLevel: null,
                 chance: null,
                 tradeFor: 'buizel',
+                heldItem: 'leppa-berry',
             },
         ],
         // Distinct from the "oreburgh-city" key already claimed by the
@@ -244,6 +245,7 @@ export const platinum: GameVersion = {
                 maxLevel: null,
                 chance: null,
                 tradeFor: 'machop',
+                heldItem: 'oran-berry',
             },
         ],
         'snowpoint-city-trade': [
@@ -254,6 +256,7 @@ export const platinum: GameVersion = {
                 maxLevel: null,
                 chance: null,
                 tradeFor: 'medicham',
+                heldItem: 'everstone',
             },
         ],
     },

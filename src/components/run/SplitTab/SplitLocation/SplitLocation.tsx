@@ -554,6 +554,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         onSelectEncounter={
                                             handleEncounterSelect
                                         }
+                                        onSelectItem={onSelectItem}
                                         onToggleMissed={handleToggleMissed}
                                         selectedSpecies={
                                             selectedEncounter?.species

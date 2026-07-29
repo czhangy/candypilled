@@ -11,18 +11,21 @@ elsewhere in the run (used instead of caught taking priority), or
 highlighted as selected if it's the currently selected row, with the
 caught/used highlights taking priority over the selected highlight. If
 the encounter is an NPC trade, a second line names the species the
-player must hand over to receive it.
+player must hand over to receive it, and if it comes with a held item,
+a third line shows the item's icon and name as a button; clicking it
+notifies the parent via `onSelectItem` without also selecting the row.
 
 ## Props
 
-| Prop                | Type             | Required | Default | Description                                                                           |
-| ------------------- | ---------------- | -------- | ------- | ------------------------------------------------------------------------------------- |
-| `displayChance`     | `number \| null` | Yes      | -       | The chance to display for this encounter, already rescaled by the parent if needed    |
-| `encounter`         | `Encounter`      | Yes      | -       | The encounter this row represents                                                     |
-| `isCaughtElsewhere` | `boolean`        | Yes      | -       | Whether this row's evolution line is caught elsewhere in the run, highlighting it red |
-| `isCaughtHere`      | `boolean`        | Yes      | -       | Whether this row is the one actually caught at this location, highlighting it green   |
-| `isSelected`        | `boolean`        | Yes      | -       | Whether this row is the currently selected encounter                                  |
-| `onClick`           | `() => void`     | Yes      | -       | Called when the row is clicked                                                        |
+| Prop                | Type                     | Required | Default | Description                                                                           |
+| ------------------- | ------------------------ | -------- | ------- | ------------------------------------------------------------------------------------- |
+| `displayChance`     | `number \| null`         | Yes      | -       | The chance to display for this encounter, already rescaled by the parent if needed    |
+| `encounter`         | `Encounter`              | Yes      | -       | The encounter this row represents                                                     |
+| `isCaughtElsewhere` | `boolean`                | Yes      | -       | Whether this row's evolution line is caught elsewhere in the run, highlighting it red |
+| `isCaughtHere`      | `boolean`                | Yes      | -       | Whether this row is the one actually caught at this location, highlighting it green   |
+| `isSelected`        | `boolean`                | Yes      | -       | Whether this row is the currently selected encounter                                  |
+| `onClick`           | `() => void`             | Yes      | -       | Called when the row is clicked                                                        |
+| `onSelectItem`      | `(slug: string) => void` | Yes      | -       | Called with `encounter.heldItem` when the held item button is clicked                 |
 
 ## Computations
 
@@ -32,6 +35,8 @@ player must hand over to receive it.
   level or a range prefixed with "Lv."
 - `tradeForPokemon` — the species data for `encounter.tradeFor`, resolved
   via `PokemonHelpers`, when the encounter is an NPC trade
+- `heldItem` — the item data for `encounter.heldItem`, resolved via
+  `ItemHelpers`, when the encounter comes with a held item
 
 ## SCSS Variable Dependencies
 
