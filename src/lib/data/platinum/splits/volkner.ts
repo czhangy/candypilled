@@ -1,3 +1,4 @@
+import ACUITY_CAVERN from '@/lib/data/platinum/locations/acuity-cavern';
 import DISTORTION_WORLD from '@/lib/data/platinum/locations/distortion-world';
 import GALACTIC_HQ from '@/lib/data/platinum/locations/galactic-hq';
 import LAKE_ACUITY from '@/lib/data/platinum/locations/lake-acuity';
@@ -32,6 +33,7 @@ const VOLKNER: Split = {
         SPEAR_PILLAR,
         DISTORTION_WORLD,
         SENDOFF_SPRING,
+        ACUITY_CAVERN,
         ROUTE_222,
         SUNYSHORE_CITY,
         ROUTE_223,

@@ -1,4 +1,5 @@
 export { default as aaronsRoom } from './aarons-room.png';
+export { default as acuityCavern } from './acuity-cavern.png';
 export { default as acuityLakefront } from './acuity-lakefront.png';
 export { default as berthasRoom } from './berthas-room.png';
 export { default as cafeCabin } from './cafe-cabin.png';
@@ -42,8 +43,7 @@ export { default as ironIslandB2fWest } from './iron-island-b2f-west.png';
 export { default as ironIslandB3f } from './iron-island-b3f.png';
 export { default as ironIslandExterior } from './iron-island-exterior.png';
 export { default as jubilifeCity } from './jubilife-city.png';
-export { default as lakeAcuityCavern } from './lake-acuity-cavern.png';
-export { default as lakeAcuityLake } from './lake-acuity-lake.png';
+export { default as lakeAcuity } from './lake-acuity.png';
 export { default as lakeValorCavern } from './lake-valor-cavern.png';
 export { default as lakeValorDry } from './lake-valor-dry.png';
 export { default as lakeValorPostGiratina } from './lake-valor-post-giratina.png';
