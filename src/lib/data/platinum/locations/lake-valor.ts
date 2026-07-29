@@ -1,7 +1,6 @@
 import {
-    lakeValorCavern,
-    lakeValorDry,
     lakeValorPostGiratina,
+    lakeValorPreGiratina,
 } from '@/lib/data/platinum/maps';
 import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
@@ -10,8 +9,8 @@ const LAKE_VALOR: Location = {
     name: 'Lake Valor',
     subareas: [
         {
-            name: 'Dry',
-            map: lakeValorDry,
+            name: 'Pre-Giratina',
+            map: lakeValorPreGiratina,
             battles: [
                 {
                     isOptional: true,
@@ -95,64 +94,6 @@ const LAKE_VALOR: Location = {
                     ],
                     x: 44,
                     y: 60.9,
-                },
-            ],
-        },
-        {
-            name: 'Cavern',
-            map: lakeValorCavern,
-            encountersKey: 'lake-valor-cavern',
-            battles: [
-                {
-                    isMiniboss: true,
-                    trainerClass: 'commander-saturn',
-                    name: 'Saturn',
-                    team: [
-                        {
-                            slug: 'golbat',
-                            ability: 1,
-                            gender: 'male',
-                            ivs: 24,
-                            level: 38,
-                            nature: Nature.Naughty,
-                            moves: [
-                                'air-cutter',
-                                'bite',
-                                'toxic',
-                                'supersonic',
-                            ],
-                        },
-                        {
-                            slug: 'bronzor',
-                            ability: 1,
-                            ivs: 24,
-                            level: 38,
-                            nature: Nature.Quirky,
-                            moves: [
-                                'gyro-ball',
-                                'shadow-ball',
-                                'rock-tomb',
-                                'iron-defense',
-                            ],
-                        },
-                        {
-                            slug: 'toxicroak',
-                            ability: 1,
-                            gender: 'male',
-                            ivs: 24,
-                            level: 40,
-                            nature: Nature.Adamant,
-                            moves: [
-                                'poison-jab',
-                                'revenge',
-                                'mud-bomb',
-                                'feint-attack',
-                            ],
-                            heldItem: 'sitrus-berry',
-                        },
-                    ],
-                    x: 50.7,
-                    y: 63.5,
                 },
             ],
         },
