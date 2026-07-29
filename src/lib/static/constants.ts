@@ -1,10 +1,5 @@
 import { Setting, StatValues } from '@/lib/static/types';
 
-// The location name recorded for a starter caught as its own encounter
-// (the "Starter As Separate Encounter" setting), rather than at the
-// game's actual starting route.
-export const STARTER_LOCATION_NAME = 'Starter';
-
 export const SETTINGS: Setting[] = [
     {
         id: 'hide-dupes',
@@ -17,10 +12,6 @@ export const SETTINGS: Setting[] = [
     {
         id: 'hide-evs',
         title: 'Hide EVs',
-    },
-    {
-        id: 'separate-starter-encounter',
-        title: 'Starter As Separate Encounter',
     },
     {
         id: 'highlight-dangerous',

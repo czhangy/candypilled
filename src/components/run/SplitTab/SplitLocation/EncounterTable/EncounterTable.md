@@ -43,17 +43,16 @@ alongside other, otherwise-missable methods.
 
 ## Props
 
-| Prop                      | Type                             | Required | Default | Description                                                                             |
-| ------------------------- | -------------------------------- | -------- | ------- | --------------------------------------------------------------------------------------- |
-| `caughtHere`              | `string`                         | No       | -       | The species already caught at this location, if any, highlighted green                  |
-| `dupes`                   | `string[]`                       | Yes      | -       | Every species caught so far in the run, regardless of location                          |
-| `encounters`              | `Encounter[]`                    | Yes      | -       | The encounter slots to display                                                          |
-| `generation`              | `number`                         | Yes      | -       | The game's generation, used to resolve each Pokémon's types                             |
-| `isMissed`                | `boolean`                        | Yes      | -       | Whether this location's encounter was marked missed, styling the toggle button red      |
-| `onSelectEncounter`       | `(encounter: Encounter) => void` | No       | -       | Called with the clicked row's encounter                                                 |
-| `onToggleMissed`          | `() => void`                     | Yes      | -       | Called when the "MISS"/"MISSED" button is clicked                                       |
-| `selectedSpecies`         | `string`                         | No       | -       | The species of the currently selected row, if any, to highlight it                      |
-| `starterCaughtSeparately` | `boolean`                        | Yes      | -       | Whether the run's starter was caught as its own encounter, hiding "starter"-method rows |
+| Prop                | Type                             | Required | Default | Description                                                                        |
+| ------------------- | -------------------------------- | -------- | ------- | ---------------------------------------------------------------------------------- |
+| `caughtHere`        | `string`                         | No       | -       | The species already caught at this location, if any, highlighted green             |
+| `dupes`             | `string[]`                       | Yes      | -       | Every species caught so far in the run, regardless of location                     |
+| `encounters`        | `Encounter[]`                    | Yes      | -       | The encounter slots to display                                                     |
+| `generation`        | `number`                         | Yes      | -       | The game's generation, used to resolve each Pokémon's types                        |
+| `isMissed`          | `boolean`                        | Yes      | -       | Whether this location's encounter was marked missed, styling the toggle button red |
+| `onSelectEncounter` | `(encounter: Encounter) => void` | No       | -       | Called with the clicked row's encounter                                            |
+| `onToggleMissed`    | `() => void`                     | Yes      | -       | Called when the "MISS"/"MISSED" button is clicked                                  |
+| `selectedSpecies`   | `string`                         | No       | -       | The species of the currently selected row, if any, to highlight it                 |
 
 ## State
 
@@ -74,16 +73,14 @@ alongside other, otherwise-missable methods.
   time-of-day condition, plus those matching `selectedTimeOfDay`, and
   further filtered via `EncounterHelpers.isEncounterHidden`, which
   excludes rows whose evolution line is caught elsewhere in the run (the
-  "Hide Dupes" setting), rows using the "starter" method when
-  `starterCaughtSeparately` is true, and legendary/mythical rows (the
-  "Hide Legendaries" setting). Any future setting that should
-  permanently hide encounter rows is added there rather than here, so
-  this filter and `SplitLocation`'s "is there anything left to show at
-  all" check both extend automatically
+  "Hide Dupes" setting) and legendary/mythical rows (the "Hide
+  Legendaries" setting). Any future setting that should permanently hide
+  encounter rows is added there rather than here, so this filter and
+  `SplitLocation`'s "is there anything left to show at all" check both
+  extend automatically
 - `hasVisibleStarterEncounter` — whether `visibleEncounters` includes
-  any "starter"-method encounter (after `starterCaughtSeparately`
-  filtering), used to hide every other method and the time-of-day
-  buttons when true
+  any "starter"-method encounter, used to hide every other method and
+  the time-of-day buttons when true
 - `methods` — the distinct encounter methods present in
   `visibleEncounters`, restricted to just `starter` when
   `hasVisibleStarterEncounter` is true, ordered by a fixed

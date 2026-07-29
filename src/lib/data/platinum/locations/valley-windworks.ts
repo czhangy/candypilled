@@ -1,10 +1,10 @@
-import { valleyWindworksExterior } from '@/lib/data/platinum/maps';
+import { valleyWindworks } from '@/lib/data/platinum/maps';
 import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
-const VALLEY_WINDWORKS_EXTERIOR: Location = {
-    name: 'Valley Windworks Exterior',
-    map: valleyWindworksExterior,
+const VALLEY_WINDWORKS: Location = {
+    name: 'Valley Windworks',
+    map: valleyWindworks,
     encountersKey: 'valley-windworks',
     battles: [
         {
@@ -25,4 +25,4 @@ const VALLEY_WINDWORKS_EXTERIOR: Location = {
     ],
 };
 
-export default VALLEY_WINDWORKS_EXTERIOR;
+export default VALLEY_WINDWORKS;

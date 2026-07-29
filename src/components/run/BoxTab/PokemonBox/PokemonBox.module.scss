@@ -42,6 +42,7 @@
             }
         }
 
+        .import-button,
         .add-button {
             @include mono-label;
 
@@ -51,7 +52,6 @@
             cursor: pointer;
             font-size: 0.95rem;
             letter-spacing: 0.05em;
-            margin-left: auto;
             padding: 0;
             text-transform: uppercase;
             transition: opacity 0.2s ease;
@@ -65,6 +65,10 @@
             @media (prefers-reduced-motion: reduce) {
                 transition: none;
             }
+        }
+
+        .import-button {
+            margin-left: auto;
         }
     }
 

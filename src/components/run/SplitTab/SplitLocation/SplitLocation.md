@@ -133,10 +133,6 @@ Pokédex tile.
 - `usedLocations` — every location name in `run.caughtPokemon`, plus
   `run.missedLocations`; passed to the Pokédex tile to highlight
   already-used locations in its locations tab
-- `starterCaughtSeparately` — whether `run.caughtPokemon` includes an
-  entry located at `STARTER_LOCATION_NAME`; passed to the encounter
-  table to hide "starter"-method rows once the starter is tracked as
-  its own encounter
 - `isStarterEncounter` — whether the Pokédex tile's selected Pokémon
   comes from a "starter" encounter: `selectedEncounter.method` when an
   encounter is selected, otherwise whether `encounter` is in the same
@@ -149,11 +145,11 @@ Pokédex tile.
   "CATCH"/"CAUGHT" and to expose `AddPokemonModal`'s Location field
 - `allEncountersHidden` — whether `EncounterHelpers.areAllEncountersHidden`
   returns `true` for the active section's encounters given the current
-  global settings (e.g. "Hide Dupes", "Hide Legendaries") plus `dupes`,
-  `encounter`, and `starterCaughtSeparately`; hides the encounter table
-  and Pokédex tile when `true`. New settings that permanently hide
-  encounters extend `ENCOUNTER_HIDE_RULES` in `EncounterHelpers` rather
-  than adding logic here
+  global settings (e.g. "Hide Dupes", "Hide Legendaries") plus `dupes`
+  and `encounter`; hides the encounter table and Pokédex tile when
+  `true`. New settings that permanently hide encounters extend
+  `ENCOUNTER_HIDE_RULES` in `EncounterHelpers` rather than adding logic
+  here
 
 The root element's `id` is `SplitHelpers.getLocationSlug(location.name,
 index)`, so `SplitTab`'s table of contents can link directly to this card;

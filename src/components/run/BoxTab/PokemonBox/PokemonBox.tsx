@@ -12,6 +12,7 @@ type PokemonBoxProps = {
     caughtPokemon: CaughtPokemon[];
     levelCap: number | null;
     onAddPokemonClick: () => void;
+    onImportClick: () => void;
     onReorderPokemon: (fromLocation: string, toLocation: string) => void;
     onSelectPokemon: (location: string) => void;
     onViewChange: (view: BoxView) => void;
@@ -23,6 +24,7 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
     caughtPokemon,
     levelCap,
     onAddPokemonClick,
+    onImportClick,
     onReorderPokemon,
     onSelectPokemon,
     onViewChange,
@@ -140,6 +142,15 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                         selectedTags={selectedTags}
                         tags={allTags}
                     />
+                )}
+                {view === 'alive' && (
+                    <button
+                        className={styles['import-button']}
+                        onClick={onImportClick}
+                        type="button"
+                    >
+                        Import
+                    </button>
                 )}
                 {view === 'alive' && (
                     <button

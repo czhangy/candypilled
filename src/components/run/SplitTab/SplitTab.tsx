@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
-import { STARTER_LOCATION_NAME } from '@/lib/static/constants';
 import { Encounter, Game, Location, Run } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -157,15 +156,11 @@ const SplitTab: React.FC<SplitTabProps> = ({
         const caughtHere = run.caughtPokemon.find(
             (caught) => caught.location === location.name
         )?.slug;
-        const starterCaughtSeparately = run.caughtPokemon.some(
-            (caught) => caught.location === STARTER_LOCATION_NAME
-        );
 
         return EncounterHelpers.areAllEncountersDupes(
             getLocationEncounters(location),
             dupes,
             caughtHere,
-            starterCaughtSeparately,
             game.generation
         );
     };

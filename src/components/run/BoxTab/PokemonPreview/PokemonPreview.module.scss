@@ -94,16 +94,10 @@ $label-width: 4.5rem;
                     font-size: 1rem;
 
                     .gender {
-                        font-size: 0.85rem;
+                        @include gender-symbol;
+
+                        font-size: 0.65rem;
                         margin-left: 0.25rem;
-
-                        &--male {
-                            color: $blue;
-                        }
-
-                        &--female {
-                            color: $pink;
-                        }
                     }
                 }
             }

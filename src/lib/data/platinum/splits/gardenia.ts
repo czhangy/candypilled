@@ -7,7 +7,7 @@ import MT_CORONET from '@/lib/data/platinum/locations/mt-coronet';
 import ROUTE_204 from '@/lib/data/platinum/locations/route-204';
 import ROUTE_205 from '@/lib/data/platinum/locations/route-205';
 import ROUTE_211 from '@/lib/data/platinum/locations/route-211';
-import VALLEY_WINDWORKS_EXTERIOR from '@/lib/data/platinum/locations/valley-windworks-exterior';
+import VALLEY_WINDWORKS from '@/lib/data/platinum/locations/valley-windworks';
 import VALLEY_WINDWORKS_INTERIOR from '@/lib/data/platinum/locations/valley-windworks-interior';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
@@ -20,7 +20,7 @@ const GARDENIA: Split = {
             LocationHelpers.withSubareaOrder(ROUTE_204, ['North', 'South']),
             ['South']
         ),
-        VALLEY_WINDWORKS_EXTERIOR,
+        VALLEY_WINDWORKS,
         FLOAROMA_MEADOW,
         VALLEY_WINDWORKS_INTERIOR,
         LocationHelpers.withHiddenSubareaBattles(ROUTE_205, ['North']),
