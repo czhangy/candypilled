@@ -37,8 +37,8 @@ const ROUTE_211: Location = {
                             nature: Nature.Serious,
                         },
                     ],
-                    x: 29.4,
-                    y: 36,
+                    x: 29.6,
+                    y: 37.1,
                 },
                 {
                     isOptional: true,
@@ -107,8 +107,8 @@ const ROUTE_211: Location = {
                             ivs: 6,
                         },
                     ],
-                    x: 53,
-                    y: 32.1,
+                    x: 52.9,
+                    y: 31.7,
                 },
                 {
                     isOptional: true,

@@ -165,7 +165,7 @@ const ROUTE_210: Location = {
                             nature: Nature.Naive,
                         },
                     ],
-                    x: 73.6,
+                    x: 73.5,
                     y: 81.7,
                 },
                 {
