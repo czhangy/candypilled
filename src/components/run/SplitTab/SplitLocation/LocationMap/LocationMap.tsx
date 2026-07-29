@@ -33,7 +33,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const EDIT_MODE_ON = true;
+    const EDIT_MODE_ON = process.env.NODE_ENV !== 'production';
 
     // -------------------------------------------------------------------------
     // STATE
