@@ -174,6 +174,9 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     const locations = species
         ? EncounterHelpers.getEncounterLocations(game, species)
         : [];
+    const metLocations = Object.values(game.metLocationById).sort((a, b) =>
+        a.localeCompare(b)
+    );
     const defaultCatchSpecies = originalSpecies ?? species;
     const isCaughtHere =
         rest.mode === 'catch' &&
@@ -244,6 +247,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                 defaultCatchSpecies && (
                     <AddPokemonModal
                         accentColor={game.accentColor}
+                        allLocations={metLocations}
                         allSpecies={EncounterHelpers.getAllEncounterSpecies(
                             game
                         )}
@@ -251,7 +255,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                         defaultLevel={rest.defaultLevel}
                         defaultLocation=""
                         defaultSpecies={defaultCatchSpecies}
-                        existingLocations={[]}
+                        existingLocations={usedLocations}
                         generation={generation}
                         onClose={handleCloseAddPokemonModal}
                         onSubmit={handleAddPokemon}

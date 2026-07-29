@@ -179,7 +179,14 @@ const Dropdown: React.FC<DropdownProps> = ({
                 onClick={handleToggle}
                 type="button"
             >
-                <span className={styles['trigger-label']}>
+                <span
+                    className={[
+                        styles['trigger-label'],
+                        !selectedOption && styles['trigger-label--placeholder'],
+                    ]
+                        .filter(Boolean)
+                        .join(' ')}
+                >
                     {selectedOption?.label ?? placeholder}
                 </span>
                 <span

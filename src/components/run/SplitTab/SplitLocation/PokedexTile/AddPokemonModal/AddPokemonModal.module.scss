@@ -13,9 +13,5 @@
         .label {
             @include form-label;
         }
-
-        .input {
-            @include form-input;
-        }
     }
 }

@@ -1,13 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import Dropdown from '@/components/common/Dropdown/Dropdown';
 import Modal from '@/components/common/Modal/Modal';
-import { CaughtPokemon, PokemonData } from '@/lib/static/types';
+import { CaughtPokemon, DropdownOption, PokemonData } from '@/lib/static/types';
 import styles from './AddPokemonModal.module.scss';
 import PokemonForm from './PokemonForm/PokemonForm';
 
 type AddPokemonModalProps = {
     accentColor?: string;
+    allLocations: string[];
     allSpecies: PokemonData[];
     buttonTextColor?: string;
     defaultLevel?: number;
@@ -37,6 +39,7 @@ type AddPokemonModalProps = {
 
 const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
     accentColor,
+    allLocations,
     allSpecies,
     buttonTextColor,
     defaultLevel,
@@ -59,10 +62,8 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
     // HANDLERS
     // -------------------------------------------------------------------------
 
-    const handleLocationChange = (
-        event: React.ChangeEvent<HTMLInputElement>
-    ): void => {
-        setLocation(event.target.value);
+    const handleLocationChange = (value: string): void => {
+        setLocation(value);
     };
 
     const handleFormSubmit = (
@@ -88,11 +89,10 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const isDuplicateCaughtLocation =
-        showLocation && existingLocations.includes(location);
-    const disabledReason = isDuplicateCaughtLocation
-        ? 'A Pokémon is already recorded at this location'
-        : '';
+    const locationOptions: DropdownOption[] = allLocations
+        .filter((name) => !existingLocations.includes(name))
+        .map((name) => ({ label: name, value: name }));
+    const disabledReason = showLocation && !location ? 'Select a location' : '';
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -109,14 +109,11 @@ const AddPokemonModal: React.FC<AddPokemonModalProps> = ({
                 <div className={styles['add-pokemon-modal']}>
                     {showLocation && (
                         <div className={styles.field}>
-                            <label className={styles.label} htmlFor="location">
-                                Location
-                            </label>
-                            <input
-                                className={styles.input}
-                                id="location"
+                            <span className={styles.label}>Location</span>
+                            <Dropdown
                                 onChange={handleLocationChange}
-                                type="text"
+                                options={locationOptions}
+                                searchable
                                 value={location}
                             />
                         </div>

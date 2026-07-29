@@ -5,7 +5,9 @@ menu of options, portaled to the document body and positioned below
 the trigger's screen coordinates so it isn't clipped by an ancestor's
 `overflow` (e.g. a scrollable modal). Clicking an option selects it and
 closes the menu, and the selected option is highlighted in the game's
-accent color. The menu also closes on an outside click. It slides down
+accent color. The trigger shows `placeholder` in a dimmer color while
+nothing is selected, so it reads clearly as a placeholder rather than a
+chosen value. The menu also closes on an outside click. It slides down
 while fading in when it opens, and reverses that animation on close
 before unmounting (skipped in favor of an instant close when the user
 prefers reduced motion). Optionally offers a search input at the top of
