@@ -11,7 +11,6 @@ import TagFilter from './TagFilter/TagFilter';
 type PokemonBoxProps = {
     caughtPokemon: CaughtPokemon[];
     levelCap: number | null;
-    onAddPokemonClick: () => void;
     onImportClick: () => void;
     onReorderPokemon: (fromLocation: string, toLocation: string) => void;
     onSelectPokemon: (location: string) => void;
@@ -23,7 +22,6 @@ type PokemonBoxProps = {
 const PokemonBox: React.FC<PokemonBoxProps> = ({
     caughtPokemon,
     levelCap,
-    onAddPokemonClick,
     onImportClick,
     onReorderPokemon,
     onSelectPokemon,
@@ -150,15 +148,6 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                         type="button"
                     >
                         Import
-                    </button>
-                )}
-                {view === 'alive' && (
-                    <button
-                        className={styles['add-button']}
-                        onClick={onAddPokemonClick}
-                        type="button"
-                    >
-                        Add
                     </button>
                 )}
             </div>

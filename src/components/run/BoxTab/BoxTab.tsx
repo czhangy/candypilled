@@ -1,10 +1,7 @@
 import { useState } from 'react';
-import AddPokemonModal from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/AddPokemonModal';
 import { PokemonStatus } from '@/lib/static/enums';
 import { BoxView, CaughtPokemon, Game, Run } from '@/lib/static/types';
-import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
-import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './BoxTab.module.scss';
@@ -39,7 +36,6 @@ const BoxTab: React.FC<BoxTabProps> = ({
     // STATE
     // -------------------------------------------------------------------------
 
-    const [isAddPokemonModalOpen, setIsAddPokemonModalOpen] = useState(false);
     const [isImportModalOpen, setIsImportModalOpen] = useState(false);
     const [view, setView] = useState<BoxView>('alive');
 
@@ -48,16 +44,6 @@ const BoxTab: React.FC<BoxTabProps> = ({
     // -------------------------------------------------------------------------
 
     const variant = StringHelpers.toSlug(game.name);
-    const allSpecies = PokemonHelpers.getAllSpecies(game.generation).filter(
-        (species) =>
-            !run.caughtPokemon.some((caughtPokemon) =>
-                EvolutionHelpers.isSameEvolutionLine(
-                    species.slug,
-                    caughtPokemon.slug,
-                    game.generation
-                )
-            )
-    );
     const selectedCaughtPokemon = run.caughtPokemon.find(
         (caughtPokemon) => caughtPokemon.location === selectedPokemon
     );
@@ -81,14 +67,6 @@ const BoxTab: React.FC<BoxTabProps> = ({
     // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
-
-    const handleAddPokemonClick = (): void => {
-        setIsAddPokemonModalOpen(true);
-    };
-
-    const handleCloseAddPokemonModal = (): void => {
-        setIsAddPokemonModalOpen(false);
-    };
 
     const handleImportClick = (): void => {
         setIsImportModalOpen(true);
@@ -122,37 +100,6 @@ const BoxTab: React.FC<BoxTabProps> = ({
         LocalStorageHelpers.saveRun(game, updatedRun);
         onDeselectPokemon();
         setView('alive');
-    };
-
-    const handleAddPokemon = (
-        details: Pick<
-            CaughtPokemon,
-            | 'ability'
-            | 'evs'
-            | 'gender'
-            | 'ivs'
-            | 'level'
-            | 'moves'
-            | 'nature'
-            | 'slug'
-            | 'tags'
-        >,
-        location: string
-    ): void => {
-        const updatedRun: Run = {
-            ...run,
-            caughtPokemon: [
-                ...run.caughtPokemon,
-                {
-                    ...details,
-                    heldItem: '',
-                    location,
-                    status: PokemonStatus.Alive,
-                },
-            ],
-        };
-
-        LocalStorageHelpers.saveRun(game, updatedRun);
     };
 
     const handleToggleStatus = (pokemon: CaughtPokemon): void => {
@@ -263,7 +210,6 @@ const BoxTab: React.FC<BoxTabProps> = ({
             <PokemonBox
                 caughtPokemon={run.caughtPokemon}
                 levelCap={levelCap}
-                onAddPokemonClick={handleAddPokemonClick}
                 onImportClick={handleImportClick}
                 onReorderPokemon={handleReorderPokemon}
                 onSelectPokemon={onSelectPokemon}
@@ -289,23 +235,6 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 version={game.version}
                 view={view}
             />
-            {isAddPokemonModalOpen && (
-                <AddPokemonModal
-                    accentColor={game.accentColor}
-                    allSpecies={allSpecies}
-                    buttonTextColor={game.textContrastColor}
-                    defaultLocation=""
-                    defaultSpecies={allSpecies[0]?.slug ?? ''}
-                    existingLocations={run.caughtPokemon.map(
-                        (caughtPokemon) => caughtPokemon.location
-                    )}
-                    generation={game.generation}
-                    onClose={handleCloseAddPokemonModal}
-                    onSubmit={handleAddPokemon}
-                    showLocation
-                    version={game.version}
-                />
-            )}
             {isImportModalOpen && (
                 <ImportBoxModal
                     accentColor={game.accentColor}

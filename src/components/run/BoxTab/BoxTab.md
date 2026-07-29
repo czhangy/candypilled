@@ -20,21 +20,15 @@ the currently selected Pokémon on the right, taking up the remaining third.
 
 ## State
 
-| State                   | Type      | Initial value | Description                                                |
-| ----------------------- | --------- | ------------- | ---------------------------------------------------------- |
-| `isAddPokemonModalOpen` | `boolean` | `false`       | Whether `AddPokemonModal` is shown                         |
-| `isImportModalOpen`     | `boolean` | `false`       | Whether `ImportBoxModal` is shown                          |
-| `view`                  | `BoxView` | `'alive'`     | Which of `PokemonBox`'s views ("alive" or "dead") is shown |
+| State               | Type      | Initial value | Description                                                |
+| ------------------- | --------- | ------------- | ---------------------------------------------------------- |
+| `isImportModalOpen` | `boolean` | `false`       | Whether `ImportBoxModal` is shown                          |
+| `view`              | `BoxView` | `'alive'`     | Which of `PokemonBox`'s views ("alive" or "dead") is shown |
 
 ## Computations
 
 - `variant` — the game's slug, used to resolve sprite art for the correct
   game generation
-- `allSpecies` — every species introduced at or before `game.generation`
-  (via `PokemonHelpers.getAllSpecies`) that isn't already caught or in a
-  caught Pokémon's evolution line (via `EvolutionHelpers.isSameEvolutionLine`
-  against every `run.caughtPokemon` entry), offered in `AddPokemonModal`'s
-  Pokémon dropdown; also supplies its default species (the first entry)
 - `selectedCaughtPokemon` — the caught Pokémon whose location matches
   `selectedPokemon`, passed to `PokemonPreview`
 - `canSelectLocation` — whether `selectedCaughtPokemon`'s location matches
@@ -46,18 +40,9 @@ the currently selected Pokémon on the right, taking up the remaining third.
 - `levelCap` — the current split's level cap via
   `SplitHelpers.getLevelCap`, passed to `PokemonBox` and
   `PokemonPreview` so over-leveled Pokémon can be flagged
-- `run.caughtPokemon`'s locations are passed to `AddPokemonModal` as
-  `existingLocations`, so it can disable submitting a duplicate location
 
 ## Handlers
 
-- `handleAddPokemonClick` — opens `AddPokemonModal`
-- `handleCloseAddPokemonModal` — closes `AddPokemonModal`
-- `handleAddPokemon` — appends a new record (the submitted details, its
-  freeform location, an empty `heldItem`, and a `status` of
-  `PokemonStatus.Alive`) to `run.caughtPokemon` and saves the updated
-  run; `AddPokemonModal` closes itself, with its own exit animation,
-  once it requests the close
 - `handleToggleStatus` — flips a caught Pokémon's `status` between
   `PokemonStatus.Alive` and `PokemonStatus.Dead`, clearing its `heldItem`
   when the new status is `Dead` (a dead Pokémon can't hold onto its

@@ -3,7 +3,7 @@
 A grid of the Pokémon caught during the current run, showing each one's
 box sprite. The header toggles between two views: "Alive", showing every
 living Pokémon, and "Dead", showing only those marked as dead; while
-viewing the alive Pokémon, "Import" and "Add" buttons sit at the header's
+viewing the alive Pokémon, an "Import" button sits at the header's
 right edge. Clicking a slot selects that Pokémon. Pokémon above the
 current split's level cap are greyed out, but remain clickable. Slots can
 be dragged and dropped onto one another to reorder the caught Pokémon. A
@@ -18,17 +18,16 @@ says so instead of the grid.
 
 ## Props
 
-| Prop                | Type                                                 | Required | Default | Description                                                                    |
-| ------------------- | ---------------------------------------------------- | -------- | ------- | ------------------------------------------------------------------------------ |
-| `caughtPokemon`     | `CaughtPokemon[]`                                    | Yes      | -       | The Pokémon caught during the run, one per box slot                            |
-| `levelCap`          | `number \| null`                                     | Yes      | -       | The current split's level cap, used to grey out over-leveled Pokémon           |
-| `onAddPokemonClick` | `() => void`                                         | Yes      | -       | Called when the "Add Pokémon" button is clicked (only shown in the alive view) |
-| `onImportClick`     | `() => void`                                         | Yes      | -       | Called when the "Import" button is clicked (only shown in the alive view)      |
-| `onReorderPokemon`  | `(fromLocation: string, toLocation: string) => void` | Yes      | -       | Called with the dragged and drop-target locations when a slot is dropped       |
-| `onSelectPokemon`   | `(location: string) => void`                         | Yes      | -       | Called with a Pokémon's location when its slot is clicked                      |
-| `onViewChange`      | `(view: BoxView) => void`                            | Yes      | -       | Called with the clicked header button's view                                   |
-| `selectedPokemon`   | `string`                                             | No       | -       | The location of the currently selected caught Pokémon, if any                  |
-| `view`              | `BoxView`                                            | Yes      | -       | Which set of caught Pokémon is currently shown                                 |
+| Prop               | Type                                                 | Required | Default | Description                                                               |
+| ------------------ | ---------------------------------------------------- | -------- | ------- | ------------------------------------------------------------------------- |
+| `caughtPokemon`    | `CaughtPokemon[]`                                    | Yes      | -       | The Pokémon caught during the run, one per box slot                       |
+| `levelCap`         | `number \| null`                                     | Yes      | -       | The current split's level cap, used to grey out over-leveled Pokémon      |
+| `onImportClick`    | `() => void`                                         | Yes      | -       | Called when the "Import" button is clicked (only shown in the alive view) |
+| `onReorderPokemon` | `(fromLocation: string, toLocation: string) => void` | Yes      | -       | Called with the dragged and drop-target locations when a slot is dropped  |
+| `onSelectPokemon`  | `(location: string) => void`                         | Yes      | -       | Called with a Pokémon's location when its slot is clicked                 |
+| `onViewChange`     | `(view: BoxView) => void`                            | Yes      | -       | Called with the clicked header button's view                              |
+| `selectedPokemon`  | `string`                                             | No       | -       | The location of the currently selected caught Pokémon, if any             |
+| `view`             | `BoxView`                                            | Yes      | -       | Which set of caught Pokémon is currently shown                            |
 
 ## State
 
