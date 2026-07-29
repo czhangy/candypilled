@@ -93,7 +93,7 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
             accentColor={accentColor}
             buttonTextColor={buttonTextColor}
             onClose={onClose}
-            title={`Edit ${PokemonHelpers.getPokemonData(pokemon.slug)?.name ?? pokemon.slug}`}
+            title={`Edit ${PokemonHelpers.getPokemonData(PokemonHelpers.getDisplaySlug(pokemon))?.name ?? pokemon.slug}`}
         >
             {(requestClose) => (
                 <PokemonForm

@@ -49,31 +49,40 @@ const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
             )}
             {selectedBattle && (
                 <div className={styles.grid}>
-                    {team.map((mon, index) => (
-                        <button
-                            aria-pressed={String(index) === selectedMemberIndex}
-                            className={[
-                                styles.slot,
-                                String(index) === selectedMemberIndex &&
-                                    styles['slot--selected'],
-                            ]
-                                .filter(Boolean)
-                                .join(' ')}
-                            key={index}
-                            onClick={() => onSelectMember(String(index))}
-                            type="button"
-                        >
-                            <Image
-                                alt={
-                                    PokemonHelpers.getPokemonData(mon.slug)
-                                        ?.name ?? mon.slug
+                    {team.map((mon, index) => {
+                        const displaySlug = PokemonHelpers.getDisplaySlug(mon);
+
+                        return (
+                            <button
+                                aria-pressed={
+                                    String(index) === selectedMemberIndex
                                 }
-                                height={SPRITE_HEIGHT}
-                                src={PokemonHelpers.getBoxSprite(mon.slug)}
-                                width={SPRITE_WIDTH}
-                            />
-                        </button>
-                    ))}
+                                className={[
+                                    styles.slot,
+                                    String(index) === selectedMemberIndex &&
+                                        styles['slot--selected'],
+                                ]
+                                    .filter(Boolean)
+                                    .join(' ')}
+                                key={index}
+                                onClick={() => onSelectMember(String(index))}
+                                type="button"
+                            >
+                                <Image
+                                    alt={
+                                        PokemonHelpers.getPokemonData(
+                                            displaySlug
+                                        )?.name ?? mon.slug
+                                    }
+                                    height={SPRITE_HEIGHT}
+                                    src={PokemonHelpers.getBoxSprite(
+                                        displaySlug
+                                    )}
+                                    width={SPRITE_WIDTH}
+                                />
+                            </button>
+                        );
+                    })}
                 </div>
             )}
         </div>

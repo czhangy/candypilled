@@ -17,6 +17,11 @@ export default class ItemHelpers {
         return ITEMS[slug];
     }
 
+    /** The slug of the held item named name, or undefined if none matches. */
+    static getHeldItemSlugByName(name: string): string | undefined {
+        return Object.values(ITEMS).find((item) => item.name === name)?.slug;
+    }
+
     /** The sprite path for the held item slug, or undefined if no held item matches. */
     static getHeldItemSprite(slug: string): string | undefined {
         return ItemHelpers.getHeldItemData(slug)?.sprite;

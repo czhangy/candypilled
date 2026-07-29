@@ -11,3 +11,10 @@ assigning one to a Hall of Fame team slot.
 | `variant`  | `string`                           | Yes      | -       | Game slug used to resolve the correct sprite style |
 | `onSelect` | `(pokemon: CaughtPokemon) => void` | Yes      | -       | Called with the chosen Pokémon                     |
 | `onClose`  | `() => void`                       | Yes      | -       | Called when the modal is dismissed                 |
+
+## Computations
+
+- `displaySlug` — a given Pokémon's species slug, resolved via
+  `PokemonHelpers.getDisplaySlug`; differs from its stored `slug` for a
+  species with a held-item form change (e.g. Giratina holding the Griseous
+  Orb), and feeds both `sprite` and `name`, per tile

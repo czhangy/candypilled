@@ -162,12 +162,12 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                 {displayedPokemon.length > 0 ? (
                     <div className={styles.grid}>
                         {displayedPokemon.map((pokemon) => {
-                            const data = PokemonHelpers.getPokemonData(
-                                pokemon.slug
-                            );
-                            const sprite = PokemonHelpers.getBoxSprite(
-                                pokemon.slug
-                            );
+                            const displaySlug =
+                                PokemonHelpers.getDisplaySlug(pokemon);
+                            const data =
+                                PokemonHelpers.getPokemonData(displaySlug);
+                            const sprite =
+                                PokemonHelpers.getBoxSprite(displaySlug);
                             const heldItemData = pokemon.heldItem
                                 ? ItemHelpers.getHeldItemData(pokemon.heldItem)
                                 : undefined;

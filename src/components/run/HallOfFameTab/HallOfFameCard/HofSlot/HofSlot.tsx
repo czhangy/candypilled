@@ -20,11 +20,14 @@ const HofSlot: React.FC<HofSlotProps> = ({ onClick, pokemon, variant }) => {
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const sprite = pokemon
-        ? PokemonHelpers.getPokemonSprite(pokemon.slug, variant)
+    const displaySlug = pokemon
+        ? PokemonHelpers.getDisplaySlug(pokemon)
         : undefined;
-    const pokemonName = pokemon
-        ? (PokemonHelpers.getPokemonData(pokemon.slug)?.name ?? pokemon.slug)
+    const sprite = displaySlug
+        ? PokemonHelpers.getPokemonSprite(displaySlug, variant)
+        : undefined;
+    const pokemonName = displaySlug
+        ? (PokemonHelpers.getPokemonData(displaySlug)?.name ?? pokemon?.slug)
         : undefined;
 
     // -------------------------------------------------------------------------

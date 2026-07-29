@@ -53,6 +53,10 @@ says so instead of the grid.
 - `heldItemData` — a given Pokémon's held item data (name and sprite),
   resolved via `ItemHelpers.getHeldItemData`, per slot; omitted (no icon
   shown) when the Pokémon has no held item or no data matches
+- `displaySlug` — a given Pokémon's species slug for sprite/name purposes,
+  resolved via `PokemonHelpers.getDisplaySlug`; differs from its stored
+  `slug` for a species with a held-item form change (e.g. Giratina holding
+  the Griseous Orb shows its Origin Forme box sprite), per slot
 
 ## Handlers
 

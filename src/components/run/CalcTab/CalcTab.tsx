@@ -372,6 +372,27 @@ const CalcTab: React.FC<CalcTabProps> = ({
         (slug) => MoveHelpers.getMoveData(slug)?.name ?? slug
     );
 
+    // The calc's held item is edited independently of the caught/team
+    // Pokémon's own held item (a "what if" sandbox), so a form change
+    // reflects whichever item is currently selected here rather than the
+    // item stored on the original Pokémon.
+    const attackerDisplaySlug = caught
+        ? PokemonHelpers.getDisplaySlug({
+              slug: caught.slug,
+              heldItem: attacker.heldItem
+                  ? ItemHelpers.getHeldItemSlugByName(attacker.heldItem)
+                  : undefined,
+          })
+        : undefined;
+    const defenderDisplaySlug = mon
+        ? PokemonHelpers.getDisplaySlug({
+              slug: mon.slug,
+              heldItem: defender.heldItem
+                  ? ItemHelpers.getHeldItemSlugByName(defender.heldItem)
+                  : undefined,
+          })
+        : undefined;
+
     const playerInput: CalcPokemonInput | null = caught
         ? {
               abilityName: attacker.abilityName,
@@ -383,8 +404,8 @@ const CalcTab: React.FC<CalcTabProps> = ({
               level: attacker.level,
               nature: attacker.nature,
               species:
-                  PokemonHelpers.getPokemonData(caught.slug)?.name ??
-                  caught.slug,
+                  PokemonHelpers.getPokemonData(attackerDisplaySlug ?? '')
+                      ?.name ?? caught.slug,
               status: attacker.status,
           }
         : null;
@@ -399,13 +420,14 @@ const CalcTab: React.FC<CalcTabProps> = ({
               level: defender.level,
               nature: defender.nature,
               species:
-                  PokemonHelpers.getPokemonData(mon.slug)?.name ?? mon.slug,
+                  PokemonHelpers.getPokemonData(defenderDisplaySlug ?? '')
+                      ?.name ?? mon.slug,
               status: defender.status,
           }
         : null;
 
-    const playerBaseStats = caught
-        ? PokemonHelpers.getPokemonStats(caught.slug, game.generation)
+    const playerBaseStats = attackerDisplaySlug
+        ? PokemonHelpers.getPokemonStats(attackerDisplaySlug, game.generation)
         : undefined;
     const playerSpeed =
         playerBaseStats && playerInput
@@ -421,8 +443,8 @@ const CalcTab: React.FC<CalcTabProps> = ({
               ) * (field.playerSide.isTailwind ? 2 : 1)
             : undefined;
 
-    const trainerBaseStats = mon
-        ? PokemonHelpers.getPokemonStats(mon.slug, game.generation)
+    const trainerBaseStats = defenderDisplaySlug
+        ? PokemonHelpers.getPokemonStats(defenderDisplaySlug, game.generation)
         : undefined;
     const trainerSpeed =
         trainerBaseStats && trainerInput
@@ -478,7 +500,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
         }
 
         const abilitySlug = PokemonHelpers.getAbilitySlug(
-            caught.slug,
+            PokemonHelpers.getDisplaySlug(caught),
             game.generation,
             caught.ability
         );
@@ -515,7 +537,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
         }
 
         const abilitySlug = PokemonHelpers.getAbilitySlug(
-            mon.slug,
+            PokemonHelpers.getDisplaySlug(mon),
             game.generation,
             mon.ability
         );
@@ -672,7 +694,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     onMoveChange={handleAttackerMoveChange}
                     onNatureChange={handleAttackerNatureChange}
                     onStatusChange={handleAttackerStatusChange}
-                    pokemonSlug={caught?.slug}
+                    pokemonSlug={attackerDisplaySlug}
                     speedComparison={playerSpeedComparison}
                     status={attacker.status}
                 />
@@ -717,7 +739,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                             ? undefined
                             : 'Select a battle above'
                     }
-                    pokemonSlug={mon?.slug}
+                    pokemonSlug={defenderDisplaySlug}
                     speedComparison={trainerSpeedComparison}
                     status={defender.status}
                 />
