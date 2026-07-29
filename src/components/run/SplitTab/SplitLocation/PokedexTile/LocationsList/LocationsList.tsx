@@ -19,10 +19,14 @@ const LocationsList: React.FC<LocationsListProps> = ({
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const getLevelLabel = ({ encounter }: EncounterLocation): string =>
-        encounter.minLevel === encounter.maxLevel
+    const getLevelLabel = ({ encounter }: EncounterLocation): string => {
+        if (encounter.minLevel === null || encounter.maxLevel === null)
+            return '—';
+
+        return encounter.minLevel === encounter.maxLevel
             ? `Lv. ${encounter.minLevel}`
             : `Lv. ${encounter.minLevel}-${encounter.maxLevel}`;
+    };
 
     // usedLocations stores each location's base name (never subarea-
     // qualified), while a location with subareas is named here as
@@ -43,7 +47,7 @@ const LocationsList: React.FC<LocationsListProps> = ({
     // -------------------------------------------------------------------------
 
     const sortedLocations = [...locations].sort(
-        (a, b) => a.encounter.minLevel - b.encounter.minLevel
+        (a, b) => (a.encounter.minLevel ?? 0) - (b.encounter.minLevel ?? 0)
     );
 
     // -------------------------------------------------------------------------

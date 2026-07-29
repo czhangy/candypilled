@@ -31,10 +31,14 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const getLevelLabel = (): string =>
-        encounter.minLevel === encounter.maxLevel
+    const getLevelLabel = (): string => {
+        if (encounter.minLevel === null || encounter.maxLevel === null)
+            return '—';
+
+        return encounter.minLevel === encounter.maxLevel
             ? `Lv. ${encounter.minLevel}`
             : `Lv. ${encounter.minLevel}-${encounter.maxLevel}`;
+    };
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -42,6 +46,9 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
 
     const pokemon = PokemonHelpers.getPokemonData(encounter.species);
     const sprite = PokemonHelpers.getBoxSprite(encounter.species);
+    const tradeForPokemon = encounter.tradeFor
+        ? PokemonHelpers.getPokemonData(encounter.tradeFor)
+        : undefined;
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -71,6 +78,12 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
                     </div>
                     <div className={styles['pokemon__info']}>
                         <span>{pokemon?.name ?? encounter.species}</span>
+                        {encounter.tradeFor && (
+                            <span className={styles['pokemon__trade-for']}>
+                                Trade{' '}
+                                {tradeForPokemon?.name ?? encounter.tradeFor}
+                            </span>
+                        )}
                     </div>
                 </div>
             </td>

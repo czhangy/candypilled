@@ -1,4 +1,5 @@
 import LAKE_VERITY from '@/lib/data/platinum/locations/lake-verity';
+import OREBURGH_CITY from '@/lib/data/platinum/locations/oreburgh-city';
 import OREBURGH_GATE from '@/lib/data/platinum/locations/oreburgh-gate';
 import OREBURGH_GYM from '@/lib/data/platinum/locations/oreburgh-gym';
 import OREBURGH_MINE from '@/lib/data/platinum/locations/oreburgh-mine';
@@ -27,6 +28,7 @@ const ROARK: Split = {
         RAVAGED_PATH,
         ROUTE_203,
         LocationHelpers.withHiddenSubareaBattles(OREBURGH_GATE, ['B1F']),
+        OREBURGH_CITY,
         LocationHelpers.withHiddenBattles(ROUTE_207),
         OREBURGH_MINE,
         OREBURGH_GYM,

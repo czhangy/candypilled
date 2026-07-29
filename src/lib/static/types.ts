@@ -248,10 +248,13 @@ export type Battle = {
 export type Encounter = {
     species: string;
     method: EncounterMethod;
-    minLevel: number;
-    maxLevel: number;
+    minLevel: number | null;
+    maxLevel: number | null;
     chance: number | null;
     conditions?: string[];
+    // The species the player must hand over to receive this encounter.
+    // Only set on EncounterMethod.Trade encounters.
+    tradeFor?: string;
 };
 
 // Everything EncounterHelpers' ENCOUNTER_HIDE_RULEs need to decide whether a
@@ -319,6 +322,9 @@ export type GameVersion = {
     strippedConditionPrefixes?: string[];
     mergedLocations?: LocationMerge[];
     locationSplits?: LocationSplit[];
+    // Hand-authored encounters (e.g. NPC trades) with no PokeAPI equivalent,
+    // appended to whatever a location key already has after fetching.
+    manualEncounters?: Record<string, Encounter[]>;
 };
 
 export type EncounterLocation = {

@@ -2,13 +2,16 @@
 
 A single row within an encounter table's method group, showing a wild
 Pokémon's box sprite, its name, its
-level range prefixed with "Lv." (e.g. "Lv. 20-30"), and its encounter
-chance as a percentage. Clicking the row notifies the parent. The row
+level range prefixed with "Lv." (e.g. "Lv. 20-30"), or "—" when the
+encounter has no level, and its encounter chance as a percentage, or
+"—" when it has no chance. Clicking the row notifies the parent. The row
 is highlighted green if it's the one actually caught at this location,
 red if its evolution line isn't caught here but has been caught
 elsewhere in the run (used instead of caught taking priority), or
 highlighted as selected if it's the currently selected row, with the
-caught/used highlights taking priority over the selected highlight.
+caught/used highlights taking priority over the selected highlight. If
+the encounter is an NPC trade, a second line names the species the
+player must hand over to receive it.
 
 ## Props
 
@@ -27,6 +30,8 @@ caught/used highlights taking priority over the selected highlight.
 - `sprite` — the encounter's species box sprite
 - `getLevelLabel` — the encounter's level range, formatted as a single
   level or a range prefixed with "Lv."
+- `tradeForPokemon` — the species data for `encounter.tradeFor`, resolved
+  via `PokemonHelpers`, when the encounter is an NPC trade
 
 ## SCSS Variable Dependencies
 

@@ -48,6 +48,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         EncounterMethod.Starter,
         EncounterMethod.Special,
         EncounterMethod.Gift,
+        EncounterMethod.Trade,
         EncounterMethod.Egg,
         EncounterMethod.Binoculars,
         EncounterMethod.Grass,
@@ -65,6 +66,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         EncounterMethod.Egg,
         EncounterMethod.Fossil,
         EncounterMethod.Special,
+        EncounterMethod.Trade,
     ];
 
     const TIME_OF_DAY_CONDITIONS = ['time-morning', 'time-day', 'time-night'];
@@ -190,7 +192,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                 const chanceDiff = (b.chance ?? 0) - (a.chance ?? 0);
                 if (chanceDiff !== 0) return chanceDiff;
 
-                const minLevelDiff = a.minLevel - b.minLevel;
+                const minLevelDiff = (a.minLevel ?? 0) - (b.minLevel ?? 0);
                 if (minLevelDiff !== 0) return minLevelDiff;
 
                 return getEncounterName(a).localeCompare(getEncounterName(b));

@@ -51,6 +51,11 @@
             display: flex;
             flex-direction: column;
             gap: 0.25rem;
+
+            .pokemon__trade-for {
+                color: $text-mid;
+                font-size: 0.75rem;
+            }
         }
     }
 

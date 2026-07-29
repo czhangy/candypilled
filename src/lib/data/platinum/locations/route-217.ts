@@ -252,7 +252,7 @@ const ROUTE_217: Location = {
                     ability: 1,
                     gender: 'female',
                     ivs: 6,
-                    level: 50,
+                    level: 38,
                     nature: Nature.Mild,
                     moves: [
                         'dizzy-punch',

@@ -561,7 +561,8 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                     />
                                     <PokedexTile
                                         defaultLevel={
-                                            selectedEncounter?.minLevel
+                                            selectedEncounter?.minLevel ??
+                                            undefined
                                         }
                                         dupes={dupes}
                                         encounter={encounter}

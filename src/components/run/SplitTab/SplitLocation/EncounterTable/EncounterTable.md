@@ -37,7 +37,7 @@ this location's one encounter was used up without catching anything.
 It is disabled whenever a species is already caught at this location,
 since the two outcomes are mutually exclusive. The button is hidden
 entirely when every encounter at the location uses an unmissable
-method (e.g. a gift or fossil), or when any encounter uses the
+method (e.g. a gift, trade, or fossil), or when any encounter uses the
 "starter" method, since a starter encounter can't be missed even
 alongside other, otherwise-missable methods.
 
