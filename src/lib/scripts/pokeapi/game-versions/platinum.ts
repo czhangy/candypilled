@@ -79,12 +79,14 @@ export const platinum: GameVersion = {
         'rock-peak-ruins',
         'roaming-sinnoh',
         'sinnoh-pokemart',
+    ],
+    excludedAreas: [
         'mt-coronet-exterior-blizzard',
         'mt-coronet-4f-small-room',
         'sinnoh-victory-road-inside',
         'sinnoh-victory-road-inside-b1f',
         'sinnoh-victory-road-inside-exit',
-        'ruin-maniac-cave',
+        'ruin-maniac-cave-10-25-different-unown-caught',
     ],
     excludedSpecies: [
         'mesprit',

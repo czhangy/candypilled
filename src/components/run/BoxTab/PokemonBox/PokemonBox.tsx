@@ -11,7 +11,6 @@ import TagFilter from './TagFilter/TagFilter';
 type PokemonBoxProps = {
     caughtPokemon: CaughtPokemon[];
     levelCap: number | null;
-    onAddPokemonClick: () => void;
     onImportClick: () => void;
     onReorderPokemon: (fromLocation: string, toLocation: string) => void;
     onSelectPokemon: (location: string) => void;
@@ -23,7 +22,6 @@ type PokemonBoxProps = {
 const PokemonBox: React.FC<PokemonBoxProps> = ({
     caughtPokemon,
     levelCap,
-    onAddPokemonClick,
     onImportClick,
     onReorderPokemon,
     onSelectPokemon,
@@ -152,15 +150,6 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                         Import
                     </button>
                 )}
-                {view === 'alive' && (
-                    <button
-                        className={styles['add-button']}
-                        onClick={onAddPokemonClick}
-                        type="button"
-                    >
-                        Add
-                    </button>
-                )}
             </div>
             <div
                 className={[
@@ -173,12 +162,12 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                 {displayedPokemon.length > 0 ? (
                     <div className={styles.grid}>
                         {displayedPokemon.map((pokemon) => {
-                            const data = PokemonHelpers.getPokemonData(
-                                pokemon.slug
-                            );
-                            const sprite = PokemonHelpers.getBoxSprite(
-                                pokemon.slug
-                            );
+                            const displaySlug =
+                                PokemonHelpers.getDisplaySlug(pokemon);
+                            const data =
+                                PokemonHelpers.getPokemonData(displaySlug);
+                            const sprite =
+                                PokemonHelpers.getBoxSprite(displaySlug);
                             const heldItemData = pokemon.heldItem
                                 ? ItemHelpers.getHeldItemData(pokemon.heldItem)
                                 : undefined;

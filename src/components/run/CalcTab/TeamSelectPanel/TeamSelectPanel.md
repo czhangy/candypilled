@@ -19,4 +19,6 @@ message until a battle is selected.
 
 - `team` — the selected battle's team, resolved via
   `BattleHelpers.getSelectedTeam(game, selectedBattle, run.starter)`; each
-  member rendered as a `PokemonHelpers.getBoxSprite` icon
+  member rendered as a `PokemonHelpers.getBoxSprite` icon for its
+  `PokemonHelpers.getDisplaySlug` (accounting for a held-item form change,
+  e.g. Giratina holding the Griseous Orb)

@@ -1,3 +1,4 @@
+import ACUITY_CAVERN from '@/lib/data/platinum/locations/acuity-cavern';
 import DISTORTION_WORLD from '@/lib/data/platinum/locations/distortion-world';
 import GALACTIC_HQ from '@/lib/data/platinum/locations/galactic-hq';
 import LAKE_ACUITY from '@/lib/data/platinum/locations/lake-acuity';
@@ -9,6 +10,7 @@ import SENDOFF_SPRING from '@/lib/data/platinum/locations/sendoff-spring';
 import SPEAR_PILLAR from '@/lib/data/platinum/locations/spear-pillar';
 import SUNYSHORE_CITY from '@/lib/data/platinum/locations/sunyshore-city';
 import SUNYSHORE_GYM from '@/lib/data/platinum/locations/sunyshore-gym';
+import VALOR_CAVERN from '@/lib/data/platinum/locations/valor-cavern';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
@@ -32,6 +34,8 @@ const VOLKNER: Split = {
         SPEAR_PILLAR,
         DISTORTION_WORLD,
         SENDOFF_SPRING,
+        ACUITY_CAVERN,
+        LocationHelpers.withHiddenBattles(VALOR_CAVERN),
         ROUTE_222,
         SUNYSHORE_CITY,
         ROUTE_223,

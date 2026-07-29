@@ -5873,6 +5873,24 @@
             "conditions": ["time-night"]
         }
     ],
+    "solaceon-ruins-2f": [
+        {
+            "species": "unown",
+            "method": "cave",
+            "minLevel": 20,
+            "maxLevel": 30,
+            "chance": 100
+        }
+    ],
+    "solaceon-ruins-b5f": [
+        {
+            "species": "unown",
+            "method": "cave",
+            "minLevel": 20,
+            "maxLevel": 30,
+            "chance": 100
+        }
+    ],
     "sinnoh-victory-road-1f": [
         {
             "species": "golbat",
@@ -6687,6 +6705,22 @@
             "minLevel": 17,
             "maxLevel": 20,
             "chance": 20
+        }
+    ],
+    "ruin-maniac-cave": [
+        {
+            "species": "geodude",
+            "method": "cave",
+            "minLevel": 21,
+            "maxLevel": 23,
+            "chance": 95
+        },
+        {
+            "species": "hippopotas",
+            "method": "cave",
+            "minLevel": 22,
+            "maxLevel": 24,
+            "chance": 5
         }
     ],
     "trophy-garden": [
@@ -14577,6 +14611,15 @@
             "chance": null
         }
     ],
+    "solaceon-ruins": [
+        {
+            "species": "unown",
+            "method": "cave",
+            "minLevel": 20,
+            "maxLevel": 30,
+            "chance": 100
+        }
+    ],
     "eterna-forest-exterior": [
         {
             "species": "aipom",
@@ -14860,15 +14903,6 @@
             "maxLevel": 13,
             "chance": 24,
             "conditions": ["time-night"]
-        }
-    ],
-    "solaceon-ruins": [
-        {
-            "species": "unown",
-            "method": "cave",
-            "minLevel": 20,
-            "maxLevel": 30,
-            "chance": 100
         }
     ]
 }

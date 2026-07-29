@@ -192,11 +192,14 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const data = pokemon
-        ? PokemonHelpers.getPokemonData(pokemon.slug)
+    const displaySlug = pokemon
+        ? PokemonHelpers.getDisplaySlug(pokemon)
         : undefined;
-    const sprite = pokemon
-        ? PokemonHelpers.getPokemonSprite(pokemon.slug, variant)
+    const data = displaySlug
+        ? PokemonHelpers.getPokemonData(displaySlug)
+        : undefined;
+    const sprite = displaySlug
+        ? PokemonHelpers.getPokemonSprite(displaySlug, variant)
         : undefined;
     const hideTradeEvos = settings['disable-trade-evos'] ?? false;
     const nextEvolutions =
@@ -218,13 +221,14 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
               (_, index) => pokemon.moves[index]
           )
         : [];
-    const abilitySlug = pokemon
-        ? PokemonHelpers.getAbilitySlug(
-              pokemon.slug,
-              generation,
-              pokemon.ability
-          )
-        : undefined;
+    const abilitySlug =
+        pokemon && displaySlug
+            ? PokemonHelpers.getAbilitySlug(
+                  displaySlug,
+                  generation,
+                  pokemon.ability
+              )
+            : undefined;
     const abilityName = abilitySlug
         ? AbilityHelpers.getAbilityData(abilitySlug)?.name
         : undefined;
@@ -236,8 +240,8 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
         ? StatHelpers.normalizeStats(pokemon.ivs, 31)
         : undefined;
     const baseStats =
-        pokemon && data
-            ? PokemonHelpers.getPokemonStats(pokemon.slug, generation)
+        displaySlug && data
+            ? PokemonHelpers.getPokemonStats(displaySlug, generation)
             : undefined;
     const stats =
         pokemon && baseStats && ivs

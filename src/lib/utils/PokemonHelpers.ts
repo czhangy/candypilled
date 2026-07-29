@@ -52,6 +52,27 @@ export default class PokemonHelpers {
             .sort((a, b) => a.localeCompare(b));
     }
 
+    /**
+     * The slug to actually display for a caught/battle Pokémon: its own
+     * slug, unless its species has a `formChangeItem` and it's holding the
+     * matching item, in which case the triggered form's slug is returned
+     * instead (e.g. Giratina holding the Griseous Orb resolves to
+     * "giratina-origin"). Never mutates the Pokémon's stored slug, so the
+     * display reverts automatically once the item is removed.
+     */
+    static getDisplaySlug(pokemon: {
+        slug: string;
+        heldItem?: string;
+    }): string {
+        const formChangeItem = PokemonHelpers.getPokemonData(
+            pokemon.slug
+        )?.formChangeItem;
+
+        return formChangeItem && pokemon.heldItem === formChangeItem.item
+            ? formChangeItem.form
+            : pokemon.slug;
+    }
+
     /** slug's sprite, preferring variant if it has one, or undefined if no form matches. */
     static getPokemonSprite(
         slug: string,

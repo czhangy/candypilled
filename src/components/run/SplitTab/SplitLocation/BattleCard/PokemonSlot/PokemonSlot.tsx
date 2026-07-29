@@ -63,9 +63,9 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
         PokemonHelpers.getPokemonTypes(name, generation) ?? [];
 
     const getAbilitySlug = (): string | undefined => {
-        if (!pokemon) return undefined;
+        if (!pokemon || !displaySlug) return undefined;
         return PokemonHelpers.getAbilitySlug(
-            pokemon.slug,
+            displaySlug,
             generation,
             pokemon.ability
         );
@@ -75,11 +75,14 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const speciesName = pokemon
-        ? (PokemonHelpers.getPokemonData(pokemon.slug)?.name ?? pokemon.slug)
+    const displaySlug = pokemon
+        ? PokemonHelpers.getDisplaySlug(pokemon)
         : undefined;
-    const sprite = pokemon
-        ? PokemonHelpers.getPokemonSprite(pokemon.slug, variant)
+    const speciesName = displaySlug
+        ? (PokemonHelpers.getPokemonData(displaySlug)?.name ?? pokemon?.slug)
+        : undefined;
+    const sprite = displaySlug
+        ? PokemonHelpers.getPokemonSprite(displaySlug, variant)
         : undefined;
     const heldItemSlug = pokemon?.heldItem;
     const heldItem = heldItemSlug
@@ -88,7 +91,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     const heldItemSprite = heldItemSlug
         ? ItemHelpers.getHeldItemSprite(heldItemSlug)
         : undefined;
-    const types = pokemon ? getTypes(pokemon.slug) : [];
+    const types = displaySlug ? getTypes(displaySlug) : [];
     const abilitySlug = getAbilitySlug();
     const ability = abilitySlug
         ? AbilityHelpers.getAbilityData(abilitySlug)?.name
@@ -189,7 +192,9 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
             ) : (
                 <button
                     className={styles['pokemon-slot__link']}
-                    onClick={() => onSelectSpecies?.(pokemon.slug)}
+                    onClick={() =>
+                        onSelectSpecies?.(displaySlug ?? pokemon.slug)
+                    }
                     type="button"
                 >
                     {speciesContent}

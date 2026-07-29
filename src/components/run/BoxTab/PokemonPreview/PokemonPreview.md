@@ -53,8 +53,15 @@ hindered by it is highlighted blue.
 
 ## Computations
 
-- `abilitySlug` — the selected ability's slug, resolved from `pokemon.ability`
-  (a slot number) via `PokemonHelpers.getAbilitySlug` at `generation`
+- `displaySlug` — the species slug actually shown (sprite, name, ability,
+  stats), resolved from `pokemon.slug` and `pokemon.heldItem` via
+  `PokemonHelpers.getDisplaySlug`; differs from `pokemon.slug` only for a
+  species with a held-item form change (e.g. Giratina holding the Griseous
+  Orb resolves to Origin Forme) while its evolution options, moves, and tags
+  stay tied to `pokemon.slug`'s identity
+- `abilitySlug` — the selected ability's slug, resolved from `displaySlug`
+  and `pokemon.ability` (a slot number) via `PokemonHelpers.getAbilitySlug`
+  at `generation`
 - `abilityName` — the selected ability's display name, resolved from
   `abilitySlug` via `AbilityHelpers`
 - `heldItemSlug` — the held item's slug, resolved from `pokemon.heldItem`

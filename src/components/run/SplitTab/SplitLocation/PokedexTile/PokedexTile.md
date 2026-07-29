@@ -120,6 +120,9 @@ Operates in one of two mutually exclusive modes, set via `mode`:
   `game`'s splits and locations, resolved via `EncounterHelpers` and
   rendered with `LocationsList` (along with `game` and `usedLocations`)
   when `activeDetailTab` is `'locations'` (only reachable in `catch` mode)
+- `metLocations` — every name in `game.metLocationById`, sorted
+  alphabetically and passed to `AddPokemonModal` as `allLocations` for
+  its Location dropdown
 - `defaultCatchSpecies` — `originalSpecies` if given, otherwise
   `species`; in `catch` mode, passed to `AddPokemonModal` as the species
   to catch, so navigating to an evolution via `onSelectSpecies` before

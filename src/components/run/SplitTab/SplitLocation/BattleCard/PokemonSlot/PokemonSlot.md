@@ -28,7 +28,7 @@ as dangerous are shown in red text regardless of `isReadOnly`. When
 | `onSelectAbility` | `(slug: string) => void`        | No       | -       | Called with the Pokémon's ability slug when it's clicked; unused when `isReadOnly`                                                                                                                                          |
 | `onSelectItem`    | `(slug: string) => void`        | No       | -       | Called with the Pokémon's held item slug when it's clicked; unused when `isReadOnly`                                                                                                                                        |
 | `onSelectMove`    | `(slug: string) => void`        | No       | -       | Called with a move's slug when it's clicked within the moveset; unused when `isReadOnly`                                                                                                                                    |
-| `onSelectSpecies` | `(slug: string) => void`        | No       | -       | Called with the Pokémon's species slug when its sprite or name is clicked; unused when `isReadOnly`                                                                                                                         |
+| `onSelectSpecies` | `(slug: string) => void`        | No       | -       | Called with the Pokémon's `displaySlug` when its sprite or name is clicked; unused when `isReadOnly`                                                                                                                        |
 | `pokemon`         | `BattlePokemon \| null`         | Yes      | -       | The Pokémon to display, or `null` to render an empty slot                                                                                                                                                                   |
 | `position`        | `'single' \| 'top' \| 'bottom'` | Yes      | -       | Which row of `BattleCard`'s team this slot belongs to, controlling which corner (if it's the last slot in its row) gets rounded and whether the top border is omitted (`'bottom'`, to avoid doubling up with the row above) |
 | `variant`         | `string`                        | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                                                                                                                      |
@@ -36,8 +36,13 @@ as dangerous are shown in red text regardless of `isReadOnly`. When
 
 ## Computations
 
+- `displaySlug` — the Pokémon's species slug for display purposes,
+  resolved via `PokemonHelpers.getDisplaySlug`; differs from `pokemon.slug`
+  for a species with a held-item form change (e.g. Giratina holding the
+  Griseous Orb resolves to Origin Forme), and feeds `speciesName`,
+  `sprite`, `getTypes`, and `getAbilitySlug`
 - `speciesName` — the Pokémon's display name, resolved from
-  `pokemon.slug` via `PokemonHelpers`
+  `displaySlug` via `PokemonHelpers`
 - `heldItem` — the held item's display name, resolved from
   `pokemon.heldItem` (a slug) via `ItemHelpers`
 - `heldItemSprite` — the sprite for `pokemon.heldItem`, resolved via

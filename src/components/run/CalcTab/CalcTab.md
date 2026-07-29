@@ -45,11 +45,15 @@ directly in the render body rather than in a `useEffect`).
 ## Effects
 
 - **On `caught` changing** — dispatches `LOAD` (seeded from the newly
-  selected box Pokémon's ability slot/held item/nature/level/IVs/EVs/moves)
-  or `CLEAR` if no Pokémon is selected, on the attacker reducer
+  selected box Pokémon's ability slot/held item/nature/level/IVs/EVs/moves;
+  the ability slot is resolved against `caught`'s held-item-adjusted display
+  slug via `PokemonHelpers.getDisplaySlug`, e.g. a Giratina already holding
+  the Griseous Orb loads Origin Forme's ability) or `CLEAR` if no Pokémon is
+  selected, on the attacker reducer
 - **On `mon` changing** — dispatches `LOAD` (seeded from the newly selected
-  team member's ability slot/held item) or `RESET` if no team member is
-  selected, on the defender reducer
+  team member's ability slot/held item, with the same display-slug-adjusted
+  ability resolution) or `RESET` if no team member is selected, on the
+  defender reducer
 
 ## Computations
 
@@ -62,6 +66,15 @@ directly in the render body rather than in a `useEffect`).
   including their `gender` (rendered as a symbol and factored into the
   damage calculation via `playerInput`/`trainerInput`, but not part of
   either reducer's state since it isn't user-editable here)
+- `attackerDisplaySlug` / `defenderDisplaySlug` — `caught`/`mon`'s species
+  slug, resolved against the currently selected held item (the reducer's
+  `attacker.heldItem`/`defender.heldItem`, not the original caught/team
+  Pokémon's stored held item, since this held item is user-editable here)
+  via `PokemonHelpers.getDisplaySlug`; differs from `caught.slug`/`mon.slug`
+  for a species with a held-item form change (e.g. Giratina holding the
+  Griseous Orb), and feeds `playerInput`/`trainerInput`'s `species`,
+  `playerBaseStats`/`trainerBaseStats`, and each `PokemonPanel`'s
+  `pokemonSlug`
 - `playerInput` / `trainerInput` — each side's `CalcPokemonInput` snapshot
   (species/level/nature/gender/held item/IVs/EVs/ability/boosts/status),
   passed to

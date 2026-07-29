@@ -15,4 +15,6 @@ sprite selects that Pokémon for `PokemonPanel`, above.
 ## Computations
 
 - `livingPokemon` — `run.caughtPokemon` filtered to `PokemonStatus.Alive`, in
-  box order; each rendered as a `PokemonHelpers.getBoxSprite` icon
+  box order; each rendered as a `PokemonHelpers.getBoxSprite` icon for its
+  `PokemonHelpers.getDisplaySlug` (accounting for a held-item form change,
+  e.g. Giratina holding the Griseous Orb)

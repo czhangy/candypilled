@@ -5,6 +5,7 @@ import MT_CORONET from '@/lib/data/platinum/locations/mt-coronet';
 import ROUTE_216 from '@/lib/data/platinum/locations/route-216';
 import ROUTE_217 from '@/lib/data/platinum/locations/route-217';
 import SNOWPOINT_GYM from '@/lib/data/platinum/locations/snowpoint-gym';
+import VALOR_CAVERN from '@/lib/data/platinum/locations/valor-cavern';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
@@ -12,6 +13,7 @@ const CANDICE: Split = {
     name: 'Candice',
     locations: [
         LAKE_VALOR,
+        VALOR_CAVERN,
         LocationHelpers.withSubareaOrder(LAKE_VERITY, [
             'Post-Byron',
             'Pre-Byron',

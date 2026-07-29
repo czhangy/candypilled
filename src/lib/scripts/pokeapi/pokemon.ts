@@ -82,6 +82,16 @@ const TEMPORARY_FORM_VARIETIES = new Set([
     'shaymin-sky',
 ]);
 
+// Base-form varieties whose displayed form changes while holding a specific
+// item (e.g. Giratina switches to Origin Forme while holding the Griseous
+// Orb). PokeAPI has no concept of this mechanic, so it's curated by hand.
+const FORM_CHANGE_ITEMS_BY_VARIETY: Record<
+    string,
+    { item: string; form: string }
+> = {
+    'giratina-altered': { item: 'griseous-orb', form: 'giratina-origin' },
+};
+
 // -------------------------------------------------------------------------
 // Shared fetch helpers
 // -------------------------------------------------------------------------
@@ -947,11 +957,13 @@ export const fetchPokemonData = async (): Promise<void> => {
             const name =
                 NAME_OVERRIDES[variety.name] ??
                 StringHelpers.toTitleCase(variety.name);
+            const formChangeItem = FORM_CHANGE_ITEMS_BY_VARIETY[variety.name];
             data[variety.name] = {
                 slug: variety.name,
                 name,
                 introducedInGeneration: dexGeneration,
                 isTemporaryForm: TEMPORARY_FORM_VARIETIES.has(variety.name),
+                ...(formChangeItem && { formChangeItem }),
                 isLegendary: species.is_legendary || species.is_mythical,
                 sprites,
                 types: buildTypesByGeneration(rawPokemon),

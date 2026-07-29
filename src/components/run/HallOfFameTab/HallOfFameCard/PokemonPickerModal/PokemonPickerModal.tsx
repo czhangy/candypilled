@@ -34,14 +34,17 @@ const PokemonPickerModal: React.FC<PokemonPickerModalProps> = ({
                     {pokemon.length > 0 ? (
                         <div className={styles.grid}>
                             {pokemon.map((caughtPokemon) => {
+                                const displaySlug =
+                                    PokemonHelpers.getDisplaySlug(
+                                        caughtPokemon
+                                    );
                                 const sprite = PokemonHelpers.getPokemonSprite(
-                                    caughtPokemon.slug,
+                                    displaySlug,
                                     variant
                                 );
                                 const name =
-                                    PokemonHelpers.getPokemonData(
-                                        caughtPokemon.slug
-                                    )?.name ?? caughtPokemon.slug;
+                                    PokemonHelpers.getPokemonData(displaySlug)
+                                        ?.name ?? caughtPokemon.slug;
 
                                 return (
                                     <button

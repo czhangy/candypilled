@@ -308,6 +308,7 @@ export type GameVersion = {
     region: string;
     generation: number;
     excludedLocations?: string[];
+    excludedAreas?: string[];
     excludedSpecies?: string[];
     caveLocations?: string[];
     methodOverrides?: MethodOverride[];
@@ -569,6 +570,12 @@ export type PokemonData = {
     // Land Forme on deposit), so this is curated separately rather than
     // derived from any single API field.
     isTemporaryForm: boolean;
+    // PokeAPI has no concept of a held item swapping which form's data
+    // displays (e.g. Giratina holding the Griseous Orb), so this is curated
+    // separately rather than derived from any API field. Only set on the
+    // base form; `form` is the slug of the PokemonData entry to display
+    // instead while a caught Pokémon holds `item`.
+    formChangeItem?: { item: string; form: string };
     // PokeAPI's species-level is_legendary/is_mythical flags, combined.
     // Used to filter legendaries out of features that shouldn't offer them
     // (e.g. wild encounters).

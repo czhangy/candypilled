@@ -22,8 +22,9 @@ still submitted unchanged).
 
 ## Computations
 
-- `Modal`'s `title` — `pokemon`'s display name, resolved from `pokemon.slug`
-  via `PokemonHelpers`
+- `Modal`'s `title` — `pokemon`'s display name, resolved from its
+  `PokemonHelpers.getDisplaySlug` (accounting for a held-item form change,
+  e.g. Giratina holding the Griseous Orb) via `PokemonHelpers`
 - `hideEvs` — the global "Hide EVs" setting's current value, read from
   `localStorage` via `SettingsHelpers`, forwarded to `PokemonForm` as
   `showEvs={!hideEvs}`
