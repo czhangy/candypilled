@@ -44,11 +44,6 @@ const ENCOUNTER_HIDE_RULES: EncounterHideRule[] = [
             )
         );
     },
-    // "Starter As Separate Encounter": starter-method rows are tracked as
-    // their own encounter instead of appearing in the table.
-    (encounter, context) =>
-        context.starterCaughtSeparately &&
-        encounter.method === EncounterMethod.Starter,
     // "Hide Legendaries": the species is a legendary/mythical.
     (encounter, context) =>
         !!context.settings['hide-legendaries'] &&
@@ -132,10 +127,9 @@ export default class EncounterHelpers {
     }
 
     /**
-     * Whether any ENCOUNTER_HIDE_RULE (hide-dupes, starter-as-separate-
-     * encounter, hide-legendaries, and any future setting-driven rule)
-     * permanently hides this encounter, independent of the currently
-     * selected time of day.
+     * Whether any ENCOUNTER_HIDE_RULE (hide-dupes, hide-legendaries, and
+     * any future setting-driven rule) permanently hides this encounter,
+     * independent of the currently selected time of day.
      */
     static isEncounterHidden(
         encounter: Encounter,
@@ -161,16 +155,15 @@ export default class EncounterHelpers {
     }
 
     /**
-     * Whether every one of a location's encounters is either an evolution
-     * line caught elsewhere in the run, or a starter tracked separately —
-     * i.e. the location's "already caught" indicator, independent of
-     * whether the hide-dupes setting is actually on.
+     * Whether every one of a location's encounters is an evolution line
+     * caught elsewhere in the run — i.e. the location's "already caught"
+     * indicator, independent of whether the hide-dupes setting is
+     * actually on.
      */
     static areAllEncountersDupes(
         encounters: Encounter[],
         dupes: string[],
         caughtHere: string | undefined,
-        starterCaughtSeparately: boolean,
         generation: number
     ): boolean {
         return EncounterHelpers.areAllEncountersHidden(encounters, {
@@ -178,7 +171,6 @@ export default class EncounterHelpers {
             dupes,
             generation,
             settings: { 'hide-dupes': true },
-            starterCaughtSeparately,
         });
     }
 

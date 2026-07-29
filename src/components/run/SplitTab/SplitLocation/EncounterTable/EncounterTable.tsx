@@ -18,7 +18,6 @@ type EncounterTableProps = {
     onSelectEncounter?: (encounter: Encounter) => void;
     onToggleMissed: () => void;
     selectedSpecies?: string;
-    starterCaughtSeparately: boolean;
 };
 
 const EncounterTable: React.FC<EncounterTableProps> = ({
@@ -30,7 +29,6 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     onSelectEncounter,
     onToggleMissed,
     selectedSpecies,
-    starterCaughtSeparately,
 }) => {
     // -------------------------------------------------------------------------
     // HOOKS
@@ -140,7 +138,6 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         dupes,
         generation,
         settings,
-        starterCaughtSeparately,
     };
 
     const visibleEncounters = encounters.filter((encounter) => {

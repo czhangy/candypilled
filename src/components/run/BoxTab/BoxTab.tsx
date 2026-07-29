@@ -8,6 +8,7 @@ import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './BoxTab.module.scss';
+import ImportBoxModal from './ImportBoxModal/ImportBoxModal';
 import PokemonBox from './PokemonBox/PokemonBox';
 import PokemonPreview from './PokemonPreview/PokemonPreview';
 
@@ -39,6 +40,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
     // -------------------------------------------------------------------------
 
     const [isAddPokemonModalOpen, setIsAddPokemonModalOpen] = useState(false);
+    const [isImportModalOpen, setIsImportModalOpen] = useState(false);
     const [view, setView] = useState<BoxView>('alive');
 
     // -------------------------------------------------------------------------
@@ -86,6 +88,40 @@ const BoxTab: React.FC<BoxTabProps> = ({
 
     const handleCloseAddPokemonModal = (): void => {
         setIsAddPokemonModalOpen(false);
+    };
+
+    const handleImportClick = (): void => {
+        setIsImportModalOpen(true);
+    };
+
+    const handleCloseImportModal = (): void => {
+        setIsImportModalOpen(false);
+    };
+
+    const handleImportBox = (importedPokemon: CaughtPokemon[]): void => {
+        // Multiple imported Pokémon sharing a location collapse to the
+        // last one, matching how a Map overwrites on repeated keys.
+        const importedByLocation = new Map(
+            importedPokemon.map((pokemon) => [pokemon.location, pokemon])
+        );
+        const existingLocations = new Set(
+            run.caughtPokemon.map((pokemon) => pokemon.location)
+        );
+        const merged = run.caughtPokemon.map(
+            (pokemon) => importedByLocation.get(pokemon.location) ?? pokemon
+        );
+        const newPokemon = [...importedByLocation.values()].filter(
+            (pokemon) => !existingLocations.has(pokemon.location)
+        );
+
+        const updatedRun: Run = {
+            ...run,
+            caughtPokemon: [...merged, ...newPokemon],
+        };
+
+        LocalStorageHelpers.saveRun(game, updatedRun);
+        onDeselectPokemon();
+        setView('alive');
     };
 
     const handleAddPokemon = (
@@ -228,6 +264,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 caughtPokemon={run.caughtPokemon}
                 levelCap={levelCap}
                 onAddPokemonClick={handleAddPokemonClick}
+                onImportClick={handleImportClick}
                 onReorderPokemon={handleReorderPokemon}
                 onSelectPokemon={onSelectPokemon}
                 onViewChange={handleViewChange}
@@ -267,6 +304,15 @@ const BoxTab: React.FC<BoxTabProps> = ({
                     onSubmit={handleAddPokemon}
                     showLocation
                     version={game.version}
+                />
+            )}
+            {isImportModalOpen && (
+                <ImportBoxModal
+                    accentColor={game.accentColor}
+                    buttonTextColor={game.textContrastColor}
+                    game={game}
+                    onClose={handleCloseImportModal}
+                    onSubmit={handleImportBox}
                 />
             )}
         </div>

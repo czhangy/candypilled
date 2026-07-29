@@ -1,6 +1,5 @@
 import CAFE_CABIN from '@/lib/data/platinum/locations/cafe-cabin';
 import HEARTHOME_CITY_GATE from '@/lib/data/platinum/locations/hearthome-city-gate';
-import LOST_TOWER from '@/lib/data/platinum/locations/lost-tower';
 import ROUTE_209 from '@/lib/data/platinum/locations/route-209';
 import ROUTE_210 from '@/lib/data/platinum/locations/route-210';
 import ROUTE_215 from '@/lib/data/platinum/locations/route-215';
@@ -16,7 +15,6 @@ const MAYLENE: Split = {
         HEARTHOME_CITY_GATE,
         ROUTE_209,
         SOLACEON_RUINS,
-        LOST_TOWER,
         LocationHelpers.withHiddenSubareaBattles(ROUTE_210, ['North']),
         CAFE_CABIN,
         ROUTE_215,

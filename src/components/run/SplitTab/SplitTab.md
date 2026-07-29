@@ -85,5 +85,5 @@ stay aligned.
 - `hasEncounters` — whether `getLocationEncounters` returns a non-empty list
 - `isAllEncountersDupes` — the result of
   `EncounterHelpers.areAllEncountersDupes` for the location's encounters,
-  `run.caughtPokemon`'s slugs, the species caught at this location (if
-  any), and whether the starter is tracked separately
+  `run.caughtPokemon`'s slugs, and the species caught at this location
+  (if any)
