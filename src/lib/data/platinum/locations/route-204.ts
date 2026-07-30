@@ -11,6 +11,7 @@ const ROUTE_204: Location = {
             encountersKey: 'sinnoh-route-204-south-towards-jubilife-city',
             battles: [
                 {
+                    isOptional: true,
                     trainerClass: 'lass',
                     name: 'Sarah',
                     team: [
