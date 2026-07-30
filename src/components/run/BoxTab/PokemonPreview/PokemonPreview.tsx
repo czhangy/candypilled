@@ -1,5 +1,7 @@
 import { useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
+import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
+import LearnsetList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
 import { MOVE_SLOT_COUNT, STAT_FIELDS } from '@/lib/static/constants';
 import { PokemonStatus } from '@/lib/static/enums';
 import { BoxView, CaughtPokemon, StatValues } from '@/lib/static/types';
@@ -42,6 +44,7 @@ type PokemonPreviewProps = {
     onSelectItem: (slug: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (slug: string) => void;
+    onSelectSpecies: (slug: string) => void;
     onToggleStatus: (pokemon: CaughtPokemon) => void;
     pokemon?: CaughtPokemon;
     variant: string;
@@ -61,6 +64,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     onSelectItem,
     onSelectLocation,
     onSelectMove,
+    onSelectSpecies,
     onToggleStatus,
     pokemon,
     variant,
@@ -213,6 +217,12 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                       !EvolutionHelpers.isTradeEvolution(step.methods)
               )
             : [];
+    const evolutionLine = pokemon
+        ? EvolutionHelpers.getFullEvolutionLine(pokemon.slug, generation)
+        : undefined;
+    const learnset = pokemon
+        ? PokemonHelpers.getPokemonLearnset(pokemon.slug, version)
+        : undefined;
     const isOverCap =
         !!pokemon && levelCap !== null && pokemon.level > levelCap;
     const moveSlots = pokemon
@@ -489,6 +499,15 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                 </button>
                             </div>
                         </div>
+                        <div className={styles['evolution-wrapper']}>
+                            <EvolutionLine
+                                currentSlug={pokemon.slug}
+                                hideTradeEvos={hideTradeEvos}
+                                onSelectSpecies={onSelectSpecies}
+                                step={evolutionLine}
+                                variant={variant}
+                            />
+                        </div>
                         {stats && (
                             <div className={styles.section}>
                                 <span className={styles['section-label']}>
@@ -515,6 +534,17 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                     />
                                 ))}
                             </div>
+                        </div>
+                        <div className={styles.section}>
+                            <span className={styles['section-label']}>
+                                Learnset
+                            </span>
+                            <LearnsetList
+                                generation={generation}
+                                interactive
+                                moves={learnset ?? []}
+                                onSelectMove={onSelectMove}
+                            />
                         </div>
                     </>
                 ) : (

@@ -17,6 +17,7 @@ type BoxTabProps = {
     onSelectLocation: (location: string) => void;
     onSelectMove: (slug: string) => void;
     onSelectPokemon: (location: string) => void;
+    onSelectSpecies: (slug: string) => void;
     run: Run;
     selectedPokemon?: string;
 };
@@ -29,6 +30,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
     onSelectLocation,
     onSelectMove,
     onSelectPokemon,
+    onSelectSpecies,
     run,
     selectedPokemon,
 }) => {
@@ -236,6 +238,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 onSelectItem={onSelectItem}
                 onSelectLocation={onSelectLocation}
                 onSelectMove={onSelectMove}
+                onSelectSpecies={onSelectSpecies}
                 onToggleStatus={handleToggleStatus}
                 pokemon={selectedCaughtPokemon}
                 variant={variant}

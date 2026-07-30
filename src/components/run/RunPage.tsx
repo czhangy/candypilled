@@ -420,6 +420,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveLinkClick}
                             onSelectPokemon={handlePokemonSelect}
+                            onSelectSpecies={handleSpeciesLinkClick}
                             run={run}
                             selectedPokemon={selectedPokemon}
                         />

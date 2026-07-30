@@ -1,22 +1,23 @@
 # BoxTab
 
 The "Box" tab of a run page. Displays every Pokémon caught during the current
-run on the left, taking up two-thirds of the row's width, and a preview of
-the currently selected Pokémon on the right, taking up the remaining third.
+run on the left, and a preview of the currently selected Pokémon on the
+right, each taking up half of the row's width.
 
 ## Props
 
-| Prop                | Type                         | Required | Default | Description                                                              |
-| ------------------- | ---------------------------- | -------- | ------- | ------------------------------------------------------------------------ |
-| `game`              | `Game`                       | Yes      | -       | The current game, used to resolve the caught Pokémon's sprites and moves |
-| `onDeselectPokemon` | `() => void`                 | Yes      | -       | Called to clear the currently selected caught Pokémon                    |
-| `onSelectAbility`   | `(slug: string) => void`     | Yes      | -       | Called with an ability's slug when it's clicked in the preview           |
-| `onSelectItem`      | `(slug: string) => void`     | Yes      | -       | Called with a held item's slug when it's clicked in the preview          |
-| `onSelectLocation`  | `(location: string) => void` | Yes      | -       | Called with a caught Pokémon's location when it's clicked in the preview |
-| `onSelectMove`      | `(slug: string) => void`     | Yes      | -       | Called with a move's slug when it's clicked in the preview               |
-| `onSelectPokemon`   | `(location: string) => void` | Yes      | -       | Called with a caught Pokémon's location when it's clicked in the box     |
-| `run`               | `Run`                        | Yes      | -       | The current run, whose `caughtPokemon` populates the box                 |
-| `selectedPokemon`   | `string`                     | No       | -       | The location of the currently selected caught Pokémon, if any            |
+| Prop                | Type                         | Required | Default | Description                                                                          |
+| ------------------- | ---------------------------- | -------- | ------- | ------------------------------------------------------------------------------------ |
+| `game`              | `Game`                       | Yes      | -       | The current game, used to resolve the caught Pokémon's sprites and moves             |
+| `onDeselectPokemon` | `() => void`                 | Yes      | -       | Called to clear the currently selected caught Pokémon                                |
+| `onSelectAbility`   | `(slug: string) => void`     | Yes      | -       | Called with an ability's slug when it's clicked in the preview                       |
+| `onSelectItem`      | `(slug: string) => void`     | Yes      | -       | Called with a held item's slug when it's clicked in the preview                      |
+| `onSelectLocation`  | `(location: string) => void` | Yes      | -       | Called with a caught Pokémon's location when it's clicked in the preview             |
+| `onSelectMove`      | `(slug: string) => void`     | Yes      | -       | Called with a move's slug when it's clicked in the preview                           |
+| `onSelectPokemon`   | `(location: string) => void` | Yes      | -       | Called with a caught Pokémon's location when it's clicked in the box                 |
+| `onSelectSpecies`   | `(slug: string) => void`     | Yes      | -       | Called with a species slug when a Pokémon in the preview's evolution line is clicked |
+| `run`               | `Run`                        | Yes      | -       | The current run, whose `caughtPokemon` populates the box                             |
+| `selectedPokemon`   | `string`                     | No       | -       | The location of the currently selected caught Pokémon, if any                        |
 
 ## State
 
