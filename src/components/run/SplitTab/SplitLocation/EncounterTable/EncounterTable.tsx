@@ -47,10 +47,10 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     // -------------------------------------------------------------------------
 
     const METHOD_ORDER = [
-        EncounterMethod.Starter,
-        EncounterMethod.Special,
-        EncounterMethod.Gift,
         EncounterMethod.Egg,
+        EncounterMethod.Starter,
+        EncounterMethod.Static,
+        EncounterMethod.Gift,
         EncounterMethod.Trade,
         EncounterMethod.Binoculars,
         EncounterMethod.Grass,
@@ -67,7 +67,6 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         EncounterMethod.Gift,
         EncounterMethod.Egg,
         EncounterMethod.Fossil,
-        EncounterMethod.Special,
         EncounterMethod.Trade,
     ];
 

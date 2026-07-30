@@ -9,7 +9,6 @@ export enum EncounterMethod {
     Grass = 'grass',
     HoneyTree = 'honey-tree',
     OldRod = 'old-rod',
-    Special = 'special',
     Starter = 'starter',
     Static = 'static',
     Surf = 'surf',

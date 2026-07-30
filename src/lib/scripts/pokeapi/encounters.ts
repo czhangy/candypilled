@@ -13,7 +13,7 @@ import {
 } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
-// PokeAPI's raw method names (e.g. 'walk', 'only-one', 'gift-egg') don't
+// PokeAPI's raw method names (e.g. 'walk', 'gift-egg') don't
 // match our EncounterMethod vocabulary until resolveWalkMethod and
 // resolveMethodRenames run, so the pipeline works in this looser shape and
 // only narrows to Encounter once every encounter has a final method.
@@ -323,7 +323,6 @@ const resolveWalkMethod = (
     );
 
 const METHOD_RENAMES: Record<string, EncounterMethod> = {
-    'only-one': EncounterMethod.Special,
     'gift-egg': EncounterMethod.Egg,
     'feebas-tile-fishing': EncounterMethod.FeebasTile,
 };
@@ -367,7 +366,6 @@ const NULLIFIED_CHANCE_METHODS: string[] = [
     EncounterMethod.Binoculars,
     EncounterMethod.HoneyTree,
     EncounterMethod.Starter,
-    EncounterMethod.Special,
     EncounterMethod.Egg,
     EncounterMethod.Static,
 ];
