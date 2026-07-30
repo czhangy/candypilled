@@ -1,7 +1,7 @@
 <!-- Header -->
 
 <div align="center">
-    <img src="public/candy.png" alt="logo" width="200" height="auto" />
+    <img src="public/common/candy.png" alt="logo" width="200" height="auto" />
     <h1>Candypilled</h1>
     <h4>
         <a href="https://github.com/czhangy/candypilled/issues">New Issue</a>
