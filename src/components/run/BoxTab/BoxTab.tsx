@@ -85,11 +85,16 @@ const BoxTab: React.FC<BoxTabProps> = ({
         const existingLocations = new Set(
             run.caughtPokemon.map((pokemon) => pokemon.location)
         );
-        const merged = run.caughtPokemon.map((pokemon) =>
-            pokemon.status === PokemonStatus.Dead
-                ? pokemon
-                : (importedByLocation.get(pokemon.location) ?? pokemon)
-        );
+        const merged = run.caughtPokemon.map((pokemon) => {
+            if (pokemon.status === PokemonStatus.Dead) {
+                return pokemon;
+            }
+
+            const importedPokemon = importedByLocation.get(pokemon.location);
+            return importedPokemon
+                ? { ...importedPokemon, tags: pokemon.tags }
+                : pokemon;
+        });
         const newPokemon = [...importedByLocation.values()].filter(
             (pokemon) => !existingLocations.has(pokemon.location)
         );
