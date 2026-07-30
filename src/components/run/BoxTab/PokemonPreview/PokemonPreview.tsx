@@ -336,6 +336,22 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                                 target="_blank"
                                             >
                                                 {pokemon.nature}
+                                                {NatureHelpers.getNatureEffect(
+                                                    pokemon.nature
+                                                ) && (
+                                                    <span
+                                                        className={
+                                                            styles[
+                                                                'nature-effect'
+                                                            ]
+                                                        }
+                                                    >
+                                                        {' '}
+                                                        {NatureHelpers.getNatureEffect(
+                                                            pokemon.nature
+                                                        )}
+                                                    </span>
+                                                )}
                                             </a>
                                         </div>
                                     )}

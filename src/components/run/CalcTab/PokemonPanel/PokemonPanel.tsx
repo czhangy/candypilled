@@ -11,6 +11,7 @@ import {
 } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
+import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
 import styles from './PokemonPanel.module.scss';
@@ -131,7 +132,13 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
         game.generation
     ).map((name) => ({ label: name, value: name }));
     const natureOptions: DropdownOption[] = Object.values(Nature).map(
-        (name) => ({ label: name, value: name })
+        (name) => {
+            const effect = NatureHelpers.getNatureEffect(name);
+            return {
+                label: effect ? `${name} ${effect}` : name,
+                value: name,
+            };
+        }
     );
     const moveOptions: DropdownOption[] = onMoveChange
         ? [

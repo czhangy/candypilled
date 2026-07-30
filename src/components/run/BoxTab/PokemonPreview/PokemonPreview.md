@@ -8,7 +8,8 @@ tags (as a row of pills, when any are set), followed by its calculated
 stats and a 2x2 grid of its moves.
 Its ability, held item, and moves link out to their corresponding views
 in the Abilities, Items, and Moves tabs, its nature links to its entry
-on the Natures page in a new tab, and its catch location links to that
+on the Natures page in a new tab (suffixed with its stat effect, e.g.
+"[+Atk -SpA]", omitted for a neutral nature), and its catch location links to that
 location's card in the Splits tab if the location matches one there
 (shown as plain text, with no hover effect, otherwise). A button
 (labeled "Dead" or "Revive" depending on current status) lets the
