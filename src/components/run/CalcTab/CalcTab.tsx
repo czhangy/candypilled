@@ -55,11 +55,13 @@ const CalcTab: React.FC<CalcTabProps> = ({
         abilityName: string;
         boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
         evs: StatValues;
+        gender?: 'male' | 'female';
         heldItem: string;
         ivs: StatValues;
         level: number;
         moves: string[];
         nature: Nature;
+        speciesSlug: string;
         status: string;
     };
 
@@ -68,14 +70,17 @@ const CalcTab: React.FC<CalcTabProps> = ({
               type: 'LOAD';
               abilityName: string;
               evs: StatValues;
+              gender?: 'male' | 'female';
               heldItem: string;
               ivs: StatValues;
               level: number;
               moves: string[];
               nature: Nature;
+              speciesSlug: string;
           }
         | { type: 'CLEAR' }
         | { type: 'SET_ABILITY'; abilityName: string }
+        | { type: 'SET_GENDER'; gender: 'male' | 'female' }
         | { type: 'SET_HELD_ITEM'; heldItem: string }
         | { type: 'SET_NATURE'; nature: Nature }
         | { type: 'SET_LEVEL'; level: number }
@@ -87,14 +92,26 @@ const CalcTab: React.FC<CalcTabProps> = ({
               value: number;
           }
         | { type: 'SET_STATUS'; status: string }
-        | { type: 'SET_MOVE'; index: number; value: string };
+        | { type: 'SET_MOVE'; index: number; value: string }
+        | {
+              type: 'SET_SPECIES';
+              abilityName: string;
+              gender?: 'male' | 'female';
+              moves: string[];
+              speciesSlug: string;
+          };
 
     type DefenderState = {
         abilityName: string;
         boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
+        evs: StatValues;
+        gender?: 'male' | 'female';
         heldItem: string;
+        ivs: StatValues;
         level: number;
+        moves: string[];
         nature: Nature;
+        speciesSlug: string;
         status: string;
     };
 
@@ -103,20 +120,36 @@ const CalcTab: React.FC<CalcTabProps> = ({
         | {
               type: 'LOAD';
               abilityName: string;
+              evs: StatValues;
+              gender?: 'male' | 'female';
               heldItem: string;
+              ivs: StatValues;
               level: number;
+              moves: string[];
               nature: Nature;
+              speciesSlug: string;
           }
         | { type: 'SET_ABILITY'; abilityName: string }
+        | { type: 'SET_GENDER'; gender: 'male' | 'female' }
         | { type: 'SET_HELD_ITEM'; heldItem: string }
         | {
               type: 'SET_BOOST';
               stat: Exclude<keyof StatValues, 'hp'>;
               value: number;
           }
+        | { type: 'SET_EV'; stat: keyof StatValues; value: number }
+        | { type: 'SET_IV'; stat: keyof StatValues; value: number }
         | { type: 'SET_LEVEL'; level: number }
+        | { type: 'SET_MOVE'; index: number; value: string }
         | { type: 'SET_NATURE'; nature: Nature }
-        | { type: 'SET_STATUS'; status: string };
+        | { type: 'SET_STATUS'; status: string }
+        | {
+              type: 'SET_SPECIES';
+              abilityName: string;
+              gender?: 'male' | 'female';
+              moves: string[];
+              speciesSlug: string;
+          };
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -188,6 +221,16 @@ const CalcTab: React.FC<CalcTabProps> = ({
         weather: '',
     });
 
+    // The default gender to assign a newly-picked species: undefined for a
+    // genderless species, its fixed gender if it only has one, or 'male'
+    // (arbitrarily) for a species that can be either.
+    const getSpeciesDefaultGender = (
+        slug: string
+    ): 'male' | 'female' | undefined => {
+        if (PokemonHelpers.isGenderless(slug)) return undefined;
+        return PokemonHelpers.getFixedGender(slug) ?? 'male';
+    };
+
     const padMoves = (moves: string[]): string[] =>
         Array.from(
             { length: MOVE_SLOT_COUNT },
@@ -203,6 +246,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
         level: MIN_LEVEL,
         moves: padMoves([]),
         nature: Object.values(Nature)[0],
+        speciesSlug: '',
         status: '',
     });
 
@@ -216,17 +260,21 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     abilityName: action.abilityName,
                     boosts: getBlankBoosts(),
                     evs: action.evs,
+                    gender: action.gender,
                     heldItem: action.heldItem,
                     ivs: action.ivs,
                     level: action.level,
                     moves: action.moves,
                     nature: action.nature,
+                    speciesSlug: action.speciesSlug,
                     status: '',
                 };
             case 'CLEAR':
                 return getBlankAttackerState();
             case 'SET_ABILITY':
                 return { ...state, abilityName: action.abilityName };
+            case 'SET_GENDER':
+                return { ...state, gender: action.gender };
             case 'SET_HELD_ITEM':
                 return { ...state, heldItem: action.heldItem };
             case 'SET_NATURE':
@@ -257,15 +305,31 @@ const CalcTab: React.FC<CalcTabProps> = ({
                         index === action.index ? action.value : move
                     ),
                 };
+            case 'SET_SPECIES':
+                return {
+                    ...state,
+                    abilityName: action.abilityName,
+                    evs: StatHelpers.normalizeStats(undefined, 0),
+                    gender: action.gender,
+                    heldItem: '',
+                    ivs: StatHelpers.normalizeStats(undefined, MAX_IV),
+                    moves: action.moves,
+                    nature: Nature.Adamant,
+                    speciesSlug: action.speciesSlug,
+                };
         }
     };
 
     const getBlankDefenderState = (): DefenderState => ({
         abilityName: '',
         boosts: getBlankBoosts(),
+        evs: StatHelpers.normalizeStats(undefined, 0),
         heldItem: '',
+        ivs: StatHelpers.normalizeStats(undefined, MAX_IV),
         level: MIN_LEVEL,
+        moves: padMoves([]),
         nature: Object.values(Nature)[0],
+        speciesSlug: '',
         status: '',
     });
 
@@ -280,12 +344,19 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 return {
                     ...getBlankDefenderState(),
                     abilityName: action.abilityName,
+                    evs: action.evs,
+                    gender: action.gender,
                     heldItem: action.heldItem,
+                    ivs: action.ivs,
                     level: action.level,
+                    moves: action.moves,
                     nature: action.nature,
+                    speciesSlug: action.speciesSlug,
                 };
             case 'SET_ABILITY':
                 return { ...state, abilityName: action.abilityName };
+            case 'SET_GENDER':
+                return { ...state, gender: action.gender };
             case 'SET_HELD_ITEM':
                 return { ...state, heldItem: action.heldItem };
             case 'SET_BOOST':
@@ -293,12 +364,41 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     ...state,
                     boosts: { ...state.boosts, [action.stat]: action.value },
                 };
+            case 'SET_EV':
+                return {
+                    ...state,
+                    evs: { ...state.evs, [action.stat]: action.value },
+                };
+            case 'SET_IV':
+                return {
+                    ...state,
+                    ivs: { ...state.ivs, [action.stat]: action.value },
+                };
             case 'SET_LEVEL':
                 return { ...state, level: action.level };
+            case 'SET_MOVE':
+                return {
+                    ...state,
+                    moves: state.moves.map((move, index) =>
+                        index === action.index ? action.value : move
+                    ),
+                };
             case 'SET_NATURE':
                 return { ...state, nature: action.nature };
             case 'SET_STATUS':
                 return { ...state, status: action.status };
+            case 'SET_SPECIES':
+                return {
+                    ...state,
+                    abilityName: action.abilityName,
+                    evs: StatHelpers.normalizeStats(undefined, 0),
+                    gender: action.gender,
+                    heldItem: '',
+                    ivs: StatHelpers.normalizeStats(undefined, MAX_IV),
+                    moves: action.moves,
+                    nature: Nature.Adamant,
+                    speciesSlug: action.speciesSlug,
+                };
         }
     };
 
@@ -364,29 +464,22 @@ const CalcTab: React.FC<CalcTabProps> = ({
         run.starter
     );
     const mon = team[Number(selectedMemberIndex)];
-    const defenderMoveSlugs = mon
-        ? (mon.moves ??
-          PokemonHelpers.getMovesAtLevel(mon.slug, game.version, mon.level))
-        : [];
-    const defenderMoves = defenderMoveSlugs.map(
-        (slug) => MoveHelpers.getMoveData(slug)?.name ?? slug
-    );
 
     // The calc's held item is edited independently of the caught/team
     // Pokémon's own held item (a "what if" sandbox), so a form change
     // reflects whichever item is currently selected here rather than the
     // item stored on the original Pokémon.
-    const attackerDisplaySlug = caught
+    const attackerDisplaySlug = attacker.speciesSlug
         ? PokemonHelpers.getDisplaySlug({
-              slug: caught.slug,
+              slug: attacker.speciesSlug,
               heldItem: attacker.heldItem
                   ? ItemHelpers.getHeldItemSlugByName(attacker.heldItem)
                   : undefined,
           })
         : undefined;
-    const defenderDisplaySlug = mon
+    const defenderDisplaySlug = defender.speciesSlug
         ? PokemonHelpers.getDisplaySlug({
-              slug: mon.slug,
+              slug: defender.speciesSlug,
               heldItem: defender.heldItem
                   ? ItemHelpers.getHeldItemSlugByName(defender.heldItem)
                   : undefined,
@@ -398,14 +491,14 @@ const CalcTab: React.FC<CalcTabProps> = ({
               abilityName: attacker.abilityName,
               boosts: attacker.boosts,
               evs: attacker.evs,
-              gender: caught.gender,
+              gender: attacker.gender,
               heldItem: attacker.heldItem,
               ivs: attacker.ivs,
               level: attacker.level,
               nature: attacker.nature,
               species:
                   PokemonHelpers.getPokemonData(attackerDisplaySlug ?? '')
-                      ?.name ?? caught.slug,
+                      ?.name ?? attacker.speciesSlug,
               status: attacker.status,
           }
         : null;
@@ -413,15 +506,15 @@ const CalcTab: React.FC<CalcTabProps> = ({
         ? {
               abilityName: defender.abilityName,
               boosts: defender.boosts,
-              evs: StatHelpers.normalizeStats(mon.evs, 0),
-              gender: mon.gender,
+              evs: defender.evs,
+              gender: defender.gender,
               heldItem: defender.heldItem,
-              ivs: StatHelpers.normalizeStats(mon.ivs, MAX_IV),
+              ivs: defender.ivs,
               level: defender.level,
               nature: defender.nature,
               species:
                   PokemonHelpers.getPokemonData(defenderDisplaySlug ?? '')
-                      ?.name ?? mon.slug,
+                      ?.name ?? defender.speciesSlug,
               status: defender.status,
           }
         : null;
@@ -512,6 +605,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 abilitySlug ??
                 '',
             evs: StatHelpers.normalizeStats(caught.evs, 0),
+            gender: caught.gender,
             heldItem:
                 (caught.heldItem &&
                     ItemHelpers.getHeldItemData(caught.heldItem)?.name) ??
@@ -525,6 +619,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 )
             ),
             nature: caught.nature ?? Object.values(Nature)[0],
+            speciesSlug: caught.slug,
         });
     }, [caught, game.generation]);
 
@@ -548,15 +643,29 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
                 abilitySlug ??
                 '',
+            evs: StatHelpers.normalizeStats(mon.evs, 0),
+            gender: mon.gender,
             heldItem:
                 (mon.heldItem &&
                     ItemHelpers.getHeldItemData(mon.heldItem)?.name) ??
                 mon.heldItem ??
                 '',
+            ivs: StatHelpers.normalizeStats(mon.ivs, MIN_IV),
             level: mon.level,
+            moves: padMoves(
+                (
+                    mon.moves ??
+                    PokemonHelpers.getMovesAtLevel(
+                        mon.slug,
+                        game.version,
+                        mon.level
+                    )
+                ).map((slug) => MoveHelpers.getMoveData(slug)?.name ?? slug)
+            ),
             nature: mon.nature ?? Object.values(Nature)[0],
+            speciesSlug: mon.slug,
         });
-    }, [mon, game.generation]);
+    }, [mon, game.generation, game.version]);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -564,6 +673,10 @@ const CalcTab: React.FC<CalcTabProps> = ({
 
     const handleAttackerAbilityChange = (value: string): void => {
         dispatchAttacker({ type: 'SET_ABILITY', abilityName: value });
+    };
+
+    const handleAttackerGenderChange = (gender: 'male' | 'female'): void => {
+        dispatchAttacker({ type: 'SET_GENDER', gender });
     };
 
     const handleAttackerNatureChange = (value: string): void => {
@@ -621,8 +734,40 @@ const CalcTab: React.FC<CalcTabProps> = ({
         dispatchAttacker({ type: 'SET_HELD_ITEM', heldItem: value });
     };
 
+    const handleAttackerSpeciesChange = (slug: string): void => {
+        const abilitySlug = PokemonHelpers.getAbilitySlug(
+            slug,
+            game.generation,
+            1
+        );
+        dispatchAttacker({
+            type: 'SET_SPECIES',
+            abilityName:
+                (abilitySlug &&
+                    AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
+                abilitySlug ??
+                '',
+            gender: getSpeciesDefaultGender(slug),
+            moves: padMoves(
+                PokemonHelpers.getMovesAtLevel(
+                    slug,
+                    game.version,
+                    attacker.level
+                ).map(
+                    (moveSlug) =>
+                        MoveHelpers.getMoveData(moveSlug)?.name ?? moveSlug
+                )
+            ),
+            speciesSlug: slug,
+        });
+    };
+
     const handleDefenderAbilityChange = (value: string): void => {
         dispatchDefender({ type: 'SET_ABILITY', abilityName: value });
+    };
+
+    const handleDefenderGenderChange = (gender: 'male' | 'female'): void => {
+        dispatchDefender({ type: 'SET_GENDER', gender });
     };
 
     const handleDefenderNatureChange = (value: string): void => {
@@ -654,6 +799,60 @@ const CalcTab: React.FC<CalcTabProps> = ({
         dispatchDefender({ type: 'SET_HELD_ITEM', heldItem: value });
     };
 
+    const handleDefenderEvChange = (
+        stat: keyof StatValues,
+        event: React.ChangeEvent<HTMLInputElement>
+    ): void => {
+        const value = Math.min(
+            MAX_EV,
+            Math.max(MIN_EV, Number(event.target.value))
+        );
+        dispatchDefender({ type: 'SET_EV', stat, value });
+    };
+
+    const handleDefenderIvChange = (
+        stat: keyof StatValues,
+        event: React.ChangeEvent<HTMLInputElement>
+    ): void => {
+        const value = Math.min(
+            MAX_IV,
+            Math.max(MIN_IV, Number(event.target.value))
+        );
+        dispatchDefender({ type: 'SET_IV', stat, value });
+    };
+
+    const handleDefenderMoveChange = (index: number, value: string): void => {
+        dispatchDefender({ type: 'SET_MOVE', index, value });
+    };
+
+    const handleDefenderSpeciesChange = (slug: string): void => {
+        const abilitySlug = PokemonHelpers.getAbilitySlug(
+            slug,
+            game.generation,
+            1
+        );
+        dispatchDefender({
+            type: 'SET_SPECIES',
+            abilityName:
+                (abilitySlug &&
+                    AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
+                abilitySlug ??
+                '',
+            gender: getSpeciesDefaultGender(slug),
+            moves: padMoves(
+                PokemonHelpers.getMovesAtLevel(
+                    slug,
+                    game.version,
+                    defender.level
+                ).map(
+                    (moveSlug) =>
+                        MoveHelpers.getMoveData(moveSlug)?.name ?? moveSlug
+                )
+            ),
+            speciesSlug: slug,
+        });
+    };
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -665,7 +864,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     attackerField={attackerField}
                     attackerMoves={attacker.moves}
                     defenderField={defenderField}
-                    defenderMoves={defenderMoves}
+                    defenderMoves={defender.moves}
                     generation={game.generation}
                     playerInput={playerInput}
                     trainerInput={trainerInput}
@@ -677,7 +876,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     boosts={attacker.boosts}
                     evs={attacker.evs}
                     game={game}
-                    gender={caught?.gender}
+                    gender={attacker.gender}
                     heldItem={attacker.heldItem}
                     hideEvs={hideEvs}
                     isTailwind={field.playerSide.isTailwind}
@@ -688,11 +887,13 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     onAbilityChange={handleAttackerAbilityChange}
                     onBoostChange={handleAttackerBoostChange}
                     onEvChange={handleAttackerEvChange}
+                    onGenderChange={handleAttackerGenderChange}
                     onHeldItemChange={handleAttackerHeldItemChange}
                     onIvChange={handleAttackerIvChange}
                     onLevelChange={handleAttackerLevelChange}
                     onMoveChange={handleAttackerMoveChange}
                     onNatureChange={handleAttackerNatureChange}
+                    onSpeciesChange={handleAttackerSpeciesChange}
                     onStatusChange={handleAttackerStatusChange}
                     pokemonSlug={attackerDisplaySlug}
                     speedComparison={playerSpeedComparison}
@@ -713,26 +914,26 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 <PokemonPanel
                     abilityName={defender.abilityName}
                     boosts={defender.boosts}
-                    evs={
-                        mon ? StatHelpers.normalizeStats(mon.evs, 0) : undefined
-                    }
+                    evs={defender.evs}
                     game={game}
-                    gender={mon?.gender}
+                    gender={defender.gender}
                     heldItem={defender.heldItem}
                     hideEvs={hideEvs}
                     isTailwind={field.trainerSide.isTailwind}
-                    ivs={
-                        mon
-                            ? StatHelpers.normalizeStats(mon.ivs, MAX_IV)
-                            : undefined
-                    }
+                    ivs={defender.ivs}
                     level={defender.level}
+                    moves={defender.moves}
                     nature={defender.nature}
                     onAbilityChange={handleDefenderAbilityChange}
                     onBoostChange={handleDefenderBoostChange}
+                    onEvChange={handleDefenderEvChange}
+                    onGenderChange={handleDefenderGenderChange}
                     onHeldItemChange={handleDefenderHeldItemChange}
+                    onIvChange={handleDefenderIvChange}
                     onLevelChange={handleDefenderLevelChange}
+                    onMoveChange={handleDefenderMoveChange}
                     onNatureChange={handleDefenderNatureChange}
+                    onSpeciesChange={handleDefenderSpeciesChange}
                     onStatusChange={handleDefenderStatusChange}
                     placeholder={
                         effectiveSelectedBattle

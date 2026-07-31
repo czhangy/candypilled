@@ -17,18 +17,18 @@ import styles from './StatsTable.module.scss';
 type StatsTableProps = {
     baseStats?: StatValues;
     boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
-    evs?: StatValues;
+    evs: StatValues;
     hideEvs: boolean;
-    ivs?: StatValues;
+    ivs: StatValues;
     onBoostChange: (
         stat: Exclude<keyof StatValues, 'hp'>,
         value: string
     ) => void;
-    onEvChange?: (
+    onEvChange: (
         stat: keyof StatValues,
         event: React.ChangeEvent<HTMLInputElement>
     ) => void;
-    onIvChange?: (
+    onIvChange: (
         stat: keyof StatValues,
         event: React.ChangeEvent<HTMLInputElement>
     ) => void;
@@ -94,35 +94,25 @@ const StatsTable: React.FC<StatsTableProps> = ({
                         <th className={styles['stat-label']}>{label}</th>
                         <td>{baseStats?.[key]}</td>
                         <td>
-                            {onIvChange ? (
-                                <input
-                                    className={styles['iv-input']}
-                                    max={MAX_IV}
-                                    min={MIN_IV}
-                                    onChange={(event) => onIvChange(key, event)}
-                                    type="number"
-                                    value={ivs?.[key] ?? MAX_IV}
-                                />
-                            ) : (
-                                ivs?.[key]
-                            )}
+                            <input
+                                className={styles['iv-input']}
+                                max={MAX_IV}
+                                min={MIN_IV}
+                                onChange={(event) => onIvChange(key, event)}
+                                type="number"
+                                value={ivs[key]}
+                            />
                         </td>
                         {!hideEvs && (
                             <td>
-                                {onEvChange ? (
-                                    <input
-                                        className={styles['ev-input']}
-                                        max={MAX_EV}
-                                        min={MIN_EV}
-                                        onChange={(event) =>
-                                            onEvChange(key, event)
-                                        }
-                                        type="number"
-                                        value={evs?.[key] ?? 0}
-                                    />
-                                ) : (
-                                    evs?.[key]
-                                )}
+                                <input
+                                    className={styles['ev-input']}
+                                    max={MAX_EV}
+                                    min={MIN_EV}
+                                    onChange={(event) => onEvChange(key, event)}
+                                    type="number"
+                                    value={evs[key]}
+                                />
                             </td>
                         )}
                         <td className={styles['boost-cell']}>

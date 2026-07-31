@@ -17,6 +17,7 @@ type BoxTabProps = {
     onSelectLocation: (location: string) => void;
     onSelectMove: (slug: string) => void;
     onSelectPokemon: (location: string) => void;
+    onSelectSpecies: (slug: string) => void;
     run: Run;
     selectedPokemon?: string;
 };
@@ -29,6 +30,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
     onSelectLocation,
     onSelectMove,
     onSelectPokemon,
+    onSelectSpecies,
     run,
     selectedPokemon,
 }) => {
@@ -85,9 +87,16 @@ const BoxTab: React.FC<BoxTabProps> = ({
         const existingLocations = new Set(
             run.caughtPokemon.map((pokemon) => pokemon.location)
         );
-        const merged = run.caughtPokemon.map(
-            (pokemon) => importedByLocation.get(pokemon.location) ?? pokemon
-        );
+        const merged = run.caughtPokemon.map((pokemon) => {
+            if (pokemon.status === PokemonStatus.Dead) {
+                return pokemon;
+            }
+
+            const importedPokemon = importedByLocation.get(pokemon.location);
+            return importedPokemon
+                ? { ...importedPokemon, tags: pokemon.tags }
+                : pokemon;
+        });
         const newPokemon = [...importedByLocation.values()].filter(
             (pokemon) => !existingLocations.has(pokemon.location)
         );
@@ -229,6 +238,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 onSelectItem={onSelectItem}
                 onSelectLocation={onSelectLocation}
                 onSelectMove={onSelectMove}
+                onSelectSpecies={onSelectSpecies}
                 onToggleStatus={handleToggleStatus}
                 pokemon={selectedCaughtPokemon}
                 variant={variant}

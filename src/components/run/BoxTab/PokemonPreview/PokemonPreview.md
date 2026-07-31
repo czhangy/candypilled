@@ -4,13 +4,16 @@ Displays every recorded attribute of the currently selected caught Pokémon:
 a small sprite alongside its name (suffixed with a blue ♂ or pink ♀ gender
 symbol, omitted for a genderless species), level, nature, ability,
 catch location, held item, and
-tags (as a row of pills, when any are set), followed by its calculated
-stats and a 2x2 grid of its moves.
+tags (as a row of pills, when any are set), followed by its full evolution
+line, its calculated stats, a 2x2 grid of its moves, and its full learnset.
 Its ability, held item, and moves link out to their corresponding views
 in the Abilities, Items, and Moves tabs, its nature links to its entry
-on the Natures page in a new tab, and its catch location links to that
+on the Natures page in a new tab (suffixed with its stat effect, e.g.
+"[+Atk -SpA]", omitted for a neutral nature), and its catch location links to that
 location's card in the Splits tab if the location matches one there
-(shown as plain text, with no hover effect, otherwise). A button
+(shown as plain text, with no hover effect, otherwise). Its evolution
+line and learnset entries also link out to those species' and moves'
+corresponding views. A button
 (labeled "Dead" or "Revive" depending on current status) lets the
 Pokémon's status be toggled between alive and dead — toggling to dead
 also clears its held item (see `BoxTab.md`). While viewing the alive
@@ -37,7 +40,8 @@ hindered by it is highlighted blue.
 | `onSelectAbility`   | `(slug: string) => void`                                                                                                                                                      | Yes      | -       | Called with the Pokémon's ability slug when it's clicked                                  |
 | `onSelectItem`      | `(slug: string) => void`                                                                                                                                                      | Yes      | -       | Called with the Pokémon's held item slug when it's clicked                                |
 | `onSelectLocation`  | `(location: string) => void`                                                                                                                                                  | Yes      | -       | Called with the Pokémon's catch location when it's clicked                                |
-| `onSelectMove`      | `(slug: string) => void`                                                                                                                                                      | Yes      | -       | Called with a move's slug when it's clicked                                               |
+| `onSelectMove`      | `(slug: string) => void`                                                                                                                                                      | Yes      | -       | Called with a move's slug when it's clicked (in the moves grid or the learnset)           |
+| `onSelectSpecies`   | `(slug: string) => void`                                                                                                                                                      | Yes      | -       | Called with a species slug when it's clicked in the evolution line                        |
 | `onToggleStatus`    | `(pokemon: CaughtPokemon) => void`                                                                                                                                            | Yes      | -       | Called with the previewed Pokémon when the status button is clicked                       |
 | `pokemon`           | `CaughtPokemon`                                                                                                                                                               | No       | -       | The currently selected caught Pokémon, if any                                             |
 | `variant`           | `string`                                                                                                                                                                      | Yes      | -       | The game slug used to resolve the Pokémon's sprite art                                    |
@@ -79,6 +83,10 @@ hindered by it is highlighted blue.
   button hidden, if the Pokémon is dead or doesn't evolve further), further
   filtered to exclude trade-only evolutions (via
   `EvolutionHelpers.isTradeEvolution`) when `hideTradeEvos` is enabled
+- `evolutionLine` — the previewed Pokémon's full evolution family, via
+  `EvolutionHelpers.getFullEvolutionLine`, rendered by `EvolutionLine`
+- `learnset` — the previewed Pokémon's full learnset for `version`, via
+  `PokemonHelpers.getPokemonLearnset`, rendered by `LearnsetList`
 - `isOverCap` — whether the previewed Pokémon's `level` exceeds `levelCap`
 - `stats` — the Pokémon's actual stat values, derived from its base stats,
   level, IVs, EVs, and nature via `StatHelpers.calculateStats`, with IVs and EVs

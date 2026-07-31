@@ -7,11 +7,21 @@ sourced from the run's box), `FieldEffectsPanel` (weather/terrain/gravity
 and each side's screens/hazards) in the middle, and the defender column
 (`PokemonPanel` above `BattleSelectPanel` above `TeamSelectPanel`, sourced
 from the game's trainers). Owns all editable calculator state — the
-attacker's and defender's ability/held item/nature/level/IVs/EVs/boosts/
-status/moves via two reducers, the field effects state, plus the
-box/battle/team-member selection state that flows down to every panel.
+attacker's and defender's species/gender/ability/held item/nature/level/
+IVs/EVs/boosts/status/moves via two reducers, the field effects state,
+plus the box/battle/team-member selection state that flows down to every
+panel.
 Both `PokemonPanel` instances are fully controlled by this state; they
-hold none of it themselves.
+hold none of it themselves. Each side's species is itself editable — picking
+a new species in `PokemonPanel` dispatches `SET_SPECIES`, which resets that
+side's ability (to the new species' slot-1 ability), gender (to the new
+species' fixed gender if it has one, `undefined` if it's genderless, or
+`'male'` arbitrarily otherwise), held item (to none), nature (to Adamant),
+IVs (to 31), EVs (to 0), and moves (to the new species' moveset at the
+current level), while leaving level, boosts, and status untouched — the
+box/team selection only seeds the initial species, it no longer constrains
+it. Gender itself is independently toggleable (via `PokemonPanel`'s gender
+icon) whenever the current species isn't genderless or single-gendered.
 
 ## Props
 
@@ -29,13 +39,13 @@ State lives in two `useReducer`s (`AttackerState`/`AttackerAction` and
 Pokémon transitions every mutable field for that side together as one
 atomic load, plus three `useState`s for selection.
 
-| State                 | Type                  | Initial value                         | Description                                                                     |
-| --------------------- | --------------------- | ------------------------------------- | ------------------------------------------------------------------------------- |
-| `selectedLocation`    | `string`              | first living box Pokémon's location   | The selected box Pokémon's location, set by `BoxSelectPanel`                    |
-| `selectedMemberIndex` | `string`              | `'0'`                                 | The selected trainer team member's index, set by `TeamSelectPanel`              |
-| `prevSelectedBattle`  | `string \| undefined` | `selectedBattle` or the first trainer | Tracks the last-seen effective battle key, used to detect changes during render |
-| `attacker`            | `AttackerState`       | blank                                 | The attacker's ability/held item/nature/level/IVs/EVs/boosts/status/moves       |
-| `defender`            | `DefenderState`       | blank                                 | The defender's ability/held item/boosts/status                                  |
+| State                 | Type                  | Initial value                         | Description                                                                              |
+| --------------------- | --------------------- | ------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `selectedLocation`    | `string`              | first living box Pokémon's location   | The selected box Pokémon's location, set by `BoxSelectPanel`                             |
+| `selectedMemberIndex` | `string`              | `'0'`                                 | The selected trainer team member's index, set by `TeamSelectPanel`                       |
+| `prevSelectedBattle`  | `string \| undefined` | `selectedBattle` or the first trainer | Tracks the last-seen effective battle key, used to detect changes during render          |
+| `attacker`            | `AttackerState`       | blank                                 | The attacker's species/gender/ability/held item/nature/level/IVs/EVs/boosts/status/moves |
+| `defender`            | `DefenderState`       | blank                                 | The defender's species/gender/ability/held item/nature/level/IVs/EVs/boosts/status/moves |
 
 `selectedMemberIndex` is reset to `'0'` during render whenever the effective
 selected battle changes (React's "adjusting state when a prop changes"
@@ -45,15 +55,17 @@ directly in the render body rather than in a `useEffect`).
 ## Effects
 
 - **On `caught` changing** — dispatches `LOAD` (seeded from the newly
-  selected box Pokémon's ability slot/held item/nature/level/IVs/EVs/moves;
-  the ability slot is resolved against `caught`'s held-item-adjusted display
-  slug via `PokemonHelpers.getDisplaySlug`, e.g. a Giratina already holding
-  the Griseous Orb loads Origin Forme's ability) or `CLEAR` if no Pokémon is
-  selected, on the attacker reducer
+  selected box Pokémon's species/gender/ability slot/held item/nature/
+  level/IVs/EVs/moves; the ability slot is resolved against `caught`'s
+  held-item-adjusted display slug via `PokemonHelpers.getDisplaySlug`, e.g.
+  a Giratina already holding the Griseous Orb loads Origin Forme's ability)
+  or `CLEAR` if no Pokémon is selected, on the attacker reducer
 - **On `mon` changing** — dispatches `LOAD` (seeded from the newly selected
-  team member's ability slot/held item, with the same display-slug-adjusted
-  ability resolution) or `RESET` if no team member is selected, on the
-  defender reducer
+  team member's species/gender/ability slot/held item/nature/level/IVs/
+  EVs, with the same display-slug-adjusted ability resolution; moves
+  default to the team member's stored moveset or, if unset, its level-up
+  moveset via `PokemonHelpers.getMovesAtLevel`) or `RESET` if no team
+  member is selected, on the defender reducer
 
 ## Computations
 
@@ -62,18 +74,17 @@ directly in the render body rather than in a `useEffect`).
   trainer in game order whenever the URL hasn't recorded an explicit
   selection yet
 - `caught` / `mon` — the selected box Pokémon and trainer team member,
-  resolved once here and passed down to `PokemonPanel`/`TrainerPokemonPanel`,
-  including their `gender` (rendered as a symbol and factored into the
-  damage calculation via `playerInput`/`trainerInput`, but not part of
-  either reducer's state since it isn't user-editable here)
-- `attackerDisplaySlug` / `defenderDisplaySlug` — `caught`/`mon`'s species
-  slug, resolved against the currently selected held item (the reducer's
-  `attacker.heldItem`/`defender.heldItem`, not the original caught/team
-  Pokémon's stored held item, since this held item is user-editable here)
-  via `PokemonHelpers.getDisplaySlug`; differs from `caught.slug`/`mon.slug`
-  for a species with a held-item form change (e.g. Giratina holding the
-  Griseous Orb), and feeds `playerInput`/`trainerInput`'s `species`,
-  `playerBaseStats`/`trainerBaseStats`, and each `PokemonPanel`'s
+  resolved once here; feed the `LOAD` effects (which seed each reducer's
+  state, including its initial `gender`, itself user-editable thereafter)
+  and gate whether `playerInput`/`trainerInput` are `null`
+- `attackerDisplaySlug` / `defenderDisplaySlug` — the reducer's
+  `attacker.speciesSlug`/`defender.speciesSlug` (initially seeded from
+  `caught.slug`/`mon.slug`, but user-editable independently thereafter),
+  resolved against the currently selected held item (`attacker.heldItem`/
+  `defender.heldItem`) via `PokemonHelpers.getDisplaySlug`; differs from
+  `speciesSlug` for a species with a held-item form change (e.g. Giratina
+  holding the Griseous Orb), and feeds `playerInput`/`trainerInput`'s
+  `species`, `playerBaseStats`/`trainerBaseStats`, and each `PokemonPanel`'s
   `pokemonSlug`
 - `playerInput` / `trainerInput` — each side's `CalcPokemonInput` snapshot
   (species/level/nature/gender/held item/IVs/EVs/ability/boosts/status),

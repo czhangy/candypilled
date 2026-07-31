@@ -126,6 +126,10 @@ shown instead.
   changing `tab`. Every `SplitLocation` reads this same param, so if its
   location has a battle matching the key, that battle is preselected there
   too
+- **On battle marker clear** (from `SplitTab`, a `SplitLocation`'s
+  `BattleCard` defeat button) — clears the `battle` query param, since
+  toggling a battle's defeated state can change which battle should be
+  selected next and the stale key should not linger in the URL
 - **On Pokémon deselect** (from `BoxTab`, when switching between its box
   and graveyard views) — clears the `pokemon` query param
 - **On location select** (from `BoxTab`'s `PokemonPreview`, `SplitTab`'s

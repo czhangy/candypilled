@@ -89,7 +89,9 @@ change) when editing a caught Pokémon.
 - `abilityOptions` — `abilities` flattened into dropdown options keyed by
   slot number, with each ability's slug resolved to its display name via
   `AbilityHelpers`
-- `natureOptions` — every `Nature` value mapped into dropdown options
+- `natureOptions` — every `Nature` value mapped into dropdown options,
+  labeled with its stat effect (e.g. "Adamant [+Atk -SpA]") via
+  `NatureHelpers.getNatureEffect`, unsuffixed for a neutral nature
 - `genderOptions` — the two gender dropdown options, "Male" and
   "Female"
 - `showGenderField` — whether the Gender field is rendered: false when

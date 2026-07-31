@@ -15,6 +15,7 @@ type SplitTabProps = {
     currentSplitName: string | null;
     game: Game;
     onAdvanceSplit: (splitName: string) => void;
+    onClearBattleMarker: () => void;
     onGameComplete: () => void;
     onSelectAbility: (slug: string) => void;
     onSelectBattleMarker: (battleKey: string) => void;
@@ -32,6 +33,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
     currentSplitName,
     game,
     onAdvanceSplit,
+    onClearBattleMarker,
     onGameComplete,
     onSelectAbility,
     onSelectBattleMarker,
@@ -266,6 +268,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             key={`${location.name}-${index}`}
                             location={location}
                             onAdvanceSplit={onAdvanceSplit}
+                            onClearBattleMarker={onClearBattleMarker}
                             onGameComplete={onGameComplete}
                             onSelectAbility={onSelectAbility}
                             onSelectBattleMarker={onSelectBattleMarker}
