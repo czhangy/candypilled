@@ -61,6 +61,7 @@ Pokédex tile.
 | `index`                | `number`                      | Yes      | -       | This location's index within the current split's locations array, used to disambiguate its anchor id from other locations sharing the same name   |
 | `location`             | `Location`                    | Yes      | -       | The location this card displays                                                                                                                   |
 | `onAdvanceSplit`       | `(splitName: string) => void` | Yes      | -       | Called with the name of the next split when the defeated battle is the last required battle of its split, but not the game's last required battle |
+| `onClearBattleMarker`  | `() => void`                  | Yes      | -       | Called whenever the battle card's defeat button is clicked, to clear a persisted battle selection (e.g. the URL) beyond this card                 |
 | `onGameComplete`       | `() => void`                  | Yes      | -       | Called instead of `onAdvanceSplit` when the defeated battle is the game's last required battle                                                    |
 | `onSelectAbility`      | `(slug: string) => void`      | Yes      | -       | Called when an ability is clicked within the battle card's teams or the Pokédex tile's ability list                                               |
 | `onSelectBattleMarker` | `(battleKey: string) => void` | Yes      | -       | Called with a battle's key when its trainer marker is clicked on the map, so the selection can be persisted (e.g. to the URL) beyond this card    |
@@ -161,17 +162,19 @@ the index disambiguates locations that share a name within the split.
 - **On subarea button click** — selects that subarea's index
 - **On trainer marker click** — selects that battle and calls
   `onSelectBattleMarker` with its key
-- **On battle toggle defeated** — adds or removes the battle's key from
-  the run's defeated battles in storage. Defeating a battle also marks
+- **On battle toggle defeated** — calls `onClearBattleMarker`, then adds
+  or removes the battle's key from the run's defeated battles in storage.
+  Defeating a battle also marks
   every required battle before it (in split/location/battle order) as
   defeated, if not already. Defeating a required (non-optional)
   battle also updates the run's personal best if it is farther along than
   the current one. If the defeated battle is the game's last required
   battle, calls `onGameComplete`; otherwise, if it's the last required
   battle of its split, calls `onAdvanceSplit` with the next split's name.
-  Defeating a required battle also selects the next required battle
-  after it within this location (from `getAllBattles`), if one exists,
-  switching `selectedSubareaIndex` to its subarea, clearing
+  Defeating any battle (required or optional) also selects the very next
+  battle after it within this location (from `getAllBattles`, regardless
+  of that battle's own optional status), if one exists, switching
+  `selectedSubareaIndex` to its subarea, clearing
   `selectedEncounter`/`speciesOverride`, and calling
   `onSelectBattleMarker` with its key
 - **On encounter table row click** — selects that encounter, showing its

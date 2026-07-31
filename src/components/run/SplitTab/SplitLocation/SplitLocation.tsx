@@ -30,6 +30,7 @@ type SplitLocationProps = {
     index: number;
     location: Location;
     onAdvanceSplit: (splitName: string) => void;
+    onClearBattleMarker: () => void;
     onGameComplete: () => void;
     onSelectAbility: (slug: string) => void;
     onSelectBattleMarker: (battleKey: string) => void;
@@ -48,6 +49,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     index,
     location,
     onAdvanceSplit,
+    onClearBattleMarker,
     onGameComplete,
     onSelectAbility,
     onSelectBattleMarker,
@@ -232,6 +234,8 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     };
 
     const handleBattleToggleDefeated = (battle: Battle): void => {
+        onClearBattleMarker();
+
         const battleKey = BattleHelpers.getBattleKey(battle);
         const wasDefeated = defeatedBattles.includes(battleKey);
 
@@ -291,25 +295,21 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                 }
             }
 
-            if (!battle.isOptional) {
-                const allBattles = getAllBattles();
-                const currentIndex = allBattles.findIndex(
-                    ({ battle: candidate }) =>
-                        BattleHelpers.getBattleKey(candidate) === battleKey
-                );
-                const nextRequiredBattle = allBattles
-                    .slice(currentIndex + 1)
-                    .find(({ battle: candidate }) => !candidate.isOptional);
+            const allBattles = getAllBattles();
+            const currentIndex = allBattles.findIndex(
+                ({ battle: candidate }) =>
+                    BattleHelpers.getBattleKey(candidate) === battleKey
+            );
+            const nextBattle = allBattles[currentIndex + 1];
 
-                if (nextRequiredBattle) {
-                    setSelectedSubareaIndex(nextRequiredBattle.subareaIndex);
-                    setSelectedBattle(nextRequiredBattle.battle);
-                    setSelectedEncounter(undefined);
-                    setSpeciesOverride(undefined);
-                    onSelectBattleMarker(
-                        BattleHelpers.getBattleKey(nextRequiredBattle.battle)
-                    );
-                }
+            if (nextBattle) {
+                setSelectedSubareaIndex(nextBattle.subareaIndex);
+                setSelectedBattle(nextBattle.battle);
+                setSelectedEncounter(undefined);
+                setSpeciesOverride(undefined);
+                onSelectBattleMarker(
+                    BattleHelpers.getBattleKey(nextBattle.battle)
+                );
             }
         }
     };

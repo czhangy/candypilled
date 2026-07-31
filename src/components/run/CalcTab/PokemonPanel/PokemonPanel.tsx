@@ -20,33 +20,35 @@ import StatsTable from './StatsTable/StatsTable';
 type PokemonPanelProps = {
     abilityName: string;
     boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
-    evs?: StatValues;
+    evs: StatValues;
     game: Game;
     gender?: 'male' | 'female';
     heldItem: string;
     hideEvs: boolean;
     isTailwind: boolean;
-    ivs?: StatValues;
+    ivs: StatValues;
     level: number;
-    moves?: string[];
+    moves: string[];
     nature: Nature;
     onAbilityChange: (value: string) => void;
     onBoostChange: (
         stat: Exclude<keyof StatValues, 'hp'>,
         value: string
     ) => void;
-    onEvChange?: (
+    onEvChange: (
         stat: keyof StatValues,
         event: React.ChangeEvent<HTMLInputElement>
     ) => void;
+    onGenderChange: (gender: 'male' | 'female') => void;
     onHeldItemChange: (value: string) => void;
-    onIvChange?: (
+    onIvChange: (
         stat: keyof StatValues,
         event: React.ChangeEvent<HTMLInputElement>
     ) => void;
     onLevelChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    onMoveChange?: (index: number, value: string) => void;
+    onMoveChange: (index: number, value: string) => void;
     onNatureChange: (value: string) => void;
+    onSpeciesChange: (slug: string) => void;
     onStatusChange: (value: string) => void;
     placeholder?: string;
     pokemonSlug?: string;
@@ -70,11 +72,13 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     onAbilityChange,
     onBoostChange,
     onEvChange,
+    onGenderChange,
     onHeldItemChange,
     onIvChange,
     onLevelChange,
     onMoveChange,
     onNatureChange,
+    onSpeciesChange,
     onStatusChange,
     placeholder,
     pokemonSlug,
@@ -105,16 +109,12 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const pokemonName = pokemonSlug
-        ? (PokemonHelpers.getPokemonData(pokemonSlug)?.name ?? pokemonSlug)
-        : undefined;
     const baseStats = pokemonSlug
         ? PokemonHelpers.getPokemonStats(pokemonSlug, game.generation)
         : undefined;
-    const rawTotalStats =
-        baseStats && evs && ivs
-            ? StatHelpers.calculateStats(baseStats, level, ivs, evs, nature)
-            : undefined;
+    const rawTotalStats = baseStats
+        ? StatHelpers.calculateStats(baseStats, level, ivs, evs, nature)
+        : undefined;
     const totalStats = rawTotalStats
         ? {
               ...rawTotalStats,
@@ -128,6 +128,18 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
           }
         : undefined;
 
+    const canToggleGender =
+        !!pokemonSlug &&
+        !PokemonHelpers.isGenderless(pokemonSlug) &&
+        !PokemonHelpers.getFixedGender(pokemonSlug);
+    const genderSymbol = gender === 'male' ? '♂' : '♀';
+    const genderClassName = gender
+        ? [styles.gender, styles[`gender--${gender}`]].join(' ')
+        : undefined;
+
+    const speciesOptions: DropdownOption[] = PokemonHelpers.getAllSpecies(
+        game.generation
+    ).map((pokemon) => ({ label: pokemon.name, value: pokemon.slug }));
     const abilityOptions: DropdownOption[] = AbilityHelpers.getAllAbilities(
         game.generation
     ).map((name) => ({ label: name, value: name }));
@@ -140,15 +152,13 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
             };
         }
     );
-    const moveOptions: DropdownOption[] = onMoveChange
-        ? [
-              { label: 'None', value: '' },
-              ...MoveHelpers.getAllMoves(game.generation).map((name) => ({
-                  label: name,
-                  value: name,
-              })),
-          ]
-        : [];
+    const moveOptions: DropdownOption[] = [
+        { label: 'None', value: '' },
+        ...MoveHelpers.getAllMoves(game.generation).map((name) => ({
+            label: name,
+            value: name,
+        })),
+    ];
     const availableItems = Object.values(ITEMS).filter(
         (item) =>
             item.introducedInGeneration <= game.generation &&
@@ -175,19 +185,41 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                     <div className={styles.row}>
                         <div className={styles.field}>
                             <span className={styles.label}>Pokémon</span>
-                            <span className={styles.value}>
-                                {pokemonName ?? 'None selected'}
-                                {gender && (
-                                    <span
-                                        className={[
-                                            styles.gender,
-                                            styles[`gender--${gender}`],
-                                        ].join(' ')}
-                                    >
-                                        {gender === 'male' ? '♂' : '♀'}
-                                    </span>
-                                )}
-                            </span>
+                            {pokemonSlug ? (
+                                <div className={styles.species}>
+                                    <Dropdown
+                                        dense
+                                        onChange={onSpeciesChange}
+                                        options={speciesOptions}
+                                        searchable
+                                        value={pokemonSlug}
+                                    />
+                                    {gender &&
+                                        (canToggleGender ? (
+                                            <button
+                                                className={genderClassName}
+                                                onClick={() =>
+                                                    onGenderChange(
+                                                        gender === 'male'
+                                                            ? 'female'
+                                                            : 'male'
+                                                    )
+                                                }
+                                                type="button"
+                                            >
+                                                {genderSymbol}
+                                            </button>
+                                        ) : (
+                                            <span className={genderClassName}>
+                                                {genderSymbol}
+                                            </span>
+                                        ))}
+                                </div>
+                            ) : (
+                                <span className={styles.value}>
+                                    None selected
+                                </span>
+                            )}
                         </div>
                         <div className={styles.field}>
                             <label
@@ -268,26 +300,24 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                                 speedComparison={speedComparison}
                                 totalStats={totalStats}
                             />
-                            {onMoveChange && (
-                                <div className={styles.field}>
-                                    <span className={styles.label}>Moves</span>
-                                    <div className={styles.moves}>
-                                        {moves?.map((move, index) => (
-                                            <Dropdown
-                                                dense
-                                                key={index}
-                                                onChange={(value) =>
-                                                    onMoveChange(index, value)
-                                                }
-                                                options={moveOptions}
-                                                placeholder="None"
-                                                searchable
-                                                value={move}
-                                            />
-                                        ))}
-                                    </div>
+                            <div className={styles.field}>
+                                <span className={styles.label}>Moves</span>
+                                <div className={styles.moves}>
+                                    {moves.map((move, index) => (
+                                        <Dropdown
+                                            dense
+                                            key={index}
+                                            onChange={(value) =>
+                                                onMoveChange(index, value)
+                                            }
+                                            options={moveOptions}
+                                            placeholder="None"
+                                            searchable
+                                            value={move}
+                                        />
+                                    ))}
                                 </div>
-                            )}
+                            </div>
                         </>
                     )}
                 </>

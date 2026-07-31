@@ -1,6 +1,7 @@
 import { useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
+import { MIN_IV } from '@/lib/static/constants';
 import { BattlePokemon } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
@@ -316,7 +317,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                     generation={generation}
                     highlightDangerous={highlightDangerous}
                     isReadOnly={isReadOnly}
-                    ivs={StatHelpers.normalizeStats(pokemon.ivs, 31)}
+                    ivs={StatHelpers.normalizeStats(pokemon.ivs, MIN_IV)}
                     moves={moves}
                     onSelectMove={onSelectMove}
                 />
