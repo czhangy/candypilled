@@ -34,6 +34,9 @@ to show a prospective position before it is saved.
   resolution. Overridden by `trainer.customWidth` or
   `trainer.customHeight`, in pixels, when set, for trainers whose
   footprint doesn't fit the fixed size
+- `isBoss`, `isMiniboss` — whether `trainer.metadata` includes the
+  corresponding `BattleMetadata` value, driving the marker's color and
+  corner badge
 
 ## SCSS Variable Dependencies
 

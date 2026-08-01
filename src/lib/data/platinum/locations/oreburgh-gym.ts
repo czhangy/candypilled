@@ -1,4 +1,5 @@
 import { oreburghGym } from '@/lib/data/platinum/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const OREBURGH_GYM: Location = {
@@ -6,19 +7,19 @@ const OREBURGH_GYM: Location = {
     map: oreburghGym,
     battles: [
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'youngster-jonathon',
             x: 40,
             y: 77.3,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'youngster-darius',
             x: 59,
             y: 51.6,
         },
         {
-            isBoss: true,
+            metadata: [BattleMetadata.Boss],
             battleKey: 'leader-roark-roark',
             x: 46.6,
             y: 22.8,

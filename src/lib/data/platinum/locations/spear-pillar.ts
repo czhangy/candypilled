@@ -1,4 +1,5 @@
 import { spearPillar } from '@/lib/data/platinum/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SPEAR_PILLAR: Location = {
@@ -6,15 +7,14 @@ const SPEAR_PILLAR: Location = {
     map: spearPillar,
     battles: [
         {
-            isDouble: true,
+            metadata: [BattleMetadata.Double],
             customWidth: 54,
             battleKey: 'galactic-grunt-f-13',
             x: 49.2,
             y: 75.7,
         },
         {
-            isMiniboss: true,
-            isTag: true,
+            metadata: [BattleMetadata.Miniboss, BattleMetadata.Tag],
             customWidth: 82,
             battleKey: 'commander-jupiter-jupiter',
             x: 49.3,

@@ -1,3 +1,4 @@
+import { BattleMetadata } from '@/lib/static/enums';
 import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
@@ -60,9 +61,9 @@ const BattleCard: React.FC<BattleCardProps> = ({
             id={BattleHelpers.getBattleSlug(battle)}
         >
             <span className={styles.label}>
-                {battle.isBoss
+                {battle.metadata.includes(BattleMetadata.Boss)
                     ? 'Boss'
-                    : battle.isMiniboss
+                    : battle.metadata.includes(BattleMetadata.Miniboss)
                       ? 'Miniboss'
                       : 'Battle'}
             </span>

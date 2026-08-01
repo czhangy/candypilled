@@ -3,7 +3,7 @@ import path from 'path';
 import { createInterface, Interface } from 'readline/promises';
 import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import { logError, logSuccess, runScript } from '@/lib/scripts/utils/helpers';
-import { FieldCondition } from '@/lib/static/enums';
+import { BattleMetadata, FieldCondition } from '@/lib/static/enums';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const USAGE =
@@ -42,12 +42,7 @@ type Range = {
 // something this generator writes.
 type PromptedBattle = {
     battleKey: string;
-    isTrueDouble: boolean;
-    isDouble: boolean;
-    isTag: boolean;
-    isOptional: boolean;
-    isMiniboss: boolean;
-    isBoss: boolean;
+    metadata: BattleMetadata[];
     fieldCondition?: FieldCondition;
     x: number;
     y: number;
@@ -205,32 +200,25 @@ const findInsertionPoint = (content: string, scope: Range): InsertionPoint => {
 
 const escapeQuotes = (value: string): string => value.replace(/'/g, "\\'");
 
+const BATTLE_METADATA_KEYS_BY_VALUE = new Map(
+    Object.entries(BattleMetadata).map(([key, value]) => [value, key])
+);
+
 const serializeBattle = (battle: PromptedBattle, indent: string): string => {
     const fieldIndent = `${indent}    `;
     const fieldConditionField = battle.fieldCondition
         ? `${fieldIndent}fieldCondition: FieldCondition.${FIELD_CONDITION_KEYS_BY_VALUE.get(battle.fieldCondition)},\n`
         : '';
-    const optionalField = battle.isOptional
-        ? `${indent}    isOptional: true,\n`
-        : '';
-    const minibossField = battle.isMiniboss
-        ? `${indent}    isMiniboss: true,\n`
-        : '';
-    const bossField = battle.isBoss ? `${indent}    isBoss: true,\n` : '';
-    const trueDoubleField = battle.isTrueDouble
-        ? `${indent}    isTrueDouble: true,\n`
-        : '';
-    const doubleField = battle.isDouble ? `${indent}    isDouble: true,\n` : '';
-    const tagField = battle.isTag ? `${indent}    isTag: true,\n` : '';
+    const metadataField = `${fieldIndent}metadata: [${battle.metadata
+        .map(
+            (value) =>
+                `BattleMetadata.${BATTLE_METADATA_KEYS_BY_VALUE.get(value)}`
+        )
+        .join(', ')}],\n`;
 
     return (
         `${indent}{\n` +
-        optionalField +
-        minibossField +
-        bossField +
-        trueDoubleField +
-        doubleField +
-        tagField +
+        metadataField +
         `${indent}    battleKey: '${escapeQuotes(battle.battleKey)}',\n` +
         fieldConditionField +
         `${indent}    x: ${battle.x},\n` +
@@ -295,14 +283,18 @@ const promptBattle = async (
         ? await promptFieldCondition(rl)
         : undefined;
 
+    const metadata = [
+        isOptional && BattleMetadata.Optional,
+        isMiniboss && BattleMetadata.Miniboss,
+        isBoss && BattleMetadata.Boss,
+        isTrueDouble && BattleMetadata.TrueDouble,
+        isDouble && BattleMetadata.Double,
+        isTag && BattleMetadata.Tag,
+    ].filter((value): value is BattleMetadata => value !== false);
+
     return {
         battleKey,
-        isTrueDouble,
-        isDouble,
-        isTag,
-        isOptional,
-        isMiniboss,
-        isBoss,
+        metadata,
         fieldCondition,
         x,
         y,
@@ -383,6 +375,7 @@ runScript(async () => {
 
     const entryText = serializeBattle(battle, insertionPoint.entryIndent);
     let updated = insertionPoint.insert(original, entryText);
+    updated = ensureEnumImport(updated, 'BattleMetadata');
     if (battle.fieldCondition) {
         updated = ensureEnumImport(updated, 'FieldCondition');
     }

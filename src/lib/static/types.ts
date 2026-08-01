@@ -1,5 +1,6 @@
 import { StaticImageData } from 'next/image';
 import {
+    BattleMetadata,
     EncounterMethod,
     FieldCondition,
     Nature,
@@ -218,14 +219,7 @@ export type Battle = {
     customHeight?: number;
     customWidth?: number;
     fieldCondition?: FieldCondition;
-    isBackToBack?: boolean;
-    isBoss?: boolean;
-    isDouble?: boolean;
-    isGauntlet?: boolean;
-    isMiniboss?: boolean;
-    isOptional?: boolean;
-    isTag?: boolean;
-    isTrueDouble?: boolean;
+    metadata: BattleMetadata[];
     x: number;
     y: number;
 };

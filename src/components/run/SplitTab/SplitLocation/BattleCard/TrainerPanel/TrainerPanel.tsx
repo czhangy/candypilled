@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
-import { FieldCondition } from '@/lib/static/enums';
+import { BattleMetadata, FieldCondition } from '@/lib/static/enums';
 import { Battle, BattleItem } from '@/lib/static/types';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -71,23 +71,23 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
                     width={SPRITE_SIZE}
                 />
             </div>
-            {battle.isOptional && (
+            {battle.metadata.includes(BattleMetadata.Optional) && (
                 <div className={styles['trainer__metadata']}>OPTIONAL</div>
             )}
-            {battle.isTrueDouble ? (
+            {battle.metadata.includes(BattleMetadata.TrueDouble) ? (
                 <div className={styles['trainer__metadata']}>TRUE DOUBLE</div>
             ) : (
-                battle.isDouble && (
+                battle.metadata.includes(BattleMetadata.Double) && (
                     <div className={styles['trainer__metadata']}>DOUBLE</div>
                 )
             )}
-            {battle.isTag && (
+            {battle.metadata.includes(BattleMetadata.Tag) && (
                 <div className={styles['trainer__metadata']}>TAG DOUBLE</div>
             )}
-            {battle.isBackToBack && (
+            {battle.metadata.includes(BattleMetadata.BackToBack) && (
                 <div className={styles['trainer__metadata']}>BACK TO BACK</div>
             )}
-            {battle.isGauntlet && (
+            {battle.metadata.includes(BattleMetadata.Gauntlet) && (
                 <div className={styles['trainer__metadata']}>GAUNTLET</div>
             )}
             {battle.fieldCondition && (

@@ -1,4 +1,5 @@
 import { aaronsRoom } from '@/lib/data/platinum/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const AARONS_ROOM: Location = {
@@ -6,7 +7,7 @@ const AARONS_ROOM: Location = {
     map: aaronsRoom,
     battles: [
         {
-            isBoss: true,
+            metadata: [BattleMetadata.Boss],
             battleKey: 'elite-four-aaron-aaron',
             x: 50.2,
             y: 39.3,

@@ -1,4 +1,5 @@
 import { route214 } from '@/lib/data/platinum/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_214: Location = {
@@ -7,54 +8,55 @@ const ROUTE_214: Location = {
     encountersKey: 'sinnoh-route-214',
     battles: [
         {
+            metadata: [],
             battleKey: 'psychic-f-abigail',
             x: 45.1,
             y: 21.9,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'pi-carlos',
             x: 62.5,
             y: 39.1,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'collector-brady',
             x: 72.9,
             y: 42.4,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'beauty-devon',
             x: 79.7,
             y: 52.1,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'ruin-maniac-bryan',
             x: 20.9,
             y: 53.6,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'psychic-m-mitchell',
             x: 80,
             y: 58.7,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'collector-jamal',
             x: 38.1,
             y: 66,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'ruin-maniac-ronald',
             x: 45.1,
             y: 73.9,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'collector-douglas',
             x: 80,
             y: 85.6,

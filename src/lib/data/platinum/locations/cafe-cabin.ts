@@ -1,4 +1,5 @@
 import { cafeCabin } from '@/lib/data/platinum/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const CAFE_CABIN: Location = {
@@ -6,19 +7,19 @@ const CAFE_CABIN: Location = {
     map: cafeCabin,
     battles: [
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'waitress-kati',
             x: 50,
             y: 33,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'collector-fernando',
             x: 25,
             y: 38.5,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'collector-edwin',
             x: 38,
             y: 38.5,

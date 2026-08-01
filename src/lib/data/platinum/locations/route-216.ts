@@ -1,5 +1,5 @@
 import { route216 } from '@/lib/data/platinum/maps';
-import { FieldCondition } from '@/lib/static/enums';
+import { BattleMetadata, FieldCondition } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_216: Location = {
@@ -8,59 +8,60 @@ const ROUTE_216: Location = {
     encountersKey: 'sinnoh-route-216',
     battles: [
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'ace-trainer-snow-m-blake',
             fieldCondition: FieldCondition.Hail,
             x: 69.8,
             y: 63,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'ace-trainer-snow-f-maria',
             fieldCondition: FieldCondition.Hail,
             x: 58.4,
             y: 83.6,
         },
         {
+            metadata: [],
             battleKey: 'ace-trainer-snow-f-laura',
             fieldCondition: FieldCondition.Hail,
             x: 41.6,
             y: 77.9,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'skier-m-edward',
             fieldCondition: FieldCondition.Hail,
             x: 27.6,
             y: 76.8,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'ace-trainer-snow-m-garrett',
             fieldCondition: FieldCondition.Hail,
             x: 11.5,
             y: 49.1,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'black-belt-philip',
             x: 51,
             y: 25.9,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'skier-f-kaitlyn',
             x: 58.2,
             y: 15.7,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'skier-m-bradley',
             x: 63.2,
             y: 24.8,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'skier-f-andrea',
             x: 82.5,
             y: 32.8,

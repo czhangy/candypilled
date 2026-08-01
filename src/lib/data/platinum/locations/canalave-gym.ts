@@ -4,6 +4,7 @@ import {
     canalaveGym3f,
     canalaveGym4f,
 } from '@/lib/data/platinum/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const CANALAVE_GYM: Location = {
@@ -14,17 +15,19 @@ const CANALAVE_GYM: Location = {
             map: canalaveGym1f,
             battles: [
                 {
+                    metadata: [],
                     battleKey: 'black-belt-ricky',
                     x: 14.4,
                     y: 43,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'worker-gary',
                     x: 66.1,
                     y: 38.8,
                 },
                 {
+                    metadata: [],
                     battleKey: 'ace-trainer-m-cesar',
                     x: 86.1,
                     y: 81.2,
@@ -36,12 +39,13 @@ const CANALAVE_GYM: Location = {
             map: canalaveGym2f,
             battles: [
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'worker-jackson',
                     x: 44.9,
                     y: 4.1,
                 },
                 {
+                    metadata: [],
                     battleKey: 'ace-trainer-f-breanna',
                     x: 88.2,
                     y: 11.1,
@@ -53,11 +57,13 @@ const CANALAVE_GYM: Location = {
             map: canalaveGym3f,
             battles: [
                 {
+                    metadata: [],
                     battleKey: 'worker-gerardo',
                     x: 25.1,
                     y: 3.8,
                 },
                 {
+                    metadata: [],
                     battleKey: 'black-belt-david',
                     x: 78.2,
                     y: 3.8,
@@ -69,7 +75,7 @@ const CANALAVE_GYM: Location = {
             map: canalaveGym4f,
             battles: [
                 {
-                    isBoss: true,
+                    metadata: [BattleMetadata.Boss],
                     battleKey: 'leader-byron-byron',
                     x: 51.8,
                     y: 4.1,

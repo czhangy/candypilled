@@ -1,4 +1,5 @@
 import { canalaveCity } from '@/lib/data/platinum/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const CANALAVE_CITY: Location = {
@@ -7,7 +8,7 @@ const CANALAVE_CITY: Location = {
     encountersKey: 'canalave-city',
     battles: [
         {
-            isMiniboss: true,
+            metadata: [BattleMetadata.Miniboss],
             battleKey: 'pkmn-trainer-barry-barry-5',
             x: 48.1,
             y: 29.9,

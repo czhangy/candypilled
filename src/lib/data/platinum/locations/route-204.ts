@@ -1,4 +1,5 @@
 import { route204North, route204South } from '@/lib/data/platinum/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_204: Location = {
@@ -10,19 +11,19 @@ const ROUTE_204: Location = {
             encountersKey: 'sinnoh-route-204-south-towards-jubilife-city',
             battles: [
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'lass-sarah',
                     x: 38.9,
                     y: 66.5,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'youngster-tyler',
                     x: 22.9,
                     y: 57.5,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'lass-samantha',
                     x: 35.7,
                     y: 27.5,
@@ -35,20 +36,22 @@ const ROUTE_204: Location = {
             encountersKey: 'sinnoh-route-204-north-towards-floaroma-town',
             battles: [
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'aroma-lady-taylor',
                     x: 52.9,
                     y: 59.4,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'bug-catcher-brandon',
                     x: 63.3,
                     y: 39.7,
                 },
                 {
-                    isOptional: true,
-                    isTrueDouble: true,
+                    metadata: [
+                        BattleMetadata.Optional,
+                        BattleMetadata.TrueDouble,
+                    ],
                     customWidth: 36,
                     battleKey: 'twins-liv-and-liz',
                     x: 48.3,

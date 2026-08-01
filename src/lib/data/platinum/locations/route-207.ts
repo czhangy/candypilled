@@ -1,4 +1,5 @@
 import { route207 } from '@/lib/data/platinum/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_207: Location = {
@@ -7,37 +8,37 @@ const ROUTE_207: Location = {
     encountersKey: 'sinnoh-route-207',
     battles: [
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'picnicker-lauren',
             x: 50.8,
             y: 21.4,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'camper-anthony',
             x: 50.8,
             y: 39,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'hiker-justin',
             x: 64.9,
             y: 35.6,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'youngster-austin',
             x: 59,
             y: 69,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'hiker-kevin',
             x: 49.3,
             y: 49,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'battle-girl-helen',
             x: 79.3,
             y: 54.3,

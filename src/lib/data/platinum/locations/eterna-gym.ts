@@ -1,4 +1,5 @@
 import { eternaGym } from '@/lib/data/platinum/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ETERNA_GYM: Location = {
@@ -6,22 +7,25 @@ const ETERNA_GYM: Location = {
     map: eternaGym,
     battles: [
         {
+            metadata: [],
             battleKey: 'lass-caroline',
             x: 64.6,
             y: 79.6,
         },
         {
+            metadata: [],
             battleKey: 'aroma-lady-jenna',
             x: 92.8,
             y: 62.8,
         },
         {
+            metadata: [],
             battleKey: 'aroma-lady-angela',
             x: 7.2,
             y: 30.5,
         },
         {
-            isBoss: true,
+            metadata: [BattleMetadata.Boss],
             battleKey: 'leader-gardenia-gardenia',
             x: 49.9,
             y: 15.1,
