@@ -172,16 +172,25 @@ export type CaughtPokemon = Omit<BattlePokemon, 'moves'> & {
 // ("box") or dead ones ("graveyard").
 export type BoxView = 'alive' | 'dead';
 
-// One imported box file's parse failure, keyed by its file name so the
-// user can locate which file it came from.
-export type BoxImportError = {
+// A save file import's parse failure, keyed by its file name so the user
+// can locate which file it came from.
+export type SaveImportError = {
     fileName: string;
     message: string;
 };
 
-// A Pokémon experience growth rate, determining how EXP maps to level.
-export type PokemonGrowthRate =
-    'erratic' | 'fast' | 'medium-fast' | 'medium-slow' | 'slow' | 'fluctuating';
+// battleKey -> the condition determining whether that battle has been won,
+// resolved against a decrypted save file (generation-specific parsers, e.g.
+// src/lib/parsers/gen4/Gen4BattleParser.ts, know how to evaluate one of
+// these against their own save format).
+export type BattleDefeatCondition =
+    | { type: 'trainerFlag'; flag: number }
+    | { type: 'badge'; bit: number }
+    | { type: 'gameClear' }
+    | { type: 'flag'; flag: number }
+    | { type: 'varAtLeast'; var: number; minValue: number }
+    | { type: 'and'; conditions: BattleDefeatCondition[] }
+    | { type: 'or'; conditions: BattleDefeatCondition[] };
 
 export type BattleItem = {
     count: number;
@@ -214,6 +223,9 @@ export type BattleData = {
     // TRAINER_CLASSES slug.
     trainerClass: string;
     aiFlags: AiFlag[];
+    // Resolved against pret/pokeplatinum -- the condition determining
+    // whether a decrypted save reports this battle as won.
+    saveCondition: BattleDefeatCondition;
 };
 
 export type Battle = {

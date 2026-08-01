@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { PokemonStatus } from '@/lib/static/enums';
 import { BoxView, CaughtPokemon, Game, Run } from '@/lib/static/types';
+import BattleHelpers from '@/lib/utils/BattleHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './BoxTab.module.scss';
-import ImportBoxModal from './ImportBoxModal/ImportBoxModal';
+import ImportSaveModal from './ImportSaveModal/ImportSaveModal';
 import PokemonBox from './PokemonBox/PokemonBox';
 import PokemonPreview from './PokemonPreview/PokemonPreview';
 
@@ -78,7 +79,10 @@ const BoxTab: React.FC<BoxTabProps> = ({
         setIsImportModalOpen(false);
     };
 
-    const handleImportBox = (importedPokemon: CaughtPokemon[]): void => {
+    const handleImportSave = (
+        importedPokemon: CaughtPokemon[],
+        importedDefeatedBattles: string[]
+    ): void => {
         // Multiple imported Pokémon sharing a location collapse to the
         // last one, matching how a Map overwrites on repeated keys.
         const importedByLocation = new Map(
@@ -99,9 +103,22 @@ const BoxTab: React.FC<BoxTabProps> = ({
             (pokemon) => !existingLocations.has(pokemon.location)
         );
 
+        // The save is authoritative for battle completion, the same way it
+        // is for the box: every battle it can resolve is set to exactly
+        // what it reports, rather than only ever adding to what's already
+        // recorded.
+        const requiredBattleKeys = BattleHelpers.getRequiredBattleKeys(game);
+        const defeatedSet = new Set(importedDefeatedBattles);
+        const personalBest =
+            [...requiredBattleKeys]
+                .reverse()
+                .find((battleKey) => defeatedSet.has(battleKey)) ?? '';
+
         const updatedRun: Run = {
             ...run,
             caughtPokemon: [...merged, ...newPokemon],
+            defeatedBattles: importedDefeatedBattles,
+            personalBest,
         };
 
         LocalStorageHelpers.saveRun(game, updatedRun);
@@ -198,12 +215,12 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 version={game.version}
             />
             {isImportModalOpen && (
-                <ImportBoxModal
+                <ImportSaveModal
                     accentColor={game.accentColor}
                     buttonTextColor={game.textContrastColor}
                     game={game}
                     onClose={handleCloseImportModal}
-                    onSubmit={handleImportBox}
+                    onSubmit={handleImportSave}
                 />
             )}
         </div>

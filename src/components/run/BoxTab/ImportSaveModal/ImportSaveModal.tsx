@@ -3,18 +3,18 @@
 import { useState } from 'react';
 import Modal from '@/components/common/Modal/Modal';
 import SaveFileParser from '@/lib/parsers/SaveFileParser';
-import { BoxImportError, CaughtPokemon, Game } from '@/lib/static/types';
-import styles from './ImportBoxModal.module.scss';
+import { CaughtPokemon, Game, SaveImportError } from '@/lib/static/types';
+import styles from './ImportSaveModal.module.scss';
 
-type ImportBoxModalProps = {
+type ImportSaveModalProps = {
     accentColor?: string;
     buttonTextColor?: string;
     game: Game;
     onClose: () => void;
-    onSubmit: (pokemon: CaughtPokemon[]) => void;
+    onSubmit: (pokemon: CaughtPokemon[], defeatedBattles: string[]) => void;
 };
 
-const ImportBoxModal: React.FC<ImportBoxModalProps> = ({
+const ImportSaveModal: React.FC<ImportSaveModalProps> = ({
     accentColor,
     buttonTextColor,
     game,
@@ -26,7 +26,7 @@ const ImportBoxModal: React.FC<ImportBoxModalProps> = ({
     // -------------------------------------------------------------------------
 
     const [file, setFile] = useState<File | null>(null);
-    const [errors, setErrors] = useState<BoxImportError[]>([]);
+    const [errors, setErrors] = useState<SaveImportError[]>([]);
     const [isImporting, setIsImporting] = useState(false);
 
     // -------------------------------------------------------------------------
@@ -48,8 +48,11 @@ const ImportBoxModal: React.FC<ImportBoxModalProps> = ({
 
         try {
             const buffer = await file.arrayBuffer();
-            const pokemon = SaveFileParser.parse(game, buffer);
-            onSubmit(pokemon);
+            const { pokemon, defeatedBattles } = SaveFileParser.parse(
+                game,
+                buffer
+            );
+            onSubmit(pokemon, defeatedBattles);
             onClose();
         } catch (error) {
             setErrors([
@@ -75,22 +78,24 @@ const ImportBoxModal: React.FC<ImportBoxModalProps> = ({
             accentColor={accentColor}
             buttonTextColor={buttonTextColor}
             onClose={onClose}
-            title="Import Box"
+            title="Import Save"
         >
             {() => (
                 <form
-                    className={styles['import-box-modal']}
+                    className={styles['import-save-modal']}
                     onSubmit={handleSubmit}
                 >
                     <p className={styles.hint}>
                         Select your {game.name} <code>.sav</code> file to import
-                        every Pokémon in its party and PC boxes.
+                        every Pokémon in its party and PC boxes, and every
+                        trainer battle it reports as won.
                     </p>
                     <p className={styles.warning}>
                         Each imported Pokémon replaces whatever is already
                         recorded at its catch location, unless that location is
-                        marked dead; new locations are added. This can&apos;t be
-                        undone.
+                        marked dead; new locations are added. Every battle the
+                        save can resolve is set to match it exactly. This
+                        can&apos;t be undone.
                     </p>
                     <input
                         accept=".sav"
@@ -128,4 +133,4 @@ const ImportBoxModal: React.FC<ImportBoxModalProps> = ({
     );
 };
 
-export default ImportBoxModal;
+export default ImportSaveModal;
