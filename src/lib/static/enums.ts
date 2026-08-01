@@ -16,6 +16,15 @@ export enum EncounterMethod {
     Walking = 'walking',
 }
 
+export enum AiFlag {
+    Basic = 'Basic',
+    DamagePriority = 'Damage Priority',
+    EvaluateAttack = 'Evaluate Attack',
+    Expert = 'Expert',
+    Risk = 'Risk',
+    Status = 'Status',
+}
+
 export enum BattleMetadata {
     BackToBack = 'Back To Back',
     Boss = 'Boss',
