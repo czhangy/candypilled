@@ -5,7 +5,7 @@ import styles from './ItemDetail.module.scss';
 
 type ItemDetailProps = {
     generation: number;
-    itemSlug?: string;
+    itemSlug: string;
 };
 
 const ItemDetail: React.FC<ItemDetailProps> = ({ generation, itemSlug }) => {
@@ -19,9 +19,7 @@ const ItemDetail: React.FC<ItemDetailProps> = ({ generation, itemSlug }) => {
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const itemData = itemSlug
-        ? ItemHelpers.getHeldItemData(itemSlug)
-        : undefined;
+    const itemData = ItemHelpers.getHeldItemData(itemSlug);
     const values = itemData
         ? GenerationHelpers.resolveGeneration(
               itemData.valuesByGeneration,
@@ -36,15 +34,8 @@ const ItemDetail: React.FC<ItemDetailProps> = ({ generation, itemSlug }) => {
     return (
         <div className={styles['item-detail']}>
             <div className={styles.header}>Details</div>
-            <div
-                className={[
-                    styles.content,
-                    !itemData && styles['content--empty'],
-                ]
-                    .filter(Boolean)
-                    .join(' ')}
-            >
-                {itemData ? (
+            <div className={styles.content}>
+                {itemData && (
                     <>
                         <div className={styles.top}>
                             <Image
@@ -69,10 +60,6 @@ const ItemDetail: React.FC<ItemDetailProps> = ({ generation, itemSlug }) => {
                             </p>
                         </div>
                     </>
-                ) : (
-                    <span className={styles.placeholder}>
-                        Select an item to view its details
-                    </span>
                 )}
             </div>
         </div>

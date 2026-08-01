@@ -21,7 +21,11 @@ Pokémon that can have it, left to right.
   `game.generation` regardless of obtainability), resolved via
   `EncounterHelpers.getGameSpecies`
 - `availableAbilities` — every ability introduced at or before
-  `game.generation` that at least one of `gameSpecies` can have, passed to
-  `SearchableList`
-- `givenTo` — every one of `gameSpecies` that can have `selectedAbility` as
-  of `game.generation`, passed to `SpeciesListPanel`
+  `game.generation` that at least one of `gameSpecies` can have, sorted
+  alphabetically by name, passed to `SearchableList`
+- `effectiveAbility` — `selectedAbility`, defaulting to
+  `availableAbilities`' first entry when unset, passed to `SearchableList`
+  and `AbilityDetail` so a detail view is always shown rather than a "no
+  selection" placeholder
+- `givenTo` — every one of `gameSpecies` that can have `effectiveAbility`
+  as of `game.generation`, passed to `SpeciesListPanel`

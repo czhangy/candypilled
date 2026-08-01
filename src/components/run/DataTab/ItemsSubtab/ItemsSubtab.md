@@ -17,4 +17,8 @@ respectively.
 ## Computations
 
 - `availableItems` — every item introduced at or before `generation` and
-  not yet removed as of `generation`, passed to `SearchableList`
+  not yet removed as of `generation`, sorted alphabetically by name, passed
+  to `SearchableList`
+- `effectiveItem` — `selectedItem`, defaulting to `availableItems`' first
+  entry when unset, passed to `SearchableList` and `ItemDetail` so a
+  detail view is always shown rather than a "no selection" placeholder

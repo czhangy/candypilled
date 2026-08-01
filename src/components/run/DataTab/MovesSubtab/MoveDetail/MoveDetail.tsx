@@ -5,7 +5,7 @@ import styles from './MoveDetail.module.scss';
 
 type MoveDetailProps = {
     generation: number;
-    moveSlug?: string;
+    moveSlug: string;
 };
 
 const MoveDetail: React.FC<MoveDetailProps> = ({ generation, moveSlug }) => {
@@ -20,10 +20,8 @@ const MoveDetail: React.FC<MoveDetailProps> = ({ generation, moveSlug }) => {
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const moveData = moveSlug ? MoveHelpers.getMoveData(moveSlug) : undefined;
-    const values = moveSlug
-        ? MoveHelpers.getMoveForGeneration(moveSlug, generation)
-        : undefined;
+    const moveData = MoveHelpers.getMoveData(moveSlug);
+    const values = MoveHelpers.getMoveForGeneration(moveSlug, generation);
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -32,15 +30,8 @@ const MoveDetail: React.FC<MoveDetailProps> = ({ generation, moveSlug }) => {
     return (
         <div className={styles['move-detail']}>
             <div className={styles.header}>Details</div>
-            <div
-                className={[
-                    styles.content,
-                    !(moveData && values) && styles['content--empty'],
-                ]
-                    .filter(Boolean)
-                    .join(' ')}
-            >
-                {moveData && values ? (
+            <div className={styles.content}>
+                {moveData && values && (
                     <>
                         <div className={styles.top}>
                             <span className={styles.name}>{moveData.name}</span>
@@ -119,10 +110,6 @@ const MoveDetail: React.FC<MoveDetailProps> = ({ generation, moveSlug }) => {
                             </p>
                         </div>
                     </>
-                ) : (
-                    <span className={styles.placeholder}>
-                        Select a move to view its details
-                    </span>
                 )}
             </div>
         </div>

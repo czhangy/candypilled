@@ -2,7 +2,7 @@ import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import styles from './AbilityDetail.module.scss';
 
 type AbilityDetailProps = {
-    abilitySlug?: string;
+    abilitySlug: string;
     generation: number;
 };
 
@@ -41,12 +41,11 @@ const AbilityDetail: React.FC<AbilityDetailProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const abilityData = abilitySlug
-        ? AbilityHelpers.getAbilityData(abilitySlug)
-        : undefined;
-    const values = abilitySlug
-        ? AbilityHelpers.getAbilityForGeneration(abilitySlug, generation)
-        : undefined;
+    const abilityData = AbilityHelpers.getAbilityData(abilitySlug);
+    const values = AbilityHelpers.getAbilityForGeneration(
+        abilitySlug,
+        generation
+    );
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -55,15 +54,8 @@ const AbilityDetail: React.FC<AbilityDetailProps> = ({
     return (
         <div className={styles['ability-detail']}>
             <div className={styles.header}>Details</div>
-            <div
-                className={[
-                    styles.content,
-                    !(abilityData && values) && styles['content--empty'],
-                ]
-                    .filter(Boolean)
-                    .join(' ')}
-            >
-                {abilityData && values ? (
+            <div className={styles.content}>
+                {abilityData && values && (
                     <>
                         <div className={styles.top}>
                             <span className={styles.name}>
@@ -79,10 +71,6 @@ const AbilityDetail: React.FC<AbilityDetailProps> = ({
                             </p>
                         </div>
                     </>
-                ) : (
-                    <span className={styles.placeholder}>
-                        Select an ability to view its details
-                    </span>
                 )}
             </div>
         </div>

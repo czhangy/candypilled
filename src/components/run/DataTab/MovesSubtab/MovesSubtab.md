@@ -21,6 +21,10 @@ that learns it, left to right.
   `game.generation` regardless of obtainability), resolved via
   `EncounterHelpers.getGameSpecies`
 - `availableMoves` — every move introduced at or before `game.generation`
-  that at least one of `gameSpecies` learns, passed to `SearchableList`
-- `learnedBy` — every one of `gameSpecies` that learns `selectedMove` in
+  that at least one of `gameSpecies` learns, sorted alphabetically by name,
+  passed to `SearchableList`
+- `effectiveMove` — `selectedMove`, defaulting to `availableMoves`' first
+  entry when unset, passed to `SearchableList` and `MoveDetail` so a
+  detail view is always shown rather than a "no selection" placeholder
+- `learnedBy` — every one of `gameSpecies` that learns `effectiveMove` in
   `game.version`, passed to `SpeciesListPanel`

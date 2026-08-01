@@ -1,15 +1,14 @@
 # AbilityDetail
 
-Displays details for a single ability: its name and effect text. If no
-ability is selected, a placeholder message is shown instead. The content
-area scrolls internally past a fixed maximum height rather than growing
-the page, with a styled scrollbar matching the rest of the app.
+Displays details for a single ability: its name and effect text. The
+content area scrolls internally past a fixed maximum height rather than
+growing the page, with a styled scrollbar matching the rest of the app.
 
 ## Props
 
 | Prop          | Type     | Required | Default | Description                                                 |
 | ------------- | -------- | -------- | ------- | ----------------------------------------------------------- |
-| `abilitySlug` | `string` | No       | -       | The selected ability's slug, if any                         |
+| `abilitySlug` | `string` | Yes      | -       | The selected ability's slug                                 |
 | `generation`  | `number` | Yes      | -       | The game's generation, used to resolve the ability's values |
 
 ## Computations

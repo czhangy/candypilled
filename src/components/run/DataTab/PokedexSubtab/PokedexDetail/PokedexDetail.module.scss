@@ -21,17 +21,6 @@
         flex-direction: column;
         min-height: 24rem;
 
-        &--empty {
-            align-items: center;
-            justify-content: center;
-        }
-
-        .placeholder {
-            color: $text-dim;
-            font-size: 0.85rem;
-            text-align: center;
-        }
-
         .details {
             border-top: 1px solid $border-subtle;
             padding: 1rem 1.5rem;

@@ -40,22 +40,24 @@ const AbilitiesSubtab: React.FC<AbilitiesSubtabProps> = ({
         game,
         settings['show-national-dex-data'] ?? false
     );
-    const availableAbilities = Object.values(ABILITIES).filter(
-        (ability) =>
-            ability.introducedInGeneration <= game.generation &&
-            PokemonHelpers.getSpeciesWithAbility(
-                gameSpecies,
-                ability.slug,
-                game.generation
-            ).length > 0
+    const availableAbilities = Object.values(ABILITIES)
+        .filter(
+            (ability) =>
+                ability.introducedInGeneration <= game.generation &&
+                PokemonHelpers.getSpeciesWithAbility(
+                    gameSpecies,
+                    ability.slug,
+                    game.generation
+                ).length > 0
+        )
+        .sort((a, b) => a.name.localeCompare(b.name));
+    const effectiveAbility =
+        selectedAbility ?? availableAbilities[0]?.slug ?? '';
+    const givenTo = PokemonHelpers.getSpeciesWithAbility(
+        gameSpecies,
+        effectiveAbility,
+        game.generation
     );
-    const givenTo = selectedAbility
-        ? PokemonHelpers.getSpeciesWithAbility(
-              gameSpecies,
-              selectedAbility,
-              game.generation
-          )
-        : [];
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -69,15 +71,14 @@ const AbilitiesSubtab: React.FC<AbilitiesSubtabProps> = ({
                 onSelectItem={onSelectAbility}
                 searchAriaLabel="Search abilities"
                 searchPlaceholder="Search abilities..."
-                selectedItem={selectedAbility}
+                selectedItem={effectiveAbility}
                 sortAlphabetically
             />
             <AbilityDetail
-                abilitySlug={selectedAbility}
+                abilitySlug={effectiveAbility}
                 generation={game.generation}
             />
             <SpeciesListPanel
-                emptyMessage="No Pokémon have this ability"
                 entries={givenTo}
                 onSelectSpecies={onSelectSpeciesLink}
                 title="Given To"

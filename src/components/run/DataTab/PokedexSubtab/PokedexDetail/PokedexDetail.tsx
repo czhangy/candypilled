@@ -17,7 +17,7 @@ type PokedexDetailProps = {
     onSelectLocation: (location: string) => void;
     onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
-    species?: string;
+    species: string;
     usedLocations: string[];
     variant: string;
 };
@@ -67,18 +67,14 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const pokemon = species
-        ? PokemonHelpers.getPokemonData(species)
-        : undefined;
-    const sprite = species
-        ? PokemonHelpers.getPokemonSprite(species, variant)
-        : undefined;
-    const types = species
-        ? (PokemonHelpers.getPokemonTypes(species, game.generation) ?? [])
-        : [];
-    const abilities = species
-        ? PokemonHelpers.getPokemonAbilities(species, game.generation)
-        : undefined;
+    const pokemon = PokemonHelpers.getPokemonData(species);
+    const sprite = PokemonHelpers.getPokemonSprite(species, variant);
+    const types =
+        PokemonHelpers.getPokemonTypes(species, game.generation) ?? [];
+    const abilities = PokemonHelpers.getPokemonAbilities(
+        species,
+        game.generation
+    );
     const abilityEntries: AbilityEntry[] = abilities
         ? [
               { slug: abilities.slot1 },
@@ -88,22 +84,15 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                   : []),
           ]
         : [];
-    const catchRate = species
-        ? PokemonHelpers.getPokemonCatchRate(species)
-        : undefined;
+    const catchRate = PokemonHelpers.getPokemonCatchRate(species);
     const hideTradeEvos = settings['disable-trade-evos'] ?? false;
-    const evolutionLine = species
-        ? EvolutionHelpers.getFullEvolutionLine(species, game.generation)
-        : undefined;
-    const stats = species
-        ? PokemonHelpers.getPokemonStats(species, game.generation)
-        : undefined;
-    const learnset = species
-        ? PokemonHelpers.getPokemonLearnset(species, game.version)
-        : undefined;
-    const locations = species
-        ? EncounterHelpers.getEncounterLocations(game, species)
-        : [];
+    const evolutionLine = EvolutionHelpers.getFullEvolutionLine(
+        species,
+        game.generation
+    );
+    const stats = PokemonHelpers.getPokemonStats(species, game.generation);
+    const learnset = PokemonHelpers.getPokemonLearnset(species, game.version);
+    const locations = EncounterHelpers.getEncounterLocations(game, species);
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -112,15 +101,8 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
     return (
         <div className={styles['pokedex-detail']}>
             <div className={styles.header}>Pokédex</div>
-            <div
-                className={[
-                    styles.content,
-                    !pokemon && styles['content--empty'],
-                ]
-                    .filter(Boolean)
-                    .join(' ')}
-            >
-                {pokemon ? (
+            <div className={styles.content}>
+                {pokemon && (
                     <>
                         <PokemonSummary
                             abilityEntries={abilityEntries}
@@ -195,10 +177,6 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                             )}
                         </div>
                     </>
-                ) : (
-                    <span className={styles.placeholder}>
-                        Select a Pokémon to view its details
-                    </span>
                 )}
             </div>
         </div>

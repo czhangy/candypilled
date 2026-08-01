@@ -31,8 +31,11 @@ width respectively.
 - `usedLocations` — every location name whose encounter is already used
   in `run`, resolved via `RunHelpers.getUsedLocations` and passed to
   `PokedexDetail`
-- `selectedPokemon` — `selectedSpecies`' data, resolved via
+- `effectiveSpecies` — `selectedSpecies`, defaulting to `availableSpecies`'
+  first entry when unset, passed to `PokedexDetail` so a detail view is
+  always shown rather than a "no selection" placeholder
+- `selectedPokemon` — `effectiveSpecies`' data, resolved via
   `PokemonHelpers`, used to highlight the matching entry in
-  `SearchableList` (`selectedSpecies` itself may be a slug, e.g. when
-  set by clicking an evolution, so its display name is looked up for
+  `SearchableList` (`effectiveSpecies` itself may be a slug, e.g. when
+  set by clicking an evolution, so its resolved slug is looked up for
   the comparison)

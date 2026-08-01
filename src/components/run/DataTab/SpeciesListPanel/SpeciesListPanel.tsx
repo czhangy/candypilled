@@ -5,7 +5,6 @@ import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './SpeciesListPanel.module.scss';
 
 type SpeciesListPanelProps = {
-    emptyMessage: string;
     entries: {
         slug: string;
         name: string;
@@ -18,7 +17,6 @@ type SpeciesListPanelProps = {
 };
 
 const SpeciesListPanel: React.FC<SpeciesListPanelProps> = ({
-    emptyMessage,
     entries,
     onSelectSpecies,
     title,
@@ -98,14 +96,7 @@ const SpeciesListPanel: React.FC<SpeciesListPanelProps> = ({
     return (
         <div className={styles['species-list-panel']}>
             <div className={styles.header}>{title}</div>
-            <ul
-                className={[
-                    styles.list,
-                    sortedEntries.length === 0 && styles['list--empty'],
-                ]
-                    .filter(Boolean)
-                    .join(' ')}
-            >
+            <ul className={styles.list}>
                 {sortedEntries.map((entry) => (
                     <li key={entry.slug}>
                         <button
@@ -128,9 +119,6 @@ const SpeciesListPanel: React.FC<SpeciesListPanelProps> = ({
                         </button>
                     </li>
                 ))}
-                {sortedEntries.length === 0 && (
-                    <li className={styles.empty}>{emptyMessage}</li>
-                )}
             </ul>
         </div>
     );

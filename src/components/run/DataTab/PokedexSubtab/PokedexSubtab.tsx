@@ -48,9 +48,8 @@ const PokedexSubtab: React.FC<PokedexSubtabProps> = ({
         settings['show-national-dex-data'] ?? false
     );
     const usedLocations = RunHelpers.getUsedLocations(run);
-    const selectedPokemon = selectedSpecies
-        ? PokemonHelpers.getPokemonData(selectedSpecies)
-        : undefined;
+    const effectiveSpecies = selectedSpecies ?? availableSpecies[0]?.slug ?? '';
+    const selectedPokemon = PokemonHelpers.getPokemonData(effectiveSpecies);
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -73,7 +72,7 @@ const PokedexSubtab: React.FC<PokedexSubtabProps> = ({
                 onSelectLocation={onSelectLocation}
                 onSelectMove={onSelectMove}
                 onSelectSpecies={onSelectSpecies}
-                species={selectedSpecies}
+                species={effectiveSpecies}
                 usedLocations={usedLocations}
                 variant={variant}
             />
