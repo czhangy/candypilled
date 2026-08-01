@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { LearnsetMove } from '@/lib/static/types';
+import { LearnsetMethod, LearnsetMove } from '@/lib/static/types';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './SpeciesListPanel.module.scss';
@@ -29,6 +29,11 @@ const SpeciesListPanel: React.FC<SpeciesListPanelProps> = ({
     const SPRITE_WIDTH = 40;
     const SPRITE_HEIGHT = 30;
 
+    // Preference order when a Pokémon learns a move through more than one
+    // method: level-up is the most informative (it also conveys the
+    // level), machine next, tutor last.
+    const METHOD_PRIORITY: LearnsetMethod[] = ['level-up', 'machine', 'tutor'];
+
     // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
@@ -41,8 +46,15 @@ const SpeciesListPanel: React.FC<SpeciesListPanelProps> = ({
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const getMethodLabel = (moves: LearnsetMove[]): string =>
-        moves.map(MoveHelpers.getLearnsetMethodLabel).join(', ');
+    const getMethodLabel = (moves: LearnsetMove[]): string => {
+        const primaryMove = METHOD_PRIORITY.map((method) =>
+            moves.find((move) => move.method === method)
+        ).find((move): move is LearnsetMove => move !== undefined);
+
+        return primaryMove
+            ? MoveHelpers.getLearnsetMethodLabel(primaryMove)
+            : '';
+    };
 
     // -------------------------------------------------------------------------
     // MARKUP

@@ -17,6 +17,7 @@ Clicking a row opens that Pokémon's Pokédex entry.
 
 ## Computations
 
-- `getMethodLabel` — joins an entry's matching learnset moves' labels
-  (resolved via `MoveHelpers.getLearnsetMethodLabel`) into a comma-separated
-  string (e.g. `Lv. 15, TM`)
+- `getMethodLabel` — when an entry learns the move through more than one
+  method, picks a single one to display by `METHOD_PRIORITY`
+  (level-up, then machine, then tutor) and formats it via
+  `MoveHelpers.getLearnsetMethodLabel`
