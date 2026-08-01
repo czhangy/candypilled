@@ -1,5 +1,4 @@
 import { oreburghMineB1f, oreburghMineB2f } from '@/lib/data/platinum/maps';
-import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const OREBURGH_MINE: Location = {
@@ -17,40 +16,13 @@ const OREBURGH_MINE: Location = {
             battles: [
                 {
                     isOptional: true,
-                    trainerClass: 'worker',
-                    name: 'Colin',
-                    team: [
-                        {
-                            slug: 'geodude',
-                            ability: 1,
-                            gender: 'male',
-                            level: 6,
-                            nature: Nature.Naughty,
-                        },
-                        {
-                            slug: 'machop',
-                            ability: 1,
-                            gender: 'male',
-                            level: 8,
-                            nature: Nature.Timid,
-                        },
-                    ],
+                    battleKey: 'worker-colin',
                     x: 27.1,
                     y: 91,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'worker',
-                    name: 'Mason',
-                    team: [
-                        {
-                            slug: 'geodude',
-                            ability: 1,
-                            gender: 'male',
-                            level: 9,
-                            nature: Nature.Brave,
-                        },
-                    ],
+                    battleKey: 'worker-mason',
                     x: 82.6,
                     y: 66.8,
                 },

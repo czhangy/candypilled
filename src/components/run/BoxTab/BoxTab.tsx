@@ -63,7 +63,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
         (split) => split.name === currentSplitName
     );
     const levelCap = currentSplit
-        ? SplitHelpers.getLevelCap(currentSplit)
+        ? SplitHelpers.getLevelCap(game, currentSplit)
         : null;
 
     // -------------------------------------------------------------------------

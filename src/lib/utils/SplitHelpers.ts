@@ -8,13 +8,13 @@ export default class SplitHelpers {
     // -------------------------------------------------------------------------
 
     /** The highest level on split's last battle's team, or null if it has no battles or an empty team. */
-    static getLevelCap(split: Split): number | null {
+    static getLevelCap(game: Game, split: Split): number | null {
         const battles = split.locations.flatMap((location) =>
             BattleHelpers.getBattlesInLocation(location)
         );
         const lastBattle = battles[battles.length - 1];
 
-        return lastBattle ? SplitHelpers.getMaxLevel(lastBattle) : null;
+        return lastBattle ? SplitHelpers.getMaxLevel(game, lastBattle) : null;
     }
 
     /** The name of the split containing battleKey, or null if not found. */
@@ -81,10 +81,11 @@ export default class SplitHelpers {
 
     // A battle's team doesn't vary in level by starter (only species does),
     // so the level cap can be read from whichever team option is available.
-    private static getMaxLevel(battle: Battle): number | null {
-        const teams = battle.team
-            ? [battle.team]
-            : Object.values(battle.teamsByStarter ?? {}).filter(
+    private static getMaxLevel(game: Game, battle: Battle): number | null {
+        const data = game.battles[battle.battleKey];
+        const teams = data.team
+            ? [data.team]
+            : Object.values(data.teamsByStarter ?? {}).filter(
                   (team): team is BattlePokemon[] => !!team
               );
 

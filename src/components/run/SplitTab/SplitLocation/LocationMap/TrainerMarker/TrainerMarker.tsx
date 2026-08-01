@@ -2,11 +2,12 @@ import CheckIcon from '@/lib/icons/CheckIcon';
 import CrownIcon from '@/lib/icons/CrownIcon';
 import DoubleExclamationMarkIcon from '@/lib/icons/DoubleExclamationMarkIcon';
 import ExclamationMarkIcon from '@/lib/icons/ExclamationMarkIcon';
-import { Battle } from '@/lib/static/types';
+import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import styles from './TrainerMarker.module.scss';
 
 type TrainerMarkerProps = {
+    game: Game;
     isDefeated: boolean;
     isNextPersonalBest: boolean;
     isPreview: boolean;
@@ -18,6 +19,7 @@ type TrainerMarkerProps = {
 };
 
 const TrainerMarker: React.FC<TrainerMarkerProps> = ({
+    game,
     isDefeated,
     isNextPersonalBest,
     isPreview,
@@ -59,7 +61,7 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
         <button
             aria-hidden={isPreview}
             aria-label={
-                isPreview ? undefined : BattleHelpers.getFullName(trainer)
+                isPreview ? undefined : BattleHelpers.getFullName(trainer, game)
             }
             aria-pressed={isPreview ? undefined : isSelected}
             className={[

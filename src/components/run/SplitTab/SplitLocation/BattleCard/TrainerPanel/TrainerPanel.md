@@ -21,22 +21,23 @@ consecutive trainers. A "Defeat" button at the bottom toggles the
 trainer's defeated state; once defeated it reads "Defeated" and turns
 green, and can be clicked again to undo. For a tag battle, this panel
 is always the bottom row and shows the second trainer's sprite
-(`trainerClass`/`trainerName`, not necessarily `battle.trainerClass`/
-`battle.name`); the first trainer's sprite is shown above it by a bare
-`TrainerSprite`, since the shared metadata (badges, defeat button)
-only needs to appear once, on this panel.
+(`trainerClass`/`trainerName`, not the battle's own primary trainer);
+the first trainer's sprite is shown above it by a bare `TrainerSprite`,
+since the shared metadata (badges, defeat button) only needs to appear
+once, on this panel.
 
 ## Props
 
-| Prop               | Type         | Required | Default | Description                                                                                                                                                                                     |
-| ------------------ | ------------ | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `battle`           | `Battle`     | Yes      | -       | The battle whose shared metadata (badges, items, field condition, defeat state) is displayed                                                                                                    |
-| `isDefeated`       | `boolean`    | Yes      | -       | Whether this battle has already been marked defeated                                                                                                                                            |
-| `isStacked`        | `boolean`    | Yes      | -       | Whether this panel is the bottom row of a two-trainer tag battle, rounding only its bottom-left corner and omitting its top border, instead of rounding both left corners as a standalone panel |
-| `onToggleDefeated` | `() => void` | Yes      | -       | Called when the defeat button is clicked                                                                                                                                                        |
-| `trainerClass`     | `string`     | Yes      | -       | The displayed trainer's TRAINER_CLASSES slug, used to resolve their display name and sprite                                                                                                     |
-| `trainerName`      | `string`     | Yes      | -       | The displayed trainer's name, combined with their class for display                                                                                                                             |
-| `variant`          | `string`     | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                                                                                          |
+| Prop               | Type           | Required | Default | Description                                                                                                                                                                                     |
+| ------------------ | -------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `battle`           | `Battle`       | Yes      | -       | The battle whose shared metadata (badges, field condition, defeat state) is displayed                                                                                                           |
+| `isDefeated`       | `boolean`      | Yes      | -       | Whether this battle has already been marked defeated                                                                                                                                            |
+| `isStacked`        | `boolean`      | Yes      | -       | Whether this panel is the bottom row of a two-trainer tag battle, rounding only its bottom-left corner and omitting its top border, instead of rounding both left corners as a standalone panel |
+| `items`            | `BattleItem[]` | No       | -       | The displayed trainer's held battle items, resolved from `game.battles` by the caller                                                                                                           |
+| `onToggleDefeated` | `() => void`   | Yes      | -       | Called when the defeat button is clicked                                                                                                                                                        |
+| `trainerClass`     | `string`       | Yes      | -       | The displayed trainer's TRAINER_CLASSES slug, used to resolve their display name and sprite                                                                                                     |
+| `trainerName`      | `string`       | Yes      | -       | The displayed trainer's name, combined with their class for display                                                                                                                             |
+| `variant`          | `string`       | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                                                                                          |
 
 ## SCSS Variable Dependencies
 

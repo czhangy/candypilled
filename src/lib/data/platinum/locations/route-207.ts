@@ -1,5 +1,4 @@
 import { route207 } from '@/lib/data/platinum/maps';
-import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_207: Location = {
@@ -9,149 +8,37 @@ const ROUTE_207: Location = {
     battles: [
         {
             isOptional: true,
-            trainerClass: 'picnicker',
-            name: 'Lauren',
-            team: [
-                {
-                    slug: 'pachirisu',
-                    ability: 1,
-                    gender: 'female',
-                    level: 22,
-                    nature: Nature.Bold,
-                    moves: ['spark', 'quick-attack', 'charm'],
-                },
-            ],
+            battleKey: 'picnicker-lauren',
             x: 50.8,
             y: 21.4,
         },
         {
             isOptional: true,
-            trainerClass: 'camper',
-            name: 'Anthony',
-            team: [
-                {
-                    slug: 'chimchar',
-                    ability: 1,
-                    gender: 'male',
-                    level: 22,
-                    nature: Nature.Careful,
-                },
-            ],
+            battleKey: 'camper-anthony',
             x: 50.8,
             y: 39,
         },
         {
             isOptional: true,
-            trainerClass: 'hiker',
-            name: 'Justin',
-            team: [
-                {
-                    slug: 'geodude',
-                    ability: 1,
-                    gender: 'male',
-                    level: 20,
-                    nature: Nature.Impish,
-                },
-                {
-                    slug: 'nosepass',
-                    ability: 1,
-                    gender: 'male',
-                    level: 20,
-                    nature: Nature.Serious,
-                },
-            ],
+            battleKey: 'hiker-justin',
             x: 64.9,
             y: 35.6,
         },
         {
             isOptional: true,
-            trainerClass: 'youngster',
-            name: 'Austin',
-            team: [
-                {
-                    slug: 'buizel',
-                    ability: 1,
-                    gender: 'male',
-                    level: 18,
-                    nature: Nature.Bold,
-                },
-                {
-                    slug: 'luxio',
-                    ability: 1,
-                    gender: 'male',
-                    level: 18,
-                    nature: Nature.Bashful,
-                },
-                {
-                    slug: 'gligar',
-                    ability: 1,
-                    gender: 'male',
-                    level: 21,
-                    nature: Nature.Naughty,
-                },
-            ],
+            battleKey: 'youngster-austin',
             x: 59,
             y: 69,
         },
         {
             isOptional: true,
-            trainerClass: 'hiker',
-            name: 'Kevin',
-            team: [
-                {
-                    slug: 'geodude',
-                    ability: 1,
-                    gender: 'male',
-                    level: 17,
-                    nature: Nature.Impish,
-                },
-                {
-                    slug: 'geodude',
-                    ability: 1,
-                    gender: 'male',
-                    level: 17,
-                    nature: Nature.Impish,
-                },
-                {
-                    slug: 'onix',
-                    ability: 1,
-                    gender: 'male',
-                    level: 19,
-                    nature: Nature.Impish,
-                },
-                {
-                    slug: 'geodude',
-                    ability: 1,
-                    gender: 'male',
-                    level: 19,
-                    nature: Nature.Sassy,
-                },
-            ],
+            battleKey: 'hiker-kevin',
             x: 49.3,
             y: 49,
         },
         {
             isOptional: true,
-            trainerClass: 'battle-girl',
-            name: 'Helen',
-            team: [
-                {
-                    slug: 'machop',
-                    ability: 1,
-                    gender: 'male',
-                    level: 21,
-                    nature: Nature.Lonely,
-                    ivs: 2,
-                },
-                {
-                    slug: 'meditite',
-                    ability: 1,
-                    gender: 'female',
-                    level: 21,
-                    nature: Nature.Serious,
-                    ivs: 2,
-                },
-            ],
+            battleKey: 'battle-girl-helen',
             x: 79.3,
             y: 54.3,
         },

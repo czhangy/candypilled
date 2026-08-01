@@ -21,7 +21,7 @@ const BattleSelectPanel: React.FC<BattleSelectPanelProps> = ({
     const trainerOptions: DropdownOption[] = BattleHelpers.getAllBattles(
         game
     ).map((battle) => ({
-        label: BattleHelpers.getFullName(battle),
+        label: BattleHelpers.getFullName(battle, game),
         value: BattleHelpers.getBattleKey(battle),
     }));
 

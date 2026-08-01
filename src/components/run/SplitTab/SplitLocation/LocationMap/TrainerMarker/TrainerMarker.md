@@ -14,16 +14,17 @@ to show a prospective position before it is saved.
 
 ## Props
 
-| Prop                 | Type                        | Required | Default | Description                                                              |
-| -------------------- | --------------------------- | -------- | ------- | ------------------------------------------------------------------------ |
-| `trainer`            | `Battle`                    | Yes      | -       | The battle this marker represents and positions                          |
-| `mapWidth`           | `number`                    | Yes      | -       | Intrinsic width of the map image, in pixels                              |
-| `mapHeight`          | `number`                    | Yes      | -       | Intrinsic height of the map image, in pixels                             |
-| `isDefeated`         | `boolean`                   | Yes      | -       | Whether this trainer has already been defeated                           |
-| `isNextPersonalBest` | `boolean`                   | Yes      | -       | Whether defeating this trainer next would extend the PB                  |
-| `isPreview`          | `boolean`                   | Yes      | -       | Renders as a non-interactive, dashed ghost marker when true              |
-| `isSelected`         | `boolean`                   | Yes      | -       | Whether this trainer is the currently selected one                       |
-| `onClick`            | `(trainer: Battle) => void` | Yes      | -       | Called with this marker's battle when clicked (ignored when `isPreview`) |
+| Prop                 | Type                        | Required | Default | Description                                                                        |
+| -------------------- | --------------------------- | -------- | ------- | ---------------------------------------------------------------------------------- |
+| `trainer`            | `Battle`                    | Yes      | -       | The battle this marker represents and positions                                    |
+| `game`               | `Game`                      | Yes      | -       | The active game, used to resolve the trainer's accessible label via `game.battles` |
+| `mapWidth`           | `number`                    | Yes      | -       | Intrinsic width of the map image, in pixels                                        |
+| `mapHeight`          | `number`                    | Yes      | -       | Intrinsic height of the map image, in pixels                                       |
+| `isDefeated`         | `boolean`                   | Yes      | -       | Whether this trainer has already been defeated                                     |
+| `isNextPersonalBest` | `boolean`                   | Yes      | -       | Whether defeating this trainer next would extend the PB                            |
+| `isPreview`          | `boolean`                   | Yes      | -       | Renders as a non-interactive, dashed ghost marker when true                        |
+| `isSelected`         | `boolean`                   | Yes      | -       | Whether this trainer is the currently selected one                                 |
+| `onClick`            | `(trainer: Battle) => void` | Yes      | -       | Called with this marker's battle when clicked (ignored when `isPreview`)           |
 
 ## Computations
 

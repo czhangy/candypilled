@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
-import { Battle } from '@/lib/static/types';
+import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import CoordinateLoggingHelpers from '@/lib/utils/CoordinateLoggingHelpers';
 import styles from './LocationMap.module.scss';
@@ -11,6 +11,7 @@ import TrainerMarker from './TrainerMarker/TrainerMarker';
 type LocationMapProps = {
     alt: string;
     battles?: Battle[];
+    game: Game;
     isBattleDefeated: (battle: Battle) => boolean;
     isBattleNextPB: (battle: Battle) => boolean;
     map: StaticImageData;
@@ -22,6 +23,7 @@ type LocationMapProps = {
 const LocationMap: React.FC<LocationMapProps> = ({
     alt,
     battles = [],
+    game,
     isBattleDefeated,
     isBattleNextPB,
     map,
@@ -106,6 +108,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
                 <Image alt={alt} priority={priority} src={map} />
                 {battles.map((battle) => (
                     <TrainerMarker
+                        game={game}
                         isDefeated={isBattleDefeated(battle)}
                         isNextPersonalBest={isBattleNextPB(battle)}
                         isPreview={false}
@@ -120,6 +123,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
                 {EDIT_MODE_ON && previewPosition && (
                     <>
                         <TrainerMarker
+                            game={game}
                             isDefeated={false}
                             isNextPersonalBest={false}
                             isPreview
@@ -128,8 +132,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
                             mapWidth={map.width}
                             onClick={() => {}}
                             trainer={{
-                                name: '',
-                                trainerClass: '',
+                                battleKey: '',
                                 x: previewPosition.x,
                                 y: previewPosition.y,
                             }}

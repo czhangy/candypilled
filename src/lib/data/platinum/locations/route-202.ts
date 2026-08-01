@@ -1,5 +1,4 @@
 import { route202 } from '@/lib/data/platinum/maps';
-import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_202: Location = {
@@ -8,48 +7,17 @@ const ROUTE_202: Location = {
     encountersKey: 'sinnoh-route-202',
     battles: [
         {
-            trainerClass: 'youngster',
-            name: 'Tristan',
-            team: [
-                {
-                    slug: 'starly',
-                    ability: 1,
-                    gender: 'male',
-                    level: 5,
-                    nature: Nature.Careful,
-                },
-            ],
+            battleKey: 'youngster-tristan',
             x: 22.13,
             y: 47,
         },
         {
-            trainerClass: 'lass',
-            name: 'Natalie',
-            team: [
-                {
-                    slug: 'bidoof',
-                    ability: 1,
-                    gender: 'female',
-                    level: 5,
-                    nature: Nature.Quiet,
-                },
-            ],
+            battleKey: 'lass-natalie',
             x: 61.9,
             y: 60.4,
         },
         {
-            trainerClass: 'youngster',
-            name: 'Logan',
-            team: [
-                {
-                    slug: 'burmy',
-                    ability: 1,
-                    gender: 'male',
-                    level: 5,
-                    nature: Nature.Impish,
-                    moves: ['tackle'],
-                },
-            ],
+            battleKey: 'youngster-logan',
             x: 72.3,
             y: 21.9,
         },

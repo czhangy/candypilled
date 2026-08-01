@@ -127,7 +127,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const personalBestLabel = personalBestSplitName
         ? `${personalBestSplitName} Split${
               personalBestBattle
-                  ? ` — ${BattleHelpers.getFullName(personalBestBattle)}`
+                  ? ` — ${BattleHelpers.getFullName(personalBestBattle, game!)}`
                   : ''
           }`
         : null;

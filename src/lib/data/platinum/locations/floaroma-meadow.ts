@@ -1,5 +1,4 @@
 import { floaromaMeadow } from '@/lib/data/platinum/maps';
-import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const FLOAROMA_MEADOW: Location = {
@@ -9,41 +8,14 @@ const FLOAROMA_MEADOW: Location = {
     battles: [
         {
             isBackToBack: true,
-            trainerClass: 'galactic-grunt-m',
-            name: '3',
-            team: [
-                {
-                    slug: 'stunky',
-                    ability: 1,
-                    gender: 'male',
-                    level: 13,
-                    nature: Nature.Hasty,
-                },
-            ],
+            battleKey: 'galactic-grunt-m-3',
 
             x: 13.9,
             y: 48.1,
         },
         {
             isBackToBack: true,
-            trainerClass: 'galactic-grunt-m',
-            name: '4',
-            team: [
-                {
-                    slug: 'zubat',
-                    ability: 1,
-                    gender: 'male',
-                    level: 11,
-                    nature: Nature.Gentle,
-                },
-                {
-                    slug: 'zubat',
-                    ability: 1,
-                    gender: 'male',
-                    level: 11,
-                    nature: Nature.Gentle,
-                },
-            ],
+            battleKey: 'galactic-grunt-m-4',
             x: 11.9,
             y: 48.1,
         },
