@@ -100,16 +100,6 @@
             position: relative;
             transition: background-color 0.2s ease;
 
-            .tag {
-                background: var(--accent-color);
-                border-radius: 50%;
-                height: 0.4rem;
-                position: absolute;
-                right: 0.3rem;
-                top: 0.3rem;
-                width: 0.4rem;
-            }
-
             .held-item {
                 bottom: 0.2rem;
                 image-rendering: pixelated;

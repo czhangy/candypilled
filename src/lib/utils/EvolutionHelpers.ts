@@ -110,27 +110,6 @@ export default class EvolutionHelpers {
         );
     }
 
-    /**
-     * The evolution steps directly reachable from slug, i.e. the species it
-     * can evolve into right now (empty if slug doesn't evolve further).
-     */
-    static getNextEvolutions(
-        slug: string,
-        generation: number
-    ): EvolutionStep[] {
-        const line = EvolutionHelpers.getEvolutionLine(slug, generation);
-        if (!line) return [];
-
-        const findStep = (step: EvolutionStep): EvolutionStep | undefined => {
-            if (step.slug === slug) return step;
-            return step.evolvesTo
-                .map(findStep)
-                .find((found): found is EvolutionStep => !!found);
-        };
-
-        return findStep(line)?.evolvesTo ?? [];
-    }
-
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------

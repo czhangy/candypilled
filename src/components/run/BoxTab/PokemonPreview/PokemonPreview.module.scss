@@ -48,28 +48,15 @@ $label-width: 4.5rem;
                 gap: 0.5rem;
                 margin-left: auto;
 
-                .edit-button,
-                .status-button,
-                .evolve-button {
+                .status-button {
                     @include mono-label;
+                    @include outline-button($red);
 
                     border-radius: 0.35rem;
                     cursor: pointer;
                     font-size: 0.7rem;
                     height: fit-content;
                     padding: 0.4rem 0.75rem;
-                }
-
-                .edit-button {
-                    @include outline-button($orange);
-                }
-
-                .status-button {
-                    @include outline-button($red);
-                }
-
-                .evolve-button {
-                    @include outline-button($green);
                 }
             }
 
@@ -159,26 +146,6 @@ $label-width: 4.5rem;
                     .nature-effect {
                         font-size: 0.65rem;
                         vertical-align: baseline;
-                    }
-                }
-
-                .tags {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 0.3rem;
-
-                    .tag {
-                        @include mono-label;
-
-                        background: color-mix(
-                            in srgb,
-                            var(--accent-color) 20%,
-                            transparent
-                        );
-                        border-radius: 999px;
-                        color: $foreground;
-                        font-size: 0.7rem;
-                        padding: 0.15rem 0.55rem;
                     }
                 }
             }

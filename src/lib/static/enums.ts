@@ -79,4 +79,7 @@ export enum Nature {
     Sassy = 'Sassy',
     Serious = 'Serious',
     Timid = 'Timid',
+    // Assigned to Pokémon (e.g. starters) whose actual nature hasn't been
+    // determined yet.
+    Unknown = 'Unknown',
 }

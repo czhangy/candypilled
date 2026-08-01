@@ -325,9 +325,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             | 'moves'
             | 'nature'
             | 'slug'
-            | 'tags'
-        >,
-        enteredLocation: string
+        >
     ): void => {
         const updatedRun: Run = {
             ...run,
@@ -336,7 +334,10 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                 {
                     ...details,
                     heldItem: '',
-                    location: isEggEncounter ? enteredLocation : location.name,
+                    // An egg's actual hatch location isn't tracked, so it's
+                    // recorded under a placeholder location rather than the
+                    // encounter's own (misleading) one.
+                    location: isEggEncounter ? 'Mystery Zone' : location.name,
                     status: PokemonStatus.Alive,
                 },
             ],

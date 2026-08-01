@@ -143,7 +143,8 @@ Pokédex tile.
 - `isEggEncounter` — whether the Pokédex tile's selected Pokémon comes
   from an "egg" encounter, computed the same way as `isStarterEncounter`;
   passed to the Pokédex tile to show "HATCH"/"HATCHED" instead of
-  "CATCH"/"CAUGHT" and to expose `AddPokemonModal`'s Location field
+  "CATCH"/"CAUGHT", and used to record the catch under a placeholder
+  location instead of `location.name`
 - `allEncountersHidden` — whether `EncounterHelpers.areAllEncountersHidden`
   returns `true` for the active section's encounters given the current
   global settings (e.g. "Hide Dupes", "Hide Legendaries") plus `dupes`
@@ -184,16 +185,16 @@ the index disambiguates locations that share a name within the split.
   `speciesOverride`, since a new subarea has its own encounter table
 - **On Pokédex tile evolution line click** — sets `speciesOverride` to
   the clicked species, without changing `selectedEncounter`
-- **On Pokédex tile "Add Pokémon" submit** — appends a record (the
-  submitted details, an empty `heldItem`, and a `status` of
-  `PokemonStatus.Alive`) to the run's `caughtPokemon` in storage, with
-  the location set to the submitted location when `isEggEncounter`,
-  otherwise `location.name`
+- **On Pokédex tile catch button click while not caught here** —
+  appends a record (the details `PokedexTile` calls `onAddPokemon`
+  with, an empty `heldItem`, and a `status` of `PokemonStatus.Alive`)
+  to the run's `caughtPokemon` in storage, with the location set to
+  `"Mystery Zone"` when `isEggEncounter` (since an egg's actual hatch
+  location isn't tracked), otherwise `location.name`; also removes
+  `location.name` from the run's `missedLocations` in storage, if
+  present, since catching and missing are mutually exclusive
 - **On Pokédex tile catch button click while caught here** — removes
   this location's record from the run's `caughtPokemon` in storage
-- **On "Add Pokémon" submit** — also removes `location.name` from the
-  run's `missedLocations` in storage, if present, since catching and
-  missing are mutually exclusive
 - **On encounter table "MISS"/"MISSED" button click** — adds or
   removes `location.name` from the run's `missedLocations` in storage
 

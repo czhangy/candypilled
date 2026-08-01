@@ -50,11 +50,6 @@ right, each taking up half of the row's width.
   item), saves the updated run, and switches `view` to the view the
   Pokémon now belongs in (`'dead'` if it was just killed, `'alive'` if
   it was just revived)
-- `handleEditPokemon` — merges a caught Pokémon's edited details (ability,
-  EVs, gender, held item, IVs, level, moves, nature, tags) into
-  `run.caughtPokemon` and saves the updated run
-- `handleEvolve` — updates a caught Pokémon's `slug` to the confirmed
-  evolution's species and saves the updated run
 - `handleViewChange` — sets `view` to the view clicked in `PokemonBox`'s
   header and calls `onDeselectPokemon`, since the previously selected
   Pokémon may not belong to the newly shown view

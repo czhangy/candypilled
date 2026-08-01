@@ -3,8 +3,7 @@
 Displays every recorded attribute of the currently selected caught Pokémon:
 a small sprite alongside its name (suffixed with a blue ♂ or pink ♀ gender
 symbol, omitted for a genderless species), level, nature, ability,
-catch location, held item, and
-tags (as a row of pills, when any are set), followed by its full evolution
+catch location, and held item, followed by its full evolution
 line, its calculated stats, a 2x2 grid of its moves, and its full learnset.
 Its ability, held item, and moves link out to their corresponding views
 in the Abilities, Items, and Moves tabs, its nature links to its entry
@@ -16,44 +15,27 @@ line and learnset entries also link out to those species' and moves'
 corresponding views. A button
 (labeled "Dead" or "Revive" depending on current status) lets the
 Pokémon's status be toggled between alive and dead — toggling to dead
-also clears its held item (see `BoxTab.md`). While viewing the alive
-Pokémon (not the dead ones), an "Edit" button
-opens a modal for editing the Pokémon's recorded details, including its
-EVs and tags. If the Pokémon can still evolve, an "Evolve" button below Edit opens
-a confirmation modal, letting the user pick between multiple possible
-evolutions if more than one exists. If the Pokémon's level exceeds the
+also clears its held item (see `BoxTab.md`). If the Pokémon's level exceeds the
 current split's level cap, its level is highlighted red. Each stat
 boosted by the Pokémon's nature is highlighted red, and each stat
 hindered by it is highlighted blue.
 
 ## Props
 
-| Prop                | Type                                                                                                                                                                          | Required | Default | Description                                                                               |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------- |
-| `accentColor`       | `string`                                                                                                                                                                      | Yes      | -       | The game's accent color, passed through to `EditPokemonModal` and `EvolveModal`           |
-| `buttonTextColor`   | `string`                                                                                                                                                                      | No       | -       | The game's button text contrast color, passed through to `EditPokemonModal`               |
-| `canSelectLocation` | `boolean`                                                                                                                                                                     | Yes      | -       | Whether the previewed Pokémon's location matches a split, making it clickable             |
-| `generation`        | `number`                                                                                                                                                                      | Yes      | -       | The game's generation, used to resolve each move's values and the Pokémon's base stats    |
-| `levelCap`          | `number \| null`                                                                                                                                                              | Yes      | -       | The current split's level cap, used to highlight an over-leveled Pokémon's level          |
-| `onEdit`            | `(pokemon: CaughtPokemon, details: Pick<CaughtPokemon, 'ability' \| 'evs' \| 'gender' \| 'heldItem' \| 'ivs' \| 'level' \| 'moves' \| 'nature' \| 'slug' \| 'tags'>) => void` | Yes      | -       | Called with the previewed Pokémon and its edited details when the edit form is submitted  |
-| `onEvolve`          | `(pokemon: CaughtPokemon, newSlug: string) => void`                                                                                                                           | Yes      | -       | Called with the previewed Pokémon and its confirmed evolution's species slug              |
-| `onSelectAbility`   | `(slug: string) => void`                                                                                                                                                      | Yes      | -       | Called with the Pokémon's ability slug when it's clicked                                  |
-| `onSelectItem`      | `(slug: string) => void`                                                                                                                                                      | Yes      | -       | Called with the Pokémon's held item slug when it's clicked                                |
-| `onSelectLocation`  | `(location: string) => void`                                                                                                                                                  | Yes      | -       | Called with the Pokémon's catch location when it's clicked                                |
-| `onSelectMove`      | `(slug: string) => void`                                                                                                                                                      | Yes      | -       | Called with a move's slug when it's clicked (in the moves grid or the learnset)           |
-| `onSelectSpecies`   | `(slug: string) => void`                                                                                                                                                      | Yes      | -       | Called with a species slug when it's clicked in the evolution line                        |
-| `onToggleStatus`    | `(pokemon: CaughtPokemon) => void`                                                                                                                                            | Yes      | -       | Called with the previewed Pokémon when the status button is clicked                       |
-| `pokemon`           | `CaughtPokemon`                                                                                                                                                               | No       | -       | The currently selected caught Pokémon, if any                                             |
-| `variant`           | `string`                                                                                                                                                                      | Yes      | -       | The game slug used to resolve the Pokémon's sprite art                                    |
-| `version`           | `string`                                                                                                                                                                      | Yes      | -       | The game's version, passed through to `EditPokemonModal` for move-version filtering       |
-| `view`              | `BoxView`                                                                                                                                                                     | Yes      | -       | The box tab's current view, used to only show the Edit button while viewing alive Pokémon |
-
-## State
-
-| State          | Type      | Initial value | Description                                   |
-| -------------- | --------- | ------------- | --------------------------------------------- |
-| `isEditOpen`   | `boolean` | `false`       | Whether the edit modal is open                |
-| `isEvolveOpen` | `boolean` | `false`       | Whether the evolve confirmation modal is open |
+| Prop                | Type                               | Required | Default | Description                                                                            |
+| ------------------- | ---------------------------------- | -------- | ------- | -------------------------------------------------------------------------------------- |
+| `canSelectLocation` | `boolean`                          | Yes      | -       | Whether the previewed Pokémon's location matches a split, making it clickable          |
+| `generation`        | `number`                           | Yes      | -       | The game's generation, used to resolve each move's values and the Pokémon's base stats |
+| `levelCap`          | `number \| null`                   | Yes      | -       | The current split's level cap, used to highlight an over-leveled Pokémon's level       |
+| `onSelectAbility`   | `(slug: string) => void`           | Yes      | -       | Called with the Pokémon's ability slug when it's clicked                               |
+| `onSelectItem`      | `(slug: string) => void`           | Yes      | -       | Called with the Pokémon's held item slug when it's clicked                             |
+| `onSelectLocation`  | `(location: string) => void`       | Yes      | -       | Called with the Pokémon's catch location when it's clicked                             |
+| `onSelectMove`      | `(slug: string) => void`           | Yes      | -       | Called with a move's slug when it's clicked (in the moves grid or the learnset)        |
+| `onSelectSpecies`   | `(slug: string) => void`           | Yes      | -       | Called with a species slug when it's clicked in the evolution line                     |
+| `onToggleStatus`    | `(pokemon: CaughtPokemon) => void` | Yes      | -       | Called with the previewed Pokémon when the status button is clicked                    |
+| `pokemon`           | `CaughtPokemon`                    | No       | -       | The currently selected caught Pokémon, if any                                          |
+| `variant`           | `string`                           | Yes      | -       | The game slug used to resolve the Pokémon's sprite art                                 |
+| `version`           | `string`                           | Yes      | -       | The game's version, used to resolve its learnset                                       |
 
 ## Computations
 
@@ -61,7 +43,7 @@ hindered by it is highlighted blue.
   stats), resolved from `pokemon.slug` and `pokemon.heldItem` via
   `PokemonHelpers.getDisplaySlug`; differs from `pokemon.slug` only for a
   species with a held-item form change (e.g. Giratina holding the Griseous
-  Orb resolves to Origin Forme) while its evolution options, moves, and tags
+  Orb resolves to Origin Forme) while its evolution options and moves
   stay tied to `pokemon.slug`'s identity
 - `abilitySlug` — the selected ability's slug, taken directly from
   `pokemon.ability`
@@ -76,12 +58,8 @@ hindered by it is highlighted blue.
   `StatHelpers.normalizeStats`, passed to each `MoveCard` to resolve
   Hidden Power's actual type and reused for `stats`
 - `hideTradeEvos` — the global "Disable Trade Evolutions" setting's
-  current value, read from `localStorage` via `SettingsHelpers`
-- `nextEvolutions` — the species the previewed Pokémon can evolve into
-  right now, via `EvolutionHelpers.getNextEvolutions` (empty, and the Evolve
-  button hidden, if the Pokémon is dead or doesn't evolve further), further
-  filtered to exclude trade-only evolutions (via
-  `EvolutionHelpers.isTradeEvolution`) when `hideTradeEvos` is enabled
+  current value, read from `localStorage` via `SettingsHelpers`, passed to
+  `EvolutionLine` to filter out trade-only evolutions
 - `evolutionLine` — the previewed Pokémon's full evolution family, via
   `EvolutionHelpers.getFullEvolutionLine`, rendered by `EvolutionLine`
 - `learnset` — the previewed Pokémon's full learnset for `version`, via

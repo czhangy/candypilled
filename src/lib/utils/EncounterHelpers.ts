@@ -4,7 +4,6 @@ import {
     EncounterLocation,
     EncounterVisibilityContext,
     Game,
-    PokemonData,
 } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -99,31 +98,6 @@ export default class EncounterHelpers {
                 (encounter) => encounter.method === EncounterMethod.Starter
             );
         })!.name;
-    }
-
-    /**
-     * Every species with a wild encounter reachable from game.splits (i.e.
-     * actually wired into a location/subarea, not just present somewhere in
-     * game.encounters), deduped and sorted alphabetically by display name.
-     */
-    static getAllEncounterSpecies(game: Game): PokemonData[] {
-        const locations = EncounterHelpers.getWiredLocations(game);
-
-        const slugs = new Set<string>();
-        for (const { encountersKey } of locations) {
-            if (!encountersKey) continue;
-
-            const encounters = game.encounters[encountersKey] ?? [];
-            for (const encounter of encounters) {
-                slugs.add(encounter.species);
-            }
-        }
-
-        const species = [...slugs]
-            .map((slug) => PokemonHelpers.getPokemonData(slug))
-            .filter((pokemon): pokemon is PokemonData => !!pokemon);
-
-        return species.sort((a, b) => a.name.localeCompare(b.name));
     }
 
     /**

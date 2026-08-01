@@ -163,9 +163,6 @@ export type CaughtPokemon = Omit<BattlePokemon, 'moves'> & {
     location: string;
     moves: string[];
     status: PokemonStatus;
-    // Freeform labels the player assigns to organize their box (e.g. "Ace",
-    // "Trade").
-    tags: string[];
 };
 
 // The two views of the box tab's caught Pokémon grid: living Pokémon

@@ -7,14 +7,8 @@ viewing the alive Pokémon, an "Import" button sits at the header's
 right edge. Clicking a slot selects that Pokémon. Pokémon above the
 current split's level cap are greyed out, but remain clickable. Slots can
 be dragged and dropped onto one another to reorder the caught Pokémon. A
-slot for a Pokémon with at least one tag shows a small accent-colored dot
-in its top-right corner, revealing the full tag list in a tooltip on
-hover. A slot for a Pokémon holding an item shows that item's icon in
-its bottom-right corner. When any caught Pokémon has at least one tag,
-a `TagFilter` button
-sits to the right of the Alive/Dead toggle, letting the grid be narrowed
-down to Pokémon carrying every checked tag; if none match, a placeholder
-says so instead of the grid.
+slot for a Pokémon holding an item shows that item's icon in
+its bottom-right corner.
 
 ## Props
 
@@ -31,23 +25,17 @@ says so instead of the grid.
 
 ## State
 
-| State             | Type       | Initial value | Description                                                             |
-| ----------------- | ---------- | ------------- | ----------------------------------------------------------------------- |
-| `draggedLocation` | `string`   | `''`          | The location of the caught Pokémon slot currently being dragged, if any |
-| `selectedTags`    | `string[]` | `[]`          | The tags currently checked in `TagFilter`                               |
+| State             | Type     | Initial value | Description                                                             |
+| ----------------- | -------- | ------------- | ----------------------------------------------------------------------- |
+| `draggedLocation` | `string` | `''`          | The location of the caught Pokémon slot currently being dragged, if any |
 
 ## Computations
 
-- `allTags` — every distinct tag across `caughtPokemon`, sorted
-  alphabetically, offered to `TagFilter`; when empty, `TagFilter` isn't
-  rendered at all
 - `displayedPokemon` — `caughtPokemon` filtered to those with a `status`
   of `PokemonStatus.Dead` when `view` is `'dead'`, or to those
-  without it when `view` is `'alive'`, further filtered to those carrying
-  every tag in `selectedTags`
+  without it when `view` is `'alive'`
 - `emptyMessage` — the placeholder text shown when `displayedPokemon` is
-  empty: a "no matches" message when `selectedTags` is non-empty,
-  otherwise worded for the current `view`
+  empty, worded for the current `view`
 - `isOverCap` — whether a given Pokémon's `level` exceeds `levelCap`,
   computed per slot
 - `heldItemData` — a given Pokémon's held item data (name and sprite),
@@ -62,7 +50,6 @@ says so instead of the grid.
 
 - **On header button click** — calls `onViewChange` with the clicked
   button's view
-- **On `TagFilter` change** — sets `selectedTags`
 - **On slot drag start** — records the dragged slot's location in
   `draggedLocation`
 - **On slot drop** — calls `onReorderPokemon` with `draggedLocation` and

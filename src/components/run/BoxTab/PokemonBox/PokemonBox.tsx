@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { PokemonStatus } from '@/lib/static/enums';
 import { BoxView, CaughtPokemon } from '@/lib/static/types';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './PokemonBox.module.scss';
-import TagFilter from './TagFilter/TagFilter';
 
 type PokemonBoxProps = {
     caughtPokemon: CaughtPokemon[];
@@ -42,28 +40,18 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
     // -------------------------------------------------------------------------
 
     const [draggedLocation, setDraggedLocation] = useState('');
-    const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const allTags = [
-        ...new Set(caughtPokemon.flatMap((pokemon) => pokemon.tags)),
-    ].sort((a, b) => a.localeCompare(b));
-    const displayedPokemon = caughtPokemon.filter(
-        (pokemon) =>
-            (view === 'dead'
-                ? pokemon.status === PokemonStatus.Dead
-                : pokemon.status !== PokemonStatus.Dead) &&
-            selectedTags.every((tag) => pokemon.tags.includes(tag))
+    const displayedPokemon = caughtPokemon.filter((pokemon) =>
+        view === 'dead'
+            ? pokemon.status === PokemonStatus.Dead
+            : pokemon.status !== PokemonStatus.Dead
     );
     const emptyMessage =
-        selectedTags.length > 0
-            ? 'No Pokémon match the selected tags'
-            : view === 'dead'
-              ? 'No dead Pokémon'
-              : 'No alive Pokémon';
+        view === 'dead' ? 'No dead Pokémon' : 'No alive Pokémon';
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -75,10 +63,6 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
 
     const handleViewClick = (nextView: BoxView): void => {
         onViewChange(nextView);
-    };
-
-    const handleTagsChange = (tags: string[]): void => {
-        setSelectedTags(tags);
     };
 
     const handleDragStart = (location: string): void => {
@@ -134,13 +118,6 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                 >
                     Dead
                 </button>
-                {allTags.length > 0 && (
-                    <TagFilter
-                        onChange={handleTagsChange}
-                        selectedTags={selectedTags}
-                        tags={allTags}
-                    />
-                )}
                 {view === 'alive' && (
                     <button
                         className={styles['import-button']}
@@ -208,14 +185,6 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                                         src={sprite}
                                         width={SPRITE_WIDTH}
                                     />
-                                    {pokemon.tags.length > 0 && (
-                                        <Tooltip
-                                            position="right"
-                                            text={pokemon.tags.join(', ')}
-                                        >
-                                            <span className={styles.tag} />
-                                        </Tooltip>
-                                    )}
                                     {heldItemData && (
                                         <Image
                                             alt={heldItemData.name}

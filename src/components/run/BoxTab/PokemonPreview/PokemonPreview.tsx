@@ -1,10 +1,10 @@
-import { useState, useSyncExternalStore } from 'react';
+import { useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
 import LearnsetList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
 import { MOVE_SLOT_COUNT, STAT_FIELDS } from '@/lib/static/constants';
 import { PokemonStatus } from '@/lib/static/enums';
-import { BoxView, CaughtPokemon, StatValues } from '@/lib/static/types';
+import { CaughtPokemon, StatValues } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
@@ -12,34 +12,13 @@ import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
-import EditPokemonModal from './EditPokemonModal/EditPokemonModal';
-import EvolveModal from './EvolveModal/EvolveModal';
 import MoveCard from './MoveCard/MoveCard';
 import styles from './PokemonPreview.module.scss';
 
 type PokemonPreviewProps = {
-    accentColor: string;
-    buttonTextColor?: string;
     canSelectLocation: boolean;
     generation: number;
     levelCap: number | null;
-    onEdit: (
-        pokemon: CaughtPokemon,
-        details: Pick<
-            CaughtPokemon,
-            | 'ability'
-            | 'evs'
-            | 'gender'
-            | 'heldItem'
-            | 'ivs'
-            | 'level'
-            | 'moves'
-            | 'nature'
-            | 'slug'
-            | 'tags'
-        >
-    ) => void;
-    onEvolve: (pokemon: CaughtPokemon, newSlug: string) => void;
     onSelectAbility: (slug: string) => void;
     onSelectItem: (slug: string) => void;
     onSelectLocation: (location: string) => void;
@@ -49,17 +28,12 @@ type PokemonPreviewProps = {
     pokemon?: CaughtPokemon;
     variant: string;
     version: string;
-    view: BoxView;
 };
 
 const PokemonPreview: React.FC<PokemonPreviewProps> = ({
-    accentColor,
-    buttonTextColor,
     canSelectLocation,
     generation,
     levelCap,
-    onEdit,
-    onEvolve,
     onSelectAbility,
     onSelectItem,
     onSelectLocation,
@@ -69,7 +43,6 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     pokemon,
     variant,
     version,
-    view,
 }) => {
     // -------------------------------------------------------------------------
     // HOOKS
@@ -86,13 +59,6 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     // -------------------------------------------------------------------------
 
     const SPRITE_SIZE = 120;
-
-    // -------------------------------------------------------------------------
-    // STATE
-    // -------------------------------------------------------------------------
-
-    const [isEditOpen, setIsEditOpen] = useState(false);
-    const [isEvolveOpen, setIsEvolveOpen] = useState(false);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -113,48 +79,6 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     const handleToggleStatusClick = (): void => {
         if (pokemon) {
             onToggleStatus(pokemon);
-        }
-    };
-
-    const handleEditClick = (): void => {
-        setIsEditOpen(true);
-    };
-
-    const handleEditClose = (): void => {
-        setIsEditOpen(false);
-    };
-
-    const handleEditSubmit = (
-        details: Pick<
-            CaughtPokemon,
-            | 'ability'
-            | 'evs'
-            | 'gender'
-            | 'heldItem'
-            | 'ivs'
-            | 'level'
-            | 'moves'
-            | 'nature'
-            | 'slug'
-            | 'tags'
-        >
-    ): void => {
-        if (pokemon) {
-            onEdit(pokemon, details);
-        }
-    };
-
-    const handleEvolveClick = (): void => {
-        setIsEvolveOpen(true);
-    };
-
-    const handleEvolveClose = (): void => {
-        setIsEvolveOpen(false);
-    };
-
-    const handleEvolveConfirm = (newSlug: string): void => {
-        if (pokemon) {
-            onEvolve(pokemon, newSlug);
         }
     };
 
@@ -206,17 +130,6 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
         ? PokemonHelpers.getPokemonSprite(displaySlug, variant)
         : undefined;
     const hideTradeEvos = settings['disable-trade-evos'] ?? false;
-    const nextEvolutions =
-        pokemon && pokemon.status !== PokemonStatus.Dead
-            ? EvolutionHelpers.getNextEvolutions(
-                  pokemon.slug,
-                  generation
-              ).filter(
-                  (step) =>
-                      !hideTradeEvos ||
-                      !EvolutionHelpers.isTradeEvolution(step.methods)
-              )
-            : [];
     const evolutionLine = pokemon
         ? EvolutionHelpers.getFullEvolutionLine(pokemon.slug, generation)
         : undefined;
@@ -436,48 +349,9 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                             </button>
                                         </div>
                                     )}
-                                    {pokemon.tags.length > 0 && (
-                                        <div className={styles.detail}>
-                                            <span
-                                                className={
-                                                    styles['detail-label']
-                                                }
-                                            >
-                                                Tags
-                                            </span>
-                                            <div className={styles.tags}>
-                                                {pokemon.tags.map((tag) => (
-                                                    <span
-                                                        className={styles.tag}
-                                                        key={tag}
-                                                    >
-                                                        {tag}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
                                 </div>
                             </div>
                             <div className={styles.actions}>
-                                {view === 'alive' && (
-                                    <button
-                                        className={styles['edit-button']}
-                                        onClick={handleEditClick}
-                                        type="button"
-                                    >
-                                        EDIT
-                                    </button>
-                                )}
-                                {nextEvolutions.length > 0 && (
-                                    <button
-                                        className={styles['evolve-button']}
-                                        onClick={handleEvolveClick}
-                                        type="button"
-                                    >
-                                        EVOLVE
-                                    </button>
-                                )}
                                 <button
                                     aria-pressed={
                                         pokemon.status === PokemonStatus.Dead
@@ -546,27 +420,6 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                     </span>
                 )}
             </div>
-            {isEditOpen && pokemon && (
-                <EditPokemonModal
-                    accentColor={accentColor}
-                    buttonTextColor={buttonTextColor}
-                    generation={generation}
-                    onClose={handleEditClose}
-                    onSubmit={handleEditSubmit}
-                    pokemon={pokemon}
-                    version={version}
-                />
-            )}
-            {isEvolveOpen && pokemon && (
-                <EvolveModal
-                    accentColor={accentColor}
-                    evolutions={nextEvolutions}
-                    onClose={handleEvolveClose}
-                    onConfirm={handleEvolveConfirm}
-                    pokemonSlug={pokemon.slug}
-                    variant={variant}
-                />
-            )}
         </div>
     );
 };
