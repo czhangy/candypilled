@@ -22,10 +22,12 @@ width respectively.
 ## Computations
 
 - `variant` — the sprite variant to prefer, derived from `game.name`
-- `availableSpecies` — every species obtainable in `game`, resolved via
-  `EncounterHelpers.getGameSpecies` (already sorted by dex number), passed
-  to `SearchableList` with `sortAlphabetically={false}` so that order is
-  preserved
+- `availableSpecies` — every species obtainable in `game` (or, when the
+  global "Show National Dex Data" setting is on, every species in
+  `game.generation` regardless of obtainability), resolved via
+  `EncounterHelpers.getGameSpecies` (either way, already sorted by dex
+  number), passed to `SearchableList` with `sortAlphabetically={false}` so
+  that order is preserved
 - `usedLocations` — every location name whose encounter is already used
   in `run`, resolved via `RunHelpers.getUsedLocations` and passed to
   `PokedexDetail`

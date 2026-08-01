@@ -8,8 +8,8 @@ a location has more than one subarea, a row of toggle buttons appears next
 to the location name to switch which subarea's map, battles, and wild
 encounter table are shown; only the selected subarea is rendered. The
 content is only rendered when the active section has a map or wild
-encounters; locations with neither show no expanded content. When the
-"hide dupes" setting is on and every one of the active section's
+encounters; locations with neither show no expanded content. Unless the
+"Show Dupes" setting is on, and every one of the active section's
 encounters is either an evolution line already caught elsewhere or a
 starter tracked separately, the encounter table and Pokédex tile are not
 rendered at all (rather than rendering an empty table), and the section
@@ -147,7 +147,7 @@ Pokédex tile.
   location instead of `location.name`
 - `allEncountersHidden` — whether `EncounterHelpers.areAllEncountersHidden`
   returns `true` for the active section's encounters given the current
-  global settings (e.g. "Hide Dupes", "Hide Legendaries") plus `dupes`
+  global settings (e.g. "Show Dupes", "Show Legendaries") plus `dupes`
   and `encounter`; hides the encounter table and Pokédex tile when
   `true`. New settings that permanently hide encounters extend
   `ENCOUNTER_HIDE_RULES` in `EncounterHelpers` rather than adding logic

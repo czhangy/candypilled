@@ -88,7 +88,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     const ability = abilitySlug
         ? AbilityHelpers.getAbilityData(abilitySlug)?.name
         : undefined;
-    const highlightDangerous = settings['highlight-dangerous'] ?? false;
+    const highlightDangerous = !(settings['hide-dangerous'] ?? false);
     const moves =
         pokemon?.moves ??
         (pokemon

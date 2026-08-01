@@ -29,7 +29,6 @@ trainer side before a battle is selected).
 | `game`             | `Game`                                                                         | Yes      | -       | The current game; its `generation` resolves base stats/ability/held item/move lists     |
 | `gender`           | `'male' \| 'female'`                                                           | No       | -       | The Pokémon's gender; absent shows no symbol next to its name                           |
 | `heldItem`         | `string`                                                                       | Yes      | -       | The current held item, empty meaning none                                               |
-| `hideEvs`          | `boolean`                                                                      | Yes      | -       | Whether to omit the EV column (the global "Hide EVs" setting)                           |
 | `isTailwind`       | `boolean`                                                                      | Yes      | -       | Whether this Pokémon's side currently has Tailwind active                               |
 | `ivs`              | `StatValues`                                                                   | Yes      | -       | The current IVs                                                                         |
 | `level`            | `number`                                                                       | Yes      | -       | The current level                                                                       |
@@ -48,6 +47,7 @@ trainer side before a battle is selected).
 | `onStatusChange`   | `(value: string) => void`                                                      | Yes      | -       | Called when the status dropdown changes                                                 |
 | `placeholder`      | `string`                                                                       | No       | -       | If present, replaces the panel's content with this message                              |
 | `pokemonSlug`      | `string`                                                                       | No       | -       | The selected Pokémon's species slug; absent shows "None selected" and hides its details |
+| `showEvs`          | `boolean`                                                                      | Yes      | -       | Whether to show the EV column (the global "Use EVs" setting), passed to `StatsTable`    |
 | `speedComparison`  | `SpeedComparison \| undefined`                                                 | Yes      | -       | How this Pokémon's Speed compares to the opponent's; passed through to `StatsTable`     |
 | `status`           | `string`                                                                       | Yes      | -       | The current battle status condition                                                     |
 

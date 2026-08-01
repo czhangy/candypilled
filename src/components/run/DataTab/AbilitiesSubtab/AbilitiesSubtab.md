@@ -16,7 +16,9 @@ Pokémon that can have it, left to right.
 
 ## Computations
 
-- `gameSpecies` — every species obtainable in `game`, resolved via
+- `gameSpecies` — every species obtainable in `game` (or, when the global
+  "Show National Dex Data" setting is on, every species in
+  `game.generation` regardless of obtainability), resolved via
   `EncounterHelpers.getGameSpecies`
 - `availableAbilities` — every ability introduced at or before
   `game.generation` that at least one of `gameSpecies` can have, passed to

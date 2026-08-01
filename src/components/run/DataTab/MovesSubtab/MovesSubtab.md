@@ -16,7 +16,9 @@ that learns it, left to right.
 
 ## Computations
 
-- `gameSpecies` — every species obtainable in `game`, resolved via
+- `gameSpecies` — every species obtainable in `game` (or, when the global
+  "Show National Dex Data" setting is on, every species in
+  `game.generation` regardless of obtainability), resolved via
   `EncounterHelpers.getGameSpecies`
 - `availableMoves` — every move introduced at or before `game.generation`
   that at least one of `gameSpecies` learns, passed to `SearchableList`

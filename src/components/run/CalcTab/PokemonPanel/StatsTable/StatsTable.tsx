@@ -18,7 +18,6 @@ type StatsTableProps = {
     baseStats?: StatValues;
     boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
     evs: StatValues;
-    hideEvs: boolean;
     ivs: StatValues;
     onBoostChange: (
         stat: Exclude<keyof StatValues, 'hp'>,
@@ -32,6 +31,7 @@ type StatsTableProps = {
         stat: keyof StatValues,
         event: React.ChangeEvent<HTMLInputElement>
     ) => void;
+    showEvs: boolean;
     speedComparison: SpeedComparison | undefined;
     totalStats?: StatValues;
 };
@@ -40,11 +40,11 @@ const StatsTable: React.FC<StatsTableProps> = ({
     baseStats,
     boosts,
     evs,
-    hideEvs,
     ivs,
     onBoostChange,
     onEvChange,
     onIvChange,
+    showEvs,
     speedComparison,
     totalStats,
 }) => {
@@ -83,7 +83,7 @@ const StatsTable: React.FC<StatsTableProps> = ({
                     <th />
                     <th>Base</th>
                     <th>IV</th>
-                    {!hideEvs && <th>EV</th>}
+                    {showEvs && <th>EV</th>}
                     <th>Stage</th>
                     <th>Total</th>
                 </tr>
@@ -103,7 +103,7 @@ const StatsTable: React.FC<StatsTableProps> = ({
                                 value={ivs[key]}
                             />
                         </td>
-                        {!hideEvs && (
+                        {showEvs && (
                             <td>
                                 <input
                                     className={styles['ev-input']}

@@ -1,9 +1,11 @@
+import { useSyncExternalStore } from 'react';
 import SearchableList from '@/components/common/SearchableList/SearchableList';
 import SpeciesListPanel from '@/components/run/DataTab/SpeciesListPanel/SpeciesListPanel';
 import { ABILITIES } from '@/lib/data/abilities';
 import { Game } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
+import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import styles from './AbilitiesSubtab.module.scss';
 import AbilityDetail from './AbilityDetail/AbilityDetail';
 
@@ -21,10 +23,23 @@ const AbilitiesSubtab: React.FC<AbilitiesSubtabProps> = ({
     selectedAbility,
 }) => {
     // -------------------------------------------------------------------------
+    // HOOKS
+    // -------------------------------------------------------------------------
+
+    const settings = useSyncExternalStore(
+        SettingsHelpers.subscribe,
+        SettingsHelpers.getSnapshot,
+        SettingsHelpers.getServerSnapshot
+    );
+
+    // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const gameSpecies = EncounterHelpers.getGameSpecies(game);
+    const gameSpecies = EncounterHelpers.getGameSpecies(
+        game,
+        settings['show-national-dex-data'] ?? false
+    );
     const availableAbilities = Object.values(ABILITIES).filter(
         (ability) =>
             ability.introducedInGeneration <= game.generation &&

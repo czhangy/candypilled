@@ -14,9 +14,9 @@ opening that Pokémon's Pokédex entry in a new tab, the held item is
 clickable, linking to that item's details, the ability is
 clickable, linking to that ability's details, and the nature is
 clickable, opening its entry on the Natures page in a new tab; all
-have a background that darkens further on hover. When the "Highlight
-Dangerous Moves/Abilities" setting is on, abilities and moves flagged
-as dangerous are shown in red text regardless of `isReadOnly`. When
+have a background that darkens further on hover. Abilities and moves
+flagged as dangerous are shown in red text regardless of `isReadOnly`,
+unless the "Hide Dangerous Moves/Abilities" setting is on. When
 `pokemon` is `null`, an empty placeholder slot is shown instead.
 
 ## Props
@@ -53,9 +53,9 @@ as dangerous are shown in red text regardless of `isReadOnly`. When
 - `abilitySlug` — the Pokémon's ability slug, taken directly from
   `pokemon.ability`; its display name is then resolved via
   `AbilityHelpers`
-- `highlightDangerous` — whether the "Highlight Dangerous
-  Moves/Abilities" setting is on, read via `SettingsHelpers` and
-  passed to `MoveList`; also gates whether
+- `highlightDangerous` — whether the "Hide Dangerous Moves/Abilities"
+  setting is off (i.e. highlighting is on by default), read via
+  `SettingsHelpers` and passed to `MoveList`; also gates whether
   `AbilityHelpers.isDangerousAbility` renders the ability button's
   text in red
 - `pokemon.ivs` is normalized into a full `StatValues` via

@@ -69,7 +69,8 @@ directly in the render body rather than in a `useEffect`).
 
 ## Computations
 
-- `hideEvs` — the global "Hide EVs" setting, read via `SettingsHelpers`
+- `showEvs` — the global "Use EVs" setting's current value, read via
+  `SettingsHelpers`
 - `effectiveSelectedBattle` — `selectedBattle`, falling back to the first
   trainer in game order whenever the URL hasn't recorded an explicit
   selection yet
