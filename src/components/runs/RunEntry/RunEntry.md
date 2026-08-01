@@ -7,8 +7,8 @@ navigates to the game's dedicated run page (only shown if a run already
 exists), a "New" button starts a fresh attempt for the game, confirming
 with the user first if a run is already in progress, then prompting for a
 starter before the run is created, and a "Data" button opens a modal
-offering the game's import, export, and reset actions (export and reset
-are only available once a run already exists).
+offering the game's reset action (only available once a run already
+exists).
 
 ## Props
 
@@ -22,7 +22,7 @@ are only available once a run already exists).
 | State                 | Type      | Initial value | Description                                              |
 | --------------------- | --------- | ------------- | -------------------------------------------------------- |
 | `isConfirmOpen`       | `boolean` | `false`       | Whether the "start a new run" confirmation modal is open |
-| `isDataModalOpen`     | `boolean` | `false`       | Whether the data (import/export/reset) modal is open     |
+| `isDataModalOpen`     | `boolean` | `false`       | Whether the data (reset) modal is open                   |
 | `isStarterSelectOpen` | `boolean` | `false`       | Whether the starter selection modal is open              |
 
 ## Handlers
@@ -38,12 +38,7 @@ are only available once a run already exists).
   and requests the confirmation modal's animated close, which closes it
   once the exit animation finishes
 - **On "Data" click** — opens the data modal
-- **On data modal close** — closes the modal without importing, exporting,
-  or resetting anything
-- **On data modal import confirm** — saves the imported run to storage via
-  `LocalStorageHelpers.saveRun`, overwriting any existing run for the game
-- **On data modal export confirm** — downloads the run as a formatted
-  JSON file named after the game's slug
+- **On data modal close** — closes the modal without resetting anything
 - **On data modal reset confirm** — deletes all of the game's stored data
   via `LocalStorageHelpers.deleteRun`
 - **On starter select modal close/cancel** — closes the modal without

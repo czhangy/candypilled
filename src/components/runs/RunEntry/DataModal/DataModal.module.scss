@@ -6,10 +6,3 @@
 
     margin-top: 1.25rem;
 }
-
-.error {
-    @include modal-description;
-
-    color: $red;
-    margin-top: 0.5rem;
-}

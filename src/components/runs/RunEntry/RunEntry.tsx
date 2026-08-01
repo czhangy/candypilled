@@ -129,26 +129,6 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         HallOfFameHelpers.deleteEntriesForGame(game);
     };
 
-    const handleImport = (importedRun: Run): void => {
-        LocalStorageHelpers.saveRun(game, importedRun);
-    };
-
-    const handleExport = (): void => {
-        if (!run) {
-            return;
-        }
-
-        const blob = new Blob([JSON.stringify(run, null, 4)], {
-            type: 'application/json',
-        });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.download = `${StringHelpers.toSlug(game.name)}.json`;
-        link.href = url;
-        link.click();
-        URL.revokeObjectURL(url);
-    };
-
     const handleStarterSelectClose = (): void => {
         setIsStarterSelectOpen(false);
     };
@@ -262,8 +242,6 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     gameName={game.name}
                     hasExistingRun={!!run}
                     onClose={handleDataModalClose}
-                    onExport={handleExport}
-                    onImport={handleImport}
                     onReset={handleReset}
                 />
             )}
