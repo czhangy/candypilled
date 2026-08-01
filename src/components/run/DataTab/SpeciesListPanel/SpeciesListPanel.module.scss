@@ -1,7 +1,7 @@
 @use '@/styles/constants' as *;
 @use '@/styles/mixins' as *;
 
-.searchable-list {
+.species-list-panel {
     align-self: flex-start;
     border: 1px solid $border-subtle;
     border-radius: 0.5rem;
@@ -12,41 +12,12 @@
     min-width: 0;
     overflow: hidden;
 
-    .search {
+    .header {
+        @include uppercase-label;
+
         background: $background-light;
         border-bottom: 1px solid $border-subtle;
-        padding: 0.75rem;
-
-        .search-input {
-            background: $background;
-            border: 1px solid $border-subtle;
-            border-radius: 0.5rem;
-            color: $foreground;
-            font-family: $font-mono;
-            font-size: 0.85rem;
-            padding: 0.5rem 0.75rem;
-            transition: border-color 0.2s ease;
-            width: 100%;
-
-            &::placeholder {
-                color: $text-dim;
-            }
-
-            @media (hover: hover) {
-                &:hover {
-                    border-color: $text-mid;
-                }
-            }
-
-            &:focus {
-                border-color: var(--accent-color);
-                outline: none;
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-                transition: none;
-            }
-        }
+        padding: 0.5rem 1.5rem;
     }
 
     .list {
@@ -57,17 +28,25 @@
         margin: 0;
         min-height: 0;
         overflow-y: auto;
-        padding: 0;
+        padding: 0.5rem;
 
-        .item {
+        &--empty {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .row {
+            align-items: center;
             background: none;
             border: none;
+            border-radius: 0.35rem;
             color: $foreground;
             cursor: pointer;
-            display: block;
+            display: flex;
             font-family: $font-mono;
-            font-size: 0.85rem;
-            padding: 0.5rem 0.75rem;
+            gap: 0.5rem;
+            padding: 0.35rem 0.5rem;
             text-align: left;
             transition: background-color 0.2s ease;
             width: 100%;
@@ -78,13 +57,28 @@
                 }
             }
 
-            &--selected {
-                background: $background-light;
-                box-shadow: inset 3px 0 0 0 var(--accent-color);
-            }
-
             @media (prefers-reduced-motion: reduce) {
                 transition: none;
+            }
+
+            img {
+                flex-shrink: 0;
+                image-rendering: pixelated;
+            }
+
+            .name {
+                flex: 1;
+                font-size: 0.85rem;
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .method {
+                color: $text-mid;
+                flex-shrink: 0;
+                font-size: 0.75rem;
             }
         }
 

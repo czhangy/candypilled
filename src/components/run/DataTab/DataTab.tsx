@@ -15,6 +15,7 @@ type DataTabProps = {
     onSelectMove: (slug: string) => void;
     onSelectMoveLink: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
+    onSelectSpeciesLink: (slug: string) => void;
     onSubtabChange: (id: string) => void;
     run: Run;
     selectedAbility?: string;
@@ -33,6 +34,7 @@ const DataTab: React.FC<DataTabProps> = ({
     onSelectMove,
     onSelectMoveLink,
     onSelectSpecies,
+    onSelectSpeciesLink,
     onSubtabChange,
     run,
     selectedAbility,
@@ -90,13 +92,16 @@ const DataTab: React.FC<DataTabProps> = ({
                 <MovesSubtab
                     generation={game.generation}
                     onSelectMove={onSelectMove}
+                    onSelectSpeciesLink={onSelectSpeciesLink}
                     selectedMove={selectedMove}
+                    version={game.version}
                 />
             )}
             {activeSubtab === 'abilities' && (
                 <AbilitiesSubtab
                     generation={game.generation}
                     onSelectAbility={onSelectAbility}
+                    onSelectSpeciesLink={onSelectSpeciesLink}
                     selectedAbility={selectedAbility}
                 />
             )}

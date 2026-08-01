@@ -7,6 +7,15 @@ import {
 } from '@/lib/static/types';
 import GenerationHelpers from '@/lib/utils/GenerationHelpers';
 
+// One species that knows a given move, alongside every learnset entry
+// (level-up level and/or machine/tutor) it learns that move through, for
+// SpeciesListPanel's move-mode entries.
+type SpeciesLearnset = {
+    slug: string;
+    name: string;
+    moves: LearnsetMove[];
+};
+
 export default class PokemonHelpers {
     // -------------------------------------------------------------------------
     // PUBLIC
@@ -206,6 +215,53 @@ export default class PokemonHelpers {
         return Array.from(new Set(levelUpMoves)).slice(
             -PokemonHelpers.MAX_KNOWN_MOVES
         );
+    }
+
+    /**
+     * Every species introduced by generation or earlier that learns moveSlug
+     * in version, alongside each learnset entry that teaches it, sorted
+     * alphabetically by display name.
+     */
+    static getSpeciesWithMove(
+        moveSlug: string,
+        version: string,
+        generation: number
+    ): SpeciesLearnset[] {
+        return PokemonHelpers.getAllSpecies(generation)
+            .map((pokemon) => {
+                const learnset =
+                    PokemonHelpers.getPokemonLearnset(pokemon.slug, version) ??
+                    [];
+                const moves = learnset.filter((move) => move.slug === moveSlug);
+
+                return moves.length > 0
+                    ? { slug: pokemon.slug, name: pokemon.name, moves }
+                    : undefined;
+            })
+            .filter((entry): entry is SpeciesLearnset => entry !== undefined);
+    }
+
+    /**
+     * Every species introduced by generation or earlier that can have
+     * abilitySlug (in any slot) as of generation, sorted alphabetically by
+     * display name.
+     */
+    static getSpeciesWithAbility(
+        abilitySlug: string,
+        generation: number
+    ): PokemonData[] {
+        return PokemonHelpers.getAllSpecies(generation).filter((pokemon) => {
+            const abilities = PokemonHelpers.getPokemonAbilities(
+                pokemon.slug,
+                generation
+            );
+
+            return (
+                abilities?.slot1 === abilitySlug ||
+                abilities?.slot2 === abilitySlug ||
+                abilities?.hidden === abilitySlug
+            );
+        });
     }
 
     // -------------------------------------------------------------------------

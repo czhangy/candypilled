@@ -441,6 +441,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             onSelectMove={handleMoveSelect}
                             onSelectMoveLink={handleMoveLinkClick}
                             onSelectSpecies={handleSpeciesSelect}
+                            onSelectSpeciesLink={handleSpeciesLinkClick}
                             onSubtabChange={handleSubtabChange}
                             run={run}
                             selectedAbility={selectedAbility}
