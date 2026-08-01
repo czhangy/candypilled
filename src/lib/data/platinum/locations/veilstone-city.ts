@@ -1,4 +1,5 @@
 import { veilstoneCity } from '@/lib/data/platinum/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VEILSTONE_CITY: Location = {
@@ -7,7 +8,7 @@ const VEILSTONE_CITY: Location = {
     encountersKey: 'veilstone-city',
     battles: [
         {
-            isTag: true,
+            metadata: [BattleMetadata.Tag],
             customHeight: 53,
             battleKey: 'galactic-grunt-m-9',
             x: 40.4,

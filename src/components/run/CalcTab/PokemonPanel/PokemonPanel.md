@@ -69,9 +69,10 @@ trainer side before a battle is selected).
 - `abilityOptions` — every ability introduced at or before `game.generation`,
   via `AbilityHelpers.getAllAbilities` (not restricted to the selected
   species, for freeform theorycrafting)
-- `natureOptions` — every value of the `Nature` enum, labeled with its
-  stat effect (e.g. "Adamant [+Atk -SpA]") via
-  `NatureHelpers.getNatureEffect`, unsuffixed for a neutral nature
+- `natureOptions` — every value of the `Nature` enum except
+  `Nature.Unknown`, labeled with its stat effect (e.g. "Adamant
+  [+Atk -SpA]") via `NatureHelpers.getNatureEffect`, unsuffixed for a
+  neutral nature
 - `moveOptions` — every move introduced at or before `game.generation`, via
   `MoveHelpers.getAllMoves` (not restricted to the selected species'
   learnset, for freeform theorycrafting)

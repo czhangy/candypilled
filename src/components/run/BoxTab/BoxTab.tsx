@@ -93,9 +93,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
             }
 
             const importedPokemon = importedByLocation.get(pokemon.location);
-            return importedPokemon
-                ? { ...importedPokemon, tags: pokemon.tags }
-                : pokemon;
+            return importedPokemon ?? pokemon;
         });
         const newPokemon = [...importedByLocation.values()].filter(
             (pokemon) => !existingLocations.has(pokemon.location)
@@ -135,47 +133,6 @@ const BoxTab: React.FC<BoxTabProps> = ({
 
         LocalStorageHelpers.saveRun(game, updatedRun);
         setView(newStatus === PokemonStatus.Dead ? 'dead' : 'alive');
-    };
-
-    const handleEditPokemon = (
-        pokemon: CaughtPokemon,
-        details: Pick<
-            CaughtPokemon,
-            | 'ability'
-            | 'evs'
-            | 'gender'
-            | 'heldItem'
-            | 'ivs'
-            | 'level'
-            | 'moves'
-            | 'nature'
-            | 'slug'
-            | 'tags'
-        >
-    ): void => {
-        const updatedRun: Run = {
-            ...run,
-            caughtPokemon: run.caughtPokemon.map((caughtPokemon) =>
-                caughtPokemon.location === pokemon.location
-                    ? { ...caughtPokemon, ...details }
-                    : caughtPokemon
-            ),
-        };
-
-        LocalStorageHelpers.saveRun(game, updatedRun);
-    };
-
-    const handleEvolve = (pokemon: CaughtPokemon, newSlug: string): void => {
-        const updatedRun: Run = {
-            ...run,
-            caughtPokemon: run.caughtPokemon.map((caughtPokemon) =>
-                caughtPokemon.location === pokemon.location
-                    ? { ...caughtPokemon, slug: newSlug }
-                    : caughtPokemon
-            ),
-        };
-
-        LocalStorageHelpers.saveRun(game, updatedRun);
     };
 
     const handleViewChange = (nextView: BoxView): void => {
@@ -227,13 +184,9 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 view={view}
             />
             <PokemonPreview
-                accentColor={game.accentColor}
-                buttonTextColor={game.textContrastColor}
                 canSelectLocation={canSelectLocation}
                 generation={game.generation}
                 levelCap={levelCap}
-                onEdit={handleEditPokemon}
-                onEvolve={handleEvolve}
                 onSelectAbility={onSelectAbility}
                 onSelectItem={onSelectItem}
                 onSelectLocation={onSelectLocation}
@@ -243,7 +196,6 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 pokemon={selectedCaughtPokemon}
                 variant={variant}
                 version={game.version}
-                view={view}
             />
             {isImportModalOpen && (
                 <ImportBoxModal

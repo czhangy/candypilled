@@ -2,6 +2,7 @@ import CheckIcon from '@/lib/icons/CheckIcon';
 import CrownIcon from '@/lib/icons/CrownIcon';
 import DoubleExclamationMarkIcon from '@/lib/icons/DoubleExclamationMarkIcon';
 import ExclamationMarkIcon from '@/lib/icons/ExclamationMarkIcon';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import styles from './TrainerMarker.module.scss';
@@ -43,6 +44,8 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
     const width = ((trainer.customWidth ?? TRAINER_WIDTH_PX) / mapWidth) * 100;
     const height =
         ((trainer.customHeight ?? TRAINER_HEIGHT_PX) / mapHeight) * 100;
+    const isBoss = trainer.metadata.includes(BattleMetadata.Boss);
+    const isMiniboss = trainer.metadata.includes(BattleMetadata.Miniboss);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -66,8 +69,8 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
             aria-pressed={isPreview ? undefined : isSelected}
             className={[
                 styles['trainer-marker'],
-                trainer.isMiniboss && styles['trainer-marker--miniboss'],
-                trainer.isBoss && styles['trainer-marker--boss'],
+                isMiniboss && styles['trainer-marker--miniboss'],
+                isBoss && styles['trainer-marker--boss'],
                 isDefeated && styles['trainer-marker--defeated'],
                 isSelected && styles['trainer-marker--selected'],
                 isPreview && styles['trainer-marker--preview'],
@@ -96,19 +99,16 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
                     <CrownIcon />
                 </span>
             )}
-            {!isDefeated && !isNextPersonalBest && trainer.isBoss && (
+            {!isDefeated && !isNextPersonalBest && isBoss && (
                 <span className={styles['trainer-marker__annotation']}>
                     <DoubleExclamationMarkIcon />
                 </span>
             )}
-            {!isDefeated &&
-                !isNextPersonalBest &&
-                !trainer.isBoss &&
-                trainer.isMiniboss && (
-                    <span className={styles['trainer-marker__annotation']}>
-                        <ExclamationMarkIcon />
-                    </span>
-                )}
+            {!isDefeated && !isNextPersonalBest && !isBoss && isMiniboss && (
+                <span className={styles['trainer-marker__annotation']}>
+                    <ExclamationMarkIcon />
+                </span>
+            )}
         </button>
     );
 };

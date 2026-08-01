@@ -1,4 +1,5 @@
 import { hearthomeGym } from '@/lib/data/platinum/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const HEARTHOME_GYM: Location = {
@@ -6,43 +7,43 @@ const HEARTHOME_GYM: Location = {
     map: hearthomeGym,
     battles: [
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'lass-molly',
             x: 35.7,
             y: 74,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'youngster-donny',
             x: 60.7,
             y: 74,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'school-kid-f-mackenzie',
             x: 21.4,
             y: 49.9,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'school-kid-m-chance',
             x: 74.9,
             y: 50.3,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'ace-trainer-f-catherine',
             x: 39.2,
             y: 35.5,
         },
         {
-            isOptional: true,
+            metadata: [BattleMetadata.Optional],
             battleKey: 'ace-trainer-m-allen',
             x: 67.7,
             y: 37.2,
         },
         {
-            isBoss: true,
+            metadata: [BattleMetadata.Boss],
             battleKey: 'leader-fantina-fantina',
             x: 49.9,
             y: 17.4,

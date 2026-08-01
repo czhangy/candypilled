@@ -143,15 +143,15 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     const abilityOptions: DropdownOption[] = AbilityHelpers.getAllAbilities(
         game.generation
     ).map((name) => ({ label: name, value: name }));
-    const natureOptions: DropdownOption[] = Object.values(Nature).map(
-        (name) => {
+    const natureOptions: DropdownOption[] = Object.values(Nature)
+        .filter((name) => name !== Nature.Unknown)
+        .map((name) => {
             const effect = NatureHelpers.getNatureEffect(name);
             return {
                 label: effect ? `${name} ${effect}` : name,
                 value: name,
             };
-        }
-    );
+        });
     const moveOptions: DropdownOption[] = [
         { label: 'None', value: '' },
         ...MoveHelpers.getAllMoves(game.generation).map((name) => ({

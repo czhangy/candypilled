@@ -1,10 +1,10 @@
 import { useState, useSyncExternalStore } from 'react';
-import AddPokemonModal from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/AddPokemonModal';
 import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
 import LearnsetList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
 import LocationsList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LocationsList/LocationsList';
 import PokemonSummary from '@/components/run/SplitTab/SplitLocation/PokedexTile/PokemonSummary/PokemonSummary';
 import StatsChart from '@/components/run/SplitTab/SplitLocation/PokedexTile/StatsChart/StatsChart';
+import { Nature } from '@/lib/static/enums';
 import { AbilityEntry, CaughtPokemon, Game } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
@@ -32,9 +32,7 @@ type PokedexTileProps = (
                   | 'moves'
                   | 'nature'
                   | 'slug'
-                  | 'tags'
-              >,
-              location: string
+              >
           ) => void;
           onRemovePokemon: () => void;
       }
@@ -83,13 +81,17 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
 
     type DetailTab = 'learnset' | 'locations';
 
+    // A caught Pokémon's nature and gender aren't actually knowable until
+    // it's inspected in-game, so a catch is recorded with placeholder
+    // defaults rather than prompting for them up front.
+    const DEFAULT_CATCH_LEVEL = 1;
+
     // -------------------------------------------------------------------------
     // STATE
     // -------------------------------------------------------------------------
 
     const [activeDetailTab, setActiveDetailTab] =
         useState<DetailTab>('learnset');
-    const [isAddPokemonModalOpen, setIsAddPokemonModalOpen] = useState(false);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -104,33 +106,30 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
 
         if (isCaughtHere) {
             rest.onRemovePokemon();
-        } else {
-            setIsAddPokemonModalOpen(true);
+            return;
         }
-    };
 
-    const handleCloseAddPokemonModal = (): void => {
-        setIsAddPokemonModalOpen(false);
-    };
+        if (!defaultCatchSpecies) return;
 
-    const handleAddPokemon = (
-        details: Pick<
-            CaughtPokemon,
-            | 'ability'
-            | 'evs'
-            | 'gender'
-            | 'ivs'
-            | 'level'
-            | 'moves'
-            | 'nature'
-            | 'slug'
-            | 'tags'
-        >,
-        location: string
-    ): void => {
-        if (rest.mode !== 'catch') return;
-        rest.onAddPokemon(details, location);
-        setIsAddPokemonModalOpen(false);
+        const level = rest.defaultLevel ?? DEFAULT_CATCH_LEVEL;
+        rest.onAddPokemon({
+            ability:
+                PokemonHelpers.getPokemonAbilities(
+                    defaultCatchSpecies,
+                    generation
+                )?.slot1 ?? '',
+            evs: undefined,
+            gender: undefined,
+            ivs: 0,
+            level,
+            moves: PokemonHelpers.getMovesAtLevel(
+                defaultCatchSpecies,
+                game.version,
+                level
+            ),
+            nature: Nature.Unknown,
+            slug: defaultCatchSpecies,
+        });
     };
 
     // -------------------------------------------------------------------------
@@ -174,9 +173,6 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     const locations = species
         ? EncounterHelpers.getEncounterLocations(game, species)
         : [];
-    const metLocations = Object.values(game.metLocationById).sort((a, b) =>
-        a.localeCompare(b)
-    );
     const defaultCatchSpecies = originalSpecies ?? species;
     const isCaughtHere =
         rest.mode === 'catch' &&
@@ -242,27 +238,6 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                 sprite={sprite}
                 types={types}
             />
-            {rest.mode === 'catch' &&
-                isAddPokemonModalOpen &&
-                defaultCatchSpecies && (
-                    <AddPokemonModal
-                        accentColor={game.accentColor}
-                        allLocations={metLocations}
-                        allSpecies={EncounterHelpers.getAllEncounterSpecies(
-                            game
-                        )}
-                        buttonTextColor={game.textContrastColor}
-                        defaultLevel={rest.defaultLevel}
-                        defaultLocation=""
-                        defaultSpecies={defaultCatchSpecies}
-                        existingLocations={usedLocations}
-                        generation={generation}
-                        onClose={handleCloseAddPokemonModal}
-                        onSubmit={handleAddPokemon}
-                        showLocation={isEggEncounter}
-                        version={game.version}
-                    />
-                )}
             <EvolutionLine
                 currentSlug={species}
                 hideTradeEvos={hideTradeEvos}

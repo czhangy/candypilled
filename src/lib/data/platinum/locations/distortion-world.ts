@@ -1,4 +1,5 @@
 import { distortionWorld } from '@/lib/data/platinum/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const DISTORTION_WORLD: Location = {
@@ -7,7 +8,7 @@ const DISTORTION_WORLD: Location = {
     encountersKey: 'distortion-world',
     battles: [
         {
-            isMiniboss: true,
+            metadata: [BattleMetadata.Miniboss],
             battleKey: 'galactic-boss-cyrus-cyrus-3',
             x: 43.3,
             y: 39.2,

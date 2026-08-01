@@ -1,4 +1,5 @@
 import { waywardCave1f, waywardCaveB1f } from '@/lib/data/platinum/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const WAYWARD_CAVE: Location = {
@@ -10,61 +11,61 @@ const WAYWARD_CAVE: Location = {
             encountersKey: 'wayward-cave-1f',
             battles: [
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'camper-diego',
                     x: 3,
                     y: 26.5,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'picnicker-tori',
                     x: 6.4,
                     y: 26.5,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'hiker-reginald',
                     x: 18.7,
                     y: 67.3,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'hiker-lorenzo',
                     x: 21.6,
                     y: 67.3,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'lass-cassidy',
                     x: 3,
                     y: 75,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'youngster-wayne',
                     x: 6.4,
                     y: 75,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'picnicker-ana',
                     x: 76.3,
                     y: 54,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'camper-parker',
                     x: 80.5,
                     y: 54,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'collector-terry',
                     x: 94.9,
                     y: 83.3,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'ruin-maniac-gerald',
                     x: 97,
                     y: 83.3,

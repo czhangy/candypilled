@@ -133,6 +133,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
                             onClick={() => {}}
                             trainer={{
                                 battleKey: '',
+                                metadata: [],
                                 x: previewPosition.x,
                                 y: previewPosition.y,
                             }}

@@ -3,7 +3,11 @@
 import { useState, useSyncExternalStore } from 'react';
 import { StaticImageData } from 'next/image';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
-import { EncounterMethod, PokemonStatus } from '@/lib/static/enums';
+import {
+    BattleMetadata,
+    EncounterMethod,
+    PokemonStatus,
+} from '@/lib/static/enums';
 import {
     Battle,
     CaughtPokemon,
@@ -122,7 +126,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         );
         if (queriedBattle) return queriedBattle;
 
-        const requiredBattles = battles.filter((battle) => !battle.isOptional);
+        const requiredBattles = battles.filter(
+            (battle) => !battle.metadata.includes(BattleMetadata.Optional)
+        );
         const candidates =
             requiredBattles.length > 0 ? requiredBattles : battles;
 
@@ -253,7 +259,10 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                   ],
         };
 
-        if (!wasDefeated && !battle.isOptional) {
+        if (
+            !wasDefeated &&
+            !battle.metadata.includes(BattleMetadata.Optional)
+        ) {
             const candidatePosition = BattleHelpers.countProgress(
                 game,
                 battleKey
@@ -325,9 +334,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             | 'moves'
             | 'nature'
             | 'slug'
-            | 'tags'
-        >,
-        enteredLocation: string
+        >
     ): void => {
         const updatedRun: Run = {
             ...run,
@@ -336,7 +343,10 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                 {
                     ...details,
                     heldItem: '',
-                    location: isEggEncounter ? enteredLocation : location.name,
+                    // An egg's actual hatch location isn't tracked, so it's
+                    // recorded under a placeholder location rather than the
+                    // encounter's own (misleading) one.
+                    location: isEggEncounter ? 'Mystery Zone' : location.name,
                     status: PokemonStatus.Alive,
                 },
             ],

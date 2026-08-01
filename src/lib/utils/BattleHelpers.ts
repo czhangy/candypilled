@@ -1,3 +1,4 @@
+import { BattleMetadata } from '@/lib/static/enums';
 import {
     Battle,
     BattlePokemon,
@@ -189,7 +190,10 @@ export default class BattleHelpers {
         return game.splits.flatMap((split) =>
             split.locations.flatMap((location) =>
                 BattleHelpers.getBattlesInLocation(location)
-                    .filter((battle) => !battle.isOptional)
+                    .filter(
+                        (battle) =>
+                            !battle.metadata.includes(BattleMetadata.Optional)
+                    )
                     .map((battle) => BattleHelpers.getBattleKey(battle))
             )
         );

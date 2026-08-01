@@ -2,9 +2,8 @@
 
 import { useState } from 'react';
 import Modal from '@/components/common/Modal/Modal';
-import PokemonForm from '@/components/run/SplitTab/SplitLocation/PokedexTile/AddPokemonModal/PokemonForm/PokemonForm';
 import PokedexTile from '@/components/run/SplitTab/SplitLocation/PokedexTile/PokedexTile';
-import { PokemonStatus } from '@/lib/static/enums';
+import { Nature, PokemonStatus } from '@/lib/static/enums';
 import { CaughtPokemon, Game } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -24,6 +23,13 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
     onSelect,
 }) => {
     // -------------------------------------------------------------------------
+    // CONSTANTS
+    // -------------------------------------------------------------------------
+
+    // Matches the in-game starting level for starters.
+    const STARTER_LEVEL = 5;
+
+    // -------------------------------------------------------------------------
     // STATE
     // -------------------------------------------------------------------------
 
@@ -31,16 +37,12 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
     const [speciesOverride, setSpeciesOverride] = useState<string | undefined>(
         undefined
     );
-    const [chosenSpecies, setChosenSpecies] = useState<string | null>(null);
 
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
     const variant = StringHelpers.toSlug(game.name);
-    const chosenSpeciesName = chosenSpecies
-        ? (PokemonHelpers.getPokemonData(chosenSpecies)?.name ?? chosenSpecies)
-        : null;
     const defaultSpecies = activeStarter ?? speciesOverride ?? null;
     const starterLocation = EncounterHelpers.getStarterLocationName(game);
 
@@ -65,34 +67,27 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
 
     const handleSelectClick = (): void => {
         if (!defaultSpecies) return;
-        setChosenSpecies(defaultSpecies);
-    };
 
-    const handleBackClick = (): void => {
-        setChosenSpecies(null);
-    };
-
-    const handleFormSubmit = (
-        details: Pick<
-            CaughtPokemon,
-            | 'ability'
-            | 'evs'
-            | 'gender'
-            | 'ivs'
-            | 'level'
-            | 'moves'
-            | 'nature'
-            | 'slug'
-            | 'tags'
-        >,
-        requestClose: () => void
-    ): void => {
         onSelect({
-            ...details,
+            ability:
+                PokemonHelpers.getPokemonAbilities(
+                    defaultSpecies,
+                    game.generation
+                )?.slot1 ?? '',
+            evs: undefined,
+            gender: undefined,
+            ivs: 0,
+            level: STARTER_LEVEL,
             location: starterLocation,
+            moves: PokemonHelpers.getMovesAtLevel(
+                defaultSpecies,
+                game.version,
+                STARTER_LEVEL
+            ),
+            nature: Nature.Unknown,
+            slug: defaultSpecies,
             status: PokemonStatus.Alive,
         });
-        requestClose();
     };
 
     // -------------------------------------------------------------------------
@@ -105,80 +100,47 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
             buttonTextColor={game.textContrastColor}
             maxWidth="41rem"
             onClose={onClose}
-            title={chosenSpeciesName ?? 'Choose your starter'}
+            title="Choose your starter"
         >
-            {(requestClose) =>
-                chosenSpecies ? (
-                    <div className={styles['starter-form']}>
-                        <button
-                            className={styles.back}
-                            onClick={handleBackClick}
-                            type="button"
-                        >
-                            ← Back
-                        </button>
-                        <PokemonForm
-                            allSpecies={[]}
-                            defaultSpecies={chosenSpecies}
-                            disabledReason=""
-                            generation={game.generation}
-                            lockSpecies
-                            onSubmit={(details) =>
-                                handleFormSubmit(details, requestClose)
-                            }
-                            recalculateMovesOnLevelChange={false}
-                            showAbility={false}
-                            showEvs={false}
-                            showHeldItem={false}
-                            showLevel={false}
-                            showMoves={false}
-                            showTags={false}
-                            submitLabel="CONFIRM"
-                            version={game.version}
-                        />
-                    </div>
-                ) : (
-                    <div className={styles['starter-select-modal']}>
-                        <div className={styles.columns}>
-                            <div className={styles['starter-column']}>
-                                <StarterSelect
-                                    onSelect={handleStarterSelect}
-                                    selected={activeStarter}
-                                    starters={game.starters}
-                                    variant={variant}
-                                />
-                            </div>
-                            <PokedexTile
-                                game={game}
-                                generation={game.generation}
-                                mode="choose"
-                                onSelectAbility={handleSelectAbility}
-                                onSelectLocation={handleSelectLocation}
-                                onSelectMove={handleSelectMove}
-                                onSelectSpecies={handleSelectSpecies}
-                                originalSpecies={activeStarter ?? undefined}
-                                species={
-                                    speciesOverride ??
-                                    activeStarter ??
-                                    undefined
-                                }
-                                usedLocations={[]}
+            {() => (
+                <div className={styles['starter-select-modal']}>
+                    <div className={styles.columns}>
+                        <div className={styles['starter-column']}>
+                            <StarterSelect
+                                onSelect={handleStarterSelect}
+                                selected={activeStarter}
+                                starters={game.starters}
                                 variant={variant}
                             />
                         </div>
-                        <div className={styles.footer}>
-                            <button
-                                className={styles.select}
-                                disabled={!defaultSpecies}
-                                onClick={handleSelectClick}
-                                type="button"
-                            >
-                                SELECT
-                            </button>
-                        </div>
+                        <PokedexTile
+                            game={game}
+                            generation={game.generation}
+                            mode="choose"
+                            onSelectAbility={handleSelectAbility}
+                            onSelectLocation={handleSelectLocation}
+                            onSelectMove={handleSelectMove}
+                            onSelectSpecies={handleSelectSpecies}
+                            originalSpecies={activeStarter ?? undefined}
+                            species={
+                                speciesOverride ?? activeStarter ?? undefined
+                            }
+                            usedLocations={[]}
+                            variant={variant}
+                        />
                     </div>
-                )
-            }
+                    <div className={styles.footer}>
+                        <button
+                            className={styles.select}
+                            disabled={!defaultSpecies}
+                            onClick={handleSelectClick}
+                            type="button"
+                        >
+                            SELECT
+                        </button>
+                    </div>
+                </div>
+            )}
         </Modal>
     );
 };

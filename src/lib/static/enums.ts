@@ -16,6 +16,17 @@ export enum EncounterMethod {
     Walking = 'walking',
 }
 
+export enum BattleMetadata {
+    BackToBack = 'Back To Back',
+    Boss = 'Boss',
+    Double = 'Double',
+    Gauntlet = 'Gauntlet',
+    Miniboss = 'Miniboss',
+    Optional = 'Optional',
+    Tag = 'Tag',
+    TrueDouble = 'True Double',
+}
+
 export enum FieldCondition {
     // Fog that can't be cleared with Defog, as opposed to Fog — they share
     // an icon, but only Fog gets the tooltip noting it's removable.
@@ -79,4 +90,7 @@ export enum Nature {
     Sassy = 'Sassy',
     Serious = 'Serious',
     Timid = 'Timid',
+    // Assigned to Pokémon (e.g. starters) whose actual nature hasn't been
+    // determined yet.
+    Unknown = 'Unknown',
 }

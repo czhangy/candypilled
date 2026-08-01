@@ -1,4 +1,5 @@
 import { route211East, route211West } from '@/lib/data/platinum/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_211: Location = {
@@ -10,19 +11,19 @@ const ROUTE_211: Location = {
             encountersKey: 'sinnoh-route-211-west-towards-eterna-city',
             battles: [
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'ninja-boy-zach',
                     x: 29.6,
                     y: 37.1,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'hiker-louis',
                     x: 76.1,
                     y: 49.6,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'bird-keeper-alexandra',
                     x: 46.8,
                     y: 40.6,
@@ -35,25 +36,25 @@ const ROUTE_211: Location = {
             encountersKey: 'sinnoh-route-211-east-towards-celestic-town',
             battles: [
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'bird-keeper-katherine',
                     x: 52.9,
                     y: 31.7,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'ruin-maniac-harry',
                     x: 44.2,
                     y: 45.7,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'ninja-boy-nick',
                     x: 32.4,
                     y: 32.3,
                 },
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'black-belt-sean',
                     x: 49.7,
                     y: 90,

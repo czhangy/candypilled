@@ -19,7 +19,6 @@ const PLATINUM: Game = {
     version: 'platinum',
     starters: ['turtwig', 'chimchar', 'piplup'],
     accentColor: '#FFD500',
-    boxImportFormat: 'gen4',
     encounters: ENCOUNTERS,
     battles: BATTLES,
     metLocationById: PLATINUM_MET_LOCATIONS,

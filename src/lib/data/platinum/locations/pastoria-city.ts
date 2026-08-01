@@ -1,4 +1,5 @@
 import { pastoriaCity } from '@/lib/data/platinum/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const PASTORIA_CITY: Location = {
@@ -7,7 +8,7 @@ const PASTORIA_CITY: Location = {
     encountersKey: 'pastoria-city',
     battles: [
         {
-            isMiniboss: true,
+            metadata: [BattleMetadata.Miniboss],
             battleKey: 'pkmn-trainer-barry-barry-4',
             x: 24.5,
             y: 46.4,

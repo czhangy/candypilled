@@ -5,6 +5,7 @@ import {
     solaceonRuinsB3f,
     solaceonRuinsB4f,
 } from '@/lib/data/platinum/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SOLACEON_RUINS: Location = {
@@ -26,7 +27,7 @@ const SOLACEON_RUINS: Location = {
             encountersKey: 'solaceon-ruins',
             battles: [
                 {
-                    isOptional: true,
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'ruin-maniac-karl',
                     x: 70.6,
                     y: 47.5,
