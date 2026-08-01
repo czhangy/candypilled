@@ -2463,7 +2463,13 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'galactic-grunt-m-1': {
-        saveCondition: { type: 'flag', flag: 412 },
+        saveCondition: {
+            type: 'and',
+            conditions: [
+                { type: 'flag', flag: 412 },
+                { type: 'varAtLeast', var: 119, minValue: 3 },
+            ],
+        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '1',
@@ -9428,7 +9434,13 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-10': {
-        saveCondition: { type: 'flag', flag: 539 },
+        saveCondition: {
+            type: 'and',
+            conditions: [
+                { type: 'flag', flag: 539 },
+                { type: 'flag', flag: 260 },
+            ],
+        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '10',
