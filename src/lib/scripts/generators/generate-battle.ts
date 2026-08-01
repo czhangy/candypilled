@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import { createInterface, Interface } from 'readline/promises';
-import { TRAINER_CLASSES } from '@/lib/data/trainer-classes';
 import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import { logError, logSuccess, runScript } from '@/lib/scripts/utils/helpers';
 import { FieldCondition } from '@/lib/static/enums';
@@ -12,10 +11,6 @@ const USAGE =
     '[--miniboss] [--boss] [--required] [--true] [--double] [--tag] [--field]';
 const LOCATION_NOT_FOUND = 'That location does not exist.';
 const SUBAREA_NOT_FOUND = 'That subarea does not exist on this location.';
-const BOSS_CLASS_NOT_ALLOWED =
-    '--boss requires the trainer class to be Leader, Galactic Boss, Elite Four, or Champion.';
-const MINIBOSS_CLASS_NOT_ALLOWED =
-    '--miniboss requires the trainer class to be Galactic Boss, Commander, or PKMN Trainer.';
 const ENUMS_IMPORT_PATH = '@/lib/static/enums';
 const FIELD_CONDITION_NAMES = Object.values(FieldCondition);
 // FieldCondition's keys don't all match their values (e.g. RemovableFog =
@@ -24,17 +19,6 @@ const FIELD_CONDITION_NAMES = Object.values(FieldCondition);
 const FIELD_CONDITION_KEYS_BY_VALUE = new Map(
     Object.entries(FieldCondition).map(([key, value]) => [value, key])
 );
-const BOSS_DISPLAY_NAMES = new Set([
-    'Leader',
-    'Galactic Boss',
-    'Elite Four',
-    'Champion',
-]);
-const MINIBOSS_DISPLAY_NAMES = new Set([
-    'Galactic Boss',
-    'Commander',
-    'PKMN Trainer',
-]);
 
 type BattleArgs = {
     location: string;
@@ -221,16 +205,6 @@ const findInsertionPoint = (content: string, scope: Range): InsertionPoint => {
 
 const escapeQuotes = (value: string): string => value.replace(/'/g, "\\'");
 
-// Title-cases a trainer name word by word (e.g. "ty & sue" -> "Ty & Sue"),
-// leaving punctuation like "&" and disambiguator digits untouched, unlike
-// StringHelpers.toTitleCase which slugs first and would turn "&" into "and".
-const toTitleCaseName = (value: string): string =>
-    value.replace(
-        /\S+/g,
-        (word) =>
-            `${word.charAt(0).toUpperCase()}${word.slice(1).toLowerCase()}`
-    );
-
 const serializeBattle = (battle: PromptedBattle, indent: string): string => {
     const fieldIndent = `${indent}    `;
     const fieldConditionField = battle.fieldCondition
@@ -293,24 +267,16 @@ const promptFieldCondition = async (rl: Interface): Promise<FieldCondition> => {
     }
 };
 
-const promptTrainerClass = async (
-    rl: Interface,
-    validTrainerClasses: Set<string>
-): Promise<string> => {
+const promptBattleKey = async (rl: Interface): Promise<string> => {
     while (true) {
-        const raw = (await rl.question('Trainer class: ')).trim();
-        const slug = StringHelpers.toSlug(raw);
-        if (!validTrainerClasses.has(slug)) {
-            logError("  That isn't a valid trainer class.");
-            continue;
-        }
-        return slug;
+        const raw = (await rl.question('Battle key: ')).trim();
+        if (raw) return raw;
+        logError('  Battle key is required.');
     }
 };
 
 const promptBattle = async (
     rl: Interface,
-    validTrainerClasses: Set<string>,
     isMiniboss: boolean,
     isBoss: boolean,
     isRequired: boolean,
@@ -319,19 +285,8 @@ const promptBattle = async (
     isTag: boolean,
     isFieldEnabled: boolean
 ): Promise<PromptedBattle> => {
-    const trainerClass = await promptTrainerClass(rl, validTrainerClasses);
+    const battleKey = await promptBattleKey(rl);
     const isOptional = !isMiniboss && !isBoss && !isRequired;
-    const { displayName } = TRAINER_CLASSES[trainerClass];
-
-    if (isBoss && !BOSS_DISPLAY_NAMES.has(displayName)) {
-        throw new Error(BOSS_CLASS_NOT_ALLOWED);
-    }
-    if (isMiniboss && !MINIBOSS_DISPLAY_NAMES.has(displayName)) {
-        throw new Error(MINIBOSS_CLASS_NOT_ALLOWED);
-    }
-
-    const name = toTitleCaseName((await rl.question('Trainer name: ')).trim());
-    const battleKey = `${trainerClass}::${name}`;
 
     const x = await promptCoordinate(rl, 'X');
     const y = await promptCoordinate(rl, 'Y');
@@ -406,8 +361,6 @@ runScript(async () => {
         : getLocationScope(original);
     const insertionPoint = findInsertionPoint(original, scope);
 
-    const validTrainerClasses = new Set(Object.keys(TRAINER_CLASSES));
-
     const rl = createInterface({
         input: process.stdin,
         output: process.stdout,
@@ -416,7 +369,6 @@ runScript(async () => {
     try {
         battle = await promptBattle(
             rl,
-            validTrainerClasses,
             args.isMiniboss,
             args.isBoss,
             args.isRequired,
@@ -438,6 +390,6 @@ runScript(async () => {
     fs.writeFileSync(filePath, updated);
     logSuccess(
         `A new battle was added to ${args.location}. Add its trainer info ` +
-            `(team, items, etc.) to battles.json under the key "${battle.battleKey}".`
+            `to battles.json under the key "${battle.battleKey}".`
     );
 });
