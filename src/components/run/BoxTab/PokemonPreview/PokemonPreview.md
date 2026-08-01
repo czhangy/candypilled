@@ -63,9 +63,8 @@ hindered by it is highlighted blue.
   species with a held-item form change (e.g. Giratina holding the Griseous
   Orb resolves to Origin Forme) while its evolution options, moves, and tags
   stay tied to `pokemon.slug`'s identity
-- `abilitySlug` — the selected ability's slug, resolved from `displaySlug`
-  and `pokemon.ability` (a slot number) via `PokemonHelpers.getAbilitySlug`
-  at `generation`
+- `abilitySlug` — the selected ability's slug, taken directly from
+  `pokemon.ability`
 - `abilityName` — the selected ability's display name, resolved from
   `abilitySlug` via `AbilityHelpers`
 - `heldItemSlug` — the held item's slug, resolved from `pokemon.heldItem`

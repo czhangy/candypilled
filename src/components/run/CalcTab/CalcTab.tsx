@@ -592,17 +592,12 @@ const CalcTab: React.FC<CalcTabProps> = ({
             return;
         }
 
-        const abilitySlug = PokemonHelpers.getAbilitySlug(
-            PokemonHelpers.getDisplaySlug(caught),
-            game.generation,
-            caught.ability
-        );
         dispatchAttacker({
             type: 'LOAD',
             abilityName:
-                (abilitySlug &&
-                    AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
-                abilitySlug ??
+                (caught.ability &&
+                    AbilityHelpers.getAbilityData(caught.ability)?.name) ??
+                caught.ability ??
                 '',
             evs: StatHelpers.normalizeStats(caught.evs, 0),
             gender: caught.gender,
@@ -631,17 +626,12 @@ const CalcTab: React.FC<CalcTabProps> = ({
             return;
         }
 
-        const abilitySlug = PokemonHelpers.getAbilitySlug(
-            PokemonHelpers.getDisplaySlug(mon),
-            game.generation,
-            mon.ability
-        );
         dispatchDefender({
             type: 'LOAD',
             abilityName:
-                (abilitySlug &&
-                    AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
-                abilitySlug ??
+                (mon.ability &&
+                    AbilityHelpers.getAbilityData(mon.ability)?.name) ??
+                mon.ability ??
                 '',
             evs: StatHelpers.normalizeStats(mon.evs, 0),
             gender: mon.gender,
@@ -735,11 +725,10 @@ const CalcTab: React.FC<CalcTabProps> = ({
     };
 
     const handleAttackerSpeciesChange = (slug: string): void => {
-        const abilitySlug = PokemonHelpers.getAbilitySlug(
+        const abilitySlug = PokemonHelpers.getPokemonAbilities(
             slug,
-            game.generation,
-            1
-        );
+            game.generation
+        )?.slot1;
         dispatchAttacker({
             type: 'SET_SPECIES',
             abilityName:
@@ -826,11 +815,10 @@ const CalcTab: React.FC<CalcTabProps> = ({
     };
 
     const handleDefenderSpeciesChange = (slug: string): void => {
-        const abilitySlug = PokemonHelpers.getAbilitySlug(
+        const abilitySlug = PokemonHelpers.getPokemonAbilities(
             slug,
-            game.generation,
-            1
-        );
+            game.generation
+        )?.slot1;
         dispatchDefender({
             type: 'SET_SPECIES',
             abilityName:

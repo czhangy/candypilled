@@ -7,7 +7,6 @@ import {
 } from '@/lib/data/pokemon-id-reference';
 import { Nature, PokemonStatus } from '@/lib/static/enums';
 import {
-    AbilitySlot,
     CaughtPokemon,
     Game,
     PokemonGrowthRate,
@@ -115,7 +114,7 @@ export default class Gen4BoxImportHelpers {
             speciesId,
             formIndex
         );
-        const ability = Gen4BoxImportHelpers.resolveAbilitySlot(
+        const ability = Gen4BoxImportHelpers.resolveAbilitySlug(
             speciesSlug,
             game.generation,
             abilityId
@@ -223,11 +222,11 @@ export default class Gen4BoxImportHelpers {
         return slug;
     }
 
-    private static resolveAbilitySlot(
+    private static resolveAbilitySlug(
         speciesSlug: string,
         generation: number,
         abilityId: number
-    ): AbilitySlot {
+    ): string {
         const abilitySlug = ABILITY_BY_ID[abilityId];
         if (!abilitySlug) {
             throw new Error(`Unknown ability ID ${abilityId}`);
@@ -241,9 +240,13 @@ export default class Gen4BoxImportHelpers {
             throw new Error(`Unknown ability ID ${abilityId}`);
         }
 
-        if (abilities.slot1 === abilitySlug) return 1;
-        if (abilities.slot2 === abilitySlug) return 2;
-        if (abilities.hidden === abilitySlug) return 3;
+        if (
+            abilities.slot1 === abilitySlug ||
+            abilities.slot2 === abilitySlug ||
+            abilities.hidden === abilitySlug
+        ) {
+            return abilitySlug;
+        }
 
         if (!AbilityHelpers.getAbilityData(abilitySlug)) {
             throw new Error(`Unknown ability ID ${abilityId}`);

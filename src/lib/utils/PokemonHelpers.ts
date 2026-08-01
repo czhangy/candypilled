@@ -1,7 +1,6 @@
 import { POKEMON } from '@/lib/data/pokemon';
 import {
     Abilities,
-    AbilitySlot,
     LearnsetMove,
     PokemonData,
     StatValues,
@@ -117,25 +116,6 @@ export default class PokemonHelpers {
             pokemon.abilities,
             generation
         )?.abilities;
-    }
-
-    /** The slug of slug's ability in slot, as of generation. */
-    static getAbilitySlug(
-        slug: string,
-        generation: number,
-        slot: AbilitySlot
-    ): string | undefined {
-        const abilities = PokemonHelpers.getPokemonAbilities(slug, generation);
-        if (!abilities) return undefined;
-
-        switch (slot) {
-            case 1:
-                return abilities.slot1;
-            case 2:
-                return abilities.slot2;
-            case 3:
-                return abilities.hidden;
-        }
     }
 
     /** slug's base stats as of generation, or undefined if no form matches. */

@@ -63,15 +63,6 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     const getTypes = (name: string): string[] =>
         PokemonHelpers.getPokemonTypes(name, generation) ?? [];
 
-    const getAbilitySlug = (): string | undefined => {
-        if (!pokemon || !displaySlug) return undefined;
-        return PokemonHelpers.getAbilitySlug(
-            displaySlug,
-            generation,
-            pokemon.ability
-        );
-    };
-
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
@@ -93,7 +84,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
         ? ItemHelpers.getHeldItemSprite(heldItemSlug)
         : undefined;
     const types = displaySlug ? getTypes(displaySlug) : [];
-    const abilitySlug = getAbilitySlug();
+    const abilitySlug = pokemon?.ability;
     const ability = abilitySlug
         ? AbilityHelpers.getAbilityData(abilitySlug)?.name
         : undefined;

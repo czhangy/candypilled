@@ -123,12 +123,9 @@ export type Setting = {
     title: string;
 };
 
-// Identifies which of a species' abilities is set: 1 = slot1, 2 = slot2,
-// 3 = hidden. Callers resolve the slug via PokemonHelpers.getAbilitySlug.
-export type AbilitySlot = 1 | 2 | 3;
-
 export type BattlePokemon = {
-    ability: AbilitySlot;
+    // The ability's slug, e.g. "overgrow".
+    ability: string;
     evs?: StatValues;
     gender?: 'male' | 'female';
     heldItem?: string;

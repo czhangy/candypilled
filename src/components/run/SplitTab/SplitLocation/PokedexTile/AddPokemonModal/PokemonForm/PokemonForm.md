@@ -6,9 +6,7 @@ tags when their respective `show*`/`lock*` prop allows it. Species,
 ability, gender, nature, held item, and moves are chosen from a
 `Dropdown` (species, held item, and moves are searchable); tags are
 edited via a `TagInput`. The ability dropdown identifies an ability by
-its slot (1, 2, or hidden) rather than its name, since a species can be
-re-selected across generations where ability names at a given slot may
-differ. Gender and nature sit in one row, with ability and held item
+its slug. Gender and nature sit in one row, with ability and held item
 (when shown) in a row below. The Gender field is omitted entirely for a
 genderless species (per `PokemonHelpers.isGenderless`) or a species
 that's always a single gender (per `PokemonHelpers.getFixedGender`);
@@ -37,7 +35,7 @@ change) when editing a caught Pokémon.
 | Prop                            | Type                                                                                                                                                  | Required | Default | Description                                                                            |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | -------------------------------------------------------------------------------------- |
 | `allSpecies`                    | `PokemonData[]`                                                                                                                                       | Yes      | -       | Every species offered in the Pokémon dropdown, ignored when `lockSpecies`              |
-| `defaultAbilitySlot`            | `AbilitySlot`                                                                                                                                         | No       | -       | The slot `abilitySlot` defaults to; falls back to `1` if omitted                       |
+| `defaultAbility`                | `string`                                                                                                                                              | No       | -       | The slug `ability` defaults to; falls back to `species`' slot-1 ability if omitted     |
 | `defaultEvs`                    | `StatValues`                                                                                                                                          | No       | -       | The values `evs` defaults to; falls back to all stats at `0` if omitted                |
 | `defaultGender`                 | `'male' \| 'female'`                                                                                                                                  | No       | -       | The value `gender` defaults to; falls back to `'male'` if omitted                      |
 | `defaultHeldItem`               | `string`                                                                                                                                              | No       | -       | The value `heldItem` defaults to, when `showHeldItem`; falls back to `''` if omitted   |
@@ -63,18 +61,18 @@ change) when editing a caught Pokémon.
 
 ## State
 
-| State         | Type                 | Initial value                                                                       | Description                                                       |
-| ------------- | -------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `species`     | `string`             | `defaultSpecies`                                                                    | The selected species' slug                                        |
-| `abilitySlot` | `AbilitySlot`        | `defaultAbilitySlot`, or `1`                                                        | The selected ability's slot (1, 2, or hidden)                     |
-| `gender`      | `'male' \| 'female'` | `defaultGender`, or `'male'`                                                        | The selected gender                                               |
-| `heldItem`    | `string`             | `defaultHeldItem`, or `''`                                                          | The selected held item's slug, empty meaning none                 |
-| `nature`      | `Nature`             | `defaultNature`, or the first `Nature` value                                        | The selected nature                                               |
-| `ivs`         | `StatValues`         | `defaultIvs`, or all stats at `31`                                                  | The selected IVs, per stat                                        |
-| `evs`         | `StatValues`         | `defaultEvs`, or all stats at `0`                                                   | The selected EVs, per stat                                        |
-| `level`       | `number`             | `defaultLevel` (or `1`) if `showLevel`, otherwise `5`                               | The selected level                                                |
-| `moves`       | `string[]`           | `defaultMoves`, or the moves `species` would know at `level` via `getStartingMoves` | The selected moves' slugs, one per slot, empty meaning unselected |
-| `tags`        | `string[]`           | `defaultTags`, or `[]`                                                              | The selected tags                                                 |
+| State      | Type                 | Initial value                                                                       | Description                                                       |
+| ---------- | -------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `species`  | `string`             | `defaultSpecies`                                                                    | The selected species' slug                                        |
+| `ability`  | `string`             | `defaultAbility`, or `species`' slot-1 ability                                      | The selected ability's slug                                       |
+| `gender`   | `'male' \| 'female'` | `defaultGender`, or `'male'`                                                        | The selected gender                                               |
+| `heldItem` | `string`             | `defaultHeldItem`, or `''`                                                          | The selected held item's slug, empty meaning none                 |
+| `nature`   | `Nature`             | `defaultNature`, or the first `Nature` value                                        | The selected nature                                               |
+| `ivs`      | `StatValues`         | `defaultIvs`, or all stats at `31`                                                  | The selected IVs, per stat                                        |
+| `evs`      | `StatValues`         | `defaultEvs`, or all stats at `0`                                                   | The selected EVs, per stat                                        |
+| `level`    | `number`             | `defaultLevel` (or `1`) if `showLevel`, otherwise `5`                               | The selected level                                                |
+| `moves`    | `string[]`           | `defaultMoves`, or the moves `species` would know at `level` via `getStartingMoves` | The selected moves' slugs, one per slot, empty meaning unselected |
+| `tags`     | `string[]`           | `defaultTags`, or `[]`                                                              | The selected tags                                                 |
 
 ## Computations
 
@@ -87,7 +85,7 @@ change) when editing a caught Pokémon.
 - `abilities` — the selected `species`' ability set at `generation`,
   resolved via `PokemonHelpers`
 - `abilityOptions` — `abilities` flattened into dropdown options keyed by
-  slot number, with each ability's slug resolved to its display name via
+  ability slug, with each one resolved to its display name via
   `AbilityHelpers`
 - `natureOptions` — every `Nature` value mapped into dropdown options,
   labeled with its stat effect (e.g. "Adamant [+Atk -SpA]") via
@@ -113,10 +111,11 @@ change) when editing a caught Pokémon.
 ## Handlers
 
 - **On the Pokémon dropdown change** — sets `species`, resets
-  `abilitySlot` to `1`, and resets `moves` to the new species' starting
-  moves at the current `level` via `getStartingMoves` (only reachable
-  when the field is rendered, i.e. `lockSpecies` is false)
-- **On the ability dropdown change** — sets `abilitySlot`
+  `ability` to the new species' slot-1 ability, and resets `moves` to
+  the new species' starting moves at the current `level` via
+  `getStartingMoves` (only reachable when the field is rendered, i.e.
+  `lockSpecies` is false)
+- **On the ability dropdown change** — sets `ability`
 - **On the gender dropdown change** — sets `gender` (only reachable
   when `showGenderField` is true)
 - **On the held item dropdown change** — sets `heldItem`
@@ -130,7 +129,7 @@ change) when editing a caught Pokémon.
   starting moves at the new level via `getStartingMoves`
 - **On a move dropdown change** — sets that slot's value in `moves`
 - **On the `TagInput` change** — sets `tags`
-- **On form submit** — calls `onSubmit` with `ability` (`abilitySlot`),
+- **On form submit** — calls `onSubmit` with `ability`,
   `evs`, `gender` (`undefined` when `species` is genderless, the fixed
   gender when `species` is a single-gender species, otherwise the
   selected `gender`), `heldItem`, `ivs`, `level`, `moves` (empty slots
