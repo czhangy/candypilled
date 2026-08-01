@@ -231,14 +231,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
               (_, index) => pokemon.moves[index]
           )
         : [];
-    const abilitySlug =
-        pokemon && displaySlug
-            ? PokemonHelpers.getAbilitySlug(
-                  displaySlug,
-                  generation,
-                  pokemon.ability
-              )
-            : undefined;
+    const abilitySlug = pokemon?.ability;
     const abilityName = abilitySlug
         ? AbilityHelpers.getAbilityData(abilitySlug)?.name
         : undefined;

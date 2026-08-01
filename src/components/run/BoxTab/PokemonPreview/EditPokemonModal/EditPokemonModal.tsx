@@ -98,7 +98,7 @@ const EditPokemonModal: React.FC<EditPokemonModalProps> = ({
             {(requestClose) => (
                 <PokemonForm
                     allSpecies={[]}
-                    defaultAbilitySlot={pokemon.ability}
+                    defaultAbility={pokemon.ability}
                     defaultEvs={StatHelpers.normalizeStats(pokemon.evs, 0)}
                     defaultGender={pokemon.gender}
                     defaultHeldItem={pokemon.heldItem}
