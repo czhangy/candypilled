@@ -1,5 +1,6 @@
 import { StaticImageData } from 'next/image';
 import {
+    AiFlag,
     BattleMetadata,
     EncounterMethod,
     FieldCondition,
@@ -211,6 +212,7 @@ export type BattleData = {
     secondTrainer?: BattleTrainer;
     // TRAINER_CLASSES slug.
     trainerClass: string;
+    aiFlags: AiFlag[];
 };
 
 export type Battle = {
