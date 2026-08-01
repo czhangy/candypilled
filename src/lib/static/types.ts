@@ -179,29 +179,9 @@ export type BoxImportError = {
     message: string;
 };
 
-export type BoxImportResult =
-    | { success: true; pokemon: CaughtPokemon[] }
-    | { success: false; errors: BoxImportError[] };
-
 // A Pokémon experience growth rate, determining how EXP maps to level.
 export type PokemonGrowthRate =
     'erratic' | 'fast' | 'medium-fast' | 'medium-slow' | 'slow' | 'fluctuating';
-
-// Identifies which generation's save-file binary layout a box import file
-// uses (e.g. Gen4's .pk4 party format). BoxImportHelpers dispatches to the
-// matching BoxFileParser via a game's `boxImportFormat`.
-export type BoxImportFormat = 'gen4';
-
-// A single generation's box-file parser: BoxImportHelpers looks one of
-// these up per `Game.boxImportFormat` and delegates every uploaded file
-// to it, so adding a new generation/format only means implementing and
-// registering a new BoxFileParser rather than touching the dispatcher.
-export type BoxFileParser = {
-    // The file extension this format's files are saved with (e.g.
-    // ".pk4"), used as the file picker's `accept` filter.
-    fileExtension: string;
-    parseFile: (buffer: ArrayBuffer, game: Game) => CaughtPokemon;
-};
 
 export type BattleItem = {
     count: number;
@@ -388,9 +368,6 @@ export type Game = {
     // Game-specific messages shown at random on the run page when a run is
     // marked as a wipe, alongside the run page's default messages.
     wipeMessages: string[];
-    // Which generation's binary save-file layout this game's box import
-    // files use; resolved to a BoxFileParser by BoxImportHelpers.
-    boxImportFormat: BoxImportFormat;
     // This game's region-specific met-location index -> display name
     // table (e.g. Sinnoh's for Platinum), since met-location IDs are
     // assigned per region rather than shared across every game.

@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Modal from '@/components/common/Modal/Modal';
 import { BoxImportError, CaughtPokemon, Game } from '@/lib/static/types';
-import BoxImportHelpers from '@/lib/utils/BoxImportHelpers';
 import styles from './ImportBoxModal.module.scss';
 
 type ImportBoxModalProps = {
@@ -19,6 +18,7 @@ const ImportBoxModal: React.FC<ImportBoxModalProps> = ({
     buttonTextColor,
     game,
     onClose,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars -- kept for BoxTab's call signature; never fires since import always fails
     onSubmit,
 }) => {
     // -------------------------------------------------------------------------
@@ -39,24 +39,17 @@ const ImportBoxModal: React.FC<ImportBoxModalProps> = ({
         setFiles(Array.from(event.target.files ?? []));
     };
 
-    const handleSubmit = async (
-        event: React.FormEvent,
-        requestClose: () => void
-    ): Promise<void> => {
+    const handleSubmit = (event: React.FormEvent): void => {
         event.preventDefault();
         setIsImporting(true);
 
-        const result = await BoxImportHelpers.parseFiles(files, game);
+        const importErrors: BoxImportError[] = files.map((file) => ({
+            fileName: file.name,
+            message: `Box import is not currently supported for ${game.name}.`,
+        }));
+
         setIsImporting(false);
-
-        if (!result.success) {
-            setErrors(result.errors);
-            return;
-        }
-
-        setErrors([]);
-        onSubmit(result.pokemon);
-        requestClose();
+        setErrors(importErrors);
     };
 
     // -------------------------------------------------------------------------
@@ -70,10 +63,10 @@ const ImportBoxModal: React.FC<ImportBoxModalProps> = ({
             onClose={onClose}
             title="Import Box"
         >
-            {(requestClose) => (
+            {() => (
                 <form
                     className={styles['import-box-modal']}
-                    onSubmit={(event) => handleSubmit(event, requestClose)}
+                    onSubmit={handleSubmit}
                 >
                     <p className={styles.hint}>
                         Export each Pokémon from{' '}
@@ -84,9 +77,8 @@ const ImportBoxModal: React.FC<ImportBoxModalProps> = ({
                         >
                             PKHeX
                         </a>
-                        &apos;s box view as a{' '}
-                        <code>{BoxImportHelpers.getFileExtension(game)}</code>{' '}
-                        file, then select them all below.
+                        &apos;s box view as a <code></code> file, then select
+                        them all below.
                     </p>
                     <p className={styles.warning}>
                         Each imported Pokémon replaces whatever is already
@@ -94,7 +86,7 @@ const ImportBoxModal: React.FC<ImportBoxModalProps> = ({
                         This can&apos;t be undone.
                     </p>
                     <input
-                        accept={BoxImportHelpers.getFileExtension(game)}
+                        accept=""
                         className={styles['file-input']}
                         multiple
                         onChange={handleFilesChange}
