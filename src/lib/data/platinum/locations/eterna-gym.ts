@@ -1,5 +1,4 @@
 import { eternaGym } from '@/lib/data/platinum/maps';
-import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ETERNA_GYM: Location = {
@@ -7,130 +6,25 @@ const ETERNA_GYM: Location = {
     map: eternaGym,
     battles: [
         {
-            trainerClass: 'lass',
-            name: 'Caroline',
-            team: [
-                {
-                    slug: 'cherubi',
-                    ability: 1,
-                    gender: 'female',
-                    level: 17,
-                    nature: Nature.Lonely,
-                    moves: ['tackle', 'leech-seed'],
-                    ivs: 2,
-                },
-                {
-                    slug: 'roselia',
-                    ability: 1,
-                    gender: 'female',
-                    level: 17,
-                    nature: Nature.Sassy,
-                    moves: ['mega-drain', 'poison-sting', 'stun-spore'],
-                    ivs: 2,
-                },
-            ],
+            battleKey: 'lass::Caroline',
             x: 64.6,
             y: 79.6,
         },
         {
-            trainerClass: 'aroma-lady',
-            name: 'Jenna',
-            team: [
-                {
-                    slug: 'budew',
-                    ability: 1,
-                    gender: 'female',
-                    level: 15,
-                    nature: Nature.Naive,
-                    moves: ['absorb', 'stun-spore', 'water-sport'],
-                    ivs: 2,
-                },
-                {
-                    slug: 'budew',
-                    ability: 1,
-                    gender: 'female',
-                    level: 16,
-                    nature: Nature.Serious,
-                    moves: ['absorb', 'stun-spore', 'water-sport'],
-                    ivs: 2,
-                },
-                {
-                    slug: 'budew',
-                    ability: 1,
-                    gender: 'female',
-                    level: 17,
-                    nature: Nature.Hardy,
-                    moves: ['absorb', 'stun-spore', 'water-sport'],
-                    ivs: 2,
-                },
-            ],
+            battleKey: 'aroma-lady::Jenna',
             x: 92.8,
             y: 62.8,
         },
         {
-            trainerClass: 'aroma-lady',
-            name: 'Angela',
-            team: [
-                {
-                    slug: 'roselia',
-                    ability: 1,
-                    gender: 'female',
-                    level: 19,
-                    nature: Nature.Mild,
-                    moves: ['mega-drain', 'poison-sting', 'stun-spore'],
-                    ivs: 2,
-                },
-            ],
+            battleKey: 'aroma-lady::Angela',
             x: 7.2,
             y: 30.5,
         },
         {
             isBoss: true,
-            trainerClass: 'leader-gardenia',
-            name: 'Gardenia',
-            team: [
-                {
-                    slug: 'turtwig',
-                    ability: 1,
-                    gender: 'male',
-                    level: 20,
-                    nature: Nature.Quirky,
-                    moves: ['grass-knot', 'razor-leaf', 'sunny-day', 'reflect'],
-                    ivs: 6,
-                },
-                {
-                    slug: 'cherrim',
-                    ability: 1,
-                    gender: 'female',
-                    level: 20,
-                    nature: Nature.Lax,
-                    moves: [
-                        'grass-knot',
-                        'leech-seed',
-                        'magical-leaf',
-                        'safeguard',
-                    ],
-                    ivs: 6,
-                },
-                {
-                    slug: 'roserade',
-                    ability: 1,
-                    gender: 'female',
-                    level: 22,
-                    nature: Nature.Naive,
-                    moves: [
-                        'grass-knot',
-                        'magical-leaf',
-                        'poison-sting',
-                        'stun-spore',
-                    ],
-                    ivs: 6,
-                    heldItem: 'sitrus-berry',
-                },
-            ],
+            battleKey: 'leader-gardenia::Gardenia',
             x: 49.9,
             y: 15.1,
-            items: [{ count: 2, name: 'Super Potion' }],
         },
     ],
 };

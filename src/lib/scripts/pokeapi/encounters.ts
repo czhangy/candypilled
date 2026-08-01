@@ -33,7 +33,7 @@ const DATA_PATH = path.join(
     'data',
     CURRENT_GAME_VERSION.id,
     'encounters',
-    `${CURRENT_GAME_VERSION.id}_encounters.json`
+    'encounters.json'
 );
 const FETCH_DELAY_MS = 75;
 

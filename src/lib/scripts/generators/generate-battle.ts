@@ -4,18 +4,12 @@ import { createInterface, Interface } from 'readline/promises';
 import { TRAINER_CLASSES } from '@/lib/data/trainer-classes';
 import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import { logError, logSuccess, runScript } from '@/lib/scripts/utils/helpers';
-import { FieldCondition, Nature } from '@/lib/static/enums';
-import { AbilitySlot } from '@/lib/static/types';
-import MoveHelpers from '@/lib/utils/MoveHelpers';
-import PokemonHelpers from '@/lib/utils/PokemonHelpers';
+import { FieldCondition } from '@/lib/static/enums';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const USAGE =
-    'Usage: npm run gen:battle <location> [subarea] [--starter] ' +
-    '[--miniboss] [--boss] [--required] [--true] [--double] [--tag] ' +
-    '[--moves] [--items] [--field] [--dv] ' +
-    '(--miniboss/--boss imply --moves and --dv)';
-const GAME_NOT_FOUND = 'That game has no entry in STARTERS_BY_GAME.';
+    'Usage: npm run gen:battle <location> [subarea] ' +
+    '[--miniboss] [--boss] [--required] [--true] [--double] [--tag] [--field]';
 const LOCATION_NOT_FOUND = 'That location does not exist.';
 const SUBAREA_NOT_FOUND = 'That subarea does not exist on this location.';
 const BOSS_CLASS_NOT_ALLOWED =
@@ -23,12 +17,6 @@ const BOSS_CLASS_NOT_ALLOWED =
 const MINIBOSS_CLASS_NOT_ALLOWED =
     '--miniboss requires the trainer class to be Galactic Boss, Commander, or PKMN Trainer.';
 const ENUMS_IMPORT_PATH = '@/lib/static/enums';
-const MAX_TEAM_SIZE = 6;
-const MAX_MOVES = 4;
-const DEFAULT_ABILITY_SLOT = 1;
-const MAX_DV = 255;
-const MAX_IV = 31;
-const NATURE_NAMES = Object.values(Nature);
 const FIELD_CONDITION_NAMES = Object.values(FieldCondition);
 // FieldCondition's keys don't all match their values (e.g. RemovableFog =
 // 'Removable Fog'), so the generated `FieldCondition.<Key>` reference has to
@@ -51,17 +39,13 @@ const MINIBOSS_DISPLAY_NAMES = new Set([
 type BattleArgs = {
     location: string;
     subarea?: string;
-    isStarterDependent: boolean;
     isMiniboss: boolean;
     isBoss: boolean;
     isRequired: boolean;
     isTrueDouble: boolean;
     isDouble: boolean;
     isTag: boolean;
-    isMovesEnabled: boolean;
-    isItemsEnabled: boolean;
     isFieldEnabled: boolean;
-    isDvEnabled: boolean;
 };
 
 type Range = {
@@ -69,75 +53,40 @@ type Range = {
     end: number;
 };
 
-type PromptedPokemon = {
-    slug: string;
-    ability: AbilitySlot;
-    level: number;
-    nature: Nature;
-    moves?: string[];
-};
-
-type PromptedTeamPokemon = PromptedPokemon & {
-    gender?: 'male' | 'female';
-    ivs?: number;
-};
-
-type PromptedItem = {
-    name: string;
-    count: number;
-};
-
-type PromptedBattleTrainer = {
-    trainerClass: string;
-    name: string;
-    team?: PromptedTeamPokemon[];
-    teamsByStarter?: Record<string, PromptedTeamPokemon[]>;
-};
-
+// Only placement + metadata is scaffolded here — a battle's trainer info
+// (team, items, etc.) lives in battles.json, keyed by battleKey, and isn't
+// something this generator writes.
 type PromptedBattle = {
-    trainerClass: string;
+    battleKey: string;
     isTrueDouble: boolean;
     isDouble: boolean;
     isTag: boolean;
     isOptional: boolean;
     isMiniboss: boolean;
     isBoss: boolean;
-    name: string;
-    team?: PromptedTeamPokemon[];
-    teamsByStarter?: Record<string, PromptedTeamPokemon[]>;
-    secondTrainer?: PromptedBattleTrainer;
-    items?: PromptedItem[];
     fieldCondition?: FieldCondition;
     x: number;
     y: number;
 };
 
 const FLAGS = [
-    '--starter',
     '--miniboss',
     '--boss',
     '--required',
     '--true',
     '--double',
     '--tag',
-    '--moves',
-    '--items',
     '--field',
-    '--dv',
 ];
 
 const parseArgs = (argv: string[]): BattleArgs => {
-    const isStarterDependent = argv.includes('--starter');
     const isMiniboss = argv.includes('--miniboss');
     const isBoss = argv.includes('--boss');
     const isRequired = argv.includes('--required');
     const isTrueDouble = argv.includes('--true');
     const isDouble = argv.includes('--double');
     const isTag = argv.includes('--tag');
-    const isMovesEnabled = argv.includes('--moves') || isMiniboss || isBoss;
-    const isItemsEnabled = argv.includes('--items');
     const isFieldEnabled = argv.includes('--field');
-    const isDvEnabled = argv.includes('--dv') || isMiniboss || isBoss;
     const [location, subarea] = argv.filter((arg) => !FLAGS.includes(arg));
     if (!location) {
         throw new Error(USAGE);
@@ -145,50 +94,18 @@ const parseArgs = (argv: string[]): BattleArgs => {
     return {
         location,
         subarea,
-        isStarterDependent,
         isMiniboss,
         isBoss,
         isRequired,
         isTrueDouble,
         isDouble,
         isTag,
-        isMovesEnabled,
-        isItemsEnabled,
         isFieldEnabled,
-        isDvEnabled,
     };
 };
 
 const getLocationPath = (gameSlug: string, slug: string): string =>
     path.join('src', 'lib', 'data', gameSlug, 'locations', `${slug}.ts`);
-
-// Each game's starter slugs, keyed by game slug. Kept separate from the
-// `Game` objects in src/lib/data since those transitively import every
-// location's map image, which tsx (running outside the Next.js bundler)
-// can't load.
-const STARTERS_BY_GAME: Record<string, string[]> = {
-    platinum: ['turtwig', 'chimchar', 'piplup'],
-};
-
-const getStarters = (gameSlug: string): string[] => {
-    const starters = STARTERS_BY_GAME[gameSlug];
-    if (!starters) {
-        throw new Error(GAME_NOT_FOUND);
-    }
-    return starters;
-};
-
-// The set of battle item slugs the generated `items` field could validly
-// take: those with a sprite under public/battle-items.
-const getValidItemSlugs = (): Set<string> => {
-    const itemsDir = path.join('public', 'battle-items');
-    return new Set(
-        fs
-            .readdirSync(itemsDir)
-            .filter((file) => file.endsWith('.png'))
-            .map((file) => path.basename(file, '.png'))
-    );
-};
 
 const getIndent = (content: string, index: number): string => {
     const lineStart = content.lastIndexOf('\n', index) + 1;
@@ -314,98 +231,8 @@ const toTitleCaseName = (value: string): string =>
             `${word.charAt(0).toUpperCase()}${word.slice(1).toLowerCase()}`
     );
 
-const serializePokemon = (
-    pokemon: PromptedTeamPokemon,
-    indent: string
-): string => {
-    return (
-        `${indent}{\n` +
-        `${indent}    slug: '${escapeQuotes(pokemon.slug)}',\n` +
-        `${indent}    ability: ${pokemon.ability},\n` +
-        (pokemon.gender ? `${indent}    gender: '${pokemon.gender}',\n` : '') +
-        (pokemon.ivs ? `${indent}    ivs: ${pokemon.ivs},\n` : '') +
-        `${indent}    level: ${pokemon.level},\n` +
-        `${indent}    nature: Nature.${pokemon.nature},\n` +
-        (pokemon.moves
-            ? `${indent}    moves: [${pokemon.moves
-                  .map((move) => `'${escapeQuotes(move)}'`)
-                  .join(', ')}],\n`
-            : '') +
-        `${indent}},\n`
-    );
-};
-
-// Serializes a `[{...}, ...]` team array, itself indented by `indent`, with
-// pokemon entries one level deeper.
-const serializeTeam = (team: PromptedTeamPokemon[], indent: string): string => {
-    const pokemonIndent = `${indent}    `;
-    const pokemon = team
-        .map((member) => serializePokemon(member, pokemonIndent))
-        .join('');
-    return `[\n${pokemon}${indent}]`;
-};
-
-const serializeSecondTrainer = (
-    secondTrainer: PromptedBattleTrainer,
-    indent: string
-): string => {
-    const fieldIndent = `${indent}    `;
-    const teamField = secondTrainer.team
-        ? `${fieldIndent}team: ${serializeTeam(secondTrainer.team, fieldIndent)},\n`
-        : '';
-    const teamsByStarterField = secondTrainer.teamsByStarter
-        ? `${fieldIndent}teamsByStarter: {\n` +
-          Object.entries(secondTrainer.teamsByStarter)
-              .map(
-                  ([starter, team]) =>
-                      `${fieldIndent}    ${starter}: ${serializeTeam(team, `${fieldIndent}    `)},\n`
-              )
-              .join('') +
-          `${fieldIndent}},\n`
-        : '';
-
-    return (
-        `${indent}secondTrainer: {\n` +
-        `${fieldIndent}trainerClass: '${escapeQuotes(secondTrainer.trainerClass)}',\n` +
-        `${fieldIndent}name: '${escapeQuotes(secondTrainer.name)}',\n` +
-        teamField +
-        teamsByStarterField +
-        `${indent}},\n`
-    );
-};
-
-const serializeItems = (items: PromptedItem[], indent: string): string => {
-    const itemIndent = `${indent}    `;
-    const entries = items
-        .map(
-            (item) =>
-                `${itemIndent}{ count: ${item.count}, name: '${escapeQuotes(item.name)}' },\n`
-        )
-        .join('');
-    return `[\n${entries}${indent}]`;
-};
-
 const serializeBattle = (battle: PromptedBattle, indent: string): string => {
     const fieldIndent = `${indent}    `;
-    const teamField = battle.team
-        ? `${fieldIndent}team: ${serializeTeam(battle.team, fieldIndent)},\n`
-        : '';
-    const teamsByStarterField = battle.teamsByStarter
-        ? `${fieldIndent}teamsByStarter: {\n` +
-          Object.entries(battle.teamsByStarter)
-              .map(
-                  ([starter, team]) =>
-                      `${fieldIndent}    ${starter}: ${serializeTeam(team, `${fieldIndent}    `)},\n`
-              )
-              .join('') +
-          `${fieldIndent}},\n`
-        : '';
-    const secondTrainerField = battle.secondTrainer
-        ? serializeSecondTrainer(battle.secondTrainer, fieldIndent)
-        : '';
-    const itemsField = battle.items
-        ? `${fieldIndent}items: ${serializeItems(battle.items, fieldIndent)},\n`
-        : '';
     const fieldConditionField = battle.fieldCondition
         ? `${fieldIndent}fieldCondition: FieldCondition.${FIELD_CONDITION_KEYS_BY_VALUE.get(battle.fieldCondition)},\n`
         : '';
@@ -430,84 +257,12 @@ const serializeBattle = (battle: PromptedBattle, indent: string): string => {
         trueDoubleField +
         doubleField +
         tagField +
-        `${indent}    trainerClass: '${escapeQuotes(battle.trainerClass)}',\n` +
-        `${indent}    name: '${escapeQuotes(battle.name)}',\n` +
-        teamField +
-        teamsByStarterField +
-        secondTrainerField +
-        itemsField +
+        `${indent}    battleKey: '${escapeQuotes(battle.battleKey)}',\n` +
         fieldConditionField +
         `${indent}    x: ${battle.x},\n` +
         `${indent}    y: ${battle.y},\n` +
         `${indent}},\n`
     );
-};
-
-// Prompts for up to MAX_MOVES move slugs. A blank first move is invalid and
-// re-prompts; a blank move after that ends the list early and moves on to
-// the next Pokémon.
-const promptMoves = async (rl: Interface): Promise<string[]> => {
-    const moves: string[] = [];
-    for (let i = 1; i <= MAX_MOVES; i++) {
-        while (true) {
-            const raw = (await rl.question(`  Move ${i}: `)).trim();
-            if (!raw) {
-                if (i === 1) {
-                    logError('  The first move is required.');
-                    continue;
-                }
-                return moves;
-            }
-
-            const slug = StringHelpers.toSlug(raw);
-            if (!MoveHelpers.getMoveData(slug)) {
-                logError("  That isn't a valid move.");
-                continue;
-            }
-
-            moves.push(slug);
-            break;
-        }
-    }
-    return moves;
-};
-
-// Prompts for battle items: a slug validated against public/battle-items and
-// a count. A blank first slug is invalid and re-prompts; a blank slug after
-// that ends the list.
-const promptItems = async (
-    rl: Interface,
-    validItemSlugs: Set<string>
-): Promise<PromptedItem[]> => {
-    const items: PromptedItem[] = [];
-    while (true) {
-        const raw = (
-            await rl.question(`  Item ${items.length + 1} slug: `)
-        ).trim();
-        if (!raw) {
-            if (items.length === 0) {
-                logError('  The first item is required.');
-                continue;
-            }
-            return items;
-        }
-
-        const slug = StringHelpers.toSlug(raw);
-        if (!validItemSlugs.has(slug)) {
-            logError("  That isn't a valid item.");
-            continue;
-        }
-
-        let count = NaN;
-        while (!Number.isInteger(count) || count <= 0) {
-            count = Number((await rl.question('  Count: ')).trim());
-            if (!Number.isInteger(count) || count <= 0) {
-                logError('  That is not a valid count.');
-            }
-        }
-
-        items.push({ name: StringHelpers.toTitleCase(slug), count });
-    }
 };
 
 const promptCoordinate = async (
@@ -524,19 +279,6 @@ const promptCoordinate = async (
     return value;
 };
 
-// Prompts for a DV (0-MAX_DV) and converts it to the equivalent IV. A DV of
-// 0 maps to no ivs override (the default IV is used instead).
-const promptIvs = async (rl: Interface): Promise<number | undefined> => {
-    let dv = NaN;
-    while (!Number.isInteger(dv) || dv < 0 || dv > MAX_DV) {
-        dv = Number((await rl.question('DV: ')).trim());
-        if (!Number.isInteger(dv) || dv < 0 || dv > MAX_DV) {
-            logError('  That is not a valid DV.');
-        }
-    }
-    return dv ? Math.floor((dv * MAX_IV) / MAX_DV) : undefined;
-};
-
 const promptFieldCondition = async (rl: Interface): Promise<FieldCondition> => {
     while (true) {
         const raw = (await rl.question('Field condition: ')).trim();
@@ -549,55 +291,6 @@ const promptFieldCondition = async (rl: Interface): Promise<FieldCondition> => {
         }
         return fieldCondition;
     }
-};
-
-const promptPokemon = async (
-    rl: Interface,
-    index: number,
-    isMovesEnabled: boolean
-): Promise<PromptedPokemon | null> => {
-    let slug: string | null = null;
-    while (slug === null) {
-        const raw = (await rl.question(`  Pokémon ${index} name: `)).trim();
-        if (!raw) return null;
-
-        const rawSlug = StringHelpers.toSlug(raw);
-        const pokemon =
-            PokemonHelpers.getPokemonForms(rawSlug).length === 1
-                ? PokemonHelpers.getPokemonData(rawSlug)
-                : undefined;
-        if (!pokemon) {
-            logError("  That isn't a valid Pokémon.");
-            continue;
-        }
-        slug = pokemon.slug;
-    }
-
-    const ability: AbilitySlot = DEFAULT_ABILITY_SLOT;
-
-    let level = NaN;
-    while (!Number.isInteger(level) || level <= 0) {
-        level = Number((await rl.question('  Level: ')).trim());
-        if (!Number.isInteger(level) || level <= 0) {
-            logError('  That is not a valid level.');
-        }
-    }
-
-    let nature: Nature | null = null;
-    while (nature === null) {
-        const raw = (await rl.question('  Nature: ')).trim();
-        nature =
-            NATURE_NAMES.find(
-                (candidate) => candidate.toLowerCase() === raw.toLowerCase()
-            ) ?? null;
-        if (nature === null) {
-            logError('  That is not a valid nature.');
-        }
-    }
-
-    const moves = isMovesEnabled ? await promptMoves(rl) : undefined;
-
-    return { slug, ability, level, nature, moves };
 };
 
 const promptTrainerClass = async (
@@ -615,112 +308,20 @@ const promptTrainerClass = async (
     }
 };
 
-// In Platinum, a trainer's Pokémon doesn't roll its personality value
-// randomly like a wild Pokémon: the engine fixes the value's gender byte to
-// 120 for a female trainer or 136 for a male trainer, then resolves gender
-// the normal way against the species' gender-ratio threshold (out of 256,
-// 32 per eighth). A species only actually shares the trainer's own gender
-// when that threshold falls strictly between 120 and 136 — true only for an
-// exact 50/50 ratio (threshold 127). Any species skewed roughly 75% or more
-// toward one gender always produces that gender, regardless of the
-// trainer's.
-const TRAINER_GENDER_BYTE: Record<'male' | 'female', number> = {
-    female: 120,
-    male: 136,
-};
-
-const resolveTeamMemberGender = (
-    slug: string,
-    trainerGender: 'male' | 'female'
-): 'male' | 'female' | undefined => {
-    const genderRate = PokemonHelpers.getPokemonData(slug)?.genderRate;
-    if (genderRate === undefined || genderRate === -1) return undefined;
-    if (genderRate === 0) return 'male';
-    if (genderRate === 8) return 'female';
-
-    const threshold = genderRate * 32 - 1;
-    return TRAINER_GENDER_BYTE[trainerGender] < threshold ? 'female' : 'male';
-};
-
-const promptTeam = async (
-    rl: Interface,
-    gender: 'male' | 'female',
-    ivs: number | undefined,
-    isMovesEnabled: boolean
-): Promise<PromptedTeamPokemon[]> => {
-    const team: PromptedTeamPokemon[] = [];
-    for (let i = 1; i <= MAX_TEAM_SIZE; i++) {
-        const pokemon = await promptPokemon(rl, i, isMovesEnabled);
-        if (!pokemon) break;
-        team.push({
-            ...pokemon,
-            gender: resolveTeamMemberGender(pokemon.slug, gender),
-            ivs,
-        });
-    }
-    return team;
-};
-
-const promptSecondTrainer = async (
-    rl: Interface,
-    validTrainerClasses: Set<string>,
-    starters: string[],
-    isStarterDependent: boolean,
-    isMovesEnabled: boolean,
-    isDvEnabled: boolean
-): Promise<PromptedBattleTrainer> => {
-    logSuccess('  Second trainer:');
-    const trainerClass = await promptTrainerClass(rl, validTrainerClasses);
-    const name = toTitleCaseName(
-        (await rl.question('Second trainer name: ')).trim()
-    );
-    const gender = TRAINER_CLASSES[trainerClass].gender;
-
-    const ivs = isDvEnabled ? await promptIvs(rl) : undefined;
-
-    const team = isStarterDependent
-        ? undefined
-        : await promptTeam(rl, gender, ivs, isMovesEnabled);
-
-    const teamsByStarter: Record<string, PromptedTeamPokemon[]> | undefined =
-        isStarterDependent ? {} : undefined;
-    if (teamsByStarter) {
-        for (const starter of starters) {
-            logSuccess(
-                `  Second trainer's team for ${StringHelpers.toTitleCase(starter)}:`
-            );
-            teamsByStarter[starter] = await promptTeam(
-                rl,
-                gender,
-                ivs,
-                isMovesEnabled
-            );
-        }
-    }
-
-    return { trainerClass, name, team, teamsByStarter };
-};
-
 const promptBattle = async (
     rl: Interface,
     validTrainerClasses: Set<string>,
-    validItemSlugs: Set<string>,
-    starters: string[],
-    isStarterDependent: boolean,
     isMiniboss: boolean,
     isBoss: boolean,
     isRequired: boolean,
     isTrueDouble: boolean,
     isDouble: boolean,
     isTag: boolean,
-    isMovesEnabled: boolean,
-    isItemsEnabled: boolean,
-    isFieldEnabled: boolean,
-    isDvEnabled: boolean
+    isFieldEnabled: boolean
 ): Promise<PromptedBattle> => {
     const trainerClass = await promptTrainerClass(rl, validTrainerClasses);
     const isOptional = !isMiniboss && !isBoss && !isRequired;
-    const { displayName, gender } = TRAINER_CLASSES[trainerClass];
+    const { displayName } = TRAINER_CLASSES[trainerClass];
 
     if (isBoss && !BOSS_DISPLAY_NAMES.has(displayName)) {
         throw new Error(BOSS_CLASS_NOT_ALLOWED);
@@ -730,70 +331,30 @@ const promptBattle = async (
     }
 
     const name = toTitleCaseName((await rl.question('Trainer name: ')).trim());
+    const battleKey = `${trainerClass}::${name}`;
 
     const x = await promptCoordinate(rl, 'X');
     const y = await promptCoordinate(rl, 'Y');
-
-    const ivs = isDvEnabled ? await promptIvs(rl) : undefined;
 
     const fieldCondition = isFieldEnabled
         ? await promptFieldCondition(rl)
         : undefined;
 
-    const items = isItemsEnabled
-        ? await promptItems(rl, validItemSlugs)
-        : undefined;
-
-    const team = isStarterDependent
-        ? undefined
-        : await promptTeam(rl, gender, ivs, isMovesEnabled);
-
-    const teamsByStarter: Record<string, PromptedTeamPokemon[]> | undefined =
-        isStarterDependent ? {} : undefined;
-    if (teamsByStarter) {
-        for (const starter of starters) {
-            logSuccess(`  Team for ${StringHelpers.toTitleCase(starter)}:`);
-            teamsByStarter[starter] = await promptTeam(
-                rl,
-                gender,
-                ivs,
-                isMovesEnabled
-            );
-        }
-    }
-
-    const secondTrainer =
-        isTag || isDouble
-            ? await promptSecondTrainer(
-                  rl,
-                  validTrainerClasses,
-                  starters,
-                  isStarterDependent,
-                  isMovesEnabled,
-                  isDvEnabled
-              )
-            : undefined;
-
     return {
-        trainerClass,
+        battleKey,
         isTrueDouble,
         isDouble,
         isTag,
         isOptional,
         isMiniboss,
         isBoss,
-        name,
-        team,
-        teamsByStarter,
-        secondTrainer,
-        items,
         fieldCondition,
         x,
         y,
     };
 };
 
-// Ensures `name` (e.g. `Nature`, `FieldCondition`) is imported from
+// Ensures `name` (e.g. `FieldCondition`) is imported from
 // @/lib/static/enums, adding it to an existing import statement from that
 // module or creating a new one right after the game import.
 const ensureEnumImport = (content: string, name: string): string => {
@@ -846,8 +407,6 @@ runScript(async () => {
     const insertionPoint = findInsertionPoint(original, scope);
 
     const validTrainerClasses = new Set(Object.keys(TRAINER_CLASSES));
-    const validItemSlugs = getValidItemSlugs();
-    const starters = getStarters(gameSlug);
 
     const rl = createInterface({
         input: process.stdin,
@@ -858,33 +417,27 @@ runScript(async () => {
         battle = await promptBattle(
             rl,
             validTrainerClasses,
-            validItemSlugs,
-            starters,
-            args.isStarterDependent,
             args.isMiniboss,
             args.isBoss,
             args.isRequired,
             args.isTrueDouble,
             args.isDouble,
             args.isTag,
-            args.isMovesEnabled,
-            args.isItemsEnabled,
-            args.isFieldEnabled,
-            args.isDvEnabled
+            args.isFieldEnabled
         );
     } finally {
         rl.close();
     }
 
     const entryText = serializeBattle(battle, insertionPoint.entryIndent);
-    let updated = ensureEnumImport(
-        insertionPoint.insert(original, entryText),
-        'Nature'
-    );
+    let updated = insertionPoint.insert(original, entryText);
     if (battle.fieldCondition) {
         updated = ensureEnumImport(updated, 'FieldCondition');
     }
 
     fs.writeFileSync(filePath, updated);
-    logSuccess(`A new battle was added to ${args.location}.`);
+    logSuccess(
+        `A new battle was added to ${args.location}. Add its trainer info ` +
+            `(team, items, etc.) to battles.json under the key "${battle.battleKey}".`
+    );
 });

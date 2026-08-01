@@ -5,7 +5,6 @@ import {
     solaceonRuinsB3f,
     solaceonRuinsB4f,
 } from '@/lib/data/platinum/maps';
-import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SOLACEON_RUINS: Location = {
@@ -28,30 +27,7 @@ const SOLACEON_RUINS: Location = {
             battles: [
                 {
                     isOptional: true,
-                    trainerClass: 'ruin-maniac',
-                    name: 'Karl',
-                    team: [
-                        {
-                            slug: 'geodude',
-                            ability: 1,
-                            gender: 'male',
-                            level: 19,
-                            nature: Nature.Mild,
-                        },
-                        {
-                            slug: 'geodude',
-                            ability: 1,
-                            gender: 'male',
-                            level: 21,
-                            nature: Nature.Lax,
-                        },
-                        {
-                            slug: 'bronzor',
-                            ability: 1,
-                            level: 23,
-                            nature: Nature.Serious,
-                        },
-                    ],
+                    battleKey: 'ruin-maniac::Karl',
                     x: 70.6,
                     y: 47.5,
                 },

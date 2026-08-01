@@ -1,4 +1,5 @@
 import { Game } from '@/lib/static/types';
+import { BATTLES } from './battles';
 import { ENCOUNTERS } from './encounters';
 import { PLATINUM_MET_LOCATIONS } from './met-locations';
 import BYRON from './splits/byron';
@@ -20,6 +21,7 @@ const PLATINUM: Game = {
     accentColor: '#FFD500',
     boxImportFormat: 'gen4',
     encounters: ENCOUNTERS,
+    battles: BATTLES,
     metLocationById: PLATINUM_MET_LOCATIONS,
     wipeMessages: [
         'Roark is calling.',

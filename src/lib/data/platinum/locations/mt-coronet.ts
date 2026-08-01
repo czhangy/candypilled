@@ -11,7 +11,6 @@ import {
     mtCoronetExterior,
     mtCoronetTunnel,
 } from '@/lib/data/platinum/maps';
-import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const MT_CORONET: Location = {
@@ -41,35 +40,13 @@ const MT_CORONET: Location = {
             battles: [
                 {
                     isOptional: true,
-                    trainerClass: 'galactic-grunt-f',
-                    name: '9',
-                    team: [
-                        {
-                            slug: 'stunky',
-                            ability: 1,
-                            gender: 'female',
-                            level: 43,
-                            nature: Nature.Bold,
-                            ivs: 3,
-                        },
-                    ],
+                    battleKey: 'galactic-grunt-f::9',
                     x: 63.2,
                     y: 27.3,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'galactic-grunt-m',
-                    name: '24',
-                    team: [
-                        {
-                            slug: 'murkrow',
-                            ability: 1,
-                            gender: 'male',
-                            level: 43,
-                            nature: Nature.Rash,
-                            ivs: 3,
-                        },
-                    ],
+                    battleKey: 'galactic-grunt-m::24',
                     x: 10.3,
                     y: 48.2,
                 },
@@ -87,77 +64,13 @@ const MT_CORONET: Location = {
             battles: [
                 {
                     isOptional: true,
-                    trainerClass: 'galactic-grunt-m',
-                    name: '25',
-                    team: [
-                        {
-                            slug: 'houndour',
-                            ability: 1,
-                            gender: 'male',
-                            level: 40,
-                            nature: Nature.Hasty,
-                            moves: [
-                                'beat-up',
-                                'fire-fang',
-                                'feint-attack',
-                                'embargo',
-                            ],
-                            ivs: 3,
-                        },
-                        {
-                            slug: 'golbat',
-                            ability: 1,
-                            gender: 'male',
-                            level: 40,
-                            nature: Nature.Serious,
-                            moves: [
-                                'confuse-ray',
-                                'air-cutter',
-                                'mean-look',
-                                'poison-fang',
-                            ],
-                            ivs: 3,
-                        },
-                        {
-                            slug: 'houndour',
-                            ability: 1,
-                            gender: 'male',
-                            level: 40,
-                            nature: Nature.Hasty,
-                            moves: [
-                                'beat-up',
-                                'fire-fang',
-                                'feint-attack',
-                                'embargo',
-                            ],
-                            ivs: 3,
-                        },
-                    ],
+                    battleKey: 'galactic-grunt-m::25',
                     x: 23.7,
                     y: 33.2,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'galactic-grunt-m',
-                    name: '26',
-                    team: [
-                        {
-                            slug: 'stunky',
-                            ability: 1,
-                            gender: 'male',
-                            level: 42,
-                            nature: Nature.Brave,
-                            ivs: 3,
-                        },
-                        {
-                            slug: 'golbat',
-                            ability: 1,
-                            gender: 'male',
-                            level: 40,
-                            nature: Nature.Serious,
-                            ivs: 3,
-                        },
-                    ],
+                    battleKey: 'galactic-grunt-m::26',
                     x: 53.8,
                     y: 30.5,
                 },
@@ -170,84 +83,19 @@ const MT_CORONET: Location = {
             battles: [
                 {
                     isOptional: true,
-                    trainerClass: 'galactic-grunt-m',
-                    name: '27',
-                    team: [
-                        {
-                            slug: 'golbat',
-                            ability: 1,
-                            gender: 'male',
-                            level: 43,
-                            nature: Nature.Docile,
-                            ivs: 3,
-                        },
-                    ],
+                    battleKey: 'galactic-grunt-m::27',
                     x: 11.8,
                     y: 77.8,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'galactic-grunt-f',
-                    name: '10',
-                    team: [
-                        {
-                            slug: 'murkrow',
-                            ability: 1,
-                            gender: 'female',
-                            level: 39,
-                            nature: Nature.Quirky,
-                            ivs: 3,
-                        },
-                        {
-                            slug: 'glameow',
-                            ability: 1,
-                            gender: 'female',
-                            level: 42,
-                            nature: Nature.Calm,
-                            ivs: 3,
-                        },
-                        {
-                            slug: 'murkrow',
-                            ability: 1,
-                            gender: 'female',
-                            level: 39,
-                            nature: Nature.Quirky,
-                            ivs: 3,
-                        },
-                    ],
+                    battleKey: 'galactic-grunt-f::10',
                     x: 79.2,
                     y: 60.6,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'galactic-grunt-m',
-                    name: '28',
-                    team: [
-                        {
-                            slug: 'croagunk',
-                            ability: 1,
-                            gender: 'male',
-                            level: 38,
-                            nature: Nature.Modest,
-                            ivs: 3,
-                        },
-                        {
-                            slug: 'stunky',
-                            ability: 1,
-                            gender: 'male',
-                            level: 40,
-                            nature: Nature.Hasty,
-                            ivs: 3,
-                        },
-                        {
-                            slug: 'croagunk',
-                            ability: 1,
-                            gender: 'male',
-                            level: 42,
-                            nature: Nature.Serious,
-                            ivs: 3,
-                        },
-                    ],
+                    battleKey: 'galactic-grunt-m::28',
                     x: 64,
                     y: 19,
                 },
@@ -260,50 +108,12 @@ const MT_CORONET: Location = {
             encountersKey: 'mt-coronet-5f',
             battles: [
                 {
-                    trainerClass: 'galactic-grunt-f',
-                    name: '11',
-                    team: [
-                        {
-                            slug: 'houndour',
-                            ability: 1,
-                            gender: 'female',
-                            level: 40,
-                            nature: Nature.Timid,
-                            ivs: 3,
-                        },
-                        {
-                            slug: 'glameow',
-                            ability: 1,
-                            gender: 'female',
-                            level: 42,
-                            nature: Nature.Modest,
-                            ivs: 3,
-                        },
-                    ],
+                    battleKey: 'galactic-grunt-f::11',
                     x: 73.2,
                     y: 68,
                 },
                 {
-                    trainerClass: 'galactic-grunt-m',
-                    name: '29',
-                    team: [
-                        {
-                            slug: 'glameow',
-                            ability: 1,
-                            gender: 'female',
-                            level: 41,
-                            nature: Nature.Hasty,
-                            ivs: 3,
-                        },
-                        {
-                            slug: 'golbat',
-                            ability: 1,
-                            gender: 'male',
-                            level: 41,
-                            nature: Nature.Docile,
-                            ivs: 3,
-                        },
-                    ],
+                    battleKey: 'galactic-grunt-m::29',
                     x: 44.9,
                     y: 83.9,
                 },
@@ -315,34 +125,7 @@ const MT_CORONET: Location = {
             encountersKey: 'mt-coronet-6f',
             battles: [
                 {
-                    trainerClass: 'galactic-grunt-f',
-                    name: '12',
-                    team: [
-                        {
-                            slug: 'golbat',
-                            ability: 1,
-                            gender: 'female',
-                            level: 39,
-                            nature: Nature.Quirky,
-                            ivs: 3,
-                        },
-                        {
-                            slug: 'croagunk',
-                            ability: 1,
-                            gender: 'female',
-                            level: 40,
-                            nature: Nature.Quirky,
-                            ivs: 3,
-                        },
-                        {
-                            slug: 'murkrow',
-                            ability: 1,
-                            gender: 'female',
-                            level: 41,
-                            nature: Nature.Calm,
-                            ivs: 3,
-                        },
-                    ],
+                    battleKey: 'galactic-grunt-f::12',
                     x: 55.7,
                     y: 51,
                 },

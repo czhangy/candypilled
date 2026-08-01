@@ -1,5 +1,4 @@
 import { route204North, route204South } from '@/lib/data/platinum/maps';
-import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_204: Location = {
@@ -12,52 +11,19 @@ const ROUTE_204: Location = {
             battles: [
                 {
                     isOptional: true,
-                    trainerClass: 'lass',
-                    name: 'Sarah',
-                    team: [
-                        {
-                            slug: 'shinx',
-                            ability: 1,
-                            gender: 'female',
-                            level: 7,
-                            moves: ['tackle', 'leer'],
-                            nature: Nature.Hardy,
-                        },
-                    ],
+                    battleKey: 'lass::Sarah',
                     x: 38.9,
                     y: 66.5,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'youngster',
-                    name: 'Tyler',
-                    team: [
-                        {
-                            slug: 'magikarp',
-                            ability: 1,
-                            gender: 'male',
-                            level: 8,
-                            moves: ['splash'],
-                            nature: Nature.Sassy,
-                        },
-                    ],
+                    battleKey: 'youngster::Tyler',
                     x: 22.9,
                     y: 57.5,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'lass',
-                    name: 'Samantha',
-                    team: [
-                        {
-                            slug: 'budew',
-                            ability: 1,
-                            gender: 'female',
-                            level: 7,
-                            moves: ['absorb', 'growth', 'water-sport'],
-                            nature: Nature.Docile,
-                        },
-                    ],
+                    battleKey: 'lass::Samantha',
                     x: 35.7,
                     y: 27.5,
                 },
@@ -70,48 +36,13 @@ const ROUTE_204: Location = {
             battles: [
                 {
                     isOptional: true,
-                    trainerClass: 'aroma-lady',
-                    name: 'Taylor',
-                    team: [
-                        {
-                            slug: 'budew',
-                            ability: 1,
-                            gender: 'female',
-                            level: 9,
-                            nature: Nature.Bashful,
-                        },
-                        {
-                            slug: 'cherubi',
-                            ability: 1,
-                            gender: 'female',
-                            level: 11,
-                            nature: Nature.Docile,
-                        },
-                    ],
+                    battleKey: 'aroma-lady::Taylor',
                     x: 52.9,
                     y: 59.4,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'bug-catcher',
-                    name: 'Brandon',
-                    team: [
-                        {
-                            slug: 'wurmple',
-                            ability: 1,
-                            gender: 'male',
-                            level: 10,
-                            nature: Nature.Quirky,
-                        },
-                        {
-                            slug: 'kricketot',
-                            ability: 1,
-                            gender: 'male',
-                            level: 11,
-                            moves: ['bide'],
-                            nature: Nature.Modest,
-                        },
-                    ],
+                    battleKey: 'bug-catcher::Brandon',
                     x: 63.3,
                     y: 39.7,
                 },
@@ -119,24 +50,7 @@ const ROUTE_204: Location = {
                     isOptional: true,
                     isTrueDouble: true,
                     customWidth: 36,
-                    trainerClass: 'twins',
-                    name: 'Liv & Liz',
-                    team: [
-                        {
-                            slug: 'pachirisu',
-                            ability: 1,
-                            gender: 'female',
-                            level: 11,
-                            nature: Nature.Brave,
-                        },
-                        {
-                            slug: 'pachirisu',
-                            ability: 1,
-                            gender: 'female',
-                            level: 11,
-                            nature: Nature.Brave,
-                        },
-                    ],
+                    battleKey: 'twins::Liv & Liz',
                     x: 48.3,
                     y: 23,
                 },

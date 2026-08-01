@@ -1,4 +1,4 @@
-import { Battle } from '@/lib/static/types';
+import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import styles from './BattleCard.module.scss';
@@ -8,6 +8,7 @@ import TrainerSprite from './TrainerSprite/TrainerSprite';
 
 type BattleCardProps = {
     battle: Battle;
+    game: Game;
     generation: number;
     isDefeated: boolean;
     onSelectAbility: (slug: string) => void;
@@ -23,6 +24,7 @@ type BattleCardProps = {
 
 const BattleCard: React.FC<BattleCardProps> = ({
     battle,
+    game,
     generation,
     isDefeated,
     onSelectAbility,
@@ -45,7 +47,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const teamGroups = BattleHelpers.getTeamGroups(battle, starter);
+    const teamGroups = BattleHelpers.getTeamGroups(battle, starter, game);
     const isStacked = teamGroups.length > 1;
 
     // -------------------------------------------------------------------------
@@ -72,7 +74,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                     }
                     type="button"
                 >
-                    {BattleHelpers.getFullName(battle)}
+                    {BattleHelpers.getFullName(battle, game)}
                 </button>
                 <div className={styles.body}>
                     {teamGroups.map((group, groupIndex) => {
@@ -94,6 +96,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                         battle={battle}
                                         isDefeated={isDefeated}
                                         isStacked={isStacked}
+                                        items={group.items}
                                         onToggleDefeated={onToggleDefeated}
                                         trainerClass={group.trainerClass}
                                         trainerName={group.name}

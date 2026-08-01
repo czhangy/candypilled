@@ -507,6 +507,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                 <LocationMap
                                     alt={`${location.name} map`}
                                     battles={section.battles}
+                                    game={game}
                                     isBattleDefeated={isBattleDefeated}
                                     isBattleNextPB={isBattleNextPB}
                                     map={section.map}
@@ -524,6 +525,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                 section.battles.includes(selectedBattle) && (
                                     <BattleCard
                                         battle={selectedBattle}
+                                        game={game}
                                         generation={game.generation}
                                         isDefeated={isBattleDefeated(
                                             selectedBattle

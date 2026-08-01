@@ -1,5 +1,4 @@
 import { valleyWindworksInterior } from '@/lib/data/platinum/maps';
-import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VALLEY_WINDWORKS_INTERIOR: Location = {
@@ -8,68 +7,19 @@ const VALLEY_WINDWORKS_INTERIOR: Location = {
     battles: [
         {
             isOptional: true,
-            trainerClass: 'galactic-grunt-m',
-            name: '5',
-            team: [
-                {
-                    slug: 'zubat',
-                    ability: 1,
-                    gender: 'male',
-                    level: 13,
-                    nature: Nature.Bashful,
-                },
-            ],
+            battleKey: 'galactic-grunt-m::5',
             x: 11.6,
             y: 45.2,
         },
         {
             isOptional: true,
-            trainerClass: 'galactic-grunt-m',
-            name: '6',
-            team: [
-                {
-                    slug: 'glameow',
-                    ability: 1,
-                    gender: 'female',
-                    level: 11,
-                    nature: Nature.Naive,
-                },
-                {
-                    slug: 'stunky',
-                    ability: 1,
-                    gender: 'male',
-                    level: 11,
-                    nature: Nature.Hasty,
-                },
-            ],
+            battleKey: 'galactic-grunt-m::6',
             x: 52.1,
             y: 15.4,
         },
         {
             isMiniboss: true,
-            trainerClass: 'commander-mars',
-            name: 'Mars 1',
-            team: [
-                {
-                    slug: 'zubat',
-                    ability: 1,
-                    gender: 'female',
-                    level: 15,
-                    nature: Nature.Bold,
-                    moves: ['bite', 'leech-life', 'toxic'],
-                    ivs: 12,
-                },
-                {
-                    slug: 'purugly',
-                    ability: 1,
-                    gender: 'female',
-                    level: 17,
-                    nature: Nature.Bashful,
-                    moves: ['feint-attack', 'scratch', 'fake-out'],
-                    heldItem: 'oran-berry',
-                    ivs: 12,
-                },
-            ],
+            battleKey: 'commander-mars::Mars 1',
             x: 88.9,
             y: 40,
         },

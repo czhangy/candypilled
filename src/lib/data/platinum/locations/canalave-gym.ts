@@ -4,7 +4,6 @@ import {
     canalaveGym3f,
     canalaveGym4f,
 } from '@/lib/data/platinum/maps';
-import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const CANALAVE_GYM: Location = {
@@ -15,58 +14,18 @@ const CANALAVE_GYM: Location = {
             map: canalaveGym1f,
             battles: [
                 {
-                    trainerClass: 'black-belt',
-                    name: 'Ricky',
-                    team: [
-                        {
-                            slug: 'steelix',
-                            ability: 1,
-                            gender: 'male',
-                            ivs: 4,
-                            level: 38,
-                            nature: Nature.Rash,
-                            moves: ['iron-tail', 'taunt', 'torment', 'screech'],
-                        },
-                    ],
+                    battleKey: 'black-belt::Ricky',
                     x: 14.4,
                     y: 43,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'worker',
-                    name: 'Gary',
-                    team: [
-                        {
-                            slug: 'magnemite',
-                            ability: 1,
-                            ivs: 1,
-                            level: 37,
-                            nature: Nature.Calm,
-                            moves: ['spark', 'magnet-bomb'],
-                        },
-                    ],
+                    battleKey: 'worker::Gary',
                     x: 66.1,
                     y: 38.8,
                 },
                 {
-                    trainerClass: 'ace-trainer-m',
-                    name: 'Cesar',
-                    team: [
-                        {
-                            slug: 'scizor',
-                            ability: 1,
-                            gender: 'male',
-                            ivs: 7,
-                            level: 40,
-                            nature: Nature.Lax,
-                            moves: [
-                                'metal-claw',
-                                'x-scissor',
-                                'slash',
-                                'pursuit',
-                            ],
-                        },
-                    ],
+                    battleKey: 'ace-trainer-m::Cesar',
                     x: 86.1,
                     y: 81.2,
                 },
@@ -78,66 +37,12 @@ const CANALAVE_GYM: Location = {
             battles: [
                 {
                     isOptional: true,
-                    trainerClass: 'worker',
-                    name: 'Jackson',
-                    team: [
-                        {
-                            slug: 'magnemite',
-                            ability: 1,
-                            ivs: 1,
-                            level: 34,
-                            nature: Nature.Mild,
-                            moves: ['magnet-bomb', 'spark', 'thunder-wave'],
-                        },
-                        {
-                            slug: 'magnemite',
-                            ability: 1,
-                            ivs: 1,
-                            level: 34,
-                            nature: Nature.Mild,
-                            moves: ['magnet-bomb', 'spark', 'thunder-wave'],
-                        },
-                        {
-                            slug: 'magnemite',
-                            ability: 1,
-                            ivs: 1,
-                            level: 34,
-                            nature: Nature.Mild,
-                            moves: ['magnet-bomb', 'spark', 'thunder-wave'],
-                        },
-                    ],
+                    battleKey: 'worker::Jackson',
                     x: 44.9,
                     y: 4.1,
                 },
                 {
-                    trainerClass: 'ace-trainer-f',
-                    name: 'Breanna',
-                    team: [
-                        {
-                            slug: 'bronzor',
-                            ability: 1,
-                            ivs: 7,
-                            level: 35,
-                            nature: Nature.Modest,
-                            moves: ['gyro-ball', 'extrasensory', 'confuse-ray'],
-                        },
-                        {
-                            slug: 'bronzor',
-                            ability: 1,
-                            ivs: 7,
-                            level: 36,
-                            nature: Nature.Timid,
-                            moves: ['gyro-ball', 'extrasensory', 'confuse-ray'],
-                        },
-                        {
-                            slug: 'bronzor',
-                            ability: 1,
-                            ivs: 7,
-                            level: 38,
-                            nature: Nature.Sassy,
-                            moves: ['gyro-ball', 'extrasensory', 'confuse-ray'],
-                        },
-                    ],
+                    battleKey: 'ace-trainer-f::Breanna',
                     x: 88.2,
                     y: 11.1,
                 },
@@ -148,62 +53,12 @@ const CANALAVE_GYM: Location = {
             map: canalaveGym3f,
             battles: [
                 {
-                    trainerClass: 'worker',
-                    name: 'Gerardo',
-                    team: [
-                        {
-                            slug: 'magnemite',
-                            ability: 1,
-                            ivs: 1,
-                            level: 35,
-                            nature: Nature.Sassy,
-                            moves: ['supersonic', 'magnet-bomb', 'spark'],
-                        },
-                        {
-                            slug: 'magnemite',
-                            ability: 1,
-                            ivs: 1,
-                            level: 35,
-                            nature: Nature.Sassy,
-                            moves: ['supersonic', 'magnet-bomb', 'spark'],
-                        },
-                    ],
+                    battleKey: 'worker::Gerardo',
                     x: 25.1,
                     y: 3.8,
                 },
                 {
-                    trainerClass: 'black-belt',
-                    name: 'David',
-                    team: [
-                        {
-                            slug: 'steelix',
-                            ability: 1,
-                            gender: 'male',
-                            ivs: 4,
-                            level: 35,
-                            nature: Nature.Rash,
-                            moves: [
-                                'iron-tail',
-                                'rock-slide',
-                                'sandstorm',
-                                'screech',
-                            ],
-                        },
-                        {
-                            slug: 'steelix',
-                            ability: 1,
-                            gender: 'male',
-                            ivs: 4,
-                            level: 37,
-                            nature: Nature.Bashful,
-                            moves: [
-                                'iron-tail',
-                                'rock-slide',
-                                'sandstorm',
-                                'screech',
-                            ],
-                        },
-                    ],
+                    battleKey: 'black-belt::David',
                     x: 78.2,
                     y: 3.8,
                 },
@@ -215,56 +70,7 @@ const CANALAVE_GYM: Location = {
             battles: [
                 {
                     isBoss: true,
-                    trainerClass: 'leader-byron',
-                    name: 'Byron',
-                    team: [
-                        {
-                            slug: 'magneton',
-                            ability: 1,
-                            ivs: 24,
-                            level: 37,
-                            nature: Nature.Relaxed,
-                            moves: [
-                                'flash-cannon',
-                                'thunderbolt',
-                                'tri-attack',
-                                'metal-sound',
-                            ],
-                        },
-                        {
-                            slug: 'steelix',
-                            ability: 1,
-                            gender: 'male',
-                            ivs: 24,
-                            level: 38,
-                            nature: Nature.Serious,
-                            moves: [
-                                'flash-cannon',
-                                'ice-fang',
-                                'earthquake',
-                                'sandstorm',
-                            ],
-                        },
-                        {
-                            slug: 'bastiodon',
-                            ability: 1,
-                            gender: 'male',
-                            ivs: 24,
-                            level: 41,
-                            nature: Nature.Lax,
-                            moves: [
-                                'metal-burst',
-                                'stone-edge',
-                                'iron-defense',
-                                'taunt',
-                            ],
-                            heldItem: 'sitrus-berry',
-                        },
-                    ],
-                    items: [
-                        { count: 1, name: 'Hyper Potion' },
-                        { count: 1, name: 'Full Restore' },
-                    ],
+                    battleKey: 'leader-byron::Byron',
                     x: 51.8,
                     y: 4.1,
                 },

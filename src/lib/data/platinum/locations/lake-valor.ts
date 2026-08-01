@@ -2,7 +2,6 @@ import {
     lakeValorPostGiratina,
     lakeValorPreGiratina,
 } from '@/lib/data/platinum/maps';
-import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_VALOR: Location = {
@@ -14,84 +13,19 @@ const LAKE_VALOR: Location = {
             battles: [
                 {
                     isOptional: true,
-                    trainerClass: 'galactic-grunt-f',
-                    name: '4',
-                    team: [
-                        {
-                            slug: 'glameow',
-                            ability: 1,
-                            gender: 'female',
-                            ivs: 3,
-                            level: 35,
-                            nature: Nature.Impish,
-                        },
-                        {
-                            slug: 'murkrow',
-                            ability: 1,
-                            gender: 'female',
-                            ivs: 3,
-                            level: 35,
-                            nature: Nature.Jolly,
-                        },
-                    ],
+                    battleKey: 'galactic-grunt-f::4',
                     x: 50.9,
                     y: 30.6,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'galactic-grunt-m',
-                    name: '13',
-                    team: [
-                        {
-                            slug: 'golbat',
-                            ability: 1,
-                            gender: 'male',
-                            ivs: 3,
-                            level: 37,
-                            nature: Nature.Careful,
-                        },
-                    ],
+                    battleKey: 'galactic-grunt-m::13',
                     x: 30.3,
                     y: 55.3,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'galactic-grunt-m',
-                    name: '14',
-                    team: [
-                        {
-                            slug: 'croagunk',
-                            ability: 1,
-                            gender: 'male',
-                            ivs: 3,
-                            level: 33,
-                            nature: Nature.Naughty,
-                        },
-                        {
-                            slug: 'glameow',
-                            ability: 1,
-                            gender: 'female',
-                            ivs: 3,
-                            level: 33,
-                            nature: Nature.Docile,
-                        },
-                        {
-                            slug: 'stunky',
-                            ability: 1,
-                            gender: 'male',
-                            ivs: 3,
-                            level: 33,
-                            nature: Nature.Rash,
-                        },
-                        {
-                            slug: 'houndour',
-                            ability: 1,
-                            gender: 'male',
-                            ivs: 3,
-                            level: 33,
-                            nature: Nature.Hardy,
-                        },
-                    ],
+                    battleKey: 'galactic-grunt-m::14',
                     x: 44,
                     y: 60.9,
                 },

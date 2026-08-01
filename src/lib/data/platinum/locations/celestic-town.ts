@@ -1,5 +1,4 @@
 import { celesticTown } from '@/lib/data/platinum/maps';
-import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const CELESTIC_TOWN: Location = {
@@ -8,26 +7,7 @@ const CELESTIC_TOWN: Location = {
     encountersKey: 'celestic-town',
     battles: [
         {
-            trainerClass: 'galactic-grunt-m',
-            name: '11',
-            team: [
-                {
-                    slug: 'houndour',
-                    ability: 1,
-                    gender: 'male',
-                    ivs: 3,
-                    level: 32,
-                    nature: Nature.Sassy,
-                },
-                {
-                    slug: 'golbat',
-                    ability: 1,
-                    gender: 'male',
-                    ivs: 3,
-                    level: 30,
-                    nature: Nature.Relaxed,
-                },
-            ],
+            battleKey: 'galactic-grunt-m::11',
             x: 48.5,
             y: 45.1,
         },

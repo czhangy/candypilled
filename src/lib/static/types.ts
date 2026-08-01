@@ -154,6 +154,7 @@ export type TrainerClass = {
 // group; a tag battle has one per trainer, in trainerClass/secondTrainer
 // order.
 export type BattleTeamGroup = {
+    items?: BattleItem[];
     name: string;
     team: BattlePokemon[];
     trainerClass: string;
@@ -205,15 +206,15 @@ export type BoxFileParser = {
     parseFile: (buffer: ArrayBuffer, game: Game) => CaughtPokemon;
 };
 
-type BattleItem = {
+export type BattleItem = {
     count: number;
     name: string;
 };
 
 // The second trainer in a tag battle: a distinct trainer merged into the
-// same Battle entry (one map marker, one defeat toggle) as the primary
-// trainerClass/team, so each trainer's Pokémon can still be attributed to
-// the trainer that owns them.
+// same battles.json entry (one map marker, one defeat toggle) as the
+// primary trainerClass/team, so each trainer's Pokémon can still be
+// attributed to the trainer that owns them.
 export type BattleTrainer = {
     name: string;
     team?: BattlePokemon[];
@@ -222,7 +223,24 @@ export type BattleTrainer = {
     trainerClass: string;
 };
 
+// One battle's full trainer info — team(s), items, and (for a tag battle)
+// the second trainer — keyed by battle key (BattleHelpers.getBattleKey)
+// in Game.battles. Split out from the Location-owned Battle (placement +
+// metadata) so a battle's team data has one home regardless of where
+// it's fought.
+export type BattleData = {
+    name: string;
+    team?: BattlePokemon[];
+    teamsByStarter?: Partial<Record<string, BattlePokemon[]>>;
+    items?: BattleItem[];
+    secondTrainer?: BattleTrainer;
+    // TRAINER_CLASSES slug.
+    trainerClass: string;
+};
+
 export type Battle = {
+    // Looks up this battle's trainer info in Game.battles.
+    battleKey: string;
     customHeight?: number;
     customWidth?: number;
     fieldCondition?: FieldCondition;
@@ -234,13 +252,6 @@ export type Battle = {
     isOptional?: boolean;
     isTag?: boolean;
     isTrueDouble?: boolean;
-    items?: BattleItem[];
-    name: string;
-    secondTrainer?: BattleTrainer;
-    team?: BattlePokemon[];
-    teamsByStarter?: Partial<Record<string, BattlePokemon[]>>;
-    // TRAINER_CLASSES slug.
-    trainerClass: string;
     x: number;
     y: number;
 };
@@ -374,6 +385,9 @@ export type Game = {
     // to their current default color when not provided.
     textContrastColor?: string;
     encounters: Record<string, Encounter[]>;
+    // Every battle's trainer info, keyed by battle key
+    // (BattleHelpers.getBattleKey).
+    battles: Record<string, BattleData>;
     // Game-specific messages shown at random on the run page when a run is
     // marked as a wipe, alongside the run page's default messages.
     wipeMessages: string[];

@@ -21,7 +21,7 @@ export default class BattleHelpers {
 
     /** battle's unique key, stable across storage and re-renders. */
     static getBattleKey(battle: Battle): string {
-        return `${battle.trainerClass}::${battle.name}`;
+        return battle.battleKey;
     }
 
     /** A DOM-safe slug for battle, derived from its key, for scrolling directly to its battle card. */
@@ -30,34 +30,42 @@ export default class BattleHelpers {
     }
 
     /** battle's full display name, e.g. "Youngster Joey", or "Bug Catcher Jack and Lass Briana" for a tag battle. */
-    static getFullName(battle: Battle): string {
+    static getFullName(battle: Battle, game: Game): string {
+        const data = game.battles[battle.battleKey];
         const primaryName = TrainerHelpers.getDisplayName(
-            battle.trainerClass,
-            battle.name
+            data.trainerClass,
+            data.name
         );
 
-        return battle.secondTrainer
-            ? `${primaryName} and ${TrainerHelpers.getDisplayName(battle.secondTrainer.trainerClass, battle.secondTrainer.name)}`
+        return data.secondTrainer
+            ? `${primaryName} and ${TrainerHelpers.getDisplayName(data.secondTrainer.trainerClass, data.secondTrainer.name)}`
             : primaryName;
     }
 
     /** battle's team(s) for starter, split by trainer: one group for a normal battle, two for a tag battle. */
-    static getTeamGroups(battle: Battle, starter: string): BattleTeamGroup[] {
+    static getTeamGroups(
+        battle: Battle,
+        starter: string,
+        game: Game
+    ): BattleTeamGroup[] {
+        const data = game.battles[battle.battleKey];
+
         const groups: BattleTeamGroup[] = [
             {
-                trainerClass: battle.trainerClass,
-                name: battle.name,
-                team: battle.teamsByStarter?.[starter] ?? battle.team ?? [],
+                trainerClass: data.trainerClass,
+                name: data.name,
+                team: data.teamsByStarter?.[starter] ?? data.team ?? [],
+                items: data.items,
             },
         ];
 
-        if (battle.secondTrainer) {
+        if (data.secondTrainer) {
             groups.push({
-                trainerClass: battle.secondTrainer.trainerClass,
-                name: battle.secondTrainer.name,
+                trainerClass: data.secondTrainer.trainerClass,
+                name: data.secondTrainer.name,
                 team:
-                    battle.secondTrainer.teamsByStarter?.[starter] ??
-                    battle.secondTrainer.team ??
+                    data.secondTrainer.teamsByStarter?.[starter] ??
+                    data.secondTrainer.team ??
                     [],
             });
         }
@@ -68,9 +76,10 @@ export default class BattleHelpers {
     /** battle's full team for starter (both trainers' Pokémon combined for a tag battle), falling back to its default team. */
     static getTeamFromOptions(
         battle: Battle,
-        starter: string
+        starter: string,
+        game: Game
     ): BattlePokemon[] {
-        return BattleHelpers.getTeamGroups(battle, starter).flatMap(
+        return BattleHelpers.getTeamGroups(battle, starter, game).flatMap(
             (group) => group.team
         );
     }
@@ -106,7 +115,9 @@ export default class BattleHelpers {
         const battle = BattleHelpers.getAllBattles(game).find(
             (candidate) => BattleHelpers.getBattleKey(candidate) === battleKey
         );
-        return battle ? BattleHelpers.getTeamFromOptions(battle, starter) : [];
+        return battle
+            ? BattleHelpers.getTeamFromOptions(battle, starter, game)
+            : [];
     }
 
     /** The split/location/battle indices of battleKey within game, or null if not found. */

@@ -1,5 +1,4 @@
 import { route208 } from '@/lib/data/platinum/maps';
-import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_208: Location = {
@@ -9,141 +8,42 @@ const ROUTE_208: Location = {
     battles: [
         {
             isOptional: true,
-            trainerClass: 'hiker',
-            name: 'Jonathan',
-            team: [
-                {
-                    slug: 'onix',
-                    ability: 1,
-                    gender: 'male',
-                    level: 22,
-                    nature: Nature.Adamant,
-                },
-            ],
+            battleKey: 'hiker::Jonathan',
             x: 38.2,
             y: 58.6,
         },
         {
             isOptional: true,
-            trainerClass: 'black-belt',
-            name: 'Kyle',
-            team: [
-                {
-                    slug: 'machop',
-                    ability: 1,
-                    gender: 'male',
-                    level: 23,
-                    nature: Nature.Jolly,
-                    ivs: 3,
-                },
-            ],
+            battleKey: 'black-belt::Kyle',
             x: 28.2,
             y: 31.4,
         },
         {
-            trainerClass: 'hiker',
-            name: 'Robert',
-            team: [
-                {
-                    slug: 'nosepass',
-                    ability: 1,
-                    gender: 'male',
-                    level: 22,
-                    nature: Nature.Sassy,
-                },
-            ],
+            battleKey: 'hiker::Robert',
             x: 57,
             y: 56,
         },
         {
             isOptional: true,
-            trainerClass: 'aroma-lady',
-            name: 'Hannah',
-            team: [
-                {
-                    slug: 'roselia',
-                    ability: 1,
-                    gender: 'female',
-                    level: 18,
-                    nature: Nature.Mild,
-                },
-                {
-                    slug: 'combee',
-                    ability: 1,
-                    gender: 'male',
-                    level: 22,
-                    nature: Nature.Naughty,
-                },
-            ],
+            battleKey: 'aroma-lady::Hannah',
             x: 77.3,
             y: 57.5,
         },
         {
             isOptional: true,
-            trainerClass: 'artist',
-            name: 'William',
-            team: [
-                {
-                    slug: 'mime-jr',
-                    ability: 1,
-                    gender: 'male',
-                    level: 20,
-                    nature: Nature.Mild,
-                },
-                {
-                    slug: 'bonsly',
-                    ability: 1,
-                    gender: 'male',
-                    level: 20,
-                    nature: Nature.Naughty,
-                },
-            ],
+            battleKey: 'artist::William',
             x: 86.7,
             y: 68.6,
         },
         {
             isOptional: true,
-            trainerClass: 'fisherman',
-            name: 'Cody',
-            team: [
-                {
-                    slug: 'barboach',
-                    ability: 1,
-                    gender: 'male',
-                    level: 33,
-                    nature: Nature.Relaxed,
-                },
-                {
-                    slug: 'gyarados',
-                    ability: 1,
-                    gender: 'male',
-                    level: 33,
-                    nature: Nature.Careful,
-                },
-            ],
+            battleKey: 'fisherman::Cody',
             x: 46,
             y: 76.6,
         },
         {
             isOptional: true,
-            trainerClass: 'hiker',
-            name: 'Alexander',
-            team: [
-                {
-                    slug: 'graveler',
-                    ability: 1,
-                    gender: 'male',
-                    level: 38,
-                    nature: Nature.Adamant,
-                },
-                {
-                    slug: 'probopass',
-                    ability: 1,
-                    gender: 'male',
-                    level: 40,
-                    nature: Nature.Quiet,
-                },
-            ],
+            battleKey: 'hiker::Alexander',
             x: 10,
             y: 43,
         },

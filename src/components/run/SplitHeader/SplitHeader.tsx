@@ -21,7 +21,7 @@ const SplitHeader: React.FC<SplitHeaderProps> = ({
     // -------------------------------------------------------------------------
 
     const runSplit = game.splits.find((split) => split.name === runSplitName);
-    const levelCap = runSplit ? SplitHelpers.getLevelCap(runSplit) : null;
+    const levelCap = runSplit ? SplitHelpers.getLevelCap(game, runSplit) : null;
     const splitNames = game.splits.map((split) => split.name);
 
     // -------------------------------------------------------------------------

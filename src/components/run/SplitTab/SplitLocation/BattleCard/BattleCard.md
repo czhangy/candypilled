@@ -11,8 +11,9 @@ button that calls `onSelectTrainer` with the battle's key, jumping to
 that trainer in the Calc tab. The root element's `id` is
 `BattleHelpers.getBattleSlug(battle)`, a DOM-safe slug of the battle's
 key, so `SplitTab` can scroll directly to it when entering with a
-matching battle selected. For a tag battle (`battle.secondTrainer`
-set), the card instead stacks two full rows, one per trainer, each
+matching battle selected. For a tag battle (a second trainer present
+in `game.battles`' entry for this battle), the card instead stacks
+two full rows, one per trainer, each
 with its own six-slot team: the first trainer's row shows just a bare
 `TrainerSprite`, and the second trainer's row shows the full
 `TrainerPanel` (with all the shared metadata and the defeat button,
@@ -26,6 +27,7 @@ for the portrait and team slot behavior in detail.
 | Prop               | Type                          | Required | Default | Description                                                                         |
 | ------------------ | ----------------------------- | -------- | ------- | ----------------------------------------------------------------------------------- |
 | `battle`           | `Battle`                      | Yes      | -       | The currently selected battle                                                       |
+| `game`             | `Game`                        | Yes      | -       | The active game, used to look up this battle's trainer info via `game.battles`      |
 | `generation`       | `number`                      | Yes      | -       | The game's generation, used to resolve each Pokémon's types and abilities           |
 | `isDefeated`       | `boolean`                     | Yes      | -       | Whether this battle has already been marked defeated                                |
 | `onSelectAbility`  | `(slug: string) => void`      | Yes      | -       | Called with a Pokémon's ability slug when it's clicked                              |
@@ -42,10 +44,10 @@ for the portrait and team slot behavior in detail.
 
 - `teamGroups` — one entry per trainer (one for a normal battle, two
   for a tag battle), each resolved via `BattleHelpers.getTeamGroups`
-  from that trainer's `teamsByStarter` (keyed by the run's starter)
-  when present, falling back to its `team` otherwise; each group's
-  team is padded to `TEAM_SLOT_COUNT` (6) with `null`s and rendered as
-  its own row of `PokemonSlot`s
+  from `game.battles`' entry for that trainer's `teamsByStarter`
+  (keyed by the run's starter) when present, falling back to its
+  `team` otherwise; each group's team is padded to `TEAM_SLOT_COUNT`
+  (6) with `null`s and rendered as its own row of `PokemonSlot`s
 - `isStacked` — whether the battle has a second trainer, so the card
   should render two rows instead of one; passed down so `TrainerPanel`
   and each `PokemonSlot` can round the correct corners and omit the

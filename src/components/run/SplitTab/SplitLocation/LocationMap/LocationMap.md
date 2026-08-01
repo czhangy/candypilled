@@ -11,16 +11,17 @@ above the marker, to help find x/y values for new battle entries.
 
 ## Props
 
-| Prop                       | Type                          | Required | Default | Description                                                     |
-| -------------------------- | ----------------------------- | -------- | ------- | --------------------------------------------------------------- |
-| `map`                      | `StaticImageData`             | Yes      | -       | Statically imported map image, with intrinsic dimensions        |
-| `alt`                      | `string`                      | Yes      | -       | Alt text for the map image                                      |
-| `battles`                  | `Battle[]`                    | No       | `[]`    | Battles to mark on the map                                      |
-| `isBattleDefeated`         | `(battle: Battle) => boolean` | Yes      | -       | Whether a given battle has already been defeated                |
-| `isBattleNextPersonalBest` | `(battle: Battle) => boolean` | Yes      | -       | Whether defeating a given battle next would extend the run's PB |
-| `selectedBattle`           | `Battle`                      | No       | -       | The currently selected battle, if any                           |
-| `onBattleClick`            | `(battle: Battle) => void`    | Yes      | -       | Called with a battle when its marker is clicked                 |
-| `priority`                 | `boolean`                     | Yes      | -       | Whether to eagerly load and preload this map as the LCP image   |
+| Prop                       | Type                          | Required | Default | Description                                                                 |
+| -------------------------- | ----------------------------- | -------- | ------- | --------------------------------------------------------------------------- |
+| `map`                      | `StaticImageData`             | Yes      | -       | Statically imported map image, with intrinsic dimensions                    |
+| `alt`                      | `string`                      | Yes      | -       | Alt text for the map image                                                  |
+| `battles`                  | `Battle[]`                    | No       | `[]`    | Battles to mark on the map                                                  |
+| `game`                     | `Game`                        | Yes      | -       | The active game, forwarded to each `TrainerMarker` for its accessible label |
+| `isBattleDefeated`         | `(battle: Battle) => boolean` | Yes      | -       | Whether a given battle has already been defeated                            |
+| `isBattleNextPersonalBest` | `(battle: Battle) => boolean` | Yes      | -       | Whether defeating a given battle next would extend the run's PB             |
+| `selectedBattle`           | `Battle`                      | No       | -       | The currently selected battle, if any                                       |
+| `onBattleClick`            | `(battle: Battle) => void`    | Yes      | -       | Called with a battle when its marker is clicked                             |
+| `priority`                 | `boolean`                     | Yes      | -       | Whether to eagerly load and preload this map as the LCP image               |
 
 ## State
 

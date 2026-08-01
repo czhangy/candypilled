@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { FieldCondition } from '@/lib/static/enums';
-import { Battle } from '@/lib/static/types';
+import { Battle, BattleItem } from '@/lib/static/types';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
@@ -11,6 +11,7 @@ type TrainerPanelProps = {
     battle: Battle;
     isDefeated: boolean;
     isStacked: boolean;
+    items?: BattleItem[];
     onToggleDefeated: () => void;
     trainerClass: string;
     trainerName: string;
@@ -21,6 +22,7 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
     battle,
     isDefeated,
     isStacked,
+    items,
     onToggleDefeated,
     trainerClass,
     trainerName,
@@ -110,14 +112,14 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
                     )}
                 </div>
             )}
-            {battle.items && (
+            {items && (
                 <div
                     className={[
                         styles['trainer__metadata'],
                         styles['trainer__item'],
                     ].join(' ')}
                 >
-                    {battle.items.map((item) => (
+                    {items.map((item) => (
                         <div
                             className={styles['trainer__item-row']}
                             key={item.name}

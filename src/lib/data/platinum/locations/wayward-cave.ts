@@ -1,5 +1,4 @@
 import { waywardCave1f, waywardCaveB1f } from '@/lib/data/platinum/maps';
-import { Nature } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const WAYWARD_CAVE: Location = {
@@ -12,197 +11,61 @@ const WAYWARD_CAVE: Location = {
             battles: [
                 {
                     isOptional: true,
-                    trainerClass: 'camper',
-                    name: 'Diego',
-                    team: [
-                        {
-                            slug: 'aipom',
-                            ability: 1,
-                            gender: 'male',
-                            level: 22,
-                            nature: Nature.Hardy,
-                        },
-                    ],
+                    battleKey: 'camper::Diego',
                     x: 3,
                     y: 26.5,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'picnicker',
-                    name: 'Tori',
-                    team: [
-                        {
-                            slug: 'psyduck',
-                            ability: 1,
-                            gender: 'female',
-                            level: 22,
-                            nature: Nature.Gentle,
-                        },
-                    ],
+                    battleKey: 'picnicker::Tori',
                     x: 6.4,
                     y: 26.5,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'hiker',
-                    name: 'Reginald',
-                    team: [
-                        {
-                            slug: 'geodude',
-                            ability: 1,
-                            gender: 'male',
-                            level: 20,
-                            nature: Nature.Mild,
-                        },
-                        {
-                            slug: 'geodude',
-                            ability: 1,
-                            gender: 'male',
-                            level: 20,
-                            nature: Nature.Mild,
-                        },
-                    ],
+                    battleKey: 'hiker::Reginald',
                     x: 18.7,
                     y: 67.3,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'hiker',
-                    name: 'Lorenzo',
-                    team: [
-                        {
-                            slug: 'onix',
-                            ability: 1,
-                            gender: 'male',
-                            level: 22,
-                            nature: Nature.Mild,
-                        },
-                    ],
+                    battleKey: 'hiker::Lorenzo',
                     x: 21.6,
                     y: 67.3,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'lass',
-                    name: 'Cassidy',
-                    team: [
-                        {
-                            slug: 'buneary',
-                            ability: 1,
-                            gender: 'female',
-                            level: 22,
-                            nature: Nature.Careful,
-                        },
-                    ],
+                    battleKey: 'lass::Cassidy',
                     x: 3,
                     y: 75,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'youngster',
-                    name: 'Wayne',
-                    team: [
-                        {
-                            slug: 'staravia',
-                            ability: 1,
-                            gender: 'male',
-                            level: 17,
-                            nature: Nature.Serious,
-                        },
-                        {
-                            slug: 'shellos',
-                            ability: 1,
-                            gender: 'male',
-                            level: 20,
-                            nature: Nature.Bold,
-                        },
-                        {
-                            slug: 'ponyta',
-                            ability: 1,
-                            gender: 'male',
-                            level: 20,
-                            nature: Nature.Calm,
-                        },
-                    ],
+                    battleKey: 'youngster::Wayne',
                     x: 6.4,
                     y: 75,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'picnicker',
-                    name: 'Ana',
-                    team: [
-                        {
-                            slug: 'hoothoot',
-                            ability: 1,
-                            gender: 'female',
-                            level: 22,
-                            nature: Nature.Lonely,
-                        },
-                    ],
+                    battleKey: 'picnicker::Ana',
                     x: 76.3,
                     y: 54,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'camper',
-                    name: 'Parker',
-                    team: [
-                        {
-                            slug: 'buizel',
-                            ability: 1,
-                            gender: 'male',
-                            level: 20,
-                            nature: Nature.Naughty,
-                            moves: ['water-gun', 'swift', 'quick-attack'],
-                        },
-                        {
-                            slug: 'shinx',
-                            ability: 1,
-                            gender: 'male',
-                            level: 20,
-                            nature: Nature.Lonely,
-                            moves: ['spark', 'bite'],
-                        },
-                    ],
+                    battleKey: 'camper::Parker',
                     x: 80.5,
                     y: 54,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'collector',
-                    name: 'Terry',
-                    team: [
-                        {
-                            slug: 'gible',
-                            ability: 1,
-                            gender: 'male',
-                            level: 22,
-                            nature: Nature.Lax,
-                        },
-                    ],
+                    battleKey: 'collector::Terry',
                     x: 94.9,
                     y: 83.3,
                 },
                 {
                     isOptional: true,
-                    trainerClass: 'ruin-maniac',
-                    name: 'Gerald',
-                    team: [
-                        {
-                            slug: 'geodude',
-                            ability: 1,
-                            gender: 'male',
-                            level: 19,
-                            nature: Nature.Quiet,
-                        },
-                        {
-                            slug: 'bronzor',
-                            ability: 1,
-                            level: 21,
-                            nature: Nature.Calm,
-                        },
-                    ],
+                    battleKey: 'ruin-maniac::Gerald',
                     x: 97,
                     y: 83.3,
                 },
