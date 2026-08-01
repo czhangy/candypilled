@@ -1,5 +1,6 @@
 import SearchableList from '@/components/common/SearchableList/SearchableList';
 import { Game, Run } from '@/lib/static/types';
+import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -30,7 +31,7 @@ const PokedexSubtab: React.FC<PokedexSubtabProps> = ({
     // -------------------------------------------------------------------------
 
     const variant = StringHelpers.toSlug(game.name);
-    const availableSpecies = PokemonHelpers.getAllSpecies(game.generation);
+    const availableSpecies = EncounterHelpers.getGameSpecies(game);
     const usedLocations = RunHelpers.getUsedLocations(run);
     const selectedPokemon = selectedSpecies
         ? PokemonHelpers.getPokemonData(selectedSpecies)
@@ -49,6 +50,7 @@ const PokedexSubtab: React.FC<PokedexSubtabProps> = ({
                 searchAriaLabel="Search Pokémon"
                 searchPlaceholder="Search Pokémon..."
                 selectedItem={selectedPokemon?.slug}
+                sortAlphabetically={false}
             />
             <PokedexDetail
                 game={game}

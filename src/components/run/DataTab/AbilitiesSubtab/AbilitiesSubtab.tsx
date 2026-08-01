@@ -1,19 +1,21 @@
 import SearchableList from '@/components/common/SearchableList/SearchableList';
 import SpeciesListPanel from '@/components/run/DataTab/SpeciesListPanel/SpeciesListPanel';
 import { ABILITIES } from '@/lib/data/abilities';
+import { Game } from '@/lib/static/types';
+import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './AbilitiesSubtab.module.scss';
 import AbilityDetail from './AbilityDetail/AbilityDetail';
 
 type AbilitiesSubtabProps = {
-    generation: number;
+    game: Game;
     onSelectAbility: (slug: string) => void;
     onSelectSpeciesLink: (slug: string) => void;
     selectedAbility?: string;
 };
 
 const AbilitiesSubtab: React.FC<AbilitiesSubtabProps> = ({
-    generation,
+    game,
     onSelectAbility,
     onSelectSpeciesLink,
     selectedAbility,
@@ -22,11 +24,22 @@ const AbilitiesSubtab: React.FC<AbilitiesSubtabProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
+    const gameSpecies = EncounterHelpers.getGameSpecies(game);
     const availableAbilities = Object.values(ABILITIES).filter(
-        (ability) => ability.introducedInGeneration <= generation
+        (ability) =>
+            ability.introducedInGeneration <= game.generation &&
+            PokemonHelpers.getSpeciesWithAbility(
+                gameSpecies,
+                ability.slug,
+                game.generation
+            ).length > 0
     );
     const givenTo = selectedAbility
-        ? PokemonHelpers.getSpeciesWithAbility(selectedAbility, generation)
+        ? PokemonHelpers.getSpeciesWithAbility(
+              gameSpecies,
+              selectedAbility,
+              game.generation
+          )
         : [];
 
     // -------------------------------------------------------------------------
@@ -42,10 +55,11 @@ const AbilitiesSubtab: React.FC<AbilitiesSubtabProps> = ({
                 searchAriaLabel="Search abilities"
                 searchPlaceholder="Search abilities..."
                 selectedItem={selectedAbility}
+                sortAlphabetically
             />
             <AbilityDetail
                 abilitySlug={selectedAbility}
-                generation={generation}
+                generation={game.generation}
             />
             <SpeciesListPanel
                 emptyMessage="No Pokémon have this ability"

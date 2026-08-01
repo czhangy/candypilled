@@ -9,15 +9,16 @@ that learns it, left to right.
 
 | Prop                  | Type                     | Required | Default | Description                                                                                                                  |
 | --------------------- | ------------------------ | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `generation`          | `number`                 | Yes      | -       | The game's generation, used to resolve the selected move's values and to filter which moves are listed                       |
+| `game`                | `Game`                   | Yes      | -       | The game to resolve moves and their learners from                                                                            |
 | `onSelectMove`        | `(slug: string) => void` | Yes      | -       | Called with a move's slug when it's clicked in the list                                                                      |
 | `onSelectSpeciesLink` | `(slug: string) => void` | Yes      | -       | Called with a Pokémon's slug when it's clicked in the "Learned By" panel; opens that Pokémon's Pokédex entry in a new window |
 | `selectedMove`        | `string`                 | No       | -       | The currently selected move's slug, if any; owned by `RunPage` so a move link elsewhere on the page can select it            |
-| `version`             | `string`                 | Yes      | -       | The game's PokeAPI version group slug, used to resolve which Pokémon learn the selected move and by what method              |
 
 ## Computations
 
-- `availableMoves` — every move introduced at or before `generation`, passed
-  to `SearchableList`
-- `learnedBy` — every Pokémon that learns `selectedMove` in `version`, passed
-  to `SpeciesListPanel`
+- `gameSpecies` — every species obtainable in `game`, resolved via
+  `EncounterHelpers.getGameSpecies`
+- `availableMoves` — every move introduced at or before `game.generation`
+  that at least one of `gameSpecies` learns, passed to `SearchableList`
+- `learnedBy` — every one of `gameSpecies` that learns `selectedMove` in
+  `game.version`, passed to `SpeciesListPanel`

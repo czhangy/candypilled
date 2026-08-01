@@ -38,6 +38,7 @@ const ItemsSubtab: React.FC<ItemsSubtabProps> = ({
                 searchAriaLabel="Search items"
                 searchPlaceholder="Search items..."
                 selectedItem={selectedItem}
+                sortAlphabetically
             />
             <ItemDetail generation={generation} itemSlug={selectedItem} />
         </div>

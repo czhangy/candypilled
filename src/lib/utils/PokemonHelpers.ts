@@ -13,6 +13,7 @@ import GenerationHelpers from '@/lib/utils/GenerationHelpers';
 type SpeciesLearnset = {
     slug: string;
     name: string;
+    dexNumber: number;
     moves: LearnsetMove[];
 };
 
@@ -218,16 +219,15 @@ export default class PokemonHelpers {
     }
 
     /**
-     * Every species introduced by generation or earlier that learns moveSlug
-     * in version, alongside each learnset entry that teaches it, sorted
-     * alphabetically by display name.
+     * Every species in species that learns moveSlug in version, alongside
+     * each learnset entry that teaches it, in species' order.
      */
     static getSpeciesWithMove(
+        species: PokemonData[],
         moveSlug: string,
-        version: string,
-        generation: number
+        version: string
     ): SpeciesLearnset[] {
-        return PokemonHelpers.getAllSpecies(generation)
+        return species
             .map((pokemon) => {
                 const learnset =
                     PokemonHelpers.getPokemonLearnset(pokemon.slug, version) ??
@@ -235,22 +235,27 @@ export default class PokemonHelpers {
                 const moves = learnset.filter((move) => move.slug === moveSlug);
 
                 return moves.length > 0
-                    ? { slug: pokemon.slug, name: pokemon.name, moves }
+                    ? {
+                          slug: pokemon.slug,
+                          name: pokemon.name,
+                          dexNumber: pokemon.dexNumber,
+                          moves,
+                      }
                     : undefined;
             })
             .filter((entry): entry is SpeciesLearnset => entry !== undefined);
     }
 
     /**
-     * Every species introduced by generation or earlier that can have
-     * abilitySlug (in any slot) as of generation, sorted alphabetically by
-     * display name.
+     * Every species in species that can have abilitySlug (in any slot) as
+     * of generation, in species' order.
      */
     static getSpeciesWithAbility(
+        species: PokemonData[],
         abilitySlug: string,
         generation: number
     ): PokemonData[] {
-        return PokemonHelpers.getAllSpecies(generation).filter((pokemon) => {
+        return species.filter((pokemon) => {
             const abilities = PokemonHelpers.getPokemonAbilities(
                 pokemon.slug,
                 generation

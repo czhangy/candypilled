@@ -8,16 +8,24 @@ Clicking a row opens that Pokémon's Pokédex entry.
 
 ## Props
 
-| Prop              | Type                     | Required | Default | Description                                                                                                                                                                 |
-| ----------------- | ------------------------ | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `emptyMessage`    | `string`                 | Yes      | -       | Message shown when `entries` is empty                                                                                                                                       |
-| `entries`         | `SpeciesListEntry[]`     | Yes      | -       | The Pokémon to list, sorted alphabetically; each entry's `moves` (present for the Moves subtab, absent for the Abilities subtab) determines whether a method label is shown |
-| `onSelectSpecies` | `(slug: string) => void` | Yes      | -       | Called with a Pokémon's slug when its row is clicked                                                                                                                        |
-| `title`           | `string`                 | Yes      | -       | The panel's header text (e.g. `"Learned By"` or `"Given To"`)                                                                                                               |
+| Prop              | Type                     | Required | Default | Description                                                                                                                                                                                                                                              |
+| ----------------- | ------------------------ | -------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `emptyMessage`    | `string`                 | Yes      | -       | Message shown when `entries` is empty                                                                                                                                                                                                                    |
+| `entries`         | `SpeciesListEntry[]`     | Yes      | -       | The Pokémon to list, re-sorted by the panel itself (see `sortedEntries`); `dexNumber` is used as a sort tie breaker, and each entry's `moves` (present for the Moves subtab, absent for the Abilities subtab) determines whether a method label is shown |
+| `onSelectSpecies` | `(slug: string) => void` | Yes      | -       | Called with a Pokémon's slug when its row is clicked                                                                                                                                                                                                     |
+| `title`           | `string`                 | Yes      | -       | The panel's header text (e.g. `"Learned By"` or `"Given To"`)                                                                                                                                                                                            |
 
 ## Computations
 
-- `getMethodLabel` — when an entry learns the move through more than one
-  method, picks a single one to display by `METHOD_PRIORITY`
-  (level-up, then machine, then tutor) and formats it via
+- `getPrimaryMove` / `getMethodLabel` — when an entry learns the move
+  through more than one method, picks a single one to display by
+  `METHOD_PRIORITY` (level-up, then machine, then tutor) and formats it via
   `MoveHelpers.getLearnsetMethodLabel`
+
+## Rendering
+
+- `sortedEntries` — `entries`, sorted by each entry's primary method's
+  position in `METHOD_PRIORITY`, level-up entries then ordered by ascending
+  level, and dex number as the tie breaker throughout; entries with no
+  `moves` (the Abilities subtab) all tie on priority and sort by dex
+  number

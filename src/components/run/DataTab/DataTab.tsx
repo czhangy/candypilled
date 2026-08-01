@@ -90,16 +90,15 @@ const DataTab: React.FC<DataTabProps> = ({
             )}
             {activeSubtab === 'moves' && (
                 <MovesSubtab
-                    generation={game.generation}
+                    game={game}
                     onSelectMove={onSelectMove}
                     onSelectSpeciesLink={onSelectSpeciesLink}
                     selectedMove={selectedMove}
-                    version={game.version}
                 />
             )}
             {activeSubtab === 'abilities' && (
                 <AbilitiesSubtab
-                    generation={game.generation}
+                    game={game}
                     onSelectAbility={onSelectAbility}
                     onSelectSpeciesLink={onSelectSpeciesLink}
                     selectedAbility={selectedAbility}

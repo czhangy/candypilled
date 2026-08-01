@@ -1,9 +1,12 @@
 import { EncounterMethod } from '@/lib/static/enums';
 import {
+    BattleData,
+    BattlePokemon,
     Encounter,
     EncounterLocation,
     EncounterVisibilityContext,
     Game,
+    PokemonData,
 } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -148,9 +151,50 @@ export default class EncounterHelpers {
         });
     }
 
+    /**
+     * Every species obtainable in game — encountered in the wild, fielded
+     * by a trainer (across every starter's team variant), or part of one
+     * of those species' evolution lines — sorted by dex number. Scopes the
+     * Data tab's species lists to what's actually relevant to game,
+     * rather than every species that's ever existed.
+     */
+    static getGameSpecies(game: Game): PokemonData[] {
+        const encounteredSlugs = Object.values(game.encounters)
+            .flat()
+            .map((encounter) => encounter.species);
+
+        const battledSlugs = Object.values(game.battles).flatMap((battle) =>
+            EncounterHelpers.getBattleSlugs(battle)
+        );
+
+        const familySlugs = new Set(
+            [...encounteredSlugs, ...battledSlugs].flatMap((slug) =>
+                EvolutionHelpers.getEvolutionFamily(slug, game.generation)
+            )
+        );
+
+        return PokemonHelpers.getAllSpecies(game.generation)
+            .filter((pokemon) => familySlugs.has(pokemon.slug))
+            .sort((a, b) => a.dexNumber - b.dexNumber);
+    }
+
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------
+
+    // Every species slug across a battle's team(s): its default team, every
+    // starter-specific variant, and (for a tag battle) its second trainer's
+    // equivalents.
+    private static getBattleSlugs(battle: BattleData): string[] {
+        const teams = [
+            battle.team,
+            ...Object.values(battle.teamsByStarter ?? {}),
+            battle.secondTrainer?.team,
+            ...Object.values(battle.secondTrainer?.teamsByStarter ?? {}),
+        ].filter((team): team is BattlePokemon[] => !!team);
+
+        return teams.flat().map((pokemon) => pokemon.slug);
+    }
 
     // Flattens every split/location/subarea down to a name/encountersKey
     // pair, mirroring how a location's wild encounters are actually wired
