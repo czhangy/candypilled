@@ -4,6 +4,7 @@ import {
     BattleMetadata,
     EncounterMethod,
     FieldCondition,
+    GrowthRate,
     Nature,
     PokemonStatus,
 } from '@/lib/static/enums';
@@ -171,16 +172,25 @@ export type CaughtPokemon = Omit<BattlePokemon, 'moves'> & {
 // ("box") or dead ones ("graveyard").
 export type BoxView = 'alive' | 'dead';
 
-// One imported box file's parse failure, keyed by its file name so the
-// user can locate which file it came from.
-export type BoxImportError = {
+// A save file import's parse failure, keyed by its file name so the user
+// can locate which file it came from.
+export type SaveImportError = {
     fileName: string;
     message: string;
 };
 
-// A Pokémon experience growth rate, determining how EXP maps to level.
-export type PokemonGrowthRate =
-    'erratic' | 'fast' | 'medium-fast' | 'medium-slow' | 'slow' | 'fluctuating';
+// battleKey -> the condition determining whether that battle has been won,
+// resolved against a decrypted save file (generation-specific parsers, e.g.
+// src/lib/parsers/gen4/Gen4BattleParser.ts, know how to evaluate one of
+// these against their own save format).
+export type BattleDefeatCondition =
+    | { type: 'trainerFlag'; flag: number }
+    | { type: 'badge'; bit: number }
+    | { type: 'gameClear' }
+    | { type: 'flag'; flag: number }
+    | { type: 'varAtLeast'; var: number; minValue: number }
+    | { type: 'and'; conditions: BattleDefeatCondition[] }
+    | { type: 'or'; conditions: BattleDefeatCondition[] };
 
 export type BattleItem = {
     count: number;
@@ -213,6 +223,9 @@ export type BattleData = {
     // TRAINER_CLASSES slug.
     trainerClass: string;
     aiFlags: AiFlag[];
+    // Resolved against pret/pokeplatinum -- the condition determining
+    // whether a decrypted save reports this battle as won.
+    saveCondition: BattleDefeatCondition;
 };
 
 export type Battle = {
@@ -478,6 +491,12 @@ export type MoveValuesByGeneration = {
 export type MoveData = {
     slug: string;
     name: string;
+    // PokeAPI's numeric move ID, which matches the raw move index stored
+    // in-game (e.g. in a Generation IV save file's Pokémon data). Verified
+    // stable across every standard move from Generation I through IX (Z-Moves
+    // aren't in PokeAPI's move list at all, so they're untested — Platinum
+    // predates them anyway).
+    id: number;
     // PokeAPI doesn't track historical changes for these two fields, so
     // unlike the rest of a move's values they aren't split by generation.
     category: string;
@@ -497,6 +516,14 @@ export type AbilityValuesByGeneration = {
 export type AbilityData = {
     slug: string;
     name: string;
+    // PokeAPI's numeric ability ID, which matches the raw ability index
+    // stored in-game (e.g. in a Generation IV save file's Pokémon data).
+    // Verified stable from Generation III (when Abilities were introduced)
+    // through Generation VIII; a handful of Generation IX abilities added in
+    // a later DLC wave (e.g. Hospitality, Mind's Eye) are known to NOT match
+    // their in-game index, so don't rely on this field for Gen IX+ without
+    // re-verifying against that generation's actual index numbers first.
+    id: number;
     introducedInGeneration: number;
     // PokeAPI has no concept of "dangerous" abilities, so this is curated
     // separately rather than derived from any API field.
@@ -554,6 +581,7 @@ export type AbilityEntry = {
 export type PokemonData = {
     slug: string;
     name: string;
+    dexNumber: number;
     introducedInGeneration: number;
     // PokeAPI's is_battle_only form flag doesn't cover every form that
     // can't actually persist in a box (e.g. Shaymin's Sky Forme reverts to
@@ -576,6 +604,7 @@ export type PokemonData = {
     stats: StatsByGeneration[];
     catchRate: number;
     genderRate: number;
+    growthRate: GrowthRate;
     evolutionLine: EvolutionLineByGeneration[];
     learnset: LearnsetByVersionGroup[];
 };

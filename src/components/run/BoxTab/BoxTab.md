@@ -23,7 +23,7 @@ right, each taking up half of the row's width.
 
 | State               | Type      | Initial value | Description                                                |
 | ------------------- | --------- | ------------- | ---------------------------------------------------------- |
-| `isImportModalOpen` | `boolean` | `false`       | Whether `ImportBoxModal` is shown                          |
+| `isImportModalOpen` | `boolean` | `false`       | Whether `ImportSaveModal` is shown                         |
 | `view`              | `BoxView` | `'alive'`     | Which of `PokemonBox`'s views ("alive" or "dead") is shown |
 
 ## Computations
@@ -56,12 +56,16 @@ right, each taking up half of the row's width.
 - `handleReorderPokemon` — moves the caught Pokémon at the dragged
   location to the drop target's index within `run.caughtPokemon` and
   saves the updated run
-- `handleImportClick` — opens `ImportBoxModal`
-- `handleCloseImportModal` — closes `ImportBoxModal`
-- `handleImportBox` — merges the Pokémon parsed by `ImportBoxModal` into
-  `run.caughtPokemon` by catch location: an imported Pokémon replaces the
-  existing entry at the same location, or is appended if its location
-  isn't already in the box (imported Pokémon sharing a location with each
-  other collapse to the last one); saves the updated run, deselects the
-  currently selected Pokémon (since it may no longer exist), and switches
-  `view` back to `'alive'`
+- `handleImportClick` — opens `ImportSaveModal`
+- `handleCloseImportModal` — closes `ImportSaveModal`
+- `handleImportSave` — merges the Pokémon and defeated battles parsed by
+  `ImportSaveModal`. Pokémon merge into `run.caughtPokemon` by catch
+  location: an imported Pokémon replaces the existing entry at the same
+  location, or is appended if its location isn't already in the box
+  (imported Pokémon sharing a location with each other collapse to the
+  last one). `run.defeatedBattles` is replaced outright with the imported
+  set (the save is authoritative for every battle it can resolve), and
+  `run.personalBest` is recomputed as the farthest required battle key
+  within that set, via `BattleHelpers.getRequiredBattleKeys`. Saves the
+  updated run, deselects the currently selected Pokémon (since it may no
+  longer exist), and switches `view` back to `'alive'`
