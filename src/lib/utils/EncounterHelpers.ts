@@ -1,9 +1,12 @@
 import { EncounterMethod } from '@/lib/static/enums';
 import {
+    BattleData,
+    BattlePokemon,
     Encounter,
     EncounterLocation,
     EncounterVisibilityContext,
     Game,
+    PokemonData,
 } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -19,10 +22,10 @@ type EncounterHideRule = (
 // `context.settings`) and both EncounterTable and the section-visibility
 // checks below pick it up automatically.
 const ENCOUNTER_HIDE_RULES: EncounterHideRule[] = [
-    // "Hide Dupes": the species (or its evolution line) has already been
-    // caught elsewhere in the run.
+    // Dupes (the species or its evolution line has already been caught
+    // elsewhere in the run) are hidden unless "Show Dupes" is on.
     (encounter, context) => {
-        if (!context.settings['hide-dupes']) return false;
+        if (context.settings['show-dupes']) return false;
 
         const isCaughtHere =
             !!context.caughtHere &&
@@ -43,9 +46,9 @@ const ENCOUNTER_HIDE_RULES: EncounterHideRule[] = [
             )
         );
     },
-    // "Hide Legendaries": the species is a legendary/mythical.
+    // Legendaries/mythicals are hidden unless "Show Legendaries" is on.
     (encounter, context) =>
-        !!context.settings['hide-legendaries'] &&
+        !context.settings['show-legendaries'] &&
         !!PokemonHelpers.getPokemonData(encounter.species)?.isLegendary,
 ];
 
@@ -101,7 +104,7 @@ export default class EncounterHelpers {
     }
 
     /**
-     * Whether any ENCOUNTER_HIDE_RULE (hide-dupes, hide-legendaries, and
+     * Whether any ENCOUNTER_HIDE_RULE (show-dupes, show-legendaries, and
      * any future setting-driven rule) permanently hides this encounter,
      * independent of the currently selected time of day.
      */
@@ -131,7 +134,7 @@ export default class EncounterHelpers {
     /**
      * Whether every one of a location's encounters is an evolution line
      * caught elsewhere in the run — i.e. the location's "already caught"
-     * indicator, independent of whether the hide-dupes setting is
+     * indicator, independent of whether the show-dupes setting is
      * actually on.
      */
     static areAllEncountersDupes(
@@ -144,13 +147,65 @@ export default class EncounterHelpers {
             caughtHere,
             dupes,
             generation,
-            settings: { 'hide-dupes': true },
+            settings: { 'show-dupes': false },
         });
+    }
+
+    /**
+     * Every species obtainable in game, sorted by dex number. Scopes the
+     * Data tab's species lists to what's actually relevant to game, rather
+     * than every species that's ever existed — unless includeAllSpecies
+     * (the "Show National Dex Data" setting) is set, in which case every
+     * species in game.generation is returned instead, still sorted by dex
+     * number. When filtering, "obtainable" means: encountered in the wild,
+     * fielded by a trainer (across every starter's team variant), or part
+     * of one of those species' evolution lines.
+     */
+    static getGameSpecies(
+        game: Game,
+        includeAllSpecies: boolean
+    ): PokemonData[] {
+        const allSpecies = PokemonHelpers.getAllSpecies(game.generation);
+        if (includeAllSpecies) {
+            return [...allSpecies].sort((a, b) => a.dexNumber - b.dexNumber);
+        }
+
+        const encounteredSlugs = Object.values(game.encounters)
+            .flat()
+            .map((encounter) => encounter.species);
+
+        const battledSlugs = Object.values(game.battles).flatMap((battle) =>
+            EncounterHelpers.getBattleSlugs(battle)
+        );
+
+        const familySlugs = new Set(
+            [...encounteredSlugs, ...battledSlugs].flatMap((slug) =>
+                EvolutionHelpers.getEvolutionFamily(slug, game.generation)
+            )
+        );
+
+        return allSpecies
+            .filter((pokemon) => familySlugs.has(pokemon.slug))
+            .sort((a, b) => a.dexNumber - b.dexNumber);
     }
 
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------
+
+    // Every species slug across a battle's team(s): its default team, every
+    // starter-specific variant, and (for a tag battle) its second trainer's
+    // equivalents.
+    private static getBattleSlugs(battle: BattleData): string[] {
+        const teams = [
+            battle.team,
+            ...Object.values(battle.teamsByStarter ?? {}),
+            battle.secondTrainer?.team,
+            ...Object.values(battle.secondTrainer?.teamsByStarter ?? {}),
+        ].filter((team): team is BattlePokemon[] => !!team);
+
+        return teams.flat().map((pokemon) => pokemon.slug);
+    }
 
     // Flattens every split/location/subarea down to a name/encountersKey
     // pair, mirroring how a location's wild encounters are actually wired

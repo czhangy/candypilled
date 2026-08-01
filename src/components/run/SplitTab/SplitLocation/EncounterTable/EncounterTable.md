@@ -25,10 +25,10 @@ evolution-line-aware). A row is highlighted red if its evolution line
 isn't caught here but has been caught elsewhere in the run, since
 catching it here would violate the one-catch-per-evolution-line rule.
 Either highlight takes priority over the selected highlight if both
-apply. When the global "Hide Dupes" setting is enabled, rows whose
+apply. Unless the global "Show Dupes" setting is enabled, rows whose
 evolution line has already been caught elsewhere in the run are
-omitted entirely instead of being highlighted red. When the global
-"Hide Legendaries" setting is enabled, rows for legendary/mythical
+omitted entirely instead of being highlighted red. Unless the global
+"Show Legendaries" setting is enabled, rows for legendary/mythical
 Pokémon are omitted entirely.
 
 Below the header, a full-width "MISS"/"MISSED" toggle button (styled
@@ -67,18 +67,18 @@ alongside other, otherwise-missable methods.
   `time-day`, `time-night`) present in `encounters`, in that fixed
   order; `TimeOfDayButtons` is only shown for these when there's more
   than one and `hasVisibleStarterEncounter` is false
-- `hideDupes` — the global "Hide Dupes" setting's current value, read
+- `showDupes` — the global "Show Dupes" setting's current value, read
   from `localStorage` via `SettingsHelpers`; only used by
   `getDisplayChance`'s rescaling (see below)
 - `visibleEncounters` — `encounters` filtered down to those with no
   time-of-day condition, plus those matching `selectedTimeOfDay`, and
   further filtered via `EncounterHelpers.isEncounterHidden`, which
-  excludes rows whose evolution line is caught elsewhere in the run (the
-  "Hide Dupes" setting) and legendary/mythical rows (the "Hide
-  Legendaries" setting). Any future setting that should permanently hide
-  encounter rows is added there rather than here, so this filter and
-  `SplitLocation`'s "is there anything left to show at all" check both
-  extend automatically
+  excludes rows whose evolution line is caught elsewhere in the run
+  (unless the "Show Dupes" setting is on) and legendary/mythical rows
+  (unless the "Show Legendaries" setting is on). Any future setting that
+  should permanently hide encounter rows is added there rather than
+  here, so this filter and `SplitLocation`'s "is there anything left to
+  show at all" check both extend automatically
 - `hasVisibleStarterEncounter` — whether `visibleEncounters` includes
   any "starter"-method encounter, used to hide every other method and
   the time-of-day buttons when true
@@ -91,12 +91,12 @@ alongside other, otherwise-missable methods.
 - `getEncountersForMethod` — the `visibleEncounters` for a given method,
   sorted by `chance` descending, passed to that method's `MethodGroup`
 - `getDisplayChance` — an encounter's displayed chance, passed down to
-  `MethodGroup`/`EncounterRow`. When `hideDupes` is disabled, this is
-  just the encounter's own `chance`. When enabled, it's rescaled
-  against the other encounters remaining in the same method group (via
-  `getEncountersForMethod`) so the group's chances still sum to 100%,
-  truncated to a whole number (e.g. a 50/50 split becomes 100% once one
-  side is hidden as a dupe)
+  `MethodGroup`/`EncounterRow`. When `showDupes` is enabled, this is
+  just the encounter's own `chance`. When disabled (dupes are being
+  hidden), it's rescaled against the other encounters remaining in the
+  same method group (via `getEncountersForMethod`) so the group's
+  chances still sum to 100%, truncated to a whole number (e.g. a 50/50
+  split becomes 100% once one side is hidden as a dupe)
 - `isEvolutionLineCaught` — whether a species' evolution family
   (resolved via `EvolutionHelpers`) includes any name in `dupes`
 - `isCaughtHere` — whether a species is in the same evolution family

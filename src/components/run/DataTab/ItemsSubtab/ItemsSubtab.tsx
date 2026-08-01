@@ -18,12 +18,15 @@ const ItemsSubtab: React.FC<ItemsSubtabProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const availableItems = Object.values(ITEMS).filter(
-        (item) =>
-            item.introducedInGeneration <= generation &&
-            (item.removedInGeneration === undefined ||
-                generation < item.removedInGeneration)
-    );
+    const availableItems = Object.values(ITEMS)
+        .filter(
+            (item) =>
+                item.introducedInGeneration <= generation &&
+                (item.removedInGeneration === undefined ||
+                    generation < item.removedInGeneration)
+        )
+        .sort((a, b) => a.name.localeCompare(b.name));
+    const effectiveItem = selectedItem ?? availableItems[0]?.slug ?? '';
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -37,9 +40,10 @@ const ItemsSubtab: React.FC<ItemsSubtabProps> = ({
                 onSelectItem={onSelectItem}
                 searchAriaLabel="Search items"
                 searchPlaceholder="Search items..."
-                selectedItem={selectedItem}
+                selectedItem={effectiveItem}
+                sortAlphabetically
             />
-            <ItemDetail generation={generation} itemSlug={selectedItem} />
+            <ItemDetail generation={generation} itemSlug={effectiveItem} />
         </div>
     );
 };

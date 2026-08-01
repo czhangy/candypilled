@@ -5,10 +5,8 @@ pieces as the Pokédex tile shown alongside a run's encounters
 (`PokemonSummary`, `EvolutionLine`, `StatsChart`, `LearnsetList`,
 `LocationsList`), fully interactive but without a catch button, since
 browsing the Pokédex outside an encounter doesn't catch anything.
-If no Pokémon is selected, a placeholder message is shown in its place
-instead of any of the below. Otherwise, `PokemonSummary` renders the
-top section: sprite, name, type badges, clickable abilities, and catch
-rate. Below that, `EvolutionLine`
+`PokemonSummary` renders the top section: sprite, name, type badges,
+clickable abilities, and catch rate. Below that, `EvolutionLine`
 renders a full-width section showing the Pokémon's evolution line —
 clicking a Pokémon within it selects that species — omitted entirely
 for species with no evolutions (see `EvolutionLine.md`), and
@@ -30,7 +28,7 @@ missed) in the run highlighted red.
 | `onSelectLocation` | `(location: string) => void` | Yes      | -       | Called with a location's base name when it's clicked within the locations tab                                                 |
 | `onSelectMove`     | `(slug: string) => void`     | Yes      | -       | Called when a move is clicked within the learnset tab                                                                         |
 | `onSelectSpecies`  | `(species: string) => void`  | Yes      | -       | Called when a Pokémon is clicked within the evolution line                                                                    |
-| `species`          | `string`                     | No       | -       | The selected Pokémon's species, if any                                                                                        |
+| `species`          | `string`                     | Yes      | -       | The selected Pokémon's species                                                                                                |
 | `usedLocations`    | `string[]`                   | Yes      | -       | Names of locations whose encounter is already used (caught or missed) in the run, used to highlight rows in the locations tab |
 | `variant`          | `string`                     | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                        |
 
@@ -43,8 +41,7 @@ missed) in the run highlighted red.
 ## Computations
 
 - `pokemon` — the selected species' data, resolved via `PokemonHelpers`
-  and passed to `PokemonSummary`; when unset, a placeholder message is
-  shown in place of `PokemonSummary` and every section below it
+  and passed to `PokemonSummary`
 - `sprite` — the selected species' sprite for `variant`, passed to
   `PokemonSummary`
 - `types` — the selected species' types at `game.generation`, passed

@@ -8,6 +8,7 @@
     display: flex;
     flex: 0 0 25%;
     flex-direction: column;
+    height: 27.5rem;
     min-width: 0;
     overflow: hidden;
 
@@ -51,9 +52,10 @@
     .list {
         @include scrollbar;
 
-        height: 24rem;
+        flex: 1;
         list-style: none;
         margin: 0;
+        min-height: 0;
         overflow-y: auto;
         padding: 0;
 

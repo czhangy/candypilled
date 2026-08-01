@@ -14,6 +14,9 @@ type SearchableListProps = {
     searchAriaLabel: string;
     searchPlaceholder: string;
     selectedItem?: string;
+    // Whether matching items are re-sorted alphabetically, or left in the
+    // order items was given (e.g. dex number order).
+    sortAlphabetically: boolean;
 };
 
 const SearchableList: React.FC<SearchableListProps> = ({
@@ -23,6 +26,7 @@ const SearchableList: React.FC<SearchableListProps> = ({
     searchAriaLabel,
     searchPlaceholder,
     selectedItem,
+    sortAlphabetically,
 }) => {
     // -------------------------------------------------------------------------
     // STATE
@@ -49,9 +53,12 @@ const SearchableList: React.FC<SearchableListProps> = ({
     // -------------------------------------------------------------------------
 
     const normalizedQuery = query.trim().toLowerCase();
-    const visibleItems = items
-        .filter((item) => item.name.toLowerCase().includes(normalizedQuery))
-        .sort((a, b) => a.name.localeCompare(b.name));
+    const filteredItems = items.filter((item) =>
+        item.name.toLowerCase().includes(normalizedQuery)
+    );
+    const visibleItems = sortAlphabetically
+        ? [...filteredItems].sort((a, b) => a.name.localeCompare(b.name))
+        : filteredItems;
 
     // -------------------------------------------------------------------------
     // MARKUP

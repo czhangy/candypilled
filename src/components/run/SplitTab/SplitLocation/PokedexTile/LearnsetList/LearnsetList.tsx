@@ -24,12 +24,6 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
     const BADGE_WIDTH = 32;
     const BADGE_HEIGHT = 14;
 
-    const METHOD_LABELS: Record<LearnsetMove['method'], string> = {
-        'level-up': 'Level',
-        machine: 'TM',
-        tutor: 'Tutor',
-    };
-
     // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
@@ -60,9 +54,7 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
                                 styles[`method--${move.method}`],
                             ].join(' ')}
                         >
-                            {move.method === 'level-up'
-                                ? `Lv. ${move.level}`
-                                : METHOD_LABELS[move.method]}
+                            {MoveHelpers.getLearnsetMethodLabel(move)}
                         </span>
                         <span className={styles.name}>{name}</span>
                         {moveData && values && (

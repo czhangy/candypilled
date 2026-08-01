@@ -23,12 +23,6 @@
         overflow-y: auto;
         padding: 1.5rem;
 
-        &--empty {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
         .top {
             .name {
                 @include mono-label;
@@ -60,12 +54,6 @@
                     color: $foreground;
                 }
             }
-        }
-
-        .placeholder {
-            color: $text-dim;
-            font-size: 0.85rem;
-            text-align: center;
         }
     }
 }

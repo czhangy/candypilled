@@ -1,5 +1,7 @@
 import { MOVES } from '@/lib/data/moves';
 import {
+    LearnsetMethod,
+    LearnsetMove,
     MoveData,
     MoveValuesByGeneration,
     StatValues,
@@ -14,6 +16,16 @@ export default class MoveHelpers {
     /** The move data for `slug`, or undefined if no move matches. */
     static getMoveData(slug: string): MoveData | undefined {
         return MOVES[slug];
+    }
+
+    /**
+     * How a learnset entry's method should read (e.g. "Lv. 15", "TM",
+     * "Tutor").
+     */
+    static getLearnsetMethodLabel(move: LearnsetMove): string {
+        return move.method === 'level-up'
+            ? `Lv. ${move.level}`
+            : MoveHelpers.LEARNSET_METHOD_LABELS[move.method];
     }
 
     /** The move data for PokeAPI's numeric `id`, or undefined if no move matches. */
@@ -68,6 +80,15 @@ export default class MoveHelpers {
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------
+
+    private static readonly LEARNSET_METHOD_LABELS: Record<
+        LearnsetMethod,
+        string
+    > = {
+        'level-up': 'Level',
+        machine: 'TM',
+        tutor: 'Tutor',
+    };
 
     // Hidden Power's 16 possible types, in the fixed order the formula
     // indexes into.

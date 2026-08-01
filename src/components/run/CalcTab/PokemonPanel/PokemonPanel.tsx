@@ -24,7 +24,6 @@ type PokemonPanelProps = {
     game: Game;
     gender?: 'male' | 'female';
     heldItem: string;
-    hideEvs: boolean;
     isTailwind: boolean;
     ivs: StatValues;
     level: number;
@@ -52,6 +51,7 @@ type PokemonPanelProps = {
     onStatusChange: (value: string) => void;
     placeholder?: string;
     pokemonSlug?: string;
+    showEvs: boolean;
     speedComparison: SpeedComparison | undefined;
     status: string;
 };
@@ -63,7 +63,6 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     game,
     gender,
     heldItem,
-    hideEvs,
     isTailwind,
     ivs,
     level,
@@ -82,6 +81,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     onStatusChange,
     placeholder,
     pokemonSlug,
+    showEvs,
     speedComparison,
     status,
 }) => {
@@ -292,11 +292,11 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                                 baseStats={baseStats}
                                 boosts={boosts}
                                 evs={evs}
-                                hideEvs={hideEvs}
                                 ivs={ivs}
                                 onBoostChange={onBoostChange}
                                 onEvChange={onEvChange}
                                 onIvChange={onIvChange}
+                                showEvs={showEvs}
                                 speedComparison={speedComparison}
                                 totalStats={totalStats}
                             />

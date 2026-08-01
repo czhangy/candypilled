@@ -20,12 +20,6 @@
         height: 24rem;
         padding: 1.5rem;
 
-        &--empty {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
         .top {
             .name {
                 @include mono-label;
@@ -88,12 +82,6 @@
                 font-size: 0.85rem;
                 margin: 0;
             }
-        }
-
-        .placeholder {
-            color: $text-dim;
-            font-size: 0.85rem;
-            text-align: center;
         }
     }
 }

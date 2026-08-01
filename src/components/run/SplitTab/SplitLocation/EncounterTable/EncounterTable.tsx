@@ -134,7 +134,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                 !UNMISSABLE_ENCOUNTER_METHODS.includes(encounter.method)
         );
 
-    const hideDupes = settings['hide-dupes'] ?? false;
+    const showDupes = settings['show-dupes'] ?? false;
 
     const visibilityContext: EncounterVisibilityContext = {
         caughtHere,
@@ -200,7 +200,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
             });
 
     const getDisplayChance = (encounter: Encounter): number | null => {
-        if (encounter.chance === null || !hideDupes) return encounter.chance;
+        if (encounter.chance === null || showDupes) return encounter.chance;
 
         const group = getEncountersForMethod(encounter.method);
         const total = group.reduce((sum, e) => sum + (e.chance ?? 0), 0);

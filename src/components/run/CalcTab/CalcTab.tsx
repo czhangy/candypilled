@@ -439,7 +439,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const hideEvs = settings['hide-evs'] ?? false;
+    const showEvs = settings['use-evs'] ?? false;
 
     // Falls back to the first trainer whenever the URL hasn't recorded an
     // explicit selection yet.
@@ -866,7 +866,6 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     game={game}
                     gender={attacker.gender}
                     heldItem={attacker.heldItem}
-                    hideEvs={hideEvs}
                     isTailwind={field.playerSide.isTailwind}
                     ivs={attacker.ivs}
                     level={attacker.level}
@@ -884,6 +883,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     onSpeciesChange={handleAttackerSpeciesChange}
                     onStatusChange={handleAttackerStatusChange}
                     pokemonSlug={attackerDisplaySlug}
+                    showEvs={showEvs}
                     speedComparison={playerSpeedComparison}
                     status={attacker.status}
                 />
@@ -906,7 +906,6 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     game={game}
                     gender={defender.gender}
                     heldItem={defender.heldItem}
-                    hideEvs={hideEvs}
                     isTailwind={field.trainerSide.isTailwind}
                     ivs={defender.ivs}
                     level={defender.level}
@@ -929,6 +928,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                             : 'Select a battle above'
                     }
                     pokemonSlug={defenderDisplaySlug}
+                    showEvs={showEvs}
                     speedComparison={trainerSpeedComparison}
                     status={defender.status}
                 />

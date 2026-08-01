@@ -2,24 +2,28 @@ import { Setting, StatValues } from '@/lib/static/types';
 
 export const SETTINGS: Setting[] = [
     {
-        id: 'hide-dupes',
-        title: 'Hide Dupes',
+        id: 'show-dupes',
+        title: 'Show Dupes',
     },
     {
         id: 'disable-trade-evos',
         title: 'Disable Trade Evolutions',
     },
     {
-        id: 'hide-evs',
-        title: 'Hide EVs',
+        id: 'use-evs',
+        title: 'Use EVs',
     },
     {
-        id: 'highlight-dangerous',
-        title: 'Highlight Dangerous Moves/Abilities',
+        id: 'hide-dangerous',
+        title: 'Hide Dangerous Moves/Abilities',
     },
     {
-        id: 'hide-legendaries',
-        title: 'Hide Legendaries',
+        id: 'show-legendaries',
+        title: 'Show Legendaries',
+    },
+    {
+        id: 'show-national-dex-data',
+        title: 'Show National Dex Data',
     },
 ];
 
