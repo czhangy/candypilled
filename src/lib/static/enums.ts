@@ -103,3 +103,12 @@ export enum Nature {
     // determined yet.
     Unknown = 'Unknown',
 }
+
+export enum GrowthRate {
+    Erratic = 'erratic',
+    Fast = 'fast',
+    Fluctuating = 'fluctuating',
+    MediumFast = 'medium-fast',
+    MediumSlow = 'medium-slow',
+    Slow = 'slow',
+}

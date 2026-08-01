@@ -16,6 +16,11 @@ export default class MoveHelpers {
         return MOVES[slug];
     }
 
+    /** The move data for PokeAPI's numeric `id`, or undefined if no move matches. */
+    static getMoveById(id: number): MoveData | undefined {
+        return Object.values(MOVES).find((move) => move.id === id);
+    }
+
     /** Every move introduced by generation or earlier, sorted alphabetically by display name. */
     static getAllMoves(generation: number): string[] {
         return Object.values(MOVES)

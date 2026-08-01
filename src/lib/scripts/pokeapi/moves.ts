@@ -164,6 +164,10 @@ const fetchMove = async (resource: NamedApiResource): Promise<RawMove> => {
 const toEnglishEffect = (entries: RawEffectEntry[]): string | undefined =>
     entries.find((entry) => entry.language.name === 'en')?.short_effect;
 
+// PokeAPI resource URLs end in "/{id}/", e.g. ".../move/33/".
+const toResourceId = (url: string): number =>
+    Number(url.split('/').filter(Boolean).pop());
+
 type MoveValues = {
     type: string;
     power: number | null;
@@ -352,6 +356,7 @@ export const fetchMoves = async (): Promise<void> => {
         data[move.name] = {
             slug: move.name,
             name,
+            id: toResourceId(resource.url),
             category: move.damage_class.name,
             priority: move.priority,
             introducedInGeneration: toGenerationNumber(move.generation.name),

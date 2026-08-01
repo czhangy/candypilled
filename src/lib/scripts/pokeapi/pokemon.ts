@@ -7,6 +7,7 @@ import {
     toGenerationNumber,
 } from '@/lib/scripts/pokeapi/shared';
 import { logSuccess, logWarning, runScript } from '@/lib/scripts/utils/helpers';
+import { GrowthRate } from '@/lib/static/enums';
 import {
     Abilities,
     AbilitiesByGeneration,
@@ -149,6 +150,7 @@ type RawSpecies = {
     name: string;
     capture_rate: number;
     gender_rate: number;
+    growth_rate: { name: string };
     is_legendary: boolean;
     is_mythical: boolean;
     evolution_chain: { url: string };
@@ -1001,6 +1003,7 @@ export const fetchPokemonData = async (): Promise<void> => {
             data[variety.name] = {
                 slug: variety.name,
                 name,
+                dexNumber,
                 introducedInGeneration: dexGeneration,
                 isTemporaryForm: TEMPORARY_FORM_VARIETIES.has(variety.name),
                 ...(formChangeItem && { formChangeItem }),
@@ -1011,6 +1014,7 @@ export const fetchPokemonData = async (): Promise<void> => {
                 stats: buildStatsByGeneration(rawPokemon),
                 catchRate: species.capture_rate,
                 genderRate: species.gender_rate,
+                growthRate: species.growth_rate.name as GrowthRate,
                 evolutionLine,
                 learnset: buildLearnsetByVersionGroup(
                     rawPokemon,

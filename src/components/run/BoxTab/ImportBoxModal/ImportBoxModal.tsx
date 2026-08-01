@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Modal from '@/components/common/Modal/Modal';
+import SaveFileParser from '@/lib/parsers/SaveFileParser';
 import { BoxImportError, CaughtPokemon, Game } from '@/lib/static/types';
 import styles from './ImportBoxModal.module.scss';
 
@@ -18,14 +19,13 @@ const ImportBoxModal: React.FC<ImportBoxModalProps> = ({
     buttonTextColor,
     game,
     onClose,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars -- kept for BoxTab's call signature; never fires since import always fails
     onSubmit,
 }) => {
     // -------------------------------------------------------------------------
     // STATE
     // -------------------------------------------------------------------------
 
-    const [files, setFiles] = useState<File[]>([]);
+    const [file, setFile] = useState<File | null>(null);
     const [errors, setErrors] = useState<BoxImportError[]>([]);
     const [isImporting, setIsImporting] = useState(false);
 
@@ -33,23 +33,37 @@ const ImportBoxModal: React.FC<ImportBoxModalProps> = ({
     // HANDLERS
     // -------------------------------------------------------------------------
 
-    const handleFilesChange = (
+    const handleFileChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ): void => {
-        setFiles(Array.from(event.target.files ?? []));
+        setFile(event.target.files?.[0] ?? null);
     };
 
-    const handleSubmit = (event: React.FormEvent): void => {
+    const handleSubmit = async (event: React.FormEvent): Promise<void> => {
         event.preventDefault();
+        if (!file) return;
+
         setIsImporting(true);
+        setErrors([]);
 
-        const importErrors: BoxImportError[] = files.map((file) => ({
-            fileName: file.name,
-            message: `Box import is not currently supported for ${game.name}.`,
-        }));
-
-        setIsImporting(false);
-        setErrors(importErrors);
+        try {
+            const buffer = await file.arrayBuffer();
+            const pokemon = SaveFileParser.parse(game, buffer);
+            onSubmit(pokemon);
+            onClose();
+        } catch (error) {
+            setErrors([
+                {
+                    fileName: file.name,
+                    message:
+                        error instanceof Error
+                            ? error.message
+                            : `Couldn't read this save file.`,
+                },
+            ]);
+        } finally {
+            setIsImporting(false);
+        }
     };
 
     // -------------------------------------------------------------------------
@@ -69,34 +83,24 @@ const ImportBoxModal: React.FC<ImportBoxModalProps> = ({
                     onSubmit={handleSubmit}
                 >
                     <p className={styles.hint}>
-                        Export each Pokémon from{' '}
-                        <a
-                            href="https://github.com/kwsch/PKHeX"
-                            rel="noreferrer"
-                            target="_blank"
-                        >
-                            PKHeX
-                        </a>
-                        &apos;s box view as a <code></code> file, then select
-                        them all below.
+                        Select your {game.name} <code>.sav</code> file to import
+                        every Pokémon in its party and PC boxes.
                     </p>
                     <p className={styles.warning}>
                         Each imported Pokémon replaces whatever is already
-                        recorded at its catch location; new locations are added.
-                        This can&apos;t be undone.
+                        recorded at its catch location, unless that location is
+                        marked dead; new locations are added. This can&apos;t be
+                        undone.
                     </p>
                     <input
-                        accept=""
+                        accept=".sav"
                         className={styles['file-input']}
-                        multiple
-                        onChange={handleFilesChange}
+                        onChange={handleFileChange}
                         type="file"
                     />
-                    {files.length > 0 && (
+                    {file && (
                         <ul className={styles['file-list']}>
-                            {files.map((file) => (
-                                <li key={file.name}>{file.name}</li>
-                            ))}
+                            <li>{file.name}</li>
                         </ul>
                     )}
                     {errors.length > 0 && (
@@ -112,7 +116,7 @@ const ImportBoxModal: React.FC<ImportBoxModalProps> = ({
                     <div className={styles.footer}>
                         <button
                             className={styles['submit-button']}
-                            disabled={files.length === 0 || isImporting}
+                            disabled={!file || isImporting}
                             type="submit"
                         >
                             {isImporting ? 'Importing…' : 'Import'}

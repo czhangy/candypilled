@@ -2,6 +2,7 @@
     "stench": {
         "slug": "stench",
         "name": "Stench",
+        "id": 1,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -18,6 +19,7 @@
     "drizzle": {
         "slug": "drizzle",
         "name": "Drizzle",
+        "id": 2,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -30,6 +32,7 @@
     "speed-boost": {
         "slug": "speed-boost",
         "name": "Speed Boost",
+        "id": 3,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -42,6 +45,7 @@
     "battle-armor": {
         "slug": "battle-armor",
         "name": "Battle Armor",
+        "id": 4,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -54,6 +58,7 @@
     "sturdy": {
         "slug": "sturdy",
         "name": "Sturdy",
+        "id": 5,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -70,6 +75,7 @@
     "damp": {
         "slug": "damp",
         "name": "Damp",
+        "id": 6,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -82,6 +88,7 @@
     "limber": {
         "slug": "limber",
         "name": "Limber",
+        "id": 7,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -94,6 +101,7 @@
     "sand-veil": {
         "slug": "sand-veil",
         "name": "Sand Veil",
+        "id": 8,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -106,6 +114,7 @@
     "static": {
         "slug": "static",
         "name": "Static",
+        "id": 9,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -122,6 +131,7 @@
     "volt-absorb": {
         "slug": "volt-absorb",
         "name": "Volt Absorb",
+        "id": 10,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -138,6 +148,7 @@
     "water-absorb": {
         "slug": "water-absorb",
         "name": "Water Absorb",
+        "id": 11,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -150,6 +161,7 @@
     "oblivious": {
         "slug": "oblivious",
         "name": "Oblivious",
+        "id": 12,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -162,6 +174,7 @@
     "cloud-nine": {
         "slug": "cloud-nine",
         "name": "Cloud Nine",
+        "id": 13,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -174,6 +187,7 @@
     "compound-eyes": {
         "slug": "compound-eyes",
         "name": "Compound Eyes",
+        "id": 14,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -190,6 +204,7 @@
     "insomnia": {
         "slug": "insomnia",
         "name": "Insomnia",
+        "id": 15,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -202,6 +217,7 @@
     "color-change": {
         "slug": "color-change",
         "name": "Color Change",
+        "id": 16,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -218,6 +234,7 @@
     "immunity": {
         "slug": "immunity",
         "name": "Immunity",
+        "id": 17,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -230,6 +247,7 @@
     "flash-fire": {
         "slug": "flash-fire",
         "name": "Flash Fire",
+        "id": 18,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -246,6 +264,7 @@
     "shield-dust": {
         "slug": "shield-dust",
         "name": "Shield Dust",
+        "id": 19,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -258,6 +277,7 @@
     "own-tempo": {
         "slug": "own-tempo",
         "name": "Own Tempo",
+        "id": 20,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -270,6 +290,7 @@
     "suction-cups": {
         "slug": "suction-cups",
         "name": "Suction Cups",
+        "id": 21,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -286,6 +307,7 @@
     "intimidate": {
         "slug": "intimidate",
         "name": "Intimidate",
+        "id": 22,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -306,6 +328,7 @@
     "shadow-tag": {
         "slug": "shadow-tag",
         "name": "Shadow Tag",
+        "id": 23,
         "introducedInGeneration": 3,
         "isDangerous": true,
         "valuesByGeneration": [
@@ -322,6 +345,7 @@
     "rough-skin": {
         "slug": "rough-skin",
         "name": "Rough Skin",
+        "id": 24,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -338,6 +362,7 @@
     "wonder-guard": {
         "slug": "wonder-guard",
         "name": "Wonder Guard",
+        "id": 25,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -354,6 +379,7 @@
     "levitate": {
         "slug": "levitate",
         "name": "Levitate",
+        "id": 26,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -366,6 +392,7 @@
     "effect-spore": {
         "slug": "effect-spore",
         "name": "Effect Spore",
+        "id": 27,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -378,6 +405,7 @@
     "synchronize": {
         "slug": "synchronize",
         "name": "Synchronize",
+        "id": 28,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -402,6 +430,7 @@
     "clear-body": {
         "slug": "clear-body",
         "name": "Clear Body",
+        "id": 29,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -414,6 +443,7 @@
     "natural-cure": {
         "slug": "natural-cure",
         "name": "Natural Cure",
+        "id": 30,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -426,6 +456,7 @@
     "lightning-rod": {
         "slug": "lightning-rod",
         "name": "Lightning Rod",
+        "id": 31,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -450,6 +481,7 @@
     "serene-grace": {
         "slug": "serene-grace",
         "name": "Serene Grace",
+        "id": 32,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -462,6 +494,7 @@
     "swift-swim": {
         "slug": "swift-swim",
         "name": "Swift Swim",
+        "id": 33,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -474,6 +507,7 @@
     "chlorophyll": {
         "slug": "chlorophyll",
         "name": "Chlorophyll",
+        "id": 34,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -486,6 +520,7 @@
     "illuminate": {
         "slug": "illuminate",
         "name": "Illuminate",
+        "id": 35,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -498,6 +533,7 @@
     "trace": {
         "slug": "trace",
         "name": "Trace",
+        "id": 36,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -518,6 +554,7 @@
     "huge-power": {
         "slug": "huge-power",
         "name": "Huge Power",
+        "id": 37,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -530,6 +567,7 @@
     "poison-point": {
         "slug": "poison-point",
         "name": "Poison Point",
+        "id": 38,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -542,6 +580,7 @@
     "inner-focus": {
         "slug": "inner-focus",
         "name": "Inner Focus",
+        "id": 39,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -554,6 +593,7 @@
     "magma-armor": {
         "slug": "magma-armor",
         "name": "Magma Armor",
+        "id": 40,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -570,6 +610,7 @@
     "water-veil": {
         "slug": "water-veil",
         "name": "Water Veil",
+        "id": 41,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -582,8 +623,9 @@
     "magnet-pull": {
         "slug": "magnet-pull",
         "name": "Magnet Pull",
+        "id": 42,
         "introducedInGeneration": 3,
-        "isDangerous": true,
+        "isDangerous": false,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,
@@ -598,6 +640,7 @@
     "soundproof": {
         "slug": "soundproof",
         "name": "Soundproof",
+        "id": 43,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -614,6 +657,7 @@
     "rain-dish": {
         "slug": "rain-dish",
         "name": "Rain Dish",
+        "id": 44,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -626,6 +670,7 @@
     "sand-stream": {
         "slug": "sand-stream",
         "name": "Sand Stream",
+        "id": 45,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -638,6 +683,7 @@
     "pressure": {
         "slug": "pressure",
         "name": "Pressure",
+        "id": 46,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -658,6 +704,7 @@
     "thick-fat": {
         "slug": "thick-fat",
         "name": "Thick Fat",
+        "id": 47,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -670,6 +717,7 @@
     "early-bird": {
         "slug": "early-bird",
         "name": "Early Bird",
+        "id": 48,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -682,6 +730,7 @@
     "flame-body": {
         "slug": "flame-body",
         "name": "Flame Body",
+        "id": 49,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -698,6 +747,7 @@
     "run-away": {
         "slug": "run-away",
         "name": "Run Away",
+        "id": 50,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -710,6 +760,7 @@
     "keen-eye": {
         "slug": "keen-eye",
         "name": "Keen Eye",
+        "id": 51,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -726,6 +777,7 @@
     "hyper-cutter": {
         "slug": "hyper-cutter",
         "name": "Hyper Cutter",
+        "id": 52,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -746,6 +798,7 @@
     "pickup": {
         "slug": "pickup",
         "name": "Pickup",
+        "id": 53,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -762,6 +815,7 @@
     "truant": {
         "slug": "truant",
         "name": "Truant",
+        "id": 54,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -774,6 +828,7 @@
     "hustle": {
         "slug": "hustle",
         "name": "Hustle",
+        "id": 55,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -790,6 +845,7 @@
     "cute-charm": {
         "slug": "cute-charm",
         "name": "Cute Charm",
+        "id": 56,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -806,6 +862,7 @@
     "plus": {
         "slug": "plus",
         "name": "Plus",
+        "id": 57,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -822,6 +879,7 @@
     "minus": {
         "slug": "minus",
         "name": "Minus",
+        "id": 58,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -838,6 +896,7 @@
     "forecast": {
         "slug": "forecast",
         "name": "Forecast",
+        "id": 59,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -850,6 +909,7 @@
     "sticky-hold": {
         "slug": "sticky-hold",
         "name": "Sticky Hold",
+        "id": 60,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -866,6 +926,7 @@
     "shed-skin": {
         "slug": "shed-skin",
         "name": "Shed Skin",
+        "id": 61,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -886,6 +947,7 @@
     "guts": {
         "slug": "guts",
         "name": "Guts",
+        "id": 62,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -902,6 +964,7 @@
     "marvel-scale": {
         "slug": "marvel-scale",
         "name": "Marvel Scale",
+        "id": 63,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -914,6 +977,7 @@
     "liquid-ooze": {
         "slug": "liquid-ooze",
         "name": "Liquid Ooze",
+        "id": 64,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -926,6 +990,7 @@
     "overgrow": {
         "slug": "overgrow",
         "name": "Overgrow",
+        "id": 65,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -938,6 +1003,7 @@
     "blaze": {
         "slug": "blaze",
         "name": "Blaze",
+        "id": 66,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -950,6 +1016,7 @@
     "torrent": {
         "slug": "torrent",
         "name": "Torrent",
+        "id": 67,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -962,6 +1029,7 @@
     "swarm": {
         "slug": "swarm",
         "name": "Swarm",
+        "id": 68,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -982,6 +1050,7 @@
     "rock-head": {
         "slug": "rock-head",
         "name": "Rock Head",
+        "id": 69,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -994,6 +1063,7 @@
     "drought": {
         "slug": "drought",
         "name": "Drought",
+        "id": 70,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1006,8 +1076,9 @@
     "arena-trap": {
         "slug": "arena-trap",
         "name": "Arena Trap",
+        "id": 71,
         "introducedInGeneration": 3,
-        "isDangerous": true,
+        "isDangerous": false,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,
@@ -1022,6 +1093,7 @@
     "vital-spirit": {
         "slug": "vital-spirit",
         "name": "Vital Spirit",
+        "id": 72,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1038,6 +1110,7 @@
     "white-smoke": {
         "slug": "white-smoke",
         "name": "White Smoke",
+        "id": 73,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1054,6 +1127,7 @@
     "pure-power": {
         "slug": "pure-power",
         "name": "Pure Power",
+        "id": 74,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1066,6 +1140,7 @@
     "shell-armor": {
         "slug": "shell-armor",
         "name": "Shell Armor",
+        "id": 75,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1078,6 +1153,7 @@
     "air-lock": {
         "slug": "air-lock",
         "name": "Air Lock",
+        "id": 76,
         "introducedInGeneration": 3,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1090,6 +1166,7 @@
     "tangled-feet": {
         "slug": "tangled-feet",
         "name": "Tangled Feet",
+        "id": 77,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1102,6 +1179,7 @@
     "motor-drive": {
         "slug": "motor-drive",
         "name": "Motor Drive",
+        "id": 78,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1114,6 +1192,7 @@
     "rivalry": {
         "slug": "rivalry",
         "name": "Rivalry",
+        "id": 79,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1126,6 +1205,7 @@
     "steadfast": {
         "slug": "steadfast",
         "name": "Steadfast",
+        "id": 80,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1138,6 +1218,7 @@
     "snow-cloak": {
         "slug": "snow-cloak",
         "name": "Snow Cloak",
+        "id": 81,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1150,6 +1231,7 @@
     "gluttony": {
         "slug": "gluttony",
         "name": "Gluttony",
+        "id": 82,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1162,6 +1244,7 @@
     "anger-point": {
         "slug": "anger-point",
         "name": "Anger Point",
+        "id": 83,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1174,6 +1257,7 @@
     "unburden": {
         "slug": "unburden",
         "name": "Unburden",
+        "id": 84,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1186,6 +1270,7 @@
     "heatproof": {
         "slug": "heatproof",
         "name": "Heatproof",
+        "id": 85,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1198,6 +1283,7 @@
     "simple": {
         "slug": "simple",
         "name": "Simple",
+        "id": 86,
         "introducedInGeneration": 4,
         "isDangerous": true,
         "valuesByGeneration": [
@@ -1210,6 +1296,7 @@
     "dry-skin": {
         "slug": "dry-skin",
         "name": "Dry Skin",
+        "id": 87,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1222,6 +1309,7 @@
     "download": {
         "slug": "download",
         "name": "Download",
+        "id": 88,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1234,6 +1322,7 @@
     "iron-fist": {
         "slug": "iron-fist",
         "name": "Iron Fist",
+        "id": 89,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1246,6 +1335,7 @@
     "poison-heal": {
         "slug": "poison-heal",
         "name": "Poison Heal",
+        "id": 90,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1262,6 +1352,7 @@
     "adaptability": {
         "slug": "adaptability",
         "name": "Adaptability",
+        "id": 91,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1274,6 +1365,7 @@
     "skill-link": {
         "slug": "skill-link",
         "name": "Skill Link",
+        "id": 92,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1290,6 +1382,7 @@
     "hydration": {
         "slug": "hydration",
         "name": "Hydration",
+        "id": 93,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1302,6 +1395,7 @@
     "solar-power": {
         "slug": "solar-power",
         "name": "Solar Power",
+        "id": 94,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1314,6 +1408,7 @@
     "quick-feet": {
         "slug": "quick-feet",
         "name": "Quick Feet",
+        "id": 95,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1326,6 +1421,7 @@
     "normalize": {
         "slug": "normalize",
         "name": "Normalize",
+        "id": 96,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1338,6 +1434,7 @@
     "sniper": {
         "slug": "sniper",
         "name": "Sniper",
+        "id": 97,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1350,6 +1447,7 @@
     "magic-guard": {
         "slug": "magic-guard",
         "name": "Magic Guard",
+        "id": 98,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1366,6 +1464,7 @@
     "no-guard": {
         "slug": "no-guard",
         "name": "No Guard",
+        "id": 99,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1382,6 +1481,7 @@
     "stall": {
         "slug": "stall",
         "name": "Stall",
+        "id": 100,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1394,6 +1494,7 @@
     "technician": {
         "slug": "technician",
         "name": "Technician",
+        "id": 101,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1410,6 +1511,7 @@
     "leaf-guard": {
         "slug": "leaf-guard",
         "name": "Leaf Guard",
+        "id": 102,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1426,6 +1528,7 @@
     "klutz": {
         "slug": "klutz",
         "name": "Klutz",
+        "id": 103,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1442,6 +1545,7 @@
     "mold-breaker": {
         "slug": "mold-breaker",
         "name": "Mold Breaker",
+        "id": 104,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1454,6 +1558,7 @@
     "super-luck": {
         "slug": "super-luck",
         "name": "Super Luck",
+        "id": 105,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1466,6 +1571,7 @@
     "aftermath": {
         "slug": "aftermath",
         "name": "Aftermath",
+        "id": 106,
         "introducedInGeneration": 4,
         "isDangerous": true,
         "valuesByGeneration": [
@@ -1478,6 +1584,7 @@
     "anticipation": {
         "slug": "anticipation",
         "name": "Anticipation",
+        "id": 107,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1490,6 +1597,7 @@
     "forewarn": {
         "slug": "forewarn",
         "name": "Forewarn",
+        "id": 108,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1502,6 +1610,7 @@
     "unaware": {
         "slug": "unaware",
         "name": "Unaware",
+        "id": 109,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1514,6 +1623,7 @@
     "tinted-lens": {
         "slug": "tinted-lens",
         "name": "Tinted Lens",
+        "id": 110,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1526,6 +1636,7 @@
     "filter": {
         "slug": "filter",
         "name": "Filter",
+        "id": 111,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1538,6 +1649,7 @@
     "slow-start": {
         "slug": "slow-start",
         "name": "Slow Start",
+        "id": 112,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1550,6 +1662,7 @@
     "scrappy": {
         "slug": "scrappy",
         "name": "Scrappy",
+        "id": 113,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1562,6 +1675,7 @@
     "storm-drain": {
         "slug": "storm-drain",
         "name": "Storm Drain",
+        "id": 114,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1578,6 +1692,7 @@
     "ice-body": {
         "slug": "ice-body",
         "name": "Ice Body",
+        "id": 115,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1590,6 +1705,7 @@
     "solid-rock": {
         "slug": "solid-rock",
         "name": "Solid Rock",
+        "id": 116,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1602,6 +1718,7 @@
     "snow-warning": {
         "slug": "snow-warning",
         "name": "Snow Warning",
+        "id": 117,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1614,6 +1731,7 @@
     "honey-gather": {
         "slug": "honey-gather",
         "name": "Honey Gather",
+        "id": 118,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1626,6 +1744,7 @@
     "frisk": {
         "slug": "frisk",
         "name": "Frisk",
+        "id": 119,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1638,6 +1757,7 @@
     "reckless": {
         "slug": "reckless",
         "name": "Reckless",
+        "id": 120,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1650,6 +1770,7 @@
     "multitype": {
         "slug": "multitype",
         "name": "Multitype",
+        "id": 121,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1662,6 +1783,7 @@
     "flower-gift": {
         "slug": "flower-gift",
         "name": "Flower Gift",
+        "id": 122,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1674,6 +1796,7 @@
     "bad-dreams": {
         "slug": "bad-dreams",
         "name": "Bad Dreams",
+        "id": 123,
         "introducedInGeneration": 4,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1686,6 +1809,7 @@
     "pickpocket": {
         "slug": "pickpocket",
         "name": "Pickpocket",
+        "id": 124,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1698,6 +1822,7 @@
     "sheer-force": {
         "slug": "sheer-force",
         "name": "Sheer Force",
+        "id": 125,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1710,6 +1835,7 @@
     "contrary": {
         "slug": "contrary",
         "name": "Contrary",
+        "id": 126,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1722,6 +1848,7 @@
     "unnerve": {
         "slug": "unnerve",
         "name": "Unnerve",
+        "id": 127,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1734,6 +1861,7 @@
     "defiant": {
         "slug": "defiant",
         "name": "Defiant",
+        "id": 128,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1746,6 +1874,7 @@
     "defeatist": {
         "slug": "defeatist",
         "name": "Defeatist",
+        "id": 129,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1758,6 +1887,7 @@
     "cursed-body": {
         "slug": "cursed-body",
         "name": "Cursed Body",
+        "id": 130,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1770,6 +1900,7 @@
     "healer": {
         "slug": "healer",
         "name": "Healer",
+        "id": 131,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1782,6 +1913,7 @@
     "friend-guard": {
         "slug": "friend-guard",
         "name": "Friend Guard",
+        "id": 132,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1794,6 +1926,7 @@
     "weak-armor": {
         "slug": "weak-armor",
         "name": "Weak Armor",
+        "id": 133,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1806,6 +1939,7 @@
     "heavy-metal": {
         "slug": "heavy-metal",
         "name": "Heavy Metal",
+        "id": 134,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1818,6 +1952,7 @@
     "light-metal": {
         "slug": "light-metal",
         "name": "Light Metal",
+        "id": 135,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1830,6 +1965,7 @@
     "multiscale": {
         "slug": "multiscale",
         "name": "Multiscale",
+        "id": 136,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1842,6 +1978,7 @@
     "toxic-boost": {
         "slug": "toxic-boost",
         "name": "Toxic Boost",
+        "id": 137,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1854,6 +1991,7 @@
     "flare-boost": {
         "slug": "flare-boost",
         "name": "Flare Boost",
+        "id": 138,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1866,6 +2004,7 @@
     "harvest": {
         "slug": "harvest",
         "name": "Harvest",
+        "id": 139,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1878,6 +2017,7 @@
     "telepathy": {
         "slug": "telepathy",
         "name": "Telepathy",
+        "id": 140,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1890,6 +2030,7 @@
     "moody": {
         "slug": "moody",
         "name": "Moody",
+        "id": 141,
         "introducedInGeneration": 5,
         "isDangerous": true,
         "valuesByGeneration": [
@@ -1902,6 +2043,7 @@
     "overcoat": {
         "slug": "overcoat",
         "name": "Overcoat",
+        "id": 142,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1914,6 +2056,7 @@
     "poison-touch": {
         "slug": "poison-touch",
         "name": "Poison Touch",
+        "id": 143,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1926,6 +2069,7 @@
     "regenerator": {
         "slug": "regenerator",
         "name": "Regenerator",
+        "id": 144,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1938,6 +2082,7 @@
     "big-pecks": {
         "slug": "big-pecks",
         "name": "Big Pecks",
+        "id": 145,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1950,6 +2095,7 @@
     "sand-rush": {
         "slug": "sand-rush",
         "name": "Sand Rush",
+        "id": 146,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1962,6 +2108,7 @@
     "wonder-skin": {
         "slug": "wonder-skin",
         "name": "Wonder Skin",
+        "id": 147,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1974,6 +2121,7 @@
     "analytic": {
         "slug": "analytic",
         "name": "Analytic",
+        "id": 148,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1986,6 +2134,7 @@
     "illusion": {
         "slug": "illusion",
         "name": "Illusion",
+        "id": 149,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -1998,6 +2147,7 @@
     "imposter": {
         "slug": "imposter",
         "name": "Imposter",
+        "id": 150,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2010,6 +2160,7 @@
     "infiltrator": {
         "slug": "infiltrator",
         "name": "Infiltrator",
+        "id": 151,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2022,6 +2173,7 @@
     "mummy": {
         "slug": "mummy",
         "name": "Mummy",
+        "id": 152,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2034,6 +2186,7 @@
     "moxie": {
         "slug": "moxie",
         "name": "Moxie",
+        "id": 153,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2046,6 +2199,7 @@
     "justified": {
         "slug": "justified",
         "name": "Justified",
+        "id": 154,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2058,6 +2212,7 @@
     "rattled": {
         "slug": "rattled",
         "name": "Rattled",
+        "id": 155,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2070,6 +2225,7 @@
     "magic-bounce": {
         "slug": "magic-bounce",
         "name": "Magic Bounce",
+        "id": 156,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2082,6 +2238,7 @@
     "sap-sipper": {
         "slug": "sap-sipper",
         "name": "Sap Sipper",
+        "id": 157,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2094,6 +2251,7 @@
     "prankster": {
         "slug": "prankster",
         "name": "Prankster",
+        "id": 158,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2106,6 +2264,7 @@
     "sand-force": {
         "slug": "sand-force",
         "name": "Sand Force",
+        "id": 159,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2118,6 +2277,7 @@
     "iron-barbs": {
         "slug": "iron-barbs",
         "name": "Iron Barbs",
+        "id": 160,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2130,6 +2290,7 @@
     "zen-mode": {
         "slug": "zen-mode",
         "name": "Zen Mode",
+        "id": 161,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2142,6 +2303,7 @@
     "victory-star": {
         "slug": "victory-star",
         "name": "Victory Star",
+        "id": 162,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2154,6 +2316,7 @@
     "turboblaze": {
         "slug": "turboblaze",
         "name": "Turboblaze",
+        "id": 163,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2166,6 +2329,7 @@
     "teravolt": {
         "slug": "teravolt",
         "name": "Teravolt",
+        "id": 164,
         "introducedInGeneration": 5,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2178,6 +2342,7 @@
     "aroma-veil": {
         "slug": "aroma-veil",
         "name": "Aroma Veil",
+        "id": 165,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2190,6 +2355,7 @@
     "flower-veil": {
         "slug": "flower-veil",
         "name": "Flower Veil",
+        "id": 166,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2202,6 +2368,7 @@
     "cheek-pouch": {
         "slug": "cheek-pouch",
         "name": "Cheek Pouch",
+        "id": 167,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2214,6 +2381,7 @@
     "protean": {
         "slug": "protean",
         "name": "Protean",
+        "id": 168,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2226,6 +2394,7 @@
     "fur-coat": {
         "slug": "fur-coat",
         "name": "Fur Coat",
+        "id": 169,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2238,6 +2407,7 @@
     "magician": {
         "slug": "magician",
         "name": "Magician",
+        "id": 170,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2250,6 +2420,7 @@
     "bulletproof": {
         "slug": "bulletproof",
         "name": "Bulletproof",
+        "id": 171,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2262,6 +2433,7 @@
     "competitive": {
         "slug": "competitive",
         "name": "Competitive",
+        "id": 172,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2274,6 +2446,7 @@
     "strong-jaw": {
         "slug": "strong-jaw",
         "name": "Strong Jaw",
+        "id": 173,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2286,6 +2459,7 @@
     "refrigerate": {
         "slug": "refrigerate",
         "name": "Refrigerate",
+        "id": 174,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2298,6 +2472,7 @@
     "sweet-veil": {
         "slug": "sweet-veil",
         "name": "Sweet Veil",
+        "id": 175,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2310,6 +2485,7 @@
     "stance-change": {
         "slug": "stance-change",
         "name": "Stance Change",
+        "id": 176,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2322,6 +2498,7 @@
     "gale-wings": {
         "slug": "gale-wings",
         "name": "Gale Wings",
+        "id": 177,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2334,6 +2511,7 @@
     "mega-launcher": {
         "slug": "mega-launcher",
         "name": "Mega Launcher",
+        "id": 178,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2346,6 +2524,7 @@
     "grass-pelt": {
         "slug": "grass-pelt",
         "name": "Grass Pelt",
+        "id": 179,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2358,6 +2537,7 @@
     "symbiosis": {
         "slug": "symbiosis",
         "name": "Symbiosis",
+        "id": 180,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2370,6 +2550,7 @@
     "tough-claws": {
         "slug": "tough-claws",
         "name": "Tough Claws",
+        "id": 181,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2382,6 +2563,7 @@
     "pixilate": {
         "slug": "pixilate",
         "name": "Pixilate",
+        "id": 182,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2394,6 +2576,7 @@
     "gooey": {
         "slug": "gooey",
         "name": "Gooey",
+        "id": 183,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2406,6 +2589,7 @@
     "aerilate": {
         "slug": "aerilate",
         "name": "Aerilate",
+        "id": 184,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2418,6 +2602,7 @@
     "parental-bond": {
         "slug": "parental-bond",
         "name": "Parental Bond",
+        "id": 185,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2430,6 +2615,7 @@
     "dark-aura": {
         "slug": "dark-aura",
         "name": "Dark Aura",
+        "id": 186,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2442,6 +2628,7 @@
     "fairy-aura": {
         "slug": "fairy-aura",
         "name": "Fairy Aura",
+        "id": 187,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2454,6 +2641,7 @@
     "aura-break": {
         "slug": "aura-break",
         "name": "Aura Break",
+        "id": 188,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2466,6 +2654,7 @@
     "primordial-sea": {
         "slug": "primordial-sea",
         "name": "Primordial Sea",
+        "id": 189,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2478,6 +2667,7 @@
     "desolate-land": {
         "slug": "desolate-land",
         "name": "Desolate Land",
+        "id": 190,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2490,6 +2680,7 @@
     "delta-stream": {
         "slug": "delta-stream",
         "name": "Delta Stream",
+        "id": 191,
         "introducedInGeneration": 6,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2502,6 +2693,7 @@
     "stamina": {
         "slug": "stamina",
         "name": "Stamina",
+        "id": 192,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2514,6 +2706,7 @@
     "wimp-out": {
         "slug": "wimp-out",
         "name": "Wimp Out",
+        "id": 193,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2526,6 +2719,7 @@
     "emergency-exit": {
         "slug": "emergency-exit",
         "name": "Emergency Exit",
+        "id": 194,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2538,6 +2732,7 @@
     "water-compaction": {
         "slug": "water-compaction",
         "name": "Water Compaction",
+        "id": 195,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2550,6 +2745,7 @@
     "merciless": {
         "slug": "merciless",
         "name": "Merciless",
+        "id": 196,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2562,6 +2758,7 @@
     "shields-down": {
         "slug": "shields-down",
         "name": "Shields Down",
+        "id": 197,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2574,6 +2771,7 @@
     "stakeout": {
         "slug": "stakeout",
         "name": "Stakeout",
+        "id": 198,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2586,6 +2784,7 @@
     "water-bubble": {
         "slug": "water-bubble",
         "name": "Water Bubble",
+        "id": 199,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2598,6 +2797,7 @@
     "steelworker": {
         "slug": "steelworker",
         "name": "Steelworker",
+        "id": 200,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2610,6 +2810,7 @@
     "berserk": {
         "slug": "berserk",
         "name": "Berserk",
+        "id": 201,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2622,6 +2823,7 @@
     "slush-rush": {
         "slug": "slush-rush",
         "name": "Slush Rush",
+        "id": 202,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2634,6 +2836,7 @@
     "long-reach": {
         "slug": "long-reach",
         "name": "Long Reach",
+        "id": 203,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2646,6 +2849,7 @@
     "liquid-voice": {
         "slug": "liquid-voice",
         "name": "Liquid Voice",
+        "id": 204,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2658,6 +2862,7 @@
     "triage": {
         "slug": "triage",
         "name": "Triage",
+        "id": 205,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2670,6 +2875,7 @@
     "galvanize": {
         "slug": "galvanize",
         "name": "Galvanize",
+        "id": 206,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2682,6 +2888,7 @@
     "surge-surfer": {
         "slug": "surge-surfer",
         "name": "Surge Surfer",
+        "id": 207,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2694,6 +2901,7 @@
     "schooling": {
         "slug": "schooling",
         "name": "Schooling",
+        "id": 208,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2706,6 +2914,7 @@
     "disguise": {
         "slug": "disguise",
         "name": "Disguise",
+        "id": 209,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2718,6 +2927,7 @@
     "battle-bond": {
         "slug": "battle-bond",
         "name": "Battle Bond",
+        "id": 210,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2730,6 +2940,7 @@
     "power-construct": {
         "slug": "power-construct",
         "name": "Power Construct",
+        "id": 211,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2742,6 +2953,7 @@
     "corrosion": {
         "slug": "corrosion",
         "name": "Corrosion",
+        "id": 212,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2754,6 +2966,7 @@
     "comatose": {
         "slug": "comatose",
         "name": "Comatose",
+        "id": 213,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2766,6 +2979,7 @@
     "queenly-majesty": {
         "slug": "queenly-majesty",
         "name": "Queenly Majesty",
+        "id": 214,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2778,6 +2992,7 @@
     "innards-out": {
         "slug": "innards-out",
         "name": "Innards Out",
+        "id": 215,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2790,6 +3005,7 @@
     "dancer": {
         "slug": "dancer",
         "name": "Dancer",
+        "id": 216,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2802,6 +3018,7 @@
     "battery": {
         "slug": "battery",
         "name": "Battery",
+        "id": 217,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2814,6 +3031,7 @@
     "fluffy": {
         "slug": "fluffy",
         "name": "Fluffy",
+        "id": 218,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2826,6 +3044,7 @@
     "dazzling": {
         "slug": "dazzling",
         "name": "Dazzling",
+        "id": 219,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2838,6 +3057,7 @@
     "soul-heart": {
         "slug": "soul-heart",
         "name": "Soul Heart",
+        "id": 220,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2850,6 +3070,7 @@
     "tangling-hair": {
         "slug": "tangling-hair",
         "name": "Tangling Hair",
+        "id": 221,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2862,6 +3083,7 @@
     "receiver": {
         "slug": "receiver",
         "name": "Receiver",
+        "id": 222,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2874,6 +3096,7 @@
     "power-of-alchemy": {
         "slug": "power-of-alchemy",
         "name": "Power Of Alchemy",
+        "id": 223,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2886,6 +3109,7 @@
     "beast-boost": {
         "slug": "beast-boost",
         "name": "Beast Boost",
+        "id": 224,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2898,6 +3122,7 @@
     "rks-system": {
         "slug": "rks-system",
         "name": "Rks System",
+        "id": 225,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2910,6 +3135,7 @@
     "electric-surge": {
         "slug": "electric-surge",
         "name": "Electric Surge",
+        "id": 226,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2922,6 +3148,7 @@
     "psychic-surge": {
         "slug": "psychic-surge",
         "name": "Psychic Surge",
+        "id": 227,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2934,6 +3161,7 @@
     "misty-surge": {
         "slug": "misty-surge",
         "name": "Misty Surge",
+        "id": 228,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2946,6 +3174,7 @@
     "grassy-surge": {
         "slug": "grassy-surge",
         "name": "Grassy Surge",
+        "id": 229,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2958,6 +3187,7 @@
     "full-metal-body": {
         "slug": "full-metal-body",
         "name": "Full Metal Body",
+        "id": 230,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2970,6 +3200,7 @@
     "shadow-shield": {
         "slug": "shadow-shield",
         "name": "Shadow Shield",
+        "id": 231,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2982,6 +3213,7 @@
     "prism-armor": {
         "slug": "prism-armor",
         "name": "Prism Armor",
+        "id": 232,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -2994,6 +3226,7 @@
     "neuroforce": {
         "slug": "neuroforce",
         "name": "Neuroforce",
+        "id": 233,
         "introducedInGeneration": 7,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3006,6 +3239,7 @@
     "intrepid-sword": {
         "slug": "intrepid-sword",
         "name": "Intrepid Sword",
+        "id": 234,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3018,6 +3252,7 @@
     "dauntless-shield": {
         "slug": "dauntless-shield",
         "name": "Dauntless Shield",
+        "id": 235,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3030,6 +3265,7 @@
     "libero": {
         "slug": "libero",
         "name": "Libero",
+        "id": 236,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3042,6 +3278,7 @@
     "ball-fetch": {
         "slug": "ball-fetch",
         "name": "Ball Fetch",
+        "id": 237,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3054,6 +3291,7 @@
     "cotton-down": {
         "slug": "cotton-down",
         "name": "Cotton Down",
+        "id": 238,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3066,6 +3304,7 @@
     "propeller-tail": {
         "slug": "propeller-tail",
         "name": "Propeller Tail",
+        "id": 239,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3078,6 +3317,7 @@
     "mirror-armor": {
         "slug": "mirror-armor",
         "name": "Mirror Armor",
+        "id": 240,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3090,6 +3330,7 @@
     "gulp-missile": {
         "slug": "gulp-missile",
         "name": "Gulp Missile",
+        "id": 241,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3102,6 +3343,7 @@
     "stalwart": {
         "slug": "stalwart",
         "name": "Stalwart",
+        "id": 242,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3114,6 +3356,7 @@
     "steam-engine": {
         "slug": "steam-engine",
         "name": "Steam Engine",
+        "id": 243,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3126,6 +3369,7 @@
     "punk-rock": {
         "slug": "punk-rock",
         "name": "Punk Rock",
+        "id": 244,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3138,6 +3382,7 @@
     "sand-spit": {
         "slug": "sand-spit",
         "name": "Sand Spit",
+        "id": 245,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3150,6 +3395,7 @@
     "ice-scales": {
         "slug": "ice-scales",
         "name": "Ice Scales",
+        "id": 246,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3162,6 +3408,7 @@
     "ripen": {
         "slug": "ripen",
         "name": "Ripen",
+        "id": 247,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3174,6 +3421,7 @@
     "ice-face": {
         "slug": "ice-face",
         "name": "Ice Face",
+        "id": 248,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3186,6 +3434,7 @@
     "power-spot": {
         "slug": "power-spot",
         "name": "Power Spot",
+        "id": 249,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3198,6 +3447,7 @@
     "mimicry": {
         "slug": "mimicry",
         "name": "Mimicry",
+        "id": 250,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3210,6 +3460,7 @@
     "screen-cleaner": {
         "slug": "screen-cleaner",
         "name": "Screen Cleaner",
+        "id": 251,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3222,6 +3473,7 @@
     "steely-spirit": {
         "slug": "steely-spirit",
         "name": "Steely Spirit",
+        "id": 252,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3234,6 +3486,7 @@
     "perish-body": {
         "slug": "perish-body",
         "name": "Perish Body",
+        "id": 253,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3246,6 +3499,7 @@
     "wandering-spirit": {
         "slug": "wandering-spirit",
         "name": "Wandering Spirit",
+        "id": 254,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3258,6 +3512,7 @@
     "gorilla-tactics": {
         "slug": "gorilla-tactics",
         "name": "Gorilla Tactics",
+        "id": 255,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3270,6 +3525,7 @@
     "neutralizing-gas": {
         "slug": "neutralizing-gas",
         "name": "Neutralizing Gas",
+        "id": 256,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3282,6 +3538,7 @@
     "pastel-veil": {
         "slug": "pastel-veil",
         "name": "Pastel Veil",
+        "id": 257,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3294,6 +3551,7 @@
     "hunger-switch": {
         "slug": "hunger-switch",
         "name": "Hunger Switch",
+        "id": 258,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3306,6 +3564,7 @@
     "quick-draw": {
         "slug": "quick-draw",
         "name": "Quick Draw",
+        "id": 259,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3318,6 +3577,7 @@
     "unseen-fist": {
         "slug": "unseen-fist",
         "name": "Unseen Fist",
+        "id": 260,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3330,6 +3590,7 @@
     "curious-medicine": {
         "slug": "curious-medicine",
         "name": "Curious Medicine",
+        "id": 261,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3342,6 +3603,7 @@
     "transistor": {
         "slug": "transistor",
         "name": "Transistor",
+        "id": 262,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3354,6 +3616,7 @@
     "dragons-maw": {
         "slug": "dragons-maw",
         "name": "Dragons Maw",
+        "id": 263,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3366,6 +3629,7 @@
     "chilling-neigh": {
         "slug": "chilling-neigh",
         "name": "Chilling Neigh",
+        "id": 264,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3378,6 +3642,7 @@
     "grim-neigh": {
         "slug": "grim-neigh",
         "name": "Grim Neigh",
+        "id": 265,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3390,6 +3655,7 @@
     "as-one-glastrier": {
         "slug": "as-one-glastrier",
         "name": "As One Glastrier",
+        "id": 266,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3402,6 +3668,7 @@
     "as-one-spectrier": {
         "slug": "as-one-spectrier",
         "name": "As One Spectrier",
+        "id": 267,
         "introducedInGeneration": 8,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3414,6 +3681,7 @@
     "lingering-aroma": {
         "slug": "lingering-aroma",
         "name": "Lingering Aroma",
+        "id": 268,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3426,6 +3694,7 @@
     "seed-sower": {
         "slug": "seed-sower",
         "name": "Seed Sower",
+        "id": 269,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3438,6 +3707,7 @@
     "thermal-exchange": {
         "slug": "thermal-exchange",
         "name": "Thermal Exchange",
+        "id": 270,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3450,6 +3720,7 @@
     "anger-shell": {
         "slug": "anger-shell",
         "name": "Anger Shell",
+        "id": 271,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3462,6 +3733,7 @@
     "purifying-salt": {
         "slug": "purifying-salt",
         "name": "Purifying Salt",
+        "id": 272,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3474,6 +3746,7 @@
     "well-baked-body": {
         "slug": "well-baked-body",
         "name": "Well Baked Body",
+        "id": 273,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3486,6 +3759,7 @@
     "wind-rider": {
         "slug": "wind-rider",
         "name": "Wind Rider",
+        "id": 274,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3498,6 +3772,7 @@
     "guard-dog": {
         "slug": "guard-dog",
         "name": "Guard Dog",
+        "id": 275,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3510,6 +3785,7 @@
     "rocky-payload": {
         "slug": "rocky-payload",
         "name": "Rocky Payload",
+        "id": 276,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3522,6 +3798,7 @@
     "wind-power": {
         "slug": "wind-power",
         "name": "Wind Power",
+        "id": 277,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3534,6 +3811,7 @@
     "zero-to-hero": {
         "slug": "zero-to-hero",
         "name": "Zero To Hero",
+        "id": 278,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3546,6 +3824,7 @@
     "commander": {
         "slug": "commander",
         "name": "Commander",
+        "id": 279,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3558,6 +3837,7 @@
     "electromorphosis": {
         "slug": "electromorphosis",
         "name": "Electromorphosis",
+        "id": 280,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3570,6 +3850,7 @@
     "protosynthesis": {
         "slug": "protosynthesis",
         "name": "Protosynthesis",
+        "id": 281,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3582,6 +3863,7 @@
     "quark-drive": {
         "slug": "quark-drive",
         "name": "Quark Drive",
+        "id": 282,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3594,6 +3876,7 @@
     "good-as-gold": {
         "slug": "good-as-gold",
         "name": "Good As Gold",
+        "id": 283,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3606,6 +3889,7 @@
     "vessel-of-ruin": {
         "slug": "vessel-of-ruin",
         "name": "Vessel Of Ruin",
+        "id": 284,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3618,6 +3902,7 @@
     "sword-of-ruin": {
         "slug": "sword-of-ruin",
         "name": "Sword Of Ruin",
+        "id": 285,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3630,6 +3915,7 @@
     "tablets-of-ruin": {
         "slug": "tablets-of-ruin",
         "name": "Tablets Of Ruin",
+        "id": 286,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3642,6 +3928,7 @@
     "beads-of-ruin": {
         "slug": "beads-of-ruin",
         "name": "Beads Of Ruin",
+        "id": 287,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3654,6 +3941,7 @@
     "orichalcum-pulse": {
         "slug": "orichalcum-pulse",
         "name": "Orichalcum Pulse",
+        "id": 288,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3666,6 +3954,7 @@
     "hadron-engine": {
         "slug": "hadron-engine",
         "name": "Hadron Engine",
+        "id": 289,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3678,6 +3967,7 @@
     "opportunist": {
         "slug": "opportunist",
         "name": "Opportunist",
+        "id": 290,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3690,6 +3980,7 @@
     "cud-chew": {
         "slug": "cud-chew",
         "name": "Cud Chew",
+        "id": 291,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3702,6 +3993,7 @@
     "sharpness": {
         "slug": "sharpness",
         "name": "Sharpness",
+        "id": 292,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3714,6 +4006,7 @@
     "supreme-overlord": {
         "slug": "supreme-overlord",
         "name": "Supreme Overlord",
+        "id": 293,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3726,6 +4019,7 @@
     "costar": {
         "slug": "costar",
         "name": "Costar",
+        "id": 294,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3738,6 +4032,7 @@
     "toxic-debris": {
         "slug": "toxic-debris",
         "name": "Toxic Debris",
+        "id": 295,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3750,6 +4045,7 @@
     "armor-tail": {
         "slug": "armor-tail",
         "name": "Armor Tail",
+        "id": 296,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3762,6 +4058,7 @@
     "earth-eater": {
         "slug": "earth-eater",
         "name": "Earth Eater",
+        "id": 297,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3774,6 +4071,7 @@
     "mycelium-might": {
         "slug": "mycelium-might",
         "name": "Mycelium Might",
+        "id": 298,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3786,6 +4084,7 @@
     "minds-eye": {
         "slug": "minds-eye",
         "name": "Minds Eye",
+        "id": 299,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3798,6 +4097,7 @@
     "supersweet-syrup": {
         "slug": "supersweet-syrup",
         "name": "Supersweet Syrup",
+        "id": 300,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3810,6 +4110,7 @@
     "hospitality": {
         "slug": "hospitality",
         "name": "Hospitality",
+        "id": 301,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3822,6 +4123,7 @@
     "toxic-chain": {
         "slug": "toxic-chain",
         "name": "Toxic Chain",
+        "id": 302,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3834,6 +4136,7 @@
     "embody-aspect": {
         "slug": "embody-aspect",
         "name": "Embody Aspect",
+        "id": 303,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3846,6 +4149,7 @@
     "tera-shift": {
         "slug": "tera-shift",
         "name": "Tera Shift",
+        "id": 304,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3858,6 +4162,7 @@
     "tera-shell": {
         "slug": "tera-shell",
         "name": "Tera Shell",
+        "id": 305,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3870,6 +4175,7 @@
     "teraform-zero": {
         "slug": "teraform-zero",
         "name": "Teraform Zero",
+        "id": 306,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3882,6 +4188,7 @@
     "poison-puppeteer": {
         "slug": "poison-puppeteer",
         "name": "Poison Puppeteer",
+        "id": 307,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3894,6 +4201,7 @@
     "piercing-drill": {
         "slug": "piercing-drill",
         "name": "Piercing Drill",
+        "id": 308,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3906,6 +4214,7 @@
     "dragonize": {
         "slug": "dragonize",
         "name": "Dragonize",
+        "id": 309,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3918,6 +4227,7 @@
     "mega-sol": {
         "slug": "mega-sol",
         "name": "Mega Sol",
+        "id": 310,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3930,6 +4240,7 @@
     "spicy-spray": {
         "slug": "spicy-spray",
         "name": "Spicy Spray",
+        "id": 311,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3942,6 +4253,7 @@
     "eelevate": {
         "slug": "eelevate",
         "name": "Eelevate",
+        "id": 312,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [
@@ -3954,6 +4266,7 @@
     "fire-mane": {
         "slug": "fire-mane",
         "name": "Fire Mane",
+        "id": 313,
         "introducedInGeneration": 9,
         "isDangerous": false,
         "valuesByGeneration": [

@@ -83,6 +83,10 @@ const fetchAbility = async (
 const toEnglishEffect = (entries: RawEffectEntry[]): string | undefined =>
     entries.find((entry) => entry.language.name === 'en')?.effect;
 
+// PokeAPI resource URLs end in "/{id}/", e.g. ".../ability/65/".
+const toResourceId = (url: string): number =>
+    Number(url.split('/').filter(Boolean).pop());
+
 // PokeAPI's `effect_changes` entries describe the effect text that applied
 // UP TO the listed version group, with the top-level `effect_entries`
 // holding the current text. This mirrors how `past_values` is interpreted in
@@ -138,6 +142,7 @@ export const fetchAbilities = async (): Promise<void> => {
         data[ability.name] = {
             slug: ability.name,
             name,
+            id: toResourceId(resource.url),
             introducedInGeneration: toGenerationNumber(ability.generation.name),
             isDangerous: DANGEROUS_ABILITIES.has(ability.name),
             valuesByGeneration: buildValuesByGeneration(

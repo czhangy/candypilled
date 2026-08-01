@@ -72,6 +72,21 @@ export default class PokemonHelpers {
             : pokemon.slug;
     }
 
+    /**
+     * The species data for dexNumber, preferring its non-temporary base form
+     * when multiple form slugs share a dex number (e.g. Wormadam's cloaks),
+     * or undefined if no species matches.
+     */
+    static getSpeciesByDexNumber(dexNumber: number): PokemonData | undefined {
+        const matches = Object.values(POKEMON).filter(
+            (pokemon) => pokemon.dexNumber === dexNumber
+        );
+
+        return (
+            matches.find((pokemon) => !pokemon.isTemporaryForm) ?? matches[0]
+        );
+    }
+
     /** slug's sprite, preferring variant if it has one, or undefined if no form matches. */
     static getPokemonSprite(
         slug: string,

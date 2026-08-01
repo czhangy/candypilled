@@ -12,6 +12,11 @@ export default class AbilityHelpers {
         return ABILITIES[slug];
     }
 
+    /** The ability data for PokeAPI's numeric `id`, or undefined if no ability matches. */
+    static getAbilityById(id: number): AbilityData | undefined {
+        return Object.values(ABILITIES).find((ability) => ability.id === id);
+    }
+
     /** Every ability introduced by generation or earlier, sorted alphabetically by display name. */
     static getAllAbilities(generation: number): string[] {
         return Object.values(ABILITIES)
