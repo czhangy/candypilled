@@ -7,12 +7,12 @@ that learns it, left to right.
 
 ## Props
 
-| Prop                  | Type                     | Required | Default | Description                                                                                                                  |
-| --------------------- | ------------------------ | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `game`                | `Game`                   | Yes      | -       | The game to resolve moves and their learners from                                                                            |
-| `onSelectMove`        | `(slug: string) => void` | Yes      | -       | Called with a move's slug when it's clicked in the list                                                                      |
-| `onSelectSpeciesLink` | `(slug: string) => void` | Yes      | -       | Called with a Pokémon's slug when it's clicked in the "Learned By" panel; opens that Pokémon's Pokédex entry in a new window |
-| `selectedMove`        | `string`                 | No       | -       | The currently selected move's slug, if any; owned by `RunPage` so a move link elsewhere on the page can select it            |
+| Prop                  | Type                     | Required | Default | Description                                                                                                        |
+| --------------------- | ------------------------ | -------- | ------- | ------------------------------------------------------------------------------------------------------------------ |
+| `game`                | `Game`                   | Yes      | -       | The game to resolve moves and their learners from                                                                  |
+| `onSelectMove`        | `(slug: string) => void` | Yes      | -       | Called with a move's slug when it's clicked in the list                                                            |
+| `onSelectSpeciesLink` | `(slug: string) => void` | Yes      | -       | Called with a Pokémon's slug when it's clicked in the "Learned By" panel; switches to that Pokémon's Pokédex entry |
+| `selectedMove`        | `string`                 | No       | -       | The currently selected move's slug, if any; owned by `RunPage` so a move link elsewhere on the page can select it  |
 
 ## Computations
 

@@ -245,6 +245,16 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         updateQueryParams({ species: slug });
     };
 
+    const handleSpeciesPanelSelect = (slug: string): void => {
+        updateQueryParams({
+            ability: undefined,
+            item: undefined,
+            move: undefined,
+            species: slug,
+            subtab: 'pokedex',
+        });
+    };
+
     const handlePokemonSelect = (location: string): void => {
         updateQueryParams({ pokemon: location });
     };
@@ -441,7 +451,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             onSelectMove={handleMoveSelect}
                             onSelectMoveLink={handleMoveLinkClick}
                             onSelectSpecies={handleSpeciesSelect}
-                            onSelectSpeciesLink={handleSpeciesLinkClick}
+                            onSelectSpeciesLink={handleSpeciesPanelSelect}
                             onSubtabChange={handleSubtabChange}
                             run={run}
                             selectedAbility={selectedAbility}
