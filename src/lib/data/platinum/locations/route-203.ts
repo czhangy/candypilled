@@ -8,37 +8,37 @@ const ROUTE_203: Location = {
     battles: [
         {
             isMiniboss: true,
-            battleKey: 'pkmn-trainer-barry::Barry 2',
+            battleKey: 'pkmn-trainer-barry-barry-2',
             x: 11.4,
             y: 78.2,
         },
         {
             isOptional: true,
-            battleKey: 'youngster::Michael',
+            battleKey: 'youngster-michael',
             x: 23,
             y: 51,
         },
         {
             isOptional: true,
-            battleKey: 'youngster::Dallas',
+            battleKey: 'youngster-dallas',
             x: 52.5,
             y: 68,
         },
         {
             isOptional: true,
-            battleKey: 'youngster::Sebastian',
+            battleKey: 'youngster-sebastian',
             x: 72.3,
             y: 65.5,
         },
         {
             isOptional: true,
-            battleKey: 'lass::Kaitlin',
+            battleKey: 'lass-kaitlin',
             x: 85.2,
             y: 62,
         },
         {
             isOptional: true,
-            battleKey: 'lass::Madeline',
+            battleKey: 'lass-madeline',
             x: 82,
             y: 35,
         },

@@ -1,5 +1,5 @@
 {
-    "elite-four-aaron::Aaron": {
+    "elite-four-aaron-aaron": {
         "trainerClass": "elite-four-aaron",
         "name": "Aaron",
         "team": [
@@ -77,7 +77,7 @@
             }
         ]
     },
-    "elite-four-bertha::Bertha": {
+    "elite-four-bertha-bertha": {
         "trainerClass": "elite-four-bertha",
         "name": "Bertha",
         "team": [
@@ -150,7 +150,7 @@
             }
         ]
     },
-    "waitress::Kati": {
+    "waitress-kati": {
         "trainerClass": "waitress",
         "name": "Kati",
         "team": [
@@ -163,7 +163,7 @@
             }
         ]
     },
-    "collector::Fernando": {
+    "collector-fernando": {
         "trainerClass": "collector",
         "name": "Fernando",
         "team": [
@@ -176,7 +176,7 @@
             }
         ]
     },
-    "collector::Edwin": {
+    "collector-edwin": {
         "trainerClass": "collector",
         "name": "Edwin",
         "team": [
@@ -189,7 +189,7 @@
             }
         ]
     },
-    "pkmn-trainer-barry::Barry 5": {
+    "pkmn-trainer-barry-barry-5": {
         "trainerClass": "pkmn-trainer-barry",
         "name": "Barry 5",
         "teamsByStarter": {
@@ -386,7 +386,7 @@
             ]
         }
     },
-    "black-belt::Ricky": {
+    "black-belt-ricky": {
         "trainerClass": "black-belt",
         "name": "Ricky",
         "team": [
@@ -401,7 +401,7 @@
             }
         ]
     },
-    "worker::Gary": {
+    "worker-gary": {
         "trainerClass": "worker",
         "name": "Gary",
         "team": [
@@ -415,7 +415,7 @@
             }
         ]
     },
-    "ace-trainer-m::Cesar": {
+    "ace-trainer-m-cesar": {
         "trainerClass": "ace-trainer-m",
         "name": "Cesar",
         "team": [
@@ -430,7 +430,7 @@
             }
         ]
     },
-    "worker::Jackson": {
+    "worker-jackson": {
         "trainerClass": "worker",
         "name": "Jackson",
         "team": [
@@ -460,7 +460,7 @@
             }
         ]
     },
-    "ace-trainer-f::Breanna": {
+    "ace-trainer-f-breanna": {
         "trainerClass": "ace-trainer-f",
         "name": "Breanna",
         "team": [
@@ -490,7 +490,7 @@
             }
         ]
     },
-    "worker::Gerardo": {
+    "worker-gerardo": {
         "trainerClass": "worker",
         "name": "Gerardo",
         "team": [
@@ -512,7 +512,7 @@
             }
         ]
     },
-    "black-belt::David": {
+    "black-belt-david": {
         "trainerClass": "black-belt",
         "name": "David",
         "team": [
@@ -536,7 +536,7 @@
             }
         ]
     },
-    "leader-byron::Byron": {
+    "leader-byron-byron": {
         "trainerClass": "leader-byron",
         "name": "Byron",
         "team": [
@@ -584,7 +584,7 @@
             }
         ]
     },
-    "galactic-boss-cyrus::Cyrus 1": {
+    "galactic-boss-cyrus-cyrus-1": {
         "trainerClass": "galactic-boss-cyrus",
         "name": "Cyrus 1",
         "team": [
@@ -629,7 +629,7 @@
             }
         ]
     },
-    "galactic-grunt-m::11": {
+    "galactic-grunt-m-11": {
         "trainerClass": "galactic-grunt-m",
         "name": "11",
         "team": [
@@ -651,7 +651,7 @@
             }
         ]
     },
-    "champion-cynthia::Cynthia": {
+    "champion-cynthia-cynthia": {
         "trainerClass": "champion-cynthia",
         "name": "Cynthia",
         "team": [
@@ -733,7 +733,7 @@
             }
         ]
     },
-    "galactic-boss-cyrus::Cyrus 3": {
+    "galactic-boss-cyrus-cyrus-3": {
         "trainerClass": "galactic-boss-cyrus",
         "name": "Cyrus 3",
         "team": [
@@ -796,7 +796,7 @@
             }
         ]
     },
-    "bug-catcher::Jack": {
+    "bug-catcher-jack": {
         "trainerClass": "bug-catcher",
         "name": "Jack",
         "team": [
@@ -840,7 +840,7 @@
             ]
         }
     },
-    "psychic-f::Lindsey": {
+    "psychic-f-lindsey": {
         "trainerClass": "psychic-f",
         "name": "Lindsey",
         "team": [
@@ -855,7 +855,7 @@
             }
         ]
     },
-    "psychic-m::Elijah": {
+    "psychic-m-elijah": {
         "trainerClass": "psychic-m",
         "name": "Elijah",
         "team": [
@@ -870,7 +870,7 @@
             }
         ]
     },
-    "bug-catcher::Donald": {
+    "bug-catcher-donald": {
         "trainerClass": "bug-catcher",
         "name": "Donald",
         "team": [
@@ -892,7 +892,7 @@
             }
         ]
     },
-    "bug-catcher::Phillip": {
+    "bug-catcher-phillip": {
         "trainerClass": "bug-catcher",
         "name": "Phillip",
         "team": [
@@ -923,7 +923,7 @@
             }
         ]
     },
-    "psychic-m::Kody": {
+    "psychic-m-kody": {
         "trainerClass": "psychic-m",
         "name": "Kody",
         "team": [
@@ -938,7 +938,7 @@
             }
         ]
     },
-    "psychic-f::Rachael": {
+    "psychic-f-rachael": {
         "trainerClass": "psychic-f",
         "name": "Rachael",
         "team": [
@@ -953,7 +953,7 @@
             }
         ]
     },
-    "lass::Caroline": {
+    "lass-caroline": {
         "trainerClass": "lass",
         "name": "Caroline",
         "team": [
@@ -977,7 +977,7 @@
             }
         ]
     },
-    "aroma-lady::Jenna": {
+    "aroma-lady-jenna": {
         "trainerClass": "aroma-lady",
         "name": "Jenna",
         "team": [
@@ -1010,7 +1010,7 @@
             }
         ]
     },
-    "aroma-lady::Angela": {
+    "aroma-lady-angela": {
         "trainerClass": "aroma-lady",
         "name": "Angela",
         "team": [
@@ -1025,7 +1025,7 @@
             }
         ]
     },
-    "leader-gardenia::Gardenia": {
+    "leader-gardenia-gardenia": {
         "trainerClass": "leader-gardenia",
         "name": "Gardenia",
         "team": [
@@ -1075,7 +1075,7 @@
             }
         ]
     },
-    "elite-four-flint::Flint": {
+    "elite-four-flint-flint": {
         "trainerClass": "elite-four-flint",
         "name": "Flint",
         "team": [
@@ -1153,7 +1153,7 @@
             }
         ]
     },
-    "galactic-grunt-m::3": {
+    "galactic-grunt-m-3": {
         "trainerClass": "galactic-grunt-m",
         "name": "3",
         "team": [
@@ -1166,7 +1166,7 @@
             }
         ]
     },
-    "galactic-grunt-m::4": {
+    "galactic-grunt-m-4": {
         "trainerClass": "galactic-grunt-m",
         "name": "4",
         "team": [
@@ -1186,7 +1186,7 @@
             }
         ]
     },
-    "worker::Dillan": {
+    "worker-dillan": {
         "trainerClass": "worker",
         "name": "Dillan",
         "team": [
@@ -1206,7 +1206,7 @@
             }
         ]
     },
-    "worker::Holden": {
+    "worker-holden": {
         "trainerClass": "worker",
         "name": "Holden",
         "team": [
@@ -1230,7 +1230,7 @@
             }
         ]
     },
-    "worker::Conrad": {
+    "worker-conrad": {
         "trainerClass": "worker",
         "name": "Conrad",
         "team": [
@@ -1243,7 +1243,7 @@
             }
         ]
     },
-    "galactic-grunt-m::17": {
+    "galactic-grunt-m-17": {
         "trainerClass": "galactic-grunt-m",
         "name": "17",
         "team": [
@@ -1257,7 +1257,7 @@
             }
         ]
     },
-    "galactic-grunt-m::18": {
+    "galactic-grunt-m-18": {
         "trainerClass": "galactic-grunt-m",
         "name": "18",
         "team": [
@@ -1279,7 +1279,7 @@
             }
         ]
     },
-    "galactic-grunt-f::6": {
+    "galactic-grunt-f-6": {
         "trainerClass": "galactic-grunt-f",
         "name": "6",
         "team": [
@@ -1293,7 +1293,7 @@
             }
         ]
     },
-    "scientist::Fredrick": {
+    "scientist-fredrick": {
         "trainerClass": "scientist",
         "name": "Fredrick",
         "team": [
@@ -1321,7 +1321,7 @@
             }
         ]
     },
-    "galactic-grunt-m::19": {
+    "galactic-grunt-m-19": {
         "trainerClass": "galactic-grunt-m",
         "name": "19",
         "team": [
@@ -1351,7 +1351,7 @@
             }
         ]
     },
-    "galactic-grunt-m::22": {
+    "galactic-grunt-m-22": {
         "trainerClass": "galactic-grunt-m",
         "name": "22",
         "team": [
@@ -1373,7 +1373,7 @@
             }
         ]
     },
-    "galactic-grunt-f::7": {
+    "galactic-grunt-f-7": {
         "trainerClass": "galactic-grunt-f",
         "name": "7",
         "team": [
@@ -1395,7 +1395,7 @@
             }
         ]
     },
-    "scientist::Darrius": {
+    "scientist-darrius": {
         "trainerClass": "scientist",
         "name": "Darrius",
         "team": [
@@ -1414,7 +1414,7 @@
             }
         ]
     },
-    "galactic-grunt-m::20": {
+    "galactic-grunt-m-20": {
         "trainerClass": "galactic-grunt-m",
         "name": "20",
         "team": [
@@ -1428,7 +1428,7 @@
             }
         ]
     },
-    "galactic-grunt-m::21": {
+    "galactic-grunt-m-21": {
         "trainerClass": "galactic-grunt-m",
         "name": "21",
         "team": [
@@ -1450,7 +1450,7 @@
             }
         ]
     },
-    "galactic-grunt-f::8": {
+    "galactic-grunt-f-8": {
         "trainerClass": "galactic-grunt-f",
         "name": "8",
         "team": [
@@ -1480,7 +1480,7 @@
             }
         ]
     },
-    "galactic-grunt-m::23": {
+    "galactic-grunt-m-23": {
         "trainerClass": "galactic-grunt-m",
         "name": "23",
         "team": [
@@ -1502,7 +1502,7 @@
             }
         ]
     },
-    "galactic-boss-cyrus::Cyrus 2": {
+    "galactic-boss-cyrus-cyrus-2": {
         "trainerClass": "galactic-boss-cyrus",
         "name": "Cyrus 2",
         "team": [
@@ -1550,7 +1550,7 @@
             }
         ]
     },
-    "commander-saturn::Saturn 2": {
+    "commander-saturn-saturn-2": {
         "trainerClass": "commander-saturn",
         "name": "Saturn 2",
         "team": [
@@ -1592,7 +1592,7 @@
             }
         ]
     },
-    "pkmn-trainer-barry::Barry": {
+    "pkmn-trainer-barry-barry": {
         "trainerClass": "pkmn-trainer-barry",
         "name": "Barry",
         "teamsByStarter": {
@@ -1742,7 +1742,7 @@
             ]
         }
     },
-    "lass::Molly": {
+    "lass-molly": {
         "trainerClass": "lass",
         "name": "Molly",
         "team": [
@@ -1757,7 +1757,7 @@
             }
         ]
     },
-    "youngster::Donny": {
+    "youngster-donny": {
         "trainerClass": "youngster",
         "name": "Donny",
         "team": [
@@ -1786,7 +1786,7 @@
             }
         ]
     },
-    "school-kid-f::Mackenzie": {
+    "school-kid-f-mackenzie": {
         "trainerClass": "school-kid-f",
         "name": "Mackenzie",
         "team": [
@@ -1816,7 +1816,7 @@
             }
         ]
     },
-    "school-kid-m::Chance": {
+    "school-kid-m-chance": {
         "trainerClass": "school-kid-m",
         "name": "Chance",
         "team": [
@@ -1842,7 +1842,7 @@
             }
         ]
     },
-    "ace-trainer-f::Catherine": {
+    "ace-trainer-f-catherine": {
         "trainerClass": "ace-trainer-f",
         "name": "Catherine",
         "team": [
@@ -1871,7 +1871,7 @@
             }
         ]
     },
-    "ace-trainer-m::Allen": {
+    "ace-trainer-m-allen": {
         "trainerClass": "ace-trainer-m",
         "name": "Allen",
         "team": [
@@ -1914,7 +1914,7 @@
             }
         ]
     },
-    "leader-fantina::Fantina": {
+    "leader-fantina-fantina": {
         "trainerClass": "leader-fantina",
         "name": "Fantina",
         "team": [
@@ -1969,7 +1969,7 @@
             }
         ]
     },
-    "camper::Lawrence": {
+    "camper-lawrence": {
         "trainerClass": "camper",
         "name": "Lawrence",
         "team": [
@@ -1989,7 +1989,7 @@
             }
         ]
     },
-    "picnicker::Summer": {
+    "picnicker-summer": {
         "trainerClass": "picnicker",
         "name": "Summer",
         "team": [
@@ -2002,7 +2002,7 @@
             }
         ]
     },
-    "worker::Noel": {
+    "worker-noel": {
         "trainerClass": "worker",
         "name": "Noel",
         "team": [
@@ -2020,7 +2020,7 @@
             }
         ]
     },
-    "worker::Braden": {
+    "worker-braden": {
         "trainerClass": "worker",
         "name": "Braden",
         "team": [
@@ -2033,7 +2033,7 @@
             }
         ]
     },
-    "hiker::Damon": {
+    "hiker-damon": {
         "trainerClass": "hiker",
         "name": "Damon",
         "team": [
@@ -2060,7 +2060,7 @@
             }
         ]
     },
-    "hiker::Maurice": {
+    "hiker-maurice": {
         "trainerClass": "hiker",
         "name": "Maurice",
         "team": [
@@ -2080,7 +2080,7 @@
             }
         ]
     },
-    "black-belt::Kendal": {
+    "black-belt-kendal": {
         "trainerClass": "black-belt",
         "name": "Kendal",
         "team": [
@@ -2094,7 +2094,7 @@
             }
         ]
     },
-    "battle-girl::Tyler": {
+    "battle-girl-tyler": {
         "trainerClass": "battle-girl",
         "name": "Tyler",
         "team": [
@@ -2108,7 +2108,7 @@
             }
         ]
     },
-    "worker::Brendon": {
+    "worker-brendon": {
         "trainerClass": "worker",
         "name": "Brendon",
         "team": [
@@ -2135,7 +2135,7 @@
             }
         ]
     },
-    "worker::Quentin": {
+    "worker-quentin": {
         "trainerClass": "worker",
         "name": "Quentin",
         "team": [
@@ -2161,7 +2161,7 @@
             }
         ]
     },
-    "ace-trainer-m::Jonah": {
+    "ace-trainer-m-jonah": {
         "trainerClass": "ace-trainer-m",
         "name": "Jonah",
         "team": [
@@ -2191,7 +2191,7 @@
             }
         ]
     },
-    "ace-trainer-f::Brenda": {
+    "ace-trainer-f-brenda": {
         "trainerClass": "ace-trainer-f",
         "name": "Brenda",
         "team": [
@@ -2221,7 +2221,7 @@
             }
         ]
     },
-    "galactic-grunt-m::12": {
+    "galactic-grunt-m-12": {
         "trainerClass": "galactic-grunt-m",
         "name": "12",
         "team": [
@@ -2281,7 +2281,7 @@
             ]
         }
     },
-    "galactic-grunt-m::1": {
+    "galactic-grunt-m-1": {
         "trainerClass": "galactic-grunt-m",
         "name": "1",
         "team": [
@@ -2307,7 +2307,7 @@
             ]
         }
     },
-    "galactic-grunt-f::4": {
+    "galactic-grunt-f-4": {
         "trainerClass": "galactic-grunt-f",
         "name": "4",
         "team": [
@@ -2329,7 +2329,7 @@
             }
         ]
     },
-    "galactic-grunt-m::13": {
+    "galactic-grunt-m-13": {
         "trainerClass": "galactic-grunt-m",
         "name": "13",
         "team": [
@@ -2343,7 +2343,7 @@
             }
         ]
     },
-    "galactic-grunt-m::14": {
+    "galactic-grunt-m-14": {
         "trainerClass": "galactic-grunt-m",
         "name": "14",
         "team": [
@@ -2381,7 +2381,7 @@
             }
         ]
     },
-    "galactic-grunt-m::15": {
+    "galactic-grunt-m-15": {
         "trainerClass": "galactic-grunt-m",
         "name": "15",
         "team": [
@@ -2433,7 +2433,7 @@
             ]
         }
     },
-    "galactic-grunt-m::16": {
+    "galactic-grunt-m-16": {
         "trainerClass": "galactic-grunt-m",
         "name": "16",
         "team": [
@@ -2455,7 +2455,7 @@
             }
         ]
     },
-    "galactic-grunt-f::5": {
+    "galactic-grunt-f-5": {
         "trainerClass": "galactic-grunt-f",
         "name": "5",
         "team": [
@@ -2477,7 +2477,7 @@
             }
         ]
     },
-    "commander-mars::Mars 2": {
+    "commander-mars-mars-2": {
         "trainerClass": "commander-mars",
         "name": "Mars 2",
         "team": [
@@ -2515,7 +2515,7 @@
             }
         ]
     },
-    "elite-four-lucian::Lucian": {
+    "elite-four-lucian-lucian": {
         "trainerClass": "elite-four-lucian",
         "name": "Lucian",
         "team": [
@@ -2582,7 +2582,7 @@
             }
         ]
     },
-    "galactic-grunt-f::9": {
+    "galactic-grunt-f-9": {
         "trainerClass": "galactic-grunt-f",
         "name": "9",
         "team": [
@@ -2596,7 +2596,7 @@
             }
         ]
     },
-    "galactic-grunt-m::24": {
+    "galactic-grunt-m-24": {
         "trainerClass": "galactic-grunt-m",
         "name": "24",
         "team": [
@@ -2610,7 +2610,7 @@
             }
         ]
     },
-    "galactic-grunt-m::25": {
+    "galactic-grunt-m-25": {
         "trainerClass": "galactic-grunt-m",
         "name": "25",
         "team": [
@@ -2648,7 +2648,7 @@
             }
         ]
     },
-    "galactic-grunt-m::26": {
+    "galactic-grunt-m-26": {
         "trainerClass": "galactic-grunt-m",
         "name": "26",
         "team": [
@@ -2670,7 +2670,7 @@
             }
         ]
     },
-    "galactic-grunt-m::27": {
+    "galactic-grunt-m-27": {
         "trainerClass": "galactic-grunt-m",
         "name": "27",
         "team": [
@@ -2684,7 +2684,7 @@
             }
         ]
     },
-    "galactic-grunt-f::10": {
+    "galactic-grunt-f-10": {
         "trainerClass": "galactic-grunt-f",
         "name": "10",
         "team": [
@@ -2714,7 +2714,7 @@
             }
         ]
     },
-    "galactic-grunt-m::28": {
+    "galactic-grunt-m-28": {
         "trainerClass": "galactic-grunt-m",
         "name": "28",
         "team": [
@@ -2744,7 +2744,7 @@
             }
         ]
     },
-    "galactic-grunt-f::11": {
+    "galactic-grunt-f-11": {
         "trainerClass": "galactic-grunt-f",
         "name": "11",
         "team": [
@@ -2766,7 +2766,7 @@
             }
         ]
     },
-    "galactic-grunt-m::29": {
+    "galactic-grunt-m-29": {
         "trainerClass": "galactic-grunt-m",
         "name": "29",
         "team": [
@@ -2788,7 +2788,7 @@
             }
         ]
     },
-    "galactic-grunt-f::12": {
+    "galactic-grunt-f-12": {
         "trainerClass": "galactic-grunt-f",
         "name": "12",
         "team": [
@@ -2818,7 +2818,7 @@
             }
         ]
     },
-    "camper::Curtis": {
+    "camper-curtis": {
         "trainerClass": "camper",
         "name": "Curtis",
         "team": [
@@ -2838,7 +2838,7 @@
             }
         ]
     },
-    "picnicker::Diana": {
+    "picnicker-diana": {
         "trainerClass": "picnicker",
         "name": "Diana",
         "team": [
@@ -2851,7 +2851,7 @@
             }
         ]
     },
-    "veteran::Grant": {
+    "veteran-grant": {
         "trainerClass": "veteran",
         "name": "Grant",
         "team": [
@@ -2889,7 +2889,7 @@
             }
         ]
     },
-    "youngster::Jonathon": {
+    "youngster-jonathon": {
         "trainerClass": "youngster",
         "name": "Jonathon",
         "team": [
@@ -2904,7 +2904,7 @@
             }
         ]
     },
-    "youngster::Darius": {
+    "youngster-darius": {
         "trainerClass": "youngster",
         "name": "Darius",
         "team": [
@@ -2928,7 +2928,7 @@
             }
         ]
     },
-    "leader-roark::Roark": {
+    "leader-roark-roark": {
         "trainerClass": "leader-roark",
         "name": "Roark",
         "team": [
@@ -2967,7 +2967,7 @@
             }
         ]
     },
-    "worker::Colin": {
+    "worker-colin": {
         "trainerClass": "worker",
         "name": "Colin",
         "team": [
@@ -2987,7 +2987,7 @@
             }
         ]
     },
-    "worker::Mason": {
+    "worker-mason": {
         "trainerClass": "worker",
         "name": "Mason",
         "team": [
@@ -3000,7 +3000,7 @@
             }
         ]
     },
-    "pkmn-trainer-barry::Barry 4": {
+    "pkmn-trainer-barry-barry-4": {
         "trainerClass": "pkmn-trainer-barry",
         "name": "Barry 4",
         "teamsByStarter": {
@@ -3150,7 +3150,7 @@
             ]
         }
     },
-    "tuber-m::Jacky": {
+    "tuber-m-jacky": {
         "trainerClass": "tuber-m",
         "name": "Jacky",
         "team": [
@@ -3165,7 +3165,7 @@
             }
         ]
     },
-    "fisherman::Walter": {
+    "fisherman-walter": {
         "trainerClass": "fisherman",
         "name": "Walter",
         "team": [
@@ -3180,7 +3180,7 @@
             }
         ]
     },
-    "sailor::Damian": {
+    "sailor-damian": {
         "trainerClass": "sailor",
         "name": "Damian",
         "team": [
@@ -3204,7 +3204,7 @@
             }
         ]
     },
-    "tuber-f::Caitlyn": {
+    "tuber-f-caitlyn": {
         "trainerClass": "tuber-f",
         "name": "Caitlyn",
         "team": [
@@ -3237,7 +3237,7 @@
             }
         ]
     },
-    "fisherman::Erick": {
+    "fisherman-erick": {
         "trainerClass": "fisherman",
         "name": "Erick",
         "team": [
@@ -3270,7 +3270,7 @@
             }
         ]
     },
-    "sailor::Samson": {
+    "sailor-samson": {
         "trainerClass": "sailor",
         "name": "Samson",
         "team": [
@@ -3303,7 +3303,7 @@
             }
         ]
     },
-    "leader-wake::Wake": {
+    "leader-wake-wake": {
         "trainerClass": "leader-wake",
         "name": "Wake",
         "team": [
@@ -3343,7 +3343,7 @@
             }
         ]
     },
-    "pkmn-trainer-barry::Barry 6": {
+    "pkmn-trainer-barry-barry-6": {
         "trainerClass": "pkmn-trainer-barry",
         "name": "Barry 6",
         "teamsByStarter": {
@@ -3577,7 +3577,7 @@
             ]
         }
     },
-    "pkmn-trainer-barry::Barry 1": {
+    "pkmn-trainer-barry-barry-1": {
         "trainerClass": "pkmn-trainer-barry",
         "name": "Barry 1",
         "teamsByStarter": {
@@ -3613,7 +3613,7 @@
             ]
         }
     },
-    "youngster::Tristan": {
+    "youngster-tristan": {
         "trainerClass": "youngster",
         "name": "Tristan",
         "team": [
@@ -3626,7 +3626,7 @@
             }
         ]
     },
-    "lass::Natalie": {
+    "lass-natalie": {
         "trainerClass": "lass",
         "name": "Natalie",
         "team": [
@@ -3639,7 +3639,7 @@
             }
         ]
     },
-    "youngster::Logan": {
+    "youngster-logan": {
         "trainerClass": "youngster",
         "name": "Logan",
         "team": [
@@ -3653,7 +3653,7 @@
             }
         ]
     },
-    "pkmn-trainer-barry::Barry 2": {
+    "pkmn-trainer-barry-barry-2": {
         "trainerClass": "pkmn-trainer-barry",
         "name": "Barry 2",
         "teamsByStarter": {
@@ -3719,7 +3719,7 @@
             ]
         }
     },
-    "youngster::Michael": {
+    "youngster-michael": {
         "trainerClass": "youngster",
         "name": "Michael",
         "team": [
@@ -3739,7 +3739,7 @@
             }
         ]
     },
-    "youngster::Dallas": {
+    "youngster-dallas": {
         "trainerClass": "youngster",
         "name": "Dallas",
         "team": [
@@ -3752,7 +3752,7 @@
             }
         ]
     },
-    "youngster::Sebastian": {
+    "youngster-sebastian": {
         "trainerClass": "youngster",
         "name": "Sebastian",
         "team": [
@@ -3766,7 +3766,7 @@
             }
         ]
     },
-    "lass::Kaitlin": {
+    "lass-kaitlin": {
         "trainerClass": "lass",
         "name": "Kaitlin",
         "team": [
@@ -3800,7 +3800,7 @@
             }
         ]
     },
-    "lass::Madeline": {
+    "lass-madeline": {
         "trainerClass": "lass",
         "name": "Madeline",
         "team": [
@@ -3813,7 +3813,7 @@
             }
         ]
     },
-    "lass::Sarah": {
+    "lass-sarah": {
         "trainerClass": "lass",
         "name": "Sarah",
         "team": [
@@ -3827,7 +3827,7 @@
             }
         ]
     },
-    "youngster::Tyler": {
+    "youngster-tyler": {
         "trainerClass": "youngster",
         "name": "Tyler",
         "team": [
@@ -3841,7 +3841,7 @@
             }
         ]
     },
-    "lass::Samantha": {
+    "lass-samantha": {
         "trainerClass": "lass",
         "name": "Samantha",
         "team": [
@@ -3855,7 +3855,7 @@
             }
         ]
     },
-    "aroma-lady::Taylor": {
+    "aroma-lady-taylor": {
         "trainerClass": "aroma-lady",
         "name": "Taylor",
         "team": [
@@ -3875,7 +3875,7 @@
             }
         ]
     },
-    "bug-catcher::Brandon": {
+    "bug-catcher-brandon": {
         "trainerClass": "bug-catcher",
         "name": "Brandon",
         "team": [
@@ -3896,7 +3896,7 @@
             }
         ]
     },
-    "twins::Liv & Liz": {
+    "twins-liv-and-liz": {
         "trainerClass": "twins",
         "name": "Liv & Liz",
         "team": [
@@ -3916,7 +3916,7 @@
             }
         ]
     },
-    "camper::Jacob": {
+    "camper-jacob": {
         "trainerClass": "camper",
         "name": "Jacob",
         "team": [
@@ -3930,7 +3930,7 @@
             }
         ]
     },
-    "hiker::Daniel": {
+    "hiker-daniel": {
         "trainerClass": "hiker",
         "name": "Daniel",
         "team": [
@@ -3957,7 +3957,7 @@
             }
         ]
     },
-    "aroma-lady::Elizabeth": {
+    "aroma-lady-elizabeth": {
         "trainerClass": "aroma-lady",
         "name": "Elizabeth",
         "team": [
@@ -3971,7 +3971,7 @@
             }
         ]
     },
-    "picnicker::Siena": {
+    "picnicker-siena": {
         "trainerClass": "picnicker",
         "name": "Siena",
         "team": [
@@ -3991,7 +3991,7 @@
             }
         ]
     },
-    "camper::Zackary": {
+    "camper-zackary": {
         "trainerClass": "camper",
         "name": "Zackary",
         "team": [
@@ -4004,7 +4004,7 @@
             }
         ]
     },
-    "hiker::Nicholas": {
+    "hiker-nicholas": {
         "trainerClass": "hiker",
         "name": "Nicholas",
         "team": [
@@ -4017,7 +4017,7 @@
             }
         ]
     },
-    "battle-girl::Kelsey": {
+    "battle-girl-kelsey": {
         "trainerClass": "battle-girl",
         "name": "Kelsey",
         "team": [
@@ -4031,7 +4031,7 @@
             }
         ]
     },
-    "picnicker::Karina": {
+    "picnicker-karina": {
         "trainerClass": "picnicker",
         "name": "Karina",
         "team": [
@@ -4045,7 +4045,7 @@
             }
         ]
     },
-    "fisherman::Joseph": {
+    "fisherman-joseph": {
         "trainerClass": "fisherman",
         "name": "Joseph",
         "team": [
@@ -4058,7 +4058,7 @@
             }
         ]
     },
-    "fisherman::Andrew": {
+    "fisherman-andrew": {
         "trainerClass": "fisherman",
         "name": "Andrew",
         "team": [
@@ -4106,7 +4106,7 @@
             }
         ]
     },
-    "fisherman::Zachary": {
+    "fisherman-zachary": {
         "trainerClass": "fisherman",
         "name": "Zachary",
         "team": [
@@ -4133,7 +4133,7 @@
             }
         ]
     },
-    "cyclist-m::Axel": {
+    "cyclist-m-axel": {
         "trainerClass": "cyclist-m",
         "name": "Axel",
         "team": [
@@ -4146,7 +4146,7 @@
             }
         ]
     },
-    "cyclist-f::Megan": {
+    "cyclist-f-megan": {
         "trainerClass": "cyclist-f",
         "name": "Megan",
         "team": [
@@ -4159,7 +4159,7 @@
             }
         ]
     },
-    "cyclist-m::James": {
+    "cyclist-m-james": {
         "trainerClass": "cyclist-m",
         "name": "James",
         "team": [
@@ -4172,7 +4172,7 @@
             }
         ]
     },
-    "cyclist-f::Nicole": {
+    "cyclist-f-nicole": {
         "trainerClass": "cyclist-f",
         "name": "Nicole",
         "team": [
@@ -4199,7 +4199,7 @@
             }
         ]
     },
-    "cyclist-m::John": {
+    "cyclist-m-john": {
         "trainerClass": "cyclist-m",
         "name": "John",
         "team": [
@@ -4219,7 +4219,7 @@
             }
         ]
     },
-    "cyclist-m::Ryan": {
+    "cyclist-m-ryan": {
         "trainerClass": "cyclist-m",
         "name": "Ryan",
         "team": [
@@ -4232,7 +4232,7 @@
             }
         ]
     },
-    "cyclist-f::Rachel": {
+    "cyclist-f-rachel": {
         "trainerClass": "cyclist-f",
         "name": "Rachel",
         "team": [
@@ -4252,7 +4252,7 @@
             }
         ]
     },
-    "cyclist-f::Kayla": {
+    "cyclist-f-kayla": {
         "trainerClass": "cyclist-f",
         "name": "Kayla",
         "team": [
@@ -4265,7 +4265,7 @@
             }
         ]
     },
-    "hiker::Theodore": {
+    "hiker-theodore": {
         "trainerClass": "hiker",
         "name": "Theodore",
         "team": [
@@ -4285,7 +4285,7 @@
             }
         ]
     },
-    "picnicker::Lauren": {
+    "picnicker-lauren": {
         "trainerClass": "picnicker",
         "name": "Lauren",
         "team": [
@@ -4299,7 +4299,7 @@
             }
         ]
     },
-    "camper::Anthony": {
+    "camper-anthony": {
         "trainerClass": "camper",
         "name": "Anthony",
         "team": [
@@ -4312,7 +4312,7 @@
             }
         ]
     },
-    "hiker::Justin": {
+    "hiker-justin": {
         "trainerClass": "hiker",
         "name": "Justin",
         "team": [
@@ -4332,7 +4332,7 @@
             }
         ]
     },
-    "youngster::Austin": {
+    "youngster-austin": {
         "trainerClass": "youngster",
         "name": "Austin",
         "team": [
@@ -4359,7 +4359,7 @@
             }
         ]
     },
-    "hiker::Kevin": {
+    "hiker-kevin": {
         "trainerClass": "hiker",
         "name": "Kevin",
         "team": [
@@ -4393,7 +4393,7 @@
             }
         ]
     },
-    "battle-girl::Helen": {
+    "battle-girl-helen": {
         "trainerClass": "battle-girl",
         "name": "Helen",
         "team": [
@@ -4415,7 +4415,7 @@
             }
         ]
     },
-    "hiker::Jonathan": {
+    "hiker-jonathan": {
         "trainerClass": "hiker",
         "name": "Jonathan",
         "team": [
@@ -4428,7 +4428,7 @@
             }
         ]
     },
-    "black-belt::Kyle": {
+    "black-belt-kyle": {
         "trainerClass": "black-belt",
         "name": "Kyle",
         "team": [
@@ -4442,7 +4442,7 @@
             }
         ]
     },
-    "hiker::Robert": {
+    "hiker-robert": {
         "trainerClass": "hiker",
         "name": "Robert",
         "team": [
@@ -4455,7 +4455,7 @@
             }
         ]
     },
-    "aroma-lady::Hannah": {
+    "aroma-lady-hannah": {
         "trainerClass": "aroma-lady",
         "name": "Hannah",
         "team": [
@@ -4475,7 +4475,7 @@
             }
         ]
     },
-    "artist::William": {
+    "artist-william": {
         "trainerClass": "artist",
         "name": "William",
         "team": [
@@ -4495,7 +4495,7 @@
             }
         ]
     },
-    "fisherman::Cody": {
+    "fisherman-cody": {
         "trainerClass": "fisherman",
         "name": "Cody",
         "team": [
@@ -4515,7 +4515,7 @@
             }
         ]
     },
-    "hiker::Alexander": {
+    "hiker-alexander": {
         "trainerClass": "hiker",
         "name": "Alexander",
         "team": [
@@ -4535,7 +4535,7 @@
             }
         ]
     },
-    "pkmn-breeder-m::Albert": {
+    "pkmn-breeder-m-albert": {
         "trainerClass": "pkmn-breeder-m",
         "name": "Albert",
         "team": [
@@ -4569,7 +4569,7 @@
             }
         ]
     },
-    "jogger::Richard": {
+    "jogger-richard": {
         "trainerClass": "jogger",
         "name": "Richard",
         "team": [
@@ -4582,7 +4582,7 @@
             }
         ]
     },
-    "twins::Emma & Lil": {
+    "twins-emma-and-lil": {
         "trainerClass": "twins",
         "name": "Emma & Lil",
         "team": [
@@ -4602,7 +4602,7 @@
             }
         ]
     },
-    "poke-kid::Danielle": {
+    "poke-kid-danielle": {
         "trainerClass": "poke-kid",
         "name": "Danielle",
         "team": [
@@ -4615,7 +4615,7 @@
             }
         ]
     },
-    "jogger::Raul": {
+    "jogger-raul": {
         "trainerClass": "jogger",
         "name": "Raul",
         "team": [
@@ -4628,7 +4628,7 @@
             }
         ]
     },
-    "pkmn-breeder-f::Jennifer": {
+    "pkmn-breeder-f-jennifer": {
         "trainerClass": "pkmn-breeder-f",
         "name": "Jennifer",
         "team": [
@@ -4662,7 +4662,7 @@
             }
         ]
     },
-    "cowgirl::Shelley": {
+    "cowgirl-shelley": {
         "trainerClass": "cowgirl",
         "name": "Shelley",
         "team": [
@@ -4675,7 +4675,7 @@
             }
         ]
     },
-    "young-couple::Ty & Sue": {
+    "young-couple-ty-and-sue": {
         "trainerClass": "young-couple",
         "name": "Ty & Sue",
         "team": [
@@ -4695,7 +4695,7 @@
             }
         ]
     },
-    "youngster::Oliver": {
+    "youngster-oliver": {
         "trainerClass": "youngster",
         "name": "Oliver",
         "team": [
@@ -4722,7 +4722,7 @@
             }
         ]
     },
-    "roughneck::Kirby": {
+    "roughneck-kirby": {
         "trainerClass": "roughneck",
         "name": "Kirby",
         "team": [
@@ -4735,7 +4735,7 @@
             }
         ]
     },
-    "pokefan-m::Leonard": {
+    "pokefan-m-leonard": {
         "trainerClass": "pokefan-m",
         "name": "Leonard",
         "team": [
@@ -4775,7 +4775,7 @@
             }
         ]
     },
-    "pokefan-f::Rebekah": {
+    "pokefan-f-rebekah": {
         "trainerClass": "pokefan-f",
         "name": "Rebekah",
         "team": [
@@ -4799,7 +4799,7 @@
             }
         ]
     },
-    "belle-and-pa::Beth & Bob": {
+    "belle-and-pa-beth-and-bob": {
         "trainerClass": "belle-and-pa",
         "name": "Beth & Bob",
         "team": [
@@ -4819,7 +4819,7 @@
             }
         ]
     },
-    "young-couple::Mike & Nat": {
+    "young-couple-mike-and-nat": {
         "trainerClass": "young-couple",
         "name": "Mike & Nat",
         "team": [
@@ -4839,7 +4839,7 @@
             }
         ]
     },
-    "rancher::Marco": {
+    "rancher-marco": {
         "trainerClass": "rancher",
         "name": "Marco",
         "team": [
@@ -4852,7 +4852,7 @@
             }
         ]
     },
-    "jogger::Wyatt": {
+    "jogger-wyatt": {
         "trainerClass": "jogger",
         "name": "Wyatt",
         "team": [
@@ -4865,7 +4865,7 @@
             }
         ]
     },
-    "belle-and-pa::Ava & Matt": {
+    "belle-and-pa-ava-and-matt": {
         "trainerClass": "belle-and-pa",
         "name": "Ava & Matt",
         "team": [
@@ -4885,7 +4885,7 @@
             }
         ]
     },
-    "twins::Teri & Tia": {
+    "twins-teri-and-tia": {
         "trainerClass": "twins",
         "name": "Teri & Tia",
         "team": [
@@ -4905,7 +4905,7 @@
             }
         ]
     },
-    "pkmn-breeder-m::Kahlil": {
+    "pkmn-breeder-m-kahlil": {
         "trainerClass": "pkmn-breeder-m",
         "name": "Kahlil",
         "team": [
@@ -4925,7 +4925,7 @@
             }
         ]
     },
-    "pkmn-breeder-f::Amber": {
+    "pkmn-breeder-f-amber": {
         "trainerClass": "pkmn-breeder-f",
         "name": "Amber",
         "team": [
@@ -4945,7 +4945,7 @@
             }
         ]
     },
-    "ninja-boy::Brennan": {
+    "ninja-boy-brennan": {
         "trainerClass": "ninja-boy",
         "name": "Brennan",
         "team": [
@@ -4965,7 +4965,7 @@
             }
         ]
     },
-    "ninja-boy::Fabian": {
+    "ninja-boy-fabian": {
         "trainerClass": "ninja-boy",
         "name": "Fabian",
         "team": [
@@ -4985,7 +4985,7 @@
             }
         ]
     },
-    "ninja-boy::Bruce": {
+    "ninja-boy-bruce": {
         "trainerClass": "ninja-boy",
         "name": "Bruce",
         "team": [
@@ -4998,7 +4998,7 @@
             }
         ]
     },
-    "ninja-boy::Joel": {
+    "ninja-boy-joel": {
         "trainerClass": "ninja-boy",
         "name": "Joel",
         "team": [
@@ -5032,7 +5032,7 @@
             }
         ]
     },
-    "ace-trainer-f::Alyssa": {
+    "ace-trainer-f-alyssa": {
         "trainerClass": "ace-trainer-f",
         "name": "Alyssa",
         "team": [
@@ -5065,7 +5065,7 @@
             }
         ]
     },
-    "double-team::Zac & Jen": {
+    "double-team-zac-and-jen": {
         "trainerClass": "double-team",
         "name": "Zac & Jen",
         "team": [
@@ -5087,7 +5087,7 @@
             }
         ]
     },
-    "ace-trainer-m::Ernest": {
+    "ace-trainer-m-ernest": {
         "trainerClass": "ace-trainer-m",
         "name": "Ernest",
         "team": [
@@ -5125,7 +5125,7 @@
             }
         ]
     },
-    "ninja-boy::Davido": {
+    "ninja-boy-davido": {
         "trainerClass": "ninja-boy",
         "name": "Davido",
         "team": [
@@ -5138,7 +5138,7 @@
             }
         ]
     },
-    "black-belt::Adam": {
+    "black-belt-adam": {
         "trainerClass": "black-belt",
         "name": "Adam",
         "team": [
@@ -5152,7 +5152,7 @@
             }
         ]
     },
-    "ninja-boy::Nathan": {
+    "ninja-boy-nathan": {
         "trainerClass": "ninja-boy",
         "name": "Nathan",
         "team": [
@@ -5172,7 +5172,7 @@
             }
         ]
     },
-    "bird-keeper::Brianna": {
+    "bird-keeper-brianna": {
         "trainerClass": "bird-keeper",
         "name": "Brianna",
         "team": [
@@ -5194,7 +5194,7 @@
             }
         ]
     },
-    "veteran::Brian": {
+    "veteran-brian": {
         "trainerClass": "veteran",
         "name": "Brian",
         "team": [
@@ -5227,7 +5227,7 @@
             }
         ]
     },
-    "dragon-tamer::Patrick": {
+    "dragon-tamer-patrick": {
         "trainerClass": "dragon-tamer",
         "name": "Patrick",
         "team": [
@@ -5241,7 +5241,7 @@
             }
         ]
     },
-    "ninja-boy::Zach": {
+    "ninja-boy-zach": {
         "trainerClass": "ninja-boy",
         "name": "Zach",
         "team": [
@@ -5268,7 +5268,7 @@
             }
         ]
     },
-    "hiker::Louis": {
+    "hiker-louis": {
         "trainerClass": "hiker",
         "name": "Louis",
         "team": [
@@ -5288,7 +5288,7 @@
             }
         ]
     },
-    "bird-keeper::Alexandra": {
+    "bird-keeper-alexandra": {
         "trainerClass": "bird-keeper",
         "name": "Alexandra",
         "team": [
@@ -5308,7 +5308,7 @@
             }
         ]
     },
-    "bird-keeper::Katherine": {
+    "bird-keeper-katherine": {
         "trainerClass": "bird-keeper",
         "name": "Katherine",
         "team": [
@@ -5322,7 +5322,7 @@
             }
         ]
     },
-    "ruin-maniac::Harry": {
+    "ruin-maniac-harry": {
         "trainerClass": "ruin-maniac",
         "name": "Harry",
         "team": [
@@ -5346,7 +5346,7 @@
             }
         ]
     },
-    "ninja-boy::Nick": {
+    "ninja-boy-nick": {
         "trainerClass": "ninja-boy",
         "name": "Nick",
         "team": [
@@ -5366,7 +5366,7 @@
             }
         ]
     },
-    "black-belt::Sean": {
+    "black-belt-sean": {
         "trainerClass": "black-belt",
         "name": "Sean",
         "team": [
@@ -5396,7 +5396,7 @@
             }
         ]
     },
-    "pkmn-ranger-m::Taylor": {
+    "pkmn-ranger-m-taylor": {
         "trainerClass": "pkmn-ranger-m",
         "name": "Taylor",
         "team": [
@@ -5418,7 +5418,7 @@
             }
         ]
     },
-    "scientist::Shaun": {
+    "scientist-shaun": {
         "trainerClass": "scientist",
         "name": "Shaun",
         "team": [
@@ -5445,7 +5445,7 @@
             }
         ]
     },
-    "parasol-lady::Sabrina": {
+    "parasol-lady-sabrina": {
         "trainerClass": "parasol-lady",
         "name": "Sabrina",
         "team": [
@@ -5465,7 +5465,7 @@
             }
         ]
     },
-    "parasol-lady::Alexa": {
+    "parasol-lady-alexa": {
         "trainerClass": "parasol-lady",
         "name": "Alexa",
         "team": [
@@ -5485,7 +5485,7 @@
             }
         ]
     },
-    "fisherman::Juan": {
+    "fisherman-juan": {
         "trainerClass": "fisherman",
         "name": "Juan",
         "team": [
@@ -5498,7 +5498,7 @@
             }
         ]
     },
-    "fisherman::Josh": {
+    "fisherman-josh": {
         "trainerClass": "fisherman",
         "name": "Josh",
         "team": [
@@ -5518,7 +5518,7 @@
             }
         ]
     },
-    "fisherman::Travis": {
+    "fisherman-travis": {
         "trainerClass": "fisherman",
         "name": "Travis",
         "team": [
@@ -5552,7 +5552,7 @@
             }
         ]
     },
-    "collector::Dean": {
+    "collector-dean": {
         "trainerClass": "collector",
         "name": "Dean",
         "team": [
@@ -5572,7 +5572,7 @@
             }
         ]
     },
-    "policeman::Danny": {
+    "policeman-danny": {
         "trainerClass": "policeman",
         "name": "Danny",
         "team": [
@@ -5592,7 +5592,7 @@
             }
         ]
     },
-    "scientist::Stefano": {
+    "scientist-stefano": {
         "trainerClass": "scientist",
         "name": "Stefano",
         "team": [
@@ -5612,7 +5612,7 @@
             }
         ]
     },
-    "pkmn-ranger-f::Allison": {
+    "pkmn-ranger-f-allison": {
         "trainerClass": "pkmn-ranger-f",
         "name": "Allison",
         "team": [
@@ -5634,7 +5634,7 @@
             }
         ]
     },
-    "pkmn-ranger-m::Jeffrey": {
+    "pkmn-ranger-m-jeffrey": {
         "trainerClass": "pkmn-ranger-m",
         "name": "Jeffrey",
         "team": [
@@ -5648,7 +5648,7 @@
             }
         ]
     },
-    "policeman::Caleb": {
+    "policeman-caleb": {
         "trainerClass": "policeman",
         "name": "Caleb",
         "team": [
@@ -5668,7 +5668,7 @@
             }
         ]
     },
-    "gentleman::Jeremy": {
+    "gentleman-jeremy": {
         "trainerClass": "gentleman",
         "name": "Jeremy",
         "team": [
@@ -5687,7 +5687,7 @@
             }
         ]
     },
-    "socialite::Reina": {
+    "socialite-reina": {
         "trainerClass": "socialite",
         "name": "Reina",
         "team": [
@@ -5706,7 +5706,7 @@
             }
         ]
     },
-    "policeman::Dylan": {
+    "policeman-dylan": {
         "trainerClass": "policeman",
         "name": "Dylan",
         "team": [
@@ -5726,7 +5726,7 @@
             }
         ]
     },
-    "rich-boy::Jason": {
+    "rich-boy-jason": {
         "trainerClass": "rich-boy",
         "name": "Jason",
         "team": [
@@ -5745,7 +5745,7 @@
             }
         ]
     },
-    "lady::Melissa": {
+    "lady-melissa": {
         "trainerClass": "lady",
         "name": "Melissa",
         "team": [
@@ -5764,7 +5764,7 @@
             }
         ]
     },
-    "policeman::Alex": {
+    "policeman-alex": {
         "trainerClass": "policeman",
         "name": "Alex",
         "team": [
@@ -5784,7 +5784,7 @@
             }
         ]
     },
-    "policeman::Bobby": {
+    "policeman-bobby": {
         "trainerClass": "policeman",
         "name": "Bobby",
         "team": [
@@ -5804,7 +5804,7 @@
             }
         ]
     },
-    "tuber-f::Chelsea": {
+    "tuber-f-chelsea": {
         "trainerClass": "tuber-f",
         "name": "Chelsea",
         "team": [
@@ -5817,7 +5817,7 @@
             }
         ]
     },
-    "tuber-m::Jared": {
+    "tuber-m-jared": {
         "trainerClass": "tuber-m",
         "name": "Jared",
         "team": [
@@ -5844,7 +5844,7 @@
             }
         ]
     },
-    "fisherman::Kenneth": {
+    "fisherman-kenneth": {
         "trainerClass": "fisherman",
         "name": "Kenneth",
         "team": [
@@ -5871,7 +5871,7 @@
             }
         ]
     },
-    "beauty::Cyndy": {
+    "beauty-cyndy": {
         "trainerClass": "beauty",
         "name": "Cyndy",
         "team": [
@@ -5884,7 +5884,7 @@
             }
         ]
     },
-    "swimmer-f::Haley": {
+    "swimmer-f-haley": {
         "trainerClass": "swimmer-f",
         "name": "Haley",
         "team": [
@@ -5904,7 +5904,7 @@
             }
         ]
     },
-    "sailor::Paul": {
+    "sailor-paul": {
         "trainerClass": "sailor",
         "name": "Paul",
         "team": [
@@ -5931,7 +5931,7 @@
             }
         ]
     },
-    "swimmer-m::Evan": {
+    "swimmer-m-evan": {
         "trainerClass": "swimmer-m",
         "name": "Evan",
         "team": [
@@ -5951,7 +5951,7 @@
             }
         ]
     },
-    "swimmer-f::Mary": {
+    "swimmer-f-mary": {
         "trainerClass": "swimmer-f",
         "name": "Mary",
         "team": [
@@ -5971,7 +5971,7 @@
             }
         ]
     },
-    "swimmer-m::Sheltin": {
+    "swimmer-m-sheltin": {
         "trainerClass": "swimmer-m",
         "name": "Sheltin",
         "team": [
@@ -5998,7 +5998,7 @@
             }
         ]
     },
-    "psychic-f::Abigail": {
+    "psychic-f-abigail": {
         "trainerClass": "psychic-f",
         "name": "Abigail",
         "team": [
@@ -6025,7 +6025,7 @@
             }
         ]
     },
-    "pi::Carlos": {
+    "pi-carlos": {
         "trainerClass": "pi",
         "name": "Carlos",
         "team": [
@@ -6040,7 +6040,7 @@
             }
         ]
     },
-    "collector::Brady": {
+    "collector-brady": {
         "trainerClass": "collector",
         "name": "Brady",
         "team": [
@@ -6088,7 +6088,7 @@
             }
         ]
     },
-    "beauty::Devon": {
+    "beauty-devon": {
         "trainerClass": "beauty",
         "name": "Devon",
         "team": [
@@ -6115,7 +6115,7 @@
             }
         ]
     },
-    "ruin-maniac::Bryan": {
+    "ruin-maniac-bryan": {
         "trainerClass": "ruin-maniac",
         "name": "Bryan",
         "team": [
@@ -6134,7 +6134,7 @@
             }
         ]
     },
-    "psychic-m::Mitchell": {
+    "psychic-m-mitchell": {
         "trainerClass": "psychic-m",
         "name": "Mitchell",
         "team": [
@@ -6154,7 +6154,7 @@
             }
         ]
     },
-    "collector::Jamal": {
+    "collector-jamal": {
         "trainerClass": "collector",
         "name": "Jamal",
         "team": [
@@ -6166,7 +6166,7 @@
             }
         ]
     },
-    "ruin-maniac::Ronald": {
+    "ruin-maniac-ronald": {
         "trainerClass": "ruin-maniac",
         "name": "Ronald",
         "team": [
@@ -6179,7 +6179,7 @@
             }
         ]
     },
-    "collector::Douglas": {
+    "collector-douglas": {
         "trainerClass": "collector",
         "name": "Douglas",
         "team": [
@@ -6206,7 +6206,7 @@
             }
         ]
     },
-    "ruin-maniac::Calvin": {
+    "ruin-maniac-calvin": {
         "trainerClass": "ruin-maniac",
         "name": "Calvin",
         "team": [
@@ -6225,7 +6225,7 @@
             }
         ]
     },
-    "jogger::Craig": {
+    "jogger-craig": {
         "trainerClass": "jogger",
         "name": "Craig",
         "team": [
@@ -6245,7 +6245,7 @@
             }
         ]
     },
-    "black-belt::Derek": {
+    "black-belt-derek": {
         "trainerClass": "black-belt",
         "name": "Derek",
         "team": [
@@ -6259,7 +6259,7 @@
             }
         ]
     },
-    "black-belt::Gregory": {
+    "black-belt-gregory": {
         "trainerClass": "black-belt",
         "name": "Gregory",
         "team": [
@@ -6289,7 +6289,7 @@
             }
         ]
     },
-    "black-belt::Nathaniel": {
+    "black-belt-nathaniel": {
         "trainerClass": "black-belt",
         "name": "Nathaniel",
         "team": [
@@ -6319,7 +6319,7 @@
             }
         ]
     },
-    "jogger::Scott": {
+    "jogger-scott": {
         "trainerClass": "jogger",
         "name": "Scott",
         "team": [
@@ -6332,7 +6332,7 @@
             }
         ]
     },
-    "ace-trainer-f::Maya": {
+    "ace-trainer-f-maya": {
         "trainerClass": "ace-trainer-f",
         "name": "Maya",
         "team": [
@@ -6370,7 +6370,7 @@
             }
         ]
     },
-    "ace-trainer-m::Dennis": {
+    "ace-trainer-m-dennis": {
         "trainerClass": "ace-trainer-m",
         "name": "Dennis",
         "team": [
@@ -6408,7 +6408,7 @@
             }
         ]
     },
-    "ace-trainer-snow-m::Blake": {
+    "ace-trainer-snow-m-blake": {
         "trainerClass": "ace-trainer-snow-m",
         "name": "Blake",
         "team": [
@@ -6431,7 +6431,7 @@
             }
         ]
     },
-    "ace-trainer-snow-f::Maria": {
+    "ace-trainer-snow-f-maria": {
         "trainerClass": "ace-trainer-snow-f",
         "name": "Maria",
         "team": [
@@ -6469,7 +6469,7 @@
             }
         ]
     },
-    "ace-trainer-snow-f::Laura": {
+    "ace-trainer-snow-f-laura": {
         "trainerClass": "ace-trainer-snow-f",
         "name": "Laura",
         "team": [
@@ -6489,7 +6489,7 @@
             }
         ]
     },
-    "skier-m::Edward": {
+    "skier-m-edward": {
         "trainerClass": "skier-m",
         "name": "Edward",
         "team": [
@@ -6502,7 +6502,7 @@
             }
         ]
     },
-    "ace-trainer-snow-m::Garrett": {
+    "ace-trainer-snow-m-garrett": {
         "trainerClass": "ace-trainer-snow-m",
         "name": "Garrett",
         "team": [
@@ -6540,7 +6540,7 @@
             }
         ]
     },
-    "black-belt::Philip": {
+    "black-belt-philip": {
         "trainerClass": "black-belt",
         "name": "Philip",
         "team": [
@@ -6554,7 +6554,7 @@
             }
         ]
     },
-    "skier-f::Kaitlyn": {
+    "skier-f-kaitlyn": {
         "trainerClass": "skier-f",
         "name": "Kaitlyn",
         "team": [
@@ -6574,7 +6574,7 @@
             }
         ]
     },
-    "skier-m::Bradley": {
+    "skier-m-bradley": {
         "trainerClass": "skier-m",
         "name": "Bradley",
         "team": [
@@ -6601,7 +6601,7 @@
             }
         ]
     },
-    "skier-f::Andrea": {
+    "skier-f-andrea": {
         "trainerClass": "skier-f",
         "name": "Andrea",
         "team": [
@@ -6614,7 +6614,7 @@
             }
         ]
     },
-    "ace-trainer-snow-m::Dalton": {
+    "ace-trainer-snow-m-dalton": {
         "trainerClass": "ace-trainer-snow-m",
         "name": "Dalton",
         "team": [
@@ -6643,7 +6643,7 @@
             }
         ]
     },
-    "skier-m::Shawn": {
+    "skier-m-shawn": {
         "trainerClass": "skier-m",
         "name": "Shawn",
         "team": [
@@ -6670,7 +6670,7 @@
             }
         ]
     },
-    "ninja-boy::Matthew": {
+    "ninja-boy-matthew": {
         "trainerClass": "ninja-boy",
         "name": "Matthew",
         "team": [
@@ -6683,7 +6683,7 @@
             }
         ]
     },
-    "skier-f::Madison": {
+    "skier-f-madison": {
         "trainerClass": "skier-f",
         "name": "Madison",
         "team": [
@@ -6696,7 +6696,7 @@
             }
         ]
     },
-    "ninja-boy::Ethan": {
+    "ninja-boy-ethan": {
         "trainerClass": "ninja-boy",
         "name": "Ethan",
         "team": [
@@ -6716,7 +6716,7 @@
             }
         ]
     },
-    "skier-m::Bjorn": {
+    "skier-m-bjorn": {
         "trainerClass": "skier-m",
         "name": "Bjorn",
         "team": [
@@ -6736,7 +6736,7 @@
             }
         ]
     },
-    "skier-f::Lexie": {
+    "skier-f-lexie": {
         "trainerClass": "skier-f",
         "name": "Lexie",
         "team": [
@@ -6756,7 +6756,7 @@
             }
         ]
     },
-    "black-belt::Luke": {
+    "black-belt-luke": {
         "trainerClass": "black-belt",
         "name": "Luke",
         "team": [
@@ -6786,7 +6786,7 @@
             }
         ]
     },
-    "ace-trainer-snow-f::Olivia": {
+    "ace-trainer-snow-f-olivia": {
         "trainerClass": "ace-trainer-snow-f",
         "name": "Olivia",
         "team": [
@@ -6829,7 +6829,7 @@
             }
         ]
     },
-    "fisherman::Miguel": {
+    "fisherman-miguel": {
         "trainerClass": "fisherman",
         "name": "Miguel",
         "team": [
@@ -6849,7 +6849,7 @@
             }
         ]
     },
-    "fisherman::Luc": {
+    "fisherman-luc": {
         "trainerClass": "fisherman",
         "name": "Luc",
         "team": [
@@ -6890,7 +6890,7 @@
             }
         ]
     },
-    "sailor::Skyler": {
+    "sailor-skyler": {
         "trainerClass": "sailor",
         "name": "Skyler",
         "team": [
@@ -6910,7 +6910,7 @@
             }
         ]
     },
-    "guitarist::Tony": {
+    "guitarist-tony": {
         "trainerClass": "guitarist",
         "name": "Tony",
         "team": [
@@ -6929,7 +6929,7 @@
             }
         ]
     },
-    "tuber-m::Trenton": {
+    "tuber-m-trenton": {
         "trainerClass": "tuber-m",
         "name": "Trenton",
         "team": [
@@ -6949,7 +6949,7 @@
             }
         ]
     },
-    "tuber-f::Mariel": {
+    "tuber-f-mariel": {
         "trainerClass": "tuber-f",
         "name": "Mariel",
         "team": [
@@ -6969,7 +6969,7 @@
             }
         ]
     },
-    "swimmer-f::Jessica": {
+    "swimmer-f-jessica": {
         "trainerClass": "swimmer-f",
         "name": "Jessica",
         "team": [
@@ -7003,7 +7003,7 @@
             }
         ]
     },
-    "swimmer-f::Erica": {
+    "swimmer-f-erica": {
         "trainerClass": "swimmer-f",
         "name": "Erica",
         "team": [
@@ -7016,7 +7016,7 @@
             }
         ]
     },
-    "swimmer-m::Adrian": {
+    "swimmer-m-adrian": {
         "trainerClass": "swimmer-m",
         "name": "Adrian",
         "team": [
@@ -7043,7 +7043,7 @@
             }
         ]
     },
-    "swimmer-m::Vincent": {
+    "swimmer-m-vincent": {
         "trainerClass": "swimmer-m",
         "name": "Vincent",
         "team": [
@@ -7063,7 +7063,7 @@
             }
         ]
     },
-    "swimmer-f::Katelyn": {
+    "swimmer-f-katelyn": {
         "trainerClass": "swimmer-f",
         "name": "Katelyn",
         "team": [
@@ -7103,7 +7103,7 @@
             }
         ]
     },
-    "swimmer-f::Claire": {
+    "swimmer-f-claire": {
         "trainerClass": "swimmer-f",
         "name": "Claire",
         "team": [
@@ -7116,7 +7116,7 @@
             }
         ]
     },
-    "swimmer-m::Erik": {
+    "swimmer-m-erik": {
         "trainerClass": "swimmer-m",
         "name": "Erik",
         "team": [
@@ -7129,7 +7129,7 @@
             }
         ]
     },
-    "swimmer-m::Dillon": {
+    "swimmer-m-dillon": {
         "trainerClass": "swimmer-m",
         "name": "Dillon",
         "team": [
@@ -7149,7 +7149,7 @@
             }
         ]
     },
-    "swimmer-f::Vanessa": {
+    "swimmer-f-vanessa": {
         "trainerClass": "swimmer-f",
         "name": "Vanessa",
         "team": [
@@ -7162,7 +7162,7 @@
             }
         ]
     },
-    "fisherman::Cory": {
+    "fisherman-cory": {
         "trainerClass": "fisherman",
         "name": "Cory",
         "team": [
@@ -7189,7 +7189,7 @@
             }
         ]
     },
-    "ace-trainer-f::Shannon": {
+    "ace-trainer-f-shannon": {
         "trainerClass": "ace-trainer-f",
         "name": "Shannon",
         "team": [
@@ -7222,7 +7222,7 @@
             }
         ]
     },
-    "collector::Ivan": {
+    "collector-ivan": {
         "trainerClass": "collector",
         "name": "Ivan",
         "team": [
@@ -7235,7 +7235,7 @@
             }
         ]
     },
-    "ace-trainer-m::Jake": {
+    "ace-trainer-m-jake": {
         "trainerClass": "ace-trainer-m",
         "name": "Jake",
         "team": [
@@ -7259,7 +7259,7 @@
             }
         ]
     },
-    "rich-boy::Trey": {
+    "rich-boy-trey": {
         "trainerClass": "rich-boy",
         "name": "Trey",
         "team": [
@@ -7278,7 +7278,7 @@
             }
         ]
     },
-    "fisherman::Alec": {
+    "fisherman-alec": {
         "trainerClass": "fisherman",
         "name": "Alec",
         "team": [
@@ -7298,7 +7298,7 @@
             }
         ]
     },
-    "fisherman::George": {
+    "fisherman-george": {
         "trainerClass": "fisherman",
         "name": "George",
         "team": [
@@ -7332,7 +7332,7 @@
             }
         ]
     },
-    "beauty::Nicola": {
+    "beauty-nicola": {
         "trainerClass": "beauty",
         "name": "Nicola",
         "team": [
@@ -7345,7 +7345,7 @@
             }
         ]
     },
-    "fisherman::Brett": {
+    "fisherman-brett": {
         "trainerClass": "fisherman",
         "name": "Brett",
         "team": [
@@ -7372,7 +7372,7 @@
             }
         ]
     },
-    "fisherman::Cole": {
+    "fisherman-cole": {
         "trainerClass": "fisherman",
         "name": "Cole",
         "team": [
@@ -7399,7 +7399,7 @@
             }
         ]
     },
-    "tuber-f::Holly": {
+    "tuber-f-holly": {
         "trainerClass": "tuber-f",
         "name": "Holly",
         "team": [
@@ -7412,7 +7412,7 @@
             }
         ]
     },
-    "policeman::Thomas": {
+    "policeman-thomas": {
         "trainerClass": "policeman",
         "name": "Thomas",
         "team": [
@@ -7432,7 +7432,7 @@
             }
         ]
     },
-    "sailor::Marc": {
+    "sailor-marc": {
         "trainerClass": "sailor",
         "name": "Marc",
         "team": [
@@ -7445,7 +7445,7 @@
             }
         ]
     },
-    "tuber-m::Conner": {
+    "tuber-m-conner": {
         "trainerClass": "tuber-m",
         "name": "Conner",
         "team": [
@@ -7458,7 +7458,7 @@
             }
         ]
     },
-    "sailor::Luther": {
+    "sailor-luther": {
         "trainerClass": "sailor",
         "name": "Luther",
         "team": [
@@ -7485,7 +7485,7 @@
             }
         ]
     },
-    "swimmer-f::Miranda": {
+    "swimmer-f-miranda": {
         "trainerClass": "swimmer-f",
         "name": "Miranda",
         "team": [
@@ -7498,7 +7498,7 @@
             }
         ]
     },
-    "swimmer-f::Aubree": {
+    "swimmer-f-aubree": {
         "trainerClass": "swimmer-f",
         "name": "Aubree",
         "team": [
@@ -7518,7 +7518,7 @@
             }
         ]
     },
-    "swimmer-m::Oscar": {
+    "swimmer-m-oscar": {
         "trainerClass": "swimmer-m",
         "name": "Oscar",
         "team": [
@@ -7545,7 +7545,7 @@
             }
         ]
     },
-    "swimmer-f::Paige": {
+    "swimmer-f-paige": {
         "trainerClass": "swimmer-f",
         "name": "Paige",
         "team": [
@@ -7572,7 +7572,7 @@
             }
         ]
     },
-    "swimmer-m::Colton": {
+    "swimmer-m-colton": {
         "trainerClass": "swimmer-m",
         "name": "Colton",
         "team": [
@@ -7599,7 +7599,7 @@
             }
         ]
     },
-    "swimmer-m::Ricardo": {
+    "swimmer-m-ricardo": {
         "trainerClass": "swimmer-m",
         "name": "Ricardo",
         "team": [
@@ -7612,7 +7612,7 @@
             }
         ]
     },
-    "swimmer-f::Crystal": {
+    "swimmer-f-crystal": {
         "trainerClass": "swimmer-f",
         "name": "Crystal",
         "team": [
@@ -7632,7 +7632,7 @@
             }
         ]
     },
-    "swimmer-m::Wesley": {
+    "swimmer-m-wesley": {
         "trainerClass": "swimmer-m",
         "name": "Wesley",
         "team": [
@@ -7652,7 +7652,7 @@
             }
         ]
     },
-    "sailor::Zachariah": {
+    "sailor-zachariah": {
         "trainerClass": "sailor",
         "name": "Zachariah",
         "team": [
@@ -7679,7 +7679,7 @@
             }
         ]
     },
-    "swimmer-f::Gabrielle": {
+    "swimmer-f-gabrielle": {
         "trainerClass": "swimmer-f",
         "name": "Gabrielle",
         "team": [
@@ -7692,7 +7692,7 @@
             }
         ]
     },
-    "swimmer-f::Cassandra": {
+    "swimmer-f-cassandra": {
         "trainerClass": "swimmer-f",
         "name": "Cassandra",
         "team": [
@@ -7712,7 +7712,7 @@
             }
         ]
     },
-    "swimmer-m::Francisco": {
+    "swimmer-m-francisco": {
         "trainerClass": "swimmer-m",
         "name": "Francisco",
         "team": [
@@ -7732,7 +7732,7 @@
             }
         ]
     },
-    "swimmer-m::Troy": {
+    "swimmer-m-troy": {
         "trainerClass": "swimmer-m",
         "name": "Troy",
         "team": [
@@ -7745,7 +7745,7 @@
             }
         ]
     },
-    "ace-trainer-snow-f::Brenna": {
+    "ace-trainer-snow-f-brenna": {
         "trainerClass": "ace-trainer-snow-f",
         "name": "Brenna",
         "team": [
@@ -7783,7 +7783,7 @@
             }
         ]
     },
-    "ace-trainer-snow-m::Isaiah": {
+    "ace-trainer-snow-m-isaiah": {
         "trainerClass": "ace-trainer-snow-m",
         "name": "Isaiah",
         "team": [
@@ -7803,7 +7803,7 @@
             }
         ]
     },
-    "ace-trainer-snow-m::Sergio": {
+    "ace-trainer-snow-m-sergio": {
         "trainerClass": "ace-trainer-snow-m",
         "name": "Sergio",
         "team": [
@@ -7827,7 +7827,7 @@
             }
         ]
     },
-    "ace-trainer-snow-f::Savannah": {
+    "ace-trainer-snow-f-savannah": {
         "trainerClass": "ace-trainer-snow-f",
         "name": "Savannah",
         "team": [
@@ -7860,7 +7860,7 @@
             }
         ]
     },
-    "ace-trainer-snow-f::Alicia": {
+    "ace-trainer-snow-f-alicia": {
         "trainerClass": "ace-trainer-snow-f",
         "name": "Alicia",
         "team": [
@@ -7884,7 +7884,7 @@
             }
         ]
     },
-    "ace-trainer-snow-m::Anton": {
+    "ace-trainer-snow-m-anton": {
         "trainerClass": "ace-trainer-snow-m",
         "name": "Anton",
         "team": [
@@ -7899,7 +7899,7 @@
             }
         ]
     },
-    "leader-candice::Candice": {
+    "leader-candice-candice": {
         "trainerClass": "leader-candice",
         "name": "Candice",
         "team": [
@@ -7957,7 +7957,7 @@
             }
         ]
     },
-    "ruin-maniac::Karl": {
+    "ruin-maniac-karl": {
         "trainerClass": "ruin-maniac",
         "name": "Karl",
         "team": [
@@ -7983,7 +7983,7 @@
             }
         ]
     },
-    "galactic-grunt-f::13": {
+    "galactic-grunt-f-13": {
         "trainerClass": "galactic-grunt-f",
         "name": "13",
         "team": [
@@ -8027,7 +8027,7 @@
             ]
         }
     },
-    "commander-jupiter::Jupiter": {
+    "commander-jupiter-jupiter": {
         "trainerClass": "commander-jupiter",
         "name": "Jupiter",
         "team": [
@@ -8113,7 +8113,7 @@
             ]
         }
     },
-    "school-kid-f::Tiera": {
+    "school-kid-f-tiera": {
         "trainerClass": "school-kid-f",
         "name": "Tiera",
         "team": [
@@ -8139,7 +8139,7 @@
             }
         ]
     },
-    "school-kid-m::Forrest": {
+    "school-kid-m-forrest": {
         "trainerClass": "school-kid-m",
         "name": "Forrest",
         "team": [
@@ -8159,7 +8159,7 @@
             }
         ]
     },
-    "guitarist::Jerry": {
+    "guitarist-jerry": {
         "trainerClass": "guitarist",
         "name": "Jerry",
         "team": [
@@ -8188,7 +8188,7 @@
             }
         ]
     },
-    "poke-kid::Meghan": {
+    "poke-kid-meghan": {
         "trainerClass": "poke-kid",
         "name": "Meghan",
         "team": [
@@ -8226,7 +8226,7 @@
             }
         ]
     },
-    "guitarist::Lonnie": {
+    "guitarist-lonnie": {
         "trainerClass": "guitarist",
         "name": "Lonnie",
         "team": [
@@ -8241,7 +8241,7 @@
             }
         ]
     },
-    "ace-trainer-f::Destiny": {
+    "ace-trainer-f-destiny": {
         "trainerClass": "ace-trainer-f",
         "name": "Destiny",
         "team": [
@@ -8270,7 +8270,7 @@
             }
         ]
     },
-    "guitarist::Preston": {
+    "guitarist-preston": {
         "trainerClass": "guitarist",
         "name": "Preston",
         "team": [
@@ -8292,7 +8292,7 @@
             }
         ]
     },
-    "ace-trainer-m::Zachery": {
+    "ace-trainer-m-zachery": {
         "trainerClass": "ace-trainer-m",
         "name": "Zachery",
         "team": [
@@ -8320,7 +8320,7 @@
             }
         ]
     },
-    "leader-volkner::Volkner": {
+    "leader-volkner-volkner": {
         "trainerClass": "leader-volkner",
         "name": "Volkner",
         "team": [
@@ -8395,7 +8395,7 @@
             }
         ]
     },
-    "galactic-grunt-f::1": {
+    "galactic-grunt-f-1": {
         "trainerClass": "galactic-grunt-f",
         "name": "1",
         "team": [
@@ -8415,7 +8415,7 @@
             }
         ]
     },
-    "galactic-grunt-m::7": {
+    "galactic-grunt-m-7": {
         "trainerClass": "galactic-grunt-m",
         "name": "7",
         "team": [
@@ -8435,7 +8435,7 @@
             }
         ]
     },
-    "galactic-grunt-m::8": {
+    "galactic-grunt-m-8": {
         "trainerClass": "galactic-grunt-m",
         "name": "8",
         "team": [
@@ -8448,7 +8448,7 @@
             }
         ]
     },
-    "galactic-grunt-f::2": {
+    "galactic-grunt-f-2": {
         "trainerClass": "galactic-grunt-f",
         "name": "2",
         "team": [
@@ -8461,7 +8461,7 @@
             }
         ]
     },
-    "galactic-grunt-f::3": {
+    "galactic-grunt-f-3": {
         "trainerClass": "galactic-grunt-f",
         "name": "3",
         "team": [
@@ -8488,7 +8488,7 @@
             }
         ]
     },
-    "scientist::Travon": {
+    "scientist-travon": {
         "trainerClass": "scientist",
         "name": "Travon",
         "team": [
@@ -8509,7 +8509,7 @@
             }
         ]
     },
-    "commander-jupiter::Jupiter 1": {
+    "commander-jupiter-jupiter-1": {
         "trainerClass": "commander-jupiter",
         "name": "Jupiter 1",
         "team": [
@@ -8539,7 +8539,7 @@
             }
         ]
     },
-    "galactic-grunt-m::5": {
+    "galactic-grunt-m-5": {
         "trainerClass": "galactic-grunt-m",
         "name": "5",
         "team": [
@@ -8552,7 +8552,7 @@
             }
         ]
     },
-    "galactic-grunt-m::6": {
+    "galactic-grunt-m-6": {
         "trainerClass": "galactic-grunt-m",
         "name": "6",
         "team": [
@@ -8572,7 +8572,7 @@
             }
         ]
     },
-    "commander-mars::Mars 1": {
+    "commander-mars-mars-1": {
         "trainerClass": "commander-mars",
         "name": "Mars 1",
         "team": [
@@ -8597,7 +8597,7 @@
             }
         ]
     },
-    "galactic-grunt-m::2": {
+    "galactic-grunt-m-2": {
         "trainerClass": "galactic-grunt-m",
         "name": "2",
         "team": [
@@ -8610,7 +8610,7 @@
             }
         ]
     },
-    "commander-saturn::Saturn 1": {
+    "commander-saturn-saturn-1": {
         "trainerClass": "commander-saturn",
         "name": "Saturn 1",
         "team": [
@@ -8648,7 +8648,7 @@
             }
         ]
     },
-    "galactic-grunt-m::10": {
+    "galactic-grunt-m-10": {
         "trainerClass": "galactic-grunt-m",
         "name": "10",
         "team": [
@@ -8662,7 +8662,7 @@
             }
         ]
     },
-    "galactic-grunt-m::9": {
+    "galactic-grunt-m-9": {
         "trainerClass": "galactic-grunt-m",
         "name": "9",
         "team": [
@@ -8706,7 +8706,7 @@
             ]
         }
     },
-    "black-belt::Colby": {
+    "black-belt-colby": {
         "trainerClass": "black-belt",
         "name": "Colby",
         "team": [
@@ -8739,7 +8739,7 @@
             }
         ]
     },
-    "black-belt::Darren": {
+    "black-belt-darren": {
         "trainerClass": "black-belt",
         "name": "Darren",
         "team": [
@@ -8772,7 +8772,7 @@
             }
         ]
     },
-    "black-belt::Rafael": {
+    "black-belt-rafael": {
         "trainerClass": "black-belt",
         "name": "Rafael",
         "team": [
@@ -8796,7 +8796,7 @@
             }
         ]
     },
-    "black-belt::Jeffery": {
+    "black-belt-jeffery": {
         "trainerClass": "black-belt",
         "name": "Jeffery",
         "team": [
@@ -8811,7 +8811,7 @@
             }
         ]
     },
-    "leader-maylene::Maylene": {
+    "leader-maylene-maylene": {
         "trainerClass": "leader-maylene",
         "name": "Maylene",
         "team": [
@@ -8854,7 +8854,7 @@
             }
         ]
     },
-    "psychic-m::Bryce": {
+    "psychic-m-bryce": {
         "trainerClass": "psychic-m",
         "name": "Bryce",
         "team": [
@@ -8881,7 +8881,7 @@
             }
         ]
     },
-    "bird-keeper::Hana": {
+    "bird-keeper-hana": {
         "trainerClass": "bird-keeper",
         "name": "Hana",
         "team": [
@@ -8901,7 +8901,7 @@
             }
         ]
     },
-    "ace-trainer-f::Mariah": {
+    "ace-trainer-f-mariah": {
         "trainerClass": "ace-trainer-f",
         "name": "Mariah",
         "team": [
@@ -8938,7 +8938,7 @@
             }
         ]
     },
-    "black-belt::Miles": {
+    "black-belt-miles": {
         "trainerClass": "black-belt",
         "name": "Miles",
         "team": [
@@ -8952,7 +8952,7 @@
             }
         ]
     },
-    "veteran::Edgar": {
+    "veteran-edgar": {
         "trainerClass": "veteran",
         "name": "Edgar",
         "team": [
@@ -8984,7 +8984,7 @@
             }
         ]
     },
-    "dragon-tamer::Clinton": {
+    "dragon-tamer-clinton": {
         "trainerClass": "dragon-tamer",
         "name": "Clinton",
         "team": [
@@ -9014,7 +9014,7 @@
             }
         ]
     },
-    "ace-trainer-m::Omar": {
+    "ace-trainer-m-omar": {
         "trainerClass": "ace-trainer-m",
         "name": "Omar",
         "team": [
@@ -9052,7 +9052,7 @@
             }
         ]
     },
-    "ace-trainer-f::Sydney": {
+    "ace-trainer-f-sydney": {
         "trainerClass": "ace-trainer-f",
         "name": "Sydney",
         "team": [
@@ -9076,7 +9076,7 @@
             }
         ]
     },
-    "veteran::Clayton": {
+    "veteran-clayton": {
         "trainerClass": "veteran",
         "name": "Clayton",
         "team": [
@@ -9100,7 +9100,7 @@
             }
         ]
     },
-    "double-team::Al & Kay": {
+    "double-team-al-and-kay": {
         "trainerClass": "double-team",
         "name": "Al & Kay",
         "team": [
@@ -9127,7 +9127,7 @@
             }
         ]
     },
-    "psychic-f::Valencia": {
+    "psychic-f-valencia": {
         "trainerClass": "psychic-f",
         "name": "Valencia",
         "team": [
@@ -9154,7 +9154,7 @@
             }
         ]
     },
-    "double-team::Jo & Pat": {
+    "double-team-jo-and-pat": {
         "trainerClass": "double-team",
         "name": "Jo & Pat",
         "team": [
@@ -9181,7 +9181,7 @@
             }
         ]
     },
-    "ace-trainer-m::Henry": {
+    "ace-trainer-m-henry": {
         "trainerClass": "ace-trainer-m",
         "name": "Henry",
         "team": [
@@ -9205,7 +9205,7 @@
             }
         ]
     },
-    "dragon-tamer::Ondrej": {
+    "dragon-tamer-ondrej": {
         "trainerClass": "dragon-tamer",
         "name": "Ondrej",
         "team": [
@@ -9227,7 +9227,7 @@
             }
         ]
     },
-    "camper::Diego": {
+    "camper-diego": {
         "trainerClass": "camper",
         "name": "Diego",
         "team": [
@@ -9240,7 +9240,7 @@
             }
         ]
     },
-    "picnicker::Tori": {
+    "picnicker-tori": {
         "trainerClass": "picnicker",
         "name": "Tori",
         "team": [
@@ -9253,7 +9253,7 @@
             }
         ]
     },
-    "hiker::Reginald": {
+    "hiker-reginald": {
         "trainerClass": "hiker",
         "name": "Reginald",
         "team": [
@@ -9273,7 +9273,7 @@
             }
         ]
     },
-    "hiker::Lorenzo": {
+    "hiker-lorenzo": {
         "trainerClass": "hiker",
         "name": "Lorenzo",
         "team": [
@@ -9286,7 +9286,7 @@
             }
         ]
     },
-    "lass::Cassidy": {
+    "lass-cassidy": {
         "trainerClass": "lass",
         "name": "Cassidy",
         "team": [
@@ -9299,7 +9299,7 @@
             }
         ]
     },
-    "youngster::Wayne": {
+    "youngster-wayne": {
         "trainerClass": "youngster",
         "name": "Wayne",
         "team": [
@@ -9326,7 +9326,7 @@
             }
         ]
     },
-    "picnicker::Ana": {
+    "picnicker-ana": {
         "trainerClass": "picnicker",
         "name": "Ana",
         "team": [
@@ -9339,7 +9339,7 @@
             }
         ]
     },
-    "camper::Parker": {
+    "camper-parker": {
         "trainerClass": "camper",
         "name": "Parker",
         "team": [
@@ -9361,7 +9361,7 @@
             }
         ]
     },
-    "collector::Terry": {
+    "collector-terry": {
         "trainerClass": "collector",
         "name": "Terry",
         "team": [
@@ -9374,7 +9374,7 @@
             }
         ]
     },
-    "ruin-maniac::Gerald": {
+    "ruin-maniac-gerald": {
         "trainerClass": "ruin-maniac",
         "name": "Gerald",
         "team": [

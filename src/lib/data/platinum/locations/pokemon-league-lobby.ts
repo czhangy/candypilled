@@ -7,7 +7,7 @@ const POKEMON_LEAGUE_LOBBY: Location = {
     battles: [
         {
             isMiniboss: true,
-            battleKey: 'pkmn-trainer-barry::Barry 6',
+            battleKey: 'pkmn-trainer-barry-barry-6',
             x: 52.6,
             y: 52.7,
         },

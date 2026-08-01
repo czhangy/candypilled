@@ -7,7 +7,7 @@ const CELESTIC_RUINS: Location = {
     battles: [
         {
             isMiniboss: true,
-            battleKey: 'galactic-boss-cyrus::Cyrus 1',
+            battleKey: 'galactic-boss-cyrus-cyrus-1',
             x: 54.4,
             y: 21.3,
         },

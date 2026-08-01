@@ -8,7 +8,7 @@ const CANALAVE_CITY: Location = {
     battles: [
         {
             isMiniboss: true,
-            battleKey: 'pkmn-trainer-barry::Barry 5',
+            battleKey: 'pkmn-trainer-barry-barry-5',
             x: 48.1,
             y: 29.9,
         },

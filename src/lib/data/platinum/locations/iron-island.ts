@@ -29,7 +29,7 @@ const IRON_ISLAND: Location = {
             battles: [
                 {
                     isOptional: true,
-                    battleKey: 'camper::Lawrence',
+                    battleKey: 'camper-lawrence',
                     x: 64.2,
                     y: 81.1,
                 },
@@ -42,7 +42,7 @@ const IRON_ISLAND: Location = {
             battles: [
                 {
                     isOptional: true,
-                    battleKey: 'picnicker::Summer',
+                    battleKey: 'picnicker-summer',
                     x: 76.1,
                     y: 48.6,
                 },
@@ -55,13 +55,13 @@ const IRON_ISLAND: Location = {
             battles: [
                 {
                     isOptional: true,
-                    battleKey: 'worker::Noel',
+                    battleKey: 'worker-noel',
                     x: 39.5,
                     y: 27.3,
                 },
                 {
                     isOptional: true,
-                    battleKey: 'worker::Braden',
+                    battleKey: 'worker-braden',
                     x: 20.3,
                     y: 56.8,
                 },
@@ -74,49 +74,49 @@ const IRON_ISLAND: Location = {
             battles: [
                 {
                     isOptional: true,
-                    battleKey: 'hiker::Damon',
+                    battleKey: 'hiker-damon',
                     x: 64.7,
                     y: 5.7,
                 },
                 {
                     isOptional: true,
-                    battleKey: 'hiker::Maurice',
+                    battleKey: 'hiker-maurice',
                     x: 52.5,
                     y: 9,
                 },
                 {
                     isOptional: true,
-                    battleKey: 'black-belt::Kendal',
+                    battleKey: 'black-belt-kendal',
                     x: 89,
                     y: 33.1,
                 },
                 {
                     isOptional: true,
-                    battleKey: 'battle-girl::Tyler',
+                    battleKey: 'battle-girl-tyler',
                     x: 89,
                     y: 38.1,
                 },
                 {
                     isOptional: true,
-                    battleKey: 'worker::Brendon',
+                    battleKey: 'worker-brendon',
                     x: 37.9,
                     y: 45,
                 },
                 {
                     isOptional: true,
-                    battleKey: 'worker::Quentin',
+                    battleKey: 'worker-quentin',
                     x: 35.4,
                     y: 50.1,
                 },
                 {
                     isOptional: true,
-                    battleKey: 'ace-trainer-m::Jonah',
+                    battleKey: 'ace-trainer-m-jonah',
                     x: 57.4,
                     y: 53.6,
                 },
                 {
                     isOptional: true,
-                    battleKey: 'ace-trainer-f::Brenda',
+                    battleKey: 'ace-trainer-f-brenda',
                     x: 67.3,
                     y: 53.6,
                 },
@@ -124,7 +124,7 @@ const IRON_ISLAND: Location = {
                     isOptional: true,
                     isTag: true,
                     customHeight: 38,
-                    battleKey: 'galactic-grunt-m::12',
+                    battleKey: 'galactic-grunt-m-12',
                     x: 47.8,
                     y: 69.8,
                 },

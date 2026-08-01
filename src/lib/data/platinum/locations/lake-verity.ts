@@ -20,23 +20,23 @@ const LAKE_VERITY: Location = {
                 {
                     isDouble: true,
                     customWidth: 128,
-                    battleKey: 'galactic-grunt-m::15',
+                    battleKey: 'galactic-grunt-m-15',
                     x: 75.9,
                     y: 73.5,
                 },
                 {
-                    battleKey: 'galactic-grunt-m::16',
+                    battleKey: 'galactic-grunt-m-16',
                     x: 78.6,
                     y: 63,
                 },
                 {
-                    battleKey: 'galactic-grunt-f::5',
+                    battleKey: 'galactic-grunt-f-5',
                     x: 88.1,
                     y: 63,
                 },
                 {
                     isMiniboss: true,
-                    battleKey: 'commander-mars::Mars 2',
+                    battleKey: 'commander-mars-mars-2',
                     x: 91.5,
                     y: 53.4,
                 },

@@ -7,7 +7,7 @@ const HEARTHOME_CITY_GATE: Location = {
     battles: [
         {
             isMiniboss: true,
-            battleKey: 'pkmn-trainer-barry::Barry',
+            battleKey: 'pkmn-trainer-barry-barry',
             x: 68,
             y: 48,
         },

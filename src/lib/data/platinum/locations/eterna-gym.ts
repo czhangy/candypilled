@@ -6,23 +6,23 @@ const ETERNA_GYM: Location = {
     map: eternaGym,
     battles: [
         {
-            battleKey: 'lass::Caroline',
+            battleKey: 'lass-caroline',
             x: 64.6,
             y: 79.6,
         },
         {
-            battleKey: 'aroma-lady::Jenna',
+            battleKey: 'aroma-lady-jenna',
             x: 92.8,
             y: 62.8,
         },
         {
-            battleKey: 'aroma-lady::Angela',
+            battleKey: 'aroma-lady-angela',
             x: 7.2,
             y: 30.5,
         },
         {
             isBoss: true,
-            battleKey: 'leader-gardenia::Gardenia',
+            battleKey: 'leader-gardenia-gardenia',
             x: 49.9,
             y: 15.1,
         },

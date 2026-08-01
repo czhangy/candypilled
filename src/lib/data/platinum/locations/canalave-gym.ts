@@ -14,18 +14,18 @@ const CANALAVE_GYM: Location = {
             map: canalaveGym1f,
             battles: [
                 {
-                    battleKey: 'black-belt::Ricky',
+                    battleKey: 'black-belt-ricky',
                     x: 14.4,
                     y: 43,
                 },
                 {
                     isOptional: true,
-                    battleKey: 'worker::Gary',
+                    battleKey: 'worker-gary',
                     x: 66.1,
                     y: 38.8,
                 },
                 {
-                    battleKey: 'ace-trainer-m::Cesar',
+                    battleKey: 'ace-trainer-m-cesar',
                     x: 86.1,
                     y: 81.2,
                 },
@@ -37,12 +37,12 @@ const CANALAVE_GYM: Location = {
             battles: [
                 {
                     isOptional: true,
-                    battleKey: 'worker::Jackson',
+                    battleKey: 'worker-jackson',
                     x: 44.9,
                     y: 4.1,
                 },
                 {
-                    battleKey: 'ace-trainer-f::Breanna',
+                    battleKey: 'ace-trainer-f-breanna',
                     x: 88.2,
                     y: 11.1,
                 },
@@ -53,12 +53,12 @@ const CANALAVE_GYM: Location = {
             map: canalaveGym3f,
             battles: [
                 {
-                    battleKey: 'worker::Gerardo',
+                    battleKey: 'worker-gerardo',
                     x: 25.1,
                     y: 3.8,
                 },
                 {
-                    battleKey: 'black-belt::David',
+                    battleKey: 'black-belt-david',
                     x: 78.2,
                     y: 3.8,
                 },
@@ -70,7 +70,7 @@ const CANALAVE_GYM: Location = {
             battles: [
                 {
                     isBoss: true,
-                    battleKey: 'leader-byron::Byron',
+                    battleKey: 'leader-byron-byron',
                     x: 51.8,
                     y: 4.1,
                 },

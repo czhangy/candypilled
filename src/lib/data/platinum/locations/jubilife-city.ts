@@ -8,7 +8,7 @@ const JUBILIFE_CITY: Location = {
         {
             isTag: true,
             customHeight: 40,
-            battleKey: 'galactic-grunt-m::1',
+            battleKey: 'galactic-grunt-m-1',
             x: 71.2,
             y: 5.8,
         },

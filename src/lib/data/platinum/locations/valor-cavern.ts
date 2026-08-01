@@ -8,7 +8,7 @@ const VALOR_CAVERN: Location = {
     battles: [
         {
             isMiniboss: true,
-            battleKey: 'commander-saturn::Saturn 1',
+            battleKey: 'commander-saturn-saturn-1',
             x: 50.7,
             y: 63.5,
         },

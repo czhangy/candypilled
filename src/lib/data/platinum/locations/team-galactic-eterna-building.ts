@@ -15,13 +15,13 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
             battles: [
                 {
                     isOptional: true,
-                    battleKey: 'galactic-grunt-f::1',
+                    battleKey: 'galactic-grunt-f-1',
                     x: 61,
                     y: 70.3,
                 },
                 {
                     isOptional: true,
-                    battleKey: 'galactic-grunt-m::7',
+                    battleKey: 'galactic-grunt-m-7',
                     x: 75.5,
                     y: 70.3,
                 },
@@ -33,13 +33,13 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
             battles: [
                 {
                     isOptional: true,
-                    battleKey: 'galactic-grunt-m::8',
+                    battleKey: 'galactic-grunt-m-8',
                     x: 12.4,
                     y: 44,
                 },
                 {
                     isOptional: true,
-                    battleKey: 'galactic-grunt-f::2',
+                    battleKey: 'galactic-grunt-f-2',
                     x: 57,
                     y: 58,
                 },
@@ -51,13 +51,13 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
             battles: [
                 {
                     isOptional: true,
-                    battleKey: 'galactic-grunt-f::3',
+                    battleKey: 'galactic-grunt-f-3',
                     x: 34.9,
                     y: 50,
                 },
                 {
                     isOptional: true,
-                    battleKey: 'scientist::Travon',
+                    battleKey: 'scientist-travon',
                     x: 79.1,
                     y: 36.9,
                 },
@@ -69,7 +69,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
             battles: [
                 {
                     isMiniboss: true,
-                    battleKey: 'commander-jupiter::Jupiter 1',
+                    battleKey: 'commander-jupiter-jupiter-1',
                     x: 61.2,
                     y: 45.5,
                 },

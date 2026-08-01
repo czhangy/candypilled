@@ -8,7 +8,7 @@ const SPEAR_PILLAR: Location = {
         {
             isDouble: true,
             customWidth: 54,
-            battleKey: 'galactic-grunt-f::13',
+            battleKey: 'galactic-grunt-f-13',
             x: 49.2,
             y: 75.7,
         },
@@ -16,7 +16,7 @@ const SPEAR_PILLAR: Location = {
             isMiniboss: true,
             isTag: true,
             customWidth: 82,
-            battleKey: 'commander-jupiter::Jupiter',
+            battleKey: 'commander-jupiter-jupiter',
             x: 49.3,
             y: 48.6,
         },

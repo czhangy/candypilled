@@ -13,7 +13,7 @@ const SUNYSHORE_GYM: Location = {
             map: sunyshoreGymRoom1,
             battles: [
                 {
-                    battleKey: 'school-kid-f::Tiera',
+                    battleKey: 'school-kid-f-tiera',
                     x: 36.6,
                     y: 24.2,
                 },
@@ -24,18 +24,18 @@ const SUNYSHORE_GYM: Location = {
             map: sunyshoreGymRoom2,
             battles: [
                 {
-                    battleKey: 'school-kid-m::Forrest',
+                    battleKey: 'school-kid-m-forrest',
                     x: 21.6,
                     y: 31.3,
                 },
                 {
-                    battleKey: 'guitarist::Jerry',
+                    battleKey: 'guitarist-jerry',
                     x: 83.9,
                     y: 55.4,
                 },
                 {
                     isOptional: true,
-                    battleKey: 'poke-kid::Meghan',
+                    battleKey: 'poke-kid-meghan',
                     x: 71.4,
                     y: 17.9,
                 },
@@ -47,28 +47,28 @@ const SUNYSHORE_GYM: Location = {
             battles: [
                 {
                     isOptional: true,
-                    battleKey: 'guitarist::Lonnie',
+                    battleKey: 'guitarist-lonnie',
                     x: 73.4,
                     y: 90,
                 },
                 {
-                    battleKey: 'ace-trainer-f::Destiny',
+                    battleKey: 'ace-trainer-f-destiny',
                     x: 16.1,
                     y: 89.7,
                 },
                 {
-                    battleKey: 'guitarist::Preston',
+                    battleKey: 'guitarist-preston',
                     x: 11.3,
                     y: 12.6,
                 },
                 {
-                    battleKey: 'ace-trainer-m::Zachery',
+                    battleKey: 'ace-trainer-m-zachery',
                     x: 97.3,
                     y: 41.7,
                 },
                 {
                     isBoss: true,
-                    battleKey: 'leader-volkner::Volkner',
+                    battleKey: 'leader-volkner-volkner',
                     x: 49.6,
                     y: 12.6,
                 },

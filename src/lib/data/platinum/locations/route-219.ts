@@ -8,13 +8,13 @@ const ROUTE_219: Location = {
     battles: [
         {
             isOptional: true,
-            battleKey: 'tuber-m::Trenton',
+            battleKey: 'tuber-m-trenton',
             x: 35.4,
             y: 74.1,
         },
         {
             isOptional: true,
-            battleKey: 'tuber-f::Mariel',
+            battleKey: 'tuber-f-mariel',
             x: 52.5,
             y: 74.1,
         },

@@ -7,7 +7,7 @@ const CYNTHIAS_ROOM: Location = {
     battles: [
         {
             isBoss: true,
-            battleKey: 'champion-cynthia::Cynthia',
+            battleKey: 'champion-cynthia-cynthia',
             x: 50.2,
             y: 72.9,
         },

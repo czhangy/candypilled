@@ -9,7 +9,7 @@ const VEILSTONE_CITY: Location = {
         {
             isTag: true,
             customHeight: 53,
-            battleKey: 'galactic-grunt-m::9',
+            battleKey: 'galactic-grunt-m-9',
             x: 40.4,
             y: 34.8,
         },

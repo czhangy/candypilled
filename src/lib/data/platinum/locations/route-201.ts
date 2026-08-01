@@ -8,7 +8,7 @@ const ROUTE_201: Location = {
     battles: [
         {
             isMiniboss: true,
-            battleKey: 'pkmn-trainer-barry::Barry 1',
+            battleKey: 'pkmn-trainer-barry-barry-1',
             x: 27.5,
             y: 64,
         },

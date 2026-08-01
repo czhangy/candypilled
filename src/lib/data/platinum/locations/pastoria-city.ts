@@ -8,7 +8,7 @@ const PASTORIA_CITY: Location = {
     battles: [
         {
             isMiniboss: true,
-            battleKey: 'pkmn-trainer-barry::Barry 4',
+            battleKey: 'pkmn-trainer-barry-barry-4',
             x: 24.5,
             y: 46.4,
         },
