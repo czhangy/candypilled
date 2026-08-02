@@ -9394,7 +9394,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'commander-saturn-saturn-1': {
-        saveCondition: { type: 'trainerFlag', flag: 1768 },
+        saveCondition: { type: 'flag', flag: 318 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'commander-saturn',
         name: 'Saturn 1',

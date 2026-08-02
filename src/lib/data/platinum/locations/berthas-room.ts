@@ -7,7 +7,7 @@ const BERTHAS_ROOM: Location = {
     map: berthasRoom,
     battles: [
         {
-            metadata: [BattleMetadata.Boss],
+            metadata: [BattleMetadata.Boss, BattleMetadata.Gauntlet],
             battleKey: 'elite-four-bertha-bertha',
             x: 50.2,
             y: 40.5,

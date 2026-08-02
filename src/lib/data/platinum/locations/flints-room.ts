@@ -7,7 +7,7 @@ const FLINTS_ROOM: Location = {
     map: flintsRoom,
     battles: [
         {
-            metadata: [BattleMetadata.Boss],
+            metadata: [BattleMetadata.Boss, BattleMetadata.Gauntlet],
             battleKey: 'elite-four-flint-flint',
             x: 50.2,
             y: 40.3,
