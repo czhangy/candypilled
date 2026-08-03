@@ -594,6 +594,9 @@ export type PokemonData = {
     // base form; `form` is the slug of the PokemonData entry to display
     // instead while a caught Pokémon holds `item`.
     formChangeItem?: { item: string; form: string };
+    // Item slugs this species can hold when encountered in the wild.
+    // Absent for the majority of species, which hold nothing.
+    wildHeldItems?: string[];
     // PokeAPI's species-level is_legendary/is_mythical flags, combined.
     // Used to filter legendaries out of features that shouldn't offer them
     // (e.g. wild encounters).

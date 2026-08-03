@@ -11,9 +11,11 @@ elsewhere in the run (used instead of caught taking priority), or
 highlighted as selected if it's the currently selected row, with the
 caught/used highlights taking priority over the selected highlight. If
 the encounter is an NPC trade, a second line names the species the
-player must hand over to receive it, and if it comes with a held item,
-a third line shows the item's icon and name as a button; clicking it
-notifies the parent via `onSelectItem` without also selecting the row.
+player must hand over to receive it. Below that, any item(s) this
+encounter can come with (a trade's guaranteed item, or a wild species'
+possible held items) are each shown as a button with the item's icon and
+name; clicking one notifies the parent via `onSelectItem` without also
+selecting the row.
 
 ## Props
 
@@ -25,7 +27,7 @@ notifies the parent via `onSelectItem` without also selecting the row.
 | `isCaughtHere`      | `boolean`                | Yes      | -       | Whether this row is the one actually caught at this location, highlighting it green   |
 | `isSelected`        | `boolean`                | Yes      | -       | Whether this row is the currently selected encounter                                  |
 | `onClick`           | `() => void`             | Yes      | -       | Called when the row is clicked                                                        |
-| `onSelectItem`      | `(slug: string) => void` | Yes      | -       | Called with `encounter.heldItem` when the held item button is clicked                 |
+| `onSelectItem`      | `(slug: string) => void` | Yes      | -       | Called with the clicked item's slug when a held item button is clicked                |
 
 ## Computations
 
@@ -35,8 +37,9 @@ notifies the parent via `onSelectItem` without also selecting the row.
   level or a range prefixed with "Lv."
 - `tradeForPokemon` — the species data for `encounter.tradeFor`, resolved
   via `PokemonHelpers`, when the encounter is an NPC trade
-- `heldItem` — the item data for `encounter.heldItem`, resolved via
-  `ItemHelpers`, when the encounter comes with a held item
+- `heldItems` — the item data for every item this encounter can come with:
+  `encounter.heldItem` for a trade, or the species' `wildHeldItems`
+  otherwise, resolved via `ItemHelpers`
 
 ## SCSS Variable Dependencies
 
