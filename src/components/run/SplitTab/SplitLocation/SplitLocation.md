@@ -172,12 +172,7 @@ the index disambiguates locations that share a name within the split.
   the current one. If the defeated battle is the game's last required
   battle, calls `onGameComplete`; otherwise, if it's the last required
   battle of its split, calls `onAdvanceSplit` with the next split's name.
-  Defeating any battle (required or optional) also selects the very next
-  battle after it within this location (from `getAllBattles`, regardless
-  of that battle's own optional status), if one exists, switching
-  `selectedSubareaIndex` to its subarea, clearing
-  `selectedEncounter`/`speciesOverride`, and calling
-  `onSelectBattleMarker` with its key
+  No other battle selection changes as a result of defeating a battle
 - **On encounter table row click** — selects that encounter, showing its
   details in the Pokédex tile, and clears `speciesOverride` so the
   encounter's own species is shown

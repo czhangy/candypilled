@@ -27,8 +27,8 @@ exists).
 
 ## Handlers
 
-- **On "Continue" click** — navigates to the game's run page, deep-linked to
-  its current split via `getRunUrl`
+- **On "Continue" click** — navigates to the game's run page (`runUrl`),
+  which determines its own current split or Hall of Fame tab on load
 - **On "New" click** — if a run already exists, opens a confirmation modal;
   otherwise opens the starter selection modal directly
 - **On confirmation modal close/cancel** — closes the modal without
@@ -47,24 +47,22 @@ exists).
   the chosen starter's species and full details (as the first entry in
   `caughtPokemon`), incrementing the attempt number, while carrying over
   the existing personal best and hall of fame count, then navigates to
-  the game's run page, deep-linked to its current split via `getRunUrl`;
-  the starter select modal closes itself, with its own exit animation,
+  the game's run page (`runUrl`); the starter select modal closes itself,
+  with its own exit animation,
   once `StarterSelectModal` requests its close
 
 ## Computations
 
-- `currentSplitName` — the name of the split containing the first
-  not-yet-defeated required battle in the run's `defeatedBattles`, or the
-  last split if every required battle has been defeated; `null` if there
-  is no run
+- `currentSplitName` — the name of the split containing the undefeated
+  required battle following the furthest defeated required battle in the
+  run's `defeatedBattles`, or the last split if every required battle has
+  been defeated; `null` if there is no run
 - `boxCount` — the number of Pokémon in the run's `caughtPokemon` that
   don't have a `status` of `PokemonStatus.Dead`; `null` if there is no run
 - `deathCount` — the number of Pokémon in the run's `caughtPokemon` with a
   `status` of `PokemonStatus.Dead`; `null` if there is no run
-- `getRunUrl` — builds the game's run page URL for a given
-  `defeatedBattles` array, with `tab=split` and `split=<name>` (the split
-  computed via `SplitHelpers.getCurrentSplitName`) query params, so
-  navigating there always lands directly on the run's actual current split
+- `runUrl` — the game's run page URL with no query params; `RunPage`
+  determines the current split or Hall of Fame tab itself on load
 
 ## SCSS Variable Dependencies
 

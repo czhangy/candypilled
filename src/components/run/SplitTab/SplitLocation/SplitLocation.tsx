@@ -303,23 +303,6 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                     onAdvanceSplit(nextSplitName);
                 }
             }
-
-            const allBattles = getAllBattles();
-            const currentIndex = allBattles.findIndex(
-                ({ battle: candidate }) =>
-                    BattleHelpers.getBattleKey(candidate) === battleKey
-            );
-            const nextBattle = allBattles[currentIndex + 1];
-
-            if (nextBattle) {
-                setSelectedSubareaIndex(nextBattle.subareaIndex);
-                setSelectedBattle(nextBattle.battle);
-                setSelectedEncounter(undefined);
-                setSpeciesOverride(undefined);
-                onSelectBattleMarker(
-                    BattleHelpers.getBattleKey(nextBattle.battle)
-                );
-            }
         }
     };
 

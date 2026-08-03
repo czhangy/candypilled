@@ -57,16 +57,19 @@ export default class SplitHelpers {
         return `${StringHelpers.toSlug(locationName)}-${index}`;
     }
 
-    /** The name of the split the player is currently on, based on which required battles in defeatedBattles are missing. */
+    /** The name of the split the player is currently on: the split of the undefeated required battle following the furthest defeated required battle, or the last split's name if all required battles are defeated. */
     static getCurrentSplitName(
         game: Game,
         defeatedBattles: string[]
     ): string | null {
         const requiredBattleKeys = BattleHelpers.getRequiredBattleKeys(game);
 
-        const nextRequiredBattleKey = requiredBattleKeys.find(
-            (battleKey) => !defeatedBattles.includes(battleKey)
+        const furthestDefeatedIndex = requiredBattleKeys.findLastIndex(
+            (battleKey) => defeatedBattles.includes(battleKey)
         );
+
+        const nextRequiredBattleKey =
+            requiredBattleKeys[furthestDefeatedIndex + 1];
 
         if (!nextRequiredBattleKey) {
             return game.splits[game.splits.length - 1]?.name ?? null;

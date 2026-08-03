@@ -36,7 +36,8 @@ shown instead.
 ## Computations
 
 - `activeTab` — the `id` of the currently active tab, read from the `tab`
-  query param, defaulting to `'split'` if absent
+  query param, defaulting to `'hof'` if `isHallOfFameUnlocked` and
+  `'split'` otherwise when absent
 - `activeSubtab` — the `id` of the currently active Data subtab, read
   from the `subtab` query param, defaulting to `'pokedex'` if absent
 - `selectedMove` — the currently selected move's slug, read from the `move`
@@ -49,14 +50,15 @@ shown instead.
 - `selectedSpecies` — the currently selected Pokémon's species, read from
   the `species` query param, shared between the Data tab's Pokédex
   subtab and its own evolution line links
-- `runSplitName` — the name of the split containing the first
-  not-yet-defeated required battle in `run.defeatedBattles` (or the last
-  split if every required battle has been defeated); this is the split the
-  run has actually progressed to, regardless of which split is being viewed
+- `runSplitName` — the name of the split containing the undefeated
+  required battle following the furthest defeated required battle in
+  `run.defeatedBattles` (or the last split if every required battle has
+  been defeated); this is the split the run has actually progressed to,
+  regardless of which split is being viewed
 - `currentSplitName` — the split named by the `split` query param if it
-  matches one of `game.splits`, otherwise `runSplitName`; `RunEntry` computes
-  and links to this param directly when navigating to the page, so it's
-  already populated on load
+  matches one of `game.splits`, otherwise `runSplitName`; `RunEntry` links
+  to the page with no `split` param, so this falls back to `runSplitName`
+  on initial load
 - `game` — the `Game` matching `slug`, looked up from the static game list;
   triggers a 404 if no game matches
 - `run` — the stored `Run` for `game`, looked up from the run store snapshot
