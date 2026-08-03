@@ -107,15 +107,10 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         (gameRun) => StringHelpers.toSlug(gameRun.game.name) === slug
     )?.run;
 
-    const requiredBattleKeys = game
-        ? BattleHelpers.getRequiredBattleKeys(game)
-        : [];
-    const lastRequiredBattleKey =
-        requiredBattleKeys[requiredBattleKeys.length - 1];
     const isHallOfFameUnlocked = !!(
+        game &&
         run &&
-        lastRequiredBattleKey &&
-        run.defeatedBattles.includes(lastRequiredBattleKey)
+        BattleHelpers.isGameComplete(game, run.defeatedBattles)
     );
 
     const activeTab =
@@ -455,6 +450,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                         {activeTab === 'split' && (
                             <SplitHeader
                                 currentSplitName={currentSplitName}
+                                defeatedBattles={run.defeatedBattles}
                                 game={game}
                                 onSelectSplit={handleSplitSelect}
                                 runSplitName={runSplitName}
