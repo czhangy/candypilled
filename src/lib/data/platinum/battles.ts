@@ -3,7 +3,7 @@ import { BattleData } from '@/lib/static/types';
 
 export const BATTLES: Record<string, BattleData> = {
     'elite-four-aaron-aaron': {
-        saveCondition: { type: 'gameClear' },
+        saveCondition: { type: 'flag', flag: 176 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'elite-four-aaron',
         name: 'Aaron',
@@ -78,7 +78,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'elite-four-bertha-bertha': {
-        saveCondition: { type: 'gameClear' },
+        saveCondition: { type: 'flag', flag: 177 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'elite-four-bertha',
         name: 'Bertha',
@@ -1133,7 +1133,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'elite-four-flint-flint': {
-        saveCondition: { type: 'gameClear' },
+        saveCondition: { type: 'flag', flag: 178 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'elite-four-flint',
         name: 'Flint',
@@ -2756,7 +2756,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'elite-four-lucian-lucian': {
-        saveCondition: { type: 'gameClear' },
+        saveCondition: { type: 'flag', flag: 179 },
         aiFlags: [
             AiFlag.Basic,
             AiFlag.EvaluateAttack,
