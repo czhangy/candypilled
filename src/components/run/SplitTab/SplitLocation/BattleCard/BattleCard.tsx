@@ -1,8 +1,13 @@
+'use client';
+
+import { useState } from 'react';
+import EditIcon from '@/lib/icons/EditIcon';
 import { BattleMetadata } from '@/lib/static/enums';
 import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import styles from './BattleCard.module.scss';
+import BattleNotesModal from './BattleNotesModal/BattleNotesModal';
 import PokemonSlot from './PokemonSlot/PokemonSlot';
 import TrainerPanel from './TrainerPanel/TrainerPanel';
 import TrainerSprite from './TrainerSprite/TrainerSprite';
@@ -45,11 +50,29 @@ const BattleCard: React.FC<BattleCardProps> = ({
     const TEAM_SLOT_COUNT = 6;
 
     // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [isNotesModalOpen, setIsNotesModalOpen] = useState(false);
+
+    // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
     const teamGroups = BattleHelpers.getTeamGroups(battle, starter, game);
     const isStacked = teamGroups.length > 1;
+
+    // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleNotesButtonClick = (): void => {
+        setIsNotesModalOpen(true);
+    };
+
+    const handleNotesModalClose = (): void => {
+        setIsNotesModalOpen(false);
+    };
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -68,15 +91,34 @@ const BattleCard: React.FC<BattleCardProps> = ({
                       : 'Battle'}
             </span>
             <div className={styles.content}>
-                <button
-                    className={styles['trainer-header']}
-                    onClick={() =>
-                        onSelectTrainer(BattleHelpers.getBattleKey(battle))
-                    }
-                    type="button"
-                >
-                    {BattleHelpers.getFullName(battle, game)}
-                </button>
+                <div className={styles['trainer-header']}>
+                    <button
+                        className={styles['trainer-name']}
+                        onClick={() =>
+                            onSelectTrainer(BattleHelpers.getBattleKey(battle))
+                        }
+                        type="button"
+                    >
+                        {BattleHelpers.getFullName(battle, game)}
+                    </button>
+                    <button
+                        aria-label="Add notes"
+                        className={styles['notes-button']}
+                        onClick={handleNotesButtonClick}
+                        type="button"
+                    >
+                        <EditIcon />
+                    </button>
+                </div>
+                {isNotesModalOpen && (
+                    <BattleNotesModal
+                        accentColor={game.accentColor}
+                        battleKey={BattleHelpers.getBattleKey(battle)}
+                        buttonTextColor={game.textContrastColor}
+                        game={game}
+                        onClose={handleNotesModalClose}
+                    />
+                )}
                 <div className={styles.body}>
                     {teamGroups.map((group, groupIndex) => {
                         const isLastGroup =

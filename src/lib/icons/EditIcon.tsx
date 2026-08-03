@@ -1,6 +1,6 @@
 const EditIcon: React.FC = () => {
     return (
-        <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none">
+        <svg viewBox="0 0 24 24">
             <path
                 fillRule="evenodd"
                 clipRule="evenodd"
