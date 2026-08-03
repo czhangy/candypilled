@@ -223,6 +223,11 @@ type RawMoveEntry = {
     version_group_details: RawVersionGroupDetail[];
 };
 
+type RawHeldItem = {
+    item: { name: string };
+    version_details: { version: { name: string } }[];
+};
+
 type RawPokemon = {
     name: string;
     sprites: unknown;
@@ -233,6 +238,7 @@ type RawPokemon = {
     stats: RawStat[];
     past_stats: RawPastStat[];
     moves: RawMoveEntry[];
+    held_items: RawHeldItem[];
 };
 
 const fetchRawPokemon = async (variety: Variety): Promise<RawPokemon> => {
@@ -587,6 +593,19 @@ const buildStatsByGeneration = (pokemon: RawPokemon): StatsByGeneration[] => {
         return { fromGeneration, stats };
     });
 };
+
+// -------------------------------------------------------------------------
+// Wild held items
+// -------------------------------------------------------------------------
+
+const buildWildHeldItems = (pokemon: RawPokemon): string[] =>
+    pokemon.held_items
+        .filter((heldItem) =>
+            heldItem.version_details.some(
+                (detail) => detail.version.name === CURRENT_GAME_VERSION.version
+            )
+        )
+        .map((heldItem) => heldItem.item.name);
 
 // -------------------------------------------------------------------------
 // Learnset
@@ -1000,6 +1019,7 @@ export const fetchPokemonData = async (): Promise<void> => {
                 NAME_OVERRIDES[variety.name] ??
                 StringHelpers.toTitleCase(variety.name);
             const formChangeItem = FORM_CHANGE_ITEMS_BY_VARIETY[variety.name];
+            const wildHeldItems = buildWildHeldItems(rawPokemon);
             data[variety.name] = {
                 slug: variety.name,
                 name,
@@ -1007,6 +1027,7 @@ export const fetchPokemonData = async (): Promise<void> => {
                 introducedInGeneration: dexGeneration,
                 isTemporaryForm: TEMPORARY_FORM_VARIETIES.has(variety.name),
                 ...(formChangeItem && { formChangeItem }),
+                ...(wildHeldItems.length > 0 && { wildHeldItems }),
                 isLegendary: species.is_legendary || species.is_mythical,
                 sprites,
                 types: buildTypesByGeneration(rawPokemon),

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Encounter } from '@/lib/static/types';
+import { Encounter, ItemData } from '@/lib/static/types';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './EncounterRow.module.scss';
@@ -53,9 +53,12 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
     const tradeForPokemon = encounter.tradeFor
         ? PokemonHelpers.getPokemonData(encounter.tradeFor)
         : undefined;
-    const heldItem = encounter.heldItem
-        ? ItemHelpers.getHeldItemData(encounter.heldItem)
-        : undefined;
+    const heldItemSlugs = encounter.heldItem
+        ? [encounter.heldItem]
+        : (pokemon?.wildHeldItems ?? []);
+    const heldItems = heldItemSlugs
+        .map((slug) => ItemHelpers.getHeldItemData(slug))
+        .filter((item): item is ItemData => item !== undefined);
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -91,24 +94,25 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
                                 {tradeForPokemon?.name ?? encounter.tradeFor}
                             </span>
                         )}
-                        {heldItem && (
+                        {heldItems.map((item) => (
                             <button
                                 className={styles['pokemon__held-item']}
+                                key={item.slug}
                                 onClick={(event) => {
                                     event.stopPropagation();
-                                    onSelectItem(heldItem.slug);
+                                    onSelectItem(item.slug);
                                 }}
                                 type="button"
                             >
                                 <Image
-                                    alt={heldItem.name}
+                                    alt={item.name}
                                     height={ITEM_ICON_SIZE}
-                                    src={heldItem.sprite}
+                                    src={item.sprite}
                                     width={ITEM_ICON_SIZE}
                                 />
-                                {heldItem.name}
+                                {item.name}
                             </button>
-                        )}
+                        ))}
                     </div>
                 </div>
             </td>
