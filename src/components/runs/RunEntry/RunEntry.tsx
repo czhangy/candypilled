@@ -146,7 +146,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                 />
                 <div className={styles.info}>
                     <div className={styles.line}>
-                        <span className={styles.name}>{game.name}</span>
+                        <span className={styles.name}>Pokémon {game.name}</span>
                         {run && run.attempt > 0 && (
                             <span className={styles.attempt}>
                                 Attempt #{run.attempt}

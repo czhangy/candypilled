@@ -2,19 +2,14 @@
 
 import { useEffect, useSyncExternalStore } from 'react';
 import { useRouter } from 'next/navigation';
-import PokemonSlot from '@/components/run/SplitTab/SplitLocation/BattleCard/PokemonSlot/PokemonSlot';
+import HofTeam from '@/components/run/HallOfFameTab/HallOfFameCard/HofTeam/HofTeam';
 import { GAMES } from '@/lib/data/games';
+import { CaughtPokemon } from '@/lib/static/types';
 import HallOfFameHelpers from '@/lib/utils/HallOfFameHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './HofPage.module.scss';
 
 const HofPage: React.FC = () => {
-    // -------------------------------------------------------------------------
-    // CONSTANTS
-    // -------------------------------------------------------------------------
-
-    const TEAM_SLOT_COUNT = 6;
-
     // -------------------------------------------------------------------------
     // HOOKS
     // -------------------------------------------------------------------------
@@ -43,6 +38,18 @@ const HofPage: React.FC = () => {
     }, [entries.length, router]);
 
     // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleUpdateTeam = (
+        game: string,
+        attempt: number,
+        team: CaughtPokemon[]
+    ): void => {
+        HallOfFameHelpers.updateEntryTeam(game, attempt, team);
+    };
+
+    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
@@ -61,11 +68,6 @@ const HofPage: React.FC = () => {
                     );
                     if (!game) return null;
 
-                    const paddedTeam = Array.from(
-                        { length: TEAM_SLOT_COUNT },
-                        (_, index) => entry.team[index] ?? null
-                    );
-
                     return (
                         <li
                             className={styles.entry}
@@ -74,23 +76,19 @@ const HofPage: React.FC = () => {
                             <span className={styles['entry__heading']}>
                                 {game.name} — Attempt #{entry.attempt}
                             </span>
-                            <div className={styles['entry__team']}>
-                                {paddedTeam.map((pokemon, index) => (
-                                    <PokemonSlot
-                                        generation={game.generation}
-                                        isReadOnly
-                                        key={
-                                            pokemon
-                                                ? pokemon.location
-                                                : `empty-${index}`
-                                        }
-                                        pokemon={pokemon}
-                                        position="single"
-                                        variant={entry.game}
-                                        version={game.version}
-                                    />
-                                ))}
-                            </div>
+                            <HofTeam
+                                generation={game.generation}
+                                onChange={(team) =>
+                                    handleUpdateTeam(
+                                        entry.game,
+                                        entry.attempt,
+                                        team
+                                    )
+                                }
+                                team={entry.team}
+                                variant={entry.game}
+                                version={game.version}
+                            />
                         </li>
                     );
                 })}

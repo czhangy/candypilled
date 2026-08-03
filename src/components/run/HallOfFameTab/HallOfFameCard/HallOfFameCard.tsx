@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import PokemonSlot from '@/components/run/SplitTab/SplitLocation/BattleCard/PokemonSlot/PokemonSlot';
 import { CaughtPokemon } from '@/lib/static/types';
 import styles from './HallOfFameCard.module.scss';
 import HofSlot from './HofSlot/HofSlot';
+import HofTeam from './HofTeam/HofTeam';
 import PokemonPickerModal from './PokemonPickerModal/PokemonPickerModal';
 
 type HallOfFameCardProps = {
     availablePokemon: CaughtPokemon[];
     generation: number;
     onSave: (team: CaughtPokemon[]) => void;
+    onUpdateTeam: (team: CaughtPokemon[]) => void;
     savedTeam: CaughtPokemon[] | null;
     variant: string;
     version: string;
@@ -18,6 +19,7 @@ const HallOfFameCard: React.FC<HallOfFameCardProps> = ({
     availablePokemon,
     generation,
     onSave,
+    onUpdateTeam,
     savedTeam,
     variant,
     version,
@@ -48,12 +50,6 @@ const HallOfFameCard: React.FC<HallOfFameCardProps> = ({
         (pokemon) => !chosenLocations.includes(pokemon.location)
     );
     const canSave = team.some((pokemon) => pokemon !== null);
-    const paddedSavedTeam =
-        savedTeam &&
-        Array.from(
-            { length: TEAM_SLOT_COUNT },
-            (_, index) => savedTeam[index] ?? null
-        );
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -87,24 +83,14 @@ const HallOfFameCard: React.FC<HallOfFameCardProps> = ({
         <div className={styles['hall-of-fame-card']}>
             <span className={styles.label}>Hall of Fame Team</span>
             <div className={styles.content}>
-                {paddedSavedTeam ? (
-                    <div className={styles['saved-team']}>
-                        {paddedSavedTeam.map((pokemon, index) => (
-                            <PokemonSlot
-                                generation={generation}
-                                isReadOnly
-                                key={
-                                    pokemon
-                                        ? pokemon.location
-                                        : `empty-${index}`
-                                }
-                                pokemon={pokemon}
-                                position="single"
-                                variant={variant}
-                                version={version}
-                            />
-                        ))}
-                    </div>
+                {savedTeam ? (
+                    <HofTeam
+                        generation={generation}
+                        onChange={onUpdateTeam}
+                        team={savedTeam}
+                        variant={variant}
+                        version={version}
+                    />
                 ) : (
                     <>
                         <div className={styles.team}>

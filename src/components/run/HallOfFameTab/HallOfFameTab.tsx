@@ -47,6 +47,10 @@ const HallOfFameTab: React.FC<HallOfFameTabProps> = ({ game, run }) => {
         });
     };
 
+    const handleUpdateTeam = (team: CaughtPokemon[]): void => {
+        HallOfFameHelpers.updateEntryTeam(variant, run.attempt, team);
+    };
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -57,6 +61,7 @@ const HallOfFameTab: React.FC<HallOfFameTabProps> = ({ game, run }) => {
                 availablePokemon={run.caughtPokemon}
                 generation={game.generation}
                 onSave={handleSave}
+                onUpdateTeam={handleUpdateTeam}
                 savedTeam={savedEntry?.team ?? null}
                 variant={variant}
                 version={game.version}

@@ -14,6 +14,10 @@ import styles from './PokemonSlot.module.scss';
 
 type PokemonSlotProps = {
     generation: number;
+    // Keeps the held item and moveset interactive even when `isReadOnly`,
+    // for contexts that allow editing those two fields but not species,
+    // ability, or nature (e.g. a saved Hall of Fame team).
+    hofDisplay: boolean;
     isReadOnly: boolean;
     onSelectAbility?: (slug: string) => void;
     onSelectItem?: (slug: string) => void;
@@ -27,6 +31,7 @@ type PokemonSlotProps = {
 
 const PokemonSlot: React.FC<PokemonSlotProps> = ({
     generation,
+    hofDisplay,
     isReadOnly,
     onSelectAbility,
     onSelectItem,
@@ -88,7 +93,8 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     const ability = abilitySlug
         ? AbilityHelpers.getAbilityData(abilitySlug)?.name
         : undefined;
-    const highlightDangerous = !(settings['hide-dangerous'] ?? false);
+    const highlightDangerous =
+        !hofDisplay && !(settings['hide-dangerous'] ?? false);
     const moves =
         pokemon?.moves ??
         (pokemon
@@ -112,7 +118,8 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
             </div>
             <div className={styles['pokemon-slot__name']}>
                 <span>
-                    Lv.{pokemon.level} {speciesName}
+                    {!hofDisplay && `Lv.${pokemon.level} `}
+                    {speciesName}
                     {pokemon.gender && (
                         <span
                             className={[
@@ -153,6 +160,11 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
         </>
     );
     const positionClass = styles[`pokemon-slot--${position}`];
+    const isItemAndMovesReadOnly = isReadOnly && !hofDisplay;
+    // Even without a held item, the item slot must stay clickable in HOF
+    // display mode so one can be assigned; elsewhere an item button is only
+    // shown once a held item actually exists.
+    const canClickItem = !isItemAndMovesReadOnly && (!!heldItem || hofDisplay);
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -194,47 +206,43 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
             )}
             <ul className={styles['pokemon-slot__metadata']}>
                 <li className={styles['pokemon-slot__metadata-item--accent']}>
-                    {heldItem ? (
-                        isReadOnly ? (
-                            <span
-                                className={[
-                                    styles['ability-button'],
-                                    styles['ability-button--readonly'],
-                                    styles['held-item'],
-                                ].join(' ')}
-                            >
-                                {heldItemSprite && (
-                                    <Image
-                                        alt={heldItem}
-                                        height={ITEM_ICON_SIZE}
-                                        src={heldItemSprite}
-                                        width={ITEM_ICON_SIZE}
-                                    />
-                                )}
-                                {heldItem}
-                            </span>
-                        ) : (
-                            <button
-                                className={[
-                                    styles['ability-button'],
-                                    styles['held-item'],
-                                ].join(' ')}
-                                onClick={() =>
-                                    onSelectItem?.(heldItemSlug as string)
-                                }
-                                type="button"
-                            >
-                                {heldItemSprite && (
-                                    <Image
-                                        alt={heldItem}
-                                        height={ITEM_ICON_SIZE}
-                                        src={heldItemSprite}
-                                        width={ITEM_ICON_SIZE}
-                                    />
-                                )}
-                                {heldItem}
-                            </button>
-                        )
+                    {canClickItem ? (
+                        <button
+                            className={[
+                                styles['ability-button'],
+                                styles['held-item'],
+                            ].join(' ')}
+                            onClick={() => onSelectItem?.(heldItemSlug ?? '')}
+                            type="button"
+                        >
+                            {heldItemSprite && (
+                                <Image
+                                    alt={heldItem ?? ''}
+                                    height={ITEM_ICON_SIZE}
+                                    src={heldItemSprite}
+                                    width={ITEM_ICON_SIZE}
+                                />
+                            )}
+                            {heldItem ?? '-'}
+                        </button>
+                    ) : heldItem ? (
+                        <span
+                            className={[
+                                styles['ability-button'],
+                                styles['ability-button--readonly'],
+                                styles['held-item'],
+                            ].join(' ')}
+                        >
+                            {heldItemSprite && (
+                                <Image
+                                    alt={heldItem}
+                                    height={ITEM_ICON_SIZE}
+                                    src={heldItemSprite}
+                                    width={ITEM_ICON_SIZE}
+                                />
+                            )}
+                            {heldItem}
+                        </span>
                     ) : (
                         '-'
                     )}
@@ -307,7 +315,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                 <MoveList
                     generation={generation}
                     highlightDangerous={highlightDangerous}
-                    isReadOnly={isReadOnly}
+                    isReadOnly={isItemAndMovesReadOnly}
                     ivs={StatHelpers.normalizeStats(pokemon.ivs, MIN_IV)}
                     moves={moves}
                     onSelectMove={onSelectMove}
