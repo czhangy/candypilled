@@ -2497,7 +2497,13 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'galactic-grunt-f-4': {
-        saveCondition: { type: 'trainerFlag', flag: 1785 },
+        saveCondition: {
+            type: 'or',
+            conditions: [
+                { type: 'trainerFlag', flag: 1785 },
+                { type: 'flag', flag: 350 },
+            ],
+        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '4',
@@ -2521,7 +2527,13 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-13': {
-        saveCondition: { type: 'trainerFlag', flag: 1777 },
+        saveCondition: {
+            type: 'or',
+            conditions: [
+                { type: 'trainerFlag', flag: 1777 },
+                { type: 'flag', flag: 350 },
+            ],
+        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '13',
@@ -2537,7 +2549,13 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-14': {
-        saveCondition: { type: 'trainerFlag', flag: 1778 },
+        saveCondition: {
+            type: 'or',
+            conditions: [
+                { type: 'trainerFlag', flag: 1778 },
+                { type: 'flag', flag: 350 },
+            ],
+        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '14',
