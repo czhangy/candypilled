@@ -20,22 +20,36 @@
     .stat-label {
         color: $text-mid;
         text-align: left;
+
+        .label-text {
+            position: relative;
+        }
+
+        svg {
+            height: 1.1rem;
+            width: 1.1rem;
+        }
+
+        .faster-icon,
+        .slower-icon {
+            left: 100%;
+            margin-left: 0.3rem;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .faster-icon {
+            color: $red;
+        }
+
+        .slower-icon {
+            color: $blue;
+        }
     }
 
     .total {
         font-weight: 700;
-
-        &--faster {
-            color: $red;
-        }
-
-        &--slower {
-            color: $blue;
-        }
-
-        &--tie {
-            color: $gold;
-        }
     }
 
     .boost-cell {

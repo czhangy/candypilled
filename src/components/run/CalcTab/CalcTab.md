@@ -94,8 +94,10 @@ directly in the render body rather than in a `useEffect`).
   selected on that side
 - `playerSpeed` / `trainerSpeed` — each side's final Speed stat (adjusted
   by that side's Speed stage boost via `StatHelpers.applyBoost`, then
-  doubled when that side's Tailwind is active), used only to derive
-  `playerSpeedComparison`/`trainerSpeedComparison`
+  doubled when that side's Tailwind is active), used to derive
+  `playerSpeedComparison`/`trainerSpeedComparison`; `trainerSpeed` is also
+  passed to `BoxSelectPanel` as `enemySpeed`, so it can flag each box
+  Pokémon's Speed against the currently selected enemy
 - `playerSpeedComparison` / `trainerSpeedComparison` — each side's
   `SpeedComparison` against the other (`'faster'`/`'slower'`/`'tie'`, or
   `undefined` if either side's speed can't be resolved), passed to

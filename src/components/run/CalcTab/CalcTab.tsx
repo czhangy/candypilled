@@ -868,6 +868,8 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     status={attacker.status}
                 />
                 <BoxSelectPanel
+                    enemySpeed={trainerSpeed}
+                    generation={game.generation}
                     onSelectPokemon={setSelectedLocation}
                     run={run}
                     selectedLocation={selectedLocation}

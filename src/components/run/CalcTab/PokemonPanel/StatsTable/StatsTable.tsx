@@ -1,6 +1,8 @@
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import NumericInput from '@/components/common/NumericInput/NumericInput';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
+import RabbitIcon from '@/lib/icons/RabbitIcon';
+import SnailIcon from '@/lib/icons/SnailIcon';
 import {
     MAX_EV,
     MAX_IV,
@@ -86,7 +88,41 @@ const StatsTable: React.FC<StatsTableProps> = ({
             <tbody>
                 {STAT_FIELDS.map(({ key, label }) => (
                     <tr key={key}>
-                        <th className={styles['stat-label']}>{label}</th>
+                        <th className={styles['stat-label']}>
+                            <span className={styles['label-text']}>
+                                {label}
+                                {key === 'spe' &&
+                                    speedComparison === 'faster' && (
+                                        <span className={styles['faster-icon']}>
+                                            <Tooltip
+                                                position="center"
+                                                text={
+                                                    SPEED_TOOLTIPS[
+                                                        speedComparison
+                                                    ]
+                                                }
+                                            >
+                                                <RabbitIcon />
+                                            </Tooltip>
+                                        </span>
+                                    )}
+                                {key === 'spe' &&
+                                    speedComparison === 'slower' && (
+                                        <span className={styles['slower-icon']}>
+                                            <Tooltip
+                                                position="center"
+                                                text={
+                                                    SPEED_TOOLTIPS[
+                                                        speedComparison
+                                                    ]
+                                                }
+                                            >
+                                                <SnailIcon />
+                                            </Tooltip>
+                                        </span>
+                                    )}
+                            </span>
+                        </th>
                         <td>{baseStats?.[key]}</td>
                         <td>
                             <NumericInput
@@ -122,24 +158,7 @@ const StatsTable: React.FC<StatsTableProps> = ({
                                 />
                             )}
                         </td>
-                        <td className={styles.total}>
-                            {key === 'spe' && speedComparison ? (
-                                <Tooltip
-                                    position="center"
-                                    text={SPEED_TOOLTIPS[speedComparison]}
-                                >
-                                    <span
-                                        className={
-                                            styles[`total--${speedComparison}`]
-                                        }
-                                    >
-                                        {totalStats?.[key]}
-                                    </span>
-                                </Tooltip>
-                            ) : (
-                                totalStats?.[key]
-                            )}
-                        </td>
+                        <td className={styles.total}>{totalStats?.[key]}</td>
                     </tr>
                 ))}
             </tbody>
