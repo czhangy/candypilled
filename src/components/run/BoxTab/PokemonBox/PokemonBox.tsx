@@ -9,7 +9,6 @@ import styles from './PokemonBox.module.scss';
 type PokemonBoxProps = {
     caughtPokemon: CaughtPokemon[];
     levelCap: number | null;
-    onImportClick: () => void;
     onReorderPokemon: (fromLocation: string, toLocation: string) => void;
     onSelectPokemon: (location: string) => void;
     onViewChange: (view: BoxView) => void;
@@ -20,7 +19,6 @@ type PokemonBoxProps = {
 const PokemonBox: React.FC<PokemonBoxProps> = ({
     caughtPokemon,
     levelCap,
-    onImportClick,
     onReorderPokemon,
     onSelectPokemon,
     onViewChange,
@@ -118,15 +116,6 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                 >
                     Dead
                 </button>
-                {view === 'alive' && (
-                    <button
-                        className={styles['import-button']}
-                        onClick={onImportClick}
-                        type="button"
-                    >
-                        Import
-                    </button>
-                )}
             </div>
             <div
                 className={[
