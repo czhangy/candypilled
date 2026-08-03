@@ -920,6 +920,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     run={run}
                     selectedBattle={effectiveSelectedBattle}
                     selectedMemberIndex={selectedMemberIndex}
+                    target={caught}
                 />
                 <BattleSelectPanel
                     game={game}
