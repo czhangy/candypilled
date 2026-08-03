@@ -11,6 +11,7 @@ damage percentage it would deal to the opposing Pokémon. Used twice by
 | `attacker`   | `CalcPokemonInput \| null` | Yes      | -       | The attacking Pokémon's calculator details, or `null` if incomplete |
 | `defender`   | `CalcPokemonInput \| null` | Yes      | -       | The defending Pokémon's calculator details, or `null` if incomplete |
 | `generation` | `number`                   | Yes      | -       | The generation to calculate against                                 |
+| `ivs`        | `StatValues`               | Yes      | -       | The attacker's IVs, used to resolve Hidden Power's type             |
 | `moveNames`  | `string[]`                 | Yes      | -       | The attacker's move slots (empty slots are skipped)                 |
 
 ## Computations
@@ -19,3 +20,5 @@ damage percentage it would deal to the opposing Pokémon. Used twice by
 - Each row's percentage range comes from
   `DamageCalcHelpers.getDamagePercentRange`, showing `-` when `attacker`/
   `defender` is `null` or the calculation can't resolve
+- `getMoveColor` — each move button's type color, from
+  `MoveHelpers.getMoveTypeByName` and `TypeHelpers.getTypeColor`

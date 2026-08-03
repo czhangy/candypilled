@@ -9,7 +9,9 @@ against the player's Pokémon on the right.
 
 | Prop            | Type                       | Required | Default | Description                                                         |
 | --------------- | -------------------------- | -------- | ------- | ------------------------------------------------------------------- |
+| `attackerIvs`   | `StatValues`               | Yes      | -       | The player's Pokémon's IVs, used to resolve Hidden Power's type     |
 | `attackerMoves` | `string[]`                 | Yes      | -       | The player's Pokémon's move slots                                   |
+| `defenderIvs`   | `StatValues`               | Yes      | -       | The trainer's Pokémon's IVs, used to resolve Hidden Power's type    |
 | `defenderMoves` | `string[]`                 | Yes      | -       | The trainer's Pokémon's canonical move slots                        |
 | `generation`    | `number`                   | Yes      | -       | The generation to calculate against                                 |
 | `playerInput`   | `CalcPokemonInput \| null` | Yes      | -       | The player's Pokémon's calculator details, or `null` if incomplete  |

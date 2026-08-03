@@ -828,8 +828,10 @@ const CalcTab: React.FC<CalcTabProps> = ({
             <div className={styles.results}>
                 <DamageResultsPanel
                     attackerField={attackerField}
+                    attackerIvs={attacker.ivs}
                     attackerMoves={attacker.moves}
                     defenderField={defenderField}
+                    defenderIvs={defender.ivs}
                     defenderMoves={defender.moves}
                     generation={game.generation}
                     playerInput={playerInput}

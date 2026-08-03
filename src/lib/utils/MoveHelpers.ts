@@ -77,6 +77,20 @@ export default class MoveHelpers {
         return MoveHelpers.getMoveData(slug)?.isDangerous ?? false;
     }
 
+    /** The type a move displayed as `name` should render as in `generation`. */
+    static getMoveTypeByName(
+        name: string,
+        generation: number,
+        ivs: StatValues
+    ): string | undefined {
+        const slug = Object.values(MOVES).find(
+            (move) => move.name === name
+        )?.slug;
+        return slug
+            ? MoveHelpers.getMoveType(slug, generation, ivs)
+            : undefined;
+    }
+
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------

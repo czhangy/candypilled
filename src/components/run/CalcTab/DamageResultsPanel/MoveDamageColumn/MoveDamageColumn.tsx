@@ -1,6 +1,8 @@
 import { MOVE_SLOT_COUNT } from '@/lib/static/constants';
-import { CalcField, CalcPokemonInput } from '@/lib/static/types';
+import { CalcField, CalcPokemonInput, StatValues } from '@/lib/static/types';
 import DamageCalcHelpers from '@/lib/utils/DamageCalcHelpers';
+import MoveHelpers from '@/lib/utils/MoveHelpers';
+import TypeHelpers from '@/lib/utils/TypeHelpers';
 import styles from './MoveDamageColumn.module.scss';
 
 type MoveDamageColumnProps = {
@@ -9,6 +11,7 @@ type MoveDamageColumnProps = {
     defender: CalcPokemonInput | null;
     field: CalcField;
     generation: number;
+    ivs: StatValues;
     moveNames: string[];
     onSelectMove: (index: number) => void;
 };
@@ -19,9 +22,19 @@ const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
     defender,
     field,
     generation,
+    ivs,
     moveNames,
     onSelectMove,
 }) => {
+    // -------------------------------------------------------------------------
+    // COMPUTATIONS
+    // -------------------------------------------------------------------------
+
+    const getMoveColor = (moveName: string): string | undefined => {
+        const type = MoveHelpers.getMoveTypeByName(moveName, generation, ivs);
+        return type ? TypeHelpers.getTypeColor(type) : undefined;
+    };
+
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
@@ -73,6 +86,11 @@ const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
                                 .filter(Boolean)
                                 .join(' ')}
                             onClick={() => onSelectMove(index)}
+                            style={
+                                {
+                                    '--move-color': getMoveColor(moveName),
+                                } as React.CSSProperties
+                            }
                             type="button"
                         >
                             {moveName}
