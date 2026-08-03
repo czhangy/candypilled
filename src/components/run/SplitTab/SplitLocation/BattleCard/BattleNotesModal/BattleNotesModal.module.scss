@@ -1,0 +1,23 @@
+@use '@/styles/mixins' as *;
+
+.battle-notes-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .textarea {
+        @include form-input;
+
+        min-height: 8rem;
+        resize: vertical;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .save-button {
+        @include solid-accent-button;
+    }
+}

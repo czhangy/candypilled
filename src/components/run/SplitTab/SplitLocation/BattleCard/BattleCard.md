@@ -6,9 +6,10 @@ header style. Lays out a trainer name header above a portrait
 (`TrainerPanel`) and a row of Pokémon team slots (`PokemonSlot`,
 padded to six with empty slots when the team is smaller), toggling the
 trainer's defeated state in storage via `onToggleDefeated` when its
-"Defeat"/"Defeated" button is clicked. The trainer name header is a
-button that calls `onSelectTrainer` with the battle's key, jumping to
-that trainer in the Calc tab. The root element's `id` is
+"Defeat"/"Defeated" button is clicked. Within the trainer name header,
+the name itself is a button that calls `onSelectTrainer` with the
+battle's key, jumping to that trainer in the Calc tab. The root
+element's `id` is
 `BattleHelpers.getBattleSlug(battle)`, a DOM-safe slug of the battle's
 key, so `SplitTab` can scroll directly to it when entering with a
 matching battle selected. For a tag battle (a second trainer present
@@ -20,7 +21,10 @@ with its own six-slot team: the first trainer's row shows just a bare
 since the whole tag battle is defeated as a single unit) so each
 trainer's Pokémon stay visually attributed to the trainer that owns
 them. See `TrainerPanel.md`, `TrainerSprite.md`, and `PokemonSlot.md`
-for the portrait and team slot behavior in detail.
+for the portrait and team slot behavior in detail. The trainer name
+header also has an edit icon button that opens `BattleNotesModal` for
+writing a free-text note about the battle, saved to local storage
+keyed by the battle and the current game; see `BattleNotesModal.md`.
 
 ## Props
 
@@ -34,11 +38,17 @@ for the portrait and team slot behavior in detail.
 | `onSelectItem`     | `(slug: string) => void`      | Yes      | -       | Called with a Pokémon's held item slug when it's clicked                            |
 | `onSelectMove`     | `(slug: string) => void`      | Yes      | -       | Called with a move's slug when it's clicked within a Pokémon's moveset              |
 | `onSelectSpecies`  | `(slug: string) => void`      | Yes      | -       | Called with a Pokémon's species slug when its sprite or name is clicked             |
-| `onSelectTrainer`  | `(battleKey: string) => void` | Yes      | -       | Called with the battle's key when the trainer name header is clicked                |
+| `onSelectTrainer`  | `(battleKey: string) => void` | Yes      | -       | Called with the battle's key when the trainer name text is clicked                  |
 | `onToggleDefeated` | `() => void`                  | Yes      | -       | Called when the defeat button is clicked                                            |
 | `starter`          | `string`                      | Yes      | -       | The run's chosen starter, used to resolve a miniboss's starter-specific team        |
 | `variant`          | `string`                      | Yes      | -       | The sprite variant to prefer, matching the game's slug                              |
 | `version`          | `string`                      | Yes      | -       | The game's version slug, used to derive a Pokémon's moveset when not explicitly set |
+
+## State
+
+| State              | Type      | Initial value | Description                                      |
+| ------------------ | --------- | ------------- | ------------------------------------------------ |
+| `isNotesModalOpen` | `boolean` | `false`       | Whether `BattleNotesModal` is currently rendered |
 
 ## Computations
 
@@ -52,6 +62,11 @@ for the portrait and team slot behavior in detail.
   should render two rows instead of one; passed down so `TrainerPanel`
   and each `PokemonSlot` can round the correct corners and omit the
   border edge they share with the row above them
+
+## Handlers
+
+- **On the notes edit icon click** — sets `isNotesModalOpen` to `true`
+- **On `BattleNotesModal`'s close** — sets `isNotesModalOpen` to `false`
 
 ## SCSS Variable Dependencies
 
