@@ -932,17 +932,17 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     speedComparison={trainerSpeedComparison}
                     status={defender.status}
                 />
-                <BattleSelectPanel
-                    game={game}
-                    onSelectBattle={onSelectBattle}
-                    selectedBattle={effectiveSelectedBattle}
-                />
                 <TeamSelectPanel
                     game={game}
                     onSelectMember={setSelectedMemberIndex}
                     run={run}
                     selectedBattle={effectiveSelectedBattle}
                     selectedMemberIndex={selectedMemberIndex}
+                />
+                <BattleSelectPanel
+                    game={game}
+                    onSelectBattle={onSelectBattle}
+                    selectedBattle={effectiveSelectedBattle}
                 />
             </div>
         </div>
