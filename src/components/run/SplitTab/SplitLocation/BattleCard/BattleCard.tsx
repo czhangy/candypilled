@@ -162,6 +162,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                     ).map((pokemon, index) => (
                                         <PokemonSlot
                                             generation={generation}
+                                            hofDisplay={false}
                                             isReadOnly={false}
                                             key={
                                                 pokemon

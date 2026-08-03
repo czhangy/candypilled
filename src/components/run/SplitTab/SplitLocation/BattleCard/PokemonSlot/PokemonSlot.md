@@ -14,20 +14,25 @@ opening that Pokémon's Pokédex entry in a new tab, the held item is
 clickable, linking to that item's details, the ability is
 clickable, linking to that ability's details, and the nature is
 clickable, opening its entry on the Natures page in a new tab; all
-have a background that darkens further on hover. Abilities and moves
-flagged as dangerous are shown in red text regardless of `isReadOnly`,
-unless the "Hide Dangerous Moves/Abilities" setting is on. When
-`pokemon` is `null`, an empty placeholder slot is shown instead.
+have a background that darkens further on hover. When
+`hofDisplay` is true, the held item and moveset stay
+interactive even while `isReadOnly`, for contexts (e.g. a saved Hall
+of Fame team) that allow editing only those two fields. Abilities and
+moves flagged as dangerous are shown in red text regardless of
+`isReadOnly`, unless the "Hide Dangerous Moves/Abilities" setting is
+on. When `pokemon` is `null`, an empty placeholder slot is shown
+instead.
 
 ## Props
 
 | Prop              | Type                            | Required | Default | Description                                                                                                                                                                                                                 |
 | ----------------- | ------------------------------- | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `generation`      | `number`                        | Yes      | -       | The game's generation, used to resolve the Pokémon's types                                                                                                                                                                  |
-| `isReadOnly`      | `boolean`                       | Yes      | -       | Renders the sprite/name, held item, ability, and nature as plain, non-interactive text when true                                                                                                                            |
+| `hofDisplay`      | `boolean`                       | Yes      | -       | Keeps the held item and moveset clickable even when `isReadOnly`; has no effect when `isReadOnly` is `false`, since they're already interactive                                                                             |
+| `isReadOnly`      | `boolean`                       | Yes      | -       | Renders the sprite/name, held item, ability, and nature as plain, non-interactive text when true (held item and moveset excepted when `hofDisplay`)                                                                         |
 | `onSelectAbility` | `(slug: string) => void`        | No       | -       | Called with the Pokémon's ability slug when it's clicked; unused when `isReadOnly`                                                                                                                                          |
-| `onSelectItem`    | `(slug: string) => void`        | No       | -       | Called with the Pokémon's held item slug when it's clicked; unused when `isReadOnly`                                                                                                                                        |
-| `onSelectMove`    | `(slug: string) => void`        | No       | -       | Called with a move's slug when it's clicked within the moveset; unused when `isReadOnly`                                                                                                                                    |
+| `onSelectItem`    | `(slug: string) => void`        | No       | -       | Called with the Pokémon's held item slug when it's clicked; unused when `isReadOnly` and not `hofDisplay`                                                                                                                   |
+| `onSelectMove`    | `(slug: string) => void`        | No       | -       | Called with a move's slug when it's clicked within the moveset; unused when `isReadOnly` and not `hofDisplay`                                                                                                               |
 | `onSelectSpecies` | `(slug: string) => void`        | No       | -       | Called with the Pokémon's `displaySlug` when its sprite or name is clicked; unused when `isReadOnly`                                                                                                                        |
 | `pokemon`         | `BattlePokemon \| null`         | Yes      | -       | The Pokémon to display, or `null` to render an empty slot                                                                                                                                                                   |
 | `position`        | `'single' \| 'top' \| 'bottom'` | Yes      | -       | Which row of `BattleCard`'s team this slot belongs to, controlling which corner (if it's the last slot in its row) gets rounded and whether the top border is omitted (`'bottom'`, to avoid doubling up with the row above) |
@@ -64,6 +69,8 @@ unless the "Hide Dangerous Moves/Abilities" setting is on. When
 - `moves` — `pokemon.moves` when explicitly set, otherwise the moveset
   the Pokémon would know at its level in `version`, derived via
   `PokemonHelpers.getMovesAtLevel`
+- `isItemAndMovesReadOnly` — `isReadOnly && !hofDisplay`; fed to
+  the held item block and `MoveList` in place of `isReadOnly` directly
 
 ## SCSS Variable Dependencies
 

@@ -14,6 +14,10 @@ import styles from './PokemonSlot.module.scss';
 
 type PokemonSlotProps = {
     generation: number;
+    // Keeps the held item and moveset interactive even when `isReadOnly`,
+    // for contexts that allow editing those two fields but not species,
+    // ability, or nature (e.g. a saved Hall of Fame team).
+    hofDisplay: boolean;
     isReadOnly: boolean;
     onSelectAbility?: (slug: string) => void;
     onSelectItem?: (slug: string) => void;
@@ -27,6 +31,7 @@ type PokemonSlotProps = {
 
 const PokemonSlot: React.FC<PokemonSlotProps> = ({
     generation,
+    hofDisplay,
     isReadOnly,
     onSelectAbility,
     onSelectItem,
@@ -153,6 +158,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
         </>
     );
     const positionClass = styles[`pokemon-slot--${position}`];
+    const isItemAndMovesReadOnly = isReadOnly && !hofDisplay;
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -195,7 +201,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
             <ul className={styles['pokemon-slot__metadata']}>
                 <li className={styles['pokemon-slot__metadata-item--accent']}>
                     {heldItem ? (
-                        isReadOnly ? (
+                        isItemAndMovesReadOnly ? (
                             <span
                                 className={[
                                     styles['ability-button'],
@@ -307,7 +313,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                 <MoveList
                     generation={generation}
                     highlightDangerous={highlightDangerous}
-                    isReadOnly={isReadOnly}
+                    isReadOnly={isItemAndMovesReadOnly}
                     ivs={StatHelpers.normalizeStats(pokemon.ivs, MIN_IV)}
                     moves={moves}
                     onSelectMove={onSelectMove}
