@@ -7,8 +7,9 @@ an icon), ability, nature, and moveset. Non-neutral natures are
 annotated with their stat
 effects, shown in a smaller font on the same line (e.g. "Adamant [+Atk
 -SpA]"). Each Pokémon's name is prefixed with its level (e.g. "Lv.5
-Chimchar") and suffixed with a blue ♂ or pink ♀ gender symbol, omitted
-when `pokemon.gender` is unset (e.g. for a genderless species).
+Chimchar", omitted when `hofDisplay`) and suffixed with a blue ♂ or
+pink ♀ gender symbol, omitted when `pokemon.gender` is unset (e.g. for
+a genderless species).
 Unless `isReadOnly`, the sprite and name are clickable,
 opening that Pokémon's Pokédex entry in a new tab, the held item is
 clickable, linking to that item's details, the ability is
@@ -17,18 +18,20 @@ clickable, opening its entry on the Natures page in a new tab; all
 have a background that darkens further on hover. When
 `hofDisplay` is true, the held item and moveset stay
 interactive even while `isReadOnly`, for contexts (e.g. a saved Hall
-of Fame team) that allow editing only those two fields. Abilities and
+of Fame team) that allow editing only those two fields; in that mode
+the held item is clickable even when the Pokémon isn't holding one, so
+one can be assigned. Abilities and
 moves flagged as dangerous are shown in red text regardless of
 `isReadOnly`, unless the "Hide Dangerous Moves/Abilities" setting is
-on. When `pokemon` is `null`, an empty placeholder slot is shown
-instead.
+on or `hofDisplay` is true. When `pokemon` is `null`, an empty
+placeholder slot is shown instead.
 
 ## Props
 
 | Prop              | Type                            | Required | Default | Description                                                                                                                                                                                                                 |
 | ----------------- | ------------------------------- | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `generation`      | `number`                        | Yes      | -       | The game's generation, used to resolve the Pokémon's types                                                                                                                                                                  |
-| `hofDisplay`      | `boolean`                       | Yes      | -       | Keeps the held item and moveset clickable even when `isReadOnly`; has no effect when `isReadOnly` is `false`, since they're already interactive                                                                             |
+| `hofDisplay`      | `boolean`                       | Yes      | -       | Hides the level prefix, disables dangerous move/ability highlighting, and (combined with `isReadOnly`) keeps the held item and moveset clickable while species, ability, and nature stay non-interactive                    |
 | `isReadOnly`      | `boolean`                       | Yes      | -       | Renders the sprite/name, held item, ability, and nature as plain, non-interactive text when true (held item and moveset excepted when `hofDisplay`)                                                                         |
 | `onSelectAbility` | `(slug: string) => void`        | No       | -       | Called with the Pokémon's ability slug when it's clicked; unused when `isReadOnly`                                                                                                                                          |
 | `onSelectItem`    | `(slug: string) => void`        | No       | -       | Called with the Pokémon's held item slug when it's clicked; unused when `isReadOnly` and not `hofDisplay`                                                                                                                   |
@@ -59,10 +62,10 @@ instead.
   `pokemon.ability`; its display name is then resolved via
   `AbilityHelpers`
 - `highlightDangerous` — whether the "Hide Dangerous Moves/Abilities"
-  setting is off (i.e. highlighting is on by default), read via
-  `SettingsHelpers` and passed to `MoveList`; also gates whether
-  `AbilityHelpers.isDangerousAbility` renders the ability button's
-  text in red
+  setting is off (i.e. highlighting is on by default) and `hofDisplay`
+  is false, read via `SettingsHelpers` and passed to `MoveList`; also
+  gates whether `AbilityHelpers.isDangerousAbility` renders the ability
+  button's text in red
 - `pokemon.ivs` is normalized into a full `StatValues` via
   `StatHelpers.normalizeStats` and passed to `MoveList` to resolve
   Hidden Power's actual type
@@ -71,6 +74,10 @@ instead.
   `PokemonHelpers.getMovesAtLevel`
 - `isItemAndMovesReadOnly` — `isReadOnly && !hofDisplay`; fed to
   the held item block and `MoveList` in place of `isReadOnly` directly
+- `canClickItem` — whether the held item renders as a button: true
+  whenever the item isn't read-only and either a held item exists or
+  `hofDisplay` is true (so an empty item slot can still be clicked to
+  assign one in HOF display mode)
 
 ## SCSS Variable Dependencies
 
