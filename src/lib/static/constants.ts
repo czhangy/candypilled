@@ -25,6 +25,10 @@ export const SETTINGS: Setting[] = [
         id: 'show-national-dex-data',
         title: 'Show National Dex Data',
     },
+    {
+        id: 'disable-switch-in-predictions',
+        title: 'Disable Switch-In Predictions',
+    },
 ];
 
 export const MIN_LEVEL = 1;
