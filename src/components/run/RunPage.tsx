@@ -214,22 +214,16 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     };
 
     const handleMoveLinkClick = (slug: string): void => {
-        window.open(
-            `${pathname}?tab=data&subtab=moves&move=${encodeURIComponent(
-                slug
-            )}`,
-            '_blank',
-            'noopener,noreferrer'
+        router.push(
+            `${pathname}?tab=data&subtab=moves&move=${encodeURIComponent(slug)}`
         );
     };
 
     const handleSpeciesLinkClick = (slug: string): void => {
-        window.open(
+        router.push(
             `${pathname}?tab=data&subtab=pokedex&species=${encodeURIComponent(
                 slug
-            )}`,
-            '_blank',
-            'noopener,noreferrer'
+            )}`
         );
     };
 
@@ -307,22 +301,16 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     };
 
     const handleAbilityLinkClick = (slug: string): void => {
-        window.open(
+        router.push(
             `${pathname}?tab=data&subtab=abilities&ability=${encodeURIComponent(
                 slug
-            )}`,
-            '_blank',
-            'noopener,noreferrer'
+            )}`
         );
     };
 
     const handleItemLinkClick = (slug: string): void => {
-        window.open(
-            `${pathname}?tab=data&subtab=items&item=${encodeURIComponent(
-                slug
-            )}`,
-            '_blank',
-            'noopener,noreferrer'
+        router.push(
+            `${pathname}?tab=data&subtab=items&item=${encodeURIComponent(slug)}`
         );
     };
 
