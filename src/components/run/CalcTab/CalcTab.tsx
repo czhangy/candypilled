@@ -673,14 +673,9 @@ const CalcTab: React.FC<CalcTabProps> = ({
         dispatchAttacker({ type: 'SET_NATURE', nature: value as Nature });
     };
 
-    const handleAttackerLevelChange = (
-        event: React.ChangeEvent<HTMLInputElement>
-    ): void => {
-        const value = Math.min(
-            MAX_LEVEL,
-            Math.max(MIN_LEVEL, Number(event.target.value))
-        );
-        dispatchAttacker({ type: 'SET_LEVEL', level: value });
+    const handleAttackerLevelChange = (value: number): void => {
+        const level = Math.min(MAX_LEVEL, Math.max(MIN_LEVEL, value));
+        dispatchAttacker({ type: 'SET_LEVEL', level });
     };
 
     const handleAttackerStatusChange = (value: string): void => {
@@ -689,23 +684,17 @@ const CalcTab: React.FC<CalcTabProps> = ({
 
     const handleAttackerIvChange = (
         stat: keyof StatValues,
-        event: React.ChangeEvent<HTMLInputElement>
+        rawValue: number
     ): void => {
-        const value = Math.min(
-            MAX_IV,
-            Math.max(MIN_IV, Number(event.target.value))
-        );
+        const value = Math.min(MAX_IV, Math.max(MIN_IV, rawValue));
         dispatchAttacker({ type: 'SET_IV', stat, value });
     };
 
     const handleAttackerEvChange = (
         stat: keyof StatValues,
-        event: React.ChangeEvent<HTMLInputElement>
+        rawValue: number
     ): void => {
-        const value = Math.min(
-            MAX_EV,
-            Math.max(MIN_EV, Number(event.target.value))
-        );
+        const value = Math.min(MAX_EV, Math.max(MIN_EV, rawValue));
         dispatchAttacker({ type: 'SET_EV', stat, value });
     };
 
@@ -763,14 +752,9 @@ const CalcTab: React.FC<CalcTabProps> = ({
         dispatchDefender({ type: 'SET_NATURE', nature: value as Nature });
     };
 
-    const handleDefenderLevelChange = (
-        event: React.ChangeEvent<HTMLInputElement>
-    ): void => {
-        const value = Math.min(
-            MAX_LEVEL,
-            Math.max(MIN_LEVEL, Number(event.target.value))
-        );
-        dispatchDefender({ type: 'SET_LEVEL', level: value });
+    const handleDefenderLevelChange = (value: number): void => {
+        const level = Math.min(MAX_LEVEL, Math.max(MIN_LEVEL, value));
+        dispatchDefender({ type: 'SET_LEVEL', level });
     };
 
     const handleDefenderStatusChange = (value: string): void => {
@@ -790,23 +774,17 @@ const CalcTab: React.FC<CalcTabProps> = ({
 
     const handleDefenderEvChange = (
         stat: keyof StatValues,
-        event: React.ChangeEvent<HTMLInputElement>
+        rawValue: number
     ): void => {
-        const value = Math.min(
-            MAX_EV,
-            Math.max(MIN_EV, Number(event.target.value))
-        );
+        const value = Math.min(MAX_EV, Math.max(MIN_EV, rawValue));
         dispatchDefender({ type: 'SET_EV', stat, value });
     };
 
     const handleDefenderIvChange = (
         stat: keyof StatValues,
-        event: React.ChangeEvent<HTMLInputElement>
+        rawValue: number
     ): void => {
-        const value = Math.min(
-            MAX_IV,
-            Math.max(MIN_IV, Number(event.target.value))
-        );
+        const value = Math.min(MAX_IV, Math.max(MIN_IV, rawValue));
         dispatchDefender({ type: 'SET_IV', stat, value });
     };
 
@@ -932,17 +910,17 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     speedComparison={trainerSpeedComparison}
                     status={defender.status}
                 />
-                <BattleSelectPanel
-                    game={game}
-                    onSelectBattle={onSelectBattle}
-                    selectedBattle={effectiveSelectedBattle}
-                />
                 <TeamSelectPanel
                     game={game}
                     onSelectMember={setSelectedMemberIndex}
                     run={run}
                     selectedBattle={effectiveSelectedBattle}
                     selectedMemberIndex={selectedMemberIndex}
+                />
+                <BattleSelectPanel
+                    game={game}
+                    onSelectBattle={onSelectBattle}
+                    selectedBattle={effectiveSelectedBattle}
                 />
             </div>
         </div>

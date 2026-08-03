@@ -20,7 +20,7 @@ const ROUTE_223: Location = {
             y: 83.7,
         },
         {
-            metadata: [BattleMetadata.Optional],
+            metadata: [],
             battleKey: 'swimmer-m-oscar',
             x: 39,
             y: 70.5,

@@ -80,7 +80,6 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const activeTab = searchParams.get('tab') ?? TABS[0].id;
     const activeSubtab = searchParams.get('subtab') ?? DEFAULT_SUBTAB;
     const selectedMove = searchParams.get('move') ?? undefined;
     const selectedAbility = searchParams.get('ability') ?? undefined;
@@ -103,6 +102,20 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const run = gameRuns.find(
         (gameRun) => StringHelpers.toSlug(gameRun.game.name) === slug
     )?.run;
+
+    const requiredBattleKeys = game
+        ? BattleHelpers.getRequiredBattleKeys(game)
+        : [];
+    const lastRequiredBattleKey =
+        requiredBattleKeys[requiredBattleKeys.length - 1];
+    const isHallOfFameUnlocked = !!(
+        run &&
+        lastRequiredBattleKey &&
+        run.defeatedBattles.includes(lastRequiredBattleKey)
+    );
+
+    const activeTab =
+        searchParams.get('tab') ?? (isHallOfFameUnlocked ? 'hof' : TABS[0].id);
 
     const runSplitName =
         game && run
@@ -132,16 +145,6 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
           }`
         : null;
 
-    const requiredBattleKeys = game
-        ? BattleHelpers.getRequiredBattleKeys(game)
-        : [];
-    const lastRequiredBattleKey =
-        requiredBattleKeys[requiredBattleKeys.length - 1];
-    const isHallOfFameUnlocked = !!(
-        run &&
-        lastRequiredBattleKey &&
-        run.defeatedBattles.includes(lastRequiredBattleKey)
-    );
     const visibleTabs = TABS.filter(
         (tab) => tab.id !== 'hof' || isHallOfFameUnlocked
     );
@@ -214,22 +217,16 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     };
 
     const handleMoveLinkClick = (slug: string): void => {
-        window.open(
-            `${pathname}?tab=data&subtab=moves&move=${encodeURIComponent(
-                slug
-            )}`,
-            '_blank',
-            'noopener,noreferrer'
+        router.push(
+            `${pathname}?tab=data&subtab=moves&move=${encodeURIComponent(slug)}`
         );
     };
 
     const handleSpeciesLinkClick = (slug: string): void => {
-        window.open(
+        router.push(
             `${pathname}?tab=data&subtab=pokedex&species=${encodeURIComponent(
                 slug
-            )}`,
-            '_blank',
-            'noopener,noreferrer'
+            )}`
         );
     };
 
@@ -307,22 +304,16 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     };
 
     const handleAbilityLinkClick = (slug: string): void => {
-        window.open(
+        router.push(
             `${pathname}?tab=data&subtab=abilities&ability=${encodeURIComponent(
                 slug
-            )}`,
-            '_blank',
-            'noopener,noreferrer'
+            )}`
         );
     };
 
     const handleItemLinkClick = (slug: string): void => {
-        window.open(
-            `${pathname}?tab=data&subtab=items&item=${encodeURIComponent(
-                slug
-            )}`,
-            '_blank',
-            'noopener,noreferrer'
+        router.push(
+            `${pathname}?tab=data&subtab=items&item=${encodeURIComponent(slug)}`
         );
     };
 

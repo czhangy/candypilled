@@ -2,8 +2,8 @@
 
 The damage calculator's stat spread table (Base/IV/EV/Stage/Total), used by
 `PokemonPanel` for both the attacker and defender sides, both fully
-editable. IV/EV cells render as editable number inputs; the EV column is
-omitted entirely unless `showEvs` is set. The Total column's Speed cell is
+editable. IV/EV cells render as editable digit-only text inputs; the EV
+column is omitted entirely unless `showEvs` is set. The Total column's Speed cell is
 highlighted red/blue/gold when `speedComparison` indicates this Pokémon is
 faster/slower/tied against the opposing Pokémon, with a matching `Tooltip`
 on hover.

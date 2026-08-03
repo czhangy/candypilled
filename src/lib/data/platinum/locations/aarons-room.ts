@@ -7,7 +7,7 @@ const AARONS_ROOM: Location = {
     map: aaronsRoom,
     battles: [
         {
-            metadata: [BattleMetadata.Boss],
+            metadata: [BattleMetadata.Boss, BattleMetadata.Gauntlet],
             battleKey: 'elite-four-aaron-aaron',
             x: 50.2,
             y: 39.3,

@@ -35,7 +35,7 @@ const GALACTIC_HQ: Location = {
             map: galacticHq1f,
             battles: [
                 {
-                    metadata: [],
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'galactic-grunt-f-6',
                     x: 77.4,
                     y: 29.5,

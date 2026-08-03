@@ -77,13 +77,6 @@
         }
     }
 
-    .input {
-        @include form-input;
-
-        font-size: 0.8rem;
-        padding: 0.3rem 0.45rem;
-    }
-
     .moves {
         display: grid;
         gap: 0.35rem;

@@ -1,5 +1,6 @@
 import { useId } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
+import NumericInput from '@/components/common/NumericInput/NumericInput';
 import { ITEMS } from '@/lib/data/items';
 import { MAX_LEVEL, MIN_LEVEL } from '@/lib/static/constants';
 import { Nature } from '@/lib/static/enums';
@@ -34,17 +35,11 @@ type PokemonPanelProps = {
         stat: Exclude<keyof StatValues, 'hp'>,
         value: string
     ) => void;
-    onEvChange: (
-        stat: keyof StatValues,
-        event: React.ChangeEvent<HTMLInputElement>
-    ) => void;
+    onEvChange: (stat: keyof StatValues, value: number) => void;
     onGenderChange: (gender: 'male' | 'female') => void;
     onHeldItemChange: (value: string) => void;
-    onIvChange: (
-        stat: keyof StatValues,
-        event: React.ChangeEvent<HTMLInputElement>
-    ) => void;
-    onLevelChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onIvChange: (stat: keyof StatValues, value: number) => void;
+    onLevelChange: (value: number) => void;
     onMoveChange: (index: number, value: string) => void;
     onNatureChange: (value: string) => void;
     onSpeciesChange: (slug: string) => void;
@@ -228,14 +223,13 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                             >
                                 Level
                             </label>
-                            <input
-                                className={styles.input}
+                            <NumericInput
+                                dense={false}
                                 disabled={!pokemonSlug}
                                 id={levelInputId}
                                 max={MAX_LEVEL}
                                 min={MIN_LEVEL}
                                 onChange={onLevelChange}
-                                type="number"
                                 value={level}
                             />
                         </div>
