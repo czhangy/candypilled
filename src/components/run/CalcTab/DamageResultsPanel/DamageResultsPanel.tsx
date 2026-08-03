@@ -1,13 +1,15 @@
 import { useState } from 'react';
-import { CalcField, CalcPokemonInput } from '@/lib/static/types';
+import { CalcField, CalcPokemonInput, StatValues } from '@/lib/static/types';
 import DamageCalcHelpers from '@/lib/utils/DamageCalcHelpers';
 import styles from './DamageResultsPanel.module.scss';
 import MoveDamageColumn from './MoveDamageColumn/MoveDamageColumn';
 
 type DamageResultsPanelProps = {
     attackerField: CalcField;
+    attackerIvs: StatValues;
     attackerMoves: string[];
     defenderField: CalcField;
+    defenderIvs: StatValues;
     defenderMoves: string[];
     generation: number;
     playerInput: CalcPokemonInput | null;
@@ -16,8 +18,10 @@ type DamageResultsPanelProps = {
 
 const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
     attackerField,
+    attackerIvs,
     attackerMoves,
     defenderField,
+    defenderIvs,
     defenderMoves,
     generation,
     playerInput,
@@ -109,6 +113,7 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
                     defender={trainerInput}
                     field={attackerField}
                     generation={generation}
+                    ivs={attackerIvs}
                     moveNames={attackerMoves}
                     onSelectMove={handleSelectAttackerMove}
                 />
@@ -120,6 +125,7 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
                     defender={playerInput}
                     field={defenderField}
                     generation={generation}
+                    ivs={defenderIvs}
                     moveNames={defenderMoves}
                     onSelectMove={handleSelectDefenderMove}
                 />

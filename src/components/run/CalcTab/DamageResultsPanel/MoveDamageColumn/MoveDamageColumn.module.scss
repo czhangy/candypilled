@@ -16,7 +16,7 @@
         .move {
             @include mono-label;
 
-            background: none;
+            background: move-tile-background();
             border: 1px solid $border-subtle;
             border-top: none;
             color: $foreground;
@@ -27,8 +27,19 @@
             padding: 0.2rem 0.4rem;
             text-align: left;
             text-overflow: ellipsis;
+            transition: background-color 0.2s ease;
             white-space: nowrap;
             width: 9rem;
+
+            @media (hover: hover) {
+                &:hover {
+                    background: move-tile-hover-background();
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
 
             &--active {
                 color: var(--accent-color);
@@ -36,8 +47,15 @@
             }
 
             &--empty {
+                background: $background;
                 color: $text-dim;
                 cursor: default;
+
+                @media (hover: hover) {
+                    &:hover {
+                        background: $background;
+                    }
+                }
             }
         }
 
