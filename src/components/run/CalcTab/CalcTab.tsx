@@ -915,6 +915,9 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     status={defender.status}
                 />
                 <TeamSelectPanel
+                    disableSwitchInPredictions={
+                        settings['disable-switch-in-predictions'] ?? false
+                    }
                     game={game}
                     onSelectMember={setSelectedMemberIndex}
                     run={run}

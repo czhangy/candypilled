@@ -7,6 +7,7 @@ import SwitchInHelpers from '@/lib/utils/SwitchInHelpers';
 import styles from './TeamSelectPanel.module.scss';
 
 type TeamSelectPanelProps = {
+    disableSwitchInPredictions: boolean;
     game: Game;
     onSelectMember: (index: string) => void;
     run: Run;
@@ -16,6 +17,7 @@ type TeamSelectPanelProps = {
 };
 
 const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
+    disableSwitchInPredictions,
     game,
     onSelectMember,
     run,
@@ -42,7 +44,13 @@ const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
         team: BattlePokemon[],
         selectedIndex: number | undefined
     ): Record<number, number> => {
-        if (selectedIndex === undefined || !target) return {};
+        if (
+            disableSwitchInPredictions ||
+            selectedIndex === undefined ||
+            !target
+        ) {
+            return {};
+        }
 
         const faintedPokemon = team[selectedIndex];
         if (!faintedPokemon) return {};
