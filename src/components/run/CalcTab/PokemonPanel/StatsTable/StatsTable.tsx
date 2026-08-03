@@ -1,4 +1,5 @@
 import Dropdown from '@/components/common/Dropdown/Dropdown';
+import NumericInput from '@/components/common/NumericInput/NumericInput';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import {
     MAX_EV,
@@ -23,14 +24,8 @@ type StatsTableProps = {
         stat: Exclude<keyof StatValues, 'hp'>,
         value: string
     ) => void;
-    onEvChange: (
-        stat: keyof StatValues,
-        event: React.ChangeEvent<HTMLInputElement>
-    ) => void;
-    onIvChange: (
-        stat: keyof StatValues,
-        event: React.ChangeEvent<HTMLInputElement>
-    ) => void;
+    onEvChange: (stat: keyof StatValues, value: number) => void;
+    onIvChange: (stat: keyof StatValues, value: number) => void;
     showEvs: boolean;
     speedComparison: SpeedComparison | undefined;
     totalStats?: StatValues;
@@ -94,23 +89,23 @@ const StatsTable: React.FC<StatsTableProps> = ({
                         <th className={styles['stat-label']}>{label}</th>
                         <td>{baseStats?.[key]}</td>
                         <td>
-                            <input
-                                className={styles['iv-input']}
+                            <NumericInput
+                                dense
+                                disabled={false}
                                 max={MAX_IV}
                                 min={MIN_IV}
-                                onChange={(event) => onIvChange(key, event)}
-                                type="number"
+                                onChange={(value) => onIvChange(key, value)}
                                 value={ivs[key]}
                             />
                         </td>
                         {showEvs && (
                             <td>
-                                <input
-                                    className={styles['ev-input']}
+                                <NumericInput
+                                    dense
+                                    disabled={false}
                                     max={MAX_EV}
                                     min={MIN_EV}
-                                    onChange={(event) => onEvChange(key, event)}
-                                    type="number"
+                                    onChange={(value) => onEvChange(key, value)}
                                     value={evs[key]}
                                 />
                             </td>

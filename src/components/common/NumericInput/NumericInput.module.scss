@@ -1,0 +1,15 @@
+@use '@/styles/mixins' as *;
+
+.numeric-input {
+    @include form-input;
+
+    font-size: 0.8rem;
+    padding: 0.3rem 0.45rem;
+
+    &--dense {
+        font-size: 0.75rem;
+        padding: 0.15rem;
+        text-align: center;
+        width: 2.5rem;
+    }
+}

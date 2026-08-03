@@ -1,5 +1,4 @@
 @use '@/styles/constants' as *;
-@use '@/styles/mixins' as *;
 
 .stats {
     border-collapse: collapse;
@@ -37,16 +36,6 @@
         &--tie {
             color: $gold;
         }
-    }
-
-    .iv-input,
-    .ev-input {
-        @include form-input;
-
-        font-size: 0.75rem;
-        padding: 0.15rem;
-        text-align: center;
-        width: 2.5rem;
     }
 
     .boost-cell {
