@@ -185,6 +185,18 @@ export default class BattleHelpers {
         return a.battleIndex > b.battleIndex;
     }
 
+    /** Whether every required battle in game has been defeated, i.e. the run is complete and the Hall of Fame is unlocked. */
+    static isGameComplete(game: Game, defeatedBattles: string[]): boolean {
+        const requiredBattleKeys = BattleHelpers.getRequiredBattleKeys(game);
+        const lastRequiredBattleKey =
+            requiredBattleKeys[requiredBattleKeys.length - 1];
+
+        return (
+            !!lastRequiredBattleKey &&
+            defeatedBattles.includes(lastRequiredBattleKey)
+        );
+    }
+
     /** Every non-optional battle's key across game, in game order. */
     static getRequiredBattleKeys(game: Game): string[] {
         return game.splits.flatMap((split) =>

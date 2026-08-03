@@ -10,12 +10,15 @@ import {
 } from 'next/navigation';
 import Tabs from '@/components/common/Tabs/Tabs';
 import { GAMES } from '@/lib/data/games';
+import { PokemonStatus } from '@/lib/static/enums';
+import { CaughtPokemon, Run } from '@/lib/static/types';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import BoxTab from './BoxTab/BoxTab';
+import ImportSaveModal from './BoxTab/ImportSaveModal/ImportSaveModal';
 import CalcTab from './CalcTab/CalcTab';
 import DataTab from './DataTab/DataTab';
 import HallOfFameTab from './HallOfFameTab/HallOfFameTab';
@@ -74,6 +77,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     // STATE
     // -------------------------------------------------------------------------
 
+    const [isImportModalOpen, setIsImportModalOpen] = useState(false);
     const [stickyHeaderHeight, setStickyHeaderHeight] = useState(0);
 
     // -------------------------------------------------------------------------
@@ -103,15 +107,10 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         (gameRun) => StringHelpers.toSlug(gameRun.game.name) === slug
     )?.run;
 
-    const requiredBattleKeys = game
-        ? BattleHelpers.getRequiredBattleKeys(game)
-        : [];
-    const lastRequiredBattleKey =
-        requiredBattleKeys[requiredBattleKeys.length - 1];
     const isHallOfFameUnlocked = !!(
+        game &&
         run &&
-        lastRequiredBattleKey &&
-        run.defeatedBattles.includes(lastRequiredBattleKey)
+        BattleHelpers.isGameComplete(game, run.defeatedBattles)
     );
 
     const activeTab =
@@ -333,6 +332,62 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         LocalStorageHelpers.saveRun(game, { ...run, wipe: !run.wipe });
     };
 
+    const handleImportClick = (): void => {
+        setIsImportModalOpen(true);
+    };
+
+    const handleCloseImportModal = (): void => {
+        setIsImportModalOpen(false);
+    };
+
+    const handleImportSave = (
+        importedPokemon: CaughtPokemon[],
+        importedDefeatedBattles: string[]
+    ): void => {
+        if (!game || !run) return;
+
+        // Multiple imported Pokémon sharing a location collapse to the
+        // last one, matching how a Map overwrites on repeated keys.
+        const importedByLocation = new Map(
+            importedPokemon.map((pokemon) => [pokemon.location, pokemon])
+        );
+        const existingLocations = new Set(
+            run.caughtPokemon.map((pokemon) => pokemon.location)
+        );
+        const merged = run.caughtPokemon.map((pokemon) => {
+            if (pokemon.status === PokemonStatus.Dead) {
+                return pokemon;
+            }
+
+            const importedPokemon = importedByLocation.get(pokemon.location);
+            return importedPokemon ?? pokemon;
+        });
+        const newPokemon = [...importedByLocation.values()].filter(
+            (pokemon) => !existingLocations.has(pokemon.location)
+        );
+
+        // The save is authoritative for battle completion, the same way it
+        // is for the box: every battle it can resolve is set to exactly
+        // what it reports, rather than only ever adding to what's already
+        // recorded.
+        const requiredBattleKeys = BattleHelpers.getRequiredBattleKeys(game);
+        const defeatedSet = new Set(importedDefeatedBattles);
+        const personalBest =
+            [...requiredBattleKeys]
+                .reverse()
+                .find((battleKey) => defeatedSet.has(battleKey)) ?? '';
+
+        const updatedRun: Run = {
+            ...run,
+            caughtPokemon: [...merged, ...newPokemon],
+            defeatedBattles: importedDefeatedBattles,
+            personalBest,
+        };
+
+        LocalStorageHelpers.saveRun(game, updatedRun);
+        handlePokemonDeselect();
+    };
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -360,13 +415,22 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                 <h1 className={styles.title}>
                     Pokémon {game.name} — Attempt #{run.attempt}
                 </h1>
-                <button
-                    className={styles.wipe}
-                    onClick={handleWipeToggle}
-                    type="button"
-                >
-                    {run.wipe ? 'RESPAWN' : 'Wipe'}
-                </button>
+                <div className={styles.actions}>
+                    <button
+                        className={styles.import}
+                        onClick={handleImportClick}
+                        type="button"
+                    >
+                        Import
+                    </button>
+                    <button
+                        className={styles.wipe}
+                        onClick={handleWipeToggle}
+                        type="button"
+                    >
+                        {run.wipe ? 'RESPAWN' : 'Wipe'}
+                    </button>
+                </div>
             </div>
             {personalBestLabel && (
                 <p className={styles.subtitle}>
@@ -386,6 +450,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                         {activeTab === 'split' && (
                             <SplitHeader
                                 currentSplitName={currentSplitName}
+                                defeatedBattles={run.defeatedBattles}
                                 game={game}
                                 onSelectSplit={handleSplitSelect}
                                 runSplitName={runSplitName}
@@ -463,6 +528,15 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                         <HallOfFameTab game={game} run={run} />
                     )}
                 </>
+            )}
+            {isImportModalOpen && (
+                <ImportSaveModal
+                    accentColor={game.accentColor}
+                    buttonTextColor={game.textContrastColor}
+                    game={game}
+                    onClose={handleCloseImportModal}
+                    onSubmit={handleImportSave}
+                />
             )}
         </div>
     );

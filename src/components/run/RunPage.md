@@ -2,16 +2,17 @@
 
 The dedicated page for a single game's run, reached from a game's entry on
 the runs list. Displays a back link to the runs list, the game's title with
-the current attempt number and a togglable Wipe/RESPAWN button, and a
-subtitle showing the run's personal best battle as trainer class + name
-followed by its split name (e.g. "Leader Roark // Roark"), omitted entirely
-if none yet. Below that, if the run hasn't been wiped, a sticky block pinned to
-the top of the viewport while the active tab's content scrolls beneath it,
-with — on the Splits tab — the current split's header in the top-left
-corner and a row of tabs for switching between the different views of the
-run in the top-right corner; on other tabs, just the row of tabs. If the run
-has been wiped, a message picked at random from the game's wipe messages is
-shown instead.
+the current attempt number alongside an Import button and a togglable
+Wipe/RESPAWN button, and a subtitle showing the run's personal best battle
+as trainer class + name followed by its split name (e.g. "Leader Roark //
+Roark"), omitted entirely if none yet. Below that, if the run hasn't been
+wiped, a sticky block pinned to the top of the viewport while the active
+tab's content scrolls beneath it, with — on the Splits tab — the current
+split's header in the top-left corner and a row of tabs for switching
+between the different views of the run in the top-right corner; on other
+tabs, just the row of tabs. If the run has been wiped, a message picked at
+random from the game's wipe messages is shown instead. Clicking Import
+opens `ImportSaveModal` regardless of the active tab or wipe state.
 
 ## Props
 
@@ -21,9 +22,10 @@ shown instead.
 
 ## State
 
-| State                | Type     | Initial value | Description                                                                                             |
-| -------------------- | -------- | ------------- | ------------------------------------------------------------------------------------------------------- |
-| `stickyHeaderHeight` | `number` | `0`           | The measured pixel height of the sticky tabs/split-header block, passed to `SplitTab` as `stickyOffset` |
+| State                | Type      | Initial value | Description                                                                                             |
+| -------------------- | --------- | ------------- | ------------------------------------------------------------------------------------------------------- |
+| `isImportModalOpen`  | `boolean` | `false`       | Whether `ImportSaveModal` is shown                                                                      |
+| `stickyHeaderHeight` | `number`  | `0`           | The measured pixel height of the sticky tabs/split-header block, passed to `SplitTab` as `stickyOffset` |
 
 ## Effects
 
@@ -152,3 +154,16 @@ shown instead.
   to `hof` and scrolls the page to the top
 - **On Wipe toggle** — flips `run.wipe` and saves the run; the button reads
   "Wipe" when `run.wipe` is `false` and "RESPAWN" when `true`
+- **On Import click** — opens `ImportSaveModal`
+- **On import modal close** — closes `ImportSaveModal`
+- **On import save** (from `ImportSaveModal`'s `onSubmit`) — merges the
+  Pokémon and defeated battles parsed from the uploaded save. Pokémon
+  merge into `run.caughtPokemon` by catch location: an imported Pokémon
+  replaces the existing entry at the same location, or is appended if its
+  location isn't already in the box (imported Pokémon sharing a location
+  with each other collapse to the last one). `run.defeatedBattles` is
+  replaced outright with the imported set (the save is authoritative for
+  every battle it can resolve), and `run.personalBest` is recomputed as
+  the farthest required battle key within that set, via
+  `BattleHelpers.getRequiredBattleKeys`. Saves the updated run and
+  deselects the currently selected Pokémon (since it may no longer exist)

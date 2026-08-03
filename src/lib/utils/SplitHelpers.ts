@@ -7,8 +7,14 @@ export default class SplitHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    /** The highest level on split's last battle's team, or null if it has no battles or an empty team. */
-    static getLevelCap(game: Game, split: Split): number | null {
+    /** The highest level on split's last battle's team, or null if it has no battles, an empty team, or defeatedBattles marks the game as complete (no cap applies once the Hall of Fame is unlocked). */
+    static getLevelCap(
+        game: Game,
+        split: Split,
+        defeatedBattles: string[]
+    ): number | null {
+        if (BattleHelpers.isGameComplete(game, defeatedBattles)) return null;
+
         const battles = split.locations.flatMap((location) =>
             BattleHelpers.getBattlesInLocation(location)
         );
