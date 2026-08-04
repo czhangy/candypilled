@@ -61,7 +61,14 @@ Reference implementation: `src/lib/data/platinum/`.
    (requires a sprite already at `public/<gameSlug>/trainers/<slug>.png`).
 8. **Author `splits/*.ts` and `met-locations.ts`** by hand — these have no
    generator, since they encode judgment calls (gym order, exact met-index
-   table) rather than mechanical scaffolding.
+   table) rather than mechanical scaffolding. For `met-locations.ts`, don't
+   transcribe Bulbapedia's full index table verbatim — cross-check against an
+   already-onboarded same-region game's file first (e.g. `platinum/`) and
+   match its _subset_ of included indices. Existing games intentionally omit
+   indices for locations that never come up as a met-location for this app's
+   purposes (event-only/static-encounter spots like Pal Park, Newmoon/
+   Fullmoon Island, Turnback Cave); including the full academic list adds
+   entries that don't reflect real usage.
 9. **Assemble the `Game`** in `<slug>.ts` (name, logo, generation, `version`
    = PokeAPI version-group slug, starters, accentColor, encounters,
    battles, metLocationById, wipeMessages, splits), add
@@ -125,6 +132,12 @@ Key differences from the single-version flow above:
 - **Don't assume a variant's shared data equals another already-existing
   game's data just because they're the same generation.** Diamond/Pearl
   and Platinum diverge in real ways (Platinum adds the Distortion World,
-  Fight Area/Battle Frontier, and different post-game trainer rematches).
-  Only share data between games that a specific check confirms are
-  actually identical.
+  the Battle Frontier facility, the Regigigas ruins, and different
+  post-game trainer rematches). Note this is narrower than it sounds —
+  e.g. Fight Area/Survival Area/Resort Area and the Great Marsh _are_
+  shared with D/P despite superficially reading like Platinum additions.
+  Verify each specific piece of "shared" data against a primary source
+  (Bulbapedia, Serebii) rather than guessing from familiarity with one
+  game in the family — don't trust an AI web-fetch summary at face value
+  either, since it can misreport table contents; cross-check anything
+  that looks surprising with a second source or the raw wikitext.
