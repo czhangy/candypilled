@@ -3,6 +3,7 @@ import { DIAMOND_PEARL_MET_LOCATIONS } from '@/lib/data/diamond-pearl/met-locati
 import GARDENIA from '@/lib/data/diamond-pearl/splits/gardenia';
 import MAYLENE from '@/lib/data/diamond-pearl/splits/maylene';
 import ROARK from '@/lib/data/diamond-pearl/splits/roark';
+import WAKE from '@/lib/data/diamond-pearl/splits/wake';
 import { Game } from '@/lib/static/types';
 import { ENCOUNTERS } from './encounters';
 
@@ -19,7 +20,7 @@ const PEARL: Game = {
     battles: BATTLES,
     metLocationById: DIAMOND_PEARL_MET_LOCATIONS,
     wipeMessages: [],
-    splits: [ROARK, GARDENIA, MAYLENE],
+    splits: [ROARK, GARDENIA, MAYLENE, WAKE],
 };
 
 export default PEARL;

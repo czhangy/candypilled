@@ -4752,15 +4752,6 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             conditions: ['time-day'],
         },
     ],
-    'hearthome-city-area': [
-        {
-            species: 'eevee',
-            method: EncounterMethod.Gift,
-            minLevel: 5,
-            maxLevel: 5,
-            chance: 100,
-        },
-    ],
     'hearthome-city-west-gate': [
         {
             species: 'happiny',

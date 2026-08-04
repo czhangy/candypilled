@@ -199,6 +199,25 @@ Key differences from the single-version flow above:
   A single PokeAPI location-area object holds `version_details` for
   every version in the generation, so the slug itself isn't per-version
   even though the encounter contents extracted from it are.
+- **After authoring a batch of locations, audit every `encountersKey` in
+  use against the actual fetched `ENCOUNTERS` for a "dead key"** — a key
+  that resolves to zero encounters in one or both variants. This catches
+  two distinct problems in one pass: (1) an `excludedSpecies` correction
+  that hollowed out a location entirely (e.g. excluding Eevee left
+  `hearthome-city-area` with nothing, since the gift was its only real
+  entry), and (2) a location that was always going to be legitimately
+  empty for this game family regardless of species exclusions (e.g.
+  `veilstone-city`'s Porygon prize is Platinum-only per Bulbapedia, so
+  the key was dead from the start). Script it: `grep` every
+  `encountersKey: '...'` out of `locations/*.ts`, then for each key check
+  `(ENCOUNTERS[key] ?? []).length` in both variants' `encounters.ts`. A
+  key dead in a specific game isn't automatically a bug — confirm against
+  Bulbapedia whether the content genuinely doesn't exist there before
+  assuming it's a fetch/config error. Once confirmed genuinely empty,
+  don't leave a pointless `encountersKey` in the `Location` object —
+  match the app's existing convention of omitting the field entirely for
+  locations with no real wild/gift encounters (see `Café Cabin`,
+  `Jubilife City`, `Eterna Gym`).
 - **Don't assume where a given encounter (especially the starter handoff)
   happens is the same across games in a family — verify against PokeAPI
   directly, and don't fall back to `manualEncounters` just because the

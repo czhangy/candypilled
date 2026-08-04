@@ -76,6 +76,13 @@ export const pearl: GameVersion = {
         // for Cranidos/Shieldon. See diamond.ts for the mirror (Shieldon
         // excluded there).
         'cranidos',
+        // Eevee wasn't in the Sinnoh dex until Platinum (Bebe's gift in
+        // Hearthome City, plus a post-National-Dex Trophy Garden
+        // encounter) — not available in Diamond or Pearl at all.
+        // PokeAPI still tags the Hearthome City gift for both, so this is
+        // a manual correction confirmed against Bulbapedia's availability
+        // table.
+        'eevee',
     ],
     caveLocations: [
         'iron-island',
