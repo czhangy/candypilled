@@ -20,7 +20,13 @@ const DIAMOND: Game = {
     encounters: ENCOUNTERS,
     battles: BATTLES,
     metLocationById: DIAMOND_PEARL_MET_LOCATIONS,
-    wipeMessages: [],
+    wipeMessages: [
+        'Roark is calling.',
+        'Maybe a monkey run next time.',
+        'Welcome to briefcase simulator.',
+        'Pick the penguin.',
+        'Turtle time.',
+    ],
     splits: [ROARK, GARDENIA, MAYLENE, WAKE],
 };
 
