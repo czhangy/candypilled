@@ -68,6 +68,14 @@ export const diamond: GameVersion = {
         'kecleon',
         'drapion',
         'toxicroak',
+        // Shieldon (Armor Fossil) is Pearl-exclusive in the real games —
+        // Diamond can only get it via trade, not the Oreburgh Mining
+        // Museum revival. PokeAPI's location-area data doesn't reflect
+        // this (it tags both fossils for both versions), so this is a
+        // manual correction confirmed against Bulbapedia's availability
+        // tables for Cranidos/Shieldon. See pearl.ts for the mirror
+        // (Cranidos excluded there).
+        'shieldon',
     ],
     caveLocations: [
         'iron-island',
@@ -99,11 +107,6 @@ export const diamond: GameVersion = {
         {
             location: 'oreburgh-city',
             species: 'cranidos',
-            method: EncounterMethod.Fossil,
-        },
-        {
-            location: 'oreburgh-city',
-            species: 'shieldon',
             method: EncounterMethod.Fossil,
         },
         {

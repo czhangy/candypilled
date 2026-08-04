@@ -7416,13 +7416,6 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             maxLevel: 20,
             chance: 100,
         },
-        {
-            species: 'shieldon',
-            method: EncounterMethod.Fossil,
-            minLevel: 20,
-            maxLevel: 20,
-            chance: 100,
-        },
     ],
     'oreburgh-city-trade': [
         {

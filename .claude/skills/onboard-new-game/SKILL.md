@@ -183,6 +183,17 @@ Key differences from the single-version flow above:
   and even trainer _positions_ can differ between games sharing a map,
   so scaffold locations with no `battles` field and let that be filled
   in later, per-game, as its own step.
+- **Don't assume a sibling game's split boundaries (which locations belong
+  to which gym's split, and their order) carry over.** Sinnoh's gym order
+  itself differs between Diamond/Pearl and Platinum — Platinum moved
+  Fantina (Hearthome) earlier and Maylene (Veilstone) later, so a straight
+  "copy Platinum's split file" produces the wrong split grouping even
+  though the underlying map/location data is shared. When told a split
+  "diverges," don't guess the new location order from general game
+  knowledge — reconstruct a proposal from the source game's split files
+  (which locations exist, what their subarea/encountersKey structure is)
+  and have the user confirm or correct the order before scaffolding maps,
+  since fixing a wrong order after the fact means re-doing map fetches.
 - `encountersKey` values (PokeAPI location-area slugs) are safe to copy
   verbatim from an already-onboarded same-region game's location files.
   A single PokeAPI location-area object holds `version_details` for
@@ -203,6 +214,22 @@ Key differences from the single-version flow above:
   `manualEncounters` only once you've confirmed PokeAPI has no data for
   that species at _any_ plausible location, e.g. via a direct
   `curl https://pokeapi.co/api/v2/location-area/<slug>/` check.
+- **PokeAPI doesn't model real per-version exclusivity for anything
+  gated behind trading between cartridges** (most notably version-
+  exclusive fossils). It tagged both Cranidos and Shieldon as available
+  in both `diamond` and `pearl` at the Oreburgh Mining Museum — in the
+  actual games each fossil is only revivable in its own version (Skull
+  Fossil/Cranidos in Diamond, Armor Fossil/Shieldon in Pearl; the other
+  requires trading with the sibling version), which the earlier
+  location-level PokeAPI audit in this skill didn't catch since it only
+  checks whether _a_ location has _any_ data for the version, not
+  whether every species at that location is genuinely available without
+  external trading. Cross-check each species at a fossil/gift/trade
+  location against Bulbapedia's own availability table (search
+  `<Species>_(Pokémon)` for `Availability/Entry1`) — an
+  `Availability/Entry1/None` row for a version means trade-only, i.e.
+  exclude that species from that version's `excludedSpecies`, with the
+  mirror species excluded on the sibling variant.
 - **Fetching real map images for a variant** (e.g. Diamond/Pearl-specific
   art distinct from Platinum's): Bulbapedia's location pages have a
   `==Layout==` section with per-game `[[File:<Name> DP.png]]` /
@@ -215,15 +242,43 @@ Key differences from the single-version flow above:
   version-exclusive. Instead pull the raw wikitext directly and grep it:
   `curl -s "https://bulbapedia.bulbagarden.net/w/index.php?title=<Page>&action=raw" | sed -n '/==Layout==/,/==[A-Z]/p'`
   (redirects resolve if you fetch the real page title, e.g. `Route_203`
-  redirects to `Sinnoh_Route_203`). Once you have the exact filename,
-  download it directly via Bulbapedia's file-path redirect — no archive
-  hash lookup needed: `curl -sL "https://bulbapedia.bulbagarden.net/wiki/Special:FilePath/<Name>_DP.png" -o maps/<slug>.png`.
+  redirects to `Sinnoh_Route_203`). **This range often cuts off too
+  early** — a `====Subsection====` immediately under `==Layout==` (e.g.
+  a building's "Exterior"/"Interior" split, or multi-floor locations like
+  Old Chateau, the Galactic Eterna Building, or Mining Museum) matches the
+  `/==[A-Z]/` end pattern and truncates before reaching the file links
+  under it. If the grep comes back suspiciously short, re-run without the
+  range restriction (`grep -n "File:\|===="` over a wider line range from
+  the `==Layout==` line number) to catch subsections. Once you have the
+  exact filename, download it directly via Bulbapedia's file-path
+  redirect — no archive hash lookup needed:
+  `curl -sL "https://bulbapedia.bulbagarden.net/wiki/Special:FilePath/<Name>_DP.png" -o maps/<slug>.png`.
 - If an existing game's app data splits one physical map into multiple
   subarea images (e.g. Platinum's `route-204-north.png` /
   `route-204-south.png`) but Bulbapedia only has a single combined image
   for the new game/variant, crop it yourself — the project already
   depends on `sharp`, so a small Node script (run from the project root,
   not a scratch dir, so `require('sharp')` resolves against
-  `node_modules`) can `extract({ left, top, width, height })` the same
-  regions. Match the existing split's pixel dimensions/overlap by
-  inspecting the reference game's already-split files first.
+  `node_modules`) can `extract({ left, top, width, height })` the region.
+  **Do not assume the combined image is a symmetric 50/50 top/bottom or
+  left/right split** — several of these turned out to be asymmetric
+  composites (an L-shape or a full-width band plus a narrower column,
+  with the two subareas occupying unequal, non-mirrored regions and
+  transparent padding filling the rest). Guessing half-dimensions produced
+  a real bug once (Route 205's "South" crop started ~400px too low,
+  silently dropping the top of that subarea) that looked plausible at a
+  glance because cave/route tile art repeats heavily. Instead, measure the
+  actual boundary: read the raw pixel buffer
+  (`sharp(src).raw().ensureAlpha().toBuffer({resolveWithObject:true})`)
+  and for each row/column count opaque pixels (alpha > ~200) split across
+  the image's two halves; the point where one half's count drops to zero
+  is the true edge, not the image's geometric midpoint. `sharp`'s built-in
+  `.trim()` is unreliable for this — it references a single background
+  color (by default the top-left pixel), so it silently no-ops whenever
+  that corner happens to be part of the actual content rather than the
+  padding, which is common in these L-shaped composites. Cross-check the
+  crop's final dimensions against the reference game's already-split file
+  dimensions (they won't match exactly since these are separately-sourced
+  images, but should be close) before trusting the result, and always
+  view the cropped output image directly rather than assuming a correct
+  bounding-box computation produced a correct visual result.

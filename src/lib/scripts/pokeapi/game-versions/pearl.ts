@@ -68,6 +68,14 @@ export const pearl: GameVersion = {
         'kecleon',
         'drapion',
         'toxicroak',
+        // Cranidos (Skull Fossil) is Diamond-exclusive in the real games —
+        // Pearl can only get it via trade, not the Oreburgh Mining Museum
+        // revival. PokeAPI's location-area data doesn't reflect this (it
+        // tags both fossils for both versions), so this is a manual
+        // correction confirmed against Bulbapedia's availability tables
+        // for Cranidos/Shieldon. See diamond.ts for the mirror (Shieldon
+        // excluded there).
+        'cranidos',
     ],
     caveLocations: [
         'iron-island',
@@ -95,11 +103,6 @@ export const pearl: GameVersion = {
             location: 'lake-verity',
             species: 'piplup',
             method: EncounterMethod.Starter,
-        },
-        {
-            location: 'oreburgh-city',
-            species: 'cranidos',
-            method: EncounterMethod.Fossil,
         },
         {
             location: 'oreburgh-city',
