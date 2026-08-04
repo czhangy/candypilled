@@ -1,4 +1,5 @@
 import CAFE_CABIN from '@/lib/data/diamond-pearl/locations/cafe-cabin';
+import GREAT_MARSH from '@/lib/data/diamond-pearl/locations/great-marsh';
 import HEARTHOME_CITY from '@/lib/data/diamond-pearl/locations/hearthome-city';
 import MINING_MUSEUM from '@/lib/data/diamond-pearl/locations/mining-museum';
 import MT_CORONET from '@/lib/data/diamond-pearl/locations/mt-coronet';
@@ -11,8 +12,10 @@ import ROUTE_210 from '@/lib/data/diamond-pearl/locations/route-210';
 import ROUTE_212 from '@/lib/data/diamond-pearl/locations/route-212';
 import ROUTE_214 from '@/lib/data/diamond-pearl/locations/route-214';
 import ROUTE_215 from '@/lib/data/diamond-pearl/locations/route-215';
+import RUIN_MANIAC_CAVE from '@/lib/data/diamond-pearl/locations/ruin-maniac-cave';
 import SOLACEON_RUINS from '@/lib/data/diamond-pearl/locations/solaceon-ruins';
 import TEAM_GALACTIC_ETERNA_BUILDING from '@/lib/data/diamond-pearl/locations/team-galactic-eterna-building';
+import TROPHY_GARDEN from '@/lib/data/diamond-pearl/locations/trophy-garden';
 import VALOR_LAKEFRONT from '@/lib/data/diamond-pearl/locations/valor-lakefront';
 import VEILSTONE_GYM from '@/lib/data/diamond-pearl/locations/veilstone-gym';
 import WAYWARD_CAVE from '@/lib/data/diamond-pearl/locations/wayward-cave';
@@ -49,8 +52,11 @@ const MAYLENE: Split = {
         CAFE_CABIN,
         ROUTE_215,
         ROUTE_214,
+        RUIN_MANIAC_CAVE,
         VALOR_LAKEFRONT,
+        GREAT_MARSH,
         ROUTE_212,
+        TROPHY_GARDEN,
         VEILSTONE_GYM,
     ],
 };
