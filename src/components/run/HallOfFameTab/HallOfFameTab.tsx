@@ -63,7 +63,7 @@ const HallOfFameTab: React.FC<HallOfFameTabProps> = ({ game, run }) => {
                 onSave={handleSave}
                 onUpdateTeam={handleUpdateTeam}
                 savedTeam={savedEntry?.team ?? null}
-                variant={variant}
+                variant={game.version}
                 version={game.version}
             />
         </div>

@@ -3,7 +3,6 @@ import { PokemonStatus } from '@/lib/static/enums';
 import { BoxView, CaughtPokemon, Game, Run } from '@/lib/static/types';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './BoxTab.module.scss';
 import PokemonBox from './PokemonBox/PokemonBox';
 import PokemonPreview from './PokemonPreview/PokemonPreview';
@@ -43,7 +42,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const variant = StringHelpers.toSlug(game.name);
+    const variant = game.version;
     const selectedCaughtPokemon = run.caughtPokemon.find(
         (caughtPokemon) => caughtPokemon.location === selectedPokemon
     );

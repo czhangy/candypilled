@@ -1,4 +1,18 @@
-// Barrel of map image exports, shared by Diamond and Pearl. Populated
-// automatically by `npm run gen:location` (set GAME_ID to 'diamond-pearl'
-// first) as locations are added.
-export {};
+export { default as lakeVerityPostByron } from './lake-verity-post-byron.png';
+export { default as lakeVerityPreByron } from './lake-verity-pre-byron.png';
+export { default as oreburghCity } from './oreburgh-city.png';
+export { default as oreburghGate1f } from './oreburgh-gate-1f.png';
+export { default as oreburghGateB1f } from './oreburgh-gate-b1f.png';
+export { default as oreburghGym } from './oreburgh-gym.png';
+export { default as oreburghMineB1f } from './oreburgh-mine-b1f.png';
+export { default as oreburghMineB2f } from './oreburgh-mine-b2f.png';
+export { default as ravagedPath } from './ravaged-path.png';
+export { default as route201 } from './route-201.png';
+export { default as route202 } from './route-202.png';
+export { default as route203 } from './route-203.png';
+export { default as route204North } from './route-204-north.png';
+export { default as route204South } from './route-204-south.png';
+export { default as route207 } from './route-207.png';
+export { default as route218 } from './route-218.png';
+export { default as route219 } from './route-219.png';
+export { default as twinleafTown } from './twinleaf-town.png';

@@ -1,5 +1,6 @@
 import { BATTLES } from '@/lib/data/diamond-pearl/battles';
 import { DIAMOND_PEARL_MET_LOCATIONS } from '@/lib/data/diamond-pearl/met-locations';
+import ROARK from '@/lib/data/diamond-pearl/splits/roark';
 import { Game } from '@/lib/static/types';
 import { ENCOUNTERS } from './encounters';
 
@@ -16,7 +17,7 @@ const PEARL: Game = {
     battles: BATTLES,
     metLocationById: DIAMOND_PEARL_MET_LOCATIONS,
     wipeMessages: [],
-    splits: [],
+    splits: [ROARK],
 };
 
 export default PEARL;

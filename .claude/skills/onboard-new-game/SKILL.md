@@ -40,13 +40,22 @@ Reference implementation: `src/lib/data/platinum/`.
    `gen:trainer-class`) — remember to flip it back (or forward to the next
    game) when you're done, it isn't a per-invocation flag.
 4. **Fetch + author encounters** — run `npm run pokeapi:encounters`. This
-   only writes a raw `src/lib/data/<slug>/encounters/encounters.json`; no
-   script in this repo converts that JSON into the final
-   `encounters.ts` literal. That conversion is a manual/LLM-assisted step —
-   transform the JSON into the same `Record<string, Encounter[]>` literal
-   shape already used by `platinum/encounters.ts` (methods resolved to
-   `EncounterMethod` enum members, location keys matching each
-   `Location.encountersKey`).
+   writes a raw `src/lib/data/<slug>/encounters/encounters.json`, in a
+   directory keyed by `GameVersion.id` (not the shared/nested folder —
+   for a variant, move or delete this after conversion since it lands
+   outside `src/lib/data/<shared-folder>/`). Despite the JSON
+   file, this conversion is fully mechanical, not a manual/LLM
+   transcription step: the JSON is already shaped exactly like
+   `Record<string, Encounter[]>`, just with `method` as a raw string
+   (e.g. `"old-rod"`) instead of an enum reference
+   (`EncounterMethod.OldRod`) — the string values are literally the
+   enum's underlying values (see `EncounterMethod` in
+   `src/lib/static/enums.ts`). Write a throwaway Node script that
+   `JSON.parse`s the file and re-serializes it with `method: value` swapped
+   for `method: EncounterMethod.<PascalCase>`, wrap in the
+   `import`/`export const ENCOUNTERS` boilerplate, then run
+   `prettier --write` on the result. Don't hand-transcribe thousands of
+   lines.
 5. **Scaffold locations** — for each map, place the PNG at
    `maps/<map-slug>.png` first, then run
    `npm run gen:location <map> [name] [subareaName]`. It wires the map into
@@ -104,6 +113,15 @@ src/lib/data/diamond-pearl/
 
 Key differences from the single-version flow above:
 
+- **Do encounters (steps 2-4) before scaffolding locations (step 5), even
+  though this reads out of order.** `EncounterHelpers.getStarterLocationName`
+  (used by the run-creation screen) assumes every registered `Game` has at
+  least one wired location with a `Starter`-method encounter — with an
+  empty `ENCOUNTERS` stub, `GAMES` already contains the new game (it's
+  selectable in the UI as soon as it's registered), and clicking "New"
+  crashes with a null-property error. Get real encounter data in before
+  leaving the game in a state a user can click into, even if locations,
+  battles, and splits are still incomplete.
 - Steps 1 and 5-8 (locations, splits, battles, trainer classes,
   met-locations, maps) happen **once**, in the shared parent folder, not
   per variant. Because `gen:location`/`gen:battle`/`gen:trainer-class`
@@ -129,6 +147,24 @@ Key differences from the single-version flow above:
   (`src/lib/data/games.ts`), not as one combined entry — the UI has no
   "variant switcher" concept, each variant is just an ordinary selectable
   game that happens to import most of its data from the shared folder.
+- **After wholesale-reusing a sibling's `GameVersion` config (per the note
+  below), audit it against PokeAPI directly rather than trusting it by
+  inspection.** A script can check every `excludedLocations` entry in
+  bulk: for each, fetch `location/<slug>/`, fetch each of its areas, and
+  check whether any `pokemon_encounters[].version_details[]` is tagged
+  with the new variant's version — this tells you definitively whether an
+  exclusion represents a real "not modeled by this app" scope decision
+  (the location has real data, just no `Location` object yet) versus dead
+  weight copied from a sibling where the location doesn't exist in _any_
+  Gen N game (zero encounter data for every version, e.g. facility
+  buildings/pseudo-locations) — the latter is safe to prune since
+  excluding something that already returns nothing is pure noise. Do the
+  same targeted check for `methodOverrides` and `manualEncounters`
+  (query the specific area directly and check the species' tagged
+  versions) rather than assuming a sibling's override still points at the
+  right location — the app's starter-handoff location genuinely differs
+  between Diamond/Pearl (`lake-verity`) and Platinum (`sinnoh-route-201`),
+  so "same generation" is not "same override target."
 - **Don't assume a variant's shared data equals another already-existing
   game's data just because they're the same generation.** Diamond/Pearl
   and Platinum diverge in real ways (Platinum adds the Distortion World,
@@ -141,3 +177,53 @@ Key differences from the single-version flow above:
   game in the family — don't trust an AI web-fetch summary at face value
   either, since it can misreport table contents; cross-check anything
   that looks surprising with a second source or the raw wikitext.
+- **"Locations are unchanged from game X" means the location skeleton
+  only** (name, subareas, `encountersKey`) — never take it to include
+  `battles` placements/keys unless told so explicitly. Trainer rosters
+  and even trainer _positions_ can differ between games sharing a map,
+  so scaffold locations with no `battles` field and let that be filled
+  in later, per-game, as its own step.
+- `encountersKey` values (PokeAPI location-area slugs) are safe to copy
+  verbatim from an already-onboarded same-region game's location files.
+  A single PokeAPI location-area object holds `version_details` for
+  every version in the generation, so the slug itself isn't per-version
+  even though the encounter contents extracted from it are.
+- **Don't assume where a given encounter (especially the starter handoff)
+  happens is the same across games in a family — verify against PokeAPI
+  directly, and don't fall back to `manualEncounters` just because the
+  first location you guess comes up empty.** Platinum's config resolves
+  the starter at `sinnoh-route-201` via a `methodOverride`, but querying
+  `https://pokeapi.co/api/v2/location-area/<slug>/` directly for D/P
+  showed the `gift` encounter tagged there only under `version: platinum`
+  — while the _same query_ against `lake-verity-before-galactic-intervention`
+  had it correctly tagged for both `diamond` and `pearl`. The in-game fact
+  (Diamond/Pearl hand out the starter at Lake Verity, not Route 201) was
+  real and PokeAPI had the data — the fix was pointing `methodOverride.location`
+  at the right slug, not writing a manual encounter. Reach for
+  `manualEncounters` only once you've confirmed PokeAPI has no data for
+  that species at _any_ plausible location, e.g. via a direct
+  `curl https://pokeapi.co/api/v2/location-area/<slug>/` check.
+- **Fetching real map images for a variant** (e.g. Diamond/Pearl-specific
+  art distinct from Platinum's): Bulbapedia's location pages have a
+  `==Layout==` section with per-game `[[File:<Name> DP.png]]` /
+  `[[File:<Name> Pt.png]]` links (or a single shared `<Name> DPPt.png`
+  when the art is identical across D/P/Pt — verify this per-location, it
+  varies). Don't rely on `WebFetch`'s summarization to enumerate these
+  filenames — it has been observed to both miss real per-version files
+  (reported Twinleaf Town as unversioned when `Twinleaf Town DP.png` /
+  `Twinleaf Town Pt.png` both exist) and mislabel shared assets as
+  version-exclusive. Instead pull the raw wikitext directly and grep it:
+  `curl -s "https://bulbapedia.bulbagarden.net/w/index.php?title=<Page>&action=raw" | sed -n '/==Layout==/,/==[A-Z]/p'`
+  (redirects resolve if you fetch the real page title, e.g. `Route_203`
+  redirects to `Sinnoh_Route_203`). Once you have the exact filename,
+  download it directly via Bulbapedia's file-path redirect — no archive
+  hash lookup needed: `curl -sL "https://bulbapedia.bulbagarden.net/wiki/Special:FilePath/<Name>_DP.png" -o maps/<slug>.png`.
+- If an existing game's app data splits one physical map into multiple
+  subarea images (e.g. Platinum's `route-204-north.png` /
+  `route-204-south.png`) but Bulbapedia only has a single combined image
+  for the new game/variant, crop it yourself — the project already
+  depends on `sharp`, so a small Node script (run from the project root,
+  not a scratch dir, so `require('sharp')` resolves against
+  `node_modules`) can `extract({ left, top, width, height })` the same
+  regions. Match the existing split's pixel dimensions/overlap by
+  inspecting the reference game's already-split files first.

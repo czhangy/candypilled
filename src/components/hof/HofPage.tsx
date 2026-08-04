@@ -86,7 +86,7 @@ const HofPage: React.FC = () => {
                                     )
                                 }
                                 team={entry.team}
-                                variant={entry.game}
+                                variant={game.version}
                                 version={game.version}
                             />
                         </li>
