@@ -1,7 +1,9 @@
 import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
+import { diamond } from './diamond';
+import { pearl } from './pearl';
 import { platinum } from './platinum';
 
-export const GAME_VERSIONS = [platinum];
+export const GAME_VERSIONS = [platinum, diamond, pearl];
 
 const currentGameVersion = GAME_VERSIONS.find(
     (version) => version.id === GAME_ID
