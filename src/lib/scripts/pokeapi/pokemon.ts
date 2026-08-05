@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { CURRENT_GAME_VERSION } from '@/lib/scripts/pokeapi/game-versions';
+import { getGameVersion } from '@/lib/scripts/pokeapi/game-versions';
 import {
     buildVersionGroupGenerations,
     sleep,
@@ -14,6 +14,7 @@ import {
     EvolutionLineByGeneration,
     EvolutionMethod,
     EvolutionStep,
+    GameVersion,
     LearnsetByVersionGroup,
     LearnsetMethod,
     LearnsetMove,
@@ -23,6 +24,8 @@ import {
     TypesByGeneration,
 } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
+
+const USAGE = 'Usage: npm run pokeapi:pokemon <game> [--sprites]';
 
 type DexRange = {
     generation: number;
@@ -71,7 +74,6 @@ const getGenerationForDexNumber = (dexNumber: number): number => {
 const POKEAPI_SPECIES_URL = 'https://pokeapi.co/api/v2/pokemon-species';
 const DATA_PATH = path.join('src', 'lib', 'data', 'raw', 'pokemon.json');
 const FETCH_DELAY_MS = 75;
-const MAX_DEX_NUMBER = getMaxDexNumber(CURRENT_GAME_VERSION.generation);
 
 // Sprites are ~1500 separate downloads and rarely change once fetched, so
 // re-downloading them on every run is wasted time. Pass --sprites to opt in
@@ -598,11 +600,14 @@ const buildStatsByGeneration = (pokemon: RawPokemon): StatsByGeneration[] => {
 // Wild held items
 // -------------------------------------------------------------------------
 
-const buildWildHeldItems = (pokemon: RawPokemon): string[] =>
+const buildWildHeldItems = (
+    pokemon: RawPokemon,
+    version: GameVersion
+): string[] =>
     pokemon.held_items
         .filter((heldItem) =>
             heldItem.version_details.some(
-                (detail) => detail.version.name === CURRENT_GAME_VERSION.version
+                (detail) => detail.version.name === version.version
             )
         )
         .map((heldItem) => heldItem.item.name);
@@ -953,14 +958,15 @@ const buildEvolutionLine = (
 // Main
 // -------------------------------------------------------------------------
 
-export const fetchPokemonData = async (): Promise<void> => {
+export const fetchPokemonData = async (version: GameVersion): Promise<void> => {
+    const maxDexNumber = getMaxDexNumber(version.generation);
     const versionGroupGenerations =
         await buildVersionGroupGenerations(FETCH_DELAY_MS);
     const existingData = readExistingData();
     const data: Record<string, PokemonData> = {};
     const chainCache = new Map<string, FullNode>();
 
-    for (let dexNumber = 1; dexNumber <= MAX_DEX_NUMBER; dexNumber += 1) {
+    for (let dexNumber = 1; dexNumber <= maxDexNumber; dexNumber += 1) {
         const species = await fetchSpecies(dexNumber);
         await sleep(FETCH_DELAY_MS);
 
@@ -1019,7 +1025,7 @@ export const fetchPokemonData = async (): Promise<void> => {
                 NAME_OVERRIDES[variety.name] ??
                 StringHelpers.toTitleCase(variety.name);
             const formChangeItem = FORM_CHANGE_ITEMS_BY_VARIETY[variety.name];
-            const wildHeldItems = buildWildHeldItems(rawPokemon);
+            const wildHeldItems = buildWildHeldItems(rawPokemon, version);
             data[variety.name] = {
                 slug: variety.name,
                 name,
@@ -1050,4 +1056,12 @@ export const fetchPokemonData = async (): Promise<void> => {
     writeData(data);
 };
 
-runScript(fetchPokemonData);
+runScript(() => {
+    const [gameId] = process.argv
+        .slice(2)
+        .filter((arg) => !arg.startsWith('--'));
+    if (!gameId) {
+        throw new Error(USAGE);
+    }
+    return fetchPokemonData(getGameVersion(gameId));
+});

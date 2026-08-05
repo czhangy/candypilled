@@ -1,12 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import { TRAINER_CLASSES } from '@/lib/data/trainer-classes';
-import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import { logSuccess, runScript } from '@/lib/scripts/utils/helpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const USAGE =
-    'Usage: npm run gen:trainer-class <slug> <displayName> <male|female> [spriteSlug]';
+    'Usage: npm run gen:trainer-class <game> <slug> <displayName> <male|female> [spriteSlug]';
 const INVALID_SLUG = 'slug must be a lowercase kebab-case identifier.';
 const CLASS_EXISTS = 'That trainer class slug already exists.';
 const INVALID_GENDER = "gender must be 'male' or 'female'.";
@@ -18,6 +17,7 @@ const SLUG_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const IDENTIFIER_PATTERN = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/;
 
 type TrainerClassArgs = {
+    game: string;
     slug: string;
     displayName: string;
     gender: 'male' | 'female';
@@ -25,14 +25,20 @@ type TrainerClassArgs = {
 };
 
 const parseArgs = (argv: string[]): TrainerClassArgs => {
-    const [slug, displayName, gender, spriteSlug] = argv;
-    if (!slug || !displayName || !gender) {
+    const [game, slug, displayName, gender, spriteSlug] = argv;
+    if (!game || !slug || !displayName || !gender) {
         throw new Error(USAGE);
     }
     if (gender !== 'male' && gender !== 'female') {
         throw new Error(INVALID_GENDER);
     }
-    return { slug, displayName, gender, spriteSlug: spriteSlug ?? slug };
+    return {
+        game,
+        slug,
+        displayName,
+        gender,
+        spriteSlug: spriteSlug ?? slug,
+    };
 };
 
 const validateArgs = (args: TrainerClassArgs, gameSlug: string): void => {
@@ -117,7 +123,7 @@ const addTrainerClass = (args: TrainerClassArgs): void => {
 
 runScript(() => {
     const args = parseArgs(process.argv.slice(2));
-    const gameSlug = StringHelpers.toSlug(GAME_ID);
+    const gameSlug = StringHelpers.toSlug(args.game);
 
     validateArgs(args, gameSlug);
     addTrainerClass(args);

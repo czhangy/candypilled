@@ -33,14 +33,14 @@ Reference implementation: `src/lib/data/platinum/`.
    the exclusion/override/merge config — see `platinum.ts` for the full
    shape and inline rationale for each field), and register it in
    `src/lib/scripts/pokeapi/game-versions/index.ts`'s `GAME_VERSIONS` array.
-3. **Point the generator scripts at this game** — set `GAME_ID` in
-   `src/lib/scripts/pokeapi/config/game.ts` to the new slug. This is a
-   single global switch consumed by every codegen/fetch script
-   (`pokeapi:encounters`, `gen:location`, `gen:battle`,
-   `gen:trainer-class`) — remember to flip it back (or forward to the next
-   game) when you're done, it isn't a per-invocation flag.
-4. **Fetch + author encounters** — run `npm run pokeapi:encounters`. This
-   writes a raw `src/lib/data/<slug>/encounters/encounters.json`, in a
+3. **Fetch + author encounters** — run `npm run pokeapi:encounters <slug>`,
+   where `<slug>` is the `GameVersion.id` registered in step 2 (e.g.
+   `platinum`, or `diamond`/`pearl` for a variant). Every codegen/fetch
+   script (`pokeapi:encounters`, `pokeapi:pokemon`, `gen:location`,
+   `gen:battle`, `gen:trainer-class`, `compose`) takes the target game as
+   its first CLI argument rather than reading a shared config constant, so
+   pass it explicitly on each invocation. This writes a raw
+   `src/lib/data/<slug>/encounters/encounters.json`, in a
    directory keyed by `GameVersion.id` (not the shared/nested folder —
    for a variant, move or delete this after conversion since it lands
    outside `src/lib/data/<shared-folder>/`). Despite the JSON
@@ -56,19 +56,19 @@ Reference implementation: `src/lib/data/platinum/`.
    `import`/`export const ENCOUNTERS` boilerplate, then run
    `prettier --write` on the result. Don't hand-transcribe thousands of
    lines.
-5. **Scaffold locations** — for each map, place the PNG at
+4. **Scaffold locations** — for each map, place the PNG at
    `maps/<map-slug>.png` first, then run
-   `npm run gen:location <map> [name] [subareaName]`. It wires the map into
-   `maps/index.ts` and creates/updates `locations/<name>.ts`.
-6. **Scaffold battles** — `npm run gen:battle <location> [subarea] [flags]`
-   adds placement + metadata to the location file; the actual trainer data
-   (team, AI flags, save condition) is then hand-authored in `battles.ts`,
-   keyed by the generated `battleKey`.
-7. **New trainer classes** — if a battle references a trainer class not
+   `npm run gen:location <slug> <map> [name] [subareaName]`. It wires the
+   map into `maps/index.ts` and creates/updates `locations/<name>.ts`.
+5. **Scaffold battles** — `npm run gen:battle <slug> <location> [subarea]
+[flags]` adds placement + metadata to the location file; the actual
+   trainer data (team, AI flags, save condition) is then hand-authored in
+   `battles.ts`, keyed by the generated `battleKey`.
+6. **New trainer classes** — if a battle references a trainer class not
    already in `src/lib/data/trainer-classes.ts`, add it with
-   `npm run gen:trainer-class <slug> <displayName> <male|female> [spriteSlug]`
-   (requires a sprite already at `public/<gameSlug>/trainers/<slug>.png`).
-8. **Author `splits/*.ts` and `met-locations.ts`** by hand — these have no
+   `npm run gen:trainer-class <slug> <classSlug> <displayName> <male|female> [spriteSlug]`
+   (requires a sprite already at `public/<slug>/trainers/<classSlug>.png`).
+7. **Author `splits/*.ts` and `met-locations.ts`** by hand — these have no
    generator, since they encode judgment calls (gym order, exact met-index
    table) rather than mechanical scaffolding. For `met-locations.ts`, don't
    transcribe Bulbapedia's full index table verbatim — cross-check against an
@@ -78,7 +78,7 @@ Reference implementation: `src/lib/data/platinum/`.
    purposes (event-only/static-encounter spots like Pal Park, Newmoon/
    Fullmoon Island, Turnback Cave); including the full academic list adds
    entries that don't reflect real usage.
-9. **Assemble the `Game`** in `<slug>.ts` (name, logo, generation, `version`
+8. **Assemble the `Game`** in `<slug>.ts` (name, logo, generation, `version`
    = PokeAPI version-group slug, starters, accentColor, encounters,
    battles, metLocationById, wipeMessages, splits), add
    `public/logos/<slug>.png`, and add the game to the `GAMES` array in
@@ -113,7 +113,7 @@ src/lib/data/diamond-pearl/
 
 Key differences from the single-version flow above:
 
-- **Do encounters (steps 2-4) before scaffolding locations (step 5), even
+- **Do encounters (steps 2-3) before scaffolding locations (step 4), even
   though this reads out of order.** `EncounterHelpers.getStarterLocationName`
   (used by the run-creation screen) assumes every registered `Game` has at
   least one wired location with a `Starter`-method encounter — with an
@@ -122,18 +122,19 @@ Key differences from the single-version flow above:
   crashes with a null-property error. Get real encounter data in before
   leaving the game in a state a user can click into, even if locations,
   battles, and splits are still incomplete.
-- Steps 1 and 5-8 (locations, splits, battles, trainer classes,
+- Steps 1 and 4-7 (locations, battles, trainer classes, splits,
   met-locations, maps) happen **once**, in the shared parent folder, not
-  per variant. Because `gen:location`/`gen:battle`/`gen:trainer-class`
-  assume a single flat `src/lib/data/<GAME_ID>/...` folder, set `GAME_ID`
-  to the **shared folder's slug** (e.g. `'diamond-pearl'`) while running
-  them for this shared content.
-- Steps 2 and 4 (the `GameVersion` scraper config and `ENCOUNTERS`) happen
-  **once per variant**, each with its own id (e.g. `'diamond'`/`'pearl'`)
+  per variant. Since `gen:location`/`gen:battle`/`gen:trainer-class` take
+  the game as their first CLI argument (a plain data-folder slug, not
+  validated against `GAME_VERSIONS`), pass the **shared folder's slug**
+  (e.g. `diamond-pearl`) as that argument while running them for this
+  shared content.
+- Steps 2 and 3 (the `GameVersion` scraper config and `ENCOUNTERS`) happen
+  **once per variant**, each with its own id (e.g. `diamond`/`pearl`)
   and its own exact PokeAPI version slug — wild encounter tables genuinely
   differ per individual version, not just per version-group, so this can't
-  be shared even though everything else is. Switch `GAME_ID` to the
-  specific variant id only for `pokeapi:encounters` runs.
+  be shared even though everything else is. Pass the specific variant id
+  as the `pokeapi:encounters` CLI argument for each variant's run.
 - Each variant's assembled `Game.version` field (the PokeAPI _version-group_
   slug, e.g. `'diamond-pearl'`) must be identical across variants — it's
   used to resolve movesets, which are shared within a version group. Don't
