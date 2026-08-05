@@ -1,11 +1,13 @@
-// Platinum's save file is laid out as two 0x40000-byte halves (a main copy
-// and a backup, alternated on each in-game save for wear-leveling), each
+import { Gen4SaveLayout } from '@/lib/static/types';
+
+// A Gen IV save file is laid out as two equal-size halves (a main copy and a
+// backup, alternated on each in-game save for wear-leveling), each
 // containing a general block (trainer info + party) immediately followed by
-// a storage block (PC boxes). Sizes/offsets/algorithm per Bulbapedia's
-// "Save data structure (Generation IV)" article.
+// a storage block (PC boxes). The two blocks' sizes are game-specific (see
+// gen4-save-layouts.ts) -- everything else about this halving/checksum
+// scheme is shared across Gen IV games, per Bulbapedia's "Save data
+// structure (Generation IV)" article.
 const HALF_SIZE = 0x40000;
-const GENERAL_BLOCK_SIZE = 0xcf2c;
-const STORAGE_BLOCK_SIZE = 0x121e4;
 const FOOTER_SIZE = 20;
 const FOOTER_SAVE_COUNT_OFFSET = 0x04;
 const FOOTER_CHECKSUM_OFFSET = 0x12;
@@ -15,15 +17,18 @@ export default class Gen4SaveBlocks {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    /** The active save half's general/storage block offsets, or throws if no half validates. */
-    static locate(view: DataView): {
+    /** layout's active save half's general/storage block offsets, or throws if no half validates. */
+    static locate(
+        view: DataView,
+        layout: Gen4SaveLayout
+    ): {
         generalBlockOffset: number;
         storageBlockOffset: number;
     } {
-        const halfOffset = Gen4SaveBlocks.selectActiveHalf(view);
+        const halfOffset = Gen4SaveBlocks.selectActiveHalf(view, layout);
         return {
             generalBlockOffset: halfOffset,
-            storageBlockOffset: halfOffset + GENERAL_BLOCK_SIZE,
+            storageBlockOffset: halfOffset + layout.generalBlockSize,
         };
     }
 
@@ -34,22 +39,33 @@ export default class Gen4SaveBlocks {
     // Picks whichever save half has the higher footer save counter and a
     // valid block checksum, falling back to the other half if that one
     // doesn't validate (a save can be mid-write to its active half).
-    private static selectActiveHalf(view: DataView): number {
+    private static selectActiveHalf(
+        view: DataView,
+        layout: Gen4SaveLayout
+    ): number {
         if (view.byteLength < HALF_SIZE * 2) {
-            throw new Error("This doesn't look like a Platinum save file.");
+            throw new Error("This doesn't look like a Gen IV save file.");
         }
 
-        const counterA = Gen4SaveBlocks.readSaveCounter(view, 0);
-        const counterB = Gen4SaveBlocks.readSaveCounter(view, HALF_SIZE);
+        const counterA = Gen4SaveBlocks.readSaveCounter(view, 0, layout);
+        const counterB = Gen4SaveBlocks.readSaveCounter(
+            view,
+            HALF_SIZE,
+            layout
+        );
         const halves = counterB > counterA ? [HALF_SIZE, 0] : [0, HALF_SIZE];
 
         const validHalf = halves.find(
             (half) =>
-                Gen4SaveBlocks.isBlockValid(view, half, GENERAL_BLOCK_SIZE) &&
                 Gen4SaveBlocks.isBlockValid(
                     view,
-                    half + GENERAL_BLOCK_SIZE,
-                    STORAGE_BLOCK_SIZE
+                    half,
+                    layout.generalBlockSize
+                ) &&
+                Gen4SaveBlocks.isBlockValid(
+                    view,
+                    half + layout.generalBlockSize,
+                    layout.storageBlockSize
                 )
         );
         if (validHalf === undefined) {
@@ -61,8 +77,12 @@ export default class Gen4SaveBlocks {
         return validHalf;
     }
 
-    private static readSaveCounter(view: DataView, halfOffset: number): number {
-        const footerStart = halfOffset + GENERAL_BLOCK_SIZE - FOOTER_SIZE;
+    private static readSaveCounter(
+        view: DataView,
+        halfOffset: number,
+        layout: Gen4SaveLayout
+    ): number {
+        const footerStart = halfOffset + layout.generalBlockSize - FOOTER_SIZE;
         return view.getUint32(footerStart + FOOTER_SAVE_COUNT_OFFSET, true);
     }
 

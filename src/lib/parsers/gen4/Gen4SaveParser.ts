@@ -1,4 +1,5 @@
 import { GEN4_ITEM_INDEX } from '@/lib/parsers/gen4/gen4-item-index';
+import { getGen4SaveLayout } from '@/lib/parsers/gen4/gen4-save-layouts';
 import Gen4SaveBlocks from '@/lib/parsers/gen4/Gen4SaveBlocks';
 import { GrowthRate, Nature, PokemonStatus } from '@/lib/static/enums';
 import { CaughtPokemon, Game, StatValues } from '@/lib/static/types';
@@ -7,12 +8,16 @@ import ItemHelpers from '@/lib/utils/ItemHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 
-const PARTY_OFFSET = 0xa0;
 const PARTY_SLOT_SIZE = 236;
 const PARTY_SLOT_COUNT = 6;
 
-// The storage block starts with a 4-byte "last selected box index" field
-// before the box Pokémon data begins.
+// The storage block's PC box layout (start-of-data offset, box/slot counts
+// and sizes) is identical across Gen IV games -- per pret/pokediamond and
+// pret/pokeplatinum's pokemon_storage_system.h, both share the same
+// NUM_BOXES/MONS_PER_BOX and BoxPokemon struct shape, unlike the general
+// block whose contents are game-specific (see gen4-save-layouts.ts). The
+// storage block starts with a 4-byte "last selected box index" field before
+// the box Pokémon data begins.
 const BOX_DATA_START = 0x04;
 const BOX_COUNT = 18;
 const BOX_SLOT_COUNT = 30;
@@ -111,13 +116,16 @@ export default class Gen4SaveParser {
     /** Every Pokémon in buffer's party and PC boxes, or throws if no half of the save validates. */
     static parse(game: Game, buffer: ArrayBuffer): CaughtPokemon[] {
         const view = new DataView(buffer);
+        const layout = getGen4SaveLayout(game.version);
         const { generalBlockOffset, storageBlockOffset } =
-            Gen4SaveBlocks.locate(view);
+            Gen4SaveBlocks.locate(view, layout);
 
         const party = Array.from({ length: PARTY_SLOT_COUNT }, (_, slot) =>
             Gen4SaveParser.parsePokemonSlot(
                 view,
-                generalBlockOffset + PARTY_OFFSET + slot * PARTY_SLOT_SIZE,
+                generalBlockOffset +
+                    layout.partyOffset +
+                    slot * PARTY_SLOT_SIZE,
                 true,
                 game
             )

@@ -10,6 +10,7 @@ export default class SaveFileParser {
     ): { pokemon: CaughtPokemon[]; defeatedBattles: string[] } {
         switch (game.version) {
             case 'platinum':
+            case 'diamond-pearl':
                 return {
                     pokemon: Gen4SaveParser.parse(game, buffer),
                     defeatedBattles: Gen4BattleParser.parse(game, buffer),

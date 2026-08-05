@@ -197,6 +197,20 @@ export type BattleItem = {
     name: string;
 };
 
+// A Gen IV save's general block contents are game-specific (see
+// src/lib/parsers/gen4/gen4-save-layouts.ts for the derivation and per-game
+// values), so every offset a Gen4 parser needs is looked up through one of
+// these rather than hardcoded.
+export type Gen4SaveLayout = {
+    generalBlockSize: number;
+    storageBlockSize: number;
+    partyOffset: number;
+    badgeMaskOffset: number;
+    mainStoryClearedOffset: number;
+    varsOffset: number;
+    flagsOffset: number;
+};
+
 // The second trainer in a tag battle: a distinct trainer merged into the
 // same battles.json entry (one map marker, one defeat toggle) as the
 // primary trainerClass/team, so each trainer's Pokémon can still be

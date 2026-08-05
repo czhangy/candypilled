@@ -64,6 +64,36 @@ Reference implementation: `src/lib/data/platinum/`.
 [flags]` adds placement + metadata to the location file; the actual
    trainer data (team, AI flags, save condition) is then hand-authored in
    `battles.ts`, keyed by the generated `battleKey`.
+    - **When an external trainer data source is involved (e.g.
+      `dp_trainers.json`, keyed by `rom_id`), battle population is a
+      location-by-location, collaborative loop -- not something to run
+      solo end-to-end.** The workflow: the user supplies, per location, the
+      trainer names present there (in order), each one's IVs, and each
+      one's `BattleMetadata`. You map those names to the matching entries
+      in the external data source (team, ability, nature, moves, AI flags)
+      and use that to populate `battles.ts` (merging in the user-supplied
+      IVs/metadata), computing `trainerFlag` mechanically where the
+      formula applies (see the `rom_id + 1360` derivation elsewhere in this
+      doc). Then wire the resulting `battleKey`s into that location's
+      `battles: []` array in the order the user gave the names, with `x: 0,
+y: 0` placeholders.
+    - **Never guess or derive the following -- always come from the user,
+      even when a derivation looks technically achievable:**
+        - **x/y placement.** A static map screenshot doesn't give
+          pixel-accurate NPC position, and two same-class trainers (e.g. two
+          "Youngster" sprites) can be visually indistinguishable. Always
+          `x: 0, y: 0`.
+        - **Which named trainer is at a given location, and in what order.**
+          External sources' location fields are often sparse (e.g.
+          `dp_trainers.json`'s `trainer_location` is populated on only
+          ~14% of entries) -- don't infer identity/order from partial data.
+        - **IVs.** Even though back-solving a trainer's exact IV from a data
+          source's raw computed stats (via the standard stat formula) is
+          possible and was done once to correct a wrong assumption (Platinum's
+          `ivs: 1` convention doesn't hold for D/P -- verified empirically at
+          `ivs: 0` for D/P's generic trainers), don't do this derivation by
+          default. The user supplies IVs directly as part of the per-location
+          workflow above.
 6. **New trainer classes** — if a battle references a trainer class not
    already in `src/lib/data/trainer-classes.ts`, add it with
    `npm run gen:trainer-class <slug> <classSlug> <displayName> <male|female> [spriteSlug]`
