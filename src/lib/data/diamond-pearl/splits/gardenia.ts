@@ -16,16 +16,28 @@ const GARDENIA: Split = {
     name: 'Gardenia',
     locations: [
         JUBILIFE_CITY,
-        LocationHelpers.withSubareaOrder(ROUTE_204, ['North', 'South']),
+        LocationHelpers.withHiddenSubareaBattles(
+            LocationHelpers.withSubareaOrder(ROUTE_204, ['North', 'South']),
+            ['South']
+        ),
         VALLEY_WINDWORKS,
         FLOAROMA_MEADOW,
         VALLEY_WINDWORKS_INTERIOR,
-        ROUTE_205,
+        LocationHelpers.withHiddenSubareaBattles(ROUTE_205, ['North']),
         ETERNA_FOREST,
-        LocationHelpers.withSubareaOrder(ROUTE_205, ['North', 'South']),
+        LocationHelpers.withHiddenSubareaBattles(
+            LocationHelpers.withSubareaOrder(ROUTE_205, ['North', 'South']),
+            ['South']
+        ),
         ETERNA_CITY,
-        ROUTE_211,
-        MT_CORONET,
+        LocationHelpers.withHiddenSubareaBattles(ROUTE_211, ['East']),
+        LocationHelpers.withHiddenSubareaBattles(MT_CORONET, [
+            '3F',
+            '4F',
+            'Tunnel',
+            '5F',
+            '6F',
+        ]),
         ETERNA_GYM,
     ],
 };

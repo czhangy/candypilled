@@ -13,22 +13,23 @@ import ROUTE_218 from '@/lib/data/diamond-pearl/locations/route-218';
 import ROUTE_219 from '@/lib/data/diamond-pearl/locations/route-219';
 import TWINLEAF_TOWN from '@/lib/data/diamond-pearl/locations/twinleaf-town';
 import { Split } from '@/lib/static/types';
+import LocationHelpers from '@/lib/utils/LocationHelpers';
 
 const ROARK: Split = {
     name: 'Roark',
     locations: [
         TWINLEAF_TOWN,
         ROUTE_201,
-        LAKE_VERITY,
-        ROUTE_219,
+        LocationHelpers.withHiddenBattles(LAKE_VERITY),
+        LocationHelpers.withHiddenBattles(ROUTE_219),
         ROUTE_202,
-        ROUTE_218,
-        ROUTE_204,
+        LocationHelpers.withHiddenBattles(ROUTE_218),
+        LocationHelpers.withHiddenSubareaBattles(ROUTE_204, ['North']),
         RAVAGED_PATH,
         ROUTE_203,
         OREBURGH_GATE,
         OREBURGH_CITY,
-        ROUTE_207,
+        LocationHelpers.withHiddenBattles(ROUTE_207),
         OREBURGH_MINE,
         OREBURGH_GYM,
     ],
