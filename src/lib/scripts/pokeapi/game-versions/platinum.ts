@@ -185,7 +185,7 @@ export const platinum: GameVersion = {
         ),
         // Every Solaceon Ruins floor has an identical unown encounter
         // table, so they're collapsed into a single shared key.
-        ...['1f', 'b1f', 'b2f', 'b3f', 'b4f', 'b5f'].map((floor) => ({
+        ...['1f', '2f', 'b1f', 'b2f', 'b3f', 'b4f', 'b5f'].map((floor) => ({
             from: `solaceon-ruins-${floor}`,
             into: 'solaceon-ruins',
             mode: 'dedupe' as const,

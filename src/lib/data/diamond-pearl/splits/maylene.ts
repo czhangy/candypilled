@@ -10,6 +10,7 @@ import ROUTE_208 from '@/lib/data/diamond-pearl/locations/route-208';
 import ROUTE_209 from '@/lib/data/diamond-pearl/locations/route-209';
 import ROUTE_210 from '@/lib/data/diamond-pearl/locations/route-210';
 import ROUTE_212 from '@/lib/data/diamond-pearl/locations/route-212';
+import ROUTE_213 from '@/lib/data/diamond-pearl/locations/route-213';
 import ROUTE_214 from '@/lib/data/diamond-pearl/locations/route-214';
 import ROUTE_215 from '@/lib/data/diamond-pearl/locations/route-215';
 import RUIN_MANIAC_CAVE from '@/lib/data/diamond-pearl/locations/ruin-maniac-cave';
@@ -57,6 +58,7 @@ const MAYLENE: Split = {
         ROUTE_214,
         RUIN_MANIAC_CAVE,
         LocationHelpers.withHiddenBattles(VALOR_LAKEFRONT),
+        ROUTE_213,
         GREAT_MARSH,
         ROUTE_212,
         TROPHY_GARDEN,

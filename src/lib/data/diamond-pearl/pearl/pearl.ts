@@ -2,6 +2,7 @@ import { BATTLES } from '@/lib/data/diamond-pearl/battles';
 import { DIAMOND_PEARL_MET_LOCATIONS } from '@/lib/data/diamond-pearl/met-locations';
 import BYRON from '@/lib/data/diamond-pearl/splits/byron';
 import CANDICE from '@/lib/data/diamond-pearl/splits/candice';
+import CYNTHIA from '@/lib/data/diamond-pearl/splits/cynthia';
 import FANTINA from '@/lib/data/diamond-pearl/splits/fantina';
 import GARDENIA from '@/lib/data/diamond-pearl/splits/gardenia';
 import MAYLENE from '@/lib/data/diamond-pearl/splits/maylene';
@@ -30,7 +31,17 @@ const PEARL: Game = {
         'Pick the penguin.',
         'Turtle time.',
     ],
-    splits: [ROARK, GARDENIA, MAYLENE, WAKE, FANTINA, BYRON, CANDICE, VOLKNER],
+    splits: [
+        ROARK,
+        GARDENIA,
+        MAYLENE,
+        WAKE,
+        FANTINA,
+        BYRON,
+        CANDICE,
+        VOLKNER,
+        CYNTHIA,
+    ],
 };
 
 export default PEARL;

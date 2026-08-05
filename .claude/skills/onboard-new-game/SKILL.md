@@ -218,6 +218,34 @@ Key differences from the single-version flow above:
   match the app's existing convention of omitting the field entirely for
   locations with no real wild/gift encounters (see `Café Cabin`,
   `Jubilife City`, `Eterna Gym`).
+- **Run the audit in both directions: every key in the fetched
+  `ENCOUNTERS` must be used by some `encountersKey` in `locations/*.ts`,
+  not just every used key must resolve to real data.** A key present in
+  `ENCOUNTERS` but referenced by no location is not automatically safe to
+  ignore — do not assume it's intentionally-excluded content without
+  checking. It means one of two things: (1) a real location the app
+  hasn't modeled yet (a genuine miss — go build it, verify its map art
+  and split placement against Bulbapedia rather than guessing), or (2) content
+  that's genuinely out of scope for this game (a different game's
+  exclusive area, a story-state variant that was deliberately collapsed
+  away), in which case it belongs in `excludedLocations`/`excludedAreas`
+  so it stops being fetched at all, rather than sitting in `ENCOUNTERS`
+  unused. Don't default to assuming case (2) — this was gotten wrong
+  once: `sinnoh-route-221`, `sinnoh-sea-route-220`, and `fuego-ironworks`
+  were assumed to be Platinum-exclusive without checking, when in fact
+  they're real, unmodeled Diamond/Pearl content with their own DP-specific
+  Bulbapedia art (`sinnoh-route-213` was a similar case, just deliberately
+  parked instead of overlooked). Script it the same way as the dead-key
+  audit but inverted: diff the full set of top-level keys in
+  `ENCOUNTERS` against the set of `encountersKey` values actually in use.
+  Also watch for keys that shift when an `excludedAreas` entry changes: if
+  a location only has one PokeAPI area left after exclusion, the fetch
+  script's single-area fallback renames the key to the bare location
+  slug instead of the area slug (e.g. excluding
+  `lake-verity-after-galactic-intervention` renamed the remaining key
+  from `lake-verity-before-galactic-intervention` to plain
+  `lake-verity`) — re-run this audit after any `excludedAreas` edit, not
+  just after `excludedSpecies` edits.
 - **Don't assume where a given encounter (especially the starter handoff)
   happens is the same across games in a family — verify against PokeAPI
   directly, and don't fall back to `manualEncounters` just because the

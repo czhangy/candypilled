@@ -42,6 +42,7 @@ export const diamond: GameVersion = {
         'sinnoh-hall-of-origin-1',
         'roaming-sinnoh',
         'sinnoh-pokemart',
+        'sendoff-spring',
     ],
     excludedAreas: [
         'mt-coronet-exterior-blizzard',
@@ -50,6 +51,7 @@ export const diamond: GameVersion = {
         'sinnoh-victory-road-inside-b1f',
         'sinnoh-victory-road-inside-exit',
         'ruin-maniac-cave-10-25-different-unown-caught',
+        'lake-verity-after-galactic-intervention',
     ],
     excludedSpecies: [
         'mesprit',
@@ -156,7 +158,7 @@ export const diamond: GameVersion = {
                     mode: 'dedupe' as const,
                 }))
         ),
-        ...['1f', 'b1f', 'b2f', 'b3f', 'b4f', 'b5f'].map((floor) => ({
+        ...['1f', '2f', 'b1f', 'b2f', 'b3f', 'b4f', 'b5f'].map((floor) => ({
             from: `solaceon-ruins-${floor}`,
             into: 'solaceon-ruins',
             mode: 'dedupe' as const,
