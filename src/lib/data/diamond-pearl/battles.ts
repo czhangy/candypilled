@@ -438,6 +438,134 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'youngster-jonathon': {
+        saveCondition: { type: 'trainerFlag', flag: 1604 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'youngster',
+        name: 'Jonathon',
+        team: [
+            {
+                slug: 'geodude',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 10,
+                nature: Nature.Calm,
+                moves: ['tackle', 'defense-curl'],
+                ivs: 1,
+            },
+        ],
+    },
+    'youngster-darius': {
+        saveCondition: { type: 'trainerFlag', flag: 1605 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'youngster',
+        name: 'Darius',
+        team: [
+            {
+                slug: 'geodude',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 8,
+                nature: Nature.Impish,
+                moves: ['tackle', 'defense-curl'],
+                ivs: 1,
+            },
+            {
+                slug: 'onix',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 8,
+                nature: Nature.Docile,
+                moves: ['rock-throw', 'tackle', 'harden'],
+                ivs: 1,
+            },
+        ],
+    },
+    // Gym leaders use the badge bitmask via ScrCmd_GiveBadge (opcode
+    // 0x015C), not a var/flag -- verified directly from D/P's own script,
+    // not assumed from Platinum: Oreburgh Gym's compiled script
+    // (scr_seq_release/narc_0050.bin) calls GiveBadge with a literal
+    // badge_no argument of 0.
+    'leader-roark-roark': {
+        saveCondition: { type: 'badge', bit: 0 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'leader-roark',
+        name: 'Roark',
+        team: [
+            {
+                slug: 'geodude',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 12,
+                nature: Nature.Lax,
+                moves: ['stealth-rock', 'rock-throw'],
+                ivs: 6,
+            },
+            {
+                slug: 'onix',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 12,
+                nature: Nature.Bold,
+                moves: ['stealth-rock', 'rock-throw', 'screech'],
+                ivs: 6,
+            },
+            {
+                slug: 'cranidos',
+                ability: 'mold-breaker',
+                gender: 'male',
+                level: 14,
+                nature: Nature.Jolly,
+                moves: ['headbutt', 'pursuit', 'leer'],
+                ivs: 6,
+            },
+        ],
+        items: [
+            {
+                count: 2,
+                name: 'Potion',
+            },
+        ],
+    },
+    // Jubilife City's Galactic Grunt tag battle. Disassembled MAP_JUBLIFE's
+    // own compiled script (scr_seq_release/narc_0002.bin): the trainer-
+    // battle call (opcode 0x02A0) is anchored by trainer IDs 414/415, which
+    // match TRAINER_GALACTIC_GRUNT_9/_10 in trainers.h -- both nonzero and
+    // distinct, mechanically confirming a real tag battle. Win branch
+    // (dialogue + RemoveEvent for both grunt objects) leads to
+    // SetFlag(442); the loss/blackout branch has no write.
+    'galactic-grunt-m-1': {
+        saveCondition: { type: 'flag', flag: 442 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'galactic-grunt-m',
+        name: '1',
+        team: [
+            {
+                slug: 'zubat',
+                ability: 'inner-focus',
+                gender: 'male',
+                level: 9,
+                nature: Nature.Lax,
+                moves: ['leech-life', 'astonish'],
+                ivs: 0,
+            },
+        ],
+        secondTrainer: {
+            trainerClass: 'galactic-grunt-m',
+            name: '1',
+            team: [
+                {
+                    slug: 'wurmple',
+                    ability: 'shield-dust',
+                    gender: 'male',
+                    level: 9,
+                    nature: Nature.Jolly,
+                    moves: ['tackle', 'string-shot', 'poison-sting'],
+                    ivs: 0,
+                },
+            ],
+        },
+    },
     // Barry's Route 203 "story-scripted" battle -- does NOT use the
     // trainerFlag formula above. Its defeat state lives in a save var
     // instead, mechanically derived by disassembling Route 203's compiled
