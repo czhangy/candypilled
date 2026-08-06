@@ -94,6 +94,53 @@ y: 0` placeholders.
           `ivs: 0` for D/P's generic trainers), don't do this derivation by
           default. The user supplies IVs directly as part of the per-location
           workflow above.
+    - **Story-scripted battles (rivals, gym leaders, Elite Four, Team
+      Galactic) don't use the `trainerFlag = rom_id + 1360` formula** -- that
+      only covers the generic auto-battle path. Their defeat state is a save
+      **var** (`{ type: 'varAtLeast', var, minValue }`), set by hand-authored
+      map script bytecode, and this is NOT safe to copy from a sibling game
+      (Platinum's var index for a rival battle does not carry over to D/P --
+      confirmed by deriving both independently and getting close-but-different
+      numbers: Platinum var 134/minValue 2 vs D/P var 136/minValue 1 for the
+      same Route 203 Barry battle). When a real ROM decomp source is
+      available (e.g. `pret/pokediamond`), derive it -- don't ask the user to
+      supply it, don't leave it as a placeholder, and don't reuse a sibling
+      game's value. The derivation, worked end-to-end once for Route 203:
+        1. Find the map's compiled script file:
+           `grep MAP_<NAME> arm9/src/map_header.c`, read the
+           `scripts_bank` field (`NARC_scr_seq_release_narc_XXXX_bin` ->
+           `files/fielddata/script/scr_seq_release/narc_XXXX.bin`).
+        2. Build an opcode table from `arm9/src/scrcmd*.c`: named commands
+           carry their opcode in a trailing `// XXXX` (hex) comment; commands
+           without a comment encode it directly in the name
+           (`ScrCmd_UnkXXXX`). Some comments are wrong/inconsistent (found
+           three different functions all claiming `0x3C`) -- don't trust a
+           single comment in isolation, corroborate with behavior.
+        3. Build an argument-size table by parsing each function body for
+           `ScriptReadByte`/`ScriptReadHalfword`/`ScriptReadWord`/
+           `ScriptGetVar`/`ScriptGetVarPointer` calls in source order (1/2/4/
+           2/2 bytes respectively) -- `RunScriptCommand` in `arm9/src/
+script.c` confirms the opcode itself is always a 2-byte
+           halfword read first.
+        4. Don't trust manual hex-dump transcription for byte offsets --
+           read the binary programmatically (`buf.readUInt16LE(offset)`
+           etc.) and search for ground-truth anchors instead of walking
+           blind from byte 0: e.g. the known trainer IDs from
+           `include/constants/trainers.h` (`TRAINER_PKMN_TRAINER_BARRY_
+CEDRIC` family = 247/248/249) appear as literal bytes right
+           after the trainer-battle scrcmd call, which pinpoints the
+           right region unambiguously even before the rest of the script
+           is fully disassembled.
+        5. Find the `SetVar` (opcode `0x0028`) call(s) in that region --
+           the flag being set is the raw save var ID. Convert to the
+           save-array index the tracker's `readVar(idx)` expects via
+           `include/constants/vars.h`'s `VAR_BASE` (`0x4000` in
+           pokediamond): `index = rawVarId - VAR_BASE`. Sanity-check this
+           against `NUM_VARS` and the save layout's `flagsOffset -
+varsOffset` (should equal `NUM_VARS * 2`).
+        6. Cross-check the `minValue` against what the var is actually set
+           to (not assumed) -- D/P's Barry script sets it to `1` once,
+           unlike Platinum's multi-stage `var >= 2`.
 6. **New trainer classes** — if a battle references a trainer class not
    already in `src/lib/data/trainer-classes.ts`, add it with
    `npm run gen:trainer-class <slug> <classSlug> <displayName> <male|female> [spriteSlug]`
