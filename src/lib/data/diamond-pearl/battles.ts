@@ -539,7 +539,6 @@ export const BATTLES: Record<string, BattleData> = {
     // showing flag 442 already true on a fresh, pre-Roark save that hasn't
     // reached this battle. This battle isn't even accessible until after
     // Roark. Real saveCondition still needs deriving (pass 2).
-    // TODO: derive saveCondition (pass 2)
     'galactic-grunt-m-1': {
         saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
@@ -573,9 +572,9 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     // Valley Windworks Exterior's Galactic Grunt (rom_id 843,
-    // TRAINER_GALACTIC_GRUNT_35). Required, not skippable.
-    // TODO: derive saveCondition (pass 2) -- confirmed via disassembly of
-    // scr_seq_release/narc_0210.bin (MAP_VALLEY_WINDWORKS_EXTERIOR) that
+    // TRAINER_GALACTIC_GRUNT_35). Required, not skippable. Real
+    // saveCondition still needs deriving (pass 2) -- confirmed via
+    // disassembly of scr_seq_release/narc_0210.bin (MAP_VALLEY_WINDWORKS_EXTERIOR) that
     // the win branch calls no SetVar/SetFlag/SetTrainerFlag at all; the
     // real mechanism isn't in this map's own script and needs a different
     // derivation angle (object placement data, or an empirical before/
@@ -593,6 +592,50 @@ export const BATTLES: Record<string, BattleData> = {
                 level: 11,
                 nature: Nature.Serious,
                 moves: ['fake-out', 'scratch', 'growl'],
+                ivs: 0,
+            },
+        ],
+    },
+    // Floaroma Meadow's two "back to back" Galactic Grunts.
+    'galactic-grunt-m-3': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'galactic-grunt-m',
+        name: '3',
+        team: [
+            {
+                slug: 'wurmple',
+                ability: 'shield-dust',
+                gender: 'male',
+                level: 9,
+                nature: Nature.Calm,
+                moves: ['tackle', 'string-shot'],
+                ivs: 0,
+            },
+            {
+                slug: 'silcoon',
+                ability: 'shed-skin',
+                gender: 'male',
+                level: 9,
+                nature: Nature.Hasty,
+                moves: ['tackle', 'harden'],
+                ivs: 0,
+            },
+        ],
+    },
+    'galactic-grunt-m-4': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'galactic-grunt-m',
+        name: '4',
+        team: [
+            {
+                slug: 'zubat',
+                ability: 'inner-focus',
+                gender: 'male',
+                level: 11,
+                nature: Nature.Timid,
+                moves: ['leech-life', 'astonish'],
                 ivs: 0,
             },
         ],

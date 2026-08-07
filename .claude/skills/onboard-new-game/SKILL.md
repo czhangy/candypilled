@@ -101,10 +101,15 @@ Reference implementation: `src/lib/data/platinum/`.
       game) — open-ended work like that blocks getting the rest of the
       game's battles/markers done if done inline. Use a placeholder
       `saveCondition` for pass 1 that's obviously fake and easy to find
-      later, e.g. `{ type: 'flag', flag: -1 }`, with a `// TODO: derive
-saveCondition (pass 2)` comment — never a placeholder that could
-      pass as a real, plausible-looking value. Once pass 1 is complete for
-      the whole game (or the whole batch of locations being worked
+      later, e.g. `{ type: 'flag', flag: -1 }` — never a placeholder that
+      could pass as a real, plausible-looking value. Track the pass-2
+      backlog in one place (e.g. a task) rather than a `// TODO` comment on
+      every single battle — grepping the placeholder value itself finds
+      them all when pass 2 starts, so a comment repeating that on every
+      entry is just noise; reserve inline comments for substantive
+      derivation notes (what's already been ruled out, why it's hard),
+      not a restatement of "this needs deriving." Once pass 1 is complete
+      for the whole game (or the whole batch of locations being worked
       through), do pass 2 as its own dedicated effort: grep every
       placeholder and derive them one at a time.
     - **When an external trainer data source is involved (keyed by some
@@ -456,3 +461,22 @@ Key differences from the single-version flow above:
   images, but should be close) before trusting the result, and always view
   the cropped output image directly rather than assuming a correct
   bounding-box computation produced a correct visual result.
+- **Never rescale a map image to match another game's version of the same
+  map — this is the "games are independent" rule applying to image
+  resolution too, and getting it backwards causes a real, confusing bug.**
+  Map markers are sized as a fixed pixel constant divided by the map
+  image's own intrinsic width/height, so scaling a map down/up to match a
+  _different game's_ asset resolution is exactly as wrong as copying that
+  game's save-condition numbers: this codebase's own maps (for the game
+  actually being worked on) are the only valid resolution reference. Before
+  concluding a newly-cropped or newly-sourced image's resolution is "too
+  high" or otherwise wrong, check its dimensions against _sibling maps in
+  the same game's own map folder_ — large native resolutions (well into
+  four figures on one axis) are normal in this codebase and not by
+  themselves evidence of a problem. Only resize if there's actual evidence
+  the specific source asset is anomalous (e.g. unusually different DPI
+  metadata than every other file from the same source), not just because
+  it looks big or because a differently-sourced reference image (from
+  another game) happens to be smaller. When in doubt, don't rescale at
+  all — crop only, at native resolution, and let the marker math work
+  the same way it does for every other map in the folder.
