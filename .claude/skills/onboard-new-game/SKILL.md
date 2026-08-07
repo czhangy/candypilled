@@ -140,22 +140,31 @@ Reference implementation: `src/lib/data/platinum/`.
       itself, not a fact about any one game, so it's fine to check any
       already-onboarded game's file for it regardless of the
       "don't cross-reference other games" rule above.
-    - **Never guess or derive the following — always come from the user,
-      even when a derivation looks technically achievable:**
+    - **Never guess the following — always come from the user, and never
+      scaffold a placeholder for them:**
         - **x/y placement.** A static map screenshot doesn't give
           pixel-accurate NPC position, and two same-class trainers (e.g. two
-          "Youngster" sprites) can be visually indistinguishable. Always
-          `x: 0, y: 0`.
+          "Youngster" sprites) can be visually indistinguishable. Do not
+          write a `0, 0` (or any other) placeholder and move on — a battle
+          entry without real coordinates from the user is not scaffolded
+          yet. Stop and ask for x/y rather than generating the entry with
+          filler values.
         - **Which named trainer is at a given location, and in what order.**
           External sources' location fields are often sparse — don't infer
           identity/order from partial data.
-        - **IVs.** Even though back-solving a trainer's exact IV from a
-          data source's raw computed stats (via the standard stat formula)
-          is often technically possible, don't do this derivation by
-          default — it's been used once to correct a wrong assumption
-          copied from a sibling game, but that's a one-off correction, not
-          a standing default. The user supplies IVs directly as part of
-          the per-location workflow above.
+    - **IVs must always be derived from that game's own primary source data
+      (its decomp or equivalent reference), never asked of or guessed by
+      the user by default.** Back-solving from a data source's raw computed
+      stats (the standard stat formula) is unreliable on its own — it's
+      often ambiguous at low levels, where multiple IVs round to the same
+      displayed stat — so don't rely on that method alone; use it only as a
+      cross-check against a direct source. For Gen 4 games, the direct
+      source and derivation formula are documented in the
+      `gen4-trainer-data-extraction` skill (which reads the real IV
+      straight out of the decomp's trainer data, not back-solved). If a
+      target game has no such derivation path documented yet, that's a gap
+      to fill (research and document the mechanism, the same way Gen 4's
+      was derived) rather than a reason to fall back to asking the user.
     - **Save-condition mechanics are equally subject to the
       "games are independent" rule above** — never template a save
       condition's shape or values off another already-implemented game,
