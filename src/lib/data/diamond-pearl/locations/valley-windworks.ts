@@ -5,6 +5,14 @@ const VALLEY_WINDWORKS: Location = {
     name: 'Valley Windworks',
     map: valleyWindworks,
     encountersKey: 'valley-windworks',
+    battles: [
+        {
+            metadata: [],
+            battleKey: 'galactic-grunt-m-2',
+            x: 63.6,
+            y: 51.6,
+        },
+    ],
 };
 
 export default VALLEY_WINDWORKS;

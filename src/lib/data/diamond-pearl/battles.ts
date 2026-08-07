@@ -531,11 +531,17 @@ export const BATTLES: Record<string, BattleData> = {
     // own compiled script (scr_seq_release/narc_0002.bin): the trainer-
     // battle call (opcode 0x02A0) is anchored by trainer IDs 414/415, which
     // match TRAINER_GALACTIC_GRUNT_9/_10 in trainers.h -- both nonzero and
-    // distinct, mechanically confirming a real tag battle. Win branch
-    // (dialogue + RemoveEvent for both grunt objects) leads to
-    // SetFlag(442); the loss/blackout branch has no write.
+    // distinct, mechanically confirming a real tag battle. Win branch does
+    // call SetFlag(442), but that flag is contaminated -- it's also set
+    // unconditionally by narc_0377.bin, a new-save-initialization script
+    // (ends in ScrCmd_InitPokemonRecordSize, ~68 unconditional SetFlag
+    // calls, not wired to any map) -- confirmed against a real save file
+    // showing flag 442 already true on a fresh, pre-Roark save that hasn't
+    // reached this battle. This battle isn't even accessible until after
+    // Roark. Real saveCondition still needs deriving (pass 2).
+    // TODO: derive saveCondition (pass 2)
     'galactic-grunt-m-1': {
-        saveCondition: { type: 'flag', flag: 442 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '1',
@@ -565,6 +571,31 @@ export const BATTLES: Record<string, BattleData> = {
                 },
             ],
         },
+    },
+    // Valley Windworks Exterior's Galactic Grunt (rom_id 843,
+    // TRAINER_GALACTIC_GRUNT_35). Required, not skippable.
+    // TODO: derive saveCondition (pass 2) -- confirmed via disassembly of
+    // scr_seq_release/narc_0210.bin (MAP_VALLEY_WINDWORKS_EXTERIOR) that
+    // the win branch calls no SetVar/SetFlag/SetTrainerFlag at all; the
+    // real mechanism isn't in this map's own script and needs a different
+    // derivation angle (object placement data, or an empirical before/
+    // after save diff).
+    'galactic-grunt-m-2': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'galactic-grunt-m',
+        name: '2',
+        team: [
+            {
+                slug: 'glameow',
+                ability: 'limber',
+                gender: 'male',
+                level: 11,
+                nature: Nature.Serious,
+                moves: ['fake-out', 'scratch', 'growl'],
+                ivs: 0,
+            },
+        ],
     },
     // Barry's Route 203 "story-scripted" battle -- does NOT use the
     // trainerFlag formula above. Its defeat state lives in a save var

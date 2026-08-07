@@ -89,6 +89,24 @@ Reference implementation: `src/lib/data/platinum/`.
 [flags]` adds placement + metadata to the location file; the actual
    trainer data (team, AI flags, save condition) is then hand-authored in
    `battles.ts`, keyed by the generated `battleKey`.
+    - **Do this in two passes, not one. Pass 1: battle + marker data for
+      every battle in the game. Pass 2 (only after pass 1 is fully done):
+      derive every `saveCondition`.** Don't interleave them battle-by-
+      battle — a generic trainer's `saveCondition` is usually mechanical
+      (a known ID-to-flag formula) and can stay inline, but the moment a
+      battle needs real ROM derivation (see "Deriving save-condition
+      mechanics" below), that derivation can be genuinely open-ended (it
+      may require chasing multiple false leads, cross-file contamination
+      checks, or even data the user has to go generate by playing the
+      game) — open-ended work like that blocks getting the rest of the
+      game's battles/markers done if done inline. Use a placeholder
+      `saveCondition` for pass 1 that's obviously fake and easy to find
+      later, e.g. `{ type: 'flag', flag: -1 }`, with a `// TODO: derive
+saveCondition (pass 2)` comment — never a placeholder that could
+      pass as a real, plausible-looking value. Once pass 1 is complete for
+      the whole game (or the whole batch of locations being worked
+      through), do pass 2 as its own dedicated effort: grep every
+      placeholder and derive them one at a time.
     - **When an external trainer data source is involved (keyed by some
       internal trainer ID), battle population is a location-by-location,
       collaborative loop — not something to run solo end-to-end.** The
