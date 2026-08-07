@@ -1689,6 +1689,148 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Eterna Gym.
+    'lass-caroline': {
+        saveCondition: { type: 'trainerFlag', flag: 1684 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'lass',
+        name: 'Caroline',
+        team: [
+            {
+                slug: 'cherubi',
+                ability: 'chlorophyll',
+                gender: 'female',
+                level: 15,
+                nature: Nature.Adamant,
+                moves: ['tackle', 'leech-seed'],
+                ivs: 1,
+            },
+            {
+                slug: 'roselia',
+                ability: 'natural-cure',
+                gender: 'female',
+                level: 15,
+                nature: Nature.Bashful,
+                moves: ['mega-drain', 'poison-sting', 'stun-spore'],
+                ivs: 1,
+            },
+        ],
+    },
+    'aroma-lady-jenna': {
+        saveCondition: { type: 'trainerFlag', flag: 1619 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'aroma-lady',
+        name: 'Jenna',
+        team: [
+            {
+                slug: 'budew',
+                ability: 'natural-cure',
+                gender: 'female',
+                level: 14,
+                nature: Nature.Quirky,
+                moves: ['absorb', 'stun-spore', 'water-sport'],
+                ivs: 1,
+            },
+            {
+                slug: 'budew',
+                ability: 'natural-cure',
+                gender: 'female',
+                level: 13,
+                nature: Nature.Quiet,
+                moves: ['absorb', 'stun-spore', 'water-sport'],
+                ivs: 1,
+            },
+            {
+                slug: 'budew',
+                ability: 'natural-cure',
+                gender: 'female',
+                level: 15,
+                nature: Nature.Serious,
+                moves: ['absorb', 'stun-spore', 'water-sport'],
+                ivs: 1,
+            },
+        ],
+    },
+    'aroma-lady-angela': {
+        saveCondition: { type: 'trainerFlag', flag: 1620 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'aroma-lady',
+        name: 'Angela',
+        team: [
+            {
+                slug: 'turtwig',
+                ability: 'overgrow',
+                gender: 'male',
+                level: 17,
+                nature: Nature.Quirky,
+                moves: ['razor-leaf', 'tackle'],
+                ivs: 1,
+            },
+        ],
+    },
+    'beauty-lindsay': {
+        saveCondition: { type: 'trainerFlag', flag: 1708 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'beauty',
+        name: 'Lindsay',
+        team: [
+            {
+                slug: 'roselia',
+                ability: 'natural-cure',
+                gender: 'female',
+                level: 17,
+                nature: Nature.Brave,
+                moves: ['mega-drain', 'poison-sting', 'stun-spore'],
+                ivs: 1,
+            },
+        ],
+    },
+    // Gardenia is a gym leader (story-scripted battle) -- doesn't use the
+    // trainerFlag formula. Real saveCondition still needs deriving (pass
+    // 2), same as Eterna Gym's own GiveBadge disassembly would need to be
+    // walked to confirm the badge bit rather than assumed from ordinal gym
+    // position.
+    'leader-gardenia-gardenia': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'leader-gardenia',
+        name: 'Gardenia',
+        team: [
+            {
+                slug: 'cherubi',
+                ability: 'chlorophyll',
+                gender: 'female',
+                level: 19,
+                nature: Nature.Sassy,
+                moves: ['grass-knot', 'leech-seed', 'growth', 'safeguard'],
+                ivs: 6,
+            },
+            {
+                slug: 'turtwig',
+                ability: 'overgrow',
+                gender: 'male',
+                level: 19,
+                nature: Nature.Gentle,
+                moves: ['grass-knot', 'razor-leaf', 'withdraw', 'reflect'],
+                ivs: 6,
+            },
+            {
+                slug: 'roserade',
+                ability: 'natural-cure',
+                gender: 'female',
+                level: 22,
+                nature: Nature.Naive,
+                moves: [
+                    'grass-knot',
+                    'magical-leaf',
+                    'poison-sting',
+                    'stun-spore',
+                ],
+                heldItem: 'sitrus-berry',
+                ivs: 6,
+            },
+        ],
+    },
     // Barry's Route 203 "story-scripted" battle -- does NOT use the
     // trainerFlag formula above. Its defeat state lives in a save var
     // instead, mechanically derived by disassembling Route 203's compiled
