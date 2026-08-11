@@ -92,26 +92,26 @@ Reference implementation: `src/lib/data/platinum/`.
     - **Do this in two passes, not one. Pass 1: battle + marker data for
       every battle in the game. Pass 2 (only after pass 1 is fully done):
       derive every `saveCondition`.** Don't interleave them battle-by-
-      battle — a generic trainer's `saveCondition` is usually mechanical
-      (a known ID-to-flag formula) and can stay inline, but the moment a
-      battle needs real ROM derivation (see "Deriving save-condition
-      mechanics" below), that derivation can be genuinely open-ended (it
-      may require chasing multiple false leads, cross-file contamination
-      checks, or even data the user has to go generate by playing the
-      game) — open-ended work like that blocks getting the rest of the
-      game's battles/markers done if done inline. Use a placeholder
-      `saveCondition` for pass 1 that's obviously fake and easy to find
-      later, e.g. `{ type: 'flag', flag: -1 }` — never a placeholder that
-      could pass as a real, plausible-looking value. Track the pass-2
-      backlog in one place (e.g. a task) rather than a `// TODO` comment on
-      every single battle — grepping the placeholder value itself finds
-      them all when pass 2 starts, so a comment repeating that on every
-      entry is just noise; reserve inline comments for substantive
-      derivation notes (what's already been ruled out, why it's hard),
-      not a restatement of "this needs deriving." Once pass 1 is complete
-      for the whole game (or the whole batch of locations being worked
-      through), do pass 2 as its own dedicated effort: grep every
-      placeholder and derive them one at a time.
+      battle, and don't put a real `saveCondition` value in during pass 1
+      for _any_ battle — not even a generic trainer whose `saveCondition`
+      follows an already-known, mechanical ID-to-flag formula. Pass 1 is
+      about team/marker data only; computing and inserting a real flag
+      value, even a trivial one-line formula application, is pass-2 work
+      and stays out of pass 1 with no exceptions. Every battle gets the
+      same obviously-fake placeholder in pass 1, e.g.
+      `{ type: 'flag', flag: -1 }` — never a placeholder that could pass as
+      a real, plausible-looking value. Track the pass-2 backlog in one
+      place (e.g. a task) rather than a `// TODO` comment on every single
+      battle — grepping the placeholder value itself finds them all when
+      pass 2 starts, so a comment repeating that on every entry is just
+      noise; reserve inline comments for substantive derivation notes (what
+      external source a battle's data came from, what's already been ruled
+      out, why it's hard), not a restatement of "this needs deriving." Once
+      pass 1 is complete for the whole game (or the whole batch of
+      locations being worked through), do pass 2 as its own dedicated
+      effort: grep every placeholder and derive them one at a time — that's
+      the point at which a mechanical formula gets applied too, same as any
+      other derivation.
     - **When an external trainer data source is involved (keyed by some
       internal trainer ID), battle population is a location-by-location,
       collaborative loop — not something to run solo end-to-end.** The

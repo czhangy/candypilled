@@ -713,7 +713,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Route 205 South.
     'camper-jacob': {
-        saveCondition: { type: 'trainerFlag', flag: 1376 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'camper',
         name: 'Jacob',
@@ -730,7 +730,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-daniel': {
-        saveCondition: { type: 'trainerFlag', flag: 1378 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'hiker',
         name: 'Daniel',
@@ -784,7 +784,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aroma-lady-elizabeth': {
-        saveCondition: { type: 'trainerFlag', flag: 1381 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'aroma-lady',
         name: 'Elizabeth',
@@ -801,7 +801,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'camper-zackary': {
-        saveCondition: { type: 'trainerFlag', flag: 1737 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'camper',
         name: 'Zackary',
@@ -818,7 +818,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'picnicker-siena': {
-        saveCondition: { type: 'trainerFlag', flag: 1377 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'picnicker',
         name: 'Siena',
@@ -844,7 +844,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-nicholas': {
-        saveCondition: { type: 'trainerFlag', flag: 1379 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'hiker',
         name: 'Nicholas',
@@ -861,7 +861,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'battle-girl-kelsey': {
-        saveCondition: { type: 'trainerFlag', flag: 1380 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'battle-girl',
         name: 'Kelsey',
@@ -878,7 +878,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'picnicker-karina': {
-        saveCondition: { type: 'trainerFlag', flag: 1816 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'picnicker',
         name: 'Karina',
@@ -896,7 +896,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Route 205 North.
     'fisherman-joseph': {
-        saveCondition: { type: 'trainerFlag', flag: 1383 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Joseph',
@@ -918,7 +918,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-andrew': {
-        saveCondition: { type: 'trainerFlag', flag: 1382 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Andrew',
@@ -980,7 +980,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-zachary': {
-        saveCondition: { type: 'trainerFlag', flag: 1384 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Zachary',
@@ -1021,7 +1021,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Eterna Forest Interior.
     'bug-catcher-jack': {
-        saveCondition: { type: 'trainerFlag', flag: 1561 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bug-catcher',
         name: 'Jack',
@@ -1071,7 +1071,7 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'psychic-f-lindsey': {
-        saveCondition: { type: 'trainerFlag', flag: 1566 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'psychic-f',
         name: 'Lindsey',
@@ -1088,7 +1088,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'psychic-m-elijah': {
-        saveCondition: { type: 'trainerFlag', flag: 1565 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'psychic-m',
         name: 'Elijah',
@@ -1105,7 +1105,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'bug-catcher-donald': {
-        saveCondition: { type: 'trainerFlag', flag: 1563 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bug-catcher',
         name: 'Donald',
@@ -1131,7 +1131,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'bug-catcher-phillip': {
-        saveCondition: { type: 'trainerFlag', flag: 1562 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bug-catcher',
         name: 'Phillip',
@@ -1166,7 +1166,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'psychic-m-kody': {
-        saveCondition: { type: 'trainerFlag', flag: 1755 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'psychic-m',
         name: 'Kody',
@@ -1183,7 +1183,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'psychic-f-rachael': {
-        saveCondition: { type: 'trainerFlag', flag: 1758 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'psychic-f',
         name: 'Rachael',
@@ -1201,7 +1201,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Route 211 West.
     'ninja-boy-zach': {
-        saveCondition: { type: 'trainerFlag', flag: 1438 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Zach',
@@ -1236,7 +1236,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-louis': {
-        saveCondition: { type: 'trainerFlag', flag: 1686 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'hiker',
         name: 'Louis',
@@ -1262,7 +1262,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'bird-keeper-alexandra': {
-        saveCondition: { type: 'trainerFlag', flag: 1436 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bird-keeper',
         name: 'Alexandra',
@@ -1280,7 +1280,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Route 211 East.
     'bird-keeper-katherine': {
-        saveCondition: { type: 'trainerFlag', flag: 1441 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bird-keeper',
         name: 'Katherine',
@@ -1297,7 +1297,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ruin-maniac-harry': {
-        saveCondition: { type: 'trainerFlag', flag: 1802 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ruin-maniac',
         name: 'Harry',
@@ -1318,7 +1318,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-nick': {
-        saveCondition: { type: 'trainerFlag', flag: 1440 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Nick',
@@ -1344,7 +1344,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-sean': {
-        saveCondition: { type: 'trainerFlag', flag: 1439 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'black-belt',
         name: 'Sean',
@@ -1380,7 +1380,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Mt. Coronet's Galactic Grunts.
     'galactic-grunt-f-1': {
-        saveCondition: { type: 'trainerFlag', flag: 1883 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '1',
@@ -1397,7 +1397,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-7': {
-        saveCondition: { type: 'trainerFlag', flag: 1875 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '7',
@@ -1418,7 +1418,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-8': {
-        saveCondition: { type: 'trainerFlag', flag: 1876 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '8',
@@ -1458,7 +1458,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-9': {
-        saveCondition: { type: 'trainerFlag', flag: 1877 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '9',
@@ -1489,7 +1489,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-10': {
-        saveCondition: { type: 'trainerFlag', flag: 1879 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '10',
@@ -1511,7 +1511,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-2': {
-        saveCondition: { type: 'trainerFlag', flag: 1884 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '2',
@@ -1546,7 +1546,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-11': {
-        saveCondition: { type: 'trainerFlag', flag: 1878 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '11',
@@ -1581,7 +1581,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-3': {
-        saveCondition: { type: 'trainerFlag', flag: 1885 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '3',
@@ -1611,7 +1611,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-12': {
-        saveCondition: { type: 'trainerFlag', flag: 1880 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '12',
@@ -1646,7 +1646,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-4': {
-        saveCondition: { type: 'trainerFlag', flag: 1886 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '4',
@@ -1691,7 +1691,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Eterna Gym.
     'lass-caroline': {
-        saveCondition: { type: 'trainerFlag', flag: 1684 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'lass',
         name: 'Caroline',
@@ -1717,7 +1717,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aroma-lady-jenna': {
-        saveCondition: { type: 'trainerFlag', flag: 1619 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'aroma-lady',
         name: 'Jenna',
@@ -1752,7 +1752,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aroma-lady-angela': {
-        saveCondition: { type: 'trainerFlag', flag: 1620 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'aroma-lady',
         name: 'Angela',
@@ -1769,7 +1769,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'beauty-lindsay': {
-        saveCondition: { type: 'trainerFlag', flag: 1708 },
+        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'beauty',
         name: 'Lindsay',
@@ -1828,6 +1828,181 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
                 heldItem: 'sitrus-berry',
                 ivs: 6,
+            },
+        ],
+    },
+    // Team Galactic Eterna Building.
+    'galactic-grunt-f-5': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'galactic-grunt-f',
+        name: '5',
+        team: [
+            {
+                slug: 'zubat',
+                ability: 'inner-focus',
+                gender: 'female',
+                level: 14,
+                nature: Nature.Careful,
+                moves: ['leech-life', 'supersonic', 'astonish', 'bite'],
+                ivs: 3,
+            },
+            {
+                slug: 'glameow',
+                ability: 'limber',
+                gender: 'female',
+                level: 14,
+                nature: Nature.Rash,
+                moves: ['fake-out', 'scratch', 'growl', 'hypnosis'],
+                ivs: 3,
+            },
+        ],
+    },
+    'galactic-grunt-m-13': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'galactic-grunt-m',
+        name: '13',
+        team: [
+            {
+                slug: 'wurmple',
+                ability: 'shield-dust',
+                gender: 'male',
+                level: 13,
+                nature: Nature.Mild,
+                moves: ['tackle', 'string-shot', 'poison-sting'],
+                ivs: 3,
+            },
+            {
+                slug: 'cascoon',
+                ability: 'shed-skin',
+                gender: 'male',
+                level: 13,
+                nature: Nature.Jolly,
+                moves: ['tackle', 'harden', 'poison-sting'],
+                ivs: 3,
+            },
+        ],
+    },
+    'galactic-grunt-m-14': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'galactic-grunt-m',
+        name: '14',
+        team: [
+            {
+                slug: 'wurmple',
+                ability: 'shield-dust',
+                gender: 'male',
+                level: 13,
+                nature: Nature.Jolly,
+                moves: ['tackle', 'string-shot', 'poison-sting'],
+                ivs: 3,
+            },
+            {
+                slug: 'zubat',
+                ability: 'inner-focus',
+                gender: 'male',
+                level: 13,
+                nature: Nature.Lax,
+                moves: ['leech-life', 'astonish'],
+                ivs: 3,
+            },
+        ],
+    },
+    'galactic-grunt-f-6': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'galactic-grunt-f',
+        name: '6',
+        team: [
+            {
+                slug: 'silcoon',
+                ability: 'shed-skin',
+                gender: 'female',
+                level: 15,
+                nature: Nature.Relaxed,
+                moves: ['tackle', 'harden', 'poison-sting'],
+                ivs: 3,
+            },
+        ],
+    },
+    'galactic-grunt-f-7': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'galactic-grunt-f',
+        name: '7',
+        team: [
+            {
+                slug: 'wurmple',
+                ability: 'shield-dust',
+                gender: 'female',
+                level: 12,
+                nature: Nature.Docile,
+                moves: ['tackle', 'string-shot', 'poison-sting'],
+                ivs: 3,
+            },
+            {
+                slug: 'silcoon',
+                ability: 'shed-skin',
+                gender: 'female',
+                level: 12,
+                nature: Nature.Lonely,
+                moves: ['tackle', 'harden', 'poison-sting'],
+                ivs: 3,
+            },
+            {
+                slug: 'zubat',
+                ability: 'inner-focus',
+                gender: 'female',
+                level: 12,
+                nature: Nature.Careful,
+                moves: ['leech-life', 'astonish'],
+                ivs: 3,
+            },
+        ],
+    },
+    'scientist-travon': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'scientist',
+        name: 'Travon',
+        team: [
+            {
+                slug: 'kadabra',
+                ability: 'synchronize',
+                gender: 'male',
+                level: 15,
+                nature: Nature.Modest,
+                moves: ['confusion', 'kinesis'],
+                ivs: 0,
+            },
+        ],
+    },
+    'commander-jupiter-jupiter-1': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'commander-jupiter',
+        name: 'Jupiter 1',
+        team: [
+            {
+                slug: 'zubat',
+                ability: 'inner-focus',
+                gender: 'female',
+                level: 18,
+                nature: Nature.Serious,
+                moves: ['giga-drain', 'wing-attack', 'bite'],
+                ivs: 12,
+            },
+            {
+                slug: 'skuntank',
+                ability: 'stench',
+                gender: 'female',
+                level: 20,
+                nature: Nature.Mild,
+                moves: ['night-slash', 'poison-gas', 'screech', 'smokescreen'],
+                heldItem: 'sitrus-berry',
+                ivs: 12,
             },
         ],
     },
