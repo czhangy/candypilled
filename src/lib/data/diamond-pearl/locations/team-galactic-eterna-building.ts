@@ -33,13 +33,13 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
             map: teamGalacticEternaBuilding2f,
             battles: [
                 {
-                    metadata: [],
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'galactic-grunt-m-14',
                     x: 10.6,
                     y: 79.2,
                 },
                 {
-                    metadata: [],
+                    metadata: [BattleMetadata.Optional],
                     battleKey: 'galactic-grunt-f-6',
                     x: 59.5,
                     y: 57,
