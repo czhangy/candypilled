@@ -1,10 +1,55 @@
 import { route208 } from '@/lib/data/diamond-pearl/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_208: Location = {
     name: 'Route 208',
     map: route208,
     encountersKey: 'sinnoh-route-208',
+    battles: [
+        {
+            metadata: [BattleMetadata.Optional],
+            battleKey: 'hiker-robert',
+            x: 38.4,
+            y: 58.6,
+        },
+        {
+            metadata: [BattleMetadata.Optional],
+            battleKey: 'black-belt-kyle',
+            x: 28.1,
+            y: 31.5,
+        },
+        {
+            metadata: [BattleMetadata.Optional],
+            battleKey: 'hiker-jonathan',
+            x: 57.1,
+            y: 56,
+        },
+        {
+            metadata: [BattleMetadata.Optional],
+            battleKey: 'aroma-lady-hannah',
+            x: 77.6,
+            y: 57.4,
+        },
+        {
+            metadata: [BattleMetadata.Optional],
+            battleKey: 'artist-william',
+            x: 86.8,
+            y: 68.5,
+        },
+        {
+            metadata: [BattleMetadata.Optional],
+            battleKey: 'fisherman-cody',
+            x: 46.1,
+            y: 76.6,
+        },
+        {
+            metadata: [BattleMetadata.Optional],
+            battleKey: 'hiker-alexander',
+            x: 10.2,
+            y: 43,
+        },
+    ],
 };
 
 export default ROUTE_208;

@@ -527,18 +527,6 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    // Jubilife City's Galactic Grunt tag battle. Disassembled MAP_JUBLIFE's
-    // own compiled script (scr_seq_release/narc_0002.bin): the trainer-
-    // battle call (opcode 0x02A0) is anchored by trainer IDs 414/415, which
-    // match TRAINER_GALACTIC_GRUNT_9/_10 in trainers.h -- both nonzero and
-    // distinct, mechanically confirming a real tag battle. Win branch does
-    // call SetFlag(442), but that flag is contaminated -- it's also set
-    // unconditionally by narc_0377.bin, a new-save-initialization script
-    // (ends in ScrCmd_InitPokemonRecordSize, ~68 unconditional SetFlag
-    // calls, not wired to any map) -- confirmed against a real save file
-    // showing flag 442 already true on a fresh, pre-Roark save that hasn't
-    // reached this battle. This battle isn't even accessible until after
-    // Roark. Real saveCondition still needs deriving (pass 2).
     'galactic-grunt-m-1': {
         saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
@@ -571,14 +559,6 @@ export const BATTLES: Record<string, BattleData> = {
             ],
         },
     },
-    // Valley Windworks Exterior's Galactic Grunt (rom_id 843,
-    // TRAINER_GALACTIC_GRUNT_35). Required, not skippable. Real
-    // saveCondition still needs deriving (pass 2) -- confirmed via
-    // disassembly of scr_seq_release/narc_0210.bin (MAP_VALLEY_WINDWORKS_EXTERIOR) that
-    // the win branch calls no SetVar/SetFlag/SetTrainerFlag at all; the
-    // real mechanism isn't in this map's own script and needs a different
-    // derivation angle (object placement data, or an empirical before/
-    // after save diff).
     'galactic-grunt-m-2': {
         saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
@@ -1785,11 +1765,6 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    // Gardenia is a gym leader (story-scripted battle) -- doesn't use the
-    // trainerFlag formula. Real saveCondition still needs deriving (pass
-    // 2), same as Eterna Gym's own GiveBadge disassembly would need to be
-    // walked to confirm the badge bit rather than assumed from ordinal gym
-    // position.
     'leader-gardenia-gardenia': {
         saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
@@ -3279,6 +3254,358 @@ export const BATTLES: Record<string, BattleData> = {
                 level: 9,
                 nature: Nature.Sassy,
                 moves: ['growl', 'bide', 'quick-attack', 'charm'],
+                ivs: 0,
+            },
+        ],
+    },
+    'youngster-austin': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'youngster',
+        name: 'Austin',
+        team: [
+            {
+                slug: 'starly',
+                ability: 'keen-eye',
+                gender: 'male',
+                level: 15,
+                nature: Nature.Rash,
+                moves: ['growl', 'quick-attack', 'wing-attack', 'double-team'],
+                ivs: 0,
+            },
+            {
+                slug: 'geodude',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 15,
+                nature: Nature.Bashful,
+                moves: ['mud-sport', 'rock-polish', 'rock-throw', 'magnitude'],
+                ivs: 0,
+            },
+            {
+                slug: 'chimchar',
+                ability: 'blaze',
+                gender: 'male',
+                level: 18,
+                nature: Nature.Gentle,
+                moves: ['ember', 'taunt', 'fury-swipes', 'flame-wheel'],
+                ivs: 0,
+            },
+        ],
+    },
+    'camper-anthony': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'camper',
+        name: 'Anthony',
+        team: [
+            {
+                slug: 'ponyta',
+                ability: 'run-away',
+                gender: 'male',
+                level: 19,
+                nature: Nature.Bold,
+                moves: ['ember', 'tackle', 'growl'],
+                ivs: 0,
+            },
+        ],
+    },
+    'picnicker-lauren': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'picnicker',
+        name: 'Lauren',
+        team: [
+            {
+                slug: 'pachirisu',
+                ability: 'run-away',
+                gender: 'female',
+                level: 19,
+                nature: Nature.Adamant,
+                moves: ['spark', 'quick-attack', 'charm'],
+                ivs: 0,
+            },
+        ],
+    },
+    'hiker-kevin': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'hiker',
+        name: 'Kevin',
+        team: [
+            {
+                slug: 'geodude',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 15,
+                nature: Nature.Adamant,
+                moves: ['mud-sport', 'rock-polish', 'rock-throw', 'magnitude'],
+                ivs: 0,
+            },
+            {
+                slug: 'geodude',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 16,
+                nature: Nature.Bashful,
+                moves: ['mud-sport', 'rock-polish', 'rock-throw', 'magnitude'],
+                ivs: 0,
+            },
+            {
+                slug: 'zubat',
+                ability: 'inner-focus',
+                gender: 'male',
+                level: 17,
+                nature: Nature.Impish,
+                moves: ['supersonic', 'astonish', 'bite', 'wing-attack'],
+                ivs: 0,
+            },
+            {
+                slug: 'geodude',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 16,
+                nature: Nature.Bashful,
+                moves: ['mud-sport', 'rock-polish', 'rock-throw', 'magnitude'],
+                ivs: 0,
+            },
+        ],
+    },
+    'hiker-justin': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'hiker',
+        name: 'Justin',
+        team: [
+            {
+                slug: 'geodude',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 16,
+                nature: Nature.Impish,
+                moves: ['mud-sport', 'rock-polish', 'rock-throw', 'magnitude'],
+                ivs: 0,
+            },
+            {
+                slug: 'bronzor',
+                ability: 'levitate',
+                level: 18,
+                nature: Nature.Relaxed,
+                moves: ['confusion', 'hypnosis', 'imprison', 'confuse-ray'],
+                ivs: 0,
+            },
+        ],
+    },
+    'battle-girl-helen': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'battle-girl',
+        name: 'Helen',
+        team: [
+            {
+                slug: 'meditite',
+                ability: 'pure-power',
+                gender: 'female',
+                level: 18,
+                nature: Nature.Sassy,
+                moves: ['confusion', 'detect', 'hidden-power', 'mind-reader'],
+                ivs: 3,
+            },
+            {
+                slug: 'machop',
+                ability: 'guts',
+                gender: 'male',
+                level: 18,
+                nature: Nature.Brave,
+                moves: ['leer', 'focus-energy', 'karate-chop', 'foresight'],
+                ivs: 3,
+            },
+        ],
+    },
+    'hiker-robert': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'hiker',
+        name: 'Robert',
+        team: [
+            {
+                slug: 'geodude',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 17,
+                nature: Nature.Serious,
+                moves: ['mud-sport', 'rock-polish', 'rock-throw', 'magnitude'],
+                ivs: 0,
+            },
+            {
+                slug: 'geodude',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 17,
+                nature: Nature.Serious,
+                moves: ['mud-sport', 'rock-polish', 'rock-throw', 'magnitude'],
+                ivs: 0,
+            },
+        ],
+    },
+    'black-belt-kyle': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'black-belt',
+        name: 'Kyle',
+        team: [
+            {
+                slug: 'machop',
+                ability: 'guts',
+                gender: 'male',
+                level: 19,
+                nature: Nature.Lax,
+                moves: [
+                    'focus-energy',
+                    'karate-chop',
+                    'foresight',
+                    'seismic-toss',
+                ],
+                ivs: 3,
+            },
+        ],
+    },
+    'hiker-jonathan': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'hiker',
+        name: 'Jonathan',
+        team: [
+            {
+                slug: 'onix',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 19,
+                nature: Nature.Impish,
+                moves: ['screech', 'rock-throw', 'rage', 'rock-tomb'],
+                ivs: 0,
+            },
+        ],
+    },
+    'aroma-lady-hannah': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'aroma-lady',
+        name: 'Hannah',
+        team: [
+            {
+                slug: 'combee',
+                ability: 'honey-gather',
+                gender: 'male',
+                level: 16,
+                nature: Nature.Bashful,
+                moves: ['sweet-scent', 'gust'],
+                ivs: 0,
+            },
+            {
+                slug: 'roselia',
+                ability: 'natural-cure',
+                gender: 'female',
+                level: 18,
+                nature: Nature.Mild,
+                moves: [
+                    'poison-sting',
+                    'stun-spore',
+                    'mega-drain',
+                    'leech-seed',
+                ],
+                ivs: 0,
+            },
+        ],
+    },
+    'artist-william': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'artist',
+        name: 'William',
+        team: [
+            {
+                slug: 'mime-jr',
+                ability: 'soundproof',
+                gender: 'male',
+                level: 17,
+                nature: Nature.Careful,
+                moves: ['copycat', 'meditate', 'encore', 'double-slap'],
+                ivs: 0,
+            },
+            {
+                slug: 'bonsly',
+                ability: 'sturdy',
+                gender: 'male',
+                level: 17,
+                nature: Nature.Calm,
+                moves: ['flail', 'low-kick', 'rock-throw', 'mimic'],
+                ivs: 0,
+            },
+        ],
+    },
+    'fisherman-cody': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'fisherman',
+        name: 'Cody',
+        team: [
+            {
+                slug: 'barboach',
+                ability: 'oblivious',
+                gender: 'male',
+                level: 31,
+                nature: Nature.Lonely,
+                moves: ['water-pulse', 'magnitude', 'rest', 'snore'],
+                ivs: 0,
+            },
+            {
+                slug: 'gyarados',
+                ability: 'intimidate',
+                gender: 'male',
+                level: 31,
+                nature: Nature.Quiet,
+                moves: ['bite', 'dragon-rage', 'leer', 'twister'],
+                ivs: 0,
+            },
+        ],
+    },
+    'hiker-alexander': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'hiker',
+        name: 'Alexander',
+        team: [
+            {
+                slug: 'golbat',
+                ability: 'inner-focus',
+                gender: 'male',
+                level: 35,
+                nature: Nature.Impish,
+                moves: [
+                    'wing-attack',
+                    'confuse-ray',
+                    'air-cutter',
+                    'mean-look',
+                ],
+                ivs: 0,
+            },
+            {
+                slug: 'graveler',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 35,
+                nature: Nature.Impish,
+                moves: ['self-destruct', 'rollout', 'rock-blast', 'earthquake'],
+                ivs: 0,
+            },
+            {
+                slug: 'onix',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 35,
+                nature: Nature.Careful,
+                moves: ['sandstorm', 'slam', 'rock-polish', 'dragon-breath'],
                 ivs: 0,
             },
         ],
