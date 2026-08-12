@@ -358,6 +358,30 @@ Key differences from the single-version flow above:
   even trainer _positions_ can differ between games sharing a map, so
   scaffold locations with no `battles` field and let that be filled in
   later, per-game, as its own step.
+- **Full population vs. partial population, as two named battle-authoring
+  modes.** Full population is the default collaborative loop described
+  above: the user supplies trainer names/metadata/x-y from scratch, and
+  every part of the `Location`'s `battles: []` entries (placement) and
+  `battles.ts` entries (content) is built fresh. Partial population is a
+  narrower shortcut usable only when a same-map game (typically a same-
+  generation game reusing this exact map image, e.g. Platinum for a D/P
+  location) has _already_ had that location's placements authored: the
+  `battleKey`s, `x`/`y`, `metadata`, `fieldCondition`, and
+  `customWidth`/`customHeight` are pure UI/layout scaffolding tied to the
+  map image and screen position, not in-universe game data, so they're
+  safe to copy verbatim from that game's location file instead of asking
+  the user to re-supply them. **Partial population never extends to
+  `battles.ts` content** (team, ability, nature, moves, gender, IVs,
+  `saveCondition`) — that's exactly the kind of in-universe data the
+  "games are independent" rule covers, and still has to be independently
+  derived from the target game's own primary sources (decomp/cross-
+  reference/Bulbapedia) even when the trainer's name and marker position
+  are identical to the source game's. When the user says something like
+  "copy the mapping from Platinum, get the battle data from D/P's own
+  data," that's an explicit request for partial population — don't infer
+  it unprompted, since two sibling games can diverge in roster/position
+  even on a shared map, and the safety of reuse here rests entirely on
+  the user confirming the map is truly the same asset.
 - **Don't assume a sibling game's split boundaries (which locations belong
   to which gym's split, and their order) carry over.** Even the underlying
   gym order itself can differ between sibling games sharing the same
