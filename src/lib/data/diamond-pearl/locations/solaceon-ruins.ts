@@ -5,6 +5,7 @@ import {
     solaceonRuinsB3f,
     solaceonRuinsB4f,
 } from '@/lib/data/diamond-pearl/maps';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SOLACEON_RUINS: Location = {
@@ -24,6 +25,14 @@ const SOLACEON_RUINS: Location = {
             name: 'B2F',
             map: solaceonRuinsB2f,
             encountersKey: 'solaceon-ruins',
+            battles: [
+                {
+                    metadata: [BattleMetadata.Optional],
+                    battleKey: 'ruin-maniac-karl',
+                    x: 70.7,
+                    y: 47.5,
+                },
+            ],
         },
         {
             name: 'B3F',
