@@ -382,6 +382,16 @@ Key differences from the single-version flow above:
   it unprompted, since two sibling games can diverge in roster/position
   even on a shared map, and the safety of reuse here rests entirely on
   the user confirming the map is truly the same asset.
+  **Roster identity itself can differ per marker slot even when the
+  layout is otherwise identical** — a real observed case: Platinum's
+  Route 214 has `ruin-maniac-ronald` at one marker, but that trainer
+  doesn't exist in D/P at all; the same marker slot belongs to a
+  different, D/P-only trainer (`ruin-maniac-hunter`) instead. Verify
+  every copied `battleKey` actually resolves to a real trainer in the
+  target game (cross-reference the trainer-ID source, or check
+  Bulbapedia's raw wikitext for per-slot DP/Pt game tags) before wiring
+  it — don't assume a 1:1 name match just because the position and
+  surrounding trainers line up.
 - **Don't assume a sibling game's split boundaries (which locations belong
   to which gym's split, and their order) carry over.** Even the underlying
   gym order itself can differ between sibling games sharing the same

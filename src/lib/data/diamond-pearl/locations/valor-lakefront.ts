@@ -5,6 +5,14 @@ const VALOR_LAKEFRONT: Location = {
     name: 'Valor Lakefront',
     map: valorLakefront,
     encountersKey: 'valor-lakefront',
+    battles: [
+        {
+            metadata: [],
+            battleKey: 'galactic-grunt-m-15',
+            x: 77.6,
+            y: 57.9,
+        },
+    ],
 };
 
 export default VALOR_LAKEFRONT;
