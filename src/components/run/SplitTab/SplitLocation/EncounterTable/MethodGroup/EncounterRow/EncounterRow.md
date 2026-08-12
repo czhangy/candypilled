@@ -15,7 +15,10 @@ player must hand over to receive it. Below that, any item(s) this
 encounter can come with (a trade's guaranteed item, or a wild species'
 possible held items) are each shown as a button with the item's icon and
 name; clicking one notifies the parent via `onSelectItem` without also
-selecting the row.
+selecting the row. Wild held items are only shown for encounter methods
+that actually roll for one in-game (grass, cave, surf, fishing, walking,
+honey tree, binoculars, Feebas tile) — eggs, gifts, starters, static
+encounters, fossils, and trades never show a species' `wildHeldItems`.
 
 ## Props
 
@@ -38,8 +41,8 @@ selecting the row.
 - `tradeForPokemon` — the species data for `encounter.tradeFor`, resolved
   via `PokemonHelpers`, when the encounter is an NPC trade
 - `heldItems` — the item data for every item this encounter can come with:
-  `encounter.heldItem` for a trade, or the species' `wildHeldItems`
-  otherwise, resolved via `ItemHelpers`
+  `encounter.heldItem` for a trade, or the species' `wildHeldItems` when the
+  encounter's method is a genuine wild method, resolved via `ItemHelpers`
 
 ## SCSS Variable Dependencies
 

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { EncounterMethod } from '@/lib/static/enums';
 import { Encounter, ItemData } from '@/lib/static/types';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -30,6 +31,21 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
     const SPRITE_WIDTH = 40;
     const SPRITE_HEIGHT = 30;
     const ITEM_ICON_SIZE = 12;
+    // Only these methods roll for a wild held item in the actual games --
+    // eggs, gifts, starters, static encounters, fossils, and trades never
+    // do, even though a species may list wildHeldItems for its grass/surf/
+    // fishing encounters elsewhere.
+    const WILD_METHODS = new Set([
+        EncounterMethod.Binoculars,
+        EncounterMethod.Cave,
+        EncounterMethod.FeebasTile,
+        EncounterMethod.GoodRod,
+        EncounterMethod.Grass,
+        EncounterMethod.HoneyTree,
+        EncounterMethod.OldRod,
+        EncounterMethod.Surf,
+        EncounterMethod.Walking,
+    ]);
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -55,7 +71,9 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
         : undefined;
     const heldItemSlugs = encounter.heldItem
         ? [encounter.heldItem]
-        : (pokemon?.wildHeldItems ?? []);
+        : WILD_METHODS.has(encounter.method)
+          ? (pokemon?.wildHeldItems ?? [])
+          : [];
     const heldItems = heldItemSlugs
         .map((slug) => ItemHelpers.getHeldItemData(slug))
         .filter((item): item is ItemData => item !== undefined);
