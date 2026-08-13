@@ -5,6 +5,14 @@ const CELESTIC_TOWN: Location = {
     name: 'Celestic Town',
     map: celesticTown,
     encountersKey: 'celestic-town',
+    battles: [
+        {
+            metadata: [],
+            battleKey: 'galactic-grunt-m-17',
+            x: 51.1,
+            y: 41.7,
+        },
+    ],
 };
 
 export default CELESTIC_TOWN;

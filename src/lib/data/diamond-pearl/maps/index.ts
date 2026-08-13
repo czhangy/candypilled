@@ -8,7 +8,6 @@ export { default as canalaveGym1f } from './canalave-gym-1f.png';
 export { default as canalaveGym2f } from './canalave-gym-2f.png';
 export { default as canalaveGym3f } from './canalave-gym-3f.png';
 export { default as canalaveGym4f } from './canalave-gym-4f.png';
-export { default as celesticRuins } from './celestic-ruins.png';
 export { default as celesticTown } from './celestic-town.png';
 export { default as cynthiasRoom } from './cynthias-room.png';
 export { default as eternaCity } from './eterna-city.png';

@@ -1,4 +1,3 @@
-import CELESTIC_RUINS from '@/lib/data/diamond-pearl/locations/celestic-ruins';
 import CELESTIC_TOWN from '@/lib/data/diamond-pearl/locations/celestic-town';
 import HEARTHOME_GYM from '@/lib/data/diamond-pearl/locations/hearthome-gym';
 import PASTORIA_CITY from '@/lib/data/diamond-pearl/locations/pastoria-city';
@@ -18,7 +17,6 @@ const FANTINA: Split = {
             ['South']
         ),
         CELESTIC_TOWN,
-        CELESTIC_RUINS,
         LocationHelpers.withHiddenSubareaBattles(
             LocationHelpers.withSubareaOrder(ROUTE_211, ['East', 'West']),
             ['West']

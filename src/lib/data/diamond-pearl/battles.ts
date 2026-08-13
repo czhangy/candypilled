@@ -6361,4 +6361,30 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'galactic-grunt-m-17': {
+        saveCondition: { type: 'flag', flag: -1 },
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'galactic-grunt-m',
+        name: '17',
+        team: [
+            {
+                slug: 'beautifly',
+                ability: 'swarm',
+                gender: 'male',
+                level: 25,
+                nature: Nature.Quiet,
+                moves: ['gust', 'stun-spore', 'morning-sun', 'mega-drain'],
+                ivs: 3,
+            },
+            {
+                slug: 'croagunk',
+                ability: 'anticipation',
+                gender: 'male',
+                level: 27,
+                nature: Nature.Relaxed,
+                moves: ['pursuit', 'feint-attack', 'revenge', 'swagger'],
+                ivs: 3,
+            },
+        ],
+    },
 };
