@@ -40,12 +40,16 @@ currently scrolled into view is highlighted automatically.
   `IntersectionObserver` restricted to a thin band just below the sticky
   header, and sets `activeLocationSlug` to the first location (in split
   order) currently within that band
-- **On mount** — if `selectedBattleKey` is set, scrolls its `BattleCard`
-  (matched by `StringHelpers.toSlug(selectedBattleKey)`, the same slug
-  `BattleCard` sets on its own root element) into view. Since this tab is
-  unmounted while another tab is active, this re-runs (and re-scrolls)
-  every time the Split tab is switched into, not just on the run page's
-  initial load
+- **On mount** — if `selectedBattleKey` is set, scrolls its `LocationMap`
+  panel (matched by `StringHelpers.toSlug(selectedBattleKey)`, the same
+  slug `SplitLocation` gives that panel when the battle is selected) into
+  view, landing its top `stickyOffset` plus 16px below the top of the
+  viewport so it clears the sticky tabs/split-header block. Computed
+  manually via `getBoundingClientRect`/`window.scrollTo` rather than
+  `scrollIntoView`, since `stickyOffset` is already known as a prop. Since
+  this tab is unmounted while another tab is active, this re-runs (and
+  re-scrolls) every time the Split tab is switched into, not just on the
+  run page's initial load
 
 ## Computations
 

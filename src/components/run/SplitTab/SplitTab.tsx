@@ -114,9 +114,18 @@ const SplitTab: React.FC<SplitTabProps> = ({
     useEffect(() => {
         if (!selectedBattleKey) return;
 
-        document
-            .getElementById(StringHelpers.toSlug(selectedBattleKey))
-            ?.scrollIntoView();
+        const element = document.getElementById(
+            StringHelpers.toSlug(selectedBattleKey)
+        );
+        if (!element) return;
+
+        const SCROLL_GAP = 80;
+        const targetTop =
+            element.getBoundingClientRect().top +
+            window.scrollY -
+            stickyOffset -
+            SCROLL_GAP;
+        window.scrollTo({ top: targetTop });
         // Scrolls once per mount, i.e. every time this tab is switched
         // into, rather than reacting to selectedBattleKey changing while
         // already on this tab.

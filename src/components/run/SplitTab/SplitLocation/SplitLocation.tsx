@@ -501,6 +501,14 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                     alt={`${location.name} map`}
                                     battles={section.battles}
                                     game={game}
+                                    id={
+                                        selectedBattle &&
+                                        section.battles.includes(selectedBattle)
+                                            ? BattleHelpers.getBattleSlug(
+                                                  selectedBattle
+                                              )
+                                            : undefined
+                                    }
                                     isBattleDefeated={isBattleDefeated}
                                     isBattleNextPB={isBattleNextPB}
                                     map={section.map}

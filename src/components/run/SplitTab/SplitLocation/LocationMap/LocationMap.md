@@ -28,6 +28,7 @@ does not conflict with placing coordinates.
 | `alt`                      | `string`                      | Yes      | -       | Alt text for the map image                                                  |
 | `battles`                  | `Battle[]`                    | No       | `[]`    | Battles to mark on the map                                                  |
 | `game`                     | `Game`                        | Yes      | -       | The active game, forwarded to each `TrainerMarker` for its accessible label |
+| `id`                       | `string`                      | No       | -       | DOM id for the outer panel, used as a scroll target for a selected battle   |
 | `isBattleDefeated`         | `(battle: Battle) => boolean` | Yes      | -       | Whether a given battle has already been defeated                            |
 | `isBattleNextPersonalBest` | `(battle: Battle) => boolean` | Yes      | -       | Whether defeating a given battle next would extend the run's PB             |
 | `selectedBattle`           | `Battle`                      | No       | -       | The currently selected battle, if any                                       |
@@ -36,14 +37,15 @@ does not conflict with placing coordinates.
 
 ## State
 
-| State             | Type                                | Initial value             | Description                                                                             |
-| ----------------- | ----------------------------------- | ------------------------- | --------------------------------------------------------------------------------------- |
-| `pan`             | `{ x: number; y: number }`          | `{ x: 0, y: 0 }`          | The map image's last dragged-to offset, in pixels, from the top-left of the viewport    |
-| `prevMap`         | `StaticImageData`                   | `map`                     | Tracks the previous `map` prop so a map change can reset `pan` to the top-left corner   |
-| `isDragging`      | `boolean`                           | `false`                   | Whether the map is currently being dragged, for cursor feedback and to gate pan updates |
-| `viewportSize`    | `{ width: number; height: number }` | `{ width: 0, height: 0 }` | The viewport's current rendered size, used to clamp/center `pan`                        |
-| `previewPosition` | `{ x: number; y: number } \| null`  | `null`                    | The cursor's current position on the map, as a percentage, while Alt is held            |
-| `justCopied`      | `boolean`                           | `false`                   | Whether coordinates were just copied to the clipboard, for label feedback               |
+| State                | Type                                | Initial value             | Description                                                                                                                                                |
+| -------------------- | ----------------------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pan`                | `{ x: number; y: number }`          | `{ x: 0, y: 0 }`          | The map image's last dragged-to (or centered-to) offset, in pixels, from the top-left of the viewport                                                      |
+| `prevMap`            | `StaticImageData`                   | `map`                     | Tracks the previous `map` prop so a map change can reset `pan` to the top-left corner                                                                      |
+| `prevSelectedBattle` | `Battle \| undefined`               | `undefined`               | Tracks the previous `selectedBattle` prop so a selection change (including an initial one, e.g. from a battle query param) can center `pan` on that marker |
+| `isDragging`         | `boolean`                           | `false`                   | Whether the map is currently being dragged, for cursor feedback and to gate pan updates                                                                    |
+| `viewportSize`       | `{ width: number; height: number }` | `{ width: 0, height: 0 }` | The viewport's current rendered size, used to clamp/center `pan`                                                                                           |
+| `previewPosition`    | `{ x: number; y: number } \| null`  | `null`                    | The cursor's current position on the map, as a percentage, while Alt is held                                                                               |
+| `justCopied`         | `boolean`                           | `false`                   | Whether coordinates were just copied to the clipboard, for label feedback                                                                                  |
 
 ## Effects
 
@@ -65,7 +67,15 @@ does not conflict with placing coordinates.
   displayed position without needing an effect. When `map` changes, `pan`
   is reset to `{ x: 0, y: 0 }` during render (comparing against `prevMap`),
   which `displayPan` then resolves to the map's top-left corner, or its
-  center if the map is smaller than the viewport
+  center if the map is smaller than the viewport. When `selectedBattle`
+  changes instead (comparing against `prevSelectedBattle`), `pan` is set
+  so that battle's marker is centered in the viewport, converting its
+  percentage-based `x`/`y` to pixels against the map's native dimensions.
+  Since `prevSelectedBattle` starts as `undefined` regardless of the
+  initial `selectedBattle` value, an already-selected battle at mount
+  (e.g. from a battle query param) is centered too — this only happens
+  once `viewportSize` has a real measurement, so it isn't computed against
+  a zeroed-out viewport before the first `ResizeObserver` callback fires
 - `previewPosition` — derived on mouse move, while Alt is held, from the
   cursor's offset within the map's bounding box as a percentage of its
   rendered (native-pixel) width/height, rounded to one decimal place

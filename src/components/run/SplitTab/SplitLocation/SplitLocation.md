@@ -156,6 +156,10 @@ Pokédex tile.
 The root element's `id` is `SplitHelpers.getLocationSlug(location.name,
 index)`, so `SplitTab`'s table of contents can link directly to this card;
 the index disambiguates locations that share a name within the split.
+`LocationMap` is given its own `id` — `BattleHelpers.getBattleSlug(selectedBattle)`
+— whenever `selectedBattle` belongs to the active section's battles, so
+`SplitTab` can scroll directly to the map panel (rather than the battle
+card) when entering with a matching battle selected.
 
 ## Handlers
 

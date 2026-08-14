@@ -11,6 +11,7 @@ type LocationMapProps = {
     alt: string;
     battles?: Battle[];
     game: Game;
+    id?: string;
     isBattleDefeated: (battle: Battle) => boolean;
     isBattleNextPB: (battle: Battle) => boolean;
     map: StaticImageData;
@@ -23,6 +24,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
     alt,
     battles = [],
     game,
+    id,
     isBattleDefeated,
     isBattleNextPB,
     map,
@@ -42,6 +44,9 @@ const LocationMap: React.FC<LocationMapProps> = ({
 
     const [pan, setPan] = useState({ x: 0, y: 0 });
     const [prevMap, setPrevMap] = useState(map);
+    const [prevSelectedBattle, setPrevSelectedBattle] = useState<
+        Battle | undefined
+    >(undefined);
     const [isDragging, setIsDragging] = useState(false);
     const [viewportSize, setViewportSize] = useState({ width: 0, height: 0 });
     const [previewPosition, setPreviewPosition] = useState<{
@@ -84,6 +89,27 @@ const LocationMap: React.FC<LocationMapProps> = ({
     if (map !== prevMap) {
         setPrevMap(map);
         setPan({ x: 0, y: 0 });
+    } else if (
+        selectedBattle !== prevSelectedBattle &&
+        (viewportSize.width > 0 || viewportSize.height > 0)
+    ) {
+        setPrevSelectedBattle(selectedBattle);
+        if (selectedBattle) {
+            const markerX = (selectedBattle.x / 100) * map.width;
+            const markerY = (selectedBattle.y / 100) * map.height;
+            setPan({
+                x: clampPanAxis(
+                    viewportSize.width / 2 - markerX,
+                    viewportSize.width,
+                    map.width
+                ),
+                y: clampPanAxis(
+                    viewportSize.height / 2 - markerY,
+                    viewportSize.height,
+                    map.height
+                ),
+            });
+        }
     }
 
     const displayPan = {
@@ -118,6 +144,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
         event: React.PointerEvent<HTMLDivElement>
     ): void => {
         if (EDIT_MODE_ON && event.altKey) return;
+        if ((event.target as HTMLElement).closest('button')) return;
 
         dragOriginRef.current = {
             x: event.clientX,
@@ -198,7 +225,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
     // -------------------------------------------------------------------------
 
     return (
-        <div className={styles['location-map']}>
+        <div className={styles['location-map']} id={id}>
             <span className={styles.label}>Map</span>
             <div
                 className={[
