@@ -79,10 +79,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
     // -------------------------------------------------------------------------
 
     return (
-        <div
-            className={styles['battle-card']}
-            id={BattleHelpers.getBattleSlug(battle)}
-        >
+        <div className={styles['battle-card']}>
             <span className={styles.label}>
                 {battle.metadata.includes(BattleMetadata.Boss)
                     ? 'Boss'

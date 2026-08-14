@@ -8,11 +8,7 @@ padded to six with empty slots when the team is smaller), toggling the
 trainer's defeated state in storage via `onToggleDefeated` when its
 "Defeat"/"Defeated" button is clicked. Within the trainer name header,
 the name itself is a button that calls `onSelectTrainer` with the
-battle's key, jumping to that trainer in the Calc tab. The root
-element's `id` is
-`BattleHelpers.getBattleSlug(battle)`, a DOM-safe slug of the battle's
-key, so `SplitTab` can scroll directly to it when entering with a
-matching battle selected. For a tag battle (a second trainer present
+battle's key, jumping to that trainer in the Calc tab. For a tag battle (a second trainer present
 in `game.battles`' entry for this battle), the card instead stacks
 two full rows, one per trainer, each
 with its own six-slot team: the first trainer's row shows just a bare
@@ -71,6 +67,3 @@ keyed by the battle and the current game; see `BattleNotesModal.md`.
 ## SCSS Variable Dependencies
 
 - `--accent-color` — the active game's accent color, set by `RunPage`
-- `--sticky-offset` — the height of the page's sticky header, set by
-  `SplitTab`; used as `scroll-margin-top` so a programmatic scroll to
-  this card doesn't land it underneath the sticky header
