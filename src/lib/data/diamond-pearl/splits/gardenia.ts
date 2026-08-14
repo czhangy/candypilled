@@ -31,13 +31,7 @@ const GARDENIA: Split = {
         ),
         ETERNA_CITY,
         LocationHelpers.withHiddenSubareaBattles(ROUTE_211, ['East']),
-        LocationHelpers.withHiddenSubareaBattles(MT_CORONET, [
-            '3F',
-            '4F',
-            'Tunnel',
-            '5F',
-            '6F',
-        ]),
+        LocationHelpers.withHiddenBattles(MT_CORONET),
         ETERNA_GYM,
     ],
 };

@@ -32,7 +32,7 @@ const MAYLENE: Split = {
         MINING_MUSEUM,
         WAYWARD_CAVE,
         ROUTE_207,
-        LocationHelpers.withHiddenSubareaBattles(
+        LocationHelpers.withHiddenBattles(
             LocationHelpers.withSubareaOrder(MT_CORONET, [
                 '1F (207)',
                 '1F (211)',
@@ -45,8 +45,7 @@ const MAYLENE: Split = {
                 'Tunnel',
                 '5F',
                 '6F',
-            ]),
-            ['3F', '4F', 'Tunnel', '5F', '6F']
+            ])
         ),
         ROUTE_208,
         HEARTHOME_CITY,
