@@ -102,7 +102,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
                 }
             },
             {
-                rootMargin: `-${stickyOffset + 16}px 0px -70% 0px`,
+                rootMargin: `-${stickyOffset + 16}px 0px -50% 0px`,
             }
         );
 
