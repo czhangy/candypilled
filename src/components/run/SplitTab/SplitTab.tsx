@@ -61,7 +61,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
     const currentSplit = game.splits.find(
         (split) => split.name === currentSplitName
     );
-    const variant = StringHelpers.toSlug(game.name);
+    const variant = game.version;
     const badge = `/${variant}/badges/${StringHelpers.toSlug(currentSplitName ?? '')}.png`;
 
     // -------------------------------------------------------------------------

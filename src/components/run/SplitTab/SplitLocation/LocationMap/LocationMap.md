@@ -7,7 +7,10 @@ added here in future work.
 Also includes a dev-mode-only coordinate preview: outside production builds,
 hovering the map shows a dashed preview `TrainerMarker` that follows the
 cursor, with its x/y percentages shown as a small comma-separated label
-above the marker, to help find x/y values for new battle entries.
+above the marker, to help find x/y values for new battle entries. Clicking
+the map copies those coordinates to the clipboard formatted as they appear
+in a location file's `battles` array (e.g. `x: 88,\ny: 74.4,`), and the
+label briefly reads "Copied!" for confirmation.
 
 ## Props
 
@@ -25,9 +28,10 @@ above the marker, to help find x/y values for new battle entries.
 
 ## State
 
-| State             | Type                               | Initial value | Description                                               |
-| ----------------- | ---------------------------------- | ------------- | --------------------------------------------------------- |
-| `previewPosition` | `{ x: number; y: number } \| null` | `null`        | The cursor's current position on the map, as a percentage |
+| State             | Type                               | Initial value | Description                                                               |
+| ----------------- | ---------------------------------- | ------------- | ------------------------------------------------------------------------- |
+| `previewPosition` | `{ x: number; y: number } \| null` | `null`        | The cursor's current position on the map, as a percentage                 |
+| `justCopied`      | `boolean`                          | `false`       | Whether coordinates were just copied to the clipboard, for label feedback |
 
 ## Computations
 
@@ -38,3 +42,6 @@ above the marker, to help find x/y values for new battle entries.
   the map's bounding box, as a percentage of its rendered width/height
   (equivalent to a percentage of the map's natural dimensions, since the
   image scales uniformly), rounded to one decimal place
+- `formatCoordinate` — formats a coordinate to match location file
+  conventions: one decimal place, with a trailing `.0` trimmed to a bare
+  integer

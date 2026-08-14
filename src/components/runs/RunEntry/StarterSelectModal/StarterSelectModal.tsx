@@ -7,7 +7,6 @@ import { Nature, PokemonStatus } from '@/lib/static/enums';
 import { CaughtPokemon, Game } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
 import StarterSelect from './StarterSelect/StarterSelect';
 import styles from './StarterSelectModal.module.scss';
 
@@ -42,7 +41,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const variant = StringHelpers.toSlug(game.name);
+    const variant = game.version;
     const defaultSpecies = activeStarter ?? speciesOverride ?? null;
     const starterLocation = EncounterHelpers.getStarterLocationName(game);
 

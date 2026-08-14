@@ -5,7 +5,6 @@ import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
 import PokedexDetail from './PokedexDetail/PokedexDetail';
 import styles from './PokedexSubtab.module.scss';
 
@@ -42,7 +41,7 @@ const PokedexSubtab: React.FC<PokedexSubtabProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const variant = StringHelpers.toSlug(game.name);
+    const variant = game.version;
     const availableSpecies = EncounterHelpers.getGameSpecies(
         game,
         settings['show-national-dex-data'] ?? false

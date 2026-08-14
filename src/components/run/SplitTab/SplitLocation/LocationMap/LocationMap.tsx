@@ -4,7 +4,6 @@ import { useRef, useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
-import CoordinateLoggingHelpers from '@/lib/utils/CoordinateLoggingHelpers';
 import styles from './LocationMap.module.scss';
 import TrainerMarker from './TrainerMarker/TrainerMarker';
 
@@ -45,12 +44,22 @@ const LocationMap: React.FC<LocationMapProps> = ({
         x: number;
         y: number;
     } | null>(null);
+    const [justCopied, setJustCopied] = useState(false);
 
     // -------------------------------------------------------------------------
     // HOOKS
     // -------------------------------------------------------------------------
 
     const imageRef = useRef<HTMLDivElement>(null);
+
+    // -------------------------------------------------------------------------
+    // COMPUTATIONS
+    // -------------------------------------------------------------------------
+
+    const formatCoordinate = (value: number): string => {
+        const fixed = value.toFixed(1);
+        return fixed.endsWith('.0') ? fixed.slice(0, -2) : fixed;
+    };
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -73,17 +82,19 @@ const LocationMap: React.FC<LocationMapProps> = ({
         setPreviewPosition(null);
     };
 
-    const handleImageClick = (
+    const handleImageClick = async (
         event: React.MouseEvent<HTMLDivElement>
-    ): void => {
+    ): Promise<void> => {
         const rect = imageRef.current!.getBoundingClientRect();
         const x = ((event.clientX - rect.left) / rect.width) * 100;
         const y = ((event.clientY - rect.top) / rect.height) * 100;
 
-        CoordinateLoggingHelpers.logCoordinates(
-            Math.round(x * 10) / 10,
-            Math.round(y * 10) / 10
+        await navigator.clipboard.writeText(
+            `x: ${formatCoordinate(x)},\ny: ${formatCoordinate(y)},`
         );
+
+        setJustCopied(true);
+        setTimeout(() => setJustCopied(false), 800);
     };
 
     // -------------------------------------------------------------------------
@@ -147,7 +158,9 @@ const LocationMap: React.FC<LocationMapProps> = ({
                                 } as React.CSSProperties
                             }
                         >
-                            {`${previewPosition.x.toFixed(1)}, ${previewPosition.y.toFixed(1)}`}
+                            {justCopied
+                                ? 'Copied!'
+                                : `${previewPosition.x.toFixed(1)}, ${previewPosition.y.toFixed(1)}`}
                         </span>
                     </>
                 )}

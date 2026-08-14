@@ -1,13 +1,16 @@
-import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
+import { GameVersion } from '@/lib/static/types';
+import { diamond } from './diamond';
+import { pearl } from './pearl';
 import { platinum } from './platinum';
 
-export const GAME_VERSIONS = [platinum];
+export const GAME_VERSIONS = [platinum, diamond, pearl];
 
-const currentGameVersion = GAME_VERSIONS.find(
-    (version) => version.id === GAME_ID
-);
-if (!currentGameVersion) {
-    throw new Error(`"${GAME_ID}" is not a valid game.`);
-}
-
-export const CURRENT_GAME_VERSION = currentGameVersion;
+/** Looks up a GameVersion by id, throwing if none matches. */
+export const getGameVersion = (id: string): GameVersion => {
+    const version = GAME_VERSIONS.find((candidate) => candidate.id === id);
+    if (!version) {
+        const valid = GAME_VERSIONS.map((candidate) => candidate.id).join(', ');
+        throw new Error(`"${id}" is not a valid game. Valid games: ${valid}.`);
+    }
+    return version;
+};

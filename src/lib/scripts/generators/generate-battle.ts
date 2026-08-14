@@ -1,13 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 import { createInterface, Interface } from 'readline/promises';
-import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import { logError, logSuccess, runScript } from '@/lib/scripts/utils/helpers';
 import { BattleMetadata, FieldCondition } from '@/lib/static/enums';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const USAGE =
-    'Usage: npm run gen:battle <location> [subarea] ' +
+    'Usage: npm run gen:battle <game> <location> [subarea] ' +
     '[--miniboss] [--boss] [--required] [--true] [--double] [--tag] [--field]';
 const LOCATION_NOT_FOUND = 'That location does not exist.';
 const SUBAREA_NOT_FOUND = 'That subarea does not exist on this location.';
@@ -21,6 +20,7 @@ const FIELD_CONDITION_KEYS_BY_VALUE = new Map(
 );
 
 type BattleArgs = {
+    game: string;
     location: string;
     subarea?: string;
     isMiniboss: boolean;
@@ -66,11 +66,14 @@ const parseArgs = (argv: string[]): BattleArgs => {
     const isDouble = argv.includes('--double');
     const isTag = argv.includes('--tag');
     const isFieldEnabled = argv.includes('--field');
-    const [location, subarea] = argv.filter((arg) => !FLAGS.includes(arg));
-    if (!location) {
+    const [game, location, subarea] = argv.filter(
+        (arg) => !FLAGS.includes(arg)
+    );
+    if (!game || !location) {
         throw new Error(USAGE);
     }
     return {
+        game,
         location,
         subarea,
         isMiniboss,
@@ -340,7 +343,7 @@ const ensureEnumImport = (content: string, name: string): string => {
 
 runScript(async () => {
     const args = parseArgs(process.argv.slice(2));
-    const gameSlug = StringHelpers.toSlug(GAME_ID);
+    const gameSlug = StringHelpers.toSlug(args.game);
     const filePath = getLocationPath(gameSlug, args.location);
 
     if (!fs.existsSync(filePath)) {

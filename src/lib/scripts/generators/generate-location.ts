@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import {
     logSuccess,
     runScript,
@@ -8,7 +7,7 @@ import {
 } from '@/lib/scripts/utils/helpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
-const USAGE = 'Usage: npm run gen:location <map> [name] [subareaName]';
+const USAGE = 'Usage: npm run gen:location <game> <map> [name] [subareaName]';
 const SUBAREA_NAME_REQUIRED = 'If initializing a subarea, name is required';
 const IMAGE_NOT_FOUND = 'No map image was found at the expected path';
 const LOCATION_EXISTS = 'That location already exists.';
@@ -16,6 +15,7 @@ const CONVERTED_TO_SUBAREAS =
     'That location already has a map, so it was converted to use subareas instead. Add an entry for the original map by hand.';
 
 type LocationArgs = {
+    game: string;
     map: string;
     slug: string;
     // Set whenever a location name is passed, since a 2nd argument means
@@ -25,17 +25,17 @@ type LocationArgs = {
 };
 
 const parseArgs = (argv: string[]): LocationArgs => {
-    const [map, name, subareaName] = argv;
-    if (!map) {
+    const [game, map, name, subareaName] = argv;
+    if (!game || !map) {
         throw new Error(USAGE);
     }
     if (!name) {
-        return { map, slug: map };
+        return { game, map, slug: map };
     }
     if (!subareaName) {
         throw new Error(SUBAREA_NAME_REQUIRED);
     }
-    return { map, slug: name, subareaName };
+    return { game, map, slug: name, subareaName };
 };
 
 const getMapsDir = (gameSlug: string): string =>
@@ -211,7 +211,7 @@ const createLocation = (
 
 runScript(() => {
     const args = parseArgs(process.argv.slice(2));
-    const gameSlug = StringHelpers.toSlug(GAME_ID);
+    const gameSlug = StringHelpers.toSlug(args.game);
 
     wireMap(gameSlug, args.map);
 

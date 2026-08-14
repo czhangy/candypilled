@@ -4,6 +4,7 @@ import CELESTIC_RUINS from '@/lib/data/platinum/locations/celestic-ruins';
 import CELESTIC_TOWN from '@/lib/data/platinum/locations/celestic-town';
 import FUEGO_IRONWORKS from '@/lib/data/platinum/locations/fuego-ironworks';
 import IRON_ISLAND from '@/lib/data/platinum/locations/iron-island';
+import OREBURGH_GATE from '@/lib/data/platinum/locations/oreburgh-gate';
 import ROUTE_210 from '@/lib/data/platinum/locations/route-210';
 import ROUTE_211 from '@/lib/data/platinum/locations/route-211';
 import ROUTE_218 from '@/lib/data/platinum/locations/route-218';
@@ -32,6 +33,10 @@ const BYRON: Split = {
         ROUTE_220,
         ROUTE_221,
         FUEGO_IRONWORKS,
+        LocationHelpers.withSubareaOrder(
+            LocationHelpers.withHiddenSubareaBattles(OREBURGH_GATE, ['B1F']),
+            ['B1F', '1F']
+        ),
         ROUTE_218,
         CANALAVE_CITY,
         IRON_ISLAND,

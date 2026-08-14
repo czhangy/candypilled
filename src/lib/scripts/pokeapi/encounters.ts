@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { CURRENT_GAME_VERSION } from '@/lib/scripts/pokeapi/game-versions';
+import { getGameVersion } from '@/lib/scripts/pokeapi/game-versions';
 import { sleep } from '@/lib/scripts/pokeapi/shared';
 import { logSuccess, logWarning, runScript } from '@/lib/scripts/utils/helpers';
 import { EncounterMethod } from '@/lib/static/enums';
@@ -12,6 +12,8 @@ import {
     MethodOverride,
 } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
+
+const USAGE = 'Usage: npm run pokeapi:encounters <game>';
 
 // PokeAPI's raw method names (e.g. 'walk', 'gift-egg') don't
 // match our EncounterMethod vocabulary until resolveWalkMethod and
@@ -27,15 +29,10 @@ type RawEncounter = {
 };
 
 const POKEAPI_REGION_URL = 'https://pokeapi.co/api/v2/region';
-const DATA_PATH = path.join(
-    'src',
-    'lib',
-    'data',
-    CURRENT_GAME_VERSION.id,
-    'encounters',
-    'encounters.json'
-);
 const FETCH_DELAY_MS = 75;
+
+const getDataPath = (gameId: string): string =>
+    path.join('src', 'lib', 'data', gameId, 'encounters', 'encounters.json');
 
 type NamedApiResource = {
     name: string;
@@ -95,9 +92,10 @@ const toSubareaLabel = (locationName: string, areaName: string): string => {
         : areaName;
 };
 
-const writeData = (data: Record<string, Encounter[]>): void => {
-    fs.mkdirSync(path.dirname(DATA_PATH), { recursive: true });
-    fs.writeFileSync(DATA_PATH, `${JSON.stringify(data, null, 4)}\n`);
+const writeData = (gameId: string, data: Record<string, Encounter[]>): void => {
+    const dataPath = getDataPath(gameId);
+    fs.mkdirSync(path.dirname(dataPath), { recursive: true });
+    fs.writeFileSync(dataPath, `${JSON.stringify(data, null, 4)}\n`);
 };
 
 const fetchRegionLocations = async (
@@ -491,7 +489,13 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
     mergeLocations(locationsData, version.mergedLocations ?? []);
     splitLocations(locationsData, version.locationSplits ?? []);
     addManualEncounters(locationsData, version.manualEncounters ?? {});
-    writeData(locationsData);
+    writeData(version.id, locationsData);
 };
 
-runScript(() => fetchEncounters(CURRENT_GAME_VERSION));
+runScript(() => {
+    const [gameId] = process.argv.slice(2);
+    if (!gameId) {
+        throw new Error(USAGE);
+    }
+    return fetchEncounters(getGameVersion(gameId));
+});

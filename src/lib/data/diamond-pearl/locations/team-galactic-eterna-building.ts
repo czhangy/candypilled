@@ -1,0 +1,82 @@
+import {
+    teamGalacticEternaBuilding1f,
+    teamGalacticEternaBuilding2f,
+    teamGalacticEternaBuilding3f,
+    teamGalacticEternaBuilding4f,
+} from '@/lib/data/diamond-pearl/maps';
+import { BattleMetadata } from '@/lib/static/enums';
+import { Location } from '@/lib/static/types';
+
+const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
+    name: 'Team Galactic Eterna Building',
+    subareas: [
+        {
+            name: '1F',
+            map: teamGalacticEternaBuilding1f,
+            battles: [
+                {
+                    metadata: [],
+                    battleKey: 'galactic-grunt-f-5',
+                    x: 70.6,
+                    y: 35.7,
+                },
+                {
+                    metadata: [],
+                    battleKey: 'galactic-grunt-m-13',
+                    x: 93.8,
+                    y: 35.7,
+                },
+            ],
+        },
+        {
+            name: '2F',
+            map: teamGalacticEternaBuilding2f,
+            battles: [
+                {
+                    metadata: [BattleMetadata.Optional],
+                    battleKey: 'galactic-grunt-m-14',
+                    x: 10.6,
+                    y: 79.2,
+                },
+                {
+                    metadata: [BattleMetadata.Optional],
+                    battleKey: 'galactic-grunt-f-6',
+                    x: 59.5,
+                    y: 57,
+                },
+            ],
+        },
+        {
+            name: '3F',
+            map: teamGalacticEternaBuilding3f,
+            battles: [
+                {
+                    metadata: [],
+                    battleKey: 'galactic-grunt-f-7',
+                    x: 45.9,
+                    y: 57.9,
+                },
+                {
+                    metadata: [],
+                    battleKey: 'scientist-travon',
+                    x: 94.1,
+                    y: 37.1,
+                },
+            ],
+        },
+        {
+            name: '4F',
+            map: teamGalacticEternaBuilding4f,
+            battles: [
+                {
+                    metadata: [BattleMetadata.Miniboss],
+                    battleKey: 'commander-jupiter-jupiter-1',
+                    x: 53.4,
+                    y: 58.1,
+                },
+            ],
+        },
+    ],
+};
+
+export default TEAM_GALACTIC_ETERNA_BUILDING;

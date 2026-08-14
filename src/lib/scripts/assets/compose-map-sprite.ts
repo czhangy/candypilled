@@ -1,15 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
-import { GAME_ID } from '@/lib/scripts/pokeapi/config/game';
 import { logSuccess, runScript } from '@/lib/scripts/utils/helpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const USAGE =
-    'Usage: npm run compose <map> <spriteClass> <direction> <x> <y> [width]. ' +
-    `Writes a preview under src/lib/data/${StringHelpers.toSlug(
-        GAME_ID
-    )}/maps/temp/ instead of overwriting the map.`;
+    'Usage: npm run compose <game> <map> <spriteClass> <direction> <x> <y> [width]. ' +
+    'Writes a preview under src/lib/data/<game>/maps/temp/ instead of ' +
+    'overwriting the map.';
 const MAP_NOT_FOUND = "That map image doesn't exist.";
 const SPRITE_NOT_FOUND = "That sprite image doesn't exist.";
 const OUT_OF_BOUNDS =
@@ -28,12 +26,12 @@ const getMapsDir = (gameSlug: string): string =>
     path.join('src', 'lib', 'data', gameSlug, 'maps');
 
 const parseArgs = (argv: string[]): ComposeArgs => {
-    const [map, spriteClass, direction, x, y, width] = argv;
-    if (!map || !spriteClass || !direction || !x || !y) {
+    const [game, map, spriteClass, direction, x, y, width] = argv;
+    if (!game || !map || !spriteClass || !direction || !x || !y) {
         throw new Error(USAGE);
     }
 
-    const gameSlug = StringHelpers.toSlug(GAME_ID);
+    const gameSlug = StringHelpers.toSlug(game);
     const mapsDir = getMapsDir(gameSlug);
 
     return {
