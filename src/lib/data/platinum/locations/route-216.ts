@@ -45,24 +45,28 @@ const ROUTE_216: Location = {
         {
             metadata: [BattleMetadata.Optional],
             battleKey: 'black-belt-philip',
+            fieldCondition: FieldCondition.Hail,
             x: 51,
             y: 25.9,
         },
         {
             metadata: [BattleMetadata.Optional],
             battleKey: 'skier-f-kaitlyn',
+            fieldCondition: FieldCondition.Hail,
             x: 58.2,
             y: 15.7,
         },
         {
             metadata: [BattleMetadata.Optional],
             battleKey: 'skier-m-bradley',
+            fieldCondition: FieldCondition.Hail,
             x: 63.2,
             y: 24.8,
         },
         {
             metadata: [BattleMetadata.Optional],
             battleKey: 'skier-f-andrea',
+            fieldCondition: FieldCondition.Hail,
             x: 82.5,
             y: 32.8,
         },
