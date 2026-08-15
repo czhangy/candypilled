@@ -370,18 +370,33 @@ Key differences from the single-version flow above:
   `customWidth`/`customHeight` are pure UI/layout scaffolding tied to the
   map image and screen position, not in-universe game data, so they're
   safe to copy verbatim from that game's location file instead of asking
-  the user to re-supply them. **Partial population never extends to
-  `battles.ts` content** (team, ability, nature, moves, gender, IVs,
-  `saveCondition`) — that's exactly the kind of in-universe data the
-  "games are independent" rule covers, and still has to be independently
-  derived from the target game's own primary sources (decomp/cross-
-  reference/Bulbapedia) even when the trainer's name and marker position
-  are identical to the source game's. When the user says something like
-  "copy the mapping from Platinum, get the battle data from D/P's own
-  data," that's an explicit request for partial population — don't infer
-  it unprompted, since two sibling games can diverge in roster/position
-  even on a shared map, and the safety of reuse here rests entirely on
-  the user confirming the map is truly the same asset.
+  the user to re-supply them. **The shortcut is scoped to _where the
+  placement data comes from_, not to _how much of the location gets
+  finished_.** Partial population is still a request to fully populate the
+  location's battles, same end state as full population (every `battles.ts`
+  entry present with real team data, `saveCondition` deferred to pass 2 same
+  as always) — "partial" describes skipping the marker-authoring
+  conversation, not skipping `battles.ts` content. **Never commit the copied
+  `battles: []` markers into a location file before that location's
+  `battles.ts` entries exist for every copied `battleKey`** (minus
+  `saveCondition`, per the normal pass-1/pass-2 split) — `TrainerMarker`
+  unconditionally reads `game.battles[battle.battleKey].trainerClass` with
+  no guard, so a marker referencing a nonexistent `battles.ts` entry is a
+  runtime crash for any user who reaches that location, not a harmless TODO.
+  Treat "copy the markers" and "derive the `battles.ts` content" as one
+  atomic unit of work, not two separately-committable steps — **`battles.ts`
+  content (team, ability, nature, moves, gender, IVs) still has to be
+  independently derived from the target game's own primary sources
+  (decomp/cross-reference/Bulbapedia)** — that's exactly the kind of
+  in-universe data the "games are independent" rule covers, even when the
+  trainer's name and marker position are identical to the source game's —
+  do that derivation immediately as part of the same pass, before the
+  location file's `battles: []` array is written/committed. When the user
+  says something like "copy the mapping from Platinum, get the battle data
+  from D/P's own data," that's an explicit request for partial population —
+  don't infer it unprompted, since two sibling games can diverge in roster/
+  position even on a shared map, and the safety of reuse here rests entirely
+  on the user confirming the map is truly the same asset.
   **Roster identity itself can differ per marker slot even when the
   layout is otherwise identical** — a real observed case: Platinum's
   Route 214 has `ruin-maniac-ronald` at one marker, but that trainer

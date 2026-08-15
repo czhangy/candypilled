@@ -143,7 +143,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
     const handlePointerDown = (
         event: React.PointerEvent<HTMLDivElement>
     ): void => {
-        if (EDIT_MODE_ON && event.altKey) return;
+        if (EDIT_MODE_ON && event.shiftKey) return;
         if ((event.target as HTMLElement).closest('button')) return;
 
         dragOriginRef.current = {
@@ -176,7 +176,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
             return;
         }
 
-        if (EDIT_MODE_ON && event.altKey) {
+        if (EDIT_MODE_ON && event.shiftKey) {
             const rect = imageRef.current!.getBoundingClientRect();
             const x = ((event.clientX - rect.left) / rect.width) * 100;
             const y = ((event.clientY - rect.top) / rect.height) * 100;
@@ -206,7 +206,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
     const handleImageClick = async (
         event: React.MouseEvent<HTMLDivElement>
     ): Promise<void> => {
-        if (!EDIT_MODE_ON || !event.altKey) return;
+        if (!EDIT_MODE_ON || !event.shiftKey) return;
 
         const rect = imageRef.current!.getBoundingClientRect();
         const x = ((event.clientX - rect.left) / rect.width) * 100;

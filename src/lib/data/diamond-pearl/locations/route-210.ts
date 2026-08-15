@@ -143,8 +143,8 @@ const ROUTE_210: Location = {
                     metadata: [BattleMetadata.Optional],
                     battleKey: 'veteran-brian',
                     fieldCondition: FieldCondition.Fog,
-                    x: 15.1,
-                    y: 22.8,
+                    x: 15,
+                    y: 22.6,
                 },
                 {
                     metadata: [BattleMetadata.Optional],

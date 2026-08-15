@@ -8,7 +8,6 @@ import ROUTE_223 from '@/lib/data/diamond-pearl/locations/route-223';
 import SPEAR_PILLAR from '@/lib/data/diamond-pearl/locations/spear-pillar';
 import SUNYSHORE_CITY from '@/lib/data/diamond-pearl/locations/sunyshore-city';
 import SUNYSHORE_GYM from '@/lib/data/diamond-pearl/locations/sunyshore-gym';
-import VALOR_CAVERN from '@/lib/data/diamond-pearl/locations/valor-cavern';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
@@ -31,7 +30,6 @@ const VOLKNER: Split = {
         ]),
         SPEAR_PILLAR,
         ACUITY_CAVERN,
-        LocationHelpers.withHiddenBattles(VALOR_CAVERN),
         ROUTE_222,
         SUNYSHORE_CITY,
         ROUTE_223,
