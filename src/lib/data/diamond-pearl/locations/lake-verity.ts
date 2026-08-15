@@ -2,7 +2,7 @@ import {
     lakeVerityPostGalactic,
     lakeVerityPreGalactic,
 } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata } from '@/lib/static/enums';
+import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_VERITY: Location = {
@@ -11,11 +11,13 @@ const LAKE_VERITY: Location = {
         {
             name: 'Pre-Galactic',
             map: lakeVerityPreGalactic,
+            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'lake-verity',
         },
         {
             name: 'Post-Galactic',
             map: lakeVerityPostGalactic,
+            mapAnchor: MapAnchor.Bottom,
             battles: [
                 {
                     metadata: [BattleMetadata.Double],

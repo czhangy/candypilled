@@ -5,6 +5,7 @@ import {
     EncounterMethod,
     FieldCondition,
     GrowthRate,
+    MapAnchor,
     Nature,
     PokemonStatus,
 } from '@/lib/static/enums';
@@ -348,6 +349,8 @@ export type Subarea = {
     encountersKey?: string;
     hideBattles?: boolean;
     map: StaticImageData;
+    // Where the map is panned to by default, when no battle is selected.
+    mapAnchor: MapAnchor;
     battles?: Battle[];
 };
 
@@ -357,8 +360,14 @@ export type Location = {
     hideBattles?: boolean;
     battles?: Battle[];
 } & (
-    | { map: StaticImageData; subareas?: never }
-    | { map?: never; subareas: Subarea[] }
+    | {
+          map: StaticImageData;
+          // Where the map is panned to by default, when no battle is
+          // selected.
+          mapAnchor: MapAnchor;
+          subareas?: never;
+      }
+    | { map?: never; mapAnchor?: never; subareas: Subarea[] }
 );
 
 export type Split = {

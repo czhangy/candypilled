@@ -3,6 +3,7 @@ import {
     oldChateauDiningRoom,
     oldChateauEntrance,
 } from '@/lib/data/diamond-pearl/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const OLD_CHATEAU: Location = {
@@ -11,16 +12,19 @@ const OLD_CHATEAU: Location = {
         {
             name: 'Entrance',
             map: oldChateauEntrance,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'old-chateau-entrance',
         },
         {
             name: 'Dining Room',
             map: oldChateauDiningRoom,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'old-chateau-dining-room',
         },
         {
             name: 'Bedrooms',
             map: oldChateauBedrooms,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'old-chateau-2f',
         },
     ],

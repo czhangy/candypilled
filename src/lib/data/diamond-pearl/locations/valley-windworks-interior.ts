@@ -1,10 +1,11 @@
 import { valleyWindworksInterior } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata } from '@/lib/static/enums';
+import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VALLEY_WINDWORKS_INTERIOR: Location = {
     name: 'Valley Windworks Interior',
     map: valleyWindworksInterior,
+    mapAnchor: MapAnchor.Center,
     battles: [
         {
             metadata: [BattleMetadata.Optional],

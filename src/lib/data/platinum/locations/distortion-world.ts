@@ -1,10 +1,11 @@
 import { distortionWorld } from '@/lib/data/platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
+import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const DISTORTION_WORLD: Location = {
     name: 'Distortion World',
     map: distortionWorld,
+    mapAnchor: MapAnchor.Bottom,
     encountersKey: 'distortion-world',
     battles: [
         {

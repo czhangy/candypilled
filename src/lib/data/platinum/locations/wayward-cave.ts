@@ -1,5 +1,5 @@
 import { waywardCave1f, waywardCaveB1f } from '@/lib/data/platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
+import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const WAYWARD_CAVE: Location = {
@@ -8,6 +8,7 @@ const WAYWARD_CAVE: Location = {
         {
             name: '1F',
             map: waywardCave1f,
+            mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'wayward-cave-1f',
             battles: [
                 {
@@ -72,7 +73,12 @@ const WAYWARD_CAVE: Location = {
                 },
             ],
         },
-        { name: 'B1F', map: waywardCaveB1f, encountersKey: 'wayward-cave-b1f' },
+        {
+            name: 'B1F',
+            map: waywardCaveB1f,
+            mapAnchor: MapAnchor.Bottom,
+            encountersKey: 'wayward-cave-b1f',
+        },
     ],
 };
 

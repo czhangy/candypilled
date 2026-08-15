@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
+import { MapAnchor } from '@/lib/static/enums';
 import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import styles from './LocationMap.module.scss';
@@ -15,6 +16,7 @@ type LocationMapProps = {
     isBattleDefeated: (battle: Battle) => boolean;
     isBattleNextPB: (battle: Battle) => boolean;
     map: StaticImageData;
+    mapAnchor: MapAnchor;
     onBattleClick: (battle: Battle) => void;
     priority: boolean;
     selectedBattle?: Battle;
@@ -28,6 +30,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
     isBattleDefeated,
     isBattleNextPB,
     map,
+    mapAnchor,
     onBattleClick,
     priority,
     selectedBattle,
@@ -43,10 +46,14 @@ const LocationMap: React.FC<LocationMapProps> = ({
     // -------------------------------------------------------------------------
 
     const [pan, setPan] = useState({ x: 0, y: 0 });
-    const [prevMap, setPrevMap] = useState(map);
+    // Seeded as `null` rather than `map`, so the `map !== prevMap` check
+    // below is true on the very first render too, applying `mapAnchor`
+    // immediately instead of only on a later map change.
+    const [prevMap, setPrevMap] = useState<StaticImageData | null>(null);
     const [prevSelectedBattle, setPrevSelectedBattle] = useState<
         Battle | undefined
     >(undefined);
+    const [pendingCenterAnchor, setPendingCenterAnchor] = useState(false);
     const [isDragging, setIsDragging] = useState(false);
     const [viewportSize, setViewportSize] = useState({ width: 0, height: 0 });
     const [previewPosition, setPreviewPosition] = useState<{
@@ -77,6 +84,41 @@ const LocationMap: React.FC<LocationMapProps> = ({
         return Math.min(0, Math.max(viewportLength - mapLength, pan));
     };
 
+    // Whether an anchor centers the map along a given axis, as opposed to
+    // pinning it to one edge of that axis. A centered axis can't be resolved
+    // without a real viewport measurement, so it's deferred (see the
+    // RENDERING section below).
+    const anchorCentersX = (anchor: MapAnchor): boolean =>
+        anchor === MapAnchor.Top ||
+        anchor === MapAnchor.Bottom ||
+        anchor === MapAnchor.Center;
+    const anchorCentersY = (anchor: MapAnchor): boolean =>
+        anchor === MapAnchor.Left ||
+        anchor === MapAnchor.Right ||
+        anchor === MapAnchor.Center;
+
+    // For an axis that isn't centered, expressed as an extreme value that
+    // clampPanAxis pins to the relevant edge regardless of viewport size, so
+    // it resolves immediately without waiting on a viewport measurement. A
+    // centered axis gets a placeholder `0` here, corrected once
+    // `pendingCenterAnchor` resolves.
+    const getAnchorPan = (anchor: MapAnchor): { x: number; y: number } => ({
+        x: anchorCentersX(anchor)
+            ? 0
+            : anchor === MapAnchor.TopRight ||
+                anchor === MapAnchor.BottomRight ||
+                anchor === MapAnchor.Right
+              ? -Infinity
+              : 0,
+        y: anchorCentersY(anchor)
+            ? 0
+            : anchor === MapAnchor.BottomLeft ||
+                anchor === MapAnchor.BottomRight ||
+                anchor === MapAnchor.Bottom
+              ? -Infinity
+              : 0,
+    });
+
     const formatCoordinate = (value: number): string => {
         const fixed = value.toFixed(1);
         return fixed.endsWith('.0') ? fixed.slice(0, -2) : fixed;
@@ -86,14 +128,18 @@ const LocationMap: React.FC<LocationMapProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
+    const hasMeasuredViewport =
+        viewportSize.width > 0 || viewportSize.height > 0;
+
     if (map !== prevMap) {
         setPrevMap(map);
-        setPan({ x: 0, y: 0 });
-    } else if (
-        selectedBattle !== prevSelectedBattle &&
-        (viewportSize.width > 0 || viewportSize.height > 0)
-    ) {
+        setPan(getAnchorPan(mapAnchor));
+        setPendingCenterAnchor(
+            anchorCentersX(mapAnchor) || anchorCentersY(mapAnchor)
+        );
+    } else if (selectedBattle !== prevSelectedBattle && hasMeasuredViewport) {
         setPrevSelectedBattle(selectedBattle);
+        setPendingCenterAnchor(false);
         if (selectedBattle) {
             const markerX = (selectedBattle.x / 100) * map.width;
             const markerY = (selectedBattle.y / 100) * map.height;
@@ -110,6 +156,16 @@ const LocationMap: React.FC<LocationMapProps> = ({
                 ),
             });
         }
+    } else if (pendingCenterAnchor && hasMeasuredViewport && !selectedBattle) {
+        setPendingCenterAnchor(false);
+        setPan((prevPan) => ({
+            x: anchorCentersX(mapAnchor)
+                ? (viewportSize.width - map.width) / 2
+                : prevPan.x,
+            y: anchorCentersY(mapAnchor)
+                ? (viewportSize.height - map.height) / 2
+                : prevPan.y,
+        }));
     }
 
     const displayPan = {

@@ -2,7 +2,7 @@ import {
     lakeValorPostSpearPillar,
     lakeValorPreSpearPillar,
 } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata } from '@/lib/static/enums';
+import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_VALOR: Location = {
@@ -11,6 +11,7 @@ const LAKE_VALOR: Location = {
         {
             name: 'Pre-Spear Pillar',
             map: lakeValorPostSpearPillar,
+            mapAnchor: MapAnchor.Top,
             battles: [
                 {
                     metadata: [BattleMetadata.Optional],
@@ -35,6 +36,7 @@ const LAKE_VALOR: Location = {
         {
             name: 'Post-Spear Pillar',
             map: lakeValorPreSpearPillar,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'lake-valor-area',
         },
     ],

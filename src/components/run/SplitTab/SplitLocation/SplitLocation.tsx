@@ -6,6 +6,7 @@ import ChevronIcon from '@/lib/icons/ChevronIcon';
 import {
     BattleMetadata,
     EncounterMethod,
+    MapAnchor,
     PokemonStatus,
 } from '@/lib/static/enums';
 import {
@@ -72,6 +73,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
 
     type Section = {
         map?: StaticImageData;
+        mapAnchor: MapAnchor;
         battles: Battle[];
         encounters?: Encounter[];
     };
@@ -375,25 +377,30 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const encounter = run.caughtPokemon.find(
         (caught) => caught.location === location.name
     )?.slug;
-    const activeSubarea = location.subareas?.[selectedSubareaIndex];
-    const section: Section = activeSubarea
-        ? {
-              map: activeSubarea.map,
-              battles:
-                  location.hideBattles || activeSubarea.hideBattles
-                      ? []
-                      : (activeSubarea.battles ?? []),
-              encounters: activeSubarea.encountersKey
-                  ? game.encounters[activeSubarea.encountersKey]
-                  : undefined,
-          }
-        : {
-              map: location.map,
-              battles: location.hideBattles ? [] : (location.battles ?? []),
-              encounters: location.encountersKey
-                  ? game.encounters[location.encountersKey]
-                  : undefined,
-          };
+    let section: Section;
+    if (location.subareas) {
+        const subarea = location.subareas[selectedSubareaIndex];
+        section = {
+            map: subarea.map,
+            mapAnchor: subarea.mapAnchor,
+            battles:
+                location.hideBattles || subarea.hideBattles
+                    ? []
+                    : (subarea.battles ?? []),
+            encounters: subarea.encountersKey
+                ? game.encounters[subarea.encountersKey]
+                : undefined,
+        };
+    } else {
+        section = {
+            map: location.map,
+            mapAnchor: location.mapAnchor,
+            battles: location.hideBattles ? [] : (location.battles ?? []),
+            encounters: location.encountersKey
+                ? game.encounters[location.encountersKey]
+                : undefined,
+        };
+    }
     const isStarterEncounter = selectedEncounter
         ? selectedEncounter.method === EncounterMethod.Starter
         : !!encounter &&
@@ -512,6 +519,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                     isBattleDefeated={isBattleDefeated}
                                     isBattleNextPB={isBattleNextPB}
                                     map={section.map}
+                                    mapAnchor={section.mapAnchor}
                                     onBattleClick={(battle: Battle) => {
                                         setSelectedBattle(battle);
                                         onSelectBattleMarker(

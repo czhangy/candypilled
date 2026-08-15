@@ -1,10 +1,11 @@
 import { cafeCabin } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata } from '@/lib/static/enums';
+import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const CAFE_CABIN: Location = {
     name: 'Café Cabin',
     map: cafeCabin,
+    mapAnchor: MapAnchor.Center,
     battles: [
         {
             metadata: [BattleMetadata.Optional],

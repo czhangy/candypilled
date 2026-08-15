@@ -36,6 +36,18 @@ export enum BattleMetadata {
     TrueDouble = 'True Double',
 }
 
+export enum MapAnchor {
+    Bottom = 'Bottom',
+    BottomLeft = 'Bottom Left',
+    BottomRight = 'Bottom Right',
+    Center = 'Center',
+    Left = 'Left',
+    Right = 'Right',
+    Top = 'Top',
+    TopLeft = 'Top Left',
+    TopRight = 'Top Right',
+}
+
 export enum FieldCondition {
     // Fog that can't be cleared with Defog, as opposed to Fog — they share
     // an icon, but only Fog gets the tooltip noting it's removable.

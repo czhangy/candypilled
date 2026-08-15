@@ -1,10 +1,11 @@
 import { snowpointGym } from '@/lib/data/platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
+import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SNOWPOINT_GYM: Location = {
     name: 'Snowpoint Gym',
     map: snowpointGym,
+    mapAnchor: MapAnchor.Center,
     battles: [
         {
             metadata: [BattleMetadata.Optional],

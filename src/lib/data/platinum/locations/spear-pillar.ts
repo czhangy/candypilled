@@ -1,10 +1,11 @@
 import { spearPillar } from '@/lib/data/platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
+import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SPEAR_PILLAR: Location = {
     name: 'Spear Pillar',
     map: spearPillar,
+    mapAnchor: MapAnchor.Bottom,
     battles: [
         {
             metadata: [BattleMetadata.Double],
