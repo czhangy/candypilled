@@ -212,7 +212,7 @@ DataOverrides<PokemonData>; moves?: DataOverrides<MoveData> }` field.**
 | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 0     | Spreadsheet recon (structure/tabs/shape only)                                                                                                      | ✅ Done — see above                                                                                                                                                                                                                                                                                        |
 | 0.5   | Override/patch architecture (shared type + helper + wiring)                                                                                        | ✅ Done — see "Architecture" section above                                                                                                                                                                                                                                                                 |
-| 1     | `pokemon.ts` overrides — sparse stats/types/abilities/evolution diffs + dense per-species learnset                                                 | Not started                                                                                                                                                                                                                                                                                                |
+| 1     | `pokemon.ts` overrides — sparse stats/types/abilities/evolution diffs + dense per-species learnset                                                 | ✅ **DONE — full national dex (505 species+form entries) complete as of 2026-08-16.** See notes below for methodology/gotchas if extending or auditing this data.                                                                                                                                          |
 | 2     | `moves.ts` overrides — sparse move diffs from EVOLUTiON/TYPE/MOVES tab                                                                             | Not started                                                                                                                                                                                                                                                                                                |
 | 3     | ~~`items.ts`~~ — N/A, items unchanged, no override table                                                                                           | ✅ Done (nothing to author)                                                                                                                                                                                                                                                                                |
 | 4     | `encounters.ts` — wild encounter tables, fully independent dataset (must land before locations exist — see onboard-new-game skill sequencing note) | Not started                                                                                                                                                                                                                                                                                                |
@@ -225,6 +225,538 @@ DataOverrides<PokemonData>; moves?: DataOverrides<MoveData> }` field.**
 
 Working piece-by-piece per the user's explicit request — do not batch
 multiple phases into one pass without checking in between.
+
+## Phase 1 notes: STATS/LEARNSETS extraction methodology (from bulbasaur/ivysaur/venusaur)
+
+- **The STATS tab's CSV export has ambiguous column boundaries around the
+  ABILITIES section — don't trust naive CSV column-counting there.**
+  Merged header cells collapse in a way that makes it look like there are
+  3 sub-columns per version (Ability I / Ability II / Hidden) when the
+  real layout is 2 per version (Ability I / Ability II), and the visual
+  merge shifts which raw CSV cell holds which value. **Use the gviz JSON
+  endpoint instead of CSV when a tab's column mapping is unclear**:
+  `https://docs.google.com/spreadsheets/d/<id>/gviz/tq?gid=<gid>&tqx=out:json`
+  — its `table.cols[].label` field concatenates every merged header row
+  for that column into one string, which disambiguates instantly (confirmed
+  Complete-version Ability I = column index 43 (0-based), Ability II = 44,
+  by reading concatenated labels like `"ABILITIES ORIGINAL VERSION Ability
+I"`). The CSV endpoint stays useful for bulk data rows once you know the
+  real column indices; reach for gviz specifically to resolve a header
+  ambiguity, not as a full replacement.
+- **Renegade Platinum has NO hidden-ability mechanic at all — this is a
+  Gen 4 game, and Hidden Abilities weren't introduced until Gen 5.** An
+  earlier pass got this wrong: it read the STATS tab's "Ability I / Ability
+  II" pair as slot1+hidden and diffed it against vanilla's _Gen 5+_
+  `hidden` entry in `src/lib/data/raw/pokemon.json`, concluding
+  Bulbasaur/Ivysaur were unchanged (since that Gen 5+ entry already listed
+  Chlorophyll as their hidden ability) and only Venusaur needed an
+  override. **That comparison was against the wrong vanilla baseline.**
+  Vanilla Gen 4 Platinum only ever gives these three species ONE ability
+  (`slot1: overgrow`, no `slot2`) — the correct comparison baseline is
+  vanilla's Gen 1-4-appropriate entry, not its Gen 5+ hidden-ability
+  entry, since this hack never adds a hidden ability, it adds a real
+  second selectable ability slot. **Corrected:** all three species get a
+  real `abilities` override — `{ slot1: 'chlorophyll', slot2: 'overgrow'
+}` for Bulbasaur/Ivysaur, `{ slot1: 'thick-fat', slot2: 'overgrow' }`
+  for Venusaur. **Never write a `hidden` field into an RP abilities
+  override — always `slot1`/`slot2`, and always diff against vanilla's
+  Gen ≤4 entry, never its Gen 5+ one.** More generally: when diffing any
+  field against vanilla to decide whether it needs an override, diff
+  against the vanilla value _as of this game's own generation_ (use
+  `GenerationHelpers.resolveGeneration`-equivalent reasoning — the entry
+  that would actually resolve for `generation: 4`), not just "does any
+  entry in vanilla's array already contain this value somewhere."
+- **Learnset is the one field that does NOT get this diff treatment** —
+  per the user's explicit "all Pokémon have learnset changes," every
+  species gets a `learnset` override entry unconditionally, sourced
+  directly from the LEARNSETS tab (level-up + TMs/HMs + tutor sections,
+  see the tab's row layout: rows 2-23 level-up, 24-88 TMs/HMs, 89-110
+  tutor, 0-indexed within the parsed CSV). No vanilla-equality check is
+  done for this field. Move names from the sheet map to this app's move
+  slugs by simple kebab-casing (verified against
+  `src/lib/data/raw/moves.json` for every move used in the first 3
+  species — direct lowercase-and-hyphenate, no aliasing/renaming needed
+  so far; keep verifying per-move as new ones show up rather than
+  assuming this always holds).
+- **The override's `learnset`/`stats`/`abilities`/`types` arrays are
+  always written as a single-entry array with `fromGeneration: 4` (or
+  `versionGroup: 'renegade-platinum'` for learnset)** — RP doesn't carry
+  its own multi-generation history, so there's no reason to preserve
+  vanilla's older `fromGeneration` entries for an overridden field; the
+  override fully replaces the array (`DataOverrideHelpers.applyOverrides`
+  does a shallow top-level-field replace, not a deep/append merge), and
+  `GenerationHelpers.resolveGeneration`/the `versionGroup` exact-match in
+  `PokemonHelpers.getPokemonLearnset` both resolve a single
+  gen-4/renegade-platinum entry correctly since every RP lookup passes
+  `game.generation = 4` / `game.version = 'renegade-platinum'`.
+- Verified end-to-end (after the abilities correction above): ran the real
+  `applyOverrides` logic against the actual vanilla `pokemon.json` + the
+  authored `pokemon-overrides.json` and confirmed final merged abilities
+  are `{slot1: chlorophyll, slot2: overgrow}` for bulbasaur/ivysaur and
+  `{slot1: thick-fat, slot2: overgrow}` for venusaur (no `hidden` field
+  anywhere), stats/types inherited from vanilla untouched for
+  bulbasaur/ivysaur, venusaur's stats overridden, and all three carry
+  their own 50/51/61-move RP learnset. `tsc --noEmit` and `eslint` both
+  clean after authoring.
+- **Species #4-6 (charmander/charmeleon/charizard) confirmed the same
+  "vanilla Gen 4 only ever has one ability slot" pattern holds broadly, not
+  just for the Gen 1 starters** — Charmander/Charmeleon both get a real
+  `abilities` override (`{slot1: 'solar-power', slot2: 'blaze'}`), same
+  shape as Bulbasaur/Ivysaur's fix.
+- **Charizard is the first species so far with a genuine stat AND type
+  change on top of the ability change** — Complete-version SpA is 110 vs
+  vanilla's Gen-4-resolved 109 (vanilla's `fromGeneration: 2` stats entry,
+  not its `fromGeneration: 1` entry — **always resolve vanilla's baseline
+  the same way `GenerationHelpers.resolveGeneration` would for
+  `generation: 4`, i.e. the latest entry with `fromGeneration <= 4`, not
+  just the first entry in the array**, or a stat that was already revised
+  between Gen 1 and Gen 2 will look like a false-positive RP change).
+  Charizard's Complete-version secondary type is also swapped from Flying
+  to Dragon (`types: [{fromGeneration: 4, types: ['fire', 'dragon']}]`) and
+  ability is Levitate/Blaze instead of the Solar Power/Blaze pattern its
+  pre-evolutions get — every field genuinely diverges per species, don't
+  assume a whole evolution line shares the same override shape.
+- **The STATS tab's raw text can contain literal stray Unicode artifacts**
+  (Charizard's Complete Type II cell was `"DRAGON ឵"` — a combining
+  character glued onto the real value) — always sanity-check an unusual-
+  looking cell value before writing it verbatim into an override; strip to
+  the real value (`dragon`).
+- **The gviz JSON endpoint's `cols[].label` header text can be off by one
+  column from where the actual row data lives, for some sections but not
+  others** (confirmed: TYPE section data is one column to the right of
+  where its own header labels claim; ABILITIES section data lines up
+  exactly with its labels). Cross-checking a header-labeled column against
+  a row already known to have a distinctive value (e.g. Bulbasaur's known
+  Grass/Poison typing) before trusting a new column mapping is worth doing
+  every time a new section is read for the first time, not just once.
+- **A double annotation `(!!)` (vs. the single `(!)` seen so far) shows up
+  on some learnset entries** (e.g. Charmander/Charmeleon's `TM59 Dragon
+Pulse (!!)` appended after the normal numeric TM order, Charizard's
+  `TM88 Hurricane (!!)` and tutor `Draco Meteor (!!) COM`) — treated the
+  same as any other learnset entry (just strip the annotation and any
+  trailing version tag like `COM`), no special handling needed since
+  learnset is unconditionally overridden regardless of annotation anyway.
+  Kept for awareness in case `(!!)` turns out to matter for a
+  non-learnset field later.
+
+## Phase 1 workflow calibration (user-confirmed, 2026-08-16)
+
+- **No shortcut rule exists for stats/types — keep diffing every species
+  individually against vanilla's Gen-4-resolved baseline.** Explicitly
+  asked and confirmed: unlike abilities/learnset, there's no "usually
+  changed" or "usually unchanged" heuristic to lean on for these two
+  fields. Don't skip the vanilla cross-check for stats/types even after
+  seeing a run of unchanged species.
+- **`catchRate` is also in scope for diffing, starting with the batch
+  after dex #51 (added 2026-08-16, per user request) — do NOT backfill
+  dex #1-51, they were confirmed done before this field was added.**
+  Confirmed rarer than stats/abilities changes, but real when it happens —
+  diff the sheet's `CATCH RATE` column (Complete version) against
+  vanilla's `catchRate` the same way as any other field, and include it in
+  the per-batch diff summary when it differs.
+- **`wildHeldItems` is also in scope for diffing, starting with the batch
+  after dex #151 (added 2026-08-16, per user request) — do NOT backfill
+  dex #1-151, they were confirmed done before this field was added.**
+  Diff the sheet's STATS-tab `ITEM HELDS` / `Item Helds 1` / `Item Helds
+2` columns (Complete version) against vanilla's `PokemonData.wildHeldItems`
+  (an item-slug array, absent for most species). Was blank for every
+  species checked in dex #1-151 (no evidence yet either way on whether
+  this hack changes it), so there's no established pattern for how
+  common/rare a real change here is — treat it like stats/types, not like
+  the "usually unchanged" abilities/learnset fields, until real data says
+  otherwise. See `PokemonHelpers`/`EncounterRow.tsx` for how this field is
+  actually consumed (only matters for Grass/Surf/Cave/Rod/Walking/Honey-
+  Tree/Binoculars/Feebas-Tile encounter methods — eggs, gifts, starters,
+  static encounters, fossils, and trades never roll for it) if it's ever
+  useful to double-check a suspicious value against how/where it'd
+  actually surface in-game.
+- **Batch size is 20 species per pass** (bumped up from 3 once the
+  process was verified end-to-end) — the per-batch round-trip overhead
+  was the main cost once the sheet's column-mapping ambiguities were
+  resolved, not correctness risk.
+- **At the end of every batch, summarize the non-learnset diffs found**
+  (stats/types/abilities/evolution changes) back to the user — learnset is
+  excluded from this summary since it's unconditionally overridden for
+  every species and isn't informative to call out per-batch.
+- **STATS and LEARNSETS tabs are confirmed fully populated for the whole
+  dex** (not just early species) — safe to pull full-tab data once and
+  slice out whatever species range is needed per batch, rather than
+  re-fetching per batch.
+- **"Run a batch" means run it end-to-end in one pass — extraction, vanilla
+  diffing, JSON authoring, merge into the real `pokemon-overrides.json`,
+  `tsc`/merge verification, AND the diff summary — not a step the user
+  needs to separately say "continue" through.** The only reason to stop
+  mid-batch is a genuine data anomaly (a value that looks wrong/
+  inconsistent, like the Weedle case below) — never stop just to report
+  routine progress. (Mid-batch pauses seen in this session's history were
+  forced by an external usage-limit checkpoint system, not a workflow
+  choice — that constraint is outside either party's control and isn't
+  something to plan around or apologize for; just resume the batch the
+  moment control returns.)
+- **A real sheet data error was caught and corrected in batch 2**: Weedle's
+  Complete-version Ability II showed "Shed Skin" instead of its own
+  vanilla ability "Shield Dust" (Shed Skin belongs to its evolution
+  Kakuna, not Weedle) — confirmed with the user as a genuine sheet
+  mistake, not a real hack change. **This is exactly the kind of thing
+  that justifies stopping a batch mid-way to ask** — an ability value that
+  doesn't match the evolution line's own established "kept" ability
+  (compare against the species' sibling/pre-evolution in the same batch,
+  not just vanilla) is a red flag worth a second look before writing it in.
+- **Batch 2 confirmed a second-slot ability value is NOT automatic
+  evidence of a change** — Pidgey/Pidgeotto/Pidgeot and Ekans/Arbok both
+  show two abilities in the sheet's Complete columns with **no `(!)`
+  marker on either**, and both turned out to exactly match vanilla's own
+  already-dual ability set (Pidgey line has had Keen Eye/Tangled Feet
+  since Gen 4 itself, not just Gen 5+; Ekans line has had Intimidate/Shed
+  Skin since Gen 1). **Always diff the sheet's slot1+slot2 pair against
+  vanilla's own Gen-4-resolved abilities entry, field by field — a `(!)`
+  marker is a decent hint but the only real signal is the actual value
+  comparison.** **Correction (caught by the user after this note was first
+  written):** the actual rule is "does vanilla already have a `slot2` at
+  all," not "do the sheet's two values differ." Metapod/Kakuna both show
+  the _same_ value in Ability I and Ability II (`Shed Skin`/`Shed Skin`),
+  and an earlier pass wrongly treated that as "just visual duplication of
+  a single ability, skip it." That was wrong — vanilla Metapod/Kakuna only
+  ever have `slot1` (no `slot2` field at all, not even a Gen 5+ hidden
+  entry), so the sheet showing a value in _both_ columns means Complete RP
+  formally grants a second ability slot, even though it happens to resolve
+  to the same move (Shed Skin is their only real ability either way). This
+  is a real 1-slot→2-slot structural change and needs an override
+  (`{slot1: 'shed-skin', slot2: 'shed-skin'}`), same as any other new
+  slot2. **The correct check is always: does vanilla's Gen-4-resolved
+  `abilities` entry have a `slot2` key at all? If not, and the sheet's
+  Complete row has both Ability I and Ability II populated (regardless of
+  whether they're equal), that's a change** — don't shortcut based on
+  value equality.
+
+## Batch 3 notes (dex #27-51)
+
+- **A real, dex-wide Fairy-type retrofit is underway** — Clefairy/Clefable,
+  Ninetales, and the Jigglypuff line all gain Fairy typing in Complete
+  (either becoming pure Fairy or adding it as a second type). Expect this
+  pattern to keep appearing for other Gen 1-5 Fairy-eligible species later
+  in the dex — don't treat each occurrence as a one-off surprise.
+- **Ability slot order can legitimately differ from vanilla's own
+  slot1/slot2 assignment even when the same two abilities are involved** —
+  Venonat/Venomoth have vanilla `{slot1: compound-eyes/shield-dust, slot2:
+tinted-lens}`, but the sheet lists them in the opposite order for
+  Complete. Write it exactly as the sheet presents it (don't "correct" the
+  order to match vanilla's convention) — this is a case where matching the
+  literal source, not the underlying ability _set_, is what the override
+  should capture.
+- **Correction: Oddish's evolution level does NOT change — an earlier pass
+  in this doc wrongly claimed it did and shipped a bad `evolutionLine`
+  override (since reverted).** The sheet's Gloom row literally reads
+  `"#043 Lv. 22 - Can evolve into #045, #182"`, confirmed byte-identical
+  on a fresh re-fetch (ruling out a stale-cache explanation) — but the
+  user confirmed directly **this specific cell is simply wrong in the
+  sheet itself** (a real authoring error in the user's source document,
+  not a misread on this session's part). Resolved, closed, no further
+  action — don't re-investigate this specific cell again. **The general
+  lesson still stands though**: when a species-level claim about "the
+  sheet says X" conflicts with what the user says, trust the user
+  immediately and move on rather than re-arguing the cached reading — the
+  sheet itself can simply be wrong sometimes (this is the second confirmed
+  sheet error found so far, after Weedle's ability in batch 2). No
+  `evolutionLine` override needed for Oddish/Gloom/Vileplume — they
+  inherit vanilla's evolution methods
+  unchanged, same as every other species checked so far this phase.
+- **A raw sheet cell can be missing spaces entirely** (`TM85DazzlingGleam(!!)`
+  for Ninetales, should read `TM85 Dazzling Gleam (!!)`) — another sheet
+  formatting glitch, not a data anomaly worth stopping for; just sanitize
+  and move on (matches the earlier Charizard stray-Unicode-character
+  precedent — cross-checking odd-looking raw cells before trusting them
+  verbatim keeps paying off).
+- Used an automated stats/types/abilities diff script (compare sheet's
+  Complete values against vanilla's Gen-4-resolved entry) rather than
+  manual eyeballing for this batch — much faster and confirmed reliable;
+  worth continuing this approach for future batches rather than reverting
+  to manual comparison.
+
+## Batch 4 notes (dex #52-76)
+
+- **This hack removes trade-evolutions entirely, replacing them with
+  level-up 36** — confirmed for Kadabra→Alakazam, Machoke→Machamp,
+  Graveler→Golem (all previously `trigger: 'trade'` in vanilla, all marked
+  with `(!)` in the sheet's evolution column and read as `"Lv. 36"`).
+  **Expect this pattern for every other remaining trade-evolution species
+  later in the dex** (Haunter→Gengar, Kadabra/Machoke/Graveler's family
+  already done, Boldore→Gigalith-equivalents, etc., and any trade-with-item
+  evolutions like Poliwhirl→Politoed) — check for a `(!)` on the evolution
+  cell as the signal, but confirm the actual vanilla trigger was `trade`
+  before writing the override (don't assume `(!)` always means "was a
+  trade evolution," just that _something_ changed).
+- **Ability slot order continuing to differ from vanilla's own convention
+  is common, not a one-off** — Meowth/Persian (Technician/Pickup vs
+  vanilla's Pickup/Technician) and Abra's whole line (Magic
+  Guard/Synchronize replacing Synchronize/Inner Focus, reordered) both hit
+  this. Keep writing exactly what the sheet presents, per the Venonat
+  precedent in batch 3.
+- **First batch with `catchRate` actually in scope — zero changes found.**
+  Confirms the "rare" framing was accurate; don't let a clean batch make
+  the check feel pointless, still worth keeping in the automated diff
+  script going forward since it's now free (same script pass).
+
+## Batch 5 notes (dex #77-151) — Gen 1 complete
+
+- **This hack also lowers several vanilla evolution levels, not just
+  removes trade evolutions** — confirmed for Ponyta→Rapidash (40→35),
+  Slowpoke→Slowbro (37→33), Grimer→Muk (38→35), Rhyhorn→Rhydon (42→36),
+  Omanyte→Omastar and Kabuto→Kabutops (both 40→30), on top of
+  Gastly-line's trade→Lv36 (same pattern as batch 4's trade removals). All
+  were marked `(!)` in the sheet's evolution cell — **that annotation is a
+  reliable signal for evolution changes specifically** (unlike its mixed
+  reliability for abilities), but always verify against vanilla's actual
+  trigger/level before writing the override, same discipline as every
+  other field.
+- **Resolved: Mew's TM/HM column read `"ALL"` instead of listing moves**
+  (a real in-game trait — Mew learns every TM/HM). Since this app's
+  `LearnsetMove` type has no wildcard concept, the user supplied the full
+  TM01-TM92 + HM01-HM08 name list directly (this game's real TM/HM
+  roster/locations, from the iTEMS/TMs tab) and it's now fully written
+  into Mew's `machine`-method moves (100 entries) — no remaining gap.
+  **This TM/HM name list is the authoritative roster for the whole game,
+  not just Mew** — worth reusing directly (rather than re-deriving TM
+  names from each individual species' own learnset rows) whenever a
+  species' TM column needs cross-checking, and it's exactly the source
+  `iTEM/TMs` tab work (Phase 3 predecessor, item locations) would need
+  too. TM/HM number-to-move-name mapping (Complete version, current as of
+  2026-08-16):
+    ```
+    TM01 Focus Punch      TM24 Thunderbolt     TM47 Steel Wing      TM70 Flash
+    TM02 Dragon Claw      TM25 Thunder         TM48 Skill Swap      TM71 Stone Edge
+    TM03 Water Pulse      TM26 Earthquake      TM49 Snatch          TM72 Avalanche
+    TM04 Calm Mind        TM27 Return          TM50 Overheat        TM73 Thunder Wave
+    TM05 Roar             TM28 Dig             TM51 Roost           TM74 Gyro Ball
+    TM06 Toxic            TM29 Psychic         TM52 Focus Blast     TM75 Swords Dance
+    TM07 Hail             TM30 Shadow Ball     TM53 Energy Ball     TM76 Stealth Rock
+    TM08 Bulk Up          TM31 Brick Break     TM54 False Swipe     TM77 Psych Up
+    TM09 Bullet Seed      TM32 Double Team     TM55 Scald           TM78 Captivate
+    TM10 Hidden Power     TM33 Reflect         TM56 Fling           TM79 Dark Pulse
+    TM11 Sunny Day        TM34 Shock Wave      TM57 Wild Charge     TM80 Rock Slide
+    TM12 Taunt            TM35 Flamethrower    TM58 Endure          TM81 X-Scissor
+    TM13 Ice Beam         TM36 Sludge Bomb     TM59 Dragon Pulse    TM82 Sleep Talk
+    TM14 Blizzard         TM37 Sandstorm       TM60 Drain Punch     TM83 Hyper Voice
+    TM15 Hyper Beam       TM38 Fire Blast      TM61 Will-O-Wisp     TM84 Poison Jab
+    TM16 Light Screen     TM39 Rock Tomb       TM62 Bug Buzz        TM85 Dazzling Gleam
+    TM17 Protect          TM40 Aerial Ace      TM63 Embargo         TM86 Grass Knot
+    TM18 Rain Dance       TM41 Torment         TM64 Explosion       TM87 Swagger
+    TM19 Giga Drain       TM42 Facade          TM65 Shadow Claw     TM88 Hurricane
+    TM20 Safeguard        TM43 Secret Power    TM66 Payback         TM89 U-turn
+    TM21 Frustration      TM44 Rest            TM67 Recycle         TM90 Substitute
+    TM22 Solar Beam       TM45 Attract         TM68 Giga Impact     TM91 Flash Cannon
+    TM23 Iron Tail        TM46 Thief           TM69 Rock Polish     TM92 Trick Room
+
+    HM01 Cut    HM02 Fly    HM03 Surf       HM04 Strength
+    HM05 Defog  HM06 Rock Smash  HM07 Waterfall  HM08 Rock Climb
+    ```
+- **A batch-wide automated diff script (stats/types/abilities/catchRate
+  vs. vanilla's Gen-4-resolved values, all four in one pass) is now the
+  standard approach** — much faster than per-species manual comparison for
+  a 75-species batch, and reliable as long as ability-name→slug conversion
+  bugs are caught (see below). Recommend continuing this for all future
+  batches rather than manual review.
+- **A slug-conversion bug can produce a false-positive diff, not just a
+  missing-slug error** — `"Lightningrod"` (sheet's one-word style, no
+  hyphen) initially slugged to `lightningrod` instead of `lightning-rod`,
+  which made Cubone/Marowak's abilities look changed when they actually
+  matched vanilla exactly once fixed. **Whenever the automated diff script
+  flags an ability/move as changed, sanity-check that the slug conversion
+  itself isn't the actual source of the "difference"** before writing the
+  override — this is the third one-word-sheet-name conversion bug found
+  after `Compoundeyes` and `Ancientpower`; expect more like it and keep
+  extending the `IRREGULAR` slug map rather than assuming each one is a
+  one-off.
+
+## Batch 6 notes (dex #152-251) — Gen 2 complete
+
+- **The STATS tab's `ITEM HELDS`/`Item Helds 1`/`Item Helds 2` columns have
+  the same +1 CSV/gviz column offset bug as the TYPE section** (see batch
+  3's note on this general phenomenon) — the true data columns are 47 and
+  49 (0-indexed), not 46/48 as the gviz header labels claim. Verified
+  empirically against Chansey's known vanilla item (Lucky Punch) before
+  trusting it. **Re-verify empirically like this any time a new STATS-tab
+  section is read for the first time** — don't trust header-label column
+  indices at face value.
+- **Item-held cells include a probability suffix** (e.g. `"Lucky Punch -
+50%"`, `"Moon Stone - 5%"`) that must be stripped before slugging — the
+  percentage isn't represented in `PokemonData.wildHeldItems` (a plain
+  slug array, no probability weighting in this app's model), so it's
+  discarded, not stored anywhere.
+- **A blank `ITEM HELDS` cell is being treated as "this hack removed the
+  wild-held item," not "not yet documented"** — consistent with the
+  established "STATS/LEARNSETS tabs are fully populated for the whole
+  dex" finding. This surfaced a real, fairly common pattern this batch:
+  several species (Sentret, Furret, Pichu, Sunkern, Girafarig, Phanpy,
+  Donphan, Smoochum, and partial losses for Cleffa/Blissey/Sneasel) lost
+  a vanilla wild-held item entirely. Skarmory is the inverse case — vanilla
+  has no wild-held item at all, and Complete adds Metal Coat. This
+  wasn't an explicit item in the original "what changes" scope discussion
+  but follows directly from the same field now being in scope (see the
+  `wildHeldItems` diffing note above) — flag to the user if this volume of
+  change feels surprising, but the mechanism (diff sheet vs. vanilla,
+  write only what differs) is the same as every other field.
+- **This hack converts essentially every remaining trade-evolution into an
+  item-use evolution** (extending the pattern first seen in batch 4/5) —
+  confirmed this batch for Poliwhirl→Politoed, Slowpoke→Slowking,
+  Onix→Steelix, Scyther→Scizor, Seadra→Kingdra, Porygon→Porygon2, plus
+  Eevee→Espeon/Umbreon converting from vanilla's friendship+time-of-day
+  trigger to a stone item-use trigger. **By this point, assume every
+  remaining trade or friendship/time-gated evolution in the rest of the
+  dex will follow the same conversion pattern** — it's no longer a
+  surprising one-off, it's this hack's standing design choice for
+  removing multiplayer-dependent and RTC-dependent evolution requirements.
+- **Real, load-bearing discovery: several of these evolution chains reach
+  BACK into already-committed species from earlier batches, and required
+  cross-batch patches** — e.g. adding the Politoed branch meant updating
+  Poliwag's and Poliwhirl's `evolutionLine` overrides (both from batch 2,
+  which had no evolution override at all before now, since nothing was
+  flagged as changed for them at the time). Same for Slowpoke/Slowbro
+  (batch 5), Onix (batch 4), Scyther/Horsea/Seadra/Porygon/Eevee/Vaporeon/
+  Jolteon/Flareon (batch 5). **This is a deliberate, necessary exception
+  to the "no backfill" rule used for field-scope additions
+  (catchRate/wildHeldItems)** — those were about a NEW FIELD not being
+  checked retroactively; this is a data-correctness requirement of the
+  species actually being touched in the current batch (the vanilla data
+  model duplicates a whole evolution chain onto every member species, so
+  every member's copy has to agree, regardless of which batch each member
+  was originally authored in). **When a later batch adds a new branch to
+  an evolution chain, always check whether earlier-batch chain members
+  need the same patch — don't assume "already done" species are exempt.**
+- **This app's own shared vanilla `pokemon.json` has real, pre-existing
+  gaps for trade-evolution chains** — Onix, Scyther, Porygon all show a
+  completely empty `evolvesTo` in vanilla (Steelix/Scizor/Porygon2 aren't
+  modeled at all, not even with a `trade` trigger), and Eevee's vanilla
+  entry is missing Espeon/Umbreon entirely (only Vaporeon/Jolteon/Flareon
+  present). This isn't an RP bug to fix — vanilla's own dataset was
+  seemingly never populated for trade-evolution branches project-wide.
+  The RP override still had to be built from real, well-established
+  Pokémon mechanics knowledge (not from a vanilla template that doesn't
+  exist), which is fine — it's just worth knowing the vanilla gap exists
+  in case it matters for a non-RP game later.
+- **Two gaps found this batch, both resolved:**
+    1. **Unown's catch rate** — blank in the sheet; user supplied the real
+       value directly (255), written to `unown.catchRate` in the override.
+    2. **`sketch` didn't exist anywhere in this app's shared
+       `src/lib/data/raw/moves.json`** — added a real `MoveData` entry
+       (PokeAPI move id 166, category `status`, PP 1, power/accuracy
+       `null`, `introducedInGeneration: 2`) to the shared vanilla move
+       dataset (864 moves now, affects every game, not just RP — this was
+       a genuine pre-existing gap in shared data). Smeargle's learnset now
+       has its real 20 level-up Sketch entries (levels 1, 6, 11, ... 96,
+       every 5 levels) restored — it has no TMs or tutor moves at all,
+       which matches real Smeargle's famously restricted movepool, not a
+       missed extraction.
+
+## Batch 7 notes (dex #252-386) — Gen 3 complete
+
+- **This app's shared vanilla `pokemon.json` has a much broader
+  "non-level-up evolution not modeled" gap than previously known** — every
+  species checked this batch with a level-up-only, item-use, or
+  friendship evolution beyond simple level-up (Aron, Meditite, Wailmer,
+  Trapinch, Baltoy, Lileep, Anorith, Feebas, Shuppet, Duskull, Snorunt,
+  Spheal, Clamperl, Roselia) showed a **completely empty `evolvesTo`** in
+  vanilla, not just the trade-evolution cases found in Gen 2. **This
+  confirms the vanilla dataset's evolution modeling is broadly incomplete
+  project-wide, not a trade-evolution-specific gap** — when a species'
+  vanilla `evolvesTo` is empty, that's a signal to build the RP override
+  from real, well-established Pokémon mechanics knowledge, not necessarily
+  evidence the evolution itself doesn't exist in vanilla Platinum.
+- **Continuing the "lower a high vanilla evolution level" and "trade →
+  item-use" patterns are now clearly this hack's standing design
+  philosophy, not isolated cases** — hit ~13 more evolution changes this
+  batch alone, all fitting one of the two patterns (see diff summary).
+  Expect this to keep happening for the rest of the dex; verifying against
+  real Pokémon evolution facts (widely stable, well-known info) remains
+  necessary per species, but the _shape_ of the change is no longer a
+  surprise.
+- **A `(!)`-marked evolution cell can be missing its move/item name
+  entirely** — Surskit's TM/HM list had a bare `"HM07 (!!)"` cell with no
+  move name. Resolved by cross-referencing the already-documented TM/HM
+  number→name table in this doc (HM07 = Waterfall) rather than guessing —
+  **that reference table is exactly why it was worth saving in batch
+  5/Mew's fix**, this is a second real payoff from having it. Flagged to
+  the user for awareness (not asked to confirm, since the reference table
+  made it unambiguous) — same category of sheet glitch as
+  `Compoundeyes`/`Ancientpower`/`Lightningrod`/`TM85DazzlingGleam`, just
+  missing the name outright instead of missing a space.
+- **New pattern: a Bug-type addition wave hit the Trapinch family**
+  (Ground→Bug/Ground, Ground/Dragon→Bug/Dragon) — the first non-Fairy
+  type-addition wave seen so far. Don't assume every future type-addition
+  pattern will be Fairy-flavored; keep checking each species' actual sheet
+  value rather than pattern-matching to Fairy by habit.
+- **Wild-held-item changes were unusually extensive and varied this
+  batch** — beyond simple berry swaps/removals, some species gained
+  unusual held items not typically seen as "wild held" in vanilla
+  mechanics at all (Zigzagoon/Linoone gaining Potion/Revive/Max Revive).
+  Trusted per the sheet since the "blank = removed, populated = real"
+  interpretation has held up consistently across batches — no reason to
+  second-guess an unusual-looking item value once the general mechanism
+  is this well-established.
+- **Resolved: Beldum, Metang, Metagross catch rates** — user supplied 45
+  for all three (blank in the sheet, same situation as Unown in batch 6),
+  written to their overrides.
+- Surskit's HM07→Waterfall inference (see above) was not separately
+  challenged by the user — treat as accepted, no further action needed.
+
+## Batch 8 notes (dex #387-493 + all alternate forms) — Phase 1 COMPLETE
+
+- **Critical bug caught mid-batch, worth internalizing for any future
+  large-scale STATS-tab read: species with multiple forms (Deoxys,
+  Wormadam, Rotom, Giratina, Shaymin) get EXTRA ROWS in the STATS tab and
+  EXTRA COLUMNS in the LEARNSETS tab that don't correspond 1:1 with dex
+  numbers.** A first pass assumed `row = 386 + (dexNumber - 387)` and got
+  badly misaligned data as a result (e.g. Turtwig showing vanilla ability
+  "blaze," which is Chimchar's) — a full 3-row shift caused by Deoxys's
+  Attack/Defense/Speed forms sitting between Deoxys-Normal (already done
+  in batch 7) and Turtwig. **The fix: never assume a fixed
+  row-per-dex-number mapping once you're in a batch that might contain
+  multi-form species — read the row/column LABEL text directly (e.g.
+  `"#413 Wormadam (P)"`) and match by that, not by position.** This
+  session caught it because the resulting diff was _implausible_
+  (Turtwig having Chimchar's ability makes no sense on inspection) — that
+  kind of sanity check is exactly what to watch for; don't just trust a
+  diff script's output mechanically once it's produced without a plausibility
+  pass, especially right after any batch-boundary or multi-form species.
+- **Full species+form count is 505, not 493** — the 493 "national dex"
+  figure only counts base species; Deoxys (+3 forms), Wormadam (+2 beyond
+  its base), Rotom (+5 forms), Giratina (+1), Shaymin (+1) each add extra
+  `PokemonData` entries in vanilla's own dataset (12 extra total,
+  493+12=505). All are now covered — the earlier Deoxys-Normal-only
+  coverage in batch 7 was incomplete; Deoxys-Attack/Defense/Speed were
+  filled in this batch as a bonus (turned out to have zero overrides
+  needed — Deoxys's forms are unchanged from vanilla in this hack).
+- **Evolution-item slugs used this batch (Protector, Electirizer,
+  Magmarizer, Dubious Disc, Reaper Cloth, Leaf Stone, Ice Stone) do NOT
+  exist in this app's shared `raw/items.json`.** Confirmed this is safe at
+  the type level — `EvolutionMethod.item` is a free-form slug string used
+  only for a title-cased display label and an icon path lookup
+  (`EvolutionHelpers`), never validated/joined against real `ItemData` — so
+  nothing breaks. But the icon images for these specific items likely
+  don't exist under `public/items/`, so their evolution-line UI may show a
+  broken/missing icon until Phase 3 (items) or a dedicated icon-asset pass
+  addresses it. Flagging as a known cosmetic gap, not a data-correctness
+  problem.
+- **Riolu→Lucario's friendship evolution has no explicit numeric threshold
+  in the sheet** (just "Level up when friendship high," same as several
+  earlier friendship evolutions) — used this app's existing convention of
+  `minHappiness: 220` (matching Pichu's/other friendship evolutions
+  already in the vanilla dataset) rather than inventing a different
+  number. If a future species' sheet text ever gives an explicit
+  friendship number, use that instead of defaulting to 220.
+- **Arceus's TM/HM learnset used an "ALL except: [list]" sheet format**
+  (different from Mew's flat "ALL") — computed by taking the full 92
+  TM/HM roster already saved in this doc (from Mew's fix) and subtracting
+  the 20 explicitly-listed exceptions, landing on 80 machine moves. This
+  is a second real payoff from saving that reference table — expect it to
+  keep being useful for any other species with a TM/HM shorthand notation.
+- **This is the last species batch — Phase 1 (`pokemon.ts` overrides) is
+  now fully complete for the entire dex.** Any future work on individual
+  species' data (a correction, a newly-discovered sheet error, extending
+  an evolution chain) should edit `raw/pokemon-overrides.json` directly
+  rather than re-running a whole batch pass. The next phases in the plan
+  table below (encounters, locations, battles, etc.) are unblocked to
+  start whenever the user wants to move on to them.
 
 ## Other open questions to resolve when their phase comes up
 
