@@ -394,6 +394,15 @@ export type Split = {
     saveCondition: SplitSaveCondition;
 };
 
+// A sparse, field-level patch keyed by slug — only entries that actually
+// differ from the base dataset are present, and only their changed fields.
+// Shared across every ROM-hack-style game that rebalances a subset of
+// species/moves rather than replacing the whole dataset (e.g. Renegade
+// Platinum), so the same override table doubles as both the input to
+// DataSourceHelpers.applyOverrides and the source of truth for a "what did
+// this game change" UI feature — the override's own keys are the diff.
+export type DataOverrides<T> = Record<string, Partial<T>>;
+
 // The species/move/item records a game's data pulls from. Every
 // unmodified game shares the same vanilla PokeAPI-sourced records; a game
 // whose data diverges from vanilla (e.g. a ROM hack) points at its own
@@ -403,6 +412,17 @@ export type GameDataSource = {
     pokemon: Record<string, PokemonData>;
     moves: Record<string, MoveData>;
     items: Record<string, ItemData>;
+    // Set only for a game whose pokemon/moves are vanilla data patched by a
+    // sparse diff (e.g. a ROM hack rebalance) — lets the UI surface
+    // exactly what this game changed, species/move by species/move, field
+    // by field. `pokemon`/`moves` above already reflect the *merged*
+    // result (every existing consumer keeps working unchanged); this is
+    // the same patch data kept around unmerged, purely for diff display.
+    // Omitted for every game whose dataset isn't derived this way.
+    overrides?: {
+        pokemon?: DataOverrides<PokemonData>;
+        moves?: DataOverrides<MoveData>;
+    };
 };
 
 export type Game = {
