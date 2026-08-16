@@ -59,6 +59,7 @@ const HallOfFameTab: React.FC<HallOfFameTabProps> = ({ game, run }) => {
         <div className={styles['hall-of-fame-tab']}>
             <HallOfFameCard
                 availablePokemon={run.caughtPokemon}
+                dataSource={game.dataSource}
                 generation={game.generation}
                 onSave={handleSave}
                 onUpdateTeam={handleUpdateTeam}

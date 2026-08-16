@@ -1,10 +1,11 @@
 import { MOVE_SLOT_COUNT } from '@/lib/static/constants';
-import { StatValues } from '@/lib/static/types';
+import { GameDataSource, StatValues } from '@/lib/static/types';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import TypeHelpers from '@/lib/utils/TypeHelpers';
 import styles from './MoveList.module.scss';
 
 type MoveListProps = {
+    dataSource: GameDataSource;
     generation: number;
     highlightDangerous: boolean;
     isReadOnly: boolean;
@@ -14,6 +15,7 @@ type MoveListProps = {
 };
 
 const MoveList: React.FC<MoveListProps> = ({
+    dataSource,
     generation,
     highlightDangerous,
     isReadOnly,
@@ -26,7 +28,12 @@ const MoveList: React.FC<MoveListProps> = ({
     // -------------------------------------------------------------------------
 
     const getMoveColor = (moveSlug: string): string | undefined => {
-        const type = MoveHelpers.getMoveType(moveSlug, generation, ivs);
+        const type = MoveHelpers.getMoveType(
+            dataSource,
+            moveSlug,
+            generation,
+            ivs
+        );
         return type ? TypeHelpers.getTypeColor(type) : undefined;
     };
 
@@ -41,7 +48,7 @@ const MoveList: React.FC<MoveListProps> = ({
                 (_, index) => moves[index] ?? ''
             ).map((moveSlug, index) => {
                 const moveName = moveSlug
-                    ? MoveHelpers.getMoveData(moveSlug)?.name
+                    ? MoveHelpers.getMoveData(dataSource, moveSlug)?.name
                     : undefined;
 
                 return !moveSlug || !moveName ? (
@@ -54,7 +61,10 @@ const MoveList: React.FC<MoveListProps> = ({
                                     styles['move-button'],
                                     styles['move-button--readonly'],
                                     highlightDangerous &&
-                                        MoveHelpers.isDangerousMove(moveSlug) &&
+                                        MoveHelpers.isDangerousMove(
+                                            dataSource,
+                                            moveSlug
+                                        ) &&
                                         styles['move-button--dangerous'],
                                 ]
                                     .filter(Boolean)
@@ -72,7 +82,10 @@ const MoveList: React.FC<MoveListProps> = ({
                                 className={[
                                     styles['move-button'],
                                     highlightDangerous &&
-                                        MoveHelpers.isDangerousMove(moveSlug) &&
+                                        MoveHelpers.isDangerousMove(
+                                            dataSource,
+                                            moveSlug
+                                        ) &&
                                         styles['move-button--dangerous'],
                                 ]
                                     .filter(Boolean)

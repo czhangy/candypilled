@@ -227,8 +227,9 @@ const CalcTab: React.FC<CalcTabProps> = ({
     const getSpeciesDefaultGender = (
         slug: string
     ): 'male' | 'female' | undefined => {
-        if (PokemonHelpers.isGenderless(slug)) return undefined;
-        return PokemonHelpers.getFixedGender(slug) ?? 'male';
+        if (PokemonHelpers.isGenderless(game.dataSource, slug))
+            return undefined;
+        return PokemonHelpers.getFixedGender(game.dataSource, slug) ?? 'male';
     };
 
     const padMoves = (moves: string[]): string[] =>
@@ -470,18 +471,24 @@ const CalcTab: React.FC<CalcTabProps> = ({
     // reflects whichever item is currently selected here rather than the
     // item stored on the original Pokémon.
     const attackerDisplaySlug = attacker.speciesSlug
-        ? PokemonHelpers.getDisplaySlug({
+        ? PokemonHelpers.getDisplaySlug(game.dataSource, {
               slug: attacker.speciesSlug,
               heldItem: attacker.heldItem
-                  ? ItemHelpers.getHeldItemSlugByName(attacker.heldItem)
+                  ? ItemHelpers.getHeldItemSlugByName(
+                        game.dataSource,
+                        attacker.heldItem
+                    )
                   : undefined,
           })
         : undefined;
     const defenderDisplaySlug = defender.speciesSlug
-        ? PokemonHelpers.getDisplaySlug({
+        ? PokemonHelpers.getDisplaySlug(game.dataSource, {
               slug: defender.speciesSlug,
               heldItem: defender.heldItem
-                  ? ItemHelpers.getHeldItemSlugByName(defender.heldItem)
+                  ? ItemHelpers.getHeldItemSlugByName(
+                        game.dataSource,
+                        defender.heldItem
+                    )
                   : undefined,
           })
         : undefined;
@@ -497,8 +504,10 @@ const CalcTab: React.FC<CalcTabProps> = ({
               level: attacker.level,
               nature: attacker.nature,
               species:
-                  PokemonHelpers.getPokemonData(attackerDisplaySlug ?? '')
-                      ?.name ?? attacker.speciesSlug,
+                  PokemonHelpers.getPokemonData(
+                      game.dataSource,
+                      attackerDisplaySlug ?? ''
+                  )?.name ?? attacker.speciesSlug,
               status: attacker.status,
           }
         : null;
@@ -513,14 +522,20 @@ const CalcTab: React.FC<CalcTabProps> = ({
               level: defender.level,
               nature: defender.nature,
               species:
-                  PokemonHelpers.getPokemonData(defenderDisplaySlug ?? '')
-                      ?.name ?? defender.speciesSlug,
+                  PokemonHelpers.getPokemonData(
+                      game.dataSource,
+                      defenderDisplaySlug ?? ''
+                  )?.name ?? defender.speciesSlug,
               status: defender.status,
           }
         : null;
 
     const playerBaseStats = attackerDisplaySlug
-        ? PokemonHelpers.getPokemonStats(attackerDisplaySlug, game.generation)
+        ? PokemonHelpers.getPokemonStats(
+              game.dataSource,
+              attackerDisplaySlug,
+              game.generation
+          )
         : undefined;
     const playerSpeed =
         playerBaseStats && playerInput
@@ -537,7 +552,11 @@ const CalcTab: React.FC<CalcTabProps> = ({
             : undefined;
 
     const trainerBaseStats = defenderDisplaySlug
-        ? PokemonHelpers.getPokemonStats(defenderDisplaySlug, game.generation)
+        ? PokemonHelpers.getPokemonStats(
+              game.dataSource,
+              defenderDisplaySlug,
+              game.generation
+          )
         : undefined;
     const trainerSpeed =
         trainerBaseStats && trainerInput
@@ -596,27 +615,35 @@ const CalcTab: React.FC<CalcTabProps> = ({
             type: 'LOAD',
             abilityName:
                 (caught.ability &&
-                    AbilityHelpers.getAbilityData(caught.ability)?.name) ??
+                    AbilityHelpers.getAbilityData(
+                        game.dataSource,
+                        caught.ability
+                    )?.name) ??
                 caught.ability ??
                 '',
             evs: StatHelpers.normalizeStats(caught.evs, 0),
             gender: caught.gender,
             heldItem:
                 (caught.heldItem &&
-                    ItemHelpers.getHeldItemData(caught.heldItem)?.name) ??
+                    ItemHelpers.getHeldItemData(
+                        game.dataSource,
+                        caught.heldItem
+                    )?.name) ??
                 caught.heldItem ??
                 '',
             ivs: StatHelpers.normalizeStats(caught.ivs, MAX_IV),
             level: caught.level,
             moves: padMoves(
                 caught.moves.map(
-                    (slug) => MoveHelpers.getMoveData(slug)?.name ?? slug
+                    (slug) =>
+                        MoveHelpers.getMoveData(game.dataSource, slug)?.name ??
+                        slug
                 )
             ),
             nature: caught.nature ?? Object.values(Nature)[0],
             speciesSlug: caught.slug,
         });
-    }, [caught, game.generation]);
+    }, [caught, game.dataSource, game.generation]);
 
     // On mon changing — the previously loaded ability/status/stat stages
     // belonged to a different (or no) team member.
@@ -630,14 +657,16 @@ const CalcTab: React.FC<CalcTabProps> = ({
             type: 'LOAD',
             abilityName:
                 (mon.ability &&
-                    AbilityHelpers.getAbilityData(mon.ability)?.name) ??
+                    AbilityHelpers.getAbilityData(game.dataSource, mon.ability)
+                        ?.name) ??
                 mon.ability ??
                 '',
             evs: StatHelpers.normalizeStats(mon.evs, 0),
             gender: mon.gender,
             heldItem:
                 (mon.heldItem &&
-                    ItemHelpers.getHeldItemData(mon.heldItem)?.name) ??
+                    ItemHelpers.getHeldItemData(game.dataSource, mon.heldItem)
+                        ?.name) ??
                 mon.heldItem ??
                 '',
             ivs: StatHelpers.normalizeStats(mon.ivs, MIN_IV),
@@ -646,16 +675,21 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 (
                     mon.moves ??
                     PokemonHelpers.getMovesAtLevel(
+                        game.dataSource,
                         mon.slug,
                         game.version,
                         mon.level
                     )
-                ).map((slug) => MoveHelpers.getMoveData(slug)?.name ?? slug)
+                ).map(
+                    (slug) =>
+                        MoveHelpers.getMoveData(game.dataSource, slug)?.name ??
+                        slug
+                )
             ),
             nature: mon.nature ?? Object.values(Nature)[0],
             speciesSlug: mon.slug,
         });
-    }, [mon, game.generation, game.version]);
+    }, [mon, game.dataSource, game.generation, game.version]);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -715,6 +749,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
 
     const handleAttackerSpeciesChange = (slug: string): void => {
         const abilitySlug = PokemonHelpers.getPokemonAbilities(
+            game.dataSource,
             slug,
             game.generation
         )?.slot1;
@@ -722,18 +757,21 @@ const CalcTab: React.FC<CalcTabProps> = ({
             type: 'SET_SPECIES',
             abilityName:
                 (abilitySlug &&
-                    AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
+                    AbilityHelpers.getAbilityData(game.dataSource, abilitySlug)
+                        ?.name) ??
                 abilitySlug ??
                 '',
             gender: getSpeciesDefaultGender(slug),
             moves: padMoves(
                 PokemonHelpers.getMovesAtLevel(
+                    game.dataSource,
                     slug,
                     game.version,
                     attacker.level
                 ).map(
                     (moveSlug) =>
-                        MoveHelpers.getMoveData(moveSlug)?.name ?? moveSlug
+                        MoveHelpers.getMoveData(game.dataSource, moveSlug)
+                            ?.name ?? moveSlug
                 )
             ),
             speciesSlug: slug,
@@ -794,6 +832,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
 
     const handleDefenderSpeciesChange = (slug: string): void => {
         const abilitySlug = PokemonHelpers.getPokemonAbilities(
+            game.dataSource,
             slug,
             game.generation
         )?.slot1;
@@ -801,18 +840,21 @@ const CalcTab: React.FC<CalcTabProps> = ({
             type: 'SET_SPECIES',
             abilityName:
                 (abilitySlug &&
-                    AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
+                    AbilityHelpers.getAbilityData(game.dataSource, abilitySlug)
+                        ?.name) ??
                 abilitySlug ??
                 '',
             gender: getSpeciesDefaultGender(slug),
             moves: padMoves(
                 PokemonHelpers.getMovesAtLevel(
+                    game.dataSource,
                     slug,
                     game.version,
                     defender.level
                 ).map(
                     (moveSlug) =>
-                        MoveHelpers.getMoveData(moveSlug)?.name ?? moveSlug
+                        MoveHelpers.getMoveData(game.dataSource, moveSlug)
+                            ?.name ?? moveSlug
                 )
             ),
             speciesSlug: slug,
@@ -830,6 +872,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     attackerField={attackerField}
                     attackerIvs={attacker.ivs}
                     attackerMoves={attacker.moves}
+                    dataSource={game.dataSource}
                     defenderField={defenderField}
                     defenderIvs={defender.ivs}
                     defenderMoves={defender.moves}
@@ -868,6 +911,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     status={attacker.status}
                 />
                 <BoxSelectPanel
+                    dataSource={game.dataSource}
                     enemySpeed={trainerSpeed}
                     generation={game.generation}
                     onSelectPokemon={setSelectedLocation}

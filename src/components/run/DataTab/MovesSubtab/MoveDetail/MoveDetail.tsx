@@ -1,14 +1,20 @@
 import CategoryBadge from '@/components/common/CategoryBadge/CategoryBadge';
 import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
+import { GameDataSource } from '@/lib/static/types';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import styles from './MoveDetail.module.scss';
 
 type MoveDetailProps = {
+    dataSource: GameDataSource;
     generation: number;
     moveSlug: string;
 };
 
-const MoveDetail: React.FC<MoveDetailProps> = ({ generation, moveSlug }) => {
+const MoveDetail: React.FC<MoveDetailProps> = ({
+    dataSource,
+    generation,
+    moveSlug,
+}) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
@@ -20,8 +26,12 @@ const MoveDetail: React.FC<MoveDetailProps> = ({ generation, moveSlug }) => {
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const moveData = MoveHelpers.getMoveData(moveSlug);
-    const values = MoveHelpers.getMoveForGeneration(moveSlug, generation);
+    const moveData = MoveHelpers.getMoveData(dataSource, moveSlug);
+    const values = MoveHelpers.getMoveForGeneration(
+        dataSource,
+        moveSlug,
+        generation
+    );
 
     // -------------------------------------------------------------------------
     // MARKUP

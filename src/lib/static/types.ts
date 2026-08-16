@@ -259,6 +259,7 @@ export type Encounter = {
 // its own id straight out of it without any signature changes.
 export type EncounterVisibilityContext = {
     caughtHere?: string;
+    dataSource: GameDataSource;
     dupes: string[];
     generation: number;
     settings: Record<string, boolean>;
@@ -369,6 +370,17 @@ export type Split = {
     saveCondition: SplitSaveCondition;
 };
 
+// The species/move/ability/item records a game's data pulls from. Every
+// unmodified game shares the same vanilla PokeAPI-sourced records; a game
+// whose data diverges from vanilla (e.g. a ROM hack) points at its own
+// independent set instead.
+export type GameDataSource = {
+    pokemon: Record<string, PokemonData>;
+    moves: Record<string, MoveData>;
+    abilities: Record<string, AbilityData>;
+    items: Record<string, ItemData>;
+};
+
 export type Game = {
     name: string;
     logo: string;
@@ -378,6 +390,7 @@ export type Game = {
     // since level-up movesets can differ between versions within the same
     // generation.
     version: string;
+    dataSource: GameDataSource;
     splits: Split[];
     starters: string[];
     accentColor: string;

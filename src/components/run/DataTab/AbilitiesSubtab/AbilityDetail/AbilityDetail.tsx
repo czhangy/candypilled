@@ -1,13 +1,16 @@
+import { GameDataSource } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import styles from './AbilityDetail.module.scss';
 
 type AbilityDetailProps = {
     abilitySlug: string;
+    dataSource: GameDataSource;
     generation: number;
 };
 
 const AbilityDetail: React.FC<AbilityDetailProps> = ({
     abilitySlug,
+    dataSource,
     generation,
 }) => {
     // -------------------------------------------------------------------------
@@ -41,8 +44,9 @@ const AbilityDetail: React.FC<AbilityDetailProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const abilityData = AbilityHelpers.getAbilityData(abilitySlug);
+    const abilityData = AbilityHelpers.getAbilityData(dataSource, abilitySlug);
     const values = AbilityHelpers.getAbilityForGeneration(
+        dataSource,
         abilitySlug,
         generation
     );

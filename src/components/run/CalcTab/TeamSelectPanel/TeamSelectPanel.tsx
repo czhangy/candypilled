@@ -60,6 +60,7 @@ const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
             .filter((index) => index !== selectedIndex);
 
         const order = SwitchInHelpers.getSwitchInOrder(
+            game.dataSource,
             candidateIndices.map((index) => team[index]),
             faintedPokemon,
             target,
@@ -106,7 +107,10 @@ const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
             {selectedBattle && (
                 <div className={styles.grid}>
                     {team.map((mon, index) => {
-                        const displaySlug = PokemonHelpers.getDisplaySlug(mon);
+                        const displaySlug = PokemonHelpers.getDisplaySlug(
+                            game.dataSource,
+                            mon
+                        );
 
                         return (
                             <button
@@ -127,6 +131,7 @@ const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
                                 <Image
                                     alt={
                                         PokemonHelpers.getPokemonData(
+                                            game.dataSource,
                                             displaySlug
                                         )?.name ?? mon.slug
                                     }

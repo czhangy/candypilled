@@ -152,6 +152,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                         (_, index) => group.team[index] ?? null
                                     ).map((pokemon, index) => (
                                         <PokemonSlot
+                                            dataSource={game.dataSource}
                                             generation={generation}
                                             hofDisplay={false}
                                             isReadOnly={false}

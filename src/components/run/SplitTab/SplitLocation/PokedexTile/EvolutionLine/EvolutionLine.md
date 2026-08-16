@@ -36,6 +36,7 @@ via trade are omitted entirely, along with everything beneath them.
 | Prop              | Type                         | Required | Default | Description                                                                 |
 | ----------------- | ---------------------------- | -------- | ------- | --------------------------------------------------------------------------- |
 | `currentSlug`     | `string`                     | No       | -       | The currently selected species' slug, highlighted if it appears in the line |
+| `dataSource`      | `GameDataSource`             | Yes      | -       | The game's Pokémon dataset, used to resolve species names/sprites/forms     |
 | `hideTradeEvos`   | `boolean`                    | Yes      | -       | Whether trade-only evolution branches are omitted                           |
 | `onSelectSpecies` | `(slug: string) => void`     | Yes      | -       | Called with a step's species slug when its sprite is clicked                |
 | `step`            | `EvolutionStep \| undefined` | Yes      | -       | The species' full evolution family tree, or `undefined` if unresolved       |

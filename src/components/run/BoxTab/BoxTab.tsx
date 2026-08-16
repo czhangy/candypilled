@@ -133,6 +133,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
         <div className={styles['box-tab']}>
             <PokemonBox
                 caughtPokemon={run.caughtPokemon}
+                dataSource={game.dataSource}
                 levelCap={levelCap}
                 onReorderPokemon={handleReorderPokemon}
                 onSelectPokemon={onSelectPokemon}
@@ -142,6 +143,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
             />
             <PokemonPreview
                 canSelectLocation={canSelectLocation}
+                dataSource={game.dataSource}
                 generation={game.generation}
                 levelCap={levelCap}
                 onSelectAbility={onSelectAbility}

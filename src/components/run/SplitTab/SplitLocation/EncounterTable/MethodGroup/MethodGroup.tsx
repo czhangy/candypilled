@@ -1,11 +1,12 @@
 import { Fragment } from 'react';
 import Image from 'next/image';
 import { EncounterMethod } from '@/lib/static/enums';
-import { Encounter } from '@/lib/static/types';
+import { Encounter, GameDataSource } from '@/lib/static/types';
 import EncounterRow from './EncounterRow/EncounterRow';
 import styles from './MethodGroup.module.scss';
 
 type MethodGroupProps = {
+    dataSource: GameDataSource;
     encounters: Encounter[];
     getDisplayChance: (encounter: Encounter) => number | null;
     isSpeciesCaughtElsewhere: (species: string) => boolean;
@@ -17,6 +18,7 @@ type MethodGroupProps = {
 };
 
 const MethodGroup: React.FC<MethodGroupProps> = ({
+    dataSource,
     encounters,
     getDisplayChance,
     isSpeciesCaughtElsewhere,
@@ -65,6 +67,7 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
             </tr>
             {encounters.map((encounter) => (
                 <EncounterRow
+                    dataSource={dataSource}
                     displayChance={getDisplayChance(encounter)}
                     encounter={encounter}
                     isCaughtElsewhere={isSpeciesCaughtElsewhere(

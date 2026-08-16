@@ -10,6 +10,7 @@ when no move is given, for an empty move slot.
 
 | Prop           | Type                     | Required | Default | Description                                                   |
 | -------------- | ------------------------ | -------- | ------- | ------------------------------------------------------------- |
+| `dataSource`   | `GameDataSource`         | Yes      | -       | The game's move dataset, used to resolve the move's values    |
 | `generation`   | `number`                 | Yes      | -       | The game's generation, used to resolve the move's values      |
 | `ivs`          | `StatValues`             | Yes      | -       | The Pokémon's IVs, used to resolve Hidden Power's actual type |
 | `moveSlug`     | `string`                 | No       | -       | The move's slug, if this slot is occupied                     |

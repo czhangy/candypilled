@@ -77,6 +77,7 @@ const HofPage: React.FC = () => {
                                 {game.name} — Attempt #{entry.attempt}
                             </span>
                             <HofTeam
+                                dataSource={game.dataSource}
                                 generation={game.generation}
                                 onChange={(team) =>
                                     handleUpdateTeam(

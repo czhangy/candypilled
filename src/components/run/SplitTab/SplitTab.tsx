@@ -140,7 +140,8 @@ const SplitTab: React.FC<SplitTabProps> = ({
         )?.slug;
 
         return slug
-            ? (PokemonHelpers.getPokemonData(slug)?.name ?? slug)
+            ? (PokemonHelpers.getPokemonData(game.dataSource, slug)?.name ??
+                  slug)
             : undefined;
     };
 
@@ -167,6 +168,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
         )?.slug;
 
         return EncounterHelpers.areAllEncountersDupes(
+            game.dataSource,
             getLocationEncounters(location),
             dupes,
             caughtHere,

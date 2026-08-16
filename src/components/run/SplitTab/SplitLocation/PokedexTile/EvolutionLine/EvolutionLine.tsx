@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
-import { EvolutionStep } from '@/lib/static/types';
+import { EvolutionStep, GameDataSource } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './EvolutionLine.module.scss';
 
 type EvolutionLineProps = {
     currentSlug?: string;
+    dataSource: GameDataSource;
     hideTradeEvos: boolean;
     onSelectSpecies: (slug: string) => void;
     step?: EvolutionStep;
@@ -15,6 +16,7 @@ type EvolutionLineProps = {
 
 const EvolutionLine: React.FC<EvolutionLineProps> = ({
     currentSlug,
+    dataSource,
     hideTradeEvos,
     onSelectSpecies,
     step,
@@ -33,8 +35,15 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
     // -------------------------------------------------------------------------
 
     const renderNode = (nodeStep: EvolutionStep): React.ReactNode => {
-        const nodeName = PokemonHelpers.getPokemonData(nodeStep.slug)?.name;
-        const sprite = PokemonHelpers.getPokemonSprite(nodeStep.slug, variant);
+        const nodeName = PokemonHelpers.getPokemonData(
+            dataSource,
+            nodeStep.slug
+        )?.name;
+        const sprite = PokemonHelpers.getPokemonSprite(
+            dataSource,
+            nodeStep.slug,
+            variant
+        );
         const isCurrent = currentSlug === nodeStep.slug;
         const visibleEvolutions = nodeStep.evolvesTo.filter(
             (child) =>
@@ -80,6 +89,7 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                             // into one branch per form instead of one branch
                             // per step.
                             const formSlugs = PokemonHelpers.getPokemonForms(
+                                dataSource,
                                 child.slug
                             );
 

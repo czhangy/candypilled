@@ -1,7 +1,6 @@
 import { useSyncExternalStore } from 'react';
 import SearchableList from '@/components/common/SearchableList/SearchableList';
 import SpeciesListPanel from '@/components/run/DataTab/SpeciesListPanel/SpeciesListPanel';
-import { MOVES } from '@/lib/data/moves';
 import { Game } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -40,11 +39,12 @@ const MovesSubtab: React.FC<MovesSubtabProps> = ({
         game,
         settings['show-national-dex-data'] ?? false
     );
-    const availableMoves = Object.values(MOVES)
+    const availableMoves = Object.values(game.dataSource.moves)
         .filter(
             (move) =>
                 move.introducedInGeneration <= game.generation &&
                 PokemonHelpers.getSpeciesWithMove(
+                    game.dataSource,
                     gameSpecies,
                     move.slug,
                     game.version
@@ -53,6 +53,7 @@ const MovesSubtab: React.FC<MovesSubtabProps> = ({
         .sort((a, b) => a.name.localeCompare(b.name));
     const effectiveMove = selectedMove ?? availableMoves[0]?.slug ?? '';
     const learnedBy = PokemonHelpers.getSpeciesWithMove(
+        game.dataSource,
         gameSpecies,
         effectiveMove,
         game.version
@@ -73,7 +74,11 @@ const MovesSubtab: React.FC<MovesSubtabProps> = ({
                 selectedItem={effectiveMove}
                 sortAlphabetically
             />
-            <MoveDetail generation={game.generation} moveSlug={effectiveMove} />
+            <MoveDetail
+                dataSource={game.dataSource}
+                generation={game.generation}
+                moveSlug={effectiveMove}
+            />
             <SpeciesListPanel
                 entries={learnedBy}
                 onSelectSpecies={onSelectSpeciesLink}

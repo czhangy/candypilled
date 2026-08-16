@@ -1,3 +1,4 @@
+import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
 import { BATTLES } from '@/lib/data/diamond-pearl/battles';
 import { DIAMOND_PEARL_MET_LOCATIONS } from '@/lib/data/diamond-pearl/met-locations';
 import BYRON from '@/lib/data/diamond-pearl/splits/byron';
@@ -20,6 +21,7 @@ const DIAMOND: Game = {
     // group, so this must match pearl.ts exactly (unlike `version` used by
     // ../pearl/pearl.ts's GameVersion, which is per-individual-version).
     version: 'diamond-pearl',
+    dataSource: VANILLA_DATA_SOURCE,
     starters: ['turtwig', 'chimchar', 'piplup'],
     accentColor: '#89A6D9',
     encounters: ENCOUNTERS,

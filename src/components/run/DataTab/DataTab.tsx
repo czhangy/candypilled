@@ -106,6 +106,7 @@ const DataTab: React.FC<DataTabProps> = ({
             )}
             {activeSubtab === 'items' && (
                 <ItemsSubtab
+                    dataSource={game.dataSource}
                     generation={game.generation}
                     onSelectItem={onSelectItem}
                     selectedItem={selectedItem}

@@ -4,12 +4,18 @@ import RabbitIcon from '@/lib/icons/RabbitIcon';
 import SnailIcon from '@/lib/icons/SnailIcon';
 import { MAX_IV } from '@/lib/static/constants';
 import { PokemonStatus } from '@/lib/static/enums';
-import { CaughtPokemon, Run, SpeedComparison } from '@/lib/static/types';
+import {
+    CaughtPokemon,
+    GameDataSource,
+    Run,
+    SpeedComparison,
+} from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
 import styles from './BoxSelectPanel.module.scss';
 
 type BoxSelectPanelProps = {
+    dataSource: GameDataSource;
     enemySpeed: number | undefined;
     generation: number;
     onSelectPokemon: (location: string) => void;
@@ -18,6 +24,7 @@ type BoxSelectPanelProps = {
 };
 
 const BoxSelectPanel: React.FC<BoxSelectPanelProps> = ({
+    dataSource,
     enemySpeed,
     generation,
     onSelectPokemon,
@@ -44,8 +51,9 @@ const BoxSelectPanel: React.FC<BoxSelectPanelProps> = ({
     // The Pokémon's own (unboosted) Speed stat, for comparison against the
     // currently selected enemy's Speed.
     const getSpeed = (pokemon: CaughtPokemon): number | undefined => {
-        const displaySlug = PokemonHelpers.getDisplaySlug(pokemon);
+        const displaySlug = PokemonHelpers.getDisplaySlug(dataSource, pokemon);
         const baseStats = PokemonHelpers.getPokemonStats(
+            dataSource,
             displaySlug,
             generation
         );
@@ -92,8 +100,10 @@ const BoxSelectPanel: React.FC<BoxSelectPanelProps> = ({
             {livingPokemon.length > 0 ? (
                 <div className={styles.grid}>
                     {livingPokemon.map((pokemon) => {
-                        const displaySlug =
-                            PokemonHelpers.getDisplaySlug(pokemon);
+                        const displaySlug = PokemonHelpers.getDisplaySlug(
+                            dataSource,
+                            pokemon
+                        );
                         const speedComparison = getSpeedComparison(pokemon);
 
                         return (
@@ -117,6 +127,7 @@ const BoxSelectPanel: React.FC<BoxSelectPanelProps> = ({
                                 <Image
                                     alt={
                                         PokemonHelpers.getPokemonData(
+                                            dataSource,
                                             displaySlug
                                         )?.name ?? pokemon.slug
                                     }

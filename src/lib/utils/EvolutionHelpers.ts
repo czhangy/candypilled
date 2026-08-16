@@ -2,6 +2,7 @@ import {
     EvolutionMethod,
     EvolutionMethodLabel,
     EvolutionStep,
+    GameDataSource,
 } from '@/lib/static/types';
 import GenerationHelpers from '@/lib/utils/GenerationHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -37,12 +38,13 @@ export default class EvolutionHelpers {
         }
     }
 
-    /** slug's evolution line as of generation, or undefined if no form matches. */
+    /** slug's evolution line in dataSource as of generation, or undefined if no form matches. */
     static getEvolutionLine(
+        dataSource: GameDataSource,
         slug: string,
         generation: number
     ): EvolutionStep | undefined {
-        const pokemon = PokemonHelpers.getPokemonData(slug);
+        const pokemon = PokemonHelpers.getPokemonData(dataSource, slug);
         if (!pokemon) return undefined;
 
         return GenerationHelpers.resolveGeneration(
@@ -58,13 +60,24 @@ export default class EvolutionHelpers {
      * Mothim would otherwise exclude the Wormadam branch).
      */
     static getFullEvolutionLine(
+        dataSource: GameDataSource,
         slug: string,
         generation: number
     ): EvolutionStep | undefined {
-        const line = EvolutionHelpers.getEvolutionLine(slug, generation);
+        const line = EvolutionHelpers.getEvolutionLine(
+            dataSource,
+            slug,
+            generation
+        );
         if (!line) return undefined;
 
-        return EvolutionHelpers.getEvolutionLine(line.slug, generation) ?? line;
+        return (
+            EvolutionHelpers.getEvolutionLine(
+                dataSource,
+                line.slug,
+                generation
+            ) ?? line
+        );
     }
 
     /**
@@ -72,8 +85,13 @@ export default class EvolutionHelpers {
      * descendants, including sibling branches like other eeveelutions),
      * for detecting Nuzlocke duplicate-evolution-line catches.
      */
-    static getEvolutionFamily(slug: string, generation: number): string[] {
+    static getEvolutionFamily(
+        dataSource: GameDataSource,
+        slug: string,
+        generation: number
+    ): string[] {
         const fullLine = EvolutionHelpers.getFullEvolutionLine(
+            dataSource,
             slug,
             generation
         );
@@ -84,7 +102,9 @@ export default class EvolutionHelpers {
             // A step's slug is ambiguous when it doesn't resolve to its
             // own entry (e.g. "wormadam"), so every matching form counts
             // as part of the family, not just the (non-existent) bare slug.
-            slugs.push(...PokemonHelpers.getPokemonForms(step.slug));
+            slugs.push(
+                ...PokemonHelpers.getPokemonForms(dataSource, step.slug)
+            );
             step.evolvesTo.forEach(collect);
         };
         collect(fullLine);
@@ -94,11 +114,16 @@ export default class EvolutionHelpers {
 
     /** Whether a and b are in the same evolution family as of generation. */
     static isSameEvolutionLine(
+        dataSource: GameDataSource,
         a: string,
         b: string,
         generation: number
     ): boolean {
-        return EvolutionHelpers.getEvolutionFamily(a, generation).includes(b);
+        return EvolutionHelpers.getEvolutionFamily(
+            dataSource,
+            a,
+            generation
+        ).includes(b);
     }
 
     /** Whether every method reaching a step requires a trade. */

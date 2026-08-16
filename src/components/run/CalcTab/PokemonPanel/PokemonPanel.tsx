@@ -1,7 +1,6 @@
 import { useId } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import NumericInput from '@/components/common/NumericInput/NumericInput';
-import { ITEMS } from '@/lib/data/items';
 import { MAX_LEVEL, MIN_LEVEL } from '@/lib/static/constants';
 import { Nature } from '@/lib/static/enums';
 import {
@@ -105,7 +104,11 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     // -------------------------------------------------------------------------
 
     const baseStats = pokemonSlug
-        ? PokemonHelpers.getPokemonStats(pokemonSlug, game.generation)
+        ? PokemonHelpers.getPokemonStats(
+              game.dataSource,
+              pokemonSlug,
+              game.generation
+          )
         : undefined;
     const rawTotalStats = baseStats
         ? StatHelpers.calculateStats(baseStats, level, ivs, evs, nature)
@@ -125,17 +128,19 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
 
     const canToggleGender =
         !!pokemonSlug &&
-        !PokemonHelpers.isGenderless(pokemonSlug) &&
-        !PokemonHelpers.getFixedGender(pokemonSlug);
+        !PokemonHelpers.isGenderless(game.dataSource, pokemonSlug) &&
+        !PokemonHelpers.getFixedGender(game.dataSource, pokemonSlug);
     const genderSymbol = gender === 'male' ? '♂' : '♀';
     const genderClassName = gender
         ? [styles.gender, styles[`gender--${gender}`]].join(' ')
         : undefined;
 
     const speciesOptions: DropdownOption[] = PokemonHelpers.getAllSpecies(
+        game.dataSource,
         game.generation
     ).map((pokemon) => ({ label: pokemon.name, value: pokemon.slug }));
     const abilityOptions: DropdownOption[] = AbilityHelpers.getAllAbilities(
+        game.dataSource,
         game.generation
     ).map((name) => ({ label: name, value: name }));
     const natureOptions: DropdownOption[] = Object.values(Nature)
@@ -149,12 +154,14 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
         });
     const moveOptions: DropdownOption[] = [
         { label: 'None', value: '' },
-        ...MoveHelpers.getAllMoves(game.generation).map((name) => ({
-            label: name,
-            value: name,
-        })),
+        ...MoveHelpers.getAllMoves(game.dataSource, game.generation).map(
+            (name) => ({
+                label: name,
+                value: name,
+            })
+        ),
     ];
-    const availableItems = Object.values(ITEMS).filter(
+    const availableItems = Object.values(game.dataSource.items).filter(
         (item) =>
             item.introducedInGeneration <= game.generation &&
             (item.removedInGeneration === undefined ||

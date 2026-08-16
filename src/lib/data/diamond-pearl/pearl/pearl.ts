@@ -1,3 +1,4 @@
+import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
 import { BATTLES } from '@/lib/data/diamond-pearl/battles';
 import { DIAMOND_PEARL_MET_LOCATIONS } from '@/lib/data/diamond-pearl/met-locations';
 import BYRON from '@/lib/data/diamond-pearl/splits/byron';
@@ -19,6 +20,7 @@ const PEARL: Game = {
     // PokeAPI version-group slug: Diamond and Pearl share one version
     // group, so this must match diamond.ts exactly.
     version: 'diamond-pearl',
+    dataSource: VANILLA_DATA_SOURCE,
     starters: ['turtwig', 'chimchar', 'piplup'],
     accentColor: '#E0A0C0',
     encounters: ENCOUNTERS,

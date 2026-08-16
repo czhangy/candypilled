@@ -2,12 +2,13 @@
 
 import { useState } from 'react';
 import PokemonSlot from '@/components/run/SplitTab/SplitLocation/BattleCard/PokemonSlot/PokemonSlot';
-import { CaughtPokemon } from '@/lib/static/types';
+import { CaughtPokemon, GameDataSource } from '@/lib/static/types';
 import styles from './HofTeam.module.scss';
 import ItemPickerModal from './ItemPickerModal/ItemPickerModal';
 import MovePickerModal from './MovePickerModal/MovePickerModal';
 
 type HofTeamProps = {
+    dataSource: GameDataSource;
     generation: number;
     onChange: (team: CaughtPokemon[]) => void;
     team: CaughtPokemon[];
@@ -16,6 +17,7 @@ type HofTeamProps = {
 };
 
 const HofTeam: React.FC<HofTeamProps> = ({
+    dataSource,
     generation,
     onChange,
     team,
@@ -102,6 +104,7 @@ const HofTeam: React.FC<HofTeamProps> = ({
         <div className={styles['hof-team']}>
             {paddedTeam.map((pokemon, index) => (
                 <PokemonSlot
+                    dataSource={dataSource}
                     generation={generation}
                     hofDisplay
                     isReadOnly
@@ -116,6 +119,7 @@ const HofTeam: React.FC<HofTeamProps> = ({
             ))}
             {pickerTarget?.kind === 'item' && (
                 <ItemPickerModal
+                    dataSource={dataSource}
                     generation={generation}
                     onClose={handlePickerClose}
                     onSelect={handleItemPicked}
@@ -124,6 +128,7 @@ const HofTeam: React.FC<HofTeamProps> = ({
             )}
             {pickerTarget?.kind === 'move' && (
                 <MovePickerModal
+                    dataSource={dataSource}
                     generation={generation}
                     onClose={handlePickerClose}
                     onSelect={handleMovePicked}

@@ -70,6 +70,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
         onSelect({
             ability:
                 PokemonHelpers.getPokemonAbilities(
+                    game.dataSource,
                     defaultSpecies,
                     game.generation
                 )?.slot1 ?? '',
@@ -79,6 +80,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
             level: STARTER_LEVEL,
             location: starterLocation,
             moves: PokemonHelpers.getMovesAtLevel(
+                game.dataSource,
                 defaultSpecies,
                 game.version,
                 STARTER_LEVEL
@@ -106,6 +108,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
                     <div className={styles.columns}>
                         <div className={styles['starter-column']}>
                             <StarterSelect
+                                dataSource={game.dataSource}
                                 onSelect={handleStarterSelect}
                                 selected={activeStarter}
                                 starters={game.starters}

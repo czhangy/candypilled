@@ -1,10 +1,11 @@
 import CategoryBadge from '@/components/common/CategoryBadge/CategoryBadge';
-import { StatValues } from '@/lib/static/types';
+import { GameDataSource, StatValues } from '@/lib/static/types';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import TypeHelpers from '@/lib/utils/TypeHelpers';
 import styles from './MoveCard.module.scss';
 
 type MoveCardProps = {
+    dataSource: GameDataSource;
     generation: number;
     ivs: StatValues;
     moveSlug?: string;
@@ -12,6 +13,7 @@ type MoveCardProps = {
 };
 
 const MoveCard: React.FC<MoveCardProps> = ({
+    dataSource,
     generation,
     ivs,
     moveSlug,
@@ -36,12 +38,14 @@ const MoveCard: React.FC<MoveCardProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const moveData = moveSlug ? MoveHelpers.getMoveData(moveSlug) : undefined;
+    const moveData = moveSlug
+        ? MoveHelpers.getMoveData(dataSource, moveSlug)
+        : undefined;
     const values = moveSlug
-        ? MoveHelpers.getMoveForGeneration(moveSlug, generation)
+        ? MoveHelpers.getMoveForGeneration(dataSource, moveSlug, generation)
         : undefined;
     const moveType = moveSlug
-        ? MoveHelpers.getMoveType(moveSlug, generation, ivs)
+        ? MoveHelpers.getMoveType(dataSource, moveSlug, generation, ivs)
         : undefined;
     const moveColor = moveType ? TypeHelpers.getTypeColor(moveType) : undefined;
 

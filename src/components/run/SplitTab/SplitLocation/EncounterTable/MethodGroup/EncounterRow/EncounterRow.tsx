@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import { EncounterMethod } from '@/lib/static/enums';
-import { Encounter, ItemData } from '@/lib/static/types';
+import { Encounter, GameDataSource, ItemData } from '@/lib/static/types';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './EncounterRow.module.scss';
 
 type EncounterRowProps = {
+    dataSource: GameDataSource;
     displayChance: number | null;
     encounter: Encounter;
     isCaughtElsewhere: boolean;
@@ -16,6 +17,7 @@ type EncounterRowProps = {
 };
 
 const EncounterRow: React.FC<EncounterRowProps> = ({
+    dataSource,
     displayChance,
     encounter,
     isCaughtElsewhere,
@@ -64,10 +66,13 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const pokemon = PokemonHelpers.getPokemonData(encounter.species);
+    const pokemon = PokemonHelpers.getPokemonData(
+        dataSource,
+        encounter.species
+    );
     const sprite = PokemonHelpers.getBoxSprite(encounter.species);
     const tradeForPokemon = encounter.tradeFor
-        ? PokemonHelpers.getPokemonData(encounter.tradeFor)
+        ? PokemonHelpers.getPokemonData(dataSource, encounter.tradeFor)
         : undefined;
     const heldItemSlugs = encounter.heldItem
         ? [encounter.heldItem]
@@ -75,7 +80,7 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
           ? (pokemon?.wildHeldItems ?? [])
           : [];
     const heldItems = heldItemSlugs
-        .map((slug) => ItemHelpers.getHeldItemData(slug))
+        .map((slug) => ItemHelpers.getHeldItemData(dataSource, slug))
         .filter((item): item is ItemData => item !== undefined);
 
     // -------------------------------------------------------------------------

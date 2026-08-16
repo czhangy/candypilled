@@ -1,5 +1,10 @@
 import { MOVE_SLOT_COUNT } from '@/lib/static/constants';
-import { CalcField, CalcPokemonInput, StatValues } from '@/lib/static/types';
+import {
+    CalcField,
+    CalcPokemonInput,
+    GameDataSource,
+    StatValues,
+} from '@/lib/static/types';
 import DamageCalcHelpers from '@/lib/utils/DamageCalcHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import TypeHelpers from '@/lib/utils/TypeHelpers';
@@ -8,6 +13,7 @@ import styles from './MoveDamageColumn.module.scss';
 type MoveDamageColumnProps = {
     activeIndex: number | null;
     attacker: CalcPokemonInput | null;
+    dataSource: GameDataSource;
     defender: CalcPokemonInput | null;
     field: CalcField;
     generation: number;
@@ -19,6 +25,7 @@ type MoveDamageColumnProps = {
 const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
     activeIndex,
     attacker,
+    dataSource,
     defender,
     field,
     generation,
@@ -31,7 +38,12 @@ const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
     // -------------------------------------------------------------------------
 
     const getMoveColor = (moveName: string): string | undefined => {
-        const type = MoveHelpers.getMoveTypeByName(moveName, generation, ivs);
+        const type = MoveHelpers.getMoveTypeByName(
+            dataSource,
+            moveName,
+            generation,
+            ivs
+        );
         return type ? TypeHelpers.getTypeColor(type) : undefined;
     };
 

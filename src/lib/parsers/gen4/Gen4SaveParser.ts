@@ -220,18 +220,23 @@ export default class Gen4SaveParser {
         const dexNumber = canonical.getUint16(GROWTH_OFFSET, true);
         if (dexNumber === 0) return undefined;
 
-        const speciesData = PokemonHelpers.getSpeciesByDexNumber(dexNumber);
+        const speciesData = PokemonHelpers.getSpeciesByDexNumber(
+            game.dataSource,
+            dexNumber
+        );
         if (!speciesData) return undefined;
 
         const heldItemIndex = canonical.getUint16(GROWTH_OFFSET + 0x02, true);
         const heldItemSlug = GEN4_ITEM_INDEX[heldItemIndex];
         const heldItem = heldItemSlug
-            ? ItemHelpers.getHeldItemData(heldItemSlug)?.slug
+            ? ItemHelpers.getHeldItemData(game.dataSource, heldItemSlug)?.slug
             : undefined;
 
         const experience = canonical.getUint32(GROWTH_OFFSET + 0x08, true);
         const abilityId = canonical.getUint8(GROWTH_OFFSET + 0x0d);
-        const ability = AbilityHelpers.getAbilityById(abilityId)?.slug ?? '';
+        const ability =
+            AbilityHelpers.getAbilityById(game.dataSource, abilityId)?.slug ??
+            '';
 
         const evs: StatValues = {
             hp: canonical.getUint8(GROWTH_OFFSET + 0x10),
@@ -245,7 +250,10 @@ export default class Gen4SaveParser {
         const moves = [0, 1, 2, 3]
             .map((slot) => canonical.getUint16(ATTACKS_OFFSET + slot * 2, true))
             .filter((moveId) => moveId !== 0)
-            .map((moveId) => MoveHelpers.getMoveById(moveId)?.slug)
+            .map(
+                (moveId) =>
+                    MoveHelpers.getMoveById(game.dataSource, moveId)?.slug
+            )
             .filter((slug): slug is string => slug !== undefined);
 
         const ivWord = canonical.getUint32(ATTACKS_OFFSET + 0x10, true);

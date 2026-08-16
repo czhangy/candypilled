@@ -11,6 +11,7 @@ against the player's Pokémon on the right.
 | --------------- | -------------------------- | -------- | ------- | ------------------------------------------------------------------- |
 | `attackerIvs`   | `StatValues`               | Yes      | -       | The player's Pokémon's IVs, used to resolve Hidden Power's type     |
 | `attackerMoves` | `string[]`                 | Yes      | -       | The player's Pokémon's move slots                                   |
+| `dataSource`    | `GameDataSource`           | Yes      | -       | The game's move dataset, forwarded to `MoveDamageColumn`            |
 | `defenderIvs`   | `StatValues`               | Yes      | -       | The trainer's Pokémon's IVs, used to resolve Hidden Power's type    |
 | `defenderMoves` | `string[]`                 | Yes      | -       | The trainer's Pokémon's canonical move slots                        |
 | `generation`    | `number`                   | Yes      | -       | The generation to calculate against                                 |

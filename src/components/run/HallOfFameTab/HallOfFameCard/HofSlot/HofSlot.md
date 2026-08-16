@@ -6,11 +6,12 @@ picker, to assign or replace the slot's Pokémon.
 
 ## Props
 
-| Prop      | Type                    | Required | Default | Description                                        |
-| --------- | ----------------------- | -------- | ------- | -------------------------------------------------- |
-| `pokemon` | `CaughtPokemon \| null` | Yes      | -       | The Pokémon assigned to this slot, if any          |
-| `variant` | `string`                | Yes      | -       | Game slug used to resolve the correct sprite style |
-| `onClick` | `() => void`            | Yes      | -       | Called when the slot is clicked                    |
+| Prop         | Type                    | Required | Default | Description                                               |
+| ------------ | ----------------------- | -------- | ------- | --------------------------------------------------------- |
+| `dataSource` | `GameDataSource`        | Yes      | -       | The game's Pokémon dataset, used to resolve sprites/names |
+| `pokemon`    | `CaughtPokemon \| null` | Yes      | -       | The Pokémon assigned to this slot, if any                 |
+| `variant`    | `string`                | Yes      | -       | Game slug used to resolve the correct sprite style        |
+| `onClick`    | `() => void`            | Yes      | -       | Called when the slot is clicked                           |
 
 ## Computations
 

@@ -1,10 +1,11 @@
 import CategoryBadge from '@/components/common/CategoryBadge/CategoryBadge';
 import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
-import { LearnsetMove } from '@/lib/static/types';
+import { GameDataSource, LearnsetMove } from '@/lib/static/types';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import styles from './LearnsetList.module.scss';
 
 type LearnsetListProps = {
+    dataSource: GameDataSource;
     generation: number;
     interactive: boolean;
     moves: LearnsetMove[];
@@ -12,6 +13,7 @@ type LearnsetListProps = {
 };
 
 const LearnsetList: React.FC<LearnsetListProps> = ({
+    dataSource,
     generation,
     interactive,
     moves,
@@ -39,8 +41,9 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
     return (
         <ul className={styles['learnset-list']}>
             {moves.map((move) => {
-                const moveData = MoveHelpers.getMoveData(move.slug);
+                const moveData = MoveHelpers.getMoveData(dataSource, move.slug);
                 const values = MoveHelpers.getMoveForGeneration(
+                    dataSource,
                     move.slug,
                     generation
                 );

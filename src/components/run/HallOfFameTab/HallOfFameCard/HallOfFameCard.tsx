@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CaughtPokemon } from '@/lib/static/types';
+import { CaughtPokemon, GameDataSource } from '@/lib/static/types';
 import styles from './HallOfFameCard.module.scss';
 import HofSlot from './HofSlot/HofSlot';
 import HofTeam from './HofTeam/HofTeam';
@@ -7,6 +7,7 @@ import PokemonPickerModal from './PokemonPickerModal/PokemonPickerModal';
 
 type HallOfFameCardProps = {
     availablePokemon: CaughtPokemon[];
+    dataSource: GameDataSource;
     generation: number;
     onSave: (team: CaughtPokemon[]) => void;
     onUpdateTeam: (team: CaughtPokemon[]) => void;
@@ -17,6 +18,7 @@ type HallOfFameCardProps = {
 
 const HallOfFameCard: React.FC<HallOfFameCardProps> = ({
     availablePokemon,
+    dataSource,
     generation,
     onSave,
     onUpdateTeam,
@@ -85,6 +87,7 @@ const HallOfFameCard: React.FC<HallOfFameCardProps> = ({
             <div className={styles.content}>
                 {savedTeam ? (
                     <HofTeam
+                        dataSource={dataSource}
                         generation={generation}
                         onChange={onUpdateTeam}
                         team={savedTeam}
@@ -96,6 +99,7 @@ const HallOfFameCard: React.FC<HallOfFameCardProps> = ({
                         <div className={styles.team}>
                             {team.map((pokemon, index) => (
                                 <HofSlot
+                                    dataSource={dataSource}
                                     key={
                                         pokemon
                                             ? pokemon.location
@@ -120,6 +124,7 @@ const HallOfFameCard: React.FC<HallOfFameCardProps> = ({
             </div>
             {pickerSlotIndex !== null && (
                 <PokemonPickerModal
+                    dataSource={dataSource}
                     onClose={handlePickerClose}
                     onSelect={handlePickerSelect}
                     pokemon={pickablePokemon}

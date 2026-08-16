@@ -13,6 +13,7 @@ holding an item shows that item's icon in its bottom-right corner.
 | Prop               | Type                                                 | Required | Default | Description                                                              |
 | ------------------ | ---------------------------------------------------- | -------- | ------- | ------------------------------------------------------------------------ |
 | `caughtPokemon`    | `CaughtPokemon[]`                                    | Yes      | -       | The Pokémon caught during the run, one per box slot                      |
+| `dataSource`       | `GameDataSource`                                     | Yes      | -       | The game's Pokémon/item dataset, used to resolve sprites and held items  |
 | `levelCap`         | `number \| null`                                     | Yes      | -       | The current split's level cap, used to grey out over-leveled Pokémon     |
 | `onReorderPokemon` | `(fromLocation: string, toLocation: string) => void` | Yes      | -       | Called with the dragged and drop-target locations when a slot is dropped |
 | `onSelectPokemon`  | `(location: string) => void`                         | Yes      | -       | Called with a Pokémon's location when its slot is clicked                |

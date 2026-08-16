@@ -1,14 +1,20 @@
 import Image from 'next/image';
+import { GameDataSource } from '@/lib/static/types';
 import GenerationHelpers from '@/lib/utils/GenerationHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import styles from './ItemDetail.module.scss';
 
 type ItemDetailProps = {
+    dataSource: GameDataSource;
     generation: number;
     itemSlug: string;
 };
 
-const ItemDetail: React.FC<ItemDetailProps> = ({ generation, itemSlug }) => {
+const ItemDetail: React.FC<ItemDetailProps> = ({
+    dataSource,
+    generation,
+    itemSlug,
+}) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
@@ -19,7 +25,7 @@ const ItemDetail: React.FC<ItemDetailProps> = ({ generation, itemSlug }) => {
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const itemData = ItemHelpers.getHeldItemData(itemSlug);
+    const itemData = ItemHelpers.getHeldItemData(dataSource, itemSlug);
     const values = itemData
         ? GenerationHelpers.resolveGeneration(
               itemData.valuesByGeneration,

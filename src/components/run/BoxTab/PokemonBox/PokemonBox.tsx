@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { PokemonStatus } from '@/lib/static/enums';
-import { BoxView, CaughtPokemon } from '@/lib/static/types';
+import { BoxView, CaughtPokemon, GameDataSource } from '@/lib/static/types';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './PokemonBox.module.scss';
 
 type PokemonBoxProps = {
     caughtPokemon: CaughtPokemon[];
+    dataSource: GameDataSource;
     levelCap: number | null;
     onReorderPokemon: (fromLocation: string, toLocation: string) => void;
     onSelectPokemon: (location: string) => void;
@@ -18,6 +19,7 @@ type PokemonBoxProps = {
 
 const PokemonBox: React.FC<PokemonBoxProps> = ({
     caughtPokemon,
+    dataSource,
     levelCap,
     onReorderPokemon,
     onSelectPokemon,
@@ -128,14 +130,21 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                 {displayedPokemon.length > 0 ? (
                     <div className={styles.grid}>
                         {displayedPokemon.map((pokemon) => {
-                            const displaySlug =
-                                PokemonHelpers.getDisplaySlug(pokemon);
-                            const data =
-                                PokemonHelpers.getPokemonData(displaySlug);
+                            const displaySlug = PokemonHelpers.getDisplaySlug(
+                                dataSource,
+                                pokemon
+                            );
+                            const data = PokemonHelpers.getPokemonData(
+                                dataSource,
+                                displaySlug
+                            );
                             const sprite =
                                 PokemonHelpers.getBoxSprite(displaySlug);
                             const heldItemData = pokemon.heldItem
-                                ? ItemHelpers.getHeldItemData(pokemon.heldItem)
+                                ? ItemHelpers.getHeldItemData(
+                                      dataSource,
+                                      pokemon.heldItem
+                                  )
                                 : undefined;
                             const isOverCap =
                                 levelCap !== null && pokemon.level > levelCap;

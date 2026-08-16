@@ -304,6 +304,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
               (locationEncounter) =>
                   locationEncounter.method === EncounterMethod.Starter &&
                   EvolutionHelpers.isSameEvolutionLine(
+                      game.dataSource,
                       locationEncounter.species,
                       encounter,
                       game.generation
@@ -316,6 +317,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
               (locationEncounter) =>
                   locationEncounter.method === EncounterMethod.Egg &&
                   EvolutionHelpers.isSameEvolutionLine(
+                      game.dataSource,
                       locationEncounter.species,
                       encounter,
                       game.generation
@@ -325,6 +327,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         !!section.encounters &&
         EncounterHelpers.areAllEncountersHidden(section.encounters, {
             caughtHere: encounter,
+            dataSource: game.dataSource,
             dupes,
             generation: game.generation,
             settings,
@@ -444,6 +447,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                 <div className={styles['encounters-row']}>
                                     <EncounterTable
                                         caughtHere={encounter}
+                                        dataSource={game.dataSource}
                                         dupes={dupes}
                                         encounters={section.encounters}
                                         generation={game.generation}

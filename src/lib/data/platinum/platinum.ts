@@ -1,3 +1,4 @@
+import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
 import { Game } from '@/lib/static/types';
 import { BATTLES } from './battles';
 import { ENCOUNTERS } from './encounters';
@@ -17,6 +18,7 @@ const PLATINUM: Game = {
     logo: '/logos/platinum.png',
     generation: 4,
     version: 'platinum',
+    dataSource: VANILLA_DATA_SOURCE,
     starters: ['turtwig', 'chimchar', 'piplup'],
     accentColor: '#FFD500',
     encounters: ENCOUNTERS,

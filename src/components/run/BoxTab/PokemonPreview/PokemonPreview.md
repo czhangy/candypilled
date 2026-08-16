@@ -25,6 +25,7 @@ hindered by it is highlighted blue.
 | Prop                | Type                               | Required | Default | Description                                                                            |
 | ------------------- | ---------------------------------- | -------- | ------- | -------------------------------------------------------------------------------------- |
 | `canSelectLocation` | `boolean`                          | Yes      | -       | Whether the previewed Pokémon's location matches a split, making it clickable          |
+| `dataSource`        | `GameDataSource`                   | Yes      | -       | The game's dataset, used to resolve species/move/ability/item data                     |
 | `generation`        | `number`                           | Yes      | -       | The game's generation, used to resolve each move's values and the Pokémon's base stats |
 | `levelCap`          | `number \| null`                   | Yes      | -       | The current split's level cap, used to highlight an over-leveled Pokémon's level       |
 | `onSelectAbility`   | `(slug: string) => void`           | Yes      | -       | Called with the Pokémon's ability slug when it's clicked                               |

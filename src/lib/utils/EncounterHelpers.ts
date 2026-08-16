@@ -6,6 +6,7 @@ import {
     EncounterLocation,
     EncounterVisibilityContext,
     Game,
+    GameDataSource,
     PokemonData,
 } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
@@ -30,6 +31,7 @@ const ENCOUNTER_HIDE_RULES: EncounterHideRule[] = [
         const isCaughtHere =
             !!context.caughtHere &&
             EvolutionHelpers.isSameEvolutionLine(
+                context.dataSource,
                 encounter.species,
                 context.caughtHere,
                 context.generation
@@ -39,6 +41,7 @@ const ENCOUNTER_HIDE_RULES: EncounterHideRule[] = [
             !isCaughtHere &&
             context.dupes.some((slug) =>
                 EvolutionHelpers.isSameEvolutionLine(
+                    context.dataSource,
                     encounter.species,
                     slug,
                     context.generation
@@ -49,7 +52,8 @@ const ENCOUNTER_HIDE_RULES: EncounterHideRule[] = [
     // Legendaries/mythicals are hidden unless "Show Legendaries" is on.
     (encounter, context) =>
         !context.settings['show-legendaries'] &&
-        !!PokemonHelpers.getPokemonData(encounter.species)?.isLegendary,
+        !!PokemonHelpers.getPokemonData(context.dataSource, encounter.species)
+            ?.isLegendary,
 ];
 
 export default class EncounterHelpers {
@@ -138,6 +142,7 @@ export default class EncounterHelpers {
      * actually on.
      */
     static areAllEncountersDupes(
+        dataSource: GameDataSource,
         encounters: Encounter[],
         dupes: string[],
         caughtHere: string | undefined,
@@ -145,6 +150,7 @@ export default class EncounterHelpers {
     ): boolean {
         return EncounterHelpers.areAllEncountersHidden(encounters, {
             caughtHere,
+            dataSource,
             dupes,
             generation,
             settings: { 'show-dupes': false },
@@ -165,7 +171,10 @@ export default class EncounterHelpers {
         game: Game,
         includeAllSpecies: boolean
     ): PokemonData[] {
-        const allSpecies = PokemonHelpers.getAllSpecies(game.generation);
+        const allSpecies = PokemonHelpers.getAllSpecies(
+            game.dataSource,
+            game.generation
+        );
         if (includeAllSpecies) {
             return [...allSpecies].sort((a, b) => a.dexNumber - b.dexNumber);
         }
@@ -180,7 +189,11 @@ export default class EncounterHelpers {
 
         const familySlugs = new Set(
             [...encounteredSlugs, ...battledSlugs].flatMap((slug) =>
-                EvolutionHelpers.getEvolutionFamily(slug, game.generation)
+                EvolutionHelpers.getEvolutionFamily(
+                    game.dataSource,
+                    slug,
+                    game.generation
+                )
             )
         );
 
