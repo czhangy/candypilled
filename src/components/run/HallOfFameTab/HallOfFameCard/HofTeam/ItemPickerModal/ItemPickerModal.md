@@ -7,6 +7,7 @@ to clear it, via a searchable list.
 
 | Prop           | Type                                  | Required | Default | Description                                                      |
 | -------------- | ------------------------------------- | -------- | ------- | ---------------------------------------------------------------- |
+| `dataSource`   | `GameDataSource`                      | Yes      | -       | The game's item dataset, used to build the item catalog          |
 | `generation`   | `number`                              | Yes      | -       | The game's generation, used to filter which items are selectable |
 | `selectedItem` | `string`                              | No       | -       | The currently held item's slug, highlighted in the list          |
 | `onClose`      | `() => void`                          | Yes      | -       | Called when the modal is dismissed without a selection           |

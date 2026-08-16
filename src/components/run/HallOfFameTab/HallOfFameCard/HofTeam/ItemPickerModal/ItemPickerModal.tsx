@@ -1,9 +1,10 @@
 import Modal from '@/components/common/Modal/Modal';
 import SearchableList from '@/components/common/SearchableList/SearchableList';
-import { ITEMS } from '@/lib/data/items';
+import { GameDataSource } from '@/lib/static/types';
 import styles from './ItemPickerModal.module.scss';
 
 type ItemPickerModalProps = {
+    dataSource: GameDataSource;
     generation: number;
     onClose: () => void;
     onSelect: (slug: string | undefined) => void;
@@ -11,6 +12,7 @@ type ItemPickerModalProps = {
 };
 
 const ItemPickerModal: React.FC<ItemPickerModalProps> = ({
+    dataSource,
     generation,
     onClose,
     onSelect,
@@ -30,7 +32,7 @@ const ItemPickerModal: React.FC<ItemPickerModalProps> = ({
 
     const availableItems = [
         { name: 'None', slug: NONE_SLUG },
-        ...Object.values(ITEMS)
+        ...Object.values(dataSource.items)
             .filter(
                 (item) =>
                     item.introducedInGeneration <= generation &&

@@ -82,8 +82,10 @@ Pokédex tile.
 
 ## Computations
 
-- `getAllBattles` — every battle across all of the location's subareas, in
-  subarea order, each paired with its subarea's index
+- `getAllBattles` — every battle across all of the location's subareas
+  that matches `run.gender` (via `BattleHelpers.filterByGender` — a battle
+  restricted to the other gender is excluded entirely), in subarea order,
+  each paired with its subarea's index
 - `getInitialSubareaIndex` — the subarea to open on: the subarea containing
   the battle matching `selectedBattleKey`, if set and present in this
   location; otherwise subarea `0` if the location has no subareas, or if
@@ -91,9 +93,10 @@ Pokédex tile.
   been caught yet (i.e. there's still a wild Pokémon to catch here);
   otherwise, the subarea of the first battle from `getAllBattles`
 - `getDefaultSelectedBattle` — the battle to preselect for a given subarea
-  index: the battle matching `selectedBattleKey`, if set and present in
-  that subarea; otherwise the first required battle in that subarea, or
-  the first battle of any kind if the subarea has none
+  index, from the same gender-filtered battle list as `getAllBattles`: the
+  battle matching `selectedBattleKey`, if set and present in that subarea;
+  otherwise the first required battle in that subarea, or the first
+  battle of any kind if the subarea has none
 - `section` — the currently active map/battles/encounters group: the
   selected subarea when `location.subareas` is set, otherwise a section
   built from the location's own `map`/`battles`/`encountersKey`. Wild
@@ -102,7 +105,8 @@ Pokédex tile.
   `hideBattles` set contributes no battles to the section, so no
   markers or battle card render for it, even though the same
   location/subarea data may render battles when reused (without the
-  flag) by another split
+  flag) by another split; a battle restricted to the other gender (via
+  `BattleHelpers.filterByGender`) is excluded the same way
 - `dupes` — every species in `run.caughtPokemon`, regardless of
   location; passed to the encounter table and Pokédex tile to enforce
   one catch per evolution line

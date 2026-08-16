@@ -11,13 +11,15 @@ height on the trainer side (which omits the Moves section) matches
 
 ## Props
 
-| Prop             | Type                          | Required | Default | Description                                                             |
-| ---------------- | ----------------------------- | -------- | ------- | ----------------------------------------------------------------------- |
-| `game`           | `Game`                        | Yes      | -       | The current game; its `splits` enumerate every trainer battle, in order |
-| `onSelectBattle` | `(battleKey: string) => void` | Yes      | -       | Called with the selected battle's `BattleHelpers.getBattleKey` value    |
-| `selectedBattle` | `string`                      | No       | -       | The currently selected battle key, driven by the `battle` query param   |
+| Prop             | Type                              | Required | Default | Description                                                                                 |
+| ---------------- | --------------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------- |
+| `game`           | `Game`                            | Yes      | -       | The current game; its `splits` enumerate every trainer battle, in order                     |
+| `gender`         | `'male' \| 'female' \| undefined` | Yes      | -       | The run's chosen protagonist gender, used to exclude battles restricted to the other gender |
+| `onSelectBattle` | `(battleKey: string) => void`     | Yes      | -       | Called with the selected battle's `BattleHelpers.getBattleKey` value                        |
+| `selectedBattle` | `string`                          | No       | -       | The currently selected battle key, driven by the `battle` query param                       |
 
 ## Computations
 
-- `trainerOptions` — every battle in the game via `BattleHelpers.getAllBattles`,
-  in game order, as dropdown options labeled by `BattleHelpers.getFullName`
+- `trainerOptions` — every battle in the game via `BattleHelpers.getAllBattles`
+  (filtered for `gender`), in game order, as dropdown options labeled by
+  `BattleHelpers.getFullName`

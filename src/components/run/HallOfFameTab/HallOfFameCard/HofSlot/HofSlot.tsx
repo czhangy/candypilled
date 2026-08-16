@@ -1,15 +1,21 @@
 import Image from 'next/image';
-import { CaughtPokemon } from '@/lib/static/types';
+import { CaughtPokemon, GameDataSource } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './HofSlot.module.scss';
 
 type HofSlotProps = {
+    dataSource: GameDataSource;
     onClick: () => void;
     pokemon: CaughtPokemon | null;
     variant: string;
 };
 
-const HofSlot: React.FC<HofSlotProps> = ({ onClick, pokemon, variant }) => {
+const HofSlot: React.FC<HofSlotProps> = ({
+    dataSource,
+    onClick,
+    pokemon,
+    variant,
+}) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
@@ -21,13 +27,14 @@ const HofSlot: React.FC<HofSlotProps> = ({ onClick, pokemon, variant }) => {
     // -------------------------------------------------------------------------
 
     const displaySlug = pokemon
-        ? PokemonHelpers.getDisplaySlug(pokemon)
+        ? PokemonHelpers.getDisplaySlug(dataSource, pokemon)
         : undefined;
     const sprite = displaySlug
-        ? PokemonHelpers.getPokemonSprite(displaySlug, variant)
+        ? PokemonHelpers.getPokemonSprite(dataSource, displaySlug, variant)
         : undefined;
     const pokemonName = displaySlug
-        ? (PokemonHelpers.getPokemonData(displaySlug)?.name ?? pokemon?.slug)
+        ? (PokemonHelpers.getPokemonData(dataSource, displaySlug)?.name ??
+          pokemon?.slug)
         : undefined;
 
     // -------------------------------------------------------------------------

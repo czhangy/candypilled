@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { CalcField, CalcPokemonInput, StatValues } from '@/lib/static/types';
+import {
+    CalcField,
+    CalcPokemonInput,
+    GameDataSource,
+    StatValues,
+} from '@/lib/static/types';
 import DamageCalcHelpers from '@/lib/utils/DamageCalcHelpers';
 import styles from './DamageResultsPanel.module.scss';
 import MoveDamageColumn from './MoveDamageColumn/MoveDamageColumn';
@@ -8,6 +13,7 @@ type DamageResultsPanelProps = {
     attackerField: CalcField;
     attackerIvs: StatValues;
     attackerMoves: string[];
+    dataSource: GameDataSource;
     defenderField: CalcField;
     defenderIvs: StatValues;
     defenderMoves: string[];
@@ -20,6 +26,7 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
     attackerField,
     attackerIvs,
     attackerMoves,
+    dataSource,
     defenderField,
     defenderIvs,
     defenderMoves,
@@ -110,6 +117,7 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
                         activeMove.side === 'attacker' ? activeMove.index : null
                     }
                     attacker={playerInput}
+                    dataSource={dataSource}
                     defender={trainerInput}
                     field={attackerField}
                     generation={generation}
@@ -122,6 +130,7 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
                         activeMove.side === 'defender' ? activeMove.index : null
                     }
                     attacker={trainerInput}
+                    dataSource={dataSource}
                     defender={playerInput}
                     field={defenderField}
                     generation={generation}

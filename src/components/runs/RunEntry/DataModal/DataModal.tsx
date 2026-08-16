@@ -1,52 +1,59 @@
 'use client';
 
 import { useState } from 'react';
+import ImportSaveForm from '@/components/common/ImportSaveForm/ImportSaveForm';
 import Modal from '@/components/common/Modal/Modal';
 import Tabs from '@/components/common/Tabs/Tabs';
 import ConfirmActions from '@/components/runs/RunEntry/ConfirmActions/ConfirmActions';
+import { CaughtPokemon, Game } from '@/lib/static/types';
 import styles from './DataModal.module.scss';
 
 type DataModalProps = {
     accentColor: string;
     buttonTextColor?: string;
-    gameName: string;
+    game: Game;
     hasExistingRun: boolean;
     onClose: () => void;
+    onImport: (pokemon: CaughtPokemon[], completedSplits: string[]) => void;
     onReset: () => void;
 };
 
 const DataModal: React.FC<DataModalProps> = ({
     accentColor,
     buttonTextColor,
-    gameName,
+    game,
     hasExistingRun,
     onClose,
+    onImport,
     onReset,
 }) => {
     // -------------------------------------------------------------------------
     // STATE
     // -------------------------------------------------------------------------
 
-    const [activeTab, setActiveTab] = useState<'reset'>('reset');
+    const [activeTab, setActiveTab] = useState<'import' | 'reset'>('import');
 
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const TABS = hasExistingRun ? [{ id: 'reset', label: 'Reset' }] : [];
+    const TABS = [
+        { id: 'import', label: 'Import' },
+        ...(hasExistingRun ? [{ id: 'reset', label: 'Reset' }] : []),
+    ];
 
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const description = `All data for ${gameName}, including your current run and Hall of Fame count, will be deleted and can't be recovered.`;
+    const description = `All data for ${game.name}, including your current run and Hall of Fame count, will be deleted and can't be recovered.`;
 
     // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
 
     const handleTabChange = (id: string): void => {
-        setActiveTab(id as 'reset');
+        setActiveTab(id as 'import' | 'reset');
     };
 
     // -------------------------------------------------------------------------
@@ -58,7 +65,7 @@ const DataModal: React.FC<DataModalProps> = ({
             accentColor={accentColor}
             buttonTextColor={buttonTextColor}
             onClose={onClose}
-            title={`Manage ${gameName} Data`}
+            title={`Manage ${game.name} Data`}
         >
             {(requestClose) => (
                 <>
@@ -67,7 +74,14 @@ const DataModal: React.FC<DataModalProps> = ({
                         onTabChange={handleTabChange}
                         tabs={TABS}
                     />
-                    {hasExistingRun && (
+                    {activeTab === 'import' && (
+                        <ImportSaveForm
+                            game={game}
+                            onImport={onImport}
+                            requestClose={requestClose}
+                        />
+                    )}
+                    {hasExistingRun && activeTab === 'reset' && (
                         <>
                             <p className={styles.description}>{description}</p>
                             <ConfirmActions

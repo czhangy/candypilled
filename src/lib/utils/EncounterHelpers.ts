@@ -1,11 +1,11 @@
 import { EncounterMethod } from '@/lib/static/enums';
 import {
     BattleData,
-    BattlePokemon,
     Encounter,
     EncounterLocation,
     EncounterVisibilityContext,
     Game,
+    GameDataSource,
     PokemonData,
 } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
@@ -30,6 +30,7 @@ const ENCOUNTER_HIDE_RULES: EncounterHideRule[] = [
         const isCaughtHere =
             !!context.caughtHere &&
             EvolutionHelpers.isSameEvolutionLine(
+                context.dataSource,
                 encounter.species,
                 context.caughtHere,
                 context.generation
@@ -39,6 +40,7 @@ const ENCOUNTER_HIDE_RULES: EncounterHideRule[] = [
             !isCaughtHere &&
             context.dupes.some((slug) =>
                 EvolutionHelpers.isSameEvolutionLine(
+                    context.dataSource,
                     encounter.species,
                     slug,
                     context.generation
@@ -49,7 +51,8 @@ const ENCOUNTER_HIDE_RULES: EncounterHideRule[] = [
     // Legendaries/mythicals are hidden unless "Show Legendaries" is on.
     (encounter, context) =>
         !context.settings['show-legendaries'] &&
-        !!PokemonHelpers.getPokemonData(encounter.species)?.isLegendary,
+        !!PokemonHelpers.getPokemonData(context.dataSource, encounter.species)
+            ?.isLegendary,
 ];
 
 export default class EncounterHelpers {
@@ -138,6 +141,7 @@ export default class EncounterHelpers {
      * actually on.
      */
     static areAllEncountersDupes(
+        dataSource: GameDataSource,
         encounters: Encounter[],
         dupes: string[],
         caughtHere: string | undefined,
@@ -145,6 +149,7 @@ export default class EncounterHelpers {
     ): boolean {
         return EncounterHelpers.areAllEncountersHidden(encounters, {
             caughtHere,
+            dataSource,
             dupes,
             generation,
             settings: { 'show-dupes': false },
@@ -165,7 +170,10 @@ export default class EncounterHelpers {
         game: Game,
         includeAllSpecies: boolean
     ): PokemonData[] {
-        const allSpecies = PokemonHelpers.getAllSpecies(game.generation);
+        const allSpecies = PokemonHelpers.getAllSpecies(
+            game.dataSource,
+            game.generation
+        );
         if (includeAllSpecies) {
             return [...allSpecies].sort((a, b) => a.dexNumber - b.dexNumber);
         }
@@ -180,7 +188,11 @@ export default class EncounterHelpers {
 
         const familySlugs = new Set(
             [...encounteredSlugs, ...battledSlugs].flatMap((slug) =>
-                EvolutionHelpers.getEvolutionFamily(slug, game.generation)
+                EvolutionHelpers.getEvolutionFamily(
+                    game.dataSource,
+                    slug,
+                    game.generation
+                )
             )
         );
 
@@ -193,18 +205,14 @@ export default class EncounterHelpers {
     // PRIVATE
     // -------------------------------------------------------------------------
 
-    // Every species slug across a battle's team(s): its default team, every
-    // starter-specific variant, and (for a tag battle) its second trainer's
-    // equivalents.
+    // Every species slug across a battle's team(s): every one of its own
+    // teams, and (for a tag battle) its second trainer's.
     private static getBattleSlugs(battle: BattleData): string[] {
-        const teams = [
-            battle.team,
-            ...Object.values(battle.teamsByStarter ?? {}),
-            battle.secondTrainer?.team,
-            ...Object.values(battle.secondTrainer?.teamsByStarter ?? {}),
-        ].filter((team): team is BattlePokemon[] => !!team);
+        const teams = [...battle.teams, ...(battle.secondTrainer?.teams ?? [])];
 
-        return teams.flat().map((pokemon) => pokemon.slug);
+        return teams.flatMap((entry) =>
+            entry.team.map((pokemon) => pokemon.slug)
+        );
     }
 
     // Flattens every split/location/subarea down to a name/encountersKey

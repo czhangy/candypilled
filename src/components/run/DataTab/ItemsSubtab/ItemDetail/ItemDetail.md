@@ -7,10 +7,11 @@ scrollbar matching the rest of the app.
 
 ## Props
 
-| Prop         | Type     | Required | Default | Description                                              |
-| ------------ | -------- | -------- | ------- | -------------------------------------------------------- |
-| `generation` | `number` | Yes      | -       | The game's generation, used to resolve the item's values |
-| `itemSlug`   | `string` | Yes      | -       | The selected item's slug                                 |
+| Prop         | Type             | Required | Default | Description                                              |
+| ------------ | ---------------- | -------- | ------- | -------------------------------------------------------- |
+| `dataSource` | `GameDataSource` | Yes      | -       | The game's item dataset, used to resolve the item's data |
+| `generation` | `number`         | Yes      | -       | The game's generation, used to resolve the item's values |
+| `itemSlug`   | `string`         | Yes      | -       | The selected item's slug                                 |
 
 ## Computations
 

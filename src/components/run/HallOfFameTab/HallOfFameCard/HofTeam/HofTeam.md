@@ -11,6 +11,7 @@ are clickable, opening a picker to change them.
 
 | Prop         | Type                              | Required | Default | Description                                                            |
 | ------------ | --------------------------------- | -------- | ------- | ---------------------------------------------------------------------- |
+| `dataSource` | `GameDataSource`                  | Yes      | -       | The game's dataset, passed through to `PokemonSlot` and the pickers    |
 | `generation` | `number`                          | Yes      | -       | The game's generation, passed through to `PokemonSlot` and the pickers |
 | `onChange`   | `(team: CaughtPokemon[]) => void` | Yes      | -       | Called with the updated team whenever a held item or move is changed   |
 | `team`       | `CaughtPokemon[]`                 | Yes      | -       | The saved team, unpadded                                               |

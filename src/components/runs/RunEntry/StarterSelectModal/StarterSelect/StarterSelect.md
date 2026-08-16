@@ -8,12 +8,13 @@ The currently selected starter is highlighted in the game's accent color.
 
 ## Props
 
-| Prop       | Type                        | Required | Default | Description                                            |
-| ---------- | --------------------------- | -------- | ------- | ------------------------------------------------------ |
-| `starters` | `string[]`                  | Yes      | -       | The starter names to render as buttons                 |
-| `selected` | `string \| null`            | Yes      | -       | The currently selected starter, if any                 |
-| `onSelect` | `(starter: string) => void` | Yes      | -       | Called with a starter's name when it's clicked         |
-| `variant`  | `string`                    | Yes      | -       | The sprite variant to prefer, matching the game's slug |
+| Prop         | Type                        | Required | Default | Description                                               |
+| ------------ | --------------------------- | -------- | ------- | --------------------------------------------------------- |
+| `dataSource` | `GameDataSource`            | Yes      | -       | The game's Pokémon dataset, used to resolve sprites/names |
+| `starters`   | `string[]`                  | Yes      | -       | The starter names to render as buttons                    |
+| `selected`   | `string \| null`            | Yes      | -       | The currently selected starter, if any                    |
+| `onSelect`   | `(starter: string) => void` | Yes      | -       | Called with a starter's name when it's clicked            |
+| `variant`    | `string`                    | Yes      | -       | The sprite variant to prefer, matching the game's slug    |
 
 ## SCSS Variable Dependencies
 

@@ -1,4 +1,4 @@
-import { Battle, BattlePokemon, Game, Split } from '@/lib/static/types';
+import { Battle, Game, Split } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
@@ -11,12 +11,13 @@ export default class SplitHelpers {
     static getLevelCap(
         game: Game,
         split: Split,
-        completedSplits: string[]
+        completedSplits: string[],
+        gender: 'male' | 'female' | undefined
     ): number | null {
         if (SplitHelpers.isGameComplete(game, completedSplits)) return null;
 
         const battles = split.locations.flatMap((location) =>
-            BattleHelpers.getBattlesInLocation(location)
+            BattleHelpers.getBattlesInLocation(location, gender)
         );
         const lastBattle = battles[battles.length - 1];
 
@@ -87,14 +88,8 @@ export default class SplitHelpers {
     // so the level cap can be read from whichever team option is available.
     private static getMaxLevel(game: Game, battle: Battle): number | null {
         const data = game.battles[battle.battleKey];
-        const teams = data.team
-            ? [data.team]
-            : Object.values(data.teamsByStarter ?? {}).filter(
-                  (team): team is BattlePokemon[] => !!team
-              );
-
-        const levels = teams.flatMap((team) =>
-            team.map((pokemon) => pokemon.level)
+        const levels = data.teams.flatMap((entry) =>
+            entry.team.map((pokemon) => pokemon.level)
         );
 
         return levels.length > 0 ? Math.max(...levels) : null;

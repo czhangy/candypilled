@@ -127,6 +127,11 @@ Reference implementation: `src/lib/data/platinum/`.
         - **Which named trainer is at a given location, and in what order.**
           External sources' location fields are often sparse — don't infer
           identity/order from partial data.
+    - **If a trainer's roster or the battle itself varies by run state
+      (starter, gender, a randomized team pool, etc.), see "Divergent
+      teams and battles" below before authoring `battles.ts`/the location's
+      `battles: []` array** — don't default to a single `team`/one `Battle`
+      entry and bolt on a workaround later.
     - **IVs must always be derived from that game's own primary source data
       (its decomp or equivalent reference), never asked of or guessed by
       the user by default.** Back-solving from a data source's raw computed
@@ -142,8 +147,11 @@ Reference implementation: `src/lib/data/platinum/`.
       was derived) rather than a reason to fall back to asking the user.
 6. **New trainer classes** — if a battle references a trainer class not
    already in `src/lib/data/trainer-classes.ts`, add it with
-   `npm run gen:trainer-class <slug> <classSlug> <displayName> <male|female> [spriteSlug]`
-   (requires a sprite already at `public/<slug>/trainers/<classSlug>.png`).
+   `npm run gen:trainer-class <folder> <classSlug> <displayName> [spriteSlug]`
+   (requires a sprite already at `public/trainers/<folder>/<classSlug>.png`).
+   `<folder>` is this game's `trainerAssetFolder` (see "Sharing public/
+   assets across games" below), not necessarily the game's own slug — pass
+   whichever folder that game's trainer sprites actually resolve to.
 7. **Author `splits/*.ts` and `met-locations.ts`** by hand — these have no
    generator, since they encode judgment calls (gym order, exact met-index
    table) rather than mechanical scaffolding. For `met-locations.ts`, don't
@@ -156,10 +164,116 @@ Reference implementation: `src/lib/data/platinum/`.
    also needs a `saveCondition` (see "Deriving a split's `saveCondition`"
    below) — a split isn't fully authored without one.
 8. **Assemble the `Game`** in `<slug>.ts` (name, logo, generation, `version`
-   = PokeAPI version-group slug, starters, accentColor, encounters,
-   battles, metLocationById, wipeMessages, splits), add
-   `public/logos/<slug>.png`, and add the game to the `GAMES` array in
-   `src/lib/data/games.ts`.
+   = PokeAPI version-group slug, `dataSource`, `badgeAssetFolder`,
+   `trainerAssetFolder`, `genders` (if this game needs it), starters,
+   accentColor, encounters, battles, metLocationById, wipeMessages,
+   splits), add `public/logos/<slug>.png`, and add the game to the
+   `GAMES` array in `src/lib/data/games.ts`. `version`, `badgeAssetFolder`,
+   and `trainerAssetFolder` are typed as enums (`GameVersionGroup`,
+   `BadgeAssetFolder`, `TrainerAssetFolder` in `src/lib/static/enums.ts`)
+   rather than raw strings — add a new member for a genuinely new version
+   group or asset folder, or reuse an existing member when this game
+   shares one. See "Sharing public/ assets across games" below before
+   deciding whether `badgeAssetFolder`/`trainerAssetFolder` point at a new
+   folder or an existing one, and "Divergent teams and battles" below for
+   `genders`.
+
+## Sharing public/ assets across games
+
+`public/` is organized by asset type first, game/variant second —
+`public/pokemon/<variant>/`, `public/trainers/<folder>/`,
+`public/badges/<folder>/` (and `public/box/`, `public/items/`, etc., which
+are already global and never per-game) — never introduce a new top-level
+`public/<game>/` folder. Badge and trainer sprites are looked up through
+`Game.badgeAssetFolder` and `Game.trainerAssetFolder` rather than always
+being derived from the game's own slug — two games whose in-game art is
+actually identical (e.g. several games in the same region, or a ROM hack
+that reuses its base game's assets) can point at the same physical folder
+instead of each carrying a duplicate copy of the same PNGs.
+
+**These two fields are independent — never assume sharing one implies
+sharing the other.** A real observed case in this codebase: Diamond/Pearl
+and Platinum share the exact same badge icons (`public/badges/sinnoh/`,
+used by all three Sinnoh games), but their trainer sprites are _not_
+identical — a handful of classes (School Kid M, Skier F, Socialite) use
+different art in Platinum than in Diamond/Pearl, so Diamond/Pearl keep
+their own `trainerAssetFolder` (`diamond-pearl`, i.e.
+`public/trainers/diamond-pearl/`) rather than sharing Platinum's. Decide
+each field on its own evidence.
+
+**Never assume two games' assets are identical from franchise/region
+knowledge alone — diff the actual files.** The instinct "same region, so
+the badges must be the same" happened to be right for badges here but
+wrong for trainers, and a naive file-name-based sameness check can also
+lie: comparing files by content hash, not just by matching filenames or
+counts, is what actually caught the Diamond/Pearl trainer divergence above
+(a shallower per-name comparison missed it, since only 3 of 81 files
+actually differed). Before pointing a new game's `badgeAssetFolder`/
+`trainerAssetFolder` at an existing folder, diff every file individually
+against a real content hash and confirm zero differences — a handful of
+differing files is a real per-game divergence, not a fluke to average
+over.
+
+**Pokémon sprites don't use a shared-folder field at all** — each
+species' `sprites` record in `pokemon.json` already stores a literal path
+per sprite variant (e.g. `"platinum": "/pokemon/platinum/piplup.png"`), so
+sharing is just a matter of reusing that same literal path string in the
+new game's own dataset entry instead of downloading/copying a duplicate
+PNG into a new folder. This only applies within an already-established
+sharing relationship (e.g. a ROM hack confirmed to reuse its base game's
+sprite art verbatim) — verify with a content-hash diff first, same as
+above, rather than assuming reuse because the games are related.
+
+## Divergent teams and battles (multi-team trainers, gender-dependent content)
+
+Two independent mechanisms exist for battle content that varies by run
+state — pick based on _what_ varies, not by analogy to whichever game
+first needed one of them:
+
+- **A trainer's roster varies, but it's still the same trainer/battle**
+  (e.g. a rival's team depends on your starter; a trainer has several
+  randomized possible teams with no way to know from a run alone which
+  one a given playthrough actually has): use `BattleData`/
+  `BattleTrainer`'s `teams: BattleTeam[]` field. Each `BattleTeam` is
+  `{ condition?: BattleTeamCondition; team: BattlePokemon[] }` — a team
+  with no condition always applies, and _every_ team that survives
+  condition filtering renders (not just the first match), so several
+  genuinely independent unconditioned teams (a randomized roster) all
+  show up for the player to check against rather than picking one
+  arbitrarily. `BattleTeamCondition` is a discriminated union (currently
+  just `{ type: 'starter'; starter: string }`, in
+  `src/lib/static/types.ts`) — add a new variant for a new kind of
+  team-level divergence, matching `SplitSaveCondition`'s shape.
+- **The battle itself is entirely different** (a different trainer, a
+  different position, or a fight that only exists for one gender at
+  all) — that's not a team variation, it's a different `Battle` marker.
+  Give each variant its own `Battle` entry (own `battleKey` pointing at
+  its own independent `BattleData`, own `x`/`y` if the position differs)
+  in the location's `battles: []` array, and set that entry's `gender` to
+  restrict it to the matching run. A marker with no `gender` always
+  shows; a location can carry two markers (same or different position),
+  each gated to one gender, and every `BattleHelpers` battle-listing
+  function (`getBattlesInLocation`, `getAllBattles`, etc.) automatically
+  excludes the non-matching one for the current run — no extra wiring
+  needed at the call site.
+
+**Never reach for `Battle.gender` to model a roster-only difference, or
+`BattleTeamCondition` to model a wholesale-different trainer — they solve
+different problems, and conflating them was a real mistake caught
+mid-implementation.** Gender-dependent content in a Gen 4 ROM hack can
+swap out the entire trainer fought at a location, not just their team,
+which the team-condition mechanism has no way to express (it only ever
+resolves to one shared trainer's info, never a different trainer
+entirely).
+
+If a game needs gender-dependent content at all (either mechanism, or
+both), also set `Game.genders: { male: string; female: string }` — each
+value is a sprite path, the protagonist artwork shown as a clickable
+option in the gender-selection modal in the new-run flow (`RunEntry`'s
+`GenderSelectModal`, shown before starter selection), and setting this
+field at all is what makes `Run.gender` populated for that game's runs.
+Omit the field entirely (the default for every game onboarded so far)
+when gender doesn't affect anything in that game.
 
 ## Deriving a split's `saveCondition`
 

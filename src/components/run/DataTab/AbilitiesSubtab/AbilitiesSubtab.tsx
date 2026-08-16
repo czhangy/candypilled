@@ -45,6 +45,7 @@ const AbilitiesSubtab: React.FC<AbilitiesSubtabProps> = ({
             (ability) =>
                 ability.introducedInGeneration <= game.generation &&
                 PokemonHelpers.getSpeciesWithAbility(
+                    game.dataSource,
                     gameSpecies,
                     ability.slug,
                     game.generation
@@ -54,6 +55,7 @@ const AbilitiesSubtab: React.FC<AbilitiesSubtabProps> = ({
     const effectiveAbility =
         selectedAbility ?? availableAbilities[0]?.slug ?? '';
     const givenTo = PokemonHelpers.getSpeciesWithAbility(
+        game.dataSource,
         gameSpecies,
         effectiveAbility,
         game.generation

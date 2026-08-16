@@ -5,6 +5,7 @@ import {
     CalcField,
     CalcPokemonInput,
     CalcSideConditions,
+    GameDataSource,
 } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import DamageCalcHelpers from '@/lib/utils/DamageCalcHelpers';
@@ -22,6 +23,7 @@ import TypeHelpers from '@/lib/utils/TypeHelpers';
 type SwitchInStrategy = {
     fromGeneration: number;
     pickNext: (
+        dataSource: GameDataSource,
         pool: number[],
         candidates: BattlePokemon[],
         faintedPokemon: BattlePokemon,
@@ -45,6 +47,7 @@ export default class SwitchInHelpers {
      * Returns an empty array if `generation` has no registered strategy.
      */
     static getSwitchInOrder(
+        dataSource: GameDataSource,
         candidates: BattlePokemon[],
         faintedPokemon: BattlePokemon,
         target: BattlePokemon,
@@ -62,6 +65,7 @@ export default class SwitchInHelpers {
 
         while (pool.length > 0) {
             const pick = strategy.pickNext(
+                dataSource,
                 pool,
                 candidates,
                 faintedPokemon,
@@ -139,6 +143,7 @@ export default class SwitchInHelpers {
     // move list is used, but the attacker profile still belongs to
     // whichever Pokémon just fainted); otherwise fall back to party order.
     private static pickNextGen4(
+        dataSource: GameDataSource,
         pool: number[],
         candidates: BattlePokemon[],
         faintedPokemon: BattlePokemon,
@@ -149,15 +154,22 @@ export default class SwitchInHelpers {
         const topScorer = [...pool].sort(
             (a, b) =>
                 SwitchInHelpers.getTypeScore(
+                    dataSource,
                     candidates[b],
                     target,
                     generation
                 ) -
-                SwitchInHelpers.getTypeScore(candidates[a], target, generation)
+                SwitchInHelpers.getTypeScore(
+                    dataSource,
+                    candidates[a],
+                    target,
+                    generation
+                )
         )[0];
 
         if (
             SwitchInHelpers.hasSupereffectiveMove(
+                dataSource,
                 candidates[topScorer],
                 target,
                 generation,
@@ -170,6 +182,7 @@ export default class SwitchInHelpers {
         return [...pool].sort(
             (a, b) =>
                 SwitchInHelpers.getMaxDamagePercent(
+                    dataSource,
                     candidates[b],
                     faintedPokemon,
                     target,
@@ -177,6 +190,7 @@ export default class SwitchInHelpers {
                     version
                 ) -
                 SwitchInHelpers.getMaxDamagePercent(
+                    dataSource,
                     candidates[a],
                     faintedPokemon,
                     target,
@@ -220,14 +234,23 @@ export default class SwitchInHelpers {
     // double-4x matchup (320) silently overflows and wraps to 64 rather
     // than ranking highest — reproduced here via `% 256`.
     private static getTypeScore(
+        dataSource: GameDataSource,
         pokemon: BattlePokemon,
         target: BattlePokemon,
         generation: number
     ): number {
         const pokemonTypes =
-            PokemonHelpers.getPokemonTypes(pokemon.slug, generation) ?? [];
+            PokemonHelpers.getPokemonTypes(
+                dataSource,
+                pokemon.slug,
+                generation
+            ) ?? [];
         const targetTypes =
-            PokemonHelpers.getPokemonTypes(target.slug, generation) ?? [];
+            PokemonHelpers.getPokemonTypes(
+                dataSource,
+                target.slug,
+                generation
+            ) ?? [];
         if (pokemonTypes.length === 0 || targetTypes.length === 0) return 0;
 
         const isGen6Plus = generation >= 6;
@@ -255,18 +278,24 @@ export default class SwitchInHelpers {
     // Whether `pokemon` knows a damaging move (its own moveset, its own
     // typing for Hidden Power) that's supereffective against `target`.
     private static hasSupereffectiveMove(
+        dataSource: GameDataSource,
         pokemon: BattlePokemon,
         target: BattlePokemon,
         generation: number,
         version: string
     ): boolean {
         const targetTypes =
-            PokemonHelpers.getPokemonTypes(target.slug, generation) ?? [];
+            PokemonHelpers.getPokemonTypes(
+                dataSource,
+                target.slug,
+                generation
+            ) ?? [];
         const isGen6Plus = generation >= 6;
         const ivs = StatHelpers.normalizeStats(pokemon.ivs, MIN_IV);
         const moves =
             pokemon.moves ??
             PokemonHelpers.getMovesAtLevel(
+                dataSource,
                 pokemon.slug,
                 version,
                 pokemon.level
@@ -274,12 +303,18 @@ export default class SwitchInHelpers {
 
         return moves.some((moveSlug) => {
             const moveValues = MoveHelpers.getMoveForGeneration(
+                dataSource,
                 moveSlug,
                 generation
             );
             if (!moveValues || moveValues.power === null) return false;
 
-            const moveType = MoveHelpers.getMoveType(moveSlug, generation, ivs);
+            const moveType = MoveHelpers.getMoveType(
+                dataSource,
+                moveSlug,
+                generation,
+                ivs
+            );
             if (!moveType) return false;
 
             return (
@@ -300,19 +335,29 @@ export default class SwitchInHelpers {
     // them with a null power. 0 if no valid move or either Pokémon fails
     // to resolve to calculator data.
     private static getMaxDamagePercent(
+        dataSource: GameDataSource,
         candidate: BattlePokemon,
         attacker: BattlePokemon,
         target: BattlePokemon,
         generation: number,
         version: string
     ): number {
-        const attackerInput = SwitchInHelpers.buildCalcInput(attacker, MIN_IV);
-        const defenderInput = SwitchInHelpers.buildCalcInput(target, MAX_IV);
+        const attackerInput = SwitchInHelpers.buildCalcInput(
+            dataSource,
+            attacker,
+            MIN_IV
+        );
+        const defenderInput = SwitchInHelpers.buildCalcInput(
+            dataSource,
+            target,
+            MAX_IV
+        );
         if (!attackerInput || !defenderInput) return 0;
 
         const moves =
             candidate.moves ??
             PokemonHelpers.getMovesAtLevel(
+                dataSource,
                 candidate.slug,
                 version,
                 candidate.level
@@ -320,10 +365,14 @@ export default class SwitchInHelpers {
 
         return moves.reduce((max, moveSlug) => {
             const moveValues = MoveHelpers.getMoveForGeneration(
+                dataSource,
                 moveSlug,
                 generation
             );
-            const moveName = MoveHelpers.getMoveData(moveSlug)?.name;
+            const moveName = MoveHelpers.getMoveData(
+                dataSource,
+                moveSlug
+            )?.name;
             if (!moveValues || moveValues.power === null || !moveName) {
                 return max;
             }
@@ -346,11 +395,15 @@ export default class SwitchInHelpers {
     // the current battle's actual state). `defaultIv` is used for any stat
     // whose IV isn't explicitly set on `pokemon`.
     private static buildCalcInput(
+        dataSource: GameDataSource,
         pokemon: BattlePokemon,
         defaultIv: number
     ): CalcPokemonInput | null {
-        const displaySlug = PokemonHelpers.getDisplaySlug(pokemon);
-        const species = PokemonHelpers.getPokemonData(displaySlug)?.name;
+        const displaySlug = PokemonHelpers.getDisplaySlug(dataSource, pokemon);
+        const species = PokemonHelpers.getPokemonData(
+            dataSource,
+            displaySlug
+        )?.name;
         if (!species) return null;
 
         return {
@@ -364,7 +417,8 @@ export default class SwitchInHelpers {
             gender: pokemon.gender,
             heldItem:
                 (pokemon.heldItem &&
-                    ItemHelpers.getHeldItemData(pokemon.heldItem)?.name) ??
+                    ItemHelpers.getHeldItemData(dataSource, pokemon.heldItem)
+                        ?.name) ??
                 pokemon.heldItem ??
                 '',
             ivs: StatHelpers.normalizeStats(pokemon.ivs, defaultIv),

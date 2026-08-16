@@ -48,7 +48,10 @@ const PokedexSubtab: React.FC<PokedexSubtabProps> = ({
     );
     const usedLocations = RunHelpers.getUsedLocations(run);
     const effectiveSpecies = selectedSpecies ?? availableSpecies[0]?.slug ?? '';
-    const selectedPokemon = PokemonHelpers.getPokemonData(effectiveSpecies);
+    const selectedPokemon = PokemonHelpers.getPokemonData(
+        game.dataSource,
+        effectiveSpecies
+    );
 
     // -------------------------------------------------------------------------
     // MARKUP

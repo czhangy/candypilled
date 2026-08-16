@@ -25,14 +25,14 @@ since the shared metadata only needs to appear once, on this panel.
 
 ## Props
 
-| Prop           | Type           | Required | Default | Description                                                                                                                                                                                     |
-| -------------- | -------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `battle`       | `Battle`       | Yes      | -       | The battle whose shared metadata (badges, field condition) is displayed                                                                                                                         |
-| `isStacked`    | `boolean`      | Yes      | -       | Whether this panel is the bottom row of a two-trainer tag battle, rounding only its bottom-left corner and omitting its top border, instead of rounding both left corners as a standalone panel |
-| `items`        | `BattleItem[]` | No       | -       | The displayed trainer's held battle items, resolved from `game.battles` by the caller                                                                                                           |
-| `trainerClass` | `string`       | Yes      | -       | The displayed trainer's TRAINER_CLASSES slug, used to resolve their display name and sprite                                                                                                     |
-| `trainerName`  | `string`       | Yes      | -       | The displayed trainer's name, combined with their class for display                                                                                                                             |
-| `variant`      | `string`       | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                                                                                          |
+| Prop                 | Type                 | Required | Default | Description                                                                                                                                                                                     |
+| -------------------- | -------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `battle`             | `Battle`             | Yes      | -       | The battle whose shared metadata (badges, field condition) is displayed                                                                                                                         |
+| `isStacked`          | `boolean`            | Yes      | -       | Whether this panel is the bottom row of a two-trainer tag battle, rounding only its bottom-left corner and omitting its top border, instead of rounding both left corners as a standalone panel |
+| `items`              | `BattleItem[]`       | No       | -       | The displayed trainer's held battle items, resolved from `game.battles` by the caller                                                                                                           |
+| `trainerAssetFolder` | `TrainerAssetFolder` | Yes      | -       | The game's `trainerAssetFolder`, i.e. which `public/trainers/` folder to resolve the sprite from                                                                                                |
+| `trainerClass`       | `string`             | Yes      | -       | The displayed trainer's TRAINER_CLASSES slug, used to resolve their display name and sprite                                                                                                     |
+| `trainerName`        | `string`             | Yes      | -       | The displayed trainer's name, combined with their class for display                                                                                                                             |
 
 ## SCSS Variable Dependencies
 

@@ -1,5 +1,5 @@
-import { MOVES } from '@/lib/data/moves';
 import {
+    GameDataSource,
     LearnsetMethod,
     LearnsetMove,
     MoveData,
@@ -13,9 +13,12 @@ export default class MoveHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    /** The move data for `slug`, or undefined if no move matches. */
-    static getMoveData(slug: string): MoveData | undefined {
-        return MOVES[slug];
+    /** The move data for `slug` in dataSource, or undefined if no move matches. */
+    static getMoveData(
+        dataSource: GameDataSource,
+        slug: string
+    ): MoveData | undefined {
+        return dataSource.moves[slug];
     }
 
     /**
@@ -28,25 +31,32 @@ export default class MoveHelpers {
             : MoveHelpers.LEARNSET_METHOD_LABELS[move.method];
     }
 
-    /** The move data for PokeAPI's numeric `id`, or undefined if no move matches. */
-    static getMoveById(id: number): MoveData | undefined {
-        return Object.values(MOVES).find((move) => move.id === id);
+    /** The move data for PokeAPI's numeric `id` in dataSource, or undefined if no move matches. */
+    static getMoveById(
+        dataSource: GameDataSource,
+        id: number
+    ): MoveData | undefined {
+        return Object.values(dataSource.moves).find((move) => move.id === id);
     }
 
-    /** Every move introduced by generation or earlier, sorted alphabetically by display name. */
-    static getAllMoves(generation: number): string[] {
-        return Object.values(MOVES)
+    /** Every move in dataSource introduced by generation or earlier, sorted alphabetically by display name. */
+    static getAllMoves(
+        dataSource: GameDataSource,
+        generation: number
+    ): string[] {
+        return Object.values(dataSource.moves)
             .filter((move) => move.introducedInGeneration <= generation)
             .map((move) => move.name)
             .sort((a, b) => a.localeCompare(b));
     }
 
-    /** The values `slug` had as of `generation`, or undefined if no move matches. */
+    /** The values `slug` had as of `generation` in dataSource, or undefined if no move matches. */
     static getMoveForGeneration(
+        dataSource: GameDataSource,
         slug: string,
         generation: number
     ): MoveValuesByGeneration | undefined {
-        const move = MoveHelpers.getMoveData(slug);
+        const move = MoveHelpers.getMoveData(dataSource, slug);
         if (!move) return undefined;
 
         return GenerationHelpers.resolveGeneration(
@@ -60,11 +70,16 @@ export default class MoveHelpers {
      * Power's IV-dependent type instead of its static "normal" data entry.
      */
     static getMoveType(
+        dataSource: GameDataSource,
         slug: string,
         generation: number,
         ivs: StatValues
     ): string | undefined {
-        const values = MoveHelpers.getMoveForGeneration(slug, generation);
+        const values = MoveHelpers.getMoveForGeneration(
+            dataSource,
+            slug,
+            generation
+        );
         if (!values) return undefined;
 
         return slug === 'hidden-power'
@@ -72,22 +87,23 @@ export default class MoveHelpers {
             : values.type;
     }
 
-    /** Whether `slug` is curated as a dangerous move. */
-    static isDangerousMove(slug: string): boolean {
-        return MoveHelpers.getMoveData(slug)?.isDangerous ?? false;
+    /** Whether `slug` in dataSource is curated as a dangerous move. */
+    static isDangerousMove(dataSource: GameDataSource, slug: string): boolean {
+        return MoveHelpers.getMoveData(dataSource, slug)?.isDangerous ?? false;
     }
 
     /** The type a move displayed as `name` should render as in `generation`. */
     static getMoveTypeByName(
+        dataSource: GameDataSource,
         name: string,
         generation: number,
         ivs: StatValues
     ): string | undefined {
-        const slug = Object.values(MOVES).find(
+        const slug = Object.values(dataSource.moves).find(
             (move) => move.name === name
         )?.slug;
         return slug
-            ? MoveHelpers.getMoveType(slug, generation, ivs)
+            ? MoveHelpers.getMoveType(dataSource, slug, generation, ivs)
             : undefined;
     }
 

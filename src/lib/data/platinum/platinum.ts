@@ -1,7 +1,13 @@
+import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
+import {
+    BadgeAssetFolder,
+    GameVersionGroup,
+    TrainerAssetFolder,
+} from '@/lib/static/enums';
 import { Game } from '@/lib/static/types';
 import { BATTLES } from './battles';
 import { ENCOUNTERS } from './encounters';
-import { PLATINUM_MET_LOCATIONS } from './met-locations';
+import { MET_LOCATIONS } from './met-locations';
 import BYRON from './splits/byron';
 import CANDICE from './splits/candice';
 import CYNTHIA from './splits/cynthia';
@@ -16,12 +22,15 @@ const PLATINUM: Game = {
     name: 'Platinum',
     logo: '/logos/platinum.png',
     generation: 4,
-    version: 'platinum',
+    version: GameVersionGroup.Platinum,
+    dataSource: VANILLA_DATA_SOURCE,
+    badgeAssetFolder: BadgeAssetFolder.Sinnoh,
+    trainerAssetFolder: TrainerAssetFolder.Platinum,
     starters: ['turtwig', 'chimchar', 'piplup'],
     accentColor: '#FFD500',
     encounters: ENCOUNTERS,
     battles: BATTLES,
-    metLocationById: PLATINUM_MET_LOCATIONS,
+    metLocationById: MET_LOCATIONS,
     wipeMessages: [
         'Roark is calling.',
         'Maybe a monkey run next time.',

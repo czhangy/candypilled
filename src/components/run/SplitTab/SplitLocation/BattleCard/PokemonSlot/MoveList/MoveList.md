@@ -11,6 +11,7 @@ move's details, and darkens further on hover.
 
 | Prop                 | Type                     | Required | Default | Description                                                                                                                  |
 | -------------------- | ------------------------ | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `dataSource`         | `GameDataSource`         | Yes      | -       | The game's move dataset, used to resolve each move's data/type                                                               |
 | `generation`         | `number`                 | Yes      | -       | The game's generation, used to resolve each move's type                                                                      |
 | `highlightDangerous` | `boolean`                | Yes      | -       | Whether moves flagged as dangerous are highlighted in red text (off when the "Hide Dangerous Moves/Abilities" setting is on) |
 | `isReadOnly`         | `boolean`                | Yes      | -       | Renders moves as plain, non-interactive text when true                                                                       |

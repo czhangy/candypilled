@@ -2,7 +2,7 @@ import { useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
 import { MIN_IV } from '@/lib/static/constants';
-import { BattlePokemon } from '@/lib/static/types';
+import { BattlePokemon, GameDataSource } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import NatureHelpers from '@/lib/utils/NatureHelpers';
@@ -13,6 +13,7 @@ import MoveList from './MoveList/MoveList';
 import styles from './PokemonSlot.module.scss';
 
 type PokemonSlotProps = {
+    dataSource: GameDataSource;
     generation: number;
     // Keeps the held item and moveset interactive even when `isReadOnly`,
     // for contexts that allow editing those two fields but not species,
@@ -30,6 +31,7 @@ type PokemonSlotProps = {
 };
 
 const PokemonSlot: React.FC<PokemonSlotProps> = ({
+    dataSource,
     generation,
     hofDisplay,
     isReadOnly,
@@ -66,27 +68,28 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     // -------------------------------------------------------------------------
 
     const getTypes = (name: string): string[] =>
-        PokemonHelpers.getPokemonTypes(name, generation) ?? [];
+        PokemonHelpers.getPokemonTypes(dataSource, name, generation) ?? [];
 
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
     const displaySlug = pokemon
-        ? PokemonHelpers.getDisplaySlug(pokemon)
+        ? PokemonHelpers.getDisplaySlug(dataSource, pokemon)
         : undefined;
     const speciesName = displaySlug
-        ? (PokemonHelpers.getPokemonData(displaySlug)?.name ?? pokemon?.slug)
+        ? (PokemonHelpers.getPokemonData(dataSource, displaySlug)?.name ??
+          pokemon?.slug)
         : undefined;
     const sprite = displaySlug
-        ? PokemonHelpers.getPokemonSprite(displaySlug, variant)
+        ? PokemonHelpers.getPokemonSprite(dataSource, displaySlug, variant)
         : undefined;
     const heldItemSlug = pokemon?.heldItem;
     const heldItem = heldItemSlug
-        ? ItemHelpers.getHeldItemData(heldItemSlug)?.name
+        ? ItemHelpers.getHeldItemData(dataSource, heldItemSlug)?.name
         : undefined;
     const heldItemSprite = heldItemSlug
-        ? ItemHelpers.getHeldItemSprite(heldItemSlug)
+        ? ItemHelpers.getHeldItemSprite(dataSource, heldItemSlug)
         : undefined;
     const types = displaySlug ? getTypes(displaySlug) : [];
     const abilitySlug = pokemon?.ability;
@@ -99,6 +102,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
         pokemon?.moves ??
         (pokemon
             ? PokemonHelpers.getMovesAtLevel(
+                  dataSource,
                   pokemon.slug,
                   version,
                   pokemon.level
@@ -313,6 +317,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                     )}
                 </li>
                 <MoveList
+                    dataSource={dataSource}
                     generation={generation}
                     highlightDangerous={highlightDangerous}
                     isReadOnly={isItemAndMovesReadOnly}

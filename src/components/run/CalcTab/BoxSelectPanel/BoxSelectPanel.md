@@ -11,6 +11,7 @@ faster or slower than the currently selected enemy Pokémon, with a matching
 
 | Prop               | Type                         | Required | Default | Description                                                            |
 | ------------------ | ---------------------------- | -------- | ------- | ---------------------------------------------------------------------- |
+| `dataSource`       | `GameDataSource`             | Yes      | -       | The game's Pokémon dataset, used to resolve sprites and base stats     |
 | `enemySpeed`       | `number \| undefined`        | Yes      | -       | The currently selected enemy Pokémon's battle Speed, for comparison    |
 | `generation`       | `number`                     | Yes      | -       | The current game's generation, for resolving each Pokémon's base stats |
 | `onSelectPokemon`  | `(location: string) => void` | Yes      | -       | Called with the clicked Pokémon's location                             |

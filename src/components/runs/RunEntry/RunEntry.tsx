@@ -9,12 +9,16 @@ import RunIcon from '@/lib/icons/RunIcon';
 import SkullIcon from '@/lib/icons/SkullIcon';
 import { PokemonStatus } from '@/lib/static/enums';
 import { CaughtPokemon, Game, Run } from '@/lib/static/types';
+import EncounterHelpers from '@/lib/utils/EncounterHelpers';
+import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import HallOfFameHelpers from '@/lib/utils/HallOfFameHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
+import RunImportHelpers from '@/lib/utils/RunImportHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
 import DataModal from './DataModal/DataModal';
+import GenderSelectModal from './GenderSelectModal/GenderSelectModal';
 import styles from './RunEntry.module.scss';
 import StarterSelectModal from './StarterSelectModal/StarterSelectModal';
 
@@ -36,7 +40,16 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
 
     const [isConfirmOpen, setIsConfirmOpen] = useState(false);
     const [isDataModalOpen, setIsDataModalOpen] = useState(false);
+    const [isGenderSelectOpen, setIsGenderSelectOpen] = useState(false);
     const [isStarterSelectOpen, setIsStarterSelectOpen] = useState(false);
+    const [selectedGender, setSelectedGender] = useState<
+        'male' | 'female' | undefined
+    >(undefined);
+    const [pendingImport, setPendingImport] = useState<{
+        pokemon: CaughtPokemon[];
+        completedSplits: string[];
+        starterSlug: string;
+    } | null>(null);
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -61,13 +74,77 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const startNewRun = (starter: CaughtPokemon): void => {
+    const startNewRun = (
+        starter: CaughtPokemon,
+        gender: 'male' | 'female' | undefined
+    ): void => {
         const newRun: Run = {
             attempt: (run?.attempt ?? 0) + 1,
             completedSplits: [],
             hallOfFameCount: run?.hallOfFameCount ?? 0,
             starter: starter.slug,
+            ...(gender && { gender }),
             caughtPokemon: [starter],
+            missedLocations: [],
+            wipe: false,
+        };
+
+        LocalStorageHelpers.saveRun(game, newRun);
+        router.push(runUrl);
+    };
+
+    // The first step of starting a new run: gender selection when this
+    // game's content depends on it, otherwise straight to starter select.
+    const beginRunCreation = (): void => {
+        if (game.genders) {
+            setIsGenderSelectOpen(true);
+        } else {
+            setIsStarterSelectOpen(true);
+        }
+    };
+
+    // Throws unless the import has a Pokémon at the game's starter
+    // location whose evolution line's base species is one of
+    // game.starters. The location alone isn't a reliable match (a wild
+    // encounter can share it with the starter, e.g. Starly on Route 201),
+    // and an evolved starter (e.g. Infernape) keeps its original catch
+    // location but not its original species, so its species has to be
+    // resolved back to the base slug game.battles' conditions are keyed by.
+    const findImportedStarterSlug = (pokemon: CaughtPokemon[]): string => {
+        const starterLocation = EncounterHelpers.getStarterLocationName(game);
+        const caughtAtLocation = pokemon.find(
+            (caught) => caught.location === starterLocation
+        );
+        const baseSlug =
+            caughtAtLocation &&
+            EvolutionHelpers.getFullEvolutionLine(
+                game.dataSource,
+                caughtAtLocation.slug,
+                game.generation
+            )?.slug;
+
+        if (!baseSlug || !game.starters.includes(baseSlug)) {
+            throw new Error(
+                `No starter found at ${starterLocation}, where ${game.name} starters are received.`
+            );
+        }
+
+        return baseSlug;
+    };
+
+    const createRunFromImport = (
+        pokemon: CaughtPokemon[],
+        completedSplits: string[],
+        starterSlug: string,
+        gender: 'male' | 'female' | undefined
+    ): void => {
+        const newRun: Run = {
+            attempt: (run?.attempt ?? 0) + 1,
+            completedSplits,
+            hallOfFameCount: run?.hallOfFameCount ?? 0,
+            starter: starterSlug,
+            ...(gender && { gender }),
+            caughtPokemon: pokemon,
             missedLocations: [],
             wipe: false,
         };
@@ -88,7 +165,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         if (run) {
             setIsConfirmOpen(true);
         } else {
-            setIsStarterSelectOpen(true);
+            beginRunCreation();
         }
     };
 
@@ -97,7 +174,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     };
 
     const handleConfirmNewRun = (): void => {
-        setIsStarterSelectOpen(true);
+        beginRunCreation();
     };
 
     const handleDataClick = (): void => {
@@ -113,12 +190,72 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         HallOfFameHelpers.deleteEntriesForGame(game);
     };
 
+    const handleImport = (
+        importedPokemon: CaughtPokemon[],
+        importedCompletedSplits: string[]
+    ): void => {
+        if (run) {
+            LocalStorageHelpers.saveRun(
+                game,
+                RunImportHelpers.mergeImport(
+                    run,
+                    importedPokemon,
+                    importedCompletedSplits
+                )
+            );
+            return;
+        }
+
+        const starterSlug = findImportedStarterSlug(importedPokemon);
+
+        if (game.genders) {
+            setPendingImport({
+                pokemon: importedPokemon,
+                completedSplits: importedCompletedSplits,
+                starterSlug,
+            });
+        } else {
+            createRunFromImport(
+                importedPokemon,
+                importedCompletedSplits,
+                starterSlug,
+                undefined
+            );
+        }
+    };
+
+    const handleImportGenderSelectClose = (): void => {
+        setPendingImport(null);
+    };
+
+    const handleImportGenderSelect = (gender: 'male' | 'female'): void => {
+        if (!pendingImport) return;
+
+        createRunFromImport(
+            pendingImport.pokemon,
+            pendingImport.completedSplits,
+            pendingImport.starterSlug,
+            gender
+        );
+        setPendingImport(null);
+    };
+
+    const handleGenderSelectClose = (): void => {
+        setIsGenderSelectOpen(false);
+    };
+
+    const handleGenderSelect = (gender: 'male' | 'female'): void => {
+        setSelectedGender(gender);
+        setIsGenderSelectOpen(false);
+        setIsStarterSelectOpen(true);
+    };
+
     const handleStarterSelectClose = (): void => {
         setIsStarterSelectOpen(false);
     };
 
     const handleStarterSelect = (starter: CaughtPokemon): void => {
-        startNewRun(starter);
+        startNewRun(starter, selectedGender);
     };
 
     // -------------------------------------------------------------------------
@@ -214,10 +351,19 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                 <DataModal
                     accentColor={game.accentColor}
                     buttonTextColor={game.textContrastColor}
-                    gameName={game.name}
+                    game={game}
                     hasExistingRun={!!run}
                     onClose={handleDataModalClose}
+                    onImport={handleImport}
                     onReset={handleReset}
+                />
+            )}
+            {isGenderSelectOpen && game.genders && (
+                <GenderSelectModal
+                    game={game}
+                    genders={game.genders}
+                    onClose={handleGenderSelectClose}
+                    onSelect={handleGenderSelect}
                 />
             )}
             {isStarterSelectOpen && (
@@ -225,6 +371,14 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     game={game}
                     onClose={handleStarterSelectClose}
                     onSelect={handleStarterSelect}
+                />
+            )}
+            {pendingImport && game.genders && (
+                <GenderSelectModal
+                    game={game}
+                    genders={game.genders}
+                    onClose={handleImportGenderSelectClose}
+                    onSelect={handleImportGenderSelect}
                 />
             )}
         </div>

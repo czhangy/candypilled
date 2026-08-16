@@ -1,5 +1,4 @@
-import { ITEMS } from '@/lib/data/items';
-import { ItemData } from '@/lib/static/types';
+import { GameDataSource, ItemData } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 export default class ItemHelpers {
@@ -12,18 +11,29 @@ export default class ItemHelpers {
         return `/battle-items/${StringHelpers.toSlug(name)}.png`;
     }
 
-    /** The held item data for slug, or undefined if no held item matches. */
-    static getHeldItemData(slug: string): ItemData | undefined {
-        return ITEMS[slug];
+    /** The held item data for slug in dataSource, or undefined if no held item matches. */
+    static getHeldItemData(
+        dataSource: GameDataSource,
+        slug: string
+    ): ItemData | undefined {
+        return dataSource.items[slug];
     }
 
-    /** The slug of the held item named name, or undefined if none matches. */
-    static getHeldItemSlugByName(name: string): string | undefined {
-        return Object.values(ITEMS).find((item) => item.name === name)?.slug;
+    /** The slug of the held item named name in dataSource, or undefined if none matches. */
+    static getHeldItemSlugByName(
+        dataSource: GameDataSource,
+        name: string
+    ): string | undefined {
+        return Object.values(dataSource.items).find(
+            (item) => item.name === name
+        )?.slug;
     }
 
-    /** The sprite path for the held item slug, or undefined if no held item matches. */
-    static getHeldItemSprite(slug: string): string | undefined {
-        return ItemHelpers.getHeldItemData(slug)?.sprite;
+    /** The sprite path for the held item slug in dataSource, or undefined if no held item matches. */
+    static getHeldItemSprite(
+        dataSource: GameDataSource,
+        slug: string
+    ): string | undefined {
+        return ItemHelpers.getHeldItemData(dataSource, slug)?.sprite;
     }
 }

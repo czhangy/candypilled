@@ -11,6 +11,7 @@ is empty.
 
 | Prop           | Type                     | Required | Default | Description                                                          |
 | -------------- | ------------------------ | -------- | ------- | -------------------------------------------------------------------- |
+| `dataSource`   | `GameDataSource`         | Yes      | -       | The game's move dataset, used to resolve move data and values        |
 | `generation`   | `number`                 | Yes      | -       | The game's generation, used to resolve move values                   |
 | `interactive`  | `boolean`                | Yes      | -       | Whether rows are clickable links or static, non-interactive text     |
 | `moves`        | `LearnsetMove[]`         | Yes      | -       | The moves to list, in the order to display them                      |

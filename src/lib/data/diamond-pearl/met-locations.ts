@@ -2,7 +2,7 @@
 // Covers indices 0-111 per Bulbapedia's "List of locations by index number
 // in Generation IV" — indices 112-125 (Battle Frontier, Distortion World,
 // the Regigigas ruins, etc.) are Platinum-only and excluded here.
-export const DIAMOND_PEARL_MET_LOCATIONS: Record<number, string> = {
+export const MET_LOCATIONS: Record<number, string> = {
     0: 'Mystery Zone',
     1: 'Twinleaf Town',
     2: 'Sandgem Town',

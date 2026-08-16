@@ -7,6 +7,7 @@ type SplitHeaderProps = {
     completedSplits: string[];
     currentSplitName: string | null;
     game: Game;
+    gender: 'male' | 'female' | undefined;
     onSelectSplit: (name: string) => void;
     runSplitName: string | null;
 };
@@ -15,6 +16,7 @@ const SplitHeader: React.FC<SplitHeaderProps> = ({
     completedSplits,
     currentSplitName,
     game,
+    gender,
     onSelectSplit,
     runSplitName,
 }) => {
@@ -24,7 +26,7 @@ const SplitHeader: React.FC<SplitHeaderProps> = ({
 
     const runSplit = game.splits.find((split) => split.name === runSplitName);
     const levelCap = runSplit
-        ? SplitHelpers.getLevelCap(game, runSplit, completedSplits)
+        ? SplitHelpers.getLevelCap(game, runSplit, completedSplits, gender)
         : null;
     const splitNames = game.splits.map((split) => split.name);
 

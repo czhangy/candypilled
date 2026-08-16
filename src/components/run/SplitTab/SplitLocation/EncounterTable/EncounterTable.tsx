@@ -1,6 +1,10 @@
 import { useState, useSyncExternalStore } from 'react';
 import { EncounterMethod } from '@/lib/static/enums';
-import { Encounter, EncounterVisibilityContext } from '@/lib/static/types';
+import {
+    Encounter,
+    EncounterVisibilityContext,
+    GameDataSource,
+} from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -11,6 +15,7 @@ import TimeOfDayButtons from './TimeOfDayButtons/TimeOfDayButtons';
 
 type EncounterTableProps = {
     caughtHere?: string;
+    dataSource: GameDataSource;
     dupes: string[];
     encounters: Encounter[];
     generation: number;
@@ -23,6 +28,7 @@ type EncounterTableProps = {
 
 const EncounterTable: React.FC<EncounterTableProps> = ({
     caughtHere,
+    dataSource,
     dupes,
     encounters,
     generation,
@@ -83,11 +89,21 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
 
     const isCaughtHere = (species: string): boolean =>
         !!caughtHere &&
-        EvolutionHelpers.isSameEvolutionLine(species, caughtHere, generation);
+        EvolutionHelpers.isSameEvolutionLine(
+            dataSource,
+            species,
+            caughtHere,
+            generation
+        );
 
     const isEvolutionLineCaught = (species: string): boolean =>
         dupes.some((name) =>
-            EvolutionHelpers.isSameEvolutionLine(species, name, generation)
+            EvolutionHelpers.isSameEvolutionLine(
+                dataSource,
+                species,
+                name,
+                generation
+            )
         );
 
     const isCaughtElsewhere = (species: string): boolean =>
@@ -138,6 +154,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
 
     const visibilityContext: EncounterVisibilityContext = {
         caughtHere,
+        dataSource,
         dupes,
         generation,
         settings,
@@ -183,7 +200,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     // -------------------------------------------------------------------------
 
     const getEncounterName = (encounter: Encounter): string =>
-        PokemonHelpers.getPokemonData(encounter.species)?.name ??
+        PokemonHelpers.getPokemonData(dataSource, encounter.species)?.name ??
         encounter.species;
 
     const getEncountersForMethod = (method: EncounterMethod): Encounter[] =>
@@ -249,6 +266,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                 <tbody>
                     {methods.map((method) => (
                         <MethodGroup
+                            dataSource={dataSource}
                             encounters={getEncountersForMethod(method)}
                             getDisplayChance={getDisplayChance}
                             isSpeciesCaughtElsewhere={isCaughtElsewhere}

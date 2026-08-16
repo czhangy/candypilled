@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import Modal from '@/components/common/Modal/Modal';
-import { CaughtPokemon } from '@/lib/static/types';
+import { CaughtPokemon, GameDataSource } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './PokemonPickerModal.module.scss';
 
 type PokemonPickerModalProps = {
+    dataSource: GameDataSource;
     onClose: () => void;
     onSelect: (pokemon: CaughtPokemon) => void;
     pokemon: CaughtPokemon[];
@@ -12,6 +13,7 @@ type PokemonPickerModalProps = {
 };
 
 const PokemonPickerModal: React.FC<PokemonPickerModalProps> = ({
+    dataSource,
     onClose,
     onSelect,
     pokemon,
@@ -36,15 +38,19 @@ const PokemonPickerModal: React.FC<PokemonPickerModalProps> = ({
                             {pokemon.map((caughtPokemon) => {
                                 const displaySlug =
                                     PokemonHelpers.getDisplaySlug(
+                                        dataSource,
                                         caughtPokemon
                                     );
                                 const sprite = PokemonHelpers.getPokemonSprite(
+                                    dataSource,
                                     displaySlug,
                                     variant
                                 );
                                 const name =
-                                    PokemonHelpers.getPokemonData(displaySlug)
-                                        ?.name ?? caughtPokemon.slug;
+                                    PokemonHelpers.getPokemonData(
+                                        dataSource,
+                                        displaySlug
+                                    )?.name ?? caughtPokemon.slug;
 
                                 return (
                                     <button

@@ -10,6 +10,7 @@ respectively.
 
 | Prop           | Type                     | Required | Default | Description                                                                                            |
 | -------------- | ------------------------ | -------- | ------- | ------------------------------------------------------------------------------------------------------ |
+| `dataSource`   | `GameDataSource`         | Yes      | -       | The game's item dataset, used to resolve the item catalog and details                                  |
 | `generation`   | `number`                 | Yes      | -       | The game's generation, used to resolve the selected item's values and to filter which items are listed |
 | `onSelectItem` | `(slug: string) => void` | Yes      | -       | Called with an item's slug when it's clicked in the list                                               |
 | `selectedItem` | `string`                 | No       | -       | The currently selected item's slug, if any                                                             |

@@ -9,6 +9,7 @@ damage percentage it would deal to the opposing Pokémon. Used twice by
 | Prop         | Type                       | Required | Default | Description                                                         |
 | ------------ | -------------------------- | -------- | ------- | ------------------------------------------------------------------- |
 | `attacker`   | `CalcPokemonInput \| null` | Yes      | -       | The attacking Pokémon's calculator details, or `null` if incomplete |
+| `dataSource` | `GameDataSource`           | Yes      | -       | The game's move dataset, used to resolve move types                 |
 | `defender`   | `CalcPokemonInput \| null` | Yes      | -       | The defending Pokémon's calculator details, or `null` if incomplete |
 | `generation` | `number`                   | Yes      | -       | The generation to calculate against                                 |
 | `ivs`        | `StatValues`               | Yes      | -       | The attacker's IVs, used to resolve Hidden Power's type             |

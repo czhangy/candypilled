@@ -5,10 +5,9 @@ import { logSuccess, runScript } from '@/lib/scripts/utils/helpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const USAGE =
-    'Usage: npm run gen:trainer-class <game> <slug> <displayName> <male|female> [spriteSlug]';
+    'Usage: npm run gen:trainer-class <assetFolder> <slug> <displayName> [spriteSlug]';
 const INVALID_SLUG = 'slug must be a lowercase kebab-case identifier.';
 const CLASS_EXISTS = 'That trainer class slug already exists.';
-const INVALID_GENDER = "gender must be 'male' or 'female'.";
 const SPRITE_NOT_FOUND = 'No sprite was found at the expected path';
 
 const CATALOG_PATH = path.join('src', 'lib', 'data', 'trainer-classes.ts');
@@ -17,31 +16,26 @@ const SLUG_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const IDENTIFIER_PATTERN = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/;
 
 type TrainerClassArgs = {
-    game: string;
+    assetFolder: string;
     slug: string;
     displayName: string;
-    gender: 'male' | 'female';
     spriteSlug: string;
 };
 
 const parseArgs = (argv: string[]): TrainerClassArgs => {
-    const [game, slug, displayName, gender, spriteSlug] = argv;
-    if (!game || !slug || !displayName || !gender) {
+    const [assetFolder, slug, displayName, spriteSlug] = argv;
+    if (!assetFolder || !slug || !displayName) {
         throw new Error(USAGE);
     }
-    if (gender !== 'male' && gender !== 'female') {
-        throw new Error(INVALID_GENDER);
-    }
     return {
-        game,
+        assetFolder,
         slug,
         displayName,
-        gender,
         spriteSlug: spriteSlug ?? slug,
     };
 };
 
-const validateArgs = (args: TrainerClassArgs, gameSlug: string): void => {
+const validateArgs = (args: TrainerClassArgs, assetFolder: string): void => {
     if (!SLUG_PATTERN.test(args.slug)) {
         throw new Error(INVALID_SLUG);
     }
@@ -51,8 +45,8 @@ const validateArgs = (args: TrainerClassArgs, gameSlug: string): void => {
 
     const spritePath = path.join(
         'public',
-        gameSlug,
         'trainers',
+        assetFolder,
         `${args.spriteSlug}.png`
     );
     if (!fs.existsSync(spritePath)) {
@@ -104,7 +98,6 @@ const findInsertionIndex = (
 const serializeEntry = (args: TrainerClassArgs): string =>
     `    ${keyLiteral(args.slug)}: {\n` +
     `        displayName: '${args.displayName}',\n` +
-    `        gender: '${args.gender}',\n` +
     `        spriteSlug: '${args.spriteSlug}',\n` +
     `    },\n`;
 
@@ -123,9 +116,9 @@ const addTrainerClass = (args: TrainerClassArgs): void => {
 
 runScript(() => {
     const args = parseArgs(process.argv.slice(2));
-    const gameSlug = StringHelpers.toSlug(args.game);
+    const assetFolder = StringHelpers.toSlug(args.assetFolder);
 
-    validateArgs(args, gameSlug);
+    validateArgs(args, assetFolder);
     addTrainerClass(args);
 
     logSuccess(`${args.slug} was added to TRAINER_CLASSES successfully!`);

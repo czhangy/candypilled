@@ -7,6 +7,7 @@ moveset slots, via a searchable list.
 
 | Prop           | Type                     | Required | Default | Description                                                      |
 | -------------- | ------------------------ | -------- | ------- | ---------------------------------------------------------------- |
+| `dataSource`   | `GameDataSource`         | Yes      | -       | The game's move dataset, used to build the move catalog          |
 | `generation`   | `number`                 | Yes      | -       | The game's generation, used to filter which moves are selectable |
 | `selectedMove` | `string`                 | No       | -       | The move slug being replaced, highlighted in the list            |
 | `onClose`      | `() => void`             | Yes      | -       | Called when the modal is dismissed without a selection           |

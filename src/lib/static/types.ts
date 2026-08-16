@@ -1,13 +1,16 @@
 import { StaticImageData } from 'next/image';
 import {
     AiFlag,
+    BadgeAssetFolder,
     BattleMetadata,
     EncounterMethod,
     FieldCondition,
+    GameVersionGroup,
     GrowthRate,
     MapAnchor,
     Nature,
     PokemonStatus,
+    TrainerAssetFolder,
 } from '@/lib/static/enums';
 
 export type StatValues = {
@@ -140,24 +143,39 @@ export type BattlePokemon = {
     slug: string;
 };
 
-// A trainer class' display name, gender, and sprite, keyed by slug in
+// A trainer class' display name and sprite, keyed by slug in
 // TRAINER_CLASSES. Classes fielded by a single named individual (e.g.
 // Leader, Commander) get one catalog entry per person rather than a shared
-// entry, since their gender and sprite aren't determined by the class alone.
+// entry, since their sprite isn't determined by the class alone.
 export type TrainerClass = {
     displayName: string;
-    gender: 'male' | 'female';
     spriteSlug: string;
 };
 
+// A condition gating whether a BattleTeam applies to the current run. Add a
+// new variant here for a new kind of run-dependent team, matching
+// SplitSaveCondition's discriminated-union shape.
+export type BattleTeamCondition = { type: 'starter'; starter: string };
+
+// One possible roster for a trainer. A team with no condition always
+// applies; a team with a condition only applies when that condition is met
+// (e.g. matching the run's starter). Every team that survives filtering is
+// rendered together — a trainer can have several genuinely independent,
+// unconditioned team options (e.g. a randomized roster), and there's no way
+// to know from a run alone which one a given playthrough actually has.
+export type BattleTeam = {
+    condition?: BattleTeamCondition;
+    team: BattlePokemon[];
+};
+
 // One trainer's own slice of a battle: their TRAINER_CLASSES slug, name, and
-// team, resolved for the current starter. A non-tag battle has a single
-// group; a tag battle has one per trainer, in trainerClass/secondTrainer
-// order.
+// every team that survived condition filtering for the current run. A
+// non-tag battle has a single group; a tag battle has one per trainer, in
+// trainerClass/secondTrainer order.
 export type BattleTeamGroup = {
     items?: BattleItem[];
     name: string;
-    team: BattlePokemon[];
+    teams: BattlePokemon[][];
     trainerClass: string;
 };
 
@@ -203,8 +221,7 @@ export type Gen4SaveLayout = {
 // attributed to the trainer that owns them.
 export type BattleTrainer = {
     name: string;
-    team?: BattlePokemon[];
-    teamsByStarter?: Partial<Record<string, BattlePokemon[]>>;
+    teams: BattleTeam[];
     // TRAINER_CLASSES slug.
     trainerClass: string;
 };
@@ -216,8 +233,7 @@ export type BattleTrainer = {
 // it's fought.
 export type BattleData = {
     name: string;
-    team?: BattlePokemon[];
-    teamsByStarter?: Partial<Record<string, BattlePokemon[]>>;
+    teams: BattleTeam[];
     items?: BattleItem[];
     secondTrainer?: BattleTrainer;
     // TRAINER_CLASSES slug.
@@ -231,6 +247,14 @@ export type Battle = {
     customHeight?: number;
     customWidth?: number;
     fieldCondition?: FieldCondition;
+    // Restricts this marker to runs of the matching gender (Game.genders)
+    // — e.g. a location where the trainer/team fought is entirely
+    // different by gender gets two Battle entries here, each
+    // pointing at its own independent Game.battles entry, rather than one
+    // entry with gender-conditioned team content (that's what
+    // BattleTeamCondition is for — a shared trainer with a divergent
+    // roster — not a wholesale different trainer).
+    gender?: 'male' | 'female';
     metadata: BattleMetadata[];
     x: number;
     y: number;
@@ -259,6 +283,7 @@ export type Encounter = {
 // its own id straight out of it without any signature changes.
 export type EncounterVisibilityContext = {
     caughtHere?: string;
+    dataSource: GameDataSource;
     dupes: string[];
     generation: number;
     settings: Record<string, boolean>;
@@ -369,15 +394,43 @@ export type Split = {
     saveCondition: SplitSaveCondition;
 };
 
+// The species/move/item records a game's data pulls from. Every
+// unmodified game shares the same vanilla PokeAPI-sourced records; a game
+// whose data diverges from vanilla (e.g. a ROM hack) points at its own
+// independent set instead. Abilities aren't overridden per-game yet —
+// AbilityHelpers reads the global ABILITIES constant directly.
+export type GameDataSource = {
+    pokemon: Record<string, PokemonData>;
+    moves: Record<string, MoveData>;
+    items: Record<string, ItemData>;
+};
+
 export type Game = {
     name: string;
     logo: string;
     generation: number;
-    // PokeAPI version group slug for this game, e.g. "platinum". Used to
-    // resolve which of a Pokémon's per-version-group learnsets applies,
-    // since level-up movesets can differ between versions within the same
-    // generation.
-    version: string;
+    // PokeAPI version group slug for this game. Used to resolve which of a
+    // Pokémon's per-version-group learnsets applies, since level-up
+    // movesets can differ between versions within the same generation.
+    version: GameVersionGroup;
+    dataSource: GameDataSource;
+    // public/badges/<folder>/ this game's gym-badge icons are served from.
+    // A game that reuses another game's badge art (e.g. a shared region)
+    // points at that game's folder instead of duplicating the files.
+    badgeAssetFolder: BadgeAssetFolder;
+    // public/trainers/<folder>/ this game's trainer battle sprites are
+    // served from, under the same sharing convention as badgeAssetFolder
+    // — kept independent of it since trainer and badge art don't
+    // necessarily reuse together (e.g. a variant could share one but not
+    // the other).
+    trainerAssetFolder: TrainerAssetFolder;
+    // The protagonist sprite shown for each gender option at run
+    // creation, when choosing matters for this game (it can change more
+    // than cosmetics, e.g. which trainer/team a battle resolves to — see
+    // BattleTeamCondition's 'gender' variant). Most games don't model
+    // this and omit the field entirely; it's only set for a game whose
+    // content actually diverges by gender.
+    genders?: { male: string; female: string };
     splits: Split[];
     starters: string[];
     accentColor: string;
@@ -403,6 +456,8 @@ export type Run = {
     completedSplits: string[];
     hallOfFameCount: number;
     starter: string;
+    // Only set when this run's game defines Game.genders.
+    gender?: 'male' | 'female';
     caughtPokemon: CaughtPokemon[];
     // Locations whose encounter was used up without catching anything (the
     // Pokémon fled, fainted, etc.), by location name — same key space as

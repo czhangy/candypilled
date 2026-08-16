@@ -9,10 +9,11 @@ internally past a fixed maximum height rather than growing the page.
 
 ## Props
 
-| Prop         | Type     | Required | Default | Description                                              |
-| ------------ | -------- | -------- | ------- | -------------------------------------------------------- |
-| `generation` | `number` | Yes      | -       | The game's generation, used to resolve the move's values |
-| `moveSlug`   | `string` | Yes      | -       | The selected move's slug                                 |
+| Prop         | Type             | Required | Default | Description                                              |
+| ------------ | ---------------- | -------- | ------- | -------------------------------------------------------- |
+| `dataSource` | `GameDataSource` | Yes      | -       | The game's move dataset, used to resolve the move's data |
+| `generation` | `number`         | Yes      | -       | The game's generation, used to resolve the move's values |
+| `moveSlug`   | `string`         | Yes      | -       | The selected move's slug                                 |
 
 ## Computations
 

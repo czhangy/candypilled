@@ -115,6 +115,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         rest.onAddPokemon({
             ability:
                 PokemonHelpers.getPokemonAbilities(
+                    game.dataSource,
                     defaultCatchSpecies,
                     generation
                 )?.slot1 ?? '',
@@ -123,6 +124,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
             ivs: 0,
             level,
             moves: PokemonHelpers.getMovesAtLevel(
+                game.dataSource,
                 defaultCatchSpecies,
                 game.version,
                 level
@@ -137,16 +139,24 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     // -------------------------------------------------------------------------
 
     const pokemon = species
-        ? PokemonHelpers.getPokemonData(species)
+        ? PokemonHelpers.getPokemonData(game.dataSource, species)
         : undefined;
     const sprite = species
-        ? PokemonHelpers.getPokemonSprite(species, variant)
+        ? PokemonHelpers.getPokemonSprite(game.dataSource, species, variant)
         : undefined;
     const types = species
-        ? (PokemonHelpers.getPokemonTypes(species, generation) ?? [])
+        ? (PokemonHelpers.getPokemonTypes(
+              game.dataSource,
+              species,
+              generation
+          ) ?? [])
         : [];
     const abilities = species
-        ? PokemonHelpers.getPokemonAbilities(species, generation)
+        ? PokemonHelpers.getPokemonAbilities(
+              game.dataSource,
+              species,
+              generation
+          )
         : undefined;
     const abilityEntries: AbilityEntry[] = abilities
         ? [
@@ -158,17 +168,25 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
           ]
         : [];
     const catchRate = species
-        ? PokemonHelpers.getPokemonCatchRate(species)
+        ? PokemonHelpers.getPokemonCatchRate(game.dataSource, species)
         : undefined;
     const hideTradeEvos = settings['disable-trade-evos'] ?? false;
     const evolutionLine = species
-        ? EvolutionHelpers.getFullEvolutionLine(species, generation)
+        ? EvolutionHelpers.getFullEvolutionLine(
+              game.dataSource,
+              species,
+              generation
+          )
         : undefined;
     const stats = species
-        ? PokemonHelpers.getPokemonStats(species, generation)
+        ? PokemonHelpers.getPokemonStats(game.dataSource, species, generation)
         : undefined;
     const learnset = species
-        ? PokemonHelpers.getPokemonLearnset(species, game.version)
+        ? PokemonHelpers.getPokemonLearnset(
+              game.dataSource,
+              species,
+              game.version
+          )
         : undefined;
     const locations = species
         ? EncounterHelpers.getEncounterLocations(game, species)
@@ -179,6 +197,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         !!pokemon &&
         !!rest.encounter &&
         EvolutionHelpers.isSameEvolutionLine(
+            game.dataSource,
             pokemon.slug,
             rest.encounter,
             generation
@@ -189,7 +208,12 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         rest.mode === 'catch' &&
         !!pokemon &&
         rest.dupes.some((slug) =>
-            EvolutionHelpers.isSameEvolutionLine(pokemon.slug, slug, generation)
+            EvolutionHelpers.isSameEvolutionLine(
+                game.dataSource,
+                pokemon.slug,
+                slug,
+                generation
+            )
         );
     const isCatchDisabled =
         rest.mode === 'catch' &&
@@ -240,6 +264,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
             />
             <EvolutionLine
                 currentSlug={species}
+                dataSource={game.dataSource}
                 hideTradeEvos={hideTradeEvos}
                 onSelectSpecies={onSelectSpecies}
                 step={evolutionLine}
@@ -298,6 +323,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     {rest.mode === 'choose' ||
                     activeDetailTab === 'learnset' ? (
                         <LearnsetList
+                            dataSource={game.dataSource}
                             generation={generation}
                             interactive={rest.mode !== 'choose'}
                             moves={learnset ?? []}

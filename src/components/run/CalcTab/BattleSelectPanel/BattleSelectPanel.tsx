@@ -5,12 +5,14 @@ import styles from './BattleSelectPanel.module.scss';
 
 type BattleSelectPanelProps = {
     game: Game;
+    gender: 'male' | 'female' | undefined;
     onSelectBattle: (battleKey: string) => void;
     selectedBattle?: string;
 };
 
 const BattleSelectPanel: React.FC<BattleSelectPanelProps> = ({
     game,
+    gender,
     onSelectBattle,
     selectedBattle,
 }) => {
@@ -19,7 +21,8 @@ const BattleSelectPanel: React.FC<BattleSelectPanelProps> = ({
     // -------------------------------------------------------------------------
 
     const trainerOptions: DropdownOption[] = BattleHelpers.getAllBattles(
-        game
+        game,
+        gender
     ).map((battle) => ({
         label: BattleHelpers.getFullName(battle, game),
         value: BattleHelpers.getBattleKey(battle),

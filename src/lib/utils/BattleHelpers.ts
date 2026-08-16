@@ -1,6 +1,8 @@
 import {
     Battle,
     BattlePokemon,
+    BattleTeam,
+    BattleTeamCondition,
     BattleTeamGroup,
     Game,
     Location,
@@ -48,7 +50,7 @@ export default class BattleHelpers {
             {
                 trainerClass: data.trainerClass,
                 name: data.name,
-                team: data.teamsByStarter?.[starter] ?? data.team ?? [],
+                teams: BattleHelpers.getMatchingTeams(data.teams, starter),
                 items: data.items,
             },
         ];
@@ -57,44 +59,62 @@ export default class BattleHelpers {
             groups.push({
                 trainerClass: data.secondTrainer.trainerClass,
                 name: data.secondTrainer.name,
-                team:
-                    data.secondTrainer.teamsByStarter?.[starter] ??
-                    data.secondTrainer.team ??
-                    [],
+                teams: BattleHelpers.getMatchingTeams(
+                    data.secondTrainer.teams,
+                    starter
+                ),
             });
         }
 
         return groups;
     }
 
-    /** battle's full team for starter (both trainers' Pokémon combined for a tag battle), falling back to its default team. */
+    /** battle's full team for starter (every surviving team across both trainers combined for a tag battle). */
     static getTeamFromOptions(
         battle: Battle,
         starter: string,
         game: Game
     ): BattlePokemon[] {
         return BattleHelpers.getTeamGroups(battle, starter, game).flatMap(
-            (group) => group.team
+            (group) => group.teams.flat()
         );
     }
 
-    /** Every battle in location, excluding those hidden via location or subarea. */
-    static getBattlesInLocation(location: Location): Battle[] {
+    /** Every battle in location for gender, excluding those hidden via location/subarea or restricted to the other gender. */
+    static getBattlesInLocation(
+        location: Location,
+        gender: 'male' | 'female' | undefined
+    ): Battle[] {
         if (location.hideBattles) return [];
 
-        return location.subareas
+        const battles = location.subareas
             ? location.subareas
                   .filter((subarea) => !subarea.hideBattles)
                   .flatMap((subarea) => subarea.battles ?? [])
             : (location.battles ?? []);
+
+        return BattleHelpers.filterByGender(battles, gender);
     }
 
-    /** Every battle in game, in game order. */
-    static getAllBattles(game: Game): Battle[] {
+    /** Every battle in game for gender, in game order. */
+    static getAllBattles(
+        game: Game,
+        gender: 'male' | 'female' | undefined
+    ): Battle[] {
         return game.splits.flatMap((split) =>
             split.locations.flatMap((location) =>
-                BattleHelpers.getBattlesInLocation(location)
+                BattleHelpers.getBattlesInLocation(location, gender)
             )
+        );
+    }
+
+    /** battles restricted to gender: entries with no `gender` always pass, entries with one only pass for a matching run gender. */
+    static filterByGender(
+        battles: Battle[],
+        gender: 'male' | 'female' | undefined
+    ): Battle[] {
+        return battles.filter(
+            (battle) => !battle.gender || battle.gender === gender
         );
     }
 
@@ -102,15 +122,49 @@ export default class BattleHelpers {
     static getSelectedTeam(
         game: Game,
         battleKey: string | undefined,
-        starter: string
+        starter: string,
+        gender: 'male' | 'female' | undefined
     ): BattlePokemon[] {
         if (!battleKey) return [];
 
-        const battle = BattleHelpers.getAllBattles(game).find(
+        const battle = BattleHelpers.getAllBattles(game, gender).find(
             (candidate) => BattleHelpers.getBattleKey(candidate) === battleKey
         );
         return battle
             ? BattleHelpers.getTeamFromOptions(battle, starter, game)
             : [];
+    }
+
+    // -------------------------------------------------------------------------
+    // PRIVATE
+    // -------------------------------------------------------------------------
+
+    private static matchesCondition(
+        condition: BattleTeamCondition | undefined,
+        starter: string
+    ): boolean {
+        if (!condition) return true;
+
+        switch (condition.type) {
+            case 'starter':
+                return condition.starter === starter;
+        }
+    }
+
+    // Every team whose condition (if any) is met for starter, as bare
+    // roster arrays. Falls back to a single empty roster rather than an
+    // empty array so a trainer whose only teams are conditioned still gets
+    // a row to render (e.g. empty slots) instead of silently vanishing.
+    private static getMatchingTeams(
+        teams: BattleTeam[],
+        starter: string
+    ): BattlePokemon[][] {
+        const matching = teams
+            .filter((entry) =>
+                BattleHelpers.matchesCondition(entry.condition, starter)
+            )
+            .map((entry) => entry.team);
+
+        return matching.length > 0 ? matching : [[]];
     }
 }

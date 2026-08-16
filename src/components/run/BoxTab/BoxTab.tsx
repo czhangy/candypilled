@@ -60,7 +60,12 @@ const BoxTab: React.FC<BoxTabProps> = ({
         (split) => split.name === currentSplitName
     );
     const levelCap = currentSplit
-        ? SplitHelpers.getLevelCap(game, currentSplit, run.completedSplits)
+        ? SplitHelpers.getLevelCap(
+              game,
+              currentSplit,
+              run.completedSplits,
+              run.gender
+          )
         : null;
 
     // -------------------------------------------------------------------------
@@ -133,6 +138,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
         <div className={styles['box-tab']}>
             <PokemonBox
                 caughtPokemon={run.caughtPokemon}
+                dataSource={game.dataSource}
                 levelCap={levelCap}
                 onReorderPokemon={handleReorderPokemon}
                 onSelectPokemon={onSelectPokemon}
@@ -142,6 +148,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
             />
             <PokemonPreview
                 canSelectLocation={canSelectLocation}
+                dataSource={game.dataSource}
                 generation={game.generation}
                 levelCap={levelCap}
                 onSelectAbility={onSelectAbility}

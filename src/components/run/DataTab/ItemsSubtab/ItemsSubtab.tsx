@@ -1,15 +1,17 @@
 import SearchableList from '@/components/common/SearchableList/SearchableList';
-import { ITEMS } from '@/lib/data/items';
+import { GameDataSource } from '@/lib/static/types';
 import ItemDetail from './ItemDetail/ItemDetail';
 import styles from './ItemsSubtab.module.scss';
 
 type ItemsSubtabProps = {
+    dataSource: GameDataSource;
     generation: number;
     onSelectItem: (slug: string) => void;
     selectedItem?: string;
 };
 
 const ItemsSubtab: React.FC<ItemsSubtabProps> = ({
+    dataSource,
     generation,
     onSelectItem,
     selectedItem,
@@ -18,7 +20,7 @@ const ItemsSubtab: React.FC<ItemsSubtabProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const availableItems = Object.values(ITEMS)
+    const availableItems = Object.values(dataSource.items)
         .filter(
             (item) =>
                 item.introducedInGeneration <= generation &&
@@ -43,7 +45,11 @@ const ItemsSubtab: React.FC<ItemsSubtabProps> = ({
                 selectedItem={effectiveItem}
                 sortAlphabetically
             />
-            <ItemDetail generation={generation} itemSlug={effectiveItem} />
+            <ItemDetail
+                dataSource={dataSource}
+                generation={generation}
+                itemSlug={effectiveItem}
+            />
         </div>
     );
 };

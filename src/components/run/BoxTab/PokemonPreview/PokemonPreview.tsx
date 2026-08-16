@@ -4,7 +4,7 @@ import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/E
 import LearnsetList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
 import { MOVE_SLOT_COUNT, STAT_FIELDS } from '@/lib/static/constants';
 import { PokemonStatus } from '@/lib/static/enums';
-import { CaughtPokemon, StatValues } from '@/lib/static/types';
+import { CaughtPokemon, GameDataSource, StatValues } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
@@ -17,6 +17,7 @@ import styles from './PokemonPreview.module.scss';
 
 type PokemonPreviewProps = {
     canSelectLocation: boolean;
+    dataSource: GameDataSource;
     generation: number;
     levelCap: number | null;
     onSelectAbility: (slug: string) => void;
@@ -32,6 +33,7 @@ type PokemonPreviewProps = {
 
 const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     canSelectLocation,
+    dataSource,
     generation,
     levelCap,
     onSelectAbility,
@@ -121,20 +123,24 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     // -------------------------------------------------------------------------
 
     const displaySlug = pokemon
-        ? PokemonHelpers.getDisplaySlug(pokemon)
+        ? PokemonHelpers.getDisplaySlug(dataSource, pokemon)
         : undefined;
     const data = displaySlug
-        ? PokemonHelpers.getPokemonData(displaySlug)
+        ? PokemonHelpers.getPokemonData(dataSource, displaySlug)
         : undefined;
     const sprite = displaySlug
-        ? PokemonHelpers.getPokemonSprite(displaySlug, variant)
+        ? PokemonHelpers.getPokemonSprite(dataSource, displaySlug, variant)
         : undefined;
     const hideTradeEvos = settings['disable-trade-evos'] ?? false;
     const evolutionLine = pokemon
-        ? EvolutionHelpers.getFullEvolutionLine(pokemon.slug, generation)
+        ? EvolutionHelpers.getFullEvolutionLine(
+              dataSource,
+              pokemon.slug,
+              generation
+          )
         : undefined;
     const learnset = pokemon
-        ? PokemonHelpers.getPokemonLearnset(pokemon.slug, version)
+        ? PokemonHelpers.getPokemonLearnset(dataSource, pokemon.slug, version)
         : undefined;
     const isOverCap =
         !!pokemon && levelCap !== null && pokemon.level > levelCap;
@@ -150,14 +156,18 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
         : undefined;
     const heldItemSlug = pokemon?.heldItem;
     const heldItemName = heldItemSlug
-        ? ItemHelpers.getHeldItemData(heldItemSlug)?.name
+        ? ItemHelpers.getHeldItemData(dataSource, heldItemSlug)?.name
         : undefined;
     const ivs = pokemon
         ? StatHelpers.normalizeStats(pokemon.ivs, 31)
         : undefined;
     const baseStats =
         displaySlug && data
-            ? PokemonHelpers.getPokemonStats(displaySlug, generation)
+            ? PokemonHelpers.getPokemonStats(
+                  dataSource,
+                  displaySlug,
+                  generation
+              )
             : undefined;
     const stats =
         pokemon && baseStats && ivs
@@ -369,6 +379,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                         <div className={styles['evolution-wrapper']}>
                             <EvolutionLine
                                 currentSlug={pokemon.slug}
+                                dataSource={dataSource}
                                 hideTradeEvos={hideTradeEvos}
                                 onSelectSpecies={onSelectSpecies}
                                 step={evolutionLine}
@@ -390,6 +401,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                             <div className={styles['moves-grid']}>
                                 {moveSlots.map((move, index) => (
                                     <MoveCard
+                                        dataSource={dataSource}
                                         generation={generation}
                                         ivs={StatHelpers.normalizeStats(
                                             pokemon.ivs,
@@ -407,6 +419,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                 Learnset
                             </span>
                             <LearnsetList
+                                dataSource={dataSource}
                                 generation={generation}
                                 interactive
                                 moves={learnset ?? []}

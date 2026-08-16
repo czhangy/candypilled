@@ -1,10 +1,12 @@
 'use client';
 
 import Image from 'next/image';
+import { GameDataSource } from '@/lib/static/types';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './StarterSelect.module.scss';
 
 type StarterSelectProps = {
+    dataSource: GameDataSource;
     onSelect: (starter: string) => void;
     selected: string | null;
     starters: string[];
@@ -12,6 +14,7 @@ type StarterSelectProps = {
 };
 
 const StarterSelect: React.FC<StarterSelectProps> = ({
+    dataSource,
     onSelect,
     selected,
     starters,
@@ -34,11 +37,13 @@ const StarterSelect: React.FC<StarterSelectProps> = ({
             <div className={styles.starters}>
                 {starters.map((starter) => {
                     const sprite = PokemonHelpers.getPokemonSprite(
+                        dataSource,
                         starter,
                         variant
                     );
                     const name =
-                        PokemonHelpers.getPokemonData(starter)?.name ?? starter;
+                        PokemonHelpers.getPokemonData(dataSource, starter)
+                            ?.name ?? starter;
 
                     return (
                         <button

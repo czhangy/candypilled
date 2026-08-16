@@ -1,6 +1,10 @@
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
-import { BattleMetadata, FieldCondition } from '@/lib/static/enums';
+import {
+    BattleMetadata,
+    FieldCondition,
+    TrainerAssetFolder,
+} from '@/lib/static/enums';
 import { Battle, BattleItem } from '@/lib/static/types';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -11,18 +15,18 @@ type TrainerPanelProps = {
     battle: Battle;
     isStacked: boolean;
     items?: BattleItem[];
+    trainerAssetFolder: TrainerAssetFolder;
     trainerClass: string;
     trainerName: string;
-    variant: string;
 };
 
 const TrainerPanel: React.FC<TrainerPanelProps> = ({
     battle,
     isStacked,
     items,
+    trainerAssetFolder,
     trainerClass,
     trainerName,
-    variant,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
@@ -63,7 +67,10 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
                         trainerName
                     )}
                     height={SPRITE_SIZE}
-                    src={TrainerHelpers.getTrainerSprite(trainerClass, variant)}
+                    src={TrainerHelpers.getTrainerSprite(
+                        trainerClass,
+                        trainerAssetFolder
+                    )}
                     width={SPRITE_SIZE}
                 />
             </div>

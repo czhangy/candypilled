@@ -67,11 +67,20 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const pokemon = PokemonHelpers.getPokemonData(species);
-    const sprite = PokemonHelpers.getPokemonSprite(species, variant);
+    const pokemon = PokemonHelpers.getPokemonData(game.dataSource, species);
+    const sprite = PokemonHelpers.getPokemonSprite(
+        game.dataSource,
+        species,
+        variant
+    );
     const types =
-        PokemonHelpers.getPokemonTypes(species, game.generation) ?? [];
+        PokemonHelpers.getPokemonTypes(
+            game.dataSource,
+            species,
+            game.generation
+        ) ?? [];
     const abilities = PokemonHelpers.getPokemonAbilities(
+        game.dataSource,
         species,
         game.generation
     );
@@ -84,14 +93,26 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                   : []),
           ]
         : [];
-    const catchRate = PokemonHelpers.getPokemonCatchRate(species);
+    const catchRate = PokemonHelpers.getPokemonCatchRate(
+        game.dataSource,
+        species
+    );
     const hideTradeEvos = settings['disable-trade-evos'] ?? false;
     const evolutionLine = EvolutionHelpers.getFullEvolutionLine(
+        game.dataSource,
         species,
         game.generation
     );
-    const stats = PokemonHelpers.getPokemonStats(species, game.generation);
-    const learnset = PokemonHelpers.getPokemonLearnset(species, game.version);
+    const stats = PokemonHelpers.getPokemonStats(
+        game.dataSource,
+        species,
+        game.generation
+    );
+    const learnset = PokemonHelpers.getPokemonLearnset(
+        game.dataSource,
+        species,
+        game.version
+    );
     const locations = EncounterHelpers.getEncounterLocations(game, species);
 
     // -------------------------------------------------------------------------
@@ -115,6 +136,7 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                         />
                         <EvolutionLine
                             currentSlug={species}
+                            dataSource={game.dataSource}
                             hideTradeEvos={hideTradeEvos}
                             onSelectSpecies={onSelectSpecies}
                             step={evolutionLine}
@@ -162,6 +184,7 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                             </div>
                             {activeDetailTab === 'learnset' ? (
                                 <LearnsetList
+                                    dataSource={game.dataSource}
                                     generation={game.generation}
                                     interactive
                                     moves={learnset ?? []}
