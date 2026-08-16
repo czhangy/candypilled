@@ -1765,8 +1765,15 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Eterna Gym's compiled script (scr_seq_release/narc_0072.bin) calls
+    // GiveBadge with a literal badge_no argument of 1, at byte offset 241.
+    // (Two other byte-sequences matching the GiveBadge opcode 0x015C appear
+    // elsewhere in this bank: one has an out-of-range argument (461, fails
+    // GF_ASSERT(badge_no<8), so not a real call), the other reads 0 -- which
+    // would collide with Roark's own already-verified badge_no, so it's a
+    // coincidental byte alignment too, not a genuine second GiveBadge call.)
     'leader-gardenia-gardenia': {
-        saveCondition: { type: 'flag', flag: -1 },
+        saveCondition: { type: 'badge', bit: 1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'leader-gardenia',
         name: 'Gardenia',
@@ -6121,8 +6128,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Veilstone Gym's compiled script (scr_seq_release/narc_0132.bin) calls
+    // GiveBadge with a literal badge_no argument of 2, at byte offset 104
+    // (the only occurrence of the GiveBadge opcode 0x015C in this bank).
     'leader-maylene-maylene': {
-        saveCondition: { type: 'flag', flag: -1 },
+        saveCondition: { type: 'badge', bit: 2 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'leader-maylene',
         name: 'Maylene',
@@ -6319,8 +6329,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Pastoria Gym's compiled script (scr_seq_release/narc_0120.bin) calls
+    // GiveBadge with a literal badge_no argument of 3, at byte offset 200
+    // (the only occurrence of the GiveBadge opcode 0x015C in this bank).
     'leader-wake-wake': {
-        saveCondition: { type: 'flag', flag: -1 },
+        saveCondition: { type: 'badge', bit: 3 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'leader-wake',
         name: 'Wake',
@@ -6605,8 +6618,13 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Hearthome Gym's leader-room compiled script
+    // (scr_seq_release/narc_0096.bin, MAP_HEARTHOME_GYM_LEADER_ROOM's own
+    // script bank) calls GiveBadge with a literal badge_no argument of 4,
+    // at byte offset 224 (the only occurrence of the GiveBadge opcode
+    // 0x015C in this bank).
     'leader-fantina-fantina': {
-        saveCondition: { type: 'flag', flag: -1 },
+        saveCondition: { type: 'badge', bit: 4 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'leader-fantina',
         name: 'Fantina',
@@ -7839,8 +7857,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Canalave Gym's compiled script (scr_seq_release/narc_0036.bin) calls
+    // GiveBadge with a literal badge_no argument of 5, at byte offset 104
+    // (the only occurrence of the GiveBadge opcode 0x015C in this bank).
     'leader-byron-byron': {
-        saveCondition: { type: 'flag', flag: -1 },
+        saveCondition: { type: 'badge', bit: 5 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'leader-byron',
         name: 'Byron',
@@ -8850,8 +8871,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Snowpoint Gym's compiled script (scr_seq_release/narc_0170.bin) calls
+    // GiveBadge with a literal badge_no argument of 6, at byte offset 119
+    // (the only occurrence of the GiveBadge opcode 0x015C in this bank).
     'leader-candice-candice': {
-        saveCondition: { type: 'flag', flag: -1 },
+        saveCondition: { type: 'badge', bit: 6 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'leader-candice',
         name: 'Candice',
@@ -10360,8 +10384,12 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Sunyshore Gym Room 3's compiled script (scr_seq_release/narc_0154.bin,
+    // MAP_SUNYSHORE_GYM_ROOM_3's own script bank) calls GiveBadge with a
+    // literal badge_no argument of 7, at byte offset 121 (the only
+    // occurrence of the GiveBadge opcode 0x015C in this bank).
     'leader-volkner-volkner': {
-        saveCondition: { type: 'flag', flag: -1 },
+        saveCondition: { type: 'badge', bit: 7 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'leader-volkner',
         name: 'Volkner',
