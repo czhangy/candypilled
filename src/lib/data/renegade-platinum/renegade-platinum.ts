@@ -27,6 +27,12 @@ const RENEGADE_PLATINUM: Game = {
     // byte-identical) rather than duplicating them under its own folder.
     badgeAssetFolder: BadgeAssetFolder.Sinnoh,
     trainerAssetFolder: TrainerAssetFolder.Platinum,
+    // Reuses Platinum's Pokémon sprites verbatim (confirmed identical, per
+    // explicit direction). RENEGADE_PLATINUM_POKEMON entries carry no
+    // sprite paths of their own — PokemonHelpers.getPokemonSprite resolves
+    // them formulaically from this folder instead, the same
+    // zero-duplication convention badgeAssetFolder/trainerAssetFolder use.
+    pokemonAssetFolder: GameVersionGroup.Platinum,
     // Reuses Platinum's Lucas/Dawn trainer sprites as the protagonist
     // options.
     genders: {

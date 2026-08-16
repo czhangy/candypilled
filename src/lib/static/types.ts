@@ -424,6 +424,15 @@ export type Game = {
     // necessarily reuse together (e.g. a variant could share one but not
     // the other).
     trainerAssetFolder: TrainerAssetFolder;
+    // public/pokemon/<folder>/ this game's own Pokémon sprites should
+    // resolve from, under the same sharing convention as
+    // badgeAssetFolder/trainerAssetFolder, for a game whose own dataset
+    // doesn't carry real per-species sprite paths (e.g. an independent
+    // ROM-hack dataset reusing its base game's art verbatim). Omitted for
+    // every game whose own PokemonData entries carry real sprites keyed by
+    // `version` — only set this when sprites should be resolved
+    // formulaically from another game's folder instead.
+    pokemonAssetFolder?: GameVersionGroup;
     // The protagonist sprite shown for each gender option at run
     // creation, when choosing matters for this game (it can change more
     // than cosmetics, e.g. which trainer/team a battle resolves to — see

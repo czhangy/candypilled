@@ -41,7 +41,7 @@ const PokedexSubtab: React.FC<PokedexSubtabProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const variant = game.version;
+    const variant = game.pokemonAssetFolder ?? game.version;
     const availableSpecies = EncounterHelpers.getGameSpecies(
         game,
         settings['show-national-dex-data'] ?? false

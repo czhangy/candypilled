@@ -42,7 +42,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const variant = game.version;
+    const variant = game.pokemonAssetFolder ?? game.version;
     const selectedCaughtPokemon = run.caughtPokemon.find(
         (caughtPokemon) => caughtPokemon.location === selectedPokemon
     );
