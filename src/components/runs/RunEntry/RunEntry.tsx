@@ -9,8 +9,10 @@ import RunIcon from '@/lib/icons/RunIcon';
 import SkullIcon from '@/lib/icons/SkullIcon';
 import { PokemonStatus } from '@/lib/static/enums';
 import { CaughtPokemon, Game, Run } from '@/lib/static/types';
+import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import HallOfFameHelpers from '@/lib/utils/HallOfFameHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
+import RunImportHelpers from '@/lib/utils/RunImportHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
@@ -42,6 +44,11 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     const [selectedGender, setSelectedGender] = useState<
         'male' | 'female' | undefined
     >(undefined);
+    const [pendingImport, setPendingImport] = useState<{
+        pokemon: CaughtPokemon[];
+        completedSplits: string[];
+        starter: CaughtPokemon;
+    } | null>(null);
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -95,6 +102,46 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         }
     };
 
+    // Throws if the import has no Pokémon at the game's starter location,
+    // since that's the only reliable way to identify the starter (its
+    // species alone isn't enough — trading can put another starter species
+    // in the box).
+    const findImportedStarter = (pokemon: CaughtPokemon[]): CaughtPokemon => {
+        const starterLocation = EncounterHelpers.getStarterLocationName(game);
+        const starter = pokemon.find(
+            (caught) => caught.location === starterLocation
+        );
+
+        if (!starter) {
+            throw new Error(
+                `No Pokémon found at ${starterLocation}, where ${game.name} starters are received.`
+            );
+        }
+
+        return starter;
+    };
+
+    const createRunFromImport = (
+        pokemon: CaughtPokemon[],
+        completedSplits: string[],
+        starter: CaughtPokemon,
+        gender: 'male' | 'female' | undefined
+    ): void => {
+        const newRun: Run = {
+            attempt: (run?.attempt ?? 0) + 1,
+            completedSplits,
+            hallOfFameCount: run?.hallOfFameCount ?? 0,
+            starter: starter.slug,
+            ...(gender && { gender }),
+            caughtPokemon: pokemon,
+            missedLocations: [],
+            wipe: false,
+        };
+
+        LocalStorageHelpers.saveRun(game, newRun);
+        router.push(runUrl);
+    };
+
     // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
@@ -130,6 +177,56 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     const handleReset = (): void => {
         LocalStorageHelpers.deleteRun(game);
         HallOfFameHelpers.deleteEntriesForGame(game);
+    };
+
+    const handleImport = (
+        importedPokemon: CaughtPokemon[],
+        importedCompletedSplits: string[]
+    ): void => {
+        if (run) {
+            LocalStorageHelpers.saveRun(
+                game,
+                RunImportHelpers.mergeImport(
+                    run,
+                    importedPokemon,
+                    importedCompletedSplits
+                )
+            );
+            return;
+        }
+
+        const starter = findImportedStarter(importedPokemon);
+
+        if (game.genders) {
+            setPendingImport({
+                pokemon: importedPokemon,
+                completedSplits: importedCompletedSplits,
+                starter,
+            });
+        } else {
+            createRunFromImport(
+                importedPokemon,
+                importedCompletedSplits,
+                starter,
+                undefined
+            );
+        }
+    };
+
+    const handleImportGenderSelectClose = (): void => {
+        setPendingImport(null);
+    };
+
+    const handleImportGenderSelect = (gender: 'male' | 'female'): void => {
+        if (!pendingImport) return;
+
+        createRunFromImport(
+            pendingImport.pokemon,
+            pendingImport.completedSplits,
+            pendingImport.starter,
+            gender
+        );
+        setPendingImport(null);
     };
 
     const handleGenderSelectClose = (): void => {
@@ -243,9 +340,10 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                 <DataModal
                     accentColor={game.accentColor}
                     buttonTextColor={game.textContrastColor}
-                    gameName={game.name}
+                    game={game}
                     hasExistingRun={!!run}
                     onClose={handleDataModalClose}
+                    onImport={handleImport}
                     onReset={handleReset}
                 />
             )}
@@ -262,6 +360,14 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     game={game}
                     onClose={handleStarterSelectClose}
                     onSelect={handleStarterSelect}
+                />
+            )}
+            {pendingImport && game.genders && (
+                <GenderSelectModal
+                    game={game}
+                    genders={game.genders}
+                    onClose={handleImportGenderSelectClose}
+                    onSelect={handleImportGenderSelect}
                 />
             )}
         </div>

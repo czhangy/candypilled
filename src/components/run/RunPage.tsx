@@ -10,10 +10,10 @@ import {
 } from 'next/navigation';
 import Tabs from '@/components/common/Tabs/Tabs';
 import { GAMES } from '@/lib/data/games';
-import { PokemonStatus } from '@/lib/static/enums';
-import { CaughtPokemon, Run } from '@/lib/static/types';
+import { CaughtPokemon } from '@/lib/static/types';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
+import RunImportHelpers from '@/lib/utils/RunImportHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import BoxTab from './BoxTab/BoxTab';
@@ -350,37 +350,14 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     ): void => {
         if (!game || !run) return;
 
-        // Multiple imported Pokémon sharing a location collapse to the
-        // last one, matching how a Map overwrites on repeated keys.
-        const importedByLocation = new Map(
-            importedPokemon.map((pokemon) => [pokemon.location, pokemon])
+        LocalStorageHelpers.saveRun(
+            game,
+            RunImportHelpers.mergeImport(
+                run,
+                importedPokemon,
+                importedCompletedSplits
+            )
         );
-        const existingLocations = new Set(
-            run.caughtPokemon.map((pokemon) => pokemon.location)
-        );
-        const merged = run.caughtPokemon.map((pokemon) => {
-            if (pokemon.status === PokemonStatus.Dead) {
-                return pokemon;
-            }
-
-            const importedPokemon = importedByLocation.get(pokemon.location);
-            return importedPokemon ?? pokemon;
-        });
-        const newPokemon = [...importedByLocation.values()].filter(
-            (pokemon) => !existingLocations.has(pokemon.location)
-        );
-
-        // The save is authoritative for split completion, the same way it
-        // is for the box: every split it can resolve is set to exactly
-        // what it reports, rather than only ever adding to what's already
-        // recorded.
-        const updatedRun: Run = {
-            ...run,
-            caughtPokemon: [...merged, ...newPokemon],
-            completedSplits: importedCompletedSplits,
-        };
-
-        LocalStorageHelpers.saveRun(game, updatedRun);
         handlePokemonDeselect();
     };
 
