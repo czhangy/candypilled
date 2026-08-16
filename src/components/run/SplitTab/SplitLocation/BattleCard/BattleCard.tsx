@@ -56,7 +56,20 @@ const BattleCard: React.FC<BattleCardProps> = ({
     // -------------------------------------------------------------------------
 
     const teamGroups = BattleHelpers.getTeamGroups(battle, starter, game);
-    const isStacked = teamGroups.length > 1;
+    // Flattened one row per (trainer, surviving team) pair, so a trainer
+    // with multiple teams that all matched the current run's conditions
+    // renders one row per team, same as a tag battle renders one row per
+    // trainer — only the very last row carries the full TrainerPanel
+    // (badges/metadata); every other row is a bare TrainerSprite.
+    const rows = teamGroups.flatMap((group) =>
+        group.teams.map((team) => ({
+            items: group.items,
+            name: group.name,
+            team,
+            trainerClass: group.trainerClass,
+        }))
+    );
+    const isStacked = rows.length > 1;
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -113,47 +126,46 @@ const BattleCard: React.FC<BattleCardProps> = ({
                     />
                 )}
                 <div className={styles.body}>
-                    {teamGroups.map((group, groupIndex) => {
-                        const isLastGroup =
-                            groupIndex === teamGroups.length - 1;
+                    {rows.map((row, rowIndex) => {
+                        const isLastRow = rowIndex === rows.length - 1;
                         const position = !isStacked
                             ? 'single'
-                            : isLastGroup
+                            : isLastRow
                               ? 'bottom'
                               : 'top';
 
                         return (
                             <div
                                 className={styles.row}
-                                key={`${group.trainerClass}-${group.name}-${groupIndex}`}
+                                key={`${row.trainerClass}-${row.name}-${rowIndex}`}
                             >
-                                {isLastGroup ? (
+                                {isLastRow ? (
                                     <TrainerPanel
                                         battle={battle}
                                         isStacked={isStacked}
-                                        items={group.items}
+                                        items={row.items}
                                         trainerAssetFolder={
                                             game.trainerAssetFolder
                                         }
-                                        trainerClass={group.trainerClass}
-                                        trainerName={group.name}
+                                        trainerClass={row.trainerClass}
+                                        trainerName={row.name}
                                     />
                                 ) : (
                                     <TrainerSprite
                                         alt={TrainerHelpers.getDisplayName(
-                                            group.trainerClass,
-                                            group.name
+                                            row.trainerClass,
+                                            row.name
                                         )}
                                         trainerAssetFolder={
                                             game.trainerAssetFolder
                                         }
-                                        trainerClass={group.trainerClass}
+                                        trainerClass={row.trainerClass}
                                     />
                                 )}
                                 <div className={styles.team}>
                                     {Array.from(
                                         { length: TEAM_SLOT_COUNT },
-                                        (_, index) => group.team[index] ?? null
+                                        (_, index) => row.team[index] ?? null
                                     ).map((pokemon, index) => (
                                         <PokemonSlot
                                             dataSource={game.dataSource}
@@ -162,8 +174,8 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                             isReadOnly={false}
                                             key={
                                                 pokemon
-                                                    ? `${groupIndex}-${pokemon.slug}-${index}`
-                                                    : `${groupIndex}-empty-${index}`
+                                                    ? `${rowIndex}-${pokemon.slug}-${index}`
+                                                    : `${rowIndex}-empty-${index}`
                                             }
                                             onSelectAbility={onSelectAbility}
                                             onSelectItem={onSelectItem}

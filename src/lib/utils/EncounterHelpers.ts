@@ -1,7 +1,6 @@
 import { EncounterMethod } from '@/lib/static/enums';
 import {
     BattleData,
-    BattlePokemon,
     Encounter,
     EncounterLocation,
     EncounterVisibilityContext,
@@ -206,18 +205,14 @@ export default class EncounterHelpers {
     // PRIVATE
     // -------------------------------------------------------------------------
 
-    // Every species slug across a battle's team(s): its default team, every
-    // starter-specific variant, and (for a tag battle) its second trainer's
-    // equivalents.
+    // Every species slug across a battle's team(s): every one of its own
+    // teams, and (for a tag battle) its second trainer's.
     private static getBattleSlugs(battle: BattleData): string[] {
-        const teams = [
-            battle.team,
-            ...Object.values(battle.teamsByStarter ?? {}),
-            battle.secondTrainer?.team,
-            ...Object.values(battle.secondTrainer?.teamsByStarter ?? {}),
-        ].filter((team): team is BattlePokemon[] => !!team);
+        const teams = [...battle.teams, ...(battle.secondTrainer?.teams ?? [])];
 
-        return teams.flat().map((pokemon) => pokemon.slug);
+        return teams.flatMap((entry) =>
+            entry.team.map((pokemon) => pokemon.slug)
+        );
     }
 
     // Flattens every split/location/subarea down to a name/encountersKey

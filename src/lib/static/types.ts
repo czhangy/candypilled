@@ -152,14 +152,30 @@ export type TrainerClass = {
     spriteSlug: string;
 };
 
+// A condition gating whether a BattleTeam applies to the current run. Add a
+// new variant here for a new kind of run-dependent team (e.g. player
+// gender), matching SplitSaveCondition's discriminated-union shape.
+export type BattleTeamCondition = { type: 'starter'; starter: string };
+
+// One possible roster for a trainer. A team with no condition always
+// applies; a team with a condition only applies when that condition is met
+// (e.g. matching the run's starter). Every team that survives filtering is
+// rendered together — a trainer can have several genuinely independent,
+// unconditioned team options (e.g. a randomized roster), and there's no way
+// to know from a run alone which one a given playthrough actually has.
+export type BattleTeam = {
+    condition?: BattleTeamCondition;
+    team: BattlePokemon[];
+};
+
 // One trainer's own slice of a battle: their TRAINER_CLASSES slug, name, and
-// team, resolved for the current starter. A non-tag battle has a single
-// group; a tag battle has one per trainer, in trainerClass/secondTrainer
-// order.
+// every team that survived condition filtering for the current run. A
+// non-tag battle has a single group; a tag battle has one per trainer, in
+// trainerClass/secondTrainer order.
 export type BattleTeamGroup = {
     items?: BattleItem[];
     name: string;
-    team: BattlePokemon[];
+    teams: BattlePokemon[][];
     trainerClass: string;
 };
 
@@ -205,8 +221,7 @@ export type Gen4SaveLayout = {
 // attributed to the trainer that owns them.
 export type BattleTrainer = {
     name: string;
-    team?: BattlePokemon[];
-    teamsByStarter?: Partial<Record<string, BattlePokemon[]>>;
+    teams: BattleTeam[];
     // TRAINER_CLASSES slug.
     trainerClass: string;
 };
@@ -218,8 +233,7 @@ export type BattleTrainer = {
 // it's fought.
 export type BattleData = {
     name: string;
-    team?: BattlePokemon[];
-    teamsByStarter?: Partial<Record<string, BattlePokemon[]>>;
+    teams: BattleTeam[];
     items?: BattleItem[];
     secondTrainer?: BattleTrainer;
     // TRAINER_CLASSES slug.
