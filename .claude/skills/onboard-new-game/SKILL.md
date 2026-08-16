@@ -142,7 +142,7 @@ Reference implementation: `src/lib/data/platinum/`.
       was derived) rather than a reason to fall back to asking the user.
 6. **New trainer classes** — if a battle references a trainer class not
    already in `src/lib/data/trainer-classes.ts`, add it with
-   `npm run gen:trainer-class <folder> <classSlug> <displayName> <male|female> [spriteSlug]`
+   `npm run gen:trainer-class <folder> <classSlug> <displayName> [spriteSlug]`
    (requires a sprite already at `public/trainers/<folder>/<classSlug>.png`).
    `<folder>` is this game's `trainerAssetFolder` (see "Sharing public/
    assets across games" below), not necessarily the game's own slug — pass

@@ -143,13 +143,12 @@ export type BattlePokemon = {
     slug: string;
 };
 
-// A trainer class' display name, gender, and sprite, keyed by slug in
+// A trainer class' display name and sprite, keyed by slug in
 // TRAINER_CLASSES. Classes fielded by a single named individual (e.g.
 // Leader, Commander) get one catalog entry per person rather than a shared
-// entry, since their gender and sprite aren't determined by the class alone.
+// entry, since their sprite isn't determined by the class alone.
 export type TrainerClass = {
     displayName: string;
-    gender: 'male' | 'female';
     spriteSlug: string;
 };
 
