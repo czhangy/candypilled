@@ -8,7 +8,6 @@ import PokemonBox from './PokemonBox/PokemonBox';
 import PokemonPreview from './PokemonPreview/PokemonPreview';
 
 type BoxTabProps = {
-    currentSplitName: string | null;
     game: Game;
     onDeselectPokemon: () => void;
     onSelectAbility: (slug: string) => void;
@@ -22,7 +21,6 @@ type BoxTabProps = {
 };
 
 const BoxTab: React.FC<BoxTabProps> = ({
-    currentSplitName,
     game,
     onDeselectPokemon,
     onSelectAbility,
@@ -54,11 +52,15 @@ const BoxTab: React.FC<BoxTabProps> = ({
               selectedCaughtPokemon.location
           )
         : false;
+    const currentSplitName = SplitHelpers.getCurrentSplitName(
+        game,
+        run.completedSplits
+    );
     const currentSplit = game.splits.find(
         (split) => split.name === currentSplitName
     );
     const levelCap = currentSplit
-        ? SplitHelpers.getLevelCap(game, currentSplit)
+        ? SplitHelpers.getLevelCap(game, currentSplit, run.completedSplits)
         : null;
 
     // -------------------------------------------------------------------------

@@ -7,14 +7,42 @@ export default class SplitHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    /** The highest level on split's last battle's team, or null if it has no battles or an empty team. */
-    static getLevelCap(game: Game, split: Split): number | null {
+    /** The highest level on split's last battle's team, or null if it has no battles, an empty team, or completedSplits marks the game as complete (no cap applies once the Hall of Fame is unlocked). */
+    static getLevelCap(
+        game: Game,
+        split: Split,
+        completedSplits: string[]
+    ): number | null {
+        if (SplitHelpers.isGameComplete(game, completedSplits)) return null;
+
         const battles = split.locations.flatMap((location) =>
             BattleHelpers.getBattlesInLocation(location)
         );
         const lastBattle = battles[battles.length - 1];
 
         return lastBattle ? SplitHelpers.getMaxLevel(game, lastBattle) : null;
+    }
+
+    /** The name of the first split (in game order) not present in completedSplits, or the last split's name if every split is completed. */
+    static getCurrentSplitName(
+        game: Game,
+        completedSplits: string[]
+    ): string | null {
+        const nextSplit = game.splits.find(
+            (split) => !completedSplits.includes(split.name)
+        );
+
+        return (
+            nextSplit?.name ?? game.splits[game.splits.length - 1]?.name ?? null
+        );
+    }
+
+    /** Whether every split in game is present in completedSplits, i.e. the run is complete and the Hall of Fame is unlocked. */
+    static isGameComplete(game: Game, completedSplits: string[]): boolean {
+        return (
+            game.splits.length > 0 &&
+            game.splits.every((split) => completedSplits.includes(split.name))
+        );
     }
 
     /** The split name and locations-array index of the earliest occurrence (in game order) of a location named locationName, or null if not found. */

@@ -4,25 +4,27 @@ import styles from './SplitHeader.module.scss';
 import SplitSelect from './SplitSelect/SplitSelect';
 
 type SplitHeaderProps = {
+    completedSplits: string[];
     currentSplitName: string | null;
     game: Game;
     onSelectSplit: (name: string) => void;
+    runSplitName: string | null;
 };
 
 const SplitHeader: React.FC<SplitHeaderProps> = ({
+    completedSplits,
     currentSplitName,
     game,
     onSelectSplit,
+    runSplitName,
 }) => {
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const currentSplit = game.splits.find(
-        (split) => split.name === currentSplitName
-    );
-    const levelCap = currentSplit
-        ? SplitHelpers.getLevelCap(game, currentSplit)
+    const runSplit = game.splits.find((split) => split.name === runSplitName);
+    const levelCap = runSplit
+        ? SplitHelpers.getLevelCap(game, runSplit, completedSplits)
         : null;
     const splitNames = game.splits.map((split) => split.name);
 

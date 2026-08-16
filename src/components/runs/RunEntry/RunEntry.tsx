@@ -11,6 +11,7 @@ import { PokemonStatus } from '@/lib/static/enums';
 import { CaughtPokemon, Game, Run } from '@/lib/static/types';
 import HallOfFameHelpers from '@/lib/utils/HallOfFameHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
+import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
 import DataModal from './DataModal/DataModal';
@@ -41,6 +42,9 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // RENDERING
     // -------------------------------------------------------------------------
 
+    const currentSplitName = run
+        ? SplitHelpers.getCurrentSplitName(game, run.completedSplits)
+        : null;
     const boxCount = run
         ? run.caughtPokemon.filter(
               (caughtPokemon) => caughtPokemon.status !== PokemonStatus.Dead
@@ -60,6 +64,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     const startNewRun = (starter: CaughtPokemon): void => {
         const newRun: Run = {
             attempt: (run?.attempt ?? 0) + 1,
+            completedSplits: [],
             hallOfFameCount: run?.hallOfFameCount ?? 0,
             starter: starter.slug,
             caughtPokemon: [starter],
@@ -145,12 +150,14 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                         )}
                     </div>
                     <div className={styles.line}>
-                        {run?.wipe && (
-                            <span className={styles.split}>
-                                <RunIcon />
-                                Wiped
-                            </span>
-                        )}
+                        <span className={styles.split}>
+                            <RunIcon />
+                            {run?.wipe
+                                ? 'Wiped'
+                                : currentSplitName
+                                  ? `${currentSplitName} Split`
+                                  : '-'}
+                        </span>
                         <span className={styles.boxes}>
                             <BoxIcon />
                             {boxCount ?? '-'}

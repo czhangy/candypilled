@@ -385,6 +385,8 @@ export type Game = {
 
 export type Run = {
     attempt: number;
+    // Names of splits (Split.name) the player has marked as finished.
+    completedSplits: string[];
     hallOfFameCount: number;
     starter: string;
     caughtPokemon: CaughtPokemon[];

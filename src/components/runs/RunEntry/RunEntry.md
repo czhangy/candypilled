@@ -2,8 +2,10 @@
 
 A list entry summarizing a single game's active run. If the game has no
 stored run, placeholder values are shown instead (no attempt number, dashes
-for box/death counts). A "Wiped" indicator appears only while the run has
-been given up on; the Hall of Fame count is always shown. A "Continue" button
+for split/box/death counts). The split indicator shows the run's current
+split (the first not yet marked complete) unless the run has been given up
+on, in which case it reads "Wiped" instead; the Hall of Fame count is always
+shown. A "Continue" button
 navigates to the game's dedicated run page (only shown if a run already
 exists), a "New" button starts a fresh attempt for the game, confirming
 with the user first if a run is already in progress, then prompting for a
@@ -53,6 +55,9 @@ exists).
 
 ## Computations
 
+- `currentSplitName` — the name of the first split (in game order) not yet
+  present in the run's `completedSplits`, or the last split if every split
+  is completed; `null` if there is no run
 - `boxCount` — the number of Pokémon in the run's `caughtPokemon` that
   don't have a `status` of `PokemonStatus.Dead`; `null` if there is no run
 - `deathCount` — the number of Pokémon in the run's `caughtPokemon` with a

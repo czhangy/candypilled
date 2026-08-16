@@ -25,6 +25,13 @@ export default class LocalStorageHelpers {
         ).join('|');
     }
 
+    // Backfills fields added to Run after a run may have already been
+    // stored, so older saves don't crash code that assumes they're present.
+    private static migrateRun(parsed: unknown): Run {
+        const run = parsed as Run;
+        return { ...run, completedSplits: run.completedSplits ?? [] };
+    }
+
     // -------------------------------------------------------------------------
     // PUBLIC
     // -------------------------------------------------------------------------
@@ -53,7 +60,9 @@ export default class LocalStorageHelpers {
             );
             return {
                 game,
-                run: stored ? (JSON.parse(stored) as Run) : null,
+                run: stored
+                    ? LocalStorageHelpers.migrateRun(JSON.parse(stored))
+                    : null,
             };
         });
 

@@ -106,14 +106,30 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         (gameRun) => StringHelpers.toSlug(gameRun.game.name) === slug
     )?.run;
 
-    const activeTab = searchParams.get('tab') ?? TABS[0].id;
+    const isHallOfFameUnlocked = !!(
+        game &&
+        run &&
+        SplitHelpers.isGameComplete(game, run.completedSplits)
+    );
+
+    const activeTab =
+        searchParams.get('tab') ?? (isHallOfFameUnlocked ? 'hof' : TABS[0].id);
+
+    const runSplitName =
+        game && run
+            ? SplitHelpers.getCurrentSplitName(game, run.completedSplits)
+            : null;
 
     const currentSplitName =
-        game && game.splits.length > 0
+        game && run
             ? (game.splits.find(
                   (split) => split.name === searchParams.get('split')
-              )?.name ?? game.splits[0].name)
+              )?.name ?? runSplitName)
             : null;
+
+    const visibleTabs = TABS.filter(
+        (tab) => tab.id !== 'hof' || isHallOfFameUnlocked
+    );
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -284,6 +300,36 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         window.scrollTo({ top: 0 });
     };
 
+    const handleSplitToggleComplete = (splitName: string): void => {
+        if (!game || !run) return;
+
+        const wasCompleted = run.completedSplits.includes(splitName);
+        const splitIndex = game.splits.findIndex(
+            (split) => split.name === splitName
+        );
+
+        const completedSplits = wasCompleted
+            ? run.completedSplits.filter((name) => name !== splitName)
+            : [
+                  ...new Set([
+                      ...run.completedSplits,
+                      ...game.splits
+                          .slice(0, splitIndex + 1)
+                          .map((split) => split.name),
+                  ]),
+              ];
+
+        LocalStorageHelpers.saveRun(game, { ...run, completedSplits });
+
+        if (
+            !wasCompleted &&
+            SplitHelpers.isGameComplete(game, completedSplits)
+        ) {
+            updateQueryParams({ tab: 'hof' });
+            window.scrollTo({ top: 0 });
+        }
+    };
+
     const handleWipeToggle = (): void => {
         if (!game || !run) return;
 
@@ -386,16 +432,18 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                     >
                         {activeTab === 'split' && (
                             <SplitHeader
+                                completedSplits={run.completedSplits}
                                 currentSplitName={currentSplitName}
                                 game={game}
                                 onSelectSplit={handleSplitSelect}
+                                runSplitName={runSplitName}
                             />
                         )}
                         <Tabs
                             activeTab={activeTab}
                             className={styles.tabs}
                             onTabChange={handleTabChange}
-                            tabs={TABS}
+                            tabs={visibleTabs}
                         />
                     </div>
                     {activeTab === 'split' && (
@@ -409,6 +457,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             onSelectMove={handleMoveLinkClick}
                             onSelectSpecies={handleSpeciesLinkClick}
                             onSelectTrainer={handleTrainerLinkClick}
+                            onToggleSplitComplete={handleSplitToggleComplete}
                             run={run}
                             selectedBattleKey={selectedBattle}
                             stickyOffset={stickyHeaderHeight}
@@ -416,7 +465,6 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                     )}
                     {activeTab === 'box' && (
                         <BoxTab
-                            currentSplitName={currentSplitName}
                             game={game}
                             onDeselectPokemon={handlePokemonDeselect}
                             onSelectAbility={handleAbilityLinkClick}
@@ -457,7 +505,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             selectedBattle={selectedBattle}
                         />
                     )}
-                    {activeTab === 'hof' && (
+                    {activeTab === 'hof' && isHallOfFameUnlocked && (
                         <HallOfFameTab game={game} run={run} />
                     )}
                 </>

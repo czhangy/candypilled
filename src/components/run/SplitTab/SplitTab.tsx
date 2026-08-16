@@ -21,6 +21,7 @@ type SplitTabProps = {
     onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
     onSelectTrainer: (battleKey: string) => void;
+    onToggleSplitComplete: (splitName: string) => void;
     run: Run;
     selectedBattleKey?: string;
     stickyOffset: number;
@@ -36,6 +37,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
     onSelectMove,
     onSelectSpecies,
     onSelectTrainer,
+    onToggleSplitComplete,
     run,
     selectedBattleKey,
     stickyOffset,
@@ -57,6 +59,8 @@ const SplitTab: React.FC<SplitTabProps> = ({
     );
     const variant = game.version;
     const badge = `/${variant}/badges/${StringHelpers.toSlug(currentSplitName ?? '')}.png`;
+    const isSplitCompleted =
+        !!currentSplitName && run.completedSplits.includes(currentSplitName);
 
     // -------------------------------------------------------------------------
     // EFFECTS
@@ -171,6 +175,16 @@ const SplitTab: React.FC<SplitTabProps> = ({
     };
 
     // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleSplitCompleteClick = (): void => {
+        if (currentSplitName) {
+            onToggleSplitComplete(currentSplitName);
+        }
+    };
+
+    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
@@ -262,6 +276,19 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             );
                         })}
                     </ul>
+                    <button
+                        className={[
+                            styles['complete-button'],
+                            isSplitCompleted &&
+                                styles['complete-button--completed'],
+                        ]
+                            .filter(Boolean)
+                            .join(' ')}
+                        onClick={handleSplitCompleteClick}
+                        type="button"
+                    >
+                        {isSplitCompleted ? 'SPLIT COMPLETED' : 'CLEAR SPLIT'}
+                    </button>
                 </nav>
                 <div className={styles.locations}>
                     {currentSplit?.locations.map((location, index) => (

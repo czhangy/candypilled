@@ -6,19 +6,18 @@ right, each taking up half of the row's width.
 
 ## Props
 
-| Prop                | Type                         | Required | Default | Description                                                                               |
-| ------------------- | ---------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------- |
-| `currentSplitName`  | `string \| null`             | Yes      | -       | The name of the split currently being viewed on the Splits tab, used to derive `levelCap` |
-| `game`              | `Game`                       | Yes      | -       | The current game, used to resolve the caught Pokémon's sprites and moves                  |
-| `onDeselectPokemon` | `() => void`                 | Yes      | -       | Called to clear the currently selected caught Pokémon                                     |
-| `onSelectAbility`   | `(slug: string) => void`     | Yes      | -       | Called with an ability's slug when it's clicked in the preview                            |
-| `onSelectItem`      | `(slug: string) => void`     | Yes      | -       | Called with a held item's slug when it's clicked in the preview                           |
-| `onSelectLocation`  | `(location: string) => void` | Yes      | -       | Called with a caught Pokémon's location when it's clicked in the preview                  |
-| `onSelectMove`      | `(slug: string) => void`     | Yes      | -       | Called with a move's slug when it's clicked in the preview                                |
-| `onSelectPokemon`   | `(location: string) => void` | Yes      | -       | Called with a caught Pokémon's location when it's clicked in the box                      |
-| `onSelectSpecies`   | `(slug: string) => void`     | Yes      | -       | Called with a species slug when a Pokémon in the preview's evolution line is clicked      |
-| `run`               | `Run`                        | Yes      | -       | The current run, whose `caughtPokemon` populates the box                                  |
-| `selectedPokemon`   | `string`                     | No       | -       | The location of the currently selected caught Pokémon, if any                             |
+| Prop                | Type                         | Required | Default | Description                                                                          |
+| ------------------- | ---------------------------- | -------- | ------- | ------------------------------------------------------------------------------------ |
+| `game`              | `Game`                       | Yes      | -       | The current game, used to resolve the caught Pokémon's sprites and moves             |
+| `onDeselectPokemon` | `() => void`                 | Yes      | -       | Called to clear the currently selected caught Pokémon                                |
+| `onSelectAbility`   | `(slug: string) => void`     | Yes      | -       | Called with an ability's slug when it's clicked in the preview                       |
+| `onSelectItem`      | `(slug: string) => void`     | Yes      | -       | Called with a held item's slug when it's clicked in the preview                      |
+| `onSelectLocation`  | `(location: string) => void` | Yes      | -       | Called with a caught Pokémon's location when it's clicked in the preview             |
+| `onSelectMove`      | `(slug: string) => void`     | Yes      | -       | Called with a move's slug when it's clicked in the preview                           |
+| `onSelectPokemon`   | `(location: string) => void` | Yes      | -       | Called with a caught Pokémon's location when it's clicked in the box                 |
+| `onSelectSpecies`   | `(slug: string) => void`     | Yes      | -       | Called with a species slug when a Pokémon in the preview's evolution line is clicked |
+| `run`               | `Run`                        | Yes      | -       | The current run, whose `caughtPokemon` populates the box                             |
+| `selectedPokemon`   | `string`                     | No       | -       | The location of the currently selected caught Pokémon, if any                        |
 
 ## State
 
@@ -36,10 +35,13 @@ right, each taking up half of the row's width.
   a location in `game.splits`, via `SplitHelpers.getEarliestSplitName`;
   passed to `PokemonPreview` so it only renders the location as a clickable
   link when it resolves to an actual split
-- `currentSplit` — the split matching `currentSplitName`
-- `levelCap` — `currentSplit`'s level cap via `SplitHelpers.getLevelCap`,
-  passed to `PokemonBox` and `PokemonPreview` so over-leveled Pokémon can
-  be flagged
+- `currentSplitName` / `currentSplit` — the run's current split, resolved
+  via `SplitHelpers.getCurrentSplitName`
+- `levelCap` — the current split's level cap via
+  `SplitHelpers.getLevelCap`, passed to `PokemonBox` and
+  `PokemonPreview` so over-leveled Pokémon can be flagged; `null` once
+  `run.completedSplits` shows every split has been completed, since no cap
+  applies after the game is complete
 
 ## Handlers
 

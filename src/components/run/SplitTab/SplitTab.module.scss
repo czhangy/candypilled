@@ -98,6 +98,26 @@
                     }
                 }
             }
+
+            .complete-button {
+                @include solid-accent-button;
+
+                font-size: 0.75rem;
+
+                &--completed {
+                    background: $green;
+
+                    @media (hover: hover) {
+                        &:hover:not(:disabled) {
+                            background: color-mix(
+                                in srgb,
+                                $green 85%,
+                                black 15%
+                            );
+                        }
+                    }
+                }
+            }
         }
 
         .locations {

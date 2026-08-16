@@ -36,7 +36,8 @@ opens `ImportSaveModal` regardless of the active tab or wipe state.
 ## Computations
 
 - `activeTab` — the `id` of the currently active tab, read from the `tab`
-  query param, defaulting to `'split'` when absent
+  query param, defaulting to `'hof'` if `isHallOfFameUnlocked` and
+  `'split'` otherwise when absent
 - `activeSubtab` — the `id` of the currently active Data subtab, read
   from the `subtab` query param, defaulting to `'pokedex'` if absent
 - `selectedMove` — the currently selected move's slug, read from the `move`
@@ -49,10 +50,14 @@ opens `ImportSaveModal` regardless of the active tab or wipe state.
 - `selectedSpecies` — the currently selected Pokémon's species, read from
   the `species` query param, shared between the Data tab's Pokédex
   subtab and its own evolution line links
+- `runSplitName` — the name of the first split (in game order) not yet
+  present in `run.completedSplits`, or the last split if every split is
+  completed; this is the split the run has actually progressed to,
+  regardless of which split is being viewed
 - `currentSplitName` — the split named by the `split` query param if it
-  matches one of `game.splits`, otherwise the game's first split; shared
-  with `BoxTab` so its level cap reflects the same viewed split as the
-  Splits tab
+  matches one of `game.splits`, otherwise `runSplitName`; `RunEntry` links
+  to the page with no `split` param, so a freshly opened run automatically
+  shows its current split
 - `game` — the `Game` matching `slug`, looked up from the static game list;
   triggers a 404 if no game matches
 - `run` — the stored `Run` for `game`, looked up from the run store snapshot
@@ -62,6 +67,12 @@ opens `ImportSaveModal` regardless of the active tab or wipe state.
   selection is linkable and shareable
 - `wipeMessage` — a message picked at random from `DEFAULT_WIPE_MESSAGES`
   combined with `game.wipeMessages`, shown when the run has been wiped
+- `isHallOfFameUnlocked` — whether every split in `game.splits` is present
+  in `run.completedSplits` (`SplitHelpers.isGameComplete`); gates both the
+  Hall of Fame tab's visibility in `visibleTabs` and its content, in case
+  its query param is set directly
+- `visibleTabs` — `TABS` with the Hall of Fame tab filtered out unless
+  `isHallOfFameUnlocked`
 
 ## Handlers
 
@@ -122,6 +133,12 @@ opens `ImportSaveModal` regardless of the active tab or wipe state.
   any split
 - **On split select** (from `SplitHeader`'s dropdown) — sets the `split`
   query param without changing `tab`, and scrolls the page to the top
+- **On split complete toggle** (from `SplitTab`'s "Clear Split"/"Split
+  Completed" button) — when completing, adds the given split name and
+  every split before it (in game order) to `run.completedSplits`; when
+  undoing, removes only the given split name. Saves the run either way; if
+  completing newly completes every split in the game, sets the `tab` query
+  param to `hof` and scrolls the page to the top
 - **On Wipe toggle** — flips `run.wipe` and saves the run; the button reads
   "Wipe" when `run.wipe` is `false` and "RESPAWN" when `true`
 - **On Import click** — opens `ImportSaveModal`
