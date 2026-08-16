@@ -5,6 +5,7 @@ import {
     EncounterMethod,
     FieldCondition,
     GrowthRate,
+    MapAnchor,
     Nature,
     PokemonStatus,
 } from '@/lib/static/enums';
@@ -179,19 +180,6 @@ export type SaveImportError = {
     message: string;
 };
 
-// battleKey -> the condition determining whether that battle has been won,
-// resolved against a decrypted save file (generation-specific parsers, e.g.
-// src/lib/parsers/gen4/Gen4BattleParser.ts, know how to evaluate one of
-// these against their own save format).
-export type BattleDefeatCondition =
-    | { type: 'trainerFlag'; flag: number }
-    | { type: 'badge'; bit: number }
-    | { type: 'gameClear' }
-    | { type: 'flag'; flag: number }
-    | { type: 'varAtLeast'; var: number; minValue: number }
-    | { type: 'and'; conditions: BattleDefeatCondition[] }
-    | { type: 'or'; conditions: BattleDefeatCondition[] };
-
 export type BattleItem = {
     count: number;
     name: string;
@@ -207,8 +195,6 @@ export type Gen4SaveLayout = {
     partyOffset: number;
     badgeMaskOffset: number;
     mainStoryClearedOffset: number;
-    varsOffset: number;
-    flagsOffset: number;
 };
 
 // The second trainer in a tag battle: a distinct trainer merged into the
@@ -237,9 +223,6 @@ export type BattleData = {
     // TRAINER_CLASSES slug.
     trainerClass: string;
     aiFlags: AiFlag[];
-    // Resolved against pret/pokeplatinum -- the condition determining
-    // whether a decrypted save reports this battle as won.
-    saveCondition: BattleDefeatCondition;
 };
 
 export type Battle = {
@@ -348,6 +331,8 @@ export type Subarea = {
     encountersKey?: string;
     hideBattles?: boolean;
     map: StaticImageData;
+    // Where the map is panned to by default, when no battle is selected.
+    mapAnchor: MapAnchor;
     battles?: Battle[];
 };
 
@@ -357,13 +342,31 @@ export type Location = {
     hideBattles?: boolean;
     battles?: Battle[];
 } & (
-    | { map: StaticImageData; subareas?: never }
-    | { map?: never; subareas: Subarea[] }
+    | {
+          map: StaticImageData;
+          // Where the map is panned to by default, when no battle is
+          // selected.
+          mapAnchor: MapAnchor;
+          subareas?: never;
+      }
+    | { map?: never; mapAnchor?: never; subareas: Subarea[] }
 );
+
+// The condition determining whether a split is finished, resolved against a
+// decrypted save file (generation-specific parsers, e.g.
+// src/lib/parsers/gen4/Gen4SplitParser.ts, know how to evaluate one of these
+// against their own save format). A gym split is done once its badge bit is
+// set; the final split (the champion) is done once the main story is marked
+// cleared.
+export type SplitSaveCondition =
+    { type: 'badge'; bit: number } | { type: 'gameClear' };
 
 export type Split = {
     name: string;
     locations: Location[];
+    // Resolved against pret/pokediamond -- the condition determining
+    // whether a decrypted save reports this split as finished.
+    saveCondition: SplitSaveCondition;
 };
 
 export type Game = {
@@ -396,10 +399,8 @@ export type Game = {
 
 export type Run = {
     attempt: number;
-    // Battle keys (BattleHelpers.getBattleKey), not names — trainerClass + name is
-    // the unique identifier since name alone can repeat within a game.
-    defeatedBattles: string[];
-    personalBest: string;
+    // Names of splits (Split.name) the player has marked as finished.
+    completedSplits: string[];
     hallOfFameCount: number;
     starter: string;
     caughtPokemon: CaughtPokemon[];

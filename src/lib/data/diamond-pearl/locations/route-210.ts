@@ -1,5 +1,5 @@
 import { route210North, route210South } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, FieldCondition } from '@/lib/static/enums';
+import { BattleMetadata, FieldCondition, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_210: Location = {
@@ -8,6 +8,7 @@ const ROUTE_210: Location = {
         {
             name: 'South',
             map: route210South,
+            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'sinnoh-route-210-south-towards-solaceon-town',
             battles: [
                 {
@@ -59,6 +60,7 @@ const ROUTE_210: Location = {
         {
             name: 'North',
             map: route210North,
+            mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'sinnoh-route-210-west-towards-celestic-town',
             battles: [
                 {
@@ -143,8 +145,8 @@ const ROUTE_210: Location = {
                     metadata: [BattleMetadata.Optional],
                     battleKey: 'veteran-brian',
                     fieldCondition: FieldCondition.Fog,
-                    x: 15.1,
-                    y: 22.8,
+                    x: 15,
+                    y: 22.6,
                 },
                 {
                     metadata: [BattleMetadata.Optional],

@@ -16,8 +16,7 @@ rendered at all (rather than rendering an empty table), and the section
 is treated as mapless for the purpose of showing expanded content if it
 also has no map. Selecting a
 trainer marker on the map surfaces its battle details in a battle card
-alongside the map. Defeated trainers are tracked in the run's storage and
-reflected on both the map and the battle card. A location's wild
+alongside the map. A location's wild
 encounters, if any, are shown in a table below the map and battle card,
 with a Pokédex tile to its right showing whichever encounter's row was
 most recently clicked in the table. Clicking a Pokémon within the
@@ -55,24 +54,21 @@ Pokédex tile.
 
 ## Props
 
-| Prop                   | Type                          | Required | Default | Description                                                                                                                                       |
-| ---------------------- | ----------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `game`                 | `Game`                        | Yes      | -       | The game the run belongs to, for saving defeat state                                                                                              |
-| `index`                | `number`                      | Yes      | -       | This location's index within the current split's locations array, used to disambiguate its anchor id from other locations sharing the same name   |
-| `location`             | `Location`                    | Yes      | -       | The location this card displays                                                                                                                   |
-| `onAdvanceSplit`       | `(splitName: string) => void` | Yes      | -       | Called with the name of the next split when the defeated battle is the last required battle of its split, but not the game's last required battle |
-| `onClearBattleMarker`  | `() => void`                  | Yes      | -       | Called whenever the battle card's defeat button is clicked, to clear a persisted battle selection (e.g. the URL) beyond this card                 |
-| `onGameComplete`       | `() => void`                  | Yes      | -       | Called instead of `onAdvanceSplit` when the defeated battle is the game's last required battle                                                    |
-| `onSelectAbility`      | `(slug: string) => void`      | Yes      | -       | Called when an ability is clicked within the battle card's teams or the Pokédex tile's ability list                                               |
-| `onSelectBattleMarker` | `(battleKey: string) => void` | Yes      | -       | Called with a battle's key when its trainer marker is clicked on the map, so the selection can be persisted (e.g. to the URL) beyond this card    |
-| `onSelectItem`         | `(slug: string) => void`      | Yes      | -       | Called when a held item is clicked within the battle card's teams or the encounter table's trade rows                                             |
-| `onSelectLocation`     | `(location: string) => void`  | Yes      | -       | Called with a location's base name when it's clicked within the Pokédex tile's locations tab                                                      |
-| `onSelectMove`         | `(slug: string) => void`      | Yes      | -       | Called when a move is clicked within the battle card's teams or the Pokédex tile's learnset                                                       |
-| `onSelectSpecies`      | `(slug: string) => void`      | Yes      | -       | Called when a Pokémon's sprite or name is clicked within the battle card's teams                                                                  |
-| `onSelectTrainer`      | `(battleKey: string) => void` | Yes      | -       | Called with the battle's key when the battle card's trainer name header is clicked                                                                |
-| `run`                  | `Run`                         | Yes      | -       | The run whose defeated battles are shown                                                                                                          |
-| `selectedBattleKey`    | `string`                      | No       | -       | A battle key (e.g. from the URL) that, when it matches a battle in this location, is preselected over the usual default                           |
-| `variant`              | `string`                      | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                                            |
+| Prop                   | Type                          | Required | Default | Description                                                                                                                                     |
+| ---------------------- | ----------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `game`                 | `Game`                        | Yes      | -       | The game the run belongs to                                                                                                                     |
+| `index`                | `number`                      | Yes      | -       | This location's index within the current split's locations array, used to disambiguate its anchor id from other locations sharing the same name |
+| `location`             | `Location`                    | Yes      | -       | The location this card displays                                                                                                                 |
+| `onSelectAbility`      | `(slug: string) => void`      | Yes      | -       | Called when an ability is clicked within the battle card's teams or the Pokédex tile's ability list                                             |
+| `onSelectBattleMarker` | `(battleKey: string) => void` | Yes      | -       | Called with a battle's key when its trainer marker is clicked on the map, so the selection can be persisted (e.g. to the URL) beyond this card  |
+| `onSelectItem`         | `(slug: string) => void`      | Yes      | -       | Called when a held item is clicked within the battle card's teams or the encounter table's trade rows                                           |
+| `onSelectLocation`     | `(location: string) => void`  | Yes      | -       | Called with a location's base name when it's clicked within the Pokédex tile's locations tab                                                    |
+| `onSelectMove`         | `(slug: string) => void`      | Yes      | -       | Called when a move is clicked within the battle card's teams or the Pokédex tile's learnset                                                     |
+| `onSelectSpecies`      | `(slug: string) => void`      | Yes      | -       | Called when a Pokémon's sprite or name is clicked within the battle card's teams                                                                |
+| `onSelectTrainer`      | `(battleKey: string) => void` | Yes      | -       | Called with the battle's key when the battle card's trainer name header is clicked                                                              |
+| `run`                  | `Run`                         | Yes      | -       | The run whose caught Pokémon/missed locations are shown                                                                                         |
+| `selectedBattleKey`    | `string`                      | No       | -       | A battle key (e.g. from the URL) that, when it matches a battle in this location, is preselected over the usual default                         |
+| `variant`              | `string`                      | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                                          |
 
 ## State
 
@@ -86,20 +82,6 @@ Pokédex tile.
 
 ## Computations
 
-- `defeatedBattles` — the run's list of defeated battle keys (trainer class +
-  name, since name alone is not unique)
-- `nextPersonalBestBattleKey` — the key of the next required battle after the
-  run's personal best, in split/location/battle order
-- `isBattleDefeated` — whether a given battle's key is present in
-  `defeatedBattles`
-- `isChasingPersonalBest` — whether the run still has a personal best to
-  catch up to: `true` if `run.personalBest` is set and hasn't yet been
-  defeated in this run's own `defeatedBattles`; once the run reaches its
-  personal best, every subsequent battle is trivially a new one, so this
-  flips to `false`
-- `isBattleNextPersonalBest` — whether a given battle's key matches
-  `nextPersonalBestBattleKey`, and only while `isChasingPersonalBest` is
-  `true`
 - `getAllBattles` — every battle across all of the location's subareas, in
   subarea order, each paired with its subarea's index
 - `getInitialSubareaIndex` — the subarea to open on: the subarea containing
@@ -107,12 +89,11 @@ Pokédex tile.
   location; otherwise subarea `0` if the location has no subareas, or if
   any subarea has wild encounters and this location's own encounter hasn't
   been caught yet (i.e. there's still a wild Pokémon to catch here);
-  otherwise, the subarea of the first undefeated battle from
-  `getAllBattles`, or the subarea of the last battle if all are defeated
+  otherwise, the subarea of the first battle from `getAllBattles`
 - `getDefaultSelectedBattle` — the battle to preselect for a given subarea
   index: the battle matching `selectedBattleKey`, if set and present in
-  that subarea; otherwise the first undefeated required battle in that
-  subarea, or the last required (or any) battle if all are defeated
+  that subarea; otherwise the first required battle in that subarea, or
+  the first battle of any kind if the subarea has none
 - `section` — the currently active map/battles/encounters group: the
   selected subarea when `location.subareas` is set, otherwise a section
   built from the location's own `map`/`battles`/`encountersKey`. Wild
@@ -167,16 +148,6 @@ card) when entering with a matching battle selected.
 - **On subarea button click** — selects that subarea's index
 - **On trainer marker click** — selects that battle and calls
   `onSelectBattleMarker` with its key
-- **On battle toggle defeated** — calls `onClearBattleMarker`, then adds
-  or removes the battle's key from the run's defeated battles in storage.
-  Defeating a battle also marks
-  every required battle before it (in split/location/battle order) as
-  defeated, if not already. Defeating a required (non-optional)
-  battle also updates the run's personal best if it is farther along than
-  the current one. If the defeated battle is the game's last required
-  battle, calls `onGameComplete`; otherwise, if it's the last required
-  battle of its split, calls `onAdvanceSplit` with the next split's name.
-  No other battle selection changes as a result of defeating a battle
 - **On encounter table row click** — selects that encounter, showing its
   details in the Pokédex tile, and clears `speciesOverride` so the
   encounter's own species is shown

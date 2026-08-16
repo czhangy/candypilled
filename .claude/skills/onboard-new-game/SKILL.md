@@ -87,31 +87,8 @@ Reference implementation: `src/lib/data/platinum/`.
    map into `maps/index.ts` and creates/updates `locations/<name>.ts`.
 5. **Scaffold battles** — `npm run gen:battle <slug> <location> [subarea]
 [flags]` adds placement + metadata to the location file; the actual
-   trainer data (team, AI flags, save condition) is then hand-authored in
-   `battles.ts`, keyed by the generated `battleKey`.
-    - **Do this in two passes, not one. Pass 1: battle + marker data for
-      every battle in the game. Pass 2 (only after pass 1 is fully done):
-      derive every `saveCondition`.** Don't interleave them battle-by-
-      battle, and don't put a real `saveCondition` value in during pass 1
-      for _any_ battle — not even a generic trainer whose `saveCondition`
-      follows an already-known, mechanical ID-to-flag formula. Pass 1 is
-      about team/marker data only; computing and inserting a real flag
-      value, even a trivial one-line formula application, is pass-2 work
-      and stays out of pass 1 with no exceptions. Every battle gets the
-      same obviously-fake placeholder in pass 1, e.g.
-      `{ type: 'flag', flag: -1 }` — never a placeholder that could pass as
-      a real, plausible-looking value. Track the pass-2 backlog in one
-      place (e.g. a task) rather than a `// TODO` comment on every single
-      battle — grepping the placeholder value itself finds them all when
-      pass 2 starts, so a comment repeating that on every entry is just
-      noise; reserve inline comments for substantive derivation notes (what
-      external source a battle's data came from, what's already been ruled
-      out, why it's hard), not a restatement of "this needs deriving." Once
-      pass 1 is complete for the whole game (or the whole batch of
-      locations being worked through), do pass 2 as its own dedicated
-      effort: grep every placeholder and derive them one at a time — that's
-      the point at which a mechanical formula gets applied too, same as any
-      other derivation.
+   trainer data (team, AI flags) is then hand-authored in `battles.ts`,
+   keyed by the generated `battleKey`.
     - **When an external trainer data source is involved (keyed by some
       internal trainer ID), battle population is a location-by-location,
       collaborative loop — not something to run solo end-to-end.** The
@@ -119,11 +96,9 @@ Reference implementation: `src/lib/data/platinum/`.
       there (in order), each one's IVs, and each one's `BattleMetadata`.
       Map those names to the matching entries in the external data source
       (team, ability, nature, moves, AI flags) and use that to populate
-      `battles.ts` (merging in the user-supplied IVs/metadata), computing
-      any mechanical ID-to-save-flag formula that applies (see "Deriving
-      save-condition mechanics" below). Then wire the resulting
-      `battleKey`s into that location's `battles: []` array in the order
-      the user gave the names, with `x: 0, y: 0` placeholders.
+      `battles.ts` (merging in the user-supplied IVs/metadata). Then wire
+      the resulting `battleKey`s into that location's `battles: []` array
+      in the order the user gave the names, with `x: 0, y: 0` placeholders.
     - **`battleKey` naming is an app convention, check an existing game's
       `battles.ts` for it rather than inventing one per-battle.** Most keys
       are `<trainer-class-slug>-<name>` for named individuals, but a
@@ -165,12 +140,6 @@ Reference implementation: `src/lib/data/platinum/`.
       target game has no such derivation path documented yet, that's a gap
       to fill (research and document the mechanism, the same way Gen 4's
       was derived) rather than a reason to fall back to asking the user.
-    - **Save-condition mechanics are equally subject to the
-      "games are independent" rule above** — never template a save
-      condition's shape or values off another already-implemented game,
-      even one in the same generation, even when the concept (a badge, a
-      rival battle) is identical. See "Deriving save-condition mechanics
-      from a ROM decompilation" below.
 6. **New trainer classes** — if a battle references a trainer class not
    already in `src/lib/data/trainer-classes.ts`, add it with
    `npm run gen:trainer-class <slug> <classSlug> <displayName> <male|female> [spriteSlug]`
@@ -183,86 +152,64 @@ Reference implementation: `src/lib/data/platinum/`.
    _subset_ of included indices. Existing games intentionally omit indices
    for locations that never come up as a met-location for this app's
    purposes (event-only/static-encounter spots); including the full
-   academic list adds entries that don't reflect real usage.
+   academic list adds entries that don't reflect real usage. Every `Split`
+   also needs a `saveCondition` (see "Deriving a split's `saveCondition`"
+   below) — a split isn't fully authored without one.
 8. **Assemble the `Game`** in `<slug>.ts` (name, logo, generation, `version`
    = PokeAPI version-group slug, starters, accentColor, encounters,
    battles, metLocationById, wipeMessages, splits), add
    `public/logos/<slug>.png`, and add the game to the `GAMES` array in
    `src/lib/data/games.ts`.
 
-## Deriving save-condition mechanics from a ROM decompilation
+## Deriving a split's `saveCondition`
 
-When a `saveCondition` isn't a simple, already-established pattern (e.g. a
-generic trainer's defeat flag computed from some ID via a known formula, or
-a straightforward badge bitmask), and a real decompilation of that game's
-ROM is available, derive the mechanism from the decomp rather than asking
-the user to supply it, leaving a placeholder, or reusing another game's
-value — even one from the same console generation, even when it turns out
-to match after independent verification. Don't repeat the derivation
-process below in your head as a template with someone else's game's numbers
-already filled in; walk it fresh, from that game's own source, every time.
+Every `Split` (`src/lib/static/types.ts`) needs a `saveCondition`, resolved
+against a decrypted save file by a generation-specific parser (e.g.
+`src/lib/parsers/gen4/Gen4SplitParser.ts`) to detect which splits an
+imported save already reports as finished. This is deliberately coarse —
+one condition per split (typically "this split's gym leader has been
+beaten"), not one per battle — so it's a much smaller derivation task than
+per-battle save data:
 
-General method (worked out once, in full, against a real Gen 4 ROM decomp —
-generalize the _technique_, not any specific opcode number, file path, or
-derived constant, none of which are project-agnostic):
+- **A split whose last location is a gym ends with `{ type: 'badge', bit:
+N }`**, where `N` is that gym's badge bit in the save's badge bitmask.
+- **The final split (the one ending in the champion) ends with `{ type:
+'gameClear' }`**, resolved against the save's main-story-cleared flag —
+  already wired up via `Gen4SaveLayout.mainStoryClearedOffset` for Gen 4
+  games, so no extra derivation is needed there.
 
-1. **Find the relevant map's compiled script file.** Decompiled games
-   typically have a per-map header table (in a global map-data source file)
-   listing, among other things, which compiled script asset belongs to that
-   map. Locate the map by its symbolic constant/name and read that field.
-2. **Build an opcode table from the decompiled script-command source.**
-   These VMs typically dispatch a fixed-width opcode into a table of
-   named command-handler functions; the source often documents each
-   function's real opcode in a comment or encodes it directly in an
-   "unknown" function's name. Don't trust a single comment in isolation —
-   these have been observed to be wrong/inconsistent for some commands;
-   corroborate against the command's actual behavior when the result looks
-   implausible. Make sure you've captured _every_ source file containing
-   command definitions, not just the most obviously-named one, and account
-   for signature variations (e.g. a type name written two different ways)
-   when pattern-matching function signatures — an incomplete file list or a
-   too-strict pattern is the most common cause of disassembly desyncing
-   partway through a script.
-3. **Build an argument-size table** by parsing each command handler's body
-   for its sequence of "read N bytes from the script stream" calls, in
-   source order. Confirm from the VM's core dispatch loop how the opcode
-   itself is read (width, and whether it precedes or follows any other
-   fixed header) before trusting any per-command argument-size table built
-   on top of it.
-4. **Don't trust manual hex-dump transcription for byte offsets.** Read the
-   binary programmatically and compute offsets in code; a value copied by
-   eye from a rendered hex dump is an easy place to introduce an
-   off-by-a-lot error (e.g. transposing a hex string with a decimal number)
-   that can still coincidentally produce plausible-looking output. Prefer
-   searching for unambiguous ground-truth anchors — e.g. a known ID
-   constant (trainer ID, item ID, etc.) that must appear as a literal byte
-   sequence near the command that uses it — over walking blind from the
-   start of a file, since an anchor lets you verify you're looking at the
-   right region before trusting anything decoded around it.
-5. **Once positioned, do a full, gap-free sequential disassembly** from the
-   real anchor through to wherever the save-condition write happens, rather
-   than scanning the whole file for an opcode and picking whichever
-   occurrence looks closest by proximity. Proximity-based matches can be
-   wrong: a similar-looking write may belong to a _different_ outcome
-   branch (e.g. a loss/blackout path instead of a win path) that happens to
-   sit near the one you actually want. Trace the real conditional branch
-   (typically a comparison against a "did this succeed" result, followed by
-   a conditional jump) to determine which branch is the one you care about
-   — dialogue/name-lookup calls immediately following a branch are often a
-   good tell for which one is the "success" path — then follow that
-   branch's own jumps through to convergence before trusting the write you
-   find there.
-6. **Don't assume the save-condition write uses the same underlying
-   mechanism every time**, even across battles that look conceptually
-   identical (e.g. two rival battles, or two gym battles) — one may write a
-   save variable, another a save flag/bit, another a dedicated
-   purpose-built command (e.g. one for granting a badge). Verify which
-   mechanism is actually used for each one individually from its own
-   disassembly, and convert any raw ID the command uses into whatever
-   indexing scheme the app's save parser expects (check the decomp's own
-   constants for the base offset such raw IDs are relative to, and
-   sanity-check the conversion against the parser's own save-layout
-   derivation rather than assuming a raw ID needs no adjustment).
+**Never assume a badge's bit index from split order, gym number, or another
+game's value — derive it from that game's own decomp, per the "games are
+independent" rule above, even when the badge identity (e.g. "Fantina gives
+the Relic Badge") is stable franchise knowledge.** A sibling game can (and,
+in Platinum's case, does) change the _order_ you're allowed to visit gyms
+in without changing which bit each badge occupies, so split array order is
+not a safe proxy for bit order. The derivation is two independent steps:
+
+1. **Find the badge bit each named badge occupies**, from a generated
+   constants file rather than any specific script: pret NDS decomps expose
+   this as a plain enum-like list where line position is the bit index —
+   e.g. pret/pokediamond's `include/constants/badge.h`
+   (`BADGE_COAL 0`, `BADGE_FOREST 1`, ...) or pret/pokeplatinum's
+   `generated/badges.txt` (one badge ID per line, in bit order, terminated
+   by a `MAX_BADGES` sentinel). This step is generation/franchise-level,
+   not per-game, so it only needs doing once per decomp project, not once
+   per split.
+2. **Find which named badge a specific gym leader gives**, from a decomp
+   source that names that gym specifically — e.g. a gym's own dynamic-map-
+   features file (pret/pokeplatinum's `overlay008/gym_features.c` has one
+   function per gym, named after its city, e.g. `HearthomeGym_InitFog`,
+   that reads the relevant `BADGE_ID_*`/`TestBadgeFlag` constant directly)
+   or a field-move's badge-gated usage check whose surrounding code/comments
+   identify which HM it gates (Bulbapedia documents which HM each badge
+   unlocks, so a field-move check naming a badge constant can be cross-
+   referenced that way too, though a gym-named source is more direct when
+   available). Don't rely on badge _name_ alone to guess which gym it
+   belongs to — verify from source, the same as any other per-game fact.
+
+If no gym-specific source can be found in the target game's decomp, ask the
+user rather than guessing — a wrong bit silently marks the wrong split
+complete on import, which is easy to miss since nothing crashes.
 
 ## Variant games sharing one generation (e.g. Diamond & Pearl)
 
@@ -370,18 +317,32 @@ Key differences from the single-version flow above:
   `customWidth`/`customHeight` are pure UI/layout scaffolding tied to the
   map image and screen position, not in-universe game data, so they're
   safe to copy verbatim from that game's location file instead of asking
-  the user to re-supply them. **Partial population never extends to
-  `battles.ts` content** (team, ability, nature, moves, gender, IVs,
-  `saveCondition`) — that's exactly the kind of in-universe data the
-  "games are independent" rule covers, and still has to be independently
-  derived from the target game's own primary sources (decomp/cross-
-  reference/Bulbapedia) even when the trainer's name and marker position
-  are identical to the source game's. When the user says something like
-  "copy the mapping from Platinum, get the battle data from D/P's own
-  data," that's an explicit request for partial population — don't infer
-  it unprompted, since two sibling games can diverge in roster/position
-  even on a shared map, and the safety of reuse here rests entirely on
-  the user confirming the map is truly the same asset.
+  the user to re-supply them. **The shortcut is scoped to _where the
+  placement data comes from_, not to _how much of the location gets
+  finished_.** Partial population is still a request to fully populate the
+  location's battles, same end state as full population (every `battles.ts`
+  entry present with real team data) — "partial" describes skipping the
+  marker-authoring conversation, not skipping `battles.ts` content. **Never
+  commit the copied `battles: []` markers into a location file before that
+  location's `battles.ts` entries exist for every copied `battleKey`** —
+  `TrainerMarker` unconditionally reads
+  `game.battles[battle.battleKey].trainerClass` with
+  no guard, so a marker referencing a nonexistent `battles.ts` entry is a
+  runtime crash for any user who reaches that location, not a harmless TODO.
+  Treat "copy the markers" and "derive the `battles.ts` content" as one
+  atomic unit of work, not two separately-committable steps — **`battles.ts`
+  content (team, ability, nature, moves, gender, IVs) still has to be
+  independently derived from the target game's own primary sources
+  (decomp/cross-reference/Bulbapedia)** — that's exactly the kind of
+  in-universe data the "games are independent" rule covers, even when the
+  trainer's name and marker position are identical to the source game's —
+  do that derivation immediately as part of the same pass, before the
+  location file's `battles: []` array is written/committed. When the user
+  says something like "copy the mapping from Platinum, get the battle data
+  from D/P's own data," that's an explicit request for partial population —
+  don't infer it unprompted, since two sibling games can diverge in roster/
+  position even on a shared map, and the safety of reuse here rests entirely
+  on the user confirming the map is truly the same asset.
   **Roster identity itself can differ per marker slot even when the
   layout is otherwise identical** — a real observed case: Platinum's
   Route 214 has `ruin-maniac-ronald` at one marker, but that trainer

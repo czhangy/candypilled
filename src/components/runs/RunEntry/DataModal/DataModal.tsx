@@ -39,7 +39,7 @@ const DataModal: React.FC<DataModalProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const description = `All data for ${gameName}, including your current run, personal best, and Hall of Fame count, will be deleted and can't be recovered.`;
+    const description = `All data for ${gameName}, including your current run and Hall of Fame count, will be deleted and can't be recovered.`;
 
     // -------------------------------------------------------------------------
     // HANDLERS

@@ -5,6 +5,7 @@ import { Split } from '@/lib/static/types';
 const WAKE: Split = {
     name: 'Wake',
     locations: [VEILSTONE_CITY, PASTORIA_GYM],
+    saveCondition: { type: 'badge', bit: 3 },
 };
 
 export default WAKE;

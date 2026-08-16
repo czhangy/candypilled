@@ -1,10 +1,11 @@
 import { route218 } from '@/lib/data/platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
+import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_218: Location = {
     name: 'Route 218',
     map: route218,
+    mapAnchor: MapAnchor.Right,
     encountersKey: 'sinnoh-route-218',
     battles: [
         {

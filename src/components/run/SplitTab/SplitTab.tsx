@@ -14,9 +14,6 @@ import styles from './SplitTab.module.scss';
 type SplitTabProps = {
     currentSplitName: string | null;
     game: Game;
-    onAdvanceSplit: (splitName: string) => void;
-    onClearBattleMarker: () => void;
-    onGameComplete: () => void;
     onSelectAbility: (slug: string) => void;
     onSelectBattleMarker: (battleKey: string) => void;
     onSelectItem: (slug: string) => void;
@@ -24,6 +21,7 @@ type SplitTabProps = {
     onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
     onSelectTrainer: (battleKey: string) => void;
+    onToggleSplitComplete: (splitName: string) => void;
     run: Run;
     selectedBattleKey?: string;
     stickyOffset: number;
@@ -32,9 +30,6 @@ type SplitTabProps = {
 const SplitTab: React.FC<SplitTabProps> = ({
     currentSplitName,
     game,
-    onAdvanceSplit,
-    onClearBattleMarker,
-    onGameComplete,
     onSelectAbility,
     onSelectBattleMarker,
     onSelectItem,
@@ -42,6 +37,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
     onSelectMove,
     onSelectSpecies,
     onSelectTrainer,
+    onToggleSplitComplete,
     run,
     selectedBattleKey,
     stickyOffset,
@@ -63,6 +59,8 @@ const SplitTab: React.FC<SplitTabProps> = ({
     );
     const variant = game.version;
     const badge = `/${variant}/badges/${StringHelpers.toSlug(currentSplitName ?? '')}.png`;
+    const isSplitCompleted =
+        !!currentSplitName && run.completedSplits.includes(currentSplitName);
 
     // -------------------------------------------------------------------------
     // EFFECTS
@@ -177,6 +175,16 @@ const SplitTab: React.FC<SplitTabProps> = ({
     };
 
     // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleSplitCompleteClick = (): void => {
+        if (currentSplitName) {
+            onToggleSplitComplete(currentSplitName);
+        }
+    };
+
+    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
@@ -268,6 +276,19 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             );
                         })}
                     </ul>
+                    <button
+                        className={[
+                            styles['complete-button'],
+                            isSplitCompleted &&
+                                styles['complete-button--completed'],
+                        ]
+                            .filter(Boolean)
+                            .join(' ')}
+                        onClick={handleSplitCompleteClick}
+                        type="button"
+                    >
+                        {isSplitCompleted ? 'SPLIT COMPLETED' : 'CLEAR SPLIT'}
+                    </button>
                 </nav>
                 <div className={styles.locations}>
                     {currentSplit?.locations.map((location, index) => (
@@ -276,9 +297,6 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             index={index}
                             key={`${location.name}-${index}`}
                             location={location}
-                            onAdvanceSplit={onAdvanceSplit}
-                            onClearBattleMarker={onClearBattleMarker}
-                            onGameComplete={onGameComplete}
                             onSelectAbility={onSelectAbility}
                             onSelectBattleMarker={onSelectBattleMarker}
                             onSelectItem={onSelectItem}

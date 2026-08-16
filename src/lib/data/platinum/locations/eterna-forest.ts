@@ -2,7 +2,7 @@ import {
     eternaForestExterior,
     eternaForestInterior,
 } from '@/lib/data/platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
+import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ETERNA_FOREST: Location = {
@@ -11,6 +11,7 @@ const ETERNA_FOREST: Location = {
         {
             name: 'Interior',
             map: eternaForestInterior,
+            mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'eterna-forest-interior',
             battles: [
                 {
@@ -61,6 +62,7 @@ const ETERNA_FOREST: Location = {
         {
             name: 'Exterior',
             map: eternaForestExterior,
+            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'eterna-forest-exterior',
         },
     ],

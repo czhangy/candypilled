@@ -42,6 +42,7 @@ const BYRON: Split = {
         IRON_ISLAND,
         CANALAVE_GYM,
     ],
+    saveCondition: { type: 'badge', bit: 5 },
 };
 
 export default BYRON;

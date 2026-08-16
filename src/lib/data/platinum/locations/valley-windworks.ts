@@ -1,9 +1,11 @@
 import { valleyWindworks } from '@/lib/data/platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VALLEY_WINDWORKS: Location = {
     name: 'Valley Windworks',
     map: valleyWindworks,
+    mapAnchor: MapAnchor.Center,
     encountersKey: 'valley-windworks',
     battles: [
         {

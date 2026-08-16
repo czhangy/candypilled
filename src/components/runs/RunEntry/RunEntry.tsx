@@ -42,11 +42,8 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const personalBestSplitName = run?.personalBest
-        ? SplitHelpers.getSplitName(game, run.personalBest)
-        : null;
     const currentSplitName = run
-        ? SplitHelpers.getCurrentSplitName(game, run.defeatedBattles)
+        ? SplitHelpers.getCurrentSplitName(game, run.completedSplits)
         : null;
     const boxCount = run
         ? run.caughtPokemon.filter(
@@ -67,8 +64,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     const startNewRun = (starter: CaughtPokemon): void => {
         const newRun: Run = {
             attempt: (run?.attempt ?? 0) + 1,
-            defeatedBattles: [],
-            personalBest: run?.personalBest ?? '',
+            completedSplits: [],
             hallOfFameCount: run?.hallOfFameCount ?? 0,
             starter: starter.slug,
             caughtPokemon: [starter],
@@ -173,19 +169,10 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     </div>
                     <hr className={styles.divider} />
                     <div className={styles.line}>
-                        {!run || run.hallOfFameCount === 0 ? (
-                            <span className={styles['personal-best']}>
-                                PB:{' '}
-                                {personalBestSplitName
-                                    ? `${personalBestSplitName} Split`
-                                    : 'N/A'}
-                            </span>
-                        ) : (
-                            <span className={styles['hall-of-fame']}>
-                                <CrownIcon />
-                                {run.hallOfFameCount}
-                            </span>
-                        )}
+                        <span className={styles['hall-of-fame']}>
+                            <CrownIcon />
+                            {run?.hallOfFameCount ?? 0}
+                        </span>
                     </div>
                 </div>
             </div>

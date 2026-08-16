@@ -5,27 +5,27 @@ contents listing every location in the run's current split, with a
 semi-transparent badge icon behind it, and a collapsible card for each
 location. Clicking a table of contents entry jumps to that location's card
 via an in-page anchor link, and the entry for whichever location is
-currently scrolled into view is highlighted automatically.
+currently scrolled into view is highlighted automatically. Below the list, a
+"Clear Split"/"Split Completed" button marks the currently shown split (and
+every split before it) as finished, or undoes that, in the run's storage.
 
 ## Props
 
-| Prop                   | Type                          | Required | Default | Description                                                                                                                                             |
-| ---------------------- | ----------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `currentSplitName`     | `string \| null`              | Yes      | -       | The name of the split currently being shown                                                                                                             |
-| `game`                 | `Game`                        | Yes      | -       | The game the run belongs to                                                                                                                             |
-| `onAdvanceSplit`       | `(splitName: string) => void` | Yes      | -       | Forwarded to each `SplitLocation`; called with the next split's name when its boss/last required battle is defeated                                     |
-| `onClearBattleMarker`  | `() => void`                  | Yes      | -       | Forwarded to each `SplitLocation`; called to clear the `battle` URL query param whenever a `BattleCard`'s defeat button is clicked                      |
-| `onGameComplete`       | `() => void`                  | Yes      | -       | Forwarded to each `SplitLocation`; called when the game's last required battle is defeated                                                              |
-| `onSelectAbility`      | `(slug: string) => void`      | Yes      | -       | Called when an ability is clicked within a `SplitLocation`'s `BattleCard` or `PokedexTile`                                                              |
-| `onSelectBattleMarker` | `(battleKey: string) => void` | Yes      | -       | Forwarded to each `SplitLocation`; called with a battle's key when its trainer marker is clicked on the map                                             |
-| `onSelectItem`         | `(slug: string) => void`      | Yes      | -       | Called when a held item is clicked within a `SplitLocation`'s `BattleCard`                                                                              |
-| `onSelectLocation`     | `(location: string) => void`  | Yes      | -       | Called with a location's base name when it's clicked within a `SplitLocation`'s `PokedexTile`                                                           |
-| `onSelectMove`         | `(slug: string) => void`      | Yes      | -       | Called when a move is clicked within a `SplitLocation`'s `BattleCard`                                                                                   |
-| `onSelectSpecies`      | `(slug: string) => void`      | Yes      | -       | Called when a Pokémon's sprite or name is clicked within a `SplitLocation`'s `BattleCard`                                                               |
-| `onSelectTrainer`      | `(battleKey: string) => void` | Yes      | -       | Called with the battle's key when a `SplitLocation`'s `BattleCard` trainer name header is clicked                                                       |
-| `run`                  | `Run`                         | Yes      | -       | The run whose progress (caught Pokémon, missed locations) is shown within the current split                                                             |
-| `selectedBattleKey`    | `string`                      | No       | -       | Forwarded to each `SplitLocation`; a battle key (e.g. from the URL) preselected over the usual default when it matches one of that location's battles   |
-| `stickyOffset`         | `number`                      | Yes      | -       | The pixel height of `RunPage`'s sticky tabs/split-header block, added to the table of contents' sticky offset so it doesn't stick underneath that block |
+| Prop                    | Type                          | Required | Default | Description                                                                                                                                             |
+| ----------------------- | ----------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `currentSplitName`      | `string \| null`              | Yes      | -       | The name of the split currently being shown                                                                                                             |
+| `game`                  | `Game`                        | Yes      | -       | The game the run belongs to                                                                                                                             |
+| `onSelectAbility`       | `(slug: string) => void`      | Yes      | -       | Called when an ability is clicked within a `SplitLocation`'s `BattleCard` or `PokedexTile`                                                              |
+| `onSelectBattleMarker`  | `(battleKey: string) => void` | Yes      | -       | Forwarded to each `SplitLocation`; called with a battle's key when its trainer marker is clicked on the map                                             |
+| `onSelectItem`          | `(slug: string) => void`      | Yes      | -       | Called when a held item is clicked within a `SplitLocation`'s `BattleCard`                                                                              |
+| `onSelectLocation`      | `(location: string) => void`  | Yes      | -       | Called with a location's base name when it's clicked within a `SplitLocation`'s `PokedexTile`                                                           |
+| `onSelectMove`          | `(slug: string) => void`      | Yes      | -       | Called when a move is clicked within a `SplitLocation`'s `BattleCard`                                                                                   |
+| `onSelectSpecies`       | `(slug: string) => void`      | Yes      | -       | Called when a Pokémon's sprite or name is clicked within a `SplitLocation`'s `BattleCard`                                                               |
+| `onSelectTrainer`       | `(battleKey: string) => void` | Yes      | -       | Called with the battle's key when a `SplitLocation`'s `BattleCard` trainer name header is clicked                                                       |
+| `onToggleSplitComplete` | `(splitName: string) => void` | Yes      | -       | Called with `currentSplitName` when the "Clear Split"/"Split Completed" button is clicked                                                               |
+| `run`                   | `Run`                         | Yes      | -       | The run whose progress (caught Pokémon, missed locations, completed splits) is shown within the current split                                           |
+| `selectedBattleKey`     | `string`                      | No       | -       | Forwarded to each `SplitLocation`; a battle key (e.g. from the URL) preselected over the usual default when it matches one of that location's battles   |
+| `stickyOffset`          | `number`                      | Yes      | -       | The pixel height of `RunPage`'s sticky tabs/split-header block, added to the table of contents' sticky offset so it doesn't stick underneath that block |
 
 ## State
 
@@ -57,6 +57,8 @@ currently scrolled into view is highlighted automatically.
   are rendered as `SplitLocation` cards
 - `badge` — the badge icon path for the current split, matching
   `/{variant}/badges/{slug}.png`, shown behind the table of contents
+- `isSplitCompleted` — whether `currentSplitName` is present in
+  `run.completedSplits`, driving the complete-split button's label and style
 
 Each table of contents entry links to `#{slug}`, where `slug` is
 `SplitHelpers.getLocationSlug(location.name, index)` — the same id
@@ -92,3 +94,8 @@ stay aligned.
   `EncounterHelpers.areAllEncountersDupes` for the location's encounters,
   `run.caughtPokemon`'s slugs, and the species caught at this location
   (if any)
+
+## Handlers
+
+- **On complete-split button click** — calls `onToggleSplitComplete` with
+  `currentSplitName`, if set

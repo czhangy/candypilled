@@ -9,10 +9,8 @@ import styles from './TrainerPanel.module.scss';
 
 type TrainerPanelProps = {
     battle: Battle;
-    isDefeated: boolean;
     isStacked: boolean;
     items?: BattleItem[];
-    onToggleDefeated: () => void;
     trainerClass: string;
     trainerName: string;
     variant: string;
@@ -20,10 +18,8 @@ type TrainerPanelProps = {
 
 const TrainerPanel: React.FC<TrainerPanelProps> = ({
     battle,
-    isDefeated,
     isStacked,
     items,
-    onToggleDefeated,
     trainerClass,
     trainerName,
     variant,
@@ -139,19 +135,6 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
                     ))}
                 </div>
             )}
-            <button
-                className={[
-                    styles['trainer__metadata'],
-                    styles['trainer__defeat'],
-                    isDefeated && styles['trainer__defeat--defeated'],
-                ]
-                    .filter(Boolean)
-                    .join(' ')}
-                onClick={onToggleDefeated}
-                type="button"
-            >
-                {isDefeated ? 'DEFEATED' : 'DEFEAT'}
-            </button>
         </div>
     );
 };

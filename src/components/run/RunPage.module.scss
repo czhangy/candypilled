@@ -68,14 +68,6 @@
         text-transform: uppercase;
     }
 
-    .subtitle {
-        @include mono-label;
-
-        color: $text-mid;
-        font-size: 0.95rem;
-        margin: 0.25rem 0 1rem;
-    }
-
     .sticky-header {
         align-items: flex-end;
         background: $background;

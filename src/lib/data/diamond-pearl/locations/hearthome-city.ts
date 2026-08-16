@@ -1,10 +1,11 @@
 import { hearthomeCity } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata } from '@/lib/static/enums';
+import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const HEARTHOME_CITY: Location = {
     name: 'Hearthome City',
     map: hearthomeCity,
+    mapAnchor: MapAnchor.BottomLeft,
     encountersKey: 'hearthome-city-west-gate',
     battles: [
         {

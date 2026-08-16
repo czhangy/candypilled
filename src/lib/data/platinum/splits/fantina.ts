@@ -40,6 +40,7 @@ const FANTINA: Split = {
         HEARTHOME_CITY,
         HEARTHOME_GYM,
     ],
+    saveCondition: { type: 'badge', bit: 4 },
 };
 
 export default FANTINA;

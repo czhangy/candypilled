@@ -16,13 +16,11 @@ type BattleCardProps = {
     battle: Battle;
     game: Game;
     generation: number;
-    isDefeated: boolean;
     onSelectAbility: (slug: string) => void;
     onSelectItem: (slug: string) => void;
     onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
     onSelectTrainer: (battleKey: string) => void;
-    onToggleDefeated: () => void;
     starter: string;
     variant: string;
     version: string;
@@ -32,13 +30,11 @@ const BattleCard: React.FC<BattleCardProps> = ({
     battle,
     game,
     generation,
-    isDefeated,
     onSelectAbility,
     onSelectItem,
     onSelectMove,
     onSelectSpecies,
     onSelectTrainer,
-    onToggleDefeated,
     starter,
     variant,
     version,
@@ -134,10 +130,8 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                 {isLastGroup ? (
                                     <TrainerPanel
                                         battle={battle}
-                                        isDefeated={isDefeated}
                                         isStacked={isStacked}
                                         items={group.items}
-                                        onToggleDefeated={onToggleDefeated}
                                         trainerClass={group.trainerClass}
                                         trainerName={group.name}
                                         variant={variant}

@@ -13,7 +13,6 @@ import { GAMES } from '@/lib/data/games';
 import { PokemonStatus } from '@/lib/static/enums';
 import { CaughtPokemon, Run } from '@/lib/static/types';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
-import BattleHelpers from '@/lib/utils/BattleHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -110,7 +109,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const isHallOfFameUnlocked = !!(
         game &&
         run &&
-        BattleHelpers.isGameComplete(game, run.defeatedBattles)
+        SplitHelpers.isGameComplete(game, run.completedSplits)
     );
 
     const activeTab =
@@ -118,7 +117,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     const runSplitName =
         game && run
-            ? SplitHelpers.getCurrentSplitName(game, run.defeatedBattles)
+            ? SplitHelpers.getCurrentSplitName(game, run.completedSplits)
             : null;
 
     const currentSplitName =
@@ -127,22 +126,6 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                   (split) => split.name === searchParams.get('split')
               )?.name ?? runSplitName)
             : null;
-
-    const personalBestBattle =
-        game && run?.personalBest
-            ? BattleHelpers.getBattle(game, run.personalBest)
-            : null;
-    const personalBestSplitName =
-        game && run?.personalBest
-            ? SplitHelpers.getSplitName(game, run.personalBest)
-            : null;
-    const personalBestLabel = personalBestSplitName
-        ? `${personalBestSplitName} Split${
-              personalBestBattle
-                  ? ` — ${BattleHelpers.getFullName(personalBestBattle, game!)}`
-                  : ''
-          }`
-        : null;
 
     const visibleTabs = TABS.filter(
         (tab) => tab.id !== 'hof' || isHallOfFameUnlocked
@@ -263,10 +246,6 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         updateQueryParams({ battle: battleKey });
     };
 
-    const handleBattleMarkerClear = (): void => {
-        updateQueryParams({ battle: undefined });
-    };
-
     const handleTrainerLinkClick = (battleKey: string): void => {
         window.open(
             `${pathname}?tab=calc&battle=${encodeURIComponent(battleKey)}`,
@@ -321,9 +300,34 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         window.scrollTo({ top: 0 });
     };
 
-    const handleGameComplete = (): void => {
-        updateQueryParams({ tab: 'hof' });
-        window.scrollTo({ top: 0 });
+    const handleSplitToggleComplete = (splitName: string): void => {
+        if (!game || !run) return;
+
+        const wasCompleted = run.completedSplits.includes(splitName);
+        const splitIndex = game.splits.findIndex(
+            (split) => split.name === splitName
+        );
+
+        const completedSplits = wasCompleted
+            ? run.completedSplits.filter((name) => name !== splitName)
+            : [
+                  ...new Set([
+                      ...run.completedSplits,
+                      ...game.splits
+                          .slice(0, splitIndex + 1)
+                          .map((split) => split.name),
+                  ]),
+              ];
+
+        LocalStorageHelpers.saveRun(game, { ...run, completedSplits });
+
+        if (
+            !wasCompleted &&
+            SplitHelpers.isGameComplete(game, completedSplits)
+        ) {
+            updateQueryParams({ tab: 'hof' });
+            window.scrollTo({ top: 0 });
+        }
     };
 
     const handleWipeToggle = (): void => {
@@ -342,7 +346,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     const handleImportSave = (
         importedPokemon: CaughtPokemon[],
-        importedDefeatedBattles: string[]
+        importedCompletedSplits: string[]
     ): void => {
         if (!game || !run) return;
 
@@ -366,22 +370,14 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
             (pokemon) => !existingLocations.has(pokemon.location)
         );
 
-        // The save is authoritative for battle completion, the same way it
-        // is for the box: every battle it can resolve is set to exactly
+        // The save is authoritative for split completion, the same way it
+        // is for the box: every split it can resolve is set to exactly
         // what it reports, rather than only ever adding to what's already
         // recorded.
-        const requiredBattleKeys = BattleHelpers.getRequiredBattleKeys(game);
-        const defeatedSet = new Set(importedDefeatedBattles);
-        const personalBest =
-            [...requiredBattleKeys]
-                .reverse()
-                .find((battleKey) => defeatedSet.has(battleKey)) ?? '';
-
         const updatedRun: Run = {
             ...run,
             caughtPokemon: [...merged, ...newPokemon],
-            defeatedBattles: importedDefeatedBattles,
-            personalBest,
+            completedSplits: importedCompletedSplits,
         };
 
         LocalStorageHelpers.saveRun(game, updatedRun);
@@ -432,11 +428,6 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                     </button>
                 </div>
             </div>
-            {personalBestLabel && (
-                <p className={styles.subtitle}>
-                    Personal Best: {personalBestLabel}
-                </p>
-            )}
             {run.wipe ? (
                 <div className={styles['wipe-message']}>
                     <p className={styles['wipe-text']}>{wipeMessage}</p>
@@ -449,8 +440,8 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                     >
                         {activeTab === 'split' && (
                             <SplitHeader
+                                completedSplits={run.completedSplits}
                                 currentSplitName={currentSplitName}
-                                defeatedBattles={run.defeatedBattles}
                                 game={game}
                                 onSelectSplit={handleSplitSelect}
                                 runSplitName={runSplitName}
@@ -467,9 +458,6 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                         <SplitTab
                             currentSplitName={currentSplitName}
                             game={game}
-                            onAdvanceSplit={handleSplitSelect}
-                            onClearBattleMarker={handleBattleMarkerClear}
-                            onGameComplete={handleGameComplete}
                             onSelectAbility={handleAbilityLinkClick}
                             onSelectBattleMarker={handleBattleSelect}
                             onSelectItem={handleItemLinkClick}
@@ -477,6 +465,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             onSelectMove={handleMoveLinkClick}
                             onSelectSpecies={handleSpeciesLinkClick}
                             onSelectTrainer={handleTrainerLinkClick}
+                            onToggleSplitComplete={handleSplitToggleComplete}
                             run={run}
                             selectedBattleKey={selectedBattle}
                             stickyOffset={stickyHeaderHeight}

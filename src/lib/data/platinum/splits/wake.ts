@@ -25,6 +25,7 @@ const WAKE: Split = {
         TROPHY_GARDEN,
         PASTORIA_GYM,
     ],
+    saveCondition: { type: 'badge', bit: 3 },
 };
 
 export default WAKE;

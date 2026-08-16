@@ -11,7 +11,7 @@ type ImportSaveModalProps = {
     buttonTextColor?: string;
     game: Game;
     onClose: () => void;
-    onSubmit: (pokemon: CaughtPokemon[], defeatedBattles: string[]) => void;
+    onSubmit: (pokemon: CaughtPokemon[], completedSplits: string[]) => void;
 };
 
 const ImportSaveModal: React.FC<ImportSaveModalProps> = ({
@@ -48,11 +48,11 @@ const ImportSaveModal: React.FC<ImportSaveModalProps> = ({
 
         try {
             const buffer = await file.arrayBuffer();
-            const { pokemon, defeatedBattles } = SaveFileParser.parse(
+            const { pokemon, completedSplits } = SaveFileParser.parse(
                 game,
                 buffer
             );
-            onSubmit(pokemon, defeatedBattles);
+            onSubmit(pokemon, completedSplits);
             onClose();
         } catch (error) {
             setErrors([
@@ -87,13 +87,13 @@ const ImportSaveModal: React.FC<ImportSaveModalProps> = ({
                 >
                     <p className={styles.hint}>
                         Select your {game.name} <code>.sav</code> file to import
-                        every Pokémon in its party and PC boxes, and every
-                        trainer battle it reports as won.
+                        every Pokémon in its party and PC boxes, and every split
+                        it reports as finished.
                     </p>
                     <p className={styles.warning}>
                         Each imported Pokémon replaces whatever is already
                         recorded at its catch location, unless that location is
-                        marked dead; new locations are added. Every battle the
+                        marked dead; new locations are added. Every split the
                         save can resolve is set to match it exactly. This
                         can&apos;t be undone.
                     </p>

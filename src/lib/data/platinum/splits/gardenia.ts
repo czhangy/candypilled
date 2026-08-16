@@ -40,6 +40,7 @@ const GARDENIA: Split = {
         ]),
         ETERNA_GYM,
     ],
+    saveCondition: { type: 'badge', bit: 1 },
 };
 
 export default GARDENIA;

@@ -10,7 +10,6 @@ import SENDOFF_SPRING from '@/lib/data/platinum/locations/sendoff-spring';
 import SPEAR_PILLAR from '@/lib/data/platinum/locations/spear-pillar';
 import SUNYSHORE_CITY from '@/lib/data/platinum/locations/sunyshore-city';
 import SUNYSHORE_GYM from '@/lib/data/platinum/locations/sunyshore-gym';
-import VALOR_CAVERN from '@/lib/data/platinum/locations/valor-cavern';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
@@ -35,13 +34,13 @@ const VOLKNER: Split = {
         DISTORTION_WORLD,
         SENDOFF_SPRING,
         ACUITY_CAVERN,
-        LocationHelpers.withHiddenBattles(VALOR_CAVERN),
         ROUTE_222,
         SUNYSHORE_CITY,
         ROUTE_223,
         POKEMON_LEAGUE,
         SUNYSHORE_GYM,
     ],
+    saveCondition: { type: 'badge', bit: 7 },
 };
 
 export default VOLKNER;

@@ -1,10 +1,11 @@
 import { hearthomeCityGate } from '@/lib/data/platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
+import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const HEARTHOME_CITY_GATE: Location = {
     name: 'Hearthome City Gate',
     map: hearthomeCityGate,
+    mapAnchor: MapAnchor.Center,
     battles: [
         {
             metadata: [BattleMetadata.Miniboss],

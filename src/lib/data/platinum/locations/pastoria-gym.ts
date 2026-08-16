@@ -1,10 +1,11 @@
 import { pastoriaGym } from '@/lib/data/platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
+import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const PASTORIA_GYM: Location = {
     name: 'Pastoria Gym',
     map: pastoriaGym,
+    mapAnchor: MapAnchor.Bottom,
     battles: [
         {
             metadata: [],

@@ -3,7 +3,6 @@ import { BattleData } from '@/lib/static/types';
 
 export const BATTLES: Record<string, BattleData> = {
     'elite-four-aaron-aaron': {
-        saveCondition: { type: 'flag', flag: 176 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'elite-four-aaron',
         name: 'Aaron',
@@ -78,7 +77,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'elite-four-bertha-bertha': {
-        saveCondition: { type: 'flag', flag: 177 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'elite-four-bertha',
         name: 'Bertha',
@@ -148,7 +146,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'waitress-kati': {
-        saveCondition: { type: 'trainerFlag', flag: 1726 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'waitress',
         name: 'Kati',
@@ -163,7 +160,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'collector-fernando': {
-        saveCondition: { type: 'trainerFlag', flag: 1635 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'collector',
         name: 'Fernando',
@@ -178,7 +174,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'collector-edwin': {
-        saveCondition: { type: 'trainerFlag', flag: 1636 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'collector',
         name: 'Edwin',
@@ -193,7 +188,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-trainer-barry-barry-5': {
-        saveCondition: { type: 'varAtLeast', var: 120, minValue: 1 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'pkmn-trainer-barry',
         name: 'Barry 5',
@@ -392,7 +386,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'black-belt-ricky': {
-        saveCondition: { type: 'trainerFlag', flag: 1674 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'black-belt',
         name: 'Ricky',
@@ -409,7 +402,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-gary': {
-        saveCondition: { type: 'trainerFlag', flag: 1617 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Gary',
@@ -425,7 +417,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-m-cesar': {
-        saveCondition: { type: 'trainerFlag', flag: 1639 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-m',
         name: 'Cesar',
@@ -442,7 +433,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-jackson': {
-        saveCondition: { type: 'trainerFlag', flag: 1616 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Jackson',
@@ -474,7 +464,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-f-breanna': {
-        saveCondition: { type: 'trainerFlag', flag: 1643 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-f',
         name: 'Breanna',
@@ -506,7 +495,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-gerardo': {
-        saveCondition: { type: 'trainerFlag', flag: 1727 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Gerardo',
@@ -530,7 +518,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-david': {
-        saveCondition: { type: 'trainerFlag', flag: 1592 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'black-belt',
         name: 'David',
@@ -556,7 +543,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'leader-byron-byron': {
-        saveCondition: { type: 'badge', bit: 5 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'leader-byron',
         name: 'Byron',
@@ -606,7 +592,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-boss-cyrus-cyrus-1': {
-        saveCondition: { type: 'varAtLeast', var: 116, minValue: 1 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'galactic-boss-cyrus',
         name: 'Cyrus 1',
@@ -653,7 +638,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-11': {
-        saveCondition: { type: 'flag', flag: 431 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '11',
@@ -677,7 +661,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'champion-cynthia-cynthia': {
-        saveCondition: { type: 'gameClear' },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'champion-cynthia',
         name: 'Cynthia',
@@ -761,7 +744,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-boss-cyrus-cyrus-3': {
-        saveCondition: { type: 'varAtLeast', var: 85, minValue: 10 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'galactic-boss-cyrus',
         name: 'Cyrus 3',
@@ -826,13 +808,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'bug-catcher-jack': {
-        saveCondition: {
-            type: 'and',
-            conditions: [
-                { type: 'trainerFlag', flag: 1561 },
-                { type: 'trainerFlag', flag: 1564 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bug-catcher',
         name: 'Jack',
@@ -878,7 +853,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'psychic-f-lindsey': {
-        saveCondition: { type: 'trainerFlag', flag: 1566 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'psychic-f',
         name: 'Lindsey',
@@ -895,7 +869,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'psychic-m-elijah': {
-        saveCondition: { type: 'trainerFlag', flag: 1565 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'psychic-m',
         name: 'Elijah',
@@ -912,7 +885,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'bug-catcher-donald': {
-        saveCondition: { type: 'trainerFlag', flag: 1563 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bug-catcher',
         name: 'Donald',
@@ -936,7 +908,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'bug-catcher-phillip': {
-        saveCondition: { type: 'trainerFlag', flag: 1562 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bug-catcher',
         name: 'Phillip',
@@ -969,7 +940,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'psychic-m-kody': {
-        saveCondition: { type: 'trainerFlag', flag: 1755 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'psychic-m',
         name: 'Kody',
@@ -986,7 +956,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'psychic-f-rachael': {
-        saveCondition: { type: 'trainerFlag', flag: 1758 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'psychic-f',
         name: 'Rachael',
@@ -1003,7 +972,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'lass-caroline': {
-        saveCondition: { type: 'trainerFlag', flag: 1684 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'lass',
         name: 'Caroline',
@@ -1029,7 +997,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aroma-lady-jenna': {
-        saveCondition: { type: 'trainerFlag', flag: 1619 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'aroma-lady',
         name: 'Jenna',
@@ -1064,7 +1031,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aroma-lady-angela': {
-        saveCondition: { type: 'trainerFlag', flag: 1620 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'aroma-lady',
         name: 'Angela',
@@ -1081,7 +1047,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'leader-gardenia-gardenia': {
-        saveCondition: { type: 'badge', bit: 1 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'leader-gardenia',
         name: 'Gardenia',
@@ -1133,7 +1098,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'elite-four-flint-flint': {
-        saveCondition: { type: 'flag', flag: 178 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'elite-four-flint',
         name: 'Flint',
@@ -1213,7 +1177,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-3': {
-        saveCondition: { type: 'varAtLeast', var: 233, minValue: 1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '3',
@@ -1228,7 +1191,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-4': {
-        saveCondition: { type: 'varAtLeast', var: 233, minValue: 1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '4',
@@ -1250,7 +1212,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-dillan': {
-        saveCondition: { type: 'trainerFlag', flag: 2204 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Dillan',
@@ -1272,7 +1233,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-holden': {
-        saveCondition: { type: 'trainerFlag', flag: 2205 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Holden',
@@ -1298,7 +1258,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-conrad': {
-        saveCondition: { type: 'trainerFlag', flag: 2206 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Conrad',
@@ -1313,13 +1272,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-17': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1867 },
-                { type: 'flag', flag: 567 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '17',
@@ -1335,13 +1287,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-18': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1868 },
-                { type: 'flag', flag: 567 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '18',
@@ -1365,13 +1310,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-6': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1788 },
-                { type: 'flag', flag: 567 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '6',
@@ -1387,7 +1325,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'scientist-fredrick': {
-        saveCondition: { type: 'trainerFlag', flag: 2190 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'scientist',
         name: 'Fredrick',
@@ -1417,13 +1354,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-19': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1870 },
-                { type: 'flag', flag: 567 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '19',
@@ -1455,13 +1385,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-22': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1873 },
-                { type: 'flag', flag: 567 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '22',
@@ -1485,13 +1408,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-7': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1790 },
-                { type: 'flag', flag: 567 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '7',
@@ -1515,7 +1431,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'scientist-darrius': {
-        saveCondition: { type: 'trainerFlag', flag: 2189 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'scientist',
         name: 'Darrius',
@@ -1536,13 +1451,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-20': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1869 },
-                { type: 'flag', flag: 567 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '20',
@@ -1558,13 +1466,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-21': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1872 },
-                { type: 'flag', flag: 567 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '21',
@@ -1588,13 +1489,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-8': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1882 },
-                { type: 'flag', flag: 567 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '8',
@@ -1626,13 +1520,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-23': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1874 },
-                { type: 'flag', flag: 567 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '23',
@@ -1656,7 +1543,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-boss-cyrus-cyrus-2': {
-        saveCondition: { type: 'varAtLeast', var: 214, minValue: 1 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'galactic-boss-cyrus',
         name: 'Cyrus 2',
@@ -1707,7 +1593,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'commander-saturn-saturn-2': {
-        saveCondition: { type: 'flag', flag: 173 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'commander-saturn',
         name: 'Saturn 2',
@@ -1752,7 +1637,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-trainer-barry-barry': {
-        saveCondition: { type: 'varAtLeast', var: 123, minValue: 2 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'pkmn-trainer-barry',
         name: 'Barry',
@@ -1899,7 +1783,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'lass-molly': {
-        saveCondition: { type: 'trainerFlag', flag: 1685 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'lass',
         name: 'Molly',
@@ -1916,7 +1799,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-donny': {
-        saveCondition: { type: 'trainerFlag', flag: 1717 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Donny',
@@ -1942,7 +1824,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'school-kid-f-mackenzie': {
-        saveCondition: { type: 'trainerFlag', flag: 1703 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'school-kid-f',
         name: 'Mackenzie',
@@ -1974,7 +1855,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'school-kid-m-chance': {
-        saveCondition: { type: 'trainerFlag', flag: 1700 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'school-kid-m',
         name: 'Chance',
@@ -2002,7 +1882,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-f-catherine': {
-        saveCondition: { type: 'trainerFlag', flag: 1644 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-f',
         name: 'Catherine',
@@ -2028,7 +1907,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-m-allen': {
-        saveCondition: { type: 'trainerFlag', flag: 1640 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-m',
         name: 'Allen',
@@ -2068,7 +1946,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'leader-fantina-fantina': {
-        saveCondition: { type: 'badge', bit: 4 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'leader-fantina',
         name: 'Fantina',
@@ -2125,7 +2002,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'camper-lawrence': {
-        saveCondition: { type: 'trainerFlag', flag: 1738 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'camper',
         name: 'Lawrence',
@@ -2147,7 +2023,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'picnicker-summer': {
-        saveCondition: { type: 'trainerFlag', flag: 1817 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'picnicker',
         name: 'Summer',
@@ -2162,7 +2037,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-noel': {
-        saveCondition: { type: 'trainerFlag', flag: 1863 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Noel',
@@ -2182,7 +2056,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-braden': {
-        saveCondition: { type: 'trainerFlag', flag: 1864 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Braden',
@@ -2197,7 +2070,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-damon': {
-        saveCondition: { type: 'trainerFlag', flag: 1812 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'hiker',
         name: 'Damon',
@@ -2226,7 +2098,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-maurice': {
-        saveCondition: { type: 'trainerFlag', flag: 1813 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'hiker',
         name: 'Maurice',
@@ -2248,7 +2119,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-kendal': {
-        saveCondition: { type: 'trainerFlag', flag: 1805 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'black-belt',
         name: 'Kendal',
@@ -2264,7 +2134,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'battle-girl-tyler': {
-        saveCondition: { type: 'trainerFlag', flag: 1732 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'battle-girl',
         name: 'Tyler',
@@ -2280,7 +2149,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-brendon': {
-        saveCondition: { type: 'trainerFlag', flag: 1865 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Brendon',
@@ -2309,7 +2177,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-quentin': {
-        saveCondition: { type: 'trainerFlag', flag: 1866 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Quentin',
@@ -2337,7 +2204,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-m-jonah': {
-        saveCondition: { type: 'trainerFlag', flag: 1748 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-m',
         name: 'Jonah',
@@ -2369,7 +2235,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-f-brenda': {
-        saveCondition: { type: 'trainerFlag', flag: 1752 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-f',
         name: 'Brenda',
@@ -2401,7 +2266,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-12': {
-        saveCondition: { type: 'flag', flag: 487 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '12',
@@ -2463,13 +2327,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'galactic-grunt-m-1': {
-        saveCondition: {
-            type: 'and',
-            conditions: [
-                { type: 'flag', flag: 412 },
-                { type: 'varAtLeast', var: 119, minValue: 3 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '1',
@@ -2497,13 +2354,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'galactic-grunt-f-4': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1785 },
-                { type: 'flag', flag: 350 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '4',
@@ -2527,13 +2377,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-13': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1777 },
-                { type: 'flag', flag: 350 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '13',
@@ -2549,13 +2392,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-14': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1778 },
-                { type: 'flag', flag: 350 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '14',
@@ -2595,19 +2431,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-15': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                {
-                    type: 'and',
-                    conditions: [
-                        { type: 'trainerFlag', flag: 1779 },
-                        { type: 'trainerFlag', flag: 1786 },
-                    ],
-                },
-                { type: 'flag', flag: 448 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '15',
@@ -2656,13 +2479,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'galactic-grunt-m-16': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1780 },
-                { type: 'flag', flag: 448 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '16',
@@ -2686,13 +2502,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-5': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1787 },
-                { type: 'flag', flag: 448 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '5',
@@ -2716,7 +2525,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'commander-mars-mars-2': {
-        saveCondition: { type: 'flag', flag: 448 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'commander-mars',
         name: 'Mars 2',
@@ -2756,7 +2564,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'elite-four-lucian-lucian': {
-        saveCondition: { type: 'flag', flag: 179 },
         aiFlags: [
             AiFlag.Basic,
             AiFlag.EvaluateAttack,
@@ -2830,13 +2637,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-9': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1883 },
-                { type: 'flag', flag: 655 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '9',
@@ -2852,13 +2652,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-24': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1875 },
-                { type: 'flag', flag: 655 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '24',
@@ -2874,13 +2667,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-25': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1876 },
-                { type: 'flag', flag: 655 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '25',
@@ -2920,13 +2706,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-26': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1877 },
-                { type: 'flag', flag: 655 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '26',
@@ -2950,13 +2729,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-27': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1879 },
-                { type: 'flag', flag: 655 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '27',
@@ -2972,13 +2744,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-10': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1884 },
-                { type: 'flag', flag: 655 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '10',
@@ -3010,13 +2775,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-28': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1878 },
-                { type: 'flag', flag: 655 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '28',
@@ -3048,13 +2806,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-11': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1885 },
-                { type: 'flag', flag: 655 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '11',
@@ -3078,13 +2829,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-29': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1880 },
-                { type: 'flag', flag: 655 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '29',
@@ -3108,13 +2852,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-12': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1886 },
-                { type: 'flag', flag: 655 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '12',
@@ -3146,7 +2883,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'camper-curtis': {
-        saveCondition: { type: 'trainerFlag', flag: 1625 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'camper',
         name: 'Curtis',
@@ -3168,7 +2904,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'picnicker-diana': {
-        saveCondition: { type: 'trainerFlag', flag: 1689 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'picnicker',
         name: 'Diana',
@@ -3183,7 +2918,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'veteran-grant': {
-        saveCondition: { type: 'trainerFlag', flag: 1600 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'veteran',
         name: 'Grant',
@@ -3223,7 +2957,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-jonathon': {
-        saveCondition: { type: 'trainerFlag', flag: 1604 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Jonathon',
@@ -3240,7 +2973,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-darius': {
-        saveCondition: { type: 'trainerFlag', flag: 1605 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Darius',
@@ -3266,7 +2998,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'leader-roark-roark': {
-        saveCondition: { type: 'badge', bit: 0 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'leader-roark',
         name: 'Roark',
@@ -3307,7 +3038,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-colin': {
-        saveCondition: { type: 'trainerFlag', flag: 1555 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Colin',
@@ -3329,7 +3059,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-mason': {
-        saveCondition: { type: 'trainerFlag', flag: 1556 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Mason',
@@ -3344,7 +3073,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-trainer-barry-barry-4': {
-        saveCondition: { type: 'varAtLeast', var: 124, minValue: 2 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'pkmn-trainer-barry',
         name: 'Barry 4',
@@ -3491,7 +3219,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'tuber-m-jacky': {
-        saveCondition: { type: 'trainerFlag', flag: 1857 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'tuber-m',
         name: 'Jacky',
@@ -3508,7 +3235,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-walter': {
-        saveCondition: { type: 'trainerFlag', flag: 1761 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Walter',
@@ -3525,7 +3251,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'sailor-damian': {
-        saveCondition: { type: 'trainerFlag', flag: 1699 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'sailor',
         name: 'Damian',
@@ -3551,7 +3276,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'tuber-f-caitlyn': {
-        saveCondition: { type: 'trainerFlag', flag: 1858 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'tuber-f',
         name: 'Caitlyn',
@@ -3586,7 +3310,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-erick': {
-        saveCondition: { type: 'trainerFlag', flag: 1653 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Erick',
@@ -3621,7 +3344,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'sailor-samson': {
-        saveCondition: { type: 'trainerFlag', flag: 1843 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'sailor',
         name: 'Samson',
@@ -3656,7 +3378,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'leader-wake-wake': {
-        saveCondition: { type: 'badge', bit: 3 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'leader-wake',
         name: 'Wake',
@@ -3698,7 +3419,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-trainer-barry-barry-6': {
-        saveCondition: { type: 'varAtLeast', var: 239, minValue: 1 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'pkmn-trainer-barry',
         name: 'Barry 6',
@@ -3919,7 +3639,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'pkmn-trainer-barry-barry-1': {
-        saveCondition: { type: 'varAtLeast', var: 134, minValue: 2 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority, AiFlag.EvaluateAttack],
         trainerClass: 'pkmn-trainer-barry',
         name: 'Barry 1',
@@ -3957,7 +3676,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'youngster-tristan': {
-        saveCondition: { type: 'trainerFlag', flag: 1361 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Tristan',
@@ -3972,7 +3690,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'lass-natalie': {
-        saveCondition: { type: 'trainerFlag', flag: 1363 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'lass',
         name: 'Natalie',
@@ -3987,7 +3704,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-logan': {
-        saveCondition: { type: 'trainerFlag', flag: 1362 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Logan',
@@ -4003,7 +3719,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-trainer-barry-barry-2': {
-        saveCondition: { type: 'varAtLeast', var: 136, minValue: 1 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority, AiFlag.EvaluateAttack],
         trainerClass: 'pkmn-trainer-barry',
         name: 'Barry 2',
@@ -4071,7 +3786,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'youngster-michael': {
-        saveCondition: { type: 'trainerFlag', flag: 1364 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Michael',
@@ -4093,7 +3807,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-dallas': {
-        saveCondition: { type: 'trainerFlag', flag: 1715 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Dallas',
@@ -4108,7 +3821,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-sebastian': {
-        saveCondition: { type: 'trainerFlag', flag: 1716 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Sebastian',
@@ -4124,7 +3836,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'lass-kaitlin': {
-        saveCondition: { type: 'trainerFlag', flag: 1683 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'lass',
         name: 'Kaitlin',
@@ -4160,7 +3871,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'lass-madeline': {
-        saveCondition: { type: 'trainerFlag', flag: 1682 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'lass',
         name: 'Madeline',
@@ -4175,7 +3885,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'lass-sarah': {
-        saveCondition: { type: 'trainerFlag', flag: 1372 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'lass',
         name: 'Sarah',
@@ -4191,7 +3900,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-tyler': {
-        saveCondition: { type: 'trainerFlag', flag: 1370 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Tyler',
@@ -4207,7 +3915,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'lass-samantha': {
-        saveCondition: { type: 'trainerFlag', flag: 1371 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'lass',
         name: 'Samantha',
@@ -4223,7 +3930,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aroma-lady-taylor': {
-        saveCondition: { type: 'trainerFlag', flag: 1374 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'aroma-lady',
         name: 'Taylor',
@@ -4245,7 +3951,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'bug-catcher-brandon': {
-        saveCondition: { type: 'trainerFlag', flag: 1373 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack],
         trainerClass: 'bug-catcher',
         name: 'Brandon',
@@ -4268,7 +3973,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'twins-liv-and-liz': {
-        saveCondition: { type: 'trainerFlag', flag: 1375 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'twins',
         name: 'Liv & Liz',
@@ -4290,7 +3994,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'camper-jacob': {
-        saveCondition: { type: 'trainerFlag', flag: 1376 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'camper',
         name: 'Jacob',
@@ -4306,7 +4009,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-daniel': {
-        saveCondition: { type: 'trainerFlag', flag: 1378 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'hiker',
         name: 'Daniel',
@@ -4335,7 +4037,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aroma-lady-elizabeth': {
-        saveCondition: { type: 'trainerFlag', flag: 1381 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'aroma-lady',
         name: 'Elizabeth',
@@ -4351,7 +4052,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'picnicker-siena': {
-        saveCondition: { type: 'trainerFlag', flag: 1377 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'picnicker',
         name: 'Siena',
@@ -4373,7 +4073,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'camper-zackary': {
-        saveCondition: { type: 'trainerFlag', flag: 1737 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'camper',
         name: 'Zackary',
@@ -4388,7 +4087,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-nicholas': {
-        saveCondition: { type: 'trainerFlag', flag: 1379 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'hiker',
         name: 'Nicholas',
@@ -4403,7 +4101,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'battle-girl-kelsey': {
-        saveCondition: { type: 'trainerFlag', flag: 1380 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'battle-girl',
         name: 'Kelsey',
@@ -4419,7 +4116,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'picnicker-karina': {
-        saveCondition: { type: 'trainerFlag', flag: 1816 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'picnicker',
         name: 'Karina',
@@ -4435,7 +4131,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-joseph': {
-        saveCondition: { type: 'trainerFlag', flag: 1383 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Joseph',
@@ -4450,7 +4145,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-andrew': {
-        saveCondition: { type: 'trainerFlag', flag: 1382 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Andrew',
@@ -4500,7 +4194,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-zachary': {
-        saveCondition: { type: 'trainerFlag', flag: 1384 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Zachary',
@@ -4529,7 +4222,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cyclist-m-axel': {
-        saveCondition: { type: 'trainerFlag', flag: 1385 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cyclist-m',
         name: 'Axel',
@@ -4544,7 +4236,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cyclist-f-megan': {
-        saveCondition: { type: 'trainerFlag', flag: 1389 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cyclist-f',
         name: 'Megan',
@@ -4559,7 +4250,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cyclist-m-james': {
-        saveCondition: { type: 'trainerFlag', flag: 1386 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cyclist-m',
         name: 'James',
@@ -4574,7 +4264,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cyclist-f-nicole': {
-        saveCondition: { type: 'trainerFlag', flag: 1390 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cyclist-f',
         name: 'Nicole',
@@ -4603,7 +4292,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cyclist-m-john': {
-        saveCondition: { type: 'trainerFlag', flag: 1387 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cyclist-m',
         name: 'John',
@@ -4625,7 +4313,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cyclist-m-ryan': {
-        saveCondition: { type: 'trainerFlag', flag: 1388 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cyclist-m',
         name: 'Ryan',
@@ -4640,7 +4327,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cyclist-f-rachel': {
-        saveCondition: { type: 'trainerFlag', flag: 1392 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cyclist-f',
         name: 'Rachel',
@@ -4662,7 +4348,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cyclist-f-kayla': {
-        saveCondition: { type: 'trainerFlag', flag: 1391 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cyclist-f',
         name: 'Kayla',
@@ -4677,7 +4362,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-theodore': {
-        saveCondition: { type: 'trainerFlag', flag: 1811 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'hiker',
         name: 'Theodore',
@@ -4699,7 +4383,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'picnicker-lauren': {
-        saveCondition: { type: 'trainerFlag', flag: 1395 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'picnicker',
         name: 'Lauren',
@@ -4715,7 +4398,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'camper-anthony': {
-        saveCondition: { type: 'trainerFlag', flag: 1394 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'camper',
         name: 'Anthony',
@@ -4730,7 +4412,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-justin': {
-        saveCondition: { type: 'trainerFlag', flag: 1397 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'hiker',
         name: 'Justin',
@@ -4752,7 +4433,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-austin': {
-        saveCondition: { type: 'trainerFlag', flag: 1393 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Austin',
@@ -4781,7 +4461,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-kevin': {
-        saveCondition: { type: 'trainerFlag', flag: 1396 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'hiker',
         name: 'Kevin',
@@ -4817,7 +4496,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'battle-girl-helen': {
-        saveCondition: { type: 'trainerFlag', flag: 1398 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'battle-girl',
         name: 'Helen',
@@ -4841,7 +4519,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-jonathan': {
-        saveCondition: { type: 'trainerFlag', flag: 1401 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'hiker',
         name: 'Jonathan',
@@ -4856,7 +4533,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-kyle': {
-        saveCondition: { type: 'trainerFlag', flag: 1402 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'black-belt',
         name: 'Kyle',
@@ -4872,7 +4548,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-robert': {
-        saveCondition: { type: 'trainerFlag', flag: 1399 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'hiker',
         name: 'Robert',
@@ -4887,7 +4562,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aroma-lady-hannah': {
-        saveCondition: { type: 'trainerFlag', flag: 1404 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'aroma-lady',
         name: 'Hannah',
@@ -4909,7 +4583,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'artist-william': {
-        saveCondition: { type: 'trainerFlag', flag: 1405 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'artist',
         name: 'William',
@@ -4931,7 +4604,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-cody': {
-        saveCondition: { type: 'trainerFlag', flag: 1403 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Cody',
@@ -4953,7 +4625,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-alexander': {
-        saveCondition: { type: 'trainerFlag', flag: 1400 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'hiker',
         name: 'Alexander',
@@ -4975,7 +4646,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-breeder-m-albert': {
-        saveCondition: { type: 'trainerFlag', flag: 1406 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pkmn-breeder-m',
         name: 'Albert',
@@ -5011,7 +4681,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'jogger-richard': {
-        saveCondition: { type: 'trainerFlag', flag: 1409 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'jogger',
         name: 'Richard',
@@ -5026,7 +4695,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'twins-emma-and-lil': {
-        saveCondition: { type: 'trainerFlag', flag: 1654 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'twins',
         name: 'Emma & Lil',
@@ -5048,7 +4716,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'poke-kid-danielle': {
-        saveCondition: { type: 'trainerFlag', flag: 1413 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'poke-kid',
         name: 'Danielle',
@@ -5063,7 +4730,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'jogger-raul': {
-        saveCondition: { type: 'trainerFlag', flag: 1668 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'jogger',
         name: 'Raul',
@@ -5078,7 +4744,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-breeder-f-jennifer': {
-        saveCondition: { type: 'trainerFlag', flag: 1407 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pkmn-breeder-f',
         name: 'Jennifer',
@@ -5114,7 +4779,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cowgirl-shelley': {
-        saveCondition: { type: 'trainerFlag', flag: 1408 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cowgirl',
         name: 'Shelley',
@@ -5129,7 +4793,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'young-couple-ty-and-sue': {
-        saveCondition: { type: 'trainerFlag', flag: 1415 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'young-couple',
         name: 'Ty & Sue',
@@ -5151,7 +4814,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-oliver': {
-        saveCondition: { type: 'trainerFlag', flag: 1892 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Oliver',
@@ -5180,7 +4842,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'roughneck-kirby': {
-        saveCondition: { type: 'trainerFlag', flag: 1889 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'roughneck',
         name: 'Kirby',
@@ -5195,7 +4856,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pokefan-m-leonard': {
-        saveCondition: { type: 'trainerFlag', flag: 1890 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pokefan-m',
         name: 'Leonard',
@@ -5237,7 +4897,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pokefan-f-rebekah': {
-        saveCondition: { type: 'trainerFlag', flag: 1891 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pokefan-f',
         name: 'Rebekah',
@@ -5263,7 +4922,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'belle-and-pa-beth-and-bob': {
-        saveCondition: { type: 'trainerFlag', flag: 1893 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'belle-and-pa',
         name: 'Beth & Bob',
@@ -5285,7 +4943,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'young-couple-mike-and-nat': {
-        saveCondition: { type: 'trainerFlag', flag: 1894 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'young-couple',
         name: 'Mike & Nat',
@@ -5307,7 +4964,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'rancher-marco': {
-        saveCondition: { type: 'trainerFlag', flag: 1652 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'rancher',
         name: 'Marco',
@@ -5322,7 +4978,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'jogger-wyatt': {
-        saveCondition: { type: 'trainerFlag', flag: 1666 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'jogger',
         name: 'Wyatt',
@@ -5337,7 +4992,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'belle-and-pa-ava-and-matt': {
-        saveCondition: { type: 'trainerFlag', flag: 1650 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'belle-and-pa',
         name: 'Ava & Matt',
@@ -5359,7 +5013,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'twins-teri-and-tia': {
-        saveCondition: { type: 'trainerFlag', flag: 1425 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'twins',
         name: 'Teri & Tia',
@@ -5381,7 +5034,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-breeder-m-kahlil': {
-        saveCondition: { type: 'trainerFlag', flag: 1416 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pkmn-breeder-m',
         name: 'Kahlil',
@@ -5403,7 +5055,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-breeder-f-amber': {
-        saveCondition: { type: 'trainerFlag', flag: 1417 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pkmn-breeder-f',
         name: 'Amber',
@@ -5425,7 +5076,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-brennan': {
-        saveCondition: { type: 'trainerFlag', flag: 1849 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Brennan',
@@ -5447,7 +5097,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-fabian': {
-        saveCondition: { type: 'trainerFlag', flag: 1848 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Fabian',
@@ -5469,7 +5118,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-bruce': {
-        saveCondition: { type: 'trainerFlag', flag: 1850 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Bruce',
@@ -5484,7 +5132,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-joel': {
-        saveCondition: { type: 'trainerFlag', flag: 1430 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Joel',
@@ -5520,7 +5167,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-f-alyssa': {
-        saveCondition: { type: 'trainerFlag', flag: 1427 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-f',
         name: 'Alyssa',
@@ -5555,7 +5201,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'double-team-zac-and-jen': {
-        saveCondition: { type: 'trainerFlag', flag: 1435 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'double-team',
         name: 'Zac & Jen',
@@ -5579,7 +5224,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-m-ernest': {
-        saveCondition: { type: 'trainerFlag', flag: 1426 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-m',
         name: 'Ernest',
@@ -5619,7 +5263,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-davido': {
-        saveCondition: { type: 'trainerFlag', flag: 1432 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Davido',
@@ -5634,7 +5277,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-adam': {
-        saveCondition: { type: 'trainerFlag', flag: 1429 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'black-belt',
         name: 'Adam',
@@ -5650,7 +5292,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-nathan': {
-        saveCondition: { type: 'trainerFlag', flag: 1431 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Nathan',
@@ -5672,7 +5313,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'bird-keeper-brianna': {
-        saveCondition: { type: 'trainerFlag', flag: 1434 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bird-keeper',
         name: 'Brianna',
@@ -5696,7 +5336,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'veteran-brian': {
-        saveCondition: { type: 'trainerFlag', flag: 1428 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'veteran',
         name: 'Brian',
@@ -5731,7 +5370,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'dragon-tamer-patrick': {
-        saveCondition: { type: 'trainerFlag', flag: 1433 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'dragon-tamer',
         name: 'Patrick',
@@ -5747,7 +5385,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-zach': {
-        saveCondition: { type: 'trainerFlag', flag: 1438 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Zach',
@@ -5776,7 +5413,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-louis': {
-        saveCondition: { type: 'trainerFlag', flag: 1686 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'hiker',
         name: 'Louis',
@@ -5798,7 +5434,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'bird-keeper-alexandra': {
-        saveCondition: { type: 'trainerFlag', flag: 1436 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bird-keeper',
         name: 'Alexandra',
@@ -5820,7 +5455,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'bird-keeper-katherine': {
-        saveCondition: { type: 'trainerFlag', flag: 1441 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bird-keeper',
         name: 'Katherine',
@@ -5836,7 +5470,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ruin-maniac-harry': {
-        saveCondition: { type: 'trainerFlag', flag: 1802 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ruin-maniac',
         name: 'Harry',
@@ -5862,7 +5495,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-nick': {
-        saveCondition: { type: 'trainerFlag', flag: 1440 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Nick',
@@ -5884,7 +5516,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-sean': {
-        saveCondition: { type: 'trainerFlag', flag: 1439 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'black-belt',
         name: 'Sean',
@@ -5916,7 +5547,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-ranger-m-taylor': {
-        saveCondition: { type: 'trainerFlag', flag: 1454 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'pkmn-ranger-m',
         name: 'Taylor',
@@ -5940,7 +5570,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'scientist-shaun': {
-        saveCondition: { type: 'trainerFlag', flag: 1846 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'scientist',
         name: 'Shaun',
@@ -5969,7 +5598,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'parasol-lady-sabrina': {
-        saveCondition: { type: 'trainerFlag', flag: 1688 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'parasol-lady',
         name: 'Sabrina',
@@ -5991,7 +5619,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'parasol-lady-alexa': {
-        saveCondition: { type: 'trainerFlag', flag: 1687 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'parasol-lady',
         name: 'Alexa',
@@ -6013,7 +5640,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-juan': {
-        saveCondition: { type: 'trainerFlag', flag: 1451 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Juan',
@@ -6028,7 +5654,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-josh': {
-        saveCondition: { type: 'trainerFlag', flag: 1452 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Josh',
@@ -6050,7 +5675,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-travis': {
-        saveCondition: { type: 'trainerFlag', flag: 1453 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Travis',
@@ -6086,7 +5710,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'collector-dean': {
-        saveCondition: { type: 'trainerFlag', flag: 1741 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'collector',
         name: 'Dean',
@@ -6108,7 +5731,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'policeman-danny': {
-        saveCondition: { type: 'trainerFlag', flag: 1692 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'policeman',
         name: 'Danny',
@@ -6130,7 +5752,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'scientist-stefano': {
-        saveCondition: { type: 'trainerFlag', flag: 1459 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'scientist',
         name: 'Stefano',
@@ -6152,7 +5773,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-ranger-f-allison': {
-        saveCondition: { type: 'trainerFlag', flag: 1456 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'pkmn-ranger-f',
         name: 'Allison',
@@ -6176,7 +5796,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-ranger-m-jeffrey': {
-        saveCondition: { type: 'trainerFlag', flag: 1455 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'pkmn-ranger-m',
         name: 'Jeffrey',
@@ -6192,7 +5811,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'policeman-caleb': {
-        saveCondition: { type: 'trainerFlag', flag: 1462 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'policeman',
         name: 'Caleb',
@@ -6214,7 +5832,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'gentleman-jeremy': {
-        saveCondition: { type: 'trainerFlag', flag: 1444 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'gentleman',
         name: 'Jeremy',
@@ -6235,7 +5852,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'socialite-reina': {
-        saveCondition: { type: 'trainerFlag', flag: 1445 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'socialite',
         name: 'Reina',
@@ -6256,7 +5872,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'policeman-dylan': {
-        saveCondition: { type: 'trainerFlag', flag: 1450 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'policeman',
         name: 'Dylan',
@@ -6278,7 +5893,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'rich-boy-jason': {
-        saveCondition: { type: 'trainerFlag', flag: 1442 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'rich-boy',
         name: 'Jason',
@@ -6299,7 +5913,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'lady-melissa': {
-        saveCondition: { type: 'trainerFlag', flag: 1443 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'lady',
         name: 'Melissa',
@@ -6320,7 +5933,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'policeman-alex': {
-        saveCondition: { type: 'trainerFlag', flag: 1449 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'policeman',
         name: 'Alex',
@@ -6342,7 +5954,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'policeman-bobby': {
-        saveCondition: { type: 'trainerFlag', flag: 1448 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'policeman',
         name: 'Bobby',
@@ -6364,7 +5975,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'tuber-f-chelsea': {
-        saveCondition: { type: 'trainerFlag', flag: 1468 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'tuber-f',
         name: 'Chelsea',
@@ -6379,7 +5989,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'tuber-m-jared': {
-        saveCondition: { type: 'trainerFlag', flag: 1467 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'tuber-m',
         name: 'Jared',
@@ -6408,7 +6017,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-kenneth': {
-        saveCondition: { type: 'trainerFlag', flag: 1471 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Kenneth',
@@ -6437,7 +6045,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'beauty-cyndy': {
-        saveCondition: { type: 'trainerFlag', flag: 1706 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'beauty',
         name: 'Cyndy',
@@ -6452,7 +6059,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-haley': {
-        saveCondition: { type: 'trainerFlag', flag: 1465 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Haley',
@@ -6474,7 +6080,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'sailor-paul': {
-        saveCondition: { type: 'trainerFlag', flag: 1470 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'sailor',
         name: 'Paul',
@@ -6503,7 +6108,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-evan': {
-        saveCondition: { type: 'trainerFlag', flag: 1464 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Evan',
@@ -6525,7 +6129,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-mary': {
-        saveCondition: { type: 'trainerFlag', flag: 1466 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Mary',
@@ -6547,7 +6150,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-sheltin': {
-        saveCondition: { type: 'trainerFlag', flag: 1463 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Sheltin',
@@ -6576,7 +6178,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'psychic-f-abigail': {
-        saveCondition: { type: 'trainerFlag', flag: 1480 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'psychic-f',
         name: 'Abigail',
@@ -6605,7 +6206,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pi-carlos': {
-        saveCondition: { type: 'trainerFlag', flag: 1481 },
         aiFlags: [AiFlag.Basic, AiFlag.Risk],
         trainerClass: 'pi',
         name: 'Carlos',
@@ -6622,7 +6222,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'collector-brady': {
-        saveCondition: { type: 'trainerFlag', flag: 1633 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'collector',
         name: 'Brady',
@@ -6672,7 +6271,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'beauty-devon': {
-        saveCondition: { type: 'trainerFlag', flag: 1851 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'beauty',
         name: 'Devon',
@@ -6701,7 +6299,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ruin-maniac-bryan': {
-        saveCondition: { type: 'trainerFlag', flag: 1473 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ruin-maniac',
         name: 'Bryan',
@@ -6722,7 +6319,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'psychic-m-mitchell': {
-        saveCondition: { type: 'trainerFlag', flag: 1479 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'psychic-m',
         name: 'Mitchell',
@@ -6744,7 +6340,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'collector-jamal': {
-        saveCondition: { type: 'trainerFlag', flag: 1742 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'collector',
         name: 'Jamal',
@@ -6758,7 +6353,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ruin-maniac-ronald': {
-        saveCondition: { type: 'trainerFlag', flag: 1474 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ruin-maniac',
         name: 'Ronald',
@@ -6773,7 +6367,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'collector-douglas': {
-        saveCondition: { type: 'trainerFlag', flag: 1632 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'collector',
         name: 'Douglas',
@@ -6802,7 +6395,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ruin-maniac-calvin': {
-        saveCondition: { type: 'trainerFlag', flag: 1664 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ruin-maniac',
         name: 'Calvin',
@@ -6823,7 +6415,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'jogger-craig': {
-        saveCondition: { type: 'trainerFlag', flag: 1667 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'jogger',
         name: 'Craig',
@@ -6845,7 +6436,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-derek': {
-        saveCondition: { type: 'trainerFlag', flag: 1488 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'black-belt',
         name: 'Derek',
@@ -6861,7 +6451,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-gregory': {
-        saveCondition: { type: 'trainerFlag', flag: 1487 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'black-belt',
         name: 'Gregory',
@@ -6893,7 +6482,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-nathaniel': {
-        saveCondition: { type: 'trainerFlag', flag: 1489 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'black-belt',
         name: 'Nathaniel',
@@ -6925,7 +6513,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'jogger-scott': {
-        saveCondition: { type: 'trainerFlag', flag: 1490 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'jogger',
         name: 'Scott',
@@ -6940,7 +6527,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-f-maya': {
-        saveCondition: { type: 'trainerFlag', flag: 1647 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-f',
         name: 'Maya',
@@ -6975,7 +6561,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-m-dennis': {
-        saveCondition: { type: 'trainerFlag', flag: 1638 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-m',
         name: 'Dennis',
@@ -7015,7 +6600,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-m-blake': {
-        saveCondition: { type: 'trainerFlag', flag: 1492 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-snow-m',
         name: 'Blake',
@@ -7040,7 +6624,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-f-maria': {
-        saveCondition: { type: 'trainerFlag', flag: 1495 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-snow-f',
         name: 'Maria',
@@ -7080,7 +6663,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-f-laura': {
-        saveCondition: { type: 'trainerFlag', flag: 1494 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-snow-f',
         name: 'Laura',
@@ -7102,7 +6684,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'skier-m-edward': {
-        saveCondition: { type: 'trainerFlag', flag: 1497 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'skier-m',
         name: 'Edward',
@@ -7117,7 +6698,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-m-garrett': {
-        saveCondition: { type: 'trainerFlag', flag: 1493 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-snow-m',
         name: 'Garrett',
@@ -7157,7 +6737,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-philip': {
-        saveCondition: { type: 'trainerFlag', flag: 1618 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'black-belt',
         name: 'Philip',
@@ -7173,7 +6752,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'skier-f-kaitlyn': {
-        saveCondition: { type: 'trainerFlag', flag: 1498 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'skier-f',
         name: 'Kaitlyn',
@@ -7195,7 +6773,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'skier-m-bradley': {
-        saveCondition: { type: 'trainerFlag', flag: 1496 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'skier-m',
         name: 'Bradley',
@@ -7224,7 +6801,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'skier-f-andrea': {
-        saveCondition: { type: 'trainerFlag', flag: 1499 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'skier-f',
         name: 'Andrea',
@@ -7239,7 +6815,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-m-dalton': {
-        saveCondition: { type: 'trainerFlag', flag: 1500 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-snow-m',
         name: 'Dalton',
@@ -7265,7 +6840,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'skier-m-shawn': {
-        saveCondition: { type: 'trainerFlag', flag: 1502 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'skier-m',
         name: 'Shawn',
@@ -7294,7 +6868,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-matthew': {
-        saveCondition: { type: 'trainerFlag', flag: 1506 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Matthew',
@@ -7309,7 +6882,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'skier-f-madison': {
-        saveCondition: { type: 'trainerFlag', flag: 1505 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'skier-f',
         name: 'Madison',
@@ -7324,7 +6896,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-ethan': {
-        saveCondition: { type: 'trainerFlag', flag: 1507 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Ethan',
@@ -7346,7 +6917,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'skier-m-bjorn': {
-        saveCondition: { type: 'trainerFlag', flag: 1503 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'skier-m',
         name: 'Bjorn',
@@ -7368,7 +6938,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'skier-f-lexie': {
-        saveCondition: { type: 'trainerFlag', flag: 1504 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'skier-f',
         name: 'Lexie',
@@ -7390,7 +6959,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-luke': {
-        saveCondition: { type: 'trainerFlag', flag: 1508 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'black-belt',
         name: 'Luke',
@@ -7422,7 +6990,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-f-olivia': {
-        saveCondition: { type: 'trainerFlag', flag: 1501 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-snow-f',
         name: 'Olivia',
@@ -7467,7 +7034,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-miguel': {
-        saveCondition: { type: 'trainerFlag', flag: 1513 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Miguel',
@@ -7489,7 +7055,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-luc': {
-        saveCondition: { type: 'trainerFlag', flag: 1514 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Luc',
@@ -7532,7 +7097,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'sailor-skyler': {
-        saveCondition: { type: 'trainerFlag', flag: 1698 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'sailor',
         name: 'Skyler',
@@ -7554,7 +7118,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'guitarist-tony': {
-        saveCondition: { type: 'trainerFlag', flag: 1660 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'guitarist',
         name: 'Tony',
@@ -7575,7 +7138,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'tuber-m-trenton': {
-        saveCondition: { type: 'trainerFlag', flag: 1718 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'tuber-m',
         name: 'Trenton',
@@ -7597,7 +7159,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'tuber-f-mariel': {
-        saveCondition: { type: 'trainerFlag', flag: 1720 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'tuber-f',
         name: 'Mariel',
@@ -7619,7 +7180,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-jessica': {
-        saveCondition: { type: 'trainerFlag', flag: 1522 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Jessica',
@@ -7655,7 +7215,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-erica': {
-        saveCondition: { type: 'trainerFlag', flag: 1523 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Erica',
@@ -7670,7 +7229,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-adrian': {
-        saveCondition: { type: 'trainerFlag', flag: 1519 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Adrian',
@@ -7699,7 +7257,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-vincent': {
-        saveCondition: { type: 'trainerFlag', flag: 1521 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Vincent',
@@ -7721,7 +7278,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-katelyn': {
-        saveCondition: { type: 'trainerFlag', flag: 1524 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Katelyn',
@@ -7753,7 +7309,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-claire': {
-        saveCondition: { type: 'trainerFlag', flag: 1854 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Claire',
@@ -7768,7 +7323,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-erik': {
-        saveCondition: { type: 'trainerFlag', flag: 1520 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Erik',
@@ -7783,7 +7337,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-dillon': {
-        saveCondition: { type: 'trainerFlag', flag: 1526 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Dillon',
@@ -7805,7 +7358,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-vanessa': {
-        saveCondition: { type: 'trainerFlag', flag: 1527 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Vanessa',
@@ -7820,7 +7372,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-cory': {
-        saveCondition: { type: 'trainerFlag', flag: 1528 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Cory',
@@ -7849,7 +7400,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-f-shannon': {
-        saveCondition: { type: 'trainerFlag', flag: 1531 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-f',
         name: 'Shannon',
@@ -7884,7 +7434,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'collector-ivan': {
-        saveCondition: { type: 'trainerFlag', flag: 1634 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'collector',
         name: 'Ivan',
@@ -7899,7 +7448,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-m-jake': {
-        saveCondition: { type: 'trainerFlag', flag: 1530 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-m',
         name: 'Jake',
@@ -7925,7 +7473,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'rich-boy-trey': {
-        saveCondition: { type: 'trainerFlag', flag: 1695 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'rich-boy',
         name: 'Trey',
@@ -7946,7 +7493,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-alec': {
-        saveCondition: { type: 'trainerFlag', flag: 1533 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Alec',
@@ -7968,7 +7514,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-george': {
-        saveCondition: { type: 'trainerFlag', flag: 1534 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'George',
@@ -8004,7 +7549,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'beauty-nicola': {
-        saveCondition: { type: 'trainerFlag', flag: 1852 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'beauty',
         name: 'Nicola',
@@ -8019,7 +7563,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-brett': {
-        saveCondition: { type: 'trainerFlag', flag: 1532 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Brett',
@@ -8048,7 +7591,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-cole': {
-        saveCondition: { type: 'trainerFlag', flag: 1535 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Cole',
@@ -8077,7 +7619,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'tuber-f-holly': {
-        saveCondition: { type: 'trainerFlag', flag: 1721 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'tuber-f',
         name: 'Holly',
@@ -8092,7 +7633,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'policeman-thomas': {
-        saveCondition: { type: 'trainerFlag', flag: 1693 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'policeman',
         name: 'Thomas',
@@ -8114,7 +7654,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'sailor-marc': {
-        saveCondition: { type: 'trainerFlag', flag: 1697 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'sailor',
         name: 'Marc',
@@ -8129,7 +7668,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'tuber-m-conner': {
-        saveCondition: { type: 'trainerFlag', flag: 1719 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'tuber-m',
         name: 'Conner',
@@ -8144,7 +7682,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'sailor-luther': {
-        saveCondition: { type: 'trainerFlag', flag: 1540 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'sailor',
         name: 'Luther',
@@ -8173,7 +7710,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-miranda': {
-        saveCondition: { type: 'trainerFlag', flag: 1549 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Miranda',
@@ -8188,7 +7724,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-aubree': {
-        saveCondition: { type: 'trainerFlag', flag: 1550 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Aubree',
@@ -8210,7 +7745,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-oscar': {
-        saveCondition: { type: 'trainerFlag', flag: 1548 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Oscar',
@@ -8239,7 +7773,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-paige': {
-        saveCondition: { type: 'trainerFlag', flag: 1551 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Paige',
@@ -8268,7 +7801,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-colton': {
-        saveCondition: { type: 'trainerFlag', flag: 1546 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Colton',
@@ -8297,7 +7829,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-ricardo': {
-        saveCondition: { type: 'trainerFlag', flag: 1544 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Ricardo',
@@ -8312,7 +7843,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-crystal': {
-        saveCondition: { type: 'trainerFlag', flag: 1552 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Crystal',
@@ -8334,7 +7864,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-wesley': {
-        saveCondition: { type: 'trainerFlag', flag: 1543 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Wesley',
@@ -8356,7 +7885,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'sailor-zachariah': {
-        saveCondition: { type: 'trainerFlag', flag: 1842 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'sailor',
         name: 'Zachariah',
@@ -8385,7 +7913,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-gabrielle': {
-        saveCondition: { type: 'trainerFlag', flag: 1554 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Gabrielle',
@@ -8400,7 +7927,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-cassandra': {
-        saveCondition: { type: 'trainerFlag', flag: 1553 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Cassandra',
@@ -8422,7 +7948,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-francisco': {
-        saveCondition: { type: 'trainerFlag', flag: 1545 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Francisco',
@@ -8444,7 +7969,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-troy': {
-        saveCondition: { type: 'trainerFlag', flag: 1547 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Troy',
@@ -8459,7 +7983,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-f-brenna': {
-        saveCondition: { type: 'trainerFlag', flag: 2188 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-snow-f',
         name: 'Brenna',
@@ -8494,7 +8017,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-m-isaiah': {
-        saveCondition: { type: 'trainerFlag', flag: 1629 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-snow-m',
         name: 'Isaiah',
@@ -8516,7 +8038,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-m-sergio': {
-        saveCondition: { type: 'trainerFlag', flag: 1628 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-snow-m',
         name: 'Sergio',
@@ -8542,7 +8063,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-f-savannah': {
-        saveCondition: { type: 'trainerFlag', flag: 1630 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-snow-f',
         name: 'Savannah',
@@ -8577,7 +8097,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-f-alicia': {
-        saveCondition: { type: 'trainerFlag', flag: 1631 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-snow-f',
         name: 'Alicia',
@@ -8603,7 +8122,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-m-anton': {
-        saveCondition: { type: 'trainerFlag', flag: 2187 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-snow-m',
         name: 'Anton',
@@ -8620,7 +8138,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'leader-candice-candice': {
-        saveCondition: { type: 'badge', bit: 6 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'leader-candice',
         name: 'Candice',
@@ -8680,7 +8197,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ruin-maniac-karl': {
-        saveCondition: { type: 'trainerFlag', flag: 1913 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ruin-maniac',
         name: 'Karl',
@@ -8708,7 +8224,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-13': {
-        saveCondition: { type: 'varAtLeast', var: 152, minValue: 1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '13',
@@ -8754,7 +8269,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'commander-jupiter-jupiter': {
-        saveCondition: { type: 'varAtLeast', var: 152, minValue: 2 },
         aiFlags: [
             AiFlag.Basic,
             AiFlag.EvaluateAttack,
@@ -8837,7 +8351,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'school-kid-f-tiera': {
-        saveCondition: { type: 'trainerFlag', flag: 1704 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'school-kid-f',
         name: 'Tiera',
@@ -8860,7 +8373,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'school-kid-m-forrest': {
-        saveCondition: { type: 'trainerFlag', flag: 1701 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'school-kid-m',
         name: 'Forrest',
@@ -8882,7 +8394,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'guitarist-jerry': {
-        saveCondition: { type: 'trainerFlag', flag: 1661 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'guitarist',
         name: 'Jerry',
@@ -8913,7 +8424,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'poke-kid-meghan': {
-        saveCondition: { type: 'trainerFlag', flag: 1691 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'poke-kid',
         name: 'Meghan',
@@ -8953,7 +8463,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'guitarist-lonnie': {
-        saveCondition: { type: 'trainerFlag', flag: 1663 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'guitarist',
         name: 'Lonnie',
@@ -8970,7 +8479,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-f-destiny': {
-        saveCondition: { type: 'trainerFlag', flag: 1645 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-f',
         name: 'Destiny',
@@ -9001,7 +8509,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'guitarist-preston': {
-        saveCondition: { type: 'trainerFlag', flag: 1662 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'guitarist',
         name: 'Preston',
@@ -9025,7 +8532,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-m-zachery': {
-        saveCondition: { type: 'trainerFlag', flag: 1641 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-m',
         name: 'Zachery',
@@ -9055,7 +8561,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'leader-volkner-volkner': {
-        saveCondition: { type: 'badge', bit: 7 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'leader-volkner',
         name: 'Volkner',
@@ -9132,13 +8637,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-1': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1781 },
-                { type: 'flag', flag: 509 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '1',
@@ -9160,13 +8658,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-7': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1770 },
-                { type: 'flag', flag: 509 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '7',
@@ -9188,13 +8679,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-8': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1772 },
-                { type: 'flag', flag: 509 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '8',
@@ -9209,13 +8693,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-2': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1782 },
-                { type: 'flag', flag: 509 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '2',
@@ -9230,13 +8707,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-3': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1783 },
-                { type: 'flag', flag: 509 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '3',
@@ -9265,13 +8735,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'scientist-travon': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 2191 },
-                { type: 'flag', flag: 509 },
-            ],
-        },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'scientist',
         name: 'Travon',
@@ -9294,7 +8757,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'commander-jupiter-jupiter-1': {
-        saveCondition: { type: 'flag', flag: 509 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'commander-jupiter',
         name: 'Jupiter 1',
@@ -9321,13 +8783,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-5': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1658 },
-                { type: 'flag', flag: 421 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '5',
@@ -9342,13 +8797,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-6': {
-        saveCondition: {
-            type: 'or',
-            conditions: [
-                { type: 'trainerFlag', flag: 1659 },
-                { type: 'flag', flag: 421 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '6',
@@ -9370,7 +8818,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'commander-mars-mars-1': {
-        saveCondition: { type: 'flag', flag: 421 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'commander-mars',
         name: 'Mars 1',
@@ -9397,7 +8844,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-2': {
-        saveCondition: { type: 'flag', flag: 398 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '2',
@@ -9412,7 +8858,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'commander-saturn-saturn-1': {
-        saveCondition: { type: 'flag', flag: 318 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'commander-saturn',
         name: 'Saturn 1',
@@ -9452,13 +8897,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-10': {
-        saveCondition: {
-            type: 'and',
-            conditions: [
-                { type: 'flag', flag: 539 },
-                { type: 'flag', flag: 260 },
-            ],
-        },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '10',
@@ -9474,7 +8912,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-9': {
-        saveCondition: { type: 'flag', flag: 447 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '9',
@@ -9520,7 +8957,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'black-belt-colby': {
-        saveCondition: { type: 'trainerFlag', flag: 1669 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'black-belt',
         name: 'Colby',
@@ -9555,7 +8991,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-darren': {
-        saveCondition: { type: 'trainerFlag', flag: 1670 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'black-belt',
         name: 'Darren',
@@ -9590,7 +9025,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-rafael': {
-        saveCondition: { type: 'trainerFlag', flag: 1671 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'black-belt',
         name: 'Rafael',
@@ -9616,7 +9050,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-jeffery': {
-        saveCondition: { type: 'trainerFlag', flag: 1672 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'black-belt',
         name: 'Jeffery',
@@ -9633,7 +9066,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'leader-maylene-maylene': {
-        saveCondition: { type: 'badge', bit: 2 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'leader-maylene',
         name: 'Maylene',
@@ -9668,7 +9100,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'psychic-m-bryce': {
-        saveCondition: { type: 'trainerFlag', flag: 1594 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'psychic-m',
         name: 'Bryce',
@@ -9697,7 +9128,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'bird-keeper-hana': {
-        saveCondition: { type: 'trainerFlag', flag: 1593 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bird-keeper',
         name: 'Hana',
@@ -9719,7 +9149,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-f-mariah': {
-        saveCondition: { type: 'trainerFlag', flag: 1586 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-f',
         name: 'Mariah',
@@ -9753,7 +9182,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-miles': {
-        saveCondition: { type: 'trainerFlag', flag: 1804 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'black-belt',
         name: 'Miles',
@@ -9769,7 +9197,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'veteran-edgar': {
-        saveCondition: { type: 'trainerFlag', flag: 1588 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'veteran',
         name: 'Edgar',
@@ -9803,7 +9230,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'dragon-tamer-clinton': {
-        saveCondition: { type: 'trainerFlag', flag: 1591 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'dragon-tamer',
         name: 'Clinton',
@@ -9835,7 +9261,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-m-omar': {
-        saveCondition: { type: 'trainerFlag', flag: 1584 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-m',
         name: 'Omar',
@@ -9875,7 +9300,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-f-sydney': {
-        saveCondition: { type: 'trainerFlag', flag: 1587 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-f',
         name: 'Sydney',
@@ -9901,7 +9325,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'veteran-clayton': {
-        saveCondition: { type: 'trainerFlag', flag: 1589 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'veteran',
         name: 'Clayton',
@@ -9927,7 +9350,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'double-team-al-and-kay': {
-        saveCondition: { type: 'trainerFlag', flag: 1597 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'double-team',
         name: 'Al & Kay',
@@ -9956,7 +9378,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'psychic-f-valencia': {
-        saveCondition: { type: 'trainerFlag', flag: 1595 },
         aiFlags: [AiFlag.Basic, AiFlag.Expert],
         trainerClass: 'psychic-f',
         name: 'Valencia',
@@ -9985,7 +9406,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'double-team-jo-and-pat': {
-        saveCondition: { type: 'trainerFlag', flag: 1596 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'double-team',
         name: 'Jo & Pat',
@@ -10009,7 +9429,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-m-henry': {
-        saveCondition: { type: 'trainerFlag', flag: 1585 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ace-trainer-m',
         name: 'Henry',
@@ -10035,7 +9454,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'dragon-tamer-ondrej': {
-        saveCondition: { type: 'trainerFlag', flag: 1590 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'dragon-tamer',
         name: 'Ondrej',
@@ -10059,7 +9477,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'camper-diego': {
-        saveCondition: { type: 'trainerFlag', flag: 1739 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'camper',
         name: 'Diego',
@@ -10074,7 +9491,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'picnicker-tori': {
-        saveCondition: { type: 'trainerFlag', flag: 1818 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'picnicker',
         name: 'Tori',
@@ -10089,7 +9505,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-reginald': {
-        saveCondition: { type: 'trainerFlag', flag: 1814 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'hiker',
         name: 'Reginald',
@@ -10111,7 +9526,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-lorenzo': {
-        saveCondition: { type: 'trainerFlag', flag: 1815 },
         aiFlags: [AiFlag.Basic, AiFlag.DamagePriority],
         trainerClass: 'hiker',
         name: 'Lorenzo',
@@ -10126,7 +9540,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'lass-cassidy': {
-        saveCondition: { type: 'trainerFlag', flag: 1810 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'lass',
         name: 'Cassidy',
@@ -10141,7 +9554,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-wayne': {
-        saveCondition: { type: 'trainerFlag', flag: 1856 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Wayne',
@@ -10170,7 +9582,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'picnicker-ana': {
-        saveCondition: { type: 'trainerFlag', flag: 1819 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'picnicker',
         name: 'Ana',
@@ -10185,7 +9596,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'camper-parker': {
-        saveCondition: { type: 'trainerFlag', flag: 1740 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'camper',
         name: 'Parker',
@@ -10209,7 +9619,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'collector-terry': {
-        saveCondition: { type: 'trainerFlag', flag: 1743 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'collector',
         name: 'Terry',
@@ -10224,7 +9633,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ruin-maniac-gerald': {
-        saveCondition: { type: 'trainerFlag', flag: 1803 },
         aiFlags: [AiFlag.Basic, AiFlag.EvaluateAttack, AiFlag.Expert],
         trainerClass: 'ruin-maniac',
         name: 'Gerald',

@@ -33,6 +33,7 @@ const ROARK: Split = {
         OREBURGH_MINE,
         OREBURGH_GYM,
     ],
+    saveCondition: { type: 'badge', bit: 0 },
 };
 
 export default ROARK;

@@ -6,7 +6,7 @@ import {
     galacticHqPixies,
     galacticHqWarehouse,
 } from '@/lib/data/platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
+import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const GALACTIC_HQ: Location = {
@@ -15,6 +15,7 @@ const GALACTIC_HQ: Location = {
         {
             name: 'Warehouse',
             map: galacticHqWarehouse,
+            mapAnchor: MapAnchor.Left,
             battles: [
                 {
                     metadata: [BattleMetadata.Optional],
@@ -33,6 +34,7 @@ const GALACTIC_HQ: Location = {
         {
             name: '1F',
             map: galacticHq1f,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     metadata: [BattleMetadata.Optional],
@@ -51,6 +53,7 @@ const GALACTIC_HQ: Location = {
         {
             name: '2F',
             map: galacticHq2f,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     metadata: [BattleMetadata.Optional],
@@ -81,6 +84,7 @@ const GALACTIC_HQ: Location = {
         {
             name: '3F',
             map: galacticHq3f,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     metadata: [BattleMetadata.Optional],
@@ -111,6 +115,7 @@ const GALACTIC_HQ: Location = {
         {
             name: '4F',
             map: galacticHq4f,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     metadata: [BattleMetadata.Miniboss],
@@ -123,6 +128,7 @@ const GALACTIC_HQ: Location = {
         {
             name: 'Pixie Room',
             map: galacticHqPixies,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     metadata: [BattleMetadata.Miniboss],

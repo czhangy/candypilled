@@ -5,22 +5,8 @@ import { BattleData } from '@/lib/static/types';
 // ../pearl/pearl.ts) since gym/rival/Elite Four trainer data doesn't differ
 // between the two versions. Populate with `npm run gen:battle diamond-pearl
 // <location> ...`.
-//
-// trainerFlag values for generic (non-story) trainers are
-// `rom_id + 1360`, where rom_id comes from
-// github.com/OttoTonsorialist/pkmn_gen_four_trainer_data's dp_trainers.json
-// (its rom_id is pret/pokediamond's own TRAINER_* constant index -- verified
-// directly against pokediamond's compiled ARM assembly:
-// TrainerFieldSystem_FlagSet always computes `suppliedId + 0x550` (0x550 =
-// 1360) before setting the save flag, and the generic auto-battle path
-// (ScrCmd_Unk00F0) supplies the trainer's own object ID as that suppliedId,
-// which is the same as its global trainer ID. This does NOT apply to
-// story-scripted battles (gym leaders, Elite Four, rivals, Team Galactic),
-// which pass their own hand-authored literal instead -- those need
-// per-battle sourcing, not this formula.
 export const BATTLES: Record<string, BattleData> = {
     'youngster-logan': {
-        saveCondition: { type: 'trainerFlag', flag: 1362 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Logan',
@@ -37,7 +23,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'lass-natalie': {
-        saveCondition: { type: 'trainerFlag', flag: 1363 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'lass',
         name: 'Natalie',
@@ -63,7 +48,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-tristan': {
-        saveCondition: { type: 'trainerFlag', flag: 1361 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Tristan',
@@ -80,7 +64,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-tyler': {
-        saveCondition: { type: 'trainerFlag', flag: 1370 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Tyler',
@@ -106,7 +89,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'lass-samantha': {
-        saveCondition: { type: 'trainerFlag', flag: 1371 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'lass',
         name: 'Samantha',
@@ -123,7 +105,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'lass-sarah': {
-        saveCondition: { type: 'trainerFlag', flag: 1372 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'lass',
         name: 'Sarah',
@@ -140,7 +121,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'bug-catcher-brandon': {
-        saveCondition: { type: 'trainerFlag', flag: 1373 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bug-catcher',
         name: 'Brandon',
@@ -166,7 +146,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aroma-lady-taylor': {
-        saveCondition: { type: 'trainerFlag', flag: 1374 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'aroma-lady',
         name: 'Taylor',
@@ -192,7 +171,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-michael': {
-        saveCondition: { type: 'trainerFlag', flag: 1364 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Michael',
@@ -218,7 +196,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'lass-madeline': {
-        saveCondition: { type: 'trainerFlag', flag: 1682 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'lass',
         name: 'Madeline',
@@ -244,7 +221,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'lass-kaitlin': {
-        saveCondition: { type: 'trainerFlag', flag: 1683 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'lass',
         name: 'Kaitlin',
@@ -279,7 +255,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-dallas': {
-        saveCondition: { type: 'trainerFlag', flag: 1715 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Dallas',
@@ -296,7 +271,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-sebastian': {
-        saveCondition: { type: 'trainerFlag', flag: 1716 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Sebastian',
@@ -313,7 +287,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'camper-curtis': {
-        saveCondition: { type: 'trainerFlag', flag: 1625 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'camper',
         name: 'Curtis',
@@ -330,7 +303,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'picnicker-diana': {
-        saveCondition: { type: 'trainerFlag', flag: 1689 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'picnicker',
         name: 'Diana',
@@ -356,7 +328,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'veteran-grant': {
-        saveCondition: { type: 'trainerFlag', flag: 1600 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'veteran',
         name: 'Grant',
@@ -396,7 +367,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-colin': {
-        saveCondition: { type: 'trainerFlag', flag: 1555 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Colin',
@@ -422,7 +392,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-mason': {
-        saveCondition: { type: 'trainerFlag', flag: 1556 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Mason',
@@ -439,7 +408,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-jonathon': {
-        saveCondition: { type: 'trainerFlag', flag: 1604 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Jonathon',
@@ -456,7 +424,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-darius': {
-        saveCondition: { type: 'trainerFlag', flag: 1605 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Darius',
@@ -487,7 +454,6 @@ export const BATTLES: Record<string, BattleData> = {
     // (scr_seq_release/narc_0050.bin) calls GiveBadge with a literal
     // badge_no argument of 0.
     'leader-roark-roark': {
-        saveCondition: { type: 'badge', bit: 0 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'leader-roark',
         name: 'Roark',
@@ -528,7 +494,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-1': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '1',
@@ -560,7 +525,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'galactic-grunt-m-2': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '2',
@@ -578,7 +542,6 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Floaroma Meadow's two "back to back" Galactic Grunts.
     'galactic-grunt-m-3': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '3',
@@ -604,7 +567,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-4': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '4',
@@ -622,7 +584,6 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Valley Windworks Interior's Galactic Grunts and Commander Mars.
     'galactic-grunt-m-5': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '5',
@@ -639,7 +600,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-6': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '6',
@@ -665,7 +625,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'commander-mars-mars-1': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'commander-mars',
         name: 'Mars 1',
@@ -693,7 +652,6 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Route 205 South.
     'camper-jacob': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'camper',
         name: 'Jacob',
@@ -710,7 +668,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-daniel': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'hiker',
         name: 'Daniel',
@@ -764,7 +721,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aroma-lady-elizabeth': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'aroma-lady',
         name: 'Elizabeth',
@@ -781,7 +737,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'camper-zackary': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'camper',
         name: 'Zackary',
@@ -798,7 +753,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'picnicker-siena': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'picnicker',
         name: 'Siena',
@@ -824,7 +778,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-nicholas': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'hiker',
         name: 'Nicholas',
@@ -841,7 +794,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'battle-girl-kelsey': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'battle-girl',
         name: 'Kelsey',
@@ -858,7 +810,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'picnicker-karina': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'picnicker',
         name: 'Karina',
@@ -876,7 +827,6 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Route 205 North.
     'fisherman-joseph': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Joseph',
@@ -898,7 +848,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-andrew': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Andrew',
@@ -960,7 +909,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-zachary': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Zachary',
@@ -1001,7 +949,6 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Eterna Forest Interior.
     'bug-catcher-jack': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bug-catcher',
         name: 'Jack',
@@ -1051,7 +998,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'psychic-f-lindsey': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'psychic-f',
         name: 'Lindsey',
@@ -1068,7 +1014,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'psychic-m-elijah': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'psychic-m',
         name: 'Elijah',
@@ -1085,7 +1030,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'bug-catcher-donald': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bug-catcher',
         name: 'Donald',
@@ -1111,7 +1055,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'bug-catcher-phillip': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bug-catcher',
         name: 'Phillip',
@@ -1146,7 +1089,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'psychic-m-kody': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'psychic-m',
         name: 'Kody',
@@ -1163,7 +1105,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'psychic-f-rachael': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'psychic-f',
         name: 'Rachael',
@@ -1181,7 +1122,6 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Route 211 West.
     'ninja-boy-zach': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Zach',
@@ -1216,7 +1156,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-louis': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'hiker',
         name: 'Louis',
@@ -1242,7 +1181,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'bird-keeper-alexandra': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bird-keeper',
         name: 'Alexandra',
@@ -1260,7 +1198,6 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Route 211 East.
     'bird-keeper-katherine': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bird-keeper',
         name: 'Katherine',
@@ -1277,7 +1214,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ruin-maniac-harry': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ruin-maniac',
         name: 'Harry',
@@ -1298,7 +1234,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-nick': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Nick',
@@ -1324,7 +1259,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-sean': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'black-belt',
         name: 'Sean',
@@ -1360,7 +1294,6 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Mt. Coronet's Galactic Grunts.
     'galactic-grunt-f-1': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '1',
@@ -1377,7 +1310,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-7': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '7',
@@ -1398,7 +1330,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-8': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '8',
@@ -1438,7 +1369,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-9': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '9',
@@ -1469,7 +1399,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-10': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '10',
@@ -1491,7 +1420,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-2': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '2',
@@ -1526,7 +1454,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-11': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '11',
@@ -1561,7 +1488,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-3': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '3',
@@ -1591,7 +1517,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-12': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '12',
@@ -1626,7 +1551,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-4': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '4',
@@ -1671,7 +1595,6 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Eterna Gym.
     'lass-caroline': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'lass',
         name: 'Caroline',
@@ -1697,7 +1620,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aroma-lady-jenna': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'aroma-lady',
         name: 'Jenna',
@@ -1732,7 +1654,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aroma-lady-angela': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'aroma-lady',
         name: 'Angela',
@@ -1749,7 +1670,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'beauty-lindsay': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'beauty',
         name: 'Lindsay',
@@ -1765,8 +1685,14 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Eterna Gym's compiled script (scr_seq_release/narc_0072.bin) calls
+    // GiveBadge with a literal badge_no argument of 1, at byte offset 241.
+    // (Two other byte-sequences matching the GiveBadge opcode 0x015C appear
+    // elsewhere in this bank: one has an out-of-range argument (461, fails
+    // GF_ASSERT(badge_no<8), so not a real call), the other reads 0 -- which
+    // would collide with Roark's own already-verified badge_no, so it's a
+    // coincidental byte alignment too, not a genuine second GiveBadge call.)
     'leader-gardenia-gardenia': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'leader-gardenia',
         name: 'Gardenia',
@@ -1808,7 +1734,6 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Team Galactic Eterna Building.
     'galactic-grunt-f-5': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '5',
@@ -1834,7 +1759,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-13': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '13',
@@ -1860,7 +1784,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-14': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '14',
@@ -1886,7 +1809,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-6': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '6',
@@ -1903,7 +1825,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-7': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '7',
@@ -1938,7 +1859,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'scientist-travon': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'scientist',
         name: 'Travon',
@@ -1955,7 +1875,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'commander-jupiter-jupiter-1': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'commander-jupiter',
         name: 'Jupiter 1',
@@ -1983,7 +1902,6 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Route 206.
     'cyclist-m-axel': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cyclist-m',
         name: 'Axel',
@@ -2000,7 +1918,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cyclist-f-megan': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cyclist-f',
         name: 'Megan',
@@ -2017,7 +1934,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cyclist-m-james': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cyclist-m',
         name: 'James',
@@ -2034,7 +1950,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cyclist-f-nicole': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cyclist-f',
         name: 'Nicole',
@@ -2060,7 +1975,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cyclist-m-john': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cyclist-m',
         name: 'John',
@@ -2086,7 +2000,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cyclist-m-ryan': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cyclist-m',
         name: 'Ryan',
@@ -2103,7 +2016,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cyclist-f-rachel': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cyclist-f',
         name: 'Rachel',
@@ -2129,7 +2041,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cyclist-f-kayla': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cyclist-f',
         name: 'Kayla',
@@ -2146,7 +2057,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-theodore': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'hiker',
         name: 'Theodore',
@@ -2173,7 +2083,6 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Wayward Cave 1F.
     'camper-diego': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'camper',
         name: 'Diego',
@@ -2199,7 +2108,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'picnicker-tori': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'picnicker',
         name: 'Tori',
@@ -2225,7 +2133,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-reginald': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'hiker',
         name: 'Reginald',
@@ -2251,7 +2158,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-lorenzo': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'hiker',
         name: 'Lorenzo',
@@ -2268,7 +2174,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'lass-cassidy': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'lass',
         name: 'Cassidy',
@@ -2285,7 +2190,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-wayne': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Wayne',
@@ -2320,7 +2224,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'picnicker-ana': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'picnicker',
         name: 'Ana',
@@ -2337,7 +2240,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'camper-parker': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'camper',
         name: 'Parker',
@@ -2363,7 +2265,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'collector-terry': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'collector',
         name: 'Terry',
@@ -2398,7 +2299,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ruin-maniac-gerald': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ruin-maniac',
         name: 'Gerald',
@@ -2434,7 +2334,6 @@ export const BATTLES: Record<string, BattleData> = {
     // var 134/minValue 2 -- close but different, confirming these are
     // independently-numbered per game, not a shared constant.)
     'pkmn-trainer-barry-barry-1': {
-        saveCondition: { type: 'varAtLeast', var: 136, minValue: 1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pkmn-trainer-barry',
         name: 'Barry 1',
@@ -2507,7 +2406,6 @@ export const BATTLES: Record<string, BattleData> = {
     // the win-branch SetVar of raw var 0x407b to 2, converted via
     // VAR_BASE=0x4000 -> save-array index 123.
     'pkmn-trainer-barry-barry-2': {
-        saveCondition: { type: 'varAtLeast', var: 123, minValue: 2 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pkmn-trainer-barry',
         name: 'Barry 2',
@@ -2659,7 +2557,6 @@ export const BATTLES: Record<string, BattleData> = {
     // which calls SetFlag(259). (The nearby SetFlag(455) belongs to the
     // *loss*/blackout branch -- don't reuse it.)
     'pkmn-trainer-barry-barry-3': {
-        saveCondition: { type: 'flag', flag: 259 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pkmn-trainer-barry',
         name: 'Barry 3',
@@ -2809,7 +2706,6 @@ export const BATTLES: Record<string, BattleData> = {
     // scr_seq_release/narc_0034.bin (MAP_CANALAVE's scripts_bank), win
     // branch sets raw var 0x4078 to 1 -> save-array index 120.
     'pkmn-trainer-barry-barry-4': {
-        saveCondition: { type: 'varAtLeast', var: 120, minValue: 1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pkmn-trainer-barry',
         name: 'Barry 4',
@@ -3012,7 +2908,6 @@ export const BATTLES: Record<string, BattleData> = {
     // scripts_bank), win branch sets raw var 0x40ef to 1 -> save-array
     // index 239.
     'pkmn-trainer-barry-barry-5': {
-        saveCondition: { type: 'varAtLeast', var: 239, minValue: 1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pkmn-trainer-barry',
         name: 'Barry 5',
@@ -3233,7 +3128,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'twins-liv-and-liz': {
-        saveCondition: { type: 'trainerFlag', flag: 1375 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'twins',
         name: 'Liv & Liz',
@@ -3259,7 +3153,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-austin': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Austin',
@@ -3294,7 +3187,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'camper-anthony': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'camper',
         name: 'Anthony',
@@ -3311,7 +3203,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'picnicker-lauren': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'picnicker',
         name: 'Lauren',
@@ -3328,7 +3219,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-kevin': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'hiker',
         name: 'Kevin',
@@ -3372,7 +3262,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-justin': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'hiker',
         name: 'Justin',
@@ -3397,7 +3286,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'battle-girl-helen': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'battle-girl',
         name: 'Helen',
@@ -3423,7 +3311,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-robert': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'hiker',
         name: 'Robert',
@@ -3449,7 +3336,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-kyle': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'black-belt',
         name: 'Kyle',
@@ -3471,7 +3357,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-jonathan': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'hiker',
         name: 'Jonathan',
@@ -3488,7 +3373,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aroma-lady-hannah': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'aroma-lady',
         name: 'Hannah',
@@ -3519,7 +3403,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'artist-william': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'artist',
         name: 'William',
@@ -3545,7 +3428,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-cody': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Cody',
@@ -3571,7 +3453,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-alexander': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'hiker',
         name: 'Alexander',
@@ -3611,7 +3492,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-breeder-m-albert': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pkmn-breeder-m',
         name: 'Albert',
@@ -3646,7 +3526,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'jogger-richard': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'jogger',
         name: 'Richard',
@@ -3663,7 +3542,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'twins-emma-and-lil': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'twins',
         name: 'Emma & Lil',
@@ -3689,7 +3567,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'poke-kid-danielle': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'poke-kid',
         name: 'Danielle',
@@ -3711,7 +3588,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'jogger-raul': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'jogger',
         name: 'Raul',
@@ -3733,7 +3609,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-breeder-f-jennifer': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pkmn-breeder-f',
         name: 'Jennifer',
@@ -3768,7 +3643,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cowgirl-shelley': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'cowgirl',
         name: 'Shelley',
@@ -3821,7 +3695,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'young-couple-ty-and-sue': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'young-couple',
         name: 'Ty & Sue',
@@ -3852,7 +3725,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-oliver': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Oliver',
@@ -3887,7 +3759,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'roughneck-kirby': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'roughneck',
         name: 'Kirby',
@@ -3904,7 +3775,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pokefan-m-leonard': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pokefan-m',
         name: 'Leonard',
@@ -3944,7 +3814,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pokefan-f-rebekah': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pokefan-f',
         name: 'Rebekah',
@@ -3961,7 +3830,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'belle-and-pa-beth-and-bob': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'belle-and-pa',
         name: 'Beth & Bob',
@@ -3987,7 +3855,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'young-couple-mike-and-nat': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'young-couple',
         name: 'Mike & Nat',
@@ -4013,7 +3880,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ruin-maniac-karl': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ruin-maniac',
         name: 'Karl',
@@ -4047,7 +3913,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'rancher-marco': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'rancher',
         name: 'Marco',
@@ -4082,7 +3947,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'jogger-wyatt': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'jogger',
         name: 'Wyatt',
@@ -4099,7 +3963,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'belle-and-pa-ava-and-matt': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'belle-and-pa',
         name: 'Ava & Matt',
@@ -4125,7 +3988,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'twins-teri-and-tia': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'twins',
         name: 'Teri & Tia',
@@ -4151,7 +4013,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-breeder-m-kahlil': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pkmn-breeder-m',
         name: 'Kahlil',
@@ -4196,7 +4057,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-breeder-f-amber': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pkmn-breeder-f',
         name: 'Amber',
@@ -4231,7 +4091,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-fabian': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Fabian',
@@ -4266,7 +4125,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-brennan': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Brennan',
@@ -4292,7 +4150,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-bruce': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Bruce',
@@ -4309,7 +4166,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-joel': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Joel',
@@ -4353,7 +4209,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-f-alyssa': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-f',
         name: 'Alyssa',
@@ -4379,7 +4234,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'double-team-zac-and-jen': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'double-team',
         name: 'Zac & Jen',
@@ -4410,7 +4264,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-m-ernest': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-m',
         name: 'Ernest',
@@ -4445,7 +4298,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-davido': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Davido',
@@ -4462,7 +4314,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-adam': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'black-belt',
         name: 'Adam',
@@ -4479,7 +4330,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-nathan': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Nathan',
@@ -4505,7 +4355,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'bird-keeper-brianna': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'bird-keeper',
         name: 'Brianna',
@@ -4531,7 +4380,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'veteran-brian': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'veteran',
         name: 'Brian',
@@ -4566,7 +4414,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'dragon-tamer-patrick': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'dragon-tamer',
         name: 'Patrick',
@@ -4583,7 +4430,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'waitress-kati': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'waitress',
         name: 'Kati',
@@ -4605,7 +4451,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'collector-fernando': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'collector',
         name: 'Fernando',
@@ -4640,7 +4485,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'collector-edwin': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'collector',
         name: 'Edwin',
@@ -4675,7 +4519,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ruin-maniac-calvin': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ruin-maniac',
         name: 'Calvin',
@@ -4700,7 +4543,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'jogger-craig': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'jogger',
         name: 'Craig',
@@ -4740,7 +4582,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-gregory': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'black-belt',
         name: 'Gregory',
@@ -4775,7 +4616,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-derek': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'black-belt',
         name: 'Derek',
@@ -4792,7 +4632,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-nathaniel': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'black-belt',
         name: 'Nathaniel',
@@ -4827,7 +4666,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'jogger-scott': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'jogger',
         name: 'Scott',
@@ -4844,7 +4682,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-f-maya': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-f',
         name: 'Maya',
@@ -4870,7 +4707,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-m-dennis': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-m',
         name: 'Dennis',
@@ -4896,7 +4732,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'psychic-f-abigail': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'psychic-f',
         name: 'Abigail',
@@ -4931,7 +4766,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pi-carlos': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pi',
         name: 'Carlos',
@@ -4966,7 +4800,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'collector-brady': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'collector',
         name: 'Brady',
@@ -5001,7 +4834,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'beauty-devon': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'beauty',
         name: 'Devon',
@@ -5018,7 +4850,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ruin-maniac-bryan': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ruin-maniac',
         name: 'Bryan',
@@ -5052,7 +4883,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'psychic-m-mitchell': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'psychic-m',
         name: 'Mitchell',
@@ -5078,7 +4908,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'collector-jamal': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'collector',
         name: 'Jamal',
@@ -5113,7 +4942,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ruin-maniac-hunter': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ruin-maniac',
         name: 'Hunter',
@@ -5130,7 +4958,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'collector-douglas': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'collector',
         name: 'Douglas',
@@ -5180,7 +5007,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-15': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '15',
@@ -5197,7 +5023,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-16': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '16',
@@ -5247,7 +5072,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'tuber-f-chelsea': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'tuber-f',
         name: 'Chelsea',
@@ -5264,7 +5088,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'tuber-m-jared': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'tuber-m',
         name: 'Jared',
@@ -5299,7 +5122,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-kenneth': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Kenneth',
@@ -5334,7 +5156,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'beauty-cyndy': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'beauty',
         name: 'Cyndy',
@@ -5351,7 +5172,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-haley': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Haley',
@@ -5377,7 +5197,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'sailor-paul': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'sailor',
         name: 'Paul',
@@ -5403,7 +5222,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-evan': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Evan',
@@ -5429,7 +5247,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-mary': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Mary',
@@ -5460,7 +5277,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-sheltin': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Sheltin',
@@ -5495,7 +5311,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-ranger-m-taylor': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pkmn-ranger-m',
         name: 'Taylor',
@@ -5521,7 +5336,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'scientist-shaun': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'scientist',
         name: 'Shaun',
@@ -5547,7 +5361,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'parasol-lady-sabrina': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'parasol-lady',
         name: 'Sabrina',
@@ -5564,7 +5377,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'parasol-lady-alexa': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'parasol-lady',
         name: 'Alexa',
@@ -5595,7 +5407,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-juan': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Juan',
@@ -5612,7 +5423,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-cameron': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Cameron',
@@ -5643,7 +5453,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-travis': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Travis',
@@ -5687,7 +5496,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'collector-dominique': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'collector',
         name: 'Dominique',
@@ -5732,7 +5540,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'policeman-danny': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'policeman',
         name: 'Danny',
@@ -5763,7 +5570,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'scientist-stefano': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'scientist',
         name: 'Stefano',
@@ -5780,7 +5586,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-ranger-f-allison': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pkmn-ranger-f',
         name: 'Allison',
@@ -5806,7 +5611,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-ranger-m-jeffrey': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'pkmn-ranger-m',
         name: 'Jeffrey',
@@ -5832,7 +5636,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'policeman-caleb': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'policeman',
         name: 'Caleb',
@@ -5858,7 +5661,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'gentleman-jeremy': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'gentleman',
         name: 'Jeremy',
@@ -5875,7 +5677,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'socialite-reina': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'socialite',
         name: 'Reina',
@@ -5897,7 +5698,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'policeman-dylan': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'policeman',
         name: 'Dylan',
@@ -5923,7 +5723,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'rich-boy-jason': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'rich-boy',
         name: 'Jason',
@@ -5940,7 +5739,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'lady-melissa': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'lady',
         name: 'Melissa',
@@ -5957,7 +5755,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'policeman-alex': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'policeman',
         name: 'Alex',
@@ -5983,7 +5780,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'policeman-bobby': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'policeman',
         name: 'Bobby',
@@ -6009,7 +5805,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-jeffry': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'black-belt',
         name: 'Jeffery',
@@ -6035,7 +5830,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-darren': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'black-belt',
         name: 'Darren',
@@ -6070,7 +5864,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-rafael': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'black-belt',
         name: 'Rafael',
@@ -6087,7 +5880,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-colby': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'black-belt',
         name: 'Colby',
@@ -6121,8 +5913,10 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Veilstone Gym's compiled script (scr_seq_release/narc_0132.bin) calls
+    // GiveBadge with a literal badge_no argument of 2, at byte offset 104
+    // (the only occurrence of the GiveBadge opcode 0x015C in this bank).
     'leader-maylene-maylene': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'leader-maylene',
         name: 'Maylene',
@@ -6164,7 +5958,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'tuber-m-jacky': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'tuber-m',
         name: 'Jacky',
@@ -6181,7 +5974,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-walter': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Walter',
@@ -6198,7 +5990,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'sailor-damian': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'sailor',
         name: 'Damian',
@@ -6224,7 +6015,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'tuber-f-caitlyn': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'tuber-f',
         name: 'Caitlyn',
@@ -6250,7 +6040,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-erick': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Erick',
@@ -6285,7 +6074,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'sailor-samson': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'sailor',
         name: 'Samson',
@@ -6319,8 +6107,10 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Pastoria Gym's compiled script (scr_seq_release/narc_0120.bin) calls
+    // GiveBadge with a literal badge_no argument of 3, at byte offset 200
+    // (the only occurrence of the GiveBadge opcode 0x015C in this bank).
     'leader-wake-wake': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'leader-wake',
         name: 'Wake',
@@ -6362,7 +6152,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-17': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '17',
@@ -6388,7 +6177,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-donny': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'youngster',
         name: 'Donny',
@@ -6414,7 +6202,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'lass-molly': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'lass',
         name: 'Molly',
@@ -6431,7 +6218,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'camper-drew': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'camper',
         name: 'Drew',
@@ -6466,7 +6252,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'picnicker-cheyenne': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'picnicker',
         name: 'Cheyenne',
@@ -6492,7 +6277,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'school-kid-m-chance': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'school-kid-m',
         name: 'Chance',
@@ -6514,7 +6298,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'school-kid-f-mackenzie': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'school-kid-f',
         name: 'Mackenzie',
@@ -6540,7 +6323,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-m-allen': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-m',
         name: 'Allen',
@@ -6580,7 +6362,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-f-catherine': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-f',
         name: 'Catherine',
@@ -6605,8 +6386,12 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Hearthome Gym's leader-room compiled script
+    // (scr_seq_release/narc_0096.bin, MAP_HEARTHOME_GYM_LEADER_ROOM's own
+    // script bank) calls GiveBadge with a literal badge_no argument of 4,
+    // at byte offset 224 (the only occurrence of the GiveBadge opcode
+    // 0x015C in this bank).
     'leader-fantina-fantina': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'leader-fantina',
         name: 'Fantina',
@@ -6653,7 +6438,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'tuber-m-trenton': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'tuber-m',
         name: 'Trenton',
@@ -6679,7 +6463,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'tuber-f-mariel': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'tuber-f',
         name: 'Mariel',
@@ -6705,7 +6488,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-jessica': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Jessica',
@@ -6749,7 +6531,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-erica': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Erica',
@@ -6780,7 +6561,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-adrian': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Adrian',
@@ -6820,7 +6600,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-vincent': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Vincent',
@@ -6846,7 +6625,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-katelyn': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Katelyn',
@@ -6881,7 +6659,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-claire': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Claire',
@@ -6898,7 +6675,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-erik': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Erik',
@@ -6915,7 +6691,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-m-dillon': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-m',
         name: 'Dillon',
@@ -6941,7 +6716,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'swimmer-f-vanessa': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'swimmer-f',
         name: 'Vanessa',
@@ -6958,7 +6732,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-cory': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Cory',
@@ -6993,7 +6766,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-f-shannon': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-f',
         name: 'Shannon',
@@ -7028,7 +6800,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'collector-ivan': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'collector',
         name: 'Ivan',
@@ -7063,7 +6834,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-m-jake': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-m',
         name: 'Jake',
@@ -7089,7 +6859,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-dillan': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Dillan',
@@ -7115,7 +6884,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-holden': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Holden',
@@ -7132,7 +6900,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-conrad': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Conrad',
@@ -7149,7 +6916,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-miguel': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Miguel',
@@ -7175,7 +6941,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-luc': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Luc',
@@ -7228,7 +6993,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'sailor-skyler': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'sailor',
         name: 'Skyler',
@@ -7254,7 +7018,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'guitarist-tony': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'guitarist',
         name: 'Tony',
@@ -7271,7 +7034,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'camper-lawrence': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'camper',
         name: 'Lawrence',
@@ -7297,7 +7059,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'picnicker-summer': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'picnicker',
         name: 'Summer',
@@ -7328,7 +7089,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-willy': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Willy',
@@ -7354,7 +7114,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-braden': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Braden',
@@ -7371,7 +7130,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-damon': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'hiker',
         name: 'Damon',
@@ -7406,7 +7164,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-maurice': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'hiker',
         name: 'Maurice',
@@ -7432,7 +7189,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-kendal': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'black-belt',
         name: 'Kendal',
@@ -7449,7 +7205,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'battle-girl-tyler': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'battle-girl',
         name: 'Tyler',
@@ -7466,7 +7221,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-brendon': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Brendon',
@@ -7492,7 +7246,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-quentin': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Quentin',
@@ -7527,7 +7280,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-m-jonah': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-m',
         name: 'Jonah',
@@ -7562,7 +7314,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-f-brenda': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-f',
         name: 'Brenda',
@@ -7588,7 +7339,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-18': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '18',
@@ -7671,7 +7421,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'black-belt-ricky': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'black-belt',
         name: 'Ricky',
@@ -7688,7 +7437,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-gary': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Gary',
@@ -7705,7 +7453,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-m-cesar': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-m',
         name: 'Cesar',
@@ -7736,7 +7483,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-jackson': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Jackson',
@@ -7771,7 +7517,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-f-breanna': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-f',
         name: 'Breanna',
@@ -7788,7 +7533,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'worker-gerardo': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'worker',
         name: 'Gerardo',
@@ -7814,7 +7558,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-david': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'black-belt',
         name: 'David',
@@ -7839,8 +7582,10 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Canalave Gym's compiled script (scr_seq_release/narc_0036.bin) calls
+    // GiveBadge with a literal badge_no argument of 5, at byte offset 104
+    // (the only occurrence of the GiveBadge opcode 0x015C in this bank).
     'leader-byron-byron': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'leader-byron',
         name: 'Byron',
@@ -7895,7 +7640,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-8': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '8',
@@ -7921,7 +7665,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-19': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '19',
@@ -7947,7 +7690,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-20': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '20',
@@ -7982,7 +7724,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'commander-saturn-saturn-1': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'commander-saturn',
         name: 'Saturn 1',
@@ -8022,7 +7763,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-21': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '21',
@@ -8072,7 +7812,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'galactic-grunt-m-22': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '22',
@@ -8098,7 +7837,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-10': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '10',
@@ -8124,7 +7862,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'commander-mars-mars-2': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'commander-mars',
         name: 'Mars 2',
@@ -8164,7 +7901,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-m-blake': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-snow-m',
         name: 'Blake',
@@ -8190,7 +7926,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-f-maria': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-snow-f',
         name: 'Maria',
@@ -8225,7 +7960,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-f-laura': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-snow-f',
         name: 'Laura',
@@ -8247,7 +7981,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'skier-m-edward': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'skier-m',
         name: 'Edward',
@@ -8264,7 +7997,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-m-garrett': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-snow-m',
         name: 'Garrett',
@@ -8299,7 +8031,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-philip': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'black-belt',
         name: 'Philip',
@@ -8321,7 +8052,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'skier-f-kaitlyn': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'skier-f',
         name: 'Kaitlyn',
@@ -8347,7 +8077,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'skier-m-bradley': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'skier-m',
         name: 'Bradley',
@@ -8382,7 +8111,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'skier-f-andrea': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'skier-f',
         name: 'Andrea',
@@ -8399,7 +8127,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-m-dalton': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-snow-m',
         name: 'Dalton',
@@ -8434,7 +8161,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'skier-m-shawn': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'skier-m',
         name: 'Shawn',
@@ -8478,7 +8204,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-antonio': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Antonio',
@@ -8537,7 +8262,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'skier-f-madison': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'skier-f',
         name: 'Madison',
@@ -8554,7 +8278,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ninja-boy-ethan': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ninja-boy',
         name: 'Ethan',
@@ -8590,7 +8313,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'skier-m-bjorn': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'skier-m',
         name: 'Bjorn',
@@ -8616,7 +8338,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'skier-f-lexie': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'skier-f',
         name: 'Lexie',
@@ -8647,7 +8368,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'black-belt-luke': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'black-belt',
         name: 'Luke',
@@ -8682,7 +8402,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-f-olivia': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-snow-f',
         name: 'Olivia',
@@ -8713,7 +8432,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-f-brenna': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-snow-f',
         name: 'Brenna',
@@ -8730,7 +8448,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-m-isaiah': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-snow-m',
         name: 'Isaiah',
@@ -8747,7 +8464,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-m-sergio': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-snow-m',
         name: 'Sergio',
@@ -8773,7 +8489,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-f-savannah': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-snow-f',
         name: 'Savannah',
@@ -8808,7 +8523,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-f-alicia': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-snow-f',
         name: 'Alicia',
@@ -8834,7 +8548,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'ace-trainer-snow-m-anton': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'ace-trainer-snow-m',
         name: 'Anton',
@@ -8850,8 +8563,10 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Snowpoint Gym's compiled script (scr_seq_release/narc_0170.bin) calls
+    // GiveBadge with a literal badge_no argument of 6, at byte offset 119
+    // (the only occurrence of the GiveBadge opcode 0x015C in this bank).
     'leader-candice-candice': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'leader-candice',
         name: 'Candice',
@@ -8900,7 +8615,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-23': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '23',
@@ -8922,7 +8636,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-24': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '24',
@@ -8952,7 +8665,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-11': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '11',
@@ -8969,7 +8681,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'scientist-fredrick': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'scientist',
         name: 'Fredrick',
@@ -8995,7 +8706,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-25': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '25',
@@ -9030,7 +8740,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-26': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '26',
@@ -9066,7 +8775,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-12': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '12',
@@ -9097,7 +8805,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'scientist-darrius': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'scientist',
         name: 'Darrius',
@@ -9114,7 +8821,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-27': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '27',
@@ -9131,7 +8837,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-28': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '28',
@@ -9162,7 +8867,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-13': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '13',
@@ -9197,7 +8901,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-m-29': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-m',
         name: '29',
@@ -9223,7 +8926,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-boss-cyrus-cyrus-1': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-boss-cyrus',
         name: 'Cyrus 1',
@@ -9259,7 +8961,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'commander-saturn-saturn-2': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'commander-saturn',
         name: 'Saturn 2',
@@ -9299,7 +9000,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'galactic-grunt-f-14': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-grunt-f',
         name: '14',
@@ -9359,7 +9059,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'commander-jupiter-jupiter-2': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'commander-jupiter',
         name: 'Jupiter',
@@ -9437,7 +9136,6 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'galactic-boss-cyrus-cyrus-2': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'galactic-boss-cyrus',
         name: 'Cyrus 2',
@@ -9482,7 +9180,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'rich-boy-trey': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'rich-boy',
         name: 'Trey',
@@ -9499,7 +9196,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-alec': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Alec',
@@ -9525,7 +9221,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-george': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'George',
@@ -9574,7 +9269,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'beauty-nicola': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'beauty',
         name: 'Nicola',
@@ -9591,7 +9285,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-brett': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Brett',
@@ -9626,7 +9319,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'fisherman-cole': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'fisherman',
         name: 'Cole',
@@ -9666,7 +9358,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'tuber-f-holly': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'tuber-f',
         name: 'Holly',
@@ -9688,7 +9379,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'policeman-thomas': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'policeman',
         name: 'Thomas',
@@ -9724,7 +9414,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'sailor-marc': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'sailor',
         name: 'Marc',
@@ -9741,7 +9430,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'tuber-m-conner': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'tuber-m',
         name: 'Conner',
@@ -9763,7 +9451,6 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'sailor-luther': {
-        saveCondition: { type: 'flag', flag: -1 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'sailor',
         name: 'Luther',
@@ -9804,6 +9491,1369 @@ export const BATTLES: Record<string, BattleData> = {
                     'muddy-water',
                 ],
                 ivs: 0,
+            },
+        ],
+    },
+    'swimmer-m-wesley': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'swimmer-m',
+        name: 'Wesley',
+        team: [
+            {
+                slug: 'buizel',
+                ability: 'swift-swim',
+                gender: 'male',
+                level: 41,
+                nature: Nature.Hardy,
+                moves: ['swift', 'aqua-jet', 'agility', 'whirlpool'],
+                ivs: 0,
+            },
+            {
+                slug: 'tentacruel',
+                ability: 'clear-body',
+                gender: 'male',
+                level: 41,
+                nature: Nature.Naughty,
+                moves: ['wrap', 'barrier', 'water-pulse', 'poison-jab'],
+                ivs: 0,
+            },
+        ],
+    },
+    'swimmer-m-ricardo': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'swimmer-m',
+        name: 'Ricardo',
+        team: [
+            {
+                slug: 'tentacruel',
+                ability: 'clear-body',
+                gender: 'male',
+                level: 43,
+                nature: Nature.Jolly,
+                moves: ['barrier', 'water-pulse', 'poison-jab', 'screech'],
+                ivs: 0,
+            },
+        ],
+    },
+    'swimmer-m-francisco': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'swimmer-m',
+        name: 'Francisco',
+        team: [
+            {
+                slug: 'tentacool',
+                ability: 'clear-body',
+                gender: 'male',
+                level: 40,
+                nature: Nature.Naughty,
+                moves: ['water-pulse', 'poison-jab', 'screech', 'hydro-pump'],
+                ivs: 0,
+            },
+            {
+                slug: 'golduck',
+                ability: 'damp',
+                gender: 'male',
+                level: 42,
+                nature: Nature.Hardy,
+                moves: ['water-pulse', 'fury-swipes', 'screech', 'psych-up'],
+                ivs: 0,
+            },
+        ],
+    },
+    'swimmer-m-colton': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'swimmer-m',
+        name: 'Colton',
+        team: [
+            {
+                slug: 'wingull',
+                ability: 'keen-eye',
+                gender: 'male',
+                level: 37,
+                nature: Nature.Sassy,
+                moves: ['quick-attack', 'roost', 'pursuit', 'agility'],
+                ivs: 0,
+            },
+            {
+                slug: 'quagsire',
+                ability: 'damp',
+                gender: 'male',
+                level: 42,
+                nature: Nature.Adamant,
+                moves: ['amnesia', 'yawn', 'earthquake', 'rain-dance'],
+                ivs: 0,
+            },
+            {
+                slug: 'pelipper',
+                ability: 'keen-eye',
+                gender: 'male',
+                level: 41,
+                nature: Nature.Impish,
+                moves: ['roost', 'stockpile', 'swallow', 'spit-up'],
+                ivs: 0,
+            },
+        ],
+    },
+    'swimmer-m-troy': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'swimmer-m',
+        name: 'Troy',
+        team: [
+            {
+                slug: 'gyarados',
+                ability: 'intimidate',
+                gender: 'male',
+                level: 43,
+                nature: Nature.Rash,
+                moves: ['ice-fang', 'aqua-tail', 'rain-dance', 'hydro-pump'],
+                ivs: 0,
+            },
+        ],
+    },
+    'swimmer-m-oscar': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'swimmer-m',
+        name: 'Oscar',
+        team: [
+            {
+                slug: 'mantyke',
+                ability: 'swift-swim',
+                gender: 'male',
+                level: 38,
+                nature: Nature.Adamant,
+                moves: [
+                    'wing-attack',
+                    'water-pulse',
+                    'take-down',
+                    'confuse-ray',
+                ],
+                ivs: 0,
+            },
+            {
+                slug: 'remoraid',
+                ability: 'hustle',
+                gender: 'male',
+                level: 40,
+                nature: Nature.Lax,
+                moves: [
+                    'bullet-seed',
+                    'water-pulse',
+                    'signal-beam',
+                    'ice-beam',
+                ],
+                ivs: 0,
+            },
+            {
+                slug: 'mantine',
+                ability: 'swift-swim',
+                gender: 'male',
+                level: 42,
+                nature: Nature.Calm,
+                moves: ['water-pulse', 'take-down', 'confuse-ray', 'bounce'],
+                ivs: 0,
+            },
+        ],
+    },
+    'swimmer-f-miranda': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'swimmer-f',
+        name: 'Miranda',
+        team: [
+            {
+                slug: 'lumineon',
+                ability: 'swift-swim',
+                gender: 'female',
+                level: 43,
+                nature: Nature.Brave,
+                moves: ['captivate', 'safeguard', 'aqua-ring', 'whirlpool'],
+                ivs: 0,
+            },
+        ],
+    },
+    'swimmer-f-aubree': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'swimmer-f',
+        name: 'Aubree',
+        team: [
+            {
+                slug: 'azurill',
+                ability: 'thick-fat',
+                gender: 'female',
+                level: 41,
+                nature: Nature.Quirky,
+                moves: ['tail-whip', 'bubble', 'slam', 'water-gun'],
+                ivs: 0,
+            },
+            {
+                slug: 'azumarill',
+                ability: 'thick-fat',
+                gender: 'female',
+                level: 41,
+                nature: Nature.Timid,
+                moves: [
+                    'bubble-beam',
+                    'aqua-ring',
+                    'double-edge',
+                    'rain-dance',
+                ],
+                ivs: 0,
+            },
+        ],
+    },
+    'swimmer-f-paige': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'swimmer-f',
+        name: 'Paige',
+        team: [
+            {
+                slug: 'marill',
+                ability: 'thick-fat',
+                gender: 'female',
+                level: 39,
+                nature: Nature.Hasty,
+                moves: ['aqua-ring', 'double-edge', 'rain-dance', 'aqua-tail'],
+                ivs: 0,
+            },
+            {
+                slug: 'wingull',
+                ability: 'keen-eye',
+                gender: 'female',
+                level: 40,
+                nature: Nature.Quirky,
+                moves: ['quick-attack', 'roost', 'pursuit', 'agility'],
+                ivs: 0,
+            },
+            {
+                slug: 'golduck',
+                ability: 'damp',
+                gender: 'female',
+                level: 41,
+                nature: Nature.Quirky,
+                moves: ['water-pulse', 'fury-swipes', 'screech', 'psych-up'],
+                ivs: 0,
+            },
+        ],
+    },
+    'swimmer-f-crystal': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'swimmer-f',
+        name: 'Crystal',
+        team: [
+            {
+                slug: 'wingull',
+                ability: 'keen-eye',
+                gender: 'female',
+                level: 41,
+                nature: Nature.Careful,
+                moves: ['quick-attack', 'roost', 'pursuit', 'agility'],
+                ivs: 0,
+            },
+            {
+                slug: 'seaking',
+                ability: 'swift-swim',
+                gender: 'female',
+                level: 41,
+                nature: Nature.Modest,
+                moves: ['flail', 'aqua-ring', 'fury-attack', 'waterfall'],
+                ivs: 0,
+            },
+        ],
+    },
+    'swimmer-f-cassandra': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'swimmer-f',
+        name: 'Cassandra',
+        team: [
+            {
+                slug: 'finneon',
+                ability: 'swift-swim',
+                gender: 'female',
+                level: 41,
+                nature: Nature.Docile,
+                moves: ['captivate', 'safeguard', 'aqua-ring', 'whirlpool'],
+                ivs: 0,
+            },
+            {
+                slug: 'pelipper',
+                ability: 'keen-eye',
+                gender: 'female',
+                level: 41,
+                nature: Nature.Mild,
+                moves: ['roost', 'stockpile', 'swallow', 'spit-up'],
+                ivs: 0,
+            },
+        ],
+    },
+    'swimmer-f-gabrielle': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'swimmer-f',
+        name: 'Gabrielle',
+        team: [
+            {
+                slug: 'golduck',
+                ability: 'damp',
+                gender: 'female',
+                level: 43,
+                nature: Nature.Hasty,
+                moves: ['water-pulse', 'fury-swipes', 'screech', 'psych-up'],
+                ivs: 0,
+            },
+        ],
+    },
+    'sailor-zachariah': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'sailor',
+        name: 'Zachariah',
+        team: [
+            {
+                slug: 'pelipper',
+                ability: 'keen-eye',
+                gender: 'male',
+                level: 38,
+                nature: Nature.Modest,
+                moves: ['roost', 'stockpile', 'swallow', 'spit-up'],
+                ivs: 0,
+            },
+            {
+                slug: 'machoke',
+                ability: 'guts',
+                gender: 'male',
+                level: 38,
+                nature: Nature.Serious,
+                moves: ['revenge', 'vital-throw', 'submission', 'wake-up-slap'],
+                ivs: 0,
+            },
+            {
+                slug: 'gastrodon',
+                ability: 'sticky-hold',
+                gender: 'male',
+                level: 44,
+                nature: Nature.Impish,
+                moves: [
+                    'hidden-power',
+                    'rain-dance',
+                    'body-slam',
+                    'muddy-water',
+                ],
+                ivs: 0,
+            },
+        ],
+    },
+    'school-kid-f-tiera': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'school-kid-f',
+        name: 'Tiera',
+        team: [
+            {
+                slug: 'pachirisu',
+                ability: 'run-away',
+                gender: 'female',
+                level: 44,
+                nature: Nature.Lax,
+                moves: ['last-resort', 'super-fang', 'discharge', 'sweet-kiss'],
+                ivs: 1,
+            },
+        ],
+    },
+    'guitarist-jerry': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'guitarist',
+        name: 'Jerry',
+        team: [
+            {
+                slug: 'luxio',
+                ability: 'rivalry',
+                gender: 'male',
+                level: 44,
+                nature: Nature.Bashful,
+                moves: ['thunder-fang', 'crunch', 'leer'],
+                ivs: 1,
+            },
+        ],
+    },
+    'school-kid-m-forrest': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'school-kid-m',
+        name: 'Forrest',
+        team: [
+            {
+                slug: 'mr-mime',
+                ability: 'soundproof',
+                gender: 'male',
+                level: 44,
+                nature: Nature.Naughty,
+                moves: ['thunderbolt', 'energy-ball', 'thunder-wave', 'flash'],
+                ivs: 1,
+            },
+        ],
+    },
+    'poke-kid-meghan': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'poke-kid',
+        name: 'Meghan',
+        team: [
+            {
+                slug: 'pikachu',
+                ability: 'static',
+                gender: 'female',
+                level: 41,
+                nature: Nature.Mild,
+                moves: ['thunderbolt', 'feint', 'agility', 'discharge'],
+                ivs: 1,
+            },
+            {
+                slug: 'pikachu',
+                ability: 'static',
+                gender: 'female',
+                level: 41,
+                nature: Nature.Mild,
+                moves: ['thunderbolt', 'feint', 'agility', 'discharge'],
+                ivs: 1,
+            },
+            {
+                slug: 'pikachu',
+                ability: 'static',
+                gender: 'female',
+                level: 41,
+                nature: Nature.Mild,
+                moves: ['thunderbolt', 'feint', 'agility', 'discharge'],
+                ivs: 1,
+            },
+            {
+                slug: 'pikachu',
+                ability: 'static',
+                gender: 'female',
+                level: 41,
+                nature: Nature.Mild,
+                moves: ['thunderbolt', 'feint', 'agility', 'discharge'],
+                ivs: 1,
+            },
+        ],
+    },
+    'guitarist-lonnie': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'guitarist',
+        name: 'Lonnie',
+        team: [
+            {
+                slug: 'raichu',
+                ability: 'static',
+                gender: 'male',
+                level: 44,
+                nature: Nature.Relaxed,
+                moves: ['thunderbolt', 'slam', 'thunder-wave', 'quick-attack'],
+                ivs: 1,
+            },
+        ],
+    },
+    'ace-trainer-f-destiny': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'ace-trainer-f',
+        name: 'Destiny',
+        team: [
+            {
+                slug: 'kadabra',
+                ability: 'synchronize',
+                gender: 'male',
+                level: 44,
+                nature: Nature.Adamant,
+                moves: ['psychic', 'reflect', 'disable', 'recover'],
+                ivs: 7,
+            },
+            {
+                slug: 'raichu',
+                ability: 'static',
+                gender: 'female',
+                level: 44,
+                nature: Nature.Bold,
+                moves: ['thunderbolt', 'dig', 'thunder-wave', 'light-screen'],
+                ivs: 7,
+            },
+        ],
+    },
+    'guitarist-preston': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'guitarist',
+        name: 'Preston',
+        team: [
+            {
+                slug: 'luxio',
+                ability: 'rivalry',
+                gender: 'male',
+                level: 42,
+                nature: Nature.Sassy,
+                moves: ['thunder-fang', 'crunch', 'leer'],
+                ivs: 1,
+            },
+            {
+                slug: 'bibarel',
+                ability: 'simple',
+                gender: 'male',
+                level: 42,
+                nature: Nature.Rash,
+                moves: [
+                    'thunderbolt',
+                    'water-pulse',
+                    'super-fang',
+                    'thunder-wave',
+                ],
+                ivs: 1,
+            },
+        ],
+    },
+    'ace-trainer-m-zachery': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'ace-trainer-m',
+        name: 'Zachery',
+        team: [
+            {
+                slug: 'steelix',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 44,
+                nature: Nature.Calm,
+                moves: ['thunder-fang', 'rock-throw', 'screech', 'harden'],
+                ivs: 7,
+            },
+            {
+                slug: 'medicham',
+                ability: 'pure-power',
+                gender: 'male',
+                level: 44,
+                nature: Nature.Hasty,
+                moves: ['thunder-punch', 'meditate', 'detect'],
+                ivs: 7,
+            },
+        ],
+    },
+    // Sunyshore Gym Room 3's compiled script (scr_seq_release/narc_0154.bin,
+    // MAP_SUNYSHORE_GYM_ROOM_3's own script bank) calls GiveBadge with a
+    // literal badge_no argument of 7, at byte offset 121 (the only
+    // occurrence of the GiveBadge opcode 0x015C in this bank).
+    'leader-volkner-volkner': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'leader-volkner',
+        name: 'Volkner',
+        items: [
+            { count: 1, name: 'Hyper Potion' },
+            { count: 1, name: 'Full Restore' },
+        ],
+        team: [
+            {
+                slug: 'raichu',
+                ability: 'static',
+                gender: 'male',
+                level: 46,
+                nature: Nature.Sassy,
+                moves: [
+                    'charge-beam',
+                    'brick-break',
+                    'thunder-wave',
+                    'light-screen',
+                ],
+                ivs: 24,
+            },
+            {
+                slug: 'ambipom',
+                ability: 'technician',
+                gender: 'male',
+                level: 47,
+                nature: Nature.Brave,
+                moves: ['shock-wave', 'agility', 'nasty-plot', 'baton-pass'],
+                ivs: 24,
+            },
+            {
+                slug: 'octillery',
+                ability: 'suction-cups',
+                gender: 'male',
+                level: 47,
+                nature: Nature.Lax,
+                moves: [
+                    'charge-beam',
+                    'octazooka',
+                    'aurora-beam',
+                    'bullet-seed',
+                ],
+                ivs: 24,
+            },
+            {
+                slug: 'luxray',
+                ability: 'rivalry',
+                gender: 'male',
+                level: 49,
+                nature: Nature.Sassy,
+                heldItem: 'sitrus-berry',
+                moves: [
+                    'charge-beam',
+                    'thunder-fang',
+                    'crunch',
+                    'thunder-wave',
+                ],
+                ivs: 24,
+            },
+        ],
+    },
+    'psychic-m-bryce': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'psychic-m',
+        name: 'Bryce',
+        team: [
+            {
+                slug: 'haunter',
+                ability: 'levitate',
+                gender: 'male',
+                level: 43,
+                nature: Nature.Lonely,
+                moves: [
+                    'shadow-punch',
+                    'payback',
+                    'shadow-ball',
+                    'dream-eater',
+                ],
+                ivs: 0,
+            },
+            {
+                slug: 'alakazam',
+                ability: 'synchronize',
+                gender: 'male',
+                level: 46,
+                nature: Nature.Lonely,
+                moves: ['calm-mind', 'psychic', 'future-sight', 'trick'],
+                ivs: 0,
+            },
+            {
+                slug: 'gengar',
+                ability: 'levitate',
+                gender: 'male',
+                level: 46,
+                nature: Nature.Impish,
+                moves: ['payback', 'shadow-ball', 'dream-eater', 'dark-pulse'],
+                ivs: 0,
+            },
+        ],
+    },
+    'bird-keeper-hana': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'bird-keeper',
+        name: 'Hana',
+        team: [
+            {
+                slug: 'noctowl',
+                ability: 'insomnia',
+                gender: 'female',
+                level: 46,
+                nature: Nature.Impish,
+                moves: [
+                    'take-down',
+                    'air-slash',
+                    'zen-headbutt',
+                    'extrasensory',
+                ],
+                ivs: 0,
+            },
+            {
+                slug: 'staraptor',
+                ability: 'intimidate',
+                gender: 'female',
+                level: 48,
+                nature: Nature.Adamant,
+                moves: ['aerial-ace', 'take-down', 'close-combat', 'agility'],
+                ivs: 0,
+            },
+        ],
+    },
+    'ace-trainer-f-mariah': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'ace-trainer-f',
+        name: 'Mariah',
+        team: [
+            {
+                slug: 'golduck',
+                ability: 'damp',
+                gender: 'female',
+                level: 46,
+                nature: Nature.Mild,
+                moves: ['zen-headbutt', 'confusion', 'disable', 'screech'],
+                ivs: 6,
+            },
+            {
+                slug: 'blissey',
+                ability: 'natural-cure',
+                gender: 'female',
+                level: 48,
+                nature: Nature.Hasty,
+                moves: ['double-edge', 'sing', 'soft-boiled', 'light-screen'],
+                ivs: 6,
+            },
+        ],
+    },
+    'ace-trainer-m-omar': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'ace-trainer-m',
+        name: 'Omar',
+        team: [
+            {
+                slug: 'rapidash',
+                ability: 'run-away',
+                gender: 'male',
+                level: 45,
+                nature: Nature.Calm,
+                moves: ['fire-blast', 'stomp', 'quick-attack', 'growl'],
+                ivs: 6,
+            },
+            {
+                slug: 'carnivine',
+                ability: 'levitate',
+                gender: 'male',
+                level: 45,
+                nature: Nature.Brave,
+                moves: ['wring-out', 'crunch', 'feint-attack', 'ingrain'],
+                ivs: 6,
+            },
+            {
+                slug: 'rampardos',
+                ability: 'mold-breaker',
+                gender: 'male',
+                level: 48,
+                nature: Nature.Bold,
+                moves: [
+                    'head-smash',
+                    'zen-headbutt',
+                    'ancient-power',
+                    'screech',
+                ],
+                ivs: 6,
+            },
+        ],
+    },
+    'ace-trainer-f-sydney': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'ace-trainer-f',
+        name: 'Sydney',
+        team: [
+            {
+                slug: 'clefable',
+                ability: 'cute-charm',
+                gender: 'female',
+                level: 46,
+                nature: Nature.Lax,
+                moves: ['meteor-mash', 'reflect', 'light-screen', 'gravity'],
+                ivs: 6,
+            },
+            {
+                slug: 'torterra',
+                ability: 'overgrow',
+                gender: 'male',
+                level: 48,
+                nature: Nature.Lonely,
+                moves: ['earthquake', 'crunch', 'leech-seed', 'synthesis'],
+                ivs: 6,
+            },
+        ],
+    },
+    'veteran-clayton': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'veteran',
+        name: 'Clayton',
+        team: [
+            {
+                slug: 'staraptor',
+                ability: 'intimidate',
+                gender: 'male',
+                level: 47,
+                nature: Nature.Quiet,
+                moves: ['brave-bird', 'quick-attack', 'double-team', 'growl'],
+                ivs: 12,
+            },
+            {
+                slug: 'hippowdon',
+                ability: 'sand-stream',
+                gender: 'male',
+                level: 47,
+                nature: Nature.Gentle,
+                moves: ['earthquake', 'crunch', 'sand-tomb', 'yawn'],
+                ivs: 12,
+            },
+        ],
+    },
+    'double-team-al-and-kay': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'double-team',
+        name: 'Al & Kay',
+        team: [
+            {
+                slug: 'staraptor',
+                ability: 'intimidate',
+                gender: 'male',
+                level: 47,
+                nature: Nature.Timid,
+                moves: ['aerial-ace', 'take-down', 'close-combat', 'agility'],
+                ivs: 0,
+            },
+            {
+                slug: 'whiscash',
+                ability: 'oblivious',
+                gender: 'male',
+                level: 47,
+                nature: Nature.Calm,
+                moves: ['rest', 'snore', 'aqua-tail', 'earthquake'],
+                ivs: 0,
+            },
+        ],
+    },
+    'black-belt-miles': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'black-belt',
+        name: 'Miles',
+        team: [
+            {
+                slug: 'machamp',
+                ability: 'guts',
+                gender: 'male',
+                level: 49,
+                nature: Nature.Relaxed,
+                moves: [
+                    'submission',
+                    'wake-up-slap',
+                    'cross-chop',
+                    'scary-face',
+                ],
+                ivs: 3,
+            },
+        ],
+    },
+    'psychic-f-valencia': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'psychic-f',
+        name: 'Valencia',
+        team: [
+            {
+                slug: 'chingling',
+                ability: 'levitate',
+                gender: 'female',
+                level: 44,
+                nature: Nature.Lax,
+                moves: ['astonish', 'confusion', 'uproar', 'last-resort'],
+                ivs: 0,
+            },
+            {
+                slug: 'chimecho',
+                ability: 'levitate',
+                gender: 'female',
+                level: 48,
+                nature: Nature.Bashful,
+                moves: [
+                    'double-edge',
+                    'heal-bell',
+                    'safeguard',
+                    'extrasensory',
+                ],
+                ivs: 0,
+            },
+        ],
+    },
+    'double-team-jo-and-pat': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'double-team',
+        name: 'Jo & Pat',
+        team: [
+            {
+                slug: 'gyarados',
+                ability: 'intimidate',
+                gender: 'male',
+                level: 47,
+                nature: Nature.Adamant,
+                moves: [
+                    'rain-dance',
+                    'hydro-pump',
+                    'dragon-dance',
+                    'hyper-beam',
+                ],
+                ivs: 0,
+            },
+            {
+                slug: 'medicham',
+                ability: 'pure-power',
+                gender: 'male',
+                level: 47,
+                nature: Nature.Lax,
+                moves: [
+                    'force-palm',
+                    'high-jump-kick',
+                    'psych-up',
+                    'power-trick',
+                ],
+                ivs: 0,
+            },
+        ],
+    },
+    'ace-trainer-m-henry': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'ace-trainer-m',
+        name: 'Henry',
+        team: [
+            {
+                slug: 'honchkrow',
+                ability: 'insomnia',
+                gender: 'male',
+                level: 49,
+                nature: Nature.Lax,
+                moves: ['night-slash', 'wing-attack', 'pursuit', 'swagger'],
+                ivs: 6,
+            },
+        ],
+    },
+    'dragon-tamer-ondrej': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'dragon-tamer',
+        name: 'Ondrej',
+        team: [
+            {
+                slug: 'gabite',
+                ability: 'sand-veil',
+                gender: 'male',
+                level: 49,
+                nature: Nature.Lonely,
+                moves: ['slash', 'dragon-claw', 'dig', 'dragon-rush'],
+                ivs: 0,
+            },
+        ],
+    },
+    'veteran-edgar': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'veteran',
+        name: 'Edgar',
+        team: [
+            {
+                slug: 'tentacruel',
+                ability: 'clear-body',
+                gender: 'male',
+                level: 45,
+                nature: Nature.Naive,
+                moves: [
+                    'sludge-bomb',
+                    'water-pulse',
+                    'toxic-spikes',
+                    'screech',
+                ],
+                ivs: 12,
+            },
+            {
+                slug: 'golem',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 45,
+                nature: Nature.Bold,
+                moves: [
+                    'earthquake',
+                    'stone-edge',
+                    'double-edge',
+                    'rock-polish',
+                ],
+                ivs: 12,
+            },
+            {
+                slug: 'empoleon',
+                ability: 'torrent',
+                gender: 'male',
+                level: 48,
+                nature: Nature.Naughty,
+                moves: ['brine', 'drill-peck', 'metal-claw', 'growl'],
+                ivs: 12,
+            },
+        ],
+    },
+    'dragon-tamer-clinton': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'dragon-tamer',
+        name: 'Clinton',
+        team: [
+            {
+                slug: 'gible',
+                ability: 'sand-veil',
+                gender: 'male',
+                level: 46,
+                nature: Nature.Naughty,
+                moves: ['slash', 'dragon-claw', 'dig', 'dragon-rush'],
+                ivs: 0,
+            },
+            {
+                slug: 'gyarados',
+                ability: 'intimidate',
+                gender: 'male',
+                level: 49,
+                nature: Nature.Mild,
+                moves: [
+                    'rain-dance',
+                    'hydro-pump',
+                    'dragon-dance',
+                    'hyper-beam',
+                ],
+                ivs: 0,
+            },
+            {
+                slug: 'gible',
+                ability: 'sand-veil',
+                gender: 'male',
+                level: 46,
+                nature: Nature.Naughty,
+                moves: ['slash', 'dragon-claw', 'dig', 'dragon-rush'],
+                ivs: 0,
+            },
+        ],
+    },
+    // Aaron's Room compiled script (scr_seq_release/narc_0182.bin) calls
+    // SetFlag (opcode 0x001E) with a literal argument of 176, at byte
+    // offset 61 (the only occurrence of the SetFlag opcode in this bank).
+    'elite-four-aaron-aaron': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'elite-four-aaron',
+        name: 'Aaron',
+        items: [{ count: 2, name: 'Full Restore' }],
+        team: [
+            {
+                slug: 'dustox',
+                ability: 'shield-dust',
+                gender: 'male',
+                level: 53,
+                nature: Nature.Modest,
+                moves: ['toxic', 'bug-buzz', 'double-team', 'light-screen'],
+                ivs: 30,
+            },
+            {
+                slug: 'beautifly',
+                ability: 'swarm',
+                gender: 'male',
+                level: 53,
+                nature: Nature.Rash,
+                moves: ['energy-ball', 'bug-buzz', 'psychic', 'shadow-ball'],
+                ivs: 30,
+            },
+            {
+                slug: 'vespiquen',
+                ability: 'pressure',
+                gender: 'female',
+                level: 54,
+                nature: Nature.Docile,
+                moves: [
+                    'attack-order',
+                    'defend-order',
+                    'heal-order',
+                    'power-gem',
+                ],
+                ivs: 30,
+            },
+            {
+                slug: 'heracross',
+                ability: 'swarm',
+                gender: 'male',
+                level: 54,
+                nature: Nature.Naive,
+                moves: [
+                    'megahorn',
+                    'close-combat',
+                    'night-slash',
+                    'stone-edge',
+                ],
+                ivs: 30,
+            },
+            {
+                slug: 'drapion',
+                ability: 'battle-armor',
+                gender: 'male',
+                level: 57,
+                nature: Nature.Bold,
+                heldItem: 'sitrus-berry',
+                moves: ['x-scissor', 'cross-poison', 'ice-fang', 'aerial-ace'],
+                ivs: 30,
+            },
+        ],
+    },
+    // Bertha's Room compiled script (scr_seq_release/narc_0184.bin) calls
+    // SetFlag (opcode 0x001E) with a literal argument of 177, at byte
+    // offset 61 (the only occurrence of the SetFlag opcode in this bank).
+    'elite-four-bertha-bertha': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'elite-four-bertha',
+        name: 'Bertha',
+        items: [{ count: 2, name: 'Full Restore' }],
+        team: [
+            {
+                slug: 'quagsire',
+                ability: 'damp',
+                gender: 'female',
+                level: 55,
+                nature: Nature.Brave,
+                moves: ['dig', 'double-team', 'protect', 'sandstorm'],
+                ivs: 30,
+            },
+            {
+                slug: 'sudowoodo',
+                ability: 'sturdy',
+                gender: 'female',
+                level: 56,
+                nature: Nature.Careful,
+                moves: [
+                    'earthquake',
+                    'sucker-punch',
+                    'hammer-arm',
+                    'sandstorm',
+                ],
+                ivs: 30,
+            },
+            {
+                slug: 'golem',
+                ability: 'rock-head',
+                gender: 'female',
+                level: 56,
+                nature: Nature.Brave,
+                moves: ['earthquake', 'gyro-ball', 'brick-break', 'sandstorm'],
+                ivs: 30,
+            },
+            {
+                slug: 'whiscash',
+                ability: 'oblivious',
+                gender: 'female',
+                level: 55,
+                nature: Nature.Gentle,
+                moves: ['fissure', 'aqua-tail', 'zen-headbutt', 'rock-slide'],
+                ivs: 30,
+            },
+            {
+                slug: 'hippowdon',
+                ability: 'sand-stream',
+                gender: 'female',
+                level: 59,
+                nature: Nature.Mild,
+                heldItem: 'sitrus-berry',
+                moves: ['earthquake', 'stone-edge', 'crunch', 'curse'],
+                ivs: 30,
+            },
+        ],
+    },
+    // Flint's Room compiled script (scr_seq_release/narc_0186.bin) calls
+    // SetFlag (opcode 0x001E) with a literal argument of 178, at byte
+    // offset 61 (the only occurrence of the SetFlag opcode in this bank).
+    'elite-four-flint-flint': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'elite-four-flint',
+        name: 'Flint',
+        items: [{ count: 2, name: 'Full Restore' }],
+        team: [
+            {
+                slug: 'rapidash',
+                ability: 'run-away',
+                gender: 'male',
+                level: 58,
+                nature: Nature.Naughty,
+                moves: ['flare-blitz', 'solar-beam', 'bounce', 'sunny-day'],
+                ivs: 30,
+            },
+            {
+                slug: 'steelix',
+                ability: 'rock-head',
+                gender: 'male',
+                level: 57,
+                nature: Nature.Hardy,
+                moves: ['fire-fang', 'rock-tomb', 'screech', 'sunny-day'],
+                ivs: 30,
+            },
+            {
+                slug: 'drifblim',
+                ability: 'aftermath',
+                gender: 'male',
+                level: 58,
+                nature: Nature.Relaxed,
+                moves: [
+                    'will-o-wisp',
+                    'ominous-wind',
+                    'double-team',
+                    'baton-pass',
+                ],
+                ivs: 30,
+            },
+            {
+                slug: 'lopunny',
+                ability: 'cute-charm',
+                gender: 'male',
+                level: 57,
+                nature: Nature.Impish,
+                moves: ['fire-punch', 'charm', 'mirror-coat', 'sunny-day'],
+                ivs: 30,
+            },
+            {
+                slug: 'infernape',
+                ability: 'blaze',
+                gender: 'male',
+                level: 61,
+                nature: Nature.Jolly,
+                heldItem: 'sitrus-berry',
+                moves: [
+                    'flare-blitz',
+                    'thunder-punch',
+                    'mach-punch',
+                    'earthquake',
+                ],
+                ivs: 30,
+            },
+        ],
+    },
+    // Lucian's Room compiled script (scr_seq_release/narc_0188.bin) calls
+    // SetFlag (opcode 0x001E) with a literal argument of 179, at byte
+    // offset 61 (the only occurrence of the SetFlag opcode in this bank).
+    'elite-four-lucian-lucian': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'elite-four-lucian',
+        name: 'Lucian',
+        items: [{ count: 2, name: 'Full Restore' }],
+        team: [
+            {
+                slug: 'mr-mime',
+                ability: 'soundproof',
+                gender: 'male',
+                level: 59,
+                nature: Nature.Serious,
+                moves: ['psychic', 'thunderbolt', 'reflect', 'light-screen'],
+                ivs: 30,
+            },
+            {
+                slug: 'girafarig',
+                ability: 'inner-focus',
+                gender: 'male',
+                level: 59,
+                nature: Nature.Hasty,
+                moves: ['psychic', 'shadow-ball', 'double-hit', 'crunch'],
+                ivs: 30,
+            },
+            {
+                slug: 'medicham',
+                ability: 'pure-power',
+                gender: 'male',
+                level: 60,
+                nature: Nature.Hardy,
+                moves: [
+                    'drain-punch',
+                    'fire-punch',
+                    'thunder-punch',
+                    'ice-punch',
+                ],
+                ivs: 30,
+            },
+            {
+                slug: 'alakazam',
+                ability: 'synchronize',
+                gender: 'male',
+                level: 60,
+                nature: Nature.Lax,
+                moves: ['psychic', 'energy-ball', 'focus-blast', 'recover'],
+                ivs: 30,
+            },
+            {
+                slug: 'bronzong',
+                ability: 'levitate',
+                level: 63,
+                nature: Nature.Impish,
+                heldItem: 'sitrus-berry',
+                moves: ['psychic', 'gyro-ball', 'earthquake', 'calm-mind'],
+                ivs: 30,
+            },
+        ],
+    },
+    // Cynthia's Room compiled script (scr_seq_release/narc_0190.bin) calls
+    // SetFlag (opcode 0x001E) with a literal argument of 180, at byte
+    // offset 82 -- structurally the same position (same surrounding
+    // opcode pattern) as the analogous real SetFlag call in each of the
+    // other four gauntlet rooms, and directly sequential with their own
+    // flags (176/177/178/179). Five other byte-sequences matching the
+    // SetFlag opcode appear elsewhere in this (longer, 276-byte) bank, but
+    // none share that surrounding pattern, so they're unrelated
+    // coincidental byte alignments, not real SetFlag calls, from this
+    // room's extra Hall of Fame/credits setup.
+    //
+    // This is a real divergence from Platinum, not a leftover placeholder:
+    // Platinum's Cynthia battle uses `{ type: 'gameClear' }`, reading the
+    // save's generic isMainStoryCleared byte. No script command in this
+    // decomp calls PlayerProfile_SetGameClearFlag (searched every
+    // arm9/src/scrcmd*.c and hall_of_fame.c) -- it's set by native game
+    // logic outside the scripting VM entirely, not from this room's script.
+    // D/P's own script only ever sets its own dedicated flag 180 here, so
+    // that -- not gameClear -- is what this app can actually detect from a
+    // decrypted D/P save.
+    'champion-cynthia-cynthia': {
+        aiFlags: [AiFlag.Basic],
+        trainerClass: 'champion-cynthia',
+        name: 'Cynthia',
+        items: [{ count: 4, name: 'Full Restore' }],
+        team: [
+            {
+                slug: 'spiritomb',
+                ability: 'pressure',
+                gender: 'female',
+                level: 61,
+                nature: Nature.Jolly,
+                moves: ['dark-pulse', 'psychic', 'silver-wind', 'embargo'],
+                ivs: 30,
+            },
+            {
+                slug: 'roserade',
+                ability: 'natural-cure',
+                gender: 'female',
+                level: 60,
+                nature: Nature.Naughty,
+                moves: [
+                    'energy-ball',
+                    'sludge-bomb',
+                    'shadow-ball',
+                    'extrasensory',
+                ],
+                ivs: 30,
+            },
+            {
+                slug: 'gastrodon',
+                ability: 'sticky-hold',
+                gender: 'female',
+                level: 60,
+                nature: Nature.Calm,
+                moves: [
+                    'muddy-water',
+                    'earthquake',
+                    'stone-edge',
+                    'sludge-bomb',
+                ],
+                ivs: 30,
+            },
+            {
+                slug: 'lucario',
+                ability: 'steadfast',
+                gender: 'male',
+                level: 63,
+                nature: Nature.Timid,
+                moves: ['aura-sphere', 'dragon-pulse', 'psychic', 'earthquake'],
+                ivs: 30,
+            },
+            {
+                slug: 'milotic',
+                ability: 'marvel-scale',
+                gender: 'female',
+                level: 63,
+                nature: Nature.Sassy,
+                moves: ['surf', 'ice-beam', 'mirror-coat', 'aqua-ring'],
+                ivs: 30,
+            },
+            {
+                slug: 'garchomp',
+                ability: 'sand-veil',
+                gender: 'female',
+                level: 66,
+                nature: Nature.Timid,
+                heldItem: 'sitrus-berry',
+                moves: [
+                    'dragon-rush',
+                    'earthquake',
+                    'brick-break',
+                    'giga-impact',
+                ],
+                ivs: 30,
             },
         ],
     },

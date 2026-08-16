@@ -1,10 +1,11 @@
 import { valorCavern } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata } from '@/lib/static/enums';
+import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VALOR_CAVERN: Location = {
     name: 'Valor Cavern',
     map: valorCavern,
+    mapAnchor: MapAnchor.Center,
     encountersKey: 'lake-valor-cavern',
     battles: [
         {

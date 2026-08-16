@@ -6,7 +6,7 @@ import {
     lostTower5f,
     route209,
 } from '@/lib/data/platinum/maps';
-import { BattleMetadata, FieldCondition } from '@/lib/static/enums';
+import { BattleMetadata, FieldCondition, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_209: Location = {
@@ -15,6 +15,7 @@ const ROUTE_209: Location = {
         {
             name: 'Main',
             map: route209,
+            mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'sinnoh-route-209',
             battles: [
                 {
@@ -75,11 +76,13 @@ const ROUTE_209: Location = {
         {
             name: 'Tower 1F',
             map: lostTower1f,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-1f',
         },
         {
             name: 'Tower 2F',
             map: lostTower2f,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-2f',
             battles: [
                 {
@@ -93,6 +96,7 @@ const ROUTE_209: Location = {
         {
             name: 'Tower 3F',
             map: lostTower3f,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-3f',
             battles: [
                 {
@@ -114,6 +118,7 @@ const ROUTE_209: Location = {
         {
             name: 'Tower 4F',
             map: lostTower4f,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-4f',
             battles: [
                 {
@@ -150,6 +155,7 @@ const ROUTE_209: Location = {
         {
             name: 'Tower 5F',
             map: lostTower5f,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-5f',
         },
     ],

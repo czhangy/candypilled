@@ -40,8 +40,8 @@ right, each taking up half of the row's width.
 - `levelCap` — the current split's level cap via
   `SplitHelpers.getLevelCap`, passed to `PokemonBox` and
   `PokemonPreview` so over-leveled Pokémon can be flagged; `null` once
-  `run.defeatedBattles` shows every required battle has been defeated,
-  since no cap applies after the game is complete
+  `run.completedSplits` shows every split has been completed, since no cap
+  applies after the game is complete
 
 ## Handlers
 

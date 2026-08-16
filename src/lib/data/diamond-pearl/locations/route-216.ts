@@ -1,10 +1,11 @@
 import { route216 } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, FieldCondition } from '@/lib/static/enums';
+import { BattleMetadata, FieldCondition, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_216: Location = {
     name: 'Route 216',
     map: route216,
+    mapAnchor: MapAnchor.BottomRight,
     encountersKey: 'sinnoh-route-216',
     battles: [
         {
@@ -32,7 +33,7 @@ const ROUTE_216: Location = {
             metadata: [BattleMetadata.Optional],
             battleKey: 'skier-m-edward',
             fieldCondition: FieldCondition.Hail,
-            x: 27.3,
+            x: 27.2,
             y: 71.2,
         },
         {

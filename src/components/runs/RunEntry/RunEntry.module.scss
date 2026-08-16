@@ -56,14 +56,12 @@
             .split,
             .boxes,
             .deaths,
-            .personal-best,
             .hall-of-fame {
                 color: $text-mid;
                 font-family: $font-mono;
                 font-size: 0.9rem;
             }
 
-            .personal-best,
             .hall-of-fame {
                 color: var(--accent-color);
                 font-weight: 700;
