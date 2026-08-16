@@ -1,4 +1,9 @@
 import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
+import {
+    BadgeAssetFolder,
+    GameVersionGroup,
+    TrainerAssetFolder,
+} from '@/lib/static/enums';
 import { Game } from '@/lib/static/types';
 import { BATTLES } from './battles';
 import { ENCOUNTERS } from './encounters';
@@ -17,8 +22,10 @@ const PLATINUM: Game = {
     name: 'Platinum',
     logo: '/logos/platinum.png',
     generation: 4,
-    version: 'platinum',
+    version: GameVersionGroup.Platinum,
     dataSource: VANILLA_DATA_SOURCE,
+    badgeAssetFolder: BadgeAssetFolder.Sinnoh,
+    trainerAssetFolder: TrainerAssetFolder.Platinum,
     starters: ['turtwig', 'chimchar', 'piplup'],
     accentColor: '#FFD500',
     encounters: ENCOUNTERS,

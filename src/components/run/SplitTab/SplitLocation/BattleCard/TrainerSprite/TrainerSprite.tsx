@@ -1,17 +1,18 @@
 import Image from 'next/image';
+import { TrainerAssetFolder } from '@/lib/static/enums';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import styles from './TrainerSprite.module.scss';
 
 type TrainerSpriteProps = {
     alt: string;
+    trainerAssetFolder: TrainerAssetFolder;
     trainerClass: string;
-    variant: string;
 };
 
 const TrainerSprite: React.FC<TrainerSpriteProps> = ({
     alt,
+    trainerAssetFolder,
     trainerClass,
-    variant,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
@@ -28,7 +29,10 @@ const TrainerSprite: React.FC<TrainerSpriteProps> = ({
             <Image
                 alt={alt}
                 height={SPRITE_SIZE}
-                src={TrainerHelpers.getTrainerSprite(trainerClass, variant)}
+                src={TrainerHelpers.getTrainerSprite(
+                    trainerClass,
+                    trainerAssetFolder
+                )}
                 width={SPRITE_SIZE}
             />
         </div>

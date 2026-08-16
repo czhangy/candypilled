@@ -124,3 +124,23 @@ export enum GrowthRate {
     MediumSlow = 'medium-slow',
     Slow = 'slow',
 }
+
+// A game's PokeAPI version-group slug (Game.version), used to resolve
+// which of a Pokémon's per-version-group learnsets applies. Add a member
+// here when onboarding a new game/variant group.
+export enum GameVersionGroup {
+    DiamondPearl = 'diamond-pearl',
+    Platinum = 'platinum',
+}
+
+// The public/badges/<folder>/ a game's gym-badge icons are served from.
+export enum BadgeAssetFolder {
+    Sinnoh = 'sinnoh',
+}
+
+// The public/trainers/<folder>/ a game's trainer battle sprites are served
+// from.
+export enum TrainerAssetFolder {
+    DiamondPearl = 'diamond-pearl',
+    Platinum = 'platinum',
+}

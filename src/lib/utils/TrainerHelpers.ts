@@ -1,4 +1,5 @@
 import { TRAINER_CLASSES } from '@/lib/data/trainer-classes';
+import { TrainerAssetFolder } from '@/lib/static/enums';
 
 export default class TrainerHelpers {
     // -------------------------------------------------------------------------
@@ -11,9 +12,12 @@ export default class TrainerHelpers {
         return /^\d+$/.test(name) ? displayName : `${displayName} ${name}`;
     }
 
-    /** The sprite path for the trainer of trainerClass, in variant. */
-    static getTrainerSprite(trainerClass: string, variant: string): string {
+    /** The sprite path for the trainer of trainerClass, served from trainerAssetFolder. */
+    static getTrainerSprite(
+        trainerClass: string,
+        trainerAssetFolder: TrainerAssetFolder
+    ): string {
         const { spriteSlug } = TRAINER_CLASSES[trainerClass];
-        return `/${variant}/trainers/${spriteSlug}.png`;
+        return `/trainers/${trainerAssetFolder}/${spriteSlug}.png`;
     }
 }

@@ -1,13 +1,16 @@
 import { StaticImageData } from 'next/image';
 import {
     AiFlag,
+    BadgeAssetFolder,
     BattleMetadata,
     EncounterMethod,
     FieldCondition,
+    GameVersionGroup,
     GrowthRate,
     MapAnchor,
     Nature,
     PokemonStatus,
+    TrainerAssetFolder,
 } from '@/lib/static/enums';
 
 export type StatValues = {
@@ -385,12 +388,21 @@ export type Game = {
     name: string;
     logo: string;
     generation: number;
-    // PokeAPI version group slug for this game, e.g. "platinum". Used to
-    // resolve which of a Pokémon's per-version-group learnsets applies,
-    // since level-up movesets can differ between versions within the same
-    // generation.
-    version: string;
+    // PokeAPI version group slug for this game. Used to resolve which of a
+    // Pokémon's per-version-group learnsets applies, since level-up
+    // movesets can differ between versions within the same generation.
+    version: GameVersionGroup;
     dataSource: GameDataSource;
+    // public/badges/<folder>/ this game's gym-badge icons are served from.
+    // A game that reuses another game's badge art (e.g. a shared region)
+    // points at that game's folder instead of duplicating the files.
+    badgeAssetFolder: BadgeAssetFolder;
+    // public/trainers/<folder>/ this game's trainer battle sprites are
+    // served from, under the same sharing convention as badgeAssetFolder
+    // — kept independent of it since trainer and badge art don't
+    // necessarily reuse together (e.g. a variant could share one but not
+    // the other).
+    trainerAssetFolder: TrainerAssetFolder;
     splits: Split[];
     starters: string[];
     accentColor: string;

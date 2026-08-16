@@ -132,9 +132,11 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                         battle={battle}
                                         isStacked={isStacked}
                                         items={group.items}
+                                        trainerAssetFolder={
+                                            game.trainerAssetFolder
+                                        }
                                         trainerClass={group.trainerClass}
                                         trainerName={group.name}
-                                        variant={variant}
                                     />
                                 ) : (
                                     <TrainerSprite
@@ -142,8 +144,10 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                             group.trainerClass,
                                             group.name
                                         )}
+                                        trainerAssetFolder={
+                                            game.trainerAssetFolder
+                                        }
                                         trainerClass={group.trainerClass}
-                                        variant={variant}
                                     />
                                 )}
                                 <div className={styles.team}>

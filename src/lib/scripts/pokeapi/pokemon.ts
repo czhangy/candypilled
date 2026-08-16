@@ -307,11 +307,11 @@ const downloadSprite = async (
     const spriteResponse = await fetch(spriteUrl);
     const spriteBuffer = Buffer.from(await spriteResponse.arrayBuffer());
 
-    const variantDir = path.join('public', variant.id, 'pokemon');
+    const variantDir = path.join('public', 'pokemon', variant.id);
     fs.mkdirSync(variantDir, { recursive: true });
     fs.writeFileSync(path.join(variantDir, `${slug}.png`), spriteBuffer);
 
-    return `/${variant.id}/pokemon/${slug}.png`;
+    return `/pokemon/${variant.id}/${slug}.png`;
 };
 
 // Sprites double as the curation step: a variety only ends up in pokemon.json

@@ -58,7 +58,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
         (split) => split.name === currentSplitName
     );
     const variant = game.version;
-    const badge = `/${variant}/badges/${StringHelpers.toSlug(currentSplitName ?? '')}.png`;
+    const badge = `/badges/${game.badgeAssetFolder}/${StringHelpers.toSlug(currentSplitName ?? '')}.png`;
     const isSplitCompleted =
         !!currentSplitName && run.completedSplits.includes(currentSplitName);
 
