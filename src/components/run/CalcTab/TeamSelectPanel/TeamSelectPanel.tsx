@@ -84,7 +84,8 @@ const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
     const team = BattleHelpers.getSelectedTeam(
         game,
         selectedBattle,
-        run.starter
+        run.starter,
+        run.gender
     );
     const switchInRanks = getSwitchInRanks(
         team,

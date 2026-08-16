@@ -11,12 +11,13 @@ export default class SplitHelpers {
     static getLevelCap(
         game: Game,
         split: Split,
-        completedSplits: string[]
+        completedSplits: string[],
+        gender: 'male' | 'female' | undefined
     ): number | null {
         if (SplitHelpers.isGameComplete(game, completedSplits)) return null;
 
         const battles = split.locations.flatMap((location) =>
-            BattleHelpers.getBattlesInLocation(location)
+            BattleHelpers.getBattlesInLocation(location, gender)
         );
         const lastBattle = battles[battles.length - 1];
 

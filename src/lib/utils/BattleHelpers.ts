@@ -80,23 +80,41 @@ export default class BattleHelpers {
         );
     }
 
-    /** Every battle in location, excluding those hidden via location or subarea. */
-    static getBattlesInLocation(location: Location): Battle[] {
+    /** Every battle in location for gender, excluding those hidden via location/subarea or restricted to the other gender. */
+    static getBattlesInLocation(
+        location: Location,
+        gender: 'male' | 'female' | undefined
+    ): Battle[] {
         if (location.hideBattles) return [];
 
-        return location.subareas
+        const battles = location.subareas
             ? location.subareas
                   .filter((subarea) => !subarea.hideBattles)
                   .flatMap((subarea) => subarea.battles ?? [])
             : (location.battles ?? []);
+
+        return BattleHelpers.filterByGender(battles, gender);
     }
 
-    /** Every battle in game, in game order. */
-    static getAllBattles(game: Game): Battle[] {
+    /** Every battle in game for gender, in game order. */
+    static getAllBattles(
+        game: Game,
+        gender: 'male' | 'female' | undefined
+    ): Battle[] {
         return game.splits.flatMap((split) =>
             split.locations.flatMap((location) =>
-                BattleHelpers.getBattlesInLocation(location)
+                BattleHelpers.getBattlesInLocation(location, gender)
             )
+        );
+    }
+
+    /** battles restricted to gender: entries with no `gender` always pass, entries with one only pass for a matching run gender. */
+    static filterByGender(
+        battles: Battle[],
+        gender: 'male' | 'female' | undefined
+    ): Battle[] {
+        return battles.filter(
+            (battle) => !battle.gender || battle.gender === gender
         );
     }
 
@@ -104,11 +122,12 @@ export default class BattleHelpers {
     static getSelectedTeam(
         game: Game,
         battleKey: string | undefined,
-        starter: string
+        starter: string,
+        gender: 'male' | 'female' | undefined
     ): BattlePokemon[] {
         if (!battleKey) return [];
 
-        const battle = BattleHelpers.getAllBattles(game).find(
+        const battle = BattleHelpers.getAllBattles(game, gender).find(
             (candidate) => BattleHelpers.getBattleKey(candidate) === battleKey
         );
         return battle

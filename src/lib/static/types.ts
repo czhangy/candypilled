@@ -153,8 +153,8 @@ export type TrainerClass = {
 };
 
 // A condition gating whether a BattleTeam applies to the current run. Add a
-// new variant here for a new kind of run-dependent team (e.g. player
-// gender), matching SplitSaveCondition's discriminated-union shape.
+// new variant here for a new kind of run-dependent team, matching
+// SplitSaveCondition's discriminated-union shape.
 export type BattleTeamCondition = { type: 'starter'; starter: string };
 
 // One possible roster for a trainer. A team with no condition always
@@ -247,6 +247,14 @@ export type Battle = {
     customHeight?: number;
     customWidth?: number;
     fieldCondition?: FieldCondition;
+    // Restricts this marker to runs of the matching gender (Game.
+    // hasGenderSelection) — e.g. a location where the trainer/team fought
+    // is entirely different by gender gets two Battle entries here, each
+    // pointing at its own independent Game.battles entry, rather than one
+    // entry with gender-conditioned team content (that's what
+    // BattleTeamCondition is for — a shared trainer with a divergent
+    // roster — not a wholesale different trainer).
+    gender?: 'male' | 'female';
     metadata: BattleMetadata[];
     x: number;
     y: number;
@@ -416,6 +424,12 @@ export type Game = {
     // necessarily reuse together (e.g. a variant could share one but not
     // the other).
     trainerAssetFolder: TrainerAssetFolder;
+    // Whether choosing the protagonist's gender matters for this game (it
+    // can change more than cosmetics, e.g. which trainer/team a battle
+    // resolves to — see BattleTeamCondition's 'gender' variant). Most games
+    // don't model this; it's only true for a game whose content actually
+    // diverges by gender.
+    hasGenderSelection: boolean;
     splits: Split[];
     starters: string[];
     accentColor: string;
@@ -441,6 +455,8 @@ export type Run = {
     completedSplits: string[];
     hallOfFameCount: number;
     starter: string;
+    // Only set when Game.hasGenderSelection is true for this run's game.
+    gender?: 'male' | 'female';
     caughtPokemon: CaughtPokemon[];
     // Locations whose encounter was used up without catching anything (the
     // Pokémon fled, fainted, etc.), by location name — same key space as

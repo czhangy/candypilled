@@ -443,6 +443,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                                 completedSplits={run.completedSplits}
                                 currentSplitName={currentSplitName}
                                 game={game}
+                                gender={run.gender}
                                 onSelectSplit={handleSplitSelect}
                                 runSplitName={runSplitName}
                             />

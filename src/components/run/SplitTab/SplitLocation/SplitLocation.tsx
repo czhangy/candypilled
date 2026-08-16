@@ -90,13 +90,14 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         subareaIndex: number
     ): Battle | undefined => {
         const subarea = location.subareas?.[subareaIndex];
-        const battles = location.hideBattles
+        const rawBattles = location.hideBattles
             ? []
             : location.subareas
               ? subarea?.hideBattles
                   ? []
                   : (subarea?.battles ?? [])
               : (location.battles ?? []);
+        const battles = BattleHelpers.filterByGender(rawBattles, run.gender);
 
         const queriedBattle = battles.find(
             (battle) => BattleHelpers.getBattleKey(battle) === selectedBattleKey
@@ -118,17 +119,20 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     }[] => {
         const battlesBySubarea = location.subareas
             ? location.subareas.map((subarea, subareaIndex) => ({
-                  battles:
+                  battles: BattleHelpers.filterByGender(
                       location.hideBattles || subarea.hideBattles
                           ? []
                           : (subarea.battles ?? []),
+                      run.gender
+                  ),
                   subareaIndex,
               }))
             : [
                   {
-                      battles: location.hideBattles
-                          ? []
-                          : (location.battles ?? []),
+                      battles: BattleHelpers.filterByGender(
+                          location.hideBattles ? [] : (location.battles ?? []),
+                          run.gender
+                      ),
                       subareaIndex: 0,
                   },
               ];
@@ -279,10 +283,12 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         section = {
             map: subarea.map,
             mapAnchor: subarea.mapAnchor,
-            battles:
+            battles: BattleHelpers.filterByGender(
                 location.hideBattles || subarea.hideBattles
                     ? []
                     : (subarea.battles ?? []),
+                run.gender
+            ),
             encounters: subarea.encountersKey
                 ? game.encounters[subarea.encountersKey]
                 : undefined,
@@ -291,7 +297,10 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         section = {
             map: location.map,
             mapAnchor: location.mapAnchor,
-            battles: location.hideBattles ? [] : (location.battles ?? []),
+            battles: BattleHelpers.filterByGender(
+                location.hideBattles ? [] : (location.battles ?? []),
+                run.gender
+            ),
             encounters: location.encountersKey
                 ? game.encounters[location.encountersKey]
                 : undefined,

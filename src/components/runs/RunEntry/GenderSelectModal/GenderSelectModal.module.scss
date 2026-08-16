@@ -1,0 +1,35 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.gender-select-modal {
+    display: flex;
+    gap: 0.75rem;
+
+    .gender {
+        @include mono-label;
+
+        background: none;
+        border: 1px solid $border-subtle;
+        border-radius: 0.5rem;
+        color: $text-mid;
+        cursor: pointer;
+        flex: 1;
+        font-size: 0.9rem;
+        letter-spacing: 0.03em;
+        padding: 0.75rem;
+        text-transform: uppercase;
+        transition:
+            background 0.2s ease,
+            border-color 0.2s ease;
+
+        @media (hover: hover) {
+            &:hover {
+                border-color: var(--accent-color);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+    }
+}

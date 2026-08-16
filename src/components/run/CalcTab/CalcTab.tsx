@@ -158,7 +158,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
     // The first trainer in game order, defaulted to whenever no battle has
     // been explicitly selected yet.
     const getFirstBattleKey = (): string | undefined => {
-        const firstBattle = BattleHelpers.getAllBattles(game)[0];
+        const firstBattle = BattleHelpers.getAllBattles(game, run.gender)[0];
         return firstBattle
             ? BattleHelpers.getBattleKey(firstBattle)
             : undefined;
@@ -462,7 +462,8 @@ const CalcTab: React.FC<CalcTabProps> = ({
     const team = BattleHelpers.getSelectedTeam(
         game,
         effectiveSelectedBattle,
-        run.starter
+        run.starter,
+        run.gender
     );
     const mon = team[Number(selectedMemberIndex)];
 
@@ -971,6 +972,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 />
                 <BattleSelectPanel
                     game={game}
+                    gender={run.gender}
                     onSelectBattle={onSelectBattle}
                     selectedBattle={effectiveSelectedBattle}
                 />

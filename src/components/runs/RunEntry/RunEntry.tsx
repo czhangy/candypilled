@@ -15,6 +15,7 @@ import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
 import DataModal from './DataModal/DataModal';
+import GenderSelectModal from './GenderSelectModal/GenderSelectModal';
 import styles from './RunEntry.module.scss';
 import StarterSelectModal from './StarterSelectModal/StarterSelectModal';
 
@@ -36,7 +37,11 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
 
     const [isConfirmOpen, setIsConfirmOpen] = useState(false);
     const [isDataModalOpen, setIsDataModalOpen] = useState(false);
+    const [isGenderSelectOpen, setIsGenderSelectOpen] = useState(false);
     const [isStarterSelectOpen, setIsStarterSelectOpen] = useState(false);
+    const [selectedGender, setSelectedGender] = useState<
+        'male' | 'female' | undefined
+    >(undefined);
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -61,12 +66,16 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const startNewRun = (starter: CaughtPokemon): void => {
+    const startNewRun = (
+        starter: CaughtPokemon,
+        gender: 'male' | 'female' | undefined
+    ): void => {
         const newRun: Run = {
             attempt: (run?.attempt ?? 0) + 1,
             completedSplits: [],
             hallOfFameCount: run?.hallOfFameCount ?? 0,
             starter: starter.slug,
+            ...(gender && { gender }),
             caughtPokemon: [starter],
             missedLocations: [],
             wipe: false,
@@ -74,6 +83,16 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
 
         LocalStorageHelpers.saveRun(game, newRun);
         router.push(runUrl);
+    };
+
+    // The first step of starting a new run: gender selection when this
+    // game's content depends on it, otherwise straight to starter select.
+    const beginRunCreation = (): void => {
+        if (game.hasGenderSelection) {
+            setIsGenderSelectOpen(true);
+        } else {
+            setIsStarterSelectOpen(true);
+        }
     };
 
     // -------------------------------------------------------------------------
@@ -88,7 +107,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         if (run) {
             setIsConfirmOpen(true);
         } else {
-            setIsStarterSelectOpen(true);
+            beginRunCreation();
         }
     };
 
@@ -97,7 +116,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     };
 
     const handleConfirmNewRun = (): void => {
-        setIsStarterSelectOpen(true);
+        beginRunCreation();
     };
 
     const handleDataClick = (): void => {
@@ -113,12 +132,22 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         HallOfFameHelpers.deleteEntriesForGame(game);
     };
 
+    const handleGenderSelectClose = (): void => {
+        setIsGenderSelectOpen(false);
+    };
+
+    const handleGenderSelect = (gender: 'male' | 'female'): void => {
+        setSelectedGender(gender);
+        setIsGenderSelectOpen(false);
+        setIsStarterSelectOpen(true);
+    };
+
     const handleStarterSelectClose = (): void => {
         setIsStarterSelectOpen(false);
     };
 
     const handleStarterSelect = (starter: CaughtPokemon): void => {
-        startNewRun(starter);
+        startNewRun(starter, selectedGender);
     };
 
     // -------------------------------------------------------------------------
@@ -218,6 +247,13 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     hasExistingRun={!!run}
                     onClose={handleDataModalClose}
                     onReset={handleReset}
+                />
+            )}
+            {isGenderSelectOpen && (
+                <GenderSelectModal
+                    game={game}
+                    onClose={handleGenderSelectClose}
+                    onSelect={handleGenderSelect}
                 />
             )}
             {isStarterSelectOpen && (
