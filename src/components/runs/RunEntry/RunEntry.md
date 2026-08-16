@@ -9,8 +9,8 @@ shown. A "Continue" button
 navigates to the game's dedicated run page (only shown if a run already
 exists), a "New" button starts a fresh attempt for the game, confirming
 with the user first if a run is already in progress, then prompting for
-the protagonist's gender (only for a game where `Game.hasGenderSelection`
-is true) followed by a starter before the run is created, and a "Data"
+the protagonist's gender (only for a game where `Game.genders` is set)
+followed by a starter before the run is created, and a "Data"
 button opens a modal offering the game's reset action (only available
 once a run already exists).
 
@@ -36,7 +36,7 @@ once a run already exists).
 - **On "Continue" click** — navigates to the game's run page (`runUrl`)
 - **On "New" click** — if a run already exists, opens a confirmation modal;
   otherwise begins run creation directly (gender selection first if
-  `game.hasGenderSelection`, otherwise straight to starter selection)
+  `game.genders` is set, otherwise straight to starter selection)
 - **On confirmation modal close/cancel** — closes the modal without
   starting a new run; the Cancel button requests the modal's animated
   close directly, without going through this handler

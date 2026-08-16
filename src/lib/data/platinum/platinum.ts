@@ -26,7 +26,6 @@ const PLATINUM: Game = {
     dataSource: VANILLA_DATA_SOURCE,
     badgeAssetFolder: BadgeAssetFolder.Sinnoh,
     trainerAssetFolder: TrainerAssetFolder.Platinum,
-    hasGenderSelection: false,
     starters: ['turtwig', 'chimchar', 'piplup'],
     accentColor: '#FFD500',
     encounters: ENCOUNTERS,

@@ -88,7 +88,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // The first step of starting a new run: gender selection when this
     // game's content depends on it, otherwise straight to starter select.
     const beginRunCreation = (): void => {
-        if (game.hasGenderSelection) {
+        if (game.genders) {
             setIsGenderSelectOpen(true);
         } else {
             setIsStarterSelectOpen(true);
@@ -249,9 +249,10 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     onReset={handleReset}
                 />
             )}
-            {isGenderSelectOpen && (
+            {isGenderSelectOpen && game.genders && (
                 <GenderSelectModal
                     game={game}
+                    genders={game.genders}
                     onClose={handleGenderSelectClose}
                     onSelect={handleGenderSelect}
                 />

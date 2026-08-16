@@ -27,7 +27,12 @@ const RENEGADE_PLATINUM: Game = {
     // byte-identical) rather than duplicating them under its own folder.
     badgeAssetFolder: BadgeAssetFolder.Sinnoh,
     trainerAssetFolder: TrainerAssetFolder.Platinum,
-    hasGenderSelection: true,
+    // Reuses Platinum's Lucas/Dawn trainer sprites as the protagonist
+    // options.
+    genders: {
+        male: '/trainers/platinum/lucas.png',
+        female: '/trainers/platinum/dawn.png',
+    },
     // Confirmed reuse of Platinum's starters (per explicit direction, not
     // inferred).
     starters: ['turtwig', 'chimchar', 'piplup'],

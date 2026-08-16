@@ -165,18 +165,18 @@ Reference implementation: `src/lib/data/platinum/`.
    below) — a split isn't fully authored without one.
 8. **Assemble the `Game`** in `<slug>.ts` (name, logo, generation, `version`
    = PokeAPI version-group slug, `dataSource`, `badgeAssetFolder`,
-   `trainerAssetFolder`, `hasGenderSelection`, starters, accentColor,
-   encounters, battles, metLocationById, wipeMessages, splits), add
-   `public/logos/<slug>.png`, and add the game to the `GAMES` array in
-   `src/lib/data/games.ts`. `version`, `badgeAssetFolder`, and
-   `trainerAssetFolder` are typed as enums (`GameVersionGroup`,
+   `trainerAssetFolder`, `genders` (if this game needs it), starters,
+   accentColor, encounters, battles, metLocationById, wipeMessages,
+   splits), add `public/logos/<slug>.png`, and add the game to the
+   `GAMES` array in `src/lib/data/games.ts`. `version`, `badgeAssetFolder`,
+   and `trainerAssetFolder` are typed as enums (`GameVersionGroup`,
    `BadgeAssetFolder`, `TrainerAssetFolder` in `src/lib/static/enums.ts`)
    rather than raw strings — add a new member for a genuinely new version
    group or asset folder, or reuse an existing member when this game
    shares one. See "Sharing public/ assets across games" below before
    deciding whether `badgeAssetFolder`/`trainerAssetFolder` point at a new
    folder or an existing one, and "Divergent teams and battles" below for
-   `hasGenderSelection`.
+   `genders`.
 
 ## Sharing public/ assets across games
 
@@ -267,12 +267,13 @@ resolves to one shared trainer's info, never a different trainer
 entirely).
 
 If a game needs gender-dependent content at all (either mechanism, or
-both), also set `Game.hasGenderSelection: true` — this turns on the
-gender-selection modal in the new-run flow (`RunEntry`'s
-`GenderSelectModal`, shown before starter selection) and is what makes
-`Run.gender` populated for that game's runs. Leave it `false` (the
-default for every game onboarded so far) when gender doesn't affect
-anything in that game.
+both), also set `Game.genders: { male: string; female: string }` — each
+value is a sprite path, the protagonist artwork shown as a clickable
+option in the gender-selection modal in the new-run flow (`RunEntry`'s
+`GenderSelectModal`, shown before starter selection), and setting this
+field at all is what makes `Run.gender` populated for that game's runs.
+Omit the field entirely (the default for every game onboarded so far)
+when gender doesn't affect anything in that game.
 
 ## Deriving a split's `saveCondition`
 

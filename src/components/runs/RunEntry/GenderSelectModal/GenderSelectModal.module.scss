@@ -3,33 +3,57 @@
 
 .gender-select-modal {
     display: flex;
-    gap: 0.75rem;
+    flex-direction: column;
+    gap: 1.5rem;
 
-    .gender {
-        @include mono-label;
+    .genders {
+        display: flex;
+        gap: 0.75rem;
 
-        background: none;
-        border: 1px solid $border-subtle;
-        border-radius: 0.5rem;
-        color: $text-mid;
-        cursor: pointer;
-        flex: 1;
-        font-size: 0.9rem;
-        letter-spacing: 0.03em;
-        padding: 0.75rem;
-        text-transform: uppercase;
-        transition:
-            background 0.2s ease,
-            border-color 0.2s ease;
+        .gender {
+            @include mono-label;
 
-        @media (hover: hover) {
-            &:hover {
+            background: none;
+            border: 1px solid $border-subtle;
+            border-radius: 0.5rem;
+            color: $text-mid;
+            cursor: pointer;
+            flex: 1;
+            font-size: 0.9rem;
+            letter-spacing: 0.03em;
+            padding: 0.75rem;
+            text-transform: uppercase;
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease;
+
+            @media (hover: hover) {
+                &:hover {
+                    border-color: var(--accent-color);
+                }
+            }
+
+            &--selected {
+                background: color-mix(
+                    in srgb,
+                    var(--accent-color) 35%,
+                    transparent
+                );
                 border-color: var(--accent-color);
             }
-        }
 
-        @media (prefers-reduced-motion: reduce) {
-            transition: none;
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
+        }
+    }
+
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+
+        .select {
+            @include solid-accent-button;
         }
     }
 }
