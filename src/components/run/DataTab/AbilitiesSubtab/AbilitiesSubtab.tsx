@@ -1,6 +1,7 @@
 import { useSyncExternalStore } from 'react';
 import SearchableList from '@/components/common/SearchableList/SearchableList';
 import SpeciesListPanel from '@/components/run/DataTab/SpeciesListPanel/SpeciesListPanel';
+import { ABILITIES } from '@/lib/data/abilities';
 import { Game } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -39,7 +40,7 @@ const AbilitiesSubtab: React.FC<AbilitiesSubtabProps> = ({
         game,
         settings['show-national-dex-data'] ?? false
     );
-    const availableAbilities = Object.values(game.dataSource.abilities)
+    const availableAbilities = Object.values(ABILITIES)
         .filter(
             (ability) =>
                 ability.introducedInGeneration <= game.generation &&
@@ -77,7 +78,6 @@ const AbilitiesSubtab: React.FC<AbilitiesSubtabProps> = ({
             />
             <AbilityDetail
                 abilitySlug={effectiveAbility}
-                dataSource={game.dataSource}
                 generation={game.generation}
             />
             <SpeciesListPanel

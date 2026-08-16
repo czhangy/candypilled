@@ -1,8 +1,5 @@
-import {
-    AbilityData,
-    AbilityValuesByGeneration,
-    GameDataSource,
-} from '@/lib/static/types';
+import { ABILITIES } from '@/lib/data/abilities';
+import { AbilityData, AbilityValuesByGeneration } from '@/lib/static/types';
 import GenerationHelpers from '@/lib/utils/GenerationHelpers';
 
 export default class AbilityHelpers {
@@ -10,53 +7,35 @@ export default class AbilityHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    /** The ability data for `slug` in dataSource, or undefined if no ability matches. */
-    static getAbilityData(
-        dataSource: GameDataSource,
-        slug: string
-    ): AbilityData | undefined {
-        return dataSource.abilities[slug];
+    /** The ability data for `slug`, or undefined if no ability matches. */
+    static getAbilityData(slug: string): AbilityData | undefined {
+        return ABILITIES[slug];
     }
 
-    /** The ability data for PokeAPI's numeric `id` in dataSource, or undefined if no ability matches. */
-    static getAbilityById(
-        dataSource: GameDataSource,
-        id: number
-    ): AbilityData | undefined {
-        return Object.values(dataSource.abilities).find(
-            (ability) => ability.id === id
-        );
+    /** The ability data for PokeAPI's numeric `id`, or undefined if no ability matches. */
+    static getAbilityById(id: number): AbilityData | undefined {
+        return Object.values(ABILITIES).find((ability) => ability.id === id);
     }
 
-    /** Every ability in dataSource introduced by generation or earlier, sorted alphabetically by display name. */
-    static getAllAbilities(
-        dataSource: GameDataSource,
-        generation: number
-    ): string[] {
-        return Object.values(dataSource.abilities)
+    /** Every ability introduced by generation or earlier, sorted alphabetically by display name. */
+    static getAllAbilities(generation: number): string[] {
+        return Object.values(ABILITIES)
             .filter((ability) => ability.introducedInGeneration <= generation)
             .map((ability) => ability.name)
             .sort((a, b) => a.localeCompare(b));
     }
 
-    /** Whether `slug` in dataSource is curated as a dangerous ability. */
-    static isDangerousAbility(
-        dataSource: GameDataSource,
-        slug: string
-    ): boolean {
-        return (
-            AbilityHelpers.getAbilityData(dataSource, slug)?.isDangerous ??
-            false
-        );
+    /** Whether `slug` is curated as a dangerous ability. */
+    static isDangerousAbility(slug: string): boolean {
+        return AbilityHelpers.getAbilityData(slug)?.isDangerous ?? false;
     }
 
-    /** The values `slug` had as of `generation` in dataSource, or undefined if no ability matches. */
+    /** The values `slug` had as of `generation`, or undefined if no ability matches. */
     static getAbilityForGeneration(
-        dataSource: GameDataSource,
         slug: string,
         generation: number
     ): AbilityValuesByGeneration | undefined {
-        const ability = AbilityHelpers.getAbilityData(dataSource, slug);
+        const ability = AbilityHelpers.getAbilityData(slug);
         if (!ability) return undefined;
 
         return GenerationHelpers.resolveGeneration(

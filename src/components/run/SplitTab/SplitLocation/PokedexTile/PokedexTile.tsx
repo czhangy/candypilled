@@ -255,7 +255,6 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
             <PokemonSummary
                 abilityEntries={abilityEntries}
                 catchRate={catchRate}
-                dataSource={game.dataSource}
                 interactive={rest.mode !== 'choose'}
                 onSelectAbility={onSelectAbility}
                 placeholder={`Select a Pokémon to view its details or ${rest.mode} it`}

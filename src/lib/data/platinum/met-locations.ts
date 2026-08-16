@@ -1,6 +1,6 @@
 // Sinnoh met-location index -> display name (Platinum's range, IDs 0-125),
 // per Bulbapedia's "List of locations by index number in Generation IV".
-export const PLATINUM_MET_LOCATIONS: Record<number, string> = {
+export const MET_LOCATIONS: Record<number, string> = {
     0: 'Mystery Zone',
     1: 'Twinleaf Town',
     2: 'Sandgem Town',
@@ -70,7 +70,7 @@ export const PLATINUM_MET_LOCATIONS: Record<number, string> = {
     88: 'Valor Cavern',
     89: 'Acuity Cavern',
     90: 'Jubilife TV',
-    91: 'Pokétch Co.',
+    91: 'Pokétch Company',
     92: 'GTS',
     93: "Trainers' School",
     94: 'Mining Museum',
@@ -80,7 +80,7 @@ export const PLATINUM_MET_LOCATIONS: Record<number, string> = {
     98: 'Poffin House',
     99: 'Foreign Building',
     100: 'Pokémon Day Care',
-    101: 'Veilstone Store',
+    101: 'Veilstone Department Store',
     102: 'Game Corner',
     103: 'Canalave Library',
     104: 'Vista Lighthouse',

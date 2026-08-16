@@ -1,16 +1,14 @@
-import { AbilityEntry, GameDataSource } from '@/lib/static/types';
+import { AbilityEntry } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import styles from './AbilitiesList.module.scss';
 
 type AbilitiesListProps = {
-    dataSource: GameDataSource;
     entries: AbilityEntry[];
     interactive: boolean;
     onSelectAbility: (slug: string) => void;
 };
 
 const AbilitiesList: React.FC<AbilitiesListProps> = ({
-    dataSource,
     entries,
     interactive,
     onSelectAbility,
@@ -31,8 +29,8 @@ const AbilitiesList: React.FC<AbilitiesListProps> = ({
         <div className={styles['abilities-list']}>
             {entries.map((entry) => {
                 const name =
-                    AbilityHelpers.getAbilityData(dataSource, entry.slug)
-                        ?.name ?? entry.slug;
+                    AbilityHelpers.getAbilityData(entry.slug)?.name ??
+                    entry.slug;
 
                 return interactive ? (
                     <button

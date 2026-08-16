@@ -7,7 +7,7 @@ import {
 import { Game } from '@/lib/static/types';
 import { BATTLES } from './battles';
 import { ENCOUNTERS } from './encounters';
-import { PLATINUM_MET_LOCATIONS } from './met-locations';
+import { MET_LOCATIONS } from './met-locations';
 import BYRON from './splits/byron';
 import CANDICE from './splits/candice';
 import CYNTHIA from './splits/cynthia';
@@ -31,7 +31,7 @@ const PLATINUM: Game = {
     accentColor: '#FFD500',
     encounters: ENCOUNTERS,
     battles: BATTLES,
-    metLocationById: PLATINUM_MET_LOCATIONS,
+    metLocationById: MET_LOCATIONS,
     wipeMessages: [
         'Roark is calling.',
         'Maybe a monkey run next time.',

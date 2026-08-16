@@ -394,14 +394,14 @@ export type Split = {
     saveCondition: SplitSaveCondition;
 };
 
-// The species/move/ability/item records a game's data pulls from. Every
+// The species/move/item records a game's data pulls from. Every
 // unmodified game shares the same vanilla PokeAPI-sourced records; a game
 // whose data diverges from vanilla (e.g. a ROM hack) points at its own
-// independent set instead.
+// independent set instead. Abilities aren't overridden per-game yet —
+// AbilityHelpers reads the global ABILITIES constant directly.
 export type GameDataSource = {
     pokemon: Record<string, PokemonData>;
     moves: Record<string, MoveData>;
-    abilities: Record<string, AbilityData>;
     items: Record<string, ItemData>;
 };
 

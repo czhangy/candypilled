@@ -6,11 +6,10 @@ growing the page, with a styled scrollbar matching the rest of the app.
 
 ## Props
 
-| Prop          | Type             | Required | Default | Description                                                    |
-| ------------- | ---------------- | -------- | ------- | -------------------------------------------------------------- |
-| `abilitySlug` | `string`         | Yes      | -       | The selected ability's slug                                    |
-| `dataSource`  | `GameDataSource` | Yes      | -       | The game's ability dataset, used to resolve the ability's data |
-| `generation`  | `number`         | Yes      | -       | The game's generation, used to resolve the ability's values    |
+| Prop          | Type     | Required | Default | Description                                                 |
+| ------------- | -------- | -------- | ------- | ----------------------------------------------------------- |
+| `abilitySlug` | `string` | Yes      | -       | The selected ability's slug                                 |
+| `generation`  | `number` | Yes      | -       | The game's generation, used to resolve the ability's values |
 
 ## Computations
 

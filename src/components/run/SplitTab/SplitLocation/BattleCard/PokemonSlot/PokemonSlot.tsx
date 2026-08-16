@@ -94,7 +94,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     const types = displaySlug ? getTypes(displaySlug) : [];
     const abilitySlug = pokemon?.ability;
     const ability = abilitySlug
-        ? AbilityHelpers.getAbilityData(dataSource, abilitySlug)?.name
+        ? AbilityHelpers.getAbilityData(abilitySlug)?.name
         : undefined;
     const highlightDangerous =
         !hofDisplay && !(settings['hide-dangerous'] ?? false);
@@ -260,7 +260,6 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                                     styles['ability-button--readonly'],
                                     highlightDangerous &&
                                         AbilityHelpers.isDangerousAbility(
-                                            dataSource,
                                             abilitySlug as string
                                         ) &&
                                         styles['ability-button--dangerous'],
@@ -276,7 +275,6 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                                     styles['ability-button'],
                                     highlightDangerous &&
                                         AbilityHelpers.isDangerousAbility(
-                                            dataSource,
                                             abilitySlug as string
                                         ) &&
                                         styles['ability-button--dangerous'],

@@ -1,13 +1,12 @@
 import Image from 'next/image';
 import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
-import { AbilityEntry, GameDataSource, PokemonData } from '@/lib/static/types';
+import { AbilityEntry, PokemonData } from '@/lib/static/types';
 import AbilitiesList from './AbilitiesList/AbilitiesList';
 import styles from './PokemonSummary.module.scss';
 
 type PokemonSummaryProps = {
     abilityEntries: AbilityEntry[];
     catchRate?: number;
-    dataSource: GameDataSource;
     interactive: boolean;
     onSelectAbility: (slug: string) => void;
     placeholder?: string;
@@ -19,7 +18,6 @@ type PokemonSummaryProps = {
 const PokemonSummary: React.FC<PokemonSummaryProps> = ({
     abilityEntries,
     catchRate,
-    dataSource,
     interactive,
     onSelectAbility,
     placeholder,
@@ -82,7 +80,6 @@ const PokemonSummary: React.FC<PokemonSummaryProps> = ({
                                         Abilities
                                     </span>
                                     <AbilitiesList
-                                        dataSource={dataSource}
                                         entries={abilityEntries}
                                         interactive={interactive}
                                         onSelectAbility={onSelectAbility}

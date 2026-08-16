@@ -13,7 +13,6 @@ shown instead.
 | ----------------- | ------------------------ | -------- | ------- | ------------------------------------------------------------------------------ |
 | `abilityEntries`  | `AbilityEntry[]`         | Yes      | -       | The selected Pokémon's abilities, passed to `AbilitiesList`                    |
 | `catchRate`       | `number`                 | No       | -       | The selected Pokémon's catch rate; the catch rate section is hidden when unset |
-| `dataSource`      | `GameDataSource`         | Yes      | -       | The game's ability dataset, forwarded to `AbilitiesList`                       |
 | `interactive`     | `boolean`                | Yes      | -       | Forwarded to `AbilitiesList`, controlling whether its entries are clickable    |
 | `onSelectAbility` | `(slug: string) => void` | Yes      | -       | Forwarded to `AbilitiesList`, called when an ability is clicked                |
 | `placeholder`     | `string`                 | No       | -       | The message shown in place of the summary when no Pokémon is selected          |

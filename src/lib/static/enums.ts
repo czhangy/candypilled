@@ -131,6 +131,7 @@ export enum GrowthRate {
 export enum GameVersionGroup {
     DiamondPearl = 'diamond-pearl',
     Platinum = 'platinum',
+    RenegadePlatinum = 'renegade-platinum',
 }
 
 // The public/badges/<folder>/ a game's gym-badge icons are served from.

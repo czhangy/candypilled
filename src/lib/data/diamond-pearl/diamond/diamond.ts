@@ -1,6 +1,6 @@
 import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
 import { BATTLES } from '@/lib/data/diamond-pearl/battles';
-import { DIAMOND_PEARL_MET_LOCATIONS } from '@/lib/data/diamond-pearl/met-locations';
+import { MET_LOCATIONS } from '@/lib/data/diamond-pearl/met-locations';
 import BYRON from '@/lib/data/diamond-pearl/splits/byron';
 import CANDICE from '@/lib/data/diamond-pearl/splits/candice';
 import CYNTHIA from '@/lib/data/diamond-pearl/splits/cynthia';
@@ -37,7 +37,7 @@ const DIAMOND: Game = {
     accentColor: '#89A6D9',
     encounters: ENCOUNTERS,
     battles: BATTLES,
-    metLocationById: DIAMOND_PEARL_MET_LOCATIONS,
+    metLocationById: MET_LOCATIONS,
     wipeMessages: [
         'Roark is calling.',
         'Maybe a monkey run next time.',

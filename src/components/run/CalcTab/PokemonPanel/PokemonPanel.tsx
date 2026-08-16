@@ -140,7 +140,6 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
         game.generation
     ).map((pokemon) => ({ label: pokemon.name, value: pokemon.slug }));
     const abilityOptions: DropdownOption[] = AbilityHelpers.getAllAbilities(
-        game.dataSource,
         game.generation
     ).map((name) => ({ label: name, value: name }));
     const natureOptions: DropdownOption[] = Object.values(Nature)

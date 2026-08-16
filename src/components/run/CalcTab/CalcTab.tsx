@@ -616,10 +616,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
             type: 'LOAD',
             abilityName:
                 (caught.ability &&
-                    AbilityHelpers.getAbilityData(
-                        game.dataSource,
-                        caught.ability
-                    )?.name) ??
+                    AbilityHelpers.getAbilityData(caught.ability)?.name) ??
                 caught.ability ??
                 '',
             evs: StatHelpers.normalizeStats(caught.evs, 0),
@@ -658,8 +655,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
             type: 'LOAD',
             abilityName:
                 (mon.ability &&
-                    AbilityHelpers.getAbilityData(game.dataSource, mon.ability)
-                        ?.name) ??
+                    AbilityHelpers.getAbilityData(mon.ability)?.name) ??
                 mon.ability ??
                 '',
             evs: StatHelpers.normalizeStats(mon.evs, 0),
@@ -758,8 +754,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
             type: 'SET_SPECIES',
             abilityName:
                 (abilitySlug &&
-                    AbilityHelpers.getAbilityData(game.dataSource, abilitySlug)
-                        ?.name) ??
+                    AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
                 abilitySlug ??
                 '',
             gender: getSpeciesDefaultGender(slug),
@@ -841,8 +836,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
             type: 'SET_SPECIES',
             abilityName:
                 (abilitySlug &&
-                    AbilityHelpers.getAbilityData(game.dataSource, abilitySlug)
-                        ?.name) ??
+                    AbilityHelpers.getAbilityData(abilitySlug)?.name) ??
                 abilitySlug ??
                 '',
             gender: getSpeciesDefaultGender(slug),

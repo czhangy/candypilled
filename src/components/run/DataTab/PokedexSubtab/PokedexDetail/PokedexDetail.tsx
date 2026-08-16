@@ -128,7 +128,6 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                         <PokemonSummary
                             abilityEntries={abilityEntries}
                             catchRate={catchRate}
-                            dataSource={game.dataSource}
                             interactive
                             onSelectAbility={onSelectAbility}
                             pokemon={pokemon}

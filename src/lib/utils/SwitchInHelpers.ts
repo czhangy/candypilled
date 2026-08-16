@@ -409,8 +409,7 @@ export default class SwitchInHelpers {
         return {
             abilityName:
                 (pokemon.ability &&
-                    AbilityHelpers.getAbilityData(dataSource, pokemon.ability)
-                        ?.name) ??
+                    AbilityHelpers.getAbilityData(pokemon.ability)?.name) ??
                 pokemon.ability ??
                 '',
             boosts: {},

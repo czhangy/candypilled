@@ -234,9 +234,7 @@ export default class Gen4SaveParser {
 
         const experience = canonical.getUint32(GROWTH_OFFSET + 0x08, true);
         const abilityId = canonical.getUint8(GROWTH_OFFSET + 0x0d);
-        const ability =
-            AbilityHelpers.getAbilityById(game.dataSource, abilityId)?.slug ??
-            '';
+        const ability = AbilityHelpers.getAbilityById(abilityId)?.slug ?? '';
 
         const evs: StatValues = {
             hp: canonical.getUint8(GROWTH_OFFSET + 0x10),
