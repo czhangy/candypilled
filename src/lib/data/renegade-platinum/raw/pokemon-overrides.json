@@ -87221,6 +87221,37 @@
                     }
                 ]
             }
+        ],
+        "evolutionLine": [
+            {
+                "fromGeneration": 4,
+                "line": {
+                    "slug": "budew",
+                    "evolvesTo": [
+                        {
+                            "slug": "roselia",
+                            "methods": [
+                                {
+                                    "trigger": "level-up",
+                                    "minHappiness": 220
+                                }
+                            ],
+                            "evolvesTo": [
+                                {
+                                    "slug": "roserade",
+                                    "methods": [
+                                        {
+                                            "trigger": "use-item",
+                                            "item": "shiny-stone"
+                                        }
+                                    ],
+                                    "evolvesTo": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
         ]
     },
     "gulpin": {
@@ -99973,6 +100004,26 @@
                         "method": "tutor"
                     }
                 ]
+            }
+        ],
+        "evolutionLine": [
+            {
+                "fromGeneration": 4,
+                "line": {
+                    "slug": "chingling",
+                    "evolvesTo": [
+                        {
+                            "slug": "chimecho",
+                            "methods": [
+                                {
+                                    "trigger": "level-up",
+                                    "minHappiness": 220
+                                }
+                            ],
+                            "evolvesTo": []
+                        }
+                    ]
+                }
             }
         ]
     },
@@ -114048,6 +114099,37 @@
                     }
                 ]
             }
+        ],
+        "evolutionLine": [
+            {
+                "fromGeneration": 4,
+                "line": {
+                    "slug": "budew",
+                    "evolvesTo": [
+                        {
+                            "slug": "roselia",
+                            "methods": [
+                                {
+                                    "trigger": "level-up",
+                                    "minHappiness": 220
+                                }
+                            ],
+                            "evolvesTo": [
+                                {
+                                    "slug": "roserade",
+                                    "methods": [
+                                        {
+                                            "trigger": "use-item",
+                                            "item": "shiny-stone"
+                                        }
+                                    ],
+                                    "evolvesTo": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
         ]
     },
     "roserade": {
@@ -114257,6 +114339,37 @@
                         "method": "tutor"
                     }
                 ]
+            }
+        ],
+        "evolutionLine": [
+            {
+                "fromGeneration": 4,
+                "line": {
+                    "slug": "budew",
+                    "evolvesTo": [
+                        {
+                            "slug": "roselia",
+                            "methods": [
+                                {
+                                    "trigger": "level-up",
+                                    "minHappiness": 220
+                                }
+                            ],
+                            "evolvesTo": [
+                                {
+                                    "slug": "roserade",
+                                    "methods": [
+                                        {
+                                            "trigger": "use-item",
+                                            "item": "shiny-stone"
+                                        }
+                                    ],
+                                    "evolvesTo": []
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
         ]
     },
@@ -121729,6 +121842,26 @@
                     }
                 ]
             }
+        ],
+        "evolutionLine": [
+            {
+                "fromGeneration": 4,
+                "line": {
+                    "slug": "chingling",
+                    "evolvesTo": [
+                        {
+                            "slug": "chimecho",
+                            "methods": [
+                                {
+                                    "trigger": "level-up",
+                                    "minHappiness": 220
+                                }
+                            ],
+                            "evolvesTo": []
+                        }
+                    ]
+                }
+            }
         ]
     },
     "stunky": {
@@ -129028,12 +129161,6 @@
         ]
     },
     "snover": {
-        "types": [
-            {
-                "fromGeneration": 4,
-                "types": ["ice", "grass"]
-            }
-        ],
         "abilities": [
             {
                 "fromGeneration": 4,
@@ -129287,15 +129414,15 @@
                     }
                 ]
             }
-        ]
-    },
-    "abomasnow": {
+        ],
         "types": [
             {
                 "fromGeneration": 4,
                 "types": ["ice", "grass"]
             }
-        ],
+        ]
+    },
+    "abomasnow": {
         "abilities": [
             {
                 "fromGeneration": 4,
@@ -129601,6 +129728,12 @@
                         "method": "tutor"
                     }
                 ]
+            }
+        ],
+        "types": [
+            {
+                "fromGeneration": 4,
+                "types": ["ice", "grass"]
             }
         ]
     },

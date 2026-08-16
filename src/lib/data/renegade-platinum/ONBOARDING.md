@@ -758,6 +758,84 @@ tinted-lens}`, but the sheet lists them in the opposite order for
   table below (encounters, locations, battles, etc.) are unblocked to
   start whenever the user wants to move on to them.
 
+## Post-Phase-1 evolution cross-check (2026-08-16)
+
+- **After all 505 species were done, cross-checked every evolutionLine
+  override against the EVOLUTiON/TYPE/MOVES tab's own dedicated evolution
+  changelog** (gid `2098433376`, fetched as CSV — this tab is small, ~39
+  rows total, not truncation-prone like STATS/LEARNSETS). This tab is the
+  authoritative "here's every evolution change" list, as opposed to the
+  per-species STATS-tab `(!)` annotations + real-Pokémon-knowledge
+  approach used to derive them originally. **34 of 36 evolution chains
+  matched exactly** — good confirmation the STATS-tab-driven approach was
+  sound.
+- **Two real gaps found and fixed**: **Budew→Roselia→Roserade** (Budew
+  evolves via friendship, Roselia→Roserade via Shiny Stone unchanged from
+  real vanilla mechanics) and **Chingling→Chimecho** (friendship) were
+  never written at all — both species existed in already-completed
+  batches (Roselia/Chimecho in batch 7, Budew/Roserade/Chingling in batch 8) but their evolution info was simply missed since neither showed a
+  `(!)` marker distinctive enough to catch during those batches' scans
+  (both use the generic "when happy anytime" phrasing without an
+  explicit level number, which is easy to skim past). Fixed as cross-batch
+  patches, same mechanism as every other multi-batch evolution chain.
+- **Takeaway for any future audit pass**: species-by-species scanning for
+  `(!)` markers is good but not airtight — **a dedicated changelog tab,
+  when one exists, is worth cross-checking against even after a phase is
+  "done."** This one only took a single fetch since the tab is compact.
+  Consider doing the same cross-check for Phase 2 (moves) using this same
+  tab's TYPE CHANGES and MOVE CHANGES sections once that phase is
+  underway — and possibly re-scan the STATS tab's evolution column for
+  any other "when happy anytime" species that might have been passed over
+  the same way Budew/Chingling were.
+- Confirmed via this tab: **all Fairy-type additions across every batch
+  are accounted for** — the tab lists 13 explicit Pokémon Type Changes
+  entries and 5 more in a second sub-list, matching what was already
+  written across batches 3/5/6/7 (Clefairy/Clefable, Ninetales,
+  Jigglypuff/Wigglytuff, Marill/Azumarill, Snubbull/Granbull,
+  Togepi/Togetic, Mr. Mime, Ralts-line, Mawile, Feraligatr — wait,
+  Feraligatr is Water/Dark not Fairy — cross-check didn't flag any
+  mismatch, this general area looks solid). Also confirms a **blanket
+  rule stated directly in the tab**: "All Pokémon that are Fairy-type in
+  Gen VI onwards are also Fairy-type in Renegade Platinum" — useful as a
+  standing heuristic for any species not yet reached, though per this
+  doc's own established discipline, still diff each one against vanilla
+  individually rather than relying on the rule alone to skip verification.
+
+## Post-Phase-1 type-changes cross-check (2026-08-16)
+
+- **Cross-checked every `types` override against the same
+  EVOLUTiON/TYPE/MOVES tab's TYPE CHANGES section** (4 side-by-side
+  blocks in the raw CSV, 29 explicit entries total) — all 29 matched
+  exactly, including pair order (e.g. Swablu is written `[fairy,
+flying]`, Altaria `[dragon, fairy]`, matching the sheet's own
+  presentation order for each). The remaining ~27 `types` overrides not
+  in this explicit list are accounted for by two confirmed, non-erroneous
+  sources: the sheet's own stated blanket rule ("all Pokémon that are
+  Fairy-type in Gen VI onwards are also Fairy-type in Renegade Platinum,"
+  covering Clefairy/Jigglypuff/Togepi/Marill/Snubbull/Ralts lines +
+  Azurill/Mawile/Mime Jr./Togekiss) and Rotom's 5 alt-form types
+  (explicitly called out by its own separate note in the same tab).
+- **Snover and Abomasnow's `types` override IS correct and load-bearing —
+  do not remove it again.** A mid-session pass wrongly concluded this was
+  a diffing artifact (same type _set_ as vanilla, `grass`/`ice`, just
+  listed as `ICE` then `GRASS` on the STATS tab) and removed it, on the
+  theory that type order is cosmetic. **The user corrected this
+  directly: type order matters** (primary vs. secondary type is a real,
+  meaningful distinction in this app/game, the same way ability slot
+  order does) — so Complete RP genuinely does make Snover/Abomasnow
+  primary-Ice instead of primary-Grass, even though vanilla Platinum
+  already has both types on the species. Restored to
+  `{fromGeneration: 4, types: ['ice', 'grass']}`, matching the sheet's
+  literal column order (Type I=Ice, Type II=Grass).
+  **This means the earlier "systematic sweep" that flagged/would flag any
+  same-_set_-different-order case as a false positive was working from
+  the wrong premise — don't use set-equality to dismiss a `types` diff.**
+  If a future audit finds another species where the sheet's type set
+  matches vanilla's but the order differs, treat that as a real,
+  intentional primary/secondary swap and keep the override — order
+  differences in `types` are exactly as meaningful as slot differences in
+  `abilities`, not noise to normalize away.
+
 ## Other open questions to resolve when their phase comes up
 
 - Phase 5: map layout reuse vs. divergence from vanilla Platinum — ask, don't assume.
