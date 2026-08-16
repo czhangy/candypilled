@@ -34,9 +34,6 @@ type SplitLocationProps = {
     game: Game;
     index: number;
     location: Location;
-    onAdvanceSplit: (splitName: string) => void;
-    onClearBattleMarker: () => void;
-    onGameComplete: () => void;
     onSelectAbility: (slug: string) => void;
     onSelectBattleMarker: (battleKey: string) => void;
     onSelectItem: (slug: string) => void;
@@ -53,9 +50,6 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     game,
     index,
     location,
-    onAdvanceSplit,
-    onClearBattleMarker,
-    onGameComplete,
     onSelectAbility,
     onSelectBattleMarker,
     onSelectItem,
@@ -89,27 +83,8 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     );
 
     // -------------------------------------------------------------------------
-    // RENDERING
-    // -------------------------------------------------------------------------
-
-    const defeatedBattles = run.defeatedBattles;
-    const nextPersonalBestBattleKey = BattleHelpers.getNextRequiredBattleKey(
-        game,
-        run.personalBest
-    );
-    const isChasingPersonalBest =
-        !!run.personalBest && !defeatedBattles.includes(run.personalBest);
-
-    // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------
-
-    const isBattleDefeated = (battle: Battle): boolean =>
-        defeatedBattles.includes(BattleHelpers.getBattleKey(battle));
-
-    const isBattleNextPB = (battle: Battle): boolean =>
-        isChasingPersonalBest &&
-        BattleHelpers.getBattleKey(battle) === nextPersonalBestBattleKey;
 
     const getDefaultSelectedBattle = (
         subareaIndex: number
@@ -134,10 +109,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         const candidates =
             requiredBattles.length > 0 ? requiredBattles : battles;
 
-        return (
-            candidates.find((battle) => !isBattleDefeated(battle)) ??
-            candidates[candidates.length - 1]
-        );
+        return candidates[0];
     };
 
     const getAllBattles = (): {
@@ -191,16 +163,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         }
 
         const candidates = getAllBattles();
-        if (candidates.length === 0) {
-            return 0;
-        }
-
-        const nextUndefeated = candidates.find(
-            ({ battle }) => !isBattleDefeated(battle)
-        );
-
-        return (nextUndefeated ?? candidates[candidates.length - 1])
-            .subareaIndex;
+        return candidates[0]?.subareaIndex ?? 0;
     };
 
     // -------------------------------------------------------------------------
@@ -239,73 +202,6 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const handleEncounterSelect = (encounter: Encounter): void => {
         setSelectedEncounter(encounter);
         setSpeciesOverride(undefined);
-    };
-
-    const handleBattleToggleDefeated = (battle: Battle): void => {
-        onClearBattleMarker();
-
-        const battleKey = BattleHelpers.getBattleKey(battle);
-        const wasDefeated = defeatedBattles.includes(battleKey);
-
-        const updatedRun: Run = {
-            ...run,
-            defeatedBattles: wasDefeated
-                ? defeatedBattles.filter((key) => key !== battleKey)
-                : [
-                      ...defeatedBattles,
-                      ...BattleHelpers.getRequiredBattleKeysBefore(
-                          game,
-                          battleKey
-                      ).filter((key) => !defeatedBattles.includes(key)),
-                      battleKey,
-                  ],
-        };
-
-        if (
-            !wasDefeated &&
-            !battle.metadata.includes(BattleMetadata.Optional)
-        ) {
-            const candidatePosition = BattleHelpers.countProgress(
-                game,
-                battleKey
-            );
-            const personalBestPosition = BattleHelpers.countProgress(
-                game,
-                run.personalBest
-            );
-
-            if (
-                candidatePosition &&
-                (!personalBestPosition ||
-                    BattleHelpers.isFarther(
-                        candidatePosition,
-                        personalBestPosition
-                    ))
-            ) {
-                updatedRun.personalBest = battleKey;
-            }
-        }
-
-        LocalStorageHelpers.saveRun(game, updatedRun);
-
-        if (!wasDefeated) {
-            const requiredBattleKeys =
-                BattleHelpers.getRequiredBattleKeys(game);
-            const isLastRequiredBattle =
-                battleKey === requiredBattleKeys[requiredBattleKeys.length - 1];
-
-            if (isLastRequiredBattle) {
-                onGameComplete();
-            } else {
-                const nextSplitName = BattleHelpers.getNextSplitAfterBattle(
-                    game,
-                    battleKey
-                );
-                if (nextSplitName) {
-                    onAdvanceSplit(nextSplitName);
-                }
-            }
-        }
     };
 
     const handleAddPokemon = (
@@ -516,8 +412,6 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                               )
                                             : undefined
                                     }
-                                    isBattleDefeated={isBattleDefeated}
-                                    isBattleNextPB={isBattleNextPB}
                                     map={section.map}
                                     mapAnchor={section.mapAnchor}
                                     onBattleClick={(battle: Battle) => {
@@ -536,19 +430,11 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         battle={selectedBattle}
                                         game={game}
                                         generation={game.generation}
-                                        isDefeated={isBattleDefeated(
-                                            selectedBattle
-                                        )}
                                         onSelectAbility={onSelectAbility}
                                         onSelectItem={onSelectItem}
                                         onSelectMove={onSelectMove}
                                         onSelectSpecies={onSelectSpecies}
                                         onSelectTrainer={onSelectTrainer}
-                                        onToggleDefeated={() =>
-                                            handleBattleToggleDefeated(
-                                                selectedBattle
-                                            )
-                                        }
                                         starter={run.starter}
                                         variant={variant}
                                         version={game.version}

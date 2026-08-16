@@ -33,7 +33,7 @@ const ROUTE_216: Location = {
             metadata: [BattleMetadata.Optional],
             battleKey: 'skier-m-edward',
             fieldCondition: FieldCondition.Hail,
-            x: 27.3,
+            x: 27.2,
             y: 71.2,
         },
         {

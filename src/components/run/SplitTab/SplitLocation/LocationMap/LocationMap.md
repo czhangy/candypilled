@@ -26,19 +26,17 @@ map does not conflict with placing coordinates.
 
 ## Props
 
-| Prop                       | Type                          | Required | Default | Description                                                                    |
-| -------------------------- | ----------------------------- | -------- | ------- | ------------------------------------------------------------------------------ |
-| `map`                      | `StaticImageData`             | Yes      | -       | Statically imported map image, with intrinsic dimensions                       |
-| `alt`                      | `string`                      | Yes      | -       | Alt text for the map image                                                     |
-| `battles`                  | `Battle[]`                    | No       | `[]`    | Battles to mark on the map                                                     |
-| `game`                     | `Game`                        | Yes      | -       | The active game, forwarded to each `TrainerMarker` for its accessible label    |
-| `id`                       | `string`                      | No       | -       | DOM id for the outer panel, used as a scroll target for a selected battle      |
-| `isBattleDefeated`         | `(battle: Battle) => boolean` | Yes      | -       | Whether a given battle has already been defeated                               |
-| `isBattleNextPersonalBest` | `(battle: Battle) => boolean` | Yes      | -       | Whether defeating a given battle next would extend the run's PB                |
-| `mapAnchor`                | `MapAnchor`                   | Yes      | -       | Which edge, corner, or `Center` the map defaults to when no battle is selected |
-| `selectedBattle`           | `Battle`                      | No       | -       | The currently selected battle, if any                                          |
-| `onBattleClick`            | `(battle: Battle) => void`    | Yes      | -       | Called with a battle when its marker is clicked                                |
-| `priority`                 | `boolean`                     | Yes      | -       | Whether to eagerly load and preload this map as the LCP image                  |
+| Prop             | Type                       | Required | Default | Description                                                                    |
+| ---------------- | -------------------------- | -------- | ------- | ------------------------------------------------------------------------------ |
+| `map`            | `StaticImageData`          | Yes      | -       | Statically imported map image, with intrinsic dimensions                       |
+| `alt`            | `string`                   | Yes      | -       | Alt text for the map image                                                     |
+| `battles`        | `Battle[]`                 | No       | `[]`    | Battles to mark on the map                                                     |
+| `game`           | `Game`                     | Yes      | -       | The active game, forwarded to each `TrainerMarker` for its accessible label    |
+| `id`             | `string`                   | No       | -       | DOM id for the outer panel, used as a scroll target for a selected battle      |
+| `mapAnchor`      | `MapAnchor`                | Yes      | -       | Which edge, corner, or `Center` the map defaults to when no battle is selected |
+| `selectedBattle` | `Battle`                   | No       | -       | The currently selected battle, if any                                          |
+| `onBattleClick`  | `(battle: Battle) => void` | Yes      | -       | Called with a battle when its marker is clicked                                |
+| `priority`       | `boolean`                  | Yes      | -       | Whether to eagerly load and preload this map as the LCP image                  |
 
 ## State
 

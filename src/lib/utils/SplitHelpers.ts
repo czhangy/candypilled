@@ -7,26 +7,14 @@ export default class SplitHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    /** The highest level on split's last battle's team, or null if it has no battles, an empty team, or defeatedBattles marks the game as complete (no cap applies once the Hall of Fame is unlocked). */
-    static getLevelCap(
-        game: Game,
-        split: Split,
-        defeatedBattles: string[]
-    ): number | null {
-        if (BattleHelpers.isGameComplete(game, defeatedBattles)) return null;
-
+    /** The highest level on split's last battle's team, or null if it has no battles or an empty team. */
+    static getLevelCap(game: Game, split: Split): number | null {
         const battles = split.locations.flatMap((location) =>
             BattleHelpers.getBattlesInLocation(location)
         );
         const lastBattle = battles[battles.length - 1];
 
         return lastBattle ? SplitHelpers.getMaxLevel(game, lastBattle) : null;
-    }
-
-    /** The name of the split containing battleKey, or null if not found. */
-    static getSplitName(game: Game, battleKey: string): string | null {
-        const position = BattleHelpers.countProgress(game, battleKey);
-        return position ? game.splits[position.splitIndex].name : null;
     }
 
     /** The split name and locations-array index of the earliest occurrence (in game order) of a location named locationName, or null if not found. */
@@ -61,27 +49,6 @@ export default class SplitHelpers {
     /** A unique DOM-safe slug for a location, disambiguated by its index within the split's locations array. */
     static getLocationSlug(locationName: string, index: number): string {
         return `${StringHelpers.toSlug(locationName)}-${index}`;
-    }
-
-    /** The name of the split the player is currently on: the split of the undefeated required battle following the furthest defeated required battle, or the last split's name if all required battles are defeated. */
-    static getCurrentSplitName(
-        game: Game,
-        defeatedBattles: string[]
-    ): string | null {
-        const requiredBattleKeys = BattleHelpers.getRequiredBattleKeys(game);
-
-        const furthestDefeatedIndex = requiredBattleKeys.findLastIndex(
-            (battleKey) => defeatedBattles.includes(battleKey)
-        );
-
-        const nextRequiredBattleKey =
-            requiredBattleKeys[furthestDefeatedIndex + 1];
-
-        if (!nextRequiredBattleKey) {
-            return game.splits[game.splits.length - 1]?.name ?? null;
-        }
-
-        return SplitHelpers.getSplitName(game, nextRequiredBattleKey);
     }
 
     // -------------------------------------------------------------------------

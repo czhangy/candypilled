@@ -5,26 +5,24 @@ import SplitSelect from './SplitSelect/SplitSelect';
 
 type SplitHeaderProps = {
     currentSplitName: string | null;
-    defeatedBattles: string[];
     game: Game;
     onSelectSplit: (name: string) => void;
-    runSplitName: string | null;
 };
 
 const SplitHeader: React.FC<SplitHeaderProps> = ({
     currentSplitName,
-    defeatedBattles,
     game,
     onSelectSplit,
-    runSplitName,
 }) => {
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const runSplit = game.splits.find((split) => split.name === runSplitName);
-    const levelCap = runSplit
-        ? SplitHelpers.getLevelCap(game, runSplit, defeatedBattles)
+    const currentSplit = game.splits.find(
+        (split) => split.name === currentSplitName
+    );
+    const levelCap = currentSplit
+        ? SplitHelpers.getLevelCap(game, currentSplit)
         : null;
     const splitNames = game.splits.map((split) => split.name);
 

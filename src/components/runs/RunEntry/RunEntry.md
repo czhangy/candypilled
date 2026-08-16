@@ -2,7 +2,8 @@
 
 A list entry summarizing a single game's active run. If the game has no
 stored run, placeholder values are shown instead (no attempt number, dashes
-for split/box/death counts, "N/A" for personal best). A "Continue" button
+for box/death counts). A "Wiped" indicator appears only while the run has
+been given up on; the Hall of Fame count is always shown. A "Continue" button
 navigates to the game's dedicated run page (only shown if a run already
 exists), a "New" button starts a fresh attempt for the game, confirming
 with the user first if a run is already in progress, then prompting for a
@@ -27,8 +28,7 @@ exists).
 
 ## Handlers
 
-- **On "Continue" click** — navigates to the game's run page (`runUrl`),
-  which determines its own current split or Hall of Fame tab on load
+- **On "Continue" click** — navigates to the game's run page (`runUrl`)
 - **On "New" click** — if a run already exists, opens a confirmation modal;
   otherwise opens the starter selection modal directly
 - **On confirmation modal close/cancel** — closes the modal without
@@ -46,25 +46,20 @@ exists).
 - **On starter select** — writes a fresh run to storage for the game with
   the chosen starter's species and full details (as the first entry in
   `caughtPokemon`), incrementing the attempt number, while carrying over
-  the existing personal best and hall of fame count, then navigates to
+  the existing hall of fame count, then navigates to
   the game's run page (`runUrl`); the starter select modal closes itself,
   with its own exit animation,
   once `StarterSelectModal` requests its close
 
 ## Computations
 
-- `currentSplitName` — the name of the split containing the undefeated
-  required battle following the furthest defeated required battle in the
-  run's `defeatedBattles`, or the last split if every required battle has
-  been defeated; `null` if there is no run
 - `boxCount` — the number of Pokémon in the run's `caughtPokemon` that
   don't have a `status` of `PokemonStatus.Dead`; `null` if there is no run
 - `deathCount` — the number of Pokémon in the run's `caughtPokemon` with a
   `status` of `PokemonStatus.Dead`; `null` if there is no run
-- `runUrl` — the game's run page URL with no query params; `RunPage`
-  determines the current split or Hall of Fame tab itself on load
+- `runUrl` — the game's run page URL with no query params
 
 ## SCSS Variable Dependencies
 
 - `--accent-color` — the game's theme color, set inline from `game.accentColor`
-  and used to color the personal best/hall of fame text
+  and used to color the hall of fame text

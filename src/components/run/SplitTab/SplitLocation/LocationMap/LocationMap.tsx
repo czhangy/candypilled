@@ -13,8 +13,6 @@ type LocationMapProps = {
     battles?: Battle[];
     game: Game;
     id?: string;
-    isBattleDefeated: (battle: Battle) => boolean;
-    isBattleNextPB: (battle: Battle) => boolean;
     map: StaticImageData;
     mapAnchor: MapAnchor;
     onBattleClick: (battle: Battle) => void;
@@ -27,8 +25,6 @@ const LocationMap: React.FC<LocationMapProps> = ({
     battles = [],
     game,
     id,
-    isBattleDefeated,
-    isBattleNextPB,
     map,
     mapAnchor,
     onBattleClick,
@@ -320,8 +316,6 @@ const LocationMap: React.FC<LocationMapProps> = ({
                     {battles.map((battle) => (
                         <TrainerMarker
                             game={game}
-                            isDefeated={isBattleDefeated(battle)}
-                            isNextPersonalBest={isBattleNextPB(battle)}
                             isPreview={false}
                             isSelected={selectedBattle === battle}
                             key={BattleHelpers.getBattleKey(battle)}
@@ -335,8 +329,6 @@ const LocationMap: React.FC<LocationMapProps> = ({
                         <>
                             <TrainerMarker
                                 game={game}
-                                isDefeated={false}
-                                isNextPersonalBest={false}
                                 isPreview
                                 isSelected={false}
                                 mapHeight={map.height}

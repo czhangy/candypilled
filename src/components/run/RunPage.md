@@ -3,9 +3,7 @@
 The dedicated page for a single game's run, reached from a game's entry on
 the runs list. Displays a back link to the runs list, the game's title with
 the current attempt number alongside an Import button and a togglable
-Wipe/RESPAWN button, and a subtitle showing the run's personal best battle
-as trainer class + name followed by its split name (e.g. "Leader Roark //
-Roark"), omitted entirely if none yet. Below that, if the run hasn't been
+Wipe/RESPAWN button. Below that, if the run hasn't been
 wiped, a sticky block pinned to the top of the viewport while the active
 tab's content scrolls beneath it, with — on the Splits tab — the current
 split's header in the top-left corner and a row of tabs for switching
@@ -38,8 +36,7 @@ opens `ImportSaveModal` regardless of the active tab or wipe state.
 ## Computations
 
 - `activeTab` — the `id` of the currently active tab, read from the `tab`
-  query param, defaulting to `'hof'` if `isHallOfFameUnlocked` and
-  `'split'` otherwise when absent
+  query param, defaulting to `'split'` when absent
 - `activeSubtab` — the `id` of the currently active Data subtab, read
   from the `subtab` query param, defaulting to `'pokedex'` if absent
 - `selectedMove` — the currently selected move's slug, read from the `move`
@@ -52,37 +49,19 @@ opens `ImportSaveModal` regardless of the active tab or wipe state.
 - `selectedSpecies` — the currently selected Pokémon's species, read from
   the `species` query param, shared between the Data tab's Pokédex
   subtab and its own evolution line links
-- `runSplitName` — the name of the split containing the undefeated
-  required battle following the furthest defeated required battle in
-  `run.defeatedBattles` (or the last split if every required battle has
-  been defeated); this is the split the run has actually progressed to,
-  regardless of which split is being viewed
 - `currentSplitName` — the split named by the `split` query param if it
-  matches one of `game.splits`, otherwise `runSplitName`; `RunEntry` links
-  to the page with no `split` param, so this falls back to `runSplitName`
-  on initial load
+  matches one of `game.splits`, otherwise the game's first split; shared
+  with `BoxTab` so its level cap reflects the same viewed split as the
+  Splits tab
 - `game` — the `Game` matching `slug`, looked up from the static game list;
   triggers a 404 if no game matches
 - `run` — the stored `Run` for `game`, looked up from the run store snapshot
-- `personalBestBattle` — the `Battle` matching `run.personalBest`, looked up
-  via `BattleHelpers.getBattle`
-- `personalBestSplitName` — the name of the split containing
-  `personalBestBattle`
-- `personalBestLabel` — the personal best subtitle text: the battle's
-  trainer class and name followed by `// <split name>`, or `null` if the
-  run has no personal best yet, in which case the subtitle isn't rendered
 - `updateQueryParams` — merges the given key/value pairs into the current
   URL's query string (deleting keys whose value is `undefined`) and
   navigates to it with `router.replace`, so tab/move/ability/split
   selection is linkable and shareable
 - `wipeMessage` — a message picked at random from `DEFAULT_WIPE_MESSAGES`
   combined with `game.wipeMessages`, shown when the run has been wiped
-- `isHallOfFameUnlocked` — whether the game's last required battle
-  (`BattleHelpers.getRequiredBattleKeys`) is in `run.defeatedBattles`;
-  gates both the Hall of Fame tab's visibility in `visibleTabs` and its
-  content, in case its query param is set directly
-- `visibleTabs` — `TABS` with the Hall of Fame tab filtered out unless
-  `isHallOfFameUnlocked`
 
 ## Handlers
 
@@ -130,10 +109,6 @@ opens `ImportSaveModal` regardless of the active tab or wipe state.
   changing `tab`. Every `SplitLocation` reads this same param, so if its
   location has a battle matching the key, that battle is preselected there
   too
-- **On battle marker clear** (from `SplitTab`, a `SplitLocation`'s
-  `BattleCard` defeat button) — clears the `battle` query param, since
-  toggling a battle's defeated state can change which battle should be
-  selected next and the stale key should not linger in the URL
 - **On Pokémon deselect** (from `BoxTab`, when switching between its box
   and graveyard views) — clears the `pokemon` query param
 - **On location select** (from `BoxTab`'s `PokemonPreview`, `SplitTab`'s
@@ -145,25 +120,16 @@ opens `ImportSaveModal` regardless of the active tab or wipe state.
   disambiguated slug (via `SplitHelpers.getLocationSlug`) as a URL hash, so
   the browser scrolls to its card; no-ops if the location doesn't match
   any split
-- **On split select** (from `SplitHeader`'s dropdown, or from `SplitTab`'s
-  `onAdvanceSplit` when a split's boss/last required battle is defeated) —
-  sets the `split` query param without changing `tab`, and scrolls the
-  page to the top
-- **On game complete** (from `SplitTab`'s `onGameComplete`, when the
-  game's last required battle is defeated) — sets the `tab` query param
-  to `hof` and scrolls the page to the top
+- **On split select** (from `SplitHeader`'s dropdown) — sets the `split`
+  query param without changing `tab`, and scrolls the page to the top
 - **On Wipe toggle** — flips `run.wipe` and saves the run; the button reads
   "Wipe" when `run.wipe` is `false` and "RESPAWN" when `true`
 - **On Import click** — opens `ImportSaveModal`
 - **On import modal close** — closes `ImportSaveModal`
 - **On import save** (from `ImportSaveModal`'s `onSubmit`) — merges the
-  Pokémon and defeated battles parsed from the uploaded save. Pokémon
-  merge into `run.caughtPokemon` by catch location: an imported Pokémon
-  replaces the existing entry at the same location, or is appended if its
-  location isn't already in the box (imported Pokémon sharing a location
-  with each other collapse to the last one). `run.defeatedBattles` is
-  replaced outright with the imported set (the save is authoritative for
-  every battle it can resolve), and `run.personalBest` is recomputed as
-  the farthest required battle key within that set, via
-  `BattleHelpers.getRequiredBattleKeys`. Saves the updated run and
-  deselects the currently selected Pokémon (since it may no longer exist)
+  Pokémon parsed from the uploaded save into `run.caughtPokemon` by catch
+  location: an imported Pokémon replaces the existing entry at the same
+  location, or is appended if its location isn't already in the box
+  (imported Pokémon sharing a location with each other collapse to the
+  last one). Saves the updated run and deselects the currently selected
+  Pokémon (since it may no longer exist)

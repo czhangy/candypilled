@@ -180,19 +180,6 @@ export type SaveImportError = {
     message: string;
 };
 
-// battleKey -> the condition determining whether that battle has been won,
-// resolved against a decrypted save file (generation-specific parsers, e.g.
-// src/lib/parsers/gen4/Gen4BattleParser.ts, know how to evaluate one of
-// these against their own save format).
-export type BattleDefeatCondition =
-    | { type: 'trainerFlag'; flag: number }
-    | { type: 'badge'; bit: number }
-    | { type: 'gameClear' }
-    | { type: 'flag'; flag: number }
-    | { type: 'varAtLeast'; var: number; minValue: number }
-    | { type: 'and'; conditions: BattleDefeatCondition[] }
-    | { type: 'or'; conditions: BattleDefeatCondition[] };
-
 export type BattleItem = {
     count: number;
     name: string;
@@ -206,10 +193,6 @@ export type Gen4SaveLayout = {
     generalBlockSize: number;
     storageBlockSize: number;
     partyOffset: number;
-    badgeMaskOffset: number;
-    mainStoryClearedOffset: number;
-    varsOffset: number;
-    flagsOffset: number;
 };
 
 // The second trainer in a tag battle: a distinct trainer merged into the
@@ -238,9 +221,6 @@ export type BattleData = {
     // TRAINER_CLASSES slug.
     trainerClass: string;
     aiFlags: AiFlag[];
-    // Resolved against pret/pokeplatinum -- the condition determining
-    // whether a decrypted save reports this battle as won.
-    saveCondition: BattleDefeatCondition;
 };
 
 export type Battle = {
@@ -405,10 +385,6 @@ export type Game = {
 
 export type Run = {
     attempt: number;
-    // Battle keys (BattleHelpers.getBattleKey), not names — trainerClass + name is
-    // the unique identifier since name alone can repeat within a game.
-    defeatedBattles: string[];
-    personalBest: string;
     hallOfFameCount: number;
     starter: string;
     caughtPokemon: CaughtPokemon[];

@@ -14,9 +14,6 @@ import styles from './SplitTab.module.scss';
 type SplitTabProps = {
     currentSplitName: string | null;
     game: Game;
-    onAdvanceSplit: (splitName: string) => void;
-    onClearBattleMarker: () => void;
-    onGameComplete: () => void;
     onSelectAbility: (slug: string) => void;
     onSelectBattleMarker: (battleKey: string) => void;
     onSelectItem: (slug: string) => void;
@@ -32,9 +29,6 @@ type SplitTabProps = {
 const SplitTab: React.FC<SplitTabProps> = ({
     currentSplitName,
     game,
-    onAdvanceSplit,
-    onClearBattleMarker,
-    onGameComplete,
     onSelectAbility,
     onSelectBattleMarker,
     onSelectItem,
@@ -276,9 +270,6 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             index={index}
                             key={`${location.name}-${index}`}
                             location={location}
-                            onAdvanceSplit={onAdvanceSplit}
-                            onClearBattleMarker={onClearBattleMarker}
-                            onGameComplete={onGameComplete}
                             onSelectAbility={onSelectAbility}
                             onSelectBattleMarker={onSelectBattleMarker}
                             onSelectItem={onSelectItem}

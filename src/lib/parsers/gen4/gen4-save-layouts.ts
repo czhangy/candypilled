@@ -11,8 +11,7 @@ import { Gen4SaveLayout } from '@/lib/static/types';
 // Pearl's (identical to each other -- same ROM family, only species/trainer
 // data differs) are 0x00000-0x0C0FF/0x0C100-0x1E2DF.
 //
-// partyOffset/badgeMaskOffset/mainStoryClearedOffset/varsOffset/flagsOffset
-// are general-block-relative, derived by walking pret/pokediamond's
+// partyOffset is general-block-relative, derived by walking pret/pokediamond's
 // save_arrays.c chunk table (SysInfo, PlayerData, Party, Bag, VarsFlags, in
 // that order, each chunk's padded size computed via
 // `SaveArray_sizeof`'s `size + (4 - size % 4)` rule) forward from the start
@@ -27,12 +26,7 @@ import { Gen4SaveLayout } from '@/lib/static/types';
 //
 // partyOffset is general-block-relative and points at the Party chunk's
 // Pokémon array (the chunk itself starts 8 bytes earlier, for its
-// maxCount/curCount header). badgeMaskOffset points at PlayerProfile.badges;
-// mainStoryClearedOffset points at the byte holding PlayerProfile.gameCleared
-// (bit 0). varsOffset points at SaveVarsFlags.vars[0]; flagsOffset points at
-// SaveVarsFlags.flags[0] and is always varsOffset + NUM_VARS * 2, since
-// vars[] is immediately followed by flags[] in both games' identically-shaped
-// SaveVarsFlags struct.
+// maxCount/curCount header).
 
 // Keyed by Game.version (the PokeAPI version-group slug), not GameVersion.id
 // -- Diamond and Pearl are the same ROM family with an identical save
@@ -44,19 +38,11 @@ export const GEN4_SAVE_LAYOUTS: Record<string, Gen4SaveLayout> = {
         generalBlockSize: 0xcf2c,
         storageBlockSize: 0x121e4,
         partyOffset: 0xa0,
-        badgeMaskOffset: 0x82,
-        mainStoryClearedOffset: 0x85,
-        varsOffset: 0xdac,
-        flagsOffset: 0xfec,
     },
     'diamond-pearl': {
         generalBlockSize: 0xc100,
         storageBlockSize: 0x121e0,
         partyOffset: 0x98,
-        badgeMaskOffset: 0x7e,
-        mainStoryClearedOffset: 0x81,
-        varsOffset: 0xd9c,
-        flagsOffset: 0xfdc,
     },
 };
 
