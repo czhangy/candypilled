@@ -34,6 +34,7 @@ const GARDENIA: Split = {
         LocationHelpers.withHiddenBattles(MT_CORONET),
         ETERNA_GYM,
     ],
+    saveCondition: { type: 'badge', bit: 1 },
 };
 
 export default GARDENIA;

@@ -63,6 +63,7 @@ const MAYLENE: Split = {
         TROPHY_GARDEN,
         VEILSTONE_GYM,
     ],
+    saveCondition: { type: 'badge', bit: 2 },
 };
 
 export default MAYLENE;

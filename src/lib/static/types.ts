@@ -193,6 +193,8 @@ export type Gen4SaveLayout = {
     generalBlockSize: number;
     storageBlockSize: number;
     partyOffset: number;
+    badgeMaskOffset: number;
+    mainStoryClearedOffset: number;
 };
 
 // The second trainer in a tag battle: a distinct trainer merged into the
@@ -350,9 +352,21 @@ export type Location = {
     | { map?: never; mapAnchor?: never; subareas: Subarea[] }
 );
 
+// The condition determining whether a split is finished, resolved against a
+// decrypted save file (generation-specific parsers, e.g.
+// src/lib/parsers/gen4/Gen4SplitParser.ts, know how to evaluate one of these
+// against their own save format). A gym split is done once its badge bit is
+// set; the final split (the champion) is done once the main story is marked
+// cleared.
+export type SplitSaveCondition =
+    { type: 'badge'; bit: number } | { type: 'gameClear' };
+
 export type Split = {
     name: string;
     locations: Location[];
+    // Resolved against pret/pokediamond -- the condition determining
+    // whether a decrypted save reports this split as finished.
+    saveCondition: SplitSaveCondition;
 };
 
 export type Game = {

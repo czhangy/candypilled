@@ -152,12 +152,64 @@ Reference implementation: `src/lib/data/platinum/`.
    _subset_ of included indices. Existing games intentionally omit indices
    for locations that never come up as a met-location for this app's
    purposes (event-only/static-encounter spots); including the full
-   academic list adds entries that don't reflect real usage.
+   academic list adds entries that don't reflect real usage. Every `Split`
+   also needs a `saveCondition` (see "Deriving a split's `saveCondition`"
+   below) — a split isn't fully authored without one.
 8. **Assemble the `Game`** in `<slug>.ts` (name, logo, generation, `version`
    = PokeAPI version-group slug, starters, accentColor, encounters,
    battles, metLocationById, wipeMessages, splits), add
    `public/logos/<slug>.png`, and add the game to the `GAMES` array in
    `src/lib/data/games.ts`.
+
+## Deriving a split's `saveCondition`
+
+Every `Split` (`src/lib/static/types.ts`) needs a `saveCondition`, resolved
+against a decrypted save file by a generation-specific parser (e.g.
+`src/lib/parsers/gen4/Gen4SplitParser.ts`) to detect which splits an
+imported save already reports as finished. This is deliberately coarse —
+one condition per split (typically "this split's gym leader has been
+beaten"), not one per battle — so it's a much smaller derivation task than
+per-battle save data:
+
+- **A split whose last location is a gym ends with `{ type: 'badge', bit:
+N }`**, where `N` is that gym's badge bit in the save's badge bitmask.
+- **The final split (the one ending in the champion) ends with `{ type:
+'gameClear' }`**, resolved against the save's main-story-cleared flag —
+  already wired up via `Gen4SaveLayout.mainStoryClearedOffset` for Gen 4
+  games, so no extra derivation is needed there.
+
+**Never assume a badge's bit index from split order, gym number, or another
+game's value — derive it from that game's own decomp, per the "games are
+independent" rule above, even when the badge identity (e.g. "Fantina gives
+the Relic Badge") is stable franchise knowledge.** A sibling game can (and,
+in Platinum's case, does) change the _order_ you're allowed to visit gyms
+in without changing which bit each badge occupies, so split array order is
+not a safe proxy for bit order. The derivation is two independent steps:
+
+1. **Find the badge bit each named badge occupies**, from a generated
+   constants file rather than any specific script: pret NDS decomps expose
+   this as a plain enum-like list where line position is the bit index —
+   e.g. pret/pokediamond's `include/constants/badge.h`
+   (`BADGE_COAL 0`, `BADGE_FOREST 1`, ...) or pret/pokeplatinum's
+   `generated/badges.txt` (one badge ID per line, in bit order, terminated
+   by a `MAX_BADGES` sentinel). This step is generation/franchise-level,
+   not per-game, so it only needs doing once per decomp project, not once
+   per split.
+2. **Find which named badge a specific gym leader gives**, from a decomp
+   source that names that gym specifically — e.g. a gym's own dynamic-map-
+   features file (pret/pokeplatinum's `overlay008/gym_features.c` has one
+   function per gym, named after its city, e.g. `HearthomeGym_InitFog`,
+   that reads the relevant `BADGE_ID_*`/`TestBadgeFlag` constant directly)
+   or a field-move's badge-gated usage check whose surrounding code/comments
+   identify which HM it gates (Bulbapedia documents which HM each badge
+   unlocks, so a field-move check naming a badge constant can be cross-
+   referenced that way too, though a gym-named source is more direct when
+   available). Don't rely on badge _name_ alone to guess which gym it
+   belongs to — verify from source, the same as any other per-game fact.
+
+If no gym-specific source can be found in the target game's decomp, ask the
+user rather than guessing — a wrong bit silently marks the wrong split
+complete on import, which is easy to miss since nothing crashes.
 
 ## Variant games sharing one generation (e.g. Diamond & Pearl)
 

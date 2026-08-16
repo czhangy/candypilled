@@ -21,6 +21,7 @@ const MAYLENE: Split = {
         LocationHelpers.withHiddenBattles(VEILSTONE_CITY),
         VEILSTONE_GYM,
     ],
+    saveCondition: { type: 'badge', bit: 2 },
 };
 
 export default MAYLENE;

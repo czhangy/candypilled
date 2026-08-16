@@ -37,6 +37,7 @@ const CANDICE: Split = {
         SNOWPOINT_CITY,
         SNOWPOINT_GYM,
     ],
+    saveCondition: { type: 'badge', bit: 6 },
 };
 
 export default CANDICE;

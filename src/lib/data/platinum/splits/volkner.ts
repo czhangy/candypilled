@@ -40,6 +40,7 @@ const VOLKNER: Split = {
         POKEMON_LEAGUE,
         SUNYSHORE_GYM,
     ],
+    saveCondition: { type: 'badge', bit: 7 },
 };
 
 export default VOLKNER;

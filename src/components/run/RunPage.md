@@ -148,5 +148,7 @@ opens `ImportSaveModal` regardless of the active tab or wipe state.
   location: an imported Pokémon replaces the existing entry at the same
   location, or is appended if its location isn't already in the box
   (imported Pokémon sharing a location with each other collapse to the
-  last one). Saves the updated run and deselects the currently selected
-  Pokémon (since it may no longer exist)
+  last one). `run.completedSplits` is replaced outright with the imported
+  set (the save is authoritative for every split it can resolve). Saves
+  the updated run and deselects the currently selected Pokémon (since it
+  may no longer exist)

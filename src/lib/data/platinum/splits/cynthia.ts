@@ -18,6 +18,7 @@ const CYNTHIA: Split = {
         LUCIANS_ROOM,
         CYNTHIAS_ROOM,
     ],
+    saveCondition: { type: 'gameClear' },
 };
 
 export default CYNTHIA;

@@ -344,7 +344,10 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         setIsImportModalOpen(false);
     };
 
-    const handleImportSave = (importedPokemon: CaughtPokemon[]): void => {
+    const handleImportSave = (
+        importedPokemon: CaughtPokemon[],
+        importedCompletedSplits: string[]
+    ): void => {
         if (!game || !run) return;
 
         // Multiple imported Pokémon sharing a location collapse to the
@@ -367,9 +370,14 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
             (pokemon) => !existingLocations.has(pokemon.location)
         );
 
+        // The save is authoritative for split completion, the same way it
+        // is for the box: every split it can resolve is set to exactly
+        // what it reports, rather than only ever adding to what's already
+        // recorded.
         const updatedRun: Run = {
             ...run,
             caughtPokemon: [...merged, ...newPokemon],
+            completedSplits: importedCompletedSplits,
         };
 
         LocalStorageHelpers.saveRun(game, updatedRun);
