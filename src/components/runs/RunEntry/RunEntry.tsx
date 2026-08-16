@@ -10,6 +10,7 @@ import SkullIcon from '@/lib/icons/SkullIcon';
 import { PokemonStatus } from '@/lib/static/enums';
 import { CaughtPokemon, Game, Run } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
+import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import HallOfFameHelpers from '@/lib/utils/HallOfFameHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import RunImportHelpers from '@/lib/utils/RunImportHelpers';
@@ -47,7 +48,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     const [pendingImport, setPendingImport] = useState<{
         pokemon: CaughtPokemon[];
         completedSplits: string[];
-        starter: CaughtPokemon;
+        starterSlug: string;
     } | null>(null);
 
     // -------------------------------------------------------------------------
@@ -102,36 +103,46 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         }
     };
 
-    // Throws if the import has no Pokémon at the game's starter location,
-    // since that's the only reliable way to identify the starter (its
-    // species alone isn't enough — trading can put another starter species
-    // in the box).
-    const findImportedStarter = (pokemon: CaughtPokemon[]): CaughtPokemon => {
+    // Throws unless the import has a Pokémon at the game's starter
+    // location whose evolution line's base species is one of
+    // game.starters. The location alone isn't a reliable match (a wild
+    // encounter can share it with the starter, e.g. Starly on Route 201),
+    // and an evolved starter (e.g. Infernape) keeps its original catch
+    // location but not its original species, so its species has to be
+    // resolved back to the base slug game.battles' conditions are keyed by.
+    const findImportedStarterSlug = (pokemon: CaughtPokemon[]): string => {
         const starterLocation = EncounterHelpers.getStarterLocationName(game);
-        const starter = pokemon.find(
+        const caughtAtLocation = pokemon.find(
             (caught) => caught.location === starterLocation
         );
+        const baseSlug =
+            caughtAtLocation &&
+            EvolutionHelpers.getFullEvolutionLine(
+                game.dataSource,
+                caughtAtLocation.slug,
+                game.generation
+            )?.slug;
 
-        if (!starter) {
+        if (!baseSlug || !game.starters.includes(baseSlug)) {
             throw new Error(
-                `No Pokémon found at ${starterLocation}, where ${game.name} starters are received.`
+                `No starter found at ${starterLocation}, where ${game.name} starters are received.`
             );
         }
 
-        return starter;
+        return baseSlug;
     };
 
     const createRunFromImport = (
         pokemon: CaughtPokemon[],
         completedSplits: string[],
-        starter: CaughtPokemon,
+        starterSlug: string,
         gender: 'male' | 'female' | undefined
     ): void => {
         const newRun: Run = {
             attempt: (run?.attempt ?? 0) + 1,
             completedSplits,
             hallOfFameCount: run?.hallOfFameCount ?? 0,
-            starter: starter.slug,
+            starter: starterSlug,
             ...(gender && { gender }),
             caughtPokemon: pokemon,
             missedLocations: [],
@@ -195,19 +206,19 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             return;
         }
 
-        const starter = findImportedStarter(importedPokemon);
+        const starterSlug = findImportedStarterSlug(importedPokemon);
 
         if (game.genders) {
             setPendingImport({
                 pokemon: importedPokemon,
                 completedSplits: importedCompletedSplits,
-                starter,
+                starterSlug,
             });
         } else {
             createRunFromImport(
                 importedPokemon,
                 importedCompletedSplits,
-                starter,
+                starterSlug,
                 undefined
             );
         }
@@ -223,7 +234,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         createRunFromImport(
             pendingImport.pokemon,
             pendingImport.completedSplits,
-            pendingImport.starter,
+            pendingImport.starterSlug,
             gender
         );
         setPendingImport(null);

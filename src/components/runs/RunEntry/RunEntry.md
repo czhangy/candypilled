@@ -25,14 +25,14 @@ and a reset action (only available once a run already exists).
 
 ## State
 
-| State                 | Type                                                                                      | Initial value | Description                                                                                                                  |
-| --------------------- | ----------------------------------------------------------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `isConfirmOpen`       | `boolean`                                                                                 | `false`       | Whether the "start a new run" confirmation modal is open                                                                     |
-| `isDataModalOpen`     | `boolean`                                                                                 | `false`       | Whether the data (reset) modal is open                                                                                       |
-| `isGenderSelectOpen`  | `boolean`                                                                                 | `false`       | Whether the gender selection modal is open                                                                                   |
-| `isStarterSelectOpen` | `boolean`                                                                                 | `false`       | Whether the starter selection modal is open                                                                                  |
-| `selectedGender`      | `'male' \| 'female' \| undefined`                                                         | `undefined`   | The gender chosen in the gender selection modal, carried into the new run once the starter is also chosen                    |
-| `pendingImport`       | `{ pokemon: CaughtPokemon[]; completedSplits: string[]; starter: CaughtPokemon } \| null` | `null`        | The parsed data (and identified starter) from a save import awaiting a gender choice before a new run can be created from it |
+| State                 | Type                                                                                   | Initial value | Description                                                                                                                          |
+| --------------------- | -------------------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `isConfirmOpen`       | `boolean`                                                                              | `false`       | Whether the "start a new run" confirmation modal is open                                                                             |
+| `isDataModalOpen`     | `boolean`                                                                              | `false`       | Whether the data (reset) modal is open                                                                                               |
+| `isGenderSelectOpen`  | `boolean`                                                                              | `false`       | Whether the gender selection modal is open                                                                                           |
+| `isStarterSelectOpen` | `boolean`                                                                              | `false`       | Whether the starter selection modal is open                                                                                          |
+| `selectedGender`      | `'male' \| 'female' \| undefined`                                                      | `undefined`   | The gender chosen in the gender selection modal, carried into the new run once the starter is also chosen                            |
+| `pendingImport`       | `{ pokemon: CaughtPokemon[]; completedSplits: string[]; starterSlug: string } \| null` | `null`        | The parsed data (and identified starter species) from a save import awaiting a gender choice before a new run can be created from it |
 
 ## Handlers
 
@@ -53,11 +53,12 @@ and a reset action (only available once a run already exists).
 - **On data modal import** — if a run already exists, merges the
   imported Pokémon and completed splits into it via
   `RunImportHelpers.mergeImport` and saves the result; otherwise,
-  identifies the starter via `findImportedStarter` (throwing, which
-  `ImportSaveForm` shows as an import error, if none is found) and
-  either creates a fresh run from the import right away, or first
-  opens the gender selection modal (only for a game where
-  `Game.genders` is set) and creates it once a gender is chosen
+  identifies the starter's base species slug via
+  `findImportedStarterSlug` (throwing, which `ImportSaveForm` shows as
+  an import error, if none is found) and either creates a fresh run
+  from the import right away, or first opens the gender selection
+  modal (only for a game where `Game.genders` is set) and creates it
+  once a gender is chosen
 - **On import gender select modal close/cancel** — closes the modal
   without creating a run, discarding `pendingImport`
 - **On import gender select** — creates a fresh run from
@@ -87,10 +88,12 @@ and a reset action (only available once a run already exists).
 - `deathCount` — the number of Pokémon in the run's `caughtPokemon` with a
   `status` of `PokemonStatus.Dead`; `null` if there is no run
 - `runUrl` — the game's run page URL with no query params
-- `findImportedStarter`'s result — the imported Pokémon whose
-  `location` matches `EncounterHelpers.getStarterLocationName(game)`;
-  throws if none is found, since species alone can't identify the
-  starter (trading can put another starter species in the box)
+- `findImportedStarterSlug`'s result — the base species slug (per
+  `EvolutionHelpers.getFullEvolutionLine`) of the imported Pokémon
+  whose `location` matches `EncounterHelpers.getStarterLocationName(game)`,
+  required to be one of `game.starters`; throws otherwise, since a wild
+  encounter can share the starter's location and an evolved starter
+  keeps its original catch location but not its original species
 
 ## SCSS Variable Dependencies
 
