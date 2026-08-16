@@ -10875,8 +10875,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Aaron's Room compiled script (scr_seq_release/narc_0182.bin) calls
+    // SetFlag (opcode 0x001E) with a literal argument of 176, at byte
+    // offset 61 (the only occurrence of the SetFlag opcode in this bank).
     'elite-four-aaron-aaron': {
-        saveCondition: { type: 'flag', flag: -1 },
+        saveCondition: { type: 'flag', flag: 176 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'elite-four-aaron',
         name: 'Aaron',
@@ -10940,8 +10943,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Bertha's Room compiled script (scr_seq_release/narc_0184.bin) calls
+    // SetFlag (opcode 0x001E) with a literal argument of 177, at byte
+    // offset 61 (the only occurrence of the SetFlag opcode in this bank).
     'elite-four-bertha-bertha': {
-        saveCondition: { type: 'flag', flag: -1 },
+        saveCondition: { type: 'flag', flag: 177 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'elite-four-bertha',
         name: 'Bertha',
@@ -11000,8 +11006,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Flint's Room compiled script (scr_seq_release/narc_0186.bin) calls
+    // SetFlag (opcode 0x001E) with a literal argument of 178, at byte
+    // offset 61 (the only occurrence of the SetFlag opcode in this bank).
     'elite-four-flint-flint': {
-        saveCondition: { type: 'flag', flag: -1 },
+        saveCondition: { type: 'flag', flag: 178 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'elite-four-flint',
         name: 'Flint',
@@ -11065,8 +11074,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Lucian's Room compiled script (scr_seq_release/narc_0188.bin) calls
+    // SetFlag (opcode 0x001E) with a literal argument of 179, at byte
+    // offset 61 (the only occurrence of the SetFlag opcode in this bank).
     'elite-four-lucian-lucian': {
-        saveCondition: { type: 'flag', flag: -1 },
+        saveCondition: { type: 'flag', flag: 179 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'elite-four-lucian',
         name: 'Lucian',
@@ -11124,8 +11136,28 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    // Cynthia's Room compiled script (scr_seq_release/narc_0190.bin) calls
+    // SetFlag (opcode 0x001E) with a literal argument of 180, at byte
+    // offset 82 -- structurally the same position (same surrounding
+    // opcode pattern) as the analogous real SetFlag call in each of the
+    // other four gauntlet rooms, and directly sequential with their own
+    // flags (176/177/178/179). Five other byte-sequences matching the
+    // SetFlag opcode appear elsewhere in this (longer, 276-byte) bank, but
+    // none share that surrounding pattern, so they're unrelated
+    // coincidental byte alignments, not real SetFlag calls, from this
+    // room's extra Hall of Fame/credits setup.
+    //
+    // This is a real divergence from Platinum, not a leftover placeholder:
+    // Platinum's Cynthia battle uses `{ type: 'gameClear' }`, reading the
+    // save's generic isMainStoryCleared byte. No script command in this
+    // decomp calls PlayerProfile_SetGameClearFlag (searched every
+    // arm9/src/scrcmd*.c and hall_of_fame.c) -- it's set by native game
+    // logic outside the scripting VM entirely, not from this room's script.
+    // D/P's own script only ever sets its own dedicated flag 180 here, so
+    // that -- not gameClear -- is what this app can actually detect from a
+    // decrypted D/P save.
     'champion-cynthia-cynthia': {
-        saveCondition: { type: 'flag', flag: -1 },
+        saveCondition: { type: 'flag', flag: 180 },
         aiFlags: [AiFlag.Basic],
         trainerClass: 'champion-cynthia',
         name: 'Cynthia',
