@@ -213,7 +213,7 @@ DataOverrides<PokemonData>; moves?: DataOverrides<MoveData> }` field.**
 | 0     | Spreadsheet recon (structure/tabs/shape only)                                                                                                      | ✅ Done — see above                                                                                                                                                                                                                                                                                        |
 | 0.5   | Override/patch architecture (shared type + helper + wiring)                                                                                        | ✅ Done — see "Architecture" section above                                                                                                                                                                                                                                                                 |
 | 1     | `pokemon.ts` overrides — sparse stats/types/abilities/evolution diffs + dense per-species learnset                                                 | ✅ **DONE — full national dex (505 species+form entries) complete as of 2026-08-16.** See notes below for methodology/gotchas if extending or auditing this data.                                                                                                                                          |
-| 2     | `moves.ts` overrides — sparse move diffs from EVOLUTiON/TYPE/MOVES tab                                                                             | Not started                                                                                                                                                                                                                                                                                                |
+| 2     | `moves.ts` overrides — Gen4-vs-USUM value diffs + backported/removed moves                                                                         | ✅ **DONE** — 129 overrides + 11 removals, verified end-to-end. See notes below.                                                                                                                                                                                                                           |
 | 3     | ~~`items.ts`~~ — N/A, items unchanged, no override table                                                                                           | ✅ Done (nothing to author)                                                                                                                                                                                                                                                                                |
 | 4     | `encounters.ts` — wild encounter tables, fully independent dataset (must land before locations exist — see onboard-new-game skill sequencing note) | Not started                                                                                                                                                                                                                                                                                                |
 | 5     | `locations/*.ts` + `maps/*.png`                                                                                                                    | Not started — open question: does this hack reuse Platinum's map layouts, or change/add areas? Ask user before assuming reuse.                                                                                                                                                                             |
@@ -835,6 +835,124 @@ flying]`, Altaria `[dragon, fairy]`, matching the sheet's own
   intentional primary/secondary swap and keep the override — order
   differences in `types` are exactly as meaningful as slot differences in
   `abilities`, not noise to normalize away.
+
+## Phase 2 scope decisions (user-confirmed, 2026-08-16)
+
+- **Move-change scope is NOT limited to the sheet's explicit MOVE
+  CHANGES/MOVE MODIFICATIONS list** (~20-25 named moves) — the sheet's own
+  blanket statement ("the numbers of all moves are updated to match
+  Ultra Sun and Ultra Moon") is literal and authoritative. **The correct
+  approach: diff every move's value as of Generation 7 (USUM) against its
+  value as of Generation 4 (vanilla Platinum's own baseline), for all
+  ~863 moves, and override every move where they differ** — not just the
+  ones individually named in the sheet's changelog. This is a
+  fundamentally bigger scope than every other phase so far (which only
+  act on explicitly-sourced sheet content) — confirmed directly by the
+  user, don't second-guess it back down to "only the named list."
+- **This app's shared `src/lib/data/raw/moves.json` already tracks a
+  move's value history across every generation where PokeAPI recorded a
+  real change** (via the existing `npm run pokeapi:moves` script) — so
+  "value as of Gen 7/USUM" is just
+  `GenerationHelpers.resolveGeneration(move.valuesByGeneration, 7)`, no
+  new per-move PokeAPI calls needed beyond what that script already
+  fetches. Per the user's explicit request, re-ran `npm run pokeapi:moves`
+  once to confirm the shared vanilla data was current before diffing —
+  it was (zero real data changes from the re-fetch).
+- **Gotcha confirmed the hard way: `npm run pokeapi:moves` is a full
+  regeneration, not incremental, and wiped the hand-added `sketch` entry**
+  (batch 6's fix — PokeAPI moves with `pp < 2`, i.e. Sketch's 1 PP, are
+  deliberately excluded by the script's own `MIN_PP` filter, see
+  `src/lib/scripts/pokeapi/moves.ts`). Re-added it immediately after the
+  re-fetch; confirmed via `git diff --stat` that the file is otherwise
+  byte-for-byte back to its pre-refetch state. **If `pokeapi:moves` is
+  ever re-run again in the future, re-check `sketch` still exists
+  afterward** — it will need to be re-added again since the script has no
+  mechanism to preserve manually-added entries.
+- **Replaced/"unavailable" moves (Barrage→Draining Kiss, Brine→Scald,
+  etc. — ~11 pairs) must not appear in the Moves subtab for Renegade
+  Platinum.** Confirmed with the user: no special "unavailable" concept
+  needed in the data model — the old move slugs (Barrage, Brine,
+  Constrict, Horn Drill, Lunar Dance, Luster Purge, Mist Ball, Sand Tomb,
+  Submission, Twister, Volt Tackle) must be actively excluded from
+  whatever `RENEGADE_PLATINUM_DATA_SOURCE.moves` resolves to, since the
+  override-merge mechanism as built only ever adds/patches keys, never
+  removes them. **Needs an actual mechanism decision** (a small
+  RP-local excluded-moves filter vs. extending
+  `DataOverrideHelpers`/`DataOverrides<T>` to support removal generally)
+  before this phase's moves.ts work is complete — not yet implemented as
+  of this note.
+- **Real, sizable Phase-1 correction found and fixed while starting Phase
+  2: "Twister" was used as a `tutor`-method learnset entry across ~75
+  already-completed species** (Charizard, the whole Pidgey/Dragonite/
+  Latios/Latias lines, Gyarados, Kingdra, Togekiss, etc. — extracted
+  verbatim from the LEARNSETS tab's tutor-move text, which still used the
+  old move's name even though it's one of the 11 retired "MOVE
+  REPLACEMENTS" moves). **User's explicit instruction: remove these
+  entries entirely — do NOT replace them with Hurricane.** All 75 `{slug:
+'twister', method: 'tutor'}` entries were deleted (not swapped);
+  verified zero `twister` references remain anywhere in
+  `pokemon-overrides.json`, `tsc` clean, merge still resolves. **The
+  other 10 replaced-move old-names (Barrage, Brine, Constrict, Horn
+  Drill, Lunar Dance, Luster Purge, Mist Ball, Sand Tomb, Submission,
+  Volt Tackle) were checked too and don't appear anywhere in
+  already-written learnsets** — they're niche enough that they never
+  came up, so no equivalent cleanup was needed for them. **If any future
+  batch/correction pass surfaces one of these 10 old names in a
+  learnset, remove it the same way (delete, don't replace)**, per this
+  established precedent — don't assume they need the Hurricane-style
+  swap treatment either, since the user was explicit about removal only.
+- **A related, deeper finding: moves introduced after Generation 4 in
+  real Pokémon history need special handling to work at all for RP.**
+  `MoveHelpers.getAllMoves`/`getMoveForGeneration` filter by
+  `move.introducedInGeneration <= game.generation` (4 for RP) and
+  `GenerationHelpers.resolveGeneration(valuesByGeneration, generation)`
+  — a move whose earliest `valuesByGeneration` entry is `fromGeneration:
+5` or later has **no valid entry at all** for `generation: 4`, so it
+  would silently fail to resolve/display for RP even if it's genuinely
+  used in an RP Pokémon's learnset. **Exactly 11 moves already used in
+  RP learnsets hit this** — Bulldoze, Dazzling Gleam, Disarming Voice,
+  Draining Kiss, Drill Run, Hurricane, Icicle Crash, Moonblast, Play
+  Rough, Scald, Wild Charge — which are precisely the 11 "new" moves from
+  the MOVE REPLACEMENTS list (Hurricane specifically replaces Twister
+  game-wide, e.g. as the new TM88, matching the reference TM/HM table
+  saved earlier in this doc). **Each of these 11 needs a
+  `RENEGADE_PLATINUM_MOVES` override with BOTH an `introducedInGeneration:
+4` (or similar) override AND a `fromGeneration: 4` entry in
+  `valuesByGeneration`** (using their real current/Gen7 stats) — not just
+  a value-diff override like every other changed move, since without the
+  `introducedInGeneration` override they'd never even appear in RP's move
+  list regardless of what `valuesByGeneration` contains. **Done** — all 11
+  written with both fields.
+
+## Phase 2 COMPLETE (2026-08-16)
+
+- **129 move overrides written to `raw/moves-overrides.json`**: 118 real
+  Gen4-vs-Gen7(USUM) value diffs (computed across all 864 vanilla moves,
+  per the user's explicit "diff against USUM for all moves" scope
+  decision — not just the ~20-25 moves individually named in the sheet's
+  own MOVE CHANGES list) + the 11 backported post-Gen4 moves described
+  above (Hurricane counted once, in the backport set, not double-counted
+  in the 119 originally found).
+- **11 moves removed entirely** via the new
+  `DataOverrideHelpers.removeEntries` (added generically, not RP-only,
+  since "a ROM hack retires content outright" is a real recurring
+  pattern worth having in the shared mechanism) — wired into
+  `renegade-platinum/moves.ts` as a `REMOVED_MOVES` local constant,
+  applied after `applyOverrides`.
+- **End-to-end verified directly against the real merge/removal logic**
+  (not just `tsc`): final `RENEGADE_PLATINUM_MOVES` has 853 entries
+  (864 vanilla − 11 removed), Hurricane resolves with
+  `introducedInGeneration: 4` and a valid Gen-4-context value, unmodified
+  moves like Tackle pass through with vanilla's own Gen4 value untouched.
+- **Known pre-existing data-quality issue, flagged not fixed**: shared
+  vanilla `raw/moves.json` has text-encoding corruption in some
+  descriptions/effects (curly apostrophes and "é" render as `�` — e.g.
+  "Pokémon" → "Pok�mon") inherited from the existing
+  `npm run pokeapi:moves` fetch pipeline, affecting many entries
+  game-wide, not just the ones touched this phase. Cosmetic only (doesn't
+  affect gameplay-relevant data), out of scope for RP specifically since
+  it's a shared-file bug — flagged for the user to decide whether/when to
+  fix at the source.
 
 ## Other open questions to resolve when their phase comes up
 

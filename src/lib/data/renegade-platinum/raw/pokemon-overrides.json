@@ -1676,10 +1676,6 @@
                         "method": "tutor"
                     },
                     {
-                        "slug": "twister",
-                        "method": "tutor"
-                    },
-                    {
                         "slug": "blast-burn",
                         "method": "tutor"
                     },
@@ -2929,10 +2925,6 @@
                     {
                         "slug": "signal-beam",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -3530,10 +3522,6 @@
                     {
                         "slug": "mud-slap",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -3773,10 +3761,6 @@
                     },
                     {
                         "slug": "mud-slap",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -4045,10 +4029,6 @@
                     },
                     {
                         "slug": "mud-slap",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -4844,10 +4824,6 @@
                     {
                         "slug": "mud-slap",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -5111,10 +5087,6 @@
                     },
                     {
                         "slug": "mud-slap",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -10520,10 +10492,6 @@
                     {
                         "slug": "heat-wave",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -10792,10 +10760,6 @@
                     },
                     {
                         "slug": "heat-wave",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -12482,10 +12446,6 @@
                     },
                     {
                         "slug": "signal-beam",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -21990,10 +21950,6 @@
                     {
                         "slug": "mud-slap",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -25321,10 +25277,6 @@
                     },
                     {
                         "slug": "rollout",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -31454,10 +31406,6 @@
                     {
                         "slug": "signal-beam",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -31720,10 +31668,6 @@
                     },
                     {
                         "slug": "signal-beam",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -32509,10 +32453,6 @@
                     {
                         "slug": "signal-beam",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -32733,10 +32673,6 @@
                     },
                     {
                         "slug": "signal-beam",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -35228,10 +35164,6 @@
                     },
                     {
                         "slug": "outrage",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -38679,10 +38611,6 @@
                     {
                         "slug": "iron-head",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -39293,10 +39221,6 @@
                     {
                         "slug": "signal-beam",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -39560,10 +39484,6 @@
                     {
                         "slug": "signal-beam",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -39823,10 +39743,6 @@
                     {
                         "slug": "mud-slap",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -40077,10 +39993,6 @@
                     },
                     {
                         "slug": "outrage",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     },
                     {
@@ -40340,10 +40252,6 @@
                     },
                     {
                         "slug": "outrage",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     },
                     {
@@ -40752,10 +40660,6 @@
                     },
                     {
                         "slug": "superpower",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     },
                     {
@@ -45118,10 +45022,6 @@
                     {
                         "slug": "mud-slap",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -45420,10 +45320,6 @@
                     },
                     {
                         "slug": "mud-slap",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -46808,10 +46704,6 @@
                     },
                     {
                         "slug": "heat-wave",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -48618,10 +48510,6 @@
                     {
                         "slug": "signal-beam",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -48892,10 +48780,6 @@
                     },
                     {
                         "slug": "signal-beam",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -49202,10 +49086,6 @@
                     },
                     {
                         "slug": "signal-beam",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -54766,10 +54646,6 @@
                     {
                         "slug": "mud-slap",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -57372,10 +57248,6 @@
                     },
                     {
                         "slug": "rollout",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -62987,10 +62859,6 @@
                     {
                         "slug": "mud-slap",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -63802,10 +63670,6 @@
                     },
                     {
                         "slug": "signal-beam",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     },
                     {
@@ -65506,10 +65370,6 @@
                     },
                     {
                         "slug": "rollout",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -69076,10 +68936,6 @@
                     {
                         "slug": "signal-beam",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -69397,10 +69253,6 @@
                     },
                     {
                         "slug": "signal-beam",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -73878,10 +73730,6 @@
                     {
                         "slug": "signal-beam",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -74184,10 +74032,6 @@
                     },
                     {
                         "slug": "signal-beam",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -75676,10 +75520,6 @@
                     {
                         "slug": "seed-bomb",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -75897,10 +75737,6 @@
                     },
                     {
                         "slug": "mud-slap",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -76151,10 +75987,6 @@
                     {
                         "slug": "mud-slap",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -76401,10 +76233,6 @@
                     },
                     {
                         "slug": "mud-slap",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -76719,10 +76547,6 @@
                     },
                     {
                         "slug": "seed-bomb",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -78198,10 +78022,6 @@
                     },
                     {
                         "slug": "signal-beam",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -91200,10 +91020,6 @@
                         "method": "tutor"
                     },
                     {
-                        "slug": "twister",
-                        "method": "tutor"
-                    },
-                    {
                         "slug": "draco-meteor",
                         "method": "tutor"
                     }
@@ -91587,10 +91403,6 @@
                     },
                     {
                         "slug": "outrage",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     },
                     {
@@ -92455,10 +92267,6 @@
                     {
                         "slug": "outrage",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -92781,10 +92589,6 @@
                     },
                     {
                         "slug": "outrage",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     },
                     {
@@ -97470,10 +97274,6 @@
                     {
                         "slug": "mud-slap",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -99698,10 +99498,6 @@
                     },
                     {
                         "slug": "outrage",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -103405,10 +103201,6 @@
                         "method": "tutor"
                     },
                     {
-                        "slug": "twister",
-                        "method": "tutor"
-                    },
-                    {
                         "slug": "draco-meteor",
                         "method": "tutor"
                     }
@@ -103658,10 +103450,6 @@
                     },
                     {
                         "slug": "rollout",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     },
                     {
@@ -103985,10 +103773,6 @@
                     },
                     {
                         "slug": "rollout",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     },
                     {
@@ -105907,10 +105691,6 @@
                         "method": "tutor"
                     },
                     {
-                        "slug": "twister",
-                        "method": "tutor"
-                    },
-                    {
                         "slug": "draco-meteor",
                         "method": "tutor"
                     }
@@ -106246,10 +106026,6 @@
                     },
                     {
                         "slug": "outrage",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     },
                     {
@@ -107180,10 +106956,6 @@
                     },
                     {
                         "slug": "outrage",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     },
                     {
@@ -111736,10 +111508,6 @@
                     {
                         "slug": "mud-slap",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -111962,10 +111730,6 @@
                     },
                     {
                         "slug": "mud-slap",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -112225,10 +111989,6 @@
                     },
                     {
                         "slug": "mud-slap",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -116835,10 +116595,6 @@
                     {
                         "slug": "signal-beam",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -120951,10 +120707,6 @@
                     {
                         "slug": "superpower",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -124134,10 +123886,6 @@
                     {
                         "slug": "mud-slap",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -124683,10 +124431,6 @@
                         "method": "tutor"
                     },
                     {
-                        "slug": "twister",
-                        "method": "tutor"
-                    },
-                    {
                         "slug": "draco-meteor",
                         "method": "tutor"
                     }
@@ -124965,10 +124709,6 @@
                     },
                     {
                         "slug": "outrage",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     },
                     {
@@ -125305,10 +125045,6 @@
                     },
                     {
                         "slug": "outrage",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     },
                     {
@@ -128639,10 +128375,6 @@
                     {
                         "slug": "bounce",
                         "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
-                        "method": "tutor"
                     }
                 ]
             }
@@ -128922,10 +128654,6 @@
                     },
                     {
                         "slug": "bounce",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -132391,10 +132119,6 @@
                     },
                     {
                         "slug": "signal-beam",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     }
                 ]
@@ -138619,10 +138343,6 @@
                         "method": "tutor"
                     },
                     {
-                        "slug": "twister",
-                        "method": "tutor"
-                    },
-                    {
                         "slug": "draco-meteor",
                         "method": "tutor"
                     }
@@ -138941,10 +138661,6 @@
                     },
                     {
                         "slug": "outrage",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     },
                     {
@@ -139824,10 +139540,6 @@
                         "method": "tutor"
                     },
                     {
-                        "slug": "twister",
-                        "method": "tutor"
-                    },
-                    {
                         "slug": "draco-meteor",
                         "method": "tutor"
                     }
@@ -140142,10 +139854,6 @@
                     },
                     {
                         "slug": "outrage",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     },
                     {
@@ -141966,10 +141674,6 @@
                     },
                     {
                         "slug": "signal-beam",
-                        "method": "tutor"
-                    },
-                    {
-                        "slug": "twister",
                         "method": "tutor"
                     },
                     {

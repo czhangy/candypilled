@@ -27,4 +27,20 @@ export default class DataOverrideHelpers {
 
         return merged;
     }
+
+    /**
+     * base with the given slugs deleted — used when a ROM hack removes
+     * content entirely (e.g. a move retired and replaced game-wide)
+     * rather than just patching its fields. A slug not present in base is
+     * ignored.
+     */
+    static removeEntries<T>(
+        base: Record<string, T>,
+        slugs: string[]
+    ): Record<string, T> {
+        const removed = new Set(slugs);
+        return Object.fromEntries(
+            Object.entries(base).filter(([slug]) => !removed.has(slug))
+        );
+    }
 }
