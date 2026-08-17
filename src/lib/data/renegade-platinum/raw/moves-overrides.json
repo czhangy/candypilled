@@ -1815,5 +1815,33 @@
                 "description": "The user shrouds itself in electricity and smashes into its target. This also damages the user a little."
             }
         ]
+    },
+    "frustration": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 102,
+                "accuracy": 100,
+                "pp": 20,
+                "effect": "Always deals 102 power, regardless of happiness.",
+                "effectChance": null,
+                "description": "A full-power attack. In this hack it always hits its maximum power instead of scaling with the user's happiness."
+            }
+        ]
+    },
+    "return": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 102,
+                "accuracy": 100,
+                "pp": 20,
+                "effect": "Always deals 102 power, regardless of happiness.",
+                "effectChance": null,
+                "description": "A full-power attack. In this hack it always hits its maximum power instead of scaling with the user's happiness."
+            }
+        ]
     }
 }

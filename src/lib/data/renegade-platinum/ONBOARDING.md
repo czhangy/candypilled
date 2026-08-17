@@ -1230,10 +1230,12 @@ flying]`, Altaria `[dragon, fairy]`, matching the sheet's own
   later showed Moltres's static entry sits directly under "ROUTE 223",
   not Victory Road at all — corrected to `sinnoh-sea-route-223`.
 - **Victory Road turned out far more granular in the sheet than
-  vanilla's flat 1F/2F/B1F split**: RP distinguishes "1Fa", "1Fb (with
-  3 sub-rooms sharing one table)", "2F", and "B1F" — recorded as
-  `sinnoh-victory-road-1fa` / `-1fb` (both new keys) plus vanilla's
-  existing `-2f` / `-b1f`.
+  vanilla's flat 1F/2F/B1F split**: RP distinguishes "1F", "1F Back (3
+  sub-rooms sharing one table)", "2F", and "B1F" — recorded as
+  `sinnoh-victory-road-1f` / `-back` (both new keys, renamed from an
+  earlier `-1fa`/`-1fb` naming once a second cross-check confirmed the
+  "back" rooms are a distinct area rather than a second 1F variant)
+  plus vanilla's existing `-2f` / `-b1f`.
 - **The Pokémon League's own approach water has two distinct, unlabeled
   Surf/Rod tables** (an outer one matching Route 223/Sunyshore's
   Tentacruel/Pelipper/Mantine + Luvdisc/Corsola rods, and an inner-lake
@@ -1278,6 +1280,126 @@ flying]`, Altaria `[dragon, fairy]`, matching the sheet's own
   `oreburgh-city-trade` content, which doesn't apply here since the
   RP sheet's Oreburgh City trade was one of the skipped/broken-link
   entries).
+
+## Kalaay QoL patch applied on top of base RP (2026-08-17)
+
+The user plays with an additional community QoL overlay patch (by "Kalaay",
+for a Drayano-hacks gauntlet) stacked on top of base Renegade Platinum. Most
+of it is emulator/UI QoL (PC menus, repels, instant friendship evos, IV
+display shortcut, NPC shop items) with nothing for this app to model. The
+parts that changed already-authored data:
+
+- **Onix's evolution changed from `use-item`/Metal Coat to `level-up` 32**
+  (`raw/pokemon-overrides.json`).
+- **All Substitute TMs removed** — stripped the `{slug: 'substitute',
+method: 'machine'}` learnset entry from all 488 species that had one
+  (`raw/pokemon-overrides.json`). The 11 species that learn Substitute via
+  level-up/tutor/egg instead were left untouched.
+- **Frustration and Return are fixed 102 BP** instead of friendship-scaled —
+  added overrides in `raw/moves-overrides.json` (`power: 102`, vanilla was
+  `power: null`).
+- **Static Beldum gift (Oreburgh City, from Steven) removed** from
+  `encounters.ts`. Wild Cave-method Beldum encounters elsewhere are
+  unaffected.
+- **Static Lapras gift (Pastoria City, level 35) removed** from
+  `encounters.ts`. Wild Surf-method Lapras encounters elsewhere are
+  unaffected.
+- **Happiny and Togepi removed from the Jubilife Trainer School egg's
+  possible hatches** in `encounters.ts`. Their other wild/gift encounters
+  elsewhere (e.g. Togepi's Eterna gift) are unaffected.
+- **Manaphy egg gift (Mr. Backlot) removed entirely** from `encounters.ts`.
+
+**Not changed, deliberately flagged as ambiguous rather than acted on**:
+the patch also says starter distributors (Jubilife Interviewer, Rowan's
+suitcase) now give one random starter instead of all three. The existing
+`jubilife-city` Gift encounter list (Bulbasaur/Charmander/Squirtle, all
+`chance: null`) already uses the same "here are the possible species, no
+odds modeled" shape as a genuinely-random gift (see the Trainer School egg
+gift, which is random and always used `chance: null` too) — there's no
+clear signal the underlying data needs to change, since this app has no
+mechanism to distinguish "certain, get-all" from "one random pick" in the
+first place. Left as-is; revisit if the user wants this distinguished
+somehow.
+
+Everything else in the patch (Resist Berry NPC quantity, berry tree
+yield/no-regrow, pokecenter shop NPCs, PC/repel/tutor QoL, instant
+friendship evos, IV-checking shortcut, known crash bugs) has no
+corresponding data in this app's model and was left alone.
+
+## Encounters re-verified against a second, "completely correct" sheet source (2026-08-17)
+
+The user supplied a second, independent spreadsheet
+(`docs.google.com/spreadsheets/d/1UExH51A0xx2ktc0IkQY1x-vmfNb_Zjxm`,
+gid `729957394`) and asked for `encounters.ts` to be cross-checked against
+it end-to-end, treating it as ground truth. This tab stacks multiple ROM
+hacks vertically in one sheet (not one tab per hack) — the Renegade
+Platinum section runs from the `Renegade Platinum` header row to the
+`Ren Plat End` sentinel row, with the same location-as-column-block /
+method-as-row-block layout as the original sheet.
+
+- **All 82 location blocks in this new sheet map onto locations we
+  already have** — full coverage confirmed, nothing we track was found
+  missing. The only sheet content with no home in our data is stuff
+  already known to be out of scope (Route 224 — post-credits, deliberately
+  excluded earlier) or not a wild-encounter table (Oreburgh Mining Museum
+  fossils).
+- **464 species+method level-range corrections applied** — the dominant
+  finding, exactly as expected going in: we'd mostly recorded a single
+  fixed level where the real game has a small range (e.g. `4-4` → `4-5`).
+- **22 entries removed** that existed in our data with no corroboration
+  anywhere in the new sheet (verified as genuine absences, not blank-cell
+  parsing artifacts — see the gotcha below) — e.g. Roselia at Route 204
+  North, Golduck/Psyduck at Route 209 Surf, Vespiquen at Fuego
+  Ironworks/Route 218 Honey Tree, Dewgong/Lapras/Sealeo at the Pokémon
+  League.
+- **Great Marsh's Surf/Old Rod/Good Rod/Super Rod tables were added to all
+  6 areas** (Wooper/Quagsire Surf, Magikarp/Barboach/Carvanha per rod
+  tier, Gyarados/Whiscash/Sharpedo Super Rod) — previously only the
+  Binoculars/grass table existed there (a known, flagged gap). Confirmed
+  identical across all three area-pairs (1&2, 3&4, 5&6), same as their
+  Binoculars tables are identical within a pair — but **the Binoculars
+  species differ between pairs** (1&2: Bibarel/Quagsire/Tropius/Tangela/
+  Carnivine; 3&4: Parasect/Exeggcute/Croagunk/Toxicroak/Kangaskhan/Yanma;
+  5&6: Skorupi/Gulpin/Shroomish/Swalot/Breloom/Drapion) even though the
+  new Surf/Rod table is the same across all six — don't assume a
+  same-content assumption transfers from one method to another within the
+  same location group.
+- **Victory Road's two 1F-level keys were renamed and given real
+  identities**: `sinnoh-victory-road-1fa` → `sinnoh-victory-road-1f`,
+  `sinnoh-victory-road-1fb` → `sinnoh-victory-road-back` (matches the
+  sheet's own "Victory Road 1F" vs. "Victory Road 1F (Back 1, 2, 3)"
+  distinction — "back" is a separate connected area, not a second variant
+  of the same 1F). `sinnoh-victory-road-back` was also missing its
+  Surf/Rod table (Floatzel/Golbat Surf, Magikarp/Gyarados rods) — added.
+  No location files reference either key yet (Victory Road hasn't reached
+  the locations/splits phase), so the rename had no other call sites to
+  update.
+- **Route 219 Good Rod**: corrected Magikarp → Krabby (a genuine species
+  swap, not a level issue).
+- **Known extraction gotcha, cost real back-and-forth**: this sheet's
+  Level column uses vertically-merged cells for many blocks, and **both
+  the CSV export and the gviz JSON endpoint return a blank/`None` value
+  for every row of a merge except silently — not just the anchor row full
+  of real data like usual, the whole block can come back empty with no
+  error.** This produced two distinct false positives that the user had
+  to catch directly by eyeballing the live sheet UI:
+    1. Species whose only sheet evidence was inside a blank-level block
+       (e.g. Route 202's whole grass table, Lake Verity's Wynaut, Mt.
+       Coronet B1F/R216 Entry) got misclassified as "genuinely absent from
+       the sheet" by a first-pass diff, when they were actually present —
+       just with no extractable level data. **Fix: before concluding a
+       species is absent from this sheet, check for ANY entry (even
+       blank-level) for that species/method/location, not just a
+       level-bearing one.**
+    2. Route 202 specifically: the sheet UI visually shows level 5 for its
+       grass encounters, but this is not recoverable from any export
+       (CSV or gviz) — the merge's underlying value cell genuinely returns
+       empty via both APIs. Our existing data already had level 5 there
+       and needed no change, but **this class of gap is invisible to
+       automated diffing** — a location with a real level value in the UI
+       that both export paths return as blank has to be caught by the
+       user looking at the actual sheet, not assumed clean just because
+       the diff script found nothing to flag.
 
 ## Other open questions to resolve when their phase comes up
 

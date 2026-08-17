@@ -192,10 +192,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -430,10 +426,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -718,10 +710,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -986,10 +974,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -1258,10 +1242,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -1608,10 +1588,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -1887,10 +1863,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -2148,10 +2120,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -2473,10 +2441,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -2887,10 +2851,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "defog",
                         "method": "machine"
                     },
@@ -3232,10 +3192,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -3476,10 +3432,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -3713,10 +3665,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -3984,10 +3932,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -4244,10 +4188,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -4550,10 +4490,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -4783,10 +4719,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -5050,10 +4982,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -5298,10 +5226,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -5585,10 +5509,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -5842,10 +5762,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -6087,10 +6003,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -6381,10 +6293,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -6691,10 +6599,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -6945,10 +6849,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -7176,10 +7076,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -7476,10 +7372,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -7754,10 +7646,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -7985,10 +7873,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -8282,10 +8166,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -8662,10 +8542,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -8986,10 +8862,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -9276,10 +9148,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "energy-ball",
                         "method": "machine"
                     },
@@ -9498,10 +9366,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -9860,10 +9724,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -10183,10 +10043,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -10447,10 +10303,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -10719,10 +10571,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -10959,10 +10807,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -11187,10 +11031,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -11398,10 +11238,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -11633,10 +11469,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -11909,10 +11741,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -12134,10 +11962,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -12405,10 +12229,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "defog",
                         "method": "machine"
                     },
@@ -12641,10 +12461,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -12899,10 +12715,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -13177,10 +12989,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -13517,10 +13325,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -13782,10 +13586,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -14091,10 +13891,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -14405,10 +14201,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -14743,10 +14535,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -15007,10 +14795,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -15208,10 +14992,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -15421,10 +15201,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -15679,10 +15455,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -15986,10 +15758,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -16219,10 +15987,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -16550,10 +16314,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -16924,10 +16684,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -17186,10 +16942,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -17486,10 +17238,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -17815,10 +17563,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -18063,10 +17807,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -18292,10 +18032,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -18528,10 +18264,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -18747,10 +18479,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -18977,10 +18705,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -19224,10 +18948,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -19527,10 +19247,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -19877,10 +19593,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -20145,10 +19857,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -20406,10 +20114,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -20704,10 +20408,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -21074,10 +20774,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -21351,10 +21047,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -21602,10 +21294,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -21884,10 +21572,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -22134,10 +21818,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -22406,10 +22086,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -22637,10 +22313,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -22897,10 +22569,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -23185,10 +22853,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -23510,10 +23174,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -23729,10 +23389,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -23936,10 +23592,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -24235,10 +23887,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -24567,10 +24215,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -24935,10 +24579,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -25236,10 +24876,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -25292,8 +24928,8 @@
                             "slug": "steelix",
                             "methods": [
                                 {
-                                    "trigger": "use-item",
-                                    "item": "metal-coat"
+                                    "trigger": "level-up",
+                                    "level": 32
                                 }
                             ],
                             "evolvesTo": []
@@ -25546,10 +25182,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -25852,10 +25484,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -26088,10 +25716,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -26390,10 +26014,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -26650,10 +26270,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "bug-buzz",
                         "method": "machine"
                     },
@@ -26896,10 +26512,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -27155,10 +26767,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -27384,10 +26992,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -27657,10 +27261,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -27978,10 +27578,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -28254,10 +27850,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -28520,10 +28112,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -28841,10 +28429,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -29128,10 +28712,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "snore",
                         "method": "tutor"
                     },
@@ -29386,10 +28966,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -29698,10 +29274,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -30092,10 +29664,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -30507,10 +30075,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -30785,10 +30349,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -31109,10 +30669,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -31361,10 +30917,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -31624,10 +31176,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -31900,10 +31448,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -32159,10 +31703,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -32415,10 +31955,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -32625,10 +32161,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -33003,10 +32535,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -33280,10 +32808,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -33648,10 +33172,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -33909,10 +33429,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -34197,10 +33713,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -34497,10 +34009,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -34784,10 +34292,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -35107,10 +34611,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -35402,10 +34902,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -35651,10 +35147,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -35968,10 +35460,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -36328,10 +35816,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -36671,10 +36155,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -37040,10 +36520,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -37323,10 +36799,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -37620,10 +37092,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -37892,10 +37360,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -38211,10 +37675,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -38553,10 +38013,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -38884,10 +38340,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -39171,10 +38623,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -39434,10 +38882,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -39694,10 +39138,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -39964,10 +39404,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -40216,10 +39652,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -40560,10 +39992,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -41005,10 +40433,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -41508,10 +40932,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -41760,10 +41180,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -42006,10 +41422,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -42312,10 +41724,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -42551,10 +41959,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -42776,10 +42180,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -43092,10 +42492,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -43365,10 +42761,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -43654,10 +43046,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -44020,10 +43408,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -44339,10 +43723,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -44691,10 +44071,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -44973,10 +44349,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -45275,10 +44647,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -45571,10 +44939,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -45891,10 +45255,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -46157,10 +45517,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "bug-buzz",
                         "method": "machine"
                     },
@@ -46402,10 +45758,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -46663,10 +46015,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -46904,10 +46252,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -47151,10 +46495,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -47344,10 +46684,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -47582,10 +46918,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -47827,10 +47159,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -48099,10 +47427,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -48440,10 +47764,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -48739,10 +48059,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -49033,10 +48349,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -49267,10 +48579,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "magnet-rise",
                         "method": "tutor"
                     },
@@ -49474,10 +48782,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -49759,10 +49063,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -50028,10 +49328,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -50281,10 +49577,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -50600,10 +49892,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -50931,10 +50219,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -51204,10 +50488,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -51472,10 +50752,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "helping-hand",
                         "method": "tutor"
                     },
@@ -51717,10 +50993,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -51973,10 +51245,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -52254,10 +51522,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -52540,10 +51804,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -52808,10 +52068,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -53042,10 +52298,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -53313,10 +52565,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -53628,10 +52876,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -53988,10 +53232,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -54333,10 +53573,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -54593,10 +53829,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -54969,10 +54201,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -55294,10 +54522,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -55683,10 +54907,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -55940,10 +55160,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -56207,10 +55423,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -56534,10 +55746,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -56852,10 +56060,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -57195,10 +56399,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -57516,10 +56716,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -57860,10 +57056,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -58136,10 +57328,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -58443,10 +57631,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -58709,10 +57893,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -59000,10 +58180,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -59320,10 +58496,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -59612,10 +58784,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -59942,10 +59110,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -60236,10 +59400,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -60549,10 +59709,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -60803,10 +59959,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -61086,10 +60238,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -61392,10 +60540,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -61636,10 +60780,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -61922,10 +61062,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -62205,10 +61341,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -62482,10 +61614,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -62801,10 +61929,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -63084,10 +62208,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "rock-smash",
                         "method": "machine"
                     },
@@ -63356,10 +62476,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -63625,10 +62741,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -63877,10 +62989,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -64166,10 +63274,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -64494,10 +63598,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -64777,10 +63877,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -65085,10 +64181,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -65326,10 +64418,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -65633,10 +64721,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -65885,10 +64969,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "rock-smash",
                         "method": "machine"
                     },
@@ -66134,10 +65214,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -66411,10 +65487,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -66803,10 +65875,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -67087,10 +66155,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -67359,10 +66423,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -67616,10 +66676,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -67894,10 +66950,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "rock-smash",
                         "method": "machine"
                     },
@@ -68146,10 +67198,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -68508,10 +67556,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -68850,10 +67894,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -69188,10 +68228,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -69498,10 +68534,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -69793,10 +68825,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -70078,10 +69106,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -70436,10 +69460,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -70701,10 +69721,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -70978,10 +69994,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -71326,10 +70338,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -71590,10 +70598,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -71863,10 +70867,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -72190,10 +71190,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -72478,10 +71474,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "rock-smash",
                         "method": "machine"
                     },
@@ -72751,10 +71743,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -73000,10 +71988,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -73320,10 +72304,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -73692,10 +72672,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "defog",
                         "method": "machine"
                     },
@@ -73995,10 +72971,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "defog",
                         "method": "machine"
                     },
@@ -74220,10 +73192,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -74470,10 +73438,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -74715,10 +73679,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -74936,10 +73896,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -75184,10 +74140,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -75446,10 +74398,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -75693,10 +74641,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -75945,10 +74889,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -76185,10 +75125,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -76487,10 +75423,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -76804,10 +75736,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -77107,10 +76035,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -77429,10 +76353,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -77677,10 +76597,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -77969,10 +76885,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "defog",
                         "method": "machine"
                     },
@@ -78227,10 +77139,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -78513,10 +77421,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -78777,10 +77681,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -79061,10 +77961,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -79375,10 +78271,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -79597,10 +78489,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -79863,10 +78751,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -80097,10 +78981,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -80341,10 +79221,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -80617,10 +79493,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -80958,10 +79830,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -81229,10 +80097,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -81518,10 +80382,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -81748,10 +80608,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -82018,10 +80874,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -82334,10 +81186,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "icy-wind",
                         "method": "tutor"
                     },
@@ -82575,10 +81423,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -82917,10 +81761,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -83284,10 +82124,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -83597,10 +82433,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -83925,10 +82757,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -84351,10 +83179,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -84724,10 +83548,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -85076,10 +83896,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -85337,10 +84153,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -85579,10 +84391,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -85830,10 +84638,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -86097,10 +84901,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -86411,10 +85211,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -86736,10 +85532,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "air-cutter",
                         "method": "tutor"
                     },
@@ -87008,10 +85800,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -87268,10 +86056,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -87546,10 +86330,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -87791,10 +86571,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -88098,10 +86874,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -88384,10 +87156,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -88654,10 +87422,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -88890,10 +87654,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -89160,10 +87920,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -89434,10 +88190,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -89712,10 +88464,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -90027,10 +88775,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -90351,10 +89095,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -90661,10 +89401,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -90953,10 +89689,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -91334,10 +90066,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -91649,10 +90377,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -91949,10 +90673,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -92222,10 +90942,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -92541,10 +91257,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -92898,10 +91610,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -93195,10 +91903,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -93501,10 +92205,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -93821,10 +92521,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -94054,10 +92750,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -94313,10 +93005,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -94603,10 +93291,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -94926,10 +93610,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -95266,10 +93946,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -95594,10 +94270,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -95880,10 +94552,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -96177,10 +94845,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -96446,10 +95110,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -96755,10 +95415,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -96947,10 +95603,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -97232,10 +95884,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -97497,10 +96145,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -97837,10 +96481,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -98173,10 +96813,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -98495,10 +97131,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -98786,10 +97418,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -99137,10 +97765,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -99438,10 +98062,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -99749,10 +98369,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -100154,10 +98770,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -100463,10 +99075,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -100782,10 +99390,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "rock-tomb",
                         "method": "machine"
                     },
@@ -101054,10 +99658,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -101334,10 +99934,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -101639,10 +100235,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -101848,10 +100440,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -102097,10 +100685,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -102370,10 +100954,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -102665,10 +101245,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -102925,10 +101501,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -103162,10 +101734,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -103406,10 +101974,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -103701,10 +102265,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -104068,10 +102628,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -104404,10 +102960,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -104715,10 +103267,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -104994,10 +103542,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -105294,10 +103838,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -105616,10 +104156,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -105961,10 +104497,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -106239,10 +104771,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -106556,10 +105084,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -106884,10 +105408,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -107216,10 +105736,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -107571,10 +106087,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -107915,10 +106427,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -108249,10 +106757,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -108577,10 +107081,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -108831,10 +107331,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -109079,10 +107575,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -109402,10 +107894,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -109681,10 +108169,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -109996,10 +108480,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -110370,10 +108850,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -110640,10 +109116,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -110884,10 +109356,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -111207,10 +109675,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -111458,10 +109922,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -111678,10 +110138,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -111940,10 +110396,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fly",
                         "method": "machine"
                     },
@@ -112187,10 +110639,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -112489,10 +110937,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -112865,10 +111309,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -113114,10 +111554,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -113352,10 +111788,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -113611,10 +112043,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -113811,10 +112239,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -114052,10 +112476,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -114371,10 +112791,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -114728,10 +113144,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -115061,10 +113473,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -115381,10 +113789,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -115725,10 +114129,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "bug-buzz",
                         "method": "machine"
                     },
@@ -115983,10 +114383,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -116249,10 +114645,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -116534,10 +114926,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -116867,10 +115255,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -117149,10 +115533,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -117393,10 +115773,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -117668,10 +116044,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -117890,10 +116262,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -118125,10 +116493,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "helping-hand",
                         "method": "tutor"
                     },
@@ -118317,10 +116681,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -118561,10 +116921,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -118862,10 +117218,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -119178,10 +117530,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -119484,10 +117832,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -119787,10 +118131,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -120114,10 +118454,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -120396,10 +118732,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -120634,10 +118966,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -120957,10 +119285,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -121284,10 +119608,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -121518,10 +119838,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -121870,10 +120186,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -122200,10 +120512,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -122468,10 +120776,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -122761,10 +121065,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -123026,10 +121326,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -123356,10 +121652,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -123567,10 +121859,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -123821,10 +122109,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -124101,10 +122385,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "icy-wind",
                         "method": "tutor"
                     },
@@ -124360,10 +122640,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -124641,10 +122917,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -124968,10 +123240,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -125286,10 +123554,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -125583,10 +123847,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -125950,10 +124210,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -126196,10 +124452,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -126430,10 +124682,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -126722,10 +124970,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -127060,10 +125304,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -127379,10 +125619,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -127749,10 +125985,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -128060,10 +126292,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -128302,10 +126530,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -128585,10 +126809,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "surf",
                         "method": "machine"
                     },
@@ -128818,10 +127038,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -129090,10 +127306,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -129393,10 +127605,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -129743,10 +127951,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -130015,10 +128219,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -130342,10 +128542,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -130748,10 +128944,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -131106,10 +129298,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -131444,10 +129632,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -131779,10 +129963,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -132027,10 +130207,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -132326,10 +130502,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -132695,10 +130867,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -133058,10 +131226,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "strength",
                         "method": "machine"
                     },
@@ -133406,10 +131570,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -133711,10 +131871,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -134041,10 +132197,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -134388,10 +132540,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -134710,10 +132858,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -135093,10 +133237,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -135438,10 +133578,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "ice-punch",
                         "method": "tutor"
                     },
@@ -135713,10 +133849,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "ominous-wind",
                         "method": "tutor"
                     },
@@ -135970,10 +134102,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -136237,10 +134365,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "ominous-wind",
                         "method": "tutor"
                     },
@@ -136498,10 +134622,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -136773,10 +134893,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "ominous-wind",
                         "method": "tutor"
                     },
@@ -137034,10 +135150,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -137325,10 +135437,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -137628,10 +135736,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -137950,10 +136054,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -138256,10 +136356,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -138584,10 +136680,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -138877,10 +136969,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "flash-cannon",
                         "method": "machine"
                     },
@@ -139144,10 +137232,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -139437,10 +137521,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -139757,10 +137837,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -140058,10 +138134,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "trick-room",
                         "method": "machine"
                     },
@@ -140267,10 +138339,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -140545,10 +138613,6 @@
                     },
                     {
                         "slug": "u-turn",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -140895,10 +138959,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "cut",
                         "method": "machine"
                     },
@@ -141135,10 +139195,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "substitute",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "zen-headbutt",
                         "method": "tutor"
                     },
@@ -141352,10 +139408,6 @@
                     },
                     {
                         "slug": "swagger",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
@@ -141934,10 +139986,6 @@
                     },
                     {
                         "slug": "hurricane",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "substitute",
                         "method": "machine"
                     },
                     {
