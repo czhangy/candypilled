@@ -203,11 +203,11 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         spriteSlug: 'picnicker',
     },
     'pkmn-breeder-f': {
-        displayName: 'Pkmn Breeder',
+        displayName: 'PKMN Breeder',
         spriteSlug: 'pkmn-breeder-f',
     },
     'pkmn-breeder-m': {
-        displayName: 'Pkmn Breeder',
+        displayName: 'PKMN Breeder',
         spriteSlug: 'pkmn-breeder-m',
     },
     'pkmn-ranger-f': {
