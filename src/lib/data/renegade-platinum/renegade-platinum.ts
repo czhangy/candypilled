@@ -8,15 +8,14 @@ import { Game } from '@/lib/static/types';
 import { BATTLES } from './battles';
 import { ENCOUNTERS } from './encounters';
 import { MET_LOCATIONS } from './met-locations';
+import ROARK from './splits/roark';
 
-// Scaffolded ahead of full onboarding — everything below is either
-// structurally certain (data source, shared assets, generation, gender
-// selection) or an explicit placeholder for a field that needs real
-// research (see the TODOs). Registered in GAMES so it's browsable as a
-// RunEntry, but clicking "New" on it still crashes:
-// EncounterHelpers.getStarterLocationName has nothing to resolve with an
-// empty ENCOUNTERS. Get real encounter data in before treating this as
-// clickable, per the onboard-new-game skill's sequencing note.
+// Onboarding in progress — see ONBOARDING.md for full status. Pokémon and
+// move data are complete; encounters/locations/splits are being authored
+// incrementally, one area at a time (currently just the very start of the
+// game). "New" is clickable (Route 201 has a real Starter encounter for
+// EncounterHelpers.getStarterLocationName to resolve), but most of the
+// map has no encounters/battles/splits wired in yet.
 const RENEGADE_PLATINUM: Game = {
     name: 'Renegade Platinum',
     logo: '/logos/renegade-platinum.png',
@@ -55,7 +54,7 @@ const RENEGADE_PLATINUM: Game = {
         'Pick the penguin.',
         'Turtle time.',
     ],
-    splits: [],
+    splits: [ROARK],
 };
 
 export default RENEGADE_PLATINUM;

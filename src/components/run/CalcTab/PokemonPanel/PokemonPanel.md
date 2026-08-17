@@ -15,9 +15,7 @@ editable: one for the player's box Pokémon (initial species selected via
 species selected via `TeamSelectPanel`, which in turn depends on a trainer
 being selected via `BattleSelectPanel`) — the box/team selection only seeds
 the starting Pokémon; `onSpeciesChange` lets it be freely overridden
-afterward for what-if theorycrafting. Passing `placeholder` replaces the
-entire panel with a message instead of the Pokémon's details (used for the
-trainer side before a battle is selected).
+afterward for what-if theorycrafting.
 
 ## Props
 
@@ -45,7 +43,6 @@ trainer side before a battle is selected).
 | `onNatureChange`   | `(value: string) => void`                                                      | Yes      | -       | Called when the nature dropdown changes                                                 |
 | `onSpeciesChange`  | `(slug: string) => void`                                                       | Yes      | -       | Called when the species dropdown changes                                                |
 | `onStatusChange`   | `(value: string) => void`                                                      | Yes      | -       | Called when the status dropdown changes                                                 |
-| `placeholder`      | `string`                                                                       | No       | -       | If present, replaces the panel's content with this message                              |
 | `pokemonSlug`      | `string`                                                                       | No       | -       | The selected Pokémon's species slug; absent shows "None selected" and hides its details |
 | `showEvs`          | `boolean`                                                                      | Yes      | -       | Whether to show the EV column (the global "Use EVs" setting), passed to `StatsTable`    |
 | `speedComparison`  | `SpeedComparison \| undefined`                                                 | Yes      | -       | How this Pokémon's Speed compares to the opponent's; passed through to `StatsTable`     |

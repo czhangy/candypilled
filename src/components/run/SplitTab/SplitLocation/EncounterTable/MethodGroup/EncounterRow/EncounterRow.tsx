@@ -45,6 +45,8 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
         EncounterMethod.Grass,
         EncounterMethod.HoneyTree,
         EncounterMethod.OldRod,
+        EncounterMethod.PokeRadar,
+        EncounterMethod.SuperRod,
         EncounterMethod.Surf,
         EncounterMethod.Walking,
     ]);

@@ -20,6 +20,8 @@ representing the method, followed by that method's encounter rows.
 ## Computations
 
 - `getMethodLabel` — `method`'s slug formatted as a title-cased label
-  (e.g. `old-rod` becomes "Old Rod")
+  (e.g. `old-rod` becomes "Old Rod"), except `poke-radar`, which is
+  spelled out as "Poké Radar" since its accent can't be derived from the
+  slug
 - `getMethodIcon` — the icon image path for `method`, shared across
   all game variants (e.g. `/encounter-methods/grass.png`)

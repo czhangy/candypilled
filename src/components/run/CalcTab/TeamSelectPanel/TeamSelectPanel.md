@@ -2,10 +2,10 @@
 
 The damage calculator's defender selection panel: a 6-wide grid of box
 sprites for the currently selected trainer's team. Clicking a sprite selects
-that team member for `TrainerPokemonPanel`, above. Shows a placeholder
-message until a battle is selected. Every other team member is annotated
-with a badge showing the predicted order the trainer AI would send it in if
-the currently selected member fainted.
+that team member for `TrainerPokemonPanel`, above. Renders nothing until a
+battle is selected. Every other team member is annotated with a badge
+showing the predicted order the trainer AI would send it in if the
+currently selected member fainted.
 
 ## Props
 

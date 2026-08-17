@@ -65,8 +65,10 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         EncounterMethod.FeebasTile,
         EncounterMethod.OldRod,
         EncounterMethod.GoodRod,
+        EncounterMethod.SuperRod,
         EncounterMethod.Surf,
         EncounterMethod.HoneyTree,
+        EncounterMethod.PokeRadar,
     ];
 
     const UNMISSABLE_ENCOUNTER_METHODS = [

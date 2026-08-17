@@ -208,20 +208,20 @@ DataOverrides<PokemonData>; moves?: DataOverrides<MoveData> }` field.**
 
 ## Phase plan &amp; status
 
-| Phase | Scope                                                                                                                                              | Status                                                                                                                                                                                                                                                                                                     |
-| ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0     | Spreadsheet recon (structure/tabs/shape only)                                                                                                      | ✅ Done — see above                                                                                                                                                                                                                                                                                        |
-| 0.5   | Override/patch architecture (shared type + helper + wiring)                                                                                        | ✅ Done — see "Architecture" section above                                                                                                                                                                                                                                                                 |
-| 1     | `pokemon.ts` overrides — sparse stats/types/abilities/evolution diffs + dense per-species learnset                                                 | ✅ **DONE — full national dex (505 species+form entries) complete as of 2026-08-16.** See notes below for methodology/gotchas if extending or auditing this data.                                                                                                                                          |
-| 2     | `moves.ts` overrides — Gen4-vs-USUM value diffs + backported/removed moves                                                                         | ✅ **DONE** — 129 overrides + 11 removals, verified end-to-end. See notes below.                                                                                                                                                                                                                           |
-| 3     | ~~`items.ts`~~ — N/A, items unchanged, no override table                                                                                           | ✅ Done (nothing to author)                                                                                                                                                                                                                                                                                |
-| 4     | `encounters.ts` — wild encounter tables, fully independent dataset (must land before locations exist — see onboard-new-game skill sequencing note) | Not started                                                                                                                                                                                                                                                                                                |
-| 5     | `locations/*.ts` + `maps/*.png`                                                                                                                    | Not started — open question: does this hack reuse Platinum's map layouts, or change/add areas? Ask user before assuming reuse.                                                                                                                                                                             |
-| 6     | `battles.ts` — trainer rosters from TRAiNERS tab, per-mon real IVs, fully independent dataset                                                      | Not started                                                                                                                                                                                                                                                                                                |
-| 7     | New trainer classes (if any surface in TRAiNERS data not already in `trainer-classes.ts`)                                                          | Not started                                                                                                                                                                                                                                                                                                |
-| 8     | `splits/*.ts` + save-condition derivation (badge bit indices)                                                                                      | Not started — gym order needs reconfirmation (see above); badge-bit source for save-condition detection is still unresolved (this hack isn't necessarily on a public decomp — the `gen4-trainer-data-extraction` skill's methodology may not directly apply; needs its own investigation once we get here) |
-| 9     | Final assembly in `renegade-platinum.ts`, drop placeholder TODO comment                                                                            | Not started                                                                                                                                                                                                                                                                                                |
-| 10    | "What changed" diff UI (reads `dataSource.overrides`) — new feature, not part of original onboarding scope                                         | Not started, not yet scoped in detail                                                                                                                                                                                                                                                                      |
+| Phase | Scope                                                                                                                                              | Status                                                                                                                                                                                                                                                        |
+| ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0     | Spreadsheet recon (structure/tabs/shape only)                                                                                                      | ✅ Done — see above                                                                                                                                                                                                                                           |
+| 0.5   | Override/patch architecture (shared type + helper + wiring)                                                                                        | ✅ Done — see "Architecture" section above                                                                                                                                                                                                                    |
+| 1     | `pokemon.ts` overrides — sparse stats/types/abilities/evolution diffs + dense per-species learnset                                                 | ✅ **DONE — full national dex (505 species+form entries) complete as of 2026-08-16.** See notes below for methodology/gotchas if extending or auditing this data.                                                                                             |
+| 2     | `moves.ts` overrides — Gen4-vs-USUM value diffs + backported/removed moves                                                                         | ✅ **DONE** — 129 overrides + 11 removals, verified end-to-end. See notes below.                                                                                                                                                                              |
+| 3     | ~~`items.ts`~~ — N/A, items unchanged, no override table                                                                                           | ✅ Done (nothing to author)                                                                                                                                                                                                                                   |
+| 4     | `encounters.ts` — wild encounter tables, fully independent dataset (must land before locations exist — see onboard-new-game skill sequencing note) | 🔶 In progress — first location (Route 201/Twinleaf Town/Sandgem Town bundle) complete. See notes below.                                                                                                                                                      |
+| 5     | `locations/*.ts` + `maps/*.png`                                                                                                                    | 🔶 Now done incrementally alongside Phase 4 (see "wiring incrementally" note below), using placeholder maps — 3 locations done (Twinleaf Town, Route 201, Sandgem Town). Real map layout reuse still an open question for whenever placeholders get replaced. |
+| 6     | `battles.ts` — trainer rosters from TRAiNERS tab, per-mon real IVs, fully independent dataset                                                      | Not started                                                                                                                                                                                                                                                   |
+| 7     | New trainer classes (if any surface in TRAiNERS data not already in `trainer-classes.ts`)                                                          | Not started                                                                                                                                                                                                                                                   |
+| 8     | `splits/*.ts` + save-condition derivation (badge bit indices)                                                                                      | 🔶 Now done incrementally alongside Phase 4/5 — `roark.ts` started with a deliberate `bit: -1` placeholder saveCondition (see note below); gym order still needs reconfirmation before later splits are finalized; badge-bit source is still unresolved.      |
+| 9     | Final assembly in `renegade-platinum.ts`, drop placeholder TODO comment                                                                            | Not started                                                                                                                                                                                                                                                   |
+| 10    | "What changed" diff UI (reads `dataSource.overrides`) — new feature, not part of original onboarding scope                                         | Not started, not yet scoped in detail                                                                                                                                                                                                                         |
 
 Working piece-by-piece per the user's explicit request — do not batch
 multiple phases into one pass without checking in between.
@@ -953,6 +953,298 @@ flying]`, Altaria `[dragon, fairy]`, matching the sheet's own
   affect gameplay-relevant data), out of scope for RP specifically since
   it's a shared-file bug — flagged for the user to decide whether/when to
   fix at the source.
+
+## Phase 4 methodology (ENCOUNTERS tab)
+
+- **Tab structure**: locations run as column blocks (same pattern as
+  LEARNSETS' species-as-columns), each block **7 columns wide** — [0]
+  group-header label (method+level text, or a context note), [1] species
+  name, [2] level range, [3-5] three percentage columns whose _meaning
+  depends on the method group_ (Morning/Day/Night for Grass/Poké Radar/
+  gift-adjacent groups; Old-Rod/Good-Rod/Super-Rod tier for fishing), [6]
+  spacer. ~46 top-level location column blocks, only 38 rows deep (rows
+  are reused independently per column).
+- **The level-range cell is stored as a Google Sheets `Date` value
+  internally** (e.g. raw value `Date(2025,4,4)`) due to an auto-formatting
+  quirk when someone types e.g. "4-5" into a cell Sheets decides looks
+  date-like — **the correct text is in the cell's separate formatted
+  value (gviz JSON's `f` field, not `v`)**. Always fetch this tab via the
+  gviz endpoint, never plain CSV, and always read `f` over `v` for level
+  cells specifically.
+- **A sheet "location" column can bundle multiple real in-game
+  met-locations together** for narrative/walkthrough convenience — the
+  first location tackled (nominally "TWINLEAF TOWN") actually contained
+  Route 201 (starters + wild Grass + Poké Radar + a static Mew),
+  Twinleaf Town proper (Eevee gift + Surf + Rods), and Sandgem Town
+  (picking up the two un-chosen starters), distinguished by embedded
+  sub-header rows mid-block, not by the column's own top-level header.
+  **User-confirmed rule: split by these real locations, not by the
+  sheet's visual grouping** — each embedded sub-header becomes its own
+  `encountersKey` entry.
+  **A stricter follow-up rule, also user-confirmed: a named location's
+  sub-block only contains what's genuinely native to it** — Route 201 is
+  the starter-selection location specifically, so only the 3 Starter
+  encounters belong under `sinnoh-route-201`; the Grass/Poké Radar/static
+  Mew content that appeared directly below the "ROUTE 201" sub-header in
+  the sheet still actually belongs to Twinleaf Town, not Route 201, once
+  reasoned through properly. **Don't assume a sub-header's own rows all
+  belong to that sub-header — cross-check against what the location
+  actually is in the real game before assigning.** This was caught and
+  corrected after an initial wrong split.
+- **Real mistake made and corrected: fabricated fishing-rod level ranges
+  by copying the Surf section's level range (20-40) onto the Rod
+  entries, which had no level data of their own in the sheet** —a
+  genuine "don't guess, ask" violation, caught when the user directly
+  asked "where did you get the fishing encounters' level ranges from?"
+  **The real answer was already present, just misread**: the Rod
+  section's own header, `"Rods (O-10, G-25, S-50)"`, gives each rod
+  tier's _fixed catch level directly_ (Old Rod → level 10, Good Rod →
+  level 25, Super Rod → level 50), not a shared range — i.e. `minLevel
+=== maxLevel` per tier, distinct per tier, not one range shared across
+  all three. **Lesson: a method-group header's parenthetical numbers can
+  encode per-species-row data directly (rod tier levels) rather than
+  being purely descriptive** — read every header text carefully for
+  embedded data before assuming a cell needs a value copied from
+  elsewhere or left blank.
+- **Two new `EncounterMethod` enum values added** (`src/lib/static/enums.ts`),
+  wired into every consumer that enumerates methods exhaustively
+  (`EncounterTable.tsx`'s `METHOD_ORDER`,
+  `EncounterRow.tsx`'s `WILD_METHODS`):
+    - `PokeRadar = 'poke-radar'` — Renegade Platinum has genuine Poké
+      Radar encounters; this method didn't exist in the app before (no
+      existing game modeled it). Rolls for wild-held items like
+      Grass/Surf/etc.
+    - `SuperRod = 'super-rod'` — **vanilla Platinum's own data in this
+      app never modeled Super Rod at all** (confirmed by the user — only
+      `OldRod`/`GoodRod` existed), a pre-existing gap unrelated to RP
+      specifically. Also rolls for wild-held items.
+      Both required zero other wiring — `MethodGroup.tsx`'s label derivation
+      is a generic slug-to-title-case, no per-method label map to update.
+- **Resolved: the static Mew encounter is intentionally excluded, not
+  deferred.** It's tied to Route 201 (the starter-selection location),
+  and per the standing rule established above ("Route 201 only ever
+  contains the 3 starter encounters"), it will never actually be
+  relevant/obtainable in this app's scope — confirmed directly by the
+  user. Dropped entirely, no `TODO` comment left behind. Don't
+  re-introduce this later without the user asking for it specifically.
+
+## Pivot: wiring locations/splits incrementally alongside encounters (2026-08-16)
+
+- **User decision: stop treating encounters (Phase 4), locations (Phase 5),
+  and splits (Phase 8) as strictly sequential phases done in three later,
+  separate passes — wire each area's Location + Split entry in as soon as
+  its encounters are authored, area by area.** This doesn't change the
+  underlying skill sequencing rule (encounters still have to exist before
+  a location references them via `encountersKey`, so within one area the
+  order is still encounters → location → split), it just means don't wait
+  for the _entire_ dataset in each phase to be "done" before starting the
+  next phase for that same area.
+- **Maps are real, placeholder PNGs, not stubs to fill in later per se**:
+  a small script using this project's existing `sharp` dependency
+  generates a flat 400×300 gray PNG, written once per location slug (one
+  physical file per location, even though the pixel content is identical
+  across all of them) into `src/lib/data/renegade-platinum/maps/`, then
+  `npm run gen:location renegade-platinum <slug>` scaffolds the location
+  file + wires the maps barrel normally. Every generated location has a
+  `// TODO: map is a placeholder` comment and uses `MapAnchor.Center` as
+  an arbitrary default (meaningless until a real map/marker positions
+  exist) — replace both once real map screenshots are sourced, same as
+  any other game's onboarding.
+- **`gen:location` requires the target `locations/` directory to already
+  exist** (`writeToFile` doesn't `mkdir -p` it) — first-time setup for a
+  brand new game's `locations/` folder needs a manual `mkdir` before the
+  first `gen:location` call succeeds. Hit this literally, fixed by
+  creating the dir once; won't recur for this game now that it exists.
+- **Split `saveCondition`s are being written as explicit, deliberately
+  invalid placeholders (`bit: -1`) rather than guessed real values.**
+  Asked the user directly whether RP's save-file badge-bit layout is
+  confirmed identical to vanilla Platinum's (a binary patch over Platinum
+  could plausibly preserve it) — **confirmed unconfirmed**, so Roark's
+  split uses `{ type: 'badge', bit: -1 }` with a loud `TODO` comment
+  instead of silently reusing vanilla's `bit: 0`. **`-1` (not `0`) is the
+  deliberate sentinel** so a forgotten placeholder can never accidentally
+  read as a real, matching badge bit later — don't "fix" this by reusing
+  a real game's bit index without independently deriving/confirming it
+  first, per the existing "deriving a split's saveCondition" methodology
+  above.
+- **First split done**: `splits/roark.ts` contains Twinleaf Town, Route
+  201, Sandgem Town (in that order) — wired into
+  `RENEGADE_PLATINUM.splits`. More locations get appended to this same
+  split (or a new one started) as further areas are authored.
+- **The top-of-file placeholder comment in `renegade-platinum.ts`** (the
+  one warning that clicking "New" crashes) is now stale and was updated
+  — `EncounterHelpers.getStarterLocationName` has a real Route 201
+  Starter encounter to resolve now, so the game is genuinely clickable,
+  just still very incomplete past the first area.
+
+### Second area batch: Lake Verity / Route 202 / Jubilife City (2026-08-16)
+
+- This was the sheet's second ENCOUNTERS-tab column block, headed "LAKE
+  VERITY" but — same bundling pattern as the first block — actually
+  contains **three** real locations: Lake Verity, Route 202, and
+  Jubilife City. All appended to `encounters.ts`, `locations/`, and
+  `splits/roark.ts` (Roark's split now has 6 locations).
+- **Lake Verity is story-gated**, same as vanilla Platinum's own Lake
+  Verity: the sheet notes Surf/Rod access unlocks "after the events of
+  the Distortion World [raise] the water[level]". Vanilla splits this
+  via **two `encountersKey`s inside one `Location`'s `subareas` array**
+  (`lake-verity-before-galactic-intervention` /
+  `lake-verity-after-galactic-intervention`), not `conditions` — copied
+  that structural pattern here (`Location.subareas`, two entries, each
+  with its own placeholder map/mapAnchor), but used **RP-specific key
+  text** (`lake-verity` / `lake-verity-after-distortion-world`) since
+  RP's trigger event (Distortion World) is a different, later story
+  beat than vanilla's Team Galactic intervention — don't assume the
+  same key names transfer across games, only the subarea _mechanism_
+  transfers.
+- **`sinnoh-route-202` reused verbatim** from vanilla — safe because the
+  key itself is just the app's naming convention and the route's identity
+  (not its encounter content) is unchanged.
+- **`jubilife-city` is a new key** (vanilla has no dedicated Jubilife City
+  wild-encounter key). Its only content is the Interviewer NPC's Kanto-
+  starter gift (Bulbasaur/Charmander/Squirtle). The sheet's level cell was
+  blank and its "More details here" note pointed to a lost hyperlink (same
+  class of issue as the earlier resolved Mew case) — **did not stop to
+  ask**; used level 5 (the established early-gift convention from
+  Twinleaf Town's Eevee) with an inline comment flagging it as an
+  assumption rather than a confirmed sheet value. Flag if this needs
+  correcting once the sheet's cell content/link is recoverable.
+- Verified all new species slugs (wynaut, houndour, growlithe, burmy,
+  sentret, poochyena, zigzagoon, shinx, feebas, masquerain) exist in
+  vanilla `pokemon.json` before writing any encounter rows.
+
+## Pivot: encounters-only pass through the credits (2026-08-16)
+
+- **User decision: stop wiring locations/maps/splits per area for now —
+  focus exclusively on populating `encounters.ts` for every real location
+  from Twinleaf Town through the Pokémon League (i.e. everything before
+  the credits roll).** Location/map/split scaffolding (the earlier
+  incremental-wiring pivot) resumes as a separate later pass once
+  encounters are fully logged. Locations already wired
+  (route-201/twinleaf-town/sandgem-town/lake-verity/route-202/
+  jubilife-city, in `splits/roark.ts`) are untouched but no new
+  `gen:location` calls are being made during this pass.
+- **The ENCOUNTERS tab is structured as column-blocks that visually align
+  with 46 top-level headers** (fetched via the gviz endpoint's
+  `data.table.cols[].label`, NOT as data rows — the sheet's actual
+  location names live in the column headers, not row 0/1 of
+  `data.table.rows`, which was a real parsing trap hit while starting
+  this pass: naively reading `grid[1]` as a header row pulled in the
+  wrong row entirely). Each 7-column block routinely bundles **several
+  real locations** stacked by row (exactly like the original Twinleaf
+  Town discovery) — always split by embedded sub-headers within a block,
+  never trust the top-level column label alone.
+- **A block can also overflow into a "stray" extra column beyond its
+  own 7**, holding sub-location headers for the data that continues in
+  the _next_ block over. Hit this with the Mt. Coronet (R216 Entry)
+  block, whose 8th column held "ROUTE 206" / "Grass (20-22)" / "Poké
+  Radar" / "Honey Tree (21)" labels — headers for content that actually
+  appears in the following block's rows, offset by one row down from
+  the label. Always check for a stray trailing column before assuming a
+  block's data is unlabeled.
+- **A block's real content sometimes reappears later in the sheet with
+  more data filled in** (Route 218 and Route 219 both first appeared
+  under the Trainer School block with Old-Rod-only fishing data — that's
+  literally all you have access to at that point in the game — then
+  reappeared later with their full Grass/Surf/Good Rod/Super Rod/Honey
+  Tree tables). **These are merges, not duplicates**: the same
+  `encountersKey` gets extended with the new tiers/methods rather than
+  creating a second key. Caught this by checking for existing keys
+  before generating new ones — always check `grep -n "'<key>':"` against
+  the file before writing a block that reintroduces a familiar route
+  name.
+- **Broken/lost hyperlinks are extremely common** in this tab (every
+  "More details here :" / "Details on how to encounter it here :" /
+  "(details :" cell is a dead cross-reference lost in the sheet's
+  export). Established handling: record what IS given (species, level
+  if present), and where a required field is missing entirely (Trade's
+  `tradeFor`), skip the entry rather than fabricate — noted inline with
+  a comment naming the gap. Not treated as a stop-worthy anomaly since
+  it's the sheet's own systemic export limitation, not a data
+  inconsistency — happens dozens of times throughout the tab.
+- **Static encounters** use `EncounterMethod.Static`, `chance: null`,
+  `minLevel === maxLevel` (matches vanilla's own Old Chateau Rotom
+  entry). Several RP statics unlock "after the Distortion World's story
+  events" — same gate as Lake Verity's Surf/Rods — but unlike Lake
+  Verity, the sheet does NOT give these their own separate
+  `encountersKey`; they're left in the base location key with an inline
+  comment rather than inventing a new split the sheet doesn't ask for.
+  One static (Valley Windworks' Drifloon) is gated "on Fridays" — not
+  representable via the app's time-of-day `conditions`, recorded
+  without a conditions gate and flagged in a comment.
+- **"Ground" in the sheet means indoor/`Walking` method**, confirmed by
+  cross-referencing vanilla's own Old Chateau data (which uses
+  `EncounterMethod.Walking` for the exact same room). The Old Chateau
+  itself is recorded under one flat `old-chateau` key since the sheet
+  doesn't split it into vanilla's 2F/dining-room/entrance subareas.
+- **Honey Tree entries use vanilla Platinum's own level convention
+  (5-15)** wherever the sheet gives percentages but no level range,
+  since the mechanic (any level, honey-tree-RNG) is unchanged from
+  vanilla and the sheet only ever needed to give species/odds.
+- **Lost Tower and Great Marsh both get sheet-bundled pairs of floors/
+  areas** ("1F, 2F" together, "3F, 4F" together, "1 and 2", "3 and 4",
+  etc.) even though the app (and vanilla) model each floor/area as its
+  own key. Handled by duplicating the same encounter array into both
+  real keys in the pair rather than inventing a combined key — the
+  underlying floors/areas already exist as distinct locations in the
+  app's data model.
+- **Great Marsh's "Changing Pokémon" daily-rotating-bonus mechanic is
+  NOT recorded** — each area's table has one species get a +10%
+  encounter-rate boost per day, drawn from another species in a way the
+  sheet's own author says they don't know precisely. This isn't
+  representable in the current `Encounter` schema (no time-varying
+  odds) and recording it would mean guessing at a mechanic the sheet
+  itself flags as uncertain. Only the base per-area Grass tables are
+  recorded; this is a known, deliberate gap.
+- **New RP-specific locations with no vanilla key** get a plain new
+  slug: `trainer-school`, `floaroma-town`, `pokemon-mansion`,
+  `maniac-tunnel`, `wayward-cave` (sheet bundles 1F/B1F, unlike
+  vanilla's split), `iron-island-1f-b1f`/`iron-island-b2f-b3f`/
+  `iron-island-outside` (sheet's 3-way grouping, coarser than vanilla's
+  6-key split).
+- **PASS COMPLETE (2026-08-16): 101 `encountersKey`s populated**,
+  covering every real location from Twinleaf Town through the Pokémon
+  League — all 46 of the ENCOUNTERS tab's top-level column blocks were
+  read and processed. `tsc --noEmit`, `eslint`, and `prettier` are all
+  clean on the final file.
+- **Content explicitly excluded as out-of-scope** (post-credits per the
+  sheet's own labeling, not overlooked): Turnback Cave (Sendoff Spring
+  block — sheet says "after the credits, come back here"), Regigigas at
+  Snowpoint Temple (labeled "Static Encounter (After Credits)"), and
+  everything in the sheet's Route 224 / "After Credits Legendaries" /
+  Post Game / Route 227 / Route 230 blocks (not read at all — out of
+  scope by column, not by content).
+- **Two pre-existing keys got fuller data merged in mid-pass**:
+  `sinnoh-route-218` and `sinnoh-route-219` were first populated with
+  Old-Rod-only data (that's all you have access to at that point in the
+  game) under the Trainer School block, then re-appeared later in the
+  sheet with their full Grass/Surf/Good Rod/Super Rod/Honey Tree
+  tables — merged into the same key rather than duplicated. Caught by
+  grepping for the key before writing new blocks; worth re-checking for
+  any other same-location reappearances if resuming this kind of pass
+  in the future.
+- **One data-entry mistake caught and fixed mid-pass**: Moltres was
+  initially recorded under a guessed `sinnoh-victory-road-1f` key
+  (the sheet's index of "Post Distortion World Legendaries" just says
+  "Victory Road" with no floor). Re-reading the actual Route 223 block
+  later showed Moltres's static entry sits directly under "ROUTE 223",
+  not Victory Road at all — corrected to `sinnoh-sea-route-223`.
+- **Victory Road turned out far more granular in the sheet than
+  vanilla's flat 1F/2F/B1F split**: RP distinguishes "1Fa", "1Fb (with
+  3 sub-rooms sharing one table)", "2F", and "B1F" — recorded as
+  `sinnoh-victory-road-1fa` / `-1fb` (both new keys) plus vanilla's
+  existing `-2f` / `-b1f`.
+- **The Pokémon League's own approach water has two distinct, unlabeled
+  Surf/Rod tables** (an outer one matching Route 223/Sunyshore's
+  Tentacruel/Pelipper/Mantine + Luvdisc/Corsola rods, and an inner-lake
+  one with Sealeo/Dewgong/Lapras + a simple Magikarp/Gyarados rod
+  table) — both recorded together under `sinnoh-pokemon-league` since
+  the sheet gives no sub-location text to split them by.
+- **Next steps for this project**: resume the earlier location/map/
+  split wiring pass (paused for this encounters-only push) now that the
+  full pre-League encounter dataset exists to wire against; then tackle
+  Phase 6 (battles/TRAiNERS tab) and the remaining phases per the
+  phase-plan table further up this doc.
 
 ## Other open questions to resolve when their phase comes up
 

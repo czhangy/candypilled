@@ -943,11 +943,6 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     onNatureChange={handleDefenderNatureChange}
                     onSpeciesChange={handleDefenderSpeciesChange}
                     onStatusChange={handleDefenderStatusChange}
-                    placeholder={
-                        effectiveSelectedBattle
-                            ? undefined
-                            : 'Select a battle above'
-                    }
                     pokemonSlug={defenderDisplaySlug}
                     showEvs={showEvs}
                     speedComparison={trainerSpeedComparison}

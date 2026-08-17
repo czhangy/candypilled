@@ -32,11 +32,15 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
+    // The slug has no accented characters to derive from, so this one
+    // method needs its label spelled out rather than title-cased.
     const getMethodLabel = (): string =>
-        method
-            .split('-')
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
+        method === EncounterMethod.PokeRadar
+            ? 'Poké Radar'
+            : method
+                  .split('-')
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(' ');
 
     const getMethodIcon = (): string => `/encounter-methods/${method}.png`;
 

@@ -109704,14 +109704,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "strength",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "rock-smash",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fire-punch",
                         "method": "tutor"
                     },
@@ -113134,10 +113126,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "strength",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "fury-cutter",
                         "method": "tutor"
                     },
@@ -115902,10 +115890,6 @@
                         "method": "machine"
                     },
                     {
-                        "slug": "sunny-day",
-                        "method": "machine"
-                    },
-                    {
                         "slug": "protect",
                         "method": "machine"
                     },
@@ -116169,10 +116153,6 @@
                     },
                     {
                         "slug": "hidden-power",
-                        "method": "machine"
-                    },
-                    {
-                        "slug": "sunny-day",
                         "method": "machine"
                     },
                     {
