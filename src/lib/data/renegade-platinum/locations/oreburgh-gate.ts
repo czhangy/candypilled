@@ -5,8 +5,6 @@ import {
 import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
-// TODO: maps are placeholders — replace with real screenshots and pick
-// real mapAnchors once they exist.
 const OREBURGH_GATE: Location = {
     name: 'Oreburgh Gate',
     subareas: [
@@ -19,7 +17,7 @@ const OREBURGH_GATE: Location = {
         {
             name: 'B1F',
             map: oreburghGateB1f,
-            mapAnchor: MapAnchor.Center,
+            mapAnchor: MapAnchor.Right,
             encountersKey: 'oreburgh-gate-b1f',
         },
     ],

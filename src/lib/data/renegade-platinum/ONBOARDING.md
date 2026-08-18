@@ -1403,6 +1403,34 @@ method-as-row-block layout as the original sheet.
 
 ## Other open questions to resolve when their phase comes up
 
-- Phase 5: map layout reuse vs. divergence from vanilla Platinum — ask, don't assume.
+- ~~Phase 5: map layout reuse vs. divergence from vanilla Platinum~~ —
+  **resolved (2026-08-17): user confirmed real map reuse from vanilla
+  Platinum.** All 17 of Roark's split locations that have a vanilla
+  Platinum equivalent were swapped from placeholder gray PNGs to the
+  real vanilla screenshot, matched **by `encountersKey`, not by
+  filename/subarea name** — this caught a real mismatch at Oreburgh
+  Mine, where RP's "1F"/"B1F" subarea names actually correspond to
+  vanilla's "B1F"/"B2F" subareas once matched by key. Each location's
+  `mapAnchor` was also updated to vanilla's real value (previously all
+  `Center` as an arbitrary placeholder default).
+    - **Sandgem Town** has no equivalent in this app's own vanilla
+      Platinum dataset (a pre-existing gap in that game's data, not an
+      RP-specific issue) — sourced directly from Bulbagarden Archives
+      instead (`Sandgem_Town_Pt.png`, found via the archives wiki's
+      `allimages` API with an `aiprefix` search, not the region-locator
+      thumbnail that shows up on the main Bulbapedia article).
+    - **Trainer School was wrongly assumed to be an RP-original location
+      with no vanilla equivalent** — it's actually Jubilife City's real
+      DPPt "Trainers' School" building interior, which this app's own
+      vanilla Platinum dataset just never modeled as its own `Location`.
+      Bulbapedia's own top-level "Trainers' School" image search only
+      surfaces Alola's (SM/USUM) version — the real Sinnoh one lives at
+      the disambiguated page `Trainers' School (Sinnoh)`, image
+      `Trainers School interior DPPt.png`. **Lesson: before concluding a
+      location has "no vanilla equivalent" and is ROM-hack-original,
+      verify against Bulbapedia directly (including checking for a
+      disambiguation page) rather than trusting an earlier session's
+      unverified assumption** — this one was wrong and had been carried
+      forward at face value for a while.
 - Phase 8: how to derive badge-bit save conditions without a confirmed public decomp for this hack.
 - Phase 10: no UI design decided yet for how the diff should actually be presented (badge? panel? both?) — needs its own discussion when we get there.

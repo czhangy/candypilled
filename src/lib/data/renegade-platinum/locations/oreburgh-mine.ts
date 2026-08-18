@@ -5,8 +5,6 @@ import {
 import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
-// TODO: maps are placeholders — replace with real screenshots and pick
-// real mapAnchors once they exist.
 const OREBURGH_MINE: Location = {
     name: 'Oreburgh Mine',
     subareas: [
