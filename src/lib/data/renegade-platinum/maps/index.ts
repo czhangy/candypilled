@@ -17,6 +17,7 @@ export { default as route204South } from './route-204-south.png';
 export { default as route207 } from './route-207.png';
 export { default as route218 } from './route-218.png';
 export { default as route219 } from './route-219.png';
-export { default as sandgemTown } from './sandgem-town.png';
+export { default as sandgemTownLab } from './sandgem-town-lab.png';
+export { default as sandgemTownTown } from './sandgem-town-town.png';
 export { default as trainerSchool } from './trainer-school.png';
 export { default as twinleafTown } from './twinleaf-town.png';

@@ -31,7 +31,7 @@ const ROARK: Split = {
         SANDGEM_TOWN,
         LAKE_VERITY,
         ROUTE_202,
-        JUBILIFE_CITY,
+        LocationHelpers.withHiddenSubareaBattles(JUBILIFE_CITY, ['City']),
         TRAINER_SCHOOL,
         ROUTE_218,
         LocationHelpers.withHiddenBattles(ROUTE_219),
