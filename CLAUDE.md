@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 > Never start a dev server (`npm run dev`) to perform end-to-end verification, especially when implementing or changing API routes. Rely on type-checking, linting, and static review instead. If live/browser verification is genuinely needed, ask the user to run it themselves rather than starting a server directly.
 
-> Never run `git add` / stage changes on your own. Leave changes unstaged and let the user stage and commit them.
+> Never run `git add` / stage changes on your own. Leave changes unstaged and let the user stage and commit them. **Exception:** after running the `dspre-map-stitch` skill's `npm run stitch-map` step, stage and commit the affected map PNG(s) directly, with a commit message naming the stitched location(s) (e.g. `Twinleaf Town`, `Route 201 and 202`) — no other files.
 
 > ALWAYS ALWAYS ALWAYS prefer making props or params required. NEVER assume future use cases for making something optional. Only make something optional if it needs to be optional right now.
 
