@@ -66,11 +66,8 @@ that map is self-describing and needs no confirmation.
 './<slug>.png';`) if one doesn't already exist — check whether a
    `Location` in `locations/*.ts` already references it before assuming
    the export is missing.
-6. Stage and commit the affected map PNG(s) directly — see the
-   `git add` exception in `CLAUDE.md` for this skill specifically. Use a
-   commit message naming the stitched location(s) (e.g. `Twinleaf Town`,
-   `Route 201 and 202`), and commit only the map PNG(s), nothing else
-   that happens to be dirty in the working tree.
+6. Leave the changes unstaged — per `CLAUDE.md`, staging/committing is
+   the user's call, not this skill's.
 
 ## Window chrome
 

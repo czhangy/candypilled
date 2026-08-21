@@ -1,5 +1,5 @@
 import {
-    jubilifeCity,
+    jubilifeCityCity,
     jubilifeCityPokemonCenter,
 } from '@/lib/data/renegade-platinum/maps';
 import { MapAnchor } from '@/lib/static/enums';
@@ -9,15 +9,15 @@ const JUBILIFE_CITY: Location = {
     name: 'Jubilife City',
     subareas: [
         {
-            name: 'Exterior',
-            map: jubilifeCity,
+            name: 'City',
+            map: jubilifeCityCity,
             mapAnchor: MapAnchor.BottomRight,
-            encountersKey: 'jubilife-city',
         },
         {
-            name: 'Pokemon Center',
+            name: 'Pokémon Center',
             map: jubilifeCityPokemonCenter,
             mapAnchor: MapAnchor.Center,
+            encountersKey: 'jubilife-city',
         },
     ],
 };
