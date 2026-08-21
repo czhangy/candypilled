@@ -110,10 +110,51 @@ a real 32-bit PID, but empirically its low byte is a near-constant value
 meaningfully with the actual in-game gender -- feeding it through the
 standard gender-threshold formula produces wrong answers that contradict
 already-verified data (e.g. it predicts female for a Pokémon already
-confirmed male via decomp cross-check). Get gender from Bulbapedia's
-location-specific trainer battle listing instead (that page lists each
-trainer's team with gender symbols per game version) -- treat the OttoTonsorialist
-source as covering moves/ability/nature/held-item only.
+confirmed male via decomp cross-check). Treat the OttoTonsorialist source
+as covering moves/ability/nature/held-item only.
+
+## Gender is deterministic, not randomized -- derive it, don't guess or ask
+
+`CreateNPCTrainerParty` (`arm9/src/trainer_data.c`) computes gender from a
+fixed rule, confirmed directly from the function's own comment:
+
+```c
+// If a Pokemon's gender ratio is 50/50, the generated Pokemon will be the
+// same gender as its trainer. Otherwise, it will assume the more abundant
+// gender according to its species gender ratio. In double battles, the
+// behavior is identical to that of a solitary male opponent.
+pid_gender = (TrainerClass_GetGenderOrTrainerCount(trainerClass) == 1)
+    ? 0x78 : 0x88;
+```
+
+This means gender is **not** part of the per-mon RNG-seeded personality
+roll the way nature/ability/shininess are (those do depend on the
+difficulty+level+species+trainerId seed) -- it's a flat rule you can
+compute directly:
+
+- **Species gender ratio is not 50/50** (this app's `genderRate` field on
+  the species entry, in eighths-female, is anything other than `4`): the
+  mon is always the species' majority gender, regardless of the trainer's
+  own gender. This covers most cases, including every starter species
+  (`genderRate: 1`, i.e. 87.5% male) -- e.g. any trainer's Chimchar/Piplup/
+  Turtwig is always male. Check `genderRate` in this app's own species
+  data (or PokeAPI) before assuming majority-male; a handful of species
+  skew female-majority instead.
+- **Species gender ratio is 50/50** (`genderRate: 4`): the mon matches the
+  trainer's own gender, which is why Bulbapedia's location-specific
+  trainer listing (gender symbols per game version) is still the right
+  source for this case specifically -- the trainer class's own gender
+  isn't reliably inferrable from its slug/sprite name alone.
+- **Species is genderless** (`genderRate: -1`): no `gender` field applies
+  at all -- this is the one case where omitting `gender` on a
+  `BattlePokemon` is correct, not a placeholder.
+
+Do not omit `gender` on a `BattlePokemon` just because a source sheet
+doesn't list it -- the app reads a missing `gender` as "this Pokémon is
+explicitly genderless," which is wrong for the (large majority of)
+species that aren't. Compute it from the rule above instead of asking the
+user, except in the 50/50-ratio case, where Bulbapedia (or the user, if
+Bulbapedia doesn't cover the game) is genuinely needed.
 
 ## Workflow
 
@@ -129,8 +170,11 @@ source as covering moves/ability/nature/held-item only.
    equivalent cached source for Platinum; derive Platinum natures/abilities
    from its own decomp's personality-seed formula, or ask the user, rather
    than assuming a shared-generation value carries over).
-5. Get gender from Bulbapedia's trainer-listing for that location, filtered
-   to the correct game version's column.
+5. Derive gender from the species' `genderRate` rule above (majority
+   gender, or genderless -- no field). Only fall back to Bulbapedia's
+   trainer-listing (filtered to the correct game version's column) for the
+   rarer 50/50-ratio case, where the mon's gender matches the trainer's own
+   (not derivable from species data alone).
 6. Assemble the `TeamMember` entry. Sanity-check the assembled moveset
    against the mon's level and level-up learnset if the decomp `moves` field
    was absent (`TRTYPE_MON`/`TRTYPE_MON_ITEM`) -- those types mean the game

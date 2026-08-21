@@ -12,8 +12,60 @@ done, what's next, what did we decide and why," not the conversation log.
 
 ## Source of truth
 
-All data comes from a single Google Sheet the user maintains, documenting
-every change Renegade Platinum makes from vanilla Platinum:
+**ENCOUNTERS and TRAiNERS/battle data superseded (2026-08-20).** The
+original single-sheet `ENCOUNTERS` tab (gid `515626425`) and per-split
+`*SPLiT` tabs (gids below) on the sheet documented in this section are
+**no longer the source for those two data types** — user-confirmed
+replacement, not a supplementary source. STATS/LEARNSETS/EVOLUTiON/
+iTEMS/GiFTS/NPC-TRADES tabs on the original sheet are unaffected (still
+current) unless told otherwise.
+
+- **Encounters**: a separate, multi-hack workbook (Fire Red Omega, Storm
+  Silver, and Renegade Platinum stacked as three vertically-stacked
+  sections in one tab) —
+  `https://docs.google.com/spreadsheets/d/1UExH51A0xx2ktc0IkQY1x-vmfNb_Zjxm/export?format=csv&gid=1219699553`.
+  The Renegade Platinum section starts where column A reads exactly
+  `Renegade Platinum` (currently row 580 of the exported CSV — re-find by
+  searching for that literal string rather than trusting the row number,
+  since rows above it can shift as the other two hacks' sections are
+  edited). Column layout is a fixed 5-column stride per location, no
+  gap column between location blocks: `Pokémon, Level, Encounter Rate,
+Dupe?, Dupe adjusted encounter rate`, repeating left-to-right once per
+  location — the location's display name sits in the first (`Pokémon`)
+  column of its block, one row above the `Pokémon/Level/...` sub-header
+  row. Row 0 of the block is the location name row (blank in the other 4
+  columns of the block); row 1 is the column sub-header; data rows follow,
+  grouped under a method label (e.g. `Walking (Morning)`, `Surfing`) in
+  the very first column of the entire sheet (column A, not per-block) that
+  applies to all location-blocks in that row-range until the next method
+  label appears.
+- **Trainer battles**: a separate workbook,
+  `https://docs.google.com/spreadsheets/d/1uwR23b6kHRFYoav1Jzfx65qGfaxNQE8pI83Yr5mcVXQ`,
+  with one tab per gym split (mirrors the old sheet's `*SPLiT` tabs, but
+  is its own document now — don't confuse the two). Tab gids, from the
+  edit page's `docs-sheet-tab-caption` elements (only Roark Split's gid is
+  confirmed so far, since it's this doc's default/landing tab — re-derive
+  the rest the same way, by fetching `.../edit` and grepping
+  `docs-sheet-tab-caption">` for the name list, then reading each tab's
+  URL bar `gid=` once opened, since gids aren't embedded next to the
+  caption text in this workbook's HTML the way the old sheet's were):
+  Roark Split (gid `182366078`, confirmed), Gardenia Split, Fantina Split,
+  Maylene Split, Wake Split, Byron Split, Candice Split, Volkner Split,
+  Champion Split — plus non-data tabs `Raw Notes`, `Placeholder`,
+  `Sprites`. Row layout per trainer within a tab: trainer name row, then
+  per-mon-column blocks of `Level / Nature (+Stat -Stat) / Ability / Held
+Item / Move 1-4`, with a `<n> IVs` note appended to the trainer-name
+  cell text (uniform IV across that trainer's whole team) — see the
+  worked Barry-1 example already authored in `battles.ts` for the exact
+  parse. **No gender column exists on this sheet** — never omit `gender`
+  because of that (see the `gen4-trainer-data-extraction` skill's gender
+  section); derive it from species `genderRate`, falling back to asking
+  the user only for the 50/50-ratio case.
+
+All other data (STATS, LEARNSETS, EVOLUTiON/TYPE/MOVES, iTEMS/TMs,
+GiFTS/EVENTS, NPC/TRADES) still comes from the single Google Sheet the
+user maintains, documenting every change Renegade Platinum makes from
+vanilla Platinum:
 
 - Google Sheet ID: `1G3MNevhLmW1sKYluM4WT9TM1RqrTAi1c4lIdTfeU-Jg`
 - Access via the `mcp__claude_ai_Google_Drive__read_file_content` tool using
@@ -42,24 +94,24 @@ every change Renegade Platinum makes from vanilla Platinum:
     ```
     647134330  HOMEPAGE (hub/TOC)
     1585554208 STATS
-    515626425  ENCOUNTERS
-    719434186  TRAiNERS
+    515626425  ENCOUNTERS       -- SUPERSEDED, see note above, don't use
+    719434186  TRAiNERS         -- SUPERSEDED, see note above, don't use
     218384597  LEARNSETS
     2098433376 EVOLUTiON/TYPE/MOVES
     1939055360 iTEMS/TMs
     1306355674 GiFTS/EVENTS
     1801496803 NPC/TRADES
-    494941063  ROARK SPLiT
-    2133932114 GARDENiA SPLiT
-    1478670349 FANTINA SPLiT
-    1876470000 MAYLENE SPLiT
-    923574271  WAKE SPLiT
-    1150638673 BYRON SPLiT
-    1156092808 CANDICE SPLiT
-    1919549891 VOLKNER SPLiT
-    1044796639 CHAMPiON SPLiT
-    1025278191 POST GAME
-    2029759237 REMATCHES
+    494941063  ROARK SPLiT      -- SUPERSEDED, see note above, don't use
+    2133932114 GARDENiA SPLiT   -- SUPERSEDED, see note above, don't use
+    1478670349 FANTINA SPLiT    -- SUPERSEDED, see note above, don't use
+    1876470000 MAYLENE SPLiT    -- SUPERSEDED, see note above, don't use
+    923574271  WAKE SPLiT       -- SUPERSEDED, see note above, don't use
+    1150638673 BYRON SPLiT      -- SUPERSEDED, see note above, don't use
+    1156092808 CANDICE SPLiT    -- SUPERSEDED, see note above, don't use
+    1919549891 VOLKNER SPLiT    -- SUPERSEDED, see note above, don't use
+    1044796639 CHAMPiON SPLiT   -- SUPERSEDED, see note above, don't use
+    1025278191 POST GAME        -- status vs. new workbook unconfirmed, ask before using
+    2029759237 REMATCHES        -- status vs. new workbook unconfirmed, ask before using
     721785423  FAQ/AR/RANDOMiZER
     1945634483 WIP Pokedex
     ```
@@ -67,6 +119,39 @@ every change Renegade Platinum makes from vanilla Platinum:
     fetching the `/edit` URL's HTML and regexing for
     `\d+,0,"(\d{6,})",\[\{"1":\[\[0,0,"([^"]*)"` (name/gid pairs embedded in
     the page's bootstrap JS).
+
+## Per-location authoring loop (process, adopted 2026-08-20)
+
+Going forward, every location is onboarded through this same three-part
+loop — don't batch multiple locations' worth of encounters/battles into
+one uninterrupted pass, and don't run any of the three parts to
+completion without stopping at its confirmation gate first:
+
+1. **Maps** — user supplies DSPRE screenshot chunks (see the
+   `dspre-map-stitch` skill for naming scheme and stitching). Stitch, then
+   `Read` the result and visually verify seams before treating it as done.
+2. **Encounters** — fetch that location's block from the encounters
+   workbook (see "Source of truth" above for URL/schema), parse it, then
+   **state exactly what you parsed (species/level/method/rate per row) and
+   get explicit confirmation before writing anything into
+   `encounters.ts`.** Don't silently write parsed data and move on to the
+   next location.
+3. **Battles** — fetch that location's trainers from the battles workbook,
+   parse team/nature/ability/moves/IVs, derive gender from `genderRate`
+   (ask only for the 50/50 case), then **ask for whatever the sheet can't
+   supply — x/y placement, mandatory/optional and any other
+   `BattleMetadata`, AI flags (default `[Basic, Expert, EvaluateAttack]`
+   per the decision below, unless told otherwise for that trainer) — and
+   confirm the full assembled entry before writing to `battles.ts`.**
+
+**The confirmation gate is mandatory at every stage, not just when
+something is ambiguous.** Even when parsed data looks unambiguous, state
+what was parsed and what's about to be written before writing it — this
+was an explicit user correction (2026-08-20): a prior pass had written
+gender as omitted-therefore-genderless without flagging it, which was
+silently wrong data, not a reasonable default. Confirming first is cheap;
+re-deriving and re-explaining after the fact, or shipping wrong data, is
+not.
 
 ## Decisions made (don't re-litigate these)
 
@@ -111,6 +196,18 @@ every change Renegade Platinum makes from vanilla Platinum:
       `RENEGADE_PLATINUM_POKEMON` entry at all** — leave it `{}` (or omit
       populating it) and sprite resolution just works, same as badges/trainers
       needing zero per-entity asset data.
+- **`BattlePokemon.gender` is NOT "unknown/unspecified" when omitted — it
+  is read by the app as explicitly genderless.** `PokemonPreview.tsx` only
+  renders a gender icon `{pokemon.gender && (...)}` — leaving the field out
+  doesn't mean "don't know," it means "this Pokémon has no gender," which
+  is wrong for any species that actually has a gender ratio (nearly all of
+  them; true genderless species are a small, specific list — Magnemite,
+  Voltorb, most Legendaries, etc.). **Never omit `gender` on a
+  `BattlePokemon` just because the source sheet didn't list it** — that's
+  a real data error, not a safe default, unlike other genuinely optional
+  `BattlePokemon` fields (`heldItem`, `evs`). If the sheet has no gender
+  column, treat gender the same as x/y placement or AI flags: ask the
+  user rather than guessing or silently leaving it off.
 - **No standalone full moves or abilities database exists in the sheet.**
   EVOLUTION/TYPE/MOVES only lists a changelog of moves that changed
   (power/PP deltas, old→new), not a complete move table. This means
@@ -121,6 +218,13 @@ every change Renegade Platinum makes from vanilla Platinum:
   assume unchanged-from-vanilla unless the sheet says otherwise, but this
   assumption should be spot-checked once real tab data is in hand, not
   treated as certain yet.
+- **`aiFlags` default for trainer battles**: the TRAiNERS sheet has no AI
+  flag column at all (unlike vanilla Platinum's decomp, which has real
+  per-trainer AI byte data). User-confirmed default: **`[Basic, Expert,
+EvaluateAttack]`** for every battle unless the user explicitly specifies
+  otherwise for a given trainer. Don't carry over vanilla Platinum's own
+  per-trainer `aiFlags` value for the "same" named trainer — this is a
+  RP-specific default, not a vanilla cross-reference.
 - **Gym order appears changed from vanilla Platinum, but is NOT yet
   confirmed** — the TRAiNERS tab's SPLIT section order (by level cap) reads
   as: ROARK (16) → GARDENIA (26) → FANTINA (33) → MAYLENE (39) → WAKE (44)
@@ -1434,3 +1538,17 @@ method-as-row-block layout as the original sheet.
       forward at face value for a while.
 - Phase 8: how to derive badge-bit save conditions without a confirmed public decomp for this hack.
 - Phase 10: no UI design decided yet for how the diff should actually be presented (badge? panel? both?) — needs its own discussion when we get there.
+
+## ENCOUNTERS wiped and reset (2026-08-20)
+
+`src/lib/data/renegade-platinum/encounters.ts` was fully cleared back to
+`{}` — the user flagged the data a previous session had populated there as
+unreliable. **Do not treat Phase 4 (see "Phase 4 methodology (ENCOUNTERS
+tab)" above) as complete** — the methodology notes there are still valid
+guidance for _how_ to re-derive the data, but the actual authored content
+they describe no longer exists in the file and needs to be redone from
+the sheet, verified more carefully this time before being treated as
+trustworthy (e.g. cross-checked against a second source where one exists,
+per the "Encounters re-verified against a second, 'completely correct'
+sheet source" precedent below, rather than transcribed once and assumed
+correct).

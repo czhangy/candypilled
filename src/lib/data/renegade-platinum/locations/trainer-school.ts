@@ -3,7 +3,7 @@ import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const TRAINER_SCHOOL: Location = {
-    name: 'Trainer School',
+    name: "Trainers' School",
     map: trainerSchool,
     mapAnchor: MapAnchor.Center,
     encountersKey: 'trainer-school',
