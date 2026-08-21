@@ -20,4 +20,5 @@ export { default as route219 } from './route-219.png';
 export { default as sandgemTownLab } from './sandgem-town-lab.png';
 export { default as sandgemTownTown } from './sandgem-town-town.png';
 export { default as trainerSchool } from './trainer-school.png';
-export { default as twinleafTown } from './twinleaf-town.png';
+export { default as twinleafTownHouse } from './twinleaf-town-house.png';
+export { default as twinleafTownTown } from './twinleaf-town-town.png';
