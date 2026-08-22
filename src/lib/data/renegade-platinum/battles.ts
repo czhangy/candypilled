@@ -493,4 +493,98 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'school-kid-harrison': {
+        trainerClass: 'school-kid-m',
+        name: 'Harrison',
+        items: [{ count: 1, name: 'Potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'abra',
+                        ability: 'magic-guard',
+                        gender: 'male',
+                        level: 8,
+                        moves: ['hidden-power'],
+                        nature: Nature.Mild,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'psyduck',
+                        ability: 'damp',
+                        gender: 'male',
+                        level: 8,
+                        moves: ['hidden-power', 'water-gun'],
+                        nature: Nature.Relaxed,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'school-kid-christine': {
+        trainerClass: 'school-kid-f',
+        name: 'Christine',
+        items: [{ count: 1, name: 'Potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'ralts',
+                        ability: 'synchronize',
+                        gender: 'female',
+                        level: 8,
+                        moves: ['confusion', 'hidden-power'],
+                        nature: Nature.Modest,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'staryu',
+                        ability: 'illuminate',
+                        level: 8,
+                        moves: ['hidden-power', 'water-gun'],
+                        nature: Nature.Serious,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'reporter-kayla': {
+        trainerClass: 'reporter',
+        name: 'Kayla',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'bulbasaur',
+                        ability: 'chlorophyll',
+                        gender: 'male',
+                        level: 5,
+                        moves: ['tail-whip', 'growl', 'vine-whip'],
+                        nature: Nature.Lax,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'charmander',
+                        ability: 'solar-power',
+                        gender: 'male',
+                        level: 5,
+                        moves: ['ember', 'growl', 'scratch'],
+                        nature: Nature.Lonely,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'squirtle',
+                        ability: 'rain-dish',
+                        gender: 'male',
+                        level: 5,
+                        moves: ['water-gun', 'tail-whip', 'tackle'],
+                        nature: Nature.Serious,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
 };

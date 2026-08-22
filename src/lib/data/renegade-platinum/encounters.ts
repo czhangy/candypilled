@@ -283,4 +283,27 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             chance: 22,
         },
     ],
+    'jubilife-city': [
+        {
+            species: 'treecko',
+            method: EncounterMethod.Gift,
+            minLevel: 5,
+            maxLevel: 5,
+            chance: null,
+        },
+        {
+            species: 'torchic',
+            method: EncounterMethod.Gift,
+            minLevel: 5,
+            maxLevel: 5,
+            chance: null,
+        },
+        {
+            species: 'mudkip',
+            method: EncounterMethod.Gift,
+            minLevel: 5,
+            maxLevel: 5,
+            chance: null,
+        },
+    ],
 };

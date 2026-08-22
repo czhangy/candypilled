@@ -258,6 +258,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Rancher',
         spriteSlug: 'rancher',
     },
+    reporter: {
+        displayName: 'Reporter',
+        spriteSlug: 'reporter',
+    },
     'rich-boy': {
         displayName: 'Rich Boy',
         spriteSlug: 'rich-boy',
