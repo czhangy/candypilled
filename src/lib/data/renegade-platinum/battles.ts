@@ -1339,4 +1339,122 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'camper-curtis': {
+        trainerClass: 'camper',
+        name: 'Curtis',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'seedot',
+                        ability: 'chlorophyll',
+                        gender: 'male',
+                        level: 10,
+                        moves: [
+                            'nature-power',
+                            'bullet-seed',
+                            'growth',
+                            'harden',
+                        ],
+                        nature: Nature.Careful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'diglett',
+                        ability: 'sand-veil',
+                        gender: 'male',
+                        level: 10,
+                        moves: ['bulldoze', 'astonish', 'growl', 'mud-slap'],
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'picnicker-diana': {
+        trainerClass: 'picnicker',
+        name: 'Diana',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'whismur',
+                        ability: 'soundproof',
+                        gender: 'female',
+                        level: 10,
+                        moves: [
+                            'uproar',
+                            'astonish',
+                            'disarming-voice',
+                            'howl',
+                        ],
+                        nature: Nature.Serious,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'wooper',
+                        ability: 'water-absorb',
+                        gender: 'female',
+                        level: 10,
+                        moves: ['slam', 'mud-shot', 'mud-sport', 'tail-whip'],
+                        nature: Nature.Lonely,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'veteran-grant': {
+        trainerClass: 'veteran',
+        name: 'Grant',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'lucario',
+                        ability: 'adaptability',
+                        gender: 'male',
+                        level: 45,
+                        moves: [
+                            'me-first',
+                            'dragon-pulse',
+                            'blaze-kick',
+                            'close-combat',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'golem',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 45,
+                        moves: [
+                            'stealth-rock',
+                            'earthquake',
+                            'rock-blast',
+                            'explosion',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'staraptor',
+                        ability: 'reckless',
+                        gender: 'male',
+                        level: 45,
+                        moves: [
+                            'close-combat',
+                            'take-down',
+                            'roost',
+                            'agility',
+                        ],
+                        nature: Nature.Lonely,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
 };
