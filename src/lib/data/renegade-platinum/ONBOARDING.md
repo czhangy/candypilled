@@ -218,13 +218,22 @@ not.
   assume unchanged-from-vanilla unless the sheet says otherwise, but this
   assumption should be spot-checked once real tab data is in hand, not
   treated as certain yet.
-- **`aiFlags` default for trainer battles**: the TRAiNERS sheet has no AI
-  flag column at all (unlike vanilla Platinum's decomp, which has real
-  per-trainer AI byte data). User-confirmed default: **`[Basic, Expert,
-EvaluateAttack]`** for every battle unless the user explicitly specifies
-  otherwise for a given trainer. Don't carry over vanilla Platinum's own
-  per-trainer `aiFlags` value for the "same" named trainer — this is a
-  RP-specific default, not a vanilla cross-reference.
+- **`aiFlags` removed from the app entirely (2026-08-21)** — the
+  `AiFlag` enum, `BattleData.aiFlags`, and every `aiFlags: [...]` entry
+  across all three games' `battles.ts` files were deleted (user request,
+  project-wide, not RP-scoped). No UI ever read this field. Don't
+  reintroduce it on new battle entries.
+- **Time-of-day conditions on `Walking` encounters: collapse to a single
+  no-`conditions` entry only when the sheet's Morning/Day/Night row
+  groups for that location are actually identical** (same species/level/
+  rate) — this is a per-location check, not a blanket "RP never
+  time-gates" rule (an earlier note here overclaimed that; corrected
+  2026-08-21). When the three groups do differ for a location, write the
+  real per-time-of-day entries with `conditions: ['time-morning']` /
+  `['time-day']` / `['time-night']`, same as vanilla Platinum's own data
+  does. Lake Verity happened to have identical Morning/Day/Night groups,
+  which is why it was written as single collapsed entries — don't assume
+  every other location will be the same without checking.
 - **Gym order appears changed from vanilla Platinum, but is NOT yet
   confirmed** — the TRAiNERS tab's SPLIT section order (by level cap) reads
   as: ROARK (16) → GARDENIA (26) → FANTINA (33) → MAYLENE (39) → WAKE (44)

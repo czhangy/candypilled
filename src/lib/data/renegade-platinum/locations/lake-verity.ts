@@ -2,7 +2,7 @@ import {
     lakeVerityPostGalactic,
     lakeVerityPreGalactic,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_VERITY: Location = {
@@ -18,7 +18,33 @@ const LAKE_VERITY: Location = {
             name: 'Post-Galactic',
             map: lakeVerityPostGalactic,
             mapAnchor: MapAnchor.Bottom,
-            encountersKey: 'lake-verity-after-distortion-world',
+            encountersKey: 'lake-verity',
+            battles: [
+                {
+                    battleKey: 'galactic-grunt-and-galactic-grunt-lake-verity',
+                    metadata: [BattleMetadata.Double],
+                    x: 73.4,
+                    y: 76.7,
+                },
+                {
+                    battleKey: 'galactic-grunt-m-lake-verity-2',
+                    metadata: [],
+                    x: 75.9,
+                    y: 67.3,
+                },
+                {
+                    battleKey: 'galactic-grunt-f-lake-verity-2',
+                    metadata: [],
+                    x: 83.8,
+                    y: 67.3,
+                },
+                {
+                    battleKey: 'commander-mars-mars-lake-verity',
+                    metadata: [BattleMetadata.Miniboss],
+                    x: 86.8,
+                    y: 59.5,
+                },
+            ],
         },
     ],
 };
