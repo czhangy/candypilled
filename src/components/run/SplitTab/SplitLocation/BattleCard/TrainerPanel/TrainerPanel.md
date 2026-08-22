@@ -9,8 +9,10 @@ same cell, each row giving the item's count followed by its sprite
 the battle. "Fog" and "Deep Fog" field conditions share the same icon;
 only "Fog" (which can be cleared with Defog) is followed by an
 asterisk whose tooltip reads "Can be cleared using Defog" — "Deep Fog"
-shows no asterisk. An "Optional" section
-appears below that for battles that aren't required to progress,
+shows no asterisk. A "Boss" section appears below that for the game's
+climactic battles, followed by a "Miniboss" section for a notable but
+non-climactic battle, followed by an "Optional" section for battles
+that aren't required to progress,
 followed by a double battle section reading "Double Battle" or, if the
 player's whole party is forced into the fight, "True Double Battle". A
 "Tag Double" section appears below that for battles fought alongside

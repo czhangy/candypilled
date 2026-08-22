@@ -74,6 +74,12 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
                     width={SPRITE_SIZE}
                 />
             </div>
+            {battle.metadata.includes(BattleMetadata.Boss) && (
+                <div className={styles['trainer__metadata']}>BOSS</div>
+            )}
+            {battle.metadata.includes(BattleMetadata.Miniboss) && (
+                <div className={styles['trainer__metadata']}>MINIBOSS</div>
+            )}
             {battle.metadata.includes(BattleMetadata.Optional) && (
                 <div className={styles['trainer__metadata']}>OPTIONAL</div>
             )}
