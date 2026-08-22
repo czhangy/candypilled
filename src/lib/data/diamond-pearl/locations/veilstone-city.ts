@@ -10,7 +10,7 @@ const VEILSTONE_CITY: Location = {
         {
             metadata: [BattleMetadata.Tag],
             customHeight: 52,
-            battleKey: 'galactic-grunt-m-16',
+            battleKey: 'galactic-grunt-m-veilstone-city',
             x: 32.2,
             y: 34.4,
         },

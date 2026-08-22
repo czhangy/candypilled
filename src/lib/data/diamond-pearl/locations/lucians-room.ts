@@ -9,7 +9,7 @@ const LUCIANS_ROOM: Location = {
     battles: [
         {
             metadata: [BattleMetadata.Boss, BattleMetadata.Gauntlet],
-            battleKey: 'elite-four-lucian-lucian',
+            battleKey: 'elite-four-lucian',
             x: 50.2,
             y: 40.6,
         },

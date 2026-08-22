@@ -10,7 +10,7 @@ const DISTORTION_WORLD: Location = {
     battles: [
         {
             metadata: [BattleMetadata.Miniboss],
-            battleKey: 'galactic-boss-cyrus-cyrus-3',
+            battleKey: 'galactic-boss-cyrus-distortion-world',
             x: 43.3,
             y: 39.2,
         },

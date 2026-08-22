@@ -21,7 +21,7 @@ const OREBURGH_GYM: Location = {
         },
         {
             metadata: [BattleMetadata.Boss],
-            battleKey: 'leader-roark-roark',
+            battleKey: 'leader-roark',
             x: 46.6,
             y: 22.8,
         },

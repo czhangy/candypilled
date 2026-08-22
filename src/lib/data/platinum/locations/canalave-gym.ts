@@ -80,7 +80,7 @@ const CANALAVE_GYM: Location = {
             battles: [
                 {
                     metadata: [BattleMetadata.Boss],
-                    battleKey: 'leader-byron-byron',
+                    battleKey: 'leader-byron',
                     x: 51.8,
                     y: 4.1,
                 },

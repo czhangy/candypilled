@@ -10,7 +10,7 @@ const VALLEY_WINDWORKS: Location = {
     battles: [
         {
             metadata: [],
-            battleKey: 'galactic-grunt-m-2',
+            battleKey: 'galactic-grunt-m-valley-windworks',
             x: 61.2,
             y: 44.9,
         },

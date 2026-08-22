@@ -10,7 +10,7 @@ const VALOR_CAVERN: Location = {
     battles: [
         {
             metadata: [BattleMetadata.Miniboss],
-            battleKey: 'commander-saturn-saturn-1',
+            battleKey: 'commander-saturn-valor-cavern',
             x: 50.7,
             y: 63.5,
         },

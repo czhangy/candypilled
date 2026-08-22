@@ -9,7 +9,7 @@ const CYNTHIAS_ROOM: Location = {
     battles: [
         {
             metadata: [BattleMetadata.Boss, BattleMetadata.Gauntlet],
-            battleKey: 'champion-cynthia-cynthia',
+            battleKey: 'champion-cynthia',
             x: 50.2,
             y: 72.9,
         },

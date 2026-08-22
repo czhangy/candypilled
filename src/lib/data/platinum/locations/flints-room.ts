@@ -9,7 +9,7 @@ const FLINTS_ROOM: Location = {
     battles: [
         {
             metadata: [BattleMetadata.Boss, BattleMetadata.Gauntlet],
-            battleKey: 'elite-four-flint-flint',
+            battleKey: 'elite-four-flint',
             x: 50.2,
             y: 40.3,
         },

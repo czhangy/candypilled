@@ -523,7 +523,7 @@ export const BATTLES: Record<string, BattleData> = {
     // not assumed from Platinum: Oreburgh Gym's compiled script
     // (scr_seq_release/narc_0050.bin) calls GiveBadge with a literal
     // badge_no argument of 0.
-    'leader-roark-roark': {
+    'leader-roark': {
         trainerClass: 'leader-roark',
         name: 'Roark',
         teams: [
@@ -566,7 +566,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-1': {
+    'galactic-grunt-m-jubilife-city': {
         trainerClass: 'galactic-grunt-m',
         name: '1',
         teams: [
@@ -604,7 +604,7 @@ export const BATTLES: Record<string, BattleData> = {
             ],
         },
     },
-    'galactic-grunt-m-2': {
+    'galactic-grunt-m-valley-windworks': {
         trainerClass: 'galactic-grunt-m',
         name: '2',
         teams: [
@@ -624,7 +624,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     // Floaroma Meadow's two "back to back" Galactic Grunts.
-    'galactic-grunt-m-3': {
+    'galactic-grunt-m-floaroma-meadow-1': {
         trainerClass: 'galactic-grunt-m',
         name: '3',
         teams: [
@@ -652,7 +652,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-4': {
+    'galactic-grunt-m-floaroma-meadow-2': {
         trainerClass: 'galactic-grunt-m',
         name: '4',
         teams: [
@@ -672,7 +672,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     // Valley Windworks Interior's Galactic Grunts and Commander Mars.
-    'galactic-grunt-m-5': {
+    'galactic-grunt-m-valley-windworks-interior-1': {
         trainerClass: 'galactic-grunt-m',
         name: '5',
         teams: [
@@ -691,7 +691,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-6': {
+    'galactic-grunt-m-valley-windworks-interior-2': {
         trainerClass: 'galactic-grunt-m',
         name: '6',
         teams: [
@@ -719,9 +719,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'commander-mars-mars-1': {
+    'commander-mars-valley-windworks-interior': {
         trainerClass: 'commander-mars',
-        name: 'Mars 1',
+        name: 'Mars',
         teams: [
             {
                 team: [
@@ -1520,7 +1520,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     // Mt. Coronet's Galactic Grunts.
-    'galactic-grunt-f-1': {
+    'galactic-grunt-f-mt-coronet-1': {
         trainerClass: 'galactic-grunt-f',
         name: '1',
         teams: [
@@ -1544,7 +1544,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-7': {
+    'galactic-grunt-m-mt-coronet-1': {
         trainerClass: 'galactic-grunt-m',
         name: '7',
         teams: [
@@ -1567,7 +1567,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-8': {
+    'galactic-grunt-m-mt-coronet-2': {
         trainerClass: 'galactic-grunt-m',
         name: '8',
         teams: [
@@ -1619,7 +1619,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-9': {
+    'galactic-grunt-m-mt-coronet-3': {
         trainerClass: 'galactic-grunt-m',
         name: '9',
         teams: [
@@ -1652,7 +1652,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-10': {
+    'galactic-grunt-m-mt-coronet-4': {
         trainerClass: 'galactic-grunt-m',
         name: '10',
         teams: [
@@ -1676,7 +1676,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-2': {
+    'galactic-grunt-f-mt-coronet-2': {
         trainerClass: 'galactic-grunt-f',
         name: '2',
         teams: [
@@ -1718,7 +1718,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-11': {
+    'galactic-grunt-m-mt-coronet-5': {
         trainerClass: 'galactic-grunt-m',
         name: '11',
         teams: [
@@ -1765,7 +1765,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-3': {
+    'galactic-grunt-f-mt-coronet-3': {
         trainerClass: 'galactic-grunt-f',
         name: '3',
         teams: [
@@ -1797,7 +1797,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-12': {
+    'galactic-grunt-m-mt-coronet-6': {
         trainerClass: 'galactic-grunt-m',
         name: '12',
         teams: [
@@ -1834,7 +1834,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-4': {
+    'galactic-grunt-f-mt-coronet-4': {
         trainerClass: 'galactic-grunt-f',
         name: '4',
         teams: [
@@ -1991,7 +1991,7 @@ export const BATTLES: Record<string, BattleData> = {
     // GF_ASSERT(badge_no<8), so not a real call), the other reads 0 -- which
     // would collide with Roark's own already-verified badge_no, so it's a
     // coincidental byte alignment too, not a genuine second GiveBadge call.)
-    'leader-gardenia-gardenia': {
+    'leader-gardenia': {
         trainerClass: 'leader-gardenia',
         name: 'Gardenia',
         teams: [
@@ -2045,7 +2045,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     // Team Galactic Eterna Building.
-    'galactic-grunt-f-5': {
+    'galactic-grunt-f-team-galactic-eterna-building-1': {
         trainerClass: 'galactic-grunt-f',
         name: '5',
         teams: [
@@ -2073,7 +2073,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-13': {
+    'galactic-grunt-m-team-galactic-eterna-building-1': {
         trainerClass: 'galactic-grunt-m',
         name: '13',
         teams: [
@@ -2101,7 +2101,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-14': {
+    'galactic-grunt-m-team-galactic-eterna-building-2': {
         trainerClass: 'galactic-grunt-m',
         name: '14',
         teams: [
@@ -2129,7 +2129,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-6': {
+    'galactic-grunt-f-team-galactic-eterna-building-2': {
         trainerClass: 'galactic-grunt-f',
         name: '6',
         teams: [
@@ -2148,7 +2148,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-7': {
+    'galactic-grunt-f-team-galactic-eterna-building-3': {
         trainerClass: 'galactic-grunt-f',
         name: '7',
         teams: [
@@ -2204,9 +2204,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'commander-jupiter-jupiter-1': {
+    'commander-jupiter-team-galactic-eterna-building': {
         trainerClass: 'commander-jupiter',
-        name: 'Jupiter 1',
+        name: 'Jupiter',
         teams: [
             {
                 team: [
@@ -2788,9 +2788,9 @@ export const BATTLES: Record<string, BattleData> = {
     // index is 0x4088 - 0x4000 = 136. (Platinum's equivalent battle uses
     // var 134/minValue 2 -- close but different, confirming these are
     // independently-numbered per game, not a shared constant.)
-    'pkmn-trainer-barry-barry-1': {
+    'pkmn-trainer-barry-route-203': {
         trainerClass: 'pkmn-trainer-barry',
-        name: 'Barry 1',
+        name: 'Barry',
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
@@ -2868,9 +2868,9 @@ export const BATTLES: Record<string, BattleData> = {
     // scr_seq_release/narc_0090.bin (MAP_HEARTHOME's scripts_bank), found
     // the win-branch SetVar of raw var 0x407b to 2, converted via
     // VAR_BASE=0x4000 -> save-array index 123.
-    'pkmn-trainer-barry-barry-2': {
+    'pkmn-trainer-barry-hearthome-city': {
         trainerClass: 'pkmn-trainer-barry',
-        name: 'Barry 2',
+        name: 'Barry',
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
@@ -3042,9 +3042,9 @@ export const BATTLES: Record<string, BattleData> = {
     // point in scr_seq_release/narc_0118.bin (MAP_PASTORIA's scripts_bank),
     // which calls SetFlag(259). (The nearby SetFlag(455) belongs to the
     // *loss*/blackout branch -- don't reuse it.)
-    'pkmn-trainer-barry-barry-3': {
+    'pkmn-trainer-barry-pastoria-city': {
         trainerClass: 'pkmn-trainer-barry',
-        name: 'Barry 3',
+        name: 'Barry',
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
@@ -3204,9 +3204,9 @@ export const BATTLES: Record<string, BattleData> = {
     // Barry 4 (Canalave City). Disassembled
     // scr_seq_release/narc_0034.bin (MAP_CANALAVE's scripts_bank), win
     // branch sets raw var 0x4078 to 1 -> save-array index 120.
-    'pkmn-trainer-barry-barry-4': {
+    'pkmn-trainer-barry-canalave-city': {
         trainerClass: 'pkmn-trainer-barry',
-        name: 'Barry 4',
+        name: 'Barry',
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
@@ -3419,9 +3419,9 @@ export const BATTLES: Record<string, BattleData> = {
     // scr_seq_release/narc_0180.bin (MAP_POKEMON_LEAGUE_LOBBY_1F's
     // scripts_bank), win branch sets raw var 0x40ef to 1 -> save-array
     // index 239.
-    'pkmn-trainer-barry-barry-5': {
+    'pkmn-trainer-barry-pokemon-league-lobby': {
         trainerClass: 'pkmn-trainer-barry',
-        name: 'Barry 5',
+        name: 'Barry',
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
@@ -6120,7 +6120,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-15': {
+    'galactic-grunt-m-valor-lakefront': {
         trainerClass: 'galactic-grunt-m',
         name: '15',
         teams: [
@@ -6144,7 +6144,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-16': {
+    'galactic-grunt-m-veilstone-city': {
         trainerClass: 'galactic-grunt-m',
         name: '16',
         teams: [
@@ -7294,7 +7294,7 @@ export const BATTLES: Record<string, BattleData> = {
     // Veilstone Gym's compiled script (scr_seq_release/narc_0132.bin) calls
     // GiveBadge with a literal badge_no argument of 2, at byte offset 104
     // (the only occurrence of the GiveBadge opcode 0x015C in this bank).
-    'leader-maylene-maylene': {
+    'leader-maylene': {
         trainerClass: 'leader-maylene',
         name: 'Maylene',
         teams: [
@@ -7534,7 +7534,7 @@ export const BATTLES: Record<string, BattleData> = {
     // Pastoria Gym's compiled script (scr_seq_release/narc_0120.bin) calls
     // GiveBadge with a literal badge_no argument of 3, at byte offset 200
     // (the only occurrence of the GiveBadge opcode 0x015C in this bank).
-    'leader-wake-wake': {
+    'leader-wake': {
         trainerClass: 'leader-wake',
         name: 'Wake',
         teams: [
@@ -7578,7 +7578,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-17': {
+    'galactic-grunt-m-celestic-town': {
         trainerClass: 'galactic-grunt-m',
         name: '17',
         teams: [
@@ -7880,7 +7880,7 @@ export const BATTLES: Record<string, BattleData> = {
     // script bank) calls GiveBadge with a literal badge_no argument of 4,
     // at byte offset 224 (the only occurrence of the GiveBadge opcode
     // 0x015C in this bank).
-    'leader-fantina-fantina': {
+    'leader-fantina': {
         trainerClass: 'leader-fantina',
         name: 'Fantina',
         teams: [
@@ -9142,7 +9142,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-18': {
+    'galactic-grunt-m-iron-island': {
         trainerClass: 'galactic-grunt-m',
         name: '18',
         teams: [
@@ -9447,7 +9447,7 @@ export const BATTLES: Record<string, BattleData> = {
     // Canalave Gym's compiled script (scr_seq_release/narc_0036.bin) calls
     // GiveBadge with a literal badge_no argument of 5, at byte offset 104
     // (the only occurrence of the GiveBadge opcode 0x015C in this bank).
-    'leader-byron-byron': {
+    'leader-byron': {
         trainerClass: 'leader-byron',
         name: 'Byron',
         teams: [
@@ -9509,7 +9509,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-8': {
+    'galactic-grunt-f-lake-valor': {
         trainerClass: 'galactic-grunt-f',
         name: '8',
         teams: [
@@ -9542,7 +9542,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-19': {
+    'galactic-grunt-m-lake-valor-1': {
         trainerClass: 'galactic-grunt-m',
         name: '19',
         teams: [
@@ -9580,7 +9580,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-20': {
+    'galactic-grunt-m-lake-valor-2': {
         trainerClass: 'galactic-grunt-m',
         name: '20',
         teams: [
@@ -9632,9 +9632,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'commander-saturn-saturn-1': {
+    'commander-saturn-valor-cavern': {
         trainerClass: 'commander-saturn',
-        name: 'Saturn 1',
+        name: 'Saturn',
         teams: [
             {
                 team: [
@@ -9679,7 +9679,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-21': {
+    'galactic-grunt-m-lake-verity-1': {
         trainerClass: 'galactic-grunt-m',
         name: '21',
         teams: [
@@ -9745,7 +9745,7 @@ export const BATTLES: Record<string, BattleData> = {
             ],
         },
     },
-    'galactic-grunt-m-22': {
+    'galactic-grunt-m-lake-verity-2': {
         trainerClass: 'galactic-grunt-m',
         name: '22',
         teams: [
@@ -9773,7 +9773,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-10': {
+    'galactic-grunt-f-lake-verity': {
         trainerClass: 'galactic-grunt-f',
         name: '10',
         teams: [
@@ -9806,9 +9806,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'commander-mars-mars-2': {
+    'commander-mars-lake-verity': {
         trainerClass: 'commander-mars',
-        name: 'Mars 2',
+        name: 'Mars',
         teams: [
             {
                 team: [
@@ -10696,7 +10696,7 @@ export const BATTLES: Record<string, BattleData> = {
     // Snowpoint Gym's compiled script (scr_seq_release/narc_0170.bin) calls
     // GiveBadge with a literal badge_no argument of 6, at byte offset 119
     // (the only occurrence of the GiveBadge opcode 0x015C in this bank).
-    'leader-candice-candice': {
+    'leader-candice': {
         trainerClass: 'leader-candice',
         name: 'Candice',
         teams: [
@@ -10752,7 +10752,7 @@ export const BATTLES: Record<string, BattleData> = {
             { count: 1, name: 'Full Restore' },
         ],
     },
-    'galactic-grunt-m-23': {
+    'galactic-grunt-m-galactic-hq-1': {
         trainerClass: 'galactic-grunt-m',
         name: '23',
         teams: [
@@ -10776,7 +10776,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-24': {
+    'galactic-grunt-m-galactic-hq-2': {
         trainerClass: 'galactic-grunt-m',
         name: '24',
         teams: [
@@ -10813,7 +10813,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-11': {
+    'galactic-grunt-f-galactic-hq-1': {
         trainerClass: 'galactic-grunt-f',
         name: '11',
         teams: [
@@ -10865,7 +10865,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-25': {
+    'galactic-grunt-m-galactic-hq-3': {
         trainerClass: 'galactic-grunt-m',
         name: '25',
         teams: [
@@ -10907,7 +10907,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-26': {
+    'galactic-grunt-m-galactic-hq-4': {
         trainerClass: 'galactic-grunt-m',
         name: '26',
         teams: [
@@ -10945,7 +10945,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-12': {
+    'galactic-grunt-f-galactic-hq-2': {
         trainerClass: 'galactic-grunt-f',
         name: '12',
         teams: [
@@ -10997,7 +10997,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-27': {
+    'galactic-grunt-m-galactic-hq-5': {
         trainerClass: 'galactic-grunt-m',
         name: '27',
         teams: [
@@ -11016,7 +11016,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-28': {
+    'galactic-grunt-m-galactic-hq-6': {
         trainerClass: 'galactic-grunt-m',
         name: '28',
         teams: [
@@ -11049,7 +11049,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-13': {
+    'galactic-grunt-f-galactic-hq-3': {
         trainerClass: 'galactic-grunt-f',
         name: '13',
         teams: [
@@ -11091,7 +11091,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-29': {
+    'galactic-grunt-m-galactic-hq-7': {
         trainerClass: 'galactic-grunt-m',
         name: '29',
         teams: [
@@ -11124,9 +11124,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-boss-cyrus-cyrus-1': {
+    'galactic-boss-cyrus-galactic-hq': {
         trainerClass: 'galactic-boss-cyrus',
-        name: 'Cyrus 1',
+        name: 'Cyrus',
         teams: [
             {
                 team: [
@@ -11177,9 +11177,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'commander-saturn-saturn-2': {
+    'commander-saturn-galactic-hq': {
         trainerClass: 'commander-saturn',
-        name: 'Saturn 2',
+        name: 'Saturn',
         teams: [
             {
                 team: [
@@ -11224,7 +11224,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-14': {
+    'galactic-grunt-f-spear-pillar': {
         trainerClass: 'galactic-grunt-f',
         name: '14',
         teams: [
@@ -11290,7 +11290,7 @@ export const BATTLES: Record<string, BattleData> = {
             ],
         },
     },
-    'commander-jupiter-jupiter-2': {
+    'commander-jupiter-spear-pillar': {
         trainerClass: 'commander-jupiter',
         name: 'Jupiter',
         teams: [
@@ -11394,9 +11394,9 @@ export const BATTLES: Record<string, BattleData> = {
             ],
         },
     },
-    'galactic-boss-cyrus-cyrus-2': {
+    'galactic-boss-cyrus-spear-pillar': {
         trainerClass: 'galactic-boss-cyrus',
-        name: 'Cyrus 2',
+        name: 'Cyrus',
         teams: [
             {
                 team: [
@@ -12538,7 +12538,7 @@ export const BATTLES: Record<string, BattleData> = {
     // MAP_SUNYSHORE_GYM_ROOM_3's own script bank) calls GiveBadge with a
     // literal badge_no argument of 7, at byte offset 121 (the only
     // occurrence of the GiveBadge opcode 0x015C in this bank).
-    'leader-volkner-volkner': {
+    'leader-volkner': {
         trainerClass: 'leader-volkner',
         name: 'Volkner',
         items: [
@@ -13123,7 +13123,7 @@ export const BATTLES: Record<string, BattleData> = {
     // Aaron's Room compiled script (scr_seq_release/narc_0182.bin) calls
     // SetFlag (opcode 0x001E) with a literal argument of 176, at byte
     // offset 61 (the only occurrence of the SetFlag opcode in this bank).
-    'elite-four-aaron-aaron': {
+    'elite-four-aaron': {
         trainerClass: 'elite-four-aaron',
         name: 'Aaron',
         items: [{ count: 2, name: 'Full Restore' }],
@@ -13208,7 +13208,7 @@ export const BATTLES: Record<string, BattleData> = {
     // Bertha's Room compiled script (scr_seq_release/narc_0184.bin) calls
     // SetFlag (opcode 0x001E) with a literal argument of 177, at byte
     // offset 61 (the only occurrence of the SetFlag opcode in this bank).
-    'elite-four-bertha-bertha': {
+    'elite-four-bertha': {
         trainerClass: 'elite-four-bertha',
         name: 'Bertha',
         items: [{ count: 2, name: 'Full Restore' }],
@@ -13283,7 +13283,7 @@ export const BATTLES: Record<string, BattleData> = {
     // Flint's Room compiled script (scr_seq_release/narc_0186.bin) calls
     // SetFlag (opcode 0x001E) with a literal argument of 178, at byte
     // offset 61 (the only occurrence of the SetFlag opcode in this bank).
-    'elite-four-flint-flint': {
+    'elite-four-flint': {
         trainerClass: 'elite-four-flint',
         name: 'Flint',
         items: [{ count: 2, name: 'Full Restore' }],
@@ -13368,7 +13368,7 @@ export const BATTLES: Record<string, BattleData> = {
     // Lucian's Room compiled script (scr_seq_release/narc_0188.bin) calls
     // SetFlag (opcode 0x001E) with a literal argument of 179, at byte
     // offset 61 (the only occurrence of the SetFlag opcode in this bank).
-    'elite-four-lucian-lucian': {
+    'elite-four-lucian': {
         trainerClass: 'elite-four-lucian',
         name: 'Lucian',
         items: [{ count: 2, name: 'Full Restore' }],
@@ -13469,7 +13469,7 @@ export const BATTLES: Record<string, BattleData> = {
     // D/P's own script only ever sets its own dedicated flag 180 here, so
     // that -- not gameClear -- is what this app can actually detect from a
     // decrypted D/P save.
-    'champion-cynthia-cynthia': {
+    'champion-cynthia': {
         trainerClass: 'champion-cynthia',
         name: 'Cynthia',
         items: [{ count: 4, name: 'Full Restore' }],

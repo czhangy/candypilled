@@ -20,47 +20,63 @@ replacement, not a supplementary source. STATS/LEARNSETS/EVOLUTiON/
 iTEMS/GiFTS/NPC-TRADES tabs on the original sheet are unaffected (still
 current) unless told otherwise.
 
-- **Encounters**: a separate, multi-hack workbook (Fire Red Omega, Storm
-  Silver, and Renegade Platinum stacked as three vertically-stacked
-  sections in one tab) —
-  `https://docs.google.com/spreadsheets/d/1UExH51A0xx2ktc0IkQY1x-vmfNb_Zjxm/export?format=csv&gid=1219699553`.
-  The Renegade Platinum section starts where column A reads exactly
-  `Renegade Platinum` (currently row 580 of the exported CSV — re-find by
-  searching for that literal string rather than trusting the row number,
-  since rows above it can shift as the other two hacks' sections are
-  edited). Column layout is a fixed 5-column stride per location, no
-  gap column between location blocks: `Pokémon, Level, Encounter Rate,
-Dupe?, Dupe adjusted encounter rate`, repeating left-to-right once per
-  location — the location's display name sits in the first (`Pokémon`)
-  column of its block, one row above the `Pokémon/Level/...` sub-header
-  row. Row 0 of the block is the location name row (blank in the other 4
-  columns of the block); row 1 is the column sub-header; data rows follow,
-  grouped under a method label (e.g. `Walking (Morning)`, `Surfing`) in
-  the very first column of the entire sheet (column A, not per-block) that
-  applies to all location-blocks in that row-range until the next method
-  label appears.
-- **Trainer battles**: a separate workbook,
-  `https://docs.google.com/spreadsheets/d/1uwR23b6kHRFYoav1Jzfx65qGfaxNQE8pI83Yr5mcVXQ`,
-  with one tab per gym split (mirrors the old sheet's `*SPLiT` tabs, but
-  is its own document now — don't confuse the two). Tab gids, from the
-  edit page's `docs-sheet-tab-caption` elements (only Roark Split's gid is
-  confirmed so far, since it's this doc's default/landing tab — re-derive
-  the rest the same way, by fetching `.../edit` and grepping
-  `docs-sheet-tab-caption">` for the name list, then reading each tab's
-  URL bar `gid=` once opened, since gids aren't embedded next to the
-  caption text in this workbook's HTML the way the old sheet's were):
-  Roark Split (gid `182366078`, confirmed), Gardenia Split, Fantina Split,
-  Maylene Split, Wake Split, Byron Split, Candice Split, Volkner Split,
-  Champion Split — plus non-data tabs `Raw Notes`, `Placeholder`,
-  `Sprites`. Row layout per trainer within a tab: trainer name row, then
-  per-mon-column blocks of `Level / Nature (+Stat -Stat) / Ability / Held
-Item / Move 1-4`, with a `<n> IVs` note appended to the trainer-name
-  cell text (uniform IV across that trainer's whole team) — see the
-  worked Barry-1 example already authored in `battles.ts` for the exact
-  parse. **No gender column exists on this sheet** — never omit `gender`
-  because of that (see the `gen4-trainer-data-extraction` skill's gender
-  section); derive it from species `genderRate`, falling back to asking
-  the user only for the 50/50-ratio case.
+- **Encounters**: workbook `1UExH51A0xx2ktc0IkQY1x-vmfNb_Zjxm` has 5 tabs
+  — `Encounter tracker` (gid `810393132`), `Smart encounters table` (gid
+  `1219699553`), `Encounter Tables` (gid `729957394`), `DROPDOWNS` (gid
+  `1456316644`), `Dupe groups` (gid `220370509`). **Use `Encounter
+Tables` (gid `729957394`) as the source of truth — NOT `Smart encounters
+table`, despite its name sounding more authoritative** (user correction,
+  2026-08-21, after Route 202 turned out to need it). The two tabs' actual
+  species/level/rate values matched exactly on every location spot-checked
+  so far (Route 201), so nothing already-authored needs redoing solely
+  because of this correction — it's a going-forward source pointer, not a
+  sign the earlier data was wrong.
+  `https://docs.google.com/spreadsheets/d/1UExH51A0xx2ktc0IkQY1x-vmfNb_Zjxm/export?format=csv&gid=729957394`.
+  Fire Red Omega, Storm Silver, and Renegade Platinum are stacked as three
+  vertically-stacked sections in this tab too. The Renegade Platinum
+  section starts where column A reads exactly `Renegade Platinum` — find
+  it by searching for that literal string, not a row number (shifts as
+  the other two hacks' sections are edited). Column layout is a **3-column
+  stride** per location (this tab has no Dupe?/Dupe-adjusted columns,
+  unlike Smart encounters table): `Pokémon, Level, Encounter Rate`,
+  repeating left-to-right once per location — location display name sits
+  in the first (`Pokémon`) column of its block, one row above the
+  `Pokémon/Level/Encounter Rate` sub-header row; data rows follow, grouped
+  under a method label (e.g. `Walking (Morning)`, `Surfing`, `Poke Radar`)
+  in column A (applies to every location-block in that row-range until the
+  next method label). **A blank `Level` cell is possible and is a genuine
+  sheet gap, not a parsing error** (seen at Route 202 — every Walking row
+  had no level; the user supplied the real value directly) — confirm with
+  the user rather than assuming a neighboring location's range carries
+  over.
+- **Trainer battles**: workbook
+  `1uwR23b6kHRFYoav1Jzfx65qGfaxNQE8pI83Yr5mcVXQ`
+  (`https://docs.google.com/spreadsheets/d/1uwR23b6kHRFYoav1Jzfx65qGfaxNQE8pI83Yr5mcVXQ`),
+  one tab per gym split (mirrors the old sheet's `*SPLiT` tabs, but is its
+  own document now — don't confuse the two). Full tab gid list (from the
+  `htmlview` endpoint's embedded `items.push({name: "...", ..., gid:
+"..."})` bootstrap JS — fetch `.../htmlview` and regex
+  `name: "([^"]+)", pageUrl:[^,]+,\s*gid: "(\d+)"`, more reliable than the
+  `/edit` page's HTML for this workbook): Roark Split (`182366078`),
+  Gardenia Split (`138786025`), Fantina Split (`446903300`), Maylene Split
+  (`1305322844`), Wake Split (`1891935092`), Byron Split (`1236439805`),
+  Candice Split (`527390430`), Volkner Split (`1865021164`), Champion
+  Split (`1357697841`) — plus non-data tabs `Raw Notes` (`810826549`),
+  `Sprites` (`330078244`). Row layout per trainer within a tab: trainer
+  name row, then per-mon-column blocks of `Level / Nature (+Stat -Stat) /
+Ability / Held Item / Move 1-4`, with a `<n> IVs` note appended to the
+  trainer-name cell text (uniform IV across that trainer's whole team) —
+  see the worked Barry-1 example already authored in `battles.ts` for the
+  exact parse. **No gender column exists on this sheet** — never omit
+  `gender` because of that (see the `gen4-trainer-data-extraction` skill's
+  gender section); derive it from species `genderRate`, falling back to
+  asking the user only for the 50/50-ratio case. **A trainer name written
+  as two names joined by `/` (e.g. "PKMN Trainer Dawn/Lucas") can mean two
+  entirely separate trainers/classes gated by `Battle.gender`, not one
+  trainer with an ambiguous stat** — confirm with the user rather than
+  assuming a slash always means "pick one." When it does split like this,
+  slash-separated stat values (e.g. a nature written `Lax/Hasty`) map
+  first-to-first (first name -> first value) unless told otherwise.
 
 All other data (STATS, LEARNSETS, EVOLUTiON/TYPE/MOVES, iTEMS/TMs,
 GiFTS/EVENTS, NPC/TRADES) still comes from the single Google Sheet the

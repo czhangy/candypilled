@@ -17,13 +17,15 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
             battles: [
                 {
                     metadata: [],
-                    battleKey: 'galactic-grunt-f-5',
+                    battleKey:
+                        'galactic-grunt-f-team-galactic-eterna-building-1',
                     x: 70.6,
                     y: 35.7,
                 },
                 {
                     metadata: [],
-                    battleKey: 'galactic-grunt-m-13',
+                    battleKey:
+                        'galactic-grunt-m-team-galactic-eterna-building-1',
                     x: 93.8,
                     y: 35.7,
                 },
@@ -36,13 +38,15 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
             battles: [
                 {
                     metadata: [BattleMetadata.Optional],
-                    battleKey: 'galactic-grunt-m-14',
+                    battleKey:
+                        'galactic-grunt-m-team-galactic-eterna-building-2',
                     x: 10.6,
                     y: 79.2,
                 },
                 {
                     metadata: [BattleMetadata.Optional],
-                    battleKey: 'galactic-grunt-f-6',
+                    battleKey:
+                        'galactic-grunt-f-team-galactic-eterna-building-2',
                     x: 59.5,
                     y: 57,
                 },
@@ -55,7 +59,8 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
             battles: [
                 {
                     metadata: [],
-                    battleKey: 'galactic-grunt-f-7',
+                    battleKey:
+                        'galactic-grunt-f-team-galactic-eterna-building-3',
                     x: 45.9,
                     y: 57.9,
                 },
@@ -74,7 +79,8 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
             battles: [
                 {
                     metadata: [BattleMetadata.Miniboss],
-                    battleKey: 'commander-jupiter-jupiter-1',
+                    battleKey:
+                        'commander-jupiter-team-galactic-eterna-building',
                     x: 53.4,
                     y: 58.1,
                 },

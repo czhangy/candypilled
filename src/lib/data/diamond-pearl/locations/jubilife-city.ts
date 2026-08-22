@@ -10,7 +10,7 @@ const JUBILIFE_CITY: Location = {
         {
             metadata: [BattleMetadata.Tag],
             customHeight: 40,
-            battleKey: 'galactic-grunt-m-1',
+            battleKey: 'galactic-grunt-m-jubilife-city',
             x: 70.3,
             y: 5.2,
         },

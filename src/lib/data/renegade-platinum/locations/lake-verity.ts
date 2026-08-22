@@ -39,7 +39,7 @@ const LAKE_VERITY: Location = {
                     y: 67.3,
                 },
                 {
-                    battleKey: 'commander-mars-mars-lake-verity',
+                    battleKey: 'commander-mars-lake-verity',
                     metadata: [BattleMetadata.Miniboss],
                     x: 86.8,
                     y: 59.5,

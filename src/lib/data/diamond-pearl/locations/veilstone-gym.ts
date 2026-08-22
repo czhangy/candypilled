@@ -33,7 +33,7 @@ const VEILSTONE_GYM: Location = {
         },
         {
             metadata: [BattleMetadata.Boss],
-            battleKey: 'leader-maylene-maylene',
+            battleKey: 'leader-maylene',
             x: 50.1,
             y: 15.1,
         },

@@ -10,7 +10,7 @@ const CELESTIC_TOWN: Location = {
     battles: [
         {
             metadata: [],
-            battleKey: 'galactic-grunt-m-17',
+            battleKey: 'galactic-grunt-m-celestic-town',
             x: 51.1,
             y: 41.7,
         },

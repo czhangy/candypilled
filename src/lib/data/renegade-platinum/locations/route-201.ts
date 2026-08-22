@@ -9,7 +9,7 @@ const ROUTE_201: Location = {
     encountersKey: 'sinnoh-route-201',
     battles: [
         {
-            battleKey: 'pkmn-trainer-barry-barry-1',
+            battleKey: 'pkmn-trainer-barry-1',
             metadata: [BattleMetadata.Miniboss],
             x: 25.8,
             y: 72.2,

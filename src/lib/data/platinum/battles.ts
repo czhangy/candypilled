@@ -2,7 +2,7 @@ import { Nature } from '@/lib/static/enums';
 import { BattleData } from '@/lib/static/types';
 
 export const BATTLES: Record<string, BattleData> = {
-    'elite-four-aaron-aaron': {
+    'elite-four-aaron': {
         trainerClass: 'elite-four-aaron',
         name: 'Aaron',
         teams: [
@@ -89,7 +89,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'elite-four-bertha-bertha': {
+    'elite-four-bertha': {
         trainerClass: 'elite-four-bertha',
         name: 'Bertha',
         teams: [
@@ -222,9 +222,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'pkmn-trainer-barry-barry-5': {
+    'pkmn-trainer-barry-canalave-city': {
         trainerClass: 'pkmn-trainer-barry',
-        name: 'Barry 5',
+        name: 'Barry',
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
@@ -621,7 +621,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'leader-byron-byron': {
+    'leader-byron': {
         trainerClass: 'leader-byron',
         name: 'Byron',
         teams: [
@@ -683,9 +683,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-boss-cyrus-cyrus-1': {
+    'galactic-boss-cyrus-celestic-ruins': {
         trainerClass: 'galactic-boss-cyrus',
-        name: 'Cyrus 1',
+        name: 'Cyrus',
         teams: [
             {
                 team: [
@@ -742,7 +742,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-11': {
+    'galactic-grunt-m-celestic-town': {
         trainerClass: 'galactic-grunt-m',
         name: '11',
         teams: [
@@ -768,7 +768,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'champion-cynthia-cynthia': {
+    'champion-cynthia': {
         trainerClass: 'champion-cynthia',
         name: 'Cynthia',
         teams: [
@@ -869,9 +869,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-boss-cyrus-cyrus-3': {
+    'galactic-boss-cyrus-distortion-world': {
         trainerClass: 'galactic-boss-cyrus',
-        name: 'Cyrus 3',
+        name: 'Cyrus',
         teams: [
             {
                 team: [
@@ -1239,7 +1239,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'leader-gardenia-gardenia': {
+    'leader-gardenia': {
         trainerClass: 'leader-gardenia',
         name: 'Gardenia',
         teams: [
@@ -1298,7 +1298,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'elite-four-flint-flint': {
+    'elite-four-flint': {
         trainerClass: 'elite-four-flint',
         name: 'Flint',
         teams: [
@@ -1385,7 +1385,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-3': {
+    'galactic-grunt-m-floaroma-meadow-1': {
         trainerClass: 'galactic-grunt-m',
         name: '3',
         teams: [
@@ -1402,7 +1402,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-4': {
+    'galactic-grunt-m-floaroma-meadow-2': {
         trainerClass: 'galactic-grunt-m',
         name: '4',
         teams: [
@@ -1495,7 +1495,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-17': {
+    'galactic-grunt-m-galactic-hq-1': {
         trainerClass: 'galactic-grunt-m',
         name: '17',
         teams: [
@@ -1513,7 +1513,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-18': {
+    'galactic-grunt-m-galactic-hq-2': {
         trainerClass: 'galactic-grunt-m',
         name: '18',
         teams: [
@@ -1539,7 +1539,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-6': {
+    'galactic-grunt-f-galactic-hq-1': {
         trainerClass: 'galactic-grunt-f',
         name: '6',
         teams: [
@@ -1599,7 +1599,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-19': {
+    'galactic-grunt-m-galactic-hq-3': {
         trainerClass: 'galactic-grunt-m',
         name: '19',
         teams: [
@@ -1633,7 +1633,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-22': {
+    'galactic-grunt-m-galactic-hq-6': {
         trainerClass: 'galactic-grunt-m',
         name: '22',
         teams: [
@@ -1659,7 +1659,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-7': {
+    'galactic-grunt-f-galactic-hq-2': {
         trainerClass: 'galactic-grunt-f',
         name: '7',
         teams: [
@@ -1713,7 +1713,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-20': {
+    'galactic-grunt-m-galactic-hq-4': {
         trainerClass: 'galactic-grunt-m',
         name: '20',
         teams: [
@@ -1731,7 +1731,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-21': {
+    'galactic-grunt-m-galactic-hq-5': {
         trainerClass: 'galactic-grunt-m',
         name: '21',
         teams: [
@@ -1757,7 +1757,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-8': {
+    'galactic-grunt-f-galactic-hq-3': {
         trainerClass: 'galactic-grunt-f',
         name: '8',
         teams: [
@@ -1791,7 +1791,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-23': {
+    'galactic-grunt-m-galactic-hq-7': {
         trainerClass: 'galactic-grunt-m',
         name: '23',
         teams: [
@@ -1817,9 +1817,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-boss-cyrus-cyrus-2': {
+    'galactic-boss-cyrus-galactic-hq': {
         trainerClass: 'galactic-boss-cyrus',
-        name: 'Cyrus 2',
+        name: 'Cyrus',
         teams: [
             {
                 team: [
@@ -1880,9 +1880,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'commander-saturn-saturn-2': {
+    'commander-saturn-galactic-hq': {
         trainerClass: 'commander-saturn',
-        name: 'Saturn 2',
+        name: 'Saturn',
         teams: [
             {
                 team: [
@@ -1932,7 +1932,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'pkmn-trainer-barry-barry': {
+    'pkmn-trainer-barry': {
         trainerClass: 'pkmn-trainer-barry',
         name: 'Barry',
         teams: [
@@ -2307,7 +2307,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'leader-fantina-fantina': {
+    'leader-fantina': {
         trainerClass: 'leader-fantina',
         name: 'Fantina',
         teams: [
@@ -2666,7 +2666,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-12': {
+    'galactic-grunt-m-iron-island': {
         trainerClass: 'galactic-grunt-m',
         name: '12',
         teams: [
@@ -2734,7 +2734,7 @@ export const BATTLES: Record<string, BattleData> = {
             ],
         },
     },
-    'galactic-grunt-m-1': {
+    'galactic-grunt-m-jubilife-city': {
         trainerClass: 'galactic-grunt-m',
         name: '1',
         teams: [
@@ -2768,7 +2768,7 @@ export const BATTLES: Record<string, BattleData> = {
             ],
         },
     },
-    'galactic-grunt-f-4': {
+    'galactic-grunt-f-lake-valor': {
         trainerClass: 'galactic-grunt-f',
         name: '4',
         teams: [
@@ -2794,7 +2794,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-13': {
+    'galactic-grunt-m-lake-valor-1': {
         trainerClass: 'galactic-grunt-m',
         name: '13',
         teams: [
@@ -2812,7 +2812,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-14': {
+    'galactic-grunt-m-lake-valor-2': {
         trainerClass: 'galactic-grunt-m',
         name: '14',
         teams: [
@@ -2854,7 +2854,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-15': {
+    'galactic-grunt-m-lake-verity-1': {
         trainerClass: 'galactic-grunt-m',
         name: '15',
         teams: [
@@ -2923,7 +2923,7 @@ export const BATTLES: Record<string, BattleData> = {
             ],
         },
     },
-    'galactic-grunt-m-16': {
+    'galactic-grunt-m-lake-verity-2': {
         trainerClass: 'galactic-grunt-m',
         name: '16',
         teams: [
@@ -2949,7 +2949,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-5': {
+    'galactic-grunt-f-lake-verity': {
         trainerClass: 'galactic-grunt-f',
         name: '5',
         teams: [
@@ -2975,9 +2975,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'commander-mars-mars-2': {
+    'commander-mars-lake-verity': {
         trainerClass: 'commander-mars',
-        name: 'Mars 2',
+        name: 'Mars',
         teams: [
             {
                 team: [
@@ -3022,7 +3022,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'elite-four-lucian-lucian': {
+    'elite-four-lucian': {
         trainerClass: 'elite-four-lucian',
         name: 'Lucian',
         teams: [
@@ -3108,7 +3108,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-9': {
+    'galactic-grunt-f-mt-coronet-1': {
         trainerClass: 'galactic-grunt-f',
         name: '9',
         teams: [
@@ -3126,7 +3126,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-24': {
+    'galactic-grunt-m-mt-coronet-1': {
         trainerClass: 'galactic-grunt-m',
         name: '24',
         teams: [
@@ -3144,7 +3144,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-25': {
+    'galactic-grunt-m-mt-coronet-2': {
         trainerClass: 'galactic-grunt-m',
         name: '25',
         teams: [
@@ -3196,7 +3196,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-26': {
+    'galactic-grunt-m-mt-coronet-3': {
         trainerClass: 'galactic-grunt-m',
         name: '26',
         teams: [
@@ -3222,7 +3222,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-27': {
+    'galactic-grunt-m-mt-coronet-4': {
         trainerClass: 'galactic-grunt-m',
         name: '27',
         teams: [
@@ -3240,7 +3240,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-10': {
+    'galactic-grunt-f-mt-coronet-2': {
         trainerClass: 'galactic-grunt-f',
         name: '10',
         teams: [
@@ -3274,7 +3274,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-28': {
+    'galactic-grunt-m-mt-coronet-5': {
         trainerClass: 'galactic-grunt-m',
         name: '28',
         teams: [
@@ -3308,7 +3308,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-11': {
+    'galactic-grunt-f-mt-coronet-3': {
         trainerClass: 'galactic-grunt-f',
         name: '11',
         teams: [
@@ -3334,7 +3334,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-29': {
+    'galactic-grunt-m-mt-coronet-6': {
         trainerClass: 'galactic-grunt-m',
         name: '29',
         teams: [
@@ -3360,7 +3360,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-12': {
+    'galactic-grunt-f-mt-coronet-4': {
         trainerClass: 'galactic-grunt-f',
         name: '12',
         teams: [
@@ -3534,7 +3534,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'leader-roark-roark': {
+    'leader-roark': {
         trainerClass: 'leader-roark',
         name: 'Roark',
         teams: [
@@ -3618,9 +3618,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'pkmn-trainer-barry-barry-4': {
+    'pkmn-trainer-barry-pastoria-city': {
         trainerClass: 'pkmn-trainer-barry',
-        name: 'Barry 4',
+        name: 'Barry',
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
@@ -3969,7 +3969,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'leader-wake-wake': {
+    'leader-wake': {
         trainerClass: 'leader-wake',
         name: 'Wake',
         teams: [
@@ -4013,9 +4013,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'pkmn-trainer-barry-barry-6': {
+    'pkmn-trainer-barry-pokemon-league-lobby': {
         trainerClass: 'pkmn-trainer-barry',
-        name: 'Barry 6',
+        name: 'Barry',
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
@@ -4271,9 +4271,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'pkmn-trainer-barry-barry-1': {
+    'pkmn-trainer-barry-route-201': {
         trainerClass: 'pkmn-trainer-barry',
-        name: 'Barry 1',
+        name: 'Barry',
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
@@ -4368,9 +4368,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'pkmn-trainer-barry-barry-2': {
+    'pkmn-trainer-barry-route-203': {
         trainerClass: 'pkmn-trainer-barry',
-        name: 'Barry 2',
+        name: 'Barry',
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
@@ -9506,7 +9506,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'leader-candice-candice': {
+    'leader-candice': {
         trainerClass: 'leader-candice',
         name: 'Candice',
         teams: [
@@ -9613,7 +9613,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-13': {
+    'galactic-grunt-f-spear-pillar': {
         trainerClass: 'galactic-grunt-f',
         name: '13',
         teams: [
@@ -9665,7 +9665,7 @@ export const BATTLES: Record<string, BattleData> = {
             ],
         },
     },
-    'commander-jupiter-jupiter': {
+    'commander-jupiter': {
         trainerClass: 'commander-jupiter',
         name: 'Jupiter',
         teams: [
@@ -10018,7 +10018,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'leader-volkner-volkner': {
+    'leader-volkner': {
         trainerClass: 'leader-volkner',
         name: 'Volkner',
         teams: [
@@ -10102,7 +10102,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-1': {
+    'galactic-grunt-f-team-galactic-eterna-building-1': {
         trainerClass: 'galactic-grunt-f',
         name: '1',
         teams: [
@@ -10126,7 +10126,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-7': {
+    'galactic-grunt-m-team-galactic-eterna-building-1': {
         trainerClass: 'galactic-grunt-m',
         name: '7',
         teams: [
@@ -10150,7 +10150,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-8': {
+    'galactic-grunt-m-team-galactic-eterna-building-2': {
         trainerClass: 'galactic-grunt-m',
         name: '8',
         teams: [
@@ -10167,7 +10167,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-2': {
+    'galactic-grunt-f-team-galactic-eterna-building-2': {
         trainerClass: 'galactic-grunt-f',
         name: '2',
         teams: [
@@ -10184,7 +10184,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-f-3': {
+    'galactic-grunt-f-team-galactic-eterna-building-3': {
         trainerClass: 'galactic-grunt-f',
         name: '3',
         teams: [
@@ -10240,9 +10240,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'commander-jupiter-jupiter-1': {
+    'commander-jupiter-team-galactic-eterna-building': {
         trainerClass: 'commander-jupiter',
-        name: 'Jupiter 1',
+        name: 'Jupiter',
         teams: [
             {
                 team: [
@@ -10274,7 +10274,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-5': {
+    'galactic-grunt-m-valley-windworks-interior-1': {
         trainerClass: 'galactic-grunt-m',
         name: '5',
         teams: [
@@ -10291,7 +10291,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-6': {
+    'galactic-grunt-m-valley-windworks-interior-2': {
         trainerClass: 'galactic-grunt-m',
         name: '6',
         teams: [
@@ -10315,9 +10315,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'commander-mars-mars-1': {
+    'commander-mars-valley-windworks-interior': {
         trainerClass: 'commander-mars',
-        name: 'Mars 1',
+        name: 'Mars',
         teams: [
             {
                 team: [
@@ -10344,7 +10344,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-2': {
+    'galactic-grunt-m-valley-windworks': {
         trainerClass: 'galactic-grunt-m',
         name: '2',
         teams: [
@@ -10361,9 +10361,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'commander-saturn-saturn-1': {
+    'commander-saturn-valor-cavern': {
         trainerClass: 'commander-saturn',
-        name: 'Saturn 1',
+        name: 'Saturn',
         teams: [
             {
                 team: [
@@ -10408,7 +10408,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-10': {
+    'galactic-grunt-m-valor-lakefront': {
         trainerClass: 'galactic-grunt-m',
         name: '10',
         teams: [
@@ -10426,7 +10426,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'galactic-grunt-m-9': {
+    'galactic-grunt-m-veilstone-city': {
         trainerClass: 'galactic-grunt-m',
         name: '9',
         teams: [
@@ -10599,7 +10599,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'leader-maylene-maylene': {
+    'leader-maylene': {
         trainerClass: 'leader-maylene',
         name: 'Maylene',
         teams: [

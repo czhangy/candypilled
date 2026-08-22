@@ -55,13 +55,13 @@ const MT_CORONET: Location = {
             battles: [
                 {
                     metadata: [BattleMetadata.Optional],
-                    battleKey: 'galactic-grunt-f-9',
+                    battleKey: 'galactic-grunt-f-mt-coronet-1',
                     x: 63.2,
                     y: 27.3,
                 },
                 {
                     metadata: [BattleMetadata.Optional],
-                    battleKey: 'galactic-grunt-m-24',
+                    battleKey: 'galactic-grunt-m-mt-coronet-1',
                     x: 10.3,
                     y: 48.2,
                 },
@@ -81,13 +81,13 @@ const MT_CORONET: Location = {
             battles: [
                 {
                     metadata: [BattleMetadata.Optional],
-                    battleKey: 'galactic-grunt-m-25',
+                    battleKey: 'galactic-grunt-m-mt-coronet-2',
                     x: 23.7,
                     y: 33.2,
                 },
                 {
                     metadata: [BattleMetadata.Optional],
-                    battleKey: 'galactic-grunt-m-26',
+                    battleKey: 'galactic-grunt-m-mt-coronet-3',
                     x: 53.8,
                     y: 30.5,
                 },
@@ -101,19 +101,19 @@ const MT_CORONET: Location = {
             battles: [
                 {
                     metadata: [BattleMetadata.Optional],
-                    battleKey: 'galactic-grunt-m-27',
+                    battleKey: 'galactic-grunt-m-mt-coronet-4',
                     x: 11.8,
                     y: 77.8,
                 },
                 {
                     metadata: [BattleMetadata.Optional],
-                    battleKey: 'galactic-grunt-f-10',
+                    battleKey: 'galactic-grunt-f-mt-coronet-2',
                     x: 79.2,
                     y: 60.6,
                 },
                 {
                     metadata: [BattleMetadata.Optional],
-                    battleKey: 'galactic-grunt-m-28',
+                    battleKey: 'galactic-grunt-m-mt-coronet-5',
                     x: 64,
                     y: 19,
                 },
@@ -128,13 +128,13 @@ const MT_CORONET: Location = {
             battles: [
                 {
                     metadata: [],
-                    battleKey: 'galactic-grunt-f-11',
+                    battleKey: 'galactic-grunt-f-mt-coronet-3',
                     x: 73.2,
                     y: 68,
                 },
                 {
                     metadata: [],
-                    battleKey: 'galactic-grunt-m-29',
+                    battleKey: 'galactic-grunt-m-mt-coronet-6',
                     x: 44.9,
                     y: 83.9,
                 },
@@ -148,7 +148,7 @@ const MT_CORONET: Location = {
             battles: [
                 {
                     metadata: [],
-                    battleKey: 'galactic-grunt-f-12',
+                    battleKey: 'galactic-grunt-f-mt-coronet-4',
                     x: 55.7,
                     y: 51,
                 },

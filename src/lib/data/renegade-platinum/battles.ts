@@ -2,9 +2,9 @@ import { Nature } from '@/lib/static/enums';
 import { BattleData } from '@/lib/static/types';
 
 export const BATTLES: Record<string, BattleData> = {
-    'pkmn-trainer-barry-barry-1': {
+    'pkmn-trainer-barry-1': {
         trainerClass: 'pkmn-trainer-barry',
-        name: 'Barry 1',
+        name: 'Barry',
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
@@ -215,7 +215,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'commander-mars-mars-lake-verity': {
+    'commander-mars-lake-verity': {
         trainerClass: 'commander-mars',
         name: 'Mars',
         teams: [
@@ -289,6 +289,205 @@ export const BATTLES: Record<string, BattleData> = {
                         ],
                         nature: Nature.Lonely,
                         ivs: 31,
+                    },
+                ],
+            },
+        ],
+    },
+    'pkmn-trainer-dawn': {
+        trainerClass: 'pkmn-trainer-dawn',
+        name: 'Dawn',
+        teams: [
+            {
+                condition: { type: 'starter', starter: 'turtwig' },
+                team: [
+                    {
+                        slug: 'piplup',
+                        ability: 'torrent',
+                        gender: 'male',
+                        level: 9,
+                        moves: ['water-sport', 'bubble', 'growl', 'pound'],
+                        nature: Nature.Lax,
+                        ivs: 30,
+                    },
+                ],
+            },
+            {
+                condition: { type: 'starter', starter: 'chimchar' },
+                team: [
+                    {
+                        slug: 'turtwig',
+                        ability: 'overgrow',
+                        gender: 'male',
+                        level: 9,
+                        moves: ['razor-leaf', 'absorb', 'withdraw', 'tackle'],
+                        nature: Nature.Careful,
+                        ivs: 30,
+                    },
+                ],
+            },
+            {
+                condition: { type: 'starter', starter: 'piplup' },
+                team: [
+                    {
+                        slug: 'chimchar',
+                        ability: 'iron-fist',
+                        gender: 'male',
+                        level: 9,
+                        moves: ['taunt', 'ember', 'leer', 'scratch'],
+                        nature: Nature.Careful,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
+    'pkmn-trainer-lucas': {
+        trainerClass: 'pkmn-trainer-lucas',
+        name: 'Lucas',
+        teams: [
+            {
+                condition: { type: 'starter', starter: 'turtwig' },
+                team: [
+                    {
+                        slug: 'piplup',
+                        ability: 'torrent',
+                        gender: 'male',
+                        level: 9,
+                        moves: ['water-sport', 'bubble', 'growl', 'pound'],
+                        nature: Nature.Hasty,
+                        ivs: 30,
+                    },
+                ],
+            },
+            {
+                condition: { type: 'starter', starter: 'chimchar' },
+                team: [
+                    {
+                        slug: 'turtwig',
+                        ability: 'overgrow',
+                        gender: 'male',
+                        level: 9,
+                        moves: ['razor-leaf', 'absorb', 'withdraw', 'tackle'],
+                        nature: Nature.Hasty,
+                        ivs: 30,
+                    },
+                ],
+            },
+            {
+                condition: { type: 'starter', starter: 'piplup' },
+                team: [
+                    {
+                        slug: 'chimchar',
+                        ability: 'iron-fist',
+                        gender: 'male',
+                        level: 9,
+                        moves: ['taunt', 'ember', 'leer', 'scratch'],
+                        nature: Nature.Hasty,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
+    'lass-natalie': {
+        trainerClass: 'lass',
+        name: 'Natalie',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'sentret',
+                        ability: 'run-away',
+                        gender: 'female',
+                        level: 7,
+                        moves: [
+                            'fury-swipes',
+                            'quick-attack',
+                            'defense-curl',
+                            'foresight',
+                        ],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'bidoof',
+                        ability: 'simple',
+                        gender: 'female',
+                        level: 7,
+                        moves: ['defense-curl', 'growl', 'tackle'],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'youngster-tristan': {
+        trainerClass: 'youngster',
+        name: 'Tristan',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'hoothoot',
+                        ability: 'tinted-lens',
+                        gender: 'male',
+                        level: 7,
+                        moves: ['hypnosis', 'peck', 'foresight', 'growl'],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'starly',
+                        ability: 'reckless',
+                        gender: 'male',
+                        level: 7,
+                        moves: ['quick-attack', 'growl', 'tackle'],
+                        nature: Nature.Lax,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'youngster-logan': {
+        trainerClass: 'youngster',
+        name: 'Logan',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'growlithe',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 7,
+                        moves: ['ember', 'howl', 'roar', 'leer'],
+                        nature: Nature.Docile,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'burmy',
+                        ability: 'battle-armor',
+                        gender: 'male',
+                        level: 7,
+                        moves: [
+                            'hidden-power',
+                            'bug-bite',
+                            'tackle',
+                            'protect',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'zigzagoon',
+                        ability: 'pickup',
+                        gender: 'male',
+                        level: 7,
+                        moves: ['covet', 'sand-attack', 'tail-whip', 'growl'],
+                        nature: Nature.Adamant,
+                        ivs: 12,
                     },
                 ],
             },

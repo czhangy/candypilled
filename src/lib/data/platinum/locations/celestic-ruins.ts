@@ -9,7 +9,7 @@ const CELESTIC_RUINS: Location = {
     battles: [
         {
             metadata: [BattleMetadata.Miniboss],
-            battleKey: 'galactic-boss-cyrus-cyrus-1',
+            battleKey: 'galactic-boss-cyrus-celestic-ruins',
             x: 54.4,
             y: 21.3,
         },
