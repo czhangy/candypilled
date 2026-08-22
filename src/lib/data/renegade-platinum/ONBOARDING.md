@@ -49,6 +49,20 @@ table`, despite its name sounding more authoritative** (user correction,
   had no level; the user supplied the real value directly) — confirm with
   the user rather than assuming a neighboring location's range carries
   over.
+- **The Renegade Platinum section has a hard end: the `Ren Plat End`
+  sentinel row in column A (row 203 as of this writing).** A per-location
+  extraction script that fixes a column index from the `Renegade
+Platinum` header row and then iterates rows without checking for this
+  sentinel will silently read past it into the next stacked hack's data
+  once a location's own row range is short — that column index means a
+  completely different (that other hack's own) location once you're past
+  `Ren Plat End`, not "no more entries for this location." **Real bug this
+  caused**: Route 218 was authored with a bogus `Static` Cobalion
+  encounter that was actually `Volt White 2 Redux`'s data, caught only
+  because the user knew the RP sheet didn't say that. Always cap the row
+  range at (or check for) `Ren Plat End`/the next hack's header before
+  trusting a location's "Other"/tail section is genuinely empty vs. just
+  not yet reached.
 - **Trainer battles**: workbook
   `1uwR23b6kHRFYoav1Jzfx65qGfaxNQE8pI83Yr5mcVXQ`
   (`https://docs.google.com/spreadsheets/d/1uwR23b6kHRFYoav1Jzfx65qGfaxNQE8pI83Yr5mcVXQ`),
