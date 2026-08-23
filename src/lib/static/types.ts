@@ -366,7 +366,12 @@ export type Location = {
     battles?: Battle[];
 } & (
     | {
-          map: StaticImageData;
+          // A single map, or two maps to pick between by the run's gender —
+          // e.g. a location whose layout differs by which protagonist
+          // sprite passes through it.
+          map:
+              | StaticImageData
+              | { male: StaticImageData; female: StaticImageData };
           // Where the map is panned to by default, when no battle is
           // selected.
           mapAnchor: MapAnchor;

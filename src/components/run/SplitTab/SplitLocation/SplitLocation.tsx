@@ -86,6 +86,11 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
+    const resolveMap = (
+        map:
+            StaticImageData | { male: StaticImageData; female: StaticImageData }
+    ): StaticImageData => ('male' in map ? map[run.gender ?? 'male'] : map);
+
     const getDefaultSelectedBattle = (
         subareaIndex: number
     ): Battle | undefined => {
@@ -295,7 +300,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         };
     } else {
         section = {
-            map: location.map,
+            map: location.map && resolveMap(location.map),
             mapAnchor: location.mapAnchor,
             battles: BattleHelpers.filterByGender(
                 location.hideBattles ? [] : (location.battles ?? []),
