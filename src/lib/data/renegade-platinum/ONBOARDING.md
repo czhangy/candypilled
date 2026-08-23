@@ -1676,3 +1676,16 @@ in this hack, not a duplicate/conflict). `encounters.ts`'s `floaroma-town`
 key reflects the corrected data, not the sheet. If a future full
 re-verification pass touches Floaroma Town again, don't silently trust the
 sheet's Fossil rows back in.
+
+## Location must be wired into a split before asking for battle x/y (2026-08-23)
+
+A new location's map (stitched PNG) isn't visible in the running app until
+its `Location` is actually added to a `Split`'s `locations` array — the
+user views the map through the app to read off battle marker coordinates,
+not from the raw PNG file directly. **Order of operations for a new
+location with battles**: stitch map → wire `locations/*.ts` (encounters
+included) → add it to the relevant split → _then_ ask for x/y and
+`BattleMetadata`. Asking for x/y before the split wiring is done is asking
+for something the user has no way to look up yet. This came up with Valley
+Windworks: map and location file existed, but it hadn't been added to
+`splits/gardenia.ts` yet when x/y was requested.

@@ -27,3 +27,4 @@ export { default as sandgemTownTown } from './sandgem-town-town.png';
 export { default as trainerSchool } from './trainer-school.png';
 export { default as twinleafTownHouse } from './twinleaf-town-house.png';
 export { default as twinleafTownTown } from './twinleaf-town-town.png';
+export { default as valleyWindworks } from './valley-windworks.png';

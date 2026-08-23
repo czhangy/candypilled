@@ -2526,4 +2526,46 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'galactic-grunt-m-valley-windworks': {
+        trainerClass: 'galactic-grunt-m',
+        name: '1',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'poochyena',
+                        ability: 'run-away',
+                        gender: 'male',
+                        level: 14,
+                        moves: [
+                            'assurance',
+                            'odor-sleuth',
+                            'bite',
+                            'sand-attack',
+                        ],
+                        nature: Nature.Careful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'gulpin',
+                        ability: 'liquid-ooze',
+                        gender: 'male',
+                        level: 14,
+                        moves: ['amnesia', 'poison-gas', 'smog', 'yawn'],
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'houndour',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 14,
+                        moves: ['smog', 'roar', 'bite', 'howl'],
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
 };
