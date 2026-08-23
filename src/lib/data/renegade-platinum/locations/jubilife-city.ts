@@ -11,7 +11,16 @@ const JUBILIFE_CITY: Location = {
         {
             name: 'City',
             map: jubilifeCityCity,
-            mapAnchor: MapAnchor.BottomRight,
+            mapAnchor: MapAnchor.Center,
+            battles: [
+                {
+                    battleKey: 'galactic-grunt-m-jubilife-city',
+                    metadata: [BattleMetadata.Tag],
+                    customHeight: 44,
+                    x: 72.7,
+                    y: 5.6,
+                },
+            ],
         },
         {
             name: 'Pokémon Center',

@@ -8,6 +8,7 @@ import { Game } from '@/lib/static/types';
 import { BATTLES } from './battles';
 import { ENCOUNTERS } from './encounters';
 import { MET_LOCATIONS } from './met-locations';
+import GARDENIA from './splits/gardenia';
 import ROARK from './splits/roark';
 
 // Onboarding in progress — see ONBOARDING.md for full status. Pokémon and
@@ -54,7 +55,7 @@ const RENEGADE_PLATINUM: Game = {
         'Pick the penguin.',
         'Turtle time.',
     ],
-    splits: [ROARK],
+    splits: [ROARK, GARDENIA],
 };
 
 export default RENEGADE_PLATINUM;

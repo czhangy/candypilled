@@ -58,6 +58,7 @@ const ROUTE_204: Location = {
                         BattleMetadata.Optional,
                         BattleMetadata.TrueDouble,
                     ],
+                    customWidth: 36,
                     x: 50,
                     y: 22.7,
                 },

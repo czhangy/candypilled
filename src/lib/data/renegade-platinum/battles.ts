@@ -2371,4 +2371,75 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'galactic-grunt-m-jubilife-city': {
+        trainerClass: 'galactic-grunt-m',
+        name: '1',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'stunky',
+                        ability: 'aftermath',
+                        gender: 'male',
+                        level: 13,
+                        moves: ['poison-gas', 'screech', 'bite', 'smog'],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'silcoon',
+                        ability: 'shed-skin',
+                        gender: 'male',
+                        level: 13,
+                        moves: [
+                            'bug-bite',
+                            'iron-defense',
+                            'tackle',
+                            'string-shot',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+        secondTrainer: {
+            trainerClass: 'galactic-grunt-m',
+            name: '2',
+            teams: [
+                {
+                    team: [
+                        {
+                            slug: 'glameow',
+                            ability: 'limber',
+                            gender: 'female',
+                            level: 13,
+                            moves: [
+                                'fake-out',
+                                'hypnosis',
+                                'covet',
+                                'quick-attack',
+                            ],
+                            nature: Nature.Brave,
+                            ivs: 12,
+                        },
+                        {
+                            slug: 'cascoon',
+                            ability: 'shed-skin',
+                            gender: 'male',
+                            level: 13,
+                            moves: [
+                                'bug-bite',
+                                'iron-defense',
+                                'poison-sting',
+                                'string-shot',
+                            ],
+                            nature: Nature.Relaxed,
+                            ivs: 12,
+                        },
+                    ],
+                },
+            ],
+        },
+    },
 };
