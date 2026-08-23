@@ -285,21 +285,21 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
     ],
     'jubilife-city': [
         {
-            species: 'treecko',
+            species: 'bulbasaur',
             method: EncounterMethod.Gift,
             minLevel: 5,
             maxLevel: 5,
             chance: 33,
         },
         {
-            species: 'torchic',
+            species: 'charmander',
             method: EncounterMethod.Gift,
             minLevel: 5,
             maxLevel: 5,
             chance: 33,
         },
         {
-            species: 'mudkip',
+            species: 'squirtle',
             method: EncounterMethod.Gift,
             minLevel: 5,
             maxLevel: 5,
@@ -1138,21 +1138,21 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
     ],
     'oreburgh-city': [
         {
-            species: 'chikorita',
+            species: 'treecko',
             method: EncounterMethod.Gift,
             minLevel: 5,
             maxLevel: 5,
             chance: 33,
         },
         {
-            species: 'cyndaquil',
+            species: 'torchic',
             method: EncounterMethod.Gift,
             minLevel: 5,
             maxLevel: 5,
             chance: 33,
         },
         {
-            species: 'totodile',
+            species: 'mudkip',
             method: EncounterMethod.Gift,
             minLevel: 5,
             maxLevel: 5,
@@ -1403,6 +1403,29 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             minLevel: 21,
             maxLevel: 21,
             chance: 10,
+        },
+    ],
+    'floaroma-town': [
+        {
+            species: 'chikorita',
+            method: EncounterMethod.Gift,
+            minLevel: 5,
+            maxLevel: 5,
+            chance: 33,
+        },
+        {
+            species: 'cyndaquil',
+            method: EncounterMethod.Gift,
+            minLevel: 5,
+            maxLevel: 5,
+            chance: 33,
+        },
+        {
+            species: 'totodile',
+            method: EncounterMethod.Gift,
+            minLevel: 5,
+            maxLevel: 5,
+            chance: 33,
         },
     ],
 };

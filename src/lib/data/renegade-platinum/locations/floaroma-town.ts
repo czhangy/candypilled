@@ -1,33 +1,33 @@
 import {
-    oreburghCityCity,
-    oreburghCityPokemonCenter,
+    floaromaTownPokemonCenter,
+    floaromaTownTown,
 } from '@/lib/data/renegade-platinum/maps';
 import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
-const OREBURGH_CITY: Location = {
-    name: 'Oreburgh City',
+const FLOAROMA_TOWN: Location = {
+    name: 'Floaroma Town',
     subareas: [
         {
-            name: 'City',
-            map: oreburghCityCity,
-            mapAnchor: MapAnchor.TopLeft,
+            name: 'Town',
+            map: floaromaTownTown,
+            mapAnchor: MapAnchor.Center,
         },
         {
             name: 'Pokémon Center',
-            map: oreburghCityPokemonCenter,
+            map: floaromaTownPokemonCenter,
             mapAnchor: MapAnchor.Center,
-            encountersKey: 'oreburgh-city',
+            encountersKey: 'floaroma-town',
             battles: [
                 {
-                    battleKey: 'reporter-helen',
+                    battleKey: 'reporter-jenny',
                     metadata: [BattleMetadata.Optional],
                     x: 16.7,
-                    y: 18.2,
+                    y: 17.9,
                 },
             ],
         },
     ],
 };
 
-export default OREBURGH_CITY;
+export default FLOAROMA_TOWN;

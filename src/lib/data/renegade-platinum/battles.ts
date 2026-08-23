@@ -2442,4 +2442,88 @@ export const BATTLES: Record<string, BattleData> = {
             ],
         },
     },
+    'reporter-helen': {
+        trainerClass: 'reporter',
+        name: 'Helen',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'treecko',
+                        ability: 'unburden',
+                        gender: 'male',
+                        level: 10,
+                        moves: ['quick-attack', 'absorb', 'leer', 'pound'],
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'torchic',
+                        ability: 'speed-boost',
+                        gender: 'male',
+                        level: 10,
+                        moves: ['sand-attack', 'ember', 'growl', 'scratch'],
+                        nature: Nature.Bold,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'mudkip',
+                        ability: 'torrent',
+                        gender: 'male',
+                        level: 10,
+                        moves: ['mud-slap', 'water-gun', 'growl', 'tackle'],
+                        nature: Nature.Mild,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'reporter-jenny': {
+        trainerClass: 'reporter',
+        name: 'Jenny',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'chikorita',
+                        ability: 'serene-grace',
+                        gender: 'male',
+                        level: 15,
+                        moves: [
+                            'magical-leaf',
+                            'synthesis',
+                            'poison-powder',
+                            'tackle',
+                        ],
+                        nature: Nature.Lonely,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'cyndaquil',
+                        ability: 'adaptability',
+                        gender: 'male',
+                        level: 15,
+                        moves: [
+                            'flame-wheel',
+                            'quick-attack',
+                            'smokescreen',
+                            'tackle',
+                        ],
+                        nature: Nature.Bashful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'totodile',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 15,
+                        moves: ['water-gun', 'bite', 'scratch', 'scary-face'],
+                        nature: Nature.Calm,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
 };

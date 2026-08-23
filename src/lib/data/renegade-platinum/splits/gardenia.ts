@@ -1,3 +1,4 @@
+import FLOAROMA_TOWN from '@/lib/data/renegade-platinum/locations/floaroma-town';
 import JUBILIFE_CITY from '@/lib/data/renegade-platinum/locations/jubilife-city';
 import ROUTE_204 from '@/lib/data/renegade-platinum/locations/route-204';
 import { Split } from '@/lib/static/types';
@@ -18,6 +19,7 @@ const GARDENIA: Split = {
             LocationHelpers.withSubareaOrder(ROUTE_204, ['North', 'South']),
             ['South']
         ),
+        FLOAROMA_TOWN,
     ],
     saveCondition: { type: 'badge', bit: -1 },
 };

@@ -1664,3 +1664,15 @@ bullet itself, so this is checked before a skill is reached for, not after.
 The correct source turned out to be the **Roark Split** tab (gid
 `182366078`) of the trainer-battles workbook, which had Oreburgh City Gym's
 full roster (2 Youngsters + Leader Roark) ready to transcribe directly.
+
+## Known bad sheet data: Floaroma Town encounters (2026-08-23)
+
+The `Encounter Tables` tab's `Floaroma Town` block lists 6 `Fossil`-method
+entries (Kabuto/Omanyte/Anorith/Lileep/Cranidos/Shieldon, Lv20) — **this is
+wrong, user-confirmed**. The real encounter there is a gift starter-style
+choice: Chikorita/Cyndaquil/Totodile, `Gift`, Lv5, 33% each (same trio
+already used at `oreburgh-city` — two separate starter-choice events exist
+in this hack, not a duplicate/conflict). `encounters.ts`'s `floaroma-town`
+key reflects the corrected data, not the sheet. If a future full
+re-verification pass touches Floaroma Town again, don't silently trust the
+sheet's Fossil rows back in.

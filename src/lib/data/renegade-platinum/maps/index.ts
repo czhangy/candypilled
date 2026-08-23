@@ -1,3 +1,5 @@
+export { default as floaromaTownPokemonCenter } from './floaroma-town-pokemon-center.png';
+export { default as floaromaTownTown } from './floaroma-town-town.png';
 export { default as jubilifeCityCity } from './jubilife-city-city.png';
 export { default as jubilifeCityPokemonCenter } from './jubilife-city-pokemon-center.png';
 export { default as lakeVerityPostGalactic } from './lake-verity-post-galactic.png';
