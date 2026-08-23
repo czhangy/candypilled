@@ -3,6 +3,7 @@ import FLOAROMA_TOWN from '@/lib/data/renegade-platinum/locations/floaroma-town'
 import JUBILIFE_CITY from '@/lib/data/renegade-platinum/locations/jubilife-city';
 import ROUTE_204 from '@/lib/data/renegade-platinum/locations/route-204';
 import VALLEY_WINDWORKS from '@/lib/data/renegade-platinum/locations/valley-windworks';
+import VALLEY_WINDWORKS_INTERIOR from '@/lib/data/renegade-platinum/locations/valley-windworks-interior';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
@@ -24,6 +25,7 @@ const GARDENIA: Split = {
         FLOAROMA_TOWN,
         VALLEY_WINDWORKS,
         FLOAROMA_MEADOW,
+        VALLEY_WINDWORKS_INTERIOR,
     ],
     saveCondition: { type: 'badge', bit: -1 },
 };

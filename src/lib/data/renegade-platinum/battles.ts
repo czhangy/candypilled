@@ -2644,4 +2644,146 @@ export const BATTLES: Record<string, BattleData> = {
             ],
         },
     },
+    'galactic-grunt-m-valley-windworks-interior': {
+        trainerClass: 'galactic-grunt-m',
+        name: '1',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'grimer',
+                        ability: 'stench',
+                        gender: 'male',
+                        level: 15,
+                        moves: ['sludge', 'disable', 'mud-slap', 'harden'],
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'koffing',
+                        ability: 'levitate',
+                        gender: 'male',
+                        level: 15,
+                        moves: [
+                            'pain-split',
+                            'assurance',
+                            'smokescreen',
+                            'smog',
+                        ],
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-m-valley-windworks-interior-2': {
+        trainerClass: 'galactic-grunt-m',
+        name: '2',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'kakuna',
+                        ability: 'shed-skin',
+                        gender: 'male',
+                        level: 14,
+                        moves: ['iron-defense', 'harden', 'harden'],
+                        nature: Nature.Docile,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'pineco',
+                        ability: 'sturdy',
+                        gender: 'male',
+                        level: 14,
+                        moves: [
+                            'rapid-spin',
+                            'self-destruct',
+                            'bug-bite',
+                            'protect',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'metapod',
+                        ability: 'shed-skin',
+                        gender: 'male',
+                        level: 14,
+                        moves: ['iron-defense', 'harden', 'harden'],
+                        nature: Nature.Lax,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'commander-mars-valley-windworks': {
+        trainerClass: 'commander-mars',
+        name: 'Mars',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zubat',
+                        ability: 'inner-focus',
+                        gender: 'female',
+                        level: 18,
+                        moves: [
+                            'poison-fang',
+                            'wing-attack',
+                            'toxic',
+                            'confuse-ray',
+                        ],
+                        nature: Nature.Naive,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'bronzor',
+                        ability: 'levitate',
+                        level: 18,
+                        heldItem: 'sitrus-berry',
+                        moves: [
+                            'hypnosis',
+                            'extrasensory',
+                            'gyro-ball',
+                            'confuse-ray',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'yanma',
+                        ability: 'speed-boost',
+                        gender: 'female',
+                        level: 18,
+                        moves: [
+                            'silver-wind',
+                            'air-cutter',
+                            'detect',
+                            'sonic-boom',
+                        ],
+                        nature: Nature.Timid,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'purugly',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        level: 19,
+                        heldItem: 'sitrus-berry',
+                        moves: [
+                            'fake-out',
+                            'hypnosis',
+                            'facade',
+                            'feint-attack',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
 };

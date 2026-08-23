@@ -6,6 +6,21 @@ Keep this doc lean — a procedural reference, not a session log. When a
 process rule changes, edit the rule in place; don't append a dated
 narrative about how it changed.
 
+**Do not connect, merge, or reference anything against another part of
+this project unless explicitly instructed.** A task naming one specific
+thing (e.g. "wire Valley Windworks Interior") is a request to do exactly
+that thing — not license to restructure an existing, separate, working
+`Location` into a subarea of it, rename its map files, or otherwise
+combine it with something else, even if that seems like the "correct"
+data model. If a task looks like it should connect to something else,
+ask; don't just do it.
+
+**A new location is always appended at the end of a split's `locations`
+array, unless the user says otherwise.** Don't insert it earlier based on
+guessed in-game/geographic order — that guess has been wrong every time
+it's been tried. The array's order is the user's call, not something to
+infer from the map layout.
+
 ## New-location checklist
 
 Follow in this exact order, every time:
@@ -224,6 +239,4 @@ moves?: DataOverrides<MoveData> }` — kept unmerged for a future "what
 
 - Gym order vs. vanilla — unconfirmed (see Standing conventions above).
 - Split `saveCondition` badge-bit indices — unconfirmed for every split.
-- Gardenia's second Valley Windworks block (2 Grunts + Commander Mars) —
-  not yet wired.
 - Diff UI (Phase 10) — no design decided (badge? panel? both?).
