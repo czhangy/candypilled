@@ -10,6 +10,18 @@ new caveat about the source data is discovered.** This is a long-running,
 multi-session effort — treat this file as the source of truth for "what's
 done, what's next, what did we decide and why," not the conversation log.
 
+**Trainer battle data for this game is 100% sourced from the sheet below —
+never from ROM/decomp extraction, and never via the
+`gen4-trainer-data-extraction` skill.** That skill reads a vanilla,
+unpatched Diamond/Pearl/Platinum decomp's own trainer data — it does not
+and cannot reflect Renegade Platinum's hand-edited trainer rosters, which
+only exist in the sheet documented under "Trainer battles" below. If a task
+mentions trainer battles for this game, go straight to that sheet section
+— don't open the DSPRE-unpacked ROM contents, don't fetch a pret decomp
+repo, and don't invoke that skill. (2026-08-23: this was gotten wrong
+once — see the Oreburgh Gym entry in the changelog below for what
+happened.)
+
 ## Source of truth
 
 **ENCOUNTERS and TRAiNERS/battle data superseded (2026-08-20).** The
@@ -63,7 +75,9 @@ Platinum` header row and then iterates rows without checking for this
   range at (or check for) `Ren Plat End`/the next hack's header before
   trusting a location's "Other"/tail section is genuinely empty vs. just
   not yet reached.
-- **Trainer battles**: workbook
+- **Trainer battles** (this is the ONLY source — see the warning at the top
+  of this doc before reaching for `gen4-trainer-data-extraction` or any
+  ROM/decomp lookup): workbook
   `1uwR23b6kHRFYoav1Jzfx65qGfaxNQE8pI83Yr5mcVXQ`
   (`https://docs.google.com/spreadsheets/d/1uwR23b6kHRFYoav1Jzfx65qGfaxNQE8pI83Yr5mcVXQ`),
   one tab per gym split (mirrors the old sheet's `*SPLiT` tabs, but is its
@@ -91,6 +105,33 @@ Ability / Held Item / Move 1-4`, with a `<n> IVs` note appended to the
   assuming a slash always means "pick one." When it does split like this,
   slash-separated stat values (e.g. a nature written `Lax/Hasty`) map
   first-to-first (first name -> first value) unless told otherwise.
+
+**Sheet cell → `battles.ts` field mapping — mechanical, apply directly,
+never re-derive or grep an existing entry to "check the convention":**
+
+| Sheet cell                                                                  | `battles.ts` field                                                                                                                                                         |
+| --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Trainer-name row, e.g. `Leader Roark`, `Youngster Jonathon`                 | Split on the last space: everything before is looked up as a `trainer-classes.ts` slug (`leader-roark`, `youngster`), everything after is `name` (`'Roark'`, `'Jonathon'`) |
+| `Level <n>`                                                                 | `level: <n>`                                                                                                                                                               |
+| `<Nature> \n(+Stat -Stat)`                                                  | Strip the parenthetical, `Nature.<Name>` (e.g. `Lax (+Def -SpD)` → `Nature.Lax`)                                                                                           |
+| Ability cell (e.g. `Rock Head`)                                             | kebab-case → `ability: 'rock-head'`                                                                                                                                        |
+| `No Item`                                                                   | omit `heldItem` entirely — do not write `heldItem: undefined` or `'none'`                                                                                                  |
+| Any other item text (e.g. `Smooth Rock`)                                    | kebab-case → `heldItem: 'smooth-rock'`                                                                                                                                     |
+| Move cells (e.g. `Stealth Rock`)                                            | kebab-case → `moves: [...]`, in column order (Move 1-4), omitting empty cells                                                                                              |
+| `<n> IVs` in the trainer-name cell                                          | `ivs: <n>` uniform across the whole team                                                                                                                                   |
+| Per-mon IV split (e.g. `29 IVs on Onix and Geodude` / `30 IVs on the rest`) | apply the stated number to each named mon individually — not a single team-wide `ivs`                                                                                      |
+| `x1 <Item>` lines in the trainer-name cell (e.g. `x1 Potion`)               | `BattleData.items: [{ count: 1, name: 'Potion' }]` — real, populated field, one entry per line, `name` as the sheet's own display text (not a kebab slug)                  |
+| `Gifts TM<n> - <Move>` in the trainer-name cell                             | post-battle TM reward — not modeled anywhere in `BattleData`/`BattlePokemon`, genuinely ignore this one                                                                    |
+| Gender                                                                      | not a sheet column at all — derive from species `genderRate` per the rule below; only ask for the 50/50-ratio case                                                         |
+
+`BattleMetadata` is **never on the sheet and never inferred from trainer
+class, species, or any other field — full stop.** Every value in a
+battle's `metadata: []` array (`Boss`, `Miniboss`, `Optional`, `Double`,
+etc., including the empty-array case) is supplied by the user, the same as
+x/y placement. Do not default a gym leader to `Boss` or a named rival to
+`Miniboss` just because that pattern showed up once before (Route 202) —
+that was the user's explicit instruction for that specific battle, not a
+standing rule. Always ask; never assume.
 
 All other data (STATS, LEARNSETS, EVOLUTiON/TYPE/MOVES, iTEMS/TMs,
 GiFTS/EVENTS, NPC/TRADES) still comes from the single Google Sheet the
@@ -1604,3 +1645,22 @@ trustworthy (e.g. cross-checked against a second source where one exists,
 per the "Encounters re-verified against a second, 'completely correct'
 sheet source" precedent below, rather than transcribed once and assumed
 correct).
+
+## Wrong tool reached for on Oreburgh Gym trainer battles (2026-08-23)
+
+Asked to wire Oreburgh Gym's battles, the assistant invoked the
+`gen4-trainer-data-extraction` skill and started pulling `pret/pokeplatinum`
+decomp files (`map_headers.txt`, `trdata.json`-equivalent) and poking at
+the DSPRE-unpacked ROM contents on the user's Desktop to find trainer IDs
+— none of which applies here, because Renegade Platinum's trainer data is
+a hand-edited hack roster that only exists in the sheet documented under
+"Source of truth" → "Trainer battles" above, not in any ROM or decomp.
+This had already been established and used correctly earlier in the same
+session (Route 207, Oreburgh Mine). **User correction, forcefully**: for
+this game, always go straight to the sheet; never touch ROM/decomp
+extraction or that skill. Added a warning banner at the top of this doc
+naming the wrong tool explicitly, plus a pointer at the "Trainer battles"
+bullet itself, so this is checked before a skill is reached for, not after.
+The correct source turned out to be the **Roark Split** tab (gid
+`182366078`) of the trainer-battles workbook, which had Oreburgh City Gym's
+full roster (2 Youngsters + Leader Roark) ready to transcribe directly.
