@@ -1612,4 +1612,41 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             chance: 10,
         },
     ],
+    'floaroma-meadow': [
+        {
+            species: 'cherubi',
+            method: EncounterMethod.HoneyTree,
+            minLevel: 12,
+            maxLevel: 12,
+            chance: 30,
+        },
+        {
+            species: 'shroomish',
+            method: EncounterMethod.HoneyTree,
+            minLevel: 12,
+            maxLevel: 12,
+            chance: 20,
+        },
+        {
+            species: 'exeggcute',
+            method: EncounterMethod.HoneyTree,
+            minLevel: 12,
+            maxLevel: 12,
+            chance: 20,
+        },
+        {
+            species: 'seedot',
+            method: EncounterMethod.HoneyTree,
+            minLevel: 12,
+            maxLevel: 12,
+            chance: 20,
+        },
+        {
+            species: 'tangela',
+            method: EncounterMethod.HoneyTree,
+            minLevel: 12,
+            maxLevel: 12,
+            chance: 10,
+        },
+    ],
 };

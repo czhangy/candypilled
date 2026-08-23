@@ -2568,4 +2568,80 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'galactic-grunt-and-galactic-grunt-floaroma-meadow': {
+        trainerClass: 'galactic-grunt-m',
+        name: '1',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'croagunk',
+                        ability: 'dry-skin',
+                        gender: 'male',
+                        level: 15,
+                        moves: [
+                            'pursuit',
+                            'torment',
+                            'poison-sting',
+                            'mud-slap',
+                        ],
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'ledyba',
+                        ability: 'technician',
+                        gender: 'male',
+                        level: 15,
+                        moves: [
+                            'aerial-ace',
+                            'mach-punch',
+                            'safeguard',
+                            'reflect',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+        secondTrainer: {
+            trainerClass: 'galactic-grunt-m',
+            name: '2',
+            teams: [
+                {
+                    team: [
+                        {
+                            slug: 'zubat',
+                            ability: 'inner-focus',
+                            gender: 'male',
+                            level: 15,
+                            moves: [
+                                'confuse-ray',
+                                'poison-fang',
+                                'wing-attack',
+                                'bite',
+                            ],
+                            nature: Nature.Lonely,
+                            ivs: 12,
+                        },
+                        {
+                            slug: 'spinarak',
+                            ability: 'swarm',
+                            gender: 'male',
+                            level: 15,
+                            moves: [
+                                'night-shade',
+                                'poison-fang',
+                                'scary-face',
+                                'bug-bite',
+                            ],
+                            nature: Nature.Jolly,
+                            ivs: 12,
+                        },
+                    ],
+                },
+            ],
+        },
+    },
 };

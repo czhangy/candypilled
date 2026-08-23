@@ -1,3 +1,4 @@
+export { default as floaromaMeadow } from './floaroma-meadow.png';
 export { default as floaromaTownPokemonCenter } from './floaroma-town-pokemon-center.png';
 export { default as floaromaTownTown } from './floaroma-town-town.png';
 export { default as jubilifeCityCity } from './jubilife-city-city.png';
@@ -28,3 +29,4 @@ export { default as trainerSchool } from './trainer-school.png';
 export { default as twinleafTownHouse } from './twinleaf-town-house.png';
 export { default as twinleafTownTown } from './twinleaf-town-town.png';
 export { default as valleyWindworks } from './valley-windworks.png';
+export { default as valleyWindworksInterior } from './valley-windworks-interior.png';

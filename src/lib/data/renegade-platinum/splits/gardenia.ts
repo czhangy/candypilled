@@ -1,3 +1,4 @@
+import FLOAROMA_MEADOW from '@/lib/data/renegade-platinum/locations/floaroma-meadow';
 import FLOAROMA_TOWN from '@/lib/data/renegade-platinum/locations/floaroma-town';
 import JUBILIFE_CITY from '@/lib/data/renegade-platinum/locations/jubilife-city';
 import ROUTE_204 from '@/lib/data/renegade-platinum/locations/route-204';
@@ -22,6 +23,7 @@ const GARDENIA: Split = {
         ),
         FLOAROMA_TOWN,
         VALLEY_WINDWORKS,
+        FLOAROMA_MEADOW,
     ],
     saveCondition: { type: 'badge', bit: -1 },
 };
