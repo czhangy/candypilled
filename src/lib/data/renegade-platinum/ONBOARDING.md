@@ -160,6 +160,19 @@ completion without stopping at its confirmation gate first:
 1. **Maps** — user supplies DSPRE screenshot chunks (see the
    `dspre-map-stitch` skill for naming scheme and stitching). Stitch, then
    `Read` the result and visually verify seams before treating it as done.
+   DSPRE's dead-space fill (area outside the actual map, e.g. `rgb(51, 51,
+51)`) is auto-normalized to pure black (`rgb(0, 0, 0)`) and
+   auto-trimmed where it forms a uniform border by `stitch-map.ts` — check
+   every stitched map for leftover grey or an untrimmed black border
+   anyway (irregular notches can't be auto-trimmed and are expected to
+   stay black) before treating the map as final. **`mapAnchor` (per
+   subarea) has no source-of-truth to derive it from — it's a UI framing
+   choice ("which edge/corner/Center the map defaults to when no battle
+   is selected", per `LocationMap.md`), not something inferable from the
+   map image. Ask the user for it rather than guessing/pattern-matching
+   off a sibling location** (2026-08-23 correction — every prior value
+   had been guessed with no real derivation, confirmed wrong at least
+   once for `oreburgh-mine`).
 2. **Encounters** — fetch that location's block from the encounters
    workbook (see "Source of truth" above for URL/schema), parse it, then
    **state exactly what you parsed (species/level/method/rate per row) and

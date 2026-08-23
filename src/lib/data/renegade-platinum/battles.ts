@@ -1457,4 +1457,98 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'worker-mason': {
+        trainerClass: 'worker',
+        name: 'Mason',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'aron',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 12,
+                        moves: ['metal-claw', 'headbutt', 'mud-slap', 'harden'],
+                        nature: Nature.Relaxed,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'phanpy',
+                        ability: 'sand-veil',
+                        gender: 'male',
+                        level: 12,
+                        moves: [
+                            'rollout',
+                            'headbutt',
+                            'mud-slap',
+                            'defense-curl',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'riolu',
+                        ability: 'steadfast',
+                        gender: 'male',
+                        level: 12,
+                        moves: ['force-palm', 'counter', 'bite', 'low-kick'],
+                        nature: Nature.Careful,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'worker-colin': {
+        trainerClass: 'worker',
+        name: 'Colin',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'geodude',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 12,
+                        moves: [
+                            'rock-throw',
+                            'rock-polish',
+                            'mud-sport',
+                            'defense-curl',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'whismur',
+                        ability: 'soundproof',
+                        gender: 'male',
+                        level: 12,
+                        moves: [
+                            'uproar',
+                            'astonish',
+                            'disarming-voice',
+                            'howl',
+                        ],
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'machop',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 12,
+                        moves: [
+                            'foresight',
+                            'karate-chop',
+                            'focus-energy',
+                            'leer',
+                        ],
+                        nature: Nature.Naive,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
 };

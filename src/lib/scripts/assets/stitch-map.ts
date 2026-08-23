@@ -13,6 +13,10 @@ const USAGE =
 const NO_CHUNKS_FOUND =
     "Couldn't find a <map>.png, <map>-<col>.png, or <map>-<row>-<col>.png in the source directory.";
 
+// DSPRE fills the area outside the actual map with this exact grey;
+// normalize it to pure black so dead space is consistent across maps.
+const DEAD_SPACE_GREY = { b: 51, g: 51, r: 51 };
+
 type StitchArgs = {
     mapSlug: string;
     mapsDir: string;
@@ -88,49 +92,23 @@ const findChunks = (args: StitchArgs): Chunk[] => {
 // Chunk file names encode grid position directly (<row>-<col>, or just
 // <col> for a single row), so the grid shape/order never has to be
 // re-confirmed with whoever's capturing screenshots -- it's derived
-// from the file names on disk instead.
-const buildGrid = (chunks: Chunk[]): string[] => {
-    const maxRow = Math.max(...chunks.map((chunk) => chunk.row));
-    const maxCol = Math.max(...chunks.map((chunk) => chunk.col));
-    const byPosition = new Map(
-        chunks.map((chunk) => [`${chunk.row}-${chunk.col}`, chunk.path])
-    );
-
-    const missing: string[] = [];
-    const grid: string[] = [];
-    for (let row = 1; row <= maxRow; row++) {
-        for (let col = 1; col <= maxCol; col++) {
-            const key = `${row}-${col}`;
-            const chunkPath = byPosition.get(key);
-            if (!chunkPath) {
-                missing.push(maxRow === 1 ? `${col}` : `${row}-${col}`);
-            } else {
-                grid.push(chunkPath);
-            }
-        }
-    }
-
-    if (missing.length > 0) {
-        throw new Error(
-            `Grid has gaps -- missing chunk(s): ${missing.join(', ')} ` +
-                `(inferred a ${maxRow}x${maxCol} grid from the highest row/col seen).`
-        );
-    }
-
-    return grid;
-};
-
+// from the file names on disk instead. The grid doesn't have to be a
+// full rectangle -- a map can be L-shaped (e.g. no top-right chunk
+// because that corner is genuinely outside the map), in which case the
+// missing cell is just left as dead-space black rather than an error.
 const stitchGrid = async (
-    chunkPaths: string[],
-    cols: number,
+    chunks: Chunk[],
     outputPath: string
 ): Promise<void> => {
+    const maxRow = Math.max(...chunks.map((chunk) => chunk.row));
+    const maxCol = Math.max(...chunks.map((chunk) => chunk.col));
+
     const metas = await Promise.all(
-        chunkPaths.map((chunkPath) => sharp(chunkPath).metadata())
+        chunks.map((chunk) => sharp(chunk.path).metadata())
     );
     const { width, height } = metas[0];
     if (!width || !height) {
-        throw new Error(`Couldn't read dimensions of ${chunkPaths[0]}.`);
+        throw new Error(`Couldn't read dimensions of ${chunks[0].path}.`);
     }
     const mismatched = metas.find(
         (meta) => meta.width !== width || meta.height !== height
@@ -142,25 +120,65 @@ const stitchGrid = async (
         );
     }
 
-    const rows = chunkPaths.length / cols;
-    const composite = chunkPaths.map((chunkPath, i) => ({
-        input: chunkPath,
-        left: (i % cols) * width,
-        top: Math.floor(i / cols) * height,
+    const composite = chunks.map((chunk) => ({
+        input: chunk.path,
+        left: (chunk.col - 1) * width,
+        top: (chunk.row - 1) * height,
     }));
 
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     await sharp({
         create: {
-            background: { alpha: 0, b: 0, g: 0, r: 0 },
+            background: { alpha: 255, b: 0, g: 0, r: 0 },
             channels: 4,
-            height: height * rows,
-            width: width * cols,
+            height: height * maxRow,
+            width: width * maxCol,
         },
     })
         .composite(composite)
         .png()
         .toFile(outputPath);
+};
+
+const normalizeDeadSpace = async (imagePath: string): Promise<void> => {
+    const image = sharp(imagePath).ensureAlpha();
+    const { data, info } = await image
+        .raw()
+        .toBuffer({ resolveWithObject: true });
+
+    for (let i = 0; i < data.length; i += info.channels) {
+        if (
+            data[i] === DEAD_SPACE_GREY.r &&
+            data[i + 1] === DEAD_SPACE_GREY.g &&
+            data[i + 2] === DEAD_SPACE_GREY.b
+        ) {
+            data[i] = 0;
+            data[i + 1] = 0;
+            data[i + 2] = 0;
+        }
+    }
+
+    await sharp(data, {
+        raw: {
+            channels: info.channels,
+            height: info.height,
+            width: info.width,
+        },
+    })
+        .png()
+        .toFile(imagePath);
+};
+
+// Only removes dead space that forms a uniform border touching the
+// image's edges (e.g. a whole side/corner never captured) -- dead space
+// that's an irregular notch surrounded by real map content on multiple
+// sides can't be cropped without cutting into that content, and is left
+// as normalized black instead.
+const trimOutsideDeadSpace = async (imagePath: string): Promise<void> => {
+    await sharp(imagePath)
+        .trim({ background: '#000000' })
+        .toBuffer()
+        .then((buffer) => sharp(buffer).png().toFile(imagePath));
 };
 
 runScript(async () => {
@@ -170,6 +188,8 @@ runScript(async () => {
     if (wholeMapPath) {
         fs.mkdirSync(args.mapsDir, { recursive: true });
         fs.copyFileSync(wholeMapPath, args.outputPath);
+        await normalizeDeadSpace(args.outputPath);
+        await trimOutsideDeadSpace(args.outputPath);
         logSuccess(`Copied single capture to ${args.outputPath}!`);
         return;
     }
@@ -179,8 +199,8 @@ runScript(async () => {
         throw new Error(NO_CHUNKS_FOUND);
     }
 
-    const cols = Math.max(...chunks.map((chunk) => chunk.col));
-    const grid = buildGrid(chunks);
-    await stitchGrid(grid, cols, args.outputPath);
+    await stitchGrid(chunks, args.outputPath);
+    await normalizeDeadSpace(args.outputPath);
+    await trimOutsideDeadSpace(args.outputPath);
     logSuccess(`Stitched ${chunks.length} chunk(s) into ${args.outputPath}!`);
 });

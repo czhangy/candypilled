@@ -54,13 +54,27 @@ that map is self-describing and needs no confirmation.
 3. Run `npm run stitch-map -- <game> <map>`. The script:
     - Copies a lone `<map>.png` in directly, or
     - Globs `<map>-<col>.png` / `<map>-<row>-<col>.png`, infers the grid
-      size from the max row/col seen, errors out listing any missing
-      cell if the grid has gaps, errors out on mismatched chunk
-      dimensions, and composites the grid in row-major order.
+      size from the max row/col seen, composites each chunk at its
+      `(row, col)` position (row increases downward, column increases
+      rightward), and errors out on mismatched chunk dimensions. The
+      grid doesn't have to be a full rectangle — a missing cell (e.g. a
+      map that's genuinely L-shaped, with a corner outside the map) is
+      left as dead space rather than an error.
+    - Then auto-normalizes DSPRE's dead-space fill (`rgb(51, 51, 51)`,
+      the area outside the actual map, plus any grid cell left empty
+      above) to pure black, and auto-trims any dead space that forms a
+      uniform border touching the image's edges (e.g. a whole
+      never-captured side/corner). Dead space that's an irregular notch
+      surrounded by map content on multiple sides can't be cropped
+      without cutting into that content, so it's left as normalized
+      black instead of trimmed — that's expected, not a bug.
 4. `Read` the resulting `src/lib/data/<game>/maps/<slug>.png` and check
    every internal seam: tile edges should align exactly, no offset row/
    column, no duplicated strip, no gap. A misaligned seam is usually an
-   obvious half-tile jump in the grid pattern.
+   obvious half-tile jump in the grid pattern. If a map somehow still has
+   grey dead space or an untrimmed black border (e.g. it was produced
+   before this normalization was added, or trimmed/edited afterward
+   outside the script), fix it by hand rather than leaving it.
 5. If it's a new map (not a redo), add its barrel export line to that
    folder's `index.ts` (`export { default as <camelCaseName> } from
 './<slug>.png';`) if one doesn't already exist — check whether a
