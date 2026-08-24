@@ -11,7 +11,7 @@ const JUBILIFE_CITY: Location = {
         {
             name: 'City',
             map: jubilifeCityCity,
-            mapAnchor: MapAnchor.Center,
+            mapAnchor: MapAnchor.BottomRight,
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-jubilife-city',
@@ -31,8 +31,8 @@ const JUBILIFE_CITY: Location = {
                 {
                     battleKey: 'reporter-kayla',
                     metadata: [BattleMetadata.Optional],
-                    x: 15.6,
-                    y: 16.6,
+                    x: 16.7,
+                    y: 18,
                 },
             ],
         },

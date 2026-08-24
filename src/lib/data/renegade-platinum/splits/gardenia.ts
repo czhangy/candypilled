@@ -1,7 +1,9 @@
+import ETERNA_FOREST from '@/lib/data/renegade-platinum/locations/eterna-forest';
 import FLOAROMA_MEADOW from '@/lib/data/renegade-platinum/locations/floaroma-meadow';
 import FLOAROMA_TOWN from '@/lib/data/renegade-platinum/locations/floaroma-town';
 import JUBILIFE_CITY from '@/lib/data/renegade-platinum/locations/jubilife-city';
 import ROUTE_204 from '@/lib/data/renegade-platinum/locations/route-204';
+import ROUTE_205 from '@/lib/data/renegade-platinum/locations/route-205';
 import VALLEY_WINDWORKS from '@/lib/data/renegade-platinum/locations/valley-windworks';
 import VALLEY_WINDWORKS_INTERIOR from '@/lib/data/renegade-platinum/locations/valley-windworks-interior';
 import { Split } from '@/lib/static/types';
@@ -26,6 +28,12 @@ const GARDENIA: Split = {
         VALLEY_WINDWORKS,
         FLOAROMA_MEADOW,
         VALLEY_WINDWORKS_INTERIOR,
+        LocationHelpers.withHiddenSubareaBattles(ROUTE_205, ['North']),
+        ETERNA_FOREST,
+        LocationHelpers.withHiddenSubareaBattles(
+            LocationHelpers.withSubareaOrder(ROUTE_205, ['North', 'South']),
+            ['South']
+        ),
     ],
     saveCondition: { type: 'badge', bit: -1 },
 };

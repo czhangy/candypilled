@@ -13,14 +13,14 @@ const ROUTE_202: Location = {
             gender: 'male',
             metadata: [BattleMetadata.Miniboss],
             x: 60.9,
-            y: 84.2,
+            y: 84.8,
         },
         {
             battleKey: 'pkmn-trainer-lucas',
             gender: 'female',
             metadata: [BattleMetadata.Miniboss],
             x: 60.9,
-            y: 84.2,
+            y: 84.8,
         },
         {
             battleKey: 'lass-natalie',

@@ -13,7 +13,7 @@ import ROUTE_207 from '@/lib/data/renegade-platinum/locations/route-207';
 import ROUTE_218 from '@/lib/data/renegade-platinum/locations/route-218';
 import ROUTE_219 from '@/lib/data/renegade-platinum/locations/route-219';
 import SANDGEM_TOWN from '@/lib/data/renegade-platinum/locations/sandgem-town';
-import TRAINER_SCHOOL from '@/lib/data/renegade-platinum/locations/trainer-school';
+import TRAINERS_SCHOOL from '@/lib/data/renegade-platinum/locations/trainers-school';
 import TWINLEAF_TOWN from '@/lib/data/renegade-platinum/locations/twinleaf-town';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
@@ -32,7 +32,7 @@ const ROARK: Split = {
         LAKE_VERITY,
         ROUTE_202,
         LocationHelpers.withHiddenSubareaBattles(JUBILIFE_CITY, ['City']),
-        TRAINER_SCHOOL,
+        TRAINERS_SCHOOL,
         ROUTE_218,
         LocationHelpers.withHiddenBattles(ROUTE_219),
         LocationHelpers.withHiddenSubareaBattles(ROUTE_204, ['North']),

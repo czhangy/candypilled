@@ -11,7 +11,7 @@ const TWINLEAF_TOWN: Location = {
         {
             name: 'Town',
             map: twinleafTownTown,
-            mapAnchor: MapAnchor.Top,
+            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'twinleaf-town',
         },
         {

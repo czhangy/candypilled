@@ -312,6 +312,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
                         draggable={false}
                         priority={priority}
                         src={map}
+                        unoptimized
                     />
                     {battles.map((battle) => (
                         <TrainerMarker

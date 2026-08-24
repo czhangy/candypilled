@@ -2786,4 +2786,804 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'camper-jacob': {
+        trainerClass: 'camper',
+        name: 'Jacob',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'ponyta',
+                        ability: 'flame-body',
+                        gender: 'male',
+                        level: 15,
+                        moves: ['double-kick', 'stomp', 'ember', 'tail-whip'],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'mareep',
+                        ability: 'static',
+                        gender: 'male',
+                        level: 15,
+                        moves: [
+                            'charge',
+                            'cotton-spore',
+                            'thunder-shock',
+                            'thunder-wave',
+                        ],
+                        nature: Nature.Serious,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'buizel',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 15,
+                        moves: [
+                            'water-sport',
+                            'quick-attack',
+                            'water-gun',
+                            'growl',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'hiker-daniel': {
+        trainerClass: 'hiker',
+        name: 'Daniel',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'diglett',
+                        ability: 'sand-veil',
+                        gender: 'male',
+                        level: 15,
+                        moves: ['magnitude', 'bulldoze', 'astonish', 'growl'],
+                        nature: Nature.Impish,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'shieldon',
+                        ability: 'soundproof',
+                        gender: 'male',
+                        level: 15,
+                        moves: [
+                            'iron-defense',
+                            'take-down',
+                            'metal-sound',
+                            'taunt',
+                        ],
+                        nature: Nature.Relaxed,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'numel',
+                        ability: 'simple',
+                        gender: 'male',
+                        level: 15,
+                        moves: ['magnitude', 'focus-energy', 'ember', 'tackle'],
+                        nature: Nature.Serious,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'aroma-lady-elizabeth': {
+        trainerClass: 'aroma-lady',
+        name: 'Elizabeth',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'chikorita',
+                        ability: 'serene-grace',
+                        gender: 'male',
+                        level: 16,
+                        moves: [
+                            'magical-leaf',
+                            'synthesis',
+                            'poison-powder',
+                            'razor-leaf',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'bulbasaur',
+                        ability: 'chlorophyll',
+                        gender: 'male',
+                        level: 16,
+                        moves: [
+                            'sleep-powder',
+                            'poison-powder',
+                            'razor-leaf',
+                            'leech-seed',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'camper-zackary': {
+        trainerClass: 'camper',
+        name: 'Zackary',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'aipom',
+                        ability: 'run-away',
+                        gender: 'male',
+                        level: 15,
+                        moves: ['astonish', 'tickle', 'baton-pass', 'pursuit'],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'slakoth',
+                        ability: 'truant',
+                        gender: 'male',
+                        level: 15,
+                        moves: ['yawn', 'encore', 'slack-off', 'crush-claw'],
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'taillow',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 15,
+                        moves: [
+                            'growl',
+                            'focus-energy',
+                            'quick-attack',
+                            'wing-attack',
+                        ],
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'hiker-nicholas': {
+        trainerClass: 'hiker',
+        name: 'Nicholas',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'shellos',
+                        ability: 'sticky-hold',
+                        gender: 'male',
+                        level: 16,
+                        moves: [
+                            'hidden-power',
+                            'mud-bomb',
+                            'water-pulse',
+                            'harden',
+                        ],
+                        nature: Nature.Relaxed,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'onix',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 16,
+                        moves: ['rage', 'rock-tomb', 'bulldoze', 'rock-throw'],
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'battle-girl-kelsey': {
+        trainerClass: 'battle-girl',
+        name: 'Kelsey',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'machop',
+                        ability: 'guts',
+                        gender: 'female',
+                        level: 16,
+                        moves: [
+                            'seismic-toss',
+                            'brick-break',
+                            'foresight',
+                            'karate-chop',
+                        ],
+                        nature: Nature.Lonely,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'mankey',
+                        ability: 'vital-spirit',
+                        gender: 'female',
+                        level: 16,
+                        moves: [
+                            'pursuit',
+                            'covet',
+                            'karate-chop',
+                            'fury-swipes',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'meditite',
+                        ability: 'pure-power',
+                        gender: 'female',
+                        level: 16,
+                        moves: ['force-palm', 'feint', 'endure', 'confusion'],
+                        nature: Nature.Serious,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
+    'picnicker-karina': {
+        trainerClass: 'picnicker',
+        name: 'Karina',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'piplup',
+                        ability: 'torrent',
+                        gender: 'male',
+                        level: 16,
+                        moves: ['bide', 'peck', 'water-sport', 'bubble'],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'chimchar',
+                        ability: 'iron-fist',
+                        gender: 'male',
+                        level: 16,
+                        moves: ['flame-wheel', 'fury-swipes', 'taunt', 'ember'],
+                        nature: Nature.Modest,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'picnicker-siena': {
+        trainerClass: 'picnicker',
+        name: 'Siena',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'pachirisu',
+                        ability: 'volt-absorb',
+                        gender: 'female',
+                        level: 17,
+                        moves: ['charm', 'spark', 'endure', 'charge-beam'],
+                        nature: Nature.Lonely,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'fisherman-joseph': {
+        trainerClass: 'fisherman',
+        name: 'Joseph',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'goldeen',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 18,
+                        moves: [
+                            'aqua-ring',
+                            'water-pulse',
+                            'flail',
+                            'horn-attack',
+                        ],
+                        nature: Nature.Bashful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'poliwag',
+                        ability: 'water-absorb',
+                        gender: 'male',
+                        level: 18,
+                        moves: [
+                            'bubble-beam',
+                            'rain-dance',
+                            'double-slap',
+                            'water-gun',
+                        ],
+                        nature: Nature.Hardy,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'corphish',
+                        ability: 'adaptability',
+                        gender: 'male',
+                        level: 18,
+                        moves: [
+                            'double-hit',
+                            'bubble-beam',
+                            'protect',
+                            'aqua-jet',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'fisherman-andrew': {
+        trainerClass: 'fisherman',
+        name: 'Andrew',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'magikarp',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 18,
+                        moves: ['bounce', 'flail', 'tackle', 'splash'],
+                        nature: Nature.Naive,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'feebas',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 18,
+                        moves: ['water-pulse', 'flail', 'tackle', 'splash'],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'magikarp',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 18,
+                        moves: ['bounce', 'flail', 'tackle', 'splash'],
+                        nature: Nature.Naive,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'fisherman-zachary': {
+        trainerClass: 'fisherman',
+        name: 'Zachary',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'krabby',
+                        ability: 'hyper-cutter',
+                        gender: 'male',
+                        level: 19,
+                        moves: [
+                            'metal-claw',
+                            'bubble-beam',
+                            'mud-shot',
+                            'leer',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'finneon',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 19,
+                        moves: ['water-pulse', 'gust', 'rain-dance', 'attract'],
+                        nature: Nature.Naughty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'pkmn-trainer-cheryl': {
+        trainerClass: 'pkmn-trainer-cheryl',
+        name: 'Cheryl',
+        items: [{ count: 1, name: 'Super Potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'drifloon',
+                        ability: 'unburden',
+                        gender: 'female',
+                        level: 19,
+                        moves: [
+                            'ominous-wind',
+                            'air-cutter',
+                            'shock-wave',
+                            'swift',
+                        ],
+                        nature: Nature.Lax,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'makuhita',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        level: 19,
+                        moves: [
+                            'knock-off',
+                            'fake-out',
+                            'brick-break',
+                            'bullet-punch',
+                        ],
+                        nature: Nature.Lonely,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'wailmer',
+                        ability: 'water-veil',
+                        gender: 'female',
+                        level: 19,
+                        moves: ['water-pulse', 'rock-tomb', 'mist', 'rollout'],
+                        nature: Nature.Lonely,
+                        ivs: 29,
+                    },
+                    {
+                        slug: 'chansey',
+                        ability: 'serene-grace',
+                        gender: 'female',
+                        level: 20,
+                        moves: [
+                            'hyper-voice',
+                            'soft-boiled',
+                            'ice-beam',
+                            'thunderbolt',
+                        ],
+                        nature: Nature.Hasty,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
+    'bug-catcher-jack': {
+        trainerClass: 'bug-catcher',
+        name: 'Jack',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'surskit',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 16,
+                        moves: [
+                            'bubble-beam',
+                            'mud-shot',
+                            'water-sport',
+                            'bug-bite',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'paras',
+                        ability: 'effect-spore',
+                        gender: 'male',
+                        level: 16,
+                        moves: [
+                            'bullet-seed',
+                            'bug-bite',
+                            'poison-powder',
+                            'stun-spore',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'venonat',
+                        ability: 'tinted-lens',
+                        gender: 'male',
+                        level: 16,
+                        moves: [
+                            'sleep-powder',
+                            'stun-spore',
+                            'poison-powder',
+                            'confusion',
+                        ],
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'lass-briana': {
+        trainerClass: 'lass',
+        name: 'Briana',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'buneary',
+                        ability: 'limber',
+                        gender: 'female',
+                        level: 17,
+                        moves: [
+                            'jump-kick',
+                            'frustration',
+                            'quick-attack',
+                            'endure',
+                        ],
+                        nature: Nature.Modest,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'marill',
+                        ability: 'huge-power',
+                        gender: 'female',
+                        level: 17,
+                        moves: [
+                            'aqua-jet',
+                            'bubble-beam',
+                            'rollout',
+                            'defense-curl',
+                        ],
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'psychic-elijah': {
+        trainerClass: 'psychic-m',
+        name: 'Elijah',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'spoink',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        level: 17,
+                        moves: [
+                            'confuse-ray',
+                            'psych-up',
+                            'psybeam',
+                            'odor-sleuth',
+                        ],
+                        nature: Nature.Bashful,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'drowzee',
+                        ability: 'insomnia',
+                        gender: 'male',
+                        level: 17,
+                        moves: [
+                            'poison-gas',
+                            'headbutt',
+                            'confusion',
+                            'disable',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'baltoy',
+                        ability: 'levitate',
+                        level: 17,
+                        moves: [
+                            'psybeam',
+                            'rock-tomb',
+                            'heal-block',
+                            'mud-slap',
+                        ],
+                        nature: Nature.Serious,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
+    'psychic-lindsey': {
+        trainerClass: 'psychic-f',
+        name: 'Lindsey',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'slowpoke',
+                        ability: 'oblivious',
+                        gender: 'female',
+                        level: 17,
+                        moves: [
+                            'headbutt',
+                            'disable',
+                            'confusion',
+                            'water-gun',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'exeggcute',
+                        ability: 'chlorophyll',
+                        gender: 'female',
+                        level: 17,
+                        moves: [
+                            'leech-seed',
+                            'bullet-seed',
+                            'confusion',
+                            'reflect',
+                        ],
+                        nature: Nature.Lax,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'natu',
+                        ability: 'synchronize',
+                        gender: 'female',
+                        level: 17,
+                        moves: [
+                            'air-cutter',
+                            'confusion',
+                            'lucky-chant',
+                            'teleport',
+                        ],
+                        nature: Nature.Bashful,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
+    'bug-catcher-donald': {
+        trainerClass: 'bug-catcher',
+        name: 'Donald',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'nincada',
+                        ability: 'compound-eyes',
+                        gender: 'male',
+                        level: 17,
+                        moves: [
+                            'leech-life',
+                            'mud-slap',
+                            'fury-swipes',
+                            'sand-attack',
+                        ],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'dustox',
+                        ability: 'shield-dust',
+                        gender: 'male',
+                        level: 19,
+                        moves: [
+                            'psybeam',
+                            'silver-wind',
+                            'poison-powder',
+                            'confusion',
+                        ],
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'bug-catcher-phillip': {
+        trainerClass: 'bug-catcher',
+        name: 'Phillip',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'combee',
+                        ability: 'hustle',
+                        gender: 'male',
+                        level: 17,
+                        moves: ['bug-buzz', 'bug-bite', 'gust', 'sweet-scent'],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'beedrill',
+                        ability: 'adaptability',
+                        gender: 'male',
+                        level: 19,
+                        moves: [
+                            'pursuit',
+                            'pin-missile',
+                            'toxic-spikes',
+                            'rage',
+                        ],
+                        nature: Nature.Calm,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'psychic-kody': {
+        trainerClass: 'psychic-m',
+        name: 'Kody',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'mime-jr',
+                        ability: 'filter',
+                        gender: 'male',
+                        level: 18,
+                        moves: ['mimic', 'encore', 'double-slap', 'meditate'],
+                        nature: Nature.Lax,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'mr-mime',
+                        ability: 'filter',
+                        gender: 'male',
+                        level: 20,
+                        moves: ['mimic', 'encore', 'double-slap', 'meditate'],
+                        nature: Nature.Careful,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
+    'psychic-rachael': {
+        trainerClass: 'psychic-f',
+        name: 'Rachael',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'chingling',
+                        ability: 'levitate',
+                        gender: 'female',
+                        level: 18,
+                        moves: ['extrasensory', 'yawn', 'psywave', 'astonish'],
+                        nature: Nature.Quirky,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'chimecho',
+                        ability: 'levitate',
+                        gender: 'female',
+                        level: 20,
+                        moves: ['take-down', 'psywave', 'yawn', 'confusion'],
+                        nature: Nature.Bold,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
 };

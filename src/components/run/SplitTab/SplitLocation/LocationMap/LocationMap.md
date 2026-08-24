@@ -7,8 +7,10 @@ shorter for maps that aren't that tall) under a "Map" label, with a
 renders at the same pixel density regardless of its native size, so
 navigating between a small and a large map does not change scale — larger
 maps require panning to see in full, while maps smaller than the viewport
-are centered with no panning available. An encounter table will be added
-here in future work.
+are centered with no panning available. The map image is served
+unoptimized, bypassing Next.js's image optimizer entirely, since its
+lossy re-encoding introduces visible compression artifacts on pixel-art
+map screenshots. An encounter table will be added here in future work.
 
 When no battle is selected, a map larger than the viewport defaults to
 whichever edge/corner `mapAnchor` specifies (top-left unless the location

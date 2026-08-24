@@ -23,7 +23,8 @@ const LAKE_VERITY: Location = {
                 {
                     battleKey: 'galactic-grunt-and-galactic-grunt-lake-verity',
                     metadata: [BattleMetadata.Double],
-                    x: 73.4,
+                    customWidth: 136,
+                    x: 73.5,
                     y: 76.7,
                 },
                 {

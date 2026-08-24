@@ -31,10 +31,14 @@ Follow in this exact order, every time:
    and the corresponding `encounters.ts`/`battles.ts` entries. **Do not
    add x/y or a `battles` array yet if a battle needs placing.**
 3. **Add the location to whatever `Split` it belongs in
-   (`splits/*.ts`).** This is what makes the map visible in the running
-   app — the user reads marker coordinates off the rendered map, not the
-   raw PNG. Nothing past this point can be asked for before this step is
-   done.
+   (`splits/*.ts`) — do this automatically, in the same pass, without
+   stopping to ask first.** "Stitch and wire X" always means finish
+   wiring, split included; don't treat this step as a checkpoint to
+   pause at. Only ask first if which split it belongs to is genuinely
+   ambiguous (more than one plausible split). This is also what makes
+   the map visible in the running app — the user reads marker
+   coordinates off the rendered map, not the raw PNG — so nothing past
+   this point can be asked for before this step is done.
 4. Only now ask for battle x/y and `BattleMetadata`, and add the
    `battles` array.
 
