@@ -16,13 +16,13 @@ const ROUTE_203: Location = {
         },
         {
             battleKey: 'youngster-dallas',
-            metadata: [],
+            metadata: [BattleMetadata.Optional],
             x: 47.7,
             y: 62.9,
         },
         {
             battleKey: 'youngster-michael',
-            metadata: [],
+            metadata: [BattleMetadata.Optional],
             x: 47.7,
             y: 75.2,
         },

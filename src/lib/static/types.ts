@@ -268,8 +268,7 @@ export type Encounter = {
     // The species the player must hand over to receive this encounter.
     // Only set on EncounterMethod.Trade encounters.
     tradeFor?: string;
-    // The item slug this encounter is holding when received. Only set on
-    // EncounterMethod.Trade encounters that come with a held item.
+    // The item slug this encounter is holding when received.
     heldItem?: string;
 };
 

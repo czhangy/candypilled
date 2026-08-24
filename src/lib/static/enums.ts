@@ -124,6 +124,7 @@ export enum GrowthRate {
 export enum GameVersionGroup {
     DiamondPearl = 'diamond-pearl',
     Platinum = 'platinum',
+    HeartGoldSoulSilver = 'heartgold-soulsilver',
     RenegadePlatinum = 'renegade-platinum',
 }
 

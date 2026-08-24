@@ -2525,7 +2525,10 @@
                     }
                 ]
             }
-        ]
+        ],
+        "sprites": {
+            "heartgold-soulsilver": "/pokemon/platinum/blastoise.png"
+        }
     },
     "caterpie": {
         "abilities": [
@@ -35600,7 +35603,10 @@
                     ]
                 }
             }
-        ]
+        ],
+        "sprites": {
+            "heartgold-soulsilver": "/pokemon/platinum/vaporeon.png"
+        }
     },
     "jolteon": {
         "learnset": [
@@ -35937,7 +35943,10 @@
                     ]
                 }
             }
-        ]
+        ],
+        "sprites": {
+            "heartgold-soulsilver": "/pokemon/platinum/jolteon.png"
+        }
     },
     "flareon": {
         "stats": [
@@ -67633,7 +67642,10 @@
                     }
                 ]
             }
-        ]
+        ],
+        "sprites": {
+            "heartgold-soulsilver": "/pokemon/platinum/tyranitar.png"
+        }
     },
     "lugia": {
         "learnset": [
@@ -130279,7 +130291,10 @@
                     }
                 ]
             }
-        ]
+        ],
+        "sprites": {
+            "heartgold-soulsilver": "/pokemon/platinum/togekiss.png"
+        }
     },
     "yanmega": {
         "learnset": [

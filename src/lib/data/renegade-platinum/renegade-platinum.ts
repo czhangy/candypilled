@@ -27,12 +27,11 @@ const RENEGADE_PLATINUM: Game = {
     // byte-identical) rather than duplicating them under its own folder.
     badgeAssetFolder: BadgeAssetFolder.Sinnoh,
     trainerAssetFolder: TrainerAssetFolder.Platinum,
-    // Reuses Platinum's Pokémon sprites verbatim (confirmed identical, per
-    // explicit direction). RENEGADE_PLATINUM_POKEMON entries carry no
-    // sprite paths of their own — PokemonHelpers.getPokemonSprite resolves
-    // them formulaically from this folder instead, the same
-    // zero-duplication convention badgeAssetFolder/trainerAssetFolder use.
-    pokemonAssetFolder: GameVersionGroup.Platinum,
+    // Renegade Platinum mostly reuses HeartGold/SoulSilver's Pokémon
+    // sprites rather than Platinum's own — a handful of species (see their
+    // per-species `sprites` overrides in pokemon-overrides.json) keep
+    // Platinum's sprite instead.
+    pokemonAssetFolder: GameVersionGroup.HeartGoldSoulSilver,
     // Reuses Platinum's Lucas/Dawn trainer sprites as the protagonist
     // options.
     genders: {
