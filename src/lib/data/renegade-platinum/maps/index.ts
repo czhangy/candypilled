@@ -7,6 +7,7 @@ export { default as jubilifeCityCity } from './jubilife-city-city.png';
 export { default as jubilifeCityPokemonCenter } from './jubilife-city-pokemon-center.png';
 export { default as lakeVerityPostGalactic } from './lake-verity-post-galactic.png';
 export { default as lakeVerityPreGalactic } from './lake-verity-pre-galactic.png';
+export { default as oldChateau } from './old-chateau.png';
 export { default as oreburghCityCity } from './oreburgh-city-city.png';
 export { default as oreburghCityPokemonCenter } from './oreburgh-city-pokemon-center.png';
 export { default as oreburghGate1f } from './oreburgh-gate-1f.png';

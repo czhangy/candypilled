@@ -1,5 +1,4 @@
 import { Fragment } from 'react';
-import Image from 'next/image';
 import { EncounterMethod } from '@/lib/static/enums';
 import { Encounter, GameDataSource } from '@/lib/static/types';
 import EncounterRow from './EncounterRow/EncounterRow';
@@ -42,14 +41,6 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
                   .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
                   .join(' ');
 
-    const getMethodIcon = (): string => `/encounter-methods/${method}.png`;
-
-    // -------------------------------------------------------------------------
-    // CONSTANTS
-    // -------------------------------------------------------------------------
-
-    const METHOD_ICON_SIZE = 18;
-
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -58,15 +49,7 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
         <Fragment>
             <tr>
                 <th colSpan={3}>
-                    <div className={styles.method}>
-                        <Image
-                            alt=""
-                            height={METHOD_ICON_SIZE}
-                            src={getMethodIcon()}
-                            width={METHOD_ICON_SIZE}
-                        />
-                        {getMethodLabel()}
-                    </div>
+                    <div className={styles.method}>{getMethodLabel()}</div>
                 </th>
             </tr>
             {encounters.map((encounter) => (

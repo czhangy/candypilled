@@ -1,8 +1,8 @@
 # MethodGroup
 
 A sub-header row for a single encounter method within an encounter
-table (e.g. "Old Rod", "Rock Smash"), shown alongside an icon
-representing the method, followed by that method's encounter rows.
+table (e.g. "Old Rod", "Rock Smash"), followed by that method's
+encounter rows.
 
 ## Props
 
@@ -23,5 +23,3 @@ representing the method, followed by that method's encounter rows.
   (e.g. `old-rod` becomes "Old Rod"), except `poke-radar`, which is
   spelled out as "Poké Radar" since its accent can't be derived from the
   slug
-- `getMethodIcon` — the icon image path for `method`, shared across
-  all game variants (e.g. `/encounter-methods/grass.png`)
