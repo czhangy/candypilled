@@ -25,7 +25,7 @@ type PokemonSlotProps = {
     onSelectMove?: (slug: string) => void;
     onSelectSpecies?: (species: string) => void;
     pokemon: BattlePokemon | null;
-    position: 'single' | 'top' | 'bottom';
+    position: 'single' | 'top' | 'middle' | 'bottom';
     variant: string;
     version: string;
 };

@@ -132,7 +132,9 @@ const BattleCard: React.FC<BattleCardProps> = ({
                             ? 'single'
                             : isLastRow
                               ? 'bottom'
-                              : 'top';
+                              : rowIndex === 0
+                                ? 'top'
+                                : 'middle';
 
                         return (
                             <div
@@ -156,6 +158,9 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                             row.trainerClass,
                                             row.name
                                         )}
+                                        position={
+                                            rowIndex === 0 ? 'top' : 'middle'
+                                        }
                                         trainerAssetFolder={
                                             game.trainerAssetFolder
                                         }

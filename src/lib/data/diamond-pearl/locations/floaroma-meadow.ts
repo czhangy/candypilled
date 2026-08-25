@@ -10,15 +10,10 @@ const FLOAROMA_MEADOW: Location = {
     battles: [
         {
             metadata: [BattleMetadata.BackToBack],
-            battleKey: 'galactic-grunt-m-floaroma-meadow-1',
-            x: 13.9,
-            y: 48.1,
-        },
-        {
-            metadata: [BattleMetadata.BackToBack],
-            battleKey: 'galactic-grunt-m-floaroma-meadow-2',
-            x: 11.9,
-            y: 48.1,
+            battleKey: 'galactic-grunt-m-floaroma-meadow',
+            customWidth: 38,
+            x: 13,
+            y: 47.9,
         },
     ],
 };

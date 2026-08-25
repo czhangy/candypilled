@@ -624,9 +624,9 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     // Floaroma Meadow's two "back to back" Galactic Grunts.
-    'galactic-grunt-m-floaroma-meadow-1': {
+    'galactic-grunt-m-floaroma-meadow': {
         trainerClass: 'galactic-grunt-m',
-        name: '3',
+        name: 'Back-to-Back',
         teams: [
             {
                 team: [
@@ -650,12 +650,6 @@ export const BATTLES: Record<string, BattleData> = {
                     },
                 ],
             },
-        ],
-    },
-    'galactic-grunt-m-floaroma-meadow-2': {
-        trainerClass: 'galactic-grunt-m',
-        name: '4',
-        teams: [
             {
                 team: [
                     {

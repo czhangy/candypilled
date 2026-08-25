@@ -87,7 +87,7 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
                 <div className={styles['trainer__metadata']}>TAG DOUBLE</div>
             )}
             {battle.metadata.includes(BattleMetadata.BackToBack) && (
-                <div className={styles['trainer__metadata']}>BACK TO BACK</div>
+                <div className={styles['trainer__metadata']}>BACK-TO-BACK</div>
             )}
             {battle.metadata.includes(BattleMetadata.Gauntlet) && (
                 <div className={styles['trainer__metadata']}>GAUNTLET</div>

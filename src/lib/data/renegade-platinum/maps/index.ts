@@ -35,6 +35,7 @@ export { default as oreburghGateB1f } from './oreburgh-gate-b1f.png';
 export { default as oreburghGym } from './oreburgh-gym.png';
 export { default as oreburghMine1f } from './oreburgh-mine-1f.png';
 export { default as oreburghMineB1f } from './oreburgh-mine-b1f.png';
+export { default as pokemonMansion } from './pokemon-mansion.png';
 export { default as ravagedPath } from './ravaged-path.png';
 export { default as route201 } from './route-201.png';
 export { default as route202Dawn } from './route-202-dawn.png';

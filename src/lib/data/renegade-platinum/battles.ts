@@ -7771,4 +7771,322 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'galactic-grunt-m-pokemon-mansion-1': {
+        trainerClass: 'galactic-grunt-m',
+        name: '1',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'stunky',
+                        ability: 'aftermath',
+                        gender: 'male',
+                        level: 28,
+                        moves: ['toxic', 'feint', 'night-slash', 'slash'],
+                        nature: Nature.Serious,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'venonat',
+                        ability: 'tinted-lens',
+                        gender: 'male',
+                        level: 28,
+                        moves: [
+                            'zen-headbutt',
+                            'leech-life',
+                            'poison-fang',
+                            'psybeam',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'arbok',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 28,
+                        moves: ['spit-up', 'swallow', 'stockpile', 'screech'],
+                        nature: Nature.Lax,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-m-pokemon-mansion-2': {
+        trainerClass: 'galactic-grunt-m',
+        name: '2',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'murkrow',
+                        ability: 'super-luck',
+                        gender: 'male',
+                        level: 30,
+                        moves: [
+                            'sucker-punch',
+                            'mean-look',
+                            'drill-peck',
+                            'feint-attack',
+                        ],
+                        nature: Nature.Calm,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-f-pokemon-mansion-1': {
+        trainerClass: 'galactic-grunt-f',
+        name: '3',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'croagunk',
+                        ability: 'dry-skin',
+                        gender: 'female',
+                        level: 28,
+                        moves: ['poison-jab', 'mud-bomb', 'swagger', 'revenge'],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'seviper',
+                        ability: 'shed-skin',
+                        gender: 'female',
+                        level: 28,
+                        moves: [
+                            'gastro-acid',
+                            'night-slash',
+                            'poison-tail',
+                            'glare',
+                        ],
+                        nature: Nature.Lonely,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'butterfree',
+                        ability: 'tinted-lens',
+                        gender: 'female',
+                        level: 28,
+                        moves: [
+                            'bug-buzz',
+                            'safeguard',
+                            'air-slash',
+                            'supersonic',
+                        ],
+                        nature: Nature.Impish,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-f-pokemon-mansion-2': {
+        trainerClass: 'galactic-grunt-f',
+        name: '4',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'beedrill',
+                        ability: 'adaptability',
+                        gender: 'female',
+                        level: 29,
+                        moves: [
+                            'x-scissor',
+                            'assurance',
+                            'poison-jab',
+                            'focus-energy',
+                        ],
+                        nature: Nature.Bashful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'golbat',
+                        ability: 'inner-focus',
+                        gender: 'female',
+                        level: 29,
+                        moves: ['swift', 'leech-life', 'crunch', 'mean-look'],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-m-pokemon-mansion-3': {
+        trainerClass: 'galactic-grunt-m',
+        name: '6-Turn Challenge',
+        items: [{ count: 1, name: 'Potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'nincada',
+                        ability: 'compound-eyes',
+                        gender: 'male',
+                        level: 30,
+                        moves: [
+                            'dig',
+                            'metal-claw',
+                            'mind-reader',
+                            'leech-life',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                ],
+            },
+            {
+                team: [
+                    {
+                        slug: 'ninjask',
+                        ability: 'speed-boost',
+                        gender: 'male',
+                        heldItem: 'focus-sash',
+                        level: 30,
+                        moves: [
+                            'aerial-ace',
+                            'night-slash',
+                            'slash',
+                            'screech',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                ],
+            },
+            {
+                team: [
+                    {
+                        slug: 'shedinja',
+                        ability: 'wonder-guard',
+                        heldItem: 'focus-sash',
+                        level: 30,
+                        moves: [
+                            'x-scissor',
+                            'shadow-sneak',
+                            'mind-reader',
+                            'leech-life',
+                        ],
+                        nature: Nature.Docile,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'commander-saturn-and-gentleman-backlot': {
+        trainerClass: 'commander-saturn',
+        name: 'Saturn',
+        items: [{ count: 4, name: 'Full Restore' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'bronzong',
+                        ability: 'levitate',
+                        heldItem: 'leftovers',
+                        level: 33,
+                        moves: [
+                            'hypnosis',
+                            'gyro-ball',
+                            'zen-headbutt',
+                            'confuse-ray',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'octillery',
+                        ability: 'suction-cups',
+                        gender: 'male',
+                        heldItem: 'wise-glasses',
+                        level: 33,
+                        moves: [
+                            'octazooka',
+                            'signal-beam',
+                            'ice-beam',
+                            'flamethrower',
+                        ],
+                        nature: Nature.Serious,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'toxicroak',
+                        ability: 'dry-skin',
+                        gender: 'male',
+                        heldItem: 'muscle-band',
+                        level: 34,
+                        moves: [
+                            'drain-punch',
+                            'poison-jab',
+                            'fake-out',
+                            'vacuum-wave',
+                        ],
+                        nature: Nature.Serious,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+        secondTrainer: {
+            trainerClass: 'gentleman',
+            name: 'Backlot',
+            teams: [
+                {
+                    team: [
+                        {
+                            slug: 'wigglytuff',
+                            ability: 'cute-charm',
+                            gender: 'female',
+                            heldItem: 'zoom-lens',
+                            level: 33,
+                            moves: [
+                                'moonblast',
+                                'hyper-voice',
+                                'sing',
+                                'thunderbolt',
+                            ],
+                            nature: Nature.Lonely,
+                            ivs: 12,
+                        },
+                        {
+                            slug: 'raichu',
+                            ability: 'static',
+                            gender: 'male',
+                            heldItem: 'wise-glasses',
+                            level: 33,
+                            moves: [
+                                'fake-out',
+                                'thunderbolt',
+                                'grass-knot',
+                                'teeter-dance',
+                            ],
+                            nature: Nature.Impish,
+                            ivs: 12,
+                        },
+                        {
+                            slug: 'espeon',
+                            ability: 'synchronize',
+                            gender: 'male',
+                            heldItem: 'sitrus-berry',
+                            level: 33,
+                            moves: [
+                                'psychic',
+                                'power-gem',
+                                'dazzling-gleam',
+                                'protect',
+                            ],
+                            nature: Nature.Adamant,
+                            ivs: 12,
+                        },
+                    ],
+                },
+            ],
+        },
+    },
 };

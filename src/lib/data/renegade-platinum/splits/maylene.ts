@@ -1,4 +1,5 @@
 import HEARTHOME_CITY_EAST_GATE from '@/lib/data/renegade-platinum/locations/hearthome-city-east-gate';
+import POKEMON_MANSION from '@/lib/data/renegade-platinum/locations/pokemon-mansion';
 import ROUTE_212 from '@/lib/data/renegade-platinum/locations/route-212';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
@@ -13,6 +14,7 @@ const MAYLENE: Split = {
     locations: [
         HEARTHOME_CITY_EAST_GATE,
         LocationHelpers.withHiddenSubareaBattles(ROUTE_212, ['South']),
+        POKEMON_MANSION,
     ],
     saveCondition: { type: 'badge', bit: -1 },
 };

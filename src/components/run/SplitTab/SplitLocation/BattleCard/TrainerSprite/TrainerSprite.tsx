@@ -5,12 +5,14 @@ import styles from './TrainerSprite.module.scss';
 
 type TrainerSpriteProps = {
     alt: string;
+    position: 'top' | 'middle';
     trainerAssetFolder: TrainerAssetFolder;
     trainerClass: string;
 };
 
 const TrainerSprite: React.FC<TrainerSpriteProps> = ({
     alt,
+    position,
     trainerAssetFolder,
     trainerClass,
 }) => {
@@ -25,7 +27,12 @@ const TrainerSprite: React.FC<TrainerSpriteProps> = ({
     // -------------------------------------------------------------------------
 
     return (
-        <div className={styles['trainer-sprite']}>
+        <div
+            className={[
+                styles['trainer-sprite'],
+                styles[`trainer-sprite--${position}`],
+            ].join(' ')}
+        >
             <Image
                 alt={alt}
                 height={SPRITE_SIZE}
