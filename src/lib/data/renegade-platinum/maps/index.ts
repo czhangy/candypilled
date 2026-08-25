@@ -1,6 +1,7 @@
 export { default as eternaCity } from './eterna-city.png';
 export { default as eternaForestExterior } from './eterna-forest-exterior.png';
 export { default as eternaForestInterior } from './eterna-forest-interior.png';
+export { default as eternaGym } from './eterna-gym.png';
 export { default as floaromaMeadow } from './floaroma-meadow.png';
 export { default as floaromaTownPokemonCenter } from './floaroma-town-pokemon-center.png';
 export { default as floaromaTownTown } from './floaroma-town-town.png';

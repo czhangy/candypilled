@@ -422,7 +422,6 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                                 game={game}
                                 gender={run.gender}
                                 onSelectSplit={handleSplitSelect}
-                                runSplitName={runSplitName}
                             />
                         )}
                         <Tabs
