@@ -6490,7 +6490,7 @@ export const BATTLES: Record<string, BattleData> = {
                         ivs: 27,
                     },
                     {
-                        slug: 'rotom-mow',
+                        slug: 'rotom',
                         ability: 'levitate',
                         level: 29,
                         moves: [
@@ -6667,6 +6667,1105 @@ export const BATTLES: Record<string, BattleData> = {
                         ],
                         nature: Nature.Naive,
                         ivs: 29,
+                    },
+                ],
+            },
+        ],
+    },
+    'pkmn-trainer-barry-hearthome-city-east-gate': {
+        trainerClass: 'pkmn-trainer-barry',
+        name: 'Barry',
+        teams: [
+            {
+                condition: { type: 'starter', starter: 'turtwig' },
+                team: [
+                    {
+                        slug: 'staravia',
+                        ability: 'reckless',
+                        gender: 'male',
+                        heldItem: 'muscle-band',
+                        level: 32,
+                        moves: [
+                            'facade',
+                            'aerial-ace',
+                            'double-team',
+                            'endeavor',
+                        ],
+                        nature: Nature.Careful,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'heracross',
+                        ability: 'guts',
+                        gender: 'male',
+                        heldItem: 'coba-berry',
+                        level: 32,
+                        moves: [
+                            'bug-bite',
+                            'brick-break',
+                            'aerial-ace',
+                            'knock-off',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'snorlax',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        heldItem: 'leftovers',
+                        level: 32,
+                        moves: ['body-slam', 'yawn', 'amnesia', 'rock-slide'],
+                        nature: Nature.Naughty,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'monferno',
+                        ability: 'iron-fist',
+                        gender: 'male',
+                        heldItem: 'sitrus-berry',
+                        level: 33,
+                        moves: [
+                            'flamethrower',
+                            'low-kick',
+                            'grass-knot',
+                            'fake-out',
+                        ],
+                        nature: Nature.Hardy,
+                        ivs: 30,
+                    },
+                ],
+            },
+            {
+                condition: { type: 'starter', starter: 'chimchar' },
+                team: [
+                    {
+                        slug: 'staravia',
+                        ability: 'reckless',
+                        gender: 'male',
+                        heldItem: 'muscle-band',
+                        level: 32,
+                        moves: [
+                            'facade',
+                            'aerial-ace',
+                            'double-team',
+                            'endeavor',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'heracross',
+                        ability: 'guts',
+                        gender: 'male',
+                        heldItem: 'coba-berry',
+                        level: 32,
+                        moves: [
+                            'bug-bite',
+                            'brick-break',
+                            'aerial-ace',
+                            'knock-off',
+                        ],
+                        nature: Nature.Timid,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'snorlax',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        heldItem: 'leftovers',
+                        level: 32,
+                        moves: ['body-slam', 'yawn', 'amnesia', 'rock-slide'],
+                        nature: Nature.Naughty,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'prinplup',
+                        ability: 'torrent',
+                        gender: 'male',
+                        heldItem: 'sitrus-berry',
+                        level: 33,
+                        moves: [
+                            'scald',
+                            'icy-wind',
+                            'grass-knot',
+                            'aerial-ace',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 30,
+                    },
+                ],
+            },
+            {
+                condition: { type: 'starter', starter: 'piplup' },
+                team: [
+                    {
+                        slug: 'staravia',
+                        ability: 'reckless',
+                        gender: 'male',
+                        heldItem: 'muscle-band',
+                        level: 32,
+                        moves: [
+                            'facade',
+                            'aerial-ace',
+                            'double-team',
+                            'endeavor',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'heracross',
+                        ability: 'guts',
+                        gender: 'male',
+                        heldItem: 'coba-berry',
+                        level: 32,
+                        moves: [
+                            'bug-bite',
+                            'brick-break',
+                            'aerial-ace',
+                            'knock-off',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'snorlax',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        heldItem: 'leftovers',
+                        level: 32,
+                        moves: ['body-slam', 'yawn', 'amnesia', 'rock-slide'],
+                        nature: Nature.Rash,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'grotle',
+                        ability: 'overgrow',
+                        gender: 'male',
+                        heldItem: 'sitrus-berry',
+                        level: 33,
+                        moves: ['seed-bomb', 'crunch', 'leech-seed', 'protect'],
+                        nature: Nature.Brave,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-m-route-212-north-1': {
+        trainerClass: 'galactic-grunt-m',
+        name: '1',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'mightyena',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 29,
+                        moves: ['scary-face', 'crunch', 'swagger', 'roar'],
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'arbok',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 29,
+                        moves: ['spit-up', 'swallow', 'stockpile', 'screech'],
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-f-route-212-north-1': {
+        trainerClass: 'galactic-grunt-f',
+        name: '2',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'kricketune',
+                        ability: 'technician',
+                        gender: 'female',
+                        level: 30,
+                        moves: [
+                            'x-scissor',
+                            'night-slash',
+                            'slash',
+                            'focus-energy',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-f-route-212-north-2': {
+        trainerClass: 'galactic-grunt-f',
+        name: '3',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'glameow',
+                        ability: 'limber',
+                        gender: 'female',
+                        level: 28,
+                        moves: ['knock-off', 'assist', 'slash', 'charm'],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'koffing',
+                        ability: 'levitate',
+                        gender: 'female',
+                        level: 28,
+                        moves: [
+                            'sludge-bomb',
+                            'gyro-ball',
+                            'haze',
+                            'self-destruct',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'dustox',
+                        ability: 'shield-dust',
+                        gender: 'female',
+                        level: 28,
+                        moves: [
+                            'bug-buzz',
+                            'moonlight',
+                            'signal-beam',
+                            'psybeam',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-m-and-galactic-grunt-f-route-212-north': {
+        trainerClass: 'galactic-grunt-m',
+        name: '4',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'lunatone',
+                        ability: 'levitate',
+                        level: 29,
+                        moves: [
+                            'cosmic-power',
+                            'psychic',
+                            'embargo',
+                            'rock-slide',
+                        ],
+                        nature: Nature.Lonely,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'solrock',
+                        ability: 'levitate',
+                        level: 29,
+                        moves: [
+                            'cosmic-power',
+                            'zen-headbutt',
+                            'embargo',
+                            'rock-slide',
+                        ],
+                        nature: Nature.Lonely,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+        secondTrainer: {
+            trainerClass: 'galactic-grunt-f',
+            name: '5',
+            teams: [
+                {
+                    team: [
+                        {
+                            slug: 'solrock',
+                            ability: 'levitate',
+                            level: 29,
+                            moves: [
+                                'cosmic-power',
+                                'zen-headbutt',
+                                'embargo',
+                                'rock-slide',
+                            ],
+                            nature: Nature.Hasty,
+                            ivs: 12,
+                        },
+                        {
+                            slug: 'lunatone',
+                            ability: 'levitate',
+                            level: 29,
+                            moves: [
+                                'cosmic-power',
+                                'psychic',
+                                'embargo',
+                                'rock-slide',
+                            ],
+                            nature: Nature.Mild,
+                            ivs: 12,
+                        },
+                    ],
+                },
+            ],
+        },
+    },
+    'rich-boy-jason': {
+        trainerClass: 'rich-boy',
+        name: 'Jason',
+        items: [{ count: 1, name: 'Full Restore' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'prinplup',
+                        ability: 'torrent',
+                        gender: 'male',
+                        level: 30,
+                        moves: [
+                            'bubble-beam',
+                            'icy-wind',
+                            'scald',
+                            'fury-attack',
+                        ],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'azumarill',
+                        ability: 'huge-power',
+                        gender: 'male',
+                        level: 30,
+                        moves: [
+                            'body-slam',
+                            'helping-hand',
+                            'aqua-tail',
+                            'play-rough',
+                        ],
+                        nature: Nature.Impish,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'lady-melissa': {
+        trainerClass: 'lady',
+        name: 'Melissa',
+        items: [{ count: 1, name: 'Full Restore' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'cherrim',
+                        ability: 'flower-gift',
+                        gender: 'female',
+                        level: 30,
+                        moves: [
+                            'sunny-day',
+                            'petal-dance',
+                            'giga-drain',
+                            'take-down',
+                        ],
+                        nature: Nature.Docile,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'jumpluff',
+                        ability: 'chlorophyll',
+                        gender: 'female',
+                        level: 30,
+                        moves: [
+                            'cotton-spore',
+                            'worry-seed',
+                            'giga-drain',
+                            'air-slash',
+                        ],
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'policeman-caleb': {
+        trainerClass: 'policeman',
+        name: 'Caleb',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'granbull',
+                        ability: 'intimidate',
+                        gender: 'female',
+                        level: 31,
+                        moves: ['roar', 'rage', 'play-rough', 'crunch'],
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'gentleman-jeremy': {
+        trainerClass: 'gentleman',
+        name: 'Jeremy',
+        items: [{ count: 1, name: 'Full Restore' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'chatot',
+                        ability: 'soundproof',
+                        gender: 'male',
+                        level: 31,
+                        moves: ['chatter', 'roost', 'agility', 'hyper-voice'],
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'socialite-reina': {
+        trainerClass: 'socialite',
+        name: 'Reina',
+        items: [{ count: 1, name: 'Full Restore' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'delcatty',
+                        ability: 'cute-charm',
+                        gender: 'female',
+                        level: 31,
+                        moves: ['fake-out', 'sing', 'attract', 'double-slap'],
+                        nature: Nature.Hardy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'policeman-dylan': {
+        trainerClass: 'policeman',
+        name: 'Dylan',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'arcanine',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 31,
+                        moves: ['bite', 'roar', 'odor-sleuth', 'fire-fang'],
+                        nature: Nature.Hardy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'policeman-alex': {
+        trainerClass: 'policeman',
+        name: 'Alex',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'machamp',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 31,
+                        moves: [
+                            'knock-off',
+                            'vital-throw',
+                            'wake-up-slap',
+                            'payback',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'policeman-bobby': {
+        trainerClass: 'policeman',
+        name: 'Bobby',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'noctowl',
+                        ability: 'tinted-lens',
+                        gender: 'male',
+                        level: 31,
+                        moves: [
+                            'extrasensory',
+                            'psycho-shift',
+                            'air-slash',
+                            'reflect',
+                        ],
+                        nature: Nature.Lax,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'pkmn-ranger-m-taylor': {
+        trainerClass: 'pkmn-ranger-m',
+        name: 'Taylor',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'carnivine',
+                        ability: 'levitate',
+                        gender: 'male',
+                        level: 40,
+                        moves: ['energy-ball', 'crunch', 'swallow', 'spit-up'],
+                        nature: Nature.Sassy,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'kecleon',
+                        ability: 'color-change',
+                        gender: 'male',
+                        level: 40,
+                        moves: [
+                            'sucker-punch',
+                            'screech',
+                            'shadow-claw',
+                            'camouflage',
+                        ],
+                        nature: Nature.Naive,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'electabuzz',
+                        ability: 'static',
+                        gender: 'male',
+                        level: 40,
+                        moves: [
+                            'cross-chop',
+                            'screech',
+                            'discharge',
+                            'brick-break',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
+    'parasol-lady-alexa': {
+        trainerClass: 'parasol-lady',
+        name: 'Alexa',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'seadra',
+                        ability: 'poison-point',
+                        gender: 'female',
+                        level: 38,
+                        moves: [
+                            'dragon-pulse',
+                            'muddy-water',
+                            'agility',
+                            'octazooka',
+                        ],
+                        nature: Nature.Rash,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'golduck',
+                        ability: 'damp',
+                        gender: 'female',
+                        level: 38,
+                        moves: [
+                            'psych-up',
+                            'psychic',
+                            'power-gem',
+                            'aqua-tail',
+                        ],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'scientist-shaun': {
+        trainerClass: 'scientist',
+        name: 'Shaun',
+        items: [{ count: 1, name: 'X Special' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'magneton',
+                        ability: 'magnet-pull',
+                        level: 37,
+                        moves: [
+                            'screech',
+                            'flash-cannon',
+                            'tri-attack',
+                            'discharge',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'electrode',
+                        ability: 'soundproof',
+                        level: 37,
+                        moves: [
+                            'magnet-rise',
+                            'light-screen',
+                            'discharge',
+                            'self-destruct',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'porygon2',
+                        ability: 'trace',
+                        level: 37,
+                        moves: [
+                            'thunderbolt',
+                            'magic-coat',
+                            'lock-on',
+                            'discharge',
+                        ],
+                        nature: Nature.Bashful,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'parasol-lady-sabrina': {
+        trainerClass: 'parasol-lady',
+        name: 'Sabrina',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'castform',
+                        ability: 'forecast',
+                        gender: 'female',
+                        level: 39,
+                        moves: [
+                            'blizzard',
+                            'fire-blast',
+                            'hydro-pump',
+                            'weather-ball',
+                        ],
+                        nature: Nature.Hardy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'fisherman-juan': {
+        trainerClass: 'fisherman',
+        name: 'Juan',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'shellder',
+                        ability: 'skill-link',
+                        gender: 'male',
+                        level: 36,
+                        moves: [
+                            'aqua-ring',
+                            'ice-beam',
+                            'iron-defense',
+                            'whirlpool',
+                        ],
+                        nature: Nature.Naive,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'clamperl',
+                        ability: 'shell-armor',
+                        gender: 'male',
+                        level: 36,
+                        moves: [
+                            'muddy-water',
+                            'water-pulse',
+                            'iron-defense',
+                            'whirlpool',
+                        ],
+                        nature: Nature.Calm,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'cloyster',
+                        ability: 'skill-link',
+                        gender: 'male',
+                        level: 39,
+                        moves: [
+                            'rock-blast',
+                            'twineedle',
+                            'spikes',
+                            'spike-cannon',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'fisherman-josh': {
+        trainerClass: 'fisherman',
+        name: 'Josh',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'remoraid',
+                        ability: 'hustle',
+                        gender: 'male',
+                        level: 36,
+                        moves: [
+                            'flamethrower',
+                            'seed-bomb',
+                            'ice-beam',
+                            'signal-beam',
+                        ],
+                        nature: Nature.Naive,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'goldeen',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 36,
+                        moves: [
+                            'knock-off',
+                            'aqua-tail',
+                            'body-slam',
+                            'agility',
+                        ],
+                        nature: Nature.Careful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'octillery',
+                        ability: 'suction-cups',
+                        gender: 'male',
+                        level: 39,
+                        moves: [
+                            'seed-bomb',
+                            'ice-beam',
+                            'signal-beam',
+                            'octazooka',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'fisherman-travis': {
+        trainerClass: 'fisherman',
+        name: 'Travis',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'barboach',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 38,
+                        moves: [
+                            'earthquake',
+                            'future-sight',
+                            'muddy-water',
+                            'earth-power',
+                        ],
+                        nature: Nature.Lonely,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'qwilfish',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 38,
+                        moves: [
+                            'pin-missile',
+                            'aqua-tail',
+                            'revenge',
+                            'poison-jab',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'collector-dean': {
+        trainerClass: 'collector',
+        name: 'Dean',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'umbreon',
+                        ability: 'synchronize',
+                        gender: 'male',
+                        level: 37,
+                        moves: [
+                            'gunk-shot',
+                            'sucker-punch',
+                            'moonlight',
+                            'play-rough',
+                        ],
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'espeon',
+                        ability: 'synchronize',
+                        gender: 'male',
+                        level: 37,
+                        moves: [
+                            'aura-sphere',
+                            'psychic',
+                            'morning-sun',
+                            'power-gem',
+                        ],
+                        nature: Nature.Calm,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'glaceon',
+                        ability: 'snow-cloak',
+                        gender: 'male',
+                        level: 37,
+                        moves: [
+                            'earth-power',
+                            'ice-beam',
+                            'barrier',
+                            'extrasensory',
+                        ],
+                        nature: Nature.Calm,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'policeman-danny': {
+        trainerClass: 'policeman',
+        name: 'Danny',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'growlithe',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 37,
+                        moves: [
+                            'heat-wave',
+                            'outrage',
+                            'crunch',
+                            'flamethrower',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'machoke',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 37,
+                        moves: [
+                            'counter',
+                            'payback',
+                            'wake-up-slap',
+                            'vital-throw',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'noctowl',
+                        ability: 'tinted-lens',
+                        gender: 'male',
+                        level: 37,
+                        moves: [
+                            'psychic',
+                            'reflect',
+                            'air-slash',
+                            'psycho-shift',
+                        ],
+                        nature: Nature.Modest,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'scientist-stefano': {
+        trainerClass: 'scientist',
+        name: 'Stefano',
+        items: [{ count: 1, name: 'X Defend' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'muk',
+                        ability: 'stench',
+                        gender: 'male',
+                        level: 38,
+                        moves: [
+                            'sludge-bomb',
+                            'screech',
+                            'payback',
+                            'poison-jab',
+                        ],
+                        nature: Nature.Docile,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'weezing',
+                        ability: 'levitate',
+                        gender: 'male',
+                        level: 38,
+                        moves: [
+                            'dark-pulse',
+                            'double-hit',
+                            'destiny-bond',
+                            'lava-plume',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'pkmn-ranger-m-jeffrey': {
+        trainerClass: 'pkmn-ranger-m',
+        name: 'Jeffrey',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'magmar',
+                        ability: 'flame-body',
+                        gender: 'male',
+                        level: 39,
+                        moves: [
+                            'cross-chop',
+                            'sunny-day',
+                            'lava-plume',
+                            'brick-break',
+                        ],
+                        nature: Nature.Rash,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'manectric',
+                        ability: 'static',
+                        gender: 'male',
+                        level: 39,
+                        moves: ['crunch', 'discharge', 'fire-fang', 'ice-fang'],
+                        nature: Nature.Jolly,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'nidoking',
+                        ability: 'poison-point',
+                        gender: 'male',
+                        level: 39,
+                        moves: [
+                            'earth-power',
+                            'thrash',
+                            'poison-sting',
+                            'double-kick',
+                        ],
+                        nature: Nature.Hasty,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
+    'pkmn-ranger-f-allison': {
+        trainerClass: 'pkmn-ranger-f',
+        name: 'Allison',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'milotic',
+                        ability: 'marvel-scale',
+                        gender: 'female',
+                        level: 39,
+                        moves: [
+                            'hypnosis',
+                            'attract',
+                            'moonblast',
+                            'dragon-pulse',
+                        ],
+                        nature: Nature.Serious,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'leafeon',
+                        ability: 'leaf-guard',
+                        gender: 'male',
+                        level: 39,
+                        moves: [
+                            'night-slash',
+                            'swords-dance',
+                            'leaf-blade',
+                            'psycho-cut',
+                        ],
+                        nature: Nature.Careful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'jynx',
+                        ability: 'dry-skin',
+                        gender: 'female',
+                        level: 39,
+                        moves: [
+                            'wake-up-slap',
+                            'ice-beam',
+                            'wring-out',
+                            'body-slam',
+                        ],
+                        nature: Nature.Lax,
+                        ivs: 12,
                     },
                 ],
             },

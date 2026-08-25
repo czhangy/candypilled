@@ -11,8 +11,10 @@ import { MET_LOCATIONS } from './met-locations';
 import BYRON from './splits/byron';
 import FANTINA from './splits/fantina';
 import GARDENIA from './splits/gardenia';
+import MAYLENE from './splits/maylene';
 import ROARK from './splits/roark';
 import VOLKNER from './splits/volkner';
+import WAKE from './splits/wake';
 
 // Onboarding in progress — see ONBOARDING.md for full status. Pokémon and
 // move data are complete; encounters/locations/splits are being authored
@@ -57,7 +59,7 @@ const RENEGADE_PLATINUM: Game = {
         'Pick the penguin.',
         'Turtle time.',
     ],
-    splits: [ROARK, GARDENIA, FANTINA, BYRON, VOLKNER],
+    splits: [ROARK, GARDENIA, FANTINA, MAYLENE, WAKE, BYRON, VOLKNER],
 };
 
 export default RENEGADE_PLATINUM;

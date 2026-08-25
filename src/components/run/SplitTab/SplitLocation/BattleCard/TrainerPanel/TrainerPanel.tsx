@@ -7,7 +7,6 @@ import {
 } from '@/lib/static/enums';
 import { Battle, BattleItem } from '@/lib/static/types';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import styles from './TrainerPanel.module.scss';
 
@@ -32,7 +31,6 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const FIELD_CONDITION_ICON_SIZE = 28;
     const ITEM_SPRITE_SIZE = 24;
     const SPRITE_SIZE = 96;
 
@@ -41,11 +39,6 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
     // -------------------------------------------------------------------------
 
     const isRemovableFog = battle.fieldCondition === FieldCondition.Fog;
-    const isDeepFog = battle.fieldCondition === FieldCondition.DeepFog;
-    const fieldConditionIconSlug =
-        isRemovableFog || isDeepFog
-            ? StringHelpers.toSlug(FieldCondition.Fog)
-            : StringHelpers.toSlug(battle.fieldCondition ?? '');
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -101,14 +94,7 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
             )}
             {battle.fieldCondition && (
                 <div className={styles['trainer__metadata']}>
-                    <Image
-                        alt={battle.fieldCondition}
-                        className={styles['field-condition__icon']}
-                        height={FIELD_CONDITION_ICON_SIZE}
-                        src={`/field-conditions/${fieldConditionIconSlug}.png`}
-                        width={FIELD_CONDITION_ICON_SIZE}
-                    />
-                    {battle.fieldCondition}
+                    {battle.fieldCondition.toUpperCase()}
                     {isRemovableFog && (
                         <Tooltip
                             position="center"

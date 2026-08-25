@@ -108,6 +108,7 @@ const EXCLUDED_VARIETY_PATTERNS = [
 // deslugging without losing punctuation PokeAPI's slug can't represent
 // (periods, hyphens kept as part of the name rather than as word breaks).
 const NAME_OVERRIDES: Record<string, string> = {
+    farfetchd: "Farfetch'd",
     'mime-jr': 'Mime Jr.',
     'mr-mime': 'Mr. Mime',
     'porygon-z': 'Porygon-Z',

@@ -1,13 +1,12 @@
 # TrainerPanel
 
 The trainer portrait shown beside a battle's team, made up of a field
-condition section above the sprite, showing an icon beside its name
-(e.g. "Rain"), and a held items
+condition section above the sprite, showing its name in full caps
+(e.g. "RAIN"), and a held items
 section below it, showing one row per item stacked vertically in the
 same cell, each row giving the item's count followed by its sprite
 (e.g. "2x" beside a Potion sprite), each hidden when not present on
-the battle. "Fog" and "Deep Fog" field conditions share the same icon;
-only "Fog" (which can be cleared with Defog) is followed by an
+the battle. Only "Fog" (which can be cleared with Defog) is followed by an
 asterisk whose tooltip reads "Can be cleared using Defog" — "Deep Fog"
 shows no asterisk. A "Boss" section appears below that for the game's
 climactic battles, followed by a "Miniboss" section for a notable but

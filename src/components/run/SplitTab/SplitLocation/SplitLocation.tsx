@@ -3,12 +3,7 @@
 import { useState, useSyncExternalStore } from 'react';
 import { StaticImageData } from 'next/image';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
-import {
-    BattleMetadata,
-    EncounterMethod,
-    MapAnchor,
-    PokemonStatus,
-} from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor, PokemonStatus } from '@/lib/static/enums';
 import {
     Battle,
     CaughtPokemon,
@@ -109,13 +104,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         );
         if (queriedBattle) return queriedBattle;
 
-        const requiredBattles = battles.filter(
-            (battle) => !battle.metadata.includes(BattleMetadata.Optional)
-        );
-        const candidates =
-            requiredBattles.length > 0 ? requiredBattles : battles;
-
-        return candidates[0];
+        return battles[0];
     };
 
     const getAllBattles = (): {
@@ -160,19 +149,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             if (queried) return queried.subareaIndex;
         }
 
-        const hasAnyEncounters = location.subareas.some(
-            (subarea) => !!subarea.encountersKey
-        );
-        const takenEncounter = run.caughtPokemon.some(
-            (caught) => caught.location === location.name
-        );
-
-        if (hasAnyEncounters && !takenEncounter) {
-            return 0;
-        }
-
-        const candidates = getAllBattles();
-        return candidates[0]?.subareaIndex ?? 0;
+        return 0;
     };
 
     // -------------------------------------------------------------------------
