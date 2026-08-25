@@ -364,7 +364,7 @@
         "name": "Wonder Guard",
         "id": 25,
         "introducedInGeneration": 3,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 1,

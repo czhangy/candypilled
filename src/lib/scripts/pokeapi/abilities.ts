@@ -26,6 +26,7 @@ const DANGEROUS_ABILITIES = new Set([
     'aftermath',
     'moody',
     'simple',
+    'wonder-guard',
 ]);
 
 const writeData = (data: Record<string, AbilityData>): void => {

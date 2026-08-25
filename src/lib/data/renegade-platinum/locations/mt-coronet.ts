@@ -39,7 +39,7 @@ const MT_CORONET: Location = {
         {
             name: '1F (207)',
             map: mtCoronet1fRoute207,
-            mapAnchor: MapAnchor.Top,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-1f-route-207',
         },
         {

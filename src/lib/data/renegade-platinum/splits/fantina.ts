@@ -1,10 +1,15 @@
 import ETERNA_CITY from '@/lib/data/renegade-platinum/locations/eterna-city';
+import HEARTHOME_CITY_GATE from '@/lib/data/renegade-platinum/locations/hearthome-city-gate';
+import HEARTHOME_GYM from '@/lib/data/renegade-platinum/locations/hearthome-gym';
 import MINING_MUSEUM from '@/lib/data/renegade-platinum/locations/mining-museum';
+import MT_CORONET from '@/lib/data/renegade-platinum/locations/mt-coronet';
 import ROUTE_206 from '@/lib/data/renegade-platinum/locations/route-206';
 import ROUTE_207 from '@/lib/data/renegade-platinum/locations/route-207';
+import ROUTE_208 from '@/lib/data/renegade-platinum/locations/route-208';
 import TEAM_GALACTIC_ETERNA_BUILDING from '@/lib/data/renegade-platinum/locations/team-galactic-eterna-building';
 import WAYWARD_CAVE from '@/lib/data/renegade-platinum/locations/wayward-cave';
 import { Split } from '@/lib/static/types';
+import LocationHelpers from '@/lib/utils/LocationHelpers';
 
 // TODO: saveCondition is a placeholder (bit: -1, deliberately invalid) —
 // Renegade Platinum's save-file badge-bit layout hasn't been confirmed
@@ -20,6 +25,25 @@ const FANTINA: Split = {
         MINING_MUSEUM,
         WAYWARD_CAVE,
         ROUTE_207,
+        LocationHelpers.withHiddenBattles(
+            LocationHelpers.withSubareaOrder(MT_CORONET, [
+                '1F (207)',
+                '1F (211)',
+                'B1F',
+                '1F (216)',
+                '2F',
+                '3F',
+                'Exterior',
+                '4F',
+                'Summit',
+                'Tunnel',
+                '5F',
+                '6F',
+            ])
+        ),
+        ROUTE_208,
+        HEARTHOME_CITY_GATE,
+        HEARTHOME_GYM,
     ],
     saveCondition: { type: 'badge', bit: -1 },
 };

@@ -8,6 +8,7 @@ import { Game } from '@/lib/static/types';
 import { BATTLES } from './battles';
 import { ENCOUNTERS } from './encounters';
 import { MET_LOCATIONS } from './met-locations';
+import BYRON from './splits/byron';
 import FANTINA from './splits/fantina';
 import GARDENIA from './splits/gardenia';
 import ROARK from './splits/roark';
@@ -56,7 +57,7 @@ const RENEGADE_PLATINUM: Game = {
         'Pick the penguin.',
         'Turtle time.',
     ],
-    splits: [ROARK, GARDENIA, FANTINA, VOLKNER],
+    splits: [ROARK, GARDENIA, FANTINA, BYRON, VOLKNER],
 };
 
 export default RENEGADE_PLATINUM;
