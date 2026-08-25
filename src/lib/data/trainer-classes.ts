@@ -234,6 +234,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'PKMN Trainer',
         spriteSlug: 'lucas',
     },
+    'pkmn-trainer-mira': {
+        displayName: 'PKMN Trainer',
+        spriteSlug: 'mira',
+    },
     'poke-kid': {
         displayName: 'Poké Kid',
         spriteSlug: 'poke-kid',

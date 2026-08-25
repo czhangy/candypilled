@@ -5548,4 +5548,428 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'pkmn-trainer-mira': {
+        trainerClass: 'pkmn-trainer-mira',
+        name: 'Mira',
+        items: [{ count: 1, name: 'Hyper Potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'togetic',
+                        ability: 'serene-grace',
+                        gender: 'male',
+                        heldItem: 'sitrus-berry',
+                        level: 27,
+                        moves: [
+                            'dazzling-gleam',
+                            'air-cutter',
+                            'soft-boiled',
+                            'sweet-kiss',
+                        ],
+                        nature: Nature.Lonely,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'haunter',
+                        ability: 'levitate',
+                        gender: 'female',
+                        heldItem: 'spell-tag',
+                        level: 27,
+                        moves: [
+                            'shadow-ball',
+                            'double-team',
+                            'hypnosis',
+                            'curse',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'porygon2',
+                        ability: 'trace',
+                        heldItem: 'expert-belt',
+                        level: 27,
+                        moves: [
+                            'tri-attack',
+                            'charge-beam',
+                            'signal-beam',
+                            'recover',
+                        ],
+                        nature: Nature.Docile,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'kadabra',
+                        ability: 'magic-guard',
+                        gender: 'male',
+                        heldItem: 'life-orb',
+                        level: 28,
+                        moves: [
+                            'psybeam',
+                            'grass-knot',
+                            'dazzling-gleam',
+                            'recover',
+                        ],
+                        nature: Nature.Calm,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
+    'camper-diego': {
+        trainerClass: 'camper',
+        name: 'Diego',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'aipom',
+                        ability: 'run-away',
+                        gender: 'male',
+                        level: 25,
+                        moves: ['swift', 'covet', 'fury-swipes', 'pursuit'],
+                        nature: Nature.Relaxed,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'nidorino',
+                        ability: 'poison-point',
+                        gender: 'male',
+                        level: 25,
+                        moves: [
+                            'toxic-spikes',
+                            'helping-hand',
+                            'horn-attack',
+                            'poison-fang',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'picnicker-tori': {
+        trainerClass: 'picnicker',
+        name: 'Tori',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'psyduck',
+                        ability: 'damp',
+                        gender: 'female',
+                        level: 25,
+                        moves: [
+                            'screech',
+                            'zen-headbutt',
+                            'disable',
+                            'water-pulse',
+                        ],
+                        nature: Nature.Rash,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'nidorina',
+                        ability: 'poison-point',
+                        gender: 'female',
+                        level: 25,
+                        moves: [
+                            'toxic-spikes',
+                            'helping-hand',
+                            'bite',
+                            'poison-fang',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'lass-cassidy': {
+        trainerClass: 'lass',
+        name: 'Cassidy',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'skitty',
+                        ability: 'cute-charm',
+                        gender: 'female',
+                        level: 24,
+                        moves: [
+                            'wake-up-slap',
+                            'feint-attack',
+                            'copycat',
+                            'covet',
+                        ],
+                        nature: Nature.Careful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'meowth',
+                        ability: 'technician',
+                        gender: 'female',
+                        level: 24,
+                        moves: [
+                            'night-slash',
+                            'slash',
+                            'feint-attack',
+                            'pay-day',
+                        ],
+                        nature: Nature.Hardy,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'eevee',
+                        ability: 'run-away',
+                        gender: 'male',
+                        level: 24,
+                        moves: ['wish', 'refresh', 'swift', 'baton-pass'],
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'youngster-wayne': {
+        trainerClass: 'youngster',
+        name: 'Wayne',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'loudred',
+                        ability: 'soundproof',
+                        gender: 'male',
+                        level: 25,
+                        moves: ['extrasensory', 'bite', 'supersonic', 'stomp'],
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'raticate',
+                        ability: 'hustle',
+                        gender: 'male',
+                        level: 25,
+                        moves: [
+                            'super-fang',
+                            'scary-face',
+                            'assurance',
+                            'hyper-fang',
+                        ],
+                        nature: Nature.Modest,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'hiker-reginald': {
+        trainerClass: 'hiker',
+        name: 'Reginald',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'dugtrio',
+                        ability: 'sand-veil',
+                        gender: 'male',
+                        level: 26,
+                        moves: [
+                            'tri-attack',
+                            'mud-bomb',
+                            'sucker-punch',
+                            'dig',
+                        ],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'hiker-lorenzo': {
+        trainerClass: 'hiker',
+        name: 'Lorenzo',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'rhyhorn',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 25,
+                        moves: [
+                            'drill-run',
+                            'take-down',
+                            'magnitude',
+                            'rock-blast',
+                        ],
+                        nature: Nature.Modest,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'sudowoodo',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 25,
+                        moves: ['rollout', 'feint-attack', 'slam', 'mimic'],
+                        nature: Nature.Mild,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'picnicker-ana': {
+        trainerClass: 'picnicker',
+        name: 'Ana',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'illumise',
+                        ability: 'tinted-lens',
+                        gender: 'female',
+                        level: 25,
+                        moves: [
+                            'encore',
+                            'moonlight',
+                            'draining-kiss',
+                            'silver-wind',
+                        ],
+                        nature: Nature.Serious,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'furret',
+                        ability: 'scrappy',
+                        gender: 'female',
+                        level: 25,
+                        moves: ['flame-wheel', 'rest', 'agility', 'follow-me'],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'camper-parker': {
+        trainerClass: 'camper',
+        name: 'Parker',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'volbeat',
+                        ability: 'swarm',
+                        gender: 'male',
+                        level: 25,
+                        moves: [
+                            'signal-beam',
+                            'moonlight',
+                            'charge-beam',
+                            'bug-bite',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'linoone',
+                        ability: 'pickup',
+                        gender: 'male',
+                        level: 25,
+                        moves: [
+                            'slash',
+                            'mud-sport',
+                            'fury-swipes',
+                            'headbutt',
+                        ],
+                        nature: Nature.Lax,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'collector-terry': {
+        trainerClass: 'collector',
+        name: 'Terry',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'gible',
+                        ability: 'rough-skin',
+                        gender: 'male',
+                        level: 24,
+                        moves: ['dig', 'sandstorm', 'dragon-rage', 'take-down'],
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'bagon',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 24,
+                        moves: [
+                            'dragon-claw',
+                            'focus-energy',
+                            'headbutt',
+                            'dragon-breath',
+                        ],
+                        nature: Nature.Docile,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'gabite',
+                        ability: 'rough-skin',
+                        gender: 'male',
+                        level: 24,
+                        moves: ['dig', 'sandstorm', 'dragon-rage', 'take-down'],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'ruin-maniac-gerald': {
+        trainerClass: 'ruin-maniac',
+        name: 'Gerald',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'cubone',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 25,
+                        moves: [
+                            'knock-off',
+                            'false-swipe',
+                            'bonemerang',
+                            'rage',
+                        ],
+                        nature: Nature.Modest,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'probopass',
+                        ability: 'sturdy',
+                        gender: 'male',
+                        level: 25,
+                        moves: ['discharge', 'power-gem', 'rest', 'rock-slide'],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
 };
