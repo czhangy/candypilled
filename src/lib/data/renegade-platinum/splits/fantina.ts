@@ -1,4 +1,5 @@
 import ETERNA_CITY from '@/lib/data/renegade-platinum/locations/eterna-city';
+import TEAM_GALACTIC_ETERNA_BUILDING from '@/lib/data/renegade-platinum/locations/team-galactic-eterna-building';
 import { Split } from '@/lib/static/types';
 
 // TODO: saveCondition is a placeholder (bit: -1, deliberately invalid) —
@@ -8,7 +9,7 @@ import { Split } from '@/lib/static/types';
 // data or decomp fork first.
 const FANTINA: Split = {
     name: 'Fantina',
-    locations: [ETERNA_CITY],
+    locations: [ETERNA_CITY, TEAM_GALACTIC_ETERNA_BUILDING],
     saveCondition: { type: 'badge', bit: -1 },
 };
 

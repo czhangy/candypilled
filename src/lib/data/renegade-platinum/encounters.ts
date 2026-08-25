@@ -2486,6 +2486,13 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             maxLevel: 50,
             chance: 30,
         },
+        {
+            species: 'togepi',
+            method: EncounterMethod.Egg,
+            minLevel: 1,
+            maxLevel: 1,
+            chance: null,
+        },
     ],
     'sinnoh-route-211-west': [
         {
@@ -3574,6 +3581,15 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             minLevel: 19,
             maxLevel: 20,
             chance: 22,
+        },
+    ],
+    'team-galactic-eterna-building-4f': [
+        {
+            species: 'porygon',
+            method: EncounterMethod.Gift,
+            minLevel: 22,
+            maxLevel: 22,
+            chance: null,
         },
     ],
 };

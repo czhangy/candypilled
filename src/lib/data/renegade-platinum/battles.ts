@@ -5226,4 +5226,326 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'galactic-grunt-f-team-galactic-eterna-building-1f': {
+        trainerClass: 'galactic-grunt-f',
+        name: '1',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'ekans',
+                        ability: 'intimidate',
+                        gender: 'female',
+                        level: 23,
+                        moves: ['screech', 'mud-bomb', 'poison-fang', 'glare'],
+                        nature: Nature.Hardy,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'glameow',
+                        ability: 'limber',
+                        gender: 'female',
+                        level: 23,
+                        moves: ['slash', 'charm', 'feint-attack', 'covet'],
+                        nature: Nature.Calm,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'nidoran-f',
+                        ability: 'poison-point',
+                        gender: 'female',
+                        level: 23,
+                        moves: [
+                            'toxic-spikes',
+                            'helping-hand',
+                            'bite',
+                            'poison-fang',
+                        ],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-m-team-galactic-eterna-building-1f': {
+        trainerClass: 'galactic-grunt-m',
+        name: '2',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'koffing',
+                        ability: 'levitate',
+                        gender: 'male',
+                        level: 23,
+                        moves: [
+                            'haze',
+                            'self-destruct',
+                            'sludge',
+                            'pain-split',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'stunky',
+                        ability: 'aftermath',
+                        gender: 'male',
+                        level: 23,
+                        moves: ['night-slash', 'slash', 'smokescreen', 'smog'],
+                        nature: Nature.Bashful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'nidoran-m',
+                        ability: 'poison-point',
+                        gender: 'male',
+                        level: 23,
+                        moves: [
+                            'toxic-spikes',
+                            'helping-hand',
+                            'horn-attack',
+                            'poison-fang',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-m-team-galactic-eterna-building-2f': {
+        trainerClass: 'galactic-grunt-m',
+        name: '1',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'croagunk',
+                        ability: 'dry-skin',
+                        gender: 'male',
+                        level: 24,
+                        moves: [
+                            'swagger',
+                            'revenge',
+                            'feint-attack',
+                            'pursuit',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'golbat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 24,
+                        moves: [
+                            'leech-life',
+                            'crunch',
+                            'mean-look',
+                            'air-cutter',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-f-team-galactic-eterna-building-2f': {
+        trainerClass: 'galactic-grunt-f',
+        name: '2',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'cleffa',
+                        ability: 'cute-charm',
+                        gender: 'female',
+                        level: 23,
+                        moves: [
+                            'draining-kiss',
+                            'magical-leaf',
+                            'copycat',
+                            'sing',
+                        ],
+                        nature: Nature.Lax,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-f-team-galactic-eterna-building-3f': {
+        trainerClass: 'galactic-grunt-f',
+        name: '1',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'houndour',
+                        ability: 'intimidate',
+                        gender: 'female',
+                        level: 23,
+                        moves: [
+                            'beat-up',
+                            'odor-sleuth',
+                            'thunder-fang',
+                            'fire-fang',
+                        ],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'skorupi',
+                        ability: 'sniper',
+                        gender: 'female',
+                        level: 23,
+                        moves: [
+                            'pursuit',
+                            'poison-fang',
+                            'bug-bite',
+                            'acupressure',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'beautifly',
+                        ability: 'swarm',
+                        gender: 'female',
+                        level: 23,
+                        moves: [
+                            'air-cutter',
+                            'mega-drain',
+                            'silver-wind',
+                            'stun-spore',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'scientist-travon': {
+        trainerClass: 'scientist',
+        name: 'Travon',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'drowzee',
+                        ability: 'insomnia',
+                        gender: 'male',
+                        level: 24,
+                        moves: [
+                            'psycho-cut',
+                            'meditate',
+                            'psybeam',
+                            'poison-gas',
+                        ],
+                        nature: Nature.Timid,
+                        ivs: 18,
+                    },
+                    {
+                        slug: 'metang',
+                        ability: 'iron-fist',
+                        level: 24,
+                        moves: [
+                            'pursuit',
+                            'confusion',
+                            'metal-claw',
+                            'iron-defense',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 18,
+                    },
+                    {
+                        slug: 'kadabra',
+                        ability: 'magic-guard',
+                        gender: 'male',
+                        level: 24,
+                        moves: [
+                            'night-shade',
+                            'disable',
+                            'psybeam',
+                            'confusion',
+                        ],
+                        nature: Nature.Hardy,
+                        ivs: 18,
+                    },
+                ],
+            },
+        ],
+    },
+    'commander-jupiter': {
+        trainerClass: 'commander-jupiter',
+        name: 'Jupiter',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'golbat',
+                        ability: 'inner-focus',
+                        gender: 'female',
+                        level: 26,
+                        moves: [
+                            'wing-attack',
+                            'giga-drain',
+                            'leech-life',
+                            'confuse-ray',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'sableye',
+                        ability: 'magic-guard',
+                        gender: 'female',
+                        heldItem: 'sitrus-berry',
+                        level: 26,
+                        moves: [
+                            'fake-out',
+                            'shadow-claw',
+                            'knock-off',
+                            'shadow-sneak',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'tangela',
+                        ability: 'chlorophyll',
+                        gender: 'female',
+                        level: 26,
+                        moves: [
+                            'giga-drain',
+                            'shock-wave',
+                            'leech-seed',
+                            'sleep-powder',
+                        ],
+                        nature: Nature.Modest,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'skuntank',
+                        ability: 'aftermath',
+                        gender: 'female',
+                        heldItem: 'sitrus-berry',
+                        level: 27,
+                        moves: [
+                            'poison-jab',
+                            'night-slash',
+                            'focus-energy',
+                            'torment',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 29,
+                    },
+                ],
+            },
+        ],
+    },
 };
