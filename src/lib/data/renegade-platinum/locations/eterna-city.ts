@@ -7,6 +7,14 @@ const ETERNA_CITY: Location = {
     map: eternaCity,
     mapAnchor: MapAnchor.TopLeft,
     encountersKey: 'eterna-city',
+    battles: [
+        {
+            battleKey: 'galactic-grunt-m-eterna-city',
+            metadata: [],
+            x: 27.3,
+            y: 12.7,
+        },
+    ],
 };
 
 export default ETERNA_CITY;
