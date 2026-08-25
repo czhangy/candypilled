@@ -1,6 +1,7 @@
 import ETERNA_CITY from '@/lib/data/renegade-platinum/locations/eterna-city';
 import MINING_MUSEUM from '@/lib/data/renegade-platinum/locations/mining-museum';
 import ROUTE_206 from '@/lib/data/renegade-platinum/locations/route-206';
+import ROUTE_207 from '@/lib/data/renegade-platinum/locations/route-207';
 import TEAM_GALACTIC_ETERNA_BUILDING from '@/lib/data/renegade-platinum/locations/team-galactic-eterna-building';
 import WAYWARD_CAVE from '@/lib/data/renegade-platinum/locations/wayward-cave';
 import { Split } from '@/lib/static/types';
@@ -18,6 +19,7 @@ const FANTINA: Split = {
         ROUTE_206,
         MINING_MUSEUM,
         WAYWARD_CAVE,
+        ROUTE_207,
     ],
     saveCondition: { type: 'badge', bit: -1 },
 };
