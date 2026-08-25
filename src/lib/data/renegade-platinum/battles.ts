@@ -3832,4 +3832,301 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'cyclist-axel': {
+        trainerClass: 'cyclist-m',
+        name: 'Axel',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'pichu',
+                        ability: 'static',
+                        gender: 'male',
+                        level: 19,
+                        moves: [
+                            'disarming-voice',
+                            'nasty-plot',
+                            'thunder-wave',
+                            'sweet-kiss',
+                        ],
+                        nature: Nature.Rash,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'pichu',
+                        ability: 'static',
+                        gender: 'male',
+                        level: 19,
+                        moves: [
+                            'disarming-voice',
+                            'nasty-plot',
+                            'thunder-wave',
+                            'sweet-kiss',
+                        ],
+                        nature: Nature.Rash,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'pikachu',
+                        ability: 'static',
+                        gender: 'male',
+                        level: 19,
+                        moves: ['spark', 'feint', 'shock-wave', 'double-kick'],
+                        nature: Nature.Lax,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'cyclist-megan': {
+        trainerClass: 'cyclist-f',
+        name: 'Megan',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'pidgeotto',
+                        ability: 'keen-eye',
+                        gender: 'female',
+                        level: 21,
+                        moves: [
+                            'feather-dance',
+                            'air-cutter',
+                            'swift',
+                            'wing-attack',
+                        ],
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'cyclist-james': {
+        trainerClass: 'cyclist-m',
+        name: 'James',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'ponyta',
+                        ability: 'flame-body',
+                        gender: 'male',
+                        level: 20,
+                        moves: [
+                            'take-down',
+                            'flame-wheel',
+                            'double-kick',
+                            'stomp',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'flaaffy',
+                        ability: 'static',
+                        gender: 'male',
+                        level: 20,
+                        moves: [
+                            'charge-beam',
+                            'charge',
+                            'cotton-spore',
+                            'thunder-shock',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'cyclist-nicole': {
+        trainerClass: 'cyclist-f',
+        name: 'Nicole',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'taillow',
+                        ability: 'guts',
+                        gender: 'female',
+                        level: 19,
+                        moves: [
+                            'aerial-ace',
+                            'double-team',
+                            'wing-attack',
+                            'quick-attack',
+                        ],
+                        nature: Nature.Hardy,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'doduo',
+                        ability: 'tangled-feet',
+                        gender: 'female',
+                        level: 19,
+                        moves: [
+                            'double-hit',
+                            'pluck',
+                            'pursuit',
+                            'fury-attack',
+                        ],
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'wingull',
+                        ability: 'hydration',
+                        gender: 'female',
+                        level: 19,
+                        moves: [
+                            'air-cutter',
+                            'mist',
+                            'water-pulse',
+                            'wing-attack',
+                        ],
+                        nature: Nature.Rash,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'cyclist-john': {
+        trainerClass: 'cyclist-m',
+        name: 'John',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'farfetchd',
+                        ability: 'super-luck',
+                        gender: 'male',
+                        level: 21,
+                        moves: [
+                            'air-cutter',
+                            'agility',
+                            'swords-dance',
+                            'knock-off',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'cyclist-ryan': {
+        trainerClass: 'cyclist-m',
+        name: 'Ryan',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'luxio',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 21,
+                        moves: ['double-kick', 'charge', 'bite', 'spark'],
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'cyclist-rachel': {
+        trainerClass: 'cyclist-f',
+        name: 'Rachel',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'jolteon',
+                        ability: 'volt-absorb',
+                        gender: 'male',
+                        level: 21,
+                        moves: [
+                            'double-kick',
+                            'shock-wave',
+                            'thunder-wave',
+                            'quick-attack',
+                        ],
+                        nature: Nature.Lonely,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'cyclist-kayla': {
+        trainerClass: 'cyclist-f',
+        name: 'Kayla',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'voltorb',
+                        ability: 'soundproof',
+                        level: 19,
+                        moves: [
+                            'charge-beam',
+                            'spark',
+                            'rollout',
+                            'thunder-shock',
+                        ],
+                        nature: Nature.Lax,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'magnemite',
+                        ability: 'magnet-pull',
+                        level: 19,
+                        moves: [
+                            'charge-beam',
+                            'light-screen',
+                            'magnet-bomb',
+                            'spark',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'electrike',
+                        ability: 'static',
+                        gender: 'female',
+                        level: 19,
+                        moves: ['charge-beam', 'bite', 'spark', 'quick-attack'],
+                        nature: Nature.Naughty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'hiker-theodore': {
+        trainerClass: 'hiker',
+        name: 'Theodore',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'torkoal',
+                        ability: 'drought',
+                        gender: 'male',
+                        level: 26,
+                        moves: [
+                            'lava-plume',
+                            'body-slam',
+                            'curse',
+                            'flame-wheel',
+                        ],
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
 };

@@ -6,6 +6,7 @@ import JUBILIFE_CITY from '@/lib/data/renegade-platinum/locations/jubilife-city'
 import OLD_CHATEAU from '@/lib/data/renegade-platinum/locations/old-chateau';
 import ROUTE_204 from '@/lib/data/renegade-platinum/locations/route-204';
 import ROUTE_205 from '@/lib/data/renegade-platinum/locations/route-205';
+import ROUTE_206 from '@/lib/data/renegade-platinum/locations/route-206';
 import ROUTE_211 from '@/lib/data/renegade-platinum/locations/route-211';
 import VALLEY_WINDWORKS from '@/lib/data/renegade-platinum/locations/valley-windworks';
 import VALLEY_WINDWORKS_INTERIOR from '@/lib/data/renegade-platinum/locations/valley-windworks-interior';
@@ -40,6 +41,7 @@ const GARDENIA: Split = {
         ),
         ETERNA_CITY,
         LocationHelpers.withSubareaOrder(ROUTE_211, ['West', 'East']),
+        ROUTE_206,
     ],
     saveCondition: { type: 'badge', bit: -1 },
 };
