@@ -3586,4 +3586,250 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'ninja-boy-zach': {
+        trainerClass: 'ninja-boy',
+        name: 'Zach',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zubat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 19,
+                        moves: [
+                            'mean-look',
+                            'air-cutter',
+                            'confuse-ray',
+                            'poison-fang',
+                        ],
+                        nature: Nature.Docile,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'skorupi',
+                        ability: 'sniper',
+                        gender: 'male',
+                        level: 19,
+                        moves: [
+                            'poison-fang',
+                            'bug-bite',
+                            'acupressure',
+                            'pin-missile',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'zubat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 19,
+                        moves: [
+                            'mean-look',
+                            'air-cutter',
+                            'confuse-ray',
+                            'poison-fang',
+                        ],
+                        nature: Nature.Docile,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'hiker-louis': {
+        trainerClass: 'hiker',
+        name: 'Louis',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'geodude',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 19,
+                        moves: [
+                            'magnitude',
+                            'rollout',
+                            'bulldoze',
+                            'rock-throw',
+                        ],
+                        nature: Nature.Lonely,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'slugma',
+                        ability: 'magma-armor',
+                        gender: 'male',
+                        level: 19,
+                        moves: [
+                            'ancient-power',
+                            'will-o-wisp',
+                            'harden',
+                            'ember',
+                        ],
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'beldum',
+                        ability: 'rock-head',
+                        level: 19,
+                        moves: [
+                            'iron-defense',
+                            'iron-head',
+                            'zen-headbutt',
+                            'take-down',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'bird-keeper-alexandra': {
+        trainerClass: 'bird-keeper',
+        name: 'Alexandra',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'natu',
+                        ability: 'synchronize',
+                        gender: 'female',
+                        level: 20,
+                        moves: [
+                            'ominous-wind',
+                            'air-cutter',
+                            'confusion',
+                            'lucky-chant',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'swablu',
+                        ability: 'cloud-nine',
+                        gender: 'female',
+                        level: 20,
+                        moves: ['mist', 'pluck', 'safeguard', 'fury-attack'],
+                        nature: Nature.Gentle,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'staravia',
+                        ability: 'reckless',
+                        gender: 'female',
+                        level: 20,
+                        moves: [
+                            'aerial-ace',
+                            'foresight',
+                            'double-team',
+                            'wing-attack',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
+    'bird-keeper-katherine': {
+        trainerClass: 'bird-keeper',
+        name: 'Katherine',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'noctowl',
+                        ability: 'tinted-lens',
+                        gender: 'female',
+                        level: 22,
+                        moves: [
+                            'psycho-shift',
+                            'extrasensory',
+                            'uproar',
+                            'air-cutter',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
+    'ruin-maniac-harry': {
+        trainerClass: 'ruin-maniac',
+        name: 'Harry',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'aerodactyl',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 21,
+                        moves: [
+                            'ancient-power',
+                            'wing-attack',
+                            'agility',
+                            'roar',
+                        ],
+                        nature: Nature.Hardy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'ninja-boy-nick': {
+        trainerClass: 'ninja-boy',
+        name: 'Nick',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'ninjask',
+                        ability: 'speed-boost',
+                        gender: 'male',
+                        level: 20,
+                        moves: [
+                            'screech',
+                            'fury-cutter',
+                            'double-team',
+                            'mind-reader',
+                        ],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'black-belt-sean': {
+        trainerClass: 'black-belt',
+        name: 'Sean',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'heracross',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 22,
+                        moves: [
+                            'brick-break',
+                            'bug-bite',
+                            'aerial-ace',
+                            'feint',
+                        ],
+                        nature: Nature.Rash,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
 };

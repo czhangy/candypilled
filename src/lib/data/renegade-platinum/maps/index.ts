@@ -1,3 +1,4 @@
+export { default as eternaCity } from './eterna-city.png';
 export { default as eternaForestExterior } from './eterna-forest-exterior.png';
 export { default as eternaForestInterior } from './eterna-forest-interior.png';
 export { default as floaromaMeadow } from './floaroma-meadow.png';
@@ -26,6 +27,8 @@ export { default as route205North } from './route-205-north.png';
 export { default as route205South } from './route-205-south.png';
 export { default as route207Dawn } from './route-207-dawn.png';
 export { default as route207Lucas } from './route-207-lucas.png';
+export { default as route211East } from './route-211-east.png';
+export { default as route211West } from './route-211-west.png';
 export { default as route218 } from './route-218.png';
 export { default as route219 } from './route-219.png';
 export { default as sandgemTownLab } from './sandgem-town-lab.png';
