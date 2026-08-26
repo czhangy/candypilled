@@ -1,3 +1,4 @@
+import GREAT_MARSH from '@/lib/data/renegade-platinum/locations/great-marsh';
 import MANIAC_TUNNEL from '@/lib/data/renegade-platinum/locations/maniac-tunnel';
 import PASTORIA_CITY from '@/lib/data/renegade-platinum/locations/pastoria-city';
 import PASTORIA_GYM from '@/lib/data/renegade-platinum/locations/pastoria-gym';
@@ -26,6 +27,7 @@ const WAKE: Split = {
         VALOR_LAKEFRONT,
         SEVEN_STARS_RESTAURANT,
         ROUTE_213,
+        GREAT_MARSH,
         LocationHelpers.withHiddenSubareaBattles(
             LocationHelpers.withSubareaOrder(ROUTE_212, [
                 'South',
