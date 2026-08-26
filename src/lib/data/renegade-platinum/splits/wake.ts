@@ -1,4 +1,6 @@
 import ROUTE_212 from '@/lib/data/renegade-platinum/locations/route-212';
+import ROUTE_214 from '@/lib/data/renegade-platinum/locations/route-214';
+import VALOR_LAKEFRONT from '@/lib/data/renegade-platinum/locations/valor-lakefront';
 import VEILSTONE_CITY from '@/lib/data/renegade-platinum/locations/veilstone-city';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
@@ -22,6 +24,8 @@ const WAKE: Split = {
             ]),
             ['North (Galactic)', 'North (Post-Galactic)']
         ),
+        ROUTE_214,
+        VALOR_LAKEFRONT,
     ],
     saveCondition: { type: 'badge', bit: -1 },
 };

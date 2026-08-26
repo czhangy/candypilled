@@ -36296,7 +36296,10 @@
                     ]
                 }
             }
-        ]
+        ],
+        "sprites": {
+            "heartgold-soulsilver": "/pokemon/platinum/flareon.png"
+        }
     },
     "porygon": {
         "learnset": [

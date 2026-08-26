@@ -9836,4 +9836,378 @@ export const BATTLES: Record<string, BattleData> = {
             ],
         },
     },
+    'psychic-f-abigail': {
+        trainerClass: 'psychic-f',
+        name: 'Abigail',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'kirlia',
+                        ability: 'synchronize',
+                        gender: 'female',
+                        level: 34,
+                        moves: [
+                            'calm-mind',
+                            'psychic',
+                            'hypnosis',
+                            'magical-leaf',
+                        ],
+                        nature: Nature.Relaxed,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'chimecho',
+                        ability: 'levitate',
+                        gender: 'female',
+                        level: 34,
+                        moves: [
+                            'psychic',
+                            'safeguard',
+                            'heal-bell',
+                            'extrasensory',
+                        ],
+                        nature: Nature.Lax,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'girafarig',
+                        ability: 'inner-focus',
+                        gender: 'female',
+                        level: 34,
+                        moves: [
+                            'crunch',
+                            'magic-coat',
+                            'zen-headbutt',
+                            'uproar',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
+    'pi-carlos': {
+        trainerClass: 'pi',
+        name: 'Carlos',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'dugtrio',
+                        ability: 'sand-veil',
+                        gender: 'male',
+                        level: 36,
+                        moves: ['fissure', 'rock-slide'],
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'collector-brady': {
+        trainerClass: 'collector',
+        name: 'Brady',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'kangaskhan',
+                        ability: 'scrappy',
+                        gender: 'female',
+                        level: 33,
+                        moves: [
+                            'body-slam',
+                            'crunch',
+                            'dizzy-punch',
+                            'mega-punch',
+                        ],
+                        nature: Nature.Serious,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'tropius',
+                        ability: 'chlorophyll',
+                        gender: 'male',
+                        level: 33,
+                        moves: [
+                            'energy-ball',
+                            'air-slash',
+                            'body-slam',
+                            'nature-power',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'swalot',
+                        ability: 'liquid-ooze',
+                        gender: 'male',
+                        level: 33,
+                        moves: [
+                            'toxic',
+                            'sludge-bomb',
+                            'body-slam',
+                            'pain-split',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'beauty-devon': {
+        trainerClass: 'beauty',
+        name: 'Devon',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'wormadam-plant',
+                        ability: 'battle-armor',
+                        gender: 'female',
+                        level: 33,
+                        moves: [
+                            'confusion',
+                            'bug-buzz',
+                            'growth',
+                            'energy-ball',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'wormadam-sandy',
+                        ability: 'battle-armor',
+                        gender: 'female',
+                        level: 33,
+                        moves: [
+                            'confusion',
+                            'bug-buzz',
+                            'growth',
+                            'energy-ball',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'wormadam-trash',
+                        ability: 'battle-armor',
+                        gender: 'female',
+                        level: 33,
+                        moves: [
+                            'confusion',
+                            'bug-buzz',
+                            'growth',
+                            'energy-ball',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'psychic-m-mitchell': {
+        trainerClass: 'psychic-m',
+        name: 'Mitchell',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'kadabra',
+                        ability: 'magic-guard',
+                        gender: 'male',
+                        level: 34,
+                        moves: [
+                            'recover',
+                            'psycho-cut',
+                            'light-screen',
+                            'reflect',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'grumpig',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        level: 34,
+                        moves: ['teeter-dance', 'sleep-talk', 'snore', 'rest'],
+                        nature: Nature.Lax,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'hypno',
+                        ability: 'insomnia',
+                        gender: 'male',
+                        level: 34,
+                        moves: [
+                            'zen-headbutt',
+                            'psych-up',
+                            'wake-up-slap',
+                            'psycho-cut',
+                        ],
+                        nature: Nature.Relaxed,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
+    'ruin-maniac-bryan': {
+        trainerClass: 'ruin-maniac',
+        name: 'Bryan',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'anorith',
+                        ability: 'battle-armor',
+                        gender: 'male',
+                        level: 33,
+                        moves: [
+                            'slash',
+                            'x-scissor',
+                            'water-pulse',
+                            'metal-claw',
+                        ],
+                        nature: Nature.Impish,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'lileep',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 33,
+                        moves: [
+                            'earth-power',
+                            'amnesia',
+                            'gastro-acid',
+                            'giga-drain',
+                        ],
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'aerodactyl',
+                        ability: 'suction-cups',
+                        gender: 'male',
+                        level: 33,
+                        moves: [
+                            'take-down',
+                            'rock-slide',
+                            'crunch',
+                            'ancient-power',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'collector-jamal': {
+        trainerClass: 'collector',
+        name: 'Jamal',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'lapras',
+                        ability: 'water-absorb',
+                        gender: 'male',
+                        level: 35,
+                        moves: [
+                            'dragon-pulse',
+                            'safeguard',
+                            'bubble-beam',
+                            'ice-beam',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'ruin-maniac-ronald': {
+        trainerClass: 'ruin-maniac',
+        name: 'Ronald',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'relicanth',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 35,
+                        moves: [
+                            'zen-headbutt',
+                            'rest',
+                            'aqua-tail',
+                            'magnitude',
+                        ],
+                        nature: Nature.Naive,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'collector-douglas': {
+        trainerClass: 'collector',
+        name: 'Douglas',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'jolteon',
+                        ability: 'volt-absorb',
+                        gender: 'male',
+                        level: 33,
+                        moves: [
+                            'agility',
+                            'extrasensory',
+                            'discharge',
+                            'thunder-fang',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'vaporeon',
+                        ability: 'water-absorb',
+                        gender: 'male',
+                        level: 33,
+                        moves: [
+                            'acid-armor',
+                            'extrasensory',
+                            'scald',
+                            'aqua-ring',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'flareon',
+                        ability: 'flash-fire',
+                        gender: 'male',
+                        level: 33,
+                        moves: [
+                            'scary-face',
+                            'play-rough',
+                            'lava-plume',
+                            'flame-wheel',
+                        ],
+                        nature: Nature.Rash,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
 };

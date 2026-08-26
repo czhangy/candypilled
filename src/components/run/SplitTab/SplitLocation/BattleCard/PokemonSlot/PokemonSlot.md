@@ -1,15 +1,18 @@
 # PokemonSlot
 
 A single team member slot within a battle card, showing that Pokémon's
-sprite (matching the game's sprite variant) above its name (with type
-badges beneath it), then a metadata list of its held item (preceded by
-an icon), ability, nature, and moveset. Non-neutral natures are
+sprite (matching the game's sprite variant) above its name, then a row
+below the name with its level on the left and type badges on the
+right, then a metadata list of its held item (preceded by an icon),
+ability, nature, and moveset. Non-neutral natures are
 annotated with their stat
 effects, shown in a smaller font on the same line (e.g. "Adamant [+Atk
--SpA]"). Each Pokémon's name is prefixed with its level (e.g. "Lv.5
-Chimchar", omitted when `hofDisplay`) and suffixed with a blue ♂ or
-pink ♀ gender symbol, omitted when `pokemon.gender` is unset (e.g. for
-a genderless species).
+-SpA]"). The name itself never wraps (truncated with an ellipsis if it
+would overflow) and is suffixed with a blue ♂ or pink ♀ gender symbol,
+omitted when `pokemon.gender` is unset (e.g. for a genderless
+species). The level (e.g. "Lv.5", omitted when `hofDisplay`) and type
+badges render on their own row beneath the name, so a long species
+name can't push them around.
 Unless `isReadOnly`, the sprite and name are clickable,
 opening that Pokémon's Pokédex entry in a new tab, the held item is
 clickable, linking to that item's details, the ability is
