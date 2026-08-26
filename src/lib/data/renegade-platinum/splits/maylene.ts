@@ -1,3 +1,4 @@
+import CAFE_CABIN from '@/lib/data/renegade-platinum/locations/cafe-cabin';
 import HEARTHOME_CITY_EAST_GATE from '@/lib/data/renegade-platinum/locations/hearthome-city-east-gate';
 import POKEMON_MANSION from '@/lib/data/renegade-platinum/locations/pokemon-mansion';
 import ROUTE_209 from '@/lib/data/renegade-platinum/locations/route-209';
@@ -23,6 +24,7 @@ const MAYLENE: Split = {
         ROUTE_209,
         SOLACEON_RUINS,
         ROUTE_210,
+        CAFE_CABIN,
     ],
     saveCondition: { type: 'badge', bit: -1 },
 };

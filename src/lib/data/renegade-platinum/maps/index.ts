@@ -1,3 +1,4 @@
+export { default as cafeCabin } from './cafe-cabin.png';
 export { default as eternaCity } from './eterna-city.png';
 export { default as eternaForestExterior } from './eterna-forest-exterior.png';
 export { default as eternaForestInterior } from './eterna-forest-interior.png';
