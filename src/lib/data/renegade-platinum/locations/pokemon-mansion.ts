@@ -1,4 +1,5 @@
 import { pokemonMansion } from '@/lib/data/renegade-platinum/maps';
+import { GEN_4_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
 import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
@@ -40,7 +41,7 @@ const POKEMON_MANSION: Location = {
         {
             battleKey: 'commander-saturn-and-gentleman-backlot',
             metadata: [BattleMetadata.Tag, BattleMetadata.Miniboss],
-            customWidth: 38,
+            customWidth: GEN_4_TRUE_DOUBLE_WIDTH,
             x: 58.8,
             y: 23.4,
         },

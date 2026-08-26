@@ -6,6 +6,10 @@ import {
     route209Tower4f,
     route209Tower5f,
 } from '@/lib/data/renegade-platinum/maps';
+import {
+    GEN_4_TRUE_DOUBLE_HEIGHT,
+    GEN_4_TRUE_DOUBLE_WIDTH,
+} from '@/lib/static/constants';
 import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
@@ -27,7 +31,7 @@ const ROUTE_209: Location = {
                 {
                     battleKey: 'twins-ema-and-lil',
                     metadata: [BattleMetadata.TrueDouble],
-                    customWidth: 38,
+                    customWidth: GEN_4_TRUE_DOUBLE_WIDTH,
                     x: 51.6,
                     y: 75.4,
                 },
@@ -67,7 +71,7 @@ const ROUTE_209: Location = {
                         BattleMetadata.Optional,
                         BattleMetadata.TrueDouble,
                     ],
-                    customHeight: 44,
+                    customHeight: GEN_4_TRUE_DOUBLE_HEIGHT,
                     x: 77.4,
                     y: 19.7,
                 },
@@ -135,7 +139,7 @@ const ROUTE_209: Location = {
                 {
                     battleKey: 'young-couple-mike-and-nat',
                     metadata: [BattleMetadata.Optional],
-                    customWidth: 38,
+                    customWidth: GEN_4_TRUE_DOUBLE_WIDTH,
                     x: 23.1,
                     y: 49.4,
                 },

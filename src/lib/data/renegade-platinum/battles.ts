@@ -8762,4 +8762,301 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'jogger-wyatt': {
+        trainerClass: 'jogger',
+        name: 'Wyatt',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'electrode',
+                        ability: 'soundproof',
+                        level: 33,
+                        moves: [
+                            'light-screen',
+                            'discharge',
+                            'self-destruct',
+                            'swift',
+                        ],
+                        nature: Nature.Relaxed,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'rancher-marco': {
+        trainerClass: 'rancher',
+        name: 'Marco',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'rapidash',
+                        ability: 'flame-body',
+                        gender: 'male',
+                        level: 33,
+                        moves: ['low-kick', 'hypnosis', 'agility', 'fire-spin'],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'belle-and-pa-ava-and-matt': {
+        trainerClass: 'belle-and-pa',
+        name: 'Ava & Matt',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'tauros',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 33,
+                        moves: [
+                            'body-slam',
+                            'zen-headbutt',
+                            'take-down',
+                            'payback',
+                        ],
+                        nature: Nature.Naive,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'miltank',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        level: 33,
+                        moves: [
+                            'wake-up-slap',
+                            'zen-headbutt',
+                            'body-slam',
+                            'rollout',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'twins-teri-and-tia': {
+        trainerClass: 'twins',
+        name: 'Teri & Tia',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'furret',
+                        ability: 'scrappy',
+                        gender: 'female',
+                        level: 32,
+                        moves: [
+                            'amnesia',
+                            'zen-headbutt',
+                            'flame-wheel',
+                            'rest',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'linoone',
+                        ability: 'pickup',
+                        gender: 'female',
+                        level: 32,
+                        moves: ['rest', 'take-down', 'slash', 'mud-sport'],
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'pkmn-breeder-kahlil': {
+        trainerClass: 'pkmn-breeder-m',
+        name: 'Kahlil',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'riolu',
+                        ability: 'steadfast',
+                        gender: 'male',
+                        level: 31,
+                        moves: [
+                            'cross-chop',
+                            'nasty-plot',
+                            'crunch',
+                            'reversal',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'chingling',
+                        ability: 'levitate',
+                        gender: 'male',
+                        level: 31,
+                        moves: ['uproar', 'take-down', 'extrasensory', 'yawn'],
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'munchlax',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        level: 31,
+                        moves: ['rollout', 'swallow', 'stockpile', 'body-slam'],
+                        nature: Nature.Bold,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'pkmn-breeder-amber': {
+        trainerClass: 'pkmn-breeder-f',
+        name: 'Amber',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'mantyke',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 31,
+                        moves: [
+                            'air-slash',
+                            'agility',
+                            'take-down',
+                            'signal-beam',
+                        ],
+                        nature: Nature.Calm,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'happiny',
+                        ability: 'serene-grace',
+                        gender: 'female',
+                        level: 31,
+                        moves: ['sweet-kiss', 'refresh', 'copycat', 'uproar'],
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'wynaut',
+                        ability: 'shadow-tag',
+                        gender: 'female',
+                        level: 31,
+                        moves: [
+                            'destiny-bond',
+                            'safeguard',
+                            'mirror-coat',
+                            'counter',
+                        ],
+                        nature: Nature.Modest,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'waitress-kati': {
+        trainerClass: 'waitress',
+        name: 'Kati',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'clefable',
+                        ability: 'cute-charm',
+                        gender: 'female',
+                        level: 33,
+                        moves: ['metronome', 'minimize', 'double-slap', 'sing'],
+                        nature: Nature.Calm,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'collector-fernando': {
+        trainerClass: 'collector',
+        name: 'Fernando',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'dratini',
+                        ability: 'marvel-scale',
+                        gender: 'male',
+                        level: 31,
+                        moves: [
+                            'safeguard',
+                            'aqua-tail',
+                            'dragon-pulse',
+                            'agility',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'dragonair',
+                        ability: 'marvel-scale',
+                        gender: 'male',
+                        level: 33,
+                        moves: [
+                            'safeguard',
+                            'aqua-tail',
+                            'dragon-pulse',
+                            'agility',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'collector-edwin': {
+        trainerClass: 'collector',
+        name: 'Edwin',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'bagon',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 31,
+                        moves: [
+                            'scary-face',
+                            'zen-headbutt',
+                            'crunch',
+                            'dragon-claw',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'shelgon',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 33,
+                        moves: [
+                            'scary-face',
+                            'protect',
+                            'zen-headbutt',
+                            'crunch',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
 };

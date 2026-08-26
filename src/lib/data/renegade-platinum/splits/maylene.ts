@@ -1,6 +1,7 @@
 import HEARTHOME_CITY_EAST_GATE from '@/lib/data/renegade-platinum/locations/hearthome-city-east-gate';
 import POKEMON_MANSION from '@/lib/data/renegade-platinum/locations/pokemon-mansion';
 import ROUTE_209 from '@/lib/data/renegade-platinum/locations/route-209';
+import ROUTE_210 from '@/lib/data/renegade-platinum/locations/route-210';
 import ROUTE_212 from '@/lib/data/renegade-platinum/locations/route-212';
 import SOLACEON_RUINS from '@/lib/data/renegade-platinum/locations/solaceon-ruins';
 import TROPHY_GARDEN from '@/lib/data/renegade-platinum/locations/trophy-garden';
@@ -21,6 +22,7 @@ const MAYLENE: Split = {
         TROPHY_GARDEN,
         ROUTE_209,
         SOLACEON_RUINS,
+        ROUTE_210,
     ],
     saveCondition: { type: 'badge', bit: -1 },
 };

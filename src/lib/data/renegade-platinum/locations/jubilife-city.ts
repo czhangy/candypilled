@@ -2,6 +2,7 @@ import {
     jubilifeCityCity,
     jubilifeCityPokemonCenter,
 } from '@/lib/data/renegade-platinum/maps';
+import { GEN_4_TRUE_DOUBLE_HEIGHT } from '@/lib/static/constants';
 import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
@@ -16,7 +17,7 @@ const JUBILIFE_CITY: Location = {
                 {
                     battleKey: 'galactic-grunt-m-jubilife-city',
                     metadata: [BattleMetadata.Tag],
-                    customHeight: 44,
+                    customHeight: GEN_4_TRUE_DOUBLE_HEIGHT,
                     x: 72.7,
                     y: 5.6,
                 },

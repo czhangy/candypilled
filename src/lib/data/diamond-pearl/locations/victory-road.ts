@@ -3,6 +3,7 @@ import {
     victoryRoad2f,
     victoryRoadB1f,
 } from '@/lib/data/diamond-pearl/maps';
+import { GEN_4_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
 import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
@@ -106,7 +107,7 @@ const VICTORY_ROAD: Location = {
                         BattleMetadata.Optional,
                         BattleMetadata.TrueDouble,
                     ],
-                    customWidth: 38,
+                    customWidth: GEN_4_TRUE_DOUBLE_WIDTH,
                     battleKey: 'double-team-jo-and-pat',
                     x: 74.9,
                     y: 88.1,

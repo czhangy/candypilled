@@ -3,6 +3,7 @@ import {
     victoryRoad2f,
     victoryRoadB1f,
 } from '@/lib/data/platinum/maps';
+import { GEN_4_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
 import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
@@ -106,7 +107,7 @@ const VICTORY_ROAD: Location = {
                         BattleMetadata.Optional,
                         BattleMetadata.TrueDouble,
                     ],
-                    customWidth: 38,
+                    customWidth: GEN_4_TRUE_DOUBLE_WIDTH,
                     battleKey: 'double-team-jo-and-pat',
                     x: 76.8,
                     y: 89.5,

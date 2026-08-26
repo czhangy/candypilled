@@ -55,6 +55,8 @@ export { default as route209Tower2f } from './route-209-tower-2f.png';
 export { default as route209Tower3f } from './route-209-tower-3f.png';
 export { default as route209Tower4f } from './route-209-tower-4f.png';
 export { default as route209Tower5f } from './route-209-tower-5f.png';
+export { default as route210North } from './route-210-north.png';
+export { default as route210South } from './route-210-south.png';
 export { default as route211East } from './route-211-east.png';
 export { default as route211West } from './route-211-west.png';
 export { default as route212NorthGalactic } from './route-212-north-galactic.png';
