@@ -1,3 +1,4 @@
+import PASTORIA_CITY from '@/lib/data/renegade-platinum/locations/pastoria-city';
 import ROUTE_212 from '@/lib/data/renegade-platinum/locations/route-212';
 import ROUTE_213 from '@/lib/data/renegade-platinum/locations/route-213';
 import ROUTE_214 from '@/lib/data/renegade-platinum/locations/route-214';
@@ -18,6 +19,10 @@ const WAKE: Split = {
         LocationHelpers.withHiddenSubareaBattles(VEILSTONE_CITY, [
             'Pokémon Center',
         ]),
+        ROUTE_214,
+        VALOR_LAKEFRONT,
+        SEVEN_STARS_RESTAURANT,
+        ROUTE_213,
         LocationHelpers.withHiddenSubareaBattles(
             LocationHelpers.withSubareaOrder(ROUTE_212, [
                 'South',
@@ -26,10 +31,7 @@ const WAKE: Split = {
             ]),
             ['North (Galactic)', 'North (Post-Galactic)']
         ),
-        ROUTE_214,
-        VALOR_LAKEFRONT,
-        SEVEN_STARS_RESTAURANT,
-        ROUTE_213,
+        PASTORIA_CITY,
     ],
     saveCondition: { type: 'badge', bit: -1 },
 };

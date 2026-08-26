@@ -158,7 +158,7 @@ const ROUTE_212: Location = {
                     battleKey: 'collector-dean',
                     metadata: [BattleMetadata.Optional],
                     fieldCondition: FieldCondition.Rain,
-                    x: 34.7,
+                    x: 34.8,
                     y: 65.7,
                 },
                 {
