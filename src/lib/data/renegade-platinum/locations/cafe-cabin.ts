@@ -3,7 +3,7 @@ import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const CAFE_CABIN: Location = {
-    name: 'Cafe Cabin',
+    name: 'Café Cabin',
     map: cafeCabin,
     mapAnchor: MapAnchor.Center,
     battles: [

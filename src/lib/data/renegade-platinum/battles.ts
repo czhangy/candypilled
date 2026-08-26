@@ -9059,4 +9059,359 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'ruin-maniac-calvin': {
+        trainerClass: 'ruin-maniac',
+        name: 'Calvin',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'marowak',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 33,
+                        moves: [
+                            'thrash',
+                            'bone-rush',
+                            'swords-dance',
+                            'knock-off',
+                        ],
+                        nature: Nature.Lax,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'rampardos',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 33,
+                        moves: [
+                            'screech',
+                            'endeavor',
+                            'zen-headbutt',
+                            'ancient-power',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'jogger-craig': {
+        trainerClass: 'jogger',
+        name: 'Craig',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'luxray',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 34,
+                        moves: ['crunch', 'roar', 'fire-fang', 'ice-fang'],
+                        nature: Nature.Serious,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'black-belt-gregory': {
+        trainerClass: 'black-belt',
+        name: 'Gregory',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'primeape',
+                        ability: 'vital-spirit',
+                        gender: 'male',
+                        level: 34,
+                        moves: [
+                            'night-slash',
+                            'punishment',
+                            'rage',
+                            'assurance',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'hitmonchan',
+                        ability: 'iron-fist',
+                        gender: 'male',
+                        level: 34,
+                        moves: ['detect', 'feint', 'fire-punch', 'ice-punch'],
+                        nature: Nature.Relaxed,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
+    'black-belt-derek': {
+        trainerClass: 'black-belt',
+        name: 'Derek',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'combusken',
+                        ability: 'speed-boost',
+                        gender: 'male',
+                        level: 34,
+                        moves: [
+                            'flamethrower',
+                            'sky-uppercut',
+                            'focus-energy',
+                            'fire-punch',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'hitmonlee',
+                        ability: 'reckless',
+                        gender: 'male',
+                        level: 34,
+                        moves: [
+                            'endure',
+                            'feint',
+                            'high-jump-kick',
+                            'jump-kick',
+                        ],
+                        nature: Nature.Relaxed,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
+    'black-belt-nathaniel': {
+        trainerClass: 'black-belt',
+        name: 'Nathaniel',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'machoke',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 34,
+                        moves: [
+                            'counter',
+                            'payback',
+                            'wake-up-slap',
+                            'vital-throw',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'hitmontop',
+                        ability: 'technician',
+                        gender: 'male',
+                        level: 34,
+                        moves: [
+                            'detect',
+                            'feint',
+                            'triple-kick',
+                            'quick-attack',
+                        ],
+                        nature: Nature.Rash,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
+    'jogger-scott': {
+        trainerClass: 'jogger',
+        name: 'Scott',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'staraptor',
+                        ability: 'reckless',
+                        gender: 'male',
+                        level: 34,
+                        moves: [
+                            'close-combat',
+                            'whirlwind',
+                            'endeavor',
+                            'facade',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'ace-trainer-f-maya': {
+        trainerClass: 'ace-trainer-f',
+        name: 'Maya',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'lickitung',
+                        ability: 'own-tempo',
+                        gender: 'female',
+                        level: 35,
+                        moves: [
+                            'body-slam',
+                            'zen-headbutt',
+                            'knock-off',
+                            'aqua-tail',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'gardevoir',
+                        ability: 'synchronize',
+                        gender: 'female',
+                        level: 35,
+                        moves: [
+                            'psychic',
+                            'magical-leaf',
+                            'shadow-ball',
+                            'dazzling-gleam',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'roserade',
+                        ability: 'technician',
+                        gender: 'female',
+                        level: 35,
+                        moves: [
+                            'giga-drain',
+                            'sludge-bomb',
+                            'weather-ball',
+                            'stun-spore',
+                        ],
+                        nature: Nature.Calm,
+                        ivs: 31,
+                    },
+                ],
+            },
+        ],
+    },
+    'ace-trainer-m-dennis': {
+        trainerClass: 'ace-trainer-m',
+        name: 'Dennis',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'gligar',
+                        ability: 'immunity',
+                        gender: 'male',
+                        level: 35,
+                        moves: [
+                            'wing-attack',
+                            'protect',
+                            'x-scissor',
+                            'brick-break',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'gyarados',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 35,
+                        moves: ['aqua-tail', 'crunch', 'ice-fang', 'bounce'],
+                        nature: Nature.Naive,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'drifblim',
+                        ability: 'unburden',
+                        gender: 'male',
+                        level: 35,
+                        moves: [
+                            'shadow-ball',
+                            'air-slash',
+                            'destiny-bond',
+                            'amnesia',
+                        ],
+                        nature: Nature.Gentle,
+                        ivs: 31,
+                    },
+                ],
+            },
+        ],
+    },
+    'dragon-tamer-nils': {
+        trainerClass: 'dragon-tamer',
+        name: 'Nils',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'dragonair',
+                        ability: 'marvel-scale',
+                        gender: 'male',
+                        level: 35,
+                        moves: [
+                            'dragon-pulse',
+                            'aqua-tail',
+                            'thunderbolt',
+                            'agility',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'shelgon',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 35,
+                        moves: [
+                            'zen-headbutt',
+                            'dragon-claw',
+                            'crunch',
+                            'scary-face',
+                        ],
+                        nature: Nature.Rash,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'vibrava',
+                        ability: 'compound-eyes',
+                        gender: 'male',
+                        level: 35,
+                        moves: [
+                            'signal-beam',
+                            'earth-power',
+                            'dragon-breath',
+                            'rock-slide',
+                        ],
+                        nature: Nature.Careful,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'kingdra',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 36,
+                        moves: [
+                            'muddy-water',
+                            'dragon-pulse',
+                            'aurora-beam',
+                            'yawn',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
 };
