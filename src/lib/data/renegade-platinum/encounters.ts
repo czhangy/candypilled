@@ -4462,4 +4462,13 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             chance: 5,
         },
     ],
+    'sinnoh-solaceon-ruins': [
+        {
+            species: 'unown',
+            method: EncounterMethod.Walking,
+            minLevel: 20,
+            maxLevel: 30,
+            chance: 100,
+        },
+    ],
 };

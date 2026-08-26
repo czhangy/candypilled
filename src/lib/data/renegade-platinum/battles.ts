@@ -8716,4 +8716,50 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'ruin-maniac-karl': {
+        trainerClass: 'ruin-maniac',
+        name: 'Karl',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'bronzor',
+                        ability: 'levitate',
+                        level: 31,
+                        moves: [
+                            'safeguard',
+                            'zen-headbutt',
+                            'iron-defense',
+                            'gyro-ball',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'graveler',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 31,
+                        moves: [
+                            'stealth-rock',
+                            'rock-slide',
+                            'gyro-ball',
+                            'self-destruct',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'sandslash',
+                        ability: 'sand-veil',
+                        gender: 'male',
+                        level: 31,
+                        moves: ['dig', 'night-slash', 'slash', 'crush-claw'],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
 };
