@@ -88,5 +88,6 @@ export { default as valleyWindworks } from './valley-windworks.png';
 export { default as valleyWindworksInterior } from './valley-windworks-interior.png';
 export { default as veilstoneCity } from './veilstone-city.png';
 export { default as veilstoneCityPokemonCenter } from './veilstone-city-pokemon-center.png';
+export { default as veilstoneGym } from './veilstone-gym.png';
 export { default as waywardCave1f } from './wayward-cave-1f.png';
 export { default as waywardCaveB1f } from './wayward-cave-b1f.png';

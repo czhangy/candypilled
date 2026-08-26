@@ -1,4 +1,5 @@
 import ROUTE_212 from '@/lib/data/renegade-platinum/locations/route-212';
+import VEILSTONE_CITY from '@/lib/data/renegade-platinum/locations/veilstone-city';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
@@ -10,6 +11,9 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const WAKE: Split = {
     name: 'Wake',
     locations: [
+        LocationHelpers.withHiddenSubareaBattles(VEILSTONE_CITY, [
+            'Pokémon Center',
+        ]),
         LocationHelpers.withHiddenSubareaBattles(
             LocationHelpers.withSubareaOrder(ROUTE_212, [
                 'South',

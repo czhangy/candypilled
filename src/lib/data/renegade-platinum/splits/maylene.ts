@@ -8,6 +8,7 @@ import ROUTE_215 from '@/lib/data/renegade-platinum/locations/route-215';
 import SOLACEON_RUINS from '@/lib/data/renegade-platinum/locations/solaceon-ruins';
 import TROPHY_GARDEN from '@/lib/data/renegade-platinum/locations/trophy-garden';
 import VEILSTONE_CITY from '@/lib/data/renegade-platinum/locations/veilstone-city';
+import VEILSTONE_GYM from '@/lib/data/renegade-platinum/locations/veilstone-gym';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
@@ -28,7 +29,8 @@ const MAYLENE: Split = {
         ROUTE_210,
         CAFE_CABIN,
         ROUTE_215,
-        VEILSTONE_CITY,
+        LocationHelpers.withHiddenSubareaBattles(VEILSTONE_CITY, ['City']),
+        VEILSTONE_GYM,
     ],
     saveCondition: { type: 'badge', bit: -1 },
 };

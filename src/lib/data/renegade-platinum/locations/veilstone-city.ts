@@ -12,6 +12,15 @@ const VEILSTONE_CITY: Location = {
             name: 'City',
             map: veilstoneCity,
             mapAnchor: MapAnchor.TopLeft,
+            battles: [
+                {
+                    battleKey: 'galactic-grunt-m-veilstone-city',
+                    metadata: [BattleMetadata.Tag],
+                    customHeight: 60,
+                    x: 39.9,
+                    y: 31.4,
+                },
+            ],
         },
         {
             name: 'Pokémon Center',
