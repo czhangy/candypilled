@@ -37,6 +37,7 @@ export { default as oreburghGym } from './oreburgh-gym.png';
 export { default as oreburghMine1f } from './oreburgh-mine-1f.png';
 export { default as oreburghMineB1f } from './oreburgh-mine-b1f.png';
 export { default as pastoriaCity } from './pastoria-city.png';
+export { default as pastoriaGym } from './pastoria-gym.png';
 export { default as pokemonMansion } from './pokemon-mansion.png';
 export { default as ravagedPath } from './ravaged-path.png';
 export { default as route201 } from './route-201.png';
