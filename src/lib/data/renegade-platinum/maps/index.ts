@@ -15,6 +15,7 @@ export { default as jubilifeCityCity } from './jubilife-city-city.png';
 export { default as jubilifeCityPokemonCenter } from './jubilife-city-pokemon-center.png';
 export { default as lakeVerityPostGalactic } from './lake-verity-post-galactic.png';
 export { default as lakeVerityPreGalactic } from './lake-verity-pre-galactic.png';
+export { default as maniacTunnel } from './maniac-tunnel.png';
 export { default as miningMuseum } from './mining-museum.png';
 export { default as mtCoronet1fRoute207 } from './mt-coronet-1f-route-207.png';
 export { default as mtCoronet1fRoute211 } from './mt-coronet-1f-route-211.png';

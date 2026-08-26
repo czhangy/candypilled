@@ -1,3 +1,4 @@
+import MANIAC_TUNNEL from '@/lib/data/renegade-platinum/locations/maniac-tunnel';
 import PASTORIA_CITY from '@/lib/data/renegade-platinum/locations/pastoria-city';
 import PASTORIA_GYM from '@/lib/data/renegade-platinum/locations/pastoria-gym';
 import ROUTE_212 from '@/lib/data/renegade-platinum/locations/route-212';
@@ -21,6 +22,7 @@ const WAKE: Split = {
             'Pokémon Center',
         ]),
         ROUTE_214,
+        MANIAC_TUNNEL,
         VALOR_LAKEFRONT,
         SEVEN_STARS_RESTAURANT,
         ROUTE_213,
