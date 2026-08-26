@@ -93,10 +93,23 @@ alongside other, otherwise-missable methods.
 - `getDisplayChance` — an encounter's displayed chance, passed down to
   `MethodGroup`/`EncounterRow`. When `showDupes` is enabled, this is
   just the encounter's own `chance`. When disabled (dupes are being
-  hidden), it's rescaled against the other encounters remaining in the
-  same method group (via `getEncountersForMethod`) so the group's
-  chances still sum to 100%, truncated to a whole number (e.g. a 50/50
-  split becomes 100% once one side is hidden as a dupe)
+  hidden), a non-Poké-Radar encounter is rescaled against the other
+  encounters remaining in the same method group (via
+  `getEncountersForMethod`) so the group's chances still sum to 100%,
+  truncated to a whole number (e.g. a 50/50 split becomes 100% once one
+  side is hidden as a dupe); a Poké Radar encounter instead defers to
+  `getPokeRadarDisplayChance`
+- `getPokeRadarDisplayChance` — a Poké Radar encounter's displayed
+  chance. Poké Radar isn't a self-contained pool: radar-exclusive
+  species take a fixed absolute cut of the location's 100% encounter
+  pool (their sheet `chance`, summed across every defined radar entry
+  at the location regardless of catch state — a structural property of
+  the encounter table, not a display choice), and Walking species split
+  whatever's left in their existing relative proportions
+  (`walkingScale`). Display renormalizes only over currently-visible
+  Walking and Radar entries in that combined pool (both via
+  `getEncountersForMethod`), so a hidden Walking or Radar entry's share
+  redistributes proportionally to whatever's left, radar included
 - `isEvolutionLineCaught` — whether a species' evolution family
   (resolved via `EvolutionHelpers`) includes any name in `dupes`
 - `isCaughtHere` — whether a species is in the same evolution family
