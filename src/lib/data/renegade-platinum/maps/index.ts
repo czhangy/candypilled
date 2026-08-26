@@ -63,6 +63,7 @@ export { default as route211West } from './route-211-west.png';
 export { default as route212NorthGalactic } from './route-212-north-galactic.png';
 export { default as route212NorthPostGalactic } from './route-212-north-post-galactic.png';
 export { default as route212South } from './route-212-south.png';
+export { default as route213 } from './route-213.png';
 export { default as route214 } from './route-214.png';
 export { default as route215 } from './route-215.png';
 export { default as route216 } from './route-216.png';

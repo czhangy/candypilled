@@ -68,13 +68,14 @@ that map is self-describing and needs no confirmation.
       surrounded by map content on multiple sides can't be cropped
       without cutting into that content, so it's left as normalized
       black instead of trimmed — that's expected, not a bug.
-4. `Read` the resulting `src/lib/data/<game>/maps/<slug>.png` and check
-   every internal seam: tile edges should align exactly, no offset row/
-   column, no duplicated strip, no gap. A misaligned seam is usually an
-   obvious half-tile jump in the grid pattern. If a map somehow still has
-   grey dead space or an untrimmed black border (e.g. it was produced
-   before this normalization was added, or trimmed/edited afterward
-   outside the script), fix it by hand rather than leaving it.
+4. `Read` the resulting `src/lib/data/<game>/maps/<slug>.png`. **Never
+   check internal seams for alignment** — don't zoom in on chunk
+   boundaries, diff pixel columns, or otherwise inspect where chunks
+   meet; the user does not want this checked, at any zoom level, ever.
+   If a map somehow still has grey dead space or an untrimmed black
+   border (e.g. it was produced before this normalization was added, or
+   trimmed/edited afterward outside the script), fix it by hand rather
+   than leaving it — but this is a dead-space check, not a seam check.
 5. If it's a new map (not a redo), add its barrel export line to that
    folder's `index.ts` (`export { default as <camelCaseName> } from
 './<slug>.png';`) if one doesn't already exist — check whether a

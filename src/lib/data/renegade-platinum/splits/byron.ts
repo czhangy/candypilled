@@ -1,5 +1,6 @@
 import OREBURGH_GATE from '@/lib/data/renegade-platinum/locations/oreburgh-gate';
 import ROUTE_208 from '@/lib/data/renegade-platinum/locations/route-208';
+import ROUTE_213 from '@/lib/data/renegade-platinum/locations/route-213';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
@@ -16,6 +17,7 @@ const BYRON: Split = {
             ['1F']
         ),
         ROUTE_208,
+        ROUTE_213,
     ],
     saveCondition: { type: 'badge', bit: -1 },
 };

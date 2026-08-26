@@ -10626,4 +10626,294 @@ export const BATTLES: Record<string, BattleData> = {
             ],
         },
     },
+    'tuber-m-jared': {
+        trainerClass: 'tuber-m',
+        name: 'Jared',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'gastrodon',
+                        ability: 'sticky-hold',
+                        gender: 'male',
+                        level: 37,
+                        moves: [
+                            'body-slam',
+                            'muddy-water',
+                            'sludge-bomb',
+                            'earth-power',
+                        ],
+                        nature: Nature.Relaxed,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'tuber-f-chelsea': {
+        trainerClass: 'tuber-f',
+        name: 'Chelsea',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'azumarill',
+                        ability: 'huge-power',
+                        gender: 'female',
+                        level: 37,
+                        moves: [
+                            'rain-dance',
+                            'aqua-ring',
+                            'play-rough',
+                            'aqua-tail',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'fisherman-kenneth': {
+        trainerClass: 'fisherman',
+        name: 'Kenneth',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'carvanha',
+                        ability: 'speed-boost',
+                        gender: 'male',
+                        level: 36,
+                        moves: [
+                            'poison-fang',
+                            'crunch',
+                            'scary-face',
+                            'waterfall',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'beauty-cyndy': {
+        trainerClass: 'beauty',
+        name: 'Cyndy',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'delcatty',
+                        ability: 'cute-charm',
+                        gender: 'female',
+                        level: 37,
+                        moves: ['double-slap', 'attract', 'sing', 'fake-out'],
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-f-haley': {
+        trainerClass: 'swimmer-f',
+        name: 'Haley',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'golduck',
+                        ability: 'damp',
+                        gender: 'female',
+                        level: 43,
+                        moves: [
+                            'power-gem',
+                            'psychic',
+                            'psych-up',
+                            'future-sight',
+                        ],
+                        nature: Nature.Careful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'mantine',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 43,
+                        moves: [
+                            'aqua-ring',
+                            'mirror-coat',
+                            'bounce',
+                            'tailwind',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'corsola',
+                        ability: 'hustle',
+                        gender: 'female',
+                        level: 43,
+                        moves: [
+                            'earth-power',
+                            'endure',
+                            'rock-blast',
+                            'aqua-ring',
+                        ],
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-m-sheltin': {
+        trainerClass: 'swimmer-m',
+        name: 'Sheltin',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'gyarados',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 43,
+                        moves: [
+                            'scary-face',
+                            'crunch',
+                            'dragon-dance',
+                            'outrage',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'gyarados',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 43,
+                        moves: [
+                            'scary-face',
+                            'crunch',
+                            'dragon-dance',
+                            'outrage',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'gyarados',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 43,
+                        moves: [
+                            'scary-face',
+                            'crunch',
+                            'dragon-dance',
+                            'outrage',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'sailor-paul': {
+        trainerClass: 'sailor',
+        name: 'Paul',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'politoed',
+                        ability: 'drizzle',
+                        gender: 'male',
+                        level: 45,
+                        moves: [
+                            'double-slap',
+                            'perish-song',
+                            'swagger',
+                            'bounce',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-f-mary': {
+        trainerClass: 'swimmer-f',
+        name: 'Mary',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'pelipper',
+                        ability: 'drizzle',
+                        gender: 'female',
+                        level: 44,
+                        moves: ['roost', 'air-slash', 'tailwind', 'uproar'],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'lumineon',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 44,
+                        moves: [
+                            'aqua-tail',
+                            'silver-wind',
+                            'aqua-ring',
+                            'whirlpool',
+                        ],
+                        nature: Nature.Hardy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-m-evan': {
+        trainerClass: 'swimmer-m',
+        name: 'Evan',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'quagsire',
+                        ability: 'water-absorb',
+                        gender: 'male',
+                        level: 44,
+                        moves: [
+                            'body-slam',
+                            'earthquake',
+                            'counter',
+                            'rain-dance',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'sharpedo',
+                        ability: 'speed-boost',
+                        gender: 'male',
+                        level: 44,
+                        moves: [
+                            'night-slash',
+                            'crunch',
+                            'poison-fang',
+                            'skull-bash',
+                        ],
+                        nature: Nature.Modest,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
 };

@@ -1,4 +1,5 @@
 import ROUTE_212 from '@/lib/data/renegade-platinum/locations/route-212';
+import ROUTE_213 from '@/lib/data/renegade-platinum/locations/route-213';
 import ROUTE_214 from '@/lib/data/renegade-platinum/locations/route-214';
 import SEVEN_STARS_RESTAURANT from '@/lib/data/renegade-platinum/locations/seven-stars-restaurant';
 import VALOR_LAKEFRONT from '@/lib/data/renegade-platinum/locations/valor-lakefront';
@@ -28,6 +29,7 @@ const WAKE: Split = {
         ROUTE_214,
         VALOR_LAKEFRONT,
         SEVEN_STARS_RESTAURANT,
+        ROUTE_213,
     ],
     saveCondition: { type: 'badge', bit: -1 },
 };
