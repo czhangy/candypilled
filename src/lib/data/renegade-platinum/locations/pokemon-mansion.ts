@@ -6,7 +6,6 @@ const POKEMON_MANSION: Location = {
     name: 'Pokémon Mansion',
     map: pokemonMansion,
     mapAnchor: MapAnchor.Center,
-    encountersKey: 'pokemon-mansion',
     battles: [
         {
             battleKey: 'galactic-grunt-m-pokemon-mansion-1',
