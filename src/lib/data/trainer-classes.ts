@@ -54,6 +54,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Bug Catcher',
         spriteSlug: 'bug-catcher',
     },
+    cameraman: {
+        displayName: 'Cameraman',
+        spriteSlug: 'cameraman',
+    },
     camper: {
         displayName: 'Camper',
         spriteSlug: 'camper',

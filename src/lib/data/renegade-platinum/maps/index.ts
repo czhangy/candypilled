@@ -70,6 +70,7 @@ export { default as route218 } from './route-218.png';
 export { default as route219 } from './route-219.png';
 export { default as sandgemTownLab } from './sandgem-town-lab.png';
 export { default as sandgemTownTown } from './sandgem-town-town.png';
+export { default as sevenStarsRestaurant } from './seven-stars-restaurant.png';
 export { default as solaceonRuinsRoom1 } from './solaceon-ruins-room-1.png';
 export { default as solaceonRuinsRoom2 } from './solaceon-ruins-room-2.png';
 export { default as solaceonRuinsRoom3 } from './solaceon-ruins-room-3.png';

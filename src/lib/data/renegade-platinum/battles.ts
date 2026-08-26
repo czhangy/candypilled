@@ -10210,4 +10210,420 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'pi-kendrick-and-beauty-gabriela': {
+        trainerClass: 'pi',
+        name: 'Kendrick',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'rhydon',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 37,
+                        moves: [
+                            'hammer-arm',
+                            'poison-jab',
+                            'rock-slide',
+                            'crunch',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+        secondTrainer: {
+            trainerClass: 'beauty',
+            name: 'Gabriela',
+            teams: [
+                {
+                    team: [
+                        {
+                            slug: 'lumineon',
+                            ability: 'swift-swim',
+                            gender: 'female',
+                            level: 37,
+                            moves: [
+                                'silver-wind',
+                                'aqua-tail',
+                                'safeguard',
+                                'captivate',
+                            ],
+                            nature: Nature.Calm,
+                            ivs: 12,
+                        },
+                    ],
+                },
+            ],
+        },
+    },
+    'veteran-emanuel-and-lass-blythe': {
+        trainerClass: 'veteran',
+        name: 'Emanuel',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'blaziken',
+                        ability: 'speed-boost',
+                        gender: 'male',
+                        level: 37,
+                        moves: [
+                            'blaze-kick',
+                            'flamethrower',
+                            'sky-uppercut',
+                            'focus-energy',
+                        ],
+                        nature: Nature.Timid,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+        secondTrainer: {
+            trainerClass: 'lass',
+            name: 'Blythe',
+            teams: [
+                {
+                    team: [
+                        {
+                            slug: 'lopunny',
+                            ability: 'scrappy',
+                            gender: 'female',
+                            level: 37,
+                            moves: ['flail', 'charm', 'switcheroo', 'agility'],
+                            nature: Nature.Adamant,
+                            ivs: 12,
+                        },
+                    ],
+                },
+            ],
+        },
+    },
+    'collector-eugene-and-aroma-lady-alison': {
+        trainerClass: 'collector',
+        name: 'Eugene',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'milotic',
+                        ability: 'marvel-scale',
+                        gender: 'male',
+                        level: 37,
+                        moves: ['moonblast', 'attract', 'hypnosis', 'recover'],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+        secondTrainer: {
+            trainerClass: 'aroma-lady',
+            name: 'Alison',
+            teams: [
+                {
+                    team: [
+                        {
+                            slug: 'meganium',
+                            ability: 'serene-grace',
+                            gender: 'male',
+                            level: 37,
+                            moves: [
+                                'body-slam',
+                                'petal-dance',
+                                'sweet-scent',
+                                'energy-ball',
+                            ],
+                            nature: Nature.Quiet,
+                            ivs: 12,
+                        },
+                    ],
+                },
+            ],
+        },
+    },
+    'artist-ismael-and-beauty-harley': {
+        trainerClass: 'artist',
+        name: 'Ismael',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'smeargle',
+                        ability: 'technician',
+                        gender: 'male',
+                        level: 37,
+                        moves: [
+                            'dark-void',
+                            'protect',
+                            'leech-seed',
+                            'substitute',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+        secondTrainer: {
+            trainerClass: 'beauty',
+            name: 'Harley',
+            teams: [
+                {
+                    team: [
+                        {
+                            slug: 'golduck',
+                            ability: 'damp',
+                            gender: 'female',
+                            level: 37,
+                            moves: [
+                                'psychic',
+                                'power-gem',
+                                'aqua-tail',
+                                'hypnosis',
+                            ],
+                            nature: Nature.Brave,
+                            ivs: 12,
+                        },
+                    ],
+                },
+            ],
+        },
+    },
+    'rich-boy-roman-and-lady-kylie': {
+        trainerClass: 'rich-boy',
+        name: 'Roman',
+        items: [{ count: 1, name: 'Full Restore' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'arcanine',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 37,
+                        moves: [
+                            'extreme-speed',
+                            'fire-fang',
+                            'odor-sleuth',
+                            'roar',
+                        ],
+                        nature: Nature.Lax,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+        secondTrainer: {
+            trainerClass: 'lady',
+            name: 'Kylie',
+            teams: [
+                {
+                    team: [
+                        {
+                            slug: 'vileplume',
+                            ability: 'chlorophyll',
+                            gender: 'female',
+                            level: 37,
+                            moves: [
+                                'teeter-dance',
+                                'earth-power',
+                                'aromatherapy',
+                                'stun-spore',
+                            ],
+                            nature: Nature.Mild,
+                            ivs: 12,
+                        },
+                    ],
+                },
+            ],
+        },
+    },
+    'gentleman-leonardo-and-socialite-rebecca': {
+        trainerClass: 'gentleman',
+        name: 'Leonardo',
+        items: [{ count: 1, name: 'Full Restore' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'chatot',
+                        ability: 'soundproof',
+                        gender: 'male',
+                        level: 37,
+                        moves: ['agility', 'roost', 'chatter', 'mimic'],
+                        nature: Nature.Lonely,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+        secondTrainer: {
+            trainerClass: 'socialite',
+            name: 'Rebecca',
+            teams: [
+                {
+                    team: [
+                        {
+                            slug: 'persian',
+                            ability: 'technician',
+                            gender: 'female',
+                            level: 37,
+                            moves: [
+                                'hypnosis',
+                                'assurance',
+                                'power-gem',
+                                'taunt',
+                            ],
+                            nature: Nature.Calm,
+                            ivs: 12,
+                        },
+                    ],
+                },
+            ],
+        },
+    },
+    'school-kid-esteban-and-pokefan-meredith': {
+        trainerClass: 'school-kid-m',
+        name: 'Esteban',
+        items: [{ count: 1, name: 'X Sp. Def' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'quagsire',
+                        ability: 'water-absorb',
+                        gender: 'male',
+                        level: 37,
+                        moves: ['earthquake', 'body-slam', 'yawn', 'aqua-tail'],
+                        nature: Nature.Naughty,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+        secondTrainer: {
+            trainerClass: 'pokefan-f',
+            name: 'Meredith',
+            teams: [
+                {
+                    team: [
+                        {
+                            slug: 'pachirisu',
+                            ability: 'volt-absorb',
+                            gender: 'female',
+                            heldItem: 'sitrus-berry',
+                            level: 37,
+                            moves: [
+                                'fake-tears',
+                                'thunderbolt',
+                                'thunder-wave',
+                                'sweet-kiss',
+                            ],
+                            nature: Nature.Adamant,
+                            ivs: 12,
+                        },
+                    ],
+                },
+            ],
+        },
+    },
+    'scientist-emilio-and-pkmn-breeder-kaylee': {
+        trainerClass: 'scientist',
+        name: 'Emilio',
+        items: [{ count: 1, name: 'X Special' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'alakazam',
+                        ability: 'magic-guard',
+                        gender: 'male',
+                        level: 37,
+                        moves: [
+                            'psychic',
+                            'recover',
+                            'psycho-cut',
+                            'light-screen',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+        secondTrainer: {
+            trainerClass: 'pkmn-breeder-f',
+            name: 'Kaylee',
+            teams: [
+                {
+                    team: [
+                        {
+                            slug: 'azumarill',
+                            ability: 'huge-power',
+                            gender: 'female',
+                            level: 37,
+                            moves: [
+                                'rain-dance',
+                                'aqua-ring',
+                                'play-rough',
+                                'aqua-tail',
+                            ],
+                            nature: Nature.Hasty,
+                            ivs: 12,
+                        },
+                    ],
+                },
+            ],
+        },
+    },
+    'cameraman-darryl-and-reporter-valerie': {
+        trainerClass: 'cameraman',
+        name: 'Darryl',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'magneton',
+                        ability: 'magnet-pull',
+                        level: 37,
+                        moves: [
+                            'screech',
+                            'flash-cannon',
+                            'tri-attack',
+                            'discharge',
+                        ],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+        secondTrainer: {
+            trainerClass: 'reporter',
+            name: 'Valerie',
+            teams: [
+                {
+                    team: [
+                        {
+                            slug: 'loudred',
+                            ability: 'soundproof',
+                            gender: 'female',
+                            level: 37,
+                            moves: [
+                                'roar',
+                                'hyper-voice',
+                                'fake-tears',
+                                'extrasensory',
+                            ],
+                            nature: Nature.Gentle,
+                            ivs: 12,
+                        },
+                    ],
+                },
+            ],
+        },
+    },
 };
