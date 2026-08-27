@@ -63,11 +63,6 @@ const CreditsPage: React.FC = () => {
                     description: 'For trainer sprites',
                     url: 'https://play.pokemonshowdown.com/sprites/trainers/',
                 },
-                {
-                    name: 'spaceemotion',
-                    description: 'For Platinum overworld trainer sprites',
-                    url: 'https://www.spriters-resource.com/profile/spaceemotion/',
-                },
             ],
         },
         {

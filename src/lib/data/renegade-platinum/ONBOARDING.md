@@ -118,16 +118,27 @@ to "check the convention":
 | `x1 <Item>` lines in the trainer-name cell                                  | `BattleData.items: [{ count: 1, name: 'Potion' }]` — real field, sheet's own display text (not a slug)                                                                       |
 | `Gifts TM<n> - <Move>` in the trainer-name cell                             | post-battle TM reward — not modeled anywhere, ignore                                                                                                                         |
 | "Double Battle w/ <Trainer>" note on two trainer blocks                     | one `battleKey`, `trainerClass`+`secondTrainer` (Tag structure), `BattleMetadata.Double`                                                                                     |
-| Gender                                                                      | not a sheet column — derive from species `genderRate` (below); ask only for the 50/50 case                                                                                   |
+| Gender                                                                      | not a sheet column — derive from species `genderRate` (below); ask for the trainer's own gender whenever the trainer class doesn't fix it                                    |
 
 **Gender**: if `genderRate === 4` (50/50), the mon matches the trainer's
-own gender — ask the user for the trainer's gender if not otherwise
-known. Otherwise the mon is always the species' majority gender
+own gender. Otherwise the mon is always the species' majority gender
 regardless of trainer, including every starter species. Genderless
 species (`genderRate === -1`) get no `gender` field at all — that's the
 one case omitting it is correct. Never omit `gender` for any other
 species just because the sheet has no gender column; the app reads a
 missing `gender` as "explicitly genderless."
+
+**Never guess a trainer's own gender from their first name.** This
+applies even when a name is given and even when it looks unambiguous
+(e.g. "Carlos", "Brady") — names are not a data source. A trainer's own
+gender is only known without asking when the `trainer-classes.ts` slug
+itself fixes it: a `-f`/`-m` suffixed class (e.g. `psychic-f`,
+`pokefan-m`), or a class that's canonically single-gender by convention
+(e.g. `beauty`, `lady`, `gentleman`, `rich-boy`). For every other class
+(`collector`, `pi`, `veteran`, `artist`, `scientist`, `fisherman`,
+`sailor`, `ninja-boy`, etc.) — including when the trainer needs a
+`gender` because their mon's `genderRate === 4` — always ask the user
+for the trainer's gender, every time, no exceptions.
 
 **`BattleMetadata` is never on the sheet and never inferred** from
 trainer class, species, or precedent from another battle. Every value in

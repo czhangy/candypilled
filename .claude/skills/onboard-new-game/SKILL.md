@@ -64,7 +64,7 @@ Reference implementation: `src/lib/data/platinum/`.
 3. **Fetch + author encounters** — run `npm run pokeapi:encounters <slug>`,
    where `<slug>` is the `GameVersion.id` registered in step 2. Every
    codegen/fetch script (`pokeapi:encounters`, `pokeapi:pokemon`,
-   `gen:location`, `gen:battle`, `gen:trainer-class`, `compose`) takes the
+   `gen:location`, `gen:battle`, `gen:trainer-class`) takes the
    target game as its first CLI argument rather than reading a shared
    config constant, so pass it explicitly on each invocation. This writes a
    raw `src/lib/data/<slug>/encounters/encounters.json`, in a directory

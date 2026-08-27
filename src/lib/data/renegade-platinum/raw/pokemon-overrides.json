@@ -116980,7 +116980,10 @@
                     }
                 ]
             }
-        ]
+        ],
+        "sprites": {
+            "heartgold-soulsilver": "/pokemon/platinum/gastrodon.png"
+        }
     },
     "ambipom": {
         "learnset": [

@@ -64,7 +64,7 @@ const ROUTE_210: Location = {
         {
             name: 'North',
             map: route210North,
-            mapAnchor: MapAnchor.BottomLeft,
+            mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'sinnoh-route-210-north',
         },
     ],

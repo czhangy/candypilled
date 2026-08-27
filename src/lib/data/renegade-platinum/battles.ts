@@ -11575,4 +11575,28 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'galactic-grunt-m-valor-lakefront': {
+        trainerClass: 'galactic-grunt-m',
+        name: '1',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'toxicroak',
+                        ability: 'dry-skin',
+                        gender: 'male',
+                        level: 41,
+                        moves: [
+                            'poison-jab',
+                            'drain-punch',
+                            'nasty-plot',
+                            'sucker-punch',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
 };

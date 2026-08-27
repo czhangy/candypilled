@@ -24,7 +24,7 @@ const WAKE: Split = {
         ]),
         ROUTE_214,
         MANIAC_TUNNEL,
-        VALOR_LAKEFRONT,
+        LocationHelpers.withHiddenBattles(VALOR_LAKEFRONT),
         SEVEN_STARS_RESTAURANT,
         ROUTE_213,
         GREAT_MARSH,

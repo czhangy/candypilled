@@ -36,8 +36,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-# scratch output from compose:map-sprite previews
-/src/lib/games/platinum/splits/maps/temp
 
 # typescript
 *.tsbuildinfo
