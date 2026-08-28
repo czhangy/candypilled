@@ -1,4 +1,6 @@
 export { default as cafeCabin } from './cafe-cabin.png';
+export { default as celesticRuins } from './celestic-ruins.png';
+export { default as celesticTown } from './celestic-town.png';
 export { default as eternaCity } from './eterna-city.png';
 export { default as eternaForestExterior } from './eterna-forest-exterior.png';
 export { default as eternaForestInterior } from './eterna-forest-interior.png';
@@ -6,6 +8,8 @@ export { default as eternaGym } from './eterna-gym.png';
 export { default as floaromaMeadow } from './floaroma-meadow.png';
 export { default as floaromaTownPokemonCenter } from './floaroma-town-pokemon-center.png';
 export { default as floaromaTownTown } from './floaroma-town-town.png';
+export { default as fuegoIronworksExterior } from './fuego-ironworks-exterior.png';
+export { default as fuegoIronworksInterior } from './fuego-ironworks-interior.png';
 export { default as greatMarshArea1 } from './great-marsh-area-1.png';
 export { default as greatMarshArea2 } from './great-marsh-area-2.png';
 export { default as greatMarshArea3 } from './great-marsh-area-3.png';

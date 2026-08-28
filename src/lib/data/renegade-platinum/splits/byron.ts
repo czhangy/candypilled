@@ -1,3 +1,6 @@
+import CELESTIC_RUINS from '@/lib/data/renegade-platinum/locations/celestic-ruins';
+import CELESTIC_TOWN from '@/lib/data/renegade-platinum/locations/celestic-town';
+import FUEGO_IRONWORKS from '@/lib/data/renegade-platinum/locations/fuego-ironworks';
 import OREBURGH_GATE from '@/lib/data/renegade-platinum/locations/oreburgh-gate';
 import ROUTE_208 from '@/lib/data/renegade-platinum/locations/route-208';
 import ROUTE_210 from '@/lib/data/renegade-platinum/locations/route-210';
@@ -14,12 +17,15 @@ const BYRON: Split = {
             LocationHelpers.withSubareaOrder(ROUTE_210, ['North', 'South']),
             ['South']
         ),
+        CELESTIC_TOWN,
+        CELESTIC_RUINS,
         LocationHelpers.withHiddenSubareaBattles(
             LocationHelpers.withSubareaOrder(OREBURGH_GATE, ['B1F', '1F']),
             ['1F']
         ),
         ROUTE_208,
         ROUTE_213,
+        FUEGO_IRONWORKS,
     ],
     saveCondition: { type: 'badge', bit: 5 },
 };
