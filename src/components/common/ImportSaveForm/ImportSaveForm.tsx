@@ -7,7 +7,11 @@ import styles from './ImportSaveForm.module.scss';
 
 type ImportSaveFormProps = {
     game: Game;
-    onImport: (pokemon: CaughtPokemon[], completedSplits: string[]) => void;
+    onImport: (
+        pokemon: CaughtPokemon[],
+        completedSplits: string[],
+        gender: 'male' | 'female'
+    ) => void;
     requestClose: () => void;
 };
 
@@ -43,11 +47,11 @@ const ImportSaveForm: React.FC<ImportSaveFormProps> = ({
 
         try {
             const buffer = await file.arrayBuffer();
-            const { pokemon, completedSplits } = SaveFileParser.parse(
+            const { pokemon, completedSplits, gender } = SaveFileParser.parse(
                 game,
                 buffer
             );
-            onImport(pokemon, completedSplits);
+            onImport(pokemon, completedSplits, gender);
             requestClose();
         } catch (error) {
             setErrors([
@@ -71,9 +75,9 @@ const ImportSaveForm: React.FC<ImportSaveFormProps> = ({
     return (
         <form className={styles['import-save-form']} onSubmit={handleSubmit}>
             <p className={styles.hint}>
-                Select your {game.name} <code>.sav</code> file to import every
-                Pokémon in its party and PC boxes, and every split it reports as
-                finished.
+                Select your {game.name} <code>.sav</code> or <code>.dsv</code>{' '}
+                file to import every Pokémon in its party and PC boxes, and
+                every split it reports as finished.
             </p>
             <p className={styles.warning}>
                 Each imported Pokémon replaces whatever is already recorded at
@@ -82,7 +86,7 @@ const ImportSaveForm: React.FC<ImportSaveFormProps> = ({
                 match it exactly. This can&apos;t be undone.
             </p>
             <input
-                accept=".sav"
+                accept=".sav,.dsv"
                 className={styles['file-input']}
                 onChange={handleFileChange}
                 type="file"

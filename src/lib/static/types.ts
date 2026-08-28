@@ -210,6 +210,7 @@ export type Gen4SaveLayout = {
     generalBlockSize: number;
     storageBlockSize: number;
     partyOffset: number;
+    genderOffset: number;
     badgeMaskOffset: number;
     mainStoryClearedOffset: number;
 };
