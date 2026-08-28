@@ -9,6 +9,8 @@ section, showing its name in full caps (e.g. "RAIN"), where only "Fog"
 (which can be cleared with Defog) is followed by an asterisk whose
 tooltip reads "Can be cleared using Defog" ("Deep Fog" shows no
 asterisk); a "Boss" section for the game's climactic battles; a
+"Choice" section for a battle that is one of a mutually exclusive pair
+where exactly one must be fought; a
 "Miniboss" section for a notable but non-climactic battle; an
 "Optional" section for battles that aren't required to progress; a
 double battle section reading "Double Battle" or, if the player's whole

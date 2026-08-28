@@ -21,6 +21,7 @@ export enum EncounterMethod {
 export enum BattleMetadata {
     BackToBack = 'Back To Back',
     Boss = 'Boss',
+    Choice = 'Choice',
     Double = 'Double',
     Gauntlet = 'Gauntlet',
     Miniboss = 'Miniboss',

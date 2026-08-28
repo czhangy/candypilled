@@ -112,6 +112,9 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
             {battle.metadata.includes(BattleMetadata.Boss) && (
                 <div className={styles['trainer__metadata']}>BOSS</div>
             )}
+            {battle.metadata.includes(BattleMetadata.Choice) && (
+                <div className={styles['trainer__metadata']}>CHOICE</div>
+            )}
             {battle.metadata.includes(BattleMetadata.Miniboss) && (
                 <div className={styles['trainer__metadata']}>MINIBOSS</div>
             )}
