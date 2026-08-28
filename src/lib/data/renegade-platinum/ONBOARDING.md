@@ -162,6 +162,7 @@ assumption, only after the user explicitly says so for this game.
 | `lass`         | female | 2026-08-27 |
 | `double-team`  | male   | 2026-08-27 |
 | `worker`       | male   | 2026-08-28 |
+| `fisherman`    | male   | 2026-08-28 |
 
 **`BattleMetadata` is never on the sheet and never inferred** from
 trainer class, species, or precedent from another battle. Every value in

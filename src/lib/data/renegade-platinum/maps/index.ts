@@ -83,6 +83,8 @@ export { default as route215 } from './route-215.png';
 export { default as route216 } from './route-216.png';
 export { default as route218 } from './route-218.png';
 export { default as route219 } from './route-219.png';
+export { default as route220 } from './route-220.png';
+export { default as route221 } from './route-221.png';
 export { default as sandgemTownLab } from './sandgem-town-lab.png';
 export { default as sandgemTownTown } from './sandgem-town-town.png';
 export { default as sevenStarsRestaurant } from './seven-stars-restaurant.png';

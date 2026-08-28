@@ -13002,4 +13002,551 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'swimmer-f-jessica': {
+        trainerClass: 'swimmer-f',
+        name: 'Jessica',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'seadra',
+                        ability: 'poison-point',
+                        gender: 'female',
+                        level: 43,
+                        moves: [
+                            'dragon-dance',
+                            'signal-beam',
+                            'dragon-pulse',
+                            'muddy-water',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'luvdisc',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 43,
+                        moves: [
+                            'bounce',
+                            'aqua-ring',
+                            'moonblast',
+                            'captivate',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'seaking',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 43,
+                        moves: [
+                            'bounce',
+                            'drill-run',
+                            'knock-off',
+                            'aqua-tail',
+                        ],
+                        nature: Nature.Careful,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-f-erica': {
+        trainerClass: 'swimmer-f',
+        name: 'Erica',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'lumineon',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 44,
+                        moves: [
+                            'whirlpool',
+                            'aqua-ring',
+                            'silver-wind',
+                            'aqua-tail',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'corsola',
+                        ability: 'hustle',
+                        gender: 'female',
+                        level: 44,
+                        moves: [
+                            'aqua-ring',
+                            'rock-blast',
+                            'endure',
+                            'earth-power',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-m-adrian': {
+        trainerClass: 'swimmer-m',
+        name: 'Adrian',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'octillery',
+                        ability: 'suction-cups',
+                        gender: 'male',
+                        level: 43,
+                        moves: [
+                            'flamethrower',
+                            'seed-bomb',
+                            'ice-beam',
+                            'signal-beam',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'tentacruel',
+                        ability: 'clear-body',
+                        gender: 'male',
+                        level: 43,
+                        moves: [
+                            'screech',
+                            'sludge-bomb',
+                            'muddy-water',
+                            'poison-jab',
+                        ],
+                        nature: Nature.Careful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'slowking',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 43,
+                        moves: [
+                            'future-sight',
+                            'psych-up',
+                            'trump-card',
+                            'psychic',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-m-vincent': {
+        trainerClass: 'swimmer-m',
+        name: 'Vincent',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'wailord',
+                        ability: 'water-veil',
+                        gender: 'male',
+                        level: 45,
+                        moves: [
+                            'aqua-ring',
+                            'body-slam',
+                            'zen-headbutt',
+                            'water-spout',
+                        ],
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-f-katelyn': {
+        trainerClass: 'swimmer-f',
+        name: 'Katelyn',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'floatzel',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 43,
+                        moves: [
+                            'agility',
+                            'razor-wind',
+                            'ice-fang',
+                            'double-hit',
+                        ],
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'medicham',
+                        ability: 'pure-power',
+                        gender: 'female',
+                        level: 43,
+                        moves: [
+                            'acupressure',
+                            'zen-headbutt',
+                            'psych-up',
+                            'high-jump-kick',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'seaking',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 43,
+                        moves: [
+                            'bounce',
+                            'drill-run',
+                            'knock-off',
+                            'aqua-tail',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-f-claire': {
+        trainerClass: 'swimmer-f',
+        name: 'Claire',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'starmie',
+                        ability: 'illuminate',
+                        level: 44,
+                        moves: ['confuse-ray', 'psywave', 'swift', 'recover'],
+                        nature: Nature.Impish,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'blastoise',
+                        ability: 'drizzle',
+                        gender: 'male',
+                        level: 44,
+                        moves: [
+                            'aqua-tail',
+                            'skull-bash',
+                            'aura-sphere',
+                            'iron-defense',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-m-erik': {
+        trainerClass: 'swimmer-m',
+        name: 'Erik',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'politoed',
+                        ability: 'drizzle',
+                        gender: 'male',
+                        level: 44,
+                        moves: [
+                            'bounce',
+                            'swagger',
+                            'perish-song',
+                            'double-slap',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'lanturn',
+                        ability: 'volt-absorb',
+                        gender: 'male',
+                        level: 44,
+                        moves: [
+                            'take-down',
+                            'thunderbolt',
+                            'flail',
+                            'discharge',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-m-dillon': {
+        trainerClass: 'swimmer-m',
+        name: 'Dillon',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'swampert',
+                        ability: 'torrent',
+                        gender: 'male',
+                        level: 46,
+                        moves: [
+                            'muddy-water',
+                            'earthquake',
+                            'hammer-arm',
+                            'take-down',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-f-vanessa': {
+        trainerClass: 'swimmer-f',
+        name: 'Vanessa',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'milotic',
+                        ability: 'marvel-scale',
+                        gender: 'female',
+                        level: 46,
+                        moves: [
+                            'safeguard',
+                            'rain-dance',
+                            'dragon-pulse',
+                            'moonblast',
+                        ],
+                        nature: Nature.Calm,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'collector-ivan': {
+        trainerClass: 'collector',
+        name: 'Ivan',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'togekiss',
+                        ability: 'serene-grace',
+                        gender: 'male',
+                        level: 45,
+                        moves: [
+                            'air-slash',
+                            'aura-sphere',
+                            'extreme-speed',
+                            'sky-attack',
+                        ],
+                        nature: Nature.Impish,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'blissey',
+                        ability: 'serene-grace',
+                        gender: 'female',
+                        level: 45,
+                        moves: [
+                            'counter',
+                            'healing-wish',
+                            'light-screen',
+                            'take-down',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'fisherman-cory': {
+        trainerClass: 'fisherman',
+        name: 'Cory',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'whiscash',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 44,
+                        moves: [
+                            'earthquake',
+                            'future-sight',
+                            'muddy-water',
+                            'thrash',
+                        ],
+                        nature: Nature.Impish,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'kingler',
+                        ability: 'hyper-cutter',
+                        gender: 'male',
+                        level: 44,
+                        moves: ['x-scissor', 'slam', 'guillotine', 'knock-off'],
+                        nature: Nature.Calm,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'gyarados',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 44,
+                        moves: [
+                            'hydro-pump',
+                            'outrage',
+                            'dragon-dance',
+                            'crunch',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'ace-trainer-f-shannon': {
+        trainerClass: 'ace-trainer-f',
+        name: 'Shannon',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'vileplume',
+                        ability: 'chlorophyll',
+                        gender: 'female',
+                        level: 45,
+                        moves: [
+                            'energy-ball',
+                            'moonblast',
+                            'sludge-bomb',
+                            'earth-power',
+                        ],
+                        nature: Nature.Lonely,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'gardevoir',
+                        ability: 'synchronize',
+                        gender: 'female',
+                        level: 45,
+                        moves: [
+                            'psychic',
+                            'moonblast',
+                            'thunderbolt',
+                            'shadow-ball',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'lopunny',
+                        ability: 'scrappy',
+                        gender: 'female',
+                        level: 45,
+                        moves: ['return', 'jump-kick', 'bounce', 'fake-out'],
+                        nature: Nature.Rash,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'nidoqueen',
+                        ability: 'poison-point',
+                        gender: 'female',
+                        level: 45,
+                        moves: [
+                            'earth-power',
+                            'sludge-bomb',
+                            'thunderbolt',
+                            'flamethrower',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
+    'ace-trainer-m-jake': {
+        trainerClass: 'ace-trainer-m',
+        name: 'Jake',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'claydol',
+                        ability: 'levitate',
+                        level: 45,
+                        moves: [
+                            'psychic',
+                            'earthquake',
+                            'shadow-ball',
+                            'self-destruct',
+                        ],
+                        nature: Nature.Careful,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'charizard',
+                        ability: 'levitate',
+                        gender: 'male',
+                        level: 45,
+                        moves: [
+                            'flamethrower',
+                            'dragon-pulse',
+                            'air-slash',
+                            'crunch',
+                        ],
+                        nature: Nature.Docile,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'exeggutor',
+                        ability: 'chlorophyll',
+                        gender: 'male',
+                        level: 45,
+                        moves: [
+                            'energy-ball',
+                            'psychic',
+                            'ancient-power',
+                            'stun-spore',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'absol',
+                        ability: 'super-luck',
+                        gender: 'male',
+                        level: 45,
+                        moves: [
+                            'sucker-punch',
+                            'megahorn',
+                            'psycho-cut',
+                            'slash',
+                        ],
+                        nature: Nature.Relaxed,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
 };

@@ -5,6 +5,9 @@ import OREBURGH_GATE from '@/lib/data/renegade-platinum/locations/oreburgh-gate'
 import ROUTE_208 from '@/lib/data/renegade-platinum/locations/route-208';
 import ROUTE_210 from '@/lib/data/renegade-platinum/locations/route-210';
 import ROUTE_213 from '@/lib/data/renegade-platinum/locations/route-213';
+import ROUTE_219 from '@/lib/data/renegade-platinum/locations/route-219';
+import ROUTE_220 from '@/lib/data/renegade-platinum/locations/route-220';
+import ROUTE_221 from '@/lib/data/renegade-platinum/locations/route-221';
 import VALOR_LAKEFRONT from '@/lib/data/renegade-platinum/locations/valor-lakefront';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
@@ -26,6 +29,9 @@ const BYRON: Split = {
         ROUTE_208,
         ROUTE_213,
         FUEGO_IRONWORKS,
+        ROUTE_219,
+        ROUTE_220,
+        ROUTE_221,
     ],
     saveCondition: { type: 'badge', bit: 5 },
 };
