@@ -130,15 +130,37 @@ missing `gender` as "explicitly genderless."
 
 **Never guess a trainer's own gender from their first name.** This
 applies even when a name is given and even when it looks unambiguous
-(e.g. "Carlos", "Brady") — names are not a data source. A trainer's own
-gender is only known without asking when the `trainer-classes.ts` slug
-itself fixes it: a `-f`/`-m` suffixed class (e.g. `psychic-f`,
-`pokefan-m`), or a class that's canonically single-gender by convention
-(e.g. `beauty`, `lady`, `gentleman`, `rich-boy`). For every other class
-(`collector`, `pi`, `veteran`, `artist`, `scientist`, `fisherman`,
-`sailor`, `ninja-boy`, etc.) — including when the trainer needs a
-`gender` because their mon's `genderRate === 4` — always ask the user
-for the trainer's gender, every time, no exceptions.
+(e.g. "Carlos", "Brady") — names are not a data source. Real-game canon
+("Beauty is always female in vanilla Platinum") is **also not a valid
+source** here — Renegade Platinum is a hack and nothing confirms it kept
+that convention. A trainer's own gender is only known without asking
+when the `trainer-classes.ts` slug itself fixes it: a `-f`/`-m` suffixed
+class (e.g. `psychic-f`, `pokefan-m`), or a class the user has
+explicitly confirmed is single-gender in **this game** — see "Trainer
+classes with a fixed gender" below. For every other class, including
+when the trainer needs a `gender` because their mon's
+`genderRate === 4`, always ask the user for the trainer's gender, every
+time, no exceptions. When the user confirms a class is fixed, add it to
+that list immediately so it isn't re-asked next time.
+
+### Trainer classes with a fixed gender
+
+User-confirmed only — never add a class here from outside knowledge or
+assumption, only after the user explicitly says so for this game.
+
+| Class slug     | Gender | Confirmed  |
+| -------------- | ------ | ---------- |
+| `ninja-boy`    | male   | 2026-08-27 |
+| `dragon-tamer` | male   | 2026-08-27 |
+| `black-belt`   | male   | 2026-08-27 |
+| `rich-boy`     | male   | 2026-08-27 |
+| `battle-girl`  | female | 2026-08-27 |
+| `beauty`       | female | 2026-08-27 |
+| `lady`         | female | 2026-08-27 |
+| `gentleman`    | male   | 2026-08-27 |
+| `youngster`    | male   | 2026-08-27 |
+| `lass`         | female | 2026-08-27 |
+| `double-team`  | male   | 2026-08-27 |
 
 **`BattleMetadata` is never on the sheet and never inferred** from
 trainer class, species, or precedent from another battle. Every value in

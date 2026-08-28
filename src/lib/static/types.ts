@@ -352,7 +352,10 @@ export type Subarea = {
     name: string;
     encountersKey?: string;
     hideBattles?: boolean;
-    map: StaticImageData;
+    // A single map, or two maps to pick between by the run's gender — e.g.
+    // a subarea whose layout differs by which protagonist sprite passes
+    // through it.
+    map: StaticImageData | { male: StaticImageData; female: StaticImageData };
     // Where the map is panned to by default, when no battle is selected.
     mapAnchor: MapAnchor;
     battles?: Battle[];

@@ -67,46 +67,6 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
                     width={SPRITE_SIZE}
                 />
             </div>
-            {battle.metadata.includes(BattleMetadata.Boss) && (
-                <div className={styles['trainer__metadata']}>BOSS</div>
-            )}
-            {battle.metadata.includes(BattleMetadata.Miniboss) && (
-                <div className={styles['trainer__metadata']}>MINIBOSS</div>
-            )}
-            {battle.metadata.includes(BattleMetadata.Optional) && (
-                <div className={styles['trainer__metadata']}>OPTIONAL</div>
-            )}
-            {battle.metadata.includes(BattleMetadata.TrueDouble) ? (
-                <div className={styles['trainer__metadata']}>TRUE DOUBLE</div>
-            ) : (
-                battle.metadata.includes(BattleMetadata.Double) && (
-                    <div className={styles['trainer__metadata']}>DOUBLE</div>
-                )
-            )}
-            {battle.metadata.includes(BattleMetadata.Tag) && (
-                <div className={styles['trainer__metadata']}>TAG DOUBLE</div>
-            )}
-            {battle.metadata.includes(BattleMetadata.BackToBack) && (
-                <div className={styles['trainer__metadata']}>BACK-TO-BACK</div>
-            )}
-            {battle.metadata.includes(BattleMetadata.Gauntlet) && (
-                <div className={styles['trainer__metadata']}>GAUNTLET</div>
-            )}
-            {battle.fieldCondition && (
-                <div className={styles['trainer__metadata']}>
-                    {battle.fieldCondition.toUpperCase()}
-                    {isRemovableFog && (
-                        <Tooltip
-                            position="center"
-                            text="Can be cleared using Defog"
-                        >
-                            <span className={styles['field-condition__note']}>
-                                *
-                            </span>
-                        </Tooltip>
-                    )}
-                </div>
-            )}
             {items && (
                 <div
                     className={[
@@ -133,6 +93,46 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
                         </div>
                     ))}
                 </div>
+            )}
+            {battle.fieldCondition && (
+                <div className={styles['trainer__metadata']}>
+                    {battle.fieldCondition.toUpperCase()}
+                    {isRemovableFog && (
+                        <Tooltip
+                            position="center"
+                            text="Can be cleared using Defog"
+                        >
+                            <span className={styles['field-condition__note']}>
+                                *
+                            </span>
+                        </Tooltip>
+                    )}
+                </div>
+            )}
+            {battle.metadata.includes(BattleMetadata.Boss) && (
+                <div className={styles['trainer__metadata']}>BOSS</div>
+            )}
+            {battle.metadata.includes(BattleMetadata.Miniboss) && (
+                <div className={styles['trainer__metadata']}>MINIBOSS</div>
+            )}
+            {battle.metadata.includes(BattleMetadata.Optional) && (
+                <div className={styles['trainer__metadata']}>OPTIONAL</div>
+            )}
+            {battle.metadata.includes(BattleMetadata.TrueDouble) ? (
+                <div className={styles['trainer__metadata']}>TRUE DOUBLE</div>
+            ) : (
+                battle.metadata.includes(BattleMetadata.Double) && (
+                    <div className={styles['trainer__metadata']}>DOUBLE</div>
+                )
+            )}
+            {battle.metadata.includes(BattleMetadata.Tag) && (
+                <div className={styles['trainer__metadata']}>TAG DOUBLE</div>
+            )}
+            {battle.metadata.includes(BattleMetadata.BackToBack) && (
+                <div className={styles['trainer__metadata']}>BACK-TO-BACK</div>
+            )}
+            {battle.metadata.includes(BattleMetadata.Gauntlet) && (
+                <div className={styles['trainer__metadata']}>GAUNTLET</div>
             )}
         </div>
     );

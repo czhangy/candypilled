@@ -1,25 +1,24 @@
 # TrainerPanel
 
-The trainer portrait shown beside a battle's team, made up of a field
-condition section above the sprite, showing its name in full caps
-(e.g. "RAIN"), and a held items
-section below it, showing one row per item stacked vertically in the
-same cell, each row giving the item's count followed by its sprite
-(e.g. "2x" beside a Potion sprite), each hidden when not present on
-the battle. Only "Fog" (which can be cleared with Defog) is followed by an
-asterisk whose tooltip reads "Can be cleared using Defog" — "Deep Fog"
-shows no asterisk. A "Boss" section appears below that for the game's
-climactic battles, followed by a "Miniboss" section for a notable but
-non-climactic battle, followed by an "Optional" section for battles
-that aren't required to progress,
-followed by a double battle section reading "Double Battle" or, if the
-player's whole party is forced into the fight, "True Double Battle". A
-"Tag Double" section appears below that for battles fought alongside
-an ally trainer, followed by a "Back-To-Back" section for battles that
-immediately follow another without a chance to heal in between, and a
-"Gauntlet" section for battles that are part of a longer chain of
-consecutive trainers. For a tag battle, this panel
-is always the bottom row and shows the second trainer's sprite
+The trainer portrait shown beside a battle's team, made up of the
+trainer's sprite followed by a stack of metadata sections below it, in
+this order: a held items section, showing one row per item stacked
+vertically in the same cell, each row giving the item's count followed
+by its sprite (e.g. "2x" beside a Potion sprite); a field condition
+section, showing its name in full caps (e.g. "RAIN"), where only "Fog"
+(which can be cleared with Defog) is followed by an asterisk whose
+tooltip reads "Can be cleared using Defog" ("Deep Fog" shows no
+asterisk); a "Boss" section for the game's climactic battles; a
+"Miniboss" section for a notable but non-climactic battle; an
+"Optional" section for battles that aren't required to progress; a
+double battle section reading "Double Battle" or, if the player's whole
+party is forced into the fight, "True Double Battle"; a "Tag Double"
+section for battles fought alongside an ally trainer; a "Back-To-Back"
+section for battles that immediately follow another without a chance to
+heal in between; and a "Gauntlet" section for battles that are part of
+a longer chain of consecutive trainers. Each section is hidden when not
+present on the battle. For a tag battle, this panel is always the
+bottom row and shows the second trainer's sprite
 (`trainerClass`/`trainerName`, not the battle's own primary trainer);
 the first trainer's sprite is shown above it by a bare `TrainerSprite`,
 since the shared metadata only needs to appear once, on this panel.

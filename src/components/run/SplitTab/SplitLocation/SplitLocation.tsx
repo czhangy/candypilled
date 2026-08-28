@@ -263,7 +263,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     if (location.subareas) {
         const subarea = location.subareas[selectedSubareaIndex];
         section = {
-            map: subarea.map,
+            map: resolveMap(subarea.map),
             mapAnchor: subarea.mapAnchor,
             battles: BattleHelpers.filterByGender(
                 location.hideBattles || subarea.hideBattles
