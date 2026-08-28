@@ -6,6 +6,7 @@ import PAL_PARK from '@/lib/data/renegade-platinum/locations/pal-park';
 import ROUTE_208 from '@/lib/data/renegade-platinum/locations/route-208';
 import ROUTE_210 from '@/lib/data/renegade-platinum/locations/route-210';
 import ROUTE_213 from '@/lib/data/renegade-platinum/locations/route-213';
+import ROUTE_218 from '@/lib/data/renegade-platinum/locations/route-218';
 import ROUTE_219 from '@/lib/data/renegade-platinum/locations/route-219';
 import ROUTE_220 from '@/lib/data/renegade-platinum/locations/route-220';
 import ROUTE_221 from '@/lib/data/renegade-platinum/locations/route-221';
@@ -34,6 +35,7 @@ const BYRON: Split = {
         ROUTE_220,
         ROUTE_221,
         PAL_PARK,
+        ROUTE_218,
     ],
     saveCondition: { type: 'badge', bit: 5 },
 };
