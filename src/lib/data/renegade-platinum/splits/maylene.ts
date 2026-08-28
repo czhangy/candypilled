@@ -12,11 +12,6 @@ import VEILSTONE_GYM from '@/lib/data/renegade-platinum/locations/veilstone-gym'
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
-// TODO: saveCondition is a placeholder (bit: -1, deliberately invalid) —
-// Renegade Platinum's save-file badge-bit layout hasn't been confirmed
-// against vanilla Platinum's (see ONBOARDING.md's "games are independent"
-// discipline). Don't assume this without verifying against RP's own save
-// data or decomp fork first.
 const MAYLENE: Split = {
     name: 'Maylene',
     locations: [
@@ -32,7 +27,7 @@ const MAYLENE: Split = {
         LocationHelpers.withHiddenSubareaBattles(VEILSTONE_CITY, ['City']),
         VEILSTONE_GYM,
     ],
-    saveCondition: { type: 'badge', bit: -1 },
+    saveCondition: { type: 'badge', bit: 2 },
 };
 
 export default MAYLENE;

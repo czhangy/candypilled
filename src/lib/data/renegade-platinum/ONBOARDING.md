@@ -202,10 +202,35 @@ was parsed and what's about to be written before writing it:
   tab's section order suggested Fantina 3rd (vs. 5th in vanilla), but
   this was never verified against a complete tab read. Re-confirm before
   finalizing split order past Gardenia.
-- Split `saveCondition` is a deliberate placeholder (`{ type: 'badge',
-bit: -1 }`) on every split so far — RP's save-file badge-bit layout
-  isn't confirmed against vanilla's. Don't fill in a real bit index
-  without independently deriving/confirming it.
+- Save-file layout itself is confirmed against a real RP save (DeSmuME
+  `.dsv`, "Pokemon - Platinum Version (USA) (patched).dsv"): both save
+  halves pass CRC validation under vanilla Platinum's general-block
+  layout (`gen4-save-layouts.ts`'s `renegade-platinum` entry, copied
+  from `platinum` — size, offsets, checksum scheme all unchanged), and
+  decoded money matched the user's actual in-game value exactly. There
+  is no public RP decomp/source (it's Drayano's binary patch over
+  Platinum) — confirmation has to be empirical, via save files, not
+  static analysis.
+- Split `saveCondition` badge bits: **only Roark (bit 0) and Gardenia
+  (bit 1) are independently confirmed** — a 5-badge save decoded to
+  badge byte `0x1f` (bits 0-4 set), but that's consistent with _either_
+  hypothesis for the remaining three bits: (a) bit tied to trainer
+  identity, same as vanilla (Maylene=2, Wake=3, Fantina=4), or (b) bit
+  tied to encounter order (1st badge→bit0, 2nd→bit1, ...). Both predict
+  bits 0-4 for any 5 badges earned, so a full-5-badges save can't
+  distinguish them — it only proves Roark and Gardenia are 1st/2nd
+  either way. Since RP fights Fantina 3rd, not 5th (see the Fantina-3rd
+  note above), the two hypotheses disagree on Maylene/Wake/Fantina's
+  bits specifically. Deciding this needs a save taken between Fantina
+  and Maylene: identity-hypothesis predicts badge byte `0x13` (bits
+  0,1,4), order-hypothesis predicts `0x07` (bits 0,1,2).
+- Per user instruction, bits 2-7 (Maylene/Wake/Fantina/Byron/Candice/
+  Volkner) are filled in **assuming** vanilla Platinum's per-trainer
+  identity mapping (Maylene=2, Wake=3, Fantina=4, Byron=5, Candice=6,
+  Volkner=7) — this is explicitly an assumption, not a confirmation,
+  for bits 2-4 (the identity-vs-order ambiguity above still applies)
+  and entirely unverified for bits 5-7 (no save has beaten those gyms
+  yet). Revisit if a disambiguating save ever turns up.
 
 ### Kalaay QoL patch deltas (layered on top of base RP)
 
@@ -269,11 +294,17 @@ moves?: DataOverrides<MoveData> }` — kept unmerged for a future "what
 | `moves.ts` overrides                                              | ✅ Done — 129 overrides + 11 removals                                                                                   |
 | `items.ts`                                                        | ✅ N/A — unchanged from vanilla, no override table                                                                      |
 | `encounters.ts` / `locations/*.ts` / `battles.ts` / `splits/*.ts` | 🔶 In progress, authored incrementally per-location via the loop above. 20 locations wired, 2 splits (Roark, Gardenia). |
-| `renegade-platinum.ts` final assembly                             | Not started — still carries a placeholder `saveCondition` TODO                                                          |
+| `renegade-platinum.ts` final assembly                             | Not started — `saveCondition` bits 0-1 confirmed, bits 2-7 assumed (vanilla order, unverified)                          |
 | "What changed" diff UI                                            | Not started, not yet scoped                                                                                             |
 
 ## Open items
 
 - Gym order vs. vanilla — unconfirmed (see Standing conventions above).
-- Split `saveCondition` badge-bit indices — unconfirmed for every split.
+- Split `saveCondition` badge-bit indices — confirmed only for bits 0-1
+  (Roark/Gardenia). Bits 2-7 are currently assumed from vanilla
+  Platinum's order per user instruction, not verified. Bits 2-4
+  (Maylene/Wake/Fantina) need a save taken between Fantina and Maylene
+  to disambiguate identity-based vs. encounter-order-based bit
+  assignment (see Standing conventions above). Bits 5-7
+  (Byron/Candice/Volkner) need a save that's beaten those gyms.
 - Diff UI (Phase 10) — no design decided (badge? panel? both?).
