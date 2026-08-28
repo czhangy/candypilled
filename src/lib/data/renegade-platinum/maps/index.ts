@@ -40,6 +40,7 @@ export { default as mtCoronetNorthExterior } from './mt-coronet-north-exterior.p
 export { default as mtCoronetSouthExterior } from './mt-coronet-south-exterior.png';
 export { default as mtCoronetTunnel } from './mt-coronet-tunnel.png';
 export { default as oldChateau } from './old-chateau.png';
+export { default as palPark } from './pal-park.png';
 export { default as oreburghCityCity } from './oreburgh-city-city.png';
 export { default as oreburghCityPokemonCenter } from './oreburgh-city-pokemon-center.png';
 export { default as oreburghGate1f } from './oreburgh-gate-1f.png';

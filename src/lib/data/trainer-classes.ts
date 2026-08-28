@@ -62,6 +62,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Camper',
         spriteSlug: 'camper',
     },
+    'castle-valet-darach': {
+        displayName: 'Castle Valet',
+        spriteSlug: 'darach',
+    },
     'champion-cynthia': {
         displayName: 'Champion',
         spriteSlug: 'cynthia',
