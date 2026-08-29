@@ -2,6 +2,7 @@ import DISTORTION_WORLD from '@/lib/data/renegade-platinum/locations/distortion-
 import GALACTIC_HQ from '@/lib/data/renegade-platinum/locations/galactic-hq';
 import MT_CORONET from '@/lib/data/renegade-platinum/locations/mt-coronet';
 import ROUTE_216 from '@/lib/data/renegade-platinum/locations/route-216';
+import SENDOFF_SPRING from '@/lib/data/renegade-platinum/locations/sendoff-spring';
 import SPEAR_PILLAR from '@/lib/data/renegade-platinum/locations/spear-pillar';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
@@ -26,6 +27,7 @@ const VOLKNER: Split = {
         ]),
         SPEAR_PILLAR,
         DISTORTION_WORLD,
+        SENDOFF_SPRING,
     ],
     saveCondition: { type: 'badge', bit: 7 },
 };
