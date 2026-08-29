@@ -8003,7 +8003,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'octillery',
                         ability: 'suction-cups',
-                        gender: 'male',
+                        gender: 'female',
                         heldItem: 'wise-glasses',
                         level: 33,
                         moves: [
@@ -8018,7 +8018,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'toxicroak',
                         ability: 'dry-skin',
-                        gender: 'male',
+                        gender: 'female',
                         heldItem: 'muscle-band',
                         level: 34,
                         moves: [
@@ -15125,7 +15125,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'octillery',
                         ability: 'suction-cups',
-                        gender: 'male',
+                        gender: 'female',
                         heldItem: 'expert-belt',
                         level: 52,
                         moves: [
@@ -15154,7 +15154,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'rhydon',
                         ability: 'rock-head',
-                        gender: 'male',
+                        gender: 'female',
                         heldItem: 'muscle-band',
                         level: 52,
                         moves: [
@@ -15169,7 +15169,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'toxicroak',
                         ability: 'dry-skin',
-                        gender: 'male',
+                        gender: 'female',
                         heldItem: 'life-orb',
                         level: 53,
                         moves: [
@@ -15975,6 +15975,699 @@ export const BATTLES: Record<string, BattleData> = {
                         ],
                         nature: Nature.Modest,
                         ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-m-warehouse-1': {
+        trainerClass: 'galactic-grunt-m',
+        name: '1',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'golbat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 53,
+                        moves: [
+                            'brave-bird',
+                            'nasty-plot',
+                            'zen-headbutt',
+                            'haze',
+                        ],
+                        nature: Nature.Lax,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'dustox',
+                        ability: 'shield-dust',
+                        gender: 'male',
+                        level: 53,
+                        moves: [
+                            'hurricane',
+                            'whirlwind',
+                            'protect',
+                            'tailwind',
+                        ],
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'parasect',
+                        ability: 'effect-spore',
+                        gender: 'male',
+                        level: 53,
+                        moves: [
+                            'aromatherapy',
+                            'giga-drain',
+                            'knock-off',
+                            'cross-poison',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-m-warehouse-2': {
+        trainerClass: 'galactic-grunt-m',
+        name: '2',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'murkrow',
+                        ability: 'super-luck',
+                        gender: 'male',
+                        level: 54,
+                        moves: [
+                            'brave-bird',
+                            'torment',
+                            'dark-pulse',
+                            'tailwind',
+                        ],
+                        nature: Nature.Relaxed,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'houndoom',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 54,
+                        moves: [
+                            'nasty-plot',
+                            'embargo',
+                            'dark-pulse',
+                            'flamethrower',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-f-hq-1f': {
+        trainerClass: 'galactic-grunt-f',
+        name: '1',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'beautifly',
+                        ability: 'swarm',
+                        gender: 'female',
+                        level: 53,
+                        moves: ['hurricane', 'whirlwind', 'rage', 'air-slash'],
+                        nature: Nature.Modest,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'purugly',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        level: 53,
+                        moves: ['flail', 'body-slam', 'attract', 'play-rough'],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'vespiquen',
+                        ability: 'intimidate',
+                        gender: 'female',
+                        level: 53,
+                        moves: [
+                            'destiny-bond',
+                            'tailwind',
+                            'swagger',
+                            'captivate',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'scientist-fredrick': {
+        trainerClass: 'scientist',
+        name: 'Fredrick',
+        items: [{ count: 1, name: 'X Defend' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'kirlia',
+                        ability: 'synchronize',
+                        gender: 'male',
+                        level: 53,
+                        moves: [
+                            'future-sight',
+                            'dream-eater',
+                            'charm',
+                            'imprison',
+                        ],
+                        nature: Nature.Lax,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'kadabra',
+                        ability: 'magic-guard',
+                        gender: 'male',
+                        level: 53,
+                        moves: [
+                            'trick',
+                            'substitute',
+                            'future-sight',
+                            'role-play',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'magneton',
+                        ability: 'magnet-pull',
+                        level: 53,
+                        moves: [
+                            'gyro-ball',
+                            'magnet-rise',
+                            'lock-on',
+                            'thunderbolt',
+                        ],
+                        nature: Nature.Naive,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-boss-cyrus': {
+        trainerClass: 'galactic-boss-cyrus',
+        name: 'Cyrus',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'crobat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        heldItem: 'choice-band',
+                        level: 57,
+                        moves: [
+                            'brave-bird',
+                            'u-turn',
+                            'cross-poison',
+                            'zen-headbutt',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'honchkrow',
+                        ability: 'super-luck',
+                        gender: 'male',
+                        heldItem: 'scope-lens',
+                        level: 57,
+                        moves: [
+                            'brave-bird',
+                            'night-slash',
+                            'thunder-wave',
+                            'heat-wave',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'houndoom',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        heldItem: 'life-orb',
+                        level: 57,
+                        moves: [
+                            'dark-pulse',
+                            'flamethrower',
+                            'sludge-bomb',
+                            'nasty-plot',
+                        ],
+                        nature: Nature.Bashful,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'magnezone',
+                        ability: 'magnet-pull',
+                        heldItem: 'wise-glasses',
+                        level: 57,
+                        moves: [
+                            'thunderbolt',
+                            'flash-cannon',
+                            'signal-beam',
+                            'mirror-coat',
+                        ],
+                        nature: Nature.Timid,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'weavile',
+                        ability: 'technician',
+                        gender: 'male',
+                        heldItem: 'expert-belt',
+                        level: 58,
+                        moves: [
+                            'crunch',
+                            'ice-shard',
+                            'aerial-ace',
+                            'x-scissor',
+                        ],
+                        nature: Nature.Timid,
+                        ivs: 31,
+                    },
+                ],
+            },
+        ],
+    },
+    'commander-saturn-galactic-hq': {
+        trainerClass: 'commander-saturn',
+        name: 'Saturn',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'bronzong',
+                        ability: 'levitate',
+                        heldItem: 'light-clay',
+                        level: 56,
+                        moves: [
+                            'zen-headbutt',
+                            'gyro-ball',
+                            'reflect',
+                            'light-screen',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'octillery',
+                        ability: 'suction-cups',
+                        gender: 'female',
+                        heldItem: 'expert-belt',
+                        level: 56,
+                        moves: [
+                            'hydro-pump',
+                            'blizzard',
+                            'fire-blast',
+                            'energy-ball',
+                        ],
+                        nature: Nature.Serious,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'alakazam',
+                        ability: 'magic-guard',
+                        gender: 'male',
+                        heldItem: 'life-orb',
+                        level: 56,
+                        moves: [
+                            'psychic',
+                            'shadow-ball',
+                            'dazzling-gleam',
+                            'focus-blast',
+                        ],
+                        nature: Nature.Lax,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'rhyperior',
+                        ability: 'solid-rock',
+                        gender: 'female',
+                        heldItem: 'choice-band',
+                        level: 56,
+                        moves: [
+                            'stone-edge',
+                            'earthquake',
+                            'megahorn',
+                            'hammer-arm',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'magmortar',
+                        ability: 'flame-body',
+                        gender: 'male',
+                        heldItem: 'choice-specs',
+                        level: 56,
+                        moves: [
+                            'fire-blast',
+                            'thunderbolt',
+                            'aura-sphere',
+                            'psychic',
+                        ],
+                        nature: Nature.Relaxed,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'toxicroak',
+                        ability: 'dry-skin',
+                        gender: 'female',
+                        heldItem: 'focus-sash',
+                        level: 57,
+                        moves: [
+                            'cross-chop',
+                            'gunk-shot',
+                            'ice-punch',
+                            'fake-out',
+                        ],
+                        nature: Nature.Serious,
+                        ivs: 31,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-m-hq-2f-1': {
+        trainerClass: 'galactic-grunt-m',
+        name: '1',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'toxicroak',
+                        ability: 'dry-skin',
+                        gender: 'male',
+                        level: 54,
+                        moves: [
+                            'flatter',
+                            'sludge-bomb',
+                            'cross-chop',
+                            'sucker-punch',
+                        ],
+                        nature: Nature.Docile,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'skuntank',
+                        ability: 'aftermath',
+                        gender: 'male',
+                        level: 54,
+                        moves: [
+                            'sucker-punch',
+                            'play-rough',
+                            'sludge-bomb',
+                            'crunch',
+                        ],
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-m-hq-2f-2': {
+        trainerClass: 'galactic-grunt-m',
+        name: '2',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'golbat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 53,
+                        moves: [
+                            'brave-bird',
+                            'nasty-plot',
+                            'zen-headbutt',
+                            'haze',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'mightyena',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 53,
+                        moves: [
+                            'play-rough',
+                            'take-down',
+                            'yawn',
+                            'sucker-punch',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'ariados',
+                        ability: 'swarm',
+                        gender: 'male',
+                        level: 53,
+                        moves: [
+                            'psychic',
+                            'agility',
+                            'cross-poison',
+                            'pin-missile',
+                        ],
+                        nature: Nature.Serious,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-f-hq-2f-3': {
+        trainerClass: 'galactic-grunt-f',
+        name: '3',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'golbat',
+                        ability: 'inner-focus',
+                        gender: 'female',
+                        level: 53,
+                        moves: [
+                            'brave-bird',
+                            'nasty-plot',
+                            'zen-headbutt',
+                            'haze',
+                        ],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'venomoth',
+                        ability: 'tinted-lens',
+                        gender: 'female',
+                        level: 53,
+                        moves: [
+                            'bug-buzz',
+                            'morning-sun',
+                            'psychic',
+                            'baton-pass',
+                        ],
+                        nature: Nature.Impish,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'cacturne',
+                        ability: 'water-absorb',
+                        gender: 'female',
+                        level: 53,
+                        moves: [
+                            'cotton-spore',
+                            'pin-missile',
+                            'nasty-plot',
+                            'energy-ball',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'scientist-darrius': {
+        trainerClass: 'scientist',
+        name: 'Darrius',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'porygon-z',
+                        ability: 'adaptability',
+                        level: 55,
+                        moves: [
+                            'psychic',
+                            'thunderbolt',
+                            'ice-beam',
+                            'hyper-beam',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-m-hq-3f-1': {
+        trainerClass: 'galactic-grunt-m',
+        name: '1',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'scyther',
+                        ability: 'technician',
+                        gender: 'male',
+                        level: 54,
+                        moves: [
+                            'reversal',
+                            'baton-pass',
+                            'swords-dance',
+                            'air-slash',
+                        ],
+                        nature: Nature.Rash,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'skuntank',
+                        ability: 'aftermath',
+                        gender: 'male',
+                        level: 54,
+                        moves: [
+                            'sucker-punch',
+                            'play-rough',
+                            'sludge-bomb',
+                            'crunch',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-m-hq-3f-2': {
+        trainerClass: 'galactic-grunt-m',
+        name: '2',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'pinsir',
+                        ability: 'hyper-cutter',
+                        gender: 'male',
+                        level: 54,
+                        moves: [
+                            'guillotine',
+                            'superpower',
+                            'megahorn',
+                            'thrash',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'toxicroak',
+                        ability: 'dry-skin',
+                        gender: 'male',
+                        level: 54,
+                        moves: [
+                            'flatter',
+                            'sludge-bomb',
+                            'cross-chop',
+                            'sucker-punch',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-f-hq-3f-3': {
+        trainerClass: 'galactic-grunt-f',
+        name: '3',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'forretress',
+                        ability: 'sturdy',
+                        gender: 'female',
+                        level: 53,
+                        moves: [
+                            'double-edge',
+                            'iron-defense',
+                            'explosion',
+                            'drill-run',
+                        ],
+                        nature: Nature.Lonely,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'seviper',
+                        ability: 'shed-skin',
+                        gender: 'female',
+                        level: 53,
+                        moves: [
+                            'wring-out',
+                            'gunk-shot',
+                            'swords-dance',
+                            'haze',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'yanmega',
+                        ability: 'speed-boost',
+                        gender: 'female',
+                        level: 53,
+                        moves: ['pursuit', 'u-turn', 'screech', 'bug-buzz'],
+                        nature: Nature.Bashful,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-m-hq-3f-4': {
+        trainerClass: 'galactic-grunt-m',
+        name: '4',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'muk',
+                        ability: 'stench',
+                        gender: 'male',
+                        level: 54,
+                        moves: [
+                            'memento',
+                            'gunk-shot',
+                            'acid-armor',
+                            'sludge-bomb',
+                        ],
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'arbok',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 54,
+                        moves: [
+                            'sucker-punch',
+                            'haze',
+                            'gastro-acid',
+                            'poison-tail',
+                        ],
+                        nature: Nature.Gentle,
+                        ivs: 12,
                     },
                 ],
             },

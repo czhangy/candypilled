@@ -207,6 +207,7 @@ assumption, only after the user explicitly says so for this game.
 | `camper`       | male   | 2026-08-28 |
 | `picnicker`    | female | 2026-08-28 |
 | `hiker`        | male   | 2026-08-28 |
+| `scientist`    | male   | 2026-08-29 |
 
 **`BattleMetadata` is never on the sheet and never inferred** from
 trainer class, species, or precedent from another battle. Every value in

@@ -12,6 +12,12 @@ export { default as floaromaTownPokemonCenter } from './floaroma-town-pokemon-ce
 export { default as floaromaTownTown } from './floaroma-town-town.png';
 export { default as fuegoIronworksExterior } from './fuego-ironworks-exterior.png';
 export { default as fuegoIronworksInterior } from './fuego-ironworks-interior.png';
+export { default as galacticHq1f } from './galactic-hq-1f.png';
+export { default as galacticHq2f } from './galactic-hq-2f.png';
+export { default as galacticHq3f } from './galactic-hq-3f.png';
+export { default as galacticHq4f } from './galactic-hq-4f.png';
+export { default as galacticHqPixieRoom } from './galactic-hq-pixie-room.png';
+export { default as galacticHqWarehouse } from './galactic-hq-warehouse.png';
 export { default as greatMarshArea1 } from './great-marsh-area-1.png';
 export { default as greatMarshArea2 } from './great-marsh-area-2.png';
 export { default as greatMarshArea3 } from './great-marsh-area-3.png';
