@@ -1,4 +1,5 @@
 export { default as cafeCabin } from './cafe-cabin.png';
+export { default as canalaveCity } from './canalave-city.png';
 export { default as celesticRuins } from './celestic-ruins.png';
 export { default as celesticTown } from './celestic-town.png';
 export { default as eternaCity } from './eterna-city.png';
@@ -21,6 +22,13 @@ export { default as hearthomeCityWestGate } from './hearthome-city-west-gate.png
 export { default as hearthomeGymRoom1 } from './hearthome-gym-room-1.png';
 export { default as hearthomeGymRoom2 } from './hearthome-gym-room-2.png';
 export { default as hearthomeGymRoom3 } from './hearthome-gym-room-3.png';
+export { default as ironIsland1f } from './iron-island-1f.png';
+export { default as ironIslandB1fEast } from './iron-island-b1f-east.png';
+export { default as ironIslandB1fWest } from './iron-island-b1f-west.png';
+export { default as ironIslandB2fEast } from './iron-island-b2f-east.png';
+export { default as ironIslandB2fWest } from './iron-island-b2f-west.png';
+export { default as ironIslandB3f } from './iron-island-b3f.png';
+export { default as ironIslandExterior } from './iron-island-exterior.png';
 export { default as jubilifeCityCity } from './jubilife-city-city.png';
 export { default as jubilifeCityPokemonCenter } from './jubilife-city-pokemon-center.png';
 export { default as lakeVerityPostGalactic } from './lake-verity-post-galactic.png';

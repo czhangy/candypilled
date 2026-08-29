@@ -1,6 +1,8 @@
+import CANALAVE_CITY from '@/lib/data/renegade-platinum/locations/canalave-city';
 import CELESTIC_RUINS from '@/lib/data/renegade-platinum/locations/celestic-ruins';
 import CELESTIC_TOWN from '@/lib/data/renegade-platinum/locations/celestic-town';
 import FUEGO_IRONWORKS from '@/lib/data/renegade-platinum/locations/fuego-ironworks';
+import IRON_ISLAND from '@/lib/data/renegade-platinum/locations/iron-island';
 import OREBURGH_GATE from '@/lib/data/renegade-platinum/locations/oreburgh-gate';
 import PAL_PARK from '@/lib/data/renegade-platinum/locations/pal-park';
 import ROUTE_208 from '@/lib/data/renegade-platinum/locations/route-208';
@@ -36,6 +38,8 @@ const BYRON: Split = {
         ROUTE_221,
         PAL_PARK,
         ROUTE_218,
+        CANALAVE_CITY,
+        IRON_ISLAND,
     ],
     saveCondition: { type: 'badge', bit: 5 },
 };
