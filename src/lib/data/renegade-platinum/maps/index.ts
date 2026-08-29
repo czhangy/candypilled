@@ -122,6 +122,7 @@ export { default as solaceonRuinsRoom4 } from './solaceon-ruins-room-4.png';
 export { default as solaceonRuinsRoom5 } from './solaceon-ruins-room-5.png';
 export { default as solaceonRuinsRoom6 } from './solaceon-ruins-room-6.png';
 export { default as solaceonRuinsRoom7 } from './solaceon-ruins-room-7.png';
+export { default as spearPillar } from './spear-pillar.png';
 export { default as teamGalacticEternaBuilding1f } from './team-galactic-eterna-building-1f.png';
 export { default as teamGalacticEternaBuilding2f } from './team-galactic-eterna-building-2f.png';
 export { default as teamGalacticEternaBuilding3f } from './team-galactic-eterna-building-3f.png';

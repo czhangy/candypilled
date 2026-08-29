@@ -1,6 +1,7 @@
 import GALACTIC_HQ from '@/lib/data/renegade-platinum/locations/galactic-hq';
 import MT_CORONET from '@/lib/data/renegade-platinum/locations/mt-coronet';
 import ROUTE_216 from '@/lib/data/renegade-platinum/locations/route-216';
+import SPEAR_PILLAR from '@/lib/data/renegade-platinum/locations/spear-pillar';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
@@ -22,6 +23,7 @@ const VOLKNER: Split = {
             '1F (211)',
             '1F (216)',
         ]),
+        SPEAR_PILLAR,
     ],
     saveCondition: { type: 'badge', bit: 7 },
 };

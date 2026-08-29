@@ -49,6 +49,15 @@ combine it with something else, even if that seems like the "correct"
 data model. If a task looks like it should connect to something else,
 ask; don't just do it.
 
+**The data model comes from the user, not from parsing the sheet.**
+Never infer a battle's structure (pairing two trainers as a Tag, treating
+a note as a Multi Battle, assuming an existing type shape is "the" model,
+declaring something unmodelable) from sheet phrasing or from what the
+current schema happens to support. That's the same guessing this doc
+already forbids for data values, just applied to structure instead of a
+field. When a battle's shape isn't already established by the user for
+this exact case, report what the sheet says and ask how to model it.
+
 **A new location is always appended at the end of a split's `locations`
 array, unless the user says otherwise.** Don't insert it earlier based on
 guessed in-game/geographic order — that guess has been wrong every time
@@ -152,7 +161,7 @@ to "check the convention":
 | A mon with **no** IV note anywhere applicable to it (no team-wide note, no paired-trainer note, no per-mon split covering it) | **NEVER omit the `ivs` field and never guess a number.** Stop and ask the user for the real value, exactly like a blank `Level` cell in the encounter tables. Every single team member gets a real, sourced `ivs` value — there is no such thing as a mon with no IVs. |
 | `x1 <Item>` lines in the trainer-name cell                                                                                    | `BattleData.items: [{ count: 1, name: 'Potion' }]` — real field, sheet's own display text (not a slug)                                                                                                                                                                 |
 | `Gifts TM<n> - <Move>` in the trainer-name cell                                                                               | post-battle TM reward — not modeled anywhere, ignore                                                                                                                                                                                                                   |
-| "Double Battle w/ <Trainer>" note on two trainer blocks                                                                       | one `battleKey`, `trainerClass`+`secondTrainer` (Tag structure), `BattleMetadata.Double`                                                                                                                                                                               |
+| "Double Battle w/ <Trainer>" note, or any other structural note (Multi Battle, alternates, etc.)                              | **Not mechanical.** Sheet phrasing is never grouped/structured on its own — see "Data model comes from the user, not the sheet" above. Report what the note says and ask how to model it.                                                                              |
 | Gender                                                                                                                        | not a sheet column — derive from species `genderRate` (below); ask for the trainer's own gender whenever the trainer class doesn't fix it                                                                                                                              |
 
 **Gender**: if `genderRate === 4` (50/50), the mon matches the trainer's
