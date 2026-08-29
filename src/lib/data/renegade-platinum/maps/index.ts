@@ -102,6 +102,7 @@ export { default as sandgemTownLab } from './sandgem-town-lab.png';
 export { default as sandgemTownTown } from './sandgem-town-town.png';
 export { default as sevenStarsRestaurant } from './seven-stars-restaurant.png';
 export { default as snowpointCity } from './snowpoint-city.png';
+export { default as snowpointGym } from './snowpoint-gym.png';
 export { default as snowpointTemple1f } from './snowpoint-temple-1f.png';
 export { default as snowpointTempleB1f } from './snowpoint-temple-b1f.png';
 export { default as snowpointTempleB2f } from './snowpoint-temple-b2f.png';
