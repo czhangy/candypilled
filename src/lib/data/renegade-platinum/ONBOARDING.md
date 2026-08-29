@@ -8,9 +8,8 @@ narrative about how it changed.
 
 **YOU CANNOT ASSUME ANYTHING, ABOUT ANYTHING, EVER. This is not a
 guideline, it is an absolute rule, and breaking it has already caused
-real, repeated damage to this project's data integrity.** This is not
-about IVs specifically, or battles specifically, or any one field —
-it covers every single piece of data collected for this game, of any
+real, repeated damage to this project's data integrity.** This covers
+every single piece of data collected for this game, of any
 kind, in any file, forever: species, levels, natures, abilities, items,
 moves, genders, IVs, encounter rates, map anchors, coordinates,
 metadata, split placement, save conditions, everything. There is no
@@ -164,19 +163,25 @@ one case omitting it is correct. Never omit `gender` for any other
 species just because the sheet has no gender column; the app reads a
 missing `gender` as "explicitly genderless."
 
-**Never guess a trainer's own gender from their first name.** This
-applies even when a name is given and even when it looks unambiguous
-(e.g. "Carlos", "Brady") — names are not a data source. Real-game canon
-("Beauty is always female in vanilla Platinum") is **also not a valid
-source** here — Renegade Platinum is a hack and nothing confirms it kept
-that convention. A trainer's own gender is only known without asking
-when the `trainer-classes.ts` slug itself fixes it: a `-f`/`-m` suffixed
-class (e.g. `psychic-f`, `pokefan-m`), or a class the user has
-explicitly confirmed is single-gender in **this game** — see "Trainer
-classes with a fixed gender" below. For every other class, including
-when the trainer needs a `gender` because their mon's
-`genderRate === 4`, always ask the user for the trainer's gender, every
-time, no exceptions. When the user confirms a class is fixed, add it to
+**A mon's own gender and its trainer's gender are two completely
+independent facts — never infer one from the other, in either
+direction.** A mon's gender comes only from its own species' data
+(`genderRate`) or, when `genderRate === 4`, from matching the trainer's
+gender (a fact sourced the normal way, below — not derived backwards
+from the mon). It is never valid to go the other direction and use a
+mon's resolved gender to decide what the trainer's gender or
+`trainerClass` slug is — e.g. a solo Galactic Grunt fielding a
+majority-female species does **not** make that grunt `galactic-grunt-f`.
+
+**Trainer gender rule — no exceptions, no judgment calls:** a trainer's
+own gender is known without asking in exactly one case — the class is
+listed in the "Trainer classes with a fixed gender" table below, added
+there only after the user explicitly confirmed it for this game. **If
+the trainer class is not in that table, you must ask the user for their
+gender. Every time. Full stop.** Not from the name. Not from real-game
+canon. Not from the species on their team. Not from what a
+similar-looking trainer elsewhere turned out to be. Not from "this is
+probably fine." Not from anything else. Ask. When the user confirms a class is fixed, add it to
 that list immediately so it isn't re-asked next time.
 
 ### Trainer classes with a fixed gender
@@ -227,22 +232,12 @@ was parsed and what's about to be written before writing it:
 
 ## Standing conventions
 
-- Use the **COMPLETE** version column wherever the sheet has
-  ORIGINAL/CLASSIC/COMPLETE variants (stats, typing, abilities).
 - Trainer IVs are **not** uniformly 31 — read the sheet's per-trainer IV
   value every time.
-- Pokémon sprites reuse vanilla Platinum's directly
-  (`Game.pokemonAssetFolder`), no per-entity `sprites` data needed.
-- `aiFlags` was removed from the app entirely — don't add it to new
-  battle entries.
 - Time-of-day (`Walking` Morning/Day/Night) collapses to one entry only
   when the three groups are actually identical for that location; if
   they differ, write real `conditions: ['time-morning' | 'time-day' |
 'time-night']` entries.
-- Gym order is unconfirmed against vanilla Platinum's — the TRAiNERS
-  tab's section order suggested Fantina 3rd (vs. 5th in vanilla), but
-  this was never verified against a complete tab read. Re-confirm before
-  finalizing split order past Gardenia.
 - Save-file layout itself is confirmed against a real RP save (DeSmuME
   `.dsv`, "Pokemon - Platinum Version (USA) (patched).dsv"): both save
   halves pass CRC validation under vanilla Platinum's general-block
@@ -252,52 +247,6 @@ was parsed and what's about to be written before writing it:
   is no public RP decomp/source (it's Drayano's binary patch over
   Platinum) — confirmation has to be empirical, via save files, not
   static analysis.
-- Split `saveCondition` badge bits: **only Roark (bit 0) and Gardenia
-  (bit 1) are independently confirmed** — a 5-badge save decoded to
-  badge byte `0x1f` (bits 0-4 set), but that's consistent with _either_
-  hypothesis for the remaining three bits: (a) bit tied to trainer
-  identity, same as vanilla (Maylene=2, Wake=3, Fantina=4), or (b) bit
-  tied to encounter order (1st badge→bit0, 2nd→bit1, ...). Both predict
-  bits 0-4 for any 5 badges earned, so a full-5-badges save can't
-  distinguish them — it only proves Roark and Gardenia are 1st/2nd
-  either way. Since RP fights Fantina 3rd, not 5th (see the Fantina-3rd
-  note above), the two hypotheses disagree on Maylene/Wake/Fantina's
-  bits specifically. Deciding this needs a save taken between Fantina
-  and Maylene: identity-hypothesis predicts badge byte `0x13` (bits
-  0,1,4), order-hypothesis predicts `0x07` (bits 0,1,2).
-- Per user instruction, bits 2-7 (Maylene/Wake/Fantina/Byron/Candice/
-  Volkner) are filled in **assuming** vanilla Platinum's per-trainer
-  identity mapping (Maylene=2, Wake=3, Fantina=4, Byron=5, Candice=6,
-  Volkner=7) — this is explicitly an assumption, not a confirmation,
-  for bits 2-4 (the identity-vs-order ambiguity above still applies)
-  and entirely unverified for bits 5-7 (no save has beaten those gyms
-  yet). Revisit if a disambiguating save ever turns up.
-
-### Kalaay QoL patch deltas (layered on top of base RP)
-
-The user plays with a community QoL patch stacked on base RP. Most of it
-has no data to model (menus, repels, instant friendship evos, etc.). The
-parts that changed already-authored data:
-
-- Onix's evolution: `level-up` 32 (not `use-item`/Metal Coat).
-- Substitute TM removed from all species that learn it via TM (488
-  species) — species that learn it via level-up/tutor/egg are unaffected.
-- Frustration and Return are fixed `power: 102` (not friendship-scaled).
-- Static Beldum gift (Oreburgh City) and static Lapras gift (Pastoria
-  City, Lv35) both removed from `encounters.ts`.
-- Happiny and Togepi removed from the Jubilife Trainer School egg's
-  possible hatches.
-- Manaphy egg gift (Mr. Backlot) removed entirely.
-
-### Known sheet inaccuracies (don't silently re-trust if re-verifying)
-
-- `Encounter Tables`' `Floaroma Town` block lists 6 Fossil-method
-  entries — wrong. Real encounter is Chikorita/Cyndaquil/Totodile, Gift,
-  Lv5, 33% each (user-confirmed correction already applied).
-- Gardenia Split tab has **two separate "Valley Windworks" header
-  blocks** (one solo Grunt already wired; a second block later in the
-  tab has 2 more solo Grunts plus a Commander Mars battle, not yet
-  pulled in).
 
 ## Architecture: override/patch layer
 
@@ -337,15 +286,3 @@ moves?: DataOverrides<MoveData> }` — kept unmerged for a future "what
 | `encounters.ts` / `locations/*.ts` / `battles.ts` / `splits/*.ts` | 🔶 In progress, authored incrementally per-location via the loop above. 20 locations wired, 2 splits (Roark, Gardenia). |
 | `renegade-platinum.ts` final assembly                             | Not started — `saveCondition` bits 0-1 confirmed, bits 2-7 assumed (vanilla order, unverified)                          |
 | "What changed" diff UI                                            | Not started, not yet scoped                                                                                             |
-
-## Open items
-
-- Gym order vs. vanilla — unconfirmed (see Standing conventions above).
-- Split `saveCondition` badge-bit indices — confirmed only for bits 0-1
-  (Roark/Gardenia). Bits 2-7 are currently assumed from vanilla
-  Platinum's order per user instruction, not verified. Bits 2-4
-  (Maylene/Wake/Fantina) need a save taken between Fantina and Maylene
-  to disambiguate identity-based vs. encounter-order-based bit
-  assignment (see Standing conventions above). Bits 5-7
-  (Byron/Candice/Volkner) need a save that's beaten those gyms.
-- Diff UI (Phase 10) — no design decided (badge? panel? both?).

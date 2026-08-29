@@ -7998,7 +7998,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'confuse-ray',
                         ],
                         nature: Nature.Quiet,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'octillery',
@@ -8013,7 +8013,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'flamethrower',
                         ],
                         nature: Nature.Serious,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'toxicroak',
@@ -8028,7 +8028,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'vacuum-wave',
                         ],
                         nature: Nature.Serious,
-                        ivs: 12,
+                        ivs: 31,
                     },
                 ],
             },
@@ -8052,7 +8052,7 @@ export const BATTLES: Record<string, BattleData> = {
                                 'thunderbolt',
                             ],
                             nature: Nature.Lonely,
-                            ivs: 12,
+                            ivs: 31,
                         },
                         {
                             slug: 'raichu',
@@ -8067,7 +8067,7 @@ export const BATTLES: Record<string, BattleData> = {
                                 'teeter-dance',
                             ],
                             nature: Nature.Impish,
-                            ivs: 12,
+                            ivs: 31,
                         },
                         {
                             slug: 'espeon',
@@ -8082,7 +8082,7 @@ export const BATTLES: Record<string, BattleData> = {
                                 'protect',
                             ],
                             nature: Nature.Adamant,
-                            ivs: 12,
+                            ivs: 31,
                         },
                     ],
                 },
@@ -15023,6 +15023,162 @@ export const BATTLES: Record<string, BattleData> = {
                         level: 53,
                         moves: ['iron-head', 'toxic', 'protect', 'metal-burst'],
                         nature: Nature.Sassy,
+                        ivs: 31,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-f-lake-valor': {
+        trainerClass: 'galactic-grunt-f',
+        name: '1',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'purugly',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        level: 50,
+                        moves: [
+                            'body-slam',
+                            'attract',
+                            'play-rough',
+                            'wake-up-slap',
+                        ],
+                        nature: Nature.Docile,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-m-lake-valor-1': {
+        trainerClass: 'galactic-grunt-m',
+        name: '2',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'houndoom',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 50,
+                        moves: [
+                            'nasty-plot',
+                            'embargo',
+                            'dark-pulse',
+                            'flamethrower',
+                        ],
+                        nature: Nature.Relaxed,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'galactic-grunt-m-lake-valor-2': {
+        trainerClass: 'galactic-grunt-m',
+        name: '3',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'skuntank',
+                        ability: 'aftermath',
+                        gender: 'male',
+                        level: 50,
+                        moves: [
+                            'play-rough',
+                            'sludge-bomb',
+                            'crunch',
+                            'memento',
+                        ],
+                        nature: Nature.Lonely,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'commander-saturn-valor-cavern': {
+        trainerClass: 'commander-saturn',
+        name: 'Saturn',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'alakazam',
+                        ability: 'magic-guard',
+                        gender: 'male',
+                        heldItem: 'wise-glasses',
+                        level: 52,
+                        moves: [
+                            'psychic',
+                            'calm-mind',
+                            'recover',
+                            'focus-blast',
+                        ],
+                        nature: Nature.Impish,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'octillery',
+                        ability: 'suction-cups',
+                        gender: 'male',
+                        heldItem: 'expert-belt',
+                        level: 52,
+                        moves: [
+                            'hydro-pump',
+                            'seed-bomb',
+                            'flamethrower',
+                            'flash-cannon',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'bronzong',
+                        ability: 'levitate',
+                        heldItem: 'bright-powder',
+                        level: 52,
+                        moves: [
+                            'iron-head',
+                            'zen-headbutt',
+                            'shadow-ball',
+                            'explosion',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'rhydon',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        heldItem: 'muscle-band',
+                        level: 52,
+                        moves: [
+                            'stone-edge',
+                            'earthquake',
+                            'hammer-arm',
+                            'megahorn',
+                        ],
+                        nature: Nature.Rash,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'toxicroak',
+                        ability: 'dry-skin',
+                        gender: 'male',
+                        heldItem: 'life-orb',
+                        level: 53,
+                        moves: [
+                            'gunk-shot',
+                            'cross-chop',
+                            'fake-out',
+                            'sucker-punch',
+                        ],
+                        nature: Nature.Hasty,
                         ivs: 31,
                     },
                 ],
