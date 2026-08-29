@@ -15553,7 +15553,7 @@ export const BATTLES: Record<string, BattleData> = {
                         moves: [
                             'hyper-voice',
                             'thunderbolt',
-                            'softboiled',
+                            'soft-boiled',
                             'flamethrower',
                         ],
                         nature: Nature.Modest,
@@ -15562,5 +15562,109 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
         ],
+    },
+    'ace-trainer-snow-m-aran-and-ace-trainer-snow-f-nephenee': {
+        trainerClass: 'ace-trainer-snow-m',
+        name: 'Aran',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'heracross',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 54,
+                        moves: [
+                            'megahorn',
+                            'close-combat',
+                            'rock-slide',
+                            'protect',
+                        ],
+                        nature: Nature.Rash,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'typhlosion',
+                        ability: 'adaptability',
+                        gender: 'male',
+                        level: 54,
+                        moves: [
+                            'lava-plume',
+                            'earth-power',
+                            'extrasensory',
+                            'protect',
+                        ],
+                        nature: Nature.Relaxed,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'tyranitar',
+                        ability: 'sand-stream',
+                        gender: 'male',
+                        level: 54,
+                        moves: [
+                            'rock-slide',
+                            'crunch',
+                            'fire-blast',
+                            'protect',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 31,
+                    },
+                ],
+            },
+        ],
+        secondTrainer: {
+            name: 'Nephenee',
+            trainerClass: 'ace-trainer-snow-f',
+            teams: [
+                {
+                    team: [
+                        {
+                            slug: 'blissey',
+                            ability: 'serene-grace',
+                            gender: 'female',
+                            level: 54,
+                            moves: [
+                                'light-screen',
+                                'hyper-voice',
+                                'soft-boiled',
+                                'dazzling-gleam',
+                            ],
+                            nature: Nature.Hasty,
+                            ivs: 31,
+                        },
+                        {
+                            slug: 'meganium',
+                            ability: 'serene-grace',
+                            gender: 'male',
+                            level: 54,
+                            moves: [
+                                'petal-dance',
+                                'earth-power',
+                                'grass-whistle',
+                                'reflect',
+                            ],
+                            nature: Nature.Mild,
+                            ivs: 31,
+                        },
+                        {
+                            slug: 'feraligatr',
+                            ability: 'intimidate',
+                            gender: 'male',
+                            level: 54,
+                            moves: [
+                                'aqua-tail',
+                                'crunch',
+                                'aqua-jet',
+                                'agility',
+                            ],
+                            nature: Nature.Rash,
+                            ivs: 31,
+                        },
+                    ],
+                },
+            ],
+        },
     },
 };

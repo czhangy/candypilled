@@ -19,8 +19,8 @@ const ROUTE_217: Location = {
             battleKey: 'skier-f-madison',
             metadata: [BattleMetadata.Optional],
             fieldCondition: FieldCondition.Hail,
-            x: 10.7,
-            y: 68.5,
+            x: 10.9,
+            y: 68.6,
         },
         {
             battleKey: 'ninja-boy-ethan',
@@ -34,7 +34,7 @@ const ROUTE_217: Location = {
             metadata: [BattleMetadata.Optional],
             fieldCondition: FieldCondition.Hail,
             x: 20.3,
-            y: 31,
+            y: 31.1,
         },
         {
             battleKey: 'black-belt-luke',
@@ -48,7 +48,7 @@ const ROUTE_217: Location = {
             metadata: [BattleMetadata.Optional],
             fieldCondition: FieldCondition.Hail,
             x: 95.3,
-            y: 68.5,
+            y: 68.6,
         },
         {
             battleKey: 'ninja-boy-matthew',
