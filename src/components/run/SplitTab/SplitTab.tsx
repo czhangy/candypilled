@@ -1,11 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { Encounter, Game, Location, Run } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
+import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import SplitLocation from './SplitLocation/SplitLocation';
@@ -48,6 +49,16 @@ const SplitTab: React.FC<SplitTabProps> = ({
 
     const [activeLocationSlug, setActiveLocationSlug] = useState<string | null>(
         null
+    );
+
+    // -------------------------------------------------------------------------
+    // HOOKS
+    // -------------------------------------------------------------------------
+
+    const settings = useSyncExternalStore(
+        SettingsHelpers.subscribe,
+        SettingsHelpers.getSnapshot,
+        SettingsHelpers.getServerSnapshot
     );
 
     // -------------------------------------------------------------------------
@@ -135,14 +146,20 @@ const SplitTab: React.FC<SplitTabProps> = ({
     // -------------------------------------------------------------------------
 
     const getCaughtPokemonName = (locationName: string): string | undefined => {
-        const slug = run.caughtPokemon.find(
-            (caught) => caught.location === locationName
-        )?.slug;
+        const caught = run.caughtPokemon.find(
+            (pokemon) => pokemon.location === locationName
+        );
+        if (!caught) return undefined;
 
-        return slug
-            ? (PokemonHelpers.getPokemonData(game.dataSource, slug)?.name ??
-                  slug)
-            : undefined;
+        const displaySlug = PokemonHelpers.getDisplaySlug(
+            game.dataSource,
+            caught
+        );
+
+        return (
+            PokemonHelpers.getPokemonData(game.dataSource, displaySlug)?.name ??
+            displaySlug
+        );
     };
 
     const isLocationMissed = (locationName: string): boolean =>
@@ -172,7 +189,8 @@ const SplitTab: React.FC<SplitTabProps> = ({
             getLocationEncounters(location),
             dupes,
             caughtHere,
-            game.generation
+            game.generation,
+            settings['show-legendaries'] ?? false
         );
     };
 

@@ -17099,4 +17099,504 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'rich-boy-trey': {
+        trainerClass: 'rich-boy',
+        name: 'Trey',
+        items: [{ count: 1, name: 'Full Restore' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'luxray',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 57,
+                        moves: [
+                            'discharge',
+                            'scary-face',
+                            'wild-charge',
+                            'swagger',
+                        ],
+                        nature: Nature.Lonely,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'sceptile',
+                        ability: 'unburden',
+                        gender: 'male',
+                        level: 57,
+                        moves: [
+                            'endeavor',
+                            'screech',
+                            'x-scissor',
+                            'energy-ball',
+                        ],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'linoone',
+                        ability: 'pickup',
+                        gender: 'male',
+                        level: 57,
+                        moves: [
+                            'extreme-speed',
+                            'super-fang',
+                            'fling',
+                            'belly-drum',
+                        ],
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'beauty-nicola': {
+        trainerClass: 'beauty',
+        name: 'Nicola',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'lopunny',
+                        ability: 'scrappy',
+                        gender: 'female',
+                        level: 57,
+                        moves: [
+                            'healing-wish',
+                            'focus-punch',
+                            'bounce',
+                            'flail',
+                        ],
+                        nature: Nature.Lax,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'flareon',
+                        ability: 'flash-fire',
+                        gender: 'male',
+                        level: 57,
+                        moves: [
+                            'flare-blitz',
+                            'last-resort',
+                            'close-combat',
+                            'flamethrower',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'meganium',
+                        ability: 'serene-grace',
+                        gender: 'male',
+                        level: 57,
+                        moves: [
+                            'solar-beam',
+                            'aromatherapy',
+                            'safeguard',
+                            'moonblast',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'policeman-thomas': {
+        trainerClass: 'policeman',
+        name: 'Thomas',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'noctowl',
+                        ability: 'tinted-lens',
+                        gender: 'male',
+                        level: 59,
+                        moves: [
+                            'dream-eater',
+                            'roost',
+                            'moonblast',
+                            'zen-headbutt',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'fisherman-alec': {
+        trainerClass: 'fisherman',
+        name: 'Alec',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'gyarados',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 57,
+                        moves: [
+                            'hyper-beam',
+                            'hurricane',
+                            'rain-dance',
+                            'hydro-pump',
+                        ],
+                        nature: Nature.Modest,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'gyarados',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 57,
+                        moves: [
+                            'hyper-beam',
+                            'hurricane',
+                            'rain-dance',
+                            'hydro-pump',
+                        ],
+                        nature: Nature.Modest,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'gyarados',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 57,
+                        moves: [
+                            'hyper-beam',
+                            'hurricane',
+                            'rain-dance',
+                            'hydro-pump',
+                        ],
+                        nature: Nature.Modest,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'fisherman-george': {
+        trainerClass: 'fisherman',
+        name: 'George',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'octillery',
+                        ability: 'suction-cups',
+                        gender: 'male',
+                        level: 58,
+                        moves: [
+                            'hyper-beam',
+                            'gunk-shot',
+                            'hydro-pump',
+                            'flamethrower',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'lumineon',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 58,
+                        moves: ['hydro-pump', 'bounce', 'u-turn', 'whirlpool'],
+                        nature: Nature.Mild,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'fisherman-brett': {
+        trainerClass: 'fisherman',
+        name: 'Brett',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'qwilfish',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 59,
+                        moves: [
+                            'hydro-pump',
+                            'gunk-shot',
+                            'destiny-bond',
+                            'take-down',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'fisherman-cole': {
+        trainerClass: 'fisherman',
+        name: 'Cole',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'seaking',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 57,
+                        moves: [
+                            'hydro-pump',
+                            'megahorn',
+                            'bounce',
+                            'drill-run',
+                        ],
+                        nature: Nature.Naive,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'sharpedo',
+                        ability: 'speed-boost',
+                        gender: 'male',
+                        level: 57,
+                        moves: [
+                            'agility',
+                            'zen-headbutt',
+                            'skull-bash',
+                            'poison-fang',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'kingdra',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 57,
+                        moves: [
+                            'hyper-beam',
+                            'hydro-pump',
+                            'outrage',
+                            'dragon-dance',
+                        ],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'tuber-f-holly': {
+        trainerClass: 'tuber-f',
+        name: 'Holly',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'azumarill',
+                        ability: 'huge-power',
+                        gender: 'female',
+                        level: 58,
+                        moves: [
+                            'superpower',
+                            'double-edge',
+                            'belly-drum',
+                            'rain-dance',
+                        ],
+                        nature: Nature.Careful,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'poke-kid-janet': {
+        trainerClass: 'poke-kid',
+        name: 'Janet',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'pikachu',
+                        ability: 'static',
+                        gender: 'female',
+                        heldItem: 'light-ball',
+                        level: 57,
+                        moves: [
+                            'thunder',
+                            'light-screen',
+                            'wild-charge',
+                            'discharge',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'pikachu',
+                        ability: 'static',
+                        gender: 'female',
+                        heldItem: 'light-ball',
+                        level: 57,
+                        moves: [
+                            'thunder',
+                            'light-screen',
+                            'wild-charge',
+                            'discharge',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'sailor-marc': {
+        trainerClass: 'sailor',
+        name: 'Marc',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'lanturn',
+                        ability: 'volt-absorb',
+                        gender: 'male',
+                        level: 57,
+                        moves: [
+                            'charge',
+                            'hydro-pump',
+                            'aqua-ring',
+                            'take-down',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'machamp',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 57,
+                        moves: [
+                            'close-combat',
+                            'dynamic-punch',
+                            'scary-face',
+                            'cross-chop',
+                        ],
+                        nature: Nature.Relaxed,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'mantine',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 57,
+                        moves: [
+                            'tailwind',
+                            'bounce',
+                            'mirror-coat',
+                            'aqua-ring',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'tuber-m-conner': {
+        trainerClass: 'tuber-m',
+        name: 'Conner',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'remoraid',
+                        ability: 'hustle',
+                        gender: 'male',
+                        level: 57,
+                        moves: [
+                            'water-spout',
+                            'hyper-beam',
+                            'gunk-shot',
+                            'hydro-pump',
+                        ],
+                        nature: Nature.Bashful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'remoraid',
+                        ability: 'hustle',
+                        gender: 'male',
+                        level: 57,
+                        moves: [
+                            'water-spout',
+                            'hyper-beam',
+                            'gunk-shot',
+                            'hydro-pump',
+                        ],
+                        nature: Nature.Bashful,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'sailor-luther': {
+        trainerClass: 'sailor',
+        name: 'Luther',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'pelipper',
+                        ability: 'drizzle',
+                        gender: 'male',
+                        level: 56,
+                        moves: [
+                            'hydro-pump',
+                            'uproar',
+                            'tailwind',
+                            'air-slash',
+                        ],
+                        nature: Nature.Bashful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'gastrodon',
+                        ability: 'sticky-hold',
+                        gender: 'male',
+                        level: 56,
+                        moves: ['recover', 'amnesia', 'acid-armor', 'counter'],
+                        nature: Nature.Hardy,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'poliwrath',
+                        ability: 'water-absorb',
+                        gender: 'male',
+                        level: 56,
+                        moves: [
+                            'close-combat',
+                            'mind-reader',
+                            'dynamic-punch',
+                            'brick-break',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'kingler',
+                        ability: 'hyper-cutter',
+                        gender: 'male',
+                        level: 56,
+                        moves: ['agility', 'x-scissor', 'slam', 'guillotine'],
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
 };

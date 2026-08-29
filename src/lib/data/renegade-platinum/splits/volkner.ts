@@ -1,9 +1,13 @@
+import ACUITY_CAVERN from '@/lib/data/renegade-platinum/locations/acuity-cavern';
 import DISTORTION_WORLD from '@/lib/data/renegade-platinum/locations/distortion-world';
 import GALACTIC_HQ from '@/lib/data/renegade-platinum/locations/galactic-hq';
 import MT_CORONET from '@/lib/data/renegade-platinum/locations/mt-coronet';
 import ROUTE_216 from '@/lib/data/renegade-platinum/locations/route-216';
+import ROUTE_222 from '@/lib/data/renegade-platinum/locations/route-222';
 import SENDOFF_SPRING from '@/lib/data/renegade-platinum/locations/sendoff-spring';
 import SPEAR_PILLAR from '@/lib/data/renegade-platinum/locations/spear-pillar';
+import VALOR_CAVERN from '@/lib/data/renegade-platinum/locations/valor-cavern';
+import VERITY_CAVERN from '@/lib/data/renegade-platinum/locations/verity-cavern';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
@@ -28,6 +32,13 @@ const VOLKNER: Split = {
         SPEAR_PILLAR,
         DISTORTION_WORLD,
         SENDOFF_SPRING,
+        VERITY_CAVERN,
+        LocationHelpers.withSubareaOrder(VALOR_CAVERN, [
+            'Post-Giratina',
+            'Pre-Giratina',
+        ]),
+        ACUITY_CAVERN,
+        ROUTE_222,
     ],
     saveCondition: { type: 'badge', bit: 7 },
 };

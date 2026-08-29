@@ -12,7 +12,10 @@ const CANDICE: Split = {
     name: 'Candice',
     locations: [
         LAKE_VALOR,
-        VALOR_CAVERN,
+        LocationHelpers.withSubareaOrder(VALOR_CAVERN, [
+            'Pre-Giratina',
+            'Post-Giratina',
+        ]),
         LocationHelpers.withSubareaOrder(LAKE_VERITY, [
             'Post-Galactic',
             'Pre-Galactic',

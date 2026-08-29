@@ -6,6 +6,7 @@ const DISTORTION_WORLD: Location = {
     name: 'Distortion World',
     map: distortionWorld,
     mapAnchor: MapAnchor.Center,
+    encountersKey: 'distortion-world',
     battles: [
         {
             battleKey: 'galactic-boss-cyrus-distortion-world',
