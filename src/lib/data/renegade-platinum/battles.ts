@@ -12812,6 +12812,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'hypnosis',
                         ],
                         nature: Nature.Docile,
+                        ivs: 31,
                     },
                     {
                         slug: 'honchkrow',
@@ -12826,6 +12827,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'torment',
                         ],
                         nature: Nature.Sassy,
+                        ivs: 31,
                     },
                     {
                         slug: 'magnezone',
@@ -12839,6 +12841,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'mirror-coat',
                         ],
                         nature: Nature.Adamant,
+                        ivs: 31,
                     },
                     {
                         slug: 'weavile',
@@ -12853,6 +12856,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'swords-dance',
                         ],
                         nature: Nature.Adamant,
+                        ivs: 31,
                     },
                 ],
             },
@@ -13569,6 +13573,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'leaf-blade',
                         ],
                         nature: Nature.Docile,
+                        ivs: 31,
                     },
                     {
                         slug: 'empoleon',
@@ -13583,6 +13588,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'aqua-jet',
                         ],
                         nature: Nature.Careful,
+                        ivs: 31,
                     },
                     {
                         slug: 'alakazam',
@@ -13597,6 +13603,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'energy-ball',
                         ],
                         nature: Nature.Naive,
+                        ivs: 31,
                     },
                     {
                         slug: 'metagross',
@@ -13610,6 +13617,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'hammer-arm',
                         ],
                         nature: Nature.Impish,
+                        ivs: 31,
                     },
                     {
                         slug: 'staraptor',
@@ -13624,6 +13632,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'roost',
                         ],
                         nature: Nature.Naive,
+                        ivs: 31,
                     },
                     {
                         slug: 'entei',
@@ -13637,6 +13646,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'iron-head',
                         ],
                         nature: Nature.Calm,
+                        ivs: 31,
                     },
                 ],
             },
@@ -14608,5 +14618,415 @@ export const BATTLES: Record<string, BattleData> = {
                 },
             ],
         },
+    },
+    'black-belt-ricky': {
+        trainerClass: 'black-belt',
+        name: 'Ricky',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'steelix',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 51,
+                        moves: [
+                            'iron-tail',
+                            'dig',
+                            'rock-slide',
+                            'thunder-fang',
+                        ],
+                        nature: Nature.Naive,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
+    'worker-gary': {
+        trainerClass: 'worker',
+        name: 'Gary',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'magnemite',
+                        ability: 'magnet-pull',
+                        level: 46,
+                        moves: [
+                            'gyro-ball',
+                            'magnet-rise',
+                            'lock-on',
+                            'thunderbolt',
+                        ],
+                        nature: Nature.Hardy,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'aron',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 46,
+                        moves: [
+                            'head-smash',
+                            'dragon-rush',
+                            'double-edge',
+                            'iron-defense',
+                        ],
+                        nature: Nature.Impish,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'bronzor',
+                        ability: 'levitate',
+                        level: 46,
+                        moves: [
+                            'heal-block',
+                            'payback',
+                            'metal-sound',
+                            'future-sight',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'beldum',
+                        ability: 'rock-head',
+                        level: 46,
+                        moves: [
+                            'iron-defense',
+                            'iron-head',
+                            'zen-headbutt',
+                            'take-down',
+                        ],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'shieldon',
+                        ability: 'soundproof',
+                        gender: 'male',
+                        level: 46,
+                        moves: [
+                            'magnet-rise',
+                            'stone-edge',
+                            'iron-tail',
+                            'metal-burst',
+                        ],
+                        nature: Nature.Calm,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'ace-trainer-m-cesar': {
+        trainerClass: 'ace-trainer-m',
+        name: 'Cesar',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'empoleon',
+                        ability: 'torrent',
+                        gender: 'male',
+                        level: 50,
+                        moves: [
+                            'surf',
+                            'flash-cannon',
+                            'grass-knot',
+                            'signal-beam',
+                        ],
+                        nature: Nature.Lax,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'scizor',
+                        ability: 'technician',
+                        gender: 'male',
+                        level: 50,
+                        moves: [
+                            'bullet-punch',
+                            'x-scissor',
+                            'night-slash',
+                            'iron-head',
+                        ],
+                        nature: Nature.Sassy,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'metagross',
+                        ability: 'iron-fist',
+                        level: 50,
+                        moves: [
+                            'meteor-mash',
+                            'zen-headbutt',
+                            'ice-punch',
+                            'rock-slide',
+                        ],
+                        nature: Nature.Serious,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
+    'worker-jackson': {
+        trainerClass: 'worker',
+        name: 'Jackson',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'magneton',
+                        ability: 'magnet-pull',
+                        level: 48,
+                        moves: [
+                            'lock-on',
+                            'thunderbolt',
+                            'screech',
+                            'flash-cannon',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'lairon',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 48,
+                        moves: [
+                            'double-edge',
+                            'iron-defense',
+                            'iron-tail',
+                            'metal-sound',
+                        ],
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'metang',
+                        ability: 'iron-fist',
+                        level: 48,
+                        moves: [
+                            'iron-defense',
+                            'meteor-mash',
+                            'agility',
+                            'psychic',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'worker-gerardo': {
+        trainerClass: 'worker',
+        name: 'Gerardo',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'probopass',
+                        ability: 'sturdy',
+                        gender: 'male',
+                        level: 49,
+                        moves: [
+                            'zap-cannon',
+                            'lock-on',
+                            'stone-edge',
+                            'head-smash',
+                        ],
+                        nature: Nature.Lonely,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'forretress',
+                        ability: 'sturdy',
+                        gender: 'male',
+                        level: 49,
+                        moves: [
+                            'iron-defense',
+                            'explosion',
+                            'drill-run',
+                            'gyro-ball',
+                        ],
+                        nature: Nature.Rash,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'black-belt-david': {
+        trainerClass: 'black-belt',
+        name: 'David',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'lucario',
+                        ability: 'adaptability',
+                        gender: 'male',
+                        level: 51,
+                        moves: [
+                            'meteor-mash',
+                            'aura-sphere',
+                            'dark-pulse',
+                            'blaze-kick',
+                        ],
+                        nature: Nature.Impish,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
+    'ace-trainer-f-breanna': {
+        trainerClass: 'ace-trainer-f',
+        name: 'Breanna',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'skarmory',
+                        ability: 'keen-eye',
+                        gender: 'female',
+                        level: 50,
+                        moves: [
+                            'iron-head',
+                            'drill-peck',
+                            'x-scissor',
+                            'rock-slide',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'mawile',
+                        ability: 'huge-power',
+                        gender: 'female',
+                        level: 50,
+                        moves: [
+                            'play-rough',
+                            'iron-head',
+                            'fire-fang',
+                            'crunch',
+                        ],
+                        nature: Nature.Serious,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'wormadam-trash',
+                        ability: 'battle-armor',
+                        gender: 'female',
+                        level: 50,
+                        moves: [
+                            'flash-cannon',
+                            'bug-buzz',
+                            'attract',
+                            'psychic',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
+    'leader-byron': {
+        trainerClass: 'leader-byron',
+        name: 'Byron',
+        items: [{ count: 2, name: 'Full Restore' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'bronzong',
+                        ability: 'levitate',
+                        heldItem: 'light-clay',
+                        level: 52,
+                        moves: [
+                            'gyro-ball',
+                            'stealth-rock',
+                            'reflect',
+                            'light-screen',
+                        ],
+                        nature: Nature.Impish,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'magnezone',
+                        ability: 'magnet-pull',
+                        heldItem: 'wise-glasses',
+                        level: 52,
+                        moves: [
+                            'thunderbolt',
+                            'flash-cannon',
+                            'signal-beam',
+                            'thunder-wave',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'steelix',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        heldItem: 'muscle-band',
+                        level: 52,
+                        moves: [
+                            'gyro-ball',
+                            'earthquake',
+                            'stone-edge',
+                            'explosion',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'forretress',
+                        ability: 'sturdy',
+                        gender: 'male',
+                        heldItem: 'sitrus-berry',
+                        level: 52,
+                        moves: [
+                            'gyro-ball',
+                            'spikes',
+                            'toxic-spikes',
+                            'explosion',
+                        ],
+                        nature: Nature.Impish,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'aggron',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        heldItem: 'focus-sash',
+                        level: 52,
+                        moves: [
+                            'head-smash',
+                            'iron-head',
+                            'aqua-tail',
+                            'low-kick',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'bastiodon',
+                        ability: 'soundproof',
+                        gender: 'male',
+                        heldItem: 'leftovers',
+                        level: 53,
+                        moves: ['iron-head', 'toxic', 'protect', 'metal-burst'],
+                        nature: Nature.Sassy,
+                        ivs: 31,
+                    },
+                ],
+            },
+        ],
     },
 };

@@ -6,6 +6,41 @@ Keep this doc lean — a procedural reference, not a session log. When a
 process rule changes, edit the rule in place; don't append a dated
 narrative about how it changed.
 
+**YOU CANNOT ASSUME ANYTHING, ABOUT ANYTHING, EVER. This is not a
+guideline, it is an absolute rule, and breaking it has already caused
+real, repeated damage to this project's data integrity.** This is not
+about IVs specifically, or battles specifically, or any one field —
+it covers every single piece of data collected for this game, of any
+kind, in any file, forever: species, levels, natures, abilities, items,
+moves, genders, IVs, encounter rates, map anchors, coordinates,
+metadata, split placement, save conditions, everything. There is no
+category of data this rule doesn't apply to, and no future addition to
+this doc gets to carve out an exception for itself.
+
+Every single value comes from exactly one of two sources: (1) something
+explicitly, literally present on the sheet or other documented source,
+or (2) something the user has explicitly told you, in this game, for
+this exact case. Nothing else is a valid source. Not: "every other field
+in this row follows a pattern, so this one probably does too." Not:
+"this is the only value that would sensibly work here." Not: "no note
+was given, so the field must not apply / must be intentionally blank."
+Not: "a similar case elsewhere used this value." Not: "this is common
+knowledge about the games." None of these are data — they are guesses,
+and a guess written into this dataset is corruption, indistinguishable
+later from a real, sourced value, and it silently poisons the project's
+integrity for good.
+
+A missing, unclear, or ambiguous value is a **hard stop**: stop and ask
+the user before writing anything, every time, with no exceptions for
+convenience, obviousness, "surely this is fine," or wanting to finish a
+task in one pass. This applies even to values that are structurally
+optional in TypeScript (e.g. `ivs`, `heldItem`, `gender`) —
+optional-in-the-type is never the same thing as optional-in-the-data.
+Omitting a field is only ever correct when the source of truth
+explicitly establishes that the field doesn't apply (e.g. a genderless
+species's `gender`) — never as a stand-in for "I couldn't find a value."
+If a value cannot be found and confirmed, the task is not done. Ask.
+
 **Do not connect, merge, or reference anything against another part of
 this project unless explicitly instructed.** A task naming one specific
 thing (e.g. "wire Valley Windworks Interior") is a request to do exactly
@@ -103,22 +138,23 @@ Level, Encounter Rate`), location name one row above the
 Mechanical — apply directly, never re-derive or grep an existing entry
 to "check the convention":
 
-| Sheet cell                                                                  | `battles.ts` field                                                                                                                                                           |
-| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Trainer-name row, e.g. `Leader Roark`, `Youngster Jonathon`                 | Split on the last space: everything before is a `trainer-classes.ts` slug (`leader-roark`, `youngster`), everything after is `name` (`'Roark'`, `'Jonathon'`)                |
-| Multiple Pokémon columns under one trainer-name row                         | One team — every column is a party member of that SAME trainer, not alternate options (only an explicit "If you chose X" line means alternates)                              |
-| `Level <n>`                                                                 | `level: <n>`                                                                                                                                                                 |
-| `<Nature> \n(+Stat -Stat)`                                                  | Strip the parenthetical, `Nature.<Name>`                                                                                                                                     |
-| Ability cell                                                                | kebab-case → `ability: '...'`                                                                                                                                                |
-| `No Item`                                                                   | omit `heldItem` entirely                                                                                                                                                     |
-| Any other item text                                                         | kebab-case → `heldItem: '...'`                                                                                                                                               |
-| Move cells                                                                  | kebab-case → `moves: [...]`, column order (Move 1-4), omit empty cells                                                                                                       |
-| `<n> IVs` in the trainer-name cell                                          | `ivs: <n>` uniform across the team. If a trainer's own cell has no IV note but a paired trainer's does (e.g. "Bottommost"/"Topmost" pairs), the paired value applies to both |
-| Per-mon IV split (e.g. `29 IVs on Onix and Geodude` / `30 IVs on the rest`) | apply per named mon, not one team-wide `ivs`                                                                                                                                 |
-| `x1 <Item>` lines in the trainer-name cell                                  | `BattleData.items: [{ count: 1, name: 'Potion' }]` — real field, sheet's own display text (not a slug)                                                                       |
-| `Gifts TM<n> - <Move>` in the trainer-name cell                             | post-battle TM reward — not modeled anywhere, ignore                                                                                                                         |
-| "Double Battle w/ <Trainer>" note on two trainer blocks                     | one `battleKey`, `trainerClass`+`secondTrainer` (Tag structure), `BattleMetadata.Double`                                                                                     |
-| Gender                                                                      | not a sheet column — derive from species `genderRate` (below); ask for the trainer's own gender whenever the trainer class doesn't fix it                                    |
+| Sheet cell                                                                                                                    | `battles.ts` field                                                                                                                                                                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Trainer-name row, e.g. `Leader Roark`, `Youngster Jonathon`                                                                   | Split on the last space: everything before is a `trainer-classes.ts` slug (`leader-roark`, `youngster`), everything after is `name` (`'Roark'`, `'Jonathon'`)                                                                                                          |
+| Multiple Pokémon columns under one trainer-name row                                                                           | One team — every column is a party member of that SAME trainer, not alternate options (only an explicit "If you chose X" line means alternates)                                                                                                                        |
+| `Level <n>`                                                                                                                   | `level: <n>`                                                                                                                                                                                                                                                           |
+| `<Nature> \n(+Stat -Stat)`                                                                                                    | Strip the parenthetical, `Nature.<Name>`                                                                                                                                                                                                                               |
+| Ability cell                                                                                                                  | kebab-case → `ability: '...'`                                                                                                                                                                                                                                          |
+| `No Item`                                                                                                                     | omit `heldItem` entirely                                                                                                                                                                                                                                               |
+| Any other item text                                                                                                           | kebab-case → `heldItem: '...'`                                                                                                                                                                                                                                         |
+| Move cells                                                                                                                    | kebab-case → `moves: [...]`, column order (Move 1-4), omit empty cells                                                                                                                                                                                                 |
+| `<n> IVs` in the trainer-name cell                                                                                            | `ivs: <n>` uniform across the team. If a trainer's own cell has no IV note but a paired trainer's does (e.g. "Bottommost"/"Topmost" pairs), the paired value applies to both                                                                                           |
+| Per-mon IV split (e.g. `29 IVs on Onix and Geodude` / `30 IVs on the rest`)                                                   | apply per named mon, not one team-wide `ivs`                                                                                                                                                                                                                           |
+| A mon with **no** IV note anywhere applicable to it (no team-wide note, no paired-trainer note, no per-mon split covering it) | **NEVER omit the `ivs` field and never guess a number.** Stop and ask the user for the real value, exactly like a blank `Level` cell in the encounter tables. Every single team member gets a real, sourced `ivs` value — there is no such thing as a mon with no IVs. |
+| `x1 <Item>` lines in the trainer-name cell                                                                                    | `BattleData.items: [{ count: 1, name: 'Potion' }]` — real field, sheet's own display text (not a slug)                                                                                                                                                                 |
+| `Gifts TM<n> - <Move>` in the trainer-name cell                                                                               | post-battle TM reward — not modeled anywhere, ignore                                                                                                                                                                                                                   |
+| "Double Battle w/ <Trainer>" note on two trainer blocks                                                                       | one `battleKey`, `trainerClass`+`secondTrainer` (Tag structure), `BattleMetadata.Double`                                                                                                                                                                               |
+| Gender                                                                                                                        | not a sheet column — derive from species `genderRate` (below); ask for the trainer's own gender whenever the trainer class doesn't fix it                                                                                                                              |
 
 **Gender**: if `genderRate === 4` (50/50), the mon matches the trainer's
 own gender. Otherwise the mon is always the species' majority gender

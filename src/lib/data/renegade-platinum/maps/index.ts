@@ -1,5 +1,6 @@
 export { default as cafeCabin } from './cafe-cabin.png';
 export { default as canalaveCity } from './canalave-city.png';
+export { default as canalaveGym } from './canalave-gym.png';
 export { default as celesticRuins } from './celestic-ruins.png';
 export { default as celesticTown } from './celestic-town.png';
 export { default as eternaCity } from './eterna-city.png';

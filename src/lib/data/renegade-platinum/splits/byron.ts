@@ -1,4 +1,5 @@
 import CANALAVE_CITY from '@/lib/data/renegade-platinum/locations/canalave-city';
+import CANALAVE_GYM from '@/lib/data/renegade-platinum/locations/canalave-gym';
 import CELESTIC_RUINS from '@/lib/data/renegade-platinum/locations/celestic-ruins';
 import CELESTIC_TOWN from '@/lib/data/renegade-platinum/locations/celestic-town';
 import FUEGO_IRONWORKS from '@/lib/data/renegade-platinum/locations/fuego-ironworks';
@@ -40,6 +41,7 @@ const BYRON: Split = {
         ROUTE_218,
         CANALAVE_CITY,
         IRON_ISLAND,
+        CANALAVE_GYM,
     ],
     saveCondition: { type: 'badge', bit: 5 },
 };
