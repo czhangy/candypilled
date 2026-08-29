@@ -139,7 +139,7 @@ const ROUTE_210: Location = {
                     y: 34.6,
                 },
                 {
-                    battleKey: 'bird-keeper-briana',
+                    battleKey: 'bird-keeper-brianna',
                     metadata: [BattleMetadata.Optional],
                     x: 32.8,
                     y: 32.9,

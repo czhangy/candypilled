@@ -1065,7 +1065,7 @@ export const BATTLES: Record<string, BattleData> = {
                         level: 10,
                         moves: ['wing-attack', 'quick-attack', 'growl'],
                         nature: Nature.Docile,
-                        ivs: 12,
+                        ivs: 30,
                     },
                     {
                         slug: 'munchlax',
@@ -1074,7 +1074,7 @@ export const BATTLES: Record<string, BattleData> = {
                         level: 10,
                         moves: ['metronome', 'tackle', 'amnesia', 'rock-tomb'],
                         nature: Nature.Mild,
-                        ivs: 12,
+                        ivs: 30,
                     },
                     {
                         slug: 'chimchar',
@@ -1084,7 +1084,7 @@ export const BATTLES: Record<string, BattleData> = {
                         level: 11,
                         moves: ['fury-swipes', 'ember', 'taunt'],
                         nature: Nature.Quiet,
-                        ivs: 12,
+                        ivs: 30,
                     },
                 ],
             },
@@ -1098,7 +1098,7 @@ export const BATTLES: Record<string, BattleData> = {
                         level: 10,
                         moves: ['wing-attack', 'quick-attack', 'growl'],
                         nature: Nature.Hardy,
-                        ivs: 12,
+                        ivs: 30,
                     },
                     {
                         slug: 'munchlax',
@@ -1107,7 +1107,7 @@ export const BATTLES: Record<string, BattleData> = {
                         level: 10,
                         moves: ['metronome', 'tackle', 'amnesia', 'rock-tomb'],
                         nature: Nature.Mild,
-                        ivs: 12,
+                        ivs: 30,
                     },
                     {
                         slug: 'piplup',
@@ -1117,7 +1117,7 @@ export const BATTLES: Record<string, BattleData> = {
                         level: 11,
                         moves: ['water-pulse', 'peck', 'pound'],
                         nature: Nature.Gentle,
-                        ivs: 12,
+                        ivs: 30,
                     },
                 ],
             },
@@ -1131,7 +1131,7 @@ export const BATTLES: Record<string, BattleData> = {
                         level: 10,
                         moves: ['wing-attack', 'quick-attack', 'growl'],
                         nature: Nature.Gentle,
-                        ivs: 12,
+                        ivs: 30,
                     },
                     {
                         slug: 'munchlax',
@@ -1140,7 +1140,7 @@ export const BATTLES: Record<string, BattleData> = {
                         level: 10,
                         moves: ['metronome', 'tackle', 'amnesia', 'rock-tomb'],
                         nature: Nature.Docile,
-                        ivs: 12,
+                        ivs: 30,
                     },
                     {
                         slug: 'turtwig',
@@ -1150,7 +1150,7 @@ export const BATTLES: Record<string, BattleData> = {
                         level: 11,
                         moves: ['razor-leaf', 'curse', 'tackle'],
                         nature: Nature.Rash,
-                        ivs: 12,
+                        ivs: 30,
                     },
                 ],
             },
@@ -1816,7 +1816,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-shard',
                         ],
                         nature: Nature.Impish,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'clefable',
@@ -1831,7 +1831,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'thunder-wave',
                         ],
                         nature: Nature.Jolly,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'lopunny',
@@ -1846,7 +1846,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'quick-attack',
                         ],
                         nature: Nature.Modest,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'prinplup',
@@ -1861,7 +1861,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'shadow-claw',
                         ],
                         nature: Nature.Adamant,
-                        ivs: 12,
+                        ivs: 31,
                     },
                 ],
             },
@@ -1881,7 +1881,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-shard',
                         ],
                         nature: Nature.Brave,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'clefable',
@@ -1896,7 +1896,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'thunder-wave',
                         ],
                         nature: Nature.Careful,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'lopunny',
@@ -1911,7 +1911,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'quick-attack',
                         ],
                         nature: Nature.Adamant,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'grotle',
@@ -1926,7 +1926,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'bulldoze',
                         ],
                         nature: Nature.Quirky,
-                        ivs: 12,
+                        ivs: 31,
                     },
                 ],
             },
@@ -1946,7 +1946,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-shard',
                         ],
                         nature: Nature.Bold,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'clefable',
@@ -1961,7 +1961,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'thunder-wave',
                         ],
                         nature: Nature.Lonely,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'lopunny',
@@ -1976,7 +1976,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'quick-attack',
                         ],
                         nature: Nature.Docile,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'monferno',
@@ -1991,7 +1991,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'grass-knot',
                         ],
                         nature: Nature.Lonely,
-                        ivs: 12,
+                        ivs: 31,
                     },
                 ],
             },
@@ -2017,7 +2017,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-shard',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'granbull',
@@ -2032,7 +2032,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-fang',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'lickilicky',
@@ -2042,7 +2042,7 @@ export const BATTLES: Record<string, BattleData> = {
                         level: 29,
                         moves: ['slam', 'magnitude', 'knock-off', 'protect'],
                         nature: Nature.Hasty,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'prinplup',
@@ -2057,7 +2057,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'shadow-claw',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 12,
+                        ivs: 31,
                     },
                 ],
             },
@@ -2077,7 +2077,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-shard',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'granbull',
@@ -2092,7 +2092,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-fang',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'lickilicky',
@@ -2102,7 +2102,7 @@ export const BATTLES: Record<string, BattleData> = {
                         level: 29,
                         moves: ['slam', 'magnitude', 'knock-off', 'protect'],
                         nature: Nature.Hasty,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'grotle',
@@ -2117,7 +2117,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'bulldoze',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 12,
+                        ivs: 31,
                     },
                 ],
             },
@@ -2137,7 +2137,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-shard',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'granbull',
@@ -2152,7 +2152,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-fang',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'lickilicky',
@@ -2162,7 +2162,7 @@ export const BATTLES: Record<string, BattleData> = {
                         level: 29,
                         moves: ['slam', 'magnitude', 'knock-off', 'protect'],
                         nature: Nature.Hasty,
-                        ivs: 12,
+                        ivs: 31,
                     },
                     {
                         slug: 'monferno',
@@ -2177,7 +2177,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'grass-knot',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 12,
+                        ivs: 31,
                     },
                 ],
             },
@@ -5568,7 +5568,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'sweet-kiss',
                         ],
                         nature: Nature.Lonely,
-                        ivs: 24,
+                        ivs: 30,
                     },
                     {
                         slug: 'haunter',
@@ -5583,7 +5583,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'curse',
                         ],
                         nature: Nature.Sassy,
-                        ivs: 24,
+                        ivs: 30,
                     },
                     {
                         slug: 'porygon2',
@@ -5597,7 +5597,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'recover',
                         ],
                         nature: Nature.Docile,
-                        ivs: 24,
+                        ivs: 30,
                     },
                     {
                         slug: 'kadabra',
@@ -5612,7 +5612,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'recover',
                         ],
                         nature: Nature.Calm,
-                        ivs: 24,
+                        ivs: 30,
                     },
                 ],
             },
@@ -11923,7 +11923,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'dazzling-gleam',
                         ],
                         nature: Nature.Bashful,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'mamoswine',
@@ -11938,7 +11938,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-shard',
                         ],
                         nature: Nature.Serious,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'clefable',
@@ -11953,7 +11953,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'thunder-wave',
                         ],
                         nature: Nature.Naive,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'lopunny',
@@ -11968,7 +11968,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-punch',
                         ],
                         nature: Nature.Timid,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'flareon',
@@ -11983,7 +11983,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'will-o-wisp',
                         ],
                         nature: Nature.Hardy,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'empoleon',
@@ -11998,7 +11998,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'feather-dance',
                         ],
                         nature: Nature.Relaxed,
-                        ivs: 30,
+                        ivs: 31,
                     },
                 ],
             },
@@ -12018,7 +12018,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'dazzling-gleam',
                         ],
                         nature: Nature.Sassy,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'mamoswine',
@@ -12033,7 +12033,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-shard',
                         ],
                         nature: Nature.Mild,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'clefable',
@@ -12048,7 +12048,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'thunder-wave',
                         ],
                         nature: Nature.Quirky,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'lopunny',
@@ -12063,7 +12063,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-punch',
                         ],
                         nature: Nature.Naughty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'vaporeon',
@@ -12078,7 +12078,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'aqua-ring',
                         ],
                         nature: Nature.Careful,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'torterra',
@@ -12093,7 +12093,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'rock-slide',
                         ],
                         nature: Nature.Adamant,
-                        ivs: 30,
+                        ivs: 31,
                     },
                 ],
             },
@@ -12113,7 +12113,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'dazzling-gleam',
                         ],
                         nature: Nature.Modest,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'mamoswine',
@@ -12128,7 +12128,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-shard',
                         ],
                         nature: Nature.Lax,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'clefable',
@@ -12143,7 +12143,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'thunder-wave',
                         ],
                         nature: Nature.Brave,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'lopunny',
@@ -12158,7 +12158,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-punch',
                         ],
                         nature: Nature.Relaxed,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'jolteon',
@@ -12173,7 +12173,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'thunder-wave',
                         ],
                         nature: Nature.Jolly,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'infernape',
@@ -12188,7 +12188,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'rock-slide',
                         ],
                         nature: Nature.Bold,
-                        ivs: 30,
+                        ivs: 31,
                     },
                 ],
             },
@@ -12215,7 +12215,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'dazzling-gleam',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'mamoswine',
@@ -12230,7 +12230,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-shard',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'granbull',
@@ -12245,7 +12245,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'earthquake',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'lickilicky',
@@ -12260,7 +12260,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'amnesia',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'flareon',
@@ -12275,7 +12275,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'will-o-wisp',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'empoleon',
@@ -12290,7 +12290,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'feather-dance',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                 ],
             },
@@ -12310,7 +12310,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'dazzling-gleam',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'mamoswine',
@@ -12325,7 +12325,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-shard',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'granbull',
@@ -12340,7 +12340,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'earthquake',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'lickilicky',
@@ -12355,7 +12355,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'amnesia',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'vaporeon',
@@ -12370,7 +12370,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'aqua-ring',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'torterra',
@@ -12385,7 +12385,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'rock-slide',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                 ],
             },
@@ -12405,7 +12405,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'dazzling-gleam',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'mamoswine',
@@ -12420,7 +12420,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'ice-shard',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'granbull',
@@ -12435,7 +12435,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'earthquake',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'lickilicky',
@@ -12450,7 +12450,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'amnesia',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'jolteon',
@@ -12465,7 +12465,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'thunder-wave',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                     {
                         slug: 'infernape',
@@ -12480,7 +12480,7 @@ export const BATTLES: Record<string, BattleData> = {
                             'rock-slide',
                         ],
                         nature: Nature.Hasty,
-                        ivs: 30,
+                        ivs: 31,
                     },
                 ],
             },
@@ -12657,9 +12657,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'bird-keeper-briana': {
+    'bird-keeper-brianna': {
         trainerClass: 'bird-keeper',
-        name: 'Briana',
+        name: 'Brianna',
         teams: [
             {
                 team: [
