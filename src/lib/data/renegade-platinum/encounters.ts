@@ -4183,6 +4183,57 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             chance: 22,
         },
     ],
+    'sinnoh-route-217': [
+        {
+            species: 'piloswine',
+            method: EncounterMethod.Walking,
+            minLevel: 44,
+            maxLevel: 48,
+            chance: 30,
+        },
+        {
+            species: 'snorunt',
+            method: EncounterMethod.Walking,
+            minLevel: 44,
+            maxLevel: 48,
+            chance: 20,
+        },
+        {
+            species: 'sneasel',
+            method: EncounterMethod.Walking,
+            minLevel: 44,
+            maxLevel: 48,
+            chance: 10,
+        },
+        {
+            species: 'jynx',
+            method: EncounterMethod.Walking,
+            minLevel: 44,
+            maxLevel: 48,
+            chance: 10,
+        },
+        {
+            species: 'abomasnow',
+            method: EncounterMethod.Walking,
+            minLevel: 44,
+            maxLevel: 48,
+            chance: 10,
+        },
+        {
+            species: 'glalie',
+            method: EncounterMethod.Walking,
+            minLevel: 44,
+            maxLevel: 48,
+            chance: 10,
+        },
+        {
+            species: 'delibird',
+            method: EncounterMethod.Walking,
+            minLevel: 44,
+            maxLevel: 48,
+            chance: 10,
+        },
+    ],
     'team-galactic-eterna-building-4f': [
         {
             species: 'porygon',

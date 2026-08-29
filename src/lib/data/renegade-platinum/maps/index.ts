@@ -93,6 +93,7 @@ export { default as route213 } from './route-213.png';
 export { default as route214 } from './route-214.png';
 export { default as route215 } from './route-215.png';
 export { default as route216 } from './route-216.png';
+export { default as route217 } from './route-217.png';
 export { default as route218 } from './route-218.png';
 export { default as route219 } from './route-219.png';
 export { default as route220 } from './route-220.png';

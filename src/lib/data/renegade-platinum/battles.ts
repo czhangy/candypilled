@@ -15185,4 +15185,382 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'ace-trainer-snow-m-dalton': {
+        trainerClass: 'ace-trainer-snow-m',
+        name: 'Dalton',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'magmortar',
+                        ability: 'flame-body',
+                        gender: 'male',
+                        level: 52,
+                        moves: [
+                            'flamethrower',
+                            'thunderbolt',
+                            'psychic',
+                            'focus-blast',
+                        ],
+                        nature: Nature.Impish,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'venusaur',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        level: 52,
+                        moves: [
+                            'petal-dance',
+                            'sludge-bomb',
+                            'earthquake',
+                            'sleep-powder',
+                        ],
+                        nature: Nature.Calm,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'kingdra',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 52,
+                        moves: [
+                            'muddy-water',
+                            'ice-beam',
+                            'dragon-pulse',
+                            'yawn',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
+    'skier-f-madison': {
+        trainerClass: 'skier-f',
+        name: 'Madison',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'smoochum',
+                        ability: 'hydration',
+                        gender: 'female',
+                        level: 49,
+                        moves: [
+                            'nasty-plot',
+                            'blizzard',
+                            'perish-song',
+                            'avalanche',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'snorunt',
+                        ability: 'inner-focus',
+                        gender: 'female',
+                        level: 49,
+                        moves: ['blizzard', 'hail', 'switcheroo', 'protect'],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'jynx',
+                        ability: 'dry-skin',
+                        gender: 'female',
+                        level: 52,
+                        moves: [
+                            'blizzard',
+                            'perish-song',
+                            'avalanche',
+                            'body-slam',
+                        ],
+                        nature: Nature.Serious,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'ninja-boy-ethan': {
+        trainerClass: 'ninja-boy',
+        name: 'Ethan',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'drapion',
+                        ability: 'sniper',
+                        gender: 'male',
+                        level: 51,
+                        moves: [
+                            'cross-poison',
+                            'crunch',
+                            'scary-face',
+                            'night-slash',
+                        ],
+                        nature: Nature.Modest,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'skier-f-lexie': {
+        trainerClass: 'skier-f',
+        name: 'Lexie',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'dewgong',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        level: 51,
+                        moves: ['hail', 'dive', 'safeguard', 'sheer-cold'],
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'glaceon',
+                        ability: 'snow-cloak',
+                        gender: 'male',
+                        level: 51,
+                        moves: [
+                            'blizzard',
+                            'last-resort',
+                            'earth-power',
+                            'ice-beam',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'black-belt-luke': {
+        trainerClass: 'black-belt',
+        name: 'Luke',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'machamp',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 51,
+                        moves: [
+                            'dynamic-punch',
+                            'scary-face',
+                            'cross-chop',
+                            'bulk-up',
+                        ],
+                        nature: Nature.Bashful,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'toxicroak',
+                        ability: 'dry-skin',
+                        gender: 'male',
+                        level: 51,
+                        moves: [
+                            'flatter',
+                            'sludge-bomb',
+                            'cross-chop',
+                            'sucker-punch',
+                        ],
+                        nature: Nature.Docile,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'lucario',
+                        ability: 'adaptability',
+                        gender: 'male',
+                        level: 51,
+                        moves: [
+                            'meteor-mash',
+                            'close-combat',
+                            'blaze-kick',
+                            'dragon-pulse',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
+    'skier-m-shawn': {
+        trainerClass: 'skier-m',
+        name: 'Shawn',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'snover',
+                        ability: 'snow-warning',
+                        gender: 'male',
+                        level: 49,
+                        moves: [
+                            'sheer-cold',
+                            'blizzard',
+                            'icicle-crash',
+                            'mist',
+                        ],
+                        nature: Nature.Careful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'snover',
+                        ability: 'snow-warning',
+                        gender: 'male',
+                        level: 49,
+                        moves: [
+                            'sheer-cold',
+                            'blizzard',
+                            'icicle-crash',
+                            'mist',
+                        ],
+                        nature: Nature.Careful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'abomasnow',
+                        ability: 'snow-warning',
+                        gender: 'male',
+                        level: 52,
+                        moves: [
+                            'sheer-cold',
+                            'blizzard',
+                            'icicle-crash',
+                            'mist',
+                        ],
+                        nature: Nature.Bold,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'ninja-boy-matthew': {
+        trainerClass: 'ninja-boy',
+        name: 'Matthew',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'crobat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 51,
+                        moves: [
+                            'brave-bird',
+                            'nasty-plot',
+                            'zen-headbutt',
+                            'haze',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'skier-m-bjorn': {
+        trainerClass: 'skier-m',
+        name: 'Bjorn',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'swinub',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        level: 49,
+                        moves: ['blizzard', 'amnesia', 'icicle-crash', 'flail'],
+                        nature: Nature.Impish,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'swinub',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        level: 49,
+                        moves: ['blizzard', 'amnesia', 'icicle-crash', 'flail'],
+                        nature: Nature.Impish,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'piloswine',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        level: 52,
+                        moves: [
+                            'blizzard',
+                            'amnesia',
+                            'icicle-crash',
+                            'thrash',
+                        ],
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'ace-trainer-snow-f-olivia': {
+        trainerClass: 'ace-trainer-snow-f',
+        name: 'Olivia',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'shiftry',
+                        ability: 'chlorophyll',
+                        gender: 'female',
+                        level: 52,
+                        moves: [
+                            'leaf-blade',
+                            'dark-pulse',
+                            'hurricane',
+                            'fake-out',
+                        ],
+                        nature: Nature.Quiet,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'altaria',
+                        ability: 'cloud-nine',
+                        gender: 'female',
+                        level: 52,
+                        moves: [
+                            'dragon-pulse',
+                            'moonblast',
+                            'flamethrower',
+                            'ice-beam',
+                        ],
+                        nature: Nature.Rash,
+                        ivs: 30,
+                    },
+                    {
+                        slug: 'blissey',
+                        ability: 'serene-grace',
+                        gender: 'female',
+                        level: 52,
+                        moves: [
+                            'hyper-voice',
+                            'thunderbolt',
+                            'softboiled',
+                            'flamethrower',
+                        ],
+                        nature: Nature.Modest,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
 };
