@@ -16,7 +16,7 @@ const SPEAR_PILLAR: Location = {
         },
         {
             battleKey: 'commander-mars-and-commander-jupiter-spear-pillar',
-            metadata: [BattleMetadata.Tag],
+            metadata: [BattleMetadata.Tag, BattleMetadata.Miniboss],
             customWidth: 82,
             x: 49.3,
             y: 48.6,

@@ -1,3 +1,4 @@
+import DISTORTION_WORLD from '@/lib/data/renegade-platinum/locations/distortion-world';
 import GALACTIC_HQ from '@/lib/data/renegade-platinum/locations/galactic-hq';
 import MT_CORONET from '@/lib/data/renegade-platinum/locations/mt-coronet';
 import ROUTE_216 from '@/lib/data/renegade-platinum/locations/route-216';
@@ -24,6 +25,7 @@ const VOLKNER: Split = {
             '1F (216)',
         ]),
         SPEAR_PILLAR,
+        DISTORTION_WORLD,
     ],
     saveCondition: { type: 'badge', bit: 7 },
 };
