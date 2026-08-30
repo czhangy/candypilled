@@ -26,6 +26,4 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 @.claude/docs/code-style.md
 
-@.claude/docs/domain-data-authoring.md
-
-@.claude/docs/passthrough-checklist.md
+@.claude/docs/battle-metadata.md
