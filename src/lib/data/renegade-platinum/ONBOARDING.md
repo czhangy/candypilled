@@ -220,6 +220,7 @@ assumption, only after the user explicitly says so for this game.
 | `policeman`    | male   | 2026-08-29 |
 | `poke-kid`     | female | 2026-08-29 |
 | `sailor`       | male   | 2026-08-29 |
+| `guitarist`    | male   | 2026-08-30 |
 
 **`BattleMetadata` is never on the sheet and never inferred** from
 trainer class, species, or precedent from another battle. Every value in

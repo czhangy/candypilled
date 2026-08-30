@@ -8,6 +8,7 @@ import ROUTE_223 from '@/lib/data/renegade-platinum/locations/route-223';
 import SENDOFF_SPRING from '@/lib/data/renegade-platinum/locations/sendoff-spring';
 import SPEAR_PILLAR from '@/lib/data/renegade-platinum/locations/spear-pillar';
 import SUNYSHORE_CITY from '@/lib/data/renegade-platinum/locations/sunyshore-city';
+import SUNYSHORE_GYM from '@/lib/data/renegade-platinum/locations/sunyshore-gym';
 import VALOR_CAVERN from '@/lib/data/renegade-platinum/locations/valor-cavern';
 import VERITY_CAVERN from '@/lib/data/renegade-platinum/locations/verity-cavern';
 import { Split } from '@/lib/static/types';
@@ -43,6 +44,7 @@ const VOLKNER: Split = {
         ROUTE_222,
         LocationHelpers.withHiddenBattles(SUNYSHORE_CITY),
         ROUTE_223,
+        SUNYSHORE_GYM,
     ],
     saveCondition: { type: 'badge', bit: 7 },
 };

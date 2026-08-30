@@ -22,6 +22,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Ace Trainer',
         spriteSlug: 'ace-trainer-snow-m',
     },
+    'arcade-star-dahlia': {
+        displayName: 'Arcade Star',
+        spriteSlug: 'dahlia',
+    },
     'aroma-lady': {
         displayName: 'Aroma Lady',
         spriteSlug: 'aroma-lady',
