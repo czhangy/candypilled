@@ -40,6 +40,196 @@ a completely different game in a different generation? If not, it's a
 project-memory or code-comment fact, not a skill instruction — generalize
 it or leave it out.
 
+## Ask, never assume
+
+A missing, unclear, or ambiguous value is a **hard stop**: stop and ask
+the user before writing anything, every time — no exceptions for
+convenience, obviousness, "surely this is fine," or wanting to finish a
+task in one pass. This applies to every category of data a game onboard
+touches (species/level/nature/ability/item/move/gender/IV values, map
+anchors, coordinates, battle metadata, split placement, save conditions)
+and to structural/modeling calls, not just leaf values — never infer a
+battle's structure (pairing two trainers as a Tag, treating a note as a
+Multi Battle, assuming an existing type shape is "the" model) from source
+phrasing or from what the current schema happens to support; report what
+the source says and ask how to model it.
+
+It applies even to fields that are structurally optional in TypeScript
+(`ivs`, `heldItem`, `gender`) — optional-in-the-type is never the same
+thing as optional-in-the-data. Omitting a field is only correct when the
+source of truth explicitly establishes the field doesn't apply (e.g. a
+genderless species's `gender`), never as a stand-in for "couldn't find a
+value." A value only ever comes from (1) something explicit in a
+documented source, or (2) something the user has explicitly said, for
+this exact case, in this exact game. "Every other field in this row
+follows a pattern," "this is the only value that would sensibly work
+here," "a similar case elsewhere used this value," and "this is common
+knowledge about the games" are all guesses, not data, no matter how
+confident they feel — a guess written into the dataset is corruption
+that's indistinguishable later from a real, sourced value.
+
+**A recurring, per-case judgment call (e.g. "does this trainer class
+imply a fixed gender?") should still be asked every time it comes up,
+but the confirmed answers should accumulate in a small table in that
+game's own reference doc (see "Document the source of truth" below) so
+the same case is never re-asked twice.** Only add a row to that table
+after the user has explicitly confirmed it for this game — never
+pre-populate it from real-game canon or another game's table.
+
+A new item (a location, a battle, a split entry) is appended in the order
+the user gives it or the source of truth lists it — never reordered by
+inferred in-game/geographic/canon order. That's a guess about structure,
+covered by the same rule as any other guess.
+
+## Vanilla games vs. ROM hacks
+
+Onboarding branches hard on whether the target is an unmodified cartridge
+version or a fan-made hack (a binary patch or a from-scratch fangame), because
+a hack usually breaks every assumption the mechanical, API-driven vanilla
+flow relies on:
+
+- **Encounter/trainer data source.** A vanilla game's wild encounters and
+  base data come from PokeAPI (see the encounter-scraper steps below) and,
+  for Gen 3/4, trainer battle data (team, IVs, AI) can be extracted from
+  that game's own pret-style decomp — the `gen4-trainer-data-extraction`
+  skill does this for Gen 4. **Neither exists for a hack.** PokeAPI has no
+  concept of a fan patch, and a hack's own decomp — if one is even
+  public — reflects the _base_ game's unpatched data, not the hack's
+  hand-edited changes. Running vanilla extraction tooling against a hack
+  silently returns wrong data with no error, because the tool has no way
+  to know the roster it's reading was overwritten by the patch. A hack's
+  data has to come from whatever the hack's own community maintains
+  instead — a tracker spreadsheet, a wiki, a hex-edit changelog — pointed
+  at explicitly by the user. If no such source exists yet, that's a
+  blocker to raise, not a reason to fall back to decomp/PokeAPI data that
+  looks plausible.
+- **Data modeling: full dataset vs. sparse override.** When a hack only
+  changes _some_ fields of _some_ entries in an otherwise-vanilla dataset
+  (e.g. a "difficulty hack" that rebalances some Pokémon's stats/movepools
+  and retunes some moves but leaves the rest of the dex untouched), model
+  it as **vanilla data + a sparse override table**, not as an independent
+  copy of the full dataset — this is a shared, reusable mechanism, not
+  specific to any one hack:
+    - `DataOverrides<T> = Record<string, Partial<T>>` (`types.ts`) — a
+      sparse, field-level patch keyed by slug.
+    - `GameDataSource.overrides?: { pokemon?: DataOverrides<PokemonData>;
+moves?: DataOverrides<MoveData> }` — kept unmerged (for a future
+      "what changed" view); the game's own `pokemon`/`moves` exports hold
+      the merged result.
+    - `DataOverrideHelpers.applyOverrides<T>(base, overrides)` — shallow,
+      per-field replace matched by slug.
+    - `DataOverrideHelpers.removeEntries` — for content the hack retires
+      outright (e.g. moves cut from the game).
+    - When diffing a field against vanilla to decide whether it needs an
+      override, diff against vanilla's value **as resolved for that
+      generation** (what `GenerationHelpers.resolveGeneration` would
+      actually pick), not "does vanilla's raw data contain this value
+      anywhere" — those can differ.
+    - Encounters and trainer battles are never modeled this way even for a
+      hack that otherwise uses overrides — they're always fully
+      independent per game, vanilla or not, since even a hack that reuses
+      most of the base dex typically rewrites every encounter table and
+      trainer roster.
+- **No decomp means no static verification — verify empirically instead.**
+  A hack that's a binary patch over a commercial ROM (rather than an
+  open-source fangame) has no source repository to check anything against:
+  no `constants/badge.h` to read a badge's bit index from, no
+  `gym_features.c` to confirm which badge a gym leader grants, no trainer
+  data table to extract IVs from. Anything the vanilla flow would derive
+  from source has to be confirmed against a **real save file** instead
+  (e.g. a `.sav`/`.dsv` from an emulator): validate the save's layout by
+  checksum against the closest vanilla layout, then cross-check decoded
+  values (money, badges earned, story-progress flags) against what the
+  user actually observed in a real playthrough. Don't assume a hack kept
+  the base game's bit order/offsets just because nothing _looks_ changed —
+  confirm each one, the same way any other value would need confirming.
+  If a specific bit/offset genuinely can't be pinned down this way yet,
+  say so explicitly in the game's status tracking rather than writing an
+  unverified guess into a `saveCondition` and moving on.
+- **Asset reuse is common but still needs verification, never assumption.**
+  Many hacks reuse the base game's sprites/badges/trainer art wholesale, or
+  reuse _another_ same-generation game's assets (e.g. a Platinum hack
+  reusing HeartGold/SoulSilver Pokémon sprites). This makes the
+  "Sharing public/ assets across games" section below (content-hash diffing
+  before pointing a shared-asset field at an existing folder) apply _more_
+  often for hacks, not less — a patch changing gameplay data says nothing
+  about whether it also changed art, so still diff every file rather than
+  assuming reuse from "it's built on top of X."
+- **A hack still gets a real `Game.generation`/`version`** matching
+  whatever base game/version-group it's built on (needed to resolve
+  shared movesets, etc.) even though its actual content diverges — this is
+  a technical/schema fact, not an in-universe one, so it's fine to set
+  from knowing what the hack patches.
+
+## Necessary external references
+
+What to pull from, and when, differs by game type — treat this as a
+checklist to nail down before authoring anything, not something to
+discover mid-task:
+
+**Vanilla game:**
+
+- **PokeAPI** — wild encounters (via the `pokeapi:encounters` scraper) and
+  base species/move data, scoped to the specific version/version-group.
+- **That generation's pret-style decomp** (e.g. pokediamond/pokeplatinum
+  for Gen 4) — trainer battle data (team, IVs, AI flags) via
+  `gen4-trainer-data-extraction` for Gen 4, plus generation-wide constants
+  like badge bit order (`constants/badge.h` / `generated/badges.txt`) and
+  per-gym badge-grant logic (an overlay's gym-features file).
+- **Bulbapedia/Serebii** — met-location index tables, cross-checking
+  version-exclusivity edge cases (especially anything gated behind
+  cross-cartridge trading, which PokeAPI doesn't model correctly), and as
+  a second source whenever a web-fetch summary of a wiki table looks
+  surprising (pull raw wikitext instead of trusting a summarized fetch).
+
+**ROM hack:**
+
+- **The hack's own community-maintained tracker** — a spreadsheet, wiki,
+  or changelog documenting what the hack actually changed (encounters,
+  trainer rosters, stat/move rebalances, item changes). This is the
+  _only_ valid source for anything the hack touched — never substitute
+  PokeAPI or a base-game decomp for it. Get this from the user; if it
+  doesn't exist, onboarding this hack is blocked until it does.
+- **A real save file** for that hack, from an emulator — the only way to
+  confirm save layout/badge-bit/story-flag facts when no decomp exists
+  (see above).
+- **Bulbapedia/Serebii for the base game** — still useful for facts a
+  specific hack didn't change (e.g. which HM a badge unlocks in the base
+  game), but never assumed unchanged; confirm against the tracker or the
+  user before relying on base-game canon for anything the hack could
+  plausibly have touched.
+
+### Document the source of truth
+
+Whenever a game's data comes from a hand-curated external document (a
+tracker spreadsheet, a wiki, anything that isn't a mechanical API/decomp
+fetch), write a `src/lib/data/<slug>/ONBOARDING.md` reference doc for that
+game and keep it current as onboarding proceeds. It should capture,
+concretely enough that a future session can act without re-deriving it:
+
+- Document/workbook IDs and URLs, which tab (by name and gid) holds which
+  kind of data, and how to re-derive the tab list if it changes (e.g. a
+  regex against the sheet's exported bootstrap JS).
+- The exact column layout/stride and any grouping convention (e.g. "one
+  location per N columns, method labels in column A").
+- Sentinel rows/markers that bound where a section starts and stops —
+  getting this wrong silently pulls in a different section's/game's data.
+- A mechanical cell → field mapping table for anything that translates
+  1:1 (e.g. "`<n> IVs` in a trainer's name cell → `ivs: <n>`"), separated
+  clearly from anything that is **not** mechanical and always needs asking
+  (structural notes like "Double Battle w/ X", missing values, anything
+  ambiguous).
+- Any per-case confirmed-facts table accumulated per "Ask, never assume"
+  above (e.g. which trainer classes have a user-confirmed fixed gender for
+  this game), so those cases stop being re-asked.
+- A running phase-status table (what's done, what's in progress, what's
+  explicitly unverified/assumed and why) — keep this accurate as work
+  progresses rather than letting it drift from the actual repo state.
+
+This doc is a live procedural reference for that one game, not a session
+log — when a rule changes, edit it in place rather than appending a dated
+narrative about the change.
+
 ## Single-version game (e.g. Platinum)
 
 Reference implementation: `src/lib/data/platinum/`.
@@ -55,7 +245,11 @@ Reference implementation: `src/lib/data/platinum/`.
     - `maps/*.png` + `maps/index.ts` — map images and their barrel export.
     - `splits/*.ts` — `Split[]` groupings of locations in gym-leader order,
       imported into `<slug>.ts`'s `splits` array.
-2. **Encounter-scraper config** — add
+2. **Encounter-scraper config** (vanilla games only — a ROM hack has no
+   PokeAPI coverage; skip straight to hand-authoring `encounters.ts` from
+   the hack's own tracker per "Vanilla games vs. ROM hacks" above,
+   following the mechanical cell → field mapping documented in that
+   game's own `ONBOARDING.md`) — add
    `src/lib/scripts/pokeapi/game-versions/<slug>.ts` exporting a
    `GameVersion` (id, label, PokeAPI version slug, region, generation, plus
    the exclusion/override/merge config — see an existing game's file for
@@ -90,8 +284,10 @@ Reference implementation: `src/lib/data/platinum/`.
    trainer data (team, AI flags) is then hand-authored in `battles.ts`,
    keyed by the generated `battleKey`.
     - **When an external trainer data source is involved (keyed by some
-      internal trainer ID), battle population is a location-by-location,
-      collaborative loop — not something to run solo end-to-end.** The
+      internal trainer ID or by name on a tracker sheet — always the case
+      for a ROM hack, per "Vanilla games vs. ROM hacks" above), battle
+      population is a location-by-location, collaborative loop — not
+      something to run solo end-to-end.** The
       workflow: the user supplies, per location, the trainer names present
       there (in order), each one's IVs, and each one's `BattleMetadata`.
       Map those names to the matching entries in the external data source
@@ -99,6 +295,11 @@ Reference implementation: `src/lib/data/platinum/`.
       `battles.ts` (merging in the user-supplied IVs/metadata). Then wire
       the resulting `battleKey`s into that location's `battles: []` array
       in the order the user gave the names, with `x: 0, y: 0` placeholders.
+      Every part of this loop (map first, then encounters, then battles,
+      with a stated-and-confirmed parse at each stage before writing) is
+      itself part of "ask, never assume" above — state exactly what was
+      parsed and get it confirmed before it lands in a `.ts` file, even
+      when the parse looks unambiguous.
     - **`battleKey` naming is an app convention, check an existing game's
       `battles.ts` for it rather than inventing one per-battle.** Most keys
       are `<trainer-class-slug>-<name>` for named individuals, but a
@@ -141,19 +342,29 @@ Reference implementation: `src/lib/data/platinum/`.
       teams and battles" below before authoring `battles.ts`/the location's
       `battles: []` array** — don't default to a single `team`/one `Battle`
       entry and bolt on a workaround later.
-    - **IVs must always be derived from that game's own primary source data
-      (its decomp or equivalent reference), never asked of or guessed by
-      the user by default.** Back-solving from a data source's raw computed
-      stats (the standard stat formula) is unreliable on its own — it's
-      often ambiguous at low levels, where multiple IVs round to the same
-      displayed stat — so don't rely on that method alone; use it only as a
-      cross-check against a direct source. For Gen 4 games, the direct
-      source and derivation formula are documented in the
-      `gen4-trainer-data-extraction` skill (which reads the real IV
-      straight out of the decomp's trainer data, not back-solved). If a
-      target game has no such derivation path documented yet, that's a gap
-      to fill (research and document the mechanism, the same way Gen 4's
-      was derived) rather than a reason to fall back to asking the user.
+    - **For a vanilla game, IVs must always be derived from that game's own
+      primary source data (its decomp or equivalent reference), never
+      asked of or guessed by the user by default.** Back-solving from a
+      data source's raw computed stats (the standard stat formula) is
+      unreliable on its own — it's often ambiguous at low levels, where
+      multiple IVs round to the same displayed stat — so don't rely on
+      that method alone; use it only as a cross-check against a direct
+      source. For Gen 4 games, the direct source and derivation formula are
+      documented in the `gen4-trainer-data-extraction` skill (which reads
+      the real IV straight out of the decomp's trainer data, not
+      back-solved). If a target vanilla game has no such derivation path
+      documented yet, that's a gap to fill (research and document the
+      mechanism, the same way Gen 4's was derived) rather than a reason to
+      fall back to asking the user.
+    - **For a ROM hack, IVs come from the hack's own tracker, never from
+      `gen4-trainer-data-extraction` or any other vanilla-decomp
+      extraction tool** — that tooling reads the unpatched base game and
+      will silently return the wrong value for a hand-edited hack roster.
+      If the tracker's IV note doesn't clearly cover a specific team
+      member (no team-wide note, no paired-trainer note, no per-mon split
+      naming it), that's a hard stop per "Ask, never assume" — there's no
+      decomp to cross-check against as a fallback, so ask the user rather
+      than guessing a plausible-looking number.
 6. **New trainer classes** — if a battle references a trainer class not
    already in `src/lib/data/trainer-classes.ts`, add it with
    `npm run gen:trainer-class <folder> <classSlug> <displayName> [spriteSlug]`
@@ -333,6 +544,20 @@ not a safe proxy for bit order. The derivation is two independent steps:
 If no gym-specific source can be found in the target game's decomp, ask the
 user rather than guessing — a wrong bit silently marks the wrong split
 complete on import, which is easy to miss since nothing crashes.
+
+**A ROM hack with no public decomp has no source to check either step
+against.** Don't fall back to assuming the hack kept the base game's bit
+order just because nothing else about the badge system looks changed —
+that's exactly the kind of silent, hard-to-catch wrongness this section
+warns about. Resolve it empirically instead, the same way the rest of that
+hack's save layout should already have been confirmed (see "Vanilla games
+vs. ROM hacks" above): decode real save files at different points of
+badge progression and check which bits actually flip as each gym is
+beaten. Until that confirmation exists for a given bit, record it in the
+game's own status tracking as explicitly unverified/assumed rather than
+committing it indistinguishably from a confirmed value — a `saveCondition`
+written from an assumption is worse than one left pending, since nothing
+signals the difference once it's in the file.
 
 ## Variant games sharing one generation (e.g. Diamond & Pearl)
 
