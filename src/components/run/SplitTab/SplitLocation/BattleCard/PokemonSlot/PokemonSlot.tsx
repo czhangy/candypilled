@@ -223,7 +223,16 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                             className={[
                                 styles['ability-button'],
                                 styles['held-item'],
-                            ].join(' ')}
+                                highlightDangerous &&
+                                    heldItemSlug &&
+                                    ItemHelpers.isDangerousItem(
+                                        dataSource,
+                                        heldItemSlug
+                                    ) &&
+                                    styles['ability-button--dangerous'],
+                            ]
+                                .filter(Boolean)
+                                .join(' ')}
                             onClick={() => onSelectItem?.(heldItemSlug ?? '')}
                             type="button"
                         >
@@ -243,7 +252,16 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                                 styles['ability-button'],
                                 styles['ability-button--readonly'],
                                 styles['held-item'],
-                            ].join(' ')}
+                                highlightDangerous &&
+                                    heldItemSlug &&
+                                    ItemHelpers.isDangerousItem(
+                                        dataSource,
+                                        heldItemSlug
+                                    ) &&
+                                    styles['ability-button--dangerous'],
+                            ]
+                                .filter(Boolean)
+                                .join(' ')}
                         >
                             {heldItemSprite && (
                                 <Image

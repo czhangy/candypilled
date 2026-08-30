@@ -82,6 +82,11 @@ const REMOVED_IN_GENERATION: Record<string, number> = {
     'yellow-scarf': 5,
 };
 
+// PokeAPI has no concept of "dangerous" items (ones that can end a run in a
+// single unlucky turn via a hard-to-play-around evasion/survival effect), so
+// this set is curated by hand rather than derived from the API.
+const DANGEROUS_ITEMS = new Set(['focus-band', 'bright-powder', 'lax-incense']);
+
 // PokeAPI's flavor/effect text uses a typographic apostrophe (’); this
 // project's copy uses a plain one throughout, so every string in the
 // written data is normalized to match.
@@ -269,6 +274,7 @@ export const fetchItems = async (): Promise<void> => {
             effect: toEnglishEffect(item.effect_entries),
             introducedInGeneration,
             ...(removedInGeneration && { removedInGeneration }),
+            isDangerous: DANGEROUS_ITEMS.has(slug),
             sprite,
             valuesByGeneration: buildValuesByGeneration(
                 item,

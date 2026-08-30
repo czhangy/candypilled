@@ -675,6 +675,9 @@ export type ItemData = {
     // than derived from any API field. Only set for the handful of items
     // that were actually removed from later games.
     removedInGeneration?: number;
+    // PokeAPI has no concept of "dangerous" items, so this is curated
+    // separately rather than derived from any API field.
+    isDangerous: boolean;
     sprite: string;
     valuesByGeneration: ItemValuesByGeneration[];
 };

@@ -5,6 +5,7 @@
         "category": "held-items",
         "effect": "Held: Increases the holder's evasion by 1/9 (11 1/9%).",
         "introducedInGeneration": 2,
+        "isDangerous": true,
         "sprite": "/items/bright-powder.png",
         "valuesByGeneration": [
             {
@@ -23,6 +24,7 @@
         "category": "held-items",
         "effect": "Held: Resets all lowered stats to normal at end of turn. Consumed after use.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/white-herb.png",
         "valuesByGeneration": [
             {
@@ -41,6 +43,7 @@
         "category": "held-items",
         "effect": "Held: Holder has a 3/16 (18.75%) chance to move first.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/quick-claw.png",
         "valuesByGeneration": [
             {
@@ -59,6 +62,7 @@
         "category": "held-items",
         "effect": "Held: Consumed to cure infatuation. Gen V: Also removes Taunt, Encore, Torment, Disable, and Cursed Body.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/mental-herb.png",
         "valuesByGeneration": [
             {
@@ -77,6 +81,7 @@
         "category": "held-items",
         "effect": "Held: Damaging moves gain a 10% chance to make their target flinch. Traded on a Poliwhirl: Holder evolves into Politoed. Traded on a Slowpoke: Holder evolves into Slowking.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/king-s-rock.png",
         "valuesByGeneration": [
             {
@@ -99,6 +104,7 @@
         "category": "held-items",
         "effect": "Held: Allows the Holder to escape from any wild battle.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/smoke-ball.png",
         "valuesByGeneration": [
             {
@@ -117,6 +123,7 @@
         "category": "held-items",
         "effect": "Held: Holder has 10% chance to survive attacks or self-inflicted damage at 1 HP.",
         "introducedInGeneration": 2,
+        "isDangerous": true,
         "sprite": "/items/focus-band.png",
         "valuesByGeneration": [
             {
@@ -135,6 +142,7 @@
         "category": "held-items",
         "effect": "Held: Raises the holder's critical hit ratio by one stage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/scope-lens.png",
         "valuesByGeneration": [
             {
@@ -153,6 +161,7 @@
         "category": "held-items",
         "effect": "Held: Restores 1/16 (6.25%) holder's max HP at the end of each turn.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/leftovers.png",
         "valuesByGeneration": [
             {
@@ -171,6 +180,7 @@
         "category": "held-items",
         "effect": "Held: Holder receives 1/8 of the damage it deals when attacking.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/shell-bell.png",
         "valuesByGeneration": [
             {
@@ -189,6 +199,7 @@
         "category": "held-items",
         "effect": "Held: Holder's evasion is increased by 5%. Breeding: Wobbuffet begets a Wynaut Egg.",
         "introducedInGeneration": 3,
+        "isDangerous": true,
         "sprite": "/items/lax-incense.png",
         "valuesByGeneration": [
             {
@@ -211,6 +222,7 @@
         "category": "held-items",
         "effect": "Held: Provides a 1/10 (10%) boost in accuracy to the holder.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/wide-lens.png",
         "valuesByGeneration": [
             {
@@ -225,6 +237,7 @@
         "category": "held-items",
         "effect": "Held: Boosts the damage of physical moves used by the holder by 10%.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/muscle-band.png",
         "valuesByGeneration": [
             {
@@ -239,6 +252,7 @@
         "category": "held-items",
         "effect": "Held: Boosts the damage of special moves used by the holder by 1/10 (10%).",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/wise-glasses.png",
         "valuesByGeneration": [
             {
@@ -253,6 +267,7 @@
         "category": "held-items",
         "effect": "Held: Holder's Super Effective moves do 20% extra damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/expert-belt.png",
         "valuesByGeneration": [
             {
@@ -267,6 +282,7 @@
         "category": "held-items",
         "effect": "Held: Light Screen and Reflect used by the holder last 8 rounds instead of 5.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/light-clay.png",
         "valuesByGeneration": [
             {
@@ -285,6 +301,7 @@
         "category": "held-items",
         "effect": "Held: Holder's moves inflict 30% extra damage, but cost 10% max HP.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/life-orb.png",
         "valuesByGeneration": [
             {
@@ -299,6 +316,7 @@
         "category": "held-items",
         "effect": "Held: Both turns of a two-turn charge move happen at once. Consumed upon use.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/power-herb.png",
         "valuesByGeneration": [
             {
@@ -313,6 +331,7 @@
         "category": "held-items",
         "effect": "Held: Holder survives any single-hit attack at 1 HP if at max HP, then the item is consumed.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/focus-sash.png",
         "valuesByGeneration": [
             {
@@ -327,6 +346,7 @@
         "category": "held-items",
         "effect": "Held: Provides a 1/5 (20%) boost in accuracy if the holder moves after the target.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/zoom-lens.png",
         "valuesByGeneration": [
             {
@@ -345,6 +365,7 @@
         "category": "held-items",
         "effect": "Held: Consectutive uses of the same attack have a cumulative damage boost of 10%. Maximum 100% boost.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/metronome.png",
         "valuesByGeneration": [
             {
@@ -363,6 +384,7 @@
         "category": "held-items",
         "effect": "Held: Infatuates opposing Pokémon when holder is inflicted with infatuation.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/destiny-knot.png",
         "valuesByGeneration": [
             {
@@ -381,6 +403,7 @@
         "category": "held-items",
         "effect": "Held: Poison-type holder recovers 1/16 (6.25%) max HP each turn. Non-Poison-Types take 1/8 (12.5%) max HP damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/black-sludge.png",
         "valuesByGeneration": [
             {
@@ -399,6 +422,7 @@
         "category": "held-items",
         "effect": "Held: Hail by the holder lasts 8 rounds instead of 5.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/icy-rock.png",
         "valuesByGeneration": [
             {
@@ -417,6 +441,7 @@
         "category": "held-items",
         "effect": "Held: Sandstorm by the holder lasts 8 rounds instead of 5.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/smooth-rock.png",
         "valuesByGeneration": [
             {
@@ -435,6 +460,7 @@
         "category": "held-items",
         "effect": "Held: Sunny Day by the holder lasts 8 rounds instead of 5.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/heat-rock.png",
         "valuesByGeneration": [
             {
@@ -453,6 +479,7 @@
         "category": "held-items",
         "effect": "Held: Rain Dance by the holder lasts 8 rounds instead of 5.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/damp-rock.png",
         "valuesByGeneration": [
             {
@@ -471,6 +498,7 @@
         "category": "held-items",
         "effect": "Held: Holder's multi-turn trapping moves last 5 turns.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/grip-claw.png",
         "valuesByGeneration": [
             {
@@ -489,6 +517,7 @@
         "category": "held-items",
         "effect": "Held: Holder can bypass all trapping effects and switch out. Multi-turn moves still cannot be switched out of.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/shed-shell.png",
         "valuesByGeneration": [
             {
@@ -503,6 +532,7 @@
         "category": "held-items",
         "effect": "Held: Increases HP recovered from draining moves, Ingrain, and Aqua Ring by 3/10 (30%).",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/big-root.png",
         "valuesByGeneration": [
             {
@@ -521,6 +551,7 @@
         "category": "held-items",
         "effect": "Held: Raises the holder's critical hit ratio by one stage. Held by a Sneasel while levelling up at night: Holder evolves into Weavile.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/razor-claw.png",
         "valuesByGeneration": [
             {
@@ -535,6 +566,7 @@
         "category": "held-items",
         "effect": "Held: Damaging moves gain a 10% chance to make their target flinch. Held by a Gligar while levelling up: Holder evolves into Gliscor.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/razor-fang.png",
         "valuesByGeneration": [
             {
@@ -553,6 +585,7 @@
         "category": "held-items",
         "effect": "Held: Holder has 1.5× Defense and Special Defense, as long as it's not fully evolved.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/eviolite.png",
         "valuesByGeneration": [
             {
@@ -567,6 +600,7 @@
         "category": "held-items",
         "effect": "Held: Holder has 0.5× weight.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/float-stone.png",
         "valuesByGeneration": [
             {
@@ -581,6 +615,7 @@
         "category": "held-items",
         "effect": "Held: When the holder is hit by a contact move, the attacking Pokémon takes 1/6 its max HP in damage.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/rocky-helmet.png",
         "valuesByGeneration": [
             {
@@ -595,6 +630,7 @@
         "category": "held-items",
         "effect": "Held: Grants immunity to Ground-type moves, Spikes, and Toxic Spikes. Consumed when the holder takes damage from a move.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/air-balloon.png",
         "valuesByGeneration": [
             {
@@ -609,6 +645,7 @@
         "category": "held-items",
         "effect": "Held: When the holder takes damage from a move, the opponent switches out for another random party Pokémon. Consumed after use.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/red-card.png",
         "valuesByGeneration": [
             {
@@ -623,6 +660,7 @@
         "category": "held-items",
         "effect": "Held: Negates the holder's type immunities. Ability immunities are not removed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/ring-target.png",
         "valuesByGeneration": [
             {
@@ -637,6 +675,7 @@
         "category": "held-items",
         "effect": "Held: Doubles the per-turn damage of multi-turn trapping moves.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/binding-band.png",
         "valuesByGeneration": [
             {
@@ -651,6 +690,7 @@
         "category": "held-items",
         "effect": "Held: Raises the holder's Special Attack by one stage when it takes Water-type damage.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/absorb-bulb.png",
         "valuesByGeneration": [
             {
@@ -665,6 +705,7 @@
         "category": "held-items",
         "effect": "Held: Raises the holder's Attack by one stage when it takes Electric-type damage.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/cell-battery.png",
         "valuesByGeneration": [
             {
@@ -679,6 +720,7 @@
         "category": "held-items",
         "effect": "Held: When the holder takes damage from a move, it switches out for a party Pokémon of the Trainer's choice.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/eject-button.png",
         "valuesByGeneration": [
             {
@@ -693,6 +735,7 @@
         "category": "held-items",
         "effect": "Activates Pass Powers.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/pass-orb.png",
         "valuesByGeneration": [
             {
@@ -707,6 +750,7 @@
         "category": "choice",
         "effect": "Held: Increases Attack by 50%, but restricts the holder to only one move.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/choice-band.png",
         "valuesByGeneration": [
             {
@@ -729,6 +773,7 @@
         "category": "choice",
         "effect": "Held: Increases Speed by 50%, but restricts the holder to only one move.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/choice-scarf.png",
         "valuesByGeneration": [
             {
@@ -747,6 +792,7 @@
         "category": "choice",
         "effect": "Held: Increases Special Attack by 50%, but restricts the holder to only one move.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/choice-specs.png",
         "valuesByGeneration": [
             {
@@ -765,6 +811,7 @@
         "category": "effort-training",
         "effect": "Held: Holder gains double effort values from battles, but has halved Speed in battle.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/macho-brace.png",
         "valuesByGeneration": [
             {
@@ -783,6 +830,7 @@
         "category": "effort-training",
         "effect": "Held: Holder gains 4 Attack effort values, but has halved Speed in battle.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/power-bracer.png",
         "valuesByGeneration": [
             {
@@ -801,6 +849,7 @@
         "category": "effort-training",
         "effect": "Held: Holder gains 4 Defense effort values, but has halved Speed in battle.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/power-belt.png",
         "valuesByGeneration": [
             {
@@ -819,6 +868,7 @@
         "category": "effort-training",
         "effect": "Held: Holder gains 4 Special Attack effort values, but has halved Speed in battle.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/power-lens.png",
         "valuesByGeneration": [
             {
@@ -837,6 +887,7 @@
         "category": "effort-training",
         "effect": "Held: Holder gains 4 Special Defense effort values, but has halved Speed in battle.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/power-band.png",
         "valuesByGeneration": [
             {
@@ -855,6 +906,7 @@
         "category": "effort-training",
         "effect": "Held: Holder gains 4 Speed effort values, but has halved Speed in battle.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/power-anklet.png",
         "valuesByGeneration": [
             {
@@ -873,6 +925,7 @@
         "category": "effort-training",
         "effect": "Held: Holder gains 4 HP effort values, but has halved Speed in battle.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/power-weight.png",
         "valuesByGeneration": [
             {
@@ -891,6 +944,7 @@
         "category": "bad-held-items",
         "effect": "Held: Inflicts Toxic on the holder at the end of the turn. Activates after Poison damage would occur.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/toxic-orb.png",
         "valuesByGeneration": [
             {
@@ -905,6 +959,7 @@
         "category": "bad-held-items",
         "effect": "Held: Inflicts Burn on the holder at the end of the turn. Activates after Burn damage would occur.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/flame-orb.png",
         "valuesByGeneration": [
             {
@@ -919,6 +974,7 @@
         "category": "bad-held-items",
         "effect": "Held: Holder's Speed is halved. Negates all Ground-type immunities, and makes Flying-types take neutral damage from Ground-type moves. Arena Trap. Spikes, and Toxic Spikes affect the holder.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/iron-ball.png",
         "valuesByGeneration": [
             {
@@ -937,6 +993,7 @@
         "category": "bad-held-items",
         "effect": "Held: Holder moves last in its priority bracket.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/lagging-tail.png",
         "valuesByGeneration": [
             {
@@ -951,6 +1008,7 @@
         "category": "bad-held-items",
         "effect": "Held: Holder takes 1/8 (12.5%) its max HP at the end of each turn. When the holder is hit by a contact move, the attacking Pokémon takes 1/8 its max HP in damage and receive the item if not holding one.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/sticky-barb.png",
         "valuesByGeneration": [
             {
@@ -969,6 +1027,7 @@
         "category": "bad-held-items",
         "effect": "Held: Holder moves last in its priority bracket. Breeding: Snorlax begets a Munchlax Egg.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/full-incense.png",
         "valuesByGeneration": [
             {
@@ -983,6 +1042,7 @@
         "category": "training",
         "effect": "Held: Half the experience from a battle is split between Pokémon holding this item.",
         "introducedInGeneration": 1,
+        "isDangerous": false,
         "sprite": "/items/exp-share.png",
         "valuesByGeneration": [
             {
@@ -1001,6 +1061,7 @@
         "category": "training",
         "effect": "Held: Doubles the happiness earned by the holder.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/soothe-bell.png",
         "valuesByGeneration": [
             {
@@ -1019,6 +1080,7 @@
         "category": "training",
         "effect": "Held: Doubles the money earned from a battle. Does not stack with Luck Incense.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/amulet-coin.png",
         "valuesByGeneration": [
             {
@@ -1037,6 +1099,7 @@
         "category": "training",
         "effect": "Prevents wild encounters of level lower than your party's lead Pokémon.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/cleanse-tag.png",
         "valuesByGeneration": [
             {
@@ -1055,6 +1118,7 @@
         "category": "training",
         "effect": "Held: Prevents level-based evolution from occuring.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/everstone.png",
         "valuesByGeneration": [
             {
@@ -1073,6 +1137,7 @@
         "category": "training",
         "effect": "Held: Increases EXP earned in battle by 50%.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/lucky-egg.png",
         "valuesByGeneration": [
             {
@@ -1091,6 +1156,7 @@
         "category": "training",
         "effect": "Held: Doubles the money earned from a battle. Does not stack with Amulet Coin. Breeding: Chansey and Blissey beget a Happiny Egg.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/luck-incense.png",
         "valuesByGeneration": [
             {
@@ -1105,6 +1171,7 @@
         "category": "training",
         "effect": "Prevents wild encounters of level lower than your party's lead Pokémon. Breeding: Chimecho begets a Chingling Egg.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/pure-incense.png",
         "valuesByGeneration": [
             {
@@ -1119,6 +1186,7 @@
         "category": "plates",
         "effect": "Held: Fire-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Fire.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/flame-plate.png",
         "valuesByGeneration": [
             {
@@ -1133,6 +1201,7 @@
         "category": "plates",
         "effect": "Held: Water-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Water.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/splash-plate.png",
         "valuesByGeneration": [
             {
@@ -1147,6 +1216,7 @@
         "category": "plates",
         "effect": "Held: Electric-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Electric.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/zap-plate.png",
         "valuesByGeneration": [
             {
@@ -1161,6 +1231,7 @@
         "category": "plates",
         "effect": "Held: Grass-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Grass.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/meadow-plate.png",
         "valuesByGeneration": [
             {
@@ -1175,6 +1246,7 @@
         "category": "plates",
         "effect": "Held: Ice-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Ice.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/icicle-plate.png",
         "valuesByGeneration": [
             {
@@ -1189,6 +1261,7 @@
         "category": "plates",
         "effect": "Held: Fighting-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Fighting.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/fist-plate.png",
         "valuesByGeneration": [
             {
@@ -1203,6 +1276,7 @@
         "category": "plates",
         "effect": "Held: Poison-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Poison.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/toxic-plate.png",
         "valuesByGeneration": [
             {
@@ -1217,6 +1291,7 @@
         "category": "plates",
         "effect": "Held: Ground-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Ground.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/earth-plate.png",
         "valuesByGeneration": [
             {
@@ -1231,6 +1306,7 @@
         "category": "plates",
         "effect": "Held: Flying-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Flying.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/sky-plate.png",
         "valuesByGeneration": [
             {
@@ -1245,6 +1321,7 @@
         "category": "plates",
         "effect": "Held: Psychic-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Psychic.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/mind-plate.png",
         "valuesByGeneration": [
             {
@@ -1259,6 +1336,7 @@
         "category": "plates",
         "effect": "Held: Bug-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Bug.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/insect-plate.png",
         "valuesByGeneration": [
             {
@@ -1273,6 +1351,7 @@
         "category": "plates",
         "effect": "Held: Rock-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Rock.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/stone-plate.png",
         "valuesByGeneration": [
             {
@@ -1287,6 +1366,7 @@
         "category": "plates",
         "effect": "Held: Ghost-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Ghost.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/spooky-plate.png",
         "valuesByGeneration": [
             {
@@ -1301,6 +1381,7 @@
         "category": "plates",
         "effect": "Held: Dragon-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Dragon.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/draco-plate.png",
         "valuesByGeneration": [
             {
@@ -1315,6 +1396,7 @@
         "category": "plates",
         "effect": "Held: Dark-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Dark.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/dread-plate.png",
         "valuesByGeneration": [
             {
@@ -1329,6 +1411,7 @@
         "category": "plates",
         "effect": "Held: Steel-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Steel.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/iron-plate.png",
         "valuesByGeneration": [
             {
@@ -1343,6 +1426,7 @@
         "category": "species-specific",
         "effect": "Boosts the damage from Dialga's Dragon-type and Steel-type moves by 20%.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/adamant-orb.png",
         "valuesByGeneration": [
             {
@@ -1361,6 +1445,7 @@
         "category": "species-specific",
         "effect": "Boosts the damage from Palkia's Dragon-type and Water-type moves by 20%.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/lustrous-orb.png",
         "valuesByGeneration": [
             {
@@ -1379,6 +1464,7 @@
         "category": "species-specific",
         "effect": "Raises Latias and Latios's Special Attack and Special Defense by 50%.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/soul-dew.png",
         "valuesByGeneration": [
             {
@@ -1401,6 +1487,7 @@
         "category": "species-specific",
         "effect": "Doubles Clamperl's Special Attack. Traded on a Clamperl: Holder evolves into Huntail.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/deep-sea-tooth.png",
         "valuesByGeneration": [
             {
@@ -1423,6 +1510,7 @@
         "category": "species-specific",
         "effect": "Doubles Clamperl's Special Defense. Traded on a Clamperl: Holder evolves into Gorebyss.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/deep-sea-scale.png",
         "valuesByGeneration": [
             {
@@ -1445,6 +1533,7 @@
         "category": "species-specific",
         "effect": "Doubles Pikachu's Attack and Special Attack. Breed on Pikachu or Raichu: Pichu Egg will have Volt Tackle.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/light-ball.png",
         "valuesByGeneration": [
             {
@@ -1467,6 +1556,7 @@
         "category": "species-specific",
         "effect": "Raises Chansey's critical hit ratio by two stages.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/lucky-punch.png",
         "valuesByGeneration": [
             {
@@ -1489,6 +1579,7 @@
         "category": "species-specific",
         "effect": "Raises Ditto's Defense and Special Defense by 50%. The boost is lost after transforming.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/metal-powder.png",
         "valuesByGeneration": [
             {
@@ -1511,6 +1602,7 @@
         "category": "species-specific",
         "effect": "Doubles Cubone or Marowak's Attack.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/thick-club.png",
         "valuesByGeneration": [
             {
@@ -1533,6 +1625,7 @@
         "category": "species-specific",
         "effect": "Raises Farfetch'd's critical hit ratio by two stages.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/leek.png",
         "valuesByGeneration": [
             {
@@ -1555,6 +1648,7 @@
         "category": "species-specific",
         "effect": "Doubles Ditto's Speed when held. The boost is lost after transforming.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/quick-powder.png",
         "valuesByGeneration": [
             {
@@ -1573,6 +1667,7 @@
         "category": "species-specific",
         "effect": "Boosts the damage from Giratina's Dragon-type and Ghost-type moves by 20%, and transforms it into Origin Forme.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/griseous-orb.png",
         "valuesByGeneration": [
             {
@@ -1591,6 +1686,7 @@
         "category": "species-specific",
         "effect": "Grants Genesect a blue, Water-type Techno Blast.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/douse-drive.png",
         "valuesByGeneration": [
             {
@@ -1605,6 +1701,7 @@
         "category": "species-specific",
         "effect": "Grants Genesect a yellow, Electric-type Techno Blast.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/shock-drive.png",
         "valuesByGeneration": [
             {
@@ -1619,6 +1716,7 @@
         "category": "species-specific",
         "effect": "Grants Genesect a red, Fire-type Techno Blast.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/burn-drive.png",
         "valuesByGeneration": [
             {
@@ -1633,6 +1731,7 @@
         "category": "species-specific",
         "effect": "Grants Genesect a white, Ice-type Techno Blast.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/chill-drive.png",
         "valuesByGeneration": [
             {
@@ -1647,6 +1746,7 @@
         "category": "type-enhancement",
         "effect": "Held: Bug-Type moves from holder do 20% more damage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/silver-powder.png",
         "valuesByGeneration": [
             {
@@ -1665,6 +1765,7 @@
         "category": "type-enhancement",
         "effect": "Held: Steel-Type moves from holder do 20% more damage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/metal-coat.png",
         "valuesByGeneration": [
             {
@@ -1683,6 +1784,7 @@
         "category": "type-enhancement",
         "effect": "Held: Ground-Type moves from holder do 20% more damage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/soft-sand.png",
         "valuesByGeneration": [
             {
@@ -1701,6 +1803,7 @@
         "category": "type-enhancement",
         "effect": "Held: Rock-Type moves from holder do 20% more damage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/hard-stone.png",
         "valuesByGeneration": [
             {
@@ -1719,6 +1822,7 @@
         "category": "type-enhancement",
         "effect": "Held: Grass-Type moves from holder do 20% more damage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/miracle-seed.png",
         "valuesByGeneration": [
             {
@@ -1737,6 +1841,7 @@
         "category": "type-enhancement",
         "effect": "Held: Dark-Type moves from holder do 20% more damage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/black-glasses.png",
         "valuesByGeneration": [
             {
@@ -1755,6 +1860,7 @@
         "category": "type-enhancement",
         "effect": "Held: Fighting-Type moves from holder do 20% more damage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/black-belt.png",
         "valuesByGeneration": [
             {
@@ -1773,6 +1879,7 @@
         "category": "type-enhancement",
         "effect": "Held: Electric-Type moves from holder do 20% more damage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/magnet.png",
         "valuesByGeneration": [
             {
@@ -1791,6 +1898,7 @@
         "category": "type-enhancement",
         "effect": "Held: Water-Type moves from holder do 20% more damage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/mystic-water.png",
         "valuesByGeneration": [
             {
@@ -1809,6 +1917,7 @@
         "category": "type-enhancement",
         "effect": "Held: Flying-Type moves from holder do 20% more damage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/sharp-beak.png",
         "valuesByGeneration": [
             {
@@ -1827,6 +1936,7 @@
         "category": "type-enhancement",
         "effect": "Held: Poison-Type moves from holder do 20% more damage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/poison-barb.png",
         "valuesByGeneration": [
             {
@@ -1845,6 +1955,7 @@
         "category": "type-enhancement",
         "effect": "Held: Ice-Type moves from holder do 20% more damage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/never-melt-ice.png",
         "valuesByGeneration": [
             {
@@ -1863,6 +1974,7 @@
         "category": "type-enhancement",
         "effect": "Held: Ghost-Type moves from holder do 20% more damage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/spell-tag.png",
         "valuesByGeneration": [
             {
@@ -1881,6 +1993,7 @@
         "category": "type-enhancement",
         "effect": "Held: Psychic-Type moves from holder do 20% more damage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/twisted-spoon.png",
         "valuesByGeneration": [
             {
@@ -1899,6 +2012,7 @@
         "category": "type-enhancement",
         "effect": "Held: Fire-Type moves from holder do 20% more damage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/charcoal.png",
         "valuesByGeneration": [
             {
@@ -1917,6 +2031,7 @@
         "category": "type-enhancement",
         "effect": "Held: Dragon-Type moves from holder do 20% more damage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/dragon-fang.png",
         "valuesByGeneration": [
             {
@@ -1935,6 +2050,7 @@
         "category": "type-enhancement",
         "effect": "Held: Normal-Type moves from holder do 20% more damage.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/silk-scarf.png",
         "valuesByGeneration": [
             {
@@ -1953,6 +2069,7 @@
         "category": "type-enhancement",
         "effect": "Held: Water-Type moves from holder do 20% more damage. Breeding: Marill or Azumarill beget an Azurill Egg.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/sea-incense.png",
         "valuesByGeneration": [
             {
@@ -1971,6 +2088,7 @@
         "category": "type-enhancement",
         "effect": "Held: Psychic-Type moves from holder do 20% more damage. Breeding: Mr. Mime begets a Mime Jr. Egg.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/odd-incense.png",
         "valuesByGeneration": [
             {
@@ -1985,6 +2103,7 @@
         "category": "type-enhancement",
         "effect": "Held: Rock-Type moves from holder do 20% more damage. Breeding: Sudowoodo begets a Bonsly Egg.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/rock-incense.png",
         "valuesByGeneration": [
             {
@@ -1999,6 +2118,7 @@
         "category": "type-enhancement",
         "effect": "Held: Water-Type moves from holder do 20% more damage. Breeding: Mantine begets a Mantyke Egg.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/wave-incense.png",
         "valuesByGeneration": [
             {
@@ -2017,6 +2137,7 @@
         "category": "type-enhancement",
         "effect": "Held: Grass-Type moves from holder do 20% more damage. Breeding: Roselia or Roserade beget a Budew Egg.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/rose-incense.png",
         "valuesByGeneration": [
             {
@@ -2031,6 +2152,7 @@
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Fire-type attack to halve the damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/occa-berry.png",
         "valuesByGeneration": [
             {
@@ -2049,6 +2171,7 @@
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Water-type attack to halve the damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/passho-berry.png",
         "valuesByGeneration": [
             {
@@ -2067,6 +2190,7 @@
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Electric-type attack to halve the damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/wacan-berry.png",
         "valuesByGeneration": [
             {
@@ -2085,6 +2209,7 @@
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Grass-type attack to halve the damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/rindo-berry.png",
         "valuesByGeneration": [
             {
@@ -2103,6 +2228,7 @@
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Ice-type attack to halve the damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/yache-berry.png",
         "valuesByGeneration": [
             {
@@ -2121,6 +2247,7 @@
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Fighting-type attack to halve the damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/chople-berry.png",
         "valuesByGeneration": [
             {
@@ -2139,6 +2266,7 @@
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Poison-type attack to halve the damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/kebia-berry.png",
         "valuesByGeneration": [
             {
@@ -2157,6 +2285,7 @@
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Ground-type attack to halve the damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/shuca-berry.png",
         "valuesByGeneration": [
             {
@@ -2175,6 +2304,7 @@
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Flying-type attack to halve the damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/coba-berry.png",
         "valuesByGeneration": [
             {
@@ -2193,6 +2323,7 @@
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Psychic-type attack to halve the damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/payapa-berry.png",
         "valuesByGeneration": [
             {
@@ -2211,6 +2342,7 @@
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Bug-type attack to halve the damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/tanga-berry.png",
         "valuesByGeneration": [
             {
@@ -2229,6 +2361,7 @@
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Rock-type attack to halve the damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/charti-berry.png",
         "valuesByGeneration": [
             {
@@ -2247,6 +2380,7 @@
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Ghost-type attack to halve the damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/kasib-berry.png",
         "valuesByGeneration": [
             {
@@ -2265,6 +2399,7 @@
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Dragon-type attack to halve the damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/haban-berry.png",
         "valuesByGeneration": [
             {
@@ -2283,6 +2418,7 @@
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Dark-type attack to halve the damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/colbur-berry.png",
         "valuesByGeneration": [
             {
@@ -2301,6 +2437,7 @@
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a super-effective Steel-type attack to halve the damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/babiri-berry.png",
         "valuesByGeneration": [
             {
@@ -2319,6 +2456,7 @@
         "category": "type-protection",
         "effect": "Held: Consumed when struck by a Normal-type attack to halve the damage.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/chilan-berry.png",
         "valuesByGeneration": [
             {
@@ -2338,6 +2476,7 @@
         "effect": "Raises the holder's Coolness while in a contest.",
         "introducedInGeneration": 3,
         "removedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/red-scarf.png",
         "valuesByGeneration": [
             {
@@ -2361,6 +2500,7 @@
         "effect": "Raises the holder's Beauty while in a contest.",
         "introducedInGeneration": 3,
         "removedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/blue-scarf.png",
         "valuesByGeneration": [
             {
@@ -2384,6 +2524,7 @@
         "effect": "Raises the holder's Cuteness while in a contest.",
         "introducedInGeneration": 3,
         "removedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/pink-scarf.png",
         "valuesByGeneration": [
             {
@@ -2407,6 +2548,7 @@
         "effect": "Raises the holder's Smartness while in a contest.",
         "introducedInGeneration": 3,
         "removedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/green-scarf.png",
         "valuesByGeneration": [
             {
@@ -2430,6 +2572,7 @@
         "effect": "Raises the holder's Toughness while in a contest.",
         "introducedInGeneration": 3,
         "removedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/yellow-scarf.png",
         "valuesByGeneration": [
             {
@@ -2452,6 +2595,7 @@
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Fire-type move, the move has 1.5× power and this item is consumed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/fire-gem.png",
         "valuesByGeneration": [
             {
@@ -2466,6 +2610,7 @@
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Water-type move, the move has 1.5× power and this item is consumed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/water-gem.png",
         "valuesByGeneration": [
             {
@@ -2480,6 +2625,7 @@
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Electric-type move, the move has 1.5× power and this item is consumed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/electric-gem.png",
         "valuesByGeneration": [
             {
@@ -2494,6 +2640,7 @@
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Grass-type move, the move has 1.5× power and this item is consumed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/grass-gem.png",
         "valuesByGeneration": [
             {
@@ -2508,6 +2655,7 @@
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Ice-type move, the move has 1.5× power and this item is consumed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/ice-gem.png",
         "valuesByGeneration": [
             {
@@ -2522,6 +2670,7 @@
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Fighting-type move, the move has 1.5× power and this item is consumed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/fighting-gem.png",
         "valuesByGeneration": [
             {
@@ -2536,6 +2685,7 @@
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Poison-type move, the move has 1.5× power and this item is consumed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/poison-gem.png",
         "valuesByGeneration": [
             {
@@ -2550,6 +2700,7 @@
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Ground-type move, the move has 1.5× power and this item is consumed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/ground-gem.png",
         "valuesByGeneration": [
             {
@@ -2564,6 +2715,7 @@
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Flying-type move, the move has 1.5× power and this item is consumed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/flying-gem.png",
         "valuesByGeneration": [
             {
@@ -2578,6 +2730,7 @@
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Psychic-type move, the move has 1.5× power and this item is consumed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/psychic-gem.png",
         "valuesByGeneration": [
             {
@@ -2592,6 +2745,7 @@
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Bug-type move, the move has 1.5× power and this item is consumed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/bug-gem.png",
         "valuesByGeneration": [
             {
@@ -2606,6 +2760,7 @@
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Rock-type move, the move has 1.5× power and this item is consumed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/rock-gem.png",
         "valuesByGeneration": [
             {
@@ -2620,6 +2775,7 @@
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Ghost-type move, the move has 1.5× power and this item is consumed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/ghost-gem.png",
         "valuesByGeneration": [
             {
@@ -2634,6 +2790,7 @@
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Dark-type move, the move has 1.5× power and this item is consumed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/dark-gem.png",
         "valuesByGeneration": [
             {
@@ -2648,6 +2805,7 @@
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Steel-type move, the move has 1.5× power and this item is consumed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/steel-gem.png",
         "valuesByGeneration": [
             {
@@ -2662,6 +2820,7 @@
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Dragon-type move, the move has 1.5× power and this item is consumed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/dragon-gem.png",
         "valuesByGeneration": [
             {
@@ -2676,6 +2835,7 @@
         "category": "jewels",
         "effect": "Held: When the holder uses a damaging Normal-type move, the move has 1.5× power and this item is consumed.",
         "introducedInGeneration": 5,
+        "isDangerous": false,
         "sprite": "/items/normal-gem.png",
         "valuesByGeneration": [
             {
@@ -2690,6 +2850,7 @@
         "category": "medicine",
         "effect": "Held: Consumed when paralyzed to cure paralysis.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/cheri-berry.png",
         "valuesByGeneration": [
             {
@@ -2712,6 +2873,7 @@
         "category": "medicine",
         "effect": "Held: Consumed when asleep to cure sleep.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/chesto-berry.png",
         "valuesByGeneration": [
             {
@@ -2734,6 +2896,7 @@
         "category": "medicine",
         "effect": "Held: Consumed when poisoned to cure poison.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/pecha-berry.png",
         "valuesByGeneration": [
             {
@@ -2756,6 +2919,7 @@
         "category": "medicine",
         "effect": "Held: Consumed when burned to cure a burn.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/rawst-berry.png",
         "valuesByGeneration": [
             {
@@ -2778,6 +2942,7 @@
         "category": "medicine",
         "effect": "Held: Consumed when frozen to cure frozen.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/aspear-berry.png",
         "valuesByGeneration": [
             {
@@ -2800,6 +2965,7 @@
         "category": "medicine",
         "effect": "Held: Consumed when a move runs out of PP to restore its PP by 10.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/leppa-berry.png",
         "valuesByGeneration": [
             {
@@ -2822,6 +2988,7 @@
         "category": "medicine",
         "effect": "Held: Consumed at 1/2 max HP to recover 10 HP.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/oran-berry.png",
         "valuesByGeneration": [
             {
@@ -2844,6 +3011,7 @@
         "category": "medicine",
         "effect": "Held: Consumed when confused to cure confusion.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/persim-berry.png",
         "valuesByGeneration": [
             {
@@ -2866,6 +3034,7 @@
         "category": "medicine",
         "effect": "Held: Consumed to cure any status condition or confusion.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/lum-berry.png",
         "valuesByGeneration": [
             {
@@ -2888,6 +3057,7 @@
         "category": "medicine",
         "effect": "Held: Consumed at 1/2 max HP to recover 1/4 max HP.",
         "introducedInGeneration": 2,
+        "isDangerous": false,
         "sprite": "/items/sitrus-berry.png",
         "valuesByGeneration": [
             {
@@ -2910,6 +3080,7 @@
         "category": "other",
         "effect": "Held: Consumed when struck by a super-effective attack to restore 1/4 max HP.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/enigma-berry.png",
         "valuesByGeneration": [
             {
@@ -2932,6 +3103,7 @@
         "category": "other",
         "effect": "Held: Consumed to deal 1/8 attacker's max HP when holder is struck by a physical attack.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/jaboca-berry.png",
         "valuesByGeneration": [
             {
@@ -2950,6 +3122,7 @@
         "category": "other",
         "effect": "Held: Consumed to deal 1/8 attacker's max HP when holder is struck by a special attack.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/rowap-berry.png",
         "valuesByGeneration": [
             {
@@ -2968,6 +3141,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost Attack.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/liechi-berry.png",
         "valuesByGeneration": [
             {
@@ -2990,6 +3164,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost Defense.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/ganlon-berry.png",
         "valuesByGeneration": [
             {
@@ -3012,6 +3187,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost Speed.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/salac-berry.png",
         "valuesByGeneration": [
             {
@@ -3034,6 +3210,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost Special Attack.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/petaya-berry.png",
         "valuesByGeneration": [
             {
@@ -3056,6 +3233,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost Special Defense.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/apicot-berry.png",
         "valuesByGeneration": [
             {
@@ -3078,6 +3256,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost critical hit ratio by two stages.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/lansat-berry.png",
         "valuesByGeneration": [
             {
@@ -3100,6 +3279,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost a random stat by two stages.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/starf-berry.png",
         "valuesByGeneration": [
             {
@@ -3122,6 +3302,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost accuracy of next move by 20%. (Gen IV: Perfect accuracy)",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/micle-berry.png",
         "valuesByGeneration": [
             {
@@ -3140,6 +3321,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP when using a move to go first.",
         "introducedInGeneration": 4,
+        "isDangerous": false,
         "sprite": "/items/custap-berry.png",
         "valuesByGeneration": [
             {
@@ -3158,6 +3340,7 @@
         "category": "picky-healing",
         "effect": "Held: Consumed at 1/2 max HP to restore 1/8 max HP. Confuses Pokémon that dislike spicy flavor.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/figy-berry.png",
         "valuesByGeneration": [
             {
@@ -3180,6 +3363,7 @@
         "category": "picky-healing",
         "effect": "Held: Consumed at 1/2 max HP to restore 1/8 max HP. Confuses Pokémon that dislike dry flavor.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/wiki-berry.png",
         "valuesByGeneration": [
             {
@@ -3202,6 +3386,7 @@
         "category": "picky-healing",
         "effect": "Held: Consumed at 1/2 max HP to restore 1/8 max HP. Confuses Pokémon that dislike sweet flavor.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/mago-berry.png",
         "valuesByGeneration": [
             {
@@ -3224,6 +3409,7 @@
         "category": "picky-healing",
         "effect": "Held: Consumed at 1/2 max HP to restore 1/8 max HP. Confuses Pokémon that dislike bitter flavor.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/aguav-berry.png",
         "valuesByGeneration": [
             {
@@ -3246,6 +3432,7 @@
         "category": "picky-healing",
         "effect": "Held: Consumed at 1/2 max HP to restore 1/8 max HP. Confuses Pokémon that dislike sour flavor.",
         "introducedInGeneration": 3,
+        "isDangerous": false,
         "sprite": "/items/iapapa-berry.png",
         "valuesByGeneration": [
             {
