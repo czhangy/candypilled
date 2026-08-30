@@ -10,7 +10,7 @@ const SUNYSHORE_CITY: Location = {
     battles: [
         {
             battleKey: 'arcade-star-dahlia',
-            metadata: [BattleMetadata.Miniboss],
+            metadata: [BattleMetadata.Miniboss, BattleMetadata.Optional],
             x: 78.9,
             y: 17.1,
         },

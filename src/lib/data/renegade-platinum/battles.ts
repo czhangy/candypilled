@@ -18097,6 +18097,7 @@ export const BATTLES: Record<string, BattleData> = {
     'arcade-star-dahlia': {
         trainerClass: 'arcade-star-dahlia',
         name: 'Dahlia',
+        items: [{ count: 2, name: 'Full Restore' }],
         teams: [
             {
                 team: [

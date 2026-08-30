@@ -2,6 +2,7 @@ import ACUITY_CAVERN from '@/lib/data/renegade-platinum/locations/acuity-cavern'
 import DISTORTION_WORLD from '@/lib/data/renegade-platinum/locations/distortion-world';
 import GALACTIC_HQ from '@/lib/data/renegade-platinum/locations/galactic-hq';
 import MT_CORONET from '@/lib/data/renegade-platinum/locations/mt-coronet';
+import POKEMON_LEAGUE from '@/lib/data/renegade-platinum/locations/pokemon-league';
 import ROUTE_216 from '@/lib/data/renegade-platinum/locations/route-216';
 import ROUTE_222 from '@/lib/data/renegade-platinum/locations/route-222';
 import ROUTE_223 from '@/lib/data/renegade-platinum/locations/route-223';
@@ -44,6 +45,7 @@ const VOLKNER: Split = {
         ROUTE_222,
         LocationHelpers.withHiddenBattles(SUNYSHORE_CITY),
         ROUTE_223,
+        POKEMON_LEAGUE,
         SUNYSHORE_GYM,
     ],
     saveCondition: { type: 'badge', bit: 7 },
