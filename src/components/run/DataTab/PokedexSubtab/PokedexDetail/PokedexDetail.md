@@ -19,13 +19,13 @@ every wild location it can be found in, sorted by minimum encounter
 level, with locations whose encounter is already used (caught or
 missed) in the run highlighted red. A final section, for a game whose
 data is a vanilla-plus-overrides diff, lists a "Changes" section showing
-how the species differs from vanilla — a Types change renders as
-before/after type badges rather than plain text, matching the type
-badges shown in `PokemonSummary`, and every changed base stat is
-combined into a single "Stats" row listing each one's abbreviated name
-and signed delta (e.g. "Atk +5, Spe -3", matching the abbreviations
-`NatureHelpers.getNatureEffect` already shows elsewhere) rather than a
-separate row per stat.
+how the species differs from vanilla, with each changed value colored
+pink — a Types change renders as before/after type badges rather than
+plain text, matching the type badges shown in `PokemonSummary`, and
+every changed base stat is combined into a single "Stats" row listing
+each one's abbreviated name and signed delta (e.g. "Atk +5, Spe -3",
+matching the abbreviations `NatureHelpers.getNatureEffect` already shows
+elsewhere) rather than a separate row per stat.
 
 ## Props
 
@@ -56,11 +56,18 @@ separate row per stat.
   to `PokemonSummary` to render as badges beneath its name
 - `abilities` — the selected species' ability set at `game.generation`,
   resolved via `PokemonHelpers`
+- `abilityChanges` — which of the selected species' ability slots differ
+  from vanilla at `game.generation`, resolved via `PokemonHelpers`
 - `abilityEntries` — `abilities` flattened into a list, with its
   hidden ability (if any) flagged so `AbilitiesList` renders it dimmer
-  and suffixed with "(Hidden)"; passed to `PokemonSummary`
+  and suffixed with "(Hidden)", and each slot flagged per
+  `abilityChanges` so `AbilitiesList` highlights it in pink; passed to
+  `PokemonSummary`
 - `catchRate` — the selected species' catch rate, resolved via
   `PokemonHelpers` and passed to `PokemonSummary`
+- `catchRateChanged` — whether `catchRate` differs from vanilla, resolved
+  via `PokemonHelpers` and passed to `PokemonSummary` to highlight it in
+  pink
 - `hideTradeEvos` — the global "Disable Trade Evolutions" setting's
   current value, read from `localStorage` via `SettingsHelpers` and
   forwarded to `EvolutionLine` to omit trade-only branches
@@ -71,6 +78,9 @@ separate row per stat.
   which omits its own section entirely when there's nothing to show
 - `stats` — the selected species' base stats at `game.generation`,
   resolved via `PokemonHelpers` and rendered with `StatsChart`
+- `statChanges` — the selected species' base stats that differ from
+  vanilla at `game.generation`, keyed by stat, resolved via
+  `PokemonHelpers` and passed to `StatsChart` to highlight those rows
 - `learnset` — the selected species' learnset in `game.version`,
   resolved via `PokemonHelpers` and rendered with `LearnsetList` when
   `activeDetailTab` is `'learnset'`
@@ -91,5 +101,4 @@ separate row per stat.
 ## SCSS Variable Dependencies
 
 - `--accent-color` — the active game's accent color, expected to be
-  set by a parent; used to highlight the active details tab and each
-  changed value in the Changes section
+  set by a parent; used to highlight the active details tab

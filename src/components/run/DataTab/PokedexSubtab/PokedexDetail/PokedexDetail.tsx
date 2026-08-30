@@ -88,16 +88,38 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
         species,
         game.generation
     );
+    const abilityChanges = PokemonHelpers.getAbilityChanges(
+        game.dataSource,
+        species,
+        game.generation
+    );
     const abilityEntries: AbilityEntry[] = abilities
         ? [
-              { slug: abilities.slot1 },
-              ...(abilities.slot2 ? [{ slug: abilities.slot2 }] : []),
+              { changed: abilityChanges?.slot1, slug: abilities.slot1 },
+              ...(abilities.slot2
+                  ? [
+                        {
+                            changed: abilityChanges?.slot2,
+                            slug: abilities.slot2,
+                        },
+                    ]
+                  : []),
               ...(abilities.hidden
-                  ? [{ hidden: true, slug: abilities.hidden }]
+                  ? [
+                        {
+                            changed: abilityChanges?.hidden,
+                            hidden: true,
+                            slug: abilities.hidden,
+                        },
+                    ]
                   : []),
           ]
         : [];
     const catchRate = PokemonHelpers.getPokemonCatchRate(
+        game.dataSource,
+        species
+    );
+    const catchRateChanged = PokemonHelpers.isCatchRateChanged(
         game.dataSource,
         species
     );
@@ -108,6 +130,11 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
         game.generation
     );
     const stats = PokemonHelpers.getPokemonStats(
+        game.dataSource,
+        species,
+        game.generation
+    );
+    const statChanges = PokemonHelpers.getStatChanges(
         game.dataSource,
         species,
         game.generation
@@ -137,6 +164,7 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                         <PokemonSummary
                             abilityEntries={abilityEntries}
                             catchRate={catchRate}
+                            catchRateChanged={catchRateChanged}
                             interactive
                             onSelectAbility={onSelectAbility}
                             pokemon={pokemon}
@@ -151,7 +179,7 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                             step={evolutionLine}
                             variant={variant}
                         />
-                        <StatsChart stats={stats} />
+                        <StatsChart statChanges={statChanges} stats={stats} />
                         <div className={styles.details}>
                             <div className={styles['details-tabs']}>
                                 <button

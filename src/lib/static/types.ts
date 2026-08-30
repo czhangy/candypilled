@@ -690,6 +690,7 @@ export type LearnsetByVersionGroup = {
 };
 
 export type AbilityEntry = {
+    changed?: boolean;
     hidden?: boolean;
     slug: string;
 };

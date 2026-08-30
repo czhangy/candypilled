@@ -104,11 +104,19 @@ $label-width: 5.5rem;
             flex-shrink: 0;
             font-size: 0.7rem;
             width: $label-width;
+
+            &--changed {
+                color: $pink;
+            }
         }
 
         .rate {
             color: $text-mid;
             font-size: 0.7rem;
+
+            &--changed {
+                color: $pink;
+            }
         }
     }
 

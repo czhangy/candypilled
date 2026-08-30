@@ -4,12 +4,12 @@ Displays details for a single move: its name, flavor text description, a
 row of stats (type badge, category icon, power, accuracy, PP, and
 priority), its effect text (with its effect chance appended, if any), and,
 for a game whose data is a vanilla-plus-overrides diff, a list of how the
-move differs from vanilla. The priority stat is omitted entirely for
-moves with priority 0, and shown with a leading "+" for positive
-priority. A Type change renders as a before/after pair of type badges
-rather than plain text, matching the type badge shown in the stats row
-above it. The content area scrolls internally past a fixed maximum height
-rather than growing the page.
+move differs from vanilla, with each changed value colored pink. The
+priority stat is omitted entirely for moves with priority 0, and shown
+with a leading "+" for positive priority. A Type change renders as a
+before/after pair of type badges rather than plain text, matching the
+type badge shown in the stats row above it. The content area scrolls
+internally past a fixed maximum height rather than growing the page.
 
 ## Props
 
@@ -30,8 +30,3 @@ rather than growing the page.
   `MoveHelpers`; undefined for a game whose moves aren't overridden, a
   move with no overridden differences, or a move backported from a later
   generation rather than rebalanced (nothing to diff field by field)
-
-## SCSS Variable Dependencies
-
-- `--accent-color` — set by the page's root element from `game.accentColor`,
-  used to color each changed value

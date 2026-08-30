@@ -97,11 +97,18 @@ Operates in one of two mutually exclusive modes, set via `mode`:
   `PokemonSummary` to render as badges beneath its name
 - `abilities` — the selected species' ability set at `generation`,
   resolved via `PokemonHelpers`
+- `abilityChanges` — which of the selected species' ability slots differ
+  from vanilla at `generation`, resolved via `PokemonHelpers`
 - `abilityEntries` — `abilities` flattened into a list, with its
   hidden ability (if any) flagged so `AbilitiesList` renders it dimmer
-  and suffixed with "(Hidden)"; passed to `PokemonSummary`
+  and suffixed with "(Hidden)", and each slot flagged per
+  `abilityChanges` so `AbilitiesList` highlights it in pink; passed to
+  `PokemonSummary`
 - `catchRate` — the selected species' catch rate, resolved via
   `PokemonHelpers` and passed to `PokemonSummary`
+- `catchRateChanged` — whether `catchRate` differs from vanilla, resolved
+  via `PokemonHelpers` and passed to `PokemonSummary` to highlight it in
+  pink
 - `hideTradeEvos` — the global "Disable Trade Evolutions" setting's
   current value, read from `localStorage` via `SettingsHelpers` and
   forwarded to `EvolutionLine` to omit trade-only branches
@@ -112,6 +119,9 @@ Operates in one of two mutually exclusive modes, set via `mode`:
   which omits its own section entirely when there's nothing to show
 - `stats` — the selected species' base stats at `generation`, resolved
   via `PokemonHelpers` and rendered with `StatsChart`
+- `statChanges` — the selected species' base stats that differ from
+  vanilla at `generation`, keyed by stat, resolved via `PokemonHelpers`
+  and passed to `StatsChart` to highlight those rows
 - `learnset` — the selected species' learnset in `game.version`,
   resolved via `PokemonHelpers` and rendered with `LearnsetList` when
   `activeDetailTab` is `'learnset'` or `mode` is `'choose'`

@@ -4,9 +4,10 @@ import styles from './StatsChart.module.scss';
 
 type StatsChartProps = {
     stats?: StatValues;
+    statChanges?: Partial<Record<keyof StatValues, number>>;
 };
 
-const StatsChart: React.FC<StatsChartProps> = ({ stats }) => {
+const StatsChart: React.FC<StatsChartProps> = ({ stats, statChanges }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
@@ -40,14 +41,32 @@ const StatsChart: React.FC<StatsChartProps> = ({ stats }) => {
                         {STAT_FIELDS.map((row) => {
                             const value = stats[row.key];
                             const percent = (value / STAT_MAX) * 100;
+                            const isChanged =
+                                statChanges?.[row.key] !== undefined;
 
                             return (
                                 <div className={styles.row} key={row.key}>
                                     <div className={styles.info}>
-                                        <span className={styles.label}>
+                                        <span
+                                            className={[
+                                                styles.label,
+                                                isChanged &&
+                                                    styles['label--changed'],
+                                            ]
+                                                .filter(Boolean)
+                                                .join(' ')}
+                                        >
                                             {row.label}
                                         </span>
-                                        <span className={styles.value}>
+                                        <span
+                                            className={[
+                                                styles.value,
+                                                isChanged &&
+                                                    styles['value--changed'],
+                                            ]
+                                                .filter(Boolean)
+                                                .join(' ')}
+                                        >
                                             {value}
                                         </span>
                                     </div>
