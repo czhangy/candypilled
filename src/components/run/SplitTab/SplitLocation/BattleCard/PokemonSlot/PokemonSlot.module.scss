@@ -184,7 +184,16 @@
                 }
 
                 &--dangerous {
-                    color: $red;
+                    @include dangerous-pulse;
+
+                    background: $red;
+                    color: $foreground;
+
+                    @media (hover: hover) {
+                        &:hover {
+                            background: color-mix(in srgb, $red 85%, black 15%);
+                        }
+                    }
                 }
 
                 &--readonly {
@@ -193,6 +202,14 @@
                     @media (hover: hover) {
                         &:hover {
                             background: none;
+                        }
+                    }
+
+                    &.ability-button--dangerous {
+                        @media (hover: hover) {
+                            &:hover {
+                                background: $red;
+                            }
                         }
                     }
                 }

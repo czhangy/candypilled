@@ -36,4 +36,11 @@ export default class ItemHelpers {
     ): string | undefined {
         return ItemHelpers.getHeldItemData(dataSource, slug)?.sprite;
     }
+
+    /** Whether slug in dataSource is curated as a dangerous held item. */
+    static isDangerousItem(dataSource: GameDataSource, slug: string): boolean {
+        return (
+            ItemHelpers.getHeldItemData(dataSource, slug)?.isDangerous ?? false
+        );
+    }
 }

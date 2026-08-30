@@ -24,7 +24,16 @@
     }
 
     &--dangerous {
-        color: white;
+        @include dangerous-pulse;
+
+        background: $red;
+        color: $foreground;
+
+        @media (hover: hover) {
+            &:hover {
+                background: color-mix(in srgb, $red 85%, black 15%);
+            }
+        }
     }
 
     &--readonly {
@@ -34,6 +43,14 @@
         @media (hover: hover) {
             &:hover {
                 background: move-tile-background();
+            }
+        }
+
+        &.move-button--dangerous {
+            @media (hover: hover) {
+                &:hover {
+                    background: $red;
+                }
             }
         }
     }
