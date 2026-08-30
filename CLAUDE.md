@@ -27,3 +27,5 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 @.claude/docs/code-style.md
 
 @.claude/docs/battle-metadata.md
+
+@.claude/docs/split-location-wiring.md
