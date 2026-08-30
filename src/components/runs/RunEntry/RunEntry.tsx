@@ -45,11 +45,6 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     const [selectedGender, setSelectedGender] = useState<
         'male' | 'female' | undefined
     >(undefined);
-    const [pendingImport, setPendingImport] = useState<{
-        pokemon: CaughtPokemon[];
-        completedSplits: string[];
-        starterSlug: string;
-    } | null>(null);
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -192,7 +187,8 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
 
     const handleImport = (
         importedPokemon: CaughtPokemon[],
-        importedCompletedSplits: string[]
+        importedCompletedSplits: string[],
+        importedGender: 'male' | 'female'
     ): void => {
         if (run) {
             LocalStorageHelpers.saveRun(
@@ -206,38 +202,12 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             return;
         }
 
-        const starterSlug = findImportedStarterSlug(importedPokemon);
-
-        if (game.genders) {
-            setPendingImport({
-                pokemon: importedPokemon,
-                completedSplits: importedCompletedSplits,
-                starterSlug,
-            });
-        } else {
-            createRunFromImport(
-                importedPokemon,
-                importedCompletedSplits,
-                starterSlug,
-                undefined
-            );
-        }
-    };
-
-    const handleImportGenderSelectClose = (): void => {
-        setPendingImport(null);
-    };
-
-    const handleImportGenderSelect = (gender: 'male' | 'female'): void => {
-        if (!pendingImport) return;
-
         createRunFromImport(
-            pendingImport.pokemon,
-            pendingImport.completedSplits,
-            pendingImport.starterSlug,
-            gender
+            importedPokemon,
+            importedCompletedSplits,
+            findImportedStarterSlug(importedPokemon),
+            game.genders ? importedGender : undefined
         );
-        setPendingImport(null);
     };
 
     const handleGenderSelectClose = (): void => {
@@ -371,14 +341,6 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     game={game}
                     onClose={handleStarterSelectClose}
                     onSelect={handleStarterSelect}
-                />
-            )}
-            {pendingImport && game.genders && (
-                <GenderSelectModal
-                    game={game}
-                    genders={game.genders}
-                    onClose={handleImportGenderSelectClose}
-                    onSelect={handleImportGenderSelect}
                 />
             )}
         </div>

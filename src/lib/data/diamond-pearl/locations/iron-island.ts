@@ -130,7 +130,7 @@ const IRON_ISLAND: Location = {
                 {
                     metadata: [BattleMetadata.Optional, BattleMetadata.Tag],
                     customHeight: 40,
-                    battleKey: 'galactic-grunt-m-18',
+                    battleKey: 'galactic-grunt-m-iron-island',
                     x: 47.7,
                     y: 69.5,
                 },

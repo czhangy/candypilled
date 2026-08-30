@@ -45,7 +45,7 @@ const SNOWPOINT_GYM: Location = {
         },
         {
             metadata: [BattleMetadata.Boss],
-            battleKey: 'leader-candice-candice',
+            battleKey: 'leader-candice',
             x: 50,
             y: 8.7,
         },

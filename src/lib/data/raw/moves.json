@@ -41861,5 +41861,26 @@
                 "description": "The user pours toxins into the target by wrapping them in a toxic, corrosive chain. This may also leave the target badly poisoned."
             }
         ]
+    },
+    "sketch": {
+        "slug": "sketch",
+        "name": "Sketch",
+        "id": 166,
+        "category": "status",
+        "priority": 0,
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 2,
+                "type": "normal",
+                "power": null,
+                "accuracy": null,
+                "pp": 1,
+                "effect": "User permanently learns the target's last-used move in place of Sketch, unless it already knows that move or the move can't be Sketched.",
+                "effectChance": null,
+                "description": "It enables the user to permanently learn the move last used by the target."
+            }
+        ]
     }
 }

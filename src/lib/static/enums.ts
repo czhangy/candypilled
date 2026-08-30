@@ -9,25 +9,19 @@ export enum EncounterMethod {
     Grass = 'grass',
     HoneyTree = 'honey-tree',
     OldRod = 'old-rod',
+    PokeRadar = 'poke-radar',
     Starter = 'starter',
     Static = 'static',
+    SuperRod = 'super-rod',
     Surf = 'surf',
     Trade = 'trade',
     Walking = 'walking',
 }
 
-export enum AiFlag {
-    Basic = 'Basic',
-    DamagePriority = 'Damage Priority',
-    EvaluateAttack = 'Evaluate Attack',
-    Expert = 'Expert',
-    Risk = 'Risk',
-    Status = 'Status',
-}
-
 export enum BattleMetadata {
     BackToBack = 'Back To Back',
     Boss = 'Boss',
+    Choice = 'Choice',
     Double = 'Double',
     Gauntlet = 'Gauntlet',
     Miniboss = 'Miniboss',
@@ -131,6 +125,7 @@ export enum GrowthRate {
 export enum GameVersionGroup {
     DiamondPearl = 'diamond-pearl',
     Platinum = 'platinum',
+    HeartGoldSoulSilver = 'heartgold-soulsilver',
     RenegadePlatinum = 'renegade-platinum',
 }
 

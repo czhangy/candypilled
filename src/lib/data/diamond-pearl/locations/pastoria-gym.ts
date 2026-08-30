@@ -45,7 +45,7 @@ const PASTORIA_GYM: Location = {
         },
         {
             metadata: [BattleMetadata.Boss],
-            battleKey: 'leader-wake-wake',
+            battleKey: 'leader-wake',
             x: 49.9,
             y: 9.7,
         },

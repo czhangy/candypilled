@@ -8,15 +8,22 @@ import { Game } from '@/lib/static/types';
 import { BATTLES } from './battles';
 import { ENCOUNTERS } from './encounters';
 import { MET_LOCATIONS } from './met-locations';
+import BYRON from './splits/byron';
+import CANDICE from './splits/candice';
+import CYNTHIA from './splits/cynthia';
+import FANTINA from './splits/fantina';
+import GARDENIA from './splits/gardenia';
+import MAYLENE from './splits/maylene';
+import ROARK from './splits/roark';
+import VOLKNER from './splits/volkner';
+import WAKE from './splits/wake';
 
-// Scaffolded ahead of full onboarding — everything below is either
-// structurally certain (data source, shared assets, generation, gender
-// selection) or an explicit placeholder for a field that needs real
-// research (see the TODOs). Registered in GAMES so it's browsable as a
-// RunEntry, but clicking "New" on it still crashes:
-// EncounterHelpers.getStarterLocationName has nothing to resolve with an
-// empty ENCOUNTERS. Get real encounter data in before treating this as
-// clickable, per the onboard-new-game skill's sequencing note.
+// Onboarding in progress — see ONBOARDING.md for full status. Pokémon and
+// move data are complete; encounters/locations/splits are being authored
+// incrementally, one area at a time (currently just the very start of the
+// game). "New" is clickable (Route 201 has a real Starter encounter for
+// EncounterHelpers.getStarterLocationName to resolve), but most of the
+// map has no encounters/battles/splits wired in yet.
 const RENEGADE_PLATINUM: Game = {
     name: 'Renegade Platinum',
     logo: '/logos/renegade-platinum.png',
@@ -27,6 +34,11 @@ const RENEGADE_PLATINUM: Game = {
     // byte-identical) rather than duplicating them under its own folder.
     badgeAssetFolder: BadgeAssetFolder.Sinnoh,
     trainerAssetFolder: TrainerAssetFolder.Platinum,
+    // Renegade Platinum mostly reuses HeartGold/SoulSilver's Pokémon
+    // sprites rather than Platinum's own — a handful of species (see their
+    // per-species `sprites` overrides in pokemon-overrides.json) keep
+    // Platinum's sprite instead.
+    pokemonAssetFolder: GameVersionGroup.HeartGoldSoulSilver,
     // Reuses Platinum's Lucas/Dawn trainer sprites as the protagonist
     // options.
     genders: {
@@ -49,7 +61,17 @@ const RENEGADE_PLATINUM: Game = {
         'Pick the penguin.',
         'Turtle time.',
     ],
-    splits: [],
+    splits: [
+        ROARK,
+        GARDENIA,
+        FANTINA,
+        MAYLENE,
+        WAKE,
+        BYRON,
+        CANDICE,
+        VOLKNER,
+        CYNTHIA,
+    ],
 };
 
 export default RENEGADE_PLATINUM;

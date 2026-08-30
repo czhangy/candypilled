@@ -100,11 +100,6 @@ const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
 
     return (
         <div className={styles['team-select-panel']}>
-            {!selectedBattle && (
-                <span className={styles.placeholder}>
-                    Select a battle above
-                </span>
-            )}
             {selectedBattle && (
                 <div className={styles.grid}>
                     {team.map((mon, index) => {

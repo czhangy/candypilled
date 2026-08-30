@@ -36,6 +36,11 @@ const LocationMap: React.FC<LocationMapProps> = ({
     // -------------------------------------------------------------------------
 
     const EDIT_MODE_ON = process.env.NODE_ENV !== 'production';
+    // Slack (2rem) reserved on all four sides of the image inside the
+    // clipped viewport, so a marker anchored at an edge/corner (plus its
+    // boss/miniboss badge, which itself extends further past the
+    // marker's own edge) isn't cut off by the viewport's overflow.
+    const EDGE_BUFFER_PX = 32;
 
     // -------------------------------------------------------------------------
     // STATE
@@ -126,6 +131,17 @@ const LocationMap: React.FC<LocationMapProps> = ({
 
     const hasMeasuredViewport =
         viewportSize.width > 0 || viewportSize.height > 0;
+    // Both axes reserve EDGE_BUFFER_PX on each end for marker bleed (see
+    // EDGE_BUFFER_PX above), so panning/centering math is done against
+    // these shrunk dimensions, not the raw measurement.
+    const effectiveViewportWidth = Math.max(
+        0,
+        viewportSize.width - EDGE_BUFFER_PX * 2
+    );
+    const effectiveViewportHeight = Math.max(
+        0,
+        viewportSize.height - EDGE_BUFFER_PX * 2
+    );
 
     if (map !== prevMap) {
         setPrevMap(map);
@@ -141,13 +157,13 @@ const LocationMap: React.FC<LocationMapProps> = ({
             const markerY = (selectedBattle.y / 100) * map.height;
             setPan({
                 x: clampPanAxis(
-                    viewportSize.width / 2 - markerX,
-                    viewportSize.width,
+                    effectiveViewportWidth / 2 - markerX,
+                    effectiveViewportWidth,
                     map.width
                 ),
                 y: clampPanAxis(
-                    viewportSize.height / 2 - markerY,
-                    viewportSize.height,
+                    effectiveViewportHeight / 2 - markerY,
+                    effectiveViewportHeight,
                     map.height
                 ),
             });
@@ -156,17 +172,17 @@ const LocationMap: React.FC<LocationMapProps> = ({
         setPendingCenterAnchor(false);
         setPan((prevPan) => ({
             x: anchorCentersX(mapAnchor)
-                ? (viewportSize.width - map.width) / 2
+                ? (effectiveViewportWidth - map.width) / 2
                 : prevPan.x,
             y: anchorCentersY(mapAnchor)
-                ? (viewportSize.height - map.height) / 2
+                ? (effectiveViewportHeight - map.height) / 2
                 : prevPan.y,
         }));
     }
 
     const displayPan = {
-        x: clampPanAxis(pan.x, viewportSize.width, map.width),
-        y: clampPanAxis(pan.y, viewportSize.height, map.height),
+        x: clampPanAxis(pan.x, effectiveViewportWidth, map.width),
+        y: clampPanAxis(pan.y, effectiveViewportHeight, map.height),
     };
 
     // -------------------------------------------------------------------------
@@ -216,12 +232,12 @@ const LocationMap: React.FC<LocationMapProps> = ({
             setPan({
                 x: clampPanAxis(
                     origin.panX + (event.clientX - origin.x),
-                    viewportSize.width,
+                    effectiveViewportWidth,
                     map.width
                 ),
                 y: clampPanAxis(
                     origin.panY + (event.clientY - origin.y),
-                    viewportSize.height,
+                    effectiveViewportHeight,
                     map.height
                 ),
             });
@@ -295,15 +311,15 @@ const LocationMap: React.FC<LocationMapProps> = ({
                 onPointerMove={handlePointerMove}
                 onPointerUp={handlePointerUp}
                 ref={viewportRef}
-                style={{ height: map.height }}
+                style={{ height: map.height + EDGE_BUFFER_PX * 2 }}
             >
                 <div
                     className={styles.image}
                     ref={imageRef}
                     style={
                         {
-                            '--pan-x': `${displayPan.x}px`,
-                            '--pan-y': `${displayPan.y}px`,
+                            '--pan-x': `${displayPan.x + EDGE_BUFFER_PX}px`,
+                            '--pan-y': `${displayPan.y + EDGE_BUFFER_PX}px`,
                         } as React.CSSProperties
                     }
                 >
@@ -312,6 +328,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
                         draggable={false}
                         priority={priority}
                         src={map}
+                        unoptimized
                     />
                     {battles.map((battle) => (
                         <TrainerMarker

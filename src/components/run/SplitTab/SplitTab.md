@@ -33,6 +33,10 @@ every split before it) as finished, or undoes that, in the run's storage.
 | -------------------- | ---------------- | ------------- | ------------------------------------------------------------------------------------------- |
 | `activeLocationSlug` | `string \| null` | `null`        | The slug of the location currently scrolled into view, highlighted in the table of contents |
 
+`settings` is read live from `SettingsHelpers` (not component state) via
+`useSyncExternalStore`, so the table of contents' "already caught" indicator
+stays in sync with the "Show Legendaries" setting.
+
 ## Effects
 
 - **On mount, and when the current split or `stickyOffset` changes** —
@@ -81,9 +85,10 @@ any of its subareas) show no icon, but reserve the same space so entries
 stay aligned.
 
 - `getCaughtPokemonName` — the display name of the `run.caughtPokemon` entry
-  caught at the given location name, if any, formatted via `PokemonHelpers`
-  and `StringHelpers.toTitleCase` so forms like `wormadam-trash` render as
-  "Wormadam Trash"
+  caught at the given location name, if any. Resolved through
+  `PokemonHelpers.getDisplaySlug` first, so a held-item-triggered form (e.g.
+  Giratina holding the Griseous Orb) shows its actual form's name rather
+  than the species' stored base slug
 - `isLocationMissed` — whether `run.missedLocations` contains the given
   location name
 - `getLocationEncounters` — every encounter across a location's subareas
@@ -92,8 +97,10 @@ stay aligned.
 - `hasEncounters` — whether `getLocationEncounters` returns a non-empty list
 - `isAllEncountersDupes` — the result of
   `EncounterHelpers.areAllEncountersDupes` for the location's encounters,
-  `run.caughtPokemon`'s slugs, and the species caught at this location
-  (if any)
+  `run.caughtPokemon`'s slugs, the species caught at this location (if any),
+  and the live "Show Legendaries" setting — a location whose only encounter
+  is an uncaught legendary is only reported as "already caught" when
+  legendaries are disallowed entirely, not just hidden from display
 
 ## Handlers
 

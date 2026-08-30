@@ -10,7 +10,7 @@ const ROUTE_203: Location = {
     battles: [
         {
             metadata: [BattleMetadata.Miniboss],
-            battleKey: 'pkmn-trainer-barry-barry-1',
+            battleKey: 'pkmn-trainer-barry-route-203',
             x: 10,
             y: 78.6,
         },

@@ -5,11 +5,18 @@
     align-items: center;
     background: $background-light;
     border: 1px solid $border-subtle;
-    border-radius: 0.375rem 0 0;
     display: flex;
     flex-shrink: 0;
     justify-content: center;
     width: 6rem;
+
+    &--top {
+        border-radius: 0.375rem 0 0;
+    }
+
+    &--middle {
+        border-top: none;
+    }
 
     img {
         @include sprite;

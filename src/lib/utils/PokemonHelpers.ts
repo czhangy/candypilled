@@ -110,7 +110,14 @@ export default class PokemonHelpers {
         );
     }
 
-    /** slug's sprite in dataSource, preferring variant if it has one, or undefined if no form matches. */
+    /**
+     * slug's sprite in dataSource, preferring variant if it has one, or
+     * undefined if no form matches. A dataSource whose entries carry no
+     * sprites of their own (e.g. an independent ROM-hack dataset reusing
+     * its base game's art via `Game.pokemonAssetFolder`) resolves the path
+     * formulaically from variant instead, matching how badge/trainer
+     * sprites are served from a shared folder.
+     */
     static getPokemonSprite(
         dataSource: GameDataSource,
         slug: string,
@@ -119,11 +126,16 @@ export default class PokemonHelpers {
         const pokemon = PokemonHelpers.getPokemonData(dataSource, slug);
         if (!pokemon) return undefined;
 
+        const spriteEntries = Object.values(pokemon.sprites);
+        if (spriteEntries.length === 0) {
+            return variant ? `/pokemon/${variant}/${slug}.png` : undefined;
+        }
+
         if (variant && pokemon.sprites[variant]) {
             return pokemon.sprites[variant];
         }
 
-        return Object.values(pokemon.sprites)[0];
+        return spriteEntries[0];
     }
 
     /** slug's box/PC storage icon sprite path. */

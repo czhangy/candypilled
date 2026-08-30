@@ -1,6 +1,6 @@
 # ImportSaveForm
 
-A form for uploading a `.sav` file and merging its party/PC box Pokémon
+A form for uploading a `.sav` or `.dsv` file and merging its party/PC box Pokémon
 and finished splits into a run: a Pokémon imported for a location
 already in the box replaces the one recorded there (unless that
 location is marked dead, which is never overwritten), and a Pokémon
@@ -11,11 +11,11 @@ which supplies `requestClose`.
 
 ## Props
 
-| Prop           | Type                                                            | Required | Default | Description                                                                        |
-| -------------- | --------------------------------------------------------------- | -------- | ------- | ---------------------------------------------------------------------------------- |
-| `game`         | `Game`                                                          | Yes      | -       | The current game; passed to `SaveFileParser` and shown in copy                     |
-| `onImport`     | `(pokemon: CaughtPokemon[], completedSplits: string[]) => void` | Yes      | -       | Called with the parsed Pokémon and completed split names after a successful import |
-| `requestClose` | `() => void`                                                    | Yes      | -       | Called after a successful import to close the enclosing modal                      |
+| Prop           | Type                                                                                        | Required | Default | Description                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------- |
+| `game`         | `Game`                                                                                      | Yes      | -       | The current game; passed to `SaveFileParser` and shown in copy                                          |
+| `onImport`     | `(pokemon: CaughtPokemon[], completedSplits: string[], gender: 'male' \| 'female') => void` | Yes      | -       | Called with the parsed Pokémon, completed split names, and protagonist gender after a successful import |
+| `requestClose` | `() => void`                                                                                | Yes      | -       | Called after a successful import to close the enclosing modal                                           |
 
 ## State
 
@@ -29,9 +29,10 @@ which supplies `requestClose`.
 
 - **On file input change** — sets `file` to the selected file
 - **On submit** — reads `file` as an `ArrayBuffer`, parses it via
-  `SaveFileParser.parse`, calls `onImport` with the resulting Pokémon
-  and completed split names, then calls `requestClose`; a parse
-  failure is shown as a single error instead and the form stays open
+  `SaveFileParser.parse`, calls `onImport` with the resulting Pokémon,
+  completed split names, and protagonist gender, then calls
+  `requestClose`; a parse failure is shown as a single error instead
+  and the form stays open
 
 ## SCSS Variable Dependencies
 

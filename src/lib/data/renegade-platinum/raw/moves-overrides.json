@@ -1,0 +1,1847 @@
+{
+    "swords-dance": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": null,
+                "accuracy": null,
+                "pp": 20,
+                "effect": "Raises the user’s Attack by two stages.",
+                "effectChance": null,
+                "description": "A frenetic dance to uplift the fighting spirit. This sharply raises the user’s Attack stat."
+            }
+        ]
+    },
+    "whirlwind": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": null,
+                "accuracy": null,
+                "pp": 20,
+                "effect": "Immediately ends wild battles.  Forces trainers to switch Pokémon.",
+                "effectChance": null,
+                "description": "The target is blown away, and a different Pokémon is dragged out. In the wild, this ends a battle against a single Pokémon."
+            }
+        ]
+    },
+    "fly": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "flying",
+                "power": 90,
+                "accuracy": 95,
+                "pp": 15,
+                "effect": "User flies high into the air, dodging all attacks, and hits next turn.",
+                "effectChance": null,
+                "description": "The user soars and then strikes its target on the next turn."
+            }
+        ]
+    },
+    "bind": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 15,
+                "accuracy": 85,
+                "pp": 20,
+                "effect": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
+                "effectChance": 100,
+                "description": "Things such as long bodies or tentacles are used to bind and squeeze the target for four to five turns."
+            }
+        ]
+    },
+    "vine-whip": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "grass",
+                "power": 45,
+                "accuracy": 100,
+                "pp": 25,
+                "effect": "Inflicts regular damage with no additional effect.",
+                "effectChance": null,
+                "description": "The target is struck with slender, whiplike vines to inflict damage."
+            }
+        ]
+    },
+    "jump-kick": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fighting",
+                "power": 100,
+                "accuracy": 95,
+                "pp": 10,
+                "effect": "If the user misses, it takes half the damage it would have inflicted in recoil.",
+                "effectChance": null,
+                "description": "The user jumps up high, then strikes with a kick. If the kick misses, the user hurts itself."
+            }
+        ]
+    },
+    "tackle": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 50,
+                "accuracy": 100,
+                "pp": 35,
+                "effect": "Inflicts regular damage with no additional effect.",
+                "effectChance": null,
+                "description": "A physical attack in which the user charges and slams into the target with its whole body."
+            }
+        ]
+    },
+    "wrap": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 15,
+                "accuracy": 90,
+                "pp": 20,
+                "effect": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
+                "effectChance": 100,
+                "description": "A long body, vines, or the like are used to wrap and squeeze the target for four to five turns."
+            }
+        ]
+    },
+    "thrash": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 120,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Hits every turn for 2-3 turns, then confuses the user.",
+                "effectChance": null,
+                "description": "The user rampages and attacks for two to three turns. The user then becomes confused."
+            }
+        ]
+    },
+    "pin-missile": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "bug",
+                "power": 25,
+                "accuracy": 95,
+                "pp": 20,
+                "effect": "Hits 2-5 times in one turn.",
+                "effectChance": null,
+                "description": "Sharp spikes are shot at the target in rapid succession. They hit two to five times in a row."
+            }
+        ]
+    },
+    "roar": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": null,
+                "accuracy": null,
+                "pp": 20,
+                "effect": "Immediately ends wild battles.  Forces trainers to switch Pokémon.",
+                "effectChance": null,
+                "description": "The target is scared off, and a different Pokémon is dragged out. In the wild, this ends a battle against a single Pokémon."
+            }
+        ]
+    },
+    "disable": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": null,
+                "accuracy": 100,
+                "pp": 20,
+                "effect": "Disables the target’s last used move for 1-8 turns.",
+                "effectChance": null,
+                "description": "For four turns, this move prevents the target from using the move it last used."
+            }
+        ]
+    },
+    "flamethrower": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fire",
+                "power": 90,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Has a chance to burn the target.",
+                "effectChance": 10,
+                "description": "The target is scorched with an intense blast of fire. This may also leave the target with a burn."
+            }
+        ]
+    },
+    "hydro-pump": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "water",
+                "power": 110,
+                "accuracy": 80,
+                "pp": 5,
+                "effect": "Inflicts regular damage with no additional effect.",
+                "effectChance": null,
+                "description": "The target is blasted by a huge volume of water launched under great pressure."
+            }
+        ]
+    },
+    "surf": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "water",
+                "power": 90,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Inflicts regular damage and can hit Dive users.",
+                "effectChance": null,
+                "description": "The user attacks everything around it by swamping its surroundings with a giant wave."
+            }
+        ]
+    },
+    "ice-beam": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "ice",
+                "power": 90,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Has a chance to freeze the target.",
+                "effectChance": 10,
+                "description": "The target is struck with an icy-cold beam of energy. This may also leave the target frozen."
+            }
+        ]
+    },
+    "blizzard": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "ice",
+                "power": 110,
+                "accuracy": 70,
+                "pp": 5,
+                "effect": "Has a chance to freeze the target.",
+                "effectChance": 10,
+                "description": "A howling blizzard is summoned to strike opposing Pokémon. This may also leave the opposing Pokémon frozen."
+            }
+        ]
+    },
+    "submission": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fighting",
+                "power": 80,
+                "accuracy": 80,
+                "pp": 20,
+                "effect": "User receives 1/4 the damage it inflicts in recoil.",
+                "effectChance": null,
+                "description": "The user grabs the target and recklessly dives for the ground. This also damages the user a little."
+            }
+        ]
+    },
+    "absorb": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "grass",
+                "power": 20,
+                "accuracy": 100,
+                "pp": 25,
+                "effect": "Drains half the damage inflicted to heal the user.",
+                "effectChance": null,
+                "description": "A nutrient-draining attack. The user’s HP is restored by half the damage taken by the target."
+            }
+        ]
+    },
+    "mega-drain": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "grass",
+                "power": 40,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Drains half the damage inflicted to heal the user.",
+                "effectChance": null,
+                "description": "A nutrient-draining attack. The user’s HP is restored by half the damage taken by the target."
+            }
+        ]
+    },
+    "petal-dance": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "grass",
+                "power": 120,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Hits every turn for 2-3 turns, then confuses the user.",
+                "effectChance": null,
+                "description": "The user attacks the target by scattering petals for two to three turns. The user then becomes confused."
+            }
+        ]
+    },
+    "fire-spin": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fire",
+                "power": 35,
+                "accuracy": 85,
+                "pp": 15,
+                "effect": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
+                "effectChance": 100,
+                "description": "The target becomes trapped within a fierce vortex of fire that rages for four to five turns."
+            }
+        ]
+    },
+    "thunderbolt": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "electric",
+                "power": 90,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Has a chance to paralyze the target.",
+                "effectChance": 10,
+                "description": "A strong electric blast crashes down on the target. This may also leave the target with paralysis."
+            }
+        ]
+    },
+    "thunder": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "electric",
+                "power": 110,
+                "accuracy": 70,
+                "pp": 10,
+                "effect": "Has a chance to paralyze the target.",
+                "effectChance": 30,
+                "description": "A wicked thunderbolt is dropped on the target to inflict damage. This may also leave the target with paralysis."
+            }
+        ]
+    },
+    "dig": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "ground",
+                "power": 80,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "User digs underground, dodging all attacks, and hits next turn.",
+                "effectChance": null,
+                "description": "The user burrows, then attacks on the next turn."
+            }
+        ]
+    },
+    "toxic": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "poison",
+                "power": null,
+                "accuracy": 90,
+                "pp": 10,
+                "effect": "Badly poisons the target, inflicting more damage every turn.",
+                "effectChance": null,
+                "description": "A move that leaves the target badly poisoned. Its poison damage worsens every turn."
+            }
+        ]
+    },
+    "recover": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": null,
+                "accuracy": null,
+                "pp": 5,
+                "effect": "Heals the user by half its max HP.",
+                "effectChance": null,
+                "description": "Restoring its own cells, the user restores its own HP by half of its max HP."
+            }
+        ]
+    },
+    "minimize": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": null,
+                "accuracy": null,
+                "pp": 10,
+                "effect": "Raises the user’s evasion by two stages.",
+                "effectChance": null,
+                "description": "The user compresses its body to make itself look smaller, which sharply raises its evasiveness."
+            }
+        ]
+    },
+    "barrier": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "psychic",
+                "power": null,
+                "accuracy": null,
+                "pp": 20,
+                "effect": "Raises the user’s Defense by two stages.",
+                "effectChance": null,
+                "description": "The user throws up a sturdy wall that sharply raises its Defense stat."
+            }
+        ]
+    },
+    "lick": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "ghost",
+                "power": 30,
+                "accuracy": 100,
+                "pp": 30,
+                "effect": "Has a chance to paralyze the target.",
+                "effectChance": 30,
+                "description": "The target is licked with a long tongue, causing damage. This may also leave the target with paralysis."
+            }
+        ]
+    },
+    "smog": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "poison",
+                "power": 30,
+                "accuracy": 70,
+                "pp": 20,
+                "effect": "Has a chance to poison the target.",
+                "effectChance": 40,
+                "description": "The target is attacked with a discharge of filthy gases. This may also poison the target."
+            }
+        ]
+    },
+    "fire-blast": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fire",
+                "power": 110,
+                "accuracy": 85,
+                "pp": 5,
+                "effect": "Has a chance to burn the target.",
+                "effectChance": 10,
+                "description": "The target is attacked with an intense blast of all-consuming fire. This may also leave the target with a burn."
+            }
+        ]
+    },
+    "clamp": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "water",
+                "power": 35,
+                "accuracy": 85,
+                "pp": 15,
+                "effect": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
+                "effectChance": 100,
+                "description": "The target is clamped and squeezed by the user’s very thick and sturdy shell for four to five turns."
+            }
+        ]
+    },
+    "skull-bash": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 130,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Raises the user’s Defense by one stage.  User charges for one turn before attacking.",
+                "effectChance": 100,
+                "description": "The user tucks in its head to raise its Defense stat on the first turn, then rams the target on the next turn."
+            }
+        ]
+    },
+    "high-jump-kick": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fighting",
+                "power": 130,
+                "accuracy": 90,
+                "pp": 10,
+                "effect": "If the user misses, it takes half the damage it would have inflicted in recoil.",
+                "effectChance": null,
+                "description": "The target is attacked with a knee kick from a jump. If it misses, the user is hurt instead."
+            }
+        ]
+    },
+    "glare": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": null,
+                "accuracy": 100,
+                "pp": 30,
+                "effect": "Paralyzes the target.",
+                "effectChance": null,
+                "description": "The user intimidates the target with the pattern on its belly to cause paralysis."
+            }
+        ]
+    },
+    "poison-gas": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "poison",
+                "power": null,
+                "accuracy": 90,
+                "pp": 40,
+                "effect": "Poisons the target.",
+                "effectChance": null,
+                "description": "A cloud of poison gas is sprayed in the face of opposing Pokémon, poisoning those hit."
+            }
+        ]
+    },
+    "bubble": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "water",
+                "power": 40,
+                "accuracy": 100,
+                "pp": 30,
+                "effect": "Has a chance to lower the target’s Speed by one stage.",
+                "effectChance": 10,
+                "description": "A spray of countless bubbles is jetted at the opposing Pokémon. This may also lower their Speed stat."
+            }
+        ]
+    },
+    "flash": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": null,
+                "accuracy": 100,
+                "pp": 20,
+                "effect": "Lowers the target’s accuracy by one stage.",
+                "effectChance": null,
+                "description": "The user flashes a bright light that cuts the target’s accuracy."
+            }
+        ]
+    },
+    "psywave": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "psychic",
+                "power": null,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Inflicts damage between 50% and 150% of the user’s level.",
+                "effectChance": null,
+                "description": "The target is attacked with an odd psychic wave. The attack varies in intensity."
+            }
+        ]
+    },
+    "acid-armor": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "poison",
+                "power": null,
+                "accuracy": null,
+                "pp": 20,
+                "effect": "Raises the user’s Defense by two stages.",
+                "effectChance": null,
+                "description": "The user alters its cellular structure to liquefy itself, sharply raising its Defense stat."
+            }
+        ]
+    },
+    "crabhammer": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "water",
+                "power": 100,
+                "accuracy": 90,
+                "pp": 10,
+                "effect": "Has an increased chance for a critical hit.",
+                "effectChance": null,
+                "description": "The target is hammered with a large pincer. Critical hits land more easily."
+            }
+        ]
+    },
+    "thief": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "dark",
+                "power": 60,
+                "accuracy": 100,
+                "pp": 25,
+                "effect": "Takes the target’s item.",
+                "effectChance": null,
+                "description": "The user attacks and steals the target’s held item simultaneously. The user can’t steal anything if it already holds an item."
+            }
+        ]
+    },
+    "mind-reader": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": null,
+                "accuracy": null,
+                "pp": 5,
+                "effect": "Ensures that the user’s next move will hit the target.",
+                "effectChance": null,
+                "description": "The user senses the target’s movements with its mind to ensure its next attack does not miss the target."
+            }
+        ]
+    },
+    "snore": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 50,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Has a chance to make the target flinch.  Only works if the user is sleeping.",
+                "effectChance": 30,
+                "description": "This attack can be used only if the user is asleep. The harsh noise may also make the target flinch."
+            }
+        ]
+    },
+    "curse": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "ghost",
+                "power": null,
+                "accuracy": null,
+                "pp": 10,
+                "effect": "Ghosts pay half their max HP to hurt the target every turn.  Others decrease Speed but raise Attack and Defense.",
+                "effectChance": null,
+                "description": "A move that works differently for the Ghost type than for all other types."
+            }
+        ]
+    },
+    "cotton-spore": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "grass",
+                "power": null,
+                "accuracy": 100,
+                "pp": 40,
+                "effect": "Lowers the target’s Speed by two stages.",
+                "effectChance": null,
+                "description": "The user releases cotton-like spores that cling to the opposing Pokémon, which harshly lowers their Speed stat."
+            }
+        ]
+    },
+    "scary-face": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": null,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Lowers the target’s Speed by two stages.",
+                "effectChance": null,
+                "description": "The user frightens the target with a scary face to harshly lower its Speed stat."
+            }
+        ]
+    },
+    "sweet-kiss": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fairy",
+                "power": null,
+                "accuracy": 75,
+                "pp": 10,
+                "effect": "Confuses the target.",
+                "effectChance": null,
+                "description": "The user kisses the target with a sweet, angelic cuteness that causes confusion."
+            }
+        ]
+    },
+    "zap-cannon": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "electric",
+                "power": 120,
+                "accuracy": 50,
+                "pp": 5,
+                "effect": "Has a chance to paralyze the target.",
+                "effectChance": 100,
+                "description": "The user fires an electric blast like a cannon to inflict damage and cause paralysis."
+            }
+        ]
+    },
+    "perish-song": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": null,
+                "accuracy": null,
+                "pp": 5,
+                "effect": "User and target both faint after three turns.",
+                "effectChance": null,
+                "description": "Any Pokémon that hears this song faints in three turns, unless it switches out of battle."
+            }
+        ]
+    },
+    "bone-rush": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "ground",
+                "power": 25,
+                "accuracy": 90,
+                "pp": 10,
+                "effect": "Hits 2-5 times in one turn.",
+                "effectChance": null,
+                "description": "The user strikes the target with a hard bone two to five times in a row."
+            }
+        ]
+    },
+    "outrage": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "dragon",
+                "power": 120,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Hits every turn for 2-3 turns, then confuses the user.",
+                "effectChance": null,
+                "description": "The user rampages and attacks for two to three turns. The user then becomes confused."
+            }
+        ]
+    },
+    "giga-drain": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "grass",
+                "power": 75,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Drains half the damage inflicted to heal the user.",
+                "effectChance": null,
+                "description": "A nutrient-draining attack. The user’s HP is restored by half the damage taken by the target."
+            }
+        ]
+    },
+    "charm": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fairy",
+                "power": null,
+                "accuracy": 100,
+                "pp": 20,
+                "effect": "Lowers the target’s Attack by two stages.",
+                "effectChance": null,
+                "description": "The user gazes at the target rather charmingly, making it less wary. This harshly lowers its Attack stat."
+            }
+        ]
+    },
+    "fury-cutter": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "bug",
+                "power": 40,
+                "accuracy": 95,
+                "pp": 20,
+                "effect": "Power doubles every turn this move is used in succession after the first, maxing out after five turns.",
+                "effectChance": null,
+                "description": "The target is slashed with scythes or claws. This attack becomes more powerful if it hits in succession."
+            }
+        ]
+    },
+    "heal-bell": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": null,
+                "accuracy": null,
+                "pp": 5,
+                "effect": "Cures the entire party of major status effects.",
+                "effectChance": null,
+                "description": "The user makes a soothing bell chime to heal the status conditions of all the party Pokémon."
+            }
+        ]
+    },
+    "moonlight": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fairy",
+                "power": null,
+                "accuracy": null,
+                "pp": 5,
+                "effect": "Heals the user by half its max HP.  Affected by weather.",
+                "effectChance": null,
+                "description": "The user restores its own HP. The amount of HP regained varies with the weather."
+            }
+        ]
+    },
+    "hidden-power": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 60,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Power and type depend upon user’s IVs.  Power can range from 30 to 70.",
+                "effectChance": null,
+                "description": "A unique attack that varies in type depending on the Pokémon using it."
+            }
+        ]
+    },
+    "future-sight": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "psychic",
+                "power": 120,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Hits the target two turns later.",
+                "effectChance": null,
+                "description": "Two turns after this move is used, a hunk of psychic energy attacks the target."
+            }
+        ]
+    },
+    "rock-smash": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fighting",
+                "power": 40,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Has a chance to lower the target’s Defense by one stage.",
+                "effectChance": 50,
+                "description": "The user attacks with a punch. This may also lower the target’s Defense stat."
+            }
+        ]
+    },
+    "whirlpool": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "water",
+                "power": 35,
+                "accuracy": 85,
+                "pp": 15,
+                "effect": "Prevents the target from leaving battle and inflicts 1/16 its max HP in damage for 2-5 turns.",
+                "effectChance": 100,
+                "description": "The user traps the target in a violent swirling whirlpool for four to five turns."
+            }
+        ]
+    },
+    "beat-up": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "dark",
+                "power": null,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Hits once for every conscious Pokémon the trainer has.",
+                "effectChance": null,
+                "description": "The user gets all party Pokémon to attack the target. The more party Pokémon, the greater the number of attacks."
+            }
+        ]
+    },
+    "uproar": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 90,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Forced to use this move for several turns.  Pokémon cannot fall asleep in that time.",
+                "effectChance": null,
+                "description": "The user attacks in an uproar for three turns. During that time, no Pokémon can fall asleep."
+            }
+        ]
+    },
+    "stockpile": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": null,
+                "accuracy": null,
+                "pp": 20,
+                "effect": "Stores energy up to three times for use with Spit Up and Swallow.",
+                "effectChance": null,
+                "description": "The user charges up power and raises both its Defense and Sp. Def stats. The move can be used three times."
+            }
+        ]
+    },
+    "heat-wave": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fire",
+                "power": 95,
+                "accuracy": 90,
+                "pp": 10,
+                "effect": "Has a chance to burn the target.",
+                "effectChance": 10,
+                "description": "The user attacks by exhaling hot breath on the opposing Pokémon. This may also leave those Pokémon with a burn."
+            }
+        ]
+    },
+    "will-o-wisp": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fire",
+                "power": null,
+                "accuracy": 85,
+                "pp": 15,
+                "effect": "Burns the target.",
+                "effectChance": null,
+                "description": "The user shoots a sinister, bluish-white flame at the target to inflict a burn."
+            }
+        ]
+    },
+    "smelling-salts": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 70,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "If the target is paralyzed, inflicts double damage and cures the paralysis.",
+                "effectChance": null,
+                "description": "This attack’s power is doubled when used on a target with paralysis. This also cures the target’s paralysis, however."
+            }
+        ]
+    },
+    "follow-me": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": null,
+                "accuracy": null,
+                "pp": 20,
+                "effect": "Redirects the target’s single-target effects to the user for this turn.",
+                "effectChance": null,
+                "description": "The user draws attention to itself, making all targets take aim only at the user."
+            }
+        ]
+    },
+    "nature-power": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": null,
+                "accuracy": null,
+                "pp": 20,
+                "effect": "Uses a move which depends upon the terrain.",
+                "effectChance": null,
+                "description": "This attack makes use of nature’s power. Its effects vary depending on the user’s environment."
+            }
+        ]
+    },
+    "knock-off": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "dark",
+                "power": 65,
+                "accuracy": 100,
+                "pp": 20,
+                "effect": "Target drops its held item.",
+                "effectChance": null,
+                "description": "The user slaps down the target’s held item, and that item can’t be used in that battle. The move does more damage if the target has a held item."
+            }
+        ]
+    },
+    "dive": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "water",
+                "power": 80,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "User dives underwater, dodging all attacks, and hits next turn.",
+                "effectChance": null,
+                "description": "Diving on the first turn, the user floats up and attacks on the next turn."
+            }
+        ]
+    },
+    "meteor-mash": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "steel",
+                "power": 90,
+                "accuracy": 90,
+                "pp": 10,
+                "effect": "Has a chance to raise the user’s Attack by one stage.",
+                "effectChance": 20,
+                "description": "The target is hit with a hard punch fired like a meteor. This may also raise the user’s Attack stat."
+            }
+        ]
+    },
+    "aromatherapy": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "grass",
+                "power": null,
+                "accuracy": null,
+                "pp": 5,
+                "effect": "Cures the entire party of major status effects.",
+                "effectChance": null,
+                "description": "The user releases a soothing scent that heals all status conditions affecting the user’s party."
+            }
+        ]
+    },
+    "air-cutter": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "flying",
+                "power": 60,
+                "accuracy": 95,
+                "pp": 25,
+                "effect": "Has an increased chance for a critical hit.",
+                "effectChance": null,
+                "description": "The user launches razor-like wind to slash the opposing Pokémon. Critical hits land more easily."
+            }
+        ]
+    },
+    "overheat": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fire",
+                "power": 130,
+                "accuracy": 90,
+                "pp": 5,
+                "effect": "Lowers the user’s Special Attack by two stages after inflicting damage.",
+                "effectChance": 100,
+                "description": "The user attacks the target at full power. The attack’s recoil harshly lowers the user’s Sp. Atk stat."
+            }
+        ]
+    },
+    "rock-tomb": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "rock",
+                "power": 60,
+                "accuracy": 95,
+                "pp": 15,
+                "effect": "Has a chance to lower the target’s Speed by one stage.",
+                "effectChance": 100,
+                "description": "Boulders are hurled at the target. This also lowers the target’s Speed stat by preventing its movement."
+            }
+        ]
+    },
+    "extrasensory": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "psychic",
+                "power": 80,
+                "accuracy": 100,
+                "pp": 20,
+                "effect": "Has a chance to make the target flinch.",
+                "effectChance": 10,
+                "description": "The user attacks with an odd, unseeable power. This may also make the target flinch."
+            }
+        ]
+    },
+    "sand-tomb": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "ground",
+                "power": 35,
+                "accuracy": 85,
+                "pp": 15,
+                "effect": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
+                "effectChance": 100,
+                "description": "The user traps the target inside a harshly raging sandstorm for four to five turns."
+            }
+        ]
+    },
+    "muddy-water": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "water",
+                "power": 90,
+                "accuracy": 85,
+                "pp": 10,
+                "effect": "Has a chance to lower the target’s accuracy by one stage.",
+                "effectChance": 30,
+                "description": "The user attacks by shooting muddy water at the opposing Pokémon. This may also lower their accuracy."
+            }
+        ]
+    },
+    "bullet-seed": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "grass",
+                "power": 25,
+                "accuracy": 100,
+                "pp": 30,
+                "effect": "Hits 2-5 times in one turn.",
+                "effectChance": null,
+                "description": "The user forcefully shoots seeds at the target two to five times in a row."
+            }
+        ]
+    },
+    "icicle-spear": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "ice",
+                "power": 25,
+                "accuracy": 100,
+                "pp": 30,
+                "effect": "Hits 2-5 times in one turn.",
+                "effectChance": null,
+                "description": "The user launches sharp icicles at the target two to five times in a row."
+            }
+        ]
+    },
+    "covet": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 60,
+                "accuracy": 100,
+                "pp": 25,
+                "effect": "Takes the target’s item.",
+                "effectChance": null,
+                "description": "The user endearingly approaches the target, then steals the target’s held item."
+            }
+        ]
+    },
+    "leaf-blade": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "grass",
+                "power": 90,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Has an increased chance for a critical hit.",
+                "effectChance": null,
+                "description": "The user handles a sharp leaf like a sword and attacks by cutting its target. Critical hits land more easily."
+            }
+        ]
+    },
+    "rock-blast": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "rock",
+                "power": 25,
+                "accuracy": 90,
+                "pp": 10,
+                "effect": "Hits 2-5 times in one turn.",
+                "effectChance": null,
+                "description": "The user hurls hard rocks at the target. Two to five rocks are launched in a row."
+            }
+        ]
+    },
+    "doom-desire": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "steel",
+                "power": 140,
+                "accuracy": 100,
+                "pp": 5,
+                "effect": "Hits the target two turns later.",
+                "effectChance": null,
+                "description": "Two turns after this move is used, a concentrated bundle of light blasts the target. "
+            }
+        ]
+    },
+    "wake-up-slap": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fighting",
+                "power": 70,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "If the target is asleep, has double power and wakes it up.",
+                "effectChance": null,
+                "description": "This attack inflicts big damage on a sleeping target. This also wakes the target up, however."
+            }
+        ]
+    },
+    "feint": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 30,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Hits through Protect and Detect.",
+                "effectChance": null,
+                "description": "This attack hits a target using a move such as Protect or Detect. This also lifts the effects of those moves."
+            }
+        ]
+    },
+    "tailwind": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "flying",
+                "power": null,
+                "accuracy": null,
+                "pp": 15,
+                "effect": "For three turns, friendly Pokémon have doubled Speed.",
+                "effectChance": null,
+                "description": "The user whips up a turbulent whirlwind that ups the Speed stat of the user and its allies for four turns."
+            }
+        ]
+    },
+    "assurance": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "dark",
+                "power": 60,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Power is doubled if the target has already received damage this turn.",
+                "effectChance": null,
+                "description": "If the target has already taken some damage in the same turn, this attack’s power is doubled."
+            }
+        ]
+    },
+    "psycho-shift": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "psychic",
+                "power": null,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Transfers the user’s major status effect to the target.",
+                "effectChance": null,
+                "description": "Using its psychic power of suggestion, the user transfers its status conditions to the target."
+            }
+        ]
+    },
+    "me-first": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": null,
+                "accuracy": null,
+                "pp": 20,
+                "effect": "Uses the target’s move against it before it attacks, with power increased by half.",
+                "effectChance": null,
+                "description": "The user cuts ahead of the target to copy and use the target’s intended move with greater power. This move fails if it isn’t used first."
+            }
+        ]
+    },
+    "punishment": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "dark",
+                "power": null,
+                "accuracy": 100,
+                "pp": 5,
+                "effect": "Power increases against targets with more raised stats, up to a maximum of 200.",
+                "effectChance": null,
+                "description": "The more the target has powered up with stat changes, the greater the move’s power."
+            }
+        ]
+    },
+    "last-resort": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 140,
+                "accuracy": 100,
+                "pp": 5,
+                "effect": "Can only be used after all of the user’s other moves have been used.",
+                "effectChance": null,
+                "description": "This move can be used only after the user has used all the other moves it knows in the battle."
+            }
+        ]
+    },
+    "aura-sphere": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fighting",
+                "power": 80,
+                "accuracy": null,
+                "pp": 20,
+                "effect": "Never misses.",
+                "effectChance": null,
+                "description": "The user lets loose a blast of aura power from deep within its body at the target. This attack never misses."
+            }
+        ]
+    },
+    "air-slash": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "flying",
+                "power": 75,
+                "accuracy": 95,
+                "pp": 15,
+                "effect": "Has a chance to make the target flinch.",
+                "effectChance": 30,
+                "description": "The user attacks with a blade of air that slices even the sky. This may also make the target flinch."
+            }
+        ]
+    },
+    "dragon-pulse": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "dragon",
+                "power": 85,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Inflicts regular damage with no additional effect.",
+                "effectChance": null,
+                "description": "The target is attacked with a shock wave generated by the user’s gaping mouth."
+            }
+        ]
+    },
+    "power-gem": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "rock",
+                "power": 80,
+                "accuracy": 100,
+                "pp": 20,
+                "effect": "Inflicts regular damage with no additional effect.",
+                "effectChance": null,
+                "description": "The user attacks with a ray of light that sparkles as if it were made of gemstones."
+            }
+        ]
+    },
+    "drain-punch": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fighting",
+                "power": 75,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Drains half the damage inflicted to heal the user.",
+                "effectChance": null,
+                "description": "An energy-draining punch. The user’s HP is restored by half the damage taken by the target."
+            }
+        ]
+    },
+    "energy-ball": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "grass",
+                "power": 90,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Has a chance to lower the target’s Special Defense by one stage.",
+                "effectChance": 10,
+                "description": "The user draws power from nature and fires it at the target. This may also lower the target’s Sp. Def stat."
+            }
+        ]
+    },
+    "draco-meteor": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "dragon",
+                "power": 130,
+                "accuracy": 90,
+                "pp": 5,
+                "effect": "Lowers the user’s Special Attack by two stages after inflicting damage.",
+                "effectChance": 100,
+                "description": "Comets are summoned down from the sky onto the target. The attack’s recoil harshly lowers the user’s Sp. Atk stat."
+            }
+        ]
+    },
+    "leaf-storm": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "grass",
+                "power": 130,
+                "accuracy": 90,
+                "pp": 5,
+                "effect": "Lowers the user’s Special Attack by two stages after inflicting damage.",
+                "effectChance": 100,
+                "description": "The user whips up a storm of leaves around the target. The attack’s recoil harshly lowers the user’s Sp. Atk stat."
+            }
+        ]
+    },
+    "gunk-shot": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "poison",
+                "power": 120,
+                "accuracy": 80,
+                "pp": 5,
+                "effect": "Has a chance to poison the target.",
+                "effectChance": 30,
+                "description": "The user shoots filthy garbage at the target to attack. This may also poison the target."
+            }
+        ]
+    },
+    "chatter": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "flying",
+                "power": 65,
+                "accuracy": 100,
+                "pp": 20,
+                "effect": "Has a higher chance to confuse the target when the recorded sound is louder.",
+                "effectChance": 100,
+                "description": "The user attacks the target with sound waves of deafening chatter. This confuses the target."
+            }
+        ]
+    },
+    "magma-storm": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fire",
+                "power": 100,
+                "accuracy": 75,
+                "pp": 5,
+                "effect": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
+                "effectChance": 100,
+                "description": "The target becomes trapped within a maelstrom of fire that rages for four to five turns."
+            }
+        ]
+    },
+    "rage-powder": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "bug",
+                "power": null,
+                "accuracy": null,
+                "pp": 20,
+                "effect": "Redirects the target’s single-target effects to the user for this turn.",
+                "effectChance": null,
+                "description": "The user scatters a cloud of irritating powder to draw attention to itself. Opponents aim only at the user."
+            }
+        ]
+    },
+    "storm-throw": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fighting",
+                "power": 60,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Always scores a critical hit.",
+                "effectChance": null,
+                "description": "The user strikes the target with a fierce blow. This attack always results in a critical hit."
+            }
+        ]
+    },
+    "synchronoise": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "psychic",
+                "power": 120,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Hits any Pokémon that shares a type with the user.",
+                "effectChance": null,
+                "description": "Using an odd shock wave, the user inflicts damage on any Pokémon of the same type in the area around it."
+            }
+        ]
+    },
+    "low-sweep": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fighting",
+                "power": 65,
+                "accuracy": 100,
+                "pp": 20,
+                "effect": "Lowers the target’s Speed by one stage.",
+                "effectChance": 100,
+                "description": "The user makes a swift attack on the target’s legs, which lowers the target’s Speed stat."
+            }
+        ]
+    },
+    "hex": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "ghost",
+                "power": 65,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Has double power if the target has a major status ailment.",
+                "effectChance": null,
+                "description": "This relentless attack does massive damage to a target affected by status conditions."
+            }
+        ]
+    },
+    "incinerate": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fire",
+                "power": 60,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Destroys the target’s held berry.",
+                "effectChance": null,
+                "description": "The user attacks opposing Pokémon with fire. If a Pokémon is holding a certain item, such as a Berry, the item becomes burned up and unusable."
+            }
+        ]
+    },
+    "water-pledge": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "water",
+                "power": 80,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "With Grass Pledge, halves opposing Pokémon’s Speed for four turns.",
+                "effectChance": null,
+                "description": "A column of water strikes the target. When combined with its fire equivalent, its power increases and a rainbow appears."
+            }
+        ]
+    },
+    "fire-pledge": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fire",
+                "power": 80,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "With Water Pledge, doubles the effect chance of friendly Pokémon’s moves for four turns.",
+                "effectChance": null,
+                "description": "A column of fire hits the target. When used with its grass equivalent, its power increases and a vast sea of fire appears."
+            }
+        ]
+    },
+    "grass-pledge": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "grass",
+                "power": 80,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "With Fire Pledge, damages opposing Pokémon for 1/8 their max HP every turn for four turns.",
+                "effectChance": null,
+                "description": "A column of grass hits the target. When used with its water equivalent, its power increases and a vast swamp appears."
+            }
+        ]
+    },
+    "struggle-bug": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "bug",
+                "power": 50,
+                "accuracy": 100,
+                "pp": 20,
+                "effect": "Has a chance to lower the target’s Special Attack by one stage.",
+                "effectChance": 100,
+                "description": "While resisting, the user attacks the opposing Pokémon. This lowers the Sp. Atk stat of those hit."
+            }
+        ]
+    },
+    "frost-breath": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "ice",
+                "power": 60,
+                "accuracy": 90,
+                "pp": 10,
+                "effect": "Always scores a critical hit.",
+                "effectChance": 100,
+                "description": "The user blows its cold breath on the target. This attack always results in a critical hit."
+            }
+        ]
+    },
+    "sacred-sword": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fighting",
+                "power": 90,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Ignores the target’s stat modifiers.",
+                "effectChance": null,
+                "description": "The user attacks by slicing with a long horn. The target’s stat changes don’t affect this attack’s damage."
+            }
+        ]
+    },
+    "hurricane": {
+        "introducedInGeneration": 4,
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "flying",
+                "power": 110,
+                "accuracy": 70,
+                "pp": 10,
+                "effect": "Has a chance to confuse the target.",
+                "effectChance": 30,
+                "description": "The user attacks by wrapping its opponent in a fierce wind. This may also confuse the target."
+            }
+        ]
+    },
+    "techno-blast": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 120,
+                "accuracy": 100,
+                "pp": 5,
+                "effect": "If the user is holding a appropriate plate or drive, the damage inflicted will match it.",
+                "effectChance": null,
+                "description": "The user fires a beam of light at its target. The move’s type changes depending on the Drive the user holds."
+            }
+        ]
+    },
+    "bulldoze": {
+        "introducedInGeneration": 4,
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "ground",
+                "power": 60,
+                "accuracy": 100,
+                "pp": 20,
+                "effect": "Has a chance to lower the target’s Speed by one stage.",
+                "effectChance": 100,
+                "description": "The user strikes everything around it by stomping down on the ground. This lowers the Speed stats of those hit."
+            }
+        ]
+    },
+    "dazzling-gleam": {
+        "introducedInGeneration": 4,
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fairy",
+                "power": 80,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Inflicts regular damage with no additional effect.",
+                "effectChance": null,
+                "description": "The user damages opposing Pokémon by emitting a powerful flash."
+            }
+        ]
+    },
+    "disarming-voice": {
+        "introducedInGeneration": 4,
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fairy",
+                "power": 40,
+                "accuracy": null,
+                "pp": 15,
+                "effect": "Never misses.",
+                "effectChance": null,
+                "description": "Letting out a charming cry, the user does emotional damage to opposing Pokémon. This attack never misses."
+            }
+        ]
+    },
+    "draining-kiss": {
+        "introducedInGeneration": 4,
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fairy",
+                "power": 50,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Drains 75% of the damage inflicted to heal the user.",
+                "effectChance": null,
+                "description": "The user steals the target's HP with a kiss. The user's HP is restored by over half the damage taken by the target."
+            }
+        ]
+    },
+    "drill-run": {
+        "introducedInGeneration": 4,
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "ground",
+                "power": 80,
+                "accuracy": 95,
+                "pp": 10,
+                "effect": "Has an increased chance for a critical hit.",
+                "effectChance": null,
+                "description": "The user crashes into the target while rotating its body like a drill. This move has a heightened chance of landing a critical hit."
+            }
+        ]
+    },
+    "icicle-crash": {
+        "introducedInGeneration": 4,
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "ice",
+                "power": 85,
+                "accuracy": 90,
+                "pp": 10,
+                "effect": "Has a chance to make the target flinch.",
+                "effectChance": 30,
+                "description": "The user attacks by crashing large icicles onto the target. This may also make the target flinch."
+            }
+        ]
+    },
+    "moonblast": {
+        "introducedInGeneration": 4,
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fairy",
+                "power": 95,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Has a chance to lower the target’s Special Attack by one stage.",
+                "effectChance": 30,
+                "description": "Borrowing the power of the moon, the user attacks the target. This may also lower the target's Sp. Atk stat."
+            }
+        ]
+    },
+    "play-rough": {
+        "introducedInGeneration": 4,
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fairy",
+                "power": 90,
+                "accuracy": 90,
+                "pp": 10,
+                "effect": "Has a chance to lower the target’s Attack by one stage.",
+                "effectChance": 10,
+                "description": "The user attacks by playing rough with the target. This may also lower the target's Attack stat."
+            }
+        ]
+    },
+    "scald": {
+        "introducedInGeneration": 4,
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "water",
+                "power": 80,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Has a chance to burn the target.",
+                "effectChance": 30,
+                "description": "The user attacks by shooting boiling hot water at the target. This may also leave the target with a burn."
+            }
+        ]
+    },
+    "wild-charge": {
+        "introducedInGeneration": 4,
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "electric",
+                "power": 90,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "User receives 1/4 the damage it inflicts in recoil.",
+                "effectChance": null,
+                "description": "The user shrouds itself in electricity and smashes into its target. This also damages the user a little."
+            }
+        ]
+    },
+    "frustration": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 102,
+                "accuracy": 100,
+                "pp": 20,
+                "effect": "Always deals 102 power, regardless of happiness.",
+                "effectChance": null,
+                "description": "A full-power attack. In this hack it always hits its maximum power instead of scaling with the user's happiness."
+            }
+        ]
+    },
+    "return": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 102,
+                "accuracy": 100,
+                "pp": 20,
+                "effect": "Always deals 102 power, regardless of happiness.",
+                "effectChance": null,
+                "description": "A full-power attack. In this hack it always hits its maximum power instead of scaling with the user's happiness."
+            }
+        ]
+    }
+}

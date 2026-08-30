@@ -138,21 +138,29 @@ export default class EncounterHelpers {
      * Whether every one of a location's encounters is an evolution line
      * caught elsewhere in the run — i.e. the location's "already caught"
      * indicator, independent of whether the show-dupes setting is
-     * actually on.
+     * actually on (dupes are always treated as satisfied). Legendaries
+     * still obey showLegendaries, since that setting means "allow
+     * legendaries in this run" rather than a display-only filter — an
+     * uncaught legendary is only "satisfied" when legendaries are
+     * disallowed entirely.
      */
     static areAllEncountersDupes(
         dataSource: GameDataSource,
         encounters: Encounter[],
         dupes: string[],
         caughtHere: string | undefined,
-        generation: number
+        generation: number,
+        showLegendaries: boolean
     ): boolean {
         return EncounterHelpers.areAllEncountersHidden(encounters, {
             caughtHere,
             dataSource,
             dupes,
             generation,
-            settings: { 'show-dupes': false },
+            settings: {
+                'show-dupes': false,
+                'show-legendaries': showLegendaries,
+            },
         });
     }
 

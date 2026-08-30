@@ -3,12 +3,7 @@
 import { useState, useSyncExternalStore } from 'react';
 import { StaticImageData } from 'next/image';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
-import {
-    BattleMetadata,
-    EncounterMethod,
-    MapAnchor,
-    PokemonStatus,
-} from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor, PokemonStatus } from '@/lib/static/enums';
 import {
     Battle,
     CaughtPokemon,
@@ -86,6 +81,11 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
+    const resolveMap = (
+        map:
+            StaticImageData | { male: StaticImageData; female: StaticImageData }
+    ): StaticImageData => ('male' in map ? map[run.gender ?? 'male'] : map);
+
     const getDefaultSelectedBattle = (
         subareaIndex: number
     ): Battle | undefined => {
@@ -104,13 +104,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         );
         if (queriedBattle) return queriedBattle;
 
-        const requiredBattles = battles.filter(
-            (battle) => !battle.metadata.includes(BattleMetadata.Optional)
-        );
-        const candidates =
-            requiredBattles.length > 0 ? requiredBattles : battles;
-
-        return candidates[0];
+        return battles[0];
     };
 
     const getAllBattles = (): {
@@ -155,19 +149,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             if (queried) return queried.subareaIndex;
         }
 
-        const hasAnyEncounters = location.subareas.some(
-            (subarea) => !!subarea.encountersKey
-        );
-        const takenEncounter = run.caughtPokemon.some(
-            (caught) => caught.location === location.name
-        );
-
-        if (hasAnyEncounters && !takenEncounter) {
-            return 0;
-        }
-
-        const candidates = getAllBattles();
-        return candidates[0]?.subareaIndex ?? 0;
+        return 0;
     };
 
     // -------------------------------------------------------------------------
@@ -281,7 +263,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     if (location.subareas) {
         const subarea = location.subareas[selectedSubareaIndex];
         section = {
-            map: subarea.map,
+            map: resolveMap(subarea.map),
             mapAnchor: subarea.mapAnchor,
             battles: BattleHelpers.filterByGender(
                 location.hideBattles || subarea.hideBattles
@@ -295,7 +277,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         };
     } else {
         section = {
-            map: location.map,
+            map: location.map && resolveMap(location.map),
             mapAnchor: location.mapAnchor,
             battles: BattleHelpers.filterByGender(
                 location.hideBattles ? [] : (location.battles ?? []),

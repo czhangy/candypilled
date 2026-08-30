@@ -43,7 +43,6 @@ type PokemonPanelProps = {
     onNatureChange: (value: string) => void;
     onSpeciesChange: (slug: string) => void;
     onStatusChange: (value: string) => void;
-    placeholder?: string;
     pokemonSlug?: string;
     showEvs: boolean;
     speedComparison: SpeedComparison | undefined;
@@ -73,7 +72,6 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     onNatureChange,
     onSpeciesChange,
     onStatusChange,
-    placeholder,
     pokemonSlug,
     showEvs,
     speedComparison,
@@ -179,147 +177,132 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
 
     return (
         <div className={styles['pokemon-panel']}>
-            {placeholder ? (
-                <p className={styles.placeholder}>{placeholder}</p>
-            ) : (
+            <div className={styles.row}>
+                <div className={styles.field}>
+                    <span className={styles.label}>Pokémon</span>
+                    {pokemonSlug ? (
+                        <div className={styles.species}>
+                            <Dropdown
+                                dense
+                                onChange={onSpeciesChange}
+                                options={speciesOptions}
+                                searchable
+                                value={pokemonSlug}
+                            />
+                            {gender &&
+                                (canToggleGender ? (
+                                    <button
+                                        className={genderClassName}
+                                        onClick={() =>
+                                            onGenderChange(
+                                                gender === 'male'
+                                                    ? 'female'
+                                                    : 'male'
+                                            )
+                                        }
+                                        type="button"
+                                    >
+                                        {genderSymbol}
+                                    </button>
+                                ) : (
+                                    <span className={genderClassName}>
+                                        {genderSymbol}
+                                    </span>
+                                ))}
+                        </div>
+                    ) : (
+                        <span className={styles.value}>None selected</span>
+                    )}
+                </div>
+                <div className={styles.field}>
+                    <label className={styles.label} htmlFor={levelInputId}>
+                        Level
+                    </label>
+                    <NumericInput
+                        dense={false}
+                        disabled={!pokemonSlug}
+                        id={levelInputId}
+                        max={MAX_LEVEL}
+                        min={MIN_LEVEL}
+                        onChange={onLevelChange}
+                        value={level}
+                    />
+                </div>
+            </div>
+            {pokemonSlug && (
                 <>
                     <div className={styles.row}>
                         <div className={styles.field}>
-                            <span className={styles.label}>Pokémon</span>
-                            {pokemonSlug ? (
-                                <div className={styles.species}>
-                                    <Dropdown
-                                        dense
-                                        onChange={onSpeciesChange}
-                                        options={speciesOptions}
-                                        searchable
-                                        value={pokemonSlug}
-                                    />
-                                    {gender &&
-                                        (canToggleGender ? (
-                                            <button
-                                                className={genderClassName}
-                                                onClick={() =>
-                                                    onGenderChange(
-                                                        gender === 'male'
-                                                            ? 'female'
-                                                            : 'male'
-                                                    )
-                                                }
-                                                type="button"
-                                            >
-                                                {genderSymbol}
-                                            </button>
-                                        ) : (
-                                            <span className={genderClassName}>
-                                                {genderSymbol}
-                                            </span>
-                                        ))}
-                                </div>
-                            ) : (
-                                <span className={styles.value}>
-                                    None selected
-                                </span>
-                            )}
+                            <span className={styles.label}>Nature</span>
+                            <Dropdown
+                                dense
+                                onChange={onNatureChange}
+                                options={natureOptions}
+                                value={nature}
+                            />
                         </div>
                         <div className={styles.field}>
-                            <label
-                                className={styles.label}
-                                htmlFor={levelInputId}
-                            >
-                                Level
-                            </label>
-                            <NumericInput
-                                dense={false}
-                                disabled={!pokemonSlug}
-                                id={levelInputId}
-                                max={MAX_LEVEL}
-                                min={MIN_LEVEL}
-                                onChange={onLevelChange}
-                                value={level}
+                            <span className={styles.label}>Status</span>
+                            <Dropdown
+                                dense
+                                onChange={onStatusChange}
+                                options={STATUS_OPTIONS}
+                                value={status}
                             />
                         </div>
                     </div>
-                    {pokemonSlug && (
-                        <>
-                            <div className={styles.row}>
-                                <div className={styles.field}>
-                                    <span className={styles.label}>Nature</span>
-                                    <Dropdown
-                                        dense
-                                        onChange={onNatureChange}
-                                        options={natureOptions}
-                                        value={nature}
-                                    />
-                                </div>
-                                <div className={styles.field}>
-                                    <span className={styles.label}>Status</span>
-                                    <Dropdown
-                                        dense
-                                        onChange={onStatusChange}
-                                        options={STATUS_OPTIONS}
-                                        value={status}
-                                    />
-                                </div>
-                            </div>
-                            <div className={styles.row}>
-                                <div className={styles.field}>
-                                    <span className={styles.label}>
-                                        Ability
-                                    </span>
-                                    <Dropdown
-                                        dense
-                                        onChange={onAbilityChange}
-                                        options={abilityOptions}
-                                        searchable
-                                        value={abilityName}
-                                    />
-                                </div>
-                                <div className={styles.field}>
-                                    <span className={styles.label}>
-                                        Held Item
-                                    </span>
-                                    <Dropdown
-                                        dense
-                                        onChange={onHeldItemChange}
-                                        options={heldItemOptions}
-                                        searchable
-                                        value={heldItem}
-                                    />
-                                </div>
-                            </div>
-                            <StatsTable
-                                baseStats={baseStats}
-                                boosts={boosts}
-                                evs={evs}
-                                ivs={ivs}
-                                onBoostChange={onBoostChange}
-                                onEvChange={onEvChange}
-                                onIvChange={onIvChange}
-                                showEvs={showEvs}
-                                speedComparison={speedComparison}
-                                totalStats={totalStats}
+                    <div className={styles.row}>
+                        <div className={styles.field}>
+                            <span className={styles.label}>Ability</span>
+                            <Dropdown
+                                dense
+                                onChange={onAbilityChange}
+                                options={abilityOptions}
+                                searchable
+                                value={abilityName}
                             />
-                            <div className={styles.field}>
-                                <span className={styles.label}>Moves</span>
-                                <div className={styles.moves}>
-                                    {moves.map((move, index) => (
-                                        <Dropdown
-                                            dense
-                                            key={index}
-                                            onChange={(value) =>
-                                                onMoveChange(index, value)
-                                            }
-                                            options={moveOptions}
-                                            placeholder="None"
-                                            searchable
-                                            value={move}
-                                        />
-                                    ))}
-                                </div>
-                            </div>
-                        </>
-                    )}
+                        </div>
+                        <div className={styles.field}>
+                            <span className={styles.label}>Held Item</span>
+                            <Dropdown
+                                dense
+                                onChange={onHeldItemChange}
+                                options={heldItemOptions}
+                                searchable
+                                value={heldItem}
+                            />
+                        </div>
+                    </div>
+                    <StatsTable
+                        baseStats={baseStats}
+                        boosts={boosts}
+                        evs={evs}
+                        ivs={ivs}
+                        onBoostChange={onBoostChange}
+                        onEvChange={onEvChange}
+                        onIvChange={onIvChange}
+                        showEvs={showEvs}
+                        speedComparison={speedComparison}
+                        totalStats={totalStats}
+                    />
+                    <div className={styles.field}>
+                        <span className={styles.label}>Moves</span>
+                        <div className={styles.moves}>
+                            {moves.map((move, index) => (
+                                <Dropdown
+                                    dense
+                                    key={index}
+                                    onChange={(value) =>
+                                        onMoveChange(index, value)
+                                    }
+                                    options={moveOptions}
+                                    placeholder="None"
+                                    searchable
+                                    value={move}
+                                />
+                            ))}
+                        </div>
+                    </div>
                 </>
             )}
         </div>

@@ -10,7 +10,7 @@ const CANALAVE_CITY: Location = {
     battles: [
         {
             metadata: [BattleMetadata.Miniboss],
-            battleKey: 'pkmn-trainer-barry-barry-5',
+            battleKey: 'pkmn-trainer-barry-canalave-city',
             x: 48.1,
             y: 29.9,
         },

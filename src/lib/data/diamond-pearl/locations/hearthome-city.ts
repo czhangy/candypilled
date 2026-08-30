@@ -10,7 +10,7 @@ const HEARTHOME_CITY: Location = {
     battles: [
         {
             metadata: [BattleMetadata.Miniboss],
-            battleKey: 'pkmn-trainer-barry-barry-2',
+            battleKey: 'pkmn-trainer-barry-hearthome-city',
             x: 60.8,
             y: 77.7,
         },

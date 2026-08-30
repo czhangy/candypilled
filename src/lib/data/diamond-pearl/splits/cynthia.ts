@@ -3,15 +3,17 @@ import BERTHAS_ROOM from '@/lib/data/diamond-pearl/locations/berthas-room';
 import CYNTHIAS_ROOM from '@/lib/data/diamond-pearl/locations/cynthias-room';
 import FLINTS_ROOM from '@/lib/data/diamond-pearl/locations/flints-room';
 import LUCIANS_ROOM from '@/lib/data/diamond-pearl/locations/lucians-room';
-import POKEMON_LEAGUE_LOBBY from '@/lib/data/diamond-pearl/locations/pokemon-league-lobby';
+import POKEMON_LEAGUE from '@/lib/data/diamond-pearl/locations/pokemon-league';
 import VICTORY_ROAD from '@/lib/data/diamond-pearl/locations/victory-road';
 import { Split } from '@/lib/static/types';
+import LocationHelpers from '@/lib/utils/LocationHelpers';
 
 const CYNTHIA: Split = {
     name: 'Cynthia',
     locations: [
+        LocationHelpers.withHiddenBattles(POKEMON_LEAGUE),
         VICTORY_ROAD,
-        POKEMON_LEAGUE_LOBBY,
+        LocationHelpers.withSubareaOrder(POKEMON_LEAGUE, ['Lobby', 'Exterior']),
         AARONS_ROOM,
         BERTHAS_ROOM,
         FLINTS_ROOM,

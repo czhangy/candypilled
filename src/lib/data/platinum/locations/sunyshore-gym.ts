@@ -78,7 +78,7 @@ const SUNYSHORE_GYM: Location = {
                 },
                 {
                     metadata: [BattleMetadata.Boss],
-                    battleKey: 'leader-volkner-volkner',
+                    battleKey: 'leader-volkner',
                     x: 49.6,
                     y: 12.6,
                 },

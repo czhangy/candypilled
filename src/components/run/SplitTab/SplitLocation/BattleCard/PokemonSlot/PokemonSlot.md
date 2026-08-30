@@ -1,15 +1,18 @@
 # PokemonSlot
 
 A single team member slot within a battle card, showing that Pokémon's
-sprite (matching the game's sprite variant) above its name (with type
-badges beneath it), then a metadata list of its held item (preceded by
-an icon), ability, nature, and moveset. Non-neutral natures are
+sprite (matching the game's sprite variant) above its name, then a row
+below the name with its level on the left and type badges on the
+right, then a metadata list of its held item (preceded by an icon),
+ability, nature, and moveset. Non-neutral natures are
 annotated with their stat
 effects, shown in a smaller font on the same line (e.g. "Adamant [+Atk
--SpA]"). Each Pokémon's name is prefixed with its level (e.g. "Lv.5
-Chimchar", omitted when `hofDisplay`) and suffixed with a blue ♂ or
-pink ♀ gender symbol, omitted when `pokemon.gender` is unset (e.g. for
-a genderless species).
+-SpA]"). The name itself never wraps (truncated with an ellipsis if it
+would overflow) and is suffixed with a blue ♂ or pink ♀ gender symbol,
+omitted when `pokemon.gender` is unset (e.g. for a genderless
+species). The level (e.g. "Lv.5", omitted when `hofDisplay`) and type
+badges render on their own row beneath the name, so a long species
+name can't push them around.
 Unless `isReadOnly`, the sprite and name are clickable,
 opening that Pokémon's Pokédex entry in a new tab, the held item is
 clickable, linking to that item's details, the ability is
@@ -28,20 +31,20 @@ placeholder slot is shown instead.
 
 ## Props
 
-| Prop              | Type                            | Required | Default | Description                                                                                                                                                                                                                 |
-| ----------------- | ------------------------------- | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `dataSource`      | `GameDataSource`                | Yes      | -       | The game's dataset, used to resolve species/move/ability/item data                                                                                                                                                          |
-| `generation`      | `number`                        | Yes      | -       | The game's generation, used to resolve the Pokémon's types                                                                                                                                                                  |
-| `hofDisplay`      | `boolean`                       | Yes      | -       | Hides the level prefix, disables dangerous move/ability highlighting, and (combined with `isReadOnly`) keeps the held item and moveset clickable while species, ability, and nature stay non-interactive                    |
-| `isReadOnly`      | `boolean`                       | Yes      | -       | Renders the sprite/name, held item, ability, and nature as plain, non-interactive text when true (held item and moveset excepted when `hofDisplay`)                                                                         |
-| `onSelectAbility` | `(slug: string) => void`        | No       | -       | Called with the Pokémon's ability slug when it's clicked; unused when `isReadOnly`                                                                                                                                          |
-| `onSelectItem`    | `(slug: string) => void`        | No       | -       | Called with the Pokémon's held item slug when it's clicked; unused when `isReadOnly` and not `hofDisplay`                                                                                                                   |
-| `onSelectMove`    | `(slug: string) => void`        | No       | -       | Called with a move's slug when it's clicked within the moveset; unused when `isReadOnly` and not `hofDisplay`                                                                                                               |
-| `onSelectSpecies` | `(slug: string) => void`        | No       | -       | Called with the Pokémon's `displaySlug` when its sprite or name is clicked; unused when `isReadOnly`                                                                                                                        |
-| `pokemon`         | `BattlePokemon \| null`         | Yes      | -       | The Pokémon to display, or `null` to render an empty slot                                                                                                                                                                   |
-| `position`        | `'single' \| 'top' \| 'bottom'` | Yes      | -       | Which row of `BattleCard`'s team this slot belongs to, controlling which corner (if it's the last slot in its row) gets rounded and whether the top border is omitted (`'bottom'`, to avoid doubling up with the row above) |
-| `variant`         | `string`                        | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                                                                                                                      |
-| `version`         | `string`                        | Yes      | -       | The game's version slug, used to derive the moveset when `pokemon.moves` is unset                                                                                                                                           |
+| Prop              | Type                                        | Required | Default | Description                                                                                                                                                                                                                            |
+| ----------------- | ------------------------------------------- | -------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dataSource`      | `GameDataSource`                            | Yes      | -       | The game's dataset, used to resolve species/move/ability/item data                                                                                                                                                                     |
+| `generation`      | `number`                                    | Yes      | -       | The game's generation, used to resolve the Pokémon's types                                                                                                                                                                             |
+| `hofDisplay`      | `boolean`                                   | Yes      | -       | Hides the level prefix, disables dangerous move/ability highlighting, and (combined with `isReadOnly`) keeps the held item and moveset clickable while species, ability, and nature stay non-interactive                               |
+| `isReadOnly`      | `boolean`                                   | Yes      | -       | Renders the sprite/name, held item, ability, and nature as plain, non-interactive text when true (held item and moveset excepted when `hofDisplay`)                                                                                    |
+| `onSelectAbility` | `(slug: string) => void`                    | No       | -       | Called with the Pokémon's ability slug when it's clicked; unused when `isReadOnly`                                                                                                                                                     |
+| `onSelectItem`    | `(slug: string) => void`                    | No       | -       | Called with the Pokémon's held item slug when it's clicked; unused when `isReadOnly` and not `hofDisplay`                                                                                                                              |
+| `onSelectMove`    | `(slug: string) => void`                    | No       | -       | Called with a move's slug when it's clicked within the moveset; unused when `isReadOnly` and not `hofDisplay`                                                                                                                          |
+| `onSelectSpecies` | `(slug: string) => void`                    | No       | -       | Called with the Pokémon's `displaySlug` when its sprite or name is clicked; unused when `isReadOnly`                                                                                                                                   |
+| `pokemon`         | `BattlePokemon \| null`                     | Yes      | -       | The Pokémon to display, or `null` to render an empty slot                                                                                                                                                                              |
+| `position`        | `'single' \| 'top' \| 'middle' \| 'bottom'` | Yes      | -       | Which row of `BattleCard`'s team this slot belongs to, controlling which corner (if it's the last slot in its row) gets rounded and whether the top border is omitted (`'middle'`/`'bottom'`, to avoid doubling up with the row above) |
+| `variant`         | `string`                                    | Yes      | -       | The sprite variant to prefer, matching the game's slug                                                                                                                                                                                 |
+| `version`         | `string`                                    | Yes      | -       | The game's version slug, used to derive the moveset when `pokemon.moves` is unset                                                                                                                                                      |
 
 ## Computations
 

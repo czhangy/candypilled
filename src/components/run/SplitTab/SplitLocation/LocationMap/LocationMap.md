@@ -3,12 +3,18 @@
 Renders a location's map image, at its native pixel dimensions, inside a
 full-width, click-and-drag pannable viewport (capped at 420px tall, but
 shorter for maps that aren't that tall) under a "Map" label, with a
-`TrainerMarker` overlaid for each battle at that location. Every map
+`TrainerMarker` overlaid for each battle at that location. The viewport
+reserves 2rem of slack around all four sides of the image itself (outside
+the pannable/clamped area) so a marker anchored near any edge or corner of
+the map — plus its boss/miniboss badge, which extends further past the
+marker's own edge — isn't cut off by the viewport's clipping. Every map
 renders at the same pixel density regardless of its native size, so
 navigating between a small and a large map does not change scale — larger
 maps require panning to see in full, while maps smaller than the viewport
-are centered with no panning available. An encounter table will be added
-here in future work.
+are centered with no panning available. The map image is served
+unoptimized, bypassing Next.js's image optimizer entirely, since its
+lossy re-encoding introduces visible compression artifacts on pixel-art
+map screenshots. An encounter table will be added here in future work.
 
 When no battle is selected, a map larger than the viewport defaults to
 whichever edge/corner `mapAnchor` specifies (top-left unless the location
@@ -47,7 +53,7 @@ map does not conflict with placing coordinates.
 | `prevSelectedBattle`  | `Battle \| undefined`               | `undefined`               | Tracks the previous `selectedBattle` prop so a selection change (including an initial one, e.g. from a battle query param) can center `pan` on that marker                                                                                                                                 |
 | `pendingCenterAnchor` | `boolean`                           | `false`                   | Set when a map change resolves to an anchor that centers at least one axis (`Top`/`Bottom`/`Left`/`Right`/`Center`) before a real `viewportSize` measurement exists yet, so the centered axis/axes can be computed once one arrives                                                        |
 | `isDragging`          | `boolean`                           | `false`                   | Whether the map is currently being dragged, for cursor feedback and to gate pan updates                                                                                                                                                                                                    |
-| `viewportSize`        | `{ width: number; height: number }` | `{ width: 0, height: 0 }` | The viewport's current rendered size, used to clamp/center `pan`                                                                                                                                                                                                                           |
+| `viewportSize`        | `{ width: number; height: number }` | `{ width: 0, height: 0 }` | The viewport's current rendered size; used, via `effectiveViewportWidth`/`effectiveViewportHeight`, to clamp/center `pan`                                                                                                                                                                  |
 | `previewPosition`     | `{ x: number; y: number } \| null`  | `null`                    | The cursor's current position on the map, as a percentage, while Shift is held                                                                                                                                                                                                             |
 | `justCopied`          | `boolean`                           | `false`                   | Whether coordinates were just copied to the clipboard, for label feedback                                                                                                                                                                                                                  |
 
@@ -62,6 +68,21 @@ map does not conflict with placing coordinates.
 - `EDIT_MODE_ON` — `true` outside production builds (`NODE_ENV !==
 'production'`), enabling the Shift-hover x/y placement preview described
   above
+- `EDGE_BUFFER_PX` — 32px (2rem) of slack reserved on every side of the
+  image inside the viewport's clipping box, for marker bleed (see above);
+  added to the rendered `--pan-x`/`--pan-y` offsets and to the viewport's
+  rendered height (width is already the panel's full layout width, not
+  tied to `map.width`, so it needs no equivalent style change), but
+  excluded from `effectiveViewportWidth`/`effectiveViewportHeight` so it
+  never counts as pannable/visible image area
+- `effectiveViewportWidth` — `viewportSize.width` minus `EDGE_BUFFER_PX`
+  on both ends (floored at `0`); the X-axis counterpart to
+  `effectiveViewportHeight` below
+- `effectiveViewportHeight` — `viewportSize.height` minus
+  `EDGE_BUFFER_PX` on both ends (floored at `0`); every Y-axis pan/clamp/
+  center computation uses this instead of the raw measurement, since the
+  buffer is reserved space, not part of the area available to show the
+  image
 - `clampPanAxis` — for one axis, centers the map if it's smaller than the
   viewport, otherwise clamps the given pan value so the map's edge never
   moves past the viewport's edge

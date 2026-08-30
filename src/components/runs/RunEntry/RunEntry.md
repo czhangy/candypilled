@@ -11,10 +11,10 @@ exists), a "New" button starts a fresh attempt for the game, confirming
 with the user first if a run is already in progress, then prompting for
 the protagonist's gender (only for a game where `Game.genders` is set)
 followed by a starter before the run is created, and a "Data"
-button opens a modal offering a `.sav` file import (merged into the
-existing run if one exists, otherwise used to create a fresh one,
-prompting for the protagonist's gender first if `Game.genders` is set)
-and a reset action (only available once a run already exists).
+button opens a modal offering a `.sav`/`.dsv` file import (merged into the
+existing run if one exists, otherwise used to create a fresh one, using
+the save's own protagonist gender when `Game.genders` is set) and a reset
+action (only available once a run already exists).
 
 ## Props
 
@@ -25,14 +25,13 @@ and a reset action (only available once a run already exists).
 
 ## State
 
-| State                 | Type                                                                                   | Initial value | Description                                                                                                                          |
-| --------------------- | -------------------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `isConfirmOpen`       | `boolean`                                                                              | `false`       | Whether the "start a new run" confirmation modal is open                                                                             |
-| `isDataModalOpen`     | `boolean`                                                                              | `false`       | Whether the data (reset) modal is open                                                                                               |
-| `isGenderSelectOpen`  | `boolean`                                                                              | `false`       | Whether the gender selection modal is open                                                                                           |
-| `isStarterSelectOpen` | `boolean`                                                                              | `false`       | Whether the starter selection modal is open                                                                                          |
-| `selectedGender`      | `'male' \| 'female' \| undefined`                                                      | `undefined`   | The gender chosen in the gender selection modal, carried into the new run once the starter is also chosen                            |
-| `pendingImport`       | `{ pokemon: CaughtPokemon[]; completedSplits: string[]; starterSlug: string } \| null` | `null`        | The parsed data (and identified starter species) from a save import awaiting a gender choice before a new run can be created from it |
+| State                 | Type                              | Initial value | Description                                                                                               |
+| --------------------- | --------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------- |
+| `isConfirmOpen`       | `boolean`                         | `false`       | Whether the "start a new run" confirmation modal is open                                                  |
+| `isDataModalOpen`     | `boolean`                         | `false`       | Whether the data (reset) modal is open                                                                    |
+| `isGenderSelectOpen`  | `boolean`                         | `false`       | Whether the gender selection modal is open                                                                |
+| `isStarterSelectOpen` | `boolean`                         | `false`       | Whether the starter selection modal is open                                                               |
+| `selectedGender`      | `'male' \| 'female' \| undefined` | `undefined`   | The gender chosen in the gender selection modal, carried into the new run once the starter is also chosen |
 
 ## Handlers
 
@@ -55,14 +54,9 @@ and a reset action (only available once a run already exists).
   `RunImportHelpers.mergeImport` and saves the result; otherwise,
   identifies the starter's base species slug via
   `findImportedStarterSlug` (throwing, which `ImportSaveForm` shows as
-  an import error, if none is found) and either creates a fresh run
-  from the import right away, or first opens the gender selection
-  modal (only for a game where `Game.genders` is set) and creates it
-  once a gender is chosen
-- **On import gender select modal close/cancel** — closes the modal
-  without creating a run, discarding `pendingImport`
-- **On import gender select** — creates a fresh run from
-  `pendingImport` with the chosen gender, then clears `pendingImport`
+  an import error, if none is found) and creates a fresh run from the
+  import right away, using the save's own parsed gender when
+  `Game.genders` is set
 - **On gender select modal close/cancel** — closes the modal without
   starting a new run
 - **On gender select** — stores the chosen gender in `selectedGender`,

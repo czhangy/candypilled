@@ -87,7 +87,9 @@ const HofPage: React.FC = () => {
                                     )
                                 }
                                 team={entry.team}
-                                variant={game.version}
+                                variant={
+                                    game.pokemonAssetFolder ?? game.version
+                                }
                                 version={game.version}
                             />
                         </li>

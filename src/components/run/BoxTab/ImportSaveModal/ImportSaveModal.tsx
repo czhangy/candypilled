@@ -9,7 +9,11 @@ type ImportSaveModalProps = {
     buttonTextColor?: string;
     game: Game;
     onClose: () => void;
-    onSubmit: (pokemon: CaughtPokemon[], completedSplits: string[]) => void;
+    onSubmit: (
+        pokemon: CaughtPokemon[],
+        completedSplits: string[],
+        gender: 'male' | 'female'
+    ) => void;
 };
 
 const ImportSaveModal: React.FC<ImportSaveModalProps> = ({

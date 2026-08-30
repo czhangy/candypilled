@@ -22,6 +22,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Ace Trainer',
         spriteSlug: 'ace-trainer-snow-m',
     },
+    'arcade-star-dahlia': {
+        displayName: 'Arcade Star',
+        spriteSlug: 'dahlia',
+    },
     'aroma-lady': {
         displayName: 'Aroma Lady',
         spriteSlug: 'aroma-lady',
@@ -54,9 +58,17 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Bug Catcher',
         spriteSlug: 'bug-catcher',
     },
+    cameraman: {
+        displayName: 'Cameraman',
+        spriteSlug: 'cameraman',
+    },
     camper: {
         displayName: 'Camper',
         spriteSlug: 'camper',
+    },
+    'castle-valet-darach': {
+        displayName: 'Castle Valet',
+        spriteSlug: 'darach',
     },
     'champion-cynthia': {
         displayName: 'Champion',
@@ -203,11 +215,11 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         spriteSlug: 'picnicker',
     },
     'pkmn-breeder-f': {
-        displayName: 'Pkmn Breeder',
+        displayName: 'PKMN Breeder',
         spriteSlug: 'pkmn-breeder-f',
     },
     'pkmn-breeder-m': {
-        displayName: 'Pkmn Breeder',
+        displayName: 'PKMN Breeder',
         spriteSlug: 'pkmn-breeder-m',
     },
     'pkmn-ranger-f': {
@@ -221,6 +233,30 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
     'pkmn-trainer-barry': {
         displayName: 'PKMN Trainer',
         spriteSlug: 'barry',
+    },
+    'pkmn-trainer-cheryl': {
+        displayName: 'PKMN Trainer',
+        spriteSlug: 'cheryl',
+    },
+    'pkmn-trainer-dawn': {
+        displayName: 'PKMN Trainer',
+        spriteSlug: 'dawn',
+    },
+    'pkmn-trainer-lucas': {
+        displayName: 'PKMN Trainer',
+        spriteSlug: 'lucas',
+    },
+    'pkmn-trainer-marley': {
+        displayName: 'PKMN Trainer',
+        spriteSlug: 'marley',
+    },
+    'pkmn-trainer-mira': {
+        displayName: 'PKMN Trainer',
+        spriteSlug: 'mira',
+    },
+    'pkmn-trainer-riley': {
+        displayName: 'PKMN Trainer',
+        spriteSlug: 'riley',
     },
     'poke-kid': {
         displayName: 'Poké Kid',
@@ -249,6 +285,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
     rancher: {
         displayName: 'Rancher',
         spriteSlug: 'rancher',
+    },
+    reporter: {
+        displayName: 'Reporter',
+        spriteSlug: 'reporter',
     },
     'rich-boy': {
         displayName: 'Rich Boy',

@@ -1,6 +1,5 @@
 import { StaticImageData } from 'next/image';
 import {
-    AiFlag,
     BadgeAssetFolder,
     BattleMetadata,
     EncounterMethod,
@@ -211,6 +210,7 @@ export type Gen4SaveLayout = {
     generalBlockSize: number;
     storageBlockSize: number;
     partyOffset: number;
+    genderOffset: number;
     badgeMaskOffset: number;
     mainStoryClearedOffset: number;
 };
@@ -238,7 +238,6 @@ export type BattleData = {
     secondTrainer?: BattleTrainer;
     // TRAINER_CLASSES slug.
     trainerClass: string;
-    aiFlags: AiFlag[];
 };
 
 export type Battle = {
@@ -270,8 +269,7 @@ export type Encounter = {
     // The species the player must hand over to receive this encounter.
     // Only set on EncounterMethod.Trade encounters.
     tradeFor?: string;
-    // The item slug this encounter is holding when received. Only set on
-    // EncounterMethod.Trade encounters that come with a held item.
+    // The item slug this encounter is holding when received.
     heldItem?: string;
 };
 
@@ -355,7 +353,10 @@ export type Subarea = {
     name: string;
     encountersKey?: string;
     hideBattles?: boolean;
-    map: StaticImageData;
+    // A single map, or two maps to pick between by the run's gender — e.g.
+    // a subarea whose layout differs by which protagonist sprite passes
+    // through it.
+    map: StaticImageData | { male: StaticImageData; female: StaticImageData };
     // Where the map is panned to by default, when no battle is selected.
     mapAnchor: MapAnchor;
     battles?: Battle[];
@@ -368,7 +369,12 @@ export type Location = {
     battles?: Battle[];
 } & (
     | {
-          map: StaticImageData;
+          // A single map, or two maps to pick between by the run's gender —
+          // e.g. a location whose layout differs by which protagonist
+          // sprite passes through it.
+          map:
+              | StaticImageData
+              | { male: StaticImageData; female: StaticImageData };
           // Where the map is panned to by default, when no battle is
           // selected.
           mapAnchor: MapAnchor;
@@ -394,6 +400,15 @@ export type Split = {
     saveCondition: SplitSaveCondition;
 };
 
+// A sparse, field-level patch keyed by slug — only entries that actually
+// differ from the base dataset are present, and only their changed fields.
+// Shared across every ROM-hack-style game that rebalances a subset of
+// species/moves rather than replacing the whole dataset (e.g. Renegade
+// Platinum), so the same override table doubles as both the input to
+// DataSourceHelpers.applyOverrides and the source of truth for a "what did
+// this game change" UI feature — the override's own keys are the diff.
+export type DataOverrides<T> = Record<string, Partial<T>>;
+
 // The species/move/item records a game's data pulls from. Every
 // unmodified game shares the same vanilla PokeAPI-sourced records; a game
 // whose data diverges from vanilla (e.g. a ROM hack) points at its own
@@ -403,6 +418,17 @@ export type GameDataSource = {
     pokemon: Record<string, PokemonData>;
     moves: Record<string, MoveData>;
     items: Record<string, ItemData>;
+    // Set only for a game whose pokemon/moves are vanilla data patched by a
+    // sparse diff (e.g. a ROM hack rebalance) — lets the UI surface
+    // exactly what this game changed, species/move by species/move, field
+    // by field. `pokemon`/`moves` above already reflect the *merged*
+    // result (every existing consumer keeps working unchanged); this is
+    // the same patch data kept around unmerged, purely for diff display.
+    // Omitted for every game whose dataset isn't derived this way.
+    overrides?: {
+        pokemon?: DataOverrides<PokemonData>;
+        moves?: DataOverrides<MoveData>;
+    };
 };
 
 export type Game = {
@@ -424,6 +450,15 @@ export type Game = {
     // necessarily reuse together (e.g. a variant could share one but not
     // the other).
     trainerAssetFolder: TrainerAssetFolder;
+    // public/pokemon/<folder>/ this game's own Pokémon sprites should
+    // resolve from, under the same sharing convention as
+    // badgeAssetFolder/trainerAssetFolder, for a game whose own dataset
+    // doesn't carry real per-species sprite paths (e.g. an independent
+    // ROM-hack dataset reusing its base game's art verbatim). Omitted for
+    // every game whose own PokemonData entries carry real sprites keyed by
+    // `version` — only set this when sprites should be resolved
+    // formulaically from another game's folder instead.
+    pokemonAssetFolder?: GameVersionGroup;
     // The protagonist sprite shown for each gender option at run
     // creation, when choosing matters for this game (it can change more
     // than cosmetics, e.g. which trainer/team a battle resolves to — see

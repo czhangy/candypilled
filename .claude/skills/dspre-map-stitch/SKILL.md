@@ -1,0 +1,95 @@
+---
+name: dspre-map-stitch
+description: Join DSPRE map-viewer screenshot chunks into a single map PNG for a game's src/lib/data/<game>/maps/ folder. Use when the user is capturing map images from DSPRE (DS Pokemon Randomizer Editor / map viewer) and needs them combined, cropped, or dropped into the repo — not game-specific.
+---
+
+# DSPRE map stitching
+
+DSPRE's map view only shows a fixed-size viewport at a time, so a map
+larger than that viewport has to be captured as multiple screenshots and
+joined into one PNG before it can be used as a `Location`'s `map` image
+(`src/lib/data/<game>/maps/<slug>.png`, barrel-exported from that folder's
+`index.ts`).
+
+This is a high-frequency operation (many maps, redone whenever a capture
+mistake is found), so the stitching logic itself is **not** rewritten
+per-run — it lives permanently in `src/lib/scripts/assets/stitch-map.ts`,
+run via `npm run stitch-map -- <game> <map> [sourceDir]`. Don't write a
+throwaway scratch script for this; extend the real script if it's
+missing a case.
+
+## Naming scheme (read this before asking the user anything)
+
+The chunk file names encode the grid position, so the stitch order never
+has to be re-confirmed by asking the user — it's derived mechanically
+from the file names on disk:
+
+- **Single-viewport map**: `<map-slug>.png` — the whole map fit in one
+  DSPRE capture, no stitching needed (the script just copies it in).
+- **Single row of chunks**: `<map-slug>-<col>.png`, 1-indexed, e.g.
+  `route-201-1.png`, `route-201-2.png` for a left-to-right route that
+  needed two captures.
+- **2D grid of chunks**: `<map-slug>-<row>-<col>.png`, 1-indexed, e.g.
+  `route-201-1-1.png`, `route-201-1-2.png`, `route-201-2-1.png`,
+  `route-201-2-2.png` for a 2x2 grid. Row increases downward, column
+  increases rightward — same orientation as the final image.
+- `<map-slug>` matches the `Location`'s eventual file slug (kebab-case,
+  same as the existing `src/lib/data/<game>/maps/*.png` file names).
+
+**If the user hands you chunks named some other way**, rename them to
+this scheme first (confirm the grid shape/direction with them once,
+since an arbitrary naming doesn't encode it) rather than teaching the
+script a second naming convention. Once renamed, every future re-run of
+that map is self-describing and needs no confirmation.
+
+## Workflow
+
+1. Chunks are captured to `~/Desktop` by default (the script's default
+   `sourceDir`) — a different `sourceDir` can be passed as the third
+   arg if the user's captures land elsewhere.
+2. Confirm with the user whether this is a **new** map or a **redo/
+   replacement** of an existing `src/lib/data/<game>/maps/<slug>.png` —
+   the script always overwrites `<slug>.png` outright, so this is about
+   setting expectations, not a script parameter.
+3. Run `npm run stitch-map -- <game> <map>`. The script:
+    - Copies a lone `<map>.png` in directly, or
+    - Globs `<map>-<col>.png` / `<map>-<row>-<col>.png`, infers the grid
+      size from the max row/col seen, composites each chunk at its
+      `(row, col)` position (row increases downward, column increases
+      rightward), and errors out on mismatched chunk dimensions. The
+      grid doesn't have to be a full rectangle — a missing cell (e.g. a
+      map that's genuinely L-shaped, with a corner outside the map) is
+      left as dead space rather than an error.
+    - Then auto-normalizes DSPRE's dead-space fill (`rgb(51, 51, 51)`,
+      the area outside the actual map, plus any grid cell left empty
+      above) to pure black, and auto-trims any dead space that forms a
+      uniform border touching the image's edges (e.g. a whole
+      never-captured side/corner). Dead space that's an irregular notch
+      surrounded by map content on multiple sides can't be cropped
+      without cutting into that content, so it's left as normalized
+      black instead of trimmed — that's expected, not a bug.
+4. `Read` the resulting `src/lib/data/<game>/maps/<slug>.png`. **Never
+   check internal seams for alignment** — don't zoom in on chunk
+   boundaries, diff pixel columns, or otherwise inspect where chunks
+   meet; the user does not want this checked, at any zoom level, ever.
+   If a map somehow still has grey dead space or an untrimmed black
+   border (e.g. it was produced before this normalization was added, or
+   trimmed/edited afterward outside the script), fix it by hand rather
+   than leaving it — but this is a dead-space check, not a seam check.
+5. If it's a new map (not a redo), add its barrel export line to that
+   folder's `index.ts` (`export { default as <camelCaseName> } from
+'./<slug>.png';`) if one doesn't already exist — check whether a
+   `Location` in `locations/*.ts` already references it before assuming
+   the export is missing.
+6. Leave the changes unstaged — per `CLAUDE.md`, staging/committing is
+   the user's call, not this skill's.
+
+## Window chrome
+
+DSPRE screenshots are sometimes clean map-only crops (edge-to-edge tile
+pixels) and sometimes include the app window's borders/menu bar, if the
+user did a raw window screenshot instead of an in-app export. `Read`
+each chunk before running the script — if chrome is present, crop it
+off with `sharp().extract(...)` and re-save under the same chunk name
+before stitching; the script assumes chunks are already map-only and
+equally sized.

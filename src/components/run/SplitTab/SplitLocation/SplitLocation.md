@@ -88,15 +88,12 @@ Pokédex tile.
   each paired with its subarea's index
 - `getInitialSubareaIndex` — the subarea to open on: the subarea containing
   the battle matching `selectedBattleKey`, if set and present in this
-  location; otherwise subarea `0` if the location has no subareas, or if
-  any subarea has wild encounters and this location's own encounter hasn't
-  been caught yet (i.e. there's still a wild Pokémon to catch here);
-  otherwise, the subarea of the first battle from `getAllBattles`
+  location; otherwise subarea `0`
 - `getDefaultSelectedBattle` — the battle to preselect for a given subarea
   index, from the same gender-filtered battle list as `getAllBattles`: the
   battle matching `selectedBattleKey`, if set and present in that subarea;
-  otherwise the first required battle in that subarea, or the first
-  battle of any kind if the subarea has none
+  otherwise the first battle in that subarea's array, regardless of
+  `BattleMetadata.Optional`
 - `section` — the currently active map/battles/encounters group: the
   selected subarea when `location.subareas` is set, otherwise a section
   built from the location's own `map`/`battles`/`encountersKey`. Wild

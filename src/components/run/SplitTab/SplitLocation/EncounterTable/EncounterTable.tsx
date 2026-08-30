@@ -65,8 +65,10 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         EncounterMethod.FeebasTile,
         EncounterMethod.OldRod,
         EncounterMethod.GoodRod,
+        EncounterMethod.SuperRod,
         EncounterMethod.Surf,
         EncounterMethod.HoneyTree,
+        EncounterMethod.PokeRadar,
     ];
 
     const UNMISSABLE_ENCOUNTER_METHODS = [
@@ -216,8 +218,42 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                 return getEncounterName(a).localeCompare(getEncounterName(b));
             });
 
+    // Poké Radar draws from the same pool as Walking rather than being its
+    // own self-contained 100% pool: radar-exclusive species take a fixed
+    // absolute cut of the pool (their sheet chance, summed across every
+    // defined radar entry regardless of catch state — a structural property
+    // of the encounter table, not a display choice), and Walking species
+    // split whatever's left in their existing relative proportions. Display
+    // renormalizes only over currently-visible entries in that combined
+    // pool, so a hidden Walking or Radar entry's share redistributes
+    // proportionally to whatever's left, radar included.
+    const getPokeRadarDisplayChance = (encounter: Encounter): number | null => {
+        if (encounter.chance === null) return null;
+
+        const totalRadarChance = encounters
+            .filter((e) => e.method === EncounterMethod.PokeRadar)
+            .reduce((sum, e) => sum + (e.chance ?? 0), 0);
+        const walkingScale = 1 - totalRadarChance / 100;
+
+        const visibleWalkingWeight = getEncountersForMethod(
+            EncounterMethod.Walking
+        ).reduce((sum, e) => sum + (e.chance ?? 0) * walkingScale, 0);
+        const visibleRadarWeight = getEncountersForMethod(
+            EncounterMethod.PokeRadar
+        ).reduce((sum, e) => sum + (e.chance ?? 0), 0);
+
+        const combinedTotal = visibleWalkingWeight + visibleRadarWeight;
+        if (combinedTotal === 0) return encounter.chance;
+
+        return Math.floor((encounter.chance / combinedTotal) * 100);
+    };
+
     const getDisplayChance = (encounter: Encounter): number | null => {
         if (encounter.chance === null || showDupes) return encounter.chance;
+
+        if (encounter.method === EncounterMethod.PokeRadar) {
+            return getPokeRadarDisplayChance(encounter);
+        }
 
         const group = getEncountersForMethod(encounter.method);
         const total = group.reduce((sum, e) => sum + (e.chance ?? 0), 0);

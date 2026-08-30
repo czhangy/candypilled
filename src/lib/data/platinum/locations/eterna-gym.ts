@@ -27,7 +27,7 @@ const ETERNA_GYM: Location = {
         },
         {
             metadata: [BattleMetadata.Boss],
-            battleKey: 'leader-gardenia-gardenia',
+            battleKey: 'leader-gardenia',
             x: 49.9,
             y: 15.1,
         },

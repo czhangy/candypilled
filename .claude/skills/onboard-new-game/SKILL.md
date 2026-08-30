@@ -64,7 +64,7 @@ Reference implementation: `src/lib/data/platinum/`.
 3. **Fetch + author encounters** — run `npm run pokeapi:encounters <slug>`,
    where `<slug>` is the `GameVersion.id` registered in step 2. Every
    codegen/fetch script (`pokeapi:encounters`, `pokeapi:pokemon`,
-   `gen:location`, `gen:battle`, `gen:trainer-class`, `compose`) takes the
+   `gen:location`, `gen:battle`, `gen:trainer-class`) takes the
    target game as its first CLI argument rather than reading a shared
    config constant, so pass it explicitly on each invocation. This writes a
    raw `src/lib/data/<slug>/encounters/encounters.json`, in a directory
@@ -127,6 +127,15 @@ Reference implementation: `src/lib/data/platinum/`.
         - **Which named trainer is at a given location, and in what order.**
           External sources' location fields are often sparse — don't infer
           identity/order from partial data.
+        - **A `BattlePokemon`'s `gender`, whenever the source data doesn't
+          state it.** `gender?: 'male' | 'female'` being optional in the
+          type does NOT mean "omit when unknown" is a safe default —
+          omitting it is read by the app as explicitly genderless (only a
+          gender icon is conditionally rendered off its presence), which is
+          simply wrong for any species with a real gender ratio (nearly all
+          of them). Leaving it out is a data error, not a neutral
+          placeholder, unlike genuinely optional fields such as `heldItem`
+          or `evs`. If a source sheet has no gender column, ask the user.
     - **If a trainer's roster or the battle itself varies by run state
       (starter, gender, a randomized team pool, etc.), see "Divergent
       teams and battles" below before authoring `battles.ts`/the location's

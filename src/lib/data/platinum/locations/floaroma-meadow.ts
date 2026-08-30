@@ -1,4 +1,5 @@
 import { floaromaMeadow } from '@/lib/data/platinum/maps';
+import { GEN_4_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
 import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
@@ -10,16 +11,10 @@ const FLOAROMA_MEADOW: Location = {
     battles: [
         {
             metadata: [BattleMetadata.BackToBack],
-            battleKey: 'galactic-grunt-m-3',
-
-            x: 13.9,
-            y: 48.1,
-        },
-        {
-            metadata: [BattleMetadata.BackToBack],
-            battleKey: 'galactic-grunt-m-4',
-            x: 11.9,
-            y: 48.1,
+            battleKey: 'galactic-grunt-m-floaroma-meadow',
+            customWidth: GEN_4_TRUE_DOUBLE_WIDTH,
+            x: 13,
+            y: 47.9,
         },
     ],
 };

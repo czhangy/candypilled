@@ -14,6 +14,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 > ALWAYS ALWAYS ALWAYS prefer making props or params required. NEVER assume future use cases for making something optional. Only make something optional if it needs to be optional right now.
 
+> Comments can only be a maximum of 250 characters long.
+
 > Never account for backwards compatibility (e.g. old localStorage data missing a newly added field) unless explicitly told to do so.
 
 > A constant, type, or helper used by only one file belongs in that file (module-level for scripts, inside the component function for components per the rule below). Only promote it to a shared location (`constants.ts`, `types.ts`, `src/lib/utils/`) once a second file actually needs it — don't pre-emptively centralize.

@@ -14,7 +14,11 @@ type DataModalProps = {
     game: Game;
     hasExistingRun: boolean;
     onClose: () => void;
-    onImport: (pokemon: CaughtPokemon[], completedSplits: string[]) => void;
+    onImport: (
+        pokemon: CaughtPokemon[],
+        completedSplits: string[],
+        gender: 'male' | 'female'
+    ) => void;
     onReset: () => void;
 };
 

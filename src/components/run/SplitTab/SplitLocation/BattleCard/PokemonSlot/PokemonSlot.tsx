@@ -25,7 +25,7 @@ type PokemonSlotProps = {
     onSelectMove?: (slug: string) => void;
     onSelectSpecies?: (species: string) => void;
     pokemon: BattlePokemon | null;
-    position: 'single' | 'top' | 'bottom';
+    position: 'single' | 'top' | 'middle' | 'bottom';
     variant: string;
     version: string;
 };
@@ -121,32 +121,40 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                 )}
             </div>
             <div className={styles['pokemon-slot__name']}>
-                <span>
-                    {!hofDisplay && `Lv.${pokemon.level} `}
+                <span className={styles['pokemon-slot__species']}>
                     {speciesName}
-                    {pokemon.gender && (
-                        <span
-                            className={[
-                                styles['pokemon-slot__gender'],
-                                styles[
-                                    `pokemon-slot__gender--${pokemon.gender}`
-                                ],
-                            ].join(' ')}
-                        >
-                            {pokemon.gender === 'male' ? '♂' : '♀'}
-                        </span>
-                    )}
                 </span>
-                {types.length > 0 && (
-                    <div className={styles['pokemon-slot__types']}>
-                        {types.map((type) => (
-                            <TypeBadge
-                                height={TYPE_BADGE_HEIGHT}
-                                key={type}
-                                type={type}
-                                width={TYPE_BADGE_WIDTH}
-                            />
-                        ))}
+                {(!hofDisplay || pokemon.gender || types.length > 0) && (
+                    <div className={styles['pokemon-slot__level-row']}>
+                        {(!hofDisplay || pokemon.gender) && (
+                            <span className={styles['pokemon-slot__level']}>
+                                {!hofDisplay && `Lv.${pokemon.level}`}
+                                {pokemon.gender && (
+                                    <span
+                                        className={[
+                                            styles['pokemon-slot__gender'],
+                                            styles[
+                                                `pokemon-slot__gender--${pokemon.gender}`
+                                            ],
+                                        ].join(' ')}
+                                    >
+                                        {pokemon.gender === 'male' ? '♂' : '♀'}
+                                    </span>
+                                )}
+                            </span>
+                        )}
+                        {types.length > 0 && (
+                            <div className={styles['pokemon-slot__types']}>
+                                {types.map((type) => (
+                                    <TypeBadge
+                                        height={TYPE_BADGE_HEIGHT}
+                                        key={type}
+                                        type={type}
+                                        width={TYPE_BADGE_WIDTH}
+                                    />
+                                ))}
+                            </div>
+                        )}
                     </div>
                 )}
             </div>

@@ -19,13 +19,13 @@ const GALACTIC_HQ: Location = {
             battles: [
                 {
                     metadata: [BattleMetadata.Optional],
-                    battleKey: 'galactic-grunt-m-17',
+                    battleKey: 'galactic-grunt-m-galactic-hq-1',
                     x: 47.4,
                     y: 71.9,
                 },
                 {
                     metadata: [],
-                    battleKey: 'galactic-grunt-m-18',
+                    battleKey: 'galactic-grunt-m-galactic-hq-2',
                     x: 84.4,
                     y: 48.5,
                 },
@@ -38,7 +38,7 @@ const GALACTIC_HQ: Location = {
             battles: [
                 {
                     metadata: [BattleMetadata.Optional],
-                    battleKey: 'galactic-grunt-f-6',
+                    battleKey: 'galactic-grunt-f-galactic-hq-1',
                     x: 77.4,
                     y: 29.5,
                 },
@@ -57,19 +57,19 @@ const GALACTIC_HQ: Location = {
             battles: [
                 {
                     metadata: [BattleMetadata.Optional],
-                    battleKey: 'galactic-grunt-m-19',
+                    battleKey: 'galactic-grunt-m-galactic-hq-3',
                     x: 18.9,
                     y: 25.5,
                 },
                 {
                     metadata: [],
-                    battleKey: 'galactic-grunt-m-22',
+                    battleKey: 'galactic-grunt-m-galactic-hq-6',
                     x: 39.9,
                     y: 66.6,
                 },
                 {
                     metadata: [],
-                    battleKey: 'galactic-grunt-f-7',
+                    battleKey: 'galactic-grunt-f-galactic-hq-2',
                     x: 49.1,
                     y: 67,
                 },
@@ -88,25 +88,25 @@ const GALACTIC_HQ: Location = {
             battles: [
                 {
                     metadata: [BattleMetadata.Optional],
-                    battleKey: 'galactic-grunt-m-20',
+                    battleKey: 'galactic-grunt-m-galactic-hq-4',
                     x: 7.4,
                     y: 25.2,
                 },
                 {
                     metadata: [BattleMetadata.Optional],
-                    battleKey: 'galactic-grunt-m-21',
+                    battleKey: 'galactic-grunt-m-galactic-hq-5',
                     x: 16.8,
                     y: 84.7,
                 },
                 {
                     metadata: [],
-                    battleKey: 'galactic-grunt-f-8',
+                    battleKey: 'galactic-grunt-f-galactic-hq-3',
                     x: 79.4,
                     y: 14.1,
                 },
                 {
                     metadata: [],
-                    battleKey: 'galactic-grunt-m-23',
+                    battleKey: 'galactic-grunt-m-galactic-hq-7',
                     x: 79.4,
                     y: 29.5,
                 },
@@ -119,7 +119,7 @@ const GALACTIC_HQ: Location = {
             battles: [
                 {
                     metadata: [BattleMetadata.Miniboss],
-                    battleKey: 'galactic-boss-cyrus-cyrus-2',
+                    battleKey: 'galactic-boss-cyrus-galactic-hq',
                     x: 34.8,
                     y: 41.5,
                 },
@@ -132,7 +132,7 @@ const GALACTIC_HQ: Location = {
             battles: [
                 {
                     metadata: [BattleMetadata.Miniboss],
-                    battleKey: 'commander-saturn-saturn-2',
+                    battleKey: 'commander-saturn-galactic-hq',
                     x: 50,
                     y: 40.8,
                 },

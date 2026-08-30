@@ -18,7 +18,11 @@
     .viewport {
         background: black;
         cursor: grab;
-        max-height: 420px;
+
+        // 420px cap plus the 2rem top/bottom marker-edge buffer
+        // (EDGE_BUFFER_PX in LocationMap.tsx) baked into the rendered
+        // height/pan offset.
+        max-height: calc(420px + 4rem);
         overflow: hidden;
         position: relative;
         touch-action: none;

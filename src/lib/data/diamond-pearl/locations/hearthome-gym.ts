@@ -57,7 +57,7 @@ const HEARTHOME_GYM: Location = {
         },
         {
             metadata: [BattleMetadata.Boss],
-            battleKey: 'leader-fantina-fantina',
+            battleKey: 'leader-fantina',
             x: 61.5,
             y: 4.9,
         },

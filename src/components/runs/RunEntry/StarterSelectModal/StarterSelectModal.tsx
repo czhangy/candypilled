@@ -41,7 +41,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const variant = game.version;
+    const variant = game.pokemonAssetFolder ?? game.version;
     const defaultSpecies = activeStarter ?? speciesOverride ?? null;
     const starterLocation = EncounterHelpers.getStarterLocationName(game);
 
