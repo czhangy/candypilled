@@ -45,7 +45,7 @@ const VOLKNER: Split = {
         ROUTE_222,
         LocationHelpers.withHiddenBattles(SUNYSHORE_CITY),
         ROUTE_223,
-        POKEMON_LEAGUE,
+        LocationHelpers.withHiddenBattles(POKEMON_LEAGUE),
         SUNYSHORE_GYM,
     ],
     saveCondition: { type: 'badge', bit: 7 },
