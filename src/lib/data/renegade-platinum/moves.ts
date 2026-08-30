@@ -9,14 +9,12 @@ import DataOverrideHelpers from '@/lib/utils/DataOverrideHelpers';
 // baseline, plus the handful of newer-gen moves this hack backports as
 // TM/tutor replacements (each of those also needs `introducedInGeneration`
 // overridden down to 4, or the app's generation-filtered move lookups
-// would exclude them for a Gen 4 game). See ONBOARDING.md for the
-// derivation.
+// would exclude them for a Gen 4 game).
 export const MOVE_OVERRIDES = data as DataOverrides<MoveData>;
 
 // Moves this hack retires game-wide, replaced by a newer-gen move under a
 // different slug (e.g. Twister -> Hurricane) — removed rather than
-// patched, since nothing should still offer to teach them. See
-// ONBOARDING.md's "MOVE REPLACEMENTS" note for the source list.
+// patched, since nothing should still offer to teach them.
 const REMOVED_MOVES = [
     'barrage',
     'brine',

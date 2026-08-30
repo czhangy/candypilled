@@ -613,6 +613,14 @@ export type MoveData = {
     valuesByGeneration: MoveValuesByGeneration[];
 };
 
+// One field-level difference between a move's vanilla and game-specific
+// values, for display in a "what changed" UI (e.g. a ROM hack's rebalance).
+export type MoveChange = {
+    label: string;
+    before: string;
+    after: string;
+};
+
 export type AbilityValuesByGeneration = {
     fromGeneration: number;
     effect: string;

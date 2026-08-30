@@ -32,6 +32,11 @@ const MoveDetail: React.FC<MoveDetailProps> = ({
         moveSlug,
         generation
     );
+    const changes = MoveHelpers.getMoveChanges(
+        dataSource,
+        moveSlug,
+        generation
+    );
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -119,6 +124,59 @@ const MoveDetail: React.FC<MoveDetailProps> = ({
                                     ` (${values.effectChance}% chance)`}
                             </p>
                         </div>
+                        {changes && changes.length > 0 && (
+                            <div className={styles.changes}>
+                                <span className={styles['changes-label']}>
+                                    Changes
+                                </span>
+                                <ul className={styles['changes-list']}>
+                                    {changes.map((change) => (
+                                        <li key={change.label}>
+                                            <span
+                                                className={
+                                                    styles['change-label']
+                                                }
+                                            >
+                                                {change.label}
+                                            </span>
+                                            <span
+                                                className={
+                                                    styles['change-value']
+                                                }
+                                            >
+                                                {change.label === 'Type' ? (
+                                                    <>
+                                                        <TypeBadge
+                                                            height={
+                                                                BADGE_HEIGHT
+                                                            }
+                                                            type={change.before}
+                                                            width={BADGE_WIDTH}
+                                                        />
+                                                        <span
+                                                            className={
+                                                                styles.arrow
+                                                            }
+                                                        >
+                                                            →
+                                                        </span>
+                                                        <TypeBadge
+                                                            height={
+                                                                BADGE_HEIGHT
+                                                            }
+                                                            type={change.after}
+                                                            width={BADGE_WIDTH}
+                                                        />
+                                                    </>
+                                                ) : (
+                                                    `${change.before} → ${change.after}`
+                                                )}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
                     </>
                 )}
             </div>
