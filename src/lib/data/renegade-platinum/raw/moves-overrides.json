@@ -1638,6 +1638,7 @@
         ]
     },
     "hurricane": {
+        "id": 239,
         "introducedInGeneration": 4,
         "valuesByGeneration": [
             {
@@ -1667,6 +1668,7 @@
         ]
     },
     "bulldoze": {
+        "id": 328,
         "introducedInGeneration": 4,
         "valuesByGeneration": [
             {
@@ -1682,6 +1684,7 @@
         ]
     },
     "dazzling-gleam": {
+        "id": 295,
         "introducedInGeneration": 4,
         "valuesByGeneration": [
             {
@@ -1697,6 +1700,7 @@
         ]
     },
     "disarming-voice": {
+        "id": 296,
         "introducedInGeneration": 4,
         "valuesByGeneration": [
             {
@@ -1712,6 +1716,7 @@
         ]
     },
     "draining-kiss": {
+        "id": 140,
         "introducedInGeneration": 4,
         "valuesByGeneration": [
             {
@@ -1727,6 +1732,7 @@
         ]
     },
     "drill-run": {
+        "id": 32,
         "introducedInGeneration": 4,
         "valuesByGeneration": [
             {
@@ -1742,6 +1748,7 @@
         ]
     },
     "icicle-crash": {
+        "id": 132,
         "introducedInGeneration": 4,
         "valuesByGeneration": [
             {
@@ -1757,6 +1764,7 @@
         ]
     },
     "moonblast": {
+        "id": 461,
         "introducedInGeneration": 4,
         "valuesByGeneration": [
             {
@@ -1772,6 +1780,7 @@
         ]
     },
     "play-rough": {
+        "id": 66,
         "introducedInGeneration": 4,
         "valuesByGeneration": [
             {
@@ -1787,6 +1796,7 @@
         ]
     },
     "scald": {
+        "id": 362,
         "introducedInGeneration": 4,
         "valuesByGeneration": [
             {
@@ -1802,6 +1812,7 @@
         ]
     },
     "wild-charge": {
+        "id": 344,
         "introducedInGeneration": 4,
         "valuesByGeneration": [
             {

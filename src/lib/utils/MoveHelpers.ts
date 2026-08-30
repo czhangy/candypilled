@@ -41,6 +41,16 @@ export default class MoveHelpers {
         return Object.values(dataSource.moves).find((move) => move.id === id);
     }
 
+    /** The slug of the move in dataSource displayed as name, or undefined if no move matches. */
+    static getSlugByName(
+        dataSource: GameDataSource,
+        name: string
+    ): string | undefined {
+        return Object.values(dataSource.moves).find(
+            (move) => move.name === name
+        )?.slug;
+    }
+
     /** Every move in dataSource introduced by generation or earlier, sorted alphabetically by display name. */
     static getAllMoves(
         dataSource: GameDataSource,
@@ -193,9 +203,7 @@ export default class MoveHelpers {
         generation: number,
         ivs: StatValues
     ): string | undefined {
-        const slug = Object.values(dataSource.moves).find(
-            (move) => move.name === name
-        )?.slug;
+        const slug = MoveHelpers.getSlugByName(dataSource, name);
         return slug
             ? MoveHelpers.getMoveType(dataSource, slug, generation, ivs)
             : undefined;

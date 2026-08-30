@@ -10,6 +10,7 @@ import {
     type GenerationNum,
 } from '@smogon/calc';
 import type {
+    Move as CalcMoveData,
     Generation,
     StatusName,
     Terrain,
@@ -19,7 +20,9 @@ import {
     CalcField,
     CalcPokemonInput,
     CalcSideConditions,
+    GameDataSource,
 } from '@/lib/static/types';
+import MoveHelpers from '@/lib/utils/MoveHelpers';
 
 export default class DamageCalcHelpers {
     // -------------------------------------------------------------------------
@@ -44,6 +47,7 @@ export default class DamageCalcHelpers {
      */
     static getDamagePercentRange(
         generation: number,
+        dataSource: GameDataSource,
         attacker: CalcPokemonInput,
         defender: CalcPokemonInput,
         moveName: string,
@@ -51,6 +55,7 @@ export default class DamageCalcHelpers {
     ): [number, number] | null {
         const result = DamageCalcHelpers.getResult(
             generation,
+            dataSource,
             attacker,
             defender,
             moveName,
@@ -79,6 +84,7 @@ export default class DamageCalcHelpers {
      */
     static getDescription(
         generation: number,
+        dataSource: GameDataSource,
         attacker: CalcPokemonInput,
         defender: CalcPokemonInput,
         moveName: string,
@@ -88,6 +94,7 @@ export default class DamageCalcHelpers {
     ): string | null {
         const result = DamageCalcHelpers.getResult(
             generation,
+            dataSource,
             attacker,
             defender,
             moveName,
@@ -95,6 +102,7 @@ export default class DamageCalcHelpers {
         );
         const percentRange = DamageCalcHelpers.getDamagePercentRange(
             generation,
+            dataSource,
             attacker,
             defender,
             moveName,
@@ -118,6 +126,7 @@ export default class DamageCalcHelpers {
      */
     static getPossibleDamageAmounts(
         generation: number,
+        dataSource: GameDataSource,
         attacker: CalcPokemonInput,
         defender: CalcPokemonInput,
         moveName: string,
@@ -125,6 +134,7 @@ export default class DamageCalcHelpers {
     ): number[] | null {
         const result = DamageCalcHelpers.getResult(
             generation,
+            dataSource,
             attacker,
             defender,
             moveName,
@@ -147,6 +157,7 @@ export default class DamageCalcHelpers {
 
     private static getResult(
         generation: number,
+        dataSource: GameDataSource,
         attacker: CalcPokemonInput,
         defender: CalcPokemonInput,
         moveName: string,
@@ -158,10 +169,36 @@ export default class DamageCalcHelpers {
         const attackerPokemon = DamageCalcHelpers.buildPokemon(gen, attacker);
         const defenderPokemon = DamageCalcHelpers.buildPokemon(gen, defender);
         if (!attackerPokemon || !defenderPokemon) return null;
-        if (!gen.moves.get(toID(moveName))) return null;
+
+        const ownOverrides = DamageCalcHelpers.getMoveOverrides(
+            dataSource,
+            moveName,
+            generation,
+            attacker.ivs
+        );
+        if (!ownOverrides) return null;
+
+        // A move this game's data source has (e.g. a ROM hack backporting
+        // a later-generation move as a Gen 4 replacement) may not exist in
+        // @smogon/calc's dataset for `generation` at all, since that
+        // dataset mirrors real vanilla move availability per generation.
+        // When that happens, borrow the shape (flags/target/secondaries/
+        // etc.) from the earliest later @smogon/calc generation that does
+        // define it, since it's the same real move — this game's own
+        // stats still take priority via ownOverrides.
+        const knownMove = gen.moves.get(toID(moveName));
+        const fallbackMove = knownMove
+            ? undefined
+            : DamageCalcHelpers.getFallbackMove(moveName, generation);
+        if (!knownMove && !fallbackMove) return null;
 
         try {
-            const move = new CalcMove(gen, moveName, { isCrit: field.isCrit });
+            const move = new CalcMove(gen, moveName, {
+                isCrit: field.isCrit,
+                overrides: fallbackMove
+                    ? { ...fallbackMove, ...ownOverrides }
+                    : ownOverrides,
+            });
             return calculate(
                 gen,
                 attackerPokemon,
@@ -172,6 +209,58 @@ export default class DamageCalcHelpers {
         } catch {
             return null;
         }
+    }
+
+    // This game's data source may hold move stats patched away from
+    // @smogon/calc's bundled vanilla dataset (e.g. a ROM hack rebalance),
+    // so its base power/type/category/priority are passed through as
+    // @smogon/calc overrides rather than trusting its own vanilla lookup.
+    private static getMoveOverrides(
+        dataSource: GameDataSource,
+        moveName: string,
+        generation: number,
+        ivs: CalcPokemonInput['ivs']
+    ): Partial<CalcMoveData> | undefined {
+        const slug = MoveHelpers.getSlugByName(dataSource, moveName);
+        if (!slug) return undefined;
+
+        const moveData = MoveHelpers.getMoveData(dataSource, slug);
+        const values = MoveHelpers.getMoveForGeneration(
+            dataSource,
+            slug,
+            generation
+        );
+        const type = MoveHelpers.getMoveType(dataSource, slug, generation, ivs);
+        if (!moveData || !values || !type) return undefined;
+
+        return {
+            basePower: values.power ?? 0,
+            category: DamageCalcHelpers.capitalize(
+                moveData.category
+            ) as CalcMoveData['category'],
+            priority: moveData.priority,
+            type: DamageCalcHelpers.capitalize(type) as CalcMoveData['type'],
+        };
+    }
+
+    // The earliest @smogon/calc generation after `generation` that
+    // recognizes moveName, or undefined if no later generation does
+    // either (a genuinely unknown move name).
+    private static getFallbackMove(
+        moveName: string,
+        generation: number
+    ): CalcMoveData | undefined {
+        for (let laterGen = generation + 1; laterGen <= 9; laterGen++) {
+            const found = DamageCalcHelpers.getGeneration(laterGen).moves.get(
+                toID(moveName)
+            );
+            if (found) return found;
+        }
+        return undefined;
+    }
+
+    private static capitalize(value: string): string {
+        return value.charAt(0).toUpperCase() + value.slice(1);
     }
 
     private static toPercent(damage: number, maxHp: number): number {

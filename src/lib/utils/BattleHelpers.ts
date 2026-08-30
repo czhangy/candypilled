@@ -96,16 +96,29 @@ export default class BattleHelpers {
         return BattleHelpers.filterByGender(battles, gender);
     }
 
-    /** Every battle in game for gender, in game order. */
+    /**
+     * Every distinct battle in game for gender, in game order. A battle
+     * reachable from more than one location (e.g. a route revisited
+     * across two story splits) is still one battle, so only its first
+     * occurrence is kept.
+     */
     static getAllBattles(
         game: Game,
         gender: 'male' | 'female' | undefined
     ): Battle[] {
-        return game.splits.flatMap((split) =>
+        const battles = game.splits.flatMap((split) =>
             split.locations.flatMap((location) =>
                 BattleHelpers.getBattlesInLocation(location, gender)
             )
         );
+
+        const seen = new Set<string>();
+        return battles.filter((battle) => {
+            const key = BattleHelpers.getBattleKey(battle);
+            if (seen.has(key)) return false;
+            seen.add(key);
+            return true;
+        });
     }
 
     /** battles restricted to gender: entries with no `gender` always pass, entries with one only pass for a matching run gender. */

@@ -62,6 +62,7 @@ const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
             attacker && defender
                 ? DamageCalcHelpers.getDamagePercentRange(
                       generation,
+                      dataSource,
                       attacker,
                       defender,
                       moveName,
