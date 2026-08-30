@@ -31,6 +31,13 @@ const PLATINUM: Game = {
     encounters: ENCOUNTERS,
     battles: BATTLES,
     metLocationById: MET_LOCATIONS,
+    resources: [
+        {
+            text: 'Gen IV AI',
+            description: 'Gen IV AI documentation',
+            url: 'https://pokemow.com/Gen4/TrainerAI/',
+        },
+    ],
     wipeMessages: [
         'Roark is calling.',
         'Maybe a monkey run next time.',

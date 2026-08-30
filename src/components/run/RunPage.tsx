@@ -21,6 +21,7 @@ import ImportSaveModal from './BoxTab/ImportSaveModal/ImportSaveModal';
 import CalcTab from './CalcTab/CalcTab';
 import DataTab from './DataTab/DataTab';
 import HallOfFameTab from './HallOfFameTab/HallOfFameTab';
+import ResourcesTab from './ResourcesTab/ResourcesTab';
 import styles from './RunPage.module.scss';
 import SplitHeader from './SplitHeader/SplitHeader';
 import SplitTab from './SplitTab/SplitTab';
@@ -40,6 +41,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         { id: 'calc', label: 'Calc' },
         { id: 'data', label: 'Data' },
         { id: 'hof', label: 'Hall of Fame' },
+        { id: 'resources', label: 'Resources' },
     ];
 
     const DEFAULT_SUBTAB = 'pokedex';
@@ -127,9 +129,11 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
               )?.name ?? runSplitName)
             : null;
 
-    const visibleTabs = TABS.filter(
-        (tab) => tab.id !== 'hof' || isHallOfFameUnlocked
-    );
+    const visibleTabs = TABS.filter((tab) => {
+        if (tab.id === 'hof') return isHallOfFameUnlocked;
+        if (tab.id === 'resources') return !!game?.resources?.length;
+        return true;
+    });
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -493,6 +497,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                     {activeTab === 'hof' && isHallOfFameUnlocked && (
                         <HallOfFameTab game={game} run={run} />
                     )}
+                    {activeTab === 'resources' && <ResourcesTab game={game} />}
                 </>
             )}
             {isImportModalOpen && (
