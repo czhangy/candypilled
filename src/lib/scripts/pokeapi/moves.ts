@@ -91,6 +91,9 @@ const DANGEROUS_MOVES = new Set([
     'ominous-wind',
     'ancient-power',
     'silver-wind',
+    'reversal',
+    'endeavor',
+    'dark-void',
 ]);
 
 const writeData = (data: Record<string, MoveData>): void => {
