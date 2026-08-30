@@ -1,14 +1,18 @@
+export { default as aaronsRoom } from './aarons-room.png';
 export { default as acuityCavern } from './acuity-cavern.png';
+export { default as berthasRoom } from './berthas-room.png';
 export { default as cafeCabin } from './cafe-cabin.png';
 export { default as canalaveCity } from './canalave-city.png';
 export { default as canalaveGym } from './canalave-gym.png';
 export { default as celesticRuins } from './celestic-ruins.png';
 export { default as celesticTown } from './celestic-town.png';
+export { default as cynthiasRoom } from './cynthias-room.png';
 export { default as distortionWorld } from './distortion-world.png';
 export { default as eternaCity } from './eterna-city.png';
 export { default as eternaForestExterior } from './eterna-forest-exterior.png';
 export { default as eternaForestInterior } from './eterna-forest-interior.png';
 export { default as eternaGym } from './eterna-gym.png';
+export { default as flintsRoom } from './flints-room.png';
 export { default as floaromaMeadow } from './floaroma-meadow.png';
 export { default as floaromaTownPokemonCenter } from './floaroma-town-pokemon-center.png';
 export { default as floaromaTownTown } from './floaroma-town-town.png';
@@ -44,6 +48,7 @@ export { default as lakeValorPostGiratina } from './lake-valor-post-giratina.png
 export { default as lakeValorPreGiratina } from './lake-valor-pre-giratina.png';
 export { default as lakeVerityPostGalactic } from './lake-verity-post-galactic.png';
 export { default as lakeVerityPreGalactic } from './lake-verity-pre-galactic.png';
+export { default as luciansRoom } from './lucians-room.png';
 export { default as maniacTunnel } from './maniac-tunnel.png';
 export { default as miningMuseum } from './mining-museum.png';
 export { default as mtCoronet1fRoute207 } from './mt-coronet-1f-route-207.png';

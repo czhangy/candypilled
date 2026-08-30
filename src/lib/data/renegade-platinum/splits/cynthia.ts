@@ -1,3 +1,8 @@
+import AARONS_ROOM from '@/lib/data/renegade-platinum/locations/aarons-room';
+import BERTHAS_ROOM from '@/lib/data/renegade-platinum/locations/berthas-room';
+import CYNTHIAS_ROOM from '@/lib/data/renegade-platinum/locations/cynthias-room';
+import FLINTS_ROOM from '@/lib/data/renegade-platinum/locations/flints-room';
+import LUCIANS_ROOM from '@/lib/data/renegade-platinum/locations/lucians-room';
 import POKEMON_LEAGUE from '@/lib/data/renegade-platinum/locations/pokemon-league';
 import ROUTE_223 from '@/lib/data/renegade-platinum/locations/route-223';
 import ROUTE_224 from '@/lib/data/renegade-platinum/locations/route-224';
@@ -15,6 +20,11 @@ const CYNTHIA: Split = {
         VICTORY_ROAD,
         ROUTE_224,
         LocationHelpers.withSubareaOrder(POKEMON_LEAGUE, ['Lobby', 'Exterior']),
+        AARONS_ROOM,
+        BERTHAS_ROOM,
+        FLINTS_ROOM,
+        LUCIANS_ROOM,
+        CYNTHIAS_ROOM,
     ],
     saveCondition: { type: 'gameClear' },
 };
