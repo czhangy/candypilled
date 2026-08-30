@@ -47,11 +47,19 @@ $info-width: 5.5rem;
                         @include uppercase-label;
 
                         font-size: 0.7rem;
+
+                        &--changed {
+                            color: $pink;
+                        }
                     }
 
                     .value {
                         color: $text-mid;
                         font-size: 0.7rem;
+
+                        &--changed {
+                            color: $pink;
+                        }
                     }
                 }
 

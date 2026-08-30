@@ -7,6 +7,7 @@ import styles from './PokemonSummary.module.scss';
 type PokemonSummaryProps = {
     abilityEntries: AbilityEntry[];
     catchRate?: number;
+    catchRateChanged?: boolean;
     interactive: boolean;
     onSelectAbility: (slug: string) => void;
     placeholder?: string;
@@ -18,6 +19,7 @@ type PokemonSummaryProps = {
 const PokemonSummary: React.FC<PokemonSummaryProps> = ({
     abilityEntries,
     catchRate,
+    catchRateChanged,
     interactive,
     onSelectAbility,
     placeholder,
@@ -91,11 +93,27 @@ const PokemonSummary: React.FC<PokemonSummaryProps> = ({
                             {catchRate !== undefined && (
                                 <div className={styles['catch-rate']}>
                                     <span
-                                        className={styles['catch-rate-label']}
+                                        className={[
+                                            styles['catch-rate-label'],
+                                            catchRateChanged &&
+                                                styles[
+                                                    'catch-rate-label--changed'
+                                                ],
+                                        ]
+                                            .filter(Boolean)
+                                            .join(' ')}
                                     >
                                         Catch Rate
                                     </span>
-                                    <span className={styles.rate}>
+                                    <span
+                                        className={[
+                                            styles.rate,
+                                            catchRateChanged &&
+                                                styles['rate--changed'],
+                                        ]
+                                            .filter(Boolean)
+                                            .join(' ')}
+                                    >
                                         {catchRate}
                                     </span>
                                 </div>

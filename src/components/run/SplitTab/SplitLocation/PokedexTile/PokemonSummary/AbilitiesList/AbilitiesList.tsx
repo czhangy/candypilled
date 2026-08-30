@@ -37,6 +37,7 @@ const AbilitiesList: React.FC<AbilitiesListProps> = ({
                         className={[
                             styles.ability,
                             entry.hidden && styles['ability--hidden'],
+                            entry.changed && styles['ability--changed'],
                         ]
                             .filter(Boolean)
                             .join(' ')}
@@ -53,6 +54,7 @@ const AbilitiesList: React.FC<AbilitiesListProps> = ({
                             styles.ability,
                             styles['ability--static'],
                             entry.hidden && styles['ability--hidden'],
+                            entry.changed && styles['ability--changed'],
                         ]
                             .filter(Boolean)
                             .join(' ')}

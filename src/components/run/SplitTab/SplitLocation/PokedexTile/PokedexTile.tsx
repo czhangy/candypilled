@@ -158,18 +158,37 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
               generation
           )
         : undefined;
+    const abilityChanges = species
+        ? PokemonHelpers.getAbilityChanges(game.dataSource, species, generation)
+        : undefined;
     const abilityEntries: AbilityEntry[] = abilities
         ? [
-              { slug: abilities.slot1 },
-              ...(abilities.slot2 ? [{ slug: abilities.slot2 }] : []),
+              { changed: abilityChanges?.slot1, slug: abilities.slot1 },
+              ...(abilities.slot2
+                  ? [
+                        {
+                            changed: abilityChanges?.slot2,
+                            slug: abilities.slot2,
+                        },
+                    ]
+                  : []),
               ...(abilities.hidden
-                  ? [{ hidden: true, slug: abilities.hidden }]
+                  ? [
+                        {
+                            changed: abilityChanges?.hidden,
+                            hidden: true,
+                            slug: abilities.hidden,
+                        },
+                    ]
                   : []),
           ]
         : [];
     const catchRate = species
         ? PokemonHelpers.getPokemonCatchRate(game.dataSource, species)
         : undefined;
+    const catchRateChanged = species
+        ? PokemonHelpers.isCatchRateChanged(game.dataSource, species)
+        : false;
     const hideTradeEvos = settings['disable-trade-evos'] ?? false;
     const evolutionLine = species
         ? EvolutionHelpers.getFullEvolutionLine(
@@ -180,6 +199,9 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
         : undefined;
     const stats = species
         ? PokemonHelpers.getPokemonStats(game.dataSource, species, generation)
+        : undefined;
+    const statChanges = species
+        ? PokemonHelpers.getStatChanges(game.dataSource, species, generation)
         : undefined;
     const learnset = species
         ? PokemonHelpers.getPokemonLearnset(
@@ -255,6 +277,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
             <PokemonSummary
                 abilityEntries={abilityEntries}
                 catchRate={catchRate}
+                catchRateChanged={catchRateChanged}
                 interactive={rest.mode !== 'choose'}
                 onSelectAbility={onSelectAbility}
                 placeholder={`Select a Pokémon to view its details or ${rest.mode} it`}
@@ -270,7 +293,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                 step={evolutionLine}
                 variant={variant}
             />
-            <StatsChart stats={stats} />
+            <StatsChart statChanges={statChanges} stats={stats} />
             {pokemon && (
                 <div className={styles.details}>
                     {rest.mode === 'choose' ? (

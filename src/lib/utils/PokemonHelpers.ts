@@ -1,10 +1,14 @@
+import { POKEMON as VANILLA_POKEMON } from '@/lib/data/pokemon';
+import { STAT_FIELDS } from '@/lib/static/constants';
 import {
     Abilities,
+    DataChange,
     GameDataSource,
     LearnsetMove,
     PokemonData,
     StatValues,
 } from '@/lib/static/types';
+import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import GenerationHelpers from '@/lib/utils/GenerationHelpers';
 
 // One species that knows a given move, alongside every learnset entry
@@ -318,9 +322,244 @@ export default class PokemonHelpers {
         });
     }
 
+    /**
+     * How `slug` differs from vanilla in `dataSource` as of `generation`
+     * (types, each ability slot, a single combined "Stats" entry listing
+     * every changed base stat's signed delta, and catch rate), or
+     * undefined if this game doesn't override Pokémon, this species isn't
+     * one of the overridden ones, or vanilla has no resolvable values for
+     * it at this generation.
+     */
+    static getPokemonChanges(
+        dataSource: GameDataSource,
+        slug: string,
+        generation: number
+    ): DataChange[] | undefined {
+        if (!dataSource.overrides?.pokemon?.[slug]) return undefined;
+
+        const currentData = PokemonHelpers.getPokemonData(dataSource, slug);
+        const vanillaData = VANILLA_POKEMON[slug];
+        if (!currentData || !vanillaData) return undefined;
+
+        const currentTypes = GenerationHelpers.resolveGeneration(
+            currentData.types,
+            generation
+        )?.types;
+        const vanillaTypes = GenerationHelpers.resolveGeneration(
+            vanillaData.types,
+            generation
+        )?.types;
+        const currentAbilities = GenerationHelpers.resolveGeneration(
+            currentData.abilities,
+            generation
+        )?.abilities;
+        const vanillaAbilities = GenerationHelpers.resolveGeneration(
+            vanillaData.abilities,
+            generation
+        )?.abilities;
+        const currentStats = GenerationHelpers.resolveGeneration(
+            currentData.stats,
+            generation
+        )?.stats;
+        const vanillaStats = GenerationHelpers.resolveGeneration(
+            vanillaData.stats,
+            generation
+        )?.stats;
+        if (
+            !currentTypes ||
+            !vanillaTypes ||
+            !currentAbilities ||
+            !vanillaAbilities ||
+            !currentStats ||
+            !vanillaStats
+        ) {
+            return undefined;
+        }
+
+        const changes: DataChange[] = [];
+        const abilityName = (abilitySlug: string | undefined): string =>
+            abilitySlug
+                ? (AbilityHelpers.getAbilityData(abilitySlug)?.name ??
+                  abilitySlug)
+                : 'None';
+
+        if (currentTypes.join(',') !== vanillaTypes.join(',')) {
+            changes.push({
+                label: 'Types',
+                before: vanillaTypes.join(','),
+                after: currentTypes.join(','),
+            });
+        }
+        const abilityChanges = PokemonHelpers.computeAbilityChanges(
+            currentAbilities,
+            vanillaAbilities
+        );
+        if (abilityChanges.slot1) {
+            changes.push({
+                label: 'Ability 1',
+                before: abilityName(vanillaAbilities.slot1),
+                after: abilityName(currentAbilities.slot1),
+            });
+        }
+        if (abilityChanges.slot2) {
+            changes.push({
+                label: 'Ability 2',
+                before: abilityName(vanillaAbilities.slot2),
+                after: abilityName(currentAbilities.slot2),
+            });
+        }
+        if (abilityChanges.hidden) {
+            changes.push({
+                label: 'Hidden Ability',
+                before: abilityName(vanillaAbilities.hidden),
+                after: abilityName(currentAbilities.hidden),
+            });
+        }
+        const statDeltas = PokemonHelpers.computeStatDeltas(
+            currentStats,
+            vanillaStats
+        );
+        const statParts = STAT_FIELDS.filter(
+            (field) => statDeltas[field.key] !== undefined
+        ).map((field) => {
+            const delta = statDeltas[field.key] as number;
+            return `${PokemonHelpers.STAT_ABBREVIATIONS[field.key]} ${delta > 0 ? '+' : ''}${delta}`;
+        });
+        if (statParts.length > 0) {
+            changes.push({ label: 'Stats', after: statParts.join(', ') });
+        }
+        if (currentData.catchRate !== vanillaData.catchRate) {
+            changes.push({
+                label: 'Catch Rate',
+                before: vanillaData.catchRate.toString(),
+                after: currentData.catchRate.toString(),
+            });
+        }
+
+        return changes;
+    }
+
+    /**
+     * Every base stat where `slug` differs from vanilla in `dataSource` as
+     * of `generation`, keyed by stat with its signed delta (e.g.
+     * `{ spa: 1 }`), for highlighting changed stats directly in a stat
+     * chart. Undefined if this game doesn't override Pokémon, this
+     * species isn't one of the overridden ones, vanilla has no resolvable
+     * stats for it at this generation, or nothing actually changed.
+     */
+    static getStatChanges(
+        dataSource: GameDataSource,
+        slug: string,
+        generation: number
+    ): Partial<Record<keyof StatValues, number>> | undefined {
+        if (!dataSource.overrides?.pokemon?.[slug]) return undefined;
+
+        const currentStats = PokemonHelpers.getPokemonStats(
+            dataSource,
+            slug,
+            generation
+        );
+        const vanillaStats = GenerationHelpers.resolveGeneration(
+            VANILLA_POKEMON[slug]?.stats ?? [],
+            generation
+        )?.stats;
+        if (!currentStats || !vanillaStats) return undefined;
+
+        const deltas = PokemonHelpers.computeStatDeltas(
+            currentStats,
+            vanillaStats
+        );
+        return Object.keys(deltas).length > 0 ? deltas : undefined;
+    }
+
+    /**
+     * Which of `slug`'s ability slots differ from vanilla in `dataSource`
+     * as of `generation`, for highlighting changed abilities wherever
+     * they're listed. Undefined if this game doesn't override Pokémon,
+     * this species isn't one of the overridden ones, or vanilla has no
+     * resolvable abilities for it at this generation.
+     */
+    static getAbilityChanges(
+        dataSource: GameDataSource,
+        slug: string,
+        generation: number
+    ): { hidden: boolean; slot1: boolean; slot2: boolean } | undefined {
+        if (!dataSource.overrides?.pokemon?.[slug]) return undefined;
+
+        const currentAbilities = PokemonHelpers.getPokemonAbilities(
+            dataSource,
+            slug,
+            generation
+        );
+        const vanillaAbilities = GenerationHelpers.resolveGeneration(
+            VANILLA_POKEMON[slug]?.abilities ?? [],
+            generation
+        )?.abilities;
+        if (!currentAbilities || !vanillaAbilities) return undefined;
+
+        return PokemonHelpers.computeAbilityChanges(
+            currentAbilities,
+            vanillaAbilities
+        );
+    }
+
+    /** Whether `slug`'s catch rate in `dataSource` differs from vanilla. */
+    static isCatchRateChanged(
+        dataSource: GameDataSource,
+        slug: string
+    ): boolean {
+        if (!dataSource.overrides?.pokemon?.[slug]) return false;
+
+        const currentData = PokemonHelpers.getPokemonData(dataSource, slug);
+        const vanillaData = VANILLA_POKEMON[slug];
+        if (!currentData || !vanillaData) return false;
+
+        return currentData.catchRate !== vanillaData.catchRate;
+    }
+
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------
 
     private static readonly MAX_KNOWN_MOVES = 4;
+
+    /** Which ability slots differ between current and vanilla. */
+    private static computeAbilityChanges(
+        current: Abilities,
+        vanilla: Abilities
+    ): { hidden: boolean; slot1: boolean; slot2: boolean } {
+        return {
+            hidden: current.hidden !== vanilla.hidden,
+            slot1: current.slot1 !== vanilla.slot1,
+            slot2: current.slot2 !== vanilla.slot2,
+        };
+    }
+
+    /** Signed per-stat deltas between current and vanilla, omitting unchanged stats. */
+    private static computeStatDeltas(
+        current: StatValues,
+        vanilla: StatValues
+    ): Partial<Record<keyof StatValues, number>> {
+        const deltas: Partial<Record<keyof StatValues, number>> = {};
+        STAT_FIELDS.forEach((field) => {
+            const delta = current[field.key] - vanilla[field.key];
+            if (delta !== 0) deltas[field.key] = delta;
+        });
+
+        return deltas;
+    }
+
+    // Matches the abbreviations NatureHelpers.getNatureEffect already shows
+    // elsewhere in the app (e.g. "[+Atk -SpA]").
+    private static readonly STAT_ABBREVIATIONS: Record<
+        keyof StatValues,
+        string
+    > = {
+        hp: 'HP',
+        atk: 'Atk',
+        def: 'Def',
+        spa: 'SpA',
+        spd: 'SpD',
+        spe: 'Spe',
+    };
 }

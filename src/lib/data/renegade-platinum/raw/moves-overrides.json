@@ -32,8 +32,8 @@
             {
                 "fromGeneration": 4,
                 "type": "flying",
-                "power": 90,
-                "accuracy": 95,
+                "power": 100,
+                "accuracy": 100,
                 "pp": 15,
                 "effect": "User flies high into the air, dodging all attacks, and hits next turn.",
                 "effectChance": null,
@@ -844,7 +844,7 @@
             {
                 "fromGeneration": 4,
                 "type": "fighting",
-                "power": 40,
+                "power": 60,
                 "accuracy": 100,
                 "pp": 15,
                 "effect": "Has a chance to lower the target’s Defense by one stage.",
@@ -1446,9 +1446,9 @@
             {
                 "fromGeneration": 4,
                 "type": "flying",
-                "power": 65,
+                "power": 90,
                 "accuracy": 100,
-                "pp": 20,
+                "pp": 15,
                 "effect": "Has a higher chance to confuse the target when the recorded sound is louder.",
                 "effectChance": 100,
                 "description": "The user attacks the target with sound waves of deafening chatter. This confuses the target."
@@ -1646,8 +1646,8 @@
                 "power": 110,
                 "accuracy": 70,
                 "pp": 10,
-                "effect": "Has a chance to confuse the target.",
-                "effectChance": 30,
+                "effect": "Inflicts regular damage with no additional effect.",
+                "effectChance": null,
                 "description": "The user attacks by wrapping its opponent in a fierce wind. This may also confuse the target."
             }
         ]
@@ -1702,7 +1702,7 @@
             {
                 "fromGeneration": 4,
                 "type": "fairy",
-                "power": 40,
+                "power": 50,
                 "accuracy": null,
                 "pp": 15,
                 "effect": "Never misses.",
@@ -1717,10 +1717,10 @@
             {
                 "fromGeneration": 4,
                 "type": "fairy",
-                "power": 50,
+                "power": 75,
                 "accuracy": 100,
                 "pp": 10,
-                "effect": "Drains 75% of the damage inflicted to heal the user.",
+                "effect": "Drains 50% of the damage inflicted to heal the user.",
                 "effectChance": null,
                 "description": "The user steals the target's HP with a kiss. The user's HP is restored by over half the damage taken by the target."
             }
@@ -1807,7 +1807,7 @@
             {
                 "fromGeneration": 4,
                 "type": "electric",
-                "power": 90,
+                "power": 100,
                 "accuracy": 100,
                 "pp": 15,
                 "effect": "User receives 1/4 the damage it inflicts in recoil.",
@@ -1841,6 +1841,202 @@
                 "effect": "Always deals 102 power, regardless of happiness.",
                 "effectChance": null,
                 "description": "A full-power attack. In this hack it always hits its maximum power instead of scaling with the user's happiness."
+            }
+        ]
+    },
+    "aurora-beam": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "ice",
+                "power": 75,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Has a chance to lower the target’s Attack by one stage.",
+                "effectChance": 10,
+                "description": "The foe is hit with a rainbow-colored beam. It may also lower the target’s Attack stat."
+            }
+        ]
+    },
+    "blaze-kick": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fire",
+                "power": 90,
+                "accuracy": 100,
+                "pp": 10,
+                "effect": "Has an increased chance for a critical hit and a chance to burn the target.",
+                "effectChance": 10,
+                "description": "The user launches a kick with a high critical-hit ratio. It may also leave the target with a burn."
+            }
+        ]
+    },
+    "bubble-beam": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "water",
+                "power": 75,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Has a chance to lower the target’s Speed by one stage.",
+                "effectChance": 10,
+                "description": "A spray of bubbles is forcefully ejected at the foe. It may also lower the target’s Speed stat."
+            }
+        ]
+    },
+    "cross-poison": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "poison",
+                "power": 90,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Has an increased chance for a critical hit and a chance to poison the target.",
+                "effectChance": 10,
+                "description": "A slashing attack that may also leave the target poisoned. It has a high critical-hit ratio."
+            }
+        ]
+    },
+    "flame-wheel": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "fire",
+                "power": 75,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Has a chance to burn the target.  Lets frozen Pokémon thaw themselves.",
+                "effectChance": 10,
+                "description": "The user cloaks itself in fire and charges at the foe. It may also leave the target with a burn."
+            }
+        ]
+    },
+    "needle-arm": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "grass",
+                "power": 90,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Has a chance to make the target flinch.",
+                "effectChance": 30,
+                "description": "The user attacks by wildly swinging its thorny arms. It may also make the target flinch."
+            }
+        ]
+    },
+    "poison-fang": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "poison",
+                "power": 65,
+                "accuracy": 95,
+                "pp": 15,
+                "effect": "Has a chance to badly poison the target.",
+                "effectChance": 50,
+                "description": "The user bites the foe with toxic fangs. It may also leave the foe badly poisoned. "
+            }
+        ]
+    },
+    "poison-tail": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "poison",
+                "power": 90,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Has an increased chance for a critical hit and a chance to poison the target.",
+                "effectChance": 10,
+                "description": "An attack with a high critical-hit ratio. This tail attack may also poison the foe."
+            }
+        ]
+    },
+    "shadow-claw": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "ghost",
+                "power": 80,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Has an increased chance for a critical hit.",
+                "effectChance": null,
+                "description": "The user slashes with a sharp claw made from shadows. It has a high critical-hit ratio."
+            }
+        ]
+    },
+    "shadow-punch": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "ghost",
+                "power": 80,
+                "accuracy": null,
+                "pp": 15,
+                "effect": "Never misses.",
+                "effectChance": null,
+                "description": "The user throws a punch at the foe from the shadows. The punch lands without fail."
+            }
+        ]
+    },
+    "sludge": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "poison",
+                "power": 75,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Has a chance to poison the target.",
+                "effectChance": 30,
+                "description": "Unsanitary sludge is hurled at the foe. It may also poison the target. "
+            }
+        ]
+    },
+    "strength": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "normal",
+                "power": 100,
+                "accuracy": 100,
+                "pp": 15,
+                "effect": "Has a chance to raise the user’s Attack by one stage.",
+                "effectChance": 10,
+                "description": "The foe is slugged with a punch thrown at maximum power. It can also be used to move boulders."
+            }
+        ]
+    },
+    "cut": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "grass",
+                "power": 60,
+                "accuracy": 100,
+                "pp": 25,
+                "effect": "Has an increased chance for a critical hit.",
+                "effectChance": null,
+                "description": "The foe is cut with a scythe or a claw. It can also be used to cut down thin trees."
+            }
+        ]
+    },
+    "rock-climb": {
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "type": "rock",
+                "power": 80,
+                "accuracy": 95,
+                "pp": 10,
+                "effect": "Has a chance to confuse the target.",
+                "effectChance": 20,
+                "description": "A charging attack that may also leave the foe confused. It can also be used to scale rocky walls."
             }
         ]
     }

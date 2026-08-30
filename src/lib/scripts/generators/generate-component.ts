@@ -77,11 +77,6 @@ const createScss = (componentPath: string, component: string): void => {
     ]);
 };
 
-const createMd = (componentPath: string, component: string): void => {
-    const filePath = path.join(componentPath, `${component}.md`);
-    writeToFile(filePath, [`# ${component}\n`]);
-};
-
 const createComponent = (args: ComponentArgs): void => {
     const { componentPath } = getPaths(args);
 
@@ -89,7 +84,6 @@ const createComponent = (args: ComponentArgs): void => {
 
     createTsx(componentPath, args.component);
     createScss(componentPath, args.component);
-    createMd(componentPath, args.component);
 
     logSuccess(`${args.component} was created successfully!`);
 };

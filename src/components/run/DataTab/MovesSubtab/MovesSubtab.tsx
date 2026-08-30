@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from 'react';
+import { useMemo, useSyncExternalStore } from 'react';
 import SearchableList from '@/components/common/SearchableList/SearchableList';
 import SpeciesListPanel from '@/components/run/DataTab/SpeciesListPanel/SpeciesListPanel';
 import { Game } from '@/lib/static/types';
@@ -30,27 +30,35 @@ const MovesSubtab: React.FC<MovesSubtabProps> = ({
         SettingsHelpers.getSnapshot,
         SettingsHelpers.getServerSnapshot
     );
+    const gameSpecies = useMemo(
+        () =>
+            EncounterHelpers.getGameSpecies(
+                game,
+                settings['show-national-dex-data'] ?? false
+            ),
+        [game, settings]
+    );
+    const availableMoves = useMemo(
+        () =>
+            Object.values(game.dataSource.moves)
+                .filter(
+                    (move) =>
+                        move.introducedInGeneration <= game.generation &&
+                        PokemonHelpers.getSpeciesWithMove(
+                            game.dataSource,
+                            gameSpecies,
+                            move.slug,
+                            game.version
+                        ).length > 0
+                )
+                .sort((a, b) => a.name.localeCompare(b.name)),
+        [game, gameSpecies]
+    );
 
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const gameSpecies = EncounterHelpers.getGameSpecies(
-        game,
-        settings['show-national-dex-data'] ?? false
-    );
-    const availableMoves = Object.values(game.dataSource.moves)
-        .filter(
-            (move) =>
-                move.introducedInGeneration <= game.generation &&
-                PokemonHelpers.getSpeciesWithMove(
-                    game.dataSource,
-                    gameSpecies,
-                    move.slug,
-                    game.version
-                ).length > 0
-        )
-        .sort((a, b) => a.name.localeCompare(b.name));
     const effectiveMove = selectedMove ?? availableMoves[0]?.slug ?? '';
     const learnedBy = PokemonHelpers.getSpeciesWithMove(
         game.dataSource,

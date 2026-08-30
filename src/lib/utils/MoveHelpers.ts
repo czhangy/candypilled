@@ -1,4 +1,6 @@
+import { MOVES as VANILLA_MOVES } from '@/lib/data/moves';
 import {
+    DataChange,
     GameDataSource,
     LearnsetMethod,
     LearnsetMove,
@@ -85,6 +87,98 @@ export default class MoveHelpers {
         return slug === 'hidden-power'
             ? MoveHelpers.getHiddenPowerType(ivs)
             : values.type;
+    }
+
+    /**
+     * How `slug` differs from vanilla in `dataSource` as of `generation`,
+     * or undefined if this game doesn't override moves, this move isn't
+     * one of the overridden ones, vanilla didn't introduce it until after
+     * `generation` (backported rather than rebalanced, so there's nothing
+     * meaningful to diff field by field), or vanilla has no resolvable
+     * values for it at this generation.
+     */
+    static getMoveChanges(
+        dataSource: GameDataSource,
+        slug: string,
+        generation: number
+    ): DataChange[] | undefined {
+        if (!dataSource.overrides?.moves?.[slug]) return undefined;
+
+        const currentData = MoveHelpers.getMoveData(dataSource, slug);
+        const vanillaData = VANILLA_MOVES[slug];
+        const current = MoveHelpers.getMoveForGeneration(
+            dataSource,
+            slug,
+            generation
+        );
+        if (!currentData || !vanillaData || !current) return undefined;
+        if (vanillaData.introducedInGeneration > generation) return undefined;
+
+        const vanilla = GenerationHelpers.resolveGeneration(
+            vanillaData.valuesByGeneration,
+            generation
+        );
+        if (!vanilla) return undefined;
+
+        const changes: DataChange[] = [];
+        const formatPower = (power: number | null): string =>
+            power?.toString() ?? 'None';
+        const formatAccuracy = (accuracy: number | null): string =>
+            accuracy !== null ? `${accuracy}%` : 'None';
+        const formatEffectChance = (chance: number | null): string =>
+            chance !== null ? `${chance}%` : 'None';
+
+        if (current.type !== vanilla.type) {
+            changes.push({
+                label: 'Type',
+                before: vanilla.type,
+                after: current.type,
+            });
+        }
+        if (current.power !== vanilla.power) {
+            changes.push({
+                label: 'Power',
+                before: formatPower(vanilla.power),
+                after: formatPower(current.power),
+            });
+        }
+        if (current.accuracy !== vanilla.accuracy) {
+            changes.push({
+                label: 'Accuracy',
+                before: formatAccuracy(vanilla.accuracy),
+                after: formatAccuracy(current.accuracy),
+            });
+        }
+        if (current.pp !== vanilla.pp) {
+            changes.push({
+                label: 'PP',
+                before: vanilla.pp.toString(),
+                after: current.pp.toString(),
+            });
+        }
+        if (currentData.category !== vanillaData.category) {
+            changes.push({
+                label: 'Category',
+                before: vanillaData.category,
+                after: currentData.category,
+            });
+        }
+        if (currentData.priority !== vanillaData.priority) {
+            changes.push({
+                label: 'Priority',
+                before: vanillaData.priority.toString(),
+                after: currentData.priority.toString(),
+            });
+        }
+        if (current.effectChance !== vanilla.effectChance) {
+            changes.push({
+                label: 'Effect Chance',
+                before: formatEffectChance(vanilla.effectChance),
+                after: formatEffectChance(current.effectChance),
+            });
+        }
+
+        return changes;
     }
 
     /** Whether `slug` in dataSource is curated as a dangerous move. */

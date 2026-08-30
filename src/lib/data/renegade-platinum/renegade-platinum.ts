@@ -18,12 +18,8 @@ import ROARK from './splits/roark';
 import VOLKNER from './splits/volkner';
 import WAKE from './splits/wake';
 
-// Onboarding in progress — see ONBOARDING.md for full status. Pokémon and
-// move data are complete; encounters/locations/splits are being authored
-// incrementally, one area at a time (currently just the very start of the
-// game). "New" is clickable (Route 201 has a real Starter encounter for
-// EncounterHelpers.getStarterLocationName to resolve), but most of the
-// map has no encounters/battles/splits wired in yet.
+// Pokémon and move overrides are complete; encounters/locations/battles/
+// splits are authored incrementally, one area at a time.
 const RENEGADE_PLATINUM: Game = {
     name: 'Renegade Platinum',
     logo: '/logos/renegade-platinum.png',
