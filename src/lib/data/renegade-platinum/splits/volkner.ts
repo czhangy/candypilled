@@ -6,6 +6,7 @@ import ROUTE_216 from '@/lib/data/renegade-platinum/locations/route-216';
 import ROUTE_222 from '@/lib/data/renegade-platinum/locations/route-222';
 import SENDOFF_SPRING from '@/lib/data/renegade-platinum/locations/sendoff-spring';
 import SPEAR_PILLAR from '@/lib/data/renegade-platinum/locations/spear-pillar';
+import SUNYSHORE_CITY from '@/lib/data/renegade-platinum/locations/sunyshore-city';
 import VALOR_CAVERN from '@/lib/data/renegade-platinum/locations/valor-cavern';
 import VERITY_CAVERN from '@/lib/data/renegade-platinum/locations/verity-cavern';
 import { Split } from '@/lib/static/types';
@@ -39,6 +40,7 @@ const VOLKNER: Split = {
         ]),
         ACUITY_CAVERN,
         ROUTE_222,
+        SUNYSHORE_CITY,
     ],
     saveCondition: { type: 'badge', bit: 7 },
 };
