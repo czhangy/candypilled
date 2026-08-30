@@ -169,17 +169,35 @@ export default class DamageCalcHelpers {
         const attackerPokemon = DamageCalcHelpers.buildPokemon(gen, attacker);
         const defenderPokemon = DamageCalcHelpers.buildPokemon(gen, defender);
         if (!attackerPokemon || !defenderPokemon) return null;
-        if (!gen.moves.get(toID(moveName))) return null;
+
+        const ownOverrides = DamageCalcHelpers.getMoveOverrides(
+            dataSource,
+            moveName,
+            generation,
+            attacker.ivs
+        );
+        if (!ownOverrides) return null;
+
+        // A move this game's data source has (e.g. a ROM hack backporting
+        // a later-generation move as a Gen 4 replacement) may not exist in
+        // @smogon/calc's dataset for `generation` at all, since that
+        // dataset mirrors real vanilla move availability per generation.
+        // When that happens, borrow the shape (flags/target/secondaries/
+        // etc.) from the earliest later @smogon/calc generation that does
+        // define it, since it's the same real move — this game's own
+        // stats still take priority via ownOverrides.
+        const knownMove = gen.moves.get(toID(moveName));
+        const fallbackMove = knownMove
+            ? undefined
+            : DamageCalcHelpers.getFallbackMove(moveName, generation);
+        if (!knownMove && !fallbackMove) return null;
 
         try {
             const move = new CalcMove(gen, moveName, {
                 isCrit: field.isCrit,
-                overrides: DamageCalcHelpers.getMoveOverrides(
-                    dataSource,
-                    moveName,
-                    generation,
-                    attacker.ivs
-                ),
+                overrides: fallbackMove
+                    ? { ...fallbackMove, ...ownOverrides }
+                    : ownOverrides,
             });
             return calculate(
                 gen,
@@ -223,6 +241,22 @@ export default class DamageCalcHelpers {
             priority: moveData.priority,
             type: DamageCalcHelpers.capitalize(type) as CalcMoveData['type'],
         };
+    }
+
+    // The earliest @smogon/calc generation after `generation` that
+    // recognizes moveName, or undefined if no later generation does
+    // either (a genuinely unknown move name).
+    private static getFallbackMove(
+        moveName: string,
+        generation: number
+    ): CalcMoveData | undefined {
+        for (let laterGen = generation + 1; laterGen <= 9; laterGen++) {
+            const found = DamageCalcHelpers.getGeneration(laterGen).moves.get(
+                toID(moveName)
+            );
+            if (found) return found;
+        }
+        return undefined;
     }
 
     private static capitalize(value: string): string {
