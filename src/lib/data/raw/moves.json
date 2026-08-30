@@ -9617,7 +9617,7 @@
         "category": "status",
         "priority": 0,
         "introducedInGeneration": 2,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 3,
@@ -11846,7 +11846,7 @@
         "category": "status",
         "priority": 0,
         "introducedInGeneration": 2,
-        "isDangerous": false,
+        "isDangerous": true,
         "valuesByGeneration": [
             {
                 "fromGeneration": 3,

@@ -61,6 +61,8 @@ const MOVE_NAME_OVERRIDES: Record<string, string> = {
 const DANGEROUS_MOVES = new Set([
     'explosion',
     'self-destruct',
+    'curse',
+    'attract',
     'destiny-bond',
     'counter',
     'mirror-coat',
