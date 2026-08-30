@@ -59,11 +59,10 @@ Pre-commit hooks via Husky/lint-staged automatically run ESLint, Prettier, and S
 
 ### Components
 
-**Components** live in `src/components/`. Each component requires three co-located files:
+**Components** live in `src/components/`. Each component requires two co-located files:
 
 - `ComponentName/ComponentName.tsx`
 - `ComponentName/ComponentName.module.scss`
-- `ComponentName/ComponentName.md`
 
 Shared UI primitives live in `src/components/common/` (Modal, Dropdown, Accordion, Spinner, etc.).
 
@@ -74,13 +73,11 @@ src/components/
   archives/               ← page for /status/archives
     ArchivesPage.tsx
     ArchivesPage.module.scss
-    ArchivesPage.md
     ArchivesContent/      ← child component, co-located here
       ...
   library/                ← page for /status/library
     LibraryPage.tsx
     LibraryPage.module.scss
-    LibraryPage.md
 ```
 
 **Domain directories** (`src/components/status/`, `src/components/career/`, etc.) exist only for shared child components used by pages in that feature area. They never contain page components.
@@ -90,42 +87,6 @@ src/components/
 **Component reuse**: When two components share the same markup structure and styles with only content differing, extract a shared component with props rather than duplicating. Thin wrapper components that only pass fixed props to a shared component do not need a `.module.scss` file.
 
 **Page-level padding**: All full-page components must include `padding: 1.5rem` on their outermost element. The site does not support screen sizes below `$max-content-width` (1260px) — `globals.scss` shows a small-screen message instead of the site shell below that width — so components must not contain mobile-specific (`width <= 768px` or similar) breakpoints.
-
-Each component directory contains a `ComponentName.md` documentation file co-located with the `.tsx` and `.module.scss` files. Whenever a component is modified, its documentation file must be updated to reflect the changes.
-
-Documentation files follow this structure (omit any section that does not apply):
-
-```
-# ComponentName
-
-A brief description of what the component is — no implementation details, prop names, or behavior specifics.
-
-## Props
-
-| Prop       | Type   | Required | Default   | Description |
-| ---------- | ------ | -------- | --------- | ----------- |
-| `propName` | `type` | Yes/No   | `default` | Description |
-
-## State
-
-| State       | Type   | Initial value  | Description |
-| ----------- | ------ | -------------- | ----------- |
-| `stateName` | `type` | `initialValue` | Description |
-
-## Effects
-
-- **On [trigger]** — description of the effect's purpose
-
-## Computations
-
-- `variableName` — description of what it represents and why it is computed
-
-## SCSS Variable Dependencies
-
-- `--variable-name` — description of where it is expected to be set by a parent
-
-Only list variables that this component consumes but does not define. Do not list variables that this component defines and passes down to its children.
-```
 
 **Icons** live in `src/lib/icons/` (flat, no subdirectories) and must be named with the `Icon` suffix (e.g., `ChevronIcon`).
 
