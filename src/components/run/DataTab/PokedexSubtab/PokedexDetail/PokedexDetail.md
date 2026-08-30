@@ -20,12 +20,14 @@ level, with locations whose encounter is already used (caught or
 missed) in the run highlighted red. A final section, for a game whose
 data is a vanilla-plus-overrides diff, lists a "Changes" section showing
 how the species differs from vanilla, with each changed value colored
-pink — a Types change renders as before/after type badges rather than
-plain text, matching the type badges shown in `PokemonSummary`, and
-every changed base stat is combined into a single "Stats" row listing
-each one's abbreviated name and signed delta (e.g. "Atk +5, Spe -3",
-matching the abbreviations `NatureHelpers.getNatureEffect` already shows
-elsewhere) rather than a separate row per stat.
+pink and each row's label styled like the section headers elsewhere in
+this panel (e.g. "Base Stats" above) — a Types change renders as
+before/after type badges rather than plain text, matching the type
+badges shown in `PokemonSummary`, and every changed base stat is
+combined into a single "Stats" row listing each one's abbreviated name
+and signed delta (e.g. "Atk +5, Spe -3", matching the abbreviations
+`NatureHelpers.getNatureEffect` already shows elsewhere) rather than a
+separate row per stat.
 
 ## Props
 

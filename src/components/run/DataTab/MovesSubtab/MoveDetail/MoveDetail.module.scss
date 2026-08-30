@@ -112,8 +112,10 @@
                 }
 
                 .change-label {
-                    color: $text-mid;
+                    @include uppercase-label;
+
                     flex-shrink: 0;
+                    font-size: 0.7rem;
                     width: 6rem;
                 }
 
