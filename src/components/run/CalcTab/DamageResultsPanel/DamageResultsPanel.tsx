@@ -74,6 +74,7 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
         activeMoveName && activeAttacker && activeDefender
             ? DamageCalcHelpers.getDescription(
                   generation,
+                  dataSource,
                   activeAttacker,
                   activeDefender,
                   activeMoveName,
@@ -86,6 +87,7 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
         activeMoveName && activeAttacker && activeDefender
             ? DamageCalcHelpers.getPossibleDamageAmounts(
                   generation,
+                  dataSource,
                   activeAttacker,
                   activeDefender,
                   activeMoveName,

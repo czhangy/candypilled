@@ -379,6 +379,7 @@ export default class SwitchInHelpers {
 
             const range = DamageCalcHelpers.getDamagePercentRange(
                 generation,
+                dataSource,
                 attackerInput,
                 defenderInput,
                 moveName,
