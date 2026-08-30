@@ -10,6 +10,7 @@ import { ENCOUNTERS } from './encounters';
 import { MET_LOCATIONS } from './met-locations';
 import BYRON from './splits/byron';
 import CANDICE from './splits/candice';
+import CYNTHIA from './splits/cynthia';
 import FANTINA from './splits/fantina';
 import GARDENIA from './splits/gardenia';
 import MAYLENE from './splits/maylene';
@@ -60,7 +61,17 @@ const RENEGADE_PLATINUM: Game = {
         'Pick the penguin.',
         'Turtle time.',
     ],
-    splits: [ROARK, GARDENIA, FANTINA, MAYLENE, WAKE, BYRON, CANDICE, VOLKNER],
+    splits: [
+        ROARK,
+        GARDENIA,
+        FANTINA,
+        MAYLENE,
+        WAKE,
+        BYRON,
+        CANDICE,
+        VOLKNER,
+        CYNTHIA,
+    ],
 };
 
 export default RENEGADE_PLATINUM;
