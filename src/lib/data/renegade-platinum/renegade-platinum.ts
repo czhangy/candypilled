@@ -50,6 +50,29 @@ const RENEGADE_PLATINUM: Game = {
     encounters: ENCOUNTERS,
     battles: BATTLES,
     metLocationById: MET_LOCATIONS,
+    resources: [
+        {
+            text: 'Download',
+            description: 'Download link for Renegade Platinum',
+            url: 'https://drive.google.com/drive/folders/1gM7nse4qGKJMkcvlQwf5wPVbXwPcC4XV',
+        },
+        {
+            text: 'Wiki',
+            description: 'Community-maintained wiki for Renegade Platinum',
+            url: 'https://fredericdlugi.github.io/platinum-renegade-wiki/',
+        },
+        {
+            text: 'Gen IV AI',
+            description: 'Gen IV AI documentation',
+            url: 'https://pokemow.com/Gen4/TrainerAI/',
+        },
+        {
+            text: 'Kalaay Patch',
+            description:
+                'QoL patch for Renegade Platinum based on the Drayano Gauntlet',
+            url: 'https://drive.proton.me/urls/ZEQPKY2QTR#goT6p4N6KKRh',
+        },
+    ],
     wipeMessages: [
         'Roark is calling.',
         'Maybe a monkey run next time.',

@@ -431,6 +431,13 @@ export type GameDataSource = {
     };
 };
 
+// A single entry in a game's optional Resources tab -- opens url in a new tab.
+export type GameResource = {
+    text: string;
+    description: string;
+    url: string;
+};
+
 export type Game = {
     name: string;
     logo: string;
@@ -483,6 +490,9 @@ export type Game = {
     // table (e.g. Sinnoh's for Platinum), since met-location IDs are
     // assigned per region rather than shared across every game.
     metLocationById: Record<number, string>;
+    // External resources shown in the run page's Resources tab, e.g. a
+    // guide or resource pack. Omitted for a game with no associated links.
+    resources?: GameResource[];
 };
 
 export type Run = {
