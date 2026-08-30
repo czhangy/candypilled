@@ -1,4 +1,5 @@
 import { useState, useSyncExternalStore } from 'react';
+import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
 import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
 import LearnsetList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
 import LocationsList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LocationsList/LocationsList';
@@ -47,6 +48,9 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
     // -------------------------------------------------------------------------
 
     type DetailTab = 'learnset' | 'locations';
+
+    const BADGE_WIDTH = 40;
+    const BADGE_HEIGHT = 18;
 
     // -------------------------------------------------------------------------
     // STATE
@@ -114,6 +118,11 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
         game.version
     );
     const locations = EncounterHelpers.getEncounterLocations(game, species);
+    const changes = PokemonHelpers.getPokemonChanges(
+        game.dataSource,
+        species,
+        game.generation
+    );
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -199,6 +208,75 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                                 />
                             )}
                         </div>
+                        {changes && changes.length > 0 && (
+                            <div className={styles.changes}>
+                                <span className={styles['changes-label']}>
+                                    Changes
+                                </span>
+                                <ul className={styles['changes-list']}>
+                                    {changes.map((change) => (
+                                        <li key={change.label}>
+                                            <span
+                                                className={
+                                                    styles['change-label']
+                                                }
+                                            >
+                                                {change.label}
+                                            </span>
+                                            <span
+                                                className={
+                                                    styles['change-value']
+                                                }
+                                            >
+                                                {change.label === 'Types' ? (
+                                                    <>
+                                                        {(change.before ?? '')
+                                                            .split(',')
+                                                            .map((type) => (
+                                                                <TypeBadge
+                                                                    height={
+                                                                        BADGE_HEIGHT
+                                                                    }
+                                                                    key={type}
+                                                                    type={type}
+                                                                    width={
+                                                                        BADGE_WIDTH
+                                                                    }
+                                                                />
+                                                            ))}
+                                                        <span
+                                                            className={
+                                                                styles.arrow
+                                                            }
+                                                        >
+                                                            →
+                                                        </span>
+                                                        {change.after
+                                                            .split(',')
+                                                            .map((type) => (
+                                                                <TypeBadge
+                                                                    height={
+                                                                        BADGE_HEIGHT
+                                                                    }
+                                                                    key={type}
+                                                                    type={type}
+                                                                    width={
+                                                                        BADGE_WIDTH
+                                                                    }
+                                                                />
+                                                            ))}
+                                                    </>
+                                                ) : change.before ? (
+                                                    `${change.before} → ${change.after}`
+                                                ) : (
+                                                    change.after
+                                                )}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
                     </>
                 )}
             </div>

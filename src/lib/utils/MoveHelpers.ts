@@ -1,9 +1,9 @@
 import { MOVES as VANILLA_MOVES } from '@/lib/data/moves';
 import {
+    DataChange,
     GameDataSource,
     LearnsetMethod,
     LearnsetMove,
-    MoveChange,
     MoveData,
     MoveValuesByGeneration,
     StatValues,
@@ -101,7 +101,7 @@ export default class MoveHelpers {
         dataSource: GameDataSource,
         slug: string,
         generation: number
-    ): MoveChange[] | undefined {
+    ): DataChange[] | undefined {
         if (!dataSource.overrides?.moves?.[slug]) return undefined;
 
         const currentData = MoveHelpers.getMoveData(dataSource, slug);
@@ -120,13 +120,13 @@ export default class MoveHelpers {
         );
         if (!vanilla) return undefined;
 
-        const changes: MoveChange[] = [];
+        const changes: DataChange[] = [];
         const formatPower = (power: number | null): string =>
-            power?.toString() ?? '—';
+            power?.toString() ?? 'None';
         const formatAccuracy = (accuracy: number | null): string =>
-            accuracy !== null ? `${accuracy}%` : '—';
+            accuracy !== null ? `${accuracy}%` : 'None';
         const formatEffectChance = (chance: number | null): string =>
-            chance !== null ? `${chance}%` : '—';
+            chance !== null ? `${chance}%` : 'None';
 
         if (current.type !== vanilla.type) {
             changes.push({

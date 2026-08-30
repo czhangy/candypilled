@@ -21,6 +21,55 @@
         flex-direction: column;
         min-height: 24rem;
 
+        .changes {
+            border-top: 1px solid $border-subtle;
+            padding: 1rem 1.5rem;
+
+            .changes-label {
+                @include uppercase-label;
+
+                display: block;
+                font-size: 0.7rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .changes-list {
+                display: flex;
+                flex-direction: column;
+                gap: 0.35rem;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    display: flex;
+                    font-size: 0.85rem;
+                    gap: 0.5rem;
+                }
+
+                .change-label {
+                    color: $text-mid;
+                    flex-shrink: 0;
+                    width: 7rem;
+                }
+
+                .change-value {
+                    align-items: center;
+                    color: var(--accent-color);
+                    display: flex;
+                    gap: 0.4rem;
+
+                    .arrow {
+                        color: $text-mid;
+                    }
+
+                    img {
+                        image-rendering: pixelated;
+                    }
+                }
+            }
+        }
+
         .details {
             border-top: 1px solid $border-subtle;
             padding: 1rem 1.5rem;

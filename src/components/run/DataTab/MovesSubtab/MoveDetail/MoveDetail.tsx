@@ -150,7 +150,10 @@ const MoveDetail: React.FC<MoveDetailProps> = ({
                                                             height={
                                                                 BADGE_HEIGHT
                                                             }
-                                                            type={change.before}
+                                                            type={
+                                                                change.before ??
+                                                                ''
+                                                            }
                                                             width={BADGE_WIDTH}
                                                         />
                                                         <span
@@ -168,8 +171,10 @@ const MoveDetail: React.FC<MoveDetailProps> = ({
                                                             width={BADGE_WIDTH}
                                                         />
                                                     </>
-                                                ) : (
+                                                ) : change.before ? (
                                                     `${change.before} → ${change.after}`
+                                                ) : (
+                                                    change.after
                                                 )}
                                             </span>
                                         </li>

@@ -613,11 +613,14 @@ export type MoveData = {
     valuesByGeneration: MoveValuesByGeneration[];
 };
 
-// One field-level difference between a move's vanilla and game-specific
-// values, for display in a "what changed" UI (e.g. a ROM hack's rebalance).
-export type MoveChange = {
+// One field-level difference between a move's or Pokémon's vanilla and
+// game-specific values, for display in a "what changed" UI (e.g. a ROM
+// hack's rebalance). `before` is omitted when `after` already stands
+// alone (e.g. a stat's signed delta), rendered without a "before -> after"
+// pair.
+export type DataChange = {
     label: string;
-    before: string;
+    before?: string;
     after: string;
 };
 

@@ -12,12 +12,20 @@ clicking a Pokémon within it selects that species — omitted entirely
 for species with no evolutions (see `EvolutionLine.md`), and
 `StatsChart` renders a full-width section showing its base stats as a
 horizontal bar chart (omitted entirely when unset — see
-`StatsChart.md`). A final full-width section holds
+`StatsChart.md`). A full-width section below that holds
 two tabs, "Learnset" and "Locations": clicking either tab's label
 switches the content below between the species' clickable learnset and
 every wild location it can be found in, sorted by minimum encounter
 level, with locations whose encounter is already used (caught or
-missed) in the run highlighted red.
+missed) in the run highlighted red. A final section, for a game whose
+data is a vanilla-plus-overrides diff, lists a "Changes" section showing
+how the species differs from vanilla — a Types change renders as
+before/after type badges rather than plain text, matching the type
+badges shown in `PokemonSummary`, and every changed base stat is
+combined into a single "Stats" row listing each one's abbreviated name
+and signed delta (e.g. "Atk +5, Spe -3", matching the abbreviations
+`NatureHelpers.getNatureEffect` already shows elsewhere) rather than a
+separate row per stat.
 
 ## Props
 
@@ -70,6 +78,11 @@ missed) in the run highlighted red.
   `game`'s splits and locations, resolved via `EncounterHelpers` and
   rendered with `LocationsList` (along with `usedLocations`) when
   `activeDetailTab` is `'locations'`
+- `changes` — how the species differs from vanilla at `game.generation`
+  (types, each ability slot, a combined "Stats" entry for every changed
+  base stat, catch rate), resolved via `PokemonHelpers`; undefined for a
+  game whose Pokémon aren't overridden or a species with no overridden
+  differences
 
 ## Handlers
 
@@ -78,4 +91,5 @@ missed) in the run highlighted red.
 ## SCSS Variable Dependencies
 
 - `--accent-color` — the active game's accent color, expected to be
-  set by a parent; used to highlight the active details tab
+  set by a parent; used to highlight the active details tab and each
+  changed value in the Changes section
