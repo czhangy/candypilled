@@ -85,7 +85,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
                 game.version,
                 STARTER_LEVEL
             ),
-            nature: Nature.Unknown,
+            nature: Nature.Adamant,
             slug: defaultSpecies,
             status: PokemonStatus.Alive,
         });
