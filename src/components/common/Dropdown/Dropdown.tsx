@@ -29,11 +29,14 @@ const Dropdown: React.FC<DropdownProps> = ({
     // -------------------------------------------------------------------------
 
     const MENU_GAP = 5;
+    const MENU_MAX_HEIGHT = 224;
 
     type MenuPlacement = {
         accentColor: string;
+        bottom?: number;
         left: number;
-        top: number;
+        maxHeight: number;
+        top?: number;
         width: number;
     };
 
@@ -131,10 +134,22 @@ const Dropdown: React.FC<DropdownProps> = ({
             const accentColor =
                 getComputedStyle(trigger).getPropertyValue('--accent-color');
 
+            const spaceBelow = window.innerHeight - rect.bottom - MENU_GAP;
+            const spaceAbove = rect.top - MENU_GAP;
+            const openUpward =
+                spaceBelow < MENU_MAX_HEIGHT && spaceAbove > spaceBelow;
+
             setMenuPlacement({
                 accentColor,
+                bottom: openUpward
+                    ? window.innerHeight - rect.top + MENU_GAP
+                    : undefined,
                 left: rect.left,
-                top: rect.bottom + MENU_GAP,
+                maxHeight: Math.min(
+                    MENU_MAX_HEIGHT,
+                    openUpward ? spaceAbove : spaceBelow
+                ),
+                top: openUpward ? undefined : rect.bottom + MENU_GAP,
                 width: rect.width,
             });
         };
@@ -216,7 +231,9 @@ const Dropdown: React.FC<DropdownProps> = ({
                         style={
                             {
                                 '--accent-color': menuPlacement.accentColor,
+                                bottom: menuPlacement.bottom,
                                 left: menuPlacement.left,
+                                maxHeight: menuPlacement.maxHeight,
                                 top: menuPlacement.top,
                                 width: menuPlacement.width,
                             } as React.CSSProperties
