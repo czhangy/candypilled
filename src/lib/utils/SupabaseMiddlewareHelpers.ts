@@ -6,7 +6,7 @@ export default class SupabaseMiddlewareHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    /** Refreshes the Supabase session cookie and redirects unauthenticated requests to /sign-in. */
+    /** Refreshes the Supabase session cookie and redirects unauthenticated requests to /. */
     static async updateSession(request: NextRequest): Promise<NextResponse> {
         let response = NextResponse.next({ request });
 
@@ -35,12 +35,14 @@ export default class SupabaseMiddlewareHelpers {
 
         const isPublicRoute =
             request.nextUrl.pathname === '/' ||
-            request.nextUrl.pathname.startsWith('/sign-in') ||
-            request.nextUrl.pathname.startsWith('/auth/callback');
+            request.nextUrl.pathname.startsWith('/auth/callback') ||
+            request.nextUrl.pathname.startsWith('/types') ||
+            request.nextUrl.pathname.startsWith('/natures') ||
+            request.nextUrl.pathname.startsWith('/credits');
 
         if (!user && !isPublicRoute) {
             const url = request.nextUrl.clone();
-            url.pathname = '/sign-in';
+            url.pathname = '/';
             return NextResponse.redirect(url);
         }
 

@@ -18,17 +18,12 @@ const CreditsPage: React.FC = () => {
 
     const CREDIT_GROUPS: CreditGroup[] = [
         {
-            title: 'Architecture',
+            title: 'Inspiration',
             credits: [
                 {
-                    name: 'Supabase',
-                    description: 'Postgres DB and Google-based authentication',
-                    url: 'https://supabase.com/',
-                },
-                {
-                    name: 'Vercel',
-                    description: 'Hosting and deployment',
-                    url: 'https://vercel.com/',
+                    name: 'Nuzlocke.app',
+                    description: 'The original Nuzlocke tracker',
+                    url: 'https://nuzlocke.app',
                 },
             ],
         },
@@ -79,12 +74,17 @@ const CreditsPage: React.FC = () => {
             ],
         },
         {
-            title: 'Inspiration',
+            title: 'Architecture',
             credits: [
                 {
-                    name: 'Nuzlocke.app',
-                    description: 'The original Nuzlocke tracker',
-                    url: 'https://nuzlocke.app',
+                    name: 'Supabase',
+                    description: 'Postgres DB and Google-based authentication',
+                    url: 'https://supabase.com/',
+                },
+                {
+                    name: 'Vercel',
+                    description: 'Hosting and deployment',
+                    url: 'https://vercel.com/',
                 },
             ],
         },

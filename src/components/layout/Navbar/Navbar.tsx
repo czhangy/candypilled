@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
 
     const handleSignOutClick = async (): Promise<void> => {
         await SessionHelpers.signOut();
-        router.push('/sign-in');
+        router.push('/');
     };
 
     // -------------------------------------------------------------------------
@@ -107,11 +107,20 @@ const Navbar: React.FC = () => {
                     .filter(Boolean)
                     .join(' ')}
             >
-                <li>
-                    <Link href="/runs" onClick={handleClose}>
-                        Runs
-                    </Link>
-                </li>
+                {session && (
+                    <li>
+                        <Link href="/runs" onClick={handleClose}>
+                            Runs
+                        </Link>
+                    </li>
+                )}
+                {session && (
+                    <li>
+                        <Link href="/settings" onClick={handleClose}>
+                            Settings
+                        </Link>
+                    </li>
+                )}
                 <li>
                     <Link href="/types" onClick={handleClose}>
                         Types
@@ -122,18 +131,13 @@ const Navbar: React.FC = () => {
                         Natures
                     </Link>
                 </li>
-                {hallOfFameEntries.length > 0 && (
+                {session && hallOfFameEntries.length > 0 && (
                     <li>
                         <Link href="/hof" onClick={handleClose}>
                             Hall of Fame
                         </Link>
                     </li>
                 )}
-                <li>
-                    <Link href="/settings" onClick={handleClose}>
-                        Settings
-                    </Link>
-                </li>
                 <li>
                     <Link href="/credits" onClick={handleClose}>
                         Credits
