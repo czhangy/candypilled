@@ -3,6 +3,7 @@
 import { useEffect, useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
+import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { Encounter, Game, Location, Run } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -21,6 +22,7 @@ type SplitTabProps = {
     onSelectLocation: (location: string) => void;
     onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
+    onSelectSplit: (splitName: string) => void;
     onSelectTrainer: (battleKey: string) => void;
     onToggleSplitComplete: (splitName: string) => void;
     run: Run;
@@ -37,6 +39,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
     onSelectLocation,
     onSelectMove,
     onSelectSpecies,
+    onSelectSplit,
     onSelectTrainer,
     onToggleSplitComplete,
     run,
@@ -72,6 +75,15 @@ const SplitTab: React.FC<SplitTabProps> = ({
     const badge = `/badges/${game.badgeAssetFolder}/${StringHelpers.toSlug(currentSplitName ?? '')}.png`;
     const isSplitCompleted =
         !!currentSplitName && run.completedSplits.includes(currentSplitName);
+    const currentSplitIndex = game.splits.findIndex(
+        (split) => split.name === currentSplitName
+    );
+    const previousSplitName =
+        currentSplitIndex > 0 ? game.splits[currentSplitIndex - 1].name : null;
+    const nextSplitName =
+        currentSplitIndex !== -1 && currentSplitIndex < game.splits.length - 1
+            ? game.splits[currentSplitIndex + 1].name
+            : null;
 
     // -------------------------------------------------------------------------
     // EFFECTS
@@ -204,6 +216,18 @@ const SplitTab: React.FC<SplitTabProps> = ({
         }
     };
 
+    const handlePreviousSplitClick = (): void => {
+        if (previousSplitName) {
+            onSelectSplit(previousSplitName);
+        }
+    };
+
+    const handleNextSplitClick = (): void => {
+        if (nextSplitName) {
+            onSelectSplit(nextSplitName);
+        }
+    };
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -309,6 +333,40 @@ const SplitTab: React.FC<SplitTabProps> = ({
                     >
                         {isSplitCompleted ? 'SPLIT COMPLETED' : 'CLEAR SPLIT'}
                     </button>
+                    <div className={styles['split-nav']}>
+                        <button
+                            className={styles['split-nav-button']}
+                            disabled={!previousSplitName}
+                            onClick={handlePreviousSplitClick}
+                            type="button"
+                        >
+                            <span
+                                className={[
+                                    styles['split-nav-icon'],
+                                    styles['split-nav-icon--previous'],
+                                ].join(' ')}
+                            >
+                                <ChevronIcon />
+                            </span>
+                            Prev
+                        </button>
+                        <button
+                            className={styles['split-nav-button']}
+                            disabled={!nextSplitName}
+                            onClick={handleNextSplitClick}
+                            type="button"
+                        >
+                            Next
+                            <span
+                                className={[
+                                    styles['split-nav-icon'],
+                                    styles['split-nav-icon--next'],
+                                ].join(' ')}
+                            >
+                                <ChevronIcon />
+                            </span>
+                        </button>
+                    </div>
                 </nav>
                 <div className={styles.locations}>
                     {currentSplit?.locations.map((location, index) => (
