@@ -1,6 +1,5 @@
 import Image from 'next/image';
-import Tooltip from '@/components/common/Tooltip/Tooltip';
-import { BattlePokemon, CaughtPokemon, Game, Run } from '@/lib/static/types';
+import { BattlePokemon, Game, Run } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SwitchInHelpers from '@/lib/utils/SwitchInHelpers';
@@ -13,7 +12,10 @@ type TeamSelectPanelProps = {
     run: Run;
     selectedBattle?: string;
     selectedMemberIndex?: string;
-    target?: CaughtPokemon;
+    // The player's currently selected attacker — a caught box Pokémon or a
+    // tag partner's team member — whose fainting is what triggers the
+    // AI's switch-in decision being predicted here.
+    target?: BattlePokemon;
 };
 
 const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
@@ -139,12 +141,7 @@ const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
                                 />
                                 {switchInRanks[index] !== undefined && (
                                     <span className={styles['switch-in-badge']}>
-                                        <Tooltip
-                                            position="right"
-                                            text={`Predicted switch-in order: ${switchInRanks[index]}`}
-                                        >
-                                            {switchInRanks[index]}
-                                        </Tooltip>
+                                        {switchInRanks[index]}
                                     </span>
                                 )}
                             </button>

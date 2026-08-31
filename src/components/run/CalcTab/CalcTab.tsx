@@ -32,6 +32,8 @@ import styles from './CalcTab.module.scss';
 import DamageResultsPanel from './DamageResultsPanel/DamageResultsPanel';
 import FieldEffectsPanel from './FieldEffectsPanel/FieldEffectsPanel';
 import PokemonPanel from './PokemonPanel/PokemonPanel';
+import TagSelectPanel from './TagSelectPanel/TagSelectPanel';
+import TagTeamSelectPanel from './TagTeamSelectPanel/TagTeamSelectPanel';
 import TeamSelectPanel from './TeamSelectPanel/TeamSelectPanel';
 
 type CalcTabProps = {
@@ -430,6 +432,12 @@ const CalcTab: React.FC<CalcTabProps> = ({
     const [selectedLocation, setSelectedLocation] = useState(
         getFirstLivingLocation
     );
+    const [selectedTagPartner, setSelectedTagPartner] = useState<
+        string | undefined
+    >(undefined);
+    const [selectedTagMemberIndex, setSelectedTagMemberIndex] = useState<
+        string | undefined
+    >(undefined);
     const [selectedMemberIndex, setSelectedMemberIndex] = useState('0');
     const [prevSelectedBattle, setPrevSelectedBattle] = useState(
         () => selectedBattle ?? getFirstBattleKey()
@@ -459,6 +467,15 @@ const CalcTab: React.FC<CalcTabProps> = ({
     const caught = run.caughtPokemon.find(
         (pokemon) => pokemon.location === selectedLocation
     );
+    const tagPartnerTeam = BattleHelpers.getTagPartnerTeam(
+        game,
+        selectedTagPartner,
+        run.starter
+    );
+    const tagPartnerMon =
+        selectedTagMemberIndex !== undefined
+            ? tagPartnerTeam[Number(selectedTagMemberIndex)]
+            : undefined;
     const team = BattleHelpers.getSelectedTeam(
         game,
         effectiveSelectedBattle,
@@ -494,7 +511,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
           })
         : undefined;
 
-    const playerInput: CalcPokemonInput | null = caught
+    const playerInput: CalcPokemonInput | null = attacker.speciesSlug
         ? {
               abilityName: attacker.abilityName,
               boosts: attacker.boosts,
@@ -603,10 +620,53 @@ const CalcTab: React.FC<CalcTabProps> = ({
     // EFFECTS
     // -------------------------------------------------------------------------
 
-    // On caught changing — the previously loaded ability/nature/level/IVs/
-    // EVs/moves belonged to a different (or no) Pokémon; caught is derived
-    // from the selectedLocation state this effect doesn't itself own.
+    // On caught or tagPartnerMon changing — the previously loaded
+    // ability/nature/level/IVs/EVs/moves belonged to a different (or no)
+    // Pokémon. A selected tag partner member always takes precedence over
+    // the box, since selecting either one clears the other's selection.
     useEffect(() => {
+        if (tagPartnerMon) {
+            dispatchAttacker({
+                type: 'LOAD',
+                abilityName:
+                    (tagPartnerMon.ability &&
+                        AbilityHelpers.getAbilityData(tagPartnerMon.ability)
+                            ?.name) ??
+                    tagPartnerMon.ability ??
+                    '',
+                evs: StatHelpers.normalizeStats(tagPartnerMon.evs, 0),
+                gender: tagPartnerMon.gender,
+                heldItem:
+                    (tagPartnerMon.heldItem &&
+                        ItemHelpers.getHeldItemData(
+                            game.dataSource,
+                            tagPartnerMon.heldItem
+                        )?.name) ??
+                    tagPartnerMon.heldItem ??
+                    '',
+                ivs: StatHelpers.normalizeStats(tagPartnerMon.ivs, MAX_IV),
+                level: tagPartnerMon.level,
+                moves: padMoves(
+                    (
+                        tagPartnerMon.moves ??
+                        PokemonHelpers.getMovesAtLevel(
+                            game.dataSource,
+                            tagPartnerMon.slug,
+                            game.version,
+                            tagPartnerMon.level
+                        )
+                    ).map(
+                        (slug) =>
+                            MoveHelpers.getMoveData(game.dataSource, slug)
+                                ?.name ?? slug
+                    )
+                ),
+                nature: tagPartnerMon.nature ?? Object.values(Nature)[0],
+                speciesSlug: tagPartnerMon.slug,
+            });
+            return;
+        }
+
         if (!caught) {
             dispatchAttacker({ type: 'CLEAR' });
             return;
@@ -641,7 +701,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
             nature: caught.nature ?? Object.values(Nature)[0],
             speciesSlug: caught.slug,
         });
-    }, [caught, game.dataSource, game.generation]);
+    }, [caught, tagPartnerMon, game.dataSource, game.generation, game.version]);
 
     // On mon changing — the previously loaded ability/status/stat stages
     // belonged to a different (or no) team member.
@@ -691,6 +751,26 @@ const CalcTab: React.FC<CalcTabProps> = ({
     // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
+
+    // Selecting a box Pokémon takes the attacker slot back from whichever
+    // tag partner member was previously selected, since only one source
+    // feeds the attacker at a time.
+    const handleSelectBoxPokemon = (location: string): void => {
+        setSelectedLocation(location);
+        setSelectedTagMemberIndex(undefined);
+    };
+
+    const handleSelectTagPartner = (battleKey: string): void => {
+        setSelectedTagPartner(battleKey);
+        setSelectedTagMemberIndex(undefined);
+    };
+
+    // Selecting a tag partner's team member takes the attacker slot back
+    // from whichever box Pokémon was previously selected.
+    const handleSelectTagPartnerMember = (index: string): void => {
+        setSelectedTagMemberIndex(index);
+        setSelectedLocation('');
+    };
 
     const handleAttackerAbilityChange = (value: string): void => {
         dispatchAttacker({ type: 'SET_ABILITY', abilityName: value });
@@ -909,9 +989,22 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     dataSource={game.dataSource}
                     enemySpeed={trainerSpeed}
                     generation={game.generation}
-                    onSelectPokemon={setSelectedLocation}
+                    onSelectPokemon={handleSelectBoxPokemon}
                     run={run}
                     selectedLocation={selectedLocation}
+                />
+                <TagSelectPanel
+                    game={game}
+                    onSelectTagPartner={handleSelectTagPartner}
+                    selectedTagPartner={selectedTagPartner}
+                />
+                <TagTeamSelectPanel
+                    enemySpeed={trainerSpeed}
+                    game={game}
+                    onSelectMember={handleSelectTagPartnerMember}
+                    selectedMemberIndex={selectedTagMemberIndex}
+                    selectedTagPartner={selectedTagPartner}
+                    starter={run.starter}
                 />
             </div>
             <FieldEffectsPanel
@@ -957,7 +1050,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     run={run}
                     selectedBattle={effectiveSelectedBattle}
                     selectedMemberIndex={selectedMemberIndex}
-                    target={caught}
+                    target={caught ?? tagPartnerMon}
                 />
                 <BattleSelectPanel
                     game={game}
