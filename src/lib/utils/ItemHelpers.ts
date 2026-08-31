@@ -1,4 +1,9 @@
-import { GameDataSource, ItemData } from '@/lib/static/types';
+import {
+    GameDataSource,
+    ItemData,
+    ItemValuesByGeneration,
+} from '@/lib/static/types';
+import GenerationHelpers from '@/lib/utils/GenerationHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 export default class ItemHelpers {
@@ -41,6 +46,21 @@ export default class ItemHelpers {
     static isDangerousItem(dataSource: GameDataSource, slug: string): boolean {
         return (
             ItemHelpers.getHeldItemData(dataSource, slug)?.isDangerous ?? false
+        );
+    }
+
+    /** The values slug had as of generation in dataSource, or undefined if no held item matches. */
+    static getHeldItemForGeneration(
+        dataSource: GameDataSource,
+        slug: string,
+        generation: number
+    ): ItemValuesByGeneration | undefined {
+        const item = ItemHelpers.getHeldItemData(dataSource, slug);
+        if (!item) return undefined;
+
+        return GenerationHelpers.resolveGeneration(
+            item.valuesByGeneration,
+            generation
         );
     }
 }

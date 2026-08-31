@@ -50,22 +50,17 @@ const fetchAbilityList = async (): Promise<NamedApiResource[]> => {
     return body.results as NamedApiResource[];
 };
 
-type RawEffectEntry = {
-    effect: string;
+type RawFlavorTextEntry = {
+    flavor_text: string;
     language: { name: string };
-};
-
-type RawEffectChange = {
     version_group: { name: string };
-    effect_entries: RawEffectEntry[];
 };
 
 type RawAbility = {
     name: string;
     generation: { name: string };
     is_main_series: boolean;
-    effect_entries: RawEffectEntry[];
-    effect_changes: RawEffectChange[];
+    flavor_text_entries: RawFlavorTextEntry[];
 };
 
 const fetchAbility = async (
@@ -81,47 +76,46 @@ const fetchAbility = async (
     return (await response.json()) as RawAbility;
 };
 
-const toEnglishEffect = (entries: RawEffectEntry[]): string | undefined =>
-    entries.find((entry) => entry.language.name === 'en')?.effect;
-
 // PokeAPI resource URLs end in "/{id}/", e.g. ".../ability/65/".
 const toResourceId = (url: string): number =>
     Number(url.split('/').filter(Boolean).pop());
 
-// PokeAPI's `effect_changes` entries describe the effect text that applied
-// UP TO the listed version group, with the top-level `effect_entries`
-// holding the current text. This mirrors how `past_values` is interpreted in
-// moves.ts, converting that into ascending "applies from generation N
-// onward" segments.
+// Unlike an ability's `effect_entries`, which is a single latest-generation
+// description that freely mentions moves regardless of when they were
+// introduced (e.g. Suction Cups' current text cites Circle Throw and Dragon
+// Tail, both Generation V moves, despite Suction Cups dating to Generation
+// III), `flavor_text_entries` is genuinely per version-group official game
+// text, so it stays accurate for whichever generation is being displayed.
+// This keeps the first English entry seen for each generation and lets it
+// apply forward until the next generation with different text, mirroring
+// moves.ts's buildDescriptionTimeline.
 const buildValuesByGeneration = (
     ability: RawAbility,
     versionGroupGenerations: Map<string, number>
 ): AbilityValuesByGeneration[] => {
-    const currentEffect = toEnglishEffect(ability.effect_entries) ?? '';
-
-    const pastEntries = ability.effect_changes
-        .map((change) => ({
+    const englishEntries = ability.flavor_text_entries
+        .filter((entry) => entry.language.name === 'en')
+        .map((entry) => ({
             generation:
-                versionGroupGenerations.get(change.version_group.name) ?? 1,
-            effect: toEnglishEffect(change.effect_entries) ?? currentEffect,
+                versionGroupGenerations.get(entry.version_group.name) ?? 1,
+            effect: entry.flavor_text.replace(/[\n\f]+/g, ' '),
         }))
         .sort((a, b) => a.generation - b.generation);
 
-    const segments: AbilityValuesByGeneration[] = pastEntries.map(
-        (entry, index) => ({
-            fromGeneration:
-                index === 0 ? 1 : pastEntries[index - 1].generation + 1,
+    const segments: AbilityValuesByGeneration[] = [];
+    for (const entry of englishEntries) {
+        const previous = segments[segments.length - 1];
+        if (previous?.fromGeneration === entry.generation) continue;
+
+        segments.push({
+            fromGeneration: entry.generation,
             effect: entry.effect,
-        })
-    );
+        });
+    }
 
-    const lastEntry = pastEntries[pastEntries.length - 1];
-    segments.push({
-        fromGeneration: lastEntry ? lastEntry.generation + 1 : 1,
-        effect: currentEffect,
-    });
-
-    return segments;
+    // A handful of very recently added abilities have no English flavor
+    // text yet, so fall back to an empty segment rather than an empty array.
+    return segments.length > 0 ? segments : [{ fromGeneration: 1, effect: '' }];
 };
 
 export const fetchAbilities = async (): Promise<void> => {

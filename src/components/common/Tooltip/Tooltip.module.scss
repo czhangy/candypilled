@@ -14,13 +14,15 @@
     border: 1px solid $border-subtle;
     border-radius: 0.25rem;
     color: $foreground;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     letter-spacing: 0;
-    padding: 0.2rem 0.4rem;
+    max-width: 16rem;
+    padding: 0.35rem 0.5rem;
     pointer-events: none;
     position: fixed;
+    text-align: center;
     text-transform: none;
-    white-space: nowrap;
+    white-space: normal;
     z-index: 1001;
 
     &--center {

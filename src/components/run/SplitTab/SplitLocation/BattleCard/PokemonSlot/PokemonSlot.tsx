@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from 'react';
 import Image from 'next/image';
+import Tooltip from '@/components/common/Tooltip/Tooltip';
 import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
 import { MIN_IV } from '@/lib/static/constants';
 import { BattlePokemon, GameDataSource } from '@/lib/static/types';
@@ -91,10 +92,21 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     const heldItemSprite = heldItemSlug
         ? ItemHelpers.getHeldItemSprite(dataSource, heldItemSlug)
         : undefined;
+    const heldItemDescription = heldItemSlug
+        ? ItemHelpers.getHeldItemForGeneration(
+              dataSource,
+              heldItemSlug,
+              generation
+          )?.description
+        : undefined;
     const types = displaySlug ? getTypes(displaySlug) : [];
     const abilitySlug = pokemon?.ability;
     const ability = abilitySlug
         ? AbilityHelpers.getAbilityData(abilitySlug)?.name
+        : undefined;
+    const abilityFlavorText = abilitySlug
+        ? AbilityHelpers.getAbilityForGeneration(abilitySlug, generation)
+              ?.effect
         : undefined;
     const highlightDangerous =
         !hofDisplay && !(settings['hide-dangerous'] ?? false);
@@ -160,6 +172,101 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
             </div>
         </>
     );
+    const isItemAndMovesReadOnly = isReadOnly && !hofDisplay;
+    // Even without a held item, the item slot must stay clickable in HOF
+    // display mode so one can be assigned; elsewhere an item button is only
+    // shown once a held item actually exists.
+    const canClickItem = !isItemAndMovesReadOnly && (!!heldItem || hofDisplay);
+    const heldItemContent = canClickItem ? (
+        <button
+            className={[
+                styles['ability-button'],
+                styles['held-item'],
+                highlightDangerous &&
+                    heldItemSlug &&
+                    ItemHelpers.isDangerousItem(dataSource, heldItemSlug) &&
+                    styles['ability-button--dangerous'],
+            ]
+                .filter(Boolean)
+                .join(' ')}
+            onClick={() => onSelectItem?.(heldItemSlug ?? '')}
+            type="button"
+        >
+            {heldItemSprite && (
+                <Image
+                    alt={heldItem ?? ''}
+                    height={ITEM_ICON_SIZE}
+                    src={heldItemSprite}
+                    width={ITEM_ICON_SIZE}
+                />
+            )}
+            {heldItem ?? '-'}
+        </button>
+    ) : heldItem ? (
+        <span
+            className={[
+                styles['ability-button'],
+                styles['ability-button--readonly'],
+                styles['held-item'],
+                highlightDangerous &&
+                    heldItemSlug &&
+                    ItemHelpers.isDangerousItem(dataSource, heldItemSlug) &&
+                    styles['ability-button--dangerous'],
+            ]
+                .filter(Boolean)
+                .join(' ')}
+        >
+            {heldItemSprite && (
+                <Image
+                    alt={heldItem}
+                    height={ITEM_ICON_SIZE}
+                    src={heldItemSprite}
+                    width={ITEM_ICON_SIZE}
+                />
+            )}
+            {heldItem}
+        </span>
+    ) : (
+        '-'
+    );
+    const abilityButtonContent = ability && (
+        <>
+            {isReadOnly ? (
+                <span
+                    className={[
+                        styles['ability-button'],
+                        styles['ability-button--readonly'],
+                        highlightDangerous &&
+                            AbilityHelpers.isDangerousAbility(
+                                abilitySlug as string
+                            ) &&
+                            styles['ability-button--dangerous'],
+                    ]
+                        .filter(Boolean)
+                        .join(' ')}
+                >
+                    {ability}
+                </span>
+            ) : (
+                <button
+                    className={[
+                        styles['ability-button'],
+                        highlightDangerous &&
+                            AbilityHelpers.isDangerousAbility(
+                                abilitySlug as string
+                            ) &&
+                            styles['ability-button--dangerous'],
+                    ]
+                        .filter(Boolean)
+                        .join(' ')}
+                    onClick={() => onSelectAbility?.(abilitySlug as string)}
+                    type="button"
+                >
+                    {ability}
+                </button>
+            )}
+        </>
+    );
     const natureContent = pokemon?.nature && (
         <>
             {pokemon.nature}
@@ -172,11 +279,6 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
         </>
     );
     const positionClass = styles[`pokemon-slot--${position}`];
-    const isItemAndMovesReadOnly = isReadOnly && !hofDisplay;
-    // Even without a held item, the item slot must stay clickable in HOF
-    // display mode so one can be assigned; elsewhere an item button is only
-    // shown once a held item actually exists.
-    const canClickItem = !isItemAndMovesReadOnly && (!!heldItem || hofDisplay);
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -218,105 +320,31 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
             )}
             <ul className={styles['pokemon-slot__metadata']}>
                 <li className={styles['pokemon-slot__metadata-item--accent']}>
-                    {canClickItem ? (
-                        <button
-                            className={[
-                                styles['ability-button'],
-                                styles['held-item'],
-                                highlightDangerous &&
-                                    heldItemSlug &&
-                                    ItemHelpers.isDangerousItem(
-                                        dataSource,
-                                        heldItemSlug
-                                    ) &&
-                                    styles['ability-button--dangerous'],
-                            ]
-                                .filter(Boolean)
-                                .join(' ')}
-                            onClick={() => onSelectItem?.(heldItemSlug ?? '')}
-                            type="button"
+                    {heldItemDescription ? (
+                        <Tooltip
+                            className={styles['ability-tooltip']}
+                            position="center"
+                            text={heldItemDescription}
                         >
-                            {heldItemSprite && (
-                                <Image
-                                    alt={heldItem ?? ''}
-                                    height={ITEM_ICON_SIZE}
-                                    src={heldItemSprite}
-                                    width={ITEM_ICON_SIZE}
-                                />
-                            )}
-                            {heldItem ?? '-'}
-                        </button>
-                    ) : heldItem ? (
-                        <span
-                            className={[
-                                styles['ability-button'],
-                                styles['ability-button--readonly'],
-                                styles['held-item'],
-                                highlightDangerous &&
-                                    heldItemSlug &&
-                                    ItemHelpers.isDangerousItem(
-                                        dataSource,
-                                        heldItemSlug
-                                    ) &&
-                                    styles['ability-button--dangerous'],
-                            ]
-                                .filter(Boolean)
-                                .join(' ')}
-                        >
-                            {heldItemSprite && (
-                                <Image
-                                    alt={heldItem}
-                                    height={ITEM_ICON_SIZE}
-                                    src={heldItemSprite}
-                                    width={ITEM_ICON_SIZE}
-                                />
-                            )}
-                            {heldItem}
-                        </span>
+                            {heldItemContent}
+                        </Tooltip>
                     ) : (
-                        '-'
+                        heldItemContent
                     )}
                 </li>
                 <li className={styles['pokemon-slot__metadata-item--ability']}>
-                    {ability ? (
-                        isReadOnly ? (
-                            <span
-                                className={[
-                                    styles['ability-button'],
-                                    styles['ability-button--readonly'],
-                                    highlightDangerous &&
-                                        AbilityHelpers.isDangerousAbility(
-                                            abilitySlug as string
-                                        ) &&
-                                        styles['ability-button--dangerous'],
-                                ]
-                                    .filter(Boolean)
-                                    .join(' ')}
-                            >
-                                {ability}
-                            </span>
-                        ) : (
-                            <button
-                                className={[
-                                    styles['ability-button'],
-                                    highlightDangerous &&
-                                        AbilityHelpers.isDangerousAbility(
-                                            abilitySlug as string
-                                        ) &&
-                                        styles['ability-button--dangerous'],
-                                ]
-                                    .filter(Boolean)
-                                    .join(' ')}
-                                onClick={() =>
-                                    onSelectAbility?.(abilitySlug as string)
-                                }
-                                type="button"
-                            >
-                                {ability}
-                            </button>
-                        )
-                    ) : (
+                    {!ability ? (
                         '-'
+                    ) : abilityFlavorText ? (
+                        <Tooltip
+                            className={styles['ability-tooltip']}
+                            position="center"
+                            text={abilityFlavorText}
+                        >
+                            {abilityButtonContent}
+                        </Tooltip>
+                    ) : (
+                        abilityButtonContent
                     )}
                 </li>
                 <li className={styles['pokemon-slot__metadata-item--nature']}>

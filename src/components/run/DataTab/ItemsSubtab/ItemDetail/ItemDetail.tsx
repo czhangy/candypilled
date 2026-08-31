@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { GameDataSource } from '@/lib/static/types';
-import GenerationHelpers from '@/lib/utils/GenerationHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import styles from './ItemDetail.module.scss';
 
@@ -26,12 +25,11 @@ const ItemDetail: React.FC<ItemDetailProps> = ({
     // -------------------------------------------------------------------------
 
     const itemData = ItemHelpers.getHeldItemData(dataSource, itemSlug);
-    const values = itemData
-        ? GenerationHelpers.resolveGeneration(
-              itemData.valuesByGeneration,
-              generation
-          )
-        : undefined;
+    const values = ItemHelpers.getHeldItemForGeneration(
+        dataSource,
+        itemSlug,
+        generation
+    );
 
     // -------------------------------------------------------------------------
     // MARKUP

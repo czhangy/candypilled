@@ -1,6 +1,43 @@
 @use '@/styles/constants' as *;
 @use '@/styles/mixins' as *;
 
+.move-tooltip {
+    display: block;
+    width: 100%;
+}
+
+.tooltip-stats {
+    align-items: center;
+    display: flex;
+    gap: 0.85rem;
+
+    .tooltip-stat {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+
+        .tooltip-stat-label {
+            @include uppercase-label;
+
+            font-size: 0.7rem;
+        }
+
+        .tooltip-stat-value {
+            align-items: center;
+            color: $foreground;
+            display: flex;
+            font-size: 0.9rem;
+            height: 1rem;
+            justify-content: center;
+
+            img {
+                image-rendering: pixelated;
+            }
+        }
+    }
+}
+
 .move-button {
     background: move-tile-background();
     border: none;

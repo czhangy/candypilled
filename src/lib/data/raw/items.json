@@ -2825,7 +2825,7 @@
         "valuesByGeneration": [
             {
                 "fromGeneration": 5,
-                "description": "A gem with a draconic essence.  When held, it strengthens the power of a Dragon-type move only once."
+                "description": "A gem with a draconic essence. When held, it strengthens the power of a Dragon-type move only once."
             }
         ]
     },
@@ -2863,7 +2863,7 @@
             },
             {
                 "fromGeneration": 5,
-                "description": "If held by a Pokémon,  it recovers from paralysis."
+                "description": "If held by a Pokémon, it recovers from paralysis."
             }
         ]
     },
@@ -3001,7 +3001,7 @@
             },
             {
                 "fromGeneration": 5,
-                "description": "If held by a Pokémon,  it heals the user by just 10 HP."
+                "description": "If held by a Pokémon, it heals the user by just 10 HP."
             }
         ]
     },
@@ -3141,7 +3141,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost Attack.",
         "introducedInGeneration": 3,
-        "isDangerous": false,
+        "isDangerous": true,
         "sprite": "/items/liechi-berry.png",
         "valuesByGeneration": [
             {
@@ -3164,7 +3164,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost Defense.",
         "introducedInGeneration": 3,
-        "isDangerous": false,
+        "isDangerous": true,
         "sprite": "/items/ganlon-berry.png",
         "valuesByGeneration": [
             {
@@ -3187,7 +3187,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost Speed.",
         "introducedInGeneration": 3,
-        "isDangerous": false,
+        "isDangerous": true,
         "sprite": "/items/salac-berry.png",
         "valuesByGeneration": [
             {
@@ -3210,7 +3210,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost Special Attack.",
         "introducedInGeneration": 3,
-        "isDangerous": false,
+        "isDangerous": true,
         "sprite": "/items/petaya-berry.png",
         "valuesByGeneration": [
             {
@@ -3233,7 +3233,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost Special Defense.",
         "introducedInGeneration": 3,
-        "isDangerous": false,
+        "isDangerous": true,
         "sprite": "/items/apicot-berry.png",
         "valuesByGeneration": [
             {
@@ -3256,7 +3256,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost critical hit ratio by two stages.",
         "introducedInGeneration": 3,
-        "isDangerous": false,
+        "isDangerous": true,
         "sprite": "/items/lansat-berry.png",
         "valuesByGeneration": [
             {
@@ -3279,7 +3279,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost a random stat by two stages.",
         "introducedInGeneration": 3,
-        "isDangerous": false,
+        "isDangerous": true,
         "sprite": "/items/starf-berry.png",
         "valuesByGeneration": [
             {
@@ -3302,7 +3302,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP to boost accuracy of next move by 20%. (Gen IV: Perfect accuracy)",
         "introducedInGeneration": 4,
-        "isDangerous": false,
+        "isDangerous": true,
         "sprite": "/items/micle-berry.png",
         "valuesByGeneration": [
             {
@@ -3321,7 +3321,7 @@
         "category": "in-a-pinch",
         "effect": "Held: Consumed at 1/4 max HP when using a move to go first.",
         "introducedInGeneration": 4,
-        "isDangerous": false,
+        "isDangerous": true,
         "sprite": "/items/custap-berry.png",
         "valuesByGeneration": [
             {
