@@ -445,6 +445,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                             onSelectLocation={handleLocationSelect}
                             onSelectMove={handleMoveLinkClick}
                             onSelectSpecies={handleSpeciesLinkClick}
+                            onSelectSplit={handleSplitSelect}
                             onSelectTrainer={handleTrainerLinkClick}
                             onToggleSplitComplete={handleSplitToggleComplete}
                             run={run}
