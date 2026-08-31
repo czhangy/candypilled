@@ -38,6 +38,7 @@ const DEX_RANGES: DexRange[] = [
     { generation: 2, start: 152, end: 251 },
     { generation: 3, start: 252, end: 386 },
     { generation: 4, start: 387, end: 493 },
+    { generation: 5, start: 494, end: 649 },
 ];
 
 // The national dex number of the last species introduced by the given
@@ -274,6 +275,7 @@ const SPRITE_VARIANTS: SpriteVariant[] = [
         label: 'HeartGold/SoulSilver',
         generation: 4,
     },
+    { id: 'black-white', label: 'Black/White', generation: 5 },
 ];
 
 const RUBY_SAPPHIRE_VARIANT = SPRITE_VARIANTS.find(

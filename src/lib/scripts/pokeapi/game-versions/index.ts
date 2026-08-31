@@ -2,8 +2,9 @@ import { GameVersion } from '@/lib/static/types';
 import { diamond } from './diamond';
 import { pearl } from './pearl';
 import { platinum } from './platinum';
+import { white } from './white';
 
-export const GAME_VERSIONS = [platinum, diamond, pearl];
+export const GAME_VERSIONS = [platinum, diamond, pearl, white];
 
 /** Looks up a GameVersion by id, throwing if none matches. */
 export const getGameVersion = (id: string): GameVersion => {
