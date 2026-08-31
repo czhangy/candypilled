@@ -1,0 +1,33 @@
+@use '@/styles/constants' as *;
+
+.tag-partner-button {
+    background: $background;
+    border: 3px solid $border-subtle;
+    border-radius: 50%;
+    bottom: 0.5rem;
+    cursor: pointer;
+    left: 0.5rem;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    transition: border-color 0.15s ease;
+    z-index: 1;
+
+    @media (hover: hover) {
+        &:hover {
+            border-color: var(--accent-color);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+
+    &--selected {
+        border-color: var(--accent-color);
+    }
+
+    img {
+        display: block;
+    }
+}

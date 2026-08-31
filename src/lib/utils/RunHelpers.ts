@@ -16,6 +16,7 @@ export default class RunHelpers {
     private static readonly EMPTY_SNAPSHOT: GameRun[] = [];
     private static readonly listeners = new Set<() => void>();
     private static cachedSnapshot: GameRun[] = RunHelpers.EMPTY_SNAPSHOT;
+    private static isHydratedSnapshot = false;
 
     private static notifyListeners(): void {
         RunHelpers.listeners.forEach((listener) => listener());
@@ -52,6 +53,16 @@ export default class RunHelpers {
         return RunHelpers.EMPTY_SNAPSHOT;
     }
 
+    /** Whether hydrate() has completed at least once, so an empty getSnapshot() can be trusted as "no run" rather than "not loaded yet". */
+    static getIsHydratedSnapshot(): boolean {
+        return RunHelpers.isHydratedSnapshot;
+    }
+
+    /** The isHydrated snapshot to use during server rendering — always false, since hydrate() only ever runs client-side. */
+    static getServerIsHydratedSnapshot(): boolean {
+        return false;
+    }
+
     /**
      * Every location name whose encounter has already been used in run,
      * whether by catching a Pokémon there or by marking it missed.
@@ -75,6 +86,7 @@ export default class RunHelpers {
             game,
             run: bySlug.get(StringHelpers.toSlug(game.name)) ?? null,
         }));
+        RunHelpers.isHydratedSnapshot = true;
         RunHelpers.notifyListeners();
     }
 

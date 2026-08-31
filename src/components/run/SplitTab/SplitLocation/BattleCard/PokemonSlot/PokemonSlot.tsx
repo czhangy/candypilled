@@ -21,6 +21,10 @@ type PokemonSlotProps = {
     // ability, or nature (e.g. a saved Hall of Fame team).
     hofDisplay: boolean;
     isReadOnly: boolean;
+    // A tag partner's moves/items/ability are never a threat to the
+    // player's own team, so dangerous highlighting never applies here
+    // regardless of the hide-dangerous setting.
+    isTagPartner: boolean;
     onSelectAbility?: (slug: string) => void;
     onSelectItem?: (slug: string) => void;
     onSelectMove?: (slug: string) => void;
@@ -36,6 +40,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     generation,
     hofDisplay,
     isReadOnly,
+    isTagPartner,
     onSelectAbility,
     onSelectItem,
     onSelectMove,
@@ -109,7 +114,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
               ?.effect
         : undefined;
     const highlightDangerous =
-        !hofDisplay && !(settings['hide-dangerous'] ?? false);
+        !hofDisplay && !isTagPartner && !(settings['hide-dangerous'] ?? false);
     const moves =
         pokemon?.moves ??
         (pokemon

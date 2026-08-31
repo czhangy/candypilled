@@ -19771,6 +19771,52 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'pkmn-trainer-marley-tag': {
+        trainerClass: 'pkmn-trainer-marley',
+        name: 'Marley',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'arcanine',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 66,
+                        moves: [
+                            'flare-blitz',
+                            'close-combat',
+                            'crunch',
+                            'extreme-speed',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'starmie',
+                        ability: 'illuminate',
+                        level: 65,
+                        moves: ['hydro-pump', 'blizzard', 'thunder', 'psychic'],
+                        nature: Nature.Naive,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'sceptile',
+                        ability: 'unburden',
+                        gender: 'male',
+                        level: 65,
+                        moves: [
+                            'energy-ball',
+                            'dragon-pulse',
+                            'focus-blast',
+                            'endure',
+                        ],
+                        nature: Nature.Mild,
+                        ivs: 31,
+                    },
+                ],
+            },
+        ],
+    },
     'ace-trainer-micah': {
         trainerClass: 'ace-trainer-m',
         name: 'Micah',

@@ -16,6 +16,8 @@ type BattleCardProps = {
     battle: Battle;
     game: Game;
     generation: number;
+    isTagPartner?: boolean;
+    labelOverride?: string;
     onSelectAbility: (slug: string) => void;
     onSelectItem: (slug: string) => void;
     onSelectMove: (slug: string) => void;
@@ -30,6 +32,8 @@ const BattleCard: React.FC<BattleCardProps> = ({
     battle,
     game,
     generation,
+    isTagPartner,
+    labelOverride,
     onSelectAbility,
     onSelectItem,
     onSelectMove,
@@ -90,11 +94,12 @@ const BattleCard: React.FC<BattleCardProps> = ({
     return (
         <div className={styles['battle-card']}>
             <span className={styles.label}>
-                {battle.metadata.includes(BattleMetadata.Boss)
-                    ? 'Boss'
-                    : battle.metadata.includes(BattleMetadata.Miniboss)
-                      ? 'Miniboss'
-                      : 'Battle'}
+                {labelOverride ??
+                    (battle.metadata.includes(BattleMetadata.Boss)
+                        ? 'Boss'
+                        : battle.metadata.includes(BattleMetadata.Miniboss)
+                          ? 'Miniboss'
+                          : 'Battle')}
             </span>
             <div className={styles.content}>
                 <div className={styles['trainer-header']}>
@@ -177,6 +182,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                             generation={generation}
                                             hofDisplay={false}
                                             isReadOnly={false}
+                                            isTagPartner={!!isTagPartner}
                                             key={
                                                 pokemon
                                                     ? `${rowIndex}-${pokemon.slug}-${index}`
