@@ -12,7 +12,7 @@ import Tabs from '@/components/common/Tabs/Tabs';
 import { GAMES } from '@/lib/data/games';
 import { CaughtPokemon } from '@/lib/static/types';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
-import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
+import RunHelpers from '@/lib/utils/RunHelpers';
 import RunImportHelpers from '@/lib/utils/RunImportHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -64,9 +64,9 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     // -------------------------------------------------------------------------
 
     const gameRuns = useSyncExternalStore(
-        LocalStorageHelpers.subscribe,
-        LocalStorageHelpers.getSnapshot,
-        LocalStorageHelpers.getServerSnapshot
+        RunHelpers.subscribe,
+        RunHelpers.getSnapshot,
+        RunHelpers.getServerSnapshot
     );
 
     const router = useRouter();
@@ -304,7 +304,9 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         window.scrollTo({ top: 0 });
     };
 
-    const handleSplitToggleComplete = (splitName: string): void => {
+    const handleSplitToggleComplete = async (
+        splitName: string
+    ): Promise<void> => {
         if (!game || !run) return;
 
         const wasCompleted = run.completedSplits.includes(splitName);
@@ -323,7 +325,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
                   ]),
               ];
 
-        LocalStorageHelpers.saveRun(game, { ...run, completedSplits });
+        await RunHelpers.saveRun(game, { ...run, completedSplits });
 
         if (
             !wasCompleted &&
@@ -334,10 +336,10 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         }
     };
 
-    const handleWipeToggle = (): void => {
+    const handleWipeToggle = async (): Promise<void> => {
         if (!game || !run) return;
 
-        LocalStorageHelpers.saveRun(game, { ...run, wipe: !run.wipe });
+        await RunHelpers.saveRun(game, { ...run, wipe: !run.wipe });
     };
 
     const handleImportClick = (): void => {
@@ -348,13 +350,13 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         setIsImportModalOpen(false);
     };
 
-    const handleImportSave = (
+    const handleImportSave = async (
         importedPokemon: CaughtPokemon[],
         importedCompletedSplits: string[]
-    ): void => {
+    ): Promise<void> => {
         if (!game || !run) return;
 
-        LocalStorageHelpers.saveRun(
+        await RunHelpers.saveRun(
             game,
             RunImportHelpers.mergeImport(
                 run,

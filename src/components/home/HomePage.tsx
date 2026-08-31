@@ -1,9 +1,29 @@
+'use client';
+
+import { useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import SessionHelpers from '@/lib/utils/SessionHelpers';
 import styles from './HomePage.module.scss';
 import SpriteCarousel from './SpriteCarousel/SpriteCarousel';
 
 const HomePage: React.FC = () => {
+    // -------------------------------------------------------------------------
+    // HOOKS
+    // -------------------------------------------------------------------------
+
+    const session = useSyncExternalStore(
+        SessionHelpers.subscribe,
+        SessionHelpers.getSnapshot,
+        SessionHelpers.getServerSnapshot
+    );
+
+    // -------------------------------------------------------------------------
+    // RENDERING
+    // -------------------------------------------------------------------------
+
+    const loadHref = session ? '/runs' : '/sign-in';
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -22,7 +42,7 @@ const HomePage: React.FC = () => {
                     <div className={styles.text}>
                         <h1 className={styles.title}>Candypilled</h1>
                         <p className={styles.tagline}>A Nuzlocke tool.</p>
-                        <Link className={styles.load} href="/runs">
+                        <Link className={styles.load} href={loadHref}>
                             RUNS
                         </Link>
                     </div>

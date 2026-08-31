@@ -126,7 +126,8 @@
         z-index: 10;
 
         li {
-            a {
+            a,
+            .sign-out {
                 color: $text-mid;
                 display: block;
                 font-family: $font-mono;
@@ -144,6 +145,14 @@
                 @media (prefers-reduced-motion: reduce) {
                     transition: none;
                 }
+            }
+
+            .sign-out {
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: inherit;
+                width: 100%;
             }
         }
 

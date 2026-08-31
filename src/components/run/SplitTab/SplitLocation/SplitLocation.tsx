@@ -15,7 +15,6 @@ import {
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
-import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
@@ -190,7 +189,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         setSpeciesOverride(undefined);
     };
 
-    const handleAddPokemon = (
+    const handleAddPokemon = async (
         details: Pick<
             CaughtPokemon,
             | 'ability'
@@ -202,7 +201,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             | 'nature'
             | 'slug'
         >
-    ): void => {
+    ): Promise<void> => {
         const updatedRun: Run = {
             ...run,
             caughtPokemon: [
@@ -222,10 +221,10 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             ),
         };
 
-        LocalStorageHelpers.saveRun(game, updatedRun);
+        await RunHelpers.saveRun(game, updatedRun);
     };
 
-    const handleRemovePokemon = (): void => {
+    const handleRemovePokemon = async (): Promise<void> => {
         const updatedRun: Run = {
             ...run,
             caughtPokemon: run.caughtPokemon.filter(
@@ -233,10 +232,10 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             ),
         };
 
-        LocalStorageHelpers.saveRun(game, updatedRun);
+        await RunHelpers.saveRun(game, updatedRun);
     };
 
-    const handleToggleMissed = (): void => {
+    const handleToggleMissed = async (): Promise<void> => {
         const updatedRun: Run = {
             ...run,
             missedLocations: isMissed
@@ -246,7 +245,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                 : [...run.missedLocations, location.name],
         };
 
-        LocalStorageHelpers.saveRun(game, updatedRun);
+        await RunHelpers.saveRun(game, updatedRun);
     };
 
     // -------------------------------------------------------------------------

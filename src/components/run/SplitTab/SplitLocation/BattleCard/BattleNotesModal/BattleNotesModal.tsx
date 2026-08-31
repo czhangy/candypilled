@@ -39,8 +39,10 @@ const BattleNotesModal: React.FC<BattleNotesModalProps> = ({
         setNote(event.target.value);
     };
 
-    const handleSaveButtonClick = (requestClose: () => void): void => {
-        NotesHelpers.saveNote(game, battleKey, note);
+    const handleSaveButtonClick = async (
+        requestClose: () => void
+    ): Promise<void> => {
+        await NotesHelpers.saveNote(game, battleKey, note);
         requestClose();
     };
 

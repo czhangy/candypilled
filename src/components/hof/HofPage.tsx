@@ -41,12 +41,12 @@ const HofPage: React.FC = () => {
     // HANDLERS
     // -------------------------------------------------------------------------
 
-    const handleUpdateTeam = (
+    const handleUpdateTeam = async (
         game: string,
         attempt: number,
         team: CaughtPokemon[]
-    ): void => {
-        HallOfFameHelpers.updateEntryTeam(game, attempt, team);
+    ): Promise<void> => {
+        await HallOfFameHelpers.updateEntryTeam(game, attempt, team);
     };
 
     // -------------------------------------------------------------------------

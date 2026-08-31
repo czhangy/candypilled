@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { PokemonStatus } from '@/lib/static/enums';
 import { BoxView, CaughtPokemon, Game, Run } from '@/lib/static/types';
-import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
+import RunHelpers from '@/lib/utils/RunHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import styles from './BoxTab.module.scss';
 import PokemonBox from './PokemonBox/PokemonBox';
@@ -72,7 +72,9 @@ const BoxTab: React.FC<BoxTabProps> = ({
     // HANDLERS
     // -------------------------------------------------------------------------
 
-    const handleToggleStatus = (pokemon: CaughtPokemon): void => {
+    const handleToggleStatus = async (
+        pokemon: CaughtPokemon
+    ): Promise<void> => {
         const newStatus =
             pokemon.status === PokemonStatus.Dead
                 ? PokemonStatus.Alive
@@ -94,7 +96,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
             ),
         };
 
-        LocalStorageHelpers.saveRun(game, updatedRun);
+        await RunHelpers.saveRun(game, updatedRun);
         setView(newStatus === PokemonStatus.Dead ? 'dead' : 'alive');
     };
 
@@ -103,10 +105,10 @@ const BoxTab: React.FC<BoxTabProps> = ({
         onDeselectPokemon();
     };
 
-    const handleReorderPokemon = (
+    const handleReorderPokemon = async (
         fromLocation: string,
         toLocation: string
-    ): void => {
+    ): Promise<void> => {
         const fromIndex = run.caughtPokemon.findIndex(
             (pokemon) => pokemon.location === fromLocation
         );
@@ -127,7 +129,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
             caughtPokemon: reorderedPokemon,
         };
 
-        LocalStorageHelpers.saveRun(game, updatedRun);
+        await RunHelpers.saveRun(game, updatedRun);
     };
 
     // -------------------------------------------------------------------------

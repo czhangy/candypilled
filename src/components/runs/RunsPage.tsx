@@ -1,7 +1,7 @@
 'use client';
 
 import { useSyncExternalStore } from 'react';
-import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
+import RunHelpers from '@/lib/utils/RunHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import RunEntry from './RunEntry/RunEntry';
 import styles from './RunsPage.module.scss';
@@ -12,9 +12,9 @@ const RunsPage: React.FC = () => {
     // -------------------------------------------------------------------------
 
     const gameRuns = useSyncExternalStore(
-        LocalStorageHelpers.subscribe,
-        LocalStorageHelpers.getSnapshot,
-        LocalStorageHelpers.getServerSnapshot
+        RunHelpers.subscribe,
+        RunHelpers.getSnapshot,
+        RunHelpers.getServerSnapshot
     );
 
     // -------------------------------------------------------------------------
