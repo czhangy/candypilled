@@ -84,8 +84,24 @@ const REMOVED_IN_GENERATION: Record<string, number> = {
 
 // PokeAPI has no concept of "dangerous" items (ones that can end a run in a
 // single unlucky turn via a hard-to-play-around evasion/survival effect), so
-// this set is curated by hand rather than derived from the API.
-const DANGEROUS_ITEMS = new Set(['focus-band', 'bright-powder', 'lax-incense']);
+// this set is curated by hand rather than derived from the API. Includes
+// every "pinch berry" (PokeAPI's "in-a-pinch" item category) — a stat- or
+// turn-order-swinging berry that activates once its holder drops to low HP,
+// which can suddenly and unpredictably swing a fight.
+const DANGEROUS_ITEMS = new Set([
+    'focus-band',
+    'bright-powder',
+    'lax-incense',
+    'liechi-berry',
+    'ganlon-berry',
+    'salac-berry',
+    'petaya-berry',
+    'apicot-berry',
+    'lansat-berry',
+    'starf-berry',
+    'micle-berry',
+    'custap-berry',
+]);
 
 // PokeAPI's flavor/effect text uses a typographic apostrophe (’); this
 // project's copy uses a plain one throughout, so every string in the
