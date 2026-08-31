@@ -31,6 +31,9 @@ const SpriteCarousel: React.FC = () => {
         { name: 'turtwig', variant: 'platinum' },
         { name: 'chimchar', variant: 'platinum' },
         { name: 'piplup', variant: 'platinum' },
+        { name: 'snivy', variant: 'black-white' },
+        { name: 'tepig', variant: 'black-white' },
+        { name: 'oshawott', variant: 'black-white' },
     ];
     const FRAMES = [...SPRITES, SPRITES[0]];
     const PAUSE_DURATION_MS = 1500;
@@ -128,6 +131,7 @@ const SpriteCarousel: React.FC = () => {
                             <Image
                                 alt={sprite.name}
                                 height={SPRITE_SIZE}
+                                priority={position < SPRITES.length}
                                 src={src}
                                 width={SPRITE_SIZE}
                             />
