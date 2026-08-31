@@ -20,7 +20,6 @@
         "pokeapi:moves": "tsx src/lib/scripts/pokeapi/moves.ts",
         "pokeapi:items": "tsx src/lib/scripts/pokeapi/items.ts",
         "stitch-map": "tsx src/lib/scripts/assets/stitch-map.ts",
-        "box-sprites": "tsx src/lib/scripts/assets/download-box-sprites.ts",
         "prepare": "husky"
     },
     "lint-staged": {
