@@ -18,21 +18,4 @@
             color: $accent;
         }
     }
-
-    .link {
-        color: $text-dim;
-        transition: color 0.2s ease;
-
-        svg {
-            display: block;
-            height: 1.75rem;
-            width: 1.75rem;
-        }
-
-        @media (hover: hover) {
-            &:hover {
-                color: $accent;
-            }
-        }
-    }
 }

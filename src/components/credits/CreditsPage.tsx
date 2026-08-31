@@ -18,24 +18,37 @@ const CreditsPage: React.FC = () => {
 
     const CREDIT_GROUPS: CreditGroup[] = [
         {
+            title: 'Architecture',
+            credits: [
+                {
+                    name: 'Supabase',
+                    description: 'Postgres DB and Google-based authentication',
+                    url: 'https://supabase.com/',
+                },
+                {
+                    name: 'Vercel',
+                    description: 'Hosting and deployment',
+                    url: 'https://vercel.com/',
+                },
+            ],
+        },
+        {
             title: 'Data',
             credits: [
                 {
                     name: '@smogon/calc',
-                    description:
-                        'For supporting damage calculation out-of-the-box',
+                    description: 'Building damage calculations',
                     url: 'https://github.com/smogon/damage-calc',
                 },
                 {
                     name: 'DSPRE',
-                    description:
-                        'For making it possible to manually scrape battle data from DS ROMs',
+                    description: 'Scraping data and assets from ROMs',
                     url: 'https://github.com/Egor-n/DSPRE',
                 },
                 {
                     name: 'PokeAPI',
                     description:
-                        'For easy access to species, move, ability, item, and encounter data',
+                        'Curated species, move, ability, item, and encounter data',
                     url: 'https://pokeapi.co/',
                 },
             ],
@@ -45,22 +58,22 @@ const CreditsPage: React.FC = () => {
             credits: [
                 {
                     name: 'Bulbapedia',
-                    description: 'For overworld map images and logos',
+                    description: 'Game logos',
                     url: 'https://bulbapedia.bulbagarden.net/',
                 },
                 {
                     name: 'PokeAPI',
-                    description: 'For full sprites across generations',
+                    description: 'Battle sprites across generations',
                     url: 'https://pokeapi.co/',
                 },
                 {
                     name: 'pokesprite',
-                    description: 'For box and item sprites',
+                    description: 'Box and item sprites',
                     url: 'https://github.com/msikma/pokesprite',
                 },
                 {
                     name: 'Pokémon Showdown',
-                    description: 'For trainer sprites',
+                    description: 'Trainer sprites',
                     url: 'https://play.pokemonshowdown.com/sprites/trainers/',
                 },
             ],
@@ -70,8 +83,7 @@ const CreditsPage: React.FC = () => {
             credits: [
                 {
                     name: 'Nuzlocke.app',
-                    description:
-                        'For being the original Nuzlocke tracker that inspired me to make my own',
+                    description: 'The original Nuzlocke tracker',
                     url: 'https://nuzlocke.app',
                 },
             ],
