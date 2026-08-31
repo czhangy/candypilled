@@ -71,4 +71,23 @@ export default class NotesHelpers {
         NotesHelpers.cachedNotes[NotesHelpers.getCacheKey(game, battleKey)] =
             note;
     }
+
+    /** Deletes every saved note belonging to game. */
+    static async deleteNotesForGame(game: Game): Promise<void> {
+        const supabase = SupabaseBrowserHelpers.createClient();
+        const userId = await NotesHelpers.getUserId();
+        const gameSlug = StringHelpers.toSlug(game.name);
+
+        await supabase
+            .from('notes')
+            .delete()
+            .eq('user_id', userId)
+            .eq('game_slug', gameSlug);
+
+        NotesHelpers.cachedNotes = Object.fromEntries(
+            Object.entries(NotesHelpers.cachedNotes).filter(
+                ([key]) => !key.startsWith(`${gameSlug}::`)
+            )
+        );
+    }
 }

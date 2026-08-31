@@ -12,6 +12,7 @@ import { CaughtPokemon, Game, Run } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import HallOfFameHelpers from '@/lib/utils/HallOfFameHelpers';
+import NotesHelpers from '@/lib/utils/NotesHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
 import RunImportHelpers from '@/lib/utils/RunImportHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
@@ -183,6 +184,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     const handleReset = async (): Promise<void> => {
         await RunHelpers.deleteRun(game);
         await HallOfFameHelpers.deleteEntriesForGame(game);
+        await NotesHelpers.deleteNotesForGame(game);
     };
 
     const handleImport = async (
