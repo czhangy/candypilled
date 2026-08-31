@@ -5,12 +5,14 @@ import styles from './TagSelectPanel.module.scss';
 
 type TagSelectPanelProps = {
     game: Game;
+    gender: 'male' | 'female' | undefined;
     onSelectTagPartner: (battleKey: string) => void;
     selectedTagPartner?: string;
 };
 
 const TagSelectPanel: React.FC<TagSelectPanelProps> = ({
     game,
+    gender,
     onSelectTagPartner,
     selectedTagPartner,
 }) => {
@@ -19,7 +21,8 @@ const TagSelectPanel: React.FC<TagSelectPanelProps> = ({
     // -------------------------------------------------------------------------
 
     const tagPartnerOptions: DropdownOption[] = BattleHelpers.getAllTagPartners(
-        game
+        game,
+        gender
     ).map((entry) => ({
         label: entry.label,
         value: entry.battleKey,

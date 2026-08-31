@@ -995,6 +995,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 />
                 <TagSelectPanel
                     game={game}
+                    gender={run.gender}
                     onSelectTagPartner={handleSelectTagPartner}
                     selectedTagPartner={selectedTagPartner}
                 />

@@ -265,6 +265,11 @@ export type Battle = {
 // team/roster resolution.
 export type TagPartner = {
     battleKey: string;
+    // Restricts this partner to runs of the matching gender — e.g. a
+    // partner whose identity differs by gender (Dawn/Lucas) gets two
+    // TagPartner entries here, each pointing at its own independent
+    // Game.battles entry, mirroring Battle.gender.
+    gender?: 'male' | 'female';
 };
 
 export type Encounter = {
@@ -368,7 +373,9 @@ export type Subarea = {
     // Where the map is panned to by default, when no battle is selected.
     mapAnchor: MapAnchor;
     battles?: Battle[];
-    tagPartner?: TagPartner;
+    // Usually one entry; two when the partner's identity is gender-split
+    // (e.g. Dawn for a male run, Lucas for a female run).
+    tagPartner?: TagPartner[];
 };
 
 export type Location = {
@@ -378,8 +385,9 @@ export type Location = {
     battles?: Battle[];
     // Only meaningful for a location with no subareas — a subarea-based
     // location sets tagPartner per-subarea instead (Subarea.tagPartner),
-    // since a partner's company is usually confined to one area.
-    tagPartner?: TagPartner;
+    // since a partner's company is usually confined to one area. Usually
+    // one entry; two when the partner's identity is gender-split.
+    tagPartner?: TagPartner[];
 } & (
     | {
           // A single map, or two maps to pick between by the run's gender —

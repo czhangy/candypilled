@@ -122,14 +122,12 @@ export default class BattleHelpers {
         });
     }
 
-    /** battles restricted to gender: entries with no `gender` always pass, entries with one only pass for a matching run gender. */
-    static filterByGender(
-        battles: Battle[],
+    /** items restricted to gender: entries with no `gender` always pass, entries with one only pass for a matching run gender. Shared by Battle[] and TagPartner[], both of which carry an optional gender field. */
+    static filterByGender<T extends { gender?: 'male' | 'female' }>(
+        items: T[],
         gender: 'male' | 'female' | undefined
-    ): Battle[] {
-        return battles.filter(
-            (battle) => !battle.gender || battle.gender === gender
-        );
+    ): T[] {
+        return items.filter((item) => !item.gender || item.gender === gender);
     }
 
     /** The team belonging to the battle keyed by battleKey within game, resolved for starter, or [] if battleKey is undefined or doesn't match any battle. */
@@ -150,13 +148,15 @@ export default class BattleHelpers {
     }
 
     /**
-     * Every location/subarea's tag partner in game, paired with its
-     * trainer's display label, excluding one hidden via location/subarea
-     * hideBattles. A partner reused across more than one location keeps
-     * only its first occurrence, same as getAllBattles.
+     * Every location/subarea's tag partner in game for gender, paired with
+     * its trainer's display label, excluding one hidden via
+     * location/subarea hideBattles or restricted to the other gender. A
+     * partner reused across more than one location keeps only its first
+     * occurrence, same as getAllBattles.
      */
     static getAllTagPartners(
-        game: Game
+        game: Game,
+        gender: 'male' | 'female' | undefined
     ): { battleKey: string; label: string }[] {
         const toEntry = (
             tagPartner: TagPartner
@@ -177,14 +177,18 @@ export default class BattleHelpers {
                                 !location.hideBattles && !subarea.hideBattles
                         )
                         .flatMap((subarea) =>
-                            subarea.tagPartner
-                                ? [toEntry(subarea.tagPartner)]
-                                : []
+                            BattleHelpers.filterByGender(
+                                subarea.tagPartner ?? [],
+                                gender
+                            ).map(toEntry)
                         );
                 }
-                return !location.hideBattles && location.tagPartner
-                    ? [toEntry(location.tagPartner)]
-                    : [];
+                return location.hideBattles
+                    ? []
+                    : BattleHelpers.filterByGender(
+                          location.tagPartner ?? [],
+                          gender
+                      ).map(toEntry);
             })
         );
 

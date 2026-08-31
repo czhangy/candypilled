@@ -140,7 +140,7 @@ const VICTORY_ROAD: Location = {
             map: victoryRoadBack2,
             mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'victory-road-back',
-            tagPartner: { battleKey: 'pkmn-trainer-marley-tag' },
+            tagPartner: [{ battleKey: 'pkmn-trainer-marley-tag' }],
             battles: [
                 {
                     battleKey: 'pkmn-trainer-marley',

@@ -293,9 +293,12 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                 : undefined,
         };
     }
-    const currentTagPartner = location.subareas
-        ? location.subareas[selectedSubareaIndex].tagPartner
-        : location.tagPartner;
+    const currentTagPartner = BattleHelpers.filterByGender(
+        (location.subareas
+            ? location.subareas[selectedSubareaIndex].tagPartner
+            : location.tagPartner) ?? [],
+        run.gender
+    )[0];
     const isTagPartnerHidden = location.subareas
         ? location.hideBattles ||
           location.subareas[selectedSubareaIndex].hideBattles
