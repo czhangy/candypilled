@@ -2,8 +2,6 @@
 
 import { useEffect, useReducer } from 'react';
 import Image from 'next/image';
-import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
-import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './SpriteCarousel.module.scss';
 
 const SpriteCarousel: React.FC = () => {
@@ -31,6 +29,9 @@ const SpriteCarousel: React.FC = () => {
         { name: 'turtwig', variant: 'platinum' },
         { name: 'chimchar', variant: 'platinum' },
         { name: 'piplup', variant: 'platinum' },
+        { name: 'snivy', variant: 'black-white' },
+        { name: 'tepig', variant: 'black-white' },
+        { name: 'oshawott', variant: 'black-white' },
     ];
     const FRAMES = [...SPRITES, SPRITES[0]];
     const PAUSE_DURATION_MS = 1500;
@@ -112,28 +113,20 @@ const SpriteCarousel: React.FC = () => {
                     } as React.CSSProperties
                 }
             >
-                {FRAMES.map((sprite, position) => {
-                    const src = PokemonHelpers.getPokemonSprite(
-                        VANILLA_DATA_SOURCE,
-                        sprite.name,
-                        sprite.variant
-                    );
-                    if (!src) return null;
-
-                    return (
-                        <div
-                            className={styles.frame}
-                            key={`${sprite.name}-${position}`}
-                        >
-                            <Image
-                                alt={sprite.name}
-                                height={SPRITE_SIZE}
-                                src={src}
-                                width={SPRITE_SIZE}
-                            />
-                        </div>
-                    );
-                })}
+                {FRAMES.map((sprite, position) => (
+                    <div
+                        className={styles.frame}
+                        key={`${sprite.name}-${position}`}
+                    >
+                        <Image
+                            alt={sprite.name}
+                            height={SPRITE_SIZE}
+                            priority={position < SPRITES.length}
+                            src={`/pokemon/${sprite.variant}/${sprite.name}.png`}
+                            width={SPRITE_SIZE}
+                        />
+                    </div>
+                ))}
             </div>
         </div>
     );
