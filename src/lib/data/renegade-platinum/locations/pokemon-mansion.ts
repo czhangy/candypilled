@@ -7,6 +7,7 @@ const POKEMON_MANSION: Location = {
     name: 'Pokémon Mansion',
     map: pokemonMansion,
     mapAnchor: MapAnchor.Center,
+    tagPartner: [{ battleKey: 'pkmn-trainer-barry-pokemon-mansion-tag' }],
     battles: [
         {
             battleKey: 'galactic-grunt-m-pokemon-mansion-1',
