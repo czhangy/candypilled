@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from 'react';
 import { CaughtPokemon, Game, Run } from '@/lib/static/types';
 import HallOfFameHelpers from '@/lib/utils/HallOfFameHelpers';
-import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
+import RunHelpers from '@/lib/utils/RunHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import HallOfFameCard from './HallOfFameCard/HallOfFameCard';
 import styles from './HallOfFameTab.module.scss';
@@ -35,20 +35,20 @@ const HallOfFameTab: React.FC<HallOfFameTabProps> = ({ game, run }) => {
     // HANDLERS
     // -------------------------------------------------------------------------
 
-    const handleSave = (team: CaughtPokemon[]): void => {
-        HallOfFameHelpers.addEntry({
+    const handleSave = async (team: CaughtPokemon[]): Promise<void> => {
+        await HallOfFameHelpers.addEntry({
             attempt: run.attempt,
             game: variant,
             team,
         });
-        LocalStorageHelpers.saveRun(game, {
+        await RunHelpers.saveRun(game, {
             ...run,
             hallOfFameCount: run.hallOfFameCount + 1,
         });
     };
 
-    const handleUpdateTeam = (team: CaughtPokemon[]): void => {
-        HallOfFameHelpers.updateEntryTeam(variant, run.attempt, team);
+    const handleUpdateTeam = async (team: CaughtPokemon[]): Promise<void> => {
+        await HallOfFameHelpers.updateEntryTeam(variant, run.attempt, team);
     };
 
     // -------------------------------------------------------------------------

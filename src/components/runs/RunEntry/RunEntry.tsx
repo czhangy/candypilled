@@ -12,7 +12,8 @@ import { CaughtPokemon, Game, Run } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import HallOfFameHelpers from '@/lib/utils/HallOfFameHelpers';
-import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
+import NotesHelpers from '@/lib/utils/NotesHelpers';
+import RunHelpers from '@/lib/utils/RunHelpers';
 import RunImportHelpers from '@/lib/utils/RunImportHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -69,10 +70,10 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const startNewRun = (
+    const startNewRun = async (
         starter: CaughtPokemon,
         gender: 'male' | 'female' | undefined
-    ): void => {
+    ): Promise<void> => {
         const newRun: Run = {
             attempt: (run?.attempt ?? 0) + 1,
             completedSplits: [],
@@ -84,7 +85,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             wipe: false,
         };
 
-        LocalStorageHelpers.saveRun(game, newRun);
+        await RunHelpers.saveRun(game, newRun);
         router.push(runUrl);
     };
 
@@ -127,12 +128,12 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         return baseSlug;
     };
 
-    const createRunFromImport = (
+    const createRunFromImport = async (
         pokemon: CaughtPokemon[],
         completedSplits: string[],
         starterSlug: string,
         gender: 'male' | 'female' | undefined
-    ): void => {
+    ): Promise<void> => {
         const newRun: Run = {
             attempt: (run?.attempt ?? 0) + 1,
             completedSplits,
@@ -144,7 +145,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             wipe: false,
         };
 
-        LocalStorageHelpers.saveRun(game, newRun);
+        await RunHelpers.saveRun(game, newRun);
         router.push(runUrl);
     };
 
@@ -180,18 +181,19 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         setIsDataModalOpen(false);
     };
 
-    const handleReset = (): void => {
-        LocalStorageHelpers.deleteRun(game);
-        HallOfFameHelpers.deleteEntriesForGame(game);
+    const handleReset = async (): Promise<void> => {
+        await RunHelpers.deleteRun(game);
+        await HallOfFameHelpers.deleteEntriesForGame(game);
+        await NotesHelpers.deleteNotesForGame(game);
     };
 
-    const handleImport = (
+    const handleImport = async (
         importedPokemon: CaughtPokemon[],
         importedCompletedSplits: string[],
         importedGender: 'male' | 'female'
-    ): void => {
+    ): Promise<void> => {
         if (run) {
-            LocalStorageHelpers.saveRun(
+            await RunHelpers.saveRun(
                 game,
                 RunImportHelpers.mergeImport(
                     run,
@@ -202,7 +204,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             return;
         }
 
-        createRunFromImport(
+        await createRunFromImport(
             importedPokemon,
             importedCompletedSplits,
             findImportedStarterSlug(importedPokemon),
@@ -224,8 +226,10 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         setIsStarterSelectOpen(false);
     };
 
-    const handleStarterSelect = (starter: CaughtPokemon): void => {
-        startNewRun(starter, selectedGender);
+    const handleStarterSelect = async (
+        starter: CaughtPokemon
+    ): Promise<void> => {
+        await startNewRun(starter, selectedGender);
     };
 
     // -------------------------------------------------------------------------

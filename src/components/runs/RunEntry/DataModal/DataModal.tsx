@@ -78,27 +78,31 @@ const DataModal: React.FC<DataModalProps> = ({
                         onTabChange={handleTabChange}
                         tabs={TABS}
                     />
-                    {activeTab === 'import' && (
-                        <ImportSaveForm
-                            game={game}
-                            onImport={onImport}
-                            requestClose={requestClose}
-                        />
-                    )}
-                    {hasExistingRun && activeTab === 'reset' && (
-                        <>
-                            <p className={styles.description}>{description}</p>
-                            <ConfirmActions
-                                confirmLabel="Reset Game"
-                                onCancel={requestClose}
-                                onConfirm={() => {
-                                    onReset();
-                                    requestClose();
-                                }}
-                                variant="destructive"
+                    <div className={styles.content}>
+                        {activeTab === 'import' && (
+                            <ImportSaveForm
+                                game={game}
+                                onImport={onImport}
+                                requestClose={requestClose}
                             />
-                        </>
-                    )}
+                        )}
+                        {hasExistingRun && activeTab === 'reset' && (
+                            <>
+                                <p className={styles.description}>
+                                    {description}
+                                </p>
+                                <ConfirmActions
+                                    confirmLabel="Reset Game"
+                                    onCancel={requestClose}
+                                    onConfirm={() => {
+                                        onReset();
+                                        requestClose();
+                                    }}
+                                    variant="destructive"
+                                />
+                            </>
+                        )}
+                    </div>
                 </>
             )}
         </Modal>

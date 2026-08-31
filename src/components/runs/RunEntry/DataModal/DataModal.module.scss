@@ -1,8 +1,10 @@
 @use '@/styles/constants' as *;
 @use '@/styles/mixins' as *;
 
-.description {
-    @include modal-description;
-
+.content {
     margin-top: 1.25rem;
+
+    .description {
+        @include modal-description;
+    }
 }

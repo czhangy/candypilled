@@ -4,7 +4,7 @@
 .footer {
     align-items: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin: 0 auto;
     max-width: $max-content-width;
     padding: 1.5rem;
@@ -16,23 +16,6 @@
 
         .author {
             color: $accent;
-        }
-    }
-
-    .link {
-        color: $text-dim;
-        transition: color 0.2s ease;
-
-        svg {
-            display: block;
-            height: 1.75rem;
-            width: 1.75rem;
-        }
-
-        @media (hover: hover) {
-            &:hover {
-                color: $accent;
-            }
         }
     }
 }

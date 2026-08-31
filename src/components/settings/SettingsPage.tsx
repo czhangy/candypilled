@@ -21,8 +21,11 @@ const SettingsPage: React.FC = () => {
     // HANDLERS
     // -------------------------------------------------------------------------
 
-    const handleToggleChange = (id: string, checked: boolean): void => {
-        SettingsHelpers.saveSetting(id, checked);
+    const handleToggleChange = async (
+        id: string,
+        checked: boolean
+    ): Promise<void> => {
+        await SettingsHelpers.saveSetting(id, checked);
     };
 
     // -------------------------------------------------------------------------
