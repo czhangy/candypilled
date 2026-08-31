@@ -267,6 +267,15 @@ const LocationMap: React.FC<LocationMapProps> = ({
         event.currentTarget.releasePointerCapture(event.pointerId);
     };
 
+    // Fires whenever pointer capture ends for any reason (pointerup,
+    // pointercancel, or the button being released outside the browser
+    // window, which never delivers a pointerup to this element at all).
+    // Relying on handlePointerUp alone leaves isDragging stuck true when
+    // the release happens off-window.
+    const handleLostPointerCapture = (): void => {
+        setIsDragging(false);
+    };
+
     const handlePointerLeave = (): void => {
         setPreviewPosition(null);
     };
@@ -306,6 +315,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
                     .filter(Boolean)
                     .join(' ')}
                 onClick={EDIT_MODE_ON ? handleImageClick : undefined}
+                onLostPointerCapture={handleLostPointerCapture}
                 onPointerDown={handlePointerDown}
                 onPointerLeave={handlePointerLeave}
                 onPointerMove={handlePointerMove}
