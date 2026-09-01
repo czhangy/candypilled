@@ -2,8 +2,6 @@
 
 import { useEffect, useReducer } from 'react';
 import Image from 'next/image';
-import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
-import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './SpriteCarousel.module.scss';
 
 const SpriteCarousel: React.FC = () => {
@@ -116,12 +114,7 @@ const SpriteCarousel: React.FC = () => {
                 }
             >
                 {FRAMES.map((sprite, position) => {
-                    const src = PokemonHelpers.getPokemonSprite(
-                        VANILLA_DATA_SOURCE,
-                        sprite.name,
-                        sprite.variant
-                    );
-                    if (!src) return null;
+                    const src = `/pokemon/${sprite.variant}/${sprite.name}.png`;
 
                     return (
                         <div

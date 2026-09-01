@@ -1,5 +1,5 @@
 import ETERNA_CITY from '@/lib/data/renegade-platinum/locations/eterna-city';
-import HEARTHOME_CITY_WEST_GATE from '@/lib/data/renegade-platinum/locations/hearthome-city-west-gate';
+import HEARTHOME_CITY from '@/lib/data/renegade-platinum/locations/hearthome-city';
 import HEARTHOME_GYM from '@/lib/data/renegade-platinum/locations/hearthome-gym';
 import MINING_MUSEUM from '@/lib/data/renegade-platinum/locations/mining-museum';
 import MT_CORONET from '@/lib/data/renegade-platinum/locations/mt-coronet';
@@ -37,7 +37,13 @@ const FANTINA: Split = {
             ])
         ),
         ROUTE_208,
-        HEARTHOME_CITY_WEST_GATE,
+        LocationHelpers.withHiddenSubareaBattles(
+            LocationHelpers.withSubareaOrder(HEARTHOME_CITY, [
+                'West Gate',
+                'East Gate',
+            ]),
+            ['East Gate']
+        ),
         HEARTHOME_GYM,
     ],
     saveCondition: { type: 'badge', bit: 4 },

@@ -10,7 +10,7 @@ const HEARTHOME_GYM: Location = {
     name: 'Hearthome Gym',
     subareas: [
         {
-            name: 'First Room',
+            name: 'Room 1',
             map: hearthomeGymRoom1,
             mapAnchor: MapAnchor.Center,
             battles: [
@@ -29,7 +29,7 @@ const HEARTHOME_GYM: Location = {
             ],
         },
         {
-            name: 'Second Room',
+            name: 'Room 2',
             map: hearthomeGymRoom2,
             mapAnchor: MapAnchor.Center,
             battles: [
@@ -60,7 +60,7 @@ const HEARTHOME_GYM: Location = {
             ],
         },
         {
-            name: 'Third Room',
+            name: 'Room 3',
             map: hearthomeGymRoom3,
             mapAnchor: MapAnchor.Center,
             battles: [

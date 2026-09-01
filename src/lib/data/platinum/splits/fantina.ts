@@ -1,3 +1,4 @@
+import ETERNA_FOREST from '@/lib/data/platinum/locations/eterna-forest';
 import HEARTHOME_CITY from '@/lib/data/platinum/locations/hearthome-city';
 import HEARTHOME_GYM from '@/lib/data/platinum/locations/hearthome-gym';
 import MINING_MUSEUM from '@/lib/data/platinum/locations/mining-museum';
@@ -15,6 +16,12 @@ const FANTINA: Split = {
     name: 'Fantina',
     locations: [
         OLD_CHATEAU,
+        LocationHelpers.withHiddenBattles(
+            LocationHelpers.withSubareaOrder(ETERNA_FOREST, [
+                'Exterior',
+                'Interior',
+            ])
+        ),
         TEAM_GALACTIC_ETERNA_BUILDING,
         ROUTE_206,
         MINING_MUSEUM,
@@ -37,7 +44,7 @@ const FANTINA: Split = {
             ['3F', 'Tunnel', '4F', '5F', '6F']
         ),
         ROUTE_208,
-        HEARTHOME_CITY,
+        LocationHelpers.withHiddenBattles(HEARTHOME_CITY),
         HEARTHOME_GYM,
     ],
     saveCondition: { type: 'badge', bit: 4 },

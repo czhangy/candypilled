@@ -10,13 +10,11 @@ import {
 } from 'next/navigation';
 import Spinner from '@/components/common/Spinner/Spinner';
 import Tabs from '@/components/common/Tabs/Tabs';
-import { GAMES } from '@/lib/data/games';
-import { CaughtPokemon } from '@/lib/static/types';
+import { CaughtPokemon, Game } from '@/lib/static/types';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
 import RunImportHelpers from '@/lib/utils/RunImportHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
 import BoxTab from './BoxTab/BoxTab';
 import ImportSaveModal from './BoxTab/ImportSaveModal/ImportSaveModal';
 import CalcTab from './CalcTab/CalcTab';
@@ -28,10 +26,10 @@ import SplitHeader from './SplitHeader/SplitHeader';
 import SplitTab from './SplitTab/SplitTab';
 
 type RunPageProps = {
-    slug: string;
+    game: Game;
 };
 
-const RunPage: React.FC<RunPageProps> = ({ slug }) => {
+const RunPage: React.FC<RunPageProps> = ({ game }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
@@ -99,45 +97,34 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const selectedSpecies = searchParams.get('species') ?? undefined;
     const selectedBattle = searchParams.get('battle') ?? undefined;
 
-    const game = GAMES.find(
-        (candidate) => StringHelpers.toSlug(candidate.name) === slug
-    );
-
-    const wipeMessage = game
-        ? ArrayHelpers.pickRandom([
-              ...DEFAULT_WIPE_MESSAGES,
-              ...game.wipeMessages,
-          ])
-        : '';
+    const wipeMessage = ArrayHelpers.pickRandom([
+        ...DEFAULT_WIPE_MESSAGES,
+        ...game.wipeMessages,
+    ]);
 
     const run = gameRuns.find(
-        (gameRun) => StringHelpers.toSlug(gameRun.game.name) === slug
+        (gameRun) => gameRun.game.name === game.name
     )?.run;
 
     const isHallOfFameUnlocked = !!(
-        game &&
-        run &&
-        SplitHelpers.isGameComplete(game, run.completedSplits)
+        run && SplitHelpers.isGameComplete(game, run.completedSplits)
     );
 
     const activeTab =
         searchParams.get('tab') ?? (isHallOfFameUnlocked ? 'hof' : TABS[0].id);
 
-    const runSplitName =
-        game && run
-            ? SplitHelpers.getCurrentSplitName(game, run.completedSplits)
-            : null;
+    const runSplitName = run
+        ? SplitHelpers.getCurrentSplitName(game, run.completedSplits)
+        : null;
 
-    const currentSplitName =
-        game && run
-            ? (game.splits.find(
-                  (split) => split.name === searchParams.get('split')
-              )?.name ?? runSplitName)
-            : null;
+    const currentSplitName = run
+        ? (game.splits.find((split) => split.name === searchParams.get('split'))
+              ?.name ?? runSplitName)
+        : null;
 
     const visibleTabs = TABS.filter((tab) => {
         if (tab.id === 'hof') return isHallOfFameUnlocked;
-        if (tab.id === 'resources') return !!game?.resources?.length;
+        if (tab.id === 'resources') return !!game.resources?.length;
         return true;
     });
 
@@ -265,8 +252,6 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     };
 
     const handleLocationSelect = (locationName: string): void => {
-        if (!game) return;
-
         const earliestLocation = SplitHelpers.getEarliestLocation(
             game,
             locationName
@@ -313,7 +298,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     const handleSplitToggleComplete = async (
         splitName: string
     ): Promise<void> => {
-        if (!game || !run) return;
+        if (!run) return;
 
         const wasCompleted = run.completedSplits.includes(splitName);
         const splitIndex = game.splits.findIndex(
@@ -343,7 +328,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     };
 
     const handleWipeToggle = async (): Promise<void> => {
-        if (!game || !run) return;
+        if (!run) return;
 
         await RunHelpers.saveRun(game, { ...run, wipe: !run.wipe });
     };
@@ -361,7 +346,7 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         importedCompletedSplits: string[],
         importedGender: 'male' | 'female'
     ): Promise<void> => {
-        if (!game || !run) return;
+        if (!run) return;
 
         await RunHelpers.saveRun(
             game,
@@ -378,10 +363,6 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
-
-    if (!game) {
-        notFound();
-    }
 
     if (!isHydrated) {
         return (

@@ -89,21 +89,35 @@ export default class EncounterHelpers {
     }
 
     /**
-     * The display name of the wired location whose encounters include the
+     * The name of the top-level Location whose encounters include the
      * "starter" method (i.e. the route where starters are actually handed
-     * out in-game). Assumes every game wires up such a location.
+     * out in-game). Assumes every game wires up such a location. Always the
+     * bare Location name, even when the starter's encountersKey lives on a
+     * subarea, since a caught Pokémon's `location` is matched against
+     * `Location.name` elsewhere (e.g. SplitLocation), never a
+     * subarea-qualified name.
      */
     static getStarterLocationName(game: Game): string {
-        const locations = EncounterHelpers.getWiredLocations(game);
-
-        return locations.find(({ encountersKey }) => {
+        const hasStarterEncounter = (encountersKey?: string): boolean => {
             if (!encountersKey) return false;
 
             const encounters = game.encounters[encountersKey] ?? [];
             return encounters.some(
                 (encounter) => encounter.method === EncounterMethod.Starter
             );
-        })!.name;
+        };
+
+        const location = game.splits
+            .flatMap((split) => split.locations)
+            .find((location) =>
+                location.subareas
+                    ? location.subareas.some((subarea) =>
+                          hasStarterEncounter(subarea.encountersKey)
+                      )
+                    : hasStarterEncounter(location.encountersKey)
+            )!;
+
+        return location.name;
     }
 
     /**

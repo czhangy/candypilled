@@ -6,30 +6,40 @@ import FLOAROMA_TOWN from '@/lib/data/renegade-platinum/locations/floaroma-town'
 import JUBILIFE_CITY from '@/lib/data/renegade-platinum/locations/jubilife-city';
 import MT_CORONET from '@/lib/data/renegade-platinum/locations/mt-coronet';
 import OLD_CHATEAU from '@/lib/data/renegade-platinum/locations/old-chateau';
+import OREBURGH_GATE from '@/lib/data/renegade-platinum/locations/oreburgh-gate';
+import RAVAGED_PATH from '@/lib/data/renegade-platinum/locations/ravaged-path';
+import ROUTE_203 from '@/lib/data/renegade-platinum/locations/route-203';
 import ROUTE_204 from '@/lib/data/renegade-platinum/locations/route-204';
 import ROUTE_205 from '@/lib/data/renegade-platinum/locations/route-205';
 import ROUTE_206 from '@/lib/data/renegade-platinum/locations/route-206';
 import ROUTE_211 from '@/lib/data/renegade-platinum/locations/route-211';
 import ROUTE_216 from '@/lib/data/renegade-platinum/locations/route-216';
 import VALLEY_WINDWORKS from '@/lib/data/renegade-platinum/locations/valley-windworks';
-import VALLEY_WINDWORKS_INTERIOR from '@/lib/data/renegade-platinum/locations/valley-windworks-interior';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
 const GARDENIA: Split = {
     name: 'Gardenia',
     locations: [
+        LocationHelpers.withHiddenBattles(OREBURGH_GATE),
+        LocationHelpers.withHiddenBattles(ROUTE_203),
         LocationHelpers.withHiddenSubareaBattles(JUBILIFE_CITY, [
             'Pokémon Center',
         ]),
-        LocationHelpers.withHiddenSubareaBattles(
-            LocationHelpers.withSubareaOrder(ROUTE_204, ['North', 'South']),
-            ['South']
-        ),
+        LocationHelpers.withHiddenBattles(ROUTE_204),
+        RAVAGED_PATH,
         FLOAROMA_TOWN,
-        VALLEY_WINDWORKS,
+        LocationHelpers.withHiddenSubareaBattles(VALLEY_WINDWORKS, [
+            'Interior',
+        ]),
         FLOAROMA_MEADOW,
-        VALLEY_WINDWORKS_INTERIOR,
+        LocationHelpers.withHiddenSubareaBattles(
+            LocationHelpers.withSubareaOrder(VALLEY_WINDWORKS, [
+                'Interior',
+                'Exterior',
+            ]),
+            ['Exterior']
+        ),
         LocationHelpers.withHiddenSubareaBattles(ROUTE_205, ['North']),
         ETERNA_FOREST,
         OLD_CHATEAU,
