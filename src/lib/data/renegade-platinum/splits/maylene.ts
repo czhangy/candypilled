@@ -1,5 +1,5 @@
 import CAFE_CABIN from '@/lib/data/renegade-platinum/locations/cafe-cabin';
-import HEARTHOME_CITY_EAST_GATE from '@/lib/data/renegade-platinum/locations/hearthome-city-east-gate';
+import HEARTHOME_CITY from '@/lib/data/renegade-platinum/locations/hearthome-city';
 import POKEMON_MANSION from '@/lib/data/renegade-platinum/locations/pokemon-mansion';
 import ROUTE_209 from '@/lib/data/renegade-platinum/locations/route-209';
 import ROUTE_210 from '@/lib/data/renegade-platinum/locations/route-210';
@@ -15,7 +15,13 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const MAYLENE: Split = {
     name: 'Maylene',
     locations: [
-        HEARTHOME_CITY_EAST_GATE,
+        LocationHelpers.withHiddenSubareaBattles(
+            LocationHelpers.withSubareaOrder(HEARTHOME_CITY, [
+                'East Gate',
+                'West Gate',
+            ]),
+            ['West Gate']
+        ),
         LocationHelpers.withHiddenSubareaBattles(ROUTE_212, ['South']),
         POKEMON_MANSION,
         TROPHY_GARDEN,
