@@ -44,7 +44,7 @@ const FANTINA: Split = {
             ['3F', 'Tunnel', '4F', '5F', '6F']
         ),
         ROUTE_208,
-        HEARTHOME_CITY,
+        LocationHelpers.withHiddenBattles(HEARTHOME_CITY),
         HEARTHOME_GYM,
     ],
     saveCondition: { type: 'badge', bit: 4 },
