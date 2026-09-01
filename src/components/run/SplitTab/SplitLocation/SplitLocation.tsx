@@ -83,7 +83,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const resolveMap = (
         map:
             StaticImageData | { male: StaticImageData; female: StaticImageData }
-    ): StaticImageData => ('male' in map ? map[run.gender ?? 'male'] : map);
+    ): StaticImageData => ('male' in map ? map[run.gender] : map);
 
     const getDefaultSelectedBattle = (
         subareaIndex: number

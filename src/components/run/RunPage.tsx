@@ -358,7 +358,8 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     const handleImportSave = async (
         importedPokemon: CaughtPokemon[],
-        importedCompletedSplits: string[]
+        importedCompletedSplits: string[],
+        importedGender: 'male' | 'female'
     ): Promise<void> => {
         if (!game || !run) return;
 
@@ -367,7 +368,8 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
             RunImportHelpers.mergeImport(
                 run,
                 importedPokemon,
-                importedCompletedSplits
+                importedCompletedSplits,
+                importedGender
             )
         );
         handlePokemonDeselect();

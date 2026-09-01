@@ -72,14 +72,14 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
 
     const startNewRun = async (
         starter: CaughtPokemon,
-        gender: 'male' | 'female' | undefined
+        gender: 'male' | 'female'
     ): Promise<void> => {
         const newRun: Run = {
             attempt: (run?.attempt ?? 0) + 1,
             completedSplits: [],
             hallOfFameCount: run?.hallOfFameCount ?? 0,
             starter: starter.slug,
-            ...(gender && { gender }),
+            gender,
             caughtPokemon: [starter],
             missedLocations: [],
             wipe: false,
@@ -89,14 +89,10 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         router.push(runUrl);
     };
 
-    // The first step of starting a new run: gender selection when this
-    // game's content depends on it, otherwise straight to starter select.
+    // The first step of starting a new run: gender selection, then
+    // starter select.
     const beginRunCreation = (): void => {
-        if (game.genders) {
-            setIsGenderSelectOpen(true);
-        } else {
-            setIsStarterSelectOpen(true);
-        }
+        setIsGenderSelectOpen(true);
     };
 
     // Throws unless the import has a Pokémon at the game's starter
@@ -132,14 +128,14 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         pokemon: CaughtPokemon[],
         completedSplits: string[],
         starterSlug: string,
-        gender: 'male' | 'female' | undefined
+        gender: 'male' | 'female'
     ): Promise<void> => {
         const newRun: Run = {
             attempt: (run?.attempt ?? 0) + 1,
             completedSplits,
             hallOfFameCount: run?.hallOfFameCount ?? 0,
             starter: starterSlug,
-            ...(gender && { gender }),
+            gender,
             caughtPokemon: pokemon,
             missedLocations: [],
             wipe: false,
@@ -198,7 +194,8 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                 RunImportHelpers.mergeImport(
                     run,
                     importedPokemon,
-                    importedCompletedSplits
+                    importedCompletedSplits,
+                    importedGender
                 )
             );
             return;
@@ -208,7 +205,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             importedPokemon,
             importedCompletedSplits,
             findImportedStarterSlug(importedPokemon),
-            game.genders ? importedGender : undefined
+            importedGender
         );
     };
 
@@ -229,7 +226,9 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     const handleStarterSelect = async (
         starter: CaughtPokemon
     ): Promise<void> => {
-        await startNewRun(starter, selectedGender);
+        // selectedGender is always set here: StarterSelectModal only opens
+        // after handleGenderSelect runs.
+        await startNewRun(starter, selectedGender as 'male' | 'female');
     };
 
     // -------------------------------------------------------------------------
@@ -332,7 +331,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     onReset={handleReset}
                 />
             )}
-            {isGenderSelectOpen && game.genders && (
+            {isGenderSelectOpen && (
                 <GenderSelectModal
                     game={game}
                     genders={game.genders}
