@@ -10,6 +10,7 @@ import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
+import RoamerTracker from './RoamerTracker/RoamerTracker';
 import SplitLocation from './SplitLocation/SplitLocation';
 import styles from './SplitTab.module.scss';
 
@@ -243,83 +244,87 @@ const SplitTab: React.FC<SplitTabProps> = ({
         >
             <div className={styles.body}>
                 <nav className={styles.toc}>
-                    <div className={styles.badge}>
-                        <Image alt="" fill sizes="8rem" src={badge} />
-                    </div>
-                    <span className={styles['toc-label']}>Locations</span>
-                    <ul className={styles['toc-list']}>
-                        {currentSplit?.locations.map((location, index) => {
-                            const caughtPokemonName = getCaughtPokemonName(
-                                location.name
-                            );
-                            const missed = isLocationMissed(location.name);
-                            const allEncountersDupes =
-                                isAllEncountersDupes(location);
-                            const slug = SplitHelpers.getLocationSlug(
-                                location.name,
-                                index
-                            );
+                    <div className={styles['toc-header']}>
+                        <div className={styles.badge}>
+                            <Image alt="" fill sizes="8rem" src={badge} />
+                        </div>
+                        <span className={styles['toc-label']}>Locations</span>
+                        <ul className={styles['toc-list']}>
+                            {currentSplit?.locations.map((location, index) => {
+                                const caughtPokemonName = getCaughtPokemonName(
+                                    location.name
+                                );
+                                const missed = isLocationMissed(location.name);
+                                const allEncountersDupes =
+                                    isAllEncountersDupes(location);
+                                const slug = SplitHelpers.getLocationSlug(
+                                    location.name,
+                                    index
+                                );
 
-                            return (
-                                <li key={`${location.name}-${index}`}>
-                                    {hasEncounters(location) ? (
-                                        <Tooltip
-                                            position="left"
-                                            text={
-                                                caughtPokemonName
-                                                    ? `This encounter has been taken – ${caughtPokemonName}`
-                                                    : missed
-                                                      ? 'This encounter was missed'
-                                                      : allEncountersDupes
-                                                        ? 'Every possible encounter here has already been caught'
-                                                        : "This encounter hasn't been taken"
-                                            }
-                                        >
-                                            <span
-                                                className={[
-                                                    styles['caught-icon'],
-                                                    (missed ||
-                                                        allEncountersDupes) &&
-                                                        styles[
-                                                            'caught-icon--missed'
-                                                        ],
-                                                ]
-                                                    .filter(Boolean)
-                                                    .join(' ')}
+                                return (
+                                    <li key={`${location.name}-${index}`}>
+                                        {hasEncounters(location) ? (
+                                            <Tooltip
+                                                position="left"
+                                                text={
+                                                    caughtPokemonName
+                                                        ? `This encounter has been taken – ${caughtPokemonName}`
+                                                        : missed
+                                                          ? 'This encounter was missed'
+                                                          : allEncountersDupes
+                                                            ? 'Every possible encounter here has already been caught'
+                                                            : "This encounter hasn't been taken"
+                                                }
                                             >
-                                                <Image
-                                                    alt=""
-                                                    fill
-                                                    sizes="0.9rem"
-                                                    src={
-                                                        caughtPokemonName
-                                                            ? '/common/poke-ball.png'
-                                                            : '/common/premier-ball.png'
-                                                    }
-                                                />
-                                            </span>
-                                        </Tooltip>
-                                    ) : (
-                                        <span
-                                            className={styles['caught-icon']}
-                                        />
-                                    )}
-                                    <a
-                                        className={[
-                                            styles['toc-link'],
-                                            slug === activeLocationSlug &&
-                                                styles['toc-link--active'],
-                                        ]
-                                            .filter(Boolean)
-                                            .join(' ')}
-                                        href={`#${slug}`}
-                                    >
-                                        {location.name}
-                                    </a>
-                                </li>
-                            );
-                        })}
-                    </ul>
+                                                <span
+                                                    className={[
+                                                        styles['caught-icon'],
+                                                        (missed ||
+                                                            allEncountersDupes) &&
+                                                            styles[
+                                                                'caught-icon--missed'
+                                                            ],
+                                                    ]
+                                                        .filter(Boolean)
+                                                        .join(' ')}
+                                                >
+                                                    <Image
+                                                        alt=""
+                                                        fill
+                                                        sizes="0.9rem"
+                                                        src={
+                                                            caughtPokemonName
+                                                                ? '/common/poke-ball.png'
+                                                                : '/common/premier-ball.png'
+                                                        }
+                                                    />
+                                                </span>
+                                            </Tooltip>
+                                        ) : (
+                                            <span
+                                                className={
+                                                    styles['caught-icon']
+                                                }
+                                            />
+                                        )}
+                                        <a
+                                            className={[
+                                                styles['toc-link'],
+                                                slug === activeLocationSlug &&
+                                                    styles['toc-link--active'],
+                                            ]
+                                                .filter(Boolean)
+                                                .join(' ')}
+                                            href={`#${slug}`}
+                                        >
+                                            {location.name}
+                                        </a>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </div>
                     <button
                         className={[
                             styles['complete-button'],
@@ -367,6 +372,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             </span>
                         </button>
                     </div>
+                    <RoamerTracker game={game} run={run} />
                 </nav>
                 <div className={styles.locations}>
                     {currentSplit?.locations.map((location, index) => (

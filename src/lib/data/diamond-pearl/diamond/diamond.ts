@@ -1,6 +1,7 @@
 import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
 import { BATTLES } from '@/lib/data/diamond-pearl/battles';
 import { MET_LOCATIONS } from '@/lib/data/diamond-pearl/met-locations';
+import { ROAMERS } from '@/lib/data/diamond-pearl/roamers';
 import BYRON from '@/lib/data/diamond-pearl/splits/byron';
 import CANDICE from '@/lib/data/diamond-pearl/splits/candice';
 import CYNTHIA from '@/lib/data/diamond-pearl/splits/cynthia';
@@ -41,6 +42,7 @@ const DIAMOND: Game = {
     encounters: ENCOUNTERS,
     battles: BATTLES,
     metLocationById: MET_LOCATIONS,
+    roamers: ROAMERS,
     resources: [
         {
             text: 'Gen IV AI',

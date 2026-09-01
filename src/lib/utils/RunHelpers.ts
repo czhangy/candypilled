@@ -1,5 +1,5 @@
 import { GAMES } from '@/lib/data/games';
-import { Game, Run } from '@/lib/static/types';
+import { DropdownOption, Game, Run } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import SupabaseBrowserHelpers from '@/lib/utils/SupabaseBrowserHelpers';
 
@@ -72,6 +72,26 @@ export default class RunHelpers {
             ...run.caughtPokemon.map((caught) => caught.location),
             ...run.missedLocations,
         ];
+    }
+
+    /**
+     * DropdownOptions for every Location in game whose encounter hasn't
+     * already been used in run — for pickers that assign a run event (a
+     * hatched egg, a roamer catch) to a location not tied to its own
+     * encounter table.
+     */
+    static getAvailableLocationOptions(game: Game, run: Run): DropdownOption[] {
+        const usedLocations = RunHelpers.getUsedLocations(run);
+
+        return Array.from(
+            new Set(
+                game.splits.flatMap((split) =>
+                    split.locations.map((location) => location.name)
+                )
+            )
+        )
+            .filter((name) => !usedLocations.includes(name))
+            .map((name) => ({ label: name, value: name }));
     }
 
     /** Fetches every run belonging to the current user and populates the cache. */

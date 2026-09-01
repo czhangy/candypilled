@@ -459,6 +459,14 @@ export type GameResource = {
     url: string;
 };
 
+// A roaming legendary that isn't tied to any one Location — it can be
+// encountered on whichever route the player happens to be on, so it's
+// tracked on the run page itself rather than wired into a Split.
+export type Roamer = {
+    species: string;
+    level: number;
+};
+
 export type Game = {
     name: string;
     logo: string;
@@ -511,6 +519,9 @@ export type Game = {
     // External resources shown in the run page's Resources tab, e.g. a
     // guide or resource pack. Omitted for a game with no associated links.
     resources?: GameResource[];
+    // Roaming legendaries available somewhere in this game. Omitted for a
+    // game with none.
+    roamers?: Roamer[];
 };
 
 export type Run = {
