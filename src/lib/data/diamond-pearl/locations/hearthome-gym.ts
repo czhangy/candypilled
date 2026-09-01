@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const HEARTHOME_GYM: Location = {
     name: 'Hearthome Gym',
     map: hearthomeGym,
-    mapAnchor: MapAnchor.Bottom,
+    mapAnchor: MapAnchor.BottomLeft,
     battles: [
         {
             metadata: [BattleMetadata.Optional],
