@@ -8,6 +8,25 @@ type GameRun = {
     run: Run | null;
 };
 
+type RunHelpersState = {
+    cachedSnapshot: GameRun[];
+    isHydratedSnapshot: boolean;
+    hydratePromise: Promise<void> | null;
+};
+
+declare global {
+    var __runHelpersState: RunHelpersState | undefined;
+}
+
+// Kept on globalThis (not a class static) so a dev Fast Refresh reload of
+// this module doesn't reset hydration state and strand the UI in a
+// permanent loading state.
+const state: RunHelpersState = (globalThis.__runHelpersState ??= {
+    cachedSnapshot: [],
+    isHydratedSnapshot: false,
+    hydratePromise: null,
+});
+
 export default class RunHelpers {
     // -------------------------------------------------------------------------
     // PRIVATE
@@ -15,11 +34,17 @@ export default class RunHelpers {
 
     private static readonly EMPTY_SNAPSHOT: GameRun[] = [];
     private static readonly listeners = new Set<() => void>();
-    private static cachedSnapshot: GameRun[] = RunHelpers.EMPTY_SNAPSHOT;
-    private static isHydratedSnapshot = false;
 
     private static notifyListeners(): void {
         RunHelpers.listeners.forEach((listener) => listener());
+    }
+
+    /** Kicks off hydrate() if it hasn't run yet and isn't already in flight, so any consumer can recover hydration without depending on AuthProvider's mount effect having fired. */
+    private static ensureHydrated(): void {
+        if (state.isHydratedSnapshot || state.hydratePromise) return;
+        state.hydratePromise = RunHelpers.hydrate().finally(() => {
+            state.hydratePromise = null;
+        });
     }
 
     private static async getUserId(): Promise<string> {
@@ -45,7 +70,8 @@ export default class RunHelpers {
 
     /** Every game paired with its stored run, from the in-memory cache populated by hydrate(). */
     static getSnapshot(): GameRun[] {
-        return RunHelpers.cachedSnapshot;
+        RunHelpers.ensureHydrated();
+        return state.cachedSnapshot;
     }
 
     /** The snapshot to use during server rendering, before hydrate() has run. */
@@ -55,7 +81,8 @@ export default class RunHelpers {
 
     /** Whether hydrate() has completed at least once, so an empty getSnapshot() can be trusted as "no run" rather than "not loaded yet". */
     static getIsHydratedSnapshot(): boolean {
-        return RunHelpers.isHydratedSnapshot;
+        RunHelpers.ensureHydrated();
+        return state.isHydratedSnapshot;
     }
 
     /** The isHydrated snapshot to use during server rendering — always false, since hydrate() only ever runs client-side. */
@@ -82,11 +109,11 @@ export default class RunHelpers {
             (data ?? []).map((row) => [row.game_slug, row.data as Run])
         );
 
-        RunHelpers.cachedSnapshot = GAMES.map((game) => ({
+        state.cachedSnapshot = GAMES.map((game) => ({
             game,
             run: bySlug.get(StringHelpers.toSlug(game.name)) ?? null,
         }));
-        RunHelpers.isHydratedSnapshot = true;
+        state.isHydratedSnapshot = true;
         RunHelpers.notifyListeners();
     }
 
@@ -100,7 +127,7 @@ export default class RunHelpers {
             .from('runs')
             .upsert({ user_id: userId, game_slug: gameSlug, data: run });
 
-        RunHelpers.cachedSnapshot = RunHelpers.cachedSnapshot.map((entry) =>
+        state.cachedSnapshot = state.cachedSnapshot.map((entry) =>
             entry.game === game ? { ...entry, run } : entry
         );
         RunHelpers.notifyListeners();
@@ -118,7 +145,7 @@ export default class RunHelpers {
             .eq('user_id', userId)
             .eq('game_slug', gameSlug);
 
-        RunHelpers.cachedSnapshot = RunHelpers.cachedSnapshot.map((entry) =>
+        state.cachedSnapshot = state.cachedSnapshot.map((entry) =>
             entry.game === game ? { ...entry, run: null } : entry
         );
         RunHelpers.notifyListeners();
