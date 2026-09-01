@@ -8,6 +8,7 @@ import {
     useRouter,
     useSearchParams,
 } from 'next/navigation';
+import Spinner from '@/components/common/Spinner/Spinner';
 import Tabs from '@/components/common/Tabs/Tabs';
 import { GAMES } from '@/lib/data/games';
 import { CaughtPokemon } from '@/lib/static/types';
@@ -382,8 +383,17 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
 
     if (!isHydrated) {
         return (
-            <div className={styles['run-page']}>
-                <span className={styles.loading}>Loading…</span>
+            <div
+                className={styles['run-page']}
+                style={
+                    {
+                        '--accent-color': game.accentColor,
+                    } as React.CSSProperties
+                }
+            >
+                <div className={styles.loading}>
+                    <Spinner />
+                </div>
             </div>
         );
     }
