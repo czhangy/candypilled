@@ -35,6 +35,7 @@ const PLATINUM: Game = {
     encounters: ENCOUNTERS,
     battles: BATTLES,
     metLocationById: MET_LOCATIONS,
+    roamers: [{ species: 'mesprit', level: 50 }],
     resources: [
         {
             text: 'Gen IV AI',

@@ -1,0 +1,16 @@
+@use '@/styles/mixins' as *;
+
+.location-select-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+
+        .confirm-button {
+            @include solid-accent-button;
+        }
+    }
+}

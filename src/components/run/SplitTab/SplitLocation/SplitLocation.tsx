@@ -2,6 +2,7 @@
 
 import { useState, useSyncExternalStore } from 'react';
 import { StaticImageData } from 'next/image';
+import LocationSelectModal from '@/components/run/LocationSelectModal/LocationSelectModal';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { EncounterMethod, MapAnchor, PokemonStatus } from '@/lib/static/enums';
 import {
@@ -169,6 +170,20 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const [speciesOverride, setSpeciesOverride] = useState<string | undefined>(
         undefined
     );
+    const [pendingHatchDetails, setPendingHatchDetails] = useState<
+        | Pick<
+              CaughtPokemon,
+              | 'ability'
+              | 'evs'
+              | 'gender'
+              | 'ivs'
+              | 'level'
+              | 'moves'
+              | 'nature'
+              | 'slug'
+          >
+        | undefined
+    >(undefined);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -206,7 +221,8 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             | 'moves'
             | 'nature'
             | 'slug'
-        >
+        >,
+        hatchLocation?: string
     ): Promise<void> => {
         const updatedRun: Run = {
             ...run,
@@ -215,10 +231,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                 {
                     ...details,
                     heldItem: '',
-                    // An egg's actual hatch location isn't tracked, so it's
-                    // recorded under a placeholder location rather than the
-                    // encounter's own (misleading) one.
-                    location: isEggEncounter ? 'Mystery Zone' : location.name,
+                    location: isEggEncounter
+                        ? (hatchLocation ?? '')
+                        : location.name,
                     status: PokemonStatus.Alive,
                 },
             ],
@@ -228,6 +243,32 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         };
 
         await RunHelpers.saveRun(game, updatedRun);
+    };
+
+    const handlePokedexTileAddPokemon = (
+        details: Pick<
+            CaughtPokemon,
+            | 'ability'
+            | 'evs'
+            | 'gender'
+            | 'ivs'
+            | 'level'
+            | 'moves'
+            | 'nature'
+            | 'slug'
+        >
+    ): void => {
+        if (isEggEncounter) {
+            setPendingHatchDetails(details);
+            return;
+        }
+
+        handleAddPokemon(details);
+    };
+
+    const handleHatchLocationSelect = (hatchLocation: string): void => {
+        if (!pendingHatchDetails) return;
+        handleAddPokemon(pendingHatchDetails, hatchLocation);
     };
 
     const handleRemovePokemon = async (): Promise<void> => {
@@ -508,7 +549,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         isLocationMissed={isMissed}
                                         isStarterEncounter={isStarterEncounter}
                                         mode="catch"
-                                        onAddPokemon={handleAddPokemon}
+                                        onAddPokemon={
+                                            handlePokedexTileAddPokemon
+                                        }
                                         onRemovePokemon={handleRemovePokemon}
                                         onSelectAbility={onSelectAbility}
                                         onSelectLocation={onSelectLocation}
@@ -531,6 +574,14 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                         </div>
                     </div>
                 </div>
+            )}
+            {pendingHatchDetails && (
+                <LocationSelectModal
+                    game={game}
+                    onClose={() => setPendingHatchDetails(undefined)}
+                    onSelect={handleHatchLocationSelect}
+                    options={RunHelpers.getAvailableLocationOptions(game, run)}
+                />
             )}
         </div>
     );
