@@ -22,6 +22,7 @@ const WAKE: Split = {
         LocationHelpers.withHiddenBattles(VALOR_LAKEFRONT),
         SEVEN_STARS_RESTAURANT,
         ROUTE_213,
+        LocationHelpers.withHiddenBattles(PASTORIA_CITY),
         GREAT_MARSH,
         LocationHelpers.withHiddenSubareaBattles(
             LocationHelpers.withSubareaOrder(ROUTE_212, [

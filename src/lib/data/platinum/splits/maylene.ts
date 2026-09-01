@@ -15,6 +15,17 @@ const MAYLENE: Split = {
         LocationHelpers.withSubareaOrder(HEARTHOME_CITY, ['Gate', 'City']),
         ROUTE_209,
         SOLACEON_RUINS,
+        LocationHelpers.withHiddenSubareaBattles(
+            LocationHelpers.withSubareaOrder(ROUTE_209, [
+                'Tower 1F',
+                'Tower 2F',
+                'Tower 3F',
+                'Tower 4F',
+                'Tower 5F',
+                'Main',
+            ]),
+            ['Main']
+        ),
         LocationHelpers.withHiddenSubareaBattles(ROUTE_210, ['North']),
         CAFE_CABIN,
         ROUTE_215,

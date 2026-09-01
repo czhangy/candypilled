@@ -8,29 +8,9 @@ type GameRun = {
     run: Run | null;
 };
 
-type RunHelpersState = {
-    // Runs by game slug, not by Game object: a Game reference would pin
-    // the huge battles/encounters data of whichever module instance was
-    // current when hydrate() last ran, leaking it across every HMR reload
-    // of this module's dependency chain. cachedSnapshot is re-derived
-    // against the current module's GAMES on every read instead.
-    runsBySlug: Map<string, Run>;
-    isHydratedSnapshot: boolean;
-    hydratePromise: Promise<void> | null;
-};
-
-declare global {
-    var __runHelpersState: RunHelpersState | undefined;
-}
-
-// Kept on globalThis (not a class static) so a dev Fast Refresh reload of
-// this module doesn't reset hydration state and strand the UI in a
-// permanent loading state.
-const state: RunHelpersState = (globalThis.__runHelpersState ??= {
-    runsBySlug: new Map(),
-    isHydratedSnapshot: false,
-    hydratePromise: null,
-});
+// In dev, runs are read from/written to localStorage synchronously instead
+// of Supabase, so guarded routes render without a real session.
+const IS_DEV = process.env.NODE_ENV === 'development';
 
 export default class RunHelpers {
     // -------------------------------------------------------------------------
@@ -39,37 +19,14 @@ export default class RunHelpers {
 
     private static readonly EMPTY_SNAPSHOT: GameRun[] = [];
     private static readonly listeners = new Set<() => void>();
-    // Derived from state.runsBySlug against the current module's GAMES.
-    // Deliberately a plain class static (reset on every HMR reload, unlike
-    // state) so it never pins a stale module instance's Game objects.
-    private static derivedSnapshot: {
-        runsBySlug: Map<string, Run>;
-        snapshot: GameRun[];
-    } | null = null;
+    private static cachedSnapshot: GameRun[] = RunHelpers.EMPTY_SNAPSHOT;
+    private static isHydratedSnapshot = false;
+    // Dev-only: last-seen concatenation of every game's localStorage entry,
+    // to detect external changes without re-parsing on every read.
+    private static cachedRaw: string | null = null;
 
     private static notifyListeners(): void {
         RunHelpers.listeners.forEach((listener) => listener());
-    }
-
-    private static getDerivedSnapshot(): GameRun[] {
-        if (RunHelpers.derivedSnapshot?.runsBySlug === state.runsBySlug) {
-            return RunHelpers.derivedSnapshot.snapshot;
-        }
-
-        const snapshot = GAMES.map((game) => ({
-            game,
-            run: state.runsBySlug.get(StringHelpers.toSlug(game.name)) ?? null,
-        }));
-        RunHelpers.derivedSnapshot = { runsBySlug: state.runsBySlug, snapshot };
-        return snapshot;
-    }
-
-    /** Kicks off hydrate() if it hasn't run yet and isn't already in flight, so any consumer can recover hydration without depending on AuthProvider's mount effect having fired. */
-    private static ensureHydrated(): void {
-        if (state.isHydratedSnapshot || state.hydratePromise) return;
-        state.hydratePromise = RunHelpers.hydrate().finally(() => {
-            state.hydratePromise = null;
-        });
     }
 
     private static async getUserId(): Promise<string> {
@@ -81,22 +38,58 @@ export default class RunHelpers {
         return user.id;
     }
 
+    // Backfills fields added to Run after a run may have already been
+    // stored, so older dev localStorage saves don't crash code that
+    // assumes they're present.
+    private static migrateRun(parsed: unknown): Run {
+        const run = parsed as Run;
+        return { ...run, completedSplits: run.completedSplits ?? [] };
+    }
+
+    private static readLocalRaw(): string {
+        return GAMES.map(
+            (game) =>
+                localStorage.getItem(StringHelpers.toSlug(game.name)) ?? ''
+        ).join('|');
+    }
+
+    private static getLocalSnapshot(): GameRun[] {
+        const raw = RunHelpers.readLocalRaw();
+        if (raw === RunHelpers.cachedRaw) return RunHelpers.cachedSnapshot;
+
+        RunHelpers.cachedRaw = raw;
+        RunHelpers.cachedSnapshot = GAMES.map((game) => {
+            const stored = localStorage.getItem(
+                StringHelpers.toSlug(game.name)
+            );
+            return {
+                game,
+                run: stored ? RunHelpers.migrateRun(JSON.parse(stored)) : null,
+            };
+        });
+
+        return RunHelpers.cachedSnapshot;
+    }
+
     // -------------------------------------------------------------------------
     // PUBLIC
     // -------------------------------------------------------------------------
 
     /** Subscribes to run changes, returning an unsubscribe function. */
     static subscribe(callback: () => void): () => void {
+        if (IS_DEV) window.addEventListener('storage', callback);
         RunHelpers.listeners.add(callback);
         return () => {
+            if (IS_DEV) window.removeEventListener('storage', callback);
             RunHelpers.listeners.delete(callback);
         };
     }
 
-    /** Every game paired with its stored run, from the in-memory cache populated by hydrate(). */
+    /** Every game paired with its stored run — read live from localStorage in dev, otherwise from the in-memory cache populated by hydrate(). */
     static getSnapshot(): GameRun[] {
-        RunHelpers.ensureHydrated();
-        return RunHelpers.getDerivedSnapshot();
+        return IS_DEV
+            ? RunHelpers.getLocalSnapshot()
+            : RunHelpers.cachedSnapshot;
     }
 
     /** The snapshot to use during server rendering, before hydrate() has run. */
@@ -104,10 +97,9 @@ export default class RunHelpers {
         return RunHelpers.EMPTY_SNAPSHOT;
     }
 
-    /** Whether hydrate() has completed at least once, so an empty getSnapshot() can be trusted as "no run" rather than "not loaded yet". */
+    /** Whether run data is ready to read — always true in dev (localStorage is synchronous), otherwise whether hydrate() has completed at least once. */
     static getIsHydratedSnapshot(): boolean {
-        RunHelpers.ensureHydrated();
-        return state.isHydratedSnapshot;
+        return IS_DEV ? true : RunHelpers.isHydratedSnapshot;
     }
 
     /** The isHydrated snapshot to use during server rendering — always false, since hydrate() only ever runs client-side. */
@@ -126,20 +118,35 @@ export default class RunHelpers {
         ];
     }
 
-    /** Fetches every run belonging to the current user and populates the cache. */
+    /** Fetches every run belonging to the current user and populates the cache. No-op in dev, since getSnapshot() reads localStorage directly. */
     static async hydrate(): Promise<void> {
+        if (IS_DEV) return;
+
         const supabase = SupabaseBrowserHelpers.createClient();
         const { data } = await supabase.from('runs').select('game_slug, data');
-
-        state.runsBySlug = new Map(
+        const bySlug = new Map(
             (data ?? []).map((row) => [row.game_slug, row.data as Run])
         );
-        state.isHydratedSnapshot = true;
+
+        RunHelpers.cachedSnapshot = GAMES.map((game) => ({
+            game,
+            run: bySlug.get(StringHelpers.toSlug(game.name)) ?? null,
+        }));
+        RunHelpers.isHydratedSnapshot = true;
         RunHelpers.notifyListeners();
     }
 
     /** Persists run for game and notifies subscribers. */
     static async saveRun(game: Game, run: Run): Promise<void> {
+        if (IS_DEV) {
+            localStorage.setItem(
+                StringHelpers.toSlug(game.name),
+                JSON.stringify(run)
+            );
+            RunHelpers.notifyListeners();
+            return;
+        }
+
         const supabase = SupabaseBrowserHelpers.createClient();
         const userId = await RunHelpers.getUserId();
         const gameSlug = StringHelpers.toSlug(game.name);
@@ -148,12 +155,20 @@ export default class RunHelpers {
             .from('runs')
             .upsert({ user_id: userId, game_slug: gameSlug, data: run });
 
-        state.runsBySlug = new Map(state.runsBySlug).set(gameSlug, run);
+        RunHelpers.cachedSnapshot = RunHelpers.cachedSnapshot.map((entry) =>
+            entry.game === game ? { ...entry, run } : entry
+        );
         RunHelpers.notifyListeners();
     }
 
     /** Deletes the stored run for game and notifies subscribers. */
     static async deleteRun(game: Game): Promise<void> {
+        if (IS_DEV) {
+            localStorage.removeItem(StringHelpers.toSlug(game.name));
+            RunHelpers.notifyListeners();
+            return;
+        }
+
         const supabase = SupabaseBrowserHelpers.createClient();
         const userId = await RunHelpers.getUserId();
         const gameSlug = StringHelpers.toSlug(game.name);
@@ -164,9 +179,9 @@ export default class RunHelpers {
             .eq('user_id', userId)
             .eq('game_slug', gameSlug);
 
-        const runsBySlug = new Map(state.runsBySlug);
-        runsBySlug.delete(gameSlug);
-        state.runsBySlug = runsBySlug;
+        RunHelpers.cachedSnapshot = RunHelpers.cachedSnapshot.map((entry) =>
+            entry.game === game ? { ...entry, run: null } : entry
+        );
         RunHelpers.notifyListeners();
     }
 }
