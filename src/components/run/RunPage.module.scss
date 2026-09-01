@@ -86,6 +86,16 @@
         }
     }
 
+    .loading {
+        @include mono-label;
+
+        align-items: center;
+        color: $text-mid;
+        display: flex;
+        flex: 1;
+        justify-content: center;
+    }
+
     .wipe-message {
         align-items: center;
         display: flex;

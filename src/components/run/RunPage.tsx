@@ -68,6 +68,11 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
         RunHelpers.getSnapshot,
         RunHelpers.getServerSnapshot
     );
+    const isHydrated = useSyncExternalStore(
+        RunHelpers.subscribe,
+        RunHelpers.getIsHydratedSnapshot,
+        RunHelpers.getServerIsHydratedSnapshot
+    );
 
     const router = useRouter();
     const pathname = usePathname();
@@ -371,7 +376,19 @@ const RunPage: React.FC<RunPageProps> = ({ slug }) => {
     // MARKUP
     // -------------------------------------------------------------------------
 
-    if (!game || !run) {
+    if (!game) {
+        notFound();
+    }
+
+    if (!isHydrated) {
+        return (
+            <div className={styles['run-page']}>
+                <span className={styles.loading}>Loading…</span>
+            </div>
+        );
+    }
+
+    if (!run) {
         notFound();
     }
 

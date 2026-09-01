@@ -31,6 +31,10 @@ const PEARL: Game = {
     // handful of classes (e.g. School Kid M, Skier F, Socialite), so they
     // keep their own folder rather than sharing Platinum's.
     trainerAssetFolder: TrainerAssetFolder.DiamondPearl,
+    genders: {
+        male: '/trainers/diamond-pearl/lucas.png',
+        female: '/trainers/diamond-pearl/dawn.png',
+    },
     starters: ['turtwig', 'chimchar', 'piplup'],
     accentColor: '#E0A0C0',
     encounters: ENCOUNTERS,

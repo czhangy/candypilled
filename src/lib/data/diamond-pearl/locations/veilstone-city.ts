@@ -6,6 +6,16 @@ const VEILSTONE_CITY: Location = {
     name: 'Veilstone City',
     map: veilstoneCity,
     mapAnchor: MapAnchor.TopLeft,
+    tagPartner: [
+        {
+            battleKey: 'pkmn-trainer-dawn-veilstone-city-tag',
+            gender: 'male',
+        },
+        {
+            battleKey: 'pkmn-trainer-lucas-veilstone-city-tag',
+            gender: 'female',
+        },
+    ],
     battles: [
         {
             metadata: [BattleMetadata.Tag],

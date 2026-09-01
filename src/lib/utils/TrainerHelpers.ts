@@ -20,4 +20,13 @@ export default class TrainerHelpers {
         const { spriteSlug } = TRAINER_CLASSES[trainerClass];
         return `/trainers/${trainerAssetFolder}/${spriteSlug}.png`;
     }
+
+    /** The back-sprite path used for trainerClass when shown as a tag partner, served from trainerAssetFolder. */
+    static getTagPartnerSprite(
+        trainerClass: string,
+        trainerAssetFolder: TrainerAssetFolder
+    ): string {
+        const { spriteSlug } = TRAINER_CLASSES[trainerClass];
+        return `/trainers/${trainerAssetFolder}/${spriteSlug}-tag.png`;
+    }
 }

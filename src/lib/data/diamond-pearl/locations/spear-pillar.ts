@@ -6,6 +6,7 @@ const SPEAR_PILLAR: Location = {
     name: 'Spear Pillar',
     map: spearPillar,
     mapAnchor: MapAnchor.Bottom,
+    tagPartner: [{ battleKey: 'pkmn-trainer-barry-spear-pillar-tag' }],
     battles: [
         {
             metadata: [BattleMetadata.Double],

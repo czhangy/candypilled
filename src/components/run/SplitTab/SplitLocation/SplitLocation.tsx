@@ -162,6 +162,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const [selectedBattle, setSelectedBattle] = useState<Battle | undefined>(
         () => getDefaultSelectedBattle(getInitialSubareaIndex())
     );
+    const [isTagPartnerSelected, setIsTagPartnerSelected] = useState(false);
     const [selectedEncounter, setSelectedEncounter] = useState<
         Encounter | undefined
     >(undefined);
@@ -182,6 +183,11 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         setSelectedBattle(getDefaultSelectedBattle(index));
         setSelectedEncounter(undefined);
         setSpeciesOverride(undefined);
+        setIsTagPartnerSelected(false);
+    };
+
+    const handleTagPartnerClick = (): void => {
+        setIsTagPartnerSelected(true);
     };
 
     const handleEncounterSelect = (encounter: Encounter): void => {
@@ -287,6 +293,22 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                 : undefined,
         };
     }
+    const currentTagPartner = BattleHelpers.filterByGender(
+        (location.subareas
+            ? location.subareas[selectedSubareaIndex].tagPartner
+            : location.tagPartner) ?? [],
+        run.gender
+    )[0];
+    const isTagPartnerHidden = location.subareas
+        ? location.hideBattles ||
+          location.subareas[selectedSubareaIndex].hideBattles
+        : location.hideBattles;
+    const tagPartnerBattleKey = isTagPartnerHidden
+        ? undefined
+        : currentTagPartner?.battleKey;
+    const tagPartnerBattle: Battle | undefined = tagPartnerBattleKey
+        ? { battleKey: tagPartnerBattleKey, metadata: [], x: 0, y: 0 }
+        : undefined;
     const isStarterEncounter = selectedEncounter
         ? selectedEncounter.method === EncounterMethod.Starter
         : !!encounter &&
@@ -405,19 +427,40 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                               )
                                             : undefined
                                     }
+                                    isTagPartnerSelected={isTagPartnerSelected}
                                     map={section.map}
                                     mapAnchor={section.mapAnchor}
                                     onBattleClick={(battle: Battle) => {
                                         setSelectedBattle(battle);
+                                        setIsTagPartnerSelected(false);
                                         onSelectBattleMarker(
                                             BattleHelpers.getBattleKey(battle)
                                         );
                                     }}
+                                    onTagPartnerClick={handleTagPartnerClick}
                                     priority={index === 0}
                                     selectedBattle={selectedBattle}
+                                    tagPartnerBattleKey={tagPartnerBattleKey}
                                 />
                             )}
-                            {selectedBattle &&
+                            {isTagPartnerSelected && tagPartnerBattle ? (
+                                <BattleCard
+                                    battle={tagPartnerBattle}
+                                    game={game}
+                                    generation={game.generation}
+                                    isTagPartner
+                                    labelOverride="Partner"
+                                    onSelectAbility={onSelectAbility}
+                                    onSelectItem={onSelectItem}
+                                    onSelectMove={onSelectMove}
+                                    onSelectSpecies={onSelectSpecies}
+                                    onSelectTrainer={onSelectTrainer}
+                                    starter={run.starter}
+                                    variant={variant}
+                                    version={game.version}
+                                />
+                            ) : (
+                                selectedBattle &&
                                 section.battles.includes(selectedBattle) && (
                                     <BattleCard
                                         battle={selectedBattle}
@@ -432,7 +475,8 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         variant={variant}
                                         version={game.version}
                                     />
-                                )}
+                                )
+                            )}
                             {section.encounters && !allEncountersHidden && (
                                 <div className={styles['encounters-row']}>
                                     <EncounterTable

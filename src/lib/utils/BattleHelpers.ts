@@ -6,6 +6,7 @@ import {
     BattleTeamGroup,
     Game,
     Location,
+    TagPartner,
 } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
@@ -121,14 +122,12 @@ export default class BattleHelpers {
         });
     }
 
-    /** battles restricted to gender: entries with no `gender` always pass, entries with one only pass for a matching run gender. */
-    static filterByGender(
-        battles: Battle[],
+    /** items restricted to gender: entries with no `gender` always pass, entries with one only pass for a matching run gender. Shared by Battle[] and TagPartner[], both of which carry an optional gender field. */
+    static filterByGender<T extends { gender?: 'male' | 'female' }>(
+        items: T[],
         gender: 'male' | 'female' | undefined
-    ): Battle[] {
-        return battles.filter(
-            (battle) => !battle.gender || battle.gender === gender
-        );
+    ): T[] {
+        return items.filter((item) => !item.gender || item.gender === gender);
     }
 
     /** The team belonging to the battle keyed by battleKey within game, resolved for starter, or [] if battleKey is undefined or doesn't match any battle. */
@@ -146,6 +145,78 @@ export default class BattleHelpers {
         return battle
             ? BattleHelpers.getTeamFromOptions(battle, starter, game)
             : [];
+    }
+
+    /**
+     * Every location/subarea's tag partner in game for gender, paired with
+     * its trainer's display label, excluding one hidden via
+     * location/subarea hideBattles or restricted to the other gender. A
+     * partner reused across more than one location keeps only its first
+     * occurrence, same as getAllBattles.
+     */
+    static getAllTagPartners(
+        game: Game,
+        gender: 'male' | 'female' | undefined
+    ): { battleKey: string; label: string }[] {
+        const toEntry = (
+            tagPartner: TagPartner
+        ): { battleKey: string; label: string } => ({
+            battleKey: tagPartner.battleKey,
+            label: BattleHelpers.getFullName(
+                { battleKey: tagPartner.battleKey, metadata: [], x: 0, y: 0 },
+                game
+            ),
+        });
+
+        const entries = game.splits.flatMap((split) =>
+            split.locations.flatMap((location) => {
+                if (location.subareas) {
+                    return location.subareas
+                        .filter(
+                            (subarea) =>
+                                !location.hideBattles && !subarea.hideBattles
+                        )
+                        .flatMap((subarea) =>
+                            BattleHelpers.filterByGender(
+                                subarea.tagPartner ?? [],
+                                gender
+                            ).map(toEntry)
+                        );
+                }
+                return location.hideBattles
+                    ? []
+                    : BattleHelpers.filterByGender(
+                          location.tagPartner ?? [],
+                          gender
+                      ).map(toEntry);
+            })
+        );
+
+        const seen = new Set<string>();
+        return entries.filter((entry) => {
+            if (seen.has(entry.battleKey)) return false;
+            seen.add(entry.battleKey);
+            return true;
+        });
+    }
+
+    /**
+     * tagPartnerBattleKey's full team for starter, resolved the same way a
+     * placed Battle's roster is — a tag partner has no map placement of its
+     * own, so its team is looked up directly rather than via getAllBattles.
+     */
+    static getTagPartnerTeam(
+        game: Game,
+        battleKey: string | undefined,
+        starter: string
+    ): BattlePokemon[] {
+        if (!battleKey) return [];
+
+        return BattleHelpers.getTeamFromOptions(
+            { battleKey, metadata: [], x: 0, y: 0 },
+            starter,
+            game
+        );
     }
 
     // -------------------------------------------------------------------------

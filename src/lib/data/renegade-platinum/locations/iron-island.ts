@@ -87,6 +87,7 @@ const IRON_ISLAND: Location = {
             map: ironIslandB2fWest,
             mapAnchor: MapAnchor.Top,
             encountersKey: 'iron-island-inside',
+            tagPartner: [{ battleKey: 'pkmn-trainer-riley-tag' }],
             battles: [
                 {
                     battleKey: 'hiker-damon',

@@ -13,6 +13,16 @@ const JUBILIFE_CITY: Location = {
             name: 'City',
             map: jubilifeCityCity,
             mapAnchor: MapAnchor.BottomRight,
+            tagPartner: [
+                {
+                    battleKey: 'pkmn-trainer-dawn-jubilife-city-tag',
+                    gender: 'male',
+                },
+                {
+                    battleKey: 'pkmn-trainer-lucas-jubilife-city-tag',
+                    gender: 'female',
+                },
+            ],
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-jubilife-city',

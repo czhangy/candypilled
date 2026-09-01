@@ -6,6 +6,7 @@ import { MapAnchor } from '@/lib/static/enums';
 import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import styles from './LocationMap.module.scss';
+import TagPartnerButton from './TagPartnerButton/TagPartnerButton';
 import TrainerMarker from './TrainerMarker/TrainerMarker';
 
 type LocationMapProps = {
@@ -13,11 +14,14 @@ type LocationMapProps = {
     battles?: Battle[];
     game: Game;
     id?: string;
+    isTagPartnerSelected?: boolean;
     map: StaticImageData;
     mapAnchor: MapAnchor;
     onBattleClick: (battle: Battle) => void;
+    onTagPartnerClick?: () => void;
     priority: boolean;
     selectedBattle?: Battle;
+    tagPartnerBattleKey?: string;
 };
 
 const LocationMap: React.FC<LocationMapProps> = ({
@@ -25,11 +29,14 @@ const LocationMap: React.FC<LocationMapProps> = ({
     battles = [],
     game,
     id,
+    isTagPartnerSelected,
     map,
     mapAnchor,
     onBattleClick,
+    onTagPartnerClick,
     priority,
     selectedBattle,
+    tagPartnerBattleKey,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
@@ -384,6 +391,14 @@ const LocationMap: React.FC<LocationMapProps> = ({
                         </>
                     )}
                 </div>
+                {tagPartnerBattleKey && (
+                    <TagPartnerButton
+                        battleKey={tagPartnerBattleKey}
+                        game={game}
+                        isSelected={!!isTagPartnerSelected}
+                        onClick={onTagPartnerClick ?? (() => {})}
+                    />
+                )}
             </div>
         </div>
     );

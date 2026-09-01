@@ -108,6 +108,7 @@ const HofTeam: React.FC<HofTeamProps> = ({
                     generation={generation}
                     hofDisplay
                     isReadOnly
+                    isTagPartner={false}
                     key={pokemon ? pokemon.location : `empty-${index}`}
                     onSelectItem={() => handleSelectItem(index)}
                     onSelectMove={(slug) => handleSelectMove(index, slug)}

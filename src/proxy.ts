@@ -1,7 +1,7 @@
 import { type NextRequest } from 'next/server';
 import SupabaseMiddlewareHelpers from '@/lib/utils/SupabaseMiddlewareHelpers';
 
-export const middleware = (request: NextRequest) =>
+export const proxy = (request: NextRequest) =>
     SupabaseMiddlewareHelpers.updateSession(request);
 
 export const config = {

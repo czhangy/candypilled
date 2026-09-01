@@ -10,6 +10,7 @@ const WAYWARD_CAVE: Location = {
             map: waywardCave1f,
             mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'wayward-cave-1f',
+            tagPartner: [{ battleKey: 'pkmn-trainer-mira-tag' }],
             battles: [
                 {
                     metadata: [BattleMetadata.Optional],
