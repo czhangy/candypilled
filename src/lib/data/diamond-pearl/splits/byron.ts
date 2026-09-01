@@ -3,6 +3,8 @@ import CANALAVE_GYM from '@/lib/data/diamond-pearl/locations/canalave-gym';
 import FUEGO_IRONWORKS from '@/lib/data/diamond-pearl/locations/fuego-ironworks';
 import IRON_ISLAND from '@/lib/data/diamond-pearl/locations/iron-island';
 import OREBURGH_GATE from '@/lib/data/diamond-pearl/locations/oreburgh-gate';
+import ROUTE_208 from '@/lib/data/diamond-pearl/locations/route-208';
+import ROUTE_213 from '@/lib/data/diamond-pearl/locations/route-213';
 import ROUTE_218 from '@/lib/data/diamond-pearl/locations/route-218';
 import ROUTE_219 from '@/lib/data/diamond-pearl/locations/route-219';
 import ROUTE_220 from '@/lib/data/diamond-pearl/locations/route-220';
@@ -21,6 +23,8 @@ const BYRON: Split = {
             LocationHelpers.withHiddenSubareaBattles(OREBURGH_GATE, ['1F']),
             ['B1F', '1F']
         ),
+        ROUTE_208,
+        ROUTE_213,
         ROUTE_218,
         CANALAVE_CITY,
         IRON_ISLAND,

@@ -20,6 +20,7 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const BYRON: Split = {
     name: 'Byron',
     locations: [
+        ROUTE_213,
         VALOR_LAKEFRONT,
         LocationHelpers.withHiddenSubareaBattles(
             LocationHelpers.withSubareaOrder(ROUTE_210, ['North', 'South']),
