@@ -9,13 +9,13 @@ const LAKE_VERITY: Location = {
     name: 'Lake Verity',
     subareas: [
         {
-            name: 'Pre-Galactic',
+            name: 'Pre-Byron',
             map: lakeVerityPreGalactic,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'lake-verity',
         },
         {
-            name: 'Post-Galactic',
+            name: 'Post-Byron',
             map: lakeVerityPostGalactic,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'lake-verity',

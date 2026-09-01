@@ -1,5 +1,6 @@
 export { default as aaronsRoom } from './aarons-room.png';
 export { default as acuityCavern } from './acuity-cavern.png';
+export { default as acuityLakefront } from './acuity-lakefront.png';
 export { default as berthasRoom } from './berthas-room.png';
 export { default as cafeCabin } from './cafe-cabin.png';
 export { default as canalaveCity } from './canalave-city.png';
@@ -159,6 +160,7 @@ export { default as veilstoneCity } from './veilstone-city.png';
 export { default as veilstoneCityPokemonCenter } from './veilstone-city-pokemon-center.png';
 export { default as veilstoneGym } from './veilstone-gym.png';
 export { default as verityCavern } from './verity-cavern.png';
+export { default as verityLakefront } from './verity-lakefront.png';
 export { default as victoryRoad1f } from './victory-road-1f.png';
 export { default as victoryRoad2f } from './victory-road-2f.png';
 export { default as victoryRoadB1f } from './victory-road-b1f.png';

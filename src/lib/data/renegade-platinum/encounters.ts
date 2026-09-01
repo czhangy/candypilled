@@ -4234,6 +4234,57 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             chance: 10,
         },
     ],
+    'acuity-lakefront': [
+        {
+            species: 'piloswine',
+            method: EncounterMethod.Walking,
+            minLevel: 45,
+            maxLevel: 49,
+            chance: 30,
+        },
+        {
+            species: 'snorunt',
+            method: EncounterMethod.Walking,
+            minLevel: 45,
+            maxLevel: 49,
+            chance: 20,
+        },
+        {
+            species: 'sneasel',
+            method: EncounterMethod.Walking,
+            minLevel: 45,
+            maxLevel: 49,
+            chance: 10,
+        },
+        {
+            species: 'jynx',
+            method: EncounterMethod.Walking,
+            minLevel: 45,
+            maxLevel: 49,
+            chance: 10,
+        },
+        {
+            species: 'abomasnow',
+            method: EncounterMethod.Walking,
+            minLevel: 45,
+            maxLevel: 49,
+            chance: 10,
+        },
+        {
+            species: 'glalie',
+            method: EncounterMethod.Walking,
+            minLevel: 45,
+            maxLevel: 49,
+            chance: 10,
+        },
+        {
+            species: 'delibird',
+            method: EncounterMethod.Walking,
+            minLevel: 45,
+            maxLevel: 49,
+            chance: 10,
+        },
+    ],
     'snowpoint-temple': [
         {
             species: 'golbat',

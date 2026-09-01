@@ -4,6 +4,7 @@ import GALACTIC_HQ from '@/lib/data/platinum/locations/galactic-hq';
 import LAKE_ACUITY from '@/lib/data/platinum/locations/lake-acuity';
 import MT_CORONET from '@/lib/data/platinum/locations/mt-coronet';
 import POKEMON_LEAGUE from '@/lib/data/platinum/locations/pokemon-league';
+import ROUTE_216 from '@/lib/data/platinum/locations/route-216';
 import ROUTE_222 from '@/lib/data/platinum/locations/route-222';
 import ROUTE_223 from '@/lib/data/platinum/locations/route-223';
 import SENDOFF_SPRING from '@/lib/data/platinum/locations/sendoff-spring';
@@ -16,6 +17,7 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const VOLKNER: Split = {
     name: 'Volkner',
     locations: [
+        ROUTE_216,
         LAKE_ACUITY,
         GALACTIC_HQ,
         LocationHelpers.withSubareaOrder(MT_CORONET, [

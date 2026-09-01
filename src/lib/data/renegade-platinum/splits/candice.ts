@@ -1,5 +1,8 @@
+import ACUITY_LAKEFRONT from '@/lib/data/renegade-platinum/locations/acuity-lakefront';
 import LAKE_VALOR from '@/lib/data/renegade-platinum/locations/lake-valor';
 import LAKE_VERITY from '@/lib/data/renegade-platinum/locations/lake-verity';
+import MT_CORONET from '@/lib/data/renegade-platinum/locations/mt-coronet';
+import ROUTE_216 from '@/lib/data/renegade-platinum/locations/route-216';
 import ROUTE_217 from '@/lib/data/renegade-platinum/locations/route-217';
 import SNOWPOINT_CITY from '@/lib/data/renegade-platinum/locations/snowpoint-city';
 import SNOWPOINT_GYM from '@/lib/data/renegade-platinum/locations/snowpoint-gym';
@@ -17,10 +20,19 @@ const CANDICE: Split = {
             'Post-Giratina',
         ]),
         LocationHelpers.withSubareaOrder(LAKE_VERITY, [
-            'Post-Galactic',
-            'Pre-Galactic',
+            'Post-Byron',
+            'Pre-Byron',
         ]),
+        LocationHelpers.withHiddenSubareaBattles(MT_CORONET, [
+            '3F',
+            '4F',
+            'Tunnel',
+            '5F',
+            '6F',
+        ]),
+        ROUTE_216,
         ROUTE_217,
+        ACUITY_LAKEFRONT,
         SNOWPOINT_CITY,
         SNOWPOINT_TEMPLE,
         SNOWPOINT_GYM,

@@ -15,7 +15,10 @@ const CANDICE: Split = {
     locations: [
         LAKE_VALOR,
         VALOR_CAVERN,
-        LAKE_VERITY,
+        LocationHelpers.withSubareaOrder(LAKE_VERITY, [
+            'Post-Byron',
+            'Pre-Byron',
+        ]),
         LocationHelpers.withHiddenBattles(
             LocationHelpers.withSubareaOrder(MT_CORONET, [
                 '1F (211)',
