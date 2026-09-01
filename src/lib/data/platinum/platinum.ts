@@ -26,6 +26,10 @@ const PLATINUM: Game = {
     dataSource: VANILLA_DATA_SOURCE,
     badgeAssetFolder: BadgeAssetFolder.Sinnoh,
     trainerAssetFolder: TrainerAssetFolder.Platinum,
+    genders: {
+        male: '/trainers/platinum/lucas.png',
+        female: '/trainers/platinum/dawn.png',
+    },
     starters: ['turtwig', 'chimchar', 'piplup'],
     accentColor: '#FFD500',
     encounters: ENCOUNTERS,

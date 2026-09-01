@@ -6,6 +6,16 @@ const JUBILIFE_CITY: Location = {
     name: 'Jubilife City',
     map: jubilifeCity,
     mapAnchor: MapAnchor.TopRight,
+    tagPartner: [
+        {
+            battleKey: 'pkmn-trainer-dawn-jubilife-city-tag',
+            gender: 'male',
+        },
+        {
+            battleKey: 'pkmn-trainer-lucas-jubilife-city-tag',
+            gender: 'female',
+        },
+    ],
     battles: [
         {
             metadata: [BattleMetadata.Tag],
