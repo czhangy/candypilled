@@ -1,18 +1,51 @@
-import { valleyWindworks } from '@/lib/data/platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import {
+    valleyWindworks,
+    valleyWindworksInterior,
+} from '@/lib/data/platinum/maps';
+import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VALLEY_WINDWORKS: Location = {
     name: 'Valley Windworks',
-    map: valleyWindworks,
-    mapAnchor: MapAnchor.Center,
-    encountersKey: 'valley-windworks',
-    battles: [
+    subareas: [
         {
-            metadata: [],
-            battleKey: 'galactic-grunt-m-valley-windworks',
-            x: 61.2,
-            y: 44.9,
+            name: 'Exterior',
+            map: valleyWindworks,
+            mapAnchor: MapAnchor.Center,
+            encountersKey: 'valley-windworks',
+            battles: [
+                {
+                    metadata: [],
+                    battleKey: 'galactic-grunt-m-valley-windworks',
+                    x: 61.2,
+                    y: 44.9,
+                },
+            ],
+        },
+        {
+            name: 'Interior',
+            map: valleyWindworksInterior,
+            mapAnchor: MapAnchor.Center,
+            battles: [
+                {
+                    metadata: [BattleMetadata.Optional],
+                    battleKey: 'galactic-grunt-m-valley-windworks-interior-1',
+                    x: 11.6,
+                    y: 45.2,
+                },
+                {
+                    metadata: [BattleMetadata.Optional],
+                    battleKey: 'galactic-grunt-m-valley-windworks-interior-2',
+                    x: 52.1,
+                    y: 15.4,
+                },
+                {
+                    metadata: [BattleMetadata.Miniboss],
+                    battleKey: 'commander-mars-valley-windworks-interior',
+                    x: 88.9,
+                    y: 40,
+                },
+            ],
         },
     ],
 };
