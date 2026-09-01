@@ -6,11 +6,12 @@ export default class RunImportHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    /** run with imported Pokémon merged in by location (dead locations kept as-is, new locations appended) and completedSplits set to exactly what the save reports. */
+    /** run with imported Pokémon merged in by location (dead locations kept as-is, new locations appended), completedSplits set to exactly what the save reports, and gender overwritten with the save's gender. */
     static mergeImport(
         run: Run,
         importedPokemon: CaughtPokemon[],
-        importedCompletedSplits: string[]
+        importedCompletedSplits: string[],
+        gender: 'male' | 'female'
     ): Run {
         const importedByLocation = new Map(
             importedPokemon.map((pokemon) => [pokemon.location, pokemon])
@@ -34,6 +35,7 @@ export default class RunImportHelpers {
             ...run,
             caughtPokemon: [...merged, ...newPokemon],
             completedSplits: importedCompletedSplits,
+            gender,
         };
     }
 }

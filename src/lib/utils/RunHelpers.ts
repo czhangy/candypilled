@@ -9,7 +9,12 @@ type GameRun = {
 };
 
 type RunHelpersState = {
-    cachedSnapshot: GameRun[];
+    // Runs by game slug, not by Game object: a Game reference would pin
+    // the huge battles/encounters data of whichever module instance was
+    // current when hydrate() last ran, leaking it across every HMR reload
+    // of this module's dependency chain. cachedSnapshot is re-derived
+    // against the current module's GAMES on every read instead.
+    runsBySlug: Map<string, Run>;
     isHydratedSnapshot: boolean;
     hydratePromise: Promise<void> | null;
 };
@@ -22,7 +27,7 @@ declare global {
 // this module doesn't reset hydration state and strand the UI in a
 // permanent loading state.
 const state: RunHelpersState = (globalThis.__runHelpersState ??= {
-    cachedSnapshot: [],
+    runsBySlug: new Map(),
     isHydratedSnapshot: false,
     hydratePromise: null,
 });
@@ -34,9 +39,29 @@ export default class RunHelpers {
 
     private static readonly EMPTY_SNAPSHOT: GameRun[] = [];
     private static readonly listeners = new Set<() => void>();
+    // Derived from state.runsBySlug against the current module's GAMES.
+    // Deliberately a plain class static (reset on every HMR reload, unlike
+    // state) so it never pins a stale module instance's Game objects.
+    private static derivedSnapshot: {
+        runsBySlug: Map<string, Run>;
+        snapshot: GameRun[];
+    } | null = null;
 
     private static notifyListeners(): void {
         RunHelpers.listeners.forEach((listener) => listener());
+    }
+
+    private static getDerivedSnapshot(): GameRun[] {
+        if (RunHelpers.derivedSnapshot?.runsBySlug === state.runsBySlug) {
+            return RunHelpers.derivedSnapshot.snapshot;
+        }
+
+        const snapshot = GAMES.map((game) => ({
+            game,
+            run: state.runsBySlug.get(StringHelpers.toSlug(game.name)) ?? null,
+        }));
+        RunHelpers.derivedSnapshot = { runsBySlug: state.runsBySlug, snapshot };
+        return snapshot;
     }
 
     /** Kicks off hydrate() if it hasn't run yet and isn't already in flight, so any consumer can recover hydration without depending on AuthProvider's mount effect having fired. */
@@ -71,7 +96,7 @@ export default class RunHelpers {
     /** Every game paired with its stored run, from the in-memory cache populated by hydrate(). */
     static getSnapshot(): GameRun[] {
         RunHelpers.ensureHydrated();
-        return state.cachedSnapshot;
+        return RunHelpers.getDerivedSnapshot();
     }
 
     /** The snapshot to use during server rendering, before hydrate() has run. */
@@ -105,14 +130,10 @@ export default class RunHelpers {
     static async hydrate(): Promise<void> {
         const supabase = SupabaseBrowserHelpers.createClient();
         const { data } = await supabase.from('runs').select('game_slug, data');
-        const bySlug = new Map(
+
+        state.runsBySlug = new Map(
             (data ?? []).map((row) => [row.game_slug, row.data as Run])
         );
-
-        state.cachedSnapshot = GAMES.map((game) => ({
-            game,
-            run: bySlug.get(StringHelpers.toSlug(game.name)) ?? null,
-        }));
         state.isHydratedSnapshot = true;
         RunHelpers.notifyListeners();
     }
@@ -127,9 +148,7 @@ export default class RunHelpers {
             .from('runs')
             .upsert({ user_id: userId, game_slug: gameSlug, data: run });
 
-        state.cachedSnapshot = state.cachedSnapshot.map((entry) =>
-            entry.game === game ? { ...entry, run } : entry
-        );
+        state.runsBySlug = new Map(state.runsBySlug).set(gameSlug, run);
         RunHelpers.notifyListeners();
     }
 
@@ -145,9 +164,9 @@ export default class RunHelpers {
             .eq('user_id', userId)
             .eq('game_slug', gameSlug);
 
-        state.cachedSnapshot = state.cachedSnapshot.map((entry) =>
-            entry.game === game ? { ...entry, run: null } : entry
-        );
+        const runsBySlug = new Map(state.runsBySlug);
+        runsBySlug.delete(gameSlug);
+        state.runsBySlug = runsBySlug;
         RunHelpers.notifyListeners();
     }
 }

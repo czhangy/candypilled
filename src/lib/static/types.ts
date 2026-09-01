@@ -487,13 +487,10 @@ export type Game = {
     // `version` — only set this when sprites should be resolved
     // formulaically from another game's folder instead.
     pokemonAssetFolder?: GameVersionGroup;
-    // The protagonist sprite shown for each gender option at run
-    // creation, when choosing matters for this game (it can change more
-    // than cosmetics, e.g. which trainer/team a battle resolves to — see
-    // BattleTeamCondition's 'gender' variant). Most games don't model
-    // this and omit the field entirely; it's only set for a game whose
-    // content actually diverges by gender.
-    genders?: { male: string; female: string };
+    // The protagonist sprite shown for each gender option at run creation
+    // (it can change more than cosmetics, e.g. which trainer/team a
+    // battle resolves to — see BattleTeamCondition's 'gender' variant).
+    genders: { male: string; female: string };
     splits: Split[];
     starters: string[];
     accentColor: string;
@@ -522,8 +519,7 @@ export type Run = {
     completedSplits: string[];
     hallOfFameCount: number;
     starter: string;
-    // Only set when this run's game defines Game.genders.
-    gender?: 'male' | 'female';
+    gender: 'male' | 'female';
     caughtPokemon: CaughtPokemon[];
     // Locations whose encounter was used up without catching anything (the
     // Pokémon fled, fainted, etc.), by location name — same key space as
