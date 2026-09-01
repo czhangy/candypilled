@@ -9,6 +9,8 @@
     border-radius: 0.5rem;
     display: flex;
     gap: 1.25rem;
+    margin: 0 auto;
+    max-width: $narrow-content-width;
     padding: 1.25rem;
     transition: background 0.2s ease;
 
@@ -46,13 +48,13 @@
                 width: 100%;
             }
 
-            .name {
+            .attempt {
                 @include mono-label;
 
+                color: $foreground;
                 font-size: 1.25rem;
             }
 
-            .attempt,
             .split,
             .boxes,
             .deaths,
@@ -115,7 +117,7 @@
 
             @media (hover: hover) {
                 &:hover {
-                    color: $foreground;
+                    color: var(--accent-color);
 
                     &::before {
                         opacity: 1;
