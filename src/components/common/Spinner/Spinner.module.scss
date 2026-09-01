@@ -1,0 +1,21 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.spinner {
+    animation: spin 0.7s linear infinite;
+    border: 3px solid $border-subtle;
+    border-radius: 50%;
+    border-top-color: var(--accent-color, $accent);
+    height: 3rem;
+    width: 3rem;
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+    }
+}
