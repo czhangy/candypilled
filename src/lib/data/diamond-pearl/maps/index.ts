@@ -63,6 +63,7 @@ export { default as mtCoronet5f } from './mt-coronet-5f.png';
 export { default as mtCoronet6f } from './mt-coronet-6f.png';
 export { default as mtCoronetB1f } from './mt-coronet-b1f.png';
 export { default as mtCoronetExterior } from './mt-coronet-exterior.png';
+export { default as mtCoronetSummit } from './mt-coronet-summit.png';
 export { default as mtCoronetTunnel } from './mt-coronet-tunnel.png';
 export { default as oldChateauBedrooms } from './old-chateau-bedrooms.png';
 export { default as oldChateauDiningRoom } from './old-chateau-dining-room.png';
