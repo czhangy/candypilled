@@ -29,4 +29,9 @@ export default class TrainerHelpers {
         const { spriteSlug } = TRAINER_CLASSES[trainerClass];
         return `/trainers/${trainerAssetFolder}/${spriteSlug}-tag.png`;
     }
+
+    /** The overworld sprite path for the protagonist sprite at genderSprite (one of a Game's `genders` values). */
+    static getOverworldSprite(genderSprite: string): string {
+        return genderSprite.replace(/\.png$/, '-overworld.png');
+    }
 }

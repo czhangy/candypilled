@@ -48,11 +48,32 @@
                 width: 100%;
             }
 
+            .sprites {
+                align-items: center;
+                display: flex;
+                gap: 0;
+            }
+
+            .gender {
+                flex-shrink: 0;
+                height: 2rem;
+                image-rendering: pixelated;
+                width: 2rem;
+            }
+
+            .starter {
+                flex-shrink: 0;
+                height: 1.5rem;
+                image-rendering: pixelated;
+                width: 2rem;
+            }
+
             .attempt {
                 @include mono-label;
 
                 color: $foreground;
-                font-size: 1.25rem;
+                font-size: 1.1rem;
+                line-height: 2rem;
             }
 
             .split,
@@ -62,6 +83,12 @@
                 color: $text-mid;
                 font-family: $font-mono;
                 font-size: 0.9rem;
+            }
+
+            .split,
+            .boxes,
+            .deaths {
+                font-size: 0.8rem;
             }
 
             .hall-of-fame {
@@ -99,7 +126,7 @@
             cursor: pointer;
             display: flex;
             font-family: $font-mono;
-            font-size: 1rem;
+            font-size: 0.85rem;
             font-weight: 700;
             gap: 0.375rem;
             justify-content: flex-end;
