@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { JetBrains_Mono } from 'next/font/google';
-import AuthProvider from '@/components/AuthProvider/AuthProvider';
+import AuthProvider from '@/components/layout/AuthProvider/AuthProvider';
 import Footer from '@/components/layout/Footer/Footer';
 import Navbar from '@/components/layout/Navbar/Navbar';
 import '@/lib/styles/globals.scss';
