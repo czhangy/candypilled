@@ -1,6 +1,6 @@
 import {
-    lakeVerityPostGalactic,
-    lakeVerityPreGalactic,
+    lakeVerityPostByron,
+    lakeVerityPreByron,
 } from '@/lib/data/diamond-pearl/maps';
 import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
@@ -10,13 +10,13 @@ const LAKE_VERITY: Location = {
     subareas: [
         {
             name: 'Pre-Byron',
-            map: lakeVerityPreGalactic,
+            map: lakeVerityPreByron,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'lake-verity',
         },
         {
             name: 'Post-Byron',
-            map: lakeVerityPostGalactic,
+            map: lakeVerityPostByron,
             mapAnchor: MapAnchor.Bottom,
             battles: [
                 {
