@@ -11,14 +11,14 @@ const ROUTE_219: Location = {
         {
             metadata: [BattleMetadata.Optional],
             battleKey: 'tuber-m-trenton',
-            x: 43.8,
-            y: 73.3,
+            x: 35.9,
+            y: 72.6,
         },
         {
             metadata: [BattleMetadata.Optional],
             battleKey: 'tuber-f-mariel',
-            x: 51.9,
-            y: 73.3,
+            x: 52,
+            y: 72.6,
         },
     ],
 };

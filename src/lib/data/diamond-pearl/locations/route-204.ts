@@ -1,4 +1,5 @@
 import { route204North, route204South } from '@/lib/data/diamond-pearl/maps';
+import { GEN_4_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
 import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
@@ -14,20 +15,20 @@ const ROUTE_204: Location = {
                 {
                     metadata: [BattleMetadata.Optional],
                     battleKey: 'lass-sarah',
-                    x: 37.6,
-                    y: 66.6,
+                    x: 39.1,
+                    y: 65.7,
                 },
                 {
                     metadata: [BattleMetadata.Optional],
                     battleKey: 'youngster-tyler',
-                    x: 21.8,
-                    y: 57.3,
+                    x: 23.8,
+                    y: 56.5,
                 },
                 {
                     metadata: [BattleMetadata.Optional],
                     battleKey: 'lass-samantha',
-                    x: 34.2,
-                    y: 27.2,
+                    x: 35.9,
+                    y: 25.4,
                 },
             ],
         },
@@ -40,24 +41,24 @@ const ROUTE_204: Location = {
                 {
                     metadata: [BattleMetadata.Optional],
                     battleKey: 'aroma-lady-taylor',
-                    x: 53.3,
-                    y: 59.7,
+                    x: 54.5,
+                    y: 62.8,
                 },
                 {
                     metadata: [BattleMetadata.Optional],
                     battleKey: 'bug-catcher-brandon',
-                    x: 63.3,
-                    y: 39.5,
+                    x: 70.5,
+                    y: 40.7,
                 },
                 {
                     metadata: [
                         BattleMetadata.Optional,
                         BattleMetadata.TrueDouble,
                     ],
-                    customWidth: 36,
+                    customWidth: GEN_4_TRUE_DOUBLE_WIDTH,
                     battleKey: 'twins-liv-and-liz',
-                    x: 48.3,
-                    y: 23.3,
+                    x: 50,
+                    y: 22.4,
                 },
             ],
         },

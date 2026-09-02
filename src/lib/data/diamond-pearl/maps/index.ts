@@ -123,6 +123,7 @@ export { default as teamGalacticEternaBuilding1f } from './team-galactic-eterna-
 export { default as teamGalacticEternaBuilding2f } from './team-galactic-eterna-building-2f.png';
 export { default as teamGalacticEternaBuilding3f } from './team-galactic-eterna-building-3f.png';
 export { default as teamGalacticEternaBuilding4f } from './team-galactic-eterna-building-4f.png';
+export { default as trainersSchool } from './trainers-school.png';
 export { default as trophyGarden } from './trophy-garden.png';
 export { default as twinleafTown } from './twinleaf-town.png';
 export { default as valleyWindworks } from './valley-windworks.png';

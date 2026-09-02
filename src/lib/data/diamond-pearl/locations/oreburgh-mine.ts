@@ -23,14 +23,14 @@ const OREBURGH_MINE: Location = {
                 {
                     metadata: [BattleMetadata.Optional],
                     battleKey: 'worker-colin',
-                    x: 26.6,
-                    y: 92,
+                    x: 26.7,
+                    y: 87.6,
                 },
                 {
                     metadata: [BattleMetadata.Optional],
                     battleKey: 'worker-mason',
-                    x: 83.1,
-                    y: 66.9,
+                    x: 82.7,
+                    y: 62.6,
                 },
             ],
         },

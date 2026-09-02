@@ -7,6 +7,7 @@ import styles from './TrainerMarker.module.scss';
 
 type TrainerMarkerProps = {
     game: Game;
+    isEditing: boolean;
     isPreview: boolean;
     isSelected: boolean;
     mapHeight: number;
@@ -17,6 +18,7 @@ type TrainerMarkerProps = {
 
 const TrainerMarker: React.FC<TrainerMarkerProps> = ({
     game,
+    isEditing,
     isPreview,
     isSelected,
     mapHeight,
@@ -67,6 +69,7 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
                 isBoss && styles['trainer-marker--boss'],
                 isSelected && styles['trainer-marker--selected'],
                 isPreview && styles['trainer-marker--preview'],
+                isEditing && styles['trainer-marker--editing'],
             ]
                 .filter(Boolean)
                 .join(' ')}

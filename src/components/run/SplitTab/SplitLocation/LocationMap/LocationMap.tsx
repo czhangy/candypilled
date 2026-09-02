@@ -350,6 +350,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
                     {battles.map((battle) => (
                         <TrainerMarker
                             game={game}
+                            isEditing={EDIT_MODE_ON && !!previewPosition}
                             isPreview={false}
                             isSelected={selectedBattle === battle}
                             key={BattleHelpers.getBattleKey(battle)}
@@ -363,6 +364,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
                         <>
                             <TrainerMarker
                                 game={game}
+                                isEditing
                                 isPreview
                                 isSelected={false}
                                 mapHeight={map.height}

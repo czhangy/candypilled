@@ -14214,4 +14214,42 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'school-kid-m-harrison': {
+        trainerClass: 'school-kid-m',
+        name: 'Harrison',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'abra',
+                        ability: 'synchronize',
+                        gender: 'male',
+                        level: 6,
+                        nature: Nature.Impish,
+                        moves: ['hidden-power'],
+                        ivs: 3,
+                    },
+                ],
+            },
+        ],
+    },
+    'school-kid-f-christine': {
+        trainerClass: 'school-kid-f',
+        name: 'Christine',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'abra',
+                        ability: 'synchronize',
+                        gender: 'female',
+                        level: 6,
+                        nature: Nature.Brave,
+                        moves: ['hidden-power'],
+                        ivs: 3,
+                    },
+                ],
+            },
+        ],
+    },
 };
