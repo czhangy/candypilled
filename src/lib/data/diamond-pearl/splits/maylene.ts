@@ -1,4 +1,6 @@
 import CAFE_CABIN from '@/lib/data/diamond-pearl/locations/cafe-cabin';
+import CYCLE_SHOP from '@/lib/data/diamond-pearl/locations/cycle-shop';
+import ETERNA_CITY from '@/lib/data/diamond-pearl/locations/eterna-city';
 import ETERNA_FOREST from '@/lib/data/diamond-pearl/locations/eterna-forest';
 import GREAT_MARSH from '@/lib/data/diamond-pearl/locations/great-marsh';
 import HEARTHOME_CITY from '@/lib/data/diamond-pearl/locations/hearthome-city';
@@ -29,12 +31,14 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const MAYLENE: Split = {
     name: 'Maylene',
     locations: [
+        ETERNA_CITY,
         OLD_CHATEAU,
         LocationHelpers.withSubareaOrder(ETERNA_FOREST, [
             'Exterior',
             'Interior',
         ]),
         TEAM_GALACTIC_ETERNA_BUILDING,
+        CYCLE_SHOP,
         ROUTE_206,
         MINING_MUSEUM,
         WAYWARD_CAVE,
