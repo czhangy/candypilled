@@ -19,9 +19,9 @@ const ROARK: Split = {
     name: 'Roark',
     locations: [
         TWINLEAF_TOWN,
+        ROUTE_201,
         LocationHelpers.withHiddenBattles(LAKE_VERITY),
         ROUTE_202,
-        ROUTE_201,
         LocationHelpers.withHiddenBattles(ROUTE_218),
         LocationHelpers.withHiddenBattles(ROUTE_219),
         LocationHelpers.withHiddenSubareaBattles(ROUTE_204, ['North']),
