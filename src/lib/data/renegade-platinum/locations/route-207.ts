@@ -1,11 +1,10 @@
 import { route207Dawn, route207Lucas } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_207: Location = {
     name: 'Route 207',
     map: { male: route207Dawn, female: route207Lucas },
-    mapAnchor: MapAnchor.Center,
     encountersKey: 'sinnoh-route-207',
     battles: [
         {

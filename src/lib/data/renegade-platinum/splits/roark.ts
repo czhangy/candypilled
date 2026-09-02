@@ -17,7 +17,6 @@ import TRAINERS_SCHOOL from '@/lib/data/renegade-platinum/locations/trainers-sch
 import TWINLEAF_TOWN from '@/lib/data/renegade-platinum/locations/twinleaf-town';
 import VERITY_LAKEFRONT from '@/lib/data/renegade-platinum/locations/verity-lakefront';
 import { Split } from '@/lib/static/types';
-import LocationHelpers from '@/lib/utils/LocationHelpers';
 
 const ROARK: Split = {
     name: 'Roark',
@@ -26,18 +25,18 @@ const ROARK: Split = {
         TWINLEAF_TOWN,
         SANDGEM_TOWN,
         VERITY_LAKEFRONT,
-        LocationHelpers.withHiddenBattles(LAKE_VERITY),
+        LAKE_VERITY,
         ROUTE_202,
-        LocationHelpers.withHiddenSubareaBattles(JUBILIFE_CITY, ['City']),
+        JUBILIFE_CITY,
         TRAINERS_SCHOOL,
         ROUTE_218,
-        LocationHelpers.withHiddenBattles(ROUTE_219),
-        LocationHelpers.withHiddenSubareaBattles(ROUTE_204, ['North']),
+        ROUTE_219,
+        ROUTE_204,
         RAVAGED_PATH,
         ROUTE_203,
-        LocationHelpers.withHiddenSubareaBattles(OREBURGH_GATE, ['B1F']),
+        OREBURGH_GATE,
         OREBURGH_CITY,
-        LocationHelpers.withHiddenBattles(ROUTE_207),
+        ROUTE_207,
         OREBURGH_MINE,
         OREBURGH_GYM,
     ],

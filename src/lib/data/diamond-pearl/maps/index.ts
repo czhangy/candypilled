@@ -16,6 +16,7 @@ export { default as eternaForestInterior } from './eterna-forest-interior.png';
 export { default as eternaGym } from './eterna-gym.png';
 export { default as flintsRoom } from './flints-room.png';
 export { default as floaromaMeadow } from './floaroma-meadow.png';
+export { default as floaromaTown } from './floaroma-town.png';
 export { default as fuegoIronworksExterior } from './fuego-ironworks-exterior.png';
 export { default as fuegoIronworksInterior } from './fuego-ironworks-interior.png';
 export { default as galacticHq1f } from './galactic-hq-1f.png';

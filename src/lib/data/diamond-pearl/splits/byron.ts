@@ -19,10 +19,7 @@ const BYRON: Split = {
         ROUTE_220,
         ROUTE_221,
         FUEGO_IRONWORKS,
-        LocationHelpers.withSubareaOrder(
-            LocationHelpers.withHiddenSubareaBattles(OREBURGH_GATE, ['1F']),
-            ['B1F', '1F']
-        ),
+        LocationHelpers.withSubareaOrder(OREBURGH_GATE, ['B1F', '1F']),
         ROUTE_208,
         ROUTE_213,
         ROUTE_218,

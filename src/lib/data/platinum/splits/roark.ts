@@ -13,23 +13,22 @@ import ROUTE_218 from '@/lib/data/platinum/locations/route-218';
 import ROUTE_219 from '@/lib/data/platinum/locations/route-219';
 import TWINLEAF_TOWN from '@/lib/data/platinum/locations/twinleaf-town';
 import { Split } from '@/lib/static/types';
-import LocationHelpers from '@/lib/utils/LocationHelpers';
 
 const ROARK: Split = {
     name: 'Roark',
     locations: [
         ROUTE_201,
         ROUTE_202,
-        LocationHelpers.withHiddenSubareaBattles(LAKE_VERITY, ['Post-Byron']),
-        LocationHelpers.withHiddenBattles(ROUTE_218),
+        LAKE_VERITY,
+        ROUTE_218,
         TWINLEAF_TOWN,
-        LocationHelpers.withHiddenBattles(ROUTE_219),
-        LocationHelpers.withHiddenSubareaBattles(ROUTE_204, ['North']),
+        ROUTE_219,
+        ROUTE_204,
         RAVAGED_PATH,
         ROUTE_203,
-        LocationHelpers.withHiddenSubareaBattles(OREBURGH_GATE, ['B1F']),
+        OREBURGH_GATE,
         OREBURGH_CITY,
-        LocationHelpers.withHiddenBattles(ROUTE_207),
+        ROUTE_207,
         OREBURGH_MINE,
         OREBURGH_GYM,
     ],

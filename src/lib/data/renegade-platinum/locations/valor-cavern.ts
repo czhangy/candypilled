@@ -2,7 +2,7 @@ import {
     valorCavernPostGiratina,
     valorCavernPreGiratina,
 } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VALOR_CAVERN: Location = {
@@ -11,8 +11,6 @@ const VALOR_CAVERN: Location = {
         {
             name: 'Pre-Giratina',
             map: valorCavernPreGiratina,
-            mapAnchor: MapAnchor.Center,
-            hideBattles: true,
             battles: [
                 {
                     battleKey: 'commander-saturn-valor-cavern',
@@ -25,7 +23,6 @@ const VALOR_CAVERN: Location = {
         {
             name: 'Post-Giratina',
             map: valorCavernPostGiratina,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'valor-cavern-post-giratina',
         },
     ],

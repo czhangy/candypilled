@@ -17,7 +17,6 @@ import TRAINERS_SCHOOL from '@/lib/data/diamond-pearl/locations/trainers-school'
 import TWINLEAF_TOWN from '@/lib/data/diamond-pearl/locations/twinleaf-town';
 import VERITY_LAKEFRONT from '@/lib/data/diamond-pearl/locations/verity-lakefront';
 import { Split } from '@/lib/static/types';
-import LocationHelpers from '@/lib/utils/LocationHelpers';
 
 const ROARK: Split = {
     name: 'Roark',
@@ -25,19 +24,19 @@ const ROARK: Split = {
         TWINLEAF_TOWN,
         ROUTE_201,
         VERITY_LAKEFRONT,
-        LocationHelpers.withHiddenBattles(LAKE_VERITY),
+        LAKE_VERITY,
         SANDGEM_TOWN,
-        LocationHelpers.withHiddenBattles(ROUTE_219),
+        ROUTE_219,
         ROUTE_202,
-        LocationHelpers.withHiddenBattles(JUBILIFE_CITY),
+        JUBILIFE_CITY,
         TRAINERS_SCHOOL,
-        LocationHelpers.withHiddenBattles(ROUTE_218),
-        LocationHelpers.withHiddenSubareaBattles(ROUTE_204, ['North']),
+        ROUTE_218,
+        ROUTE_204,
         RAVAGED_PATH,
         ROUTE_203,
-        LocationHelpers.withHiddenSubareaBattles(OREBURGH_GATE, ['B1F']),
+        OREBURGH_GATE,
         OREBURGH_CITY,
-        LocationHelpers.withHiddenBattles(ROUTE_207),
+        ROUTE_207,
         OREBURGH_MINE,
         OREBURGH_GYM,
     ],

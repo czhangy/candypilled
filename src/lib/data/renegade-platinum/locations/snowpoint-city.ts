@@ -1,12 +1,11 @@
 import { snowpointCity } from '@/lib/data/renegade-platinum/maps';
 import { GEN_4_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SNOWPOINT_CITY: Location = {
     name: 'Snowpoint City',
     map: snowpointCity,
-    mapAnchor: MapAnchor.Bottom,
     battles: [
         {
             battleKey:

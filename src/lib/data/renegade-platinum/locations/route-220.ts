@@ -1,11 +1,10 @@
 import { route220 } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_220: Location = {
     name: 'Route 220',
     map: route220,
-    mapAnchor: MapAnchor.TopLeft,
     encountersKey: 'sinnoh-route-220',
     battles: [
         {

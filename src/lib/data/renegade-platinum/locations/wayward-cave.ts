@@ -2,7 +2,7 @@ import {
     waywardCave1f,
     waywardCaveB1f,
 } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const WAYWARD_CAVE: Location = {
@@ -11,7 +11,6 @@ const WAYWARD_CAVE: Location = {
         {
             name: '1F',
             map: waywardCave1f,
-            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'wayward-cave',
             tagPartner: [{ battleKey: 'pkmn-trainer-mira-tag' }],
             battles: [
@@ -86,7 +85,6 @@ const WAYWARD_CAVE: Location = {
         {
             name: 'B1F',
             map: waywardCaveB1f,
-            mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'wayward-cave',
         },
     ],

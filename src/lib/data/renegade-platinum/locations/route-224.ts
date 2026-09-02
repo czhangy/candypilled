@@ -1,11 +1,10 @@
 import { route224Dawn, route224Lucas } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_224: Location = {
     name: 'Route 224',
     map: { male: route224Dawn, female: route224Lucas },
-    mapAnchor: MapAnchor.BottomLeft,
     encountersKey: 'route-224',
     battles: [
         {

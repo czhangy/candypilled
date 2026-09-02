@@ -14,15 +14,9 @@ const FANTINA: Split = {
         PASTORIA_CITY,
         ROUTE_213,
         VALOR_LAKEFRONT,
-        LocationHelpers.withHiddenSubareaBattles(
-            LocationHelpers.withSubareaOrder(ROUTE_210, ['North', 'South']),
-            ['South']
-        ),
+        LocationHelpers.withSubareaOrder(ROUTE_210, ['North', 'South']),
         CELESTIC_TOWN,
-        LocationHelpers.withHiddenSubareaBattles(
-            LocationHelpers.withSubareaOrder(ROUTE_211, ['East', 'West']),
-            ['West']
-        ),
+        LocationHelpers.withSubareaOrder(ROUTE_211, ['East', 'West']),
         HEARTHOME_GYM,
     ],
     saveCondition: { type: 'badge', bit: 4 },

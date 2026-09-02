@@ -3,7 +3,7 @@ import {
     hearthomeGymRoom2,
     hearthomeGymRoom3,
 } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const HEARTHOME_GYM: Location = {
@@ -12,7 +12,6 @@ const HEARTHOME_GYM: Location = {
         {
             name: 'Room 1',
             map: hearthomeGymRoom1,
-            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'youngster-donny',
@@ -31,7 +30,6 @@ const HEARTHOME_GYM: Location = {
         {
             name: 'Room 2',
             map: hearthomeGymRoom2,
-            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'school-kid-chance',
@@ -62,7 +60,6 @@ const HEARTHOME_GYM: Location = {
         {
             name: 'Room 3',
             map: hearthomeGymRoom3,
-            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'leader-fantina',

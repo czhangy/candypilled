@@ -22,16 +22,10 @@ const BYRON: Split = {
     locations: [
         ROUTE_213,
         VALOR_LAKEFRONT,
-        LocationHelpers.withHiddenSubareaBattles(
-            LocationHelpers.withSubareaOrder(ROUTE_210, ['North', 'South']),
-            ['South']
-        ),
+        LocationHelpers.withSubareaOrder(ROUTE_210, ['North', 'South']),
         CELESTIC_TOWN,
         CELESTIC_RUINS,
-        LocationHelpers.withHiddenSubareaBattles(
-            LocationHelpers.withSubareaOrder(OREBURGH_GATE, ['B1F', '1F']),
-            ['1F']
-        ),
+        LocationHelpers.withSubareaOrder(OREBURGH_GATE, ['B1F', '1F']),
         ROUTE_208,
         ROUTE_213,
         FUEGO_IRONWORKS,

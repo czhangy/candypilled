@@ -1,11 +1,10 @@
 import { veilstoneCity } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VEILSTONE_CITY: Location = {
     name: 'Veilstone City',
     map: veilstoneCity,
-    mapAnchor: MapAnchor.TopLeft,
     tagPartner: [
         {
             battleKey: 'pkmn-trainer-dawn-veilstone-city-tag',

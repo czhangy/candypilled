@@ -15,14 +15,11 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const MAYLENE: Split = {
     name: 'Maylene',
     locations: [
-        LocationHelpers.withHiddenSubareaBattles(
-            LocationHelpers.withSubareaOrder(HEARTHOME_CITY, [
-                'East Gate',
-                'West Gate',
-            ]),
-            ['West Gate']
-        ),
-        LocationHelpers.withHiddenSubareaBattles(ROUTE_212, ['South']),
+        LocationHelpers.withSubareaOrder(HEARTHOME_CITY, [
+            'East Gate',
+            'West Gate',
+        ]),
+        ROUTE_212,
         POKEMON_MANSION,
         TROPHY_GARDEN,
         ROUTE_209,
@@ -30,7 +27,7 @@ const MAYLENE: Split = {
         ROUTE_210,
         CAFE_CABIN,
         ROUTE_215,
-        LocationHelpers.withHiddenSubareaBattles(VEILSTONE_CITY, ['City']),
+        VEILSTONE_CITY,
         VEILSTONE_GYM,
     ],
     saveCondition: { type: 'badge', bit: 2 },

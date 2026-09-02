@@ -6,7 +6,6 @@ import {
     FieldCondition,
     GameVersionGroup,
     GrowthRate,
-    MapAnchor,
     Nature,
     PokemonStatus,
     TrainerAssetFolder,
@@ -365,13 +364,10 @@ export type EncounterLocation = {
 export type Subarea = {
     name: string;
     encountersKey?: string;
-    hideBattles?: boolean;
     // A single map, or two maps to pick between by the run's gender — e.g.
     // a subarea whose layout differs by which protagonist sprite passes
     // through it.
     map: StaticImageData | { male: StaticImageData; female: StaticImageData };
-    // Where the map is panned to by default, when no battle is selected.
-    mapAnchor: MapAnchor;
     battles?: Battle[];
     // Usually one entry; two when the partner's identity is gender-split
     // (e.g. Dawn for a male run, Lucas for a female run).
@@ -381,7 +377,6 @@ export type Subarea = {
 export type Location = {
     name: string;
     encountersKey?: string;
-    hideBattles?: boolean;
     battles?: Battle[];
     // Only meaningful for a location with no subareas — a subarea-based
     // location sets tagPartner per-subarea instead (Subarea.tagPartner),
@@ -396,12 +391,9 @@ export type Location = {
           map:
               | StaticImageData
               | { male: StaticImageData; female: StaticImageData };
-          // Where the map is panned to by default, when no battle is
-          // selected.
-          mapAnchor: MapAnchor;
           subareas?: never;
       }
-    | { map?: never; mapAnchor?: never; subareas: Subarea[] }
+    | { map?: never; subareas: Subarea[] }
 );
 
 // The condition determining whether a split is finished, resolved against a

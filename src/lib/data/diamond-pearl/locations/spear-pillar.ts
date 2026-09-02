@@ -1,11 +1,10 @@
 import { spearPillar } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SPEAR_PILLAR: Location = {
     name: 'Spear Pillar',
     map: spearPillar,
-    mapAnchor: MapAnchor.Bottom,
     tagPartner: [{ battleKey: 'pkmn-trainer-barry-spear-pillar-tag' }],
     battles: [
         {

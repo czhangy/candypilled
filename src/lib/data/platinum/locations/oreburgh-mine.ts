@@ -1,5 +1,5 @@
 import { oreburghMineB1f, oreburghMineB2f } from '@/lib/data/platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const OREBURGH_MINE: Location = {
@@ -8,13 +8,11 @@ const OREBURGH_MINE: Location = {
         {
             name: 'B1F',
             map: oreburghMineB1f,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'oreburgh-mine-1f',
         },
         {
             name: 'B2F',
             map: oreburghMineB2f,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'oreburgh-mine-b1f',
             battles: [
                 {

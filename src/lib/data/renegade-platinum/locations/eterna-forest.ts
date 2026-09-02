@@ -2,7 +2,7 @@ import {
     eternaForestExterior,
     eternaForestInterior,
 } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ETERNA_FOREST: Location = {
@@ -11,7 +11,6 @@ const ETERNA_FOREST: Location = {
         {
             name: 'Interior',
             map: eternaForestInterior,
-            mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'eterna-forest',
             tagPartner: [{ battleKey: 'pkmn-trainer-cheryl-tag' }],
             battles: [
@@ -74,7 +73,6 @@ const ETERNA_FOREST: Location = {
         {
             name: 'Exterior',
             map: eternaForestExterior,
-            mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'eterna-forest',
         },
     ],

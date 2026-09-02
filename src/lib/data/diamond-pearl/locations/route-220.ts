@@ -1,11 +1,10 @@
 import { route220 } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_220: Location = {
     name: 'Route 220',
     map: route220,
-    mapAnchor: MapAnchor.Left,
     encountersKey: 'sinnoh-sea-route-220',
     battles: [
         {

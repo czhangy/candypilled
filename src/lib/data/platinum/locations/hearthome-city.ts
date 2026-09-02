@@ -1,5 +1,5 @@
 import { hearthomeCity, hearthomeCityGate } from '@/lib/data/platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const HEARTHOME_CITY: Location = {
@@ -8,7 +8,6 @@ const HEARTHOME_CITY: Location = {
         {
             name: 'Gate',
             map: hearthomeCityGate,
-            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     metadata: [BattleMetadata.Miniboss],
@@ -21,7 +20,6 @@ const HEARTHOME_CITY: Location = {
         {
             name: 'City',
             map: hearthomeCity,
-            mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'hearthome-city-area',
         },
     ],

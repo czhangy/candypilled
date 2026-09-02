@@ -2,7 +2,7 @@ import {
     route204North,
     route204South,
 } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_204: Location = {
@@ -11,7 +11,6 @@ const ROUTE_204: Location = {
         {
             name: 'South',
             map: route204South,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-204-south-towards-jubilife-city',
             battles: [
                 {
@@ -37,7 +36,6 @@ const ROUTE_204: Location = {
         {
             name: 'North',
             map: route204North,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-204-north-towards-floaroma-town',
             battles: [
                 {

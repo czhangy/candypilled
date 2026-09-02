@@ -1,12 +1,11 @@
 import { pokemonMansion } from '@/lib/data/renegade-platinum/maps';
 import { GEN_4_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const POKEMON_MANSION: Location = {
     name: 'Pokémon Mansion',
     map: pokemonMansion,
-    mapAnchor: MapAnchor.Center,
     tagPartner: [{ battleKey: 'pkmn-trainer-barry-pokemon-mansion-tag' }],
     battles: [
         {

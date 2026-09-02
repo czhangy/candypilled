@@ -1,5 +1,5 @@
 import { route211East, route211West } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_211: Location = {
@@ -8,7 +8,6 @@ const ROUTE_211: Location = {
         {
             name: 'West',
             map: route211West,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-211-west-towards-eterna-city',
             battles: [
                 {
@@ -34,7 +33,6 @@ const ROUTE_211: Location = {
         {
             name: 'East',
             map: route211East,
-            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'sinnoh-route-211-east-towards-celestic-town',
             battles: [
                 {

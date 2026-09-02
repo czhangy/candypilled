@@ -1,11 +1,10 @@
 import { eternaGym } from '@/lib/data/platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ETERNA_GYM: Location = {
     name: 'Eterna Gym',
     map: eternaGym,
-    mapAnchor: MapAnchor.Center,
     battles: [
         {
             metadata: [],

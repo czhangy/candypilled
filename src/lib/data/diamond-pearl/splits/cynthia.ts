@@ -11,7 +11,7 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const CYNTHIA: Split = {
     name: 'Cynthia',
     locations: [
-        LocationHelpers.withHiddenBattles(POKEMON_LEAGUE),
+        POKEMON_LEAGUE,
         VICTORY_ROAD,
         LocationHelpers.withSubareaOrder(POKEMON_LEAGUE, ['Lobby', 'Exterior']),
         AARONS_ROOM,

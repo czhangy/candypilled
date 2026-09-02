@@ -2,7 +2,7 @@ import {
     valleyWindworks,
     valleyWindworksInterior,
 } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VALLEY_WINDWORKS: Location = {
@@ -11,7 +11,6 @@ const VALLEY_WINDWORKS: Location = {
         {
             name: 'Exterior',
             map: valleyWindworks,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'valley-windworks',
             battles: [
                 {
@@ -25,7 +24,6 @@ const VALLEY_WINDWORKS: Location = {
         {
             name: 'Interior',
             map: valleyWindworksInterior,
-            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-valley-windworks-interior',

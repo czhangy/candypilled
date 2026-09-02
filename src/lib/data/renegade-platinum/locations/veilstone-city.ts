@@ -2,7 +2,7 @@ import {
     veilstoneCity,
     veilstoneCityPokemonCenter,
 } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VEILSTONE_CITY: Location = {
@@ -11,7 +11,6 @@ const VEILSTONE_CITY: Location = {
         {
             name: 'City',
             map: veilstoneCity,
-            mapAnchor: MapAnchor.TopLeft,
             tagPartner: [
                 {
                     battleKey: 'pkmn-trainer-dawn-veilstone-city-tag',
@@ -35,7 +34,6 @@ const VEILSTONE_CITY: Location = {
         {
             name: 'Pokémon Center',
             map: veilstoneCityPokemonCenter,
-            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'dragon-tamer-nils',

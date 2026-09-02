@@ -4,7 +4,7 @@ import {
     canalaveGym3f,
     canalaveGym4f,
 } from '@/lib/data/platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const CANALAVE_GYM: Location = {
@@ -13,7 +13,6 @@ const CANALAVE_GYM: Location = {
         {
             name: '1F',
             map: canalaveGym1f,
-            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     metadata: [],
@@ -38,7 +37,6 @@ const CANALAVE_GYM: Location = {
         {
             name: '2F',
             map: canalaveGym2f,
-            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     metadata: [BattleMetadata.Optional],
@@ -57,7 +55,6 @@ const CANALAVE_GYM: Location = {
         {
             name: '3F',
             map: canalaveGym3f,
-            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     metadata: [],
@@ -76,7 +73,6 @@ const CANALAVE_GYM: Location = {
         {
             name: '4F',
             map: canalaveGym4f,
-            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     metadata: [BattleMetadata.Boss],

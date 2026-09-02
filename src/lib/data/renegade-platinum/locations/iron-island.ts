@@ -8,7 +8,7 @@ import {
     ironIslandExterior,
 } from '@/lib/data/renegade-platinum/maps';
 import { GEN_4_TRUE_DOUBLE_HEIGHT } from '@/lib/static/constants';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const IRON_ISLAND: Location = {
@@ -17,7 +17,6 @@ const IRON_ISLAND: Location = {
         {
             name: 'Exterior',
             map: ironIslandExterior,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-outside',
             battles: [
                 {
@@ -31,13 +30,11 @@ const IRON_ISLAND: Location = {
         {
             name: '1F',
             map: ironIsland1f,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-inside',
         },
         {
             name: 'B1F West',
             map: ironIslandB1fWest,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-inside',
             battles: [
                 {
@@ -51,7 +48,6 @@ const IRON_ISLAND: Location = {
         {
             name: 'B1F East',
             map: ironIslandB1fEast,
-            mapAnchor: MapAnchor.Top,
             encountersKey: 'iron-island-inside',
             battles: [
                 {
@@ -65,7 +61,6 @@ const IRON_ISLAND: Location = {
         {
             name: 'B2F East',
             map: ironIslandB2fEast,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-inside',
             battles: [
                 {
@@ -85,7 +80,6 @@ const IRON_ISLAND: Location = {
         {
             name: 'B2F West',
             map: ironIslandB2fWest,
-            mapAnchor: MapAnchor.Top,
             encountersKey: 'iron-island-inside',
             tagPartner: [{ battleKey: 'pkmn-trainer-riley-tag' }],
             battles: [
@@ -149,7 +143,6 @@ const IRON_ISLAND: Location = {
         {
             name: 'B3F',
             map: ironIslandB3f,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-inside',
         },
     ],

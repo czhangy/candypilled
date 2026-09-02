@@ -2,7 +2,7 @@ import {
     route222,
     route222PikachuFanClub,
 } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_222: Location = {
@@ -11,7 +11,6 @@ const ROUTE_222: Location = {
         {
             name: 'Main',
             map: route222,
-            mapAnchor: MapAnchor.Left,
             encountersKey: 'route-222',
             battles: [
                 {
@@ -85,7 +84,6 @@ const ROUTE_222: Location = {
         {
             name: 'Pikachu Fan Club',
             map: route222PikachuFanClub,
-            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'poke-kid-janet',

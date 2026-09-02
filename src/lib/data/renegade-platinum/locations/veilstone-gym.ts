@@ -1,11 +1,10 @@
 import { veilstoneGym } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VEILSTONE_GYM: Location = {
     name: 'Veilstone Gym',
     map: veilstoneGym,
-    mapAnchor: MapAnchor.Top,
     battles: [
         {
             battleKey: 'black-belt-colby',

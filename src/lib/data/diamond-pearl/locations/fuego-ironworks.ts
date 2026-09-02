@@ -2,7 +2,7 @@ import {
     fuegoIronworksExterior,
     fuegoIronworksInterior,
 } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const FUEGO_IRONWORKS: Location = {
@@ -11,13 +11,11 @@ const FUEGO_IRONWORKS: Location = {
         {
             name: 'Exterior',
             map: fuegoIronworksExterior,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'fuego-ironworks',
         },
         {
             name: 'Interior',
             map: fuegoIronworksInterior,
-            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     metadata: [BattleMetadata.Optional],

@@ -7,7 +7,7 @@ import {
     victoryRoadBack3,
 } from '@/lib/data/renegade-platinum/maps';
 import { GEN_4_TRUE_DOUBLE_HEIGHT } from '@/lib/static/constants';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VICTORY_ROAD: Location = {
@@ -16,7 +16,6 @@ const VICTORY_ROAD: Location = {
         {
             name: '1F',
             map: victoryRoad1f,
-            mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'victory-road-1f',
             battles: [
                 {
@@ -60,7 +59,6 @@ const VICTORY_ROAD: Location = {
         {
             name: '2F',
             map: victoryRoad2f,
-            mapAnchor: MapAnchor.TopLeft,
             encountersKey: 'victory-road-2f',
             battles: [
                 {
@@ -96,7 +94,6 @@ const VICTORY_ROAD: Location = {
         {
             name: 'B1F',
             map: victoryRoadB1f,
-            mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'victory-road-b1f',
             battles: [
                 {
@@ -132,13 +129,11 @@ const VICTORY_ROAD: Location = {
         {
             name: 'Back 1',
             map: victoryRoadBack1,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'victory-road-back',
         },
         {
             name: 'Back 2',
             map: victoryRoadBack2,
-            mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'victory-road-back',
             tagPartner: [{ battleKey: 'pkmn-trainer-marley-tag' }],
             battles: [
@@ -237,7 +232,6 @@ const VICTORY_ROAD: Location = {
         {
             name: 'Back 3',
             map: victoryRoadBack3,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'victory-road-back',
         },
     ],

@@ -2,7 +2,7 @@ import {
     lakeVerityPostByron,
     lakeVerityPreByron,
 } from '@/lib/data/platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_VERITY: Location = {
@@ -11,13 +11,11 @@ const LAKE_VERITY: Location = {
         {
             name: 'Pre-Byron',
             map: lakeVerityPreByron,
-            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'lake-verity-before-galactic-intervention',
         },
         {
             name: 'Post-Byron',
             map: lakeVerityPostByron,
-            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'lake-verity-after-galactic-intervention',
             battles: [
                 {

@@ -1,11 +1,10 @@
 import { canalaveGym } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const CANALAVE_GYM: Location = {
     name: 'Canalave Gym',
     map: canalaveGym,
-    mapAnchor: MapAnchor.Top,
     battles: [
         {
             battleKey: 'black-belt-ricky',

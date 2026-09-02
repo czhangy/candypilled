@@ -1,11 +1,10 @@
 import { hearthomeGym } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const HEARTHOME_GYM: Location = {
     name: 'Hearthome Gym',
     map: hearthomeGym,
-    mapAnchor: MapAnchor.BottomLeft,
     battles: [
         {
             metadata: [BattleMetadata.Optional],

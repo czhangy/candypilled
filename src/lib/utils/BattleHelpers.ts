@@ -81,17 +81,13 @@ export default class BattleHelpers {
         );
     }
 
-    /** Every battle in location for gender, excluding those hidden via location/subarea or restricted to the other gender. */
+    /** Every battle in location for gender, excluding those restricted to the other gender. */
     static getBattlesInLocation(
         location: Location,
         gender: 'male' | 'female' | undefined
     ): Battle[] {
-        if (location.hideBattles) return [];
-
         const battles = location.subareas
-            ? location.subareas
-                  .filter((subarea) => !subarea.hideBattles)
-                  .flatMap((subarea) => subarea.battles ?? [])
+            ? location.subareas.flatMap((subarea) => subarea.battles ?? [])
             : (location.battles ?? []);
 
         return BattleHelpers.filterByGender(battles, gender);
@@ -149,10 +145,9 @@ export default class BattleHelpers {
 
     /**
      * Every location/subarea's tag partner in game for gender, paired with
-     * its trainer's display label, excluding one hidden via
-     * location/subarea hideBattles or restricted to the other gender. A
-     * partner reused across more than one location keeps only its first
-     * occurrence, same as getAllBattles.
+     * its trainer's display label, excluding one restricted to the other
+     * gender. A partner reused across more than one location keeps only
+     * its first occurrence, same as getAllBattles.
      */
     static getAllTagPartners(
         game: Game,
@@ -171,24 +166,17 @@ export default class BattleHelpers {
         const entries = game.splits.flatMap((split) =>
             split.locations.flatMap((location) => {
                 if (location.subareas) {
-                    return location.subareas
-                        .filter(
-                            (subarea) =>
-                                !location.hideBattles && !subarea.hideBattles
-                        )
-                        .flatMap((subarea) =>
-                            BattleHelpers.filterByGender(
-                                subarea.tagPartner ?? [],
-                                gender
-                            ).map(toEntry)
-                        );
+                    return location.subareas.flatMap((subarea) =>
+                        BattleHelpers.filterByGender(
+                            subarea.tagPartner ?? [],
+                            gender
+                        ).map(toEntry)
+                    );
                 }
-                return location.hideBattles
-                    ? []
-                    : BattleHelpers.filterByGender(
-                          location.tagPartner ?? [],
-                          gender
-                      ).map(toEntry);
+                return BattleHelpers.filterByGender(
+                    location.tagPartner ?? [],
+                    gender
+                ).map(toEntry);
             })
         );
 
