@@ -13,10 +13,12 @@ import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import HallOfFameHelpers from '@/lib/utils/HallOfFameHelpers';
 import NotesHelpers from '@/lib/utils/NotesHelpers';
+import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
 import RunImportHelpers from '@/lib/utils/RunImportHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
+import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
 import DataModal from './DataModal/DataModal';
 import GenderSelectModal from './GenderSelectModal/GenderSelectModal';
@@ -252,11 +254,32 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                 />
                 <div className={styles.info}>
                     <div className={styles.line}>
-                        <span className={styles.name}>Pokémon {game.name}</span>
-                        {run && run.attempt > 0 && (
-                            <span className={styles.attempt}>
-                                Attempt #{run.attempt}
-                            </span>
+                        <span className={styles.attempt}>
+                            {run && run.attempt > 0
+                                ? `Attempt #${run.attempt}`
+                                : game.name}
+                        </span>
+                        {run && (
+                            <div className={styles.sprites}>
+                                <Image
+                                    alt={`${run.gender} protagonist`}
+                                    className={styles.gender}
+                                    height={32}
+                                    src={TrainerHelpers.getOverworldSprite(
+                                        game.genders[run.gender]
+                                    )}
+                                    width={32}
+                                />
+                                <Image
+                                    alt={`${run.starter} starter`}
+                                    className={styles.starter}
+                                    height={30}
+                                    src={PokemonHelpers.getBoxSprite(
+                                        run.starter
+                                    )}
+                                    width={40}
+                                />
+                            </div>
                         )}
                     </div>
                     <div className={styles.line}>
