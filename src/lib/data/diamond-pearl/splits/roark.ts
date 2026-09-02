@@ -18,11 +18,11 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const ROARK: Split = {
     name: 'Roark',
     locations: [
+        TWINLEAF_TOWN,
         LocationHelpers.withHiddenBattles(LAKE_VERITY),
         ROUTE_202,
         ROUTE_201,
         LocationHelpers.withHiddenBattles(ROUTE_218),
-        TWINLEAF_TOWN,
         LocationHelpers.withHiddenBattles(ROUTE_219),
         LocationHelpers.withHiddenSubareaBattles(ROUTE_204, ['North']),
         RAVAGED_PATH,
