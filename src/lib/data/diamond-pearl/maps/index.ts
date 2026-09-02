@@ -106,6 +106,7 @@ export { default as route221 } from './route-221.png';
 export { default as route222 } from './route-222.png';
 export { default as route223 } from './route-223.png';
 export { default as ruinManiacCave } from './ruin-maniac-cave.png';
+export { default as sandgemTown } from './sandgem-town.png';
 export { default as snowpointCity } from './snowpoint-city.png';
 export { default as snowpointGym } from './snowpoint-gym.png';
 export { default as solaceonRuins1f } from './solaceon-ruins-1f.png';
