@@ -1,4 +1,5 @@
-import { SETTINGS } from '@/lib/static/constants';
+import { IS_DEV, SETTINGS } from '@/lib/static/constants';
+import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import SupabaseBrowserHelpers from '@/lib/utils/SupabaseBrowserHelpers';
 
 export default class SettingsHelpers {
@@ -6,6 +7,7 @@ export default class SettingsHelpers {
     // PRIVATE
     // -------------------------------------------------------------------------
 
+    private static readonly STORAGE_KEY = 'dev-settings';
     private static readonly EMPTY_SNAPSHOT: Record<string, boolean> = {};
     private static readonly listeners = new Set<() => void>();
     private static cachedSnapshot: Record<string, boolean> =
@@ -48,18 +50,27 @@ export default class SettingsHelpers {
 
     /** Fetches every setting belonging to the current user and populates the cache. */
     static async hydrate(): Promise<void> {
-        const supabase = SupabaseBrowserHelpers.createClient();
-        const { data } = await supabase
-            .from('settings')
-            .select('setting_id, value');
-        const bySettingId = new Map(
-            (data ?? []).map((row) => [row.setting_id, row.value])
-        );
+        let bySettingId: Record<string, boolean>;
+
+        if (IS_DEV) {
+            bySettingId = LocalStorageHelpers.getItem(
+                SettingsHelpers.STORAGE_KEY,
+                {}
+            );
+        } else {
+            const supabase = SupabaseBrowserHelpers.createClient();
+            const { data } = await supabase
+                .from('settings')
+                .select('setting_id, value');
+            bySettingId = Object.fromEntries(
+                (data ?? []).map((row) => [row.setting_id, row.value])
+            );
+        }
 
         SettingsHelpers.cachedSnapshot = Object.fromEntries(
             SETTINGS.map((setting) => [
                 setting.id,
-                bySettingId.get(setting.id) ?? false,
+                bySettingId[setting.id] ?? false,
             ])
         );
         SettingsHelpers.notifyListeners();
@@ -67,12 +78,20 @@ export default class SettingsHelpers {
 
     /** Persists a setting's value and notifies subscribers. */
     static async saveSetting(id: string, value: boolean): Promise<void> {
-        const supabase = SupabaseBrowserHelpers.createClient();
-        const userId = await SettingsHelpers.getUserId();
-
-        await supabase
-            .from('settings')
-            .upsert({ user_id: userId, setting_id: id, value });
+        if (IS_DEV) {
+            const stored = LocalStorageHelpers.getItem<Record<string, boolean>>(
+                SettingsHelpers.STORAGE_KEY,
+                {}
+            );
+            stored[id] = value;
+            LocalStorageHelpers.setItem(SettingsHelpers.STORAGE_KEY, stored);
+        } else {
+            const supabase = SupabaseBrowserHelpers.createClient();
+            const userId = await SettingsHelpers.getUserId();
+            await supabase
+                .from('settings')
+                .upsert({ user_id: userId, setting_id: id, value });
+        }
 
         SettingsHelpers.cachedSnapshot = {
             ...SettingsHelpers.cachedSnapshot,

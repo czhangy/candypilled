@@ -1,5 +1,7 @@
 import { GAMES } from '@/lib/data/games';
+import { IS_DEV } from '@/lib/static/constants';
 import { DropdownOption, Game, Run } from '@/lib/static/types';
+import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import SupabaseBrowserHelpers from '@/lib/utils/SupabaseBrowserHelpers';
 
@@ -13,6 +15,7 @@ export default class RunHelpers {
     // PRIVATE
     // -------------------------------------------------------------------------
 
+    private static readonly STORAGE_KEY = 'dev-runs';
     private static readonly EMPTY_SNAPSHOT: GameRun[] = [];
     private static readonly listeners = new Set<() => void>();
     private static cachedSnapshot: GameRun[] = RunHelpers.EMPTY_SNAPSHOT;
@@ -96,11 +99,23 @@ export default class RunHelpers {
 
     /** Fetches every run belonging to the current user and populates the cache. */
     static async hydrate(): Promise<void> {
-        const supabase = SupabaseBrowserHelpers.createClient();
-        const { data } = await supabase.from('runs').select('game_slug, data');
-        const bySlug = new Map(
-            (data ?? []).map((row) => [row.game_slug, row.data as Run])
-        );
+        let bySlug: Map<string, Run>;
+
+        if (IS_DEV) {
+            const stored = LocalStorageHelpers.getItem<Record<string, Run>>(
+                RunHelpers.STORAGE_KEY,
+                {}
+            );
+            bySlug = new Map(Object.entries(stored));
+        } else {
+            const supabase = SupabaseBrowserHelpers.createClient();
+            const { data } = await supabase
+                .from('runs')
+                .select('game_slug, data');
+            bySlug = new Map(
+                (data ?? []).map((row) => [row.game_slug, row.data as Run])
+            );
+        }
 
         RunHelpers.cachedSnapshot = GAMES.map((game) => ({
             game,
@@ -112,13 +127,22 @@ export default class RunHelpers {
 
     /** Persists run for game and notifies subscribers. */
     static async saveRun(game: Game, run: Run): Promise<void> {
-        const supabase = SupabaseBrowserHelpers.createClient();
-        const userId = await RunHelpers.getUserId();
         const gameSlug = StringHelpers.toSlug(game.name);
 
-        await supabase
-            .from('runs')
-            .upsert({ user_id: userId, game_slug: gameSlug, data: run });
+        if (IS_DEV) {
+            const stored = LocalStorageHelpers.getItem<Record<string, Run>>(
+                RunHelpers.STORAGE_KEY,
+                {}
+            );
+            stored[gameSlug] = run;
+            LocalStorageHelpers.setItem(RunHelpers.STORAGE_KEY, stored);
+        } else {
+            const supabase = SupabaseBrowserHelpers.createClient();
+            const userId = await RunHelpers.getUserId();
+            await supabase
+                .from('runs')
+                .upsert({ user_id: userId, game_slug: gameSlug, data: run });
+        }
 
         RunHelpers.cachedSnapshot = RunHelpers.cachedSnapshot.map((entry) =>
             entry.game === game ? { ...entry, run } : entry
@@ -128,15 +152,24 @@ export default class RunHelpers {
 
     /** Deletes the stored run for game and notifies subscribers. */
     static async deleteRun(game: Game): Promise<void> {
-        const supabase = SupabaseBrowserHelpers.createClient();
-        const userId = await RunHelpers.getUserId();
         const gameSlug = StringHelpers.toSlug(game.name);
 
-        await supabase
-            .from('runs')
-            .delete()
-            .eq('user_id', userId)
-            .eq('game_slug', gameSlug);
+        if (IS_DEV) {
+            const stored = LocalStorageHelpers.getItem<Record<string, Run>>(
+                RunHelpers.STORAGE_KEY,
+                {}
+            );
+            delete stored[gameSlug];
+            LocalStorageHelpers.setItem(RunHelpers.STORAGE_KEY, stored);
+        } else {
+            const supabase = SupabaseBrowserHelpers.createClient();
+            const userId = await RunHelpers.getUserId();
+            await supabase
+                .from('runs')
+                .delete()
+                .eq('user_id', userId)
+                .eq('game_slug', gameSlug);
+        }
 
         RunHelpers.cachedSnapshot = RunHelpers.cachedSnapshot.map((entry) =>
             entry.game === game ? { ...entry, run: null } : entry

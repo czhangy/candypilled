@@ -1,4 +1,6 @@
+import { IS_DEV } from '@/lib/static/constants';
 import { CaughtPokemon, Game, HallOfFameEntry } from '@/lib/static/types';
+import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import SupabaseBrowserHelpers from '@/lib/utils/SupabaseBrowserHelpers';
 
@@ -7,6 +9,7 @@ export default class HallOfFameHelpers {
     // PRIVATE
     // -------------------------------------------------------------------------
 
+    private static readonly STORAGE_KEY = 'dev-hall-of-fame-entries';
     private static readonly EMPTY_SNAPSHOT: HallOfFameEntry[] = [];
     private static readonly listeners = new Set<() => void>();
     private static cachedSnapshot: HallOfFameEntry[] =
@@ -49,6 +52,15 @@ export default class HallOfFameHelpers {
 
     /** Fetches every Hall of Fame entry belonging to the current user and populates the cache. */
     static async hydrate(): Promise<void> {
+        if (IS_DEV) {
+            HallOfFameHelpers.cachedSnapshot = LocalStorageHelpers.getItem(
+                HallOfFameHelpers.STORAGE_KEY,
+                HallOfFameHelpers.EMPTY_SNAPSHOT
+            );
+            HallOfFameHelpers.notifyListeners();
+            return;
+        }
+
         const supabase = SupabaseBrowserHelpers.createClient();
         const { data } = await supabase
             .from('hall_of_fame_entries')
@@ -64,15 +76,22 @@ export default class HallOfFameHelpers {
 
     /** Appends entry to the saved Hall of Fame entries and notifies subscribers. */
     static async addEntry(entry: HallOfFameEntry): Promise<void> {
-        const supabase = SupabaseBrowserHelpers.createClient();
-        const userId = await HallOfFameHelpers.getUserId();
+        if (IS_DEV) {
+            LocalStorageHelpers.setItem(HallOfFameHelpers.STORAGE_KEY, [
+                ...HallOfFameHelpers.cachedSnapshot,
+                entry,
+            ]);
+        } else {
+            const supabase = SupabaseBrowserHelpers.createClient();
+            const userId = await HallOfFameHelpers.getUserId();
 
-        await supabase.from('hall_of_fame_entries').insert({
-            user_id: userId,
-            game_slug: entry.game,
-            attempt: entry.attempt,
-            team: entry.team,
-        });
+            await supabase.from('hall_of_fame_entries').insert({
+                user_id: userId,
+                game_slug: entry.game,
+                attempt: entry.attempt,
+                team: entry.team,
+            });
+        }
 
         HallOfFameHelpers.cachedSnapshot = [
             ...HallOfFameHelpers.cachedSnapshot,
@@ -87,15 +106,26 @@ export default class HallOfFameHelpers {
         attempt: number,
         team: CaughtPokemon[]
     ): Promise<void> {
-        const supabase = SupabaseBrowserHelpers.createClient();
-        const userId = await HallOfFameHelpers.getUserId();
+        if (IS_DEV) {
+            LocalStorageHelpers.setItem(
+                HallOfFameHelpers.STORAGE_KEY,
+                HallOfFameHelpers.cachedSnapshot.map((entry) =>
+                    entry.game === game && entry.attempt === attempt
+                        ? { ...entry, team }
+                        : entry
+                )
+            );
+        } else {
+            const supabase = SupabaseBrowserHelpers.createClient();
+            const userId = await HallOfFameHelpers.getUserId();
 
-        await supabase
-            .from('hall_of_fame_entries')
-            .update({ team })
-            .eq('user_id', userId)
-            .eq('game_slug', game)
-            .eq('attempt', attempt);
+            await supabase
+                .from('hall_of_fame_entries')
+                .update({ team })
+                .eq('user_id', userId)
+                .eq('game_slug', game)
+                .eq('attempt', attempt);
+        }
 
         HallOfFameHelpers.cachedSnapshot = HallOfFameHelpers.cachedSnapshot.map(
             (entry) =>
@@ -108,15 +138,25 @@ export default class HallOfFameHelpers {
 
     /** Removes every saved Hall of Fame entry belonging to game and notifies subscribers. */
     static async deleteEntriesForGame(game: Game): Promise<void> {
-        const supabase = SupabaseBrowserHelpers.createClient();
-        const userId = await HallOfFameHelpers.getUserId();
         const slug = StringHelpers.toSlug(game.name);
 
-        await supabase
-            .from('hall_of_fame_entries')
-            .delete()
-            .eq('user_id', userId)
-            .eq('game_slug', slug);
+        if (IS_DEV) {
+            LocalStorageHelpers.setItem(
+                HallOfFameHelpers.STORAGE_KEY,
+                HallOfFameHelpers.cachedSnapshot.filter(
+                    (entry) => entry.game !== slug
+                )
+            );
+        } else {
+            const supabase = SupabaseBrowserHelpers.createClient();
+            const userId = await HallOfFameHelpers.getUserId();
+
+            await supabase
+                .from('hall_of_fame_entries')
+                .delete()
+                .eq('user_id', userId)
+                .eq('game_slug', slug);
+        }
 
         HallOfFameHelpers.cachedSnapshot =
             HallOfFameHelpers.cachedSnapshot.filter(

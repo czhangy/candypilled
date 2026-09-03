@@ -10,7 +10,8 @@ import {
 } from 'next/navigation';
 import Spinner from '@/components/common/Spinner/Spinner';
 import Tabs from '@/components/common/Tabs/Tabs';
-import { CaughtPokemon, Game } from '@/lib/static/types';
+import { useGame } from '@/lib/context/GameContext';
+import { CaughtPokemon } from '@/lib/static/types';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
 import RunImportHelpers from '@/lib/utils/RunImportHelpers';
@@ -25,11 +26,7 @@ import styles from './RunPage.module.scss';
 import SplitHeader from './SplitHeader/SplitHeader';
 import SplitTab from './SplitTab/SplitTab';
 
-type RunPageProps = {
-    game: Game;
-};
-
-const RunPage: React.FC<RunPageProps> = ({ game }) => {
+const RunPage: React.FC = () => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
@@ -62,6 +59,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
     // HOOKS
     // -------------------------------------------------------------------------
 
+    const game = useGame();
     const gameRuns = useSyncExternalStore(
         RunHelpers.subscribe,
         RunHelpers.getSnapshot,

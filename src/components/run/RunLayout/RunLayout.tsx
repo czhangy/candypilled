@@ -1,25 +1,28 @@
 import { notFound } from 'next/navigation';
-import RunPage from '@/components/run/RunPage';
+import GameProvider from '@/components/run/GameProvider/GameProvider';
 import { Game } from '@/lib/static/types';
 
-type RunPageLoaderProps = {
+type RunLayoutProps = {
+    children: React.ReactNode;
     slug: string;
 };
 
-const RunPageLoader = async ({
+const RunLayout = async ({
+    children,
     slug,
-}: RunPageLoaderProps): Promise<React.ReactElement> => {
+}: RunLayoutProps): Promise<React.ReactElement> => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
 
     // Loads only the requested game's data (splits/battles/encounters/
     // dataSource) instead of importing every game eagerly, since a run
-    // page only ever renders one. Resolved server-side (this is a Server
-    // Component) rather than client-side, so dev-mode edits to a game's
-    // data files pick up through the normal Server Component Fast Refresh
-    // path instead of being stuck behind a client-side effect that only
-    // re-runs when `slug` itself changes.
+    // page only ever renders one. Resolved here in the layout — rather
+    // than the page, which re-renders on every search-param-only
+    // navigation (e.g. switching tabs) — so those navigations reuse the
+    // cached layout output instead of re-fetching and re-serializing the
+    // full game data. Still a Server Component, so dev-mode edits to a
+    // game's data files pick up through the normal Fast Refresh path.
     const GAME_LOADERS: Record<string, () => Promise<Game>> = {
         diamond: () =>
             import('@/lib/data/diamond-pearl/diamond').then((m) => m.default),
@@ -43,7 +46,7 @@ const RunPageLoader = async ({
     // MARKUP
     // -------------------------------------------------------------------------
 
-    return <RunPage game={game} />;
+    return <GameProvider game={game}>{children}</GameProvider>;
 };
 
-export default RunPageLoader;
+export default RunLayout;

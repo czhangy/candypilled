@@ -1,5 +1,9 @@
 import { Setting, StatValues } from '@/lib/static/types';
 
+// Dev builds store game data in localStorage instead of Supabase, so local
+// development doesn't depend on network round-trips to a hosted database.
+export const IS_DEV = process.env.NODE_ENV === 'development';
+
 export const SETTINGS: Setting[] = [
     {
         id: 'show-dupes',

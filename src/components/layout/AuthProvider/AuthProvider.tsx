@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { IS_DEV } from '@/lib/static/constants';
 import HallOfFameHelpers from '@/lib/utils/HallOfFameHelpers';
 import NotesHelpers from '@/lib/utils/NotesHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
@@ -29,6 +30,11 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     // -------------------------------------------------------------------------
 
     useEffect(() => {
+        if (IS_DEV) {
+            hydrateAll();
+            return;
+        }
+
         const supabase = SupabaseBrowserHelpers.createClient();
 
         supabase.auth.getSession().then(({ data }) => {

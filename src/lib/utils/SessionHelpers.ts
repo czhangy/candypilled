@@ -1,12 +1,19 @@
 import type { Session } from '@supabase/supabase-js';
+import { IS_DEV } from '@/lib/static/constants';
 import SupabaseBrowserHelpers from '@/lib/utils/SupabaseBrowserHelpers';
+
+// Auth is bypassed in dev, so a single fake session stands in for a signed-in
+// user everywhere the app only checks a session for truthiness.
+const DEV_SESSION = {} as Session;
 
 export default class SessionHelpers {
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------
 
-    private static readonly EMPTY_SNAPSHOT: Session | null = null;
+    private static readonly EMPTY_SNAPSHOT: Session | null = IS_DEV
+        ? DEV_SESSION
+        : null;
     private static readonly listeners = new Set<() => void>();
     private static cachedSnapshot: Session | null =
         SessionHelpers.EMPTY_SNAPSHOT;
@@ -39,8 +46,9 @@ export default class SessionHelpers {
         SessionHelpers.listeners.forEach((listener) => listener());
     }
 
-    /** Signs the current user out. */
+    /** Signs the current user out. No-op in dev, where auth is bypassed. */
     static async signOut(): Promise<void> {
+        if (IS_DEV) return;
         const supabase = SupabaseBrowserHelpers.createClient();
         await supabase.auth.signOut();
     }
