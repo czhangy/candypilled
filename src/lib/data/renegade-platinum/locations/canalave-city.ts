@@ -1,5 +1,4 @@
 import { canalaveCity } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const CANALAVE_CITY: Location = {
@@ -9,7 +8,6 @@ const CANALAVE_CITY: Location = {
     battles: [
         {
             battleKey: 'pkmn-trainer-barry-canalave-city',
-            metadata: [BattleMetadata.Miniboss],
             x: 45.3,
             y: 32.9,
         },

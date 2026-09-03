@@ -2,7 +2,6 @@ import {
     hearthomeCityEastGate,
     hearthomeCityWestGate,
 } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const HEARTHOME_CITY: Location = {
@@ -14,7 +13,6 @@ const HEARTHOME_CITY: Location = {
             battles: [
                 {
                     battleKey: 'elite-four-aaron-route-208',
-                    metadata: [BattleMetadata.Miniboss],
                     x: 44.9,
                     y: 45.9,
                 },
@@ -26,7 +24,6 @@ const HEARTHOME_CITY: Location = {
             battles: [
                 {
                     battleKey: 'pkmn-trainer-barry-hearthome-city-east-gate',
-                    metadata: [BattleMetadata.Miniboss],
                     x: 69.3,
                     y: 47,
                 },

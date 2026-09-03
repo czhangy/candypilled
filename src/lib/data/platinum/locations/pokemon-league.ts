@@ -1,5 +1,4 @@
 import { pokemonLeague, pokemonLeagueLobby } from '@/lib/data/platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const POKEMON_LEAGUE: Location = {
@@ -16,7 +15,6 @@ const POKEMON_LEAGUE: Location = {
             battles: [
                 {
                     battleKey: 'pkmn-trainer-barry-pokemon-league-lobby',
-                    metadata: [BattleMetadata.Miniboss],
                     x: 52.1,
                     y: 52.1,
                 },

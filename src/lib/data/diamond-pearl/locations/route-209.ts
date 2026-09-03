@@ -6,7 +6,6 @@ import {
     lostTower5f,
     route209Main,
 } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_209: Location = {
@@ -18,57 +17,46 @@ const ROUTE_209: Location = {
             encountersKey: 'sinnoh-route-209',
             battles: [
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'pkmn-breeder-m-albert',
                     x: 16.5,
-                    y: 81.1,
+                    y: 82.8,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'jogger-richard',
-                    x: 41.3,
-                    y: 78.2,
+                    x: 44.6,
+                    y: 68.7,
                 },
                 {
-                    metadata: [BattleMetadata.TrueDouble],
                     customWidth: 36,
                     battleKey: 'twins-emma-and-lil',
-                    x: 51.6,
-                    y: 74.2,
+                    x: 51.7,
+                    y: 75.3,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'poke-kid-danielle',
-                    x: 63.1,
-                    y: 77,
+                    x: 63.2,
+                    y: 78.4,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'jogger-raul',
-                    x: 71.4,
-                    y: 66.2,
+                    x: 77.3,
+                    y: 67.3,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'pkmn-breeder-f-jennifer',
-                    x: 66.4,
-                    y: 60.7,
+                    x: 66.3,
+                    y: 60.9,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'cowgirl-shelley',
-                    x: 75.8,
-                    y: 30.1,
+                    x: 75.7,
+                    y: 28.1,
                 },
                 {
-                    metadata: [
-                        BattleMetadata.Optional,
-                        BattleMetadata.TrueDouble,
-                    ],
-                    customWidth: 36,
+                    customHeight: 45,
                     battleKey: 'young-couple-ty-and-sue',
-                    x: 74.6,
-                    y: 18.6,
+                    x: 77.5,
+                    y: 19.7,
                 },
             ],
         },
@@ -83,10 +71,9 @@ const ROUTE_209: Location = {
             encountersKey: 'lost-tower-2f',
             battles: [
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'youngster-oliver',
-                    x: 57.5,
-                    y: 64.6,
+                    x: 57.9,
+                    y: 60.6,
                 },
             ],
         },
@@ -96,16 +83,14 @@ const ROUTE_209: Location = {
             encountersKey: 'lost-tower-3f',
             battles: [
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'roughneck-kirby',
-                    x: 34.3,
-                    y: 91,
+                    x: 34.9,
+                    y: 92.4,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'pokefan-m-leonard',
-                    x: 49.8,
-                    y: 37.2,
+                    x: 50.7,
+                    y: 27.3,
                 },
             ],
         },
@@ -115,30 +100,21 @@ const ROUTE_209: Location = {
             encountersKey: 'lost-tower-4f',
             battles: [
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'pokefan-f-rebekah',
-                    x: 65.2,
-                    y: 71.8,
+                    x: 65.1,
+                    y: 68.7,
                 },
                 {
-                    metadata: [
-                        BattleMetadata.Optional,
-                        BattleMetadata.TrueDouble,
-                    ],
                     customHeight: 45,
                     battleKey: 'belle-and-pa-beth-and-bob',
-                    x: 96.1,
-                    y: 87.7,
+                    x: 96.2,
+                    y: 87.9,
                 },
                 {
-                    metadata: [
-                        BattleMetadata.Optional,
-                        BattleMetadata.TrueDouble,
-                    ],
                     customWidth: 36,
                     battleKey: 'young-couple-mike-and-nat',
-                    x: 30.4,
-                    y: 58.1,
+                    x: 30.6,
+                    y: 51.5,
                 },
             ],
         },

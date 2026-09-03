@@ -1,5 +1,4 @@
 import { route221 } from '@/lib/data/platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_221: Location = {
@@ -8,37 +7,31 @@ const ROUTE_221: Location = {
     encountersKey: 'sinnoh-route-221',
     battles: [
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'swimmer-m-dillon',
             x: 12,
             y: 53.4,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'swimmer-f-vanessa',
             x: 14.2,
             y: 83,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'fisherman-cory',
             x: 27.7,
             y: 71.8,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'ace-trainer-f-shannon',
             x: 55.9,
             y: 83.8,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'collector-ivan',
             x: 67.2,
             y: 59.9,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'ace-trainer-m-jake',
             x: 85,
             y: 66.8,

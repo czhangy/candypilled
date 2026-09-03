@@ -1,5 +1,5 @@
 import { route215 } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, FieldCondition } from '@/lib/static/enums';
+import { FieldCondition } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_215: Location = {
@@ -8,59 +8,51 @@ const ROUTE_215: Location = {
     encountersKey: 'sinnoh-route-215',
     battles: [
         {
-            metadata: [],
             battleKey: 'ruin-maniac-calvin',
-            x: 14.1,
-            y: 56,
+            x: 14,
+            y: 43.7,
             fieldCondition: FieldCondition.Rain,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'jogger-craig',
-            x: 25.9,
-            y: 56.4,
+            x: 28.6,
+            y: 53.3,
             fieldCondition: FieldCondition.Rain,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'black-belt-derek',
             x: 32.9,
-            y: 37.2,
+            y: 24.9,
             fieldCondition: FieldCondition.Rain,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'black-belt-gregory',
             x: 47.5,
-            y: 18,
+            y: 6.4,
             fieldCondition: FieldCondition.Rain,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'black-belt-nathaniel',
-            x: 70.5,
-            y: 30,
+            x: 70.4,
+            y: 18.7,
             fieldCondition: FieldCondition.Rain,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'jogger-scott',
-            x: 72.8,
-            y: 66.2,
+            x: 81.7,
+            y: 40.8,
             fieldCondition: FieldCondition.Rain,
         },
         {
-            metadata: [],
             battleKey: 'ace-trainer-f-maya',
             x: 75.5,
-            y: 75.7,
+            y: 62.6,
             fieldCondition: FieldCondition.Rain,
         },
         {
-            metadata: [],
             battleKey: 'ace-trainer-m-dennis',
             x: 75.5,
-            y: 85.2,
+            y: 71.8,
             fieldCondition: FieldCondition.Rain,
         },
     ],

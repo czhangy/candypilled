@@ -1,5 +1,4 @@
 import { pastoriaCity } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const PASTORIA_CITY: Location = {
@@ -9,7 +8,6 @@ const PASTORIA_CITY: Location = {
     battles: [
         {
             battleKey: 'pkmn-trainer-barry-pastoria-city',
-            metadata: [BattleMetadata.Miniboss],
             x: 22.8,
             y: 43.8,
         },

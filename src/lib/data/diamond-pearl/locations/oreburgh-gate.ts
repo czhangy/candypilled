@@ -1,5 +1,4 @@
 import { oreburghGate1f, oreburghGateB1f } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const OREBURGH_GATE: Location = {
@@ -11,13 +10,11 @@ const OREBURGH_GATE: Location = {
             encountersKey: 'oreburgh-gate-1f',
             battles: [
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'camper-curtis',
                     x: 55.5,
                     y: 85.5,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'picnicker-diana',
                     x: 80,
                     y: 70.8,
@@ -30,7 +27,6 @@ const OREBURGH_GATE: Location = {
             encountersKey: 'oreburgh-gate-b1f',
             battles: [
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'veteran-grant',
                     x: 21,
                     y: 53.5,

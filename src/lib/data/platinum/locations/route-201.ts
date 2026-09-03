@@ -1,5 +1,4 @@
 import { route201 } from '@/lib/data/platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_201: Location = {
@@ -8,7 +7,6 @@ const ROUTE_201: Location = {
     encountersKey: 'sinnoh-route-201',
     battles: [
         {
-            metadata: [BattleMetadata.Miniboss],
             battleKey: 'pkmn-trainer-barry-route-201',
             x: 27.5,
             y: 64,

@@ -1,5 +1,4 @@
 import { hearthomeCity, hearthomeCityGate } from '@/lib/data/platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const HEARTHOME_CITY: Location = {
@@ -10,7 +9,6 @@ const HEARTHOME_CITY: Location = {
             map: hearthomeCityGate,
             battles: [
                 {
-                    metadata: [BattleMetadata.Miniboss],
                     battleKey: 'pkmn-trainer-barry',
                     x: 68,
                     y: 48,

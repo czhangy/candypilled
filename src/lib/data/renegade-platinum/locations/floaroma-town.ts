@@ -2,7 +2,6 @@ import {
     floaromaTownPokemonCenter,
     floaromaTownTown,
 } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const FLOAROMA_TOWN: Location = {
@@ -19,7 +18,6 @@ const FLOAROMA_TOWN: Location = {
             battles: [
                 {
                     battleKey: 'reporter-jenny',
-                    metadata: [BattleMetadata.Optional],
                     x: 16.7,
                     y: 17.9,
                 },

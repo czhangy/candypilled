@@ -1,5 +1,4 @@
 import { trainersSchool } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const TRAINERS_SCHOOL: Location = {
@@ -9,13 +8,11 @@ const TRAINERS_SCHOOL: Location = {
     battles: [
         {
             battleKey: 'school-kid-harrison',
-            metadata: [BattleMetadata.Optional],
             x: 76.7,
             y: 16.8,
         },
         {
             battleKey: 'school-kid-christine',
-            metadata: [BattleMetadata.Optional],
             x: 90,
             y: 16.8,
         },

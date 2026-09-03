@@ -7,7 +7,6 @@ import {
     solaceonRuinsRoom6,
     solaceonRuinsRoom7,
 } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SOLACEON_RUINS: Location = {
@@ -30,7 +29,6 @@ const SOLACEON_RUINS: Location = {
             battles: [
                 {
                     battleKey: 'ruin-maniac-karl',
-                    metadata: [BattleMetadata.Optional],
                     x: 50,
                     y: 43.3,
                 },

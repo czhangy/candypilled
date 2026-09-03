@@ -8,7 +8,6 @@ const ETERNA_CITY: Location = {
     battles: [
         {
             battleKey: 'galactic-grunt-m-eterna-city',
-            metadata: [],
             x: 27.3,
             y: 12.7,
         },

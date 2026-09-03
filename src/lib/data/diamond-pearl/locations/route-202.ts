@@ -7,19 +7,16 @@ const ROUTE_202: Location = {
     encountersKey: 'sinnoh-route-202',
     battles: [
         {
-            metadata: [],
             battleKey: 'youngster-tristan',
             x: 20.3,
             y: 40.7,
         },
         {
-            metadata: [],
             battleKey: 'lass-natalie',
             x: 67.2,
             y: 56.6,
         },
         {
-            metadata: [],
             battleKey: 'youngster-logan',
             x: 79.7,
             y: 12.8,

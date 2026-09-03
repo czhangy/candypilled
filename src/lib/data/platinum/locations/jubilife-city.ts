@@ -1,5 +1,4 @@
 import { jubilifeCity } from '@/lib/data/platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const JUBILIFE_CITY: Location = {
@@ -17,7 +16,6 @@ const JUBILIFE_CITY: Location = {
     ],
     battles: [
         {
-            metadata: [BattleMetadata.Tag],
             customHeight: 40,
             battleKey: 'galactic-grunt-m-jubilife-city',
             x: 71.2,

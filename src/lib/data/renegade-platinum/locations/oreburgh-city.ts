@@ -2,7 +2,6 @@ import {
     oreburghCityCity,
     oreburghCityPokemonCenter,
 } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const OREBURGH_CITY: Location = {
@@ -19,7 +18,6 @@ const OREBURGH_CITY: Location = {
             battles: [
                 {
                     battleKey: 'reporter-helen',
-                    metadata: [BattleMetadata.Optional],
                     x: 16.7,
                     y: 18.2,
                 },

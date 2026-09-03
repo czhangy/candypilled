@@ -2,7 +2,6 @@ import {
     oreburghMineB1f,
     oreburghMineB2f,
 } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const OREBURGH_MINE: Location = {
@@ -19,13 +18,11 @@ const OREBURGH_MINE: Location = {
             encountersKey: 'oreburgh-mine-b1f',
             battles: [
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'worker-colin',
                     x: 26.7,
                     y: 87.6,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'worker-mason',
                     x: 82.7,
                     y: 62.6,

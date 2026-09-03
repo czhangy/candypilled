@@ -19,6 +19,7 @@ import ROUTE_214 from '@/lib/data/diamond-pearl/locations/route-214';
 import ROUTE_215 from '@/lib/data/diamond-pearl/locations/route-215';
 import RUIN_MANIAC_CAVE from '@/lib/data/diamond-pearl/locations/ruin-maniac-cave';
 import SOLACEON_RUINS from '@/lib/data/diamond-pearl/locations/solaceon-ruins';
+import SOLACEON_TOWN from '@/lib/data/diamond-pearl/locations/solaceon-town';
 import TEAM_GALACTIC_ETERNA_BUILDING from '@/lib/data/diamond-pearl/locations/team-galactic-eterna-building';
 import TROPHY_GARDEN from '@/lib/data/diamond-pearl/locations/trophy-garden';
 import VALOR_LAKEFRONT from '@/lib/data/diamond-pearl/locations/valor-lakefront';
@@ -60,6 +61,7 @@ const MAYLENE: Split = {
         ROUTE_208,
         HEARTHOME_CITY,
         ROUTE_209,
+        SOLACEON_TOWN,
         SOLACEON_RUINS,
         ROUTE_210,
         CAFE_CABIN,

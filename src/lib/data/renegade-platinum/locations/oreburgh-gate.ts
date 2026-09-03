@@ -2,7 +2,6 @@ import {
     oreburghGate1f,
     oreburghGateB1f,
 } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const OREBURGH_GATE: Location = {
@@ -15,13 +14,11 @@ const OREBURGH_GATE: Location = {
             battles: [
                 {
                     battleKey: 'camper-curtis',
-                    metadata: [],
                     x: 55.3,
                     y: 89.4,
                 },
                 {
                     battleKey: 'picnicker-diana',
-                    metadata: [],
                     x: 80.3,
                     y: 66.8,
                 },
@@ -34,7 +31,6 @@ const OREBURGH_GATE: Location = {
             battles: [
                 {
                     battleKey: 'veteran-grant',
-                    metadata: [BattleMetadata.Optional],
                     x: 21.1,
                     y: 53.6,
                 },

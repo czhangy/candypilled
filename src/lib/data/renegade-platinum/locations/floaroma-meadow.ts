@@ -1,6 +1,5 @@
 import { floaromaMeadow } from '@/lib/data/renegade-platinum/maps';
 import { GEN_4_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const FLOAROMA_MEADOW: Location = {
@@ -10,7 +9,6 @@ const FLOAROMA_MEADOW: Location = {
     battles: [
         {
             battleKey: 'galactic-grunt-and-galactic-grunt-floaroma-meadow',
-            metadata: [BattleMetadata.Double],
             customWidth: GEN_4_TRUE_DOUBLE_WIDTH,
             x: 20.3,
             y: 47.1,

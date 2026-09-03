@@ -1,5 +1,4 @@
 import { flintsRoom } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const FLINTS_ROOM: Location = {
@@ -7,7 +6,6 @@ const FLINTS_ROOM: Location = {
     map: flintsRoom,
     battles: [
         {
-            metadata: [BattleMetadata.Boss, BattleMetadata.Gauntlet],
             battleKey: 'elite-four-flint',
             x: 50.2,
             y: 40.3,

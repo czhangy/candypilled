@@ -17,7 +17,12 @@ export default class SplitHelpers {
         if (SplitHelpers.isGameComplete(game, completedSplits)) return null;
 
         const battles = split.locations.flatMap((location) =>
-            BattleHelpers.getBattlesInLocation(location, gender)
+            BattleHelpers.getBattlesInLocation(
+                location,
+                gender,
+                split.name,
+                game
+            )
         );
         const lastBattle = battles[battles.length - 1];
 

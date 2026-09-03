@@ -1,5 +1,4 @@
 import { luciansRoom } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LUCIANS_ROOM: Location = {
@@ -8,7 +7,6 @@ const LUCIANS_ROOM: Location = {
     battles: [
         {
             battleKey: 'elite-four-lucian',
-            metadata: [BattleMetadata.Boss],
             x: 49.6,
             y: 28.4,
         },

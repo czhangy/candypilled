@@ -1,5 +1,4 @@
 import { route219 } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_219: Location = {
@@ -8,13 +7,11 @@ const ROUTE_219: Location = {
     encountersKey: 'sinnoh-route-219',
     battles: [
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'tuber-m-trenton',
             x: 35.9,
             y: 72.6,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'tuber-f-mariel',
             x: 52,
             y: 72.6,

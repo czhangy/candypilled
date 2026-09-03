@@ -1,5 +1,4 @@
 import { luciansRoom } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LUCIANS_ROOM: Location = {
@@ -7,7 +6,6 @@ const LUCIANS_ROOM: Location = {
     map: luciansRoom,
     battles: [
         {
-            metadata: [BattleMetadata.Boss, BattleMetadata.Gauntlet],
             battleKey: 'elite-four-lucian',
             x: 50.2,
             y: 40.6,

@@ -1,5 +1,4 @@
 import { route213 } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_213: Location = {
@@ -8,58 +7,49 @@ const ROUTE_213: Location = {
     encountersKey: 'sinnoh-route-213',
     battles: [
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'tuber-f-chelsea',
-            x: 67.3,
-            y: 47,
+            x: 67.2,
+            y: 42.5,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'tuber-m-jared',
-            x: 70,
-            y: 53.9,
+            x: 66.1,
+            y: 50.4,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'fisherman-kenneth',
-            x: 26.6,
-            y: 72.4,
+            x: 26.5,
+            y: 70.4,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'beauty-cyndy',
-            x: 29.7,
-            y: 46.7,
+            x: 29.8,
+            y: 42.3,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'swimmer-f-haley',
-            x: 66.8,
-            y: 81.8,
+            x: 27.2,
+            y: 21.1,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'sailor-paul',
-            x: 80.7,
-            y: 85.5,
+            x: 80.8,
+            y: 84.4,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'swimmer-m-evan',
-            x: 89.1,
-            y: 68.9,
+            x: 89,
+            y: 65.9,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'swimmer-f-mary',
             x: 94.4,
-            y: 68.9,
+            y: 65.9,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'swimmer-m-sheltin',
-            x: 59.3,
-            y: 93.3,
+            x: 53.7,
+            y: 91,
         },
     ],
 };
