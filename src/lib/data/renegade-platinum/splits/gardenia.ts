@@ -21,42 +21,26 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const GARDENIA: Split = {
     name: 'Gardenia',
     locations: [
-        LocationHelpers.withHiddenBattles(OREBURGH_GATE),
-        LocationHelpers.withHiddenBattles(ROUTE_203),
-        LocationHelpers.withHiddenSubareaBattles(JUBILIFE_CITY, [
-            'Pokémon Center',
-        ]),
-        LocationHelpers.withHiddenBattles(ROUTE_204),
+        OREBURGH_GATE,
+        ROUTE_203,
+        JUBILIFE_CITY,
+        ROUTE_204,
         RAVAGED_PATH,
         FLOAROMA_TOWN,
-        LocationHelpers.withHiddenSubareaBattles(VALLEY_WINDWORKS, [
-            'Interior',
-        ]),
+        VALLEY_WINDWORKS,
         FLOAROMA_MEADOW,
-        LocationHelpers.withHiddenSubareaBattles(
-            LocationHelpers.withSubareaOrder(VALLEY_WINDWORKS, [
-                'Interior',
-                'Exterior',
-            ]),
-            ['Exterior']
-        ),
-        LocationHelpers.withHiddenSubareaBattles(ROUTE_205, ['North']),
+        LocationHelpers.withSubareaOrder(VALLEY_WINDWORKS, [
+            'Interior',
+            'Exterior',
+        ]),
+        ROUTE_205,
         ETERNA_FOREST,
         OLD_CHATEAU,
-        LocationHelpers.withHiddenSubareaBattles(
-            LocationHelpers.withSubareaOrder(ROUTE_205, ['North', 'South']),
-            ['South']
-        ),
-        LocationHelpers.withHiddenBattles(ETERNA_CITY),
+        LocationHelpers.withSubareaOrder(ROUTE_205, ['North', 'South']),
+        ETERNA_CITY,
         ROUTE_206,
         LocationHelpers.withSubareaOrder(ROUTE_211, ['West', 'East']),
-        LocationHelpers.withHiddenSubareaBattles(MT_CORONET, [
-            '3F',
-            '4F',
-            'Tunnel',
-            '5F',
-            '6F',
-        ]),
+        MT_CORONET,
         ROUTE_216,
         ETERNA_GYM,
     ],

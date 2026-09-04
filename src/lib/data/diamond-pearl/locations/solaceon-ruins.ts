@@ -1,52 +1,57 @@
 import {
-    solaceonRuins1f,
-    solaceonRuinsB1f,
-    solaceonRuinsB2f,
-    solaceonRuinsB3f,
-    solaceonRuinsB4f,
+    solaceonRuinsRoom1,
+    solaceonRuinsRoom2,
+    solaceonRuinsRoom3,
+    solaceonRuinsRoom4,
+    solaceonRuinsRoom5,
+    solaceonRuinsRoom6,
+    solaceonRuinsRoom7,
 } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SOLACEON_RUINS: Location = {
     name: 'Solaceon Ruins',
     subareas: [
         {
-            name: '1F',
-            map: solaceonRuins1f,
-            mapAnchor: MapAnchor.Center,
+            name: 'Room 1',
+            map: solaceonRuinsRoom1,
             encountersKey: 'solaceon-ruins',
         },
         {
-            name: 'B1F',
-            map: solaceonRuinsB1f,
-            mapAnchor: MapAnchor.Center,
+            name: 'Room 2',
+            map: solaceonRuinsRoom2,
             encountersKey: 'solaceon-ruins',
         },
         {
-            name: 'B2F',
-            map: solaceonRuinsB2f,
-            mapAnchor: MapAnchor.Center,
+            name: 'Room 3',
+            map: solaceonRuinsRoom3,
             encountersKey: 'solaceon-ruins',
             battles: [
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'ruin-maniac-karl',
-                    x: 70.7,
-                    y: 47.5,
+                    x: 50,
+                    y: 43.3,
                 },
             ],
         },
         {
-            name: 'B3F',
-            map: solaceonRuinsB3f,
-            mapAnchor: MapAnchor.Center,
+            name: 'Room 4',
+            map: solaceonRuinsRoom4,
             encountersKey: 'solaceon-ruins',
         },
         {
-            name: 'B4F',
-            map: solaceonRuinsB4f,
-            mapAnchor: MapAnchor.Center,
+            name: 'Room 5',
+            map: solaceonRuinsRoom5,
+            encountersKey: 'solaceon-ruins',
+        },
+        {
+            name: 'Room 6',
+            map: solaceonRuinsRoom6,
+            encountersKey: 'solaceon-ruins',
+        },
+        {
+            name: 'Room 7',
+            map: solaceonRuinsRoom7,
             encountersKey: 'solaceon-ruins',
         },
     ],

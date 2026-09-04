@@ -9,9 +9,9 @@ import {
     mtCoronet6f,
     mtCoronetB1f,
     mtCoronetExterior,
+    mtCoronetSummit,
     mtCoronetTunnel,
 } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const MT_CORONET: Location = {
@@ -20,136 +20,119 @@ const MT_CORONET: Location = {
         {
             name: '1F (211)',
             map: mtCoronet1f211,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-1f-route-211',
         },
         {
             name: '1F (207)',
             map: mtCoronet1f207,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-1f-route-207',
         },
         {
             name: 'B1F',
             map: mtCoronetB1f,
-            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'mt-coronet-b1f',
         },
         {
             name: '1F (216)',
             map: mtCoronet1f216,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-1f-route-216',
         },
         {
             name: '2F',
             map: mtCoronet2f,
-            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'mt-coronet-2f',
         },
         {
             name: '3F',
             map: mtCoronet3f,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-3f',
             battles: [
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'galactic-grunt-f-mt-coronet-1',
-                    x: 62,
-                    y: 23.6,
+                    x: 61.6,
+                    y: 19.4,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'galactic-grunt-m-mt-coronet-1',
-                    x: 14,
-                    y: 47.2,
+                    x: 10.2,
+                    y: 43.6,
                 },
             ],
         },
         {
             name: 'Exterior',
             map: mtCoronetExterior,
-            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'mt-coronet-exterior-snowfall',
         },
         {
             name: '4F',
             map: mtCoronet4f,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-4f',
             battles: [
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'galactic-grunt-m-mt-coronet-2',
-                    x: 23.7,
-                    y: 33.3,
+                    x: 16.6,
+                    y: 22.2,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'galactic-grunt-m-mt-coronet-3',
-                    x: 53.8,
-                    y: 30.6,
+                    x: 36.8,
+                    y: 15.8,
                 },
             ],
         },
         {
+            name: 'Summit',
+            map: mtCoronetSummit,
+        },
+        {
             name: 'Tunnel',
             map: mtCoronetTunnel,
-            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'mt-coronet-1f-from-exterior',
             battles: [
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'galactic-grunt-m-mt-coronet-4',
-                    x: 10.9,
-                    y: 76.5,
+                    x: 11,
+                    y: 75.2,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'galactic-grunt-f-mt-coronet-2',
-                    x: 79.5,
-                    y: 65.5,
+                    x: 79.6,
+                    y: 48.7,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'galactic-grunt-m-mt-coronet-5',
-                    x: 63.9,
-                    y: 15.6,
+                    x: 64,
+                    y: 11,
                 },
             ],
         },
         {
             name: '5F',
             map: mtCoronet5f,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-5f',
             battles: [
                 {
-                    metadata: [],
                     battleKey: 'galactic-grunt-f-mt-coronet-3',
-                    x: 73.3,
-                    y: 67.8,
+                    x: 74.6,
+                    y: 57.2,
                 },
                 {
-                    metadata: [],
                     battleKey: 'galactic-grunt-m-mt-coronet-6',
-                    x: 44.8,
-                    y: 84,
+                    x: 45.4,
+                    y: 78.3,
                 },
             ],
         },
         {
             name: '6F',
             map: mtCoronet6f,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-6f',
             battles: [
                 {
-                    metadata: [],
                     battleKey: 'galactic-grunt-f-mt-coronet-4',
-                    x: 55.6,
-                    y: 50.8,
+                    x: 55.4,
+                    y: 40,
                 },
             ],
         },

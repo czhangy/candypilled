@@ -6,7 +6,6 @@ import {
     FieldCondition,
     GameVersionGroup,
     GrowthRate,
-    MapAnchor,
     Nature,
     PokemonStatus,
     TrainerAssetFolder,
@@ -228,14 +227,20 @@ export type BattleTrainer = {
 
 // One battle's full trainer info — team(s), items, and (for a tag battle)
 // the second trainer — keyed by battle key (BattleHelpers.getBattleKey)
-// in Game.battles. Split out from the Location-owned Battle (placement +
-// metadata) so a battle's team data has one home regardless of where
-// it's fought.
+// in Game.battles. Split out from the Location-owned Battle (bare
+// placement) so a battle's team data/metadata has one home regardless of
+// where it's fought.
 export type BattleData = {
     name: string;
     teams: BattleTeam[];
     items?: BattleItem[];
+    metadata: BattleMetadata[];
     secondTrainer?: BattleTrainer;
+    // Restricts this battle's marker to the named split (Split.name) or any
+    // split after it in game order — for a location placed in more than
+    // one split whose battle set differs between them, rather than
+    // showing this battle's marker before the player has reached it.
+    split?: string;
     // TRAINER_CLASSES slug.
     trainerClass: string;
 };
@@ -254,7 +259,7 @@ export type Battle = {
     // BattleTeamCondition is for — a shared trainer with a divergent
     // roster — not a wholesale different trainer).
     gender?: 'male' | 'female';
-    metadata: BattleMetadata[];
+    split?: string;
     x: number;
     y: number;
 };
@@ -365,13 +370,10 @@ export type EncounterLocation = {
 export type Subarea = {
     name: string;
     encountersKey?: string;
-    hideBattles?: boolean;
     // A single map, or two maps to pick between by the run's gender — e.g.
     // a subarea whose layout differs by which protagonist sprite passes
     // through it.
     map: StaticImageData | { male: StaticImageData; female: StaticImageData };
-    // Where the map is panned to by default, when no battle is selected.
-    mapAnchor: MapAnchor;
     battles?: Battle[];
     // Usually one entry; two when the partner's identity is gender-split
     // (e.g. Dawn for a male run, Lucas for a female run).
@@ -381,7 +383,6 @@ export type Subarea = {
 export type Location = {
     name: string;
     encountersKey?: string;
-    hideBattles?: boolean;
     battles?: Battle[];
     // Only meaningful for a location with no subareas — a subarea-based
     // location sets tagPartner per-subarea instead (Subarea.tagPartner),
@@ -396,12 +397,9 @@ export type Location = {
           map:
               | StaticImageData
               | { male: StaticImageData; female: StaticImageData };
-          // Where the map is panned to by default, when no battle is
-          // selected.
-          mapAnchor: MapAnchor;
           subareas?: never;
       }
-    | { map?: never; mapAnchor?: never; subareas: Subarea[] }
+    | { map?: never; subareas: Subarea[] }
 );
 
 // The condition determining whether a split is finished, resolved against a

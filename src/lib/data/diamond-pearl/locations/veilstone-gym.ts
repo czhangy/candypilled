@@ -1,41 +1,34 @@
 import { veilstoneGym } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VEILSTONE_GYM: Location = {
     name: 'Veilstone Gym',
     map: veilstoneGym,
-    mapAnchor: MapAnchor.Center,
     battles: [
         {
-            metadata: [],
-            battleKey: 'black-belt-jeffry',
-            x: 49.9,
-            y: 72.4,
+            battleKey: 'black-belt-jeffery',
+            x: 50.1,
+            y: 69.7,
         },
         {
-            metadata: [],
             battleKey: 'black-belt-darren',
-            x: 20.7,
-            y: 72.4,
+            x: 19.4,
+            y: 69.7,
         },
         {
-            metadata: [],
             battleKey: 'black-belt-rafael',
-            x: 79.3,
-            y: 68.9,
+            x: 81.1,
+            y: 65.5,
         },
         {
-            metadata: [],
             battleKey: 'black-belt-colby',
-            x: 50.4,
-            y: 50.8,
+            x: 50.1,
+            y: 44.1,
         },
         {
-            metadata: [BattleMetadata.Boss],
             battleKey: 'leader-maylene',
             x: 50.1,
-            y: 15.1,
+            y: 6,
         },
     ],
 };

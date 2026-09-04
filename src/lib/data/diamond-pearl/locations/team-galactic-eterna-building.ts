@@ -4,7 +4,6 @@ import {
     teamGalacticEternaBuilding3f,
     teamGalacticEternaBuilding4f,
 } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
@@ -13,76 +12,65 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
         {
             name: '1F',
             map: teamGalacticEternaBuilding1f,
-            mapAnchor: MapAnchor.Center,
             battles: [
                 {
-                    metadata: [],
                     battleKey:
                         'galactic-grunt-f-team-galactic-eterna-building-1',
-                    x: 70.6,
-                    y: 35.7,
+                    x: 71.7,
+                    y: 22.8,
                 },
                 {
-                    metadata: [],
                     battleKey:
                         'galactic-grunt-m-team-galactic-eterna-building-1',
-                    x: 93.8,
-                    y: 35.7,
+                    x: 97.1,
+                    y: 22.8,
                 },
             ],
         },
         {
             name: '2F',
             map: teamGalacticEternaBuilding2f,
-            mapAnchor: MapAnchor.Center,
             battles: [
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey:
                         'galactic-grunt-m-team-galactic-eterna-building-2',
-                    x: 10.6,
-                    y: 79.2,
+                    x: 9.2,
+                    y: 81.2,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey:
                         'galactic-grunt-f-team-galactic-eterna-building-2',
-                    x: 59.5,
-                    y: 57,
+                    x: 59.6,
+                    y: 52.3,
                 },
             ],
         },
         {
             name: '3F',
             map: teamGalacticEternaBuilding3f,
-            mapAnchor: MapAnchor.Center,
             battles: [
                 {
-                    metadata: [],
                     battleKey:
                         'galactic-grunt-f-team-galactic-eterna-building-3',
-                    x: 45.9,
-                    y: 57.9,
+                    x: 47.1,
+                    y: 52.3,
                 },
                 {
-                    metadata: [],
                     battleKey: 'scientist-travon',
-                    x: 94.1,
-                    y: 37.1,
+                    x: 97.5,
+                    y: 22.8,
                 },
             ],
         },
         {
             name: '4F',
             map: teamGalacticEternaBuilding4f,
-            mapAnchor: MapAnchor.Center,
             battles: [
                 {
-                    metadata: [BattleMetadata.Miniboss],
                     battleKey:
                         'commander-jupiter-team-galactic-eterna-building',
-                    x: 53.4,
-                    y: 58.1,
+                    x: 54.1,
+                    y: 51.1,
                 },
             ],
         },

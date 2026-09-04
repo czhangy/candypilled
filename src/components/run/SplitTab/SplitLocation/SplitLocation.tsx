@@ -4,7 +4,7 @@ import { useState, useSyncExternalStore } from 'react';
 import { StaticImageData } from 'next/image';
 import LocationSelectModal from '@/components/run/LocationSelectModal/LocationSelectModal';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
-import { EncounterMethod, MapAnchor, PokemonStatus } from '@/lib/static/enums';
+import { EncounterMethod, PokemonStatus } from '@/lib/static/enums';
 import {
     Battle,
     CaughtPokemon,
@@ -38,6 +38,7 @@ type SplitLocationProps = {
     onSelectTrainer: (battleKey: string) => void;
     run: Run;
     selectedBattleKey?: string;
+    splitName: string | undefined;
     variant: string;
 };
 
@@ -54,6 +55,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     onSelectTrainer,
     run,
     selectedBattleKey,
+    splitName,
     variant,
 }) => {
     // -------------------------------------------------------------------------
@@ -62,7 +64,6 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
 
     type Section = {
         map?: StaticImageData;
-        mapAnchor: MapAnchor;
         battles: Battle[];
         encounters?: Encounter[];
     };
@@ -90,14 +91,14 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         subareaIndex: number
     ): Battle | undefined => {
         const subarea = location.subareas?.[subareaIndex];
-        const rawBattles = location.hideBattles
-            ? []
-            : location.subareas
-              ? subarea?.hideBattles
-                  ? []
-                  : (subarea?.battles ?? [])
-              : (location.battles ?? []);
-        const battles = BattleHelpers.filterByGender(rawBattles, run.gender);
+        const rawBattles = location.subareas
+            ? (subarea?.battles ?? [])
+            : (location.battles ?? []);
+        const battles = BattleHelpers.filterBySplit(
+            BattleHelpers.filterByGender(rawBattles, run.gender),
+            splitName,
+            game
+        );
 
         const queriedBattle = battles.find(
             (battle) => BattleHelpers.getBattleKey(battle) === selectedBattleKey
@@ -113,19 +114,25 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     }[] => {
         const battlesBySubarea = location.subareas
             ? location.subareas.map((subarea, subareaIndex) => ({
-                  battles: BattleHelpers.filterByGender(
-                      location.hideBattles || subarea.hideBattles
-                          ? []
-                          : (subarea.battles ?? []),
-                      run.gender
+                  battles: BattleHelpers.filterBySplit(
+                      BattleHelpers.filterByGender(
+                          subarea.battles ?? [],
+                          run.gender
+                      ),
+                      splitName,
+                      game
                   ),
                   subareaIndex,
               }))
             : [
                   {
-                      battles: BattleHelpers.filterByGender(
-                          location.hideBattles ? [] : (location.battles ?? []),
-                          run.gender
+                      battles: BattleHelpers.filterBySplit(
+                          BattleHelpers.filterByGender(
+                              location.battles ?? [],
+                              run.gender
+                          ),
+                          splitName,
+                          game
                       ),
                       subareaIndex: 0,
                   },
@@ -310,12 +317,10 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         const subarea = location.subareas[selectedSubareaIndex];
         section = {
             map: resolveMap(subarea.map),
-            mapAnchor: subarea.mapAnchor,
-            battles: BattleHelpers.filterByGender(
-                location.hideBattles || subarea.hideBattles
-                    ? []
-                    : (subarea.battles ?? []),
-                run.gender
+            battles: BattleHelpers.filterBySplit(
+                BattleHelpers.filterByGender(subarea.battles ?? [], run.gender),
+                splitName,
+                game
             ),
             encounters: subarea.encountersKey
                 ? game.encounters[subarea.encountersKey]
@@ -324,10 +329,13 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     } else {
         section = {
             map: location.map && resolveMap(location.map),
-            mapAnchor: location.mapAnchor,
-            battles: BattleHelpers.filterByGender(
-                location.hideBattles ? [] : (location.battles ?? []),
-                run.gender
+            battles: BattleHelpers.filterBySplit(
+                BattleHelpers.filterByGender(
+                    location.battles ?? [],
+                    run.gender
+                ),
+                splitName,
+                game
             ),
             encounters: location.encountersKey
                 ? game.encounters[location.encountersKey]
@@ -340,15 +348,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             : location.tagPartner) ?? [],
         run.gender
     )[0];
-    const isTagPartnerHidden = location.subareas
-        ? location.hideBattles ||
-          location.subareas[selectedSubareaIndex].hideBattles
-        : location.hideBattles;
-    const tagPartnerBattleKey = isTagPartnerHidden
-        ? undefined
-        : currentTagPartner?.battleKey;
+    const tagPartnerBattleKey = currentTagPartner?.battleKey;
     const tagPartnerBattle: Battle | undefined = tagPartnerBattleKey
-        ? { battleKey: tagPartnerBattleKey, metadata: [], x: 0, y: 0 }
+        ? { battleKey: tagPartnerBattleKey, x: 0, y: 0 }
         : undefined;
     const isStarterEncounter = selectedEncounter
         ? selectedEncounter.method === EncounterMethod.Starter
@@ -470,7 +472,6 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                     }
                                     isTagPartnerSelected={isTagPartnerSelected}
                                     map={section.map}
-                                    mapAnchor={section.mapAnchor}
                                     onBattleClick={(battle: Battle) => {
                                         setSelectedBattle(battle);
                                         setIsTagPartnerSelected(false);

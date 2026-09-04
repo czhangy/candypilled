@@ -1,16 +1,13 @@
 import { canalaveCity } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const CANALAVE_CITY: Location = {
     name: 'Canalave City',
     map: canalaveCity,
-    mapAnchor: MapAnchor.Bottom,
     encountersKey: 'canalave-city',
     battles: [
         {
             battleKey: 'pkmn-trainer-barry-canalave-city',
-            metadata: [BattleMetadata.Miniboss],
             x: 45.3,
             y: 32.9,
         },

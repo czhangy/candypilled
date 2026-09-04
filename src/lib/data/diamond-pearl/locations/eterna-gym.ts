@@ -1,41 +1,34 @@
 import { eternaGym } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ETERNA_GYM: Location = {
     name: 'Eterna Gym',
     map: eternaGym,
-    mapAnchor: MapAnchor.Center,
     battles: [
         {
-            metadata: [],
             battleKey: 'lass-caroline',
-            x: 30.8,
-            y: 44.8,
+            x: 31,
+            y: 39.3,
         },
         {
-            metadata: [],
             battleKey: 'aroma-lady-jenna',
-            x: 27.8,
+            x: 27.6,
             y: 88.7,
         },
         {
-            metadata: [],
             battleKey: 'aroma-lady-angela',
-            x: 72.4,
-            y: 60.2,
+            x: 72.2,
+            y: 57.2,
         },
         {
-            metadata: [],
             battleKey: 'beauty-lindsay',
             x: 65.3,
-            y: 32,
+            y: 25.1,
         },
         {
-            metadata: [BattleMetadata.Boss],
             battleKey: 'leader-gardenia',
-            x: 48.1,
-            y: 13.3,
+            x: 48.2,
+            y: 4,
         },
     ],
 };

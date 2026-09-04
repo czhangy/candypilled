@@ -390,6 +390,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             onSelectTrainer={onSelectTrainer}
                             run={run}
                             selectedBattleKey={selectedBattleKey}
+                            splitName={currentSplit?.name}
                             variant={variant}
                         />
                     ))}

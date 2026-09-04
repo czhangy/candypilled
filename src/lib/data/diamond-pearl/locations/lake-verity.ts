@@ -1,8 +1,7 @@
 import {
-    lakeVerityPostGalactic,
-    lakeVerityPreGalactic,
+    lakeVerityPostByron,
+    lakeVerityPreByron,
 } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_VERITY: Location = {
@@ -10,39 +9,33 @@ const LAKE_VERITY: Location = {
     subareas: [
         {
             name: 'Pre-Byron',
-            map: lakeVerityPreGalactic,
-            mapAnchor: MapAnchor.Bottom,
+            map: lakeVerityPreByron,
             encountersKey: 'lake-verity',
         },
         {
             name: 'Post-Byron',
-            map: lakeVerityPostGalactic,
-            mapAnchor: MapAnchor.Bottom,
+            map: lakeVerityPostByron,
             battles: [
                 {
-                    metadata: [BattleMetadata.Double],
-                    customWidth: 130,
+                    customWidth: 134,
                     battleKey: 'galactic-grunt-m-lake-verity-1',
-                    x: 76.1,
-                    y: 74,
+                    x: 73.5,
+                    y: 76.8,
                 },
                 {
-                    metadata: [],
                     battleKey: 'galactic-grunt-m-lake-verity-2',
-                    x: 78.8,
-                    y: 62.8,
+                    x: 75.8,
+                    y: 67.3,
                 },
                 {
-                    metadata: [],
                     battleKey: 'galactic-grunt-f-lake-verity',
-                    x: 88,
-                    y: 62.8,
+                    x: 83.7,
+                    y: 67.3,
                 },
                 {
-                    metadata: [BattleMetadata.Miniboss],
                     battleKey: 'commander-mars-lake-verity',
-                    x: 91.5,
-                    y: 53.4,
+                    x: 86.8,
+                    y: 59.3,
                 },
             ],
         },

@@ -1,4 +1,6 @@
 import CAFE_CABIN from '@/lib/data/diamond-pearl/locations/cafe-cabin';
+import CYCLE_SHOP from '@/lib/data/diamond-pearl/locations/cycle-shop';
+import ETERNA_CITY from '@/lib/data/diamond-pearl/locations/eterna-city';
 import ETERNA_FOREST from '@/lib/data/diamond-pearl/locations/eterna-forest';
 import GREAT_MARSH from '@/lib/data/diamond-pearl/locations/great-marsh';
 import HEARTHOME_CITY from '@/lib/data/diamond-pearl/locations/hearthome-city';
@@ -6,6 +8,7 @@ import MINING_MUSEUM from '@/lib/data/diamond-pearl/locations/mining-museum';
 import MT_CORONET from '@/lib/data/diamond-pearl/locations/mt-coronet';
 import OLD_CHATEAU from '@/lib/data/diamond-pearl/locations/old-chateau';
 import PASTORIA_CITY from '@/lib/data/diamond-pearl/locations/pastoria-city';
+import POKEMON_MANSION from '@/lib/data/diamond-pearl/locations/pokemon-mansion';
 import ROUTE_206 from '@/lib/data/diamond-pearl/locations/route-206';
 import ROUTE_207 from '@/lib/data/diamond-pearl/locations/route-207';
 import ROUTE_208 from '@/lib/data/diamond-pearl/locations/route-208';
@@ -17,6 +20,7 @@ import ROUTE_214 from '@/lib/data/diamond-pearl/locations/route-214';
 import ROUTE_215 from '@/lib/data/diamond-pearl/locations/route-215';
 import RUIN_MANIAC_CAVE from '@/lib/data/diamond-pearl/locations/ruin-maniac-cave';
 import SOLACEON_RUINS from '@/lib/data/diamond-pearl/locations/solaceon-ruins';
+import SOLACEON_TOWN from '@/lib/data/diamond-pearl/locations/solaceon-town';
 import TEAM_GALACTIC_ETERNA_BUILDING from '@/lib/data/diamond-pearl/locations/team-galactic-eterna-building';
 import TROPHY_GARDEN from '@/lib/data/diamond-pearl/locations/trophy-garden';
 import VALOR_LAKEFRONT from '@/lib/data/diamond-pearl/locations/valor-lakefront';
@@ -29,48 +33,49 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const MAYLENE: Split = {
     name: 'Maylene',
     locations: [
+        ETERNA_CITY,
         OLD_CHATEAU,
-        LocationHelpers.withHiddenBattles(
-            LocationHelpers.withSubareaOrder(ETERNA_FOREST, [
-                'Exterior',
-                'Interior',
-            ])
-        ),
+        LocationHelpers.withSubareaOrder(ETERNA_FOREST, [
+            'Exterior',
+            'Interior',
+        ]),
         TEAM_GALACTIC_ETERNA_BUILDING,
+        CYCLE_SHOP,
         ROUTE_206,
         MINING_MUSEUM,
         WAYWARD_CAVE,
         ROUTE_207,
-        LocationHelpers.withHiddenBattles(
-            LocationHelpers.withSubareaOrder(MT_CORONET, [
-                '1F (207)',
-                '1F (211)',
-                'B1F',
-                '1F (216)',
-                '2F',
-                '3F',
-                'Exterior',
-                '4F',
-                'Tunnel',
-                '5F',
-                '6F',
-            ])
-        ),
+        LocationHelpers.withSubareaOrder(MT_CORONET, [
+            '1F (207)',
+            '1F (211)',
+            'B1F',
+            '1F (216)',
+            '2F',
+            '3F',
+            'Exterior',
+            '4F',
+            'Summit',
+            'Tunnel',
+            '5F',
+            '6F',
+        ]),
         ROUTE_208,
         HEARTHOME_CITY,
         ROUTE_209,
+        SOLACEON_TOWN,
         SOLACEON_RUINS,
-        LocationHelpers.withHiddenSubareaBattles(ROUTE_210, ['North']),
+        ROUTE_210,
         CAFE_CABIN,
         ROUTE_215,
-        LocationHelpers.withHiddenBattles(VEILSTONE_CITY),
+        VEILSTONE_CITY,
         ROUTE_214,
         RUIN_MANIAC_CAVE,
-        LocationHelpers.withHiddenBattles(VALOR_LAKEFRONT),
+        VALOR_LAKEFRONT,
         ROUTE_213,
-        LocationHelpers.withHiddenBattles(PASTORIA_CITY),
+        PASTORIA_CITY,
         GREAT_MARSH,
         ROUTE_212,
+        POKEMON_MANSION,
         TROPHY_GARDEN,
         VEILSTONE_GYM,
     ],

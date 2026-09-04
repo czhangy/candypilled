@@ -14,6 +14,7 @@ type TrainerPanelProps = {
     battle: Battle;
     isStacked: boolean;
     items?: BattleItem[];
+    metadata: BattleMetadata[];
     trainerAssetFolder: TrainerAssetFolder;
     trainerClass: string;
     trainerName: string;
@@ -23,6 +24,7 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
     battle,
     isStacked,
     items,
+    metadata,
     trainerAssetFolder,
     trainerClass,
     trainerName,
@@ -109,32 +111,32 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
                     )}
                 </div>
             )}
-            {battle.metadata.includes(BattleMetadata.Boss) && (
+            {metadata.includes(BattleMetadata.Boss) && (
                 <div className={styles['trainer__metadata']}>BOSS</div>
             )}
-            {battle.metadata.includes(BattleMetadata.Choice) && (
+            {metadata.includes(BattleMetadata.Choice) && (
                 <div className={styles['trainer__metadata']}>CHOICE</div>
             )}
-            {battle.metadata.includes(BattleMetadata.Miniboss) && (
+            {metadata.includes(BattleMetadata.Miniboss) && (
                 <div className={styles['trainer__metadata']}>MINIBOSS</div>
             )}
-            {battle.metadata.includes(BattleMetadata.Optional) && (
+            {metadata.includes(BattleMetadata.Optional) && (
                 <div className={styles['trainer__metadata']}>OPTIONAL</div>
             )}
-            {battle.metadata.includes(BattleMetadata.TrueDouble) ? (
+            {metadata.includes(BattleMetadata.TrueDouble) ? (
                 <div className={styles['trainer__metadata']}>TRUE DOUBLE</div>
             ) : (
-                battle.metadata.includes(BattleMetadata.Double) && (
+                metadata.includes(BattleMetadata.Double) && (
                     <div className={styles['trainer__metadata']}>DOUBLE</div>
                 )
             )}
-            {battle.metadata.includes(BattleMetadata.Tag) && (
+            {metadata.includes(BattleMetadata.Tag) && (
                 <div className={styles['trainer__metadata']}>TAG DOUBLE</div>
             )}
-            {battle.metadata.includes(BattleMetadata.BackToBack) && (
+            {metadata.includes(BattleMetadata.BackToBack) && (
                 <div className={styles['trainer__metadata']}>BACK-TO-BACK</div>
             )}
-            {battle.metadata.includes(BattleMetadata.Gauntlet) && (
+            {metadata.includes(BattleMetadata.Gauntlet) && (
                 <div className={styles['trainer__metadata']}>GAUNTLET</div>
             )}
         </div>

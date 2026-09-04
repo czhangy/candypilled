@@ -37,9 +37,10 @@ type Range = {
     end: number;
 };
 
-// Only placement + metadata is scaffolded here — a battle's trainer info
-// (team, items, etc.) lives in battles.json, keyed by battleKey, and isn't
-// something this generator writes.
+// Only the map placement is scaffolded here — a battle's trainer info
+// (team, items, metadata, etc.) lives in battles.ts, keyed by battleKey,
+// and isn't something this generator writes. `metadata` is still prompted
+// so it can be printed for the user to paste into that BattleData entry.
 type PromptedBattle = {
     battleKey: string;
     metadata: BattleMetadata[];
@@ -212,16 +213,9 @@ const serializeBattle = (battle: PromptedBattle, indent: string): string => {
     const fieldConditionField = battle.fieldCondition
         ? `${fieldIndent}fieldCondition: FieldCondition.${FIELD_CONDITION_KEYS_BY_VALUE.get(battle.fieldCondition)},\n`
         : '';
-    const metadataField = `${fieldIndent}metadata: [${battle.metadata
-        .map(
-            (value) =>
-                `BattleMetadata.${BATTLE_METADATA_KEYS_BY_VALUE.get(value)}`
-        )
-        .join(', ')}],\n`;
 
     return (
         `${indent}{\n` +
-        metadataField +
         `${indent}    battleKey: '${escapeQuotes(battle.battleKey)}',\n` +
         fieldConditionField +
         `${indent}    x: ${battle.x},\n` +
@@ -229,6 +223,14 @@ const serializeBattle = (battle: PromptedBattle, indent: string): string => {
         `${indent}},\n`
     );
 };
+
+const serializeMetadata = (metadata: BattleMetadata[]): string =>
+    `[${metadata
+        .map(
+            (value) =>
+                `BattleMetadata.${BATTLE_METADATA_KEYS_BY_VALUE.get(value)}`
+        )
+        .join(', ')}]`;
 
 const promptCoordinate = async (
     rl: Interface,
@@ -378,7 +380,6 @@ runScript(async () => {
 
     const entryText = serializeBattle(battle, insertionPoint.entryIndent);
     let updated = insertionPoint.insert(original, entryText);
-    updated = ensureEnumImport(updated, 'BattleMetadata');
     if (battle.fieldCondition) {
         updated = ensureEnumImport(updated, 'FieldCondition');
     }
@@ -386,6 +387,7 @@ runScript(async () => {
     fs.writeFileSync(filePath, updated);
     logSuccess(
         `A new battle was added to ${args.location}. Add its trainer info ` +
-            `to battles.json under the key "${battle.battleKey}".`
+            `to battles.ts under the key "${battle.battleKey}", including ` +
+            `metadata: ${serializeMetadata(battle.metadata)}.`
     );
 });

@@ -1,7 +1,7 @@
 import { GAMES } from '@/lib/data/games';
 import { DropdownOption, Game, Run } from '@/lib/static/types';
+import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
-import SupabaseBrowserHelpers from '@/lib/utils/SupabaseBrowserHelpers';
 
 type GameRun = {
     game: Game;
@@ -13,22 +13,14 @@ export default class RunHelpers {
     // PRIVATE
     // -------------------------------------------------------------------------
 
+    private static readonly STORAGE_KEY = 'candypilled-runs';
     private static readonly EMPTY_SNAPSHOT: GameRun[] = [];
     private static readonly listeners = new Set<() => void>();
+    private static cachedRaw: string | null = null;
     private static cachedSnapshot: GameRun[] = RunHelpers.EMPTY_SNAPSHOT;
-    private static isHydratedSnapshot = false;
 
     private static notifyListeners(): void {
         RunHelpers.listeners.forEach((listener) => listener());
-    }
-
-    private static async getUserId(): Promise<string> {
-        const supabase = SupabaseBrowserHelpers.createClient();
-        const {
-            data: { user },
-        } = await supabase.auth.getUser();
-        if (!user) throw new Error('RunHelpers used without a session');
-        return user.id;
     }
 
     // -------------------------------------------------------------------------
@@ -43,24 +35,27 @@ export default class RunHelpers {
         };
     }
 
-    /** Every game paired with its stored run, from the in-memory cache populated by hydrate(). */
+    /** Every game paired with its stored run, read through to localStorage and cached until it changes. */
     static getSnapshot(): GameRun[] {
+        const raw = LocalStorageHelpers.getRawItem(RunHelpers.STORAGE_KEY);
+        if (raw === RunHelpers.cachedRaw) return RunHelpers.cachedSnapshot;
+
+        RunHelpers.cachedRaw = raw;
+        const stored = LocalStorageHelpers.getItem<Record<string, Run>>(
+            RunHelpers.STORAGE_KEY,
+            {}
+        );
+        RunHelpers.cachedSnapshot = GAMES.map((game) => ({
+            game,
+            run: stored[StringHelpers.toSlug(game.name)] ?? null,
+        }));
+
         return RunHelpers.cachedSnapshot;
     }
 
-    /** The snapshot to use during server rendering, before hydrate() has run. */
+    /** The snapshot to use during server rendering, before localStorage is available. */
     static getServerSnapshot(): GameRun[] {
         return RunHelpers.EMPTY_SNAPSHOT;
-    }
-
-    /** Whether hydrate() has completed at least once, so an empty getSnapshot() can be trusted as "no run" rather than "not loaded yet". */
-    static getIsHydratedSnapshot(): boolean {
-        return RunHelpers.isHydratedSnapshot;
-    }
-
-    /** The isHydrated snapshot to use during server rendering — always false, since hydrate() only ever runs client-side. */
-    static getServerIsHydratedSnapshot(): boolean {
-        return false;
     }
 
     /**
@@ -94,53 +89,29 @@ export default class RunHelpers {
             .map((name) => ({ label: name, value: name }));
     }
 
-    /** Fetches every run belonging to the current user and populates the cache. */
-    static async hydrate(): Promise<void> {
-        const supabase = SupabaseBrowserHelpers.createClient();
-        const { data } = await supabase.from('runs').select('game_slug, data');
-        const bySlug = new Map(
-            (data ?? []).map((row) => [row.game_slug, row.data as Run])
-        );
-
-        RunHelpers.cachedSnapshot = GAMES.map((game) => ({
-            game,
-            run: bySlug.get(StringHelpers.toSlug(game.name)) ?? null,
-        }));
-        RunHelpers.isHydratedSnapshot = true;
-        RunHelpers.notifyListeners();
-    }
-
     /** Persists run for game and notifies subscribers. */
     static async saveRun(game: Game, run: Run): Promise<void> {
-        const supabase = SupabaseBrowserHelpers.createClient();
-        const userId = await RunHelpers.getUserId();
         const gameSlug = StringHelpers.toSlug(game.name);
-
-        await supabase
-            .from('runs')
-            .upsert({ user_id: userId, game_slug: gameSlug, data: run });
-
-        RunHelpers.cachedSnapshot = RunHelpers.cachedSnapshot.map((entry) =>
-            entry.game === game ? { ...entry, run } : entry
+        const stored = LocalStorageHelpers.getItem<Record<string, Run>>(
+            RunHelpers.STORAGE_KEY,
+            {}
         );
+        stored[gameSlug] = run;
+        LocalStorageHelpers.setItem(RunHelpers.STORAGE_KEY, stored);
+
         RunHelpers.notifyListeners();
     }
 
     /** Deletes the stored run for game and notifies subscribers. */
     static async deleteRun(game: Game): Promise<void> {
-        const supabase = SupabaseBrowserHelpers.createClient();
-        const userId = await RunHelpers.getUserId();
         const gameSlug = StringHelpers.toSlug(game.name);
-
-        await supabase
-            .from('runs')
-            .delete()
-            .eq('user_id', userId)
-            .eq('game_slug', gameSlug);
-
-        RunHelpers.cachedSnapshot = RunHelpers.cachedSnapshot.map((entry) =>
-            entry.game === game ? { ...entry, run: null } : entry
+        const stored = LocalStorageHelpers.getItem<Record<string, Run>>(
+            RunHelpers.STORAGE_KEY,
+            {}
         );
+        delete stored[gameSlug];
+        LocalStorageHelpers.setItem(RunHelpers.STORAGE_KEY, stored);
+
         RunHelpers.notifyListeners();
     }
 }

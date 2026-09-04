@@ -1,11 +1,10 @@
 import { jubilifeCity } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
+import { GEN_4_TRUE_DOUBLE_HEIGHT } from '@/lib/static/constants';
 import { Location } from '@/lib/static/types';
 
 const JUBILIFE_CITY: Location = {
     name: 'Jubilife City',
     map: jubilifeCity,
-    mapAnchor: MapAnchor.TopRight,
     tagPartner: [
         {
             battleKey: 'pkmn-trainer-dawn-jubilife-city-tag',
@@ -18,11 +17,10 @@ const JUBILIFE_CITY: Location = {
     ],
     battles: [
         {
-            metadata: [BattleMetadata.Tag],
-            customHeight: 40,
+            customHeight: GEN_4_TRUE_DOUBLE_HEIGHT,
             battleKey: 'galactic-grunt-m-jubilife-city',
-            x: 70.3,
-            y: 5.2,
+            x: 72.7,
+            y: 5.6,
         },
     ],
 };

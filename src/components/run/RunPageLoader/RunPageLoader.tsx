@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
 import Spinner from '@/components/common/Spinner/Spinner';
 import RunPage from '@/components/run/RunPage';
+import { GAMES } from '@/lib/data/games';
 import { Game } from '@/lib/static/types';
+import StringHelpers from '@/lib/utils/StringHelpers';
 import styles from './RunPageLoader.module.scss';
 
 type RunPageLoaderProps = {
@@ -16,12 +18,16 @@ const RunPageLoader: React.FC<RunPageLoaderProps> = ({ slug }) => {
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    // Loads only the requested game's data (splits/battles/encounters/
-    // dataSource) client-side instead of importing every game eagerly,
-    // since a run page only ever renders one — and unlike loading it in
-    // the route's Server Component, this only happens once per mount
-    // rather than on every tab-switch navigation (which changes only the
-    // URL's search params, not this component's slug prop).
+    // In dev, the game is looked up directly from the eagerly-imported
+    // GAMES array (below) instead of through GAME_LOADERS, so editing a
+    // game's data files — including map images — picks up through Fast
+    // Refresh's normal module-graph tracking. A dynamic import() resolved
+    // inside a useEffect is cached once and never re-fetched after that,
+    // no matter what changes on disk, since the effect only re-runs when
+    // slug changes. Production keeps the dynamic per-game import so a run
+    // page's bundle doesn't have to include every other game's data.
+    const IS_DEV = process.env.NODE_ENV === 'development';
+
     const GAME_LOADERS: Record<string, () => Promise<Game>> = {
         diamond: () =>
             import('@/lib/data/diamond-pearl/diamond').then((m) => m.default),
@@ -36,32 +42,49 @@ const RunPageLoader: React.FC<RunPageLoaderProps> = ({ slug }) => {
     // STATE
     // -------------------------------------------------------------------------
 
-    const [game, setGame] = useState<Game | null>(null);
+    const [loadedGame, setLoadedGame] = useState<Game | null>(null);
+
+    // -------------------------------------------------------------------------
+    // RENDERING
+    // -------------------------------------------------------------------------
+
+    const game = IS_DEV
+        ? (GAMES.find(
+              (candidate) => StringHelpers.toSlug(candidate.name) === slug
+          ) ?? null)
+        : loadedGame;
 
     // -------------------------------------------------------------------------
     // EFFECTS
     // -------------------------------------------------------------------------
 
     useEffect(() => {
+        if (IS_DEV) return;
+
         const loadGame = GAME_LOADERS[slug];
         if (!loadGame) return;
 
         let cancelled = false;
         loadGame().then((loaded) => {
-            if (!cancelled) setGame(loaded);
+            if (!cancelled) setLoadedGame(loaded);
         });
 
         return () => {
             cancelled = true;
         };
-        // GAME_LOADERS is a pure, stable mapping recreated each render only
-        // because module-level constants aren't allowed in this file.
+        // IS_DEV and GAME_LOADERS are recreated each render only because
+        // module-level constants aren't allowed in this file.
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [slug]);
 
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
+
+    if (IS_DEV) {
+        if (!game) notFound();
+        return <RunPage game={game} />;
+    }
 
     if (!GAME_LOADERS[slug]) notFound();
 

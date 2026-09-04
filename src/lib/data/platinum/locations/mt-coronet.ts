@@ -11,7 +11,6 @@ import {
     mtCoronetExterior,
     mtCoronetTunnel,
 } from '@/lib/data/platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const MT_CORONET: Location = {
@@ -20,47 +19,39 @@ const MT_CORONET: Location = {
         {
             name: '1F (211)',
             map: mtCoronet1f211,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-1f-route-211',
         },
         {
             name: '1F (207)',
             map: mtCoronet1f207,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-1f-route-207',
         },
         {
             name: 'B1F',
             map: mtCoronetB1f,
-            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'mt-coronet-b1f',
         },
         {
             name: '1F (216)',
             map: mtCoronet1f216,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-1f-route-216',
         },
         {
             name: '2F',
             map: mtCoronet2f,
-            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'mt-coronet-2f',
         },
         {
             name: '3F',
             map: mtCoronet3f,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-3f',
             battles: [
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'galactic-grunt-f-mt-coronet-1',
                     x: 63.2,
                     y: 27.3,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'galactic-grunt-m-mt-coronet-1',
                     x: 10.3,
                     y: 48.2,
@@ -70,23 +61,19 @@ const MT_CORONET: Location = {
         {
             name: 'Exterior',
             map: mtCoronetExterior,
-            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'mt-coronet-exterior-snowfall',
         },
         {
             name: '4F',
             map: mtCoronet4f,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-4f',
             battles: [
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'galactic-grunt-m-mt-coronet-2',
                     x: 23.7,
                     y: 33.2,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'galactic-grunt-m-mt-coronet-3',
                     x: 53.8,
                     y: 30.5,
@@ -96,23 +83,19 @@ const MT_CORONET: Location = {
         {
             name: 'Tunnel',
             map: mtCoronetTunnel,
-            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'mt-coronet-1f-from-exterior',
             battles: [
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'galactic-grunt-m-mt-coronet-4',
                     x: 11.8,
                     y: 77.8,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'galactic-grunt-f-mt-coronet-2',
                     x: 79.2,
                     y: 60.6,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'galactic-grunt-m-mt-coronet-5',
                     x: 64,
                     y: 19,
@@ -123,17 +106,14 @@ const MT_CORONET: Location = {
         {
             name: '5F',
             map: mtCoronet5f,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-5f',
             battles: [
                 {
-                    metadata: [],
                     battleKey: 'galactic-grunt-f-mt-coronet-3',
                     x: 73.2,
                     y: 68,
                 },
                 {
-                    metadata: [],
                     battleKey: 'galactic-grunt-m-mt-coronet-6',
                     x: 44.9,
                     y: 83.9,
@@ -143,11 +123,9 @@ const MT_CORONET: Location = {
         {
             name: '6F',
             map: mtCoronet6f,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-6f',
             battles: [
                 {
-                    metadata: [],
                     battleKey: 'galactic-grunt-f-mt-coronet-4',
                     x: 55.7,
                     y: 51,

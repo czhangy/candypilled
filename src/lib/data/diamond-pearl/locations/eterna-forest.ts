@@ -2,7 +2,6 @@ import {
     eternaForestExterior,
     eternaForestInterior,
 } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ETERNA_FOREST: Location = {
@@ -11,59 +10,50 @@ const ETERNA_FOREST: Location = {
         {
             name: 'Interior',
             map: eternaForestInterior,
-            mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'eterna-forest-interior',
             tagPartner: [{ battleKey: 'pkmn-trainer-cheryl-tag' }],
             battles: [
                 {
-                    metadata: [BattleMetadata.Tag],
                     customWidth: 72,
                     battleKey: 'bug-catcher-jack',
-                    x: 34.1,
-                    y: 43.4,
+                    x: 40.6,
+                    y: 69.9,
                 },
                 {
-                    metadata: [],
                     battleKey: 'psychic-f-lindsey',
-                    x: 47.4,
-                    y: 43.4,
+                    x: 52.6,
+                    y: 69.8,
                 },
                 {
-                    metadata: [],
                     battleKey: 'psychic-m-elijah',
-                    x: 53.2,
-                    y: 43.4,
+                    x: 57.8,
+                    y: 69.8,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'bug-catcher-donald',
-                    x: 64.7,
-                    y: 79.1,
+                    x: 68.2,
+                    y: 86.5,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'bug-catcher-phillip',
-                    x: 64.7,
-                    y: 87.8,
+                    x: 68.2,
+                    y: 90.6,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'psychic-m-kody',
-                    x: 75.1,
-                    y: 43.4,
+                    x: 77.6,
+                    y: 69.9,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'psychic-f-rachael',
-                    x: 78.7,
-                    y: 43.4,
+                    x: 80.7,
+                    y: 69.9,
                 },
             ],
         },
         {
             name: 'Exterior',
             map: eternaForestExterior,
-            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'eterna-forest-exterior',
         },
     ],

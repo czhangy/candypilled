@@ -16,35 +16,30 @@ const FANTINA: Split = {
     name: 'Fantina',
     locations: [
         OLD_CHATEAU,
-        LocationHelpers.withHiddenBattles(
-            LocationHelpers.withSubareaOrder(ETERNA_FOREST, [
-                'Exterior',
-                'Interior',
-            ])
-        ),
+        LocationHelpers.withSubareaOrder(ETERNA_FOREST, [
+            'Exterior',
+            'Interior',
+        ]),
         TEAM_GALACTIC_ETERNA_BUILDING,
         ROUTE_206,
         MINING_MUSEUM,
         WAYWARD_CAVE,
         ROUTE_207,
-        LocationHelpers.withHiddenSubareaBattles(
-            LocationHelpers.withSubareaOrder(MT_CORONET, [
-                '1F (207)',
-                '1F (211)',
-                'B1F',
-                '1F (216)',
-                '2F',
-                '3F',
-                'Exterior',
-                '4F',
-                'Tunnel',
-                '5F',
-                '6F',
-            ]),
-            ['3F', 'Tunnel', '4F', '5F', '6F']
-        ),
+        LocationHelpers.withSubareaOrder(MT_CORONET, [
+            '1F (207)',
+            '1F (211)',
+            'B1F',
+            '1F (216)',
+            '2F',
+            '3F',
+            'Exterior',
+            '4F',
+            'Tunnel',
+            '5F',
+            '6F',
+        ]),
         ROUTE_208,
-        LocationHelpers.withHiddenBattles(HEARTHOME_CITY),
+        HEARTHOME_CITY,
         HEARTHOME_GYM,
     ],
     saveCondition: { type: 'badge', bit: 4 },

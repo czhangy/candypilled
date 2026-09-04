@@ -20,30 +20,25 @@ const FANTINA: Split = {
         MINING_MUSEUM,
         WAYWARD_CAVE,
         ROUTE_207,
-        LocationHelpers.withHiddenBattles(
-            LocationHelpers.withSubareaOrder(MT_CORONET, [
-                '1F (207)',
-                '1F (211)',
-                'B1F',
-                '1F (216)',
-                '2F',
-                '3F',
-                'Exterior',
-                '4F',
-                'Summit',
-                'Tunnel',
-                '5F',
-                '6F',
-            ])
-        ),
+        LocationHelpers.withSubareaOrder(MT_CORONET, [
+            '1F (207)',
+            '1F (211)',
+            'B1F',
+            '1F (216)',
+            '2F',
+            '3F',
+            'Exterior',
+            '4F',
+            'Summit',
+            'Tunnel',
+            '5F',
+            '6F',
+        ]),
         ROUTE_208,
-        LocationHelpers.withHiddenSubareaBattles(
-            LocationHelpers.withSubareaOrder(HEARTHOME_CITY, [
-                'West Gate',
-                'East Gate',
-            ]),
-            ['East Gate']
-        ),
+        LocationHelpers.withSubareaOrder(HEARTHOME_CITY, [
+            'West Gate',
+            'East Gate',
+        ]),
         HEARTHOME_GYM,
     ],
     saveCondition: { type: 'badge', bit: 4 },

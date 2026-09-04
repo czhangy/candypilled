@@ -8,7 +8,6 @@ import {
     useRouter,
     useSearchParams,
 } from 'next/navigation';
-import Spinner from '@/components/common/Spinner/Spinner';
 import Tabs from '@/components/common/Tabs/Tabs';
 import { CaughtPokemon, Game } from '@/lib/static/types';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
@@ -66,11 +65,6 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
         RunHelpers.subscribe,
         RunHelpers.getSnapshot,
         RunHelpers.getServerSnapshot
-    );
-    const isHydrated = useSyncExternalStore(
-        RunHelpers.subscribe,
-        RunHelpers.getIsHydratedSnapshot,
-        RunHelpers.getServerIsHydratedSnapshot
     );
 
     const router = useRouter();
@@ -363,23 +357,6 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
-
-    if (!isHydrated) {
-        return (
-            <div
-                className={styles['run-page']}
-                style={
-                    {
-                        '--accent-color': game.accentColor,
-                    } as React.CSSProperties
-                }
-            >
-                <div className={styles.loading}>
-                    <Spinner />
-                </div>
-            </div>
-        );
-    }
 
     if (!run) {
         notFound();

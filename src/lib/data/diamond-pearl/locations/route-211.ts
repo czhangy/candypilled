@@ -1,5 +1,4 @@
 import { route211East, route211West } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_211: Location = {
@@ -8,58 +7,49 @@ const ROUTE_211: Location = {
         {
             name: 'West',
             map: route211West,
-            mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-211-west-towards-eterna-city',
             battles: [
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'ninja-boy-zach',
-                    x: 29.5,
-                    y: 43.5,
+                    x: 29.8,
+                    y: 41,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'hiker-louis',
-                    x: 78,
-                    y: 55.2,
+                    x: 79.6,
+                    y: 53.1,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'bird-keeper-alexandra',
-                    x: 47.5,
-                    y: 47.2,
+                    x: 48.7,
+                    y: 34.6,
                 },
             ],
         },
         {
             name: 'East',
             map: route211East,
-            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'sinnoh-route-211-east-towards-celestic-town',
             battles: [
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'bird-keeper-katherine',
-                    x: 51.6,
-                    y: 33.2,
+                    x: 51.5,
+                    y: 25,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'ruin-maniac-harry',
-                    x: 42,
-                    y: 47.1,
+                    x: 42.3,
+                    y: 40.8,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'ninja-boy-nick',
-                    x: 29.9,
-                    y: 33,
+                    x: 29.8,
+                    y: 25.6,
                 },
                 {
-                    metadata: [BattleMetadata.Optional],
                     battleKey: 'black-belt-sean',
-                    x: 49.8,
-                    y: 90.8,
+                    x: 39,
+                    y: 87.7,
                 },
             ],
         },

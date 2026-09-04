@@ -1,3 +1,4 @@
+import JUBILIFE_CITY from '@/lib/data/diamond-pearl/locations/jubilife-city';
 import LAKE_VERITY from '@/lib/data/diamond-pearl/locations/lake-verity';
 import OREBURGH_CITY from '@/lib/data/diamond-pearl/locations/oreburgh-city';
 import OREBURGH_GATE from '@/lib/data/diamond-pearl/locations/oreburgh-gate';
@@ -11,25 +12,31 @@ import ROUTE_204 from '@/lib/data/diamond-pearl/locations/route-204';
 import ROUTE_207 from '@/lib/data/diamond-pearl/locations/route-207';
 import ROUTE_218 from '@/lib/data/diamond-pearl/locations/route-218';
 import ROUTE_219 from '@/lib/data/diamond-pearl/locations/route-219';
+import SANDGEM_TOWN from '@/lib/data/diamond-pearl/locations/sandgem-town';
+import TRAINERS_SCHOOL from '@/lib/data/diamond-pearl/locations/trainers-school';
 import TWINLEAF_TOWN from '@/lib/data/diamond-pearl/locations/twinleaf-town';
+import VERITY_LAKEFRONT from '@/lib/data/diamond-pearl/locations/verity-lakefront';
 import { Split } from '@/lib/static/types';
-import LocationHelpers from '@/lib/utils/LocationHelpers';
 
 const ROARK: Split = {
     name: 'Roark',
     locations: [
-        LocationHelpers.withHiddenBattles(LAKE_VERITY),
-        ROUTE_202,
-        ROUTE_201,
-        LocationHelpers.withHiddenBattles(ROUTE_218),
         TWINLEAF_TOWN,
-        LocationHelpers.withHiddenBattles(ROUTE_219),
-        LocationHelpers.withHiddenSubareaBattles(ROUTE_204, ['North']),
+        ROUTE_201,
+        VERITY_LAKEFRONT,
+        LAKE_VERITY,
+        SANDGEM_TOWN,
+        ROUTE_219,
+        ROUTE_202,
+        JUBILIFE_CITY,
+        TRAINERS_SCHOOL,
+        ROUTE_218,
+        ROUTE_204,
         RAVAGED_PATH,
         ROUTE_203,
-        LocationHelpers.withHiddenSubareaBattles(OREBURGH_GATE, ['B1F']),
+        OREBURGH_GATE,
         OREBURGH_CITY,
-        LocationHelpers.withHiddenBattles(ROUTE_207),
+        ROUTE_207,
         OREBURGH_MINE,
         OREBURGH_GYM,
     ],

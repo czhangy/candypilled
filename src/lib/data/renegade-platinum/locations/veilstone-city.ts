@@ -2,7 +2,6 @@ import {
     veilstoneCity,
     veilstoneCityPokemonCenter,
 } from '@/lib/data/renegade-platinum/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VEILSTONE_CITY: Location = {
@@ -11,7 +10,6 @@ const VEILSTONE_CITY: Location = {
         {
             name: 'City',
             map: veilstoneCity,
-            mapAnchor: MapAnchor.TopLeft,
             tagPartner: [
                 {
                     battleKey: 'pkmn-trainer-dawn-veilstone-city-tag',
@@ -25,7 +23,6 @@ const VEILSTONE_CITY: Location = {
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-veilstone-city',
-                    metadata: [BattleMetadata.Tag],
                     customHeight: 60,
                     x: 39.9,
                     y: 31.4,
@@ -35,11 +32,9 @@ const VEILSTONE_CITY: Location = {
         {
             name: 'Pokémon Center',
             map: veilstoneCityPokemonCenter,
-            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'dragon-tamer-nils',
-                    metadata: [BattleMetadata.Optional],
                     x: 70,
                     y: 35.7,
                 },

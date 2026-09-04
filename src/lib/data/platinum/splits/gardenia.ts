@@ -17,37 +17,23 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const GARDENIA: Split = {
     name: 'Gardenia',
     locations: [
-        LocationHelpers.withHiddenBattles(OREBURGH_GATE),
-        LocationHelpers.withHiddenBattles(ROUTE_203),
+        OREBURGH_GATE,
+        ROUTE_203,
         JUBILIFE_CITY,
-        LocationHelpers.withHiddenBattles(ROUTE_204),
+        ROUTE_204,
         RAVAGED_PATH,
-        LocationHelpers.withHiddenSubareaBattles(VALLEY_WINDWORKS, [
-            'Interior',
-        ]),
+        VALLEY_WINDWORKS,
         FLOAROMA_MEADOW,
-        LocationHelpers.withHiddenSubareaBattles(
-            LocationHelpers.withSubareaOrder(VALLEY_WINDWORKS, [
-                'Interior',
-                'Exterior',
-            ]),
-            ['Exterior']
-        ),
-        LocationHelpers.withHiddenSubareaBattles(ROUTE_205, ['North']),
-        ETERNA_FOREST,
-        LocationHelpers.withHiddenSubareaBattles(
-            LocationHelpers.withSubareaOrder(ROUTE_205, ['North', 'South']),
-            ['South']
-        ),
-        ETERNA_CITY,
-        LocationHelpers.withHiddenSubareaBattles(ROUTE_211, ['East']),
-        LocationHelpers.withHiddenSubareaBattles(MT_CORONET, [
-            '3F',
-            'Tunnel',
-            '4F',
-            '5F',
-            '6F',
+        LocationHelpers.withSubareaOrder(VALLEY_WINDWORKS, [
+            'Interior',
+            'Exterior',
         ]),
+        ROUTE_205,
+        ETERNA_FOREST,
+        LocationHelpers.withSubareaOrder(ROUTE_205, ['North', 'South']),
+        ETERNA_CITY,
+        ROUTE_211,
+        MT_CORONET,
         ETERNA_GYM,
     ],
     saveCondition: { type: 'badge', bit: 1 },

@@ -14,24 +14,19 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const WAKE: Split = {
     name: 'Wake',
     locations: [
-        LocationHelpers.withHiddenSubareaBattles(VEILSTONE_CITY, [
-            'Pokémon Center',
-        ]),
+        VEILSTONE_CITY,
         ROUTE_214,
         MANIAC_TUNNEL,
-        LocationHelpers.withHiddenBattles(VALOR_LAKEFRONT),
+        VALOR_LAKEFRONT,
         SEVEN_STARS_RESTAURANT,
         ROUTE_213,
-        LocationHelpers.withHiddenBattles(PASTORIA_CITY),
+        PASTORIA_CITY,
         GREAT_MARSH,
-        LocationHelpers.withHiddenSubareaBattles(
-            LocationHelpers.withSubareaOrder(ROUTE_212, [
-                'South',
-                'North (Galactic)',
-                'North (Post-Galactic)',
-            ]),
-            ['North (Galactic)', 'North (Post-Galactic)']
-        ),
+        LocationHelpers.withSubareaOrder(ROUTE_212, [
+            'South',
+            'North (Galactic)',
+            'North (Post-Galactic)',
+        ]),
         PASTORIA_CITY,
         PASTORIA_GYM,
     ],

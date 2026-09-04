@@ -1,22 +1,35 @@
 import ACUITY_CAVERN from '@/lib/data/diamond-pearl/locations/acuity-cavern';
+import ACUITY_LAKEFRONT from '@/lib/data/diamond-pearl/locations/acuity-lakefront';
 import GALACTIC_HQ from '@/lib/data/diamond-pearl/locations/galactic-hq';
 import LAKE_ACUITY from '@/lib/data/diamond-pearl/locations/lake-acuity';
 import MT_CORONET from '@/lib/data/diamond-pearl/locations/mt-coronet';
 import POKEMON_LEAGUE from '@/lib/data/diamond-pearl/locations/pokemon-league';
+import ROUTE_208 from '@/lib/data/diamond-pearl/locations/route-208';
+import ROUTE_210 from '@/lib/data/diamond-pearl/locations/route-210';
 import ROUTE_216 from '@/lib/data/diamond-pearl/locations/route-216';
 import ROUTE_222 from '@/lib/data/diamond-pearl/locations/route-222';
 import ROUTE_223 from '@/lib/data/diamond-pearl/locations/route-223';
+import SNOWPOINT_CITY from '@/lib/data/diamond-pearl/locations/snowpoint-city';
 import SPEAR_PILLAR from '@/lib/data/diamond-pearl/locations/spear-pillar';
 import SUNYSHORE_CITY from '@/lib/data/diamond-pearl/locations/sunyshore-city';
 import SUNYSHORE_GYM from '@/lib/data/diamond-pearl/locations/sunyshore-gym';
+import VALOR_CAVERN from '@/lib/data/diamond-pearl/locations/valor-cavern';
+import VEILSTONE_CITY from '@/lib/data/diamond-pearl/locations/veilstone-city';
+import VERITY_CAVERN from '@/lib/data/diamond-pearl/locations/verity-cavern';
+import VISTA_LIGHTHOUSE from '@/lib/data/diamond-pearl/locations/vista-lighthouse';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
 const VOLKNER: Split = {
     name: 'Volkner',
     locations: [
-        ROUTE_216,
+        SNOWPOINT_CITY,
+        ACUITY_LAKEFRONT,
         LAKE_ACUITY,
+        ROUTE_216,
+        ROUTE_208,
+        LocationHelpers.withSubareaOrder(ROUTE_210, ['North', 'South']),
+        VEILSTONE_CITY,
         GALACTIC_HQ,
         LocationHelpers.withSubareaOrder(MT_CORONET, [
             '1F (207)',
@@ -24,6 +37,7 @@ const VOLKNER: Split = {
             '3F',
             'Exterior',
             '4F',
+            'Summit',
             'Tunnel',
             '5F',
             '6F',
@@ -31,11 +45,17 @@ const VOLKNER: Split = {
             '1F (216)',
         ]),
         SPEAR_PILLAR,
+        VERITY_CAVERN,
+        LocationHelpers.withSubareaOrder(VALOR_CAVERN, [
+            'Post-Spear Pillar',
+            'Pre-Spear Pillar',
+        ]),
         ACUITY_CAVERN,
         ROUTE_222,
         SUNYSHORE_CITY,
+        VISTA_LIGHTHOUSE,
         ROUTE_223,
-        LocationHelpers.withHiddenBattles(POKEMON_LEAGUE),
+        POKEMON_LEAGUE,
         SUNYSHORE_GYM,
     ],
     saveCondition: { type: 'badge', bit: 7 },

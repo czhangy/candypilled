@@ -3,9 +3,8 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import HallOfFameHelpers from '@/lib/utils/HallOfFameHelpers';
-import SessionHelpers from '@/lib/utils/SessionHelpers';
 import styles from './Navbar.module.scss';
 
 const Navbar: React.FC = () => {
@@ -14,17 +13,11 @@ const Navbar: React.FC = () => {
     // -------------------------------------------------------------------------
 
     const pathname = usePathname();
-    const router = useRouter();
     const navRef = useRef<HTMLElement>(null);
     const hallOfFameEntries = useSyncExternalStore(
         HallOfFameHelpers.subscribe,
         HallOfFameHelpers.getSnapshot,
         HallOfFameHelpers.getServerSnapshot
-    );
-    const session = useSyncExternalStore(
-        SessionHelpers.subscribe,
-        SessionHelpers.getSnapshot,
-        SessionHelpers.getServerSnapshot
     );
 
     // -------------------------------------------------------------------------
@@ -62,11 +55,6 @@ const Navbar: React.FC = () => {
 
     const handleClose = (): void => {
         setIsOpen(false);
-    };
-
-    const handleSignOutClick = async (): Promise<void> => {
-        await SessionHelpers.signOut();
-        router.push('/');
     };
 
     // -------------------------------------------------------------------------
@@ -107,20 +95,16 @@ const Navbar: React.FC = () => {
                     .filter(Boolean)
                     .join(' ')}
             >
-                {session && (
-                    <li>
-                        <Link href="/runs" onClick={handleClose}>
-                            Runs
-                        </Link>
-                    </li>
-                )}
-                {session && (
-                    <li>
-                        <Link href="/settings" onClick={handleClose}>
-                            Settings
-                        </Link>
-                    </li>
-                )}
+                <li>
+                    <Link href="/runs" onClick={handleClose}>
+                        Runs
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/settings" onClick={handleClose}>
+                        Settings
+                    </Link>
+                </li>
                 <li>
                     <Link href="/types" onClick={handleClose}>
                         Types
@@ -131,7 +115,7 @@ const Navbar: React.FC = () => {
                         Natures
                     </Link>
                 </li>
-                {session && hallOfFameEntries.length > 0 && (
+                {hallOfFameEntries.length > 0 && (
                     <li>
                         <Link href="/hof" onClick={handleClose}>
                             Hall of Fame
@@ -143,17 +127,6 @@ const Navbar: React.FC = () => {
                         Credits
                     </Link>
                 </li>
-                {session && (
-                    <li>
-                        <button
-                            className={styles['sign-out']}
-                            onClick={handleSignOutClick}
-                            type="button"
-                        >
-                            Sign Out
-                        </button>
-                    </li>
-                )}
             </ul>
         </nav>
     );

@@ -38,8 +38,9 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
     const width = ((trainer.customWidth ?? TRAINER_WIDTH_PX) / mapWidth) * 100;
     const height =
         ((trainer.customHeight ?? TRAINER_HEIGHT_PX) / mapHeight) * 100;
-    const isBoss = trainer.metadata.includes(BattleMetadata.Boss);
-    const isMiniboss = trainer.metadata.includes(BattleMetadata.Miniboss);
+    const metadata = game.battles[trainer.battleKey]?.metadata ?? [];
+    const isBoss = metadata.includes(BattleMetadata.Boss);
+    const isMiniboss = metadata.includes(BattleMetadata.Miniboss);
 
     // -------------------------------------------------------------------------
     // HANDLERS

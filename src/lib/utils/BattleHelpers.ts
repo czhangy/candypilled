@@ -81,20 +81,22 @@ export default class BattleHelpers {
         );
     }
 
-    /** Every battle in location for gender, excluding those hidden via location/subarea or restricted to the other gender. */
+    /** Every battle in location for gender and splitName, excluding those restricted to another gender or split. */
     static getBattlesInLocation(
         location: Location,
-        gender: 'male' | 'female' | undefined
+        gender: 'male' | 'female' | undefined,
+        splitName: string | undefined,
+        game: Game
     ): Battle[] {
-        if (location.hideBattles) return [];
-
         const battles = location.subareas
-            ? location.subareas
-                  .filter((subarea) => !subarea.hideBattles)
-                  .flatMap((subarea) => subarea.battles ?? [])
+            ? location.subareas.flatMap((subarea) => subarea.battles ?? [])
             : (location.battles ?? []);
 
-        return BattleHelpers.filterByGender(battles, gender);
+        return BattleHelpers.filterBySplit(
+            BattleHelpers.filterByGender(battles, gender),
+            splitName,
+            game
+        );
     }
 
     /**
@@ -109,7 +111,12 @@ export default class BattleHelpers {
     ): Battle[] {
         const battles = game.splits.flatMap((split) =>
             split.locations.flatMap((location) =>
-                BattleHelpers.getBattlesInLocation(location, gender)
+                BattleHelpers.getBattlesInLocation(
+                    location,
+                    gender,
+                    split.name,
+                    game
+                )
             )
         );
 
@@ -128,6 +135,31 @@ export default class BattleHelpers {
         gender: 'male' | 'female' | undefined
     ): T[] {
         return items.filter((item) => !item.gender || item.gender === gender);
+    }
+
+    /** battles restricted to splitName: entries whose BattleData carries no `split` always pass, entries with one only pass once splitName's split is reached — i.e. splitName is that split or a later one in game order. */
+    static filterBySplit(
+        battles: Battle[],
+        splitName: string | undefined,
+        game: Game
+    ): Battle[] {
+        const splitIndexes = new Map(
+            game.splits.map((split, index) => [split.name, index])
+        );
+        const currentIndex = splitName
+            ? splitIndexes.get(splitName)
+            : undefined;
+
+        return battles.filter((battle) => {
+            const split = game.battles[battle.battleKey]?.split;
+            if (!split) return true;
+
+            const battleIndex = splitIndexes.get(split);
+            if (battleIndex === undefined || currentIndex === undefined) {
+                return true;
+            }
+            return currentIndex >= battleIndex;
+        });
     }
 
     /** The team belonging to the battle keyed by battleKey within game, resolved for starter, or [] if battleKey is undefined or doesn't match any battle. */
@@ -149,10 +181,9 @@ export default class BattleHelpers {
 
     /**
      * Every location/subarea's tag partner in game for gender, paired with
-     * its trainer's display label, excluding one hidden via
-     * location/subarea hideBattles or restricted to the other gender. A
-     * partner reused across more than one location keeps only its first
-     * occurrence, same as getAllBattles.
+     * its trainer's display label, excluding one restricted to the other
+     * gender. A partner reused across more than one location keeps only
+     * its first occurrence, same as getAllBattles.
      */
     static getAllTagPartners(
         game: Game,
@@ -163,7 +194,7 @@ export default class BattleHelpers {
         ): { battleKey: string; label: string } => ({
             battleKey: tagPartner.battleKey,
             label: BattleHelpers.getFullName(
-                { battleKey: tagPartner.battleKey, metadata: [], x: 0, y: 0 },
+                { battleKey: tagPartner.battleKey, x: 0, y: 0 },
                 game
             ),
         });
@@ -171,24 +202,17 @@ export default class BattleHelpers {
         const entries = game.splits.flatMap((split) =>
             split.locations.flatMap((location) => {
                 if (location.subareas) {
-                    return location.subareas
-                        .filter(
-                            (subarea) =>
-                                !location.hideBattles && !subarea.hideBattles
-                        )
-                        .flatMap((subarea) =>
-                            BattleHelpers.filterByGender(
-                                subarea.tagPartner ?? [],
-                                gender
-                            ).map(toEntry)
-                        );
+                    return location.subareas.flatMap((subarea) =>
+                        BattleHelpers.filterByGender(
+                            subarea.tagPartner ?? [],
+                            gender
+                        ).map(toEntry)
+                    );
                 }
-                return location.hideBattles
-                    ? []
-                    : BattleHelpers.filterByGender(
-                          location.tagPartner ?? [],
-                          gender
-                      ).map(toEntry);
+                return BattleHelpers.filterByGender(
+                    location.tagPartner ?? [],
+                    gender
+                ).map(toEntry);
             })
         );
 
@@ -213,7 +237,7 @@ export default class BattleHelpers {
         if (!battleKey) return [];
 
         return BattleHelpers.getTeamFromOptions(
-            { battleKey, metadata: [], x: 0, y: 0 },
+            { battleKey, x: 0, y: 0 },
             starter,
             game
         );

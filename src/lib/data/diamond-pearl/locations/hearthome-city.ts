@@ -1,18 +1,15 @@
 import { hearthomeCity } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const HEARTHOME_CITY: Location = {
     name: 'Hearthome City',
     map: hearthomeCity,
-    mapAnchor: MapAnchor.BottomLeft,
     encountersKey: 'hearthome-city-west-gate',
     battles: [
         {
-            metadata: [BattleMetadata.Miniboss],
             battleKey: 'pkmn-trainer-barry-hearthome-city',
-            x: 60.8,
-            y: 77.7,
+            x: 61.7,
+            y: 76.7,
         },
     ],
 };

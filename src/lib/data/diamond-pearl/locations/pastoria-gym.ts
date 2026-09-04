@@ -1,53 +1,44 @@
 import { pastoriaGym } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const PASTORIA_GYM: Location = {
     name: 'Pastoria Gym',
     map: pastoriaGym,
-    mapAnchor: MapAnchor.Bottom,
     battles: [
         {
-            metadata: [],
             battleKey: 'tuber-m-jacky',
-            x: 42.4,
-            y: 75.7,
+            x: 41.8,
+            y: 75.5,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'fisherman-walter',
-            x: 34.5,
-            y: 25.5,
+            x: 33.7,
+            y: 21.3,
         },
         {
-            metadata: [],
             battleKey: 'sailor-damian',
-            x: 26.8,
-            y: 50.1,
+            x: 26.2,
+            y: 48.2,
         },
         {
-            metadata: [],
             battleKey: 'tuber-f-caitlyn',
-            x: 80.9,
-            y: 75.7,
+            x: 81.9,
+            y: 75.4,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'fisherman-erick',
-            x: 73.2,
-            y: 41.3,
+            x: 74,
+            y: 38.4,
         },
         {
-            metadata: [],
             battleKey: 'sailor-samson',
-            x: 19.1,
-            y: 18.8,
+            x: 18.1,
+            y: 14,
         },
         {
-            metadata: [BattleMetadata.Boss],
             battleKey: 'leader-wake',
-            x: 49.9,
-            y: 9.7,
+            x: 50,
+            y: 3.9,
         },
     ],
 };

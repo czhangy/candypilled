@@ -59,6 +59,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
+    const metadata = game.battles[battle.battleKey].metadata;
     const teamGroups = BattleHelpers.getTeamGroups(battle, starter, game);
     // Flattened one row per (trainer, surviving team) pair, so a trainer
     // with multiple teams that all matched the current run's conditions
@@ -95,9 +96,9 @@ const BattleCard: React.FC<BattleCardProps> = ({
         <div className={styles['battle-card']}>
             <span className={styles.label}>
                 {labelOverride ??
-                    (battle.metadata.includes(BattleMetadata.Boss)
+                    (metadata.includes(BattleMetadata.Boss)
                         ? 'Boss'
-                        : battle.metadata.includes(BattleMetadata.Miniboss)
+                        : metadata.includes(BattleMetadata.Miniboss)
                           ? 'Miniboss'
                           : 'Battle')}
             </span>
@@ -151,6 +152,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                         battle={battle}
                                         isStacked={isStacked}
                                         items={row.items}
+                                        metadata={metadata}
                                         trainerAssetFolder={
                                             game.trainerAssetFolder
                                         }

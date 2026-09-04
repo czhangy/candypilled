@@ -16,7 +16,7 @@ const CYNTHIA: Split = {
     locations: [
         SUNYSHORE_CITY,
         ROUTE_223,
-        LocationHelpers.withHiddenBattles(POKEMON_LEAGUE),
+        POKEMON_LEAGUE,
         VICTORY_ROAD,
         ROUTE_224,
         LocationHelpers.withSubareaOrder(POKEMON_LEAGUE, ['Lobby', 'Exterior']),

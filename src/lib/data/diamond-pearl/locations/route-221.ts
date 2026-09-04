@@ -1,48 +1,40 @@
 import { route221 } from '@/lib/data/diamond-pearl/maps';
-import { BattleMetadata, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_221: Location = {
     name: 'Route 221',
     map: route221,
-    mapAnchor: MapAnchor.Left,
     encountersKey: 'sinnoh-route-221',
     battles: [
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'swimmer-m-dillon',
-            x: 12.1,
-            y: 54,
+            x: 11.9,
+            y: 50.7,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'swimmer-f-vanessa',
-            x: 14.1,
-            y: 83.9,
+            x: 14,
+            y: 81.8,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'fisherman-cory',
-            x: 27.7,
-            y: 72.6,
+            x: 27.6,
+            y: 72,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'ace-trainer-f-shannon',
             x: 55.8,
             y: 84.6,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'collector-ivan',
             x: 67.2,
-            y: 60.2,
+            y: 59.4,
         },
         {
-            metadata: [BattleMetadata.Optional],
             battleKey: 'ace-trainer-m-jake',
-            x: 85,
-            y: 66.8,
+            x: 84.8,
+            y: 65.7,
         },
     ],
 };
