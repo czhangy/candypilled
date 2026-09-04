@@ -7,6 +7,25 @@
     syntax: '<color>';
 }
 
+@property --marker-opacity {
+    inherits: false;
+    initial-value: 15%;
+    syntax: '<percentage>';
+}
+
+@keyframes marker-pulse {
+    0%,
+    100% {
+        --marker-color: var(--marker-color-base);
+        --marker-opacity: 15%;
+    }
+
+    50% {
+        --marker-color: color-mix(in srgb, var(--marker-color-base) 65%, white);
+        --marker-opacity: 20%;
+    }
+}
+
 @keyframes preview-marker-color-cycle {
     0% {
         --marker-color: #{$pink};
@@ -38,9 +57,16 @@
 }
 
 .trainer-marker {
-    --marker-color: var(--accent-color);
+    --marker-color-base: var(--accent-color);
+    --marker-color: var(--marker-color-base);
+    --marker-opacity: 15%;
 
-    background: color-mix(in srgb, var(--marker-color) 15%, transparent);
+    animation: marker-pulse 2.5s ease-in-out infinite;
+    background: color-mix(
+        in srgb,
+        var(--marker-color) var(--marker-opacity),
+        transparent
+    );
     border: 2px solid var(--marker-color);
     cursor: pointer;
     height: var(--height);
@@ -63,15 +89,16 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+        animation: none;
         transition: none;
     }
 
     &--miniboss {
-        --marker-color: #{$orange};
+        --marker-color-base: #{$orange};
     }
 
     &--boss {
-        --marker-color: #{$red};
+        --marker-color-base: #{$red};
     }
 
     &--selected {
