@@ -1,10 +1,72 @@
 @use '@/styles/constants' as *;
 @use '@/styles/mixins' as *;
 
-.trainer-marker {
-    --marker-color: var(--accent-color);
+@property --marker-color {
+    inherits: false;
+    initial-value: #{$pink};
+    syntax: '<color>';
+}
 
-    background: color-mix(in srgb, var(--marker-color) 15%, transparent);
+@property --marker-opacity {
+    inherits: false;
+    initial-value: 15%;
+    syntax: '<percentage>';
+}
+
+@keyframes marker-pulse {
+    0%,
+    100% {
+        --marker-color: var(--marker-color-base);
+        --marker-opacity: 15%;
+    }
+
+    50% {
+        --marker-color: color-mix(in srgb, var(--marker-color-base) 65%, white);
+        --marker-opacity: 20%;
+    }
+}
+
+@keyframes preview-marker-color-cycle {
+    0% {
+        --marker-color: #{$pink};
+    }
+
+    16.66% {
+        --marker-color: #{$red};
+    }
+
+    33.33% {
+        --marker-color: #{$orange};
+    }
+
+    50% {
+        --marker-color: #{$gold};
+    }
+
+    66.66% {
+        --marker-color: #{$green};
+    }
+
+    83.33% {
+        --marker-color: #{$blue};
+    }
+
+    100% {
+        --marker-color: #{$pink};
+    }
+}
+
+.trainer-marker {
+    --marker-color-base: var(--accent-color);
+    --marker-color: var(--marker-color-base);
+    --marker-opacity: 15%;
+
+    animation: marker-pulse 2.5s ease-in-out infinite;
+    background: color-mix(
+        in srgb,
+        var(--marker-color) var(--marker-opacity),
+        transparent
+    );
     border: 2px solid var(--marker-color);
     cursor: pointer;
     height: var(--height);
@@ -27,15 +89,16 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+        animation: none;
         transition: none;
     }
 
     &--miniboss {
-        --marker-color: #{$orange};
+        --marker-color-base: #{$orange};
     }
 
     &--boss {
-        --marker-color: #{$red};
+        --marker-color-base: #{$red};
     }
 
     &--selected {
@@ -65,8 +128,13 @@
     &--preview {
         --marker-color: #{$pink};
 
+        animation: preview-marker-color-cycle 4s linear infinite;
         border-style: dashed;
         cursor: none;
         pointer-events: none;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none;
+        }
     }
 }

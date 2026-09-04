@@ -560,6 +560,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         onSelectSpecies={(species: string) =>
                                             setSpeciesOverride(species)
                                         }
+                                        onSelectSpeciesLink={onSelectSpecies}
                                         originalSpecies={
                                             selectedEncounter?.species
                                         }

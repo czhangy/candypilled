@@ -9,7 +9,9 @@ type PokemonSummaryProps = {
     catchRate?: number;
     catchRateChanged?: boolean;
     interactive: boolean;
+    interactiveSpecies: boolean;
     onSelectAbility: (slug: string) => void;
+    onSelectSpecies: (slug: string) => void;
     placeholder?: string;
     pokemon?: PokemonData;
     sprite?: string;
@@ -21,7 +23,9 @@ const PokemonSummary: React.FC<PokemonSummaryProps> = ({
     catchRate,
     catchRateChanged,
     interactive,
+    interactiveSpecies,
     onSelectAbility,
+    onSelectSpecies,
     placeholder,
     pokemon,
     sprite,
@@ -36,6 +40,15 @@ const PokemonSummary: React.FC<PokemonSummaryProps> = ({
     const TYPE_BADGE_HEIGHT = 14;
 
     // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleSpeciesClick = (): void => {
+        if (!pokemon) return;
+        onSelectSpecies(pokemon.slug);
+    };
+
+    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
@@ -48,18 +61,47 @@ const PokemonSummary: React.FC<PokemonSummaryProps> = ({
             {pokemon ? (
                 <>
                     <div className={styles.left}>
-                        <div className={styles.sprite}>
-                            {sprite && (
-                                <Image
-                                    alt={pokemon.name}
-                                    height={SPRITE_SIZE}
-                                    src={sprite}
-                                    width={SPRITE_SIZE}
-                                />
-                            )}
-                        </div>
+                        {interactiveSpecies ? (
+                            <button
+                                className={styles.sprite}
+                                onClick={handleSpeciesClick}
+                                type="button"
+                            >
+                                {sprite && (
+                                    <Image
+                                        alt={pokemon.name}
+                                        height={SPRITE_SIZE}
+                                        src={sprite}
+                                        width={SPRITE_SIZE}
+                                    />
+                                )}
+                            </button>
+                        ) : (
+                            <div className={styles.sprite}>
+                                {sprite && (
+                                    <Image
+                                        alt={pokemon.name}
+                                        height={SPRITE_SIZE}
+                                        src={sprite}
+                                        width={SPRITE_SIZE}
+                                    />
+                                )}
+                            </div>
+                        )}
                         <div className={styles.info}>
-                            <span className={styles.name}>{pokemon.name}</span>
+                            {interactiveSpecies ? (
+                                <button
+                                    className={styles.name}
+                                    onClick={handleSpeciesClick}
+                                    type="button"
+                                >
+                                    {pokemon.name}
+                                </button>
+                            ) : (
+                                <span className={styles.name}>
+                                    {pokemon.name}
+                                </span>
+                            )}
                             {types.length > 0 && (
                                 <div className={styles.types}>
                                     {types.map((type) => (

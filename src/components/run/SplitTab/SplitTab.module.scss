@@ -109,6 +109,7 @@
             .complete-button {
                 @include solid-accent-button;
 
+                border-radius: 0.2rem;
                 font-size: 0.75rem;
 
                 &--completed {
@@ -134,6 +135,7 @@
                     @include solid-accent-button;
 
                     align-items: center;
+                    border-radius: 0.2rem;
                     display: flex;
                     flex: 1;
                     font-size: 0.75rem;

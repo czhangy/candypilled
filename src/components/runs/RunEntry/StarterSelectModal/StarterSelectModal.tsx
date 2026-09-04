@@ -64,6 +64,8 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
 
     const handleSelectMove = (): void => {};
 
+    const handleSelectSpeciesLink = (): void => {};
+
     const handleSelectClick = (): void => {
         if (!defaultSpecies) return;
 
@@ -123,6 +125,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
                             onSelectLocation={handleSelectLocation}
                             onSelectMove={handleSelectMove}
                             onSelectSpecies={handleSelectSpecies}
+                            onSelectSpeciesLink={handleSelectSpeciesLink}
                             originalSpecies={activeStarter ?? undefined}
                             species={
                                 speciesOverride ?? activeStarter ?? undefined

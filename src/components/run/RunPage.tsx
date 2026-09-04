@@ -1,6 +1,7 @@
 'use client';
 
 import { useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
     notFound,
@@ -11,9 +12,11 @@ import {
 import Tabs from '@/components/common/Tabs/Tabs';
 import { CaughtPokemon, Game } from '@/lib/static/types';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
+import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
 import RunImportHelpers from '@/lib/utils/RunImportHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
+import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import BoxTab from './BoxTab/BoxTab';
 import ImportSaveModal from './BoxTab/ImportSaveModal/ImportSaveModal';
 import CalcTab from './CalcTab/CalcTab';
@@ -378,9 +381,29 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                 ← Runs
             </Link>
             <div className={styles['title-row']}>
-                <h1 className={styles.title}>
-                    Pokémon {game.name} — Attempt #{run.attempt}
-                </h1>
+                <div className={styles['title-group']}>
+                    <h1 className={styles.title}>
+                        Pokémon {game.name} — Attempt #{run.attempt}
+                    </h1>
+                    <div className={styles.sprites}>
+                        <Image
+                            alt={`${run.gender} protagonist`}
+                            className={styles.gender}
+                            height={32}
+                            src={TrainerHelpers.getOverworldSprite(
+                                game.genders[run.gender]
+                            )}
+                            width={32}
+                        />
+                        <Image
+                            alt={`${run.starter} starter`}
+                            className={styles.starter}
+                            height={30}
+                            src={PokemonHelpers.getBoxSprite(run.starter)}
+                            width={40}
+                        />
+                    </div>
+                </div>
                 <div className={styles.actions}>
                     <button
                         className={styles.import}
