@@ -46,6 +46,7 @@ type PokedexTileProps = (
     onSelectLocation: (location: string) => void;
     onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
+    onSelectSpeciesLink: (species: string) => void;
     originalSpecies?: string;
     species?: string;
     usedLocations: string[];
@@ -59,6 +60,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     onSelectLocation,
     onSelectMove,
     onSelectSpecies,
+    onSelectSpeciesLink,
     originalSpecies,
     species,
     usedLocations,
@@ -280,6 +282,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                 catchRateChanged={catchRateChanged}
                 interactive={rest.mode !== 'choose'}
                 onSelectAbility={onSelectAbility}
+                onSelectSpecies={onSelectSpeciesLink}
                 placeholder={`Select a Pokémon to view its details or ${rest.mode} it`}
                 pokemon={pokemon}
                 sprite={sprite}
