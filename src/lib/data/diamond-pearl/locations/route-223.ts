@@ -8,8 +8,8 @@ const ROUTE_223: Location = {
     battles: [
         {
             battleKey: 'swimmer-f-miranda',
-            x: 60.4,
-            y: 90,
+            x: 48.4,
+            y: 90.1,
         },
         {
             battleKey: 'swimmer-f-aubree',
@@ -18,48 +18,48 @@ const ROUTE_223: Location = {
         },
         {
             battleKey: 'swimmer-m-oscar',
-            x: 39,
+            x: 38.8,
             y: 70.5,
         },
         {
             battleKey: 'swimmer-f-paige',
-            x: 48.3,
+            x: 48.2,
             y: 63.5,
         },
         {
             battleKey: 'swimmer-m-colton',
-            x: 70.6,
+            x: 70.5,
             y: 63.5,
         },
         {
             battleKey: 'swimmer-m-ricardo',
-            x: 39.2,
+            x: 38.8,
             y: 58,
         },
         {
             battleKey: 'swimmer-f-crystal',
-            x: 60.4,
-            y: 47,
+            x: 51.4,
+            y: 46.9,
         },
         {
             battleKey: 'swimmer-m-wesley',
             x: 17.3,
-            y: 44,
+            y: 43.9,
         },
         {
             battleKey: 'sailor-zachariah',
-            x: 48.5,
+            x: 48.4,
             y: 36.7,
         },
         {
             battleKey: 'swimmer-f-gabrielle',
-            x: 36.4,
-            y: 26.8,
+            x: 36.3,
+            y: 26.7,
         },
         {
             battleKey: 'swimmer-f-cassandra',
-            x: 51.7,
-            y: 23.9,
+            x: 73.7,
+            y: 22,
         },
         {
             battleKey: 'swimmer-m-francisco',
@@ -68,8 +68,8 @@ const ROUTE_223: Location = {
         },
         {
             battleKey: 'swimmer-m-troy',
-            x: 49.9,
-            y: 11.2,
+            x: 58,
+            y: 11.1,
         },
     ],
 };

@@ -4518,6 +4518,33 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'poke-kid-janet': {
+        metadata: [BattleMetadata.Optional],
+        trainerClass: 'poke-kid',
+        name: 'Janet',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'pikachu',
+                        ability: 'static',
+                        level: 41,
+                        nature: Nature.Timid,
+                        moves: ['thunderbolt', 'feint', 'agility', 'discharge'],
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'pikachu',
+                        ability: 'static',
+                        level: 41,
+                        nature: Nature.Timid,
+                        moves: ['thunderbolt', 'feint', 'agility', 'discharge'],
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
     'poke-kid-danielle': {
         metadata: [BattleMetadata.Optional],
         trainerClass: 'poke-kid',
