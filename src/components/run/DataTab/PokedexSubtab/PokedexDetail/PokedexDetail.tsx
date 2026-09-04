@@ -166,6 +166,7 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                             catchRate={catchRate}
                             catchRateChanged={catchRateChanged}
                             interactive
+                            interactiveSpecies={false}
                             onSelectAbility={onSelectAbility}
                             onSelectSpecies={onSelectSpecies}
                             pokemon={pokemon}

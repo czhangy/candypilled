@@ -9,6 +9,7 @@ type PokemonSummaryProps = {
     catchRate?: number;
     catchRateChanged?: boolean;
     interactive: boolean;
+    interactiveSpecies: boolean;
     onSelectAbility: (slug: string) => void;
     onSelectSpecies: (slug: string) => void;
     placeholder?: string;
@@ -22,6 +23,7 @@ const PokemonSummary: React.FC<PokemonSummaryProps> = ({
     catchRate,
     catchRateChanged,
     interactive,
+    interactiveSpecies,
     onSelectAbility,
     onSelectSpecies,
     placeholder,
@@ -59,7 +61,7 @@ const PokemonSummary: React.FC<PokemonSummaryProps> = ({
             {pokemon ? (
                 <>
                     <div className={styles.left}>
-                        {interactive ? (
+                        {interactiveSpecies ? (
                             <button
                                 className={styles.sprite}
                                 onClick={handleSpeciesClick}
@@ -87,7 +89,7 @@ const PokemonSummary: React.FC<PokemonSummaryProps> = ({
                             </div>
                         )}
                         <div className={styles.info}>
-                            {interactive ? (
+                            {interactiveSpecies ? (
                                 <button
                                     className={styles.name}
                                     onClick={handleSpeciesClick}

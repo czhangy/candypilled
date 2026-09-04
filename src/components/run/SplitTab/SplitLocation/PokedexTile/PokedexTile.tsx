@@ -281,6 +281,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                 catchRate={catchRate}
                 catchRateChanged={catchRateChanged}
                 interactive={rest.mode !== 'choose'}
+                interactiveSpecies={rest.mode !== 'choose'}
                 onSelectAbility={onSelectAbility}
                 onSelectSpecies={onSelectSpeciesLink}
                 placeholder={`Select a Pokémon to view its details or ${rest.mode} it`}
