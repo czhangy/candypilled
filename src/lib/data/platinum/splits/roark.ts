@@ -11,18 +11,22 @@ import ROUTE_204 from '@/lib/data/platinum/locations/route-204';
 import ROUTE_207 from '@/lib/data/platinum/locations/route-207';
 import ROUTE_218 from '@/lib/data/platinum/locations/route-218';
 import ROUTE_219 from '@/lib/data/platinum/locations/route-219';
+import SANDGEM_TOWN from '@/lib/data/platinum/locations/sandgem-town';
 import TWINLEAF_TOWN from '@/lib/data/platinum/locations/twinleaf-town';
+import VERITY_LAKEFRONT from '@/lib/data/platinum/locations/verity-lakefront';
 import { Split } from '@/lib/static/types';
 
 const ROARK: Split = {
     name: 'Roark',
     locations: [
-        ROUTE_201,
-        ROUTE_202,
-        LAKE_VERITY,
-        ROUTE_218,
         TWINLEAF_TOWN,
+        ROUTE_201,
+        VERITY_LAKEFRONT,
+        LAKE_VERITY,
+        SANDGEM_TOWN,
         ROUTE_219,
+        ROUTE_202,
+        ROUTE_218,
         ROUTE_204,
         RAVAGED_PATH,
         ROUTE_203,
