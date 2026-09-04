@@ -1,6 +1,42 @@
 @use '@/styles/constants' as *;
 @use '@/styles/mixins' as *;
 
+@property --marker-color {
+    inherits: false;
+    initial-value: #{$pink};
+    syntax: '<color>';
+}
+
+@keyframes preview-marker-color-cycle {
+    0% {
+        --marker-color: #{$pink};
+    }
+
+    16.66% {
+        --marker-color: #{$red};
+    }
+
+    33.33% {
+        --marker-color: #{$orange};
+    }
+
+    50% {
+        --marker-color: #{$gold};
+    }
+
+    66.66% {
+        --marker-color: #{$green};
+    }
+
+    83.33% {
+        --marker-color: #{$blue};
+    }
+
+    100% {
+        --marker-color: #{$pink};
+    }
+}
+
 .trainer-marker {
     --marker-color: var(--accent-color);
 
@@ -65,8 +101,13 @@
     &--preview {
         --marker-color: #{$pink};
 
+        animation: preview-marker-color-cycle 4s linear infinite;
         border-style: dashed;
         cursor: none;
         pointer-events: none;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none;
+        }
     }
 }
