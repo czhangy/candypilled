@@ -19,16 +19,16 @@ const FUEGO_IRONWORKS: Location = {
                 {
                     battleKey: 'worker-dillan',
                     x: 5,
-                    y: 24.9,
+                    y: 18.3,
                 },
                 {
                     battleKey: 'worker-holden',
-                    x: 50.2,
-                    y: 20.4,
+                    x: 49.9,
+                    y: 14,
                 },
                 {
                     battleKey: 'worker-conrad',
-                    x: 67.9,
+                    x: 67.8,
                     y: 91.1,
                 },
             ],

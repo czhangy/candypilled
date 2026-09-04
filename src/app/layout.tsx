@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { JetBrains_Mono } from 'next/font/google';
-import AuthProvider from '@/components/layout/AuthProvider/AuthProvider';
 import Footer from '@/components/layout/Footer/Footer';
 import Navbar from '@/components/layout/Navbar/Navbar';
 import '@/lib/styles/globals.scss';
@@ -26,13 +25,11 @@ export default function RootLayout({
                 <div className="small-screen-message">
                     This site is not available at small screen sizes
                 </div>
-                <AuthProvider>
-                    <div className="site-shell">
-                        <Navbar />
-                        <main className="page-main">{children}</main>
-                        <Footer />
-                    </div>
-                </AuthProvider>
+                <div className="site-shell">
+                    <Navbar />
+                    <main className="page-main">{children}</main>
+                    <Footer />
+                </div>
             </body>
         </html>
     );

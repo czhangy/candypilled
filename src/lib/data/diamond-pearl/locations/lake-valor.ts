@@ -9,28 +9,28 @@ const LAKE_VALOR: Location = {
     subareas: [
         {
             name: 'Pre-Spear Pillar',
-            map: lakeValorPostSpearPillar,
+            map: lakeValorPreSpearPillar,
             battles: [
                 {
                     battleKey: 'galactic-grunt-f-lake-valor',
-                    x: 52.5,
-                    y: 31.2,
+                    x: 46.2,
+                    y: 28.1,
                 },
                 {
                     battleKey: 'galactic-grunt-m-lake-valor-1',
-                    x: 31,
-                    y: 56.3,
+                    x: 27.3,
+                    y: 50.3,
                 },
                 {
                     battleKey: 'galactic-grunt-m-lake-valor-2',
-                    x: 45.2,
-                    y: 61.9,
+                    x: 39.8,
+                    y: 54.7,
                 },
             ],
         },
         {
             name: 'Post-Spear Pillar',
-            map: lakeValorPreSpearPillar,
+            map: lakeValorPostSpearPillar,
             encountersKey: 'lake-valor-area',
         },
     ],

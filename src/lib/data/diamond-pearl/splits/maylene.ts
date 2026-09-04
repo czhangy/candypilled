@@ -8,6 +8,7 @@ import MINING_MUSEUM from '@/lib/data/diamond-pearl/locations/mining-museum';
 import MT_CORONET from '@/lib/data/diamond-pearl/locations/mt-coronet';
 import OLD_CHATEAU from '@/lib/data/diamond-pearl/locations/old-chateau';
 import PASTORIA_CITY from '@/lib/data/diamond-pearl/locations/pastoria-city';
+import POKEMON_MANSION from '@/lib/data/diamond-pearl/locations/pokemon-mansion';
 import ROUTE_206 from '@/lib/data/diamond-pearl/locations/route-206';
 import ROUTE_207 from '@/lib/data/diamond-pearl/locations/route-207';
 import ROUTE_208 from '@/lib/data/diamond-pearl/locations/route-208';
@@ -74,6 +75,7 @@ const MAYLENE: Split = {
         PASTORIA_CITY,
         GREAT_MARSH,
         ROUTE_212,
+        POKEMON_MANSION,
         TROPHY_GARDEN,
         VEILSTONE_GYM,
     ],

@@ -77,11 +77,6 @@ const CreditsPage: React.FC = () => {
             title: 'Architecture',
             credits: [
                 {
-                    name: 'Supabase',
-                    description: 'Postgres DB and Google-based authentication',
-                    url: 'https://supabase.com/',
-                },
-                {
                     name: 'Vercel',
                     description: 'Hosting and deployment',
                     url: 'https://vercel.com/',

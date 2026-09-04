@@ -8,10 +8,8 @@ import {
     useRouter,
     useSearchParams,
 } from 'next/navigation';
-import Spinner from '@/components/common/Spinner/Spinner';
 import Tabs from '@/components/common/Tabs/Tabs';
-import { useGame } from '@/lib/context/GameContext';
-import { CaughtPokemon } from '@/lib/static/types';
+import { CaughtPokemon, Game } from '@/lib/static/types';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
 import RunImportHelpers from '@/lib/utils/RunImportHelpers';
@@ -26,7 +24,11 @@ import styles from './RunPage.module.scss';
 import SplitHeader from './SplitHeader/SplitHeader';
 import SplitTab from './SplitTab/SplitTab';
 
-const RunPage: React.FC = () => {
+type RunPageProps = {
+    game: Game;
+};
+
+const RunPage: React.FC<RunPageProps> = ({ game }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
@@ -59,16 +61,10 @@ const RunPage: React.FC = () => {
     // HOOKS
     // -------------------------------------------------------------------------
 
-    const game = useGame();
     const gameRuns = useSyncExternalStore(
         RunHelpers.subscribe,
         RunHelpers.getSnapshot,
         RunHelpers.getServerSnapshot
-    );
-    const isHydrated = useSyncExternalStore(
-        RunHelpers.subscribe,
-        RunHelpers.getIsHydratedSnapshot,
-        RunHelpers.getServerIsHydratedSnapshot
     );
 
     const router = useRouter();
@@ -361,23 +357,6 @@ const RunPage: React.FC = () => {
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
-
-    if (!isHydrated) {
-        return (
-            <div
-                className={styles['run-page']}
-                style={
-                    {
-                        '--accent-color': game.accentColor,
-                    } as React.CSSProperties
-                }
-            >
-                <div className={styles.loading}>
-                    <Spinner />
-                </div>
-            </div>
-        );
-    }
 
     if (!run) {
         notFound();

@@ -7,6 +7,7 @@ import {
     ironIslandB3f,
     ironIslandExterior,
 } from '@/lib/data/diamond-pearl/maps';
+import { GEN_4_TRUE_DOUBLE_HEIGHT } from '@/lib/static/constants';
 import { Location } from '@/lib/static/types';
 
 const IRON_ISLAND: Location = {
@@ -29,8 +30,8 @@ const IRON_ISLAND: Location = {
             battles: [
                 {
                     battleKey: 'camper-lawrence',
-                    x: 63,
-                    y: 78.6,
+                    x: 63.9,
+                    y: 73,
                 },
             ],
         },
@@ -41,8 +42,8 @@ const IRON_ISLAND: Location = {
             battles: [
                 {
                     battleKey: 'picnicker-summer',
-                    x: 75.1,
-                    y: 49.1,
+                    x: 75.7,
+                    y: 53.4,
                 },
             ],
         },
@@ -53,13 +54,13 @@ const IRON_ISLAND: Location = {
             battles: [
                 {
                     battleKey: 'worker-willy',
-                    x: 40.3,
-                    y: 23.2,
+                    x: 22.5,
+                    y: 21.2,
                 },
                 {
                     battleKey: 'worker-braden',
-                    x: 9.7,
-                    y: 67.6,
+                    x: 7.5,
+                    y: 79.8,
                 },
             ],
         },
@@ -71,49 +72,49 @@ const IRON_ISLAND: Location = {
             battles: [
                 {
                     battleKey: 'hiker-damon',
-                    x: 64.4,
-                    y: 6.3,
+                    x: 64.8,
+                    y: 3.8,
                 },
                 {
                     battleKey: 'hiker-maurice',
-                    x: 52.5,
-                    y: 9.6,
+                    x: 52.4,
+                    y: 7.7,
                 },
                 {
                     battleKey: 'black-belt-kendal',
-                    x: 88.2,
-                    y: 33.5,
+                    x: 89.2,
+                    y: 34.1,
                 },
                 {
                     battleKey: 'battle-girl-tyler',
-                    x: 88.2,
-                    y: 38.1,
+                    x: 89.1,
+                    y: 39.7,
                 },
                 {
                     battleKey: 'worker-brendon',
-                    x: 38.3,
-                    y: 44.9,
+                    x: 38.1,
+                    y: 47.3,
                 },
                 {
                     battleKey: 'worker-quentin',
-                    x: 35.7,
-                    y: 49.8,
+                    x: 35.5,
+                    y: 52.8,
                 },
                 {
                     battleKey: 'ace-trainer-m-jonah',
-                    x: 57.1,
-                    y: 53.6,
+                    x: 57.5,
+                    y: 58.6,
                 },
                 {
                     battleKey: 'ace-trainer-f-brenda',
-                    x: 66.9,
-                    y: 53.6,
+                    x: 67.4,
+                    y: 58.6,
                 },
                 {
-                    customHeight: 40,
+                    customHeight: GEN_4_TRUE_DOUBLE_HEIGHT,
                     battleKey: 'galactic-grunt-m-iron-island',
-                    x: 47.7,
-                    y: 69.5,
+                    x: 47.6,
+                    y: 76.5,
                 },
             ],
         },

@@ -22,4 +22,16 @@ export default class LocalStorageHelpers {
         if (typeof window === 'undefined') return;
         window.localStorage.setItem(key, JSON.stringify(value));
     }
+
+    /** The raw string stored under key, or '' if unset/on the server — cheap change-detection for a getSnapshot() cache, without parsing on every call. */
+    static getRawItem(key: string): string {
+        if (typeof window === 'undefined') return '';
+        return window.localStorage.getItem(key) ?? '';
+    }
+
+    /** Removes the value stored under key. No-op on the server. */
+    static removeItem(key: string): void {
+        if (typeof window === 'undefined') return;
+        window.localStorage.removeItem(key);
+    }
 }
