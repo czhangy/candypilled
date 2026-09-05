@@ -2950,7 +2950,51 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             chance: 100,
         },
     ],
-    'old-chateau': [
+    'old-chateau-entrance-and-dining-room': [
+        {
+            species: 'gastly',
+            method: EncounterMethod.Walking,
+            minLevel: 15,
+            maxLevel: 18,
+            chance: 40,
+        },
+        {
+            species: 'rattata',
+            method: EncounterMethod.Walking,
+            minLevel: 15,
+            maxLevel: 18,
+            chance: 30,
+        },
+        {
+            species: 'duskull',
+            method: EncounterMethod.Walking,
+            minLevel: 15,
+            maxLevel: 18,
+            chance: 10,
+        },
+        {
+            species: 'shuppet',
+            method: EncounterMethod.Walking,
+            minLevel: 15,
+            maxLevel: 18,
+            chance: 10,
+        },
+        {
+            species: 'raticate',
+            method: EncounterMethod.Walking,
+            minLevel: 15,
+            maxLevel: 18,
+            chance: 5,
+        },
+        {
+            species: 'haunter',
+            method: EncounterMethod.Walking,
+            minLevel: 15,
+            maxLevel: 18,
+            chance: 5,
+        },
+    ],
+    'old-chateau-bedrooms': [
         {
             species: 'gastly',
             method: EncounterMethod.Walking,

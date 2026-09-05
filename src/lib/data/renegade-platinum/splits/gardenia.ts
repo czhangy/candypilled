@@ -6,6 +6,7 @@ import FLOAROMA_TOWN from '@/lib/data/renegade-platinum/locations/floaroma-town'
 import JUBILIFE_CITY from '@/lib/data/renegade-platinum/locations/jubilife-city';
 import MT_CORONET from '@/lib/data/renegade-platinum/locations/mt-coronet';
 import OLD_CHATEAU from '@/lib/data/renegade-platinum/locations/old-chateau';
+import OREBURGH_CITY from '@/lib/data/renegade-platinum/locations/oreburgh-city';
 import OREBURGH_GATE from '@/lib/data/renegade-platinum/locations/oreburgh-gate';
 import RAVAGED_PATH from '@/lib/data/renegade-platinum/locations/ravaged-path';
 import ROUTE_203 from '@/lib/data/renegade-platinum/locations/route-203';
@@ -21,11 +22,13 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const GARDENIA: Split = {
     name: 'Gardenia',
     locations: [
+        OREBURGH_CITY,
         OREBURGH_GATE,
         ROUTE_203,
         JUBILIFE_CITY,
         ROUTE_204,
         RAVAGED_PATH,
+        LocationHelpers.withSubareaOrder(ROUTE_204, ['North', 'South']),
         FLOAROMA_TOWN,
         VALLEY_WINDWORKS,
         FLOAROMA_MEADOW,
