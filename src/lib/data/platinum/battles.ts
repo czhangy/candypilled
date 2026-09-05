@@ -469,6 +469,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 1,
                         level: 37,
                         nature: Nature.Calm,
@@ -508,6 +509,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 1,
                         level: 34,
                         nature: Nature.Mild,
@@ -516,6 +518,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 1,
                         level: 34,
                         nature: Nature.Mild,
@@ -524,6 +527,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 1,
                         level: 34,
                         nature: Nature.Mild,
@@ -543,6 +547,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         ivs: 7,
                         level: 35,
                         nature: Nature.Modest,
@@ -551,6 +556,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         ivs: 7,
                         level: 36,
                         nature: Nature.Timid,
@@ -559,6 +565,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         ivs: 7,
                         level: 38,
                         nature: Nature.Sassy,
@@ -578,6 +585,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 1,
                         level: 35,
                         nature: Nature.Sassy,
@@ -586,6 +594,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 1,
                         level: 35,
                         nature: Nature.Sassy,
@@ -644,6 +653,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magneton',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 24,
                         level: 37,
                         nature: Nature.Relaxed,
@@ -1506,18 +1516,21 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 32,
                         nature: Nature.Mild,
                     },
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 32,
                         nature: Nature.Mild,
                     },
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 32,
                         nature: Nature.Mild,
                     },
@@ -1750,6 +1763,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'porygon2',
                         ability: 'trace',
+                        gender: 'genderless',
                         level: 42,
                         nature: Nature.Rash,
                         moves: [
@@ -1965,6 +1979,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         ivs: 24,
                         level: 42,
                         nature: Nature.Hardy,
@@ -2295,6 +2310,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'starly',
                         ability: 'keen-eye',
+                        gender: 'male',
                         level: 6,
                         nature: Nature.Timid,
                         moves: ['quick-attack'],
@@ -2320,6 +2336,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bidoof',
                         ability: 'simple',
+                        gender: 'female',
                         level: 6,
                         nature: Nature.Quiet,
                         moves: ['tackle', 'growl'],
@@ -2565,12 +2582,14 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 34,
                         nature: Nature.Timid,
                     },
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 36,
                         nature: Nature.Lax,
                     },
@@ -2733,6 +2752,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 34,
                         nature: Nature.Jolly,
                     },
@@ -3265,6 +3285,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         ivs: 24,
                         level: 38,
                         nature: Nature.Relaxed,
@@ -3332,6 +3353,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzong',
                         ability: 'levitate',
+                        gender: 'genderless',
                         ivs: 30,
                         level: 54,
                         nature: Nature.Naive,
@@ -6833,18 +6855,21 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 28,
                         nature: Nature.Serious,
                     },
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 30,
                         nature: Nature.Modest,
                     },
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 32,
                         nature: Nature.Impish,
                     },
@@ -6951,6 +6976,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 30,
                         nature: Nature.Bold,
                         moves: ['spark', 'magnet-bomb'],
@@ -7818,6 +7844,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 24,
                         nature: Nature.Relaxed,
                     },
@@ -7867,6 +7894,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'porygon',
                         ability: 'trace',
+                        gender: 'genderless',
                         level: 27,
                         nature: Nature.Timid,
                     },
@@ -7934,6 +7962,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 23,
                         nature: Nature.Sassy,
                     },
@@ -8195,6 +8224,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'porygon2',
                         ability: 'trace',
+                        gender: 'genderless',
                         ivs: 6,
                         level: 40,
                         nature: Nature.Hardy,
@@ -8833,6 +8863,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 33,
                         nature: Nature.Hasty,
                     },
@@ -10164,6 +10195,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 23,
                         nature: Nature.Serious,
                     },
@@ -10234,6 +10266,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         ivs: 24,
                         level: 44,
                         nature: Nature.Quirky,
@@ -10285,6 +10318,7 @@ export const BATTLES: Record<string, BattleData> = {
                         {
                             slug: 'bronzor',
                             ability: 'levitate',
+                            gender: 'genderless',
                             ivs: 24,
                             level: 44,
                             nature: Nature.Brave,
@@ -10629,6 +10663,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magneton',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 1,
                         level: 47,
                         nature: Nature.Bold,
@@ -10654,6 +10689,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 1,
                         level: 44,
                         nature: Nature.Rash,
@@ -10716,6 +10752,45 @@ export const BATTLES: Record<string, BattleData> = {
                         ivs: 1,
                         level: 42,
                         nature: Nature.Jolly,
+                    },
+                ],
+            },
+        ],
+    },
+    'poke-kid-janet': {
+        metadata: [BattleMetadata.Optional],
+        trainerClass: 'poke-kid',
+        name: 'Janet',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'pikachu',
+                        ability: 'static',
+                        gender: 'female',
+                        ivs: 0,
+                        level: 42,
+                        nature: Nature.Relaxed,
+                        moves: [
+                            'feint',
+                            'agility',
+                            'discharge',
+                            'light-screen',
+                        ],
+                    },
+                    {
+                        slug: 'pikachu',
+                        ability: 'static',
+                        gender: 'female',
+                        ivs: 0,
+                        level: 42,
+                        nature: Nature.Relaxed,
+                        moves: [
+                            'feint',
+                            'agility',
+                            'discharge',
+                            'light-screen',
+                        ],
                     },
                 ],
             },
@@ -10836,6 +10911,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magneton',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 7,
                         level: 48,
                         nature: Nature.Docile,
@@ -11219,6 +11295,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         ivs: 24,
                         level: 38,
                         nature: Nature.Quirky,
@@ -11852,6 +11929,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnezone',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 6,
                         level: 48,
                         nature: Nature.Naive,
@@ -11895,6 +11973,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'porygon-z',
                         ability: 'adaptability',
+                        gender: 'genderless',
                         ivs: 12,
                         level: 46,
                         nature: Nature.Naive,
@@ -12489,6 +12568,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 21,
                         nature: Nature.Calm,
                     },

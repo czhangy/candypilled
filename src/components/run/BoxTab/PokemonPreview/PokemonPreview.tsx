@@ -208,7 +208,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                             <div className={styles.info}>
                                 <span className={styles.name}>
                                     {data.name}
-                                    {pokemon.gender && (
+                                    {pokemon.gender !== 'genderless' && (
                                         <span
                                             className={[
                                                 styles.gender,

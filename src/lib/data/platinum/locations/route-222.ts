@@ -1,65 +1,81 @@
-import { route222 } from '@/lib/data/platinum/maps';
+import { route222Main, route222PikachuFanClub } from '@/lib/data/platinum/maps';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_222: Location = {
     name: 'Route 222',
-    map: route222,
-    encountersKey: 'sinnoh-route-222',
-    battles: [
+    subareas: [
         {
-            battleKey: 'rich-boy-trey',
-            x: 18.9,
-            y: 48.6,
+            name: 'Main',
+            map: route222Main,
+            encountersKey: 'sinnoh-route-222',
+            battles: [
+                {
+                    battleKey: 'rich-boy-trey',
+                    x: 16.08,
+                    y: 44.08,
+                },
+                {
+                    battleKey: 'fisherman-alec',
+                    x: 26.5,
+                    y: 65.76,
+                },
+                {
+                    battleKey: 'fisherman-george',
+                    x: 34.83,
+                    y: 65.76,
+                },
+                {
+                    battleKey: 'beauty-nicola',
+                    x: 36.92,
+                    y: 28.26,
+                },
+                {
+                    battleKey: 'fisherman-brett',
+                    x: 43.17,
+                    y: 68.88,
+                },
+                {
+                    battleKey: 'fisherman-cole',
+                    x: 48.38,
+                    y: 68.69,
+                },
+                {
+                    battleKey: 'tuber-f-holly',
+                    x: 53.66,
+                    y: 63.48,
+                },
+                {
+                    battleKey: 'policeman-thomas',
+                    x: 60.9,
+                    y: 31.33,
+                },
+                {
+                    battleKey: 'sailor-marc',
+                    x: 75.68,
+                    y: 40.7,
+                },
+                {
+                    battleKey: 'tuber-m-conner',
+                    x: 79.78,
+                    y: 41.09,
+                },
+                {
+                    battleKey: 'sailor-luther',
+                    x: 81.79,
+                    y: 53.06,
+                },
+            ],
         },
         {
-            battleKey: 'fisherman-alec',
-            x: 29.3,
-            y: 67.9,
-        },
-        {
-            battleKey: 'fisherman-george',
-            x: 37.7,
-            y: 67.9,
-        },
-        {
-            battleKey: 'beauty-nicola',
-            x: 39.8,
-            y: 35.9,
-        },
-        {
-            battleKey: 'fisherman-brett',
-            x: 46.1,
-            y: 70.6,
-        },
-        {
-            battleKey: 'fisherman-cole',
-            x: 51.3,
-            y: 70.6,
-        },
-        {
-            battleKey: 'tuber-f-holly',
-            x: 56.6,
-            y: 66,
-        },
-        {
-            battleKey: 'policeman-thomas',
-            x: 71.1,
-            y: 38.2,
-        },
-        {
-            battleKey: 'sailor-marc',
-            x: 78.6,
-            y: 45.7,
-        },
-        {
-            battleKey: 'tuber-m-conner',
-            x: 82.7,
-            y: 45.7,
-        },
-        {
-            battleKey: 'sailor-luther',
-            x: 84.8,
-            y: 55.8,
+            name: 'Pikachu Fan Club',
+            map: route222PikachuFanClub,
+            battles: [
+                {
+                    battleKey: 'poke-kid-janet',
+                    x: 37.5,
+                    y: 9.05,
+                },
+            ],
         },
     ],
 };

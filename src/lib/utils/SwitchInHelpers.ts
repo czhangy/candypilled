@@ -415,7 +415,8 @@ export default class SwitchInHelpers {
                 '',
             boosts: {},
             evs: StatHelpers.normalizeStats(pokemon.evs, 0),
-            gender: pokemon.gender,
+            gender:
+                pokemon.gender === 'genderless' ? undefined : pokemon.gender,
             heldItem:
                 (pokemon.heldItem &&
                     ItemHelpers.getHeldItemData(dataSource, pokemon.heldItem)

@@ -1581,6 +1581,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 30,
                         nature: Nature.Modest,
                         moves: [
@@ -1727,6 +1728,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 39,
                         nature: Nature.Bold,
                         moves: [
@@ -1960,6 +1962,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 38,
                         nature: Nature.Timid,
                         moves: [
@@ -1994,6 +1997,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 37,
                         nature: Nature.Brave,
                         moves: [
@@ -2056,6 +2060,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 37,
                         nature: Nature.Timid,
                         moves: [
@@ -3004,6 +3009,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 17,
                         nature: Nature.Quirky,
                         moves: [
@@ -4138,6 +4144,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 18,
                         nature: Nature.Relaxed,
                         moves: [
@@ -4530,6 +4537,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'pikachu',
                         ability: 'static',
+                        gender: 'female',
                         level: 41,
                         nature: Nature.Timid,
                         moves: ['thunderbolt', 'feint', 'agility', 'discharge'],
@@ -4538,6 +4546,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'pikachu',
                         ability: 'static',
+                        gender: 'female',
                         level: 41,
                         nature: Nature.Timid,
                         moves: ['thunderbolt', 'feint', 'agility', 'discharge'],
@@ -4992,6 +5001,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 18,
                         nature: Nature.Relaxed,
                         moves: [
@@ -5816,6 +5826,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 21,
                         nature: Nature.Naughty,
                         moves: [
@@ -6303,6 +6314,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 23,
                         nature: Nature.Careful,
                         moves: [
@@ -10188,6 +10200,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 36,
                         nature: Nature.Gentle,
                         moves: [
@@ -10386,6 +10399,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 35,
                         nature: Nature.Rash,
                         moves: [
@@ -10568,6 +10582,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 37,
                         nature: Nature.Naive,
                         moves: [
@@ -11574,6 +11589,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 35,
                         nature: Nature.Lonely,
                         moves: [
@@ -11982,6 +11998,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 38,
                         nature: Nature.Hasty,
                         moves: [
@@ -12088,6 +12105,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 41,
                         nature: Nature.Calm,
                         moves: [
@@ -12139,6 +12157,7 @@ export const BATTLES: Record<string, BattleData> = {
                         {
                             slug: 'bronzor',
                             ability: 'levitate',
+                            gender: 'genderless',
                             level: 41,
                             nature: Nature.Hasty,
                             moves: [
@@ -14534,6 +14553,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzong',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 63,
                         nature: Nature.Impish,
                         heldItem: 'sitrus-berry',

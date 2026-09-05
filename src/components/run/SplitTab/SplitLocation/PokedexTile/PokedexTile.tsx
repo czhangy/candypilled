@@ -122,7 +122,15 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     generation
                 )?.slot1 ?? '',
             evs: undefined,
-            gender: undefined,
+            gender: PokemonHelpers.isGenderless(
+                game.dataSource,
+                defaultCatchSpecies
+            )
+                ? 'genderless'
+                : (PokemonHelpers.getFixedGender(
+                      game.dataSource,
+                      defaultCatchSpecies
+                  ) ?? 'male'),
             ivs: 0,
             level,
             moves: PokemonHelpers.getMovesAtLevel(

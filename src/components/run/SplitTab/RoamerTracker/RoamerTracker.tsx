@@ -92,7 +92,15 @@ const RoamerTracker: React.FC<RoamerTrackerProps> = ({ game, run }) => {
                             game.generation
                         )?.slot1 ?? '',
                     evs: undefined,
-                    gender: undefined,
+                    gender: PokemonHelpers.isGenderless(
+                        game.dataSource,
+                        roamer.species
+                    )
+                        ? 'genderless'
+                        : (PokemonHelpers.getFixedGender(
+                              game.dataSource,
+                              roamer.species
+                          ) ?? 'male'),
                     heldItem: '',
                     ivs: 0,
                     level: roamer.level,

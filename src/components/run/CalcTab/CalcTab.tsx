@@ -635,7 +635,10 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     tagPartnerMon.ability ??
                     '',
                 evs: StatHelpers.normalizeStats(tagPartnerMon.evs, 0),
-                gender: tagPartnerMon.gender,
+                gender:
+                    tagPartnerMon.gender === 'genderless'
+                        ? undefined
+                        : tagPartnerMon.gender,
                 heldItem:
                     (tagPartnerMon.heldItem &&
                         ItemHelpers.getHeldItemData(
@@ -680,7 +683,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 caught.ability ??
                 '',
             evs: StatHelpers.normalizeStats(caught.evs, 0),
-            gender: caught.gender,
+            gender: caught.gender === 'genderless' ? undefined : caught.gender,
             heldItem:
                 (caught.heldItem &&
                     ItemHelpers.getHeldItemData(
@@ -719,7 +722,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 mon.ability ??
                 '',
             evs: StatHelpers.normalizeStats(mon.evs, 0),
-            gender: mon.gender,
+            gender: mon.gender === 'genderless' ? undefined : mon.gender,
             heldItem:
                 (mon.heldItem &&
                     ItemHelpers.getHeldItemData(game.dataSource, mon.heldItem)

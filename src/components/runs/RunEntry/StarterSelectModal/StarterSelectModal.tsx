@@ -77,7 +77,12 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
                     game.generation
                 )?.slot1 ?? '',
             evs: undefined,
-            gender: undefined,
+            gender: PokemonHelpers.isGenderless(game.dataSource, defaultSpecies)
+                ? 'genderless'
+                : (PokemonHelpers.getFixedGender(
+                      game.dataSource,
+                      defaultSpecies
+                  ) ?? 'male'),
             ivs: 0,
             level: STARTER_LEVEL,
             location: starterLocation,

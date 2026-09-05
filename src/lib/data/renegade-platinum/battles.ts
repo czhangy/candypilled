@@ -254,6 +254,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzong',
                         ability: 'levitate',
+                        gender: 'genderless',
                         heldItem: 'leftovers',
                         level: 52,
                         moves: [
@@ -553,6 +554,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'staryu',
                         ability: 'illuminate',
+                        gender: 'genderless',
                         level: 8,
                         moves: ['hidden-power', 'water-gun'],
                         nature: Nature.Serious,
@@ -2979,6 +2981,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 18,
                         heldItem: 'sitrus-berry',
                         moves: [
@@ -3698,6 +3701,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'baltoy',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 17,
                         moves: [
                             'psybeam',
@@ -3987,6 +3991,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'beldum',
                         ability: 'rock-head',
+                        gender: 'genderless',
                         level: 19,
                         moves: [
                             'iron-defense',
@@ -4394,6 +4399,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'voltorb',
                         ability: 'soundproof',
+                        gender: 'genderless',
                         level: 19,
                         moves: [
                             'charge-beam',
@@ -4407,6 +4413,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 19,
                         moves: [
                             'charge-beam',
@@ -4977,6 +4984,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'porygon',
                         ability: 'trace',
+                        gender: 'genderless',
                         level: 23,
                         moves: [
                             'recycle',
@@ -5808,6 +5816,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'metang',
                         ability: 'iron-fist',
+                        gender: 'genderless',
                         level: 24,
                         moves: [
                             'pursuit',
@@ -5946,6 +5955,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'porygon2',
                         ability: 'trace',
+                        gender: 'genderless',
                         heldItem: 'expert-belt',
                         level: 27,
                         moves: [
@@ -6000,6 +6010,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'porygon2',
                         ability: 'trace',
+                        gender: 'genderless',
                         level: 27,
                         moves: [
                             'tri-attack',
@@ -6420,6 +6431,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 26,
                         moves: [
                             'iron-defense',
@@ -6925,6 +6937,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'rotom',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 29,
                         moves: [
                             'shadow-ball',
@@ -6977,6 +6990,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'shedinja',
                         ability: 'wonder-guard',
+                        gender: 'genderless',
                         level: 29,
                         moves: [
                             'shadow-claw',
@@ -7583,6 +7597,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'lunatone',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 29,
                         moves: [
                             'cosmic-power',
@@ -7596,6 +7611,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'solrock',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 29,
                         moves: [
                             'cosmic-power',
@@ -7618,6 +7634,7 @@ export const BATTLES: Record<string, BattleData> = {
                         {
                             slug: 'solrock',
                             ability: 'levitate',
+                            gender: 'genderless',
                             level: 29,
                             moves: [
                                 'cosmic-power',
@@ -7631,6 +7648,7 @@ export const BATTLES: Record<string, BattleData> = {
                         {
                             slug: 'lunatone',
                             ability: 'levitate',
+                            gender: 'genderless',
                             level: 29,
                             moves: [
                                 'cosmic-power',
@@ -7956,6 +7974,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magneton',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 37,
                         moves: [
                             'screech',
@@ -7969,6 +7988,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'electrode',
                         ability: 'soundproof',
+                        gender: 'genderless',
                         level: 37,
                         moves: [
                             'magnet-rise',
@@ -7982,6 +8002,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'porygon2',
                         ability: 'trace',
+                        gender: 'genderless',
                         level: 37,
                         moves: [
                             'thunderbolt',
@@ -8611,6 +8632,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'shedinja',
                         ability: 'wonder-guard',
+                        gender: 'genderless',
                         heldItem: 'focus-sash',
                         level: 30,
                         moves: [
@@ -8637,6 +8659,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzong',
                         ability: 'levitate',
+                        gender: 'genderless',
                         heldItem: 'leftovers',
                         level: 33,
                         moves: [
@@ -9206,6 +9229,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'plusle',
                         ability: 'plus',
+                        gender: 'male',
                         heldItem: 'sitrus-berry',
                         level: 31,
                         moves: ['charm', 'copycat', 'discharge', 'charge'],
@@ -9215,6 +9239,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'minun',
                         ability: 'minus',
+                        gender: 'male',
                         heldItem: 'sitrus-berry',
                         level: 31,
                         moves: ['fake-tears', 'copycat', 'discharge', 'charge'],
@@ -9388,6 +9413,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 31,
                         moves: [
                             'safeguard',
@@ -9435,6 +9461,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'electrode',
                         ability: 'soundproof',
+                        gender: 'genderless',
                         level: 33,
                         moves: [
                             'light-screen',
@@ -11559,6 +11586,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magneton',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 37,
                         moves: [
                             'screech',
@@ -13504,6 +13532,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'starmie',
                         ability: 'illuminate',
+                        gender: 'genderless',
                         level: 42,
                         moves: ['scald', 'power-gem', 'psychic', 'grass-knot'],
                         nature: Nature.Bashful,
@@ -13838,6 +13867,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnezone',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         heldItem: 'life-orb',
                         level: 45,
                         moves: [
@@ -13921,6 +13951,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 42,
                         moves: [
                             'lock-on',
@@ -13934,6 +13965,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 42,
                         moves: [
                             'lock-on',
@@ -14248,6 +14280,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'starmie',
                         ability: 'illuminate',
+                        gender: 'genderless',
                         level: 44,
                         moves: ['confuse-ray', 'psywave', 'swift', 'recover'],
                         nature: Nature.Impish,
@@ -14519,6 +14552,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'claydol',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 45,
                         moves: [
                             'psychic',
@@ -14631,6 +14665,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'metagross',
                         ability: 'iron-fist',
+                        gender: 'genderless',
                         heldItem: 'life-orb',
                         level: 48,
                         moves: [
@@ -14660,6 +14695,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'entei',
                         ability: 'pressure',
+                        gender: 'genderless',
                         heldItem: 'shuca-berry',
                         level: 48,
                         moves: [
@@ -14993,6 +15029,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'metagross',
                         ability: 'iron-fist',
+                        gender: 'genderless',
                         heldItem: 'liechi-berry',
                         level: 49,
                         moves: [
@@ -15081,6 +15118,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'metagross',
                         ability: 'iron-fist',
+                        gender: 'genderless',
                         level: 50,
                         moves: [
                             'meteor-mash',
@@ -15465,6 +15503,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magneton',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 47,
                         moves: [
                             'lock-on',
@@ -15739,6 +15778,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 46,
                         moves: [
                             'gyro-ball',
@@ -15766,6 +15806,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 46,
                         moves: [
                             'heal-block',
@@ -15779,6 +15820,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'beldum',
                         ability: 'rock-head',
+                        gender: 'genderless',
                         level: 46,
                         moves: [
                             'iron-defense',
@@ -15845,6 +15887,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'metagross',
                         ability: 'iron-fist',
+                        gender: 'genderless',
                         level: 50,
                         moves: [
                             'meteor-mash',
@@ -15869,6 +15912,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magneton',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 48,
                         moves: [
                             'lock-on',
@@ -15896,6 +15940,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'metang',
                         ability: 'iron-fist',
+                        gender: 'genderless',
                         level: 48,
                         moves: [
                             'iron-defense',
@@ -16038,6 +16083,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzong',
                         ability: 'levitate',
+                        gender: 'genderless',
                         heldItem: 'light-clay',
                         level: 52,
                         moves: [
@@ -16052,6 +16098,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnezone',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         heldItem: 'wise-glasses',
                         level: 52,
                         moves: [
@@ -16237,6 +16284,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzong',
                         ability: 'levitate',
+                        gender: 'genderless',
                         heldItem: 'bright-powder',
                         level: 52,
                         moves: [
@@ -17268,6 +17316,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magneton',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 53,
                         moves: [
                             'gyro-ball',
@@ -17337,6 +17386,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnezone',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         heldItem: 'wise-glasses',
                         level: 57,
                         moves: [
@@ -17377,6 +17427,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzong',
                         ability: 'levitate',
+                        gender: 'genderless',
                         heldItem: 'light-clay',
                         level: 56,
                         moves: [
@@ -17622,6 +17673,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'porygon-z',
                         ability: 'adaptability',
+                        gender: 'genderless',
                         level: 55,
                         moves: [
                             'psychic',
@@ -17941,6 +17993,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzong',
                         ability: 'levitate',
+                        gender: 'genderless',
                         heldItem: 'leftovers',
                         level: 57,
                         moves: [
@@ -18039,6 +18092,7 @@ export const BATTLES: Record<string, BattleData> = {
                         {
                             slug: 'bronzong',
                             ability: 'levitate',
+                            gender: 'genderless',
                             heldItem: 'leftovers',
                             level: 57,
                             moves: [
@@ -18402,6 +18456,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'palkia',
                         ability: 'pressure',
+                        gender: 'genderless',
                         level: 70,
                         moves: [
                             'hydro-pump',
@@ -18415,6 +18470,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'dialga',
                         ability: 'pressure',
+                        gender: 'genderless',
                         level: 70,
                         moves: [
                             'flash-cannon',
@@ -18492,6 +18548,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnezone',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         heldItem: 'wise-glasses',
                         level: 59,
                         moves: [
@@ -19482,6 +19539,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'starmie',
                         ability: 'illuminate',
+                        gender: 'genderless',
                         level: 59,
                         moves: ['confuse-ray', 'psywave', 'swift', 'recover'],
                         nature: Nature.Jolly,
@@ -19627,6 +19685,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'zapdos',
                         ability: 'pressure',
+                        gender: 'genderless',
                         level: 63,
                         heldItem: 'sitrus-berry',
                         moves: [
@@ -19856,6 +19915,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'electrode',
                         ability: 'soundproof',
+                        gender: 'genderless',
                         level: 60,
                         moves: [
                             'thunderbolt',
@@ -19956,6 +20016,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnezone',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 60,
                         moves: [
                             'discharge',
@@ -19994,6 +20055,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnezone',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 60,
                         moves: [
                             'thunderbolt',
@@ -20021,6 +20083,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'electrode',
                         ability: 'soundproof',
+                        gender: 'genderless',
                         level: 60,
                         moves: [
                             'thunder',
@@ -20077,6 +20140,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'rotom-wash',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 61,
                         moves: [
                             'thunderbolt',
@@ -20090,6 +20154,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'rotom-heat',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 61,
                         moves: [
                             'thunderbolt',
@@ -20461,6 +20526,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'starmie',
                         ability: 'illuminate',
+                        gender: 'genderless',
                         level: 63,
                         moves: [
                             'hydro-pump',
@@ -21011,6 +21077,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'porygon-z',
                         ability: 'adaptability',
+                        gender: 'genderless',
                         level: 64,
                         moves: [
                             'hyper-beam',
@@ -21159,6 +21226,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'starmie',
                         ability: 'illuminate',
+                        gender: 'genderless',
                         level: 65,
                         heldItem: 'expert-belt',
                         moves: ['hydro-pump', 'blizzard', 'thunder', 'psychic'],
@@ -21168,6 +21236,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'electrode',
                         ability: 'soundproof',
+                        gender: 'genderless',
                         level: 65,
                         heldItem: 'light-clay',
                         moves: [
@@ -21267,6 +21336,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'starmie',
                         ability: 'illuminate',
+                        gender: 'genderless',
                         level: 65,
                         moves: ['hydro-pump', 'blizzard', 'thunder', 'psychic'],
                         nature: Nature.Naive,
@@ -21300,6 +21370,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'metagross',
                         ability: 'iron-fist',
+                        gender: 'genderless',
                         level: 65,
                         moves: [
                             'bullet-punch',
@@ -22125,6 +22196,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'lunatone',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 66,
                         moves: [
                             'ice-beam',
@@ -22186,6 +22258,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'solrock',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 66,
                         moves: [
                             'flare-blitz',
@@ -22420,6 +22493,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'metagross',
                         ability: 'iron-fist',
+                        gender: 'genderless',
                         level: 67,
                         moves: [
                             'meteor-mash',
@@ -24035,6 +24109,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'claydol',
                         ability: 'levitate',
+                        gender: 'genderless',
                         heldItem: 'light-clay',
                         level: 72,
                         moves: [
@@ -24579,6 +24654,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzong',
                         ability: 'levitate',
+                        gender: 'genderless',
                         heldItem: 'leftovers',
                         level: 74,
                         moves: [
@@ -24608,6 +24684,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'metagross',
                         ability: 'iron-fist',
+                        gender: 'genderless',
                         heldItem: 'muscle-band',
                         level: 74,
                         moves: [
@@ -24686,6 +24763,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'starmie',
                         ability: 'illuminate',
+                        gender: 'genderless',
                         heldItem: 'life-orb',
                         level: 74,
                         moves: [
@@ -24794,6 +24872,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzong',
                         ability: 'levitate',
+                        gender: 'genderless',
                         heldItem: 'occa-berry',
                         level: 74,
                         moves: [
@@ -24872,6 +24951,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'starmie',
                         ability: 'illuminate',
+                        gender: 'genderless',
                         heldItem: 'life-orb',
                         level: 74,
                         moves: [
@@ -24886,6 +24966,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'metagross',
                         ability: 'iron-fist',
+                        gender: 'genderless',
                         heldItem: 'muscle-band',
                         level: 74,
                         moves: [
