@@ -7529,6 +7529,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'swimmer-f-haley': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'swimmer-f',
         name: 'Haley',
         teams: [
@@ -7554,6 +7555,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'sailor-paul': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'sailor',
         name: 'Paul',
         teams: [
@@ -7586,6 +7588,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'swimmer-m-evan': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'swimmer-m',
         name: 'Evan',
         teams: [
@@ -7611,6 +7614,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'swimmer-f-mary': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'swimmer-f',
         name: 'Mary',
         teams: [
@@ -7636,6 +7640,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'swimmer-m-sheltin': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'swimmer-m',
         name: 'Sheltin',
         teams: [

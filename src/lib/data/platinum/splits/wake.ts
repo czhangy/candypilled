@@ -1,6 +1,7 @@
 import GREAT_MARSH from '@/lib/data/platinum/locations/great-marsh';
 import PASTORIA_CITY from '@/lib/data/platinum/locations/pastoria-city';
 import PASTORIA_GYM from '@/lib/data/platinum/locations/pastoria-gym';
+import POKEMON_MANSION from '@/lib/data/platinum/locations/pokemon-mansion';
 import ROUTE_212 from '@/lib/data/platinum/locations/route-212';
 import ROUTE_213 from '@/lib/data/platinum/locations/route-213';
 import ROUTE_214 from '@/lib/data/platinum/locations/route-214';
@@ -21,6 +22,7 @@ const WAKE: Split = {
         PASTORIA_CITY,
         GREAT_MARSH,
         ROUTE_212,
+        POKEMON_MANSION,
         TROPHY_GARDEN,
         PASTORIA_GYM,
     ],

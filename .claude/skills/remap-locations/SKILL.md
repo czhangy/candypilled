@@ -57,6 +57,16 @@ Run the `dspre-map-stitch` skill as normal. Two things specific to a remap:
   the stitch and wire it in. This overrides `dspre-map-stitch`'s own
   chunk-checking steps for a remap session specifically.
 
+## 1.5. State the location's battle list before asking for anything
+
+As soon as a location is the current one being worked (restitch requested,
+or just moved to via "next is X"), state its existing `battles` array as a
+plain numbered list of `battleKey`s in on-file order — before asking for
+x/y or anything else. Don't wait for the user to ask for this or to
+already know the order; they're supplying coordinates against that list
+and need it in front of them every time, not just the first time a
+location comes up.
+
 ## 2. Restitched maps invalidate existing battle markers — always ask
 
 `Battle.x`/`Battle.y` are pixel coordinates against that specific map

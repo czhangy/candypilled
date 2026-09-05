@@ -82,6 +82,7 @@ export { default as pastoriaCity } from './pastoria-city.png';
 export { default as pastoriaGym } from './pastoria-gym.png';
 export { default as pokemonLeague } from './pokemon-league.png';
 export { default as pokemonLeagueLobby } from './pokemon-league-lobby.png';
+export { default as pokemonMansion } from './pokemon-mansion.png';
 export { default as ravagedPath } from './ravaged-path.png';
 export { default as route201 } from './route-201.png';
 export { default as route202 } from './route-202.png';
