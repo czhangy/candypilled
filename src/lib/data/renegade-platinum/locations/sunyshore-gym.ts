@@ -14,8 +14,8 @@ const SUNYSHORE_GYM: Location = {
             battles: [
                 {
                     battleKey: 'school-kid-tiera',
-                    x: 36.9,
-                    y: 11.2,
+                    x: 36.6,
+                    y: 24.2,
                 },
             ],
         },
@@ -25,18 +25,18 @@ const SUNYSHORE_GYM: Location = {
             battles: [
                 {
                     battleKey: 'school-kid-forrest',
-                    x: 22.1,
-                    y: 12.9,
+                    x: 21.6,
+                    y: 31.3,
                 },
                 {
                     battleKey: 'guitarist-jerry',
-                    x: 84.1,
-                    y: 43.3,
+                    x: 83.9,
+                    y: 55.4,
                 },
                 {
                     battleKey: 'poke-kid-meghan',
-                    x: 71.7,
-                    y: 8.1,
+                    x: 71.4,
+                    y: 17.9,
                 },
             ],
         },
@@ -46,28 +46,28 @@ const SUNYSHORE_GYM: Location = {
             battles: [
                 {
                     battleKey: 'guitarist-lonnie',
-                    x: 73.9,
-                    y: 86.6,
+                    x: 73.4,
+                    y: 90,
                 },
                 {
                     battleKey: 'ace-trainer-destiny',
-                    x: 17.9,
-                    y: 86.3,
+                    x: 16.1,
+                    y: 89.7,
                 },
                 {
                     battleKey: 'guitarist-preston',
-                    x: 13,
-                    y: 3.3,
+                    x: 11.3,
+                    y: 12.6,
                 },
                 {
                     battleKey: 'ace-trainer-zachery',
-                    x: 97.2,
-                    y: 32.3,
+                    x: 97.3,
+                    y: 41.7,
                 },
                 {
                     battleKey: 'leader-volkner',
-                    x: 50.9,
-                    y: 3.1,
+                    x: 49.6,
+                    y: 12.6,
                 },
             ],
         },

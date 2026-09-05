@@ -1,4 +1,5 @@
 import ACUITY_LAKEFRONT from '@/lib/data/renegade-platinum/locations/acuity-lakefront';
+import CANALAVE_CITY from '@/lib/data/renegade-platinum/locations/canalave-city';
 import LAKE_VALOR from '@/lib/data/renegade-platinum/locations/lake-valor';
 import LAKE_VERITY from '@/lib/data/renegade-platinum/locations/lake-verity';
 import MT_CORONET from '@/lib/data/renegade-platinum/locations/mt-coronet';
@@ -14,6 +15,7 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const CANDICE: Split = {
     name: 'Candice',
     locations: [
+        CANALAVE_CITY,
         LAKE_VALOR,
         LocationHelpers.withSubareaOrder(VALOR_CAVERN, [
             'Pre-Giratina',

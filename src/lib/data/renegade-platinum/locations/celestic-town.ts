@@ -1,15 +1,31 @@
-import { celesticTown } from '@/lib/data/renegade-platinum/maps';
+import { celesticRuins, celesticTown } from '@/lib/data/renegade-platinum/maps';
 import { Location } from '@/lib/static/types';
 
 const CELESTIC_TOWN: Location = {
     name: 'Celestic Town',
-    map: celesticTown,
-    encountersKey: 'celestic-town',
-    battles: [
+    subareas: [
         {
-            battleKey: 'galactic-grunt-m-celestic-town',
-            x: 48.2,
-            y: 31.4,
+            name: 'Town',
+            map: celesticTown,
+            encountersKey: 'celestic-town',
+            battles: [
+                {
+                    battleKey: 'galactic-grunt-m-celestic-town',
+                    x: 48.2,
+                    y: 31.4,
+                },
+            ],
+        },
+        {
+            name: 'Ruins',
+            map: celesticRuins,
+            battles: [
+                {
+                    battleKey: 'galactic-boss-cyrus-celestic-ruins',
+                    x: 50,
+                    y: 9,
+                },
+            ],
         },
     ],
 };
