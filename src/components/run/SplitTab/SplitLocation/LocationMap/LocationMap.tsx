@@ -90,8 +90,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
     };
 
     const formatCoordinate = (value: number): string => {
-        const fixed = value.toFixed(1);
-        return fixed.endsWith('.0') ? fixed.slice(0, -2) : fixed;
+        return value.toFixed(2).replace(/\.?0+$/, '');
     };
 
     // -------------------------------------------------------------------------
@@ -213,8 +212,8 @@ const LocationMap: React.FC<LocationMapProps> = ({
             const y = ((event.clientY - rect.top) / rect.height) * 100;
 
             setPreviewPosition({
-                x: Math.round(x * 10) / 10,
-                y: Math.round(y * 10) / 10,
+                x: Math.round(x * 100) / 100,
+                y: Math.round(y * 100) / 100,
             });
         } else if (previewPosition) {
             setPreviewPosition(null);
@@ -342,7 +341,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
                             >
                                 {justCopied
                                     ? 'Copied!'
-                                    : `${previewPosition.x.toFixed(1)}, ${previewPosition.y.toFixed(1)}`}
+                                    : `${previewPosition.x.toFixed(2)}, ${previewPosition.y.toFixed(2)}`}
                             </span>
                         </>
                     )}

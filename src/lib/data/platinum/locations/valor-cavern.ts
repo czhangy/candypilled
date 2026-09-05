@@ -1,15 +1,27 @@
-import { valorCavern } from '@/lib/data/platinum/maps';
+import {
+    valorCavernPostGiratina,
+    valorCavernPreGiratina,
+} from '@/lib/data/platinum/maps';
 import { Location } from '@/lib/static/types';
 
 const VALOR_CAVERN: Location = {
     name: 'Valor Cavern',
-    map: valorCavern,
-    encountersKey: 'lake-valor-cavern',
-    battles: [
+    subareas: [
         {
-            battleKey: 'commander-saturn-valor-cavern',
-            x: 50.7,
-            y: 63.5,
+            name: 'Pre-Giratina',
+            map: valorCavernPreGiratina,
+            encountersKey: 'lake-valor-cavern',
+            battles: [
+                {
+                    battleKey: 'commander-saturn-valor-cavern',
+                    x: 50,
+                    y: 59.4,
+                },
+            ],
+        },
+        {
+            name: 'Post-Giratina',
+            map: valorCavernPostGiratina,
         },
     ],
 };

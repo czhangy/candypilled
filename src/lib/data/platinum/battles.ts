@@ -8350,6 +8350,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'black-belt-philip': {
         metadata: [BattleMetadata.Optional],
+        split: 'Volkner',
         trainerClass: 'black-belt',
         name: 'Philip',
         teams: [
@@ -8369,6 +8370,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'skier-f-kaitlyn': {
         metadata: [BattleMetadata.Optional],
+        split: 'Volkner',
         trainerClass: 'skier-f',
         name: 'Kaitlyn',
         teams: [
@@ -8394,6 +8396,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'skier-m-bradley': {
         metadata: [BattleMetadata.Optional],
+        split: 'Volkner',
         trainerClass: 'skier-m',
         name: 'Bradley',
         teams: [
@@ -8426,6 +8429,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'skier-f-andrea': {
         metadata: [BattleMetadata.Optional],
+        split: 'Volkner',
         trainerClass: 'skier-f',
         name: 'Andrea',
         teams: [
