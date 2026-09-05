@@ -8,18 +8,18 @@ const ROUTE_202: Location = {
     battles: [
         {
             battleKey: 'youngster-tristan',
-            x: 22.13,
-            y: 47,
+            x: 20.5,
+            y: 40.9,
         },
         {
             battleKey: 'lass-natalie',
-            x: 61.9,
-            y: 60.4,
+            x: 67.2,
+            y: 56.5,
         },
         {
             battleKey: 'youngster-logan',
-            x: 72.3,
-            y: 21.9,
+            x: 79.7,
+            y: 12.8,
         },
     ],
 };

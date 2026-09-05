@@ -4,6 +4,8 @@ import CYNTHIAS_ROOM from '@/lib/data/platinum/locations/cynthias-room';
 import FLINTS_ROOM from '@/lib/data/platinum/locations/flints-room';
 import LUCIANS_ROOM from '@/lib/data/platinum/locations/lucians-room';
 import POKEMON_LEAGUE from '@/lib/data/platinum/locations/pokemon-league';
+import ROUTE_223 from '@/lib/data/platinum/locations/route-223';
+import SUNYSHORE_CITY from '@/lib/data/platinum/locations/sunyshore-city';
 import VICTORY_ROAD from '@/lib/data/platinum/locations/victory-road';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
@@ -11,6 +13,8 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const CYNTHIA: Split = {
     name: 'Cynthia',
     locations: [
+        SUNYSHORE_CITY,
+        ROUTE_223,
         POKEMON_LEAGUE,
         VICTORY_ROAD,
         LocationHelpers.withSubareaOrder(POKEMON_LEAGUE, ['Lobby', 'Exterior']),

@@ -132,7 +132,7 @@ export type BattlePokemon = {
     // The ability's slug, e.g. "overgrow".
     ability: string;
     evs?: StatValues;
-    gender?: 'male' | 'female';
+    gender: 'male' | 'female' | 'genderless';
     heldItem?: string;
     ivs?: number | StatValues;
     level: number;

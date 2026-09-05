@@ -1,65 +1,44 @@
-import {
-    hearthomeGymRoom1,
-    hearthomeGymRoom2,
-    hearthomeGymRoom3,
-} from '@/lib/data/renegade-platinum/maps';
+import { hearthomeGym } from '@/lib/data/renegade-platinum/maps';
 import { Location } from '@/lib/static/types';
 
 const HEARTHOME_GYM: Location = {
     name: 'Hearthome Gym',
-    subareas: [
+    map: hearthomeGym,
+    battles: [
         {
-            name: 'Room 1',
-            map: hearthomeGymRoom1,
-            battles: [
-                {
-                    battleKey: 'youngster-donny',
-                    x: 77.5,
-                    y: 51.7,
-                },
-                {
-                    battleKey: 'lass-molly',
-                    x: 23.3,
-                    y: 51.7,
-                },
-            ],
+            battleKey: 'lass-molly',
+            x: 35.3,
+            y: 73.9,
         },
         {
-            name: 'Room 2',
-            map: hearthomeGymRoom2,
-            battles: [
-                {
-                    battleKey: 'school-kid-chance',
-                    x: 75.9,
-                    y: 70.3,
-                },
-                {
-                    battleKey: 'school-kid-mackenzie',
-                    x: 12.8,
-                    y: 60.7,
-                },
-                {
-                    battleKey: 'ace-trainer-catherine',
-                    x: 38.7,
-                    y: 31.8,
-                },
-                {
-                    battleKey: 'ace-trainer-allen',
-                    x: 64.8,
-                    y: 22.1,
-                },
-            ],
+            battleKey: 'youngster-donny',
+            x: 60.7,
+            y: 74,
         },
         {
-            name: 'Room 3',
-            map: hearthomeGymRoom3,
-            battles: [
-                {
-                    battleKey: 'leader-fantina',
-                    x: 24.6,
-                    y: 63.8,
-                },
-            ],
+            battleKey: 'school-kid-mackenzie',
+            x: 21.2,
+            y: 49.8,
+        },
+        {
+            battleKey: 'school-kid-chance',
+            x: 74.8,
+            y: 50.2,
+        },
+        {
+            battleKey: 'ace-trainer-catherine',
+            x: 39.1,
+            y: 35.4,
+        },
+        {
+            battleKey: 'ace-trainer-allen',
+            x: 67.6,
+            y: 37,
+        },
+        {
+            battleKey: 'leader-fantina',
+            x: 49.8,
+            y: 17.4,
         },
     ],
 };

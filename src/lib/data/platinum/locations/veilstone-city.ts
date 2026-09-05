@@ -17,10 +17,10 @@ const VEILSTONE_CITY: Location = {
     ],
     battles: [
         {
-            customHeight: 53,
+            customHeight: 60,
             battleKey: 'galactic-grunt-m-veilstone-city',
-            x: 40.4,
-            y: 34.8,
+            x: 39.8,
+            y: 31.3,
         },
     ],
 };

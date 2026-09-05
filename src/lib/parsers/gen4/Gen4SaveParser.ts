@@ -267,7 +267,7 @@ export default class Gen4SaveParser {
         const genderByte = canonical.getUint8(ATTACKS_OFFSET + 0x18);
         const isGenderUnknown = ((genderByte >>> 2) & 1) === 1;
         const gender = isGenderUnknown
-            ? undefined
+            ? 'genderless'
             : ((genderByte >>> 1) & 1) === 1
               ? 'female'
               : 'male';

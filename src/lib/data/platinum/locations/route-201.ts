@@ -8,8 +8,8 @@ const ROUTE_201: Location = {
     battles: [
         {
             battleKey: 'pkmn-trainer-barry-route-201',
-            x: 27.5,
-            y: 64,
+            x: 26,
+            y: 72,
         },
     ],
 };

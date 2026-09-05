@@ -72,8 +72,8 @@ const ROUTE_209: Location = {
             battles: [
                 {
                     battleKey: 'youngster-oliver',
-                    x: 57.9,
-                    y: 60.6,
+                    x: 57.5,
+                    y: 64.6,
                 },
             ],
         },
@@ -84,13 +84,13 @@ const ROUTE_209: Location = {
             battles: [
                 {
                     battleKey: 'roughneck-kirby',
-                    x: 34.9,
-                    y: 92.4,
+                    x: 34.3,
+                    y: 91,
                 },
                 {
                     battleKey: 'pokefan-m-leonard',
-                    x: 50.7,
-                    y: 27.3,
+                    x: 49.8,
+                    y: 37.2,
                 },
             ],
         },
@@ -101,20 +101,20 @@ const ROUTE_209: Location = {
             battles: [
                 {
                     battleKey: 'pokefan-f-rebekah',
-                    x: 65.1,
-                    y: 68.7,
+                    x: 65.2,
+                    y: 71.8,
                 },
                 {
                     customHeight: 45,
                     battleKey: 'belle-and-pa-beth-and-bob',
-                    x: 96.2,
-                    y: 87.9,
+                    x: 96.1,
+                    y: 87.7,
                 },
                 {
                     customWidth: 36,
                     battleKey: 'young-couple-mike-and-nat',
-                    x: 30.6,
-                    y: 51.5,
+                    x: 30.4,
+                    y: 58.1,
                 },
             ],
         },

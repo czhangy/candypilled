@@ -5,20 +5,20 @@ const HEARTHOME_CITY: Location = {
     name: 'Hearthome City',
     subareas: [
         {
+            name: 'City',
+            map: hearthomeCity,
+            encountersKey: 'hearthome-city-area',
+        },
+        {
             name: 'Gate',
             map: hearthomeCityGate,
             battles: [
                 {
-                    battleKey: 'pkmn-trainer-barry',
-                    x: 68,
-                    y: 48,
+                    battleKey: 'pkmn-trainer-barry-hearthome-city',
+                    x: 69.8,
+                    y: 46.7,
                 },
             ],
-        },
-        {
-            name: 'City',
-            map: hearthomeCity,
-            encountersKey: 'hearthome-city-area',
         },
     ],
 };

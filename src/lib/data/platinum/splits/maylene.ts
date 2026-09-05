@@ -4,6 +4,7 @@ import ROUTE_209 from '@/lib/data/platinum/locations/route-209';
 import ROUTE_210 from '@/lib/data/platinum/locations/route-210';
 import ROUTE_215 from '@/lib/data/platinum/locations/route-215';
 import SOLACEON_RUINS from '@/lib/data/platinum/locations/solaceon-ruins';
+import SOLACEON_TOWN from '@/lib/data/platinum/locations/solaceon-town';
 import VEILSTONE_CITY from '@/lib/data/platinum/locations/veilstone-city';
 import VEILSTONE_GYM from '@/lib/data/platinum/locations/veilstone-gym';
 import { Split } from '@/lib/static/types';
@@ -14,6 +15,7 @@ const MAYLENE: Split = {
     locations: [
         LocationHelpers.withSubareaOrder(HEARTHOME_CITY, ['Gate', 'City']),
         ROUTE_209,
+        SOLACEON_TOWN,
         SOLACEON_RUINS,
         LocationHelpers.withSubareaOrder(ROUTE_209, [
             'Tower 1F',

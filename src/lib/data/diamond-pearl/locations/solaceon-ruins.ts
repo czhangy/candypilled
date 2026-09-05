@@ -1,11 +1,9 @@
 import {
-    solaceonRuinsRoom1,
-    solaceonRuinsRoom2,
-    solaceonRuinsRoom3,
-    solaceonRuinsRoom4,
-    solaceonRuinsRoom5,
-    solaceonRuinsRoom6,
-    solaceonRuinsRoom7,
+    solaceonRuins1f,
+    solaceonRuinsB1f,
+    solaceonRuinsB2f,
+    solaceonRuinsB3f,
+    solaceonRuinsB4f,
 } from '@/lib/data/diamond-pearl/maps';
 import { Location } from '@/lib/static/types';
 
@@ -13,45 +11,35 @@ const SOLACEON_RUINS: Location = {
     name: 'Solaceon Ruins',
     subareas: [
         {
-            name: 'Room 1',
-            map: solaceonRuinsRoom1,
+            name: '1F',
+            map: solaceonRuins1f,
             encountersKey: 'solaceon-ruins',
         },
         {
-            name: 'Room 2',
-            map: solaceonRuinsRoom2,
+            name: 'B1F',
+            map: solaceonRuinsB1f,
             encountersKey: 'solaceon-ruins',
         },
         {
-            name: 'Room 3',
-            map: solaceonRuinsRoom3,
+            name: 'B2F',
+            map: solaceonRuinsB2f,
             encountersKey: 'solaceon-ruins',
             battles: [
                 {
                     battleKey: 'ruin-maniac-karl',
-                    x: 50,
-                    y: 43.3,
+                    x: 70.7,
+                    y: 47.5,
                 },
             ],
         },
         {
-            name: 'Room 4',
-            map: solaceonRuinsRoom4,
+            name: 'B3F',
+            map: solaceonRuinsB3f,
             encountersKey: 'solaceon-ruins',
         },
         {
-            name: 'Room 5',
-            map: solaceonRuinsRoom5,
-            encountersKey: 'solaceon-ruins',
-        },
-        {
-            name: 'Room 6',
-            map: solaceonRuinsRoom6,
-            encountersKey: 'solaceon-ruins',
-        },
-        {
-            name: 'Room 7',
-            map: solaceonRuinsRoom7,
+            name: 'B4F',
+            map: solaceonRuinsB4f,
             encountersKey: 'solaceon-ruins',
         },
     ],

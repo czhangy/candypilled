@@ -1,4 +1,5 @@
 import ACUITY_LAKEFRONT from '@/lib/data/platinum/locations/acuity-lakefront';
+import CANALAVE_CITY from '@/lib/data/platinum/locations/canalave-city';
 import LAKE_VALOR from '@/lib/data/platinum/locations/lake-valor';
 import LAKE_VERITY from '@/lib/data/platinum/locations/lake-verity';
 import MT_CORONET from '@/lib/data/platinum/locations/mt-coronet';
@@ -13,6 +14,7 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const CANDICE: Split = {
     name: 'Candice',
     locations: [
+        CANALAVE_CITY,
         LAKE_VALOR,
         VALOR_CAVERN,
         LocationHelpers.withSubareaOrder(LAKE_VERITY, [
@@ -28,6 +30,7 @@ const CANDICE: Split = {
             '3F',
             'Exterior',
             '4F',
+            'Summit',
             'Tunnel',
             '5F',
             '6F',

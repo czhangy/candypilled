@@ -2,8 +2,10 @@ import ETERNA_CITY from '@/lib/data/platinum/locations/eterna-city';
 import ETERNA_FOREST from '@/lib/data/platinum/locations/eterna-forest';
 import ETERNA_GYM from '@/lib/data/platinum/locations/eterna-gym';
 import FLOAROMA_MEADOW from '@/lib/data/platinum/locations/floaroma-meadow';
+import FLOAROMA_TOWN from '@/lib/data/platinum/locations/floaroma-town';
 import JUBILIFE_CITY from '@/lib/data/platinum/locations/jubilife-city';
 import MT_CORONET from '@/lib/data/platinum/locations/mt-coronet';
+import OREBURGH_CITY from '@/lib/data/platinum/locations/oreburgh-city';
 import OREBURGH_GATE from '@/lib/data/platinum/locations/oreburgh-gate';
 import RAVAGED_PATH from '@/lib/data/platinum/locations/ravaged-path';
 import ROUTE_203 from '@/lib/data/platinum/locations/route-203';
@@ -17,11 +19,14 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const GARDENIA: Split = {
     name: 'Gardenia',
     locations: [
+        OREBURGH_CITY,
         OREBURGH_GATE,
         ROUTE_203,
         JUBILIFE_CITY,
         ROUTE_204,
         RAVAGED_PATH,
+        LocationHelpers.withSubareaOrder(ROUTE_204, ['North', 'South']),
+        FLOAROMA_TOWN,
         VALLEY_WINDWORKS,
         FLOAROMA_MEADOW,
         LocationHelpers.withSubareaOrder(VALLEY_WINDWORKS, [

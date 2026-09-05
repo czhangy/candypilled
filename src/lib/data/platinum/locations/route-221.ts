@@ -9,32 +9,32 @@ const ROUTE_221: Location = {
         {
             battleKey: 'swimmer-m-dillon',
             x: 12,
-            y: 53.4,
+            y: 50.9,
         },
         {
             battleKey: 'swimmer-f-vanessa',
-            x: 14.2,
-            y: 83,
+            x: 14.1,
+            y: 81.8,
         },
         {
             battleKey: 'fisherman-cory',
-            x: 27.7,
+            x: 27.6,
             y: 71.8,
         },
         {
             battleKey: 'ace-trainer-f-shannon',
-            x: 55.9,
-            y: 83.8,
+            x: 55.8,
+            y: 84.5,
         },
         {
             battleKey: 'collector-ivan',
-            x: 67.2,
-            y: 59.9,
+            x: 67.1,
+            y: 59.3,
         },
         {
             battleKey: 'ace-trainer-m-jake',
             x: 85,
-            y: 66.8,
+            y: 65.9,
         },
     ],
 };

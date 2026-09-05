@@ -6,6 +6,10 @@ import {
     lostTower5f,
     route209,
 } from '@/lib/data/platinum/maps';
+import {
+    GEN_4_TRUE_DOUBLE_HEIGHT,
+    GEN_4_TRUE_DOUBLE_WIDTH,
+} from '@/lib/static/constants';
 import { FieldCondition } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
@@ -19,45 +23,45 @@ const ROUTE_209: Location = {
             battles: [
                 {
                     battleKey: 'pkmn-breeder-m-albert',
-                    x: 16.6,
-                    y: 81.2,
+                    x: 16.3,
+                    y: 82.8,
                 },
                 {
                     battleKey: 'jogger-richard',
-                    x: 44.5,
-                    y: 74,
+                    x: 44.4,
+                    y: 69,
                 },
                 {
-                    customWidth: 36,
+                    customWidth: GEN_4_TRUE_DOUBLE_WIDTH,
                     battleKey: 'twins-emma-and-lil',
-                    x: 51.5,
-                    y: 74.2,
+                    x: 51.7,
+                    y: 75.2,
                 },
                 {
                     battleKey: 'poke-kid-danielle',
-                    x: 63,
-                    y: 77,
+                    x: 63.2,
+                    y: 78.5,
                 },
                 {
                     battleKey: 'jogger-raul',
-                    x: 71.7,
-                    y: 66.2,
+                    x: 77.3,
+                    y: 67.2,
                 },
                 {
                     battleKey: 'pkmn-breeder-f-jennifer',
-                    x: 66.2,
-                    y: 60.7,
+                    x: 66.3,
+                    y: 61.1,
                 },
                 {
                     battleKey: 'cowgirl-shelley',
-                    x: 75.5,
-                    y: 30.1,
+                    x: 75.7,
+                    y: 28.2,
                 },
                 {
-                    customWidth: 36,
+                    customHeight: GEN_4_TRUE_DOUBLE_HEIGHT,
                     battleKey: 'young-couple-ty-and-sue',
-                    x: 74.2,
-                    y: 18.4,
+                    x: 77.5,
+                    y: 19.6,
                 },
             ],
         },

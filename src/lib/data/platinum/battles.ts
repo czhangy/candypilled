@@ -469,6 +469,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 1,
                         level: 37,
                         nature: Nature.Calm,
@@ -508,6 +509,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 1,
                         level: 34,
                         nature: Nature.Mild,
@@ -516,6 +518,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 1,
                         level: 34,
                         nature: Nature.Mild,
@@ -524,6 +527,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 1,
                         level: 34,
                         nature: Nature.Mild,
@@ -543,6 +547,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         ivs: 7,
                         level: 35,
                         nature: Nature.Modest,
@@ -551,6 +556,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         ivs: 7,
                         level: 36,
                         nature: Nature.Timid,
@@ -559,6 +565,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         ivs: 7,
                         level: 38,
                         nature: Nature.Sassy,
@@ -578,6 +585,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 1,
                         level: 35,
                         nature: Nature.Sassy,
@@ -586,6 +594,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 1,
                         level: 35,
                         nature: Nature.Sassy,
@@ -644,6 +653,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magneton',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 24,
                         level: 37,
                         nature: Nature.Relaxed,
@@ -1506,18 +1516,21 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 32,
                         nature: Nature.Mild,
                     },
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 32,
                         nature: Nature.Mild,
                     },
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 32,
                         nature: Nature.Mild,
                     },
@@ -1750,6 +1763,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'porygon2',
                         ability: 'trace',
+                        gender: 'genderless',
                         level: 42,
                         nature: Nature.Rash,
                         moves: [
@@ -1965,6 +1979,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         ivs: 24,
                         level: 42,
                         nature: Nature.Hardy,
@@ -1994,8 +2009,9 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'pkmn-trainer-barry': {
+    'pkmn-trainer-barry-hearthome-city': {
         metadata: [BattleMetadata.Miniboss],
+        split: 'Maylene',
         trainerClass: 'pkmn-trainer-barry',
         name: 'Barry',
         teams: [
@@ -2284,6 +2300,58 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'school-kid-m-harrison': {
+        metadata: [BattleMetadata.Optional],
+        trainerClass: 'school-kid-m',
+        name: 'Harrison',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'starly',
+                        ability: 'keen-eye',
+                        gender: 'male',
+                        level: 6,
+                        nature: Nature.Timid,
+                        moves: ['quick-attack'],
+                        ivs: 1,
+                    },
+                ],
+            },
+        ],
+        items: [
+            {
+                count: 1,
+                name: 'X Attack',
+            },
+        ],
+    },
+    'school-kid-f-christine': {
+        metadata: [BattleMetadata.Optional],
+        trainerClass: 'school-kid-f',
+        name: 'Christine',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'bidoof',
+                        ability: 'simple',
+                        gender: 'female',
+                        level: 6,
+                        nature: Nature.Quiet,
+                        moves: ['tackle', 'growl'],
+                        ivs: 1,
+                    },
+                ],
+            },
+        ],
+        items: [
+            {
+                count: 1,
+                name: 'Potion',
+            },
+        ],
+    },
     'ace-trainer-f-catherine': {
         metadata: [BattleMetadata.Optional],
         trainerClass: 'ace-trainer-f',
@@ -2514,12 +2582,14 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 34,
                         nature: Nature.Timid,
                     },
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 36,
                         nature: Nature.Lax,
                     },
@@ -2682,6 +2752,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 34,
                         nature: Nature.Jolly,
                     },
@@ -2844,6 +2915,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-jubilife-city': {
         metadata: [BattleMetadata.Tag],
+        split: 'Gardenia',
         trainerClass: 'galactic-grunt-m',
         name: '1',
         teams: [
@@ -2879,6 +2951,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'pkmn-trainer-dawn-jubilife-city-tag': {
         metadata: [],
+        split: 'Gardenia',
         trainerClass: 'pkmn-trainer-dawn',
         name: 'Dawn',
         teams: [
@@ -2928,6 +3001,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'pkmn-trainer-lucas-jubilife-city-tag': {
         metadata: [],
+        split: 'Gardenia',
         trainerClass: 'pkmn-trainer-lucas',
         name: 'Lucas',
         teams: [
@@ -3066,6 +3140,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-lake-verity-1': {
         metadata: [BattleMetadata.Double],
+        split: 'Candice',
         trainerClass: 'galactic-grunt-m',
         name: '15',
         teams: [
@@ -3136,6 +3211,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-lake-verity-2': {
         metadata: [],
+        split: 'Candice',
         trainerClass: 'galactic-grunt-m',
         name: '16',
         teams: [
@@ -3163,6 +3239,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-f-lake-verity': {
         metadata: [],
+        split: 'Candice',
         trainerClass: 'galactic-grunt-f',
         name: '5',
         teams: [
@@ -3190,6 +3267,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'commander-mars-lake-verity': {
         metadata: [BattleMetadata.Miniboss],
+        split: 'Candice',
         trainerClass: 'commander-mars',
         name: 'Mars',
         teams: [
@@ -3207,6 +3285,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         ivs: 24,
                         level: 38,
                         nature: Nature.Relaxed,
@@ -3274,6 +3353,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzong',
                         ability: 'levitate',
+                        gender: 'genderless',
                         ivs: 30,
                         level: 54,
                         nature: Nature.Naive,
@@ -3325,6 +3405,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-f-mt-coronet-1': {
         metadata: [BattleMetadata.Optional],
+        split: 'Volkner',
         trainerClass: 'galactic-grunt-f',
         name: '9',
         teams: [
@@ -3344,6 +3425,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-mt-coronet-1': {
         metadata: [BattleMetadata.Optional],
+        split: 'Volkner',
         trainerClass: 'galactic-grunt-m',
         name: '24',
         teams: [
@@ -3363,6 +3445,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-mt-coronet-2': {
         metadata: [BattleMetadata.Optional],
+        split: 'Volkner',
         trainerClass: 'galactic-grunt-m',
         name: '25',
         teams: [
@@ -3416,6 +3499,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-mt-coronet-3': {
         metadata: [BattleMetadata.Optional],
+        split: 'Volkner',
         trainerClass: 'galactic-grunt-m',
         name: '26',
         teams: [
@@ -3443,6 +3527,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-mt-coronet-4': {
         metadata: [BattleMetadata.Optional],
+        split: 'Volkner',
         trainerClass: 'galactic-grunt-m',
         name: '27',
         teams: [
@@ -3462,6 +3547,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-f-mt-coronet-2': {
         metadata: [BattleMetadata.Optional],
+        split: 'Volkner',
         trainerClass: 'galactic-grunt-f',
         name: '10',
         teams: [
@@ -3497,6 +3583,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-mt-coronet-5': {
         metadata: [BattleMetadata.Optional],
+        split: 'Volkner',
         trainerClass: 'galactic-grunt-m',
         name: '28',
         teams: [
@@ -3532,6 +3619,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-f-mt-coronet-3': {
         metadata: [],
+        split: 'Volkner',
         trainerClass: 'galactic-grunt-f',
         name: '11',
         teams: [
@@ -3559,6 +3647,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-mt-coronet-6': {
         metadata: [],
+        split: 'Volkner',
         trainerClass: 'galactic-grunt-m',
         name: '29',
         teams: [
@@ -3586,6 +3675,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-f-mt-coronet-4': {
         metadata: [],
+        split: 'Volkner',
         trainerClass: 'galactic-grunt-f',
         name: '12',
         teams: [
@@ -3664,6 +3754,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'veteran-grant': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'veteran',
         name: 'Grant',
         teams: [
@@ -4868,6 +4959,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'aroma-lady-taylor': {
         metadata: [BattleMetadata.Optional],
+        split: 'Gardenia',
         trainerClass: 'aroma-lady',
         name: 'Taylor',
         teams: [
@@ -4893,6 +4985,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'bug-catcher-brandon': {
         metadata: [BattleMetadata.Optional],
+        split: 'Gardenia',
         trainerClass: 'bug-catcher',
         name: 'Brandon',
         teams: [
@@ -4919,6 +5012,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'twins-liv-and-liz': {
         metadata: [BattleMetadata.Optional, BattleMetadata.TrueDouble],
+        split: 'Gardenia',
         trainerClass: 'twins',
         name: 'Liv & Liz',
         teams: [
@@ -5413,6 +5507,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'picnicker-lauren': {
         metadata: [BattleMetadata.Optional],
+        split: 'Fantina',
         trainerClass: 'picnicker',
         name: 'Lauren',
         teams: [
@@ -5432,6 +5527,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'camper-anthony': {
         metadata: [BattleMetadata.Optional],
+        split: 'Fantina',
         trainerClass: 'camper',
         name: 'Anthony',
         teams: [
@@ -5450,6 +5546,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'hiker-justin': {
         metadata: [BattleMetadata.Optional],
+        split: 'Fantina',
         trainerClass: 'hiker',
         name: 'Justin',
         teams: [
@@ -5475,6 +5572,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'youngster-austin': {
         metadata: [BattleMetadata.Optional],
+        split: 'Fantina',
         trainerClass: 'youngster',
         name: 'Austin',
         teams: [
@@ -5507,6 +5605,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'hiker-kevin': {
         metadata: [BattleMetadata.Optional],
+        split: 'Fantina',
         trainerClass: 'hiker',
         name: 'Kevin',
         teams: [
@@ -5546,6 +5645,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'battle-girl-helen': {
         metadata: [BattleMetadata.Optional],
+        split: 'Fantina',
         trainerClass: 'battle-girl',
         name: 'Helen',
         teams: [
@@ -5678,6 +5778,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'fisherman-cody': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'fisherman',
         name: 'Cody',
         teams: [
@@ -5703,6 +5804,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'hiker-alexander': {
         metadata: [BattleMetadata.Optional],
+        split: 'Volkner',
         trainerClass: 'hiker',
         name: 'Alexander',
         teams: [
@@ -6238,6 +6340,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ninja-boy-brennan': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'ninja-boy',
         name: 'Brennan',
         teams: [
@@ -6263,6 +6366,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ninja-boy-fabian': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'ninja-boy',
         name: 'Fabian',
         teams: [
@@ -6288,6 +6392,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ninja-boy-bruce': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'ninja-boy',
         name: 'Bruce',
         teams: [
@@ -6306,6 +6411,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ninja-boy-joel': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'ninja-boy',
         name: 'Joel',
         teams: [
@@ -6345,6 +6451,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ace-trainer-f-alyssa': {
         metadata: [],
+        split: 'Byron',
         trainerClass: 'ace-trainer-f',
         name: 'Alyssa',
         teams: [
@@ -6393,6 +6500,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'double-team-zac-and-jen': {
         metadata: [BattleMetadata.Optional, BattleMetadata.TrueDouble],
+        split: 'Byron',
         trainerClass: 'double-team',
         name: 'Zac & Jen',
         teams: [
@@ -6420,6 +6528,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ace-trainer-m-ernest': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'ace-trainer-m',
         name: 'Ernest',
         teams: [
@@ -6473,6 +6582,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ninja-boy-davido': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'ninja-boy',
         name: 'Davido',
         teams: [
@@ -6491,6 +6601,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'black-belt-adam': {
         metadata: [],
+        split: 'Byron',
         trainerClass: 'black-belt',
         name: 'Adam',
         teams: [
@@ -6510,6 +6621,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ninja-boy-nathan': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'ninja-boy',
         name: 'Nathan',
         teams: [
@@ -6535,6 +6647,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'bird-keeper-brianna': {
         metadata: [],
+        split: 'Byron',
         trainerClass: 'bird-keeper',
         name: 'Brianna',
         teams: [
@@ -6562,6 +6675,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'veteran-brian': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'veteran',
         name: 'Brian',
         teams: [
@@ -6610,6 +6724,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'dragon-tamer-patrick': {
         metadata: [BattleMetadata.Optional],
+        split: 'Volkner',
         trainerClass: 'dragon-tamer',
         name: 'Patrick',
         teams: [
@@ -6711,6 +6826,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'bird-keeper-katherine': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'bird-keeper',
         name: 'Katherine',
         teams: [
@@ -6730,6 +6846,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ruin-maniac-harry': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'ruin-maniac',
         name: 'Harry',
         teams: [
@@ -6738,18 +6855,21 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 28,
                         nature: Nature.Serious,
                     },
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 30,
                         nature: Nature.Modest,
                     },
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 32,
                         nature: Nature.Impish,
                     },
@@ -6759,6 +6879,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ninja-boy-nick': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'ninja-boy',
         name: 'Nick',
         teams: [
@@ -6784,6 +6905,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'black-belt-sean': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'black-belt',
         name: 'Sean',
         teams: [
@@ -6854,6 +6976,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 30,
                         nature: Nature.Bold,
                         moves: ['spark', 'magnet-bomb'],
@@ -7432,6 +7555,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'swimmer-f-haley': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'swimmer-f',
         name: 'Haley',
         teams: [
@@ -7457,6 +7581,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'sailor-paul': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'sailor',
         name: 'Paul',
         teams: [
@@ -7489,6 +7614,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'swimmer-m-evan': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'swimmer-m',
         name: 'Evan',
         teams: [
@@ -7514,6 +7640,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'swimmer-f-mary': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'swimmer-f',
         name: 'Mary',
         teams: [
@@ -7539,6 +7666,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'swimmer-m-sheltin': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'swimmer-m',
         name: 'Sheltin',
         teams: [
@@ -7716,6 +7844,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 24,
                         nature: Nature.Relaxed,
                     },
@@ -7765,6 +7894,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'porygon',
                         ability: 'trace',
+                        gender: 'genderless',
                         level: 27,
                         nature: Nature.Timid,
                     },
@@ -7832,6 +7962,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 23,
                         nature: Nature.Sassy,
                     },
@@ -8093,6 +8224,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'porygon2',
                         ability: 'trace',
+                        gender: 'genderless',
                         ivs: 6,
                         level: 40,
                         nature: Nature.Hardy,
@@ -8248,6 +8380,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'black-belt-philip': {
         metadata: [BattleMetadata.Optional],
+        split: 'Volkner',
         trainerClass: 'black-belt',
         name: 'Philip',
         teams: [
@@ -8267,6 +8400,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'skier-f-kaitlyn': {
         metadata: [BattleMetadata.Optional],
+        split: 'Volkner',
         trainerClass: 'skier-f',
         name: 'Kaitlyn',
         teams: [
@@ -8292,6 +8426,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'skier-m-bradley': {
         metadata: [BattleMetadata.Optional],
+        split: 'Volkner',
         trainerClass: 'skier-m',
         name: 'Bradley',
         teams: [
@@ -8324,6 +8459,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'skier-f-andrea': {
         metadata: [BattleMetadata.Optional],
+        split: 'Volkner',
         trainerClass: 'skier-f',
         name: 'Andrea',
         teams: [
@@ -8612,6 +8748,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'fisherman-miguel': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'fisherman',
         name: 'Miguel',
         teams: [
@@ -8637,6 +8774,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'fisherman-luc': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'fisherman',
         name: 'Luc',
         teams: [
@@ -8683,6 +8821,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'sailor-skyler': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'sailor',
         name: 'Skyler',
         teams: [
@@ -8708,6 +8847,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'guitarist-tony': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'guitarist',
         name: 'Tony',
         teams: [
@@ -8723,6 +8863,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         level: 33,
                         nature: Nature.Hasty,
                     },
@@ -8732,6 +8873,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'tuber-m-trenton': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'tuber-m',
         name: 'Trenton',
         teams: [
@@ -8757,6 +8899,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'tuber-f-mariel': {
         metadata: [BattleMetadata.Optional],
+        split: 'Byron',
         trainerClass: 'tuber-f',
         name: 'Mariel',
         teams: [
@@ -10052,6 +10195,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 23,
                         nature: Nature.Serious,
                     },
@@ -10122,6 +10266,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         ivs: 24,
                         level: 44,
                         nature: Nature.Quirky,
@@ -10173,6 +10318,7 @@ export const BATTLES: Record<string, BattleData> = {
                         {
                             slug: 'bronzor',
                             ability: 'levitate',
+                            gender: 'genderless',
                             ivs: 24,
                             level: 44,
                             nature: Nature.Brave,
@@ -10517,6 +10663,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magneton',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 1,
                         level: 47,
                         nature: Nature.Bold,
@@ -10542,6 +10689,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnemite',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 1,
                         level: 44,
                         nature: Nature.Rash,
@@ -10604,6 +10752,45 @@ export const BATTLES: Record<string, BattleData> = {
                         ivs: 1,
                         level: 42,
                         nature: Nature.Jolly,
+                    },
+                ],
+            },
+        ],
+    },
+    'poke-kid-janet': {
+        metadata: [BattleMetadata.Optional],
+        trainerClass: 'poke-kid',
+        name: 'Janet',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'pikachu',
+                        ability: 'static',
+                        gender: 'female',
+                        ivs: 0,
+                        level: 42,
+                        nature: Nature.Relaxed,
+                        moves: [
+                            'feint',
+                            'agility',
+                            'discharge',
+                            'light-screen',
+                        ],
+                    },
+                    {
+                        slug: 'pikachu',
+                        ability: 'static',
+                        gender: 'female',
+                        ivs: 0,
+                        level: 42,
+                        nature: Nature.Relaxed,
+                        moves: [
+                            'feint',
+                            'agility',
+                            'discharge',
+                            'light-screen',
+                        ],
                     },
                 ],
             },
@@ -10724,6 +10911,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magneton',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 7,
                         level: 48,
                         nature: Nature.Docile,
@@ -11107,6 +11295,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         ivs: 24,
                         level: 38,
                         nature: Nature.Quirky,
@@ -11157,6 +11346,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-veilstone-city': {
         metadata: [BattleMetadata.Tag],
+        split: 'Wake',
         trainerClass: 'galactic-grunt-m',
         name: '9',
         teams: [
@@ -11210,6 +11400,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'pkmn-trainer-dawn-veilstone-city-tag': {
         metadata: [],
+        split: 'Wake',
         trainerClass: 'pkmn-trainer-dawn',
         name: 'Dawn',
         teams: [
@@ -11338,6 +11529,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'pkmn-trainer-lucas-veilstone-city-tag': {
         metadata: [],
+        split: 'Wake',
         trainerClass: 'pkmn-trainer-lucas',
         name: 'Lucas',
         teams: [
@@ -11737,6 +11929,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'magnezone',
                         ability: 'magnet-pull',
+                        gender: 'genderless',
                         ivs: 6,
                         level: 48,
                         nature: Nature.Naive,
@@ -11780,6 +11973,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'porygon-z',
                         ability: 'adaptability',
+                        gender: 'genderless',
                         ivs: 12,
                         level: 46,
                         nature: Nature.Naive,
@@ -12374,6 +12568,7 @@ export const BATTLES: Record<string, BattleData> = {
                     {
                         slug: 'bronzor',
                         ability: 'levitate',
+                        gender: 'genderless',
                         level: 21,
                         nature: Nature.Calm,
                     },

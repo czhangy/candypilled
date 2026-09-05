@@ -7177,7 +7177,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             conditions: ['time-night'],
         },
     ],
-    'old-chateau': [
+    'old-chateau-2f': [
         {
             species: 'gastly',
             method: EncounterMethod.Walking,
@@ -7209,6 +7209,24 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             maxLevel: 15,
             chance: null,
             conditions: ['time-night'],
+        },
+    ],
+    'old-chateau-dining-room': [
+        {
+            species: 'gastly',
+            method: EncounterMethod.Walking,
+            minLevel: 12,
+            maxLevel: 16,
+            chance: 100,
+        },
+    ],
+    'old-chateau-entrance': [
+        {
+            species: 'gastly',
+            method: EncounterMethod.Walking,
+            minLevel: 12,
+            maxLevel: 16,
+            chance: 100,
         },
     ],
     'oreburgh-city': [

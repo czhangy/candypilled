@@ -1,3 +1,5 @@
+import CYCLE_SHOP from '@/lib/data/platinum/locations/cycle-shop';
+import ETERNA_CITY from '@/lib/data/platinum/locations/eterna-city';
 import ETERNA_FOREST from '@/lib/data/platinum/locations/eterna-forest';
 import HEARTHOME_CITY from '@/lib/data/platinum/locations/hearthome-city';
 import HEARTHOME_GYM from '@/lib/data/platinum/locations/hearthome-gym';
@@ -15,12 +17,14 @@ import LocationHelpers from '@/lib/utils/LocationHelpers';
 const FANTINA: Split = {
     name: 'Fantina',
     locations: [
+        ETERNA_CITY,
         OLD_CHATEAU,
         LocationHelpers.withSubareaOrder(ETERNA_FOREST, [
             'Exterior',
             'Interior',
         ]),
         TEAM_GALACTIC_ETERNA_BUILDING,
+        CYCLE_SHOP,
         ROUTE_206,
         MINING_MUSEUM,
         WAYWARD_CAVE,
@@ -34,6 +38,7 @@ const FANTINA: Split = {
             '3F',
             'Exterior',
             '4F',
+            'Summit',
             'Tunnel',
             '5F',
             '6F',

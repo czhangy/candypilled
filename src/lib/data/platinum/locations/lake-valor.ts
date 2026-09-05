@@ -13,18 +13,18 @@ const LAKE_VALOR: Location = {
             battles: [
                 {
                     battleKey: 'galactic-grunt-f-lake-valor',
-                    x: 50.9,
-                    y: 30.6,
+                    x: 46,
+                    y: 28.3,
                 },
                 {
                     battleKey: 'galactic-grunt-m-lake-valor-1',
-                    x: 30.3,
-                    y: 55.3,
+                    x: 27.4,
+                    y: 50.1,
                 },
                 {
                     battleKey: 'galactic-grunt-m-lake-valor-2',
-                    x: 44,
-                    y: 60.9,
+                    x: 39.8,
+                    y: 54.7,
                 },
             ],
         },

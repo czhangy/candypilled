@@ -137,12 +137,12 @@ export default class BattleHelpers {
         return items.filter((item) => !item.gender || item.gender === gender);
     }
 
-    /** battles restricted to splitName: entries whose BattleData carries no `split` always pass, entries with one only pass once splitName's split is reached — i.e. splitName is that split or a later one in game order. */
-    static filterBySplit(
-        battles: Battle[],
+    /** items restricted to splitName: entries whose BattleData carries no `split` always pass, entries with one only pass once splitName's split is reached — i.e. splitName is that split or a later one in game order. Shared by Battle[] and TagPartner[], both of which carry a `battleKey` into Game.battles. */
+    static filterBySplit<T extends { battleKey: string }>(
+        items: T[],
         splitName: string | undefined,
         game: Game
-    ): Battle[] {
+    ): T[] {
         const splitIndexes = new Map(
             game.splits.map((split, index) => [split.name, index])
         );
@@ -150,8 +150,8 @@ export default class BattleHelpers {
             ? splitIndexes.get(splitName)
             : undefined;
 
-        return battles.filter((battle) => {
-            const split = game.battles[battle.battleKey]?.split;
+        return items.filter((item) => {
+            const split = game.battles[item.battleKey]?.split;
             if (!split) return true;
 
             const battleIndex = splitIndexes.get(split);

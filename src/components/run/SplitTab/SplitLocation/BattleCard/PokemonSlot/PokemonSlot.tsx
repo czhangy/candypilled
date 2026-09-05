@@ -141,12 +141,14 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                 <span className={styles['pokemon-slot__species']}>
                     {speciesName}
                 </span>
-                {(!hofDisplay || pokemon.gender || types.length > 0) && (
+                {(!hofDisplay ||
+                    pokemon.gender !== 'genderless' ||
+                    types.length > 0) && (
                     <div className={styles['pokemon-slot__level-row']}>
-                        {(!hofDisplay || pokemon.gender) && (
+                        {(!hofDisplay || pokemon.gender !== 'genderless') && (
                             <span className={styles['pokemon-slot__level']}>
                                 {!hofDisplay && `Lv.${pokemon.level}`}
-                                {pokemon.gender && (
+                                {pokemon.gender !== 'genderless' && (
                                     <span
                                         className={[
                                             styles['pokemon-slot__gender'],
