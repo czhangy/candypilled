@@ -1,6 +1,7 @@
 export enum EncounterMethod {
     Binoculars = 'binoculars',
     Cave = 'cave',
+    DevonScope = 'devon-scope',
     Egg = 'egg',
     FeebasTile = 'feebas-tile',
     Fossil = 'fossil',
@@ -10,6 +11,7 @@ export enum EncounterMethod {
     HoneyTree = 'honey-tree',
     OldRod = 'old-rod',
     PokeRadar = 'poke-radar',
+    RockSmash = 'rock-smash',
     Starter = 'starter',
     Static = 'static',
     SuperRod = 'super-rod',
@@ -115,11 +117,13 @@ export enum GameVersionGroup {
     Platinum = 'platinum',
     HeartGoldSoulSilver = 'heartgold-soulsilver',
     RenegadePlatinum = 'renegade-platinum',
+    RubySapphire = 'ruby-sapphire',
 }
 
 // The public/badges/<folder>/ a game's gym-badge icons are served from.
 export enum BadgeAssetFolder {
     Sinnoh = 'sinnoh',
+    Hoenn = 'hoenn',
 }
 
 // The public/trainers/<folder>/ a game's trainer battle sprites are served
@@ -127,4 +131,5 @@ export enum BadgeAssetFolder {
 export enum TrainerAssetFolder {
     DiamondPearl = 'diamond-pearl',
     Platinum = 'platinum',
+    RubySapphire = 'ruby-sapphire',
 }
