@@ -1,49 +1,77 @@
-import { canalaveGym } from '@/lib/data/renegade-platinum/maps';
+import {
+    canalaveGym1f,
+    canalaveGym2f,
+    canalaveGym3f,
+    canalaveGym4f,
+} from '@/lib/data/renegade-platinum/maps';
 import { Location } from '@/lib/static/types';
 
 const CANALAVE_GYM: Location = {
     name: 'Canalave Gym',
-    map: canalaveGym,
-    battles: [
+    subareas: [
         {
-            battleKey: 'black-belt-ricky',
-            x: 29.9,
-            y: 55,
+            name: '1F',
+            map: canalaveGym1f,
+            battles: [
+                {
+                    battleKey: 'black-belt-ricky',
+                    x: 14.4,
+                    y: 43,
+                },
+                {
+                    battleKey: 'worker-gary',
+                    x: 66.1,
+                    y: 38.8,
+                },
+                {
+                    battleKey: 'ace-trainer-m-cesar',
+                    x: 86.1,
+                    y: 81.2,
+                },
+            ],
         },
         {
-            battleKey: 'worker-gary',
-            x: 70.3,
-            y: 51.4,
+            name: '2F',
+            map: canalaveGym2f,
+            battles: [
+                {
+                    battleKey: 'worker-jackson',
+                    x: 44.9,
+                    y: 4.1,
+                },
+                {
+                    battleKey: 'ace-trainer-f-breanna',
+                    x: 88.2,
+                    y: 11.1,
+                },
+            ],
         },
         {
-            battleKey: 'ace-trainer-m-cesar',
-            x: 85.9,
-            y: 83.1,
+            name: '3F',
+            map: canalaveGym3f,
+            battles: [
+                {
+                    battleKey: 'worker-gerardo',
+                    x: 25.1,
+                    y: 3.8,
+                },
+                {
+                    battleKey: 'black-belt-david',
+                    x: 78.2,
+                    y: 3.8,
+                },
+            ],
         },
         {
-            battleKey: 'worker-jackson',
-            x: 45.5,
-            y: 5.8,
-        },
-        {
-            battleKey: 'worker-gerardo',
-            x: 26.6,
-            y: 5.8,
-        },
-        {
-            battleKey: 'black-belt-david',
-            x: 76.8,
-            y: 5.8,
-        },
-        {
-            battleKey: 'ace-trainer-f-breanna',
-            x: 86.1,
-            y: 12.8,
-        },
-        {
-            battleKey: 'leader-byron',
-            x: 51.6,
-            y: 5.8,
+            name: '4F',
+            map: canalaveGym4f,
+            battles: [
+                {
+                    battleKey: 'leader-byron',
+                    x: 51.8,
+                    y: 4.1,
+                },
+            ],
         },
     ],
 };

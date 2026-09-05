@@ -1,4 +1,5 @@
 import {
+    hearthomeCityCity,
     hearthomeCityEastGate,
     hearthomeCityWestGate,
 } from '@/lib/data/renegade-platinum/maps';
@@ -17,6 +18,10 @@ const HEARTHOME_CITY: Location = {
                     y: 45.9,
                 },
             ],
+        },
+        {
+            name: 'City',
+            map: hearthomeCityCity,
         },
         {
             name: 'East Gate',

@@ -6,6 +6,7 @@ import ROUTE_210 from '@/lib/data/renegade-platinum/locations/route-210';
 import ROUTE_212 from '@/lib/data/renegade-platinum/locations/route-212';
 import ROUTE_215 from '@/lib/data/renegade-platinum/locations/route-215';
 import SOLACEON_RUINS from '@/lib/data/renegade-platinum/locations/solaceon-ruins';
+import SOLACEON_TOWN from '@/lib/data/renegade-platinum/locations/solaceon-town';
 import TROPHY_GARDEN from '@/lib/data/renegade-platinum/locations/trophy-garden';
 import VEILSTONE_CITY from '@/lib/data/renegade-platinum/locations/veilstone-city';
 import VEILSTONE_GYM from '@/lib/data/renegade-platinum/locations/veilstone-gym';
@@ -17,12 +18,14 @@ const MAYLENE: Split = {
     locations: [
         LocationHelpers.withSubareaOrder(HEARTHOME_CITY, [
             'East Gate',
+            'City',
             'West Gate',
         ]),
         ROUTE_212,
         POKEMON_MANSION,
         TROPHY_GARDEN,
         ROUTE_209,
+        SOLACEON_TOWN,
         SOLACEON_RUINS,
         ROUTE_210,
         CAFE_CABIN,

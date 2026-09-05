@@ -1,3 +1,4 @@
+import CYCLE_SHOP from '@/lib/data/renegade-platinum/locations/cycle-shop';
 import ETERNA_CITY from '@/lib/data/renegade-platinum/locations/eterna-city';
 import HEARTHOME_CITY from '@/lib/data/renegade-platinum/locations/hearthome-city';
 import HEARTHOME_GYM from '@/lib/data/renegade-platinum/locations/hearthome-gym';
@@ -16,6 +17,7 @@ const FANTINA: Split = {
     locations: [
         ETERNA_CITY,
         TEAM_GALACTIC_ETERNA_BUILDING,
+        CYCLE_SHOP,
         ROUTE_206,
         MINING_MUSEUM,
         WAYWARD_CAVE,
@@ -37,6 +39,7 @@ const FANTINA: Split = {
         ROUTE_208,
         LocationHelpers.withSubareaOrder(HEARTHOME_CITY, [
             'West Gate',
+            'City',
             'East Gate',
         ]),
         HEARTHOME_GYM,
