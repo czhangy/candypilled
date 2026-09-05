@@ -3,7 +3,7 @@ import {
     victoryRoad2f,
     victoryRoadB1f,
 } from '@/lib/data/platinum/maps';
-import { GEN_4_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
+import { GEN_4_TRUE_DOUBLE_HEIGHT } from '@/lib/static/constants';
 import { Location } from '@/lib/static/types';
 
 const VICTORY_ROAD: Location = {
@@ -16,33 +16,33 @@ const VICTORY_ROAD: Location = {
             battles: [
                 {
                     battleKey: 'psychic-m-bryce',
-                    x: 13.3,
-                    y: 90.7,
+                    x: 12.5,
+                    y: 85.05,
                 },
                 {
                     battleKey: 'bird-keeper-hana',
-                    x: 58.7,
-                    y: 74.9,
+                    x: 58.77,
+                    y: 71.3,
                 },
                 {
                     battleKey: 'ace-trainer-f-mariah',
-                    x: 18.9,
-                    y: 55.1,
+                    x: 18.27,
+                    y: 51.29,
                 },
                 {
                     battleKey: 'black-belt-miles',
-                    x: 56.5,
-                    y: 55.9,
+                    x: 56.73,
+                    y: 50.09,
                 },
                 {
                     battleKey: 'veteran-edgar',
-                    x: 51.1,
-                    y: 36.1,
+                    x: 51.08,
+                    y: 30.08,
                 },
                 {
                     battleKey: 'dragon-tamer-clinton',
-                    x: 75.5,
-                    y: 39.5,
+                    x: 75.96,
+                    y: 37.58,
                 },
             ],
         },
@@ -53,24 +53,24 @@ const VICTORY_ROAD: Location = {
             battles: [
                 {
                     battleKey: 'ace-trainer-m-omar',
-                    x: 8.5,
-                    y: 68.1,
+                    x: 7.62,
+                    y: 65.13,
                 },
                 {
                     battleKey: 'ace-trainer-f-sydney',
-                    x: 25.2,
-                    y: 92.7,
+                    x: 24.66,
+                    y: 89.98,
                 },
                 {
                     battleKey: 'veteran-clayton',
-                    x: 38.4,
-                    y: 73.3,
+                    x: 37.99,
+                    y: 70.13,
                 },
                 {
-                    customHeight: 40,
+                    customHeight: GEN_4_TRUE_DOUBLE_HEIGHT,
                     battleKey: 'double-team-al-and-kay',
-                    x: 95,
-                    y: 50,
+                    x: 95.77,
+                    y: 46.39,
                 },
             ],
         },
@@ -81,24 +81,24 @@ const VICTORY_ROAD: Location = {
             battles: [
                 {
                     battleKey: 'psychic-f-valencia',
-                    x: 55.2,
-                    y: 66.7,
+                    x: 55.13,
+                    y: 57.26,
                 },
                 {
-                    customWidth: GEN_4_TRUE_DOUBLE_WIDTH,
+                    customHeight: GEN_4_TRUE_DOUBLE_HEIGHT,
                     battleKey: 'double-team-jo-and-pat',
-                    x: 76.8,
-                    y: 89.5,
+                    x: 83.49,
+                    y: 86.95,
                 },
                 {
                     battleKey: 'ace-trainer-m-henry',
-                    x: 80.1,
-                    y: 45.4,
+                    x: 80.93,
+                    y: 26.64,
                 },
                 {
                     battleKey: 'dragon-tamer-ondrej',
-                    x: 24.9,
-                    y: 14.3,
+                    x: 24.36,
+                    y: 10.32,
                 },
             ],
         },

@@ -111,14 +111,8 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
                     )}
                 </div>
             )}
-            {metadata.includes(BattleMetadata.Boss) && (
-                <div className={styles['trainer__metadata']}>BOSS</div>
-            )}
             {metadata.includes(BattleMetadata.Choice) && (
                 <div className={styles['trainer__metadata']}>CHOICE</div>
-            )}
-            {metadata.includes(BattleMetadata.Miniboss) && (
-                <div className={styles['trainer__metadata']}>MINIBOSS</div>
             )}
             {metadata.includes(BattleMetadata.Optional) && (
                 <div className={styles['trainer__metadata']}>OPTIONAL</div>
@@ -138,6 +132,12 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
             )}
             {metadata.includes(BattleMetadata.Gauntlet) && (
                 <div className={styles['trainer__metadata']}>GAUNTLET</div>
+            )}
+            {metadata.includes(BattleMetadata.Boss) && (
+                <div className={styles['trainer__metadata']}>BOSS</div>
+            )}
+            {metadata.includes(BattleMetadata.Miniboss) && (
+                <div className={styles['trainer__metadata']}>MINIBOSS</div>
             )}
         </div>
     );
