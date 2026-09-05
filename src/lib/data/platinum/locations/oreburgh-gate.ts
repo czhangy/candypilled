@@ -11,13 +11,13 @@ const OREBURGH_GATE: Location = {
             battles: [
                 {
                     battleKey: 'camper-curtis',
-                    x: 55,
-                    y: 91,
+                    x: 55.1,
+                    y: 85.6,
                 },
                 {
                     battleKey: 'picnicker-diana',
                     x: 80.3,
-                    y: 76.5,
+                    y: 70.5,
                 },
             ],
         },
@@ -28,8 +28,8 @@ const OREBURGH_GATE: Location = {
             battles: [
                 {
                     battleKey: 'veteran-grant',
-                    x: 21.8,
-                    y: 61.8,
+                    x: 21.1,
+                    y: 53.5,
                 },
             ],
         },

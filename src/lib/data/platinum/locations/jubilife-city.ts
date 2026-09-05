@@ -1,4 +1,5 @@
 import { jubilifeCity } from '@/lib/data/platinum/maps';
+import { GEN_4_TRUE_DOUBLE_HEIGHT } from '@/lib/static/constants';
 import { Location } from '@/lib/static/types';
 
 const JUBILIFE_CITY: Location = {
@@ -16,10 +17,10 @@ const JUBILIFE_CITY: Location = {
     ],
     battles: [
         {
-            customHeight: 40,
+            customHeight: GEN_4_TRUE_DOUBLE_HEIGHT,
             battleKey: 'galactic-grunt-m-jubilife-city',
-            x: 71.2,
-            y: 5.8,
+            x: 72.5,
+            y: 5.7,
         },
     ],
 };

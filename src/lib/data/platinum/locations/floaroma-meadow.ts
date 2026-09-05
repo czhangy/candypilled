@@ -10,8 +10,8 @@ const FLOAROMA_MEADOW: Location = {
         {
             battleKey: 'galactic-grunt-m-floaroma-meadow',
             customWidth: GEN_4_TRUE_DOUBLE_WIDTH,
-            x: 13,
-            y: 47.9,
+            x: 20.3,
+            y: 73.6,
         },
     ],
 };

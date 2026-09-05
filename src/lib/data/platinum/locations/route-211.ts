@@ -11,18 +11,18 @@ const ROUTE_211: Location = {
             battles: [
                 {
                     battleKey: 'ninja-boy-zach',
-                    x: 29.6,
-                    y: 37.1,
+                    x: 29.7,
+                    y: 41.2,
                 },
                 {
                     battleKey: 'hiker-louis',
-                    x: 76.1,
-                    y: 49.6,
+                    x: 79.7,
+                    y: 52.9,
                 },
                 {
                     battleKey: 'bird-keeper-alexandra',
-                    x: 46.8,
-                    y: 40.6,
+                    x: 48.6,
+                    y: 34.6,
                 },
             ],
         },
@@ -33,23 +33,23 @@ const ROUTE_211: Location = {
             battles: [
                 {
                     battleKey: 'bird-keeper-katherine',
-                    x: 52.9,
-                    y: 31.7,
+                    x: 51.4,
+                    y: 25.2,
                 },
                 {
                     battleKey: 'ruin-maniac-harry',
-                    x: 44.2,
-                    y: 45.7,
+                    x: 45.5,
+                    y: 53.3,
                 },
                 {
                     battleKey: 'ninja-boy-nick',
-                    x: 32.4,
-                    y: 32.3,
+                    x: 29.5,
+                    y: 25.5,
                 },
                 {
                     battleKey: 'black-belt-sean',
-                    x: 49.7,
-                    y: 90,
+                    x: 38.7,
+                    y: 87.5,
                 },
             ],
         },

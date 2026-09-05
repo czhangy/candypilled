@@ -1,4 +1,5 @@
 import { route204North, route204South } from '@/lib/data/platinum/maps';
+import { GEN_4_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_204: Location = {
@@ -11,18 +12,18 @@ const ROUTE_204: Location = {
             battles: [
                 {
                     battleKey: 'lass-sarah',
-                    x: 38.9,
-                    y: 66.5,
+                    x: 39.1,
+                    y: 65.9,
                 },
                 {
                     battleKey: 'youngster-tyler',
-                    x: 22.9,
-                    y: 57.5,
+                    x: 23.8,
+                    y: 56.5,
                 },
                 {
                     battleKey: 'lass-samantha',
-                    x: 35.7,
-                    y: 27.5,
+                    x: 35.9,
+                    y: 25.2,
                 },
             ],
         },
@@ -33,19 +34,19 @@ const ROUTE_204: Location = {
             battles: [
                 {
                     battleKey: 'aroma-lady-taylor',
-                    x: 52.9,
-                    y: 59.4,
+                    x: 54.5,
+                    y: 62.7,
                 },
                 {
                     battleKey: 'bug-catcher-brandon',
-                    x: 63.3,
-                    y: 39.7,
+                    x: 70.3,
+                    y: 40.9,
                 },
                 {
-                    customWidth: 36,
+                    customWidth: GEN_4_TRUE_DOUBLE_WIDTH,
                     battleKey: 'twins-liv-and-liz',
-                    x: 48.3,
-                    y: 23,
+                    x: 50,
+                    y: 22.5,
                 },
             ],
         },

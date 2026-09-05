@@ -342,11 +342,15 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                 : undefined,
         };
     }
-    const currentTagPartner = BattleHelpers.filterByGender(
-        (location.subareas
-            ? location.subareas[selectedSubareaIndex].tagPartner
-            : location.tagPartner) ?? [],
-        run.gender
+    const currentTagPartner = BattleHelpers.filterBySplit(
+        BattleHelpers.filterByGender(
+            (location.subareas
+                ? location.subareas[selectedSubareaIndex].tagPartner
+                : location.tagPartner) ?? [],
+            run.gender
+        ),
+        splitName,
+        game
     )[0];
     const tagPartnerBattleKey = currentTagPartner?.battleKey;
     const tagPartnerBattle: Battle | undefined = tagPartnerBattleKey

@@ -1,9 +1,15 @@
 @use '@/styles/constants' as *;
 @use '@/styles/mixins' as *;
 
+// Used only for the shift-drag preview marker's flash — kept local since no
+// other component needs these. Chosen for max contrast against map
+// backgrounds rather than matching the shared palette.
+$preview-neon-orange: #ff5f00;
+$preview-bright-pink: #ff00c8;
+
 @property --marker-color {
     inherits: false;
-    initial-value: #{$pink};
+    initial-value: #{$preview-neon-orange};
     syntax: '<color>';
 }
 
@@ -27,32 +33,13 @@
 }
 
 @keyframes preview-marker-color-cycle {
-    0% {
-        --marker-color: #{$pink};
-    }
-
-    16.66% {
-        --marker-color: #{$red};
-    }
-
-    33.33% {
-        --marker-color: #{$orange};
+    0%,
+    100% {
+        --marker-color: #{$preview-neon-orange};
     }
 
     50% {
-        --marker-color: #{$gold};
-    }
-
-    66.66% {
-        --marker-color: #{$green};
-    }
-
-    83.33% {
-        --marker-color: #{$blue};
-    }
-
-    100% {
-        --marker-color: #{$pink};
+        --marker-color: #{$preview-bright-pink};
     }
 }
 
@@ -126,7 +113,7 @@
     }
 
     &--preview {
-        --marker-color: #{$pink};
+        --marker-color: #{$preview-neon-orange};
 
         animation: preview-marker-color-cycle 4s linear infinite;
         border-style: dashed;

@@ -628,6 +628,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'pkmn-trainer-dawn-jubilife-city-tag': {
         metadata: [],
+        split: 'Gardenia',
         trainerClass: 'pkmn-trainer-dawn',
         name: 'Dawn',
         teams: [
@@ -677,6 +678,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'pkmn-trainer-lucas-jubilife-city-tag': {
         metadata: [],
+        split: 'Gardenia',
         trainerClass: 'pkmn-trainer-lucas',
         name: 'Lucas',
         teams: [

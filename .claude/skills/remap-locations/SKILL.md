@@ -51,6 +51,11 @@ Run the `dspre-map-stitch` skill as normal. Two things specific to a remap:
 - A redo **always overwrites the existing `<slug>.png` in place** — the
   file path and barrel export in `maps/index.ts` don't change, so no
   `index.ts` edit is needed for a redo (only for a genuinely new map).
+- **Don't sanity-check the chunk images before stitching** — no checking
+  for window chrome, dead space, black borders, or any other visual
+  artifact, on either the raw chunks or the final stitched image. Just run
+  the stitch and wire it in. This overrides `dspre-map-stitch`'s own
+  chunk-checking steps for a remap session specifically.
 
 ## 2. Restitched maps invalidate existing battle markers — always ask
 
@@ -89,6 +94,16 @@ does, that location isn't done until updated x/y is confirmed:
   no crop change), that's an explicit answer like any other — don't infer
   "probably fine" yourself and skip asking.
 
+**Exception: a bare "restitch this location" with no other context is a
+correction, not a new capture.** It means the user gave the wrong source
+images for the location currently being worked on (e.g. answered a
+"clean?" check against a bad chunk, or a chunk got overwritten) and is
+re-running the stitch against corrected images of the same crop/frame —
+not recapturing at a new scroll offset or zoom. The coordinate system is
+unaffected by this operation, so don't re-ask for x/y afterward; only ask
+again if the user says the new image is a different capture, or gives new
+coordinates unprompted.
+
 ## 3. Adding new battles during a remap
 
 Same collaborative, per-location loop as `onboard-new-game` step 5
@@ -98,6 +113,15 @@ own IV-sourcing rule, never guess x/y/gender/metadata). The only
 difference from onboarding is that the location file already exists, so
 this is an edit to its `battles: []` array (and a new `battles.ts` entry
 keyed by the usual `battleKey` convention) rather than a fresh scaffold.
+
+**Wire the location into its split before asking for x/y/metadata**, same
+as `onboard-new-game`'s wire-before-asking-anchor ordering — this applies
+here too, including for a location that already existed for another split
+(a brand-new `gen:location` scaffold, or an existing `Location` newly
+added to this split's `locations: []` array) but wasn't rendering in
+_this_ split until now. The location isn't visible in-app to check markers
+against until it's actually in a split's array, so add it there first,
+then ask.
 
 If the new battle is on a location that's also being restitched this pass,
 do the map first, then fold this battle's x/y into the same "state exactly
