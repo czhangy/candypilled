@@ -1,9 +1,11 @@
 import { oreburghGym } from '@/lib/data/renegade-platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const OREBURGH_GYM: Location = {
     name: 'Oreburgh Gym',
     map: oreburghGym,
+    mapAnchor: MapAnchor.Unaudited,
     battles: [
         {
             battleKey: 'youngster-jonathon',

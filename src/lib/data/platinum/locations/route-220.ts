@@ -1,9 +1,11 @@
 import { route220 } from '@/lib/data/platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_220: Location = {
     name: 'Route 220',
     map: route220,
+    mapAnchor: MapAnchor.Unaudited,
     encountersKey: 'sinnoh-sea-route-220',
     battles: [
         {

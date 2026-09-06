@@ -1,9 +1,11 @@
 import { distortionWorld } from '@/lib/data/platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const DISTORTION_WORLD: Location = {
     name: 'Distortion World',
     map: distortionWorld,
+    mapAnchor: MapAnchor.Unaudited,
     encountersKey: 'distortion-world',
     battles: [
         {

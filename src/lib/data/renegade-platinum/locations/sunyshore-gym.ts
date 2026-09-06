@@ -3,6 +3,7 @@ import {
     sunyshoreGymRoom2,
     sunyshoreGymRoom3,
 } from '@/lib/data/renegade-platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SUNYSHORE_GYM: Location = {
@@ -11,6 +12,7 @@ const SUNYSHORE_GYM: Location = {
         {
             name: 'Room 1',
             map: sunyshoreGymRoom1,
+            mapAnchor: MapAnchor.Unaudited,
             battles: [
                 {
                     battleKey: 'school-kid-tiera',
@@ -22,6 +24,7 @@ const SUNYSHORE_GYM: Location = {
         {
             name: 'Room 2',
             map: sunyshoreGymRoom2,
+            mapAnchor: MapAnchor.Unaudited,
             battles: [
                 {
                     battleKey: 'school-kid-forrest',
@@ -43,6 +46,7 @@ const SUNYSHORE_GYM: Location = {
         {
             name: 'Room 3',
             map: sunyshoreGymRoom3,
+            mapAnchor: MapAnchor.Unaudited,
             battles: [
                 {
                     battleKey: 'guitarist-lonnie',

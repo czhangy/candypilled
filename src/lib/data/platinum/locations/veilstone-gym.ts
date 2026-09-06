@@ -1,9 +1,11 @@
 import { veilstoneGym } from '@/lib/data/platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VEILSTONE_GYM: Location = {
     name: 'Veilstone Gym',
     map: veilstoneGym,
+    mapAnchor: MapAnchor.Unaudited,
     battles: [
         {
             battleKey: 'black-belt-colby',

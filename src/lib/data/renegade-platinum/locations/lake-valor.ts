@@ -2,6 +2,7 @@ import {
     lakeValorPostGiratina,
     lakeValorPreGiratina,
 } from '@/lib/data/renegade-platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_VALOR: Location = {
@@ -10,6 +11,7 @@ const LAKE_VALOR: Location = {
         {
             name: 'Pre-Giratina',
             map: lakeValorPreGiratina,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'lake-valor',
             battles: [
                 {
@@ -32,6 +34,7 @@ const LAKE_VALOR: Location = {
         {
             name: 'Post-Giratina',
             map: lakeValorPostGiratina,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'lake-valor',
         },
     ],

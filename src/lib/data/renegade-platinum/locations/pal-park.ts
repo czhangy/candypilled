@@ -1,9 +1,11 @@
 import { palPark } from '@/lib/data/renegade-platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const PAL_PARK: Location = {
     name: 'Pal Park',
     map: palPark,
+    mapAnchor: MapAnchor.Unaudited,
     battles: [
         {
             battleKey: 'castle-valet-darach',

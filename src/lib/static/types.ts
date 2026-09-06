@@ -6,6 +6,7 @@ import {
     FieldCondition,
     GameVersionGroup,
     GrowthRate,
+    MapAnchor,
     Nature,
     PokemonStatus,
     TrainerAssetFolder,
@@ -387,6 +388,9 @@ export type Subarea = {
     name: string;
     encountersKey?: string;
     map: LocationMapImage;
+    // Where this subarea's map autoscrolls to on load, lower priority
+    // than a selected battle marker.
+    mapAnchor: MapAnchor;
     battles?: Battle[];
     // Usually one entry; two when the partner's identity is gender-split
     // (e.g. Dawn for a male run, Lucas for a female run).
@@ -403,8 +407,14 @@ export type Location = {
     // one entry; two when the partner's identity is gender-split.
     tagPartner?: TagPartner[];
 } & (
-    | { map: LocationMapImage; subareas?: never }
-    | { map?: never; subareas: Subarea[] }
+    | {
+          map: LocationMapImage;
+          // Where this location's map autoscrolls to on load, lower
+          // priority than a selected battle marker.
+          mapAnchor: MapAnchor;
+          subareas?: never;
+      }
+    | { map?: never; mapAnchor?: never; subareas: Subarea[] }
 );
 
 // The condition determining whether a split is finished, resolved against a

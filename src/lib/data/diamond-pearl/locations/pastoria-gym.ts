@@ -1,9 +1,11 @@
 import { pastoriaGym } from '@/lib/data/diamond-pearl/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const PASTORIA_GYM: Location = {
     name: 'Pastoria Gym',
     map: pastoriaGym,
+    mapAnchor: MapAnchor.Unaudited,
     battles: [
         {
             battleKey: 'tuber-m-jacky',

@@ -134,3 +134,21 @@ export enum TrainerAssetFolder {
     Platinum = 'platinum',
     RubySapphire = 'ruby-sapphire',
 }
+
+// Where a map autoscrolls to on load, lower priority than a selected
+// battle marker (which always wins once one exists). Unaudited behaves
+// identically to Center but marks a Location/Subarea whose real anchor
+// hasn't been chosen yet -- backfilled onto every pre-existing location
+// rather than guessed at per-location.
+export enum MapAnchor {
+    Center = 'center',
+    Top = 'top',
+    Bottom = 'bottom',
+    Left = 'left',
+    Right = 'right',
+    TopLeft = 'top-left',
+    TopRight = 'top-right',
+    BottomLeft = 'bottom-left',
+    BottomRight = 'bottom-right',
+    Unaudited = 'unaudited',
+}

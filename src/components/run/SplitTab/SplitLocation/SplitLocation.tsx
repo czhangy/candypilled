@@ -4,7 +4,7 @@ import { useState, useSyncExternalStore } from 'react';
 import { StaticImageData } from 'next/image';
 import LocationSelectModal from '@/components/run/LocationSelectModal/LocationSelectModal';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
-import { EncounterMethod, PokemonStatus } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor, PokemonStatus } from '@/lib/static/enums';
 import {
     Battle,
     CaughtPokemon,
@@ -65,6 +65,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
 
     type Section = {
         map?: StaticImageData;
+        mapAnchor?: MapAnchor;
         battles: Battle[];
         encounters?: Encounter[];
     };
@@ -330,6 +331,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         const subarea = location.subareas[selectedSubareaIndex];
         section = {
             map: resolveMap(subarea.map),
+            mapAnchor: subarea.mapAnchor,
             battles: BattleHelpers.filterBySplit(
                 BattleHelpers.filterByGame(
                     BattleHelpers.filterByGender(
@@ -348,6 +350,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     } else {
         section = {
             map: location.map && resolveMap(location.map),
+            mapAnchor: location.mapAnchor,
             battles: BattleHelpers.filterBySplit(
                 BattleHelpers.filterByGame(
                     BattleHelpers.filterByGender(
@@ -498,6 +501,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                     }
                                     isTagPartnerSelected={isTagPartnerSelected}
                                     map={section.map}
+                                    mapAnchor={
+                                        section.mapAnchor ?? MapAnchor.Center
+                                    }
                                     onBattleClick={(battle: Battle) => {
                                         setSelectedBattle(battle);
                                         setIsTagPartnerSelected(false);

@@ -3,6 +3,7 @@ import {
     oldChateauDiningRoom,
     oldChateauEntrance,
 } from '@/lib/data/renegade-platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const OLD_CHATEAU: Location = {
@@ -11,16 +12,19 @@ const OLD_CHATEAU: Location = {
         {
             name: 'Entrance',
             map: oldChateauEntrance,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'old-chateau-entrance-and-dining-room',
         },
         {
             name: 'Dining Room',
             map: oldChateauDiningRoom,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'old-chateau-entrance-and-dining-room',
         },
         {
             name: 'Bedrooms',
             map: oldChateauBedrooms,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'old-chateau-bedrooms',
         },
     ],

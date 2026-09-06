@@ -2,6 +2,7 @@ import {
     fuegoIronworksExterior,
     fuegoIronworksInterior,
 } from '@/lib/data/platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const FUEGO_IRONWORKS: Location = {
@@ -10,11 +11,13 @@ const FUEGO_IRONWORKS: Location = {
         {
             name: 'Exterior',
             map: fuegoIronworksExterior,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'fuego-ironworks',
         },
         {
             name: 'Interior',
             map: fuegoIronworksInterior,
+            mapAnchor: MapAnchor.Unaudited,
             battles: [
                 {
                     battleKey: 'worker-dillan',

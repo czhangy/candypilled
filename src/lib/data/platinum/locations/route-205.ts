@@ -1,4 +1,5 @@
 import { route205North, route205South } from '@/lib/data/platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_205: Location = {
@@ -7,6 +8,7 @@ const ROUTE_205: Location = {
         {
             name: 'South',
             map: route205South,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'sinnoh-route-205-south-towards-floaroma-town',
             battles: [
                 {
@@ -54,6 +56,7 @@ const ROUTE_205: Location = {
         {
             name: 'North',
             map: route205North,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'sinnoh-route-205-east-towards-eterna-city',
             battles: [
                 {

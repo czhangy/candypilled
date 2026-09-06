@@ -6,6 +6,7 @@ import {
     galacticHqPixieRoom,
     galacticHqWarehouse,
 } from '@/lib/data/renegade-platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const GALACTIC_HQ: Location = {
@@ -14,6 +15,7 @@ const GALACTIC_HQ: Location = {
         {
             name: 'Warehouse',
             map: galacticHqWarehouse,
+            mapAnchor: MapAnchor.Unaudited,
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-warehouse-1',
@@ -30,6 +32,7 @@ const GALACTIC_HQ: Location = {
         {
             name: '1F',
             map: galacticHq1f,
+            mapAnchor: MapAnchor.Unaudited,
             battles: [
                 {
                     battleKey: 'galactic-grunt-f-hq-1f',
@@ -46,6 +49,7 @@ const GALACTIC_HQ: Location = {
         {
             name: '2F',
             map: galacticHq2f,
+            mapAnchor: MapAnchor.Unaudited,
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-hq-2f-1',
@@ -72,6 +76,7 @@ const GALACTIC_HQ: Location = {
         {
             name: '3F',
             map: galacticHq3f,
+            mapAnchor: MapAnchor.Unaudited,
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-hq-3f-1',
@@ -98,6 +103,7 @@ const GALACTIC_HQ: Location = {
         {
             name: '4F',
             map: galacticHq4f,
+            mapAnchor: MapAnchor.Unaudited,
             battles: [
                 {
                     battleKey: 'galactic-boss-cyrus',
@@ -109,6 +115,7 @@ const GALACTIC_HQ: Location = {
         {
             name: 'Pixie Room',
             map: galacticHqPixieRoom,
+            mapAnchor: MapAnchor.Unaudited,
             battles: [
                 {
                     battleKey: 'commander-saturn-galactic-hq',

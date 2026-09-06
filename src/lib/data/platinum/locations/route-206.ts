@@ -1,9 +1,11 @@
 import { route206 } from '@/lib/data/platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_206: Location = {
     name: 'Route 206',
     map: route206,
+    mapAnchor: MapAnchor.Unaudited,
     encountersKey: 'sinnoh-route-206',
     battles: [
         {

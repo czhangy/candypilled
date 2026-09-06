@@ -2,6 +2,7 @@ import {
     lakeValorPostSpearPillar,
     lakeValorPreSpearPillar,
 } from '@/lib/data/diamond-pearl/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_VALOR: Location = {
@@ -10,6 +11,7 @@ const LAKE_VALOR: Location = {
         {
             name: 'Pre-Spear Pillar',
             map: lakeValorPreSpearPillar,
+            mapAnchor: MapAnchor.Unaudited,
             battles: [
                 {
                     battleKey: 'galactic-grunt-f-lake-valor',
@@ -31,6 +33,7 @@ const LAKE_VALOR: Location = {
         {
             name: 'Post-Spear Pillar',
             map: lakeValorPostSpearPillar,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'lake-valor-area',
         },
     ],

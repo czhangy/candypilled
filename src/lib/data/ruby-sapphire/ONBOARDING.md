@@ -165,15 +165,19 @@ Emerald-only.
   this wrong once already for `route-101` and had to redo it; watch
   for the same mistake on every other Hoenn route.
   Also scaffolded: `oldale-town.ts` (no encounters/battles),
-  `route-103.ts` (gender-variant map, `{ male: route103May, female:
-route103Brendan }`, encountersKey set, rival battle still pending
-  real x/y + trainer data), `route-102.ts` (encountersKey set, has
-  visible NPC sprites on its map not yet confirmed as trainers),
+  `route-103.ts` (split into West/East subareas, cut at the water's
+  left edge — x=416 of the original 1280px-wide capture, a real tile
+  boundary — each subarea keeping its own gender-variant map, `{ male:
+route103<Half>May, female: route103<Half>Brendan }`, and sharing one
+  encountersKey since PokeAPI has no per-half data; rival battle still
+  pending real x/y + trainer data), `route-102.ts` (encountersKey set,
+  has visible NPC sprites on its map not yet confirmed as trainers),
   `petalburg-city.ts` (encountersKey set), `route-104.ts` (two
   subareas, North and South, sharing one encountersKey since PokeAPI
-  has no real per-half split for R/S — only for ORAS; subarea order
-  is North-then-South, matching its second appearance in the split),
-  and `petalburg-woods.ts` (version-variant map via the new
+  has no real per-half split for R/S — only for ORAS; default order is
+  South-then-North, with the split's second appearance reordered via
+  `LocationHelpers.withSubareaOrder`), and `petalburg-woods.ts`
+  (version-variant map via the new
   mechanism above, `encountersKey: 'petalburg-woods'`, Magma/Aqua
   grunt battle markers **not yet added** — needs real x/y placement
   and decomp-derived trainer data via `gen3-trainer-data-extraction`
@@ -189,16 +193,24 @@ route103Brendan }`, encountersKey set, rival battle still pending
   Rustboro in the real game (normally reached much later, near
   Mauville/Verdanturf) — explicitly confirmed with the user that
   they still belong in the Roxanne split anyway, not misplaced.
+  Real `mapAnchor` values applied per the user's own review (replacing
+  the `Unaudited` backfill): Center for Littleroot, Oldale, Petalburg
+  City, Route 101, Route 102, Route 103's West/East, Route 115,
+  Rusturf Tunnel, Rustboro Gym; Bottom for Petalburg Woods, Rustboro
+  City, and both Route 104 subareas; Left for Route 116.
   Every other Hoenn location still needs its own map before it can
   be scaffolded.
 - [~] `ruby-sapphire/splits/*.ts` — started. `splits/roxanne.ts` now has,
   in order: Littleroot Town, Route 101, Oldale Town, Route 103,
   Route 102, Petalburg City, Route 104, Petalburg Woods, Route 104
   again, Rustboro City, Route 115, Route 116, Rusturf Tunnel,
-  Rustboro Gym (Route 104 is the same shared `Location` object both
-  times it appears — reordering its subareas affects both
-  appearances, which was a deliberate, confirmed tradeoff, not an
-  oversight). Real derived `saveCondition` (`{ type: 'badge', bit:
+  Rustboro Gym (Route 104's second appearance uses the app's existing
+  `LocationHelpers.withSubareaOrder(ROUTE_104, ['North', 'South'])` —
+  same shared `Location`/`Subarea` objects, independently reordered per
+  occurrence, exactly like every other revisited-subarea location
+  already does across Diamond/Pearl/Platinum/Renegade Platinum. First
+  appearance keeps the default South-then-North order). Real derived
+  `saveCondition` (`{ type: 'badge', bit:
 2055 }`, i.e. `FLAG_BADGE01_GET`). This is everything up through
   Roxanne's gym now — what's still missing is battle data (Roxanne's
   own fight, the two gym trainers, the Petalburg Woods and Rusturf
@@ -211,20 +223,20 @@ route103Brendan }`, encountersKey set, rival battle still pending
       separate bitmask, base `SYSTEM_FLAGS = 0x800`:
 
       | Split (gym) | Badge | Flag |
-          |---|---|---|
-          | Rustboro | Stone | `0x807` |
-          | Dewford | Knuckle | `0x808` |
-          | Mauville | Dynamo | `0x809` |
-          | Lavaridge | Heat | `0x80A` |
-          | Petalburg | Balance | `0x80B` |
-          | Fortree | Feather | `0x80C` |
-          | Mossdeep | Mind | `0x80D` |
-          | Sootopolis | Rain | `0x80E` |
+              |---|---|---|
+              | Rustboro | Stone | `0x807` |
+              | Dewford | Knuckle | `0x808` |
+              | Mauville | Dynamo | `0x809` |
+              | Lavaridge | Heat | `0x80A` |
+              | Petalburg | Balance | `0x80B` |
+              | Fortree | Feather | `0x80C` |
+              | Mossdeep | Mind | `0x80D` |
+              | Sootopolis | Rain | `0x80E` |
 
-          Game-clear flag: `FLAG_SYS_GAME_CLEAR = 0x804`. No Gen 3
-          `SplitParser` exists yet in `src/lib/parsers/` — these flag numbers
-          are ready, but the parser to evaluate them against a decrypted save
-          still needs writing when splits are actually authored.
+              Game-clear flag: `FLAG_SYS_GAME_CLEAR = 0x804`. No Gen 3
+              `SplitParser` exists yet in `src/lib/parsers/` — these flag numbers
+              are ready, but the parser to evaluate them against a decrypted save
+              still needs writing when splits are actually authored.
 
 - [x] Trainer battle data extraction mechanism — documented and verified
       as a new skill, `gen3-trainer-data-extraction` (mirrors

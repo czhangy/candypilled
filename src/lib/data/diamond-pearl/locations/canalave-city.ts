@@ -1,9 +1,11 @@
 import { canalaveCity } from '@/lib/data/diamond-pearl/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const CANALAVE_CITY: Location = {
     name: 'Canalave City',
     map: canalaveCity,
+    mapAnchor: MapAnchor.Unaudited,
     encountersKey: 'canalave-city',
     battles: [
         {

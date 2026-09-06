@@ -1,9 +1,11 @@
 import { trainersSchool } from '@/lib/data/renegade-platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const TRAINERS_SCHOOL: Location = {
     name: "Trainers' School",
     map: trainersSchool,
+    mapAnchor: MapAnchor.Unaudited,
     encountersKey: 'trainers-school',
     battles: [
         {

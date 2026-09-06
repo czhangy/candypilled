@@ -5,6 +5,7 @@ import {
     solaceonRuinsB3f,
     solaceonRuinsB4f,
 } from '@/lib/data/platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SOLACEON_RUINS: Location = {
@@ -13,16 +14,19 @@ const SOLACEON_RUINS: Location = {
         {
             name: '1F',
             map: solaceonRuins1f,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'solaceon-ruins',
         },
         {
             name: 'B1F',
             map: solaceonRuinsB1f,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'solaceon-ruins',
         },
         {
             name: 'B2F',
             map: solaceonRuinsB2f,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'solaceon-ruins',
             battles: [
                 {
@@ -35,11 +39,13 @@ const SOLACEON_RUINS: Location = {
         {
             name: 'B3F',
             map: solaceonRuinsB3f,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'solaceon-ruins',
         },
         {
             name: 'B4F',
             map: solaceonRuinsB4f,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'solaceon-ruins',
         },
     ],

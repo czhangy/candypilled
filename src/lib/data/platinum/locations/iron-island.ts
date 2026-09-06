@@ -8,6 +8,7 @@ import {
     ironIslandExterior,
 } from '@/lib/data/platinum/maps';
 import { GEN_4_TRUE_DOUBLE_HEIGHT } from '@/lib/static/constants';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const IRON_ISLAND: Location = {
@@ -16,16 +17,19 @@ const IRON_ISLAND: Location = {
         {
             name: 'Exterior',
             map: ironIslandExterior,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'iron-island-area',
         },
         {
             name: '1F',
             map: ironIsland1f,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'iron-island-1f',
         },
         {
             name: 'B1F West',
             map: ironIslandB1fWest,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'iron-island-b1f-left',
             battles: [
                 {
@@ -38,6 +42,7 @@ const IRON_ISLAND: Location = {
         {
             name: 'B1F East',
             map: ironIslandB1fEast,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'iron-island-b1f-right',
             battles: [
                 {
@@ -50,6 +55,7 @@ const IRON_ISLAND: Location = {
         {
             name: 'B2F East',
             map: ironIslandB2fEast,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'iron-island-b2f-right',
             battles: [
                 {
@@ -67,6 +73,7 @@ const IRON_ISLAND: Location = {
         {
             name: 'B2F West',
             map: ironIslandB2fWest,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'iron-island-b2f-left',
             tagPartner: [{ battleKey: 'pkmn-trainer-riley-tag' }],
             battles: [
@@ -121,6 +128,7 @@ const IRON_ISLAND: Location = {
         {
             name: 'B3F',
             map: ironIslandB3f,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'iron-island-b3f',
         },
     ],

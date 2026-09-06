@@ -4,6 +4,7 @@ import {
     victoryRoadB1f,
 } from '@/lib/data/platinum/maps';
 import { GEN_4_TRUE_DOUBLE_HEIGHT } from '@/lib/static/constants';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VICTORY_ROAD: Location = {
@@ -12,6 +13,7 @@ const VICTORY_ROAD: Location = {
         {
             name: '1F',
             map: victoryRoad1f,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'sinnoh-victory-road-1f',
             battles: [
                 {
@@ -49,6 +51,7 @@ const VICTORY_ROAD: Location = {
         {
             name: '2F',
             map: victoryRoad2f,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'sinnoh-victory-road-2f',
             battles: [
                 {
@@ -77,6 +80,7 @@ const VICTORY_ROAD: Location = {
         {
             name: 'B1F',
             map: victoryRoadB1f,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'sinnoh-victory-road-b1f',
             battles: [
                 {

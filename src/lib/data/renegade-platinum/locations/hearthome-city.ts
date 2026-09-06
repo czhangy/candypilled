@@ -3,6 +3,7 @@ import {
     hearthomeCityEastGate,
     hearthomeCityWestGate,
 } from '@/lib/data/renegade-platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const HEARTHOME_CITY: Location = {
@@ -11,6 +12,7 @@ const HEARTHOME_CITY: Location = {
         {
             name: 'West Gate',
             map: hearthomeCityWestGate,
+            mapAnchor: MapAnchor.Unaudited,
             battles: [
                 {
                     battleKey: 'elite-four-aaron-route-208',
@@ -22,10 +24,12 @@ const HEARTHOME_CITY: Location = {
         {
             name: 'City',
             map: hearthomeCityCity,
+            mapAnchor: MapAnchor.Unaudited,
         },
         {
             name: 'East Gate',
             map: hearthomeCityEastGate,
+            mapAnchor: MapAnchor.Unaudited,
             battles: [
                 {
                     battleKey: 'pkmn-trainer-barry-hearthome-city-east-gate',

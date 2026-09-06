@@ -12,6 +12,7 @@ import RUSTBORO_CITY from '@/lib/data/ruby-sapphire/locations/rustboro-city';
 import RUSTBORO_GYM from '@/lib/data/ruby-sapphire/locations/rustboro-gym';
 import RUSTURF_TUNNEL from '@/lib/data/ruby-sapphire/locations/rusturf-tunnel';
 import { Split } from '@/lib/static/types';
+import LocationHelpers from '@/lib/utils/LocationHelpers';
 
 const ROXANNE: Split = {
     name: 'Roxanne',
@@ -24,7 +25,7 @@ const ROXANNE: Split = {
         PETALBURG_CITY,
         ROUTE_104,
         PETALBURG_WOODS,
-        ROUTE_104,
+        LocationHelpers.withSubareaOrder(ROUTE_104, ['North', 'South']),
         RUSTBORO_CITY,
         ROUTE_115,
         ROUTE_116,

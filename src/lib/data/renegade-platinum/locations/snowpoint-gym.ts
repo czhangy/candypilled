@@ -1,9 +1,11 @@
 import { snowpointGym } from '@/lib/data/renegade-platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SNOWPOINT_GYM: Location = {
     name: 'Snowpoint Gym',
     map: snowpointGym,
+    mapAnchor: MapAnchor.Unaudited,
     battles: [
         {
             battleKey: 'ace-trainer-snow-f-brenna',

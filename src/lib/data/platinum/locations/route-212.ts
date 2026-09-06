@@ -1,5 +1,5 @@
 import { route212North, route212South } from '@/lib/data/platinum/maps';
-import { FieldCondition } from '@/lib/static/enums';
+import { FieldCondition, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_212: Location = {
@@ -8,6 +8,7 @@ const ROUTE_212: Location = {
         {
             name: 'South',
             map: route212South,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'sinnoh-route-212-east-towards-pastoria-city',
             battles: [
                 {
@@ -87,6 +88,7 @@ const ROUTE_212: Location = {
         {
             name: 'North',
             map: route212North,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'sinnoh-route-212-north-towards-hearthome-city',
             battles: [
                 {
