@@ -1,6 +1,7 @@
 import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
 import { BATTLES } from '@/lib/data/ruby-sapphire/battles';
 import { MET_LOCATIONS } from '@/lib/data/ruby-sapphire/met-locations';
+import BRAWLY from '@/lib/data/ruby-sapphire/splits/brawly';
 import ROXANNE from '@/lib/data/ruby-sapphire/splits/roxanne';
 import {
     BadgeAssetFolder,
@@ -36,7 +37,7 @@ const SAPPHIRE: Game = {
         "Time to go 'clear' your head.",
         'Back to Littleroot.',
     ],
-    splits: [ROXANNE],
+    splits: [ROXANNE, BRAWLY],
 };
 
 export default SAPPHIRE;

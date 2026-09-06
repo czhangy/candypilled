@@ -140,6 +140,36 @@ no `encountersKey` needed), but it still needs its own `Location` entry
 in `locations/*.ts` once that stage starts — don't skip it as
 Emerald-only.
 
+## Brawly split scope (sequence-break reachability, confirmed with user)
+
+Once Devon's letter is delivered to Steven in Granite Cave, Mr. Briney's
+boat unlocks **Slateport City** as a third ferry destination (alongside
+Petalburg City and Dewford Town) _before_ Brawly is ever fought. From
+Slateport, Route 110 is walkable on foot straight to Mauville City with
+no HM/badge gate (only the Cycling Road shortcut and New Mauville need a
+Bike/Surf, and are side content, not the through-path). This is a known
+Gen 3 sequence break: Mauville, and even Wattson himself, are reachable
+before Brawly.
+
+Confirmed scope with the user: include everything reachable via this
+sequence break **except Wattson's own gym battle** (the Mauville Gym
+location/battle stays deferred to Wattson's split). So the Brawly split's
+final location list, once mapped, is:
+
+Rustboro City, Route 116, Rusturf Tunnel, Route 104, Petalburg Woods,
+Dewford Town, Route 107, Route 106, Granite Cave (all 4 subareas) —
+already scaffolded — **plus**, still needing real Porymap maps:
+Slateport City, Route 110, Route 109 (its walkable beach portion),
+Mauville City (city itself only, not its Gym), Route 118 (walkable
+portion west of the inlet — Surf blocks the rest), Route 111 (walkable
+portion south of the Rock Smash blockade), Route 117 (fully walkable,
+no HM gate), Verdanturf Town (reached via Route 117, not via Rusturf
+Tunnel's far side which needs Rock Smash/Dynamo Badge and stays
+inaccessible this way round).
+
+Route 107/106 ordering was explicitly confirmed to stay as originally
+scaffolded (Route 107 before Route 106) — do not reorder these.
+
 ## Status
 
 - [x] `GameVersionGroup.RubySapphire`, `BadgeAssetFolder.RubySapphire`,
@@ -223,20 +253,20 @@ route103<Half>May, female: route103<Half>Brendan }`, and sharing one
       separate bitmask, base `SYSTEM_FLAGS = 0x800`:
 
       | Split (gym) | Badge | Flag |
-              |---|---|---|
-              | Rustboro | Stone | `0x807` |
-              | Dewford | Knuckle | `0x808` |
-              | Mauville | Dynamo | `0x809` |
-              | Lavaridge | Heat | `0x80A` |
-              | Petalburg | Balance | `0x80B` |
-              | Fortree | Feather | `0x80C` |
-              | Mossdeep | Mind | `0x80D` |
-              | Sootopolis | Rain | `0x80E` |
+                  |---|---|---|
+                  | Rustboro | Stone | `0x807` |
+                  | Dewford | Knuckle | `0x808` |
+                  | Mauville | Dynamo | `0x809` |
+                  | Lavaridge | Heat | `0x80A` |
+                  | Petalburg | Balance | `0x80B` |
+                  | Fortree | Feather | `0x80C` |
+                  | Mossdeep | Mind | `0x80D` |
+                  | Sootopolis | Rain | `0x80E` |
 
-              Game-clear flag: `FLAG_SYS_GAME_CLEAR = 0x804`. No Gen 3
-              `SplitParser` exists yet in `src/lib/parsers/` — these flag numbers
-              are ready, but the parser to evaluate them against a decrypted save
-              still needs writing when splits are actually authored.
+                  Game-clear flag: `FLAG_SYS_GAME_CLEAR = 0x804`. No Gen 3
+                  `SplitParser` exists yet in `src/lib/parsers/` — these flag numbers
+                  are ready, but the parser to evaluate them against a decrypted save
+                  still needs writing when splits are actually authored.
 
 - [x] Trainer battle data extraction mechanism — documented and verified
       as a new skill, `gen3-trainer-data-extraction` (mirrors
