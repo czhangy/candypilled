@@ -11,6 +11,7 @@ import {
     Encounter,
     Game,
     Location,
+    LocationMapImage,
     Run,
 } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
@@ -82,10 +83,13 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const resolveMap = (
-        map:
-            StaticImageData | { male: StaticImageData; female: StaticImageData }
-    ): StaticImageData => ('male' in map ? map[run.gender] : map);
+    const resolveMap = (map: LocationMapImage): StaticImageData => {
+        if ('male' in map) return map[run.gender];
+        if (game.name in map) {
+            return (map as Record<string, StaticImageData>)[game.name];
+        }
+        return map as StaticImageData;
+    };
 
     const getDefaultSelectedBattle = (
         subareaIndex: number
@@ -95,7 +99,10 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             ? (subarea?.battles ?? [])
             : (location.battles ?? []);
         const battles = BattleHelpers.filterBySplit(
-            BattleHelpers.filterByGender(rawBattles, run.gender),
+            BattleHelpers.filterByGame(
+                BattleHelpers.filterByGender(rawBattles, run.gender),
+                game
+            ),
             splitName,
             game
         );
@@ -115,9 +122,12 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         const battlesBySubarea = location.subareas
             ? location.subareas.map((subarea, subareaIndex) => ({
                   battles: BattleHelpers.filterBySplit(
-                      BattleHelpers.filterByGender(
-                          subarea.battles ?? [],
-                          run.gender
+                      BattleHelpers.filterByGame(
+                          BattleHelpers.filterByGender(
+                              subarea.battles ?? [],
+                              run.gender
+                          ),
+                          game
                       ),
                       splitName,
                       game
@@ -127,9 +137,12 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             : [
                   {
                       battles: BattleHelpers.filterBySplit(
-                          BattleHelpers.filterByGender(
-                              location.battles ?? [],
-                              run.gender
+                          BattleHelpers.filterByGame(
+                              BattleHelpers.filterByGender(
+                                  location.battles ?? [],
+                                  run.gender
+                              ),
+                              game
                           ),
                           splitName,
                           game
@@ -318,7 +331,13 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         section = {
             map: resolveMap(subarea.map),
             battles: BattleHelpers.filterBySplit(
-                BattleHelpers.filterByGender(subarea.battles ?? [], run.gender),
+                BattleHelpers.filterByGame(
+                    BattleHelpers.filterByGender(
+                        subarea.battles ?? [],
+                        run.gender
+                    ),
+                    game
+                ),
                 splitName,
                 game
             ),
@@ -330,9 +349,12 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         section = {
             map: location.map && resolveMap(location.map),
             battles: BattleHelpers.filterBySplit(
-                BattleHelpers.filterByGender(
-                    location.battles ?? [],
-                    run.gender
+                BattleHelpers.filterByGame(
+                    BattleHelpers.filterByGender(
+                        location.battles ?? [],
+                        run.gender
+                    ),
+                    game
                 ),
                 splitName,
                 game

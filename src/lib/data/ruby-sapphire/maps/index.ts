@@ -1,1 +1,17 @@
-export {};
+export { default as littlerootTown } from './littleroot-town.png';
+export { default as oldaleTown } from './oldale-town.png';
+export { default as petalburgCity } from './petalburg-city.png';
+export { default as petalburgWoodsRuby } from './petalburg-woods-ruby.png';
+export { default as petalburgWoodsSapphire } from './petalburg-woods-sapphire.png';
+export { default as route101 } from './route-101.png';
+export { default as route102 } from './route-102.png';
+export { default as route103Brendan } from './route-103-brendan.png';
+export { default as route103May } from './route-103-may.png';
+export { default as route104North } from './route-104-north.png';
+export { default as route104South } from './route-104-south.png';
+export { default as route115 } from './route-115.png';
+export { default as route116 } from './route-116.png';
+export { default as rustboroCity } from './rustboro-city.png';
+export { default as rustboroGym } from './rustboro-gym.png';
+export { default as rusturfTunnelRuby } from './rusturf-tunnel-ruby.png';
+export { default as rusturfTunnelSapphire } from './rusturf-tunnel-sapphire.png';

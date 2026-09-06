@@ -123,7 +123,8 @@ export enum GameVersionGroup {
 // The public/badges/<folder>/ a game's gym-badge icons are served from.
 export enum BadgeAssetFolder {
     Sinnoh = 'sinnoh',
-    Hoenn = 'hoenn',
+    RubySapphire = 'ruby-sapphire',
+    Emerald = 'emerald',
 }
 
 // The public/trainers/<folder>/ a game's trainer battle sprites are served

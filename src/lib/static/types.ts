@@ -259,6 +259,12 @@ export type Battle = {
     // BattleTeamCondition is for — a shared trainer with a divergent
     // roster — not a wholesale different trainer).
     gender?: 'male' | 'female';
+    // Restricts this marker to the matching Game.name — e.g. a location
+    // where the trainer fought is entirely different by game version
+    // (Game.name, not Game.version's shared version-group) gets two Battle
+    // entries here, each pointing at its own independent Game.battles
+    // entry, mirroring how `gender` splits a wholesale different trainer.
+    game?: string;
     split?: string;
     x: number;
     y: number;
@@ -367,13 +373,20 @@ export type EncounterLocation = {
     encounter: Encounter;
 };
 
+// A single map; two maps to pick between by the run's gender (e.g. a
+// location whose layout differs by which protagonist sprite passes
+// through it); or a map keyed by Game.name, for content that differs by
+// which specific game version is being played (e.g. a location where a
+// version-exclusive team's member appears) rather than by run gender.
+export type LocationMapImage =
+    | StaticImageData
+    | { male: StaticImageData; female: StaticImageData }
+    | Record<string, StaticImageData>;
+
 export type Subarea = {
     name: string;
     encountersKey?: string;
-    // A single map, or two maps to pick between by the run's gender — e.g.
-    // a subarea whose layout differs by which protagonist sprite passes
-    // through it.
-    map: StaticImageData | { male: StaticImageData; female: StaticImageData };
+    map: LocationMapImage;
     battles?: Battle[];
     // Usually one entry; two when the partner's identity is gender-split
     // (e.g. Dawn for a male run, Lucas for a female run).
@@ -390,15 +403,7 @@ export type Location = {
     // one entry; two when the partner's identity is gender-split.
     tagPartner?: TagPartner[];
 } & (
-    | {
-          // A single map, or two maps to pick between by the run's gender —
-          // e.g. a location whose layout differs by which protagonist
-          // sprite passes through it.
-          map:
-              | StaticImageData
-              | { male: StaticImageData; female: StaticImageData };
-          subareas?: never;
-      }
+    | { map: LocationMapImage; subareas?: never }
     | { map?: never; subareas: Subarea[] }
 );
 

@@ -93,7 +93,10 @@ export default class BattleHelpers {
             : (location.battles ?? []);
 
         return BattleHelpers.filterBySplit(
-            BattleHelpers.filterByGender(battles, gender),
+            BattleHelpers.filterByGame(
+                BattleHelpers.filterByGender(battles, gender),
+                game
+            ),
             splitName,
             game
         );
@@ -135,6 +138,14 @@ export default class BattleHelpers {
         gender: 'male' | 'female' | undefined
     ): T[] {
         return items.filter((item) => !item.gender || item.gender === gender);
+    }
+
+    /** items restricted to game: entries with no `game` always pass, entries with one only pass for a matching game.name. Mirrors filterByGender, for content that differs by game version rather than run gender. */
+    static filterByGame<T extends { game?: string }>(
+        items: T[],
+        game: Game
+    ): T[] {
+        return items.filter((item) => !item.game || item.game === game.name);
     }
 
     /** items restricted to splitName: entries whose BattleData carries no `split` always pass, entries with one only pass once splitName's split is reached — i.e. splitName is that split or a later one in game order. Shared by Battle[] and TagPartner[], both of which carry a `battleKey` into Game.battles. */
