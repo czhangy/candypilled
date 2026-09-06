@@ -47,6 +47,11 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
                     move.slug,
                     generation
                 );
+                const category = MoveHelpers.getMoveCategory(
+                    dataSource,
+                    move.slug,
+                    generation
+                );
                 const name = moveData?.name ?? move.slug;
 
                 const content = (
@@ -60,7 +65,7 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
                             {MoveHelpers.getLearnsetMethodLabel(move)}
                         </span>
                         <span className={styles.name}>{name}</span>
-                        {moveData && values && (
+                        {moveData && values && category && (
                             <div className={styles.details}>
                                 <TypeBadge
                                     height={BADGE_HEIGHT}
@@ -68,7 +73,7 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
                                     width={BADGE_WIDTH}
                                 />
                                 <CategoryBadge
-                                    category={moveData.category}
+                                    category={category}
                                     height={BADGE_HEIGHT}
                                     width={BADGE_WIDTH}
                                 />

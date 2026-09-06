@@ -231,12 +231,17 @@ export default class DamageCalcHelpers {
             generation
         );
         const type = MoveHelpers.getMoveType(dataSource, slug, generation, ivs);
-        if (!moveData || !values || !type) return undefined;
+        const category = MoveHelpers.getMoveCategory(
+            dataSource,
+            slug,
+            generation
+        );
+        if (!moveData || !values || !type || !category) return undefined;
 
         return {
             basePower: values.power ?? 0,
             category: DamageCalcHelpers.capitalize(
-                moveData.category
+                category
             ) as CalcMoveData['category'],
             priority: moveData.priority,
             type: DamageCalcHelpers.capitalize(type) as CalcMoveData['type'],

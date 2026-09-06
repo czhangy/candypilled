@@ -2,7 +2,14 @@ import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
 import { BATTLES } from '@/lib/data/ruby-sapphire/battles';
 import { MET_LOCATIONS } from '@/lib/data/ruby-sapphire/met-locations';
 import BRAWLY from '@/lib/data/ruby-sapphire/splits/brawly';
+import FLANNERY from '@/lib/data/ruby-sapphire/splits/flannery';
+import NORMAN from '@/lib/data/ruby-sapphire/splits/norman';
 import ROXANNE from '@/lib/data/ruby-sapphire/splits/roxanne';
+import STEVEN from '@/lib/data/ruby-sapphire/splits/steven';
+import TATE_AND_LIZA from '@/lib/data/ruby-sapphire/splits/tate-and-liza';
+import WALLACE from '@/lib/data/ruby-sapphire/splits/wallace';
+import WATTSON from '@/lib/data/ruby-sapphire/splits/wattson';
+import WINONA from '@/lib/data/ruby-sapphire/splits/winona';
 import {
     BadgeAssetFolder,
     GameVersionGroup,
@@ -30,14 +37,18 @@ const SAPPHIRE: Game = {
     // Index 66 is version-dependent ("Magma Hideout" in Ruby, "Aqua
     // Hideout" in Sapphire) -- see ONBOARDING.md.
     metLocationById: { ...MET_LOCATIONS, 66: 'Aqua Hideout' },
-    wipeMessages: [
-        'Birch needed that bag more than you needed that Pokémon.',
-        "Wally caught his Ralts. What's your excuse?",
-        'Rock Tomb was a warning shot.',
-        "Time to go 'clear' your head.",
-        'Back to Littleroot.',
+    wipeMessages: ['Truck.'],
+    splits: [
+        ROXANNE,
+        BRAWLY,
+        WATTSON,
+        FLANNERY,
+        NORMAN,
+        WINONA,
+        TATE_AND_LIZA,
+        WALLACE,
+        STEVEN,
     ],
-    splits: [ROXANNE, BRAWLY],
 };
 
 export default SAPPHIRE;

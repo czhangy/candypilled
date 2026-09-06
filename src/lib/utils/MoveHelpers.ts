@@ -100,6 +100,37 @@ export default class MoveHelpers {
     }
 
     /**
+     * The category slug ('physical' | 'special' | 'status') `slug` should
+     * render as in `generation`. Before Generation IV, category wasn't
+     * per-move -- every damage-dealing move's category was determined by
+     * its type, so this resolves that classic split instead of trusting
+     * `MoveData.category`, which only ever holds the modern, post-split
+     * value.
+     */
+    static getMoveCategory(
+        dataSource: GameDataSource,
+        slug: string,
+        generation: number
+    ): string | undefined {
+        const moveData = MoveHelpers.getMoveData(dataSource, slug);
+        if (!moveData) return undefined;
+        if (generation >= 4 || moveData.category === 'status') {
+            return moveData.category;
+        }
+
+        const values = MoveHelpers.getMoveForGeneration(
+            dataSource,
+            slug,
+            generation
+        );
+        if (!values) return undefined;
+
+        return MoveHelpers.PRE_SPLIT_SPECIAL_TYPES.includes(values.type)
+            ? 'special'
+            : 'physical';
+    }
+
+    /**
      * How `slug` differs from vanilla in `dataSource` as of `generation`,
      * or undefined if this game doesn't override moves, this move isn't
      * one of the overridden ones, vanilla didn't introduce it until after
@@ -221,6 +252,21 @@ export default class MoveHelpers {
         machine: 'TM',
         tutor: 'Tutor',
     };
+
+    // The types that were Special (all others Physical) under the
+    // pre-Generation IV category-by-type split. Matches @smogon/calc's own
+    // SPECIAL list so vanilla gen 1-3 damage calc results stay consistent
+    // with this display-side resolution.
+    private static readonly PRE_SPLIT_SPECIAL_TYPES = [
+        'fire',
+        'water',
+        'grass',
+        'electric',
+        'ice',
+        'psychic',
+        'dark',
+        'dragon',
+    ];
 
     // Hidden Power's 16 possible types, in the fixed order the formula
     // indexes into.

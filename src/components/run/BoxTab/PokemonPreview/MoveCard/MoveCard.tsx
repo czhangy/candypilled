@@ -48,12 +48,15 @@ const MoveCard: React.FC<MoveCardProps> = ({
         ? MoveHelpers.getMoveType(dataSource, moveSlug, generation, ivs)
         : undefined;
     const moveColor = moveType ? TypeHelpers.getTypeColor(moveType) : undefined;
+    const category = moveSlug
+        ? MoveHelpers.getMoveCategory(dataSource, moveSlug, generation)
+        : undefined;
 
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
-    if (!moveData || !values) {
+    if (!moveData || !values || !category) {
         return (
             <div className={styles['move-card']}>
                 <span className={styles.placeholder}>Empty</span>
@@ -74,7 +77,7 @@ const MoveCard: React.FC<MoveCardProps> = ({
                     <span className={styles['stat-label']}>CAT</span>
                     <span className={styles['stat-value']}>
                         <CategoryBadge
-                            category={moveData.category}
+                            category={category}
                             height={BADGE_HEIGHT}
                             width={BADGE_WIDTH}
                         />

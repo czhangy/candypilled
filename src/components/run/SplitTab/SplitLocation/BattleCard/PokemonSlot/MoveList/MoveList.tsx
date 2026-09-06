@@ -75,8 +75,15 @@ const MoveList: React.FC<MoveListProps> = ({
                           ivs
                       )
                     : undefined;
+                const moveCategory = moveSlug
+                    ? MoveHelpers.getMoveCategory(
+                          dataSource,
+                          moveSlug,
+                          generation
+                      )
+                    : undefined;
 
-                if (!moveSlug || !moveData || !moveValues) {
+                if (!moveSlug || !moveData || !moveValues || !moveCategory) {
                     return <li key={index}>-</li>;
                 }
                 const moveName = moveData.name;
@@ -106,7 +113,7 @@ const MoveList: React.FC<MoveListProps> = ({
                         label: 'Cat',
                         value: (
                             <CategoryBadge
-                                category={moveData.category}
+                                category={moveCategory}
                                 height={BADGE_HEIGHT}
                                 width={BADGE_WIDTH}
                             />
