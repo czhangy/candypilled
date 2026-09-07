@@ -3219,7 +3219,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             method: EncounterMethod.DevonScope,
             minLevel: 30,
             maxLevel: 30,
-            chance: 200,
+            chance: 100,
         },
         {
             species: 'tropius',
@@ -3342,7 +3342,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             method: EncounterMethod.DevonScope,
             minLevel: 30,
             maxLevel: 30,
-            chance: 600,
+            chance: 100,
         },
         {
             species: 'absol',
