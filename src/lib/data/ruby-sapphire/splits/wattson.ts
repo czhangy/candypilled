@@ -9,6 +9,7 @@ import ROUTE_117 from '@/lib/data/ruby-sapphire/locations/route-117';
 import ROUTE_118 from '@/lib/data/ruby-sapphire/locations/route-118';
 import RUSTURF_TUNNEL from '@/lib/data/ruby-sapphire/locations/rusturf-tunnel';
 import SLATEPORT_CITY from '@/lib/data/ruby-sapphire/locations/slateport-city';
+import TRICK_HOUSE from '@/lib/data/ruby-sapphire/locations/trick-house';
 import VERDANTURF_TOWN from '@/lib/data/ruby-sapphire/locations/verdanturf-town';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
@@ -20,6 +21,7 @@ const WATTSON: Split = {
         ROUTE_109,
         SLATEPORT_CITY,
         ROUTE_110,
+        TRICK_HOUSE,
         LocationHelpers.withSubareaOrder(ROUTE_103, ['East', 'West']),
         MAUVILLE_CITY,
         ROUTE_118,

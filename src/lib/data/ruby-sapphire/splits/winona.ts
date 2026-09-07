@@ -5,6 +5,7 @@ import FORTREE_GYM from '@/lib/data/ruby-sapphire/locations/fortree-gym';
 import LILYCOVE_CITY from '@/lib/data/ruby-sapphire/locations/lilycove-city';
 import MOSSDEEP_CITY from '@/lib/data/ruby-sapphire/locations/mossdeep-city';
 import MT_PYRE from '@/lib/data/ruby-sapphire/locations/mt-pyre';
+import NEW_MAUVILLE from '@/lib/data/ruby-sapphire/locations/new-mauville';
 import PACIFIDLOG_TOWN from '@/lib/data/ruby-sapphire/locations/pacifidlog-town';
 import PETALBURG_CITY from '@/lib/data/ruby-sapphire/locations/petalburg-city';
 import ROUTE_104 from '@/lib/data/ruby-sapphire/locations/route-104';
@@ -34,6 +35,7 @@ import ROUTE_134 from '@/lib/data/ruby-sapphire/locations/route-134';
 import SAFARI_ZONE from '@/lib/data/ruby-sapphire/locations/safari-zone';
 import SHOAL_CAVE from '@/lib/data/ruby-sapphire/locations/shoal-cave';
 import SLATEPORT_CITY from '@/lib/data/ruby-sapphire/locations/slateport-city';
+import TRICK_HOUSE from '@/lib/data/ruby-sapphire/locations/trick-house';
 import { Location, Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
@@ -58,6 +60,8 @@ const getWinona = (hideout: Location): Split => ({
             'Beach',
             'Seashore House',
         ]),
+        TRICK_HOUSE,
+        NEW_MAUVILLE,
         ROUTE_118,
         ROUTE_123,
         ROUTE_119,

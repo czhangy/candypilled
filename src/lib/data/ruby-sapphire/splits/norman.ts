@@ -3,6 +3,7 @@ import PETALBURG_CITY from '@/lib/data/ruby-sapphire/locations/petalburg-city';
 import PETALBURG_GYM from '@/lib/data/ruby-sapphire/locations/petalburg-gym';
 import ROUTE_111 from '@/lib/data/ruby-sapphire/locations/route-111';
 import RUSTBORO_CITY from '@/lib/data/ruby-sapphire/locations/rustboro-city';
+import TRICK_HOUSE from '@/lib/data/ruby-sapphire/locations/trick-house';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
@@ -15,6 +16,7 @@ const NORMAN: Split = {
             'South',
             'North',
         ]),
+        TRICK_HOUSE,
         RUSTBORO_CITY,
         PETALBURG_CITY,
         PETALBURG_GYM,

@@ -11,6 +11,7 @@ import ROUTE_124 from '@/lib/data/ruby-sapphire/locations/route-124';
 import ROUTE_125 from '@/lib/data/ruby-sapphire/locations/route-125';
 import SAFARI_ZONE from '@/lib/data/ruby-sapphire/locations/safari-zone';
 import SHOAL_CAVE from '@/lib/data/ruby-sapphire/locations/shoal-cave';
+import TRICK_HOUSE from '@/lib/data/ruby-sapphire/locations/trick-house';
 import { Location, Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
@@ -21,6 +22,7 @@ const getTateAndLiza = (hideout: Location): Split => ({
     name: 'Tate & Liza',
     locations: [
         FORTREE_CITY,
+        TRICK_HOUSE,
         ROUTE_120,
         ROUTE_121,
         LILYCOVE_CITY,

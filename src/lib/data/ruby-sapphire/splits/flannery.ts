@@ -13,6 +13,7 @@ import ROUTE_114 from '@/lib/data/ruby-sapphire/locations/route-114';
 import ROUTE_115 from '@/lib/data/ruby-sapphire/locations/route-115';
 import ROUTE_117 from '@/lib/data/ruby-sapphire/locations/route-117';
 import RUSTURF_TUNNEL from '@/lib/data/ruby-sapphire/locations/rusturf-tunnel';
+import TRICK_HOUSE from '@/lib/data/ruby-sapphire/locations/trick-house';
 import VERDANTURF_TOWN from '@/lib/data/ruby-sapphire/locations/verdanturf-town';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
@@ -21,6 +22,7 @@ const FLANNERY: Split = {
     name: 'Flannery',
     locations: [
         MAUVILLE_CITY,
+        TRICK_HOUSE,
         ROUTE_117,
         VERDANTURF_TOWN,
         RUSTURF_TUNNEL,

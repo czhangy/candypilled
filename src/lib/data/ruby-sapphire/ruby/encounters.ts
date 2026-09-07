@@ -262,15 +262,6 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             chance: 60,
         },
     ],
-    'mossdeep-city-stevens-house': [
-        {
-            species: 'beldum',
-            method: EncounterMethod.Gift,
-            minLevel: 5,
-            maxLevel: 5,
-            chance: 100,
-        },
-    ],
     'sootopolis-city': [
         {
             species: 'magikarp',
@@ -1791,112 +1782,6 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             minLevel: 5,
             maxLevel: 10,
             chance: 70,
-        },
-    ],
-    'sky-pillar-1f': [
-        {
-            species: 'golbat',
-            method: EncounterMethod.Cave,
-            minLevel: 48,
-            maxLevel: 50,
-            chance: 30,
-        },
-        {
-            species: 'mawile',
-            method: EncounterMethod.Cave,
-            minLevel: 48,
-            maxLevel: 50,
-            chance: 30,
-        },
-        {
-            species: 'claydol',
-            method: EncounterMethod.Cave,
-            minLevel: 47,
-            maxLevel: 50,
-            chance: 25,
-        },
-        {
-            species: 'dusclops',
-            method: EncounterMethod.Cave,
-            minLevel: 48,
-            maxLevel: 50,
-            chance: 15,
-        },
-    ],
-    'sky-pillar-3f': [
-        {
-            species: 'golbat',
-            method: EncounterMethod.Cave,
-            minLevel: 51,
-            maxLevel: 53,
-            chance: 30,
-        },
-        {
-            species: 'mawile',
-            method: EncounterMethod.Cave,
-            minLevel: 51,
-            maxLevel: 53,
-            chance: 30,
-        },
-        {
-            species: 'claydol',
-            method: EncounterMethod.Cave,
-            minLevel: 50,
-            maxLevel: 53,
-            chance: 25,
-        },
-        {
-            species: 'dusclops',
-            method: EncounterMethod.Cave,
-            minLevel: 51,
-            maxLevel: 53,
-            chance: 15,
-        },
-    ],
-    'sky-pillar-5f': [
-        {
-            species: 'golbat',
-            method: EncounterMethod.Cave,
-            minLevel: 54,
-            maxLevel: 56,
-            chance: 30,
-        },
-        {
-            species: 'mawile',
-            method: EncounterMethod.Cave,
-            minLevel: 54,
-            maxLevel: 56,
-            chance: 30,
-        },
-        {
-            species: 'altaria',
-            method: EncounterMethod.Cave,
-            minLevel: 54,
-            maxLevel: 60,
-            chance: 6,
-        },
-        {
-            species: 'claydol',
-            method: EncounterMethod.Cave,
-            minLevel: 54,
-            maxLevel: 56,
-            chance: 19,
-        },
-        {
-            species: 'dusclops',
-            method: EncounterMethod.Cave,
-            minLevel: 54,
-            maxLevel: 56,
-            chance: 15,
-        },
-    ],
-    'sky-pillar-apex': [
-        {
-            species: 'rayquaza',
-            method: EncounterMethod.Static,
-            minLevel: 70,
-            maxLevel: 70,
-            chance: null,
         },
     ],
     'hoenn-route-101': [
@@ -5140,15 +5025,6 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             chance: null,
             tradeFor: 'pikachu',
             heldItem: 'glitter-mail',
-        },
-    ],
-    'southern-island': [
-        {
-            species: 'latias',
-            method: EncounterMethod.Static,
-            minLevel: 50,
-            maxLevel: 50,
-            chance: null,
         },
     ],
     'island-cave': [
