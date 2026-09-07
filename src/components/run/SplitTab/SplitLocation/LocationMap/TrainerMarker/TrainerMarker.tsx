@@ -28,16 +28,26 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const TRAINER_WIDTH_PX = 22;
-    const TRAINER_HEIGHT_PX = 30;
+    // Default marker box per generation, since sprite art scale differs by
+    // generation. Gen 5 has no games onboarded yet, so it defaults to Gen
+    // 4's size until a Gen 5 game's own sprites say otherwise.
+    const DEFAULT_MARKER_SIZE_BY_GENERATION: Record<
+        number,
+        { width: number; height: number }
+    > = {
+        3: { width: 19, height: 25 },
+        4: { width: 22, height: 30 },
+        5: { width: 22, height: 30 },
+    };
 
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const width = ((trainer.customWidth ?? TRAINER_WIDTH_PX) / mapWidth) * 100;
+    const defaultSize = DEFAULT_MARKER_SIZE_BY_GENERATION[game.generation];
+    const width = ((trainer.customWidth ?? defaultSize.width) / mapWidth) * 100;
     const height =
-        ((trainer.customHeight ?? TRAINER_HEIGHT_PX) / mapHeight) * 100;
+        ((trainer.customHeight ?? defaultSize.height) / mapHeight) * 100;
     const metadata = game.battles[trainer.battleKey]?.metadata ?? [];
     const isBoss = metadata.includes(BattleMetadata.Boss);
     const isMiniboss = metadata.includes(BattleMetadata.Miniboss);

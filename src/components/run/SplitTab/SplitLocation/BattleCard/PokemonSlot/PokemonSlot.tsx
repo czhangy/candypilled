@@ -326,34 +326,6 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                 </button>
             )}
             <ul className={styles['pokemon-slot__metadata']}>
-                <li className={styles['pokemon-slot__metadata-item--accent']}>
-                    {heldItemDescription ? (
-                        <Tooltip
-                            className={styles['ability-tooltip']}
-                            position="center"
-                            text={heldItemDescription}
-                        >
-                            {heldItemContent}
-                        </Tooltip>
-                    ) : (
-                        heldItemContent
-                    )}
-                </li>
-                <li className={styles['pokemon-slot__metadata-item--ability']}>
-                    {!ability ? (
-                        '-'
-                    ) : abilityFlavorText ? (
-                        <Tooltip
-                            className={styles['ability-tooltip']}
-                            position="center"
-                            text={abilityFlavorText}
-                        >
-                            {abilityButtonContent}
-                        </Tooltip>
-                    ) : (
-                        abilityButtonContent
-                    )}
-                </li>
                 <li className={styles['pokemon-slot__metadata-item--nature']}>
                     {!pokemon.nature ? (
                         '-'
@@ -375,6 +347,34 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                         >
                             {natureContent}
                         </a>
+                    )}
+                </li>
+                <li className={styles['pokemon-slot__metadata-item--ability']}>
+                    {!ability ? (
+                        '-'
+                    ) : abilityFlavorText ? (
+                        <Tooltip
+                            className={styles['ability-tooltip']}
+                            position="center"
+                            text={abilityFlavorText}
+                        >
+                            {abilityButtonContent}
+                        </Tooltip>
+                    ) : (
+                        abilityButtonContent
+                    )}
+                </li>
+                <li className={styles['pokemon-slot__metadata-item--accent']}>
+                    {heldItemDescription ? (
+                        <Tooltip
+                            className={styles['ability-tooltip']}
+                            position="center"
+                            text={heldItemDescription}
+                        >
+                            {heldItemContent}
+                        </Tooltip>
+                    ) : (
+                        heldItemContent
                     )}
                 </li>
                 <MoveList

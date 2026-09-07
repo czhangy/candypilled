@@ -34,6 +34,24 @@ and a pointer to its party array) and `src/data/trainer_parties.h` (the
 party arrays themselves, one `const struct TrainerMon...[]` per trainer,
 named `gTrainerParty_<Name><N>`).
 
+**`trainers_en.h`'s `.items` field is the trainer's own battle items** (the
+Potions/Full Restores their AI uses to heal mid-battle) -- this maps
+directly to `BattleData.items: BattleItem[]` (`{ count, name }` per
+distinct item, skip entries that are `ITEM_NONE`). This is easy to miss
+since it lives on the `struct Trainer`, not the party array -- check it for
+every trainer, not just ones that look notable (a Youngster or Rich Boy can
+carry a Full Restore same as a Gym Leader carries Potions).
+
+**A single ROM ships both Team Aqua's and Team Magma's full trainer
+tables unconditionally** (confirmed by diffing the cache against
+`pret/pokeruby`'s live `master` branch -- not a mislabeled/wrong-version
+cache). The two tables mirror each other 1:1 at a fixed index offset (e.g.
+`TRAINER_GRUNT_9`/Aqua ↔ `TRAINER_GRUNT_36`/Magma, a +27 offset across all
+27 grunts in this cache) -- match a version-exclusive grunt by identical
+party contents (species/level) at the mirrored index, since which one a
+given map location actually uses lives in event-script data this cache
+doesn't include.
+
 `partyFlags` selects which of four struct shapes
 (`include/battle_setup.h`) that trainer's party array uses -- this decides
 which optional fields are present, not the mon's identity:
@@ -114,7 +132,12 @@ personality = baseOffset + (nameHash << 8)   // u32, wraps like C
   set → the species' second ability), but **only if the species actually
   has a second ability** (`gBaseStats[species].ability2` nonzero) --
   otherwise the mon always has ability 1 regardless of personality. There
-  is no hidden-ability slot in Gen 3.
+  is no hidden-ability slot in Gen 3. Check `ability2` in `base_stats.h`
+  (this skill's reference cache) directly -- don't infer ability2
+  presence from this app's own species data or from real-world ability
+  history (a species can have a real Gen 3 `ability2` in the ROM even if
+  it's commonly known as a later-generation addition; see the Nosepass
+  note below).
 - **Gender**: if the species has a fixed gender ratio (always-male,
   always-female, or genderless), that's the answer regardless of
   personality -- for the genderless case, omit `gender` on the
@@ -132,9 +155,13 @@ and the ability-bit extraction) against Roxanne's party
 Bulbapedia's Ruby/Sapphire trainer info for her: computed personality for
 her Geodude has its low bit `0`, i.e. ability slot 1 -- Rock Head, which
 is exactly what Bulbapedia lists (Geodude's other possible ability,
-Sturdy, is slot 2). Her Nosepass has no second ability in Gen 3 at all
-(Magnet Pull came later), so it's forced to Sturdy independent of
-personality -- also matches. This confirms the derivation end-to-end,
+Sturdy, is slot 2). Her Nosepass also computes ability slot 1 (Sturdy),
+matching Bulbapedia -- but unlike Geodude this is just the personality bit
+landing on 0, not a forced result: `base_stats.h` confirms Nosepass's
+Gen 3 `ability2` is `ABILITY_MAGNET_PULL` (real in the ROM since Gen 3,
+despite Magnet Pull being commonly associated with a later generation), so
+a different personality value would have given her Magnet Pull instead.
+This confirms the derivation end-to-end,
 since ability, nature, and gender all read from the same `personality`
 integer -- getting the integer right and reading the right bit out of it
 validates the mechanism a wrong encoding or an unreset hash would have
@@ -159,9 +186,13 @@ places a transcription slip is most likely.
    the whole party in order, not one mon in isolation, since each mon's
    hash depends on every prior mon's species name too.
 5. Derive nature/ability/gender from each mon's `personality` (formulas
-   above), using this app's own species data for gender ratio and
-   ability-slot names.
+   above), checking `base_stats.h` directly for gender ratio and
+   ability2 presence -- don't infer either from this app's own species
+   data.
 6. Assemble the `BattlePokemon` entry per mon.
+7. Map `struct Trainer`'s `.items` field (step 1) to `BattleData.items` --
+   don't skip this because a mon-by-mon walk of the party array won't
+   surface it.
 
 ## Cached reference files
 
@@ -171,6 +202,7 @@ places a transcription slip is most likely.
 trainers_en.h              # every trainer's struct Trainer entry
 trainer_parties.h           # every trainer's party array
 battle_setup.h               # the four TrainerMon struct shapes
+base_stats.h                   # gBaseStats[] -- genderRatio, ability1/ability2 per species
 constants_trainers.h          # F_TRAINER_*, TRAINER_ENCOUNTER_MUSIC_* constants
 constants_flags.h              # FLAG_BADGE0N_GET / FLAG_SYS_GAME_CLEAR (for saveCondition, not battles.ts, but same repo/cache)
 charmap.txt                     # in-game text encoding, needed for nameHash
