@@ -23,6 +23,7 @@ const SHOAL_CAVE: Location = {
             name: 'Inner (High)',
             map: shoalCaveInnerRoomHigh,
             mapAnchor: MapAnchor.Center,
+            encountersKey: 'shoal-cave-high-tide',
         },
         {
             name: 'Entrance (Low)',
@@ -34,6 +35,7 @@ const SHOAL_CAVE: Location = {
             name: 'Inner (Low)',
             map: shoalCaveInnerRoomLow,
             mapAnchor: MapAnchor.Center,
+            encountersKey: 'shoal-cave-low-tide',
         },
         {
             name: 'Stairs (Low)',

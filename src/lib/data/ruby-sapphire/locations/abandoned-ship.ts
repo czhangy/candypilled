@@ -14,7 +14,6 @@ const ABANDONED_SHIP: Location = {
             name: 'Deck',
             map: abandonedShipDeck,
             mapAnchor: MapAnchor.Center,
-            encountersKey: 'abandoned-ship',
         },
         {
             name: '1F',
@@ -25,11 +24,13 @@ const ABANDONED_SHIP: Location = {
             name: 'B1F',
             map: abandonedShipB1f,
             mapAnchor: MapAnchor.Center,
+            encountersKey: 'abandoned-ship',
         },
         {
             name: 'Hidden Floor',
             map: abandonedShipHiddenFloor,
             mapAnchor: MapAnchor.Center,
+            encountersKey: 'abandoned-ship',
         },
     ],
 };

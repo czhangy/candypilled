@@ -20,7 +20,7 @@ const ROUTE_103: Location = {
             name: 'East',
             map: { male: route103EastMay, female: route103EastBrendan },
             mapAnchor: MapAnchor.Center,
-            encountersKey: 'hoenn-route-103',
+            encountersKey: 'hoenn-route-103-east',
         },
     ],
 };

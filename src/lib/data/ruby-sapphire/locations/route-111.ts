@@ -19,13 +19,12 @@ const ROUTE_111: Location = {
             name: 'North',
             map: route111North,
             mapAnchor: MapAnchor.BottomLeft,
-            encountersKey: 'hoenn-route-111',
         },
         {
             name: 'Desert',
             map: route111Desert,
             mapAnchor: MapAnchor.Center,
-            encountersKey: 'hoenn-route-111',
+            encountersKey: 'hoenn-route-111-desert',
         },
     ],
 };

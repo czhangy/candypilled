@@ -9,7 +9,7 @@ const ROUTE_115: Location = {
             name: 'South',
             map: route115South,
             mapAnchor: MapAnchor.Bottom,
-            encountersKey: 'hoenn-route-115',
+            encountersKey: 'hoenn-route-115-south',
         },
         {
             name: 'North',

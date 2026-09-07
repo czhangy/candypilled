@@ -60,6 +60,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
         EncounterMethod.Trade,
         EncounterMethod.Binoculars,
         EncounterMethod.Grass,
+        EncounterMethod.Sand,
         EncounterMethod.Walking,
         EncounterMethod.Cave,
         EncounterMethod.FeebasTile,

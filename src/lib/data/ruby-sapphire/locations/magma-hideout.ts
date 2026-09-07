@@ -13,7 +13,6 @@ const MAGMA_HIDEOUT: Location = {
             name: '1F',
             map: magmaHideout1f,
             mapAnchor: MapAnchor.Bottom,
-            encountersKey: 'team-magma-hideout',
         },
         {
             name: 'B1F',
@@ -25,7 +24,6 @@ const MAGMA_HIDEOUT: Location = {
             name: 'B2F',
             map: magmaHideoutB2f,
             mapAnchor: MapAnchor.Center,
-            encountersKey: 'team-magma-hideout',
         },
     ],
 };

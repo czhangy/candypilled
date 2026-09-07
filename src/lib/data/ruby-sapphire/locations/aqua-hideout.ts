@@ -13,7 +13,6 @@ const AQUA_HIDEOUT: Location = {
             name: '1F',
             map: aquaHideout1f,
             mapAnchor: MapAnchor.Bottom,
-            encountersKey: 'team-aqua-hideout',
         },
         {
             name: 'B1F',
@@ -25,7 +24,6 @@ const AQUA_HIDEOUT: Location = {
             name: 'B2F',
             map: aquaHideoutB2f,
             mapAnchor: MapAnchor.Center,
-            encountersKey: 'team-aqua-hideout',
         },
     ],
 };

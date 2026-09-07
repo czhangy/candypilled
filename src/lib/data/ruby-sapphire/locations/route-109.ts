@@ -13,6 +13,7 @@ const ROUTE_109: Location = {
             name: 'Beach',
             map: route109Beach,
             mapAnchor: MapAnchor.Center,
+            encountersKey: 'hoenn-route-109',
         },
         {
             name: 'Seashore House',

@@ -12,6 +12,7 @@ export enum EncounterMethod {
     OldRod = 'old-rod',
     PokeRadar = 'poke-radar',
     RockSmash = 'rock-smash',
+    Sand = 'sand',
     Starter = 'starter',
     Static = 'static',
     SuperRod = 'super-rod',
