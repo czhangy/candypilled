@@ -1,15 +1,16 @@
 import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
 import { BATTLES } from '@/lib/data/ruby-sapphire/battles';
+import MAGMA_HIDEOUT from '@/lib/data/ruby-sapphire/locations/magma-hideout';
 import { MET_LOCATIONS } from '@/lib/data/ruby-sapphire/met-locations';
 import BRAWLY from '@/lib/data/ruby-sapphire/splits/brawly';
 import FLANNERY from '@/lib/data/ruby-sapphire/splits/flannery';
 import NORMAN from '@/lib/data/ruby-sapphire/splits/norman';
 import ROXANNE from '@/lib/data/ruby-sapphire/splits/roxanne';
 import STEVEN from '@/lib/data/ruby-sapphire/splits/steven';
-import TATE_AND_LIZA from '@/lib/data/ruby-sapphire/splits/tate-and-liza';
+import getTateAndLiza from '@/lib/data/ruby-sapphire/splits/tate-and-liza';
 import WALLACE from '@/lib/data/ruby-sapphire/splits/wallace';
 import WATTSON from '@/lib/data/ruby-sapphire/splits/wattson';
-import WINONA from '@/lib/data/ruby-sapphire/splits/winona';
+import getWinona from '@/lib/data/ruby-sapphire/splits/winona';
 import {
     BadgeAssetFolder,
     GameVersionGroup,
@@ -38,14 +39,21 @@ const RUBY: Game = {
     // Hideout" in Sapphire) -- see ONBOARDING.md.
     metLocationById: { ...MET_LOCATIONS, 66: 'Magma Hideout' },
     wipeMessages: ['Truck.'],
+    resources: [
+        {
+            text: 'Gen 3 AI',
+            description: 'Gen 3 AI documentation',
+            url: 'https://docs.google.com/document/d/1-WMcLh7E5OBSCjl4fDTMdVD9-9xsLYCVk2RgI-atcUk/edit?tab=t.0',
+        },
+    ],
     splits: [
         ROXANNE,
         BRAWLY,
         WATTSON,
         FLANNERY,
         NORMAN,
-        WINONA,
-        TATE_AND_LIZA,
+        getWinona(MAGMA_HIDEOUT),
+        getTateAndLiza(MAGMA_HIDEOUT),
         WALLACE,
         STEVEN,
     ],

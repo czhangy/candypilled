@@ -37,7 +37,7 @@ const CreditsPage: React.FC = () => {
                 },
                 {
                     name: 'DSPRE',
-                    description: 'Scraping data and assets from ROMs',
+                    description: 'Scraping data and assets from DS ROMs',
                     url: 'https://github.com/Egor-n/DSPRE',
                 },
                 {
@@ -45,6 +45,16 @@ const CreditsPage: React.FC = () => {
                     description:
                         'Curated species, move, ability, item, and encounter data',
                     url: 'https://pokeapi.co/',
+                },
+                {
+                    name: 'porymap',
+                    description: 'Scraping data and assets from GBA ROMs',
+                    url: 'https://github.com/huderlem/porymap',
+                },
+                {
+                    name: 'pret',
+                    description: 'Game decompilations',
+                    url: 'https://github.com/pret',
                 },
             ],
         },
