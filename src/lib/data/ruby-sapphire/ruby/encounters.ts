@@ -5063,13 +5063,4 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             chance: null,
         },
     ],
-    'mirage-island': [
-        {
-            species: 'wynaut',
-            method: EncounterMethod.Grass,
-            minLevel: 5,
-            maxLevel: 50,
-            chance: 100,
-        },
-    ],
 };
