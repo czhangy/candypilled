@@ -38,6 +38,12 @@ const HELD_ITEM_CATEGORIES = [
     'other',
     'in-a-pinch',
     'picky-healing',
+    // Not held in battle for their own effect, but real in-game trade NPCs
+    // do hand over their Pokémon holding one of these (e.g. an X Attack or
+    // a Mail), so they need to resolve through the same held-item lookup
+    // used to render an encounter's `heldItem`.
+    'stat-boosts',
+    'all-mail',
 ];
 // Like moves.json and abilities.json, this dataset isn't scoped to the
 // current game, but unlike them it doesn't cover every generation the site

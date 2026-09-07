@@ -15,12 +15,12 @@ const MT_CHIMNEY: Location = {
                 Ruby: mtChimneyPreEvilMagma,
                 Sapphire: mtChimneyPreEvilAqua,
             },
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Bottom,
         },
         {
             name: 'Post-Evil',
             map: mtChimneyPostEvil,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Bottom,
         },
     ],
 };

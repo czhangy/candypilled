@@ -3350,7 +3350,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             method: EncounterMethod.Gift,
             minLevel: 25,
             maxLevel: 25,
-            chance: 100,
+            chance: null,
         },
     ],
     'hoenn-route-120': [
@@ -5053,10 +5053,11 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         {
             species: 'corsola',
             method: EncounterMethod.Trade,
-            minLevel: 21,
-            maxLevel: 100,
-            chance: 100,
+            minLevel: null,
+            maxLevel: null,
+            chance: null,
             tradeFor: 'bellossom',
+            heldItem: 'tropic-mail',
         },
         {
             species: 'wingull',
@@ -5107,10 +5108,11 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         {
             species: 'makuhita',
             method: EncounterMethod.Trade,
-            minLevel: 5,
-            maxLevel: 100,
-            chance: 100,
+            minLevel: null,
+            maxLevel: null,
+            chance: null,
             tradeFor: 'slakoth',
+            heldItem: 'x-attack',
         },
         {
             species: 'lileep',
@@ -5133,10 +5135,11 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         {
             species: 'skitty',
             method: EncounterMethod.Trade,
-            minLevel: 5,
-            maxLevel: 100,
-            chance: 100,
+            minLevel: null,
+            maxLevel: null,
+            chance: null,
             tradeFor: 'pikachu',
+            heldItem: 'glitter-mail',
         },
     ],
     'southern-island': [

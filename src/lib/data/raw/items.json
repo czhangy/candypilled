@@ -3448,5 +3448,697 @@
                 "description": "If held by a Pokémon, it restores the user's HP in a pinch, but will cause confusion if it hates the taste."
             }
         ]
+    },
+    "guard-spec": {
+        "slug": "guard-spec",
+        "name": "Guard Spec",
+        "category": "stat-boosts",
+        "effect": "Prevents stat changes in battle for five turns in battle.  Raises happiness.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/guard-spec.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Prevents stat reduction when used in battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item that prevents stat reduction among the Trainer's party Pokémon for five turns after use."
+            }
+        ]
+    },
+    "dire-hit": {
+        "slug": "dire-hit",
+        "name": "Dire Hit",
+        "category": "stat-boosts",
+        "effect": "Increases the chance of a critical hit in battle.  Raises happiness.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/dire-hit.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Raises the critical-hit ratio during one battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item that raises the critical-hit ratio of a Pokémon in battle. It wears off if the Pokémon is withdrawn."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "It raises the critical-hit ratio greatly. It can be used only once and wears off if the Pokémon is withdrawn."
+            }
+        ]
+    },
+    "x-attack": {
+        "slug": "x-attack",
+        "name": "X Attack",
+        "category": "stat-boosts",
+        "effect": "Raises Attack by one stage in battle.  Raises happiness.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/x-attack.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Raises the stat ATTACK during one battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item that raises the Attack stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn."
+            }
+        ]
+    },
+    "x-defense": {
+        "slug": "x-defense",
+        "name": "X Defense",
+        "category": "stat-boosts",
+        "effect": "Raises Defense by one stage in battle.  Raises happiness.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/x-defense.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Raises the stat DEFENSE during one battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item that raises the Defense stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn."
+            }
+        ]
+    },
+    "x-speed": {
+        "slug": "x-speed",
+        "name": "X Speed",
+        "category": "stat-boosts",
+        "effect": "Raises Speed by one stage in battle.  Raises happiness.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/x-speed.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Raises the stat SPEED during one battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item that raises the Speed stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn."
+            }
+        ]
+    },
+    "x-accuracy": {
+        "slug": "x-accuracy",
+        "name": "X Accuracy",
+        "category": "stat-boosts",
+        "effect": "Raises accuracy by one stage in battle.  Raises happiness.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/x-accuracy.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Raises accuracy of attack moves during one battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item that raises the accuracy of a Pokémon in battle. It wears off if the Pokémon is withdrawn."
+            }
+        ]
+    },
+    "x-sp-atk": {
+        "slug": "x-sp-atk",
+        "name": "X Sp Atk",
+        "category": "stat-boosts",
+        "effect": "Raises Special Attack by one stage in battle.  Raises happiness.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/x-sp-atk.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Raises the stat SP. ATK during one battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item that raises the Sp. Atk stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn."
+            }
+        ]
+    },
+    "x-sp-def": {
+        "slug": "x-sp-def",
+        "name": "X Sp Def",
+        "category": "stat-boosts",
+        "effect": "Raises Special Defense by one stage in battle.  Raises happiness.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/x-sp-def.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item that raises the Sp. Def stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn."
+            }
+        ]
+    },
+    "grass-mail": {
+        "slug": "grass-mail",
+        "name": "Grass Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/grass-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of a refreshingly green field. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "flame-mail": {
+        "slug": "flame-mail",
+        "name": "Flame Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/flame-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of flames in blazing red. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "bubble-mail": {
+        "slug": "bubble-mail",
+        "name": "Bubble Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/bubble-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of a blue world underwater. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "bloom-mail": {
+        "slug": "bloom-mail",
+        "name": "Bloom Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/bloom-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of pretty floral patterns. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "tunnel-mail": {
+        "slug": "tunnel-mail",
+        "name": "Tunnel Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tunnel-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of a dimly lit coal mine. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "steel-mail": {
+        "slug": "steel-mail",
+        "name": "Steel Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/steel-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of cool mechanical designs. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "heart-mail": {
+        "slug": "heart-mail",
+        "name": "Heart Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/heart-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of giant heart patterns. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "snow-mail": {
+        "slug": "snow-mail",
+        "name": "Snow Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/snow-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of a chilly, snow-covered world. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "space-mail": {
+        "slug": "space-mail",
+        "name": "Space Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/space-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print depicting the huge expanse of space. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "air-mail": {
+        "slug": "air-mail",
+        "name": "Air Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/air-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of colorful letter sets. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "mosaic-mail": {
+        "slug": "mosaic-mail",
+        "name": "Mosaic Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/mosaic-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of a vivid rainbow pattern. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "brick-mail": {
+        "slug": "brick-mail",
+        "name": "Brick Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/brick-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of a tough-looking brick pattern. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "orange-mail": {
+        "slug": "orange-mail",
+        "name": "Orange Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/orange-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A ZIGZAGOON-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "harbor-mail": {
+        "slug": "harbor-mail",
+        "name": "Harbor Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/harbor-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A WINGULL-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "glitter-mail": {
+        "slug": "glitter-mail",
+        "name": "Glitter Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/glitter-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A PIKACHU-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "mech-mail": {
+        "slug": "mech-mail",
+        "name": "Mech Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/mech-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A MAGNEMITE-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "wood-mail": {
+        "slug": "wood-mail",
+        "name": "Wood Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/wood-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A SLAKOTH-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "wave-mail": {
+        "slug": "wave-mail",
+        "name": "Wave Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/wave-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A WAILMER-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "bead-mail": {
+        "slug": "bead-mail",
+        "name": "Bead Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/bead-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "MAIL featuring a sketch of the holding POKéMON."
+            }
+        ]
+    },
+    "shadow-mail": {
+        "slug": "shadow-mail",
+        "name": "Shadow Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/shadow-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A DUSKULL-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "tropic-mail": {
+        "slug": "tropic-mail",
+        "name": "Tropic Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/tropic-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A BELLOSSOM-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "dream-mail": {
+        "slug": "dream-mail",
+        "name": "Dream Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/dream-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "MAIL featuring a sketch of the holding POKéMON."
+            }
+        ]
+    },
+    "fab-mail": {
+        "slug": "fab-mail",
+        "name": "Fab Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/fab-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A gorgeous-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "retro-mail": {
+        "slug": "retro-mail",
+        "name": "Retro Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/retro-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "MAIL featuring the drawings of three POKéMON."
+            }
+        ]
+    },
+    "greet-mail": {
+        "slug": "greet-mail",
+        "name": "Greet Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/greet-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery designed for introductory greetings. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "favored-mail": {
+        "slug": "favored-mail",
+        "name": "Favored Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/favored-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery designed for writing about your favorite things. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "rsvp-mail": {
+        "slug": "rsvp-mail",
+        "name": "Rsvp Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/rsvp-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery designed for invitations. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "thanks-mail": {
+        "slug": "thanks-mail",
+        "name": "Thanks Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/thanks-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery designed for a thank-you note. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "inquiry-mail": {
+        "slug": "inquiry-mail",
+        "name": "Inquiry Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/inquiry-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery designed for writing questions. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "like-mail": {
+        "slug": "like-mail",
+        "name": "Like Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/like-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery designed for writing recommendations. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "reply-mail": {
+        "slug": "reply-mail",
+        "name": "Reply Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/reply-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery designed for writing a reply. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "bridge-mail-s": {
+        "slug": "bridge-mail-s",
+        "name": "Bridge Mail S",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/bridge-mail-s.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery featuring a print of a sky-piercing bridge. Let a Pokémon hold it for use."
+            }
+        ]
+    },
+    "bridge-mail-d": {
+        "slug": "bridge-mail-d",
+        "name": "Bridge Mail D",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/bridge-mail-d.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery featuring a print of a red drawbridge. Let a Pokémon hold it for use."
+            }
+        ]
+    },
+    "bridge-mail-t": {
+        "slug": "bridge-mail-t",
+        "name": "Bridge Mail T",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/bridge-mail-t.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery featuring a print of a steel suspension bridge. Let a Pokémon hold it for use."
+            }
+        ]
+    },
+    "bridge-mail-v": {
+        "slug": "bridge-mail-v",
+        "name": "Bridge Mail V",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/bridge-mail-v.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery featuring a print of a brick bridge. Let a Pokémon hold it for use."
+            }
+        ]
+    },
+    "bridge-mail-m": {
+        "slug": "bridge-mail-m",
+        "name": "Bridge Mail M",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/bridge-mail-m.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery featuring a print of an arched bridge. Let a Pokémon hold it for use."
+            }
+        ]
     }
 }
