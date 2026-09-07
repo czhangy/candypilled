@@ -164,7 +164,6 @@ export { default as trickHousePuzzle4 } from './trick-house-puzzle-4.png';
 export { default as trickHousePuzzle5 } from './trick-house-puzzle-5.png';
 export { default as trickHousePuzzle6 } from './trick-house-puzzle-6.png';
 export { default as trickHousePuzzle7 } from './trick-house-puzzle-7.png';
-export { default as trickHousePuzzle8 } from './trick-house-puzzle-8.png';
 export { default as underwaterArea1 } from './underwater-area-1.png';
 export { default as underwaterArea2 } from './underwater-area-2.png';
 export { default as underwaterArea3 } from './underwater-area-3.png';

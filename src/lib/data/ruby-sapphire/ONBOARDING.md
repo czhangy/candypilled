@@ -76,20 +76,13 @@ shared Hoenn folder would need two different images at the same
 `wallace.png` path (R/S's Rain Badge vs. Emerald's Champion icon) — a real
 collision, not just a naming nitpick. The 7 unchanged gym leaders
 (Roxanne, Brawly, Wattson, Flannery, Norman, Winona, Tate & Liza) are
-duplicated verbatim into both folders on the assumption their badge
-artwork doesn't differ between R/S and Emerald — a reasonable but
-**unverified** assumption (no independent Emerald source image was
-diffed against these, unlike the content-hash verification this app's
-convention normally calls for).
+duplicated verbatim into both folders — the user has since confirmed
+their badge artwork is correct/identical between R/S and Emerald, so
+this is no longer flagged as unverified.
 
-`ruby-sapphire/steven.png` (R/S's Champion split) and
-`emerald/wallace.png` (Emerald's Champion split) are both **placeholder
-duplicates of Sinnoh's `cynthia.png`** — a generic stand-in so the
-Champion split has some badge image rather than a broken path, not real
-Hoenn Champion artwork. Replace both with actual Steven/Wallace Champion
-icons once sourced; don't mistake them for verified assets the way the
-7 shared gym-leader badges above are (at least those are real Hoenn
-badge art, just unverified as byte-identical between versions).
+`ruby-sapphire/steven.png` (R/S's Champion split) has real Steven
+Champion artwork — the user confirmed this is resolved, not the
+Cynthia-duplicate placeholder it started as.
 
 ## GameVersion config notes (`game-versions/ruby.ts` / `sapphire.ts`)
 
@@ -424,20 +417,20 @@ Sapphire }` maps (Petalburg Woods, Rusturf Tunnel, Mt Chimney's
       separate bitmask, base `SYSTEM_FLAGS = 0x800`:
 
       | Split (gym) | Badge | Flag |
-                          |---|---|---|
-                          | Rustboro | Stone | `0x807` |
-                          | Dewford | Knuckle | `0x808` |
-                          | Mauville | Dynamo | `0x809` |
-                          | Lavaridge | Heat | `0x80A` |
-                          | Petalburg | Balance | `0x80B` |
-                          | Fortree | Feather | `0x80C` |
-                          | Mossdeep | Mind | `0x80D` |
-                          | Sootopolis | Rain | `0x80E` |
+                              |---|---|---|
+                              | Rustboro | Stone | `0x807` |
+                              | Dewford | Knuckle | `0x808` |
+                              | Mauville | Dynamo | `0x809` |
+                              | Lavaridge | Heat | `0x80A` |
+                              | Petalburg | Balance | `0x80B` |
+                              | Fortree | Feather | `0x80C` |
+                              | Mossdeep | Mind | `0x80D` |
+                              | Sootopolis | Rain | `0x80E` |
 
-                          Game-clear flag: `FLAG_SYS_GAME_CLEAR = 0x804`. No Gen 3
-                          `SplitParser` exists yet in `src/lib/parsers/` — these flag numbers
-                          are ready, but the parser to evaluate them against a decrypted save
-                          still needs writing when splits are actually authored.
+                              Game-clear flag: `FLAG_SYS_GAME_CLEAR = 0x804`. No Gen 3
+                              `SplitParser` exists yet in `src/lib/parsers/` — these flag numbers
+                              are ready, but the parser to evaluate them against a decrypted save
+                              still needs writing when splits are actually authored.
 
 - [x] Trainer battle data extraction mechanism — documented and verified
       as a new skill, `gen3-trainer-data-extraction`. Key finding: Gen 3 does **not**
@@ -450,8 +443,9 @@ Sapphire }` maps (Petalburg Woods, Rusturf Tunnel, Mt Chimney's
 - [x] `public/logos/ruby.png`, `public/logos/sapphire.png` — sourced.
 - [x] `public/badges/ruby-sapphire/`, `public/badges/emerald/`,
       `public/trainers/ruby-sapphire/` — sourced (see "Badge asset folder
-      is per-version-pair" above for the folder split and the two
-      placeholder Champion icons still needing real art).
+      is per-version-pair" above for the folder split); Steven's badge
+      icon and the shared gym-leader badge assumption are both confirmed
+      resolved, not outstanding.
 - [x] Registration in `GAMES` (`src/lib/data/games.ts`) — done, ordered
       before the Gen 4 games (Ruby, Sapphire, then Diamond, Pearl,
       Platinum, Renegade Platinum) to keep `GAMES` in generation order.
@@ -461,11 +455,9 @@ Sapphire }` maps (Petalburg Woods, Rusturf Tunnel, Mt Chimney's
       `ruby.ts`/`sapphire.ts` `Game` objects now register all 9 splits
       (`ROXANNE` through `STEVEN`) — see the splits status above for
       which ones actually have real location content yet.
-      **Unverified/self-authored, flag for review:** `accentColor`
-      (picked to roughly match each version's box-art theme, not
-      independently confirmed) — low-stakes UI content, not asked about
-      or verified the way in-universe data was. `wipeMessages` was
-      originally self-authored flavor text but the user has since
+      `accentColor` on both `Game` objects has been confirmed correct
+      by the user, not an outstanding unverified value. `wipeMessages`
+      was originally self-authored flavor text but the user has since
       edited it directly to `['Truck.']` on both `Game` objects — that
       edit is real user intent, not a leftover placeholder; don't
       "restore" the longer flavor-text list.

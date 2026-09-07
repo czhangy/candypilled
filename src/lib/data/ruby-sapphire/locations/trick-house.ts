@@ -6,7 +6,6 @@ import {
     trickHousePuzzle5,
     trickHousePuzzle6,
     trickHousePuzzle7,
-    trickHousePuzzle8,
 } from '@/lib/data/ruby-sapphire/maps';
 import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
@@ -47,11 +46,6 @@ const TRICK_HOUSE: Location = {
         {
             name: 'Puzzle 7',
             map: trickHousePuzzle7,
-            mapAnchor: MapAnchor.Center,
-        },
-        {
-            name: 'Puzzle 8',
-            map: trickHousePuzzle8,
             mapAnchor: MapAnchor.Center,
         },
     ],
