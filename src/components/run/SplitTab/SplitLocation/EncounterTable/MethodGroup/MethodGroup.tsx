@@ -7,7 +7,6 @@ import styles from './MethodGroup.module.scss';
 type MethodGroupProps = {
     dataSource: GameDataSource;
     encounters: Encounter[];
-    getDisplayChance: (encounter: Encounter) => number | null;
     isSpeciesCaughtElsewhere: (species: string) => boolean;
     isSpeciesCaughtHere: (species: string) => boolean;
     method: EncounterMethod;
@@ -19,7 +18,6 @@ type MethodGroupProps = {
 const MethodGroup: React.FC<MethodGroupProps> = ({
     dataSource,
     encounters,
-    getDisplayChance,
     isSpeciesCaughtElsewhere,
     isSpeciesCaughtHere,
     method,
@@ -55,7 +53,6 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
             {encounters.map((encounter) => (
                 <EncounterRow
                     dataSource={dataSource}
-                    displayChance={getDisplayChance(encounter)}
                     encounter={encounter}
                     isCaughtElsewhere={isSpeciesCaughtElsewhere(
                         encounter.species

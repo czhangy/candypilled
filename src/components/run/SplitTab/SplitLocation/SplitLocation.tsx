@@ -410,10 +410,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const allEncountersHidden =
         !!section.encounters &&
         EncounterHelpers.areAllEncountersHidden(section.encounters, {
-            caughtHere: encounter,
             dataSource: game.dataSource,
-            dupes,
-            generation: game.generation,
             settings,
         });
 

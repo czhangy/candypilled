@@ -305,10 +305,7 @@ export type Encounter = {
 // SettingsHelpers.getSnapshot returns, so a new setting-driven rule can read
 // its own id straight out of it without any signature changes.
 export type EncounterVisibilityContext = {
-    caughtHere?: string;
     dataSource: GameDataSource;
-    dupes: string[];
-    generation: number;
     settings: Record<string, boolean>;
 };
 

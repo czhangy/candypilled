@@ -2,10 +2,6 @@ import { Setting, StatValues } from '@/lib/static/types';
 
 export const SETTINGS: Setting[] = [
     {
-        id: 'show-dupes',
-        title: 'Show Dupes',
-    },
-    {
         id: 'disable-trade-evos',
         title: 'Disable Trade Evolutions',
     },
