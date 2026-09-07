@@ -91,8 +91,9 @@ flow relies on:
 - **Encounter/trainer data source.** A vanilla game's wild encounters and
   base data come from PokeAPI (see the encounter-scraper steps below) and,
   for Gen 3/4, trainer battle data (team, IVs, AI) can be extracted from
-  that game's own pret-style decomp — the `gen4-trainer-data-extraction`
-  skill does this for Gen 4. **Neither exists for a hack.** PokeAPI has no
+  that game's own pret-style decomp — see `gen3-trainer-data-extraction`
+  for Gen 3 (write an equivalent skill for a Gen 4 game if one is ever
+  onboarded again). **Neither exists for a hack.** PokeAPI has no
   concept of a fan patch, and a hack's own decomp — if one is even
   public — reflects the _base_ game's unpatched data, not the hack's
   hand-edited changes. Running vanilla extraction tooling against a hack
@@ -172,10 +173,11 @@ discover mid-task:
 - **PokeAPI** — wild encounters (via the `pokeapi:encounters` scraper) and
   base species/move data, scoped to the specific version/version-group.
 - **That generation's pret-style decomp** (e.g. pokediamond/pokeplatinum
-  for Gen 4) — trainer battle data (team, IVs, AI flags) via
-  `gen4-trainer-data-extraction` for Gen 4, plus generation-wide constants
-  like badge bit order (`constants/badge.h` / `generated/badges.txt`) and
-  per-gym badge-grant logic (an overlay's gym-features file).
+  for Gen 4) — trainer battle data (team, IVs, AI flags) via a
+  generation-specific extraction skill (write one if it doesn't exist yet
+  for that generation), plus generation-wide constants like badge bit
+  order (`constants/badge.h` / `generated/badges.txt`) and per-gym
+  badge-grant logic (an overlay's gym-features file).
 - **Bulbapedia/Serebii** — met-location index tables, cross-checking
   version-exclusivity edge cases (especially anything gated behind
   cross-cartridge trading, which PokeAPI doesn't model correctly), and as
@@ -349,16 +351,15 @@ Reference implementation: `src/lib/data/platinum/`.
       unreliable on its own — it's often ambiguous at low levels, where
       multiple IVs round to the same displayed stat — so don't rely on
       that method alone; use it only as a cross-check against a direct
-      source. For Gen 4 games, the direct source and derivation formula are
-      documented in the `gen4-trainer-data-extraction` skill (which reads
+      source. For Gen 3, the direct source and derivation formula are
+      documented in the `gen3-trainer-data-extraction` skill (which reads
       the real IV straight out of the decomp's trainer data, not
       back-solved). If a target vanilla game has no such derivation path
       documented yet, that's a gap to fill (research and document the
-      mechanism, the same way Gen 4's was derived) rather than a reason to
+      mechanism, the same way Gen 3's was derived) rather than a reason to
       fall back to asking the user.
     - **For a ROM hack, IVs come from the hack's own tracker, never from
-      `gen4-trainer-data-extraction` or any other vanilla-decomp
-      extraction tool** — that tooling reads the unpatched base game and
+      a vanilla-decomp extraction skill** — that tooling reads the unpatched base game and
       will silently return the wrong value for a hand-edited hack roster.
       If the tracker's IV note doesn't clearly cover a specific team
       member (no team-wide note, no paired-trainer note, no per-mon split

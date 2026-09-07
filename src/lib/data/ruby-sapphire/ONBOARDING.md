@@ -15,7 +15,7 @@ These were explicitly confirmed with the user — don't re-ask.
 | Devon Scope Kecleon (Routes 119/120)                               | New `EncounterMethod.DevonScope`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | Diving/"seaweed" encounters (Routes 124/126 underwater)            | Folded into `EncounterMethod.Grass` (renamed in the shared `encounters.ts` scraper's `METHOD_RENAMES`), not a new method.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | Roaming Latios (Ruby) / Latias (Sapphire)                          | **Not modeled at all** — postgame, excluded from location encounters (`excludedMethods: ['roaming-grass', 'roaming-water']`) and the entire `roaming-hoenn` synthetic location is in `excludedLocations`. No Roamer entries.                                                                                                                                                                                                                                                                                                                                                                                           |
-| Trainer/IV data source                                             | pret's public **`pokeruby`** decomp specifically (not `pokeemerald` — confirmed meaningfully different from Ruby/Sapphire, so it's the wrong source for this game). Mirrors `gen4-trainer-data-extraction`. Not yet documented (see Status below).                                                                                                                                                                                                                                                                                                                                                                     |
+| Trainer/IV data source                                             | pret's public **`pokeruby`** decomp specifically (not `pokeemerald` — confirmed meaningfully different from Ruby/Sapphire, so it's the wrong source for this game). See `gen3-trainer-data-extraction`.                                                                                                                                                                                                                                                                                                                                                                                                                |
 | Map-editing tool / decomp for Porymap                              | `pokeruby`, same repo as the trainer-data source above (not `pokeemerald`).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | "Underwater" location structure                                    | **Superseded** (see below) — actually implemented as a standalone `Location` named "Underwater" with 4 generically-named `Subarea`s ("Area 1"-"Area 4"), matching 4 real Porymap captures rather than being split by route. Only Area 1 and Area 2 carry a real `encountersKey` (`hoenn-route-124-underwater` / `hoenn-route-126-underwater` respectively, per the user); Area 3 and Area 4 have no wild encounters modeled (omitted `encountersKey`, same convention as any other encounter-less location).                                                                                                           |
 | Badge asset folders                                                | Split `Hoenn` into `BadgeAssetFolder.RubySapphire` (`public/badges/ruby-sapphire/`) and `BadgeAssetFolder.Emerald` (`public/badges/emerald/`) rather than one shared folder — Wallace is a gym leader (Rain Badge) in R/S but Emerald's Champion, so a shared folder would need two different images at the same `wallace.png` path. See "Badge asset folder is per-version-pair, not per-region" below.                                                                                                                                                                                                               |
@@ -424,24 +424,23 @@ Sapphire }` maps (Petalburg Woods, Rusturf Tunnel, Mt Chimney's
       separate bitmask, base `SYSTEM_FLAGS = 0x800`:
 
       | Split (gym) | Badge | Flag |
-                      |---|---|---|
-                      | Rustboro | Stone | `0x807` |
-                      | Dewford | Knuckle | `0x808` |
-                      | Mauville | Dynamo | `0x809` |
-                      | Lavaridge | Heat | `0x80A` |
-                      | Petalburg | Balance | `0x80B` |
-                      | Fortree | Feather | `0x80C` |
-                      | Mossdeep | Mind | `0x80D` |
-                      | Sootopolis | Rain | `0x80E` |
+                          |---|---|---|
+                          | Rustboro | Stone | `0x807` |
+                          | Dewford | Knuckle | `0x808` |
+                          | Mauville | Dynamo | `0x809` |
+                          | Lavaridge | Heat | `0x80A` |
+                          | Petalburg | Balance | `0x80B` |
+                          | Fortree | Feather | `0x80C` |
+                          | Mossdeep | Mind | `0x80D` |
+                          | Sootopolis | Rain | `0x80E` |
 
-                      Game-clear flag: `FLAG_SYS_GAME_CLEAR = 0x804`. No Gen 3
-                      `SplitParser` exists yet in `src/lib/parsers/` — these flag numbers
-                      are ready, but the parser to evaluate them against a decrypted save
-                      still needs writing when splits are actually authored.
+                          Game-clear flag: `FLAG_SYS_GAME_CLEAR = 0x804`. No Gen 3
+                          `SplitParser` exists yet in `src/lib/parsers/` — these flag numbers
+                          are ready, but the parser to evaluate them against a decrypted save
+                          still needs writing when splits are actually authored.
 
 - [x] Trainer battle data extraction mechanism — documented and verified
-      as a new skill, `gen3-trainer-data-extraction` (mirrors
-      `gen4-trainer-data-extraction`). Key finding: Gen 3 does **not**
+      as a new skill, `gen3-trainer-data-extraction`. Key finding: Gen 3 does **not**
       store nature/ability/gender per trainer mon the way Gen 4 does —
       they're derived from a deterministic personality hash at battle
       start. Verified end-to-end against Roxanne's real party (ability

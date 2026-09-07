@@ -10,9 +10,9 @@ project** (`pokeruby`, `pokesapphire` mirrors, `pokeemerald`, `pokefirered`).
 It does not generalize to other generations/consoles -- Gen 4's NDS decomps
 store nature/ability/gender as literal fields already resolved in a
 secondary cross-reference dataset, which is a completely different
-extraction problem (see `gen4-trainer-data-extraction`). Gen 3 stores none
-of those three fields at all; they're derived at battle-start from a
-deterministic hash, which is what this skill documents.
+extraction problem. Gen 3 stores none of those three fields at all;
+they're derived at battle-start from a deterministic hash, which is what
+this skill documents.
 
 **Games are independent, decomps included.** This skill was built and
 verified against `pokeruby`. Confirmed for this project: Ruby/Sapphire and
@@ -47,9 +47,7 @@ which optional fields are present, not the mon's identity:
 
 "Default moves" means the game computes that mon's moveset from its
 level-up learnset at battle time rather than storing one -- use this app's
-own move data (learnset source) for those, the same fallback
-`gen4-trainer-data-extraction` uses for its equivalent case, rather than
-guessing.
+own move data (learnset source) for those rather than guessing.
 
 `trainerClass` maps to this app's trainer-class slugs (check
 `src/lib/data/trainer-classes.ts` -- the decomp's `TRAINER_CLASS_*` naming
