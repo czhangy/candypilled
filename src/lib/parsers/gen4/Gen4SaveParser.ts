@@ -1,11 +1,12 @@
 import { GEN4_ITEM_INDEX } from '@/lib/parsers/gen4/gen4-item-index';
 import { getGen4SaveLayout } from '@/lib/parsers/gen4/gen4-save-layouts';
 import Gen4SaveBlocks from '@/lib/parsers/gen4/Gen4SaveBlocks';
-import { GrowthRate, Nature, PokemonStatus } from '@/lib/static/enums';
+import { PokemonStatus } from '@/lib/static/enums';
 import { CaughtPokemon, Game, StatValues } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
+import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 
 const PARTY_SLOT_SIZE = 236;
@@ -73,38 +74,6 @@ const PARTY_EXTENSION_LEVEL_OFFSET = 0x04;
 
 const LCRNG_MULTIPLIER = 0x41c64e6d;
 const LCRNG_INCREMENT = 0x6073;
-
-const MAX_LEVEL = 100;
-
-// A Pokémon's nature is `personalityValue % 25`, indexed into this
-// well-established, generation-invariant table.
-const NATURE_ORDER = [
-    Nature.Hardy,
-    Nature.Lonely,
-    Nature.Brave,
-    Nature.Adamant,
-    Nature.Naughty,
-    Nature.Bold,
-    Nature.Docile,
-    Nature.Relaxed,
-    Nature.Impish,
-    Nature.Lax,
-    Nature.Timid,
-    Nature.Hasty,
-    Nature.Serious,
-    Nature.Jolly,
-    Nature.Naive,
-    Nature.Modest,
-    Nature.Mild,
-    Nature.Quiet,
-    Nature.Bashful,
-    Nature.Rash,
-    Nature.Calm,
-    Nature.Gentle,
-    Nature.Sassy,
-    Nature.Careful,
-    Nature.Quirky,
-];
 
 const UNKNOWN_LOCATION = 'Unknown Location';
 
@@ -282,7 +251,7 @@ export default class Gen4SaveParser {
         const location =
             game.metLocationById[metLocationIndex] ?? UNKNOWN_LOCATION;
 
-        const nature = NATURE_ORDER[pid % 25];
+        const nature = NatureHelpers.getNatureFromPersonality(pid);
 
         const level = isParty
             ? Gen4SaveParser.decryptBlock(
@@ -291,7 +260,7 @@ export default class Gen4SaveParser {
                   PARTY_EXTENSION_SIZE,
                   pid
               ).getUint8(PARTY_EXTENSION_LEVEL_OFFSET)
-            : Gen4SaveParser.computeLevelFromExp(
+            : PokemonHelpers.getLevelFromExperience(
                   speciesData.growthRate,
                   experience
               );
@@ -309,57 +278,5 @@ export default class Gen4SaveParser {
             location,
             status: PokemonStatus.Alive,
         };
-    }
-
-    private static computeLevelFromExp(
-        growthRate: GrowthRate,
-        experience: number
-    ): number {
-        let level = 1;
-        for (let candidate = 1; candidate <= MAX_LEVEL; candidate += 1) {
-            if (
-                Gen4SaveParser.expForLevel(growthRate, candidate) > experience
-            ) {
-                break;
-            }
-            level = candidate;
-        }
-        return level;
-    }
-
-    // The six standard Generation III+ experience curves (Bulbapedia's
-    // "Experience" article), giving the cumulative EXP required to reach n.
-    private static expForLevel(growthRate: GrowthRate, n: number): number {
-        switch (growthRate) {
-            case GrowthRate.Erratic:
-                if (n <= 50) return Math.floor((n ** 3 * (100 - n)) / 50);
-                if (n <= 68) return Math.floor((n ** 3 * (150 - n)) / 100);
-                if (n <= 98) {
-                    return Math.floor(
-                        (n ** 3 * Math.floor((1911 - 10 * n) / 3)) / 500
-                    );
-                }
-                return Math.floor((n ** 3 * (160 - n)) / 100);
-            case GrowthRate.Fast:
-                return Math.floor((4 * n ** 3) / 5);
-            case GrowthRate.MediumSlow:
-                return Math.max(
-                    0,
-                    Math.floor(1.2 * n ** 3 - 15 * n ** 2 + 100 * n - 140)
-                );
-            case GrowthRate.Slow:
-                return Math.floor((5 * n ** 3) / 4);
-            case GrowthRate.Fluctuating:
-                if (n <= 15) {
-                    return Math.floor(
-                        (n ** 3 * (Math.floor((n + 1) / 3) + 24)) / 50
-                    );
-                }
-                if (n <= 36) return Math.floor((n ** 3 * (n + 14)) / 50);
-                return Math.floor((n ** 3 * (Math.floor(n / 2) + 32)) / 50);
-            case GrowthRate.MediumFast:
-            default:
-                return n ** 3;
-        }
     }
 }

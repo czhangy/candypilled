@@ -1,5 +1,6 @@
 import { POKEMON as VANILLA_POKEMON } from '@/lib/data/pokemon';
 import { STAT_FIELDS } from '@/lib/static/constants';
+import { GrowthRate } from '@/lib/static/enums';
 import {
     Abilities,
     DataChange,
@@ -10,6 +11,8 @@ import {
 } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import GenerationHelpers from '@/lib/utils/GenerationHelpers';
+
+const MAX_LEVEL = 100;
 
 // One species that knows a given move, alongside every learnset entry
 // (level-up level and/or machine/tutor) it learns that move through, for
@@ -219,6 +222,28 @@ export default class PokemonHelpers {
         if (genderRate === 0) return 'male';
         if (genderRate === 8) return 'female';
         return undefined;
+    }
+
+    /**
+     * The level a Pokémon with growthRate has reached at experience — the
+     * highest level whose growth-curve threshold doesn't exceed it.
+     * Needed when a save file only stores raw experience (not level) for a
+     * given Pokémon, e.g. a boxed (non-party) Gen III/IV Pokémon.
+     */
+    static getLevelFromExperience(
+        growthRate: GrowthRate,
+        experience: number
+    ): number {
+        let level = 1;
+        for (let candidate = 1; candidate <= MAX_LEVEL; candidate += 1) {
+            if (
+                PokemonHelpers.expForLevel(growthRate, candidate) > experience
+            ) {
+                break;
+            }
+            level = candidate;
+        }
+        return level;
     }
 
     /**
@@ -562,4 +587,40 @@ export default class PokemonHelpers {
         spd: 'SpD',
         spe: 'Spe',
     };
+
+    // The six standard Generation III+ experience curves (Bulbapedia's
+    // "Experience" article), giving the cumulative EXP required to reach n.
+    private static expForLevel(growthRate: GrowthRate, n: number): number {
+        switch (growthRate) {
+            case GrowthRate.Erratic:
+                if (n <= 50) return Math.floor((n ** 3 * (100 - n)) / 50);
+                if (n <= 68) return Math.floor((n ** 3 * (150 - n)) / 100);
+                if (n <= 98) {
+                    return Math.floor(
+                        (n ** 3 * Math.floor((1911 - 10 * n) / 3)) / 500
+                    );
+                }
+                return Math.floor((n ** 3 * (160 - n)) / 100);
+            case GrowthRate.Fast:
+                return Math.floor((4 * n ** 3) / 5);
+            case GrowthRate.MediumSlow:
+                return Math.max(
+                    0,
+                    Math.floor(1.2 * n ** 3 - 15 * n ** 2 + 100 * n - 140)
+                );
+            case GrowthRate.Slow:
+                return Math.floor((5 * n ** 3) / 4);
+            case GrowthRate.Fluctuating:
+                if (n <= 15) {
+                    return Math.floor(
+                        (n ** 3 * (Math.floor((n + 1) / 3) + 24)) / 50
+                    );
+                }
+                if (n <= 36) return Math.floor((n ** 3 * (n + 14)) / 50);
+                return Math.floor((n ** 3 * (Math.floor(n / 2) + 32)) / 50);
+            case GrowthRate.MediumFast:
+            default:
+                return n ** 3;
+        }
+    }
 }
