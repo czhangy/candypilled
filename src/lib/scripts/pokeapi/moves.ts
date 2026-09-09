@@ -4,9 +4,10 @@ import {
     buildVersionGroupGenerations,
     sleep,
     toGenerationNumber,
+    writeSlugType,
 } from '@/lib/scripts/pokeapi/shared';
 import { logSuccess, logWarning, runScript } from '@/lib/scripts/utils/helpers';
-import { MoveData, MoveValuesByGeneration } from '@/lib/static/types';
+import { MoveData, MoveSlug, MoveValuesByGeneration } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const POKEAPI_MOVE_URL = 'https://pokeapi.co/api/v2/move';
@@ -359,7 +360,7 @@ export const fetchMoves = async (): Promise<void> => {
             MOVE_NAME_OVERRIDES[move.name] ??
             StringHelpers.toTitleCase(move.name);
         data[move.name] = {
-            slug: move.name,
+            slug: move.name as MoveSlug,
             name,
             id: toResourceId(resource.url),
             category: move.damage_class.name,
@@ -376,6 +377,7 @@ export const fetchMoves = async (): Promise<void> => {
     }
 
     writeData(data);
+    writeSlugType('MoveSlug', Object.keys(data));
 };
 
 runScript(fetchMoves);

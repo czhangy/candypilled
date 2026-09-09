@@ -5,12 +5,14 @@ import {
     buildVersionGroupGenerations,
     sleep,
     toGenerationNumber,
+    writeSlugType,
 } from '@/lib/scripts/pokeapi/shared';
 import { logSuccess, logWarning, runScript } from '@/lib/scripts/utils/helpers';
 import { GrowthRate } from '@/lib/static/enums';
 import {
     Abilities,
     AbilitiesByGeneration,
+    AbilitySlug,
     EvolutionLineByGeneration,
     EvolutionMethod,
     EvolutionStep,
@@ -19,6 +21,7 @@ import {
     LearnsetMethod,
     LearnsetMove,
     PokemonData,
+    PokemonSlug,
     StatsByGeneration,
     StatValues,
     TypesByGeneration,
@@ -481,14 +484,14 @@ const buildAbilitiesByGeneration = (
 
     return boundaries.map((fromGeneration) => {
         const abilities: Abilities = {
-            slot1: abilityValueAt(slot1, fromGeneration) as string,
+            slot1: abilityValueAt(slot1, fromGeneration) as AbilitySlug,
         };
 
         const slot2Value = abilityValueAt(slot2, fromGeneration);
-        if (slot2Value) abilities.slot2 = slot2Value;
+        if (slot2Value) abilities.slot2 = slot2Value as AbilitySlug;
 
         const hiddenValue = abilityValueAt(hidden, fromGeneration);
-        if (hiddenValue) abilities.hidden = hiddenValue;
+        if (hiddenValue) abilities.hidden = hiddenValue as AbilitySlug;
 
         return { fromGeneration, abilities };
     });
@@ -890,7 +893,7 @@ const pruneDescendants = (
     node.children
         .filter((child) => child.fromGeneration <= generation)
         .map((child) => ({
-            slug: child.node.name,
+            slug: child.node.name as PokemonSlug,
             methods: child.methods,
             evolvesTo: pruneDescendants(child.node, generation),
         }));
@@ -920,7 +923,7 @@ const buildLine = (
             index > rootIndex ? edges[index - 1].methods : undefined;
 
         return {
-            slug: nodeNames[index],
+            slug: nodeNames[index] as PokemonSlug,
             methods,
             evolvesTo: isTarget
                 ? pruneDescendants(targetNode, generation)
@@ -1030,7 +1033,7 @@ export const fetchPokemonData = async (version: GameVersion): Promise<void> => {
             const formChangeItem = FORM_CHANGE_ITEMS_BY_VARIETY[variety.name];
             const wildHeldItems = buildWildHeldItems(rawPokemon, version);
             data[variety.name] = {
-                slug: variety.name,
+                slug: variety.name as PokemonSlug,
                 name,
                 dexNumber,
                 introducedInGeneration: dexGeneration,
@@ -1057,6 +1060,7 @@ export const fetchPokemonData = async (version: GameVersion): Promise<void> => {
     }
 
     writeData(data);
+    writeSlugType('PokemonSlug', Object.keys(data));
 };
 
 runScript(() => {

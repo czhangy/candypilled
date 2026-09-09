@@ -6260,7 +6260,7 @@ export const BATTLES: Record<string, BattleData> = {
             {
                 team: [
                     {
-                        slug: 'wormadam',
+                        slug: 'wormadam-plant',
                         ability: 'anticipation',
                         gender: 'female',
                         level: 25,

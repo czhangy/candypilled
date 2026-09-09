@@ -1,7 +1,13 @@
 import { GEN3_ITEM_INDEX } from '@/lib/parsers/gen3/gen3-item-index';
 import Gen3SaveBlocks from '@/lib/parsers/gen3/Gen3SaveBlocks';
 import { PokemonStatus } from '@/lib/static/enums';
-import { CaughtPokemon, Game, StatValues } from '@/lib/static/types';
+import {
+    AbilitySlug,
+    CaughtPokemon,
+    Game,
+    MoveSlug,
+    StatValues,
+} from '@/lib/static/types';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import NatureHelpers from '@/lib/utils/NatureHelpers';
@@ -239,10 +245,9 @@ export default class Gen3SaveParser {
         );
         const ivWord = misc.getUint32(MISC_IV_WORD_OFFSET, true);
         const isAltAbility = ((ivWord >>> ALT_ABILITY_BIT) & 1) === 1;
-        const ability =
-            (isAltAbility ? abilities?.slot2 : undefined) ??
+        const ability = ((isAltAbility ? abilities?.slot2 : undefined) ??
             abilities?.slot1 ??
-            '';
+            '') as AbilitySlug;
 
         const evs: StatValues = {
             hp: evsCondition.getUint8(EVS_OFFSET),
@@ -271,7 +276,7 @@ export default class Gen3SaveParser {
                 (moveId) =>
                     MoveHelpers.getMoveById(game.dataSource, moveId)?.slug
             )
-            .filter((slug): slug is string => slug !== undefined);
+            .filter((slug): slug is MoveSlug => slug !== undefined);
 
         const metLocationIndex = misc.getUint8(MISC_MET_LOCATION_OFFSET);
         const location =

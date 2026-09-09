@@ -5,7 +5,13 @@ import Image from 'next/image';
 import LocationSelectModal from '@/components/run/LocationSelectModal/LocationSelectModal';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { Nature, PokemonStatus } from '@/lib/static/enums';
-import { CaughtPokemon, Game, Roamer, Run } from '@/lib/static/types';
+import {
+    AbilitySlug,
+    CaughtPokemon,
+    Game,
+    Roamer,
+    Run,
+} from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
@@ -85,12 +91,11 @@ const RoamerTracker: React.FC<RoamerTrackerProps> = ({ game, run }) => {
             caughtPokemon: [
                 ...run.caughtPokemon,
                 {
-                    ability:
-                        PokemonHelpers.getPokemonAbilities(
-                            game.dataSource,
-                            roamer.species,
-                            game.generation
-                        )?.slot1 ?? '',
+                    ability: (PokemonHelpers.getPokemonAbilities(
+                        game.dataSource,
+                        roamer.species,
+                        game.generation
+                    )?.slot1 ?? '') as AbilitySlug,
                     evs: undefined,
                     gender: PokemonHelpers.isGenderless(
                         game.dataSource,
@@ -101,7 +106,7 @@ const RoamerTracker: React.FC<RoamerTrackerProps> = ({ game, run }) => {
                               game.dataSource,
                               roamer.species
                           ) ?? 'male'),
-                    heldItem: '',
+                    heldItem: undefined,
                     ivs: 0,
                     level: roamer.level,
                     location,

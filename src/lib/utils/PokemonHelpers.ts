@@ -7,6 +7,7 @@ import {
     GameDataSource,
     LearnsetMove,
     PokemonData,
+    PokemonSlug,
     StatValues,
 } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
@@ -18,7 +19,7 @@ const MAX_LEVEL = 100;
 // (level-up level and/or machine/tutor) it learns that move through, for
 // SpeciesListPanel's move-mode entries.
 type SpeciesLearnset = {
-    slug: string;
+    slug: PokemonSlug;
     name: string;
     dexNumber: number;
     moves: LearnsetMove[];

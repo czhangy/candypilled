@@ -251,7 +251,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                 ...run.caughtPokemon,
                 {
                     ...details,
-                    heldItem: '',
+                    heldItem: undefined,
                     location: isEggEncounter
                         ? (hatchLocation ?? '')
                         : location.name,

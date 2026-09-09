@@ -2,7 +2,13 @@ import { GEN4_ITEM_INDEX } from '@/lib/parsers/gen4/gen4-item-index';
 import { getGen4SaveLayout } from '@/lib/parsers/gen4/gen4-save-layouts';
 import Gen4SaveBlocks from '@/lib/parsers/gen4/Gen4SaveBlocks';
 import { PokemonStatus } from '@/lib/static/enums';
-import { CaughtPokemon, Game, StatValues } from '@/lib/static/types';
+import {
+    AbilitySlug,
+    CaughtPokemon,
+    Game,
+    MoveSlug,
+    StatValues,
+} from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
@@ -203,7 +209,8 @@ export default class Gen4SaveParser {
 
         const experience = canonical.getUint32(GROWTH_OFFSET + 0x08, true);
         const abilityId = canonical.getUint8(GROWTH_OFFSET + 0x0d);
-        const ability = AbilityHelpers.getAbilityById(abilityId)?.slug ?? '';
+        const ability = (AbilityHelpers.getAbilityById(abilityId)?.slug ??
+            '') as AbilitySlug;
 
         const evs: StatValues = {
             hp: canonical.getUint8(GROWTH_OFFSET + 0x10),
@@ -221,7 +228,7 @@ export default class Gen4SaveParser {
                 (moveId) =>
                     MoveHelpers.getMoveById(game.dataSource, moveId)?.slug
             )
-            .filter((slug): slug is string => slug !== undefined);
+            .filter((slug): slug is MoveSlug => slug !== undefined);
 
         const ivWord = canonical.getUint32(ATTACKS_OFFSET + 0x10, true);
         const ivs: StatValues = {

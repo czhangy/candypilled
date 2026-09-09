@@ -10,6 +10,7 @@ import {
 } from '@/lib/static/constants';
 import { Nature, PokemonStatus } from '@/lib/static/enums';
 import {
+    BattlePokemon,
     CalcField,
     CalcFieldState,
     CalcPokemonInput,
@@ -1054,7 +1055,9 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     run={run}
                     selectedBattle={effectiveSelectedBattle}
                     selectedMemberIndex={selectedMemberIndex}
-                    target={caught ?? tagPartnerMon}
+                    target={
+                        (caught ?? tagPartnerMon) as BattlePokemon | undefined
+                    }
                 />
                 <BattleSelectPanel
                     game={game}

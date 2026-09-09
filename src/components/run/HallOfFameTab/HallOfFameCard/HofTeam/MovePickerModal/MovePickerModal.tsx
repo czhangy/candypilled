@@ -1,14 +1,14 @@
 import Modal from '@/components/common/Modal/Modal';
 import SearchableList from '@/components/common/SearchableList/SearchableList';
-import { GameDataSource } from '@/lib/static/types';
+import { GameDataSource, MoveSlug } from '@/lib/static/types';
 import styles from './MovePickerModal.module.scss';
 
 type MovePickerModalProps = {
     dataSource: GameDataSource;
     generation: number;
     onClose: () => void;
-    onSelect: (slug: string) => void;
-    selectedMove?: string;
+    onSelect: (slug: MoveSlug) => void;
+    selectedMove?: MoveSlug;
 };
 
 const MovePickerModal: React.FC<MovePickerModalProps> = ({
@@ -31,7 +31,7 @@ const MovePickerModal: React.FC<MovePickerModalProps> = ({
     // -------------------------------------------------------------------------
 
     const handleSelectMove = (slug: string, requestClose: () => void): void => {
-        onSelect(slug);
+        onSelect(slug as MoveSlug);
         requestClose();
     };
 

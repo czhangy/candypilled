@@ -5,7 +5,13 @@ import LocationsList from '@/components/run/SplitTab/SplitLocation/PokedexTile/L
 import PokemonSummary from '@/components/run/SplitTab/SplitLocation/PokedexTile/PokemonSummary/PokemonSummary';
 import StatsChart from '@/components/run/SplitTab/SplitLocation/PokedexTile/StatsChart/StatsChart';
 import { Nature } from '@/lib/static/enums';
-import { AbilityEntry, CaughtPokemon, Game } from '@/lib/static/types';
+import {
+    AbilityEntry,
+    AbilitySlug,
+    CaughtPokemon,
+    Game,
+    PokemonSlug,
+} from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -115,12 +121,11 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
 
         const level = rest.defaultLevel ?? DEFAULT_CATCH_LEVEL;
         rest.onAddPokemon({
-            ability:
-                PokemonHelpers.getPokemonAbilities(
-                    game.dataSource,
-                    defaultCatchSpecies,
-                    generation
-                )?.slot1 ?? '',
+            ability: (PokemonHelpers.getPokemonAbilities(
+                game.dataSource,
+                defaultCatchSpecies,
+                generation
+            )?.slot1 ?? '') as AbilitySlug,
             evs: undefined,
             gender: PokemonHelpers.isGenderless(
                 game.dataSource,
@@ -140,7 +145,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                 level
             ),
             nature: Nature.Unknown,
-            slug: defaultCatchSpecies,
+            slug: defaultCatchSpecies as PokemonSlug,
         });
     };
 

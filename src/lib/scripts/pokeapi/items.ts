@@ -4,9 +4,10 @@ import {
     buildVersionGroupGenerations,
     sleep,
     toGenerationNumber,
+    writeSlugType,
 } from '@/lib/scripts/pokeapi/shared';
 import { logSuccess, logWarning, runScript } from '@/lib/scripts/utils/helpers';
-import { ItemData, ItemValuesByGeneration } from '@/lib/static/types';
+import { ItemData, ItemSlug, ItemValuesByGeneration } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const POKEAPI_ITEM_CATEGORY_URL = 'https://pokeapi.co/api/v2/item-category';
@@ -295,7 +296,7 @@ export const fetchItems = async (): Promise<void> => {
         const removedInGeneration = REMOVED_IN_GENERATION[apiSlug];
 
         data[slug] = {
-            slug,
+            slug: slug as ItemSlug,
             name,
             category: item.category.name,
             effect: toEnglishEffect(item.effect_entries),
@@ -313,6 +314,7 @@ export const fetchItems = async (): Promise<void> => {
     }
 
     writeData(data);
+    writeSlugType('ItemSlug', Object.keys(data));
 };
 
 runScript(fetchItems);
