@@ -6,6 +6,7 @@ import METEOR_FALLS from '@/lib/data/ruby-sapphire/locations/meteor-falls';
 import PHOEBES_ROOM from '@/lib/data/ruby-sapphire/locations/phoebes-room';
 import SIDNEYS_ROOM from '@/lib/data/ruby-sapphire/locations/sidneys-room';
 import SOOTOPOLIS_CITY from '@/lib/data/ruby-sapphire/locations/sootopolis-city';
+import TRICK_HOUSE from '@/lib/data/ruby-sapphire/locations/trick-house';
 import VICTORY_ROAD from '@/lib/data/ruby-sapphire/locations/victory-road';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
@@ -14,6 +15,7 @@ const STEVEN: Split = {
     name: 'Steven',
     locations: [
         SOOTOPOLIS_CITY,
+        TRICK_HOUSE,
         LocationHelpers.withSubareaOrder(METEOR_FALLS, [
             '1F Back',
             'B1F',

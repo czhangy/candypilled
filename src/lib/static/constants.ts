@@ -59,3 +59,7 @@ export const GEN_4_TRUE_DOUBLE_HEIGHT = 44;
 // Twins), wide enough to fit two side-by-side trainer sprites -- 2x Gen 3's
 // default marker width.
 export const GEN_3_TRUE_DOUBLE_WIDTH = 38;
+
+// Marker height for a Gen 3 true-double or tag battle whose trainer-name
+// label wraps to two lines.
+export const GEN_3_TRUE_DOUBLE_HEIGHT = 42;

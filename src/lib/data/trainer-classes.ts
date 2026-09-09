@@ -90,6 +90,14 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Commander',
         spriteSlug: 'saturn',
     },
+    'cooltrainer-f': {
+        displayName: 'Cooltrainer',
+        spriteSlug: 'cooltrainer-f',
+    },
+    'cooltrainer-m': {
+        displayName: 'Cooltrainer',
+        spriteSlug: 'cooltrainer-m',
+    },
     cowgirl: {
         displayName: 'Cowgirl',
         spriteSlug: 'cowgirl',
@@ -126,6 +134,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Elite Four',
         spriteSlug: 'lucian',
     },
+    'expert-f': {
+        displayName: 'Expert',
+        spriteSlug: 'expert-f',
+    },
     'expert-m': {
         displayName: 'Expert',
         spriteSlug: 'expert-m',
@@ -154,9 +166,17 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Guitarist',
         spriteSlug: 'guitarist',
     },
+    'hex-maniac': {
+        displayName: 'Hex Maniac',
+        spriteSlug: 'hex-maniac',
+    },
     hiker: {
         displayName: 'Hiker',
         spriteSlug: 'hiker',
+    },
+    interviewers: {
+        displayName: 'Interviewer',
+        spriteSlug: 'interviewers',
     },
     jogger: {
         displayName: 'Jogger',
@@ -274,6 +294,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'PKMN Trainer',
         spriteSlug: 'riley',
     },
+    'pkmn-trainer-wally': {
+        displayName: 'PKMN Trainer',
+        spriteSlug: 'wally',
+    },
     'poke-kid': {
         displayName: 'Poké Kid',
         spriteSlug: 'poke-kid',
@@ -334,6 +358,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Scientist',
         spriteSlug: 'scientist',
     },
+    'sis-and-bro': {
+        displayName: 'Sis and Bro',
+        spriteSlug: 'sis-and-bro',
+    },
     'skier-f': {
         displayName: 'Skier',
         spriteSlug: 'skier-f',
@@ -361,6 +389,14 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
     'team-magma-grunt-m': {
         displayName: 'Team Magma Grunt',
         spriteSlug: 'team-magma-grunt-m',
+    },
+    'triathlete-biker-f': {
+        displayName: 'Triathlete',
+        spriteSlug: 'triathlete-biker-f',
+    },
+    'triathlete-biker-m': {
+        displayName: 'Triathlete',
+        spriteSlug: 'triathlete-biker-m',
     },
     'tuber-f': {
         displayName: 'Tuber',

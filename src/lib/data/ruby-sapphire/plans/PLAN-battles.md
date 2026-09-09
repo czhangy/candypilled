@@ -203,6 +203,12 @@ and Champion Wallace (`champions-room.ts`).
 4. Ask the user for each trainer's `BattleMetadata` and x/y (batched as
    one plain-text list per location: "Here's what I need for
    <location>: 1. <trainer> — metadata, x/y 2. ...").
+   **List trainers in the exact order the source of truth lists them
+   (e.g. Bulbapedia's own listed order for that location) — do not
+   silently re-sort by the order you looked them up in the decomp, or by
+   any other inferred order.** The user's answers come back positionally
+   matched to this list, so a reorder here silently misassigns every
+   answer after the first mismatch.
 5. Write the `BattleData` entries into `battles.ts`, keyed by the derived
    `battleKey`s.
 6. Wire those `battleKey`s into the location's `battles: []` array (in the

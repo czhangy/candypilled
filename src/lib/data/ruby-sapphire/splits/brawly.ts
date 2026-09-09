@@ -27,7 +27,7 @@ const BRAWLY: Split = {
         RUSTBORO_CITY,
         ROUTE_116,
         RUSTURF_TUNNEL,
-        ROUTE_104,
+        LocationHelpers.withSubareaOrder(ROUTE_104, ['North', 'South']),
         PETALBURG_WOODS,
         DEWFORD_TOWN,
         ROUTE_107,
