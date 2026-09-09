@@ -58,6 +58,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Bug Catcher',
         spriteSlug: 'bug-catcher',
     },
+    'bug-maniac': {
+        displayName: 'Bug Maniac',
+        spriteSlug: 'bug-maniac',
+    },
     cameraman: {
         displayName: 'Cameraman',
         spriteSlug: 'cameraman',
@@ -190,6 +194,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Lass',
         spriteSlug: 'lass',
     },
+    'leader-brawly': {
+        displayName: 'Leader',
+        spriteSlug: 'brawly',
+    },
     'leader-byron': {
         displayName: 'Leader',
         spriteSlug: 'byron',
@@ -225,6 +233,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
     'leader-wake': {
         displayName: 'Leader',
         spriteSlug: 'wake',
+    },
+    'leader-wattson': {
+        displayName: 'Leader',
+        spriteSlug: 'wattson',
     },
     'ninja-boy': {
         displayName: 'Ninja Boy',
@@ -374,6 +386,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Socialite',
         spriteSlug: 'socialite',
     },
+    'sr-and-jr': {
+        displayName: 'Sr. and Jr.',
+        spriteSlug: 'sr-and-jr',
+    },
     'swimmer-f': {
         displayName: 'Swimmer',
         spriteSlug: 'swimmer-f',
@@ -397,6 +413,14 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
     'triathlete-biker-m': {
         displayName: 'Triathlete',
         spriteSlug: 'triathlete-biker-m',
+    },
+    'triathlete-runner-f': {
+        displayName: 'Triathlete',
+        spriteSlug: 'triathlete-runner-f',
+    },
+    'triathlete-runner-m': {
+        displayName: 'Triathlete',
+        spriteSlug: 'triathlete-runner-m',
     },
     'tuber-f': {
         displayName: 'Tuber',

@@ -44,6 +44,11 @@ const HELD_ITEM_CATEGORIES = [
     // used to render an encounter's `heldItem`.
     'stat-boosts',
     'all-mail',
+    // Sell-value-only items (Nugget, Pearl, Stardust, etc.) with no battle
+    // effect, but real trainers in-game are scripted to hold one on their
+    // Pokémon (e.g. a Nugget-holding NPC), so this needs the same held-item
+    // lookup as any other `heldItem`.
+    'loot',
 ];
 // Like moves.json and abilities.json, this dataset isn't scoped to the
 // current game, but unlike them it doesn't cover every generation the site

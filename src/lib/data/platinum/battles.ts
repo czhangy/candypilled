@@ -1447,8 +1447,9 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-floaroma-meadow': {
         metadata: [BattleMetadata.BackToBack],
+        plainName: true,
         trainerClass: 'galactic-grunt-m',
-        name: 'Back-to-Back',
+        name: 'Team Galactic Grunts',
         teams: [
             {
                 team: [

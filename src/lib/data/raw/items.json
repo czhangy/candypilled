@@ -4140,5 +4140,345 @@
                 "description": "Stationery featuring a print of an arched bridge. Let a Pokémon hold it for use."
             }
         ]
+    },
+    "tiny-mushroom": {
+        "slug": "tiny-mushroom",
+        "name": "Tiny Mushroom",
+        "category": "loot",
+        "effect": "Fire Red and Leaf Green: Trade two for prior Level-up moves. Sell for 250 Pokédollars, or to Hungry Maid for 500 Pokédollars.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/tiny-mushroom.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A plain, ordinary mushroom. Can be sold cheaply."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A small and rare mushroom. It is quite popular among certain maniacal fan segments."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A small and rare mushroom. It is sought after by collectors."
+            }
+        ]
+    },
+    "big-mushroom": {
+        "slug": "big-mushroom",
+        "name": "Big Mushroom",
+        "category": "loot",
+        "effect": "Fire Red and Leaf Green: Trade for prior Level-up moves. Sell for 2500 Pokédollars, or to Hungry Maid for 5000 Pokédollars.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/big-mushroom.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A rare mushroom that would sell at a high price."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A large and rare mushroom. It is very popular among certain maniacal fan segments."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A large and rare mushroom. It is sought after by collectors."
+            }
+        ]
+    },
+    "pearl": {
+        "slug": "pearl",
+        "name": "Pearl",
+        "category": "loot",
+        "effect": "Sell for 700 Pokédollars, or to Ore Collector for 1400 Pokédollars.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/pearl.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A pretty pearl. Can be sold cheaply."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A somewhat-small pearl that sparkles in a pretty silver color. It can be sold cheaply to shops."
+            }
+        ]
+    },
+    "big-pearl": {
+        "slug": "big-pearl",
+        "name": "Big Pearl",
+        "category": "loot",
+        "effect": "Sell for 3750 Pokédollars, or to Ore Collector for 7500 Pokédollars.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/big-pearl.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A lovely large pearl that would sell at a high price."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A quite-large pearl that sparkles in a pretty silver color. It can be sold at a high price to shops."
+            }
+        ]
+    },
+    "stardust": {
+        "slug": "stardust",
+        "name": "Stardust",
+        "category": "loot",
+        "effect": "Sell for 1000 Pokédollars, or to Ore Collector for 2000 Pokédollars.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/stardust.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Beautiful red sand. Can be sold at a high price."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "Lovely, red-colored sand with a loose, silky feel. It can be sold at a high price to shops."
+            }
+        ]
+    },
+    "star-piece": {
+        "slug": "star-piece",
+        "name": "Star Piece",
+        "category": "loot",
+        "effect": "Platinum: Trade for one of each color Shard. Black and White: Trade for PP Up. Sell for 4900 Pokédollars, or to Ore Collector for 9800 Pokédollars.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/star-piece.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A red gem shard. It would sell for a very high price."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A shard of a pretty gem that sparkles in a red color. It can be sold at a high price to shops."
+            }
+        ]
+    },
+    "nugget": {
+        "slug": "nugget",
+        "name": "Nugget",
+        "category": "loot",
+        "effect": "Sell for 5000 Pokédollars, or to Ore Collector for 10000 Pokédollars.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/nugget.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A nugget of pure gold. Can be sold at a high price."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A nugget of pure gold that gives off a lustrous gleam. It can be sold at a high price to shops."
+            }
+        ]
+    },
+    "rare-bone": {
+        "slug": "rare-bone",
+        "name": "Rare Bone",
+        "category": "loot",
+        "effect": "Sell for 5000 Pokédollars, or to Bone Man for 10000 Pokédollars.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/rare-bone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A bone that is extremely valuable for Pokémon archaeology. It can be sold for a high price to shops."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A bone that is extremely valuable for Pokémon archeology. It can be sold for a high price to shops."
+            }
+        ]
+    },
+    "pretty-wing": {
+        "slug": "pretty-wing",
+        "name": "Pretty Wing",
+        "category": "loot",
+        "effect": "Sell for 100 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/pretty-wing.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Though this feather is beautiful, it's just a regular feather and has no effect on Pokémon."
+            }
+        ]
+    },
+    "balm-mushroom": {
+        "slug": "balm-mushroom",
+        "name": "Balm Mushroom",
+        "category": "loot",
+        "effect": "Sell to Hungry Maid for 25000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/balm-mushroom.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A rare mushroom which gives off a nice fragrance. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "big-nugget": {
+        "slug": "big-nugget",
+        "name": "Big Nugget",
+        "category": "loot",
+        "effect": "Sell to Ore Collector for 30000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/big-nugget.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A big nugget of pure gold that gives off a lustrous gleam. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "pearl-string": {
+        "slug": "pearl-string",
+        "name": "Pearl String",
+        "category": "loot",
+        "effect": "Sell to Ore Collector for 25000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/pearl-string.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Very large pearls that sparkle in a pretty silver color. A maniac will buy them for a high price."
+            }
+        ]
+    },
+    "comet-shard": {
+        "slug": "comet-shard",
+        "name": "Comet Shard",
+        "category": "loot",
+        "effect": "Sell to Ore Collector for 60000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/comet-shard.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A shard which fell to the ground when a comet approached. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "relic-copper": {
+        "slug": "relic-copper",
+        "name": "Relic Copper",
+        "category": "loot",
+        "effect": "Sell to Villa Owner for 1000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/relic-copper.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A copper coin used in a civilization about 3,000 years ago. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "relic-silver": {
+        "slug": "relic-silver",
+        "name": "Relic Silver",
+        "category": "loot",
+        "effect": "Sell to Villa Owner 5000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/relic-silver.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A silver coin used in a civilization about 3,000 years ago. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "relic-gold": {
+        "slug": "relic-gold",
+        "name": "Relic Gold",
+        "category": "loot",
+        "effect": "Sell to Villa Owner 10000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/relic-gold.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gold coin used in a civilization about 3,000 years ago. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "relic-vase": {
+        "slug": "relic-vase",
+        "name": "Relic Vase",
+        "category": "loot",
+        "effect": "Sell to Villa Owner 50000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/relic-vase.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A vase made in a civilization about 3,000 years ago. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "relic-band": {
+        "slug": "relic-band",
+        "name": "Relic Band",
+        "category": "loot",
+        "effect": "Sell to Villa Owner for 100000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/relic-band.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A bracelet made in a civilization about 3,000 years ago. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "relic-statue": {
+        "slug": "relic-statue",
+        "name": "Relic Statue",
+        "category": "loot",
+        "effect": "Sell to Villa Owner 200000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/relic-statue.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A stone figure made in a civilization about 3,000 years ago. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "relic-crown": {
+        "slug": "relic-crown",
+        "name": "Relic Crown",
+        "category": "loot",
+        "effect": "Sell to Villa Owner for 300000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/relic-crown.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A crown made in a civilization about 3,000 years ago. A maniac will buy it for a high price."
+            }
+        ]
     }
 }

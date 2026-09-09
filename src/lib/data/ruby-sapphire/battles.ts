@@ -923,7 +923,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-mike': {
-        metadata: [],
+        metadata: [BattleMetadata.Optional],
         split: 'Brawly',
         trainerClass: 'hiker',
         name: 'Mike',
@@ -1643,8 +1643,9 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'team-magma-grunt-m-oceanic-museum': {
         metadata: [BattleMetadata.BackToBack],
+        plainName: true,
         trainerClass: 'team-magma-grunt-m',
-        name: 'Back-to-Back',
+        name: 'Team Magma Grunts',
         teams: [
             {
                 team: [
@@ -1682,8 +1683,9 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'team-aqua-grunt-m-oceanic-museum': {
         metadata: [BattleMetadata.BackToBack],
+        plainName: true,
         trainerClass: 'team-aqua-grunt-m',
-        name: 'Back-to-Back',
+        name: 'Team Aqua Grunts',
         teams: [
             {
                 team: [
@@ -3252,6 +3254,608 @@ export const BATTLES: Record<string, BattleData> = {
                         ivs: 12,
                     },
                 ],
+            },
+        ],
+    },
+    'winstrate-family': {
+        metadata: [BattleMetadata.Optional, BattleMetadata.BackToBack],
+        plainName: true,
+        trainerClass: 'pokefan-m',
+        name: 'Winstrate Family',
+        teams: [
+            {
+                trainerClass: 'pokefan-m',
+                team: [
+                    {
+                        slug: 'taillow',
+                        ability: 'guts',
+                        gender: 'male',
+                        heldItem: 'oran-berry',
+                        level: 16,
+                        nature: Nature.Bashful,
+                        ivs: 3,
+                    },
+                    {
+                        slug: 'zigzagoon',
+                        ability: 'pickup',
+                        gender: 'male',
+                        heldItem: 'oran-berry',
+                        level: 16,
+                        nature: Nature.Hardy,
+                        ivs: 3,
+                    },
+                ],
+            },
+            {
+                trainerClass: 'pokefan-f',
+                team: [
+                    {
+                        slug: 'roselia',
+                        ability: 'natural-cure',
+                        gender: 'female',
+                        heldItem: 'oran-berry',
+                        level: 17,
+                        nature: Nature.Mild,
+                        ivs: 6,
+                    },
+                ],
+            },
+            {
+                trainerClass: 'lass',
+                team: [
+                    {
+                        slug: 'marill',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        level: 15,
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'shroomish',
+                        ability: 'effect-spore',
+                        gender: 'female',
+                        level: 15,
+                        nature: Nature.Mild,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'female',
+                        level: 15,
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                ],
+            },
+            {
+                trainerClass: 'expert-f',
+                team: [
+                    {
+                        slug: 'meditite',
+                        ability: 'pure-power',
+                        gender: 'female',
+                        level: 18,
+                        moves: [
+                            'high-jump-kick',
+                            'meditate',
+                            'confusion',
+                            'detect',
+                        ],
+                        nature: Nature.Impish,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
+    'sr-and-jr-anna-and-meg': {
+        metadata: [BattleMetadata.Optional, BattleMetadata.TrueDouble],
+        trainerClass: 'sr-and-jr',
+        name: 'Anna & Meg',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zigzagoon',
+                        ability: 'pickup',
+                        gender: 'male',
+                        level: 16,
+                        moves: [
+                            'growl',
+                            'tail-whip',
+                            'headbutt',
+                            'odor-sleuth',
+                        ],
+                        nature: Nature.Naughty,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'makuhita',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        level: 18,
+                        moves: ['tackle', 'focus-energy', 'arm-thrust'],
+                        nature: Nature.Careful,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'triathlete-runner-m-dylan': {
+        metadata: [BattleMetadata.Optional],
+        trainerClass: 'triathlete-runner-m',
+        name: 'Dylan',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'doduo',
+                        ability: 'run-away',
+                        gender: 'male',
+                        level: 18,
+                        nature: Nature.Hasty,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'pkmn-breeder-f-lydia': {
+        metadata: [BattleMetadata.Optional],
+        trainerClass: 'pkmn-breeder-f',
+        name: 'Lydia',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'wingull',
+                        ability: 'keen-eye',
+                        gender: 'female',
+                        level: 12,
+                        nature: Nature.Docile,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'shroomish',
+                        ability: 'effect-spore',
+                        gender: 'female',
+                        level: 12,
+                        nature: Nature.Bold,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'marill',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        level: 12,
+                        nature: Nature.Brave,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'roselia',
+                        ability: 'natural-cure',
+                        gender: 'female',
+                        level: 12,
+                        nature: Nature.Quirky,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'skitty',
+                        ability: 'cute-charm',
+                        gender: 'female',
+                        level: 12,
+                        nature: Nature.Bold,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'goldeen',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 12,
+                        nature: Nature.Hardy,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'triathlete-runner-f-maria': {
+        metadata: [BattleMetadata.Optional],
+        trainerClass: 'triathlete-runner-f',
+        name: 'Maria',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'doduo',
+                        ability: 'run-away',
+                        gender: 'female',
+                        level: 18,
+                        nature: Nature.Hasty,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'bug-maniac-derek': {
+        metadata: [BattleMetadata.Optional],
+        trainerClass: 'bug-maniac',
+        name: 'Derek',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'nincada',
+                        ability: 'compound-eyes',
+                        gender: 'male',
+                        level: 15,
+                        nature: Nature.Serious,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'dustox',
+                        ability: 'shield-dust',
+                        gender: 'male',
+                        level: 15,
+                        nature: Nature.Naive,
+                        ivs: 18,
+                    },
+                    {
+                        slug: 'beautifly',
+                        ability: 'swarm',
+                        gender: 'male',
+                        level: 15,
+                        nature: Nature.Brave,
+                        ivs: 18,
+                    },
+                ],
+            },
+        ],
+    },
+    'pkmn-breeder-m-isaac': {
+        metadata: [BattleMetadata.Optional],
+        trainerClass: 'pkmn-breeder-m',
+        name: 'Isaac',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'whismur',
+                        ability: 'soundproof',
+                        gender: 'male',
+                        level: 12,
+                        nature: Nature.Quiet,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'zigzagoon',
+                        ability: 'pickup',
+                        gender: 'male',
+                        level: 12,
+                        nature: Nature.Lax,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'aron',
+                        ability: 'sturdy',
+                        gender: 'male',
+                        level: 12,
+                        nature: Nature.Naive,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'poochyena',
+                        ability: 'run-away',
+                        gender: 'male',
+                        level: 12,
+                        nature: Nature.Careful,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'taillow',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 12,
+                        nature: Nature.Modest,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'makuhita',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        level: 12,
+                        nature: Nature.Hardy,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'battle-girl-laura': {
+        metadata: [],
+        trainerClass: 'battle-girl',
+        name: 'Laura',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'meditite',
+                        ability: 'pure-power',
+                        gender: 'female',
+                        level: 14,
+                        nature: Nature.Docile,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'black-belt-hideki': {
+        metadata: [BattleMetadata.Optional],
+        trainerClass: 'black-belt',
+        name: 'Hideki',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'machop',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 14,
+                        nature: Nature.Modest,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'battle-girl-tessa': {
+        metadata: [BattleMetadata.Optional],
+        trainerClass: 'battle-girl',
+        name: 'Tessa',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'meditite',
+                        ability: 'pure-power',
+                        gender: 'female',
+                        level: 12,
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'machop',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 12,
+                        nature: Nature.Bashful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'meditite',
+                        ability: 'pure-power',
+                        gender: 'female',
+                        level: 12,
+                        nature: Nature.Calm,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'leader-brawly': {
+        metadata: [BattleMetadata.Boss],
+        trainerClass: 'leader-brawly',
+        name: 'Brawly',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'machop',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 17,
+                        moves: [
+                            'leer',
+                            'karate-chop',
+                            'seismic-toss',
+                            'bulk-up',
+                        ],
+                        nature: Nature.Hardy,
+                        ivs: 18,
+                    },
+                    {
+                        slug: 'makuhita',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        level: 18,
+                        moves: [
+                            'arm-thrust',
+                            'knock-off',
+                            'sand-attack',
+                            'bulk-up',
+                        ],
+                        nature: Nature.Naive,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+        items: [
+            {
+                count: 2,
+                name: 'Super Potion',
+            },
+        ],
+    },
+    'guitarist-kirk': {
+        metadata: [BattleMetadata.Choice],
+        trainerClass: 'guitarist',
+        name: 'Kirk',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'electrike',
+                        ability: 'static',
+                        gender: 'male',
+                        level: 18,
+                        nature: Nature.Mild,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'magnemite',
+                        ability: 'magnet-pull',
+                        gender: 'genderless',
+                        level: 18,
+                        nature: Nature.Modest,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'youngster-ben': {
+        metadata: [BattleMetadata.Choice],
+        trainerClass: 'youngster',
+        name: 'Ben',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zigzagoon',
+                        ability: 'pickup',
+                        gender: 'male',
+                        level: 19,
+                        moves: [
+                            'headbutt',
+                            'sand-attack',
+                            'growl',
+                            'thunderbolt',
+                        ],
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'guitarist-shawn': {
+        metadata: [],
+        trainerClass: 'guitarist',
+        name: 'Shawn',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'voltorb',
+                        ability: 'soundproof',
+                        gender: 'genderless',
+                        level: 17,
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'voltorb',
+                        ability: 'soundproof',
+                        gender: 'genderless',
+                        level: 17,
+                        nature: Nature.Careful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'voltorb',
+                        ability: 'soundproof',
+                        gender: 'genderless',
+                        level: 17,
+                        nature: Nature.Naughty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'battle-girl-vivian': {
+        metadata: [BattleMetadata.Choice],
+        trainerClass: 'battle-girl',
+        name: 'Vivian',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'meditite',
+                        ability: 'pure-power',
+                        gender: 'female',
+                        level: 19,
+                        moves: ['bide', 'detect', 'confusion', 'thunder-punch'],
+                        nature: Nature.Mild,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'leader-wattson': {
+        metadata: [BattleMetadata.Boss],
+        trainerClass: 'leader-wattson',
+        name: 'Wattson',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'magnemite',
+                        ability: 'magnet-pull',
+                        gender: 'genderless',
+                        level: 22,
+                        moves: [
+                            'supersonic',
+                            'sonic-boom',
+                            'thunder-shock',
+                            'thunder-wave',
+                        ],
+                        nature: Nature.Hasty,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'voltorb',
+                        ability: 'soundproof',
+                        gender: 'genderless',
+                        level: 20,
+                        moves: [
+                            'rollout',
+                            'self-destruct',
+                            'spark',
+                            'sonic-boom',
+                        ],
+                        nature: Nature.Docile,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'magneton',
+                        ability: 'magnet-pull',
+                        gender: 'genderless',
+                        level: 23,
+                        moves: [
+                            'supersonic',
+                            'sonic-boom',
+                            'shock-wave',
+                            'thunder-wave',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+        items: [
+            {
+                count: 2,
+                name: 'Super Potion',
             },
         ],
     },

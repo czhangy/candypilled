@@ -67,11 +67,11 @@ const BattleCard: React.FC<BattleCardProps> = ({
     // trainer — only the very last row carries the full TrainerPanel
     // (badges/metadata); every other row is a bare TrainerSprite.
     const rows = teamGroups.flatMap((group) =>
-        group.teams.map((team) => ({
+        group.teams.map((row) => ({
             items: group.items,
             name: group.name,
-            team,
-            trainerClass: group.trainerClass,
+            team: row.team,
+            trainerClass: row.trainerClass,
         }))
     );
     const isStacked = rows.length > 1;

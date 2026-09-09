@@ -43,6 +43,7 @@ const BRAWLY: Split = {
         ROUTE_111,
         ROUTE_117,
         VERDANTURF_TOWN,
+        RUSTURF_TUNNEL,
         DEWFORD_GYM,
     ],
     // FLAG_BADGE02_GET = SYSTEM_FLAGS (0x800) + 0x08, per pokeruby's

@@ -32,6 +32,11 @@ const ROUTE_111: Location = {
                     x: 28.59,
                     y: 11.29,
                 },
+                {
+                    battleKey: 'winstrate-family',
+                    x: 33.75,
+                    y: 66.76,
+                },
             ],
         },
         {

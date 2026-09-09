@@ -162,19 +162,25 @@ export type BattleTeamCondition = { type: 'starter'; starter: string };
 // rendered together — a trainer can have several genuinely independent,
 // unconditioned team options (e.g. a randomized roster), and there's no way
 // to know from a run alone which one a given playthrough actually has.
+// `trainerClass` overrides the battle's own sprite for this one team only —
+// for a BackToBack sequence whose consecutive fights are different named
+// trainers (not one trainer's escalating roster), so each fight can show its
+// own sprite despite sharing the battle's single display name.
 export type BattleTeam = {
     condition?: BattleTeamCondition;
     team: BattlePokemon[];
+    trainerClass?: string;
 };
 
 // One trainer's own slice of a battle: their TRAINER_CLASSES slug, name, and
-// every team that survived condition filtering for the current run. A
-// non-tag battle has a single group; a tag battle has one per trainer, in
-// trainerClass/secondTrainer order.
+// every team that survived condition filtering for the current run, each
+// carrying its own resolved trainerClass (falling back to the group's own
+// when a team doesn't override it). A non-tag battle has a single group; a
+// tag battle has one per trainer, in trainerClass/secondTrainer order.
 export type BattleTeamGroup = {
     items?: BattleItem[];
     name: string;
-    teams: BattlePokemon[][];
+    teams: { team: BattlePokemon[]; trainerClass: string }[];
     trainerClass: string;
 };
 
@@ -236,6 +242,12 @@ export type BattleData = {
     teams: BattleTeam[];
     items?: BattleItem[];
     metadata: BattleMetadata[];
+    // When true, this battle's display name (BattleHelpers.getFullName) is
+    // `name` verbatim, skipping the usual "<TRAINER_CLASSES displayName>
+    // <name>" prefix -- for a name that already reads as a complete title
+    // (e.g. a family/group name for a BackToBack sequence) rather than a
+    // person's own name paired with their class.
+    plainName?: boolean;
     secondTrainer?: BattleTrainer;
     // Restricts this battle's marker to the named split (Split.name) or any
     // split after it in game order — for a location placed in more than

@@ -26,13 +26,12 @@ export default class BattleHelpers {
         return StringHelpers.toSlug(BattleHelpers.getBattleKey(battle));
     }
 
-    /** battle's full display name, e.g. "Youngster Joey", or "Bug Catcher Jack and Lass Briana" for a tag battle. */
+    /** battle's full display name, e.g. "Youngster Joey", or "Bug Catcher Jack and Lass Briana" for a tag battle. `plainName` skips the class prefix, e.g. "Winstrate Family". */
     static getFullName(battle: Battle, game: Game): string {
         const data = game.battles[battle.battleKey];
-        const primaryName = TrainerHelpers.getDisplayName(
-            data.trainerClass,
-            data.name
-        );
+        const primaryName = data.plainName
+            ? data.name
+            : TrainerHelpers.getDisplayName(data.trainerClass, data.name);
 
         return data.secondTrainer
             ? `${primaryName} and ${TrainerHelpers.getDisplayName(data.secondTrainer.trainerClass, data.secondTrainer.name)}`
@@ -51,7 +50,11 @@ export default class BattleHelpers {
             {
                 trainerClass: data.trainerClass,
                 name: data.name,
-                teams: BattleHelpers.getMatchingTeams(data.teams, starter),
+                teams: BattleHelpers.getMatchingTeams(
+                    data.teams,
+                    starter,
+                    data.trainerClass
+                ),
                 items: data.items,
             },
         ];
@@ -62,7 +65,8 @@ export default class BattleHelpers {
                 name: data.secondTrainer.name,
                 teams: BattleHelpers.getMatchingTeams(
                     data.secondTrainer.teams,
-                    starter
+                    starter,
+                    data.secondTrainer.trainerClass
                 ),
             });
         }
@@ -77,7 +81,7 @@ export default class BattleHelpers {
         game: Game
     ): BattlePokemon[] {
         return BattleHelpers.getTeamGroups(battle, starter, game).flatMap(
-            (group) => group.teams.flat()
+            (group) => group.teams.flatMap((row) => row.team)
         );
     }
 
@@ -276,14 +280,20 @@ export default class BattleHelpers {
     // a row to render (e.g. empty slots) instead of silently vanishing.
     private static getMatchingTeams(
         teams: BattleTeam[],
-        starter: string
-    ): BattlePokemon[][] {
+        starter: string,
+        defaultTrainerClass: string
+    ): { team: BattlePokemon[]; trainerClass: string }[] {
         const matching = teams
             .filter((entry) =>
                 BattleHelpers.matchesCondition(entry.condition, starter)
             )
-            .map((entry) => entry.team);
+            .map((entry) => ({
+                team: entry.team,
+                trainerClass: entry.trainerClass ?? defaultTrainerClass,
+            }));
 
-        return matching.length > 0 ? matching : [[]];
+        return matching.length > 0
+            ? matching
+            : [{ team: [], trainerClass: defaultTrainerClass }];
     }
 }
