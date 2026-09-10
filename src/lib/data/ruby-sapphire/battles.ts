@@ -5325,4 +5325,620 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'swimmer-f-dawn': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'swimmer-f',
+        name: 'Dawn',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'marill',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        level: 27,
+                        nature: Nature.Sassy,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-f-beverly': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'swimmer-f',
+        name: 'Beverly',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'wailmer',
+                        ability: 'water-veil',
+                        gender: 'female',
+                        level: 26,
+                        nature: Nature.Naive,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'wailmer',
+                        ability: 'water-veil',
+                        gender: 'female',
+                        level: 26,
+                        nature: Nature.Impish,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-m-austin': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'swimmer-m',
+        name: 'Austin',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'magikarp',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 25,
+                        nature: Nature.Calm,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'tentacool',
+                        ability: 'clear-body',
+                        gender: 'male',
+                        level: 25,
+                        nature: Nature.Rash,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'wingull',
+                        ability: 'keen-eye',
+                        gender: 'male',
+                        level: 25,
+                        nature: Nature.Rash,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'ruin-maniac-foster': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'ruin-maniac',
+        name: 'Foster',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'sandshrew',
+                        ability: 'sand-veil',
+                        gender: 'male',
+                        level: 26,
+                        nature: Nature.Modest,
+                        ivs: 6,
+                        moves: ['dig', 'slash', 'sand-attack', 'poison-sting'],
+                    },
+                    {
+                        slug: 'sandslash',
+                        ability: 'sand-veil',
+                        gender: 'male',
+                        level: 26,
+                        nature: Nature.Timid,
+                        ivs: 6,
+                        moves: ['dig', 'slash', 'sand-attack', 'poison-sting'],
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-m-luis': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'swimmer-m',
+        name: 'Luis',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'carvanha',
+                        ability: 'rough-skin',
+                        gender: 'male',
+                        level: 27,
+                        nature: Nature.Brave,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-m-jerome': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'swimmer-m',
+        name: 'Jerome',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'tentacool',
+                        ability: 'clear-body',
+                        gender: 'male',
+                        level: 26,
+                        nature: Nature.Brave,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'wingull',
+                        ability: 'keen-eye',
+                        gender: 'male',
+                        level: 26,
+                        nature: Nature.Rash,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-f-tara': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'swimmer-f',
+        name: 'Tara',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'horsea',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 26,
+                        nature: Nature.Mild,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'marill',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        level: 26,
+                        nature: Nature.Docile,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-m-matthew': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'swimmer-m',
+        name: 'Matthew',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'carvanha',
+                        ability: 'rough-skin',
+                        gender: 'male',
+                        level: 27,
+                        nature: Nature.Quirky,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'swimmer-f-missy': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'swimmer-f',
+        name: 'Missy',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'goldeen',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 24,
+                        nature: Nature.Rash,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'wingull',
+                        ability: 'keen-eye',
+                        gender: 'female',
+                        level: 24,
+                        nature: Nature.Lax,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'marill',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        level: 24,
+                        nature: Nature.Timid,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'wailmer',
+                        ability: 'water-veil',
+                        gender: 'female',
+                        level: 24,
+                        nature: Nature.Careful,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'sailor-duncan': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'sailor',
+        name: 'Duncan',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'wailmer',
+                        ability: 'water-veil',
+                        gender: 'male',
+                        level: 26,
+                        nature: Nature.Sassy,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'machoke',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 26,
+                        nature: Nature.Impish,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'tuber-m-charlie': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'tuber-m',
+        name: 'Charlie',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'marill',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        level: 27,
+                        nature: Nature.Calm,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'young-couple-lois-and-hal': {
+        metadata: [BattleMetadata.Optional, BattleMetadata.TrueDouble],
+        split: 'Winona',
+        trainerClass: 'young-couple',
+        name: 'Lois & Hal',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'volbeat',
+                        ability: 'illuminate',
+                        gender: 'male',
+                        level: 27,
+                        nature: Nature.Modest,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'illumise',
+                        ability: 'oblivious',
+                        gender: 'female',
+                        level: 27,
+                        nature: Nature.Docile,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'twins-miu-and-yuki': {
+        metadata: [BattleMetadata.Optional, BattleMetadata.TrueDouble],
+        split: 'Winona',
+        trainerClass: 'twins',
+        name: 'Miu & Yuki',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'beautifly',
+                        ability: 'swarm',
+                        gender: 'male',
+                        level: 27,
+                        nature: Nature.Naive,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'dustox',
+                        ability: 'shield-dust',
+                        gender: 'male',
+                        level: 27,
+                        nature: Nature.Naive,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'aroma-lady-violet': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'aroma-lady',
+        name: 'Violet',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'shroomish',
+                        ability: 'effect-spore',
+                        gender: 'female',
+                        level: 25,
+                        nature: Nature.Brave,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'gloom',
+                        ability: 'chlorophyll',
+                        gender: 'female',
+                        level: 25,
+                        nature: Nature.Careful,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'breloom',
+                        ability: 'effect-spore',
+                        gender: 'female',
+                        level: 25,
+                        nature: Nature.Lax,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'hex-maniac-kindra': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'hex-maniac',
+        name: 'Kindra',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'duskull',
+                        ability: 'levitate',
+                        gender: 'female',
+                        level: 31,
+                        nature: Nature.Calm,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'shuppet',
+                        ability: 'insomnia',
+                        gender: 'female',
+                        level: 31,
+                        nature: Nature.Hardy,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-f-wendy': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'cooltrainer-f',
+        name: 'Wendy',
+        items: [
+            {
+                count: 1,
+                slug: 'full-restore',
+            },
+        ],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'mawile',
+                        ability: 'hyper-cutter',
+                        gender: 'female',
+                        level: 31,
+                        nature: Nature.Hardy,
+                        ivs: 12,
+                        moves: [
+                            'baton-pass',
+                            'feint-attack',
+                            'fake-tears',
+                            'bite',
+                        ],
+                    },
+                    {
+                        slug: 'roselia',
+                        ability: 'natural-cure',
+                        gender: 'female',
+                        level: 31,
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                        moves: [
+                            'mega-drain',
+                            'magical-leaf',
+                            'grass-whistle',
+                            'leech-seed',
+                        ],
+                    },
+                    {
+                        slug: 'pelipper',
+                        ability: 'keen-eye',
+                        gender: 'female',
+                        level: 31,
+                        nature: Nature.Impish,
+                        ivs: 12,
+                        moves: ['fly', 'water-gun', 'mist', 'protect'],
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-m-clyde': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'cooltrainer-m',
+        name: 'Clyde',
+        items: [
+            {
+                count: 1,
+                slug: 'hyper-potion',
+            },
+        ],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'swellow',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 29,
+                        nature: Nature.Lonely,
+                        ivs: 12,
+                        moves: [
+                            'focus-energy',
+                            'quick-attack',
+                            'wing-attack',
+                            'endeavor',
+                        ],
+                    },
+                    {
+                        slug: 'trapinch',
+                        ability: 'hyper-cutter',
+                        gender: 'male',
+                        level: 29,
+                        nature: Nature.Serious,
+                        ivs: 12,
+                        moves: ['bite', 'dig', 'feint-attack', 'sand-tomb'],
+                    },
+                    {
+                        slug: 'wailmer',
+                        ability: 'water-veil',
+                        gender: 'male',
+                        level: 29,
+                        nature: Nature.Lax,
+                        ivs: 12,
+                        moves: [
+                            'rollout',
+                            'whirlpool',
+                            'astonish',
+                            'water-pulse',
+                        ],
+                    },
+                    {
+                        slug: 'magneton',
+                        ability: 'magnet-pull',
+                        gender: 'genderless',
+                        level: 29,
+                        nature: Nature.Calm,
+                        ivs: 12,
+                        moves: [
+                            'thunderbolt',
+                            'supersonic',
+                            'thunder-wave',
+                            'sonic-boom',
+                        ],
+                    },
+                    {
+                        slug: 'shiftry',
+                        ability: 'chlorophyll',
+                        gender: 'male',
+                        level: 29,
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                        moves: [
+                            'giga-drain',
+                            'feint-attack',
+                            'double-team',
+                            'swagger',
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    'psychic-f-jacki': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'psychic-f',
+        name: 'Jacki',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'kadabra',
+                        ability: 'synchronize',
+                        gender: 'male',
+                        level: 31,
+                        nature: Nature.Rash,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'lunatone',
+                        ability: 'levitate',
+                        gender: 'genderless',
+                        level: 31,
+                        nature: Nature.Bashful,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'psychic-m-cameron': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'psychic-m',
+        name: 'Cameron',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'kadabra',
+                        ability: 'synchronize',
+                        gender: 'male',
+                        level: 31,
+                        nature: Nature.Brave,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'solrock',
+                        ability: 'levitate',
+                        gender: 'genderless',
+                        level: 31,
+                        nature: Nature.Careful,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
 };
