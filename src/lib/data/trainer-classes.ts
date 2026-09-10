@@ -22,6 +22,14 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Ace Trainer',
         spriteSlug: 'ace-trainer-snow-m',
     },
+    'aqua-admin-matt': {
+        displayName: 'Aqua Admin',
+        spriteSlug: 'matt',
+    },
+    'aqua-leader-archie': {
+        displayName: 'Aqua Leader',
+        spriteSlug: 'archie',
+    },
     'arcade-star-dahlia': {
         displayName: 'Arcade Star',
         spriteSlug: 'dahlia',
@@ -186,6 +194,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Jogger',
         spriteSlug: 'jogger',
     },
+    kindler: {
+        displayName: 'Kindler',
+        spriteSlug: 'kindler',
+    },
     lady: {
         displayName: 'Lady',
         spriteSlug: 'lady',
@@ -210,6 +222,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Leader',
         spriteSlug: 'fantina',
     },
+    'leader-flannery': {
+        displayName: 'Leader',
+        spriteSlug: 'flannery',
+    },
     'leader-gardenia': {
         displayName: 'Leader',
         spriteSlug: 'gardenia',
@@ -217,6 +233,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
     'leader-maylene': {
         displayName: 'Leader',
         spriteSlug: 'maylene',
+    },
+    'leader-norman': {
+        displayName: 'Leader',
+        spriteSlug: 'norman',
     },
     'leader-roark': {
         displayName: 'Leader',
@@ -238,9 +258,21 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Leader',
         spriteSlug: 'wattson',
     },
+    'magma-admin-tabitha': {
+        displayName: 'Magma Admin',
+        spriteSlug: 'tabitha',
+    },
+    'magma-leader-maxie': {
+        displayName: 'Magma Leader',
+        spriteSlug: 'maxie',
+    },
     'ninja-boy': {
         displayName: 'Ninja Boy',
         spriteSlug: 'ninja-boy',
+    },
+    'old-couple': {
+        displayName: 'Old Couple',
+        spriteSlug: 'old-couple',
     },
     'parasol-lady': {
         displayName: 'Parasol Lady',
@@ -313,6 +345,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
     'poke-kid': {
         displayName: 'Poké Kid',
         spriteSlug: 'poke-kid',
+    },
+    'poke-maniac': {
+        displayName: 'Poké Maniac',
+        spriteSlug: 'pokemaniac',
     },
     'pokefan-f': {
         displayName: 'Pokéfan',

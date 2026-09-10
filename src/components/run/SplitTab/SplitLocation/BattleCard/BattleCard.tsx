@@ -150,6 +150,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                 {isLastRow ? (
                                     <TrainerPanel
                                         battle={battle}
+                                        dataSource={game.dataSource}
                                         isStacked={isStacked}
                                         items={row.items}
                                         metadata={metadata}

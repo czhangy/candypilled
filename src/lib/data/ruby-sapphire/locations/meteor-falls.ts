@@ -4,6 +4,7 @@ import {
     meteorFallsB1f,
     meteorFallsB1fBack,
 } from '@/lib/data/ruby-sapphire/maps';
+import { GEN_3_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
 import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
@@ -21,6 +22,19 @@ const METEOR_FALLS: Location = {
             map: meteorFalls1fBack,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'meteor-falls-back',
+            battles: [
+                {
+                    battleKey: 'old-couple-john-and-jay',
+                    x: 23.13,
+                    y: 38.4,
+                    customWidth: GEN_3_TRUE_DOUBLE_WIDTH,
+                },
+                {
+                    battleKey: 'dragon-tamer-nicolas',
+                    x: 44.79,
+                    y: 6.96,
+                },
+            ],
         },
         {
             name: 'B1F',

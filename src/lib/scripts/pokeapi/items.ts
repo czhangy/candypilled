@@ -23,7 +23,7 @@ const POKEAPI_ITEM_CATEGORY_URL = 'https://pokeapi.co/api/v2/item-category';
 // safely included as a whole. "mega-stones", "z-crystals", and "memories"
 // are omitted entirely: every item in them was introduced after
 // MAX_GENERATION, so fetching them would only be discarded work.
-const HELD_ITEM_CATEGORIES = [
+const ITEM_CATEGORIES = [
     'held-items',
     'choice',
     'effort-training',
@@ -45,6 +45,11 @@ const HELD_ITEM_CATEGORIES = [
     // used to render an encounter's `heldItem`.
     'stat-boosts',
     'all-mail',
+    // Never held by a Pokémon, but a trainer's usable-in-battle items
+    // (`BattleData.items`, e.g. a Gym Leader's Hyper Potions) resolve
+    // through this same item dataset, so their categories need to be here.
+    'healing',
+    'status-cures',
     // Sell-value-only items (Nugget, Pearl, Stardust, etc.) with no battle
     // effect, but real trainers in-game are scripted to hold one on their
     // Pokémon (e.g. a Nugget-holding NPC), so this needs the same held-item
@@ -149,7 +154,7 @@ const fetchCategoryItems = async (
 // within itself, so the merged list is deduped by slug.
 const fetchHeldItemList = async (): Promise<NamedApiResource[]> => {
     const itemsByCategory = await Promise.all(
-        HELD_ITEM_CATEGORIES.map(fetchCategoryItems)
+        ITEM_CATEGORIES.map(fetchCategoryItems)
     );
 
     const uniqueItems = new Map<string, NamedApiResource>();

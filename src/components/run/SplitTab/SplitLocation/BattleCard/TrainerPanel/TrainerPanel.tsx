@@ -5,13 +5,14 @@ import {
     FieldCondition,
     TrainerAssetFolder,
 } from '@/lib/static/enums';
-import { Battle, BattleItem } from '@/lib/static/types';
+import { Battle, BattleItem, GameDataSource } from '@/lib/static/types';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import styles from './TrainerPanel.module.scss';
 
 type TrainerPanelProps = {
     battle: Battle;
+    dataSource: GameDataSource;
     isStacked: boolean;
     items?: BattleItem[];
     metadata: BattleMetadata[];
@@ -22,6 +23,7 @@ type TrainerPanelProps = {
 
 const TrainerPanel: React.FC<TrainerPanelProps> = ({
     battle,
+    dataSource,
     isStacked,
     items,
     metadata,
@@ -76,24 +78,32 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
                         styles['trainer__item'],
                     ].join(' ')}
                 >
-                    {items.map((item) => (
-                        <div
-                            className={styles['trainer__item-row']}
-                            key={item.name}
-                        >
-                            <span className={styles['trainer__item-count']}>
-                                {`${item.count}x`}
-                            </span>
-                            <Tooltip position="center" text={item.name}>
-                                <Image
-                                    alt={item.name}
-                                    height={ITEM_SPRITE_SIZE}
-                                    src={ItemHelpers.getItemSprite(item.name)}
-                                    width={ITEM_SPRITE_SIZE}
-                                />
-                            </Tooltip>
-                        </div>
-                    ))}
+                    {items.map((item) => {
+                        const itemData = ItemHelpers.getHeldItemData(
+                            dataSource,
+                            item.slug
+                        );
+                        if (!itemData) return null;
+
+                        return (
+                            <div
+                                className={styles['trainer__item-row']}
+                                key={item.slug}
+                            >
+                                <span className={styles['trainer__item-count']}>
+                                    {`${item.count}x`}
+                                </span>
+                                <Tooltip position="center" text={itemData.name}>
+                                    <Image
+                                        alt={itemData.name}
+                                        height={ITEM_SPRITE_SIZE}
+                                        src={itemData.sprite}
+                                        width={ITEM_SPRITE_SIZE}
+                                    />
+                                </Tooltip>
+                            </div>
+                        );
+                    })}
                 </div>
             )}
             {battle.fieldCondition && (

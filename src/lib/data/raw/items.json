@@ -4141,6 +4141,431 @@
             }
         ]
     },
+    "potion": {
+        "slug": "potion",
+        "name": "Potion",
+        "category": "healing",
+        "effect": "Restores 20 HP.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/potion.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Restores the HP of a POKéMON by 20 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine for wounds. It restores the HP of one Pokémon by just 20 points."
+            }
+        ]
+    },
+    "full-restore": {
+        "slug": "full-restore",
+        "name": "Full Restore",
+        "category": "healing",
+        "effect": "Restores HP to full and cures any status ailment and confusion.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/full-restore.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Fully restores the HP and status of a POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A medicine that fully restores the HP and heals any status problems of a single Pokémon."
+            }
+        ]
+    },
+    "max-potion": {
+        "slug": "max-potion",
+        "name": "Max Potion",
+        "category": "healing",
+        "effect": "Restores HP to full.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/max-potion.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Fully restores the HP of a POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine for wounds. It completely restores the HP of a single Pokémon."
+            }
+        ]
+    },
+    "hyper-potion": {
+        "slug": "hyper-potion",
+        "name": "Hyper Potion",
+        "category": "healing",
+        "effect": "Restores 200 HP.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/hyper-potion.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Restores the HP of a POKéMON by 200 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine for wounds. It restores the HP of one Pokémon by 200 points."
+            }
+        ]
+    },
+    "super-potion": {
+        "slug": "super-potion",
+        "name": "Super Potion",
+        "category": "healing",
+        "effect": "Restores 50 HP.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/super-potion.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Restores the HP of a POKéMON by 50 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine for wounds. It restores the HP of one Pokémon by 50 points."
+            }
+        ]
+    },
+    "fresh-water": {
+        "slug": "fresh-water",
+        "name": "Fresh Water",
+        "category": "healing",
+        "effect": "Restores 50 HP.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/fresh-water.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A mineral water that restores HP by 50 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "Water with a high mineral content. It restores the HP of one Pokémon by 50 points."
+            }
+        ]
+    },
+    "soda-pop": {
+        "slug": "soda-pop",
+        "name": "Soda Pop",
+        "category": "healing",
+        "effect": "Restores 60 HP.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/soda-pop.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A fizzy soda drink that restores HP by 60 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A fizzy soda drink. It restores the HP of one Pokémon by 60 points."
+            }
+        ]
+    },
+    "lemonade": {
+        "slug": "lemonade",
+        "name": "Lemonade",
+        "category": "healing",
+        "effect": "Restores 80 HP.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/lemonade.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A very sweet drink that restores HP by 80 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A very sweet drink. It restores the HP of one Pokémon by 80 points."
+            }
+        ]
+    },
+    "moomoo-milk": {
+        "slug": "moomoo-milk",
+        "name": "Moomoo Milk",
+        "category": "healing",
+        "effect": "Restores 100 HP.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/moomoo-milk.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A nutritious milk that restores HP by 100 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "Milk with a very high nutrition content. It restores the HP of one Pokémon by 100 points."
+            }
+        ]
+    },
+    "energy-powder": {
+        "slug": "energy-powder",
+        "name": "Energy Powder",
+        "category": "healing",
+        "effect": "Restores 50 HP, but lowers happiness.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/energy-powder.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A bitter powder that restores HP by 50 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A very bitter medicine powder. It restores the HP of one Pokémon by 50 points."
+            }
+        ]
+    },
+    "energy-root": {
+        "slug": "energy-root",
+        "name": "Energy Root",
+        "category": "healing",
+        "effect": "Restores 200 HP, but lowers happiness.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/energy-root.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A bitter root that restores HP by 200 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A very bitter root. It restores the HP of one Pokémon by 200 points."
+            }
+        ]
+    },
+    "berry-juice": {
+        "slug": "berry-juice",
+        "name": "Berry Juice",
+        "category": "healing",
+        "effect": "Restores 20 HP.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/berry-juice.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A 100% pure juice that restores HP by 20 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A 100% pure juice made of Berries. It restores the HP of one Pokémon by just 20 points."
+            }
+        ]
+    },
+    "sweet-heart": {
+        "slug": "sweet-heart",
+        "name": "Sweet Heart",
+        "category": "healing",
+        "effect": "Restores 20 HP.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/sweet-heart.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Very sweet chocolate. It restores the HP of one Pokémon by only 20 points."
+            }
+        ]
+    },
+    "antidote": {
+        "slug": "antidote",
+        "name": "Antidote",
+        "category": "status-cures",
+        "effect": "Cures poison.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/antidote.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Heals a poisoned POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine. It lifts the effect of poison from one Pokémon."
+            }
+        ]
+    },
+    "burn-heal": {
+        "slug": "burn-heal",
+        "name": "Burn Heal",
+        "category": "status-cures",
+        "effect": "Cures a burn.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/burn-heal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Heals POKéMON of a burn."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine. It heals a single Pokémon that is suffering from a burn."
+            }
+        ]
+    },
+    "ice-heal": {
+        "slug": "ice-heal",
+        "name": "Ice Heal",
+        "category": "status-cures",
+        "effect": "Cures freezing.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/ice-heal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Defrosts a frozen POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine. It defrosts a Pokémon that has been frozen solid."
+            }
+        ]
+    },
+    "awakening": {
+        "slug": "awakening",
+        "name": "Awakening",
+        "category": "status-cures",
+        "effect": "Cures sleep.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/awakening.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Awakens a sleeping POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine. It awakens a Pokémon from the clutches of sleep."
+            }
+        ]
+    },
+    "paralyze-heal": {
+        "slug": "paralyze-heal",
+        "name": "Paralyze Heal",
+        "category": "status-cures",
+        "effect": "Cures paralysis.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/paralyze-heal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Heals a paralyzed POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine. It eliminates paralysis from a single Pokémon."
+            }
+        ]
+    },
+    "full-heal": {
+        "slug": "full-heal",
+        "name": "Full Heal",
+        "category": "status-cures",
+        "effect": "Cures any status ailment and confusion.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/full-heal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Heals all the status problems of one POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine. It heals all the status problems of a single Pokémon."
+            }
+        ]
+    },
+    "heal-powder": {
+        "slug": "heal-powder",
+        "name": "Heal Powder",
+        "category": "status-cures",
+        "effect": "Cures any status ailment, but lowers happiness.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/heal-powder.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A bitter powder that heals all status problems."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A very bitter medicine powder. It heals all the status problems of a single Pokémon."
+            }
+        ]
+    },
+    "lava-cookie": {
+        "slug": "lava-cookie",
+        "name": "Lava Cookie",
+        "category": "status-cures",
+        "effect": "Cures any status ailment and confusion.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/lava-cookie.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A local specialty that heals all status problems."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "Lavaridge Town's local specialty. It heals all the status problems of one Pokémon."
+            }
+        ]
+    },
+    "old-gateau": {
+        "slug": "old-gateau",
+        "name": "Old Gateau",
+        "category": "status-cures",
+        "effect": "Cures any status ailment and confusion.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/old-gateau.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Old Chateau's hidden specialty. It heals all the status problems of a single Pokémon."
+            }
+        ]
+    },
+    "casteliacone": {
+        "slug": "casteliacone",
+        "name": "Casteliacone",
+        "category": "status-cures",
+        "effect": "Cures any status ailment and confusion.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/casteliacone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Castelia City's specialty, soft-serve ice cream. It heals all the status problems of a single Pokémon."
+            }
+        ]
+    },
     "tiny-mushroom": {
         "slug": "tiny-mushroom",
         "name": "Tiny Mushroom",

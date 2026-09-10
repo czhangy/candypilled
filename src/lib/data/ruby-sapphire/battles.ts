@@ -348,7 +348,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -374,7 +374,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -1051,7 +1051,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 2,
-                name: 'Potion',
+                slug: 'potion',
             },
         ],
     },
@@ -2565,7 +2565,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -2591,7 +2591,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -3191,12 +3191,12 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Super Potion',
+                slug: 'super-potion',
             },
         ],
     },
     'cooltrainer-f-brooke': {
-        metadata: [],
+        metadata: [BattleMetadata.Optional],
         split: 'Flannery',
         trainerClass: 'cooltrainer-f',
         name: 'Brooke',
@@ -3233,7 +3233,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Super Potion',
+                slug: 'super-potion',
             },
         ],
     },
@@ -3689,7 +3689,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 2,
-                name: 'Super Potion',
+                slug: 'super-potion',
             },
         ],
     },
@@ -3855,7 +3855,1473 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 2,
-                name: 'Super Potion',
+                slug: 'super-potion',
+            },
+        ],
+    },
+    'camper-larry': {
+        metadata: [BattleMetadata.Optional],
+        trainerClass: 'camper',
+        name: 'Larry',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zigzagoon',
+                        ability: 'pickup',
+                        gender: 'male',
+                        level: 18,
+                        nature: Nature.Quirky,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'nuzleaf',
+                        ability: 'chlorophyll',
+                        gender: 'male',
+                        level: 18,
+                        nature: Nature.Calm,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'picnicker-carol': {
+        metadata: [BattleMetadata.Optional],
+        trainerClass: 'picnicker',
+        name: 'Carol',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'taillow',
+                        ability: 'guts',
+                        gender: 'female',
+                        level: 18,
+                        nature: Nature.Impish,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'lombre',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 18,
+                        nature: Nature.Bashful,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'hiker-trent': {
+        metadata: [BattleMetadata.Optional],
+        trainerClass: 'hiker',
+        name: 'Trent',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'geodude',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 16,
+                        nature: Nature.Docile,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'geodude',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 16,
+                        nature: Nature.Lonely,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'geodude',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 16,
+                        nature: Nature.Gentle,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'geodude',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 16,
+                        nature: Nature.Mild,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'hiker-brice': {
+        metadata: [BattleMetadata.Optional],
+        trainerClass: 'hiker',
+        name: 'Brice',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 18,
+                        nature: Nature.Impish,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'machop',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 18,
+                        nature: Nature.Quiet,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'youngster-neal': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'youngster',
+        name: 'Neal',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'trapinch',
+                        ability: 'hyper-cutter',
+                        gender: 'male',
+                        level: 18,
+                        nature: Nature.Naughty,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'linoone',
+                        ability: 'pickup',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Lonely,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'ninja-boy-lao': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'ninja-boy',
+        name: 'Lao',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'koffing',
+                        ability: 'levitate',
+                        gender: 'male',
+                        level: 17,
+                        nature: Nature.Sassy,
+                        ivs: 0,
+                        moves: [
+                            'poison-gas',
+                            'tackle',
+                            'smog',
+                            'self-destruct',
+                        ],
+                    },
+                    {
+                        slug: 'koffing',
+                        ability: 'levitate',
+                        gender: 'male',
+                        level: 17,
+                        nature: Nature.Impish,
+                        ivs: 0,
+                        moves: ['poison-gas', 'tackle', 'smog'],
+                    },
+                    {
+                        slug: 'koffing',
+                        ability: 'levitate',
+                        gender: 'male',
+                        level: 17,
+                        nature: Nature.Rash,
+                        ivs: 0,
+                        moves: [
+                            'poison-gas',
+                            'tackle',
+                            'smog',
+                            'self-destruct',
+                        ],
+                    },
+                    {
+                        slug: 'koffing',
+                        ability: 'levitate',
+                        gender: 'male',
+                        level: 19,
+                        nature: Nature.Bold,
+                        ivs: 0,
+                        moves: ['tackle', 'smog'],
+                    },
+                ],
+            },
+        ],
+    },
+    'parasol-lady-madeline': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'parasol-lady',
+        name: 'Madeline',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'female',
+                        level: 20,
+                        nature: Nature.Gentle,
+                        ivs: 0,
+                        moves: ['ember', 'tackle', 'magnitude', 'sunny-day'],
+                    },
+                ],
+            },
+        ],
+    },
+    'twins-tori-and-tia': {
+        metadata: [BattleMetadata.Optional, BattleMetadata.TrueDouble],
+        split: 'Flannery',
+        trainerClass: 'twins',
+        name: 'Tori & Tia',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'whismur',
+                        ability: 'soundproof',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Modest,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'whismur',
+                        ability: 'soundproof',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Brave,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'ninja-boy-lung': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'ninja-boy',
+        name: 'Lung',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'nincada',
+                        ability: 'compound-eyes',
+                        gender: 'male',
+                        level: 19,
+                        nature: Nature.Serious,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'ninjask',
+                        ability: 'speed-boost',
+                        gender: 'male',
+                        level: 19,
+                        nature: Nature.Bold,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'youngster-dillon': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'youngster',
+        name: 'Dillon',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'aron',
+                        ability: 'sturdy',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Bold,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'fisherman-nolan': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'fisherman',
+        name: 'Nolan',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'barboach',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Bold,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'fisherman-claude': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'fisherman',
+        name: 'Claude',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'goldeen',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 16,
+                        nature: Nature.Quiet,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'goldeen',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 16,
+                        nature: Nature.Careful,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'barboach',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 18,
+                        nature: Nature.Careful,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'goldeen',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 16,
+                        nature: Nature.Naughty,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'picnicker-nancy': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'picnicker',
+        name: 'Nancy',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'marill',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        level: 19,
+                        nature: Nature.Adamant,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'lombre',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 19,
+                        nature: Nature.Hasty,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'sr-and-jr-tyra-and-ivy': {
+        metadata: [BattleMetadata.Optional, BattleMetadata.TrueDouble],
+        split: 'Flannery',
+        trainerClass: 'sr-and-jr',
+        name: 'Tyra & Ivy',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'roselia',
+                        ability: 'natural-cure',
+                        gender: 'male',
+                        level: 19,
+                        nature: Nature.Mild,
+                        ivs: 0,
+                        moves: [
+                            'growth',
+                            'stun-spore',
+                            'mega-drain',
+                            'leech-seed',
+                        ],
+                    },
+                    {
+                        slug: 'graveler',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 21,
+                        nature: Nature.Quirky,
+                        ivs: 0,
+                        moves: [
+                            'defense-curl',
+                            'rollout',
+                            'mud-sport',
+                            'rock-throw',
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    'camper-shane': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'camper',
+        name: 'Shane',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'sandshrew',
+                        ability: 'sand-veil',
+                        gender: 'male',
+                        level: 19,
+                        nature: Nature.Impish,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'nuzleaf',
+                        ability: 'chlorophyll',
+                        gender: 'male',
+                        level: 19,
+                        nature: Nature.Quiet,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'poke-maniac-steve': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'poke-maniac',
+        name: 'Steve',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'aron',
+                        ability: 'sturdy',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Rash,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'kindler-bernie': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'kindler',
+        name: 'Bernie',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'slugma',
+                        ability: 'magma-armor',
+                        gender: 'male',
+                        level: 19,
+                        nature: Nature.Lax,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'wingull',
+                        ability: 'keen-eye',
+                        gender: 'male',
+                        level: 19,
+                        nature: Nature.Careful,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'hiker-lucas': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'hiker',
+        name: 'Lucas',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'geodude',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 18,
+                        nature: Nature.Bold,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'geodude',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 18,
+                        nature: Nature.Quirky,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'geodude',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 18,
+                        nature: Nature.Bashful,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'hiker-lenny': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'hiker',
+        name: 'Lenny',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'machop',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 19,
+                        nature: Nature.Bashful,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'machop',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 19,
+                        nature: Nature.Hardy,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'old-couple-john-and-jay': {
+        metadata: [BattleMetadata.Optional, BattleMetadata.TrueDouble],
+        split: 'Flannery',
+        trainerClass: 'old-couple',
+        name: 'John & Jay',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'medicham',
+                        ability: 'pure-power',
+                        gender: 'male',
+                        level: 40,
+                        nature: Nature.Sassy,
+                        ivs: 24,
+                        moves: ['psychic', 'fire-punch', 'psych-up', 'protect'],
+                    },
+                    {
+                        slug: 'hariyama',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        level: 40,
+                        nature: Nature.Hasty,
+                        ivs: 24,
+                        moves: [
+                            'focus-punch',
+                            'rock-tomb',
+                            'rest',
+                            'belly-drum',
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    'dragon-tamer-nicolas': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'dragon-tamer',
+        name: 'Nicolas',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'altaria',
+                        ability: 'natural-cure',
+                        gender: 'male',
+                        level: 38,
+                        nature: Nature.Calm,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'altaria',
+                        ability: 'natural-cure',
+                        gender: 'male',
+                        level: 38,
+                        nature: Nature.Naughty,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-mt-chimney': {
+        metadata: [],
+        split: 'Flannery',
+        trainerClass: 'team-magma-grunt-m',
+        name: 'Grunt',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zubat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Gentle,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'poochyena',
+                        ability: 'run-away',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Serious,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-aqua-grunt-m-mt-chimney': {
+        metadata: [],
+        split: 'Flannery',
+        trainerClass: 'team-aqua-grunt-m',
+        name: 'Grunt',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zubat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Gentle,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'poochyena',
+                        ability: 'run-away',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Serious,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'magma-admin-tabitha': {
+        metadata: [BattleMetadata.Miniboss],
+        split: 'Flannery',
+        trainerClass: 'magma-admin-tabitha',
+        name: 'Tabitha',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Lax,
+                        ivs: 6,
+                    },
+                    {
+                        slug: 'poochyena',
+                        ability: 'run-away',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Bashful,
+                        ivs: 6,
+                    },
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Mild,
+                        ivs: 6,
+                    },
+                ],
+            },
+        ],
+    },
+    'aqua-admin-matt': {
+        metadata: [BattleMetadata.Miniboss],
+        split: 'Flannery',
+        trainerClass: 'aqua-admin-matt',
+        name: 'Matt',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'carvanha',
+                        ability: 'rough-skin',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Timid,
+                        ivs: 6,
+                    },
+                    {
+                        slug: 'poochyena',
+                        ability: 'run-away',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Naughty,
+                        ivs: 6,
+                    },
+                    {
+                        slug: 'carvanha',
+                        ability: 'rough-skin',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Adamant,
+                        ivs: 6,
+                    },
+                ],
+            },
+        ],
+    },
+    'magma-leader-maxie': {
+        metadata: [BattleMetadata.Boss],
+        split: 'Flannery',
+        trainerClass: 'magma-leader-maxie',
+        name: 'Maxie',
+        items: [
+            {
+                count: 2,
+                slug: 'super-potion',
+            },
+        ],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'mightyena',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 24,
+                        nature: Nature.Lax,
+                        ivs: 18,
+                    },
+                    {
+                        slug: 'golbat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 24,
+                        nature: Nature.Naive,
+                        ivs: 18,
+                    },
+                    {
+                        slug: 'camerupt',
+                        ability: 'magma-armor',
+                        gender: 'male',
+                        level: 25,
+                        nature: Nature.Mild,
+                        ivs: 18,
+                    },
+                ],
+            },
+        ],
+    },
+    'aqua-leader-archie': {
+        metadata: [BattleMetadata.Boss],
+        split: 'Flannery',
+        trainerClass: 'aqua-leader-archie',
+        name: 'Archie',
+        items: [
+            {
+                count: 2,
+                slug: 'super-potion',
+            },
+        ],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'mightyena',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 24,
+                        nature: Nature.Brave,
+                        ivs: 18,
+                    },
+                    {
+                        slug: 'golbat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 24,
+                        nature: Nature.Hardy,
+                        ivs: 18,
+                    },
+                    {
+                        slug: 'sharpedo',
+                        ability: 'rough-skin',
+                        gender: 'male',
+                        level: 25,
+                        nature: Nature.Naughty,
+                        ivs: 18,
+                    },
+                ],
+            },
+        ],
+    },
+    'beauty-shirley': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'beauty',
+        name: 'Shirley',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'female',
+                        level: 22,
+                        nature: Nature.Adamant,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'beauty-sheila': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'beauty',
+        name: 'Sheila',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'shroomish',
+                        ability: 'effect-spore',
+                        gender: 'female',
+                        level: 22,
+                        nature: Nature.Adamant,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'expert-f-shelby': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'expert-f',
+        name: 'Shelby',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'meditite',
+                        ability: 'pure-power',
+                        gender: 'female',
+                        level: 22,
+                        nature: Nature.Bold,
+                        ivs: 24,
+                    },
+                    {
+                        slug: 'makuhita',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        level: 22,
+                        nature: Nature.Lax,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
+    'beauty-melissa': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'beauty',
+        name: 'Melissa',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'marill',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        level: 22,
+                        nature: Nature.Hasty,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'hiker-eric': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'hiker',
+        name: 'Eric',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'baltoy',
+                        ability: 'levitate',
+                        gender: 'genderless',
+                        level: 21,
+                        nature: Nature.Docile,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'baltoy',
+                        ability: 'levitate',
+                        gender: 'genderless',
+                        level: 21,
+                        nature: Nature.Lonely,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'camper-ethan': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'camper',
+        name: 'Ethan',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zigzagoon',
+                        ability: 'pickup',
+                        gender: 'male',
+                        level: 21,
+                        nature: Nature.Bashful,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'taillow',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 21,
+                        nature: Nature.Hardy,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'picnicker-diana': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'picnicker',
+        name: 'Diana',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'shroomish',
+                        ability: 'effect-spore',
+                        gender: 'female',
+                        level: 20,
+                        nature: Nature.Serious,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'oddish',
+                        ability: 'chlorophyll',
+                        gender: 'female',
+                        level: 20,
+                        nature: Nature.Mild,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'swablu',
+                        ability: 'natural-cure',
+                        gender: 'female',
+                        level: 20,
+                        nature: Nature.Lax,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'kindler-cole': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'kindler',
+        name: 'Cole',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'slugma',
+                        ability: 'magma-armor',
+                        gender: 'male',
+                        level: 22,
+                        nature: Nature.Rash,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'slugma',
+                        ability: 'magma-armor',
+                        gender: 'male',
+                        level: 22,
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 22,
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-m-zane': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'cooltrainer-m',
+        name: 'Zane',
+        items: [
+            {
+                count: 1,
+                slug: 'hyper-potion',
+            },
+        ],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'kecleon',
+                        ability: 'color-change',
+                        gender: 'male',
+                        level: 24,
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                        moves: [
+                            'flamethrower',
+                            'fury-swipes',
+                            'feint-attack',
+                            'bind',
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    'kindler-axle': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'kindler',
+        name: 'Axle',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 23,
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'slugma',
+                        ability: 'magma-armor',
+                        gender: 'male',
+                        level: 23,
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'battle-girl-sadie': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'battle-girl',
+        name: 'Sadie',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'meditite',
+                        ability: 'pure-power',
+                        gender: 'female',
+                        level: 24,
+                        nature: Nature.Mild,
+                        ivs: 12,
+                        moves: ['bide', 'detect', 'confusion', 'fire-punch'],
+                    },
+                ],
+            },
+        ],
+    },
+    'kindler-andy': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'kindler',
+        name: 'Andy',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'slugma',
+                        ability: 'magma-armor',
+                        gender: 'male',
+                        level: 23,
+                        nature: Nature.Careful,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 23,
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'leader-flannery': {
+        metadata: [BattleMetadata.Boss],
+        split: 'Flannery',
+        trainerClass: 'leader-flannery',
+        name: 'Flannery',
+        items: [
+            {
+                count: 2,
+                slug: 'hyper-potion',
+            },
+        ],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'slugma',
+                        ability: 'magma-armor',
+                        gender: 'female',
+                        level: 26,
+                        nature: Nature.Brave,
+                        ivs: 24,
+                        moves: [
+                            'overheat',
+                            'smog',
+                            'light-screen',
+                            'sunny-day',
+                        ],
+                    },
+                    {
+                        slug: 'slugma',
+                        ability: 'magma-armor',
+                        gender: 'female',
+                        level: 26,
+                        nature: Nature.Lax,
+                        ivs: 24,
+                        moves: [
+                            'flamethrower',
+                            'rock-slide',
+                            'light-screen',
+                            'sunny-day',
+                        ],
+                    },
+                    {
+                        slug: 'torkoal',
+                        ability: 'white-smoke',
+                        gender: 'female',
+                        level: 28,
+                        nature: Nature.Gentle,
+                        ivs: 30,
+                        moves: ['overheat', 'body-slam', 'flail', 'attract'],
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-m-randall': {
+        metadata: [BattleMetadata.Choice],
+        split: 'Norman',
+        trainerClass: 'cooltrainer-m',
+        name: 'Randall',
+        items: [
+            {
+                count: 2,
+                slug: 'x-speed',
+            },
+        ],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'delcatty',
+                        ability: 'cute-charm',
+                        gender: 'female',
+                        level: 27,
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-m-parker': {
+        metadata: [BattleMetadata.Choice],
+        split: 'Norman',
+        trainerClass: 'cooltrainer-m',
+        name: 'Parker',
+        items: [
+            {
+                count: 2,
+                slug: 'guard-spec',
+            },
+        ],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'linoone',
+                        ability: 'pickup',
+                        gender: 'male',
+                        level: 27,
+                        nature: Nature.Serious,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-m-george': {
+        metadata: [BattleMetadata.Choice],
+        split: 'Norman',
+        trainerClass: 'cooltrainer-m',
+        name: 'George',
+        items: [
+            {
+                count: 2,
+                slug: 'super-potion',
+            },
+        ],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'linoone',
+                        ability: 'pickup',
+                        gender: 'male',
+                        level: 27,
+                        nature: Nature.Modest,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-m-berke': {
+        metadata: [BattleMetadata.Choice],
+        split: 'Norman',
+        trainerClass: 'cooltrainer-m',
+        name: 'Berke',
+        items: [
+            {
+                count: 2,
+                slug: 'dire-hit',
+            },
+        ],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zangoose',
+                        ability: 'immunity',
+                        gender: 'male',
+                        level: 27,
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-f-mary': {
+        metadata: [BattleMetadata.Choice],
+        split: 'Norman',
+        trainerClass: 'cooltrainer-f',
+        name: 'Mary',
+        items: [
+            {
+                count: 2,
+                slug: 'x-accuracy',
+            },
+        ],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'delcatty',
+                        ability: 'cute-charm',
+                        gender: 'female',
+                        level: 27,
+                        nature: Nature.Rash,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-f-lori': {
+        metadata: [BattleMetadata.Choice],
+        split: 'Norman',
+        trainerClass: 'cooltrainer-f',
+        name: 'Lori',
+        items: [
+            {
+                count: 2,
+                slug: 'x-defense',
+            },
+        ],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'linoone',
+                        ability: 'pickup',
+                        gender: 'female',
+                        level: 27,
+                        nature: Nature.Quirky,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-f-jody': {
+        metadata: [BattleMetadata.Choice],
+        split: 'Norman',
+        trainerClass: 'cooltrainer-f',
+        name: 'Jody',
+        items: [
+            {
+                count: 2,
+                slug: 'x-attack',
+            },
+        ],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zangoose',
+                        ability: 'immunity',
+                        gender: 'female',
+                        level: 27,
+                        nature: Nature.Careful,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'leader-norman': {
+        metadata: [BattleMetadata.Boss],
+        split: 'Norman',
+        trainerClass: 'leader-norman',
+        name: 'Norman',
+        items: [
+            {
+                count: 2,
+                slug: 'hyper-potion',
+            },
+        ],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'slaking',
+                        ability: 'truant',
+                        gender: 'male',
+                        level: 28,
+                        nature: Nature.Relaxed,
+                        ivs: 24,
+                        moves: ['encore', 'facade', 'yawn', 'feint-attack'],
+                    },
+                    {
+                        slug: 'vigoroth',
+                        ability: 'vital-spirit',
+                        gender: 'male',
+                        level: 30,
+                        nature: Nature.Modest,
+                        ivs: 24,
+                        moves: ['slash', 'feint-attack', 'facade', 'encore'],
+                    },
+                    {
+                        slug: 'slaking',
+                        ability: 'truant',
+                        gender: 'male',
+                        level: 31,
+                        nature: Nature.Hasty,
+                        ivs: 30,
+                        moves: [
+                            'focus-punch',
+                            'slack-off',
+                            'facade',
+                            'feint-attack',
+                        ],
+                    },
+                ],
             },
         ],
     },
