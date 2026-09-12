@@ -86,7 +86,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 2,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -169,7 +169,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 2,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -699,11 +699,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Hyper Potion',
+                slug: 'hyper-potion',
             },
             {
                 count: 1,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -763,7 +763,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Hyper Potion',
+                slug: 'hyper-potion',
             },
         ],
     },
@@ -892,7 +892,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 4,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -980,7 +980,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 2,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -1353,7 +1353,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 2,
-                name: 'Super Potion',
+                slug: 'super-potion',
             },
         ],
     },
@@ -1441,14 +1441,15 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 2,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
     'galactic-grunt-m-floaroma-meadow': {
         metadata: [BattleMetadata.BackToBack],
+        plainName: true,
         trainerClass: 'galactic-grunt-m',
-        name: 'Back-to-Back',
+        name: 'Team Galactic Grunts',
         teams: [
             {
                 team: [
@@ -1660,7 +1661,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'X Defend',
+                slug: 'x-defense',
             },
         ],
     },
@@ -1779,7 +1780,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'X Special',
+                slug: 'x-sp-atk',
             },
         ],
     },
@@ -1947,11 +1948,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Hyper Potion',
+                slug: 'hyper-potion',
             },
             {
                 count: 1,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -2265,7 +2266,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Super Potion',
+                slug: 'super-potion',
             },
         ],
     },
@@ -2296,7 +2297,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'X Defend',
+                slug: 'x-defense',
             },
         ],
     },
@@ -2322,7 +2323,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'X Attack',
+                slug: 'x-attack',
             },
         ],
     },
@@ -2348,7 +2349,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Potion',
+                slug: 'potion',
             },
         ],
     },
@@ -2500,7 +2501,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 2,
-                name: 'Super Potion',
+                slug: 'super-potion',
             },
         ],
     },
@@ -3399,7 +3400,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 2,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -3895,7 +3896,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 2,
-                name: 'Potion',
+                slug: 'potion',
             },
         ],
     },
@@ -4341,7 +4342,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 2,
-                name: 'Hyper Potion',
+                slug: 'hyper-potion',
             },
         ],
     },
@@ -6115,11 +6116,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Full Heal',
+                slug: 'full-heal',
             },
             {
                 count: 1,
-                name: 'Super Potion',
+                slug: 'super-potion',
             },
         ],
     },
@@ -6144,11 +6145,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Full Heal',
+                slug: 'full-heal',
             },
             {
                 count: 1,
-                name: 'Super Potion',
+                slug: 'super-potion',
             },
         ],
     },
@@ -7000,7 +7001,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'X Attack',
+                slug: 'x-attack',
             },
         ],
     },
@@ -7207,7 +7208,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'X Defend',
+                slug: 'x-defense',
             },
         ],
     },
@@ -7302,7 +7303,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -7326,7 +7327,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -7375,7 +7376,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -7399,7 +7400,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -9308,7 +9309,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -10163,11 +10164,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Hyper Potion',
+                slug: 'hyper-potion',
             },
             {
                 count: 1,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -10649,7 +10650,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Hyper Potion',
+                slug: 'hyper-potion',
             },
         ],
     },
@@ -10675,7 +10676,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'X Speed',
+                slug: 'x-speed',
             },
         ],
     },
@@ -10998,11 +10999,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'Hyper Potion',
+                slug: 'hyper-potion',
             },
             {
                 count: 1,
-                name: 'Full Restore',
+                slug: 'full-restore',
             },
         ],
     },
@@ -11146,7 +11147,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [
             {
                 count: 1,
-                name: 'X Special',
+                slug: 'x-sp-atk',
             },
         ],
     },

@@ -12,6 +12,7 @@ import {
     mtCoronetSouthExterior,
     mtCoronetTunnel,
 } from '@/lib/data/renegade-platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const MT_CORONET: Location = {
@@ -20,31 +21,37 @@ const MT_CORONET: Location = {
         {
             name: '1F (211)',
             map: mtCoronet1fRoute211,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'mt-coronet-1f-route-211',
         },
         {
             name: 'B1F',
             map: mtCoronetB1f,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'mt-coronet-b1f',
         },
         {
             name: '1F (216)',
             map: mtCoronet1fRoute216,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'mt-coronet-1f-route-216',
         },
         {
             name: '1F (207)',
             map: mtCoronet1fRoute207,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'mt-coronet-1f-route-207',
         },
         {
             name: '2F',
             map: mtCoronet2f,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'mt-coronet-2f',
         },
         {
             name: '3F',
             map: mtCoronet3f,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'mt-coronet-3f',
             battles: [
                 {
@@ -62,11 +69,13 @@ const MT_CORONET: Location = {
         {
             name: 'Exterior',
             map: mtCoronetSouthExterior,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'mt-coronet-south-exterior',
         },
         {
             name: '4F',
             map: mtCoronet4f,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'mt-coronet-4f',
             battles: [
                 {
@@ -84,11 +93,13 @@ const MT_CORONET: Location = {
         {
             name: 'Summit',
             map: mtCoronetNorthExterior,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'mt-coronet-north-exterior',
         },
         {
             name: 'Tunnel',
             map: mtCoronetTunnel,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'mt-coronet-tunnel',
             battles: [
                 {
@@ -111,6 +122,7 @@ const MT_CORONET: Location = {
         {
             name: '5F',
             map: mtCoronet5f,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'mt-coronet-5f',
             battles: [
                 {
@@ -128,6 +140,7 @@ const MT_CORONET: Location = {
         {
             name: '6F',
             map: mtCoronet6f,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'mt-coronet-6f',
             battles: [
                 {

@@ -1,9 +1,11 @@
 import { route221 } from '@/lib/data/diamond-pearl/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_221: Location = {
     name: 'Route 221',
     map: route221,
+    mapAnchor: MapAnchor.Unaudited,
     encountersKey: 'sinnoh-route-221',
     battles: [
         {

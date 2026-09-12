@@ -7,7 +7,6 @@ import styles from './EncounterRow.module.scss';
 
 type EncounterRowProps = {
     dataSource: GameDataSource;
-    displayChance: number | null;
     encounter: Encounter;
     isCaughtElsewhere: boolean;
     isCaughtHere: boolean;
@@ -18,7 +17,6 @@ type EncounterRowProps = {
 
 const EncounterRow: React.FC<EncounterRowProps> = ({
     dataSource,
-    displayChance,
     encounter,
     isCaughtElsewhere,
     isCaughtHere,
@@ -46,6 +44,7 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
         EncounterMethod.HoneyTree,
         EncounterMethod.OldRod,
         EncounterMethod.PokeRadar,
+        EncounterMethod.Sand,
         EncounterMethod.SuperRod,
         EncounterMethod.Surf,
         EncounterMethod.Walking,
@@ -143,7 +142,7 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
             </td>
             <td>{getLevelLabel()}</td>
             <td className={styles.chance}>
-                {encounter.chance !== null ? `${displayChance}%` : '—'}
+                {encounter.chance !== null ? `${encounter.chance}%` : '—'}
             </td>
         </tr>
     );

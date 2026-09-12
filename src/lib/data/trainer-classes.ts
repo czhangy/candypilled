@@ -22,6 +22,18 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Ace Trainer',
         spriteSlug: 'ace-trainer-snow-m',
     },
+    'aqua-admin-matt': {
+        displayName: 'Aqua Admin',
+        spriteSlug: 'matt',
+    },
+    'aqua-admin-shelly': {
+        displayName: 'Aqua Admin',
+        spriteSlug: 'shelly',
+    },
+    'aqua-leader-archie': {
+        displayName: 'Aqua Leader',
+        spriteSlug: 'archie',
+    },
     'arcade-star-dahlia': {
         displayName: 'Arcade Star',
         spriteSlug: 'dahlia',
@@ -58,6 +70,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Bug Catcher',
         spriteSlug: 'bug-catcher',
     },
+    'bug-maniac': {
+        displayName: 'Bug Maniac',
+        spriteSlug: 'bug-maniac',
+    },
     cameraman: {
         displayName: 'Cameraman',
         spriteSlug: 'cameraman',
@@ -74,6 +90,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Champion',
         spriteSlug: 'cynthia',
     },
+    'champion-steven': {
+        displayName: 'Champion',
+        spriteSlug: 'steven',
+    },
     collector: {
         displayName: 'Collector',
         spriteSlug: 'collector',
@@ -89,6 +109,14 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
     'commander-saturn': {
         displayName: 'Commander',
         spriteSlug: 'saturn',
+    },
+    'cooltrainer-f': {
+        displayName: 'Cooltrainer',
+        spriteSlug: 'cooltrainer-f',
+    },
+    'cooltrainer-m': {
+        displayName: 'Cooltrainer',
+        spriteSlug: 'cooltrainer-m',
     },
     cowgirl: {
         displayName: 'Cowgirl',
@@ -118,13 +146,37 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Elite Four',
         spriteSlug: 'bertha',
     },
+    'elite-four-drake': {
+        displayName: 'Elite Four',
+        spriteSlug: 'drake',
+    },
     'elite-four-flint': {
         displayName: 'Elite Four',
         spriteSlug: 'flint',
     },
+    'elite-four-glacia': {
+        displayName: 'Elite Four',
+        spriteSlug: 'glacia',
+    },
     'elite-four-lucian': {
         displayName: 'Elite Four',
         spriteSlug: 'lucian',
+    },
+    'elite-four-phoebe': {
+        displayName: 'Elite Four',
+        spriteSlug: 'phoebe',
+    },
+    'elite-four-sidney': {
+        displayName: 'Elite Four',
+        spriteSlug: 'sidney',
+    },
+    'expert-f': {
+        displayName: 'Expert',
+        spriteSlug: 'expert-f',
+    },
+    'expert-m': {
+        displayName: 'Expert',
+        spriteSlug: 'expert-m',
     },
     fisherman: {
         displayName: 'Fisherman',
@@ -150,13 +202,25 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Guitarist',
         spriteSlug: 'guitarist',
     },
+    'hex-maniac': {
+        displayName: 'Hex Maniac',
+        spriteSlug: 'hex-maniac',
+    },
     hiker: {
         displayName: 'Hiker',
         spriteSlug: 'hiker',
     },
+    interviewers: {
+        displayName: 'Interviewer',
+        spriteSlug: 'interviewers',
+    },
     jogger: {
         displayName: 'Jogger',
         spriteSlug: 'jogger',
+    },
+    kindler: {
+        displayName: 'Kindler',
+        spriteSlug: 'kindler',
     },
     lady: {
         displayName: 'Lady',
@@ -165,6 +229,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
     lass: {
         displayName: 'Lass',
         spriteSlug: 'lass',
+    },
+    'leader-brawly': {
+        displayName: 'Leader',
+        spriteSlug: 'brawly',
     },
     'leader-byron': {
         displayName: 'Leader',
@@ -178,6 +246,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Leader',
         spriteSlug: 'fantina',
     },
+    'leader-flannery': {
+        displayName: 'Leader',
+        spriteSlug: 'flannery',
+    },
     'leader-gardenia': {
         displayName: 'Leader',
         spriteSlug: 'gardenia',
@@ -186,9 +258,21 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Leader',
         spriteSlug: 'maylene',
     },
+    'leader-norman': {
+        displayName: 'Leader',
+        spriteSlug: 'norman',
+    },
     'leader-roark': {
         displayName: 'Leader',
         spriteSlug: 'roark',
+    },
+    'leader-roxanne': {
+        displayName: 'Leader',
+        spriteSlug: 'roxanne',
+    },
+    'leader-tate-and-liza': {
+        displayName: 'Leader',
+        spriteSlug: 'tate-and-liza',
     },
     'leader-volkner': {
         displayName: 'Leader',
@@ -198,9 +282,37 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Leader',
         spriteSlug: 'wake',
     },
+    'leader-wallace': {
+        displayName: 'Leader',
+        spriteSlug: 'wallace',
+    },
+    'leader-wattson': {
+        displayName: 'Leader',
+        spriteSlug: 'wattson',
+    },
+    'leader-winona': {
+        displayName: 'Leader',
+        spriteSlug: 'winona',
+    },
+    'magma-admin-courtney': {
+        displayName: 'Magma Admin',
+        spriteSlug: 'courtney',
+    },
+    'magma-admin-tabitha': {
+        displayName: 'Magma Admin',
+        spriteSlug: 'tabitha',
+    },
+    'magma-leader-maxie': {
+        displayName: 'Magma Leader',
+        spriteSlug: 'maxie',
+    },
     'ninja-boy': {
         displayName: 'Ninja Boy',
         spriteSlug: 'ninja-boy',
+    },
+    'old-couple': {
+        displayName: 'Old Couple',
+        spriteSlug: 'old-couple',
     },
     'parasol-lady': {
         displayName: 'Parasol Lady',
@@ -234,6 +346,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'PKMN Trainer',
         spriteSlug: 'barry',
     },
+    'pkmn-trainer-brendan': {
+        displayName: 'PKMN Trainer',
+        spriteSlug: 'brendan',
+    },
     'pkmn-trainer-cheryl': {
         displayName: 'PKMN Trainer',
         spriteSlug: 'cheryl',
@@ -250,6 +366,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'PKMN Trainer',
         spriteSlug: 'marley',
     },
+    'pkmn-trainer-may': {
+        displayName: 'PKMN Trainer',
+        spriteSlug: 'may',
+    },
     'pkmn-trainer-mira': {
         displayName: 'PKMN Trainer',
         spriteSlug: 'mira',
@@ -258,9 +378,17 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'PKMN Trainer',
         spriteSlug: 'riley',
     },
+    'pkmn-trainer-wally': {
+        displayName: 'PKMN Trainer',
+        spriteSlug: 'wally',
+    },
     'poke-kid': {
         displayName: 'Poké Kid',
         spriteSlug: 'poke-kid',
+    },
+    'poke-maniac': {
+        displayName: 'Poké Maniac',
+        spriteSlug: 'pokemaniac',
     },
     'pokefan-f': {
         displayName: 'Pokéfan',
@@ -318,6 +446,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Scientist',
         spriteSlug: 'scientist',
     },
+    'sis-and-bro': {
+        displayName: 'Sis and Bro',
+        spriteSlug: 'sis-and-bro',
+    },
     'skier-f': {
         displayName: 'Skier',
         spriteSlug: 'skier-f',
@@ -330,6 +462,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Socialite',
         spriteSlug: 'socialite',
     },
+    'sr-and-jr': {
+        displayName: 'Sr. and Jr.',
+        spriteSlug: 'sr-and-jr',
+    },
     'swimmer-f': {
         displayName: 'Swimmer',
         spriteSlug: 'swimmer-f',
@@ -337,6 +473,46 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
     'swimmer-m': {
         displayName: 'Swimmer',
         spriteSlug: 'swimmer-m',
+    },
+    'team-aqua-grunt-f': {
+        displayName: 'Team Aqua Grunt',
+        spriteSlug: 'team-aqua-grunt-f',
+    },
+    'team-aqua-grunt-m': {
+        displayName: 'Team Aqua Grunt',
+        spriteSlug: 'team-aqua-grunt-m',
+    },
+    'team-magma-grunt-f': {
+        displayName: 'Team Magma Grunt',
+        spriteSlug: 'team-magma-grunt-f',
+    },
+    'team-magma-grunt-m': {
+        displayName: 'Team Magma Grunt',
+        spriteSlug: 'team-magma-grunt-m',
+    },
+    'triathlete-biker-f': {
+        displayName: 'Triathlete',
+        spriteSlug: 'triathlete-biker-f',
+    },
+    'triathlete-biker-m': {
+        displayName: 'Triathlete',
+        spriteSlug: 'triathlete-biker-m',
+    },
+    'triathlete-runner-f': {
+        displayName: 'Triathlete',
+        spriteSlug: 'triathlete-runner-f',
+    },
+    'triathlete-runner-m': {
+        displayName: 'Triathlete',
+        spriteSlug: 'triathlete-runner-m',
+    },
+    'triathlete-swimmer-f': {
+        displayName: 'Triathlete',
+        spriteSlug: 'triathlete-swimmer-f',
+    },
+    'triathlete-swimmer-m': {
+        displayName: 'Triathlete',
+        spriteSlug: 'triathlete-swimmer-m',
     },
     'tuber-f': {
         displayName: 'Tuber',

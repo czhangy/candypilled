@@ -2,6 +2,7 @@ import {
     valorCavernPostSpearPillar,
     valorCavernPreSpearPillar,
 } from '@/lib/data/diamond-pearl/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VALOR_CAVERN: Location = {
@@ -10,6 +11,7 @@ const VALOR_CAVERN: Location = {
         {
             name: 'Pre-Spear Pillar',
             map: valorCavernPreSpearPillar,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'lake-valor-cavern',
             battles: [
                 {
@@ -22,6 +24,7 @@ const VALOR_CAVERN: Location = {
         {
             name: 'Post-Spear Pillar',
             map: valorCavernPostSpearPillar,
+            mapAnchor: MapAnchor.Unaudited,
         },
     ],
 };

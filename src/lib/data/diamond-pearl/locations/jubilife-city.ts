@@ -1,10 +1,12 @@
 import { jubilifeCity } from '@/lib/data/diamond-pearl/maps';
 import { GEN_4_TRUE_DOUBLE_HEIGHT } from '@/lib/static/constants';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const JUBILIFE_CITY: Location = {
     name: 'Jubilife City',
     map: jubilifeCity,
+    mapAnchor: MapAnchor.Unaudited,
     tagPartner: [
         {
             battleKey: 'pkmn-trainer-dawn-jubilife-city-tag',

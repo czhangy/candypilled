@@ -2,6 +2,7 @@ import {
     floaromaTownPokemonCenter,
     floaromaTownTown,
 } from '@/lib/data/renegade-platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const FLOAROMA_TOWN: Location = {
@@ -10,10 +11,12 @@ const FLOAROMA_TOWN: Location = {
         {
             name: 'Town',
             map: floaromaTownTown,
+            mapAnchor: MapAnchor.Unaudited,
         },
         {
             name: 'Pokémon Center',
             map: floaromaTownPokemonCenter,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'floaroma-town',
             battles: [
                 {

@@ -1,3 +1,6 @@
+import Gen3SaveParser from '@/lib/parsers/gen3/Gen3SaveParser';
+import Gen3SplitParser from '@/lib/parsers/gen3/Gen3SplitParser';
+import Gen3TrainerParser from '@/lib/parsers/gen3/Gen3TrainerParser';
 import Gen4SaveParser from '@/lib/parsers/gen4/Gen4SaveParser';
 import Gen4SplitParser from '@/lib/parsers/gen4/Gen4SplitParser';
 import Gen4TrainerParser from '@/lib/parsers/gen4/Gen4TrainerParser';
@@ -21,6 +24,12 @@ export default class SaveFileParser {
                     pokemon: Gen4SaveParser.parse(game, buffer),
                     completedSplits: Gen4SplitParser.parse(game, buffer),
                     gender: Gen4TrainerParser.parseGender(game, buffer),
+                };
+            case 'ruby-sapphire':
+                return {
+                    pokemon: Gen3SaveParser.parse(game, buffer),
+                    completedSplits: Gen3SplitParser.parse(game, buffer),
+                    gender: Gen3TrainerParser.parseGender(game, buffer),
                 };
             default:
                 throw new Error(

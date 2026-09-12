@@ -4,17 +4,11 @@ import {
     ItemValuesByGeneration,
 } from '@/lib/static/types';
 import GenerationHelpers from '@/lib/utils/GenerationHelpers';
-import StringHelpers from '@/lib/utils/StringHelpers';
 
 export default class ItemHelpers {
     // -------------------------------------------------------------------------
     // PUBLIC
     // -------------------------------------------------------------------------
-
-    /** The sprite path for the trainer battle item named name. */
-    static getItemSprite(name: string): string {
-        return `/battle-items/${StringHelpers.toSlug(name)}.png`;
-    }
 
     /** The held item data for slug in dataSource, or undefined if no held item matches. */
     static getHeldItemData(

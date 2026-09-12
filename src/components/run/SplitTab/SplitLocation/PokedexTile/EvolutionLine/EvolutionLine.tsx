@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
-import { EvolutionStep, GameDataSource } from '@/lib/static/types';
+import { EvolutionStep, GameDataSource, PokemonSlug } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './EvolutionLine.module.scss';
@@ -197,7 +197,10 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                             &rarr;
                                         </span>
                                     </div>
-                                    {renderNode({ ...child, slug: formSlug })}
+                                    {renderNode({
+                                        ...child,
+                                        slug: formSlug as PokemonSlug,
+                                    })}
                                 </div>
                             ));
                         })}

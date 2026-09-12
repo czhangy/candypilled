@@ -2,6 +2,7 @@ import {
     pokemonLeagueExterior,
     pokemonLeagueLobby,
 } from '@/lib/data/renegade-platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const POKEMON_LEAGUE: Location = {
@@ -10,11 +11,13 @@ const POKEMON_LEAGUE: Location = {
         {
             name: 'Exterior',
             map: pokemonLeagueExterior,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'pokemon-league',
         },
         {
             name: 'Lobby',
             map: pokemonLeagueLobby,
+            mapAnchor: MapAnchor.Unaudited,
             battles: [
                 {
                     battleKey: 'pkmn-trainer-barry-pokemon-league',

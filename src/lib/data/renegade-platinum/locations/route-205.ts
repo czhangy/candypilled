@@ -2,6 +2,7 @@ import {
     route205North,
     route205South,
 } from '@/lib/data/renegade-platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_205: Location = {
@@ -10,6 +11,7 @@ const ROUTE_205: Location = {
         {
             name: 'South',
             map: route205South,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'sinnoh-route-205-south',
             battles: [
                 {
@@ -57,6 +59,7 @@ const ROUTE_205: Location = {
         {
             name: 'North',
             map: route205North,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'sinnoh-route-205-north',
             battles: [
                 {

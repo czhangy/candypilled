@@ -1,10 +1,11 @@
 import { route215 } from '@/lib/data/platinum/maps';
-import { FieldCondition } from '@/lib/static/enums';
+import { FieldCondition, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_215: Location = {
     name: 'Route 215',
     map: route215,
+    mapAnchor: MapAnchor.Unaudited,
     encountersKey: 'sinnoh-route-215',
     battles: [
         {

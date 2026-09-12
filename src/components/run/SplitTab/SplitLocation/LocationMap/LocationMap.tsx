@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
+import { MapAnchor } from '@/lib/static/enums';
 import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import styles from './LocationMap.module.scss';
@@ -15,6 +16,7 @@ type LocationMapProps = {
     id?: string;
     isTagPartnerSelected?: boolean;
     map: StaticImageData;
+    mapAnchor: MapAnchor;
     onBattleClick: (battle: Battle) => void;
     onTagPartnerClick?: () => void;
     priority: boolean;
@@ -29,6 +31,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
     id,
     isTagPartnerSelected,
     map,
+    mapAnchor,
     onBattleClick,
     onTagPartnerClick,
     priority,
@@ -93,6 +96,40 @@ const LocationMap: React.FC<LocationMapProps> = ({
         return value.toFixed(2).replace(/\.?0+$/, '');
     };
 
+    // The pan that puts mapAnchor's edge/corner flush against the
+    // viewport, before clampPanAxis centers it back if the map is
+    // actually smaller than the viewport on that axis.
+    const getAnchorPan = (anchor: MapAnchor): { x: number; y: number } => {
+        const left = 0;
+        const right = effectiveViewportWidth - map.width;
+        const top = 0;
+        const bottom = effectiveViewportHeight - map.height;
+        const centerX = (effectiveViewportWidth - map.width) / 2;
+        const centerY = (effectiveViewportHeight - map.height) / 2;
+
+        switch (anchor) {
+            case MapAnchor.Top:
+                return { x: centerX, y: top };
+            case MapAnchor.Bottom:
+                return { x: centerX, y: bottom };
+            case MapAnchor.Left:
+                return { x: left, y: centerY };
+            case MapAnchor.Right:
+                return { x: right, y: centerY };
+            case MapAnchor.TopLeft:
+                return { x: left, y: top };
+            case MapAnchor.TopRight:
+                return { x: right, y: top };
+            case MapAnchor.BottomLeft:
+                return { x: left, y: bottom };
+            case MapAnchor.BottomRight:
+                return { x: right, y: bottom };
+            case MapAnchor.Center:
+            case MapAnchor.Unaudited:
+                return { x: centerX, y: centerY };
+        }
+    };
+
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
@@ -136,10 +173,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
         }
     } else if (pendingCenter && hasMeasuredViewport && !selectedBattle) {
         setPendingCenter(false);
-        setPan({
-            x: (effectiveViewportWidth - map.width) / 2,
-            y: (effectiveViewportHeight - map.height) / 2,
-        });
+        setPan(getAnchorPan(mapAnchor));
     }
 
     const displayPan = {

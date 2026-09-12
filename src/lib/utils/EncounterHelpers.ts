@@ -22,32 +22,6 @@ type EncounterHideRule = (
 // `context.settings`) and both EncounterTable and the section-visibility
 // checks below pick it up automatically.
 const ENCOUNTER_HIDE_RULES: EncounterHideRule[] = [
-    // Dupes (the species or its evolution line has already been caught
-    // elsewhere in the run) are hidden unless "Show Dupes" is on.
-    (encounter, context) => {
-        if (context.settings['show-dupes']) return false;
-
-        const isCaughtHere =
-            !!context.caughtHere &&
-            EvolutionHelpers.isSameEvolutionLine(
-                context.dataSource,
-                encounter.species,
-                context.caughtHere,
-                context.generation
-            );
-
-        return (
-            !isCaughtHere &&
-            context.dupes.some((slug) =>
-                EvolutionHelpers.isSameEvolutionLine(
-                    context.dataSource,
-                    encounter.species,
-                    slug,
-                    context.generation
-                )
-            )
-        );
-    },
     // Legendaries/mythicals are hidden unless "Show Legendaries" is on.
     (encounter, context) =>
         !context.settings['show-legendaries'] &&
@@ -121,9 +95,9 @@ export default class EncounterHelpers {
     }
 
     /**
-     * Whether any ENCOUNTER_HIDE_RULE (show-dupes, show-legendaries, and
-     * any future setting-driven rule) permanently hides this encounter,
-     * independent of the currently selected time of day.
+     * Whether any ENCOUNTER_HIDE_RULE (show-legendaries and any future
+     * setting-driven rule) permanently hides this encounter, independent of
+     * the currently selected time of day.
      */
     static isEncounterHidden(
         encounter: Encounter,
@@ -151,12 +125,10 @@ export default class EncounterHelpers {
     /**
      * Whether every one of a location's encounters is an evolution line
      * caught elsewhere in the run — i.e. the location's "already caught"
-     * indicator, independent of whether the show-dupes setting is
-     * actually on (dupes are always treated as satisfied). Legendaries
-     * still obey showLegendaries, since that setting means "allow
-     * legendaries in this run" rather than a display-only filter — an
-     * uncaught legendary is only "satisfied" when legendaries are
-     * disallowed entirely.
+     * indicator. Legendaries still obey showLegendaries, since that setting
+     * means "allow legendaries in this run" rather than a display-only
+     * filter — an uncaught legendary is only "satisfied" when legendaries
+     * are disallowed entirely.
      */
     static areAllEncountersDupes(
         dataSource: GameDataSource,
@@ -166,15 +138,35 @@ export default class EncounterHelpers {
         generation: number,
         showLegendaries: boolean
     ): boolean {
-        return EncounterHelpers.areAllEncountersHidden(encounters, {
-            caughtHere,
-            dataSource,
-            dupes,
-            generation,
-            settings: {
-                'show-dupes': false,
-                'show-legendaries': showLegendaries,
-            },
+        if (encounters.length === 0) return false;
+
+        return encounters.every((encounter) => {
+            const isCaughtHere =
+                !!caughtHere &&
+                EvolutionHelpers.isSameEvolutionLine(
+                    dataSource,
+                    encounter.species,
+                    caughtHere,
+                    generation
+                );
+
+            const isDupe =
+                !isCaughtHere &&
+                dupes.some((slug) =>
+                    EvolutionHelpers.isSameEvolutionLine(
+                        dataSource,
+                        encounter.species,
+                        slug,
+                        generation
+                    )
+                );
+
+            const isHiddenLegendary =
+                !showLegendaries &&
+                !!PokemonHelpers.getPokemonData(dataSource, encounter.species)
+                    ?.isLegendary;
+
+            return isDupe || isHiddenLegendary;
         });
     }
 

@@ -1,6 +1,7 @@
 export enum EncounterMethod {
     Binoculars = 'binoculars',
     Cave = 'cave',
+    DevonScope = 'devon-scope',
     Egg = 'egg',
     FeebasTile = 'feebas-tile',
     Fossil = 'fossil',
@@ -10,6 +11,8 @@ export enum EncounterMethod {
     HoneyTree = 'honey-tree',
     OldRod = 'old-rod',
     PokeRadar = 'poke-radar',
+    RockSmash = 'rock-smash',
+    Sand = 'sand',
     Starter = 'starter',
     Static = 'static',
     SuperRod = 'super-rod',
@@ -115,11 +118,14 @@ export enum GameVersionGroup {
     Platinum = 'platinum',
     HeartGoldSoulSilver = 'heartgold-soulsilver',
     RenegadePlatinum = 'renegade-platinum',
+    RubySapphire = 'ruby-sapphire',
 }
 
 // The public/badges/<folder>/ a game's gym-badge icons are served from.
 export enum BadgeAssetFolder {
     Sinnoh = 'sinnoh',
+    RubySapphire = 'ruby-sapphire',
+    Emerald = 'emerald',
 }
 
 // The public/trainers/<folder>/ a game's trainer battle sprites are served
@@ -127,4 +133,23 @@ export enum BadgeAssetFolder {
 export enum TrainerAssetFolder {
     DiamondPearl = 'diamond-pearl',
     Platinum = 'platinum',
+    RubySapphire = 'ruby-sapphire',
+}
+
+// Where a map autoscrolls to on load, lower priority than a selected
+// battle marker (which always wins once one exists). Unaudited behaves
+// identically to Center but marks a Location/Subarea whose real anchor
+// hasn't been chosen yet -- backfilled onto every pre-existing location
+// rather than guessed at per-location.
+export enum MapAnchor {
+    Center = 'center',
+    Top = 'top',
+    Bottom = 'bottom',
+    Left = 'left',
+    Right = 'right',
+    TopLeft = 'top-left',
+    TopRight = 'top-right',
+    BottomLeft = 'bottom-left',
+    BottomRight = 'bottom-right',
+    Unaudited = 'unaudited',
 }

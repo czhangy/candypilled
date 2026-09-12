@@ -91,8 +91,9 @@ flow relies on:
 - **Encounter/trainer data source.** A vanilla game's wild encounters and
   base data come from PokeAPI (see the encounter-scraper steps below) and,
   for Gen 3/4, trainer battle data (team, IVs, AI) can be extracted from
-  that game's own pret-style decomp — the `gen4-trainer-data-extraction`
-  skill does this for Gen 4. **Neither exists for a hack.** PokeAPI has no
+  that game's own pret-style decomp — see `gen3-trainer-data-extraction`
+  for Gen 3 (write an equivalent skill for a Gen 4 game if one is ever
+  onboarded again). **Neither exists for a hack.** PokeAPI has no
   concept of a fan patch, and a hack's own decomp — if one is even
   public — reflects the _base_ game's unpatched data, not the hack's
   hand-edited changes. Running vanilla extraction tooling against a hack
@@ -172,10 +173,11 @@ discover mid-task:
 - **PokeAPI** — wild encounters (via the `pokeapi:encounters` scraper) and
   base species/move data, scoped to the specific version/version-group.
 - **That generation's pret-style decomp** (e.g. pokediamond/pokeplatinum
-  for Gen 4) — trainer battle data (team, IVs, AI flags) via
-  `gen4-trainer-data-extraction` for Gen 4, plus generation-wide constants
-  like badge bit order (`constants/badge.h` / `generated/badges.txt`) and
-  per-gym badge-grant logic (an overlay's gym-features file).
+  for Gen 4) — trainer battle data (team, IVs, AI flags) via a
+  generation-specific extraction skill (write one if it doesn't exist yet
+  for that generation), plus generation-wide constants like badge bit
+  order (`constants/badge.h` / `generated/badges.txt`) and per-gym
+  badge-grant logic (an overlay's gym-features file).
 - **Bulbapedia/Serebii** — met-location index tables, cross-checking
   version-exclusivity edge cases (especially anything gated behind
   cross-cartridge trading, which PokeAPI doesn't model correctly), and as
@@ -349,16 +351,15 @@ Reference implementation: `src/lib/data/platinum/`.
       unreliable on its own — it's often ambiguous at low levels, where
       multiple IVs round to the same displayed stat — so don't rely on
       that method alone; use it only as a cross-check against a direct
-      source. For Gen 4 games, the direct source and derivation formula are
-      documented in the `gen4-trainer-data-extraction` skill (which reads
+      source. For Gen 3, the direct source and derivation formula are
+      documented in the `gen3-trainer-data-extraction` skill (which reads
       the real IV straight out of the decomp's trainer data, not
       back-solved). If a target vanilla game has no such derivation path
       documented yet, that's a gap to fill (research and document the
-      mechanism, the same way Gen 4's was derived) rather than a reason to
+      mechanism, the same way Gen 3's was derived) rather than a reason to
       fall back to asking the user.
     - **For a ROM hack, IVs come from the hack's own tracker, never from
-      `gen4-trainer-data-extraction` or any other vanilla-decomp
-      extraction tool** — that tooling reads the unpatched base game and
+      a vanilla-decomp extraction skill** — that tooling reads the unpatched base game and
       will silently return the wrong value for a hand-edited hack roster.
       If the tracker's IV note doesn't clearly cover a specific team
       member (no team-wide note, no paired-trainer note, no per-mon split
@@ -443,6 +444,28 @@ PNG into a new folder. This only applies within an already-established
 sharing relationship (e.g. a ROM hack confirmed to reuse its base game's
 sprite art verbatim) — verify with a content-hash diff first, same as
 above, rather than assuming reuse because the games are related.
+
+## Trainer classes and item/ability data are shared globally, not per-game
+
+Unlike badge/trainer sprite folders (per-game, see above),
+`src/lib/data/trainer-classes.ts` lives outside every per-game directory
+and is a single dataset shared across all games — confirmed by adding
+new classes there while onboarding battles for an existing game and
+finding most classes a new game needs (Bird Keeper, Cooltrainer, Psychic,
+etc.) already present from prior games. When a new game's trainer roster
+needs a class, check this shared file first; only add an entry for a
+class genuinely not already there (a new Gym Leader/Elite Four/Champion
+individual, or a class no prior game introduced), not for every class the
+new game happens to use.
+
+The battle-items dataset (`ItemData`/`ItemSlug`, fed by
+`src/lib/scripts/pokeapi/items.ts`) and `DANGEROUS_ITEMS`/
+`DANGEROUS_ABILITIES` (in `items.ts`/`abilities.ts`) are likewise global —
+a trainer's `BattleData.items` resolves through the same
+species-independent, game-independent dataset every other game's held
+items and battle items already use. A new game needs no new
+item/ability-dataset work unless it introduces an item or ability the
+existing PokeAPI-driven fetch script doesn't already cover.
 
 ## Divergent teams and battles (multi-team trainers, gender-dependent content)
 

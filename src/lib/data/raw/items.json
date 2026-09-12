@@ -331,7 +331,7 @@
         "category": "held-items",
         "effect": "Held: Holder survives any single-hit attack at 1 HP if at max HP, then the item is consumed.",
         "introducedInGeneration": 4,
-        "isDangerous": false,
+        "isDangerous": true,
         "sprite": "/items/focus-sash.png",
         "valuesByGeneration": [
             {
@@ -3446,6 +3446,1463 @@
             {
                 "fromGeneration": 5,
                 "description": "If held by a Pokémon, it restores the user's HP in a pinch, but will cause confusion if it hates the taste."
+            }
+        ]
+    },
+    "guard-spec": {
+        "slug": "guard-spec",
+        "name": "Guard Spec",
+        "category": "stat-boosts",
+        "effect": "Prevents stat changes in battle for five turns in battle.  Raises happiness.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/guard-spec.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Prevents stat reduction when used in battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item that prevents stat reduction among the Trainer's party Pokémon for five turns after use."
+            }
+        ]
+    },
+    "dire-hit": {
+        "slug": "dire-hit",
+        "name": "Dire Hit",
+        "category": "stat-boosts",
+        "effect": "Increases the chance of a critical hit in battle.  Raises happiness.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/dire-hit.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Raises the critical-hit ratio during one battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item that raises the critical-hit ratio of a Pokémon in battle. It wears off if the Pokémon is withdrawn."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "It raises the critical-hit ratio greatly. It can be used only once and wears off if the Pokémon is withdrawn."
+            }
+        ]
+    },
+    "x-attack": {
+        "slug": "x-attack",
+        "name": "X Attack",
+        "category": "stat-boosts",
+        "effect": "Raises Attack by one stage in battle.  Raises happiness.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/x-attack.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Raises the stat ATTACK during one battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item that raises the Attack stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn."
+            }
+        ]
+    },
+    "x-defense": {
+        "slug": "x-defense",
+        "name": "X Defense",
+        "category": "stat-boosts",
+        "effect": "Raises Defense by one stage in battle.  Raises happiness.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/x-defense.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Raises the stat DEFENSE during one battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item that raises the Defense stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn."
+            }
+        ]
+    },
+    "x-speed": {
+        "slug": "x-speed",
+        "name": "X Speed",
+        "category": "stat-boosts",
+        "effect": "Raises Speed by one stage in battle.  Raises happiness.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/x-speed.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Raises the stat SPEED during one battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item that raises the Speed stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn."
+            }
+        ]
+    },
+    "x-accuracy": {
+        "slug": "x-accuracy",
+        "name": "X Accuracy",
+        "category": "stat-boosts",
+        "effect": "Raises accuracy by one stage in battle.  Raises happiness.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/x-accuracy.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Raises accuracy of attack moves during one battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item that raises the accuracy of a Pokémon in battle. It wears off if the Pokémon is withdrawn."
+            }
+        ]
+    },
+    "x-sp-atk": {
+        "slug": "x-sp-atk",
+        "name": "X Sp Atk",
+        "category": "stat-boosts",
+        "effect": "Raises Special Attack by one stage in battle.  Raises happiness.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/x-sp-atk.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Raises the stat SP. ATK during one battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An item that raises the Sp. Atk stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn."
+            }
+        ]
+    },
+    "x-sp-def": {
+        "slug": "x-sp-def",
+        "name": "X Sp Def",
+        "category": "stat-boosts",
+        "effect": "Raises Special Defense by one stage in battle.  Raises happiness.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/x-sp-def.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An item that raises the Sp. Def stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn."
+            }
+        ]
+    },
+    "grass-mail": {
+        "slug": "grass-mail",
+        "name": "Grass Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/grass-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of a refreshingly green field. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "flame-mail": {
+        "slug": "flame-mail",
+        "name": "Flame Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/flame-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of flames in blazing red. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "bubble-mail": {
+        "slug": "bubble-mail",
+        "name": "Bubble Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/bubble-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of a blue world underwater. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "bloom-mail": {
+        "slug": "bloom-mail",
+        "name": "Bloom Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/bloom-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of pretty floral patterns. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "tunnel-mail": {
+        "slug": "tunnel-mail",
+        "name": "Tunnel Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tunnel-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of a dimly lit coal mine. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "steel-mail": {
+        "slug": "steel-mail",
+        "name": "Steel Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/steel-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of cool mechanical designs. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "heart-mail": {
+        "slug": "heart-mail",
+        "name": "Heart Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/heart-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of giant heart patterns. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "snow-mail": {
+        "slug": "snow-mail",
+        "name": "Snow Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/snow-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of a chilly, snow-covered world. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "space-mail": {
+        "slug": "space-mail",
+        "name": "Space Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/space-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print depicting the huge expanse of space. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "air-mail": {
+        "slug": "air-mail",
+        "name": "Air Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/air-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of colorful letter sets. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "mosaic-mail": {
+        "slug": "mosaic-mail",
+        "name": "Mosaic Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/mosaic-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of a vivid rainbow pattern. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "brick-mail": {
+        "slug": "brick-mail",
+        "name": "Brick Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/brick-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Stationery featuring a print of a tough-looking brick pattern. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "orange-mail": {
+        "slug": "orange-mail",
+        "name": "Orange Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/orange-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A ZIGZAGOON-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "harbor-mail": {
+        "slug": "harbor-mail",
+        "name": "Harbor Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/harbor-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A WINGULL-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "glitter-mail": {
+        "slug": "glitter-mail",
+        "name": "Glitter Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/glitter-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A PIKACHU-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "mech-mail": {
+        "slug": "mech-mail",
+        "name": "Mech Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/mech-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A MAGNEMITE-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "wood-mail": {
+        "slug": "wood-mail",
+        "name": "Wood Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/wood-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A SLAKOTH-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "wave-mail": {
+        "slug": "wave-mail",
+        "name": "Wave Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/wave-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A WAILMER-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "bead-mail": {
+        "slug": "bead-mail",
+        "name": "Bead Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/bead-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "MAIL featuring a sketch of the holding POKéMON."
+            }
+        ]
+    },
+    "shadow-mail": {
+        "slug": "shadow-mail",
+        "name": "Shadow Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/shadow-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A DUSKULL-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "tropic-mail": {
+        "slug": "tropic-mail",
+        "name": "Tropic Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/tropic-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A BELLOSSOM-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "dream-mail": {
+        "slug": "dream-mail",
+        "name": "Dream Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/dream-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "MAIL featuring a sketch of the holding POKéMON."
+            }
+        ]
+    },
+    "fab-mail": {
+        "slug": "fab-mail",
+        "name": "Fab Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/fab-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A gorgeous-print MAIL to be held by a POKéMON."
+            }
+        ]
+    },
+    "retro-mail": {
+        "slug": "retro-mail",
+        "name": "Retro Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/retro-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "MAIL featuring the drawings of three POKéMON."
+            }
+        ]
+    },
+    "greet-mail": {
+        "slug": "greet-mail",
+        "name": "Greet Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/greet-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery designed for introductory greetings. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "favored-mail": {
+        "slug": "favored-mail",
+        "name": "Favored Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/favored-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery designed for writing about your favorite things. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "rsvp-mail": {
+        "slug": "rsvp-mail",
+        "name": "Rsvp Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/rsvp-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery designed for invitations. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "thanks-mail": {
+        "slug": "thanks-mail",
+        "name": "Thanks Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/thanks-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery designed for a thank-you note. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "inquiry-mail": {
+        "slug": "inquiry-mail",
+        "name": "Inquiry Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/inquiry-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery designed for writing questions. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "like-mail": {
+        "slug": "like-mail",
+        "name": "Like Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/like-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery designed for writing recommendations. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "reply-mail": {
+        "slug": "reply-mail",
+        "name": "Reply Mail",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/reply-mail.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery designed for writing a reply. Let a Pokémon hold it for delivery."
+            }
+        ]
+    },
+    "bridge-mail-s": {
+        "slug": "bridge-mail-s",
+        "name": "Bridge Mail S",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/bridge-mail-s.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery featuring a print of a sky-piercing bridge. Let a Pokémon hold it for use."
+            }
+        ]
+    },
+    "bridge-mail-d": {
+        "slug": "bridge-mail-d",
+        "name": "Bridge Mail D",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/bridge-mail-d.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery featuring a print of a red drawbridge. Let a Pokémon hold it for use."
+            }
+        ]
+    },
+    "bridge-mail-t": {
+        "slug": "bridge-mail-t",
+        "name": "Bridge Mail T",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/bridge-mail-t.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery featuring a print of a steel suspension bridge. Let a Pokémon hold it for use."
+            }
+        ]
+    },
+    "bridge-mail-v": {
+        "slug": "bridge-mail-v",
+        "name": "Bridge Mail V",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/bridge-mail-v.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery featuring a print of a brick bridge. Let a Pokémon hold it for use."
+            }
+        ]
+    },
+    "bridge-mail-m": {
+        "slug": "bridge-mail-m",
+        "name": "Bridge Mail M",
+        "category": "all-mail",
+        "effect": "Lets a Trainer write a message and send it via Pokémon trade.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/bridge-mail-m.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Stationery featuring a print of an arched bridge. Let a Pokémon hold it for use."
+            }
+        ]
+    },
+    "potion": {
+        "slug": "potion",
+        "name": "Potion",
+        "category": "healing",
+        "effect": "Restores 20 HP.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/potion.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Restores the HP of a POKéMON by 20 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine for wounds. It restores the HP of one Pokémon by just 20 points."
+            }
+        ]
+    },
+    "full-restore": {
+        "slug": "full-restore",
+        "name": "Full Restore",
+        "category": "healing",
+        "effect": "Restores HP to full and cures any status ailment and confusion.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/full-restore.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Fully restores the HP and status of a POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A medicine that fully restores the HP and heals any status problems of a single Pokémon."
+            }
+        ]
+    },
+    "max-potion": {
+        "slug": "max-potion",
+        "name": "Max Potion",
+        "category": "healing",
+        "effect": "Restores HP to full.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/max-potion.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Fully restores the HP of a POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine for wounds. It completely restores the HP of a single Pokémon."
+            }
+        ]
+    },
+    "hyper-potion": {
+        "slug": "hyper-potion",
+        "name": "Hyper Potion",
+        "category": "healing",
+        "effect": "Restores 200 HP.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/hyper-potion.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Restores the HP of a POKéMON by 200 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine for wounds. It restores the HP of one Pokémon by 200 points."
+            }
+        ]
+    },
+    "super-potion": {
+        "slug": "super-potion",
+        "name": "Super Potion",
+        "category": "healing",
+        "effect": "Restores 50 HP.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/super-potion.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Restores the HP of a POKéMON by 50 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine for wounds. It restores the HP of one Pokémon by 50 points."
+            }
+        ]
+    },
+    "fresh-water": {
+        "slug": "fresh-water",
+        "name": "Fresh Water",
+        "category": "healing",
+        "effect": "Restores 50 HP.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/fresh-water.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A mineral water that restores HP by 50 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "Water with a high mineral content. It restores the HP of one Pokémon by 50 points."
+            }
+        ]
+    },
+    "soda-pop": {
+        "slug": "soda-pop",
+        "name": "Soda Pop",
+        "category": "healing",
+        "effect": "Restores 60 HP.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/soda-pop.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A fizzy soda drink that restores HP by 60 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A fizzy soda drink. It restores the HP of one Pokémon by 60 points."
+            }
+        ]
+    },
+    "lemonade": {
+        "slug": "lemonade",
+        "name": "Lemonade",
+        "category": "healing",
+        "effect": "Restores 80 HP.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/lemonade.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A very sweet drink that restores HP by 80 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A very sweet drink. It restores the HP of one Pokémon by 80 points."
+            }
+        ]
+    },
+    "moomoo-milk": {
+        "slug": "moomoo-milk",
+        "name": "Moomoo Milk",
+        "category": "healing",
+        "effect": "Restores 100 HP.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/moomoo-milk.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A nutritious milk that restores HP by 100 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "Milk with a very high nutrition content. It restores the HP of one Pokémon by 100 points."
+            }
+        ]
+    },
+    "energy-powder": {
+        "slug": "energy-powder",
+        "name": "Energy Powder",
+        "category": "healing",
+        "effect": "Restores 50 HP, but lowers happiness.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/energy-powder.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A bitter powder that restores HP by 50 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A very bitter medicine powder. It restores the HP of one Pokémon by 50 points."
+            }
+        ]
+    },
+    "energy-root": {
+        "slug": "energy-root",
+        "name": "Energy Root",
+        "category": "healing",
+        "effect": "Restores 200 HP, but lowers happiness.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/energy-root.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A bitter root that restores HP by 200 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A very bitter root. It restores the HP of one Pokémon by 200 points."
+            }
+        ]
+    },
+    "berry-juice": {
+        "slug": "berry-juice",
+        "name": "Berry Juice",
+        "category": "healing",
+        "effect": "Restores 20 HP.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/berry-juice.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A 100% pure juice that restores HP by 20 points."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A 100% pure juice made of Berries. It restores the HP of one Pokémon by just 20 points."
+            }
+        ]
+    },
+    "sweet-heart": {
+        "slug": "sweet-heart",
+        "name": "Sweet Heart",
+        "category": "healing",
+        "effect": "Restores 20 HP.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/sweet-heart.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Very sweet chocolate. It restores the HP of one Pokémon by only 20 points."
+            }
+        ]
+    },
+    "antidote": {
+        "slug": "antidote",
+        "name": "Antidote",
+        "category": "status-cures",
+        "effect": "Cures poison.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/antidote.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Heals a poisoned POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine. It lifts the effect of poison from one Pokémon."
+            }
+        ]
+    },
+    "burn-heal": {
+        "slug": "burn-heal",
+        "name": "Burn Heal",
+        "category": "status-cures",
+        "effect": "Cures a burn.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/burn-heal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Heals POKéMON of a burn."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine. It heals a single Pokémon that is suffering from a burn."
+            }
+        ]
+    },
+    "ice-heal": {
+        "slug": "ice-heal",
+        "name": "Ice Heal",
+        "category": "status-cures",
+        "effect": "Cures freezing.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/ice-heal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Defrosts a frozen POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine. It defrosts a Pokémon that has been frozen solid."
+            }
+        ]
+    },
+    "awakening": {
+        "slug": "awakening",
+        "name": "Awakening",
+        "category": "status-cures",
+        "effect": "Cures sleep.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/awakening.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Awakens a sleeping POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine. It awakens a Pokémon from the clutches of sleep."
+            }
+        ]
+    },
+    "paralyze-heal": {
+        "slug": "paralyze-heal",
+        "name": "Paralyze Heal",
+        "category": "status-cures",
+        "effect": "Cures paralysis.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/paralyze-heal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Heals a paralyzed POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine. It eliminates paralysis from a single Pokémon."
+            }
+        ]
+    },
+    "full-heal": {
+        "slug": "full-heal",
+        "name": "Full Heal",
+        "category": "status-cures",
+        "effect": "Cures any status ailment and confusion.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/full-heal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Heals all the status problems of one POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A spray-type medicine. It heals all the status problems of a single Pokémon."
+            }
+        ]
+    },
+    "heal-powder": {
+        "slug": "heal-powder",
+        "name": "Heal Powder",
+        "category": "status-cures",
+        "effect": "Cures any status ailment, but lowers happiness.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/heal-powder.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A bitter powder that heals all status problems."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A very bitter medicine powder. It heals all the status problems of a single Pokémon."
+            }
+        ]
+    },
+    "lava-cookie": {
+        "slug": "lava-cookie",
+        "name": "Lava Cookie",
+        "category": "status-cures",
+        "effect": "Cures any status ailment and confusion.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/lava-cookie.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A local specialty that heals all status problems."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "Lavaridge Town's local specialty. It heals all the status problems of one Pokémon."
+            }
+        ]
+    },
+    "old-gateau": {
+        "slug": "old-gateau",
+        "name": "Old Gateau",
+        "category": "status-cures",
+        "effect": "Cures any status ailment and confusion.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/old-gateau.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Old Chateau's hidden specialty. It heals all the status problems of a single Pokémon."
+            }
+        ]
+    },
+    "casteliacone": {
+        "slug": "casteliacone",
+        "name": "Casteliacone",
+        "category": "status-cures",
+        "effect": "Cures any status ailment and confusion.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/casteliacone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Castelia City's specialty, soft-serve ice cream. It heals all the status problems of a single Pokémon."
+            }
+        ]
+    },
+    "tiny-mushroom": {
+        "slug": "tiny-mushroom",
+        "name": "Tiny Mushroom",
+        "category": "loot",
+        "effect": "Fire Red and Leaf Green: Trade two for prior Level-up moves. Sell for 250 Pokédollars, or to Hungry Maid for 500 Pokédollars.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/tiny-mushroom.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A plain, ordinary mushroom. Can be sold cheaply."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A small and rare mushroom. It is quite popular among certain maniacal fan segments."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A small and rare mushroom. It is sought after by collectors."
+            }
+        ]
+    },
+    "big-mushroom": {
+        "slug": "big-mushroom",
+        "name": "Big Mushroom",
+        "category": "loot",
+        "effect": "Fire Red and Leaf Green: Trade for prior Level-up moves. Sell for 2500 Pokédollars, or to Hungry Maid for 5000 Pokédollars.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/big-mushroom.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A rare mushroom that would sell at a high price."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A large and rare mushroom. It is very popular among certain maniacal fan segments."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A large and rare mushroom. It is sought after by collectors."
+            }
+        ]
+    },
+    "pearl": {
+        "slug": "pearl",
+        "name": "Pearl",
+        "category": "loot",
+        "effect": "Sell for 700 Pokédollars, or to Ore Collector for 1400 Pokédollars.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/pearl.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A pretty pearl. Can be sold cheaply."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A somewhat-small pearl that sparkles in a pretty silver color. It can be sold cheaply to shops."
+            }
+        ]
+    },
+    "big-pearl": {
+        "slug": "big-pearl",
+        "name": "Big Pearl",
+        "category": "loot",
+        "effect": "Sell for 3750 Pokédollars, or to Ore Collector for 7500 Pokédollars.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/big-pearl.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A lovely large pearl that would sell at a high price."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A quite-large pearl that sparkles in a pretty silver color. It can be sold at a high price to shops."
+            }
+        ]
+    },
+    "stardust": {
+        "slug": "stardust",
+        "name": "Stardust",
+        "category": "loot",
+        "effect": "Sell for 1000 Pokédollars, or to Ore Collector for 2000 Pokédollars.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/stardust.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Beautiful red sand. Can be sold at a high price."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "Lovely, red-colored sand with a loose, silky feel. It can be sold at a high price to shops."
+            }
+        ]
+    },
+    "star-piece": {
+        "slug": "star-piece",
+        "name": "Star Piece",
+        "category": "loot",
+        "effect": "Platinum: Trade for one of each color Shard. Black and White: Trade for PP Up. Sell for 4900 Pokédollars, or to Ore Collector for 9800 Pokédollars.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/star-piece.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A red gem shard. It would sell for a very high price."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A shard of a pretty gem that sparkles in a red color. It can be sold at a high price to shops."
+            }
+        ]
+    },
+    "nugget": {
+        "slug": "nugget",
+        "name": "Nugget",
+        "category": "loot",
+        "effect": "Sell for 5000 Pokédollars, or to Ore Collector for 10000 Pokédollars.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/nugget.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A nugget of pure gold. Can be sold at a high price."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A nugget of pure gold that gives off a lustrous gleam. It can be sold at a high price to shops."
+            }
+        ]
+    },
+    "rare-bone": {
+        "slug": "rare-bone",
+        "name": "Rare Bone",
+        "category": "loot",
+        "effect": "Sell for 5000 Pokédollars, or to Bone Man for 10000 Pokédollars.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/rare-bone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A bone that is extremely valuable for Pokémon archaeology. It can be sold for a high price to shops."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A bone that is extremely valuable for Pokémon archeology. It can be sold for a high price to shops."
+            }
+        ]
+    },
+    "pretty-wing": {
+        "slug": "pretty-wing",
+        "name": "Pretty Wing",
+        "category": "loot",
+        "effect": "Sell for 100 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/pretty-wing.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Though this feather is beautiful, it's just a regular feather and has no effect on Pokémon."
+            }
+        ]
+    },
+    "balm-mushroom": {
+        "slug": "balm-mushroom",
+        "name": "Balm Mushroom",
+        "category": "loot",
+        "effect": "Sell to Hungry Maid for 25000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/balm-mushroom.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A rare mushroom which gives off a nice fragrance. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "big-nugget": {
+        "slug": "big-nugget",
+        "name": "Big Nugget",
+        "category": "loot",
+        "effect": "Sell to Ore Collector for 30000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/big-nugget.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A big nugget of pure gold that gives off a lustrous gleam. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "pearl-string": {
+        "slug": "pearl-string",
+        "name": "Pearl String",
+        "category": "loot",
+        "effect": "Sell to Ore Collector for 25000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/pearl-string.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "Very large pearls that sparkle in a pretty silver color. A maniac will buy them for a high price."
+            }
+        ]
+    },
+    "comet-shard": {
+        "slug": "comet-shard",
+        "name": "Comet Shard",
+        "category": "loot",
+        "effect": "Sell to Ore Collector for 60000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/comet-shard.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A shard which fell to the ground when a comet approached. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "relic-copper": {
+        "slug": "relic-copper",
+        "name": "Relic Copper",
+        "category": "loot",
+        "effect": "Sell to Villa Owner for 1000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/relic-copper.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A copper coin used in a civilization about 3,000 years ago. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "relic-silver": {
+        "slug": "relic-silver",
+        "name": "Relic Silver",
+        "category": "loot",
+        "effect": "Sell to Villa Owner 5000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/relic-silver.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A silver coin used in a civilization about 3,000 years ago. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "relic-gold": {
+        "slug": "relic-gold",
+        "name": "Relic Gold",
+        "category": "loot",
+        "effect": "Sell to Villa Owner 10000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/relic-gold.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A gold coin used in a civilization about 3,000 years ago. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "relic-vase": {
+        "slug": "relic-vase",
+        "name": "Relic Vase",
+        "category": "loot",
+        "effect": "Sell to Villa Owner 50000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/relic-vase.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A vase made in a civilization about 3,000 years ago. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "relic-band": {
+        "slug": "relic-band",
+        "name": "Relic Band",
+        "category": "loot",
+        "effect": "Sell to Villa Owner for 100000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/relic-band.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A bracelet made in a civilization about 3,000 years ago. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "relic-statue": {
+        "slug": "relic-statue",
+        "name": "Relic Statue",
+        "category": "loot",
+        "effect": "Sell to Villa Owner 200000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/relic-statue.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A stone figure made in a civilization about 3,000 years ago. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "relic-crown": {
+        "slug": "relic-crown",
+        "name": "Relic Crown",
+        "category": "loot",
+        "effect": "Sell to Villa Owner for 300000 Pokédollars.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/relic-crown.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A crown made in a civilization about 3,000 years ago. A maniac will buy it for a high price."
             }
         ]
     }

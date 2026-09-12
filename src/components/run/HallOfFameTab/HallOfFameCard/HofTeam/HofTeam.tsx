@@ -2,7 +2,13 @@
 
 import { useState } from 'react';
 import PokemonSlot from '@/components/run/SplitTab/SplitLocation/BattleCard/PokemonSlot/PokemonSlot';
-import { CaughtPokemon, GameDataSource } from '@/lib/static/types';
+import {
+    BattlePokemon,
+    CaughtPokemon,
+    GameDataSource,
+    ItemSlug,
+    MoveSlug,
+} from '@/lib/static/types';
 import styles from './HofTeam.module.scss';
 import ItemPickerModal from './ItemPickerModal/ItemPickerModal';
 import MovePickerModal from './MovePickerModal/MovePickerModal';
@@ -32,7 +38,7 @@ const HofTeam: React.FC<HofTeamProps> = ({
 
     type PickerTarget =
         | { index: number; kind: 'item' }
-        | { index: number; kind: 'move'; moveSlug: string };
+        | { index: number; kind: 'move'; moveSlug: MoveSlug };
 
     // -------------------------------------------------------------------------
     // STATE
@@ -57,11 +63,11 @@ const HofTeam: React.FC<HofTeamProps> = ({
         setPickerTarget({ index, kind: 'item' });
     };
 
-    const handleSelectMove = (index: number, moveSlug: string): void => {
+    const handleSelectMove = (index: number, moveSlug: MoveSlug): void => {
         setPickerTarget({ index, kind: 'move', moveSlug });
     };
 
-    const handleItemPicked = (slug: string | undefined): void => {
+    const handleItemPicked = (slug: ItemSlug | undefined): void => {
         if (!pickerTarget) return;
         const target = pickerTarget;
         onChange(
@@ -74,7 +80,7 @@ const HofTeam: React.FC<HofTeamProps> = ({
         setPickerTarget(null);
     };
 
-    const handleMovePicked = (slug: string): void => {
+    const handleMovePicked = (slug: MoveSlug): void => {
         if (!pickerTarget || pickerTarget.kind !== 'move') return;
         const target = pickerTarget;
         onChange(
@@ -111,8 +117,10 @@ const HofTeam: React.FC<HofTeamProps> = ({
                     isTagPartner={false}
                     key={pokemon ? pokemon.location : `empty-${index}`}
                     onSelectItem={() => handleSelectItem(index)}
-                    onSelectMove={(slug) => handleSelectMove(index, slug)}
-                    pokemon={pokemon}
+                    onSelectMove={(slug) =>
+                        handleSelectMove(index, slug as MoveSlug)
+                    }
+                    pokemon={pokemon as BattlePokemon | null}
                     position="single"
                     variant={variant}
                     version={version}

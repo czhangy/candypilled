@@ -4,9 +4,10 @@ import {
     buildVersionGroupGenerations,
     sleep,
     toGenerationNumber,
+    writeSlugType,
 } from '@/lib/scripts/pokeapi/shared';
 import { logSuccess, logWarning, runScript } from '@/lib/scripts/utils/helpers';
-import { ItemData, ItemValuesByGeneration } from '@/lib/static/types';
+import { ItemData, ItemSlug, ItemValuesByGeneration } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const POKEAPI_ITEM_CATEGORY_URL = 'https://pokeapi.co/api/v2/item-category';
@@ -22,7 +23,7 @@ const POKEAPI_ITEM_CATEGORY_URL = 'https://pokeapi.co/api/v2/item-category';
 // safely included as a whole. "mega-stones", "z-crystals", and "memories"
 // are omitted entirely: every item in them was introduced after
 // MAX_GENERATION, so fetching them would only be discarded work.
-const HELD_ITEM_CATEGORIES = [
+const ITEM_CATEGORIES = [
     'held-items',
     'choice',
     'effort-training',
@@ -38,6 +39,22 @@ const HELD_ITEM_CATEGORIES = [
     'other',
     'in-a-pinch',
     'picky-healing',
+    // Not held in battle for their own effect, but real in-game trade NPCs
+    // do hand over their Pokémon holding one of these (e.g. an X Attack or
+    // a Mail), so they need to resolve through the same held-item lookup
+    // used to render an encounter's `heldItem`.
+    'stat-boosts',
+    'all-mail',
+    // Never held by a Pokémon, but a trainer's usable-in-battle items
+    // (`BattleData.items`, e.g. a Gym Leader's Hyper Potions) resolve
+    // through this same item dataset, so their categories need to be here.
+    'healing',
+    'status-cures',
+    // Sell-value-only items (Nugget, Pearl, Stardust, etc.) with no battle
+    // effect, but real trainers in-game are scripted to hold one on their
+    // Pokémon (e.g. a Nugget-holding NPC), so this needs the same held-item
+    // lookup as any other `heldItem`.
+    'loot',
 ];
 // Like moves.json and abilities.json, this dataset isn't scoped to the
 // current game, but unlike them it doesn't cover every generation the site
@@ -90,6 +107,7 @@ const REMOVED_IN_GENERATION: Record<string, number> = {
 // which can suddenly and unpredictably swing a fight.
 const DANGEROUS_ITEMS = new Set([
     'focus-band',
+    'focus-sash',
     'bright-powder',
     'lax-incense',
     'liechi-berry',
@@ -137,7 +155,7 @@ const fetchCategoryItems = async (
 // within itself, so the merged list is deduped by slug.
 const fetchHeldItemList = async (): Promise<NamedApiResource[]> => {
     const itemsByCategory = await Promise.all(
-        HELD_ITEM_CATEGORIES.map(fetchCategoryItems)
+        ITEM_CATEGORIES.map(fetchCategoryItems)
     );
 
     const uniqueItems = new Map<string, NamedApiResource>();
@@ -284,7 +302,7 @@ export const fetchItems = async (): Promise<void> => {
         const removedInGeneration = REMOVED_IN_GENERATION[apiSlug];
 
         data[slug] = {
-            slug,
+            slug: slug as ItemSlug,
             name,
             category: item.category.name,
             effect: toEnglishEffect(item.effect_entries),
@@ -302,6 +320,7 @@ export const fetchItems = async (): Promise<void> => {
     }
 
     writeData(data);
+    writeSlugType('ItemSlug', Object.keys(data));
 };
 
 runScript(fetchItems);

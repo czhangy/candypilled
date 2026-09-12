@@ -1,10 +1,11 @@
 import { route216 } from '@/lib/data/diamond-pearl/maps';
-import { FieldCondition } from '@/lib/static/enums';
+import { FieldCondition, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_216: Location = {
     name: 'Route 216',
     map: route216,
+    mapAnchor: MapAnchor.Unaudited,
     encountersKey: 'sinnoh-route-216',
     battles: [
         {

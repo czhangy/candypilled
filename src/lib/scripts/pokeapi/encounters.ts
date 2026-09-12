@@ -26,6 +26,7 @@ type RawEncounter = {
     maxLevel: number | null;
     chance: number | null;
     conditions?: string[];
+    tradeFor?: string;
 };
 
 const POKEAPI_REGION_URL = 'https://pokeapi.co/api/v2/region';
@@ -323,12 +324,43 @@ const resolveWalkMethod = (
 const METHOD_RENAMES: Record<string, EncounterMethod> = {
     'gift-egg': EncounterMethod.Egg,
     'feebas-tile-fishing': EncounterMethod.FeebasTile,
+    'npc-trade': EncounterMethod.Trade,
+    // Diving/seaweed encounters are folded into Grass rather than given
+    // their own method (per this game's onboarding decision).
+    seaweed: EncounterMethod.Grass,
 };
 
 const resolveMethodRenames = (encounters: RawEncounter[]): RawEncounter[] =>
     encounters.map((encounter) => {
         const renamed = METHOD_RENAMES[encounter.method];
         return renamed ? { ...encounter, method: renamed } : encounter;
+    });
+
+const TRADE_CONDITION_PREFIX = 'trade-';
+
+// PokeAPI encodes an NPC trade's required species as a
+// "trade-<species>" condition value rather than a dedicated field, so this
+// mechanically lifts it into Encounter.tradeFor and strips the condition.
+const resolveTradeFor = (encounters: RawEncounter[]): RawEncounter[] =>
+    encounters.map((encounter) => {
+        if (encounter.method !== EncounterMethod.Trade) return encounter;
+
+        const conditions = encounter.conditions ?? [];
+        const tradeCondition = conditions.find((condition) =>
+            condition.startsWith(TRADE_CONDITION_PREFIX)
+        );
+        if (!tradeCondition) return encounter;
+
+        const remainingConditions = conditions.filter(
+            (condition) => condition !== tradeCondition
+        );
+        return {
+            ...encounter,
+            tradeFor: tradeCondition.slice(TRADE_CONDITION_PREFIX.length),
+            ...(remainingConditions.length > 0
+                ? { conditions: remainingConditions }
+                : { conditions: undefined }),
+        };
     });
 
 const resolveMethodOverrides = (
@@ -447,7 +479,8 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
             const expanded = expandTimeOfDayEncounters(merged);
             const withHoneyTree = resolveHoneyTreeEncounters(expanded);
             const remerged = mergeEncounters(withHoneyTree, 'sum');
-            const rawFinalEncounters = nullifyChances(remerged);
+            const withTradeFor = resolveTradeFor(remerged);
+            const rawFinalEncounters = nullifyChances(withTradeFor);
 
             if (rawFinalEncounters.length === 0) continue;
 

@@ -2,6 +2,7 @@ import {
     lakeVerityPostGalactic,
     lakeVerityPreGalactic,
 } from '@/lib/data/renegade-platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_VERITY: Location = {
@@ -10,11 +11,13 @@ const LAKE_VERITY: Location = {
         {
             name: 'Pre-Byron',
             map: lakeVerityPreGalactic,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'lake-verity',
         },
         {
             name: 'Post-Byron',
             map: lakeVerityPostGalactic,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'lake-verity',
             battles: [
                 {

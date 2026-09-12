@@ -7,6 +7,7 @@ import {
     GEN_4_TRUE_DOUBLE_HEIGHT,
     GEN_4_TRUE_DOUBLE_WIDTH,
 } from '@/lib/static/constants';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_210: Location = {
@@ -15,6 +16,7 @@ const ROUTE_210: Location = {
         {
             name: 'South',
             map: route210South,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'sinnoh-route-210-south',
             battles: [
                 {
@@ -54,6 +56,7 @@ const ROUTE_210: Location = {
         {
             name: 'North',
             map: { male: route210NorthDawn, female: route210NorthLucas },
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'sinnoh-route-210-north',
             battles: [
                 {

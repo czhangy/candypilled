@@ -25,6 +25,17 @@ export default class NatureHelpers {
     }
 
     /**
+     * The nature a Pokémon with personality (its raw 32-bit personality
+     * value) has — `personality % 25` indexed into the generation-invariant
+     * nature order, per Bulbapedia's "Personality value" article. Needed
+     * when decoding a Generation III/IV save file, where nature isn't
+     * stored directly but derived from personality.
+     */
+    static getNatureFromPersonality(personality: number): Nature {
+        return NatureHelpers.PERSONALITY_ORDER[personality % 25];
+    }
+
+    /**
      * The full nature pivot table: rows indexed by increased stat, columns
      * indexed by decreased stat, both in `STAT_ORDER`. Cells on the diagonal
      * are neutral (the stat is both increased and decreased).
@@ -152,4 +163,32 @@ export default class NatureHelpers {
         [Nature.Sassy]: { increased: 'SpD', decreased: 'Spe' },
         [Nature.Timid]: { increased: 'Spe', decreased: 'Atk' },
     };
+
+    private static readonly PERSONALITY_ORDER: Nature[] = [
+        Nature.Hardy,
+        Nature.Lonely,
+        Nature.Brave,
+        Nature.Adamant,
+        Nature.Naughty,
+        Nature.Bold,
+        Nature.Docile,
+        Nature.Relaxed,
+        Nature.Impish,
+        Nature.Lax,
+        Nature.Timid,
+        Nature.Hasty,
+        Nature.Serious,
+        Nature.Jolly,
+        Nature.Naive,
+        Nature.Modest,
+        Nature.Mild,
+        Nature.Quiet,
+        Nature.Bashful,
+        Nature.Rash,
+        Nature.Calm,
+        Nature.Gentle,
+        Nature.Sassy,
+        Nature.Careful,
+        Nature.Quirky,
+    ];
 }

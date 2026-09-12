@@ -4,9 +4,14 @@ import {
     buildVersionGroupGenerations,
     sleep,
     toGenerationNumber,
+    writeSlugType,
 } from '@/lib/scripts/pokeapi/shared';
 import { logSuccess, logWarning, runScript } from '@/lib/scripts/utils/helpers';
-import { AbilityData, AbilityValuesByGeneration } from '@/lib/static/types';
+import {
+    AbilityData,
+    AbilitySlug,
+    AbilityValuesByGeneration,
+} from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
 const POKEAPI_ABILITY_URL = 'https://pokeapi.co/api/v2/ability';
@@ -27,6 +32,7 @@ const DANGEROUS_ABILITIES = new Set([
     'moody',
     'simple',
     'wonder-guard',
+    'sturdy',
 ]);
 
 const writeData = (data: Record<string, AbilityData>): void => {
@@ -135,7 +141,7 @@ export const fetchAbilities = async (): Promise<void> => {
 
         const name = StringHelpers.toTitleCase(ability.name);
         data[ability.name] = {
-            slug: ability.name,
+            slug: ability.name as AbilitySlug,
             name,
             id: toResourceId(resource.url),
             introducedInGeneration: toGenerationNumber(ability.generation.name),
@@ -150,6 +156,7 @@ export const fetchAbilities = async (): Promise<void> => {
     }
 
     writeData(data);
+    writeSlugType('AbilitySlug', Object.keys(data));
 };
 
 runScript(fetchAbilities);

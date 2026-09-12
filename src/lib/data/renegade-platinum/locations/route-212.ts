@@ -3,7 +3,7 @@ import {
     route212NorthPostGalactic,
     route212South,
 } from '@/lib/data/renegade-platinum/maps';
-import { FieldCondition } from '@/lib/static/enums';
+import { FieldCondition, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_212: Location = {
@@ -12,6 +12,7 @@ const ROUTE_212: Location = {
         {
             name: 'North (Galactic)',
             map: route212NorthGalactic,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'sinnoh-route-212-north',
             battles: [
                 {
@@ -41,6 +42,7 @@ const ROUTE_212: Location = {
         {
             name: 'North (Post-Galactic)',
             map: route212NorthPostGalactic,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'sinnoh-route-212-north',
             battles: [
                 {
@@ -88,6 +90,7 @@ const ROUTE_212: Location = {
         {
             name: 'South',
             map: route212South,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'sinnoh-route-212-south',
             battles: [
                 {

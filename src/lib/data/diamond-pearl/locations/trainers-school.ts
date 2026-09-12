@@ -1,9 +1,11 @@
 import { trainersSchool } from '@/lib/data/diamond-pearl/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const TRAINERS_SCHOOL: Location = {
     name: "Trainers' School",
     map: trainersSchool,
+    mapAnchor: MapAnchor.Unaudited,
     battles: [
         {
             battleKey: 'school-kid-m-harrison',

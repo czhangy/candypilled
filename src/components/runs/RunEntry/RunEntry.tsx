@@ -8,7 +8,7 @@ import CrownIcon from '@/lib/icons/CrownIcon';
 import RunIcon from '@/lib/icons/RunIcon';
 import SkullIcon from '@/lib/icons/SkullIcon';
 import { PokemonStatus } from '@/lib/static/enums';
-import { CaughtPokemon, Game, Run } from '@/lib/static/types';
+import { CaughtPokemon, Game, PokemonSlug, Run } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import HallOfFameHelpers from '@/lib/utils/HallOfFameHelpers';
@@ -104,7 +104,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     // and an evolved starter (e.g. Infernape) keeps its original catch
     // location but not its original species, so its species has to be
     // resolved back to the base slug game.battles' conditions are keyed by.
-    const findImportedStarterSlug = (pokemon: CaughtPokemon[]): string => {
+    const findImportedStarterSlug = (pokemon: CaughtPokemon[]): PokemonSlug => {
         const starterLocation = EncounterHelpers.getStarterLocationName(game);
         const caughtAtLocation = pokemon.find(
             (caught) => caught.location === starterLocation
@@ -129,7 +129,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     const createRunFromImport = async (
         pokemon: CaughtPokemon[],
         completedSplits: string[],
-        starterSlug: string,
+        starterSlug: PokemonSlug,
         gender: 'male' | 'female'
     ): Promise<void> => {
         const newRun: Run = {

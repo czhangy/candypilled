@@ -2,6 +2,7 @@ import {
     oreburghCityCity,
     oreburghCityPokemonCenter,
 } from '@/lib/data/renegade-platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const OREBURGH_CITY: Location = {
@@ -10,10 +11,12 @@ const OREBURGH_CITY: Location = {
         {
             name: 'City',
             map: oreburghCityCity,
+            mapAnchor: MapAnchor.Unaudited,
         },
         {
             name: 'Pokémon Center',
             map: oreburghCityPokemonCenter,
+            mapAnchor: MapAnchor.Unaudited,
             encountersKey: 'oreburgh-city',
             battles: [
                 {

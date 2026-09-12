@@ -37,6 +37,11 @@ const MoveDetail: React.FC<MoveDetailProps> = ({
         moveSlug,
         generation
     );
+    const category = MoveHelpers.getMoveCategory(
+        dataSource,
+        moveSlug,
+        generation
+    );
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -46,7 +51,7 @@ const MoveDetail: React.FC<MoveDetailProps> = ({
         <div className={styles['move-detail']}>
             <div className={styles.header}>Details</div>
             <div className={styles.content}>
-                {moveData && values && (
+                {moveData && values && category && (
                     <>
                         <div className={styles.top}>
                             <span className={styles.name}>{moveData.name}</span>
@@ -72,7 +77,7 @@ const MoveDetail: React.FC<MoveDetailProps> = ({
                                     Category
                                 </span>
                                 <CategoryBadge
-                                    category={moveData.category}
+                                    category={category}
                                     height={BADGE_HEIGHT}
                                     width={BADGE_WIDTH}
                                 />

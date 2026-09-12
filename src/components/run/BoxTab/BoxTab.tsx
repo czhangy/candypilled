@@ -88,7 +88,7 @@ const BoxTab: React.FC<BoxTabProps> = ({
                           ...caughtPokemon,
                           heldItem:
                               newStatus === PokemonStatus.Dead
-                                  ? ''
+                                  ? undefined
                                   : caughtPokemon.heldItem,
                           status: newStatus,
                       }

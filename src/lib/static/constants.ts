@@ -2,10 +2,6 @@ import { Setting, StatValues } from '@/lib/static/types';
 
 export const SETTINGS: Setting[] = [
     {
-        id: 'show-dupes',
-        title: 'Show Dupes',
-    },
-    {
         id: 'disable-trade-evos',
         title: 'Disable Trade Evolutions',
     },
@@ -58,3 +54,12 @@ export const GEN_4_TRUE_DOUBLE_WIDTH = 38;
 // Marker height for a Gen 4 true-double or tag battle whose trainer-name
 // label wraps to two lines.
 export const GEN_4_TRUE_DOUBLE_HEIGHT = 44;
+
+// Marker width for a Gen 3 same-trainer-class true-double battle (e.g.
+// Twins), wide enough to fit two side-by-side trainer sprites -- 2x Gen 3's
+// default marker width.
+export const GEN_3_TRUE_DOUBLE_WIDTH = 38;
+
+// Marker height for a Gen 3 true-double or tag battle whose trainer-name
+// label wraps to two lines.
+export const GEN_3_TRUE_DOUBLE_HEIGHT = 42;

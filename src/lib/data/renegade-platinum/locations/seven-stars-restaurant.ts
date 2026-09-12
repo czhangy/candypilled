@@ -1,9 +1,11 @@
 import { sevenStarsRestaurant } from '@/lib/data/renegade-platinum/maps';
+import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SEVEN_STARS_RESTAURANT: Location = {
     name: 'Seven Stars Restaurant',
     map: sevenStarsRestaurant,
+    mapAnchor: MapAnchor.Unaudited,
     battles: [
         {
             battleKey: 'pi-kendrick-and-beauty-gabriela',

@@ -4,7 +4,12 @@ import { useState } from 'react';
 import Modal from '@/components/common/Modal/Modal';
 import PokedexTile from '@/components/run/SplitTab/SplitLocation/PokedexTile/PokedexTile';
 import { Nature, PokemonStatus } from '@/lib/static/enums';
-import { CaughtPokemon, Game } from '@/lib/static/types';
+import {
+    AbilitySlug,
+    CaughtPokemon,
+    Game,
+    PokemonSlug,
+} from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StarterSelect from './StarterSelect/StarterSelect';
@@ -70,12 +75,11 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
         if (!defaultSpecies) return;
 
         onSelect({
-            ability:
-                PokemonHelpers.getPokemonAbilities(
-                    game.dataSource,
-                    defaultSpecies,
-                    game.generation
-                )?.slot1 ?? '',
+            ability: (PokemonHelpers.getPokemonAbilities(
+                game.dataSource,
+                defaultSpecies,
+                game.generation
+            )?.slot1 ?? '') as AbilitySlug,
             evs: undefined,
             gender: PokemonHelpers.isGenderless(game.dataSource, defaultSpecies)
                 ? 'genderless'
@@ -93,7 +97,7 @@ const StarterSelectModal: React.FC<StarterSelectModalProps> = ({
                 STARTER_LEVEL
             ),
             nature: Nature.Adamant,
-            slug: defaultSpecies,
+            slug: defaultSpecies as PokemonSlug,
             status: PokemonStatus.Alive,
         });
     };

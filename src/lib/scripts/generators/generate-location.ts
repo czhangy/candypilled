@@ -156,6 +156,13 @@ const findSubareasArrayEnd = (contents: string): number => {
     throw new Error("Couldn't find the end of the subareas array.");
 };
 
+// Quotes a display name for embedding in generated source, using double
+// quotes when the name itself contains an apostrophe (e.g. "Norman's
+// Room") so the emitted literal stays valid, single quotes otherwise to
+// match this project's default style.
+const quoteName = (name: string): string =>
+    name.includes("'") ? `"${name}"` : `'${name}'`;
+
 // Inserts a new `{ name, map }` subarea entry just before the closing `]`
 // of the file's `subareas` array. Exact indentation isn't preserved (it's
 // normalized by the pre-commit Prettier hook), just valid placement.
@@ -166,7 +173,7 @@ const insertSubarea = (
 ): void => {
     const contents = fs.readFileSync(filePath, 'utf-8');
     const closeIndex = findSubareasArrayEnd(contents);
-    const entry = `        {\n            name: '${subareaName}',\n            map: ${mapExportName},\n        },\n`;
+    const entry = `        {\n            name: ${quoteName(subareaName)},\n            map: ${mapExportName},\n        },\n`;
 
     fs.writeFileSync(
         filePath,
@@ -185,15 +192,15 @@ const createLocation = (
 
     const body = args.subareaName
         ? [
-              `    name: '${name}',\n`,
+              `    name: ${quoteName(name)},\n`,
               '    subareas: [\n',
               '        {\n',
-              `            name: '${args.subareaName}',\n`,
+              `            name: ${quoteName(args.subareaName)},\n`,
               `            map: ${mapExportName},\n`,
               '        },\n',
               '    ],\n',
           ]
-        : [`    name: '${name}',\n`, `    map: ${mapExportName},\n`];
+        : [`    name: ${quoteName(name)},\n`, `    map: ${mapExportName},\n`];
 
     writeToFile(filePath, [
         `import { ${mapExportName} } from '@/lib/data/${gameSlug}/maps';\n`,

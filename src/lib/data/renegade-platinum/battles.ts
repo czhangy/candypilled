@@ -512,7 +512,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Optional],
         trainerClass: 'school-kid-m',
         name: 'Harrison',
-        items: [{ count: 1, name: 'Potion' }],
+        items: [{ count: 1, slug: 'potion' }],
         teams: [
             {
                 team: [
@@ -542,7 +542,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Optional],
         trainerClass: 'school-kid-f',
         name: 'Christine',
-        items: [{ count: 1, name: 'Potion' }],
+        items: [{ count: 1, slug: 'potion' }],
         teams: [
             {
                 team: [
@@ -1094,7 +1094,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Miniboss],
         trainerClass: 'pkmn-trainer-barry',
         name: 'Barry',
-        items: [{ count: 1, name: 'Potion' }],
+        items: [{ count: 1, slug: 'potion' }],
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
@@ -2339,8 +2339,8 @@ export const BATTLES: Record<string, BattleData> = {
         trainerClass: 'leader-roark',
         name: 'Roark',
         items: [
-            { count: 1, name: 'Potion' },
-            { count: 1, name: 'Super Potion' },
+            { count: 1, slug: 'potion' },
+            { count: 1, slug: 'super-potion' },
         ],
         teams: [
             {
@@ -3474,7 +3474,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Miniboss],
         trainerClass: 'pkmn-trainer-cheryl',
         name: 'Cheryl',
-        items: [{ count: 1, name: 'Super Potion' }],
+        items: [{ count: 1, slug: 'super-potion' }],
         teams: [
             {
                 team: [
@@ -5517,7 +5517,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Boss],
         trainerClass: 'leader-gardenia',
         name: 'Gardenia',
-        items: [{ count: 2, name: 'Super Potion' }],
+        items: [{ count: 2, slug: 'super-potion' }],
         teams: [
             {
                 team: [
@@ -5949,7 +5949,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Miniboss],
         trainerClass: 'pkmn-trainer-mira',
         name: 'Mira',
-        items: [{ count: 1, name: 'Hyper Potion' }],
+        items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
                 team: [
@@ -6648,7 +6648,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Miniboss],
         trainerClass: 'elite-four-aaron',
         name: 'Aaron',
-        items: [{ count: 1, name: 'Full Restore' }],
+        items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -7054,7 +7054,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Boss],
         trainerClass: 'leader-fantina',
         name: 'Fantina',
-        items: [{ count: 2, name: 'Hyper Potion' }],
+        items: [{ count: 2, slug: 'hyper-potion' }],
         teams: [
             {
                 team: [
@@ -7700,7 +7700,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Optional],
         trainerClass: 'rich-boy',
         name: 'Jason',
-        items: [{ count: 1, name: 'Full Restore' }],
+        items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -7740,7 +7740,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Optional],
         trainerClass: 'lady',
         name: 'Melissa',
-        items: [{ count: 1, name: 'Full Restore' }],
+        items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -7800,7 +7800,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Optional],
         trainerClass: 'gentleman',
         name: 'Jeremy',
-        items: [{ count: 1, name: 'Full Restore' }],
+        items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -7821,7 +7821,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Optional],
         trainerClass: 'socialite',
         name: 'Reina',
-        items: [{ count: 1, name: 'Full Restore' }],
+        items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -8002,7 +8002,7 @@ export const BATTLES: Record<string, BattleData> = {
         split: 'Wake',
         trainerClass: 'scientist',
         name: 'Shaun',
-        items: [{ count: 1, name: 'X Special' }],
+        items: [{ count: 1, slug: 'x-sp-atk' }],
         teams: [
             {
                 team: [
@@ -8339,7 +8339,7 @@ export const BATTLES: Record<string, BattleData> = {
         split: 'Wake',
         trainerClass: 'scientist',
         name: 'Stefano',
-        items: [{ count: 1, name: 'X Defend' }],
+        items: [{ count: 1, slug: 'x-defense' }],
         teams: [
             {
                 team: [
@@ -8632,7 +8632,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [],
         trainerClass: 'galactic-grunt-m',
         name: '6-Turn Challenge',
-        items: [{ count: 1, name: 'Potion' }],
+        items: [{ count: 1, slug: 'potion' }],
         teams: [
             {
                 team: [
@@ -8696,7 +8696,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Tag, BattleMetadata.Miniboss],
         trainerClass: 'commander-saturn',
         name: 'Saturn',
-        items: [{ count: 4, name: 'Full Restore' }],
+        items: [{ count: 4, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -9266,7 +9266,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Optional],
         trainerClass: 'pokefan-m',
         name: 'Leonard',
-        items: [{ count: 2, name: 'Full Heal' }],
+        items: [{ count: 2, slug: 'full-heal' }],
         teams: [
             {
                 team: [
@@ -9309,8 +9309,8 @@ export const BATTLES: Record<string, BattleData> = {
         trainerClass: 'pokefan-f',
         name: 'Rebekah',
         items: [
-            { count: 1, name: 'Full Heal' },
-            { count: 1, name: 'Super Potion' },
+            { count: 1, slug: 'full-heal' },
+            { count: 1, slug: 'super-potion' },
         ],
         teams: [
             {
@@ -10396,7 +10396,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Boss],
         trainerClass: 'leader-maylene',
         name: 'Maylene',
-        items: [{ count: 2, name: 'Hyper Potion' }],
+        items: [{ count: 2, slug: 'hyper-potion' }],
         teams: [
             {
                 team: [
@@ -11434,7 +11434,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Double, BattleMetadata.Optional],
         trainerClass: 'rich-boy',
         name: 'Roman',
-        items: [{ count: 1, name: 'Full Restore' }],
+        items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -11484,7 +11484,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Double, BattleMetadata.Optional],
         trainerClass: 'gentleman',
         name: 'Leonardo',
-        items: [{ count: 1, name: 'Full Restore' }],
+        items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -11529,7 +11529,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Double, BattleMetadata.Optional],
         trainerClass: 'school-kid-m',
         name: 'Esteban',
-        items: [{ count: 1, name: 'X Sp. Def' }],
+        items: [{ count: 1, slug: 'x-sp-def' }],
         teams: [
             {
                 team: [
@@ -11575,7 +11575,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Double, BattleMetadata.Optional],
         trainerClass: 'scientist',
         name: 'Emilio',
-        items: [{ count: 1, name: 'X Special' }],
+        items: [{ count: 1, slug: 'x-sp-atk' }],
         teams: [
             {
                 team: [
@@ -12548,7 +12548,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Boss],
         trainerClass: 'leader-wake',
         name: 'Wake',
-        items: [{ count: 2, name: 'Hyper Potion' }],
+        items: [{ count: 2, slug: 'hyper-potion' }],
         teams: [
             {
                 team: [
@@ -12991,7 +12991,7 @@ export const BATTLES: Record<string, BattleData> = {
         split: 'Byron',
         trainerClass: 'pkmn-trainer-dawn',
         name: 'Dawn',
-        items: [{ count: 2, name: 'Hyper Potion' }],
+        items: [{ count: 2, slug: 'hyper-potion' }],
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
@@ -13285,7 +13285,7 @@ export const BATTLES: Record<string, BattleData> = {
         split: 'Byron',
         trainerClass: 'pkmn-trainer-lucas',
         name: 'Lucas',
-        items: [{ count: 2, name: 'Hyper Potion' }],
+        items: [{ count: 2, slug: 'hyper-potion' }],
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
@@ -14679,7 +14679,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Miniboss],
         trainerClass: 'castle-valet-darach',
         name: 'Darach',
-        items: [{ count: 2, name: 'Full Restore' }],
+        items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -15058,7 +15058,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Miniboss],
         trainerClass: 'pkmn-trainer-riley',
         name: 'Riley',
-        items: [{ count: 1, name: 'Full Restore' }],
+        items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -16142,7 +16142,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Boss],
         trainerClass: 'leader-byron',
         name: 'Byron',
-        items: [{ count: 2, name: 'Full Restore' }],
+        items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -17347,7 +17347,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Optional],
         trainerClass: 'scientist',
         name: 'Fredrick',
-        items: [{ count: 1, name: 'X Defend' }],
+        items: [{ count: 1, slug: 'x-defense' }],
         teams: [
             {
                 team: [
@@ -18649,7 +18649,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Optional],
         trainerClass: 'rich-boy',
         name: 'Trey',
-        items: [{ count: 1, name: 'Full Restore' }],
+        items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -19670,7 +19670,7 @@ export const BATTLES: Record<string, BattleData> = {
         split: 'Cynthia',
         trainerClass: 'arcade-star-dahlia',
         name: 'Dahlia',
-        items: [{ count: 2, name: 'Full Restore' }],
+        items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -19772,7 +19772,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [],
         trainerClass: 'school-kid-f',
         name: 'Tiera',
-        items: [{ count: 1, name: 'Hyper Potion' }],
+        items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
                 team: [
@@ -19821,7 +19821,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [],
         trainerClass: 'school-kid-m',
         name: 'Forrest',
-        items: [{ count: 1, name: 'X Speed' }],
+        items: [{ count: 1, slug: 'x-speed' }],
         teams: [
             {
                 team: [
@@ -20170,8 +20170,8 @@ export const BATTLES: Record<string, BattleData> = {
         trainerClass: 'leader-volkner',
         name: 'Volkner',
         items: [
-            { count: 1, name: 'Hyper Potion' },
-            { count: 1, name: 'Full Restore' },
+            { count: 1, slug: 'hyper-potion' },
+            { count: 1, slug: 'full-restore' },
         ],
         teams: [
             {
@@ -21286,7 +21286,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Miniboss],
         trainerClass: 'pkmn-trainer-marley',
         name: 'Marley',
-        items: [{ count: 2, name: 'Full Restore' }],
+        items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -22674,7 +22674,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Miniboss],
         trainerClass: 'pkmn-trainer-dawn',
         name: 'Dawn',
-        items: [{ count: 2, name: 'Full Restore' }],
+        items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
@@ -22967,7 +22967,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Miniboss],
         trainerClass: 'pkmn-trainer-lucas',
         name: 'Lucas',
-        items: [{ count: 4, name: 'Full Restore' }],
+        items: [{ count: 4, slug: 'full-restore' }],
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
@@ -23261,7 +23261,7 @@ export const BATTLES: Record<string, BattleData> = {
         split: 'Cynthia',
         trainerClass: 'pkmn-trainer-barry',
         name: 'Barry',
-        items: [{ count: 2, name: 'Full Restore' }],
+        items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
@@ -23554,7 +23554,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Boss],
         trainerClass: 'elite-four-aaron',
         name: 'Aaron',
-        items: [{ count: 2, name: 'Full Restore' }],
+        items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -23932,7 +23932,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Boss],
         trainerClass: 'elite-four-bertha',
         name: 'Bertha',
-        items: [{ count: 2, name: 'Full Restore' }],
+        items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -24301,7 +24301,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Boss],
         trainerClass: 'elite-four-flint',
         name: 'Flint',
-        items: [{ count: 2, name: 'Full Restore' }],
+        items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -24685,7 +24685,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Boss],
         trainerClass: 'elite-four-lucian',
         name: 'Lucian',
-        items: [{ count: 2, name: 'Full Restore' }],
+        items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
                 team: [
@@ -25069,7 +25069,7 @@ export const BATTLES: Record<string, BattleData> = {
         metadata: [BattleMetadata.Boss],
         trainerClass: 'champion-cynthia',
         name: 'Cynthia',
-        items: [{ count: 4, name: 'Full Restore' }],
+        items: [{ count: 4, slug: 'full-restore' }],
         teams: [
             {
                 team: [
