@@ -69,4 +69,30 @@
             }
         }
     }
+
+    .wipe-button {
+        @include mono-label;
+
+        background: $red;
+        border: none;
+        border-radius: 0;
+        color: $foreground;
+        cursor: pointer;
+        flex: 0 0 auto;
+        font-size: 0.7rem;
+        letter-spacing: 0.03em;
+        padding: 0.35rem;
+        text-transform: uppercase;
+        transition: background 0.15s ease;
+
+        @media (hover: hover) {
+            &:hover {
+                background: color-mix(in srgb, $red 85%, black 15%);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+    }
 }

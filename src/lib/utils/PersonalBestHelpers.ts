@@ -1,5 +1,6 @@
 import { Game, PersonalBest } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
+import HallOfFameHelpers from '@/lib/utils/HallOfFameHelpers';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
@@ -9,30 +10,7 @@ export default class PersonalBestHelpers {
     // -------------------------------------------------------------------------
 
     private static readonly STORAGE_KEY = 'candypilled-personal-bests';
-    private static readonly EMPTY: PersonalBest = {
-        battleKey: null,
-        isGameClear: false,
-    };
-
-    // Whether candidate represents strictly more progress than current, per
-    // gender's battle order — a game clear beats every battleKey, and a
-    // later battle position beats an earlier one.
-    private static isBetter(
-        game: Game,
-        gender: 'male' | 'female' | undefined,
-        candidate: PersonalBest,
-        current: PersonalBest
-    ): boolean {
-        if (current.isGameClear) return false;
-        if (candidate.isGameClear) return true;
-        if (!candidate.battleKey) return false;
-        if (!current.battleKey) return true;
-
-        return (
-            BattleHelpers.getBattlePosition(game, candidate.battleKey, gender) >
-            BattleHelpers.getBattlePosition(game, current.battleKey, gender)
-        );
-    }
+    private static readonly EMPTY: PersonalBest = { battleKey: null };
 
     // -------------------------------------------------------------------------
     // PUBLIC
@@ -48,6 +26,18 @@ export default class PersonalBestHelpers {
         );
     }
 
+    /**
+     * Whether any attempt of game has ever reached the Hall of Fame. Once
+     * true, personal best no longer applies — the run has already cleared
+     * everything there is to reach.
+     */
+    static hasClearedGame(game: Game): boolean {
+        const slug = StringHelpers.toSlug(game.name);
+        return HallOfFameHelpers.getSnapshot().some(
+            (entry) => entry.game === slug
+        );
+    }
+
     /** Persists candidate as game's personal best only if it represents more progress (per gender's battle order) than what's currently stored. */
     static async considerCandidate(
         game: Game,
@@ -55,7 +45,16 @@ export default class PersonalBestHelpers {
         candidate: PersonalBest
     ): Promise<void> {
         const current = PersonalBestHelpers.get(game);
-        if (!PersonalBestHelpers.isBetter(game, gender, candidate, current)) {
+        if (!candidate.battleKey) return;
+        if (
+            current.battleKey &&
+            BattleHelpers.getBattlePosition(
+                game,
+                candidate.battleKey,
+                gender
+            ) <=
+                BattleHelpers.getBattlePosition(game, current.battleKey, gender)
+        ) {
             return;
         }
 

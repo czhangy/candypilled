@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import ConfirmModal from '@/components/ConfirmModal/ConfirmModal';
 import EditIcon from '@/lib/icons/EditIcon';
 import { BattleMetadata } from '@/lib/static/enums';
 import { Battle, Game } from '@/lib/static/types';
@@ -23,6 +24,7 @@ type BattleCardProps = {
     onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
     onSelectTrainer: (battleKey: string) => void;
+    onWipeBattle?: (battleKey: string) => void;
     starter: string;
     variant: string;
     version: string;
@@ -39,6 +41,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
     onSelectMove,
     onSelectSpecies,
     onSelectTrainer,
+    onWipeBattle,
     starter,
     variant,
     version,
@@ -54,6 +57,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
     // -------------------------------------------------------------------------
 
     const [isNotesModalOpen, setIsNotesModalOpen] = useState(false);
+    const [isWipeConfirmOpen, setIsWipeConfirmOpen] = useState(false);
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -86,6 +90,18 @@ const BattleCard: React.FC<BattleCardProps> = ({
 
     const handleNotesModalClose = (): void => {
         setIsNotesModalOpen(false);
+    };
+
+    const handleWipeButtonClick = (): void => {
+        setIsWipeConfirmOpen(true);
+    };
+
+    const handleWipeConfirmClose = (): void => {
+        setIsWipeConfirmOpen(false);
+    };
+
+    const handleWipeConfirm = (): void => {
+        onWipeBattle?.(BattleHelpers.getBattleKey(battle));
     };
 
     // -------------------------------------------------------------------------
@@ -131,6 +147,15 @@ const BattleCard: React.FC<BattleCardProps> = ({
                         onClose={handleNotesModalClose}
                     />
                 )}
+                {isWipeConfirmOpen && (
+                    <ConfirmModal
+                        confirmLabel="Wipe"
+                        description="This will record a wipe to this trainer and end this attempt."
+                        onClose={handleWipeConfirmClose}
+                        onConfirm={handleWipeConfirm}
+                        title="Wipe?"
+                    />
+                )}
                 <div className={styles.body}>
                     {rows.map((row, rowIndex) => {
                         const isLastRow = rowIndex === rows.length - 1;
@@ -154,6 +179,11 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                         isStacked={isStacked}
                                         items={row.items}
                                         metadata={metadata}
+                                        onWipeClick={
+                                            onWipeBattle
+                                                ? handleWipeButtonClick
+                                                : undefined
+                                        }
                                         trainerAssetFolder={
                                             game.trainerAssetFolder
                                         }

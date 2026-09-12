@@ -112,6 +112,31 @@ $preview-neon-green: #39ff14;
         }
     }
 
+    .trainer-marker__wipe-badge {
+        align-items: center;
+        background: $red;
+        border-radius: 0.5rem;
+        bottom: 0;
+        color: $foreground;
+        display: flex;
+        font-family: $font-mono;
+        font-size: 0.6rem;
+        font-weight: 700;
+        gap: 0.15rem;
+        height: 1rem;
+        justify-content: center;
+        left: 50%;
+        min-width: 1rem;
+        padding: 0 0.2rem;
+        position: absolute;
+        transform: translate(-50%, 50%);
+
+        svg {
+            height: 0.55rem;
+            width: 0.55rem;
+        }
+    }
+
     &--preview {
         --marker-color: #{$preview-bright-pink};
 

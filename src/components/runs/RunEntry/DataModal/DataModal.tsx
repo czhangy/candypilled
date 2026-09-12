@@ -4,7 +4,7 @@ import { useState } from 'react';
 import ImportSaveForm from '@/components/common/ImportSaveForm/ImportSaveForm';
 import Modal from '@/components/common/Modal/Modal';
 import Tabs from '@/components/common/Tabs/Tabs';
-import ConfirmActions from '@/components/runs/RunEntry/ConfirmActions/ConfirmActions';
+import ConfirmActions from '@/components/ConfirmActions/ConfirmActions';
 import { CaughtPokemon, Game } from '@/lib/static/types';
 import styles from './DataModal.module.scss';
 

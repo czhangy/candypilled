@@ -10,10 +10,10 @@ import {
     useSearchParams,
 } from 'next/navigation';
 import Tabs from '@/components/common/Tabs/Tabs';
+import GenderSelectModal from '@/components/GenderSelectModal/GenderSelectModal';
+import StarterSelectModal from '@/components/StarterSelectModal/StarterSelectModal';
 import { CaughtPokemon, Game } from '@/lib/static/types';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
-import NotesHelpers from '@/lib/utils/NotesHelpers';
-import PersonalBestHelpers from '@/lib/utils/PersonalBestHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
 import RunImportHelpers from '@/lib/utils/RunImportHelpers';
@@ -28,7 +28,6 @@ import ResourcesTab from './ResourcesTab/ResourcesTab';
 import styles from './RunPage.module.scss';
 import SplitHeader from './SplitHeader/SplitHeader';
 import SplitTab from './SplitTab/SplitTab';
-import WipeSelectModal from './WipeSelectModal/WipeSelectModal';
 
 type RunPageProps = {
     game: Game;
@@ -44,8 +43,8 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
         { id: 'box', label: 'Box' },
         { id: 'calc', label: 'Calc' },
         { id: 'data', label: 'Data' },
-        { id: 'hof', label: 'Hall of Fame' },
         { id: 'resources', label: 'Resources' },
+        { id: 'hof', label: 'Hall of Fame' },
     ];
 
     const DEFAULT_SUBTAB = 'pokedex';
@@ -82,8 +81,12 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
     // STATE
     // -------------------------------------------------------------------------
 
+    const [isGenderSelectOpen, setIsGenderSelectOpen] = useState(false);
     const [isImportModalOpen, setIsImportModalOpen] = useState(false);
-    const [isWipeModalOpen, setIsWipeModalOpen] = useState(false);
+    const [isStarterSelectOpen, setIsStarterSelectOpen] = useState(false);
+    const [selectedGender, setSelectedGender] = useState<
+        'male' | 'female' | undefined
+    >(undefined);
     const [stickyHeaderHeight, setStickyHeaderHeight] = useState(0);
 
     // -------------------------------------------------------------------------
@@ -328,30 +331,37 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
         }
     };
 
-    const handleWipeToggle = async (): Promise<void> => {
-        if (!run) return;
-
-        if (run.wipe) {
-            await RunHelpers.saveRun(game, { ...run, wipe: false });
-            return;
-        }
-
-        setIsWipeModalOpen(true);
+    const handleRespawnClick = (): void => {
+        setIsGenderSelectOpen(true);
     };
 
-    const handleCloseWipeModal = (): void => {
-        setIsWipeModalOpen(false);
+    const handleGenderSelectClose = (): void => {
+        setIsGenderSelectOpen(false);
     };
 
-    const handleWipeSelect = async (battleKey: string): Promise<void> => {
-        if (!run) return;
+    const handleRespawnGenderSelect = (gender: 'male' | 'female'): void => {
+        setSelectedGender(gender);
+        setIsGenderSelectOpen(false);
+        setIsStarterSelectOpen(true);
+    };
 
-        await NotesHelpers.recordWipe(game, battleKey);
-        await PersonalBestHelpers.considerCandidate(game, run.gender, {
-            battleKey,
-            isGameClear: false,
-        });
-        await RunHelpers.saveRun(game, { ...run, wipe: true });
+    const handleStarterSelectClose = (): void => {
+        setIsStarterSelectOpen(false);
+    };
+
+    const handleRespawnStarterSelect = async (
+        starter: CaughtPokemon
+    ): Promise<void> => {
+        if (!run || !selectedGender) return;
+
+        await RunHelpers.saveRun(
+            game,
+            RunHelpers.buildNewAttempt(run, starter, selectedGender)
+        );
+        setIsStarterSelectOpen(false);
+        setSelectedGender(undefined);
+        router.replace(pathname);
+        window.scrollTo({ top: 0 });
     };
 
     const handleImportClick = (): void => {
@@ -436,13 +446,15 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                     >
                         Import
                     </button>
-                    <button
-                        className={styles.wipe}
-                        onClick={handleWipeToggle}
-                        type="button"
-                    >
-                        {run.wipe ? 'RESPAWN' : 'Wipe'}
-                    </button>
+                    {run.wipe && (
+                        <button
+                            className={styles.wipe}
+                            onClick={handleRespawnClick}
+                            type="button"
+                        >
+                            RESPAWN
+                        </button>
+                    )}
                 </div>
             </div>
             {run.wipe ? (
@@ -546,12 +558,19 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                     onSubmit={handleImportSave}
                 />
             )}
-            {isWipeModalOpen && (
-                <WipeSelectModal
+            {isGenderSelectOpen && (
+                <GenderSelectModal
                     game={game}
-                    gender={run.gender}
-                    onClose={handleCloseWipeModal}
-                    onSelect={handleWipeSelect}
+                    genders={game.genders}
+                    onClose={handleGenderSelectClose}
+                    onSelect={handleRespawnGenderSelect}
+                />
+            )}
+            {isStarterSelectOpen && (
+                <StarterSelectModal
+                    game={game}
+                    onClose={handleStarterSelectClose}
+                    onSelect={handleRespawnStarterSelect}
                 />
             )}
         </div>

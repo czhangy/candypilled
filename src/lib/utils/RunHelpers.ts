@@ -1,5 +1,5 @@
 import { GAMES } from '@/lib/data/games';
-import { DropdownOption, Game, Run } from '@/lib/static/types';
+import { CaughtPokemon, DropdownOption, Game, Run } from '@/lib/static/types';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
@@ -87,6 +87,29 @@ export default class RunHelpers {
         )
             .filter((name) => !usedLocations.includes(name))
             .map((name) => ({ label: name, value: name }));
+    }
+
+    /**
+     * A fresh Run starting a new attempt with starter and gender —
+     * completedSplits/missedLocations reset and caughtPokemon containing
+     * only starter. attempt increments and hallOfFameCount carries over
+     * from previousRun, or start from scratch if previousRun is null.
+     */
+    static buildNewAttempt(
+        previousRun: Run | null,
+        starter: CaughtPokemon,
+        gender: 'male' | 'female'
+    ): Run {
+        return {
+            attempt: (previousRun?.attempt ?? 0) + 1,
+            completedSplits: [],
+            hallOfFameCount: previousRun?.hallOfFameCount ?? 0,
+            starter: starter.slug,
+            gender,
+            caughtPokemon: [starter],
+            missedLocations: [],
+            wipe: false,
+        };
     }
 
     /** Persists run for game and notifies subscribers. */

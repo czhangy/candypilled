@@ -16,6 +16,7 @@ type TrainerPanelProps = {
     isStacked: boolean;
     items?: BattleItem[];
     metadata: BattleMetadata[];
+    onWipeClick?: () => void;
     trainerAssetFolder: TrainerAssetFolder;
     trainerClass: string;
     trainerName: string;
@@ -27,6 +28,7 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
     isStacked,
     items,
     metadata,
+    onWipeClick,
     trainerAssetFolder,
     trainerClass,
     trainerName,
@@ -148,6 +150,15 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
             )}
             {metadata.includes(BattleMetadata.Miniboss) && (
                 <div className={styles['trainer__metadata']}>MINIBOSS</div>
+            )}
+            {onWipeClick && (
+                <button
+                    className={styles['wipe-button']}
+                    onClick={onWipeClick}
+                    type="button"
+                >
+                    Wipe
+                </button>
             )}
         </div>
     );

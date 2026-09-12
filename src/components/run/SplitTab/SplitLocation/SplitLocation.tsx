@@ -17,6 +17,8 @@ import {
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
+import NotesHelpers from '@/lib/utils/NotesHelpers';
+import PersonalBestHelpers from '@/lib/utils/PersonalBestHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
@@ -316,6 +318,14 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         await RunHelpers.saveRun(game, updatedRun);
     };
 
+    const handleWipeBattle = async (battleKey: string): Promise<void> => {
+        await NotesHelpers.recordWipe(game, battleKey);
+        await PersonalBestHelpers.considerCandidate(game, run.gender, {
+            battleKey,
+        });
+        await RunHelpers.saveRun(game, { ...run, wipe: true });
+    };
+
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
@@ -542,6 +552,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         onSelectMove={onSelectMove}
                                         onSelectSpecies={onSelectSpecies}
                                         onSelectTrainer={onSelectTrainer}
+                                        onWipeBattle={handleWipeBattle}
                                         starter={run.starter}
                                         variant={variant}
                                         version={game.version}
