@@ -82,6 +82,14 @@ const MoveList: React.FC<MoveListProps> = ({
                           generation
                       )
                     : undefined;
+                const movePower = moveSlug
+                    ? MoveHelpers.getMovePower(
+                          dataSource,
+                          moveSlug,
+                          generation,
+                          ivs
+                      )
+                    : undefined;
 
                 if (!moveSlug || !moveData || !moveValues || !moveCategory) {
                     return <li key={index}>-</li>;
@@ -122,7 +130,7 @@ const MoveList: React.FC<MoveListProps> = ({
                     {
                         key: 'bp',
                         label: 'BP',
-                        value: moveValues.power ?? '—',
+                        value: movePower ?? '—',
                     },
                     { key: 'pp', label: 'PP', value: moveValues.pp },
                     {

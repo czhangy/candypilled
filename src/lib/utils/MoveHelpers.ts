@@ -100,12 +100,37 @@ export default class MoveHelpers {
     }
 
     /**
+     * The base power `slug` should render as in `generation`, resolving
+     * Hidden Power's IV-dependent power (30-70, generations 3-6) instead of
+     * its static "1" placeholder data entry.
+     */
+    static getMovePower(
+        dataSource: GameDataSource,
+        slug: string,
+        generation: number,
+        ivs: StatValues
+    ): number | null | undefined {
+        const values = MoveHelpers.getMoveForGeneration(
+            dataSource,
+            slug,
+            generation
+        );
+        if (!values) return undefined;
+
+        return slug === 'hidden-power' && generation < 7
+            ? MoveHelpers.getHiddenPowerPower(ivs)
+            : values.power;
+    }
+
+    /**
      * The category slug ('physical' | 'special' | 'status') `slug` should
      * render as in `generation`. Before Generation IV, category wasn't
      * per-move -- every damage-dealing move's category was determined by
      * its type, so this resolves that classic split instead of trusting
      * `MoveData.category`, which only ever holds the modern, post-split
-     * value.
+     * value. Hidden Power is a hardcoded exception to the type-based split:
+     * it was always Special pre-Generation IV regardless of its IV-resolved
+     * type.
      */
     static getMoveCategory(
         dataSource: GameDataSource,
@@ -117,6 +142,7 @@ export default class MoveHelpers {
         if (generation >= 4 || moveData.category === 'status') {
             return moveData.category;
         }
+        if (slug === 'hidden-power') return 'special';
 
         const values = MoveHelpers.getMoveForGeneration(
             dataSource,
@@ -300,5 +326,18 @@ export default class MoveHelpers {
             lowBit(ivs.spd) * 32;
 
         return MoveHelpers.HIDDEN_POWER_TYPES[Math.floor((sum * 15) / 63)];
+    }
+
+    private static getHiddenPowerPower(ivs: StatValues): number {
+        const highBit = (iv: number): number => Math.floor(iv / 2) % 2;
+        const sum =
+            highBit(ivs.hp) * 1 +
+            highBit(ivs.atk) * 2 +
+            highBit(ivs.def) * 4 +
+            highBit(ivs.spe) * 8 +
+            highBit(ivs.spa) * 16 +
+            highBit(ivs.spd) * 32;
+
+        return Math.floor((sum * 40) / 63) + 30;
     }
 }
