@@ -6,6 +6,7 @@ const SIDNEYS_ROOM: Location = {
     name: "Sidney's Room",
     map: pokemonLeagueSidneysRoom,
     mapAnchor: MapAnchor.Center,
+    battles: [{ battleKey: 'elite-four-sidney', x: 49.52, y: 37.42 }],
 };
 
 export default SIDNEYS_ROOM;

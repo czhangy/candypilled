@@ -331,7 +331,7 @@
         "category": "held-items",
         "effect": "Held: Holder survives any single-hit attack at 1 HP if at max HP, then the item is consumed.",
         "introducedInGeneration": 4,
-        "isDangerous": false,
+        "isDangerous": true,
         "sprite": "/items/focus-sash.png",
         "valuesByGeneration": [
             {

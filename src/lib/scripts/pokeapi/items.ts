@@ -107,6 +107,7 @@ const REMOVED_IN_GENERATION: Record<string, number> = {
 // which can suddenly and unpredictably swing a fight.
 const DANGEROUS_ITEMS = new Set([
     'focus-band',
+    'focus-sash',
     'bright-powder',
     'lax-incense',
     'liechi-berry',

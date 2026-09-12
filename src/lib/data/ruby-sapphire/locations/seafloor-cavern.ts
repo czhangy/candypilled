@@ -33,6 +33,32 @@ const SEAFLOOR_CAVERN: Location = {
             },
             mapAnchor: MapAnchor.Center,
             encountersKey: 'seafloor-cavern',
+            battles: [
+                {
+                    battleKey: 'team-magma-grunt-m-seafloor-cavern-1',
+                    game: 'Ruby',
+                    x: 42.5,
+                    y: 30.14,
+                },
+                {
+                    battleKey: 'team-aqua-grunt-m-seafloor-cavern-1',
+                    game: 'Sapphire',
+                    x: 42.5,
+                    y: 30.14,
+                },
+                {
+                    battleKey: 'team-magma-grunt-m-seafloor-cavern-2',
+                    game: 'Ruby',
+                    x: 77.5,
+                    y: 48.89,
+                },
+                {
+                    battleKey: 'team-aqua-grunt-m-seafloor-cavern-2',
+                    game: 'Sapphire',
+                    x: 77.5,
+                    y: 48.89,
+                },
+            ],
         },
         {
             name: 'Room 2',
@@ -48,6 +74,20 @@ const SEAFLOOR_CAVERN: Location = {
             },
             mapAnchor: MapAnchor.Center,
             encountersKey: 'seafloor-cavern',
+            battles: [
+                {
+                    battleKey: 'magma-admin-courtney-seafloor-cavern',
+                    game: 'Ruby',
+                    x: 65.23,
+                    y: 30.99,
+                },
+                {
+                    battleKey: 'aqua-admin-shelly-seafloor-cavern',
+                    game: 'Sapphire',
+                    x: 65.23,
+                    y: 30.99,
+                },
+            ],
         },
         {
             name: 'Room 4',
@@ -57,6 +97,20 @@ const SEAFLOOR_CAVERN: Location = {
             },
             mapAnchor: MapAnchor.Center,
             encountersKey: 'seafloor-cavern',
+            battles: [
+                {
+                    battleKey: 'team-magma-grunt-m-seafloor-cavern-3',
+                    game: 'Ruby',
+                    x: 25,
+                    y: 43.51,
+                },
+                {
+                    battleKey: 'team-aqua-grunt-m-seafloor-cavern-3',
+                    game: 'Sapphire',
+                    x: 25,
+                    y: 43.51,
+                },
+            ],
         },
         {
             name: 'Room 5',
@@ -89,6 +143,20 @@ const SEAFLOOR_CAVERN: Location = {
                 Sapphire: seafloorCavernRoom9Aqua,
             },
             mapAnchor: MapAnchor.Top,
+            battles: [
+                {
+                    battleKey: 'magma-leader-maxie-seafloor-cavern',
+                    game: 'Ruby',
+                    x: 34.95,
+                    y: 91.89,
+                },
+                {
+                    battleKey: 'aqua-leader-archie-seafloor-cavern',
+                    game: 'Sapphire',
+                    x: 34.95,
+                    y: 91.89,
+                },
+            ],
         },
     ],
 };

@@ -33,6 +33,7 @@ import ROUTE_132 from '@/lib/data/ruby-sapphire/locations/route-132';
 import ROUTE_133 from '@/lib/data/ruby-sapphire/locations/route-133';
 import ROUTE_134 from '@/lib/data/ruby-sapphire/locations/route-134';
 import SAFARI_ZONE from '@/lib/data/ruby-sapphire/locations/safari-zone';
+import SCORCHED_SLAB from '@/lib/data/ruby-sapphire/locations/scorched-slab';
 import SHOAL_CAVE from '@/lib/data/ruby-sapphire/locations/shoal-cave';
 import SLATEPORT_CITY from '@/lib/data/ruby-sapphire/locations/slateport-city';
 import TRICK_HOUSE from '@/lib/data/ruby-sapphire/locations/trick-house';
@@ -67,6 +68,7 @@ const getWinona = (hideout: Location): Split => ({
         ROUTE_119,
         FORTREE_CITY,
         ROUTE_120,
+        SCORCHED_SLAB,
         ROUTE_121,
         LILYCOVE_CITY,
         SAFARI_ZONE,
