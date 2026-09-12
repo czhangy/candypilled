@@ -445,6 +445,28 @@ sharing relationship (e.g. a ROM hack confirmed to reuse its base game's
 sprite art verbatim) — verify with a content-hash diff first, same as
 above, rather than assuming reuse because the games are related.
 
+## Trainer classes and item/ability data are shared globally, not per-game
+
+Unlike badge/trainer sprite folders (per-game, see above),
+`src/lib/data/trainer-classes.ts` lives outside every per-game directory
+and is a single dataset shared across all games — confirmed by adding
+new classes there while onboarding battles for an existing game and
+finding most classes a new game needs (Bird Keeper, Cooltrainer, Psychic,
+etc.) already present from prior games. When a new game's trainer roster
+needs a class, check this shared file first; only add an entry for a
+class genuinely not already there (a new Gym Leader/Elite Four/Champion
+individual, or a class no prior game introduced), not for every class the
+new game happens to use.
+
+The battle-items dataset (`ItemData`/`ItemSlug`, fed by
+`src/lib/scripts/pokeapi/items.ts`) and `DANGEROUS_ITEMS`/
+`DANGEROUS_ABILITIES` (in `items.ts`/`abilities.ts`) are likewise global —
+a trainer's `BattleData.items` resolves through the same
+species-independent, game-independent dataset every other game's held
+items and battle items already use. A new game needs no new
+item/ability-dataset work unless it introduces an item or ability the
+existing PokeAPI-driven fetch script doesn't already cover.
+
 ## Divergent teams and battles (multi-team trainers, gender-dependent content)
 
 Two independent mechanisms exist for battle content that varies by run

@@ -124,6 +124,18 @@ personality = baseOffset + (nameHash << 8)   // u32, wraps like C
   (uppercase, as stored in `trainerName`) and the species' display name
   (uppercase) through this table, not `String.charCodeAt`.
 
+**Shortcut: gender and ability never actually depend on the name-hash.**
+`nameHash` is always shifted left 8 bits before being added to
+`baseOffset`, so it only ever touches bits 8 and up -- the low byte of
+`personality` is _always exactly_ `baseOffset` (0x88/0x78/0x80). Since
+gender reads `personality & 0xFF` and ability reads `personality & 1`,
+both are fully determined by the trainer's own gender/`doubleBattle` flag
+alone, for every mon in the party, with no dependency on name-hashing at
+all. Only **nature** (`personality % 25`) actually needs the full
+cumulative-hash computation. In practice: skip straight to computing
+gender/ability from `baseOffset` directly, and only run the name-hash
+loop to get nature.
+
 **From `personality`, each field is a one-line lookup:**
 
 - **Nature** = `personality % 25`, indexed into the standard 25-nature
@@ -172,6 +184,34 @@ independently-checkable source (Bulbapedia, a franchise wiki's trainer
 table), don't trust the derivation blindly -- re-check the name/species
 encoding and the cumulative-hash bookkeeping first; those are the two
 places a transcription slip is most likely.
+
+## Cross-referencing against Bulbapedia
+
+The decomp has no location tags on trainer structs, so identifying _which_
+trainers belong to a given location, in what order, and on what floor/room
+still requires an external source -- Bulbapedia is the practical choice.
+Two failure modes came up repeatedly and cost real rework:
+
+- **Fetch the raw wikitext, not the rendered/summarized page.** A
+  WebFetch-style summarized fetch repeatedly collapsed or misread
+  `{{trainerdiv|...|Room N}}` floor/room labels -- producing wrong room
+  assignments that only surfaced once the user checked in-game. Use
+  `curl -s "https://bulbapedia.bulbagarden.net/w/index.php?title=<Page>&action=raw"`
+  and read the literal `{{trainerdiv}}`/`{{trainerentry}}` wikitext
+  yourself. If a location's trainers have no `{{trainerdiv|...|Room N}}`
+  label at all (some pages just use bare `{{trainerdiv|cave}}` with no
+  room argument), say so explicitly rather than guessing a room -- ask the
+  user instead of inventing a placement.
+- **One article page often stacks multiple games' trainer tables.**
+  Bulbapedia commonly lists Ruby/Sapphire, Emerald, and ORAS trainer
+  tables one after another under separate `===={{game|X}}====` headers in
+  the same raw page. Confirm which `====` section you're actually reading
+  before transcribing -- a prompt that doesn't pin the section can pull
+  Emerald or ORAS data into a Ruby/Sapphire extraction (or vice versa).
+- A named trainer in the wiki table can map to a specific rematch tier
+  (`TRAINER_X_1`, `_2`, `_3`, ...) in the decomp, not just `TRAINER_X` --
+  always match by first-tier party contents (species + level), not name
+  alone, since a bare name lookup can land on the wrong tier's stats.
 
 ## Workflow
 
