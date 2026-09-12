@@ -197,9 +197,9 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const getEncounterName = (encounter: Encounter): string =>
-        PokemonHelpers.getPokemonData(dataSource, encounter.species)?.name ??
-        encounter.species;
+    const getDexNumber = (encounter: Encounter): number =>
+        PokemonHelpers.getPokemonData(dataSource, encounter.species)
+            ?.dexNumber ?? 0;
 
     const getEncountersForMethod = (method: EncounterMethod): Encounter[] =>
         visibleEncounters
@@ -208,10 +208,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                 const chanceDiff = (b.chance ?? 0) - (a.chance ?? 0);
                 if (chanceDiff !== 0) return chanceDiff;
 
-                const minLevelDiff = (a.minLevel ?? 0) - (b.minLevel ?? 0);
-                if (minLevelDiff !== 0) return minLevelDiff;
-
-                return getEncounterName(a).localeCompare(getEncounterName(b));
+                return getDexNumber(a) - getDexNumber(b);
             });
 
     // -------------------------------------------------------------------------
