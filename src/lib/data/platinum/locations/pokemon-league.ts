@@ -8,13 +8,13 @@ const POKEMON_LEAGUE: Location = {
         {
             name: 'Exterior',
             map: pokemonLeague,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'sinnoh-pokemon-league',
         },
         {
             name: 'Lobby',
             map: pokemonLeagueLobby,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'pkmn-trainer-barry-pokemon-league-lobby',

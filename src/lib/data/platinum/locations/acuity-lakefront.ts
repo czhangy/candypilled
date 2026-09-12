@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const ACUITY_LAKEFRONT: Location = {
     name: 'Acuity Lakefront',
     map: acuityLakefront,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.BottomLeft,
     encountersKey: 'acuity-lakefront',
 };
 

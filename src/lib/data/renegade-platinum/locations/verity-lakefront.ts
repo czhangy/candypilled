@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const VERITY_LAKEFRONT: Location = {
     name: 'Verity Lakefront',
     map: verityLakefront,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
 };
 
 export default VERITY_LAKEFRONT;

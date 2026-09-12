@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const FLOAROMA_TOWN: Location = {
     name: 'Floaroma Town',
     map: floaromaTown,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
 };
 
 export default FLOAROMA_TOWN;

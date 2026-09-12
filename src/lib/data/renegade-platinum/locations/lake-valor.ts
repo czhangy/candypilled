@@ -11,7 +11,7 @@ const LAKE_VALOR: Location = {
         {
             name: 'Pre-Giratina',
             map: lakeValorPreGiratina,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.TopRight,
             encountersKey: 'lake-valor',
             battles: [
                 {
@@ -34,7 +34,7 @@ const LAKE_VALOR: Location = {
         {
             name: 'Post-Giratina',
             map: lakeValorPostGiratina,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.TopRight,
             encountersKey: 'lake-valor',
         },
     ],

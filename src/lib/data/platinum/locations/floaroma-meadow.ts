@@ -6,7 +6,7 @@ import { Location } from '@/lib/static/types';
 const FLOAROMA_MEADOW: Location = {
     name: 'Floaroma Meadow',
     map: floaromaMeadow,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.BottomLeft,
     encountersKey: 'floaroma-meadow',
     battles: [
         {

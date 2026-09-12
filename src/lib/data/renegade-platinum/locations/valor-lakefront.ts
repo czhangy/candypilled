@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const VALOR_LAKEFRONT: Location = {
     name: 'Valor Lakefront',
     map: valorLakefront,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.TopRight,
     encountersKey: 'sinnoh-valor-lakefront',
     battles: [
         {

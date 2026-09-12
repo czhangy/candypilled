@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const VEILSTONE_CITY: Location = {
     name: 'Veilstone City',
     map: veilstoneCity,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.TopLeft,
     encountersKey: 'veilstone-city',
     tagPartner: [
         {

@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const TWINLEAF_TOWN: Location = {
     name: 'Twinleaf Town',
     map: twinleafTown,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
     encountersKey: 'twinleaf-town',
 };
 

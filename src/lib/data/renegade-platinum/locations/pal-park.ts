@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const PAL_PARK: Location = {
     name: 'Pal Park',
     map: palPark,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
     battles: [
         {
             battleKey: 'castle-valet-darach',

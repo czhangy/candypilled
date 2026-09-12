@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const POKEMON_MANSION: Location = {
     name: 'Pokémon Mansion',
     map: pokemonMansion,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
 };
 
 export default POKEMON_MANSION;

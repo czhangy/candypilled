@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const FLINTS_ROOM: Location = {
     name: "Flint's Room",
     map: flintsRoom,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
     battles: [
         {
             battleKey: 'elite-four-flint',

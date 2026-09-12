@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const TROPHY_GARDEN: Location = {
     name: 'Trophy Garden',
     map: trophyGarden,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
     encountersKey: 'trophy-garden',
 };
 

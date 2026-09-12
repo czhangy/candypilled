@@ -8,7 +8,7 @@ const ROUTE_211: Location = {
         {
             name: 'West',
             map: route211West,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-211-west',
             battles: [
                 {
@@ -31,7 +31,7 @@ const ROUTE_211: Location = {
         {
             name: 'East',
             map: route211East,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-211-east',
             battles: [
                 {

@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const SPEAR_PILLAR: Location = {
     name: 'Spear Pillar',
     map: spearPillar,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Bottom,
     tagPartner: [{ battleKey: 'pkmn-trainer-barry-spear-pillar-tag' }],
     battles: [
         {

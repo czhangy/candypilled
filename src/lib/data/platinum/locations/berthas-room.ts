@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const BERTHAS_ROOM: Location = {
     name: "Bertha's Room",
     map: berthasRoom,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
     battles: [
         {
             battleKey: 'elite-four-bertha',

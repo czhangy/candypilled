@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const SNOWPOINT_GYM: Location = {
     name: 'Snowpoint Gym',
     map: snowpointGym,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
     battles: [
         {
             battleKey: 'ace-trainer-snow-f-brenna',

@@ -8,7 +8,7 @@ const ROUTE_210: Location = {
         {
             name: 'South',
             map: route210South,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'sinnoh-route-210-south-towards-solaceon-town',
             battles: [
                 {
@@ -48,7 +48,7 @@ const ROUTE_210: Location = {
         {
             name: 'North',
             map: route210North,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'sinnoh-route-210-west-towards-celestic-town',
             battles: [
                 {

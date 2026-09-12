@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const MINING_MUSEUM: Location = {
     name: 'Mining Museum',
     map: miningMuseum,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
     encountersKey: 'mining-museum',
 };
 

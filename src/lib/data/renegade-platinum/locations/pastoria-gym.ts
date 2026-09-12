@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const PASTORIA_GYM: Location = {
     name: 'Pastoria Gym',
     map: pastoriaGym,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Bottom,
     battles: [
         {
             battleKey: 'fisherman-walter',

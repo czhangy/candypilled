@@ -12,19 +12,19 @@ const OLD_CHATEAU: Location = {
         {
             name: 'Entrance',
             map: oldChateauEntrance,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'old-chateau-entrance',
         },
         {
             name: 'Dining Room',
             map: oldChateauDiningRoom,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'old-chateau-dining-room',
         },
         {
             name: 'Bedrooms',
             map: oldChateauBedrooms,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'old-chateau-2f',
         },
     ],

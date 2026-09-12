@@ -13,7 +13,7 @@ const CANALAVE_GYM: Location = {
         {
             name: '1F',
             map: canalaveGym1f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'black-belt-ricky',
@@ -35,7 +35,7 @@ const CANALAVE_GYM: Location = {
         {
             name: '2F',
             map: canalaveGym2f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'worker-jackson',
@@ -52,7 +52,7 @@ const CANALAVE_GYM: Location = {
         {
             name: '3F',
             map: canalaveGym3f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'worker-gerardo',
@@ -69,7 +69,7 @@ const CANALAVE_GYM: Location = {
         {
             name: '4F',
             map: canalaveGym4f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'leader-byron',

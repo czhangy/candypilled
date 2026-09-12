@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const DISTORTION_WORLD: Location = {
     name: 'Distortion World',
     map: distortionWorld,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
     encountersKey: 'distortion-world',
     battles: [
         {

@@ -125,7 +125,6 @@ const LocationMap: React.FC<LocationMapProps> = ({
             case MapAnchor.BottomRight:
                 return { x: right, y: bottom };
             case MapAnchor.Center:
-            case MapAnchor.Unaudited:
                 return { x: centerX, y: centerY };
         }
     };

@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const HEARTHOME_CITY: Location = {
     name: 'Hearthome City',
     map: hearthomeCity,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.BottomLeft,
     encountersKey: 'hearthome-city-west-gate',
     battles: [
         {

@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const OREBURGH_CITY: Location = {
     name: 'Oreburgh City',
     map: oreburghCity,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.TopLeft,
     encountersKey: 'oreburgh-city-trade',
 };
 

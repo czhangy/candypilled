@@ -12,7 +12,7 @@ const SUNYSHORE_GYM: Location = {
         {
             name: 'Room 1',
             map: sunyshoreGymRoom1,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'school-kid-f-tiera',
@@ -24,7 +24,7 @@ const SUNYSHORE_GYM: Location = {
         {
             name: 'Room 2',
             map: sunyshoreGymRoom2,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'school-kid-m-forrest',
@@ -46,7 +46,7 @@ const SUNYSHORE_GYM: Location = {
         {
             name: 'Room 3',
             map: sunyshoreGymRoom3,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'guitarist-lonnie',

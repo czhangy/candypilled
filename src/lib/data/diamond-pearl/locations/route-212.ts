@@ -8,7 +8,7 @@ const ROUTE_212: Location = {
         {
             name: 'South',
             map: route212South,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Right,
             encountersKey: 'sinnoh-route-212-east-towards-pastoria-city',
             battles: [
                 {
@@ -88,7 +88,7 @@ const ROUTE_212: Location = {
         {
             name: 'North',
             map: route212North,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Top,
             encountersKey: 'sinnoh-route-212-north-towards-hearthome-city',
             battles: [
                 {

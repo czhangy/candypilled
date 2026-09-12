@@ -11,13 +11,13 @@ const TWINLEAF_TOWN: Location = {
         {
             name: 'Town',
             map: twinleafTownTown,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'twinleaf-town',
         },
         {
             name: 'House',
             map: twinleafTownHouse,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'twinleaf-town-house',
         },
     ],
