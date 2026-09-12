@@ -136,6 +136,17 @@ export default class BattleHelpers {
         });
     }
 
+    /** battleKey's index within getAllBattles(game, gender), or -1 if it isn't in that list. */
+    static getBattlePosition(
+        game: Game,
+        battleKey: string,
+        gender: 'male' | 'female' | undefined
+    ): number {
+        return BattleHelpers.getAllBattles(game, gender).findIndex(
+            (battle) => BattleHelpers.getBattleKey(battle) === battleKey
+        );
+    }
+
     /** items restricted to gender: entries with no `gender` always pass, entries with one only pass for a matching run gender. Shared by Battle[] and TagPartner[], both of which carry an optional gender field. */
     static filterByGender<T extends { gender?: 'male' | 'female' }>(
         items: T[],

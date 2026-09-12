@@ -7,10 +7,17 @@
 $preview-bright-pink: #ff00c8;
 $preview-neon-green: #39ff14;
 
-@property --marker-color {
+// Only plain percentages are animated (never a color itself) — a color
+// derived inside @keyframes from a class-driven variable like
+// --marker-color-base can get stuck on a stale value in some engines when
+// the class changes mid-animation, since the keyframe's var() reference
+// isn't guaranteed to re-resolve live. --marker-color below is instead a
+// plain, unregistered, always-live color-mix() declaration with no
+// fallback color of its own, so it can never leak an unrelated color.
+@property --pulse-white {
     inherits: false;
-    initial-value: #{$preview-bright-pink};
-    syntax: '<color>';
+    initial-value: 0%;
+    syntax: '<percentage>';
 }
 
 @property --marker-opacity {
@@ -19,15 +26,23 @@ $preview-neon-green: #39ff14;
     syntax: '<percentage>';
 }
 
+// Registered separately from --marker-color so the preview flash's literal
+// pink/green can never become that property's fallback value.
+@property --preview-color {
+    inherits: false;
+    initial-value: #{$preview-bright-pink};
+    syntax: '<color>';
+}
+
 @keyframes marker-pulse {
     0%,
     100% {
-        --marker-color: var(--marker-color-base);
+        --pulse-white: 0%;
         --marker-opacity: 15%;
     }
 
     50% {
-        --marker-color: color-mix(in srgb, var(--marker-color-base) 65%, white);
+        --pulse-white: 35%;
         --marker-opacity: 20%;
     }
 }
@@ -35,18 +50,23 @@ $preview-neon-green: #39ff14;
 @keyframes preview-marker-color-cycle {
     0%,
     100% {
-        --marker-color: #{$preview-bright-pink};
+        --preview-color: #{$preview-bright-pink};
     }
 
     50% {
-        --marker-color: #{$preview-neon-green};
+        --preview-color: #{$preview-neon-green};
     }
 }
 
 .trainer-marker {
     --marker-color-base: var(--accent-color);
-    --marker-color: var(--marker-color-base);
+    --marker-color: color-mix(
+        in srgb,
+        white var(--pulse-white),
+        var(--marker-color-base)
+    );
     --marker-opacity: 15%;
+    --pulse-white: 0%;
 
     animation: marker-pulse 2.5s ease-in-out infinite;
     background: color-mix(
@@ -78,6 +98,10 @@ $preview-neon-green: #39ff14;
     @media (prefers-reduced-motion: reduce) {
         animation: none;
         transition: none;
+    }
+
+    &--personal-best {
+        --marker-color-base: #{$gold};
     }
 
     &--miniboss {
@@ -112,8 +136,34 @@ $preview-neon-green: #39ff14;
         }
     }
 
+    .trainer-marker__wipe-badge {
+        align-items: center;
+        background: $red;
+        border-radius: 0.5rem;
+        bottom: 0;
+        color: $foreground;
+        display: flex;
+        font-family: $font-mono;
+        font-size: 0.6rem;
+        font-weight: 700;
+        gap: 0.15rem;
+        height: 1rem;
+        justify-content: center;
+        left: 50%;
+        min-width: 1rem;
+        padding: 0 0.2rem;
+        position: absolute;
+        transform: translate(-50%, 50%);
+
+        svg {
+            height: 0.55rem;
+            width: 0.55rem;
+        }
+    }
+
     &--preview {
-        --marker-color: #{$preview-bright-pink};
+        --marker-color: var(--preview-color);
+        --preview-color: #{$preview-bright-pink};
 
         animation: preview-marker-color-cycle 1s linear infinite;
         border-style: dashed;

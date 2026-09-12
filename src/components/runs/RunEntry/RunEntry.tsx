@@ -3,6 +3,9 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import ConfirmModal from '@/components/ConfirmModal/ConfirmModal';
+import GenderSelectModal from '@/components/GenderSelectModal/GenderSelectModal';
+import StarterSelectModal from '@/components/StarterSelectModal/StarterSelectModal';
 import BoxIcon from '@/lib/icons/BoxIcon';
 import CrownIcon from '@/lib/icons/CrownIcon';
 import RunIcon from '@/lib/icons/RunIcon';
@@ -19,11 +22,8 @@ import RunImportHelpers from '@/lib/utils/RunImportHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
-import ConfirmModal from './ConfirmModal/ConfirmModal';
 import DataModal from './DataModal/DataModal';
-import GenderSelectModal from './GenderSelectModal/GenderSelectModal';
 import styles from './RunEntry.module.scss';
-import StarterSelectModal from './StarterSelectModal/StarterSelectModal';
 
 type RunEntryProps = {
     game: Game;
@@ -76,18 +76,10 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         starter: CaughtPokemon,
         gender: 'male' | 'female'
     ): Promise<void> => {
-        const newRun: Run = {
-            attempt: (run?.attempt ?? 0) + 1,
-            completedSplits: [],
-            hallOfFameCount: run?.hallOfFameCount ?? 0,
-            starter: starter.slug,
-            gender,
-            caughtPokemon: [starter],
-            missedLocations: [],
-            wipe: false,
-        };
-
-        await RunHelpers.saveRun(game, newRun);
+        await RunHelpers.saveRun(
+            game,
+            RunHelpers.buildNewAttempt(run, starter, gender)
+        );
         router.push(runUrl);
     };
 

@@ -1,8 +1,12 @@
+import CrownIcon from '@/lib/icons/CrownIcon';
 import DoubleExclamationMarkIcon from '@/lib/icons/DoubleExclamationMarkIcon';
 import ExclamationMarkIcon from '@/lib/icons/ExclamationMarkIcon';
+import SkullIcon from '@/lib/icons/SkullIcon';
 import { BattleMetadata } from '@/lib/static/enums';
 import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
+import NotesHelpers from '@/lib/utils/NotesHelpers';
+import PersonalBestHelpers from '@/lib/utils/PersonalBestHelpers';
 import styles from './TrainerMarker.module.scss';
 
 type TrainerMarkerProps = {
@@ -51,6 +55,10 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
     const metadata = game.battles[trainer.battleKey]?.metadata ?? [];
     const isBoss = metadata.includes(BattleMetadata.Boss);
     const isMiniboss = metadata.includes(BattleMetadata.Miniboss);
+    const wipeCount = NotesHelpers.getWipeCount(game, trainer.battleKey);
+    const isPersonalBest =
+        !PersonalBestHelpers.hasClearedGame(game) &&
+        PersonalBestHelpers.get(game).battleKey === trainer.battleKey;
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -74,8 +82,11 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
             aria-pressed={isPreview ? undefined : isSelected}
             className={[
                 styles['trainer-marker'],
-                isMiniboss && styles['trainer-marker--miniboss'],
-                isBoss && styles['trainer-marker--boss'],
+                !isPersonalBest &&
+                    isMiniboss &&
+                    styles['trainer-marker--miniboss'],
+                !isPersonalBest && isBoss && styles['trainer-marker--boss'],
+                isPersonalBest && styles['trainer-marker--personal-best'],
                 isSelected && styles['trainer-marker--selected'],
                 isPreview && styles['trainer-marker--preview'],
             ]
@@ -93,14 +104,25 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
             tabIndex={isPreview ? -1 : undefined}
             type="button"
         >
-            {isBoss && (
+            {isPersonalBest && (
+                <span className={styles['trainer-marker__annotation']}>
+                    <CrownIcon />
+                </span>
+            )}
+            {!isPersonalBest && isBoss && (
                 <span className={styles['trainer-marker__annotation']}>
                     <DoubleExclamationMarkIcon />
                 </span>
             )}
-            {!isBoss && isMiniboss && (
+            {!isPersonalBest && !isBoss && isMiniboss && (
                 <span className={styles['trainer-marker__annotation']}>
                     <ExclamationMarkIcon />
+                </span>
+            )}
+            {wipeCount > 0 && (
+                <span className={styles['trainer-marker__wipe-badge']}>
+                    <SkullIcon />
+                    {wipeCount}
                 </span>
             )}
         </button>
