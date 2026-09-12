@@ -2,15 +2,46 @@ import { Game } from '@/lib/static/types';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
+type BattleNoteEntry = {
+    note: string;
+    wipeCount: number;
+};
+
 export default class NotesHelpers {
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------
 
     private static readonly STORAGE_KEY = 'candypilled-notes';
+    private static readonly EMPTY_ENTRY: BattleNoteEntry = {
+        note: '',
+        wipeCount: 0,
+    };
 
     private static getCacheKey(game: Game, battleKey: string): string {
         return `${StringHelpers.toSlug(game.name)}::${battleKey}`;
+    }
+
+    private static getEntry(game: Game, battleKey: string): BattleNoteEntry {
+        const stored = LocalStorageHelpers.getItem<
+            Record<string, BattleNoteEntry>
+        >(NotesHelpers.STORAGE_KEY, {});
+        return (
+            stored[NotesHelpers.getCacheKey(game, battleKey)] ??
+            NotesHelpers.EMPTY_ENTRY
+        );
+    }
+
+    private static saveEntry(
+        game: Game,
+        battleKey: string,
+        entry: BattleNoteEntry
+    ): void {
+        const stored = LocalStorageHelpers.getItem<
+            Record<string, BattleNoteEntry>
+        >(NotesHelpers.STORAGE_KEY, {});
+        stored[NotesHelpers.getCacheKey(game, battleKey)] = entry;
+        LocalStorageHelpers.setItem(NotesHelpers.STORAGE_KEY, stored);
     }
 
     // -------------------------------------------------------------------------
@@ -19,11 +50,7 @@ export default class NotesHelpers {
 
     /** The stored note for battleKey under game, or an empty string if none is saved. */
     static getNote(game: Game, battleKey: string): string {
-        const stored = LocalStorageHelpers.getItem<Record<string, string>>(
-            NotesHelpers.STORAGE_KEY,
-            {}
-        );
-        return stored[NotesHelpers.getCacheKey(game, battleKey)] ?? '';
+        return NotesHelpers.getEntry(game, battleKey).note;
     }
 
     /** Persists note for battleKey under game. */
@@ -32,21 +59,30 @@ export default class NotesHelpers {
         battleKey: string,
         note: string
     ): Promise<void> {
-        const stored = LocalStorageHelpers.getItem<Record<string, string>>(
-            NotesHelpers.STORAGE_KEY,
-            {}
-        );
-        stored[NotesHelpers.getCacheKey(game, battleKey)] = note;
-        LocalStorageHelpers.setItem(NotesHelpers.STORAGE_KEY, stored);
+        const entry = NotesHelpers.getEntry(game, battleKey);
+        NotesHelpers.saveEntry(game, battleKey, { ...entry, note });
     }
 
-    /** Deletes every saved note belonging to game. */
+    /** The number of times the player has recorded a wipe to battleKey under game. */
+    static getWipeCount(game: Game, battleKey: string): number {
+        return NotesHelpers.getEntry(game, battleKey).wipeCount;
+    }
+
+    /** Increments and persists the wipe count for battleKey under game. */
+    static async recordWipe(game: Game, battleKey: string): Promise<void> {
+        const entry = NotesHelpers.getEntry(game, battleKey);
+        NotesHelpers.saveEntry(game, battleKey, {
+            ...entry,
+            wipeCount: entry.wipeCount + 1,
+        });
+    }
+
+    /** Deletes every saved note/wipe entry belonging to game. */
     static async deleteNotesForGame(game: Game): Promise<void> {
         const gameSlug = StringHelpers.toSlug(game.name);
-        const stored = LocalStorageHelpers.getItem<Record<string, string>>(
-            NotesHelpers.STORAGE_KEY,
-            {}
-        );
+        const stored = LocalStorageHelpers.getItem<
+            Record<string, BattleNoteEntry>
+        >(NotesHelpers.STORAGE_KEY, {});
         Object.keys(stored)
             .filter((key) => key.startsWith(`${gameSlug}::`))
             .forEach((key) => delete stored[key]);

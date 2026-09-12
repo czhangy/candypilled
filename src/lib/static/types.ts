@@ -562,6 +562,14 @@ export type Run = {
     wipe: boolean;
 };
 
+export type PersonalBest = {
+    // battleKey of the farthest trainer the player has ever reached in this
+    // game, across every attempt. Null if none has been reached yet.
+    battleKey: string | null;
+    // Whether a run has fully cleared the game — supersedes battleKey.
+    isGameClear: boolean;
+};
+
 // A snapshot of a run's team at the moment it entered the Hall of Fame,
 // stored independently of the run itself (keyed by game slug + attempt)
 // so it survives the run's box being edited or wiped on a later attempt.

@@ -12,6 +12,8 @@ import {
 import Tabs from '@/components/common/Tabs/Tabs';
 import { CaughtPokemon, Game } from '@/lib/static/types';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
+import NotesHelpers from '@/lib/utils/NotesHelpers';
+import PersonalBestHelpers from '@/lib/utils/PersonalBestHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
 import RunImportHelpers from '@/lib/utils/RunImportHelpers';
@@ -26,6 +28,7 @@ import ResourcesTab from './ResourcesTab/ResourcesTab';
 import styles from './RunPage.module.scss';
 import SplitHeader from './SplitHeader/SplitHeader';
 import SplitTab from './SplitTab/SplitTab';
+import WipeSelectModal from './WipeSelectModal/WipeSelectModal';
 
 type RunPageProps = {
     game: Game;
@@ -80,6 +83,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
     // -------------------------------------------------------------------------
 
     const [isImportModalOpen, setIsImportModalOpen] = useState(false);
+    const [isWipeModalOpen, setIsWipeModalOpen] = useState(false);
     const [stickyHeaderHeight, setStickyHeaderHeight] = useState(0);
 
     // -------------------------------------------------------------------------
@@ -327,7 +331,27 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
     const handleWipeToggle = async (): Promise<void> => {
         if (!run) return;
 
-        await RunHelpers.saveRun(game, { ...run, wipe: !run.wipe });
+        if (run.wipe) {
+            await RunHelpers.saveRun(game, { ...run, wipe: false });
+            return;
+        }
+
+        setIsWipeModalOpen(true);
+    };
+
+    const handleCloseWipeModal = (): void => {
+        setIsWipeModalOpen(false);
+    };
+
+    const handleWipeSelect = async (battleKey: string): Promise<void> => {
+        if (!run) return;
+
+        await NotesHelpers.recordWipe(game, battleKey);
+        await PersonalBestHelpers.considerCandidate(game, run.gender, {
+            battleKey,
+            isGameClear: false,
+        });
+        await RunHelpers.saveRun(game, { ...run, wipe: true });
     };
 
     const handleImportClick = (): void => {
@@ -520,6 +544,14 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                     game={game}
                     onClose={handleCloseImportModal}
                     onSubmit={handleImportSave}
+                />
+            )}
+            {isWipeModalOpen && (
+                <WipeSelectModal
+                    game={game}
+                    gender={run.gender}
+                    onClose={handleCloseWipeModal}
+                    onSelect={handleWipeSelect}
                 />
             )}
         </div>
