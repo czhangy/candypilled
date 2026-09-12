@@ -19,7 +19,7 @@ const ROUTE_209: Location = {
         {
             name: 'Main',
             map: route209Main,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'sinnoh-route-209',
             battles: [
                 {
@@ -69,13 +69,13 @@ const ROUTE_209: Location = {
         {
             name: 'Tower 1F',
             map: route209Tower1f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-209-tower',
         },
         {
             name: 'Tower 2F',
             map: route209Tower2f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-209-tower',
             battles: [
                 {
@@ -88,7 +88,7 @@ const ROUTE_209: Location = {
         {
             name: 'Tower 3F',
             map: route209Tower3f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-209-tower',
             battles: [
                 {
@@ -106,7 +106,7 @@ const ROUTE_209: Location = {
         {
             name: 'Tower 4F',
             map: route209Tower4f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-209-tower',
             battles: [
                 {
@@ -131,7 +131,7 @@ const ROUTE_209: Location = {
         {
             name: 'Tower 5F',
             map: route209Tower5f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-209-tower',
         },
     ],

@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const ROUTE_202: Location = {
     name: 'Route 202',
     map: route202,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
     encountersKey: 'sinnoh-route-202',
     battles: [
         {

@@ -11,13 +11,13 @@ const OREBURGH_MINE: Location = {
         {
             name: 'B1F',
             map: oreburghMineB1f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Top,
             encountersKey: 'oreburgh-mine-1f',
         },
         {
             name: 'B2F',
             map: oreburghMineB2f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'oreburgh-mine-b1f',
             battles: [
                 {

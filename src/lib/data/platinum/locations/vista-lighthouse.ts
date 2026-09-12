@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const VISTA_LIGHTHOUSE: Location = {
     name: 'Vista Lighthouse',
     map: vistaLighthouse,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
 };
 
 export default VISTA_LIGHTHOUSE;

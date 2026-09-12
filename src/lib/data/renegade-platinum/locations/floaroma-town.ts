@@ -11,12 +11,12 @@ const FLOAROMA_TOWN: Location = {
         {
             name: 'Town',
             map: floaromaTownTown,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
         },
         {
             name: 'Pokémon Center',
             map: floaromaTownPokemonCenter,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'floaroma-town',
             battles: [
                 {

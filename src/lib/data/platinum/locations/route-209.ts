@@ -19,7 +19,7 @@ const ROUTE_209: Location = {
         {
             name: 'Main',
             map: route209,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'sinnoh-route-209',
             battles: [
                 {
@@ -69,13 +69,13 @@ const ROUTE_209: Location = {
         {
             name: 'Tower 1F',
             map: lostTower1f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-1f',
         },
         {
             name: 'Tower 2F',
             map: lostTower2f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-2f',
             battles: [
                 {
@@ -88,7 +88,7 @@ const ROUTE_209: Location = {
         {
             name: 'Tower 3F',
             map: lostTower3f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-3f',
             battles: [
                 {
@@ -108,7 +108,7 @@ const ROUTE_209: Location = {
         {
             name: 'Tower 4F',
             map: lostTower4f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-4f',
             battles: [
                 {
@@ -136,7 +136,7 @@ const ROUTE_209: Location = {
         {
             name: 'Tower 5F',
             map: lostTower5f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-5f',
         },
     ],

@@ -137,10 +137,7 @@ export enum TrainerAssetFolder {
 }
 
 // Where a map autoscrolls to on load, lower priority than a selected
-// battle marker (which always wins once one exists). Unaudited behaves
-// identically to Center but marks a Location/Subarea whose real anchor
-// hasn't been chosen yet -- backfilled onto every pre-existing location
-// rather than guessed at per-location.
+// battle marker (which always wins once one exists).
 export enum MapAnchor {
     Center = 'center',
     Top = 'top',
@@ -151,5 +148,4 @@ export enum MapAnchor {
     TopRight = 'top-right',
     BottomLeft = 'bottom-left',
     BottomRight = 'bottom-right',
-    Unaudited = 'unaudited',
 }

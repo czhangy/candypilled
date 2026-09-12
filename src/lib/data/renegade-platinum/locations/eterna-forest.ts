@@ -11,7 +11,7 @@ const ETERNA_FOREST: Location = {
         {
             name: 'Interior',
             map: eternaForestInterior,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'eterna-forest',
             tagPartner: [{ battleKey: 'pkmn-trainer-cheryl-tag' }],
             battles: [
@@ -65,7 +65,7 @@ const ETERNA_FOREST: Location = {
         {
             name: 'Exterior',
             map: eternaForestExterior,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'eterna-forest',
         },
     ],

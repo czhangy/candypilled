@@ -16,7 +16,7 @@ const ROUTE_210: Location = {
         {
             name: 'South',
             map: route210South,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Bottom,
             encountersKey: 'sinnoh-route-210-south',
             battles: [
                 {
@@ -56,7 +56,7 @@ const ROUTE_210: Location = {
         {
             name: 'North',
             map: { male: route210NorthDawn, female: route210NorthLucas },
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'sinnoh-route-210-north',
             battles: [
                 {

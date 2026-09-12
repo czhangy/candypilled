@@ -11,7 +11,7 @@ const LAKE_VALOR: Location = {
         {
             name: 'Pre-Spear Pillar',
             map: lakeValorPreSpearPillar,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.TopRight,
             battles: [
                 {
                     battleKey: 'galactic-grunt-f-lake-valor',
@@ -33,7 +33,7 @@ const LAKE_VALOR: Location = {
         {
             name: 'Post-Spear Pillar',
             map: lakeValorPostSpearPillar,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.TopRight,
             encountersKey: 'lake-valor-area',
         },
     ],

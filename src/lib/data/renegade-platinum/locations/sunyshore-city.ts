@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const SUNYSHORE_CITY: Location = {
     name: 'Sunyshore City',
     map: sunyshoreCity,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.BottomLeft,
     encountersKey: 'sunyshore-city',
     battles: [
         {

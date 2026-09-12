@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const VEILSTONE_GYM: Location = {
     name: 'Veilstone Gym',
     map: veilstoneGym,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
     battles: [
         {
             battleKey: 'black-belt-jeffery',

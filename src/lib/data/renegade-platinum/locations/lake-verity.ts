@@ -11,13 +11,13 @@ const LAKE_VERITY: Location = {
         {
             name: 'Pre-Byron',
             map: lakeVerityPreGalactic,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'lake-verity',
         },
         {
             name: 'Post-Byron',
             map: lakeVerityPostGalactic,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'lake-verity',
             battles: [
                 {

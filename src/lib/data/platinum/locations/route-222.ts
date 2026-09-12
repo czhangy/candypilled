@@ -8,7 +8,7 @@ const ROUTE_222: Location = {
         {
             name: 'Main',
             map: route222Main,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Left,
             encountersKey: 'sinnoh-route-222',
             battles: [
                 {
@@ -71,7 +71,7 @@ const ROUTE_222: Location = {
         {
             name: 'Pikachu Fan Club',
             map: route222PikachuFanClub,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'poke-kid-janet',

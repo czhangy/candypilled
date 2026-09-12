@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const SENDOFF_SPRING: Location = {
     name: 'Sendoff Spring',
     map: sendoffSpring,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Top,
     encountersKey: 'sendoff-spring',
 };
 

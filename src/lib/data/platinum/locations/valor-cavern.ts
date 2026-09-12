@@ -11,7 +11,7 @@ const VALOR_CAVERN: Location = {
         {
             name: 'Pre-Giratina',
             map: valorCavernPreGiratina,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'lake-valor-cavern',
             battles: [
                 {
@@ -24,7 +24,7 @@ const VALOR_CAVERN: Location = {
         {
             name: 'Post-Giratina',
             map: valorCavernPostGiratina,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
         },
     ],
 };

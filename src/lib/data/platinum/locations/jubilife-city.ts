@@ -6,7 +6,7 @@ import { Location } from '@/lib/static/types';
 const JUBILIFE_CITY: Location = {
     name: 'Jubilife City',
     map: jubilifeCity,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.BottomLeft,
     tagPartner: [
         {
             battleKey: 'pkmn-trainer-dawn-jubilife-city-tag',

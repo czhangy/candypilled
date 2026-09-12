@@ -11,7 +11,7 @@ const VALOR_CAVERN: Location = {
         {
             name: 'Pre-Spear Pillar',
             map: valorCavernPreSpearPillar,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'lake-valor-cavern',
             battles: [
                 {
@@ -24,7 +24,7 @@ const VALOR_CAVERN: Location = {
         {
             name: 'Post-Spear Pillar',
             map: valorCavernPostSpearPillar,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
         },
     ],
 };

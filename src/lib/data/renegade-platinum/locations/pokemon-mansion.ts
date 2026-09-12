@@ -6,7 +6,7 @@ import { Location } from '@/lib/static/types';
 const POKEMON_MANSION: Location = {
     name: 'Pokémon Mansion',
     map: pokemonMansion,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
     tagPartner: [{ battleKey: 'pkmn-trainer-barry-pokemon-mansion-tag' }],
     battles: [
         {

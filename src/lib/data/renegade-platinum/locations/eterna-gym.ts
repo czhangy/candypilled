@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const ETERNA_GYM: Location = {
     name: 'Eterna Gym',
     map: eternaGym,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
     battles: [
         {
             battleKey: 'lass-caroline',

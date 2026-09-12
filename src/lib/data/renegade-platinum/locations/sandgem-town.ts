@@ -11,12 +11,12 @@ const SANDGEM_TOWN: Location = {
         {
             name: 'Town',
             map: sandgemTownTown,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
         },
         {
             name: 'Lab',
             map: sandgemTownLab,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'sandgem-town-lab',
         },
     ],

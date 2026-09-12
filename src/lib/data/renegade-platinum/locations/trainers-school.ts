@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const TRAINERS_SCHOOL: Location = {
     name: "Trainers' School",
     map: trainersSchool,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
     encountersKey: 'trainers-school',
     battles: [
         {

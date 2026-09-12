@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const ROUTE_224: Location = {
     name: 'Route 224',
     map: { male: route224Dawn, female: route224Lucas },
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.BottomLeft,
     encountersKey: 'route-224',
     battles: [
         {

@@ -12,7 +12,7 @@ const HEARTHOME_CITY: Location = {
         {
             name: 'West Gate',
             map: hearthomeCityWestGate,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'elite-four-aaron-route-208',
@@ -24,12 +24,12 @@ const HEARTHOME_CITY: Location = {
         {
             name: 'City',
             map: hearthomeCityCity,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.BottomLeft,
         },
         {
             name: 'East Gate',
             map: hearthomeCityEastGate,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'pkmn-trainer-barry-hearthome-city-east-gate',

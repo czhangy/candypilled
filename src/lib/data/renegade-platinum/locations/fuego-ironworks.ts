@@ -11,13 +11,13 @@ const FUEGO_IRONWORKS: Location = {
         {
             name: 'Exterior',
             map: fuegoIronworksExterior,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'fuego-ironworks',
         },
         {
             name: 'Interior',
             map: fuegoIronworksInterior,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.BottomLeft,
             battles: [
                 {
                     battleKey: 'worker-dillan',

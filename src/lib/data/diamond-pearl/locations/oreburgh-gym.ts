@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const OREBURGH_GYM: Location = {
     name: 'Oreburgh Gym',
     map: oreburghGym,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
     battles: [
         {
             battleKey: 'youngster-jonathon',

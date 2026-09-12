@@ -1,6 +1,6 @@
 import {
-    oreburghMine1f,
     oreburghMineB1f,
+    oreburghMineB2f,
 } from '@/lib/data/renegade-platinum/maps';
 import { MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
@@ -9,15 +9,15 @@ const OREBURGH_MINE: Location = {
     name: 'Oreburgh Mine',
     subareas: [
         {
-            name: '1F',
-            map: oreburghMine1f,
-            mapAnchor: MapAnchor.Unaudited,
+            name: 'B1F',
+            map: oreburghMineB1f,
+            mapAnchor: MapAnchor.Top,
             encountersKey: 'oreburgh-mine',
         },
         {
-            name: 'B1F',
-            map: oreburghMineB1f,
-            mapAnchor: MapAnchor.Unaudited,
+            name: 'B2F',
+            map: oreburghMineB2f,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'oreburgh-mine',
             battles: [
                 {

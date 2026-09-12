@@ -8,13 +8,13 @@ const HEARTHOME_CITY: Location = {
         {
             name: 'City',
             map: hearthomeCity,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'hearthome-city-area',
         },
         {
             name: 'Gate',
             map: hearthomeCityGate,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'pkmn-trainer-barry-hearthome-city',

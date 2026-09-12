@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const CAFE_CABIN: Location = {
     name: 'Café Cabin',
     map: cafeCabin,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
     battles: [
         {
             battleKey: 'waitress-kati',

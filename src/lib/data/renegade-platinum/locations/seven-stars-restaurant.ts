@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const SEVEN_STARS_RESTAURANT: Location = {
     name: 'Seven Stars Restaurant',
     map: sevenStarsRestaurant,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
     battles: [
         {
             battleKey: 'pi-kendrick-and-beauty-gabriela',

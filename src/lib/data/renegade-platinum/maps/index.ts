@@ -76,8 +76,8 @@ export { default as oreburghCityPokemonCenter } from './oreburgh-city-pokemon-ce
 export { default as oreburghGate1f } from './oreburgh-gate-1f.png';
 export { default as oreburghGateB1f } from './oreburgh-gate-b1f.png';
 export { default as oreburghGym } from './oreburgh-gym.png';
-export { default as oreburghMine1f } from './oreburgh-mine-1f.png';
 export { default as oreburghMineB1f } from './oreburgh-mine-b1f.png';
+export { default as oreburghMineB2f } from './oreburgh-mine-b2f.png';
 export { default as palPark } from './pal-park.png';
 export { default as pastoriaCity } from './pastoria-city.png';
 export { default as pastoriaGym } from './pastoria-gym.png';

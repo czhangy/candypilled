@@ -11,12 +11,12 @@ const OREBURGH_CITY: Location = {
         {
             name: 'City',
             map: oreburghCityCity,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.TopLeft,
         },
         {
             name: 'Pokémon Center',
             map: oreburghCityPokemonCenter,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'oreburgh-city',
             battles: [
                 {

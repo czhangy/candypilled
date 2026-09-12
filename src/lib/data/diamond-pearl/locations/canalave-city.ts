@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const CANALAVE_CITY: Location = {
     name: 'Canalave City',
     map: canalaveCity,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Bottom,
     encountersKey: 'canalave-city',
     battles: [
         {

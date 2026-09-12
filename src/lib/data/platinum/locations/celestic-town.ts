@@ -8,7 +8,7 @@ const CELESTIC_TOWN: Location = {
         {
             name: 'Town',
             map: celesticTown,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'celestic-town',
             battles: [
                 {
@@ -21,7 +21,7 @@ const CELESTIC_TOWN: Location = {
         {
             name: 'Ruins',
             map: celesticRuins,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'galactic-boss-cyrus-celestic-ruins',

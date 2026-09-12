@@ -13,7 +13,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
         {
             name: '1F',
             map: teamGalacticEternaBuilding1f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey:
@@ -32,7 +32,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
         {
             name: '2F',
             map: teamGalacticEternaBuilding2f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey:
@@ -51,7 +51,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
         {
             name: '3F',
             map: teamGalacticEternaBuilding3f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey:
@@ -69,7 +69,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
         {
             name: '4F',
             map: teamGalacticEternaBuilding4f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'team-galactic-eterna-building-4f',
             battles: [
                 {

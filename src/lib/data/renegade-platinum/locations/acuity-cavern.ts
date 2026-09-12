@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const ACUITY_CAVERN: Location = {
     name: 'Acuity Cavern',
     map: acuityCavern,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Center,
     encountersKey: 'acuity-cavern',
 };
 

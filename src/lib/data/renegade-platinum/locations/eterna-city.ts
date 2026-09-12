@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const ETERNA_CITY: Location = {
     name: 'Eterna City',
     map: eternaCity,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.TopLeft,
     encountersKey: 'eterna-city',
     battles: [
         {

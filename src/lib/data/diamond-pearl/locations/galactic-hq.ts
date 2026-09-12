@@ -15,7 +15,7 @@ const GALACTIC_HQ: Location = {
         {
             name: 'Warehouse',
             map: galacticHqWarehouse,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Left,
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-galactic-hq-1',
@@ -32,7 +32,7 @@ const GALACTIC_HQ: Location = {
         {
             name: '1F',
             map: galacticHq1f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'galactic-grunt-f-galactic-hq-1',
@@ -49,7 +49,7 @@ const GALACTIC_HQ: Location = {
         {
             name: '2F',
             map: galacticHq2f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-galactic-hq-3',
@@ -76,7 +76,7 @@ const GALACTIC_HQ: Location = {
         {
             name: '3F',
             map: galacticHq3f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-galactic-hq-5',
@@ -103,7 +103,7 @@ const GALACTIC_HQ: Location = {
         {
             name: '4F',
             map: galacticHq4f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'galactic-boss-cyrus-galactic-hq',
@@ -115,7 +115,7 @@ const GALACTIC_HQ: Location = {
         {
             name: 'Pixie Room',
             map: galacticHqPixies,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'commander-saturn-galactic-hq',

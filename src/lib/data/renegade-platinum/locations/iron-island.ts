@@ -17,7 +17,7 @@ const IRON_ISLAND: Location = {
         {
             name: 'Exterior',
             map: ironIslandExterior,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-outside',
             battles: [
                 {
@@ -30,13 +30,13 @@ const IRON_ISLAND: Location = {
         {
             name: '1F',
             map: ironIsland1f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-inside',
         },
         {
             name: 'B1F West',
             map: ironIslandB1fWest,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-inside',
             battles: [
                 {
@@ -49,7 +49,7 @@ const IRON_ISLAND: Location = {
         {
             name: 'B1F East',
             map: ironIslandB1fEast,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Top,
             encountersKey: 'iron-island-inside',
             battles: [
                 {
@@ -62,7 +62,7 @@ const IRON_ISLAND: Location = {
         {
             name: 'B2F East',
             map: ironIslandB2fEast,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-inside',
             battles: [
                 {
@@ -80,7 +80,7 @@ const IRON_ISLAND: Location = {
         {
             name: 'B2F West',
             map: ironIslandB2fWest,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.TopRight,
             encountersKey: 'iron-island-inside',
             tagPartner: [{ battleKey: 'pkmn-trainer-riley-tag' }],
             battles: [
@@ -135,7 +135,7 @@ const IRON_ISLAND: Location = {
         {
             name: 'B3F',
             map: ironIslandB3f,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-inside',
         },
     ],

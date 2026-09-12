@@ -11,7 +11,7 @@ const VALLEY_WINDWORKS: Location = {
         {
             name: 'Exterior',
             map: valleyWindworks,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             encountersKey: 'valley-windworks',
             battles: [
                 {
@@ -24,7 +24,7 @@ const VALLEY_WINDWORKS: Location = {
         {
             name: 'Interior',
             map: valleyWindworksInterior,
-            mapAnchor: MapAnchor.Unaudited,
+            mapAnchor: MapAnchor.Center,
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-valley-windworks-interior-1',

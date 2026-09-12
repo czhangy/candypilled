@@ -5,7 +5,7 @@ import { Location } from '@/lib/static/types';
 const RAVAGED_PATH: Location = {
     name: 'Ravaged Path',
     map: ravagedPath,
-    mapAnchor: MapAnchor.Unaudited,
+    mapAnchor: MapAnchor.Bottom,
     encountersKey: 'ravaged-path',
 };
 
