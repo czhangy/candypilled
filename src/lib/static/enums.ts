@@ -119,6 +119,7 @@ export enum GameVersionGroup {
     HeartGoldSoulSilver = 'heartgold-soulsilver',
     RenegadePlatinum = 'renegade-platinum',
     RubySapphire = 'ruby-sapphire',
+    Emerald = 'emerald',
 }
 
 // Every playable game's display name, kept as a plain enum (rather than
