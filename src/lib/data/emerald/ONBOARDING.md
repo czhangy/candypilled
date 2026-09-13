@@ -11,24 +11,24 @@ version, never copied from `ruby-sapphire`.
 
 ## Status
 
-| Phase                                                           | Status                | Notes                                                                                                                                                                      |
-| --------------------------------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Data folder scaffold (`src/lib/data/emerald/`)                  | not started           | dir created, empty except this doc                                                                                                                                         |
-| `GameVersionGroup.Emerald`, `GameName.Emerald` enum entries     | not started           |                                                                                                                                                                            |
-| `TrainerAssetFolder.Emerald` enum entry                         | not started           | `BadgeAssetFolder.Emerald` already exists                                                                                                                                  |
-| pokeemerald decomp clone + reference cache                      | **done** (2026-09-12) | `~/pokeemerald` (shallow clone) + `src/lib/data/references/gen3/pokeemerald/`                                                                                              |
-| Personality/IV/nature/gender/ability formula verification       | **done** (2026-09-12) | confirmed identical to pokeruby's, independently re-derived from pokeemerald's own source — see cache's `personality_derivation.c`                                         |
-| Badge bit derivation                                            | **done** (2026-09-12) | see "Badge bits" section below — **values differ from Ruby/Sapphire's**, do not reuse `Gen3SplitParser`'s hardcoded constant as-is                                         |
-| `game-versions/emerald.ts` scraper config                       | **done** (2026-09-12) | bootstrapped from ruby.ts/sapphire.ts's exclusion list (same Hoenn location set); registered in `game-versions/index.ts`                                                   |
-| `encounters.ts` (via `pokeapi:encounters`)                      | **done** (2026-09-12) | 103 location keys, zero fetch warnings — see below                                                                                                                         |
-| Locations + maps scaffold                                       | not started           | map source still TBD — DSPRE capture?                                                                                                                                      |
-| Battles (`battles.ts` + placements)                             | not started           |                                                                                                                                                                            |
-| New trainer classes (if any)                                    | not started           | check `trainer-classes.ts` first                                                                                                                                           |
-| `splits/*.ts` + `saveCondition`s                                | not started           | gym order confirmed by user: Roxanne → Brawly → Wattson → Flannery → Norman → Winona → Tate & Liza → Juan → champion Wallace. Battle Frontier explicitly **out of scope**. |
-| `met-locations.ts`                                              | not started           |                                                                                                                                                                            |
-| `Gen3SplitParser.ts` fix for Emerald                            | **done** (2026-09-12) | `FLAG_SYS_GAME_CLEAR` now resolved per `game.version` via `FLAG_SYS_GAME_CLEAR_BY_VERSION`; `GameVersionGroup.Emerald` added to `enums.ts`                                 |
-| `Gen3SaveBlocks.ts` checksum-length re-verification for Emerald | not started           | still flagged as Ruby/Sapphire-specific, not yet fixed — see below                                                                                                         |
-| Assemble `Game` object + register in `games.ts`                 | not started           |                                                                                                                                                                            |
+| Phase                                                           | Status                                       | Notes                                                                                                                                                         |
+| --------------------------------------------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Data folder scaffold (`src/lib/data/emerald/`)                  | not started                                  | dir created, empty except this doc                                                                                                                            |
+| `GameVersionGroup.Emerald`, `GameName.Emerald` enum entries     | not started                                  |                                                                                                                                                               |
+| `TrainerAssetFolder.Emerald` enum entry                         | not started                                  | `BadgeAssetFolder.Emerald` already exists                                                                                                                     |
+| pokeemerald decomp clone + reference cache                      | **done** (2026-09-12)                        | `~/pokeemerald` (shallow clone) + `src/lib/data/references/gen3/pokeemerald/`                                                                                 |
+| Personality/IV/nature/gender/ability formula verification       | **done** (2026-09-12)                        | confirmed identical to pokeruby's, independently re-derived from pokeemerald's own source — see cache's `personality_derivation.c`                            |
+| Badge bit derivation                                            | **done** (2026-09-12)                        | see "Badge bits" section below — **values differ from Ruby/Sapphire's**, do not reuse `Gen3SplitParser`'s hardcoded constant as-is                            |
+| `game-versions/emerald.ts` scraper config                       | **done** (2026-09-12)                        | bootstrapped from ruby.ts/sapphire.ts's exclusion list (same Hoenn location set); registered in `game-versions/index.ts`                                      |
+| `encounters.ts` (via `pokeapi:encounters`)                      | **done** (2026-09-12)                        | 103 location keys, zero fetch warnings — see below                                                                                                            |
+| Locations + maps scaffold                                       | not started                                  | map source confirmed: user-captured ProMap screenshots, saved to Desktop, location by location                                                                |
+| Battles (`battles.ts` + placements)                             | not started                                  |                                                                                                                                                               |
+| New trainer classes (if any)                                    | not started                                  | check `trainer-classes.ts` first                                                                                                                              |
+| `splits/*.ts` + `saveCondition`s                                | **scaffolded** (2026-09-12), locations empty | 9 files created with `locations: []` — see below. Gym order: Roxanne → Brawly → Wattson → Flannery → Norman → Winona → Tate & Liza → Juan → champion Wallace. |
+| `met-locations.ts`                                              | not started                                  |                                                                                                                                                               |
+| `Gen3SplitParser.ts` fix for Emerald                            | **done** (2026-09-12)                        | `FLAG_SYS_GAME_CLEAR` now resolved per `game.version` via `FLAG_SYS_GAME_CLEAR_BY_VERSION`; `GameVersionGroup.Emerald` added to `enums.ts`                    |
+| `Gen3SaveBlocks.ts` checksum-length re-verification for Emerald | not started                                  | still flagged as Ruby/Sapphire-specific, not yet fixed — see below                                                                                            |
+| Assemble `Game` object + register in `games.ts`                 | not started                                  |                                                                                                                                                               |
 
 ## What's already pre-staged in the repo (found during kickoff, 2026-09-12)
 
@@ -219,6 +219,41 @@ weren't excluded and came through fine).
 `encountersKey` used by a location resolves to real data, and every
 `ENCOUNTERS` key is actually used by some location) has to wait until
 locations are scaffolded, since it depends on `locations/*.ts` existing.
+
+## Splits (scaffolded, 2026-09-12 — locations still empty)
+
+Created `src/lib/data/emerald/splits/*.ts`, one file per split, each a
+plain `Split` with `locations: []` (to be filled in as locations get
+scaffolded from map captures) and the correct `saveCondition` per the
+badge-bit table above:
+
+- `roxanne.ts`, `brawly.ts`, `wattson.ts`, `flannery.ts`, `norman.ts`,
+  `winona.ts`, `tate-and-liza.ts` — same names/gym mapping as
+  Ruby/Sapphire, `{ type: 'badge', bit: <emerald value> }`.
+- `juan.ts` — **replaces** Ruby/Sapphire's `wallace.ts` (Sootopolis gym
+  split); Juan is Emerald's Sootopolis gym leader. `{ type: 'badge', bit:
+2158 }`.
+- `wallace.ts` — **replaces** Ruby/Sapphire's `steven.ts` (champion
+  split); Wallace is Emerald's champion. `{ type: 'gameClear' }`.
+
+Note: Ruby/Sapphire's own `winona.ts`/`tate-and-liza.ts` are exported as
+functions (`getWinona(hideout)`/`getTateAndLiza(hideout)`) taking the
+version-specific team hideout `Location` as a parameter, since only one
+team's hideout exists per R/S cartridge. That parameterization is **not**
+needed for Emerald's `winona.ts`/`tate-and-liza.ts` — both team hideouts
+(`team-aqua-hideout`, `team-magma-hideout`) exist unconditionally per the
+encounters fetch above, so these are plain `Split` objects once their
+`locations` arrays get filled in.
+
+Also fixed a pre-existing inconsistency rather than copying it forward:
+Ruby/Sapphire's `steven.ts` (champion split) uses
+`{ type: 'badge', bit: 2052 }` instead of the `{ type: 'gameClear' }` the
+`SplitSaveCondition` type and `Gen3SplitParser` actually intend for a
+champion split (works by coincidence since `bit: 2052` happens to equal
+that game's `FLAG_SYS_GAME_CLEAR`, but doesn't match Platinum's own
+`cynthia.ts`, which correctly uses `{ type: 'gameClear' }`). Emerald's
+`wallace.ts` uses the correct `{ type: 'gameClear' }` form instead of
+replicating that quirk.
 
 ## Confirmed by user (2026-09-12, cont'd)
 
