@@ -1,5 +1,6 @@
 import DIAMOND from '@/lib/data/diamond-pearl/diamond';
 import PEARL from '@/lib/data/diamond-pearl/pearl';
+import EMERALD from '@/lib/data/emerald';
 import PLATINUM from '@/lib/data/platinum';
 import RENEGADE_PLATINUM from '@/lib/data/renegade-platinum';
 import RUBY from '@/lib/data/ruby-sapphire/ruby';
@@ -9,6 +10,7 @@ import { Game } from '@/lib/static/types';
 export const GAMES: Game[] = [
     RUBY,
     SAPPHIRE,
+    EMERALD,
     DIAMOND,
     PEARL,
     PLATINUM,

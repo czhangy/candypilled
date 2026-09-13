@@ -11,24 +11,24 @@ version, never copied from `ruby-sapphire`.
 
 ## Status
 
-| Phase                                                           | Status                                       | Notes                                                                                                                                                         |
-| --------------------------------------------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Data folder scaffold (`src/lib/data/emerald/`)                  | not started                                  | dir created, empty except this doc                                                                                                                            |
-| `GameVersionGroup.Emerald`, `GameName.Emerald` enum entries     | not started                                  |                                                                                                                                                               |
-| `TrainerAssetFolder.Emerald` enum entry                         | not started                                  | `BadgeAssetFolder.Emerald` already exists                                                                                                                     |
-| pokeemerald decomp clone + reference cache                      | **done** (2026-09-12)                        | `~/pokeemerald` (shallow clone) + `src/lib/data/references/gen3/pokeemerald/`                                                                                 |
-| Personality/IV/nature/gender/ability formula verification       | **done** (2026-09-12)                        | confirmed identical to pokeruby's, independently re-derived from pokeemerald's own source — see cache's `personality_derivation.c`                            |
-| Badge bit derivation                                            | **done** (2026-09-12)                        | see "Badge bits" section below — **values differ from Ruby/Sapphire's**, do not reuse `Gen3SplitParser`'s hardcoded constant as-is                            |
-| `game-versions/emerald.ts` scraper config                       | **done** (2026-09-12)                        | bootstrapped from ruby.ts/sapphire.ts's exclusion list (same Hoenn location set); registered in `game-versions/index.ts`                                      |
-| `encounters.ts` (via `pokeapi:encounters`)                      | **done** (2026-09-12)                        | 103 location keys, zero fetch warnings — see below                                                                                                            |
-| Locations + maps scaffold                                       | not started                                  | map source confirmed: user-captured ProMap screenshots, saved to Desktop, location by location                                                                |
-| Battles (`battles.ts` + placements)                             | not started                                  |                                                                                                                                                               |
-| New trainer classes (if any)                                    | not started                                  | check `trainer-classes.ts` first                                                                                                                              |
-| `splits/*.ts` + `saveCondition`s                                | **scaffolded** (2026-09-12), locations empty | 9 files created with `locations: []` — see below. Gym order: Roxanne → Brawly → Wattson → Flannery → Norman → Winona → Tate & Liza → Juan → champion Wallace. |
-| `met-locations.ts`                                              | not started                                  |                                                                                                                                                               |
-| `Gen3SplitParser.ts` fix for Emerald                            | **done** (2026-09-12)                        | `FLAG_SYS_GAME_CLEAR` now resolved per `game.version` via `FLAG_SYS_GAME_CLEAR_BY_VERSION`; `GameVersionGroup.Emerald` added to `enums.ts`                    |
-| `Gen3SaveBlocks.ts` checksum-length re-verification for Emerald | not started                                  | still flagged as Ruby/Sapphire-specific, not yet fixed — see below                                                                                            |
-| Assemble `Game` object + register in `games.ts`                 | not started                                  |                                                                                                                                                               |
+| Phase                                                           | Status                                       | Notes                                                                                                                                                            |
+| --------------------------------------------------------------- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Data folder scaffold (`src/lib/data/emerald/`)                  | not started                                  | dir created, empty except this doc                                                                                                                               |
+| `GameVersionGroup.Emerald`, `GameName.Emerald` enum entries     | **done** (2026-09-12)                        |                                                                                                                                                                  |
+| `TrainerAssetFolder.Emerald` enum entry                         | **done** (2026-09-12)                        | confirmed via content-hash diff that `public/trainers/emerald/` genuinely differs from `ruby-sapphire`'s — see below, own folder needed                          |
+| pokeemerald decomp clone + reference cache                      | **done** (2026-09-12)                        | `~/pokeemerald` (shallow clone) + `src/lib/data/references/gen3/pokeemerald/`                                                                                    |
+| Personality/IV/nature/gender/ability formula verification       | **done** (2026-09-12)                        | confirmed identical to pokeruby's, independently re-derived from pokeemerald's own source — see cache's `personality_derivation.c`                               |
+| Badge bit derivation                                            | **done** (2026-09-12)                        | see "Badge bits" section below — **values differ from Ruby/Sapphire's**, do not reuse `Gen3SplitParser`'s hardcoded constant as-is                               |
+| `game-versions/emerald.ts` scraper config                       | **done** (2026-09-12)                        | bootstrapped from ruby.ts/sapphire.ts's exclusion list (same Hoenn location set); registered in `game-versions/index.ts`                                         |
+| `encounters.ts` (via `pokeapi:encounters`)                      | **done** (2026-09-12)                        | 103 location keys, zero fetch warnings — see below                                                                                                               |
+| Locations + maps scaffold                                       | in progress (4/14 for Roxanne split)         | Littleroot Town, Route 101, Oldale Town, Route 103 done (2026-09-12). User captures ProMap screenshots to Desktop, location by location, in Roxanne split order. |
+| Battles (`battles.ts` + placements)                             | in progress (Route 103 done)                 | 10 battles wired for Route 103 (rival + 8 trainers) — see below                                                                                                  |
+| New trainer classes (if any)                                    | not started                                  | check `trainer-classes.ts` first                                                                                                                                 |
+| `splits/*.ts` + `saveCondition`s                                | **scaffolded** (2026-09-12), locations empty | 9 files created with `locations: []` — see below. Gym order: Roxanne → Brawly → Wattson → Flannery → Norman → Winona → Tate & Liza → Juan → champion Wallace.    |
+| `met-locations.ts`                                              | not started                                  | `Game.metLocationById` stubbed as `{}` for now, registered early anyway — see below                                                                              |
+| `Gen3SplitParser.ts` fix for Emerald                            | **done** (2026-09-12)                        | `FLAG_SYS_GAME_CLEAR` now resolved per `game.version` via `FLAG_SYS_GAME_CLEAR_BY_VERSION`; `GameVersionGroup.Emerald` added to `enums.ts`                       |
+| `Gen3SaveBlocks.ts` checksum-length re-verification for Emerald | not started                                  | still flagged as Ruby/Sapphire-specific, not yet fixed — see below                                                                                               |
+| Assemble `Game` object + register in `games.ts`                 | **done** (2026-09-12)                        | `battles: {}` and `metLocationById: {}` are placeholders — see below. `accentColor` confirmed by user.                                                           |
 
 ## What's already pre-staged in the repo (found during kickoff, 2026-09-12)
 
@@ -187,6 +187,41 @@ split detection for Emerald).
   scope** — splits stop at the champion, matching how deep Ruby/Sapphire's
   own splits go.
 
+## Game registered early (2026-09-12) — placeholders to fill in later
+
+At the user's request, Emerald was wired into `GAMES` (`src/lib/data/games.ts`)
+before locations/battles/met-locations were fully built, since encounters
+were already done and the game is selectable/playable-enough not to crash
+(per the variant-game guidance's "get real encounter data in before
+leaving the game in a clickable state" principle, applied here even though
+Emerald isn't a variant group).
+
+- **`TrainerAssetFolder.Emerald` added, own folder confirmed needed**:
+  content-hash diffed `public/trainers/emerald/` against
+  `public/trainers/ruby-sapphire/` (82 common filenames) — 77 identical,
+  but 5 genuinely differ (`brendan.png`, `brendan-overworld.png`,
+  `may.png`, `may-overworld.png`, `wallace.png`), plus 2 Emerald-only
+  files (`juan.png`, `steven-tag.png` — Steven appears as a tag-partner
+  sprite here, not a plain battle sprite, consistent with him not being
+  Emerald's champion) and 2 Ruby/Sapphire-only files (`courtney.png`,
+  `steven.png`). Confirms Emerald needs its own `TrainerAssetFolder`
+  entry, not a shared one — same category of divergence as the
+  Diamond/Pearl-vs-Platinum trainer-sprite case documented in the
+  `onboard-new-game` skill.
+- **`genders`**: `/trainers/emerald/brendan.png` /
+  `/trainers/emerald/may.png` (Emerald's own, confirmed distinct above).
+- **`accentColor: '#009652'`** — confirmed by the user (2026-09-12), who
+  also supplied updated `accentColor` values for Ruby (`#CD2236`) and
+  Sapphire (`#3D51A7`), replacing this onboarding's earlier placeholder
+  guesses in both of those games' own files.
+- **`wipeMessages: ['Truck.']`** — verified via Bulbapedia (not assumed
+  carried over from R/S) that Emerald's intro is the same moving-truck
+  arrival at Littleroot Town.
+- **`battles: {}`** (empty `battles.ts` scaffolded) and
+  **`metLocationById: {}`** (no `met-locations.ts` yet) are real
+  placeholders, not finished data — both still need to be built out
+  per the normal per-location loop / the skill's met-locations step.
+
 ## Encounters (done, 2026-09-12)
 
 `game-versions/emerald.ts` bootstrapped from `ruby.ts`/`sapphire.ts`'s
@@ -255,6 +290,75 @@ that game's `FLAG_SYS_GAME_CLEAR`, but doesn't match Platinum's own
 `wallace.ts` uses the correct `{ type: 'gameClear' }` form instead of
 replicating that quirk.
 
+## Route 103 battles (done, 2026-09-12)
+
+Wired all 10 `battles.ts` entries for Route 103 (rival x2 by gender +
+Aroma Lady Daisy, Pokéfan Miguel, Fisherman Andrew, Twins Amy & Liv,
+Black Belt Rhett, Guitarist Marcos, Swimmer Isabelle, Swimmer Pete).
+Team data (species/level/IV) pulled straight from `trainers.h`/
+`trainer_parties.h` in the decomp cache; nature/gender/ability/fixedIV
+computed independently via the personality-hash formula (same one
+verified in `personality_derivation.c`) rather than guessed — see the
+one-off computation notes below for the exact per-mon results, in case
+they need re-deriving later.
+
+**Real correction to Bulbapedia's account, caught by going to the decomp
+instead of trusting the wiki**: Bulbapedia's wording ("may trigger a
+Double Battle together" for Isabelle/Pete, "potential Double Battle" for
+Rhett/Marcos) is misleading. `data/maps/Route103/scripts.inc` wires all
+four as `trainerbattle_single` — four fully independent single battles,
+not a Tag/TrueDouble pairing. Twins Amy & Liv, by contrast, **is**
+verified as a genuine double via `trainerbattle_double TRAINER_AMY_AND_LIV_1`
+(one trainer struct with `doubleBattle = TRUE`, one combined
+Plusle+Minun team) — matches the user's `truedouble+optional` call.
+This is a good example of why Bulbapedia is a starting point, not a
+final source, for battle _structure_ specifically (species/level/order
+data has been reliable so far).
+
+Also found a real Emerald-vs-R/S content difference in the same pass:
+Daisy's Emerald team is **Shroomish + Roselia** (two mons), not just
+Roselia alone like her R/S counterpart.
+
+`split` field (`BattleData.split`) used to gate each non-rival battle's
+marker to when it's actually reachable, rather than duplicating Route
+103 with different battle subsets per visit: Aroma Lady Daisy/Pokéfan
+Miguel/Fisherman Andrew/Twins Amy & Liv/Black Belt Rhett/Guitarist Marcos
+→ `split: 'Brawly'` (per user instruction "all other trainers excluding
+rival are brawly split"); Swimmer Isabelle/Swimmer Pete → `split:
+'Winona'` (per "swimmers are winona split", consistent with Surf not
+being available until around then). Route 103 itself is now listed in
+all three splits' `locations` arrays (Roxanne, Brawly, Winona) so it's
+navigable from each, matching Ruby/Sapphire's own convention for a
+revisited location (see `BattleData.split`'s doc comment in `types.ts`).
+
+## Roxanne split location order (confirmed by user, 2026-09-12: identical to Ruby/Sapphire's)
+
+Mirrors `ruby-sapphire/splits/roxanne.ts` location order exactly (this is
+the split's location _list_ only — map art, encounters, and battle
+placements are still independently sourced from Emerald's own capture/
+decomp per the "games are independent" rule, nothing here is copied wholesale):
+
+1. Littleroot Town
+2. Route 101
+3. Oldale Town
+4. Route 103
+5. Route 102
+6. Petalburg City
+7. Route 104 (South subarea)
+8. Petalburg Woods
+9. Route 104 (North subarea, revisited)
+10. Rustboro City
+11. Route 115
+12. Route 116
+13. Rusturf Tunnel
+14. Rustboro Gym
+
+Map-capture prompting is proceeding in this order, one location at a
+time, per the user's own ProMap-capture workflow. Route 104's two
+subareas (South/North) need two separate map captures per Ruby/Sapphire's
+own `route-104.ts` structure — confirm this still holds for Emerald when
+we get there rather than assuming.
+
 ## Confirmed by user (2026-09-12, cont'd)
 
 - **Map source**: the user is capturing ProMap screenshots themselves,
@@ -283,5 +387,11 @@ replicating that quirk.
 
 ## Per-case confirmed-facts table
 
-(Empty — populate as recurring judgment calls, e.g. trainer-class fixed
-genders, get confirmed during battle authoring.)
+- **`mapAnchor`**: for any Emerald location with a corresponding
+  `ruby-sapphire` location, use that R/S location's own `mapAnchor` value
+  verbatim (confirmed by user, 2026-09-12) — check the R/S file each time
+  rather than guessing from memory. Only ask the user directly for a
+  location with **no** R/S counterpart (Emerald-only content, e.g.
+  anything inside Team Aqua/Magma's now-unconditional hideouts, or any
+  location whose subarea/map structure diverges from R/S's).
+  Applied so far: Littleroot Town → `MapAnchor.Center` (matches R/S).

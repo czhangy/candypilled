@@ -134,6 +134,7 @@ export enum GameName {
     Pearl = 'Pearl',
     Platinum = 'Platinum',
     RenegadePlatinum = 'Renegade Platinum',
+    Emerald = 'Emerald',
 }
 
 // The public/badges/<folder>/ a game's gym-badge icons are served from.
@@ -149,6 +150,7 @@ export enum TrainerAssetFolder {
     DiamondPearl = 'diamond-pearl',
     Platinum = 'platinum',
     RubySapphire = 'ruby-sapphire',
+    Emerald = 'emerald',
 }
 
 // Where a map autoscrolls to on load, lower priority than a selected

@@ -32,7 +32,7 @@ const SAPPHIRE: Game = {
         female: '/trainers/ruby-sapphire/may.png',
     },
     starters: ['treecko', 'torchic', 'mudkip'],
-    accentColor: '#3E6FB0',
+    accentColor: '#3D51A7',
     encounters: ENCOUNTERS,
     battles: BATTLES,
     // Index 66 is version-dependent ("Magma Hideout" in Ruby, "Aqua
