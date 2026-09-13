@@ -1,0 +1,2 @@
+# Reference-only decomp source used by extraction tooling, not imported at runtime
+src/lib/data/references
