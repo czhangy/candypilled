@@ -1,6 +1,7 @@
 'use client';
 
 import { useSyncExternalStore } from 'react';
+import { GAMES } from '@/lib/data/games';
 import RunHelpers from '@/lib/utils/RunHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import RunEntry from './RunEntry/RunEntry';
@@ -13,8 +14,8 @@ const RunsPage: React.FC = () => {
 
     const gameRuns = useSyncExternalStore(
         RunHelpers.subscribe,
-        RunHelpers.getSnapshot,
-        RunHelpers.getServerSnapshot
+        () => RunHelpers.getRunsForGames(GAMES),
+        RunHelpers.getServerGamesSnapshot
     );
 
     // -------------------------------------------------------------------------

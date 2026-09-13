@@ -121,6 +121,20 @@ export enum GameVersionGroup {
     RubySapphire = 'ruby-sapphire',
 }
 
+// Every playable game's display name, kept as a plain enum (rather than
+// reading Game.name off GAMES in games.ts) so consumers that only need to
+// know which games exist don't eagerly pull in every game's full Game
+// object, which embeds its entire battles/encounters data. Add an entry
+// here whenever a new game is added to GAMES.
+export enum GameName {
+    Ruby = 'Ruby',
+    Sapphire = 'Sapphire',
+    Diamond = 'Diamond',
+    Pearl = 'Pearl',
+    Platinum = 'Platinum',
+    RenegadePlatinum = 'Renegade Platinum',
+}
+
 // The public/badges/<folder>/ a game's gym-badge icons are served from.
 export enum BadgeAssetFolder {
     Sinnoh = 'sinnoh',

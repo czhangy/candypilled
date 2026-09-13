@@ -106,9 +106,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
         ...game.wipeMessages,
     ]);
 
-    const run = gameRuns.find(
-        (gameRun) => gameRun.game.name === game.name
-    )?.run;
+    const run = gameRuns.find((gameRun) => gameRun.gameName === game.name)?.run;
 
     const isHallOfFameUnlocked = !!(
         run && SplitHelpers.isGameComplete(game, run.completedSplits)
