@@ -24,16 +24,21 @@ const ABILITY_LIST_LIMIT = 500;
 
 // PokeAPI has no concept of "dangerous" abilities (ones that can end a run in
 // a single unlucky turn, e.g. via a hard-to-play-around trap or a punishing
-// on-faint effect), so this set is curated by hand rather than derived from
-// the API.
-const DANGEROUS_ABILITIES = new Set([
-    'shadow-tag',
-    'aftermath',
-    'moody',
-    'simple',
-    'wonder-guard',
-    'sturdy',
-]);
+// on-faint effect), so this map is curated by hand rather than derived from
+// the API. Each value is the generation from which that ability's effect is
+// actually dangerous -- most are dangerous from their own introduction, but
+// a few gained their dangerous effect later.
+const DANGEROUS_ABILITIES: Record<string, number> = {
+    'shadow-tag': 1,
+    aftermath: 1,
+    moody: 1,
+    simple: 1,
+    'wonder-guard': 1,
+    // Prior to Generation V, Sturdy only blocked OHKO moves (Fissure,
+    // Sheer Cold, Horn Drill) -- its "survive any hit at 1 HP" effect, the
+    // actually dangerous part, was added in Generation V.
+    sturdy: 5,
+};
 
 const writeData = (data: Record<string, AbilityData>): void => {
     fs.writeFileSync(DATA_PATH, `${JSON.stringify(data, null, 4)}\n`);
@@ -140,12 +145,16 @@ export const fetchAbilities = async (): Promise<void> => {
         }
 
         const name = StringHelpers.toTitleCase(ability.name);
+        const dangerousFromGeneration = DANGEROUS_ABILITIES[ability.name];
         data[ability.name] = {
             slug: ability.name as AbilitySlug,
             name,
             id: toResourceId(resource.url),
             introducedInGeneration: toGenerationNumber(ability.generation.name),
-            isDangerous: DANGEROUS_ABILITIES.has(ability.name),
+            isDangerous: dangerousFromGeneration !== undefined,
+            ...(dangerousFromGeneration !== undefined
+                ? { dangerousFromGeneration }
+                : {}),
             valuesByGeneration: buildValuesByGeneration(
                 ability,
                 versionGroupGenerations

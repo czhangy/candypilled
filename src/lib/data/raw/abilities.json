@@ -153,6 +153,7 @@
         "id": 5,
         "introducedInGeneration": 3,
         "isDangerous": true,
+        "dangerousFromGeneration": 5,
         "valuesByGeneration": [
             {
                 "fromGeneration": 3,
@@ -811,6 +812,7 @@
         "id": 23,
         "introducedInGeneration": 3,
         "isDangerous": true,
+        "dangerousFromGeneration": 1,
         "valuesByGeneration": [
             {
                 "fromGeneration": 3,
@@ -885,6 +887,7 @@
         "id": 25,
         "introducedInGeneration": 3,
         "isDangerous": true,
+        "dangerousFromGeneration": 1,
         "valuesByGeneration": [
             {
                 "fromGeneration": 3,
@@ -3098,6 +3101,7 @@
         "id": 86,
         "introducedInGeneration": 4,
         "isDangerous": true,
+        "dangerousFromGeneration": 1,
         "valuesByGeneration": [
             {
                 "fromGeneration": 4,
@@ -3754,6 +3758,7 @@
         "id": 106,
         "introducedInGeneration": 4,
         "isDangerous": true,
+        "dangerousFromGeneration": 1,
         "valuesByGeneration": [
             {
                 "fromGeneration": 4,
@@ -4833,6 +4838,7 @@
         "id": 141,
         "introducedInGeneration": 5,
         "isDangerous": true,
+        "dangerousFromGeneration": 1,
         "valuesByGeneration": [
             {
                 "fromGeneration": 5,
@@ -8113,6 +8119,19 @@
             {
                 "fromGeneration": 9,
                 "effect": "Boosts the power of the Pokémon's Fire-type moves by 50%."
+            }
+        ]
+    },
+    "aura-guard": {
+        "slug": "aura-guard",
+        "name": "Aura Guard",
+        "id": 314,
+        "introducedInGeneration": 9,
+        "isDangerous": false,
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 9,
+                "effect": "A Pokémon with Aura Guard takes half damage from moves that make contact. Moves affected by Long Reach which make contact will deal regular damage."
             }
         ]
     }

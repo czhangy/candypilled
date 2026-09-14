@@ -245,7 +245,8 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                         styles['ability-button--readonly'],
                         highlightDangerous &&
                             AbilityHelpers.isDangerousAbility(
-                                abilitySlug as string
+                                abilitySlug as string,
+                                generation
                             ) &&
                             styles['ability-button--dangerous'],
                     ]
@@ -260,7 +261,8 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                         styles['ability-button'],
                         highlightDangerous &&
                             AbilityHelpers.isDangerousAbility(
-                                abilitySlug as string
+                                abilitySlug as string,
+                                generation
                             ) &&
                             styles['ability-button--dangerous'],
                     ]

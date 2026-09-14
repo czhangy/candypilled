@@ -709,6 +709,12 @@ export type AbilityData = {
     // PokeAPI has no concept of "dangerous" abilities, so this is curated
     // separately rather than derived from any API field.
     isDangerous: boolean;
+    // The generation from which this ability's dangerous effect actually
+    // applies, for an ability whose danger wasn't present since its own
+    // introduction (e.g. Sturdy's "survive any hit at 1 HP" effect was
+    // added in Generation V; earlier generations only blocked OHKO moves).
+    // Only set when `isDangerous` is true.
+    dangerousFromGeneration?: number;
     valuesByGeneration: AbilityValuesByGeneration[];
 };
 
@@ -2361,6 +2367,7 @@ export type AbilitySlug =
     | 'as-one-glastrier'
     | 'as-one-spectrier'
     | 'aura-break'
+    | 'aura-guard'
     | 'bad-dreams'
     | 'ball-fetch'
     | 'battery'
