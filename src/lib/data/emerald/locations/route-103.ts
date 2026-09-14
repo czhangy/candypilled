@@ -22,9 +22,25 @@ const ROUTE_103: Location = {
             y: 14.68,
         },
         {
+            battleKey: 'swimmer-f-isabelle',
+            x: 45.55,
+            y: 28.6,
+        },
+        {
+            battleKey: 'swimmer-m-pete',
+            x: 45.55,
+            y: 60.42,
+        },
+        {
             battleKey: 'aroma-lady-daisy',
             x: 89.38,
             y: 51.05,
+        },
+        {
+            battleKey: 'twins-amy-and-liv',
+            customWidth: GEN_3_TRUE_DOUBLE_WIDTH,
+            x: 81.25,
+            y: 56.16,
         },
         {
             battleKey: 'pokefan-m-miguel',
@@ -35,22 +51,6 @@ const ROUTE_103: Location = {
             battleKey: 'fisherman-andrew',
             x: 63.05,
             y: 37.7,
-        },
-        {
-            battleKey: 'twins-amy-and-liv',
-            customWidth: GEN_3_TRUE_DOUBLE_WIDTH,
-            x: 81.25,
-            y: 56.16,
-        },
-        {
-            battleKey: 'swimmer-f-isabelle',
-            x: 45.55,
-            y: 28.6,
-        },
-        {
-            battleKey: 'swimmer-m-pete',
-            x: 45.55,
-            y: 60.42,
         },
         {
             battleKey: 'black-belt-rhett',
