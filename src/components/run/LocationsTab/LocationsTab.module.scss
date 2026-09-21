@@ -1,0 +1,109 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.locations-tab {
+    padding: 1.5rem 0;
+
+    .body {
+        align-items: flex-start;
+        display: flex;
+        gap: 2rem;
+        margin-top: 1.5rem;
+
+        .toc {
+            @include uppercase-label;
+
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            gap: 0.75rem;
+            max-height: calc(100vh - (var(--sticky-offset) + 2.5rem) - 1.5rem);
+            position: sticky;
+            top: calc(var(--sticky-offset) + 2.5rem);
+            width: 12rem;
+            z-index: 2;
+
+            .toc-header {
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+                min-height: 0;
+
+                .toc-list {
+                    display: flex;
+                    flex: 1;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    list-style: none;
+                    margin: 0;
+                    min-height: 0;
+                    overflow-y: auto;
+                    padding: 0;
+
+                    li {
+                        align-items: center;
+                        display: flex;
+                        gap: 0.4rem;
+                    }
+
+                    .caught-icon {
+                        flex-shrink: 0;
+                        height: 0.9rem;
+                        position: relative;
+                        width: 0.9rem;
+
+                        &--missed {
+                            &::after {
+                                background: $red;
+                                content: '';
+                                inset: 0;
+                                mask-image: url('/common/premier-ball.png');
+                                mask-repeat: no-repeat;
+                                mask-size: contain;
+                                mix-blend-mode: color;
+                                position: absolute;
+                            }
+                        }
+                    }
+
+                    .toc-link {
+                        background: none;
+                        border: none;
+                        color: $text-dim;
+                        cursor: pointer;
+                        display: block;
+                        font: inherit;
+                        letter-spacing: inherit;
+                        padding: 0;
+                        text-align: left;
+                        text-decoration: none;
+                        text-transform: none;
+                        transition: color 0.2s ease;
+
+                        @media (hover: hover) {
+                            &:not(.toc-link--active):hover {
+                                color: $foreground;
+                            }
+                        }
+
+                        @media (prefers-reduced-motion: reduce) {
+                            transition: none;
+                        }
+
+                        &--active {
+                            color: var(--accent-color);
+                        }
+                    }
+                }
+            }
+        }
+
+        .locations {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            gap: 0.75rem;
+            min-width: 0;
+        }
+    }
+}

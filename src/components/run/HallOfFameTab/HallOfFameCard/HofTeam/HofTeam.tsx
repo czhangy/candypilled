@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import PokemonSlot from '@/components/run/SplitTab/SplitLocation/BattleCard/PokemonSlot/PokemonSlot';
+import PokemonSlot from '@/components/run/SplitLocation/BattleCard/PokemonSlot/PokemonSlot';
 import {
     BattlePokemon,
     CaughtPokemon,

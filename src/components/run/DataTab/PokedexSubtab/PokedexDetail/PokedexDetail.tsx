@@ -1,10 +1,10 @@
 import { useState, useSyncExternalStore } from 'react';
 import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
-import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
-import LearnsetList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
-import LocationsList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LocationsList/LocationsList';
-import PokemonSummary from '@/components/run/SplitTab/SplitLocation/PokedexTile/PokemonSummary/PokemonSummary';
-import StatsChart from '@/components/run/SplitTab/SplitLocation/PokedexTile/StatsChart/StatsChart';
+import EvolutionLine from '@/components/run/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
+import LearnsetList from '@/components/run/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
+import LocationsList from '@/components/run/SplitLocation/PokedexTile/LocationsList/LocationsList';
+import PokemonSummary from '@/components/run/SplitLocation/PokedexTile/PokemonSummary/PokemonSummary';
+import StatsChart from '@/components/run/SplitLocation/PokedexTile/StatsChart/StatsChart';
 import { AbilityEntry, Game } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';

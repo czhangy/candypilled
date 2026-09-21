@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Modal from '@/components/common/Modal/Modal';
-import PokedexTile from '@/components/run/SplitTab/SplitLocation/PokedexTile/PokedexTile';
+import PokedexTile from '@/components/run/SplitLocation/PokedexTile/PokedexTile';
 import { Nature, PokemonStatus } from '@/lib/static/enums';
 import {
     AbilitySlug,

@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from 'react';
 import Image from 'next/image';
-import EvolutionLine from '@/components/run/SplitTab/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
-import LearnsetList from '@/components/run/SplitTab/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
+import EvolutionLine from '@/components/run/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
+import LearnsetList from '@/components/run/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
 import { MOVE_SLOT_COUNT, STAT_FIELDS } from '@/lib/static/constants';
 import { PokemonStatus } from '@/lib/static/enums';
 import { CaughtPokemon, GameDataSource, StatValues } from '@/lib/static/types';

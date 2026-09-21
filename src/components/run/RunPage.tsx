@@ -24,6 +24,7 @@ import ImportSaveModal from './BoxTab/ImportSaveModal/ImportSaveModal';
 import CalcTab from './CalcTab/CalcTab';
 import DataTab from './DataTab/DataTab';
 import HallOfFameTab from './HallOfFameTab/HallOfFameTab';
+import LocationsTab from './LocationsTab/LocationsTab';
 import ResourcesTab from './ResourcesTab/ResourcesTab';
 import styles from './RunPage.module.scss';
 import SplitHeader from './SplitHeader/SplitHeader';
@@ -40,6 +41,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
 
     const TABS = [
         { id: 'split', label: 'Splits' },
+        { id: 'locations', label: 'Locations' },
         { id: 'box', label: 'Box' },
         { id: 'calc', label: 'Calc' },
         { id: 'data', label: 'Data' },
@@ -52,6 +54,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
     const TAB_QUERY_PARAMS: Record<string, string[]> = {
         box: ['pokemon'],
         data: ['subtab', 'species', 'move', 'ability', 'item'],
+        locations: ['location'],
     };
 
     const DEFAULT_WIPE_MESSAGES = [
@@ -100,6 +103,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
     const selectedPokemon = searchParams.get('pokemon') ?? undefined;
     const selectedSpecies = searchParams.get('species') ?? undefined;
     const selectedBattle = searchParams.get('battle') ?? undefined;
+    const selectedLocationName = searchParams.get('location') ?? undefined;
 
     const wipeMessage = ArrayHelpers.pickRandom([
         ...DEFAULT_WIPE_MESSAGES,
@@ -237,6 +241,10 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
         updateQueryParams({ pokemon: location });
     };
 
+    const handleLocationNameSelect = (locationName: string): void => {
+        updateQueryParams({ location: locationName });
+    };
+
     const handlePokemonDeselect = (): void => {
         updateQueryParams({ pokemon: undefined });
     };
@@ -254,15 +262,9 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
     };
 
     const handleLocationSelect = (locationName: string): void => {
-        const earliestLocation = SplitHelpers.getEarliestLocation(
-            game,
-            locationName
-        );
-        if (!earliestLocation) return;
-
         const params = new URLSearchParams(searchParams.toString());
-        params.set('tab', 'split');
-        params.set('split', earliestLocation.splitName);
+        params.set('tab', 'locations');
+        params.set('location', locationName);
         params.delete('pokemon');
         params.delete('subtab');
         params.delete('move');
@@ -270,12 +272,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
         params.delete('item');
         params.delete('species');
 
-        router.push(
-            `${pathname}?${params.toString()}#${SplitHelpers.getLocationSlug(
-                locationName,
-                earliestLocation.index
-            )}`
-        );
+        router.push(`${pathname}?${params.toString()}`);
     };
 
     const handleAbilityLinkClick = (slug: string): void => {
@@ -496,6 +493,23 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                             onToggleSplitComplete={handleSplitToggleComplete}
                             run={run}
                             selectedBattleKey={selectedBattle}
+                            stickyOffset={stickyHeaderHeight}
+                        />
+                    )}
+                    {activeTab === 'locations' && (
+                        <LocationsTab
+                            game={game}
+                            onSelectAbility={handleAbilityLinkClick}
+                            onSelectBattleMarker={handleBattleSelect}
+                            onSelectItem={handleItemLinkClick}
+                            onSelectLocation={handleLocationSelect}
+                            onSelectLocationName={handleLocationNameSelect}
+                            onSelectMove={handleMoveLinkClick}
+                            onSelectSpecies={handleSpeciesLinkClick}
+                            onSelectTrainer={handleTrainerLinkClick}
+                            run={run}
+                            selectedBattleKey={selectedBattle}
+                            selectedLocationName={selectedLocationName}
                             stickyOffset={stickyHeaderHeight}
                         />
                     )}
