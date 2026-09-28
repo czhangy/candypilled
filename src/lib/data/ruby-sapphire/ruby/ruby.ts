@@ -10,7 +10,7 @@ import STEVEN from '@/lib/data/ruby-sapphire/splits/steven';
 import getTateAndLiza from '@/lib/data/ruby-sapphire/splits/tate-and-liza';
 import WALLACE from '@/lib/data/ruby-sapphire/splits/wallace';
 import WATTSON from '@/lib/data/ruby-sapphire/splits/wattson';
-import getWinona from '@/lib/data/ruby-sapphire/splits/winona';
+import WINONA from '@/lib/data/ruby-sapphire/splits/winona';
 import {
     BadgeAssetFolder,
     GameVersionGroup,
@@ -52,7 +52,7 @@ const RUBY: Game = {
         WATTSON,
         FLANNERY,
         NORMAN,
-        getWinona(MAGMA_HIDEOUT),
+        WINONA,
         getTateAndLiza(MAGMA_HIDEOUT),
         WALLACE,
         STEVEN,
