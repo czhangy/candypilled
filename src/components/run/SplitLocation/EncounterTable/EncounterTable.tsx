@@ -1,9 +1,10 @@
 import { useState, useSyncExternalStore } from 'react';
-import { EncounterMethod } from '@/lib/static/enums';
+import { BadgeAssetFolder, EncounterMethod } from '@/lib/static/enums';
 import {
     Encounter,
     EncounterVisibilityContext,
     GameDataSource,
+    MethodSplit,
 } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
@@ -14,12 +15,14 @@ import MethodGroup from './MethodGroup/MethodGroup';
 import TimeOfDayButtons from './TimeOfDayButtons/TimeOfDayButtons';
 
 type EncounterTableProps = {
+    badgeAssetFolder: BadgeAssetFolder;
     caughtHere?: string;
     dataSource: GameDataSource;
     dupes: string[];
     encounters: Encounter[];
     generation: number;
     isMissed: boolean;
+    methodSplits: MethodSplit[];
     onSelectEncounter?: (encounter: Encounter) => void;
     onSelectItem: (slug: string) => void;
     onToggleMissed: () => void;
@@ -27,12 +30,14 @@ type EncounterTableProps = {
 };
 
 const EncounterTable: React.FC<EncounterTableProps> = ({
+    badgeAssetFolder,
     caughtHere,
     dataSource,
     dupes,
     encounters,
     generation,
     isMissed,
+    methodSplits,
     onSelectEncounter,
     onSelectItem,
     onToggleMissed,
@@ -251,6 +256,7 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                 <tbody>
                     {methods.map((method) => (
                         <MethodGroup
+                            badgeAssetFolder={badgeAssetFolder}
                             dataSource={dataSource}
                             encounters={getEncountersForMethod(method)}
                             isSpeciesCaughtElsewhere={isCaughtElsewhere}
@@ -260,6 +266,12 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                             onSelectEncounter={handleEncounterSelect}
                             onSelectItem={onSelectItem}
                             selectedSpecies={selectedSpecies}
+                            splitName={
+                                methodSplits.find(
+                                    (methodSplit) =>
+                                        methodSplit.method === method
+                                )?.split
+                            }
                         />
                     ))}
                 </tbody>

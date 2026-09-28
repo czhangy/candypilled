@@ -248,11 +248,13 @@ export type BattleData = {
     // person's own name paired with their class.
     plainName?: boolean;
     secondTrainer?: BattleTrainer;
-    // Restricts this battle's marker to the named split (Split.name) or any
-    // split after it in game order — for a location placed in more than
-    // one split whose battle set differs between them, rather than
-    // showing this battle's marker before the player has reached it.
-    split?: string;
+    // The split (Split.name) this battle first becomes available in.
+    // Restricts this battle's marker to that split or any split after it
+    // in game order — for a location placed in more than one split whose
+    // battle set differs between them, rather than showing this battle's
+    // marker before the player has reached it — and drives the split
+    // badge shown on the battle card.
+    split: string;
     // TRAINER_CLASSES slug.
     trainerClass: string;
 };
@@ -277,7 +279,6 @@ export type Battle = {
     // entries here, each pointing at its own independent Game.battles
     // entry, mirroring how `gender` splits a wholesale different trainer.
     game?: string;
-    split?: string;
     x: number;
     y: number;
 };
@@ -392,9 +393,19 @@ export type LocationMapImage =
     | { male: StaticImageData; female: StaticImageData }
     | Record<string, StaticImageData>;
 
+// The split (Split.name) an encounter method group first becomes
+// available in at the location/subarea carrying this entry — drives the
+// split badge shown next to that method's row in the encounter table. A
+// method with no matching entry has no badge shown.
+export type MethodSplit = {
+    method: EncounterMethod;
+    split: string;
+};
+
 export type Subarea = {
     name: string;
     encountersKey?: string;
+    methodSplits?: MethodSplit[];
     map: LocationMapImage;
     // Where this subarea's map autoscrolls to on load, lower priority
     // than a selected battle marker.
@@ -408,6 +419,7 @@ export type Subarea = {
 export type Location = {
     name: string;
     encountersKey?: string;
+    methodSplits?: MethodSplit[];
     battles?: Battle[];
     // Only meaningful for a location with no subareas — a subarea-based
     // location sets tagPartner per-subarea instead (Subarea.tagPartner),

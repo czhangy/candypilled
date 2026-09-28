@@ -12,6 +12,7 @@ import {
     Game,
     Location,
     LocationMapImage,
+    MethodSplit,
     Run,
 } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
@@ -70,6 +71,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         mapAnchor?: MapAnchor;
         battles: Battle[];
         encounters?: Encounter[];
+        methodSplits: MethodSplit[];
     };
 
     // -------------------------------------------------------------------------
@@ -356,6 +358,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             encounters: subarea.encountersKey
                 ? game.encounters[subarea.encountersKey]
                 : undefined,
+            methodSplits: subarea.methodSplits ?? [],
         };
     } else {
         section = {
@@ -375,6 +378,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             encounters: location.encountersKey
                 ? game.encounters[location.encountersKey]
                 : undefined,
+            methodSplits: location.methodSplits ?? [],
         };
     }
     const currentTagPartner = BattleHelpers.filterBySplit(
@@ -562,12 +566,14 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                             {section.encounters && !allEncountersHidden && (
                                 <div className={styles['encounters-row']}>
                                     <EncounterTable
+                                        badgeAssetFolder={game.badgeAssetFolder}
                                         caughtHere={encounter}
                                         dataSource={game.dataSource}
                                         dupes={dupes}
                                         encounters={section.encounters}
                                         generation={game.generation}
                                         isMissed={isMissed}
+                                        methodSplits={section.methodSplits}
                                         onSelectEncounter={
                                             handleEncounterSelect
                                         }

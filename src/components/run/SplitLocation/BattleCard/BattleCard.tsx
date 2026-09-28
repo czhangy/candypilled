@@ -1,11 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
+import Tooltip from '@/components/common/Tooltip/Tooltip';
 import ConfirmModal from '@/components/ConfirmModal/ConfirmModal';
 import EditIcon from '@/lib/icons/EditIcon';
 import { BattleMetadata } from '@/lib/static/enums';
 import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
+import StringHelpers from '@/lib/utils/StringHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import styles from './BattleCard.module.scss';
 import BattleNotesModal from './BattleNotesModal/BattleNotesModal';
@@ -64,6 +67,8 @@ const BattleCard: React.FC<BattleCardProps> = ({
     // -------------------------------------------------------------------------
 
     const metadata = game.battles[battle.battleKey].metadata;
+    const splitName = game.battles[battle.battleKey].split;
+    const badge = `/badges/${game.badgeAssetFolder}/${StringHelpers.toSlug(splitName)}.png`;
     const teamGroups = BattleHelpers.getTeamGroups(battle, starter, game);
     // Flattened one row per (trainer, surviving team) pair, so a trainer
     // with multiple teams that all matched the current run's conditions
@@ -119,24 +124,37 @@ const BattleCard: React.FC<BattleCardProps> = ({
                           : 'Battle')}
             </span>
             <div className={styles.content}>
-                <div className={styles['trainer-header']}>
-                    <button
-                        className={styles['trainer-name']}
-                        onClick={() =>
-                            onSelectTrainer(BattleHelpers.getBattleKey(battle))
-                        }
-                        type="button"
+                <div className={styles['top-row']}>
+                    <Tooltip
+                        className={styles.badge}
+                        position="left"
+                        text={`${splitName} Split`}
                     >
-                        {BattleHelpers.getFullName(battle, game)}
-                    </button>
-                    <button
-                        aria-label="Add notes"
-                        className={styles['notes-button']}
-                        onClick={handleNotesButtonClick}
-                        type="button"
-                    >
-                        <EditIcon />
-                    </button>
+                        <div className={styles['badge-image']}>
+                            <Image alt="" fill sizes="1.5rem" src={badge} />
+                        </div>
+                    </Tooltip>
+                    <div className={styles['trainer-header']}>
+                        <button
+                            className={styles['trainer-name']}
+                            onClick={() =>
+                                onSelectTrainer(
+                                    BattleHelpers.getBattleKey(battle)
+                                )
+                            }
+                            type="button"
+                        >
+                            {BattleHelpers.getFullName(battle, game)}
+                        </button>
+                        <button
+                            aria-label="Add notes"
+                            className={styles['notes-button']}
+                            onClick={handleNotesButtonClick}
+                            type="button"
+                        >
+                            <EditIcon />
+                        </button>
+                    </div>
                 </div>
                 {isNotesModalOpen && (
                     <BattleNotesModal

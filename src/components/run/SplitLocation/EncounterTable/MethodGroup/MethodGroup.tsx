@@ -1,10 +1,14 @@
 import { Fragment } from 'react';
-import { EncounterMethod } from '@/lib/static/enums';
+import Image from 'next/image';
+import Tooltip from '@/components/common/Tooltip/Tooltip';
+import { BadgeAssetFolder, EncounterMethod } from '@/lib/static/enums';
 import { Encounter, GameDataSource } from '@/lib/static/types';
+import StringHelpers from '@/lib/utils/StringHelpers';
 import EncounterRow from './EncounterRow/EncounterRow';
 import styles from './MethodGroup.module.scss';
 
 type MethodGroupProps = {
+    badgeAssetFolder: BadgeAssetFolder;
     dataSource: GameDataSource;
     encounters: Encounter[];
     isSpeciesCaughtElsewhere: (species: string) => boolean;
@@ -13,9 +17,14 @@ type MethodGroupProps = {
     onSelectEncounter: (encounter: Encounter) => void;
     onSelectItem: (slug: string) => void;
     selectedSpecies?: string;
+    // The split (Split.name) this method group first becomes available
+    // in — absent when no MethodSplit entry matches this method, in which
+    // case no badge is shown.
+    splitName?: string;
 };
 
 const MethodGroup: React.FC<MethodGroupProps> = ({
+    badgeAssetFolder,
     dataSource,
     encounters,
     isSpeciesCaughtElsewhere,
@@ -24,6 +33,7 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
     onSelectEncounter,
     onSelectItem,
     selectedSpecies,
+    splitName,
 }) => {
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -47,7 +57,23 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
         <Fragment>
             <tr>
                 <th colSpan={3}>
-                    <div className={styles.method}>{getMethodLabel()}</div>
+                    <div className={styles.method}>
+                        {getMethodLabel()}
+                        {splitName && (
+                            <Tooltip
+                                className={styles.badge}
+                                position="left"
+                                text={`${splitName} Split`}
+                            >
+                                <Image
+                                    alt=""
+                                    fill
+                                    sizes="1rem"
+                                    src={`/badges/${badgeAssetFolder}/${StringHelpers.toSlug(splitName)}.png`}
+                                />
+                            </Tooltip>
+                        )}
+                    </div>
                 </th>
             </tr>
             {encounters.map((encounter) => (
