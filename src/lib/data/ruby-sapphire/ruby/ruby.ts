@@ -1,5 +1,6 @@
 import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
 import { BATTLES } from '@/lib/data/ruby-sapphire/battles';
+import { LOCATIONS } from '@/lib/data/ruby-sapphire/locations';
 import MAGMA_HIDEOUT from '@/lib/data/ruby-sapphire/locations/magma-hideout';
 import { MET_LOCATIONS } from '@/lib/data/ruby-sapphire/met-locations';
 import BRAWLY from '@/lib/data/ruby-sapphire/splits/brawly';
@@ -31,6 +32,7 @@ const RUBY: Game = {
         male: '/trainers/ruby-sapphire/brendan.png',
         female: '/trainers/ruby-sapphire/may.png',
     },
+    locations: [...LOCATIONS, MAGMA_HIDEOUT],
     starters: ['treecko', 'torchic', 'mudkip'],
     accentColor: '#CD2236',
     encounters: ENCOUNTERS,

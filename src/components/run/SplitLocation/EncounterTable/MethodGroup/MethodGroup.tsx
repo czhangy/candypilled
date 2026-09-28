@@ -58,7 +58,6 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
             <tr>
                 <th colSpan={3}>
                     <div className={styles.method}>
-                        {getMethodLabel()}
                         {splitName && (
                             <Tooltip
                                 className={styles.badge}
@@ -73,6 +72,7 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
                                 />
                             </Tooltip>
                         )}
+                        {getMethodLabel()}
                     </div>
                 </th>
             </tr>

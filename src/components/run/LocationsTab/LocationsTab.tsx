@@ -57,18 +57,13 @@ const LocationsTab: React.FC<LocationsTabProps> = ({
 
     const variant = game.pokemonAssetFolder ?? game.version;
 
-    // Every location in the game, deduped by name (the same Location can be
-    // listed across multiple splits for revisits/sequence breaks) and
-    // sorted alphabetically -- this tab is a flat, always-ungated reference
-    // view independent of split progress, unlike the Split tab. Only one is
-    // ever rendered at a time, picked below.
-    const locations = [
-        ...new Map(
-            game.splits
-                .flatMap((split) => split.locations)
-                .map((location) => [location.name, location] as const)
-        ).values(),
-    ].sort((a, b) => a.name.localeCompare(b.name));
+    // Every location in the game, sorted alphabetically -- this tab is a
+    // flat, always-ungated reference view independent of split progress,
+    // unlike the Split tab. Only one is ever rendered at a time, picked
+    // below.
+    const locations = [...game.locations].sort((a, b) =>
+        a.name.localeCompare(b.name)
+    );
 
     const selectedIndex = selectedLocationName
         ? locations.findIndex(

@@ -2061,7 +2061,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'pkmn-trainer-barry-hearthome-city': {
         metadata: [BattleMetadata.Miniboss],
-        split: 'Maylene',
+        split: 'Roark',
         trainerClass: 'pkmn-trainer-barry',
         name: 'Barry',
         teams: [
@@ -2988,7 +2988,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-jubilife-city': {
         metadata: [BattleMetadata.Tag],
-        split: 'Gardenia',
+        split: 'Roark',
         trainerClass: 'galactic-grunt-m',
         name: '1',
         teams: [
@@ -3024,7 +3024,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'pkmn-trainer-dawn-jubilife-city-tag': {
         metadata: [],
-        split: 'Gardenia',
+        split: 'Roark',
         trainerClass: 'pkmn-trainer-dawn',
         name: 'Dawn',
         teams: [
@@ -3074,7 +3074,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'pkmn-trainer-lucas-jubilife-city-tag': {
         metadata: [],
-        split: 'Gardenia',
+        split: 'Roark',
         trainerClass: 'pkmn-trainer-lucas',
         name: 'Lucas',
         teams: [
@@ -3216,7 +3216,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-lake-verity-1': {
         metadata: [BattleMetadata.Double],
-        split: 'Candice',
+        split: 'Roark',
         trainerClass: 'galactic-grunt-m',
         name: '15',
         teams: [
@@ -3287,7 +3287,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-lake-verity-2': {
         metadata: [],
-        split: 'Candice',
+        split: 'Roark',
         trainerClass: 'galactic-grunt-m',
         name: '16',
         teams: [
@@ -3315,7 +3315,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-f-lake-verity': {
         metadata: [],
-        split: 'Candice',
+        split: 'Roark',
         trainerClass: 'galactic-grunt-f',
         name: '5',
         teams: [
@@ -3343,7 +3343,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'commander-mars-lake-verity': {
         metadata: [BattleMetadata.Miniboss],
-        split: 'Candice',
+        split: 'Roark',
         trainerClass: 'commander-mars',
         name: 'Mars',
         teams: [
@@ -3482,7 +3482,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-f-mt-coronet-1': {
         metadata: [BattleMetadata.Optional],
-        split: 'Volkner',
+        split: 'Roark',
         trainerClass: 'galactic-grunt-f',
         name: '9',
         teams: [
@@ -3502,7 +3502,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-mt-coronet-1': {
         metadata: [BattleMetadata.Optional],
-        split: 'Volkner',
+        split: 'Roark',
         trainerClass: 'galactic-grunt-m',
         name: '24',
         teams: [
@@ -3522,7 +3522,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-mt-coronet-2': {
         metadata: [BattleMetadata.Optional],
-        split: 'Volkner',
+        split: 'Roark',
         trainerClass: 'galactic-grunt-m',
         name: '25',
         teams: [
@@ -3576,7 +3576,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-mt-coronet-3': {
         metadata: [BattleMetadata.Optional],
-        split: 'Volkner',
+        split: 'Roark',
         trainerClass: 'galactic-grunt-m',
         name: '26',
         teams: [
@@ -3604,7 +3604,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-mt-coronet-4': {
         metadata: [BattleMetadata.Optional],
-        split: 'Volkner',
+        split: 'Roark',
         trainerClass: 'galactic-grunt-m',
         name: '27',
         teams: [
@@ -3624,7 +3624,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-f-mt-coronet-2': {
         metadata: [BattleMetadata.Optional],
-        split: 'Volkner',
+        split: 'Roark',
         trainerClass: 'galactic-grunt-f',
         name: '10',
         teams: [
@@ -3660,7 +3660,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-mt-coronet-5': {
         metadata: [BattleMetadata.Optional],
-        split: 'Volkner',
+        split: 'Roark',
         trainerClass: 'galactic-grunt-m',
         name: '28',
         teams: [
@@ -3696,7 +3696,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-f-mt-coronet-3': {
         metadata: [],
-        split: 'Volkner',
+        split: 'Roark',
         trainerClass: 'galactic-grunt-f',
         name: '11',
         teams: [
@@ -3724,7 +3724,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-mt-coronet-6': {
         metadata: [],
-        split: 'Volkner',
+        split: 'Roark',
         trainerClass: 'galactic-grunt-m',
         name: '29',
         teams: [
@@ -3752,7 +3752,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-f-mt-coronet-4': {
         metadata: [],
-        split: 'Volkner',
+        split: 'Roark',
         trainerClass: 'galactic-grunt-f',
         name: '12',
         teams: [
@@ -3833,7 +3833,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'veteran-grant': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'veteran',
         name: 'Grant',
         teams: [
@@ -5065,7 +5065,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'aroma-lady-taylor': {
         metadata: [BattleMetadata.Optional],
-        split: 'Gardenia',
+        split: 'Roark',
         trainerClass: 'aroma-lady',
         name: 'Taylor',
         teams: [
@@ -5091,7 +5091,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'bug-catcher-brandon': {
         metadata: [BattleMetadata.Optional],
-        split: 'Gardenia',
+        split: 'Roark',
         trainerClass: 'bug-catcher',
         name: 'Brandon',
         teams: [
@@ -5118,7 +5118,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'twins-liv-and-liz': {
         metadata: [BattleMetadata.Optional, BattleMetadata.TrueDouble],
-        split: 'Gardenia',
+        split: 'Roark',
         trainerClass: 'twins',
         name: 'Liv & Liz',
         teams: [
@@ -5633,7 +5633,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'picnicker-lauren': {
         metadata: [BattleMetadata.Optional],
-        split: 'Fantina',
+        split: 'Roark',
         trainerClass: 'picnicker',
         name: 'Lauren',
         teams: [
@@ -5653,7 +5653,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'camper-anthony': {
         metadata: [BattleMetadata.Optional],
-        split: 'Fantina',
+        split: 'Roark',
         trainerClass: 'camper',
         name: 'Anthony',
         teams: [
@@ -5672,7 +5672,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'hiker-justin': {
         metadata: [BattleMetadata.Optional],
-        split: 'Fantina',
+        split: 'Roark',
         trainerClass: 'hiker',
         name: 'Justin',
         teams: [
@@ -5698,7 +5698,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'youngster-austin': {
         metadata: [BattleMetadata.Optional],
-        split: 'Fantina',
+        split: 'Roark',
         trainerClass: 'youngster',
         name: 'Austin',
         teams: [
@@ -5731,7 +5731,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'hiker-kevin': {
         metadata: [BattleMetadata.Optional],
-        split: 'Fantina',
+        split: 'Roark',
         trainerClass: 'hiker',
         name: 'Kevin',
         teams: [
@@ -5771,7 +5771,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'battle-girl-helen': {
         metadata: [BattleMetadata.Optional],
-        split: 'Fantina',
+        split: 'Roark',
         trainerClass: 'battle-girl',
         name: 'Helen',
         teams: [
@@ -5909,7 +5909,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'fisherman-cody': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'fisherman',
         name: 'Cody',
         teams: [
@@ -5935,7 +5935,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'hiker-alexander': {
         metadata: [BattleMetadata.Optional],
-        split: 'Volkner',
+        split: 'Roark',
         trainerClass: 'hiker',
         name: 'Alexander',
         teams: [
@@ -6491,7 +6491,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ninja-boy-brennan': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'ninja-boy',
         name: 'Brennan',
         teams: [
@@ -6517,7 +6517,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ninja-boy-fabian': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'ninja-boy',
         name: 'Fabian',
         teams: [
@@ -6543,7 +6543,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ninja-boy-bruce': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'ninja-boy',
         name: 'Bruce',
         teams: [
@@ -6562,7 +6562,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ninja-boy-joel': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'ninja-boy',
         name: 'Joel',
         teams: [
@@ -6602,7 +6602,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ace-trainer-f-alyssa': {
         metadata: [],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'ace-trainer-f',
         name: 'Alyssa',
         teams: [
@@ -6651,7 +6651,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'double-team-zac-and-jen': {
         metadata: [BattleMetadata.Optional, BattleMetadata.TrueDouble],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'double-team',
         name: 'Zac & Jen',
         teams: [
@@ -6679,7 +6679,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ace-trainer-m-ernest': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'ace-trainer-m',
         name: 'Ernest',
         teams: [
@@ -6733,7 +6733,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ninja-boy-davido': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'ninja-boy',
         name: 'Davido',
         teams: [
@@ -6752,7 +6752,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'black-belt-adam': {
         metadata: [],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'black-belt',
         name: 'Adam',
         teams: [
@@ -6772,7 +6772,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ninja-boy-nathan': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'ninja-boy',
         name: 'Nathan',
         teams: [
@@ -6798,7 +6798,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'bird-keeper-brianna': {
         metadata: [],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'bird-keeper',
         name: 'Brianna',
         teams: [
@@ -6826,7 +6826,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'veteran-brian': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'veteran',
         name: 'Brian',
         teams: [
@@ -6875,7 +6875,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'dragon-tamer-patrick': {
         metadata: [BattleMetadata.Optional],
-        split: 'Volkner',
+        split: 'Roark',
         trainerClass: 'dragon-tamer',
         name: 'Patrick',
         teams: [
@@ -6980,7 +6980,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'bird-keeper-katherine': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'bird-keeper',
         name: 'Katherine',
         teams: [
@@ -7000,7 +7000,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ruin-maniac-harry': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'ruin-maniac',
         name: 'Harry',
         teams: [
@@ -7033,7 +7033,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'ninja-boy-nick': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'ninja-boy',
         name: 'Nick',
         teams: [
@@ -7059,7 +7059,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'black-belt-sean': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'black-belt',
         name: 'Sean',
         teams: [
@@ -7733,7 +7733,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'swimmer-f-haley': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'swimmer-f',
         name: 'Haley',
         teams: [
@@ -7759,7 +7759,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'sailor-paul': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'sailor',
         name: 'Paul',
         teams: [
@@ -7792,7 +7792,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'swimmer-m-evan': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'swimmer-m',
         name: 'Evan',
         teams: [
@@ -7818,7 +7818,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'swimmer-f-mary': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'swimmer-f',
         name: 'Mary',
         teams: [
@@ -7844,7 +7844,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'swimmer-m-sheltin': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'swimmer-m',
         name: 'Sheltin',
         teams: [
@@ -8580,7 +8580,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'black-belt-philip': {
         metadata: [BattleMetadata.Optional],
-        split: 'Volkner',
+        split: 'Roark',
         trainerClass: 'black-belt',
         name: 'Philip',
         teams: [
@@ -8600,7 +8600,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'skier-f-kaitlyn': {
         metadata: [BattleMetadata.Optional],
-        split: 'Volkner',
+        split: 'Roark',
         trainerClass: 'skier-f',
         name: 'Kaitlyn',
         teams: [
@@ -8626,7 +8626,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'skier-m-bradley': {
         metadata: [BattleMetadata.Optional],
-        split: 'Volkner',
+        split: 'Roark',
         trainerClass: 'skier-m',
         name: 'Bradley',
         teams: [
@@ -8659,7 +8659,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'skier-f-andrea': {
         metadata: [BattleMetadata.Optional],
-        split: 'Volkner',
+        split: 'Roark',
         trainerClass: 'skier-f',
         name: 'Andrea',
         teams: [
@@ -8957,7 +8957,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'fisherman-miguel': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'fisherman',
         name: 'Miguel',
         teams: [
@@ -8983,7 +8983,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'fisherman-luc': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'fisherman',
         name: 'Luc',
         teams: [
@@ -9030,7 +9030,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'sailor-skyler': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'sailor',
         name: 'Skyler',
         teams: [
@@ -9056,7 +9056,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'guitarist-tony': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'guitarist',
         name: 'Tony',
         teams: [
@@ -9082,7 +9082,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'tuber-m-trenton': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'tuber-m',
         name: 'Trenton',
         teams: [
@@ -9108,7 +9108,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'tuber-f-mariel': {
         metadata: [BattleMetadata.Optional],
-        split: 'Byron',
+        split: 'Roark',
         trainerClass: 'tuber-f',
         name: 'Mariel',
         teams: [
@@ -11626,7 +11626,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-veilstone-city': {
         metadata: [BattleMetadata.Tag],
-        split: 'Wake',
+        split: 'Roark',
         trainerClass: 'galactic-grunt-m',
         name: '9',
         teams: [
@@ -11680,7 +11680,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'pkmn-trainer-dawn-veilstone-city-tag': {
         metadata: [],
-        split: 'Wake',
+        split: 'Roark',
         trainerClass: 'pkmn-trainer-dawn',
         name: 'Dawn',
         teams: [
@@ -11809,7 +11809,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'pkmn-trainer-lucas-veilstone-city-tag': {
         metadata: [],
-        split: 'Wake',
+        split: 'Roark',
         trainerClass: 'pkmn-trainer-lucas',
         name: 'Lucas',
         teams: [

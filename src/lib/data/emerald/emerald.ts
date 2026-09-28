@@ -1,6 +1,7 @@
 import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
 import { BATTLES } from '@/lib/data/emerald/battles';
 import { ENCOUNTERS } from '@/lib/data/emerald/encounters';
+import { LOCATIONS } from '@/lib/data/emerald/locations';
 import BRAWLY from '@/lib/data/emerald/splits/brawly';
 import FLANNERY from '@/lib/data/emerald/splits/flannery';
 import JUAN from '@/lib/data/emerald/splits/juan';
@@ -29,6 +30,7 @@ const EMERALD: Game = {
         male: '/trainers/emerald/brendan.png',
         female: '/trainers/emerald/may.png',
     },
+    locations: LOCATIONS,
     starters: ['treecko', 'torchic', 'mudkip'],
     accentColor: '#009652',
     encounters: ENCOUNTERS,

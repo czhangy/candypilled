@@ -533,6 +533,11 @@ export type Game = {
     // battle resolves to — see BattleTeamCondition's 'gender' variant).
     genders: { male: string; female: string };
     splits: Split[];
+    // Every location in the game, independent of split progress -- the
+    // flat, ungated source for the Locations tab. A location can also
+    // appear inside one or more Split.locations arrays for the gated
+    // Split tab; the two lists are unrelated and maintained separately.
+    locations: Location[];
     starters: PokemonSlug[];
     accentColor: string;
     // Text color for the starter select modal's submit buttons; falls back

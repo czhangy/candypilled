@@ -3,7 +3,7 @@ import {
     aquaHideoutB1f,
     aquaHideoutB2f,
 } from '@/lib/data/ruby-sapphire/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const AQUA_HIDEOUT: Location = {
@@ -26,6 +26,7 @@ const AQUA_HIDEOUT: Location = {
             map: aquaHideoutB1f,
             mapAnchor: MapAnchor.Left,
             encountersKey: 'team-aqua-hideout',
+            methodSplits: [{ method: EncounterMethod.Static, split: 'Winona' }],
             battles: [
                 {
                     battleKey: 'team-aqua-grunt-f-aqua-hideout-2',

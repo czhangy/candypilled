@@ -7,6 +7,7 @@ import {
 import { Game } from '@/lib/static/types';
 import { BATTLES } from './battles';
 import { ENCOUNTERS } from './encounters';
+import { LOCATIONS } from './locations';
 import { MET_LOCATIONS } from './met-locations';
 import BYRON from './splits/byron';
 import CANDICE from './splits/candice';
@@ -41,6 +42,7 @@ const RENEGADE_PLATINUM: Game = {
         male: '/trainers/platinum/lucas.png',
         female: '/trainers/platinum/dawn.png',
     },
+    locations: LOCATIONS,
     // Confirmed reuse of Platinum's starters (per explicit direction, not
     // inferred).
     starters: ['turtwig', 'chimchar', 'piplup'],

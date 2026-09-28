@@ -1,5 +1,6 @@
 import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
 import { BATTLES } from '@/lib/data/diamond-pearl/battles';
+import { LOCATIONS } from '@/lib/data/diamond-pearl/locations';
 import { MET_LOCATIONS } from '@/lib/data/diamond-pearl/met-locations';
 import { ROAMERS } from '@/lib/data/diamond-pearl/roamers';
 import BYRON from '@/lib/data/diamond-pearl/splits/byron';
@@ -37,6 +38,7 @@ const DIAMOND: Game = {
         male: '/trainers/diamond-pearl/lucas.png',
         female: '/trainers/diamond-pearl/dawn.png',
     },
+    locations: LOCATIONS,
     starters: ['turtwig', 'chimchar', 'piplup'],
     accentColor: '#89A6D9',
     encounters: ENCOUNTERS,
