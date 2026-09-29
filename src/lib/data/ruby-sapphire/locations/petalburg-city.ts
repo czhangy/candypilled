@@ -10,6 +10,7 @@ const PETALBURG_CITY: Location = {
     methodSplits: [
         { method: EncounterMethod.OldRod, split: 'Brawly' },
         { method: EncounterMethod.GoodRod, split: 'Winona' },
+        { method: EncounterMethod.SuperRod, split: 'Winona' },
         { method: EncounterMethod.Surf, split: 'Winona' },
     ],
 };

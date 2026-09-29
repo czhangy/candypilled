@@ -1,5 +1,5 @@
 import { sootopolisCity } from '@/lib/data/ruby-sapphire/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SOOTOPOLIS_CITY: Location = {
@@ -7,6 +7,12 @@ const SOOTOPOLIS_CITY: Location = {
     map: sootopolisCity,
     mapAnchor: MapAnchor.Bottom,
     encountersKey: 'sootopolis-city',
+    methodSplits: [
+        { method: EncounterMethod.OldRod, split: 'Wallace' },
+        { method: EncounterMethod.GoodRod, split: 'Wallace' },
+        { method: EncounterMethod.SuperRod, split: 'Wallace' },
+        { method: EncounterMethod.Surf, split: 'Wallace' },
+    ],
 };
 
 export default SOOTOPOLIS_CITY;

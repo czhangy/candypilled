@@ -1,6 +1,6 @@
 import { route120 } from '@/lib/data/ruby-sapphire/maps';
 import { GEN_3_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { FieldCondition, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, FieldCondition, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_120: Location = {
@@ -8,6 +8,14 @@ const ROUTE_120: Location = {
     map: route120,
     mapAnchor: MapAnchor.Top,
     encountersKey: 'hoenn-route-120',
+    methodSplits: [
+        { method: EncounterMethod.DevonScope, split: 'Winona' },
+        { method: EncounterMethod.Grass, split: 'Winona' },
+        { method: EncounterMethod.OldRod, split: 'Winona' },
+        { method: EncounterMethod.GoodRod, split: 'Winona' },
+        { method: EncounterMethod.SuperRod, split: 'Winona' },
+        { method: EncounterMethod.Surf, split: 'Winona' },
+    ],
     battles: [
         { battleKey: 'parasol-lady-clarissa', x: 41.09, y: 6.32 },
         {

@@ -3,7 +3,7 @@ import {
     victoryRoadB1f,
     victoryRoadB2f,
 } from '@/lib/data/ruby-sapphire/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VICTORY_ROAD: Location = {
@@ -14,6 +14,7 @@ const VICTORY_ROAD: Location = {
             map: victoryRoad1f,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'hoenn-victory-road-1f',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Steven' }],
             battles: [
                 { battleKey: 'cooltrainer-m-albert', x: 59.65, y: 76.2 },
                 { battleKey: 'cooltrainer-f-hope', x: 13.99, y: 33.7 },
@@ -30,6 +31,10 @@ const VICTORY_ROAD: Location = {
             map: victoryRoadB1f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'hoenn-victory-road-b1f',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Steven' },
+                { method: EncounterMethod.RockSmash, split: 'Steven' },
+            ],
             battles: [
                 { battleKey: 'cooltrainer-f-shannon', x: 57.47, y: 52.34 },
                 { battleKey: 'cooltrainer-m-samuel', x: 81.25, y: 39.43 },
@@ -41,6 +46,13 @@ const VICTORY_ROAD: Location = {
             map: victoryRoadB2f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'hoenn-victory-road-b2f',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Steven' },
+                { method: EncounterMethod.OldRod, split: 'Steven' },
+                { method: EncounterMethod.GoodRod, split: 'Steven' },
+                { method: EncounterMethod.SuperRod, split: 'Steven' },
+                { method: EncounterMethod.Surf, split: 'Steven' },
+            ],
             battles: [
                 { battleKey: 'cooltrainer-f-julie', x: 77.17, y: 71.49 },
                 { battleKey: 'cooltrainer-m-owen', x: 94.43, y: 45.89 },

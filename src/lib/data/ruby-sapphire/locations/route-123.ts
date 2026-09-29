@@ -1,6 +1,6 @@
 import { route123East, route123West } from '@/lib/data/ruby-sapphire/maps';
 import { GEN_3_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_123: Location = {
@@ -29,6 +29,13 @@ const ROUTE_123: Location = {
             map: route123East,
             mapAnchor: MapAnchor.Right,
             encountersKey: 'hoenn-route-123',
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Winona' },
+                { method: EncounterMethod.OldRod, split: 'Winona' },
+                { method: EncounterMethod.GoodRod, split: 'Winona' },
+                { method: EncounterMethod.SuperRod, split: 'Winona' },
+                { method: EncounterMethod.Surf, split: 'Winona' },
+            ],
             battles: [
                 {
                     battleKey: 'hex-maniac-kindra',

@@ -29,7 +29,10 @@ const GRANITE_CAVE: Location = {
             map: graniteCaveB2f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'granite-cave-b2f',
-            methodSplits: [{ method: EncounterMethod.Cave, split: 'Brawly' }],
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Brawly' },
+                { method: EncounterMethod.RockSmash, split: 'Flannery' },
+            ],
         },
         {
             name: "Steven's Room",

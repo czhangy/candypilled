@@ -10,6 +10,7 @@ const PACIFIDLOG_TOWN: Location = {
     methodSplits: [
         { method: EncounterMethod.OldRod, split: 'Winona' },
         { method: EncounterMethod.GoodRod, split: 'Winona' },
+        { method: EncounterMethod.SuperRod, split: 'Winona' },
         { method: EncounterMethod.Surf, split: 'Winona' },
         { method: EncounterMethod.Trade, split: 'Winona' },
     ],

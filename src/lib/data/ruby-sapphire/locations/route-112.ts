@@ -1,6 +1,10 @@
 import { route112North, route112South } from '@/lib/data/ruby-sapphire/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
+
+const ROUTE_112_METHOD_SPLITS = [
+    { method: EncounterMethod.Grass, split: 'Flannery' },
+];
 
 const ROUTE_112: Location = {
     name: 'Route 112',
@@ -10,6 +14,7 @@ const ROUTE_112: Location = {
             map: route112South,
             mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'hoenn-route-112',
+            methodSplits: ROUTE_112_METHOD_SPLITS,
             battles: [
                 {
                     battleKey: 'camper-larry',
@@ -38,6 +43,7 @@ const ROUTE_112: Location = {
             map: route112North,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'hoenn-route-112',
+            methodSplits: ROUTE_112_METHOD_SPLITS,
         },
     ],
 };

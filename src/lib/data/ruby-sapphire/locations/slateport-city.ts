@@ -4,7 +4,7 @@ import {
     slateportCityOceanicMuseumMagma,
 } from '@/lib/data/ruby-sapphire/maps';
 import { GEN_3_TRUE_DOUBLE_HEIGHT } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SLATEPORT_CITY: Location = {
@@ -15,6 +15,12 @@ const SLATEPORT_CITY: Location = {
             map: slateportCity,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'slateport-city-area',
+            methodSplits: [
+                { method: EncounterMethod.OldRod, split: 'Brawly' },
+                { method: EncounterMethod.GoodRod, split: 'Winona' },
+                { method: EncounterMethod.SuperRod, split: 'Winona' },
+                { method: EncounterMethod.Surf, split: 'Winona' },
+            ],
         },
         {
             name: 'Oceanic Museum',

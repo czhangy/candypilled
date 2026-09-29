@@ -14,7 +14,7 @@ import {
     seafloorCavernRoom9Aqua,
     seafloorCavernRoom9Magma,
 } from '@/lib/data/ruby-sapphire/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SEAFLOOR_CAVERN: Location = {
@@ -33,6 +33,13 @@ const SEAFLOOR_CAVERN: Location = {
             },
             mapAnchor: MapAnchor.Center,
             encountersKey: 'seafloor-cavern',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Wallace' },
+                { method: EncounterMethod.OldRod, split: 'Wallace' },
+                { method: EncounterMethod.GoodRod, split: 'Wallace' },
+                { method: EncounterMethod.SuperRod, split: 'Wallace' },
+                { method: EncounterMethod.Surf, split: 'Wallace' },
+            ],
             battles: [
                 {
                     battleKey: 'team-magma-grunt-m-seafloor-cavern-1',
@@ -65,6 +72,13 @@ const SEAFLOOR_CAVERN: Location = {
             map: seafloorCavernRoom2,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'seafloor-cavern',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Wallace' },
+                { method: EncounterMethod.OldRod, split: 'Wallace' },
+                { method: EncounterMethod.GoodRod, split: 'Wallace' },
+                { method: EncounterMethod.SuperRod, split: 'Wallace' },
+                { method: EncounterMethod.Surf, split: 'Wallace' },
+            ],
         },
         {
             name: 'Room 3',
@@ -74,6 +88,13 @@ const SEAFLOOR_CAVERN: Location = {
             },
             mapAnchor: MapAnchor.Center,
             encountersKey: 'seafloor-cavern',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Wallace' },
+                { method: EncounterMethod.OldRod, split: 'Wallace' },
+                { method: EncounterMethod.GoodRod, split: 'Wallace' },
+                { method: EncounterMethod.SuperRod, split: 'Wallace' },
+                { method: EncounterMethod.Surf, split: 'Wallace' },
+            ],
             battles: [
                 {
                     battleKey: 'magma-admin-courtney-seafloor-cavern',
@@ -97,6 +118,13 @@ const SEAFLOOR_CAVERN: Location = {
             },
             mapAnchor: MapAnchor.Center,
             encountersKey: 'seafloor-cavern',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Wallace' },
+                { method: EncounterMethod.OldRod, split: 'Wallace' },
+                { method: EncounterMethod.GoodRod, split: 'Wallace' },
+                { method: EncounterMethod.SuperRod, split: 'Wallace' },
+                { method: EncounterMethod.Surf, split: 'Wallace' },
+            ],
             battles: [
                 {
                     battleKey: 'team-magma-grunt-m-seafloor-cavern-3',
@@ -117,24 +145,52 @@ const SEAFLOOR_CAVERN: Location = {
             map: seafloorCavernRoom5,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'seafloor-cavern',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Wallace' },
+                { method: EncounterMethod.OldRod, split: 'Wallace' },
+                { method: EncounterMethod.GoodRod, split: 'Wallace' },
+                { method: EncounterMethod.SuperRod, split: 'Wallace' },
+                { method: EncounterMethod.Surf, split: 'Wallace' },
+            ],
         },
         {
             name: 'Room 6',
             map: seafloorCavernRoom6,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'seafloor-cavern',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Wallace' },
+                { method: EncounterMethod.OldRod, split: 'Wallace' },
+                { method: EncounterMethod.GoodRod, split: 'Wallace' },
+                { method: EncounterMethod.SuperRod, split: 'Wallace' },
+                { method: EncounterMethod.Surf, split: 'Wallace' },
+            ],
         },
         {
             name: 'Room 7',
             map: seafloorCavernRoom7,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'seafloor-cavern',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Wallace' },
+                { method: EncounterMethod.OldRod, split: 'Wallace' },
+                { method: EncounterMethod.GoodRod, split: 'Wallace' },
+                { method: EncounterMethod.SuperRod, split: 'Wallace' },
+                { method: EncounterMethod.Surf, split: 'Wallace' },
+            ],
         },
         {
             name: 'Room 8',
             map: seafloorCavernRoom8,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'seafloor-cavern',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Wallace' },
+                { method: EncounterMethod.OldRod, split: 'Wallace' },
+                { method: EncounterMethod.GoodRod, split: 'Wallace' },
+                { method: EncounterMethod.SuperRod, split: 'Wallace' },
+                { method: EncounterMethod.Surf, split: 'Wallace' },
+            ],
         },
         {
             name: 'Room 9',
