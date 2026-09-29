@@ -91,11 +91,7 @@ const MT_PYRE: Location = {
             },
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'mt-pyre-summit',
-            methodSplits: [
-                { method: EncounterMethod.Grass, split: 'Winona' },
-                { method: EncounterMethod.Cave, split: 'Winona' },
-                { method: EncounterMethod.Surf, split: 'Winona' },
-            ],
+            methodSplits: GRASS_WINONA,
             battles: [
                 {
                     battleKey: 'team-aqua-grunt-m-mt-pyre-summit-1',

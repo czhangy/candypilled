@@ -20,6 +20,7 @@
         "pokeapi:moves": "tsx src/lib/scripts/pokeapi/moves.ts",
         "pokeapi:items": "tsx src/lib/scripts/pokeapi/items.ts",
         "stitch-map": "tsx src/lib/scripts/assets/stitch-map.ts",
+        "check:data": "tsx src/lib/scripts/validation/check-game-data.ts",
         "prepare": "husky"
     },
     "lint-staged": {
@@ -32,7 +33,8 @@
         ],
         "*.scss": [
             "stylelint --fix"
-        ]
+        ],
+        "src/lib/data/**/*.ts": "bash -c 'npm run check:data'"
     },
     "dependencies": {
         "@ianvs/prettier-plugin-sort-imports": "^4.7.1",

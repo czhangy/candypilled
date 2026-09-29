@@ -16,6 +16,10 @@
 // Sapphire), so it can't have one correct value in a table shared by both
 // games. Each variant's own <variant>.ts overrides it directly when
 // assembling metLocationById (`{ ...MET_LOCATIONS, 66: '...' }`) instead.
+//
+// Every Underwater index maps to the single Underwater location. Indices
+// for places that aren't Locations (Mirage Island, Southern Island, Sky
+// Pillar, Secret Base, Ferry, Inside of Truck) are omitted.
 export const MET_LOCATIONS: Record<number, string> = {
     0: 'Littleroot Town',
     1: 'Oldale Town',
@@ -67,11 +71,11 @@ export const MET_LOCATIONS: Record<number, string> = {
     47: 'Route 132',
     48: 'Route 133',
     49: 'Route 134',
-    50: 'Underwater (Route 124)',
-    51: 'Underwater (Route 126)',
-    52: 'Underwater (Route 127)',
-    53: 'Underwater (Route 128)',
-    54: 'Underwater (Sootopolis City)',
+    50: 'Underwater',
+    51: 'Underwater',
+    52: 'Underwater',
+    53: 'Underwater',
+    54: 'Underwater',
     55: 'Granite Cave',
     56: 'Mt. Chimney',
     57: 'Safari Zone',
@@ -83,21 +87,15 @@ export const MET_LOCATIONS: Record<number, string> = {
     65: 'Mt. Pyre',
     67: 'Shoal Cave',
     68: 'Seafloor Cavern',
-    69: 'Underwater (Seafloor Cavern)',
+    69: 'Underwater',
     70: 'Victory Road',
-    71: 'Mirage Island',
     72: 'Cave of Origin',
-    73: 'Southern Island',
     74: 'Fiery Path',
     76: 'Jagged Pass',
     78: 'Sealed Chamber',
-    79: 'Underwater (Route 134)',
+    79: 'Underwater',
     80: 'Scorched Slab',
     81: 'Island Cave',
     82: 'Desert Ruins',
     83: 'Ancient Tomb',
-    84: 'Inside of Truck',
-    85: 'Sky Pillar',
-    86: 'Secret Base',
-    87: 'Ferry',
 };
