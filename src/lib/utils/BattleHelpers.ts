@@ -107,33 +107,50 @@ export default class BattleHelpers {
     }
 
     /**
-     * Every distinct battle in game for gender, in game order. A battle
-     * reachable from more than one location (e.g. a route revisited
-     * across two story splits) is still one battle, so only its first
-     * occurrence is kept.
+     * Every distinct battle in game for gender, ordered by each battle's own
+     * split (game.battles[key].split) in game order -- sourced from
+     * game.locations (every location, split-independent) rather than
+     * game.splits[].locations, so a battle shows up here even when its
+     * location's Split.locations membership doesn't (yet) cover the split
+     * the battle itself belongs to. A battle reachable from more than one
+     * location is still one battle, so only its first occurrence is kept.
      */
     static getAllBattles(
         game: Game,
         gender: 'male' | 'female' | undefined
     ): Battle[] {
-        const battles = game.splits.flatMap((split) =>
-            split.locations.flatMap((location) =>
-                BattleHelpers.getBattlesInLocation(
-                    location,
-                    gender,
-                    split.name,
-                    game
-                )
+        const battles = game.locations.flatMap((location) =>
+            BattleHelpers.getBattlesInLocation(
+                location,
+                gender,
+                undefined,
+                game
             )
         );
 
         const seen = new Set<string>();
-        return battles.filter((battle) => {
+        const deduped = battles.filter((battle) => {
             const key = BattleHelpers.getBattleKey(battle);
             if (seen.has(key)) return false;
             seen.add(key);
             return true;
         });
+
+        const splitIndexes = new Map(
+            game.splits.map((split, index) => [split.name, index])
+        );
+
+        return deduped
+            .map((battle) => {
+                const split =
+                    game.battles[BattleHelpers.getBattleKey(battle)]?.split;
+                return {
+                    battle,
+                    splitIndex: split ? (splitIndexes.get(split) ?? -1) : -1,
+                };
+            })
+            .sort((a, b) => a.splitIndex - b.splitIndex)
+            .map((entry) => entry.battle);
     }
 
     /** battleKey's index within getAllBattles(game, gender), or -1 if it isn't in that list. */
@@ -169,12 +186,12 @@ export default class BattleHelpers {
         splitName: string | undefined,
         game: Game
     ): T[] {
+        if (!splitName) return items;
+
         const splitIndexes = new Map(
             game.splits.map((split, index) => [split.name, index])
         );
-        const currentIndex = splitName
-            ? splitIndexes.get(splitName)
-            : undefined;
+        const currentIndex = splitIndexes.get(splitName);
 
         return items.filter((item) => {
             const split = game.battles[item.battleKey]?.split;

@@ -1,5 +1,5 @@
 import { route105 } from '@/lib/data/ruby-sapphire/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_105: Location = {
@@ -7,6 +7,12 @@ const ROUTE_105: Location = {
     map: route105,
     mapAnchor: MapAnchor.Top,
     encountersKey: 'hoenn-route-105',
+    methodSplits: [
+        { method: EncounterMethod.OldRod, split: 'Winona' },
+        { method: EncounterMethod.GoodRod, split: 'Winona' },
+        { method: EncounterMethod.SuperRod, split: 'Winona' },
+        { method: EncounterMethod.Surf, split: 'Winona' },
+    ],
     battles: [
         {
             battleKey: 'swimmer-f-dawn',

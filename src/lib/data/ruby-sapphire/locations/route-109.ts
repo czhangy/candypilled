@@ -4,8 +4,15 @@ import {
     route109SeashoreHouse,
 } from '@/lib/data/ruby-sapphire/maps';
 import { GEN_3_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
+
+const ROUTE_109_METHOD_SPLITS = [
+    { method: EncounterMethod.OldRod, split: 'Brawly' },
+    { method: EncounterMethod.GoodRod, split: 'Winona' },
+    { method: EncounterMethod.SuperRod, split: 'Winona' },
+    { method: EncounterMethod.Surf, split: 'Winona' },
+];
 
 const ROUTE_109: Location = {
     name: 'Route 109',
@@ -15,6 +22,7 @@ const ROUTE_109: Location = {
             map: route109Beach,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'hoenn-route-109',
+            methodSplits: ROUTE_109_METHOD_SPLITS,
             battles: [
                 {
                     battleKey: 'sailor-huey',
@@ -65,6 +73,7 @@ const ROUTE_109: Location = {
             map: route109Ocean,
             mapAnchor: MapAnchor.Left,
             encountersKey: 'hoenn-route-109',
+            methodSplits: ROUTE_109_METHOD_SPLITS,
             battles: [
                 {
                     battleKey: 'tuber-f-gwen',

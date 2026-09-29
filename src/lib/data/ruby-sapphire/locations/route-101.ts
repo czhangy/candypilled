@@ -1,5 +1,5 @@
 import { route101 } from '@/lib/data/ruby-sapphire/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_101: Location = {
@@ -7,6 +7,10 @@ const ROUTE_101: Location = {
     map: route101,
     mapAnchor: MapAnchor.Center,
     encountersKey: 'hoenn-route-101',
+    methodSplits: [
+        { method: EncounterMethod.Grass, split: 'Roxanne' },
+        { method: EncounterMethod.Starter, split: 'Roxanne' },
+    ],
 };
 
 export default ROUTE_101;

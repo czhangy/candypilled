@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import ConfirmModal from '@/components/ConfirmModal/ConfirmModal';
 import EditIcon from '@/lib/icons/EditIcon';
-import { BattleMetadata } from '@/lib/static/enums';
 import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -21,7 +20,6 @@ type BattleCardProps = {
     game: Game;
     generation: number;
     isTagPartner?: boolean;
-    labelOverride?: string;
     onSelectAbility: (slug: string) => void;
     onSelectItem: (slug: string) => void;
     onSelectMove: (slug: string) => void;
@@ -38,7 +36,6 @@ const BattleCard: React.FC<BattleCardProps> = ({
     game,
     generation,
     isTagPartner,
-    labelOverride,
     onSelectAbility,
     onSelectItem,
     onSelectMove,
@@ -115,145 +112,127 @@ const BattleCard: React.FC<BattleCardProps> = ({
 
     return (
         <div className={styles['battle-card']}>
-            <span className={styles.label}>
-                {labelOverride ??
-                    (metadata.includes(BattleMetadata.Boss)
-                        ? 'Boss'
-                        : metadata.includes(BattleMetadata.Miniboss)
-                          ? 'Miniboss'
-                          : 'Battle')}
-            </span>
-            <div className={styles.content}>
-                <div className={styles['top-row']}>
-                    <Tooltip
-                        className={styles.badge}
-                        position="left"
-                        text={`${splitName} Split`}
-                    >
-                        <div className={styles['badge-image']}>
-                            <Image alt="" fill sizes="1.5rem" src={badge} />
-                        </div>
-                    </Tooltip>
-                    <div className={styles['trainer-header']}>
-                        <button
-                            className={styles['trainer-name']}
-                            onClick={() =>
-                                onSelectTrainer(
-                                    BattleHelpers.getBattleKey(battle)
-                                )
-                            }
-                            type="button"
-                        >
-                            {BattleHelpers.getFullName(battle, game)}
-                        </button>
-                        <button
-                            aria-label="Add notes"
-                            className={styles['notes-button']}
-                            onClick={handleNotesButtonClick}
-                            type="button"
-                        >
-                            <EditIcon />
-                        </button>
+            <div className={styles['top-row']}>
+                <Tooltip
+                    className={styles.badge}
+                    position="left"
+                    text={`${splitName} Split`}
+                >
+                    <div className={styles['badge-image']}>
+                        <Image alt="" fill sizes="1.5rem" src={badge} />
                     </div>
+                </Tooltip>
+                <div className={styles['trainer-header']}>
+                    <button
+                        className={styles['trainer-name']}
+                        onClick={() =>
+                            onSelectTrainer(BattleHelpers.getBattleKey(battle))
+                        }
+                        type="button"
+                    >
+                        {BattleHelpers.getFullName(battle, game)}
+                    </button>
+                    <button
+                        aria-label="Add notes"
+                        className={styles['notes-button']}
+                        onClick={handleNotesButtonClick}
+                        type="button"
+                    >
+                        <EditIcon />
+                    </button>
                 </div>
-                {isNotesModalOpen && (
-                    <BattleNotesModal
-                        accentColor={game.accentColor}
-                        battleKey={BattleHelpers.getBattleKey(battle)}
-                        buttonTextColor={game.textContrastColor}
-                        game={game}
-                        onClose={handleNotesModalClose}
-                    />
-                )}
-                {isWipeConfirmOpen && (
-                    <ConfirmModal
-                        confirmLabel="Wipe"
-                        description="This will record a wipe to this trainer and end this attempt."
-                        onClose={handleWipeConfirmClose}
-                        onConfirm={handleWipeConfirm}
-                        title="Wipe?"
-                    />
-                )}
-                <div className={styles.body}>
-                    {rows.map((row, rowIndex) => {
-                        const isLastRow = rowIndex === rows.length - 1;
-                        const position = !isStacked
-                            ? 'single'
-                            : isLastRow
-                              ? 'bottom'
-                              : rowIndex === 0
-                                ? 'top'
-                                : 'middle';
+            </div>
+            {isNotesModalOpen && (
+                <BattleNotesModal
+                    accentColor={game.accentColor}
+                    battleKey={BattleHelpers.getBattleKey(battle)}
+                    buttonTextColor={game.textContrastColor}
+                    game={game}
+                    onClose={handleNotesModalClose}
+                />
+            )}
+            {isWipeConfirmOpen && (
+                <ConfirmModal
+                    confirmLabel="Wipe"
+                    description="This will record a wipe to this trainer and end this attempt."
+                    onClose={handleWipeConfirmClose}
+                    onConfirm={handleWipeConfirm}
+                    title="Wipe?"
+                />
+            )}
+            <div className={styles.body}>
+                {rows.map((row, rowIndex) => {
+                    const isLastRow = rowIndex === rows.length - 1;
+                    const position = !isStacked
+                        ? 'single'
+                        : isLastRow
+                          ? 'bottom'
+                          : rowIndex === 0
+                            ? 'top'
+                            : 'middle';
 
-                        return (
-                            <div
-                                className={styles.row}
-                                key={`${row.trainerClass}-${row.name}-${rowIndex}`}
-                            >
-                                {isLastRow ? (
-                                    <TrainerPanel
-                                        battle={battle}
+                    return (
+                        <div
+                            className={styles.row}
+                            key={`${row.trainerClass}-${row.name}-${rowIndex}`}
+                        >
+                            {isLastRow ? (
+                                <TrainerPanel
+                                    battle={battle}
+                                    dataSource={game.dataSource}
+                                    isStacked={isStacked}
+                                    items={row.items}
+                                    metadata={metadata}
+                                    onWipeClick={
+                                        onWipeBattle
+                                            ? handleWipeButtonClick
+                                            : undefined
+                                    }
+                                    trainerAssetFolder={game.trainerAssetFolder}
+                                    trainerClass={row.trainerClass}
+                                    trainerName={row.name}
+                                />
+                            ) : (
+                                <TrainerSprite
+                                    alt={TrainerHelpers.getDisplayName(
+                                        row.trainerClass,
+                                        row.name
+                                    )}
+                                    position={rowIndex === 0 ? 'top' : 'middle'}
+                                    trainerAssetFolder={game.trainerAssetFolder}
+                                    trainerClass={row.trainerClass}
+                                />
+                            )}
+                            <div className={styles.team}>
+                                {Array.from(
+                                    { length: TEAM_SLOT_COUNT },
+                                    (_, index) => row.team[index] ?? null
+                                ).map((pokemon, index) => (
+                                    <PokemonSlot
                                         dataSource={game.dataSource}
-                                        isStacked={isStacked}
-                                        items={row.items}
-                                        metadata={metadata}
-                                        onWipeClick={
-                                            onWipeBattle
-                                                ? handleWipeButtonClick
-                                                : undefined
+                                        generation={generation}
+                                        hofDisplay={false}
+                                        isReadOnly={false}
+                                        isTagPartner={!!isTagPartner}
+                                        key={
+                                            pokemon
+                                                ? `${rowIndex}-${pokemon.slug}-${index}`
+                                                : `${rowIndex}-empty-${index}`
                                         }
-                                        trainerAssetFolder={
-                                            game.trainerAssetFolder
-                                        }
-                                        trainerClass={row.trainerClass}
-                                        trainerName={row.name}
+                                        onSelectAbility={onSelectAbility}
+                                        onSelectItem={onSelectItem}
+                                        onSelectMove={onSelectMove}
+                                        onSelectSpecies={onSelectSpecies}
+                                        pokemon={pokemon}
+                                        position={position}
+                                        variant={variant}
+                                        version={version}
                                     />
-                                ) : (
-                                    <TrainerSprite
-                                        alt={TrainerHelpers.getDisplayName(
-                                            row.trainerClass,
-                                            row.name
-                                        )}
-                                        position={
-                                            rowIndex === 0 ? 'top' : 'middle'
-                                        }
-                                        trainerAssetFolder={
-                                            game.trainerAssetFolder
-                                        }
-                                        trainerClass={row.trainerClass}
-                                    />
-                                )}
-                                <div className={styles.team}>
-                                    {Array.from(
-                                        { length: TEAM_SLOT_COUNT },
-                                        (_, index) => row.team[index] ?? null
-                                    ).map((pokemon, index) => (
-                                        <PokemonSlot
-                                            dataSource={game.dataSource}
-                                            generation={generation}
-                                            hofDisplay={false}
-                                            isReadOnly={false}
-                                            isTagPartner={!!isTagPartner}
-                                            key={
-                                                pokemon
-                                                    ? `${rowIndex}-${pokemon.slug}-${index}`
-                                                    : `${rowIndex}-empty-${index}`
-                                            }
-                                            onSelectAbility={onSelectAbility}
-                                            onSelectItem={onSelectItem}
-                                            onSelectMove={onSelectMove}
-                                            onSelectSpecies={onSelectSpecies}
-                                            pokemon={pokemon}
-                                            position={position}
-                                            variant={variant}
-                                            version={version}
-                                        />
-                                    ))}
-                                </div>
+                                ))}
                             </div>
-                        );
-                    })}
-                </div>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );

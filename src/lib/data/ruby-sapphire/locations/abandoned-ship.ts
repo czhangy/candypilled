@@ -15,6 +15,13 @@ const SHIP_METHOD_SPLITS = [
     { method: EncounterMethod.Surf, split: 'Winona' },
 ];
 
+const HIDDEN_FLOOR_METHOD_SPLITS = [
+    { method: EncounterMethod.GoodRod, split: 'Wallace' },
+    { method: EncounterMethod.OldRod, split: 'Wallace' },
+    { method: EncounterMethod.SuperRod, split: 'Wallace' },
+    { method: EncounterMethod.Surf, split: 'Wallace' },
+];
+
 const ABANDONED_SHIP: Location = {
     name: 'Abandoned Ship',
     subareas: [
@@ -60,7 +67,7 @@ const ABANDONED_SHIP: Location = {
             map: abandonedShipHiddenFloor,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'abandoned-ship',
-            methodSplits: SHIP_METHOD_SPLITS,
+            methodSplits: HIDDEN_FLOOR_METHOD_SPLITS,
         },
     ],
 };

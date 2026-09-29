@@ -4,7 +4,7 @@ import {
     route111South,
 } from '@/lib/data/ruby-sapphire/maps';
 import { GEN_3_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_111: Location = {
@@ -15,6 +15,13 @@ const ROUTE_111: Location = {
             map: route111South,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'hoenn-route-111',
+            methodSplits: [
+                { method: EncounterMethod.OldRod, split: 'Brawly' },
+                { method: EncounterMethod.RockSmash, split: 'Flannery' },
+                { method: EncounterMethod.GoodRod, split: 'Winona' },
+                { method: EncounterMethod.SuperRod, split: 'Winona' },
+                { method: EncounterMethod.Surf, split: 'Winona' },
+            ],
             battles: [
                 {
                     battleKey: 'interviewers-gabby-and-ty-route-111',
@@ -66,6 +73,7 @@ const ROUTE_111: Location = {
             map: route111Desert,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'hoenn-route-111-desert',
+            methodSplits: [{ method: EncounterMethod.Sand, split: 'Norman' }],
             battles: [
                 {
                     battleKey: 'camper-cliff',

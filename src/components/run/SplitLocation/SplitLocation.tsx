@@ -534,7 +534,6 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                     game={game}
                                     generation={game.generation}
                                     isTagPartner
-                                    labelOverride="Partner"
                                     onSelectAbility={onSelectAbility}
                                     onSelectItem={onSelectItem}
                                     onSelectMove={onSelectMove}

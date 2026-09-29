@@ -3,7 +3,7 @@ import {
     magmaHideoutB1f,
     magmaHideoutB2f,
 } from '@/lib/data/ruby-sapphire/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const MAGMA_HIDEOUT: Location = {
@@ -48,6 +48,7 @@ const MAGMA_HIDEOUT: Location = {
             map: magmaHideoutB1f,
             mapAnchor: MapAnchor.Left,
             encountersKey: 'team-magma-hideout',
+            methodSplits: [{ method: EncounterMethod.Static, split: 'Winona' }],
             battles: [
                 {
                     battleKey: 'team-magma-grunt-f-magma-hideout-4',

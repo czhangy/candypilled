@@ -2,119 +2,104 @@
 @use '@/styles/mixins' as *;
 
 .battle-card {
-    border: 1px solid $border-subtle;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    width: 100%;
 
-    .label {
-        @include uppercase-label;
-
-        background: $background-light;
-        display: block;
-        padding: 0.4rem 0.75rem;
-    }
-
-    .content {
+    .top-row {
+        align-items: center;
         display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        padding: 0.75rem;
+        gap: 0.4rem;
 
-        .top-row {
-            align-items: center;
-            display: flex;
-            gap: 0.75rem;
+        .badge {
+            background: $background-light;
+            border: 1px solid $border-subtle;
+            border-radius: 0.25rem 0 0;
+            flex-shrink: 0;
+            height: 2.75rem;
+            position: relative;
+            width: 2.75rem;
 
-            .badge {
-                background: $background-light;
-                border: 1px solid $border-subtle;
-                border-radius: 0.375rem;
-                flex-shrink: 0;
-                height: 2.75rem;
-                position: relative;
-                width: 2.75rem;
-
-                .badge-image {
-                    inset: 0.5rem;
-                    position: absolute;
-                }
-            }
-
-            .trainer-header {
-                align-items: center;
-                background: $background-light;
-                border: 1px solid $border-subtle;
-                border-radius: 0.375rem;
-                display: flex;
-                flex: 1;
-                gap: 0.5rem;
-                height: 2.75rem;
-                justify-content: center;
-                padding: 0.5rem;
-
-                .trainer-name {
-                    @include mono-label;
-
-                    background: none;
-                    border: none;
-                    color: $foreground;
-                    cursor: pointer;
-                    font-size: 1.1rem;
-                    letter-spacing: 0.03em;
-                    padding: 0;
-                    transition: color 0.2s ease;
-
-                    @media (hover: hover) {
-                        &:hover {
-                            color: var(--accent-color);
-                        }
-                    }
-
-                    @media (prefers-reduced-motion: reduce) {
-                        transition: none;
-                    }
-                }
-
-                .notes-button {
-                    background: none;
-                    border: none;
-                    color: $text-dim;
-                    cursor: pointer;
-                    display: flex;
-                    flex-shrink: 0;
-                    height: 1rem;
-                    padding: 0;
-                    transition: color 0.2s ease;
-                    width: 1rem;
-
-                    @media (hover: hover) {
-                        &:hover {
-                            color: var(--accent-color);
-                        }
-                    }
-
-                    @media (prefers-reduced-motion: reduce) {
-                        transition: none;
-                    }
-                }
+            .badge-image {
+                inset: 0.5rem;
+                position: absolute;
             }
         }
 
-        .body {
+        .trainer-header {
+            align-items: center;
+            background: $background-light;
+            border: 1px solid $border-subtle;
+            border-radius: 0 0.25rem 0 0;
             display: flex;
-            flex-direction: column;
+            flex: 1;
+            gap: 0.5rem;
+            height: 2.75rem;
+            justify-content: center;
+            padding: 0.5rem;
+
+            .trainer-name {
+                @include mono-label;
+
+                background: none;
+                border: none;
+                color: $foreground;
+                cursor: pointer;
+                font-size: 1.1rem;
+                letter-spacing: 0.03em;
+                padding: 0;
+                transition: color 0.2s ease;
+
+                @media (hover: hover) {
+                    &:hover {
+                        color: var(--accent-color);
+                    }
+                }
+
+                @media (prefers-reduced-motion: reduce) {
+                    transition: none;
+                }
+            }
+
+            .notes-button {
+                background: none;
+                border: none;
+                color: $text-dim;
+                cursor: pointer;
+                display: flex;
+                flex-shrink: 0;
+                height: 1rem;
+                padding: 0;
+                transition: color 0.2s ease;
+                width: 1rem;
+
+                @media (hover: hover) {
+                    &:hover {
+                        color: var(--accent-color);
+                    }
+                }
+
+                @media (prefers-reduced-motion: reduce) {
+                    transition: none;
+                }
+            }
+        }
+    }
+
+    .body {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+
+        .row {
+            display: flex;
             gap: 0;
 
-            .row {
+            .team {
                 display: flex;
+                flex: 1;
                 gap: 0;
-
-                .team {
-                    display: flex;
-                    gap: 0;
-                    overflow-x: auto;
-                }
             }
         }
     }

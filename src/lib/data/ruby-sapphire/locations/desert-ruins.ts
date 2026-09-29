@@ -7,7 +7,7 @@ const DESERT_RUINS: Location = {
     map: desertRuins,
     mapAnchor: MapAnchor.Center,
     encountersKey: 'desert-ruins',
-    methodSplits: [{ method: EncounterMethod.Static, split: 'Roxanne' }],
+    methodSplits: [{ method: EncounterMethod.Static, split: 'Wallace' }],
 };
 
 export default DESERT_RUINS;
