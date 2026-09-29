@@ -1,5 +1,5 @@
 import { celesticRuins, celesticTown } from '@/lib/data/diamond-pearl/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const CELESTIC_TOWN: Location = {
@@ -10,6 +10,11 @@ const CELESTIC_TOWN: Location = {
             map: celesticTown,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'celestic-town',
+            methodSplits: [
+                { method: EncounterMethod.Surf, split: 'Byron' },
+                { method: EncounterMethod.OldRod, split: 'Byron' },
+                { method: EncounterMethod.GoodRod, split: 'Byron' },
+            ],
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-celestic-town',

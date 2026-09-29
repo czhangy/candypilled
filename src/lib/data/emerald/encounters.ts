@@ -1905,27 +1905,6 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             maxLevel: 5,
             chance: null,
         },
-        {
-            species: 'poochyena',
-            method: EncounterMethod.Grass,
-            minLevel: 2,
-            maxLevel: 3,
-            chance: 45,
-        },
-        {
-            species: 'zigzagoon',
-            method: EncounterMethod.Grass,
-            minLevel: 2,
-            maxLevel: 3,
-            chance: 10,
-        },
-        {
-            species: 'wurmple',
-            method: EncounterMethod.Grass,
-            minLevel: 2,
-            maxLevel: 3,
-            chance: 45,
-        },
     ],
     'hoenn-route-102': [
         {

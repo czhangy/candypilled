@@ -1,5 +1,5 @@
 import { oreburghCity } from '@/lib/data/diamond-pearl/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const OREBURGH_CITY: Location = {
@@ -7,6 +7,7 @@ const OREBURGH_CITY: Location = {
     map: oreburghCity,
     mapAnchor: MapAnchor.TopLeft,
     encountersKey: 'oreburgh-city-trade',
+    methodSplits: [{ method: EncounterMethod.Trade, split: 'Roark' }],
 };
 
 export default OREBURGH_CITY;

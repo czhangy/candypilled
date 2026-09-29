@@ -6,8 +6,10 @@ import {
     lostTower5f,
     route209Main,
 } from '@/lib/data/diamond-pearl/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
+
+const WALKING_MAYLENE = [{ method: EncounterMethod.Walking, split: 'Maylene' }];
 
 const ROUTE_209: Location = {
     name: 'Route 209',
@@ -67,12 +69,14 @@ const ROUTE_209: Location = {
             map: lostTower1f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-1f',
+            methodSplits: WALKING_MAYLENE,
         },
         {
             name: 'Tower 2F',
             map: lostTower2f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-2f',
+            methodSplits: WALKING_MAYLENE,
             battles: [
                 {
                     battleKey: 'youngster-oliver',
@@ -86,6 +90,7 @@ const ROUTE_209: Location = {
             map: lostTower3f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-3f',
+            methodSplits: WALKING_MAYLENE,
             battles: [
                 {
                     battleKey: 'roughneck-kirby',
@@ -104,6 +109,7 @@ const ROUTE_209: Location = {
             map: lostTower4f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-4f',
+            methodSplits: WALKING_MAYLENE,
             battles: [
                 {
                     battleKey: 'pokefan-f-rebekah',
@@ -129,6 +135,7 @@ const ROUTE_209: Location = {
             map: lostTower5f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-5f',
+            methodSplits: WALKING_MAYLENE,
         },
     ],
 };

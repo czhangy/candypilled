@@ -2,8 +2,10 @@ import {
     oreburghMineB1f,
     oreburghMineB2f,
 } from '@/lib/data/diamond-pearl/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
+
+const CAVE_ROARK = [{ method: EncounterMethod.Cave, split: 'Roark' }];
 
 const OREBURGH_MINE: Location = {
     name: 'Oreburgh Mine',
@@ -13,12 +15,14 @@ const OREBURGH_MINE: Location = {
             map: oreburghMineB1f,
             mapAnchor: MapAnchor.Top,
             encountersKey: 'oreburgh-mine-1f',
+            methodSplits: CAVE_ROARK,
         },
         {
             name: 'B2F',
             map: oreburghMineB2f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'oreburgh-mine-b1f',
+            methodSplits: CAVE_ROARK,
             battles: [
                 {
                     battleKey: 'worker-colin',

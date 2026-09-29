@@ -123,6 +123,26 @@ export const pearl: GameVersion = {
             species: 'gastly',
             method: EncounterMethod.Walking,
         },
+        {
+            location: 'lost-tower',
+            species: 'gastly',
+            method: EncounterMethod.Walking,
+        },
+        {
+            location: 'lost-tower',
+            species: 'golbat',
+            method: EncounterMethod.Walking,
+        },
+        {
+            location: 'lost-tower',
+            species: 'misdreavus',
+            method: EncounterMethod.Walking,
+        },
+        {
+            location: 'lost-tower',
+            species: 'zubat',
+            method: EncounterMethod.Walking,
+        },
     ],
     excludedMethods: [
         'super-rod',

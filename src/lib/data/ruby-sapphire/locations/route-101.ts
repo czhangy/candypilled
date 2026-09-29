@@ -7,10 +7,7 @@ const ROUTE_101: Location = {
     map: route101,
     mapAnchor: MapAnchor.Center,
     encountersKey: 'hoenn-route-101',
-    methodSplits: [
-        { method: EncounterMethod.Grass, split: 'Roxanne' },
-        { method: EncounterMethod.Starter, split: 'Roxanne' },
-    ],
+    methodSplits: [{ method: EncounterMethod.Starter, split: 'Roxanne' }],
 };
 
 export default ROUTE_101;

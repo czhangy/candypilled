@@ -1,5 +1,5 @@
 import { pastoriaCity } from '@/lib/data/diamond-pearl/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const PASTORIA_CITY: Location = {
@@ -7,6 +7,11 @@ const PASTORIA_CITY: Location = {
     map: pastoriaCity,
     mapAnchor: MapAnchor.TopRight,
     encountersKey: 'pastoria-city',
+    methodSplits: [
+        { method: EncounterMethod.OldRod, split: 'Maylene' },
+        { method: EncounterMethod.GoodRod, split: 'Maylene' },
+        { method: EncounterMethod.Surf, split: 'Byron' },
+    ],
     battles: [
         {
             battleKey: 'pkmn-trainer-barry-pastoria-city',
