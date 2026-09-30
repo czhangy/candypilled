@@ -17,7 +17,7 @@ Each battle (`BattleData.split`, tag partners included) and each encounter metho
 
 **Subarea model:** a subarea has one base split, and only a few battles or methods sit in a different one (write them as `Base: all; Other: item`).
 
-**Platinum HM rule (applied without asking):** surf is only available from Byron and good-rod from Maylene. Whatever base split a user gives, a `surf` method is never earlier than Byron and a `good-rod` method never earlier than Maylene (a later base split stays as given). Apply it to every section, and mention it in one line. Old rod isn't covered.
+**Platinum and Renegade Platinum HM rule (applied without asking):** surf is only available from Byron and good-rod from Maylene. Whatever base split a user gives, a `surf` method is never earlier than Byron and a `good-rod` method never earlier than Maylene (a later base split stays as given). Apply it to every section, and mention it in one line. Old rod isn't covered. Renegade Platinum also has `super-rod`, never earlier than Candice.
 
 To correct one section later, apply a single line without `through:`.
 

@@ -8,7 +8,7 @@ const LAKE_ACUITY: Location = {
     mapAnchor: MapAnchor.BottomLeft,
     encountersKey: 'lake-acuity',
     methodSplits: [
-        { method: EncounterMethod.Walking, split: 'Volkner' },
+        { method: EncounterMethod.Grass, split: 'Volkner' },
         { method: EncounterMethod.Surf, split: 'Volkner' },
         { method: EncounterMethod.OldRod, split: 'Volkner' },
         { method: EncounterMethod.GoodRod, split: 'Volkner' },

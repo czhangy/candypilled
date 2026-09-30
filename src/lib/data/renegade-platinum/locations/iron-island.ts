@@ -38,14 +38,14 @@ const IRON_ISLAND: Location = {
             map: ironIsland1f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-inside',
-            methodSplits: [{ method: EncounterMethod.Walking, split: 'Byron' }],
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Byron' }],
         },
         {
             name: 'B1F West',
             map: ironIslandB1fWest,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-inside',
-            methodSplits: [{ method: EncounterMethod.Walking, split: 'Byron' }],
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Byron' }],
             battles: [
                 {
                     battleKey: 'camper-lawrence',
@@ -59,7 +59,7 @@ const IRON_ISLAND: Location = {
             map: ironIslandB1fEast,
             mapAnchor: MapAnchor.Top,
             encountersKey: 'iron-island-inside',
-            methodSplits: [{ method: EncounterMethod.Walking, split: 'Byron' }],
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Byron' }],
             battles: [
                 {
                     battleKey: 'picnicker-summer',
@@ -73,7 +73,7 @@ const IRON_ISLAND: Location = {
             map: ironIslandB2fEast,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-inside',
-            methodSplits: [{ method: EncounterMethod.Walking, split: 'Byron' }],
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Byron' }],
             battles: [
                 {
                     battleKey: 'worker-noel',
@@ -92,7 +92,7 @@ const IRON_ISLAND: Location = {
             map: ironIslandB2fWest,
             mapAnchor: MapAnchor.TopRight,
             encountersKey: 'iron-island-inside',
-            methodSplits: [{ method: EncounterMethod.Walking, split: 'Byron' }],
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Byron' }],
             tagPartner: [{ battleKey: 'pkmn-trainer-riley-tag' }],
             battles: [
                 {
@@ -148,7 +148,7 @@ const IRON_ISLAND: Location = {
             map: ironIslandB3f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-inside',
-            methodSplits: [{ method: EncounterMethod.Walking, split: 'Byron' }],
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Byron' }],
         },
     ],
 };

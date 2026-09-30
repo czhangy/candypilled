@@ -1,5 +1,5 @@
 import { route223 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_223: Location = {
@@ -7,6 +7,12 @@ const ROUTE_223: Location = {
     map: route223,
     mapAnchor: MapAnchor.Bottom,
     encountersKey: 'route-223',
+    methodSplits: [
+        { method: EncounterMethod.Surf, split: 'Volkner' },
+        { method: EncounterMethod.OldRod, split: 'Volkner' },
+        { method: EncounterMethod.GoodRod, split: 'Volkner' },
+        { method: EncounterMethod.SuperRod, split: 'Volkner' },
+    ],
     battles: [
         {
             battleKey: 'swimmer-f-miranda',

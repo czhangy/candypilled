@@ -10,7 +10,7 @@ import {
     GEN_4_TRUE_DOUBLE_HEIGHT,
     GEN_4_TRUE_DOUBLE_WIDTH,
 } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_209: Location = {
@@ -21,6 +21,15 @@ const ROUTE_209: Location = {
             map: route209Main,
             mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'sinnoh-route-209',
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Maylene' },
+                { method: EncounterMethod.OldRod, split: 'Maylene' },
+                { method: EncounterMethod.GoodRod, split: 'Maylene' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+                { method: EncounterMethod.PokeRadar, split: 'Maylene' },
+                { method: EncounterMethod.HoneyTree, split: 'Maylene' },
+                { method: EncounterMethod.Static, split: 'Maylene' },
+            ],
             battles: [
                 {
                     battleKey: 'jogger-richard',
@@ -71,12 +80,18 @@ const ROUTE_209: Location = {
             map: route209Tower1f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-209-tower',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Maylene' },
+            ],
         },
         {
             name: 'Tower 2F',
             map: route209Tower2f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-209-tower',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Maylene' },
+            ],
             battles: [
                 {
                     battleKey: 'youngster-oliver',
@@ -90,6 +105,9 @@ const ROUTE_209: Location = {
             map: route209Tower3f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-209-tower',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Maylene' },
+            ],
             battles: [
                 {
                     battleKey: 'roughneck-kirby',
@@ -108,6 +126,9 @@ const ROUTE_209: Location = {
             map: route209Tower4f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-209-tower',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Maylene' },
+            ],
             battles: [
                 {
                     battleKey: 'pokefan-rebekah',
@@ -133,6 +154,9 @@ const ROUTE_209: Location = {
             map: route209Tower5f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-209-tower',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Maylene' },
+            ],
         },
     ],
 };

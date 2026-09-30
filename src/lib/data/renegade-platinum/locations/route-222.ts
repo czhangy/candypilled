@@ -2,7 +2,7 @@ import {
     route222,
     route222PikachuFanClub,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_222: Location = {
@@ -13,6 +13,15 @@ const ROUTE_222: Location = {
             map: route222,
             mapAnchor: MapAnchor.Left,
             encountersKey: 'route-222',
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Volkner' },
+                { method: EncounterMethod.Surf, split: 'Volkner' },
+                { method: EncounterMethod.OldRod, split: 'Volkner' },
+                { method: EncounterMethod.GoodRod, split: 'Volkner' },
+                { method: EncounterMethod.SuperRod, split: 'Volkner' },
+                { method: EncounterMethod.PokeRadar, split: 'Volkner' },
+                { method: EncounterMethod.HoneyTree, split: 'Volkner' },
+            ],
             battles: [
                 {
                     battleKey: 'rich-boy-trey',

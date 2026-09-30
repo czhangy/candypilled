@@ -14,7 +14,7 @@ const ETERNA_FOREST: Location = {
             mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'eterna-forest',
             methodSplits: [
-                { method: EncounterMethod.Walking, split: 'Gardenia' },
+                { method: EncounterMethod.Grass, split: 'Gardenia' },
                 { method: EncounterMethod.PokeRadar, split: 'Gardenia' },
                 { method: EncounterMethod.HoneyTree, split: 'Gardenia' },
             ],
@@ -73,7 +73,7 @@ const ETERNA_FOREST: Location = {
             mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'eterna-forest',
             methodSplits: [
-                { method: EncounterMethod.Walking, split: 'Gardenia' },
+                { method: EncounterMethod.Grass, split: 'Gardenia' },
                 { method: EncounterMethod.PokeRadar, split: 'Gardenia' },
                 { method: EncounterMethod.HoneyTree, split: 'Gardenia' },
             ],

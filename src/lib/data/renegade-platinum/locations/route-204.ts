@@ -2,7 +2,7 @@ import {
     route204North,
     route204South,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_204: Location = {
@@ -13,6 +13,14 @@ const ROUTE_204: Location = {
             map: route204South,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-204-south-towards-jubilife-city',
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Roark' },
+                { method: EncounterMethod.Surf, split: 'Byron' },
+                { method: EncounterMethod.OldRod, split: 'Roark' },
+                { method: EncounterMethod.GoodRod, split: 'Maylene' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+                { method: EncounterMethod.PokeRadar, split: 'Roark' },
+            ],
             battles: [
                 {
                     battleKey: 'lass-sarah',
@@ -36,6 +44,10 @@ const ROUTE_204: Location = {
             map: route204North,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-204-north-towards-floaroma-town',
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Gardenia' },
+                { method: EncounterMethod.PokeRadar, split: 'Gardenia' },
+            ],
             battles: [
                 {
                     battleKey: 'aroma-lady-taylor',

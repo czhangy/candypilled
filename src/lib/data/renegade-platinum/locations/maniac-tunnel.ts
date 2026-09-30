@@ -7,7 +7,7 @@ const MANIAC_TUNNEL: Location = {
     map: maniacTunnel,
     mapAnchor: MapAnchor.Right,
     encountersKey: 'maniac-tunnel',
-    methodSplits: [{ method: EncounterMethod.Walking, split: 'Wake' }],
+    methodSplits: [{ method: EncounterMethod.Cave, split: 'Wake' }],
 };
 
 export default MANIAC_TUNNEL;

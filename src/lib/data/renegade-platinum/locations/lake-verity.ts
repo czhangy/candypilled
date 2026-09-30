@@ -14,10 +14,10 @@ const LAKE_VERITY: Location = {
             mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'lake-verity',
             methodSplits: [
-                { method: EncounterMethod.Walking, split: 'Roark' },
-                { method: EncounterMethod.Surf, split: 'Roark' },
+                { method: EncounterMethod.Grass, split: 'Roark' },
+                { method: EncounterMethod.Surf, split: 'Byron' },
                 { method: EncounterMethod.OldRod, split: 'Roark' },
-                { method: EncounterMethod.GoodRod, split: 'Roark' },
+                { method: EncounterMethod.GoodRod, split: 'Maylene' },
                 { method: EncounterMethod.SuperRod, split: 'Candice' },
                 { method: EncounterMethod.PokeRadar, split: 'Roark' },
             ],
@@ -28,7 +28,7 @@ const LAKE_VERITY: Location = {
             mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'lake-verity',
             methodSplits: [
-                { method: EncounterMethod.Walking, split: 'Candice' },
+                { method: EncounterMethod.Grass, split: 'Candice' },
                 { method: EncounterMethod.Surf, split: 'Candice' },
                 { method: EncounterMethod.OldRod, split: 'Candice' },
                 { method: EncounterMethod.GoodRod, split: 'Candice' },

@@ -7,7 +7,7 @@ import {
     GEN_4_TRUE_DOUBLE_HEIGHT,
     GEN_4_TRUE_DOUBLE_WIDTH,
 } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_210: Location = {
@@ -18,6 +18,11 @@ const ROUTE_210: Location = {
             map: route210South,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'sinnoh-route-210-south',
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Maylene' },
+                { method: EncounterMethod.PokeRadar, split: 'Maylene' },
+                { method: EncounterMethod.HoneyTree, split: 'Maylene' },
+            ],
             battles: [
                 {
                     battleKey: 'jogger-wyatt',
@@ -58,6 +63,15 @@ const ROUTE_210: Location = {
             map: { male: route210NorthDawn, female: route210NorthLucas },
             mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'sinnoh-route-210-north',
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Byron' },
+                { method: EncounterMethod.Surf, split: 'Byron' },
+                { method: EncounterMethod.OldRod, split: 'Byron' },
+                { method: EncounterMethod.GoodRod, split: 'Byron' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+                { method: EncounterMethod.PokeRadar, split: 'Byron' },
+                { method: EncounterMethod.HoneyTree, split: 'Byron' },
+            ],
             battles: [
                 {
                     battleKey: 'ninja-boy-brennan',

@@ -3,7 +3,7 @@ import {
     route212NorthPostGalactic,
     route212South,
 } from '@/lib/data/renegade-platinum/maps';
-import { FieldCondition, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, FieldCondition, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_212: Location = {
@@ -14,6 +14,14 @@ const ROUTE_212: Location = {
             map: route212NorthGalactic,
             mapAnchor: MapAnchor.Top,
             encountersKey: 'sinnoh-route-212-north',
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Maylene' },
+                { method: EncounterMethod.OldRod, split: 'Maylene' },
+                { method: EncounterMethod.GoodRod, split: 'Maylene' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+                { method: EncounterMethod.PokeRadar, split: 'Maylene' },
+                { method: EncounterMethod.HoneyTree, split: 'Maylene' },
+            ],
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-route-212-north-1',
@@ -44,6 +52,14 @@ const ROUTE_212: Location = {
             map: route212NorthPostGalactic,
             mapAnchor: MapAnchor.Top,
             encountersKey: 'sinnoh-route-212-north',
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Maylene' },
+                { method: EncounterMethod.OldRod, split: 'Maylene' },
+                { method: EncounterMethod.GoodRod, split: 'Maylene' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+                { method: EncounterMethod.PokeRadar, split: 'Maylene' },
+                { method: EncounterMethod.HoneyTree, split: 'Maylene' },
+            ],
             battles: [
                 {
                     battleKey: 'rich-boy-jason',
@@ -92,6 +108,14 @@ const ROUTE_212: Location = {
             map: route212South,
             mapAnchor: MapAnchor.Right,
             encountersKey: 'sinnoh-route-212-south',
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Wake' },
+                { method: EncounterMethod.Surf, split: 'Byron' },
+                { method: EncounterMethod.OldRod, split: 'Wake' },
+                { method: EncounterMethod.GoodRod, split: 'Wake' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+                { method: EncounterMethod.HoneyTree, split: 'Wake' },
+            ],
             battles: [
                 {
                     battleKey: 'pkmn-ranger-m-taylor',

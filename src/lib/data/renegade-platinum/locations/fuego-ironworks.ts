@@ -14,7 +14,7 @@ const FUEGO_IRONWORKS: Location = {
             mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'fuego-ironworks',
             methodSplits: [
-                { method: EncounterMethod.Walking, split: 'Byron' },
+                { method: EncounterMethod.Grass, split: 'Byron' },
                 { method: EncounterMethod.Surf, split: 'Byron' },
                 { method: EncounterMethod.OldRod, split: 'Byron' },
                 { method: EncounterMethod.GoodRod, split: 'Byron' },

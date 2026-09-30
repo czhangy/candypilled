@@ -2,7 +2,7 @@ import {
     sandgemTownLab,
     sandgemTownTown,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SANDGEM_TOWN: Location = {
@@ -18,6 +18,7 @@ const SANDGEM_TOWN: Location = {
             map: sandgemTownLab,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sandgem-town-lab',
+            methodSplits: [{ method: EncounterMethod.Starter, split: 'Roark' }],
         },
     ],
 };

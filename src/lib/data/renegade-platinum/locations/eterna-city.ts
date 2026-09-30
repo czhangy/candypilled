@@ -8,9 +8,9 @@ const ETERNA_CITY: Location = {
     mapAnchor: MapAnchor.TopLeft,
     encountersKey: 'eterna-city',
     methodSplits: [
-        { method: EncounterMethod.Surf, split: 'Gardenia' },
+        { method: EncounterMethod.Surf, split: 'Byron' },
         { method: EncounterMethod.OldRod, split: 'Gardenia' },
-        { method: EncounterMethod.GoodRod, split: 'Gardenia' },
+        { method: EncounterMethod.GoodRod, split: 'Maylene' },
         { method: EncounterMethod.SuperRod, split: 'Candice' },
         { method: EncounterMethod.Egg, split: 'Fantina' },
     ],

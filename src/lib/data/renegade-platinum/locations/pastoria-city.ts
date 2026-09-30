@@ -1,5 +1,5 @@
 import { pastoriaCity } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const PASTORIA_CITY: Location = {
@@ -7,6 +7,12 @@ const PASTORIA_CITY: Location = {
     map: pastoriaCity,
     mapAnchor: MapAnchor.TopRight,
     encountersKey: 'pastoria-city',
+    methodSplits: [
+        { method: EncounterMethod.Surf, split: 'Byron' },
+        { method: EncounterMethod.OldRod, split: 'Wake' },
+        { method: EncounterMethod.GoodRod, split: 'Wake' },
+        { method: EncounterMethod.SuperRod, split: 'Candice' },
+    ],
     battles: [
         {
             battleKey: 'pkmn-trainer-barry-pastoria-city',

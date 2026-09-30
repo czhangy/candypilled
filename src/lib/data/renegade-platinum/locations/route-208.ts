@@ -1,5 +1,5 @@
 import { route208 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_208: Location = {
@@ -7,6 +7,15 @@ const ROUTE_208: Location = {
     map: route208,
     mapAnchor: MapAnchor.Center,
     encountersKey: 'sinnoh-route-208',
+    methodSplits: [
+        { method: EncounterMethod.Grass, split: 'Fantina' },
+        { method: EncounterMethod.Surf, split: 'Byron' },
+        { method: EncounterMethod.OldRod, split: 'Fantina' },
+        { method: EncounterMethod.GoodRod, split: 'Maylene' },
+        { method: EncounterMethod.SuperRod, split: 'Candice' },
+        { method: EncounterMethod.PokeRadar, split: 'Fantina' },
+        { method: EncounterMethod.HoneyTree, split: 'Fantina' },
+    ],
     battles: [
         {
             battleKey: 'hiker-jonathan',

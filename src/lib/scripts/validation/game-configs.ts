@@ -97,9 +97,9 @@ export const GAME_CHECK_CONFIGS: Record<string, GameCheckConfig> = {
         unmappedLocations: SINNOH_UNMAPPED_LOCATIONS,
     },
     'Renegade Platinum': {
-        auditedThrough: 'Mt. Coronet',
+        auditedThrough: AUDIT_COMPLETE,
         dataFolder: 'renegade-platinum',
-        trimmedThrough: null,
+        trimmedThrough: AUDIT_COMPLETE,
         unmappedLocations: SINNOH_UNMAPPED_LOCATIONS,
     },
 };

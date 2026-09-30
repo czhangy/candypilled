@@ -2,7 +2,7 @@ import {
     valorCavernPostGiratina,
     valorCavernPreGiratina,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VALOR_CAVERN: Location = {
@@ -25,6 +25,9 @@ const VALOR_CAVERN: Location = {
             map: valorCavernPostGiratina,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'valor-cavern-post-giratina',
+            methodSplits: [
+                { method: EncounterMethod.Static, split: 'Volkner' },
+            ],
         },
     ],
 };

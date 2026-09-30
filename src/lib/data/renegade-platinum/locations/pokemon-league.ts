@@ -2,7 +2,7 @@ import {
     pokemonLeagueExterior,
     pokemonLeagueLobby,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const POKEMON_LEAGUE: Location = {
@@ -13,6 +13,12 @@ const POKEMON_LEAGUE: Location = {
             map: pokemonLeagueExterior,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'pokemon-league',
+            methodSplits: [
+                { method: EncounterMethod.Surf, split: 'Volkner' },
+                { method: EncounterMethod.OldRod, split: 'Volkner' },
+                { method: EncounterMethod.GoodRod, split: 'Volkner' },
+                { method: EncounterMethod.SuperRod, split: 'Volkner' },
+            ],
         },
         {
             name: 'Lobby',

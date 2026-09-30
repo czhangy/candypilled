@@ -7,7 +7,7 @@ const ACUITY_LAKEFRONT: Location = {
     map: acuityLakefront,
     mapAnchor: MapAnchor.BottomLeft,
     encountersKey: 'acuity-lakefront',
-    methodSplits: [{ method: EncounterMethod.Walking, split: 'Candice' }],
+    methodSplits: [{ method: EncounterMethod.Grass, split: 'Candice' }],
 };
 
 export default ACUITY_LAKEFRONT;

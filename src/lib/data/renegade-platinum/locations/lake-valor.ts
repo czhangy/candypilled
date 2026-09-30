@@ -14,7 +14,7 @@ const LAKE_VALOR: Location = {
             mapAnchor: MapAnchor.TopRight,
             encountersKey: 'lake-valor',
             methodSplits: [
-                { method: EncounterMethod.Walking, split: 'Candice' },
+                { method: EncounterMethod.Grass, split: 'Candice' },
                 { method: EncounterMethod.Surf, split: 'Candice' },
                 { method: EncounterMethod.OldRod, split: 'Candice' },
                 { method: EncounterMethod.GoodRod, split: 'Candice' },
@@ -45,7 +45,7 @@ const LAKE_VALOR: Location = {
             mapAnchor: MapAnchor.TopRight,
             encountersKey: 'lake-valor',
             methodSplits: [
-                { method: EncounterMethod.Walking, split: 'Volkner' },
+                { method: EncounterMethod.Grass, split: 'Volkner' },
                 { method: EncounterMethod.Surf, split: 'Volkner' },
                 { method: EncounterMethod.OldRod, split: 'Volkner' },
                 { method: EncounterMethod.GoodRod, split: 'Volkner' },

@@ -18,7 +18,7 @@
 | Emerald           | In progress |
 | Diamond & Pearl   | Complete    |
 | Platinum          | Complete    |
-| Renegade Platinum | In progress |
+| Renegade Platinum | Complete    |
 
 ## Tech Stack
 
