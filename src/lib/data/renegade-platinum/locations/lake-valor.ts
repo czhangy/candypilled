@@ -2,7 +2,7 @@ import {
     lakeValorPostGiratina,
     lakeValorPreGiratina,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_VALOR: Location = {
@@ -13,6 +13,14 @@ const LAKE_VALOR: Location = {
             map: lakeValorPreGiratina,
             mapAnchor: MapAnchor.TopRight,
             encountersKey: 'lake-valor',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Candice' },
+                { method: EncounterMethod.Surf, split: 'Candice' },
+                { method: EncounterMethod.OldRod, split: 'Candice' },
+                { method: EncounterMethod.GoodRod, split: 'Candice' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+                { method: EncounterMethod.PokeRadar, split: 'Candice' },
+            ],
             battles: [
                 {
                     battleKey: 'galactic-grunt-f-lake-valor',
@@ -36,6 +44,14 @@ const LAKE_VALOR: Location = {
             map: lakeValorPostGiratina,
             mapAnchor: MapAnchor.TopRight,
             encountersKey: 'lake-valor',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Volkner' },
+                { method: EncounterMethod.Surf, split: 'Volkner' },
+                { method: EncounterMethod.OldRod, split: 'Volkner' },
+                { method: EncounterMethod.GoodRod, split: 'Volkner' },
+                { method: EncounterMethod.SuperRod, split: 'Volkner' },
+                { method: EncounterMethod.PokeRadar, split: 'Volkner' },
+            ],
         },
     ],
 };

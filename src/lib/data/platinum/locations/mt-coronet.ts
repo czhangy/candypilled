@@ -12,7 +12,7 @@ import {
     mtCoronetSummit,
     mtCoronetTunnel,
 } from '@/lib/data/platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const MT_CORONET: Location = {
@@ -23,36 +23,53 @@ const MT_CORONET: Location = {
             map: mtCoronet1f211,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-1f-route-211',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Gardenia' }],
         },
         {
             name: '1F (207)',
             map: mtCoronet1f207,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-1f-route-207',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Fantina' },
+                { method: EncounterMethod.Surf, split: 'Byron' },
+                { method: EncounterMethod.OldRod, split: 'Fantina' },
+                { method: EncounterMethod.GoodRod, split: 'Maylene' },
+            ],
         },
         {
             name: 'B1F',
             map: mtCoronetB1f,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'mt-coronet-b1f',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Candice' },
+                { method: EncounterMethod.Surf, split: 'Candice' },
+                { method: EncounterMethod.OldRod, split: 'Candice' },
+                { method: EncounterMethod.GoodRod, split: 'Candice' },
+                { method: EncounterMethod.FeebasTile, split: 'Candice' },
+            ],
         },
         {
             name: '1F (216)',
             map: mtCoronet1f216,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-1f-route-216',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Candice' }],
         },
         {
             name: '2F',
             map: mtCoronet2f,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'mt-coronet-2f',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Volkner' }],
         },
         {
             name: '3F',
             map: mtCoronet3f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-3f',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Volkner' }],
             battles: [
                 {
                     battleKey: 'galactic-grunt-f-mt-coronet-1',
@@ -71,12 +88,19 @@ const MT_CORONET: Location = {
             map: mtCoronetExterior,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-exterior-snowfall',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Volkner' }],
         },
         {
             name: '4F',
             map: mtCoronet4f,
             mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'mt-coronet-4f',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Volkner' },
+                { method: EncounterMethod.Surf, split: 'Volkner' },
+                { method: EncounterMethod.OldRod, split: 'Volkner' },
+                { method: EncounterMethod.GoodRod, split: 'Volkner' },
+            ],
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-mt-coronet-2',
@@ -95,12 +119,14 @@ const MT_CORONET: Location = {
             map: mtCoronetSummit,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-exterior-snowfall',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Volkner' }],
         },
         {
             name: 'Tunnel',
             map: mtCoronetTunnel,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'mt-coronet-1f-from-exterior',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Volkner' }],
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-mt-coronet-4',
@@ -125,6 +151,7 @@ const MT_CORONET: Location = {
             map: mtCoronet5f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-5f',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Volkner' }],
             battles: [
                 {
                     battleKey: 'galactic-grunt-f-mt-coronet-3',
@@ -143,6 +170,7 @@ const MT_CORONET: Location = {
             map: mtCoronet6f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-6f',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Volkner' }],
             battles: [
                 {
                     battleKey: 'galactic-grunt-f-mt-coronet-4',

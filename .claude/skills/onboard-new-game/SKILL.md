@@ -101,17 +101,11 @@ If a battle references a class missing from `src/lib/data/trainer-classes.ts`, r
 
 ### 7. Splits and `saveCondition`
 
-Author `splits/*.ts` by hand (no generator; they encode judgment). `Split.locations` lists only the locations the player is required to go through for that split, curated by the user split by split (see `.claude/docs/split-location-wiring.md`). It need not list every location: the Locations tab shows all of `Game.locations`. Every split needs a `saveCondition`; see "Deriving a `saveCondition`".
+Author `splits/*.ts` by hand (no generator; they encode judgment). `Split.locations` lists only the locations the player is required to go through for that split, curated by the user split by split (see `.claude/docs/split-location-wiring.md`; the trim runs through `npm run audit:trim-sheet` / `audit:trim-apply`, described in `.claude/docs/split-audit.md`). It need not list every location: the Locations tab shows all of `Game.locations`. Every split needs a `saveCondition`; see "Deriving a `saveCondition`".
 
 ### 8. Assign splits
 
-`BattleData.split` and `Location`/`Subarea` `methodSplits` (one `{ method, split }` per encounter method) record which split each battle and encounter method first becomes available in. Everything starts as the game's first split; then audit location by location, in Locations-tab (alphabetical) order:
-
-1. List the location's battles and every encounter method, read from the resolved encounter data (not a truncated line range; a missed method is silently unassigned).
-2. The user states the split for each.
-3. Write it immediately.
-
-Never infer a split from location membership, sheet text, or geography. A method with no `methodSplits` entry shows no badge.
+`BattleData.split` and `Location`/`Subarea` `methodSplits` (one `{ method, split }` per encounter method) record which split each battle and encounter method first becomes available in. Everything starts as the game's first split; then audit in Locations-tab (alphabetical) order, in batches, following `.claude/docs/split-audit.md` (`npm run audit:sheet` / `audit:apply`). The user states every split; never infer one from location membership, sheet text, or geography. A method with no `methodSplits` entry shows no badge.
 
 ### 9. Assemble and register
 
@@ -122,10 +116,10 @@ Assemble the `Game` in `<slug>.ts`: name, logo, generation, `version` (PokeAPI v
 
 ### 10. Validate
 
-Run `npm run check:data`. It checks that every encounter method has a split (once audited), every split name is real, met-locations and locations correspond in both directions, and every file in `locations/` is listed in `locations.ts`. It runs in pre-commit for staged `src/lib/data/` files. For a new game, add an entry to `GAME_CHECK_CONFIGS` in `src/lib/scripts/validation/check-game-data.ts`:
+Run `npm run check:data`. It checks that every encounter method has a split (for locations up to the game's `auditedThrough` pointer), every split name is real, met-locations and locations correspond in both directions, and every file in `locations/` is listed in `locations.ts`. It runs in pre-commit for staged `src/lib/data/` files. For a new game, add an entry to `GAME_CHECK_CONFIGS` in `src/lib/scripts/validation/game-configs.ts`:
 
+- `auditedThrough: null`, which `audit:apply` advances as step 8 progresses
 - `dataFolder`
-- `isSplitAudited: false`, flipped to `true` once step 8 is complete
 - `unmappedLocations`, the locations with no met entry
 
 ## Sharing `public/` assets

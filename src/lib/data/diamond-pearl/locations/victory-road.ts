@@ -4,7 +4,7 @@ import {
     victoryRoadB1f,
 } from '@/lib/data/diamond-pearl/maps';
 import { GEN_4_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VICTORY_ROAD: Location = {
@@ -15,6 +15,7 @@ const VICTORY_ROAD: Location = {
             map: victoryRoad1f,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'sinnoh-victory-road-1f',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Cynthia' }],
             battles: [
                 {
                     battleKey: 'psychic-m-bryce',
@@ -53,6 +54,7 @@ const VICTORY_ROAD: Location = {
             map: victoryRoad2f,
             mapAnchor: MapAnchor.TopLeft,
             encountersKey: 'sinnoh-victory-road-2f',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Cynthia' }],
             battles: [
                 {
                     battleKey: 'ace-trainer-m-omar',
@@ -82,6 +84,12 @@ const VICTORY_ROAD: Location = {
             map: victoryRoadB1f,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'sinnoh-victory-road-b1f',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Cynthia' },
+                { method: EncounterMethod.Surf, split: 'Cynthia' },
+                { method: EncounterMethod.OldRod, split: 'Cynthia' },
+                { method: EncounterMethod.GoodRod, split: 'Cynthia' },
+            ],
             battles: [
                 {
                     battleKey: 'psychic-f-valencia',

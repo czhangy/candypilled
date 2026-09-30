@@ -2,7 +2,7 @@ import {
     floaromaTownPokemonCenter,
     floaromaTownTown,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const FLOAROMA_TOWN: Location = {
@@ -18,6 +18,7 @@ const FLOAROMA_TOWN: Location = {
             map: floaromaTownPokemonCenter,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'floaroma-town',
+            methodSplits: [{ method: EncounterMethod.Gift, split: 'Gardenia' }],
             battles: [
                 {
                     battleKey: 'reporter-jenny',

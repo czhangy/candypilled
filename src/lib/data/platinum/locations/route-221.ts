@@ -1,5 +1,5 @@
 import { route221 } from '@/lib/data/platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_221: Location = {
@@ -7,6 +7,13 @@ const ROUTE_221: Location = {
     map: route221,
     mapAnchor: MapAnchor.Left,
     encountersKey: 'sinnoh-route-221',
+    methodSplits: [
+        { method: EncounterMethod.Surf, split: 'Byron' },
+        { method: EncounterMethod.OldRod, split: 'Byron' },
+        { method: EncounterMethod.GoodRod, split: 'Byron' },
+        { method: EncounterMethod.Grass, split: 'Byron' },
+        { method: EncounterMethod.HoneyTree, split: 'Byron' },
+    ],
     battles: [
         {
             battleKey: 'swimmer-m-dillon',

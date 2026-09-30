@@ -1,5 +1,5 @@
 import { route215 } from '@/lib/data/platinum/maps';
-import { FieldCondition, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, FieldCondition, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_215: Location = {
@@ -7,6 +7,10 @@ const ROUTE_215: Location = {
     map: route215,
     mapAnchor: MapAnchor.Left,
     encountersKey: 'sinnoh-route-215',
+    methodSplits: [
+        { method: EncounterMethod.Grass, split: 'Maylene' },
+        { method: EncounterMethod.HoneyTree, split: 'Maylene' },
+    ],
     battles: [
         {
             battleKey: 'ruin-maniac-calvin',

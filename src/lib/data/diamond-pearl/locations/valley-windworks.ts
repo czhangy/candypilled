@@ -2,7 +2,7 @@ import {
     valleyWindworks,
     valleyWindworksInterior,
 } from '@/lib/data/diamond-pearl/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VALLEY_WINDWORKS: Location = {
@@ -13,6 +13,14 @@ const VALLEY_WINDWORKS: Location = {
             map: valleyWindworks,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'valley-windworks',
+            methodSplits: [
+                { method: EncounterMethod.Surf, split: 'Byron' },
+                { method: EncounterMethod.OldRod, split: 'Gardenia' },
+                { method: EncounterMethod.GoodRod, split: 'Maylene' },
+                { method: EncounterMethod.HoneyTree, split: 'Gardenia' },
+                { method: EncounterMethod.Grass, split: 'Gardenia' },
+                { method: EncounterMethod.Static, split: 'Gardenia' },
+            ],
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-valley-windworks',

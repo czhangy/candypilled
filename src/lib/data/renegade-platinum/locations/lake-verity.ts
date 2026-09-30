@@ -2,7 +2,7 @@ import {
     lakeVerityPostGalactic,
     lakeVerityPreGalactic,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_VERITY: Location = {
@@ -13,12 +13,28 @@ const LAKE_VERITY: Location = {
             map: lakeVerityPreGalactic,
             mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'lake-verity',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Roark' },
+                { method: EncounterMethod.Surf, split: 'Roark' },
+                { method: EncounterMethod.OldRod, split: 'Roark' },
+                { method: EncounterMethod.GoodRod, split: 'Roark' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+                { method: EncounterMethod.PokeRadar, split: 'Roark' },
+            ],
         },
         {
             name: 'Post-Byron',
             map: lakeVerityPostGalactic,
             mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'lake-verity',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Candice' },
+                { method: EncounterMethod.Surf, split: 'Candice' },
+                { method: EncounterMethod.OldRod, split: 'Candice' },
+                { method: EncounterMethod.GoodRod, split: 'Candice' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+                { method: EncounterMethod.PokeRadar, split: 'Candice' },
+            ],
             battles: [
                 {
                     battleKey: 'galactic-grunt-and-galactic-grunt-lake-verity',

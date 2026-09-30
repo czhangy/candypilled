@@ -3,7 +3,7 @@ import {
     GEN_4_TRUE_DOUBLE_HEIGHT,
     GEN_4_TRUE_DOUBLE_WIDTH,
 } from '@/lib/static/constants';
-import { FieldCondition, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, FieldCondition, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_210: Location = {
@@ -14,6 +14,10 @@ const ROUTE_210: Location = {
             map: route210South,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'sinnoh-route-210-south-towards-solaceon-town',
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Maylene' },
+                { method: EncounterMethod.HoneyTree, split: 'Maylene' },
+            ],
             battles: [
                 {
                     battleKey: 'rancher-marco',
@@ -54,6 +58,13 @@ const ROUTE_210: Location = {
             map: route210North,
             mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'sinnoh-route-210-west-towards-celestic-town',
+            methodSplits: [
+                { method: EncounterMethod.Surf, split: 'Byron' },
+                { method: EncounterMethod.Grass, split: 'Byron' },
+                { method: EncounterMethod.OldRod, split: 'Byron' },
+                { method: EncounterMethod.GoodRod, split: 'Byron' },
+                { method: EncounterMethod.HoneyTree, split: 'Byron' },
+            ],
             battles: [
                 {
                     battleKey: 'ninja-boy-brennan',

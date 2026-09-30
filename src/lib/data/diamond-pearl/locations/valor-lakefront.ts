@@ -1,5 +1,5 @@
 import { valorLakefront } from '@/lib/data/diamond-pearl/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VALOR_LAKEFRONT: Location = {
@@ -7,6 +7,7 @@ const VALOR_LAKEFRONT: Location = {
     map: valorLakefront,
     mapAnchor: MapAnchor.TopRight,
     encountersKey: 'valor-lakefront',
+    methodSplits: [{ method: EncounterMethod.Grass, split: 'Maylene' }],
     battles: [
         {
             battleKey: 'galactic-grunt-m-valor-lakefront',

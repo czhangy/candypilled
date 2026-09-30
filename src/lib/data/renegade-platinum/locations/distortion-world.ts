@@ -1,5 +1,5 @@
 import { distortionWorld } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const DISTORTION_WORLD: Location = {
@@ -7,6 +7,7 @@ const DISTORTION_WORLD: Location = {
     map: distortionWorld,
     mapAnchor: MapAnchor.Center,
     encountersKey: 'distortion-world',
+    methodSplits: [{ method: EncounterMethod.Static, split: 'Volkner' }],
     battles: [
         {
             battleKey: 'galactic-boss-cyrus-distortion-world',

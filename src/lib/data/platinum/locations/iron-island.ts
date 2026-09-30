@@ -8,7 +8,7 @@ import {
     ironIslandExterior,
 } from '@/lib/data/platinum/maps';
 import { GEN_4_TRUE_DOUBLE_HEIGHT } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const IRON_ISLAND: Location = {
@@ -19,18 +19,25 @@ const IRON_ISLAND: Location = {
             map: ironIslandExterior,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-area',
+            methodSplits: [
+                { method: EncounterMethod.Surf, split: 'Byron' },
+                { method: EncounterMethod.OldRod, split: 'Byron' },
+                { method: EncounterMethod.GoodRod, split: 'Byron' },
+            ],
         },
         {
             name: '1F',
             map: ironIsland1f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-1f',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Byron' }],
         },
         {
             name: 'B1F West',
             map: ironIslandB1fWest,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-b1f-left',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Byron' }],
             battles: [
                 {
                     battleKey: 'camper-lawrence',
@@ -44,6 +51,7 @@ const IRON_ISLAND: Location = {
             map: ironIslandB1fEast,
             mapAnchor: MapAnchor.Top,
             encountersKey: 'iron-island-b1f-right',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Byron' }],
             battles: [
                 {
                     battleKey: 'picnicker-summer',
@@ -57,6 +65,7 @@ const IRON_ISLAND: Location = {
             map: ironIslandB2fEast,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-b2f-right',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Byron' }],
             battles: [
                 {
                     battleKey: 'worker-noel',
@@ -75,6 +84,10 @@ const IRON_ISLAND: Location = {
             map: ironIslandB2fWest,
             mapAnchor: MapAnchor.TopRight,
             encountersKey: 'iron-island-b2f-left',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Byron' },
+                { method: EncounterMethod.Egg, split: 'Byron' },
+            ],
             tagPartner: [{ battleKey: 'pkmn-trainer-riley-tag' }],
             battles: [
                 {
@@ -130,6 +143,7 @@ const IRON_ISLAND: Location = {
             map: ironIslandB3f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-b3f',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Byron' }],
         },
     ],
 };

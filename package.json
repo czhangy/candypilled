@@ -21,6 +21,10 @@
         "pokeapi:items": "tsx src/lib/scripts/pokeapi/items.ts",
         "stitch-map": "tsx src/lib/scripts/assets/stitch-map.ts",
         "check:data": "tsx src/lib/scripts/validation/check-game-data.ts",
+        "audit:sheet": "tsx src/lib/scripts/audit/audit-sheet.ts",
+        "audit:apply": "tsx src/lib/scripts/audit/audit-apply.ts",
+        "audit:trim-sheet": "tsx src/lib/scripts/audit/audit-trim-sheet.ts",
+        "audit:trim-apply": "tsx src/lib/scripts/audit/audit-trim-apply.ts",
         "prepare": "husky"
     },
     "lint-staged": {

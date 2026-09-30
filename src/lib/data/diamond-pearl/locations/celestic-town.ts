@@ -12,8 +12,8 @@ const CELESTIC_TOWN: Location = {
             encountersKey: 'celestic-town',
             methodSplits: [
                 { method: EncounterMethod.Surf, split: 'Byron' },
-                { method: EncounterMethod.OldRod, split: 'Byron' },
-                { method: EncounterMethod.GoodRod, split: 'Byron' },
+                { method: EncounterMethod.OldRod, split: 'Fantina' },
+                { method: EncounterMethod.GoodRod, split: 'Fantina' },
             ],
             battles: [
                 {

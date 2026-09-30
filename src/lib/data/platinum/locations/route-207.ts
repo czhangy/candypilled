@@ -1,5 +1,5 @@
 import { route207 } from '@/lib/data/platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_207: Location = {
@@ -7,6 +7,10 @@ const ROUTE_207: Location = {
     map: route207,
     mapAnchor: MapAnchor.Center,
     encountersKey: 'sinnoh-route-207',
+    methodSplits: [
+        { method: EncounterMethod.Grass, split: 'Roark' },
+        { method: EncounterMethod.HoneyTree, split: 'Roark' },
+    ],
     battles: [
         {
             battleKey: 'picnicker-lauren',

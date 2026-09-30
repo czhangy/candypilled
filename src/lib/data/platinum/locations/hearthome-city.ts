@@ -1,5 +1,5 @@
 import { hearthomeCity, hearthomeCityGate } from '@/lib/data/platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const HEARTHOME_CITY: Location = {
@@ -10,6 +10,7 @@ const HEARTHOME_CITY: Location = {
             map: hearthomeCity,
             mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'hearthome-city-area',
+            methodSplits: [{ method: EncounterMethod.Gift, split: 'Fantina' }],
         },
         {
             name: 'Gate',

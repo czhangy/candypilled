@@ -1,5 +1,5 @@
 import { oreburghMineB1f, oreburghMineB2f } from '@/lib/data/platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const OREBURGH_MINE: Location = {
@@ -10,12 +10,14 @@ const OREBURGH_MINE: Location = {
             map: oreburghMineB1f,
             mapAnchor: MapAnchor.Top,
             encountersKey: 'oreburgh-mine-1f',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Roark' }],
         },
         {
             name: 'B2F',
             map: oreburghMineB2f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'oreburgh-mine-b1f',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Roark' }],
             battles: [
                 {
                     battleKey: 'worker-colin',

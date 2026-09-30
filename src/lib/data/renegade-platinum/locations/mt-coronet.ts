@@ -12,7 +12,7 @@ import {
     mtCoronetSouthExterior,
     mtCoronetTunnel,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const MT_CORONET: Location = {
@@ -23,36 +23,62 @@ const MT_CORONET: Location = {
             map: mtCoronet1fRoute211,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-1f-route-211',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Gardenia' },
+            ],
         },
         {
             name: 'B1F',
             map: mtCoronetB1f,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'mt-coronet-b1f',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Gardenia' },
+                { method: EncounterMethod.Surf, split: 'Gardenia' },
+                { method: EncounterMethod.OldRod, split: 'Gardenia' },
+                { method: EncounterMethod.GoodRod, split: 'Gardenia' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+            ],
         },
         {
             name: '1F (216)',
             map: mtCoronet1fRoute216,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-1f-route-216',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Gardenia' },
+            ],
         },
         {
             name: '1F (207)',
             map: mtCoronet1fRoute207,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-1f-route-207',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Fantina' },
+                { method: EncounterMethod.Surf, split: 'Fantina' },
+                { method: EncounterMethod.OldRod, split: 'Fantina' },
+                { method: EncounterMethod.GoodRod, split: 'Fantina' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+            ],
         },
         {
             name: '2F',
             map: mtCoronet2f,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'mt-coronet-2f',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Volkner' },
+            ],
         },
         {
             name: '3F',
             map: mtCoronet3f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-3f',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Volkner' },
+            ],
             battles: [
                 {
                     battleKey: 'galactic-grunt-f-mt-coronet-3f',
@@ -71,12 +97,19 @@ const MT_CORONET: Location = {
             map: mtCoronetSouthExterior,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-south-exterior',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Volkner' },
+                { method: EncounterMethod.PokeRadar, split: 'Volkner' },
+            ],
         },
         {
             name: '4F',
             map: mtCoronet4f,
             mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'mt-coronet-4f',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Volkner' },
+            ],
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-mt-coronet-4f-1',
@@ -95,12 +128,19 @@ const MT_CORONET: Location = {
             map: mtCoronetNorthExterior,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-north-exterior',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Volkner' },
+                { method: EncounterMethod.PokeRadar, split: 'Volkner' },
+            ],
         },
         {
             name: 'Tunnel',
             map: mtCoronetTunnel,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'mt-coronet-tunnel',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Volkner' },
+            ],
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-mt-coronet-tunnel-1',
@@ -124,6 +164,9 @@ const MT_CORONET: Location = {
             map: mtCoronet5f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-5f',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Volkner' },
+            ],
             battles: [
                 {
                     battleKey: 'galactic-grunt-f-mt-coronet-5f',
@@ -142,6 +185,9 @@ const MT_CORONET: Location = {
             map: mtCoronet6f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-6f',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Volkner' },
+            ],
             battles: [
                 {
                     battleKey: 'galactic-grunt-f-mt-coronet-6f',

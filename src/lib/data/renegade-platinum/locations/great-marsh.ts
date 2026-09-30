@@ -6,7 +6,7 @@ import {
     greatMarshArea5,
     greatMarshArea6,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const GREAT_MARSH: Location = {
@@ -17,36 +17,78 @@ const GREAT_MARSH: Location = {
             map: greatMarshArea1,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'great-marsh-area-1-2',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Wake' },
+                { method: EncounterMethod.Surf, split: 'Wake' },
+                { method: EncounterMethod.OldRod, split: 'Wake' },
+                { method: EncounterMethod.GoodRod, split: 'Wake' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+            ],
         },
         {
             name: 'Area 2',
             map: greatMarshArea2,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'great-marsh-area-1-2',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Wake' },
+                { method: EncounterMethod.Surf, split: 'Wake' },
+                { method: EncounterMethod.OldRod, split: 'Wake' },
+                { method: EncounterMethod.GoodRod, split: 'Wake' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+            ],
         },
         {
             name: 'Area 3',
             map: greatMarshArea3,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'great-marsh-area-3-4',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Wake' },
+                { method: EncounterMethod.Surf, split: 'Wake' },
+                { method: EncounterMethod.OldRod, split: 'Wake' },
+                { method: EncounterMethod.GoodRod, split: 'Wake' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+            ],
         },
         {
             name: 'Area 4',
             map: greatMarshArea4,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'great-marsh-area-3-4',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Wake' },
+                { method: EncounterMethod.Surf, split: 'Wake' },
+                { method: EncounterMethod.OldRod, split: 'Wake' },
+                { method: EncounterMethod.GoodRod, split: 'Wake' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+            ],
         },
         {
             name: 'Area 5',
             map: greatMarshArea5,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'great-marsh-area-5-6',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Wake' },
+                { method: EncounterMethod.Surf, split: 'Wake' },
+                { method: EncounterMethod.OldRod, split: 'Wake' },
+                { method: EncounterMethod.GoodRod, split: 'Wake' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+            ],
         },
         {
             name: 'Area 6',
             map: greatMarshArea6,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'great-marsh-area-5-6',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Wake' },
+                { method: EncounterMethod.Surf, split: 'Wake' },
+                { method: EncounterMethod.OldRod, split: 'Wake' },
+                { method: EncounterMethod.GoodRod, split: 'Wake' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+            ],
         },
     ],
 };

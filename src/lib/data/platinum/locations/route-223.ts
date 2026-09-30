@@ -1,5 +1,5 @@
 import { route223 } from '@/lib/data/platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_223: Location = {
@@ -7,6 +7,11 @@ const ROUTE_223: Location = {
     map: route223,
     mapAnchor: MapAnchor.Bottom,
     encountersKey: 'sinnoh-sea-route-223',
+    methodSplits: [
+        { method: EncounterMethod.Surf, split: 'Volkner' },
+        { method: EncounterMethod.OldRod, split: 'Volkner' },
+        { method: EncounterMethod.GoodRod, split: 'Volkner' },
+    ],
     battles: [
         {
             battleKey: 'swimmer-f-miranda',

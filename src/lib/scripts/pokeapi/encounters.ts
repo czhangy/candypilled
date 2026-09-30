@@ -407,6 +407,15 @@ const nullifyChances = (encounters: RawEncounter[]): RawEncounter[] =>
             : encounter
     );
 
+// A starter handoff is the run's only encounter at its location, so a
+// location with a Starter keeps just its Starter entries.
+const keepOnlyStarters = (encounters: RawEncounter[]): RawEncounter[] =>
+    encounters.some((encounter) => encounter.method === EncounterMethod.Starter)
+        ? encounters.filter(
+              (encounter) => encounter.method === EncounterMethod.Starter
+          )
+        : encounters;
+
 const expandTimeOfDayEncounters = (
     encounters: RawEncounter[]
 ): RawEncounter[] => {
@@ -480,7 +489,9 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
             const withHoneyTree = resolveHoneyTreeEncounters(expanded);
             const remerged = mergeEncounters(withHoneyTree, 'sum');
             const withTradeFor = resolveTradeFor(remerged);
-            const rawFinalEncounters = nullifyChances(withTradeFor);
+            const rawFinalEncounters = keepOnlyStarters(
+                nullifyChances(withTradeFor)
+            );
 
             if (rawFinalEncounters.length === 0) continue;
 

@@ -8,7 +8,6 @@ import ROUTE_223 from '@/lib/data/diamond-pearl/locations/route-223';
 import SUNYSHORE_CITY from '@/lib/data/diamond-pearl/locations/sunyshore-city';
 import VICTORY_ROAD from '@/lib/data/diamond-pearl/locations/victory-road';
 import { Split } from '@/lib/static/types';
-import LocationHelpers from '@/lib/utils/LocationHelpers';
 
 const CYNTHIA: Split = {
     name: 'Cynthia',
@@ -17,7 +16,6 @@ const CYNTHIA: Split = {
         ROUTE_223,
         POKEMON_LEAGUE,
         VICTORY_ROAD,
-        LocationHelpers.withSubareaOrder(POKEMON_LEAGUE, ['Lobby', 'Exterior']),
         AARONS_ROOM,
         BERTHAS_ROOM,
         FLINTS_ROOM,

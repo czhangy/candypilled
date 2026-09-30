@@ -1,5 +1,5 @@
 import { route206 } from '@/lib/data/platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_206: Location = {
@@ -7,6 +7,10 @@ const ROUTE_206: Location = {
     map: route206,
     mapAnchor: MapAnchor.Top,
     encountersKey: 'sinnoh-route-206',
+    methodSplits: [
+        { method: EncounterMethod.Grass, split: 'Fantina' },
+        { method: EncounterMethod.HoneyTree, split: 'Fantina' },
+    ],
     battles: [
         {
             battleKey: 'cyclist-m-axel',

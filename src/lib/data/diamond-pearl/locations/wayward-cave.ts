@@ -1,5 +1,5 @@
 import { waywardCave1f, waywardCaveB1f } from '@/lib/data/diamond-pearl/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const WAYWARD_CAVE: Location = {
@@ -10,6 +10,7 @@ const WAYWARD_CAVE: Location = {
             map: waywardCave1f,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'wayward-cave-1f',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Maylene' }],
             tagPartner: [{ battleKey: 'pkmn-trainer-mira-tag' }],
             battles: [
                 {
@@ -69,6 +70,7 @@ const WAYWARD_CAVE: Location = {
             map: waywardCaveB1f,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'wayward-cave-b1f',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Candice' }],
         },
     ],
 };

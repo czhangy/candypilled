@@ -1,23 +1,17 @@
-import fs from 'fs';
 import path from 'path';
 import {
+    getLocationFiles,
+    loadGames,
     logError,
     logSuccess,
     logWarning,
     runScript,
 } from '@/lib/scripts/utils/helpers';
-import { Game, Location, MethodSplit } from '@/lib/static/types';
-
-type GameCheckConfig = {
-    // Folder under src/lib/data/ holding this game's locations/ directory.
-    dataFolder: string;
-    // True once every battle and encounter method has a real split, so an
-    // unfinished game's placeholder data doesn't fail the method-split check.
-    isSplitAudited: boolean;
-    // Locations that intentionally have no met-table entry (the met index
-    // doesn't cover gyms, Elite Four rooms, or the champion's room).
-    unmappedLocations: string[];
-};
+import {
+    GAME_CHECK_CONFIGS,
+    isLocationAudited,
+} from '@/lib/scripts/validation/game-configs';
+import { Game, MethodSplit } from '@/lib/static/types';
 
 type Report = {
     title: string;
@@ -28,145 +22,69 @@ type Report = {
 type EncounterSection = {
     encountersKey: string | undefined;
     label: string;
+    locationName: string;
     methodSplits: MethodSplit[] | undefined;
 };
 
-const HOENN_UNMAPPED_LOCATIONS = [
-    'Dewford Gym',
-    "Drake's Room",
-    'Fortree Gym',
-    "Glacia's Room",
-    'Lavaridge Gym',
-    'Mauville Gym',
-    'Mossdeep Gym',
-    'Petalburg Gym',
-    "Phoebe's Room",
-    'Rustboro Gym',
-    "Sidney's Room",
-    'Sootopolis Gym',
-    "Steven's Room",
-    'Trick House',
-];
-
-const SINNOH_UNMAPPED_LOCATIONS = [
-    "Aaron's Room",
-    "Bertha's Room",
-    'Canalave Gym',
-    "Cynthia's Room",
-    'Eterna Gym',
-    "Flint's Room",
-    'Hearthome Gym',
-    "Lucian's Room",
-    'Oreburgh Gym',
-    'Pastoria Gym',
-    'Snowpoint Gym',
-    'Sunyshore Gym',
-    'Veilstone Gym',
-];
-
-// The Team Galactic Eterna Building's met index (122) debuted in Platinum,
-// so a Diamond or Pearl save can never carry it.
-const DIAMOND_PEARL_UNMAPPED_LOCATIONS = [
-    ...SINNOH_UNMAPPED_LOCATIONS,
-    'Team Galactic Eterna Building',
-];
-
-// Every registered game needs an entry here, keyed by Game.name.
-const GAME_CHECK_CONFIGS: Record<string, GameCheckConfig> = {
-    Ruby: {
-        dataFolder: 'ruby-sapphire',
-        isSplitAudited: true,
-        unmappedLocations: HOENN_UNMAPPED_LOCATIONS,
-    },
-    Sapphire: {
-        dataFolder: 'ruby-sapphire',
-        isSplitAudited: true,
-        unmappedLocations: HOENN_UNMAPPED_LOCATIONS,
-    },
-    Emerald: {
-        dataFolder: 'emerald',
-        isSplitAudited: false,
-        unmappedLocations: [],
-    },
-    Diamond: {
-        dataFolder: 'diamond-pearl',
-        isSplitAudited: false,
-        unmappedLocations: DIAMOND_PEARL_UNMAPPED_LOCATIONS,
-    },
-    Pearl: {
-        dataFolder: 'diamond-pearl',
-        isSplitAudited: false,
-        unmappedLocations: DIAMOND_PEARL_UNMAPPED_LOCATIONS,
-    },
-    Platinum: {
-        dataFolder: 'platinum',
-        isSplitAudited: false,
-        unmappedLocations: SINNOH_UNMAPPED_LOCATIONS,
-    },
-    'Renegade Platinum': {
-        dataFolder: 'renegade-platinum',
-        isSplitAudited: false,
-        unmappedLocations: SINNOH_UNMAPPED_LOCATIONS,
-    },
-};
-
-// The game data imports map images, which plain Node can't load.
-const stubImageImports = (): void => {
-    require.extensions['.png'] = (module: NodeJS.Module): void => {
-        module.exports = { height: 0, src: '', width: 0 };
-    };
-};
-
 const getEncounterSections = (game: Game): EncounterSection[] =>
-    game.locations.flatMap((location: Location) =>
+    game.locations.flatMap((location) =>
         location.subareas
             ? location.subareas.map((subarea) => ({
                   encountersKey: subarea.encountersKey,
                   label: `${location.name} / ${subarea.name}`,
+                  locationName: location.name,
                   methodSplits: subarea.methodSplits,
               }))
             : [
                   {
                       encountersKey: location.encountersKey,
                       label: location.name,
+                      locationName: location.name,
                       methodSplits: location.methodSplits,
                   },
               ]
     );
 
-const checkMethodSplits = (game: Game): string[] =>
-    getEncounterSections(game).flatMap((section) => {
-        const declared = (section.methodSplits ?? []).map(
-            (entry) => entry.method
-        );
-        const available = new Set(
-            (section.encountersKey
-                ? (game.encounters[section.encountersKey] ?? [])
-                : []
-            ).map((encounter) => encounter.method)
-        );
-        const missing = [...available].filter(
-            (method) => !declared.includes(method)
-        );
-        const absent = declared.filter((method) => !available.has(method));
-        const duplicated = new Set(
-            declared.filter(
-                (method, index) => declared.indexOf(method) !== index
-            )
-        );
+const checkMethodSplits = (
+    game: Game,
+    auditedThrough: string | null
+): string[] =>
+    getEncounterSections(game)
+        .filter((section) =>
+            isLocationAudited(auditedThrough, section.locationName)
+        )
+        .flatMap((section) => {
+            const declared = (section.methodSplits ?? []).map(
+                (entry) => entry.method
+            );
+            const available = new Set(
+                (section.encountersKey
+                    ? (game.encounters[section.encountersKey] ?? [])
+                    : []
+                ).map((encounter) => encounter.method)
+            );
+            const missing = [...available].filter(
+                (method) => !declared.includes(method)
+            );
+            const absent = declared.filter((method) => !available.has(method));
+            const duplicated = new Set(
+                declared.filter(
+                    (method, index) => declared.indexOf(method) !== index
+                )
+            );
 
-        return [
-            missing.length > 0
-                ? `${section.label}: no split for ${missing.join(', ')}`
-                : null,
-            absent.length > 0
-                ? `${section.label}: split for absent method ${absent.join(', ')}`
-                : null,
-            duplicated.size > 0
-                ? `${section.label}: duplicate split for ${[...duplicated].join(', ')}`
-                : null,
-        ].filter((violation) => violation !== null);
-    });
+            return [
+                missing.length > 0
+                    ? `${section.label}: no split for ${missing.join(', ')}`
+                    : null,
+                absent.length > 0
+                    ? `${section.label}: split for absent method ${absent.join(', ')}`
+                    : null,
+                duplicated.size > 0
+                    ? `${section.label}: duplicate split for ${[...duplicated].join(', ')}`
+                    : null,
+            ].filter((violation) => violation !== null);
+        });
 
 const checkSplitNames = (game: Game): string[] => {
     const splitNames = new Set(game.splits.map((split) => split.name));
@@ -188,7 +106,10 @@ const checkSplitNames = (game: Game): string[] => {
     return [...battleViolations, ...methodViolations];
 };
 
-const checkMetLocations = (game: Game, config: GameCheckConfig): string[] => {
+const checkMetLocations = (
+    game: Game,
+    unmappedLocations: string[]
+): string[] => {
     const metNames = new Set(Object.values(game.metLocationById));
     const locationNames = new Set(
         game.locations.map((location) => location.name)
@@ -199,11 +120,10 @@ const checkMetLocations = (game: Game, config: GameCheckConfig): string[] => {
         .map((name) => `met-location "${name}" has no matching location`);
     const unmatchedLocations = [...locationNames]
         .filter(
-            (name) =>
-                !config.unmappedLocations.includes(name) && !metNames.has(name)
+            (name) => !unmappedLocations.includes(name) && !metNames.has(name)
         )
         .map((name) => `location "${name}" has no matching met-location`);
-    const staleUnmappedLocations = config.unmappedLocations
+    const staleUnmappedLocations = unmappedLocations
         .filter((name) => !locationNames.has(name) || metNames.has(name))
         .map((name) => `stale unmapped location "${name}"`);
 
@@ -219,7 +139,7 @@ const checkGame = (game: Game): Report => {
     if (!config) {
         return {
             title: game.name,
-            violations: ['no entry in GAME_CHECK_CONFIGS (check-game-data.ts)'],
+            violations: ['no entry in GAME_CHECK_CONFIGS (game-configs.ts)'],
             warnings: [],
         };
     }
@@ -229,9 +149,11 @@ const checkGame = (game: Game): Report => {
     return {
         title: game.name,
         violations: [
-            ...(config.isSplitAudited ? checkMethodSplits(game) : []),
+            ...checkMethodSplits(game, config.auditedThrough),
             ...checkSplitNames(game),
-            ...(hasMetTable ? checkMetLocations(game, config) : []),
+            ...(hasMetTable
+                ? checkMetLocations(game, config.unmappedLocations)
+                : []),
         ],
         warnings: hasMetTable
             ? []
@@ -246,45 +168,28 @@ const checkLocationFiles = async (
     dataFolder: string,
     games: Game[]
 ): Promise<Report> => {
-    const directory = path.join(
-        process.cwd(),
-        'src/lib/data',
-        dataFolder,
-        'locations'
-    );
     const listedNames = new Set(
         games.flatMap((game) => game.locations.map((location) => location.name))
     );
-
-    const files = fs
-        .readdirSync(directory)
-        .filter((file) => file.endsWith('.ts'));
-    const unlisted = (
-        await Promise.all(
-            files.map(async (file) => {
-                const { default: location } = (await import(
-                    path.join(directory, file)
-                )) as { default: Location };
-                return { file, name: location.name };
-            })
-        )
-    ).filter(({ name }) => !listedNames.has(name));
+    const unlisted = (await getLocationFiles(dataFolder)).filter(
+        ({ name }) => !listedNames.has(name)
+    );
 
     return {
         title: `${dataFolder}/locations`,
         violations: unlisted.map(
-            ({ file, name }) => `${file}: "${name}" isn't in locations.ts`
+            ({ filePath, name }) =>
+                `${path.basename(filePath)}: "${name}" isn't in locations.ts`
         ),
         warnings: [],
     };
 };
 
 const checkGameData = async (): Promise<void> => {
-    stubImageImports();
-    const { GAMES } = await import('@/lib/data/games');
+    const games = await loadGames();
 
     const gamesByFolder = new Map<string, Game[]>();
-    GAMES.forEach((game) => {
+    games.forEach((game) => {
         const folder = GAME_CHECK_CONFIGS[game.name]?.dataFolder;
         if (folder) {
             gamesByFolder.set(folder, [
@@ -295,10 +200,10 @@ const checkGameData = async (): Promise<void> => {
     });
 
     const reports = [
-        ...GAMES.map(checkGame),
+        ...games.map(checkGame),
         ...(await Promise.all(
-            [...gamesByFolder].map(([folder, games]) =>
-                checkLocationFiles(folder, games)
+            [...gamesByFolder].map(([folder, folderGames]) =>
+                checkLocationFiles(folder, folderGames)
             )
         )),
     ];

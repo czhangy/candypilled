@@ -19,6 +19,14 @@ const ROUTE_209: Location = {
             map: route209Main,
             mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'sinnoh-route-209',
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Maylene' },
+                { method: EncounterMethod.OldRod, split: 'Maylene' },
+                { method: EncounterMethod.GoodRod, split: 'Maylene' },
+                { method: EncounterMethod.HoneyTree, split: 'Maylene' },
+                { method: EncounterMethod.Static, split: 'Maylene' },
+                { method: EncounterMethod.Surf, split: 'Byron' },
+            ],
             battles: [
                 {
                     battleKey: 'pkmn-breeder-m-albert',

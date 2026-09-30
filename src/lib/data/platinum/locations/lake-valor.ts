@@ -2,7 +2,7 @@ import {
     lakeValorPostGiratina,
     lakeValorPreGiratina,
 } from '@/lib/data/platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_VALOR: Location = {
@@ -35,6 +35,12 @@ const LAKE_VALOR: Location = {
             map: lakeValorPostGiratina,
             mapAnchor: MapAnchor.TopRight,
             encountersKey: 'lake-valor-area',
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Volkner' },
+                { method: EncounterMethod.Surf, split: 'Volkner' },
+                { method: EncounterMethod.GoodRod, split: 'Volkner' },
+                { method: EncounterMethod.OldRod, split: 'Volkner' },
+            ],
         },
     ],
 };

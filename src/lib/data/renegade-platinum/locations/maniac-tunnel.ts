@@ -1,5 +1,5 @@
 import { maniacTunnel } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const MANIAC_TUNNEL: Location = {
@@ -7,6 +7,7 @@ const MANIAC_TUNNEL: Location = {
     map: maniacTunnel,
     mapAnchor: MapAnchor.Right,
     encountersKey: 'maniac-tunnel',
+    methodSplits: [{ method: EncounterMethod.Walking, split: 'Wake' }],
 };
 
 export default MANIAC_TUNNEL;

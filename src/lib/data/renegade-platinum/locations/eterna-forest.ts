@@ -2,7 +2,7 @@ import {
     eternaForestExterior,
     eternaForestInterior,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ETERNA_FOREST: Location = {
@@ -13,6 +13,11 @@ const ETERNA_FOREST: Location = {
             map: eternaForestInterior,
             mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'eterna-forest',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Gardenia' },
+                { method: EncounterMethod.PokeRadar, split: 'Gardenia' },
+                { method: EncounterMethod.HoneyTree, split: 'Gardenia' },
+            ],
             tagPartner: [{ battleKey: 'pkmn-trainer-cheryl-tag' }],
             battles: [
                 {
@@ -67,6 +72,11 @@ const ETERNA_FOREST: Location = {
             map: eternaForestExterior,
             mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'eterna-forest',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Gardenia' },
+                { method: EncounterMethod.PokeRadar, split: 'Gardenia' },
+                { method: EncounterMethod.HoneyTree, split: 'Gardenia' },
+            ],
         },
     ],
 };

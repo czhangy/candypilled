@@ -2,7 +2,7 @@ import {
     fuegoIronworksExterior,
     fuegoIronworksInterior,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const FUEGO_IRONWORKS: Location = {
@@ -13,6 +13,15 @@ const FUEGO_IRONWORKS: Location = {
             map: fuegoIronworksExterior,
             mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'fuego-ironworks',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Byron' },
+                { method: EncounterMethod.Surf, split: 'Byron' },
+                { method: EncounterMethod.OldRod, split: 'Byron' },
+                { method: EncounterMethod.GoodRod, split: 'Byron' },
+                { method: EncounterMethod.SuperRod, split: 'Candice' },
+                { method: EncounterMethod.PokeRadar, split: 'Byron' },
+                { method: EncounterMethod.HoneyTree, split: 'Byron' },
+            ],
         },
         {
             name: 'Interior',
