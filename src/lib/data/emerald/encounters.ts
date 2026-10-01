@@ -2612,13 +2612,6 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
     ],
     'hoenn-route-111': [
         {
-            species: 'sandshrew',
-            method: EncounterMethod.Grass,
-            minLevel: 19,
-            maxLevel: 21,
-            chance: 35,
-        },
-        {
             species: 'geodude',
             method: EncounterMethod.RockSmash,
             minLevel: 5,
@@ -2668,20 +2661,6 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             chance: 99,
         },
         {
-            species: 'trapinch',
-            method: EncounterMethod.Grass,
-            minLevel: 19,
-            maxLevel: 21,
-            chance: 35,
-        },
-        {
-            species: 'cacnea',
-            method: EncounterMethod.Grass,
-            minLevel: 20,
-            maxLevel: 22,
-            chance: 6,
-        },
-        {
             species: 'barboach',
             method: EncounterMethod.GoodRod,
             minLevel: 10,
@@ -2695,9 +2674,32 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             maxLevel: 45,
             chance: 100,
         },
+    ],
+    'hoenn-route-111-desert': [
+        {
+            species: 'sandshrew',
+            method: EncounterMethod.Sand,
+            minLevel: 19,
+            maxLevel: 21,
+            chance: 35,
+        },
+        {
+            species: 'trapinch',
+            method: EncounterMethod.Sand,
+            minLevel: 19,
+            maxLevel: 21,
+            chance: 35,
+        },
+        {
+            species: 'cacnea',
+            method: EncounterMethod.Sand,
+            minLevel: 20,
+            maxLevel: 22,
+            chance: 6,
+        },
         {
             species: 'baltoy',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Sand,
             minLevel: 19,
             maxLevel: 21,
             chance: 24,
@@ -5209,9 +5211,9 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         {
             species: 'horsea',
             method: EncounterMethod.Trade,
-            minLevel: 5,
-            maxLevel: 100,
-            chance: 100,
+            minLevel: null,
+            maxLevel: null,
+            chance: null,
             tradeFor: 'bagon',
         },
         {
@@ -5277,9 +5279,9 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         {
             species: 'seedot',
             method: EncounterMethod.Trade,
-            minLevel: 4,
-            maxLevel: 100,
-            chance: 100,
+            minLevel: null,
+            maxLevel: null,
+            chance: null,
             tradeFor: 'ralts',
         },
         {
@@ -5303,9 +5305,9 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         {
             species: 'plusle',
             method: EncounterMethod.Trade,
-            minLevel: 5,
-            maxLevel: 100,
-            chance: 100,
+            minLevel: null,
+            maxLevel: null,
+            chance: null,
             tradeFor: 'volbeat',
         },
     ],

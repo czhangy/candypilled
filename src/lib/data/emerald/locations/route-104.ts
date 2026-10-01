@@ -1,6 +1,6 @@
 import { route104North, route104South } from '@/lib/data/emerald/maps';
 import { GEN_3_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_104: Location = {
@@ -11,6 +11,13 @@ const ROUTE_104: Location = {
             map: route104South,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'hoenn-route-104-area',
+            methodSplits: [
+                { method: EncounterMethod.GoodRod, split: 'Winona' },
+                { method: EncounterMethod.OldRod, split: 'Brawly' },
+                { method: EncounterMethod.SuperRod, split: 'Winona' },
+                { method: EncounterMethod.Grass, split: 'Roxanne' },
+                { method: EncounterMethod.Surf, split: 'Winona' },
+            ],
             battles: [
                 {
                     battleKey: 'lady-cindy',
@@ -34,6 +41,13 @@ const ROUTE_104: Location = {
             map: route104North,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'hoenn-route-104-area',
+            methodSplits: [
+                { method: EncounterMethod.GoodRod, split: 'Winona' },
+                { method: EncounterMethod.OldRod, split: 'Brawly' },
+                { method: EncounterMethod.SuperRod, split: 'Winona' },
+                { method: EncounterMethod.Grass, split: 'Roxanne' },
+                { method: EncounterMethod.Surf, split: 'Winona' },
+            ],
             battles: [
                 {
                     battleKey: 'rich-boy-winston',

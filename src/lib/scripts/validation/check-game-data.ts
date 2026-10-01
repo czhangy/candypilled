@@ -7,10 +7,7 @@ import {
     logWarning,
     runScript,
 } from '@/lib/scripts/utils/helpers';
-import {
-    GAME_CHECK_CONFIGS,
-    isLocationAudited,
-} from '@/lib/scripts/validation/game-configs';
+import { GAME_CHECK_CONFIGS } from '@/lib/scripts/validation/game-configs';
 import { Game, MethodSplit } from '@/lib/static/types';
 
 type Report = {
@@ -22,7 +19,6 @@ type Report = {
 type EncounterSection = {
     encountersKey: string | undefined;
     label: string;
-    locationName: string;
     methodSplits: MethodSplit[] | undefined;
 };
 
@@ -32,59 +28,50 @@ const getEncounterSections = (game: Game): EncounterSection[] =>
             ? location.subareas.map((subarea) => ({
                   encountersKey: subarea.encountersKey,
                   label: `${location.name} / ${subarea.name}`,
-                  locationName: location.name,
                   methodSplits: subarea.methodSplits,
               }))
             : [
                   {
                       encountersKey: location.encountersKey,
                       label: location.name,
-                      locationName: location.name,
                       methodSplits: location.methodSplits,
                   },
               ]
     );
 
-const checkMethodSplits = (
-    game: Game,
-    auditedThrough: string | null
-): string[] =>
-    getEncounterSections(game)
-        .filter((section) =>
-            isLocationAudited(auditedThrough, section.locationName)
-        )
-        .flatMap((section) => {
-            const declared = (section.methodSplits ?? []).map(
-                (entry) => entry.method
-            );
-            const available = new Set(
-                (section.encountersKey
-                    ? (game.encounters[section.encountersKey] ?? [])
-                    : []
-                ).map((encounter) => encounter.method)
-            );
-            const missing = [...available].filter(
-                (method) => !declared.includes(method)
-            );
-            const absent = declared.filter((method) => !available.has(method));
-            const duplicated = new Set(
-                declared.filter(
-                    (method, index) => declared.indexOf(method) !== index
-                )
-            );
+const checkMethodSplits = (game: Game): string[] =>
+    getEncounterSections(game).flatMap((section) => {
+        const declared = (section.methodSplits ?? []).map(
+            (entry) => entry.method
+        );
+        const available = new Set(
+            (section.encountersKey
+                ? (game.encounters[section.encountersKey] ?? [])
+                : []
+            ).map((encounter) => encounter.method)
+        );
+        const missing = [...available].filter(
+            (method) => !declared.includes(method)
+        );
+        const absent = declared.filter((method) => !available.has(method));
+        const duplicated = new Set(
+            declared.filter(
+                (method, index) => declared.indexOf(method) !== index
+            )
+        );
 
-            return [
-                missing.length > 0
-                    ? `${section.label}: no split for ${missing.join(', ')}`
-                    : null,
-                absent.length > 0
-                    ? `${section.label}: split for absent method ${absent.join(', ')}`
-                    : null,
-                duplicated.size > 0
-                    ? `${section.label}: duplicate split for ${[...duplicated].join(', ')}`
-                    : null,
-            ].filter((violation) => violation !== null);
-        });
+        return [
+            missing.length > 0
+                ? `${section.label}: no split for ${missing.join(', ')}`
+                : null,
+            absent.length > 0
+                ? `${section.label}: split for absent method ${absent.join(', ')}`
+                : null,
+            duplicated.size > 0
+                ? `${section.label}: duplicate split for ${[...duplicated].join(', ')}`
+                : null,
+        ].filter((violation) => violation !== null);
+    });
 
 const checkSplitNames = (game: Game): string[] => {
     const splitNames = new Set(game.splits.map((split) => split.name));
@@ -149,7 +136,7 @@ const checkGame = (game: Game): Report => {
     return {
         title: game.name,
         violations: [
-            ...checkMethodSplits(game, config.auditedThrough),
+            ...checkMethodSplits(game),
             ...checkSplitNames(game),
             ...(hasMetTable
                 ? checkMetLocations(game, config.unmappedLocations)

@@ -4,7 +4,7 @@ import {
     route109SeashoreHouse,
 } from '@/lib/data/emerald/maps';
 import { GEN_3_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_109: Location = {
@@ -15,6 +15,12 @@ const ROUTE_109: Location = {
             map: route109Beach,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'hoenn-route-109',
+            methodSplits: [
+                { method: EncounterMethod.GoodRod, split: 'Winona' },
+                { method: EncounterMethod.OldRod, split: 'Brawly' },
+                { method: EncounterMethod.Surf, split: 'Winona' },
+                { method: EncounterMethod.SuperRod, split: 'Winona' },
+            ],
             battles: [
                 {
                     battleKey: 'sailor-huey',
@@ -75,6 +81,12 @@ const ROUTE_109: Location = {
             map: route109Ocean,
             mapAnchor: MapAnchor.Left,
             encountersKey: 'hoenn-route-109',
+            methodSplits: [
+                { method: EncounterMethod.GoodRod, split: 'Winona' },
+                { method: EncounterMethod.OldRod, split: 'Winona' },
+                { method: EncounterMethod.Surf, split: 'Winona' },
+                { method: EncounterMethod.SuperRod, split: 'Winona' },
+            ],
             battles: [
                 {
                     battleKey: 'tuber-f-austina',

@@ -25,6 +25,13 @@ scope.
 | `met-locations.ts`                            | not started                                                                                                                         |
 | New trainer classes needed                    | none so far                                                                                                                         |
 
+## Method split floors
+
+Applied automatically to every location, no asking (user-stated): `surf`,
+`good-rod` and `super-rod` are never earlier than Winona, `rock-smash`
+never earlier than Flannery, `old-rod` never earlier than Brawly. A later
+base split stays as given.
+
 ## Per-location workflow
 
 1. I prompt for the next location by name, in confirmed split order.
@@ -49,7 +56,12 @@ scope.
    default, never pre-filled as "confirm this," even when another
    version's data has the identical trainer set.** Hard rule, violated
    multiple times already — see memory.
-7. Once metadata is confirmed, write `battles.ts`, run
+7. Ask for splits in the same message as the `BattleMetadata` list:
+   the base split of each subarea, plus any battle or encounter method
+   in a different split. Write `BattleData.split` and `methodSplits`
+   from the answer only (see `onboard-new-game` step 8); `check:data`
+   fails an encounter method without a split.
+8. Once metadata and splits are confirmed, write `battles.ts`, run
    `tsc`/ESLint/Prettier, **then** delete the source screenshot(s) — not
    before, in case the crop/map needs revisiting.
 
@@ -179,4 +191,12 @@ trusting this — fall back to asking the user otherwise.
 2. **Asset spot-checks** — `public/trainers/emerald/`,
    `public/pokemon/emerald/` pre-staged and holding up; flag any missing
    sprite immediately rather than assuming coverage.
-3. **`met-locations.ts`** not started.
+3. **`met-locations.ts`** is written (all Underwater indices
+   consolidated) but not wired: `emerald.ts` still has
+   `metLocationById: {}`, because `check:data` fails every met name with
+   no location file. Wire it once those locations exist, and set
+   Emerald's `unmappedLocations` in `game-configs.ts` then (the Hoenn
+   list has Steven's Room, but Emerald's champion room is Wallace's).
+4. **Back-fill `methodSplits` for locations wired before splits were
+   assigned at onboarding** — `check:data` lists every encounter method
+   still without one. Ask the user per location; don't prefill.

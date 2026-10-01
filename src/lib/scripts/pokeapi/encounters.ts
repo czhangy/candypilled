@@ -401,11 +401,21 @@ const NULLIFIED_CHANCE_METHODS: string[] = [
 ];
 
 const nullifyChances = (encounters: RawEncounter[]): RawEncounter[] =>
-    encounters.map((encounter) =>
-        NULLIFIED_CHANCE_METHODS.includes(encounter.method)
+    encounters.map((encounter) => {
+        if (encounter.method === EncounterMethod.Trade) {
+            // A traded-for Pokémon has no level range or chance of its own.
+            return {
+                ...encounter,
+                minLevel: null,
+                maxLevel: null,
+                chance: null,
+            };
+        }
+
+        return NULLIFIED_CHANCE_METHODS.includes(encounter.method)
             ? { ...encounter, chance: null }
-            : encounter
-    );
+            : encounter;
+    });
 
 // A starter handoff is the run's only encounter at its location, so a
 // location with a Starter keeps just its Starter entries.

@@ -1,5 +1,5 @@
 import { rustboroCityBrendan, rustboroCityMay } from '@/lib/data/emerald/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const RUSTBORO_CITY: Location = {
@@ -7,6 +7,10 @@ const RUSTBORO_CITY: Location = {
     map: { male: rustboroCityMay, female: rustboroCityBrendan },
     mapAnchor: MapAnchor.Bottom,
     encountersKey: 'rustboro-city',
+    methodSplits: [
+        { method: EncounterMethod.Trade, split: 'Roxanne' },
+        { method: EncounterMethod.Gift, split: 'Norman' },
+    ],
     battles: [
         {
             battleKey: 'pkmn-trainer-may-rustboro',

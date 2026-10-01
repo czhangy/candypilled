@@ -1,5 +1,5 @@
 import { petalburgWoods } from '@/lib/data/emerald/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const PETALBURG_WOODS: Location = {
@@ -7,6 +7,7 @@ const PETALBURG_WOODS: Location = {
     map: petalburgWoods,
     mapAnchor: MapAnchor.Bottom,
     encountersKey: 'petalburg-woods',
+    methodSplits: [{ method: EncounterMethod.Grass, split: 'Roxanne' }],
     battles: [
         {
             battleKey: 'bug-catcher-lyle',

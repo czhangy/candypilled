@@ -109,7 +109,11 @@ const buildValuesByGeneration = (
         .map((entry) => ({
             generation:
                 versionGroupGenerations.get(entry.version_group.name) ?? 1,
-            effect: entry.flavor_text.replace(/[\n\f]+/g, ' '),
+            // A line break after a hyphen splits one word ("Fire-\ntype"), so
+            // it joins without a space.
+            effect: entry.flavor_text
+                .replace(/-[\n\f]+/g, '-')
+                .replace(/[\n\f]+/g, ' '),
         }))
         .sort((a, b) => a.generation - b.generation);
 

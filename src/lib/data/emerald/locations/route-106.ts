@@ -1,5 +1,5 @@
 import { route106 } from '@/lib/data/emerald/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_106: Location = {
@@ -7,6 +7,12 @@ const ROUTE_106: Location = {
     map: route106,
     mapAnchor: MapAnchor.Right,
     encountersKey: 'hoenn-route-106',
+    methodSplits: [
+        { method: EncounterMethod.GoodRod, split: 'Winona' },
+        { method: EncounterMethod.OldRod, split: 'Brawly' },
+        { method: EncounterMethod.Surf, split: 'Winona' },
+        { method: EncounterMethod.SuperRod, split: 'Winona' },
+    ],
     battles: [
         {
             battleKey: 'fisherman-ned',

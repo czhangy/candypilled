@@ -147,7 +147,7 @@
         "valuesByGeneration": [
             {
                 "fromGeneration": 3,
-                "description": "A hold item that raises the critical- hit rate."
+                "description": "A hold item that raises the critical-hit rate."
             },
             {
                 "fromGeneration": 4,
@@ -1865,7 +1865,7 @@
         "valuesByGeneration": [
             {
                 "fromGeneration": 3,
-                "description": "A hold item that boosts FIGHTING- type moves."
+                "description": "A hold item that boosts FIGHTING-type moves."
             },
             {
                 "fromGeneration": 4,
@@ -1884,7 +1884,7 @@
         "valuesByGeneration": [
             {
                 "fromGeneration": 3,
-                "description": "A hold item that boosts ELECTRIC- type moves."
+                "description": "A hold item that boosts ELECTRIC-type moves."
             },
             {
                 "fromGeneration": 4,
@@ -1998,7 +1998,7 @@
         "valuesByGeneration": [
             {
                 "fromGeneration": 3,
-                "description": "A hold item that boosts PSYCHIC- type moves."
+                "description": "A hold item that boosts PSYCHIC-type moves."
             },
             {
                 "fromGeneration": 4,
@@ -3261,7 +3261,7 @@
         "valuesByGeneration": [
             {
                 "fromGeneration": 3,
-                "description": "A hold item that ups the critical- hit rate in a pinch."
+                "description": "A hold item that ups the critical-hit rate in a pinch."
             },
             {
                 "fromGeneration": 4,

@@ -1,6 +1,6 @@
 import { route117 } from '@/lib/data/emerald/maps';
 import { GEN_3_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_117: Location = {
@@ -8,6 +8,13 @@ const ROUTE_117: Location = {
     map: route117,
     mapAnchor: MapAnchor.Right,
     encountersKey: 'hoenn-route-117',
+    methodSplits: [
+        { method: EncounterMethod.Grass, split: 'Brawly' },
+        { method: EncounterMethod.GoodRod, split: 'Winona' },
+        { method: EncounterMethod.OldRod, split: 'Brawly' },
+        { method: EncounterMethod.Surf, split: 'Winona' },
+        { method: EncounterMethod.SuperRod, split: 'Winona' },
+    ],
     battles: [
         {
             battleKey: 'triathlete-runner-m-dylan',

@@ -3,7 +3,7 @@ import {
     slateportCityOceanicMuseum,
 } from '@/lib/data/emerald/maps';
 import { GEN_3_TRUE_DOUBLE_HEIGHT } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SLATEPORT_CITY: Location = {
@@ -14,6 +14,12 @@ const SLATEPORT_CITY: Location = {
             map: slateportCity,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'slateport-city-area',
+            methodSplits: [
+                { method: EncounterMethod.GoodRod, split: 'Winona' },
+                { method: EncounterMethod.OldRod, split: 'Brawly' },
+                { method: EncounterMethod.Surf, split: 'Winona' },
+                { method: EncounterMethod.SuperRod, split: 'Winona' },
+            ],
         },
         {
             name: 'Oceanic Museum',

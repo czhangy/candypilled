@@ -101,11 +101,17 @@ If a battle references a class missing from `src/lib/data/trainer-classes.ts`, r
 
 ### 7. Splits and `saveCondition`
 
-Author `splits/*.ts` by hand (no generator; they encode judgment). `Split.locations` lists only the locations the player is required to go through for that split, curated by the user split by split (see `.claude/docs/split-location-wiring.md`; the trim runs through `npm run audit:trim-sheet` / `audit:trim-apply`, described in `.claude/docs/split-audit.md`). It need not list every location: the Locations tab shows all of `Game.locations`. Every split needs a `saveCondition`; see "Deriving a `saveCondition`".
+Author `splits/*.ts` by hand (no generator; they encode judgment). `Split.locations` lists only the locations the player is required to go through for that split, curated by the user (see `.claude/docs/split-location-wiring.md`). It need not list every location: the Locations tab shows all of `Game.locations`. Every split needs a `saveCondition`; see "Deriving a `saveCondition`".
 
-### 8. Assign splits
+### 8. Assign splits (per location, as it's onboarded)
 
-`BattleData.split` and `Location`/`Subarea` `methodSplits` (one `{ method, split }` per encounter method) record which split each battle and encounter method first becomes available in. Everything starts as the game's first split; then audit in Locations-tab (alphabetical) order, in batches, following `.claude/docs/split-audit.md` (`npm run audit:sheet` / `audit:apply`). The user states every split; never infer one from location membership, sheet text, or geography. A method with no `methodSplits` entry shows no badge.
+Splits are decided while each location is wired, never in a later pass. Once a location's battles and encounters exist, ask the user for:
+
+1. Whether the location belongs in a split's `locations` (required to pass through it) and, if so, which.
+2. Each subarea's base split. A subarea has one split; only rare battles or encounter methods differ from it.
+3. The exceptions: individual battles (`BattleData.split`, tag partners included) and methods that become available in a different split than the base (for example, surf in a later split than the area's base).
+
+`BattleData.split` and `Location`/`Subarea` `methodSplits` (one `{ method, split }` per encounter method) record the split each first becomes available in. Write them from the user's answer. Never infer one from location membership, sheet text, or geography, and never leave a first-split placeholder to fix later. `npm run check:data` fails any encounter method without a split. A game-specific gating rule (for example, a move or item that unlocks surf or fishing in a later split) applies only once the user has stated it for that game, and then to every location without asking again.
 
 ### 9. Assemble and register
 
@@ -116,9 +122,8 @@ Assemble the `Game` in `<slug>.ts`: name, logo, generation, `version` (PokeAPI v
 
 ### 10. Validate
 
-Run `npm run check:data`. It checks that every encounter method has a split (for locations up to the game's `auditedThrough` pointer), every split name is real, met-locations and locations correspond in both directions, and every file in `locations/` is listed in `locations.ts`. It runs in pre-commit for staged `src/lib/data/` files. For a new game, add an entry to `GAME_CHECK_CONFIGS` in `src/lib/scripts/validation/game-configs.ts`:
+Run `npm run check:data`. It checks that every encounter method has a split, every split name is real, met-locations and locations correspond in both directions, and every file in `locations/` is listed in `locations.ts`. It runs in pre-commit for staged `src/lib/data/` files. For a new game, add an entry to `GAME_CHECK_CONFIGS` in `src/lib/scripts/validation/game-configs.ts`:
 
-- `auditedThrough: null`, which `audit:apply` advances as step 8 progresses
 - `dataFolder`
 - `unmappedLocations`, the locations with no met entry
 

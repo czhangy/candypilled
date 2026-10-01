@@ -1,6 +1,6 @@
 import { route118East, route118West } from '@/lib/data/emerald/maps';
 import { GEN_3_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_118: Location = {
@@ -11,6 +11,13 @@ const ROUTE_118: Location = {
             map: route118West,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'hoenn-route-118',
+            methodSplits: [
+                { method: EncounterMethod.GoodRod, split: 'Winona' },
+                { method: EncounterMethod.OldRod, split: 'Brawly' },
+                { method: EncounterMethod.Surf, split: 'Winona' },
+                { method: EncounterMethod.Grass, split: 'Brawly' },
+                { method: EncounterMethod.SuperRod, split: 'Winona' },
+            ],
             battles: [
                 {
                     battleKey: 'aroma-lady-rose',
@@ -39,6 +46,13 @@ const ROUTE_118: Location = {
             map: route118East,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'hoenn-route-118',
+            methodSplits: [
+                { method: EncounterMethod.GoodRod, split: 'Winona' },
+                { method: EncounterMethod.OldRod, split: 'Winona' },
+                { method: EncounterMethod.Surf, split: 'Winona' },
+                { method: EncounterMethod.Grass, split: 'Winona' },
+                { method: EncounterMethod.SuperRod, split: 'Winona' },
+            ],
             battles: [
                 {
                     battleKey: 'interviewers-gabby-and-ty',
