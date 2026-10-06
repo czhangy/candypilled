@@ -238,11 +238,7 @@ const buildDescriptionTimeline = (
         .map((entry) => ({
             generation:
                 versionGroupGenerations.get(entry.version_group.name) ?? 1,
-            // A line break after a hyphen splits one word ("WATER-\ntype"), so
-            // it joins without a space.
-            description: entry.flavor_text
-                .replace(/-[\n\f]+/g, '-')
-                .replace(/[\n\f]+/g, ' '),
+            description: StringHelpers.flattenFlavorText(entry.flavor_text),
         }))
         .sort((a, b) => a.generation - b.generation);
 

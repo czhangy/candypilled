@@ -19,7 +19,7 @@ scope.
 | Roxanne split (14 locations)                  | **done**                                                                                                                            |
 | Brawly split (21 locations)                   | **done**                                                                                                                            |
 | Wattson split                                 | **done** — matches R/S's Wattson list verbatim (user confirmed)                                                                     |
-| Flannery split                                | **in progress** — 10/20 R/S locations wired; next new location: Fallarbor Town                                                      |
+| Flannery split                                | **in progress** — 11/20 R/S locations wired; Fallarbor Town done                                                                    |
 | Norman/Winona/Tate & Liza/Juan/Wallace splits | **not started** (Trick House/Route 111/Route 118 already gate battles into some of these — see their locations' own `split` fields) |
 | `battles.ts`                                  | 181 wired (9 solo Route 113 entries + 1 merged Lawrence/Lung Double entry)                                                          |
 | `met-locations.ts`                            | not started                                                                                                                         |
@@ -32,14 +32,27 @@ Applied automatically to every location, no asking (user-stated): `surf`,
 never earlier than Flannery, `old-rod` never earlier than Brawly. A later
 base split stays as given.
 
+## Fetching Bulbapedia
+
+Direct requests (curl, WebFetch) hit a Cloudflare 403. Use the Wayback
+Machine's raw copy instead, with decompression on:
+`curl -sL --compressed "https://web.archive.org/web/2026id_/https://bulbapedia.bulbagarden.net/wiki/Hoenn_Route_105"`.
+Read the `Pokémon Emerald` heading under `Trainers` for the table order
+(verified against Route 105). Fetch the order yourself; don't ask for it.
+
 ## Per-location workflow
 
-1. I prompt for the next location by name, in confirmed split order.
+1. I prompt for the next location by name. From Fallarbor Town on,
+   locations are onboarded in met-location index order (lowest
+   unwired index in `met-locations.ts` first), not split order; a
+   location's battles and methods still get their split, but it joins a
+   split's `locations` only when the user says so.
 2. User captures the map into `~/pokeemerald` (check
    `find ~/pokeemerald -maxdepth 1 -iname "*.png"`); two files if gendered.
-3. **Wire map + location + split immediately, before asking anything.**
+3. **Wire map + location immediately, before asking anything.**
    Copy PNG(s) to `src/lib/data/emerald/maps/`, `npm run gen:location`,
-   set `mapAnchor`/`encountersKey`, add to the split's `locations` array.
+   set `mapAnchor`/`encountersKey`. Never add it to a split's `locations`
+   array unless the user says to (see `split-location-wiring.md`).
 4. Extract trainer roster/team data from decomp
    (`scripts.inc` → `trainers.h`/`trainer_parties.h` → personality-hash
    formula for IV/nature/gender/ability). Bulbapedia is only a pointer —
@@ -96,12 +109,12 @@ battles), Route 112 (North/South, revisit), Route 111
 merged into one `Double` battle entry with `secondTrainer` per user
 instruction, despite both using `trainerbattle_single` in decomp —
 marker uses `customHeight` to span both trainers' original tile
-positions) — done. Fallarbor Town, Route 114, Meteor Falls, Route 115,
+positions), Fallarbor Town (no battles or encounters) — done. Route 114, Meteor Falls, Route 115,
 Route 112 (again), Mt Chimney, Jagged Pass, Lavaridge Town, Lavaridge
 Gym — not started, none of these locations exist for Emerald yet
 (Mt Chimney has captures already
 sitting in `~/pokeemerald`, held back until this point in the order).
-Next: Fallarbor Town.
+Next, in met-location index order: Lavaridge Town (3).
 
 ## Per-case confirmed-facts table
 

@@ -400,10 +400,10 @@ const NULLIFIED_CHANCE_METHODS: string[] = [
     EncounterMethod.Static,
 ];
 
-const nullifyChances = (encounters: RawEncounter[]): RawEncounter[] =>
+const nullifyUnusedValues = (encounters: RawEncounter[]): RawEncounter[] =>
     encounters.map((encounter) => {
         if (encounter.method === EncounterMethod.Trade) {
-            // A traded-for Pokémon has no level range or chance of its own.
+            // A traded-for Pokémon has no level or chance of its own.
             return {
                 ...encounter,
                 minLevel: null,
@@ -500,7 +500,7 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
             const remerged = mergeEncounters(withHoneyTree, 'sum');
             const withTradeFor = resolveTradeFor(remerged);
             const rawFinalEncounters = keepOnlyStarters(
-                nullifyChances(withTradeFor)
+                nullifyUnusedValues(withTradeFor)
             );
 
             if (rawFinalEncounters.length === 0) continue;

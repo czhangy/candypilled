@@ -1,4 +1,6 @@
+import FALLARBOR_TOWN from '@/lib/data/emerald/locations/fallarbor-town';
 import FIERY_PATH from '@/lib/data/emerald/locations/fiery-path';
+import LAVARIDGE_TOWN from '@/lib/data/emerald/locations/lavaridge-town';
 import MAUVILLE_CITY from '@/lib/data/emerald/locations/mauville-city';
 import ROUTE_111 from '@/lib/data/emerald/locations/route-111';
 import ROUTE_112 from '@/lib/data/emerald/locations/route-112';
@@ -35,6 +37,8 @@ const FLANNERY: Split = {
             'Desert',
         ]),
         ROUTE_113,
+        FALLARBOR_TOWN,
+        LAVARIDGE_TOWN,
     ],
     // FLAG_BADGE04_GET = SYSTEM_FLAGS (0x860) + 0x0A, per pokeemerald's
     // include/constants/flags.h -- see ONBOARDING.md for the full table.

@@ -1,4 +1,10 @@
-import { useEffect, useReducer, useState, useSyncExternalStore } from 'react';
+import {
+    useEffect,
+    useMemo,
+    useReducer,
+    useState,
+    useSyncExternalStore,
+} from 'react';
 import {
     MAX_EV,
     MAX_IV,
@@ -15,6 +21,7 @@ import {
     CalcFieldState,
     CalcPokemonInput,
     CalcSideConditions,
+    DropdownOption,
     Game,
     Run,
     SpeedComparison,
@@ -424,6 +431,15 @@ const CalcTab: React.FC<CalcTabProps> = ({
         defenderReducer,
         undefined,
         getBlankDefenderState
+    );
+
+    const tagPartnerOptions = useMemo<DropdownOption[]>(
+        () =>
+            BattleHelpers.getAllTagPartners(game, run.gender).map((entry) => ({
+                label: entry.label,
+                value: entry.battleKey,
+            })),
+        [game, run.gender]
     );
 
     // -------------------------------------------------------------------------
@@ -997,20 +1013,23 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     run={run}
                     selectedLocation={selectedLocation}
                 />
-                <TagSelectPanel
-                    game={game}
-                    gender={run.gender}
-                    onSelectTagPartner={handleSelectTagPartner}
-                    selectedTagPartner={selectedTagPartner}
-                />
-                <TagTeamSelectPanel
-                    enemySpeed={trainerSpeed}
-                    game={game}
-                    onSelectMember={handleSelectTagPartnerMember}
-                    selectedMemberIndex={selectedTagMemberIndex}
-                    selectedTagPartner={selectedTagPartner}
-                    starter={run.starter}
-                />
+                {tagPartnerOptions.length > 0 && (
+                    <>
+                        <TagSelectPanel
+                            onSelectTagPartner={handleSelectTagPartner}
+                            options={tagPartnerOptions}
+                            selectedTagPartner={selectedTagPartner}
+                        />
+                        <TagTeamSelectPanel
+                            enemySpeed={trainerSpeed}
+                            game={game}
+                            onSelectMember={handleSelectTagPartnerMember}
+                            selectedMemberIndex={selectedTagMemberIndex}
+                            selectedTagPartner={selectedTagPartner}
+                            starter={run.starter}
+                        />
+                    </>
+                )}
             </div>
             <FieldEffectsPanel
                 field={field}

@@ -74,13 +74,9 @@ const ROUTE_115: Location = {
                     y: 38.36,
                 },
                 {
-                    battleKey: 'battle-girl-helene',
-                    x: 38.75,
-                    y: 18.36,
-                },
-                {
                     battleKey: 'psychic-f-alix',
-                    x: 26.25,
+                    customWidth: 102,
+                    x: 32.5,
                     y: 18.36,
                 },
             ],

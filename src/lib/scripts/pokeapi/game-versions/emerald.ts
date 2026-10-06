@@ -87,6 +87,12 @@ export const emerald: GameVersion = {
     region: 'hoenn',
     generation: 3,
     excludedLocations: EXCLUDED_LOCATIONS,
+    // Steven's Beldum gift and the Safari Zone expansion aren't modeled.
+    excludedAreas: [
+        'mossdeep-city-stevens-house',
+        'hoenn-safari-zone-expansion-south',
+        'hoenn-safari-zone-expansion-north',
+    ],
     caveLocations: CAVE_LOCATIONS,
     excludedMethods: [
         'roaming-grass',

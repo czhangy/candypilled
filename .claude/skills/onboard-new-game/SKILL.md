@@ -107,11 +107,10 @@ Author `splits/*.ts` by hand (no generator; they encode judgment). `Split.locati
 
 Splits are decided while each location is wired, never in a later pass. Once a location's battles and encounters exist, ask the user for:
 
-1. Whether the location belongs in a split's `locations` (required to pass through it) and, if so, which.
-2. Each subarea's base split. A subarea has one split; only rare battles or encounter methods differ from it.
-3. The exceptions: individual battles (`BattleData.split`, tag partners included) and methods that become available in a different split than the base (for example, surf in a later split than the area's base).
+1. Each subarea's base split. A subarea has one split; only rare battles or encounter methods differ from it.
+2. The exceptions: individual battles (`BattleData.split`, tag partners included) and methods that become available in a different split than the base (for example, surf in a later split than the area's base).
 
-`BattleData.split` and `Location`/`Subarea` `methodSplits` (one `{ method, split }` per encounter method) record the split each first becomes available in. Write them from the user's answer. Never infer one from location membership, sheet text, or geography, and never leave a first-split placeholder to fix later. `npm run check:data` fails any encounter method without a split. A game-specific gating rule (for example, a move or item that unlocks surf or fishing in a later split) applies only once the user has stated it for that game, and then to every location without asking again.
+`BattleData.split` and `Location`/`Subarea` `methodSplits` (one `{ method, split }` per encounter method) record the split each first becomes available in. Write them from the user's answer. Never infer one from location membership, sheet text, or geography, and never leave a first-split placeholder to fix later. `npm run check:data` fails any encounter method without a split. Never add a location to a split's `locations` list unless the user says to: "it's in the X split" means its battle and method splits only. A game-specific gating rule (for example, a move or item that unlocks surf or fishing in a later split) applies only once the user has stated it for that game, and then to every location without asking again.
 
 ### 9. Assemble and register
 

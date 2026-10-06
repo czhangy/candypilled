@@ -1,4 +1,5 @@
 import path from 'path';
+import { TRAINER_CLASSES } from '@/lib/data/trainer-classes';
 import {
     getLocationFiles,
     loadGames,
@@ -8,7 +9,7 @@ import {
     runScript,
 } from '@/lib/scripts/utils/helpers';
 import { GAME_CHECK_CONFIGS } from '@/lib/scripts/validation/game-configs';
-import { Game, MethodSplit } from '@/lib/static/types';
+import { BattleTrainer, Game, MethodSplit } from '@/lib/static/types';
 
 type Report = {
     title: string;
@@ -93,6 +94,26 @@ const checkSplitNames = (game: Game): string[] => {
     return [...battleViolations, ...methodViolations];
 };
 
+const getTrainerClasses = (trainer: BattleTrainer): string[] => [
+    trainer.trainerClass,
+    ...trainer.teams.flatMap((team) => team.trainerClass ?? []),
+];
+
+const checkTrainerClasses = (game: Game): string[] =>
+    Object.entries(game.battles).flatMap(([key, battle]) =>
+        [
+            ...getTrainerClasses(battle),
+            ...(battle.secondTrainer
+                ? getTrainerClasses(battle.secondTrainer)
+                : []),
+        ]
+            .filter((trainerClass) => !(trainerClass in TRAINER_CLASSES))
+            .map(
+                (trainerClass) =>
+                    `battle ${key}: unknown trainer class "${trainerClass}"`
+            )
+    );
+
 const checkMetLocations = (
     game: Game,
     unmappedLocations: string[]
@@ -138,6 +159,7 @@ const checkGame = (game: Game): Report => {
         violations: [
             ...checkMethodSplits(game),
             ...checkSplitNames(game),
+            ...checkTrainerClasses(game),
             ...(hasMetTable
                 ? checkMetLocations(game, config.unmappedLocations)
                 : []),
