@@ -11931,4 +11931,369 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'hiker-eric': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'hiker',
+        name: 'Eric',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'geodude',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Jolly,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'baltoy',
+                        ability: 'levitate',
+                        gender: 'genderless',
+                        level: 20,
+                        nature: Nature.Impish,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-jagged-pass': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'team-magma-grunt-m',
+        name: '2',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'poochyena',
+                        ability: 'run-away',
+                        gender: 'male',
+                        level: 22,
+                        nature: Nature.Brave,
+                        ivs: 6,
+                    },
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 22,
+                        nature: Nature.Relaxed,
+                        ivs: 6,
+                    },
+                ],
+            },
+        ],
+    },
+    'picnicker-diana': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'picnicker',
+        name: 'Diana',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'shroomish',
+                        ability: 'effect-spore',
+                        gender: 'female',
+                        level: 19,
+                        nature: Nature.Serious,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'oddish',
+                        ability: 'chlorophyll',
+                        gender: 'female',
+                        level: 19,
+                        nature: Nature.Mild,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'swablu',
+                        ability: 'natural-cure',
+                        gender: 'female',
+                        level: 19,
+                        nature: Nature.Lax,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'picnicker-autumn': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'picnicker',
+        name: 'Autumn',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'shroomish',
+                        ability: 'effect-spore',
+                        gender: 'female',
+                        level: 21,
+                        nature: Nature.Rash,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'triathlete-biker-m-julio': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'triathlete-biker-m',
+        name: 'Julio',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'magnemite',
+                        ability: 'magnet-pull',
+                        gender: 'genderless',
+                        level: 21,
+                        nature: Nature.Lax,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'camper-ethan': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'camper',
+        name: 'Ethan',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zigzagoon',
+                        ability: 'pickup',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Bashful,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'taillow',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 20,
+                        nature: Nature.Hardy,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-aqua-grunt-m-aqua-hideout-1': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'team-aqua-grunt-m',
+        name: '13',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'poochyena',
+                        ability: 'run-away',
+                        gender: 'male',
+                        level: 32,
+                        nature: Nature.Brave,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-aqua-grunt-m-aqua-hideout-2': {
+        metadata: [],
+        split: 'Winona',
+        trainerClass: 'team-aqua-grunt-m',
+        name: '14',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zubat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 31,
+                        nature: Nature.Gentle,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'carvanha',
+                        ability: 'rough-skin',
+                        gender: 'male',
+                        level: 31,
+                        nature: Nature.Quiet,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-aqua-grunt-m-aqua-hideout-3': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'team-aqua-grunt-m',
+        name: '15',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zubat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 32,
+                        nature: Nature.Gentle,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-aqua-grunt-f-aqua-hideout-5': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'team-aqua-grunt-f',
+        name: '5',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'carvanha',
+                        ability: 'rough-skin',
+                        gender: 'female',
+                        level: 32,
+                        nature: Nature.Mild,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-aqua-grunt-f-aqua-hideout-7': {
+        metadata: [],
+        split: 'Winona',
+        trainerClass: 'team-aqua-grunt-f',
+        name: '7',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'poochyena',
+                        ability: 'run-away',
+                        gender: 'female',
+                        level: 31,
+                        nature: Nature.Hasty,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'zubat',
+                        ability: 'inner-focus',
+                        gender: 'female',
+                        level: 31,
+                        nature: Nature.Gentle,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-aqua-grunt-m-aqua-hideout-4': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'team-aqua-grunt-m',
+        name: '16',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'carvanha',
+                        ability: 'rough-skin',
+                        gender: 'male',
+                        level: 32,
+                        nature: Nature.Relaxed,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-aqua-grunt-f-aqua-hideout-6': {
+        metadata: [],
+        split: 'Winona',
+        trainerClass: 'team-aqua-grunt-f',
+        name: '6',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zubat',
+                        ability: 'inner-focus',
+                        gender: 'female',
+                        level: 32,
+                        nature: Nature.Bold,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-aqua-grunt-m-aqua-hideout-8': {
+        metadata: [],
+        split: 'Winona',
+        trainerClass: 'team-aqua-grunt-m',
+        name: '17',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'carvanha',
+                        ability: 'rough-skin',
+                        gender: 'male',
+                        level: 32,
+                        nature: Nature.Relaxed,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'aqua-admin-matt-aqua-hideout': {
+        metadata: [BattleMetadata.Miniboss],
+        split: 'Winona',
+        trainerClass: 'aqua-admin-matt',
+        name: 'Matt',
+        items: [{ count: 1, slug: 'super-potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'mightyena',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 34,
+                        nature: Nature.Bold,
+                        ivs: 6,
+                    },
+                    {
+                        slug: 'golbat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 34,
+                        nature: Nature.Docile,
+                        ivs: 6,
+                    },
+                ],
+            },
+        ],
+    },
 };

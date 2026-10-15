@@ -1,4 +1,8 @@
 import ABANDONED_SHIP from '@/lib/data/emerald/locations/abandoned-ship';
+import ANCIENT_TOMB from '@/lib/data/emerald/locations/ancient-tomb';
+import AQUA_HIDEOUT from '@/lib/data/emerald/locations/aqua-hideout';
+import CAVE_OF_ORIGIN from '@/lib/data/emerald/locations/cave-of-origin';
+import DESERT_RUINS from '@/lib/data/emerald/locations/desert-ruins';
 import DEWFORD_GYM from '@/lib/data/emerald/locations/dewford-gym';
 import DEWFORD_TOWN from '@/lib/data/emerald/locations/dewford-town';
 import EVER_GRANDE_CITY from '@/lib/data/emerald/locations/ever-grande-city';
@@ -6,9 +10,12 @@ import FALLARBOR_TOWN from '@/lib/data/emerald/locations/fallarbor-town';
 import FIERY_PATH from '@/lib/data/emerald/locations/fiery-path';
 import FORTREE_CITY from '@/lib/data/emerald/locations/fortree-city';
 import GRANITE_CAVE from '@/lib/data/emerald/locations/granite-cave';
+import ISLAND_CAVE from '@/lib/data/emerald/locations/island-cave';
+import JAGGED_PASS from '@/lib/data/emerald/locations/jagged-pass';
 import LAVARIDGE_TOWN from '@/lib/data/emerald/locations/lavaridge-town';
 import LILYCOVE_CITY from '@/lib/data/emerald/locations/lilycove-city';
 import LITTLEROOT_TOWN from '@/lib/data/emerald/locations/littleroot-town';
+import MAGMA_HIDEOUT from '@/lib/data/emerald/locations/magma-hideout';
 import MAUVILLE_CITY from '@/lib/data/emerald/locations/mauville-city';
 import MAUVILLE_GYM from '@/lib/data/emerald/locations/mauville-gym';
 import METEOR_FALLS from '@/lib/data/emerald/locations/meteor-falls';
@@ -58,7 +65,9 @@ import RUSTBORO_CITY from '@/lib/data/emerald/locations/rustboro-city';
 import RUSTBORO_GYM from '@/lib/data/emerald/locations/rustboro-gym';
 import RUSTURF_TUNNEL from '@/lib/data/emerald/locations/rusturf-tunnel';
 import SAFARI_ZONE from '@/lib/data/emerald/locations/safari-zone';
+import SCORCHED_SLAB from '@/lib/data/emerald/locations/scorched-slab';
 import SEAFLOOR_CAVERN from '@/lib/data/emerald/locations/seafloor-cavern';
+import SEALED_CHAMBER from '@/lib/data/emerald/locations/sealed-chamber';
 import SHOAL_CAVE from '@/lib/data/emerald/locations/shoal-cave';
 import SLATEPORT_CITY from '@/lib/data/emerald/locations/slateport-city';
 import SOOTOPOLIS_CITY from '@/lib/data/emerald/locations/sootopolis-city';
@@ -70,6 +79,10 @@ import { Location } from '@/lib/static/types';
 // Every emerald location currently wired up -- drives the Locations tab.
 export const LOCATIONS: Location[] = [
     ABANDONED_SHIP,
+    ANCIENT_TOMB,
+    AQUA_HIDEOUT,
+    CAVE_OF_ORIGIN,
+    DESERT_RUINS,
     DEWFORD_GYM,
     DEWFORD_TOWN,
     EVER_GRANDE_CITY,
@@ -77,9 +90,12 @@ export const LOCATIONS: Location[] = [
     FIERY_PATH,
     FORTREE_CITY,
     GRANITE_CAVE,
+    ISLAND_CAVE,
+    JAGGED_PASS,
     LAVARIDGE_TOWN,
     LILYCOVE_CITY,
     LITTLEROOT_TOWN,
+    MAGMA_HIDEOUT,
     MAUVILLE_CITY,
     MAUVILLE_GYM,
     METEOR_FALLS,
@@ -129,7 +145,9 @@ export const LOCATIONS: Location[] = [
     RUSTBORO_GYM,
     RUSTURF_TUNNEL,
     SAFARI_ZONE,
+    SCORCHED_SLAB,
     SEAFLOOR_CAVERN,
+    SEALED_CHAMBER,
     SHOAL_CAVE,
     SLATEPORT_CITY,
     SOOTOPOLIS_CITY,

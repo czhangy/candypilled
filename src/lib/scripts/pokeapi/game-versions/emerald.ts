@@ -12,7 +12,6 @@ import { GameVersion } from '@/lib/static/types';
 // "No encounters" warnings) rather than assuming it's already complete —
 // don't just trust it by inspection.
 const EXCLUDED_LOCATIONS = [
-    'magma-hideout',
     'mirage-tower',
     'desert-underpass',
     'artisan-cave',
@@ -87,11 +86,14 @@ export const emerald: GameVersion = {
     region: 'hoenn',
     generation: 3,
     excludedLocations: EXCLUDED_LOCATIONS,
-    // Steven's Beldum gift and the Safari Zone expansion aren't modeled.
+    // Steven's Beldum gift, the Safari Zone expansion and the Cave of
+    // Origin's unused Ruby/Sapphire floors aren't modeled.
     excludedAreas: [
         'mossdeep-city-stevens-house',
         'hoenn-safari-zone-expansion-south',
         'hoenn-safari-zone-expansion-north',
+        'cave-of-origin-b2f',
+        'cave-of-origin-b3f',
     ],
     caveLocations: CAVE_LOCATIONS,
     excludedMethods: [

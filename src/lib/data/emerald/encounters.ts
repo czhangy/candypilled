@@ -1231,52 +1231,6 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             chance: 30,
         },
     ],
-    'cave-of-origin-b2f': [
-        {
-            species: 'zubat',
-            method: EncounterMethod.Cave,
-            minLevel: 30,
-            maxLevel: 34,
-            chance: 60,
-        },
-        {
-            species: 'golbat',
-            method: EncounterMethod.Cave,
-            minLevel: 33,
-            maxLevel: 36,
-            chance: 10,
-        },
-        {
-            species: 'sableye',
-            method: EncounterMethod.Cave,
-            minLevel: 30,
-            maxLevel: 34,
-            chance: 30,
-        },
-    ],
-    'cave-of-origin-b3f': [
-        {
-            species: 'zubat',
-            method: EncounterMethod.Cave,
-            minLevel: 30,
-            maxLevel: 34,
-            chance: 60,
-        },
-        {
-            species: 'golbat',
-            method: EncounterMethod.Cave,
-            minLevel: 33,
-            maxLevel: 36,
-            chance: 10,
-        },
-        {
-            species: 'sableye',
-            method: EncounterMethod.Cave,
-            minLevel: 30,
-            maxLevel: 34,
-            chance: 30,
-        },
-    ],
     'hoenn-victory-road-1f': [
         {
             species: 'zubat',
@@ -5154,13 +5108,27 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             chance: null,
         },
     ],
-    'team-magma-hideout': [
+    'magma-hideout': [
         {
-            species: 'electrode',
-            method: EncounterMethod.Static,
-            minLevel: 30,
+            species: 'geodude',
+            method: EncounterMethod.Cave,
+            minLevel: 27,
             maxLevel: 30,
-            chance: null,
+            chance: 55,
+        },
+        {
+            species: 'torkoal',
+            method: EncounterMethod.Cave,
+            minLevel: 28,
+            maxLevel: 30,
+            chance: 30,
+        },
+        {
+            species: 'graveler',
+            method: EncounterMethod.Cave,
+            minLevel: 30,
+            maxLevel: 33,
+            chance: 15,
         },
     ],
     'mirage-island': [
