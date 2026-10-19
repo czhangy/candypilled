@@ -19,7 +19,7 @@ const BRAWLY: Split = {
         DEWFORD_GYM,
     ],
     // FLAG_BADGE02_GET = SYSTEM_FLAGS (0x800) + 0x08, per pokeruby's
-    // include/constants/flags.h -- see ONBOARDING.md for the full table.
+    // include/constants/flags.h.
     saveCondition: { type: 'badge', bit: 2056 },
 };
 

@@ -58,7 +58,22 @@ export const GAME_CHECK_CONFIGS: Record<string, GameCheckConfig> = {
     },
     Emerald: {
         dataFolder: 'emerald',
-        unmappedLocations: [],
+        unmappedLocations: [
+            'Dewford Gym',
+            "Drake's Room",
+            'Fortree Gym',
+            "Glacia's Room",
+            'Lavaridge Gym',
+            'Mauville Gym',
+            'Mossdeep Gym',
+            'Petalburg Gym',
+            "Phoebe's Room",
+            'Rustboro Gym',
+            "Sidney's Room",
+            'Sootopolis Gym',
+            'Trick House',
+            "Wallace's Room",
+        ],
     },
     Diamond: {
         dataFolder: 'diamond-pearl',

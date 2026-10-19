@@ -9,6 +9,7 @@ import {
     runScript,
 } from '@/lib/scripts/utils/helpers';
 import { GAME_CHECK_CONFIGS } from '@/lib/scripts/validation/game-configs';
+import { BattleMetadata } from '@/lib/static/enums';
 import { BattleTrainer, Game, MethodSplit } from '@/lib/static/types';
 
 type Report = {
@@ -114,6 +115,23 @@ const checkTrainerClasses = (game: Game): string[] =>
             )
     );
 
+const CATEGORY_METADATA = [
+    BattleMetadata.Required,
+    BattleMetadata.Boss,
+    BattleMetadata.Optional,
+    BattleMetadata.Choice,
+];
+
+const checkBattleMetadata = (game: Game): string[] =>
+    Object.entries(game.battles).flatMap(([key, battle]) => {
+        const count = CATEGORY_METADATA.filter((value) =>
+            battle.metadata.includes(value)
+        ).length;
+        return count === 1
+            ? []
+            : `battle ${key}: needs exactly one of ${CATEGORY_METADATA.join('/')} metadata, has ${count}`;
+    });
+
 const checkMetLocations = (
     game: Game,
     unmappedLocations: string[]
@@ -160,6 +178,7 @@ const checkGame = (game: Game): Report => {
             ...checkMethodSplits(game),
             ...checkSplitNames(game),
             ...checkTrainerClasses(game),
+            ...checkBattleMetadata(game),
             ...(hasMetTable
                 ? checkMetLocations(game, config.unmappedLocations)
                 : []),

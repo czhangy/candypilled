@@ -1,15 +1,3 @@
-// Emerald met-location index -> display name, from pokeemerald's
-// region_map_sections.json (a section's index is the met-location value
-// stored on a Pokemon). Indices 0-83 match Ruby/Sapphire's table; 197-212
-// are Emerald-only.
-//
-// Deliberately omitted, as in Ruby/Sapphire: 58 (Battle Frontier, not
-// modeled), 64/75/77 (second region-map rectangles for Meteor Falls, Fiery
-// Path and Jagged Pass; no map uses them), 66 (old Aqua Hideout
-// placeholder; Emerald's hideouts are 197/198), and non-locations (71
-// Mirage Island, 73 Southern Island, 84 Inside of Truck, 85 Sky Pillar, 86
-// Secret Base, 87 dynamic). Every Underwater index maps to the single
-// Underwater location.
 export const MET_LOCATIONS: Record<number, string> = {
     0: 'Littleroot Town',
     1: 'Oldale Town',
@@ -88,20 +76,12 @@ export const MET_LOCATIONS: Record<number, string> = {
     81: 'Island Cave',
     82: 'Desert Ruins',
     83: 'Ancient Tomb',
+    85: 'Sky Pillar',
     197: 'Aqua Hideout',
     198: 'Magma Hideout',
     199: 'Mirage Tower',
-    200: 'Birth Island',
-    201: 'Faraway Island',
-    202: 'Artisan Cave',
-    203: 'Marine Cave',
     204: 'Underwater',
-    205: 'Terra Cave',
     206: 'Underwater',
     207: 'Underwater',
     208: 'Underwater',
-    209: 'Desert Underpass',
-    210: 'Altering Cave',
-    211: 'Navel Rock',
-    212: 'Trainer Hill',
 };

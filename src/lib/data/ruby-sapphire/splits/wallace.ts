@@ -23,7 +23,7 @@ const WALLACE: Split = {
         SOOTOPOLIS_GYM,
     ],
     // FLAG_BADGE08_GET = SYSTEM_FLAGS (0x800) + 0x0E, per pokeruby's
-    // include/constants/flags.h -- see ONBOARDING.md for the full table.
+    // include/constants/flags.h.
     saveCondition: { type: 'badge', bit: 2062 },
 };
 

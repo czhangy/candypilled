@@ -29,6 +29,7 @@ export enum BattleMetadata {
     Gauntlet = 'Gauntlet',
     Miniboss = 'Miniboss',
     Optional = 'Optional',
+    Required = 'Required',
     Tag = 'Tag',
     TrueDouble = 'True Double',
 }

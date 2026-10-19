@@ -1,16 +1,7 @@
 import { EncounterMethod } from '@/lib/static/enums';
 import { GameVersion } from '@/lib/static/types';
 
-// Bootstrapped from ruby.ts/sapphire.ts — PokeAPI's Hoenn location set is
-// shared across all three versions' region data, and Battle Frontier is
-// explicitly out of scope for this game too (user's onboarding decision,
-// same as Ruby/Sapphire). Verified the starter handoff
-// (hoenn-route-101 -> treecko/torchic/mudkip, raw method "gift") is
-// present and identically shaped for Emerald directly against PokeAPI
-// before reusing the override below. Re-verify the rest of this list
-// against the actual `npm run pokeapi:encounters emerald` output (its
-// "No encounters" warnings) rather than assuming it's already complete —
-// don't just trust it by inspection.
+// Battle Frontier is out of scope, same as Ruby/Sapphire.
 const EXCLUDED_LOCATIONS = [
     'mirage-tower',
     'desert-underpass',
@@ -55,8 +46,8 @@ const EXCLUDED_LOCATIONS = [
     // Only carries GameCube bonus-disc/Pokemon Channel distribution
     // "encounters", not obtainable through normal gameplay.
     'hoenn-pokecenter',
-    // Roaming Latios/Latias are post-game and, per this game's onboarding
-    // decision, aren't modeled at all (not even via the Roamer mechanism).
+    // Roaming Latios/Latias are post-game and aren't modeled at all (not
+    // even via the Roamer mechanism).
     'roaming-hoenn',
 ];
 
@@ -71,6 +62,7 @@ const CAVE_LOCATIONS = [
     'granite-cave',
     'fiery-path',
     'jagged-pass',
+    'magma-hideout',
     'seafloor-cavern',
     'cave-of-origin',
     'hoenn-victory-road',

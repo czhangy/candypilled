@@ -38,7 +38,7 @@ const RUBY: Game = {
     encounters: ENCOUNTERS,
     battles: BATTLES,
     // Index 66 is version-dependent ("Magma Hideout" in Ruby, "Aqua
-    // Hideout" in Sapphire) -- see ONBOARDING.md.
+    // Hideout" in Sapphire).
     metLocationById: { ...MET_LOCATIONS, 66: 'Magma Hideout' },
     wipeMessages: ['Truck.'],
     resources: [

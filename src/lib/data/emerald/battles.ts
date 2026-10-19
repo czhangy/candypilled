@@ -3,7 +3,7 @@ import { BattleData } from '@/lib/static/types';
 
 export const BATTLES: Record<string, BattleData> = {
     'pkmn-trainer-brendan': {
-        metadata: [BattleMetadata.Miniboss],
+        metadata: [BattleMetadata.Required, BattleMetadata.Miniboss],
         split: 'Roxanne',
         trainerClass: 'pkmn-trainer-brendan',
         name: 'Brendan',
@@ -50,7 +50,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-trainer-may': {
-        metadata: [BattleMetadata.Miniboss],
+        metadata: [BattleMetadata.Required, BattleMetadata.Miniboss],
         split: 'Roxanne',
         trainerClass: 'pkmn-trainer-may',
         name: 'May',
@@ -290,7 +290,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-calvin': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Roxanne',
         trainerClass: 'youngster',
         name: 'Calvin',
@@ -650,7 +650,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'team-aqua-grunt-m-petalburg-woods': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Roxanne',
         trainerClass: 'team-aqua-grunt-m',
         name: '1',
@@ -1261,7 +1261,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-devan': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Roxanne',
         trainerClass: 'hiker',
         name: 'Devan',
@@ -1445,7 +1445,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'team-aqua-grunt-m-rusturf-tunnel': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Brawly',
         trainerClass: 'team-aqua-grunt-m',
         name: '2',
@@ -2176,7 +2176,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'team-aqua-grunt-m-oceanic-museum': {
-        metadata: [BattleMetadata.BackToBack],
+        metadata: [BattleMetadata.Required, BattleMetadata.BackToBack],
         split: 'Brawly',
         plainName: true,
         trainerClass: 'team-aqua-grunt-m',
@@ -2217,7 +2217,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-trainer-brendan-route-110': {
-        metadata: [BattleMetadata.Miniboss],
+        metadata: [BattleMetadata.Required, BattleMetadata.Miniboss],
         split: 'Brawly',
         trainerClass: 'pkmn-trainer-brendan',
         name: 'Brendan',
@@ -2312,7 +2312,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-trainer-may-route-110': {
-        metadata: [BattleMetadata.Miniboss],
+        metadata: [BattleMetadata.Required, BattleMetadata.Miniboss],
         split: 'Brawly',
         trainerClass: 'pkmn-trainer-may',
         name: 'May',
@@ -2407,7 +2407,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pokefan-f-isabel': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Brawly',
         trainerClass: 'pokefan-f',
         name: 'Isabel',
@@ -2437,7 +2437,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pokefan-m-kaleb': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Brawly',
         trainerClass: 'pokefan-m',
         name: 'Kaleb',
@@ -2551,7 +2551,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'psychic-m-edward': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Brawly',
         trainerClass: 'psychic-m',
         name: 'Edward',
@@ -2572,7 +2572,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'triathlete-biker-f-alyssa': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Brawly',
         trainerClass: 'triathlete-biker-f',
         name: 'Alyssa',
@@ -3355,7 +3355,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-trainer-wally': {
-        metadata: [BattleMetadata.Miniboss],
+        metadata: [BattleMetadata.Required, BattleMetadata.Miniboss],
         split: 'Brawly',
         trainerClass: 'pkmn-trainer-wally',
         name: 'Wally',
@@ -3375,7 +3375,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aroma-lady-rose': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Brawly',
         trainerClass: 'aroma-lady',
         name: 'Rose',
@@ -3459,7 +3459,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'youngster-deandre': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Brawly',
         trainerClass: 'youngster',
         name: 'Deandre',
@@ -3933,7 +3933,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cooltrainer-f-brooke': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Flannery',
         trainerClass: 'cooltrainer-f',
         name: 'Brooke',
@@ -6140,7 +6140,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-lucas': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Flannery',
         trainerClass: 'hiker',
         name: 'Lucas',
@@ -6610,7 +6610,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-trainer-may-route-119': {
-        metadata: [BattleMetadata.Miniboss],
+        metadata: [BattleMetadata.Required, BattleMetadata.Miniboss],
         split: 'Winona',
         trainerClass: 'pkmn-trainer-may',
         name: 'May',
@@ -6705,7 +6705,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-trainer-brendan-route-119': {
-        metadata: [BattleMetadata.Miniboss],
+        metadata: [BattleMetadata.Required, BattleMetadata.Miniboss],
         split: 'Winona',
         trainerClass: 'pkmn-trainer-brendan',
         name: 'Brendan',
@@ -6928,7 +6928,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'team-aqua-grunt-m-weather-institute-2': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Winona',
         trainerClass: 'team-aqua-grunt-m',
         name: '4',
@@ -6956,7 +6956,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'team-aqua-grunt-f-weather-institute-2': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Winona',
         trainerClass: 'team-aqua-grunt-f',
         name: '2',
@@ -7020,7 +7020,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aqua-admin-shelly-weather-institute': {
-        metadata: [BattleMetadata.Miniboss],
+        metadata: [BattleMetadata.Required, BattleMetadata.Miniboss],
         split: 'Winona',
         trainerClass: 'aqua-admin-shelly',
         name: 'Shelly',
@@ -10282,7 +10282,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'team-magma-grunt-f-mt-chimney': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Flannery',
         trainerClass: 'team-magma-grunt-f',
         name: '1',
@@ -10302,7 +10302,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'team-magma-grunt-m-mt-chimney': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Flannery',
         trainerClass: 'team-magma-grunt-m',
         name: '1',
@@ -10322,7 +10322,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'magma-admin-tabitha': {
-        metadata: [BattleMetadata.Miniboss],
+        metadata: [BattleMetadata.Required, BattleMetadata.Miniboss],
         split: 'Flannery',
         trainerClass: 'magma-admin-tabitha',
         name: 'Tabitha',
@@ -10366,7 +10366,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'magma-leader-maxie': {
-        metadata: [BattleMetadata.Miniboss],
+        metadata: [BattleMetadata.Required, BattleMetadata.Miniboss],
         split: 'Flannery',
         trainerClass: 'magma-leader-maxie',
         name: 'Maxie',
@@ -11052,7 +11052,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'team-aqua-grunt-m-mt-pyre-summit-1': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Winona',
         trainerClass: 'team-aqua-grunt-m',
         name: '6',
@@ -11072,7 +11072,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'team-aqua-grunt-m-mt-pyre-summit-2': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Winona',
         trainerClass: 'team-aqua-grunt-m',
         name: '7',
@@ -11092,7 +11092,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'team-aqua-grunt-m-mt-pyre-summit-3': {
-        metadata: [BattleMetadata.Double],
+        metadata: [BattleMetadata.Required, BattleMetadata.Double],
         split: 'Winona',
         trainerClass: 'team-aqua-grunt-m',
         name: '8',
@@ -11214,7 +11214,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aqua-admin-shelly-seafloor-cavern': {
-        metadata: [BattleMetadata.Miniboss],
+        metadata: [BattleMetadata.Required, BattleMetadata.Miniboss],
         split: 'Juan',
         trainerClass: 'aqua-admin-shelly',
         name: 'Shelly',
@@ -11282,7 +11282,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aqua-leader-archie-seafloor-cavern': {
-        metadata: [BattleMetadata.Miniboss],
+        metadata: [BattleMetadata.Required, BattleMetadata.Miniboss],
         split: 'Juan',
         trainerClass: 'aqua-leader-archie',
         name: 'Archie',
@@ -11319,7 +11319,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-trainer-wally-victory-road': {
-        metadata: [BattleMetadata.Miniboss],
+        metadata: [BattleMetadata.Required, BattleMetadata.Miniboss],
         split: 'Wallace',
         trainerClass: 'pkmn-trainer-wally',
         name: 'Wally',
@@ -11426,7 +11426,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cooltrainer-f-hope': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Wallace',
         trainerClass: 'cooltrainer-f',
         name: 'Hope',
@@ -11447,7 +11447,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cooltrainer-m-edgar': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Wallace',
         trainerClass: 'cooltrainer-m',
         name: 'Edgar',
@@ -11722,7 +11722,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'cooltrainer-f-julie': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Wallace',
         trainerClass: 'cooltrainer-f',
         name: 'Julie',
@@ -12112,7 +12112,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'team-aqua-grunt-m-aqua-hideout-2': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Winona',
         trainerClass: 'team-aqua-grunt-m',
         name: '14',
@@ -12180,7 +12180,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'team-aqua-grunt-f-aqua-hideout-7': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Winona',
         trainerClass: 'team-aqua-grunt-f',
         name: '7',
@@ -12228,7 +12228,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'team-aqua-grunt-f-aqua-hideout-6': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Winona',
         trainerClass: 'team-aqua-grunt-f',
         name: '6',
@@ -12248,7 +12248,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'team-aqua-grunt-m-aqua-hideout-8': {
-        metadata: [],
+        metadata: [BattleMetadata.Required],
         split: 'Winona',
         trainerClass: 'team-aqua-grunt-m',
         name: '17',
@@ -12268,7 +12268,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'aqua-admin-matt-aqua-hideout': {
-        metadata: [BattleMetadata.Miniboss],
+        metadata: [BattleMetadata.Required, BattleMetadata.Miniboss],
         split: 'Winona',
         trainerClass: 'aqua-admin-matt',
         name: 'Matt',
@@ -12291,6 +12291,2204 @@ export const BATTLES: Record<string, BattleData> = {
                         level: 34,
                         nature: Nature.Docile,
                         ivs: 6,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-magma-hideout-2': {
+        metadata: [BattleMetadata.Required],
+        split: 'Winona',
+        trainerClass: 'team-magma-grunt-m',
+        name: '3',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'poochyena',
+                        ability: 'run-away',
+                        gender: 'male',
+                        level: 29,
+                        nature: Nature.Brave,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-magma-hideout-1': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'team-magma-grunt-m',
+        name: '4',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zubat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 29,
+                        nature: Nature.Gentle,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-magma-hideout-3': {
+        metadata: [BattleMetadata.Required],
+        split: 'Winona',
+        trainerClass: 'team-magma-grunt-m',
+        name: '5',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 29,
+                        nature: Nature.Mild,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-f-magma-hideout-14': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'team-magma-grunt-f',
+        name: '2',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'mightyena',
+                        ability: 'intimidate',
+                        gender: 'female',
+                        level: 29,
+                        nature: Nature.Hasty,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-magma-hideout-5': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'team-magma-grunt-m',
+        name: '6',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'baltoy',
+                        ability: 'levitate',
+                        gender: 'genderless',
+                        level: 28,
+                        nature: Nature.Quiet,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 28,
+                        nature: Nature.Sassy,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-magma-hideout-4': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'team-magma-grunt-m',
+        name: '7',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'baltoy',
+                        ability: 'levitate',
+                        gender: 'genderless',
+                        level: 28,
+                        nature: Nature.Quiet,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'zubat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 28,
+                        nature: Nature.Brave,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-magma-hideout-7': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'team-magma-grunt-m',
+        name: '8',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zubat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 29,
+                        nature: Nature.Gentle,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-magma-hideout-8': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'team-magma-grunt-m',
+        name: '9',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'poochyena',
+                        ability: 'run-away',
+                        gender: 'male',
+                        level: 29,
+                        nature: Nature.Brave,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-f-magma-hideout-15': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'team-magma-grunt-f',
+        name: '3',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'female',
+                        level: 29,
+                        nature: Nature.Hardy,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-magma-hideout-6': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'team-magma-grunt-m',
+        name: '10',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'mightyena',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 29,
+                        nature: Nature.Brave,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-magma-hideout-9': {
+        metadata: [BattleMetadata.Required],
+        split: 'Winona',
+        trainerClass: 'team-magma-grunt-m',
+        name: '11',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zubat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 29,
+                        nature: Nature.Gentle,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-f-magma-hideout-16': {
+        metadata: [BattleMetadata.Required],
+        split: 'Winona',
+        trainerClass: 'team-magma-grunt-f',
+        name: '4',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'baltoy',
+                        ability: 'levitate',
+                        gender: 'genderless',
+                        level: 29,
+                        nature: Nature.Lonely,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-magma-hideout-10': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'team-magma-grunt-m',
+        name: '12',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'mightyena',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 29,
+                        nature: Nature.Brave,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-magma-hideout-11': {
+        metadata: [BattleMetadata.Required],
+        split: 'Winona',
+        trainerClass: 'team-magma-grunt-m',
+        name: '13',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'baltoy',
+                        ability: 'levitate',
+                        gender: 'genderless',
+                        level: 29,
+                        nature: Nature.Quiet,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-magma-hideout-12': {
+        metadata: [BattleMetadata.Required],
+        split: 'Winona',
+        trainerClass: 'team-magma-grunt-m',
+        name: '14',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 29,
+                        nature: Nature.Mild,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-magma-hideout-13': {
+        metadata: [BattleMetadata.Required],
+        split: 'Winona',
+        trainerClass: 'team-magma-grunt-m',
+        name: '15',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zubat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 29,
+                        nature: Nature.Gentle,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'magma-admin-tabitha-magma-hideout': {
+        metadata: [BattleMetadata.Required, BattleMetadata.Miniboss],
+        split: 'Winona',
+        trainerClass: 'magma-admin-tabitha',
+        name: 'Tabitha',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 26,
+                        nature: Nature.Lax,
+                        ivs: 9,
+                    },
+                    {
+                        slug: 'mightyena',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 28,
+                        nature: Nature.Bashful,
+                        ivs: 9,
+                    },
+                    {
+                        slug: 'zubat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 30,
+                        nature: Nature.Gentle,
+                        ivs: 9,
+                    },
+                    {
+                        slug: 'camerupt',
+                        ability: 'magma-armor',
+                        gender: 'male',
+                        level: 33,
+                        nature: Nature.Lax,
+                        ivs: 9,
+                    },
+                ],
+            },
+        ],
+    },
+    'magma-leader-maxie-magma-hideout': {
+        metadata: [BattleMetadata.Required, BattleMetadata.Miniboss],
+        split: 'Winona',
+        trainerClass: 'magma-leader-maxie',
+        name: 'Maxie',
+        items: [{ count: 2, slug: 'super-potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'mightyena',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 37,
+                        nature: Nature.Lax,
+                        ivs: 18,
+                    },
+                    {
+                        slug: 'crobat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 38,
+                        nature: Nature.Lonely,
+                        ivs: 18,
+                    },
+                    {
+                        slug: 'camerupt',
+                        ability: 'magma-armor',
+                        gender: 'male',
+                        level: 39,
+                        nature: Nature.Adamant,
+                        ivs: 18,
+                    },
+                ],
+            },
+        ],
+    },
+    'kindler-jeff': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'kindler',
+        name: 'Jeff',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'slugma',
+                        ability: 'magma-armor',
+                        gender: 'male',
+                        level: 22,
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'slugma',
+                        ability: 'magma-armor',
+                        gender: 'male',
+                        level: 22,
+                        nature: Nature.Docile,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'kindler-jace': {
+        metadata: [BattleMetadata.Required],
+        split: 'Flannery',
+        trainerClass: 'kindler',
+        name: 'Jace',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'slugma',
+                        ability: 'magma-armor',
+                        gender: 'male',
+                        level: 23,
+                        nature: Nature.Careful,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'hiker-eli': {
+        metadata: [BattleMetadata.Required],
+        split: 'Flannery',
+        trainerClass: 'hiker',
+        name: 'Eli',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 23,
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'kindler-keegan': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'kindler',
+        name: 'Keegan',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'slugma',
+                        ability: 'magma-armor',
+                        gender: 'male',
+                        level: 23,
+                        nature: Nature.Quirky,
+                        ivs: 14,
+                    },
+                ],
+            },
+        ],
+    },
+    'kindler-cole': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'kindler',
+        name: 'Cole',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 23,
+                        nature: Nature.Bold,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-m-gerald': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'cooltrainer-m',
+        name: 'Gerald',
+        items: [{ count: 1, slug: 'hyper-potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'kecleon',
+                        ability: 'color-change',
+                        gender: 'male',
+                        level: 23,
+                        nature: Nature.Mild,
+                        ivs: 12,
+                        moves: [
+                            'flamethrower',
+                            'fury-swipes',
+                            'feint-attack',
+                            'bind',
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    'kindler-axle': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'kindler',
+        name: 'Axle',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 23,
+                        nature: Nature.Sassy,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'battle-girl-danielle': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Flannery',
+        trainerClass: 'battle-girl',
+        name: 'Danielle',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'meditite',
+                        ability: 'pure-power',
+                        gender: 'female',
+                        level: 23,
+                        nature: Nature.Impish,
+                        ivs: 12,
+                        moves: ['bide', 'detect', 'confusion', 'fire-punch'],
+                    },
+                ],
+            },
+        ],
+    },
+    'leader-flannery': {
+        metadata: [BattleMetadata.Boss],
+        split: 'Flannery',
+        trainerClass: 'leader-flannery',
+        name: 'Flannery',
+        items: [{ count: 2, slug: 'hyper-potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'female',
+                        level: 24,
+                        nature: Nature.Jolly,
+                        ivs: 24,
+                        moves: [
+                            'overheat',
+                            'take-down',
+                            'magnitude',
+                            'sunny-day',
+                        ],
+                    },
+                    {
+                        slug: 'slugma',
+                        ability: 'magma-armor',
+                        gender: 'female',
+                        level: 24,
+                        nature: Nature.Calm,
+                        ivs: 24,
+                        moves: [
+                            'overheat',
+                            'smog',
+                            'light-screen',
+                            'sunny-day',
+                        ],
+                    },
+                    {
+                        slug: 'camerupt',
+                        ability: 'magma-armor',
+                        gender: 'female',
+                        level: 26,
+                        nature: Nature.Adamant,
+                        ivs: 30,
+                        moves: ['overheat', 'tackle', 'sunny-day', 'attract'],
+                    },
+                    {
+                        slug: 'torkoal',
+                        ability: 'white-smoke',
+                        gender: 'female',
+                        heldItem: 'white-herb',
+                        level: 29,
+                        nature: Nature.Modest,
+                        ivs: 30,
+                        moves: [
+                            'overheat',
+                            'sunny-day',
+                            'body-slam',
+                            'attract',
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-m-randall': {
+        metadata: [BattleMetadata.Choice],
+        split: 'Norman',
+        trainerClass: 'cooltrainer-m',
+        name: 'Randall',
+        items: [{ count: 1, slug: 'hyper-potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'swellow',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 26,
+                        nature: Nature.Hasty,
+                        ivs: 31,
+                        moves: ['quick-attack', 'agility', 'wing-attack'],
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-f-mary': {
+        metadata: [BattleMetadata.Choice],
+        split: 'Norman',
+        trainerClass: 'cooltrainer-f',
+        name: 'Mary',
+        items: [{ count: 1, slug: 'hyper-potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'delcatty',
+                        ability: 'cute-charm',
+                        gender: 'female',
+                        level: 26,
+                        nature: Nature.Rash,
+                        ivs: 31,
+                        moves: ['feint-attack', 'shock-wave'],
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-m-parker': {
+        metadata: [BattleMetadata.Choice],
+        split: 'Norman',
+        trainerClass: 'cooltrainer-m',
+        name: 'Parker',
+        items: [{ count: 1, slug: 'hyper-potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'spinda',
+                        ability: 'own-tempo',
+                        gender: 'male',
+                        level: 26,
+                        nature: Nature.Calm,
+                        ivs: 31,
+                        moves: ['teeter-dance', 'dizzy-punch', 'focus-punch'],
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-f-alexia': {
+        metadata: [BattleMetadata.Choice],
+        split: 'Norman',
+        trainerClass: 'cooltrainer-f',
+        name: 'Alexia',
+        items: [{ count: 1, slug: 'hyper-potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'wigglytuff',
+                        ability: 'cute-charm',
+                        gender: 'female',
+                        level: 26,
+                        nature: Nature.Naughty,
+                        ivs: 31,
+                        moves: ['defense-curl', 'double-edge', 'shadow-ball'],
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-m-george': {
+        metadata: [BattleMetadata.Choice],
+        split: 'Norman',
+        trainerClass: 'cooltrainer-m',
+        name: 'George',
+        items: [{ count: 1, slug: 'hyper-potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'slakoth',
+                        ability: 'truant',
+                        gender: 'male',
+                        heldItem: 'sitrus-berry',
+                        level: 26,
+                        nature: Nature.Brave,
+                        ivs: 31,
+                        moves: ['slack-off', 'counter', 'shadow-ball'],
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-f-jody': {
+        metadata: [BattleMetadata.Choice],
+        split: 'Norman',
+        trainerClass: 'cooltrainer-f',
+        name: 'Jody',
+        items: [{ count: 1, slug: 'hyper-potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zangoose',
+                        ability: 'immunity',
+                        gender: 'female',
+                        level: 26,
+                        nature: Nature.Careful,
+                        ivs: 31,
+                        moves: ['swords-dance', 'slash'],
+                    },
+                ],
+            },
+        ],
+    },
+    'cooltrainer-m-berke': {
+        metadata: [BattleMetadata.Choice],
+        split: 'Norman',
+        trainerClass: 'cooltrainer-m',
+        name: 'Berke',
+        items: [{ count: 1, slug: 'hyper-potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'vigoroth',
+                        ability: 'vital-spirit',
+                        gender: 'male',
+                        level: 26,
+                        nature: Nature.Quirky,
+                        ivs: 31,
+                        moves: ['focus-energy', 'slash'],
+                    },
+                ],
+            },
+        ],
+    },
+    'leader-norman': {
+        metadata: [BattleMetadata.Boss],
+        split: 'Norman',
+        trainerClass: 'leader-norman',
+        name: 'Norman',
+        items: [{ count: 2, slug: 'hyper-potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'spinda',
+                        ability: 'own-tempo',
+                        gender: 'male',
+                        level: 27,
+                        nature: Nature.Docile,
+                        ivs: 24,
+                        moves: ['teeter-dance', 'psybeam', 'facade', 'encore'],
+                    },
+                    {
+                        slug: 'vigoroth',
+                        ability: 'vital-spirit',
+                        gender: 'male',
+                        level: 27,
+                        nature: Nature.Naive,
+                        ivs: 24,
+                        moves: ['slash', 'facade', 'encore', 'feint-attack'],
+                    },
+                    {
+                        slug: 'linoone',
+                        ability: 'pickup',
+                        gender: 'male',
+                        level: 29,
+                        nature: Nature.Lonely,
+                        ivs: 24,
+                        moves: ['slash', 'belly-drum', 'facade', 'headbutt'],
+                    },
+                    {
+                        slug: 'slaking',
+                        ability: 'truant',
+                        gender: 'male',
+                        heldItem: 'sitrus-berry',
+                        level: 31,
+                        nature: Nature.Sassy,
+                        ivs: 30,
+                        moves: ['counter', 'yawn', 'facade', 'feint-attack'],
+                    },
+                ],
+            },
+        ],
+    },
+    'bird-keeper-humberto': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'bird-keeper',
+        name: 'Humberto',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'skarmory',
+                        ability: 'keen-eye',
+                        gender: 'male',
+                        level: 30,
+                        nature: Nature.Quirky,
+                        ivs: 30,
+                    },
+                ],
+            },
+        ],
+    },
+    'bird-keeper-jared': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'bird-keeper',
+        name: 'Jared',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'doduo',
+                        ability: 'run-away',
+                        gender: 'male',
+                        level: 27,
+                        nature: Nature.Adamant,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'skarmory',
+                        ability: 'keen-eye',
+                        gender: 'male',
+                        level: 27,
+                        nature: Nature.Lax,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'tropius',
+                        ability: 'chlorophyll',
+                        gender: 'male',
+                        level: 27,
+                        nature: Nature.Serious,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'picnicker-ashley': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Winona',
+        trainerClass: 'picnicker',
+        name: 'Ashley',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'swablu',
+                        ability: 'natural-cure',
+                        gender: 'female',
+                        level: 27,
+                        nature: Nature.Hardy,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'swablu',
+                        ability: 'natural-cure',
+                        gender: 'female',
+                        level: 27,
+                        nature: Nature.Bold,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'swablu',
+                        ability: 'natural-cure',
+                        gender: 'female',
+                        level: 27,
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'camper-flint': {
+        metadata: [BattleMetadata.Optional, BattleMetadata.Double],
+        split: 'Winona',
+        trainerClass: 'camper',
+        name: 'Flint',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'swellow',
+                        ability: 'guts',
+                        gender: 'male',
+                        level: 29,
+                        nature: Nature.Careful,
+                        ivs: 18,
+                    },
+                    {
+                        slug: 'xatu',
+                        ability: 'synchronize',
+                        gender: 'male',
+                        level: 29,
+                        nature: Nature.Naughty,
+                        ivs: 18,
+                    },
+                ],
+            },
+        ],
+        secondTrainer: {
+            name: 'Edwardo',
+            trainerClass: 'bird-keeper',
+            teams: [
+                {
+                    team: [
+                        {
+                            slug: 'doduo',
+                            ability: 'run-away',
+                            gender: 'male',
+                            level: 29,
+                            nature: Nature.Brave,
+                            ivs: 18,
+                        },
+                        {
+                            slug: 'pelipper',
+                            ability: 'keen-eye',
+                            gender: 'male',
+                            level: 29,
+                            nature: Nature.Rash,
+                            ivs: 18,
+                        },
+                    ],
+                },
+            ],
+        },
+    },
+    'bird-keeper-darius': {
+        metadata: [BattleMetadata.Required],
+        split: 'Winona',
+        trainerClass: 'bird-keeper',
+        name: 'Darius',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'tropius',
+                        ability: 'chlorophyll',
+                        gender: 'male',
+                        level: 30,
+                        nature: Nature.Lax,
+                        ivs: 24,
+                    },
+                ],
+            },
+        ],
+    },
+    'leader-winona-winona': {
+        metadata: [BattleMetadata.Boss],
+        split: 'Winona',
+        trainerClass: 'leader-winona',
+        name: 'Winona',
+        items: [{ count: 2, slug: 'hyper-potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'swablu',
+                        ability: 'natural-cure',
+                        gender: 'female',
+                        level: 29,
+                        nature: Nature.Hasty,
+                        ivs: 25,
+                        moves: [
+                            'perish-song',
+                            'mirror-move',
+                            'safeguard',
+                            'aerial-ace',
+                        ],
+                    },
+                    {
+                        slug: 'tropius',
+                        ability: 'chlorophyll',
+                        gender: 'female',
+                        level: 29,
+                        nature: Nature.Impish,
+                        ivs: 25,
+                        moves: [
+                            'sunny-day',
+                            'aerial-ace',
+                            'solar-beam',
+                            'synthesis',
+                        ],
+                    },
+                    {
+                        slug: 'pelipper',
+                        ability: 'keen-eye',
+                        gender: 'female',
+                        level: 30,
+                        nature: Nature.Calm,
+                        ivs: 25,
+                        moves: [
+                            'water-gun',
+                            'supersonic',
+                            'protect',
+                            'aerial-ace',
+                        ],
+                    },
+                    {
+                        slug: 'skarmory',
+                        ability: 'keen-eye',
+                        gender: 'female',
+                        level: 31,
+                        nature: Nature.Calm,
+                        ivs: 26,
+                        moves: [
+                            'sand-attack',
+                            'fury-attack',
+                            'steel-wing',
+                            'aerial-ace',
+                        ],
+                    },
+                    {
+                        slug: 'altaria',
+                        ability: 'natural-cure',
+                        gender: 'female',
+                        heldItem: 'oran-berry',
+                        level: 33,
+                        nature: Nature.Docile,
+                        ivs: 31,
+                        moves: [
+                            'earthquake',
+                            'dragon-breath',
+                            'dragon-dance',
+                            'aerial-ace',
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    'psychic-m-preston': {
+        metadata: [BattleMetadata.Required],
+        split: 'Tate & Liza',
+        trainerClass: 'psychic-m',
+        name: 'Preston',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'kirlia',
+                        ability: 'synchronize',
+                        gender: 'male',
+                        level: 36,
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'psychic-f-maura': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Tate & Liza',
+        trainerClass: 'psychic-f',
+        name: 'Maura',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'kadabra',
+                        ability: 'synchronize',
+                        gender: 'male',
+                        level: 36,
+                        nature: Nature.Naive,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'psychic-f-samantha': {
+        metadata: [BattleMetadata.Required],
+        split: 'Tate & Liza',
+        trainerClass: 'psychic-f',
+        name: 'Samantha',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'xatu',
+                        ability: 'synchronize',
+                        gender: 'female',
+                        level: 36,
+                        nature: Nature.Calm,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'psychic-m-blake': {
+        metadata: [BattleMetadata.Required],
+        split: 'Tate & Liza',
+        trainerClass: 'psychic-m',
+        name: 'Blake',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'girafarig',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 36,
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'psychic-f-macey': {
+        metadata: [BattleMetadata.Required],
+        split: 'Tate & Liza',
+        trainerClass: 'psychic-f',
+        name: 'Macey',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'natu',
+                        ability: 'synchronize',
+                        gender: 'female',
+                        level: 36,
+                        nature: Nature.Relaxed,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'gentleman-clifford': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Tate & Liza',
+        trainerClass: 'gentleman',
+        name: 'Clifford',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'girafarig',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 36,
+                        nature: Nature.Brave,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'hex-maniac-kathleen': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Tate & Liza',
+        trainerClass: 'hex-maniac',
+        name: 'Kathleen',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'kadabra',
+                        ability: 'synchronize',
+                        gender: 'male',
+                        level: 36,
+                        nature: Nature.Rash,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'psychic-m-nicholas': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Tate & Liza',
+        trainerClass: 'psychic-m',
+        name: 'Nicholas',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'wobbuffet',
+                        ability: 'shadow-tag',
+                        gender: 'male',
+                        level: 36,
+                        nature: Nature.Rash,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'gentleman-nate': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Tate & Liza',
+        trainerClass: 'gentleman',
+        name: 'Nate',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'spoink',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        level: 36,
+                        nature: Nature.Modest,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'psychic-m-virgil': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Tate & Liza',
+        trainerClass: 'psychic-m',
+        name: 'Virgil',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'ralts',
+                        ability: 'synchronize',
+                        gender: 'male',
+                        level: 36,
+                        nature: Nature.Rash,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'hex-maniac-sylvia': {
+        metadata: [BattleMetadata.Required],
+        split: 'Tate & Liza',
+        trainerClass: 'hex-maniac',
+        name: 'Sylvia',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'meditite',
+                        ability: 'pure-power',
+                        gender: 'female',
+                        level: 36,
+                        nature: Nature.Relaxed,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'psychic-f-hannah': {
+        metadata: [BattleMetadata.Required],
+        split: 'Tate & Liza',
+        trainerClass: 'psychic-f',
+        name: 'Hannah',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'kirlia',
+                        ability: 'synchronize',
+                        gender: 'female',
+                        level: 36,
+                        nature: Nature.Careful,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'leader-tate-and-liza': {
+        metadata: [BattleMetadata.TrueDouble, BattleMetadata.Boss],
+        split: 'Tate & Liza',
+        trainerClass: 'leader-tate-and-liza',
+        name: 'Tate & Liza',
+        items: [{ count: 4, slug: 'hyper-potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'claydol',
+                        ability: 'levitate',
+                        gender: 'genderless',
+                        level: 41,
+                        nature: Nature.Lax,
+                        ivs: 30,
+                        moves: [
+                            'earthquake',
+                            'ancient-power',
+                            'psychic',
+                            'light-screen',
+                        ],
+                    },
+                    {
+                        slug: 'xatu',
+                        ability: 'synchronize',
+                        gender: 'male',
+                        level: 41,
+                        nature: Nature.Docile,
+                        ivs: 30,
+                        moves: [
+                            'psychic',
+                            'sunny-day',
+                            'confuse-ray',
+                            'calm-mind',
+                        ],
+                    },
+                    {
+                        slug: 'lunatone',
+                        ability: 'levitate',
+                        gender: 'genderless',
+                        heldItem: 'sitrus-berry',
+                        level: 42,
+                        nature: Nature.Impish,
+                        ivs: 30,
+                        moves: [
+                            'light-screen',
+                            'psychic',
+                            'hypnosis',
+                            'calm-mind',
+                        ],
+                    },
+                    {
+                        slug: 'solrock',
+                        ability: 'levitate',
+                        gender: 'genderless',
+                        heldItem: 'sitrus-berry',
+                        level: 42,
+                        nature: Nature.Modest,
+                        ivs: 30,
+                        moves: [
+                            'sunny-day',
+                            'solar-beam',
+                            'psychic',
+                            'flamethrower',
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    'beauty-connie': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Juan',
+        trainerClass: 'beauty',
+        name: 'Connie',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'goldeen',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 40,
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'lass-andrea': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Juan',
+        trainerClass: 'lass',
+        name: 'Andrea',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'luvdisc',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 40,
+                        nature: Nature.Lonely,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'lady-daphne': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Juan',
+        trainerClass: 'lady',
+        name: 'Daphne',
+        items: [{ count: 1, slug: 'full-restore' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'luvdisc',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        heldItem: 'nugget',
+                        level: 39,
+                        nature: Nature.Docile,
+                        ivs: 12,
+                        moves: [
+                            'attract',
+                            'sweet-kiss',
+                            'flail',
+                            'water-pulse',
+                        ],
+                    },
+                    {
+                        slug: 'luvdisc',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        heldItem: 'nugget',
+                        level: 39,
+                        nature: Nature.Quiet,
+                        ivs: 12,
+                        moves: [
+                            'attract',
+                            'safeguard',
+                            'take-down',
+                            'water-pulse',
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    'pokefan-f-annika': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Juan',
+        trainerClass: 'pokefan-f',
+        name: 'Annika',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'feebas',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        heldItem: 'oran-berry',
+                        level: 39,
+                        nature: Nature.Modest,
+                        ivs: 12,
+                        moves: ['flail', 'water-pulse', 'return', 'attract'],
+                    },
+                    {
+                        slug: 'feebas',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        heldItem: 'oran-berry',
+                        level: 39,
+                        nature: Nature.Timid,
+                        ivs: 12,
+                        moves: ['flail', 'water-pulse', 'return', 'attract'],
+                    },
+                ],
+            },
+        ],
+    },
+    'beauty-tiffany': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Juan',
+        trainerClass: 'beauty',
+        name: 'Tiffany',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'carvanha',
+                        ability: 'rough-skin',
+                        gender: 'female',
+                        level: 39,
+                        nature: Nature.Naughty,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'sharpedo',
+                        ability: 'rough-skin',
+                        gender: 'female',
+                        level: 39,
+                        nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'lass-crissy': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Juan',
+        trainerClass: 'lass',
+        name: 'Crissy',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'goldeen',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 39,
+                        nature: Nature.Impish,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'wailmer',
+                        ability: 'water-veil',
+                        gender: 'female',
+                        level: 39,
+                        nature: Nature.Timid,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'pokefan-f-bethany': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Juan',
+        trainerClass: 'pokefan-f',
+        name: 'Bethany',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'azurill',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        heldItem: 'oran-berry',
+                        level: 35,
+                        nature: Nature.Jolly,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'marill',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        heldItem: 'oran-berry',
+                        level: 37,
+                        nature: Nature.Hasty,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'azumarill',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        heldItem: 'oran-berry',
+                        level: 39,
+                        nature: Nature.Calm,
+                        ivs: 12,
+                    },
+                ],
+            },
+        ],
+    },
+    'beauty-olivia': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Juan',
+        trainerClass: 'beauty',
+        name: 'Olivia',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'clamperl',
+                        ability: 'shell-armor',
+                        gender: 'female',
+                        level: 35,
+                        nature: Nature.Relaxed,
+                        ivs: 12,
+                        moves: [
+                            'iron-defense',
+                            'whirlpool',
+                            'rain-dance',
+                            'water-pulse',
+                        ],
+                    },
+                    {
+                        slug: 'corphish',
+                        ability: 'hyper-cutter',
+                        gender: 'female',
+                        level: 37,
+                        nature: Nature.Modest,
+                        ivs: 12,
+                        moves: ['taunt', 'crabhammer', 'water-pulse'],
+                    },
+                    {
+                        slug: 'lombre',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 39,
+                        nature: Nature.Bold,
+                        ivs: 12,
+                        moves: [
+                            'uproar',
+                            'fury-swipes',
+                            'fake-out',
+                            'water-pulse',
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    'lady-brianna': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Juan',
+        trainerClass: 'lady',
+        name: 'Brianna',
+        items: [{ count: 1, slug: 'full-restore' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'seaking',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        heldItem: 'nugget',
+                        level: 40,
+                        nature: Nature.Rash,
+                        ivs: 18,
+                    },
+                ],
+            },
+        ],
+    },
+    'beauty-bridget': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Juan',
+        trainerClass: 'beauty',
+        name: 'Bridget',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'azumarill',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        level: 40,
+                        nature: Nature.Rash,
+                        ivs: 18,
+                    },
+                ],
+            },
+        ],
+    },
+    'leader-juan': {
+        metadata: [BattleMetadata.Boss],
+        split: 'Juan',
+        trainerClass: 'leader-juan',
+        name: 'Juan',
+        items: [{ count: 2, slug: 'hyper-potion' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'luvdisc',
+                        ability: 'swift-swim',
+                        gender: 'female',
+                        level: 41,
+                        nature: Nature.Adamant,
+                        ivs: 24,
+                        moves: [
+                            'water-pulse',
+                            'attract',
+                            'sweet-kiss',
+                            'flail',
+                        ],
+                    },
+                    {
+                        slug: 'whiscash',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 41,
+                        nature: Nature.Hasty,
+                        ivs: 24,
+                        moves: [
+                            'rain-dance',
+                            'water-pulse',
+                            'amnesia',
+                            'earthquake',
+                        ],
+                    },
+                    {
+                        slug: 'sealeo',
+                        ability: 'thick-fat',
+                        gender: 'male',
+                        level: 43,
+                        nature: Nature.Naive,
+                        ivs: 24,
+                        moves: [
+                            'encore',
+                            'body-slam',
+                            'aurora-beam',
+                            'water-pulse',
+                        ],
+                    },
+                    {
+                        slug: 'crawdaunt',
+                        ability: 'hyper-cutter',
+                        gender: 'male',
+                        level: 43,
+                        nature: Nature.Adamant,
+                        ivs: 24,
+                        moves: ['water-pulse', 'crabhammer', 'taunt', 'leer'],
+                    },
+                    {
+                        slug: 'kingdra',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        heldItem: 'chesto-berry',
+                        level: 46,
+                        nature: Nature.Naive,
+                        ivs: 30,
+                        moves: [
+                            'water-pulse',
+                            'double-team',
+                            'ice-beam',
+                            'rest',
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    'elite-four-sidney': {
+        metadata: [BattleMetadata.Boss, BattleMetadata.Gauntlet],
+        split: 'Wallace',
+        trainerClass: 'elite-four-sidney',
+        name: 'Sidney',
+        items: [{ count: 2, slug: 'full-restore' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'mightyena',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 46,
+                        nature: Nature.Rash,
+                        ivs: 30,
+                        moves: ['roar', 'double-edge', 'sand-attack', 'crunch'],
+                    },
+                    {
+                        slug: 'shiftry',
+                        ability: 'chlorophyll',
+                        gender: 'male',
+                        level: 48,
+                        nature: Nature.Jolly,
+                        ivs: 30,
+                        moves: [
+                            'torment',
+                            'double-team',
+                            'swagger',
+                            'extrasensory',
+                        ],
+                    },
+                    {
+                        slug: 'cacturne',
+                        ability: 'sand-veil',
+                        gender: 'male',
+                        level: 46,
+                        nature: Nature.Adamant,
+                        ivs: 30,
+                        moves: [
+                            'leech-seed',
+                            'feint-attack',
+                            'needle-arm',
+                            'cotton-spore',
+                        ],
+                    },
+                    {
+                        slug: 'crawdaunt',
+                        ability: 'hyper-cutter',
+                        gender: 'male',
+                        level: 48,
+                        nature: Nature.Naughty,
+                        ivs: 30,
+                        moves: ['surf', 'swords-dance', 'strength', 'facade'],
+                    },
+                    {
+                        slug: 'absol',
+                        ability: 'pressure',
+                        gender: 'male',
+                        heldItem: 'sitrus-berry',
+                        level: 49,
+                        nature: Nature.Bold,
+                        ivs: 31,
+                        moves: [
+                            'aerial-ace',
+                            'rock-slide',
+                            'swords-dance',
+                            'slash',
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    'elite-four-phoebe': {
+        metadata: [BattleMetadata.Boss, BattleMetadata.Gauntlet],
+        split: 'Wallace',
+        trainerClass: 'elite-four-phoebe',
+        name: 'Phoebe',
+        items: [{ count: 2, slug: 'full-restore' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'dusclops',
+                        ability: 'pressure',
+                        gender: 'female',
+                        level: 48,
+                        nature: Nature.Naughty,
+                        ivs: 30,
+                        moves: [
+                            'shadow-punch',
+                            'confuse-ray',
+                            'curse',
+                            'protect',
+                        ],
+                    },
+                    {
+                        slug: 'banette',
+                        ability: 'insomnia',
+                        gender: 'female',
+                        level: 49,
+                        nature: Nature.Calm,
+                        ivs: 30,
+                        moves: [
+                            'shadow-ball',
+                            'grudge',
+                            'will-o-wisp',
+                            'feint-attack',
+                        ],
+                    },
+                    {
+                        slug: 'sableye',
+                        ability: 'keen-eye',
+                        gender: 'female',
+                        level: 50,
+                        nature: Nature.Careful,
+                        ivs: 30,
+                        moves: [
+                            'shadow-ball',
+                            'double-team',
+                            'night-shade',
+                            'feint-attack',
+                        ],
+                    },
+                    {
+                        slug: 'banette',
+                        ability: 'insomnia',
+                        gender: 'female',
+                        level: 49,
+                        nature: Nature.Naive,
+                        ivs: 30,
+                        moves: [
+                            'shadow-ball',
+                            'psychic',
+                            'thunderbolt',
+                            'facade',
+                        ],
+                    },
+                    {
+                        slug: 'dusclops',
+                        ability: 'pressure',
+                        gender: 'female',
+                        heldItem: 'sitrus-berry',
+                        level: 51,
+                        nature: Nature.Careful,
+                        ivs: 31,
+                        moves: [
+                            'shadow-ball',
+                            'ice-beam',
+                            'rock-slide',
+                            'earthquake',
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    'elite-four-glacia': {
+        metadata: [BattleMetadata.Boss, BattleMetadata.Gauntlet],
+        split: 'Wallace',
+        trainerClass: 'elite-four-glacia',
+        name: 'Glacia',
+        items: [{ count: 2, slug: 'full-restore' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'sealeo',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        level: 50,
+                        nature: Nature.Brave,
+                        ivs: 30,
+                        moves: ['encore', 'body-slam', 'hail', 'ice-ball'],
+                    },
+                    {
+                        slug: 'glalie',
+                        ability: 'inner-focus',
+                        gender: 'female',
+                        level: 50,
+                        nature: Nature.Bashful,
+                        ivs: 30,
+                        moves: [
+                            'light-screen',
+                            'crunch',
+                            'icy-wind',
+                            'ice-beam',
+                        ],
+                    },
+                    {
+                        slug: 'sealeo',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        level: 52,
+                        nature: Nature.Hardy,
+                        ivs: 30,
+                        moves: ['attract', 'double-edge', 'hail', 'blizzard'],
+                    },
+                    {
+                        slug: 'glalie',
+                        ability: 'inner-focus',
+                        gender: 'female',
+                        level: 52,
+                        nature: Nature.Mild,
+                        ivs: 30,
+                        moves: ['shadow-ball', 'explosion', 'hail', 'ice-beam'],
+                    },
+                    {
+                        slug: 'walrein',
+                        ability: 'thick-fat',
+                        gender: 'female',
+                        heldItem: 'sitrus-berry',
+                        level: 53,
+                        nature: Nature.Naive,
+                        ivs: 31,
+                        moves: ['surf', 'body-slam', 'ice-beam', 'sheer-cold'],
+                    },
+                ],
+            },
+        ],
+    },
+    'elite-four-drake': {
+        metadata: [BattleMetadata.Boss, BattleMetadata.Gauntlet],
+        split: 'Wallace',
+        trainerClass: 'elite-four-drake',
+        name: 'Drake',
+        items: [{ count: 2, slug: 'full-restore' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'shelgon',
+                        ability: 'rock-head',
+                        gender: 'male',
+                        level: 52,
+                        nature: Nature.Quiet,
+                        ivs: 30,
+                        moves: [
+                            'rock-tomb',
+                            'dragon-claw',
+                            'protect',
+                            'double-edge',
+                        ],
+                    },
+                    {
+                        slug: 'altaria',
+                        ability: 'natural-cure',
+                        gender: 'male',
+                        level: 54,
+                        nature: Nature.Modest,
+                        ivs: 30,
+                        moves: [
+                            'double-edge',
+                            'dragon-breath',
+                            'dragon-dance',
+                            'aerial-ace',
+                        ],
+                    },
+                    {
+                        slug: 'kingdra',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 53,
+                        nature: Nature.Hardy,
+                        ivs: 30,
+                        moves: [
+                            'smokescreen',
+                            'dragon-dance',
+                            'surf',
+                            'body-slam',
+                        ],
+                    },
+                    {
+                        slug: 'flygon',
+                        ability: 'levitate',
+                        gender: 'male',
+                        level: 53,
+                        nature: Nature.Lax,
+                        ivs: 30,
+                        moves: [
+                            'flamethrower',
+                            'crunch',
+                            'dragon-breath',
+                            'earthquake',
+                        ],
+                    },
+                    {
+                        slug: 'salamence',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        heldItem: 'sitrus-berry',
+                        level: 55,
+                        nature: Nature.Bold,
+                        ivs: 31,
+                        moves: [
+                            'flamethrower',
+                            'dragon-claw',
+                            'rock-slide',
+                            'crunch',
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    'champion-wallace': {
+        metadata: [BattleMetadata.Boss, BattleMetadata.Gauntlet],
+        split: 'Wallace',
+        trainerClass: 'champion-wallace',
+        name: 'Wallace',
+        items: [{ count: 4, slug: 'full-restore' }],
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'wailord',
+                        ability: 'water-veil',
+                        gender: 'male',
+                        level: 57,
+                        nature: Nature.Rash,
+                        ivs: 31,
+                        moves: [
+                            'rain-dance',
+                            'water-spout',
+                            'double-edge',
+                            'blizzard',
+                        ],
+                    },
+                    {
+                        slug: 'tentacruel',
+                        ability: 'clear-body',
+                        gender: 'male',
+                        level: 55,
+                        nature: Nature.Sassy,
+                        ivs: 31,
+                        moves: [
+                            'toxic',
+                            'hydro-pump',
+                            'sludge-bomb',
+                            'ice-beam',
+                        ],
+                    },
+                    {
+                        slug: 'ludicolo',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 56,
+                        nature: Nature.Hardy,
+                        ivs: 31,
+                        moves: [
+                            'giga-drain',
+                            'surf',
+                            'leech-seed',
+                            'double-team',
+                        ],
+                    },
+                    {
+                        slug: 'whiscash',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 56,
+                        nature: Nature.Sassy,
+                        ivs: 31,
+                        moves: ['earthquake', 'surf', 'amnesia', 'hyper-beam'],
+                    },
+                    {
+                        slug: 'gyarados',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 56,
+                        nature: Nature.Rash,
+                        ivs: 31,
+                        moves: [
+                            'dragon-dance',
+                            'earthquake',
+                            'hyper-beam',
+                            'surf',
+                        ],
+                    },
+                    {
+                        slug: 'milotic',
+                        ability: 'marvel-scale',
+                        gender: 'male',
+                        heldItem: 'sitrus-berry',
+                        level: 58,
+                        nature: Nature.Gentle,
+                        ivs: 31,
+                        moves: ['recover', 'surf', 'ice-beam', 'toxic'],
                     },
                 ],
             },

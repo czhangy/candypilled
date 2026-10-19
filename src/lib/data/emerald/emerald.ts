@@ -2,6 +2,7 @@ import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
 import { BATTLES } from '@/lib/data/emerald/battles';
 import { ENCOUNTERS } from '@/lib/data/emerald/encounters';
 import { LOCATIONS } from '@/lib/data/emerald/locations';
+import { MET_LOCATIONS } from '@/lib/data/emerald/met-locations';
 import BRAWLY from '@/lib/data/emerald/splits/brawly';
 import FLANNERY from '@/lib/data/emerald/splits/flannery';
 import JUAN from '@/lib/data/emerald/splits/juan';
@@ -35,12 +36,7 @@ const EMERALD: Game = {
     accentColor: '#009652',
     encounters: ENCOUNTERS,
     battles: BATTLES,
-    // TODO: not yet authored -- needs its own Hoenn met-location table
-    // per onboard-new-game's step 7 (cross-check against Bulbapedia,
-    // matching ruby-sapphire's included-index subset, plus Emerald's own
-    // additional locations). Registering early with an empty table so the
-    // game is selectable while locations/battles are still being built.
-    metLocationById: {},
+    metLocationById: MET_LOCATIONS,
     // Verified against Bulbapedia: Emerald's intro is the same
     // moving-truck arrival at Littleroot as Ruby/Sapphire's.
     wipeMessages: ['Truck.'],

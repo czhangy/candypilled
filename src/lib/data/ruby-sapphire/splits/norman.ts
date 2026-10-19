@@ -7,7 +7,7 @@ const NORMAN: Split = {
     name: 'Norman',
     locations: [LAVARIDGE_TOWN, PETALBURG_CITY, PETALBURG_GYM],
     // FLAG_BADGE05_GET = SYSTEM_FLAGS (0x800) + 0x0B, per pokeruby's
-    // include/constants/flags.h -- see ONBOARDING.md for the full table.
+    // include/constants/flags.h.
     saveCondition: { type: 'badge', bit: 2059 },
 };
 

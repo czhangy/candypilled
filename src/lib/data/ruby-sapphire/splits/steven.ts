@@ -21,7 +21,7 @@ const STEVEN: Split = {
         STEVENS_ROOM,
     ],
     // FLAG_SYS_GAME_CLEAR = SYSTEM_FLAGS (0x800) + 0x04, per pokeruby's
-    // include/constants/flags.h -- see ONBOARDING.md for the full table.
+    // include/constants/flags.h.
     saveCondition: { type: 'badge', bit: 2052 },
 };
 

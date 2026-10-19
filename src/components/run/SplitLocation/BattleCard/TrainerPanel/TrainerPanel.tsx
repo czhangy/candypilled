@@ -129,6 +129,9 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
             {metadata.includes(BattleMetadata.Optional) && (
                 <div className={styles['trainer__metadata']}>OPTIONAL</div>
             )}
+            {metadata.includes(BattleMetadata.Required) && (
+                <div className={styles['trainer__metadata']}>REQUIRED</div>
+            )}
             {metadata.includes(BattleMetadata.TrueDouble) ? (
                 <div className={styles['trainer__metadata']}>TRUE DOUBLE</div>
             ) : (

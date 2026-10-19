@@ -17,7 +17,7 @@ const WATTSON: Split = {
         MAUVILLE_GYM,
     ],
     // FLAG_BADGE03_GET = SYSTEM_FLAGS (0x860) + 0x09, per pokeemerald's
-    // include/constants/flags.h -- see ONBOARDING.md for the full table.
+    // include/constants/flags.h.
     saveCondition: { type: 'badge', bit: 2153 },
 };
 

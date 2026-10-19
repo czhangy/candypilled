@@ -94,6 +94,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
         displayName: 'Champion',
         spriteSlug: 'steven',
     },
+    'champion-wallace': {
+        displayName: 'Champion',
+        spriteSlug: 'wallace',
+    },
     collector: {
         displayName: 'Collector',
         spriteSlug: 'collector',
@@ -253,6 +257,10 @@ export const TRAINER_CLASSES: Record<string, TrainerClass> = {
     'leader-gardenia': {
         displayName: 'Leader',
         spriteSlug: 'gardenia',
+    },
+    'leader-juan': {
+        displayName: 'Leader',
+        spriteSlug: 'juan',
     },
     'leader-maylene': {
         displayName: 'Leader',

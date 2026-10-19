@@ -1,8 +1,6 @@
 import {
     underwaterArea1,
     underwaterArea2,
-    underwaterArea3,
-    underwaterArea4,
 } from '@/lib/data/ruby-sapphire/maps';
 import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
@@ -25,16 +23,6 @@ const UNDERWATER: Location = {
             mapAnchor: MapAnchor.Center,
             encountersKey: 'hoenn-route-126-underwater',
             methodSplits: GRASS_WALLACE,
-        },
-        {
-            name: 'Area 3',
-            map: underwaterArea3,
-            mapAnchor: MapAnchor.Center,
-        },
-        {
-            name: 'Area 4',
-            map: underwaterArea4,
-            mapAnchor: MapAnchor.Center,
         },
     ],
 };

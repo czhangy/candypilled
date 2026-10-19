@@ -48,8 +48,8 @@ const EXCLUDED_LOCATIONS = [
     // Only carries GameCube bonus-disc/Pokemon Channel distribution
     // "encounters", not obtainable through normal Ruby/Sapphire gameplay.
     'hoenn-pokecenter',
-    // Roaming Latios/Latias are post-game and, per this game's onboarding
-    // decision, aren't modeled at all (not even via the Roamer mechanism).
+    // Roaming Latios/Latias are post-game and aren't modeled at all (not
+    // even via the Roamer mechanism).
     'roaming-hoenn',
 ];
 
