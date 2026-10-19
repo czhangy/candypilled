@@ -10,6 +10,16 @@
 
 <br />
 
+## Supported Games
+
+| Game              | Status      |
+| ----------------- | ----------- |
+| Ruby & Sapphire   | Complete    |
+| Emerald           | In progress |
+| Diamond & Pearl   | Complete    |
+| Platinum          | Complete    |
+| Renegade Platinum | Complete    |
+
 ## Tech Stack
 
 <!-- Shields.io Badges: https://github.com/Ileriayo/markdown-badges -->

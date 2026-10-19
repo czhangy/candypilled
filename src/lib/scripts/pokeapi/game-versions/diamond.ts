@@ -123,6 +123,26 @@ export const diamond: GameVersion = {
             species: 'gastly',
             method: EncounterMethod.Walking,
         },
+        {
+            location: 'lost-tower',
+            species: 'gastly',
+            method: EncounterMethod.Walking,
+        },
+        {
+            location: 'lost-tower',
+            species: 'golbat',
+            method: EncounterMethod.Walking,
+        },
+        {
+            location: 'lost-tower',
+            species: 'murkrow',
+            method: EncounterMethod.Walking,
+        },
+        {
+            location: 'lost-tower',
+            species: 'zubat',
+            method: EncounterMethod.Walking,
+        },
     ],
     excludedMethods: [
         'super-rod',

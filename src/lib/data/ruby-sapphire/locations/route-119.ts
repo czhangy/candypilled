@@ -6,7 +6,7 @@ import {
     route119WeatherInstitute2fAqua,
     route119WeatherInstitute2fMagma,
 } from '@/lib/data/ruby-sapphire/maps';
-import { FieldCondition, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, FieldCondition, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_119: Location = {
@@ -17,6 +17,15 @@ const ROUTE_119: Location = {
             map: { male: route119May, female: route119Brendan },
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'hoenn-route-119-area',
+            methodSplits: [
+                { method: EncounterMethod.DevonScope, split: 'Winona' },
+                { method: EncounterMethod.FeebasTile, split: 'Winona' },
+                { method: EncounterMethod.GoodRod, split: 'Winona' },
+                { method: EncounterMethod.Grass, split: 'Winona' },
+                { method: EncounterMethod.OldRod, split: 'Winona' },
+                { method: EncounterMethod.SuperRod, split: 'Winona' },
+                { method: EncounterMethod.Surf, split: 'Winona' },
+            ],
             battles: [
                 {
                     battleKey: 'bug-catcher-kent',
@@ -160,6 +169,7 @@ const ROUTE_119: Location = {
             },
             mapAnchor: MapAnchor.Center,
             encountersKey: 'hoenn-route-119-weather-institute',
+            methodSplits: [{ method: EncounterMethod.Gift, split: 'Winona' }],
             battles: [
                 {
                     battleKey: 'team-magma-grunt-m-weather-institute-2',

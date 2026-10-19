@@ -1,5 +1,5 @@
 import { route201 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_201: Location = {
@@ -7,6 +7,7 @@ const ROUTE_201: Location = {
     map: route201,
     mapAnchor: MapAnchor.BottomLeft,
     encountersKey: 'sinnoh-route-201',
+    methodSplits: [{ method: EncounterMethod.Starter, split: 'Roark' }],
     battles: [
         {
             battleKey: 'pkmn-trainer-barry-1',

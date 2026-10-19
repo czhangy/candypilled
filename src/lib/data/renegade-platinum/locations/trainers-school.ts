@@ -1,5 +1,5 @@
 import { trainersSchool } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const TRAINERS_SCHOOL: Location = {
@@ -7,6 +7,7 @@ const TRAINERS_SCHOOL: Location = {
     map: trainersSchool,
     mapAnchor: MapAnchor.Center,
     encountersKey: 'trainers-school',
+    methodSplits: [{ method: EncounterMethod.Egg, split: 'Roark' }],
     battles: [
         {
             battleKey: 'school-kid-harrison',

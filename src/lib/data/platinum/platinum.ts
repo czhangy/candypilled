@@ -7,6 +7,7 @@ import {
 import { Game } from '@/lib/static/types';
 import { BATTLES } from './battles';
 import { ENCOUNTERS } from './encounters';
+import { LOCATIONS } from './locations';
 import { MET_LOCATIONS } from './met-locations';
 import BYRON from './splits/byron';
 import CANDICE from './splits/candice';
@@ -30,6 +31,7 @@ const PLATINUM: Game = {
         male: '/trainers/platinum/lucas.png',
         female: '/trainers/platinum/dawn.png',
     },
+    locations: LOCATIONS,
     starters: ['turtwig', 'chimchar', 'piplup'],
     accentColor: '#FFD500',
     encounters: ENCOUNTERS,

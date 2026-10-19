@@ -22,8 +22,8 @@ const FOOTER_COUNTER_OFFSET = 0x0ffc;
 
 // The number of bytes checksummed within each section's data region --
 // smaller than SECTOR_DATA_SIZE for some sections, per Bulbapedia's
-// "Section ID" table (Ruby/Sapphire-specific; re-verify for other Gen III
-// games before reusing).
+// "Section ID" table. Identical for Ruby/Sapphire and Emerald (every section
+// of two real Emerald saves validates); re-verify for FireRed/LeafGreen.
 const CHECKSUM_LENGTHS: Record<number, number> = {
     0: 3884,
     1: 3968,
@@ -58,9 +58,7 @@ export default class Gen3SaveBlocks {
         pcBufferView: DataView;
     } {
         if (view.byteLength < HALF_SIZE * 2) {
-            throw new Error(
-                "This doesn't look like a Ruby/Sapphire save file."
-            );
+            throw new Error("This doesn't look like a Gen III save file.");
         }
 
         const blockA = Gen3SaveBlocks.readBlock(view, 0);

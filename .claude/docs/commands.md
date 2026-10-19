@@ -15,4 +15,10 @@ npm run gen:icon        # Scaffold a new icon component
 npm run gen:class       # Scaffold a new utility class
 ```
 
+Data check:
+
+```bash
+npm run check:data                          # validate every game's data
+```
+
 Pre-commit hooks via Husky/lint-staged automatically run ESLint, Prettier, and Stylelint on staged files.

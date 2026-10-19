@@ -5,7 +5,7 @@ import {
     solaceonRuinsB3f,
     solaceonRuinsB4f,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SOLACEON_RUINS: Location = {
@@ -16,18 +16,21 @@ const SOLACEON_RUINS: Location = {
             map: solaceonRuins1f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-solaceon-ruins',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Maylene' }],
         },
         {
             name: 'B1F',
             map: solaceonRuinsB1f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-solaceon-ruins',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Maylene' }],
         },
         {
             name: 'B2F',
             map: solaceonRuinsB2f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-solaceon-ruins',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Maylene' }],
             battles: [
                 {
                     battleKey: 'ruin-maniac-karl',
@@ -41,12 +44,14 @@ const SOLACEON_RUINS: Location = {
             map: solaceonRuinsB3f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-solaceon-ruins',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Maylene' }],
         },
         {
             name: 'B4F',
             map: solaceonRuinsB4f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-solaceon-ruins',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Maylene' }],
         },
     ],
 };

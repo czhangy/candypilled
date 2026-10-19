@@ -400,12 +400,31 @@ const NULLIFIED_CHANCE_METHODS: string[] = [
     EncounterMethod.Static,
 ];
 
-const nullifyChances = (encounters: RawEncounter[]): RawEncounter[] =>
-    encounters.map((encounter) =>
-        NULLIFIED_CHANCE_METHODS.includes(encounter.method)
+const nullifyUnusedValues = (encounters: RawEncounter[]): RawEncounter[] =>
+    encounters.map((encounter) => {
+        if (encounter.method === EncounterMethod.Trade) {
+            // A traded-for Pokémon has no level or chance of its own.
+            return {
+                ...encounter,
+                minLevel: null,
+                maxLevel: null,
+                chance: null,
+            };
+        }
+
+        return NULLIFIED_CHANCE_METHODS.includes(encounter.method)
             ? { ...encounter, chance: null }
-            : encounter
-    );
+            : encounter;
+    });
+
+// A starter handoff is the run's only encounter at its location, so a
+// location with a Starter keeps just its Starter entries.
+const keepOnlyStarters = (encounters: RawEncounter[]): RawEncounter[] =>
+    encounters.some((encounter) => encounter.method === EncounterMethod.Starter)
+        ? encounters.filter(
+              (encounter) => encounter.method === EncounterMethod.Starter
+          )
+        : encounters;
 
 const expandTimeOfDayEncounters = (
     encounters: RawEncounter[]
@@ -480,7 +499,9 @@ export const fetchEncounters = async (version: GameVersion): Promise<void> => {
             const withHoneyTree = resolveHoneyTreeEncounters(expanded);
             const remerged = mergeEncounters(withHoneyTree, 'sum');
             const withTradeFor = resolveTradeFor(remerged);
-            const rawFinalEncounters = nullifyChances(withTradeFor);
+            const rawFinalEncounters = keepOnlyStarters(
+                nullifyUnusedValues(withTradeFor)
+            );
 
             if (rawFinalEncounters.length === 0) continue;
 

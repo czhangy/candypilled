@@ -1,16 +1,11 @@
-import CYCLE_SHOP from '@/lib/data/platinum/locations/cycle-shop';
 import ETERNA_CITY from '@/lib/data/platinum/locations/eterna-city';
-import ETERNA_FOREST from '@/lib/data/platinum/locations/eterna-forest';
 import HEARTHOME_CITY from '@/lib/data/platinum/locations/hearthome-city';
 import HEARTHOME_GYM from '@/lib/data/platinum/locations/hearthome-gym';
-import MINING_MUSEUM from '@/lib/data/platinum/locations/mining-museum';
 import MT_CORONET from '@/lib/data/platinum/locations/mt-coronet';
-import OLD_CHATEAU from '@/lib/data/platinum/locations/old-chateau';
 import ROUTE_206 from '@/lib/data/platinum/locations/route-206';
 import ROUTE_207 from '@/lib/data/platinum/locations/route-207';
 import ROUTE_208 from '@/lib/data/platinum/locations/route-208';
 import TEAM_GALACTIC_ETERNA_BUILDING from '@/lib/data/platinum/locations/team-galactic-eterna-building';
-import WAYWARD_CAVE from '@/lib/data/platinum/locations/wayward-cave';
 import { Split } from '@/lib/static/types';
 import LocationHelpers from '@/lib/utils/LocationHelpers';
 
@@ -18,16 +13,8 @@ const FANTINA: Split = {
     name: 'Fantina',
     locations: [
         ETERNA_CITY,
-        OLD_CHATEAU,
-        LocationHelpers.withSubareaOrder(ETERNA_FOREST, [
-            'Exterior',
-            'Interior',
-        ]),
         TEAM_GALACTIC_ETERNA_BUILDING,
-        CYCLE_SHOP,
         ROUTE_206,
-        MINING_MUSEUM,
-        WAYWARD_CAVE,
         ROUTE_207,
         LocationHelpers.withSubareaOrder(MT_CORONET, [
             '1F (207)',

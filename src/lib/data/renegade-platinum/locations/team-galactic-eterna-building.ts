@@ -4,7 +4,7 @@ import {
     teamGalacticEternaBuilding3f,
     teamGalacticEternaBuilding4f,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
@@ -71,6 +71,7 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
             map: teamGalacticEternaBuilding4f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'team-galactic-eterna-building-4f',
+            methodSplits: [{ method: EncounterMethod.Gift, split: 'Fantina' }],
             battles: [
                 {
                     battleKey: 'commander-jupiter',

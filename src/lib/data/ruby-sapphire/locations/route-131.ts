@@ -1,6 +1,6 @@
 import { route131 } from '@/lib/data/ruby-sapphire/maps';
 import { GEN_3_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_131: Location = {
@@ -8,6 +8,12 @@ const ROUTE_131: Location = {
     map: route131,
     mapAnchor: MapAnchor.Right,
     encountersKey: 'hoenn-route-131',
+    methodSplits: [
+        { method: EncounterMethod.OldRod, split: 'Winona' },
+        { method: EncounterMethod.GoodRod, split: 'Winona' },
+        { method: EncounterMethod.SuperRod, split: 'Winona' },
+        { method: EncounterMethod.Surf, split: 'Winona' },
+    ],
     battles: [
         { battleKey: 'swimmer-f-kara', x: 75.73, y: 58.43 },
         { battleKey: 'swimmer-m-herman', x: 60.73, y: 65.93 },

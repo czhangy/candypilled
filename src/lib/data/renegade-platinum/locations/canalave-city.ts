@@ -1,5 +1,5 @@
 import { canalaveCity } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const CANALAVE_CITY: Location = {
@@ -7,6 +7,12 @@ const CANALAVE_CITY: Location = {
     map: canalaveCity,
     mapAnchor: MapAnchor.Bottom,
     encountersKey: 'canalave-city',
+    methodSplits: [
+        { method: EncounterMethod.Surf, split: 'Byron' },
+        { method: EncounterMethod.OldRod, split: 'Byron' },
+        { method: EncounterMethod.GoodRod, split: 'Byron' },
+        { method: EncounterMethod.SuperRod, split: 'Candice' },
+    ],
     battles: [
         {
             battleKey: 'pkmn-trainer-barry-canalave-city',

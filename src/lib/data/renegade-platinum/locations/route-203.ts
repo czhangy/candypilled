@@ -1,5 +1,5 @@
 import { route203 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_203: Location = {
@@ -7,6 +7,14 @@ const ROUTE_203: Location = {
     map: route203,
     mapAnchor: MapAnchor.Left,
     encountersKey: 'sinnoh-route-203',
+    methodSplits: [
+        { method: EncounterMethod.Grass, split: 'Roark' },
+        { method: EncounterMethod.Surf, split: 'Byron' },
+        { method: EncounterMethod.OldRod, split: 'Roark' },
+        { method: EncounterMethod.GoodRod, split: 'Maylene' },
+        { method: EncounterMethod.SuperRod, split: 'Candice' },
+        { method: EncounterMethod.PokeRadar, split: 'Roark' },
+    ],
     battles: [
         {
             battleKey: 'pkmn-trainer-barry-route-203',

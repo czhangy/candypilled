@@ -1,5 +1,5 @@
 import { route224Dawn, route224Lucas } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_224: Location = {
@@ -7,6 +7,13 @@ const ROUTE_224: Location = {
     map: { male: route224Dawn, female: route224Lucas },
     mapAnchor: MapAnchor.BottomLeft,
     encountersKey: 'route-224',
+    methodSplits: [
+        { method: EncounterMethod.Grass, split: 'Cynthia' },
+        { method: EncounterMethod.Surf, split: 'Cynthia' },
+        { method: EncounterMethod.OldRod, split: 'Cynthia' },
+        { method: EncounterMethod.GoodRod, split: 'Cynthia' },
+        { method: EncounterMethod.SuperRod, split: 'Cynthia' },
+    ],
     battles: [
         {
             battleKey: 'ace-trainer-ruben',

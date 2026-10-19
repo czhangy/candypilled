@@ -1,9 +1,10 @@
 // Sinnoh met-location index -> display name, shared by Diamond and Pearl.
 // Covers indices 0-111 per Bulbapedia's "List of locations by index number
 // in Generation IV" — indices 112-125 (Battle Frontier, Distortion World,
-// the Regigigas ruins, etc.) are Platinum-only and excluded here.
+// the Regigigas ruins, etc.) are Platinum-only and excluded here. Indices
+// for places that aren't Locations (shops, interiors, Mystery Zone) are
+// omitted too.
 export const MET_LOCATIONS: Record<number, string> = {
-    0: 'Mystery Zone',
     1: 'Twinleaf Town',
     2: 'Sandgem Town',
     3: 'Floaroma Town',
@@ -51,7 +52,6 @@ export const MET_LOCATIONS: Record<number, string> = {
     52: 'Great Marsh',
     53: 'Solaceon Ruins',
     54: 'Victory Road',
-    56: 'Amity Square',
     57: 'Ravaged Path',
     58: 'Floaroma Meadow',
     59: 'Oreburgh Gate',
@@ -70,25 +70,10 @@ export const MET_LOCATIONS: Record<number, string> = {
     87: 'Verity Cavern',
     88: 'Valor Cavern',
     89: 'Acuity Cavern',
-    90: 'Jubilife TV',
-    91: 'Pokétch Co.',
-    92: 'GTS',
     93: "Trainers' School",
     94: 'Mining Museum',
-    95: 'Flower Shop',
     96: 'Cycle Shop',
-    97: 'Contest Hall',
-    98: 'Poffin House',
-    99: 'Foreign Building',
-    100: 'Pokémon Day Care',
-    101: 'Veilstone Store',
-    102: 'Game Corner',
-    103: 'Canalave Library',
     104: 'Vista Lighthouse',
-    105: 'Sunyshore Market',
     106: 'Pokémon Mansion',
-    107: 'Footstep House',
-    108: 'Cafe',
-    109: 'Hotel Grand Lake',
-    110: 'Seven Stars Restaurant',
+    108: 'Café Cabin',
 };

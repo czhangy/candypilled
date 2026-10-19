@@ -3,7 +3,7 @@ import {
     oldChateauDiningRoom,
     oldChateauEntrance,
 } from '@/lib/data/platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const OLD_CHATEAU: Location = {
@@ -14,18 +14,28 @@ const OLD_CHATEAU: Location = {
             map: oldChateauEntrance,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'old-chateau-entrance',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Fantina' },
+            ],
         },
         {
             name: 'Dining Room',
             map: oldChateauDiningRoom,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'old-chateau-dining-room',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Fantina' },
+            ],
         },
         {
             name: 'Bedrooms',
             map: oldChateauBedrooms,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'old-chateau-2f',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Fantina' },
+                { method: EncounterMethod.Static, split: 'Fantina' },
+            ],
         },
     ],
 };

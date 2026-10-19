@@ -1,5 +1,5 @@
 import { route110Brendan, route110May } from '@/lib/data/ruby-sapphire/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_110: Location = {
@@ -7,6 +7,13 @@ const ROUTE_110: Location = {
     map: { male: route110May, female: route110Brendan },
     mapAnchor: MapAnchor.Bottom,
     encountersKey: 'hoenn-route-110',
+    methodSplits: [
+        { method: EncounterMethod.Grass, split: 'Brawly' },
+        { method: EncounterMethod.OldRod, split: 'Brawly' },
+        { method: EncounterMethod.GoodRod, split: 'Winona' },
+        { method: EncounterMethod.SuperRod, split: 'Winona' },
+        { method: EncounterMethod.Surf, split: 'Winona' },
+    ],
     battles: [
         {
             battleKey: 'pokefan-f-isabel',

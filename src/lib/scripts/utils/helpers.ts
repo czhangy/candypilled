@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { Game, Location } from '@/lib/static/types';
 
 const ANSI_RED = '\x1b[31m';
 const ANSI_GREEN = '\x1b[32m';
@@ -73,4 +74,47 @@ export const toKebabCase = (name: string): string =>
 
 export const writeToFile = (filePath: string, lines: string[]): void => {
     fs.writeFileSync(filePath, lines.join(''));
+};
+
+// The game data imports map images, which plain Node can't load.
+const stubImageImports = (): void => {
+    require.extensions['.png'] = (module: NodeJS.Module): void => {
+        module.exports = { height: 0, src: '', width: 0 };
+    };
+};
+
+// Loads every registered game after stubbing image imports, so the static
+// data can be inspected from a script. The dynamic import must come second.
+export const loadGames = async (): Promise<Game[]> => {
+    stubImageImports();
+    const { GAMES } = await import('@/lib/data/games');
+
+    return GAMES;
+};
+
+// Every file in a data folder's locations/ directory, with the Location it
+// default-exports.
+export const getLocationFiles = async (
+    dataFolder: string
+): Promise<{ filePath: string; name: string }[]> => {
+    const directory = path.join(
+        process.cwd(),
+        'src/lib/data',
+        dataFolder,
+        'locations'
+    );
+
+    return Promise.all(
+        fs
+            .readdirSync(directory)
+            .filter((file) => file.endsWith('.ts'))
+            .map(async (file) => {
+                const filePath = path.join(directory, file);
+                const { default: location } = (await import(filePath)) as {
+                    default: Location;
+                };
+
+                return { filePath, name: location.name };
+            })
+    );
 };

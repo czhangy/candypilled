@@ -238,7 +238,7 @@ const buildDescriptionTimeline = (
         .map((entry) => ({
             generation:
                 versionGroupGenerations.get(entry.version_group.name) ?? 1,
-            description: entry.flavor_text.replace(/[\n\f]+/g, ' '),
+            description: StringHelpers.flattenFlavorText(entry.flavor_text),
         }))
         .sort((a, b) => a.generation - b.generation);
 

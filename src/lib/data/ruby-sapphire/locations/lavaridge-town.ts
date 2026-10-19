@@ -1,5 +1,5 @@
 import { lavaridgeTown } from '@/lib/data/ruby-sapphire/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAVARIDGE_TOWN: Location = {
@@ -7,6 +7,7 @@ const LAVARIDGE_TOWN: Location = {
     map: lavaridgeTown,
     mapAnchor: MapAnchor.Center,
     encountersKey: 'lavaridge-town',
+    methodSplits: [{ method: EncounterMethod.Egg, split: 'Flannery' }],
 };
 
 export default LAVARIDGE_TOWN;

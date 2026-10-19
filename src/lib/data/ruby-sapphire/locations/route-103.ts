@@ -5,7 +5,7 @@ import {
     route103WestMay,
 } from '@/lib/data/ruby-sapphire/maps';
 import { GEN_3_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_103: Location = {
@@ -16,6 +16,13 @@ const ROUTE_103: Location = {
             map: { male: route103WestMay, female: route103WestBrendan },
             mapAnchor: MapAnchor.Center,
             encountersKey: 'hoenn-route-103',
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Roxanne' },
+                { method: EncounterMethod.OldRod, split: 'Brawly' },
+                { method: EncounterMethod.GoodRod, split: 'Winona' },
+                { method: EncounterMethod.SuperRod, split: 'Winona' },
+                { method: EncounterMethod.Surf, split: 'Winona' },
+            ],
             battles: [
                 {
                     battleKey: 'pkmn-trainer-may',
@@ -36,6 +43,12 @@ const ROUTE_103: Location = {
             map: { male: route103EastMay, female: route103EastBrendan },
             mapAnchor: MapAnchor.Center,
             encountersKey: 'hoenn-route-103-east',
+            methodSplits: [
+                { method: EncounterMethod.OldRod, split: 'Brawly' },
+                { method: EncounterMethod.GoodRod, split: 'Winona' },
+                { method: EncounterMethod.SuperRod, split: 'Winona' },
+                { method: EncounterMethod.Surf, split: 'Winona' },
+            ],
             battles: [
                 {
                     battleKey: 'aroma-lady-daisy',

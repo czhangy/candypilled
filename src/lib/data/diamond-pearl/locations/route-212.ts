@@ -1,5 +1,5 @@
 import { route212North, route212South } from '@/lib/data/diamond-pearl/maps';
-import { FieldCondition, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, FieldCondition, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_212: Location = {
@@ -10,6 +10,13 @@ const ROUTE_212: Location = {
             map: route212South,
             mapAnchor: MapAnchor.Right,
             encountersKey: 'sinnoh-route-212-east-towards-pastoria-city',
+            methodSplits: [
+                { method: EncounterMethod.OldRod, split: 'Maylene' },
+                { method: EncounterMethod.GoodRod, split: 'Maylene' },
+                { method: EncounterMethod.HoneyTree, split: 'Maylene' },
+                { method: EncounterMethod.Grass, split: 'Maylene' },
+                { method: EncounterMethod.Surf, split: 'Byron' },
+            ],
             battles: [
                 {
                     battleKey: 'pkmn-ranger-m-taylor',
@@ -90,6 +97,13 @@ const ROUTE_212: Location = {
             map: route212North,
             mapAnchor: MapAnchor.Top,
             encountersKey: 'sinnoh-route-212-north-towards-hearthome-city',
+            methodSplits: [
+                { method: EncounterMethod.Surf, split: 'Byron' },
+                { method: EncounterMethod.GoodRod, split: 'Maylene' },
+                { method: EncounterMethod.OldRod, split: 'Maylene' },
+                { method: EncounterMethod.HoneyTree, split: 'Maylene' },
+                { method: EncounterMethod.Grass, split: 'Maylene' },
+            ],
             battles: [
                 {
                     battleKey: 'policeman-caleb',

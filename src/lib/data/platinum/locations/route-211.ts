@@ -1,5 +1,5 @@
 import { route211East, route211West } from '@/lib/data/platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_211: Location = {
@@ -10,6 +10,7 @@ const ROUTE_211: Location = {
             map: route211West,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-211-west-towards-eterna-city',
+            methodSplits: [{ method: EncounterMethod.Grass, split: 'Byron' }],
             battles: [
                 {
                     battleKey: 'ninja-boy-zach',
@@ -33,6 +34,10 @@ const ROUTE_211: Location = {
             map: route211East,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-211-east-towards-celestic-town',
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Gardenia' },
+                { method: EncounterMethod.HoneyTree, split: 'Gardenia' },
+            ],
             battles: [
                 {
                     battleKey: 'bird-keeper-katherine',

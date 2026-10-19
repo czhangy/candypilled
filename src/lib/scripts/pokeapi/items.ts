@@ -227,7 +227,7 @@ const buildValuesByGeneration = (
         .map((entry) => ({
             generation:
                 versionGroupGenerations.get(entry.version_group.name) ?? 1,
-            description: entry.text.replace(/[\n\f]+/g, ' '),
+            description: StringHelpers.flattenFlavorText(entry.text),
         }))
         .filter((entry) => entry.generation <= MAX_GENERATION)
         .sort((a, b) => a.generation - b.generation);

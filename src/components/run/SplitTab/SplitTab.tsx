@@ -3,6 +3,7 @@
 import { useEffect, useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
+import SplitLocation from '@/components/run/SplitLocation/SplitLocation';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { Encounter, Game, Location, Run } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
@@ -11,7 +12,6 @@ import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import RoamerTracker from './RoamerTracker/RoamerTracker';
-import SplitLocation from './SplitLocation/SplitLocation';
 import styles from './SplitTab.module.scss';
 
 type SplitTabProps = {

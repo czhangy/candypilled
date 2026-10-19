@@ -25,9 +25,12 @@ export default class AbilityHelpers {
             .sort((a, b) => a.localeCompare(b));
     }
 
-    /** Whether `slug` is curated as a dangerous ability. */
-    static isDangerousAbility(slug: string): boolean {
-        return AbilityHelpers.getAbilityData(slug)?.isDangerous ?? false;
+    /** Whether `slug` is curated as a dangerous ability as of `generation`. */
+    static isDangerousAbility(slug: string, generation: number): boolean {
+        const ability = AbilityHelpers.getAbilityData(slug);
+        if (!ability?.isDangerous) return false;
+
+        return generation >= (ability.dangerousFromGeneration ?? 1);
     }
 
     /** The values `slug` had as of `generation`, or undefined if no ability matches. */

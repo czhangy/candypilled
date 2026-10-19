@@ -1,5 +1,5 @@
 import { route214 } from '@/lib/data/diamond-pearl/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_214: Location = {
@@ -7,6 +7,13 @@ const ROUTE_214: Location = {
     map: route214,
     mapAnchor: MapAnchor.Top,
     encountersKey: 'sinnoh-route-214',
+    methodSplits: [
+        { method: EncounterMethod.Surf, split: 'Byron' },
+        { method: EncounterMethod.Grass, split: 'Maylene' },
+        { method: EncounterMethod.GoodRod, split: 'Maylene' },
+        { method: EncounterMethod.OldRod, split: 'Maylene' },
+        { method: EncounterMethod.HoneyTree, split: 'Maylene' },
+    ],
     battles: [
         {
             battleKey: 'psychic-f-abigail',

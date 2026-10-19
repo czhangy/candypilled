@@ -1,0 +1,241 @@
+'use client';
+
+import { useState } from 'react';
+import Image from 'next/image';
+import Tooltip from '@/components/common/Tooltip/Tooltip';
+import ConfirmModal from '@/components/ConfirmModal/ConfirmModal';
+import EditIcon from '@/lib/icons/EditIcon';
+import { Battle, Game } from '@/lib/static/types';
+import BattleHelpers from '@/lib/utils/BattleHelpers';
+import StringHelpers from '@/lib/utils/StringHelpers';
+import TrainerHelpers from '@/lib/utils/TrainerHelpers';
+import styles from './BattleCard.module.scss';
+import BattleNotesModal from './BattleNotesModal/BattleNotesModal';
+import PokemonSlot from './PokemonSlot/PokemonSlot';
+import TrainerPanel from './TrainerPanel/TrainerPanel';
+import TrainerSprite from './TrainerSprite/TrainerSprite';
+
+type BattleCardProps = {
+    battle: Battle;
+    game: Game;
+    generation: number;
+    isTagPartner?: boolean;
+    onSelectAbility: (slug: string) => void;
+    onSelectItem: (slug: string) => void;
+    onSelectMove: (slug: string) => void;
+    onSelectSpecies: (species: string) => void;
+    onSelectTrainer: (battleKey: string) => void;
+    onWipeBattle?: (battleKey: string) => void;
+    starter: string;
+    variant: string;
+    version: string;
+};
+
+const BattleCard: React.FC<BattleCardProps> = ({
+    battle,
+    game,
+    generation,
+    isTagPartner,
+    onSelectAbility,
+    onSelectItem,
+    onSelectMove,
+    onSelectSpecies,
+    onSelectTrainer,
+    onWipeBattle,
+    starter,
+    variant,
+    version,
+}) => {
+    // -------------------------------------------------------------------------
+    // CONSTANTS
+    // -------------------------------------------------------------------------
+
+    const TEAM_SLOT_COUNT = 6;
+
+    // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [isNotesModalOpen, setIsNotesModalOpen] = useState(false);
+    const [isWipeConfirmOpen, setIsWipeConfirmOpen] = useState(false);
+
+    // -------------------------------------------------------------------------
+    // RENDERING
+    // -------------------------------------------------------------------------
+
+    const metadata = game.battles[battle.battleKey].metadata;
+    const splitName = game.battles[battle.battleKey].split;
+    const badge = `/badges/${game.badgeAssetFolder}/${StringHelpers.toSlug(splitName)}.png`;
+    const teamGroups = BattleHelpers.getTeamGroups(battle, starter, game);
+    // Flattened one row per (trainer, surviving team) pair, so a trainer
+    // with multiple teams that all matched the current run's conditions
+    // renders one row per team, same as a tag battle renders one row per
+    // trainer — only the very last row carries the full TrainerPanel
+    // (badges/metadata); every other row is a bare TrainerSprite.
+    const rows = teamGroups.flatMap((group) =>
+        group.teams.map((row) => ({
+            items: group.items,
+            name: group.name,
+            team: row.team,
+            trainerClass: row.trainerClass,
+        }))
+    );
+    const isStacked = rows.length > 1;
+
+    // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleNotesButtonClick = (): void => {
+        setIsNotesModalOpen(true);
+    };
+
+    const handleNotesModalClose = (): void => {
+        setIsNotesModalOpen(false);
+    };
+
+    const handleWipeButtonClick = (): void => {
+        setIsWipeConfirmOpen(true);
+    };
+
+    const handleWipeConfirmClose = (): void => {
+        setIsWipeConfirmOpen(false);
+    };
+
+    const handleWipeConfirm = (): void => {
+        onWipeBattle?.(BattleHelpers.getBattleKey(battle));
+    };
+
+    // -------------------------------------------------------------------------
+    // MARKUP
+    // -------------------------------------------------------------------------
+
+    return (
+        <div className={styles['battle-card']}>
+            <div className={styles['top-row']}>
+                <Tooltip
+                    className={styles.badge}
+                    position="left"
+                    text={`${splitName} Split`}
+                >
+                    <div className={styles['badge-image']}>
+                        <Image alt="" fill sizes="1.5rem" src={badge} />
+                    </div>
+                </Tooltip>
+                <div className={styles['trainer-header']}>
+                    <button
+                        className={styles['trainer-name']}
+                        onClick={() =>
+                            onSelectTrainer(BattleHelpers.getBattleKey(battle))
+                        }
+                        type="button"
+                    >
+                        {BattleHelpers.getFullName(battle, game)}
+                    </button>
+                    <button
+                        aria-label="Add notes"
+                        className={styles['notes-button']}
+                        onClick={handleNotesButtonClick}
+                        type="button"
+                    >
+                        <EditIcon />
+                    </button>
+                </div>
+            </div>
+            {isNotesModalOpen && (
+                <BattleNotesModal
+                    accentColor={game.accentColor}
+                    battleKey={BattleHelpers.getBattleKey(battle)}
+                    buttonTextColor={game.textContrastColor}
+                    game={game}
+                    onClose={handleNotesModalClose}
+                />
+            )}
+            {isWipeConfirmOpen && (
+                <ConfirmModal
+                    confirmLabel="Wipe"
+                    description="This will record a wipe to this trainer and end this attempt."
+                    onClose={handleWipeConfirmClose}
+                    onConfirm={handleWipeConfirm}
+                    title="Wipe?"
+                />
+            )}
+            <div className={styles.body}>
+                {rows.map((row, rowIndex) => {
+                    const isLastRow = rowIndex === rows.length - 1;
+                    const position = !isStacked
+                        ? 'single'
+                        : isLastRow
+                          ? 'bottom'
+                          : rowIndex === 0
+                            ? 'top'
+                            : 'middle';
+
+                    return (
+                        <div
+                            className={styles.row}
+                            key={`${row.trainerClass}-${row.name}-${rowIndex}`}
+                        >
+                            {isLastRow ? (
+                                <TrainerPanel
+                                    battle={battle}
+                                    dataSource={game.dataSource}
+                                    isStacked={isStacked}
+                                    items={row.items}
+                                    metadata={metadata}
+                                    onWipeClick={
+                                        onWipeBattle
+                                            ? handleWipeButtonClick
+                                            : undefined
+                                    }
+                                    trainerAssetFolder={game.trainerAssetFolder}
+                                    trainerClass={row.trainerClass}
+                                    trainerName={row.name}
+                                />
+                            ) : (
+                                <TrainerSprite
+                                    alt={TrainerHelpers.getDisplayName(
+                                        row.trainerClass,
+                                        row.name
+                                    )}
+                                    position={rowIndex === 0 ? 'top' : 'middle'}
+                                    trainerAssetFolder={game.trainerAssetFolder}
+                                    trainerClass={row.trainerClass}
+                                />
+                            )}
+                            <div className={styles.team}>
+                                {Array.from(
+                                    { length: TEAM_SLOT_COUNT },
+                                    (_, index) => row.team[index] ?? null
+                                ).map((pokemon, index) => (
+                                    <PokemonSlot
+                                        dataSource={game.dataSource}
+                                        generation={generation}
+                                        hofDisplay={false}
+                                        isReadOnly={false}
+                                        isTagPartner={!!isTagPartner}
+                                        key={
+                                            pokemon
+                                                ? `${rowIndex}-${pokemon.slug}-${index}`
+                                                : `${rowIndex}-empty-${index}`
+                                        }
+                                        onSelectAbility={onSelectAbility}
+                                        onSelectItem={onSelectItem}
+                                        onSelectMove={onSelectMove}
+                                        onSelectSpecies={onSelectSpecies}
+                                        pokemon={pokemon}
+                                        position={position}
+                                        variant={variant}
+                                        version={version}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    );
+};
+
+export default BattleCard;

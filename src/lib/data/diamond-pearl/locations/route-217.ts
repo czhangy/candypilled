@@ -1,5 +1,5 @@
 import { route217 } from '@/lib/data/diamond-pearl/maps';
-import { FieldCondition, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, FieldCondition, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_217: Location = {
@@ -7,6 +7,7 @@ const ROUTE_217: Location = {
     map: route217,
     mapAnchor: MapAnchor.Bottom,
     encountersKey: 'sinnoh-route-217',
+    methodSplits: [{ method: EncounterMethod.Grass, split: 'Candice' }],
     battles: [
         {
             battleKey: 'ace-trainer-snow-m-dalton',

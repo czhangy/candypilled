@@ -1,6 +1,6 @@
 import { route114 } from '@/lib/data/ruby-sapphire/maps';
 import { GEN_3_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_114: Location = {
@@ -8,6 +8,14 @@ const ROUTE_114: Location = {
     map: route114,
     mapAnchor: MapAnchor.Top,
     encountersKey: 'hoenn-route-114',
+    methodSplits: [
+        { method: EncounterMethod.Grass, split: 'Flannery' },
+        { method: EncounterMethod.OldRod, split: 'Flannery' },
+        { method: EncounterMethod.RockSmash, split: 'Flannery' },
+        { method: EncounterMethod.GoodRod, split: 'Winona' },
+        { method: EncounterMethod.SuperRod, split: 'Winona' },
+        { method: EncounterMethod.Surf, split: 'Winona' },
+    ],
     battles: [
         {
             battleKey: 'fisherman-nolan',

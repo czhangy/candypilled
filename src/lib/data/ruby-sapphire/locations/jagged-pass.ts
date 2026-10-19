@@ -1,5 +1,5 @@
 import { jaggedPass } from '@/lib/data/ruby-sapphire/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const JAGGED_PASS: Location = {
@@ -7,6 +7,7 @@ const JAGGED_PASS: Location = {
     map: jaggedPass,
     mapAnchor: MapAnchor.Top,
     encountersKey: 'jagged-pass',
+    methodSplits: [{ method: EncounterMethod.Cave, split: 'Flannery' }],
     battles: [
         {
             battleKey: 'hiker-eric',

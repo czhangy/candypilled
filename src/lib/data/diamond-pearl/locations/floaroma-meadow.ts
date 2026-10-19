@@ -1,6 +1,6 @@
 import { floaromaMeadow } from '@/lib/data/diamond-pearl/maps';
 import { GEN_4_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const FLOAROMA_MEADOW: Location = {
@@ -8,6 +8,7 @@ const FLOAROMA_MEADOW: Location = {
     map: floaromaMeadow,
     mapAnchor: MapAnchor.BottomLeft,
     encountersKey: 'floaroma-meadow',
+    methodSplits: [{ method: EncounterMethod.HoneyTree, split: 'Gardenia' }],
     battles: [
         {
             battleKey: 'galactic-grunt-m-floaroma-meadow',

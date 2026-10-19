@@ -1,5 +1,5 @@
 import { miningMuseum } from '@/lib/data/diamond-pearl/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const MINING_MUSEUM: Location = {
@@ -7,6 +7,7 @@ const MINING_MUSEUM: Location = {
     map: miningMuseum,
     mapAnchor: MapAnchor.Center,
     encountersKey: 'oreburgh-city',
+    methodSplits: [{ method: EncounterMethod.Fossil, split: 'Maylene' }],
 };
 
 export default MINING_MUSEUM;

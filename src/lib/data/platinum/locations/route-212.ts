@@ -1,5 +1,5 @@
 import { route212North, route212South } from '@/lib/data/platinum/maps';
-import { FieldCondition, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, FieldCondition, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_212: Location = {
@@ -10,6 +10,13 @@ const ROUTE_212: Location = {
             map: route212South,
             mapAnchor: MapAnchor.Right,
             encountersKey: 'sinnoh-route-212-east-towards-pastoria-city',
+            methodSplits: [
+                { method: EncounterMethod.Surf, split: 'Byron' },
+                { method: EncounterMethod.OldRod, split: 'Wake' },
+                { method: EncounterMethod.GoodRod, split: 'Wake' },
+                { method: EncounterMethod.HoneyTree, split: 'Wake' },
+                { method: EncounterMethod.Grass, split: 'Wake' },
+            ],
             battles: [
                 {
                     battleKey: 'pkmn-ranger-m-taylor',
@@ -90,6 +97,13 @@ const ROUTE_212: Location = {
             map: route212North,
             mapAnchor: MapAnchor.Top,
             encountersKey: 'sinnoh-route-212-north-towards-hearthome-city',
+            methodSplits: [
+                { method: EncounterMethod.Surf, split: 'Byron' },
+                { method: EncounterMethod.GoodRod, split: 'Wake' },
+                { method: EncounterMethod.OldRod, split: 'Wake' },
+                { method: EncounterMethod.Grass, split: 'Wake' },
+                { method: EncounterMethod.HoneyTree, split: 'Wake' },
+            ],
             battles: [
                 {
                     battleKey: 'policeman-caleb',

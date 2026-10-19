@@ -20,6 +20,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 > A constant, type, or helper used by only one file belongs in that file (module-level for scripts, inside the component function for components per the rule below). Only promote it to a shared location (`constants.ts`, `types.ts`, `src/lib/utils/`) once a second file actually needs it — don't pre-emptively centralize.
 
+> After any non-data change (code touching components, hooks, utils, types, styles — as opposed to files under `src/lib/data/`), take time to review and clean up the code just touched, prioritizing readability first, then performance. Ask if it's unclear whether a change counts as a data change. Look specifically for: unnecessary nulls/optionals, common code or styling worth extracting into a shared helper/mixin, and stale or overly wordy comments.
+
 @.claude/docs/commands.md
 
 @.claude/docs/architecture.md

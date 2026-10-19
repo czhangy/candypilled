@@ -2,7 +2,7 @@ import {
     lakeVerityPostByron,
     lakeVerityPreByron,
 } from '@/lib/data/diamond-pearl/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_VERITY: Location = {
@@ -13,6 +13,7 @@ const LAKE_VERITY: Location = {
             map: lakeVerityPreByron,
             mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'lake-verity',
+            methodSplits: [{ method: EncounterMethod.Starter, split: 'Roark' }],
         },
         {
             name: 'Post-Byron',

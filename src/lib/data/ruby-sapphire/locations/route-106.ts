@@ -1,5 +1,5 @@
 import { route106 } from '@/lib/data/ruby-sapphire/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_106: Location = {
@@ -7,6 +7,12 @@ const ROUTE_106: Location = {
     map: route106,
     mapAnchor: MapAnchor.Right,
     encountersKey: 'hoenn-route-106',
+    methodSplits: [
+        { method: EncounterMethod.OldRod, split: 'Brawly' },
+        { method: EncounterMethod.GoodRod, split: 'Winona' },
+        { method: EncounterMethod.SuperRod, split: 'Winona' },
+        { method: EncounterMethod.Surf, split: 'Winona' },
+    ],
     battles: [
         {
             battleKey: 'fisherman-ned',

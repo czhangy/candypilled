@@ -290,6 +290,7 @@ const promptBattle = async (
 
     const metadata = [
         isOptional && BattleMetadata.Optional,
+        !isOptional && !isBoss && BattleMetadata.Required,
         isMiniboss && BattleMetadata.Miniboss,
         isBoss && BattleMetadata.Boss,
         isTrueDouble && BattleMetadata.TrueDouble,

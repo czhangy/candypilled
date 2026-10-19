@@ -29,6 +29,7 @@ export enum BattleMetadata {
     Gauntlet = 'Gauntlet',
     Miniboss = 'Miniboss',
     Optional = 'Optional',
+    Required = 'Required',
     Tag = 'Tag',
     TrueDouble = 'True Double',
 }
@@ -119,6 +120,7 @@ export enum GameVersionGroup {
     HeartGoldSoulSilver = 'heartgold-soulsilver',
     RenegadePlatinum = 'renegade-platinum',
     RubySapphire = 'ruby-sapphire',
+    Emerald = 'emerald',
 }
 
 // Every playable game's display name, kept as a plain enum (rather than
@@ -133,6 +135,7 @@ export enum GameName {
     Pearl = 'Pearl',
     Platinum = 'Platinum',
     RenegadePlatinum = 'Renegade Platinum',
+    Emerald = 'Emerald',
 }
 
 // The public/badges/<folder>/ a game's gym-badge icons are served from.
@@ -148,6 +151,7 @@ export enum TrainerAssetFolder {
     DiamondPearl = 'diamond-pearl',
     Platinum = 'platinum',
     RubySapphire = 'ruby-sapphire',
+    Emerald = 'emerald',
 }
 
 // Where a map autoscrolls to on load, lower priority than a selected

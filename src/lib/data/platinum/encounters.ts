@@ -4437,7 +4437,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
     'lost-tower-1f': [
         {
             species: 'zubat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 17,
             maxLevel: 19,
             chance: 35,
@@ -4445,7 +4445,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'zubat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 17,
             maxLevel: 19,
             chance: 35,
@@ -4453,7 +4453,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'zubat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 17,
             maxLevel: 19,
             chance: 35,
@@ -4461,7 +4461,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'gastly',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 17,
             maxLevel: 20,
             chance: 65,
@@ -4469,7 +4469,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'gastly',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 17,
             maxLevel: 20,
             chance: 65,
@@ -4477,7 +4477,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'gastly',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 17,
             maxLevel: 20,
             chance: 45,
@@ -4485,7 +4485,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'duskull',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 17,
             maxLevel: 19,
             chance: 20,
@@ -4495,7 +4495,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
     'lost-tower-2f': [
         {
             species: 'zubat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 17,
             maxLevel: 19,
             chance: 35,
@@ -4503,7 +4503,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'zubat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 17,
             maxLevel: 19,
             chance: 35,
@@ -4511,7 +4511,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'zubat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 17,
             maxLevel: 19,
             chance: 35,
@@ -4519,7 +4519,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'gastly',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 17,
             maxLevel: 20,
             chance: 65,
@@ -4527,7 +4527,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'gastly',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 17,
             maxLevel: 20,
             chance: 65,
@@ -4535,7 +4535,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'gastly',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 17,
             maxLevel: 20,
             chance: 45,
@@ -4543,7 +4543,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'duskull',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 17,
             maxLevel: 19,
             chance: 20,
@@ -4553,7 +4553,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
     'lost-tower-3f': [
         {
             species: 'zubat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 18,
             maxLevel: 20,
             chance: 35,
@@ -4561,7 +4561,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'zubat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 18,
             maxLevel: 20,
             chance: 35,
@@ -4569,7 +4569,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'zubat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 18,
             maxLevel: 20,
             chance: 35,
@@ -4577,7 +4577,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'golbat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 21,
             maxLevel: 21,
             chance: 1,
@@ -4585,7 +4585,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'golbat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 21,
             maxLevel: 21,
             chance: 1,
@@ -4593,7 +4593,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'golbat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 21,
             maxLevel: 21,
             chance: 1,
@@ -4601,7 +4601,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'gastly',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 18,
             maxLevel: 21,
             chance: 64,
@@ -4609,7 +4609,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'gastly',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 18,
             maxLevel: 21,
             chance: 64,
@@ -4617,7 +4617,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'gastly',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 18,
             maxLevel: 21,
             chance: 44,
@@ -4625,7 +4625,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'duskull',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 18,
             maxLevel: 20,
             chance: 20,
@@ -4635,7 +4635,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
     'lost-tower-4f': [
         {
             species: 'zubat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 18,
             maxLevel: 20,
             chance: 35,
@@ -4643,7 +4643,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'zubat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 18,
             maxLevel: 20,
             chance: 35,
@@ -4651,7 +4651,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'zubat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 18,
             maxLevel: 20,
             chance: 35,
@@ -4659,7 +4659,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'golbat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 21,
             maxLevel: 21,
             chance: 5,
@@ -4667,7 +4667,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'golbat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 21,
             maxLevel: 21,
             chance: 5,
@@ -4675,7 +4675,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'golbat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 21,
             maxLevel: 21,
             chance: 5,
@@ -4683,7 +4683,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'gastly',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 18,
             maxLevel: 21,
             chance: 60,
@@ -4691,7 +4691,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'gastly',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 18,
             maxLevel: 21,
             chance: 60,
@@ -4699,7 +4699,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'gastly',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 18,
             maxLevel: 21,
             chance: 40,
@@ -4707,7 +4707,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'duskull',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 18,
             maxLevel: 20,
             chance: 20,
@@ -4717,7 +4717,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
     'lost-tower-5f': [
         {
             species: 'zubat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 19,
             maxLevel: 21,
             chance: 35,
@@ -4725,7 +4725,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'zubat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 19,
             maxLevel: 21,
             chance: 35,
@@ -4733,7 +4733,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'zubat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 19,
             maxLevel: 21,
             chance: 35,
@@ -4741,7 +4741,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'golbat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 22,
             maxLevel: 22,
             chance: 10,
@@ -4749,7 +4749,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'golbat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 22,
             maxLevel: 22,
             chance: 10,
@@ -4757,7 +4757,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'golbat',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 22,
             maxLevel: 22,
             chance: 10,
@@ -4765,7 +4765,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'gastly',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 19,
             maxLevel: 22,
             chance: 55,
@@ -4773,7 +4773,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'gastly',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 19,
             maxLevel: 22,
             chance: 55,
@@ -4781,7 +4781,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'gastly',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 19,
             maxLevel: 22,
             chance: 35,
@@ -4789,7 +4789,7 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
         },
         {
             species: 'duskull',
-            method: EncounterMethod.Grass,
+            method: EncounterMethod.Walking,
             minLevel: 19,
             maxLevel: 21,
             chance: 20,
@@ -7934,70 +7934,6 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             maxLevel: 5,
             chance: null,
             conditions: ['time-night'],
-        },
-        {
-            species: 'starly',
-            method: EncounterMethod.Grass,
-            minLevel: 2,
-            maxLevel: 3,
-            chance: 50,
-            conditions: ['time-morning'],
-        },
-        {
-            species: 'starly',
-            method: EncounterMethod.Grass,
-            minLevel: 2,
-            maxLevel: 3,
-            chance: 50,
-            conditions: ['time-day'],
-        },
-        {
-            species: 'starly',
-            method: EncounterMethod.Grass,
-            minLevel: 2,
-            maxLevel: 3,
-            chance: 40,
-            conditions: ['time-night'],
-        },
-        {
-            species: 'bidoof',
-            method: EncounterMethod.Grass,
-            minLevel: 2,
-            maxLevel: 3,
-            chance: 40,
-            conditions: ['time-morning'],
-        },
-        {
-            species: 'bidoof',
-            method: EncounterMethod.Grass,
-            minLevel: 2,
-            maxLevel: 3,
-            chance: 50,
-            conditions: ['time-day'],
-        },
-        {
-            species: 'bidoof',
-            method: EncounterMethod.Grass,
-            minLevel: 2,
-            maxLevel: 3,
-            chance: 50,
-            conditions: ['time-night'],
-        },
-        {
-            species: 'kricketot',
-            method: EncounterMethod.Grass,
-            minLevel: 3,
-            maxLevel: 3,
-            chance: 10,
-            conditions: ['time-night'],
-        },
-        {
-            species: 'kricketot',
-            method: EncounterMethod.Grass,
-            minLevel: 3,
-            maxLevel: 3,
-            chance: 10,
-            conditions: ['time-morning'],
         },
     ],
     'sinnoh-route-202': [

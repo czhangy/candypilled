@@ -1,5 +1,6 @@
 import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
 import { BATTLES } from '@/lib/data/ruby-sapphire/battles';
+import { LOCATIONS } from '@/lib/data/ruby-sapphire/locations';
 import AQUA_HIDEOUT from '@/lib/data/ruby-sapphire/locations/aqua-hideout';
 import { MET_LOCATIONS } from '@/lib/data/ruby-sapphire/met-locations';
 import BRAWLY from '@/lib/data/ruby-sapphire/splits/brawly';
@@ -10,7 +11,7 @@ import STEVEN from '@/lib/data/ruby-sapphire/splits/steven';
 import getTateAndLiza from '@/lib/data/ruby-sapphire/splits/tate-and-liza';
 import WALLACE from '@/lib/data/ruby-sapphire/splits/wallace';
 import WATTSON from '@/lib/data/ruby-sapphire/splits/wattson';
-import getWinona from '@/lib/data/ruby-sapphire/splits/winona';
+import WINONA from '@/lib/data/ruby-sapphire/splits/winona';
 import {
     BadgeAssetFolder,
     GameVersionGroup,
@@ -31,12 +32,13 @@ const SAPPHIRE: Game = {
         male: '/trainers/ruby-sapphire/brendan.png',
         female: '/trainers/ruby-sapphire/may.png',
     },
+    locations: [...LOCATIONS, AQUA_HIDEOUT],
     starters: ['treecko', 'torchic', 'mudkip'],
-    accentColor: '#3E6FB0',
+    accentColor: '#3D51A7',
     encounters: ENCOUNTERS,
     battles: BATTLES,
     // Index 66 is version-dependent ("Magma Hideout" in Ruby, "Aqua
-    // Hideout" in Sapphire) -- see ONBOARDING.md.
+    // Hideout" in Sapphire).
     metLocationById: { ...MET_LOCATIONS, 66: 'Aqua Hideout' },
     wipeMessages: ['Truck.'],
     resources: [
@@ -52,7 +54,7 @@ const SAPPHIRE: Game = {
         WATTSON,
         FLANNERY,
         NORMAN,
-        getWinona(AQUA_HIDEOUT),
+        WINONA,
         getTateAndLiza(AQUA_HIDEOUT),
         WALLACE,
         STEVEN,

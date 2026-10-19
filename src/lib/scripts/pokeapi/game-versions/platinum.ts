@@ -148,6 +148,26 @@ export const platinum: GameVersion = {
             species: 'gastly',
             method: EncounterMethod.Walking,
         },
+        {
+            location: 'lost-tower',
+            species: 'duskull',
+            method: EncounterMethod.Walking,
+        },
+        {
+            location: 'lost-tower',
+            species: 'gastly',
+            method: EncounterMethod.Walking,
+        },
+        {
+            location: 'lost-tower',
+            species: 'golbat',
+            method: EncounterMethod.Walking,
+        },
+        {
+            location: 'lost-tower',
+            species: 'zubat',
+            method: EncounterMethod.Walking,
+        },
     ],
     excludedMethods: [
         'super-rod',

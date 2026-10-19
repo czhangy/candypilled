@@ -6,8 +6,10 @@ import {
     lostTower5f,
     route209Main,
 } from '@/lib/data/diamond-pearl/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
+
+const WALKING_MAYLENE = [{ method: EncounterMethod.Walking, split: 'Maylene' }];
 
 const ROUTE_209: Location = {
     name: 'Route 209',
@@ -17,6 +19,14 @@ const ROUTE_209: Location = {
             map: route209Main,
             mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'sinnoh-route-209',
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Maylene' },
+                { method: EncounterMethod.OldRod, split: 'Maylene' },
+                { method: EncounterMethod.GoodRod, split: 'Maylene' },
+                { method: EncounterMethod.HoneyTree, split: 'Maylene' },
+                { method: EncounterMethod.Static, split: 'Maylene' },
+                { method: EncounterMethod.Surf, split: 'Byron' },
+            ],
             battles: [
                 {
                     battleKey: 'pkmn-breeder-m-albert',
@@ -67,12 +77,14 @@ const ROUTE_209: Location = {
             map: lostTower1f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-1f',
+            methodSplits: WALKING_MAYLENE,
         },
         {
             name: 'Tower 2F',
             map: lostTower2f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-2f',
+            methodSplits: WALKING_MAYLENE,
             battles: [
                 {
                     battleKey: 'youngster-oliver',
@@ -86,6 +98,7 @@ const ROUTE_209: Location = {
             map: lostTower3f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-3f',
+            methodSplits: WALKING_MAYLENE,
             battles: [
                 {
                     battleKey: 'roughneck-kirby',
@@ -104,6 +117,7 @@ const ROUTE_209: Location = {
             map: lostTower4f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-4f',
+            methodSplits: WALKING_MAYLENE,
             battles: [
                 {
                     battleKey: 'pokefan-f-rebekah',
@@ -129,6 +143,7 @@ const ROUTE_209: Location = {
             map: lostTower5f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'lost-tower-5f',
+            methodSplits: WALKING_MAYLENE,
         },
     ],
 };

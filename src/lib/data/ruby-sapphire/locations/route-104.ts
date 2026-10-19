@@ -1,7 +1,15 @@
 import { route104North, route104South } from '@/lib/data/ruby-sapphire/maps';
 import { GEN_3_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
+
+const ROUTE_104_METHOD_SPLITS = [
+    { method: EncounterMethod.Grass, split: 'Roxanne' },
+    { method: EncounterMethod.OldRod, split: 'Brawly' },
+    { method: EncounterMethod.GoodRod, split: 'Winona' },
+    { method: EncounterMethod.SuperRod, split: 'Winona' },
+    { method: EncounterMethod.Surf, split: 'Winona' },
+];
 
 const ROUTE_104: Location = {
     name: 'Route 104',
@@ -11,6 +19,7 @@ const ROUTE_104: Location = {
             map: route104South,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'hoenn-route-104-area',
+            methodSplits: ROUTE_104_METHOD_SPLITS,
             battles: [
                 {
                     battleKey: 'youngster-billy',
@@ -29,6 +38,7 @@ const ROUTE_104: Location = {
             map: route104North,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'hoenn-route-104-area',
+            methodSplits: ROUTE_104_METHOD_SPLITS,
             battles: [
                 {
                     battleKey: 'lady-cindy',

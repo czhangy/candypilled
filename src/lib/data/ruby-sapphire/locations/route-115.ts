@@ -1,5 +1,5 @@
 import { route115North, route115South } from '@/lib/data/ruby-sapphire/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_115: Location = {
@@ -10,6 +10,12 @@ const ROUTE_115: Location = {
             map: route115South,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'hoenn-route-115-south',
+            methodSplits: [
+                { method: EncounterMethod.OldRod, split: 'Flannery' },
+                { method: EncounterMethod.GoodRod, split: 'Winona' },
+                { method: EncounterMethod.SuperRod, split: 'Winona' },
+                { method: EncounterMethod.Surf, split: 'Winona' },
+            ],
             battles: [
                 {
                     battleKey: 'black-belt-nob',
@@ -40,6 +46,13 @@ const ROUTE_115: Location = {
             map: route115North,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'hoenn-route-115',
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Winona' },
+                { method: EncounterMethod.OldRod, split: 'Winona' },
+                { method: EncounterMethod.GoodRod, split: 'Winona' },
+                { method: EncounterMethod.SuperRod, split: 'Winona' },
+                { method: EncounterMethod.Surf, split: 'Winona' },
+            ],
             battles: [
                 {
                     battleKey: 'expert-m-timothy',

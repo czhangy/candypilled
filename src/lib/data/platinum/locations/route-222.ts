@@ -1,5 +1,5 @@
 import { route222Main, route222PikachuFanClub } from '@/lib/data/platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_222: Location = {
@@ -10,6 +10,13 @@ const ROUTE_222: Location = {
             map: route222Main,
             mapAnchor: MapAnchor.Left,
             encountersKey: 'sinnoh-route-222',
+            methodSplits: [
+                { method: EncounterMethod.Surf, split: 'Volkner' },
+                { method: EncounterMethod.Grass, split: 'Volkner' },
+                { method: EncounterMethod.OldRod, split: 'Volkner' },
+                { method: EncounterMethod.GoodRod, split: 'Volkner' },
+                { method: EncounterMethod.HoneyTree, split: 'Volkner' },
+            ],
             battles: [
                 {
                     battleKey: 'rich-boy-trey',

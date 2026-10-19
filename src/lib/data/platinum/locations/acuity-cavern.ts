@@ -1,5 +1,5 @@
 import { acuityCavern } from '@/lib/data/platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ACUITY_CAVERN: Location = {
@@ -7,6 +7,7 @@ const ACUITY_CAVERN: Location = {
     map: acuityCavern,
     mapAnchor: MapAnchor.Center,
     encountersKey: 'lake-acuity-cavern',
+    methodSplits: [{ method: EncounterMethod.Static, split: 'Volkner' }],
 };
 
 export default ACUITY_CAVERN;

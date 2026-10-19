@@ -2,7 +2,7 @@ import {
     lakeVerityPostByron,
     lakeVerityPreByron,
 } from '@/lib/data/platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_VERITY: Location = {
@@ -13,12 +13,24 @@ const LAKE_VERITY: Location = {
             map: lakeVerityPreByron,
             mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'lake-verity-before-galactic-intervention',
+            methodSplits: [
+                { method: EncounterMethod.Surf, split: 'Byron' },
+                { method: EncounterMethod.GoodRod, split: 'Maylene' },
+                { method: EncounterMethod.OldRod, split: 'Roark' },
+                { method: EncounterMethod.Grass, split: 'Roark' },
+            ],
         },
         {
             name: 'Post-Byron',
             map: lakeVerityPostByron,
             mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'lake-verity-after-galactic-intervention',
+            methodSplits: [
+                { method: EncounterMethod.Surf, split: 'Candice' },
+                { method: EncounterMethod.GoodRod, split: 'Candice' },
+                { method: EncounterMethod.OldRod, split: 'Candice' },
+                { method: EncounterMethod.Grass, split: 'Candice' },
+            ],
             battles: [
                 {
                     customWidth: 136,

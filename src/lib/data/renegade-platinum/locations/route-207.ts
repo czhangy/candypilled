@@ -1,5 +1,5 @@
 import { route207Dawn, route207Lucas } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_207: Location = {
@@ -7,6 +7,11 @@ const ROUTE_207: Location = {
     map: { male: route207Dawn, female: route207Lucas },
     mapAnchor: MapAnchor.Center,
     encountersKey: 'sinnoh-route-207',
+    methodSplits: [
+        { method: EncounterMethod.Grass, split: 'Roark' },
+        { method: EncounterMethod.PokeRadar, split: 'Roark' },
+        { method: EncounterMethod.HoneyTree, split: 'Fantina' },
+    ],
     battles: [
         {
             battleKey: 'picnicker-lauren',

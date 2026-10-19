@@ -1,9 +1,9 @@
 // Renegade Platinum is a ROM hack of Platinum and reuses its met-location
-// index table verbatim (per explicit direction — this doesn't fall under
-// the "games are independent" rule, since it's a confirmed base-game reuse
-// rather than an inferred one). Keep in sync with platinum/met-locations.ts.
+// index table (per explicit direction — this doesn't fall under the "games
+// are independent" rule, since it's a confirmed base-game reuse rather than
+// an inferred one). Keep in sync with platinum/met-locations.ts, minus
+// entries with no Renegade Platinum Location.
 export const MET_LOCATIONS: Record<number, string> = {
-    0: 'Mystery Zone',
     1: 'Twinleaf Town',
     2: 'Sandgem Town',
     3: 'Floaroma Town',
@@ -42,6 +42,7 @@ export const MET_LOCATIONS: Record<number, string> = {
     36: 'Route 221',
     37: 'Route 222',
     38: 'Route 223',
+    39: 'Route 224',
     46: 'Oreburgh Mine',
     47: 'Valley Windworks',
     48: 'Eterna Forest',
@@ -51,13 +52,14 @@ export const MET_LOCATIONS: Record<number, string> = {
     52: 'Great Marsh',
     53: 'Solaceon Ruins',
     54: 'Victory Road',
-    56: 'Amity Square',
+    55: 'Pal Park',
     57: 'Ravaged Path',
     58: 'Floaroma Meadow',
     59: 'Oreburgh Gate',
     61: 'Sendoff Spring',
+    64: 'Snowpoint Temple',
     65: 'Wayward Cave',
-    66: 'Ruin Maniac Cave',
+    67: 'Maniac Tunnel',
     68: 'Trophy Garden',
     69: 'Iron Island',
     70: 'Old Chateau',
@@ -71,31 +73,13 @@ export const MET_LOCATIONS: Record<number, string> = {
     87: 'Verity Cavern',
     88: 'Valor Cavern',
     89: 'Acuity Cavern',
-    90: 'Jubilife TV',
-    91: 'Pokétch Company',
-    92: 'GTS',
     93: "Trainers' School",
     94: 'Mining Museum',
-    95: 'Flower Shop',
     96: 'Cycle Shop',
-    97: 'Contest Hall',
-    98: 'Poffin House',
-    99: 'Foreign Building',
-    100: 'Pokémon Day Care',
-    101: 'Veilstone Department Store',
-    102: 'Game Corner',
-    103: 'Canalave Library',
     104: 'Vista Lighthouse',
-    105: 'Sunyshore Market',
     106: 'Pokémon Mansion',
-    107: 'Footstep House',
     108: 'Café Cabin',
-    109: 'Hotel Grand Lake',
     110: 'Seven Stars Restaurant',
     117: 'Distortion World',
-    118: 'Global Terminal',
     122: 'Team Galactic Eterna Building',
-    123: 'Iron Ruins',
-    124: 'Iceberg Ruins',
-    125: 'Rock Peak Ruins',
 };

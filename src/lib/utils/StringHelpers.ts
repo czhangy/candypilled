@@ -66,4 +66,13 @@ export default class StringHelpers {
     static fromRoman(value: string): number {
         return StringHelpers.ROMAN_NUMERALS.indexOf(value.toUpperCase()) + 1;
     }
+
+    /**
+     * PokéAPI flavor text on one line: a line break after a hyphen splits one
+     * word ("PSYCHIC-\ntype") and joins without a space, any other break
+     * becomes a space.
+     */
+    static flattenFlavorText(value: string): string {
+        return value.replace(/-[\n\f]+/g, '-').replace(/[\n\f]+/g, ' ');
+    }
 }

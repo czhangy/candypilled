@@ -1,6 +1,14 @@
 import { route205North, route205South } from '@/lib/data/diamond-pearl/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
+
+const ROUTE_205_METHOD_SPLITS = [
+    { method: EncounterMethod.Grass, split: 'Gardenia' },
+    { method: EncounterMethod.OldRod, split: 'Gardenia' },
+    { method: EncounterMethod.HoneyTree, split: 'Gardenia' },
+    { method: EncounterMethod.GoodRod, split: 'Maylene' },
+    { method: EncounterMethod.Surf, split: 'Byron' },
+];
 
 const ROUTE_205: Location = {
     name: 'Route 205',
@@ -10,6 +18,7 @@ const ROUTE_205: Location = {
             map: route205South,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'sinnoh-route-205-south-towards-floaroma-town',
+            methodSplits: ROUTE_205_METHOD_SPLITS,
             battles: [
                 {
                     battleKey: 'camper-jacob',
@@ -58,6 +67,7 @@ const ROUTE_205: Location = {
             map: route205North,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-205-east-towards-eterna-city',
+            methodSplits: ROUTE_205_METHOD_SPLITS,
             battles: [
                 {
                     battleKey: 'fisherman-joseph',

@@ -2,7 +2,7 @@ import {
     pokemonLeague,
     pokemonLeagueLobby,
 } from '@/lib/data/diamond-pearl/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const POKEMON_LEAGUE: Location = {
@@ -13,6 +13,11 @@ const POKEMON_LEAGUE: Location = {
             map: pokemonLeague,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'sinnoh-pokemon-league',
+            methodSplits: [
+                { method: EncounterMethod.Surf, split: 'Volkner' },
+                { method: EncounterMethod.OldRod, split: 'Volkner' },
+                { method: EncounterMethod.GoodRod, split: 'Volkner' },
+            ],
         },
         {
             name: 'Lobby',

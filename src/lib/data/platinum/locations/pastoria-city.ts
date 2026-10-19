@@ -1,5 +1,5 @@
 import { pastoriaCity } from '@/lib/data/platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const PASTORIA_CITY: Location = {
@@ -7,6 +7,11 @@ const PASTORIA_CITY: Location = {
     map: pastoriaCity,
     mapAnchor: MapAnchor.TopRight,
     encountersKey: 'pastoria-city',
+    methodSplits: [
+        { method: EncounterMethod.Surf, split: 'Wake' },
+        { method: EncounterMethod.OldRod, split: 'Wake' },
+        { method: EncounterMethod.GoodRod, split: 'Wake' },
+    ],
     battles: [
         {
             battleKey: 'pkmn-trainer-barry-pastoria-city',

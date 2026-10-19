@@ -2,7 +2,7 @@ import {
     fuegoIronworksExterior,
     fuegoIronworksInterior,
 } from '@/lib/data/diamond-pearl/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const FUEGO_IRONWORKS: Location = {
@@ -13,6 +13,13 @@ const FUEGO_IRONWORKS: Location = {
             map: fuegoIronworksExterior,
             mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'fuego-ironworks',
+            methodSplits: [
+                { method: EncounterMethod.Surf, split: 'Byron' },
+                { method: EncounterMethod.OldRod, split: 'Byron' },
+                { method: EncounterMethod.GoodRod, split: 'Byron' },
+                { method: EncounterMethod.HoneyTree, split: 'Byron' },
+                { method: EncounterMethod.Grass, split: 'Byron' },
+            ],
         },
         {
             name: 'Interior',

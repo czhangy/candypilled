@@ -7,7 +7,7 @@ import {
     victoryRoadBack3,
 } from '@/lib/data/renegade-platinum/maps';
 import { GEN_4_TRUE_DOUBLE_HEIGHT } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VICTORY_ROAD: Location = {
@@ -18,6 +18,7 @@ const VICTORY_ROAD: Location = {
             map: victoryRoad1f,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'victory-road-1f',
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Cynthia' }],
             battles: [
                 {
                     battleKey: 'psychic-bryce',
@@ -56,6 +57,10 @@ const VICTORY_ROAD: Location = {
             map: victoryRoad2f,
             mapAnchor: MapAnchor.TopLeft,
             encountersKey: 'victory-road-2f',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Cynthia' },
+                { method: EncounterMethod.Static, split: 'Cynthia' },
+            ],
             battles: [
                 {
                     battleKey: 'ace-trainer-omar',
@@ -85,6 +90,13 @@ const VICTORY_ROAD: Location = {
             map: victoryRoadB1f,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'victory-road-b1f',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Cynthia' },
+                { method: EncounterMethod.Surf, split: 'Cynthia' },
+                { method: EncounterMethod.OldRod, split: 'Cynthia' },
+                { method: EncounterMethod.GoodRod, split: 'Cynthia' },
+                { method: EncounterMethod.SuperRod, split: 'Cynthia' },
+            ],
             battles: [
                 {
                     battleKey: 'psychic-valencia',
@@ -114,12 +126,26 @@ const VICTORY_ROAD: Location = {
             map: victoryRoadBack1,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'victory-road-back',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Cynthia' },
+                { method: EncounterMethod.Surf, split: 'Cynthia' },
+                { method: EncounterMethod.OldRod, split: 'Cynthia' },
+                { method: EncounterMethod.GoodRod, split: 'Cynthia' },
+                { method: EncounterMethod.SuperRod, split: 'Cynthia' },
+            ],
         },
         {
             name: 'Back 2',
             map: victoryRoadBack2,
             mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'victory-road-back',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Cynthia' },
+                { method: EncounterMethod.Surf, split: 'Cynthia' },
+                { method: EncounterMethod.OldRod, split: 'Cynthia' },
+                { method: EncounterMethod.GoodRod, split: 'Cynthia' },
+                { method: EncounterMethod.SuperRod, split: 'Cynthia' },
+            ],
             tagPartner: [{ battleKey: 'pkmn-trainer-marley-tag' }],
             battles: [
                 {
@@ -204,6 +230,13 @@ const VICTORY_ROAD: Location = {
             map: victoryRoadBack3,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'victory-road-back',
+            methodSplits: [
+                { method: EncounterMethod.Cave, split: 'Cynthia' },
+                { method: EncounterMethod.Surf, split: 'Cynthia' },
+                { method: EncounterMethod.OldRod, split: 'Cynthia' },
+                { method: EncounterMethod.GoodRod, split: 'Cynthia' },
+                { method: EncounterMethod.SuperRod, split: 'Cynthia' },
+            ],
         },
     ],
 };

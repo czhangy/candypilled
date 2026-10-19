@@ -3,8 +3,10 @@ import {
     oldChateauDiningRoom,
     oldChateauEntrance,
 } from '@/lib/data/diamond-pearl/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
+
+const WALKING_MAYLENE = [{ method: EncounterMethod.Walking, split: 'Maylene' }];
 
 const OLD_CHATEAU: Location = {
     name: 'Old Chateau',
@@ -14,18 +16,24 @@ const OLD_CHATEAU: Location = {
             map: oldChateauEntrance,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'old-chateau-entrance',
+            methodSplits: WALKING_MAYLENE,
         },
         {
             name: 'Dining Room',
             map: oldChateauDiningRoom,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'old-chateau-dining-room',
+            methodSplits: WALKING_MAYLENE,
         },
         {
             name: 'Bedrooms',
             map: oldChateauBedrooms,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'old-chateau-2f',
+            methodSplits: [
+                { method: EncounterMethod.Walking, split: 'Maylene' },
+                { method: EncounterMethod.Static, split: 'Maylene' },
+            ],
         },
     ],
 };

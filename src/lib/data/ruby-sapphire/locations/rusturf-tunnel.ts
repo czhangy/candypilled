@@ -2,7 +2,7 @@ import {
     rusturfTunnelRuby,
     rusturfTunnelSapphire,
 } from '@/lib/data/ruby-sapphire/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const RUSTURF_TUNNEL: Location = {
@@ -10,6 +10,7 @@ const RUSTURF_TUNNEL: Location = {
     map: { Ruby: rusturfTunnelRuby, Sapphire: rusturfTunnelSapphire },
     mapAnchor: MapAnchor.Center,
     encountersKey: 'rusturf-tunnel',
+    methodSplits: [{ method: EncounterMethod.Cave, split: 'Roxanne' }],
     battles: [
         {
             battleKey: 'team-magma-grunt-m-rusturf-tunnel',

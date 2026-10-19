@@ -168,8 +168,6 @@ export { default as trickHousePuzzle6 } from './trick-house-puzzle-6.png';
 export { default as trickHousePuzzle7 } from './trick-house-puzzle-7.png';
 export { default as underwaterArea1 } from './underwater-area-1.png';
 export { default as underwaterArea2 } from './underwater-area-2.png';
-export { default as underwaterArea3 } from './underwater-area-3.png';
-export { default as underwaterArea4 } from './underwater-area-4.png';
 export { default as verdanturfTown } from './verdanturf-town.png';
 export { default as victoryRoad1f } from './victory-road-1f.png';
 export { default as victoryRoadB1f } from './victory-road-b1f.png';

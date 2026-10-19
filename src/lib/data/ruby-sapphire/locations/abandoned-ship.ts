@@ -5,8 +5,22 @@ import {
     abandonedShipHiddenFloor,
 } from '@/lib/data/ruby-sapphire/maps';
 import { GEN_3_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
+
+const SHIP_METHOD_SPLITS = [
+    { method: EncounterMethod.GoodRod, split: 'Winona' },
+    { method: EncounterMethod.OldRod, split: 'Winona' },
+    { method: EncounterMethod.SuperRod, split: 'Winona' },
+    { method: EncounterMethod.Surf, split: 'Winona' },
+];
+
+const HIDDEN_FLOOR_METHOD_SPLITS = [
+    { method: EncounterMethod.GoodRod, split: 'Wallace' },
+    { method: EncounterMethod.OldRod, split: 'Wallace' },
+    { method: EncounterMethod.SuperRod, split: 'Wallace' },
+    { method: EncounterMethod.Surf, split: 'Wallace' },
+];
 
 const ABANDONED_SHIP: Location = {
     name: 'Abandoned Ship',
@@ -39,6 +53,7 @@ const ABANDONED_SHIP: Location = {
             map: abandonedShipB1f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'abandoned-ship',
+            methodSplits: SHIP_METHOD_SPLITS,
             battles: [
                 {
                     battleKey: 'sailor-duncan',
@@ -52,6 +67,7 @@ const ABANDONED_SHIP: Location = {
             map: abandonedShipHiddenFloor,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'abandoned-ship',
+            methodSplits: HIDDEN_FLOOR_METHOD_SPLITS,
         },
     ],
 };

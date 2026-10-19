@@ -1,5 +1,5 @@
 import { route129 } from '@/lib/data/ruby-sapphire/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_129: Location = {
@@ -7,6 +7,12 @@ const ROUTE_129: Location = {
     map: route129,
     mapAnchor: MapAnchor.TopLeft,
     encountersKey: 'hoenn-route-129',
+    methodSplits: [
+        { method: EncounterMethod.OldRod, split: 'Winona' },
+        { method: EncounterMethod.GoodRod, split: 'Winona' },
+        { method: EncounterMethod.SuperRod, split: 'Winona' },
+        { method: EncounterMethod.Surf, split: 'Winona' },
+    ],
     battles: [
         { battleKey: 'triathlete-swimmer-f-allison', x: 44.31, y: 23.23 },
         { battleKey: 'triathlete-swimmer-m-chase', x: 19.3, y: 58.07 },

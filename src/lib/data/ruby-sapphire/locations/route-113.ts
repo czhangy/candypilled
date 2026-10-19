@@ -1,6 +1,6 @@
 import { route113 } from '@/lib/data/ruby-sapphire/maps';
 import { GEN_3_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_113: Location = {
@@ -8,6 +8,7 @@ const ROUTE_113: Location = {
     map: route113,
     mapAnchor: MapAnchor.Right,
     encountersKey: 'hoenn-route-113',
+    methodSplits: [{ method: EncounterMethod.Grass, split: 'Flannery' }],
     battles: [
         {
             battleKey: 'youngster-neal',

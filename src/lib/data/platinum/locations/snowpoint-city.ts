@@ -1,5 +1,5 @@
 import { snowpointCity } from '@/lib/data/platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SNOWPOINT_CITY: Location = {
@@ -7,6 +7,7 @@ const SNOWPOINT_CITY: Location = {
     map: snowpointCity,
     mapAnchor: MapAnchor.Center,
     encountersKey: 'snowpoint-city-trade',
+    methodSplits: [{ method: EncounterMethod.Trade, split: 'Candice' }],
 };
 
 export default SNOWPOINT_CITY;

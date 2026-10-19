@@ -1,6 +1,6 @@
 import { route121 } from '@/lib/data/ruby-sapphire/maps';
 import { GEN_3_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_121: Location = {
@@ -8,6 +8,13 @@ const ROUTE_121: Location = {
     map: route121,
     mapAnchor: MapAnchor.Left,
     encountersKey: 'hoenn-route-121',
+    methodSplits: [
+        { method: EncounterMethod.Grass, split: 'Winona' },
+        { method: EncounterMethod.OldRod, split: 'Winona' },
+        { method: EncounterMethod.GoodRod, split: 'Winona' },
+        { method: EncounterMethod.SuperRod, split: 'Winona' },
+        { method: EncounterMethod.Surf, split: 'Winona' },
+    ],
     battles: [
         { battleKey: 'hex-maniac-tammy', x: 14.3, y: 51.28 },
         { battleKey: 'beauty-jessica', x: 28.13, y: 26.28 },
