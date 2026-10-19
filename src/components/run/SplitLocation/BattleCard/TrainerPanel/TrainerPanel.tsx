@@ -59,6 +59,15 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
                     : styles['trainer--single'],
             ].join(' ')}
         >
+            {onWipeClick && (
+                <button
+                    className={styles['wipe-button']}
+                    onClick={onWipeClick}
+                    type="button"
+                >
+                    Wipe
+                </button>
+            )}
             <div className={styles['trainer__sprite']}>
                 <Image
                     alt={TrainerHelpers.getDisplayName(
@@ -153,15 +162,6 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
             )}
             {metadata.includes(BattleMetadata.Miniboss) && (
                 <div className={styles['trainer__metadata']}>MINIBOSS</div>
-            )}
-            {onWipeClick && (
-                <button
-                    className={styles['wipe-button']}
-                    onClick={onWipeClick}
-                    type="button"
-                >
-                    Wipe
-                </button>
             )}
         </div>
     );
