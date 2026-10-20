@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
+import WipeButton from '@/components/run/SplitLocation/BattleCard/WipeButton/WipeButton';
 import {
     BattleMetadata,
     FieldCondition,
@@ -59,15 +60,7 @@ const TrainerPanel: React.FC<TrainerPanelProps> = ({
                     : styles['trainer--single'],
             ].join(' ')}
         >
-            {onWipeClick && (
-                <button
-                    className={styles['wipe-button']}
-                    onClick={onWipeClick}
-                    type="button"
-                >
-                    Wipe
-                </button>
-            )}
+            {onWipeClick && <WipeButton onClick={onWipeClick} />}
             <div className={styles['trainer__sprite']}>
                 <Image
                     alt={TrainerHelpers.getDisplayName(

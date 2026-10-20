@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
-import RabbitIcon from '@/lib/icons/RabbitIcon';
-import SnailIcon from '@/lib/icons/SnailIcon';
+import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { MAX_IV } from '@/lib/static/constants';
 import { BattlePokemon, Game, SpeedComparison } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
@@ -143,7 +142,7 @@ const TagTeamSelectPanel: React.FC<TagTeamSelectPanelProps> = ({
                                                 SPEED_TOOLTIPS[speedComparison]
                                             }
                                         >
-                                            <RabbitIcon />
+                                            <ChevronIcon />
                                         </Tooltip>
                                     </span>
                                 )}
@@ -155,7 +154,7 @@ const TagTeamSelectPanel: React.FC<TagTeamSelectPanelProps> = ({
                                                 SPEED_TOOLTIPS[speedComparison]
                                             }
                                         >
-                                            <SnailIcon />
+                                            <ChevronIcon />
                                         </Tooltip>
                                     </span>
                                 )}

@@ -2,12 +2,12 @@
 @use '@/styles/mixins' as *;
 
 .trainer-sprite {
-    align-items: center;
     background: $background-light;
     border: 1px solid $border-subtle;
     display: flex;
+    flex-direction: column;
     flex-shrink: 0;
-    justify-content: center;
+    overflow: hidden;
     width: 6rem;
 
     &--top {
@@ -18,7 +18,14 @@
         border-top: none;
     }
 
-    img {
-        @include sprite;
+    .trainer-sprite__image {
+        align-items: center;
+        display: flex;
+        flex: 1;
+        justify-content: center;
+
+        img {
+            @include sprite;
+        }
     }
 }

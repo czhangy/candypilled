@@ -14494,4 +14494,291 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
+    'team-magma-grunt-m-mossdeep-space-center-1': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Juan',
+        trainerClass: 'team-magma-grunt-m',
+        name: '16',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 32,
+                        nature: Nature.Mild,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-mossdeep-space-center-2': {
+        metadata: [BattleMetadata.Required],
+        split: 'Juan',
+        trainerClass: 'team-magma-grunt-m',
+        name: '17',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'mightyena',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 26,
+                        nature: Nature.Brave,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'mightyena',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 28,
+                        nature: Nature.Bashful,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'numel',
+                        ability: 'oblivious',
+                        gender: 'male',
+                        level: 30,
+                        nature: Nature.Careful,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-f-mossdeep-space-center-3': {
+        metadata: [BattleMetadata.Optional],
+        split: 'Juan',
+        trainerClass: 'team-magma-grunt-f',
+        name: '5',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zubat',
+                        ability: 'inner-focus',
+                        gender: 'female',
+                        level: 31,
+                        nature: Nature.Bold,
+                        ivs: 0,
+                    },
+                    {
+                        slug: 'poochyena',
+                        ability: 'run-away',
+                        gender: 'female',
+                        level: 31,
+                        nature: Nature.Gentle,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-mossdeep-space-center-4': {
+        metadata: [BattleMetadata.Required],
+        split: 'Juan',
+        trainerClass: 'team-magma-grunt-m',
+        name: '18',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'baltoy',
+                        ability: 'levitate',
+                        gender: 'genderless',
+                        level: 32,
+                        nature: Nature.Quiet,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-mossdeep-space-center-5': {
+        metadata: [BattleMetadata.Required, BattleMetadata.Gauntlet],
+        split: 'Juan',
+        trainerClass: 'team-magma-grunt-m',
+        name: '19',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'zubat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 32,
+                        nature: Nature.Gentle,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-mossdeep-space-center-6': {
+        metadata: [BattleMetadata.Required, BattleMetadata.Gauntlet],
+        split: 'Juan',
+        trainerClass: 'team-magma-grunt-m',
+        name: '20',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'mightyena',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 32,
+                        nature: Nature.Brave,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'team-magma-grunt-m-mossdeep-space-center-7': {
+        metadata: [BattleMetadata.Required, BattleMetadata.Gauntlet],
+        split: 'Juan',
+        trainerClass: 'team-magma-grunt-m',
+        name: '21',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'baltoy',
+                        ability: 'levitate',
+                        gender: 'genderless',
+                        level: 32,
+                        nature: Nature.Quiet,
+                        ivs: 0,
+                    },
+                ],
+            },
+        ],
+    },
+    'magma-leader-maxie-mossdeep-space-center': {
+        metadata: [
+            BattleMetadata.Required,
+            BattleMetadata.Miniboss,
+            BattleMetadata.Tag,
+        ],
+        split: 'Juan',
+        trainerClass: 'magma-leader-maxie',
+        name: 'Maxie',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'mightyena',
+                        ability: 'intimidate',
+                        gender: 'male',
+                        level: 42,
+                        nature: Nature.Lax,
+                        ivs: 18,
+                    },
+                    {
+                        slug: 'crobat',
+                        ability: 'inner-focus',
+                        gender: 'male',
+                        level: 43,
+                        nature: Nature.Lonely,
+                        ivs: 18,
+                    },
+                    {
+                        slug: 'camerupt',
+                        ability: 'magma-armor',
+                        gender: 'male',
+                        level: 44,
+                        nature: Nature.Adamant,
+                        ivs: 18,
+                    },
+                ],
+            },
+        ],
+        secondTrainer: {
+            trainerClass: 'magma-admin-tabitha',
+            name: 'Tabitha',
+            teams: [
+                {
+                    team: [
+                        {
+                            slug: 'camerupt',
+                            ability: 'magma-armor',
+                            gender: 'male',
+                            level: 36,
+                            nature: Nature.Quirky,
+                            ivs: 12,
+                        },
+                        {
+                            slug: 'mightyena',
+                            ability: 'intimidate',
+                            gender: 'male',
+                            level: 38,
+                            nature: Nature.Impish,
+                            ivs: 12,
+                        },
+                        {
+                            slug: 'golbat',
+                            ability: 'inner-focus',
+                            gender: 'male',
+                            level: 40,
+                            nature: Nature.Quirky,
+                            ivs: 12,
+                        },
+                    ],
+                },
+            ],
+        },
+    },
+    'champion-steven-mossdeep-space-center-tag': {
+        metadata: [],
+        split: 'Juan',
+        trainerClass: 'champion-steven',
+        name: 'Steven',
+        teams: [
+            {
+                team: [
+                    {
+                        slug: 'metang',
+                        ability: 'clear-body',
+                        gender: 'genderless',
+                        level: 42,
+                        moves: [
+                            'light-screen',
+                            'psychic',
+                            'reflect',
+                            'metal-claw',
+                        ],
+                        nature: Nature.Hardy,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'skarmory',
+                        ability: 'sturdy',
+                        gender: 'female',
+                        level: 43,
+                        moves: ['toxic', 'aerial-ace', 'protect', 'steel-wing'],
+                        nature: Nature.Lonely,
+                        ivs: 31,
+                    },
+                    {
+                        slug: 'aggron',
+                        ability: 'sturdy',
+                        gender: 'female',
+                        level: 44,
+                        moves: [
+                            'thunder',
+                            'protect',
+                            'solar-beam',
+                            'dragon-claw',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 31,
+                    },
+                ],
+            },
+        ],
+    },
 };

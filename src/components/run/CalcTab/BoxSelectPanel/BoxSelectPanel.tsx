@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
-import RabbitIcon from '@/lib/icons/RabbitIcon';
-import SnailIcon from '@/lib/icons/SnailIcon';
+import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { MAX_IV } from '@/lib/static/constants';
 import { PokemonStatus } from '@/lib/static/enums';
 import {
@@ -145,7 +144,7 @@ const BoxSelectPanel: React.FC<BoxSelectPanelProps> = ({
                                                 SPEED_TOOLTIPS[speedComparison]
                                             }
                                         >
-                                            <RabbitIcon />
+                                            <ChevronIcon />
                                         </Tooltip>
                                     </span>
                                 )}
@@ -157,7 +156,7 @@ const BoxSelectPanel: React.FC<BoxSelectPanelProps> = ({
                                                 SPEED_TOOLTIPS[speedComparison]
                                             }
                                         >
-                                            <SnailIcon />
+                                            <ChevronIcon />
                                         </Tooltip>
                                     </span>
                                 )}

@@ -163,6 +163,10 @@ const BattleCard: React.FC<BattleCardProps> = ({
             <div className={styles.body}>
                 {rows.map((row, rowIndex) => {
                     const isLastRow = rowIndex === rows.length - 1;
+                    const handleRowWipeClick =
+                        rowIndex === 0 && onWipeBattle
+                            ? handleWipeButtonClick
+                            : undefined;
                     const position = !isStacked
                         ? 'single'
                         : isLastRow
@@ -183,11 +187,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                     isStacked={isStacked}
                                     items={row.items}
                                     metadata={metadata}
-                                    onWipeClick={
-                                        onWipeBattle
-                                            ? handleWipeButtonClick
-                                            : undefined
-                                    }
+                                    onWipeClick={handleRowWipeClick}
                                     trainerAssetFolder={game.trainerAssetFolder}
                                     trainerClass={row.trainerClass}
                                     trainerName={row.name}
@@ -198,6 +198,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                         row.trainerClass,
                                         row.name
                                     )}
+                                    onWipeClick={handleRowWipeClick}
                                     position={rowIndex === 0 ? 'top' : 'middle'}
                                     trainerAssetFolder={game.trainerAssetFolder}
                                     trainerClass={row.trainerClass}
