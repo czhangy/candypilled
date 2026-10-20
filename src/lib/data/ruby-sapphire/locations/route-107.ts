@@ -18,12 +18,12 @@ const ROUTE_107: Location = {
         {
             battleKey: 'swimmer-f-beth',
             x: 27.5,
-            y: 56.71,
+            y: 56.72,
         },
         {
             battleKey: 'swimmer-m-darrin',
-            x: 45.73,
-            y: 51.71,
+            x: 45.83,
+            y: 51.72,
         },
         {
             battleKey: 'sis-and-bro-lisa-and-ray',
@@ -34,12 +34,12 @@ const ROUTE_107: Location = {
         {
             battleKey: 'swimmer-m-tony',
             x: 64.17,
-            y: 56.71,
+            y: 56.72,
         },
         {
             battleKey: 'swimmer-f-denise',
-            x: 83.96,
-            y: 31.71,
+            x: 84.17,
+            y: 31.72,
         },
     ],
 };

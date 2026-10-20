@@ -18,23 +18,23 @@ const ROUTE_112: Location = {
             battles: [
                 {
                     battleKey: 'camper-larry',
-                    x: 73.59,
-                    y: 73.12,
+                    x: 73.75,
+                    y: 73.36,
                 },
                 {
                     battleKey: 'picnicker-carol',
-                    x: 56.09,
-                    y: 65.62,
+                    x: 56.25,
+                    y: 65.86,
                 },
                 {
                     battleKey: 'hiker-trent',
-                    x: 43.59,
-                    y: 50.62,
+                    x: 43.75,
+                    y: 50.86,
                 },
                 {
                     battleKey: 'hiker-brice',
                     x: 61.25,
-                    y: 35.58,
+                    y: 35.86,
                 },
             ],
         },

@@ -24,12 +24,12 @@ const ROUTE_104: Location = {
                 {
                     battleKey: 'youngster-billy',
                     x: 46.25,
-                    y: 72.62,
+                    y: 72.64,
                 },
                 {
                     battleKey: 'rich-boy-winston',
                     x: 28.75,
-                    y: 22.64,
+                    y: 22.91,
                 },
             ],
         },
@@ -42,13 +42,13 @@ const ROUTE_104: Location = {
             battles: [
                 {
                     battleKey: 'lady-cindy',
-                    x: 56.09,
-                    y: 74.91,
+                    x: 56.25,
+                    y: 75.09,
                 },
                 {
                     battleKey: 'lass-haley',
-                    x: 78.59,
-                    y: 71.95,
+                    x: 78.75,
+                    y: 72.13,
                 },
                 {
                     battleKey: 'twins-gina-and-mia',
@@ -58,8 +58,8 @@ const ROUTE_104: Location = {
                 },
                 {
                     battleKey: 'fisherman-ivan',
-                    x: 73.59,
-                    y: 24.54,
+                    x: 73.75,
+                    y: 24.72,
                 },
             ],
         },

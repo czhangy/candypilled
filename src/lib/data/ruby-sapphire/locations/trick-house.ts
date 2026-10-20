@@ -21,17 +21,17 @@ const TRICK_HOUSE: Location = {
                 {
                     battleKey: 'lass-sally',
                     x: 90,
-                    y: 96.54,
+                    y: 97.02,
                 },
                 {
                     battleKey: 'lass-robin',
                     x: 23.33,
-                    y: 37.73,
+                    y: 37.93,
                 },
                 {
                     battleKey: 'youngster-eddie',
                     x: 90,
-                    y: 33.19,
+                    y: 33.38,
                 },
             ],
         },
@@ -42,18 +42,18 @@ const TRICK_HOUSE: Location = {
             battles: [
                 {
                     battleKey: 'school-kid-m-ted',
-                    x: 89.58,
-                    y: 74.38,
+                    x: 90,
+                    y: 74.29,
                 },
                 {
                     battleKey: 'school-kid-m-paul',
                     x: 3.33,
-                    y: 46.82,
+                    y: 47.02,
                 },
                 {
                     battleKey: 'school-kid-f-georgia',
                     x: 63.33,
-                    y: 32.9,
+                    y: 33.38,
                 },
             ],
         },
@@ -65,17 +65,17 @@ const TRICK_HOUSE: Location = {
                 {
                     battleKey: 'camper-justin',
                     x: 70,
-                    y: 74.09,
+                    y: 74.29,
                 },
                 {
                     battleKey: 'picnicker-martha',
                     x: 10,
-                    y: 60.17,
+                    y: 60.65,
                 },
                 {
                     battleKey: 'hiker-alan',
-                    x: 76.25,
-                    y: 19.26,
+                    x: 76.67,
+                    y: 19.74,
                 },
             ],
         },
@@ -87,17 +87,17 @@ const TRICK_HOUSE: Location = {
                 {
                     battleKey: 'black-belt-yuji',
                     x: 50,
-                    y: 19.26,
+                    y: 19.74,
                 },
                 {
                     battleKey: 'battle-girl-cora',
-                    x: 83.75,
-                    y: 37.45,
+                    x: 83.33,
+                    y: 37.93,
                 },
                 {
                     battleKey: 'battle-girl-jill',
-                    x: 69.17,
-                    y: 19.55,
+                    x: 70,
+                    y: 19.74,
                 },
             ],
         },
@@ -113,18 +113,18 @@ const TRICK_HOUSE: Location = {
             battles: [
                 {
                     battleKey: 'pkmn-ranger-f-sophia',
-                    x: 69.58,
-                    y: 41.99,
+                    x: 70,
+                    y: 42.47,
                 },
                 {
                     battleKey: 'pkmn-ranger-m-sebastian',
                     x: 3.33,
-                    y: 15,
+                    y: 15.2,
                 },
                 {
                     battleKey: 'bird-keeper-benny',
                     x: 96.67,
-                    y: 55.34,
+                    y: 56.11,
                 },
             ],
         },
@@ -136,17 +136,17 @@ const TRICK_HOUSE: Location = {
                 {
                     battleKey: 'psychic-m-joshua',
                     x: 3.33,
-                    y: 15,
+                    y: 15.2,
                 },
                 {
                     battleKey: 'hex-maniac-patricia',
                     x: 63.33,
-                    y: 46.82,
+                    y: 47.02,
                 },
                 {
                     battleKey: 'psychic-f-alexis',
                     x: 96.67,
-                    y: 14.72,
+                    y: 15.2,
                 },
             ],
         },

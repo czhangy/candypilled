@@ -24,28 +24,28 @@ const ROUTE_117: Location = {
         },
         {
             battleKey: 'triathlete-runner-m-dylan',
-            x: 59.06,
-            y: 36.19,
+            x: 59.17,
+            y: 36.72,
         },
         {
             battleKey: 'pkmn-breeder-f-lydia',
             x: 52.5,
-            y: 56.5,
+            y: 56.72,
         },
         {
             battleKey: 'triathlete-runner-f-maria',
             x: 35.83,
-            y: 6.19,
+            y: 6.72,
         },
         {
             battleKey: 'bug-maniac-derek',
-            x: 29.06,
-            y: 61.19,
+            x: 29.17,
+            y: 61.72,
         },
         {
             battleKey: 'pkmn-breeder-m-isaac',
-            x: 17.4,
-            y: 46.5,
+            x: 17.5,
+            y: 46.72,
         },
     ],
 };

@@ -9,18 +9,18 @@ const RUSTBORO_GYM: Location = {
     battles: [
         {
             battleKey: 'youngster-josh',
-            x: 67.61,
-            y: 64.93,
+            x: 68.18,
+            y: 64.97,
         },
         {
             battleKey: 'youngster-tommy',
-            x: 30.68,
-            y: 38.94,
+            x: 31.82,
+            y: 38.65,
         },
         {
             battleKey: 'leader-roxanne',
             x: 50,
-            y: 12.29,
+            y: 12.34,
         },
     ],
 };

@@ -10,22 +10,22 @@ const DEWFORD_GYM: Location = {
         {
             battleKey: 'battle-girl-laura',
             x: 69.44,
-            y: 86.59,
+            y: 86.94,
         },
         {
             battleKey: 'black-belt-hideki',
-            x: 13.54,
-            y: 61.59,
+            x: 13.89,
+            y: 61.94,
         },
         {
             battleKey: 'battle-girl-tessa',
-            x: 7.99,
-            y: 36.59,
+            x: 8.33,
+            y: 36.94,
         },
         {
             battleKey: 'leader-brawly',
-            x: 80.21,
-            y: 15.38,
+            x: 80.56,
+            y: 15.51,
         },
     ],
 };

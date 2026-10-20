@@ -16,23 +16,23 @@ const ROUTE_106: Location = {
     battles: [
         {
             battleKey: 'fisherman-ned',
-            x: 81.85,
-            y: 71.27,
+            x: 81.88,
+            y: 71.72,
         },
         {
             battleKey: 'fisherman-elliot',
-            x: 64.35,
-            y: 71.27,
+            x: 64.38,
+            y: 71.72,
         },
         {
             battleKey: 'swimmer-m-douglas',
-            x: 36.79,
-            y: 56.58,
+            x: 36.88,
+            y: 56.72,
         },
         {
             battleKey: 'swimmer-f-nicole',
-            x: 23.04,
-            y: 26.58,
+            x: 23.12,
+            y: 26.72,
         },
     ],
 };

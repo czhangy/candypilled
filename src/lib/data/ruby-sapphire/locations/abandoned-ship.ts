@@ -37,13 +37,13 @@ const ABANDONED_SHIP: Location = {
             battles: [
                 {
                     battleKey: 'tuber-m-charlie',
-                    x: 36.81,
-                    y: 35.09,
+                    x: 37.04,
+                    y: 35.06,
                 },
                 {
                     battleKey: 'young-couple-lois-and-hal',
                     x: 25.93,
-                    y: 87.42,
+                    y: 87.61,
                     customWidth: GEN_3_TRUE_DOUBLE_WIDTH,
                 },
             ],
@@ -57,8 +57,8 @@ const ABANDONED_SHIP: Location = {
             battles: [
                 {
                     battleKey: 'sailor-duncan',
-                    x: 60.88,
-                    y: 23.06,
+                    x: 61.11,
+                    y: 23.5,
                 },
             ],
         },

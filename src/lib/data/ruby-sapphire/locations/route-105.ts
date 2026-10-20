@@ -16,28 +16,28 @@ const ROUTE_105: Location = {
     battles: [
         {
             battleKey: 'swimmer-f-dawn',
-            x: 48.59,
-            y: 11.66,
+            x: 48.75,
+            y: 11.68,
         },
         {
             battleKey: 'swimmer-f-beverly',
-            x: 66.09,
-            y: 45.35,
+            x: 66.25,
+            y: 45.43,
         },
         {
             battleKey: 'swimmer-m-austin',
-            x: 26.09,
-            y: 55.31,
+            x: 26.25,
+            y: 55.43,
         },
         {
             battleKey: 'ruin-maniac-foster',
-            x: 31.09,
-            y: 64.06,
+            x: 31.25,
+            y: 64.18,
         },
         {
             battleKey: 'swimmer-m-luis',
-            x: 46.09,
-            y: 75.28,
+            x: 46.25,
+            y: 75.43,
         },
     ],
 };

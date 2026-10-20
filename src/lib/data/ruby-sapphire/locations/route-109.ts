@@ -27,22 +27,22 @@ const ROUTE_109: Location = {
                 {
                     battleKey: 'sailor-huey',
                     x: 48.75,
-                    y: 71.21,
+                    y: 71.64,
                 },
                 {
                     battleKey: 'sailor-edmond',
-                    x: 36.09,
-                    y: 41.81,
+                    x: 36.25,
+                    y: 42.01,
                 },
                 {
                     battleKey: 'tuber-m-ricky',
-                    x: 53.59,
-                    y: 42.27,
+                    x: 53.75,
+                    y: 42.01,
                 },
                 {
                     battleKey: 'tuber-f-lola',
-                    x: 71.09,
-                    y: 31.16,
+                    x: 71.25,
+                    y: 30.9,
                 },
             ],
         },
@@ -53,18 +53,18 @@ const ROUTE_109: Location = {
             battles: [
                 {
                     battleKey: 'tuber-m-simon',
-                    x: 96.25,
-                    y: 93.52,
+                    x: 96.67,
+                    y: 93.44,
                 },
                 {
                     battleKey: 'beauty-johanna',
-                    x: 69.58,
-                    y: 51.64,
+                    x: 70,
+                    y: 53.44,
                 },
                 {
                     battleKey: 'sailor-dwayne',
                     x: 16.67,
-                    y: 32.89,
+                    y: 33.44,
                 },
             ],
         },
@@ -77,23 +77,23 @@ const ROUTE_109: Location = {
             battles: [
                 {
                     battleKey: 'tuber-f-gwen',
-                    x: 73.59,
-                    y: 16.24,
+                    x: 73.75,
+                    y: 16.19,
                 },
                 {
                     battleKey: 'tuber-f-carmen',
-                    x: 71.09,
-                    y: 13.21,
+                    x: 71.25,
+                    y: 13.16,
                 },
                 {
                     battleKey: 'swimmer-f-alice',
                     x: 63.75,
-                    y: 46.36,
+                    y: 46.5,
                 },
                 {
                     battleKey: 'swimmer-m-david',
-                    x: 31.09,
-                    y: 28.15,
+                    x: 31.25,
+                    y: 28.31,
                 },
                 {
                     battleKey: 'young-couple-mel-and-paul',
@@ -104,7 +104,7 @@ const ROUTE_109: Location = {
                 {
                     battleKey: 'fisherman-carter',
                     x: 38.75,
-                    y: 76.44,
+                    y: 76.8,
                 },
             ],
         },

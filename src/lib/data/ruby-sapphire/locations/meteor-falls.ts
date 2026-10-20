@@ -47,8 +47,8 @@ const METEOR_FALLS: Location = {
                 },
                 {
                     battleKey: 'dragon-tamer-nicolas',
-                    x: 44.79,
-                    y: 6.96,
+                    x: 45,
+                    y: 7.32,
                 },
             ],
         },

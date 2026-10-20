@@ -28,13 +28,13 @@ const ROUTE_103: Location = {
                     battleKey: 'pkmn-trainer-may',
                     gender: 'male',
                     x: 40.38,
-                    y: 11.46,
+                    y: 11.72,
                 },
                 {
                     battleKey: 'pkmn-trainer-brendan',
                     gender: 'female',
                     x: 40.38,
-                    y: 11.46,
+                    y: 11.72,
                 },
             ],
         },
@@ -52,18 +52,18 @@ const ROUTE_103: Location = {
             battles: [
                 {
                     battleKey: 'aroma-lady-daisy',
-                    x: 84.14,
-                    y: 51.15,
+                    x: 84.26,
+                    y: 51.72,
                 },
                 {
                     battleKey: 'pokefan-m-miguel',
-                    x: 56.25,
-                    y: 61.15,
+                    x: 56.48,
+                    y: 61.72,
                 },
                 {
                     battleKey: 'fisherman-andrew',
-                    x: 45.25,
-                    y: 41.46,
+                    x: 45.37,
+                    y: 41.72,
                 },
                 {
                     battleKey: 'twins-amy-and-liv',

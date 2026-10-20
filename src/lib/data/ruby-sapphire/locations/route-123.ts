@@ -19,8 +19,8 @@ const ROUTE_123: Location = {
                 },
                 {
                     battleKey: 'aroma-lady-violet',
-                    x: 37.57,
-                    y: 46.4,
+                    x: 37.71,
+                    y: 46.72,
                 },
             ],
         },
@@ -39,28 +39,28 @@ const ROUTE_123: Location = {
             battles: [
                 {
                     battleKey: 'hex-maniac-kindra',
-                    x: 53,
-                    y: 71.71,
+                    x: 53.07,
+                    y: 71.72,
                 },
                 {
                     battleKey: 'cooltrainer-f-wendy',
-                    x: 37.82,
-                    y: 61.71,
+                    x: 37.88,
+                    y: 61.72,
                 },
                 {
                     battleKey: 'cooltrainer-m-clyde',
-                    x: 27.09,
-                    y: 36.71,
+                    x: 27.15,
+                    y: 36.72,
                 },
                 {
                     battleKey: 'psychic-f-jacki',
                     x: 20,
-                    y: 81.4,
+                    y: 81.72,
                 },
                 {
                     battleKey: 'psychic-m-cameron',
-                    x: 98.6,
-                    y: 61.71,
+                    x: 98.66,
+                    y: 61.72,
                 },
             ],
         },

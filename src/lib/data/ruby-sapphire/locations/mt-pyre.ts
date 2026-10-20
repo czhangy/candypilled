@@ -32,7 +32,7 @@ const MT_PYRE: Location = {
             encountersKey: 'mt-pyre-2f',
             methodSplits: GRASS_WINONA,
             battles: [
-                { battleKey: 'poke-maniac-mark', x: 49.52, y: 48.08 },
+                { battleKey: 'poke-maniac-mark', x: 50, y: 48.8 },
                 {
                     battleKey: 'young-couple-dez-and-luke',
                     x: 22.6,
@@ -48,8 +48,8 @@ const MT_PYRE: Location = {
             encountersKey: 'mt-pyre-3f',
             methodSplits: GRASS_WINONA,
             battles: [
-                { battleKey: 'psychic-f-kayla', x: 96.15, y: 55.77 },
-                { battleKey: 'psychic-m-william', x: 11.06, y: 32.69 },
+                { battleKey: 'psychic-f-kayla', x: 96.15, y: 56.49 },
+                { battleKey: 'psychic-m-william', x: 11.54, y: 33.41 },
             ],
         },
         {
@@ -58,7 +58,7 @@ const MT_PYRE: Location = {
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-pyre-4f',
             methodSplits: GRASS_WINONA,
-            battles: [{ battleKey: 'black-belt-atsushi', x: 88.46, y: 55.77 }],
+            battles: [{ battleKey: 'black-belt-atsushi', x: 88.46, y: 56.49 }],
         },
         {
             name: '5F',
@@ -66,7 +66,7 @@ const MT_PYRE: Location = {
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-pyre-5f',
             methodSplits: GRASS_WINONA,
-            battles: [{ battleKey: 'hex-maniac-tasha', x: 26.44, y: 55.77 }],
+            battles: [{ battleKey: 'hex-maniac-tasha', x: 26.92, y: 56.49 }],
         },
         {
             name: '6F',
@@ -74,7 +74,7 @@ const MT_PYRE: Location = {
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-pyre-6f',
             methodSplits: GRASS_WINONA,
-            battles: [{ battleKey: 'hex-maniac-valerie', x: 49.52, y: 25.48 }],
+            battles: [{ battleKey: 'hex-maniac-valerie', x: 50, y: 25.72 }],
         },
         {
             name: 'Exterior',
@@ -96,38 +96,38 @@ const MT_PYRE: Location = {
                 {
                     battleKey: 'team-aqua-grunt-m-mt-pyre-summit-1',
                     game: 'Sapphire',
-                    x: 42.88,
-                    y: 49.49,
+                    x: 43,
+                    y: 49.58,
                 },
                 {
                     battleKey: 'team-magma-grunt-m-mt-pyre-summit-1',
                     game: 'Ruby',
-                    x: 42.88,
-                    y: 49.49,
+                    x: 43,
+                    y: 49.58,
                 },
                 {
                     battleKey: 'team-aqua-grunt-m-mt-pyre-summit-2',
                     game: 'Sapphire',
                     x: 51,
-                    y: 41.39,
+                    y: 41.47,
                 },
                 {
                     battleKey: 'team-magma-grunt-m-mt-pyre-summit-2',
                     game: 'Ruby',
                     x: 51,
-                    y: 41.39,
+                    y: 41.47,
                 },
                 {
                     battleKey: 'team-aqua-grunt-m-mt-pyre-summit-3',
                     game: 'Sapphire',
-                    x: 42.88,
-                    y: 30.24,
+                    x: 43,
+                    y: 30.66,
                 },
                 {
                     battleKey: 'team-magma-grunt-m-mt-pyre-summit-3',
                     game: 'Ruby',
-                    x: 42.88,
-                    y: 30.24,
+                    x: 43,
+                    y: 30.66,
                 },
             ],
         },

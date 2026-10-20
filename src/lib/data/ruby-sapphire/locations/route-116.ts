@@ -11,33 +11,33 @@ const ROUTE_116: Location = {
     battles: [
         {
             battleKey: 'youngster-joey',
-            x: 12.45,
-            y: 36.37,
+            x: 12.5,
+            y: 36.72,
         },
         {
             battleKey: 'bug-catcher-jose',
-            x: 13.45,
-            y: 86.68,
+            x: 13.5,
+            y: 86.72,
         },
         {
             battleKey: 'lass-janice',
-            x: 22.51,
-            y: 81.37,
+            x: 22.5,
+            y: 81.72,
         },
         {
             battleKey: 'hiker-clark',
-            x: 36.45,
-            y: 76.37,
+            x: 36.5,
+            y: 76.72,
         },
         {
             battleKey: 'school-kid-m-jerry',
-            x: 31.45,
-            y: 46.37,
+            x: 31.5,
+            y: 46.72,
         },
         {
             battleKey: 'school-kid-f-karen',
-            x: 25.51,
-            y: 21.37,
+            x: 25.5,
+            y: 21.72,
         },
     ],
 };

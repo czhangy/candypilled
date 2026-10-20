@@ -13,17 +13,17 @@ const ROUTE_113: Location = {
         {
             battleKey: 'youngster-neal',
             x: 62.5,
-            y: 41.63,
+            y: 41.72,
         },
         {
             battleKey: 'ninja-boy-lao',
-            x: 66.44,
-            y: 16.94,
+            x: 66.5,
+            y: 16.72,
         },
         {
             battleKey: 'parasol-lady-madeline',
-            x: 51.47,
-            y: 56.32,
+            x: 51.5,
+            y: 56.72,
         },
         {
             battleKey: 'twins-tori-and-tia',
@@ -33,13 +33,13 @@ const ROUTE_113: Location = {
         },
         {
             battleKey: 'ninja-boy-lung',
-            x: 29.47,
-            y: 32.26,
+            x: 29.5,
+            y: 31.72,
         },
         {
             battleKey: 'youngster-dillon',
-            x: 21.47,
-            y: 56.32,
+            x: 21.5,
+            y: 56.72,
         },
     ],
 };
