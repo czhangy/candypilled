@@ -15,8 +15,8 @@ const CANALAVE_CITY: Location = {
     battles: [
         {
             battleKey: 'pkmn-trainer-barry-canalave-city',
-            x: 45.1,
-            y: 32.9,
+            x: 45.31,
+            y: 32.91,
         },
     ],
 };

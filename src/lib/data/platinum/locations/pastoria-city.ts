@@ -15,8 +15,8 @@ const PASTORIA_CITY: Location = {
     battles: [
         {
             battleKey: 'pkmn-trainer-barry-pastoria-city',
-            x: 24.3,
-            y: 43.9,
+            x: 24.27,
+            y: 43.85,
         },
     ],
 };

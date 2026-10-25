@@ -17,18 +17,18 @@ const CANALAVE_GYM: Location = {
             battles: [
                 {
                     battleKey: 'black-belt-ricky',
-                    x: 14.4,
-                    y: 43,
+                    x: 13.88,
+                    y: 42.99,
                 },
                 {
                     battleKey: 'worker-gary',
-                    x: 66.1,
-                    y: 38.8,
+                    x: 65.88,
+                    y: 38.24,
                 },
                 {
                     battleKey: 'ace-trainer-m-cesar',
-                    x: 86.1,
-                    y: 81.2,
+                    x: 85.88,
+                    y: 80.99,
                 },
             ],
         },
@@ -40,12 +40,12 @@ const CANALAVE_GYM: Location = {
                 {
                     battleKey: 'worker-jackson',
                     x: 44.9,
-                    y: 4.1,
+                    y: 3.89,
                 },
                 {
                     battleKey: 'ace-trainer-f-breanna',
-                    x: 88.2,
-                    y: 11.1,
+                    x: 88.23,
+                    y: 11.29,
                 },
             ],
         },
@@ -56,13 +56,13 @@ const CANALAVE_GYM: Location = {
             battles: [
                 {
                     battleKey: 'worker-gerardo',
-                    x: 25.1,
-                    y: 3.8,
+                    x: 24.9,
+                    y: 3.87,
                 },
                 {
                     battleKey: 'black-belt-david',
-                    x: 78.2,
-                    y: 3.8,
+                    x: 78.23,
+                    y: 3.87,
                 },
             ],
         },
@@ -73,8 +73,8 @@ const CANALAVE_GYM: Location = {
             battles: [
                 {
                     battleKey: 'leader-byron',
-                    x: 51.8,
-                    y: 4.1,
+                    x: 51.56,
+                    y: 3.85,
                 },
             ],
         },

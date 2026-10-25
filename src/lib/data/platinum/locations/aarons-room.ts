@@ -10,7 +10,7 @@ const AARONS_ROOM: Location = {
         {
             battleKey: 'elite-four-aaron',
             x: 50,
-            y: 27.98,
+            y: 28.49,
         },
     ],
 };

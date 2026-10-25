@@ -11,8 +11,9 @@ const DISTORTION_WORLD: Location = {
     battles: [
         {
             battleKey: 'galactic-boss-cyrus-distortion-world',
-            x: 43.3,
-            y: 39.2,
+            customHeight: 36,
+            x: 43.12,
+            y: 39.15,
         },
     ],
 };

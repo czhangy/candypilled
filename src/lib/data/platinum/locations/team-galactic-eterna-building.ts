@@ -18,14 +18,14 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                 {
                     battleKey:
                         'galactic-grunt-f-team-galactic-eterna-building-1',
-                    x: 61,
-                    y: 70.3,
+                    x: 60.74,
+                    y: 70.22,
                 },
                 {
                     battleKey:
                         'galactic-grunt-m-team-galactic-eterna-building-1',
-                    x: 75.5,
-                    y: 70.3,
+                    x: 75.51,
+                    y: 70.22,
                 },
             ],
         },
@@ -37,14 +37,14 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                 {
                     battleKey:
                         'galactic-grunt-m-team-galactic-eterna-building-2',
-                    x: 12.4,
-                    y: 44,
+                    x: 12.36,
+                    y: 43.79,
                 },
                 {
                     battleKey:
                         'galactic-grunt-f-team-galactic-eterna-building-2',
-                    x: 57,
-                    y: 58,
+                    x: 57.06,
+                    y: 57.99,
                 },
             ],
         },
@@ -56,13 +56,13 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                 {
                     battleKey:
                         'galactic-grunt-f-team-galactic-eterna-building-3',
-                    x: 34.9,
-                    y: 50,
+                    x: 34.74,
+                    y: 49.7,
                 },
                 {
                     battleKey: 'scientist-travon',
-                    x: 79.1,
-                    y: 36.9,
+                    x: 78.99,
+                    y: 36.09,
                 },
             ],
         },
@@ -74,8 +74,8 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                 {
                     battleKey:
                         'commander-jupiter-team-galactic-eterna-building',
-                    x: 61.2,
-                    y: 45.5,
+                    x: 60.98,
+                    y: 44.97,
                 },
             ],
         },

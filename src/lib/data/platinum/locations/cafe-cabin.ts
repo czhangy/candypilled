@@ -9,18 +9,18 @@ const CAFE_CABIN: Location = {
     battles: [
         {
             battleKey: 'waitress-kati',
-            x: 50,
-            y: 9.9,
+            x: 50.35,
+            y: 9.91,
         },
         {
             battleKey: 'collector-fernando',
-            x: 5.6,
-            y: 24.4,
+            x: 5.9,
+            y: 24.32,
         },
         {
             battleKey: 'collector-edwin',
-            x: 27.8,
-            y: 24.4,
+            x: 28.13,
+            y: 24.32,
         },
     ],
 };

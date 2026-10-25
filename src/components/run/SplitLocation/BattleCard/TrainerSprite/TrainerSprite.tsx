@@ -34,7 +34,10 @@ const TrainerSprite: React.FC<TrainerSpriteProps> = ({
             className={[
                 styles['trainer-sprite'],
                 styles[`trainer-sprite--${position}`],
-            ].join(' ')}
+                onWipeClick && styles['trainer-sprite--wipe'],
+            ]
+                .filter(Boolean)
+                .join(' ')}
         >
             {onWipeClick && <WipeButton onClick={onWipeClick} />}
             <div className={styles['trainer-sprite__image']}>

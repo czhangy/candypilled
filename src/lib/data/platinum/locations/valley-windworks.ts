@@ -24,8 +24,8 @@ const VALLEY_WINDWORKS: Location = {
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-valley-windworks',
-                    x: 60.9,
-                    y: 45.1,
+                    x: 61.28,
+                    y: 44.96,
                 },
             ],
         },
@@ -36,18 +36,18 @@ const VALLEY_WINDWORKS: Location = {
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-valley-windworks-interior-1',
-                    x: 11.6,
-                    y: 38.4,
+                    x: 11.86,
+                    y: 38.24,
                 },
                 {
                     battleKey: 'galactic-grunt-m-valley-windworks-interior-2',
-                    x: 52.3,
-                    y: 4.4,
+                    x: 52.49,
+                    y: 4.62,
                 },
                 {
                     battleKey: 'commander-mars-valley-windworks-interior',
-                    x: 88.9,
-                    y: 31.7,
+                    x: 89.28,
+                    y: 31.51,
                 },
             ],
         },

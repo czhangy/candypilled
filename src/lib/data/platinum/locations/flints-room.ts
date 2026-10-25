@@ -10,7 +10,7 @@ const FLINTS_ROOM: Location = {
         {
             battleKey: 'elite-four-flint',
             x: 50,
-            y: 27.65,
+            y: 28.49,
         },
     ],
 };

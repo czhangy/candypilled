@@ -18,6 +18,10 @@
         border-top: none;
     }
 
+    &--wipe {
+        border-top-left-radius: 0;
+    }
+
     .trainer-sprite__image {
         align-items: center;
         display: flex;

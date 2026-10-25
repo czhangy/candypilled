@@ -14598,11 +14598,12 @@ export const BATTLES: Record<string, BattleData> = {
             },
         ],
     },
-    'team-magma-grunt-m-mossdeep-space-center-5': {
-        metadata: [BattleMetadata.Required, BattleMetadata.Gauntlet],
+    'team-magma-grunt-m-mossdeep-space-center-2f': {
+        metadata: [BattleMetadata.Required, BattleMetadata.BackToBack],
         split: 'Juan',
+        plainName: true,
         trainerClass: 'team-magma-grunt-m',
-        name: '19',
+        name: 'Team Magma Grunts',
         teams: [
             {
                 team: [
@@ -14616,14 +14617,6 @@ export const BATTLES: Record<string, BattleData> = {
                     },
                 ],
             },
-        ],
-    },
-    'team-magma-grunt-m-mossdeep-space-center-6': {
-        metadata: [BattleMetadata.Required, BattleMetadata.Gauntlet],
-        split: 'Juan',
-        trainerClass: 'team-magma-grunt-m',
-        name: '20',
-        teams: [
             {
                 team: [
                     {
@@ -14636,14 +14629,6 @@ export const BATTLES: Record<string, BattleData> = {
                     },
                 ],
             },
-        ],
-    },
-    'team-magma-grunt-m-mossdeep-space-center-7': {
-        metadata: [BattleMetadata.Required, BattleMetadata.Gauntlet],
-        split: 'Juan',
-        trainerClass: 'team-magma-grunt-m',
-        name: '21',
-        teams: [
             {
                 team: [
                     {

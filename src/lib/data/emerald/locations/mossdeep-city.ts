@@ -61,19 +61,11 @@ const MOSSDEEP_CITY: Location = {
             ],
             battles: [
                 {
-                    battleKey: 'team-magma-grunt-m-mossdeep-space-center-5',
+                    battleKey: 'team-magma-grunt-m-mossdeep-space-center-2f',
+                    customHeight: GEN_3_TRUE_DOUBLE_HEIGHT,
+                    customWidth: 52,
                     x: 84.38,
-                    y: 33.44,
-                },
-                {
-                    battleKey: 'team-magma-grunt-m-mossdeep-space-center-6',
-                    x: 78.13,
-                    y: 23.44,
-                },
-                {
-                    battleKey: 'team-magma-grunt-m-mossdeep-space-center-7',
-                    x: 90.63,
-                    y: 23.44,
+                    y: 28.44,
                 },
                 {
                     battleKey: 'magma-leader-maxie-mossdeep-space-center',
