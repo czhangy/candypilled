@@ -281,7 +281,12 @@ export default class MoveHelpers {
 
     private static readonly DANGEROUS_ENCOUNTER_MOVES = new Set([
         'explosion',
+        'final-gambit',
+        'healing-wish',
+        'lunar-dance',
         'memento',
+        'misty-explosion',
+        'perish-song',
         'roar',
         'self-destruct',
         'teleport',
