@@ -14717,10 +14717,10 @@ export const BATTLES: Record<string, BattleData> = {
             ],
         },
     },
-    'champion-steven-mossdeep-space-center-tag': {
+    'pkmn-trainer-steven-mossdeep-space-center-tag': {
         metadata: [],
         split: 'Juan',
-        trainerClass: 'champion-steven',
+        trainerClass: 'pkmn-trainer-steven',
         name: 'Steven',
         teams: [
             {
