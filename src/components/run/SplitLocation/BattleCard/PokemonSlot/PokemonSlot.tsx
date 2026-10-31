@@ -115,6 +115,15 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
         : undefined;
     const highlightDangerous =
         !hofDisplay && !isTagPartner && !(settings['hide-dangerous'] ?? false);
+    const expYield =
+        pokemon && !hofDisplay && !isTagPartner
+            ? PokemonHelpers.getTrainerExpYield(
+                  dataSource,
+                  pokemon.slug,
+                  pokemon.level,
+                  generation
+              )
+            : undefined;
     const moves =
         pokemon?.moves ??
         (pokemon
@@ -135,6 +144,11 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                         src={sprite}
                         width={SPRITE_SIZE}
                     />
+                )}
+                {expYield !== undefined && (
+                    <span className={styles['pokemon-slot__exp']}>
+                        +{expYield} EXP
+                    </span>
                 )}
             </div>
             <div className={styles['pokemon-slot__name']}>

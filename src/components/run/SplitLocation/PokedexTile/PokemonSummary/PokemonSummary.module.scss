@@ -114,10 +114,13 @@ $label-width: 5.5rem;
         }
 
         .right-bottom {
-            align-items: center;
+            align-items: flex-start;
             border-top: 1px solid $border-subtle;
             display: flex;
             flex: 1;
+            flex-direction: column;
+            gap: 0.5rem;
+            justify-content: center;
             padding: 1.5rem;
         }
     }
@@ -136,12 +139,12 @@ $label-width: 5.5rem;
         }
     }
 
-    .catch-rate {
+    .stat {
         align-items: center;
         display: flex;
         gap: 0.5rem;
 
-        .catch-rate-label {
+        .stat-label {
             @include uppercase-label;
 
             flex-shrink: 0;
@@ -153,12 +156,28 @@ $label-width: 5.5rem;
             }
         }
 
-        .rate {
+        .stat-value {
             color: $text-mid;
             font-size: 0.7rem;
 
             &--changed {
                 color: $pink;
+            }
+        }
+
+        .stat-link {
+            color: $text-mid;
+            font-size: 0.7rem;
+            transition: color 0.2s ease;
+
+            @media (hover: hover) {
+                &:hover {
+                    color: var(--accent-color);
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
             }
         }
     }

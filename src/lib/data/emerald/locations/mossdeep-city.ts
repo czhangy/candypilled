@@ -57,7 +57,7 @@ const MOSSDEEP_CITY: Location = {
             map: mossdeepCitySpaceCenter2f,
             mapAnchor: MapAnchor.Center,
             tagPartner: [
-                { battleKey: 'champion-steven-mossdeep-space-center-tag' },
+                { battleKey: 'pkmn-trainer-steven-mossdeep-space-center-tag' },
             ],
             battles: [
                 {

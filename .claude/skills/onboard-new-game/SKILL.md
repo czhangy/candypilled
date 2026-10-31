@@ -166,7 +166,12 @@ Never add a location to a split unprompted or infer membership. Per `.claude/doc
 
 ## 14. Resources
 
-Ask the user for the game's external resources (guides, resource packs, documentation). Write each as `{ text, description, url }` in `Game.resources`. Omit the field when there are none.
+Write each resource as `{ text, description, url }` in `Game.resources`. Every game gets these two, in addition to anything the user supplies:
+
+- **Catch rate calculator** — DragonFlyCave's calculator for the game's generation: `https://www.dragonflycave.com/calculators/<gen>-catch-rate/`, where `<gen>` is `gen-i`, `gen-ii`, `gen-iii-iv`, `gen-v`, `gen-vi-vii`, `gen-viii` or `gen-ix` (Gen III and IV share one page; Gen VI and VII share one). Use `text: 'Catch Rate Calculator'`. Confirm the URL resolves.
+- **AI documentation** — the trainer AI doc for the game's generation. Gen IV uses `https://pokemow.com/Gen4/TrainerAI/` (`text: 'Gen IV AI'`). Gen III's doc is a Google Doc that differs per game, so copy the entry from the closest existing Gen III game (`text: 'Gen 3 AI'`). For any other generation, ask the user for the doc.
+
+Then ask the user for any further external resources (guides, resource packs, downloads, wikis) and add those too.
 
 ## 15. Save parsing
 

@@ -1027,6 +1027,14 @@ export const fetchPokemonData = async (version: GameVersion): Promise<void> => {
             // added varieties.
             if (Object.keys(sprites).length === 0) continue;
 
+            // Not available from PokeAPI; collected by hand from Bulbapedia.
+            const baseExperience = existingData[variety.name]?.baseExperience;
+            if (!baseExperience) {
+                throw new Error(
+                    `No baseExperience for "${variety.name}"; add it to pokemon.json by hand.`
+                );
+            }
+
             const name =
                 NAME_OVERRIDES[variety.name] ??
                 StringHelpers.toTitleCase(variety.name);
@@ -1045,6 +1053,7 @@ export const fetchPokemonData = async (version: GameVersion): Promise<void> => {
                 types: buildTypesByGeneration(rawPokemon),
                 abilities: buildAbilitiesByGeneration(rawPokemon),
                 stats: buildStatsByGeneration(rawPokemon),
+                baseExperience,
                 catchRate: species.capture_rate,
                 genderRate: species.gender_rate,
                 growthRate: species.growth_rate.name as GrowthRate,

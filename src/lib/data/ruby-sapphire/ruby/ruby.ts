@@ -47,6 +47,11 @@ const RUBY: Game = {
             description: 'Gen 3 AI documentation',
             url: 'https://docs.google.com/document/d/1-WMcLh7E5OBSCjl4fDTMdVD9-9xsLYCVk2RgI-atcUk/edit?tab=t.0',
         },
+        {
+            text: 'Catch Rate Calculator',
+            description: 'DragonFlyCave Gen III/IV catch rate calculator',
+            url: 'https://www.dragonflycave.com/calculators/gen-iii-iv-catch-rate/',
+        },
     ],
     splits: [
         ROXANNE,
