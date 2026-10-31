@@ -60,23 +60,5 @@
             text-align: center;
             top: 0.2rem;
         }
-
-        .switch-in-badge {
-            align-items: center;
-            background: $background;
-            border: 1px solid var(--accent-color);
-            border-radius: 50%;
-            color: var(--accent-color);
-            display: flex;
-            font-size: 0.6rem;
-            height: 0.9rem;
-            justify-content: center;
-            position: absolute;
-            right: 0.2rem;
-            top: 0.2rem;
-            width: 0.9rem;
-
-            @include mono-label;
-        }
     }
 }

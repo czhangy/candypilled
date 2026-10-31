@@ -16,7 +16,6 @@ import {
 } from '@/lib/static/constants';
 import { Nature, PokemonStatus } from '@/lib/static/enums';
 import {
-    BattlePokemon,
     CalcField,
     CalcFieldState,
     CalcPokemonInput,
@@ -1066,17 +1065,11 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     status={defender.status}
                 />
                 <TeamSelectPanel
-                    disableSwitchInPredictions={
-                        settings['disable-switch-in-predictions'] ?? false
-                    }
                     game={game}
                     onSelectMember={setSelectedMemberIndex}
                     run={run}
                     selectedBattle={effectiveSelectedBattle}
                     selectedMemberIndex={selectedMemberIndex}
-                    target={
-                        (caught ?? tagPartnerMon) as BattlePokemon | undefined
-                    }
                 />
                 <BattleSelectPanel
                     game={game}
