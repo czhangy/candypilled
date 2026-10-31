@@ -20,12 +20,13 @@ import styles from './PokedexTile.module.scss';
 
 type PokedexTileProps = (
     | {
-          defaultLevel?: number;
           dupes: string[];
           encounter?: string;
           isEggEncounter: boolean;
           isLocationMissed: boolean;
           isStarterEncounter: boolean;
+          maxLevel: number | null;
+          minLevel: number | null;
           mode: 'catch';
           onAddPokemon: (
               details: Pick<
@@ -119,7 +120,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
 
         if (!defaultCatchSpecies) return;
 
-        const level = rest.defaultLevel ?? DEFAULT_CATCH_LEVEL;
+        const level = rest.minLevel ?? DEFAULT_CATCH_LEVEL;
         rest.onAddPokemon({
             ability: (PokemonHelpers.getPokemonAbilities(
                 game.dataSource,
@@ -225,6 +226,20 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
               game.version
           )
         : undefined;
+    const highlightedMoves =
+        rest.mode === 'catch' &&
+        species &&
+        species === originalSpecies &&
+        rest.minLevel !== null &&
+        rest.maxLevel !== null
+            ? PokemonHelpers.getMovesInLevelRange(
+                  game.dataSource,
+                  species,
+                  game.version,
+                  rest.minLevel,
+                  rest.maxLevel
+              )
+            : [];
     const locations = species
         ? EncounterHelpers.getEncounterLocations(game, species)
         : [];
@@ -365,6 +380,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                         <LearnsetList
                             dataSource={game.dataSource}
                             generation={generation}
+                            highlightedMoves={highlightedMoves}
                             interactive={rest.mode !== 'choose'}
                             moves={learnset ?? []}
                             onSelectMove={onSelectMove}

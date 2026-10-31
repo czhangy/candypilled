@@ -253,6 +253,15 @@ export default class MoveHelpers {
         return MoveHelpers.getMoveData(dataSource, slug)?.isDangerous ?? false;
     }
 
+    /**
+     * Whether `slug` is a move that is dangerous to meet on a wild encounter
+     * (it can KO the user or end the encounter). Separate from the curated
+     * `isDangerous` flag used for trainer battles.
+     */
+    static isDangerousEncounterMove(slug: string): boolean {
+        return MoveHelpers.DANGEROUS_ENCOUNTER_MOVES.has(slug);
+    }
+
     /** The type a move displayed as `name` should render as in `generation`. */
     static getMoveTypeByName(
         dataSource: GameDataSource,
@@ -269,6 +278,15 @@ export default class MoveHelpers {
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------
+
+    private static readonly DANGEROUS_ENCOUNTER_MOVES = new Set([
+        'explosion',
+        'memento',
+        'roar',
+        'self-destruct',
+        'teleport',
+        'whirlwind',
+    ]);
 
     private static readonly LEARNSET_METHOD_LABELS: Record<
         LearnsetMethod,

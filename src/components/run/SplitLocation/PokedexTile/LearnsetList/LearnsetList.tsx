@@ -7,6 +7,7 @@ import styles from './LearnsetList.module.scss';
 type LearnsetListProps = {
     dataSource: GameDataSource;
     generation: number;
+    highlightedMoves: string[];
     interactive: boolean;
     moves: LearnsetMove[];
     onSelectMove: (slug: string) => void;
@@ -15,6 +16,7 @@ type LearnsetListProps = {
 const LearnsetList: React.FC<LearnsetListProps> = ({
     dataSource,
     generation,
+    highlightedMoves,
     interactive,
     moves,
     onSelectMove,
@@ -53,6 +55,20 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
                     generation
                 );
                 const name = moveData?.name ?? move.slug;
+                const isHighlighted =
+                    move.method === 'level-up' &&
+                    highlightedMoves.includes(move.slug);
+                const isDangerous =
+                    isHighlighted &&
+                    MoveHelpers.isDangerousEncounterMove(move.slug);
+                const rowClassName = [
+                    styles.row,
+                    !interactive && styles['row--static'],
+                    isHighlighted && styles['row--highlighted'],
+                    isDangerous && styles['row--dangerous'],
+                ]
+                    .filter(Boolean)
+                    .join(' ');
 
                 const content = (
                     <>
@@ -91,20 +107,14 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
                     <li key={`${move.method}-${move.slug}-${move.level ?? ''}`}>
                         {interactive ? (
                             <button
-                                className={styles.row}
+                                className={rowClassName}
                                 onClick={() => handleMoveClick(move.slug)}
                                 type="button"
                             >
                                 {content}
                             </button>
                         ) : (
-                            <div
-                                className={[styles.row, styles['row--static']]
-                                    .filter(Boolean)
-                                    .join(' ')}
-                            >
-                                {content}
-                            </div>
+                            <div className={rowClassName}>{content}</div>
                         )}
                     </li>
                 );
