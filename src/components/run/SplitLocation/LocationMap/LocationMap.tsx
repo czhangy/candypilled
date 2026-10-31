@@ -42,7 +42,6 @@ const LocationMap: React.FC<LocationMapProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    const EDIT_MODE_ON = process.env.NODE_ENV !== 'production';
     // Slack (2rem) reserved on all four sides of the image inside the
     // clipped viewport, so a marker anchored at an edge/corner (plus its
     // boss/miniboss badge, which itself extends further past the
@@ -64,18 +63,12 @@ const LocationMap: React.FC<LocationMapProps> = ({
     const [pendingCenter, setPendingCenter] = useState(false);
     const [isDragging, setIsDragging] = useState(false);
     const [viewportSize, setViewportSize] = useState({ width: 0, height: 0 });
-    const [previewPosition, setPreviewPosition] = useState<{
-        x: number;
-        y: number;
-    } | null>(null);
-    const [justCopied, setJustCopied] = useState(false);
 
     // -------------------------------------------------------------------------
     // HOOKS
     // -------------------------------------------------------------------------
 
     const viewportRef = useRef<HTMLDivElement>(null);
-    const imageRef = useRef<HTMLDivElement>(null);
     const dragOriginRef = useRef({ x: 0, y: 0, panX: 0, panY: 0 });
 
     // -------------------------------------------------------------------------
@@ -90,10 +83,6 @@ const LocationMap: React.FC<LocationMapProps> = ({
         if (mapLength <= viewportLength)
             return (viewportLength - mapLength) / 2;
         return Math.min(0, Math.max(viewportLength - mapLength, pan));
-    };
-
-    const formatCoordinate = (value: number): string => {
-        return value.toFixed(2).replace(/\.?0+$/, '');
     };
 
     // The pan that puts mapAnchor's edge/corner flush against the
@@ -206,7 +195,6 @@ const LocationMap: React.FC<LocationMapProps> = ({
     const handlePointerDown = (
         event: React.PointerEvent<HTMLDivElement>
     ): void => {
-        if (EDIT_MODE_ON && event.shiftKey) return;
         if ((event.target as HTMLElement).closest('button')) return;
 
         dragOriginRef.current = {
@@ -222,35 +210,21 @@ const LocationMap: React.FC<LocationMapProps> = ({
     const handlePointerMove = (
         event: React.PointerEvent<HTMLDivElement>
     ): void => {
-        if (isDragging) {
-            const origin = dragOriginRef.current;
-            setPan({
-                x: clampPanAxis(
-                    origin.panX + (event.clientX - origin.x),
-                    effectiveViewportWidth,
-                    map.width
-                ),
-                y: clampPanAxis(
-                    origin.panY + (event.clientY - origin.y),
-                    effectiveViewportHeight,
-                    map.height
-                ),
-            });
-            return;
-        }
+        if (!isDragging) return;
 
-        if (EDIT_MODE_ON && event.shiftKey) {
-            const rect = imageRef.current!.getBoundingClientRect();
-            const x = ((event.clientX - rect.left) / rect.width) * 100;
-            const y = ((event.clientY - rect.top) / rect.height) * 100;
-
-            setPreviewPosition({
-                x: Math.round(x * 100) / 100,
-                y: Math.round(y * 100) / 100,
-            });
-        } else if (previewPosition) {
-            setPreviewPosition(null);
-        }
+        const origin = dragOriginRef.current;
+        setPan({
+            x: clampPanAxis(
+                origin.panX + (event.clientX - origin.x),
+                effectiveViewportWidth,
+                map.width
+            ),
+            y: clampPanAxis(
+                origin.panY + (event.clientY - origin.y),
+                effectiveViewportHeight,
+                map.height
+            ),
+        });
     };
 
     const handlePointerUp = (
@@ -271,27 +245,6 @@ const LocationMap: React.FC<LocationMapProps> = ({
         setIsDragging(false);
     };
 
-    const handlePointerLeave = (): void => {
-        setPreviewPosition(null);
-    };
-
-    const handleImageClick = async (
-        event: React.MouseEvent<HTMLDivElement>
-    ): Promise<void> => {
-        if (!EDIT_MODE_ON || !event.shiftKey) return;
-
-        const rect = imageRef.current!.getBoundingClientRect();
-        const x = ((event.clientX - rect.left) / rect.width) * 100;
-        const y = ((event.clientY - rect.top) / rect.height) * 100;
-
-        await navigator.clipboard.writeText(
-            `x: ${formatCoordinate(x)},\ny: ${formatCoordinate(y)},`
-        );
-
-        setJustCopied(true);
-        setTimeout(() => setJustCopied(false), 800);
-    };
-
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -303,16 +256,11 @@ const LocationMap: React.FC<LocationMapProps> = ({
                 className={[
                     styles.viewport,
                     isDragging && styles['viewport--dragging'],
-                    EDIT_MODE_ON &&
-                        previewPosition &&
-                        styles['viewport--editing'],
                 ]
                     .filter(Boolean)
                     .join(' ')}
-                onClick={EDIT_MODE_ON ? handleImageClick : undefined}
                 onLostPointerCapture={handleLostPointerCapture}
                 onPointerDown={handlePointerDown}
-                onPointerLeave={handlePointerLeave}
                 onPointerMove={handlePointerMove}
                 onPointerUp={handlePointerUp}
                 ref={viewportRef}
@@ -320,7 +268,6 @@ const LocationMap: React.FC<LocationMapProps> = ({
             >
                 <div
                     className={styles.image}
-                    ref={imageRef}
                     style={
                         {
                             '--pan-x': `${displayPan.x + EDGE_BUFFER_PX}px`,
@@ -335,49 +282,17 @@ const LocationMap: React.FC<LocationMapProps> = ({
                         src={map}
                         unoptimized
                     />
-                    {!(EDIT_MODE_ON && previewPosition) &&
-                        battles.map((battle) => (
-                            <TrainerMarker
-                                game={game}
-                                isPreview={false}
-                                isSelected={selectedBattle === battle}
-                                key={BattleHelpers.getBattleKey(battle)}
-                                mapHeight={map.height}
-                                mapWidth={map.width}
-                                onClick={onBattleClick}
-                                trainer={battle}
-                            />
-                        ))}
-                    {EDIT_MODE_ON && previewPosition && (
-                        <>
-                            <TrainerMarker
-                                game={game}
-                                isPreview
-                                isSelected={false}
-                                mapHeight={map.height}
-                                mapWidth={map.width}
-                                onClick={() => {}}
-                                trainer={{
-                                    battleKey: '',
-                                    x: previewPosition.x,
-                                    y: previewPosition.y,
-                                }}
-                            />
-                            <span
-                                className={styles['coord-label']}
-                                style={
-                                    {
-                                        '--x': `${previewPosition.x}%`,
-                                        '--y': `${previewPosition.y}%`,
-                                    } as React.CSSProperties
-                                }
-                            >
-                                {justCopied
-                                    ? 'Copied!'
-                                    : `${previewPosition.x.toFixed(2)}, ${previewPosition.y.toFixed(2)}`}
-                            </span>
-                        </>
-                    )}
+                    {battles.map((battle) => (
+                        <TrainerMarker
+                            game={game}
+                            isSelected={selectedBattle === battle}
+                            key={BattleHelpers.getBattleKey(battle)}
+                            mapHeight={map.height}
+                            mapWidth={map.width}
+                            onClick={onBattleClick}
+                            trainer={battle}
+                        />
+                    ))}
                 </div>
                 {tagPartnerBattleKey && (
                     <TagPartnerButton

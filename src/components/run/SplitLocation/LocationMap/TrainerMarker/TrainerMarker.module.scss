@@ -1,12 +1,6 @@
 @use '@/styles/constants' as *;
 @use '@/styles/mixins' as *;
 
-// Used only for the shift-drag preview marker's flash — kept local since no
-// other component needs these. Chosen for max contrast against map
-// backgrounds rather than matching the shared palette.
-$preview-bright-pink: #ff00c8;
-$preview-neon-green: #39ff14;
-
 // Only plain percentages are animated (never a color itself) — a color
 // derived inside @keyframes from a class-driven variable like
 // --marker-color-base can get stuck on a stale value in some engines when
@@ -26,14 +20,6 @@ $preview-neon-green: #39ff14;
     syntax: '<percentage>';
 }
 
-// Registered separately from --marker-color so the preview flash's literal
-// pink/green can never become that property's fallback value.
-@property --preview-color {
-    inherits: false;
-    initial-value: #{$preview-bright-pink};
-    syntax: '<color>';
-}
-
 @keyframes marker-pulse {
     0%,
     100% {
@@ -44,17 +30,6 @@ $preview-neon-green: #39ff14;
     50% {
         --pulse-white: 35%;
         --marker-opacity: 20%;
-    }
-}
-
-@keyframes preview-marker-color-cycle {
-    0%,
-    100% {
-        --preview-color: #{$preview-bright-pink};
-    }
-
-    50% {
-        --preview-color: #{$preview-neon-green};
     }
 }
 
@@ -158,20 +133,6 @@ $preview-neon-green: #39ff14;
         svg {
             height: 0.55rem;
             width: 0.55rem;
-        }
-    }
-
-    &--preview {
-        --marker-color: var(--preview-color);
-        --preview-color: #{$preview-bright-pink};
-
-        animation: preview-marker-color-cycle 1s linear infinite;
-        border-style: dashed;
-        cursor: none;
-        pointer-events: none;
-
-        @media (prefers-reduced-motion: reduce) {
-            animation: none;
         }
     }
 }
