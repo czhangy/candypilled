@@ -225,6 +225,7 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                                 <LearnsetList
                                     dataSource={game.dataSource}
                                     generation={game.generation}
+                                    highlightedMoves={[]}
                                     interactive
                                     moves={learnset ?? []}
                                     onSelectMove={onSelectMove}

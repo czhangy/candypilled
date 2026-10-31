@@ -331,6 +331,30 @@ export default class PokemonHelpers {
     }
 
     /**
+     * The slugs of every move slug could know at any level from minLevel to
+     * maxLevel inclusive in version, i.e. the union of getMovesAtLevel across
+     * the range.
+     */
+    static getMovesInLevelRange(
+        dataSource: GameDataSource,
+        slug: string,
+        version: string,
+        minLevel: number,
+        maxLevel: number
+    ): string[] {
+        const moves = new Set<string>();
+        for (let level = minLevel; level <= maxLevel; level++) {
+            PokemonHelpers.getMovesAtLevel(
+                dataSource,
+                slug,
+                version,
+                level
+            ).forEach((move) => moves.add(move));
+        }
+        return Array.from(moves);
+    }
+
+    /**
      * Every species in species that learns moveSlug in version, alongside
      * each learnset entry that teaches it, in species' order.
      */

@@ -583,10 +583,6 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         }
                                     />
                                     <PokedexTile
-                                        defaultLevel={
-                                            selectedEncounter?.minLevel ??
-                                            undefined
-                                        }
                                         dupes={dupes}
                                         encounter={encounter}
                                         game={game}
@@ -594,6 +590,12 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         isEggEncounter={isEggEncounter}
                                         isLocationMissed={isMissed}
                                         isStarterEncounter={isStarterEncounter}
+                                        maxLevel={
+                                            selectedEncounter?.maxLevel ?? null
+                                        }
+                                        minLevel={
+                                            selectedEncounter?.minLevel ?? null
+                                        }
                                         mode="catch"
                                         onAddPokemon={
                                             handlePokedexTileAddPokemon
