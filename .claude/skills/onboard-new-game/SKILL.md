@@ -68,7 +68,7 @@ Badges and trainer class sprites are requested later, once the splits and traine
 Then decide whether Pokémon sprites need fetching. The sprite folder is `Game.pokemonAssetFolder ?? Game.version`. List the folders in `public/pokemon/`:
 
 - If that folder already exists, skip.
-- If it doesn't, run `npm run pokeapi:pokemon <game> --sprites`, where `<game>` is the game's `GameVersion` id.
+- If it doesn't, ask the user to supply the sprites.
 - If you are at all unsure, ask the user.
 
 ## 5. Encounters
