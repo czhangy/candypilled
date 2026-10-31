@@ -615,6 +615,14 @@ export type StatsByGeneration = {
     stats: StatValues;
 };
 
+// A species' base EXP yield from fromGeneration onward, per Bulbapedia's
+// per-generation yield tables. Only generations where the value changes get
+// an entry.
+export type BaseExperienceByGeneration = {
+    fromGeneration: number;
+    baseExperience: number;
+};
+
 export type EvolutionMethod = {
     trigger: string;
     item?: string;
@@ -813,6 +821,7 @@ export type PokemonData = {
     types: TypesByGeneration[];
     abilities: AbilitiesByGeneration[];
     stats: StatsByGeneration[];
+    baseExperience: BaseExperienceByGeneration[];
     catchRate: number;
     genderRate: number;
     growthRate: GrowthRate;

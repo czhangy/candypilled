@@ -139,6 +139,16 @@ const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
                                     )}
                                     width={SPRITE_WIDTH}
                                 />
+                                <span className={styles['exp-yield']}>
+                                    +
+                                    {PokemonHelpers.getTrainerExpYield(
+                                        game.dataSource,
+                                        mon.slug,
+                                        mon.level,
+                                        game.generation
+                                    )}{' '}
+                                    EXP
+                                </span>
                                 {switchInRanks[index] !== undefined && (
                                     <span className={styles['switch-in-badge']}>
                                         {switchInRanks[index]}

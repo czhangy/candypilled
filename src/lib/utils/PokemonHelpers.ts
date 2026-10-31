@@ -192,6 +192,45 @@ export default class PokemonHelpers {
             ?.stats;
     }
 
+    /** slug's base EXP yield in dataSource as of generation, or undefined if no form matches. */
+    static getPokemonBaseExperience(
+        dataSource: GameDataSource,
+        slug: string,
+        generation: number
+    ): number | undefined {
+        const pokemon = PokemonHelpers.getPokemonData(dataSource, slug);
+        if (!pokemon) return undefined;
+
+        return GenerationHelpers.resolveGeneration(
+            pokemon.baseExperience,
+            generation
+        )?.baseExperience;
+    }
+
+    /**
+     * The EXP a single player Pokémon earns for defeating a trainer's slug at
+     * level, or undefined if no form matches. Assumes a Generation III/IV
+     * trainer battle where only that one Pokémon fights, with no Lucky Egg,
+     * Exp. Share or traded-Pokémon bonus.
+     */
+    static getTrainerExpYield(
+        dataSource: GameDataSource,
+        slug: string,
+        level: number,
+        generation: number
+    ): number | undefined {
+        const baseExperience = PokemonHelpers.getPokemonBaseExperience(
+            dataSource,
+            slug,
+            generation
+        );
+        if (baseExperience === undefined) return undefined;
+
+        // The games truncate after each step, so don't fold these together.
+        const baseYield = Math.floor((baseExperience * level) / 7);
+        return Math.floor((Math.max(baseYield, 1) * 150) / 100);
+    }
+
     /** slug's catch rate in dataSource, or undefined if no form matches. */
     static getPokemonCatchRate(
         dataSource: GameDataSource,

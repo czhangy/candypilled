@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
 import { AbilityEntry, PokemonData } from '@/lib/static/types';
+import StringHelpers from '@/lib/utils/StringHelpers';
 import AbilitiesList from './AbilitiesList/AbilitiesList';
 import styles from './PokemonSummary.module.scss';
 
@@ -38,6 +39,8 @@ const PokemonSummary: React.FC<PokemonSummaryProps> = ({
     const SPRITE_SIZE = 80;
     const TYPE_BADGE_WIDTH = 32;
     const TYPE_BADGE_HEIGHT = 14;
+    const GROWTH_RATE_URL =
+        'https://bulbapedia.bulbagarden.net/wiki/Experience#Growth_rate';
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -133,14 +136,12 @@ const PokemonSummary: React.FC<PokemonSummaryProps> = ({
                         </div>
                         <div className={styles['right-bottom']}>
                             {catchRate !== undefined && (
-                                <div className={styles['catch-rate']}>
+                                <div className={styles.stat}>
                                     <span
                                         className={[
-                                            styles['catch-rate-label'],
+                                            styles['stat-label'],
                                             catchRateChanged &&
-                                                styles[
-                                                    'catch-rate-label--changed'
-                                                ],
+                                                styles['stat-label--changed'],
                                         ]
                                             .filter(Boolean)
                                             .join(' ')}
@@ -149,9 +150,9 @@ const PokemonSummary: React.FC<PokemonSummaryProps> = ({
                                     </span>
                                     <span
                                         className={[
-                                            styles.rate,
+                                            styles['stat-value'],
                                             catchRateChanged &&
-                                                styles['rate--changed'],
+                                                styles['stat-value--changed'],
                                         ]
                                             .filter(Boolean)
                                             .join(' ')}
@@ -160,6 +161,21 @@ const PokemonSummary: React.FC<PokemonSummaryProps> = ({
                                     </span>
                                 </div>
                             )}
+                            <div className={styles.stat}>
+                                <span className={styles['stat-label']}>
+                                    Exp Curve
+                                </span>
+                                <a
+                                    className={styles['stat-link']}
+                                    href={GROWTH_RATE_URL}
+                                    rel="noopener noreferrer"
+                                    target="_blank"
+                                >
+                                    {StringHelpers.toTitleCase(
+                                        pokemon.growthRate
+                                    )}
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </>
