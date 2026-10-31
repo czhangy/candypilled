@@ -110,7 +110,7 @@ Create one `Location` per met-table name, one at a time. Wire each fully before 
 
 1. The user puts that location's screenshots on the Desktop, named `<map-slug>.png`, `<map-slug>-<col>.png` or `<map-slug>-<row>-<col>.png`. A location with several floors or areas uses one map slug each, e.g. `<location>-1f`.
 2. Run `npm run stitch-map -- <slug> <map-slug>`. Read the result only to check for dead space. Never inspect seams.
-3. Ask the user for the `mapAnchor`. Export the map from `maps/index.ts`, alphabetically, and create `locations/<name>.ts` with the map (or `subareas`, one per map slug) and the anchor. `Location.name` must equal the met-table name exactly.
+3. Set the `mapAnchor`. A map that fits the map viewport without panning (height at most 420 px, the viewport's max height in `LocationMap.module.scss`, and no wider than the viewport) gets `MapAnchor.Center` without asking. Otherwise, or if unsure, ask the user. Export the map from `maps/index.ts`, alphabetically, and create `locations/<name>.ts` with the map (or `subareas`, one per map slug) and the anchor. `Location.name` must equal the met-table name exactly.
 4. Add the location to `locations.ts`; `check:data` fails on an unlisted file. In a variant group, shared locations go in the shared `locations.ts`, and a version-exclusive one is appended in that variant's file (`locations: [...LOCATIONS, VERSION_ONLY]`).
 5. Delete the Desktop screenshots.
 
@@ -174,7 +174,7 @@ Save import is per game, keyed by `Game.version`. Never copy another game's valu
 
 1. Add the game's `Game.version` as a `case` in `SaveFileParser.parse` (`src/lib/parsers/SaveFileParser.ts`), under its generation's parsers. If the generation has no parsers in `src/lib/parsers/`, ask the user.
 2. Gen 4: add a `GEN4_SAVE_LAYOUTS` entry in `gen4-save-layouts.ts`, keyed by `Game.version`, with `generalBlockSize`, `storageBlockSize`, `partyOffset`, `genderOffset`, `badgeMaskOffset` and `mainStoryClearedOffset`. Derive the offsets from the game's decomp. If there is no decomp, ask the user.
-3. Gen 3: add the game's `GameVersionGroup` to `FLAG_SYS_GAME_CLEAR_BY_VERSION` in `Gen3SplitParser.ts`. Derive `FLAG_SYS_GAME_CLEAR` from the game's own decomp (`SYSTEM_FLAGS + 0x04`). If there is no decomp, ask the user.
+3. Gen 3: add the game's `GameVersionGroup` to `FLAG_LAYOUT_BY_VERSION` in `Gen3SplitParser.ts` with `flagsOffset` (`SaveBlock1.flags` in the decomp's `include/global.h`) and `gameClearFlag` (`FLAG_SYS_GAME_CLEAR`, `SYSTEM_FLAGS + 0x04`, in `include/constants/flags.h`). Also check the shared `PARTY_OFFSET`, `GENDER_OFFSET`, `GEN3_ITEM_INDEX`, `GEN3_NATIONAL_DEX_BY_SPECIES` and the move IDs against the decomp. If there is no decomp, ask the user.
 4. Ask the user to import a save for the game and report the result. Never start a dev server.
 
 ## 16. Cleanup

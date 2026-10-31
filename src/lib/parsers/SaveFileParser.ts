@@ -26,6 +26,7 @@ export default class SaveFileParser {
                     gender: Gen4TrainerParser.parseGender(game, buffer),
                 };
             case 'ruby-sapphire':
+            case 'emerald':
                 return {
                     pokemon: Gen3SaveParser.parse(game, buffer),
                     completedSplits: Gen3SplitParser.parse(game, buffer),

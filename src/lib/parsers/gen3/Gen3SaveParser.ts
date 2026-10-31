@@ -1,4 +1,5 @@
 import { GEN3_ITEM_INDEX } from '@/lib/parsers/gen3/gen3-item-index';
+import { GEN3_NATIONAL_DEX_BY_SPECIES } from '@/lib/parsers/gen3/gen3-species-index';
 import Gen3SaveBlocks from '@/lib/parsers/gen3/Gen3SaveBlocks';
 import { PokemonStatus } from '@/lib/static/enums';
 import {
@@ -94,6 +95,9 @@ const EVS_OFFSET = 0x00;
 const MISC_MET_LOCATION_OFFSET = 0x01;
 const MISC_IV_WORD_OFFSET = 0x04;
 const ALT_ABILITY_BIT = 31;
+
+// Internal species indices up to here are the national dex number itself.
+const LAST_KANTO_JOHTO_SPECIES = 251;
 
 const UNKNOWN_LOCATION = 'Unknown Location';
 
@@ -221,8 +225,12 @@ export default class Gen3SaveParser {
         );
         const misc = Gen3SaveParser.getSubstruct(decrypted, personality, 3);
 
-        const dexNumber = growth.getUint16(GROWTH_SPECIES_OFFSET, true);
-        if (dexNumber === 0) return undefined;
+        const speciesIndex = growth.getUint16(GROWTH_SPECIES_OFFSET, true);
+        const dexNumber =
+            speciesIndex <= LAST_KANTO_JOHTO_SPECIES
+                ? speciesIndex
+                : GEN3_NATIONAL_DEX_BY_SPECIES[speciesIndex];
+        if (!dexNumber) return undefined;
 
         const speciesData = PokemonHelpers.getSpeciesByDexNumber(
             game.dataSource,
