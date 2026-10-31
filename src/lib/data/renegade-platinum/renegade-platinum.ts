@@ -74,6 +74,11 @@ const RENEGADE_PLATINUM: Game = {
                 'QoL patch for Renegade Platinum based on the Drayano Gauntlet',
             url: 'https://drive.proton.me/urls/ZEQPKY2QTR#goT6p4N6KKRh',
         },
+        {
+            text: 'Catch Rate Calculator',
+            description: 'DragonFlyCave Gen III/IV catch rate calculator',
+            url: 'https://www.dragonflycave.com/calculators/gen-iii-iv-catch-rate/',
+        },
     ],
     wipeMessages: [
         'Roark is calling.',

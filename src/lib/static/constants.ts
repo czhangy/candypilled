@@ -6,10 +6,6 @@ export const SETTINGS: Setting[] = [
         title: 'Disable Trade Evolutions',
     },
     {
-        id: 'use-evs',
-        title: 'Use EVs',
-    },
-    {
         id: 'hide-dangerous',
         title: 'Hide Dangerous Moves/Abilities',
     },
@@ -27,8 +23,6 @@ export const MIN_LEVEL = 1;
 export const MAX_LEVEL = 100;
 export const MIN_IV = 0;
 export const MAX_IV = 31;
-export const MIN_EV = 0;
-export const MAX_EV = 252;
 
 // The number of move slots a Pokémon has.
 export const MOVE_SLOT_COUNT = 4;

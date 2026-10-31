@@ -36,6 +36,11 @@ const CreditsPage: React.FC = () => {
                     url: 'https://github.com/smogon/damage-calc',
                 },
                 {
+                    name: 'DragonFlyCave',
+                    description: 'Catch rate calculators for each generation',
+                    url: 'https://www.dragonflycave.com/',
+                },
+                {
                     name: 'DSPRE',
                     description: 'Scraping data and assets from DS ROMs',
                     url: 'https://github.com/Egor-n/DSPRE',

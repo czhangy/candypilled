@@ -1,15 +1,7 @@
+import { useEffect, useMemo, useReducer, useState } from 'react';
 import {
-    useEffect,
-    useMemo,
-    useReducer,
-    useState,
-    useSyncExternalStore,
-} from 'react';
-import {
-    MAX_EV,
     MAX_IV,
     MAX_LEVEL,
-    MIN_EV,
     MIN_IV,
     MIN_LEVEL,
     MOVE_SLOT_COUNT,
@@ -31,7 +23,6 @@ import BattleHelpers from '@/lib/utils/BattleHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
-import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
 import BattleSelectPanel from './BattleSelectPanel/BattleSelectPanel';
 import BoxSelectPanel from './BoxSelectPanel/BoxSelectPanel';
@@ -94,7 +85,6 @@ const CalcTab: React.FC<CalcTabProps> = ({
         | { type: 'SET_NATURE'; nature: Nature }
         | { type: 'SET_LEVEL'; level: number }
         | { type: 'SET_IV'; stat: keyof StatValues; value: number }
-        | { type: 'SET_EV'; stat: keyof StatValues; value: number }
         | {
               type: 'SET_BOOST';
               stat: Exclude<keyof StatValues, 'hp'>;
@@ -146,7 +136,6 @@ const CalcTab: React.FC<CalcTabProps> = ({
               stat: Exclude<keyof StatValues, 'hp'>;
               value: number;
           }
-        | { type: 'SET_EV'; stat: keyof StatValues; value: number }
         | { type: 'SET_IV'; stat: keyof StatValues; value: number }
         | { type: 'SET_LEVEL'; level: number }
         | { type: 'SET_MOVE'; index: number; value: string }
@@ -296,11 +285,6 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     ...state,
                     ivs: { ...state.ivs, [action.stat]: action.value },
                 };
-            case 'SET_EV':
-                return {
-                    ...state,
-                    evs: { ...state.evs, [action.stat]: action.value },
-                };
             case 'SET_BOOST':
                 return {
                     ...state,
@@ -374,11 +358,6 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     ...state,
                     boosts: { ...state.boosts, [action.stat]: action.value },
                 };
-            case 'SET_EV':
-                return {
-                    ...state,
-                    evs: { ...state.evs, [action.stat]: action.value },
-                };
             case 'SET_IV':
                 return {
                     ...state,
@@ -416,11 +395,6 @@ const CalcTab: React.FC<CalcTabProps> = ({
     // HOOKS
     // -------------------------------------------------------------------------
 
-    const settings = useSyncExternalStore(
-        SettingsHelpers.subscribe,
-        SettingsHelpers.getSnapshot,
-        SettingsHelpers.getServerSnapshot
-    );
     const [attacker, dispatchAttacker] = useReducer(
         attackerReducer,
         undefined,
@@ -463,8 +437,6 @@ const CalcTab: React.FC<CalcTabProps> = ({
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
-
-    const showEvs = settings['use-evs'] ?? false;
 
     // Falls back to the first trainer whenever the URL hasn't recorded an
     // explicit selection yet.
@@ -820,14 +792,6 @@ const CalcTab: React.FC<CalcTabProps> = ({
         dispatchAttacker({ type: 'SET_IV', stat, value });
     };
 
-    const handleAttackerEvChange = (
-        stat: keyof StatValues,
-        rawValue: number
-    ): void => {
-        const value = Math.min(MAX_EV, Math.max(MIN_EV, rawValue));
-        dispatchAttacker({ type: 'SET_EV', stat, value });
-    };
-
     const handleAttackerBoostChange = (
         stat: Exclude<keyof StatValues, 'hp'>,
         value: string
@@ -903,14 +867,6 @@ const CalcTab: React.FC<CalcTabProps> = ({
 
     const handleDefenderHeldItemChange = (value: string): void => {
         dispatchDefender({ type: 'SET_HELD_ITEM', heldItem: value });
-    };
-
-    const handleDefenderEvChange = (
-        stat: keyof StatValues,
-        rawValue: number
-    ): void => {
-        const value = Math.min(MAX_EV, Math.max(MIN_EV, rawValue));
-        dispatchDefender({ type: 'SET_EV', stat, value });
     };
 
     const handleDefenderIvChange = (
@@ -990,7 +946,6 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     nature={attacker.nature}
                     onAbilityChange={handleAttackerAbilityChange}
                     onBoostChange={handleAttackerBoostChange}
-                    onEvChange={handleAttackerEvChange}
                     onGenderChange={handleAttackerGenderChange}
                     onHeldItemChange={handleAttackerHeldItemChange}
                     onIvChange={handleAttackerIvChange}
@@ -1000,7 +955,6 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     onSpeciesChange={handleAttackerSpeciesChange}
                     onStatusChange={handleAttackerStatusChange}
                     pokemonSlug={attackerDisplaySlug}
-                    showEvs={showEvs}
                     speedComparison={playerSpeedComparison}
                     status={attacker.status}
                 />
@@ -1050,7 +1004,6 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     nature={defender.nature}
                     onAbilityChange={handleDefenderAbilityChange}
                     onBoostChange={handleDefenderBoostChange}
-                    onEvChange={handleDefenderEvChange}
                     onGenderChange={handleDefenderGenderChange}
                     onHeldItemChange={handleDefenderHeldItemChange}
                     onIvChange={handleDefenderIvChange}
@@ -1060,7 +1013,6 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     onSpeciesChange={handleDefenderSpeciesChange}
                     onStatusChange={handleDefenderStatusChange}
                     pokemonSlug={defenderDisplaySlug}
-                    showEvs={showEvs}
                     speedComparison={trainerSpeedComparison}
                     status={defender.status}
                 />

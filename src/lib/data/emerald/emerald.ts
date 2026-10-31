@@ -43,6 +43,11 @@ const EMERALD: Game = {
             description: 'Gen 3 AI documentation',
             url: 'https://docs.google.com/document/u/0/d/13E61Jj4KwhIy3ZKgLjPY-_uWKWklfBR_zUlhZHUZqik/mobilebasic',
         },
+        {
+            text: 'Catch Rate Calculator',
+            description: 'DragonFlyCave Gen III/IV catch rate calculator',
+            url: 'https://www.dragonflycave.com/calculators/gen-iii-iv-catch-rate/',
+        },
     ],
     // Verified against Bulbapedia: Emerald's intro is the same
     // moving-truck arrival at Littleroot as Ruby/Sapphire's.

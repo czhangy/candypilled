@@ -34,7 +34,6 @@ type PokemonPanelProps = {
         stat: Exclude<keyof StatValues, 'hp'>,
         value: string
     ) => void;
-    onEvChange: (stat: keyof StatValues, value: number) => void;
     onGenderChange: (gender: 'male' | 'female') => void;
     onHeldItemChange: (value: string) => void;
     onIvChange: (stat: keyof StatValues, value: number) => void;
@@ -44,7 +43,6 @@ type PokemonPanelProps = {
     onSpeciesChange: (slug: string) => void;
     onStatusChange: (value: string) => void;
     pokemonSlug?: string;
-    showEvs: boolean;
     speedComparison: SpeedComparison | undefined;
     status: string;
 };
@@ -63,7 +61,6 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     nature,
     onAbilityChange,
     onBoostChange,
-    onEvChange,
     onGenderChange,
     onHeldItemChange,
     onIvChange,
@@ -73,7 +70,6 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     onSpeciesChange,
     onStatusChange,
     pokemonSlug,
-    showEvs,
     speedComparison,
     status,
 }) => {
@@ -276,12 +272,9 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                     <StatsTable
                         baseStats={baseStats}
                         boosts={boosts}
-                        evs={evs}
                         ivs={ivs}
                         onBoostChange={onBoostChange}
-                        onEvChange={onEvChange}
                         onIvChange={onIvChange}
-                        showEvs={showEvs}
                         speedComparison={speedComparison}
                         totalStats={totalStats}
                     />

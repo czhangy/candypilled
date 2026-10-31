@@ -44,6 +44,11 @@ const PLATINUM: Game = {
             description: 'Gen IV AI documentation',
             url: 'https://pokemow.com/Gen4/TrainerAI/',
         },
+        {
+            text: 'Catch Rate Calculator',
+            description: 'DragonFlyCave Gen III/IV catch rate calculator',
+            url: 'https://www.dragonflycave.com/calculators/gen-iii-iv-catch-rate/',
+        },
     ],
     wipeMessages: [
         'Roark is calling.',

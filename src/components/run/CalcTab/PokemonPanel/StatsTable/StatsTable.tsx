@@ -2,13 +2,7 @@ import Dropdown from '@/components/common/Dropdown/Dropdown';
 import NumericInput from '@/components/common/NumericInput/NumericInput';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
-import {
-    MAX_EV,
-    MAX_IV,
-    MIN_EV,
-    MIN_IV,
-    STAT_FIELDS,
-} from '@/lib/static/constants';
+import { MAX_IV, MIN_IV, STAT_FIELDS } from '@/lib/static/constants';
 import {
     DropdownOption,
     SpeedComparison,
@@ -19,15 +13,12 @@ import styles from './StatsTable.module.scss';
 type StatsTableProps = {
     baseStats?: StatValues;
     boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
-    evs: StatValues;
     ivs: StatValues;
     onBoostChange: (
         stat: Exclude<keyof StatValues, 'hp'>,
         value: string
     ) => void;
-    onEvChange: (stat: keyof StatValues, value: number) => void;
     onIvChange: (stat: keyof StatValues, value: number) => void;
-    showEvs: boolean;
     speedComparison: SpeedComparison | undefined;
     totalStats?: StatValues;
 };
@@ -35,12 +26,9 @@ type StatsTableProps = {
 const StatsTable: React.FC<StatsTableProps> = ({
     baseStats,
     boosts,
-    evs,
     ivs,
     onBoostChange,
-    onEvChange,
     onIvChange,
-    showEvs,
     speedComparison,
     totalStats,
 }) => {
@@ -79,7 +67,6 @@ const StatsTable: React.FC<StatsTableProps> = ({
                     <th />
                     <th>Base</th>
                     <th>IV</th>
-                    {showEvs && <th>EV</th>}
                     <th>Stage</th>
                     <th>Total</th>
                 </tr>
@@ -133,18 +120,6 @@ const StatsTable: React.FC<StatsTableProps> = ({
                                 value={ivs[key]}
                             />
                         </td>
-                        {showEvs && (
-                            <td>
-                                <NumericInput
-                                    dense
-                                    disabled={false}
-                                    max={MAX_EV}
-                                    min={MIN_EV}
-                                    onChange={(value) => onEvChange(key, value)}
-                                    value={evs[key]}
-                                />
-                            </td>
-                        )}
                         <td className={styles['boost-cell']}>
                             {key !== 'hp' && (
                                 <Dropdown
