@@ -9,9 +9,9 @@ import {
     useRouter,
     useSearchParams,
 } from 'next/navigation';
+import GenderSelectModal from '@/components/common/GenderSelectModal/GenderSelectModal';
+import StarterSelectModal from '@/components/common/StarterSelectModal/StarterSelectModal';
 import Tabs from '@/components/common/Tabs/Tabs';
-import GenderSelectModal from '@/components/GenderSelectModal/GenderSelectModal';
-import StarterSelectModal from '@/components/StarterSelectModal/StarterSelectModal';
 import { CaughtPokemon, Game } from '@/lib/static/types';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';

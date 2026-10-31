@@ -1,183 +1,188 @@
 ---
 name: onboard-new-game
-description: Add a new playable game (or a set of same-generation variant games like Diamond & Pearl that share everything except wild encounters) to the tracker. Use when asked to add a new game, add a game variant, or scaffold game data.
+description: Add a new playable game (or a set of same-generation variant games like Diamond & Pearl) to the tracker. Use when asked to add a new game, add a game variant, or scaffold game data.
 ---
 
 # Onboarding a new game
 
-A game is a `Game` object (`src/lib/static/types.ts`) registered in `GAMES` (`src/lib/data/games.ts`). Nothing in the UI special-cases a game by name; its URL slug is `StringHelpers.toSlug(game.name)`. Onboarding is data authoring plus registration, never a component change.
+A game is a `Game` object (`src/lib/static/types.ts`) registered in `GAMES` (`src/lib/data/games.ts`). Onboarding is data authoring plus registration, never a component change.
 
-## Rules
+If onboarding requires something no step covers, do it, then add it to the matching step in this skill (or a new step) before finishing.
 
-**Every game is an independent data source.** Never use one game to infer, template, or verify another's data, whether values (stats, moves, encounters, met indices) or structural assumptions (a flag's bit index, a save condition's shape). Derive everything from that game's own primary source (its decomp, its trainer/encounter data, PokeAPI scoped to its version), even when a value happens to match. Exceptions: games explicitly grouped as sharing data (see "Variant games"), and existing games' _code_ as a reference for this codebase's own conventions (file layout, type shapes).
+## 1. Game metadata
 
-**Ask, never assume.** A missing, unclear, or ambiguous value is a hard stop: ask before writing, every time. This covers every category (species/level/nature/ability/item/move/gender/IV values, map anchors, coordinates, battle metadata, split placement, save conditions) and structural calls. Never infer a battle's structure (pairing two trainers as a Tag, treating a note as a Multi Battle) from source phrasing or from what the schema supports; report what the source says and ask how to model it.
+Ask these in one plain-text list before creating anything. Never answer one from the game's name or another game's data.
 
-- Optional in TypeScript is never optional in the data (`ivs`, `heldItem`, `gender`). Omit a field only when the source explicitly says it doesn't apply (e.g. a genderless species' `gender`).
-- A value comes only from (1) an explicit, documented source or (2) the user, for this exact case in this exact game. "The rest of the row follows a pattern", "it's the only sensible value", "a similar case used this", and "common knowledge" are guesses, and a guess in the dataset is indistinguishable from sourced data later.
-- Ask a recurring per-case call (e.g. "does this trainer class imply a fixed gender?") every time it comes up, but record each confirmed answer in the game's `ONBOARDING.md` table so it's never asked twice. Add a row only after the user confirms it for this game.
-- Append items in the order the user gives or the source lists them; never reorder by inferred geographic or canon order.
+Then create `src/lib/data/<slug>/ONBOARDING.md` and record every answer in it. Later steps add to it; edit in place, never as a log.
 
-**Keep this skill free of game-specific facts.** It documents how to onboard, not what any one game's data turned out to be. A derived constant or specific location name belongs in a comment next to the code it produced. Test: would the sentence still make sense to someone onboarding a different game in a different generation?
+| Question                                                                                                    | Decides                                                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Is it a ROM hack, or a vanilla game?                                                                        | Data sources for trainers and encounters. A hack's tracker is the source, since PokeAPI and the decomp reflect the unpatched base game. |
+| Does it change Pokémon or moves from its base game?                                                         | Whether it needs `DataOverrides` (a sparse diff over vanilla) or an independent dataset, instead of `VANILLA_DATA_SOURCE`.              |
+| Is there a trusted decomp of this exact game?                                                               | Trainer data, badge bits and flags come from the decomp. Without one, they come from a tracker or a real save.                          |
+| Is it one of a set of variants that differ only in wild encounters (like Diamond and Pearl)?                | One shared data folder plus a subfolder per variant.                                                                                    |
+| What generation and PokeAPI version-group slug does it use? (For a hack, that of the base game it patches.) | `Game.generation`, `Game.version`, and the encounter scraper config.                                                                    |
+| Which sprite and badge art does it use?                                                                     | Whether `badgeAssetFolder`, `trainerAssetFolder` and `pokemonAssetFolder` reuse an existing folder, or need new art.                    |
+| What is its accent color?                                                                                   | `Game.accentColor`.                                                                                                                     |
+| Does it need a text contrast color? (Optional.)                                                             | `Game.textContrastColor`, omitted when not needed.                                                                                      |
 
-## Vanilla game vs. ROM hack
+## 2. Data folder scaffold
 
-A hack breaks most assumptions of the API-driven vanilla flow.
+Create `src/lib/data/<slug>/` (reference: `platinum/`). For a variant group, create the shared folder with one subfolder per variant (reference: `diamond-pearl/`). Every game gets:
 
-- **Data source.** Vanilla: PokeAPI (wild encounters, base data) plus, for Gen 3/4, the game's own pret-style decomp for trainer teams/IVs/AI. Hack: neither works. PokeAPI doesn't know about patches, and a hack's decomp reflects the unpatched base game, so vanilla tooling silently returns wrong data. Use the hack's community tracker (spreadsheet, wiki, changelog) that the user points to. If none exists, that's a blocker to raise.
-- **Modeling.** A hack that changes only some entries of an otherwise-vanilla dataset is vanilla data plus a sparse override: `DataOverrides<T>` and `GameDataSource.overrides` in `types.ts`, `DataOverrideHelpers.applyOverrides` / `removeEntries`. The game's own `pokemon`/`moves` exports hold the merged result. Diff against vanilla as resolved for that generation (`GenerationHelpers.resolveGeneration`), not raw data. Encounters and trainer battles are always fully independent per game.
-- **No decomp, no static verification.** Validate the save layout by checksum against the closest vanilla layout, then cross-check decoded values (money, badges, story flags) against what the user observed in a real playthrough. Never assume bit orders or offsets carried over. If one can't be pinned down, record it as unverified in the game's status tracking rather than writing a guess.
-- **Assets.** Hacks often reuse base-game art. Still diff every file by content hash (see "Sharing `public/` assets").
-- A hack still gets a real `Game.generation`/`version` from the base game it patches (a technical fact, not an in-universe one).
+- `ONBOARDING.md`: created in step 1.
+- `<slug>.ts`: assembles and default-exports the `Game`.
+- `index.ts`: `export { default } from './<slug>';`
+- `met-locations.ts`: `MET_LOCATIONS: Record<number, string>`, met index to location name.
+- `encounters.ts`: `ENCOUNTERS: Record<string, Encounter[]>`.
+- `battles.ts`: `BATTLES: Record<string, BattleData>`.
+- `locations.ts`: `LOCATIONS: Location[]`, every location in the game.
+- `locations/`: one `Location` per file.
+- `maps/`: map PNGs plus `index.ts`, one alphabetical export per image.
+- `splits/`: one `Split` per file.
 
-## Sources
+In a variant group, `encounters.ts` and `<slug>.ts` live in each variant's subfolder, and everything else is shared.
 
-Pin these down before authoring anything.
+Start each data file as an empty typed export. Don't register the game yet. Add an entry to `GAME_CHECK_CONFIGS` in `src/lib/scripts/validation/game-configs.ts` for each game, with `dataFolder`, `unmappedLocations: []` and `isEnabled: false`, so `check:data` skips the game until onboarding is done.
 
-- **Vanilla:** PokeAPI (wild encounters, base data, per version); that generation's decomp (trainer data, badge bit order, per-gym badge grants); Bulbapedia/Serebii (met-location index, version exclusivity, trade-gated content). When a fetched wiki table looks surprising, pull the raw wikitext instead of trusting a summary.
-- **ROM hack:** the hack's own tracker (the only valid source for anything it changed); a real emulator save for layout/badge/flag facts; base-game Bulbapedia only for facts the hack didn't touch, confirmed with the tracker or the user.
+## 3. Gather assets
 
-**Document hand-curated sources** in `src/lib/data/<slug>/ONBOARDING.md`, kept current as a live procedural reference (edit rules in place; it isn't a session log). Include:
+Tell the user which assets are needed and where to place them, then wait for confirmation. Skip any folder that step 1 said is shared with an existing game.
 
-- document/workbook IDs, which tab holds which data, and how to re-derive the tab list
-- the column layout and grouping convention, and the sentinel rows that bound each section
-- a mechanical cell-to-field mapping table, kept separate from anything that always needs asking (structural notes, missing values, ambiguity)
-- the per-case confirmed-facts table from "Ask, never assume"
-- a phase-status table (done, in progress, unverified and why)
+- `public/logos/<slug>.png`: the game logo.
+- `public/trainers/<trainerAssetFolder>/`: the male and female protagonist sprites, e.g. `lucas.png` and `dawn.png`.
 
-## Onboarding order
+Badges and trainer class sprites are requested later, once the splits and trainer classes are known.
 
-### 1. Data folder
+## 4. Data source
 
-`src/lib/data/<slug>/` (reference implementation: `platinum/`):
+- **Vanilla, or no Pokémon/move changes:** `dataSource: VANILLA_DATA_SOURCE` (`data-sources.ts`). Nothing to build.
+- **A hack with changes (overrides):**
+    - Ask the user for the source of the changes.
+    - Write sparse `DataOverrides` JSON to `<slug>/raw/pokemon-overrides.json` and `moves-overrides.json`, diffed against vanilla as resolved for the hack's generation.
+    - Create `<slug>/pokemon.ts` and `<slug>/moves.ts` in the shape of `renegade-platinum/`. They export `POKEMON_OVERRIDES` and `POKEMON`, and `MOVE_OVERRIDES` and `MOVES`, built with `DataOverrideHelpers.applyOverrides` (plus `removeEntries` for retired moves).
+    - Add a `<SLUG>_DATA_SOURCE` to `data-sources.ts` with `overrides` set, reusing `ITEMS` unless items changed.
+    - Set `Game.pokemonAssetFolder` to the version group whose Pokémon sprites the hack uses.
+- **A hack with a wholly independent dataset:** ask the user.
 
-- `<slug>.ts` assembles and default-exports the `Game`; `index.ts` is `export { default } from './<slug>';`
-- `met-locations.ts`: region met-location index to name table
-- `encounters.ts`: `ENCOUNTERS: Record<string, Encounter[]>`
-- `locations/*.ts`: one `Location` per file, importing its map(s) from `./maps`
-- `locations.ts`: `LOCATIONS: Location[]`, every location in the game
-- `battles.ts`: `BATTLES: Record<string, BattleData>`
-- `splits/*.ts`: the `Split[]` groupings
-- `maps/*.png` plus `maps/index.ts`
+Then decide whether Pokémon sprites need fetching. The sprite folder is `Game.pokemonAssetFolder ?? Game.version`. List the folders in `public/pokemon/`:
 
-### 2. `met-locations.ts` first
+- If that folder already exists, skip.
+- If it doesn't, run `npm run pokeapi:pokemon <game> --sprites`, where `<game>` is the game's `GameVersion` id.
+- If you are at all unsure, ask the user.
 
-Author the met-location table before any location file. It comes from a trusted static list (Bulbapedia's index list for the generation, as raw wikitext, or the decomp's location table for Gen 3), never from another game's table, and it is the source of truth for which places become Locations.
+## 5. Encounters
 
-- Keep only indices this game can produce (drop indices that debuted in a later version) and drop places that won't be modeled as Locations (shops, interiors, event-only spots). A save that carries a dropped index imports as `Unknown Location`.
-- Merge indices that are one place into a single name (e.g. several per-area indices of the same region).
-- Every remaining name must equal a `Location.name` exactly. If the list's name differs from what the app calls the place, ask which name to use.
+- **Vanilla:**
+    1. Add `src/lib/scripts/pokeapi/game-versions/<slug>.ts` exporting a `GameVersion` (shape: an existing file) and register it in `GAME_VERSIONS` in that folder's `index.ts`. `version` is the exact PokeAPI version slug.
+    2. Run `npm run pokeapi:encounters <slug>`. It writes `src/lib/data/<slug>/encounters/encounters.json`, already shaped like `Record<string, Encounter[]>` with `method` as a raw string.
+    3. Convert it to `encounters.ts` with a throwaway script: replace each `method` with `EncounterMethod.<PascalCase>`, wrap it as `export const ENCOUNTERS: Record<string, Encounter[]> = ...`, then `prettier --write`. Never hand-transcribe. Delete the JSON and the script.
+- **A hack:** PokeAPI doesn't cover it. Ask the user for the encounter source, record it in `ONBOARDING.md`, and author `encounters.ts` from it.
+- **Variants:** do this once per variant, each with its own `GameVersion` id and PokeAPI version slug, writing to that variant's `encounters.ts`.
 
-### 3. Encounter scraper config and encounters
+Once `encounters.ts` is populated:
 
-Vanilla games only. A hack has no PokeAPI coverage, so hand-author `encounters.ts` from its tracker per that game's `ONBOARDING.md`.
+1. Tell the user to manually filter out any `encountersKey` entries the game doesn't need, and wait for them to finish.
+2. Find the roaming Pokémon in the encounter data and set `Game.roamers` (`{ species, level }` per roamer). Omit the field when there are none. Never ask the user for roamers.
 
-1. Add `src/lib/scripts/pokeapi/game-versions/<slug>.ts` exporting a `GameVersion` (see an existing file for the shape and rationale of each field) and register it in that folder's `index.ts` `GAME_VERSIONS`.
-2. Run `npm run pokeapi:encounters <slug>`. This writes a raw `encounters/encounters.json`, which is already shaped like `Record<string, Encounter[]>` with `method` as a raw string (the enum's underlying value). Convert it mechanically with a throwaway Node script that swaps in `EncounterMethod.<PascalCase>`, wraps the boilerplate, then `prettier --write`. Never hand-transcribe.
+## 6. Make the game displayable
 
-Every codegen/fetch script (`pokeapi:*`, `gen:*`) takes the target game as its first CLI argument.
+1. Find which `encountersKey` holds the `Starter` encounters in `encounters.ts`, work out which location it is, and suggest it to the user. Wait for confirmation.
+2. Wire only that location: a `Location` whose map is the inline placeholder `{ src: 'data:image/gif;base64,R0lGODlhAQABAAAAACw=', height: 1, width: 1 }` (no file), with `mapAnchor: MapAnchor.Center` and its `encountersKey`. Add it to `locations.ts` and to one split. Ask the user for the split's name. Set the split's `saveCondition` to the placeholder `{ type: 'badge', bit: -1 }`; step 10 replaces it. Set `Game.starters` to the species of the `Starter` encounters.
+3. Ask the user for `wipeMessages` (`[]` is valid). Assemble the `Game` in `<slug>.ts` with every required field. `genders` is `{ male: '/trainers/<trainerAssetFolder>/<male file>.png', female: '/trainers/<trainerAssetFolder>/<female file>.png' }`, from the step 3 sprites.
+4. Register the game. For a variant group, do this for each variant:
+    - Add a member to `GameName`, and to `GameVersionGroup`, `BadgeAssetFolder` and `TrainerAssetFolder` when the value is new.
+    - Add the game to `GAMES` and its slug to `GAME_LOADERS` in `RunPageLoader.tsx`.
 
-### 4. Locations
+## 7. Met-locations table
 
-Create one `Location` per met-table name, in the order the user gives. A place the met index doesn't cover (gyms, Elite Four and champion rooms, and similar) is added only when the user directs.
+Fill `met-locations.ts` before creating any other location. It decides which places become Locations.
 
-1. Put the PNG at `maps/<map-slug>.png`, then run `npm run gen:location <slug> <map> [name] [subareaName]`. It wires `maps/index.ts` and creates/updates `locations/<name>.ts`.
-2. **Add the location to `locations.ts`.** `gen:location` doesn't, and `check:data` fails on an unlisted file. In a variant group, shared locations live in the shared folder's `locations.ts` and a version-exclusive location is appended in that variant's own `<variant>.ts` (`locations: [...LOCATIONS, VERSION_ONLY]`).
-3. Add every met-less location to that game's `unmappedLocations` (step 10).
+1. **Source:** a trusted static list, never another game's table. Vanilla: Bulbapedia's met-location index for the generation (raw wikitext, fetched with `curl --compressed web.archive.org/web/2026id_/<bulbapedia url>`), or the decomp's location table for Gen 3. Hack: ask the user for its source.
+2. **Trim:** always show the user the full list and ask which entries to drop. Suggest places that can't be reached in the main game and indices this game can't produce; shops and interiors are kept. A save that carries a dropped index imports as `Unknown Location`.
+3. **Merge:** always ask the user which indices are one place and should become a single name.
+4. Every remaining name must equal the `Location.name` it will get. If the list's name differs from what the app calls the place, ask the user which to use.
+5. Write the result as `MET_LOCATIONS: Record<number, string>`, index to name.
 
-### 5. Battles
+## 8. Locations and maps
 
-`npm run gen:battle <slug> <location> [subarea] [flags]` adds placement and metadata to the location file. Trainer data (team, AI flags) is hand-authored in `battles.ts` under the generated `battleKey`. Set every `BattleData.split` to the game's first split as a placeholder until step 8.
+Create one `Location` per met-table name, one at a time. Wire each fully before prompting the user for the next location's name.
 
-- **With an external trainer source** (always true for a hack), population is a collaborative location-by-location loop. The user supplies each location's trainer names in order, each one's IVs, and each one's `BattleMetadata`; map those to the source (team, ability, nature, moves, AI flags), state exactly what was parsed and get it confirmed before writing, then wire the `battleKey`s into the location's `battles: []` in the user's order.
-- **`battleKey` convention:** `<trainer-class-slug>-<name>` for named individuals; `<trainer-class-slug>-<number>` (with `name` set to that number as a string) for anonymous repeated trainers such as faction grunts. Don't invent location-based keys. A tag battle's `secondTrainer` reuses the primary's `name`. Check any existing game's `battles.ts` for the convention; that's app structure, not game data.
-- **Never guess, and never scaffold a placeholder for:** x/y placement (a `0, 0` entry isn't scaffolded yet, so stop and ask); which named trainer is at a location and in what order; a `BattlePokemon`'s `gender` when the source doesn't state it (omitting it renders as genderless, which is wrong for nearly every species).
-- **IVs:** for a vanilla game, derive from that game's own primary source, never from the user or back-solved from stats (ambiguous at low levels; use only as a cross-check). If no derivation path is documented for that generation, research and document one rather than asking the user. For a hack, IVs come from its tracker; if the tracker doesn't clearly cover a team member, ask.
-- **A roster or battle that varies by run state:** see "Divergent teams and battles" before authoring.
+1. The user puts that location's screenshots on the Desktop, named `<map-slug>.png`, `<map-slug>-<col>.png` or `<map-slug>-<row>-<col>.png`. A location with several floors or areas uses one map slug each, e.g. `<location>-1f`.
+2. Run `npm run stitch-map -- <slug> <map-slug>`. Read the result only to check for dead space. Never inspect seams.
+3. Ask the user for the `mapAnchor`. Export the map from `maps/index.ts`, alphabetically, and create `locations/<name>.ts` with the map (or `subareas`, one per map slug) and the anchor. `Location.name` must equal the met-table name exactly.
+4. Add the location to `locations.ts`; `check:data` fails on an unlisted file. In a variant group, shared locations go in the shared `locations.ts`, and a version-exclusive one is appended in that variant's file (`locations: [...LOCATIONS, VERSION_ONLY]`).
+5. Delete the Desktop screenshots.
 
-### 6. Trainer classes
+- Never add a location to a split's `locations` unless the user says to.
+- A place with no met entry (gyms, Elite Four rooms, and the like) becomes a Location only when the user directs. Add its name to `unmappedLocations` in the game's `GAME_CHECK_CONFIGS` entry.
+- The starter location from step 6 gets its real map the same way, replacing the placeholder.
 
-If a battle references a class missing from `src/lib/data/trainer-classes.ts`, run `npm run gen:trainer-class <folder> <classSlug> <displayName> [spriteSlug]` (the sprite must already be at `public/trainers/<folder>/<classSlug>.png`; `<folder>` is the game's `trainerAssetFolder`). The file is shared across all games, so check it first and add only classes that are genuinely new. The battle-items dataset and `DANGEROUS_ITEMS`/`DANGEROUS_ABILITIES` are also global and need work only for a new item or ability the fetch scripts don't cover.
+## 9. Trainer classes
 
-### 7. Splits and `saveCondition`
+1. From the trainer source (see step 11), list every trainer class the game uses.
+2. `src/lib/data/trainer-classes.ts` is shared across all games. Add only classes that are missing from it.
+3. Every class the game uses needs `public/trainers/<trainerAssetFolder>/<spriteSlug>.png`. Tell the user which sprites are missing from that folder and wait for them.
+4. For each new class, run `npm run gen:trainer-class <folder> <classSlug> <displayName> [spriteSlug]`, where `<folder>` is the game's `trainerAssetFolder`.
 
-Author `splits/*.ts` by hand (no generator; they encode judgment). `Split.locations` lists only the locations the player is required to go through for that split, curated by the user (see `.claude/docs/split-location-wiring.md`). It need not list every location: the Locations tab shows all of `Game.locations`. Every split needs a `saveCondition`; see "Deriving a `saveCondition`".
+## 10. Splits
 
-### 8. Assign splits (per location, as it's onboarded)
+1. Ask the user for the ordered list of splits (name per split). The step 6 split is the first.
+2. Write one `splits/<name>.ts` per split and list them in order in `Game.splits`. A split's `locations` stays empty unless the user says to add a location.
+3. Set each split's `saveCondition`, replacing the step 6 placeholder:
+    - A split ending at a gym is `{ type: 'badge', bit: N }`. The champion split is `{ type: 'gameClear' }`. For any other split, ask the user.
+    - Never take a bit from split order, gym number, or another game. Derive `N` from the game's own decomp in two steps: (a) the badge's bit index from the constants file (the line position is the bit, e.g. `include/constants/badge.h`); (b) which badge that gym's leader grants, from a source naming the gym (its gym-features file, or a badge-gated field-move check cross-referenced with Bulbapedia's HM table). Never guess the gym from the badge name.
+    - If the decomp has no gym-specific source, or the game has no trusted decomp, ask the user.
+4. Tell the user which badge files are needed, `public/badges/<badgeAssetFolder>/<split-slug>.png` per split, and wait for them.
 
-Splits are decided while each location is wired, never in a later pass. Once a location's battles and encounters exist, ask the user for:
+## 11. Battles
 
-1. Each subarea's base split. A subarea has one split; only rare battles or encounter methods differ from it.
-2. The exceptions: individual battles (`BattleData.split`, tag partners included) and methods that become available in a different split than the base (for example, surf in a later split than the area's base).
+Work one location at a time, in alphabetical order. Wire each location's battles fully before moving on.
 
-`BattleData.split` and `Location`/`Subarea` `methodSplits` (one `{ method, split }` per encounter method) record the split each first becomes available in. Write them from the user's answer. Never infer one from location membership, sheet text, or geography, and never leave a first-split placeholder to fix later. `npm run check:data` fails any encounter method without a split. Never add a location to a split's `locations` list unless the user says to: "it's in the X split" means its battle and method splits only. A game-specific gating rule (for example, a move or item that unlocks surf or fishing in a later split) applies only once the user has stated it for that game, and then to every location without asking again.
+1. Fetch the location's trainers in order from the trainer source. Vanilla: Bulbapedia's raw wikitext for that game's section, via the Wayback URL (`curl --compressed web.archive.org/web/2026id_/<url>`). Pages stack several games' tables, so confirm which section you're reading. Hack: its own battle source. If a floor or room label is missing, ask the user instead of guessing.
+2. Ask the user for each battle's `BattleMetadata`. Never infer metadata or battle structure (Tag, Double, BackToBack) from source text; report what the source says and ask how to model it.
+3. Look each trainer up in the game's trainer data and read team, species, level, moves, held item, ability, nature and gender. IVs follow the `battle-ivs` skill. State exactly what you parsed and get the user's confirmation before writing. Never guess a value; a missing or ambiguous one is a question for the user. `gender` is never omitted for a species that has one.
+4. Add each battle to `battles.ts` under its `battleKey`: `<trainer-class-slug>-<name>` for a named trainer, or `<trainer-class-slug>-<number>` (with `name` set to the number as a string) for repeated anonymous trainers. Ask the user for each battle's `split`.
+5. Add the battle to the location's `battles: []` with its `battleKey` and `x`/`y`, following the `battle-marker-placement` skill.
+6. A roster that varies by run state (starter-dependent) is one battle with several `teams`, each with a `condition`. A different trainer or position by gender or game is a separate `Battle` entry with `gender` or `game` set.
 
-### 9. Assemble and register
+## 12. Method splits
 
-Assemble the `Game` in `<slug>.ts`: name, logo, generation, `version` (PokeAPI version-group slug), `dataSource`, `badgeAssetFolder`, `trainerAssetFolder`, `genders` (only if needed), `splits`, `locations`, starters, accentColor, encounters, battles, metLocationById, wipeMessages. Add `public/logos/<slug>.png` and the game to `GAMES`.
+Work one location at a time, in alphabetical order.
 
-- `version`, `badgeAssetFolder`, `trainerAssetFolder` are enums in `src/lib/static/enums.ts`: add a member for a genuinely new value, reuse one when sharing.
-- Registering makes the game selectable. `EncounterHelpers.getStarterLocationName` assumes every registered game has a wired location with a `Starter` encounter, so an empty `ENCOUNTERS` crashes "New". Land real encounter data first.
+1. Ask the user for each subarea's base split.
+2. Ask the user for the exceptions: encounter methods that first become available in a later split than the base (for example, surf).
+3. Write `methodSplits` on the `Location` or `Subarea`: one `{ method, split }` per encounter method the area has. Never infer a split from location membership, source text or geography. Never leave a placeholder.
+4. A gating rule the user states for the game (for example, a move or item that unlocks surf or fishing) applies to every location afterward without asking again.
 
-### 10. Validate
+## 13. Split assignment
 
-Run `npm run check:data`. It checks that every encounter method has a split, every split name is real, met-locations and locations correspond in both directions, and every file in `locations/` is listed in `locations.ts`. It runs in pre-commit for staged `src/lib/data/` files. For a new game, add an entry to `GAME_CHECK_CONFIGS` in `src/lib/scripts/validation/game-configs.ts`:
+Run only after step 12 is finished for every location. Work split by split, in `Game.splits` order:
 
-- `dataFolder`
-- `unmappedLocations`, the locations with no met entry
+1. Ask the user which locations belong in the split's `locations`. List the game's locations so they can choose.
+2. Write exactly the list the user gives, then move to the next split.
 
-## Sharing `public/` assets
+Never add a location to a split unprompted or infer membership. Per `.claude/docs/split-location-wiring.md`, a split lists only locations the player is required to go through.
 
-`public/` is organized by asset type, then game/variant (`pokemon/<variant>/`, `trainers/<folder>/`, `badges/<folder>/`; `box/`, `items/` are global). Never add a top-level `public/<game>/`. Badge and trainer sprites resolve through `Game.badgeAssetFolder` / `trainerAssetFolder`, so games with identical art can share a folder.
+## 14. Resources
 
-- The two fields are independent. Sharing one says nothing about the other (a real case: sibling games shared badge icons while a handful of trainer classes differed).
-- Never assume identical art from region or franchise knowledge. Diff every file by content hash and require zero differences before pointing at an existing folder (a name/count comparison once missed 3 of 81 differing files).
-- Pokémon sprites use literal per-species paths in `pokemon.json`, so sharing means reusing the path string. Only do that inside an established sharing relationship, after the same hash diff.
+Ask the user for the game's external resources (guides, resource packs, documentation). Write each as `{ text, description, url }` in `Game.resources`. Omit the field when there are none.
 
-## Divergent teams and battles
+## 15. Save parsing
 
-Two independent mechanisms; choose by what varies.
+Save import is per game, keyed by `Game.version`. Never copy another game's values unless the user confirms the layouts are identical.
 
-- **Same trainer and battle, different roster** (starter-dependent rival, randomized team pool): `BattleTeam[]` via `teams`, each `{ condition?: BattleTeamCondition; team }`. A team with no condition always applies, and every team that survives filtering renders. `BattleTeamCondition` is a discriminated union in `types.ts` (currently the `starter` variant); add a variant for a new kind of divergence, matching `SplitSaveCondition`'s shape.
-- **A different battle entirely** (different trainer or position, or a fight for one gender only): a separate `Battle` entry in the location's `battles: []` with its own `battleKey`/`BattleData`, restricted with `gender`. `BattleHelpers` battle-listing functions exclude the non-matching one automatically.
+1. Add the game's `Game.version` as a `case` in `SaveFileParser.parse` (`src/lib/parsers/SaveFileParser.ts`), under its generation's parsers. If the generation has no parsers in `src/lib/parsers/`, ask the user.
+2. Gen 4: add a `GEN4_SAVE_LAYOUTS` entry in `gen4-save-layouts.ts`, keyed by `Game.version`, with `generalBlockSize`, `storageBlockSize`, `partyOffset`, `genderOffset`, `badgeMaskOffset` and `mainStoryClearedOffset`. Derive the offsets from the game's decomp. If there is no decomp, ask the user.
+3. Gen 3: add the game's `GameVersionGroup` to `FLAG_SYS_GAME_CLEAR_BY_VERSION` in `Gen3SplitParser.ts`. Derive `FLAG_SYS_GAME_CLEAR` from the game's own decomp (`SYSTEM_FLAGS + 0x04`). If there is no decomp, ask the user.
+4. Ask the user to import a save for the game and report the result. Never start a dev server.
 
-Never use `Battle.gender` for a roster-only difference or `BattleTeamCondition` for a wholesale-different trainer. If a game has gender-dependent content, also set `Game.genders: { male, female }` (protagonist sprite paths for the gender-select modal); omit it otherwise.
+## 16. Cleanup
 
-## Deriving a `saveCondition`
+Delete everything onboarding brought in that the app doesn't use: cloned decomps, downloaded source files, raw JSON, throwaway scripts, and leftover screenshots on the Desktop. Keep `ONBOARDING.md`. Run `git status` and show the user any untracked path you are unsure about instead of deleting it.
 
-One coarse condition per split, resolved against a decrypted save by the generation's split parser (e.g. `Gen4SplitParser.ts`).
+## 17. Final validation
 
-- A split ending at a gym uses `{ type: 'badge', bit: N }`. The champion split uses `{ type: 'gameClear' }`, resolved against the save's story-cleared flag (already wired for Gen 4 via `Gen4SaveLayout.mainStoryClearedOffset`).
-- **Never assume a bit from split order, gym number, or another game's value**, even when the badge's identity is stable franchise knowledge (sibling games can reorder gyms without moving bits). Derive it from the game's own decomp in two steps: (1) the badge's bit index from the generated constants file (line position is the bit, e.g. `include/constants/badge.h`, `generated/badges.txt`); (2) which badge a specific gym leader grants, from a source that names that gym (its gym-features file, or a badge-gated field-move check cross-referenced with Bulbapedia's HM table). Don't guess a gym from a badge name alone.
-- If no gym-specific source exists, ask. A wrong bit silently marks the wrong split complete on import.
-- **A hack with no decomp:** decode real saves at different badge counts and check which bits flip. Until confirmed, record the bit as unverified in the game's status tracking; a `saveCondition` written from an assumption is worse than one left pending.
-
-## Variant games sharing a generation (e.g. Diamond & Pearl)
-
-Games that differ only in wild encounters share one data folder (reference: `src/lib/data/diamond-pearl/`):
-
-```
-src/lib/data/<shared-slug>/
-  battles.ts  met-locations.ts  locations.ts
-  locations/*.ts  splits/*.ts  maps/*.png + index.ts
-  <variant-a>/  encounters.ts  <variant-a>.ts  index.ts
-  <variant-b>/  encounters.ts  <variant-b>.ts  index.ts
-```
-
-- **Shared steps happen once** in the shared folder (steps 2 and 4-8); pass the shared slug to `gen:*`. **Encounters happen per variant** (step 3), each with its own `GameVersion` id and exact PokeAPI version slug, since encounter tables differ per version, not just per version group.
-- **Do encounters before scaffolding locations** (see the step 9 crash note).
-- `Game.version` must be identical across variants (movesets resolve per version group). It differs from the per-variant `GameVersion.version`, which is intentionally narrower.
-- Each variant has its own `logo`, `accentColor`, `public/logos/<slug>.png`, and its own `GAMES` entry. A version-exclusive location is appended by its variant (`locations: [...LOCATIONS, VERSION_ONLY]`).
-- **Sibling data is never assumed equal.** Verify shared data against a primary source. Sibling games can diverge in late-game areas, post-game content, gym order, trainer rosters, and even trainer positions on a shared map. "Locations are unchanged from game X" means the skeleton only (name, subareas, `encountersKey`), never `battles`. Don't guess a diverging split's order from general knowledge: propose one from the source game's split files and have the user confirm before fetching maps.
-- **Bootstrapping a scraper config from a sibling is a convenience, not verification.** Audit every `excludedLocations`, `methodOverrides`, and `manualEncounters` entry against PokeAPI directly. Script it: for each entry, fetch the location/areas and check whether any encounter is tagged with the new version. This separates real scope exclusions from dead weight.
-- **Partial population** (only when the user says so, e.g. "copy the mapping from Platinum, get the battle data from D/P's own data"): `battleKey`, `x`/`y`, `metadata`, `fieldCondition`, and `customWidth`/`customHeight` are layout scaffolding tied to the map image, so they may be copied from a same-map game's location file. Team, ability, nature, moves, gender, and IVs must still be derived from the target game's own sources, and copied markers and their `battles.ts` entries land together (`TrainerMarker` reads `game.battles[key].trainerClass` unguarded, so a marker without an entry crashes). Verify every copied `battleKey` resolves to a real trainer in the target game; roster identity can differ per marker slot even when the layout is identical.
-- **`encountersKey` values** (PokeAPI location-area slugs) are safe to copy verbatim from a same-region game; one area holds `version_details` for every version.
-- **After authoring locations, audit `encountersKey`s in both directions.** Every used key must resolve to encounters in each variant, and every key in `ENCOUNTERS` must be used by some location. A dead key isn't automatically a bug: confirm against Bulbapedia whether the content truly doesn't exist there, then omit the `encountersKey` (locations with no encounters omit the field). An unused key is either a genuine unmodeled location (build it) or out-of-scope content (move it to `excludedLocations`/`excludedAreas`); check each rather than assuming the comfortable answer. Re-run after any `excludedAreas` edit: a location left with one area collapses its key to the bare location slug.
-- **Verify where an encounter happens (especially the starter handoff)** by querying PokeAPI's `location-area/<slug>/` for the specific version before reaching for `manualEncounters`; a real location difference between siblings is legitimate.
-- **PokeAPI doesn't model trade-gated exclusivity** (version-exclusive fossils, starters). It tags both versions. Cross-check each species at a fossil/gift/trade location against Bulbapedia's availability table.
-
-## Map images
-
-- **Fetching:** check the source wiki's location page for per-version image files versus one shared file, per location. Pull raw wikitext and grep it; summarization tools miss real per-version files and mislabel shared ones. If an extracted section looks too short, re-run without the range restriction (a subsection heading may match your end-of-section pattern).
-- **Cropping a combined image into subareas** (the project has `sharp`; run from the project root): don't assume a 50/50 split. Composite maps are often asymmetric (L-shapes, transparent padding). Measure the real boundary by counting opaque pixels per row/column across the halves, where one side's count hits zero. Built-in trim helpers often silently no-op when the corner color is real content. Cross-check the result's dimensions against the same game's already-split maps, and always view the cropped output.
-- **Never rescale a map to match another game's version.** Marker size is a fixed pixel constant divided by the map's own intrinsic size, so this game's own map folder is the only valid resolution reference (native widths well into four figures are normal). Crop only, at native resolution, unless the specific asset is demonstrably anomalous.
+1. Set the game's `isEnabled` to `true` in `GAME_CHECK_CONFIGS`.
+2. Run `npm run check:data` and `npx tsc --noEmit`. Fix every violation; a violation that needs a decision is a question for the user.
+3. Update the game's row in the README's Supported Games table (a variant group is one row). Set its status to `Complete`; never ask.

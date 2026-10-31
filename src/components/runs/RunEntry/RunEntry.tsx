@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import ConfirmModal from '@/components/ConfirmModal/ConfirmModal';
-import GenderSelectModal from '@/components/GenderSelectModal/GenderSelectModal';
-import StarterSelectModal from '@/components/StarterSelectModal/StarterSelectModal';
+import ConfirmModal from '@/components/common/ConfirmModal/ConfirmModal';
+import GenderSelectModal from '@/components/common/GenderSelectModal/GenderSelectModal';
+import StarterSelectModal from '@/components/common/StarterSelectModal/StarterSelectModal';
 import BoxIcon from '@/lib/icons/BoxIcon';
 import CrownIcon from '@/lib/icons/CrownIcon';
 import RunIcon from '@/lib/icons/RunIcon';

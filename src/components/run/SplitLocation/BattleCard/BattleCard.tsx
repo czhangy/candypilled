@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import ConfirmModal from '@/components/common/ConfirmModal/ConfirmModal';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
-import ConfirmModal from '@/components/ConfirmModal/ConfirmModal';
 import EditIcon from '@/lib/icons/EditIcon';
 import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';

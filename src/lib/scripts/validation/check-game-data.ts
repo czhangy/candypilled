@@ -183,6 +183,14 @@ const checkGame = (game: Game): Report => {
         };
     }
 
+    if (!config.isEnabled) {
+        return {
+            title: game.name,
+            violations: [],
+            warnings: ['validation disabled, skipping all checks'],
+        };
+    }
+
     const hasMetTable = Object.keys(game.metLocationById).length > 0;
 
     return {
@@ -231,10 +239,10 @@ const checkGameData = async (): Promise<void> => {
 
     const gamesByFolder = new Map<string, Game[]>();
     games.forEach((game) => {
-        const folder = GAME_CHECK_CONFIGS[game.name]?.dataFolder;
-        if (folder) {
-            gamesByFolder.set(folder, [
-                ...(gamesByFolder.get(folder) ?? []),
+        const config = GAME_CHECK_CONFIGS[game.name];
+        if (config?.isEnabled) {
+            gamesByFolder.set(config.dataFolder, [
+                ...(gamesByFolder.get(config.dataFolder) ?? []),
                 game,
             ]);
         }

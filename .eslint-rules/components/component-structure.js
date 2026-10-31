@@ -10,6 +10,8 @@ module.exports = {
                 'Enforces directory naming and .module.scss naming conventions for component files.',
         },
         messages: {
+            topLevelComponent:
+                '"{{name}}" cannot sit directly in src/components. Shared components go in src/components/common.',
             wrongDirectory:
                 '"{{name}}.tsx" must be inside a directory named "{{name}}".',
             wrongScssName:
@@ -35,6 +37,22 @@ module.exports = {
                             data: { name: basename },
                         });
                     }
+                }
+
+                // src/components may only hold lowercase page directories,
+                // common/ and layout/. A PascalCase directory there is a
+                // shared component that belongs in common/.
+                const parent = path.dirname(dir);
+                if (
+                    path.basename(parent) === 'components' &&
+                    path.basename(path.dirname(parent)) === 'src' &&
+                    /^[A-Z]/.test(path.basename(dir))
+                ) {
+                    context.report({
+                        node,
+                        messageId: 'topLevelComponent',
+                        data: { name: path.basename(dir) },
+                    });
                 }
 
                 let siblings;

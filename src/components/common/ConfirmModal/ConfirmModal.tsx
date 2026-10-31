@@ -1,7 +1,7 @@
 'use client';
 
+import ConfirmActions from '@/components/common/ConfirmActions/ConfirmActions';
 import Modal from '@/components/common/Modal/Modal';
-import ConfirmActions from '@/components/ConfirmActions/ConfirmActions';
 import styles from './ConfirmModal.module.scss';
 
 type ConfirmModalProps = {

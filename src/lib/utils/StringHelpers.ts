@@ -37,24 +37,12 @@ export default class StringHelpers {
             .replace(/^-+|-+$/g, '');
     }
 
-    /** value in camelCase. */
-    static toCamelCase(value: string): string {
-        return StringHelpers.toSlug(value).replace(/-(.)/g, (_match, char) =>
-            char.toUpperCase()
-        );
-    }
-
     /** value in Title Case. */
     static toTitleCase(value: string): string {
         return StringHelpers.toSlug(value)
             .split('-')
             .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
             .join(' ');
-    }
-
-    /** value in CONSTANT_CASE. */
-    static toConstantCase(value: string): string {
-        return StringHelpers.toSlug(value).replace(/-/g, '_').toUpperCase();
     }
 
     /** value (1-10) as a Roman numeral. */
