@@ -23,7 +23,9 @@
 - `ComponentName/ComponentName.tsx`
 - `ComponentName/ComponentName.module.scss`
 
-Shared UI primitives live in `src/components/common/` (Modal, Dropdown, Accordion, Spinner, etc.).
+`src/components/common/` holds every component used by more than one page directory (e.g. `run/` and `runs/`), whether a primitive like Modal or a domain component like StarterSelectModal.
+
+**`src/components/` contains only `common/`, `layout/`, and lowercase page directories.** Never place a PascalCase component directory directly in it. A component used by more than one page directory goes in `common/`.
 
 **Page components** always live directly under `src/components/` in a lowercase directory named after the route segment — regardless of route depth:
 
@@ -41,7 +43,7 @@ src/components/
 
 **Domain directories** (`src/components/status/`, `src/components/career/`, etc.) exist only for shared child components used by pages in that feature area. They never contain page components.
 
-**Component co-location**: If a child component is only used by a single parent component, place its directory inside the parent's directory rather than as a sibling. Components used by multiple parents live at the nearest shared ancestor level.
+**Component co-location**: If a child component is only used by a single parent component, place its directory inside the parent's directory rather than as a sibling. Components used by multiple parents live at the nearest shared ancestor level, except that when the ancestor would be `src/components/` itself, they go in `common/`.
 
 **Component reuse**: When two components share the same markup structure and styles with only content differing, extract a shared component with props rather than duplicating. Thin wrapper components that only pass fixed props to a shared component do not need a `.module.scss` file.
 

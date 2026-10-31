@@ -11,18 +11,18 @@ const JAGGED_PASS: Location = {
     battles: [
         {
             battleKey: 'hiker-eric',
-            x: 28.13,
-            y: 39.52,
+            x: 28.33,
+            y: 39.88,
         },
         {
             battleKey: 'camper-ethan',
-            x: 54.58,
-            y: 48.35,
+            x: 55,
+            y: 48.57,
         },
         {
             battleKey: 'picnicker-diana',
-            x: 44.79,
-            y: 76.61,
+            x: 45,
+            y: 76.83,
         },
     ],
 };

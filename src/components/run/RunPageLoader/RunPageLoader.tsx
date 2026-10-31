@@ -31,11 +31,16 @@ const RunPageLoader: React.FC<RunPageLoaderProps> = ({ slug }) => {
     const GAME_LOADERS: Record<string, () => Promise<Game>> = {
         diamond: () =>
             import('@/lib/data/diamond-pearl/diamond').then((m) => m.default),
+        emerald: () => import('@/lib/data/emerald').then((m) => m.default),
         pearl: () =>
             import('@/lib/data/diamond-pearl/pearl').then((m) => m.default),
         platinum: () => import('@/lib/data/platinum').then((m) => m.default),
         'renegade-platinum': () =>
             import('@/lib/data/renegade-platinum').then((m) => m.default),
+        ruby: () =>
+            import('@/lib/data/ruby-sapphire/ruby').then((m) => m.default),
+        sapphire: () =>
+            import('@/lib/data/ruby-sapphire/sapphire').then((m) => m.default),
     };
 
     // -------------------------------------------------------------------------

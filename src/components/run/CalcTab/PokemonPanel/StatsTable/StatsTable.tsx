@@ -1,8 +1,7 @@
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import NumericInput from '@/components/common/NumericInput/NumericInput';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
-import RabbitIcon from '@/lib/icons/RabbitIcon';
-import SnailIcon from '@/lib/icons/SnailIcon';
+import ChevronIcon from '@/lib/icons/ChevronIcon';
 import {
     MAX_EV,
     MAX_IV,
@@ -102,7 +101,7 @@ const StatsTable: React.FC<StatsTableProps> = ({
                                                     ]
                                                 }
                                             >
-                                                <RabbitIcon />
+                                                <ChevronIcon />
                                             </Tooltip>
                                         </span>
                                     )}
@@ -117,7 +116,7 @@ const StatsTable: React.FC<StatsTableProps> = ({
                                                     ]
                                                 }
                                             >
-                                                <SnailIcon />
+                                                <ChevronIcon />
                                             </Tooltip>
                                         </span>
                                     )}

@@ -17,23 +17,23 @@ const ROUTE_102: Location = {
     battles: [
         {
             battleKey: 'youngster-calvin',
-            x: 66.88,
-            y: 71.59,
+            x: 67,
+            y: 71.72,
         },
         {
             battleKey: 'bug-catcher-rick',
-            x: 50.88,
-            y: 76.59,
+            x: 51,
+            y: 76.72,
         },
         {
             battleKey: 'youngster-allen',
-            x: 38.88,
-            y: 21.59,
+            x: 39,
+            y: 21.72,
         },
         {
             battleKey: 'lass-tiana',
-            x: 16.88,
-            y: 36.28,
+            x: 17,
+            y: 36.72,
         },
     ],
 };

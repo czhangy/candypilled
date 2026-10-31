@@ -16,16 +16,16 @@ const ROUTE_121: Location = {
         { method: EncounterMethod.Surf, split: 'Winona' },
     ],
     battles: [
-        { battleKey: 'hex-maniac-tammy', x: 14.3, y: 51.28 },
-        { battleKey: 'beauty-jessica', x: 28.13, y: 26.28 },
+        { battleKey: 'hex-maniac-tammy', x: 14.37, y: 51.72 },
+        { battleKey: 'beauty-jessica', x: 28.12, y: 26.72 },
         {
             battleKey: 'sr-and-jr-kate-and-joy',
             x: 50,
             y: 46.28,
             customWidth: GEN_3_TRUE_DOUBLE_WIDTH,
         },
-        { battleKey: 'gentleman-walter', x: 69.4, y: 41.28 },
-        { battleKey: 'pokefan-f-vanessa', x: 79.4, y: 26.28 },
+        { battleKey: 'gentleman-walter', x: 69.38, y: 41.72 },
+        { battleKey: 'pokefan-f-vanessa', x: 79.38, y: 26.72 },
     ],
 };
 

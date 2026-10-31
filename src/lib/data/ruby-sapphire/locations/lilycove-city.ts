@@ -20,14 +20,14 @@ const LILYCOVE_CITY: Location = {
         {
             battleKey: 'pkmn-trainer-may-lilycove',
             gender: 'male',
-            x: 34.3,
-            y: 17.94,
+            x: 34.38,
+            y: 18.36,
         },
         {
             battleKey: 'pkmn-trainer-brendan-lilycove',
             gender: 'female',
-            x: 34.3,
-            y: 17.94,
+            x: 34.38,
+            y: 18.36,
         },
     ],
 };

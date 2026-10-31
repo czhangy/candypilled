@@ -51,6 +51,7 @@
 
         .faster-icon,
         .slower-icon {
+            display: flex;
             position: absolute;
             right: 0.2rem;
             top: 0.2rem;
@@ -63,6 +64,10 @@
 
         .faster-icon {
             color: $red;
+
+            svg {
+                transform: rotate(180deg);
+            }
         }
 
         .slower-icon {

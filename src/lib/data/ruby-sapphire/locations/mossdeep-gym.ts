@@ -8,12 +8,12 @@ const MOSSDEEP_GYM: Location = {
     map: mossdeepGym,
     mapAnchor: MapAnchor.Bottom,
     battles: [
-        { battleKey: 'psychic-m-preston', x: 12.5, y: 80.76 },
-        { battleKey: 'psychic-f-maura', x: 47.5, y: 57.42 },
-        { battleKey: 'psychic-f-samantha', x: 57.5, y: 34.09 },
-        { battleKey: 'psychic-m-fritz', x: 87.19, y: 60.96 },
-        { battleKey: 'psychic-m-virgil', x: 2.19, y: 24.3 },
-        { battleKey: 'psychic-f-hannah', x: 21.88, y: 11.06 },
+        { battleKey: 'psychic-m-preston', x: 12.5, y: 81.15 },
+        { battleKey: 'psychic-f-maura', x: 47.5, y: 57.81 },
+        { battleKey: 'psychic-f-samantha', x: 57.5, y: 34.48 },
+        { battleKey: 'psychic-m-fritz', x: 87.5, y: 61.15 },
+        { battleKey: 'psychic-m-virgil', x: 2.5, y: 24.48 },
+        { battleKey: 'psychic-f-hannah', x: 22.5, y: 11.15 },
         {
             battleKey: 'leader-tate-and-liza',
             x: 44.69,

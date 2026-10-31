@@ -14,25 +14,25 @@ const PETALBURG_WOODS: Location = {
     battles: [
         {
             battleKey: 'bug-catcher-lyle',
-            x: 15.63,
-            y: 73.27,
+            x: 15.62,
+            y: 73.51,
         },
         {
             battleKey: 'team-magma-grunt-m-petalburg-woods',
             game: 'Ruby',
-            x: 55.08,
-            y: 46.22,
+            x: 55.21,
+            y: 46.2,
         },
         {
             battleKey: 'team-aqua-grunt-m-petalburg-woods',
             game: 'Sapphire',
-            x: 55.08,
-            y: 46.22,
+            x: 55.21,
+            y: 46.2,
         },
         {
             battleKey: 'bug-catcher-james',
-            x: 9.24,
-            y: 32.41,
+            x: 9.38,
+            y: 32.6,
         },
     ],
 };

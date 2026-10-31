@@ -12,13 +12,13 @@
 
 ## Supported Games
 
-| Game              | Status      |
-| ----------------- | ----------- |
-| Ruby & Sapphire   | Complete    |
-| Emerald           | In progress |
-| Diamond & Pearl   | Complete    |
-| Platinum          | Complete    |
-| Renegade Platinum | Complete    |
+| Game              | Status   |
+| ----------------- | -------- |
+| Ruby & Sapphire   | Complete |
+| Emerald           | Complete |
+| Diamond & Pearl   | Complete |
+| Platinum          | Complete |
+| Renegade Platinum | Complete |
 
 ## Tech Stack
 

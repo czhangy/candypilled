@@ -14,13 +14,13 @@ const ROUTE_127: Location = {
         { method: EncounterMethod.Surf, split: 'Winona' },
     ],
     battles: [
-        { battleKey: 'bird-keeper-byron', x: 15.63, y: 22.92 },
-        { battleKey: 'triathlete-swimmer-f-connor', x: 56.82, y: 55.39 },
-        { battleKey: 'fisherman-jonah', x: 66.8, y: 16.56 },
-        { battleKey: 'fisherman-roger', x: 65.63, y: 31.64 },
-        { battleKey: 'fisherman-henry', x: 80.55, y: 24.06 },
-        { battleKey: 'triathlete-swimmer-m-caleb', x: 23.05, y: 85.38 },
-        { battleKey: 'black-belt-koji', x: 79.3, y: 79.12 },
+        { battleKey: 'bird-keeper-byron', x: 15.62, y: 22.93 },
+        { battleKey: 'triathlete-swimmer-f-connor', x: 56.88, y: 55.43 },
+        { battleKey: 'fisherman-jonah', x: 66.88, y: 16.68 },
+        { battleKey: 'fisherman-roger', x: 65.62, y: 31.68 },
+        { battleKey: 'fisherman-henry', x: 80.62, y: 24.18 },
+        { battleKey: 'triathlete-swimmer-m-caleb', x: 23.12, y: 85.43 },
+        { battleKey: 'black-belt-koji', x: 79.38, y: 79.18 },
     ],
 };
 

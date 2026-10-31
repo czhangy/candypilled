@@ -6,7 +6,7 @@ const DRAKES_ROOM: Location = {
     name: "Drake's Room",
     map: pokemonLeagueDrakesRoom,
     mapAnchor: MapAnchor.Center,
-    battles: [{ battleKey: 'elite-four-drake', x: 50, y: 37.6 }],
+    battles: [{ battleKey: 'elite-four-drake', x: 50, y: 38.17 }],
 };
 
 export default DRAKES_ROOM;

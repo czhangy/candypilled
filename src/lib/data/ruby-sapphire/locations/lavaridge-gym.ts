@@ -12,33 +12,33 @@ const LAVARIDGE_GYM: Location = {
             battles: [
                 {
                     battleKey: 'kindler-cole',
-                    x: 94.89,
-                    y: 80.18,
+                    x: 95.45,
+                    y: 80.6,
                 },
                 {
                     battleKey: 'cooltrainer-m-zane',
                     x: 40.91,
-                    y: 71.84,
+                    y: 72.27,
                 },
                 {
                     battleKey: 'kindler-axle',
-                    x: 40.34,
-                    y: 50.75,
+                    x: 40.91,
+                    y: 51.43,
                 },
                 {
                     battleKey: 'battle-girl-sadie',
                     x: 4.55,
-                    y: 9.34,
+                    y: 9.77,
                 },
                 {
                     battleKey: 'kindler-andy',
-                    x: 58.52,
-                    y: 9.6,
+                    x: 59.09,
+                    y: 9.77,
                 },
                 {
                     battleKey: 'leader-flannery',
-                    x: 76.7,
-                    y: 42.68,
+                    x: 77.27,
+                    y: 43.1,
                 },
             ],
         },

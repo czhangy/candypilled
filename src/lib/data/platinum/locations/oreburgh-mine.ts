@@ -21,13 +21,13 @@ const OREBURGH_MINE: Location = {
             battles: [
                 {
                     battleKey: 'worker-colin',
-                    x: 26.6,
-                    y: 87.8,
+                    x: 26.66,
+                    y: 87.7,
                 },
                 {
                     battleKey: 'worker-mason',
-                    x: 83,
-                    y: 62.8,
+                    x: 82.91,
+                    y: 62.7,
                 },
             ],
         },

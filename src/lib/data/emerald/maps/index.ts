@@ -50,6 +50,8 @@ export { default as mirageTower2f } from './mirage-tower-2f.png';
 export { default as mirageTower3f } from './mirage-tower-3f.png';
 export { default as mirageTower4f } from './mirage-tower-4f.png';
 export { default as mossdeepCity } from './mossdeep-city.png';
+export { default as mossdeepCitySpaceCenter1f } from './mossdeep-city-space-center-1f.png';
+export { default as mossdeepCitySpaceCenter2f } from './mossdeep-city-space-center-2f.png';
 export { default as mossdeepGym } from './mossdeep-gym.png';
 export { default as mtChimneyPostLavaridge } from './mt-chimney-post-lavaridge.png';
 export { default as mtChimneyPreLavaridge } from './mt-chimney-pre-lavaridge.png';

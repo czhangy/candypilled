@@ -122,15 +122,28 @@ const CATEGORY_METADATA = [
     BattleMetadata.Choice,
 ];
 
-const checkBattleMetadata = (game: Game): string[] =>
-    Object.entries(game.battles).flatMap(([key, battle]) => {
-        const count = CATEGORY_METADATA.filter((value) =>
-            battle.metadata.includes(value)
-        ).length;
-        return count === 1
-            ? []
-            : `battle ${key}: needs exactly one of ${CATEGORY_METADATA.join('/')} metadata, has ${count}`;
-    });
+const getTagPartnerKeys = (game: Game): Set<string> =>
+    new Set(
+        game.locations.flatMap((location) =>
+            [location, ...(location.subareas ?? [])].flatMap((area) =>
+                (area.tagPartner ?? []).map((partner) => partner.battleKey)
+            )
+        )
+    );
+
+const checkBattleMetadata = (game: Game): string[] => {
+    const tagPartnerKeys = getTagPartnerKeys(game);
+    return Object.entries(game.battles)
+        .filter(([key]) => !tagPartnerKeys.has(key))
+        .flatMap(([key, battle]) => {
+            const count = CATEGORY_METADATA.filter((value) =>
+                battle.metadata.includes(value)
+            ).length;
+            return count === 1
+                ? []
+                : `battle ${key}: needs exactly one of ${CATEGORY_METADATA.join('/')} metadata, has ${count}`;
+        });
+};
 
 const checkMetLocations = (
     game: Game,
@@ -167,6 +180,14 @@ const checkGame = (game: Game): Report => {
             title: game.name,
             violations: ['no entry in GAME_CHECK_CONFIGS (game-configs.ts)'],
             warnings: [],
+        };
+    }
+
+    if (!config.isEnabled) {
+        return {
+            title: game.name,
+            violations: [],
+            warnings: ['validation disabled, skipping all checks'],
         };
     }
 
@@ -218,10 +239,10 @@ const checkGameData = async (): Promise<void> => {
 
     const gamesByFolder = new Map<string, Game[]>();
     games.forEach((game) => {
-        const folder = GAME_CHECK_CONFIGS[game.name]?.dataFolder;
-        if (folder) {
-            gamesByFolder.set(folder, [
-                ...(gamesByFolder.get(folder) ?? []),
+        const config = GAME_CHECK_CONFIGS[game.name];
+        if (config?.isEnabled) {
+            gamesByFolder.set(config.dataFolder, [
+                ...(gamesByFolder.get(config.dataFolder) ?? []),
                 game,
             ]);
         }

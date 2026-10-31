@@ -4,6 +4,8 @@ type GameCheckConfig = {
     // Locations that intentionally have no met-table entry (the met index
     // doesn't cover gyms, Elite Four rooms, or the champion's room).
     unmappedLocations: string[];
+    // False skips every check for a game still being onboarded.
+    isEnabled: boolean;
 };
 
 const HOENN_UNMAPPED_LOCATIONS = [
@@ -51,10 +53,12 @@ export const GAME_CHECK_CONFIGS: Record<string, GameCheckConfig> = {
     Ruby: {
         dataFolder: 'ruby-sapphire',
         unmappedLocations: HOENN_UNMAPPED_LOCATIONS,
+        isEnabled: true,
     },
     Sapphire: {
         dataFolder: 'ruby-sapphire',
         unmappedLocations: HOENN_UNMAPPED_LOCATIONS,
+        isEnabled: true,
     },
     Emerald: {
         dataFolder: 'emerald',
@@ -74,21 +78,26 @@ export const GAME_CHECK_CONFIGS: Record<string, GameCheckConfig> = {
             'Trick House',
             "Wallace's Room",
         ],
+        isEnabled: true,
     },
     Diamond: {
         dataFolder: 'diamond-pearl',
         unmappedLocations: DIAMOND_PEARL_UNMAPPED_LOCATIONS,
+        isEnabled: true,
     },
     Pearl: {
         dataFolder: 'diamond-pearl',
         unmappedLocations: DIAMOND_PEARL_UNMAPPED_LOCATIONS,
+        isEnabled: true,
     },
     Platinum: {
         dataFolder: 'platinum',
         unmappedLocations: SINNOH_UNMAPPED_LOCATIONS,
+        isEnabled: true,
     },
     'Renegade Platinum': {
         dataFolder: 'renegade-platinum',
         unmappedLocations: SINNOH_UNMAPPED_LOCATIONS,
+        isEnabled: true,
     },
 };

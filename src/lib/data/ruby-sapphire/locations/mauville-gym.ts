@@ -10,27 +10,27 @@ const MAUVILLE_GYM: Location = {
         {
             battleKey: 'guitarist-kirk',
             x: 25,
-            y: 72.66,
+            y: 73.07,
         },
         {
             battleKey: 'youngster-ben',
             x: 15,
-            y: 63.43,
+            y: 63.54,
         },
         {
             battleKey: 'guitarist-shawn',
             x: 65,
-            y: 44.08,
+            y: 44.49,
         },
         {
             battleKey: 'battle-girl-vivian',
-            x: 74.38,
-            y: 53.91,
+            x: 75,
+            y: 54.02,
         },
         {
             battleKey: 'leader-wattson',
-            x: 44.38,
-            y: 15.51,
+            x: 45,
+            y: 15.92,
         },
     ],
 };

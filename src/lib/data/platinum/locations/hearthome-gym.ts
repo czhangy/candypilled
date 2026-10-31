@@ -9,38 +9,38 @@ const HEARTHOME_GYM: Location = {
     battles: [
         {
             battleKey: 'lass-molly',
-            x: 35.7,
-            y: 74,
+            x: 35.66,
+            y: 73.98,
         },
         {
             battleKey: 'youngster-donny',
-            x: 60.7,
-            y: 74,
+            x: 60.66,
+            y: 73.98,
         },
         {
             battleKey: 'school-kid-f-mackenzie',
-            x: 21.4,
-            y: 49.9,
+            x: 21.37,
+            y: 49.87,
         },
         {
             battleKey: 'school-kid-m-chance',
-            x: 74.9,
-            y: 50.3,
+            x: 74.83,
+            y: 50.13,
         },
         {
             battleKey: 'ace-trainer-f-catherine',
-            x: 39.2,
-            y: 35.5,
+            x: 39.23,
+            y: 35.46,
         },
         {
             battleKey: 'ace-trainer-m-allen',
-            x: 67.7,
-            y: 37.2,
+            x: 67.8,
+            y: 37.12,
         },
         {
             battleKey: 'leader-fantina',
-            x: 49.9,
-            y: 17.4,
+            x: 49.94,
+            y: 17.47,
         },
     ],
 };

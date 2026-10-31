@@ -20,18 +20,18 @@ const ROUTE_118: Location = {
             battles: [
                 {
                     battleKey: 'aroma-lady-rose',
-                    x: 30.99,
-                    y: 51.29,
+                    x: 31.25,
+                    y: 51.72,
                 },
                 {
                     battleKey: 'fisherman-wade',
                     x: 60.42,
-                    y: 71.29,
+                    y: 71.72,
                 },
                 {
                     battleKey: 'guitarist-dalton',
                     x: 72.92,
-                    y: 56.29,
+                    y: 56.72,
                 },
             ],
         },
@@ -57,17 +57,17 @@ const ROUTE_118: Location = {
                 {
                     battleKey: 'fisherman-barny',
                     x: 27.68,
-                    y: 76.29,
+                    y: 76.72,
                 },
                 {
                     battleKey: 'bird-keeper-chester',
-                    x: 58.05,
-                    y: 36.6,
+                    x: 58.04,
+                    y: 36.72,
                 },
                 {
                     battleKey: 'bird-keeper-perry',
-                    x: 72.34,
-                    y: 51.29,
+                    x: 72.32,
+                    y: 51.72,
                 },
             ],
         },

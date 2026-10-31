@@ -20,17 +20,17 @@ const ROUTE_114: Location = {
         {
             battleKey: 'fisherman-nolan',
             x: 58.75,
-            y: 25.29,
+            y: 25.43,
         },
         {
             battleKey: 'fisherman-claude',
             x: 48.75,
-            y: 32.71,
+            y: 32.93,
         },
         {
             battleKey: 'picnicker-nancy',
-            x: 48.59,
-            y: 44.04,
+            x: 48.75,
+            y: 44.18,
         },
         {
             battleKey: 'sr-and-jr-tyra-and-ivy',
@@ -41,27 +41,27 @@ const ROUTE_114: Location = {
         {
             battleKey: 'camper-shane',
             x: 56.25,
-            y: 62.85,
+            y: 62.93,
         },
         {
             battleKey: 'poke-maniac-steve',
             x: 51.25,
-            y: 70.35,
+            y: 70.43,
         },
         {
             battleKey: 'kindler-bernie',
             x: 76.25,
-            y: 72.85,
+            y: 72.93,
         },
         {
             battleKey: 'hiker-lucas',
             x: 76.25,
-            y: 90.28,
+            y: 90.43,
         },
         {
             battleKey: 'hiker-lenny',
-            x: 38.59,
-            y: 81.61,
+            x: 38.75,
+            y: 81.68,
         },
     ],
 };

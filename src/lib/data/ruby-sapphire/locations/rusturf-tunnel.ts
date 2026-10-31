@@ -16,18 +16,18 @@ const RUSTURF_TUNNEL: Location = {
             battleKey: 'team-magma-grunt-m-rusturf-tunnel',
             game: 'Ruby',
             x: 40.28,
-            y: 21.92,
+            y: 22.27,
         },
         {
             battleKey: 'team-aqua-grunt-m-rusturf-tunnel',
             game: 'Sapphire',
             x: 40.28,
-            y: 21.92,
+            y: 22.27,
         },
         {
             battleKey: 'hiker-mike',
-            x: 90.1,
-            y: 55.25,
+            x: 90.28,
+            y: 55.6,
         },
     ],
 };

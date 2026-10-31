@@ -37,6 +37,13 @@ const EMERALD: Game = {
     encounters: ENCOUNTERS,
     battles: BATTLES,
     metLocationById: MET_LOCATIONS,
+    resources: [
+        {
+            text: 'Gen 3 AI',
+            description: 'Gen 3 AI documentation',
+            url: 'https://docs.google.com/document/u/0/d/13E61Jj4KwhIy3ZKgLjPY-_uWKWklfBR_zUlhZHUZqik/mobilebasic',
+        },
+    ],
     // Verified against Bulbapedia: Emerald's intro is the same
     // moving-truck arrival at Littleroot as Ruby/Sapphire's.
     wipeMessages: ['Truck.'],

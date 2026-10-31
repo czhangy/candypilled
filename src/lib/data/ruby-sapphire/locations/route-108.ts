@@ -16,23 +16,23 @@ const ROUTE_108: Location = {
     battles: [
         {
             battleKey: 'swimmer-m-jerome',
-            x: 29.06,
-            y: 66.57,
+            x: 29.17,
+            y: 66.72,
         },
         {
             battleKey: 'swimmer-f-tara',
-            x: 14.06,
-            y: 31.88,
+            x: 14.17,
+            y: 31.72,
         },
         {
             battleKey: 'swimmer-m-matthew',
-            x: 84.06,
-            y: 51.88,
+            x: 84.17,
+            y: 51.72,
         },
         {
             battleKey: 'swimmer-f-missy',
             x: 60.83,
-            y: 61.57,
+            y: 61.72,
         },
     ],
 };

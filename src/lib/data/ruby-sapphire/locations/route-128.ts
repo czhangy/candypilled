@@ -14,11 +14,11 @@ const ROUTE_128: Location = {
         { method: EncounterMethod.Surf, split: 'Winona' },
     ],
     battles: [
-        { battleKey: 'cooltrainer-m-ruben', x: 20.38, y: 20.82 },
-        { battleKey: 'cooltrainer-f-alexa', x: 39.55, y: 23.16 },
-        { battleKey: 'fisherman-wayne', x: 52.88, y: 70.79 },
-        { battleKey: 'triathlete-swimmer-m-isaiah', x: 64.56, y: 60.55 },
-        { battleKey: 'triathlete-swimmer-f-katelyn', x: 29.53, y: 85.82 },
+        { battleKey: 'cooltrainer-m-ruben', x: 20.42, y: 20.86 },
+        { battleKey: 'cooltrainer-f-alexa', x: 39.58, y: 23.36 },
+        { battleKey: 'fisherman-wayne', x: 52.92, y: 70.86 },
+        { battleKey: 'triathlete-swimmer-m-isaiah', x: 64.58, y: 60.86 },
+        { battleKey: 'triathlete-swimmer-f-katelyn', x: 29.58, y: 85.86 },
     ],
 };
 

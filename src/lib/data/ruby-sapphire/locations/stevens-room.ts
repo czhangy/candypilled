@@ -6,7 +6,7 @@ const STEVENS_ROOM: Location = {
     name: "Steven's Room",
     map: pokemonLeagueChampionsRoom,
     mapAnchor: MapAnchor.Center,
-    battles: [{ battleKey: 'champion-steven', x: 49.52, y: 40.59 }],
+    battles: [{ battleKey: 'champion-steven', x: 50, y: 41.11 }],
 };
 
 export default STEVENS_ROOM;

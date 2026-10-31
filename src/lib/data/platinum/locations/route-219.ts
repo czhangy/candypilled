@@ -15,13 +15,13 @@ const ROUTE_219: Location = {
     battles: [
         {
             battleKey: 'tuber-m-trenton',
-            x: 35.9,
-            y: 72.4,
+            x: 36.04,
+            y: 72.07,
         },
         {
             battleKey: 'tuber-f-mariel',
-            x: 51.8,
-            y: 72.4,
+            x: 51.66,
+            y: 72.07,
         },
     ],
 };

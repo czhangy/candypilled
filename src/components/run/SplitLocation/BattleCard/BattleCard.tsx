@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import ConfirmModal from '@/components/common/ConfirmModal/ConfirmModal';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
-import ConfirmModal from '@/components/ConfirmModal/ConfirmModal';
 import EditIcon from '@/lib/icons/EditIcon';
 import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
@@ -132,15 +132,15 @@ const BattleCard: React.FC<BattleCardProps> = ({
                     >
                         {BattleHelpers.getFullName(battle, game)}
                     </button>
-                    <button
-                        aria-label="Add notes"
-                        className={styles['notes-button']}
-                        onClick={handleNotesButtonClick}
-                        type="button"
-                    >
-                        <EditIcon />
-                    </button>
                 </div>
+                <button
+                    aria-label="Add notes"
+                    className={styles['notes-button']}
+                    onClick={handleNotesButtonClick}
+                    type="button"
+                >
+                    <EditIcon />
+                </button>
             </div>
             {isNotesModalOpen && (
                 <BattleNotesModal
@@ -163,6 +163,10 @@ const BattleCard: React.FC<BattleCardProps> = ({
             <div className={styles.body}>
                 {rows.map((row, rowIndex) => {
                     const isLastRow = rowIndex === rows.length - 1;
+                    const handleRowWipeClick =
+                        rowIndex === 0 && onWipeBattle
+                            ? handleWipeButtonClick
+                            : undefined;
                     const position = !isStacked
                         ? 'single'
                         : isLastRow
@@ -183,11 +187,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                     isStacked={isStacked}
                                     items={row.items}
                                     metadata={metadata}
-                                    onWipeClick={
-                                        onWipeBattle
-                                            ? handleWipeButtonClick
-                                            : undefined
-                                    }
+                                    onWipeClick={handleRowWipeClick}
                                     trainerAssetFolder={game.trainerAssetFolder}
                                     trainerClass={row.trainerClass}
                                     trainerName={row.name}
@@ -198,6 +198,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                         row.trainerClass,
                                         row.name
                                     )}
+                                    onWipeClick={handleRowWipeClick}
                                     position={rowIndex === 0 ? 'top' : 'middle'}
                                     trainerAssetFolder={game.trainerAssetFolder}
                                     trainerClass={row.trainerClass}

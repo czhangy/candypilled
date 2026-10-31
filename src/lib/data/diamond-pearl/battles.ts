@@ -645,7 +645,7 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'pkmn-trainer-dawn-jubilife-city-tag': {
-        metadata: [BattleMetadata.Required],
+        metadata: [],
         split: 'Gardenia',
         trainerClass: 'pkmn-trainer-dawn',
         name: 'Dawn',
@@ -695,7 +695,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-trainer-lucas-jubilife-city-tag': {
-        metadata: [BattleMetadata.Required],
+        metadata: [],
         split: 'Gardenia',
         trainerClass: 'pkmn-trainer-lucas',
         name: 'Lucas',
@@ -1262,7 +1262,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Eterna Forest Interior.
     'pkmn-trainer-cheryl-tag': {
-        metadata: [BattleMetadata.Required],
+        metadata: [],
         split: 'Gardenia',
         trainerClass: 'pkmn-trainer-cheryl',
         name: 'Cheryl',
@@ -2761,7 +2761,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     // Wayward Cave 1F.
     'pkmn-trainer-mira-tag': {
-        metadata: [BattleMetadata.Required],
+        metadata: [],
         split: 'Maylene',
         trainerClass: 'pkmn-trainer-mira',
         name: 'Mira',
@@ -6720,7 +6720,7 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'pkmn-trainer-dawn-veilstone-city-tag': {
-        metadata: [BattleMetadata.Required],
+        metadata: [],
         split: 'Wake',
         trainerClass: 'pkmn-trainer-dawn',
         name: 'Dawn',
@@ -6844,7 +6844,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-trainer-lucas-veilstone-city-tag': {
-        metadata: [BattleMetadata.Required],
+        metadata: [],
         split: 'Wake',
         trainerClass: 'pkmn-trainer-lucas',
         name: 'Lucas',
@@ -9620,7 +9620,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'pkmn-trainer-riley-tag': {
-        metadata: [BattleMetadata.Required],
+        metadata: [],
         split: 'Byron',
         trainerClass: 'pkmn-trainer-riley',
         name: 'Riley',
@@ -12475,7 +12475,7 @@ export const BATTLES: Record<string, BattleData> = {
         },
     },
     'pkmn-trainer-barry-spear-pillar-tag': {
-        metadata: [BattleMetadata.Required],
+        metadata: [],
         split: 'Volkner',
         trainerClass: 'pkmn-trainer-barry',
         name: 'Barry',

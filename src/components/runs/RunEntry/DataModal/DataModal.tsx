@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import ConfirmActions from '@/components/common/ConfirmActions/ConfirmActions';
 import ImportSaveForm from '@/components/common/ImportSaveForm/ImportSaveForm';
 import Modal from '@/components/common/Modal/Modal';
 import Tabs from '@/components/common/Tabs/Tabs';
-import ConfirmActions from '@/components/ConfirmActions/ConfirmActions';
 import { CaughtPokemon, Game } from '@/lib/static/types';
 import styles from './DataModal.module.scss';
 

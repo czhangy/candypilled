@@ -1,11 +1,14 @@
 import AARONS_ROOM from '@/lib/data/platinum/locations/aarons-room';
 import ACUITY_CAVERN from '@/lib/data/platinum/locations/acuity-cavern';
 import ACUITY_LAKEFRONT from '@/lib/data/platinum/locations/acuity-lakefront';
+import AMITY_SQUARE from '@/lib/data/platinum/locations/amity-square';
 import BERTHAS_ROOM from '@/lib/data/platinum/locations/berthas-room';
 import CAFE_CABIN from '@/lib/data/platinum/locations/cafe-cabin';
 import CANALAVE_CITY from '@/lib/data/platinum/locations/canalave-city';
 import CANALAVE_GYM from '@/lib/data/platinum/locations/canalave-gym';
+import CANALAVE_LIBRARY from '@/lib/data/platinum/locations/canalave-library';
 import CELESTIC_TOWN from '@/lib/data/platinum/locations/celestic-town';
+import CONTEST_HALL from '@/lib/data/platinum/locations/contest-hall';
 import CYCLE_SHOP from '@/lib/data/platinum/locations/cycle-shop';
 import CYNTHIAS_ROOM from '@/lib/data/platinum/locations/cynthias-room';
 import DISTORTION_WORLD from '@/lib/data/platinum/locations/distortion-world';
@@ -15,13 +18,19 @@ import ETERNA_GYM from '@/lib/data/platinum/locations/eterna-gym';
 import FLINTS_ROOM from '@/lib/data/platinum/locations/flints-room';
 import FLOAROMA_MEADOW from '@/lib/data/platinum/locations/floaroma-meadow';
 import FLOAROMA_TOWN from '@/lib/data/platinum/locations/floaroma-town';
+import FLOWER_SHOP from '@/lib/data/platinum/locations/flower-shop';
+import FOOTSTEP_HOUSE from '@/lib/data/platinum/locations/footstep-house';
+import FOREIGN_BUILDING from '@/lib/data/platinum/locations/foreign-building';
 import FUEGO_IRONWORKS from '@/lib/data/platinum/locations/fuego-ironworks';
 import GALACTIC_HQ from '@/lib/data/platinum/locations/galactic-hq';
+import GAME_CORNER from '@/lib/data/platinum/locations/game-corner';
+import GLOBAL_TERMINAL from '@/lib/data/platinum/locations/global-terminal';
 import GREAT_MARSH from '@/lib/data/platinum/locations/great-marsh';
 import HEARTHOME_CITY from '@/lib/data/platinum/locations/hearthome-city';
 import HEARTHOME_GYM from '@/lib/data/platinum/locations/hearthome-gym';
 import IRON_ISLAND from '@/lib/data/platinum/locations/iron-island';
 import JUBILIFE_CITY from '@/lib/data/platinum/locations/jubilife-city';
+import JUBILIFE_TV from '@/lib/data/platinum/locations/jubilife-tv';
 import LAKE_ACUITY from '@/lib/data/platinum/locations/lake-acuity';
 import LAKE_VALOR from '@/lib/data/platinum/locations/lake-valor';
 import LAKE_VERITY from '@/lib/data/platinum/locations/lake-verity';
@@ -35,8 +44,11 @@ import OREBURGH_GYM from '@/lib/data/platinum/locations/oreburgh-gym';
 import OREBURGH_MINE from '@/lib/data/platinum/locations/oreburgh-mine';
 import PASTORIA_CITY from '@/lib/data/platinum/locations/pastoria-city';
 import PASTORIA_GYM from '@/lib/data/platinum/locations/pastoria-gym';
+import POFFIN_HOUSE from '@/lib/data/platinum/locations/poffin-house';
+import POKEMON_DAY_CARE from '@/lib/data/platinum/locations/pokemon-day-care';
 import POKEMON_LEAGUE from '@/lib/data/platinum/locations/pokemon-league';
 import POKEMON_MANSION from '@/lib/data/platinum/locations/pokemon-mansion';
+import POKETCH_CO from '@/lib/data/platinum/locations/poketch-co';
 import RAVAGED_PATH from '@/lib/data/platinum/locations/ravaged-path';
 import ROUTE_201 from '@/lib/data/platinum/locations/route-201';
 import ROUTE_202 from '@/lib/data/platinum/locations/route-202';
@@ -64,6 +76,7 @@ import ROUTE_223 from '@/lib/data/platinum/locations/route-223';
 import RUIN_MANIAC_CAVE from '@/lib/data/platinum/locations/ruin-maniac-cave';
 import SANDGEM_TOWN from '@/lib/data/platinum/locations/sandgem-town';
 import SENDOFF_SPRING from '@/lib/data/platinum/locations/sendoff-spring';
+import SEVEN_STARS_RESTAURANT from '@/lib/data/platinum/locations/seven-stars-restaurant';
 import SNOWPOINT_CITY from '@/lib/data/platinum/locations/snowpoint-city';
 import SNOWPOINT_GYM from '@/lib/data/platinum/locations/snowpoint-gym';
 import SOLACEON_RUINS from '@/lib/data/platinum/locations/solaceon-ruins';
@@ -71,6 +84,7 @@ import SOLACEON_TOWN from '@/lib/data/platinum/locations/solaceon-town';
 import SPEAR_PILLAR from '@/lib/data/platinum/locations/spear-pillar';
 import SUNYSHORE_CITY from '@/lib/data/platinum/locations/sunyshore-city';
 import SUNYSHORE_GYM from '@/lib/data/platinum/locations/sunyshore-gym';
+import SUNYSHORE_MARKET from '@/lib/data/platinum/locations/sunyshore-market';
 import TEAM_GALACTIC_ETERNA_BUILDING from '@/lib/data/platinum/locations/team-galactic-eterna-building';
 import TRAINERS_SCHOOL from '@/lib/data/platinum/locations/trainers-school';
 import TROPHY_GARDEN from '@/lib/data/platinum/locations/trophy-garden';
@@ -80,6 +94,7 @@ import VALOR_CAVERN from '@/lib/data/platinum/locations/valor-cavern';
 import VALOR_LAKEFRONT from '@/lib/data/platinum/locations/valor-lakefront';
 import VEILSTONE_CITY from '@/lib/data/platinum/locations/veilstone-city';
 import VEILSTONE_GYM from '@/lib/data/platinum/locations/veilstone-gym';
+import VEILSTONE_STORE from '@/lib/data/platinum/locations/veilstone-store';
 import VERITY_CAVERN from '@/lib/data/platinum/locations/verity-cavern';
 import VERITY_LAKEFRONT from '@/lib/data/platinum/locations/verity-lakefront';
 import VICTORY_ROAD from '@/lib/data/platinum/locations/victory-road';
@@ -92,11 +107,14 @@ export const LOCATIONS: Location[] = [
     AARONS_ROOM,
     ACUITY_CAVERN,
     ACUITY_LAKEFRONT,
+    AMITY_SQUARE,
     BERTHAS_ROOM,
     CAFE_CABIN,
     CANALAVE_CITY,
     CANALAVE_GYM,
+    CANALAVE_LIBRARY,
     CELESTIC_TOWN,
+    CONTEST_HALL,
     CYCLE_SHOP,
     CYNTHIAS_ROOM,
     DISTORTION_WORLD,
@@ -106,13 +124,19 @@ export const LOCATIONS: Location[] = [
     FLINTS_ROOM,
     FLOAROMA_MEADOW,
     FLOAROMA_TOWN,
+    FLOWER_SHOP,
+    FOOTSTEP_HOUSE,
+    FOREIGN_BUILDING,
     FUEGO_IRONWORKS,
     GALACTIC_HQ,
+    GAME_CORNER,
+    GLOBAL_TERMINAL,
     GREAT_MARSH,
     HEARTHOME_CITY,
     HEARTHOME_GYM,
     IRON_ISLAND,
     JUBILIFE_CITY,
+    JUBILIFE_TV,
     LAKE_ACUITY,
     LAKE_VALOR,
     LAKE_VERITY,
@@ -126,8 +150,11 @@ export const LOCATIONS: Location[] = [
     OREBURGH_MINE,
     PASTORIA_CITY,
     PASTORIA_GYM,
+    POFFIN_HOUSE,
+    POKEMON_DAY_CARE,
     POKEMON_LEAGUE,
     POKEMON_MANSION,
+    POKETCH_CO,
     RAVAGED_PATH,
     ROUTE_201,
     ROUTE_202,
@@ -155,6 +182,7 @@ export const LOCATIONS: Location[] = [
     RUIN_MANIAC_CAVE,
     SANDGEM_TOWN,
     SENDOFF_SPRING,
+    SEVEN_STARS_RESTAURANT,
     SNOWPOINT_CITY,
     SNOWPOINT_GYM,
     SOLACEON_RUINS,
@@ -162,6 +190,7 @@ export const LOCATIONS: Location[] = [
     SPEAR_PILLAR,
     SUNYSHORE_CITY,
     SUNYSHORE_GYM,
+    SUNYSHORE_MARKET,
     TEAM_GALACTIC_ETERNA_BUILDING,
     TRAINERS_SCHOOL,
     TROPHY_GARDEN,
@@ -171,6 +200,7 @@ export const LOCATIONS: Location[] = [
     VALOR_LAKEFRONT,
     VEILSTONE_CITY,
     VEILSTONE_GYM,
+    VEILSTONE_STORE,
     VERITY_CAVERN,
     VERITY_LAKEFRONT,
     VICTORY_ROAD,

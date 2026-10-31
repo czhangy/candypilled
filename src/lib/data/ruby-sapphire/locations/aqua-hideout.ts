@@ -17,7 +17,7 @@ const AQUA_HIDEOUT: Location = {
                 {
                     battleKey: 'team-aqua-grunt-m-aqua-hideout-1',
                     x: 75,
-                    y: 14.28,
+                    y: 14.48,
                 },
             ],
         },
@@ -30,18 +30,18 @@ const AQUA_HIDEOUT: Location = {
             battles: [
                 {
                     battleKey: 'team-aqua-grunt-f-aqua-hideout-2',
-                    x: 40.32,
-                    y: 75.92,
+                    x: 40.2,
+                    y: 76.43,
                 },
                 {
                     battleKey: 'team-aqua-grunt-m-aqua-hideout-3',
                     x: 53.92,
-                    y: 75.92,
+                    y: 76.43,
                 },
                 {
                     battleKey: 'team-aqua-grunt-m-aqua-hideout-4',
                     x: 12.75,
-                    y: 25.92,
+                    y: 26.43,
                 },
             ],
         },
@@ -52,18 +52,18 @@ const AQUA_HIDEOUT: Location = {
             battles: [
                 {
                     battleKey: 'team-aqua-grunt-m-aqua-hideout-5',
-                    x: 68.93,
-                    y: 42.85,
+                    x: 69.12,
+                    y: 43.1,
                 },
                 {
                     battleKey: 'team-aqua-grunt-f-aqua-hideout-6',
-                    x: 30.7,
-                    y: 25.92,
+                    x: 30.88,
+                    y: 26.43,
                 },
                 {
                     battleKey: 'aqua-admin-matt-hideout',
-                    x: 69.3,
-                    y: 80.35,
+                    x: 69.12,
+                    y: 80.6,
                 },
             ],
         },

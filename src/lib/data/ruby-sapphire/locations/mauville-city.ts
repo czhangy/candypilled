@@ -10,7 +10,7 @@ const MAUVILLE_CITY: Location = {
         {
             battleKey: 'pkmn-trainer-wally',
             x: 21.25,
-            y: 31.62,
+            y: 31.72,
         },
     ],
 };
