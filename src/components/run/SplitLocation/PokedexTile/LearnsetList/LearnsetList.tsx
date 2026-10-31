@@ -9,8 +9,10 @@ type LearnsetListProps = {
     generation: number;
     highlightedMoves: string[];
     interactive: boolean;
+    levelOffsets: Record<string, number>;
     moves: LearnsetMove[];
     onSelectMove: (slug: string) => void;
+    scrollable: boolean;
 };
 
 const LearnsetList: React.FC<LearnsetListProps> = ({
@@ -18,8 +20,10 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
     generation,
     highlightedMoves,
     interactive,
+    levelOffsets,
     moves,
     onSelectMove,
+    scrollable,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
@@ -37,11 +41,24 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
     };
 
     // -------------------------------------------------------------------------
+    // RENDERING
+    // -------------------------------------------------------------------------
+
+    const hasOffsets = Object.keys(levelOffsets).length > 0;
+
+    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
     return (
-        <ul className={styles['learnset-list']}>
+        <ul
+            className={[
+                styles['learnset-list'],
+                scrollable && styles['learnset-list--scrollable'],
+            ]
+                .filter(Boolean)
+                .join(' ')}
+        >
             {moves.map((move) => {
                 const moveData = MoveHelpers.getMoveData(dataSource, move.slug);
                 const values = MoveHelpers.getMoveForGeneration(
@@ -61,6 +78,7 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
                 const isDangerous =
                     isHighlighted &&
                     MoveHelpers.isDangerousEncounterMove(move.slug);
+                const levelOffset = levelOffsets[`${move.slug}-${move.level}`];
                 const rowClassName = [
                     styles.row,
                     !interactive && styles['row--static'],
@@ -80,6 +98,12 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
                         >
                             {MoveHelpers.getLearnsetMethodLabel(move)}
                         </span>
+                        {hasOffsets && (
+                            <span className={styles.offset}>
+                                {levelOffset !== undefined &&
+                                    `(${levelOffset > 0 ? '+' : ''}${levelOffset})`}
+                            </span>
+                        )}
                         <span className={styles.name}>{name}</span>
                         {moveData && values && category && (
                             <div className={styles.details}>
