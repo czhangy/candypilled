@@ -12,7 +12,6 @@
         "gen:class": "tsx src/lib/scripts/generators/generate-class.ts",
         "gen:icon": "tsx src/lib/scripts/generators/generate-icon.ts",
         "gen:trainer-class": "tsx src/lib/scripts/generators/generate-trainer-class.ts",
-        "pokeapi:pokemon": "tsx src/lib/scripts/pokeapi/pokemon.ts",
         "pokeapi:encounters": "tsx src/lib/scripts/pokeapi/encounters.ts",
         "pokeapi:abilities": "tsx src/lib/scripts/pokeapi/abilities.ts",
         "pokeapi:moves": "tsx src/lib/scripts/pokeapi/moves.ts",
