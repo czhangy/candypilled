@@ -777,6 +777,17 @@ export type LearnsetMove = {
     level?: number;
 };
 
+// The learnset entries of another stage in an evolution line that the
+// viewed species lacks or learns at a different level.
+export type LearnsetDifference = {
+    // Level offsets for entries the viewed species also learns, keyed by
+    // `${slug}-${level}`: the stage's level minus the viewed species' level
+    // for its closest entry of that move.
+    levelOffsets: Record<string, number>;
+    moves: LearnsetMove[];
+    slug: string;
+};
+
 export type LearnsetByVersionGroup = {
     // PokeAPI version group slug, e.g. "diamond-pearl", "platinum",
     // "heartgold-soulsilver". Learnsets are kept per version group rather

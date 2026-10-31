@@ -1,5 +1,6 @@
 import { useState, useSyncExternalStore } from 'react';
 import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
+import LearnsetDifferences from '@/components/run/LearnsetDifferences/LearnsetDifferences';
 import EvolutionLine from '@/components/run/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
 import LearnsetList from '@/components/run/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
 import LocationsList from '@/components/run/SplitLocation/PokedexTile/LocationsList/LocationsList';
@@ -47,7 +48,7 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    type DetailTab = 'learnset' | 'locations';
+    type DetailTab = 'differences' | 'learnset' | 'locations';
 
     const BADGE_WIDTH = 40;
     const BADGE_HEIGHT = 18;
@@ -144,6 +145,16 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
         species,
         game.version
     );
+    const learnsetDifferences = EvolutionHelpers.getLearnsetDifferences(
+        game.dataSource,
+        species,
+        game.version,
+        game.generation
+    );
+    const detailTab =
+        activeDetailTab === 'differences' && learnsetDifferences.length === 0
+            ? 'learnset'
+            : activeDetailTab;
     const locations = EncounterHelpers.getEncounterLocations(game, species);
     const changes = PokemonHelpers.getPokemonChanges(
         game.dataSource,
@@ -185,12 +196,10 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                         <div className={styles.details}>
                             <div className={styles['details-tabs']}>
                                 <button
-                                    aria-pressed={
-                                        activeDetailTab === 'learnset'
-                                    }
+                                    aria-pressed={detailTab === 'learnset'}
                                     className={[
                                         styles['details-tab'],
-                                        activeDetailTab === 'learnset' &&
+                                        detailTab === 'learnset' &&
                                             styles['details-tab--active'],
                                     ]
                                         .filter(Boolean)
@@ -202,13 +211,31 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                                 >
                                     Learnset
                                 </button>
+                                {learnsetDifferences.length > 0 && (
+                                    <button
+                                        aria-pressed={
+                                            detailTab === 'differences'
+                                        }
+                                        className={[
+                                            styles['details-tab'],
+                                            detailTab === 'differences' &&
+                                                styles['details-tab--active'],
+                                        ]
+                                            .filter(Boolean)
+                                            .join(' ')}
+                                        onClick={() =>
+                                            handleDetailTabChange('differences')
+                                        }
+                                        type="button"
+                                    >
+                                        Delays
+                                    </button>
+                                )}
                                 <button
-                                    aria-pressed={
-                                        activeDetailTab === 'locations'
-                                    }
+                                    aria-pressed={detailTab === 'locations'}
                                     className={[
                                         styles['details-tab'],
-                                        activeDetailTab === 'locations' &&
+                                        detailTab === 'locations' &&
                                             styles['details-tab--active'],
                                     ]
                                         .filter(Boolean)
@@ -221,21 +248,33 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                                     Locations
                                 </button>
                             </div>
-                            {activeDetailTab === 'learnset' ? (
+                            {detailTab === 'learnset' && (
                                 <LearnsetList
                                     dataSource={game.dataSource}
                                     generation={game.generation}
                                     highlightedMoves={[]}
                                     interactive
+                                    levelOffsets={{}}
                                     moves={learnset ?? []}
                                     onSelectMove={onSelectMove}
+                                    scrollable
                                 />
-                            ) : (
+                            )}
+                            {detailTab === 'locations' && (
                                 <LocationsList
                                     interactive
                                     locations={locations}
                                     onSelectLocation={onSelectLocation}
                                     usedLocations={usedLocations}
+                                />
+                            )}
+                            {detailTab === 'differences' && (
+                                <LearnsetDifferences
+                                    dataSource={game.dataSource}
+                                    differences={learnsetDifferences}
+                                    generation={game.generation}
+                                    onSelectMove={onSelectMove}
+                                    scrollable
                                 />
                             )}
                         </div>

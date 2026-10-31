@@ -164,6 +164,16 @@ $label-width: 4.5rem;
             }
         }
 
+        .learnset-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+
+            .learnset-tab {
+                @include detail-tab;
+            }
+        }
+
         .moves-grid {
             display: grid;
             gap: 0.5rem;

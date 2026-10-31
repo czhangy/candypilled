@@ -1,4 +1,5 @@
 import { useState, useSyncExternalStore } from 'react';
+import LearnsetDifferences from '@/components/run/LearnsetDifferences/LearnsetDifferences';
 import EvolutionLine from '@/components/run/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
 import LearnsetList from '@/components/run/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
 import LocationsList from '@/components/run/SplitLocation/PokedexTile/LocationsList/LocationsList';
@@ -88,7 +89,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
-    type DetailTab = 'learnset' | 'locations';
+    type DetailTab = 'differences' | 'learnset' | 'locations';
 
     // A caught Pokémon's nature and gender aren't actually knowable until
     // it's inspected in-game, so a catch is recorded with placeholder
@@ -240,6 +241,18 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                   rest.maxLevel
               )
             : [];
+    const learnsetDifferences = species
+        ? EvolutionHelpers.getLearnsetDifferences(
+              game.dataSource,
+              species,
+              game.version,
+              generation
+          )
+        : [];
+    const detailTab =
+        activeDetailTab === 'differences' && learnsetDifferences.length === 0
+            ? 'learnset'
+            : activeDetailTab;
     const locations = species
         ? EncounterHelpers.getEncounterLocations(game, species)
         : [];
@@ -342,10 +355,10 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     ) : (
                         <div className={styles['details-tabs']}>
                             <button
-                                aria-pressed={activeDetailTab === 'learnset'}
+                                aria-pressed={detailTab === 'learnset'}
                                 className={[
                                     styles['details-tab'],
-                                    activeDetailTab === 'learnset' &&
+                                    detailTab === 'learnset' &&
                                         styles['details-tab--active'],
                                 ]
                                     .filter(Boolean)
@@ -357,11 +370,29 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                             >
                                 Learnset
                             </button>
+                            {learnsetDifferences.length > 0 && (
+                                <button
+                                    aria-pressed={detailTab === 'differences'}
+                                    className={[
+                                        styles['details-tab'],
+                                        detailTab === 'differences' &&
+                                            styles['details-tab--active'],
+                                    ]
+                                        .filter(Boolean)
+                                        .join(' ')}
+                                    onClick={() =>
+                                        handleDetailTabChange('differences')
+                                    }
+                                    type="button"
+                                >
+                                    Delays
+                                </button>
+                            )}
                             <button
-                                aria-pressed={activeDetailTab === 'locations'}
+                                aria-pressed={detailTab === 'locations'}
                                 className={[
                                     styles['details-tab'],
-                                    activeDetailTab === 'locations' &&
+                                    detailTab === 'locations' &&
                                         styles['details-tab--active'],
                                 ]
                                     .filter(Boolean)
@@ -375,22 +406,33 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                             </button>
                         </div>
                     )}
-                    {rest.mode === 'choose' ||
-                    activeDetailTab === 'learnset' ? (
+                    {(rest.mode === 'choose' || detailTab === 'learnset') && (
                         <LearnsetList
                             dataSource={game.dataSource}
                             generation={generation}
                             highlightedMoves={highlightedMoves}
                             interactive={rest.mode !== 'choose'}
+                            levelOffsets={{}}
                             moves={learnset ?? []}
                             onSelectMove={onSelectMove}
+                            scrollable
                         />
-                    ) : (
+                    )}
+                    {rest.mode === 'catch' && detailTab === 'locations' && (
                         <LocationsList
                             interactive
                             locations={locations}
                             onSelectLocation={onSelectLocation}
                             usedLocations={usedLocations}
+                        />
+                    )}
+                    {rest.mode === 'catch' && detailTab === 'differences' && (
+                        <LearnsetDifferences
+                            dataSource={game.dataSource}
+                            differences={learnsetDifferences}
+                            generation={generation}
+                            onSelectMove={onSelectMove}
+                            scrollable
                         />
                     )}
                 </div>

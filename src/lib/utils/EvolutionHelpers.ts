@@ -3,6 +3,8 @@ import {
     EvolutionMethodLabel,
     EvolutionStep,
     GameDataSource,
+    LearnsetDifference,
+    LearnsetMove,
 } from '@/lib/static/types';
 import GenerationHelpers from '@/lib/utils/GenerationHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -110,6 +112,81 @@ export default class EvolutionHelpers {
         collect(fullLine);
 
         return slugs;
+    }
+
+    /**
+     * For each later stage slug can evolve into (forms included), the
+     * level-up learnset entries in version that slug's own learnset lacks:
+     * same move, but absent or at a different level. Stages with no
+     * differences are omitted.
+     */
+    static getLearnsetDifferences(
+        dataSource: GameDataSource,
+        slug: string,
+        version: string,
+        generation: number
+    ): LearnsetDifference[] {
+        const line = EvolutionHelpers.getEvolutionLine(
+            dataSource,
+            slug,
+            generation
+        );
+        if (!line) return [];
+
+        const getKey = (move: LearnsetMove): string =>
+            `${move.method}:${move.slug}:${move.level ?? ''}`;
+        const ownLearnset =
+            PokemonHelpers.getPokemonLearnset(dataSource, slug, version) ?? [];
+        const ownKeys = new Set(ownLearnset.map(getKey));
+        const getLevelOffset = (move: LearnsetMove): number | undefined => {
+            const level = move.level;
+            if (level === undefined) return undefined;
+
+            const offsets = ownLearnset.flatMap((own) =>
+                own.method === 'level-up' &&
+                own.slug === move.slug &&
+                own.level !== undefined
+                    ? [level - own.level]
+                    : []
+            );
+            return offsets.sort((a, b) => Math.abs(a) - Math.abs(b))[0];
+        };
+        const findStep = (step: EvolutionStep): EvolutionStep | undefined =>
+            PokemonHelpers.getPokemonForms(dataSource, step.slug).includes(slug)
+                ? step
+                : step.evolvesTo.map(findStep).find(Boolean);
+        const stages: string[] = [];
+        const collect = (step: EvolutionStep): void => {
+            stages.push(
+                ...PokemonHelpers.getPokemonForms(dataSource, step.slug)
+            );
+            step.evolvesTo.forEach(collect);
+        };
+        findStep(line)?.evolvesTo.forEach(collect);
+
+        return Array.from(new Set(stages))
+            .map((stage) => {
+                const moves = (
+                    PokemonHelpers.getPokemonLearnset(
+                        dataSource,
+                        stage,
+                        version
+                    ) ?? []
+                ).filter(
+                    (move) =>
+                        move.method === 'level-up' && !ownKeys.has(getKey(move))
+                );
+                const levelOffsets: Record<string, number> = {};
+                moves.forEach((move) => {
+                    const offset = getLevelOffset(move);
+                    if (offset !== undefined) {
+                        levelOffsets[`${move.slug}-${move.level}`] = offset;
+                    }
+                });
+
+                return { levelOffsets, moves, slug: stage };
+            })
+            .filter((difference) => difference.moves.length > 0);
     }
 
     /** Whether a and b are in the same evolution family as of generation. */

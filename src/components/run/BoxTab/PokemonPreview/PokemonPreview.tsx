@@ -1,5 +1,6 @@
-import { useSyncExternalStore } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
+import LearnsetDifferences from '@/components/run/LearnsetDifferences/LearnsetDifferences';
 import EvolutionLine from '@/components/run/SplitLocation/PokedexTile/EvolutionLine/EvolutionLine';
 import LearnsetList from '@/components/run/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
 import { MOVE_SLOT_COUNT, STAT_FIELDS } from '@/lib/static/constants';
@@ -60,11 +61,24 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     // CONSTANTS
     // -------------------------------------------------------------------------
 
+    type LearnsetTab = 'differences' | 'learnset';
+
     const SPRITE_SIZE = 120;
+
+    // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [activeLearnsetTab, setActiveLearnsetTab] =
+        useState<LearnsetTab>('learnset');
 
     // -------------------------------------------------------------------------
     // HANDLERS
     // -------------------------------------------------------------------------
+
+    const handleLearnsetTabChange = (tab: LearnsetTab): void => {
+        setActiveLearnsetTab(tab);
+    };
 
     const handleAbilityClick = (abilitySlug: string): void => {
         onSelectAbility(abilitySlug);
@@ -142,6 +156,18 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     const learnset = pokemon
         ? PokemonHelpers.getPokemonLearnset(dataSource, pokemon.slug, version)
         : undefined;
+    const learnsetDifferences = pokemon
+        ? EvolutionHelpers.getLearnsetDifferences(
+              dataSource,
+              pokemon.slug,
+              version,
+              generation
+          )
+        : [];
+    const learnsetTab =
+        activeLearnsetTab === 'differences' && learnsetDifferences.length === 0
+            ? 'learnset'
+            : activeLearnsetTab;
     const isOverCap =
         !!pokemon && levelCap !== null && pokemon.level > levelCap;
     const moveSlots = pokemon
@@ -415,17 +441,66 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                             </div>
                         </div>
                         <div className={styles.section}>
-                            <span className={styles['section-label']}>
-                                Learnset
-                            </span>
-                            <LearnsetList
-                                dataSource={dataSource}
-                                generation={generation}
-                                highlightedMoves={[]}
-                                interactive
-                                moves={learnset ?? []}
-                                onSelectMove={onSelectMove}
-                            />
+                            <div className={styles['learnset-tabs']}>
+                                <button
+                                    aria-pressed={learnsetTab === 'learnset'}
+                                    className={[
+                                        styles['learnset-tab'],
+                                        learnsetTab === 'learnset' &&
+                                            styles['learnset-tab--active'],
+                                    ]
+                                        .filter(Boolean)
+                                        .join(' ')}
+                                    onClick={() =>
+                                        handleLearnsetTabChange('learnset')
+                                    }
+                                    type="button"
+                                >
+                                    Learnset
+                                </button>
+                                {learnsetDifferences.length > 0 && (
+                                    <button
+                                        aria-pressed={
+                                            learnsetTab === 'differences'
+                                        }
+                                        className={[
+                                            styles['learnset-tab'],
+                                            learnsetTab === 'differences' &&
+                                                styles['learnset-tab--active'],
+                                        ]
+                                            .filter(Boolean)
+                                            .join(' ')}
+                                        onClick={() =>
+                                            handleLearnsetTabChange(
+                                                'differences'
+                                            )
+                                        }
+                                        type="button"
+                                    >
+                                        Delays
+                                    </button>
+                                )}
+                            </div>
+                            {learnsetTab === 'learnset' ? (
+                                <LearnsetList
+                                    dataSource={dataSource}
+                                    generation={generation}
+                                    highlightedMoves={[]}
+                                    interactive
+                                    levelOffsets={{}}
+                                    moves={learnset ?? []}
+                                    onSelectMove={onSelectMove}
+                                    scrollable={false}
+                                />
+                            ) : (
+                                <LearnsetDifferences
+                                    dataSource={dataSource}
+                                    differences={learnsetDifferences}
+                                    generation={generation}
+                                    onSelectMove={onSelectMove}
+                                    scrollable={false}
+                                />
+                            )}
                         </div>
                     </>
                 ) : (

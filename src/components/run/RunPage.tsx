@@ -43,8 +43,8 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
         { id: 'split', label: 'Splits' },
         { id: 'locations', label: 'Locations' },
         { id: 'box', label: 'Box' },
-        { id: 'calc', label: 'Calc' },
         { id: 'data', label: 'Data' },
+        { id: 'calc', label: 'Calc' },
         { id: 'resources', label: 'Resources' },
         { id: 'hof', label: 'Hall of Fame' },
     ];
