@@ -132,15 +132,15 @@ const BattleCard: React.FC<BattleCardProps> = ({
                     >
                         {BattleHelpers.getFullName(battle, game)}
                     </button>
-                    <button
-                        aria-label="Add notes"
-                        className={styles['notes-button']}
-                        onClick={handleNotesButtonClick}
-                        type="button"
-                    >
-                        <EditIcon />
-                    </button>
                 </div>
+                <button
+                    aria-label="Add notes"
+                    className={styles['notes-button']}
+                    onClick={handleNotesButtonClick}
+                    type="button"
+                >
+                    <EditIcon />
+                </button>
             </div>
             {isNotesModalOpen && (
                 <BattleNotesModal

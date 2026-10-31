@@ -31,7 +31,6 @@
             align-items: center;
             background: $background-light;
             border: 1px solid $border-subtle;
-            border-radius: 0 0.25rem 0 0;
             display: flex;
             flex: 1;
             gap: 0.5rem;
@@ -61,28 +60,36 @@
                     transition: none;
                 }
             }
+        }
 
-            .notes-button {
-                background: none;
-                border: none;
-                color: $text-dim;
-                cursor: pointer;
-                display: flex;
-                flex-shrink: 0;
-                height: 1rem;
-                padding: 0;
-                transition: color 0.2s ease;
-                width: 1rem;
+        .notes-button {
+            align-items: center;
+            background: $background-light;
+            border: 1px solid $border-subtle;
+            border-radius: 0 0.25rem 0 0;
+            color: $text-dim;
+            cursor: pointer;
+            display: flex;
+            flex-shrink: 0;
+            height: 2.75rem;
+            justify-content: center;
+            padding: 0;
+            transition: color 0.2s ease;
+            width: 2.75rem;
 
-                @media (hover: hover) {
-                    &:hover {
-                        color: var(--accent-color);
-                    }
+            svg {
+                height: 1.5rem;
+                width: 1.5rem;
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    color: var(--accent-color);
                 }
+            }
 
-                @media (prefers-reduced-motion: reduce) {
-                    transition: none;
-                }
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
             }
         }
     }
