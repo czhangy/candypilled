@@ -12,7 +12,7 @@ import {
     mtCoronetSouthExterior,
     mtCoronetTunnel,
 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const MT_CORONET: Location = {
@@ -23,6 +23,22 @@ const MT_CORONET: Location = {
             map: mtCoronet1fRoute211,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-1f-route-211',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'dragon-claw',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'rock-polish',
+                },
+            ],
             methodSplits: [{ method: EncounterMethod.Cave, split: 'Gardenia' }],
         },
         {

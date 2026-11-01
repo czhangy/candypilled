@@ -1,11 +1,20 @@
 import { pastoriaGym } from '@/lib/data/renegade-platinum/maps';
-import { FieldCondition, MapAnchor } from '@/lib/static/enums';
+import { FieldCondition, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const PASTORIA_GYM: Location = {
     name: 'Pastoria Gym',
     map: pastoriaGym,
     mapAnchor: MapAnchor.Bottom,
+    items: [
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Gift from Wake',
+            slug: 'waterfall',
+        },
+    ],
     battles: [
         {
             battleKey: 'fisherman-walter',

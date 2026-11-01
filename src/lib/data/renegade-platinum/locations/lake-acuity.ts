@@ -1,5 +1,5 @@
 import { lakeAcuity } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_ACUITY: Location = {
@@ -7,6 +7,15 @@ const LAKE_ACUITY: Location = {
     map: lakeAcuity,
     mapAnchor: MapAnchor.BottomLeft,
     encountersKey: 'lake-acuity',
+    items: [
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Item on ground',
+            slug: 'blizzard',
+        },
+    ],
     methodSplits: [
         { method: EncounterMethod.Grass, split: 'Volkner' },
         { method: EncounterMethod.Surf, split: 'Volkner' },

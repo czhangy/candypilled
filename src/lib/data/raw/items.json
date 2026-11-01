@@ -5365,5 +5365,1808 @@
                 "description": "A Berry which is very rare in the Unova region. A maniac will buy it for a high price."
             }
         ]
+    },
+    "vs-recorder": {
+        "slug": "vs-recorder",
+        "name": "Vs. Recorder",
+        "category": "gameplay",
+        "effect": "Records wireless, Wi-Fi, or Battle Frontier battles, and stores points.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/vs-recorder.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An amazing device that can record a battle either between friends or at a special battle facility."
+            }
+        ]
+    },
+    "bicycle": {
+        "slug": "bicycle",
+        "name": "Bicycle",
+        "category": "gameplay",
+        "effect": "Use for fast transit.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/bicycle.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A folding bicycle that is faster than the RUNNING SHOES."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A folding Bicycle that enables much faster movement than the Running Shoes."
+            }
+        ]
+    },
+    "coin-case": {
+        "slug": "coin-case",
+        "name": "Coin Case",
+        "category": "gameplay",
+        "effect": "Holds coins for the Game Corner.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/coin-case.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A case that holds up to 9,999 COINS."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A case for holding Coins obtained at the Game Corner. It holds up to 50,000 Coins."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A case for holding coins obtained at the Game Corner. It holds up to 50,000 coins."
+            }
+        ]
+    },
+    "fashion-case": {
+        "slug": "fashion-case",
+        "name": "Fashion Case",
+        "category": "gameplay",
+        "effect": "Holds Pokémon Accessories for use in Contests.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/fashion-case.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A fancy case for the tidy and organized storage of colorful Pokémon Accessories."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A lovely case to store colorful Props for your Pokémon to wear in a musical."
+            }
+        ]
+    },
+    "galactic-key": {
+        "slug": "galactic-key",
+        "name": "Galactic Key",
+        "category": "plot-advancement",
+        "effect": "Grants access to Galactic HQ in Veilstone City.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/galactic-key.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A card key for disengaging security systems in the Galactic HQ. Losing it can result in punishment, apparently."
+            }
+        ]
+    },
+    "good-rod": {
+        "slug": "good-rod",
+        "name": "Good Rod",
+        "category": "gameplay",
+        "effect": "Used to catch Pokémon in bodies of water.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/good-rod.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A decent fishing rod for catching wild POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A new, good-quality fishing rod. Use it by any body of water to fish for wild aquatic Pokémon."
+            }
+        ]
+    },
+    "journal": {
+        "slug": "journal",
+        "name": "Journal",
+        "category": "gameplay",
+        "effect": "Records prior significant activities the player took.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/journal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A notebook that keeps a day-to-day record of your adventure so far. "
+            }
+        ]
+    },
+    "old-charm": {
+        "slug": "old-charm",
+        "name": "Old Charm",
+        "category": "plot-advancement",
+        "effect": "Trade to Cynthia's grandmother in Celestic Town for HM04 (Surf).",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/old-charm.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "An ancient good-luck charm made of Pokémon bones to be taken to the elder of Celestic Town."
+            }
+        ]
+    },
+    "old-rod": {
+        "slug": "old-rod",
+        "name": "Old Rod",
+        "category": "gameplay",
+        "effect": "Used to catch Pokémon in bodies of water.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/old-rod.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Use by any body of water to fish for wild POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An old and beat-up fishing rod. Use it by any body of water to fish for wild aquatic Pokémon."
+            }
+        ]
+    },
+    "parcel": {
+        "slug": "parcel",
+        "name": "Parcel",
+        "category": "plot-advancement",
+        "effect": "Given to the trainer's rival in Jubilife City. Contains Town Maps.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/parcel.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A parcel entrusted in your care. You are supposed to deliver it to your childhood friend who left Twinleaf Town."
+            }
+        ]
+    },
+    "poffin-case": {
+        "slug": "poffin-case",
+        "name": "Poffin Case",
+        "category": "gameplay",
+        "effect": "Holds Poffins.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/poffin-case.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A case for storing Poffin cooked from Berries. "
+            }
+        ]
+    },
+    "poke-radar": {
+        "slug": "poke-radar",
+        "name": "Poké Radar",
+        "category": "gameplay",
+        "effect": "Use to track down rare or shiny Pokémon. 50 steps to recharge.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/poke-radar.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A tool that can search out Pokémon that are hiding in grass. Its battery is recharged as you walk."
+            }
+        ]
+    },
+    "seal-case": {
+        "slug": "seal-case",
+        "name": "Seal Case",
+        "category": "gameplay",
+        "effect": "Stores Seals that can be applied to Poké Ball capsules.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/seal-case.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A case for storing Seals that can be applied to the capsule cases of Poké Balls."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A case for storing Seals that can be applied to the Capsule cases of Poké Balls."
+            }
+        ]
+    },
+    "secret-key": {
+        "slug": "secret-key",
+        "name": "Secret Key",
+        "category": "event-items",
+        "effect": "Gen IV: The key to Rotom's appliance room. Gen III: The key to Cinnabar Gym.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/secret-key.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "The key to the CINNABAR ISLAND GYM's entrance."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A high-tech key that has to be used at a specific location. It emits a special electric signal to open a door."
+            }
+        ]
+    },
+    "secret-potion": {
+        "slug": "secret-potion",
+        "name": "Secret Potion",
+        "category": "plot-advancement",
+        "effect": "Used to heal the Ampharos at the top of Olivine Lighthouse.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/secret-potion.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A fantastic medicine dispensed by the pharmacy in Cianwood City. It fully heals a Pokémon of any ailment."
+            }
+        ]
+    },
+    "sprayduck": {
+        "slug": "sprayduck",
+        "name": "Sprayduck",
+        "category": "gameplay",
+        "effect": "Used to water berries.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/sprayduck.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A watering can shaped like a PSYDUCK. It helps promote healthy growth of Berries planted in soft soil."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A watering can shaped like a Psyduck. It helps promote healthy growth of Berries planted in soft soil."
+            }
+        ]
+    },
+    "suite-key": {
+        "slug": "suite-key",
+        "name": "Suite Key",
+        "category": "event-items",
+        "effect": "Opens a locked building in the Lakeside Resort.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/suite-key.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A key to one of the suites at the luxury hotel by a lake. For some odd reason, it often disappears."
+            }
+        ]
+    },
+    "super-rod": {
+        "slug": "super-rod",
+        "name": "Super Rod",
+        "category": "gameplay",
+        "effect": "Used to catch Pokémon in bodies of water.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/super-rod.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "The best fishing rod for catching wild POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An awesome, high-tech fishing rod. Use it by any body of water to fish for wild aquatic Pokémon."
+            }
+        ]
+    },
+    "tea": {
+        "slug": "tea",
+        "name": "Tea",
+        "category": "plot-advancement",
+        "effect": "Grants access to Saffron City.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/tea.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A thirst-quenching tea prepared by an old lady."
+            }
+        ]
+    },
+    "town-map": {
+        "slug": "town-map",
+        "name": "Town Map",
+        "category": "gameplay",
+        "effect": "Use to see the overworld map.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/town-map.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Can be viewed anytime. Shows your present location."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A very convenient map that can be viewed anytime. It even shows your present location."
+            }
+        ]
+    },
+    "vs-seeker": {
+        "slug": "vs-seeker",
+        "name": "VS Seeker",
+        "category": "gameplay",
+        "effect": "Allows rebattling of on-screen trainers. 100 steps to recharge.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/vs-seeker.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A rechargeable unit that flags battle-ready TRAINERS."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A device that indicates Trainers who want to battle. Its battery charges while you walk."
+            }
+        ]
+    },
+    "works-key": {
+        "slug": "works-key",
+        "name": "Works Key",
+        "category": "plot-advancement",
+        "effect": "Grants access to Valley Windworks.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/works-key.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A large key for operating the doors of the Valley Windworks in the canyon. It was held by a Team Galactic Grunt."
+            }
+        ]
+    },
+    "flash-cannon": {
+        "slug": "flash-cannon",
+        "name": "Flash Cannon",
+        "category": "all-machines",
+        "effect": "Teaches Flash Cannon to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-steel.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Flash Cannon to a compatible Pokémon."
+            }
+        ]
+    },
+    "surf": {
+        "slug": "surf",
+        "name": "Surf",
+        "category": "all-machines",
+        "effect": "Teaches Surf to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/hm-water.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Surf to a compatible Pokémon."
+            }
+        ]
+    },
+    "return": {
+        "slug": "return",
+        "name": "Return",
+        "category": "all-machines",
+        "effect": "Teaches Return to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Return to a compatible Pokémon."
+            }
+        ]
+    },
+    "captivate": {
+        "slug": "captivate",
+        "name": "Captivate",
+        "category": "all-machines",
+        "effect": "Teaches Captivate to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Captivate to a compatible Pokémon."
+            }
+        ]
+    },
+    "sleep-talk": {
+        "slug": "sleep-talk",
+        "name": "Sleep Talk",
+        "category": "all-machines",
+        "effect": "Teaches Sleep Talk to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Sleep Talk to a compatible Pokémon."
+            }
+        ]
+    },
+    "aerial-ace": {
+        "slug": "aerial-ace",
+        "name": "Aerial Ace",
+        "category": "all-machines",
+        "effect": "Teaches Aerial Ace to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-flying.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Aerial Ace to a compatible Pokémon."
+            }
+        ]
+    },
+    "flamethrower": {
+        "slug": "flamethrower",
+        "name": "Flamethrower",
+        "category": "all-machines",
+        "effect": "Teaches Flamethrower to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-fire.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Flamethrower to a compatible Pokémon."
+            }
+        ]
+    },
+    "frustration": {
+        "slug": "frustration",
+        "name": "Frustration",
+        "category": "all-machines",
+        "effect": "Teaches Frustration to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Frustration to a compatible Pokémon."
+            }
+        ]
+    },
+    "snatch": {
+        "slug": "snatch",
+        "name": "Snatch",
+        "category": "all-machines",
+        "effect": "Teaches Snatch to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-dark.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Snatch to a compatible Pokémon."
+            }
+        ]
+    },
+    "fly": {
+        "slug": "fly",
+        "name": "Fly",
+        "category": "all-machines",
+        "effect": "Teaches Fly to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/hm-flying.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Fly to a compatible Pokémon."
+            }
+        ]
+    },
+    "protect": {
+        "slug": "protect",
+        "name": "Protect",
+        "category": "all-machines",
+        "effect": "Teaches Protect to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Protect to a compatible Pokémon."
+            }
+        ]
+    },
+    "sludge-bomb": {
+        "slug": "sludge-bomb",
+        "name": "Sludge Bomb",
+        "category": "all-machines",
+        "effect": "Teaches Sludge Bomb to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-poison.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Sludge Bomb to a compatible Pokémon."
+            }
+        ]
+    },
+    "shadow-ball": {
+        "slug": "shadow-ball",
+        "name": "Shadow Ball",
+        "category": "all-machines",
+        "effect": "Teaches Shadow Ball to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-ghost.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Shadow Ball to a compatible Pokémon."
+            }
+        ]
+    },
+    "rest": {
+        "slug": "rest",
+        "name": "Rest",
+        "category": "all-machines",
+        "effect": "Teaches Rest to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-psychic.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Rest to a compatible Pokémon."
+            }
+        ]
+    },
+    "scald": {
+        "slug": "scald",
+        "name": "Scald",
+        "category": "all-machines",
+        "effect": "Teaches Scald to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-water.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Scald to a compatible Pokémon."
+            }
+        ]
+    },
+    "iron-tail": {
+        "slug": "iron-tail",
+        "name": "Iron Tail",
+        "category": "all-machines",
+        "effect": "Teaches Iron Tail to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-steel.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Iron Tail to a compatible Pokémon."
+            }
+        ]
+    },
+    "strength": {
+        "slug": "strength",
+        "name": "Strength",
+        "category": "all-machines",
+        "effect": "Teaches Strength to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/hm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Strength to a compatible Pokémon."
+            }
+        ]
+    },
+    "hidden-power": {
+        "slug": "hidden-power",
+        "name": "Hidden Power",
+        "category": "all-machines",
+        "effect": "Teaches Hidden Power to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Hidden Power to a compatible Pokémon."
+            }
+        ]
+    },
+    "facade": {
+        "slug": "facade",
+        "name": "Facade",
+        "category": "all-machines",
+        "effect": "Teaches Facade to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Facade to a compatible Pokémon."
+            }
+        ]
+    },
+    "thunder": {
+        "slug": "thunder",
+        "name": "Thunder",
+        "category": "all-machines",
+        "effect": "Teaches Thunder to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-electric.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Thunder to a compatible Pokémon."
+            }
+        ]
+    },
+    "fire-blast": {
+        "slug": "fire-blast",
+        "name": "Fire Blast",
+        "category": "all-machines",
+        "effect": "Teaches Fire Blast to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-fire.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Fire Blast to a compatible Pokémon."
+            }
+        ]
+    },
+    "dragon-claw": {
+        "slug": "dragon-claw",
+        "name": "Dragon Claw",
+        "category": "all-machines",
+        "effect": "Teaches Dragon Claw to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-dragon.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Dragon Claw to a compatible Pokémon."
+            }
+        ]
+    },
+    "rock-polish": {
+        "slug": "rock-polish",
+        "name": "Rock Polish",
+        "category": "all-machines",
+        "effect": "Teaches Rock Polish to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-rock.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Rock Polish to a compatible Pokémon."
+            }
+        ]
+    },
+    "shadow-claw": {
+        "slug": "shadow-claw",
+        "name": "Shadow Claw",
+        "category": "all-machines",
+        "effect": "Teaches Shadow Claw to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-ghost.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Shadow Claw to a compatible Pokémon."
+            }
+        ]
+    },
+    "substitute": {
+        "slug": "substitute",
+        "name": "Substitute",
+        "category": "all-machines",
+        "effect": "Teaches Substitute to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Substitute to a compatible Pokémon."
+            }
+        ]
+    },
+    "focus-punch": {
+        "slug": "focus-punch",
+        "name": "Focus Punch",
+        "category": "all-machines",
+        "effect": "Teaches Focus Punch to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-fighting.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Focus Punch to a compatible Pokémon."
+            }
+        ]
+    },
+    "brick-break": {
+        "slug": "brick-break",
+        "name": "Brick Break",
+        "category": "all-machines",
+        "effect": "Teaches Brick Break to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-fighting.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Brick Break to a compatible Pokémon."
+            }
+        ]
+    },
+    "flash": {
+        "slug": "flash",
+        "name": "Flash",
+        "category": "all-machines",
+        "effect": "Teaches Flash to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Flash to a compatible Pokémon."
+            }
+        ]
+    },
+    "rock-smash": {
+        "slug": "rock-smash",
+        "name": "Rock Smash",
+        "category": "all-machines",
+        "effect": "Teaches Rock Smash to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/hm-fighting.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Rock Smash to a compatible Pokémon."
+            }
+        ]
+    },
+    "giga-drain": {
+        "slug": "giga-drain",
+        "name": "Giga Drain",
+        "category": "all-machines",
+        "effect": "Teaches Giga Drain to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-grass.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Giga Drain to a compatible Pokémon."
+            }
+        ]
+    },
+    "steel-wing": {
+        "slug": "steel-wing",
+        "name": "Steel Wing",
+        "category": "all-machines",
+        "effect": "Teaches Steel Wing to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-steel.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Steel Wing to a compatible Pokémon."
+            }
+        ]
+    },
+    "will-o-wisp": {
+        "slug": "will-o-wisp",
+        "name": "Will-O-Wisp",
+        "category": "all-machines",
+        "effect": "Teaches Will-O-Wisp to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-fire.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Will-O-Wisp to a compatible Pokémon."
+            }
+        ]
+    },
+    "solar-beam": {
+        "slug": "solar-beam",
+        "name": "Solar Beam",
+        "category": "all-machines",
+        "effect": "Teaches Solar Beam to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-grass.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Solar Beam to a compatible Pokémon."
+            }
+        ]
+    },
+    "roost": {
+        "slug": "roost",
+        "name": "Roost",
+        "category": "all-machines",
+        "effect": "Teaches Roost to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-flying.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Roost to a compatible Pokémon."
+            }
+        ]
+    },
+    "hurricane": {
+        "slug": "hurricane",
+        "name": "Hurricane",
+        "category": "all-machines",
+        "effect": "Teaches Hurricane to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-flying.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Hurricane to a compatible Pokémon."
+            }
+        ]
+    },
+    "psych-up": {
+        "slug": "psych-up",
+        "name": "Psych Up",
+        "category": "all-machines",
+        "effect": "Teaches Psych Up to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Psych Up to a compatible Pokémon."
+            }
+        ]
+    },
+    "taunt": {
+        "slug": "taunt",
+        "name": "Taunt",
+        "category": "all-machines",
+        "effect": "Teaches Taunt to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-dark.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Taunt to a compatible Pokémon."
+            }
+        ]
+    },
+    "sunny-day": {
+        "slug": "sunny-day",
+        "name": "Sunny Day",
+        "category": "all-machines",
+        "effect": "Teaches Sunny Day to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-fire.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Sunny Day to a compatible Pokémon."
+            }
+        ]
+    },
+    "safeguard": {
+        "slug": "safeguard",
+        "name": "Safeguard",
+        "category": "all-machines",
+        "effect": "Teaches Safeguard to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Safeguard to a compatible Pokémon."
+            }
+        ]
+    },
+    "toxic": {
+        "slug": "toxic",
+        "name": "Toxic",
+        "category": "all-machines",
+        "effect": "Teaches Toxic to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-poison.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Toxic to a compatible Pokémon."
+            }
+        ]
+    },
+    "bug-buzz": {
+        "slug": "bug-buzz",
+        "name": "Bug Buzz",
+        "category": "all-machines",
+        "effect": "Teaches Bug Buzz to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-bug.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Bug Buzz to a compatible Pokémon."
+            }
+        ]
+    },
+    "poison-jab": {
+        "slug": "poison-jab",
+        "name": "Poison Jab",
+        "category": "all-machines",
+        "effect": "Teaches Poison Jab to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-poison.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Poison Jab to a compatible Pokémon."
+            }
+        ]
+    },
+    "fling": {
+        "slug": "fling",
+        "name": "Fling",
+        "category": "all-machines",
+        "effect": "Teaches Fling to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-dark.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Fling to a compatible Pokémon."
+            }
+        ]
+    },
+    "calm-mind": {
+        "slug": "calm-mind",
+        "name": "Calm Mind",
+        "category": "all-machines",
+        "effect": "Teaches Calm Mind to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-psychic.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Calm Mind to a compatible Pokémon."
+            }
+        ]
+    },
+    "defog": {
+        "slug": "defog",
+        "name": "Defog",
+        "category": "all-machines",
+        "effect": "Teaches Defog to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/hm-flying.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Defog to a compatible Pokémon."
+            }
+        ]
+    },
+    "wild-charge": {
+        "slug": "wild-charge",
+        "name": "Wild Charge",
+        "category": "all-machines",
+        "effect": "Teaches Wild Charge to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-electric.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Wild Charge to a compatible Pokémon."
+            }
+        ]
+    },
+    "light-screen": {
+        "slug": "light-screen",
+        "name": "Light Screen",
+        "category": "all-machines",
+        "effect": "Teaches Light Screen to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-psychic.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Light Screen to a compatible Pokémon."
+            }
+        ]
+    },
+    "reflect": {
+        "slug": "reflect",
+        "name": "Reflect",
+        "category": "all-machines",
+        "effect": "Teaches Reflect to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-psychic.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Reflect to a compatible Pokémon."
+            }
+        ]
+    },
+    "thunder-wave": {
+        "slug": "thunder-wave",
+        "name": "Thunder Wave",
+        "category": "all-machines",
+        "effect": "Teaches Thunder Wave to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-electric.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Thunder Wave to a compatible Pokémon."
+            }
+        ]
+    },
+    "thunderbolt": {
+        "slug": "thunderbolt",
+        "name": "Thunderbolt",
+        "category": "all-machines",
+        "effect": "Teaches Thunderbolt to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-electric.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Thunderbolt to a compatible Pokémon."
+            }
+        ]
+    },
+    "shock-wave": {
+        "slug": "shock-wave",
+        "name": "Shock Wave",
+        "category": "all-machines",
+        "effect": "Teaches Shock Wave to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-electric.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Shock Wave to a compatible Pokémon."
+            }
+        ]
+    },
+    "embargo": {
+        "slug": "embargo",
+        "name": "Embargo",
+        "category": "all-machines",
+        "effect": "Teaches Embargo to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-dark.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Embargo to a compatible Pokémon."
+            }
+        ]
+    },
+    "dark-pulse": {
+        "slug": "dark-pulse",
+        "name": "Dark Pulse",
+        "category": "all-machines",
+        "effect": "Teaches Dark Pulse to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-dark.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Dark Pulse to a compatible Pokémon."
+            }
+        ]
+    },
+    "giga-impact": {
+        "slug": "giga-impact",
+        "name": "Giga Impact",
+        "category": "all-machines",
+        "effect": "Teaches Giga Impact to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Giga Impact to a compatible Pokémon."
+            }
+        ]
+    },
+    "double-team": {
+        "slug": "double-team",
+        "name": "Double Team",
+        "category": "all-machines",
+        "effect": "Teaches Double Team to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Double Team to a compatible Pokémon."
+            }
+        ]
+    },
+    "dazzling-gleam": {
+        "slug": "dazzling-gleam",
+        "name": "Dazzling Gleam",
+        "category": "all-machines",
+        "effect": "Teaches Dazzling Gleam to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-fairy.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Dazzling Gleam to a compatible Pokémon."
+            }
+        ]
+    },
+    "water-pulse": {
+        "slug": "water-pulse",
+        "name": "Water Pulse",
+        "category": "all-machines",
+        "effect": "Teaches Water Pulse to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-water.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Water Pulse to a compatible Pokémon."
+            }
+        ]
+    },
+    "roar": {
+        "slug": "roar",
+        "name": "Roar",
+        "category": "all-machines",
+        "effect": "Teaches Roar to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Roar to a compatible Pokémon."
+            }
+        ]
+    },
+    "hail": {
+        "slug": "hail",
+        "name": "Hail",
+        "category": "all-machines",
+        "effect": "Teaches Hail to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-ice.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Hail to a compatible Pokémon."
+            }
+        ]
+    },
+    "bulk-up": {
+        "slug": "bulk-up",
+        "name": "Bulk Up",
+        "category": "all-machines",
+        "effect": "Teaches Bulk Up to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-fighting.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Bulk Up to a compatible Pokémon."
+            }
+        ]
+    },
+    "bullet-seed": {
+        "slug": "bullet-seed",
+        "name": "Bullet Seed",
+        "category": "all-machines",
+        "effect": "Teaches Bullet Seed to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-grass.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Bullet Seed to a compatible Pokémon."
+            }
+        ]
+    },
+    "ice-beam": {
+        "slug": "ice-beam",
+        "name": "Ice Beam",
+        "category": "all-machines",
+        "effect": "Teaches Ice Beam to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-ice.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Ice Beam to a compatible Pokémon."
+            }
+        ]
+    },
+    "blizzard": {
+        "slug": "blizzard",
+        "name": "Blizzard",
+        "category": "all-machines",
+        "effect": "Teaches Blizzard to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-ice.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Blizzard to a compatible Pokémon."
+            }
+        ]
+    },
+    "hyper-beam": {
+        "slug": "hyper-beam",
+        "name": "Hyper Beam",
+        "category": "all-machines",
+        "effect": "Teaches Hyper Beam to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Hyper Beam to a compatible Pokémon."
+            }
+        ]
+    },
+    "rain-dance": {
+        "slug": "rain-dance",
+        "name": "Rain Dance",
+        "category": "all-machines",
+        "effect": "Teaches Rain Dance to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-water.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Rain Dance to a compatible Pokémon."
+            }
+        ]
+    },
+    "dig": {
+        "slug": "dig",
+        "name": "Dig",
+        "category": "all-machines",
+        "effect": "Teaches Dig to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-ground.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Dig to a compatible Pokémon."
+            }
+        ]
+    },
+    "psychic": {
+        "slug": "psychic",
+        "name": "Psychic",
+        "category": "all-machines",
+        "effect": "Teaches Psychic to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-psychic.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Psychic to a compatible Pokémon."
+            }
+        ]
+    },
+    "rock-tomb": {
+        "slug": "rock-tomb",
+        "name": "Rock Tomb",
+        "category": "all-machines",
+        "effect": "Teaches Rock Tomb to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-rock.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Rock Tomb to a compatible Pokémon."
+            }
+        ]
+    },
+    "torment": {
+        "slug": "torment",
+        "name": "Torment",
+        "category": "all-machines",
+        "effect": "Teaches Torment to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-dark.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Torment to a compatible Pokémon."
+            }
+        ]
+    },
+    "thief": {
+        "slug": "thief",
+        "name": "Thief",
+        "category": "all-machines",
+        "effect": "Teaches Thief to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-dark.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Thief to a compatible Pokémon."
+            }
+        ]
+    },
+    "skill-swap": {
+        "slug": "skill-swap",
+        "name": "Skill Swap",
+        "category": "all-machines",
+        "effect": "Teaches Skill Swap to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-psychic.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Skill Swap to a compatible Pokémon."
+            }
+        ]
+    },
+    "overheat": {
+        "slug": "overheat",
+        "name": "Overheat",
+        "category": "all-machines",
+        "effect": "Teaches Overheat to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-fire.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Overheat to a compatible Pokémon."
+            }
+        ]
+    },
+    "focus-blast": {
+        "slug": "focus-blast",
+        "name": "Focus Blast",
+        "category": "all-machines",
+        "effect": "Teaches Focus Blast to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-fighting.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Focus Blast to a compatible Pokémon."
+            }
+        ]
+    },
+    "energy-ball": {
+        "slug": "energy-ball",
+        "name": "Energy Ball",
+        "category": "all-machines",
+        "effect": "Teaches Energy Ball to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-grass.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Energy Ball to a compatible Pokémon."
+            }
+        ]
+    },
+    "false-swipe": {
+        "slug": "false-swipe",
+        "name": "False Swipe",
+        "category": "all-machines",
+        "effect": "Teaches False Swipe to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches False Swipe to a compatible Pokémon."
+            }
+        ]
+    },
+    "endure": {
+        "slug": "endure",
+        "name": "Endure",
+        "category": "all-machines",
+        "effect": "Teaches Endure to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Endure to a compatible Pokémon."
+            }
+        ]
+    },
+    "dragon-pulse": {
+        "slug": "dragon-pulse",
+        "name": "Dragon Pulse",
+        "category": "all-machines",
+        "effect": "Teaches Dragon Pulse to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-dragon.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Dragon Pulse to a compatible Pokémon."
+            }
+        ]
+    },
+    "drain-punch": {
+        "slug": "drain-punch",
+        "name": "Drain Punch",
+        "category": "all-machines",
+        "effect": "Teaches Drain Punch to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-fighting.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Drain Punch to a compatible Pokémon."
+            }
+        ]
+    },
+    "payback": {
+        "slug": "payback",
+        "name": "Payback",
+        "category": "all-machines",
+        "effect": "Teaches Payback to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-dark.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Payback to a compatible Pokémon."
+            }
+        ]
+    },
+    "recycle": {
+        "slug": "recycle",
+        "name": "Recycle",
+        "category": "all-machines",
+        "effect": "Teaches Recycle to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Recycle to a compatible Pokémon."
+            }
+        ]
+    },
+    "stone-edge": {
+        "slug": "stone-edge",
+        "name": "Stone Edge",
+        "category": "all-machines",
+        "effect": "Teaches Stone Edge to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-rock.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Stone Edge to a compatible Pokémon."
+            }
+        ]
+    },
+    "avalanche": {
+        "slug": "avalanche",
+        "name": "Avalanche",
+        "category": "all-machines",
+        "effect": "Teaches Avalanche to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-ice.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Avalanche to a compatible Pokémon."
+            }
+        ]
+    },
+    "gyro-ball": {
+        "slug": "gyro-ball",
+        "name": "Gyro Ball",
+        "category": "all-machines",
+        "effect": "Teaches Gyro Ball to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-steel.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Gyro Ball to a compatible Pokémon."
+            }
+        ]
+    },
+    "swords-dance": {
+        "slug": "swords-dance",
+        "name": "Swords Dance",
+        "category": "all-machines",
+        "effect": "Teaches Swords Dance to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Swords Dance to a compatible Pokémon."
+            }
+        ]
+    },
+    "stealth-rock": {
+        "slug": "stealth-rock",
+        "name": "Stealth Rock",
+        "category": "all-machines",
+        "effect": "Teaches Stealth Rock to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-rock.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Stealth Rock to a compatible Pokémon."
+            }
+        ]
+    },
+    "rock-slide": {
+        "slug": "rock-slide",
+        "name": "Rock Slide",
+        "category": "all-machines",
+        "effect": "Teaches Rock Slide to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-rock.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Rock Slide to a compatible Pokémon."
+            }
+        ]
+    },
+    "x-scissor": {
+        "slug": "x-scissor",
+        "name": "X-Scissor",
+        "category": "all-machines",
+        "effect": "Teaches X-Scissor to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-bug.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches X-Scissor to a compatible Pokémon."
+            }
+        ]
+    },
+    "hyper-voice": {
+        "slug": "hyper-voice",
+        "name": "Hyper Voice",
+        "category": "all-machines",
+        "effect": "Teaches Hyper Voice to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Hyper Voice to a compatible Pokémon."
+            }
+        ]
+    },
+    "grass-knot": {
+        "slug": "grass-knot",
+        "name": "Grass Knot",
+        "category": "all-machines",
+        "effect": "Teaches Grass Knot to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-grass.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Grass Knot to a compatible Pokémon."
+            }
+        ]
+    },
+    "swagger": {
+        "slug": "swagger",
+        "name": "Swagger",
+        "category": "all-machines",
+        "effect": "Teaches Swagger to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-normal.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Swagger to a compatible Pokémon."
+            }
+        ]
+    },
+    "u-turn": {
+        "slug": "u-turn",
+        "name": "U-turn",
+        "category": "all-machines",
+        "effect": "Teaches U-turn to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-bug.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches U-turn to a compatible Pokémon."
+            }
+        ]
+    },
+    "trick-room": {
+        "slug": "trick-room",
+        "name": "Trick Room",
+        "category": "all-machines",
+        "effect": "Teaches Trick Room to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-psychic.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Trick Room to a compatible Pokémon."
+            }
+        ]
+    },
+    "cut": {
+        "slug": "cut",
+        "name": "Cut",
+        "category": "all-machines",
+        "effect": "Teaches Cut to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-grass.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Cut to a compatible Pokémon."
+            }
+        ]
+    },
+    "waterfall": {
+        "slug": "waterfall",
+        "name": "Waterfall",
+        "category": "all-machines",
+        "effect": "Teaches Waterfall to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/hm-water.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Waterfall to a compatible Pokémon."
+            }
+        ]
+    },
+    "rock-climb": {
+        "slug": "rock-climb",
+        "name": "Rock Climb",
+        "category": "all-machines",
+        "effect": "Teaches Rock Climb to a compatible Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/tm-rock.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Teaches Rock Climb to a compatible Pokémon."
+            }
+        ]
     }
 }

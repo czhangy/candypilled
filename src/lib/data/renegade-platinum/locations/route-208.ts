@@ -36,6 +36,20 @@ const ROUTE_208: Location = {
             method: 'Berry tree',
             slug: 'pinap-berry',
         },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Item on ground',
+            slug: 'swords-dance',
+        },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Gift from Aaron',
+            slug: 'x-scissor',
+        },
     ],
     methodSplits: [
         { method: EncounterMethod.Grass, split: 'Fantina' },

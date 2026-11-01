@@ -50,6 +50,15 @@ const FUEGO_IRONWORKS: Location = {
             name: 'Interior',
             map: fuegoIronworksInterior,
             mapAnchor: MapAnchor.BottomLeft,
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'flamethrower',
+                },
+            ],
             battles: [
                 {
                     battleKey: 'worker-dillan',

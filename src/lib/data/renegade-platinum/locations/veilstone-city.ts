@@ -2,7 +2,7 @@ import {
     veilstoneCity,
     veilstoneCityPokemonCenter,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VEILSTONE_CITY: Location = {
@@ -12,6 +12,29 @@ const VEILSTONE_CITY: Location = {
             name: 'City',
             map: veilstoneCity,
             mapAnchor: MapAnchor.TopLeft,
+            items: [
+                {
+                    category: ItemCategory.KeyItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'coin-case',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'embargo',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'dark-pulse',
+                },
+            ],
             tagPartner: [
                 {
                     battleKey: 'pkmn-trainer-dawn-veilstone-city-tag',

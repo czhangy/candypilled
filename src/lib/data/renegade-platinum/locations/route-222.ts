@@ -42,6 +42,13 @@ const ROUTE_222: Location = {
                     method: 'Berry tree',
                     slug: 'qualot-berry',
                 },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'fling',
+                },
             ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Volkner' },

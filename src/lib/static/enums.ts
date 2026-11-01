@@ -50,6 +50,7 @@ export enum ItemCategory {
     Consumable = 'Consumables',
     HeldItem = 'Held Items',
     KeyItem = 'Key Items',
+    TmHm = 'TMs/HMs',
 }
 
 export enum PokemonStatus {

@@ -144,30 +144,13 @@
             }
         }
 
-        .item-button {
+        .item-name {
             align-items: center;
-            background: none;
-            border: none;
-            color: $foreground;
-            cursor: pointer;
             display: flex;
-            font: inherit;
             gap: 0.5rem;
-            padding: 0;
-            transition: color 0.2s ease;
 
             img {
                 image-rendering: pixelated;
-            }
-
-            @media (hover: hover) {
-                &:hover {
-                    color: var(--accent-color);
-                }
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-                transition: none;
             }
         }
 

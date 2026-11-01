@@ -2,7 +2,7 @@ import {
     lakeValorPostGiratina,
     lakeValorPreGiratina,
 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_VALOR: Location = {
@@ -44,6 +44,15 @@ const LAKE_VALOR: Location = {
             map: lakeValorPostGiratina,
             mapAnchor: MapAnchor.TopRight,
             encountersKey: 'lake-valor',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'thunder',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Volkner' },
                 { method: EncounterMethod.Surf, split: 'Volkner' },

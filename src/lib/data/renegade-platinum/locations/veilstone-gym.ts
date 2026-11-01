@@ -1,11 +1,20 @@
 import { veilstoneGym } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VEILSTONE_GYM: Location = {
     name: 'Veilstone Gym',
     map: veilstoneGym,
     mapAnchor: MapAnchor.Center,
+    items: [
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Gift from Maylene',
+            slug: 'drain-punch',
+        },
+    ],
     battles: [
         {
             battleKey: 'black-belt-colby',

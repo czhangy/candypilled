@@ -2,7 +2,7 @@ import {
     valleyWindworks,
     valleyWindworksInterior,
 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VALLEY_WINDWORKS: Location = {
@@ -13,6 +13,22 @@ const VALLEY_WINDWORKS: Location = {
             map: valleyWindworks,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'valley-windworks',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'thunderbolt',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'shock-wave',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Gardenia' },
                 { method: EncounterMethod.Surf, split: 'Byron' },

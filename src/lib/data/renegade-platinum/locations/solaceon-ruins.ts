@@ -5,7 +5,7 @@ import {
     solaceonRuinsB3f,
     solaceonRuinsB4f,
 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SOLACEON_RUINS: Location = {
@@ -51,6 +51,22 @@ const SOLACEON_RUINS: Location = {
             map: solaceonRuinsB4f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-solaceon-ruins',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'calm-mind',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'defog',
+                },
+            ],
             methodSplits: [{ method: EncounterMethod.Cave, split: 'Maylene' }],
         },
     ],

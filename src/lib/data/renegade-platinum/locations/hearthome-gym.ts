@@ -1,11 +1,20 @@
 import { hearthomeGym } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const HEARTHOME_GYM: Location = {
     name: 'Hearthome Gym',
     map: hearthomeGym,
     mapAnchor: MapAnchor.Bottom,
+    items: [
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Gift from Fantina',
+            slug: 'shadow-ball',
+        },
+    ],
     battles: [
         {
             battleKey: 'lass-molly',

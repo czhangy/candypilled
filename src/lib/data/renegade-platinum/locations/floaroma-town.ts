@@ -28,6 +28,20 @@ const FLOAROMA_TOWN: Location = {
                     method: 'Berry tree',
                     slug: 'cheri-berry',
                 },
+                {
+                    category: ItemCategory.KeyItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'sprayduck',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'aerial-ace',
+                },
             ],
             methodSplits: [
                 { method: EncounterMethod.Trade, split: 'Gardenia' },

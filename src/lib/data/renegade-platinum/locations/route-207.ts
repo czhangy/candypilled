@@ -29,6 +29,13 @@ const ROUTE_207: Location = {
             method: 'Berry tree',
             slug: 'bluk-berry',
         },
+        {
+            category: ItemCategory.KeyItem,
+            count: 1,
+            hidden: false,
+            method: 'Gift from Dawn/Lucas',
+            slug: 'vs-seeker',
+        },
     ],
     methodSplits: [
         { method: EncounterMethod.Grass, split: 'Roark' },

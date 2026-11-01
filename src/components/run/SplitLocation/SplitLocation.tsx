@@ -681,7 +681,6 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                             collectedItems={run.collectedItems}
                                             items={section.items}
                                             keyPrefix={itemKeyPrefix}
-                                            onSelectItem={onSelectItem}
                                             onToggleItem={handleToggleItem}
                                         />
                                     )}

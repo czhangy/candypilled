@@ -40,6 +40,20 @@ const ROUTE_210: Location = {
                     method: 'Berry tree',
                     slug: 'pinap-berry',
                 },
+                {
+                    category: ItemCategory.KeyItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from Cynthia',
+                    slug: 'old-charm',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'roost',
+                },
             ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Maylene' },
@@ -114,6 +128,20 @@ const ROUTE_210: Location = {
                     hidden: false,
                     method: 'Berry tree',
                     slug: 'aguav-berry',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'solar-beam',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'hurricane',
                 },
             ],
             methodSplits: [

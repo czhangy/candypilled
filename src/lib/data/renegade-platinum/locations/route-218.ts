@@ -36,6 +36,20 @@ const ROUTE_218: Location = {
             method: 'Berry tree',
             slug: 'pinap-berry',
         },
+        {
+            category: ItemCategory.KeyItem,
+            count: 1,
+            hidden: false,
+            method: 'Gift from NPC',
+            slug: 'old-rod',
+        },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Item on ground',
+            slug: 'water-pulse',
+        },
     ],
     methodSplits: [
         { method: EncounterMethod.Grass, split: 'Byron' },

@@ -1,5 +1,5 @@
 import { route203 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_203: Location = {
@@ -7,6 +7,15 @@ const ROUTE_203: Location = {
     map: route203,
     mapAnchor: MapAnchor.Left,
     encountersKey: 'sinnoh-route-203',
+    items: [
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Item on ground',
+            slug: 'endure',
+        },
+    ],
     methodSplits: [
         { method: EncounterMethod.Grass, split: 'Roark' },
         { method: EncounterMethod.Surf, split: 'Byron' },

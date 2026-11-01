@@ -43,6 +43,27 @@ const ROUTE_209: Location = {
                     method: 'Berry tree',
                     slug: 'razz-berry',
                 },
+                {
+                    category: ItemCategory.KeyItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'good-rod',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'giga-drain',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'steel-wing',
+                },
             ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Maylene' },
@@ -177,6 +198,15 @@ const ROUTE_209: Location = {
             map: route209Tower5f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-209-tower',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'will-o-wisp',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Walking, split: 'Maylene' },
             ],

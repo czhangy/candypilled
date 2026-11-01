@@ -2,7 +2,7 @@ import {
     lakeVerityPostGalactic,
     lakeVerityPreGalactic,
 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const LAKE_VERITY: Location = {
@@ -27,6 +27,15 @@ const LAKE_VERITY: Location = {
             map: lakeVerityPostGalactic,
             mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'lake-verity',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'fire-blast',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Candice' },
                 { method: EncounterMethod.Surf, split: 'Candice' },

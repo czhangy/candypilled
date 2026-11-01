@@ -10,6 +10,15 @@ const ROUTE_211: Location = {
             map: route211West,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-211-west',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'taunt',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Gardenia' },
                 { method: EncounterMethod.PokeRadar, split: 'Gardenia' },
@@ -65,6 +74,13 @@ const ROUTE_211: Location = {
                     hidden: false,
                     method: 'Berry tree',
                     slug: 'grepa-berry',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'psych-up',
                 },
             ],
             methodSplits: [

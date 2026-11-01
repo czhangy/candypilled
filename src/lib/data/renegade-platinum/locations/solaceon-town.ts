@@ -28,6 +28,20 @@ const SOLACEON_TOWN: Location = {
             method: 'Berry tree',
             slug: 'figy-berry',
         },
+        {
+            category: ItemCategory.KeyItem,
+            count: 1,
+            hidden: false,
+            method: 'Gift from NPC',
+            slug: 'seal-case',
+        },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Gift from Lucian',
+            slug: 'psychic',
+        },
     ],
 };
 

@@ -162,10 +162,10 @@ Work one location at a time, in alphabetical order, after its method splits. Ite
 1. Ask the user for the location's items, listed per subarea (or on the `Location` when it has none). Never fetch or infer them from a source yourself.
 2. For each item the user gives, write a `LocationItem` into the `items` array of that `Location` or `Subarea`: `{ category, count, hidden, method, slug }`.
     - `count` is the "×N" on the source's row for this game, else `1`. It is shown after the item's name.
-    - `category` is an `ItemCategory` (`Key Items`, `Held Items`, `Consumables` or `Berries`). Ask the user for it unless the slug is a berry; never infer it from PokeAPI's category.
+    - `category` is an `ItemCategory` (`Key Items`, `Held Items`, `Consumables`, `TMs/HMs` or `Berries`). Ask the user for it unless the slug is a berry; never infer it from PokeAPI's category.
     - `method` is a freeform string exactly as the user gives it (for example `'Overworld'`). Never normalize it or invent a value.
     - `hidden` is `true` only when the user says the item is hidden (found with the Dowsing Machine), else `false`. Never infer it.
-    - `slug` must be an `ItemSlug`.
+    - `slug` must be an `ItemSlug`. Key items and TMs/HMs live in `items.json` like any other item and are hidden from the Data tab and item pickers by `ItemHelpers.HIDDEN_CATEGORIES`; add a new category there if one is missing.
 3. If a slug isn't in `ITEMS` (`src/lib/data/raw/items.json`), add it as data first, by hand: an entry in `src/lib/data/raw/items.json` (same shape as its neighbours, with `valuesByGeneration` from PokeAPI's flavor text up to generation 5), the slug in `ItemSlug` (`types.ts`), and its sprite at `public/items/<slug>.png`. There is no fetch script. Tell the user about any sprite you can't source and wait.
 4. Item order within an array is part of the saved tracking key (`Location/Subarea/index`), so append new items at the end and never reorder after tracking has started.
 5. Items carry no split. Never ask for one.

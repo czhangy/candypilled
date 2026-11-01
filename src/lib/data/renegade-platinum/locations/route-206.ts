@@ -22,6 +22,13 @@ const ROUTE_206: Location = {
             method: 'Berry tree',
             slug: 'rawst-berry',
         },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Item on ground',
+            slug: 'gyro-ball',
+        },
     ],
     methodSplits: [
         { method: EncounterMethod.Grass, split: 'Fantina' },

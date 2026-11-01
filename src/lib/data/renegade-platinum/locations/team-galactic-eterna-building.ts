@@ -4,7 +4,7 @@ import {
     teamGalacticEternaBuilding3f,
     teamGalacticEternaBuilding4f,
 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
@@ -14,6 +14,29 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
             name: '1F',
             map: teamGalacticEternaBuilding1f,
             mapAnchor: MapAnchor.Center,
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'light-screen',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'reflect',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'thunder-wave',
+                },
+            ],
             battles: [
                 {
                     battleKey:
@@ -71,6 +94,15 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
             map: teamGalacticEternaBuilding4f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'team-galactic-eterna-building-4f',
+            items: [
+                {
+                    category: ItemCategory.KeyItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'secret-key',
+                },
+            ],
             methodSplits: [{ method: EncounterMethod.Gift, split: 'Fantina' }],
             battles: [
                 {

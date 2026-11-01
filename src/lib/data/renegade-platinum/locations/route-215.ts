@@ -41,6 +41,20 @@ const ROUTE_215: Location = {
             method: 'Berry tree',
             slug: 'mago-berry',
         },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Item on ground',
+            slug: 'payback',
+        },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Item on ground',
+            slug: 'hyper-voice',
+        },
     ],
     methodSplits: [
         { method: EncounterMethod.Grass, split: 'Maylene' },

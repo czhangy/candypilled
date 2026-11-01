@@ -3,7 +3,7 @@ import {
     jubilifeCityPokemonCenter,
 } from '@/lib/data/renegade-platinum/maps';
 import { GEN_4_TRUE_DOUBLE_HEIGHT } from '@/lib/static/constants';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const JUBILIFE_CITY: Location = {
@@ -13,6 +13,36 @@ const JUBILIFE_CITY: Location = {
             name: 'City',
             map: jubilifeCityCity,
             mapAnchor: MapAnchor.BottomLeft,
+            items: [
+                {
+                    category: ItemCategory.KeyItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from Looker',
+                    slug: 'vs-recorder',
+                },
+                {
+                    category: ItemCategory.KeyItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'fashion-case',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'hidden-power',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'facade',
+                },
+            ],
             tagPartner: [
                 {
                     battleKey: 'pkmn-trainer-dawn-jubilife-city-tag',

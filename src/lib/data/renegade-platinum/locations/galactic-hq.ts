@@ -6,7 +6,7 @@ import {
     galacticHqPixieRoom,
     galacticHqWarehouse,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const GALACTIC_HQ: Location = {
@@ -16,6 +16,29 @@ const GALACTIC_HQ: Location = {
             name: 'Warehouse',
             map: galacticHqWarehouse,
             mapAnchor: MapAnchor.Left,
+            items: [
+                {
+                    category: ItemCategory.KeyItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'galactic-key',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'snatch',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'fly',
+                },
+            ],
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-warehouse-1',
@@ -33,6 +56,15 @@ const GALACTIC_HQ: Location = {
             name: '1F',
             map: galacticHq1f,
             mapAnchor: MapAnchor.Center,
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'frustration',
+                },
+            ],
             battles: [
                 {
                     battleKey: 'galactic-grunt-f-hq-1f',

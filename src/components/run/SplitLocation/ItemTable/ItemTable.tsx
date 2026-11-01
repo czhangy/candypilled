@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import Image from 'next/image';
 import { ItemCategory } from '@/lib/static/enums';
-import { GameDataSource, ItemData, LocationItem } from '@/lib/static/types';
+import { GameDataSource, LocationItem } from '@/lib/static/types';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import styles from './ItemTable.module.scss';
 
@@ -10,7 +10,6 @@ type ItemTableProps = {
     dataSource: GameDataSource;
     items: LocationItem[];
     keyPrefix: string;
-    onSelectItem: (slug: string) => void;
     onToggleItem: (itemKey: string) => void;
 };
 
@@ -19,12 +18,18 @@ const ItemTable: React.FC<ItemTableProps> = ({
     dataSource,
     items,
     keyPrefix,
-    onSelectItem,
     onToggleItem,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
+
+    type Row = {
+        index: number;
+        item: LocationItem;
+        name: string;
+        sprite: string;
+    };
 
     const ITEM_ICON_SIZE = 24;
 
@@ -32,6 +37,7 @@ const ItemTable: React.FC<ItemTableProps> = ({
         ItemCategory.KeyItem,
         ItemCategory.HeldItem,
         ItemCategory.Consumable,
+        ItemCategory.TmHm,
         ItemCategory.Berry,
     ];
 
@@ -41,20 +47,25 @@ const ItemTable: React.FC<ItemTableProps> = ({
 
     // `index` is the item's position in the source list, which the saved
     // tracking key is built from, so it must survive the alphabetical sort.
-    const getCategoryRows = (
-        category: ItemCategory
-    ): { index: number; item: LocationItem; itemData: ItemData }[] =>
+    const getCategoryRows = (category: ItemCategory): Row[] =>
         items
-            .flatMap((item, index) => {
+            .flatMap((item, index): Row[] => {
                 const itemData = ItemHelpers.getHeldItemData(
                     dataSource,
                     item.slug
                 );
                 return itemData && item.category === category
-                    ? [{ index, item, itemData }]
+                    ? [
+                          {
+                              index,
+                              item,
+                              name: itemData.name,
+                              sprite: itemData.sprite,
+                          },
+                      ]
                     : [];
             })
-            .sort((a, b) => a.itemData.name.localeCompare(b.itemData.name));
+            .sort((a, b) => a.name.localeCompare(b.name));
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -81,7 +92,7 @@ const ItemTable: React.FC<ItemTableProps> = ({
                                 <tr className={styles['category-row']}>
                                     <th colSpan={3}>{category}</th>
                                 </tr>
-                                {rows.map(({ index, item, itemData }) => {
+                                {rows.map(({ index, item, name, sprite }) => {
                                     const itemKey = `${keyPrefix}/${index}`;
                                     const isCollected =
                                         collectedItems.includes(itemKey);
@@ -99,7 +110,7 @@ const ItemTable: React.FC<ItemTableProps> = ({
                                         >
                                             <td>
                                                 <input
-                                                    aria-label={`Collected ${itemData.name}`}
+                                                    aria-label={`Collected ${name}`}
                                                     checked={isCollected}
                                                     className={styles.checkbox}
                                                     onChange={() =>
@@ -109,25 +120,21 @@ const ItemTable: React.FC<ItemTableProps> = ({
                                                 />
                                             </td>
                                             <td>
-                                                <button
+                                                <span
                                                     className={
-                                                        styles['item-button']
+                                                        styles['item-name']
                                                     }
-                                                    onClick={() =>
-                                                        onSelectItem(item.slug)
-                                                    }
-                                                    type="button"
                                                 >
                                                     <Image
-                                                        alt={itemData.name}
+                                                        alt={name}
                                                         height={ITEM_ICON_SIZE}
-                                                        src={itemData.sprite}
+                                                        src={sprite}
                                                         width={ITEM_ICON_SIZE}
                                                     />
                                                     {item.count > 1
-                                                        ? `${itemData.name} ×${item.count}`
-                                                        : itemData.name}
-                                                </button>
+                                                        ? `${name} ×${item.count}`
+                                                        : name}
+                                                </span>
                                             </td>
                                             <td>
                                                 <div className={styles.found}>

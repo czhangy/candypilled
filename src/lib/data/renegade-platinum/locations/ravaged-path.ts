@@ -1,5 +1,5 @@
 import { ravagedPath } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const RAVAGED_PATH: Location = {
@@ -7,6 +7,22 @@ const RAVAGED_PATH: Location = {
     map: ravagedPath,
     mapAnchor: MapAnchor.Bottom,
     encountersKey: 'ravaged-path',
+    items: [
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Item on ground',
+            slug: 'rock-tomb',
+        },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Item on ground',
+            slug: 'stone-edge',
+        },
+    ],
     methodSplits: [
         { method: EncounterMethod.Cave, split: 'Roark' },
         { method: EncounterMethod.Surf, split: 'Byron' },

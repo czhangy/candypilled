@@ -86,6 +86,20 @@ const ROUTE_212: Location = {
                     method: 'Berry tree',
                     slug: 'tamato-berry',
                 },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'sunny-day',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'safeguard',
+                },
             ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Maylene' },
@@ -157,6 +171,27 @@ const ROUTE_212: Location = {
                     hidden: false,
                     method: 'Berry tree',
                     slug: 'pinap-berry',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'toxic',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'bug-buzz',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'poison-jab',
                 },
             ],
             methodSplits: [
