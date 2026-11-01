@@ -13,6 +13,7 @@ const ETERNA_CITY: Location = {
         { method: EncounterMethod.GoodRod, split: 'Maylene' },
         { method: EncounterMethod.SuperRod, split: 'Candice' },
         { method: EncounterMethod.Egg, split: 'Fantina' },
+        { method: EncounterMethod.Trade, split: 'Gardenia' },
     ],
     battles: [
         {
