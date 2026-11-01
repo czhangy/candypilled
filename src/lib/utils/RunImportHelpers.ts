@@ -6,7 +6,7 @@ export default class RunImportHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    /** run with imported Pokémon merged in by location (dead locations kept as-is, new locations appended), completedSplits set to exactly what the save reports, and gender overwritten with the save's gender. */
+    /** run with its living Pokémon replaced by the save's (matched by location; any not in the save are dropped, dead ones kept as-is, new locations appended), completedSplits set to exactly what the save reports, and gender overwritten with the save's gender. */
     static mergeImport(
         run: Run,
         importedPokemon: CaughtPokemon[],
@@ -19,13 +19,13 @@ export default class RunImportHelpers {
         const existingLocations = new Set(
             run.caughtPokemon.map((pokemon) => pokemon.location)
         );
-        const merged = run.caughtPokemon.map((pokemon) => {
+        const merged = run.caughtPokemon.flatMap((pokemon) => {
             if (pokemon.status === PokemonStatus.Dead) {
-                return pokemon;
+                return [pokemon];
             }
 
             const importedPokemon = importedByLocation.get(pokemon.location);
-            return importedPokemon ?? pokemon;
+            return importedPokemon ? [importedPokemon] : [];
         });
         const newPokemon = [...importedByLocation.values()].filter(
             (pokemon) => !existingLocations.has(pokemon.location)

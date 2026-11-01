@@ -17,7 +17,7 @@ const ROUTE_217: Location = {
             category: ItemCategory.TmHm,
             count: 1,
             hidden: false,
-            method: 'Item on ground',
+            method: 'Ground',
             slug: 'hail',
         },
         {

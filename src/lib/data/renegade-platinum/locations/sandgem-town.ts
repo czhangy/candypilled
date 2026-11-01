@@ -12,12 +12,6 @@ const SANDGEM_TOWN: Location = {
             name: 'Town',
             map: sandgemTownTown,
             mapAnchor: MapAnchor.Center,
-        },
-        {
-            name: 'Lab',
-            map: sandgemTownLab,
-            mapAnchor: MapAnchor.Center,
-            encountersKey: 'sandgem-town-lab',
             items: [
                 {
                     category: ItemCategory.KeyItem,
@@ -27,7 +21,13 @@ const SANDGEM_TOWN: Location = {
                     slug: 'poke-radar',
                 },
             ],
-            methodSplits: [{ method: EncounterMethod.Starter, split: 'Roark' }],
+        },
+        {
+            name: 'Lab',
+            map: sandgemTownLab,
+            mapAnchor: MapAnchor.Center,
+            encountersKey: 'sandgem-town-lab',
+            methodSplits: [{ method: EncounterMethod.Gift, split: 'Roark' }],
         },
     ],
 };

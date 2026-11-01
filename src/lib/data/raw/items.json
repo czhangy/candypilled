@@ -7168,5 +7168,35 @@
                 "description": "Teaches Rock Climb to a compatible Pokémon."
             }
         ]
+    },
+    "running-shoes": {
+        "slug": "running-shoes",
+        "name": "Running Shoes",
+        "category": "gameplay",
+        "effect": "Lets the player run.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/running-shoes.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Shoes that allow the wearer to run. Hold the B Button while moving."
+            }
+        ]
+    },
+    "honey": {
+        "slug": "honey",
+        "name": "Honey",
+        "category": "gameplay",
+        "effect": "Attracts wild Pokémon when spread on a tree.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/honey.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "Sweet honey. Slather it on a tree to attract wild Pokémon."
+            }
+        ]
     }
 }

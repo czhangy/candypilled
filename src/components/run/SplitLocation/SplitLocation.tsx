@@ -584,13 +584,9 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                             {((section.encounters && !allEncountersHidden) ||
                                 section.items.length > 0) && (
                                 <div className={styles['lower-section']}>
-                                    {section.encounters &&
-                                        !allEncountersHidden && (
-                                            <div
-                                                className={
-                                                    styles['encounters-row']
-                                                }
-                                            >
+                                    <div className={styles['left-column']}>
+                                        {section.encounters &&
+                                            !allEncountersHidden && (
                                                 <EncounterTable
                                                     badgeAssetFolder={
                                                         game.badgeAssetFolder
@@ -617,73 +613,72 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                                         selectedEncounter?.species
                                                     }
                                                 />
-                                                <PokedexTile
-                                                    dupes={dupes}
-                                                    encounter={encounter}
-                                                    game={game}
-                                                    generation={game.generation}
-                                                    isEggEncounter={
-                                                        isEggEncounter
-                                                    }
-                                                    isLocationMissed={isMissed}
-                                                    isStarterEncounter={
-                                                        isStarterEncounter
-                                                    }
-                                                    maxLevel={
-                                                        selectedEncounter?.maxLevel ??
-                                                        null
-                                                    }
-                                                    minLevel={
-                                                        selectedEncounter?.minLevel ??
-                                                        null
-                                                    }
-                                                    mode="catch"
-                                                    onAddPokemon={
-                                                        handlePokedexTileAddPokemon
-                                                    }
-                                                    onRemovePokemon={
-                                                        handleRemovePokemon
-                                                    }
-                                                    onSelectAbility={
-                                                        onSelectAbility
-                                                    }
-                                                    onSelectLocation={
-                                                        onSelectLocation
-                                                    }
-                                                    onSelectMove={onSelectMove}
-                                                    onSelectSpecies={(
-                                                        species: string
-                                                    ) =>
-                                                        setSpeciesOverride(
-                                                            species
-                                                        )
-                                                    }
-                                                    onSelectSpeciesLink={
-                                                        onSelectSpecies
-                                                    }
-                                                    originalSpecies={
-                                                        selectedEncounter?.species
-                                                    }
-                                                    species={
-                                                        speciesOverride ??
-                                                        selectedEncounter?.species
-                                                    }
-                                                    usedLocations={
-                                                        usedLocations
-                                                    }
-                                                    variant={variant}
-                                                />
-                                            </div>
+                                            )}
+                                        {section.items.length > 0 && (
+                                            <ItemTable
+                                                dataSource={game.dataSource}
+                                                collectedItems={
+                                                    run.collectedItems
+                                                }
+                                                items={section.items}
+                                                keyPrefix={itemKeyPrefix}
+                                                onToggleItem={handleToggleItem}
+                                            />
                                         )}
-                                    {section.items.length > 0 && (
-                                        <ItemTable
-                                            dataSource={game.dataSource}
-                                            collectedItems={run.collectedItems}
-                                            items={section.items}
-                                            keyPrefix={itemKeyPrefix}
-                                            onToggleItem={handleToggleItem}
-                                        />
-                                    )}
+                                    </div>
+                                    {section.encounters &&
+                                        !allEncountersHidden && (
+                                            <PokedexTile
+                                                dupes={dupes}
+                                                encounter={encounter}
+                                                game={game}
+                                                generation={game.generation}
+                                                isEggEncounter={isEggEncounter}
+                                                isLocationMissed={isMissed}
+                                                isStarterEncounter={
+                                                    isStarterEncounter
+                                                }
+                                                maxLevel={
+                                                    selectedEncounter?.maxLevel ??
+                                                    null
+                                                }
+                                                minLevel={
+                                                    selectedEncounter?.minLevel ??
+                                                    null
+                                                }
+                                                mode="catch"
+                                                onAddPokemon={
+                                                    handlePokedexTileAddPokemon
+                                                }
+                                                onRemovePokemon={
+                                                    handleRemovePokemon
+                                                }
+                                                onSelectAbility={
+                                                    onSelectAbility
+                                                }
+                                                onSelectLocation={
+                                                    onSelectLocation
+                                                }
+                                                onSelectMove={onSelectMove}
+                                                onSelectSpecies={(
+                                                    species: string
+                                                ) =>
+                                                    setSpeciesOverride(species)
+                                                }
+                                                onSelectSpeciesLink={
+                                                    onSelectSpecies
+                                                }
+                                                originalSpecies={
+                                                    selectedEncounter?.species
+                                                }
+                                                species={
+                                                    speciesOverride ??
+                                                    selectedEncounter?.species
+                                                }
+                                                usedLocations={usedLocations}
+                                                variant={variant}
+                                            />
+                                        )}
                                 </div>
                             )}
                         </div>
