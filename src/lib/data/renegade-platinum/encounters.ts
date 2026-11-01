@@ -1965,6 +1965,17 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             chance: 33,
         },
     ],
+    'oreburgh-city-trade': [
+        {
+            species: 'spheal',
+            method: EncounterMethod.Trade,
+            minLevel: null,
+            maxLevel: null,
+            chance: null,
+            tradeFor: 'ponyta',
+            heldItem: 'never-melt-ice',
+        },
+    ],
     'oreburgh-mine': [
         {
             species: 'geodude',
@@ -2419,6 +2430,17 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             minLevel: 12,
             maxLevel: 12,
             chance: 10,
+        },
+    ],
+    'floaroma-town-trade': [
+        {
+            species: 'skorupi',
+            method: EncounterMethod.Trade,
+            minLevel: null,
+            maxLevel: null,
+            chance: null,
+            tradeFor: 'cherubi',
+            heldItem: 'poison-barb',
         },
     ],
     'floaroma-meadow': [
@@ -3222,6 +3244,15 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
             minLevel: 1,
             maxLevel: 1,
             chance: null,
+        },
+        {
+            species: 'chatot',
+            method: EncounterMethod.Trade,
+            minLevel: null,
+            maxLevel: null,
+            chance: null,
+            tradeFor: 'snorunt',
+            heldItem: 'sharp-beak',
         },
     ],
     'sinnoh-route-211-west': [

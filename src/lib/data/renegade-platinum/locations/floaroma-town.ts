@@ -12,6 +12,10 @@ const FLOAROMA_TOWN: Location = {
             name: 'Town',
             map: floaromaTownTown,
             mapAnchor: MapAnchor.Center,
+            encountersKey: 'floaroma-town-trade',
+            methodSplits: [
+                { method: EncounterMethod.Trade, split: 'Gardenia' },
+            ],
         },
         {
             name: 'Pokémon Center',

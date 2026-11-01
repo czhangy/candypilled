@@ -12,6 +12,8 @@ const OREBURGH_CITY: Location = {
             name: 'City',
             map: oreburghCityCity,
             mapAnchor: MapAnchor.TopLeft,
+            encountersKey: 'oreburgh-city-trade',
+            methodSplits: [{ method: EncounterMethod.Trade, split: 'Roark' }],
         },
         {
             name: 'Pokémon Center',
