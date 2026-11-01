@@ -1,5 +1,5 @@
 import { route214 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_214: Location = {
@@ -7,6 +7,36 @@ const ROUTE_214: Location = {
     map: route214,
     mapAnchor: MapAnchor.Top,
     encountersKey: 'sinnoh-route-214',
+    items: [
+        {
+            category: ItemCategory.Berry,
+            count: 1,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'cheri-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 1,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'sitrus-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 1,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'chesto-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 1,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'pomeg-berry',
+        },
+    ],
     methodSplits: [
         { method: EncounterMethod.Grass, split: 'Wake' },
         { method: EncounterMethod.Surf, split: 'Byron' },

@@ -1,5 +1,10 @@
 import { route212North, route212South } from '@/lib/data/platinum/maps';
-import { EncounterMethod, FieldCondition, MapAnchor } from '@/lib/static/enums';
+import {
+    EncounterMethod,
+    FieldCondition,
+    ItemCategory,
+    MapAnchor,
+} from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_212: Location = {
@@ -10,6 +15,22 @@ const ROUTE_212: Location = {
             map: route212South,
             mapAnchor: MapAnchor.Right,
             encountersKey: 'sinnoh-route-212-east-towards-pastoria-city',
+            items: [
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'pecha-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 3,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'pinap-berry',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Surf, split: 'Byron' },
                 { method: EncounterMethod.OldRod, split: 'Wake' },
@@ -97,6 +118,36 @@ const ROUTE_212: Location = {
             map: route212North,
             mapAnchor: MapAnchor.Top,
             encountersKey: 'sinnoh-route-212-north-towards-hearthome-city',
+            items: [
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'aspear-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'sitrus-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'lum-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'tamato-berry',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Surf, split: 'Byron' },
                 { method: EncounterMethod.GoodRod, split: 'Wake' },

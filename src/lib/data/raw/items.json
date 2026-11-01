@@ -4905,5 +4905,465 @@
                 "description": "A crown made in a civilization about 3,000 years ago. A maniac will buy it for a high price."
             }
         ]
+    },
+    "razz-berry": {
+        "slug": "razz-berry",
+        "name": "Razz Berry",
+        "category": "baking-only",
+        "effect": "Used for creating PokéBlocks and Poffins.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/razz-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow RAZZ."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Bury it in soft soil to grow a Razz Plant."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Berry which is very rare in the Unova region. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "bluk-berry": {
+        "slug": "bluk-berry",
+        "name": "Bluk Berry",
+        "category": "baking-only",
+        "effect": "Used for creating PokéBlocks and Poffins.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/bluk-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow BLUK."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Bury it in soft soil to grow a Bluk Plant."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Berry which is very rare in the Unova region. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "nanab-berry": {
+        "slug": "nanab-berry",
+        "name": "Nanab Berry",
+        "category": "baking-only",
+        "effect": "Used for creating PokéBlocks and Poffins.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/nanab-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow NANAB."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Bury it in soft soil to grow a Nanab Plant."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Berry which is very rare in the Unova region. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "wepear-berry": {
+        "slug": "wepear-berry",
+        "name": "Wepear Berry",
+        "category": "baking-only",
+        "effect": "Used for creating PokéBlocks and Poffins.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/wepear-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow WEPEAR."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Bury it in soft soil to grow a Wepear Plant."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Berry which is very rare in the Unova region. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "pinap-berry": {
+        "slug": "pinap-berry",
+        "name": "Pinap Berry",
+        "category": "baking-only",
+        "effect": "Used for creating PokéBlocks and Poffins.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/pinap-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow PINAP."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Bury it in soft soil to grow a Pinap Plant."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Berry which is very rare in the Unova region. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "pomeg-berry": {
+        "slug": "pomeg-berry",
+        "name": "Pomeg Berry",
+        "category": "effort-drop",
+        "effect": "Drops HP Effort Values by 10 and raises happiness.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/pomeg-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow POMEG."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base HP."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Using it on a Pokémon makes it more friendly, but it also lowers its base HP."
+            }
+        ]
+    },
+    "kelpsy-berry": {
+        "slug": "kelpsy-berry",
+        "name": "Kelpsy Berry",
+        "category": "effort-drop",
+        "effect": "Drops Attack Effort Values by 10 and raises happiness.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/kelpsy-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow KELPSY."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base Attack stat."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Using it on a Pokémon makes it more friendly, but it also lowers its base Attack stat."
+            }
+        ]
+    },
+    "qualot-berry": {
+        "slug": "qualot-berry",
+        "name": "Qualot Berry",
+        "category": "effort-drop",
+        "effect": "Drops Defense Effort Values by 10 and raises happiness.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/qualot-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow QUALOT."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base Defense stat."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Using it on a Pokémon makes it more friendly, but it also lowers its base Defense stat."
+            }
+        ]
+    },
+    "hondew-berry": {
+        "slug": "hondew-berry",
+        "name": "Hondew Berry",
+        "category": "effort-drop",
+        "effect": "Drops Special Attack Effort Values by 10 and raises happiness.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/hondew-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow HONDEW."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base Sp. Atk stat."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Using it on a Pokémon makes it more friendly, but it also lowers its base Sp. Atk stat."
+            }
+        ]
+    },
+    "grepa-berry": {
+        "slug": "grepa-berry",
+        "name": "Grepa Berry",
+        "category": "effort-drop",
+        "effect": "Drops Special Defense Effort Values by 10 and raises happiness.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/grepa-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow GREPA."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base Sp. Def stat."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Using it on a Pokémon makes it more friendly, but it also lowers its base Sp. Def stat."
+            }
+        ]
+    },
+    "tamato-berry": {
+        "slug": "tamato-berry",
+        "name": "Tamato Berry",
+        "category": "effort-drop",
+        "effect": "Drops Speed Effort Values by 10 and raises happiness.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/tamato-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow TAMATO."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base Speed stat."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "Using it on a Pokémon makes it more friendly, but it also lowers its base Speed stat."
+            }
+        ]
+    },
+    "cornn-berry": {
+        "slug": "cornn-berry",
+        "name": "Cornn Berry",
+        "category": "baking-only",
+        "effect": "Used for creating PokéBlocks and Poffins.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/cornn-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow CORNN."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Bury it in soft soil to grow a Cornn Plant."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Berry which is very rare in the Unova region. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "magost-berry": {
+        "slug": "magost-berry",
+        "name": "Magost Berry",
+        "category": "baking-only",
+        "effect": "Used for creating PokéBlocks and Poffins.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/magost-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow MAGOST."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Bury it in soft soil to grow a Magost Plant."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Berry which is very rare in the Unova region. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "rabuta-berry": {
+        "slug": "rabuta-berry",
+        "name": "Rabuta Berry",
+        "category": "baking-only",
+        "effect": "Used for creating PokéBlocks and Poffins.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/rabuta-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow RABUTA."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Bury it in soft soil to grow a Rabuta Plant."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Berry which is very rare in the Unova region. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "nomel-berry": {
+        "slug": "nomel-berry",
+        "name": "Nomel Berry",
+        "category": "baking-only",
+        "effect": "Used for creating PokéBlocks and Poffins.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/nomel-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow NOMEL."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Bury it in soft soil to grow a Nomel Plant."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Berry which is very rare in the Unova region. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "spelon-berry": {
+        "slug": "spelon-berry",
+        "name": "Spelon Berry",
+        "category": "baking-only",
+        "effect": "Used for creating PokéBlocks and Poffins.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/spelon-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow SPELON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Bury it in soft soil to grow a Spelon Plant."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Berry which is very rare in the Unova region. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "pamtre-berry": {
+        "slug": "pamtre-berry",
+        "name": "Pamtre Berry",
+        "category": "baking-only",
+        "effect": "Used for creating PokéBlocks and Poffins.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/pamtre-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow PAMTRE."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Bury it in soft soil to grow a Pamtre Plant."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Berry which is very rare in the Unova region. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "watmel-berry": {
+        "slug": "watmel-berry",
+        "name": "Watmel Berry",
+        "category": "baking-only",
+        "effect": "Used for creating PokéBlocks and Poffins.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/watmel-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow WATMEL."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Bury it in soft soil to grow a Watmel Plant."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Berry which is very rare in the Unova region. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "durin-berry": {
+        "slug": "durin-berry",
+        "name": "Durin Berry",
+        "category": "baking-only",
+        "effect": "Used for creating PokéBlocks and Poffins.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/durin-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow DURIN."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Bury it in soft soil to grow a Durin Plant."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Berry which is very rare in the Unova region. A maniac will buy it for a high price."
+            }
+        ]
+    },
+    "belue-berry": {
+        "slug": "belue-berry",
+        "name": "Belue Berry",
+        "category": "baking-only",
+        "effect": "Used for creating PokéBlocks and Poffins.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/belue-berry.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "POKéBLOCK ingredient. Plant in loamy soil to grow BELUE."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A Poffin ingredient. Bury it in soft soil to grow a Belue Plant."
+            },
+            {
+                "fromGeneration": 5,
+                "description": "A Berry which is very rare in the Unova region. A maniac will buy it for a high price."
+            }
+        ]
     }
 }

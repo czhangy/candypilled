@@ -1,5 +1,5 @@
 import { route224Dawn, route224Lucas } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_224: Location = {
@@ -7,6 +7,36 @@ const ROUTE_224: Location = {
     map: { male: route224Dawn, female: route224Lucas },
     mapAnchor: MapAnchor.BottomLeft,
     encountersKey: 'route-224',
+    items: [
+        {
+            category: ItemCategory.Berry,
+            count: 2,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'sitrus-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 3,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'bluk-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 3,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'nanab-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 3,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'wepear-berry',
+        },
+    ],
     methodSplits: [
         { method: EncounterMethod.Grass, split: 'Cynthia' },
         { method: EncounterMethod.Surf, split: 'Cynthia' },

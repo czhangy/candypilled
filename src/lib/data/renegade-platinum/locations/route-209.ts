@@ -10,7 +10,7 @@ import {
     GEN_4_TRUE_DOUBLE_HEIGHT,
     GEN_4_TRUE_DOUBLE_WIDTH,
 } from '@/lib/static/constants';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_209: Location = {
@@ -21,6 +21,29 @@ const ROUTE_209: Location = {
             map: route209Main,
             mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'sinnoh-route-209',
+            items: [
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'leppa-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'chesto-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 2,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'razz-berry',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Maylene' },
                 { method: EncounterMethod.OldRod, split: 'Maylene' },

@@ -15,7 +15,6 @@
         "pokeapi:encounters": "tsx src/lib/scripts/pokeapi/encounters.ts",
         "pokeapi:abilities": "tsx src/lib/scripts/pokeapi/abilities.ts",
         "pokeapi:moves": "tsx src/lib/scripts/pokeapi/moves.ts",
-        "pokeapi:items": "tsx src/lib/scripts/pokeapi/items.ts",
         "stitch-map": "tsx src/lib/scripts/assets/stitch-map.ts",
         "check:data": "tsx src/lib/scripts/validation/check-game-data.ts",
         "prepare": "husky"

@@ -1,5 +1,5 @@
 import { route207 } from '@/lib/data/platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_207: Location = {
@@ -7,6 +7,29 @@ const ROUTE_207: Location = {
     map: route207,
     mapAnchor: MapAnchor.Center,
     encountersKey: 'sinnoh-route-207',
+    items: [
+        {
+            category: ItemCategory.Berry,
+            count: 2,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'oran-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 1,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'cheri-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 1,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'bluk-berry',
+        },
+    ],
     methodSplits: [
         { method: EncounterMethod.Grass, split: 'Roark' },
         { method: EncounterMethod.HoneyTree, split: 'Roark' },

@@ -3,7 +3,12 @@ import {
     GEN_4_TRUE_DOUBLE_HEIGHT,
     GEN_4_TRUE_DOUBLE_WIDTH,
 } from '@/lib/static/constants';
-import { EncounterMethod, FieldCondition, MapAnchor } from '@/lib/static/enums';
+import {
+    EncounterMethod,
+    FieldCondition,
+    ItemCategory,
+    MapAnchor,
+} from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_210: Location = {
@@ -14,6 +19,29 @@ const ROUTE_210: Location = {
             map: route210South,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'sinnoh-route-210-south-towards-solaceon-town',
+            items: [
+                {
+                    category: ItemCategory.Berry,
+                    count: 2,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'aspear-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'razz-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'pinap-berry',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Maylene' },
                 { method: EncounterMethod.HoneyTree, split: 'Maylene' },
@@ -58,6 +86,36 @@ const ROUTE_210: Location = {
             map: route210North,
             mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'sinnoh-route-210-west-towards-celestic-town',
+            items: [
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'sitrus-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'chesto-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'wiki-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'aguav-berry',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Surf, split: 'Byron' },
                 { method: EncounterMethod.Grass, split: 'Byron' },

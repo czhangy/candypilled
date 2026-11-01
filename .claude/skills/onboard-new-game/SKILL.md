@@ -155,16 +155,31 @@ Work one location at a time, in alphabetical order.
 3. Write `methodSplits` on the `Location` or `Subarea`: one `{ method, split }` per encounter method the area has. Never infer a split from location membership, source text or geography. Never leave a placeholder.
 4. A gating rule the user states for the game (for example, a move or item that unlocks surf or fishing) applies to every location afterward without asking again.
 
-## 13. Split assignment
+## 13. Items
 
-Run only after step 12 is finished for every location. Work split by split, in `Game.splits` order:
+Work one location at a time, in alphabetical order, after its method splits. Items are pickups the player collects; battle rewards and held items are not.
+
+1. Ask the user for the location's items, listed per subarea (or on the `Location` when it has none). Never fetch or infer them from a source yourself.
+2. For each item the user gives, write a `LocationItem` into the `items` array of that `Location` or `Subarea`: `{ category, count, hidden, method, slug }`.
+    - `count` is the "×N" on the source's row for this game, else `1`. It is shown after the item's name.
+    - `category` is an `ItemCategory` (`Key Items`, `Held Items`, `Consumables` or `Berries`). Ask the user for it unless the slug is a berry; never infer it from PokeAPI's category.
+    - `method` is a freeform string exactly as the user gives it (for example `'Overworld'`). Never normalize it or invent a value.
+    - `hidden` is `true` only when the user says the item is hidden (found with the Dowsing Machine), else `false`. Never infer it.
+    - `slug` must be an `ItemSlug`.
+3. If a slug isn't in `ITEMS` (`src/lib/data/raw/items.json`), add it as data first, by hand: an entry in `src/lib/data/raw/items.json` (same shape as its neighbours, with `valuesByGeneration` from PokeAPI's flavor text up to generation 5), the slug in `ItemSlug` (`types.ts`), and its sprite at `public/items/<slug>.png`. There is no fetch script. Tell the user about any sprite you can't source and wait.
+4. Item order within an array is part of the saved tracking key (`Location/Subarea/index`), so append new items at the end and never reorder after tracking has started.
+5. Items carry no split. Never ask for one.
+
+## 14. Split assignment
+
+Run only after step 13 is finished for every location. Work split by split, in `Game.splits` order:
 
 1. Ask the user which locations belong in the split's `locations`. List the game's locations so they can choose.
 2. Write exactly the list the user gives, then move to the next split.
 
 Never add a location to a split unprompted or infer membership. Per `.claude/docs/split-location-wiring.md`, a split lists only locations the player is required to go through.
 
-## 14. Resources
+## 15. Resources
 
 Write each resource as `{ text, description, url }` in `Game.resources`. Every game gets these two, in addition to anything the user supplies:
 
@@ -173,7 +188,7 @@ Write each resource as `{ text, description, url }` in `Game.resources`. Every g
 
 Then ask the user for any further external resources (guides, resource packs, downloads, wikis) and add those too.
 
-## 15. Save parsing
+## 16. Save parsing
 
 Save import is per game, keyed by `Game.version`. Never copy another game's values unless the user confirms the layouts are identical.
 
@@ -182,11 +197,11 @@ Save import is per game, keyed by `Game.version`. Never copy another game's valu
 3. Gen 3: add the game's `GameVersionGroup` to `FLAG_LAYOUT_BY_VERSION` in `Gen3SplitParser.ts` with `flagsOffset` (`SaveBlock1.flags` in the decomp's `include/global.h`) and `gameClearFlag` (`FLAG_SYS_GAME_CLEAR`, `SYSTEM_FLAGS + 0x04`, in `include/constants/flags.h`). Also check the shared `PARTY_OFFSET`, `GENDER_OFFSET`, `GEN3_ITEM_INDEX`, `GEN3_NATIONAL_DEX_BY_SPECIES` and the move IDs against the decomp. If there is no decomp, ask the user.
 4. Ask the user to import a save for the game and report the result. Never start a dev server.
 
-## 16. Cleanup
+## 17. Cleanup
 
 Delete everything onboarding brought in that the app doesn't use: cloned decomps, downloaded source files, raw JSON, throwaway scripts, and leftover screenshots on the Desktop. Keep `ONBOARDING.md`. Run `git status` and show the user any untracked path you are unsure about instead of deleting it.
 
-## 17. Final validation
+## 18. Final validation
 
 1. Set the game's `isEnabled` to `true` in `GAME_CHECK_CONFIGS`.
 2. Run `npm run check:data` and `npx tsc --noEmit`. Fix every violation; a violation that needs a decision is a question for the user.

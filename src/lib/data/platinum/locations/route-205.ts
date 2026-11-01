@@ -1,5 +1,5 @@
 import { route205North, route205South } from '@/lib/data/platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_205: Location = {
@@ -10,6 +10,36 @@ const ROUTE_205: Location = {
             map: route205South,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'sinnoh-route-205-south-towards-floaroma-town',
+            items: [
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'chesto-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'pecha-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'pecha-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'oran-berry',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Surf, split: 'Byron' },
                 { method: EncounterMethod.OldRod, split: 'Gardenia' },
@@ -65,6 +95,29 @@ const ROUTE_205: Location = {
             map: route205North,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-205-east-towards-eterna-city',
+            items: [
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'cheri-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'pecha-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 2,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'oran-berry',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Surf, split: 'Byron' },
                 { method: EncounterMethod.OldRod, split: 'Gardenia' },

@@ -2,7 +2,7 @@ import {
     floaromaTownPokemonCenter,
     floaromaTownTown,
 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const FLOAROMA_TOWN: Location = {
@@ -13,6 +13,22 @@ const FLOAROMA_TOWN: Location = {
             map: floaromaTownTown,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'floaroma-town-trade',
+            items: [
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'oran-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'cheri-berry',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Trade, split: 'Gardenia' },
             ],

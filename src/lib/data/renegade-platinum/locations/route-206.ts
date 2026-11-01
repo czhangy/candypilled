@@ -1,5 +1,5 @@
 import { route206 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_206: Location = {
@@ -7,6 +7,22 @@ const ROUTE_206: Location = {
     map: route206,
     mapAnchor: MapAnchor.Top,
     encountersKey: 'sinnoh-route-206',
+    items: [
+        {
+            category: ItemCategory.Berry,
+            count: 2,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'razz-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 2,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'rawst-berry',
+        },
+    ],
     methodSplits: [
         { method: EncounterMethod.Grass, split: 'Fantina' },
         { method: EncounterMethod.PokeRadar, split: 'Fantina' },
