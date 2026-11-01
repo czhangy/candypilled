@@ -95,27 +95,24 @@ export const ENCOUNTERS: Record<string, Encounter[]> = {
     'sandgem-town-lab': [
         {
             species: 'turtwig',
-            method: EncounterMethod.Starter,
+            method: EncounterMethod.Gift,
             minLevel: 5,
             maxLevel: 5,
             chance: 33,
-            heldItem: 'miracle-seed',
         },
         {
             species: 'chimchar',
-            method: EncounterMethod.Starter,
+            method: EncounterMethod.Gift,
             minLevel: 5,
             maxLevel: 5,
             chance: 33,
-            heldItem: 'charcoal',
         },
         {
             species: 'piplup',
-            method: EncounterMethod.Starter,
+            method: EncounterMethod.Gift,
             minLevel: 5,
             maxLevel: 5,
             chance: 33,
-            heldItem: 'mystic-water',
         },
     ],
     'lake-verity': [

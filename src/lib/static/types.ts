@@ -403,6 +403,11 @@ export type MethodSplit = {
     split: string;
 };
 
+// How an item is obtained: one of the fixed sources, or a gift from a named
+// giver (e.g. 'Gift from Cynthia').
+type LocationItemMethod =
+    'Berry tree' | 'Ground' | 'Shop' | `Gift from ${string}`;
+
 // An item the player picks up in a location or subarea. `count` is how many
 // are picked up (shown after the name when above 1), and `hidden` marks an
 // item that isn't visible in the overworld (found with the Dowsing Machine).
@@ -410,7 +415,7 @@ export type LocationItem = {
     category: ItemCategory;
     count: number;
     hidden: boolean;
-    method: string;
+    method: LocationItemMethod;
     slug: ItemSlug;
 };
 
@@ -2882,6 +2887,7 @@ export type ItemSlug =
     | 'heat-rock'
     | 'hidden-power'
     | 'hondew-berry'
+    | 'honey'
     | 'hurricane'
     | 'hyper-beam'
     | 'hyper-potion'
@@ -3027,6 +3033,7 @@ export type ItemSlug =
     | 'rose-incense'
     | 'rowap-berry'
     | 'rsvp-mail'
+    | 'running-shoes'
     | 'safeguard'
     | 'salac-berry'
     | 'scald'

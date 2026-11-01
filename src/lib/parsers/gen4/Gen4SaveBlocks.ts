@@ -1,12 +1,13 @@
 import { Gen4SaveLayout } from '@/lib/static/types';
 
 // A Gen IV save file is laid out as two equal-size halves (a main copy and a
-// backup, alternated on each in-game save for wear-leveling), each
-// containing a general block (trainer info + party) immediately followed by
-// a storage block (PC boxes). The two blocks' sizes are game-specific (see
-// gen4-save-layouts.ts) -- everything else about this halving/checksum
-// scheme is shared across Gen IV games, per Bulbapedia's "Save data
-// structure (Generation IV)" article.
+// backup), each containing a general block (trainer info + party)
+// immediately followed by a storage block (PC boxes). The game saves the two
+// blocks independently, each with its own save counter, so the newest general
+// block and the newest storage block can live in different halves. The
+// blocks' sizes are game-specific (see gen4-save-layouts.ts); the rest of the
+// scheme is shared across Gen IV games, per Bulbapedia's "Save data structure
+// (Generation IV)" article.
 const HALF_SIZE = 0x40000;
 const FOOTER_SIZE = 20;
 const FOOTER_SAVE_COUNT_OFFSET = 0x04;
@@ -17,7 +18,7 @@ export default class Gen4SaveBlocks {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    /** layout's active save half's general/storage block offsets, or throws if no half validates. */
+    /** layout's newest valid general/storage block offsets (each picked independently across the two halves), or throws if either block has no valid copy. */
     static locate(
         view: DataView,
         layout: Gen4SaveLayout
@@ -25,10 +26,21 @@ export default class Gen4SaveBlocks {
         generalBlockOffset: number;
         storageBlockOffset: number;
     } {
-        const halfOffset = Gen4SaveBlocks.selectActiveHalf(view, layout);
+        if (view.byteLength < HALF_SIZE * 2) {
+            throw new Error("This doesn't look like a Gen IV save file.");
+        }
+
         return {
-            generalBlockOffset: halfOffset,
-            storageBlockOffset: halfOffset + layout.generalBlockSize,
+            generalBlockOffset: Gen4SaveBlocks.selectNewestBlock(
+                view,
+                [0, HALF_SIZE],
+                layout.generalBlockSize
+            ),
+            storageBlockOffset: Gen4SaveBlocks.selectNewestBlock(
+                view,
+                [layout.generalBlockSize, HALF_SIZE + layout.generalBlockSize],
+                layout.storageBlockSize
+            ),
         };
     }
 
@@ -36,54 +48,40 @@ export default class Gen4SaveBlocks {
     // PRIVATE
     // -------------------------------------------------------------------------
 
-    // Picks whichever save half has the higher footer save counter and a
-    // valid block checksum, falling back to the other half if that one
-    // doesn't validate (a save can be mid-write to its active half).
-    private static selectActiveHalf(
+    // Of the block's two copies, the valid one with the higher footer save
+    // counter (a block can be mid-write, so an invalid copy is skipped).
+    private static selectNewestBlock(
         view: DataView,
-        layout: Gen4SaveLayout
+        copyOffsets: number[],
+        blockSize: number
     ): number {
-        if (view.byteLength < HALF_SIZE * 2) {
-            throw new Error("This doesn't look like a Gen IV save file.");
-        }
-
-        const counterA = Gen4SaveBlocks.readSaveCounter(view, 0, layout);
-        const counterB = Gen4SaveBlocks.readSaveCounter(
-            view,
-            HALF_SIZE,
-            layout
-        );
-        const halves = counterB > counterA ? [HALF_SIZE, 0] : [0, HALF_SIZE];
-
-        const validHalf = halves.find(
-            (half) =>
-                Gen4SaveBlocks.isBlockValid(
-                    view,
-                    half,
-                    layout.generalBlockSize
-                ) &&
-                Gen4SaveBlocks.isBlockValid(
-                    view,
-                    half + layout.generalBlockSize,
-                    layout.storageBlockSize
-                )
-        );
-        if (validHalf === undefined) {
+        const newest = copyOffsets
+            .filter((offset) =>
+                Gen4SaveBlocks.isBlockValid(view, offset, blockSize)
+            )
+            .sort(
+                (a, b) =>
+                    Gen4SaveBlocks.readSaveCounter(view, b, blockSize) -
+                    Gen4SaveBlocks.readSaveCounter(view, a, blockSize)
+            )[0];
+        if (newest === undefined) {
             throw new Error(
                 "This save file's data failed checksum validation."
             );
         }
 
-        return validHalf;
+        return newest;
     }
 
     private static readSaveCounter(
         view: DataView,
-        halfOffset: number,
-        layout: Gen4SaveLayout
+        blockOffset: number,
+        blockSize: number
     ): number {
-        const footerStart = halfOffset + layout.generalBlockSize - FOOTER_SIZE;
-        return view.getUint32(footerStart + FOOTER_SAVE_COUNT_OFFSET, true);
+        return view.getUint32(
+            blockOffset + blockSize - FOOTER_SIZE + FOOTER_SAVE_COUNT_OFFSET,
+            true
+        );
     }
 
     private static isBlockValid(
