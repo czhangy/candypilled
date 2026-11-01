@@ -7,7 +7,7 @@ import {
     GEN_4_TRUE_DOUBLE_HEIGHT,
     GEN_4_TRUE_DOUBLE_WIDTH,
 } from '@/lib/static/constants';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_210: Location = {
@@ -18,6 +18,43 @@ const ROUTE_210: Location = {
             map: route210South,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'sinnoh-route-210-south',
+            items: [
+                {
+                    category: ItemCategory.Berry,
+                    count: 2,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'aspear-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'razz-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'pinap-berry',
+                },
+                {
+                    category: ItemCategory.KeyItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from Cynthia',
+                    slug: 'old-charm',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'roost',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Maylene' },
                 { method: EncounterMethod.PokeRadar, split: 'Maylene' },
@@ -63,6 +100,50 @@ const ROUTE_210: Location = {
             map: { male: route210NorthDawn, female: route210NorthLucas },
             mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'sinnoh-route-210-north',
+            items: [
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'sitrus-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'chesto-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'wiki-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'aguav-berry',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'solar-beam',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'hurricane',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Byron' },
                 { method: EncounterMethod.Surf, split: 'Byron' },

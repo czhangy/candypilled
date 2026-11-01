@@ -2,7 +2,7 @@ import {
     fuegoIronworksExterior,
     fuegoIronworksInterior,
 } from '@/lib/data/platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const FUEGO_IRONWORKS: Location = {
@@ -13,6 +13,29 @@ const FUEGO_IRONWORKS: Location = {
             map: fuegoIronworksExterior,
             mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'fuego-ironworks',
+            items: [
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'sitrus-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 4,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'wepear-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'kelpsy-berry',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Surf, split: 'Byron' },
                 { method: EncounterMethod.Grass, split: 'Byron' },

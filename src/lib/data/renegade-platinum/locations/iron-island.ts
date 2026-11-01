@@ -8,7 +8,7 @@ import {
     ironIslandExterior,
 } from '@/lib/data/renegade-platinum/maps';
 import { GEN_4_TRUE_DOUBLE_HEIGHT } from '@/lib/static/constants';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const IRON_ISLAND: Location = {
@@ -19,6 +19,22 @@ const IRON_ISLAND: Location = {
             map: ironIslandExterior,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'iron-island-outside',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'iron-tail',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from Riley',
+                    slug: 'strength',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Surf, split: 'Byron' },
                 { method: EncounterMethod.OldRod, split: 'Byron' },

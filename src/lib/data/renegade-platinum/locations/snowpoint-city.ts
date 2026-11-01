@@ -1,12 +1,35 @@
 import { snowpointCity } from '@/lib/data/renegade-platinum/maps';
 import { GEN_4_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SNOWPOINT_CITY: Location = {
     name: 'Snowpoint City',
     map: snowpointCity,
     mapAnchor: MapAnchor.Center,
+    items: [
+        {
+            category: ItemCategory.KeyItem,
+            count: 1,
+            hidden: false,
+            method: 'Gift from NPC',
+            slug: 'super-rod',
+        },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Gift from Candice',
+            slug: 'avalanche',
+        },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Gift from Candice',
+            slug: 'rock-climb',
+        },
+    ],
     battles: [
         {
             battleKey:

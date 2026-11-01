@@ -2,7 +2,7 @@ import {
     oreburghGate1f,
     oreburghGateB1f,
 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const OREBURGH_GATE: Location = {
@@ -13,6 +13,15 @@ const OREBURGH_GATE: Location = {
             map: oreburghGate1f,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'oreburgh-gate-1f',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'rock-smash',
+                },
+            ],
             methodSplits: [{ method: EncounterMethod.Cave, split: 'Roark' }],
             battles: [
                 {
@@ -32,6 +41,29 @@ const OREBURGH_GATE: Location = {
             map: oreburghGateB1f,
             mapAnchor: MapAnchor.Right,
             encountersKey: 'oreburgh-gate-b1f',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'focus-punch',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'brick-break',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'flash',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Cave, split: 'Roark' },
                 { method: EncounterMethod.Surf, split: 'Byron' },

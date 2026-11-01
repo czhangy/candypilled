@@ -1,6 +1,7 @@
 import Modal from '@/components/common/Modal/Modal';
 import SearchableList from '@/components/common/SearchableList/SearchableList';
 import { GameDataSource, ItemSlug } from '@/lib/static/types';
+import ItemHelpers from '@/lib/utils/ItemHelpers';
 import styles from './ItemPickerModal.module.scss';
 
 type ItemPickerModalProps = {
@@ -32,14 +33,9 @@ const ItemPickerModal: React.FC<ItemPickerModalProps> = ({
 
     const availableItems = [
         { name: 'None', slug: NONE_SLUG },
-        ...Object.values(dataSource.items)
-            .filter(
-                (item) =>
-                    item.introducedInGeneration <= generation &&
-                    (item.removedInGeneration === undefined ||
-                        generation < item.removedInGeneration)
-            )
-            .sort((a, b) => a.name.localeCompare(b.name)),
+        ...ItemHelpers.getBrowsableItems(dataSource, generation).sort((a, b) =>
+            a.name.localeCompare(b.name)
+        ),
     ];
 
     // -------------------------------------------------------------------------

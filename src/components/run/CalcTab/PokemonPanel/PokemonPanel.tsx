@@ -10,6 +10,7 @@ import {
     StatValues,
 } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
+import ItemHelpers from '@/lib/utils/ItemHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -154,11 +155,9 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
             })
         ),
     ];
-    const availableItems = Object.values(game.dataSource.items).filter(
-        (item) =>
-            item.introducedInGeneration <= game.generation &&
-            (item.removedInGeneration === undefined ||
-                game.generation < item.removedInGeneration)
+    const availableItems = ItemHelpers.getBrowsableItems(
+        game.dataSource,
+        game.generation
     );
     const heldItemOptions: DropdownOption[] = [
         { label: 'None', value: '' },

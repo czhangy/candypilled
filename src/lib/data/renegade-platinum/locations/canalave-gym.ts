@@ -4,7 +4,7 @@ import {
     canalaveGym3f,
     canalaveGym4f,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const CANALAVE_GYM: Location = {
@@ -70,6 +70,15 @@ const CANALAVE_GYM: Location = {
             name: '4F',
             map: canalaveGym4f,
             mapAnchor: MapAnchor.Center,
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from Byron',
+                    slug: 'flash-cannon',
+                },
+            ],
             battles: [
                 {
                     battleKey: 'leader-byron',

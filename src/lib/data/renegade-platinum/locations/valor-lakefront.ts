@@ -1,5 +1,5 @@
 import { valorLakefront } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VALOR_LAKEFRONT: Location = {
@@ -7,6 +7,22 @@ const VALOR_LAKEFRONT: Location = {
     map: valorLakefront,
     mapAnchor: MapAnchor.TopRight,
     encountersKey: 'sinnoh-valor-lakefront',
+    items: [
+        {
+            category: ItemCategory.KeyItem,
+            count: 1,
+            hidden: false,
+            method: 'Gift from Cynthia',
+            slug: 'secret-potion',
+        },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Item on ground',
+            slug: 'energy-ball',
+        },
+    ],
     methodSplits: [
         { method: EncounterMethod.Grass, split: 'Wake' },
         { method: EncounterMethod.PokeRadar, split: 'Wake' },

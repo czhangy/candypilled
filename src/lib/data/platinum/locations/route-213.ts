@@ -1,5 +1,5 @@
 import { route213 } from '@/lib/data/platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_213: Location = {
@@ -7,6 +7,29 @@ const ROUTE_213: Location = {
     map: route213,
     mapAnchor: MapAnchor.Right,
     encountersKey: 'sinnoh-route-213',
+    items: [
+        {
+            category: ItemCategory.Berry,
+            count: 1,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'aguav-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 2,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'rawst-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 1,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'iapapa-berry',
+        },
+    ],
     methodSplits: [
         { method: EncounterMethod.Surf, split: 'Byron' },
         { method: EncounterMethod.OldRod, split: 'Wake' },

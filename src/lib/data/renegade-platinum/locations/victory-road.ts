@@ -7,7 +7,7 @@ import {
     victoryRoadBack3,
 } from '@/lib/data/renegade-platinum/maps';
 import { GEN_4_TRUE_DOUBLE_HEIGHT } from '@/lib/static/constants';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const VICTORY_ROAD: Location = {
@@ -18,6 +18,15 @@ const VICTORY_ROAD: Location = {
             map: victoryRoad1f,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'victory-road-1f',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'giga-impact',
+                },
+            ],
             methodSplits: [{ method: EncounterMethod.Cave, split: 'Cynthia' }],
             battles: [
                 {

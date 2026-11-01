@@ -6,7 +6,7 @@ import {
     greatMarshArea5,
     greatMarshArea6,
 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const GREAT_MARSH: Location = {
@@ -17,6 +17,22 @@ const GREAT_MARSH: Location = {
             map: greatMarshArea1,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'great-marsh-area-1-2',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'protect',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'sludge-bomb',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Wake' },
                 { method: EncounterMethod.Surf, split: 'Byron' },

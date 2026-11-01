@@ -36,6 +36,24 @@ export default class ItemHelpers {
         return ItemHelpers.getHeldItemData(dataSource, slug)?.sprite;
     }
 
+    /**
+     * Every item in dataSource that exists as of generation and is worth
+     * browsing or picking, excluding the recovery and X items that are in
+     * the data only so trainers' battle items can resolve, and key items.
+     */
+    static getBrowsableItems(
+        dataSource: GameDataSource,
+        generation: number
+    ): ItemData[] {
+        return Object.values(dataSource.items).filter(
+            (item) =>
+                !ItemHelpers.HIDDEN_CATEGORIES.includes(item.category) &&
+                item.introducedInGeneration <= generation &&
+                (item.removedInGeneration === undefined ||
+                    generation < item.removedInGeneration)
+        );
+    }
+
     /** Whether slug in dataSource is curated as a dangerous held item. */
     static isDangerousItem(dataSource: GameDataSource, slug: string): boolean {
         return (
@@ -57,4 +75,18 @@ export default class ItemHelpers {
             generation
         );
     }
+
+    // -------------------------------------------------------------------------
+    // PRIVATE
+    // -------------------------------------------------------------------------
+
+    private static readonly HIDDEN_CATEGORIES = [
+        'all-machines',
+        'event-items',
+        'gameplay',
+        'healing',
+        'plot-advancement',
+        'stat-boosts',
+        'status-cures',
+    ];
 }

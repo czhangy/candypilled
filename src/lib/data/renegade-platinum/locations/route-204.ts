@@ -2,7 +2,7 @@ import {
     route204North,
     route204South,
 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_204: Location = {
@@ -44,6 +44,15 @@ const ROUTE_204: Location = {
             map: route204North,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-204-north-towards-floaroma-town',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'bullet-seed',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Gardenia' },
                 { method: EncounterMethod.PokeRadar, split: 'Gardenia' },

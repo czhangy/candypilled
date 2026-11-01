@@ -1,5 +1,5 @@
 import { sunyshoreCity } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SUNYSHORE_CITY: Location = {
@@ -7,6 +7,22 @@ const SUNYSHORE_CITY: Location = {
     map: sunyshoreCity,
     mapAnchor: MapAnchor.BottomLeft,
     encountersKey: 'sunyshore-city',
+    items: [
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Gift from NPC',
+            slug: 'hyper-beam',
+        },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Gift from Flint',
+            slug: 'overheat',
+        },
+    ],
     methodSplits: [
         { method: EncounterMethod.Surf, split: 'Volkner' },
         { method: EncounterMethod.OldRod, split: 'Volkner' },

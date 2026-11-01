@@ -3,7 +3,7 @@ import {
     hearthomeCityEastGate,
     hearthomeCityWestGate,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const HEARTHOME_CITY: Location = {
@@ -25,6 +25,29 @@ const HEARTHOME_CITY: Location = {
             name: 'City',
             map: hearthomeCityCity,
             mapAnchor: MapAnchor.BottomLeft,
+            items: [
+                {
+                    category: ItemCategory.KeyItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'poffin-case',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'rest',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'scald',
+                },
+            ],
         },
         {
             name: 'East Gate',

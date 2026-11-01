@@ -1,6 +1,6 @@
 import { floaromaMeadow } from '@/lib/data/renegade-platinum/maps';
 import { GEN_4_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const FLOAROMA_MEADOW: Location = {
@@ -8,6 +8,15 @@ const FLOAROMA_MEADOW: Location = {
     map: floaromaMeadow,
     mapAnchor: MapAnchor.BottomLeft,
     encountersKey: 'floaroma-meadow',
+    items: [
+        {
+            category: ItemCategory.KeyItem,
+            count: 1,
+            hidden: false,
+            method: 'Gift from NPC',
+            slug: 'works-key',
+        },
+    ],
     methodSplits: [{ method: EncounterMethod.HoneyTree, split: 'Gardenia' }],
     battles: [
         {

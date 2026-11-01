@@ -1,5 +1,6 @@
 import SearchableList from '@/components/common/SearchableList/SearchableList';
 import { GameDataSource } from '@/lib/static/types';
+import ItemHelpers from '@/lib/utils/ItemHelpers';
 import ItemDetail from './ItemDetail/ItemDetail';
 import styles from './ItemsSubtab.module.scss';
 
@@ -20,14 +21,10 @@ const ItemsSubtab: React.FC<ItemsSubtabProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const availableItems = Object.values(dataSource.items)
-        .filter(
-            (item) =>
-                item.introducedInGeneration <= generation &&
-                (item.removedInGeneration === undefined ||
-                    generation < item.removedInGeneration)
-        )
-        .sort((a, b) => a.name.localeCompare(b.name));
+    const availableItems = ItemHelpers.getBrowsableItems(
+        dataSource,
+        generation
+    ).sort((a, b) => a.name.localeCompare(b.name));
     const effectiveItem = selectedItem ?? availableItems[0]?.slug ?? '';
 
     // -------------------------------------------------------------------------

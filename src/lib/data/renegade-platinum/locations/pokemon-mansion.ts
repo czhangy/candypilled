@@ -1,12 +1,21 @@
 import { pokemonMansion } from '@/lib/data/renegade-platinum/maps';
 import { GEN_4_TRUE_DOUBLE_WIDTH } from '@/lib/static/constants';
-import { MapAnchor } from '@/lib/static/enums';
+import { ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const POKEMON_MANSION: Location = {
     name: 'Pokémon Mansion',
     map: pokemonMansion,
     mapAnchor: MapAnchor.Center,
+    items: [
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Gift from NPC',
+            slug: 'swagger',
+        },
+    ],
     tagPartner: [{ battleKey: 'pkmn-trainer-barry-pokemon-mansion-tag' }],
     battles: [
         {

@@ -1,5 +1,5 @@
 import { route208 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_208: Location = {
@@ -7,6 +7,50 @@ const ROUTE_208: Location = {
     map: route208,
     mapAnchor: MapAnchor.Center,
     encountersKey: 'sinnoh-route-208',
+    items: [
+        {
+            category: ItemCategory.Berry,
+            count: 2,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'nanab-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 2,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'razz-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 2,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'bluk-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 2,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'pinap-berry',
+        },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Item on ground',
+            slug: 'swords-dance',
+        },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Gift from Aaron',
+            slug: 'x-scissor',
+        },
+    ],
     methodSplits: [
         { method: EncounterMethod.Grass, split: 'Fantina' },
         { method: EncounterMethod.Surf, split: 'Byron' },

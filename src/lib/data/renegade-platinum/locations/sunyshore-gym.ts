@@ -3,7 +3,7 @@ import {
     sunyshoreGymRoom2,
     sunyshoreGymRoom3,
 } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const SUNYSHORE_GYM: Location = {
@@ -47,6 +47,15 @@ const SUNYSHORE_GYM: Location = {
             name: 'Room 3',
             map: sunyshoreGymRoom3,
             mapAnchor: MapAnchor.Center,
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from Volkner',
+                    slug: 'wild-charge',
+                },
+            ],
             battles: [
                 {
                     battleKey: 'guitarist-lonnie',

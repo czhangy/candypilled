@@ -1,5 +1,5 @@
 import { route223 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_223: Location = {
@@ -7,6 +7,15 @@ const ROUTE_223: Location = {
     map: route223,
     mapAnchor: MapAnchor.Bottom,
     encountersKey: 'route-223',
+    items: [
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Item on ground',
+            slug: 'rain-dance',
+        },
+    ],
     methodSplits: [
         { method: EncounterMethod.Surf, split: 'Volkner' },
         { method: EncounterMethod.OldRod, split: 'Volkner' },

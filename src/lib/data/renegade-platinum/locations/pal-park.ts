@@ -1,11 +1,20 @@
 import { palPark } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const PAL_PARK: Location = {
     name: 'Pal Park',
     map: palPark,
     mapAnchor: MapAnchor.Center,
+    items: [
+        {
+            category: ItemCategory.KeyItem,
+            count: 1,
+            hidden: false,
+            method: 'Gift from Darach',
+            slug: 'tea',
+        },
+    ],
     battles: [
         {
             battleKey: 'castle-valet-darach',

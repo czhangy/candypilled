@@ -1,11 +1,20 @@
 import { eternaGym } from '@/lib/data/renegade-platinum/maps';
-import { MapAnchor } from '@/lib/static/enums';
+import { ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ETERNA_GYM: Location = {
     name: 'Eterna Gym',
     map: eternaGym,
     mapAnchor: MapAnchor.Center,
+    items: [
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Gift from Gardenia',
+            slug: 'grass-knot',
+        },
+    ],
     battles: [
         {
             battleKey: 'lass-caroline',

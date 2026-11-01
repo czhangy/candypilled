@@ -1,5 +1,5 @@
 import { maniacTunnel } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const MANIAC_TUNNEL: Location = {
@@ -7,6 +7,15 @@ const MANIAC_TUNNEL: Location = {
     map: maniacTunnel,
     mapAnchor: MapAnchor.Right,
     encountersKey: 'maniac-tunnel',
+    items: [
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Item on ground',
+            slug: 'dragon-pulse',
+        },
+    ],
     methodSplits: [{ method: EncounterMethod.Cave, split: 'Wake' }],
 };
 

@@ -45,6 +45,14 @@ export enum FieldCondition {
     Sun = 'Sun',
 }
 
+export enum ItemCategory {
+    Berry = 'Berries',
+    Consumable = 'Consumables',
+    HeldItem = 'Held Items',
+    KeyItem = 'Key Items',
+    TmHm = 'TMs/HMs',
+}
+
 export enum PokemonStatus {
     Alive = 'Alive',
     Dead = 'Dead',

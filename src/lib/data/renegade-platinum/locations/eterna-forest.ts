@@ -2,7 +2,7 @@ import {
     eternaForestExterior,
     eternaForestInterior,
 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ETERNA_FOREST: Location = {
@@ -13,6 +13,15 @@ const ETERNA_FOREST: Location = {
             map: eternaForestInterior,
             mapAnchor: MapAnchor.BottomLeft,
             encountersKey: 'eterna-forest',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from Cheryl',
+                    slug: 'return',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Gardenia' },
                 { method: EncounterMethod.PokeRadar, split: 'Gardenia' },
@@ -72,6 +81,22 @@ const ETERNA_FOREST: Location = {
             map: eternaForestExterior,
             mapAnchor: MapAnchor.BottomRight,
             encountersKey: 'eterna-forest',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'captivate',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'sleep-talk',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Gardenia' },
                 { method: EncounterMethod.PokeRadar, split: 'Gardenia' },

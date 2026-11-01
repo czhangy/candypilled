@@ -1,5 +1,5 @@
 import { route213 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_213: Location = {
@@ -7,6 +7,57 @@ const ROUTE_213: Location = {
     map: route213,
     mapAnchor: MapAnchor.Right,
     encountersKey: 'sinnoh-route-213',
+    items: [
+        {
+            category: ItemCategory.Berry,
+            count: 1,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'aguav-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 2,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'rawst-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 1,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'iapapa-berry',
+        },
+        {
+            category: ItemCategory.KeyItem,
+            count: 1,
+            hidden: true,
+            method: 'Item on ground',
+            slug: 'suite-key',
+        },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Item on ground',
+            slug: 'roar',
+        },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Item on ground',
+            slug: 'torment',
+        },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Gift from NPC',
+            slug: 'trick-room',
+        },
+    ],
     methodSplits: [
         { method: EncounterMethod.Grass, split: 'Wake' },
         { method: EncounterMethod.Surf, split: 'Byron' },

@@ -3,7 +3,7 @@ import {
     oldChateauDiningRoom,
     oldChateauEntrance,
 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const OLD_CHATEAU: Location = {
@@ -14,6 +14,22 @@ const OLD_CHATEAU: Location = {
             map: oldChateauEntrance,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'old-chateau-entrance-and-dining-room',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'shadow-claw',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'substitute',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Walking, split: 'Gardenia' },
             ],

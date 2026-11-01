@@ -3,7 +3,12 @@ import {
     route212NorthPostGalactic,
     route212South,
 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, FieldCondition, MapAnchor } from '@/lib/static/enums';
+import {
+    EncounterMethod,
+    FieldCondition,
+    ItemCategory,
+    MapAnchor,
+} from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_212: Location = {
@@ -52,6 +57,50 @@ const ROUTE_212: Location = {
             map: route212NorthPostGalactic,
             mapAnchor: MapAnchor.Top,
             encountersKey: 'sinnoh-route-212-north',
+            items: [
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'aspear-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'sitrus-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'lum-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'tamato-berry',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'sunny-day',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'safeguard',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Maylene' },
                 { method: EncounterMethod.OldRod, split: 'Maylene' },
@@ -108,6 +157,43 @@ const ROUTE_212: Location = {
             map: route212South,
             mapAnchor: MapAnchor.Right,
             encountersKey: 'sinnoh-route-212-south',
+            items: [
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'pecha-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 3,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'pinap-berry',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'toxic',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'bug-buzz',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'poison-jab',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Wake' },
                 { method: EncounterMethod.Surf, split: 'Byron' },

@@ -2,7 +2,7 @@ import {
     waywardCave1f,
     waywardCaveB1f,
 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const WAYWARD_CAVE: Location = {
@@ -13,6 +13,22 @@ const WAYWARD_CAVE: Location = {
             map: waywardCave1f,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'wayward-cave',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'double-team',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from Mira',
+                    slug: 'dazzling-gleam',
+                },
+            ],
             methodSplits: [{ method: EncounterMethod.Cave, split: 'Fantina' }],
             tagPartner: [{ battleKey: 'pkmn-trainer-mira-tag' }],
             battles: [

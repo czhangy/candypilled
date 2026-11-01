@@ -2,7 +2,7 @@ import {
     route222,
     route222PikachuFanClub,
 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_222: Location = {
@@ -13,6 +13,43 @@ const ROUTE_222: Location = {
             map: route222,
             mapAnchor: MapAnchor.Left,
             encountersKey: 'route-222',
+            items: [
+                {
+                    category: ItemCategory.Berry,
+                    count: 2,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'wiki-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 2,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'mago-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 2,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'aguav-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'qualot-berry',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'fling',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Volkner' },
                 { method: EncounterMethod.Surf, split: 'Volkner' },

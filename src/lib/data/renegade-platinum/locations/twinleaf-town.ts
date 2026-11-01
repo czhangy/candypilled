@@ -2,7 +2,7 @@ import {
     twinleafTownHouse,
     twinleafTownTown,
 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const TWINLEAF_TOWN: Location = {
@@ -25,6 +25,29 @@ const TWINLEAF_TOWN: Location = {
             map: twinleafTownHouse,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'twinleaf-town-house',
+            items: [
+                {
+                    category: ItemCategory.KeyItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from Mom',
+                    slug: 'bicycle',
+                },
+                {
+                    category: ItemCategory.KeyItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from Mom',
+                    slug: 'journal',
+                },
+                {
+                    category: ItemCategory.KeyItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'parcel',
+                },
+            ],
             methodSplits: [{ method: EncounterMethod.Gift, split: 'Roark' }],
         },
     ],

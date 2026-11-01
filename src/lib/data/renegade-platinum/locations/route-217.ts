@@ -1,5 +1,10 @@
 import { route217 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, FieldCondition, MapAnchor } from '@/lib/static/enums';
+import {
+    EncounterMethod,
+    FieldCondition,
+    ItemCategory,
+    MapAnchor,
+} from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_217: Location = {
@@ -7,6 +12,22 @@ const ROUTE_217: Location = {
     map: route217,
     mapAnchor: MapAnchor.Bottom,
     encountersKey: 'sinnoh-route-217',
+    items: [
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Item on ground',
+            slug: 'hail',
+        },
+        {
+            category: ItemCategory.TmHm,
+            count: 1,
+            hidden: false,
+            method: 'Gift from Maylene',
+            slug: 'focus-blast',
+        },
+    ],
     methodSplits: [{ method: EncounterMethod.Grass, split: 'Candice' }],
     battles: [
         {

@@ -1,5 +1,5 @@
 import { route211East, route211West } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const ROUTE_211: Location = {
@@ -10,6 +10,15 @@ const ROUTE_211: Location = {
             map: route211West,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-211-west',
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Item on ground',
+                    slug: 'taunt',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Gardenia' },
                 { method: EncounterMethod.PokeRadar, split: 'Gardenia' },
@@ -37,6 +46,43 @@ const ROUTE_211: Location = {
             map: route211East,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-211-east',
+            items: [
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'pecha-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'aspear-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'iapapa-berry',
+                },
+                {
+                    category: ItemCategory.Berry,
+                    count: 1,
+                    hidden: false,
+                    method: 'Berry tree',
+                    slug: 'grepa-berry',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from NPC',
+                    slug: 'psych-up',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Grass, split: 'Gardenia' },
                 { method: EncounterMethod.PokeRadar, split: 'Gardenia' },
