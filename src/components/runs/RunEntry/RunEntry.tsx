@@ -131,7 +131,6 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             starter: starterSlug,
             gender,
             caughtPokemon: pokemon,
-            collectedItems: [],
             missedLocations: [],
             wipe: false,
         };

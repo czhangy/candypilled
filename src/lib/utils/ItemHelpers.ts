@@ -83,6 +83,7 @@ export default class ItemHelpers {
     private static readonly HIDDEN_CATEGORIES = [
         'all-machines',
         'event-items',
+        'evolution',
         'gameplay',
         'healing',
         'plot-advancement',

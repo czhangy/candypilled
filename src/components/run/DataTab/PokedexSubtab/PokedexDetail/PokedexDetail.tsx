@@ -151,11 +151,13 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
         game.version,
         game.generation
     );
+    const locations = EncounterHelpers.getEncounterLocations(game, species);
     const detailTab =
-        activeDetailTab === 'differences' && learnsetDifferences.length === 0
+        (activeDetailTab === 'differences' &&
+            learnsetDifferences.length === 0) ||
+        (activeDetailTab === 'locations' && locations.length === 0)
             ? 'learnset'
             : activeDetailTab;
-    const locations = EncounterHelpers.getEncounterLocations(game, species);
     const changes = PokemonHelpers.getPokemonChanges(
         game.dataSource,
         species,
@@ -231,22 +233,24 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                                         Delays
                                     </button>
                                 )}
-                                <button
-                                    aria-pressed={detailTab === 'locations'}
-                                    className={[
-                                        styles['details-tab'],
-                                        detailTab === 'locations' &&
-                                            styles['details-tab--active'],
-                                    ]
-                                        .filter(Boolean)
-                                        .join(' ')}
-                                    onClick={() =>
-                                        handleDetailTabChange('locations')
-                                    }
-                                    type="button"
-                                >
-                                    Locations
-                                </button>
+                                {locations.length > 0 && (
+                                    <button
+                                        aria-pressed={detailTab === 'locations'}
+                                        className={[
+                                            styles['details-tab'],
+                                            detailTab === 'locations' &&
+                                                styles['details-tab--active'],
+                                        ]
+                                            .filter(Boolean)
+                                            .join(' ')}
+                                        onClick={() =>
+                                            handleDetailTabChange('locations')
+                                        }
+                                        type="button"
+                                    >
+                                        Locations
+                                    </button>
+                                )}
                             </div>
                             {detailTab === 'learnset' && (
                                 <LearnsetList
@@ -255,6 +259,7 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                                     highlightedMoves={[]}
                                     interactive
                                     levelOffsets={{}}
+                                    lostMoves={[]}
                                     moves={learnset ?? []}
                                     onSelectMove={onSelectMove}
                                     scrollable

@@ -92,6 +92,16 @@ $power-width: 2.75rem;
             }
         }
 
+        &--lost {
+            background: color-mix(in srgb, $red 20%, transparent);
+
+            @media (hover: hover) {
+                &:hover:not(&--static) {
+                    background: color-mix(in srgb, $red 30%, transparent);
+                }
+            }
+        }
+
         &--highlighted {
             background: color-mix(
                 in srgb,

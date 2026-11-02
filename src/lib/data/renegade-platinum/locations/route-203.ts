@@ -15,6 +15,27 @@ const ROUTE_203: Location = {
             method: 'Ground',
             slug: 'endure',
         },
+        {
+            category: ItemCategory.HeldItem,
+            count: 1,
+            hidden: false,
+            method: 'Gift from Barry',
+            slug: 'exp-share',
+        },
+        {
+            category: ItemCategory.HeldItem,
+            count: 1,
+            hidden: false,
+            method: 'Ground',
+            slug: 'silk-scarf',
+        },
+        {
+            category: ItemCategory.HeldItem,
+            count: 1,
+            hidden: false,
+            method: 'Ground',
+            slug: 'soothe-bell',
+        },
     ],
     methodSplits: [
         { method: EncounterMethod.Grass, split: 'Roark' },

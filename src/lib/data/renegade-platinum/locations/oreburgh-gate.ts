@@ -18,7 +18,7 @@ const OREBURGH_GATE: Location = {
                     category: ItemCategory.TmHm,
                     count: 1,
                     hidden: false,
-                    method: 'Gift from NPC',
+                    method: 'Gift from Hiker',
                     slug: 'rock-smash',
                 },
             ],
@@ -62,6 +62,13 @@ const OREBURGH_GATE: Location = {
                     hidden: false,
                     method: 'Ground',
                     slug: 'flash',
+                },
+                {
+                    category: ItemCategory.HeldItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Ground',
+                    slug: 'muscle-band',
                 },
             ],
             methodSplits: [

@@ -488,6 +488,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                     highlightedMoves={[]}
                                     interactive
                                     levelOffsets={{}}
+                                    lostMoves={[]}
                                     moves={learnset ?? []}
                                     onSelectMove={onSelectMove}
                                     scrollable={false}

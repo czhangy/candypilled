@@ -593,9 +593,6 @@ export type Run = {
     // Pokémon fled, fainted, etc.), by location name — same key space as
     // CaughtPokemon.location, and mutually exclusive with it.
     missedLocations: string[];
-    // Keys of the location items the player has picked up, as built by
-    // SplitLocation (location, subarea and index within its items list).
-    collectedItems: string[];
     // Whether the player has given up on this run (a wipe). Once true, the
     // run page shows a "Run it back" message instead of its tabs.
     wipe: boolean;
@@ -689,6 +686,7 @@ export type EvolutionLineByGeneration = {
 export type EvolutionMethodLabel = {
     label: string;
     condition?: string;
+    // Image paths (e.g. "/items/fire-stone.png").
     conditionIcon?: string;
     icon?: string;
     gender?: 'male' | 'female';
@@ -799,13 +797,15 @@ export type LearnsetMove = {
     level?: number;
 };
 
-// The learnset entries of another stage in an evolution line that the
-// viewed species lacks or learns at a different level.
+// The level-up moves of an earlier evolution stage that the viewed species
+// either learns at a different level or, for lostMoves, can no longer learn
+// (nor can any of its later evolutions).
 export type LearnsetDifference = {
     // Level offsets for entries the viewed species also learns, keyed by
     // `${slug}-${level}`: the stage's level minus the viewed species' level
     // for its closest entry of that move.
     levelOffsets: Record<string, number>;
+    lostMoves: string[];
     moves: LearnsetMove[];
     slug: string;
 };
@@ -2800,6 +2800,7 @@ export type ItemSlug =
     | 'damp-rock'
     | 'dark-gem'
     | 'dark-pulse'
+    | 'dawn-stone'
     | 'dazzling-gleam'
     | 'deep-sea-scale'
     | 'deep-sea-tooth'
@@ -2814,12 +2815,16 @@ export type ItemSlug =
     | 'dragon-fang'
     | 'dragon-gem'
     | 'dragon-pulse'
+    | 'dragon-scale'
     | 'drain-punch'
     | 'dread-plate'
     | 'dream-mail'
+    | 'dubious-disc'
     | 'durin-berry'
+    | 'dusk-stone'
     | 'earth-plate'
     | 'eject-button'
+    | 'electirizer'
     | 'electric-gem'
     | 'embargo'
     | 'endure'
@@ -2840,6 +2845,7 @@ export type ItemSlug =
     | 'figy-berry'
     | 'fire-blast'
     | 'fire-gem'
+    | 'fire-stone'
     | 'fist-plate'
     | 'flame-mail'
     | 'flame-orb'
@@ -2896,6 +2902,7 @@ export type ItemSlug =
     | 'ice-beam'
     | 'ice-gem'
     | 'ice-heal'
+    | 'ice-stone'
     | 'icicle-plate'
     | 'icy-rock'
     | 'inquiry-mail'
@@ -2913,6 +2920,7 @@ export type ItemSlug =
     | 'lansat-berry'
     | 'lava-cookie'
     | 'lax-incense'
+    | 'leaf-stone'
     | 'leek'
     | 'leftovers'
     | 'lemonade'
@@ -2929,6 +2937,7 @@ export type ItemSlug =
     | 'lum-berry'
     | 'lustrous-orb'
     | 'macho-brace'
+    | 'magmarizer'
     | 'magnet'
     | 'mago-berry'
     | 'magost-berry'
@@ -2943,6 +2952,7 @@ export type ItemSlug =
     | 'mind-plate'
     | 'miracle-seed'
     | 'moomoo-milk'
+    | 'moon-stone'
     | 'mosaic-mail'
     | 'muscle-band'
     | 'mystic-water'
@@ -2958,6 +2968,7 @@ export type ItemSlug =
     | 'old-rod'
     | 'oran-berry'
     | 'orange-mail'
+    | 'oval-stone'
     | 'overheat'
     | 'pamtre-berry'
     | 'paralyze-heal'
@@ -2988,7 +2999,9 @@ export type ItemSlug =
     | 'power-lens'
     | 'power-weight'
     | 'pretty-wing'
+    | 'prism-scale'
     | 'protect'
+    | 'protector'
     | 'psych-up'
     | 'psychic'
     | 'psychic-gem'
@@ -3003,6 +3016,7 @@ export type ItemSlug =
     | 'razor-claw'
     | 'razor-fang'
     | 'razz-berry'
+    | 'reaper-cloth'
     | 'recycle'
     | 'red-card'
     | 'red-scarf'
@@ -3048,6 +3062,7 @@ export type ItemSlug =
     | 'sharp-beak'
     | 'shed-shell'
     | 'shell-bell'
+    | 'shiny-stone'
     | 'shock-drive'
     | 'shock-wave'
     | 'shuca-berry'
@@ -3086,6 +3101,7 @@ export type ItemSlug =
     | 'strength'
     | 'substitute'
     | 'suite-key'
+    | 'sun-stone'
     | 'sunny-day'
     | 'super-potion'
     | 'super-rod'
@@ -3101,6 +3117,7 @@ export type ItemSlug =
     | 'thick-club'
     | 'thief'
     | 'thunder'
+    | 'thunder-stone'
     | 'thunder-wave'
     | 'thunderbolt'
     | 'tiny-mushroom'
@@ -3114,11 +3131,13 @@ export type ItemSlug =
     | 'tunnel-mail'
     | 'twisted-spoon'
     | 'u-turn'
+    | 'up-grade'
     | 'vs-recorder'
     | 'vs-seeker'
     | 'wacan-berry'
     | 'water-gem'
     | 'water-pulse'
+    | 'water-stone'
     | 'waterfall'
     | 'watmel-berry'
     | 'wave-incense'

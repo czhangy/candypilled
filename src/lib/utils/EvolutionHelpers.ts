@@ -7,6 +7,7 @@ import {
     LearnsetMove,
 } from '@/lib/static/types';
 import GenerationHelpers from '@/lib/utils/GenerationHelpers';
+import ItemHelpers from '@/lib/utils/ItemHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
@@ -15,8 +16,9 @@ export default class EvolutionHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    /** The display label for methods (the first entry when multiple apply). */
+    /** The display label for methods (the first entry when multiple apply), with item names and icons resolved through dataSource. */
     static getEvolutionMethodLabel(
+        dataSource: GameDataSource,
         methods: EvolutionMethod[]
     ): EvolutionMethodLabel {
         const method = methods[0];
@@ -24,17 +26,19 @@ export default class EvolutionHelpers {
 
         switch (method.trigger) {
             case 'level-up':
-                return EvolutionHelpers.getLevelUpLabel(method);
+                return EvolutionHelpers.getLevelUpLabel(dataSource, method);
             case 'use-item':
                 return {
                     label: method.item
-                        ? StringHelpers.toTitleCase(method.item)
+                        ? EvolutionHelpers.getItemName(dataSource, method.item)
                         : 'Use Item',
                     ...EvolutionHelpers.getBaseLabel(method),
-                    icon: EvolutionHelpers.getIcon(method.item),
+                    icon: method.item
+                        ? ItemHelpers.getHeldItemSprite(dataSource, method.item)
+                        : undefined,
                 };
             case 'trade':
-                return EvolutionHelpers.getTradeLabel(method);
+                return EvolutionHelpers.getTradeLabel(dataSource, method);
             default:
                 return { label: StringHelpers.toTitleCase(method.trigger) };
         }
@@ -115,10 +119,10 @@ export default class EvolutionHelpers {
     }
 
     /**
-     * For each later stage slug can evolve into (forms included), the
-     * level-up learnset entries in version that slug's own learnset lacks:
-     * same move, but absent or at a different level. Stages with no
-     * differences are omitted.
+     * For each earlier stage slug evolves from (forms included), its
+     * level-up moves in version that slug learns at a different level, plus
+     * those neither slug nor any later stage can learn by any method (the
+     * stage's lostMoves). Stages with neither are omitted.
      */
     static getLearnsetDifferences(
         dataSource: GameDataSource,
@@ -133,11 +137,19 @@ export default class EvolutionHelpers {
         );
         if (!line) return [];
 
-        const getKey = (move: LearnsetMove): string =>
-            `${move.method}:${move.slug}:${move.level ?? ''}`;
-        const ownLearnset =
-            PokemonHelpers.getPokemonLearnset(dataSource, slug, version) ?? [];
-        const ownKeys = new Set(ownLearnset.map(getKey));
+        const getLearnset = (stage: string): LearnsetMove[] =>
+            PokemonHelpers.getPokemonLearnset(dataSource, stage, version) ?? [];
+        const ownLearnset = getLearnset(slug);
+        const ownKeys = new Set(
+            ownLearnset.map(
+                (move) => `${move.method}:${move.slug}:${move.level ?? ''}`
+            )
+        );
+        const ownLevelUpSlugs = new Set(
+            ownLearnset
+                .filter((move) => move.method === 'level-up')
+                .map((move) => move.slug)
+        );
         const getLevelOffset = (move: LearnsetMove): number | undefined => {
             const level = move.level;
             if (level === undefined) return undefined;
@@ -151,30 +163,60 @@ export default class EvolutionHelpers {
             );
             return offsets.sort((a, b) => Math.abs(a) - Math.abs(b))[0];
         };
+        const isSlugStep = (step: EvolutionStep): boolean =>
+            PokemonHelpers.getPokemonForms(dataSource, step.slug).includes(
+                slug
+            );
         const findStep = (step: EvolutionStep): EvolutionStep | undefined =>
-            PokemonHelpers.getPokemonForms(dataSource, step.slug).includes(slug)
+            isSlugStep(step)
                 ? step
                 : step.evolvesTo.map(findStep).find(Boolean);
-        const stages: string[] = [];
+        const findAncestors = (
+            step: EvolutionStep,
+            path: EvolutionStep[]
+        ): EvolutionStep[] | undefined =>
+            isSlugStep(step)
+                ? path
+                : step.evolvesTo
+                      .map((next) => findAncestors(next, [...path, step]))
+                      .find(Boolean);
+        const laterStages: string[] = [];
         const collect = (step: EvolutionStep): void => {
-            stages.push(
+            laterStages.push(
                 ...PokemonHelpers.getPokemonForms(dataSource, step.slug)
             );
             step.evolvesTo.forEach(collect);
         };
         findStep(line)?.evolvesTo.forEach(collect);
 
-        return Array.from(new Set(stages))
-            .map((stage) => {
-                const moves = (
-                    PokemonHelpers.getPokemonLearnset(
-                        dataSource,
-                        stage,
-                        version
-                    ) ?? []
-                ).filter(
+        const learnableSlugs = new Set(
+            [slug, ...laterStages].flatMap((stage) =>
+                getLearnset(stage).map((move) => move.slug)
+            )
+        );
+        const earlierStages = Array.from(
+            new Set(
+                (findAncestors(line, []) ?? []).flatMap((step) =>
+                    PokemonHelpers.getPokemonForms(dataSource, step.slug)
+                )
+            )
+        );
+
+        return earlierStages
+            .map((stage): LearnsetDifference => {
+                const levelUpMoves = getLearnset(stage).filter(
+                    (move) => move.method === 'level-up'
+                );
+                const lostMoves = levelUpMoves
+                    .filter((move) => !learnableSlugs.has(move.slug))
+                    .map((move) => move.slug);
+                const moves = levelUpMoves.filter(
                     (move) =>
-                        move.method === 'level-up' && !ownKeys.has(getKey(move))
+                        lostMoves.includes(move.slug) ||
+                        (ownLevelUpSlugs.has(move.slug) &&
+                            !ownKeys.has(
+                                `${move.method}:${move.slug}:${move.level ?? ''}`
+                            ))
                 );
                 const levelOffsets: Record<string, number> = {};
                 moves.forEach((move) => {
@@ -184,7 +226,7 @@ export default class EvolutionHelpers {
                     }
                 });
 
-                return { levelOffsets, moves, slug: stage };
+                return { levelOffsets, lostMoves, moves, slug: stage };
             })
             .filter((difference) => difference.moves.length > 0);
     }
@@ -216,51 +258,25 @@ export default class EvolutionHelpers {
     // PRIVATE
     // -------------------------------------------------------------------------
 
-    // Slugs with an icon available in public/evolution-methods. Methods not
-    // listed here fall back to their text label.
-    private static readonly ICON_SLUGS = new Set([
-        'chipped-pot',
-        'cracked-pot',
-        'dawn-stone',
-        'deep-sea-scale',
-        'deep-sea-tooth',
-        'dragon-scale',
-        'dubious-disc',
-        'dusk-stone',
-        'electirizer',
-        'fire-stone',
-        'friendship',
-        'ice-rock',
-        'ice-stone',
-        'kings-rock',
-        'leaf-stone',
-        'magmarizer',
-        'metal-coat',
-        'moon-stone',
-        'moss-rock',
-        'oval-stone',
-        'prism-scale',
-        'protector',
-        'razor-claw',
-        'razor-fang',
-        'reaper-cloth',
-        'shiny-stone',
-        'sun-stone',
-        'thunder-stone',
-        'up-grade',
-        'water-stone',
-    ]);
-
-    private static getIcon(slug: string | undefined): string | undefined {
-        return slug && EvolutionHelpers.ICON_SLUGS.has(slug) ? slug : undefined;
+    private static getItemName(
+        dataSource: GameDataSource,
+        slug: string
+    ): string {
+        return (
+            ItemHelpers.getHeldItemData(dataSource, slug)?.name ??
+            StringHelpers.toTitleCase(slug)
+        );
     }
 
     private static getTradeLabel(
+        dataSource: GameDataSource,
         method: EvolutionMethod
     ): EvolutionMethodLabel {
-        const conditionIcon = EvolutionHelpers.getIcon(method.heldItem);
+        const conditionIcon = method.heldItem
+            ? ItemHelpers.getHeldItemSprite(dataSource, method.heldItem)
+            : undefined;
         const heldItemText = method.heldItem
-            ? StringHelpers.toTitleCase(method.heldItem)
+            ? EvolutionHelpers.getItemName(dataSource, method.heldItem)
             : undefined;
         // The icon already conveys the held item, so its tooltip skips the
         // time of day rather than mixing it into the same text.
@@ -288,14 +304,13 @@ export default class EvolutionHelpers {
 
     // Locations named after a specific landmark the player must be near
     // (rather than the area as a whole), whose name doesn't match the raw
-    // location slug and which renders as an icon (slug in
-    // public/evolution-methods) instead of text.
+    // location slug and which renders as an icon instead of text.
     private static readonly LOCATION_LANDMARKS: Record<
         string,
         { name: string; icon: string }
     > = {
-        'eterna-forest': { name: 'Moss Rock', icon: 'moss-rock' },
-        'sinnoh-route-217': { name: 'Ice Rock', icon: 'ice-rock' },
+        'eterna-forest': { name: 'Moss Rock', icon: '/common/moss-rock.png' },
+        'sinnoh-route-217': { name: 'Ice Rock', icon: '/common/ice-rock.png' },
     };
 
     // "Mt" is an abbreviation of "Mount", so it needs a period that
@@ -337,6 +352,7 @@ export default class EvolutionHelpers {
     }
 
     private static getLevelUpLabel(
+        dataSource: GameDataSource,
         method: EvolutionMethod
     ): EvolutionMethodLabel {
         const base = EvolutionHelpers.getBaseLabel(method);
@@ -349,15 +365,21 @@ export default class EvolutionHelpers {
             return {
                 label: 'Happiness',
                 ...base,
-                icon: EvolutionHelpers.getIcon('friendship'),
+                icon: '/common/friendship.png',
             };
         }
 
         if (method.heldItem) {
             return {
-                label: StringHelpers.toTitleCase(method.heldItem),
+                label: EvolutionHelpers.getItemName(
+                    dataSource,
+                    method.heldItem
+                ),
                 ...base,
-                icon: EvolutionHelpers.getIcon(method.heldItem),
+                icon: ItemHelpers.getHeldItemSprite(
+                    dataSource,
+                    method.heldItem
+                ),
             };
         }
 
@@ -385,9 +407,8 @@ export default class EvolutionHelpers {
             const locationName = EvolutionHelpers.getLocationName(
                 method.location
             );
-            const conditionIcon = EvolutionHelpers.getIcon(
-                EvolutionHelpers.LOCATION_LANDMARKS[method.location]?.icon
-            );
+            const conditionIcon =
+                EvolutionHelpers.LOCATION_LANDMARKS[method.location]?.icon;
 
             return {
                 label: 'Level Up',

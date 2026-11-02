@@ -6,26 +6,16 @@ import ItemHelpers from '@/lib/utils/ItemHelpers';
 import styles from './ItemTable.module.scss';
 
 type ItemTableProps = {
-    collectedItems: string[];
     dataSource: GameDataSource;
     items: LocationItem[];
-    keyPrefix: string;
-    onToggleItem: (itemKey: string) => void;
 };
 
-const ItemTable: React.FC<ItemTableProps> = ({
-    collectedItems,
-    dataSource,
-    items,
-    keyPrefix,
-    onToggleItem,
-}) => {
+const ItemTable: React.FC<ItemTableProps> = ({ dataSource, items }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
 
     type Row = {
-        index: number;
         item: LocationItem;
         name: string;
         sprite: string;
@@ -45,11 +35,9 @@ const ItemTable: React.FC<ItemTableProps> = ({
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    // `index` is the item's position in the source list, which the saved
-    // tracking key is built from, so it must survive the alphabetical sort.
     const getCategoryRows = (category: ItemCategory): Row[] =>
         items
-            .flatMap((item, index): Row[] => {
+            .flatMap((item): Row[] => {
                 const itemData = ItemHelpers.getHeldItemData(
                     dataSource,
                     item.slug
@@ -57,7 +45,6 @@ const ItemTable: React.FC<ItemTableProps> = ({
                 return itemData && item.category === category
                     ? [
                           {
-                              index,
                               item,
                               name: itemData.name,
                               sprite: itemData.sprite,
@@ -78,7 +65,6 @@ const ItemTable: React.FC<ItemTableProps> = ({
             </div>
             <table className={styles['item-table']}>
                 <colgroup>
-                    <col className={styles['col-check']} />
                     <col className={styles['col-item']} />
                     <col className={styles['col-found']} />
                 </colgroup>
@@ -90,35 +76,14 @@ const ItemTable: React.FC<ItemTableProps> = ({
                         return (
                             <Fragment key={category}>
                                 <tr className={styles['category-row']}>
-                                    <th colSpan={3}>{category}</th>
+                                    <th colSpan={2}>{category}</th>
                                 </tr>
-                                {rows.map(({ index, item, name, sprite }) => {
-                                    const itemKey = `${keyPrefix}/${index}`;
-                                    const isCollected =
-                                        collectedItems.includes(itemKey);
-
-                                    return (
+                                {rows.map(
+                                    ({ item, name, sprite }, rowIndex) => (
                                         <tr
-                                            className={[
-                                                styles.row,
-                                                isCollected &&
-                                                    styles['row--collected'],
-                                            ]
-                                                .filter(Boolean)
-                                                .join(' ')}
-                                            key={itemKey}
+                                            className={styles.row}
+                                            key={`${item.slug}-${rowIndex}`}
                                         >
-                                            <td>
-                                                <input
-                                                    aria-label={`Collected ${name}`}
-                                                    checked={isCollected}
-                                                    className={styles.checkbox}
-                                                    onChange={() =>
-                                                        onToggleItem(itemKey)
-                                                    }
-                                                    type="checkbox"
-                                                />
-                                            </td>
                                             <td>
                                                 <span
                                                     className={
@@ -153,8 +118,8 @@ const ItemTable: React.FC<ItemTableProps> = ({
                                                 </div>
                                             </td>
                                         </tr>
-                                    );
-                                })}
+                                    )
+                                )}
                             </Fragment>
                         );
                     })}

@@ -167,8 +167,7 @@ Work one location at a time, in alphabetical order, after its method splits. Ite
     - `hidden` is `true` only when the user says the item is hidden (found with the Dowsing Machine), else `false`. Never infer it.
     - `slug` must be an `ItemSlug`. Key items and TMs/HMs live in `items.json` like any other item and are hidden from the Data tab and item pickers by `ItemHelpers.HIDDEN_CATEGORIES`; add a new category there if one is missing.
 3. If a slug isn't in `ITEMS` (`src/lib/data/raw/items.json`), add it as data first, by hand: an entry in `src/lib/data/raw/items.json` (same shape as its neighbours, with `valuesByGeneration` from PokeAPI's flavor text up to generation 5), the slug in `ItemSlug` (`types.ts`), and its sprite at `public/items/<slug>.png`. There is no fetch script. Tell the user about any sprite you can't source and wait.
-4. Item order within an array is part of the saved tracking key (`Location/Subarea/index`), so append new items at the end and never reorder after tracking has started.
-5. Items carry no split. Never ask for one.
+4. Items carry no split. Never ask for one.
 
 ## 14. Split assignment
 

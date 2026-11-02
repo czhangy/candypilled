@@ -153,6 +153,11 @@ export default class DamageCalcHelpers {
     // PRIVATE
     // -------------------------------------------------------------------------
 
+    // Moves whose name here differs from @smogon/calc's spelling of it.
+    private static readonly CALC_MOVE_NAMES: Record<string, string> = {
+        'Vice Grip': 'Vise Grip',
+    };
+
     private static readonly generationCache = new Map<number, Generation>();
 
     private static getResult(
@@ -186,14 +191,16 @@ export default class DamageCalcHelpers {
         // etc.) from the earliest later @smogon/calc generation that does
         // define it, since it's the same real move — this game's own
         // stats still take priority via ownOverrides.
-        const knownMove = gen.moves.get(toID(moveName));
+        const calcMoveName =
+            DamageCalcHelpers.CALC_MOVE_NAMES[moveName] ?? moveName;
+        const knownMove = gen.moves.get(toID(calcMoveName));
         const fallbackMove = knownMove
             ? undefined
-            : DamageCalcHelpers.getFallbackMove(moveName, generation);
+            : DamageCalcHelpers.getFallbackMove(calcMoveName, generation);
         if (!knownMove && !fallbackMove) return null;
 
         try {
-            const move = new CalcMove(gen, moveName, {
+            const move = new CalcMove(gen, calcMoveName, {
                 isCrit: field.isCrit,
                 overrides: fallbackMove
                     ? { ...fallbackMove, ...ownOverrides }
