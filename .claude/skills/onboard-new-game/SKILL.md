@@ -108,14 +108,8 @@ Fill `met-locations.ts` before creating any other location. It decides which pla
 
 Create one `Location` per met-table name, one at a time. Wire each fully before prompting the user for the next location's name.
 
-1. The user puts that location's screenshots on the Desktop, named `<map-slug>.png`, `<map-slug>-<col>.png` or `<map-slug>-<row>-<col>.png`. A location with several floors or areas uses one map slug each, e.g. `<location>-1f`.
-2. Run `npm run stitch-map -- <slug> <map-slug>`. Read the result only to check for dead space. Never inspect seams.
-3. Set the `mapAnchor`. A map that fits the map viewport without panning (height at most 420 px, the viewport's max height in `LocationMap.module.scss`, and no wider than the viewport) gets `MapAnchor.Center` without asking. Otherwise, or if unsure, ask the user. Export the map from `maps/index.ts`, alphabetically, and create `locations/<name>.ts` with the map (or `subareas`, one per map slug) and the anchor. `Location.name` must equal the met-table name exactly.
-4. Add the location to `locations.ts`; `check:data` fails on an unlisted file. In a variant group, shared locations go in the shared `locations.ts`, and a version-exclusive one is appended in that variant's file (`locations: [...LOCATIONS, VERSION_ONLY]`).
-5. Delete the Desktop screenshots.
+Follow the `wire-location` skill for each location.
 
-- Never add a location to a split's `locations` unless the user says to.
-- A place with no met entry (gyms, Elite Four rooms, and the like) becomes a Location only when the user directs. Add its name to `unmappedLocations` in the game's `GAME_CHECK_CONFIGS` entry.
 - The starter location from step 6 gets its real map the same way, replacing the placeholder.
 
 ## 9. Trainer classes

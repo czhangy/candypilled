@@ -85,6 +85,7 @@ export { default as pokemonLeagueExterior } from './pokemon-league-exterior.png'
 export { default as pokemonLeagueLobby } from './pokemon-league-lobby.png';
 export { default as pokemonMansion } from './pokemon-mansion.png';
 export { default as ravagedPath } from './ravaged-path.png';
+export { default as rotomsRoom } from './rotoms-room.png';
 export { default as route201 } from './route-201.png';
 export { default as route202Dawn } from './route-202-dawn.png';
 export { default as route202Lucas } from './route-202-lucas.png';
