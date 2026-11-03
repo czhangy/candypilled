@@ -581,6 +581,13 @@ export type Game = {
     roamers?: Roamer[];
 };
 
+// The save file most recently imported into a run: its file name and the
+// time of the import (ms since epoch).
+export type SaveImport = {
+    fileName: string;
+    importedAt: number;
+};
+
 export type Run = {
     attempt: number;
     // Names of splits (Split.name) the player has marked as finished.
@@ -589,6 +596,8 @@ export type Run = {
     starter: PokemonSlug;
     gender: 'male' | 'female';
     caughtPokemon: CaughtPokemon[];
+    // Null if no save has been imported into this run.
+    lastImport: SaveImport | null;
     // Locations whose encounter was used up without catching anything (the
     // Pokémon fled, fainted, etc.), by location name — same key space as
     // CaughtPokemon.location, and mutually exclusive with it.

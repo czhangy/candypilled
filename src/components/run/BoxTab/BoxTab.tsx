@@ -105,33 +105,6 @@ const BoxTab: React.FC<BoxTabProps> = ({
         onDeselectPokemon();
     };
 
-    const handleReorderPokemon = async (
-        fromLocation: string,
-        toLocation: string
-    ): Promise<void> => {
-        const fromIndex = run.caughtPokemon.findIndex(
-            (pokemon) => pokemon.location === fromLocation
-        );
-        const toIndex = run.caughtPokemon.findIndex(
-            (pokemon) => pokemon.location === toLocation
-        );
-
-        if (fromIndex === -1 || toIndex === -1 || fromIndex === toIndex) {
-            return;
-        }
-
-        const reorderedPokemon = [...run.caughtPokemon];
-        const [movedPokemon] = reorderedPokemon.splice(fromIndex, 1);
-        reorderedPokemon.splice(toIndex, 0, movedPokemon);
-
-        const updatedRun: Run = {
-            ...run,
-            caughtPokemon: reorderedPokemon,
-        };
-
-        await RunHelpers.saveRun(game, updatedRun);
-    };
-
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
@@ -142,7 +115,6 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 caughtPokemon={run.caughtPokemon}
                 dataSource={game.dataSource}
                 levelCap={levelCap}
-                onReorderPokemon={handleReorderPokemon}
                 onSelectPokemon={onSelectPokemon}
                 onViewChange={handleViewChange}
                 selectedPokemon={selectedPokemon}

@@ -1,41 +1,35 @@
 import { PokemonStatus } from '@/lib/static/enums';
-import { CaughtPokemon, Run } from '@/lib/static/types';
+import { CaughtPokemon, Run, SaveImport } from '@/lib/static/types';
 
 export default class RunImportHelpers {
     // -------------------------------------------------------------------------
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    /** run with its living Pokémon replaced by the save's (matched by location; any not in the save are dropped, dead ones kept as-is, new locations appended), completedSplits set to exactly what the save reports, and gender overwritten with the save's gender. */
+    /** run with its living Pokémon replaced by the save's in save order (party, then boxes; any not in the save are dropped), followed by the existing dead ones as-is, completedSplits set to exactly what the save reports, gender overwritten with the save's gender, and lastImport set to saveImport. */
     static mergeImport(
         run: Run,
         importedPokemon: CaughtPokemon[],
         importedCompletedSplits: string[],
-        gender: 'male' | 'female'
+        gender: 'male' | 'female',
+        saveImport: SaveImport
     ): Run {
-        const importedByLocation = new Map(
-            importedPokemon.map((pokemon) => [pokemon.location, pokemon])
+        const deadPokemon = run.caughtPokemon.filter(
+            (pokemon) => pokemon.status === PokemonStatus.Dead
         );
-        const existingLocations = new Set(
-            run.caughtPokemon.map((pokemon) => pokemon.location)
+        const deadLocations = new Set(
+            deadPokemon.map((pokemon) => pokemon.location)
         );
-        const merged = run.caughtPokemon.flatMap((pokemon) => {
-            if (pokemon.status === PokemonStatus.Dead) {
-                return [pokemon];
-            }
-
-            const importedPokemon = importedByLocation.get(pokemon.location);
-            return importedPokemon ? [importedPokemon] : [];
-        });
-        const newPokemon = [...importedByLocation.values()].filter(
-            (pokemon) => !existingLocations.has(pokemon.location)
+        const livingPokemon = importedPokemon.filter(
+            (pokemon) => !deadLocations.has(pokemon.location)
         );
 
         return {
             ...run,
-            caughtPokemon: [...merged, ...newPokemon],
+            caughtPokemon: [...livingPokemon, ...deadPokemon],
             completedSplits: importedCompletedSplits,
             gender,
+            lastImport: saveImport,
         };
     }
 }

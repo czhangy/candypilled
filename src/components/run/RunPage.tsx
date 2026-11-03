@@ -12,7 +12,7 @@ import {
 import GenderSelectModal from '@/components/common/GenderSelectModal/GenderSelectModal';
 import StarterSelectModal from '@/components/common/StarterSelectModal/StarterSelectModal';
 import Tabs from '@/components/common/Tabs/Tabs';
-import { CaughtPokemon, Game } from '@/lib/static/types';
+import { CaughtPokemon, Game, SaveImport } from '@/lib/static/types';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
@@ -370,7 +370,8 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
     const handleImportSave = async (
         importedPokemon: CaughtPokemon[],
         importedCompletedSplits: string[],
-        importedGender: 'male' | 'female'
+        importedGender: 'male' | 'female',
+        saveImport: SaveImport
     ): Promise<void> => {
         if (!run) return;
 
@@ -380,7 +381,8 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                 run,
                 importedPokemon,
                 importedCompletedSplits,
-                importedGender
+                importedGender,
+                saveImport
             )
         );
         handlePokemonDeselect();
@@ -434,6 +436,18 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                     </div>
                 </div>
                 <div className={styles.actions}>
+                    {run.lastImport && (
+                        <span className={styles['last-import']}>
+                            {run.lastImport.fileName} ·{' '}
+                            {new Date(run.lastImport.importedAt).toLocaleString(
+                                [],
+                                {
+                                    dateStyle: 'short',
+                                    timeStyle: 'short',
+                                }
+                            )}
+                        </span>
+                    )}
                     <button
                         className={styles.import}
                         onClick={handleImportClick}

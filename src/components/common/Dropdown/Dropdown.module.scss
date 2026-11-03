@@ -46,6 +46,7 @@
             width: 1rem;
 
             &--open {
+                color: var(--accent-color);
                 transform: rotate(180deg);
             }
 

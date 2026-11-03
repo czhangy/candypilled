@@ -153,6 +153,7 @@ export default class RunHelpers {
             starter: starter.slug,
             gender,
             caughtPokemon: [starter],
+            lastImport: null,
             missedLocations: [],
             wipe: false,
         };

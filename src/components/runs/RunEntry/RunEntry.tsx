@@ -11,7 +11,13 @@ import CrownIcon from '@/lib/icons/CrownIcon';
 import RunIcon from '@/lib/icons/RunIcon';
 import SkullIcon from '@/lib/icons/SkullIcon';
 import { PokemonStatus } from '@/lib/static/enums';
-import { CaughtPokemon, Game, PokemonSlug, Run } from '@/lib/static/types';
+import {
+    CaughtPokemon,
+    Game,
+    PokemonSlug,
+    Run,
+    SaveImport,
+} from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import HallOfFameHelpers from '@/lib/utils/HallOfFameHelpers';
@@ -122,7 +128,8 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
         pokemon: CaughtPokemon[],
         completedSplits: string[],
         starterSlug: PokemonSlug,
-        gender: 'male' | 'female'
+        gender: 'male' | 'female',
+        saveImport: SaveImport
     ): Promise<void> => {
         const newRun: Run = {
             attempt: (run?.attempt ?? 0) + 1,
@@ -131,6 +138,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             starter: starterSlug,
             gender,
             caughtPokemon: pokemon,
+            lastImport: saveImport,
             missedLocations: [],
             wipe: false,
         };
@@ -180,7 +188,8 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
     const handleImport = async (
         importedPokemon: CaughtPokemon[],
         importedCompletedSplits: string[],
-        importedGender: 'male' | 'female'
+        importedGender: 'male' | 'female',
+        saveImport: SaveImport
     ): Promise<void> => {
         if (run) {
             await RunHelpers.saveRun(
@@ -189,7 +198,8 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
                     run,
                     importedPokemon,
                     importedCompletedSplits,
-                    importedGender
+                    importedGender,
+                    saveImport
                 )
             );
             return;
@@ -199,7 +209,8 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             importedPokemon,
             importedCompletedSplits,
             findImportedStarterSlug(importedPokemon),
-            importedGender
+            importedGender,
+            saveImport
         );
     };
 

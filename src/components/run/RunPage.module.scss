@@ -82,6 +82,12 @@
         @include solid-accent-button;
     }
 
+    .last-import {
+        align-self: center;
+        color: $text-mid;
+        font-size: 0.75rem;
+    }
+
     .wipe {
         @include mono-label;
         @include outline-button($red);

@@ -13,7 +13,7 @@ type TagTeamSelectPanelProps = {
     game: Game;
     onSelectMember: (index: string) => void;
     selectedMemberIndex?: string;
-    selectedTagPartner?: string;
+    selectedTagPartner: string;
     starter: string;
 };
 
@@ -96,75 +96,63 @@ const TagTeamSelectPanel: React.FC<TagTeamSelectPanelProps> = ({
 
     return (
         <div className={styles['tag-team-select-panel']}>
-            {selectedTagPartner ? (
-                <div className={styles.grid}>
-                    {team.map((mon, index) => {
-                        const displaySlug = PokemonHelpers.getDisplaySlug(
-                            game.dataSource,
-                            mon
-                        );
-                        const speedComparison = getSpeedComparison(mon);
+            <div className={styles.grid}>
+                {team.map((mon, index) => {
+                    const displaySlug = PokemonHelpers.getDisplaySlug(
+                        game.dataSource,
+                        mon
+                    );
+                    const speedComparison = getSpeedComparison(mon);
 
-                        return (
-                            <button
-                                aria-pressed={
-                                    String(index) === selectedMemberIndex
-                                }
-                                className={[
-                                    styles.slot,
-                                    String(index) === selectedMemberIndex &&
-                                        styles['slot--selected'],
-                                ]
-                                    .filter(Boolean)
-                                    .join(' ')}
-                                key={index}
-                                onClick={() => onSelectMember(String(index))}
-                                type="button"
-                            >
-                                <Image
-                                    alt={
-                                        PokemonHelpers.getPokemonData(
-                                            game.dataSource,
-                                            displaySlug
-                                        )?.name ?? mon.slug
-                                    }
-                                    height={SPRITE_HEIGHT}
-                                    src={PokemonHelpers.getBoxSprite(
+                    return (
+                        <button
+                            aria-pressed={String(index) === selectedMemberIndex}
+                            className={[
+                                styles.slot,
+                                String(index) === selectedMemberIndex &&
+                                    styles['slot--selected'],
+                            ]
+                                .filter(Boolean)
+                                .join(' ')}
+                            key={index}
+                            onClick={() => onSelectMember(String(index))}
+                            type="button"
+                        >
+                            <Image
+                                alt={
+                                    PokemonHelpers.getPokemonData(
+                                        game.dataSource,
                                         displaySlug
-                                    )}
-                                    width={SPRITE_WIDTH}
-                                />
-                                {speedComparison === 'faster' && (
-                                    <span className={styles['faster-icon']}>
-                                        <Tooltip
-                                            position="right"
-                                            text={
-                                                SPEED_TOOLTIPS[speedComparison]
-                                            }
-                                        >
-                                            <ChevronIcon />
-                                        </Tooltip>
-                                    </span>
-                                )}
-                                {speedComparison === 'slower' && (
-                                    <span className={styles['slower-icon']}>
-                                        <Tooltip
-                                            position="right"
-                                            text={
-                                                SPEED_TOOLTIPS[speedComparison]
-                                            }
-                                        >
-                                            <ChevronIcon />
-                                        </Tooltip>
-                                    </span>
-                                )}
-                            </button>
-                        );
-                    })}
-                </div>
-            ) : (
-                <span className={styles.placeholder}>Select a tag partner</span>
-            )}
+                                    )?.name ?? mon.slug
+                                }
+                                height={SPRITE_HEIGHT}
+                                src={PokemonHelpers.getBoxSprite(displaySlug)}
+                                width={SPRITE_WIDTH}
+                            />
+                            {speedComparison === 'faster' && (
+                                <span className={styles['faster-icon']}>
+                                    <Tooltip
+                                        position="right"
+                                        text={SPEED_TOOLTIPS[speedComparison]}
+                                    >
+                                        <ChevronIcon />
+                                    </Tooltip>
+                                </span>
+                            )}
+                            {speedComparison === 'slower' && (
+                                <span className={styles['slower-icon']}>
+                                    <Tooltip
+                                        position="right"
+                                        text={SPEED_TOOLTIPS[speedComparison]}
+                                    >
+                                        <ChevronIcon />
+                                    </Tooltip>
+                                </span>
+                            )}
+                        </button>
+                    );
+                })}
+            </div>
         </div>
     );
 };

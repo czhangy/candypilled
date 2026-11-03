@@ -141,11 +141,34 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
                     onSelectMove={handleSelectDefenderMove}
                 />
             </div>
-            {description && <p className={styles.description}>{description}</p>}
+            {description && (
+                <div className={styles.description}>
+                    {description.lines.length === 1 ? (
+                        <p>
+                            {description.heading}: {description.lines[0]}
+                            {description.koText && ` -- ${description.koText}`}
+                        </p>
+                    ) : (
+                        <>
+                            <p>
+                                {description.heading}
+                                {description.koText &&
+                                    ` -- ${description.koText}`}
+                            </p>
+                            <ul>
+                                {description.lines.map((line) => (
+                                    <li key={line}>{line}</li>
+                                ))}
+                            </ul>
+                        </>
+                    )}
+                </div>
+            )}
             {possibleDamageAmounts && (
                 <p className={styles['possible-damage']}>
-                    Possible damage amounts: ({possibleDamageAmounts.join(', ')}
-                    )
+                    Possible damage amounts
+                    {possibleDamageAmounts.perHit ? ' (per hit)' : ''}: (
+                    {possibleDamageAmounts.amounts.join(', ')})
                 </p>
             )}
         </div>

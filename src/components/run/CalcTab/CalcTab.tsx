@@ -973,14 +973,16 @@ const CalcTab: React.FC<CalcTabProps> = ({
                             options={tagPartnerOptions}
                             selectedTagPartner={selectedTagPartner}
                         />
-                        <TagTeamSelectPanel
-                            enemySpeed={trainerSpeed}
-                            game={game}
-                            onSelectMember={handleSelectTagPartnerMember}
-                            selectedMemberIndex={selectedTagMemberIndex}
-                            selectedTagPartner={selectedTagPartner}
-                            starter={run.starter}
-                        />
+                        {selectedTagPartner && (
+                            <TagTeamSelectPanel
+                                enemySpeed={trainerSpeed}
+                                game={game}
+                                onSelectMember={handleSelectTagPartnerMember}
+                                selectedMemberIndex={selectedTagMemberIndex}
+                                selectedTagPartner={selectedTagPartner}
+                                starter={run.starter}
+                            />
+                        )}
                     </>
                 )}
             </div>

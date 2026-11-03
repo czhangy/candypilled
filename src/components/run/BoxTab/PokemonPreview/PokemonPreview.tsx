@@ -92,6 +92,12 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
         onSelectItem(itemSlug);
     };
 
+    const handleNameClick = (): void => {
+        if (pokemon) {
+            onSelectSpecies(pokemon.slug);
+        }
+    };
+
     const handleToggleStatusClick = (): void => {
         if (pokemon) {
             onToggleStatus(pokemon);
@@ -233,7 +239,13 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                             </div>
                             <div className={styles.info}>
                                 <span className={styles.name}>
-                                    {data.name}
+                                    <button
+                                        className={styles['name-link']}
+                                        onClick={handleNameClick}
+                                        type="button"
+                                    >
+                                        {data.name}
+                                    </button>
                                     {pokemon.gender !== 'genderless' && (
                                         <span
                                             className={[
