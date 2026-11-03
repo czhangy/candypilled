@@ -30,26 +30,37 @@
             width: 1.1rem;
         }
 
-        .faster-icon,
-        .slower-icon {
+        .speed-icon {
             display: flex;
             left: 100%;
             margin-left: 0.3rem;
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-        }
 
-        .faster-icon {
-            color: $red;
-
-            svg {
-                transform: rotate(180deg);
+            .tie-mark {
+                font-size: 1.1rem;
+                font-weight: 700;
+                line-height: 1.1rem;
+                text-align: center;
+                width: 1.1rem;
             }
-        }
 
-        .slower-icon {
-            color: $blue;
+            &--faster {
+                color: $red;
+
+                svg {
+                    transform: rotate(180deg);
+                }
+            }
+
+            &--slower {
+                color: $blue;
+            }
+
+            &--tie {
+                color: $gold;
+            }
         }
     }
 

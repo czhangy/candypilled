@@ -77,36 +77,35 @@ const StatsTable: React.FC<StatsTableProps> = ({
                         <th className={styles['stat-label']}>
                             <span className={styles['label-text']}>
                                 {label}
-                                {key === 'spe' &&
-                                    speedComparison === 'faster' && (
-                                        <span className={styles['faster-icon']}>
-                                            <Tooltip
-                                                position="center"
-                                                text={
-                                                    SPEED_TOOLTIPS[
-                                                        speedComparison
-                                                    ]
-                                                }
-                                            >
+                                {key === 'spe' && speedComparison && (
+                                    <span
+                                        className={[
+                                            styles['speed-icon'],
+                                            styles[
+                                                `speed-icon--${speedComparison}`
+                                            ],
+                                        ].join(' ')}
+                                    >
+                                        <Tooltip
+                                            position="center"
+                                            text={
+                                                SPEED_TOOLTIPS[speedComparison]
+                                            }
+                                        >
+                                            {speedComparison === 'tie' ? (
+                                                <span
+                                                    className={
+                                                        styles['tie-mark']
+                                                    }
+                                                >
+                                                    =
+                                                </span>
+                                            ) : (
                                                 <ChevronIcon />
-                                            </Tooltip>
-                                        </span>
-                                    )}
-                                {key === 'spe' &&
-                                    speedComparison === 'slower' && (
-                                        <span className={styles['slower-icon']}>
-                                            <Tooltip
-                                                position="center"
-                                                text={
-                                                    SPEED_TOOLTIPS[
-                                                        speedComparison
-                                                    ]
-                                                }
-                                            >
-                                                <ChevronIcon />
-                                            </Tooltip>
-                                        </span>
-                                    )}
+                                            )}
+                                        </Tooltip>
+                                    </span>
+                                )}
                             </span>
                         </th>
                         <td>{baseStats?.[key]}</td>
