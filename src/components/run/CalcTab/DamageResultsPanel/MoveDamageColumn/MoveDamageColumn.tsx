@@ -1,3 +1,4 @@
+import MoveTooltip from '@/components/run/MoveTooltip/MoveTooltip';
 import { MOVE_SLOT_COUNT } from '@/lib/static/constants';
 import {
     CalcField,
@@ -55,21 +56,29 @@ const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
         { length: MOVE_SLOT_COUNT },
         (_, index) => moveNames[index] ?? ''
     );
-    const moveRanges = paddedMoveNames.map((moveName, index) => ({
-        index,
-        moveName,
-        range:
-            attacker && defender
-                ? DamageCalcHelpers.getDamagePercentRange(
-                      generation,
-                      dataSource,
-                      attacker,
-                      defender,
-                      moveName,
-                      field
-                  )
-                : null,
-    }));
+    const moveRanges = paddedMoveNames.map((moveName, index) => {
+        const slug = MoveHelpers.getSlugByName(dataSource, moveName) ?? '';
+        const isStatus =
+            MoveHelpers.getMoveCategory(dataSource, slug, generation) ===
+            'status';
+        return {
+            index,
+            isStatus,
+            moveName,
+            slug,
+            range:
+                attacker && defender && !isStatus
+                    ? DamageCalcHelpers.getDamagePercentRange(
+                          generation,
+                          dataSource,
+                          attacker,
+                          defender,
+                          moveName,
+                          field
+                      )
+                    : null,
+        };
+    });
     const highestDamage = Math.max(
         ...moveRanges.map(({ range }) => range?.[1] ?? -Infinity)
     );
@@ -80,7 +89,7 @@ const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
 
     return (
         <div className={styles['move-damage-column']}>
-            {moveRanges.map(({ index, moveName, range }) => (
+            {moveRanges.map(({ index, isStatus, moveName, range, slug }) => (
                 <div
                     className={[
                         styles.row,
@@ -91,23 +100,32 @@ const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
                     key={index}
                 >
                     {moveName ? (
-                        <button
-                            className={[
-                                styles.move,
-                                index === activeIndex && styles['move--active'],
-                            ]
-                                .filter(Boolean)
-                                .join(' ')}
-                            onClick={() => onSelectMove(index)}
-                            style={
-                                {
-                                    '--move-color': getMoveColor(moveName),
-                                } as React.CSSProperties
-                            }
-                            type="button"
+                        <MoveTooltip
+                            className={styles['move-tooltip']}
+                            dataSource={dataSource}
+                            generation={generation}
+                            ivs={ivs}
+                            slug={slug}
                         >
-                            {moveName}
-                        </button>
+                            <button
+                                className={[
+                                    styles.move,
+                                    index === activeIndex &&
+                                        styles['move--active'],
+                                ]
+                                    .filter(Boolean)
+                                    .join(' ')}
+                                onClick={() => onSelectMove(index)}
+                                style={
+                                    {
+                                        '--move-color': getMoveColor(moveName),
+                                    } as React.CSSProperties
+                                }
+                                type="button"
+                            >
+                                {moveName}
+                            </button>
+                        </MoveTooltip>
                     ) : (
                         <span
                             className={[
@@ -119,7 +137,11 @@ const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
                         </span>
                     )}
                     <span className={styles.range}>
-                        {range ? `${range[0]} - ${range[1]}%` : '-'}
+                        {isStatus
+                            ? 'N/A'
+                            : range
+                              ? `${range[0]} - ${range[1]}%`
+                              : '-'}
                     </span>
                 </div>
             ))}
