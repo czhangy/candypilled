@@ -39,6 +39,14 @@ export default class DamageCalcHelpers {
         return resolved;
     }
 
+    /** Whether moveName's damage can't be calculated at all (Psywave's level-based roll isn't modeled by @smogon/calc), so the UI shows "???" instead of a range or description. */
+    static isUncalculableMove(
+        dataSource: GameDataSource,
+        moveName: string
+    ): boolean {
+        return MoveHelpers.getSlugByName(dataSource, moveName) === 'psywave';
+    }
+
     /**
      * The [min, max] damage percentage moveName (used by attacker) would
      * deal to defender in generation under field, or null if moveName is

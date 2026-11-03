@@ -296,8 +296,6 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                                     styles['detail-link']
                                                 }
                                                 href={`/natures?nature=${pokemon.nature.toLowerCase()}`}
-                                                rel="noopener noreferrer"
-                                                target="_blank"
                                             >
                                                 {pokemon.nature}
                                                 {NatureHelpers.getNatureEffect(

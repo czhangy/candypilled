@@ -5,25 +5,15 @@ import {
     Abilities,
     DataChange,
     GameDataSource,
+    LearnsetMethod,
     LearnsetMove,
     PokemonData,
-    PokemonSlug,
     StatValues,
 } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import GenerationHelpers from '@/lib/utils/GenerationHelpers';
 
 const MAX_LEVEL = 100;
-
-// One species that knows a given move, alongside every learnset entry
-// (level-up level and/or machine/tutor) it learns that move through, for
-// SpeciesListPanel's move-mode entries.
-type SpeciesLearnset = {
-    slug: PokemonSlug;
-    name: string;
-    dexNumber: number;
-    moves: LearnsetMove[];
-};
 
 export default class PokemonHelpers {
     // -------------------------------------------------------------------------
@@ -288,8 +278,9 @@ export default class PokemonHelpers {
 
     /**
      * slug's learnset in dataSource for version (a PokeAPI version group
-     * slug, e.g. "platinum"), or undefined if no form or matching version
-     * group exists.
+     * slug, e.g. "platinum"), grouped level-up, then machine, then tutor
+     * (stored order kept within each group), or undefined if no form or
+     * matching version group exists.
      */
     static getPokemonLearnset(
         dataSource: GameDataSource,
@@ -299,8 +290,15 @@ export default class PokemonHelpers {
         const pokemon = PokemonHelpers.getPokemonData(dataSource, slug);
         if (!pokemon) return undefined;
 
-        return pokemon.learnset.find((entry) => entry.versionGroup === version)
-            ?.moves;
+        const moves = pokemon.learnset.find(
+            (entry) => entry.versionGroup === version
+        )?.moves;
+
+        return moves?.toSorted(
+            (a, b) =>
+                PokemonHelpers.LEARNSET_METHOD_ORDER.indexOf(a.method) -
+                PokemonHelpers.LEARNSET_METHOD_ORDER.indexOf(b.method)
+        );
     }
 
     /**
@@ -352,63 +350,6 @@ export default class PokemonHelpers {
             ).forEach((move) => moves.add(move));
         }
         return Array.from(moves);
-    }
-
-    /**
-     * Every species in species that learns moveSlug in version, alongside
-     * each learnset entry that teaches it, in species' order.
-     */
-    static getSpeciesWithMove(
-        dataSource: GameDataSource,
-        species: PokemonData[],
-        moveSlug: string,
-        version: string
-    ): SpeciesLearnset[] {
-        return species
-            .map((pokemon) => {
-                const learnset =
-                    PokemonHelpers.getPokemonLearnset(
-                        dataSource,
-                        pokemon.slug,
-                        version
-                    ) ?? [];
-                const moves = learnset.filter((move) => move.slug === moveSlug);
-
-                return moves.length > 0
-                    ? {
-                          slug: pokemon.slug,
-                          name: pokemon.name,
-                          dexNumber: pokemon.dexNumber,
-                          moves,
-                      }
-                    : undefined;
-            })
-            .filter((entry): entry is SpeciesLearnset => entry !== undefined);
-    }
-
-    /**
-     * Every species in species that can have abilitySlug (in any slot) as
-     * of generation, in species' order.
-     */
-    static getSpeciesWithAbility(
-        dataSource: GameDataSource,
-        species: PokemonData[],
-        abilitySlug: string,
-        generation: number
-    ): PokemonData[] {
-        return species.filter((pokemon) => {
-            const abilities = PokemonHelpers.getPokemonAbilities(
-                dataSource,
-                pokemon.slug,
-                generation
-            );
-
-            return (
-                abilities?.slot1 === abilitySlug ||
-                abilities?.slot2 === abilitySlug ||
-                abilities?.hidden === abilitySlug
-            );
-        });
     }
 
     /**
@@ -611,6 +552,12 @@ export default class PokemonHelpers {
     // -------------------------------------------------------------------------
 
     private static readonly MAX_KNOWN_MOVES = 4;
+
+    private static readonly LEARNSET_METHOD_ORDER: LearnsetMethod[] = [
+        'level-up',
+        'machine',
+        'tutor',
+    ];
 
     /** Which ability slots differ between current and vanilla. */
     private static computeAbilityChanges(

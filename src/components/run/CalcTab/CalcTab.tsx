@@ -37,6 +37,7 @@ import TeamSelectPanel from './TeamSelectPanel/TeamSelectPanel';
 type CalcTabProps = {
     game: Game;
     onSelectBattle: (battleKey: string) => void;
+    onSelectSpecies: (slug: string) => void;
     run: Run;
     selectedBattle?: string;
 };
@@ -44,6 +45,7 @@ type CalcTabProps = {
 const CalcTab: React.FC<CalcTabProps> = ({
     game,
     onSelectBattle,
+    onSelectSpecies,
     run,
     selectedBattle,
 }) => {
@@ -952,6 +954,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     onLevelChange={handleAttackerLevelChange}
                     onMoveChange={handleAttackerMoveChange}
                     onNatureChange={handleAttackerNatureChange}
+                    onSelectSpecies={onSelectSpecies}
                     onSpeciesChange={handleAttackerSpeciesChange}
                     onStatusChange={handleAttackerStatusChange}
                     pokemonSlug={attackerDisplaySlug}
@@ -1012,6 +1015,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     onLevelChange={handleDefenderLevelChange}
                     onMoveChange={handleDefenderMoveChange}
                     onNatureChange={handleDefenderNatureChange}
+                    onSelectSpecies={onSelectSpecies}
                     onSpeciesChange={handleDefenderSpeciesChange}
                     onStatusChange={handleDefenderStatusChange}
                     pokemonSlug={defenderDisplaySlug}

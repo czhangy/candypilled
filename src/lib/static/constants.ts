@@ -13,10 +13,6 @@ export const SETTINGS: Setting[] = [
         id: 'show-legendaries',
         title: 'Show Legendaries',
     },
-    {
-        id: 'show-national-dex-data',
-        title: 'Show National Dex Data',
-    },
 ];
 
 export const MIN_LEVEL = 1;

@@ -70,8 +70,13 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
         activeMove.side === 'attacker' ? "Player's" : "Enemy's";
     const defenderLabel =
         activeMove.side === 'attacker' ? "Enemy's" : "Player's";
+    const canDescribeActiveMove =
+        !!activeMoveName &&
+        !!activeAttacker &&
+        !!activeDefender &&
+        !DamageCalcHelpers.isUncalculableMove(dataSource, activeMoveName);
     const description =
-        activeMoveName && activeAttacker && activeDefender
+        canDescribeActiveMove && activeAttacker && activeDefender
             ? DamageCalcHelpers.getDescription(
                   generation,
                   dataSource,
@@ -84,7 +89,7 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
               )
             : null;
     const possibleDamageAmounts =
-        activeMoveName && activeAttacker && activeDefender
+        canDescribeActiveMove && activeAttacker && activeDefender
             ? DamageCalcHelpers.getPossibleDamageAmounts(
                   generation,
                   dataSource,

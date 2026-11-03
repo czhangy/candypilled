@@ -1,6 +1,7 @@
 import { useId } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import NumericInput from '@/components/common/NumericInput/NumericInput';
+import PokeballIcon from '@/lib/icons/PokeballIcon';
 import { MAX_LEVEL, MIN_LEVEL } from '@/lib/static/constants';
 import { Nature } from '@/lib/static/enums';
 import {
@@ -41,6 +42,7 @@ type PokemonPanelProps = {
     onLevelChange: (value: number) => void;
     onMoveChange: (index: number, value: string) => void;
     onNatureChange: (value: string) => void;
+    onSelectSpecies: (slug: string) => void;
     onSpeciesChange: (slug: string) => void;
     onStatusChange: (value: string) => void;
     pokemonSlug?: string;
@@ -68,6 +70,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     onLevelChange,
     onMoveChange,
     onNatureChange,
+    onSelectSpecies,
     onSpeciesChange,
     onStatusChange,
     pokemonSlug,
@@ -93,6 +96,16 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     // -------------------------------------------------------------------------
 
     const levelInputId = useId();
+
+    // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleSpeciesLinkClick = (): void => {
+        if (pokemonSlug) {
+            onSelectSpecies(pokemonSlug);
+        }
+    };
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -174,7 +187,19 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
         <div className={styles['pokemon-panel']}>
             <div className={styles.row}>
                 <div className={styles.field}>
-                    <span className={styles.label}>Pokémon</span>
+                    <div className={styles['label-row']}>
+                        <span className={styles.label}>Pokémon</span>
+                        {pokemonSlug && (
+                            <button
+                                aria-label="View in Pokédex"
+                                className={styles['pokedex-link']}
+                                onClick={handleSpeciesLinkClick}
+                                type="button"
+                            >
+                                <PokeballIcon />
+                            </button>
+                        )}
+                    </div>
                     {pokemonSlug ? (
                         <div className={styles.species}>
                             <Dropdown

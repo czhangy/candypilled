@@ -24,7 +24,6 @@ type EncounterTableProps = {
     isMissed: boolean;
     methodSplits: MethodSplit[];
     onSelectEncounter?: (encounter: Encounter) => void;
-    onSelectItem: (slug: string) => void;
     onToggleMissed: () => void;
     selectedSpecies?: string;
 };
@@ -39,7 +38,6 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
     isMissed,
     methodSplits,
     onSelectEncounter,
-    onSelectItem,
     onToggleMissed,
     selectedSpecies,
 }) => {
@@ -264,7 +262,6 @@ const EncounterTable: React.FC<EncounterTableProps> = ({
                             key={method}
                             method={method}
                             onSelectEncounter={handleEncounterSelect}
-                            onSelectItem={onSelectItem}
                             selectedSpecies={selectedSpecies}
                             splitName={
                                 methodSplits.find(

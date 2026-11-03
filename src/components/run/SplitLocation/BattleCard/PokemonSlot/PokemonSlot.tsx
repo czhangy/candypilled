@@ -358,8 +358,6 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                         <a
                             className={styles['ability-button']}
                             href={`/natures?nature=${pokemon.nature.toLowerCase()}`}
-                            rel="noopener noreferrer"
-                            target="_blank"
                         >
                             {natureContent}
                         </a>
