@@ -97,7 +97,7 @@ export const GAME_CHECK_CONFIGS: Record<string, GameCheckConfig> = {
     },
     'Renegade Platinum': {
         dataFolder: 'renegade-platinum',
-        unmappedLocations: SINNOH_UNMAPPED_LOCATIONS,
+        unmappedLocations: [...SINNOH_UNMAPPED_LOCATIONS, "Rotom's Room"],
         isEnabled: true,
     },
 };

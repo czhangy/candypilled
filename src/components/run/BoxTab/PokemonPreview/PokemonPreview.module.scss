@@ -84,6 +84,29 @@ $label-width: 4.5rem;
 
                     font-size: 1rem;
 
+                    .name-link {
+                        @include mono-label;
+
+                        background: none;
+                        border: none;
+                        color: inherit;
+                        cursor: pointer;
+                        font-size: inherit;
+                        padding: 0;
+                        text-align: left;
+                        transition: color 0.2s ease;
+
+                        @media (hover: hover) {
+                            &:hover {
+                                color: var(--accent-color);
+                            }
+                        }
+
+                        @media (prefers-reduced-motion: reduce) {
+                            transition: none;
+                        }
+                    }
+
                     .gender {
                         @include gender-symbol;
 

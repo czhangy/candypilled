@@ -30,26 +30,37 @@
             width: 1.1rem;
         }
 
-        .faster-icon,
-        .slower-icon {
+        .speed-icon {
             display: flex;
             left: 100%;
             margin-left: 0.3rem;
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-        }
 
-        .faster-icon {
-            color: $red;
-
-            svg {
-                transform: rotate(180deg);
+            .tie-mark {
+                font-size: 1.1rem;
+                font-weight: 700;
+                line-height: 1.1rem;
+                text-align: center;
+                width: 1.1rem;
             }
-        }
 
-        .slower-icon {
-            color: $blue;
+            &--faster {
+                color: $red;
+
+                svg {
+                    transform: rotate(180deg);
+                }
+            }
+
+            &--slower {
+                color: $blue;
+            }
+
+            &--tie {
+                color: $gold;
+            }
         }
     }
 
@@ -59,5 +70,41 @@
 
     .boost-cell {
         width: 4.5rem;
+
+        .stepper {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+
+            .stepper-button {
+                background: none;
+                border: none;
+                color: $text-mid;
+                cursor: pointer;
+                font: inherit;
+                line-height: 1;
+                padding: 0.1rem 0.35rem;
+                transition: color 0.2s ease;
+
+                &:disabled {
+                    cursor: default;
+                    opacity: 0.3;
+                }
+
+                @media (hover: hover) {
+                    &:hover:not(:disabled) {
+                        color: var(--accent-color);
+                    }
+                }
+
+                @media (prefers-reduced-motion: reduce) {
+                    transition: none;
+                }
+            }
+
+            .stepper-value {
+                min-width: 1.5rem;
+            }
+        }
     }
 }

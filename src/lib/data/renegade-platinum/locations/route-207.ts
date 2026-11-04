@@ -36,6 +36,13 @@ const ROUTE_207: Location = {
             method: 'Gift from Dawn/Lucas',
             slug: 'vs-seeker',
         },
+        {
+            category: ItemCategory.HeldItem,
+            count: 1,
+            hidden: false,
+            method: 'Ground',
+            slug: 'hard-stone',
+        },
     ],
     methodSplits: [
         { method: EncounterMethod.Grass, split: 'Roark' },

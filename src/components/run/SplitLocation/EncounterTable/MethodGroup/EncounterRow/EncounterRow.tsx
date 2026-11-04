@@ -12,7 +12,6 @@ type EncounterRowProps = {
     isCaughtHere: boolean;
     isSelected: boolean;
     onClick: () => void;
-    onSelectItem: (slug: string) => void;
 };
 
 const EncounterRow: React.FC<EncounterRowProps> = ({
@@ -22,7 +21,6 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
     isCaughtHere,
     isSelected,
     onClick,
-    onSelectItem,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
@@ -119,14 +117,9 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
                             </span>
                         )}
                         {heldItems.map((item) => (
-                            <button
+                            <span
                                 className={styles['pokemon__held-item']}
                                 key={item.slug}
-                                onClick={(event) => {
-                                    event.stopPropagation();
-                                    onSelectItem(item.slug);
-                                }}
-                                type="button"
                             >
                                 <Image
                                     alt={item.name}
@@ -135,7 +128,7 @@ const EncounterRow: React.FC<EncounterRowProps> = ({
                                     width={ITEM_ICON_SIZE}
                                 />
                                 {item.name}
-                            </button>
+                            </span>
                         ))}
                     </div>
                 </div>

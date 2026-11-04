@@ -40,6 +40,7 @@ import PASTORIA_GYM from '@/lib/data/renegade-platinum/locations/pastoria-gym';
 import POKEMON_LEAGUE from '@/lib/data/renegade-platinum/locations/pokemon-league';
 import POKEMON_MANSION from '@/lib/data/renegade-platinum/locations/pokemon-mansion';
 import RAVAGED_PATH from '@/lib/data/renegade-platinum/locations/ravaged-path';
+import ROTOMS_ROOM from '@/lib/data/renegade-platinum/locations/rotoms-room';
 import ROUTE_201 from '@/lib/data/renegade-platinum/locations/route-201';
 import ROUTE_202 from '@/lib/data/renegade-platinum/locations/route-202';
 import ROUTE_203 from '@/lib/data/renegade-platinum/locations/route-203';
@@ -135,6 +136,7 @@ export const LOCATIONS: Location[] = [
     POKEMON_LEAGUE,
     POKEMON_MANSION,
     RAVAGED_PATH,
+    ROTOMS_ROOM,
     ROUTE_201,
     ROUTE_202,
     ROUTE_203,

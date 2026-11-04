@@ -56,6 +56,7 @@ const LearnsetDifferences: React.FC<LearnsetDifferencesProps> = ({
                             highlightedMoves={[]}
                             interactive
                             levelOffsets={difference.levelOffsets}
+                            lostMoves={difference.lostMoves}
                             moves={difference.moves}
                             onSelectMove={onSelectMove}
                             scrollable={scrollable}

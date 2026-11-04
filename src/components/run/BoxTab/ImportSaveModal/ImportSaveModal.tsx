@@ -2,7 +2,12 @@
 
 import ImportSaveForm from '@/components/common/ImportSaveForm/ImportSaveForm';
 import Modal from '@/components/common/Modal/Modal';
-import { CaughtPokemon, Game } from '@/lib/static/types';
+import {
+    CaughtPokemon,
+    Game,
+    PokemonSlug,
+    SaveImport,
+} from '@/lib/static/types';
 
 type ImportSaveModalProps = {
     accentColor?: string;
@@ -12,7 +17,9 @@ type ImportSaveModalProps = {
     onSubmit: (
         pokemon: CaughtPokemon[],
         completedSplits: string[],
-        gender: 'male' | 'female'
+        gender: 'male' | 'female',
+        starter: PokemonSlug,
+        saveImport: SaveImport
     ) => void;
 };
 

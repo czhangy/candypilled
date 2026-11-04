@@ -1,12 +1,10 @@
 import { EncounterMethod } from '@/lib/static/enums';
 import {
-    BattleData,
     Encounter,
     EncounterLocation,
     EncounterVisibilityContext,
     Game,
     GameDataSource,
-    PokemonData,
 } from '@/lib/static/types';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -170,64 +168,9 @@ export default class EncounterHelpers {
         });
     }
 
-    /**
-     * Every species obtainable in game, sorted by dex number. Scopes the
-     * Data tab's species lists to what's actually relevant to game, rather
-     * than every species that's ever existed — unless includeAllSpecies
-     * (the "Show National Dex Data" setting) is set, in which case every
-     * species in game.generation is returned instead, still sorted by dex
-     * number. When filtering, "obtainable" means: encountered in the wild,
-     * fielded by a trainer (across every starter's team variant), or part
-     * of one of those species' evolution lines.
-     */
-    static getGameSpecies(
-        game: Game,
-        includeAllSpecies: boolean
-    ): PokemonData[] {
-        const allSpecies = PokemonHelpers.getAllSpecies(
-            game.dataSource,
-            game.generation
-        );
-        if (includeAllSpecies) {
-            return [...allSpecies].sort((a, b) => a.dexNumber - b.dexNumber);
-        }
-
-        const encounteredSlugs = Object.values(game.encounters)
-            .flat()
-            .map((encounter) => encounter.species);
-
-        const battledSlugs = Object.values(game.battles).flatMap((battle) =>
-            EncounterHelpers.getBattleSlugs(battle)
-        );
-
-        const familySlugs = new Set(
-            [...encounteredSlugs, ...battledSlugs].flatMap((slug) =>
-                EvolutionHelpers.getEvolutionFamily(
-                    game.dataSource,
-                    slug,
-                    game.generation
-                )
-            )
-        );
-
-        return allSpecies
-            .filter((pokemon) => familySlugs.has(pokemon.slug))
-            .sort((a, b) => a.dexNumber - b.dexNumber);
-    }
-
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------
-
-    // Every species slug across a battle's team(s): every one of its own
-    // teams, and (for a tag battle) its second trainer's.
-    private static getBattleSlugs(battle: BattleData): string[] {
-        const teams = [...battle.teams, ...(battle.secondTrainer?.teams ?? [])];
-
-        return teams.flatMap((entry) =>
-            entry.team.map((pokemon) => pokemon.slug)
-        );
-    }
 
     // Flattens every split/location/subarea down to a name/encountersKey
     // pair, mirroring how a location's wild encounters are actually wired

@@ -79,6 +79,7 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                         {visibleEvolutions.flatMap((child) => {
                             const methodLabel = child.methods
                                 ? EvolutionHelpers.getEvolutionMethodLabel(
+                                      dataSource,
                                       child.methods
                                   )
                                 : undefined;
@@ -115,7 +116,9 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                                             height={
                                                                 METHOD_ICON_SIZE
                                                             }
-                                                            src={`/evolution-methods/${methodLabel.icon}.png`}
+                                                            src={
+                                                                methodLabel.icon
+                                                            }
                                                             width={
                                                                 METHOD_ICON_SIZE
                                                             }
@@ -184,7 +187,9 @@ const EvolutionLine: React.FC<EvolutionLineProps> = ({
                                                             height={
                                                                 CONDITION_ICON_SIZE
                                                             }
-                                                            src={`/evolution-methods/${methodLabel.conditionIcon}.png`}
+                                                            src={
+                                                                methodLabel.conditionIcon
+                                                            }
                                                             width={
                                                                 CONDITION_ICON_SIZE
                                                             }

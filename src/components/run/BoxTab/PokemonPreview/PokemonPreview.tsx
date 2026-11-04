@@ -92,6 +92,12 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
         onSelectItem(itemSlug);
     };
 
+    const handleNameClick = (): void => {
+        if (pokemon) {
+            onSelectSpecies(pokemon.slug);
+        }
+    };
+
     const handleToggleStatusClick = (): void => {
         if (pokemon) {
             onToggleStatus(pokemon);
@@ -233,7 +239,13 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                             </div>
                             <div className={styles.info}>
                                 <span className={styles.name}>
-                                    {data.name}
+                                    <button
+                                        className={styles['name-link']}
+                                        onClick={handleNameClick}
+                                        type="button"
+                                    >
+                                        {data.name}
+                                    </button>
                                     {pokemon.gender !== 'genderless' && (
                                         <span
                                             className={[
@@ -284,8 +296,6 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                                     styles['detail-link']
                                                 }
                                                 href={`/natures?nature=${pokemon.nature.toLowerCase()}`}
-                                                rel="noopener noreferrer"
-                                                target="_blank"
                                             >
                                                 {pokemon.nature}
                                                 {NatureHelpers.getNatureEffect(
@@ -488,6 +498,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                     highlightedMoves={[]}
                                     interactive
                                     levelOffsets={{}}
+                                    lostMoves={[]}
                                     moves={learnset ?? []}
                                     onSelectMove={onSelectMove}
                                     scrollable={false}

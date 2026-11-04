@@ -7198,5 +7198,322 @@
                 "description": "Sweet honey. Slather it on a tree to attract wild Pokémon."
             }
         ]
+    },
+    "oval-stone": {
+        "slug": "oval-stone",
+        "name": "Oval Stone",
+        "category": "evolution",
+        "effect": "Level-up during Day on a Happiny: Holder evolves into Chansey.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/oval-stone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A peculiar stone that makes certain species of Pokémon evolve. It is shaped like an egg."
+            }
+        ]
+    },
+    "sun-stone": {
+        "slug": "sun-stone",
+        "name": "Sun Stone",
+        "category": "evolution",
+        "effect": "Evolves a Cottonee into Whimsicott, a Gloom into Bellossom, a Petilil into Lilligant, or a Sunkern into Sunflora.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/sun-stone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Makes certain species of POKéMON evolve."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A peculiar stone that makes certain species of Pokémon evolve. It is as red as the sun."
+            }
+        ]
+    },
+    "moon-stone": {
+        "slug": "moon-stone",
+        "name": "Moon Stone",
+        "category": "evolution",
+        "effect": "Evolves a Clefairy into Clefable, a Jigglypuff into Wigglytuff, a Munna into Musharna, a Nidorina into Nidoqueen, a Nidorino into Nidoking, or a Skitty into Delcatty.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/moon-stone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Makes certain species of POKéMON evolve."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A peculiar stone that makes certain species of Pokémon evolve. It is as black as the night sky."
+            }
+        ]
+    },
+    "fire-stone": {
+        "slug": "fire-stone",
+        "name": "Fire Stone",
+        "category": "evolution",
+        "effect": "Evolves an Eevee into Flareon, a Growlithe into Arcanine, a Pansear into Simisear, or a Vulpix into Ninetales.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/fire-stone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Makes certain species of POKéMON evolve."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A peculiar stone that makes certain species of Pokémon evolve. It is colored orange."
+            }
+        ]
+    },
+    "thunder-stone": {
+        "slug": "thunder-stone",
+        "name": "Thunder Stone",
+        "category": "evolution",
+        "effect": "Evolves an Eelektrik into Eelektross, an Eevee into Jolteon, or a Pikachu into Raichu.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/thunder-stone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Makes certain species of POKéMON evolve."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A peculiar stone that makes certain species of Pokémon evolve. It has a thunderbolt pattern."
+            }
+        ]
+    },
+    "water-stone": {
+        "slug": "water-stone",
+        "name": "Water Stone",
+        "category": "evolution",
+        "effect": "Evolves an Eevee into Vaporeon, a Lombre into Ludicolo, a Panpour into Simipour, a Poliwhirl into Poliwrath, a Shellder into Cloyster, or a Staryu into Starmie.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/water-stone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Makes certain species of POKéMON evolve."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A peculiar stone that makes certain species of Pokémon evolve. It is a clear, light blue."
+            }
+        ]
+    },
+    "leaf-stone": {
+        "slug": "leaf-stone",
+        "name": "Leaf Stone",
+        "category": "evolution",
+        "effect": "Evolves an Exeggcute into Exeggutor, a Gloom into Vileplume, a Nuzleaf into Shiftry, a Pansage into Simisage, or a Weepinbell into Victreebel.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/leaf-stone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "Makes certain species of POKéMON evolve."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A peculiar stone that makes certain species of Pokémon evolve. It has a leaf pattern."
+            }
+        ]
+    },
+    "shiny-stone": {
+        "slug": "shiny-stone",
+        "name": "Shiny Stone",
+        "category": "evolution",
+        "effect": "Evolves a Minccino into Cinccino, a Roselia into Roserade, or a Togetic into Togekiss.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/shiny-stone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A peculiar stone that makes certain species of Pokémon evolve. It shines with a dazzling light."
+            }
+        ]
+    },
+    "dusk-stone": {
+        "slug": "dusk-stone",
+        "name": "Dusk Stone",
+        "category": "evolution",
+        "effect": "Evolves a Lampent into Chandelure, a Misdreavus into Mismagius, or a Murkrow into Honchkrow.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/dusk-stone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A peculiar stone that makes certain species of Pokémon evolve. It is as dark as dark can be."
+            }
+        ]
+    },
+    "dawn-stone": {
+        "slug": "dawn-stone",
+        "name": "Dawn Stone",
+        "category": "evolution",
+        "effect": "Evolves a male Kirlia into Gallade or a female Snorunt into Froslass.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/dawn-stone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A peculiar stone that makes certain species of Pokémon evolve. It sparkles like eyes."
+            }
+        ]
+    },
+    "dragon-scale": {
+        "slug": "dragon-scale",
+        "name": "Dragon Scale",
+        "category": "evolution",
+        "effect": "Traded on a Seadra: Holder evolves into Kingdra.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/dragon-scale.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A strange scale held by DRAGON- type POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A thick and tough scale. Dragon-type Pokémon may be holding this item when caught."
+            }
+        ]
+    },
+    "up-grade": {
+        "slug": "up-grade",
+        "name": "Up-Grade",
+        "category": "evolution",
+        "effect": "Traded on a Porygon: Holder evolves into Porygon2.",
+        "introducedInGeneration": 2,
+        "isDangerous": false,
+        "sprite": "/items/up-grade.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A peculiar box made by SILPH CO."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A transparent device filled with all sorts of data. It was produced by Silph Co."
+            }
+        ]
+    },
+    "protector": {
+        "slug": "protector",
+        "name": "Protector",
+        "category": "evolution",
+        "effect": "Traded on a Rhydon: Holder evolves into Rhyperior.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/protector.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A protective item of some sort. It is extremely stiff and heavy. It is loved by a certain Pokémon."
+            }
+        ]
+    },
+    "electirizer": {
+        "slug": "electirizer",
+        "name": "Electirizer",
+        "category": "evolution",
+        "effect": "Traded on an Electabuzz: Holder evolves into Electivire.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/electirizer.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A box packed with a tremendous amount of electric energy. It is loved by a certain Pokémon."
+            }
+        ]
+    },
+    "magmarizer": {
+        "slug": "magmarizer",
+        "name": "Magmarizer",
+        "category": "evolution",
+        "effect": "Traded on a Magmar: Holder evolves into Magmortar.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/magmarizer.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A box packed with a tremendous amount of magma energy. It is loved by a certain Pokémon."
+            }
+        ]
+    },
+    "dubious-disc": {
+        "slug": "dubious-disc",
+        "name": "Dubious Disc",
+        "category": "evolution",
+        "effect": "Traded on a Porygon2: Holder evolves into Porygon-Z.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/dubious-disc.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A transparent device overflowing with dubious data. Its producer is unknown."
+            }
+        ]
+    },
+    "reaper-cloth": {
+        "slug": "reaper-cloth",
+        "name": "Reaper Cloth",
+        "category": "evolution",
+        "effect": "Traded on a Dusclops: Holder evolves into Dusknoir.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/reaper-cloth.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A cloth imbued with horrifyingly strong spiritual energy. It is loved by a certain Pokémon."
+            }
+        ]
+    },
+    "prism-scale": {
+        "slug": "prism-scale",
+        "name": "Prism Scale",
+        "category": "evolution",
+        "effect": "Traded on a Feebas: Holder evolves into Milotic.",
+        "introducedInGeneration": 5,
+        "isDangerous": false,
+        "sprite": "/items/prism-scale.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 5,
+                "description": "A mysterious scale that evolves certain Pokémon. It shines in rainbow colors."
+            }
+        ]
+    },
+    "ice-stone": {
+        "slug": "ice-stone",
+        "name": "Ice Stone",
+        "category": "evolution",
+        "effect": "Evolves an Alola Sandshrew into Alola Sandslash or an Alola Vulpix into Alola Ninetales.",
+        "introducedInGeneration": 7,
+        "isDangerous": false,
+        "sprite": "/items/ice-stone.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 7,
+                "description": "A peculiar stone that can make certain species of Pokémon evolve. It has an unmistakable snowflake pattern."
+            }
+        ]
     }
 }

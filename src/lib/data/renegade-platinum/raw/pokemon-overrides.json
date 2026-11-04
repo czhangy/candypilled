@@ -15263,7 +15263,7 @@
                                     "methods": [
                                         {
                                             "trigger": "use-item",
-                                            "item": "kings-rock"
+                                            "item": "king-s-rock"
                                         }
                                     ],
                                     "evolvesTo": []
@@ -15533,7 +15533,7 @@
                                     "methods": [
                                         {
                                             "trigger": "use-item",
-                                            "item": "kings-rock"
+                                            "item": "king-s-rock"
                                         }
                                     ],
                                     "evolvesTo": []
@@ -15823,6 +15823,37 @@
                 "abilities": {
                     "slot1": "magic-guard",
                     "slot2": "synchronize"
+                }
+            }
+        ],
+        "evolutionLine": [
+            {
+                "fromGeneration": 4,
+                "line": {
+                    "slug": "abra",
+                    "evolvesTo": [
+                        {
+                            "slug": "kadabra",
+                            "methods": [
+                                {
+                                    "trigger": "level-up",
+                                    "minLevel": 16
+                                }
+                            ],
+                            "evolvesTo": [
+                                {
+                                    "slug": "alakazam",
+                                    "methods": [
+                                        {
+                                            "trigger": "level-up",
+                                            "minLevel": 36
+                                        }
+                                    ],
+                                    "evolvesTo": []
+                                }
+                            ]
+                        }
+                    ]
                 }
             }
         ],
@@ -16727,6 +16758,37 @@
         ]
     },
     "machop": {
+        "evolutionLine": [
+            {
+                "fromGeneration": 4,
+                "line": {
+                    "slug": "machop",
+                    "evolvesTo": [
+                        {
+                            "slug": "machoke",
+                            "methods": [
+                                {
+                                    "trigger": "level-up",
+                                    "minLevel": 28
+                                }
+                            ],
+                            "evolvesTo": [
+                                {
+                                    "slug": "machamp",
+                                    "methods": [
+                                        {
+                                            "trigger": "level-up",
+                                            "minLevel": 36
+                                        }
+                                    ],
+                                    "evolvesTo": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
         "learnset": [
             {
                 "versionGroup": "renegade-platinum",
@@ -18743,6 +18805,37 @@
         ]
     },
     "geodude": {
+        "evolutionLine": [
+            {
+                "fromGeneration": 4,
+                "line": {
+                    "slug": "geodude",
+                    "evolvesTo": [
+                        {
+                            "slug": "graveler",
+                            "methods": [
+                                {
+                                    "trigger": "level-up",
+                                    "minLevel": 25
+                                }
+                            ],
+                            "evolvesTo": [
+                                {
+                                    "slug": "golem",
+                                    "methods": [
+                                        {
+                                            "trigger": "level-up",
+                                            "minLevel": 36
+                                        }
+                                    ],
+                                    "evolvesTo": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
         "learnset": [
             {
                 "versionGroup": "renegade-platinum",
@@ -20165,7 +20258,7 @@
                             "methods": [
                                 {
                                     "trigger": "use-item",
-                                    "item": "kings-rock"
+                                    "item": "king-s-rock"
                                 }
                             ],
                             "evolvesTo": []
@@ -20491,7 +20584,7 @@
                             "methods": [
                                 {
                                     "trigger": "use-item",
-                                    "item": "kings-rock"
+                                    "item": "king-s-rock"
                                 }
                             ],
                             "evolvesTo": []
@@ -24931,8 +25024,8 @@
                             "slug": "steelix",
                             "methods": [
                                 {
-                                    "trigger": "level-up",
-                                    "level": 32
+                                    "trigger": "use-item",
+                                    "item": "metal-coat"
                                 }
                             ],
                             "evolvesTo": []
@@ -50318,7 +50411,7 @@
                                     "methods": [
                                         {
                                             "trigger": "use-item",
-                                            "item": "kings-rock"
+                                            "item": "king-s-rock"
                                         }
                                     ],
                                     "evolvesTo": []
@@ -53917,7 +54010,7 @@
                             "methods": [
                                 {
                                     "trigger": "use-item",
-                                    "item": "kings-rock"
+                                    "item": "king-s-rock"
                                 }
                             ],
                             "evolvesTo": []
@@ -64786,6 +64879,37 @@
                 }
             }
         ],
+        "evolutionLine": [
+            {
+                "fromGeneration": 4,
+                "line": {
+                    "slug": "elekid",
+                    "evolvesTo": [
+                        {
+                            "slug": "electabuzz",
+                            "methods": [
+                                {
+                                    "trigger": "level-up",
+                                    "minLevel": 30
+                                }
+                            ],
+                            "evolvesTo": [
+                                {
+                                    "slug": "electivire",
+                                    "methods": [
+                                        {
+                                            "trigger": "use-item",
+                                            "item": "electirizer"
+                                        }
+                                    ],
+                                    "evolvesTo": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
         "learnset": [
             {
                 "versionGroup": "renegade-platinum",
@@ -65035,6 +65159,37 @@
                 "abilities": {
                     "slot1": "flame-body",
                     "slot2": "vital-spirit"
+                }
+            }
+        ],
+        "evolutionLine": [
+            {
+                "fromGeneration": 4,
+                "line": {
+                    "slug": "magby",
+                    "evolvesTo": [
+                        {
+                            "slug": "magmar",
+                            "methods": [
+                                {
+                                    "trigger": "level-up",
+                                    "minLevel": 30
+                                }
+                            ],
+                            "evolvesTo": [
+                                {
+                                    "slug": "magmortar",
+                                    "methods": [
+                                        {
+                                            "trigger": "use-item",
+                                            "item": "magmarizer"
+                                        }
+                                    ],
+                                    "evolvesTo": []
+                                }
+                            ]
+                        }
+                    ]
                 }
             }
         ],

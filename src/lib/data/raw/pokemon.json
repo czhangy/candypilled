@@ -42159,10 +42159,6 @@
                                         {
                                             "trigger": "use-item",
                                             "item": "thunder-stone"
-                                        },
-                                        {
-                                            "trigger": "use-item",
-                                            "item": "thunder-stone"
                                         }
                                     ],
                                     "evolvesTo": []
@@ -44198,10 +44194,6 @@
                                 {
                                     "slug": "raichu",
                                     "methods": [
-                                        {
-                                            "trigger": "use-item",
-                                            "item": "thunder-stone"
-                                        },
                                         {
                                             "trigger": "use-item",
                                             "item": "thunder-stone"
@@ -94165,10 +94157,6 @@
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 26
-                                },
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 26
                                 }
                             ],
                             "evolvesTo": []
@@ -95954,10 +95942,6 @@
                         {
                             "slug": "dugtrio",
                             "methods": [
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 26
-                                },
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 26
@@ -112358,10 +112342,6 @@
                                 {
                                     "trigger": "use-item",
                                     "item": "fire-stone"
-                                },
-                                {
-                                    "trigger": "use-item",
-                                    "item": "fire-stone"
                                 }
                             ],
                             "evolvesTo": []
@@ -114280,10 +114260,6 @@
                                 {
                                     "trigger": "use-item",
                                     "item": "fire-stone"
-                                },
-                                {
-                                    "trigger": "use-item",
-                                    "item": "fire-stone"
                                 }
                             ],
                             "evolvesTo": []
@@ -115997,7 +115973,7 @@
                                     "methods": [
                                         {
                                             "trigger": "trade",
-                                            "heldItem": "kings-rock"
+                                            "heldItem": "king-s-rock"
                                         }
                                     ],
                                     "evolvesTo": []
@@ -117638,7 +117614,7 @@
         "dexNumber": 61,
         "introducedInGeneration": 1,
         "isTemporaryForm": false,
-        "wildHeldItems": ["kings-rock"],
+        "wildHeldItems": ["king-s-rock"],
         "isLegendary": false,
         "sprites": {
             "ruby-sapphire": "/pokemon/ruby-sapphire/poliwhirl.png",
@@ -117768,7 +117744,7 @@
                                     "methods": [
                                         {
                                             "trigger": "trade",
-                                            "heldItem": "kings-rock"
+                                            "heldItem": "king-s-rock"
                                         }
                                     ],
                                     "evolvesTo": []
@@ -119773,7 +119749,7 @@
         "dexNumber": 62,
         "introducedInGeneration": 1,
         "isTemporaryForm": false,
-        "wildHeldItems": ["kings-rock"],
+        "wildHeldItems": ["king-s-rock"],
         "isLegendary": false,
         "sprites": {
             "ruby-sapphire": "/pokemon/ruby-sapphire/poliwrath.png",
@@ -144717,19 +144693,12 @@
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 25
-                                },
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 25
                                 }
                             ],
                             "evolvesTo": [
                                 {
                                     "slug": "golem",
                                     "methods": [
-                                        {
-                                            "trigger": "trade"
-                                        },
                                         {
                                             "trigger": "trade"
                                         }
@@ -146812,19 +146781,12 @@
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 25
-                                },
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 25
                                 }
                             ],
                             "evolvesTo": [
                                 {
                                     "slug": "golem",
                                     "methods": [
-                                        {
-                                            "trigger": "trade"
-                                        },
                                         {
                                             "trigger": "trade"
                                         }
@@ -149026,19 +148988,12 @@
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 25
-                                },
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 25
                                 }
                             ],
                             "evolvesTo": [
                                 {
                                     "slug": "golem",
                                     "methods": [
-                                        {
-                                            "trigger": "trade"
-                                        },
                                         {
                                             "trigger": "trade"
                                         }
@@ -151375,10 +151330,6 @@
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 40
-                                },
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 40
                                 }
                             ],
                             "evolvesTo": []
@@ -153021,10 +152972,6 @@
                         {
                             "slug": "rapidash",
                             "methods": [
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 40
-                                },
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 40
@@ -155022,7 +154969,7 @@
                             "methods": [
                                 {
                                     "trigger": "trade",
-                                    "heldItem": "kings-rock"
+                                    "heldItem": "king-s-rock"
                                 },
                                 {
                                     "trigger": "use-item",
@@ -157400,7 +157347,7 @@
         "dexNumber": 80,
         "introducedInGeneration": 1,
         "isTemporaryForm": false,
-        "wildHeldItems": ["kings-rock"],
+        "wildHeldItems": ["king-s-rock"],
         "isLegendary": false,
         "sprites": {
             "ruby-sapphire": "/pokemon/ruby-sapphire/slowbro.png",
@@ -173612,10 +173559,6 @@
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 38
-                                },
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 38
                                 }
                             ],
                             "evolvesTo": []
@@ -175715,10 +175658,6 @@
                         {
                             "slug": "muk",
                             "methods": [
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 38
-                                },
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 38
@@ -203512,10 +203451,6 @@
                                 {
                                     "trigger": "use-item",
                                     "item": "leaf-stone"
-                                },
-                                {
-                                    "trigger": "use-item",
-                                    "item": "leaf-stone"
                                 }
                             ],
                             "evolvesTo": []
@@ -205547,10 +205482,6 @@
                         {
                             "slug": "exeggutor",
                             "methods": [
-                                {
-                                    "trigger": "use-item",
-                                    "item": "leaf-stone"
-                                },
                                 {
                                     "trigger": "use-item",
                                     "item": "leaf-stone"
@@ -219136,10 +219067,6 @@
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 35
-                                },
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 35
                                 }
                             ],
                             "evolvesTo": []
@@ -221098,10 +221025,6 @@
                         {
                             "slug": "weezing",
                             "methods": [
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 35
-                                },
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 35
@@ -247241,10 +247164,6 @@
                                 {
                                     "trigger": "level-up",
                                     "knownMove": "mimic"
-                                },
-                                {
-                                    "trigger": "level-up",
-                                    "knownMove": "mimic"
                                 }
                             ],
                             "evolvesTo": []
@@ -247260,10 +247179,6 @@
                         {
                             "slug": "mr-mime",
                             "methods": [
-                                {
-                                    "trigger": "level-up",
-                                    "knownMove": "mimic"
-                                },
                                 {
                                     "trigger": "level-up",
                                     "knownMove": "mimic"
@@ -319120,10 +319035,6 @@
                                         {
                                             "trigger": "level-up",
                                             "minLevel": 36
-                                        },
-                                        {
-                                            "trigger": "level-up",
-                                            "minLevel": 36
                                         }
                                     ],
                                     "evolvesTo": []
@@ -320752,10 +320663,6 @@
                                 {
                                     "slug": "typhlosion",
                                     "methods": [
-                                        {
-                                            "trigger": "level-up",
-                                            "minLevel": 36
-                                        },
                                         {
                                             "trigger": "level-up",
                                             "minLevel": 36
@@ -322649,10 +322556,6 @@
                                 {
                                     "slug": "typhlosion",
                                     "methods": [
-                                        {
-                                            "trigger": "level-up",
-                                            "minLevel": 36
-                                        },
                                         {
                                             "trigger": "level-up",
                                             "minLevel": 36
@@ -354723,10 +354626,6 @@
                                         {
                                             "trigger": "use-item",
                                             "item": "thunder-stone"
-                                        },
-                                        {
-                                            "trigger": "use-item",
-                                            "item": "thunder-stone"
                                         }
                                     ],
                                     "evolvesTo": []
@@ -382860,7 +382759,7 @@
         "dexNumber": 186,
         "introducedInGeneration": 2,
         "isTemporaryForm": false,
-        "wildHeldItems": ["kings-rock"],
+        "wildHeldItems": ["king-s-rock"],
         "isLegendary": false,
         "sprites": {
             "ruby-sapphire": "/pokemon/ruby-sapphire/politoed.png",
@@ -382951,7 +382850,7 @@
                                     "methods": [
                                         {
                                             "trigger": "trade",
-                                            "heldItem": "kings-rock"
+                                            "heldItem": "king-s-rock"
                                         }
                                     ],
                                     "evolvesTo": []
@@ -408859,7 +408758,7 @@
         "dexNumber": 199,
         "introducedInGeneration": 2,
         "isTemporaryForm": false,
-        "wildHeldItems": ["kings-rock"],
+        "wildHeldItems": ["king-s-rock"],
         "isLegendary": false,
         "sprites": {
             "ruby-sapphire": "/pokemon/ruby-sapphire/slowking.png",
@@ -408948,7 +408847,7 @@
                             "methods": [
                                 {
                                     "trigger": "trade",
-                                    "heldItem": "kings-rock"
+                                    "heldItem": "king-s-rock"
                                 },
                                 {
                                     "trigger": "use-item",
@@ -544185,10 +544084,6 @@
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 20
-                                },
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 20
                                 }
                             ],
                             "evolvesTo": []
@@ -544204,10 +544099,6 @@
                         {
                             "slug": "linoone",
                             "methods": [
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 20
-                                },
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 20
@@ -546404,10 +546295,6 @@
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 20
-                                },
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 20
                                 }
                             ],
                             "evolvesTo": []
@@ -546423,10 +546310,6 @@
                         {
                             "slug": "linoone",
                             "methods": [
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 20
-                                },
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 20
@@ -609864,7 +609747,7 @@
         "dexNumber": 297,
         "introducedInGeneration": 3,
         "isTemporaryForm": false,
-        "wildHeldItems": ["kings-rock"],
+        "wildHeldItems": ["king-s-rock"],
         "isLegendary": false,
         "sprites": {
             "ruby-sapphire": "/pokemon/ruby-sapphire/hariyama.png",
@@ -723484,10 +723367,6 @@
                                 {
                                     "trigger": "trade",
                                     "heldItem": "prism-scale"
-                                },
-                                {
-                                    "trigger": "level-up",
-                                    "minBeauty": 170
                                 }
                             ],
                             "evolvesTo": []
@@ -724715,10 +724594,6 @@
                                 {
                                     "trigger": "trade",
                                     "heldItem": "prism-scale"
-                                },
-                                {
-                                    "trigger": "level-up",
-                                    "minBeauty": 170
                                 }
                             ],
                             "evolvesTo": []
@@ -879085,10 +878960,6 @@
                                 {
                                     "trigger": "level-up",
                                     "knownMove": "mimic"
-                                },
-                                {
-                                    "trigger": "level-up",
-                                    "knownMove": "mimic"
                                 }
                             ],
                             "evolvesTo": []
@@ -879104,10 +878975,6 @@
                         {
                             "slug": "mr-mime",
                             "methods": [
-                                {
-                                    "trigger": "level-up",
-                                    "knownMove": "mimic"
-                                },
                                 {
                                     "trigger": "level-up",
                                     "knownMove": "mimic"
@@ -965843,10 +965710,6 @@
                                         {
                                             "trigger": "level-up",
                                             "minLevel": 36
-                                        },
-                                        {
-                                            "trigger": "level-up",
-                                            "minLevel": 36
                                         }
                                     ],
                                     "evolvesTo": []
@@ -966378,10 +966241,6 @@
                                 {
                                     "slug": "samurott",
                                     "methods": [
-                                        {
-                                            "trigger": "level-up",
-                                            "minLevel": 36
-                                        },
                                         {
                                             "trigger": "level-up",
                                             "minLevel": 36
@@ -966950,10 +966809,6 @@
                                 {
                                     "slug": "samurott",
                                     "methods": [
-                                        {
-                                            "trigger": "level-up",
-                                            "minLevel": 36
-                                        },
                                         {
                                             "trigger": "level-up",
                                             "minLevel": 36
@@ -990741,10 +990596,6 @@
                                 {
                                     "trigger": "use-item",
                                     "item": "sun-stone"
-                                },
-                                {
-                                    "trigger": "use-item",
-                                    "item": "sun-stone"
                                 }
                             ],
                             "evolvesTo": []
@@ -991192,10 +991043,6 @@
                         {
                             "slug": "lilligant",
                             "methods": [
-                                {
-                                    "trigger": "use-item",
-                                    "item": "sun-stone"
-                                },
                                 {
                                     "trigger": "use-item",
                                     "item": "sun-stone"
@@ -1004448,10 +1004295,6 @@
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 30
-                                },
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 30
                                 }
                             ],
                             "evolvesTo": []
@@ -1005017,10 +1004860,6 @@
                         {
                             "slug": "zoroark",
                             "methods": [
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 30
-                                },
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 30
@@ -1035444,10 +1035283,6 @@
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 54
-                                },
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 54
                                 }
                             ],
                             "evolvesTo": []
@@ -1035951,10 +1035786,6 @@
                         {
                             "slug": "braviary",
                             "methods": [
-                                {
-                                    "trigger": "level-up",
-                                    "minLevel": 54
-                                },
                                 {
                                     "trigger": "level-up",
                                     "minLevel": 54

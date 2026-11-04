@@ -119,38 +119,22 @@ export default class BattleHelpers {
         game: Game,
         gender: 'male' | 'female' | undefined
     ): Battle[] {
-        const battles = game.locations.flatMap((location) =>
-            BattleHelpers.getBattlesInLocation(
-                location,
-                gender,
-                undefined,
-                game
-            )
+        return BattleHelpers.getAllBattlesWithLocations(game, gender).map(
+            (entry) => entry.battle
         );
+    }
 
-        const seen = new Set<string>();
-        const deduped = battles.filter((battle) => {
-            const key = BattleHelpers.getBattleKey(battle);
-            if (seen.has(key)) return false;
-            seen.add(key);
-            return true;
-        });
-
-        const splitIndexes = new Map(
-            game.splits.map((split, index) => [split.name, index])
-        );
-
-        return deduped
-            .map((battle) => {
-                const split =
-                    game.battles[BattleHelpers.getBattleKey(battle)]?.split;
-                return {
-                    battle,
-                    splitIndex: split ? (splitIndexes.get(split) ?? -1) : -1,
-                };
+    /** Every battle from getAllBattles(game, gender), in the same order, paired with its display label followed by the name of the location it's first placed in, e.g. "Youngster Joey (Route 202)". */
+    static getAllBattleOptions(
+        game: Game,
+        gender: 'male' | 'female' | undefined
+    ): { battleKey: string; label: string }[] {
+        return BattleHelpers.getAllBattlesWithLocations(game, gender).map(
+            ({ battle, locationName }) => ({
+                battleKey: battle.battleKey,
+                label: `${BattleHelpers.getFullName(battle, game)} (${locationName})`,
             })
-            .sort((a, b) => a.splitIndex - b.splitIndex)
-            .map((entry) => entry.battle);
+        );
     }
 
     /** battleKey's index within getAllBattles(game, gender), or -1 if it isn't in that list. */
@@ -224,7 +208,7 @@ export default class BattleHelpers {
 
     /**
      * Every location/subarea's tag partner in game for gender, paired with
-     * its trainer's display label, excluding one restricted to the other
+     * its trainer's display label followed by the location's name, excluding one restricted to the other
      * gender. A partner reused across more than one location keeps only
      * its first occurrence, same as getAllBattles.
      */
@@ -233,13 +217,14 @@ export default class BattleHelpers {
         gender: 'male' | 'female' | undefined
     ): { battleKey: string; label: string }[] {
         const toEntry = (
-            tagPartner: TagPartner
+            tagPartner: TagPartner,
+            locationName: string
         ): { battleKey: string; label: string } => ({
             battleKey: tagPartner.battleKey,
-            label: BattleHelpers.getFullName(
+            label: `${BattleHelpers.getFullName(
                 { battleKey: tagPartner.battleKey, x: 0, y: 0 },
                 game
-            ),
+            )} (${locationName})`,
         });
 
         const entries = game.splits.flatMap((split) =>
@@ -249,13 +234,15 @@ export default class BattleHelpers {
                         BattleHelpers.filterByGender(
                             subarea.tagPartner ?? [],
                             gender
-                        ).map(toEntry)
+                        ).map((tagPartner) =>
+                            toEntry(tagPartner, location.name)
+                        )
                     );
                 }
                 return BattleHelpers.filterByGender(
                     location.tagPartner ?? [],
                     gender
-                ).map(toEntry);
+                ).map((tagPartner) => toEntry(tagPartner, location.name));
             })
         );
 
@@ -289,6 +276,47 @@ export default class BattleHelpers {
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------
+
+    // getAllBattles' battles, each paired with the name of the location it's
+    // first placed in.
+    private static getAllBattlesWithLocations(
+        game: Game,
+        gender: 'male' | 'female' | undefined
+    ): { battle: Battle; locationName: string }[] {
+        const entries = game.locations.flatMap((location) =>
+            BattleHelpers.getBattlesInLocation(
+                location,
+                gender,
+                undefined,
+                game
+            ).map((battle) => ({ battle, locationName: location.name }))
+        );
+
+        const seen = new Set<string>();
+        const deduped = entries.filter(({ battle }) => {
+            const key = BattleHelpers.getBattleKey(battle);
+            if (seen.has(key)) return false;
+            seen.add(key);
+            return true;
+        });
+
+        const splitIndexes = new Map(
+            game.splits.map((split, index) => [split.name, index])
+        );
+
+        return deduped
+            .map((entry) => {
+                const split =
+                    game.battles[BattleHelpers.getBattleKey(entry.battle)]
+                        ?.split;
+                return {
+                    entry,
+                    splitIndex: split ? (splitIndexes.get(split) ?? -1) : -1,
+                };
+            })
+            .sort((a, b) => a.splitIndex - b.splitIndex)
+            .map(({ entry }) => entry);
+    }
 
     private static matchesCondition(
         condition: BattleTeamCondition | undefined,

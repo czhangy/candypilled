@@ -323,17 +323,6 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         await RunHelpers.saveRun(game, updatedRun);
     };
 
-    const handleToggleItem = async (itemKey: string): Promise<void> => {
-        const updatedRun: Run = {
-            ...run,
-            collectedItems: run.collectedItems.includes(itemKey)
-                ? run.collectedItems.filter((key) => key !== itemKey)
-                : [...run.collectedItems, itemKey],
-        };
-
-        await RunHelpers.saveRun(game, updatedRun);
-    };
-
     const handleWipeBattle = async (battleKey: string): Promise<void> => {
         await NotesHelpers.recordWipe(game, battleKey);
         await PersonalBestHelpers.considerCandidate(game, run.gender, {
@@ -346,9 +335,6 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const itemKeyPrefix = location.subareas
-        ? `${location.name}/${location.subareas[selectedSubareaIndex].name}`
-        : location.name;
     const dupes = run.caughtPokemon.map((caught) => caught.slug);
     const isMissed = run.missedLocations.includes(location.name);
     const usedLocations = RunHelpers.getUsedLocations(run);
@@ -605,7 +591,6 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                                     onSelectEncounter={
                                                         handleEncounterSelect
                                                     }
-                                                    onSelectItem={onSelectItem}
                                                     onToggleMissed={
                                                         handleToggleMissed
                                                     }
@@ -617,12 +602,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         {section.items.length > 0 && (
                                             <ItemTable
                                                 dataSource={game.dataSource}
-                                                collectedItems={
-                                                    run.collectedItems
-                                                }
                                                 items={section.items}
-                                                keyPrefix={itemKeyPrefix}
-                                                onToggleItem={handleToggleItem}
                                             />
                                         )}
                                     </div>

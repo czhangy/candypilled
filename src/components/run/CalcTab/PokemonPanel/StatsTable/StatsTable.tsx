@@ -1,13 +1,8 @@
-import Dropdown from '@/components/common/Dropdown/Dropdown';
 import NumericInput from '@/components/common/NumericInput/NumericInput';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { MAX_IV, MIN_IV, STAT_FIELDS } from '@/lib/static/constants';
-import {
-    DropdownOption,
-    SpeedComparison,
-    StatValues,
-} from '@/lib/static/types';
+import { SpeedComparison, StatValues } from '@/lib/static/types';
 import styles from './StatsTable.module.scss';
 
 type StatsTableProps = {
@@ -16,7 +11,7 @@ type StatsTableProps = {
     ivs: StatValues;
     onBoostChange: (
         stat: Exclude<keyof StatValues, 'hp'>,
-        value: string
+        value: number
     ) => void;
     onIvChange: (stat: keyof StatValues, value: number) => void;
     speedComparison: SpeedComparison | undefined;
@@ -39,22 +34,18 @@ const StatsTable: React.FC<StatsTableProps> = ({
     const MIN_BOOST = -6;
     const MAX_BOOST = 6;
 
-    const BOOST_OPTIONS: DropdownOption[] = Array.from(
-        { length: MAX_BOOST - MIN_BOOST + 1 },
-        (_, index) => {
-            const stage = MIN_BOOST + index;
-            return {
-                label: stage > 0 ? `+${stage}` : String(stage),
-                value: String(stage),
-            };
-        }
-    );
-
     const SPEED_TOOLTIPS: Record<SpeedComparison, string> = {
         faster: 'Higher Speed',
         slower: 'Lower Speed',
         tie: 'Speed Tie',
     };
+
+    // -------------------------------------------------------------------------
+    // COMPUTATIONS
+    // -------------------------------------------------------------------------
+
+    const formatBoost = (stage: number): string =>
+        stage > 0 ? `+${stage}` : String(stage);
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -77,36 +68,35 @@ const StatsTable: React.FC<StatsTableProps> = ({
                         <th className={styles['stat-label']}>
                             <span className={styles['label-text']}>
                                 {label}
-                                {key === 'spe' &&
-                                    speedComparison === 'faster' && (
-                                        <span className={styles['faster-icon']}>
-                                            <Tooltip
-                                                position="center"
-                                                text={
-                                                    SPEED_TOOLTIPS[
-                                                        speedComparison
-                                                    ]
-                                                }
-                                            >
+                                {key === 'spe' && speedComparison && (
+                                    <span
+                                        className={[
+                                            styles['speed-icon'],
+                                            styles[
+                                                `speed-icon--${speedComparison}`
+                                            ],
+                                        ].join(' ')}
+                                    >
+                                        <Tooltip
+                                            position="center"
+                                            text={
+                                                SPEED_TOOLTIPS[speedComparison]
+                                            }
+                                        >
+                                            {speedComparison === 'tie' ? (
+                                                <span
+                                                    className={
+                                                        styles['tie-mark']
+                                                    }
+                                                >
+                                                    =
+                                                </span>
+                                            ) : (
                                                 <ChevronIcon />
-                                            </Tooltip>
-                                        </span>
-                                    )}
-                                {key === 'spe' &&
-                                    speedComparison === 'slower' && (
-                                        <span className={styles['slower-icon']}>
-                                            <Tooltip
-                                                position="center"
-                                                text={
-                                                    SPEED_TOOLTIPS[
-                                                        speedComparison
-                                                    ]
-                                                }
-                                            >
-                                                <ChevronIcon />
-                                            </Tooltip>
-                                        </span>
-                                    )}
+                                            )}
+                                        </Tooltip>
+                                    </span>
+                                )}
                             </span>
                         </th>
                         <td>{baseStats?.[key]}</td>
@@ -122,14 +112,33 @@ const StatsTable: React.FC<StatsTableProps> = ({
                         </td>
                         <td className={styles['boost-cell']}>
                             {key !== 'hp' && (
-                                <Dropdown
-                                    dense
-                                    onChange={(value) =>
-                                        onBoostChange(key, value)
-                                    }
-                                    options={BOOST_OPTIONS}
-                                    value={String(boosts[key])}
-                                />
+                                <div className={styles.stepper}>
+                                    <button
+                                        aria-label={`Lower ${label} stage`}
+                                        className={styles['stepper-button']}
+                                        disabled={boosts[key] <= MIN_BOOST}
+                                        onClick={() =>
+                                            onBoostChange(key, boosts[key] - 1)
+                                        }
+                                        type="button"
+                                    >
+                                        −
+                                    </button>
+                                    <span className={styles['stepper-value']}>
+                                        {formatBoost(boosts[key])}
+                                    </span>
+                                    <button
+                                        aria-label={`Raise ${label} stage`}
+                                        className={styles['stepper-button']}
+                                        disabled={boosts[key] >= MAX_BOOST}
+                                        onClick={() =>
+                                            onBoostChange(key, boosts[key] + 1)
+                                        }
+                                        type="button"
+                                    >
+                                        +
+                                    </button>
+                                </div>
                             )}
                         </td>
                         <td className={styles.total}>{totalStats?.[key]}</td>

@@ -15,7 +15,6 @@ type MethodGroupProps = {
     isSpeciesCaughtHere: (species: string) => boolean;
     method: EncounterMethod;
     onSelectEncounter: (encounter: Encounter) => void;
-    onSelectItem: (slug: string) => void;
     selectedSpecies?: string;
     // The split (Split.name) this method group first becomes available
     // in — absent when no MethodSplit entry matches this method, in which
@@ -31,7 +30,6 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
     isSpeciesCaughtHere,
     method,
     onSelectEncounter,
-    onSelectItem,
     selectedSpecies,
     splitName,
 }) => {
@@ -87,7 +85,6 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
                     isSelected={encounter.species === selectedSpecies}
                     key={`${method}-${encounter.species}-${encounter.minLevel}-${encounter.maxLevel}-${encounter.chance}`}
                     onClick={() => onSelectEncounter(encounter)}
-                    onSelectItem={onSelectItem}
                 />
             ))}
         </Fragment>

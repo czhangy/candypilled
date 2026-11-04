@@ -1,0 +1,8 @@
+// Positioned against the nearest positioned ancestor, which must be the
+// slot the icon belongs to.
+.held-item-icon {
+    bottom: 0;
+    image-rendering: pixelated;
+    position: absolute;
+    right: 0.2rem;
+}

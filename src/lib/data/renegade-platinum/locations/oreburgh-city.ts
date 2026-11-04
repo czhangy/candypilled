@@ -2,7 +2,7 @@ import {
     oreburghCityCity,
     oreburghCityPokemonCenter,
 } from '@/lib/data/renegade-platinum/maps';
-import { EncounterMethod, MapAnchor } from '@/lib/static/enums';
+import { EncounterMethod, ItemCategory, MapAnchor } from '@/lib/static/enums';
 import { Location } from '@/lib/static/types';
 
 const OREBURGH_CITY: Location = {
@@ -13,6 +13,15 @@ const OREBURGH_CITY: Location = {
             map: oreburghCityCity,
             mapAnchor: MapAnchor.TopLeft,
             encountersKey: 'oreburgh-city-trade',
+            items: [
+                {
+                    category: ItemCategory.Consumable,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from Youngster',
+                    slug: 'oval-stone',
+                },
+            ],
             methodSplits: [{ method: EncounterMethod.Trade, split: 'Roark' }],
         },
         {
@@ -20,6 +29,57 @@ const OREBURGH_CITY: Location = {
             map: oreburghCityPokemonCenter,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'oreburgh-city',
+            items: [
+                {
+                    category: ItemCategory.Consumable,
+                    count: 1,
+                    hidden: false,
+                    method: 'Shop',
+                    slug: 'power-herb',
+                },
+                {
+                    category: ItemCategory.Consumable,
+                    count: 1,
+                    hidden: false,
+                    method: 'Shop',
+                    slug: 'mental-herb',
+                },
+                {
+                    category: ItemCategory.HeldItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Shop',
+                    slug: 'thick-club',
+                },
+                {
+                    category: ItemCategory.HeldItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Shop',
+                    slug: 'twisted-spoon',
+                },
+                {
+                    category: ItemCategory.HeldItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Shop',
+                    slug: 'soft-sand',
+                },
+                {
+                    category: ItemCategory.HeldItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Shop',
+                    slug: 'focus-band',
+                },
+                {
+                    category: ItemCategory.HeldItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Shop',
+                    slug: 'hard-stone',
+                },
+            ],
             methodSplits: [{ method: EncounterMethod.Gift, split: 'Roark' }],
             battles: [
                 {

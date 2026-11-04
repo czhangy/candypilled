@@ -1,8 +1,15 @@
 import Image from 'next/image';
+import Dropdown from '@/components/common/Dropdown/Dropdown';
+import HeldItemIcon from '@/components/common/HeldItemIcon/HeldItemIcon';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { MAX_IV } from '@/lib/static/constants';
-import { BattlePokemon, Game, SpeedComparison } from '@/lib/static/types';
+import {
+    BattlePokemon,
+    DropdownOption,
+    Game,
+    SpeedComparison,
+} from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
@@ -12,6 +19,8 @@ type TagTeamSelectPanelProps = {
     enemySpeed: number | undefined;
     game: Game;
     onSelectMember: (index: string) => void;
+    onSelectTagPartner: (battleKey: string) => void;
+    options: DropdownOption[];
     selectedMemberIndex?: string;
     selectedTagPartner?: string;
     starter: string;
@@ -21,6 +30,8 @@ const TagTeamSelectPanel: React.FC<TagTeamSelectPanelProps> = ({
     enemySpeed,
     game,
     onSelectMember,
+    onSelectTagPartner,
+    options,
     selectedMemberIndex,
     selectedTagPartner,
     starter,
@@ -84,11 +95,9 @@ const TagTeamSelectPanel: React.FC<TagTeamSelectPanelProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const team = BattleHelpers.getTagPartnerTeam(
-        game,
-        selectedTagPartner,
-        starter
-    );
+    const team = selectedTagPartner
+        ? BattleHelpers.getTagPartnerTeam(game, selectedTagPartner, starter)
+        : [];
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -96,7 +105,18 @@ const TagTeamSelectPanel: React.FC<TagTeamSelectPanelProps> = ({
 
     return (
         <div className={styles['tag-team-select-panel']}>
-            {selectedTagPartner ? (
+            <div className={styles.field}>
+                <span className={styles.label}>Tag Partner</span>
+                <Dropdown
+                    dense
+                    onChange={onSelectTagPartner}
+                    options={options}
+                    placeholder="Select a tag partner…"
+                    searchable
+                    value={selectedTagPartner ?? ''}
+                />
+            </div>
+            {selectedTagPartner && (
                 <div className={styles.grid}>
                     {team.map((mon, index) => {
                         const displaySlug = PokemonHelpers.getDisplaySlug(
@@ -134,6 +154,12 @@ const TagTeamSelectPanel: React.FC<TagTeamSelectPanelProps> = ({
                                     )}
                                     width={SPRITE_WIDTH}
                                 />
+                                {mon.heldItem && (
+                                    <HeldItemIcon
+                                        dataSource={game.dataSource}
+                                        slug={mon.heldItem}
+                                    />
+                                )}
                                 {speedComparison === 'faster' && (
                                     <span className={styles['faster-icon']}>
                                         <Tooltip
@@ -162,8 +188,6 @@ const TagTeamSelectPanel: React.FC<TagTeamSelectPanelProps> = ({
                         );
                     })}
                 </div>
-            ) : (
-                <span className={styles.placeholder}>Select a tag partner</span>
             )}
         </div>
     );

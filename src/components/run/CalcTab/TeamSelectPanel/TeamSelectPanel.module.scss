@@ -6,8 +6,23 @@
     background: $background-light;
     border: 1px solid $border-subtle;
     border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
     padding: 0.75rem;
     width: 100%;
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .label {
+        @include form-label;
+
+        font-size: 0.65rem;
+    }
 
     .grid {
         display: grid;

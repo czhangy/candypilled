@@ -1,3 +1,4 @@
+import MoveTooltip from '@/components/run/MoveTooltip/MoveTooltip';
 import { MOVE_SLOT_COUNT } from '@/lib/static/constants';
 import {
     CalcField,
@@ -55,21 +56,34 @@ const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
         { length: MOVE_SLOT_COUNT },
         (_, index) => moveNames[index] ?? ''
     );
-    const moveRanges = paddedMoveNames.map((moveName, index) => ({
-        index,
-        moveName,
-        range:
-            attacker && defender
-                ? DamageCalcHelpers.getDamagePercentRange(
-                      generation,
-                      dataSource,
-                      attacker,
-                      defender,
-                      moveName,
-                      field
-                  )
-                : null,
-    }));
+    const moveRanges = paddedMoveNames.map((moveName, index) => {
+        const slug = MoveHelpers.getSlugByName(dataSource, moveName) ?? '';
+        const isStatus =
+            MoveHelpers.getMoveCategory(dataSource, slug, generation) ===
+            'status';
+        const isUncalculable = DamageCalcHelpers.isUncalculableMove(
+            dataSource,
+            moveName
+        );
+        return {
+            index,
+            isStatus,
+            isUncalculable,
+            moveName,
+            slug,
+            range:
+                attacker && defender && !isStatus && !isUncalculable
+                    ? DamageCalcHelpers.getDamagePercentRange(
+                          generation,
+                          dataSource,
+                          attacker,
+                          defender,
+                          moveName,
+                          field
+                      )
+                    : null,
+        };
+    });
     const highestDamage = Math.max(
         ...moveRanges.map(({ range }) => range?.[1] ?? -Infinity)
     );
@@ -80,49 +94,75 @@ const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
 
     return (
         <div className={styles['move-damage-column']}>
-            {moveRanges.map(({ index, moveName, range }) => (
-                <div
-                    className={[
-                        styles.row,
-                        range?.[1] === highestDamage && styles['row--highest'],
-                    ]
-                        .filter(Boolean)
-                        .join(' ')}
-                    key={index}
-                >
-                    {moveName ? (
-                        <button
-                            className={[
-                                styles.move,
-                                index === activeIndex && styles['move--active'],
-                            ]
-                                .filter(Boolean)
-                                .join(' ')}
-                            onClick={() => onSelectMove(index)}
-                            style={
-                                {
-                                    '--move-color': getMoveColor(moveName),
-                                } as React.CSSProperties
-                            }
-                            type="button"
-                        >
-                            {moveName}
-                        </button>
-                    ) : (
-                        <span
-                            className={[
-                                styles.move,
-                                styles['move--empty'],
-                            ].join(' ')}
-                        >
-                            -
+            {moveRanges.map(
+                ({
+                    index,
+                    isStatus,
+                    isUncalculable,
+                    moveName,
+                    range,
+                    slug,
+                }) => (
+                    <div
+                        className={[
+                            styles.row,
+                            range?.[1] === highestDamage &&
+                                styles['row--highest'],
+                        ]
+                            .filter(Boolean)
+                            .join(' ')}
+                        key={index}
+                    >
+                        {moveName ? (
+                            <MoveTooltip
+                                className={styles['move-tooltip']}
+                                dataSource={dataSource}
+                                generation={generation}
+                                ivs={ivs}
+                                slug={slug}
+                            >
+                                <button
+                                    className={[
+                                        styles.move,
+                                        index === activeIndex &&
+                                            styles['move--active'],
+                                    ]
+                                        .filter(Boolean)
+                                        .join(' ')}
+                                    onClick={() => onSelectMove(index)}
+                                    style={
+                                        {
+                                            '--move-color':
+                                                getMoveColor(moveName),
+                                        } as React.CSSProperties
+                                    }
+                                    type="button"
+                                >
+                                    {moveName}
+                                </button>
+                            </MoveTooltip>
+                        ) : (
+                            <span
+                                className={[
+                                    styles.move,
+                                    styles['move--empty'],
+                                ].join(' ')}
+                            >
+                                -
+                            </span>
+                        )}
+                        <span className={styles.range}>
+                            {isStatus
+                                ? 'N/A'
+                                : isUncalculable
+                                  ? '???'
+                                  : range
+                                    ? `${range[0]} - ${range[1]}%`
+                                    : '-'}
                         </span>
-                    )}
-                    <span className={styles.range}>
-                        {range ? `${range[0]} - ${range[1]}%` : '-'}
-                    </span>
-                </div>
-            ))}
+                    </div>
+                )
+            )}
         </div>
     );
 };

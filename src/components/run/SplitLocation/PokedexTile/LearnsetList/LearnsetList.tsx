@@ -10,6 +10,7 @@ type LearnsetListProps = {
     highlightedMoves: string[];
     interactive: boolean;
     levelOffsets: Record<string, number>;
+    lostMoves: string[];
     moves: LearnsetMove[];
     onSelectMove: (slug: string) => void;
     scrollable: boolean;
@@ -21,6 +22,7 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
     highlightedMoves,
     interactive,
     levelOffsets,
+    lostMoves,
     moves,
     onSelectMove,
     scrollable,
@@ -82,6 +84,7 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
                 const rowClassName = [
                     styles.row,
                     !interactive && styles['row--static'],
+                    lostMoves.includes(move.slug) && styles['row--lost'],
                     isHighlighted && styles['row--highlighted'],
                     isDangerous && styles['row--dangerous'],
                 ]

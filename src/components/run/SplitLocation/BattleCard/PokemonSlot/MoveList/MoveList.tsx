@@ -1,6 +1,4 @@
-import CategoryBadge from '@/components/common/CategoryBadge/CategoryBadge';
-import Tooltip from '@/components/common/Tooltip/Tooltip';
-import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
+import MoveTooltip from '@/components/run/MoveTooltip/MoveTooltip';
 import { MOVE_SLOT_COUNT } from '@/lib/static/constants';
 import { GameDataSource, StatValues } from '@/lib/static/types';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
@@ -26,13 +24,6 @@ const MoveList: React.FC<MoveListProps> = ({
     moves,
     onSelectMove,
 }) => {
-    // -------------------------------------------------------------------------
-    // CONSTANTS
-    // -------------------------------------------------------------------------
-
-    const BADGE_WIDTH = 32;
-    const BADGE_HEIGHT = 13;
-
     // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------
@@ -60,85 +51,11 @@ const MoveList: React.FC<MoveListProps> = ({
                 const moveData = moveSlug
                     ? MoveHelpers.getMoveData(dataSource, moveSlug)
                     : undefined;
-                const moveValues = moveSlug
-                    ? MoveHelpers.getMoveForGeneration(
-                          dataSource,
-                          moveSlug,
-                          generation
-                      )
-                    : undefined;
-                const moveType = moveSlug
-                    ? MoveHelpers.getMoveType(
-                          dataSource,
-                          moveSlug,
-                          generation,
-                          ivs
-                      )
-                    : undefined;
-                const moveCategory = moveSlug
-                    ? MoveHelpers.getMoveCategory(
-                          dataSource,
-                          moveSlug,
-                          generation
-                      )
-                    : undefined;
-                const movePower = moveSlug
-                    ? MoveHelpers.getMovePower(
-                          dataSource,
-                          moveSlug,
-                          generation,
-                          ivs
-                      )
-                    : undefined;
 
-                if (!moveSlug || !moveData || !moveValues || !moveCategory) {
+                if (!moveSlug || !moveData) {
                     return <li key={index}>-</li>;
                 }
                 const moveName = moveData.name;
-
-                const stats: {
-                    key: string;
-                    label: string;
-                    value: React.ReactNode;
-                }[] = [
-                    ...(moveType
-                        ? [
-                              {
-                                  key: 'type',
-                                  label: 'Type',
-                                  value: (
-                                      <TypeBadge
-                                          height={BADGE_HEIGHT}
-                                          type={moveType}
-                                          width={BADGE_WIDTH}
-                                      />
-                                  ),
-                              },
-                          ]
-                        : []),
-                    {
-                        key: 'cat',
-                        label: 'Cat',
-                        value: (
-                            <CategoryBadge
-                                category={moveCategory}
-                                height={BADGE_HEIGHT}
-                                width={BADGE_WIDTH}
-                            />
-                        ),
-                    },
-                    {
-                        key: 'bp',
-                        label: 'BP',
-                        value: movePower ?? '—',
-                    },
-                    { key: 'pp', label: 'PP', value: moveValues.pp },
-                    {
-                        key: 'acc',
-                        label: 'Acc',
-                        value: moveValues.accuracy ?? '—',
-                    },
-                ];
 
                 const button = isReadOnly ? (
                     <span
@@ -189,37 +106,15 @@ const MoveList: React.FC<MoveListProps> = ({
 
                 return (
                     <li key={index}>
-                        <Tooltip
+                        <MoveTooltip
                             className={styles['move-tooltip']}
-                            position="center"
-                            text={
-                                <div className={styles['tooltip-stats']}>
-                                    {stats.map((stat) => (
-                                        <div
-                                            className={styles['tooltip-stat']}
-                                            key={stat.key}
-                                        >
-                                            <span
-                                                className={
-                                                    styles['tooltip-stat-label']
-                                                }
-                                            >
-                                                {stat.label}
-                                            </span>
-                                            <span
-                                                className={
-                                                    styles['tooltip-stat-value']
-                                                }
-                                            >
-                                                {stat.value}
-                                            </span>
-                                        </div>
-                                    ))}
-                                </div>
-                            }
+                            dataSource={dataSource}
+                            generation={generation}
+                            ivs={ivs}
+                            slug={moveSlug}
                         >
                             {button}
-                        </Tooltip>
+                        </MoveTooltip>
                     </li>
                 );
             })}

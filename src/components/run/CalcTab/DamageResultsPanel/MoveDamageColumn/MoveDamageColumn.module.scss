@@ -13,6 +13,10 @@
         gap: 0.6rem;
         padding: 0 0.6rem;
 
+        .move-tooltip {
+            flex-shrink: 0;
+        }
+
         .move {
             @include mono-label;
 

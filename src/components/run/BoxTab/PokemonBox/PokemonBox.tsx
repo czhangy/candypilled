@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Image from 'next/image';
 import { PokemonStatus } from '@/lib/static/enums';
 import { BoxView, CaughtPokemon, GameDataSource } from '@/lib/static/types';
@@ -10,7 +9,6 @@ type PokemonBoxProps = {
     caughtPokemon: CaughtPokemon[];
     dataSource: GameDataSource;
     levelCap: number | null;
-    onReorderPokemon: (fromLocation: string, toLocation: string) => void;
     onSelectPokemon: (location: string) => void;
     onViewChange: (view: BoxView) => void;
     selectedPokemon?: string;
@@ -21,7 +19,6 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
     caughtPokemon,
     dataSource,
     levelCap,
-    onReorderPokemon,
     onSelectPokemon,
     onViewChange,
     selectedPokemon,
@@ -34,12 +31,6 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
     const SPRITE_WIDTH = 40;
     const SPRITE_HEIGHT = 30;
     const ITEM_ICON_SIZE = 24;
-
-    // -------------------------------------------------------------------------
-    // STATE
-    // -------------------------------------------------------------------------
-
-    const [draggedLocation, setDraggedLocation] = useState('');
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -63,26 +54,6 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
 
     const handleViewClick = (nextView: BoxView): void => {
         onViewChange(nextView);
-    };
-
-    const handleDragStart = (location: string): void => {
-        setDraggedLocation(location);
-    };
-
-    const handleDragOver = (e: React.DragEvent<HTMLButtonElement>): void => {
-        e.preventDefault();
-    };
-
-    const handleDrop = (location: string): void => {
-        if (draggedLocation && draggedLocation !== location) {
-            onReorderPokemon(draggedLocation, location);
-        }
-
-        setDraggedLocation('');
-    };
-
-    const handleDragEnd = (): void => {
-        setDraggedLocation('');
     };
 
     // -------------------------------------------------------------------------
@@ -159,22 +130,13 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                                         pokemon.location === selectedPokemon &&
                                             styles['slot--selected'],
                                         isOverCap && styles['slot--over-cap'],
-                                        pokemon.location === draggedLocation &&
-                                            styles['slot--dragging'],
                                     ]
                                         .filter(Boolean)
                                         .join(' ')}
-                                    draggable
                                     key={pokemon.location}
                                     onClick={() =>
                                         handlePokemonClick(pokemon.location)
                                     }
-                                    onDragEnd={handleDragEnd}
-                                    onDragOver={handleDragOver}
-                                    onDragStart={() =>
-                                        handleDragStart(pokemon.location)
-                                    }
-                                    onDrop={() => handleDrop(pokemon.location)}
                                     type="button"
                                 >
                                     <Image

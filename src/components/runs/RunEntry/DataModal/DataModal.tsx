@@ -5,7 +5,12 @@ import ConfirmActions from '@/components/common/ConfirmActions/ConfirmActions';
 import ImportSaveForm from '@/components/common/ImportSaveForm/ImportSaveForm';
 import Modal from '@/components/common/Modal/Modal';
 import Tabs from '@/components/common/Tabs/Tabs';
-import { CaughtPokemon, Game } from '@/lib/static/types';
+import {
+    CaughtPokemon,
+    Game,
+    PokemonSlug,
+    SaveImport,
+} from '@/lib/static/types';
 import styles from './DataModal.module.scss';
 
 type DataModalProps = {
@@ -17,7 +22,9 @@ type DataModalProps = {
     onImport: (
         pokemon: CaughtPokemon[],
         completedSplits: string[],
-        gender: 'male' | 'female'
+        gender: 'male' | 'female',
+        starter: PokemonSlug,
+        saveImport: SaveImport
     ) => void;
     onReset: () => void;
 };

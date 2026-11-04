@@ -1,11 +1,14 @@
 import Image from 'next/image';
-import { Game, Run } from '@/lib/static/types';
+import Dropdown from '@/components/common/Dropdown/Dropdown';
+import HeldItemIcon from '@/components/common/HeldItemIcon/HeldItemIcon';
+import { DropdownOption, Game, Run } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './TeamSelectPanel.module.scss';
 
 type TeamSelectPanelProps = {
     game: Game;
+    onSelectBattle: (battleKey: string) => void;
     onSelectMember: (index: string) => void;
     run: Run;
     selectedBattle?: string;
@@ -14,6 +17,7 @@ type TeamSelectPanelProps = {
 
 const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
     game,
+    onSelectBattle,
     onSelectMember,
     run,
     selectedBattle,
@@ -30,6 +34,10 @@ const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
+    const battleOptions: DropdownOption[] = BattleHelpers.getAllBattleOptions(
+        game,
+        run.gender
+    ).map((entry) => ({ label: entry.label, value: entry.battleKey }));
     const team = BattleHelpers.getSelectedTeam(
         game,
         selectedBattle,
@@ -43,6 +51,17 @@ const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
 
     return (
         <div className={styles['team-select-panel']}>
+            <div className={styles.field}>
+                <span className={styles.label}>Battle</span>
+                <Dropdown
+                    dense
+                    onChange={onSelectBattle}
+                    options={battleOptions}
+                    placeholder="Select a trainer…"
+                    searchable
+                    value={selectedBattle ?? ''}
+                />
+            </div>
             {selectedBattle && (
                 <div className={styles.grid}>
                     {team.map((mon, index) => {
@@ -80,6 +99,12 @@ const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
                                     )}
                                     width={SPRITE_WIDTH}
                                 />
+                                {mon.heldItem && (
+                                    <HeldItemIcon
+                                        dataSource={game.dataSource}
+                                        slug={mon.heldItem}
+                                    />
+                                )}
                                 <span className={styles['exp-yield']}>
                                     +
                                     {PokemonHelpers.getTrainerExpYield(

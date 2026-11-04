@@ -138,8 +138,7 @@ export default class RunHelpers {
 
     /**
      * A fresh Run starting a new attempt with starter and gender —
-     * completedSplits/missedLocations/collectedItems reset and caughtPokemon containing
-     * only starter. attempt increments and hallOfFameCount carries over
+     * completedSplits/missedLocations reset and caughtPokemon containing only starter. attempt increments and hallOfFameCount carries over
      * from previousRun, or start from scratch if previousRun is null.
      */
     static buildNewAttempt(
@@ -154,7 +153,7 @@ export default class RunHelpers {
             starter: starter.slug,
             gender,
             caughtPokemon: [starter],
-            collectedItems: [],
+            lastImport: null,
             missedLocations: [],
             wipe: false,
         };
