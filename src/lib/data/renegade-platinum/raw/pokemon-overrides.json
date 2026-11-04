@@ -25024,8 +25024,8 @@
                             "slug": "steelix",
                             "methods": [
                                 {
-                                    "trigger": "level-up",
-                                    "level": 32
+                                    "trigger": "use-item",
+                                    "item": "metal-coat"
                                 }
                             ],
                             "evolvesTo": []
