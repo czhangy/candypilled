@@ -24,13 +24,11 @@ import ItemHelpers from '@/lib/utils/ItemHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
-import BattleSelectPanel from './BattleSelectPanel/BattleSelectPanel';
 import BoxSelectPanel from './BoxSelectPanel/BoxSelectPanel';
 import styles from './CalcTab.module.scss';
 import DamageResultsPanel from './DamageResultsPanel/DamageResultsPanel';
 import FieldEffectsPanel from './FieldEffectsPanel/FieldEffectsPanel';
 import PokemonPanel from './PokemonPanel/PokemonPanel';
-import TagSelectPanel from './TagSelectPanel/TagSelectPanel';
 import TagTeamSelectPanel from './TagTeamSelectPanel/TagTeamSelectPanel';
 import TeamSelectPanel from './TeamSelectPanel/TeamSelectPanel';
 
@@ -796,9 +794,9 @@ const CalcTab: React.FC<CalcTabProps> = ({
 
     const handleAttackerBoostChange = (
         stat: Exclude<keyof StatValues, 'hp'>,
-        value: string
+        value: number
     ): void => {
-        dispatchAttacker({ type: 'SET_BOOST', stat, value: Number(value) });
+        dispatchAttacker({ type: 'SET_BOOST', stat, value });
     };
 
     const handleAttackerMoveChange = (index: number, value: string): void => {
@@ -862,9 +860,9 @@ const CalcTab: React.FC<CalcTabProps> = ({
 
     const handleDefenderBoostChange = (
         stat: Exclude<keyof StatValues, 'hp'>,
-        value: string
+        value: number
     ): void => {
-        dispatchDefender({ type: 'SET_BOOST', stat, value: Number(value) });
+        dispatchDefender({ type: 'SET_BOOST', stat, value });
     };
 
     const handleDefenderHeldItemChange = (value: string): void => {
@@ -970,23 +968,16 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     selectedLocation={selectedLocation}
                 />
                 {tagPartnerOptions.length > 0 && (
-                    <>
-                        <TagSelectPanel
-                            onSelectTagPartner={handleSelectTagPartner}
-                            options={tagPartnerOptions}
-                            selectedTagPartner={selectedTagPartner}
-                        />
-                        {selectedTagPartner && (
-                            <TagTeamSelectPanel
-                                enemySpeed={trainerSpeed}
-                                game={game}
-                                onSelectMember={handleSelectTagPartnerMember}
-                                selectedMemberIndex={selectedTagMemberIndex}
-                                selectedTagPartner={selectedTagPartner}
-                                starter={run.starter}
-                            />
-                        )}
-                    </>
+                    <TagTeamSelectPanel
+                        enemySpeed={trainerSpeed}
+                        game={game}
+                        onSelectMember={handleSelectTagPartnerMember}
+                        onSelectTagPartner={handleSelectTagPartner}
+                        options={tagPartnerOptions}
+                        selectedMemberIndex={selectedTagMemberIndex}
+                        selectedTagPartner={selectedTagPartner}
+                        starter={run.starter}
+                    />
                 )}
             </div>
             <FieldEffectsPanel
@@ -1024,16 +1015,11 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 />
                 <TeamSelectPanel
                     game={game}
+                    onSelectBattle={onSelectBattle}
                     onSelectMember={setSelectedMemberIndex}
                     run={run}
                     selectedBattle={effectiveSelectedBattle}
                     selectedMemberIndex={selectedMemberIndex}
-                />
-                <BattleSelectPanel
-                    game={game}
-                    gender={run.gender}
-                    onSelectBattle={onSelectBattle}
-                    selectedBattle={effectiveSelectedBattle}
                 />
             </div>
         </div>

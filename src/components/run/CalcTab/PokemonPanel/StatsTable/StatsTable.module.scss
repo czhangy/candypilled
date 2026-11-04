@@ -70,5 +70,41 @@
 
     .boost-cell {
         width: 4.5rem;
+
+        .stepper {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+
+            .stepper-button {
+                background: none;
+                border: none;
+                color: $text-mid;
+                cursor: pointer;
+                font: inherit;
+                line-height: 1;
+                padding: 0.1rem 0.35rem;
+                transition: color 0.2s ease;
+
+                &:disabled {
+                    cursor: default;
+                    opacity: 0.3;
+                }
+
+                @media (hover: hover) {
+                    &:hover:not(:disabled) {
+                        color: var(--accent-color);
+                    }
+                }
+
+                @media (prefers-reduced-motion: reduce) {
+                    transition: none;
+                }
+            }
+
+            .stepper-value {
+                min-width: 1.5rem;
+            }
+        }
     }
 }

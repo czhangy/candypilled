@@ -34,7 +34,7 @@ type PokemonPanelProps = {
     onAbilityChange: (value: string) => void;
     onBoostChange: (
         stat: Exclude<keyof StatValues, 'hp'>,
-        value: string
+        value: number
     ) => void;
     onGenderChange: (gender: 'male' | 'female') => void;
     onHeldItemChange: (value: string) => void;

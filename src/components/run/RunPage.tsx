@@ -12,7 +12,12 @@ import {
 import GenderSelectModal from '@/components/common/GenderSelectModal/GenderSelectModal';
 import StarterSelectModal from '@/components/common/StarterSelectModal/StarterSelectModal';
 import Tabs from '@/components/common/Tabs/Tabs';
-import { CaughtPokemon, Game, SaveImport } from '@/lib/static/types';
+import {
+    CaughtPokemon,
+    Game,
+    PokemonSlug,
+    SaveImport,
+} from '@/lib/static/types';
 import ArrayHelpers from '@/lib/utils/ArrayHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
@@ -359,6 +364,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
         importedPokemon: CaughtPokemon[],
         importedCompletedSplits: string[],
         importedGender: 'male' | 'female',
+        importedStarter: PokemonSlug,
         saveImport: SaveImport
     ): Promise<void> => {
         if (!run) return;
@@ -370,6 +376,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                 importedPokemon,
                 importedCompletedSplits,
                 importedGender,
+                importedStarter,
                 saveImport
             )
         );

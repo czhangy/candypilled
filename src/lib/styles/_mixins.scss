@@ -5,7 +5,7 @@
 
     background: var(--accent-color);
     border: none;
-    border-radius: 0.375rem;
+    border-radius: 0.2rem;
     color: var(--button-text-color, $background);
     cursor: pointer;
     font-size: 0.9rem;
@@ -78,7 +78,7 @@
 @mixin form-input {
     background: $background-light;
     border: 1px solid $border-subtle;
-    border-radius: 0.375rem;
+    border-radius: 0.2rem;
     color: $foreground;
     font: inherit;
     padding: 0.5rem 0.6rem;

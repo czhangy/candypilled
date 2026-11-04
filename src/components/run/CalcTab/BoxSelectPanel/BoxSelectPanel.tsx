@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import HeldItemIcon from '@/components/common/HeldItemIcon/HeldItemIcon';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { MAX_IV } from '@/lib/static/constants';
@@ -136,6 +137,12 @@ const BoxSelectPanel: React.FC<BoxSelectPanelProps> = ({
                                     )}
                                     width={SPRITE_WIDTH}
                                 />
+                                {pokemon.heldItem && (
+                                    <HeldItemIcon
+                                        dataSource={dataSource}
+                                        slug={pokemon.heldItem}
+                                    />
+                                )}
                                 {speedComparison === 'faster' && (
                                     <span className={styles['faster-icon']}>
                                         <Tooltip

@@ -5,9 +5,11 @@ import SaveFileParser from '@/lib/parsers/SaveFileParser';
 import {
     CaughtPokemon,
     Game,
+    PokemonSlug,
     SaveImport,
     SaveImportError,
 } from '@/lib/static/types';
+import RunImportHelpers from '@/lib/utils/RunImportHelpers';
 import styles from './ImportSaveForm.module.scss';
 
 type ImportSaveFormProps = {
@@ -16,6 +18,7 @@ type ImportSaveFormProps = {
         pokemon: CaughtPokemon[],
         completedSplits: string[],
         gender: 'male' | 'female',
+        starter: PokemonSlug,
         saveImport: SaveImport
     ) => void;
     requestClose: () => void;
@@ -57,7 +60,8 @@ const ImportSaveForm: React.FC<ImportSaveFormProps> = ({
                 game,
                 buffer
             );
-            onImport(pokemon, completedSplits, gender, {
+            const starter = RunImportHelpers.findStarterSlug(game, pokemon);
+            onImport(pokemon, completedSplits, gender, starter, {
                 fileName: file.name,
                 importedAt: Date.now(),
             });

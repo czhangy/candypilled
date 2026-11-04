@@ -325,21 +325,9 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             })}
                         </ul>
                     </div>
-                    <button
-                        className={[
-                            styles['complete-button'],
-                            isSplitCompleted &&
-                                styles['complete-button--completed'],
-                        ]
-                            .filter(Boolean)
-                            .join(' ')}
-                        onClick={handleSplitCompleteClick}
-                        type="button"
-                    >
-                        {isSplitCompleted ? 'SPLIT COMPLETED' : 'CLEAR SPLIT'}
-                    </button>
                     <div className={styles['split-nav']}>
                         <button
+                            aria-label="Previous split"
                             className={styles['split-nav-button']}
                             disabled={!previousSplitName}
                             onClick={handlePreviousSplitClick}
@@ -353,15 +341,27 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             >
                                 <ChevronIcon />
                             </span>
-                            Prev
                         </button>
                         <button
+                            className={[
+                                styles['complete-button'],
+                                isSplitCompleted &&
+                                    styles['complete-button--completed'],
+                            ]
+                                .filter(Boolean)
+                                .join(' ')}
+                            onClick={handleSplitCompleteClick}
+                            type="button"
+                        >
+                            {isSplitCompleted ? 'CLEARED' : 'CLEAR'}
+                        </button>
+                        <button
+                            aria-label="Next split"
                             className={styles['split-nav-button']}
                             disabled={!nextSplitName}
                             onClick={handleNextSplitClick}
                             type="button"
                         >
-                            Next
                             <span
                                 className={[
                                     styles['split-nav-icon'],
