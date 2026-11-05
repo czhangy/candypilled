@@ -7515,5 +7515,303 @@
                 "description": "A peculiar stone that can make certain species of Pokémon evolve. It has an unmistakable snowflake pattern."
             }
         ]
+    },
+    "master-ball": {
+        "slug": "master-ball",
+        "name": "Master Ball",
+        "category": "standard-balls",
+        "effect": "Catches a wild Pokémon every time.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/master-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "The best BALL that catches a POKéMON without fail."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "The best Ball with the ultimate level of performance. It will catch any wild Pokémon without fail."
+            }
+        ]
+    },
+    "ultra-ball": {
+        "slug": "ultra-ball",
+        "name": "Ultra Ball",
+        "category": "standard-balls",
+        "effect": "Tries to catch a wild Pokémon. Success rate is 2×.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/ultra-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A better BALL with a higher catch rate than a GREAT BALL."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "An ultra-performance Ball that provides a higher Pokémon catch rate than a Great Ball."
+            }
+        ]
+    },
+    "great-ball": {
+        "slug": "great-ball",
+        "name": "Great Ball",
+        "category": "standard-balls",
+        "effect": "Tries to catch a wild Pokémon. Success rate is 1.5×.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/great-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A good BALL with a higher catch rate than a POKé BALL."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A good, high-performance Ball that provides a higher Pokémon catch rate than a standard Poké Ball."
+            }
+        ]
+    },
+    "poke-ball": {
+        "slug": "poke-ball",
+        "name": "Poké Ball",
+        "category": "standard-balls",
+        "effect": "Tries to catch a wild Pokémon.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/poke-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A tool used for catching wild POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A device for catching wild Pokémon. It is thrown like a ball at the target. It is designed as a capsule system."
+            }
+        ]
+    },
+    "safari-ball": {
+        "slug": "safari-ball",
+        "name": "Safari Ball",
+        "category": "standard-balls",
+        "effect": "Tries to catch a wild Pokémon in the Great Marsh or Safari Zone. Success rate is 1.5×.",
+        "introducedInGeneration": 1,
+        "isDangerous": false,
+        "sprite": "/items/safari-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A special BALL that is used only in the SAFARI ZONE."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A special Poké Ball that is used only in the Great Marsh. It is decorated in a camouflage pattern."
+            }
+        ]
+    },
+    "net-ball": {
+        "slug": "net-ball",
+        "name": "Net Ball",
+        "category": "special-balls",
+        "effect": "Tries to catch a wild Pokémon. Success rate is 3× for water and bug Pokémon.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/net-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A BALL that works well on WATER- and BUG-type POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A somewhat different Poké Ball that works especially well on Water- and Bug-type Pokémon."
+            }
+        ]
+    },
+    "dive-ball": {
+        "slug": "dive-ball",
+        "name": "Dive Ball",
+        "category": "special-balls",
+        "effect": "Tries to catch a wild Pokémon. Success rate is 3.5× when underwater, fishing, or surfing.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/dive-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A BALL that works better on POKéMON on the ocean floor."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A somewhat different Poké Ball that works especially well on Pokémon that live in the sea."
+            }
+        ]
+    },
+    "nest-ball": {
+        "slug": "nest-ball",
+        "name": "Nest Ball",
+        "category": "special-balls",
+        "effect": "Tries to catch a wild Pokémon. Success rate is 3.9× for level 1 Pokémon, and drops steadily to 1× at level 30.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/nest-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A BALL that works better on weaker POKéMON."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A somewhat different Poké Ball that works especially well on weaker Pokémon in the wild."
+            }
+        ]
+    },
+    "repeat-ball": {
+        "slug": "repeat-ball",
+        "name": "Repeat Ball",
+        "category": "special-balls",
+        "effect": "Tries to catch a wild Pokémon. Success rate is 3× for previously-caught Pokémon.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/repeat-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A BALL that works better on POKéMON caught before."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A somewhat different Poké Ball that works especially well on Pokémon species that were previously caught."
+            }
+        ]
+    },
+    "timer-ball": {
+        "slug": "timer-ball",
+        "name": "Timer Ball",
+        "category": "special-balls",
+        "effect": "Tries to catch a wild Pokémon. Success rate increases by 0.1× (Gen V: 0.3×) every turn, to a max of 4×.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/timer-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "More effective as more turns are taken in battle."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A somewhat different Ball that becomes progressively better the more turns there are in a battle."
+            }
+        ]
+    },
+    "luxury-ball": {
+        "slug": "luxury-ball",
+        "name": "Luxury Ball",
+        "category": "special-balls",
+        "effect": "Tries to catch a wild Pokémon. Caught Pokémon start with 200 happiness.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/luxury-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A cozy BALL that makes POKéMON more friendly."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A comfortable Poké Ball that makes a caught wild Pokémon quickly grow friendly."
+            }
+        ]
+    },
+    "premier-ball": {
+        "slug": "premier-ball",
+        "name": "Premier Ball",
+        "category": "special-balls",
+        "effect": "Tries to catch a wild Pokémon.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/premier-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 3,
+                "description": "A rare BALL made in commemoration of some event."
+            },
+            {
+                "fromGeneration": 4,
+                "description": "A somewhat rare Poké Ball that has been specially made to commemorate an event of some sort."
+            }
+        ]
+    },
+    "dusk-ball": {
+        "slug": "dusk-ball",
+        "name": "Dusk Ball",
+        "category": "special-balls",
+        "effect": "Tries to catch a wild Pokémon. Success rate is 3.5× at night and in caves.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/dusk-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A somewhat different Poké Ball that makes it easier to catch wild Pokémon at night or in dark places like caves."
+            }
+        ]
+    },
+    "heal-ball": {
+        "slug": "heal-ball",
+        "name": "Heal Ball",
+        "category": "special-balls",
+        "effect": "Tries to catch a wild Pokémon. Caught Pokémon are immediately healed.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/heal-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A remedial Poké Ball that restores the caught Pokémon’s HP and eliminates any status problem."
+            }
+        ]
+    },
+    "quick-ball": {
+        "slug": "quick-ball",
+        "name": "Quick Ball",
+        "category": "special-balls",
+        "effect": "Tries to catch a wild Pokémon. Success rate is 4× (Gen V: 5×), but only on the first turn.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/quick-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A somewhat different Poké Ball that provides a better catch rate if it is used at the start of a wild encounter."
+            }
+        ]
+    },
+    "cherish-ball": {
+        "slug": "cherish-ball",
+        "name": "Cherish Ball",
+        "category": "special-balls",
+        "effect": "Tries to catch a wild Pokémon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/cherish-ball.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A quite rare Poké Ball that has been specially crafted to commemorate an occasion of some sort."
+            }
+        ]
+    },
+    "park-ball": {
+        "slug": "park-ball",
+        "name": "Park Ball",
+        "category": "standard-balls",
+        "effect": "Catches Pokémon in the Pal Park every time.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/park-ball.png",
+        "valuesByGeneration": []
     }
 }

@@ -403,11 +403,6 @@ export type MethodSplit = {
     split: string;
 };
 
-// How an item is obtained: one of the fixed sources, or a gift from a named
-// giver (e.g. 'Gift from Cynthia').
-type LocationItemMethod =
-    'Berry tree' | 'Ground' | 'Shop' | `Gift from ${string}`;
-
 // An item the player picks up in a location or subarea. `count` is how many
 // are picked up (shown after the name when above 1), and `hidden` marks an
 // item that isn't visible in the overworld (found with the Dowsing Machine).
@@ -415,7 +410,7 @@ export type LocationItem = {
     category: ItemCategory;
     count: number;
     hidden: boolean;
-    method: LocationItemMethod;
+    method: string;
     slug: ItemSlug;
 };
 
@@ -2791,6 +2786,7 @@ export type ItemSlug =
     | 'charcoal'
     | 'charti-berry'
     | 'cheri-berry'
+    | 'cherish-ball'
     | 'chesto-berry'
     | 'chilan-berry'
     | 'chill-drive'
@@ -2817,6 +2813,7 @@ export type ItemSlug =
     | 'destiny-knot'
     | 'dig'
     | 'dire-hit'
+    | 'dive-ball'
     | 'double-team'
     | 'douse-drive'
     | 'draco-plate'
@@ -2830,6 +2827,7 @@ export type ItemSlug =
     | 'dream-mail'
     | 'dubious-disc'
     | 'durin-berry'
+    | 'dusk-ball'
     | 'dusk-stone'
     | 'earth-plate'
     | 'eject-button'
@@ -2885,6 +2883,7 @@ export type ItemSlug =
     | 'grass-gem'
     | 'grass-knot'
     | 'grass-mail'
+    | 'great-ball'
     | 'green-scarf'
     | 'greet-mail'
     | 'grepa-berry'
@@ -2897,6 +2896,7 @@ export type ItemSlug =
     | 'hail'
     | 'harbor-mail'
     | 'hard-stone'
+    | 'heal-ball'
     | 'heal-powder'
     | 'heart-mail'
     | 'heat-rock'
@@ -2945,11 +2945,13 @@ export type ItemSlug =
     | 'lucky-punch'
     | 'lum-berry'
     | 'lustrous-orb'
+    | 'luxury-ball'
     | 'macho-brace'
     | 'magmarizer'
     | 'magnet'
     | 'mago-berry'
     | 'magost-berry'
+    | 'master-ball'
     | 'max-potion'
     | 'meadow-plate'
     | 'mech-mail'
@@ -2966,6 +2968,8 @@ export type ItemSlug =
     | 'muscle-band'
     | 'mystic-water'
     | 'nanab-berry'
+    | 'nest-ball'
+    | 'net-ball'
     | 'never-melt-ice'
     | 'nomel-berry'
     | 'normal-gem'
@@ -2982,6 +2986,7 @@ export type ItemSlug =
     | 'pamtre-berry'
     | 'paralyze-heal'
     | 'parcel'
+    | 'park-ball'
     | 'pass-orb'
     | 'passho-berry'
     | 'payapa-berry'
@@ -2997,6 +3002,7 @@ export type ItemSlug =
     | 'poison-barb'
     | 'poison-gem'
     | 'poison-jab'
+    | 'poke-ball'
     | 'poke-radar'
     | 'pomeg-berry'
     | 'potion'
@@ -3007,6 +3013,7 @@ export type ItemSlug =
     | 'power-herb'
     | 'power-lens'
     | 'power-weight'
+    | 'premier-ball'
     | 'pretty-wing'
     | 'prism-scale'
     | 'protect'
@@ -3016,6 +3023,7 @@ export type ItemSlug =
     | 'psychic-gem'
     | 'pure-incense'
     | 'qualot-berry'
+    | 'quick-ball'
     | 'quick-claw'
     | 'quick-powder'
     | 'rabuta-berry'
@@ -3037,6 +3045,7 @@ export type ItemSlug =
     | 'relic-silver'
     | 'relic-statue'
     | 'relic-vase'
+    | 'repeat-ball'
     | 'reply-mail'
     | 'rest'
     | 'retro-mail'
@@ -3057,6 +3066,7 @@ export type ItemSlug =
     | 'rowap-berry'
     | 'rsvp-mail'
     | 'running-shoes'
+    | 'safari-ball'
     | 'safeguard'
     | 'salac-berry'
     | 'scald'
@@ -3129,6 +3139,7 @@ export type ItemSlug =
     | 'thunder-stone'
     | 'thunder-wave'
     | 'thunderbolt'
+    | 'timer-ball'
     | 'tiny-mushroom'
     | 'torment'
     | 'town-map'
@@ -3140,6 +3151,7 @@ export type ItemSlug =
     | 'tunnel-mail'
     | 'twisted-spoon'
     | 'u-turn'
+    | 'ultra-ball'
     | 'up-grade'
     | 'vs-recorder'
     | 'vs-seeker'

@@ -15,6 +15,7 @@ import ETERNA_GYM from '@/lib/data/renegade-platinum/locations/eterna-gym';
 import FLINTS_ROOM from '@/lib/data/renegade-platinum/locations/flints-room';
 import FLOAROMA_MEADOW from '@/lib/data/renegade-platinum/locations/floaroma-meadow';
 import FLOAROMA_TOWN from '@/lib/data/renegade-platinum/locations/floaroma-town';
+import FLOWER_SHOP from '@/lib/data/renegade-platinum/locations/flower-shop';
 import FUEGO_IRONWORKS from '@/lib/data/renegade-platinum/locations/fuego-ironworks';
 import GALACTIC_HQ from '@/lib/data/renegade-platinum/locations/galactic-hq';
 import GREAT_MARSH from '@/lib/data/renegade-platinum/locations/great-marsh';
@@ -22,6 +23,7 @@ import HEARTHOME_CITY from '@/lib/data/renegade-platinum/locations/hearthome-cit
 import HEARTHOME_GYM from '@/lib/data/renegade-platinum/locations/hearthome-gym';
 import IRON_ISLAND from '@/lib/data/renegade-platinum/locations/iron-island';
 import JUBILIFE_CITY from '@/lib/data/renegade-platinum/locations/jubilife-city';
+import JUBILIFE_TV from '@/lib/data/renegade-platinum/locations/jubilife-tv';
 import LAKE_ACUITY from '@/lib/data/renegade-platinum/locations/lake-acuity';
 import LAKE_VALOR from '@/lib/data/renegade-platinum/locations/lake-valor';
 import LAKE_VERITY from '@/lib/data/renegade-platinum/locations/lake-verity';
@@ -111,6 +113,7 @@ export const LOCATIONS: Location[] = [
     FLINTS_ROOM,
     FLOAROMA_MEADOW,
     FLOAROMA_TOWN,
+    FLOWER_SHOP,
     FUEGO_IRONWORKS,
     GALACTIC_HQ,
     GREAT_MARSH,
@@ -118,6 +121,7 @@ export const LOCATIONS: Location[] = [
     HEARTHOME_GYM,
     IRON_ISLAND,
     JUBILIFE_CITY,
+    JUBILIFE_TV,
     LAKE_ACUITY,
     LAKE_VALOR,
     LAKE_VERITY,

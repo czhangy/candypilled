@@ -49,8 +49,22 @@ const ROUTE_204: Location = {
                     category: ItemCategory.TmHm,
                     count: 1,
                     hidden: false,
-                    method: 'Ground',
+                    method: 'Far left, past the fences',
                     slug: 'bullet-seed',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'Gift from lady in top-right',
+                    slug: 'captivate',
+                },
+                {
+                    category: ItemCategory.HeldItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'On the ledge, past Aroma Lady Taylor',
+                    slug: 'miracle-seed',
                 },
             ],
             methodSplits: [

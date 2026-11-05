@@ -16,14 +16,14 @@ const ROUTE_205: Location = {
             items: [
                 {
                     category: ItemCategory.Berry,
-                    count: 1,
+                    count: 5,
                     hidden: false,
                     method: 'Berry tree',
                     slug: 'chesto-berry',
                 },
                 {
                     category: ItemCategory.Berry,
-                    count: 1,
+                    count: 5,
                     hidden: false,
                     method: 'Berry tree',
                     slug: 'pecha-berry',

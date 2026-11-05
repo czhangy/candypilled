@@ -16,31 +16,31 @@ const FLOAROMA_TOWN: Location = {
             items: [
                 {
                     category: ItemCategory.Berry,
-                    count: 1,
+                    count: 5,
                     hidden: false,
                     method: 'Berry tree',
                     slug: 'oran-berry',
                 },
                 {
                     category: ItemCategory.Berry,
-                    count: 1,
+                    count: 5,
                     hidden: false,
                     method: 'Berry tree',
                     slug: 'cheri-berry',
                 },
                 {
-                    category: ItemCategory.KeyItem,
-                    count: 1,
-                    hidden: false,
-                    method: 'Gift from NPC',
-                    slug: 'sprayduck',
-                },
-                {
                     category: ItemCategory.TmHm,
                     count: 1,
                     hidden: false,
-                    method: 'Gift from NPC',
+                    method: 'Gift from old man in centermost house',
                     slug: 'aerial-ace',
+                },
+                {
+                    category: ItemCategory.Consumable,
+                    count: 1,
+                    hidden: false,
+                    method: 'Poké Mart',
+                    slug: 'poke-ball',
                 },
             ],
             methodSplits: [
@@ -52,6 +52,43 @@ const FLOAROMA_TOWN: Location = {
             map: floaromaTownPokemonCenter,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'floaroma-town',
+            items: [
+                {
+                    category: ItemCategory.HeldItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Thief shop',
+                    slug: 'metal-coat',
+                },
+                {
+                    category: ItemCategory.HeldItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Thief shop',
+                    slug: 'electirizer',
+                },
+                {
+                    category: ItemCategory.HeldItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Thief shop',
+                    slug: 'leftovers',
+                },
+                {
+                    category: ItemCategory.HeldItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Thief shop',
+                    slug: 'deep-sea-scale',
+                },
+                {
+                    category: ItemCategory.HeldItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Thief shop',
+                    slug: 'miracle-seed',
+                },
+            ],
             methodSplits: [{ method: EncounterMethod.Gift, split: 'Gardenia' }],
             battles: [
                 {
