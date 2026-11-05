@@ -40,8 +40,15 @@ const ROUTE_218: Location = {
             category: ItemCategory.KeyItem,
             count: 1,
             hidden: false,
-            method: 'Gift from Fisherman',
+            method: 'Gift from fisherman in gate',
             slug: 'old-rod',
+        },
+        {
+            category: ItemCategory.Consumable,
+            count: 10,
+            hidden: false,
+            method: 'Gift from fisherman in gate',
+            slug: 'dive-ball',
         },
         {
             category: ItemCategory.TmHm,

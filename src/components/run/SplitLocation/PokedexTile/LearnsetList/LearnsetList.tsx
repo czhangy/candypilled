@@ -6,6 +6,7 @@ import styles from './LearnsetList.module.scss';
 
 type LearnsetListProps = {
     dataSource: GameDataSource;
+    gainedMoves: string[];
     generation: number;
     highlightedMoves: string[];
     interactive: boolean;
@@ -18,6 +19,7 @@ type LearnsetListProps = {
 
 const LearnsetList: React.FC<LearnsetListProps> = ({
     dataSource,
+    gainedMoves,
     generation,
     highlightedMoves,
     interactive,
@@ -85,6 +87,7 @@ const LearnsetList: React.FC<LearnsetListProps> = ({
                     styles.row,
                     !interactive && styles['row--static'],
                     lostMoves.includes(move.slug) && styles['row--lost'],
+                    gainedMoves.includes(move.slug) && styles['row--gained'],
                     isHighlighted && styles['row--highlighted'],
                     isDangerous && styles['row--dangerous'],
                 ]

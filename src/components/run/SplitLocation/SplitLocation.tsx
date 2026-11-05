@@ -670,7 +670,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                     game={game}
                     onClose={() => setPendingHatchDetails(undefined)}
                     onSelect={handleHatchLocationSelect}
-                    options={RunHelpers.getAvailableLocationOptions(game, run)}
+                    run={run}
                 />
             )}
         </div>

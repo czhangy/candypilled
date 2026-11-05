@@ -122,7 +122,8 @@ export default class EvolutionHelpers {
      * For each earlier stage slug evolves from (forms included), its
      * level-up moves in version that slug learns at a different level, plus
      * those neither slug nor any later stage can learn by any method (the
-     * stage's lostMoves). Stages with neither are omitted.
+     * stage's lostMoves), plus slug's own level-up moves the stage can't
+     * learn by any method (gainedMoves). Stages with none are omitted.
      */
     static getLearnsetDifferences(
         dataSource: GameDataSource,
@@ -210,7 +211,17 @@ export default class EvolutionHelpers {
                 const lostMoves = levelUpMoves
                     .filter((move) => !learnableSlugs.has(move.slug))
                     .map((move) => move.slug);
-                const moves = levelUpMoves.filter(
+                const stageSlugs = new Set(
+                    getLearnset(stage).map((move) => move.slug)
+                );
+                const gainedLevelUpMoves = ownLearnset.filter(
+                    (move) =>
+                        move.method === 'level-up' && !stageSlugs.has(move.slug)
+                );
+                const gainedMoves = Array.from(
+                    new Set(gainedLevelUpMoves.map((move) => move.slug))
+                );
+                const differingMoves = levelUpMoves.filter(
                     (move) =>
                         lostMoves.includes(move.slug) ||
                         (ownLevelUpSlugs.has(move.slug) &&
@@ -218,15 +229,24 @@ export default class EvolutionHelpers {
                                 `${move.method}:${move.slug}:${move.level ?? ''}`
                             ))
                 );
+                const moves = [...differingMoves, ...gainedLevelUpMoves].sort(
+                    (a, b) => (a.level ?? 0) - (b.level ?? 0)
+                );
                 const levelOffsets: Record<string, number> = {};
-                moves.forEach((move) => {
+                differingMoves.forEach((move) => {
                     const offset = getLevelOffset(move);
                     if (offset !== undefined) {
                         levelOffsets[`${move.slug}-${move.level}`] = offset;
                     }
                 });
 
-                return { levelOffsets, lostMoves, moves, slug: stage };
+                return {
+                    gainedMoves,
+                    levelOffsets,
+                    lostMoves,
+                    moves,
+                    slug: stage,
+                };
             })
             .filter((difference) => difference.moves.length > 0);
     }

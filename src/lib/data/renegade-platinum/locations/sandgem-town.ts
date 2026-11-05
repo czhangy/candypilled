@@ -20,6 +20,13 @@ const SANDGEM_TOWN: Location = {
                     method: 'Gift from Rowan',
                     slug: 'poke-radar',
                 },
+                {
+                    category: ItemCategory.Consumable,
+                    count: 1,
+                    hidden: false,
+                    method: 'Poké Mart',
+                    slug: 'poke-ball',
+                },
             ],
         },
         {

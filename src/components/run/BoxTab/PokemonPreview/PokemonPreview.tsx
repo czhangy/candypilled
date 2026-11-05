@@ -494,6 +494,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                             {learnsetTab === 'learnset' ? (
                                 <LearnsetList
                                     dataSource={dataSource}
+                                    gainedMoves={[]}
                                     generation={generation}
                                     highlightedMoves={[]}
                                     interactive

@@ -255,6 +255,7 @@ const PokedexDetail: React.FC<PokedexDetailProps> = ({
                             {detailTab === 'learnset' && (
                                 <LearnsetList
                                     dataSource={game.dataSource}
+                                    gainedMoves={[]}
                                     generation={game.generation}
                                     highlightedMoves={[]}
                                     interactive

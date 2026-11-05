@@ -3,27 +3,37 @@
 import { useState } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import Modal from '@/components/common/Modal/Modal';
-import { DropdownOption, Game } from '@/lib/static/types';
+import { Game, Run } from '@/lib/static/types';
+import RunHelpers from '@/lib/utils/RunHelpers';
 import styles from './LocationSelectModal.module.scss';
 
 type LocationSelectModalProps = {
     game: Game;
     onClose: () => void;
     onSelect: (location: string) => void;
-    options: DropdownOption[];
+    run: Run;
 };
 
 const LocationSelectModal: React.FC<LocationSelectModalProps> = ({
     game,
     onClose,
     onSelect,
-    options,
+    run,
 }) => {
     // -------------------------------------------------------------------------
     // STATE
     // -------------------------------------------------------------------------
 
     const [selectedLocation, setSelectedLocation] = useState('');
+
+    // -------------------------------------------------------------------------
+    // RENDERING
+    // -------------------------------------------------------------------------
+
+    const usedLocations = RunHelpers.getUsedLocations(run);
+    const options = Object.values(game.metLocationById)
+        .filter((name) => !usedLocations.includes(name))
+        .map((name) => ({ label: name, value: name }));
 
     // -------------------------------------------------------------------------
     // HANDLERS

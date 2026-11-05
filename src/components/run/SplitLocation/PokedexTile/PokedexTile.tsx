@@ -413,6 +413,7 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                     {(rest.mode === 'choose' || detailTab === 'learnset') && (
                         <LearnsetList
                             dataSource={game.dataSource}
+                            gainedMoves={[]}
                             generation={generation}
                             highlightedMoves={highlightedMoves}
                             interactive={rest.mode !== 'choose'}
