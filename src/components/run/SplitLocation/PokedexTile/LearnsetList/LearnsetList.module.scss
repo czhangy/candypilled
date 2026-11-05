@@ -92,12 +92,22 @@ $power-width: 2.75rem;
             }
         }
 
-        &--lost {
+        &--gained {
             background: color-mix(in srgb, $red 20%, transparent);
 
             @media (hover: hover) {
                 &:hover:not(&--static) {
                     background: color-mix(in srgb, $red 30%, transparent);
+                }
+            }
+        }
+
+        &--lost {
+            background: color-mix(in srgb, $green 20%, transparent);
+
+            @media (hover: hover) {
+                &:hover:not(&--static) {
+                    background: color-mix(in srgb, $green 30%, transparent);
                 }
             }
         }

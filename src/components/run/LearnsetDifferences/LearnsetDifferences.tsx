@@ -52,6 +52,7 @@ const LearnsetDifferences: React.FC<LearnsetDifferencesProps> = ({
                         </div>
                         <LearnsetList
                             dataSource={dataSource}
+                            gainedMoves={difference.gainedMoves}
                             generation={generation}
                             highlightedMoves={[]}
                             interactive
