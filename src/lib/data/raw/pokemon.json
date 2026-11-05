@@ -799196,7 +799196,7 @@
         "slug": "kyogre-primal",
         "name": "Kyogre Primal",
         "dexNumber": 382,
-        "introducedInGeneration": 3,
+        "introducedInGeneration": 6,
         "isTemporaryForm": false,
         "isLegendary": true,
         "sprites": {
@@ -801819,7 +801819,7 @@
         "slug": "groudon-primal",
         "name": "Groudon Primal",
         "dexNumber": 383,
-        "introducedInGeneration": 3,
+        "introducedInGeneration": 6,
         "isTemporaryForm": false,
         "isLegendary": true,
         "sprites": {

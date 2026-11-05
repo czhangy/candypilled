@@ -30,6 +30,8 @@ export type CalcPokemonInput = {
     evs: StatValues;
     gender?: 'male' | 'female';
     heldItem: string;
+    // Undefined means full HP.
+    currentHp: number | undefined;
     ivs: StatValues;
     level: number;
     nature: string;

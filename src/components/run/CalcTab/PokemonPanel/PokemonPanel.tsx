@@ -22,6 +22,7 @@ import StatsTable from './StatsTable/StatsTable';
 type PokemonPanelProps = {
     abilityName: string;
     boosts: Record<Exclude<keyof StatValues, 'hp'>, number>;
+    currentHp: number | undefined;
     evs: StatValues;
     game: Game;
     gender?: 'male' | 'female';
@@ -36,6 +37,7 @@ type PokemonPanelProps = {
         stat: Exclude<keyof StatValues, 'hp'>,
         value: number
     ) => void;
+    onCurrentHpChange: (value: number) => void;
     onGenderChange: (gender: 'male' | 'female') => void;
     onHeldItemChange: (value: string) => void;
     onIvChange: (stat: keyof StatValues, value: number) => void;
@@ -53,6 +55,7 @@ type PokemonPanelProps = {
 const PokemonPanel: React.FC<PokemonPanelProps> = ({
     abilityName,
     boosts,
+    currentHp,
     evs,
     game,
     gender,
@@ -64,6 +67,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     nature,
     onAbilityChange,
     onBoostChange,
+    onCurrentHpChange,
     onGenderChange,
     onHeldItemChange,
     onIvChange,
@@ -96,6 +100,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     // -------------------------------------------------------------------------
 
     const levelInputId = useId();
+    const hpInputId = useId();
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -121,6 +126,7 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     const rawTotalStats = baseStats
         ? StatHelpers.calculateStats(baseStats, level, ivs, evs, nature)
         : undefined;
+    const maxHp = rawTotalStats?.hp ?? 0;
     const totalStats = rawTotalStats
         ? {
               ...rawTotalStats,
@@ -186,7 +192,11 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     return (
         <div className={styles['pokemon-panel']}>
             <div className={styles.row}>
-                <div className={styles.field}>
+                <div
+                    className={[styles.field, styles['field--species']].join(
+                        ' '
+                    )}
+                >
                     <div className={styles['label-row']}>
                         <span className={styles.label}>Pokémon</span>
                         {pokemonSlug && (
@@ -234,7 +244,9 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                         <span className={styles.value}>None selected</span>
                     )}
                 </div>
-                <div className={styles.field}>
+                <div
+                    className={[styles.field, styles['field--level']].join(' ')}
+                >
                     <label className={styles.label} htmlFor={levelInputId}>
                         Level
                     </label>
@@ -247,6 +259,23 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
                         onChange={onLevelChange}
                         value={level}
                     />
+                </div>
+                <div className={styles.field}>
+                    <label className={styles.label} htmlFor={hpInputId}>
+                        HP
+                    </label>
+                    <div className={styles.hp}>
+                        <NumericInput
+                            dense={false}
+                            disabled={!pokemonSlug}
+                            id={hpInputId}
+                            max={maxHp}
+                            min={1}
+                            onChange={onCurrentHpChange}
+                            value={Math.min(currentHp ?? maxHp, maxHp)}
+                        />
+                        <span className={styles['max-hp']}>/ {maxHp}</span>
+                    </div>
                 </div>
             </div>
             {pokemonSlug && (

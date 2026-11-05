@@ -33582,17 +33582,28 @@
             {
                 "fromGeneration": 4,
                 "line": {
-                    "slug": "electabuzz",
+                    "slug": "elekid",
                     "evolvesTo": [
                         {
-                            "slug": "electivire",
+                            "slug": "electabuzz",
                             "methods": [
                                 {
-                                    "trigger": "use-item",
-                                    "item": "electirizer"
+                                    "trigger": "level-up",
+                                    "minLevel": 30
                                 }
                             ],
-                            "evolvesTo": []
+                            "evolvesTo": [
+                                {
+                                    "slug": "electivire",
+                                    "methods": [
+                                        {
+                                            "trigger": "use-item",
+                                            "item": "electirizer"
+                                        }
+                                    ],
+                                    "evolvesTo": []
+                                }
+                            ]
                         }
                     ]
                 }
@@ -33854,17 +33865,28 @@
             {
                 "fromGeneration": 4,
                 "line": {
-                    "slug": "magmar",
+                    "slug": "magby",
                     "evolvesTo": [
                         {
-                            "slug": "magmortar",
+                            "slug": "magmar",
                             "methods": [
                                 {
-                                    "trigger": "use-item",
-                                    "item": "magmarizer"
+                                    "trigger": "level-up",
+                                    "minLevel": 30
                                 }
                             ],
-                            "evolvesTo": []
+                            "evolvesTo": [
+                                {
+                                    "slug": "magmortar",
+                                    "methods": [
+                                        {
+                                            "trigger": "use-item",
+                                            "item": "magmarizer"
+                                        }
+                                    ],
+                                    "evolvesTo": []
+                                }
+                            ]
                         }
                     ]
                 }
@@ -129530,17 +129552,28 @@
             {
                 "fromGeneration": 4,
                 "line": {
-                    "slug": "electabuzz",
+                    "slug": "elekid",
                     "evolvesTo": [
                         {
-                            "slug": "electivire",
+                            "slug": "electabuzz",
                             "methods": [
                                 {
-                                    "trigger": "use-item",
-                                    "item": "electirizer"
+                                    "trigger": "level-up",
+                                    "minLevel": 30
                                 }
                             ],
-                            "evolvesTo": []
+                            "evolvesTo": [
+                                {
+                                    "slug": "electivire",
+                                    "methods": [
+                                        {
+                                            "trigger": "use-item",
+                                            "item": "electirizer"
+                                        }
+                                    ],
+                                    "evolvesTo": []
+                                }
+                            ]
                         }
                     ]
                 }
@@ -129874,17 +129907,28 @@
             {
                 "fromGeneration": 4,
                 "line": {
-                    "slug": "magmar",
+                    "slug": "magby",
                     "evolvesTo": [
                         {
-                            "slug": "magmortar",
+                            "slug": "magmar",
                             "methods": [
                                 {
-                                    "trigger": "use-item",
-                                    "item": "magmarizer"
+                                    "trigger": "level-up",
+                                    "minLevel": 30
                                 }
                             ],
-                            "evolvesTo": []
+                            "evolvesTo": [
+                                {
+                                    "slug": "magmortar",
+                                    "methods": [
+                                        {
+                                            "trigger": "use-item",
+                                            "item": "magmarizer"
+                                        }
+                                    ],
+                                    "evolvesTo": []
+                                }
+                            ]
                         }
                     ]
                 }

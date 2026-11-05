@@ -23,6 +23,7 @@ import {
     GameDataSource,
 } from '@/lib/static/types';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
+import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 
 export default class DamageCalcHelpers {
     // -------------------------------------------------------------------------
@@ -340,8 +341,18 @@ export default class DamageCalcHelpers {
         if (!moveName) return null;
 
         const gen = DamageCalcHelpers.getGeneration(generation);
-        const attackerPokemon = DamageCalcHelpers.buildPokemon(gen, attacker);
-        const defenderPokemon = DamageCalcHelpers.buildPokemon(gen, defender);
+        const attackerPokemon = DamageCalcHelpers.buildPokemon(
+            gen,
+            dataSource,
+            generation,
+            attacker
+        );
+        const defenderPokemon = DamageCalcHelpers.buildPokemon(
+            gen,
+            dataSource,
+            generation,
+            defender
+        );
         if (!attackerPokemon || !defenderPokemon) return null;
 
         const ownOverrides = DamageCalcHelpers.getMoveOverrides(
@@ -449,14 +460,29 @@ export default class DamageCalcHelpers {
         return Math.floor((damage * 1000) / maxHp) / 10;
     }
 
+    // The species' types and base stats come from this game's data source,
+    // since a ROM hack may patch them away from @smogon/calc's vanilla data.
     private static buildPokemon(
         gen: Generation,
+        dataSource: GameDataSource,
+        generation: number,
         input: CalcPokemonInput
     ): CalcPokemon | null {
         if (!gen.species.get(toID(input.species))) return null;
 
+        const slug = Object.values(dataSource.pokemon).find(
+            (pokemon) => pokemon.name === input.species
+        )?.slug;
+        const baseStats = slug
+            ? PokemonHelpers.getPokemonStats(dataSource, slug, generation)
+            : undefined;
+        const types = slug
+            ? PokemonHelpers.getPokemonTypes(dataSource, slug, generation)
+            : undefined;
+
         try {
-            return new CalcPokemon(gen, input.species, {
+            const pokemon = new CalcPokemon(gen, input.species, {
+                overrides: { baseStats },
                 ability: input.abilityName || undefined,
                 boosts: input.boosts,
                 evs: input.evs,
@@ -472,6 +498,24 @@ export default class DamageCalcHelpers {
                 nature: input.nature,
                 status: (input.status || undefined) as StatusName | undefined,
             });
+
+            // Current HP matters to HP-scaled moves (Flail, Eruption, ...).
+            pokemon.originalCurHP = Math.min(
+                input.currentHp ?? pokemon.rawStats.hp,
+                pokemon.rawStats.hp
+            );
+
+            if (types) {
+                // @smogon/calc deep-merges array overrides by index, which
+                // would keep a dual type's 2nd slot when the game makes it
+                // mono-typed, so the types are assigned directly instead.
+                const calcTypes = types.map((type) =>
+                    DamageCalcHelpers.capitalize(type)
+                ) as CalcPokemon['types'];
+                pokemon.types = calcTypes;
+                pokemon.species = { ...pokemon.species, types: calcTypes };
+            }
+            return pokemon;
         } catch {
             return null;
         }

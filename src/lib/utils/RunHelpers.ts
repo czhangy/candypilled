@@ -1,5 +1,5 @@
 import { GameName } from '@/lib/static/enums';
-import { CaughtPokemon, DropdownOption, Game, Run } from '@/lib/static/types';
+import { CaughtPokemon, Game, Run } from '@/lib/static/types';
 import LocalStorageHelpers from '@/lib/utils/LocalStorageHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 
@@ -114,26 +114,6 @@ export default class RunHelpers {
             ...run.caughtPokemon.map((caught) => caught.location),
             ...run.missedLocations,
         ];
-    }
-
-    /**
-     * DropdownOptions for every Location in game whose encounter hasn't
-     * already been used in run — for pickers that assign a run event (a
-     * hatched egg, a roamer catch) to a location not tied to its own
-     * encounter table.
-     */
-    static getAvailableLocationOptions(game: Game, run: Run): DropdownOption[] {
-        const usedLocations = RunHelpers.getUsedLocations(run);
-
-        return Array.from(
-            new Set(
-                game.splits.flatMap((split) =>
-                    split.locations.map((location) => location.name)
-                )
-            )
-        )
-            .filter((name) => !usedLocations.includes(name))
-            .map((name) => ({ label: name, value: name }));
     }
 
     /**

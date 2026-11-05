@@ -19,6 +19,17 @@
             flex: 1;
             min-width: 0;
         }
+
+        .field--species {
+            flex: none;
+            width: 50%;
+        }
+
+        // Level needs the least room of the top row (at most 3 digits).
+        .field--level {
+            flex: none;
+            width: 3.5rem;
+        }
     }
 
     .field {
@@ -109,6 +120,24 @@
                     transition: none;
                 }
             }
+        }
+    }
+
+    .hp {
+        align-items: center;
+        display: flex;
+        gap: 0.4rem;
+
+        // Mirrors .species: the input fills the space left of the max HP.
+        > :first-child {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .max-hp {
+            color: $text-mid;
+            flex-shrink: 0;
+            font-size: 0.8rem;
         }
     }
 

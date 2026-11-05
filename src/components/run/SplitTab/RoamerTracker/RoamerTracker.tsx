@@ -72,7 +72,6 @@ const RoamerTracker: React.FC<RoamerTrackerProps> = ({ game, run }) => {
     const catchingRoamer = roamers.find(
         (roamer) => roamer.species === catchingSpecies
     );
-    const locationOptions = RunHelpers.getAvailableLocationOptions(game, run);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -218,7 +217,7 @@ const RoamerTracker: React.FC<RoamerTrackerProps> = ({ game, run }) => {
                     onSelect={(location) =>
                         handleCatch(catchingRoamer, location)
                     }
-                    options={locationOptions}
+                    run={run}
                 />
             )}
         </div>

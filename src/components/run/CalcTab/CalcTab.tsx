@@ -57,6 +57,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
         evs: StatValues;
         gender?: 'male' | 'female';
         heldItem: string;
+        currentHp: number | undefined;
         ivs: StatValues;
         level: number;
         moves: string[];
@@ -82,6 +83,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
         | { type: 'SET_ABILITY'; abilityName: string }
         | { type: 'SET_GENDER'; gender: 'male' | 'female' }
         | { type: 'SET_HELD_ITEM'; heldItem: string }
+        | { type: 'SET_CURRENT_HP'; currentHp: number }
         | { type: 'SET_NATURE'; nature: Nature }
         | { type: 'SET_LEVEL'; level: number }
         | { type: 'SET_IV'; stat: keyof StatValues; value: number }
@@ -106,6 +108,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
         evs: StatValues;
         gender?: 'male' | 'female';
         heldItem: string;
+        currentHp: number | undefined;
         ivs: StatValues;
         level: number;
         moves: string[];
@@ -131,6 +134,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
         | { type: 'SET_ABILITY'; abilityName: string }
         | { type: 'SET_GENDER'; gender: 'male' | 'female' }
         | { type: 'SET_HELD_ITEM'; heldItem: string }
+        | { type: 'SET_CURRENT_HP'; currentHp: number }
         | {
               type: 'SET_BOOST';
               stat: Exclude<keyof StatValues, 'hp'>;
@@ -241,6 +245,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
         boosts: getBlankBoosts(),
         evs: StatHelpers.normalizeStats(undefined, 0),
         heldItem: '',
+        currentHp: undefined,
         ivs: StatHelpers.normalizeStats(undefined, MAX_IV),
         level: MIN_LEVEL,
         moves: padMoves([]),
@@ -261,6 +266,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     evs: action.evs,
                     gender: action.gender,
                     heldItem: action.heldItem,
+                    currentHp: undefined,
                     ivs: action.ivs,
                     level: action.level,
                     moves: action.moves,
@@ -276,6 +282,8 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 return { ...state, gender: action.gender };
             case 'SET_HELD_ITEM':
                 return { ...state, heldItem: action.heldItem };
+            case 'SET_CURRENT_HP':
+                return { ...state, currentHp: action.currentHp };
             case 'SET_NATURE':
                 return { ...state, nature: action.nature };
             case 'SET_LEVEL':
@@ -319,6 +327,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
         boosts: getBlankBoosts(),
         evs: StatHelpers.normalizeStats(undefined, 0),
         heldItem: '',
+        currentHp: undefined,
         ivs: StatHelpers.normalizeStats(undefined, MAX_IV),
         level: MIN_LEVEL,
         moves: padMoves([]),
@@ -353,6 +362,8 @@ const CalcTab: React.FC<CalcTabProps> = ({
                 return { ...state, gender: action.gender };
             case 'SET_HELD_ITEM':
                 return { ...state, heldItem: action.heldItem };
+            case 'SET_CURRENT_HP':
+                return { ...state, currentHp: action.currentHp };
             case 'SET_BOOST':
                 return {
                     ...state,
@@ -506,6 +517,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
               evs: attacker.evs,
               gender: attacker.gender,
               heldItem: attacker.heldItem,
+              currentHp: attacker.currentHp,
               ivs: attacker.ivs,
               level: attacker.level,
               nature: attacker.nature,
@@ -524,6 +536,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
               evs: defender.evs,
               gender: defender.gender,
               heldItem: defender.heldItem,
+              currentHp: defender.currentHp,
               ivs: defender.ivs,
               level: defender.level,
               nature: defender.nature,
@@ -780,6 +793,10 @@ const CalcTab: React.FC<CalcTabProps> = ({
         dispatchAttacker({ type: 'SET_LEVEL', level });
     };
 
+    const handleAttackerCurrentHpChange = (value: number): void => {
+        dispatchAttacker({ type: 'SET_CURRENT_HP', currentHp: value });
+    };
+
     const handleAttackerStatusChange = (value: string): void => {
         dispatchAttacker({ type: 'SET_STATUS', status: value });
     };
@@ -852,6 +869,10 @@ const CalcTab: React.FC<CalcTabProps> = ({
     const handleDefenderLevelChange = (value: number): void => {
         const level = Math.min(MAX_LEVEL, Math.max(MIN_LEVEL, value));
         dispatchDefender({ type: 'SET_LEVEL', level });
+    };
+
+    const handleDefenderCurrentHpChange = (value: number): void => {
+        dispatchDefender({ type: 'SET_CURRENT_HP', currentHp: value });
     };
 
     const handleDefenderStatusChange = (value: string): void => {
@@ -939,6 +960,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     game={game}
                     gender={attacker.gender}
                     heldItem={attacker.heldItem}
+                    currentHp={attacker.currentHp}
                     isTailwind={field.playerSide.isTailwind}
                     ivs={attacker.ivs}
                     level={attacker.level}
@@ -948,6 +970,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     onBoostChange={handleAttackerBoostChange}
                     onGenderChange={handleAttackerGenderChange}
                     onHeldItemChange={handleAttackerHeldItemChange}
+                    onCurrentHpChange={handleAttackerCurrentHpChange}
                     onIvChange={handleAttackerIvChange}
                     onLevelChange={handleAttackerLevelChange}
                     onMoveChange={handleAttackerMoveChange}
@@ -993,6 +1016,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     game={game}
                     gender={defender.gender}
                     heldItem={defender.heldItem}
+                    currentHp={defender.currentHp}
                     isTailwind={field.trainerSide.isTailwind}
                     ivs={defender.ivs}
                     level={defender.level}
@@ -1002,6 +1026,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     onBoostChange={handleDefenderBoostChange}
                     onGenderChange={handleDefenderGenderChange}
                     onHeldItemChange={handleDefenderHeldItemChange}
+                    onCurrentHpChange={handleDefenderCurrentHpChange}
                     onIvChange={handleDefenderIvChange}
                     onLevelChange={handleDefenderLevelChange}
                     onMoveChange={handleDefenderMoveChange}
