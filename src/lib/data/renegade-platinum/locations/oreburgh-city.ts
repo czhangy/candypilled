@@ -15,28 +15,28 @@ const OREBURGH_CITY: Location = {
             encountersKey: 'oreburgh-city-trade',
             items: [
                 {
-                    category: ItemCategory.Consumable,
+                    category: ItemCategory.EvolutionItem,
                     count: 1,
                     hidden: false,
                     method: 'Gift from boy after tour',
                     slug: 'oval-stone',
                 },
                 {
-                    category: ItemCategory.Consumable,
+                    category: ItemCategory.PokeBall,
                     count: 1,
                     hidden: false,
                     method: 'Gift from girl in top-left building',
                     slug: 'dusk-ball',
                 },
                 {
-                    category: ItemCategory.Consumable,
+                    category: ItemCategory.PokeBall,
                     count: 1,
                     hidden: false,
                     method: 'Gift from boy in bottom-right building',
                     slug: 'great-ball',
                 },
                 {
-                    category: ItemCategory.Consumable,
+                    category: ItemCategory.PokeBall,
                     count: 1,
                     hidden: false,
                     method: 'Poké Mart',

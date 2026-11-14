@@ -7813,5 +7813,125 @@
         "isDangerous": false,
         "sprite": "/items/park-ball.png",
         "valuesByGeneration": []
+    },
+    "helix-fossil": {
+        "slug": "helix-fossil",
+        "name": "Helix Fossil",
+        "category": "dex-completion",
+        "effect": "Can be revived into an Omanyte.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/helix-fossil.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A fossil of an ancient Pokémon that lived in the sea. It appears to be part of a seashell."
+            }
+        ]
+    },
+    "dome-fossil": {
+        "slug": "dome-fossil",
+        "name": "Dome Fossil",
+        "category": "dex-completion",
+        "effect": "Can be revived into a Kabuto.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/dome-fossil.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A fossil of an ancient Pokémon that lived in the sea. It appears to be part of a shell."
+            }
+        ]
+    },
+    "old-amber": {
+        "slug": "old-amber",
+        "name": "Old Amber",
+        "category": "dex-completion",
+        "effect": "Can be revived into an Aerodactyl.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/old-amber.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A piece of amber that contains the genetic material of an ancient Pokémon. It is clear with a reddish tint."
+            }
+        ]
+    },
+    "root-fossil": {
+        "slug": "root-fossil",
+        "name": "Root Fossil",
+        "category": "dex-completion",
+        "effect": "Can be revived into a Lileep.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/root-fossil.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A fossil of an ancient Pokémon that lived in the sea. It appears to be part of a plant root."
+            }
+        ]
+    },
+    "claw-fossil": {
+        "slug": "claw-fossil",
+        "name": "Claw Fossil",
+        "category": "dex-completion",
+        "effect": "Can be revived into an Anorith.",
+        "introducedInGeneration": 3,
+        "isDangerous": false,
+        "sprite": "/items/claw-fossil.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A fossil of an ancient Pokémon that lived in the sea. It appears to be part of a claw."
+            }
+        ]
+    },
+    "skull-fossil": {
+        "slug": "skull-fossil",
+        "name": "Skull Fossil",
+        "category": "dex-completion",
+        "effect": "Can be revived into a Cranidos.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/skull-fossil.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A fossil from a prehistoric Pokémon that lived on the land. It appears to be part of a head."
+            }
+        ]
+    },
+    "armor-fossil": {
+        "slug": "armor-fossil",
+        "name": "Armor Fossil",
+        "category": "dex-completion",
+        "effect": "Can be revived into a Shieldon.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/armor-fossil.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A fossil from a prehistoric Pokémon that lived on the land. It appears to be part of a collar."
+            }
+        ]
+    },
+    "explorer-kit": {
+        "slug": "explorer-kit",
+        "name": "Explorer Kit",
+        "category": "gameplay",
+        "effect": "Allows visiting the Underground.",
+        "introducedInGeneration": 4,
+        "isDangerous": false,
+        "sprite": "/items/explorer-kit.png",
+        "valuesByGeneration": [
+            {
+                "fromGeneration": 4,
+                "description": "A bag filled with convenient tools for exploring. It provides access to the Underground."
+            }
+        ]
     }
 }

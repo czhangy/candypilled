@@ -36,6 +36,7 @@ export default class DamageCalcHelpers {
         if (cached) return cached;
 
         const resolved = Generations.get(generation as GenerationNum);
+        DamageCalcHelpers.addFairyToPreFairyGeneration(resolved);
         DamageCalcHelpers.generationCache.set(generation, resolved);
         return resolved;
     }
@@ -326,6 +327,31 @@ export default class DamageCalcHelpers {
             DamageCalcHelpers.toPercent(maxDamage, maxHp),
         ];
     }
+
+    // Games like Renegade Platinum use Fairy in Gen 4, but @smogon/calc's
+    // pre-Gen 6 charts lack it, so matchups against Fairy come out NaN and
+    // Fairy moves throw. Copy Gen 6's Fairy defending column and serve its
+    // Fairy attacking row.
+    private static addFairyToPreFairyGeneration(gen: Generation): void {
+        if (gen.num >= DamageCalcHelpers.FAIRY_GENERATION) return;
+
+        const fairyGen = Generations.get(DamageCalcHelpers.FAIRY_GENERATION);
+        for (const attackingType of gen.types) {
+            const fairyEffectiveness = fairyGen.types.get(attackingType.id)
+                ?.effectiveness.Fairy;
+            if (fairyEffectiveness !== undefined) {
+                (attackingType.effectiveness as Record<string, number>).Fairy =
+                    fairyEffectiveness;
+            }
+        }
+
+        const fairyType = fairyGen.types.get(toID('Fairy'));
+        const getType = gen.types.get.bind(gen.types);
+        gen.types.get = (id) =>
+            id === fairyType?.id ? fairyType : getType(id);
+    }
+
+    private static readonly FAIRY_GENERATION = 6;
 
     private static readonly generationCache = new Map<number, Generation>();
 

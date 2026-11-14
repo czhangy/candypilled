@@ -38,13 +38,9 @@
 
         .category-row {
             th {
-                @include uppercase-label;
-
                 background: $background-light;
                 border-bottom: 1px solid $border-subtle;
-                font-size: 0.75rem;
-                padding: 0.35rem 1.5rem;
-                text-align: left;
+                padding: 0;
             }
         }
 
@@ -78,6 +74,11 @@
             }
         }
 
+        .found-cell {
+            text-overflow: clip;
+            white-space: normal;
+        }
+
         .found {
             color: $text-mid;
             display: flex;
@@ -86,6 +87,7 @@
 
             .found__hidden {
                 font-size: 0.75rem;
+                font-style: italic;
             }
         }
     }

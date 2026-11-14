@@ -80,10 +80,9 @@
         }
 
         th {
-            @include uppercase-label;
-
             background: $background-light;
             border-bottom: 1px solid $border-subtle;
+            padding: 0;
         }
 
         td {

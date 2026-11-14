@@ -60,6 +60,29 @@ export default class StatHelpers {
             : Math.floor((stat * 2) / (2 - stage));
     }
 
+    /**
+     * rawSpeed's effective in-battle value after its stat stage boost,
+     * Tailwind (2x), Quick Feet (1.5x under any status) and paralysis (1/4x,
+     * which Quick Feet ignores), as of Generations III/IV.
+     */
+    static getBattleSpeed(
+        rawSpeed: number,
+        boostStage: number,
+        isTailwind: boolean,
+        abilityName: string,
+        status: string
+    ): number {
+        const hasQuickFeet = abilityName === 'Quick Feet';
+        const boostedSpeed = StatHelpers.applyBoost(rawSpeed, boostStage);
+        const statusSpeed =
+            hasQuickFeet && status
+                ? Math.floor((boostedSpeed * 3) / 2)
+                : status === 'par'
+                  ? Math.floor(boostedSpeed / 4)
+                  : boostedSpeed;
+        return statusSpeed * (isTailwind ? 2 : 1);
+    }
+
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------

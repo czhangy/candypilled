@@ -1,6 +1,7 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
+import SectionToggle from '@/components/run/SplitLocation/SectionToggle/SectionToggle';
 import { BadgeAssetFolder, EncounterMethod } from '@/lib/static/enums';
 import { Encounter, GameDataSource } from '@/lib/static/types';
 import StringHelpers from '@/lib/utils/StringHelpers';
@@ -34,6 +35,12 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
     splitName,
 }) => {
     // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [isCollapsed, setIsCollapsed] = useState(false);
+
+    // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
@@ -48,6 +55,14 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
                   .join(' ');
 
     // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleToggleClick = (): void => {
+        setIsCollapsed((collapsed) => !collapsed);
+    };
+
+    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
@@ -55,7 +70,10 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
         <Fragment>
             <tr>
                 <th colSpan={3}>
-                    <div className={styles.method}>
+                    <SectionToggle
+                        isCollapsed={isCollapsed}
+                        onToggle={handleToggleClick}
+                    >
                         {splitName && (
                             <Tooltip
                                 className={styles.badge}
@@ -71,22 +89,23 @@ const MethodGroup: React.FC<MethodGroupProps> = ({
                             </Tooltip>
                         )}
                         {getMethodLabel()}
-                    </div>
+                    </SectionToggle>
                 </th>
             </tr>
-            {encounters.map((encounter) => (
-                <EncounterRow
-                    dataSource={dataSource}
-                    encounter={encounter}
-                    isCaughtElsewhere={isSpeciesCaughtElsewhere(
-                        encounter.species
-                    )}
-                    isCaughtHere={isSpeciesCaughtHere(encounter.species)}
-                    isSelected={encounter.species === selectedSpecies}
-                    key={`${method}-${encounter.species}-${encounter.minLevel}-${encounter.maxLevel}-${encounter.chance}`}
-                    onClick={() => onSelectEncounter(encounter)}
-                />
-            ))}
+            {!isCollapsed &&
+                encounters.map((encounter) => (
+                    <EncounterRow
+                        dataSource={dataSource}
+                        encounter={encounter}
+                        isCaughtElsewhere={isSpeciesCaughtElsewhere(
+                            encounter.species
+                        )}
+                        isCaughtHere={isSpeciesCaughtHere(encounter.species)}
+                        isSelected={encounter.species === selectedSpecies}
+                        key={`${method}-${encounter.species}-${encounter.minLevel}-${encounter.maxLevel}-${encounter.chance}`}
+                        onClick={() => onSelectEncounter(encounter)}
+                    />
+                ))}
         </Fragment>
     );
 };

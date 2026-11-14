@@ -558,7 +558,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
         : undefined;
     const playerSpeed =
         playerBaseStats && playerInput
-            ? StatHelpers.applyBoost(
+            ? StatHelpers.getBattleSpeed(
                   StatHelpers.calculateStats(
                       playerBaseStats,
                       playerInput.level,
@@ -566,8 +566,11 @@ const CalcTab: React.FC<CalcTabProps> = ({
                       playerInput.evs,
                       playerInput.nature as Nature
                   ).spe,
-                  attacker.boosts.spe
-              ) * (field.playerSide.isTailwind ? 2 : 1)
+                  attacker.boosts.spe,
+                  field.playerSide.isTailwind,
+                  attacker.abilityName,
+                  attacker.status
+              )
             : undefined;
 
     const trainerBaseStats = defenderDisplaySlug
@@ -579,7 +582,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
         : undefined;
     const trainerSpeed =
         trainerBaseStats && trainerInput
-            ? StatHelpers.applyBoost(
+            ? StatHelpers.getBattleSpeed(
                   StatHelpers.calculateStats(
                       trainerBaseStats,
                       trainerInput.level,
@@ -587,8 +590,11 @@ const CalcTab: React.FC<CalcTabProps> = ({
                       trainerInput.evs,
                       trainerInput.nature as Nature
                   ).spe,
-                  defender.boosts.spe
-              ) * (field.trainerSide.isTailwind ? 2 : 1)
+                  defender.boosts.spe,
+                  field.trainerSide.isTailwind,
+                  defender.abilityName,
+                  defender.status
+              )
             : undefined;
 
     const playerSpeedComparison: SpeedComparison | undefined =

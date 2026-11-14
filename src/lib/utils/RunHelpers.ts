@@ -135,6 +135,7 @@ export default class RunHelpers {
             caughtPokemon: [starter],
             lastImport: null,
             missedLocations: [],
+            pokemonNotes: {},
             wipe: false,
         };
     }

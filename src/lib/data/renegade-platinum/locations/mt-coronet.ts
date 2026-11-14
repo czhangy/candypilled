@@ -28,15 +28,15 @@ const MT_CORONET: Location = {
                     category: ItemCategory.TmHm,
                     count: 1,
                     hidden: false,
-                    method: 'Ground',
-                    slug: 'dragon-claw',
+                    method: 'Above the ledge, on the left',
+                    slug: 'rock-polish',
                 },
                 {
-                    category: ItemCategory.TmHm,
+                    category: ItemCategory.EvolutionItem,
                     count: 1,
                     hidden: false,
-                    method: 'Ground',
-                    slug: 'rock-polish',
+                    method: 'In the center, next to a rock',
+                    slug: 'moon-stone',
                 },
             ],
             methodSplits: [{ method: EncounterMethod.Cave, split: 'Gardenia' }],
@@ -46,6 +46,29 @@ const MT_CORONET: Location = {
             map: mtCoronetB1f,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'mt-coronet-b1f',
+            items: [
+                {
+                    category: ItemCategory.HeldItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Between the rocks by the South entrance',
+                    slug: 'soft-sand',
+                },
+                {
+                    category: ItemCategory.EvolutionItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'On the platform to the left of the water',
+                    slug: 'prism-scale',
+                },
+                {
+                    category: ItemCategory.HeldItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Between the rocks, above the water',
+                    slug: 'light-clay',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Cave, split: 'Gardenia' },
                 { method: EncounterMethod.Surf, split: 'Byron' },
@@ -59,6 +82,15 @@ const MT_CORONET: Location = {
             map: mtCoronet1fRoute216,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'mt-coronet-1f-route-216',
+            items: [
+                {
+                    category: ItemCategory.HeldItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'In the side chamber',
+                    slug: 'never-melt-ice',
+                },
+            ],
             methodSplits: [{ method: EncounterMethod.Cave, split: 'Gardenia' }],
         },
         {
@@ -144,7 +176,16 @@ const MT_CORONET: Location = {
             map: mtCoronetTunnel,
             mapAnchor: MapAnchor.Bottom,
             encountersKey: 'mt-coronet-tunnel',
-            methodSplits: [{ method: EncounterMethod.Cave, split: 'Volkner' }],
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'In the center on the right platform',
+                    slug: 'dragon-claw',
+                },
+            ],
+            methodSplits: [{ method: EncounterMethod.Cave, split: 'Gardenia' }],
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-mt-coronet-tunnel-1',

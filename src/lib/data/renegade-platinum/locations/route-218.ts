@@ -44,7 +44,7 @@ const ROUTE_218: Location = {
             slug: 'old-rod',
         },
         {
-            category: ItemCategory.Consumable,
+            category: ItemCategory.PokeBall,
             count: 10,
             hidden: false,
             method: 'Gift from fisherman in gate',

@@ -20,13 +20,6 @@ const OLD_CHATEAU: Location = {
                     count: 1,
                     hidden: false,
                     method: 'Ground',
-                    slug: 'shadow-claw',
-                },
-                {
-                    category: ItemCategory.TmHm,
-                    count: 1,
-                    hidden: false,
-                    method: 'Ground',
                     slug: 'substitute',
                 },
             ],

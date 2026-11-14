@@ -100,6 +100,16 @@ const BoxTab: React.FC<BoxTabProps> = ({
         setView(newStatus === PokemonStatus.Dead ? 'dead' : 'alive');
     };
 
+    const handleSaveNote = async (
+        pokemon: CaughtPokemon,
+        note: string
+    ): Promise<void> => {
+        await RunHelpers.saveRun(game, {
+            ...run,
+            pokemonNotes: { ...run.pokemonNotes, [pokemon.location]: note },
+        });
+    };
+
     const handleViewChange = (nextView: BoxView): void => {
         setView(nextView);
         onDeselectPokemon();
@@ -129,8 +139,15 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 onSelectItem={onSelectItem}
                 onSelectLocation={onSelectLocation}
                 onSelectMove={onSelectMove}
+                onSaveNote={handleSaveNote}
                 onSelectSpecies={onSelectSpecies}
                 onToggleStatus={handleToggleStatus}
+                note={
+                    selectedCaughtPokemon
+                        ? (run.pokemonNotes[selectedCaughtPokemon.location] ??
+                          '')
+                        : ''
+                }
                 pokemon={selectedCaughtPokemon}
                 variant={variant}
                 version={game.version}

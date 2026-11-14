@@ -21,7 +21,7 @@ const SANDGEM_TOWN: Location = {
                     slug: 'poke-radar',
                 },
                 {
-                    category: ItemCategory.Consumable,
+                    category: ItemCategory.PokeBall,
                     count: 1,
                     hidden: false,
                     method: 'Poké Mart',

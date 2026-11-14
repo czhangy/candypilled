@@ -134,9 +134,13 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
               def: StatHelpers.applyBoost(rawTotalStats.def, boosts.def),
               spa: StatHelpers.applyBoost(rawTotalStats.spa, boosts.spa),
               spd: StatHelpers.applyBoost(rawTotalStats.spd, boosts.spd),
-              spe:
-                  StatHelpers.applyBoost(rawTotalStats.spe, boosts.spe) *
-                  (isTailwind ? 2 : 1),
+              spe: StatHelpers.getBattleSpeed(
+                  rawTotalStats.spe,
+                  boosts.spe,
+                  isTailwind,
+                  abilityName,
+                  status
+              ),
           }
         : undefined;
 

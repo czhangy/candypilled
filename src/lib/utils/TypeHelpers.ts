@@ -367,7 +367,6 @@ export default class TypeHelpers {
             attacker: PokemonType.Poison,
             defender: PokemonType.Bug,
             multiplier: 1,
-            preGen6Multiplier: 2,
         },
         // Ground
         {
@@ -666,6 +665,11 @@ export default class TypeHelpers {
             multiplier: 2,
         },
         // Fairy
+        {
+            attacker: PokemonType.Fairy,
+            defender: PokemonType.Fire,
+            multiplier: 0.5,
+        },
         {
             attacker: PokemonType.Fairy,
             defender: PokemonType.Fighting,

@@ -48,8 +48,10 @@ export enum FieldCondition {
 export enum ItemCategory {
     Berry = 'Berries',
     Consumable = 'Consumables',
+    EvolutionItem = 'Evolution Items',
     HeldItem = 'Held Items',
     KeyItem = 'Key Items',
+    PokeBall = 'Poké Balls',
     TmHm = 'TMs/HMs',
 }
 
