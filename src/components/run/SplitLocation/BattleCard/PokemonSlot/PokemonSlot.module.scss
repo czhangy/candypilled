@@ -118,6 +118,11 @@
 
                 img {
                     image-rendering: pixelated;
+
+                    @media (width <= $max-content-width) {
+                        height: auto;
+                        width: 28px;
+                    }
                 }
             }
 

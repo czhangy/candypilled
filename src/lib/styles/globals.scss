@@ -70,7 +70,7 @@ ul {
     width: 100%;
 }
 
-@media (width <= $max-content-width) {
+@media (width <= $min-content-width) {
     .small-screen-message {
         display: flex;
     }
