@@ -10,7 +10,7 @@ import styles from './KillModal.module.scss';
 type KillModalProps = {
     accentColor: string;
     battleOptions: DropdownOption[];
-    buttonTextColor: string;
+    buttonTextColor: string | undefined;
     onClose: () => void;
     onConfirm: (deathBattleKey: string | undefined) => void;
 };

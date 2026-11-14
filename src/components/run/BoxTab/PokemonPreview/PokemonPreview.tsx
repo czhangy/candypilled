@@ -25,7 +25,7 @@ import styles from './PokemonPreview.module.scss';
 type PokemonPreviewProps = {
     accentColor: string;
     battleOptions: DropdownOption[];
-    buttonTextColor: string;
+    buttonTextColor: string | undefined;
     canSelectLocation: boolean;
     dataSource: GameDataSource;
     deathBattleName: string | undefined;
