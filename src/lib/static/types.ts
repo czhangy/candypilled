@@ -189,6 +189,9 @@ export type BattleTeamGroup = {
 // A caught Pokémon as tracked for Nuzlocke rule enforcement: one catch per
 // location (not subarea), and no more than one catch per evolution line.
 export type CaughtPokemon = Omit<BattlePokemon, 'moves'> & {
+    // battleKey of the battle this Pokémon died in. Only set on dead
+    // Pokémon, and only if the player chose to record it.
+    deathBattleKey?: string;
     location: string;
     moves: string[];
     status: PokemonStatus;

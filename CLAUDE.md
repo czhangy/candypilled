@@ -14,6 +14,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 > Always push right after every commit.
 
+> After every push, present the GitHub link to the PR to the user (the PR URL if one exists, otherwise the branch's compare/new-PR link).
+
 > Leave pull request descriptions empty. Don't write a body or add attribution lines to PRs.
 
 > ALWAYS ALWAYS ALWAYS prefer making props or params required. NEVER assume future use cases for making something optional. Only make something optional if it needs to be optional right now.

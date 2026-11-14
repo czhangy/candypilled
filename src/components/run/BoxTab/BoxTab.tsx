@@ -1,6 +1,13 @@
 import { useState } from 'react';
 import { PokemonStatus } from '@/lib/static/enums';
-import { BoxView, CaughtPokemon, Game, Run } from '@/lib/static/types';
+import {
+    BoxView,
+    CaughtPokemon,
+    DropdownOption,
+    Game,
+    Run,
+} from '@/lib/static/types';
+import BattleHelpers from '@/lib/utils/BattleHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
 import styles from './BoxTab.module.scss';
@@ -59,6 +66,16 @@ const BoxTab: React.FC<BoxTabProps> = ({
     const currentSplit = game.splits.find(
         (split) => split.name === currentSplitName
     );
+    const battleOptions: DropdownOption[] = BattleHelpers.getAllBattleOptions(
+        game,
+        run.gender
+    ).map((option) => ({ label: option.label, value: option.battleKey }));
+    const deathBattle = selectedCaughtPokemon?.deathBattleKey
+        ? BattleHelpers.getAllBattles(game, run.gender).find(
+              (battle) =>
+                  battle.battleKey === selectedCaughtPokemon.deathBattleKey
+          )
+        : undefined;
     const levelCap = currentSplit
         ? SplitHelpers.getLevelCap(
               game,
@@ -72,32 +89,41 @@ const BoxTab: React.FC<BoxTabProps> = ({
     // HANDLERS
     // -------------------------------------------------------------------------
 
-    const handleToggleStatus = async (
-        pokemon: CaughtPokemon
+    const handleStatusChange = async (
+        pokemon: CaughtPokemon,
+        status: PokemonStatus,
+        deathBattleKey: string | undefined
     ): Promise<void> => {
-        const newStatus =
-            pokemon.status === PokemonStatus.Dead
-                ? PokemonStatus.Alive
-                : PokemonStatus.Dead;
-
         const updatedRun: Run = {
             ...run,
             caughtPokemon: run.caughtPokemon.map((caughtPokemon) =>
                 caughtPokemon.location === pokemon.location
                     ? {
                           ...caughtPokemon,
+                          deathBattleKey,
                           heldItem:
-                              newStatus === PokemonStatus.Dead
+                              status === PokemonStatus.Dead
                                   ? undefined
                                   : caughtPokemon.heldItem,
-                          status: newStatus,
+                          status,
                       }
                     : caughtPokemon
             ),
         };
 
         await RunHelpers.saveRun(game, updatedRun);
-        setView(newStatus === PokemonStatus.Dead ? 'dead' : 'alive');
+        setView(status === PokemonStatus.Dead ? 'dead' : 'alive');
+    };
+
+    const handleKill = async (
+        pokemon: CaughtPokemon,
+        deathBattleKey: string | undefined
+    ): Promise<void> => {
+        await handleStatusChange(pokemon, PokemonStatus.Dead, deathBattleKey);
+    };
+
+    const handleRevive = async (pokemon: CaughtPokemon): Promise<void> => {
+        await handleStatusChange(pokemon, PokemonStatus.Alive, undefined);
     };
 
     const handleSaveNote = async (
@@ -133,8 +159,16 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 view={view}
             />
             <PokemonPreview
+                accentColor={game.accentColor}
+                battleOptions={battleOptions}
+                buttonTextColor={game.textContrastColor}
                 canSelectLocation={canSelectLocation}
                 dataSource={game.dataSource}
+                deathBattleName={
+                    deathBattle
+                        ? BattleHelpers.getFullName(deathBattle, game)
+                        : undefined
+                }
                 generation={game.generation}
                 levelCap={levelCap}
                 onSelectAbility={onSelectAbility}
@@ -143,7 +177,8 @@ const BoxTab: React.FC<BoxTabProps> = ({
                 onSelectMove={onSelectMove}
                 onSaveNote={handleSaveNote}
                 onSelectSpecies={onSelectSpecies}
-                onToggleStatus={handleToggleStatus}
+                onKill={handleKill}
+                onRevive={handleRevive}
                 note={
                     selectedCaughtPokemon
                         ? (run.pokemonNotes[selectedCaughtPokemon.location] ??

@@ -5,7 +5,12 @@ import EvolutionLine from '@/components/run/SplitLocation/PokedexTile/EvolutionL
 import LearnsetList from '@/components/run/SplitLocation/PokedexTile/LearnsetList/LearnsetList';
 import { MOVE_SLOT_COUNT, STAT_FIELDS } from '@/lib/static/constants';
 import { PokemonStatus } from '@/lib/static/enums';
-import { CaughtPokemon, GameDataSource, StatValues } from '@/lib/static/types';
+import {
+    CaughtPokemon,
+    DropdownOption,
+    GameDataSource,
+    StatValues,
+} from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import EvolutionHelpers from '@/lib/utils/EvolutionHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
@@ -13,40 +18,54 @@ import NatureHelpers from '@/lib/utils/NatureHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
+import KillModal from './KillModal/KillModal';
 import MoveCard from './MoveCard/MoveCard';
 import styles from './PokemonPreview.module.scss';
 
 type PokemonPreviewProps = {
+    accentColor: string;
+    battleOptions: DropdownOption[];
+    buttonTextColor: string | undefined;
     canSelectLocation: boolean;
     dataSource: GameDataSource;
+    deathBattleName: string | undefined;
     generation: number;
     levelCap: number | null;
     note: string;
+    onKill: (
+        pokemon: CaughtPokemon,
+        deathBattleKey: string | undefined
+    ) => void;
+    onRevive: (pokemon: CaughtPokemon) => void;
     onSaveNote: (pokemon: CaughtPokemon, note: string) => void;
     onSelectAbility: (slug: string) => void;
     onSelectItem: (slug: string) => void;
     onSelectLocation: (location: string) => void;
     onSelectMove: (slug: string) => void;
     onSelectSpecies: (slug: string) => void;
-    onToggleStatus: (pokemon: CaughtPokemon) => void;
     pokemon?: CaughtPokemon;
     variant: string;
     version: string;
 };
 
 const PokemonPreview: React.FC<PokemonPreviewProps> = ({
+    accentColor,
+    battleOptions,
+    buttonTextColor,
     canSelectLocation,
     dataSource,
+    deathBattleName,
     generation,
     levelCap,
     note,
+    onKill,
+    onRevive,
     onSaveNote,
     onSelectAbility,
     onSelectItem,
     onSelectLocation,
     onSelectMove,
     onSelectSpecies,
-    onToggleStatus,
     pokemon,
     variant,
     version,
@@ -75,6 +94,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
 
     const [activeLearnsetTab, setActiveLearnsetTab] =
         useState<LearnsetTab>('learnset');
+    const [isKillModalOpen, setIsKillModalOpen] = useState(false);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -111,8 +131,21 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     };
 
     const handleToggleStatusClick = (): void => {
+        if (!pokemon) return;
+        if (pokemon.status === PokemonStatus.Dead) {
+            onRevive(pokemon);
+        } else {
+            setIsKillModalOpen(true);
+        }
+    };
+
+    const handleKillModalClose = (): void => {
+        setIsKillModalOpen(false);
+    };
+
+    const handleKillConfirm = (deathBattleKey: string | undefined): void => {
         if (pokemon) {
-            onToggleStatus(pokemon);
+            onKill(pokemon, deathBattleKey);
         }
     };
 
@@ -365,6 +398,24 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                             </span>
                                         )}
                                     </div>
+                                    {deathBattleName && (
+                                        <div className={styles.detail}>
+                                            <span
+                                                className={
+                                                    styles['detail-label']
+                                                }
+                                            >
+                                                Died To
+                                            </span>
+                                            <span
+                                                className={
+                                                    styles['detail-value']
+                                                }
+                                            >
+                                                {deathBattleName}
+                                            </span>
+                                        </div>
+                                    )}
                                     {heldItemSlug && heldItemName && (
                                         <div className={styles.detail}>
                                             <span
@@ -525,6 +576,15 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                     <span className={styles.placeholder}>
                         Select a Pokémon to preview it
                     </span>
+                )}
+                {isKillModalOpen && pokemon && (
+                    <KillModal
+                        accentColor={accentColor}
+                        battleOptions={battleOptions}
+                        buttonTextColor={buttonTextColor}
+                        onClose={handleKillModalClose}
+                        onConfirm={handleKillConfirm}
+                    />
                 )}
             </div>
         </div>
