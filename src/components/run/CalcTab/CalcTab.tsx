@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useReducer, useState } from 'react';
+import BattleCard from '@/components/run/BattleCard/BattleCard';
 import {
     MAX_IV,
     MAX_LEVEL,
@@ -34,7 +35,10 @@ import TeamSelectPanel from './TeamSelectPanel/TeamSelectPanel';
 
 type CalcTabProps = {
     game: Game;
+    onSelectAbility: (slug: string) => void;
     onSelectBattle: (battleKey: string) => void;
+    onSelectItem: (slug: string) => void;
+    onSelectMove: (slug: string) => void;
     onSelectSpecies: (slug: string) => void;
     run: Run;
     selectedBattle?: string;
@@ -42,7 +46,10 @@ type CalcTabProps = {
 
 const CalcTab: React.FC<CalcTabProps> = ({
     game,
+    onSelectAbility,
     onSelectBattle,
+    onSelectItem,
+    onSelectMove,
     onSelectSpecies,
     run,
     selectedBattle,
@@ -462,6 +469,11 @@ const CalcTab: React.FC<CalcTabProps> = ({
         setPrevSelectedBattle(effectiveSelectedBattle);
         setSelectedMemberIndex('0');
     }
+
+    const battleCardBattle = BattleHelpers.getAllBattles(game, run.gender).find(
+        (battle) =>
+            BattleHelpers.getBattleKey(battle) === effectiveSelectedBattle
+    );
 
     const caught = run.caughtPokemon.find(
         (pokemon) => pokemon.location === selectedLocation
@@ -957,6 +969,20 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     playerInput={playerInput}
                     trainerInput={trainerInput}
                 />
+                {battleCardBattle && (
+                    <BattleCard
+                        battle={battleCardBattle}
+                        game={game}
+                        generation={game.generation}
+                        onSelectAbility={onSelectAbility}
+                        onSelectItem={onSelectItem}
+                        onSelectMove={onSelectMove}
+                        onSelectSpecies={onSelectSpecies}
+                        starter={run.starter}
+                        variant={game.pokemonAssetFolder ?? game.version}
+                        version={game.version}
+                    />
+                )}
             </div>
             <div className={styles.attacker}>
                 <PokemonPanel

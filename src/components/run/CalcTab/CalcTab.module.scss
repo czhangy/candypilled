@@ -6,6 +6,9 @@
     padding: 1.5rem 0;
 
     .results {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
         grid-column: 1 / -1;
     }
 

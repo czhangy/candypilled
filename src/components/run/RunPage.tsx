@@ -598,7 +598,10 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                     {activeTab === 'calc' && (
                         <CalcTab
                             game={game}
+                            onSelectAbility={handleAbilityLinkClick}
                             onSelectBattle={handleBattleSelect}
+                            onSelectItem={handleItemLinkClick}
+                            onSelectMove={handleMoveLinkClick}
                             onSelectSpecies={handleSpeciesLinkClick}
                             run={run}
                             selectedBattle={selectedBattle}

@@ -60,6 +60,14 @@
                     transition: none;
                 }
             }
+
+            .trainer-title {
+                @include mono-label;
+
+                color: $foreground;
+                font-size: 1.1rem;
+                letter-spacing: 0.03em;
+            }
         }
 
         .notes-button {

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import WipeButton from '@/components/run/SplitLocation/BattleCard/WipeButton/WipeButton';
+import WipeButton from '@/components/run/BattleCard/WipeButton/WipeButton';
 import { TrainerAssetFolder } from '@/lib/static/enums';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
 import styles from './TrainerSprite.module.scss';
