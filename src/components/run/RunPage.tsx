@@ -1,6 +1,12 @@
 'use client';
 
-import { useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
+import {
+    useEffect,
+    useLayoutEffect,
+    useRef,
+    useState,
+    useSyncExternalStore,
+} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -84,6 +90,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const stickyHeaderRef = useRef<HTMLDivElement>(null);
+    const importButtonRef = useRef<HTMLButtonElement>(null);
 
     // -------------------------------------------------------------------------
     // STATE
@@ -96,6 +103,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
         'male' | 'female' | undefined
     >(undefined);
     const [stickyHeaderHeight, setStickyHeaderHeight] = useState(0);
+    const [isImportScrolledOut, setIsImportScrolledOut] = useState(false);
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -116,6 +124,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
     ]);
 
     const run = gameRuns.find((gameRun) => gameRun.gameName === game.name)?.run;
+    const isRunLoaded = !!run;
 
     const isHallOfFameUnlocked = !!(
         run && SplitHelpers.isGameComplete(game, run.completedSplits)
@@ -177,6 +186,20 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
         window.addEventListener('resize', measure);
         return () => window.removeEventListener('resize', measure);
     }, [activeTab, run?.wipe]);
+
+    useEffect(() => {
+        const button = importButtonRef.current;
+        if (!button) {
+            return;
+        }
+        const observer = new IntersectionObserver(
+            (entries: IntersectionObserverEntry[]) => {
+                setIsImportScrolledOut(!entries[0].isIntersecting);
+            }
+        );
+        observer.observe(button);
+        return () => observer.disconnect();
+    }, [isRunLoaded]);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -446,6 +469,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                     <button
                         className={styles.import}
                         onClick={handleImportClick}
+                        ref={importButtonRef}
                         type="button"
                     >
                         Import
@@ -468,24 +492,40 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
             ) : (
                 <>
                     <div
-                        className={styles['sticky-header']}
+                        className={`${styles['sticky-header']} ${isImportScrolledOut ? styles['sticky-header--stuck'] : ''}`}
                         ref={stickyHeaderRef}
                     >
-                        {activeTab === 'split' && (
-                            <SplitHeader
-                                completedSplits={run.completedSplits}
-                                currentSplitName={currentSplitName}
-                                game={game}
-                                gender={run.gender}
-                                onSelectSplit={handleSplitSelect}
-                            />
-                        )}
+                        <div className={styles['sticky-left']}>
+                            {isImportScrolledOut && (
+                                <Link className={styles.back} href="/runs">
+                                    ← Runs
+                                </Link>
+                            )}
+                            {activeTab === 'split' && (
+                                <SplitHeader
+                                    completedSplits={run.completedSplits}
+                                    currentSplitName={currentSplitName}
+                                    game={game}
+                                    gender={run.gender}
+                                    onSelectSplit={handleSplitSelect}
+                                />
+                            )}
+                        </div>
                         <Tabs
                             activeTab={activeTab}
                             className={styles.tabs}
                             onTabChange={handleTabChange}
                             tabs={visibleTabs}
                         />
+                        {isImportScrolledOut && (
+                            <button
+                                className={styles['sticky-import']}
+                                onClick={handleImportClick}
+                                type="button"
+                            >
+                                Import
+                            </button>
+                        )}
                     </div>
                     {activeTab === 'split' && (
                         <SplitTab
