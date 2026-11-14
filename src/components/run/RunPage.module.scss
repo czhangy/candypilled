@@ -116,6 +116,46 @@
             margin-left: auto;
             width: fit-content;
         }
+
+        .sticky-left {
+            display: contents;
+        }
+
+        .sticky-import {
+            @include solid-accent-button;
+
+            font-size: 0.8rem;
+            padding: 0.35rem 0.75rem;
+        }
+
+        &--stuck {
+            align-items: center;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+            padding-top: 0;
+
+            .sticky-left {
+                align-items: center;
+                display: flex;
+                gap: 1.5rem;
+                grid-column: 1;
+
+                .back {
+                    align-self: auto;
+                    margin-bottom: 0;
+                }
+            }
+
+            .tabs {
+                grid-column: 2;
+                margin-left: 0;
+            }
+
+            .sticky-import {
+                grid-column: 3;
+                justify-self: end;
+            }
+        }
     }
 
     .wipe-message {
