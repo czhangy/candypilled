@@ -64,5 +64,68 @@
                 margin: 0;
             }
         }
+
+        .locations {
+            border-top: 1px solid $border-subtle;
+            margin-top: 1rem;
+            padding-top: 1rem;
+
+            .locations-label {
+                @include uppercase-label;
+
+                display: block;
+                font-size: 0.7rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .locations-empty {
+                color: $text-dim;
+                font-size: 0.8rem;
+                margin: 0;
+            }
+
+            .locations-list {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+                .location {
+                    align-items: center;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    display: flex;
+                    font: inherit;
+                    gap: 0.75rem;
+                    padding: 0.3rem 0.5rem;
+                    text-align: left;
+                    transition: background 0.2s ease;
+                    width: 100%;
+
+                    @media (hover: hover) {
+                        &:hover {
+                            background: rgba($foreground, 0.1);
+                        }
+                    }
+
+                    @media (prefers-reduced-motion: reduce) {
+                        transition: none;
+                    }
+
+                    .location-name {
+                        color: $foreground;
+                        flex: 1;
+                        font-size: 0.8rem;
+                        min-width: 0;
+                    }
+
+                    .location-count {
+                        color: $text-mid;
+                        flex-shrink: 0;
+                        font-size: 0.7rem;
+                    }
+                }
+            }
+        }
     }
 }

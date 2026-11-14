@@ -1,30 +1,35 @@
 import SearchableList from '@/components/common/SearchableList/SearchableList';
-import { GameDataSource } from '@/lib/static/types';
-import ItemHelpers from '@/lib/utils/ItemHelpers';
+import { Game, ItemData } from '@/lib/static/types';
 import ItemDetail from './ItemDetail/ItemDetail';
 import styles from './ItemsSubtab.module.scss';
 
 type ItemsSubtabProps = {
-    dataSource: GameDataSource;
-    generation: number;
+    game: Game;
+    items: ItemData[];
+    // Plural noun for what's listed, used in the search labels.
+    noun: string;
     onSelectItem: (slug: string) => void;
+    onSelectLocation: (location: string) => void;
     selectedItem?: string;
+    showDescription: boolean;
 };
 
 const ItemsSubtab: React.FC<ItemsSubtabProps> = ({
-    dataSource,
-    generation,
+    game,
+    items,
+    noun,
     onSelectItem,
+    onSelectLocation,
     selectedItem,
+    showDescription,
 }) => {
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const availableItems = ItemHelpers.getBrowsableItems(
-        dataSource,
-        generation
-    ).sort((a, b) => a.name.localeCompare(b.name));
+    const availableItems = [...items].sort((a, b) =>
+        a.name.localeCompare(b.name)
+    );
     const effectiveItem = selectedItem ?? availableItems[0]?.slug ?? '';
 
     // -------------------------------------------------------------------------
@@ -34,18 +39,19 @@ const ItemsSubtab: React.FC<ItemsSubtabProps> = ({
     return (
         <div className={styles['items-subtab']}>
             <SearchableList
-                emptyMessage="No items found"
+                emptyMessage={`No ${noun} found`}
                 items={availableItems}
                 onSelectItem={onSelectItem}
-                searchAriaLabel="Search items"
-                searchPlaceholder="Search items..."
+                searchAriaLabel={`Search ${noun}`}
+                searchPlaceholder={`Search ${noun}...`}
                 selectedItem={effectiveItem}
                 sortAlphabetically
             />
             <ItemDetail
-                dataSource={dataSource}
-                generation={generation}
+                game={game}
                 itemSlug={effectiveItem}
+                onSelectLocation={onSelectLocation}
+                showDescription={showDescription}
             />
         </div>
     );

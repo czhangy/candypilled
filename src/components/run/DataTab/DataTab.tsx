@@ -1,4 +1,5 @@
 import { Game, Run } from '@/lib/static/types';
+import ItemHelpers from '@/lib/utils/ItemHelpers';
 import AbilitiesSubtab from './AbilitiesSubtab/AbilitiesSubtab';
 import styles from './DataTab.module.scss';
 import ItemsSubtab from './ItemsSubtab/ItemsSubtab';
@@ -49,6 +50,7 @@ const DataTab: React.FC<DataTabProps> = ({
         { id: 'moves', label: 'Moves' },
         { id: 'abilities', label: 'Abilities' },
         { id: 'items', label: 'Items' },
+        { id: 'tms', label: 'TMs' },
     ];
 
     // -------------------------------------------------------------------------
@@ -102,10 +104,30 @@ const DataTab: React.FC<DataTabProps> = ({
             )}
             {activeSubtab === 'items' && (
                 <ItemsSubtab
-                    dataSource={game.dataSource}
-                    generation={game.generation}
+                    game={game}
+                    items={ItemHelpers.getBrowsableItems(
+                        game.dataSource,
+                        game.generation
+                    )}
+                    noun="items"
                     onSelectItem={onSelectItem}
+                    onSelectLocation={onSelectLocation}
                     selectedItem={selectedItem}
+                    showDescription
+                />
+            )}
+            {activeSubtab === 'tms' && (
+                <ItemsSubtab
+                    game={game}
+                    items={ItemHelpers.getBrowsableTms(
+                        game.dataSource,
+                        game.generation
+                    )}
+                    noun="TMs"
+                    onSelectItem={onSelectItem}
+                    onSelectLocation={onSelectLocation}
+                    selectedItem={selectedItem}
+                    showDescription={false}
                 />
             )}
         </div>
