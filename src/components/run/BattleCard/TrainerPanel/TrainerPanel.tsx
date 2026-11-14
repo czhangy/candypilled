@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
-import WipeButton from '@/components/run/SplitLocation/BattleCard/WipeButton/WipeButton';
+import WipeButton from '@/components/run/BattleCard/WipeButton/WipeButton';
 import {
     BattleMetadata,
     FieldCondition,

@@ -2,6 +2,7 @@
 
 import { useState, useSyncExternalStore } from 'react';
 import { StaticImageData } from 'next/image';
+import BattleCard from '@/components/run/BattleCard/BattleCard';
 import LocationSelectModal from '@/components/run/LocationSelectModal/LocationSelectModal';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { EncounterMethod, MapAnchor, PokemonStatus } from '@/lib/static/enums';
@@ -24,7 +25,6 @@ import PersonalBestHelpers from '@/lib/utils/PersonalBestHelpers';
 import RunHelpers from '@/lib/utils/RunHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
 import SplitHelpers from '@/lib/utils/SplitHelpers';
-import BattleCard from './BattleCard/BattleCard';
 import EncounterTable from './EncounterTable/EncounterTable';
 import ItemTable from './ItemTable/ItemTable';
 import LocationMap from './LocationMap/LocationMap';

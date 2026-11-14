@@ -24,7 +24,7 @@ type BattleCardProps = {
     onSelectItem: (slug: string) => void;
     onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
-    onSelectTrainer: (battleKey: string) => void;
+    onSelectTrainer?: (battleKey: string) => void;
     onWipeBattle?: (battleKey: string) => void;
     starter: string;
     variant: string;
@@ -123,15 +123,23 @@ const BattleCard: React.FC<BattleCardProps> = ({
                     </div>
                 </Tooltip>
                 <div className={styles['trainer-header']}>
-                    <button
-                        className={styles['trainer-name']}
-                        onClick={() =>
-                            onSelectTrainer(BattleHelpers.getBattleKey(battle))
-                        }
-                        type="button"
-                    >
-                        {BattleHelpers.getFullName(battle, game)}
-                    </button>
+                    {onSelectTrainer ? (
+                        <button
+                            className={styles['trainer-name']}
+                            onClick={() =>
+                                onSelectTrainer(
+                                    BattleHelpers.getBattleKey(battle)
+                                )
+                            }
+                            type="button"
+                        >
+                            {BattleHelpers.getFullName(battle, game)}
+                        </button>
+                    ) : (
+                        <span className={styles['trainer-title']}>
+                            {BattleHelpers.getFullName(battle, game)}
+                        </span>
+                    )}
                 </div>
                 <button
                     aria-label="Add notes"
