@@ -12,6 +12,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 > Only run `git add` / `git commit` when the user explicitly tells you to. Otherwise leave changes unstaged and let the user stage and commit them.
 
+> Always push right after every commit.
+
 > Leave pull request descriptions empty. Don't write a body or add attribution lines to PRs.
 
 > ALWAYS ALWAYS ALWAYS prefer making props or params required. NEVER assume future use cases for making something optional. Only make something optional if it needs to be optional right now.
