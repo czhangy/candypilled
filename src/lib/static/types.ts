@@ -210,6 +210,22 @@ export type BattleItem = {
     slug: ItemSlug;
 };
 
+// A box filter comparing a caught Pokémon's value against `value`.
+export type BoxComparison = {
+    operator: '<' | '>';
+    value: number;
+};
+
+// The box tab's active filters; a Pokémon must satisfy every non-null one.
+// `stat` compares its actual (level/IV/EV/nature-derived) value of that stat;
+// `tm` is the move slug of a TM/HM it can learn.
+export type BoxFilters = {
+    level: BoxComparison | null;
+    stat: (BoxComparison & { stat: keyof StatValues }) | null;
+    tm: string | null;
+    type: string | null;
+};
+
 // A Gen IV save's general block contents are game-specific (see
 // src/lib/parsers/gen4/gen4-save-layouts.ts for the derivation and per-game
 // values), so every offset a Gen4 parser needs is looked up through one of

@@ -3,6 +3,7 @@ import { STAT_FIELDS } from '@/lib/static/constants';
 import { GrowthRate } from '@/lib/static/enums';
 import {
     Abilities,
+    CaughtPokemon,
     DataChange,
     GameDataSource,
     LearnsetMethod,
@@ -12,6 +13,7 @@ import {
 } from '@/lib/static/types';
 import AbilityHelpers from '@/lib/utils/AbilityHelpers';
 import GenerationHelpers from '@/lib/utils/GenerationHelpers';
+import StatHelpers from '@/lib/utils/StatHelpers';
 
 const MAX_LEVEL = 100;
 
@@ -139,6 +141,32 @@ export default class PokemonHelpers {
     /** slug's box/PC storage icon sprite path. */
     static getBoxSprite(slug: string): string {
         return `/box/${slug}.png`;
+    }
+
+    /**
+     * pokemon's actual stats (base stats at its level, IVs, EVs and nature),
+     * or undefined if no form matches. Uses the form it currently displays
+     * as.
+     */
+    static getCaughtPokemonStats(
+        dataSource: GameDataSource,
+        pokemon: CaughtPokemon,
+        generation: number
+    ): StatValues | undefined {
+        const baseStats = PokemonHelpers.getPokemonStats(
+            dataSource,
+            PokemonHelpers.getDisplaySlug(dataSource, pokemon),
+            generation
+        );
+        if (!baseStats) return undefined;
+
+        return StatHelpers.calculateStats(
+            baseStats,
+            pokemon.level,
+            StatHelpers.normalizeStats(pokemon.ivs, 31),
+            StatHelpers.normalizeStats(pokemon.evs, 0),
+            pokemon.nature
+        );
     }
 
     /** slug's types in dataSource as of generation, or undefined if no form matches. */

@@ -124,10 +124,12 @@ const BoxTab: React.FC<BoxTabProps> = ({
             <PokemonBox
                 caughtPokemon={run.caughtPokemon}
                 dataSource={game.dataSource}
+                generation={game.generation}
                 levelCap={levelCap}
                 onSelectPokemon={onSelectPokemon}
                 onViewChange={handleViewChange}
                 selectedPokemon={selectedPokemon}
+                version={game.version}
                 view={view}
             />
             <PokemonPreview

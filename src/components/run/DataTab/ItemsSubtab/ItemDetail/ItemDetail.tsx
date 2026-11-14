@@ -78,8 +78,8 @@ const ItemDetail: React.FC<ItemDetailProps> = ({
                                 </p>
                             ) : (
                                 <ul className={styles['locations-list']}>
-                                    {locations.map((location, index) => (
-                                        <li key={`${location.name}-${index}`}>
+                                    {locations.map((location) => (
+                                        <li key={location.name}>
                                             <button
                                                 className={styles.location}
                                                 onClick={() =>
