@@ -12,6 +12,7 @@ $background-light: color.adjust($background, $lightness: 4%);
 $foreground: #ededed;
 $font-mono: var(--font-mono);
 $max-content-width: 1260px;
+$min-content-width: 1120px;
 $narrow-content-width: 600px;
 $border-subtle: rgba($foreground, 0.15);
 $text-dim: rgba($foreground, 0.4);

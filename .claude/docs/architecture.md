@@ -47,7 +47,7 @@ src/components/
 
 **Component reuse**: When two components share the same markup structure and styles with only content differing, extract a shared component with props rather than duplicating. Thin wrapper components that only pass fixed props to a shared component do not need a `.module.scss` file.
 
-**Page-level padding**: All full-page components must include `padding: 1.5rem` on their outermost element. The site does not support screen sizes below `$max-content-width` (1260px) — `globals.scss` shows a small-screen message instead of the site shell below that width — so components must not contain mobile-specific (`width <= 768px` or similar) breakpoints.
+**Page-level padding**: All full-page components must include `padding: 1.5rem` on their outermost element. The site does not support screen sizes at or below `$min-content-width` (1120px) — `globals.scss` shows a small-screen message instead of the site shell at that width — so components must not contain mobile-specific (`width <= 768px` or similar) breakpoints. Content is capped at `$max-content-width` (1260px). Between the two, prefer fluid fixes (`flex-wrap`, `minmax`); add a breakpoint only sparingly when one can't work.
 
 **Icons** live in `src/lib/icons/` (flat, no subdirectories) and must be named with the `Icon` suffix (e.g., `ChevronIcon`).
 
