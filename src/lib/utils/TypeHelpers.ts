@@ -1,4 +1,6 @@
 import { PokemonType } from '@/lib/static/enums';
+import { GameDataSource } from '@/lib/static/types';
+import GenerationHelpers from '@/lib/utils/GenerationHelpers';
 
 type TypeMatchup = {
     attacker: PokemonType;
@@ -27,6 +29,28 @@ export default class TypeHelpers {
         return isGen6Plus
             ? types
             : types.filter((type) => type !== PokemonType.Fairy);
+    }
+
+    /**
+     * The types some species in dataSource has as of generation, so a type
+     * only appears if the game's own data uses it (e.g. a ROM hack can add
+     * Fairy to a pre-Gen 6 game).
+     */
+    static getGameTypes(
+        dataSource: GameDataSource,
+        generation: number
+    ): PokemonType[] {
+        const present = new Set<string>(
+            Object.values(dataSource.pokemon).flatMap(
+                (pokemon) =>
+                    GenerationHelpers.resolveGeneration(
+                        pokemon.types,
+                        generation
+                    )?.types ?? []
+            )
+        );
+
+        return Object.values(PokemonType).filter((type) => present.has(type));
     }
 
     /**

@@ -1,27 +1,41 @@
+import { useState } from 'react';
 import Image from 'next/image';
+import CloseIcon from '@/lib/icons/CloseIcon';
+import FilterIcon from '@/lib/icons/FilterIcon';
 import { PokemonStatus } from '@/lib/static/enums';
-import { BoxView, CaughtPokemon, GameDataSource } from '@/lib/static/types';
+import {
+    BoxFilters as BoxFiltersValue,
+    BoxView,
+    CaughtPokemon,
+    GameDataSource,
+} from '@/lib/static/types';
+import BoxFilterHelpers from '@/lib/utils/BoxFilterHelpers';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
+import BoxFilters from './BoxFilters/BoxFilters';
 import styles from './PokemonBox.module.scss';
 
 type PokemonBoxProps = {
     caughtPokemon: CaughtPokemon[];
     dataSource: GameDataSource;
+    generation: number;
     levelCap: number | null;
     onSelectPokemon: (location: string) => void;
     onViewChange: (view: BoxView) => void;
     selectedPokemon?: string;
+    version: string;
     view: BoxView;
 };
 
 const PokemonBox: React.FC<PokemonBoxProps> = ({
     caughtPokemon,
     dataSource,
+    generation,
     levelCap,
     onSelectPokemon,
     onViewChange,
     selectedPokemon,
+    version,
     view,
 }) => {
     // -------------------------------------------------------------------------
@@ -33,16 +47,36 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
     const ITEM_ICON_SIZE = 24;
 
     // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [filters, setFilters] = useState<BoxFiltersValue>(
+        BoxFilterHelpers.EMPTY
+    );
+    const [isFilterPanelOpen, setIsFilterPanelOpen] = useState(false);
+
+    // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const displayedPokemon = caughtPokemon.filter((pokemon) =>
-        view === 'dead'
-            ? pokemon.status === PokemonStatus.Dead
-            : pokemon.status !== PokemonStatus.Dead
+    const activeFilterCount = BoxFilterHelpers.countActive(filters);
+    const hasActiveFilters = activeFilterCount > 0;
+    const displayedPokemon = caughtPokemon.filter(
+        (pokemon) =>
+            (view === 'dead'
+                ? pokemon.status === PokemonStatus.Dead
+                : pokemon.status !== PokemonStatus.Dead) &&
+            BoxFilterHelpers.matches(
+                pokemon,
+                filters,
+                dataSource,
+                generation,
+                version
+            )
     );
-    const emptyMessage =
-        view === 'dead' ? 'No dead Pokémon' : 'No alive Pokémon';
+    const emptyMessage = hasActiveFilters
+        ? 'No Pokémon match these filters'
+        : `No ${view} Pokémon`;
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -50,6 +84,14 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
 
     const handlePokemonClick = (location: string): void => {
         onSelectPokemon(location);
+    };
+
+    const handleFiltersClear = (): void => {
+        setFilters(BoxFilterHelpers.EMPTY);
+    };
+
+    const handleFilterToggleClick = (): void => {
+        setIsFilterPanelOpen(!isFilterPanelOpen);
     };
 
     const handleViewClick = (nextView: BoxView): void => {
@@ -89,7 +131,47 @@ const PokemonBox: React.FC<PokemonBoxProps> = ({
                 >
                     Dead
                 </button>
+                <div className={styles['header-actions']}>
+                    {hasActiveFilters && (
+                        <button
+                            aria-label="Clear all filters"
+                            className={[
+                                styles['header-button'],
+                                styles['header-button--icon'],
+                            ].join(' ')}
+                            onClick={handleFiltersClear}
+                            type="button"
+                        >
+                            <CloseIcon />
+                        </button>
+                    )}
+                    <button
+                        aria-expanded={isFilterPanelOpen}
+                        aria-label="Toggle filters"
+                        className={[
+                            styles['header-button'],
+                            styles['header-button--icon'],
+                            (isFilterPanelOpen || hasActiveFilters) &&
+                                styles['header-button--active'],
+                        ]
+                            .filter(Boolean)
+                            .join(' ')}
+                        onClick={handleFilterToggleClick}
+                        type="button"
+                    >
+                        <FilterIcon />
+                        {hasActiveFilters && activeFilterCount}
+                    </button>
+                </div>
             </div>
+            {isFilterPanelOpen && (
+                <BoxFilters
+                    dataSource={dataSource}
+                    filters={filters}
+                    generation={generation}
+                    onChange={setFilters}
+                />
+            )}
             <div
                 className={[
                     styles.content,

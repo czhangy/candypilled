@@ -10,7 +10,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 > Never start a dev server (`npm run dev`) to perform end-to-end verification, especially when implementing or changing API routes. Rely on type-checking, linting, and static review instead. If live/browser verification is genuinely needed, ask the user to run it themselves rather than starting a server directly.
 
-> Never run `git add` / stage changes on your own. Leave changes unstaged and let the user stage and commit them.
+> Only run `git add` / `git commit` when the user explicitly tells you to. Otherwise leave changes unstaged and let the user stage and commit them.
+
+> Always push right after every commit.
+
+> Leave pull request descriptions empty. Don't write a body or add attribution lines to PRs.
 
 > ALWAYS ALWAYS ALWAYS prefer making props or params required. NEVER assume future use cases for making something optional. Only make something optional if it needs to be optional right now.
 
@@ -19,14 +23,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 > Never account for backwards compatibility (e.g. old localStorage data missing a newly added field) unless explicitly told to do so.
 
 > A constant, type, or helper used by only one file belongs in that file (module-level for scripts, inside the component function for components per the rule below). Only promote it to a shared location (`constants.ts`, `types.ts`, `src/lib/utils/`) once a second file actually needs it — don't pre-emptively centralize.
-
-> **Before reporting any non-data change as done** (code touching components, hooks, utils, types, styles — as opposed to files under `src/lib/data/`), run a cleanup review of everything you touched. Do this every time, without being asked, including after follow-up edits. Ask if it's unclear whether a change counts as a data change. Prioritize readability first, then performance. Checklist:
->
-> - Props, params, or state left unused by the change (especially after removing a feature or style) — delete them.
-> - Unnecessary nulls/optionals — make them required.
-> - Repeated or multi-part conditions — compute once as a named value.
-> - Common code or styling worth extracting into a shared helper/mixin.
-> - Stale or overly wordy comments.
 
 @.claude/docs/architecture.md
 

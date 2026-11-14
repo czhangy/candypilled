@@ -202,27 +202,9 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     const heldItemName = heldItemSlug
         ? ItemHelpers.getHeldItemData(dataSource, heldItemSlug)?.name
         : undefined;
-    const ivs = pokemon
-        ? StatHelpers.normalizeStats(pokemon.ivs, 31)
+    const stats = pokemon
+        ? PokemonHelpers.getCaughtPokemonStats(dataSource, pokemon, generation)
         : undefined;
-    const baseStats =
-        displaySlug && data
-            ? PokemonHelpers.getPokemonStats(
-                  dataSource,
-                  displaySlug,
-                  generation
-              )
-            : undefined;
-    const stats =
-        pokemon && baseStats && ivs
-            ? StatHelpers.calculateStats(
-                  baseStats,
-                  pokemon.level,
-                  ivs,
-                  StatHelpers.normalizeStats(pokemon.evs, 0),
-                  pokemon.nature
-              )
-            : undefined;
 
     // -------------------------------------------------------------------------
     // MARKUP
