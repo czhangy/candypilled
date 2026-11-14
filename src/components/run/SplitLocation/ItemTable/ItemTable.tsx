@@ -34,6 +34,36 @@ const ItemTable: React.FC<ItemTableProps> = ({ dataSource, items }) => {
         ItemCategory.Berry,
     ];
 
+    const POKE_BALL_ORDER = [
+        'poke-ball',
+        'great-ball',
+        'ultra-ball',
+        'master-ball',
+        'premier-ball',
+        'net-ball',
+        'dive-ball',
+        'nest-ball',
+        'repeat-ball',
+        'timer-ball',
+        'luxury-ball',
+        'dusk-ball',
+        'heal-ball',
+        'quick-ball',
+        'level-ball',
+        'lure-ball',
+        'moon-ball',
+        'love-ball',
+        'heavy-ball',
+        'fast-ball',
+        'friend-ball',
+        'safari-ball',
+        'park-ball',
+        'sport-ball',
+        'dream-ball',
+        'beast-ball',
+        'cherish-ball',
+    ];
+
     // -------------------------------------------------------------------------
     // STATE
     // -------------------------------------------------------------------------
@@ -45,6 +75,12 @@ const ItemTable: React.FC<ItemTableProps> = ({ dataSource, items }) => {
     // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------
+
+    const compareRows = (category: ItemCategory, a: Row, b: Row): number =>
+        category === ItemCategory.PokeBall
+            ? POKE_BALL_ORDER.indexOf(a.item.slug) -
+              POKE_BALL_ORDER.indexOf(b.item.slug)
+            : a.name.localeCompare(b.name);
 
     const getCategoryRows = (category: ItemCategory): Row[] =>
         items
@@ -63,7 +99,7 @@ const ItemTable: React.FC<ItemTableProps> = ({ dataSource, items }) => {
                       ]
                     : [];
             })
-            .sort((a, b) => a.name.localeCompare(b.name));
+            .sort((a: Row, b: Row) => compareRows(category, a, b));
 
     // -------------------------------------------------------------------------
     // HANDLERS
