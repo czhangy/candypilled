@@ -45,9 +45,20 @@
                 transition: none;
             }
 
-            &--active {
-                color: var(--accent-color);
-                font-weight: 700;
+            &--inaccurate {
+                $stripes: repeating-linear-gradient(
+                    45deg,
+                    rgba($orange, 0.3) 0 6px,
+                    transparent 6px 12px
+                );
+
+                background: $stripes, move-tile-background();
+
+                @media (hover: hover) {
+                    &:hover {
+                        background: $stripes, move-tile-hover-background();
+                    }
+                }
             }
 
             &--empty {
@@ -65,13 +76,6 @@
 
         .range {
             color: $foreground;
-        }
-
-        &--highest {
-            .range {
-                color: var(--accent-color);
-                font-weight: 700;
-            }
         }
 
         &:first-child .move {
