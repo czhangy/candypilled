@@ -36,7 +36,7 @@ const JUBILIFE_CITY: Location = {
                     slug: 'quick-claw',
                 },
                 {
-                    category: ItemCategory.Consumable,
+                    category: ItemCategory.PokeBall,
                     count: 1,
                     hidden: false,
                     method: 'Poké Mart',

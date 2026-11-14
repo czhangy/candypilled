@@ -1,5 +1,6 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import Image from 'next/image';
+import SectionToggle from '@/components/run/SplitLocation/SectionToggle/SectionToggle';
 import { ItemCategory } from '@/lib/static/enums';
 import { GameDataSource, LocationItem } from '@/lib/static/types';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
@@ -27,9 +28,19 @@ const ItemTable: React.FC<ItemTableProps> = ({ dataSource, items }) => {
         ItemCategory.KeyItem,
         ItemCategory.HeldItem,
         ItemCategory.Consumable,
+        ItemCategory.EvolutionItem,
+        ItemCategory.PokeBall,
         ItemCategory.TmHm,
         ItemCategory.Berry,
     ];
+
+    // -------------------------------------------------------------------------
+    // STATE
+    // -------------------------------------------------------------------------
+
+    const [collapsedCategories, setCollapsedCategories] = useState<
+        ItemCategory[]
+    >([]);
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
@@ -55,6 +66,18 @@ const ItemTable: React.FC<ItemTableProps> = ({ dataSource, items }) => {
             .sort((a, b) => a.name.localeCompare(b.name));
 
     // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handleCategoryToggle = (category: ItemCategory): void => {
+        setCollapsedCategories((collapsed) =>
+            collapsed.includes(category)
+                ? collapsed.filter((other) => other !== category)
+                : [...collapsed, category]
+        );
+    };
+
+    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
@@ -73,53 +96,78 @@ const ItemTable: React.FC<ItemTableProps> = ({ dataSource, items }) => {
                         const rows = getCategoryRows(category);
                         if (rows.length === 0) return null;
 
+                        const isCollapsed =
+                            collapsedCategories.includes(category);
+
                         return (
                             <Fragment key={category}>
                                 <tr className={styles['category-row']}>
-                                    <th colSpan={2}>{category}</th>
-                                </tr>
-                                {rows.map(
-                                    ({ item, name, sprite }, rowIndex) => (
-                                        <tr
-                                            className={styles.row}
-                                            key={`${item.slug}-${rowIndex}`}
+                                    <th colSpan={2}>
+                                        <SectionToggle
+                                            isCollapsed={isCollapsed}
+                                            onToggle={() =>
+                                                handleCategoryToggle(category)
+                                            }
                                         >
-                                            <td>
-                                                <span
+                                            {category}
+                                        </SectionToggle>
+                                    </th>
+                                </tr>
+                                {!isCollapsed &&
+                                    rows.map(
+                                        ({ item, name, sprite }, rowIndex) => (
+                                            <tr
+                                                className={styles.row}
+                                                key={`${item.slug}-${rowIndex}`}
+                                            >
+                                                <td>
+                                                    <span
+                                                        className={
+                                                            styles['item-name']
+                                                        }
+                                                    >
+                                                        <Image
+                                                            alt={name}
+                                                            height={
+                                                                ITEM_ICON_SIZE
+                                                            }
+                                                            src={sprite}
+                                                            width={
+                                                                ITEM_ICON_SIZE
+                                                            }
+                                                        />
+                                                        {item.count > 1
+                                                            ? `${name} ×${item.count}`
+                                                            : name}
+                                                    </span>
+                                                </td>
+                                                <td
                                                     className={
-                                                        styles['item-name']
+                                                        styles['found-cell']
                                                     }
                                                 >
-                                                    <Image
-                                                        alt={name}
-                                                        height={ITEM_ICON_SIZE}
-                                                        src={sprite}
-                                                        width={ITEM_ICON_SIZE}
-                                                    />
-                                                    {item.count > 1
-                                                        ? `${name} ×${item.count}`
-                                                        : name}
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <div className={styles.found}>
-                                                    <span>{item.method}</span>
-                                                    {item.hidden && (
-                                                        <span
-                                                            className={
-                                                                styles[
-                                                                    'found__hidden'
-                                                                ]
-                                                            }
-                                                        >
-                                                            Hidden
+                                                    <div
+                                                        className={styles.found}
+                                                    >
+                                                        <span>
+                                                            {item.method}
                                                         </span>
-                                                    )}
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    )
-                                )}
+                                                        {item.hidden && (
+                                                            <span
+                                                                className={
+                                                                    styles[
+                                                                        'found__hidden'
+                                                                    ]
+                                                                }
+                                                            >
+                                                                Hidden
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        )
+                                    )}
                             </Fragment>
                         );
                     })}

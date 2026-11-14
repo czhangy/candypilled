@@ -20,6 +20,13 @@ const ROUTE_216: Location = {
             method: 'Gift from NPC',
             slug: 'ice-beam',
         },
+        {
+            category: ItemCategory.EvolutionItem,
+            count: 1,
+            hidden: false,
+            method: 'Above the second bridge',
+            slug: 'ice-stone',
+        },
     ],
     methodSplits: [
         { method: EncounterMethod.Grass, split: 'Gardenia' },

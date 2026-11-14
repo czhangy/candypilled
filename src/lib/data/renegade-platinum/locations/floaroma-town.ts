@@ -36,7 +36,7 @@ const FLOAROMA_TOWN: Location = {
                     slug: 'aerial-ace',
                 },
                 {
-                    category: ItemCategory.Consumable,
+                    category: ItemCategory.PokeBall,
                     count: 1,
                     hidden: false,
                     method: 'Poké Mart',
@@ -61,7 +61,7 @@ const FLOAROMA_TOWN: Location = {
                     slug: 'metal-coat',
                 },
                 {
-                    category: ItemCategory.HeldItem,
+                    category: ItemCategory.EvolutionItem,
                     count: 1,
                     hidden: false,
                     method: 'Thief shop',

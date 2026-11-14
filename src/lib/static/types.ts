@@ -593,6 +593,9 @@ export type Run = {
     starter: PokemonSlug;
     gender: 'male' | 'female';
     caughtPokemon: CaughtPokemon[];
+    // Player notes on caught Pokémon, by CaughtPokemon.location. Kept apart
+    // from caughtPokemon so they survive a save import replacing its entries.
+    pokemonNotes: Record<string, string>;
     // Null if no save has been imported into this run.
     lastImport: SaveImport | null;
     // Locations whose encounter was used up without catching anything (the
@@ -803,11 +806,11 @@ export type LearnsetMove = {
     level?: number;
 };
 
-// The level-up moves of an earlier evolution stage that the viewed species
-// either learns at a different level or, for lostMoves, can no longer learn
-// (nor can any of its later evolutions). gainedMoves are the viewed species'
-// own level-up moves the stage can't learn by any method; they're included
-// in moves, using the viewed species' levels.
+// The level-up moves of another evolution stage (earlier or later) that the
+// viewed species either learns at a different level or, for lostMoves, can no
+// longer learn (nor can any of its later evolutions). gainedMoves are the
+// viewed species' own level-up moves the stage can't learn by any method;
+// they're included in moves, using the viewed species' levels.
 export type LearnsetDifference = {
     // Level offsets for entries the viewed species also learns, keyed by
     // `${slug}-${level}`: the stage's level minus the viewed species' level
@@ -2748,6 +2751,7 @@ export type ItemSlug =
     | 'amulet-coin'
     | 'antidote'
     | 'apicot-berry'
+    | 'armor-fossil'
     | 'aspear-berry'
     | 'avalanche'
     | 'awakening'
@@ -2799,6 +2803,7 @@ export type ItemSlug =
     | 'choice-scarf'
     | 'choice-specs'
     | 'chople-berry'
+    | 'claw-fossil'
     | 'cleanse-tag'
     | 'coba-berry'
     | 'coin-case'
@@ -2819,6 +2824,7 @@ export type ItemSlug =
     | 'dig'
     | 'dire-hit'
     | 'dive-ball'
+    | 'dome-fossil'
     | 'double-team'
     | 'douse-drive'
     | 'draco-plate'
@@ -2848,6 +2854,7 @@ export type ItemSlug =
     | 'eviolite'
     | 'exp-share'
     | 'expert-belt'
+    | 'explorer-kit'
     | 'fab-mail'
     | 'facade'
     | 'false-swipe'
@@ -2905,6 +2912,7 @@ export type ItemSlug =
     | 'heal-powder'
     | 'heart-mail'
     | 'heat-rock'
+    | 'helix-fossil'
     | 'hidden-power'
     | 'hondew-berry'
     | 'honey'
@@ -2981,6 +2989,7 @@ export type ItemSlug =
     | 'nugget'
     | 'occa-berry'
     | 'odd-incense'
+    | 'old-amber'
     | 'old-charm'
     | 'old-gateau'
     | 'old-rod'
@@ -3067,6 +3076,7 @@ export type ItemSlug =
     | 'rock-tomb'
     | 'rocky-helmet'
     | 'roost'
+    | 'root-fossil'
     | 'rose-incense'
     | 'rowap-berry'
     | 'rsvp-mail'
@@ -3094,6 +3104,7 @@ export type ItemSlug =
     | 'silver-powder'
     | 'sitrus-berry'
     | 'skill-swap'
+    | 'skull-fossil'
     | 'sky-plate'
     | 'sleep-talk'
     | 'sludge-bomb'

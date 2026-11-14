@@ -21,6 +21,8 @@ type PokemonPreviewProps = {
     dataSource: GameDataSource;
     generation: number;
     levelCap: number | null;
+    note: string;
+    onSaveNote: (pokemon: CaughtPokemon, note: string) => void;
     onSelectAbility: (slug: string) => void;
     onSelectItem: (slug: string) => void;
     onSelectLocation: (location: string) => void;
@@ -37,6 +39,8 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     dataSource,
     generation,
     levelCap,
+    note,
+    onSaveNote,
     onSelectAbility,
     onSelectItem,
     onSelectLocation,
@@ -95,6 +99,14 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
     const handleNameClick = (): void => {
         if (pokemon) {
             onSelectSpecies(pokemon.slug);
+        }
+    };
+
+    const handleNoteBlur = (
+        event: React.FocusEvent<HTMLTextAreaElement>
+    ): void => {
+        if (pokemon && event.target.value !== note) {
+            onSaveNote(pokemon, event.target.value);
         }
     };
 
@@ -411,6 +423,18 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                         : 'KILL'}
                                 </button>
                             </div>
+                        </div>
+                        <div className={styles.section}>
+                            <span className={styles['section-label']}>
+                                Notes
+                            </span>
+                            <textarea
+                                className={styles['notes-input']}
+                                defaultValue={note}
+                                key={pokemon.location}
+                                onBlur={handleNoteBlur}
+                                placeholder="Add notes…"
+                            />
                         </div>
                         <div className={styles['evolution-wrapper']}>
                             <EvolutionLine

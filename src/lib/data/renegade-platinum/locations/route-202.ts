@@ -9,7 +9,7 @@ const ROUTE_202: Location = {
     encountersKey: 'sinnoh-route-202',
     items: [
         {
-            category: ItemCategory.Consumable,
+            category: ItemCategory.PokeBall,
             count: 30,
             hidden: false,
             method: 'Gift from Dawn/Lucas after battle',

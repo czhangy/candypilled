@@ -185,6 +185,14 @@ $label-width: 4.5rem;
                 font-size: 0.7rem;
                 margin-bottom: 0.5rem;
             }
+
+            .notes-input {
+                @include form-input;
+
+                min-height: 5rem;
+                resize: vertical;
+                width: 100%;
+            }
         }
 
         .learnset-tabs {

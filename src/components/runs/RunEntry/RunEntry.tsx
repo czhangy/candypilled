@@ -109,6 +109,7 @@ const RunEntry: React.FC<RunEntryProps> = ({ game, run }) => {
             caughtPokemon: pokemon,
             lastImport: saveImport,
             missedLocations: [],
+            pokemonNotes: {},
             wipe: false,
         };
 
