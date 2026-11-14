@@ -120,27 +120,23 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
         <div className={styles['damage-results-panel']}>
             <div className={styles.columns}>
                 <MoveDamageColumn
-                    activeIndex={
-                        activeMove.side === 'attacker' ? activeMove.index : null
-                    }
                     attacker={playerInput}
                     dataSource={dataSource}
                     defender={trainerInput}
                     field={attackerField}
                     generation={generation}
+                    highlightInaccurate
                     ivs={attackerIvs}
                     moveNames={attackerMoves}
                     onSelectMove={handleSelectAttackerMove}
                 />
                 <MoveDamageColumn
-                    activeIndex={
-                        activeMove.side === 'defender' ? activeMove.index : null
-                    }
                     attacker={trainerInput}
                     dataSource={dataSource}
                     defender={playerInput}
                     field={defenderField}
                     generation={generation}
+                    highlightInaccurate={false}
                     ivs={defenderIvs}
                     moveNames={defenderMoves}
                     onSelectMove={handleSelectDefenderMove}

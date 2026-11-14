@@ -12,24 +12,24 @@ import TypeHelpers from '@/lib/utils/TypeHelpers';
 import styles from './MoveDamageColumn.module.scss';
 
 type MoveDamageColumnProps = {
-    activeIndex: number | null;
     attacker: CalcPokemonInput | null;
     dataSource: GameDataSource;
     defender: CalcPokemonInput | null;
     field: CalcField;
     generation: number;
+    highlightInaccurate: boolean;
     ivs: StatValues;
     moveNames: string[];
     onSelectMove: (index: number) => void;
 };
 
 const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
-    activeIndex,
     attacker,
     dataSource,
     defender,
     field,
     generation,
+    highlightInaccurate,
     ivs,
     moveNames,
     onSelectMove,
@@ -65,8 +65,15 @@ const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
             dataSource,
             moveName
         );
+        const accuracy = MoveHelpers.getMoveForGeneration(
+            dataSource,
+            slug,
+            generation
+        )?.accuracy;
         return {
             index,
+            isInaccurate:
+                highlightInaccurate && accuracy != null && accuracy < 100,
             isStatus,
             isUncalculable,
             moveName,
@@ -84,9 +91,6 @@ const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
                     : null,
         };
     });
-    const highestDamage = Math.max(
-        ...moveRanges.map(({ range }) => range?.[1] ?? -Infinity)
-    );
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -97,22 +101,14 @@ const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
             {moveRanges.map(
                 ({
                     index,
+                    isInaccurate,
                     isStatus,
                     isUncalculable,
                     moveName,
                     range,
                     slug,
                 }) => (
-                    <div
-                        className={[
-                            styles.row,
-                            range?.[1] === highestDamage &&
-                                styles['row--highest'],
-                        ]
-                            .filter(Boolean)
-                            .join(' ')}
-                        key={index}
-                    >
+                    <div className={styles.row} key={index}>
                         {moveName ? (
                             <MoveTooltip
                                 className={styles['move-tooltip']}
@@ -124,8 +120,8 @@ const MoveDamageColumn: React.FC<MoveDamageColumnProps> = ({
                                 <button
                                     className={[
                                         styles.move,
-                                        index === activeIndex &&
-                                            styles['move--active'],
+                                        isInaccurate &&
+                                            styles['move--inaccurate'],
                                     ]
                                         .filter(Boolean)
                                         .join(' ')}
