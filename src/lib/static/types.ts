@@ -416,6 +416,15 @@ export type LocationItem = {
     slug: ItemSlug;
 };
 
+// One place an item can be picked up, for the Items data tab. `locationName`
+// is the top-level Location (used for linking); `name` additionally carries
+// the subarea, e.g. "Route 201 (North)".
+export type ItemLocation = {
+    count: number;
+    locationName: string;
+    name: string;
+};
+
 export type Subarea = {
     name: string;
     encountersKey?: string;

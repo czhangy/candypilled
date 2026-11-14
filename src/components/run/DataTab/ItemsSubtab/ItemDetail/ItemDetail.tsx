@@ -1,18 +1,20 @@
 import Image from 'next/image';
-import { GameDataSource } from '@/lib/static/types';
+import { Game } from '@/lib/static/types';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import styles from './ItemDetail.module.scss';
 
 type ItemDetailProps = {
-    dataSource: GameDataSource;
-    generation: number;
+    game: Game;
     itemSlug: string;
+    onSelectLocation: (location: string) => void;
+    showDescription: boolean;
 };
 
 const ItemDetail: React.FC<ItemDetailProps> = ({
-    dataSource,
-    generation,
+    game,
     itemSlug,
+    onSelectLocation,
+    showDescription,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
@@ -24,12 +26,13 @@ const ItemDetail: React.FC<ItemDetailProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const itemData = ItemHelpers.getHeldItemData(dataSource, itemSlug);
+    const itemData = ItemHelpers.getHeldItemData(game.dataSource, itemSlug);
     const values = ItemHelpers.getHeldItemForGeneration(
-        dataSource,
+        game.dataSource,
         itemSlug,
-        generation
+        game.generation
     );
+    const locations = ItemHelpers.getItemLocations(game, itemSlug);
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -50,18 +53,65 @@ const ItemDetail: React.FC<ItemDetailProps> = ({
                             />
                             <span className={styles.name}>{itemData.name}</span>
                         </div>
-                        {values && (
+                        {showDescription && values && (
                             <p className={styles.description}>
                                 {values.description}
                             </p>
                         )}
-                        <div className={styles.effect}>
-                            <span className={styles['effect-label']}>
-                                Effect
+                        {showDescription && (
+                            <div className={styles.effect}>
+                                <span className={styles['effect-label']}>
+                                    Effect
+                                </span>
+                                <p className={styles['effect-text']}>
+                                    {itemData.effect}
+                                </p>
+                            </div>
+                        )}
+                        <div className={styles.locations}>
+                            <span className={styles['locations-label']}>
+                                Locations
                             </span>
-                            <p className={styles['effect-text']}>
-                                {itemData.effect}
-                            </p>
+                            {locations.length === 0 ? (
+                                <p className={styles['locations-empty']}>
+                                    No locations found
+                                </p>
+                            ) : (
+                                <ul className={styles['locations-list']}>
+                                    {locations.map((location, index) => (
+                                        <li key={`${location.name}-${index}`}>
+                                            <button
+                                                className={styles.location}
+                                                onClick={() =>
+                                                    onSelectLocation(
+                                                        location.locationName
+                                                    )
+                                                }
+                                                type="button"
+                                            >
+                                                <span
+                                                    className={
+                                                        styles['location-name']
+                                                    }
+                                                >
+                                                    {location.name}
+                                                </span>
+                                                {location.count > 1 && (
+                                                    <span
+                                                        className={
+                                                            styles[
+                                                                'location-count'
+                                                            ]
+                                                        }
+                                                    >
+                                                        x{location.count}
+                                                    </span>
+                                                )}
+                                            </button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
                         </div>
                     </>
                 )}
