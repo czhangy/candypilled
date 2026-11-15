@@ -1,0 +1,39 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.dex-entry {
+    align-items: center;
+    background: none;
+    border: 1px solid $border-subtle;
+    border-radius: 0.5rem;
+    color: $foreground;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    transition: border-color 0.15s ease;
+    width: 100%;
+
+    .dex-entry__sprite {
+        height: 96px;
+        width: 96px;
+    }
+
+    .dex-entry__name {
+        @include mono-label;
+    }
+
+    &--unchamped {
+        .dex-entry__sprite {
+            filter: brightness(0);
+            opacity: 0.25;
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            border-color: var(--accent-color, $accent);
+        }
+    }
+}

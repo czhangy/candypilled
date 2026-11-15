@@ -138,6 +138,11 @@ export default class PokemonHelpers {
         return spriteEntries[0];
     }
 
+    /** The shiny counterpart of sprite, a path from getPokemonSprite (stored in the same folder's shiny/ subfolder). */
+    static getShinySprite(sprite: string): string {
+        return sprite.replace(/\/([^/]+)$/, '/shiny/$1');
+    }
+
     /** slug's box/PC storage icon sprite path. */
     static getBoxSprite(slug: string): string {
         return `/box/${slug}.png`;
