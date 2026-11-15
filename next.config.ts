@@ -5,6 +5,18 @@ const nextConfig: NextConfig = {
     logging: {
         incomingRequests: false,
     },
+    redirects: async () => [
+        {
+            source: '/natures',
+            destination: '/references?tab=natures',
+            permanent: true,
+        },
+        {
+            source: '/types',
+            destination: '/references?tab=types',
+            permanent: true,
+        },
+    ],
 };
 
 export default nextConfig;

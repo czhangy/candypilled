@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import Toggle from '@/components/common/Toggle/Toggle';
 import TypeChart from './TypeChart/TypeChart';
-import styles from './TypesPage.module.scss';
+import styles from './TypesTab.module.scss';
 
-const TypesPage: React.FC = () => {
+const TypesTab: React.FC = () => {
     // -------------------------------------------------------------------------
     // STATE
     // -------------------------------------------------------------------------
@@ -17,7 +17,7 @@ const TypesPage: React.FC = () => {
     // -------------------------------------------------------------------------
 
     return (
-        <div className={styles['types-page']}>
+        <div className={styles['types-tab']}>
             <div className={styles.controls}>
                 <span className={styles.label}>Gen 6+</span>
                 <Toggle
@@ -31,4 +31,4 @@ const TypesPage: React.FC = () => {
     );
 };
 
-export default TypesPage;
+export default TypesTab;

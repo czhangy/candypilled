@@ -1,13 +1,10 @@
 @use '@/styles/constants' as *;
 @use '@/styles/mixins' as *;
 
-.natures-page {
-    @include full-height;
-
+.natures-tab {
     align-items: center;
     display: flex;
     justify-content: center;
-    padding: 1.5rem;
 
     .grid {
         display: grid;

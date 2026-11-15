@@ -1,14 +1,11 @@
 @use '@/styles/constants' as *;
 @use '@/styles/mixins' as *;
 
-.types-page {
-    @include full-height;
-
+.types-tab {
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    padding: 1.5rem;
 
     .controls {
         align-items: center;

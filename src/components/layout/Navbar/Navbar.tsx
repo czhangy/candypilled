@@ -100,13 +100,8 @@ const Navbar: React.FC = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link href="/types" onClick={handleClose}>
-                        Types
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/natures" onClick={handleClose}>
-                        Natures
+                    <Link href="/references" onClick={handleClose}>
+                        References
                     </Link>
                 </li>
                 <li>

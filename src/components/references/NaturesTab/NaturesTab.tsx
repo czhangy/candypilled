@@ -5,9 +5,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Nature } from '@/lib/static/enums';
 import { NatureGridStat } from '@/lib/static/types';
 import NatureHelpers from '@/lib/utils/NatureHelpers';
-import styles from './NaturesPage.module.scss';
+import styles from './NaturesTab.module.scss';
 
-const NaturesPage: React.FC = () => {
+const NaturesTab: React.FC = () => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
@@ -40,7 +40,7 @@ const NaturesPage: React.FC = () => {
         }
 
         const query = params.toString();
-        router.replace(`/natures${query ? `?${query}` : ''}`, {
+        router.replace(`/references${query ? `?${query}` : ''}`, {
             scroll: false,
         });
     };
@@ -62,7 +62,7 @@ const NaturesPage: React.FC = () => {
     // -------------------------------------------------------------------------
 
     return (
-        <div className={styles['natures-page']}>
+        <div className={styles['natures-tab']}>
             <div className={styles.grid}>
                 <div className={styles.corner} />
                 <div className={styles['column-label']}>↑ Increased Stat</div>
@@ -103,4 +103,4 @@ const NaturesPage: React.FC = () => {
     );
 };
 
-export default NaturesPage;
+export default NaturesTab;

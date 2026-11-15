@@ -322,7 +322,7 @@ const PokemonPreview: React.FC<PokemonPreviewProps> = ({
                                                 className={
                                                     styles['detail-link']
                                                 }
-                                                href={`/natures?nature=${pokemon.nature.toLowerCase()}`}
+                                                href={`/references?tab=natures&nature=${pokemon.nature.toLowerCase()}`}
                                             >
                                                 {pokemon.nature}
                                                 {NatureHelpers.getNatureEffect(
