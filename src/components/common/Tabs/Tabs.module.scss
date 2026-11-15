@@ -34,7 +34,7 @@
     }
 
     .underline {
-        background: var(--accent-color);
+        background: var(--accent-color, $accent);
         bottom: -1px;
         height: 2px;
         left: 0;
