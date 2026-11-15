@@ -12,35 +12,38 @@
         color: var(--accent-color, $accent);
         font-size: 2.5rem;
         letter-spacing: 0.05em;
-        margin: 0 auto 2rem;
+        margin: 0 auto 0.5rem;
         max-width: $max-content-width;
         text-align: center;
         text-transform: uppercase;
     }
 
-    .list {
+    .toolbar {
         align-items: center;
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
+        margin: 0 auto 0.5rem;
+        max-width: $max-content-width;
+
+        .count {
+            @include uppercase-label;
+
+            margin: 0;
+        }
+
+        .filters {
+            justify-content: flex-end;
+            width: auto;
+        }
+    }
+
+    .grid {
+        display: grid;
         gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
         list-style: none;
         margin: 0 auto;
         max-width: $max-content-width;
         padding: 0;
-
-        .entry {
-            border: 1px solid $border-subtle;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            width: fit-content;
-
-            .entry__heading {
-                @include uppercase-label;
-
-                background: $background-light;
-                display: block;
-                padding: 0.4rem 0.75rem;
-            }
-        }
     }
 }

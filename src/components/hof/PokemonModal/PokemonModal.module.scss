@@ -1,0 +1,34 @@
+.pokemon-modal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 0;
+    justify-content: space-evenly;
+    list-style: none;
+    margin: 0;
+    padding: 1.5rem;
+
+    .pokemon-modal__group {
+        align-items: center;
+        display: flex;
+        flex: 0 0 calc(100% / 3);
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .pokemon-modal__sprite {
+            height: 96px;
+            width: 96px;
+        }
+
+        .pokemon-modal__game {
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        &--unchamped {
+            .pokemon-modal__sprite {
+                filter: brightness(0);
+                opacity: 0.25;
+            }
+        }
+    }
+}
