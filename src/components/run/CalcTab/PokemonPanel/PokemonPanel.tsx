@@ -2,7 +2,7 @@ import { useId } from 'react';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import NumericInput from '@/components/common/NumericInput/NumericInput';
 import PokeballIcon from '@/lib/icons/PokeballIcon';
-import { MAX_LEVEL, MIN_LEVEL } from '@/lib/static/constants';
+import { MAX_LEVEL, MIN_LEVEL, STATUS_OPTIONS } from '@/lib/static/constants';
 import { Nature } from '@/lib/static/enums';
 import {
     DropdownOption,
@@ -81,20 +81,6 @@ const PokemonPanel: React.FC<PokemonPanelProps> = ({
     speedComparison,
     status,
 }) => {
-    // -------------------------------------------------------------------------
-    // CONSTANTS
-    // -------------------------------------------------------------------------
-
-    const STATUS_OPTIONS: DropdownOption[] = [
-        { label: 'Healthy', value: '' },
-        { label: 'Burn', value: 'brn' },
-        { label: 'Freeze', value: 'frz' },
-        { label: 'Paralysis', value: 'par' },
-        { label: 'Poison', value: 'psn' },
-        { label: 'Badly Poisoned', value: 'tox' },
-        { label: 'Sleep', value: 'slp' },
-    ];
-
     // -------------------------------------------------------------------------
     // HOOKS
     // -------------------------------------------------------------------------

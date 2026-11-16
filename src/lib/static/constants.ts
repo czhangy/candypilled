@@ -1,4 +1,9 @@
-import { Setting, StatValues } from '@/lib/static/types';
+import {
+    DropdownOption,
+    LineSide,
+    Setting,
+    StatValues,
+} from '@/lib/static/types';
 
 export const SETTINGS: Setting[] = [
     {
@@ -19,6 +24,21 @@ export const MIN_LEVEL = 1;
 export const MAX_LEVEL = 100;
 export const MIN_IV = 0;
 export const MAX_IV = 31;
+
+// The major status conditions a Pokémon can have, as dropdown options keyed
+// by their @smogon/calc status id ('' for none).
+export const STATUS_OPTIONS: DropdownOption[] = [
+    { label: 'Healthy', value: '' },
+    { label: 'Burn', value: 'brn' },
+    { label: 'Freeze', value: 'frz' },
+    { label: 'Paralysis', value: 'par' },
+    { label: 'Poison', value: 'psn' },
+    { label: 'Badly Poisoned', value: 'tox' },
+    { label: 'Sleep', value: 'slp' },
+];
+
+// Both sides of a line builder battle, player first.
+export const LINE_SIDES: LineSide[] = ['player', 'trainer'];
 
 // The number of move slots a Pokémon has.
 export const MOVE_SLOT_COUNT = 4;

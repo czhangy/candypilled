@@ -1,0 +1,65 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.checkbox {
+    @include uppercase-label;
+
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    font-size: 0.75rem;
+    gap: 0.4rem;
+
+    input {
+        appearance: none;
+        background: $background;
+        border: 1px solid $border-subtle;
+        border-radius: 0.2rem;
+        cursor: pointer;
+        flex-shrink: 0;
+        height: 1rem;
+        margin: 0;
+        position: relative;
+        transition:
+            background 0.2s ease,
+            border-color 0.2s ease;
+        width: 1rem;
+
+        @media (hover: hover) {
+            &:hover:not(:disabled) {
+                border-color: var(--accent-color);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+
+        &:focus-visible {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+
+        &:checked {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+
+            &::after {
+                border: solid var(--button-text-color, $background);
+                border-width: 0 2px 2px 0;
+                content: '';
+                height: 0.55rem;
+                left: 50%;
+                position: absolute;
+                top: 45%;
+                transform: translate(-50%, -50%) rotate(45deg);
+                width: 0.3rem;
+            }
+        }
+
+        &:disabled {
+            cursor: default;
+            opacity: 0.4;
+        }
+    }
+}
