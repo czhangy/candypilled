@@ -1,0 +1,110 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.turn-stage {
+    .canvas {
+        display: block;
+        width: 100%;
+
+        .arrowhead {
+            &--player {
+                fill: var(--accent-color);
+            }
+
+            &--trainer {
+                fill: $red;
+            }
+        }
+
+        .placeholder {
+            fill: none;
+            stroke: $border-subtle;
+            stroke-dasharray: 6 4;
+            stroke-width: 1.5;
+        }
+
+        .pokemon {
+            .sprite {
+                image-rendering: pixelated;
+            }
+
+            .clear {
+                cursor: pointer;
+                opacity: 0;
+                transition: opacity 0.2s ease;
+
+                @media (prefers-reduced-motion: reduce) {
+                    transition: none;
+                }
+
+                &:focus-visible {
+                    opacity: 1;
+                    outline: none;
+                }
+
+                .clear-background {
+                    fill: $background;
+                    stroke: $border-subtle;
+                }
+
+                .clear-icon {
+                    fill: none;
+                    stroke: $foreground;
+                    stroke-linecap: round;
+                    stroke-width: 1.5;
+                }
+            }
+
+            @media (hover: hover) {
+                &:hover .clear {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .arrow-group {
+            &--draggable {
+                cursor: grab;
+                touch-action: none;
+
+                &:active {
+                    cursor: grabbing;
+                }
+            }
+
+            // An invisible, wider line so the thin arrow is easy to grab.
+            .arrow-hit {
+                stroke: transparent;
+            }
+
+            .arrow {
+                &--player,
+                &--trainer {
+                    stroke-linecap: round;
+                    stroke-width: 2.5;
+                }
+
+                &--player {
+                    stroke: var(--accent-color);
+                }
+
+                &--trainer {
+                    stroke: $red;
+                }
+            }
+
+            .arrow-label {
+                @include mono-label;
+
+                dominant-baseline: middle;
+                fill: $foreground;
+                font-size: 10px;
+                paint-order: stroke;
+                stroke: $background;
+                stroke-linejoin: round;
+                stroke-width: 4px;
+                user-select: none;
+            }
+        }
+    }
+}

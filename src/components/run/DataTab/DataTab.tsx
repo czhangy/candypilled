@@ -1,3 +1,4 @@
+import Subtabs from '@/components/common/Subtabs/Subtabs';
 import { Game, Run } from '@/lib/static/types';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
 import AbilitiesSubtab from './AbilitiesSubtab/AbilitiesSubtab';
@@ -59,24 +60,11 @@ const DataTab: React.FC<DataTabProps> = ({
 
     return (
         <div className={styles['data-tab']}>
-            <div className={styles.subtabs}>
-                {SUBTABS.map((subtab) => (
-                    <button
-                        className={[
-                            styles.subtab,
-                            subtab.id === activeSubtab &&
-                                styles['subtab--active'],
-                        ]
-                            .filter(Boolean)
-                            .join(' ')}
-                        key={subtab.id}
-                        onClick={() => onSubtabChange(subtab.id)}
-                        type="button"
-                    >
-                        {subtab.label}
-                    </button>
-                ))}
-            </div>
+            <Subtabs
+                activeSubtab={activeSubtab}
+                onSubtabChange={onSubtabChange}
+                subtabs={SUBTABS}
+            />
             {activeSubtab === 'pokedex' && (
                 <PokedexSubtab
                     game={game}

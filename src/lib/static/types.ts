@@ -108,6 +108,65 @@ export type DropdownOption = {
     value: string;
 };
 
+// Which team a line builder Pokémon fights for.
+export type LineSide = 'player' | 'trainer';
+
+// A Pokémon in the line builder: either one of the player's box Pokémon
+// or a member of the selected battle's opposing team. `id` is unique across
+// the line, `speciesSlug` is its stored species and `slug` the form it
+// currently displays as (which a held item can change), and `moves` is
+// every move it can choose from. `heldItem` (an item slug), `status` (a
+// STATUS_OPTIONS value) and `currentHp` are its state going into the battle.
+export type LinePokemon = {
+    currentHp: number;
+    heldItem: string | undefined;
+    id: string;
+    maxHp: number;
+    moves: string[];
+    side: LineSide;
+    slug: string;
+    speciesSlug: string;
+    status: string;
+};
+
+// One side's active Pokémon in a line builder turn: which canvas Pokémon
+// (LinePokemon.id) is on the field, and the move it uses on the opposing
+// active Pokémon, drawn as an arrow between them. `isKo` marks that Pokémon
+// as knocked out this turn, so it's unavailable in every later turn, and
+// `isItemCleared` / `isStatusCleared` mark its held item / status as gone
+// from every later turn. `appliedStatus` (a STATUS_OPTIONS value, '' for
+// none) is a status that Pokémon gets from the next turn on.
+export type LineSlot = {
+    appliedStatus: string;
+    isItemCleared: boolean;
+    isKo: boolean;
+    isStatusCleared: boolean;
+    move: string | undefined;
+    pokemonId: string | undefined;
+};
+
+// The part of a line builder plan that a saved note can restore: the
+// player's team in order, and every turn.
+export type LinePlan = {
+    playerPokemon: LinePokemon[];
+    turns: LineTurn[];
+};
+
+// The line builder checkboxes on a LineSlot that carry forward to later
+// turns.
+export type LineSlotFlag = 'isItemCleared' | 'isKo' | 'isStatusCleared';
+
+// One turn of a line builder plan: a singles battle, so one active Pokémon
+// per side. When both sides have a move, `isPlayerFirst` says which side
+// moves first, and its arrow is the upper one.
+export type LineTurn = {
+    isPlayerFirst: boolean;
+    isRisky: boolean;
+    player: LineSlot;
+    text: string;
+    trainer: LineSlot;
+};
+
 // A stat key affected by nature (all StatValues keys except hp, which
 // nature never modifies).
 export type NatureGridStat = Exclude<keyof StatValues, 'hp'>;

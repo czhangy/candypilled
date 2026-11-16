@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useReducer, useState } from 'react';
+import Subtabs from '@/components/common/Subtabs/Subtabs';
 import BattleCard from '@/components/run/BattleCard/BattleCard';
 import {
     MAX_IV,
@@ -29,6 +30,7 @@ import BoxSelectPanel from './BoxSelectPanel/BoxSelectPanel';
 import styles from './CalcTab.module.scss';
 import DamageResultsPanel from './DamageResultsPanel/DamageResultsPanel';
 import FieldEffectsPanel from './FieldEffectsPanel/FieldEffectsPanel';
+import LineBuilder from './LineBuilder/LineBuilder';
 import PokemonPanel from './PokemonPanel/PokemonPanel';
 import TagTeamSelectPanel from './TagTeamSelectPanel/TagTeamSelectPanel';
 import TeamSelectPanel from './TeamSelectPanel/TeamSelectPanel';
@@ -57,6 +59,11 @@ const CalcTab: React.FC<CalcTabProps> = ({
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
+
+    const SUBTABS = [
+        { id: 'calculator', label: 'Calculator' },
+        { id: 'planner', label: 'Planner' },
+    ];
 
     type AttackerState = {
         abilityName: string;
@@ -451,6 +458,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
         () => selectedBattle ?? getFirstBattleKey()
     );
     const [field, setField] = useState(getBlankFieldState);
+    const [subtab, setSubtab] = useState('calculator');
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -956,127 +964,143 @@ const CalcTab: React.FC<CalcTabProps> = ({
 
     return (
         <div className={styles['calc-tab']}>
-            <div className={styles.results}>
-                <DamageResultsPanel
-                    attackerField={attackerField}
-                    attackerIvs={attacker.ivs}
-                    attackerMoves={attacker.moves}
-                    dataSource={game.dataSource}
-                    defenderField={defenderField}
-                    defenderIvs={defender.ivs}
-                    defenderMoves={defender.moves}
-                    generation={game.generation}
-                    playerInput={playerInput}
-                    trainerInput={trainerInput}
-                />
-                {battleCardBattle && (
-                    <BattleCard
-                        battle={battleCardBattle}
-                        game={game}
-                        generation={game.generation}
-                        onSelectAbility={onSelectAbility}
-                        onSelectItem={onSelectItem}
-                        onSelectMove={onSelectMove}
-                        onSelectSpecies={onSelectSpecies}
-                        starter={run.starter}
-                        variant={game.pokemonAssetFolder ?? game.version}
-                        version={game.version}
-                    />
-                )}
-            </div>
-            <div className={styles.attacker}>
-                <PokemonPanel
-                    abilityName={attacker.abilityName}
-                    boosts={attacker.boosts}
-                    evs={attacker.evs}
-                    game={game}
-                    gender={attacker.gender}
-                    heldItem={attacker.heldItem}
-                    currentHp={attacker.currentHp}
-                    isTailwind={field.playerSide.isTailwind}
-                    ivs={attacker.ivs}
-                    level={attacker.level}
-                    moves={attacker.moves}
-                    nature={attacker.nature}
-                    onAbilityChange={handleAttackerAbilityChange}
-                    onBoostChange={handleAttackerBoostChange}
-                    onGenderChange={handleAttackerGenderChange}
-                    onHeldItemChange={handleAttackerHeldItemChange}
-                    onCurrentHpChange={handleAttackerCurrentHpChange}
-                    onIvChange={handleAttackerIvChange}
-                    onLevelChange={handleAttackerLevelChange}
-                    onMoveChange={handleAttackerMoveChange}
-                    onNatureChange={handleAttackerNatureChange}
-                    onSelectSpecies={onSelectSpecies}
-                    onSpeciesChange={handleAttackerSpeciesChange}
-                    onStatusChange={handleAttackerStatusChange}
-                    pokemonSlug={attackerDisplaySlug}
-                    speedComparison={playerSpeedComparison}
-                    status={attacker.status}
-                />
-                <BoxSelectPanel
-                    dataSource={game.dataSource}
-                    enemySpeed={trainerSpeed}
-                    generation={game.generation}
-                    onSelectPokemon={handleSelectBoxPokemon}
-                    run={run}
-                    selectedLocation={selectedLocation}
-                />
-                {tagPartnerOptions.length > 0 && (
-                    <TagTeamSelectPanel
-                        enemySpeed={trainerSpeed}
-                        game={game}
-                        onSelectMember={handleSelectTagPartnerMember}
-                        onSelectTagPartner={handleSelectTagPartner}
-                        options={tagPartnerOptions}
-                        selectedMemberIndex={selectedTagMemberIndex}
-                        selectedTagPartner={selectedTagPartner}
-                        starter={run.starter}
-                    />
-                )}
-            </div>
-            <FieldEffectsPanel
-                field={field}
-                generation={game.generation}
-                onChange={setField}
+            <Subtabs
+                activeSubtab={subtab}
+                onSubtabChange={setSubtab}
+                subtabs={SUBTABS}
             />
-            <div className={styles.defender}>
-                <PokemonPanel
-                    abilityName={defender.abilityName}
-                    boosts={defender.boosts}
-                    evs={defender.evs}
-                    game={game}
-                    gender={defender.gender}
-                    heldItem={defender.heldItem}
-                    currentHp={defender.currentHp}
-                    isTailwind={field.trainerSide.isTailwind}
-                    ivs={defender.ivs}
-                    level={defender.level}
-                    moves={defender.moves}
-                    nature={defender.nature}
-                    onAbilityChange={handleDefenderAbilityChange}
-                    onBoostChange={handleDefenderBoostChange}
-                    onGenderChange={handleDefenderGenderChange}
-                    onHeldItemChange={handleDefenderHeldItemChange}
-                    onCurrentHpChange={handleDefenderCurrentHpChange}
-                    onIvChange={handleDefenderIvChange}
-                    onLevelChange={handleDefenderLevelChange}
-                    onMoveChange={handleDefenderMoveChange}
-                    onNatureChange={handleDefenderNatureChange}
-                    onSelectSpecies={onSelectSpecies}
-                    onSpeciesChange={handleDefenderSpeciesChange}
-                    onStatusChange={handleDefenderStatusChange}
-                    pokemonSlug={defenderDisplaySlug}
-                    speedComparison={trainerSpeedComparison}
-                    status={defender.status}
+            <div className={styles.calculator} hidden={subtab !== 'calculator'}>
+                <div className={styles.results}>
+                    <DamageResultsPanel
+                        attackerField={attackerField}
+                        attackerIvs={attacker.ivs}
+                        attackerMoves={attacker.moves}
+                        dataSource={game.dataSource}
+                        defenderField={defenderField}
+                        defenderIvs={defender.ivs}
+                        defenderMoves={defender.moves}
+                        generation={game.generation}
+                        playerInput={playerInput}
+                        trainerInput={trainerInput}
+                    />
+                    {battleCardBattle && (
+                        <BattleCard
+                            battle={battleCardBattle}
+                            game={game}
+                            generation={game.generation}
+                            onSelectAbility={onSelectAbility}
+                            onSelectItem={onSelectItem}
+                            onSelectMove={onSelectMove}
+                            onSelectSpecies={onSelectSpecies}
+                            starter={run.starter}
+                            variant={game.pokemonAssetFolder ?? game.version}
+                            version={game.version}
+                        />
+                    )}
+                </div>
+                <div className={styles.attacker}>
+                    <PokemonPanel
+                        abilityName={attacker.abilityName}
+                        boosts={attacker.boosts}
+                        evs={attacker.evs}
+                        game={game}
+                        gender={attacker.gender}
+                        heldItem={attacker.heldItem}
+                        currentHp={attacker.currentHp}
+                        isTailwind={field.playerSide.isTailwind}
+                        ivs={attacker.ivs}
+                        level={attacker.level}
+                        moves={attacker.moves}
+                        nature={attacker.nature}
+                        onAbilityChange={handleAttackerAbilityChange}
+                        onBoostChange={handleAttackerBoostChange}
+                        onGenderChange={handleAttackerGenderChange}
+                        onHeldItemChange={handleAttackerHeldItemChange}
+                        onCurrentHpChange={handleAttackerCurrentHpChange}
+                        onIvChange={handleAttackerIvChange}
+                        onLevelChange={handleAttackerLevelChange}
+                        onMoveChange={handleAttackerMoveChange}
+                        onNatureChange={handleAttackerNatureChange}
+                        onSelectSpecies={onSelectSpecies}
+                        onSpeciesChange={handleAttackerSpeciesChange}
+                        onStatusChange={handleAttackerStatusChange}
+                        pokemonSlug={attackerDisplaySlug}
+                        speedComparison={playerSpeedComparison}
+                        status={attacker.status}
+                    />
+                    <BoxSelectPanel
+                        dataSource={game.dataSource}
+                        enemySpeed={trainerSpeed}
+                        generation={game.generation}
+                        onSelectPokemon={handleSelectBoxPokemon}
+                        run={run}
+                        selectedLocation={selectedLocation}
+                    />
+                    {tagPartnerOptions.length > 0 && (
+                        <TagTeamSelectPanel
+                            enemySpeed={trainerSpeed}
+                            game={game}
+                            onSelectMember={handleSelectTagPartnerMember}
+                            onSelectTagPartner={handleSelectTagPartner}
+                            options={tagPartnerOptions}
+                            selectedMemberIndex={selectedTagMemberIndex}
+                            selectedTagPartner={selectedTagPartner}
+                            starter={run.starter}
+                        />
+                    )}
+                </div>
+                <FieldEffectsPanel
+                    field={field}
+                    generation={game.generation}
+                    onChange={setField}
                 />
-                <TeamSelectPanel
+                <div className={styles.defender}>
+                    <PokemonPanel
+                        abilityName={defender.abilityName}
+                        boosts={defender.boosts}
+                        evs={defender.evs}
+                        game={game}
+                        gender={defender.gender}
+                        heldItem={defender.heldItem}
+                        currentHp={defender.currentHp}
+                        isTailwind={field.trainerSide.isTailwind}
+                        ivs={defender.ivs}
+                        level={defender.level}
+                        moves={defender.moves}
+                        nature={defender.nature}
+                        onAbilityChange={handleDefenderAbilityChange}
+                        onBoostChange={handleDefenderBoostChange}
+                        onGenderChange={handleDefenderGenderChange}
+                        onHeldItemChange={handleDefenderHeldItemChange}
+                        onCurrentHpChange={handleDefenderCurrentHpChange}
+                        onIvChange={handleDefenderIvChange}
+                        onLevelChange={handleDefenderLevelChange}
+                        onMoveChange={handleDefenderMoveChange}
+                        onNatureChange={handleDefenderNatureChange}
+                        onSelectSpecies={onSelectSpecies}
+                        onSpeciesChange={handleDefenderSpeciesChange}
+                        onStatusChange={handleDefenderStatusChange}
+                        pokemonSlug={defenderDisplaySlug}
+                        speedComparison={trainerSpeedComparison}
+                        status={defender.status}
+                    />
+                    <TeamSelectPanel
+                        game={game}
+                        onSelectBattle={onSelectBattle}
+                        onSelectMember={setSelectedMemberIndex}
+                        run={run}
+                        selectedBattle={effectiveSelectedBattle}
+                        selectedMemberIndex={selectedMemberIndex}
+                    />
+                </div>
+            </div>
+            <div hidden={subtab !== 'planner'}>
+                <LineBuilder
                     game={game}
+                    key={effectiveSelectedBattle}
                     onSelectBattle={onSelectBattle}
-                    onSelectMember={setSelectedMemberIndex}
                     run={run}
                     selectedBattle={effectiveSelectedBattle}
-                    selectedMemberIndex={selectedMemberIndex}
                 />
             </div>
         </div>
