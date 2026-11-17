@@ -63,20 +63,6 @@
         }
 
         .arrow-group {
-            &--draggable {
-                cursor: grab;
-                touch-action: none;
-
-                &:active {
-                    cursor: grabbing;
-                }
-            }
-
-            // An invisible, wider line so the thin arrow is easy to grab.
-            .arrow-hit {
-                stroke: transparent;
-            }
-
             .arrow {
                 &--player,
                 &--trainer {

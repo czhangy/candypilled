@@ -1,15 +1,17 @@
 import { useEffect, useMemo, useReducer } from 'react';
-import { LINE_SIDES } from '@/lib/static/constants';
 import {
     Game,
+    LineBattle,
     LinePlan,
     LinePokemon,
+    LinePosition,
     LineSide,
+    LineSlot,
     LineSlotFlag,
+    LineTarget,
     LineTurn,
     Run,
 } from '@/lib/static/types';
-import BattleHelpers from '@/lib/utils/BattleHelpers';
 import LineExportHelpers from '@/lib/utils/LineExportHelpers';
 import LineHelpers from '@/lib/utils/LineHelpers';
 import NotesHelpers from '@/lib/utils/NotesHelpers';
@@ -38,13 +40,16 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
     const MAX_PLAYER_POKEMON = 6;
 
     type LineState = {
-        // Only the player's picks; the opposing team is always the whole
-        // selected battle team, so it isn't state.
+        // What the selected battle provides: the slot count and the fixed
+        // Pokémon (the opposing team and any NPC ally), which aren't picked.
+        battle: LineBattle;
+        // Only the player's own picks.
         playerPokemon: LinePokemon[];
-        // The first opposing Pokémon, which always leads turn 1.
-        trainerLeadId: string | undefined;
         turns: LineTurn[];
     };
+
+    // Everything that targets one slot of one turn.
+    type SlotAction = { turnIndex: number; side: LineSide; slot: number };
 
     type LineBuilderAction =
         | { type: 'TOGGLE_POKEMON'; pokemon: LinePokemon }
@@ -62,80 +67,75 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
         | { type: 'SET_TURN_TEXT'; turnIndex: number; text: string }
         | { type: 'TOGGLE_TURN_RISKY'; turnIndex: number }
         | {
-              type: 'SET_TURN_PLAYER_FIRST';
+              type: 'MOVE_TURN_ACTION';
               turnIndex: number;
-              isPlayerFirst: boolean;
+              position: LinePosition;
+              offset: -1 | 1;
           }
-        | {
-              type: 'TOGGLE_TURN_FLAG';
-              turnIndex: number;
-              side: LineSide;
-              flag: LineSlotFlag;
-          }
-        | { type: 'SET_TURN_POKEMON'; turnIndex: number; pokemon: LinePokemon }
-        | { type: 'CLEAR_TURN_POKEMON'; turnIndex: number; side: LineSide }
-        | {
-              type: 'SET_TURN_APPLIED_STATUS';
-              turnIndex: number;
-              side: LineSide;
-              status: string;
-          }
-        | {
-              type: 'SET_TURN_MOVE';
-              turnIndex: number;
-              side: LineSide;
-              move: string | undefined;
-          };
+        | ({ type: 'TOGGLE_TURN_FLAG'; flag: LineSlotFlag } & SlotAction)
+        | ({ type: 'SET_TURN_POKEMON'; pokemon: LinePokemon } & SlotAction)
+        | ({ type: 'CLEAR_TURN_POKEMON' } & SlotAction)
+        | ({ type: 'SET_TURN_APPLIED_STATUS'; status: string } & SlotAction)
+        | ({ type: 'SET_TURN_MOVE'; move: string | undefined } & SlotAction)
+        | ({
+              type: 'SET_TURN_TARGET';
+              target: LineTarget;
+          } & SlotAction);
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
     // The plan saved in this battle's note, if there is one and it matches
-    // the box and the opposing team exactly. Otherwise nothing is restored.
-    const getSavedPlan = (trainerTeam: LinePokemon[]): LinePlan | undefined => {
+    // the box and the battle exactly. Otherwise nothing is restored.
+    const getSavedPlan = (battle: LineBattle): LinePlan | undefined => {
         const plan = selectedBattle
             ? NotesHelpers.getPlan(game, selectedBattle)
             : undefined;
         if (!plan) return undefined;
 
+        const pickSlot = LineHelpers.getPickSlot(battle);
         const saved = LineExportHelpers.parseExportText(
             game,
             plan,
-            LineHelpers.getBoxPokemonList(game, run.caughtPokemon),
-            trainerTeam
+            LineHelpers.getBoxPokemonList(game, run.caughtPokemon).map(
+                (pokemon) => ({ ...pokemon, boundSlot: pickSlot })
+            ),
+            battle
         );
         return saved && saved.playerPokemon.length <= MAX_PLAYER_POKEMON
             ? saved
             : undefined;
     };
 
-    const getInitialState = (trainerTeam: LinePokemon[]): LineState => {
-        const trainerLeadId = trainerTeam[0]?.id;
-        const saved = getSavedPlan(trainerTeam);
+    const getInitialState = (battle: LineBattle): LineState => {
+        const saved = getSavedPlan(battle);
 
         return {
+            battle,
             playerPokemon: saved?.playerPokemon ?? [],
-            trainerLeadId,
-            turns: saved?.turns ?? [
-                LineHelpers.getFirstTurn(undefined, trainerLeadId),
-            ],
+            turns: saved?.turns ?? [LineHelpers.getOpeningTurn(battle, [])],
         };
     };
 
     // Clears the line back to a fresh turn 1 with the new leads whenever the
-    // player's first Pokémon differs from the one in `previous`, discarding
-    // every later turn just like clearing turn 1.
+    // player's leads differ from the ones in `previous`, discarding every
+    // later turn just like clearing turn 1.
     const resetFirstTurnOnLeadChange = (
         previous: LineState,
         next: LineState
     ): LineState => {
-        const leadId = next.playerPokemon[0]?.id;
-        if (previous.playerPokemon[0]?.id === leadId) return next;
+        const leadsOf = (state: LineState): string =>
+            LineHelpers.getOpeningTurn(state.battle, state.playerPokemon)
+                .player.map((slot) => slot.pokemonId)
+                .join();
+        if (leadsOf(previous) === leadsOf(next)) return next;
 
         return {
             ...next,
-            turns: [LineHelpers.getFirstTurn(leadId, next.trainerLeadId)],
+            turns: [
+                LineHelpers.getOpeningTurn(next.battle, next.playerPokemon),
+            ],
         };
     };
 
@@ -150,6 +150,35 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
         ),
     });
 
+    const updateTurn = (
+        state: LineState,
+        turnIndex: number,
+        update: (turn: LineTurn) => LineTurn
+    ): LineState => ({
+        ...state,
+        turns: state.turns.map((turn, index) =>
+            index === turnIndex ? update(turn) : turn
+        ),
+    });
+
+    // turn with each of side's slots replaced by update(slot, index).
+    const mapSide = (
+        turn: LineTurn,
+        side: LineSide,
+        update: (slot: LineSlot, index: number) => LineSlot
+    ): LineTurn => ({ ...turn, [side]: turn[side].map(update) });
+
+    const updateSlot = (
+        state: LineState,
+        { side, slot, turnIndex }: SlotAction,
+        update: (slot: LineSlot) => LineSlot
+    ): LineState =>
+        updateTurn(state, turnIndex, (turn) =>
+            mapSide(turn, side, (candidate, index) =>
+                index === slot ? update(candidate) : candidate
+            )
+        );
+
     // Every Pokémon with `flag` set in a turn before turnIndex.
     const getFlaggedIds = (
         turns: LineTurn[],
@@ -158,8 +187,8 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
     ): string[] =>
         turns
             .slice(0, turnIndex)
-            .flatMap((turn) => [turn.player, turn.trainer])
-            .flatMap((slot) =>
+            .flatMap(LineHelpers.getTurnSlots)
+            .flatMap(({ slot }) =>
                 slot[flag] && slot.pokemonId ? [slot.pokemonId] : []
             );
 
@@ -177,14 +206,15 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
             roster.map((pokemon) => [pokemon.id, pokemon.status])
         );
         line.turns.slice(0, turnIndex).forEach((turn) => {
-            LINE_SIDES.forEach((side) => {
-                const { isStatusCleared, pokemonId } = turn[side];
-                if (isStatusCleared && pokemonId) statuses[pokemonId] = '';
+            const slots = LineHelpers.getTurnSlots(turn);
+            slots.forEach(({ slot }) => {
+                if (slot.isStatusCleared && slot.pokemonId) {
+                    statuses[slot.pokemonId] = '';
+                }
             });
-            LINE_SIDES.forEach((side) => {
-                const { appliedStatus, pokemonId } = turn[side];
-                if (appliedStatus && pokemonId) {
-                    statuses[pokemonId] = appliedStatus;
+            slots.forEach(({ slot }) => {
+                if (slot.appliedStatus && slot.pokemonId) {
+                    statuses[slot.pokemonId] = slot.appliedStatus;
                 }
             });
         });
@@ -198,24 +228,19 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
         }));
     };
 
-    const updateTurn = (
-        state: LineState,
-        turnIndex: number,
-        update: (turn: LineTurn) => LineTurn
-    ): LineState => ({
-        ...state,
-        turns: state.turns.map((turn, index) =>
-            index === turnIndex ? update(turn) : turn
-        ),
-    });
-
-    const lineReducer = (
+    const reduceLine = (
         state: LineState,
         action: LineBuilderAction
     ): LineState => {
         switch (action.type) {
             case 'TOGGLE_POKEMON': {
                 const { id } = action.pokemon;
+                const blankPokemon = (slots: LineSlot[]): LineSlot[] =>
+                    slots.map((slot) =>
+                        slot.pokemonId === id
+                            ? LineHelpers.getBlankSlot()
+                            : slot
+                    );
 
                 // Removing a Pokémon also takes it off the field in every
                 // turn, along with the move it was using.
@@ -229,14 +254,8 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
                         ),
                         turns: state.turns.map((turn) => ({
                             ...turn,
-                            player:
-                                turn.player.pokemonId === id
-                                    ? LineHelpers.getBlankSlot()
-                                    : turn.player,
-                            trainer:
-                                turn.trainer.pokemonId === id
-                                    ? LineHelpers.getBlankSlot()
-                                    : turn.trainer,
+                            player: blankPokemon(turn.player),
+                            trainer: blankPokemon(turn.trainer),
                         })),
                     });
                 }
@@ -246,7 +265,13 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
                 }
                 return resetFirstTurnOnLeadChange(state, {
                     ...state,
-                    playerPokemon: [...state.playerPokemon, action.pokemon],
+                    playerPokemon: [
+                        ...state.playerPokemon,
+                        {
+                            ...action.pokemon,
+                            boundSlot: LineHelpers.getPickSlot(state.battle),
+                        },
+                    ],
                 });
             }
             // Reordering the team clears turn 1 (and so every later turn) back
@@ -269,10 +294,7 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
                     ...state,
                     playerPokemon: reordered,
                     turns: [
-                        LineHelpers.getFirstTurn(
-                            reordered[0].id,
-                            state.trainerLeadId
-                        ),
+                        LineHelpers.getOpeningTurn(state.battle, reordered),
                     ],
                 };
             }
@@ -294,27 +316,23 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
                     status: action.status,
                 }));
             // A new turn starts with the previous turn's Pokémon still on
-            // the field (unless it was KO'd), but with no moves chosen yet.
+            // the field (unless they were KO'd), but with no moves chosen yet.
             case 'ADD_TURN': {
                 const previous = state.turns[state.turns.length - 1];
+                const carryOver = (slots: LineSlot[]): LineSlot[] =>
+                    slots.map((slot) => ({
+                        ...LineHelpers.getBlankSlot(),
+                        pokemonId: slot.isKo ? undefined : slot.pokemonId,
+                    }));
+
                 return {
                     ...state,
                     turns: [
                         ...state.turns,
                         {
-                            ...LineHelpers.getBlankTurn(),
-                            player: {
-                                ...LineHelpers.getBlankSlot(),
-                                pokemonId: previous.player.isKo
-                                    ? undefined
-                                    : previous.player.pokemonId,
-                            },
-                            trainer: {
-                                ...LineHelpers.getBlankSlot(),
-                                pokemonId: previous.trainer.isKo
-                                    ? undefined
-                                    : previous.trainer.pokemonId,
-                            },
+                            ...LineHelpers.getBlankTurn(state.battle.slotCount),
+                            player: carryOver(previous.player),
+                            trainer: carryOver(previous.trainer),
                         },
                     ],
                 };
@@ -328,9 +346,9 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
                     turns:
                         action.turnIndex === 0
                             ? [
-                                  LineHelpers.getFirstTurn(
-                                      state.playerPokemon[0]?.id,
-                                      state.trainerLeadId
+                                  LineHelpers.getOpeningTurn(
+                                      state.battle,
+                                      state.playerPokemon
                                   ),
                               ]
                             : state.turns.slice(0, action.turnIndex),
@@ -340,104 +358,133 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
                     ...turn,
                     text: action.text,
                 }));
-            case 'SET_TURN_PLAYER_FIRST':
-                return updateTurn(state, action.turnIndex, (turn) => ({
-                    ...turn,
-                    isPlayerFirst: action.isPlayerFirst,
-                }));
             case 'TOGGLE_TURN_RISKY':
                 return updateTurn(state, action.turnIndex, (turn) => ({
                     ...turn,
                     isRisky: !turn.isRisky,
                 }));
+            // Swaps the action with the one before or after it in the order.
+            case 'MOVE_TURN_ACTION':
+                return updateTurn(state, action.turnIndex, (turn) => {
+                    const from = turn.order.indexOf(action.position);
+                    const to = from + action.offset;
+                    if (from === -1 || to < 0 || to >= turn.order.length) {
+                        return turn;
+                    }
+
+                    const order = [...turn.order];
+                    [order[from], order[to]] = [order[to], order[from]];
+                    return { ...turn, order };
+                });
             // Swapping in a different Pokémon drops the move the previous
-            // one was using, since it may not know it.
+            // one was using, since it may not know it. A Pokémon can't fill
+            // a slot it's bound away from, or be in two slots at once.
             case 'SET_TURN_POKEMON':
-                return updateTurn(state, action.turnIndex, (turn) =>
-                    turn[action.pokemon.side].pokemonId === action.pokemon.id
-                        ? turn
-                        : {
-                              ...turn,
-                              [action.pokemon.side]: {
+                return updateTurn(state, action.turnIndex, (turn) => {
+                    const slots = turn[action.side];
+                    if (
+                        !LineHelpers.canOccupy(action.pokemon, action.slot) ||
+                        slots.some(
+                            (slot) => slot.pokemonId === action.pokemon.id
+                        )
+                    ) {
+                        return turn;
+                    }
+
+                    return mapSide(turn, action.side, (slot, index) =>
+                        index === action.slot
+                            ? {
                                   ...LineHelpers.getBlankSlot(),
                                   pokemonId: action.pokemon.id,
-                              },
-                          }
-                );
+                              }
+                            : slot
+                    );
+                });
             // A KO'd Pokémon can't be on the field in any later turn, so
             // KO-ing it also removes it from the ones it's already in.
             case 'TOGGLE_TURN_FLAG': {
-                const slot = state.turns[action.turnIndex][action.side];
-                if (!slot.pokemonId) return state;
+                const flagged =
+                    state.turns[action.turnIndex][action.side][action.slot];
+                if (!flagged.pokemonId) return state;
 
                 const isRemovedFromLaterTurns =
-                    action.flag === 'isKo' && !slot.isKo;
+                    action.flag === 'isKo' && !flagged.isKo;
                 return {
                     ...state,
                     turns: state.turns.map((turn, index) => {
                         if (index === action.turnIndex) {
-                            return {
-                                ...turn,
-                                [action.side]: {
-                                    ...slot,
-                                    [action.flag]: !slot[action.flag],
-                                },
-                            };
+                            return mapSide(turn, action.side, (slot, i) =>
+                                i === action.slot
+                                    ? {
+                                          ...slot,
+                                          [action.flag]: !slot[action.flag],
+                                      }
+                                    : slot
+                            );
                         }
                         if (
                             isRemovedFromLaterTurns &&
-                            index > action.turnIndex &&
-                            turn[action.side].pokemonId === slot.pokemonId
+                            index > action.turnIndex
                         ) {
-                            return {
-                                ...turn,
-                                [action.side]: LineHelpers.getBlankSlot(),
-                            };
+                            return mapSide(turn, action.side, (slot) =>
+                                slot.pokemonId === flagged.pokemonId
+                                    ? LineHelpers.getBlankSlot()
+                                    : slot
+                            );
                         }
                         return turn;
                     }),
                 };
             }
             case 'CLEAR_TURN_POKEMON':
-                return updateTurn(state, action.turnIndex, (turn) => ({
-                    ...turn,
-                    [action.side]: LineHelpers.getBlankSlot(),
-                }));
+                return updateSlot(state, action, () =>
+                    LineHelpers.getBlankSlot()
+                );
             case 'SET_TURN_MOVE':
-                return updateTurn(state, action.turnIndex, (turn) => ({
-                    ...turn,
-                    [action.side]: { ...turn[action.side], move: action.move },
+                return updateSlot(state, action, (slot) => ({
+                    ...slot,
+                    move: action.move,
+                }));
+            case 'SET_TURN_TARGET':
+                return updateSlot(state, action, (slot) => ({
+                    ...slot,
+                    target: action.target,
                 }));
             case 'SET_TURN_APPLIED_STATUS':
-                return updateTurn(state, action.turnIndex, (turn) => ({
-                    ...turn,
-                    [action.side]: {
-                        ...turn[action.side],
-                        appliedStatus: action.status,
-                    },
+                return updateSlot(state, action, (slot) => ({
+                    ...slot,
+                    appliedStatus: action.status,
                 }));
         }
+    };
+
+    // Every action leaves each turn's move order and targets consistent with
+    // who's on the field.
+    const lineReducer = (
+        state: LineState,
+        action: LineBuilderAction
+    ): LineState => {
+        const next = reduceLine(state, action);
+        return { ...next, turns: next.turns.map(LineHelpers.normalizeTurn) };
     };
 
     // -------------------------------------------------------------------------
     // HOOKS
     // -------------------------------------------------------------------------
 
-    const trainerTeam = useMemo(
+    const battle = useMemo(
         () =>
-            BattleHelpers.getSelectedTeam(
+            LineHelpers.getBattle(
                 game,
                 selectedBattle,
                 run.starter,
                 run.gender
-            ).map((mon, index) =>
-                LineHelpers.getTrainerPokemon(game, mon, index)
             ),
-        [game, run.starter, run.gender, selectedBattle]
+        [game, run.gender, run.starter, selectedBattle]
     );
     const [line, dispatchLine] = useReducer(
         lineReducer,
-        trainerTeam,
+        battle,
         getInitialState
     );
 
@@ -445,12 +492,16 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const roster = [...line.playerPokemon, ...trainerTeam];
+    const roster = [
+        ...line.playerPokemon,
+        ...line.battle.allyPokemon,
+        ...line.battle.trainerPokemon,
+    ];
     // Once every opposing Pokémon has been KO'd there's nothing left to plan.
     const koedIds = getFlaggedIds(line.turns, line.turns.length, 'isKo');
-    const isEnemyDefeated = roster
-        .filter((pokemon) => pokemon.side === 'trainer')
-        .every((pokemon) => koedIds.includes(pokemon.id));
+    const isEnemyDefeated = line.battle.trainerPokemon.every((pokemon) =>
+        koedIds.includes(pokemon.id)
+    );
 
     // -------------------------------------------------------------------------
     // EFFECTS
@@ -462,21 +513,28 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
     useEffect(() => {
         if (!selectedBattle) return;
 
+        const everyone = [
+            ...line.playerPokemon,
+            ...line.battle.allyPokemon,
+            ...line.battle.trainerPokemon,
+        ];
         const plan = LineExportHelpers.getExportText(
             game,
-            [...line.playerPokemon, ...trainerTeam],
+            everyone,
             line.turns
         );
-        const blankPlan = LineExportHelpers.getExportText(game, trainerTeam, [
-            LineHelpers.getFirstTurn(undefined, line.trainerLeadId),
-        ]);
+        const blankPlan = LineExportHelpers.getExportText(
+            game,
+            everyone.filter((pokemon) => pokemon.isFixed),
+            [LineHelpers.getOpeningTurn(line.battle, [])]
+        );
 
         if (plan === blankPlan) {
             void NotesHelpers.deletePlan(game, selectedBattle);
         } else {
             void NotesHelpers.savePlan(game, selectedBattle, plan);
         }
-    }, [game, line, selectedBattle, trainerTeam]);
+    }, [game, line, selectedBattle]);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -524,27 +582,8 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
         dispatchLine({ type: 'ADD_TURN' });
     };
 
-    const handleTurnPlayerFirstChange = (
-        turnIndex: number,
-        isPlayerFirst: boolean
-    ): void => {
-        dispatchLine({
-            type: 'SET_TURN_PLAYER_FIRST',
-            turnIndex,
-            isPlayerFirst,
-        });
-    };
-
     const handleTurnClear = (turnIndex: number): void => {
         dispatchLine({ type: 'CLEAR_TURN', turnIndex });
-    };
-
-    const handleTurnFlagToggle = (
-        turnIndex: number,
-        side: LineSide,
-        flag: LineSlotFlag
-    ): void => {
-        dispatchLine({ type: 'TOGGLE_TURN_FLAG', turnIndex, side, flag });
     };
 
     const handleTurnTextChange = (turnIndex: number, text: string): void => {
@@ -555,29 +594,63 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
         dispatchLine({ type: 'TOGGLE_TURN_RISKY', turnIndex });
     };
 
+    const handleTurnActionMove = (
+        turnIndex: number,
+        position: LinePosition,
+        offset: -1 | 1
+    ): void => {
+        dispatchLine({ type: 'MOVE_TURN_ACTION', turnIndex, position, offset });
+    };
+
+    const handleTurnFlagToggle = (
+        turnIndex: number,
+        side: LineSide,
+        slot: number,
+        flag: LineSlotFlag
+    ): void => {
+        dispatchLine({
+            type: 'TOGGLE_TURN_FLAG',
+            turnIndex,
+            side,
+            slot,
+            flag,
+        });
+    };
+
     const handleTurnPokemonSelect = (
         turnIndex: number,
+        side: LineSide,
+        slot: number,
         pokemon: LinePokemon
     ): void => {
-        dispatchLine({ type: 'SET_TURN_POKEMON', turnIndex, pokemon });
+        dispatchLine({
+            type: 'SET_TURN_POKEMON',
+            turnIndex,
+            side,
+            slot,
+            pokemon,
+        });
     };
 
     const handleTurnPokemonClear = (
         turnIndex: number,
-        side: LineSide
+        side: LineSide,
+        slot: number
     ): void => {
-        dispatchLine({ type: 'CLEAR_TURN_POKEMON', turnIndex, side });
+        dispatchLine({ type: 'CLEAR_TURN_POKEMON', turnIndex, side, slot });
     };
 
     const handleTurnAppliedStatusChange = (
         turnIndex: number,
         side: LineSide,
+        slot: number,
         status: string
     ): void => {
         dispatchLine({
             type: 'SET_TURN_APPLIED_STATUS',
             turnIndex,
             side,
+            slot,
             status,
         });
     };
@@ -585,9 +658,25 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
     const handleTurnMoveChange = (
         turnIndex: number,
         side: LineSide,
+        slot: number,
         move: string | undefined
     ): void => {
-        dispatchLine({ type: 'SET_TURN_MOVE', turnIndex, side, move });
+        dispatchLine({ type: 'SET_TURN_MOVE', turnIndex, side, slot, move });
+    };
+
+    const handleTurnTargetChange = (
+        turnIndex: number,
+        side: LineSide,
+        slot: number,
+        target: LineTarget
+    ): void => {
+        dispatchLine({
+            type: 'SET_TURN_TARGET',
+            turnIndex,
+            side,
+            slot,
+            target,
+        });
     };
 
     // -------------------------------------------------------------------------
@@ -618,27 +707,42 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
                     isFirstTurn={index === 0}
                     key={index}
                     koedIds={getFlaggedIds(line.turns, index, 'isKo')}
+                    onActionMove={(position: LinePosition, offset: -1 | 1) =>
+                        handleTurnActionMove(index, position, offset)
+                    }
                     onAddTurn={handleAddTurn}
-                    onAppliedStatusChange={(side: LineSide, status: string) =>
-                        handleTurnAppliedStatusChange(index, side, status)
+                    onAppliedStatusChange={(
+                        side: LineSide,
+                        slot: number,
+                        status: string
+                    ) =>
+                        handleTurnAppliedStatusChange(index, side, slot, status)
                     }
                     onClear={() => handleTurnClear(index)}
-                    onFlagToggle={(side: LineSide, flag: LineSlotFlag) =>
-                        handleTurnFlagToggle(index, side, flag)
+                    onFlagToggle={(
+                        side: LineSide,
+                        slot: number,
+                        flag: LineSlotFlag
+                    ) => handleTurnFlagToggle(index, side, slot, flag)}
+                    onMoveChange={(
+                        side: LineSide,
+                        slot: number,
+                        move: string | undefined
+                    ) => handleTurnMoveChange(index, side, slot, move)}
+                    onPokemonClear={(side: LineSide, slot: number) =>
+                        handleTurnPokemonClear(index, side, slot)
                     }
-                    onMoveChange={(side: LineSide, move: string | undefined) =>
-                        handleTurnMoveChange(index, side, move)
-                    }
-                    onPlayerFirstChange={(isPlayerFirst: boolean) =>
-                        handleTurnPlayerFirstChange(index, isPlayerFirst)
-                    }
-                    onPokemonClear={(side: LineSide) =>
-                        handleTurnPokemonClear(index, side)
-                    }
-                    onPokemonSelect={(pokemon: LinePokemon) =>
-                        handleTurnPokemonSelect(index, pokemon)
-                    }
+                    onPokemonSelect={(
+                        side: LineSide,
+                        slot: number,
+                        pokemon: LinePokemon
+                    ) => handleTurnPokemonSelect(index, side, slot, pokemon)}
                     onRiskyToggle={() => handleTurnRiskyToggle(index)}
+                    onTargetChange={(
+                        side: LineSide,
+                        slot: number,
+                        target: LineTarget
+                    ) => handleTurnTargetChange(index, side, slot, target)}
                     onTextChange={(text: string) =>
                         handleTurnTextChange(index, text)
                     }

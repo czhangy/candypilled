@@ -26,6 +26,10 @@
 
     &:disabled {
         cursor: default;
+    }
+
+    // Unavailable, as opposed to merely read-only.
+    &--disabled {
         opacity: 0.35;
     }
 
@@ -71,7 +75,7 @@
         }
     }
 
-    &:disabled img {
+    &--disabled img {
         filter: grayscale(1);
     }
 }

@@ -254,6 +254,25 @@ export default class BattleHelpers {
         });
     }
 
+    /** The battleKey of the tag partner that fights beside the player in the battle keyed by battleKey for gender: the tag partner of the location (or subarea) the battle is placed in. Undefined if there is none. */
+    static getTagPartnerKey(
+        game: Game,
+        battleKey: string,
+        gender: 'male' | 'female' | undefined
+    ): string | undefined {
+        const partners = game.locations.flatMap((location) =>
+            (location.subareas ?? [location])
+                .filter((area) =>
+                    area.battles?.some(
+                        (battle) => battle.battleKey === battleKey
+                    )
+                )
+                .flatMap((area) => area.tagPartner ?? [])
+        );
+
+        return BattleHelpers.filterByGender(partners, gender)[0]?.battleKey;
+    }
+
     /**
      * tagPartnerBattleKey's full team for starter, resolved the same way a
      * placed Battle's roster is — a tag partner has no map placement of its

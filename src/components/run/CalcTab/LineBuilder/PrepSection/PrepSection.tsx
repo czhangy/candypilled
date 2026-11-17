@@ -89,6 +89,7 @@ const PrepSection: React.FC<PrepSectionProps> = ({
                                     <PickerSlot
                                         dataSource={game.dataSource}
                                         isDisabled={isTeamFull && !isSelected}
+                                        isLocked={false}
                                         isSelected={isSelected}
                                         key={pokemon.id}
                                         onClick={onTogglePokemon}

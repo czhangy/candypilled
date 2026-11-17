@@ -1,9 +1,12 @@
 import { LINE_SIDES, STATUS_OPTIONS } from '@/lib/static/constants';
 import {
     Game,
+    LineBattle,
     LinePlan,
     LinePokemon,
+    LineSide,
     LineSlot,
+    LineTarget,
     LineTurn,
 } from '@/lib/static/types';
 import ItemHelpers from '@/lib/utils/ItemHelpers';
@@ -11,21 +14,33 @@ import LineHelpers from '@/lib/utils/LineHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 
+type ParsedSegment = {
+    ordinal: number | undefined;
+    slot: LineSlot;
+    targetText: string | undefined;
+};
+
 export default class LineExportHelpers {
     // -------------------------------------------------------------------------
     // PUBLIC
     // -------------------------------------------------------------------------
 
     /**
-     * A concise text summary of a line: the player's team in Showdown set
-     * style (`Name @ Item`, plus HP and status when they aren't the defaults),
-     * then one line per turn with anything in it, e.g. `T2? Garchomp:
-     * Earthquake (gets brn) vs Geodude #2: Rock Throw (KO) // note`. `pokemon`
-     * is every Pokémon on both sides. `?` marks a risky turn, `-` an empty
-     * side, `#n` tells apart opposing Pokémon of the same species, `first`
-     * marks whichever of the two moves first (when both have a move), and
-     * `switch in` marks one that replaced a Pokémon that wasn't KO'd the turn
-     * before. parseExportText reads this format back.
+     * A concise text summary of a line: the player's own team in Showdown
+     * set style (`Name @ Item`, plus HP and status when they aren't the
+     * defaults), then one line per turn with anything in it, e.g. `T2?
+     * Garchomp: Earthquake > all others (1st, gets brn) & Staraptor: Brave
+     * Bird > foe 1 (2nd) vs Geodude #2: Rock Throw > foe 2 & -`. `pokemon`
+     * is every Pokémon on both sides.
+     *
+     * In a turn, `&` joins one side's slots and `vs` the two sides; `-` is
+     * an empty slot. A double or tag battle's moves name a target relative
+     * to the mover (`foe 1`, `foe 2`, `partner`, `all foes`, `all others`).
+     * Tags: `1st`–`4th` give the move order when two or more Pokémon move,
+     * `switch in` marks one that replaced a Pokémon that wasn't KO'd the
+     * turn before, and `?` after the turn number marks a risky turn. `#n`
+     * tells apart the battle's Pokémon that share a name. parseExportText
+     * reads this format back.
      */
     static getExportText(
         game: Game,
@@ -34,7 +49,7 @@ export default class LineExportHelpers {
     ): string {
         const labels = LineExportHelpers.getLabels(game, pokemon);
         const team = pokemon
-            .filter((candidate) => candidate.side === 'player')
+            .filter((candidate) => !candidate.isFixed)
             .map((candidate) =>
                 LineExportHelpers.getSetLine(
                     game,
@@ -62,15 +77,15 @@ export default class LineExportHelpers {
     /**
      * The line that `plan` (text from getExportText) describes, resolved
      * against `boxPokemon` (the player's candidates, as they are in the box)
-     * and `trainerPokemon` (the opposing team), or undefined if it can't be
-     * restored exactly: anything unrecognized, ambiguous or out of date, such
-     * as a Pokémon, item, move, HP or status that no longer matches.
+     * and `battle`, or undefined if it can't be restored exactly: anything
+     * unrecognized, ambiguous or out of date, such as a Pokémon, item, move,
+     * HP, status or target that no longer matches.
      */
     static parseExportText(
         game: Game,
         plan: string,
         boxPokemon: LinePokemon[],
-        trainerPokemon: LinePokemon[]
+        battle: LineBattle
     ): LinePlan | undefined {
         const lines = plan.split('\n').filter((line) => line.trim() !== '');
         const turnLines = lines.filter((line) =>
@@ -80,54 +95,65 @@ export default class LineExportHelpers {
             (line) => !LineExportHelpers.TURN_LINE_PATTERN.test(line)
         );
 
-        const players = new Map<string, LinePokemon>();
+        const picked = new Map<string, LinePokemon>();
         for (const line of teamLines) {
             const parsed = LineExportHelpers.parseSetLine(
                 game,
                 line,
                 boxPokemon
             );
-            if (!parsed || players.has(parsed.label)) return undefined;
-            players.set(parsed.label, parsed.pokemon);
+            if (!parsed || picked.has(parsed.label)) return undefined;
+            picked.set(parsed.label, parsed.pokemon);
         }
-        const playerPokemon = [...players.values()];
+        const playerPokemon = [...picked.values()];
 
-        const trainerLabels = LineExportHelpers.getLabels(game, trainerPokemon);
-        const trainers = new Map(
-            trainerPokemon.map((pokemon) => [
-                trainerLabels[pokemon.id],
-                pokemon,
-            ])
+        const playerRoster = LineHelpers.getSideRoster(
+            battle,
+            playerPokemon,
+            'player'
         );
+        const labels = {
+            ...LineExportHelpers.getLabels(game, playerRoster),
+            ...LineExportHelpers.getLabels(game, battle.trainerPokemon),
+        };
+        const byLabel: Record<LineSide, Map<string, LinePokemon>> = {
+            player: new Map(
+                playerRoster.map((pokemon) => [labels[pokemon.id], pokemon])
+            ),
+            trainer: new Map(
+                battle.trainerPokemon.map((pokemon) => [
+                    labels[pokemon.id],
+                    pokemon,
+                ])
+            ),
+        };
 
-        const first = LineHelpers.getFirstTurn(
-            playerPokemon[0]?.id,
-            trainerPokemon[0]?.id
-        );
+        const first = LineHelpers.getOpeningTurn(battle, playerPokemon);
         const turns = [first];
         let lastNumber = 0;
         for (const line of turnLines) {
             const parsed = LineExportHelpers.parseTurnLine(
                 game,
                 line,
-                players,
-                trainers
+                battle.slotCount,
+                byLabel
             );
             if (!parsed || parsed.number <= lastNumber) return undefined;
 
             if (parsed.number === 1) {
-                // Turn 1 always opens with the two leads.
-                if (
-                    parsed.turn.player.pokemonId !== first.player.pokemonId ||
-                    parsed.turn.trainer.pokemonId !== first.trainer.pokemonId
-                ) {
-                    return undefined;
-                }
+                // Turn 1 always opens with each side's leads.
+                const hasLeads = LINE_SIDES.every((side) =>
+                    parsed.turn[side].every(
+                        (slot, index) =>
+                            slot.pokemonId === first[side][index].pokemonId
+                    )
+                );
+                if (!hasLeads) return undefined;
                 turns[0] = parsed.turn;
             } else {
                 // Turns with nothing in them aren't exported.
                 while (turns.length < parsed.number - 1) {
-                    turns.push(LineHelpers.getBlankTurn());
+                    turns.push(LineHelpers.getBlankTurn(battle.slotCount));
                 }
                 turns.push(parsed.turn);
             }
@@ -141,13 +167,15 @@ export default class LineExportHelpers {
     // PRIVATE
     // -------------------------------------------------------------------------
 
+    private static readonly ORDINALS = ['1st', '2nd', '3rd', '4th'];
     private static readonly TURN_LINE_PATTERN = /^T\d+\??(?: |$)/;
     private static readonly STATUS_CODES = STATUS_OPTIONS.map(
         (option) => option.value
     ).filter(Boolean);
 
-    // Each Pokémon's name in the text, with `#n` added to opposing Pokémon
-    // that share one. (The player's own Pokémon never repeat a species.)
+    // Each Pokémon's name in the text. A Pokémon the battle provides gets
+    // `#n` added whenever its name isn't unique on its side, so it can be
+    // told apart from the others (the player's own picks never repeat).
     private static getLabels(
         game: Game,
         pokemon: LinePokemon[]
@@ -155,22 +183,19 @@ export default class LineExportHelpers {
         return Object.fromEntries(
             pokemon.map((candidate) => {
                 const name = LineHelpers.getName(game.dataSource, candidate);
-                const sameName =
-                    candidate.side === 'trainer'
-                        ? pokemon.filter(
-                              (other) =>
-                                  other.side === 'trainer' &&
-                                  LineHelpers.getName(
-                                      game.dataSource,
-                                      other
-                                  ) === name
-                          )
-                        : [candidate];
+                if (!candidate.isFixed) return [candidate.id, name];
+
+                const sameName = pokemon.filter(
+                    (other) =>
+                        other.side === candidate.side &&
+                        LineHelpers.getName(game.dataSource, other) === name
+                );
+                const fixedSameName = sameName.filter((other) => other.isFixed);
 
                 return [
                     candidate.id,
                     sameName.length > 1
-                        ? `${name} #${sameName.indexOf(candidate) + 1}`
+                        ? `${name} #${fixedSameName.indexOf(candidate) + 1}`
                         : name,
                 ];
             })
@@ -203,17 +228,28 @@ export default class LineExportHelpers {
             .join(' ');
     }
 
-    // `Name: Move (first, switch in, gets brn, loses item, KO)`, or `-` if
-    // the slot's side has nobody on the field. `previous` is the same side's
-    // slot in the turn before.
+    // How a mover on `side` refers to its target: `foe 2`, `partner`,
+    // `all foes` or `all others`.
+    private static getTargetText(target: LineTarget, side: LineSide): string {
+        if (target === 'foes') return 'all foes';
+        if (target === 'others') return 'all others';
+
+        const { index, side: targetSide } = LineHelpers.parsePosition(target);
+        return targetSide === side ? 'partner' : `foe ${index + 1}`;
+    }
+
+    // `Name: Move > target (1st, switch in, gets brn, loses item, KO)`, or
+    // `-` if nobody is in the slot. `previous` is the turn before.
     private static getSlotSegment(
         game: Game,
         pokemon: LinePokemon[],
         labels: Record<string, string>,
-        slot: LineSlot,
-        previous: LineSlot | undefined,
-        isFirst: boolean
+        turn: LineTurn,
+        side: LineSide,
+        index: number,
+        previous: LineTurn | undefined
     ): string {
+        const slot = turn[side][index];
         const active = pokemon.find(
             (candidate) => candidate.id === slot.pokemonId
         );
@@ -223,12 +259,21 @@ export default class LineExportHelpers {
             ? (MoveHelpers.getMoveData(game.dataSource, slot.move)?.name ??
               slot.move)
             : undefined;
+        // A single target is implied in a singles battle.
+        const target =
+            slot.target && turn[side].length > 1
+                ? LineExportHelpers.getTargetText(slot.target, side)
+                : undefined;
+        const previousSlot = previous?.[side][index];
         const isSwitch =
-            previous?.pokemonId !== undefined &&
-            previous.pokemonId !== slot.pokemonId &&
-            !previous.isKo;
+            previousSlot?.pokemonId !== undefined &&
+            previousSlot.pokemonId !== slot.pokemonId &&
+            !previousSlot.isKo;
+        const rank = turn.order.indexOf(LineHelpers.getPosition(side, index));
         const tags = [
-            isFirst && 'first',
+            turn.order.length >= 2 && rank !== -1
+                ? LineExportHelpers.ORDINALS[rank]
+                : undefined,
             isSwitch && 'switch in',
             slot.appliedStatus && `gets ${slot.appliedStatus}`,
             slot.isStatusCleared && 'cures status',
@@ -237,15 +282,17 @@ export default class LineExportHelpers {
         ].filter(Boolean);
 
         return [
-            move ? `${labels[active.id]}: ${move}` : labels[active.id],
+            [labels[active.id], move && `: ${move}`, target && ` > ${target}`]
+                .filter(Boolean)
+                .join(''),
             tags.length > 0 && `(${tags.join(', ')})`,
         ]
             .filter(Boolean)
             .join(' ');
     }
 
-    // `T2? Player segment vs Foe segment // note`, or undefined for a turn
-    // with nothing in it.
+    // `T2? Player slots vs Foe slots // note`, or undefined for a turn with
+    // nothing in it.
     private static getTurnLine(
         game: Game,
         pokemon: LinePokemon[],
@@ -254,26 +301,22 @@ export default class LineExportHelpers {
         previous: LineTurn | undefined,
         index: number
     ): string | undefined {
-        // Who moves first only matters when both sides have a move.
-        const firstSide =
-            turn.player.move && turn.trainer.move
-                ? turn.isPlayerFirst
-                    ? 'player'
-                    : 'trainer'
-                : undefined;
         const segments = LINE_SIDES.map((side) =>
-            LineExportHelpers.getSlotSegment(
-                game,
-                pokemon,
-                labels,
-                turn[side],
-                previous?.[side],
-                side === firstSide
+            turn[side].map((_, slotIndex) =>
+                LineExportHelpers.getSlotSegment(
+                    game,
+                    pokemon,
+                    labels,
+                    turn,
+                    side,
+                    slotIndex,
+                    previous
+                )
             )
         );
-        const matchup = segments.every((segment) => segment === '-')
+        const matchup = segments.flat().every((segment) => segment === '-')
             ? ''
-            : segments.join(' vs ');
+            : segments.map((side) => side.join(' & ')).join(' vs ');
         if (!matchup && !turn.text) return undefined;
 
         return [
@@ -357,16 +400,22 @@ export default class LineExportHelpers {
         };
     }
 
-    // A `Name: Move (tags)` segment (or `-`) back into a slot, for a
-    // Pokémon among `byLabel`, and whether it's tagged `first`. A move has to
-    // be one the Pokémon has.
+    // A `Name: Move > target (tags)` segment (or `-`) back into the slot at
+    // `index` on one side, for a Pokémon among `byLabel`, along with its
+    // move-order tag and target as written. A move has to be one the
+    // Pokémon has, and the Pokémon has to be allowed in the slot.
     private static parseSegment(
         game: Game,
         segment: string,
+        index: number,
         byLabel: Map<string, LinePokemon>
-    ): { isFirst: boolean; slot: LineSlot } | undefined {
+    ): ParsedSegment | undefined {
         if (segment === '-') {
-            return { isFirst: false, slot: LineHelpers.getBlankSlot() };
+            return {
+                ordinal: undefined,
+                slot: LineHelpers.getBlankSlot(),
+                targetText: undefined,
+            };
         }
 
         // The longest name the segment starts with, since a name can itself
@@ -380,7 +429,9 @@ export default class LineExportHelpers {
             )
             .sort((a, b) => b.length - a.length)[0];
         const pokemon = label ? byLabel.get(label) : undefined;
-        if (!label || !pokemon) return undefined;
+        if (!label || !pokemon || !LineHelpers.canOccupy(pokemon, index)) {
+            return undefined;
+        }
 
         let rest = segment.slice(label.length);
         const tagsMatch = /\s\(([^()]*)\)$/.exec(rest);
@@ -391,21 +442,26 @@ export default class LineExportHelpers {
             ...LineHelpers.getBlankSlot(),
             pokemonId: pokemon.id,
         };
+        let targetText: string | undefined;
         if (rest.startsWith(': ')) {
-            const move = MoveHelpers.getSlugByName(
-                game.dataSource,
-                rest.slice(': '.length)
-            );
-            if (!move || !pokemon.moves.includes(move)) return undefined;
+            const [moveName, target, ...extra] = rest
+                .slice(': '.length)
+                .split(' > ');
+            const move = MoveHelpers.getSlugByName(game.dataSource, moveName);
+            if (!move || !pokemon.moves.includes(move) || extra.length > 0) {
+                return undefined;
+            }
             slot.move = move;
+            targetText = target;
         } else if (rest !== '') {
             return undefined;
         }
 
-        let isFirst = false;
+        let ordinal: number | undefined;
         for (const tag of tags) {
             const status = /^gets (\w+)$/.exec(tag)?.[1];
-            if (tag === 'first') isFirst = true;
+            const rank = LineExportHelpers.ORDINALS.indexOf(tag);
+            if (rank !== -1) ordinal = rank + 1;
             else if (tag === 'switch in') continue;
             else if (tag === 'cures status') slot.isStatusCleared = true;
             else if (tag === 'loses item') slot.isItemCleared = true;
@@ -418,66 +474,179 @@ export default class LineExportHelpers {
             } else return undefined;
         }
 
-        return { isFirst, slot };
+        return { ordinal, slot, targetText };
+    }
+
+    // A target as written by a mover at `index` on `side` back into the
+    // target it stands for, or undefined if it isn't valid with slotCount
+    // slots per side.
+    private static parseTarget(
+        text: string,
+        side: LineSide,
+        index: number,
+        slotCount: number
+    ): LineTarget | undefined {
+        if (text === 'all foes') return 'foes';
+        if (text === 'all others') return 'others';
+        if (text === 'partner') {
+            return slotCount === 2
+                ? LineHelpers.getPosition(side, 1 - index)
+                : undefined;
+        }
+
+        const foe = /^foe (\d+)$/.exec(text);
+        const slot = foe ? Number(foe[1]) : 0;
+        return slot >= 1 && slot <= slotCount
+            ? LineHelpers.getPosition(
+                  side === 'player' ? 'trainer' : 'player',
+                  slot - 1
+              )
+            : undefined;
+    }
+
+    // A turn's `Player slots vs Foe slots` text back into each side's
+    // segments, or `-` for each slot of a turn with nobody on the field.
+    private static parseMatchup(
+        game: Game,
+        matchup: string,
+        slotCount: number,
+        byLabel: Record<LineSide, Map<string, LinePokemon>>
+    ): Record<LineSide, ParsedSegment[]> | undefined {
+        const sides = matchup === '' ? undefined : matchup.split(' vs ');
+        if (sides && sides.length !== 2) return undefined;
+
+        const parsed: Record<LineSide, ParsedSegment[]> = {
+            player: [],
+            trainer: [],
+        };
+        for (const [sideIndex, side] of LINE_SIDES.entries()) {
+            const segments = sides
+                ? sides[sideIndex].split(' & ')
+                : Array.from({ length: slotCount }, () => '-');
+            if (segments.length !== slotCount) return undefined;
+
+            for (const [index, segment] of segments.entries()) {
+                const parsedSegment = LineExportHelpers.parseSegment(
+                    game,
+                    segment,
+                    index,
+                    byLabel[side]
+                );
+                if (!parsedSegment) return undefined;
+                parsed[side].push(parsedSegment);
+            }
+        }
+
+        return parsed;
+    }
+
+    // Whether a turn's segments are consistent: each side's Pokémon are
+    // distinct, move order is written exactly when two or more Pokémon move,
+    // and targets exactly when there's more than one possible target.
+    private static isConsistent(
+        parsed: Record<LineSide, ParsedSegment[]>,
+        slotCount: number
+    ): boolean {
+        const ids = LINE_SIDES.map((side) =>
+            parsed[side].map(({ slot }) => slot.pokemonId).filter(Boolean)
+        );
+        const acting = LINE_SIDES.flatMap((side) => parsed[side]).filter(
+            ({ slot }) => slot.move
+        );
+        const ranks = acting
+            .map(({ ordinal }) => ordinal)
+            .sort((a, b) => (a ?? 0) - (b ?? 0));
+
+        return (
+            ids.every((sideIds) => new Set(sideIds).size === sideIds.length) &&
+            (acting.length >= 2
+                ? ranks.every((rank, index) => rank === index + 1)
+                : ranks.every((rank) => rank === undefined)) &&
+            acting.every(({ targetText }) =>
+                slotCount > 1
+                    ? targetText !== undefined
+                    : targetText === undefined
+            )
+        );
+    }
+
+    // One side's parsed segments as slots, with each target resolved, or
+    // undefined if a target isn't valid.
+    private static toSlots(
+        segments: ParsedSegment[],
+        side: LineSide,
+        slotCount: number
+    ): LineSlot[] | undefined {
+        const slots: LineSlot[] = [];
+        for (const [index, { slot, targetText }] of segments.entries()) {
+            const target = targetText
+                ? LineExportHelpers.parseTarget(
+                      targetText,
+                      side,
+                      index,
+                      slotCount
+                  )
+                : undefined;
+            if (targetText && !target) return undefined;
+            slots.push({ ...slot, target });
+        }
+
+        return slots;
     }
 
     private static parseTurnLine(
         game: Game,
         line: string,
-        players: Map<string, LinePokemon>,
-        trainers: Map<string, LinePokemon>
+        slotCount: number,
+        byLabel: Record<LineSide, Map<string, LinePokemon>>
     ): { number: number; turn: LineTurn } | undefined {
         const header = /^T(\d+)(\?)?(.*)$/.exec(line);
         if (!header) return undefined;
 
         const rest = header[3];
         const noteAt = rest.indexOf(' // ');
-        const matchup = (noteAt === -1 ? rest : rest.slice(0, noteAt)).trim();
-
-        let player = LineHelpers.getBlankSlot();
-        let trainer = LineHelpers.getBlankSlot();
-        let isPlayerFirst = false;
-        if (matchup !== '') {
-            const segments = matchup.split(' vs ');
-            if (segments.length !== 2) return undefined;
-
-            const parsedPlayer = LineExportHelpers.parseSegment(
-                game,
-                segments[0],
-                players
-            );
-            const parsedTrainer = LineExportHelpers.parseSegment(
-                game,
-                segments[1],
-                trainers
-            );
-            if (!parsedPlayer || !parsedTrainer) return undefined;
-            player = parsedPlayer.slot;
-            trainer = parsedTrainer.slot;
-
-            // `first` goes on exactly one side, and only when both have a
-            // move. Without it, the default order stands.
-            if (parsedPlayer.isFirst || parsedTrainer.isFirst) {
-                if (
-                    parsedPlayer.isFirst === parsedTrainer.isFirst ||
-                    !player.move ||
-                    !trainer.move
-                ) {
-                    return undefined;
-                }
-                isPlayerFirst = parsedPlayer.isFirst;
-            }
+        const parsed = LineExportHelpers.parseMatchup(
+            game,
+            (noteAt === -1 ? rest : rest.slice(0, noteAt)).trim(),
+            slotCount,
+            byLabel
+        );
+        if (!parsed || !LineExportHelpers.isConsistent(parsed, slotCount)) {
+            return undefined;
         }
+
+        const player = LineExportHelpers.toSlots(
+            parsed.player,
+            'player',
+            slotCount
+        );
+        const trainer = LineExportHelpers.toSlots(
+            parsed.trainer,
+            'trainer',
+            slotCount
+        );
+        if (!player || !trainer) return undefined;
+
+        const order = LINE_SIDES.flatMap((side) =>
+            parsed[side].map(({ ordinal, slot }, index) => ({
+                ordinal,
+                position: LineHelpers.getPosition(side, index),
+                slot,
+            }))
+        )
+            .filter(({ slot }) => slot.move)
+            .sort((a, b) => (a.ordinal ?? 0) - (b.ordinal ?? 0))
+            .map(({ position }) => position);
 
         return {
             number: Number(header[1]),
-            turn: {
-                isPlayerFirst,
+            turn: LineHelpers.normalizeTurn({
                 isRisky: header[2] === '?',
+                order,
                 player,
                 text: noteAt === -1 ? '' : rest.slice(noteAt + ' // '.length),
                 trainer,
-            },
+            }),
         };
     }
 }

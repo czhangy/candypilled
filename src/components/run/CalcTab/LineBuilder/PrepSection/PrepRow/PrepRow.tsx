@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import NumericInput from '@/components/common/NumericInput/NumericInput';
-import ChevronIcon from '@/lib/icons/ChevronIcon';
+import ReorderButtons from '@/components/run/CalcTab/LineBuilder/ReorderButtons/ReorderButtons';
 import { STATUS_OPTIONS } from '@/lib/static/constants';
 import {
     DropdownOption,
@@ -97,29 +97,12 @@ const PrepRow: React.FC<PrepRowProps> = ({
                 />
                 <span className={styles['max-hp']}>/ {pokemon.maxHp}</span>
             </div>
-            <div className={styles.order}>
-                <button
-                    aria-label="Move up"
-                    className={[
-                        styles['order-button'],
-                        styles['order-button--up'],
-                    ].join(' ')}
-                    disabled={!canMoveUp}
-                    onClick={onMoveUp}
-                    type="button"
-                >
-                    <ChevronIcon />
-                </button>
-                <button
-                    aria-label="Move down"
-                    className={styles['order-button']}
-                    disabled={!canMoveDown}
-                    onClick={onMoveDown}
-                    type="button"
-                >
-                    <ChevronIcon />
-                </button>
-            </div>
+            <ReorderButtons
+                canMoveDown={canMoveDown}
+                canMoveUp={canMoveUp}
+                onMoveDown={onMoveDown}
+                onMoveUp={onMoveUp}
+            />
         </>
     );
 };
