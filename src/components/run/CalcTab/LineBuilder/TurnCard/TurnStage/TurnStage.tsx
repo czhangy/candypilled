@@ -1,5 +1,13 @@
-import { useId, useRef } from 'react';
-import { GameDataSource, LinePokemon, LineSide } from '@/lib/static/types';
+import { useId } from 'react';
+import { LINE_SIDES } from '@/lib/static/constants';
+import {
+    GameDataSource,
+    LinePokemon,
+    LinePosition,
+    LineSide,
+    LineSlot,
+} from '@/lib/static/types';
+import LineHelpers from '@/lib/utils/LineHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import styles from './TurnStage.module.scss';
@@ -7,36 +15,34 @@ import styles from './TurnStage.module.scss';
 type TurnStageProps = {
     dataSource: GameDataSource;
     isLocked: boolean;
-    isPlayerFirst: boolean;
-    onPlayerFirstChange: (isPlayerFirst: boolean) => void;
-    onPokemonClear: (side: LineSide) => void;
-    player: LinePokemon | undefined;
-    playerMove: string | undefined;
-    trainer: LinePokemon | undefined;
-    trainerMove: string | undefined;
+    onPokemonClear: (side: LineSide, slot: number) => void;
+    order: LinePosition[];
+    slots: {
+        index: number;
+        pokemon: LinePokemon | undefined;
+        position: LinePosition;
+        side: LineSide;
+        slot: LineSlot;
+    }[];
     variant: string;
 };
 
 const TurnStage: React.FC<TurnStageProps> = ({
     dataSource,
     isLocked,
-    isPlayerFirst,
-    onPlayerFirstChange,
     onPokemonClear,
-    player,
-    playerMove,
-    trainer,
-    trainerMove,
+    order,
+    slots,
     variant,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
     // -------------------------------------------------------------------------
 
+    type Point = { x: number; y: number };
+
     const WIDTH = 400;
     const SPRITE_SIZE = 96;
-    const HEIGHT = SPRITE_SIZE + 8;
-    const CENTER_Y = HEIGHT / 2;
     const SIDE_X: Record<LineSide, number> = { player: 100, trainer: 300 };
     const CLEAR_RADIUS = 10;
     const CLEAR_CROSS = 4;
@@ -44,48 +50,39 @@ const TurnStage: React.FC<TurnStageProps> = ({
     const ARROW_HEAD_GAP = 6;
     const ARROW_HEAD_LENGTH = 10;
     const LABEL_OFFSET = 12;
-    // How far each of two arrows sits above or below the center line.
-    const ARROW_LANE_OFFSET = 7;
-    const ARROW_HIT_WIDTH = 16;
+    // How far each of two opposing arrows between the same pair sits to its
+    // own side of the line between them, so they don't overlap.
+    const REVERSE_ARROW_OFFSET = 7;
 
     // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    // An arrow from `side`'s active Pokémon to the other side's, or nothing
-    // unless both are on the field and `side` has picked a move. With two
-    // arrows, each takes its own lane above or below the center line.
-    const getArrow = (
+    const getCenter = (position: LinePosition): Point => {
+        const { index, side } = LineHelpers.parsePosition(position);
+        return { x: SIDE_X[side], y: rowHeight * (index + 0.5) };
+    };
+
+    // The occupied positions a move from `attacker` on `side` hits.
+    const getTargetPositions = (
+        attacker: LinePosition,
         side: LineSide,
-        move: string | undefined,
-        hasBothArrows: boolean
-    ) => {
-        if (!player || !trainer || !move) return undefined;
-
-        const other: LineSide = side === 'player' ? 'trainer' : 'player';
-        // Sprites are side by side, so the arrow runs horizontally between
-        // their facing edges.
-        const ux = Math.sign(SIDE_X[other] - SIDE_X[side]);
-        const lane = !hasBothArrows
-            ? 0
-            : (side === 'player') === isPlayerFirst
-              ? -1
-              : 1;
-        const y = CENTER_Y + lane * ARROW_LANE_OFFSET;
-
-        return {
-            // The line stops where the arrowhead starts, so it never pokes
-            // out past the point.
-            end:
-                SIDE_X[other] -
-                ux * (SPRITE_SIZE / 2 + ARROW_HEAD_GAP + ARROW_HEAD_LENGTH),
-            label: MoveHelpers.getMoveData(dataSource, move)?.name ?? move,
-            // Pushes the label away from the other arrow, or above a lone one.
-            labelY: y + (lane === 1 ? LABEL_OFFSET : -LABEL_OFFSET),
-            side,
-            start: SIDE_X[side] + ux * (SPRITE_SIZE / 2 + ARROW_TAIL_GAP),
-            y,
-        };
+        target: LineSlot['target']
+    ): LinePosition[] => {
+        if (!target) return [];
+        if (target === 'foes') {
+            return occupied
+                .filter((entry) => entry.side !== side)
+                .map((entry) => entry.position);
+        }
+        if (target === 'others') {
+            return occupied
+                .filter((entry) => entry.position !== attacker)
+                .map((entry) => entry.position);
+        }
+        return occupied.some((entry) => entry.position === target)
+            ? [target]
+            : [];
     };
 
     // -------------------------------------------------------------------------
@@ -93,7 +90,6 @@ const TurnStage: React.FC<TurnStageProps> = ({
     // -------------------------------------------------------------------------
 
     const stageId = useId();
-    const svgRef = useRef<SVGSVGElement>(null);
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -101,40 +97,12 @@ const TurnStage: React.FC<TurnStageProps> = ({
 
     const handleClearKeyDown = (
         event: React.KeyboardEvent<SVGGElement>,
-        side: LineSide
+        side: LineSide,
+        slot: number
     ): void => {
         if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
-            onPokemonClear(side);
-        }
-    };
-
-    const handleArrowPointerDown = (
-        event: React.PointerEvent<SVGGElement>
-    ): void => {
-        event.currentTarget.setPointerCapture(event.pointerId);
-    };
-
-    // Dragging an arrow above the center line puts it in the top lane, and
-    // below it, the bottom lane.
-    const handleArrowPointerMove = (
-        event: React.PointerEvent<SVGGElement>,
-        side: LineSide
-    ): void => {
-        const svg = svgRef.current;
-        if (
-            !svg ||
-            !hasBothMoves ||
-            !event.currentTarget.hasPointerCapture(event.pointerId)
-        ) {
-            return;
-        }
-
-        const rect = svg.getBoundingClientRect();
-        const y = ((event.clientY - rect.top) / rect.height) * HEIGHT;
-        const isNowPlayerFirst = (side === 'player') === y < CENTER_Y;
-        if (isNowPlayerFirst !== isPlayerFirst) {
-            onPlayerFirstChange(isNowPlayerFirst);
+            onPokemonClear(side, slot);
         }
     };
 
@@ -144,17 +112,84 @@ const TurnStage: React.FC<TurnStageProps> = ({
 
     // useId's colons aren't valid inside a url(#…) reference.
     const markerId = stageId.replace(/:/g, '');
-    const hasBothMoves = Boolean(
-        player && trainer && playerMove && trainerMove
-    );
-    const arrows = [
-        getArrow('player', playerMove, hasBothMoves),
-        getArrow('trainer', trainerMove, hasBothMoves),
-    ].filter((arrow) => arrow !== undefined);
-    const slots: { pokemon: LinePokemon | undefined; side: LineSide }[] = [
-        { pokemon: player, side: 'player' },
-        { pokemon: trainer, side: 'trainer' },
-    ];
+    const slotsPerSide = slots.length / LINE_SIDES.length;
+    // Doubles need room between stacked sprites for an arrow.
+    const rowHeight = SPRITE_SIZE + (slotsPerSide > 1 ? 40 : 8);
+    const height = rowHeight * slotsPerSide;
+    const occupied = slots.filter(({ pokemon }) => pokemon);
+
+    // One arrow per attacker/target pair; only an attacker's first arrow
+    // carries the move's label.
+    const pairs = occupied.flatMap(({ position, side, slot }) => {
+        const { move, target } = slot;
+        if (!move) return [];
+
+        return getTargetPositions(position, side, target).map((to, index) => ({
+            from: position,
+            hasLabel: index === 0,
+            move,
+            side,
+            to,
+        }));
+    });
+    const arrows = pairs.map((pair) => {
+        const from = getCenter(pair.from);
+        const to = getCenter(pair.to);
+        const length = Math.hypot(to.x - from.x, to.y - from.y);
+        const ux = (to.x - from.x) / length;
+        const uy = (to.y - from.y) / length;
+        // The normal points to this arrow's own side of the line between
+        // the two Pokémon, which is the opposite side for a reverse arrow.
+        const nx = -uy;
+        const ny = ux;
+        const hasReverse = pairs.some(
+            (other) => other.from === pair.to && other.to === pair.from
+        );
+        const offset = hasReverse ? REVERSE_ARROW_OFFSET : 0;
+        // Distance from a sprite's center to its edge along the arrow's
+        // direction, so the arrow starts and ends at the sprite borders.
+        const edge = Math.min(
+            SPRITE_SIZE / 2 / Math.abs(ux),
+            SPRITE_SIZE / 2 / Math.abs(uy)
+        );
+        const start: Point = {
+            x: from.x + ux * (edge + ARROW_TAIL_GAP) + nx * offset,
+            y: from.y + uy * (edge + ARROW_TAIL_GAP) + ny * offset,
+        };
+        // The line stops where the arrowhead starts, so it never pokes out
+        // past the point.
+        const end: Point = {
+            x:
+                to.x -
+                ux * (edge + ARROW_HEAD_GAP + ARROW_HEAD_LENGTH) +
+                nx * offset,
+            y:
+                to.y -
+                uy * (edge + ARROW_HEAD_GAP + ARROW_HEAD_LENGTH) +
+                ny * offset,
+        };
+        // The label goes away from an opposing arrow, or above a lone one.
+        const labelSide = hasReverse ? 1 : ny <= 0 ? 1 : -1;
+        const rank = order.indexOf(pair.from);
+        const moveName =
+            MoveHelpers.getMoveData(dataSource, pair.move)?.name ?? pair.move;
+
+        return {
+            end,
+            key: `${pair.from}>${pair.to}`,
+            label: pair.hasLabel
+                ? order.length >= 2 && rank !== -1
+                    ? `${rank + 1}. ${moveName}`
+                    : moveName
+                : undefined,
+            labelPoint: {
+                x: (start.x + end.x) / 2 + nx * labelSide * LABEL_OFFSET,
+                y: (start.y + end.y) / 2 + ny * labelSide * LABEL_OFFSET,
+            },
+            side: pair.side,
+            start,
+        };
+    });
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -164,12 +199,11 @@ const TurnStage: React.FC<TurnStageProps> = ({
         <div className={styles['turn-stage']}>
             <svg
                 className={styles.canvas}
-                ref={svgRef}
-                viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+                viewBox={`0 0 ${WIDTH} ${height}`}
                 xmlns="http://www.w3.org/2000/svg"
             >
                 <defs>
-                    {slots.map(({ side }) => (
+                    {LINE_SIDES.map((side) => (
                         <marker
                             id={`${markerId}-${side}`}
                             key={side}
@@ -187,9 +221,11 @@ const TurnStage: React.FC<TurnStageProps> = ({
                         </marker>
                     ))}
                 </defs>
-                {slots.map(({ pokemon, side }) =>
-                    pokemon ? (
-                        <g className={styles.pokemon} key={side}>
+                {slots.map(({ index, pokemon, position, side }) => {
+                    const center = getCenter(position);
+
+                    return pokemon ? (
+                        <g className={styles.pokemon} key={position}>
                             <image
                                 className={styles.sprite}
                                 height={SPRITE_SIZE}
@@ -199,24 +235,24 @@ const TurnStage: React.FC<TurnStageProps> = ({
                                     variant
                                 )}
                                 width={SPRITE_SIZE}
-                                x={SIDE_X[side] - SPRITE_SIZE / 2}
-                                y={CENTER_Y - SPRITE_SIZE / 2}
+                                x={center.x - SPRITE_SIZE / 2}
+                                y={center.y - SPRITE_SIZE / 2}
                             />
                             {!isLocked && (
                                 <g
                                     aria-label="Remove from turn"
                                     className={styles.clear}
-                                    onClick={() => onPokemonClear(side)}
+                                    onClick={() => onPokemonClear(side, index)}
                                     onKeyDown={(
                                         event: React.KeyboardEvent<SVGGElement>
-                                    ) => handleClearKeyDown(event, side)}
+                                    ) => handleClearKeyDown(event, side, index)}
                                     role="button"
                                     tabIndex={0}
                                     transform={`translate(${
-                                        SIDE_X[side] +
+                                        center.x +
                                         SPRITE_SIZE / 2 -
                                         CLEAR_RADIUS
-                                    } ${CENTER_Y - SPRITE_SIZE / 2 + CLEAR_RADIUS})`}
+                                    } ${center.y - SPRITE_SIZE / 2 + CLEAR_RADIUS})`}
                                 >
                                     <circle
                                         className={styles['clear-background']}
@@ -233,52 +269,34 @@ const TurnStage: React.FC<TurnStageProps> = ({
                         <rect
                             className={styles.placeholder}
                             height={SPRITE_SIZE}
-                            key={side}
+                            key={position}
                             rx={8}
                             width={SPRITE_SIZE}
-                            x={SIDE_X[side] - SPRITE_SIZE / 2}
-                            y={CENTER_Y - SPRITE_SIZE / 2}
+                            x={center.x - SPRITE_SIZE / 2}
+                            y={center.y - SPRITE_SIZE / 2}
                         />
-                    )
-                )}
+                    );
+                })}
                 {arrows.map((arrow) => (
-                    <g
-                        className={[
-                            styles['arrow-group'],
-                            hasBothMoves && styles['arrow-group--draggable'],
-                        ]
-                            .filter(Boolean)
-                            .join(' ')}
-                        key={arrow.side}
-                        onPointerDown={handleArrowPointerDown}
-                        onPointerMove={(
-                            event: React.PointerEvent<SVGGElement>
-                        ) => handleArrowPointerMove(event, arrow.side)}
-                    >
-                        <line
-                            className={styles['arrow-hit']}
-                            strokeWidth={ARROW_HIT_WIDTH}
-                            x1={arrow.start}
-                            x2={arrow.end}
-                            y1={arrow.y}
-                            y2={arrow.y}
-                        />
+                    <g className={styles['arrow-group']} key={arrow.key}>
                         <line
                             className={styles[`arrow--${arrow.side}`]}
                             markerEnd={`url(#${markerId}-${arrow.side})`}
-                            x1={arrow.start}
-                            x2={arrow.end}
-                            y1={arrow.y}
-                            y2={arrow.y}
+                            x1={arrow.start.x}
+                            x2={arrow.end.x}
+                            y1={arrow.start.y}
+                            y2={arrow.end.y}
                         />
-                        <text
-                            className={styles['arrow-label']}
-                            textAnchor="middle"
-                            x={(arrow.start + arrow.end) / 2}
-                            y={arrow.labelY}
-                        >
-                            {arrow.label}
-                        </text>
+                        {arrow.label && (
+                            <text
+                                className={styles['arrow-label']}
+                                textAnchor="middle"
+                                x={arrow.labelPoint.x}
+                                y={arrow.labelPoint.y}
+                            >
+                                {arrow.label}
+                            </text>
+                        )}
                     </g>
                 ))}
             </svg>

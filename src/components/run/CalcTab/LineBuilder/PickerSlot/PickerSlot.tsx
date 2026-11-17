@@ -8,6 +8,7 @@ import styles from './PickerSlot.module.scss';
 type PickerSlotProps = {
     dataSource: GameDataSource;
     isDisabled: boolean;
+    isLocked: boolean;
     isSelected: boolean;
     onClick: (pokemon: LinePokemon) => void;
     pokemon: LinePokemon;
@@ -17,6 +18,7 @@ type PickerSlotProps = {
 const PickerSlot: React.FC<PickerSlotProps> = ({
     dataSource,
     isDisabled,
+    isLocked,
     isSelected,
     onClick,
     pokemon,
@@ -44,10 +46,14 @@ const PickerSlot: React.FC<PickerSlotProps> = ({
     return (
         <button
             aria-pressed={isSelected}
-            className={[styles.slot, isSelected && styles['slot--selected']]
+            className={[
+                styles.slot,
+                isSelected && styles['slot--selected'],
+                isDisabled && styles['slot--disabled'],
+            ]
                 .filter(Boolean)
                 .join(' ')}
-            disabled={isDisabled}
+            disabled={isDisabled || isLocked}
             onClick={handleClick}
             type="button"
         >

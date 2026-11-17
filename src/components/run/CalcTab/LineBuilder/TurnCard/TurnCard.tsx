@@ -1,18 +1,21 @@
-import Dropdown from '@/components/common/Dropdown/Dropdown';
-import PickerSlot from '@/components/run/CalcTab/LineBuilder/PickerSlot/PickerSlot';
+import Checkbox from '@/components/run/CalcTab/LineBuilder/TurnCard/Checkbox/Checkbox';
 import CloseIcon from '@/lib/icons/CloseIcon';
 import PlusIcon from '@/lib/icons/PlusIcon';
-import { LINE_SIDES, STATUS_OPTIONS } from '@/lib/static/constants';
+import { LINE_SIDES } from '@/lib/static/constants';
 import {
     DropdownOption,
     GameDataSource,
     LinePokemon,
+    LinePosition,
     LineSide,
     LineSlotFlag,
+    LineTarget,
     LineTurn,
 } from '@/lib/static/types';
+import LineHelpers from '@/lib/utils/LineHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
-import Checkbox from './Checkbox/Checkbox';
+import OrderList from './OrderList/OrderList';
+import SlotControls from './SlotControls/SlotControls';
 import styles from './TurnCard.module.scss';
 import TurnStage from './TurnStage/TurnStage';
 
@@ -21,15 +24,28 @@ type TurnCardProps = {
     dataSource: GameDataSource;
     isFirstTurn: boolean;
     koedIds: string[];
+    onActionMove: (position: LinePosition, offset: -1 | 1) => void;
     onAddTurn: () => void;
-    onAppliedStatusChange: (side: LineSide, status: string) => void;
+    onAppliedStatusChange: (
+        side: LineSide,
+        slot: number,
+        status: string
+    ) => void;
     onClear: () => void;
-    onFlagToggle: (side: LineSide, flag: LineSlotFlag) => void;
-    onMoveChange: (side: LineSide, move: string | undefined) => void;
-    onPlayerFirstChange: (isPlayerFirst: boolean) => void;
-    onPokemonClear: (side: LineSide) => void;
-    onPokemonSelect: (pokemon: LinePokemon) => void;
+    onFlagToggle: (side: LineSide, slot: number, flag: LineSlotFlag) => void;
+    onMoveChange: (
+        side: LineSide,
+        slot: number,
+        move: string | undefined
+    ) => void;
+    onPokemonClear: (side: LineSide, slot: number) => void;
+    onPokemonSelect: (
+        side: LineSide,
+        slot: number,
+        pokemon: LinePokemon
+    ) => void;
     onRiskyToggle: () => void;
+    onTargetChange: (side: LineSide, slot: number, target: LineTarget) => void;
     onTextChange: (text: string) => void;
     pokemon: LinePokemon[];
     turn: LineTurn;
@@ -42,15 +58,16 @@ const TurnCard: React.FC<TurnCardProps> = ({
     dataSource,
     isFirstTurn,
     koedIds,
+    onActionMove,
     onAddTurn,
     onAppliedStatusChange,
     onClear,
     onFlagToggle,
     onMoveChange,
-    onPlayerFirstChange,
     onPokemonClear,
     onPokemonSelect,
     onRiskyToggle,
+    onTargetChange,
     onTextChange,
     pokemon,
     turn,
@@ -58,46 +75,44 @@ const TurnCard: React.FC<TurnCardProps> = ({
     variant,
 }) => {
     // -------------------------------------------------------------------------
-    // CONSTANTS
-    // -------------------------------------------------------------------------
-
-    const FLAGS: { flag: LineSlotFlag; label: string }[] = [
-        { flag: 'isKo', label: 'KO' },
-        { flag: 'isStatusCleared', label: 'Clear status' },
-        { flag: 'isItemCleared', label: 'Clear item' },
-    ];
-    // Standing in for "no status" in the dropdown: an empty value is what
-    // shows the "Status" placeholder, so clearing needs its own option.
-    const NO_STATUS_VALUE = 'none';
-    const APPLY_STATUS_OPTIONS: DropdownOption[] = [
-        { label: 'None', value: NO_STATUS_VALUE },
-        ...STATUS_OPTIONS.filter((option) => option.value),
-    ];
-    const NO_MOVE_OPTION: DropdownOption = { label: 'No move', value: '' };
-
-    // -------------------------------------------------------------------------
     // COMPUTATIONS
     // -------------------------------------------------------------------------
 
-    const getMoveOptions = (attacker: LinePokemon): DropdownOption[] => [
-        NO_MOVE_OPTION,
-        ...attacker.moves.map((slug) => ({
-            label: MoveHelpers.getMoveData(dataSource, slug)?.name ?? slug,
-            value: slug,
-        })),
-    ];
+    // The targets a move from the slot at `index` on `side` can have: each
+    // other Pokémon on the field (foes, then the partner) and the spreads.
+    // None in a singles battle, where the one foe is implied.
+    const getTargetOptions = (
+        side: LineSide,
+        index: number
+    ): DropdownOption[] => {
+        if (turn.player.length === 1) return [];
 
-    // A flag can't be set with nothing to apply it to: no Pokémon on the
-    // field, or no status/item left to clear.
-    const isFlagDisabled = (side: LineSide, flag: LineSlotFlag): boolean => {
-        const active = activePokemon[side];
-        if (!active) return true;
-        if (turn[side][flag]) return false;
-
-        return (
-            (flag === 'isStatusCleared' && !active.status) ||
-            (flag === 'isItemCleared' && !active.heldItem)
+        const others = slots.flatMap((entry) =>
+            entry.pokemon && !(entry.side === side && entry.index === index)
+                ? [{ ...entry, pokemon: entry.pokemon }]
+                : []
         );
+        const toOption = (entry: (typeof others)[number]): DropdownOption => ({
+            label: `${LineHelpers.getName(dataSource, entry.pokemon)} (${entry.side === side ? 'partner' : 'foe'})`,
+            value: entry.position,
+        });
+
+        return [
+            ...others.filter((entry) => entry.side !== side).map(toOption),
+            ...others.filter((entry) => entry.side === side).map(toOption),
+            { label: 'All foes', value: 'foes' },
+            { label: 'All others', value: 'others' },
+        ];
+    };
+
+    // "You" and "Partner" when an NPC ally fills your second slot, otherwise
+    // the side's name, numbered when it has more than one slot.
+    const getSlotLabel = (side: LineSide, index: number): string => {
+        const name = side === 'player' ? 'You' : 'Foe';
+        if (turn[side].length === 1) return name;
+        if (side === 'player' && hasAlly) return index === 0 ? name : 'Partner';
+
+        return `${name} ${index + 1}`;
     };
 
     // -------------------------------------------------------------------------
@@ -114,14 +129,29 @@ const TurnCard: React.FC<TurnCardProps> = ({
     // RENDERING
     // -------------------------------------------------------------------------
 
-    const activePokemon = {
-        player: pokemon.find(
-            (candidate) => candidate.id === turn.player.pokemonId
+    const hasAlly = pokemon.some(
+        (candidate) => candidate.side === 'player' && candidate.isFixed
+    );
+    const slots = LineHelpers.getTurnSlots(turn).map((entry) => ({
+        ...entry,
+        pokemon: pokemon.find(
+            (candidate) => candidate.id === entry.slot.pokemonId
         ),
-        trainer: pokemon.find(
-            (candidate) => candidate.id === turn.trainer.pokemonId
-        ),
-    };
+    }));
+    const orderItems = turn.order.map((position) => {
+        const entry = slots.find(
+            (candidate) => candidate.position === position
+        );
+        const name = entry?.pokemon
+            ? LineHelpers.getName(dataSource, entry.pokemon)
+            : '';
+        const move = entry?.slot.move
+            ? (MoveHelpers.getMoveData(dataSource, entry.slot.move)?.name ??
+              entry.slot.move)
+            : '';
+
+        return { label: `${name}: ${move}`, position };
+    });
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -164,32 +194,14 @@ const TurnCard: React.FC<TurnCardProps> = ({
                     <TurnStage
                         dataSource={dataSource}
                         isLocked={isFirstTurn}
-                        isPlayerFirst={turn.isPlayerFirst}
-                        onPlayerFirstChange={onPlayerFirstChange}
                         onPokemonClear={onPokemonClear}
-                        player={activePokemon.player}
-                        playerMove={turn.player.move}
-                        trainer={activePokemon.trainer}
-                        trainerMove={turn.trainer.move}
+                        order={turn.order}
+                        slots={slots}
                         variant={variant}
                     />
-                    <div className={styles.flags}>
-                        {LINE_SIDES.map((side) => (
-                            <div className={styles['flag-column']} key={side}>
-                                {FLAGS.map(({ flag, label }) => (
-                                    <Checkbox
-                                        checked={turn[side][flag]}
-                                        isDisabled={isFlagDisabled(side, flag)}
-                                        key={flag}
-                                        label={label}
-                                        onChange={() =>
-                                            onFlagToggle(side, flag)
-                                        }
-                                    />
-                                ))}
-                            </div>
-                        ))}
-                    </div>
+                    {orderItems.length >= 2 && (
+                        <OrderList items={orderItems} onMove={onActionMove} />
+                    )}
                 </div>
                 <div className={styles.controls}>
                     <input
@@ -199,83 +211,56 @@ const TurnCard: React.FC<TurnCardProps> = ({
                         type="text"
                         value={turn.text}
                     />
-                    {LINE_SIDES.map((side) => {
-                        const roster = pokemon.filter(
-                            (candidate) => candidate.side === side
-                        );
-                        const active = activePokemon[side];
-
-                        return (
-                            <div className={styles.side} key={side}>
-                                <span
-                                    className={[
-                                        styles['side-label'],
-                                        styles[`side-label--${side}`],
-                                    ].join(' ')}
-                                >
-                                    {side === 'player' ? 'You' : 'Foe'}
-                                </span>
-                                {roster.length === 0 && (
-                                    <span className={styles.placeholder}>
-                                        Select Pokémon above
-                                    </span>
+                    {LINE_SIDES.map((side) =>
+                        turn[side].map((slot, index) => (
+                            <SlotControls
+                                active={
+                                    slots.find(
+                                        (entry) =>
+                                            entry.side === side &&
+                                            entry.index === index
+                                    )?.pokemon
+                                }
+                                dataSource={dataSource}
+                                isFirstTurn={isFirstTurn}
+                                key={`${side}:${index}`}
+                                label={getSlotLabel(side, index)}
+                                onAppliedStatusChange={(status: string) =>
+                                    onAppliedStatusChange(side, index, status)
+                                }
+                                onFlagToggle={(flag: LineSlotFlag) =>
+                                    onFlagToggle(side, index, flag)
+                                }
+                                onMoveChange={(move: string | undefined) =>
+                                    onMoveChange(side, index, move)
+                                }
+                                onPokemonSelect={(selected: LinePokemon) =>
+                                    onPokemonSelect(side, index, selected)
+                                }
+                                onTargetChange={(target: LineTarget) =>
+                                    onTargetChange(side, index, target)
+                                }
+                                roster={pokemon.filter(
+                                    (candidate) =>
+                                        candidate.side === side &&
+                                        LineHelpers.canOccupy(candidate, index)
                                 )}
-                                {!isFirstTurn && roster.length > 0 && (
-                                    <div className={styles.roster}>
-                                        {roster.map((candidate) => (
-                                            <PickerSlot
-                                                dataSource={dataSource}
-                                                isDisabled={koedIds.includes(
-                                                    candidate.id
-                                                )}
-                                                isSelected={
-                                                    candidate.id === active?.id
-                                                }
-                                                key={candidate.id}
-                                                onClick={onPokemonSelect}
-                                                pokemon={candidate}
-                                                showStatus
-                                            />
-                                        ))}
-                                    </div>
-                                )}
-                                {active && (
-                                    <div className={styles['move-row']}>
-                                        <div className={styles['move-field']}>
-                                            <Dropdown
-                                                dense
-                                                onChange={(move: string) =>
-                                                    onMoveChange(
-                                                        side,
-                                                        move || undefined
-                                                    )
-                                                }
-                                                options={getMoveOptions(active)}
-                                                value={turn[side].move ?? ''}
-                                            />
-                                        </div>
-                                        <div className={styles['move-field']}>
-                                            <Dropdown
-                                                dense
-                                                onChange={(status: string) =>
-                                                    onAppliedStatusChange(
-                                                        side,
-                                                        status ===
-                                                            NO_STATUS_VALUE
-                                                            ? ''
-                                                            : status
-                                                    )
-                                                }
-                                                options={APPLY_STATUS_OPTIONS}
-                                                placeholder="Status"
-                                                value={turn[side].appliedStatus}
-                                            />
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                        );
-                    })}
+                                side={side}
+                                slot={slot}
+                                targetOptions={getTargetOptions(side, index)}
+                                unavailableIds={[
+                                    ...koedIds,
+                                    ...turn[side].flatMap(
+                                        (other, otherIndex) =>
+                                            other.pokemonId &&
+                                            otherIndex !== index
+                                                ? [other.pokemonId]
+                                                : []
+                                    ),
+                                ]}
+                            />
+                        ))
+                    )}
                     <div className={styles.risky}>
                         <Checkbox
                             checked={turn.isRisky}

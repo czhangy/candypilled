@@ -501,7 +501,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                                     ← Runs
                                 </Link>
                             )}
-                            {activeTab === 'split' && (
+                            {activeTab === 'split' && !isImportScrolledOut && (
                                 <SplitHeader
                                     completedSplits={run.completedSplits}
                                     currentSplitName={currentSplitName}

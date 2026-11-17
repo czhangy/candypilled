@@ -111,16 +111,28 @@ export type DropdownOption = {
 // Which team a line builder Pokémon fights for.
 export type LineSide = 'player' | 'trainer';
 
-// A Pokémon in the line builder: either one of the player's box Pokémon
-// or a member of the selected battle's opposing team. `id` is unique across
-// the line, `speciesSlug` is its stored species and `slug` the form it
-// currently displays as (which a held item can change), and `moves` is
-// every move it can choose from. `heldItem` (an item slug), `status` (a
+// One spot on the field in a line builder turn: a side and a slot index on
+// it, as `side:index` (e.g. `trainer:1`).
+export type LinePosition = `${LineSide}:${number}`;
+
+// What a move is aimed at: the Pokémon in one position, every opposing
+// Pokémon (`foes`), or every other Pokémon on the field (`others`).
+export type LineTarget = LinePosition | 'foes' | 'others';
+
+// A Pokémon in the line builder: one of the player's box Pokémon, or one
+// that the selected battle provides (a member of an opposing team, or the
+// player's NPC ally in a tag battle), which is `isFixed`. `id` is unique
+// across the line, `speciesSlug` is its stored species and `slug` the form
+// it currently displays as (which a held item can change), and `moves` is
+// every move it can choose from. `boundSlot` is the only slot it can fill,
+// or undefined if it can fill any. `heldItem` (an item slug), `status` (a
 // STATUS_OPTIONS value) and `currentHp` are its state going into the battle.
 export type LinePokemon = {
+    boundSlot: number | undefined;
     currentHp: number;
     heldItem: string | undefined;
     id: string;
+    isFixed: boolean;
     maxHp: number;
     moves: string[];
     side: LineSide;
@@ -129,13 +141,22 @@ export type LinePokemon = {
     status: string;
 };
 
-// One side's active Pokémon in a line builder turn: which canvas Pokémon
-// (LinePokemon.id) is on the field, and the move it uses on the opposing
-// active Pokémon, drawn as an arrow between them. `isKo` marks that Pokémon
-// as knocked out this turn, so it's unavailable in every later turn, and
-// `isItemCleared` / `isStatusCleared` mark its held item / status as gone
-// from every later turn. `appliedStatus` (a STATUS_OPTIONS value, '' for
-// none) is a status that Pokémon gets from the next turn on.
+// What a selected battle puts on the field for the line builder: how many
+// Pokémon each side has out at once, the NPC ally's team (the tag partner
+// who fights on the player's side in a tag battle), and the opposing team.
+export type LineBattle = {
+    allyPokemon: LinePokemon[];
+    slotCount: number;
+    trainerPokemon: LinePokemon[];
+};
+
+// One active slot on one side in a line builder turn: which Pokémon
+// (LinePokemon.id) is on the field, the move it uses and what it targets
+// (drawn as arrows from it). `isKo` marks that Pokémon as knocked out this
+// turn, so it's unavailable in every later turn, and `isItemCleared` /
+// `isStatusCleared` mark its held item / status as gone from every later
+// turn. `appliedStatus` (a STATUS_OPTIONS value, '' for none) is a status
+// that Pokémon gets from the next turn on.
 export type LineSlot = {
     appliedStatus: string;
     isItemCleared: boolean;
@@ -143,6 +164,7 @@ export type LineSlot = {
     isStatusCleared: boolean;
     move: string | undefined;
     pokemonId: string | undefined;
+    target: LineTarget | undefined;
 };
 
 // The part of a line builder plan that a saved note can restore: the
@@ -156,15 +178,15 @@ export type LinePlan = {
 // turns.
 export type LineSlotFlag = 'isItemCleared' | 'isKo' | 'isStatusCleared';
 
-// One turn of a line builder plan: a singles battle, so one active Pokémon
-// per side. When both sides have a move, `isPlayerFirst` says which side
-// moves first, and its arrow is the upper one.
+// One turn of a line builder plan: each side's active slots (one in a
+// singles battle, two in a double or tag battle, as many on both sides),
+// and `order`, the positions that have a move in the order they act.
 export type LineTurn = {
-    isPlayerFirst: boolean;
     isRisky: boolean;
-    player: LineSlot;
+    order: LinePosition[];
+    player: LineSlot[];
     text: string;
-    trainer: LineSlot;
+    trainer: LineSlot[];
 };
 
 // A stat key affected by nature (all StatValues keys except hp, which

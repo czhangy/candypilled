@@ -1,0 +1,49 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.slot-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    .label {
+        @include form-label;
+
+        font-size: 0.65rem;
+
+        &--player {
+            color: var(--accent-color);
+        }
+
+        &--trainer {
+            color: $red;
+        }
+    }
+
+    .placeholder {
+        color: $text-dim;
+        font-size: 0.85rem;
+    }
+
+    .roster {
+        display: grid;
+        gap: 0.5rem;
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .fields {
+        display: flex;
+        gap: 0.5rem;
+
+        .field {
+            flex: 1;
+            min-width: 0;
+        }
+    }
+
+    .flags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem 1rem;
+    }
+}
