@@ -126,16 +126,9 @@ const LineBuilder: React.FC<LineBuilderProps> = ({
         next: LineState
     ): LineState => {
         const leadsOf = (state: LineState): string =>
-            JSON.stringify(
-                LineHelpers.getLeadIds(
-                    LineHelpers.getSideRoster(
-                        state.battle,
-                        state.playerPokemon,
-                        'player'
-                    ),
-                    state.battle.slotCount
-                )
-            );
+            LineHelpers.getOpeningTurn(state.battle, state.playerPokemon)
+                .player.map((slot) => slot.pokemonId)
+                .join();
         if (leadsOf(previous) === leadsOf(next)) return next;
 
         return {

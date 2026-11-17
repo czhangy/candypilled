@@ -22,33 +22,6 @@ export default class LineHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    /** caught as a line builder Pokémon on the player's side, at full HP with no status and its current held item. */
-    static getBoxPokemon(game: Game, caught: CaughtPokemon): LinePokemon {
-        const slug = PokemonHelpers.getDisplaySlug(game.dataSource, caught);
-        const maxHp = LineHelpers.getMaxHp(
-            game,
-            slug,
-            caught.level,
-            StatHelpers.normalizeStats(caught.ivs, MAX_IV),
-            StatHelpers.normalizeStats(caught.evs, 0),
-            caught.nature
-        );
-
-        return {
-            boundSlot: undefined,
-            currentHp: maxHp,
-            heldItem: caught.heldItem,
-            id: `player:${caught.location}`,
-            isFixed: false,
-            maxHp,
-            moves: caught.moves,
-            side: 'player',
-            slug,
-            speciesSlug: caught.slug,
-            status: '',
-        };
-    }
-
     /** Every living Pokémon in caughtPokemon as a line builder Pokémon on the player's side (see getBoxPokemon). */
     static getBoxPokemonList(
         game: Game,
@@ -183,24 +156,6 @@ export default class LineHelpers {
         return pokemon.boundSlot === undefined || pokemon.boundSlot === slot;
     }
 
-    /** The id of the Pokémon that leads each of slotCount slots from roster, in order: the first one that can fill the slot and isn't already leading another. Undefined for a slot nobody can lead. */
-    static getLeadIds(
-        roster: LinePokemon[],
-        slotCount: number
-    ): (string | undefined)[] {
-        const used: string[] = [];
-
-        return Array.from({ length: slotCount }, (_, slot) => {
-            const lead = roster.find(
-                (pokemon) =>
-                    LineHelpers.canOccupy(pokemon, slot) &&
-                    !used.includes(pokemon.id)
-            );
-            if (lead) used.push(lead.id);
-            return lead?.id;
-        });
-    }
-
     /** pokemon's display name in dataSource, falling back to its slug. */
     static getName(dataSource: GameDataSource, pokemon: LinePokemon): string {
         return (
@@ -240,18 +195,27 @@ export default class LineHelpers {
         );
     }
 
-    /** Turn 1 of a line in battle with the player's picks: each side's leads on the field. */
+    /** Turn 1 of a line in battle with the player's picks, which always opens with each side's leads on the field: in each slot, the first Pokémon that can fill it and isn't already leading another. */
     static getOpeningTurn(
         battle: LineBattle,
         playerPokemon: LinePokemon[]
     ): LineTurn {
-        const leadIds = (side: LineSide): (string | undefined)[] =>
+        const side = (lineSide: LineSide): LineSlot[] =>
             LineHelpers.getLeadIds(
-                LineHelpers.getSideRoster(battle, playerPokemon, side),
+                LineHelpers.getSideRoster(battle, playerPokemon, lineSide),
                 battle.slotCount
-            );
+            ).map((pokemonId) => ({
+                ...LineHelpers.getBlankSlot(),
+                pokemonId,
+            }));
 
-        return LineHelpers.getFirstTurn(leadIds('player'), leadIds('trainer'));
+        return {
+            isRisky: false,
+            order: [],
+            player: side('player'),
+            text: '',
+            trainer: side('trainer'),
+        };
     }
 
     /** A line slot with nobody on the field and nothing flagged. */
@@ -278,26 +242,6 @@ export default class LineHelpers {
             player: blankSide(),
             text: '',
             trainer: blankSide(),
-        };
-    }
-
-    /** Turn 1, which always opens with each side's lead Pokémon (by id, per slot; undefined for an empty one) on the field. */
-    static getFirstTurn(
-        playerLeadIds: (string | undefined)[],
-        trainerLeadIds: (string | undefined)[]
-    ): LineTurn {
-        const side = (leadIds: (string | undefined)[]): LineSlot[] =>
-            leadIds.map((pokemonId) => ({
-                ...LineHelpers.getBlankSlot(),
-                pokemonId,
-            }));
-
-        return {
-            isRisky: false,
-            order: [],
-            player: side(playerLeadIds),
-            text: '',
-            trainer: side(trainerLeadIds),
         };
     }
 
@@ -342,6 +286,56 @@ export default class LineHelpers {
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------
+
+    // caught as a line builder Pokémon on the player's side, at full HP with
+    // no status and its current held item.
+    private static getBoxPokemon(
+        game: Game,
+        caught: CaughtPokemon
+    ): LinePokemon {
+        const slug = PokemonHelpers.getDisplaySlug(game.dataSource, caught);
+        const maxHp = LineHelpers.getMaxHp(
+            game,
+            slug,
+            caught.level,
+            StatHelpers.normalizeStats(caught.ivs, MAX_IV),
+            StatHelpers.normalizeStats(caught.evs, 0),
+            caught.nature
+        );
+
+        return {
+            boundSlot: undefined,
+            currentHp: maxHp,
+            heldItem: caught.heldItem,
+            id: `player:${caught.location}`,
+            isFixed: false,
+            maxHp,
+            moves: caught.moves,
+            side: 'player',
+            slug,
+            speciesSlug: caught.slug,
+            status: '',
+        };
+    }
+
+    // The id of the Pokémon that leads each of slotCount slots from roster,
+    // in order; undefined for a slot nobody can lead.
+    private static getLeadIds(
+        roster: LinePokemon[],
+        slotCount: number
+    ): (string | undefined)[] {
+        const used: string[] = [];
+
+        return Array.from({ length: slotCount }, (_, slot) => {
+            const lead = roster.find(
+                (pokemon) =>
+                    LineHelpers.canOccupy(pokemon, slot) &&
+                    !used.includes(pokemon.id)
+            );
+            if (lead) used.push(lead.id);
+            return lead?.id;
+        });
+    }
 
     // The first opposing position that has a Pokémon on the field.
     private static getDefaultTarget(
