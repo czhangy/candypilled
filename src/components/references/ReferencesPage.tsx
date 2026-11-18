@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import Tabs from '@/components/common/Tabs/Tabs';
+import AiTab from './AiTab/AiTab';
 import NaturesTab from './NaturesTab/NaturesTab';
 import styles from './ReferencesPage.module.scss';
 import TypesTab from './TypesTab/TypesTab';
@@ -14,6 +15,7 @@ const ReferencesPage: React.FC = () => {
     const TABS = [
         { id: 'types', label: 'Types' },
         { id: 'natures', label: 'Natures' },
+        { id: 'ai', label: 'AI' },
     ];
 
     // -------------------------------------------------------------------------
@@ -36,7 +38,7 @@ const ReferencesPage: React.FC = () => {
     // -------------------------------------------------------------------------
 
     const activeTab =
-        searchParams.get('tab') === 'natures' ? 'natures' : 'types';
+        TABS.find((tab) => tab.id === searchParams.get('tab'))?.id ?? 'types';
 
     // -------------------------------------------------------------------------
     // MARKUP
@@ -49,7 +51,9 @@ const ReferencesPage: React.FC = () => {
                 onTabChange={handleTabChange}
                 tabs={TABS}
             />
-            {activeTab === 'natures' ? <NaturesTab /> : <TypesTab />}
+            {activeTab === 'types' && <TypesTab />}
+            {activeTab === 'natures' && <NaturesTab />}
+            {activeTab === 'ai' && <AiTab />}
         </div>
     );
 };

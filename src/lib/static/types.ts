@@ -18,6 +18,24 @@ import {
 // A trainer AI flag from any generation.
 export type AiFlag = Gen3AiFlag | Gen4AiFlag;
 
+// One entry on the references page's AI tab: a title, a one-line summary and
+// its details. A breakpoint sits between entries and changes what applies
+// after it, so it is styled apart.
+export type AiEntry = {
+    details: string[];
+    isBreakpoint?: boolean;
+    summary: string;
+    title: string;
+};
+
+// One section of the references page's AI tab: a heading, a few general
+// points, then the entries that go into detail.
+export type AiSection = {
+    entries: AiEntry[];
+    overview: string[];
+    title: string;
+};
+
 export type StatValues = {
     atk: number;
     def: number;

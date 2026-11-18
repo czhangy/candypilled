@@ -23,20 +23,20 @@
 
         @media (hover: hover) {
             &:hover {
-                border-color: var(--accent-color);
+                border-color: var(--accent-color, $accent);
             }
         }
 
         &--active {
-            background: var(--accent-color);
-            border-color: var(--accent-color);
+            background: var(--accent-color, $accent);
+            border-color: var(--accent-color, $accent);
             color: var(--button-text-color, $background);
 
             @media (hover: hover) {
                 &:hover {
                     background: color-mix(
                         in srgb,
-                        var(--accent-color) 85%,
+                        var(--accent-color, $accent) 85%,
                         black 15%
                     );
                 }
