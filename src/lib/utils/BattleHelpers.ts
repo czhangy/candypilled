@@ -1,4 +1,5 @@
 import {
+    AiFlag,
     Battle,
     BattlePokemon,
     BattleTeam,
@@ -357,18 +358,19 @@ export default class BattleHelpers {
         teams: BattleTeam[],
         starter: string,
         defaultTrainerClass: string
-    ): { team: BattlePokemon[]; trainerClass: string }[] {
+    ): { aiFlags: AiFlag[]; team: BattlePokemon[]; trainerClass: string }[] {
         const matching = teams
             .filter((entry) =>
                 BattleHelpers.matchesCondition(entry.condition, starter)
             )
             .map((entry) => ({
+                aiFlags: entry.aiFlags,
                 team: entry.team,
                 trainerClass: entry.trainerClass ?? defaultTrainerClass,
             }));
 
         return matching.length > 0
             ? matching
-            : [{ team: [], trainerClass: defaultTrainerClass }];
+            : [{ aiFlags: [], team: [], trainerClass: defaultTrainerClass }];
     }
 }

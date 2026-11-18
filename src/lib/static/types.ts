@@ -306,7 +306,7 @@ export type BattleTeam = {
 export type BattleTeamGroup = {
     items?: BattleItem[];
     name: string;
-    teams: { team: BattlePokemon[]; trainerClass: string }[];
+    teams: { aiFlags: AiFlag[]; team: BattlePokemon[]; trainerClass: string }[];
     trainerClass: string;
 };
 

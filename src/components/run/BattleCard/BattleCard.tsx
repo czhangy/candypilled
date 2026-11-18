@@ -9,6 +9,7 @@ import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import StringHelpers from '@/lib/utils/StringHelpers';
 import TrainerHelpers from '@/lib/utils/TrainerHelpers';
+import AiFlagSection from './AiFlagSection/AiFlagSection';
 import styles from './BattleCard.module.scss';
 import BattleNotesModal from './BattleNotesModal/BattleNotesModal';
 import PokemonSlot from './PokemonSlot/PokemonSlot';
@@ -74,6 +75,7 @@ const BattleCard: React.FC<BattleCardProps> = ({
     // (badges/metadata); every other row is a bare TrainerSprite.
     const rows = teamGroups.flatMap((group) =>
         group.teams.map((row) => ({
+            aiFlags: row.aiFlags,
             items: group.items,
             name: group.name,
             team: row.team,
@@ -81,6 +83,15 @@ const BattleCard: React.FC<BattleCardProps> = ({
         }))
     );
     const isStacked = rows.length > 1;
+    // One AI flag list when every trainer runs the same flags, otherwise one
+    // per trainer, each labeled with its trainer's name.
+    const flagRows = rows.filter((row) => row.aiFlags.length > 0);
+    const hasSharedFlags = flagRows.every(
+        (row) => row.aiFlags.join() === flagRows[0].aiFlags.join()
+    );
+    const aiFlagGroups = (hasSharedFlags ? flagRows.slice(0, 1) : flagRows).map(
+        (row) => ({ flags: row.aiFlags, name: row.name })
+    );
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -166,6 +177,12 @@ const BattleCard: React.FC<BattleCardProps> = ({
                     onClose={handleWipeConfirmClose}
                     onConfirm={handleWipeConfirm}
                     title="Wipe?"
+                />
+            )}
+            {aiFlagGroups.length > 0 && (
+                <AiFlagSection
+                    groups={aiFlagGroups}
+                    showNames={!hasSharedFlags}
                 />
             )}
             <div className={styles.body}>
