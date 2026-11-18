@@ -426,9 +426,11 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                 } as React.CSSProperties
             }
         >
-            <Link className={styles.back} href="/runs">
-                ← Runs
-            </Link>
+            {run.wipe && (
+                <Link className={styles.back} href="/runs">
+                    ← Runs
+                </Link>
+            )}
             <div className={styles['title-row']}>
                 <div className={styles['title-group']}>
                     <h1 className={styles.title}>
@@ -496,10 +498,17 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                         ref={stickyHeaderRef}
                     >
                         <div className={styles['sticky-left']}>
+                            <Link className={styles.back} href="/runs">
+                                ← Runs
+                            </Link>
                             {isImportScrolledOut && (
-                                <Link className={styles.back} href="/runs">
-                                    ← Runs
-                                </Link>
+                                <button
+                                    className={styles['sticky-import']}
+                                    onClick={handleImportClick}
+                                    type="button"
+                                >
+                                    Import
+                                </button>
                             )}
                             {activeTab === 'split' && !isImportScrolledOut && (
                                 <SplitHeader
@@ -517,15 +526,6 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                             onTabChange={handleTabChange}
                             tabs={visibleTabs}
                         />
-                        {isImportScrolledOut && (
-                            <button
-                                className={styles['sticky-import']}
-                                onClick={handleImportClick}
-                                type="button"
-                            >
-                                Import
-                            </button>
-                        )}
                     </div>
                     {activeTab === 'split' && (
                         <SplitTab
