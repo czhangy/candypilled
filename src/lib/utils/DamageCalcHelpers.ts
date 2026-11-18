@@ -178,24 +178,93 @@ export default class DamageCalcHelpers {
             return null;
         }
 
-        const { damage } = results[0].result;
-        const hitRolls =
-            Array.isArray(damage) && Array.isArray(damage[0])
-                ? (damage[0] as number[])
-                : undefined;
-        const amounts =
-            hitRolls ??
-            (Array.isArray(damage) ? (damage as number[]) : [damage]);
+        const { perHit, rolls } = DamageCalcHelpers.getDamageRolls(
+            results[0].result
+        );
 
-        return {
-            amounts: [...amounts].sort((a, b) => a - b),
-            perHit: hitRolls !== undefined,
-        };
+        return { amounts: [...rolls].sort((a, b) => a - b), perHit };
+    }
+
+    /**
+     * The recoil HP the attacker takes from each damage roll of moveName
+     * against defender in generation under field, sorted ascending
+     * (duplicates kept, since each entry represents one of the possible
+     * rolls), or null if moveName has no recoil (or the attacker's Rock
+     * Head or Magic Guard negates it), can't deal damage, is multi-hit or
+     * either Pokémon fails to resolve to @smogon/calc data. Recoil is a
+     * fraction of the damage dealt (capped at the defender's current HP),
+     * floored to at least 1 HP. Crash damage on a miss isn't included.
+     */
+    static getPossibleRecoilAmounts(
+        generation: number,
+        dataSource: GameDataSource,
+        attacker: CalcPokemonInput,
+        defender: CalcPokemonInput,
+        moveName: string,
+        field: CalcField
+    ): number[] | null {
+        const results = DamageCalcHelpers.getResults(
+            generation,
+            dataSource,
+            attacker,
+            defender,
+            moveName,
+            field
+        );
+        if (!results) return null;
+
+        const { result } = results[0];
+        const recoilFraction = result.move.recoil;
+        if (
+            !recoilFraction ||
+            recoilFraction[0] === 0 ||
+            result.attacker.hasAbility('Rock Head', 'Magic Guard')
+        ) {
+            return null;
+        }
+
+        const { perHit, rolls } = DamageCalcHelpers.getDamageRolls(result);
+        if (perHit || Math.max(...rolls) <= 0) return null;
+
+        const [numerator, denominator] = recoilFraction;
+        const defenderHp = result.defender.curHP();
+
+        return rolls
+            .map((roll) =>
+                Math.max(
+                    1,
+                    Math.floor(
+                        (Math.min(roll, defenderHp) * numerator) / denominator
+                    )
+                )
+            )
+            .sort((a, b) => a - b);
     }
 
     // -------------------------------------------------------------------------
     // PRIVATE
     // -------------------------------------------------------------------------
+
+    // The damage rolls of result: a single hit's rolls (`perHit`) for a
+    // multi-hit move, since every hit rolls independently, else the
+    // move's only rolls.
+    private static getDamageRolls(result: Result): {
+        perHit: boolean;
+        rolls: number[];
+    } {
+        const { damage } = result;
+        const hitRolls =
+            Array.isArray(damage) && Array.isArray(damage[0])
+                ? (damage[0] as number[])
+                : undefined;
+
+        return {
+            perHit: hitRolls !== undefined,
+            rolls:
+                hitRolls ??
+                (Array.isArray(damage) ? (damage as number[]) : [damage]),
+        };
+    }
 
     private static isStatusMove(
         dataSource: GameDataSource,
@@ -459,6 +528,7 @@ export default class DamageCalcHelpers {
             ) as CalcMoveData['category'],
             priority: moveData.priority,
             type: DamageCalcHelpers.capitalize(type) as CalcMoveData['type'],
+            ...(values.recoil && { recoil: values.recoil }),
         };
     }
 

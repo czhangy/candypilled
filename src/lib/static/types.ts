@@ -871,6 +871,11 @@ export type MoveValuesByGeneration = {
     effect: string;
     effectChance: number | null;
     description: string;
+    // Recoil as a [numerator, denominator] fraction of the damage dealt.
+    // Omitted for nearly every move, since the damage calculator already
+    // knows each generation's vanilla fraction; set it only where a game's
+    // fraction differs from vanilla ([0, 1] removes a move's recoil).
+    recoil?: [number, number];
 };
 
 export type MoveData = {

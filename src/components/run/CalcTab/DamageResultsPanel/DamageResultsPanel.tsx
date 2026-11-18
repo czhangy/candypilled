@@ -85,6 +85,17 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
                   activeField
               )
             : null;
+    const possibleRecoilAmounts =
+        canDescribeActiveMove && activeAttacker && activeDefender
+            ? DamageCalcHelpers.getPossibleRecoilAmounts(
+                  generation,
+                  dataSource,
+                  activeAttacker,
+                  activeDefender,
+                  activeMoveName,
+                  activeField
+              )
+            : null;
 
     // -------------------------------------------------------------------------
     // HANDLERS
@@ -156,6 +167,12 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
                     Possible damage amounts
                     {possibleDamageAmounts.perHit ? ' (per hit)' : ''}: (
                     {possibleDamageAmounts.amounts.join(', ')})
+                </p>
+            )}
+            {possibleRecoilAmounts && (
+                <p className={styles['possible-damage']}>
+                    Possible recoil amounts: ({possibleRecoilAmounts.join(', ')}
+                    )
                 </p>
             )}
         </div>
