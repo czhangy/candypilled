@@ -12,6 +12,7 @@ import TATE_AND_LIZA from '@/lib/data/emerald/splits/tate-and-liza';
 import WALLACE from '@/lib/data/emerald/splits/wallace';
 import WATTSON from '@/lib/data/emerald/splits/wattson';
 import WINONA from '@/lib/data/emerald/splits/winona';
+import { EMERALD_MOVE_AI } from '@/lib/data/move-ai/emerald';
 import {
     BadgeAssetFolder,
     GameVersionGroup,
@@ -36,6 +37,7 @@ const EMERALD: Game = {
     accentColor: '#009652',
     encounters: ENCOUNTERS,
     battles: BATTLES,
+    moveAi: EMERALD_MOVE_AI,
     metLocationById: MET_LOCATIONS,
     resources: [
         {

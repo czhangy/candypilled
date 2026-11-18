@@ -1,5 +1,6 @@
 import SearchableList from '@/components/common/SearchableList/SearchableList';
 import { Game } from '@/lib/static/types';
+import MoveHelpers from '@/lib/utils/MoveHelpers';
 import MoveDetail from './MoveDetail/MoveDetail';
 import styles from './MovesSubtab.module.scss';
 
@@ -39,6 +40,7 @@ const MovesSubtab: React.FC<MovesSubtabProps> = ({
                 sortAlphabetically
             />
             <MoveDetail
+                aiRoutines={MoveHelpers.getMoveAi(game.moveAi, effectiveMove)}
                 dataSource={game.dataSource}
                 generation={game.generation}
                 moveSlug={effectiveMove}

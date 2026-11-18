@@ -1,16 +1,18 @@
 import CategoryBadge from '@/components/common/CategoryBadge/CategoryBadge';
 import TypeBadge from '@/components/common/TypeBadge/TypeBadge';
-import { GameDataSource } from '@/lib/static/types';
+import { GameDataSource, MoveAiRule } from '@/lib/static/types';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import styles from './MoveDetail.module.scss';
 
 type MoveDetailProps = {
+    aiRoutines: MoveAiRule[] | undefined;
     dataSource: GameDataSource;
     generation: number;
     moveSlug: string;
 };
 
 const MoveDetail: React.FC<MoveDetailProps> = ({
+    aiRoutines,
     dataSource,
     generation,
     moveSlug,
@@ -182,6 +184,31 @@ const MoveDetail: React.FC<MoveDetailProps> = ({
                                                     change.after
                                                 )}
                                             </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                        {aiRoutines && (
+                            <div className={styles.ai}>
+                                <span className={styles['ai-label']}>AI</span>
+                                <ul className={styles['ai-list']}>
+                                    {aiRoutines.map((routine) => (
+                                        <li key={routine.flag}>
+                                            <span className={styles['ai-flag']}>
+                                                {routine.flag}
+                                            </span>
+                                            <ul
+                                                className={styles['ai-details']}
+                                            >
+                                                {routine.details.map(
+                                                    (detail) => (
+                                                        <li key={detail}>
+                                                            {detail}
+                                                        </li>
+                                                    )
+                                                )}
+                                            </ul>
                                         </li>
                                     ))}
                                 </ul>

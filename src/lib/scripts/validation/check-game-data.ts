@@ -173,19 +173,22 @@ const getImpliedDoubleFlag = (game: Game): AiFlag | undefined => {
         : Gen3AiFlag.DoubleBattle;
 };
 
+const getValidAiFlags = (game: Game): AiFlag[] =>
+    (game.generation === 4
+        ? Object.values(Gen4AiFlag)
+        : Object.values(Gen3AiFlag)
+    ).filter(
+        (flag) =>
+            flag !== Gen3AiFlag.DoubleBattle ||
+            getImpliedDoubleFlag(game) !== undefined
+    );
+
 // A team's aiFlags must come from its generation's enum, and carry the
 // flag the game adds in double battles exactly when the battle is one. A
 // tag partner is exempt from the second rule: it has no metadata of its own.
 const checkAiFlags = (game: Game): string[] => {
     const impliedDoubleFlag = getImpliedDoubleFlag(game);
-    const validFlags: AiFlag[] = (
-        game.generation === 4
-            ? Object.values(Gen4AiFlag)
-            : Object.values(Gen3AiFlag)
-    ).filter(
-        (flag) =>
-            flag !== Gen3AiFlag.DoubleBattle || impliedDoubleFlag !== undefined
-    );
+    const validFlags = getValidAiFlags(game);
     const tagPartnerKeys = getTagPartnerKeys(game);
 
     return Object.entries(game.battles).flatMap(([key, battle]) => {
@@ -214,6 +217,35 @@ const checkAiFlags = (game: Game): string[] => {
             ...getDoubleFlagViolation(team),
         ]);
     });
+};
+
+// Move AI notes must name real moves and real rules, use flags from the
+// game's generation, and leave no rule unused.
+const checkMoveAi = (game: Game): string[] => {
+    const validFlags = getValidAiFlags(game);
+    const { moves, rules } = game.moveAi;
+    const usedKeys = new Set(Object.values(moves).flat());
+
+    return [
+        ...Object.entries(rules).flatMap(([key, rule]) => [
+            ...(validFlags.includes(rule.flag)
+                ? []
+                : [
+                      `move AI rule "${key}": AI flag "${rule.flag}" is not valid for ${game.name}`,
+                  ]),
+            ...(usedKeys.has(key)
+                ? []
+                : [`move AI rule "${key}": not used by any move`]),
+        ]),
+        ...Object.entries(moves).flatMap(([slug, keys]) => [
+            ...(slug in game.dataSource.moves
+                ? []
+                : [`move AI "${slug}": unknown move`]),
+            ...keys
+                .filter((key) => !(key in rules))
+                .map((key) => `move AI "${slug}": unknown rule "${key}"`),
+        ]),
+    ];
 };
 
 const checkMetLocations = (
@@ -272,6 +304,7 @@ const checkGame = (game: Game): Report => {
             ...checkTrainerClasses(game),
             ...checkBattleMetadata(game),
             ...checkAiFlags(game),
+            ...checkMoveAi(game),
             ...(hasMetTable
                 ? checkMetLocations(game, config.unmappedLocations)
                 : []),

@@ -1,4 +1,5 @@
 import { RENEGADE_PLATINUM_DATA_SOURCE } from '@/lib/data/data-sources';
+import { RENEGADE_PLATINUM_MOVE_AI } from '@/lib/data/move-ai/renegade-platinum';
 import {
     BadgeAssetFolder,
     GameVersionGroup,
@@ -51,6 +52,7 @@ const RENEGADE_PLATINUM: Game = {
     accentColor: '#FFD500',
     encounters: ENCOUNTERS,
     battles: BATTLES,
+    moveAi: RENEGADE_PLATINUM_MOVE_AI,
     metLocationById: MET_LOCATIONS,
     resources: [
         {

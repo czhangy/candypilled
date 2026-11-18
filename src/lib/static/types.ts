@@ -36,6 +36,22 @@ export type AiSection = {
     title: string;
 };
 
+// How one AI flag treats a move: the score changes and the conditions behind
+// them. A rule covers one situation; the Data tab merges a move's rules by
+// flag for display.
+export type MoveAiRule = {
+    details: string[];
+    flag: AiFlag;
+};
+
+// A game's AI notes for its moves. Each rule is written once and shared by
+// every move it applies to; `moves` lists, per move slug, the keys of the
+// rules that apply to it, in the order the AI runs them.
+export type MoveAiData = {
+    moves: Record<string, string[]>;
+    rules: Record<string, MoveAiRule>;
+};
+
 export type StatValues = {
     atk: number;
     def: number;
@@ -699,6 +715,8 @@ export type Game = {
     // Every battle's trainer info, keyed by battle key
     // (BattleHelpers.getBattleKey).
     battles: Record<string, BattleData>;
+    // How each AI flag treats each move.
+    moveAi: MoveAiData;
     // Game-specific messages shown at random on the run page when a run is
     // marked as a wipe, alongside the run page's default messages.
     wipeMessages: string[];

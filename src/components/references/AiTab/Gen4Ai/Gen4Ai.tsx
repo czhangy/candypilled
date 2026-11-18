@@ -32,7 +32,7 @@ const Gen4Ai: React.FC = () => {
             details: [
                 '+4 to a move whose maximum non-critical damage roll KOs the target, and +2 more for +1 priority moves. Explosion gets no bonus.',
                 '-1 to a move that is not the AI’s highest-damage move.',
-                '80% chance of -2 for Explosion, Focus Punch and Sucker Punch when they would otherwise be its strongest move.',
+                '80% chance of -2 for Explosion, Focus Punch and Sucker Punch whenever the move cannot KO.',
                 '69% chance of +2 for a 4x super-effective move.',
             ],
         },
