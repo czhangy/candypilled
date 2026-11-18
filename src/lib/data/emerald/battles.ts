@@ -1,4 +1,4 @@
-import { BattleMetadata, Nature } from '@/lib/static/enums';
+import { BattleMetadata, Gen3AiFlag, Nature } from '@/lib/static/enums';
 import { BattleData } from '@/lib/static/types';
 
 export const BATTLES: Record<string, BattleData> = {
@@ -10,6 +10,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'mudkip' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'treecko',
@@ -23,6 +28,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'treecko' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.SetupFirstTurn,
+                ],
                 team: [
                     {
                         slug: 'torchic',
@@ -36,6 +46,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'torchic' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'mudkip',
@@ -57,6 +72,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'mudkip' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'treecko',
@@ -70,6 +90,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'treecko' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'torchic',
@@ -83,6 +108,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'torchic' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'mudkip',
@@ -103,6 +133,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Daisy',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'shroomish',
@@ -131,6 +162,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Miguel',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'skitty',
@@ -152,6 +184,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Andrew',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'magikarp',
@@ -188,6 +221,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Amy & Liv',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'plusle',
@@ -216,6 +250,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Rhett',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'makuhita',
@@ -236,6 +271,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Marcos',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'voltorb',
@@ -256,6 +292,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Isabelle',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'marill',
@@ -276,6 +313,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Pete',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tentacool',
@@ -296,6 +334,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Calvin',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'poochyena',
@@ -316,6 +355,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Rick',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wurmple',
@@ -344,6 +384,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tiana',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zigzagoon',
@@ -372,6 +413,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Allen',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zigzagoon',
@@ -400,6 +442,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Billy',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zigzagoon',
@@ -428,6 +471,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Darian',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'magikarp',
@@ -449,6 +493,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zigzagoon',
@@ -471,6 +516,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zigzagoon',
@@ -492,6 +538,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Haley',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'lotad',
@@ -520,6 +567,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Gina & Mia',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'seedot',
@@ -548,6 +596,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ivan',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'magikarp',
@@ -584,6 +633,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Lyle',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wurmple',
@@ -628,6 +678,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'James',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'nincada',
@@ -656,6 +707,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'poochyena',
@@ -677,6 +729,7 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'mudkip' },
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'lotad',
@@ -698,6 +751,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'treecko' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'slugma',
@@ -719,6 +777,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'torchic' },
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wingull',
@@ -748,6 +807,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'mudkip' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'lotad',
@@ -769,6 +833,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'treecko' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'torkoal',
@@ -790,6 +859,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'torchic' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.SetupFirstTurn,
+                ],
                 team: [
                     {
                         slug: 'wingull',
@@ -818,6 +892,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Timothy',
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'hariyama',
@@ -838,6 +917,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Koichi',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'machop',
@@ -866,6 +946,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kyra',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'doduo',
@@ -894,6 +975,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jaiden',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'ninjask',
@@ -922,6 +1004,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Alix',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'kadabra',
@@ -947,6 +1030,7 @@ export const BATTLES: Record<string, BattleData> = {
             trainerClass: 'battle-girl',
             teams: [
                 {
+                    aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                     team: [
                         {
                             slug: 'meditite',
@@ -976,6 +1060,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Nob',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'machop',
@@ -996,6 +1081,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cyndy',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'meditite',
@@ -1024,6 +1110,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Hector',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zangoose',
@@ -1052,6 +1139,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Marlene',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'meditite',
@@ -1080,6 +1168,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Joey',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'machop',
@@ -1100,6 +1189,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jose',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wurmple',
@@ -1128,6 +1218,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Clark',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'geodude',
@@ -1148,6 +1239,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Janice',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'marill',
@@ -1168,6 +1260,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Karen',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'shroomish',
@@ -1188,6 +1281,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jerry',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'ralts',
@@ -1209,6 +1303,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'lotad',
@@ -1238,6 +1333,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dawson',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zigzagoon',
@@ -1267,6 +1363,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Devan',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'geodude',
@@ -1295,6 +1392,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Johnson',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'shroomish',
@@ -1324,6 +1422,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'geodude',
@@ -1374,6 +1477,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Josh',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'geodude',
@@ -1395,6 +1499,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tommy',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'geodude',
@@ -1423,6 +1528,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Marc',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'geodude',
@@ -1451,6 +1557,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'poochyena',
@@ -1471,6 +1578,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Mike',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'geodude',
@@ -1507,6 +1615,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Denise',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wingull',
@@ -1535,6 +1644,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tony',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'carvanha',
@@ -1555,6 +1665,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Lisa & Ray',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'goldeen',
@@ -1583,6 +1694,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Darrin',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tentacool',
@@ -1619,6 +1731,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Beth',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'goldeen',
@@ -1639,6 +1752,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Camron',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'staryu',
@@ -1659,6 +1773,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ned',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tentacool',
@@ -1679,6 +1794,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Elliot',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'magikarp',
@@ -1715,6 +1831,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Douglas',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tentacool',
@@ -1743,6 +1860,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kyla',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wailmer',
@@ -1763,6 +1881,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Huey',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wingull',
@@ -1791,6 +1910,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Edmond',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wingull',
@@ -1811,6 +1931,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Hailey',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'marill',
@@ -1831,6 +1952,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ricky',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zigzagoon',
@@ -1852,6 +1974,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Lola',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'azurill',
@@ -1880,6 +2003,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Chandler',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tentacool',
@@ -1908,6 +2032,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Austina',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'marill',
@@ -1928,6 +2053,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Gwen',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'marill',
@@ -1948,6 +2074,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'David',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tentacool',
@@ -1976,6 +2103,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Alice',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'goldeen',
@@ -2012,6 +2140,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Carter',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wailmer',
@@ -2040,6 +2169,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Elijah',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'skarmory',
@@ -2068,6 +2198,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Mel & Paul',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'dustox',
@@ -2098,6 +2229,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Simon',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'azurill',
@@ -2126,6 +2258,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Johanna',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'goldeen',
@@ -2146,6 +2279,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dwayne',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wingull',
@@ -2183,6 +2317,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Team Aqua Grunts',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'carvanha',
@@ -2195,6 +2330,7 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zubat',
@@ -2224,6 +2360,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'mudkip' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'slugma',
@@ -2253,6 +2394,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'treecko' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'wingull',
@@ -2282,6 +2428,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'torchic' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'lombre',
@@ -2319,6 +2470,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'mudkip' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'wingull',
@@ -2348,6 +2504,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'treecko' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'wingull',
@@ -2377,6 +2538,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'torchic' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'lombre',
@@ -2413,6 +2579,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Isabel',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'plusle',
@@ -2443,6 +2610,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kaleb',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'minun',
@@ -2473,6 +2641,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Timmy',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'aron',
@@ -2501,6 +2670,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Edwin',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'lombre',
@@ -2529,6 +2699,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Joseph',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'electrike',
@@ -2557,6 +2728,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Edward',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'abra',
@@ -2578,6 +2750,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Alyssa',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'magnemite',
@@ -2598,6 +2771,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dale',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tentacool',
@@ -2642,6 +2816,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jaclyn',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'abra',
@@ -2663,6 +2838,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Anthony',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'magnemite',
@@ -2691,6 +2867,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Abigail',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'magnemite',
@@ -2711,6 +2888,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Benjamin',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'magnemite',
@@ -2731,6 +2909,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jasmine',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'magnemite',
@@ -2767,6 +2946,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jacob',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'voltorb',
@@ -2803,6 +2983,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Sally',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'oddish',
@@ -2823,6 +3004,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Eddie',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zigzagoon',
@@ -2851,6 +3033,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Robin',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'skitty',
@@ -2887,6 +3070,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ted',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'ralts',
@@ -2907,6 +3091,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Paul',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'numel',
@@ -2943,6 +3128,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Georgia',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'shroomish',
@@ -2971,6 +3157,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Justin',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'kecleon',
@@ -2991,6 +3178,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Martha',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'skitty',
@@ -3019,6 +3207,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Alan',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'geodude',
@@ -3055,6 +3244,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cora',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'meditite',
@@ -3075,6 +3265,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Paula',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'breloom',
@@ -3095,6 +3286,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Yuji',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'makuhita',
@@ -3124,6 +3316,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'swablu',
@@ -3152,6 +3349,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Benny',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'swellow',
@@ -3189,6 +3387,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'cacturne',
@@ -3209,6 +3412,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Joshua',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'kadabra',
@@ -3237,6 +3441,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Alexis',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'kirlia',
@@ -3265,6 +3470,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Patricia',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'banette',
@@ -3293,6 +3499,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Alvaro',
         teams: [
             {
+                aiFlags: [],
                 team: [
                     {
                         slug: 'banette',
@@ -3321,6 +3528,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Mariela',
         teams: [
             {
+                aiFlags: [],
                 team: [
                     {
                         slug: 'chimecho',
@@ -3341,6 +3549,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Everett',
         teams: [
             {
+                aiFlags: [],
                 team: [
                     {
                         slug: 'wobbuffet',
@@ -3361,6 +3570,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Wally',
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'ralts',
@@ -3381,6 +3595,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Rose',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'roselia',
@@ -3417,6 +3632,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Wade',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tentacool',
@@ -3437,6 +3653,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dalton',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'magnemite',
@@ -3465,6 +3682,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Deandre',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zigzagoon',
@@ -3501,6 +3719,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Gabby & Ty',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'magnemite',
@@ -3529,6 +3748,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Barny',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tentacool',
@@ -3557,6 +3777,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Chester',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'taillow',
@@ -3585,6 +3806,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Perry',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wingull',
@@ -3605,6 +3827,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Gabby & Ty',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'magnemite',
@@ -3633,6 +3856,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Travis',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'sandshrew',
@@ -3653,6 +3877,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Irene',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'shroomish',
@@ -3681,6 +3906,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Hayden',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'numel',
@@ -3701,6 +3927,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Bianca',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'shroomish',
@@ -3721,6 +3948,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Bryan',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'sandshrew',
@@ -3749,6 +3977,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Celia',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'marill',
@@ -3777,6 +4006,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Branden',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'taillow',
@@ -3807,6 +4037,7 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 trainerClass: 'pokefan-m',
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'taillow',
@@ -3830,6 +4061,7 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 trainerClass: 'pokefan-f',
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.TryToFaint],
                 team: [
                     {
                         slug: 'roselia',
@@ -3844,6 +4076,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 trainerClass: 'lass',
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'marill',
@@ -3873,6 +4110,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 trainerClass: 'expert-f',
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'meditite',
@@ -3899,6 +4141,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tyron',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'sandshrew',
@@ -3919,6 +4162,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Celina',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'roselia',
@@ -3940,6 +4184,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'super-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'wingull',
@@ -3977,6 +4226,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'super-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'electrike',
@@ -4013,6 +4267,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Daisuke',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'machop',
@@ -4033,6 +4288,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Drew',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'sandshrew',
@@ -4054,6 +4310,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Beau',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'baltoy',
@@ -4108,6 +4365,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Heidi',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'sandshrew',
@@ -4143,6 +4401,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Becky',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'sandshrew',
@@ -4178,6 +4437,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dusty',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'sandslash',
@@ -4199,6 +4459,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dylan',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'doduo',
@@ -4219,6 +4480,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Anna & Meg',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'zigzagoon',
@@ -4254,6 +4516,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Isaac',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'whismur',
@@ -4314,6 +4577,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Maria',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'doduo',
@@ -4334,6 +4598,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Derek',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'dustox',
@@ -4362,6 +4627,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Brandi',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'ralts',
@@ -4382,6 +4648,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Melina',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'doduo',
@@ -4402,6 +4669,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Aisha',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'meditite',
@@ -4422,6 +4690,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Lydia',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wingull',
@@ -4482,6 +4751,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Laura',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'meditite',
@@ -4502,6 +4772,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Lilith',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'meditite',
@@ -4522,6 +4793,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Brenden',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'machop',
@@ -4542,6 +4814,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Takao',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'machop',
@@ -4562,6 +4835,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cristian',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'makuhita',
@@ -4582,6 +4856,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jocelyn',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'meditite',
@@ -4603,6 +4878,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'super-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'machop',
@@ -4658,6 +4938,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Vivian',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'meditite',
@@ -4693,6 +4974,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kirk',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'electrike',
@@ -4728,6 +5010,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ben',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zigzagoon',
@@ -4763,6 +5046,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Angelo',
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'illumise',
@@ -4793,6 +5081,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Shawn',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'voltorb',
@@ -4822,6 +5111,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'super-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'voltorb',
@@ -4886,6 +5180,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Larry',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'nuzleaf',
@@ -4906,6 +5201,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Carol',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'taillow',
@@ -4934,6 +5230,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Trent',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'geodude',
@@ -4970,6 +5267,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Brice',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'numel',
@@ -4998,6 +5296,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Bryant',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'numel',
@@ -5026,6 +5325,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Shayla',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'shroomish',
@@ -5054,6 +5354,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jaylen',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'trapinch',
@@ -5074,6 +5375,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Lawrence',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'baltoy',
@@ -5099,6 +5401,7 @@ export const BATTLES: Record<string, BattleData> = {
             trainerClass: 'ninja-boy',
             teams: [
                 {
+                    aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                     team: [
                         {
                             slug: 'koffing',
@@ -5128,6 +5431,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Wyatt',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'aron',
@@ -5156,6 +5460,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Madeline',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'numel',
@@ -5177,6 +5482,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tori & Tia',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'spinda',
@@ -5205,6 +5511,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Lao',
         teams: [
             {
+                aiFlags: [],
                 team: [
                     {
                         slug: 'koffing',
@@ -5259,6 +5566,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dillon',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'aron',
@@ -5279,6 +5587,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Sophie',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'marill',
@@ -5307,6 +5616,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Coby',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'skarmory',
@@ -5336,6 +5646,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'mudkip' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'tropius',
@@ -5373,6 +5688,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'treecko' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'tropius',
@@ -5410,6 +5730,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'torchic' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'tropius',
@@ -5455,6 +5780,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'mudkip' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'tropius',
@@ -5492,6 +5822,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'treecko' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'tropius',
@@ -5529,6 +5864,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'torchic' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'tropius',
@@ -5573,6 +5913,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Imani',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'marill',
@@ -5593,6 +5934,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dominik',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tentacool',
@@ -5613,6 +5955,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Foster',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'sandshrew',
@@ -5643,6 +5986,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Beverly',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wingull',
@@ -5671,6 +6015,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Andres',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'sandshrew',
@@ -5699,6 +6044,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Josue',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'taillow',
@@ -5727,6 +6073,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Luis',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'carvanha',
@@ -5747,6 +6094,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Missy',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'goldeen',
@@ -5767,6 +6115,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Matthew',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'carvanha',
@@ -5787,6 +6136,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tara',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'horsea',
@@ -5816,6 +6166,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'manectric',
@@ -5852,6 +6207,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cory',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wingull',
@@ -5888,6 +6244,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jerome',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tentacruel',
@@ -5908,6 +6265,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Nolan',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'barboach',
@@ -5928,6 +6286,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kai',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'barboach',
@@ -5945,6 +6304,7 @@ export const BATTLES: Record<string, BattleData> = {
             trainerClass: 'picnicker',
             teams: [
                 {
+                    aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                     team: [
                         {
                             slug: 'nuzleaf',
@@ -5966,6 +6326,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Claude',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'magikarp',
@@ -6002,6 +6363,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Nancy',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'marill',
@@ -6030,6 +6392,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tyra & Ivy',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'roselia',
@@ -6070,6 +6433,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Shane',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'sandshrew',
@@ -6098,6 +6462,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Steve',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'aron',
@@ -6118,6 +6483,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Bernie',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'slugma',
@@ -6146,6 +6512,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Lucas',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'geodude',
@@ -6174,6 +6541,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Angelina',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'lombre',
@@ -6202,6 +6570,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Lenny',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'geodude',
@@ -6230,6 +6599,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kent',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'ninjask',
@@ -6250,6 +6620,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Donald',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wurmple',
@@ -6286,6 +6657,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Greg',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'volbeat',
@@ -6314,6 +6686,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Taylor',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wurmple',
@@ -6350,6 +6723,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Doug',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'nincada',
@@ -6378,6 +6752,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Brent',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'surskit',
@@ -6398,6 +6773,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Chris',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'magikarp',
@@ -6443,6 +6819,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.SetupFirstTurn,
+                ],
                 team: [
                     {
                         slug: 'gloom',
@@ -6472,6 +6853,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'breloom',
@@ -6492,6 +6878,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Rachel',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'goldeen',
@@ -6512,6 +6899,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Phil',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'swellow',
@@ -6532,6 +6920,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Takashi',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.TryToFaint],
                 team: [
                     {
                         slug: 'ninjask',
@@ -6560,6 +6949,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dayton',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'slugma',
@@ -6588,6 +6978,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Hugh',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wingull',
@@ -6617,6 +7008,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'mudkip' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'pelipper',
@@ -6646,6 +7042,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'treecko' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'lombre',
@@ -6675,6 +7076,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'torchic' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'slugma',
@@ -6712,6 +7118,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'mudkip' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'pelipper',
@@ -6741,6 +7152,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'treecko' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'lombre',
@@ -6770,6 +7186,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'torchic' },
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'slugma',
@@ -6806,6 +7227,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Fabian',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'manectric',
@@ -6826,6 +7248,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Yasu',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.TryToFaint],
                 team: [
                     {
                         slug: 'ninjask',
@@ -6846,6 +7269,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Hideo',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.TryToFaint],
                 team: [
                     {
                         slug: 'koffing',
@@ -6886,6 +7310,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'carvanha',
@@ -6906,6 +7331,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '3',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zubat',
@@ -6934,6 +7360,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '4',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'poochyena',
@@ -6962,6 +7389,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zubat',
@@ -6990,6 +7418,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '5',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'poochyena',
@@ -7026,6 +7455,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Shelly',
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'carvanha',
@@ -7054,6 +7488,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Clarissa',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'roselia',
@@ -7082,6 +7517,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Gabby & Ty',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'magneton',
@@ -7110,6 +7546,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Robert',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'swablu',
@@ -7130,6 +7567,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Colin',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wingull',
@@ -7159,6 +7597,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'manectric',
@@ -7180,6 +7623,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Angelica',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'castform',
@@ -7206,6 +7650,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Riley',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.TryToFaint],
                 team: [
                     {
                         slug: 'nincada',
@@ -7246,6 +7691,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Callie',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'meditite',
@@ -7275,6 +7721,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'sableye',
@@ -7296,6 +7747,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.SetupFirstTurn,
+                ],
                 team: [
                     {
                         slug: 'lotad',
@@ -7333,6 +7789,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'seedot',
@@ -7369,6 +7830,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jeffrey',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'surskit',
@@ -7405,6 +7867,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Keigo',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.TryToFaint],
                 team: [
                     {
                         slug: 'koffing',
@@ -7445,6 +7908,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Chip',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'baltoy',
@@ -7489,6 +7953,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cale',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'dustox',
@@ -7517,6 +7982,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tammy',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'duskull',
@@ -7545,6 +8011,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jessica',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'kecleon',
@@ -7575,6 +8042,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kate & Joy',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'spinda',
@@ -7615,6 +8083,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Pat',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'poochyena',
@@ -7675,6 +8144,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Myles',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'makuhita',
@@ -7735,6 +8205,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Walter',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'manectric',
@@ -7755,6 +8226,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Vanessa',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'pikachu',
@@ -7776,6 +8248,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'manectric',
@@ -7805,6 +8282,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'loudred',
@@ -7833,6 +8315,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Davis',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'pinsir',
@@ -7854,6 +8337,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'absol',
@@ -7874,6 +8362,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Violet',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'roselia',
@@ -7902,6 +8391,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Miu & Yuki',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'beautifly',
@@ -7930,6 +8420,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kindra',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'duskull',
@@ -7958,6 +8449,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ed',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zangoose',
@@ -7987,6 +8479,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.SetupFirstTurn,
+                ],
                 team: [
                     {
                         slug: 'mawile',
@@ -8037,6 +8534,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'swellow',
@@ -8114,6 +8616,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Fernando',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'electrike',
@@ -8142,6 +8645,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Alberto',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'pelipper',
@@ -8170,6 +8674,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jacki',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'kadabra',
@@ -8198,6 +8703,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Fredrick',
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'makuhita',
@@ -8226,6 +8736,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cameron',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'solrock',
@@ -8246,6 +8757,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jonas',
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                    Gen3AiFlag.DoubleBattle,
+                ],
                 team: [
                     {
                         slug: 'koffing',
@@ -8269,6 +8786,12 @@ export const BATTLES: Record<string, BattleData> = {
             trainerClass: 'parasol-lady',
             teams: [
                 {
+                    aiFlags: [
+                        Gen3AiFlag.CheckBadMove,
+                        Gen3AiFlag.TryToFaint,
+                        Gen3AiFlag.CheckViability,
+                        Gen3AiFlag.DoubleBattle,
+                    ],
                     team: [
                         {
                             slug: 'castform',
@@ -8296,6 +8819,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Grace',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'marill',
@@ -8316,6 +8840,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Declan',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'gyarados',
@@ -8336,6 +8861,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Lila & Roy',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'chinchou',
@@ -8364,6 +8890,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Spencer',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tentacool',
@@ -8392,6 +8919,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jenny',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wailmer',
@@ -8412,6 +8940,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Chad',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tentacool',
@@ -8440,6 +8969,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Isabella',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'staryu',
@@ -8460,6 +8990,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Roland',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'carvanha',
@@ -8480,6 +9011,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ernest',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wingull',
@@ -8508,6 +9040,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Nolen',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tentacruel',
@@ -8528,6 +9061,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Sharon',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'seaking',
@@ -8548,6 +9082,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tanya',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'luvdisc',
@@ -8568,6 +9103,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Presley',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tropius',
@@ -8596,6 +9132,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Auron',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'manectric',
@@ -8624,6 +9161,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Stan',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'horsea',
@@ -8644,6 +9182,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kim & Iris',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'swablu',
@@ -8684,6 +9223,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Leonardo',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'carvanha',
@@ -8704,6 +9244,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Isobel',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'staryu',
@@ -8724,6 +9265,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dean',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'carvanha',
@@ -8760,6 +9302,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Nikki',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'marill',
@@ -8788,6 +9331,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Barry',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'gyarados',
@@ -8808,6 +9352,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Sienna',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'luvdisc',
@@ -8836,6 +9381,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Pablo',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'staryu',
@@ -8864,6 +9410,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Brenda',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'goldeen',
@@ -8884,6 +9431,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Aidan',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'swellow',
@@ -8913,6 +9461,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'manectric',
@@ -8943,6 +9496,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jonah',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wailmer',
@@ -8979,6 +9533,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Roger',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'magikarp',
@@ -9015,6 +9570,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Henry',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'carvanha',
@@ -9043,6 +9599,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Camden',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'staryu',
@@ -9071,6 +9628,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Koji',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'machoke',
@@ -9091,6 +9649,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Donny',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wingull',
@@ -9120,6 +9679,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'shiftry',
@@ -9149,6 +9713,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'gloom',
@@ -9177,6 +9746,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Wayne',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tentacool',
@@ -9213,6 +9783,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Isaiah',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'staryu',
@@ -9233,6 +9804,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Katelyn',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'staryu',
@@ -9253,6 +9825,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Carlee',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'seaking',
@@ -9273,6 +9846,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Harrison',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tentacruel',
@@ -9293,6 +9867,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Reed',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'spheal',
@@ -9321,6 +9896,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Chase',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wingull',
@@ -9349,6 +9925,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Allison',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wingull',
@@ -9377,6 +9954,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Clarence',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'sharpedo',
@@ -9397,6 +9975,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tisha',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'chinchou',
@@ -9417,6 +9996,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Rodney',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'gyarados',
@@ -9437,6 +10017,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Katie',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'goldeen',
@@ -9465,6 +10046,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Santiago',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tentacruel',
@@ -9493,6 +10075,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kevin',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'spheal',
@@ -9513,6 +10096,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Talia',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'staryu',
@@ -9533,6 +10117,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Richard',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'pelipper',
@@ -9553,6 +10138,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kara',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'seaking',
@@ -9573,6 +10159,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Herman',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wingull',
@@ -9601,6 +10188,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Susie',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'luvdisc',
@@ -9621,6 +10209,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Reli & Ian',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'azumarill',
@@ -9649,6 +10238,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Gilbert',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'sharpedo',
@@ -9669,6 +10259,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dana',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'azumarill',
@@ -9689,6 +10280,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ronald',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'magikarp',
@@ -9749,6 +10341,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kiyo',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'hariyama',
@@ -9769,6 +10362,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Paxton',
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'swellow',
@@ -9798,6 +10396,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'pelipper',
@@ -9827,6 +10430,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'roselia',
@@ -9856,6 +10464,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.SetupFirstTurn,
+                ],
                 team: [
                     {
                         slug: 'kecleon',
@@ -9884,6 +10497,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Linda',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'horsea',
@@ -9912,6 +10526,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Beck',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'tropius',
@@ -9932,6 +10547,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Conor',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'chinchou',
@@ -9960,6 +10576,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Mollie',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'whiscash',
@@ -9989,6 +10606,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'graveler',
@@ -10017,6 +10639,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Debra',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'seaking',
@@ -10037,6 +10660,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Franklin',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'sealeo',
@@ -10057,6 +10681,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Laurel',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'luvdisc',
@@ -10085,6 +10710,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jack',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'gyarados',
@@ -10105,6 +10731,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Hitoshi',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'machop',
@@ -10133,6 +10760,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Reyna',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'meditite',
@@ -10161,6 +10789,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Hudson',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wailmer',
@@ -10182,6 +10811,12 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                    Gen3AiFlag.DoubleBattle,
+                ],
                 team: [
                     {
                         slug: 'bagon',
@@ -10205,6 +10840,12 @@ export const BATTLES: Record<string, BattleData> = {
             trainerClass: 'cooltrainer-f',
             teams: [
                 {
+                    aiFlags: [
+                        Gen3AiFlag.CheckBadMove,
+                        Gen3AiFlag.TryToFaint,
+                        Gen3AiFlag.CheckViability,
+                        Gen3AiFlag.DoubleBattle,
+                    ],
                     team: [
                         {
                             slug: 'manectric',
@@ -10232,6 +10873,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Alex',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'natu',
@@ -10260,6 +10902,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kelvin',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'machoke',
@@ -10288,6 +10931,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'numel',
@@ -10308,6 +10952,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zubat',
@@ -10328,6 +10973,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tabitha',
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'numel',
@@ -10373,6 +11023,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'super-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'mightyena',
@@ -10409,6 +11064,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Shirley',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'numel',
@@ -10429,6 +11085,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Sheila',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'shroomish',
@@ -10449,6 +11106,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Shelby',
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'meditite',
@@ -10477,6 +11139,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Sawyer',
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'geodude',
@@ -10497,6 +11164,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Melissa',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'marill',
@@ -10517,6 +11185,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Thalia',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wailmer',
@@ -10545,6 +11214,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Demetrius',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zigzagoon',
@@ -10573,6 +11243,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Charlie',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'marill',
@@ -10593,6 +11264,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Garrison',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'sandslash',
@@ -10613,6 +11285,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jani',
         teams: [
             {
+                aiFlags: [],
                 team: [
                     {
                         slug: 'marill',
@@ -10633,6 +11306,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kira & Dan',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'volbeat',
@@ -10661,6 +11335,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Duncan',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'spheal',
@@ -10689,6 +11364,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'John & Jay',
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                    Gen3AiFlag.DoubleBattle,
+                ],
                 team: [
                     {
                         slug: 'medicham',
@@ -10724,6 +11405,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Nicolas',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'altaria',
@@ -10752,6 +11434,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Mark',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'rhyhorn',
@@ -10772,6 +11455,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Leah',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'spoink',
@@ -10792,6 +11476,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Zander',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'hariyama',
@@ -10812,6 +11497,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dez & Luke',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'delcatty',
@@ -10840,6 +11526,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kayla',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wobbuffet',
@@ -10876,6 +11563,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Gabrielle',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'skitty',
@@ -10936,6 +11624,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'William',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'ralts',
@@ -10972,6 +11661,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tasha',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'shuppet',
@@ -10992,6 +11682,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Atsushi',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'hariyama',
@@ -11012,6 +11703,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Valerie',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'sableye',
@@ -11032,6 +11724,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cedric',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wobbuffet',
@@ -11058,6 +11751,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '6',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zubat',
@@ -11078,6 +11772,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '7',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'carvanha',
@@ -11098,6 +11793,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '8',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'poochyena',
@@ -11123,6 +11819,7 @@ export const BATTLES: Record<string, BattleData> = {
             trainerClass: 'team-aqua-grunt-f',
             teams: [
                 {
+                    aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                     team: [
                         {
                             slug: 'wailmer',
@@ -11152,6 +11849,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '9',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'poochyena',
@@ -11172,6 +11870,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '10',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'carvanha',
@@ -11192,6 +11891,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '12',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'mightyena',
@@ -11220,6 +11920,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Shelly',
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'sharpedo',
@@ -11248,6 +11953,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '11',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zubat',
@@ -11268,6 +11974,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '4',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'carvanha',
@@ -11289,6 +11996,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'super-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'mightyena',
@@ -11326,6 +12038,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'altaria',
@@ -11404,6 +12121,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'magneton',
@@ -11433,6 +12155,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'roselia',
@@ -11454,6 +12181,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'cacturne',
@@ -11483,6 +12215,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'gardevoir',
@@ -11524,6 +12261,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'slaking',
@@ -11565,6 +12307,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'claydol',
@@ -11586,6 +12333,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'swellow',
@@ -11623,6 +12375,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'torkoal',
@@ -11659,6 +12416,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Mitchell',
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'lunatone',
@@ -11700,6 +12462,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'sableye',
@@ -11729,6 +12496,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'sandslash',
@@ -11766,6 +12538,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'kecleon',
@@ -11803,6 +12580,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [],
                 team: [
                     {
                         slug: 'claydol',
@@ -11834,6 +12612,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'medicham',
@@ -11865,6 +12648,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'skarmory',
@@ -11894,6 +12682,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'dodrio',
@@ -11938,6 +12731,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Eric',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'geodude',
@@ -11966,6 +12760,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'poochyena',
@@ -11994,6 +12789,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Diana',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'shroomish',
@@ -12030,6 +12826,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Autumn',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'shroomish',
@@ -12050,6 +12847,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Julio',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'magnemite',
@@ -12070,6 +12868,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ethan',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zigzagoon',
@@ -12098,6 +12897,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '13',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'poochyena',
@@ -12118,6 +12918,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '14',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zubat',
@@ -12146,6 +12947,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '15',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zubat',
@@ -12166,6 +12968,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '5',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'carvanha',
@@ -12186,6 +12989,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '7',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'poochyena',
@@ -12214,6 +13018,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '16',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'carvanha',
@@ -12234,6 +13039,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '6',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zubat',
@@ -12254,6 +13060,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '17',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'carvanha',
@@ -12275,6 +13082,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'super-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'mightyena',
@@ -12303,6 +13115,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '3',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'poochyena',
@@ -12323,6 +13136,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '4',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zubat',
@@ -12343,6 +13157,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '5',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'numel',
@@ -12363,6 +13178,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'mightyena',
@@ -12383,6 +13199,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '6',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'baltoy',
@@ -12411,6 +13228,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '7',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'baltoy',
@@ -12439,6 +13257,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '8',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zubat',
@@ -12459,6 +13278,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '9',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'poochyena',
@@ -12479,6 +13299,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '3',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'numel',
@@ -12499,6 +13320,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '10',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'mightyena',
@@ -12519,6 +13341,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '11',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zubat',
@@ -12539,6 +13362,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '4',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'baltoy',
@@ -12559,6 +13383,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '12',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'mightyena',
@@ -12579,6 +13404,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '13',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'baltoy',
@@ -12599,6 +13425,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '14',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'numel',
@@ -12619,6 +13446,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '15',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zubat',
@@ -12639,6 +13467,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tabitha',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'numel',
@@ -12684,6 +13513,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'super-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'mightyena',
@@ -12720,6 +13554,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jeff',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'slugma',
@@ -12748,6 +13583,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jace',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'slugma',
@@ -12768,6 +13604,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Eli',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'numel',
@@ -12788,6 +13625,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Keegan',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'slugma',
@@ -12808,6 +13646,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cole',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'numel',
@@ -12829,6 +13668,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'kecleon',
@@ -12855,6 +13699,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Axle',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'numel',
@@ -12875,6 +13720,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Danielle',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'meditite',
@@ -12897,6 +13743,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'numel',
@@ -12962,6 +13813,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'swellow',
@@ -12984,6 +13840,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'delcatty',
@@ -13006,6 +13867,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'spinda',
@@ -13028,6 +13894,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'wigglytuff',
@@ -13050,6 +13921,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'slakoth',
@@ -13073,6 +13949,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.SetupFirstTurn,
+                ],
                 team: [
                     {
                         slug: 'zangoose',
@@ -13095,6 +13976,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'vigoroth',
@@ -13117,6 +14003,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'spinda',
@@ -13166,6 +14057,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Humberto',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'skarmory',
@@ -13186,6 +14078,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jared',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'doduo',
@@ -13222,6 +14115,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ashley',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'swablu',
@@ -13258,6 +14152,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Flint',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                 team: [
                     {
                         slug: 'swellow',
@@ -13283,6 +14178,7 @@ export const BATTLES: Record<string, BattleData> = {
             trainerClass: 'bird-keeper',
             teams: [
                 {
+                    aiFlags: [Gen3AiFlag.CheckBadMove, Gen3AiFlag.DoubleBattle],
                     team: [
                         {
                             slug: 'doduo',
@@ -13312,6 +14208,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Darius',
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'tropius',
@@ -13333,6 +14234,12 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                    Gen3AiFlag.Risky,
+                ],
                 team: [
                     {
                         slug: 'swablu',
@@ -13416,6 +14323,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Preston',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'kirlia',
@@ -13436,6 +14344,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Maura',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'kadabra',
@@ -13456,6 +14365,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Samantha',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'xatu',
@@ -13476,6 +14386,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Blake',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'girafarig',
@@ -13496,6 +14407,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Macey',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'natu',
@@ -13516,6 +14428,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Clifford',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'girafarig',
@@ -13536,6 +14449,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kathleen',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'kadabra',
@@ -13556,6 +14470,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Nicholas',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'wobbuffet',
@@ -13576,6 +14491,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Nate',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'spoink',
@@ -13596,6 +14512,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Virgil',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'ralts',
@@ -13616,6 +14533,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Sylvia',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'meditite',
@@ -13636,6 +14554,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Hannah',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'kirlia',
@@ -13657,6 +14576,12 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 4, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                    Gen3AiFlag.DoubleBattle,
+                ],
                 team: [
                     {
                         slug: 'claydol',
@@ -13727,6 +14652,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Connie',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'goldeen',
@@ -13747,6 +14673,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Andrea',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'luvdisc',
@@ -13768,6 +14695,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'luvdisc',
@@ -13810,6 +14738,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Annika',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'feebas',
@@ -13842,6 +14771,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tiffany',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'carvanha',
@@ -13870,6 +14800,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Crissy',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'goldeen',
@@ -13898,6 +14829,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Bethany',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'azurill',
@@ -13937,6 +14869,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Olivia',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'clamperl',
@@ -13987,6 +14920,7 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'seaking',
@@ -14008,6 +14942,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Bridget',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'azumarill',
@@ -14029,6 +14964,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'luvdisc',
@@ -14108,6 +15048,12 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                    Gen3AiFlag.SetupFirstTurn,
+                ],
                 team: [
                     {
                         slug: 'mightyena',
@@ -14182,6 +15128,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'dusclops',
@@ -14266,6 +15217,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'sealeo',
@@ -14330,6 +15286,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'shelgon',
@@ -14414,6 +15375,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 4, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                ],
                 team: [
                     {
                         slug: 'wailord',
@@ -14501,6 +15467,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '16',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'numel',
@@ -14521,6 +15488,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '17',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'mightyena',
@@ -14557,6 +15525,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '5',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zubat',
@@ -14585,6 +15554,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '18',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'baltoy',
@@ -14606,6 +15576,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Team Magma Grunts',
         teams: [
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'zubat',
@@ -14618,6 +15589,7 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'mightyena',
@@ -14630,6 +15602,7 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [Gen3AiFlag.CheckBadMove],
                 team: [
                     {
                         slug: 'baltoy',
@@ -14654,6 +15627,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Maxie',
         teams: [
             {
+                aiFlags: [
+                    Gen3AiFlag.CheckBadMove,
+                    Gen3AiFlag.TryToFaint,
+                    Gen3AiFlag.CheckViability,
+                    Gen3AiFlag.DoubleBattle,
+                ],
                 team: [
                     {
                         slug: 'mightyena',
@@ -14687,6 +15666,12 @@ export const BATTLES: Record<string, BattleData> = {
             name: 'Tabitha',
             teams: [
                 {
+                    aiFlags: [
+                        Gen3AiFlag.CheckBadMove,
+                        Gen3AiFlag.TryToFaint,
+                        Gen3AiFlag.CheckViability,
+                        Gen3AiFlag.DoubleBattle,
+                    ],
                     team: [
                         {
                             slug: 'camerupt',
@@ -14724,6 +15709,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Steven',
         teams: [
             {
+                aiFlags: [],
                 team: [
                     {
                         slug: 'metang',

@@ -5,6 +5,8 @@ import {
     EncounterMethod,
     FieldCondition,
     GameVersionGroup,
+    Gen3AiFlag,
+    Gen4AiFlag,
     GrowthRate,
     ItemCategory,
     MapAnchor,
@@ -12,6 +14,9 @@ import {
     PokemonStatus,
     TrainerAssetFolder,
 } from '@/lib/static/enums';
+
+// A trainer AI flag from any generation.
+export type AiFlag = Gen3AiFlag | Gen4AiFlag;
 
 export type StatValues = {
     atk: number;
@@ -250,6 +255,10 @@ export type BattleTeamCondition = { type: 'starter'; starter: PokemonSlug };
 // trainers (not one trainer's escalating roster), so each fight can show its
 // own sprite despite sharing the battle's single display name.
 export type BattleTeam = {
+    // The AI scripts this team runs with: its trainer's flags, the flag the
+    // game adds in doubles, and (Gen 3) the other opponent's flags. A Gen 3
+    // tag partner has none of its own, so this is empty.
+    aiFlags: AiFlag[];
     condition?: BattleTeamCondition;
     team: BattlePokemon[];
     trainerClass?: string;
