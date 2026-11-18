@@ -208,6 +208,31 @@ export default class BattleHelpers {
     }
 
     /**
+     * The AI flags that the team member at `memberIndex` of battle's combined
+     * team (as ordered by getTeamFromOptions) runs with, or none if there is
+     * no such member. Flags belong to a trainer's team, so in a tag battle the
+     * two trainers' members can have different flags.
+     */
+    static getMemberAiFlags(
+        battle: Battle,
+        starter: string,
+        game: Game,
+        memberIndex: number
+    ): AiFlag[] {
+        let rowStart = 0;
+        const rows = BattleHelpers.getTeamGroups(battle, starter, game).flatMap(
+            (group) => group.teams
+        );
+        for (const row of rows) {
+            if (memberIndex < rowStart + row.team.length) {
+                return row.aiFlags;
+            }
+            rowStart += row.team.length;
+        }
+        return [];
+    }
+
+    /**
      * Every location/subarea's tag partner in game for gender, paired with
      * its trainer's display label followed by the location's name, excluding one restricted to the other
      * gender. A partner reused across more than one location keeps only

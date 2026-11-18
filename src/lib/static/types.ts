@@ -228,6 +228,13 @@ export type LineTurn = {
     trainer: LineSlot[];
 };
 
+// Which move the damage calculator is showing results for: a slot of the
+// player's moves (`attacker`) or of the enemy's (`defender`).
+export type CalcActiveMove = {
+    index: number;
+    side: 'attacker' | 'defender';
+};
+
 // A stat key affected by nature (all StatValues keys except hp, which
 // nature never modifies).
 export type NatureGridStat = Exclude<keyof StatValues, 'hp'>;
