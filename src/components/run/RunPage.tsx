@@ -426,11 +426,9 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                 } as React.CSSProperties
             }
         >
-            {run.wipe && (
-                <Link className={styles.back} href="/runs">
-                    ← Runs
-                </Link>
-            )}
+            <Link className={styles.back} href="/runs">
+                ← Runs
+            </Link>
             <div className={styles['title-row']}>
                 <div className={styles['title-group']}>
                     <h1 className={styles.title}>
@@ -497,29 +495,15 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                         className={`${styles['sticky-header']} ${isImportScrolledOut ? styles['sticky-header--stuck'] : ''}`}
                         ref={stickyHeaderRef}
                     >
-                        <div className={styles['sticky-left']}>
-                            <Link className={styles.back} href="/runs">
-                                ← Runs
-                            </Link>
-                            {isImportScrolledOut && (
-                                <button
-                                    className={styles['sticky-import']}
-                                    onClick={handleImportClick}
-                                    type="button"
-                                >
-                                    Import
-                                </button>
-                            )}
-                            {activeTab === 'split' && !isImportScrolledOut && (
-                                <SplitHeader
-                                    completedSplits={run.completedSplits}
-                                    currentSplitName={currentSplitName}
-                                    game={game}
-                                    gender={run.gender}
-                                    onSelectSplit={handleSplitSelect}
-                                />
-                            )}
-                        </div>
+                        {activeTab === 'split' && (
+                            <SplitHeader
+                                completedSplits={run.completedSplits}
+                                currentSplitName={currentSplitName}
+                                game={game}
+                                gender={run.gender}
+                                onSelectSplit={handleSplitSelect}
+                            />
+                        )}
                         <Tabs
                             activeTab={activeTab}
                             className={styles.tabs}
