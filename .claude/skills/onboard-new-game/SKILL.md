@@ -20,6 +20,7 @@ Then create `src/lib/data/<slug>/ONBOARDING.md` and record every answer in it. L
 | Is it a ROM hack, or a vanilla game?                                                                        | Data sources for trainers and encounters. A hack's tracker is the source, since PokeAPI and the decomp reflect the unpatched base game. |
 | Does it change Pokémon or moves from its base game?                                                         | Whether it needs `DataOverrides` (a sparse diff over vanilla) or an independent dataset, instead of `VANILLA_DATA_SOURCE`.              |
 | Is there a trusted decomp of this exact game?                                                               | Trainer data, badge bits and flags come from the decomp. Without one, they come from a tracker or a real save.                          |
+| Does it change the trainer AI (scripts, flags or per-trainer flag assignments) from its base game?          | Whether `battle-ai-flags` and `move-ai-rules` can reuse the base game's data, or need the hack's own `trdata` flags and AI script diff. |
 | Is it one of a set of variants that differ only in wild encounters (like Diamond and Pearl)?                | One shared data folder plus a subfolder per variant.                                                                                    |
 | What generation and PokeAPI version-group slug does it use? (For a hack, that of the base game it patches.) | `Game.generation`, `Game.version`, and the encounter scraper config.                                                                    |
 | Which sprite and badge art does it use?                                                                     | Whether `badgeAssetFolder`, `trainerAssetFolder` and `pokemonAssetFolder` reuse an existing folder, or need new art.                    |
@@ -40,6 +41,8 @@ Create `src/lib/data/<slug>/` (reference: `platinum/`). For a variant group, cre
 - `locations/`: one `Location` per file.
 - `maps/`: map PNGs plus `index.ts`, one alphabetical export per image.
 - `splits/`: one `Split` per file.
+
+Per-move AI notes are not in the game folder: they live in `src/lib/data/move-ai/<name>.ts` (step 15), shared by games with the same AI script.
 
 In a variant group, `encounters.ts` and `<slug>.ts` live in each variant's subfolder, and everything else is shared.
 
@@ -89,7 +92,7 @@ Once `encounters.ts` is populated:
 
 1. Find which `encountersKey` holds the `Starter` encounters in `encounters.ts`, work out which location it is, and suggest it to the user. Wait for confirmation.
 2. Wire only that location: a `Location` whose map is the inline placeholder `{ src: 'data:image/gif;base64,R0lGODlhAQABAAAAACw=', height: 1, width: 1 }` (no file), with `mapAnchor: MapAnchor.Center` and its `encountersKey`. Add it to `locations.ts` and to one split. Ask the user for the split's name. Set the split's `saveCondition` to the placeholder `{ type: 'badge', bit: -1 }`; step 10 replaces it. Set `Game.starters` to the species of the `Starter` encounters.
-3. Ask the user for `wipeMessages` (`[]` is valid). Assemble the `Game` in `<slug>.ts` with every required field. `genders` is `{ male: '/trainers/<trainerAssetFolder>/<male file>.png', female: '/trainers/<trainerAssetFolder>/<female file>.png' }`, from the step 3 sprites.
+3. Ask the user for `wipeMessages` (`[]` is valid). Assemble the `Game` in `<slug>.ts` with every required field. Set `moveAi` to the empty `{ moves: {}, rules: {} }`; step 15 fills it. `genders` is `{ male: '/trainers/<trainerAssetFolder>/<male file>.png', female: '/trainers/<trainerAssetFolder>/<female file>.png' }`, from the step 3 sprites.
 4. Register the game. For a variant group, do this for each variant:
     - Add a member to `GameName`, and to `GameVersionGroup`, `BadgeAssetFolder` and `TrainerAssetFolder` when the value is new.
     - Add the game to `GAMES` and its slug to `GAME_LOADERS` in `RunPageLoader.tsx`.
@@ -137,8 +140,9 @@ Work one location at a time, in alphabetical order. Wire each location's battles
 2. Ask the user for each battle's `BattleMetadata`. Never infer metadata or battle structure (Tag, Double, BackToBack) from source text; report what the source says and ask how to model it.
 3. Look each trainer up in the game's trainer data and read team, species, level, moves, held item, ability, nature and gender. IVs follow the `battle-ivs` skill. State exactly what you parsed and get the user's confirmation before writing. Never guess a value; a missing or ambiguous one is a question for the user. `gender` is never omitted for a species that has one.
 4. Add each battle to `battles.ts` under its `battleKey`: `<trainer-class-slug>-<name>` for a named trainer, or `<trainer-class-slug>-<number>` (with `name` set to the number as a string) for repeated anonymous trainers. Ask the user for each battle's `split`.
-5. Add the battle to the location's `battles: []` with its `battleKey` and `x`/`y`, following the `battle-marker-placement` skill.
-6. A roster that varies by run state (starter-dependent) is one battle with several `teams`, each with a `condition`. A different trainer or position by gender or game is a separate `Battle` entry with `gender` or `game` set.
+5. Set every team's required `aiFlags` following the `battle-ai-flags` skill, from the game's own trainer data (never from the user for a vanilla game). Report every team that cannot be matched to a trainer. The skill also covers the `Double`/`TrueDouble`/`Tag` implied flag, which comes from the metadata the user gave in step 2.
+6. Add the battle to the location's `battles: []` with its `battleKey` and `x`/`y`, following the `battle-marker-placement` skill.
+7. A roster that varies by run state (starter-dependent) is one battle with several `teams`, each with a `condition`. A different trainer or position by gender or game is a separate `Battle` entry with `gender` or `game` set.
 
 ## 12. Method splits
 
@@ -172,7 +176,13 @@ Run only after step 13 is finished for every location. Work split by split, in `
 
 Never add a location to a split unprompted or infer membership. Per `.claude/docs/split-location-wiring.md`, a split lists only locations the player is required to go through.
 
-## 15. Resources
+## 15. Move AI
+
+Fill `Game.moveAi` following the `move-ai-rules` skill, after every battle's `aiFlags` are set. Reuse an existing rules set when the game shares its AI script; only a new or changed script needs new rule prose. Run `npm run check:data`: it rejects unknown moves, unknown rule keys, flags from the wrong generation and unused rules.
+
+If the game's generation has no AI reference tab yet (`src/components/references/AiTab/`), a new `Gen<N>AiFlag` enum and `Gen<N>Ai` tab are needed; ask the user before building them.
+
+## 16. Resources
 
 Write each resource as `{ text, description, url }` in `Game.resources`. Every game gets these two, in addition to anything the user supplies:
 
@@ -181,7 +191,7 @@ Write each resource as `{ text, description, url }` in `Game.resources`. Every g
 
 Then ask the user for any further external resources (guides, resource packs, downloads, wikis) and add those too.
 
-## 16. Save parsing
+## 17. Save parsing
 
 Save import is per game, keyed by `Game.version`. Never copy another game's values unless the user confirms the layouts are identical.
 
@@ -190,11 +200,11 @@ Save import is per game, keyed by `Game.version`. Never copy another game's valu
 3. Gen 3: add the game's `GameVersionGroup` to `FLAG_LAYOUT_BY_VERSION` in `Gen3SplitParser.ts` with `flagsOffset` (`SaveBlock1.flags` in the decomp's `include/global.h`) and `gameClearFlag` (`FLAG_SYS_GAME_CLEAR`, `SYSTEM_FLAGS + 0x04`, in `include/constants/flags.h`). Also check the shared `PARTY_OFFSET`, `GENDER_OFFSET`, `GEN3_ITEM_INDEX`, `GEN3_NATIONAL_DEX_BY_SPECIES` and the move IDs against the decomp. If there is no decomp, ask the user.
 4. Ask the user to import a save for the game and report the result. Never start a dev server.
 
-## 17. Cleanup
+## 18. Cleanup
 
 Delete everything onboarding brought in that the app doesn't use: cloned decomps, downloaded source files, raw JSON, throwaway scripts, and leftover screenshots on the Desktop. Keep `ONBOARDING.md`. Run `git status` and show the user any untracked path you are unsure about instead of deleting it.
 
-## 18. Final validation
+## 19. Final validation
 
 1. Set the game's `isEnabled` to `true` in `GAME_CHECK_CONFIGS`.
 2. Run `npm run check:data` and `npx tsc --noEmit`. Fix every violation; a violation that needs a decision is a question for the user.
